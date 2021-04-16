@@ -20,7 +20,7 @@ describe('storefront', () => {
     page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
-    for (const [page, tabs] of Object.entries(pages)) {
+    for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
       ((category: string, page: string) => {
         it(`should navigate to "${category} > ${page}"`, async () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });

@@ -78,50 +78,6 @@ export const config: StorefrontConfig = {
     ],
   },
   'Components': {
-    'Color': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.usage.md`),
-      ],
-    },
-    'Marque': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.props.md`),
-      ],
-    },
-    'Typography': {
-      Text: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
-      ],
-      Headline: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/typography.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/headline/headline.props.md`),
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.props.md`),
-      ],
-    },
     'Banner': {
       Examples: [
         // @ts-ignore
@@ -192,120 +148,14 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`),
       ],
     },
-    'Fieldset': {
+    'Color': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`),
+        () => import(`@/../../components/src/components/basic/color/color.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`),
-      ],
-    },
-    'Radio Button': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`),
-      ],
-    },
-    'Select': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`),
-      ],
-    },
-    'Textarea': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.props.md`),
-      ],
-    },
-    'Text Field': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.props.md`),
-      ],
-    },
-    'Text List': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list/text-list.props.md`),
-      ],
-    },
-    'Spinner': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.usage.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`),
-      ],
-    },
-    'Icon': {
-      Examples: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
-      ],
-      Guideline: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.guideline.md`),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
+        () => import(`@/../../components/src/components/basic/color/color.usage.md`),
       ],
     },
     'Content Wrapper': {
@@ -336,6 +186,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/divider/divider.props.md`),
       ],
     },
+    'Fieldset': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`),
+      ],
+    },
     'Flex': {
       Examples: [
         // @ts-ignore
@@ -364,14 +228,22 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/grid/grid-item/grid-item.props.md`),
       ],
     },
-    'Spacing': {
+    'Icon': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`),
+        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`),
+        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
+      ],
+      Guideline: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/icon/icon/icon.guideline.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
       ],
     },
     'Link': {
@@ -386,6 +258,128 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/link/link.props.md`),
+      ],
+    },
+    'Link Pure': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.props.md`),
+      ],
+    },
+    'Link Social': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.props.md`),
+      ],
+    },
+    'Marque': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/marque/marque.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/marque/marque.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/marque/marque.props.md`),
+      ],
+    },
+    'Modal': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.props.md`),
+      ],
+    },
+    'Pagination': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`),
+      ],
+    },
+    'Radio Button': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`),
+      ],
+    },
+    'Select': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`),
+      ],
+    },
+    'Spacing': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`),
+      ],
+    },
+    'Spinner': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`),
       ],
     },
     'Tabs': {
@@ -418,60 +412,66 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md`),
       ],
     },
-    'Link Pure': {
+    'Text Field': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.examples.md`),
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.usage.md`),
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.props.md`),
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.props.md`),
       ],
     },
-    'Link Social': {
+    'Text List': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.examples.md`),
+        () => import(`@/../../components/src/components/content/text-list/text-list.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.usage.md`),
+        () => import(`@/../../components/src/components/content/text-list/text-list.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.props.md`),
+        () => import(`@/../../components/src/components/content/text-list/text-list/text-list.props.md`),
       ],
     },
-    'Pagination': {
+    'Textarea': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`),
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.usage.md`),
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`),
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.props.md`),
       ],
     },
-    'Modal': {
-      Examples: [
+    'Typography': {
+      Text: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.examples.md`),
+        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
+      ],
+      Headline: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.usage.md`),
+        () => import(`@/../../components/src/components/basic/typography/typography.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.props.md`),
+        () => import(`@/../../components/src/components/basic/typography/headline/headline.props.md`),
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/typography/text/text.props.md`),
       ],
     },
   },
@@ -512,7 +512,7 @@ export const config: StorefrontConfig = {
     ],
   },
   'Patterns': {
-   Forms: {
+    Forms: {
       Guidelines: [
         // @ts-ignore
         () => import(`@/pages/patterns/forms/guidelines.md`),

@@ -12,6 +12,7 @@ import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItem
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 export namespace Components {
     interface PBanner {
@@ -449,7 +450,7 @@ export namespace Components {
         /**
           * Adapts sizing of marque.
          */
-        "size"?: 'responsive' | 'small' | 'medium';
+        "size"?: MarqueSize;
         /**
           * Target attribute where the link should be opened.
          */
@@ -1387,7 +1388,7 @@ declare namespace LocalJSX {
         /**
           * Adapts sizing of marque.
          */
-        "size"?: 'responsive' | 'small' | 'medium';
+        "size"?: MarqueSize;
         /**
           * Target attribute where the link should be opened.
          */

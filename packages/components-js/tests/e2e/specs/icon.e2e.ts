@@ -1,13 +1,14 @@
 import {
   getBrowser,
   getLifecycleStatus,
-  getProperty,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('icon', () => {
@@ -38,7 +39,8 @@ describe('icon', () => {
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
-  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
+  const getIcon = async () => selectNode(page, 'p-icon >>> i');
+  const getContent = async (el: ElementHandle): Promise<string> => el.evaluate((el) => el.innerHTML);
 
   describe('loading behavior', () => {
     let responseCounter: number;
@@ -94,7 +96,8 @@ describe('icon', () => {
       await setSvgRequestInterceptor(page, []);
       await initIcon({ name: 'highway', isLazy: true });
 
-      expect(await getContent()).toContain('highway');
+      const icon = await getIcon();
+      expect(await getContent(icon)).toContain('highway');
     });
 
     it('should load icon if lazy attribute is set to false and icon is outside of viewport', async () => {
@@ -104,31 +107,34 @@ describe('icon', () => {
         `<div style="height:1000px"></div><p-icon lazy="false" name="information"></p-icon>`
       );
 
-      expect(await getContent()).toContain('information');
+      const icon = await getIcon();
+      expect(await getContent(icon)).toContain('information');
     });
 
     it('should load icon lazily if scrolled into viewport', async () => {
       await setSvgRequestInterceptor(page, []);
       await initIcon({ name: 'information', isLazy: true, isScrollable: true });
 
-      expect(await getContent()).not.toContain('information');
+      const icon = await getIcon();
+      expect(await getContent(icon)).not.toContain('information');
 
       await page.evaluate(() => {
         window.scrollTo(0, document.body.scrollHeight);
       });
       await waitForStencilLifecycle(page);
 
-      expect(await getContent()).toContain('information');
+      expect(await getContent(icon)).toContain('information');
     });
 
     initOptions.forEach((opts) => {
       describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
-        it(`should have only one response for default icon`, async () => {
+        it('should have only one response for default icon', async () => {
           await setSvgRequestInterceptor(page, []);
           // render with default icon "arrow-head-right"
           await initIcon(opts);
 
-          expect(await getContent()).toContain('arrow-head-right');
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('arrow-head-right');
           expect(responseCounter).toEqual(1);
         });
 
@@ -139,7 +145,7 @@ describe('icon', () => {
          *                 |_______________________⌃
          *                   request of actual icon
          */
-        it(`should render correct icon if default-icon request takes longer than icon request`, async () => {
+        it('should render correct icon if default-icon request takes longer than icon request', async () => {
           const delay = 2000;
           await setSvgRequestInterceptor(page, [delay, 0]);
 
@@ -150,12 +156,13 @@ describe('icon', () => {
           const iconComponent = await getHost();
 
           // change icon name to "question"
-          await iconComponent.evaluate((el) => el.setAttribute('name', 'question'));
+          await setAttribute(iconComponent, 'name', 'question');
 
           // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
           await page.waitForTimeout(delay);
 
-          expect(await getContent()).toContain('question');
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('question');
           expect(responseCounter).toEqual(2);
         });
 
@@ -171,16 +178,18 @@ describe('icon', () => {
           await initIcon({ ...opts, name: 'highway' });
 
           const iconComponent = await getHost();
-          expect(await getContent()).toContain('highway');
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('highway');
 
-          await iconComponent.evaluate((el) => el.setAttribute('name', 'light'));
-          expect(await getContent()).toEqual('');
+          await setAttribute(iconComponent, 'name', 'light');
+          await waitForEventSerialization(page);
+          expect(await getContent(icon)).toEqual('');
 
           await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
 
           await waitForStencilLifecycle(page);
 
-          expect(await getContent()).toContain('light');
+          expect(await getContent(icon)).toContain('light');
           expect(responseCounter).toEqual(2);
         });
 
@@ -189,16 +198,17 @@ describe('icon', () => {
           await initIcon({ ...opts, name: 'highway' });
 
           const iconComponent = await getHost();
-          expect(await getContent()).toContain('highway');
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('highway');
 
-          await iconComponent.evaluate((el) => el.removeAttribute('name'));
+          await removeAttribute(iconComponent, 'name');
 
           // check name attribute
           const outerHTML = await iconComponent.evaluate((el) => el.outerHTML);
           await waitForStencilLifecycle(page);
 
           expect(outerHTML).not.toContain('name=');
-          expect(await getContent()).toContain('arrow-head-right');
+          expect(await getContent(icon)).toContain('arrow-head-right');
           expect(responseCounter).toEqual(2);
         });
       });
