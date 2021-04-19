@@ -30,14 +30,6 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
-// Tabs Types
-export type {
-  TabSize,
-  TabChangeEvent,
-  TabWeight,
-  TabGradientColorTheme,
-} from './components/navigation/tabs-bar/tabs-bar-utils';
-
 // Pagination Types
 export type NumberOfPageLinks = 5 | 7;
 export type PageChangeEvent = { page: number; previousPage: number };
