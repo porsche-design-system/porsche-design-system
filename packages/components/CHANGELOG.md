@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - Extended `Fieldset Wrapper` with `labelSize`, `required`, `state` and `message` properties
 
+### [2.0.1] - 2021-04-16
+
+#### Fixed
+- Visual appearance of `Checkbox Wrapper` in iOS Safari
+- A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly.
+
 ### [2.0.0] - 2021-04-13
 
 In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.
