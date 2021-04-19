@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
-import { getShadowRootHTMLElement, isBrowser, isDark, prefix } from '../../../utils';
+import { getShadowRootHTMLElement, isBrowser, isDark } from '../../../utils';
 import type { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
@@ -51,10 +51,10 @@ export class Icon {
 
   public render(): JSX.Element {
     const iconClasses = {
-      [prefix('icon')]: true,
-      [prefix(`icon--size-${this.size}`)]: true,
-      [prefix(`icon--color-${this.color}`)]: true,
-      [prefix('icon--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
+      ['icon']: true,
+      [`icon--size-${this.size}`]: this.size !== 'small',
+      [`icon--color-${this.color}`]: this.color !== 'default',
+      ['icon--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
     };
 
     return (
