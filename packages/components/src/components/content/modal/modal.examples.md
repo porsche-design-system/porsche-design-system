@@ -145,7 +145,7 @@ Of course, any combination of the available options is possible.
   
 
     get basic() {
-      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : ' <p-text>Some Content</p-text>';
+      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
       
       return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
