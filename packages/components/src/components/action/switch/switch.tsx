@@ -17,9 +17,6 @@ import { isDisabled, SwitchChangeEvent } from './switch-utils';
 export class Switch {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
-  @Prop() public label?: string = '';
-
   /** Aligns the label. */
   @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
 
@@ -85,7 +82,7 @@ export class Switch {
     return (
       <label class={rootClasses}>
         <PrefixedTagNames.pText tag="span" color="inherit" class="text">
-          {this.label}
+          <slot />
         </PrefixedTagNames.pText>
         <button
           type="button"

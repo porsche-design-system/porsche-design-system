@@ -9,62 +9,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-    <style>
-      p-switch {
-        margin-top: 16px;
-      }
-
-      p-switch:first-child {
-        margin-top: 32px;
-      }
-
-      p-switch:last-child {
-        margin-bottom: 32px;
-      }
-    </style>
   </head>
   <body>
-
-  <br>
-  <br>
-  <br>
-
-<p-grid>
-  <p-grid-item size="6">
-    <p-content-wrapper>
-      <p-switch label="Default" onclick="console.log('click', document.activeElement)"
-                onfocus="console.log('focus', document.activeElement)"
-                onfocusin="console.log('focusin', document.activeElement)"
-                onblur="console.log('blur', document.activeElement)"
-                onfocusout="console.log('focusout', document.activeElement)"></p-switch>
-      <p-switch label="Checked" checked="true"></p-switch>
-      <p-switch label="Align right + Stretch" stretch="true"></p-switch>
-      <p-switch label="Align left" align-label="left"></p-switch>
-      <p-switch label="Align left + Stretch" align-label="left" stretch="true"></p-switch>
-      <p-switch label="Hide label" hide-label="true"></p-switch>
-      <p-switch label="Disabled" disabled="true"></p-switch>
-      <p-switch label="Disabled + Checked" checked="true" disabled="true"></p-switch>
-      <p-switch label="Loading" loading="true"></p-switch>
-      <p-switch label="Loading + Checked" checked="true" loading="true"></p-switch>
-    </p-content-wrapper>
-  </p-grid-item>
-  <p-grid-item size="6">
-    <p-content-wrapper theme="dark" background-color="default">
-      <p-switch theme="dark" label="Default"></p-switch>
-      <p-switch theme="dark" label="Checked" checked="true"></p-switch>
-      <p-switch theme="dark" label="Align right + Stretch" stretch="true"></p-switch>
-      <p-switch theme="dark" label="Align left" align-label="left"></p-switch>
-      <p-switch theme="dark" label="Align left + Stretch" align-label="left" stretch="true"></p-switch>
-      <p-switch theme="dark" label="Hide label" hide-label="true"></p-switch>
-      <p-switch theme="dark" label="Disabled" disabled="true"></p-switch>
-      <p-switch theme="dark" label="Disabled + Checked" checked="true" disabled="true"></p-switch>
-      <p-switch theme="dark" label="Loading" loading="true"></p-switch>
-      <p-switch theme="dark" label="Loading + Checked" checked="true" loading="true"></p-switch>
-    </p-content-wrapper>
-  </p-grid-item>
-</p-grid>
-
-
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
@@ -73,13 +19,6 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
-
-      for (const el of document.querySelectorAll('p-switch')) {
-        el.addEventListener('switchChange', (switchChangeEvent) => {
-          const { checked } = switchChangeEvent.detail;
-          switchChangeEvent.target.setAttribute('checked', checked);
-        });
-      }
     </script>
     <!-- /END -->
   </body>
