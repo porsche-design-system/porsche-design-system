@@ -18,9 +18,6 @@ export class TextListItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTextList');
-  }
-
-  public componentDidLoad(): void {
     this.addSlottedStyles();
   }
 
@@ -29,11 +26,12 @@ export class TextListItem {
     const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const { listType, orderType } = list;
     const isNestedList = !!getAttribute(list, 'nested');
+    const isOrderedList = listType === 'ordered';
 
     const rootClasses = {
       ['root']: true,
-      ['root--ordered']: listType === 'ordered',
-      [`root--ordered-${orderType}`]: listType === 'ordered',
+      ['root--ordered']: isOrderedList,
+      [`root--ordered-${orderType}`]: isOrderedList,
       ['root--nested']: isNestedList,
     };
 
