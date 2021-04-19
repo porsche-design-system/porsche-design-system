@@ -11,10 +11,10 @@ export class TextList {
   @Element() public host!: HTMLElement;
 
   /** The type of the text list. */
-  @Prop({ reflect: true }) public listType?: 'unordered' | 'ordered' = 'unordered';
+  @Prop() public listType?: 'unordered' | 'ordered' = 'unordered';
 
   /** The list style type of an ordered list. */
-  @Prop({ reflect: true }) public orderType?: 'numbered' | 'alphabetically' = 'numbered';
+  @Prop() public orderType?: 'numbered' | 'alphabetically' = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
