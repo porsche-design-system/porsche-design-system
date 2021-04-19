@@ -96,14 +96,16 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-::slotted(input:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
-
 .label {
   $bem-block: &;
   position: relative;
   display: flex;
+
+  @at-root ::slotted(input:focus:not(:focus-visible)),
+    &--error ::slotted(input:focus:not(:focus-visible)),
+    &--success ::slotted(input:focus:not(:focus-visible)) {
+    outline-color: transparent !important;
+  }
 
   &--error {
     ::slotted(input) {
@@ -120,10 +122,6 @@
     ::slotted(input:focus),
     ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-error !important;
-    }
-
-    ::slotted(input:focus:not(:focus-visible)) {
-      outline-color: transparent !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
@@ -151,10 +149,6 @@
     ::slotted(input:focus),
     ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-success !important;
-    }
-
-    ::slotted(input:focus:not(:focus-visible)) {
-      outline-color: transparent !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
