@@ -91,16 +91,13 @@
   border-color: $p-color-state-disabled !important;
 }
 
-::slotted(input:focus) {
+::slotted(input:focus),
+::slotted(input:focus-visible) {
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
 ::slotted(input:focus:not(:focus-visible)) {
   outline-color: transparent !important;
-}
-
-::slotted(input:focus-visible) {
-  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
 .label {
@@ -120,16 +117,13 @@
       border-color: $p-color-notification-error !important;
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-error !important;
     }
 
     ::slotted(input:focus:not(:focus-visible)) {
       outline-color: transparent !important;
-    }
-
-    ::slotted(input:focus-visible) {
-      outline-color: $p-color-notification-error !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
@@ -154,16 +148,13 @@
       border-color: $p-color-notification-success !important;
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-success !important;
     }
 
     ::slotted(input:focus:not(:focus-visible)) {
       outline-color: transparent !important;
-    }
-
-    ::slotted(input:focus-visible) {
-      outline-color: $p-color-notification-success !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
