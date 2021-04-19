@@ -1,5 +1,5 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { attachCss, getCss, mediaQuery } from '../../../utils';
+import { attachCss, buildHostStyles, getCss, mediaQuery } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -28,15 +28,15 @@ const baseSizes = {
 };
 
 const baseCss: string = getCss({
-  ':host': {
+  ...buildHostStyles({
     display: 'inline-flex',
     verticalAlign: 'top',
-  },
+  }),
   '@global': {
     a: {
       display: 'block',
       textDecoration: 'none',
-     // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
+      // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
       outline: 'transparent solid 1px',
       outlineOffset: 0,
       '::-moz-focus-inner': { border: 0 },
