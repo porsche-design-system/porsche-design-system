@@ -69,7 +69,7 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
       $easeInQuad forwards;
   }
 
-  :host(.#{$p-global-class-prefix}banner--close) {
+  :host(.banner--close) {
     animation: var(--p-animation-duration__banner, 600ms) 0s animateMobileOut $easeOutQuad forwards;
   }
 }
@@ -85,12 +85,12 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
       $easeInQuad forwards;
   }
 
-  :host(.#{$p-global-class-prefix}banner--close) {
+  :host(.banner--close) {
     animation: var(--p-animation-duration__banner, 600ms) 0s animateDesktopOut $easeOutQuad forwards;
   }
 }
 
-.#{$p-global-class-prefix}banner {
+.banner {
   display: flex;
   position: relative;
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
@@ -127,30 +127,29 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
       background-color: $p-color-notification-error;
     }
   }
+}
 
-  &__content {
-    max-width: p-px-to-rem(800px);
-    padding-right: p-px-to-rem(48px);
-  }
+.content {
+  max-width: p-px-to-rem(800px);
+  padding-right: p-px-to-rem(48px);
 
-  &__icon {
-    display: none;
-  }
-
-  &__title + &__description {
+  // p-text for description
+  *:nth-child(2):not(.close) {
     margin-top: p-px-to-rem(8px);
   }
+}
+
+.icon {
+  display: none;
 
   @include p-media-query('s') {
-    &__icon {
-      display: block;
-      padding-right: p-px-to-rem(12px);
-    }
+    display: block;
+    padding-right: p-px-to-rem(12px);
   }
+}
 
-  &__button {
-    position: absolute;
-    top: p-px-to-rem(16px);
-    right: p-px-to-rem(16px);
-  }
+.close {
+  position: absolute;
+  top: p-px-to-rem(16px);
+  right: p-px-to-rem(16px);
 }
