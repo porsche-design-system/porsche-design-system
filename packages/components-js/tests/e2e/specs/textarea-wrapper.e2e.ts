@@ -39,11 +39,17 @@ describe('textarea-wrapper', () => {
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
     state?: FormState;
+    hasLabel?: boolean;
   };
 
   const initTextarea = (opts?: InitOptions): Promise<void> => {
-    const { useSlottedLabel = false, useSlottedDescription = false, useSlottedMessage = false, state = 'none' } =
-      opts ?? {};
+    const {
+      useSlottedLabel = false,
+      useSlottedDescription = false,
+      useSlottedMessage = false,
+      state = 'none',
+      hasLabel = false,
+    } = opts ?? {};
 
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
@@ -54,11 +60,12 @@ describe('textarea-wrapper', () => {
     const slottedMessage = useSlottedMessage
       ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
+    const label = hasLabel ? ' label="Some label"' : '';
 
     return setContentWithDesignSystem(
       page,
       `
-        <p-textarea-wrapper state="${state}">
+        <p-textarea-wrapper state="${state}"${label}>
           ${slottedLabel}
           ${slottedDescription}
           <textarea></textarea>
@@ -68,27 +75,13 @@ describe('textarea-wrapper', () => {
   };
 
   it('should render', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>
-    `
-    );
+    await initTextarea({ hasLabel: true });
     const el = await getLabel();
     expect(el).toBeDefined();
   });
 
   it('should add aria-label to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>
-    `
-    );
+    await initTextarea({ hasLabel: true });
     const textarea = await getTextarea();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
   });
@@ -120,14 +113,7 @@ describe('textarea-wrapper', () => {
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper>
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>`
-    );
-
+    await initTextarea();
     const textareaComponent = await getHost();
 
     expect(await getLabel()).toBeNull();
@@ -139,14 +125,7 @@ describe('textarea-wrapper', () => {
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>`
-    );
-
+    await initTextarea({ hasLabel: true });
     const textareaComponent = await getHost();
     const textarea = await getTextarea();
 
@@ -183,15 +162,7 @@ describe('textarea-wrapper', () => {
   });
 
   it('should focus textarea when label text is clicked', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>
-    `
-    );
-
+    await initTextarea({ hasLabel: true });
     const labelText = await getLabel();
     const textarea = await getTextarea();
 
