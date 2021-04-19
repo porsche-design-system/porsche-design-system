@@ -1,0 +1,96 @@
+import { PSwitch } from '@porsche-design-system/components-react';
+
+export const SwitchPage = (): JSX.Element => {
+  const style = `
+  PSwitch ~ PSwitch {
+    margin-top: 8px;
+  }
+  `;
+  return (
+    <>
+      <style children={style} />
+      <div className="playground light" title="should render with defaults">
+        <PSwitch>Some label</PSwitch>
+      </div>
+      <div className="playground dark" title="should render with defaults with dark theme">
+        <PSwitch theme="dark">Some label</PSwitch>
+      </div>
+
+      <div className="playground light" title="should render in state checked">
+        <PSwitch checked={true}>Some label</PSwitch>
+      </div>
+      <div className="playground dark" title="should render in state checked mode with dark theme">
+        <PSwitch checked={true} theme="dark">
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground light" title="should render in state disabled">
+        <PSwitch disabled={true}>Some label</PSwitch>
+        <PSwitch disabled={true} checked={true}>
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground dark" title="should render in state disabled with dark theme">
+        <PSwitch disabled={true} theme="dark">
+          Some label
+        </PSwitch>
+        <PSwitch disabled={true} checked={true} theme="dark">
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground light" title="should render in state loading">
+        <PSwitch loading={true}>Some label</PSwitch>
+        <PSwitch loading={true} checked={true}>
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground dark" title="should render in state loading with dark theme">
+        <PSwitch loading={true} theme="dark">
+          Some label
+        </PSwitch>
+        <PSwitch loading={true} checked={true} theme="dark">
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground light" title="should align label to the left">
+        <PSwitch align-label="left">Some label</PSwitch>
+      </div>
+      <div className="playground light" title="should align label to the left or right depending on viewport">
+        <PSwitch align-label="{'base': 'left', 'xs': 'right', 's': 'left', 'm': 'right', 'l': 'left', 'xl': 'right'}">
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground light" title="should render without label">
+        <PSwitch hide-label={true}>Some label</PSwitch>
+      </div>
+      <div className="playground light" title="should render with or without label depending on viewport">
+        <PSwitch hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+          Some label
+        </PSwitch>
+      </div>
+
+      <div className="playground light" title="should render with stretched label">
+        <PSwitch stretch={true}>Some label</PSwitch>
+        <PSwitch stretch={true} align-label="left">
+          Some label
+        </PSwitch>
+      </div>
+      <div className="playground light" title="should render with stretched label depending on viewport">
+        <PSwitch stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</PSwitch>
+      </div>
+
+      <div className="playground light" title="should render with multiline label">
+        <PSwitch style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PSwitch>
+        <PSwitch style={{ width: '240px' }} align-label="left">
+          Lorem ipsum dolor sit amet, consetetur sadipscing
+        </PSwitch>
+      </div>
+    </>
+  );
+};
