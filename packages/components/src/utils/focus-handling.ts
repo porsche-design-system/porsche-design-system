@@ -4,7 +4,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus
  */
 
-const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = document): HTMLElement => {
+const getFocusableElement = (element: HTMLElement | ShadowRoot | Document = document): HTMLElement => {
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
@@ -28,11 +28,10 @@ const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = doc
 export const improveFocusHandlingForCustomElement = (element: HTMLElement): void => {
   const { shadowRoot } = element;
   element.focus = (): void => {
-    getFocusableElements(shadowRoot)?.focus();
+    getFocusableElement(shadowRoot)?.focus();
   };
 
   element.blur = (): void => {
-    const { activeElement } = shadowRoot;
-    (activeElement as HTMLElement)?.blur();
+    (shadowRoot.activeElement as HTMLElement)?.blur();
   };
 };
