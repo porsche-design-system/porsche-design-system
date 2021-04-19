@@ -74,7 +74,7 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
       ['modal']: true,
-      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off'], false),
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off'], true),
     };
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
