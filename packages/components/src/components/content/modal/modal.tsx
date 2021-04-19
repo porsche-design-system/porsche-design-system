@@ -1,7 +1,13 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses } from '../../../utils';
+import {
+  addCss,
+  getFirstAndLastElement,
+  getFocusableElements,
+  getScrollTopOnTouch,
+  setScrollLock,
+} from './modal-utils';
 
 @Component({
   tag: 'p-modal',
@@ -12,7 +18,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. */
-  @Prop({ reflect: true }) public open = false;
+  @Prop() public open = false;
   /** If true, the modal will not have a close button. */
   @Prop() public disableCloseButton?: boolean = false;
   /** If true, the modal will not be closable via backdrop click. */
@@ -55,6 +61,10 @@ export class Modal {
     this.focusableElements = getFocusableElements(this.host, this.closeBtn);
   }
 
+  public componentWillRender(): void {
+    addCss(this.host, this.open);
+  }
+
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
     setScrollLock(this.host, false, this.setScrollTop);
@@ -63,13 +73,9 @@ export class Modal {
   public render(): JSX.Element {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
-      [prefix('modal')]: true,
-      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
+      ['modal']: true,
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off'], false),
     };
-    const headerClasses = prefix('modal__header');
-    const btnCloseWrapperClasses = prefix('modal__close');
-    const btnCloseClasses = prefix('modal__close-button');
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -82,16 +88,15 @@ export class Modal {
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {hasHeader && (
-            <header class={headerClasses}>
+            <header>
               {this.heading && (
                 <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
-                <div class={btnCloseWrapperClasses}>
+                <div class="close">
                   <PrefixedTagNames.pButtonPure
-                    class={btnCloseClasses}
                     ref={(el) => (this.closeBtn = el)}
                     hideLabel
                     icon="close"

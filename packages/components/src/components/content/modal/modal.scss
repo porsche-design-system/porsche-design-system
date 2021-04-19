@@ -3,37 +3,7 @@
 
 $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
-:host {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  background-color: rgba($p-color-theme-dark-background-default, 0.9) !important;
-  transition: opacity 0.2s $easing, visibility 0s linear 0.6s !important ;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  overflow-y: auto;
-}
-
-:host([open='']),
-:host([open='true']) {
-  transition: opacity 0.6s $easing, visibility 0s linear !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
-}
-
-:host([open='']) .#{$p-global-class-prefix}modal,
-:host([open='true']) .#{$p-global-class-prefix}modal {
-  transform: scale3d(1, 1, 1);
-}
-
-.#{$p-global-class-prefix}modal {
+.modal {
   display: flex;
   flex-direction: column;
   background-color: $p-color-background-default;
@@ -133,25 +103,25 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     padding: p-px-to-rem(64px);
     margin: $p-content-wrapper-margin-xxl;
   }
+}
 
-  &__header {
-    display: flex;
-    padding: 0 0 p-px-to-rem(16px);
+header {
+  display: flex;
+  padding: 0 0 p-px-to-rem(16px);
 
-    @include p-media-query('m') {
-      padding: 0 0 p-px-to-rem(24px);
-    }
-    @include p-media-query('xxl') {
-      padding: 0 0 p-px-to-rem(32px);
-    }
+  @include p-media-query('m') {
+    padding: 0 0 p-px-to-rem(24px);
   }
-
-  &__close {
-    margin-left: auto;
-    padding: 0 0 0 p-px-to-rem(16px);
+  @include p-media-query('xxl') {
+    padding: 0 0 p-px-to-rem(32px);
   }
+}
 
-  &__close-button {
+.close {
+  margin-left: auto;
+  padding: 0 0 0 p-px-to-rem(16px);
+
+  > * {
     margin: p-px-to-rem(-8px) p-px-to-rem(-8px) 0 0;
     padding: p-px-to-rem(8px);
   }
