@@ -1,22 +1,16 @@
-import type {
-  BreakpointCustomizable,
-  TabChangeEvent,
-  TabGradientColorTheme,
-  TabSize,
-  TabWeight,
-  Theme,
-} from '../../../types';
-import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import type { Direction } from './tabs-bar-utils';
+import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { Direction, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
-  getScrollActivePosition,
-  sanitizeActiveTabIndex,
   determineEnableTransitionClass,
+  getHasPTabsParent,
+  getScrollActivePosition,
   getScrollPositionAfterPrevNextClick,
-  getTransformationToInactive,
   getTransformationToActive,
+  getTransformationToInactive,
   removeEnableTransitionClass,
+  sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
 import {
   getHTMLElement,
@@ -65,6 +59,7 @@ export class TabsBar {
   private firstGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
+  private hasPTabsParent: boolean = getHasPTabsParent(this.host);
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
@@ -354,10 +349,6 @@ export class TabsBar {
       }, 10);
     }
   };
-
-  private get hasPTabsParent(): boolean {
-    return this.host.parentElement.classList.contains('p-tabs');
-  }
 
   private get focusedTabIndex(): number {
     const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
