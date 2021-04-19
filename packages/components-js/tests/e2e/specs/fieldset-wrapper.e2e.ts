@@ -9,7 +9,7 @@ import {
 } from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-describe('grid', () => {
+describe('fieldset-wrapper', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
@@ -19,7 +19,7 @@ describe('grid', () => {
   };
 
   const initFieldset = async (opts?: InitOptions) => {
-    const { state = 'none' } = opts;
+    const { state = 'none' } = opts ?? {};
 
     await setContentWithDesignSystem(
       page,
@@ -27,7 +27,7 @@ describe('grid', () => {
     );
   };
 
-  const getFieldset = () => selectNode(page, 'p-fieldset-wrapper');
+  const getHost = () => selectNode(page, 'p-fieldset-wrapper');
   const getMessage = () => selectNode(page, 'p-fieldset-wrapper >>> .message');
 
   describe('message', () => {
@@ -41,15 +41,12 @@ describe('grid', () => {
     it('should have role alert if state changes to error', async () => {
       await initFieldset();
 
-      const host = await getFieldset();
-      const message = await getMessage();
-
-      expect(await getAttribute(message, 'role')).toBe('none');
+      const host = await getHost();
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(message, 'role')).toBe('alert');
+      expect(await getAttribute(await getMessage(), 'role')).toBe('alert');
     });
   });
 });
