@@ -12,7 +12,13 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate class="form-bottom-spacing" @submit.prevent="onSubmit">
-          <p-fieldset-wrapper label="Grouped list of checkboxes" class="form-section-spacing">
+          <p-fieldset-wrapper
+            label="Grouped list of checkboxes"
+            required="true"
+            v-bind:state="getState('check')"
+            v-bind:message="bag.errors.check"
+            class="form-section-spacing"
+          >
             <p-checkbox-wrapper label="Some checkbox label 1" v-bind:state="getState('check')">
               <input
                 type="checkbox"
@@ -37,12 +43,15 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-text v-if="bag.errors.check" color="notification-error" class="form-row-spacing">{{
-              bag.errors.check
-            }}</p-text>
           </p-fieldset-wrapper>
 
-          <p-fieldset-wrapper label="Grouped list of radio buttons" class="form-section-spacing">
+          <p-fieldset-wrapper
+            label="Grouped list of radio buttons"
+            required="true"
+            v-bind:state="getState('radio')"
+            v-bind:message="bag.errors.radio"
+            class="form-section-spacing"
+          >
             <p-radio-button-wrapper label="Some radio label 1" v-bind:state="getState('radio')">
               <input
                 type="radio"
@@ -78,12 +87,13 @@
                 v-on:change="onFieldBlur"
               />
             </p-radio-button-wrapper>
-            <p-text v-if="bag.errors.radio" color="notification-error" class="form-row-spacing">
-              {{ bag.errors.radio }}
-            </p-text>
           </p-fieldset-wrapper>
 
-          <p-fieldset-wrapper label="Grouped short input" class="form-section-spacing">
+          <p-fieldset-wrapper
+            label="Grouped short input"
+            v-bind:state="getState('day') || getState('month')"
+            class="form-section-spacing"
+          >
             <p-grid>
               <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
                 <p-flex class="form-grid-item-container">
@@ -126,21 +136,11 @@
                     </p-text-field-wrapper>
                   </p-flex-item>
                 </p-flex>
-                <p-text
-                  v-if="bag.errors.day"
-                  color="notification-error"
-                  id="error-message-1"
-                  class="form-row-spacing"
-                  >{{ bag.errors.day }}</p-text
-                >
-                <p-text v-if="bag.errors.month" color="notification-error" id="error-message-2">
-                  {{ bag.errors.month }}
-                </p-text>
-                <p-text v-if="bag.errors.year" color="notification-error" id="error-message-3">
-                  {{ bag.errors.year }}
-                </p-text>
               </p-grid-item>
             </p-grid>
+            <span v-if="bag.errors.day" slot="message">{{ bag.errors.day }}<br /></span>
+            <span v-if="bag.errors.month" slot="message">{{ bag.errors.month }}<br /></span>
+            <span v-if="bag.errors.year" slot="message">{{ bag.errors.year }}</span>
           </p-fieldset-wrapper>
         </form>
       </p-grid-item>
