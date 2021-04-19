@@ -1,29 +1,29 @@
 {
-  "hash": "b992c1f72ae855c758fb",
+  "hash": "6117a9af8dc911731887",
   "version": "5.31.2",
-  "time": 3278,
-  "builtAt": 1618395557651,
+  "time": 3018,
+  "builtAt": 1618491060786,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js"
+      "porsche-design-system.v2.0.0.09d5f1e8397110243f84.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-      "size": 59616,
+      "name": "porsche-design-system.v2.0.0.09d5f1e8397110243f84.js",
+      "size": 59678,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "771ea302bd7e60f6aaf9",
+        "contenthash": "09d5f1e8397110243f84",
         "javascriptModule": false,
         "minimized": true,
-        "size": 59616
+        "size": 59678
       },
       "chunkNames": [
         "main"
@@ -540,17 +540,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.c728683e73b842f2610a.js",
-      "size": 3919,
+      "name": "porsche-design-system.marque.effca22c4fb3c51290f9.js",
+      "size": 3901,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c728683e73b842f2610a",
+        "contenthash": "effca22c4fb3c51290f9",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3919
+        "size": 3901
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -665,6 +665,31 @@
     },
     {
       "type": "asset",
+      "name": "porsche-design-system.fieldset-wrapper.a2d27a6343bc9be33cff.js",
+      "size": 1885,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "a2d27a6343bc9be33cff",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 1885
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "fieldset-wrapper"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
       "name": "porsche-design-system.content-wrapper.fb12c69318ada8dafa1f.js",
       "size": 1408,
       "emitted": true,
@@ -684,31 +709,6 @@
       "related": {},
       "chunks": [
         "content-wrapper"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.ea69a7c3b9014fbf5ea1.js",
-      "size": 1179,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "ea69a7c3b9014fbf5ea1",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 1179
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "fieldset-wrapper"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -2222,7 +2222,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -3445,7 +3445,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -6656,9 +6656,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 1317,
+      "size": 2485,
       "sizes": {
-        "javascript": 1317
+        "javascript": 2485
       },
       "names": [],
       "idHints": [],
@@ -6666,10 +6666,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.ea69a7c3b9014fbf5ea1.js"
+        "porsche-design-system.fieldset-wrapper.a2d27a6343bc9be33cff.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "13d3135b4052fabac441",
+      "hash": "bb5a71431810b81facfd",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -6682,9 +6682,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1317,
+          "size": 2485,
           "sizes": {
-            "javascript": 1317
+            "javascript": 2485
           },
           "built": true,
           "codeGenerated": true,
@@ -6754,7 +6754,7 @@
             "p_fieldset_wrapper"
           ],
           "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 17:0-43",
+            "Statement (ExpressionStatement) with side effects in source code at 34:0-43",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
           ],
           "depth": 4
@@ -9202,7 +9202,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -10566,7 +10566,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -12352,7 +12352,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -13463,9 +13463,9 @@
       "initial": true,
       "entry": true,
       "recorded": false,
-      "size": 162349,
+      "size": 162419,
       "sizes": {
-        "javascript": 155411,
+        "javascript": 155481,
         "runtime": 6938
       },
       "names": [
@@ -13476,10 +13476,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js"
+        "porsche-design-system.v2.0.0.09d5f1e8397110243f84.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c4dc2004f8f8ce6b0ef3",
+      "hash": "8cec6c1544ebaf671e0e",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -15406,7 +15406,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "1:0-74",
+              "loc": "1:0-148",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -15434,7 +15434,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "12:28-34",
+              "loc": "29:29-48",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -15448,7 +15448,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "13:25-31",
+              "loc": "30:12-13",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -15462,7 +15462,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "14:12-13",
+              "loc": "30:54-68",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -15476,7 +15476,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "14:68-69",
+              "loc": "30:96-97",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -15490,7 +15490,77 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "14:118-119",
+              "loc": "30:147-148",
+              "moduleId": 303,
+              "resolvedModuleId": 303
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "30:179-180",
+              "moduleId": 303,
+              "resolvedModuleId": 303
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "30:196-212",
+              "moduleId": 303,
+              "resolvedModuleId": 303
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "30:254-255",
+              "moduleId": 303,
+              "resolvedModuleId": 303
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "30:383-384",
+              "moduleId": 303,
+              "resolvedModuleId": 303
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "32:22-32",
               "moduleId": 303,
               "resolvedModuleId": 303
             },
@@ -17394,7 +17464,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "37:84-94",
+              "loc": "38:84-94",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17408,7 +17478,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "46:9-15",
+              "loc": "47:9-15",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17422,7 +17492,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "53:2-11",
+              "loc": "54:2-11",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17436,7 +17506,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "58:4-20",
+              "loc": "59:4-20",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17450,7 +17520,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "79:10-11",
+              "loc": "77:21-22",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17464,7 +17534,35 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "79:91-103",
+              "loc": "78:6-7",
+              "moduleId": 951,
+              "resolvedModuleId": 951
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "module": "../components/dist/esm/p-marque.entry.js",
+              "moduleName": "../components/dist/esm/p-marque.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "78:87-99",
+              "moduleId": 951,
+              "resolvedModuleId": 951
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "module": "../components/dist/esm/p-marque.entry.js",
+              "moduleName": "../components/dist/esm/p-marque.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "79:6-7",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17492,7 +17590,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "81:14-15",
+              "loc": "80:74-75",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17506,7 +17604,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "82:8-9",
+              "loc": "81:12-13",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17520,7 +17618,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "85:20-21",
+              "loc": "81:14-18",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17534,7 +17632,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:12-13",
+              "loc": "81:65-66",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17548,35 +17646,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:14-18",
-              "moduleId": 951,
-              "resolvedModuleId": 951
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "module": "../components/dist/esm/p-marque.entry.js",
-              "moduleName": "../components/dist/esm/p-marque.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:65-66",
-              "moduleId": 951,
-              "resolvedModuleId": 951
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "module": "../components/dist/esm/p-marque.entry.js",
-              "moduleName": "../components/dist/esm/p-marque.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "88:22-32",
+              "loc": "83:22-32",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -22950,9 +23020,9 @@
           "type": "module",
           "moduleType": "javascript/esm",
           "layer": null,
-          "size": 8536,
+          "size": 8606,
           "sizes": {
-            "javascript": 8536
+            "javascript": 8606
           },
           "built": true,
           "codeGenerated": true,
@@ -23057,9 +23127,9 @@
               "type": "module",
               "moduleType": "javascript/auto",
               "layer": null,
-              "size": 4700,
+              "size": 4770,
               "sizes": {
-                "javascript": 4700
+                "javascript": 4770
               },
               "built": true,
               "codeGenerated": false,
@@ -23723,9 +23793,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8066,
+      "size": 8080,
       "sizes": {
-        "javascript": 8066
+        "javascript": 8080
       },
       "names": [],
       "idHints": [],
@@ -23733,10 +23803,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.c728683e73b842f2610a.js"
+        "porsche-design-system.marque.effca22c4fb3c51290f9.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "46e6b5309bdad74ec340",
+      "hash": "7d5e602d0543f048043c",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23976,7 +24046,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -24022,9 +24092,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4144,
+          "size": 4158,
           "sizes": {
-            "javascript": 4144
+            "javascript": 4158
           },
           "built": true,
           "codeGenerated": true,
@@ -24623,7 +24693,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -33602,9 +33672,9 @@
       "type": "module",
       "moduleType": "javascript/esm",
       "layer": null,
-      "size": 8536,
+      "size": 8606,
       "sizes": {
-        "javascript": 8536
+        "javascript": 8606
       },
       "built": true,
       "codeGenerated": true,
@@ -33707,9 +33777,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4700,
+          "size": 4770,
           "sizes": {
-            "javascript": 4700
+            "javascript": 4770
           },
           "built": true,
           "codeGenerated": false,
@@ -34077,9 +34147,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4700,
+      "size": 4770,
       "sizes": {
-        "javascript": 4700
+        "javascript": 4770
       },
       "built": true,
       "codeGenerated": false,
@@ -36162,7 +36232,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "1:0-74",
+          "loc": "1:0-148",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -36190,7 +36260,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "12:28-34",
+          "loc": "29:29-48",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -36204,7 +36274,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "13:25-31",
+          "loc": "30:12-13",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -36218,7 +36288,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "14:12-13",
+          "loc": "30:54-68",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -36232,7 +36302,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "14:68-69",
+          "loc": "30:96-97",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -36246,7 +36316,77 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "14:118-119",
+          "loc": "30:147-148",
+          "moduleId": 303,
+          "resolvedModuleId": 303
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "30:179-180",
+          "moduleId": 303,
+          "resolvedModuleId": 303
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "30:196-212",
+          "moduleId": 303,
+          "resolvedModuleId": 303
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "30:254-255",
+          "moduleId": 303,
+          "resolvedModuleId": 303
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "30:383-384",
+          "moduleId": 303,
+          "resolvedModuleId": 303
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "module": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-fieldset-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-fieldset-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "32:22-32",
           "moduleId": 303,
           "resolvedModuleId": 303
         },
@@ -38150,7 +38290,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "37:84-94",
+          "loc": "38:84-94",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38164,7 +38304,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "46:9-15",
+          "loc": "47:9-15",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38178,7 +38318,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "53:2-11",
+          "loc": "54:2-11",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38192,7 +38332,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "58:4-20",
+          "loc": "59:4-20",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38206,7 +38346,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "79:10-11",
+          "loc": "77:21-22",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38220,7 +38360,35 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "79:91-103",
+          "loc": "78:6-7",
+          "moduleId": 951,
+          "resolvedModuleId": 951
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "module": "../components/dist/esm/p-marque.entry.js",
+          "moduleName": "../components/dist/esm/p-marque.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "78:87-99",
+          "moduleId": 951,
+          "resolvedModuleId": 951
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "module": "../components/dist/esm/p-marque.entry.js",
+          "moduleName": "../components/dist/esm/p-marque.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "79:6-7",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38248,7 +38416,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "81:14-15",
+          "loc": "80:74-75",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38262,7 +38430,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "82:8-9",
+          "loc": "81:12-13",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38276,7 +38444,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "85:20-21",
+          "loc": "81:14-18",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38290,7 +38458,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:12-13",
+          "loc": "81:65-66",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38304,35 +38472,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:14-18",
-          "moduleId": 951,
-          "resolvedModuleId": 951
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "module": "../components/dist/esm/p-marque.entry.js",
-          "moduleName": "../components/dist/esm/p-marque.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:65-66",
-          "moduleId": 951,
-          "resolvedModuleId": 951
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "module": "../components/dist/esm/p-marque.entry.js",
-          "moduleName": "../components/dist/esm/p-marque.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "88:22-32",
+          "loc": "83:22-32",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -44838,9 +44978,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 1317,
+      "size": 2485,
       "sizes": {
-        "javascript": 1317
+        "javascript": 2485
       },
       "built": true,
       "codeGenerated": true,
@@ -44909,7 +45049,7 @@
         "p_fieldset_wrapper"
       ],
       "optimizationBailout": [
-        "Statement (ExpressionStatement) with side effects in source code at 17:0-43",
+        "Statement (ExpressionStatement) with side effects in source code at 34:0-43",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
       ],
       "depth": 4
@@ -45495,9 +45635,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4144,
+      "size": 4158,
       "sizes": {
-        "javascript": 4144
+        "javascript": 4158
       },
       "built": true,
       "codeGenerated": true,
@@ -48193,7 +48333,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./focus-handling-8e745142.js",
-          "loc": "69:4-40",
+          "loc": "70:4-40",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -49191,12 +49331,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-          "size": 59616
+          "name": "porsche-design-system.v2.0.0.09d5f1e8397110243f84.js",
+          "size": 59678
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 59616,
+      "assetsSize": 59678,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -49213,12 +49353,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-          "size": 59616
+          "name": "porsche-design-system.v2.0.0.09d5f1e8397110243f84.js",
+          "size": 59678
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 59616,
+      "assetsSize": 59678,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
