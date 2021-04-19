@@ -2,7 +2,7 @@ import { JSX, Component, Prop, h, Watch } from '@stencil/core';
 import type { Theme } from '../../../types';
 import type { SpinnerSize } from './spinner-utils';
 import { verifySpinnerSize } from './spinner-utils';
-import { isDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { isDark, mapBreakpointPropToPrefixedClasses } from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
@@ -27,19 +27,16 @@ export class Spinner {
 
   public render(): JSX.Element {
     const spinnerClasses = {
-      [prefix('spinner')]: true,
-      [prefix('spinner--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size),
+      ['spinner']: true,
+      ['spinner--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size, undefined, true),
     };
-    const imageClasses = prefix('spinner__image');
-    const bgClasses = prefix('spinner__bg');
-    const fgClasses = prefix('spinner__fg');
 
     return (
       <span class={spinnerClasses} aria-busy="true" aria-live="polite">
-        <svg class={imageClasses} viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false">
-          <circle class={bgClasses} r="9" />
-          <circle class={fgClasses} r="9" />
+        <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false">
+          <circle r="9" />
+          <circle r="9" />
         </svg>
       </span>
     );
