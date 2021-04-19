@@ -74,10 +74,6 @@
   cursor: pointer;
   @include p-focus($p-color-neutral-contrast-high);
 
-  &:disabled {
-    cursor: not-allowed;
-  }
-
   &--theme-dark {
     color: $p-color-default;
     background-color: $p-color-theme-dark-default;
@@ -101,6 +97,7 @@
   }
 
   &:disabled {
+    cursor: not-allowed;
     color: rgba($p-color-theme-dark-default, 0.55);
     background-color: $p-color-state-disabled;
     border-color: $p-color-state-disabled;
