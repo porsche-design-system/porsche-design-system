@@ -3,7 +3,7 @@
 
 @mixin label-visible() {
   .label,
-  .subline {
+  + .subline {
     position: static;
     width: 100%;
     height: auto;
@@ -18,7 +18,7 @@
 
 @mixin label-hidden() {
   .label,
-  .subline {
+  + .subline {
     position: absolute;
     width: 1px;
     height: 1px;
