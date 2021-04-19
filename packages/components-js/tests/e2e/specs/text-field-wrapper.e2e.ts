@@ -46,7 +46,8 @@ describe('text-field-wrapper', () => {
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
     state?: FormState;
-    type?: 'text' | 'password';
+    type?: 'text' | 'password' | 'search';
+    hasLabel?: boolean;
   };
 
   const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -56,6 +57,7 @@ describe('text-field-wrapper', () => {
       useSlottedMessage = false,
       state = 'none',
       type = 'text',
+      hasLabel = false,
     } = opts ?? {};
 
     const slottedLabel = useSlottedLabel
@@ -67,11 +69,12 @@ describe('text-field-wrapper', () => {
     const slottedMessage = useSlottedMessage
       ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
+    const label = hasLabel ? ' label="Some label"' : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper state="${state}">
+      <p-text-field-wrapper state="${state}"${label}>
         ${slottedLabel}
         ${slottedDescription}
         <input type="${type}" />
@@ -81,14 +84,7 @@ describe('text-field-wrapper', () => {
   };
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-text-field-wrapper>
-        <input type="text" name="some-name"/>
-      </p-text-field-wrapper>`
-    );
-
+    await initTextField();
     const textFieldComponent = await getHost();
     expect(await getLabel()).toBeNull();
 
@@ -99,14 +95,7 @@ describe('text-field-wrapper', () => {
 
   describe('accessibility', () => {
     it('should add aria-label', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ hasLabel: true });
       const input = await getInput();
       expect(await getAttribute(input, 'aria-label')).toBe('Some label');
     });
@@ -116,7 +105,7 @@ describe('text-field-wrapper', () => {
         page,
         `
         <p-text-field-wrapper label="Some label" description="Some description">
-          <input type="text" name="some-name">
+          <input type="text">
         </p-text-field-wrapper>`
       );
       const input = await getInput();
@@ -128,7 +117,7 @@ describe('text-field-wrapper', () => {
         page,
         `
         <p-text-field-wrapper label="Some label" description="Some description" message="Some error message" state="error">
-          <input type="text" name="some-name">
+          <input type="text">
         </p-text-field-wrapper>`
       );
       const input = await getInput();
@@ -136,14 +125,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should add/remove message text and update aria-label attribute if state changes programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name"/>
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ hasLabel: true });
       const textFieldComponent = await getHost();
       const input = await getInput();
 
@@ -182,14 +164,7 @@ describe('text-field-wrapper', () => {
 
   describe('input type password', () => {
     it('should disable input and toggle password button when input is disabled programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="password" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'password', hasLabel: true });
       const input = await getInput();
 
       const initialCursor = await getElementStyle(input, 'cursor');
@@ -211,14 +186,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should toggle icon when password visibility button is clicked', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="password" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'password', hasLabel: true });
       const toggleButton = await getButton();
 
       const icon = await getIcon();
@@ -236,14 +204,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should have padding-right', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="password" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'password', hasLabel: true });
       const input = await getInput();
       const toggleButton = await getButton();
 
@@ -256,14 +217,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should toggle password visibility and focus input correctly', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="password" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'password', hasLabel: true });
       const button = await getButton();
       const input = await getInput();
 
@@ -289,14 +243,7 @@ describe('text-field-wrapper', () => {
 
   describe('input type search', () => {
     it('should disable search button when input is set to disabled programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="search" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'search', hasLabel: true });
       const input = await getInput();
       const button = await getButton();
 
@@ -323,14 +270,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should disable search button when input is set to readonly programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="search" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'search', hasLabel: true });
       const input = await getInput();
       const button = await getButton();
 
@@ -366,14 +306,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should disable search button when input is set to disabled and readonly programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="search" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'search', hasLabel: true });
       const input = await getInput();
       const button = await getButton();
 
@@ -405,7 +338,7 @@ describe('text-field-wrapper', () => {
         `
         <form onsubmit="return false;">
           <p-text-field-wrapper label="Some label">
-            <input type="search" name="some-name">
+            <input type="search">
           </p-text-field-wrapper>
         </form>`
       );
@@ -422,14 +355,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should have padding-right', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="search" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
+      await initTextField({ type: 'search', hasLabel: true });
       const input = await getInput();
       expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
     });
@@ -574,15 +500,7 @@ describe('text-field-wrapper', () => {
     });
 
     it('should focus input when label text is clicked', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-text-field-wrapper label="Some label">
-        <input type="text" name="some-name">
-      </p-text-field-wrapper>
-    `
-      );
-
+      await initTextField({ hasLabel: true });
       const labelText = await getLabel();
       const input = await getInput();
 
