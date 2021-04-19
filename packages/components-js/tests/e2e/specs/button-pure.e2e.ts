@@ -13,6 +13,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   getLifecycleStatus,
+  waitForEventSerialization,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -92,7 +93,7 @@ describe('button-pure', () => {
     }
   });
 
-  it("submits outer forms on click, if it's type submit", async () => {
+  it("submits parent form on click if it's type submit", async () => {
     await setContentWithDesignSystem(
       page,
       `<form onsubmit="return false;"><p-button-pure type="submit">Some label</p-button-pure></form>`
@@ -107,7 +108,8 @@ describe('button-pure', () => {
     for (const triggerElement of [host, button]) {
       await triggerElement.click();
     }
-    expect(calls).toBe(1);
+    await waitForEventSerialization(page);
+    expect(calls).toBe(2);
   });
 
   it('should not submit the form if default is prevented', async () => {
@@ -160,7 +162,7 @@ describe('button-pure', () => {
     expect(calls).toBe(0);
   });
 
-  it('should trigger focus&blur events at the correct time', async () => {
+  it('should trigger focus & blur events at the correct time', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -253,7 +255,7 @@ describe('button-pure', () => {
     await page.keyboard.up('ShiftLeft');
   });
 
-  it('should provide methods to focus&blur the element', async () => {
+  it('should provide methods to focus & blur the element', async () => {
     await setContentWithDesignSystem(
       page,
       `

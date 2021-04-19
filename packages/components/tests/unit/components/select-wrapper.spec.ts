@@ -3,14 +3,16 @@ import { SelectWrapper } from '../../../src/components/form/select-wrapper/selec
 import { applyFilterOnOptionMaps, OptionMap } from '../../../src/components/form/select-wrapper/select-wrapper-utils';
 
 describe('select-wrapper', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
-    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-    const select = new SelectWrapper();
-    try {
-      select.connectedCallback();
-    } catch (e) {}
+  describe('connectedCallback', () => {
+    it('should call getHTMLElementAndThrowIfUndefined()', () => {
+      const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
+      const component = new SelectWrapper();
+      try {
+        component.connectedCallback();
+      } catch (e) {}
 
-    expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledTimes(1);
+    });
   });
 
   describe('applyFilterOnOptionMaps()', () => {

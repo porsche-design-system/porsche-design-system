@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDynamicCss() should match snapshot for getDynamicCss medium 1`] = `"picture{width:120px;height:72px}"`;
+
+exports[`getDynamicCss() should match snapshot for getDynamicCss responsive 1`] = `""`;
+
+exports[`getDynamicCss() should match snapshot for getDynamicCss small 1`] = `"picture{width:100px;height:60px}"`;
