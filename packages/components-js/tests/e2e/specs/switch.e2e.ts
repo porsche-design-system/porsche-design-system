@@ -25,7 +25,7 @@ describe('switch', () => {
 
   const clickHandlerScript = `
     <script>
-      const switchComponent = document.querySelector('switch')
+      const switchComponent = document.querySelector('p-switch')
       switchComponent.addEventListener('switchChange', (switchChangeEvent) => {
           const { checked } = switchChangeEvent.detail;
           switchChangeEvent.target.setAttribute('checked', checked);
@@ -42,7 +42,7 @@ describe('switch', () => {
     const { disabled = false, tabbable = true, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch label="Some label" tabbable="${tabbable}" disabled="${disabled}"></p-switch>${otherMarkup}`
+      `<p-switch tabbable="${tabbable}" disabled="${disabled}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
