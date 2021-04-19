@@ -277,7 +277,7 @@ describe('text-field-wrapper', () => {
       expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
     });
 
-    it(`should toggle password visibility and focus input correctly`, async () => {
+    it('should toggle password visibility and focus input correctly', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -352,7 +352,7 @@ describe('text-field-wrapper', () => {
       expect(await isButtonDisabled()).toBe(false);
     });
 
-    it(`submits outer forms on click on search button, if the input is search`, async () => {
+    it('submits parent form on click on search button if the input is search', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -529,7 +529,7 @@ describe('text-field-wrapper', () => {
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
 
-    it(`should focus input when label text is clicked`, async () => {
+    it('should focus input when label text is clicked', async () => {
       await setContentWithDesignSystem(
         page,
         `

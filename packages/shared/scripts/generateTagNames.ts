@@ -4,11 +4,12 @@ import * as globby from 'globby';
 import { camelCase } from 'change-case';
 
 const generateTagNames = (): void => {
-  // can't resolve @porsche-design-system/components without build it first, therefore we use relative path
+  // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve(path.normalize('../components/src/components'));
 
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
   const tags = componentFiles
+    .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension
     .map((file) => {
       const fileContent = fs.readFileSync(file, 'utf8');
       const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);

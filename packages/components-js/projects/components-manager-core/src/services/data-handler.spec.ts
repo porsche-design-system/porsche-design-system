@@ -12,7 +12,7 @@ describe('dataHandler', () => {
     expect(getComponentsManagerData()).toBe(data);
   });
 
-  it('should return web components manager data with default values in document and return it, if not already available', () => {
+  it('should return web components manager data with default values in document and return it if not already available', () => {
     const data = {} as ComponentsManagerData;
     expect(getComponentsManagerData()).toEqual(data);
   });

@@ -328,7 +328,7 @@ describe('marque', () => {
       }
     });
 
-    it(`should trigger focus&blur events at the correct time`, async () => {
+    it('should trigger focus & blur events at the correct time', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -416,7 +416,7 @@ describe('marque', () => {
       await page.keyboard.up('ShiftLeft');
     });
 
-    it(`should provide methods to focus&blur the element`, async () => {
+    it('should provide methods to focus & blur the element', async () => {
       await setContentWithDesignSystem(
         page,
         `
