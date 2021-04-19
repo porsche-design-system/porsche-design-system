@@ -7,7 +7,6 @@ import {
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToPrefixedClasses,
-  prefix,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
@@ -28,7 +27,7 @@ export class ButtonPure {
   @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop({ reflect: true }) public disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -80,24 +79,16 @@ export class ButtonPure {
 
   public render(): JSX.Element {
     const buttonPureClasses = {
-      [prefix('button-pure')]: true,
-      [prefix('button-pure--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
-    };
-
-    const labelClasses = {
-      [prefix('button-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible']),
-    };
-
-    const sublineClasses = {
-      [prefix('button-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
+      ['button']: true,
+      ['button--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToPrefixedClasses('button--size', this.size, undefined, true),
+      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label'], true),
     };
 
     const iconProps = {
-      class: prefix('button-pure__icon'),
+      class: 'icon',
       size: 'inherit',
+      theme: this.theme,
       ref: (el: HTMLElement) => (this.iconTag = el),
     };
 
@@ -114,7 +105,7 @@ export class ButtonPure {
           aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
-            <PrefixedTagNames.pSpinner {...iconProps} theme={this.theme} />
+            <PrefixedTagNames.pSpinner {...iconProps} />
           ) : (
             <PrefixedTagNames.pIcon
               {...iconProps}
@@ -124,12 +115,12 @@ export class ButtonPure {
               aria-hidden="true"
             />
           )}
-          <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </button>
         {hasNamedSlot(this.host, 'subline') && (
-          <PrefixedTagNames.pText class={sublineClasses} tag="div" color="inherit" size="inherit">
+          <PrefixedTagNames.pText class="subline" tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
