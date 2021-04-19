@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 
 @Component({
@@ -48,20 +48,13 @@ export class Banner {
 
   public render(): JSX.Element {
     const bannerClasses = {
-      [prefix('banner')]: true,
-      [prefix(`banner--${this.state}`)]: this.state !== 'neutral',
-      [prefix('banner--theme-dark')]: isDark(this.theme),
+      ['banner']: true,
+      [`banner--${this.state}`]: this.state !== 'neutral',
+      ['banner--theme-dark']: isDark(this.theme),
     };
 
-    const contentClasses = prefix('banner__content');
-    const iconClasses = prefix('banner__icon');
-    const titleClasses = prefix('banner__title');
-    const descriptionClasses = prefix('banner__description');
-    const buttonClasses = prefix('banner__button');
-
-    const bannerLabelId = prefix('banner-label');
-    const bannerDescriptionId = prefix('banner-description');
-
+    const bannerLabelId = 'banner-label';
+    const bannerDescriptionId = 'banner-description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -73,21 +66,21 @@ export class Banner {
       >
         <div class={bannerClasses}>
           {this.state !== 'neutral' && (
-            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses} />
+            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
           )}
-          <div class={contentClasses}>
+          <div class="content">
             {hasNamedSlot(this.host, 'title') && (
-              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId} class={titleClasses}>
+              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
                 <slot name="title" />
               </PrefixedTagNames.pHeadline>
             )}
             {hasNamedSlot(this.host, 'description') && (
-              <PrefixedTagNames.pText id={bannerDescriptionId} class={descriptionClasses}>
+              <PrefixedTagNames.pText id={bannerDescriptionId}>
                 <slot name="description" />
               </PrefixedTagNames.pText>
             )}
             {!this.persistent && (
-              <div class={buttonClasses}>
+              <div class="close">
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
@@ -113,7 +106,7 @@ export class Banner {
 
   private removeBanner = (): void => {
     this.dismiss.emit();
-    this.host.classList.add(prefix('banner--close'));
+    this.host.classList.add('banner--close');
     setTimeout(() => this.host.remove(), 1000);
   };
 
