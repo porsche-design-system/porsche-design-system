@@ -10,7 +10,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}spinner {
+.spinner {
   $bem-block: &;
   margin: 0;
   padding: 0;
@@ -22,14 +22,12 @@ $p-spinner-size-large: p-px-to-rem(104px);
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner, 2s);
 
-  #{$bem-block}__fg,
-  #{$bem-block}__bg {
+  circle {
     stroke: $p-color-neutral-contrast-high;
   }
 
   &--theme-dark {
-    #{$bem-block}__fg,
-    #{$bem-block}__bg {
+    circle {
       stroke: $p-color-theme-dark-default;
     }
   }
@@ -160,19 +158,19 @@ $p-spinner-size-large: p-px-to-rem(104px);
       }
     }
   }
+}
 
-  &__image {
-    display: block;
-    position: relative;
-    fill: none;
-    transform: translate3d(0, 0, 0);
-  }
+svg {
+  display: block;
+  position: relative;
+  fill: none;
+  transform: translate3d(0, 0, 0);
 
-  &__bg {
+  circle:first-child {
     opacity: 0.4;
   }
 
-  &__fg {
+  circle:last-child {
     transform-origin: 0 0;
     animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,
       dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
