@@ -25,7 +25,8 @@ export class TextListItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const { listType, orderType } = list;
-    const isNestedList = !!getAttribute(list, 'nested');
+    const isNestedList = getAttribute(list, 'nested') === '';
+
     const isOrderedList = listType === 'ordered';
 
     const rootClasses = {
