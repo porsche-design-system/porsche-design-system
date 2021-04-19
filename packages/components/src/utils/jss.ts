@@ -63,14 +63,13 @@ export const attachCss = (host: HTMLElement, css: string): void => {
     }
   } else {
     // NOTE: fallback for Firefox and Safari
-    const styleEl = getShadowRootHTMLElement(host, 'style');
-    if (styleEl) {
-      styleEl.innerHTML = css;
-    } else {
-      const newStyleEl = document.createElement('style');
-      newStyleEl.innerHTML = css;
-      host.shadowRoot.prepend(newStyleEl);
-    }
+    // old style needs to be removed and added again in safari to be recognized
+    getShadowRootHTMLElement(host, 'style[jss]')?.remove();
+
+    const styleEl = document.createElement('style');
+    styleEl.setAttribute('jss', '');
+    styleEl.innerHTML = css;
+    host.shadowRoot.prepend(styleEl);
   }
 };
 
