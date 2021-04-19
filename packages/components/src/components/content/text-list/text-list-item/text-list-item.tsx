@@ -5,7 +5,6 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  prefix,
   throwIfParentIsNotOfKind,
 } from '../../../../utils';
 
@@ -27,20 +26,19 @@ export class TextListItem {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
-    const listType = getAttribute(list, 'list-type');
-    const orderType = getAttribute(list, 'order-type');
-    const isNestedList = !!getClosestHTMLElement(this.host, `${PrefixedTagNames.pTextList}[nested]`);
+    const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
+    const { listType, orderType } = list;
+    const isNestedList = !!getAttribute(list, 'nested');
 
-    const textListItemClasses = {
-      [prefix('text-list-item')]: true,
-      [prefix(`text-list-item--${listType}`)]: true,
-      [prefix(`text-list-item--ordered-${orderType}`)]: listType === 'ordered',
-      [prefix('text-list-item--nested')]: isNestedList,
+    const rootClasses = {
+      ['root']: true,
+      ['root--ordered']: listType === 'ordered',
+      [`root--ordered-${orderType}`]: listType === 'ordered',
+      ['root--nested']: isNestedList,
     };
 
     return (
-      <Host role="listitem" class={textListItemClasses}>
+      <Host role="listitem" class={rootClasses}>
         <slot />
       </Host>
     );
