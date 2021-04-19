@@ -110,16 +110,13 @@
   );
 }
 
-::slotted(input:focus) {
+::slotted(input:focus),
+::slotted(input:focus-visible) {
   box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
 }
 
 ::slotted(input:focus:not(:focus-visible)) {
   box-shadow: none !important;
-}
-
-::slotted(input:focus-visible) {
-  box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
 }
 
 .label {
@@ -144,16 +141,13 @@
       );
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       box-shadow: 0 0 0 1px $p-color-notification-error !important;
     }
 
     ::slotted(input:focus:not(:focus-visible)) {
       box-shadow: none !important;
-    }
-
-    ::slotted(input:focus-visible) {
-      box-shadow: 0 0 0 1px $p-color-notification-error !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
@@ -196,16 +190,13 @@
       );
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       box-shadow: 0 0 0 1px $p-color-notification-success !important;
     }
 
     ::slotted(input:focus:not(:focus-visible)) {
       box-shadow: none !important;
-    }
-
-    ::slotted(input:focus-visible) {
-      box-shadow: 0 0 0 1px $p-color-notification-success !important;
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
