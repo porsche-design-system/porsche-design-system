@@ -9,6 +9,30 @@
   }
 }
 
+@mixin text-visible() {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  padding: 0 0 $p-spacing-4 0;
+  white-space: normal;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin text-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
 @function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
   @if $index {

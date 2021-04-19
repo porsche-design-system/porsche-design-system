@@ -17,6 +17,7 @@ import { Page } from 'puppeteer';
 
 describe('modal', () => {
   let page: Page;
+  const CSS_TRANSITION_DURATION = 600;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
@@ -70,7 +71,7 @@ describe('modal', () => {
 
   it('should not be visible when not open', async () => {
     await initBasicModal({ isOpen: false });
-    await page.waitForTimeout(600); // wait for visibility transition to finish
+    await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
     expect(await getModalVisibility()).toBe('hidden');
   });
 
@@ -226,18 +227,22 @@ describe('modal', () => {
         });
       </script>`
     );
+    await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-    expect(await getModalVisibility()).toBe('hidden');
+    expect(await getModalVisibility()).toBe('hidden', 'initial');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
     expect(await getModalVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(600); // transition delay for visibility
-    expect(await getModalVisibility()).toBe('hidden');
+    await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
+
+    expect(await getModalVisibility()).toBe('hidden', 'after escape');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
