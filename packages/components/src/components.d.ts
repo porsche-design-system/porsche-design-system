@@ -605,10 +605,6 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
-         */
-        "label"?: string;
-        /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
@@ -1595,10 +1591,6 @@ declare namespace LocalJSX {
           * Show or hide label. For better accessibility it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * The label text.
-         */
-        "label"?: string;
         /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
          */
