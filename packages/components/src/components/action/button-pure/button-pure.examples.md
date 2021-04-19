@@ -103,8 +103,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
 <Playground :markup="subline" :config="config">
   <select @change="size = $event.target.value">
     <option disabled>Select a size</option>
-    <option selected>small</option>
-    <option>medium</option>
+    <option>small</option>
+    <option selected>medium</option>
     <option>large</option>
     <option>x-large</option>
   </select>
