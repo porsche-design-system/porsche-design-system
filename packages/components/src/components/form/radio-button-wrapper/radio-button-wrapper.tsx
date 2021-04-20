@@ -102,7 +102,6 @@ export class RadioButtonWrapper {
      * we only want to simulate the checkbox click by label click
      */
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.focus();
       this.input.click();
     }
   };
