@@ -181,8 +181,8 @@ export class TabsBar {
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
       const attrs = {
-        'role': 'tab',
-        'tabindex': isFocusable ? '0' : '-1',
+        role: 'tab',
+        tabindex: isFocusable ? '0' : '-1',
         'aria-selected': isSelected ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {

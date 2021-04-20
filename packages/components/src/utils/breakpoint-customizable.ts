@@ -67,13 +67,19 @@ const createClass = (
  *  First value in array is used for true boolean values, second for false.
  *  It's only used when prop is a boolean or prop is a object/JSON5 that contains a boolean.
  */
+type Options = {
+  classSuffixes?: ClassSuffixes;
+  disablePrefixP?: boolean;
+};
+
 export const mapBreakpointPropToPrefixedClasses = (
   classPrefix: string,
   prop: BreakpointCustomizable<BreakpointValue>,
-  classSuffixes?: ClassSuffixes,
-  disablePrefixP?: boolean
+  opts?: Options
 ): JSXClasses => {
   const parsedProp = parseJSON(prop);
+
+  const { classSuffixes, disablePrefixP } = opts ?? {};
 
   return typeof parsedProp === 'object'
     ? Object.entries(parsedProp).reduce(
@@ -83,30 +89,5 @@ export const mapBreakpointPropToPrefixedClasses = (
         }),
         {}
       )
-    : createClass(classPrefix, parsedProp, 'base', classSuffixes, disablePrefixP);
-};
-
-type Options = {
-  classSuffixes?: ClassSuffixes;
-  disablePrefixP?: boolean;
-};
-
-export const mapBreakpointPropToPrefixedClassesNew = (
-  classPrefix: string,
-  prop: BreakpointCustomizable<BreakpointValue>,
-  opts?: Options
-): JSXClasses => {
-  const parsedProp = parseJSON(prop);
-
-  const {classSuffixes, disablePrefixP} = opts;
-
-  return typeof parsedProp === 'object'
-    ? Object.entries(parsedProp).reduce(
-      (classes, [breakpoint, value]) => ({
-        ...classes,
-        ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes, disablePrefixP),
-      }),
-      {}
-    )
     : createClass(classPrefix, parsedProp, 'base', classSuffixes, disablePrefixP);
 };

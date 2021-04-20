@@ -8,10 +8,10 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
+  mapBreakpointPropToPrefixedClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -72,7 +72,10 @@ export class RadioButtonWrapper {
     };
     const labelTextClasses = {
       ['label__text']: true,
-      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+        disablePrefixP: true,
+      }),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

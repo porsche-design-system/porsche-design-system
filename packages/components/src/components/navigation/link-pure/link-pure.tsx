@@ -87,11 +87,15 @@ export class LinkPure {
 
     const labelClasses = {
       [prefix('link-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
     const sublineClasses = {
       [prefix('link-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

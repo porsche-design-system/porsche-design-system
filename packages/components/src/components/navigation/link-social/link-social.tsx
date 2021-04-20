@@ -80,7 +80,9 @@ export class LinkSocial {
       [prefix('link-social')]: true,
       [prefix(`link-social--${this.icon}`)]: true,
       [prefix('link-social--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
+      ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, {
+        classSuffixes: ['without-label', 'with-label'],
+      }),
     };
     const iconClasses = prefix('link-social__icon');
     const labelClasses = prefix('link-social__label');

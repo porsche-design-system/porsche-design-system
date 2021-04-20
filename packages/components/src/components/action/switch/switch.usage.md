@@ -14,8 +14,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Type | Usage |
 |----|----|
-| Left aligned | If the switch is used stand-alone, we recommend to use the switch aligned to the left (Switch vs. Label). |
-| Right aligned | If the switch is used within a list (e.g. settings) we recommend to place the switch on the right side (Switch vs. Label). |
+| Right aligned | If the switch is used stand-alone, we recommend to use the switch aligned to the left (Switch vs. Label). |
+| Left aligned | If the switch is used within a list (e.g. settings) we recommend to place the switch on the right side (Label vs. Switch). Especially for handling with the thumb on mobile devices.|
 
 
 
