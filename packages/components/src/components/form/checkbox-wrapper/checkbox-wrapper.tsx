@@ -8,10 +8,10 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
+  mapBreakpointPropToPrefixedClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -72,7 +72,10 @@ export class CheckboxWrapper {
     };
     const labelTextClasses = {
       ['label__text']: true,
-      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+        disablePrefixP: true,
+      }),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -103,7 +106,6 @@ export class CheckboxWrapper {
      * also we don't want to click to the input, if a link is clicked.
      */
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.focus();
       this.input.click();
     }
   };

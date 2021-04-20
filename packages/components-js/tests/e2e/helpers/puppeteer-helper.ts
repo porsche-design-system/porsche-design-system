@@ -112,13 +112,36 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
   ).asElement();
 };
+const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
 export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
   return await element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };
 
+export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
+  if (containsCapitalChar(key)) {
+    console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
+  }
+  await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
+};
+
+export const removeAttribute = async (element: ElementHandle, key: string): Promise<void> => {
+  if (containsCapitalChar(key)) {
+    console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
+  }
+  await element.evaluate((el, key) => el.removeAttribute(key), key);
+};
+
 export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
-  return (await element.getProperty(prop)).jsonValue();
+  return element.evaluate((el, prop: string) => el[prop], prop);
+};
+
+export const setProperty = async (
+  element: ElementHandle,
+  key: keyof HTMLInputElement,
+  value: string | boolean
+): Promise<void> => {
+  await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 
 export const getCssClasses = async (element: ElementHandle): Promise<string> => {
@@ -197,30 +220,6 @@ export const getStyleOnFocus = async (
 ): Promise<string> => {
   await element.focus();
   return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
-};
-
-const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
-
-export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
-  if (containsCapitalChar(key)) {
-    console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
-  }
-  await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
-};
-
-export const removeAttribute = async (element: ElementHandle, key: string): Promise<void> => {
-  if (containsCapitalChar(key)) {
-    console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
-  }
-  await element.evaluate((el, key) => el.removeAttribute(key), key);
-};
-
-export const setProperty = async (
-  element: ElementHandle,
-  key: keyof HTMLInputElement,
-  value: string | boolean
-): Promise<void> => {
-  await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
