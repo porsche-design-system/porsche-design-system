@@ -1,26 +1,26 @@
 {
-  "hash": "d65b234a00448075c11b",
+  "hash": "330c2ef2e571d8ad7fb6",
   "version": "5.31.2",
-  "time": 2982,
-  "builtAt": 1618901014805,
+  "time": 2548,
+  "builtAt": 1618904850850,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.1.9d09e4481c67a36ea5a4.js"
+      "porsche-design-system.v2.0.1.04b87c29614bdb8c3a6d.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.1.9d09e4481c67a36ea5a4.js",
+      "name": "porsche-design-system.v2.0.1.04b87c29614bdb8c3a6d.js",
       "size": 59678,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9d09e4481c67a36ea5a4",
+        "contenthash": "04b87c29614bdb8c3a6d",
         "javascriptModule": false,
         "minimized": true,
         "size": 59678
@@ -90,17 +90,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.2e9067db17dc16cbae0f.js",
-      "size": 18724,
+      "name": "porsche-design-system.radio-button-wrapper.9271d99aa355549653ad.js",
+      "size": 18876,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2e9067db17dc16cbae0f",
+        "contenthash": "9271d99aa355549653ad",
         "javascriptModule": false,
         "minimized": true,
-        "size": 18724
+        "size": 18876
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -115,17 +115,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.ab7eaf1e2a424090c51e.js",
-      "size": 18588,
+      "name": "porsche-design-system.link-pure.2e9067db17dc16cbae0f.js",
+      "size": 18724,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ab7eaf1e2a424090c51e",
+        "contenthash": "2e9067db17dc16cbae0f",
         "javascriptModule": false,
         "minimized": true,
-        "size": 18735
+        "size": 18724
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -340,17 +340,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.b77b0f31e21aa893707c.js",
-      "size": 8170,
+      "name": "porsche-design-system.checkbox-wrapper.9fca7ee4562fcbfd6ae2.js",
+      "size": 8468,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "b77b0f31e21aa893707c",
+        "contenthash": "9fca7ee4562fcbfd6ae2",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8170
+        "size": 8468
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -665,17 +665,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.21d01d3218f09fab0563.js",
-      "size": 1885,
+      "name": "porsche-design-system.fieldset-wrapper.23168a3f2453fde6edf2.js",
+      "size": 1883,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "21d01d3218f09fab0563",
+        "contenthash": "23168a3f2453fde6edf2",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1885
+        "size": 1883
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -4558,9 +4558,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11228,
+      "size": 11519,
       "sizes": {
-        "javascript": 11228
+        "javascript": 11519
       },
       "names": [],
       "idHints": [],
@@ -4568,10 +4568,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.b77b0f31e21aa893707c.js"
+        "porsche-design-system.checkbox-wrapper.9fca7ee4562fcbfd6ae2.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c75b780b9464f8c2ae3a",
+      "hash": "0265a924d4b20ab5f682",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -4802,9 +4802,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9299,
+          "size": 9590,
           "sizes": {
-            "javascript": 9299
+            "javascript": 9590
           },
           "built": true,
           "codeGenerated": true,
@@ -6656,9 +6656,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 2485,
+      "size": 2483,
       "sizes": {
-        "javascript": 2485
+        "javascript": 2483
       },
       "names": [],
       "idHints": [],
@@ -6666,10 +6666,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.21d01d3218f09fab0563.js"
+        "porsche-design-system.fieldset-wrapper.23168a3f2453fde6edf2.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6eef2a12cab2e7ef474b",
+      "hash": "5ab9055c458d5d3f2d8f",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -6682,9 +6682,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 2485,
+          "size": 2483,
           "sizes": {
-            "javascript": 2485
+            "javascript": 2483
           },
           "built": true,
           "codeGenerated": true,
@@ -13476,10 +13476,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.1.9d09e4481c67a36ea5a4.js"
+        "porsche-design-system.v2.0.1.04b87c29614bdb8c3a6d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "d6b6faac7dbfaab7a6fd",
+      "hash": "936bcf992eb789150602",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -25132,10 +25132,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.ab7eaf1e2a424090c51e.js"
+        "porsche-design-system.radio-button-wrapper.9271d99aa355549653ad.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "94311f6dc9c38258780c",
+      "hash": "b792538df482a64f5564",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -43866,9 +43866,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9299,
+      "size": 9590,
       "sizes": {
-        "javascript": 9299
+        "javascript": 9590
       },
       "built": true,
       "codeGenerated": true,
@@ -44110,9 +44110,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 2485,
+      "size": 2483,
       "sizes": {
-        "javascript": 2485
+        "javascript": 2483
       },
       "built": true,
       "codeGenerated": true,
@@ -48463,7 +48463,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.1.9d09e4481c67a36ea5a4.js",
+          "name": "porsche-design-system.v2.0.1.04b87c29614bdb8c3a6d.js",
           "size": 59678
         }
       ],
@@ -48485,7 +48485,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.1.9d09e4481c67a36ea5a4.js",
+          "name": "porsche-design-system.v2.0.1.04b87c29614bdb8c3a6d.js",
           "size": 59678
         }
       ],
