@@ -6,7 +6,6 @@ import {
   insertSlottedStyles,
   isDark,
   mapBreakpointPropToPrefixedClasses,
-  prefix,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
@@ -54,13 +53,11 @@ export class Link {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = {
-      [prefix('link')]: true,
-      [prefix(`link--${this.variant}`)]: true,
-      [prefix('link--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      ['link']: true,
+      [`link--${this.variant}`]: this.variant !== 'secondary',
+      ['link--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'], true),
     };
-    const iconClasses = prefix('link__icon');
-    const labelClasses = prefix('link__label');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -75,14 +72,14 @@ export class Link {
         })}
       >
         <PrefixedTagNames.pIcon
-          class={iconClasses}
+          class="icon"
           size="inherit"
           name={this.icon}
           source={this.iconSource}
           color="inherit"
           aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
           <slot />
         </PrefixedTagNames.pText>
       </TagType>
