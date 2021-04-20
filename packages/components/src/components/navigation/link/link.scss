@@ -1,15 +1,15 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
-@mixin p-link-with-label() {
+@mixin with-label() {
   padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
 }
 
-@mixin p-link-without-label() {
+@mixin without-label() {
   padding: 0;
 }
 
-@mixin p-link-label-with-label() {
+@mixin label-with-label() {
   width: 100%;
   height: auto;
   margin: 0;
@@ -20,7 +20,7 @@
   text-indent: 0;
 }
 
-@mixin p-link-label-without-label() {
+@mixin label-without-label() {
   width: 1px;
   height: 1px;
   margin: 0 0 0 -1px;
@@ -31,13 +31,13 @@
   text-indent: -1px;
 }
 
-@mixin p-link-icon-with-label() {
+@mixin icon-with-label() {
   left: p-px-to-rem(11px);
   top: p-px-to-rem(11px);
   transform: translateX(0) translateY(0);
 }
 
-@mixin p-link-icon-without-label() {
+@mixin icon-without-label() {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -58,8 +58,7 @@
   outline: transparent none !important;
 }
 
-.#{$p-global-class-prefix}link {
-  @include p-focus($p-color-neutral-contrast-high);
+.link {
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -71,33 +70,45 @@
   box-sizing: border-box;
   appearance: none;
   text-decoration: none;
-  border-style: solid;
-  border-width: 1px;
+  color: $p-color-theme-dark-default;
+  background-color: $p-color-neutral-contrast-high;
+  border: 1px solid $p-color-neutral-contrast-high;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
+  @include p-focus($p-color-neutral-contrast-high);
 
-  :host([theme='dark']) & {
+  &--theme-dark {
+    color: $p-color-default;
+    background-color: $p-color-theme-dark-default;
+    border-color: $p-color-theme-dark-default;
     @include p-focus($p-color-theme-dark-default);
   }
 
-  :host([variant='primary']) & {
-    @include p-focus($p-color-brand);
-  }
+  &:hover,
+  &:active {
+    color: $p-color-theme-dark-default;
+    background-color: darken($p-color-neutral-contrast-high, 12%);
+    border-color: darken($p-color-neutral-contrast-high, 12%);
 
-  :host([theme='dark'][variant='primary']) & {
-    @include p-focus($p-color-theme-dark-brand);
+    &#{$bem-block}--theme-dark {
+      color: $p-color-default;
+      background-color: darken($p-color-theme-dark-default, 12%);
+      border-color: darken($p-color-theme-dark-default, 12%);
+    }
   }
 
   &--primary {
     color: $p-color-theme-dark-default;
     background-color: $p-color-brand;
     border-color: $p-color-brand;
+    @include p-focus($p-color-brand);
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
       background-color: $p-color-theme-dark-brand;
       border-color: $p-color-theme-dark-brand;
+      @include p-focus($p-color-theme-dark-brand);
     }
 
     &:hover,
@@ -110,31 +121,6 @@
         color: $p-color-theme-dark-default;
         background-color: darken($p-color-theme-dark-state-hover, 12%);
         border-color: darken($p-color-theme-dark-state-hover, 12%);
-      }
-    }
-  }
-
-  &--secondary {
-    color: $p-color-theme-dark-default;
-    background-color: $p-color-neutral-contrast-high;
-    border-color: $p-color-neutral-contrast-high;
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-default;
-      background-color: $p-color-theme-dark-default;
-      border-color: $p-color-theme-dark-default;
-    }
-
-    &:hover,
-    &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-neutral-contrast-high, 12%);
-      border-color: darken($p-color-neutral-contrast-high, 12%);
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-default;
-        background-color: darken($p-color-theme-dark-default, 12%);
-        border-color: darken($p-color-theme-dark-default, 12%);
       }
     }
   }
@@ -165,167 +151,167 @@
   }
 
   &--with-label {
-    @include p-link-with-label;
+    @include with-label;
 
-    #{$bem-block}__label {
-      @include p-link-label-with-label;
+    .label {
+      @include label-with-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-link-icon-with-label;
+    .icon {
+      @include icon-with-label;
     }
   }
 
   &--without-label {
-    @include p-link-without-label;
+    @include without-label;
 
-    #{$bem-block}__label {
-      @include p-link-label-without-label;
+    .label {
+      @include label-without-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-link-icon-without-label;
+    .icon {
+      @include icon-without-label;
     }
   }
 
   @include p-media-query('xs') {
     &--with-label-xs {
-      @include p-link-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xs {
-      @include p-link-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('s') {
     &--with-label-s {
-      @include p-link-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-s {
-      @include p-link-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('m') {
     &--with-label-m {
-      @include p-link-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-m {
-      @include p-link-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('l') {
     &--with-label-l {
-      @include p-link-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-l {
-      @include p-link-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('xl') {
     &--with-label-xl {
-      @include p-link-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xl {
-      @include p-link-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
+}
 
-  &__label {
-    display: block;
-    box-sizing: border-box;
-  }
+.label {
+  display: block;
+  box-sizing: border-box;
+}
 
-  &__icon {
-    position: absolute;
-    width: p-px-to-rem(24px);
-    height: p-px-to-rem(24px);
-  }
+.icon {
+  position: absolute;
+  width: p-px-to-rem(24px);
+  height: p-px-to-rem(24px);
 }
