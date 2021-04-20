@@ -74,12 +74,6 @@ describe('textarea-wrapper', () => {
     );
   };
 
-  it('should render', async () => {
-    await initTextarea({ hasLabel: true });
-    const el = await getLabel();
-    expect(el).toBeDefined();
-  });
-
   it('should add aria-label to support screen readers properly', async () => {
     await initTextarea({ hasLabel: true });
     const textarea = await getTextarea();
