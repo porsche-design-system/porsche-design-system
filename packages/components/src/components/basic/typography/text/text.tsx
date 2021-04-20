@@ -7,10 +7,10 @@ import {
   isDark,
   prefix,
   transitionListener,
+  mapBreakpointPropToPrefixedClasses,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
 import { isSizeInherit } from './text-utils';
-import { mapBreakpointPropToPrefixedClasses } from '../../../../../dist/types/utils';
 
 @Component({
   tag: 'p-text',

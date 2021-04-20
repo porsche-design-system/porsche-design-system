@@ -79,7 +79,7 @@ export const mapBreakpointPropToPrefixedClasses = (
 ): JSXClasses => {
   const parsedProp = parseJSON(prop);
 
-  const { classSuffixes, disablePrefixP } = opts;
+  const { classSuffixes, disablePrefixP } = opts ?? {};
 
   return typeof parsedProp === 'object'
     ? Object.entries(parsedProp).reduce(
