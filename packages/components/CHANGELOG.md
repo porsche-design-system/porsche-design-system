@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.0.1-beta.0] - 2021-04-20
+### [2.0.2-beta.0] - 2021-04-20
 
 #### Fixed
 - TypeScript build errors due to duplicate declarations in `types.d.ts`
