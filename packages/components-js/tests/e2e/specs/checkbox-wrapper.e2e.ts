@@ -180,7 +180,7 @@ describe('checkbox-wrapper', () => {
     expect(checkedImage).not.toBe(await getBackgroundImage(input));
   });
 
-  it('should toggle checkbox when label text is clicked', async () => {
+  it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
     await initCheckbox();
 
     const label = await getLabelText();
@@ -194,13 +194,13 @@ describe('checkbox-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await isInputChecked()).toBe(true);
-    expect(await getActiveElementTagName(page)).toBe('INPUT');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await label.click();
     await waitForStencilLifecycle(page);
 
     expect(await isInputChecked()).toBe(false);
-    expect(await getActiveElementTagName(page)).toBe('INPUT');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
   });
 
   it('should check/uncheck checkbox when checkbox attribute is changed programmatically', async () => {
@@ -363,18 +363,18 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
+    it('should be shown by keyboard navigation and not on click for slotted <input>', async () => {
       await initCheckbox();
 
       const input = await getInput();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
+      const hidden = expectedStyleOnFocus({ css: 'outline', color: 'transparent' });
+      const visible = expectedStyleOnFocus({ css: 'outline', color: 'neutral' });
 
       expect(await getOutlineStyle(input)).toBe(hidden);
 
       await input.click();
 
-      expect(await getOutlineStyle(input)).toBe(visible);
+      expect(await getOutlineStyle(input)).toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');

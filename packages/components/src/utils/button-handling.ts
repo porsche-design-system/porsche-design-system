@@ -16,9 +16,7 @@ export const handleButtonEvent = (
 ): void => {
   // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
   const form = element.closest('form');
-  const type = getType();
-  const disabled = getDisabled();
-  if (form && !disabled) {
+  if (form && !getDisabled()) {
     /**
      * we've to wait if someone calls preventDefault on the event
      * then we shouldn't submit the form
@@ -26,7 +24,7 @@ export const handleButtonEvent = (
     window.setTimeout(() => {
       if (!event.defaultPrevented) {
         const fakeButton = document.createElement('button');
-        fakeButton.type = type;
+        fakeButton.type = getType();
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);
         fakeButton.addEventListener('click', (fakeButtonEvent) => {

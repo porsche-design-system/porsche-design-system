@@ -64,7 +64,9 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
       [prefix('modal')]: true,
-      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, {
+        classSuffixes: ['fullscreen-on', 'fullscreen-off'],
+      }),
     };
     const headerClasses = prefix('modal__header');
     const btnCloseWrapperClasses = prefix('modal__close');

@@ -4,7 +4,7 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
-  mapBreakpointPropToPrefixedClassesNew,
+  mapBreakpointPropToPrefixedClasses,
 } from '../../../utils';
 import { Theme } from '../../../types';
 import { isDisabled, SwitchChangeEvent } from './switch-utils';
@@ -65,12 +65,12 @@ export class Switch {
       ['label']: true,
       ['checked']: this.checked,
       ['disabled']: this.disabled || this.loading,
-      ...mapBreakpointPropToPrefixedClassesNew('stretch', this.stretch, {
+      ...mapBreakpointPropToPrefixedClasses('stretch', this.stretch, {
         classSuffixes: ['on', 'off'],
         disablePrefixP: true,
       }),
-      ...mapBreakpointPropToPrefixedClassesNew('label-align', this.alignLabel, { disablePrefixP: true }),
-      ...mapBreakpointPropToPrefixedClassesNew('label', this.hideLabel, {
+      ...mapBreakpointPropToPrefixedClasses('label-align', this.alignLabel, { disablePrefixP: true }),
+      ...mapBreakpointPropToPrefixedClasses('label', this.hideLabel, {
         classSuffixes: ['hidden', 'visible'],
         disablePrefixP: true,
       }),

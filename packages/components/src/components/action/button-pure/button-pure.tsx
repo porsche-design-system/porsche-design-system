@@ -87,12 +87,16 @@ export class ButtonPure {
 
     const labelClasses = {
       [prefix('button-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
 
     const sublineClasses = {
       [prefix('button-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
 
     const iconProps = {
