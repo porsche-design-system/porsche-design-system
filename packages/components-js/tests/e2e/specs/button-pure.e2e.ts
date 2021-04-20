@@ -42,12 +42,6 @@ describe('button-pure', () => {
     );
   };
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
-    const el = await getButton();
-    expect(el).not.toBeNull();
-  });
-
   it('should not be clickable when disabled', async () => {
     await setContentWithDesignSystem(page, `<p-button-pure disabled>Some label</p-button-pure>`);
     const host = await getHost();
