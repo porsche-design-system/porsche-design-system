@@ -174,7 +174,7 @@ export class TabsBar {
         'aria-selected': isSelected ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
-        tab.setAttribute(key, value);
+        setAttribute(tab, key, value);
       }
     }
   };
