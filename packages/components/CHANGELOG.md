@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
 - A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly.
+- TypeScript build errors due to duplicate declarations in `types.d.ts`
 
 ### [2.0.0] - 2021-04-13
 

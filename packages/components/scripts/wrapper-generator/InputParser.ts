@@ -1,9 +1,9 @@
 import type { TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as fs from 'fs';
-import globby from 'globby';
+import * as globby from 'globby';
 
-const ROOT_DIR = path.normalize('./');
+const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
 const DIST_TYPES_DIR = path.resolve(DIST_DIR, 'types');
 const SRC_DIR = path.resolve(ROOT_DIR, 'src/components');
@@ -40,6 +40,10 @@ export class InputParser {
       // .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
       .replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '')
+      // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
+      .replace(/declare global {\n\tinterface Window {\n\t\tPORSCHE_DESIGN_SYSTEM_CDN: "auto" \| "cn";\n\t}\n}/g, '')
+      // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
+      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/g, '')
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
 
