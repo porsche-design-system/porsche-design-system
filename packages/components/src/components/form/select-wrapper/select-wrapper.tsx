@@ -127,7 +127,9 @@ export class SelectWrapper {
     const labelClasses = {
       [prefix('select-wrapper__label')]: true,
       [prefix('select-wrapper__label--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
     const requiredFlagClasses = {
       [prefix('select-wrapper__required')]: true,
@@ -136,7 +138,9 @@ export class SelectWrapper {
     const descriptionClasses = {
       [prefix('select-wrapper__description')]: true,
       [prefix('select-wrapper__description--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('select-wrapper__description-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToPrefixedClasses('select-wrapper__description-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+      }),
     };
     const fakeSelectClasses = {
       [prefix('select-wrapper__fake-select')]: true,

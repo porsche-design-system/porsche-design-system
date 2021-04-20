@@ -57,7 +57,9 @@ export class Link {
       [prefix('link')]: true,
       [prefix(`link--${this.variant}`)]: true,
       [prefix('link--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, {
+        classSuffixes: ['without-label', 'with-label'],
+      }),
     };
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');

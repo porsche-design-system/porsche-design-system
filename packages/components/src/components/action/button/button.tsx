@@ -65,7 +65,9 @@ export class Button {
       [prefix('button')]: true,
       [prefix(`button--${this.variant}`)]: true,
       [prefix('button--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
+      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, {
+        classSuffixes: ['without-label', 'with-label'],
+      }),
     };
     const labelClasses = prefix('button__label');
 

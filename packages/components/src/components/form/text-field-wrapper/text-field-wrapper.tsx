@@ -82,7 +82,10 @@ export class TextFieldWrapper {
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+        disablePrefixP: true,
+      }),
     };
 
     const textProps = { tag: 'span', color: 'inherit' };

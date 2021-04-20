@@ -5,9 +5,9 @@ import {
   getTagName,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
+  mapBreakpointPropToPrefixedClasses,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
 import { isSizeInherit } from './text-utils';
