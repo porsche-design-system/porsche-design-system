@@ -177,23 +177,18 @@
   &--size-x-small {
     @include size($bem-block, $p-font-size-x-small);
   }
-
   &--size-small {
     @include size($bem-block, $p-font-size-small);
   }
-
   &--size-medium {
     @include size($bem-block, $p-font-size-medium);
   }
-
   &--size-large {
     @include size($bem-block, $p-font-size-large);
   }
-
   &--size-x-large {
     @include size($bem-block, $p-font-size-x-large);
   }
-
   &--size-inherit {
     @include size($bem-block, 'inherit');
   }
@@ -201,7 +196,6 @@
   &--with-label {
     @include label-visible;
   }
-
   &--without-label {
     @include label-hidden;
   }
