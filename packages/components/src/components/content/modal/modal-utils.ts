@@ -57,7 +57,7 @@ const baseCss: string = getCss(
     justifyContent: 'center !important',
     flexWrap: 'wrap !important',
     background: `${color.darkTheme.background.default}e6 !important`, // e6 = 0.9 alpha
-    transition: 'opacity 0.2s $easing, visibility 0s linear 0.6s !important ',
+    transition: 'opacity 0.2s $easing !important ',
     opacity: '0 !important',
     visibility: 'hidden !important',
     overflowY: 'auto',
