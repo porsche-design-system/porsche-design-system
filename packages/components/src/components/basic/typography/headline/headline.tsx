@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, getTagName, insertSlottedStyles, isDark, prefix } from '../../../../utils';
+import { getPrefixedTagNames, getTagName, insertSlottedStyles, isDark } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
@@ -39,12 +39,12 @@ export class Headline {
     const isHeadlineVariantType = isVariantType(this.variant);
 
     const headlineClasses = {
-      [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariantType || this.variant === 'inherit',
-      [prefix(`headline--align-${this.align}`)]: true,
-      [prefix(`headline--color-${this.color}`)]: true,
-      [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix('headline--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
+      ['headline']: true,
+      [`headline--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
+      [`headline--align-${this.align}`]: this.align !== 'left',
+      [`headline--color-${this.color}`]: this.color !== 'default',
+      ['headline--ellipsis']: this.ellipsis,
+      ['headline--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
