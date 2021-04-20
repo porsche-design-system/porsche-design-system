@@ -42,7 +42,6 @@ export class Modal {
     if (isOpen) {
       this.focusableElements = getFocusableElements(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-      this.focusableElements[0]?.focus();
     } else {
       this.focusedElBeforeOpen?.focus();
     }
@@ -63,6 +62,14 @@ export class Modal {
 
   public componentWillRender(): void {
     addCss(this.host, this.open);
+  }
+
+  public componentDidUpdate(): void {
+    if (this.open) {
+      /* the close button is not immediately visible when the  @Watch('open') triggers,
+       so we focus it in componentDidUpdate() */
+      this.focusableElements[0]?.focus();
+    }
   }
 
   public disconnectedCallback(): void {
