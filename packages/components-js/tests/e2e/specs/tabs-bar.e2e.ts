@@ -21,7 +21,7 @@ import {
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { TabSize } from '@porsche-design-system/components/dist/types/types';
+import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
