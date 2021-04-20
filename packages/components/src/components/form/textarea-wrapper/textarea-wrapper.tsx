@@ -73,7 +73,10 @@ export class TextareaWrapper {
       ['label']: true,
       ['label--disabled']: disabled,
       [`label--${this.state}`]: this.state !== 'none',
-      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+        disablePrefixP: true,
+      }),
     };
     const textProps = { tag: 'span', color: 'inherit' };
     const labelProps = { ...textProps, onClick: this.labelClick };
