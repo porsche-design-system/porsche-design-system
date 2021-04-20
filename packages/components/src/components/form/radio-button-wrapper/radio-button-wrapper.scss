@@ -110,7 +110,8 @@
   );
 }
 
-::slotted(input:focus) {
+::slotted(input:focus),
+::slotted(input:focus-visible) {
   box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
 }
 
@@ -118,6 +119,12 @@
   $bem-block: &;
   display: flex;
   position: relative;
+
+  @at-root ::slotted(input:focus:not(:focus-visible)),
+    &--error ::slotted(input:focus:not(:focus-visible)),
+    &--success ::slotted(input:focus:not(:focus-visible)) {
+    box-shadow: none !important;
+  }
 
   &--error {
     ::slotted(input) {
@@ -136,7 +143,8 @@
       );
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       box-shadow: 0 0 0 1px $p-color-notification-error !important;
     }
 
@@ -180,7 +188,8 @@
       );
     }
 
-    ::slotted(input:focus) {
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       box-shadow: 0 0 0 1px $p-color-notification-success !important;
     }
 

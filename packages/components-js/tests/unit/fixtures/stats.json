@@ -1,26 +1,26 @@
 {
-  "hash": "26cff008de30d01a926b",
+  "hash": "e0ba9c69f21baa3019fb",
   "version": "5.31.2",
-  "time": 2969,
-  "builtAt": 1618494749878,
+  "time": 2329,
+  "builtAt": 1618833135037,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js"
+      "porsche-design-system.v2.0.1.1b88b0d5466835660333.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
+      "name": "porsche-design-system.v2.0.1.1b88b0d5466835660333.js",
       "size": 59616,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "17d97efbad8eb4a12320",
+        "contenthash": "1b88b0d5466835660333",
         "javascriptModule": false,
         "minimized": true,
         "size": 59616
@@ -40,14 +40,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.select-wrapper.ca8b8885ba27c616de9a.js",
+      "name": "porsche-design-system.select-wrapper.1cbffbf753630cd2bc9d.js",
       "size": 34791,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ca8b8885ba27c616de9a",
+        "contenthash": "1cbffbf753630cd2bc9d",
         "javascriptModule": false,
         "minimized": true,
         "size": 34791
@@ -65,14 +65,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.61ca8a3ba7c1180287ec.js",
+      "name": "porsche-design-system.button-pure.386935304408576368d8.js",
       "size": 19866,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "61ca8a3ba7c1180287ec",
+        "contenthash": "386935304408576368d8",
         "javascriptModule": false,
         "minimized": true,
         "size": 19866
@@ -90,14 +90,39 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.8d6e53b29efdc5542d68.js",
+      "name": "porsche-design-system.radio-button-wrapper.9271d99aa355549653ad.js",
+      "size": 18876,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "9271d99aa355549653ad",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 18876
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "radio-button-wrapper"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.link-pure.53f2f47aefbcfccc629a.js",
       "size": 18735,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8d6e53b29efdc5542d68",
+        "contenthash": "53f2f47aefbcfccc629a",
         "javascriptModule": false,
         "minimized": true,
         "size": 18735
@@ -115,39 +140,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.0cbd9a3059eaf95571e4.js",
-      "size": 18588,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "0cbd9a3059eaf95571e4",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 18588
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "radio-button-wrapper"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.icon.14824ffe88e37220af0c.js",
+      "name": "porsche-design-system.icon.8f555aeaa70c6838d84d.js",
       "size": 14114,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "14824ffe88e37220af0c",
+        "contenthash": "8f555aeaa70c6838d84d",
         "javascriptModule": false,
         "minimized": true,
         "size": 14114
@@ -165,14 +165,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.aac9947f3d1d86c8e4fa.js",
+      "name": "porsche-design-system.tabs-bar.b1cfddb2d4471695915e.js",
       "size": 13242,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "aac9947f3d1d86c8e4fa",
+        "contenthash": "b1cfddb2d4471695915e",
         "javascriptModule": false,
         "minimized": true,
         "size": 13242
@@ -190,14 +190,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.0b5d6fb8089303c47f65.js",
+      "name": "porsche-design-system.button.5d54d9965b45fb0c11ba.js",
       "size": 11716,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0b5d6fb8089303c47f65",
+        "contenthash": "5d54d9965b45fb0c11ba",
         "javascriptModule": false,
         "minimized": true,
         "size": 11716
@@ -215,14 +215,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.83c28c7ef89afac0da7b.js",
+      "name": "porsche-design-system.text-field-wrapper.1f40f205e9623e2b5cf7.js",
       "size": 11366,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "83c28c7ef89afac0da7b",
+        "contenthash": "1f40f205e9623e2b5cf7",
         "javascriptModule": false,
         "minimized": true,
         "size": 11366
@@ -240,14 +240,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.be5071c812e378a6ee80.js",
+      "name": "porsche-design-system.pagination.d32886e7c447e06f307e.js",
       "size": 10417,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "be5071c812e378a6ee80",
+        "contenthash": "d32886e7c447e06f307e",
         "javascriptModule": false,
         "minimized": true,
         "size": 10417
@@ -265,14 +265,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.a5e00cf24233f5ab5303.js",
+      "name": "porsche-design-system.link.01a663ec91e63c82cdaf.js",
       "size": 9852,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a5e00cf24233f5ab5303",
+        "contenthash": "01a663ec91e63c82cdaf",
         "javascriptModule": false,
         "minimized": true,
         "size": 9852
@@ -290,14 +290,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.501039cf5933ff810850.js",
+      "name": "porsche-design-system.link-social.c29c40b4d97336bff984.js",
       "size": 9342,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "501039cf5933ff810850",
+        "contenthash": "c29c40b4d97336bff984",
         "javascriptModule": false,
         "minimized": true,
         "size": 9342
@@ -315,14 +315,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.c83a50013936e2a5f2e5.js",
+      "name": "porsche-design-system.textarea-wrapper.395e927f0c0da3bcf967.js",
       "size": 8709,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c83a50013936e2a5f2e5",
+        "contenthash": "395e927f0c0da3bcf967",
         "javascriptModule": false,
         "minimized": true,
         "size": 8709
@@ -340,17 +340,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.0efe5cc00bfad71ad28f.js",
-      "size": 8143,
+      "name": "porsche-design-system.checkbox-wrapper.9fca7ee4562fcbfd6ae2.js",
+      "size": 8468,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0efe5cc00bfad71ad28f",
+        "contenthash": "9fca7ee4562fcbfd6ae2",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8143
+        "size": 8468
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -365,14 +365,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text.d378f90beda4c294de39.js",
+      "name": "porsche-design-system.text.161530d4d5167091e92e.js",
       "size": 7284,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d378f90beda4c294de39",
+        "contenthash": "161530d4d5167091e92e",
         "javascriptModule": false,
         "minimized": true,
         "size": 7284
@@ -390,14 +390,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.f13aaeae6756b44f4005.js",
+      "name": "porsche-design-system.banner.30c0d5afc1e7544f9fea.js",
       "size": 6207,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "f13aaeae6756b44f4005",
+        "contenthash": "30c0d5afc1e7544f9fea",
         "javascriptModule": false,
         "minimized": true,
         "size": 6207
@@ -415,14 +415,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.headline.b7962de9e9721cf5dee8.js",
+      "name": "porsche-design-system.headline.5e6310dd4a511b0c3bda.js",
       "size": 6105,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "b7962de9e9721cf5dee8",
+        "contenthash": "5e6310dd4a511b0c3bda",
         "javascriptModule": false,
         "minimized": true,
         "size": 6105
@@ -440,14 +440,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.5d8301ff1433a322a1b2.js",
+      "name": "porsche-design-system.modal.66320651b71bd0f35754.js",
       "size": 5929,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "5d8301ff1433a322a1b2",
+        "contenthash": "66320651b71bd0f35754",
         "javascriptModule": false,
         "minimized": true,
         "size": 5929
@@ -465,14 +465,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-group.421cf10087520919a46c.js",
+      "name": "porsche-design-system.button-group.2434c06bf891fce4e6ae.js",
       "size": 4318,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "421cf10087520919a46c",
+        "contenthash": "2434c06bf891fce4e6ae",
         "javascriptModule": false,
         "minimized": true,
         "size": 4318
@@ -490,14 +490,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-list.24d15c3099fb9185fd84.js",
+      "name": "porsche-design-system.text-list.7d12f9713ee25155ba86.js",
       "size": 4087,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "24d15c3099fb9185fd84",
+        "contenthash": "7d12f9713ee25155ba86",
         "javascriptModule": false,
         "minimized": true,
         "size": 4087
@@ -515,14 +515,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.spinner.8bf0aaae614ca56e1b18.js",
+      "name": "porsche-design-system.spinner.233a53b85f454740b389.js",
       "size": 4039,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8bf0aaae614ca56e1b18",
+        "contenthash": "233a53b85f454740b389",
         "javascriptModule": false,
         "minimized": true,
         "size": 4039
@@ -540,14 +540,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.a5f3d87df6bbf7c08368.js",
+      "name": "porsche-design-system.marque.7fa1f48c46df1232ac20.js",
       "size": 3243,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a5f3d87df6bbf7c08368",
+        "contenthash": "7fa1f48c46df1232ac20",
         "javascriptModule": false,
         "minimized": true,
         "size": 3243
@@ -565,14 +565,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs.317db31cf653ad2a3547.js",
+      "name": "porsche-design-system.tabs.0ed9614f8eed6738313e.js",
       "size": 2406,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "317db31cf653ad2a3547",
+        "contenthash": "0ed9614f8eed6738313e",
         "javascriptModule": false,
         "minimized": true,
         "size": 2406
@@ -590,14 +590,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.divider.6771acdfb53d593fb024.js",
+      "name": "porsche-design-system.divider.e0d1613e74c622e4227d.js",
       "size": 2049,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "6771acdfb53d593fb024",
+        "contenthash": "e0d1613e74c622e4227d",
         "javascriptModule": false,
         "minimized": true,
         "size": 2049
@@ -615,14 +615,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.flex.7f5c35648118b5795272.js",
+      "name": "porsche-design-system.flex.69cd5ba7982adbbbef83.js",
       "size": 1997,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "7f5c35648118b5795272",
+        "contenthash": "69cd5ba7982adbbbef83",
         "javascriptModule": false,
         "minimized": true,
         "size": 1997
@@ -640,14 +640,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.grid.54a46261003c229948c9.js",
+      "name": "porsche-design-system.grid.e2e2a078bb46e6ea985c.js",
       "size": 1899,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "54a46261003c229948c9",
+        "contenthash": "e2e2a078bb46e6ea985c",
         "javascriptModule": false,
         "minimized": true,
         "size": 1899
@@ -665,14 +665,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.content-wrapper.fb12c69318ada8dafa1f.js",
+      "name": "porsche-design-system.content-wrapper.0d05c8ab215b66ca0809.js",
       "size": 1408,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "fb12c69318ada8dafa1f",
+        "contenthash": "0d05c8ab215b66ca0809",
         "javascriptModule": false,
         "minimized": true,
         "size": 1408
@@ -690,14 +690,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.ea69a7c3b9014fbf5ea1.js",
+      "name": "porsche-design-system.fieldset-wrapper.d1ff8e40a4ba3ed34f46.js",
       "size": 1179,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ea69a7c3b9014fbf5ea1",
+        "contenthash": "d1ff8e40a4ba3ed34f46",
         "javascriptModule": false,
         "minimized": true,
         "size": 1179
@@ -730,10 +730,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.f13aaeae6756b44f4005.js"
+        "porsche-design-system.banner.30c0d5afc1e7544f9fea.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "04ac458dabe7f066db65",
+      "hash": "83b6203ce0c558915b4f",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -949,7 +949,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -1089,7 +1089,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -1820,10 +1820,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.0b5d6fb8089303c47f65.js"
+        "porsche-design-system.button.5d54d9965b45fb0c11ba.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "99b718431ee89697711d",
+      "hash": "85e677eb9b01b3d2f093",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -2923,10 +2923,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-group.421cf10087520919a46c.js"
+        "porsche-design-system.button-group.2434c06bf891fce4e6ae.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "27130d6bc32a20fbcbab",
+      "hash": "8cca3493dfb703d7c793",
       "childrenByOrder": {},
       "id": "button-group",
       "siblings": [],
@@ -3043,10 +3043,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.61ca8a3ba7c1180287ec.js"
+        "porsche-design-system.button-pure.386935304408576368d8.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "3c5ea4d41277f9764323",
+      "hash": "e50dbcaa73087b8f780e",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -4558,9 +4558,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11201,
+      "size": 11519,
       "sizes": {
-        "javascript": 11201
+        "javascript": 11519
       },
       "names": [],
       "idHints": [],
@@ -4568,10 +4568,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.0efe5cc00bfad71ad28f.js"
+        "porsche-design-system.checkbox-wrapper.9fca7ee4562fcbfd6ae2.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "48eaa1096ab5c3996782",
+      "hash": "0265a924d4b20ab5f682",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -4669,7 +4669,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "46:4-21",
+              "loc": "45:4-21",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -4697,7 +4697,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "45:4-21",
+              "loc": "44:4-21",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -4802,9 +4802,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9272,
+          "size": 9590,
           "sizes": {
-            "javascript": 9272
+            "javascript": 9590
           },
           "built": true,
           "codeGenerated": true,
@@ -4874,7 +4874,7 @@
             "p_checkbox_wrapper"
           ],
           "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 72:0-43",
+            "Statement (ExpressionStatement) with side effects in source code at 71:0-43",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
@@ -5005,7 +5005,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -5145,7 +5145,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -5328,10 +5328,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.content-wrapper.fb12c69318ada8dafa1f.js"
+        "porsche-design-system.content-wrapper.0d05c8ab215b66ca0809.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "e7ac072c7177a5e1fd06",
+      "hash": "5cacfdfa952505e43970",
       "childrenByOrder": {},
       "id": "content-wrapper",
       "siblings": [],
@@ -5997,10 +5997,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.divider.6771acdfb53d593fb024.js"
+        "porsche-design-system.divider.e0d1613e74c622e4227d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "512a54f8a6a17e1eba7b",
+      "hash": "1e8217c9b311b734d538",
       "childrenByOrder": {},
       "id": "divider",
       "siblings": [],
@@ -6666,10 +6666,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.ea69a7c3b9014fbf5ea1.js"
+        "porsche-design-system.fieldset-wrapper.d1ff8e40a4ba3ed34f46.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "13d3135b4052fabac441",
+      "hash": "2f8466810b06033c768a",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -6786,10 +6786,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.flex.7f5c35648118b5795272.js"
+        "porsche-design-system.flex.69cd5ba7982adbbbef83.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a699ff38c7afd8ddd03c",
+      "hash": "13d5137610b93d628d12",
       "childrenByOrder": {},
       "id": "flex",
       "siblings": [],
@@ -6907,10 +6907,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.grid.54a46261003c229948c9.js"
+        "porsche-design-system.grid.e2e2a078bb46e6ea985c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "60de2e436501a228bafd",
+      "hash": "c07d4bde12c3c5354d2e",
       "childrenByOrder": {},
       "id": "grid",
       "siblings": [],
@@ -7199,10 +7199,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.headline.b7962de9e9721cf5dee8.js"
+        "porsche-design-system.headline.5e6310dd4a511b0c3bda.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fa280ea5e147689cb2cd",
+      "hash": "ac900929603e36837d27",
       "childrenByOrder": {},
       "id": "headline",
       "siblings": [],
@@ -7418,7 +7418,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -7558,7 +7558,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -8289,10 +8289,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.icon.14824ffe88e37220af0c.js"
+        "porsche-design-system.icon.8f555aeaa70c6838d84d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a448b41ee3a461b19d6a",
+      "hash": "17b5a9f3f2ced6571256",
       "childrenByOrder": {},
       "id": "icon",
       "siblings": [],
@@ -8959,10 +8959,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.a5e00cf24233f5ab5303.js"
+        "porsche-design-system.link.01a663ec91e63c82cdaf.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "9e7eea0ce3458148b878",
+      "hash": "d003587bddacdc471768",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -9452,7 +9452,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -9592,7 +9592,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -10323,10 +10323,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.8d6e53b29efdc5542d68.js"
+        "porsche-design-system.link-pure.53f2f47aefbcfccc629a.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "02f9badf1822b5cf9a16",
+      "hash": "720cf027b6e64b363f79",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -10989,7 +10989,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -11129,7 +11129,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -12109,10 +12109,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.501039cf5933ff810850.js"
+        "porsche-design-system.link-social.c29c40b4d97336bff984.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a61557b0dc1a7e47895e",
+      "hash": "86489e9f026b2c223dc7",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -12602,7 +12602,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -12742,7 +12742,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -13476,10 +13476,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js"
+        "porsche-design-system.v2.0.1.1b88b0d5466835660333.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "db550500b9f887119ffd",
+      "hash": "073697a88d86244b4557",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -13633,35 +13633,35 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
               "loc": "1:0-59",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
               "loc": "7:19-36",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -13671,11 +13671,11 @@
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
               "loc": "2:0-76",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -13685,11 +13685,11 @@
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
               "loc": "8:11-25",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -13699,7 +13699,7 @@
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
               "loc": "12:9-22",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
@@ -13759,11 +13759,11 @@
               "resolvedModuleId": 224
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "module": "../components/dist/esm/app-globals-99e09c33.js",
-              "moduleName": "../components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "module": "../components/dist/esm/app-globals-c74ee236.js",
+              "moduleName": "../components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
@@ -13773,11 +13773,11 @@
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "module": "../components/dist/esm/app-globals-99e09c33.js",
-              "moduleName": "../components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "module": "../components/dist/esm/app-globals-c74ee236.js",
+              "moduleName": "../components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
@@ -14902,7 +14902,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "29:6-22",
+              "loc": "28:6-22",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14916,7 +14916,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "29:55-66",
+              "loc": "28:55-66",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14930,7 +14930,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "37:17-50",
+              "loc": "36:17-50",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14944,7 +14944,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "53:4-22",
+              "loc": "52:4-22",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14958,7 +14958,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "61:70-104",
+              "loc": "60:70-104",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14972,7 +14972,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:29-48",
+              "loc": "61:29-48",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -14986,7 +14986,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:12-13",
+              "loc": "62:12-13",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15000,7 +15000,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:14-18",
+              "loc": "62:14-18",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15014,7 +15014,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:26-27",
+              "loc": "62:26-27",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15028,7 +15028,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:62-76",
+              "loc": "62:62-76",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15042,7 +15042,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:104-105",
+              "loc": "62:104-105",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15056,7 +15056,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:230-231",
+              "loc": "62:230-231",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15070,7 +15070,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:260-270",
+              "loc": "62:260-270",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15084,7 +15084,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:286-287",
+              "loc": "62:286-287",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15098,7 +15098,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:322-323",
+              "loc": "62:322-323",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15112,7 +15112,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:340-356",
+              "loc": "62:340-356",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15126,7 +15126,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:398-399",
+              "loc": "62:398-399",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15140,7 +15140,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "63:527-528",
+              "loc": "62:527-528",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15154,7 +15154,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "66:20-30",
+              "loc": "65:20-30",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15168,7 +15168,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "70:22-32",
+              "loc": "69:22-32",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -18332,7 +18332,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "28:6-22",
+              "loc": "27:6-22",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18346,7 +18346,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "28:55-66",
+              "loc": "27:55-66",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18360,7 +18360,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "36:17-50",
+              "loc": "35:17-50",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18374,7 +18374,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "52:4-22",
+              "loc": "51:4-22",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18388,7 +18388,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "60:70-104",
+              "loc": "59:70-104",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18402,7 +18402,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "61:29-48",
+              "loc": "60:29-48",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18416,7 +18416,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:12-13",
+              "loc": "61:12-13",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18430,7 +18430,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:14-18",
+              "loc": "61:14-18",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18444,7 +18444,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:26-27",
+              "loc": "61:26-27",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18458,7 +18458,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:62-76",
+              "loc": "61:62-76",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18472,7 +18472,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:104-105",
+              "loc": "61:104-105",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18486,7 +18486,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:230-231",
+              "loc": "61:230-231",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18500,7 +18500,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:260-270",
+              "loc": "61:260-270",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18514,7 +18514,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:286-287",
+              "loc": "61:286-287",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18528,7 +18528,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:322-323",
+              "loc": "61:322-323",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18542,7 +18542,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:340-356",
+              "loc": "61:340-356",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18556,7 +18556,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:398-399",
+              "loc": "61:398-399",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18570,7 +18570,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "62:527-528",
+              "loc": "61:527-528",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18584,7 +18584,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "65:20-30",
+              "loc": "64:20-30",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -18598,7 +18598,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "69:22-32",
+              "loc": "68:22-32",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -22363,7 +22363,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22373,11 +22373,11 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "4:0-60",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22387,7 +22387,7 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "7:7-16",
-              "moduleId": 334,
+              "moduleId": 970,
               "resolvedModuleId": null
             },
             {
@@ -22523,7 +22523,7 @@
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "name": "./projects/components-wrapper/src/index.js + 4 modules",
           "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
           "index": 0,
@@ -22537,7 +22537,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 334,
+          "id": 970,
           "chunks": [
             "main"
           ],
@@ -22825,9 +22825,9 @@
               "built": true,
               "codeGenerated": false,
               "cached": false,
-              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-              "name": "../components/dist/esm/app-globals-99e09c33.js",
-              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
+              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+              "name": "../components/dist/esm/app-globals-c74ee236.js",
+              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
               "index": 4,
               "preOrderIndex": 4,
               "index2": 2,
@@ -22867,7 +22867,7 @@
                   "type": "harmony side effect evaluation",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-99e09c33.js",
+                  "userRequest": "./app-globals-c74ee236.js",
                   "loc": "3:0-63",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -22881,7 +22881,7 @@
                   "type": "harmony import specifier",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-99e09c33.js",
+                  "userRequest": "./app-globals-c74ee236.js",
                   "loc": "11:2-15",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -23299,10 +23299,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.a5f3d87df6bbf7c08368.js"
+        "porsche-design-system.marque.7fa1f48c46df1232ac20.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "75b938557d91a3e34b68",
+      "hash": "7787f577dfa26dd45cb0",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23693,10 +23693,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.5d8301ff1433a322a1b2.js"
+        "porsche-design-system.modal.66320651b71bd0f35754.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "99efb19a62b85afb7d9c",
+      "hash": "2c8f040d979ac43569ee",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -23946,10 +23946,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.be5071c812e378a6ee80.js"
+        "porsche-design-system.pagination.d32886e7c447e06f307e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "ed5c129fb1000894a0eb",
+      "hash": "d1824911a87ac0d9bd64",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -25052,9 +25052,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 21773,
+      "size": 22054,
       "sizes": {
-        "javascript": 21773
+        "javascript": 22054
       },
       "names": [],
       "idHints": [],
@@ -25062,10 +25062,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.0cbd9a3059eaf95571e4.js"
+        "porsche-design-system.radio-button-wrapper.9271d99aa355549653ad.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0e1cfdb2e9fbefbc37ff",
+      "hash": "b792538df482a64f5564",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -25163,7 +25163,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "46:4-21",
+              "loc": "45:4-21",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -25191,7 +25191,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "45:4-21",
+              "loc": "44:4-21",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -25296,9 +25296,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 19844,
+          "size": 20125,
           "sizes": {
-            "javascript": 19844
+            "javascript": 20125
           },
           "built": true,
           "codeGenerated": true,
@@ -25368,7 +25368,7 @@
             "p_radio_button_wrapper"
           ],
           "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 71:0-49",
+            "Statement (ExpressionStatement) with side effects in source code at 70:0-49",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
@@ -25499,7 +25499,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -25639,7 +25639,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -25822,10 +25822,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.select-wrapper.ca8b8885ba27c616de9a.js"
+        "porsche-design-system.select-wrapper.1cbffbf753630cd2bc9d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6cd920323b435024b54c",
+      "hash": "856d8ba47665f402a0f4",
       "childrenByOrder": {},
       "id": "select-wrapper",
       "siblings": [],
@@ -25923,7 +25923,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "46:4-21",
+              "loc": "45:4-21",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -25951,7 +25951,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "45:4-21",
+              "loc": "44:4-21",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -26393,7 +26393,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -26533,7 +26533,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -27264,10 +27264,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.spinner.8bf0aaae614ca56e1b18.js"
+        "porsche-design-system.spinner.233a53b85f454740b389.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "d471dcbcd3bec5d0782d",
+      "hash": "2486a52fb08acf481b71",
       "childrenByOrder": {},
       "id": "spinner",
       "siblings": [],
@@ -27933,10 +27933,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs.317db31cf653ad2a3547.js"
+        "porsche-design-system.tabs.0ed9614f8eed6738313e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "37e0e03911001d67c34d",
+      "hash": "b42f2f90091f10fbbd69",
       "childrenByOrder": {},
       "id": "tabs",
       "siblings": [],
@@ -28054,10 +28054,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.aac9947f3d1d86c8e4fa.js"
+        "porsche-design-system.tabs-bar.b1cfddb2d4471695915e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "24e91931723b54057e99",
+      "hash": "ef61ae299d4172ffe330",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -28894,10 +28894,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text.d378f90beda4c294de39.js"
+        "porsche-design-system.text.161530d4d5167091e92e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "683c8826b64789b266a6",
+      "hash": "edb8760cbd6ed99bb620",
       "childrenByOrder": {},
       "id": "text",
       "siblings": [],
@@ -29286,7 +29286,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -29426,7 +29426,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -30406,10 +30406,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.83c28c7ef89afac0da7b.js"
+        "porsche-design-system.text-field-wrapper.1f40f205e9623e2b5cf7.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a4064f65bff85061670b",
+      "hash": "05f8479ac6435d13f0bf",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -30507,7 +30507,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "46:4-21",
+              "loc": "45:4-21",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -30535,7 +30535,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "45:4-21",
+              "loc": "44:4-21",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -31003,7 +31003,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -31143,7 +31143,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -31326,10 +31326,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-list.24d15c3099fb9185fd84.js"
+        "porsche-design-system.text-list.7d12f9713ee25155ba86.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "12919bbf176c07594fef",
+      "hash": "4c211e47fc04c426621f",
       "childrenByOrder": {},
       "id": "text-list",
       "siblings": [],
@@ -31546,7 +31546,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -31686,7 +31686,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -32417,10 +32417,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.c83a50013936e2a5f2e5.js"
+        "porsche-design-system.textarea-wrapper.395e927f0c0da3bcf967.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "1b5a85951932ba51df91",
+      "hash": "07c46e6b6c207159bb7b",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -32518,7 +32518,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "46:4-21",
+              "loc": "45:4-21",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -32546,7 +32546,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-ced44573.js",
-              "loc": "45:4-21",
+              "loc": "44:4-21",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -32854,7 +32854,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "68:4-23",
+              "loc": "67:4-23",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -32994,7 +32994,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "67:4-23",
+              "loc": "66:4-23",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -33175,7 +33175,7 @@
       "built": true,
       "codeGenerated": true,
       "cached": false,
-      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
       "name": "./projects/components-wrapper/src/index.js + 4 modules",
       "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
       "index": 0,
@@ -33188,7 +33188,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 334,
+      "id": 970,
       "chunks": [
         "main"
       ],
@@ -33473,9 +33473,9 @@
           "built": true,
           "codeGenerated": false,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "name": "../components/dist/esm/app-globals-99e09c33.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "name": "../components/dist/esm/app-globals-c74ee236.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
           "index": 4,
           "preOrderIndex": 4,
           "index2": 2,
@@ -33514,7 +33514,7 @@
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-99e09c33.js",
+              "userRequest": "./app-globals-c74ee236.js",
               "loc": "3:0-63",
               "moduleId": null,
               "resolvedModuleId": null
@@ -33528,7 +33528,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-99e09c33.js",
+              "userRequest": "./app-globals-c74ee236.js",
               "loc": "11:2-15",
               "moduleId": null,
               "resolvedModuleId": null
@@ -33871,7 +33871,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -33881,11 +33881,11 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "2:0-95",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -33895,7 +33895,7 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "4:0-29",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         }
       ],
@@ -33955,35 +33955,35 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
           "loc": "1:0-59",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
           "loc": "7:19-36",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -33993,11 +33993,11 @@
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
           "loc": "2:0-76",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34007,11 +34007,11 @@
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
           "loc": "8:11-25",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34021,7 +34021,7 @@
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
           "loc": "12:9-22",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
@@ -34081,11 +34081,11 @@
           "resolvedModuleId": 224
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "module": "../components/dist/esm/app-globals-99e09c33.js",
-          "moduleName": "../components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "module": "../components/dist/esm/app-globals-c74ee236.js",
+          "moduleName": "../components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
@@ -34095,11 +34095,11 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "module": "../components/dist/esm/app-globals-99e09c33.js",
-          "moduleName": "../components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-          "resolvedModule": "../components/dist/esm/app-globals-99e09c33.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "module": "../components/dist/esm/app-globals-c74ee236.js",
+          "moduleName": "../components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+          "resolvedModule": "../components/dist/esm/app-globals-c74ee236.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
@@ -35224,7 +35224,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "29:6-22",
+          "loc": "28:6-22",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35238,7 +35238,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "29:55-66",
+          "loc": "28:55-66",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35252,7 +35252,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "37:17-50",
+          "loc": "36:17-50",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35266,7 +35266,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "53:4-22",
+          "loc": "52:4-22",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35280,7 +35280,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "61:70-104",
+          "loc": "60:70-104",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35294,7 +35294,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:29-48",
+          "loc": "61:29-48",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35308,7 +35308,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:12-13",
+          "loc": "62:12-13",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35322,7 +35322,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:14-18",
+          "loc": "62:14-18",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35336,7 +35336,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:26-27",
+          "loc": "62:26-27",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35350,7 +35350,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:62-76",
+          "loc": "62:62-76",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35364,7 +35364,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:104-105",
+          "loc": "62:104-105",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35378,7 +35378,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:230-231",
+          "loc": "62:230-231",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35392,7 +35392,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:260-270",
+          "loc": "62:260-270",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35406,7 +35406,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:286-287",
+          "loc": "62:286-287",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35420,7 +35420,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:322-323",
+          "loc": "62:322-323",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35434,7 +35434,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:340-356",
+          "loc": "62:340-356",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35448,7 +35448,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:398-399",
+          "loc": "62:398-399",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35462,7 +35462,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "63:527-528",
+          "loc": "62:527-528",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35476,7 +35476,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "66:20-30",
+          "loc": "65:20-30",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -35490,7 +35490,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "70:22-32",
+          "loc": "69:22-32",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -38654,7 +38654,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "28:6-22",
+          "loc": "27:6-22",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38668,7 +38668,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "28:55-66",
+          "loc": "27:55-66",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38682,7 +38682,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "36:17-50",
+          "loc": "35:17-50",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38696,7 +38696,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "52:4-22",
+          "loc": "51:4-22",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38710,7 +38710,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "60:70-104",
+          "loc": "59:70-104",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38724,7 +38724,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "61:29-48",
+          "loc": "60:29-48",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38738,7 +38738,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:12-13",
+          "loc": "61:12-13",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38752,7 +38752,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:14-18",
+          "loc": "61:14-18",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38766,7 +38766,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:26-27",
+          "loc": "61:26-27",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38780,7 +38780,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:62-76",
+          "loc": "61:62-76",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38794,7 +38794,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:104-105",
+          "loc": "61:104-105",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38808,7 +38808,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:230-231",
+          "loc": "61:230-231",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38822,7 +38822,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:260-270",
+          "loc": "61:260-270",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38836,7 +38836,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:286-287",
+          "loc": "61:286-287",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38850,7 +38850,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:322-323",
+          "loc": "61:322-323",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38864,7 +38864,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:340-356",
+          "loc": "61:340-356",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38878,7 +38878,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:398-399",
+          "loc": "61:398-399",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38892,7 +38892,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "62:527-528",
+          "loc": "61:527-528",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38906,7 +38906,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "65:20-30",
+          "loc": "64:20-30",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38920,7 +38920,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "69:22-32",
+          "loc": "68:22-32",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -42649,9 +42649,9 @@
       "built": true,
       "codeGenerated": false,
       "cached": false,
-      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
-      "name": "../components/dist/esm/app-globals-99e09c33.js",
-      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-99e09c33.js",
+      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
+      "name": "../components/dist/esm/app-globals-c74ee236.js",
+      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-c74ee236.js",
       "index": 4,
       "preOrderIndex": 4,
       "index2": 2,
@@ -42690,7 +42690,7 @@
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-99e09c33.js",
+          "userRequest": "./app-globals-c74ee236.js",
           "loc": "3:0-63",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42704,7 +42704,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-99e09c33.js",
+          "userRequest": "./app-globals-c74ee236.js",
           "loc": "11:2-15",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42767,7 +42767,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42777,11 +42777,11 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "4:0-60",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42791,7 +42791,7 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "7:7-16",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
@@ -43172,7 +43172,7 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43182,11 +43182,11 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "1:0-41",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d26c71a15ba72cad8fb8dad986a52508",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|c441a148dabb3e88dcbbcf15abe94234",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43196,7 +43196,7 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "11:8-17",
-          "moduleId": 334,
+          "moduleId": 970,
           "resolvedModuleId": null
         }
       ],
@@ -43726,9 +43726,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9272,
+      "size": 9590,
       "sizes": {
-        "javascript": 9272
+        "javascript": 9590
       },
       "built": true,
       "codeGenerated": true,
@@ -43797,7 +43797,7 @@
         "p_checkbox_wrapper"
       ],
       "optimizationBailout": [
-        "Statement (ExpressionStatement) with side effects in source code at 72:0-43",
+        "Statement (ExpressionStatement) with side effects in source code at 71:0-43",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
@@ -44872,9 +44872,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 19844,
+      "size": 20125,
       "sizes": {
-        "javascript": 19844
+        "javascript": 20125
       },
       "built": true,
       "codeGenerated": true,
@@ -44943,7 +44943,7 @@
         "p_radio_button_wrapper"
       ],
       "optimizationBailout": [
-        "Statement (ExpressionStatement) with side effects in source code at 71:0-49",
+        "Statement (ExpressionStatement) with side effects in source code at 70:0-49",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
@@ -45833,7 +45833,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "68:4-23",
+          "loc": "67:4-23",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -45973,7 +45973,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "67:4-23",
+          "loc": "66:4-23",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -47613,7 +47613,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./a11y-ced44573.js",
-          "loc": "46:4-21",
+          "loc": "45:4-21",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -47641,7 +47641,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./a11y-ced44573.js",
-          "loc": "45:4-21",
+          "loc": "44:4-21",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -48323,7 +48323,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
+          "name": "porsche-design-system.v2.0.1.1b88b0d5466835660333.js",
           "size": 59616
         }
       ],
@@ -48345,7 +48345,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
+          "name": "porsche-design-system.v2.0.1.1b88b0d5466835660333.js",
           "size": 59616
         }
       ],
