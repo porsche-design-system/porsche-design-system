@@ -1,20 +1,18 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
-  getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
   isDescriptionVisible,
   isLabelVisible,
   isMessageVisible,
-  isRequired,
   mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
-  isParentFieldsetWrapperRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { getDescripton, getLabel, getMessage } from '../../../utils/form-component-utils';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -76,32 +74,17 @@ export class TextareaWrapper {
       [`label--${this.state}`]: this.state !== 'none',
       ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
     };
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <label class={labelClasses}>
-          {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class="label__text" {...labelProps}>
-              {this.label || <slot name="label" />}
-              {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.textarea) && <span class="required" />}
-            </PrefixedTagNames.pText>
-          )}
-          {isDescriptionVisible(this.host, this.description) && (
-            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
-              {this.description || <slot name="description" />}
-            </PrefixedTagNames.pText>
-          )}
+          {isLabelVisible(this.host, this.label) &&
+            getLabel(this.host, this.textarea, this.label, 'label__text', this.labelClick)}
+          {isDescriptionVisible(this.host, this.description) &&
+            getDescripton(this.host, this.description, 'label__text label__text--description')}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
+        {isMessageVisible(this.host, this.message, this.state) && getMessage(this.host, this.message, this.state)}
       </Host>
     );
   }
