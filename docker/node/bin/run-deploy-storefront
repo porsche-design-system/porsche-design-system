@@ -51,7 +51,7 @@ upload_s3() {
 
 purge_cloudfront() {
   echo "task: [$(date)] \"purge_cloudfront\" (${1})"
-  aws aws cloudfront create-invalidation \
+  aws cloudfront create-invalidation \
     --distribution-id E2KJVI0036W7XP \
     --paths "/${1}/*"
 }
