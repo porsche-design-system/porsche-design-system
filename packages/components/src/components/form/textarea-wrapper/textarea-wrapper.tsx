@@ -12,6 +12,7 @@ import {
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
+  isParentFieldsetWrapperRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -86,7 +87,7 @@ export class TextareaWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isRequired(this.textarea) && <span class="required" />}
+              {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           {isDescriptionVisible(this.host, this.description) && (
