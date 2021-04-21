@@ -130,7 +130,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render required only on fieldset">
-      <p-fieldset-wrapper [label]="'Some label'" [labelSize]="'small'">
+      <p-fieldset-wrapper [label]="'Some label'" [labelSize]="'small'" [required]="true">
         <p-text-field-wrapper [label]="'Some label'" state="error">
           <input type="text" name="some-name" required />
         </p-text-field-wrapper>

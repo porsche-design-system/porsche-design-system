@@ -32,7 +32,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with required">
-        <PFieldsetWrapper label="Some label" required={true}>
+        <PFieldsetWrapper label="Some label" required>
           <PCheckboxWrapper label="Some label">
             <input type="checkbox" name="some-name-1" />
           </PCheckboxWrapper>
@@ -66,7 +66,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with label size small and required">
-        <PFieldsetWrapper label="Some label" labelSize="small" required={true}>
+        <PFieldsetWrapper label="Some label" labelSize="small" required>
           <PRadioButtonWrapper label="Some label">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
@@ -136,7 +136,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render required only on fieldset">
-        <PFieldsetWrapper label="Some label" label-size="small">
+        <PFieldsetWrapper label="Some label" label-size="small" required>
           <PTextFieldWrapper label="Some label" state="error">
             <input type="text" name="some-name" required />
           </PTextFieldWrapper>
