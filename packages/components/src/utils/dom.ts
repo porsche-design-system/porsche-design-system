@@ -107,7 +107,7 @@ export const getRequiredValueOfCustomElement = (element: Element): string => {
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  const prefixedTagName = getPrefixedTagNames(host)['pFieldsetWrapper'];
+  const prefixedTagName = getPrefixedTagNames(host).pFieldsetWrapper;
   return (
     getTagName(host.parentElement) === prefixedTagName && getRequiredValueOfCustomElement(host.parentElement) === 'true'
   );
