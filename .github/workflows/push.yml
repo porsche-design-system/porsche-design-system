@@ -573,7 +573,8 @@ jobs:
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           entrypoint: run-deploy-storefront
   smoke-test:
