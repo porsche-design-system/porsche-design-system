@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Switch`
+
+#### Changed
+- `Text` automatically breaks words/strings into new line being too long to fit inside their container
+- `Headline` automatically breaks words/strings into new line being too long to fit inside their container
+
 ### [2.0.1] - 2021-04-16
 
 #### Fixed

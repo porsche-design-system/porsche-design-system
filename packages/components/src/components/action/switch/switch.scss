@@ -27,6 +27,8 @@
 
 .label {
   display: flex;
+  min-width: 0; // prevents flex child to overflow max available parent size
+  min-height: 0; // prevents flex child to overflow max available parent size
   width: auto;
   justify-content: flex-start;
 
@@ -57,6 +59,8 @@
 .text {
   @include p-switch-label-visible;
   order: 1;
+  min-width: 0; // prevents flex child to overflow max available parent size
+  min-height: 0; // prevents flex child to overflow max available parent size
   padding-left: $p-spacing-8;
   padding-right: 0;
   color: $p-color-default;

@@ -19,12 +19,18 @@
   line-height: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
 }
 
 .#{$p-global-class-prefix}headline {
   $bem-block: &;
   padding: 0;
   margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 
   &--variant {
     &-large-title {
