@@ -2,19 +2,17 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
-  getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
-  isRequired,
   mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
-  isParentFieldsetWrapperRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { getLabel, getMessage } from '../../../utils/form-component-utils';
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -76,24 +74,14 @@ export class CheckboxWrapper {
       ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <Host>
         <label class={labelClasses}>
-          {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
-              {this.label || <slot name="label" />}
-              {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.input) && <span class="required" />}
-            </PrefixedTagNames.pText>
-          )}
+          {isLabelVisible(this.host, this.label) &&
+            getLabel(this.host, this.input, this.label, labelTextClasses, this.labelClick)}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
+        {isMessageVisible(this.host, this.message, this.state) && getMessage(this.host, this.message, this.state)}
       </Host>
     );
   }

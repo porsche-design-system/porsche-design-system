@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { getPrefixedTagNames, isLabelVisible, isMessageVisible } from '../../../utils';
+import { isLabelVisible, isMessageVisible } from '../../../utils';
 import type { FormState, TextSize } from '../../../types';
+import { getMessage } from '../../../utils/form-component-utils';
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -31,19 +32,13 @@ export class FieldsetWrapper {
       ['label--size-small']: this.labelSize === 'small',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <fieldset class={fieldsetClasses}>
         {isLabelVisible(this.host, this.label) && (
           <legend class={labelClasses}>{this.label || <slot name="label" />}</legend>
         )}
         <slot />
-        {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
+        {isMessageVisible(this.host, this.message, this.state) && getMessage(this.host, this.message, this.state)}
       </fieldset>
     );
   }

@@ -8,14 +8,13 @@ import {
   isDescriptionVisible,
   isLabelVisible,
   isMessageVisible,
-  isParentFieldsetWrapperRequired,
-  isRequired,
   mapBreakpointPropToPrefixedClasses,
   observeMutations,
   setAriaAttributes,
   unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { getDescripton, getLabel, getMessage } from '../../../utils/form-component-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -86,26 +85,16 @@ export class TextFieldWrapper {
       ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <div class={containerClasses}>
           <label class={labelClasses}>
-            {isLabelVisible(this.host, this.label) && (
-              <PrefixedTagNames.pText class="label__text" {...labelProps}>
-                {this.label || <slot name="label" />}
-                {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.input) && <span class="required" />}
-              </PrefixedTagNames.pText>
-            )}
-            {isDescriptionVisible(this.host, this.description) && (
-              <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
-                {this.description || <slot name="description" />}
-              </PrefixedTagNames.pText>
-            )}
+            {isLabelVisible(this.host, this.label) &&
+              getLabel(this.host, this.input, this.label, 'label__text', this.labelClick)}
+            {isDescriptionVisible(this.host, this.description) &&
+              getDescripton(this.host, this.description, 'label__text label__text--description')}
             <slot />
           </label>
           {this.isPassword ? (
@@ -120,11 +109,7 @@ export class TextFieldWrapper {
             )
           )}
         </div>
-        {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
+        {isMessageVisible(this.host, this.message, this.state) && getMessage(this.host, this.message, this.state)}
       </Host>
     );
   }
