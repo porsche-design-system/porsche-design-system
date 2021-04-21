@@ -36,6 +36,10 @@ You can see some usage examples on our [form patterns section](#/patterns/forms#
 
 ## Required
 
+If the **Fieldset Wrapper** is set to `required="true"`, only the label of the **Fieldset Wrapper** gets an asterisk. 
+It is removed from all wrapped child components, as long as they are Porsche Design System form element.
+You should still set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
+
 <Playground :markup="required"></Playground>
 
 --- 
@@ -106,7 +110,7 @@ You can see some usage examples on our [form patterns section](#/patterns/forms#
     required =
 `<p-fieldset-wrapper label="Some legend label" required="true">
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" />
+    <input type="text" name="some-name" required />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
