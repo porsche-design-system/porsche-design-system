@@ -4,6 +4,7 @@ import {
   PCheckboxWrapper,
   PRadioButtonWrapper,
 } from '@porsche-design-system/components-react';
+import { PSelectWrapper, PTextareaWrapper } from '../../projects/components-wrapper/src';
 
 export const FieldsetWrapperPage = (): JSX.Element => {
   const style = `
@@ -131,6 +132,30 @@ export const FieldsetWrapperPage = (): JSX.Element => {
               <input type="radio" name="some-name-1" />
             </PRadioButtonWrapper>
           </PFieldsetWrapper>
+        </PFieldsetWrapper>
+      </div>
+
+      <div className="playground light" title="should render required only on fieldset">
+        <PFieldsetWrapper label="Some label" label-size="small">
+          <PTextFieldWrapper label="Some label" state="error">
+            <input type="text" name="some-name" required />
+          </PTextFieldWrapper>
+          <PTextareaWrapper label="Some label" hide-label="false">
+            <textarea name="some-name" required></textarea>
+          </PTextareaWrapper>
+          <PRadioButtonWrapper label="Some label">
+            <input type="radio" name="some-name-1" required />
+          </PRadioButtonWrapper>
+          <PCheckboxWrapper label="Some label">
+            <input type="checkbox" name="some-name-1" required />
+          </PCheckboxWrapper>
+          <PSelectWrapper label="Some label">
+            <select name="some-name" required>
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </PSelectWrapper>
         </PFieldsetWrapper>
       </div>
     </>
