@@ -1,6 +1,6 @@
 import { getVisualRegressionTester, testOptions } from '../helpers';
 
-fdescribe('Switch', () => {
+describe('Switch', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
