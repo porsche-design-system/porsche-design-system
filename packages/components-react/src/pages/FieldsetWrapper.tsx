@@ -3,8 +3,9 @@ import {
   PTextFieldWrapper,
   PCheckboxWrapper,
   PRadioButtonWrapper,
+  PSelectWrapper,
+  PTextareaWrapper,
 } from '@porsche-design-system/components-react';
-import { PSelectWrapper, PTextareaWrapper } from '../../projects/components-wrapper/src';
 
 export const FieldsetWrapperPage = (): JSX.Element => {
   const style = `

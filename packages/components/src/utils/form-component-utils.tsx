@@ -1,7 +1,7 @@
 import { h, JSX } from '@stencil/core';
 import { getPrefixedTagNames } from './get-prefixed-tag-name';
 import type { FormState } from '../types';
-import { isParentFieldsetWrapperRequired, isHTMLElementRequired } from './dom';
+import { isParentFieldsetWrapperRequired, isRequired } from './dom';
 
 export const getMessage = (host: HTMLElement, message: string, state: FormState): JSX.Element => {
   const PrefixedTagNames = getPrefixedTagNames(host);
@@ -25,7 +25,7 @@ export const getLabel = (
   return (
     <PrefixedTagNames.pText class={className} tag="span" color="inherit" onClick={labelClick}>
       {label || <slot name="label" />}
-      {!isParentFieldsetWrapperRequired(host) && isHTMLElementRequired(input) && <span class="required" />}
+      {!isParentFieldsetWrapperRequired(host) && isRequired(input) && <span class="required" />}
     </PrefixedTagNames.pText>
   );
 };
