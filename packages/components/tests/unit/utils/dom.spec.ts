@@ -2,7 +2,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getTagName,
   hasNamedSlot,
-  isRequired,
+  isHTMLElementRequired,
   throwIfParentIsNotOfKind,
   addEventListener,
   removeEventListener,
@@ -11,6 +11,7 @@ import {
   removeAttribute,
   isMessageVisible,
   isDescriptionVisible,
+  isParentFieldsetWrapperRequired,
 } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
@@ -18,30 +19,30 @@ describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
     const el = document.createElement('input');
     el.required = true;
-    expect(isRequired(el)).toBe(true);
+    expect(isHTMLElementRequired(el)).toBe(true);
   });
 
   it('should return true if required attribute is empty string on element', () => {
     const el = document.createElement('input');
     el.setAttribute('required', '');
-    expect(isRequired(el)).toBe(true);
+    expect(isHTMLElementRequired(el)).toBe(true);
   });
 
   it('should return true if required attribute is any string on element', () => {
     const el = document.createElement('input');
     el.setAttribute('required', 'false');
-    expect(isRequired(el)).toBe(true);
+    expect(isHTMLElementRequired(el)).toBe(true);
   });
 
   it('should return false if required attribute or property is missing on element', () => {
     const el = document.createElement('input');
-    expect(isRequired(el)).toBe(false);
+    expect(isHTMLElementRequired(el)).toBe(false);
   });
 
   it('should return false if required property is false on element', () => {
     const el = document.createElement('input');
     el.required = false;
-    expect(isRequired(el)).toBe(false);
+    expect(isHTMLElementRequired(el)).toBe(false);
   });
 });
 
@@ -275,5 +276,32 @@ describe('isMessageVisible()', () => {
     }
 
     expect(isMessageVisible(el, message, formState)).toBe(result);
+  });
+});
+
+describe('isParentFieldsetWrapperRequired()', () => {
+  it('should return true if parent is fieldset-wrapper with required="true" property', () => {
+    const parent = document.createElement('p-fieldset-wrapper');
+    const child = document.createElement('div');
+    parent.appendChild(child);
+    parent.setAttribute('required', 'true');
+
+    expect(isParentFieldsetWrapperRequired(child)).toBe(true);
+  });
+
+  it('should return false if parent is not fieldset-wrapper', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('div');
+    parent.appendChild(child);
+
+    expect(isParentFieldsetWrapperRequired(child)).toBe(false);
+  });
+
+  it('should return false if parent is fieldset-wrapper without required', () => {
+    const parent = document.createElement('p-fieldset-wrapper');
+    const child = document.createElement('div');
+    parent.appendChild(child);
+
+    expect(isParentFieldsetWrapperRequired(child)).toBe(false);
   });
 });
