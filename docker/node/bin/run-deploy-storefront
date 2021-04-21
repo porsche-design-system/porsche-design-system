@@ -30,7 +30,6 @@ fi
 
 setup() {
   echo "task: [$(date)] \"setup\""
-  echo "id: ${AWS_ACCESS_KEY_ID} key: ${AWS_SECRET_ACCESS_KEY}"
   export AWS_DEFAULT_REGION=eu-central-1
 }
 
@@ -51,9 +50,18 @@ upload_s3() {
 
 purge_cloudfront() {
   echo "task: [$(date)] \"purge_cloudfront\" (${1})"
-  aws cloudfront create-invalidation \
+  result="$(aws cloudfront create-invalidation \
     --distribution-id E2KJVI0036W7XP \
-    --paths "/${1}/*"
+    --paths "/${1}/*")"
+  status_code="${PIPESTATUS[@]}"
+
+  if [[ $status_code == 0 ]]; then
+    echo "Cloudfront purge was successful."
+  else
+    echo "Cloudfront purge wasn't successful."
+    echo $result;
+    exit 1
+  fi
 }
 
 verify_deployment() {
@@ -64,7 +72,7 @@ verify_deployment() {
   local http_response=""
   while true
   do
-    http_response="$(curl -s -H "Cache-Control: no-cache" "https://ddnc07obdl6ycv.cloudfront.net/${1}/version.md")"
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://dnc07obdl6ycv.cloudfront.net/${1}/version.md")"
     echo "Check deployment status (${1}). Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified (${1})."
@@ -86,7 +94,7 @@ isCurrentBranchMasterBranch() {
   return 1
 }
 
-P_CURRENT_BRANCH="${GITHUB_REF:11}"
+P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 BUCKET_URL="s3://porsche-design-system-storefront"
 
