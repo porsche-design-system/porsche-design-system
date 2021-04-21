@@ -16,6 +16,9 @@
   padding: 0 !important;
   font-style: normal !important;
   font-size: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
 }
 
 .#{$p-global-class-prefix}text {
@@ -24,6 +27,9 @@
   text-align: left;
   padding: 0;
   margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
   list-style-type: none;
   display: inherit;
   transition: font-size 1ms linear; // used for transitionend event listener
