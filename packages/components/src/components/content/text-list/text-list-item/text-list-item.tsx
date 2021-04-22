@@ -26,7 +26,6 @@ export class TextListItem {
     const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
-
     const isOrderedList = listType === 'ordered';
 
     const rootClasses = {
@@ -37,8 +36,10 @@ export class TextListItem {
     };
 
     return (
-      <Host role="listitem" class={rootClasses}>
-        <slot />
+      <Host role="listitem">
+        <li class={rootClasses}>
+          <slot />
+        </li>
       </Host>
     );
   }
