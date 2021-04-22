@@ -14,8 +14,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Type | Usage |
 |----|----|
-| Right aligned | If the switch is used stand-alone, we recommend to use the switch aligned to the left (Switch vs. Label). |
-| Left aligned | If the switch is used within a list (e.g. settings) we recommend to place the switch on the right side (Label vs. Switch). Especially for handling with the thumb on mobile devices.|
+| Right aligned (default) | If the switch is used stand-alone, we recommend to use the switch aligned to the left (Switch vs. Label). |
+| Left aligned | If the switch is used within a list (e.g. settings) we recommend to place the switch on the right side (Label vs. Switch). Especially for handling on mobile devices.|
 
 
 
@@ -27,7 +27,7 @@ Remember that Switches are meant to be two mutually exclusive states. The Switch
 
 ### Stretching
 
-Depending on the use case, the spacing between the switch and the label can be increased. However, the minimum spacing of 8 px should be observed.
+Depending on the use case (e.g. list on mobile), the spacing between the switch and the label can be increased. 
 
 ### Action
 
