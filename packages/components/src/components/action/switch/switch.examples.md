@@ -6,8 +6,8 @@ Commonly it is used for “on/off” switches.
 
 ## Basic example
 
-A `label` is a caption which informs the user which action is followed by interaction.
 The **Switch** component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.
+A `label` is a caption which informs the user which action is followed by interaction.
 When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="basic" :config="config">

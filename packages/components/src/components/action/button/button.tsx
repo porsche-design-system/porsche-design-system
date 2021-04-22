@@ -8,6 +8,7 @@ import {
   prefix,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
+import { isDisabled } from '../switch/switch-utils';
 
 @Component({
   tag: 'p-button',
@@ -46,7 +47,7 @@ export class Button {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled) {
+    if (isDisabled(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -56,7 +57,7 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabled
+      () => isDisabled(this.disabled, this.loading)
     );
   }
 
@@ -82,7 +83,7 @@ export class Button {
       <button
         class={buttonClasses}
         type={this.type}
-        disabled={this.isDisabled}
+        disabled={isDisabled(this.disabled, this.loading)}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
@@ -102,9 +103,5 @@ export class Button {
         </PrefixedTagNames.pText>
       </button>
     );
-  }
-
-  private get isDisabled(): boolean {
-    return this.disabled || this.loading;
   }
 }
