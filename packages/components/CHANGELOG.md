@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Text` automatically breaks words/strings into new line being too long to fit inside their container
 - `Headline` automatically breaks words/strings into new line being too long to fit inside their container
 
+### [2.0.2] - 2021-04-21
+
 ### [2.0.2-beta.0] - 2021-04-20
 
 #### Fixed
