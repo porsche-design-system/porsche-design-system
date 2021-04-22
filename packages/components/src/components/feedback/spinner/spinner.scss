@@ -19,7 +19,6 @@ $p-spinner-size-large: p-px-to-rem(104px);
   box-sizing: border-box;
   display: block;
   stroke-width: 1px;
-  animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner, 2s);
 
   circle {
