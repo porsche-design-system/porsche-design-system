@@ -1,5 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
 @mixin label-visible() {
   .label,
@@ -29,61 +30,6 @@
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
-  }
-}
-
-@mixin size($prefix, $size) {
-  @if $size == 'inherit' {
-    font-size: inherit;
-    line-height: inherit;
-
-    .icon {
-      width: 1.5em;
-      height: 1.5em;
-    }
-  } @else {
-    @include p-generate-type-scale($size);
-
-    .icon {
-      width: #{p-calculate-line-height($size)}em;
-      height: #{p-calculate-line-height($size)}em;
-    }
-
-    + * {
-      @if $size == $p-font-size-x-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-medium {
-        @include p-generate-type-scale($p-font-size-20);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-large {
-        @include p-generate-type-scale($p-font-size-30);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-x-large {
-        @include p-generate-type-scale($p-font-size-large);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else {
-        @error "Unknown size #{$size}.";
-      }
-    }
   }
 }
 
@@ -175,22 +121,22 @@
   }
 
   &--size-x-small {
-    @include size($bem-block, $p-font-size-x-small);
+    @include size($p-font-size-x-small);
   }
   &--size-small {
-    @include size($bem-block, $p-font-size-small);
+    @include size($p-font-size-small);
   }
   &--size-medium {
-    @include size($bem-block, $p-font-size-medium);
+    @include size($p-font-size-medium);
   }
   &--size-large {
-    @include size($bem-block, $p-font-size-large);
+    @include size($p-font-size-large);
   }
   &--size-x-large {
-    @include size($bem-block, $p-font-size-x-large);
+    @include size($p-font-size-x-large);
   }
   &--size-inherit {
-    @include size($bem-block, 'inherit');
+    @include size('inherit');
   }
 
   &--with-label {
@@ -202,22 +148,22 @@
 
   @include p-media-query('xs') {
     &--size-x-small-xs {
-      @include size($bem-block, $p-font-size-x-small);
+      @include size($p-font-size-x-small);
     }
     &--size-small-xs {
-      @include size($bem-block, $p-font-size-small);
+      @include size($p-font-size-small);
     }
     &--size-medium-xs {
-      @include size($bem-block, $p-font-size-medium);
+      @include size($p-font-size-medium);
     }
     &--size-large-xs {
-      @include size($bem-block, $p-font-size-large);
+      @include size($p-font-size-large);
     }
     &--size-x-large-xs {
-      @include size($bem-block, $p-font-size-x-large);
+      @include size($p-font-size-x-large);
     }
     &--size-inherit-xs {
-      @include size($bem-block, 'inherit');
+      @include size('inherit');
     }
 
     &--with-label-xs {
@@ -230,22 +176,22 @@
 
   @include p-media-query('s') {
     &--size-x-small-s {
-      @include size($bem-block, $p-font-size-x-small);
+      @include size($p-font-size-x-small);
     }
     &--size-small-s {
-      @include size($bem-block, $p-font-size-small);
+      @include size($p-font-size-small);
     }
     &--size-medium-s {
-      @include size($bem-block, $p-font-size-medium);
+      @include size($p-font-size-medium);
     }
     &--size-large-s {
-      @include size($bem-block, $p-font-size-large);
+      @include size($p-font-size-large);
     }
     &--size-x-large-s {
-      @include size($bem-block, $p-font-size-x-large);
+      @include size($p-font-size-x-large);
     }
     &--size-inherit-s {
-      @include size($bem-block, 'inherit');
+      @include size('inherit');
     }
 
     &--with-label-s {
@@ -258,22 +204,22 @@
 
   @include p-media-query('m') {
     &--size-x-small-m {
-      @include size($bem-block, $p-font-size-x-small);
+      @include size($p-font-size-x-small);
     }
     &--size-small-m {
-      @include size($bem-block, $p-font-size-small);
+      @include size($p-font-size-small);
     }
     &--size-medium-m {
-      @include size($bem-block, $p-font-size-medium);
+      @include size($p-font-size-medium);
     }
     &--size-large-m {
-      @include size($bem-block, $p-font-size-large);
+      @include size($p-font-size-large);
     }
     &--size-x-large-m {
-      @include size($bem-block, $p-font-size-x-large);
+      @include size($p-font-size-x-large);
     }
     &--size-inherit-m {
-      @include size($bem-block, 'inherit');
+      @include size('inherit');
     }
 
     &--with-label-m {
@@ -286,22 +232,22 @@
 
   @include p-media-query('l') {
     &--size-x-small-l {
-      @include size($bem-block, $p-font-size-x-small);
+      @include size($p-font-size-x-small);
     }
     &--size-small-l {
-      @include size($bem-block, $p-font-size-small);
+      @include size($p-font-size-small);
     }
     &--size-medium-l {
-      @include size($bem-block, $p-font-size-medium);
+      @include size($p-font-size-medium);
     }
     &--size-large-l {
-      @include size($bem-block, $p-font-size-large);
+      @include size($p-font-size-large);
     }
     &--size-x-large-l {
-      @include size($bem-block, $p-font-size-x-large);
+      @include size($p-font-size-x-large);
     }
     &--size-inherit-l {
-      @include size($bem-block, 'inherit');
+      @include size('inherit');
     }
 
     &--with-label-l {
@@ -314,22 +260,22 @@
 
   @include p-media-query('xl') {
     &--size-x-small-xl {
-      @include size($bem-block, $p-font-size-x-small);
+      @include size($p-font-size-x-small);
     }
     &--size-small-xl {
-      @include size($bem-block, $p-font-size-small);
+      @include size($p-font-size-small);
     }
     &--size-medium-xl {
-      @include size($bem-block, $p-font-size-medium);
+      @include size($p-font-size-medium);
     }
     &--size-large-xl {
-      @include size($bem-block, $p-font-size-large);
+      @include size($p-font-size-large);
     }
     &--size-x-large-xl {
-      @include size($bem-block, $p-font-size-x-large);
+      @include size($p-font-size-x-large);
     }
     &--size-inherit-xl {
-      @include size($bem-block, 'inherit');
+      @include size('inherit');
     }
 
     &--with-label-xl {
