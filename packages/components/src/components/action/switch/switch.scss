@@ -116,7 +116,7 @@
   }
 }
 
-.button {
+button {
   position: relative;
   width: p-px-to-rem(48px);
   height: p-px-to-rem(24px);
@@ -214,7 +214,7 @@
   display: block;
   border-radius: 50%;
   background-color: $p-color-neutral-contrast-high;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
   transition:
     background-color $p-animation-hover-duration $p-animation-hover-bezier,
     transform $p-animation-hover-duration $p-animation-hover-bezier;
@@ -224,7 +224,7 @@
   }
 
   .checked & {
-    transform: translateX(p-px-to-rem(24px));
+    transform: translate3d(p-px-to-rem(24px), 0, 0);
     background-color: $p-color-background-default;
   }
 
@@ -236,7 +236,7 @@
     }
   }
 
-  :not(.disabled):not(.checked) .button:hover & {
+  :not(.disabled):not(.checked) button:hover & {
     background-color: $p-color-default;
 
     @at-root .theme-dark#{&} {

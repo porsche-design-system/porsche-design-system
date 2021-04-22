@@ -12,7 +12,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { isDisabled } from '../switch/switch-utils';
+import { isDisabledOrLoading } from '../switch/switch-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -58,7 +58,7 @@ export class ButtonPure {
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (isDisabled(this.disabled, this.loading)) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -68,7 +68,7 @@ export class ButtonPure {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => isDisabled(this.disabled, this.loading)
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
@@ -113,7 +113,7 @@ export class ButtonPure {
         <button
           class={buttonPureClasses}
           type={this.type}
-          disabled={isDisabled(this.disabled, this.loading)}
+          disabled={isDisabledOrLoading(this.disabled, this.loading)}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}

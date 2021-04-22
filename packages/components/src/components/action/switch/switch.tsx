@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
 } from '../../../utils';
 import { Theme } from '../../../types';
-import { isDisabled, SwitchChangeEvent } from './switch-utils';
+import { isDisabledOrLoading, SwitchChangeEvent } from './switch-utils';
 
 @Component({
   tag: 'p-switch',
@@ -46,7 +46,7 @@ export class Switch {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (isDisabled(this.disabled, this.loading)) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
   }
@@ -56,7 +56,7 @@ export class Switch {
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
-      () => isDisabled(this.disabled, this.loading)
+      () => isDisabledOrLoading(this.disabled, this.loading)
     );
   }
 
@@ -86,10 +86,9 @@ export class Switch {
         </PrefixedTagNames.pText>
         <button
           type="button"
-          class="button"
           role="switch"
           aria-checked={this.checked ? 'true' : 'false'}
-          disabled={isDisabled(this.disabled, this.loading)}
+          disabled={isDisabledOrLoading(this.disabled, this.loading)}
           tabindex={this.tabbable ? 0 : -1}
           aria-busy={this.loading ? 'true' : null}
           onClick={this.handleSwitchClick}
