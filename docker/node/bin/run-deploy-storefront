@@ -35,7 +35,7 @@ setup() {
 
 prepare_deployment() {
   echo "task: [$(date)] \"prepare_deployment\" (${1})"
-  aws s3 rm "${BUCKET_URL}/${1}" --recursive
+  aws s3 rm "${BUCKET_URL}/${1}" --recursive --only-show-errors
 }
 
 add_deployment_version() {
@@ -45,7 +45,7 @@ add_deployment_version() {
 
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${1})"
-  aws s3 sync "./packages/storefront/dist/." "${BUCKET_URL}/${1}"
+  aws s3 sync "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --only-show-errors
 }
 
 purge_cloudfront() {
