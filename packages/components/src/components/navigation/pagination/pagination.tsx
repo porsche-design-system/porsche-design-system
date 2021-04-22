@@ -26,7 +26,6 @@ export class Pagination {
 
   /** Index of the currently active page. */
   @Prop({
-    reflect: true,
     mutable: true,
   })
   public activePage?: number = 1;
