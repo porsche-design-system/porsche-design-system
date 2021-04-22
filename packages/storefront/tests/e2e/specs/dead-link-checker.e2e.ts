@@ -30,6 +30,7 @@ describe('check for dead links', () => {
 
   const getPatternHeadline = async () => {
     await page.waitForSelector('html.hydrated');
+    await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
     return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
   };
 
