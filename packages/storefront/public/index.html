@@ -7,6 +7,7 @@
       name="description"
       content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products."
     />
+    <base href="/" />
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
     <script>
@@ -94,7 +95,7 @@
         }
       }
     </style>
-    <script src="./<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
+    <script src="<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
   </head>
   <body>
     <noscript>
