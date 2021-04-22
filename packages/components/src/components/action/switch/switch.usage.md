@@ -60,7 +60,7 @@ Don’t use the slide Switch for multiple choice questions
 
 ### Intermediate state
 
-Don’t use slide Switch when an intermediate state is required. [Use Checkbox instead!](#/components/checkbox-wrapper)
+Don’t use slide Switch when an intermediate state is required. [Use Checkbox instead!](#/components/checkbox)
 
 ![Intermediate state](./assets/switch-intermediate-state.png)
 
