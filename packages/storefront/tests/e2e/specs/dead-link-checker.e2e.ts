@@ -29,8 +29,7 @@ describe('check for dead links', () => {
     (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
 
   const getPatternHeadline = async () => {
-    await page.waitForSelector('p-headline[tag="h1"]');
-    await page.waitForTimeout(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
+    await page.waitForSelector('html.hydrated');
     return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
   };
 
