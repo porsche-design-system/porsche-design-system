@@ -160,6 +160,6 @@ This will force any text to never wrap into a new line and in case it's to long 
 `<p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>`;
 
     textWithLink =
-`<p-text>Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>`;
+`<p-text>Lorem ipsum dolor sit amet <a>linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>`;
   }
 </script>
