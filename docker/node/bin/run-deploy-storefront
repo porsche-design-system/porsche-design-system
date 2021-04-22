@@ -45,7 +45,7 @@ add_deployment_version() {
 
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${1})"
-  aws s3 sync "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --only-show-errors
+  aws s3 cp "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --recursive --only-show-errors
 }
 
 purge_cloudfront() {
