@@ -25,11 +25,11 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 **Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="size">
     <option disabled>Select a size</option>
     <option>x-small</option>
     <option>small</option>
-    <option selected>medium</option>
+    <option>medium</option>
     <option>large</option>
     <option>x-large</option>
     <option>inherit</option>
@@ -56,10 +56,10 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select @change="color = $event.target.value">
+  <select v-model="color">
     <option disabled>Select a color</option>
     <option value="brand">Brand</option>
-    <option value="default" selected>Default</option>
+    <option value="default">Default</option>
     <option value="neutral-contrast-high">Neutral Contrast High</option>
     <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
     <option value="neutral-contrast-low">Neutral Contrast Low</option>
@@ -78,9 +78,9 @@ Predefined colors associated with its theme are available but also inherit mode 
 There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="weightMarkup" :config="config">
-  <select @change="weight = $event.target.value">
+  <select v-model="weight">
     <option disabled>Select a weight</option>
-    <option value="thin" selected>Thin</option>
+    <option value="thin">Thin</option>
     <option value="regular">Regular</option>
     <option value="semibold">Semibold</option>
     <option value="bold">Bold</option>
@@ -92,10 +92,10 @@ There are predefined default text weights for copy text. Be aware of using the `
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <select @change="align = $event.target.value">
+  <select v-model="align">
     <option disabled>Select an alignment</option>
     <option value="left">Left</option>
-    <option value="center" selected>Center</option>
+    <option value="center">Center</option>
     <option value="right">Right</option>
   </select>
 </Playground>
