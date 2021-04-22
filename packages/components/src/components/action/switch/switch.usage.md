@@ -3,7 +3,7 @@
 ## When to use
 
 • Use a Switch if an instant response of applied settings is required without an explicit action.  
-• Use a Switch to enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox-wrapper) instead.  
+• Use a Switch to enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox) instead.  
 • Use a Switch when user is toggling independent features or behaviors.
 
 ---
