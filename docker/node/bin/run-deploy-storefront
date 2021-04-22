@@ -43,6 +43,11 @@ add_deployment_version() {
   echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
 }
 
+update_base_tag(){
+  echo "task: [$(date)] \"update_base_tag\" (${1})"
+  sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' ./packages/storefront/dist/index.html
+}
+
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${1})"
   aws s3 cp "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --recursive --only-show-errors
@@ -102,6 +107,7 @@ if isCurrentBranchMasterBranch; then
   setup
   prepare_deployment "latest"
   add_deployment_version "latest"
+  update_base_tag "latest"
   upload_s3 "latest"
   purge_cloudfront "latest"
   verify_deployment "latest"
@@ -109,6 +115,7 @@ else
   setup
   prepare_deployment "${P_CURRENT_BRANCH}"
   add_deployment_version "${P_CURRENT_BRANCH}"
+  update_base_tag "${P_CURRENT_BRANCH}"
   upload_s3 "${P_CURRENT_BRANCH}"
   purge_cloudfront "${P_CURRENT_BRANCH}"
   verify_deployment "${P_CURRENT_BRANCH}"
