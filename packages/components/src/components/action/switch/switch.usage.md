@@ -2,9 +2,9 @@
 
 ## When to use
 
-• Use a Switch if an instant response of applied settings is required without an explicit action.  
-• Use a Switch to enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox) instead.  
-• Use a Switch when user is toggling independent features or behaviors.
+• If an instant response of applied settings is required without an explicit action.  
+• To enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox) instead.  
+• When user is toggling independent features or behaviors.
 
 ---
 
@@ -23,11 +23,11 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 ### Label
 
-Remember that Switches are meant to be two mutually exclusive states. The Switch is accompanied by a straightforward and concise label (always in copytext) to make the component accessible. That microcopy is very important, as users should be able to see and understand the function behind the Switch. It’s better to avoid anything longer than two words, as you want that first glance to be all that’s needed to use the Switch. The Switch can be used also without a label but beware, only use this approach if the purpose of the control clearly made elsewhere. For example, if there is a group label or section header that allows the user to infer the description of the option.
+Remember that Switches are meant to be two mutually exclusive states. The Switch is accompanied by a straightforward and concise label (always in copytext) to make the component accessible. That microcopy is very important, as users should be able to see and understand the function behind the Switch. It’s better to avoid anything longer than two words, as you want that first glance to be all that’s needed to use the Switch.
 
 ### Stretching
 
-Depending on the use case (e.g. list on mobile), the spacing between the switch and the label can be increased. 
+Depending on the use case (e.g. list on mobile), the spacing between the switch and the label can be stretched to the size of the container. 
 
 ### Action
 
@@ -35,7 +35,7 @@ Switches should never require users to press a button to apply the settings beca
 
 ### Validation
 
-We recommend to use only one validate for error. Success is already provided by the active switch and does not require any further validation. Use a validation only when necessary. E.g. to show error message or direct feedback of this control. Do not distract users with unimportant information. For page level feedback, use the [Banner](#/components/banner) notification.
+We recommend to use only one validation for errors. Success is already provided by the active switch and does not require any further validation. Use a validation only when necessary. E.g. to show error message or direct feedback of this control. Do not distract users with unimportant information. For page level feedback, use the [Banner](#/components/banner) notification.
 
 
 ### Helper text
