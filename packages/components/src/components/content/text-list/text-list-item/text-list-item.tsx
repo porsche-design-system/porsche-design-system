@@ -7,10 +7,10 @@ import {
   insertSlottedStyles,
   throwIfParentIsNotOfKind,
 } from '../../../../utils';
+import { addCss } from './text-list-item-utils';
 
 @Component({
   tag: 'p-text-list-item',
-  styleUrl: 'text-list-item.scss',
   shadow: true,
 })
 export class TextListItem {
@@ -21,25 +21,18 @@ export class TextListItem {
     this.addSlottedStyles();
   }
 
-  public render(): JSX.Element {
+  public componentWillRender(): void {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
-    const isOrderedList = listType === 'ordered';
+    addCss(this.host, listType, orderType, isNestedList);
+  }
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--ordered']: isOrderedList,
-      [`root--ordered-${orderType}`]: isOrderedList,
-      ['root--nested']: isNestedList,
-    };
-
+  public render(): JSX.Element {
     return (
       <Host role="listitem">
-        <li class={rootClasses}>
-          <slot />
-        </li>
+        <slot />
       </Host>
     );
   }

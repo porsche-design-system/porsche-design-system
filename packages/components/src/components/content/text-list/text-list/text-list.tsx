@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
 import { getClosestHTMLElement, getPrefixedTagNames, isDark } from '../../../../utils';
 import type { Theme } from '../../../../types';
+import { ListType, OrderType } from './text-list-utils';
 
 @Component({
   tag: 'p-text-list',
@@ -11,10 +12,10 @@ export class TextList {
   @Element() public host!: HTMLElement;
 
   /** The type of the text list. */
-  @Prop() public listType?: 'unordered' | 'ordered' = 'unordered';
+  @Prop() public listType?: ListType = 'unordered';
 
   /** The list style type of an ordered list. */
-  @Prop() public orderType?: 'numbered' | 'alphabetically' = 'numbered';
+  @Prop() public orderType?: OrderType = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';

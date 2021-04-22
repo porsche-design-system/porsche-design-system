@@ -15,6 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PBanner {
         /**
@@ -693,11 +694,11 @@ export namespace Components {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1647,11 +1648,11 @@ declare namespace LocalJSX {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
