@@ -302,7 +302,7 @@
 .subline {
   display: flex;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-  margin-top: 4px;
+  margin-top: p-px-to-rem(4px);
 
   &::before {
     // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
