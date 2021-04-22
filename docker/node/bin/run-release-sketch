@@ -3,13 +3,13 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GITHUB_REPOSITORY}" ]]; then
-  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
+if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
+  echo "Please provide the \$AWS_ACCESS_KEY_ID environment variable."
   exit 1
 fi
 
-if [[ -z "${GITHUB_ACTOR}" ]]; then
-  echo "Please provide the \$GITHUB_ACTOR environment variable."
+if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]]; then
+  echo "Please provide the \$AWS_SECRET_ACCESS_KEY environment variable."
   exit 1
 fi
 
@@ -24,23 +24,19 @@ if [[ -z "${GITHUB_TOKEN}" ]]; then
 fi
 
 setup() {
-  echo "task: [$(date)] \"setup\" (${WORK_DIR})"
-  git config --global user.name "${GITHUB_ACTOR}"
-  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
-  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "${WORK_DIR}"
+  echo "task: [$(date)] \"setup\""
+  export AWS_DEFAULT_REGION=eu-central-1
 }
 
 copy_sketch_library_and_create_rss_feed() {
-  echo "task: [$(date)] \"copy_sketch_library_and_create_rss_feed\" (${WORK_DIR}, ${PACKAGE_LOCATION}, ${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+  echo "task: [$(date)] \"copy_sketch_library_and_create_rss_feed\" (${PACKAGE_LOCATION}, ${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+
   local title
   local publish_date
   title="$(echo "${PACKAGE_NAME}" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++){ $i=toupper(substr($i,1,1)) substr($i,2) }}1')"
   publish_date="$(git log -1 --format=%aD "${GITHUB_SHA}" | cat)"
 
-  mkdir -p "${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}"
-  cp "${PACKAGE_LOCATION}/${PACKAGE_NAME}.sketch" "${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch"
-  cat << _EOF_ > "${WORK_DIR}/${PACKAGE_NAME}.sketch.xml"
+  cat << _EOF_ > "${PACKAGE_NAME}.sketch.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
@@ -56,14 +52,11 @@ copy_sketch_library_and_create_rss_feed() {
 _EOF_
 }
 
-publish() {
-  echo "task: [$(date)] \"publish\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+upload_s3() {
+  echo "task: [$(date)] \"upload_s3\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
 
-  pushd "${WORK_DIR}"
-    git add -A
-    git commit -m "Automated deployment of Porsche Design System - Sketch Library (${P_CURRENT_BRANCH}): ${GITHUB_SHA}" --allow-empty
-    git push origin gh-pages --force
-  popd
+  aws s3 cp "${PACKAGE_NAME}.sketch.xml" "${BUCKET_URL}" --only-show-errors
+  aws s3 cp "${PACKAGE_LOCATION}/${PACKAGE_NAME}.sketch" "${BUCKET_URL}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch" --only-show-errors
 
 #  TODO: can't be used with GH Pages and GH Actions because of super strong caching
 #  local n=1
@@ -94,10 +87,10 @@ publish() {
 }
 
 is_version_published() {
-  echo "task: [$(date)] \"is_version_published\" (${WORK_DIR}, ${PACKAGE_NAME}, ${PACKAGE_VERSION})"
-  local file="${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch"
+  echo "task: [$(date)] \"is_version_published\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+  file=$(aws s3 ls "${BUCKET_URL}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")
 
-  if [[ -f "${file}" ]]; then
+  if [[ "${file}" ]]; then
     return 0 # true
   else
     return 1 # false
@@ -116,20 +109,17 @@ add_git_tag() {
 EOF
 }
 
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
-
-WORK_DIR="/opt/porsche-design-system-gh-pages"
-PACKAGE_LOCATION="${1}"
+PACKAGE_LOCATION="${1}" # sketch/basic or sketch/web
 PACKAGE_INFO="${PACKAGE_LOCATION}/package.env"
 PACKAGE_NAME="$(grep NAME "${PACKAGE_INFO}" | cut -d '=' -f2)"
 PACKAGE_VERSION="$(grep VERSION "${PACKAGE_INFO}" | cut -d '=' -f2)"
 GIT_TAG_NAME="sketch-library-${PACKAGE_NAME:22}-v${PACKAGE_VERSION}"
+BUCKET_URL="s3://porsche-design-system-storefront"
 
 setup
 if ! is_version_published; then
   copy_sketch_library_and_create_rss_feed
-  if publish; then
+  if upload_s3; then
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library published 🎉"
   else
