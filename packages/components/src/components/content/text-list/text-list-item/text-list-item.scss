@@ -2,66 +2,70 @@
 @import '../../../../styles/internal.variables';
 
 :host {
-  position: relative !important;
-  display: list-item !important;
-  color: inherit !important;
-  list-style-type: none !important;
-  padding-left: p-px-to-rem(24px) !important;
-
-  &::before {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: calc(1.5em / 2 - 0.125em) !important;
-    width: p-px-to-rem(4px) !important;
-    height: p-px-to-rem(4px) !important;
-    background-color: currentColor !important;
-  }
+  display: block;
 }
 
-:host(.root--nested) {
+.root {
+  $bem-block: &;
+  position: relative;
+  display: list-item;
+  color: inherit;
+  list-style-type: none;
+  padding-left: p-px-to-rem(24px);
+
   &::before {
-    height: 1px !important;
-    width: p-px-to-rem(8px) !important;
-    top: calc(1.5em / 2) !important;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(1.5em / 2 - 0.125em);
+    width: p-px-to-rem(4px);
+    height: p-px-to-rem(4px);
+    background-color: currentColor;
   }
-}
+  &--nested {
+    &::before {
+      height: 1px;
+      width: p-px-to-rem(8px);
+      top: calc(1.5em / 2);
+    }
 
-:host(.root--ordered) {
-  padding-left: p-px-to-rem(40px) !important;
+    #{$bem-block}--ordered-numbered & {
+      &::before {
+        content: counters(section, '.', decimal);
+      }
+    }
 
-  &::before {
-    right: calc(100% - 24px) !important;
-    top: 0 !important;
-    width: auto !important;
-    height: auto !important;
-    counter-increment: section !important;
-    text-align: right !important;
-    @include p-text-small;
-    background-color: transparent !important;
+    #{$bem-block}--ordered-alphabetically & {
+      &::before {
+        content: counters(section, '.', lower-latin);
+      }
+    }
   }
-}
 
-:host(.root--ordered-numbered) {
-  &::before {
-    content: counters(section, '.', decimal) '.' !important;
-  }
-}
+  &--ordered {
+    padding-left: p-px-to-rem(40px);
 
-:host(.root--ordered-alphabetically) {
-  &::before {
-    content: counters(section, '.', lower-latin) '.' !important;
-  }
-}
+    &::before {
+      right: calc(100% - 24px);
+      top: 0;
+      width: auto;
+      height: auto;
+      counter-increment: section;
+      text-align: right;
+      @include p-text-small;
+      background-color: transparent;
+    }
 
-:host(.root--ordered-numbered.root--nested) {
-  &::before {
-    content: counters(section, '.', decimal) !important;
-  }
-}
+    &-numbered {
+      &::before {
+        content: counters(section, '.', decimal) '.';
+      }
+    }
 
-:host(.root--ordered-alphabetically.root--nested) {
-  &::before {
-    content: counters(section, '.', lower-latin) !important;
+    &-alphabetically {
+      &::before {
+        content: counters(section, '.', lower-latin) '.';
+      }
+    }
   }
 }
