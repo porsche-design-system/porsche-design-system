@@ -7,7 +7,7 @@ describe('Props Table Button', () => {
       await vrt.test(
         'props-table-button',
         async () => {
-          await vrt.goTo('/#/components/button#props');
+          await vrt.goTo('/components/button#props');
         },
         { elementSelector: '#app > .main > .router-view' }
       )
