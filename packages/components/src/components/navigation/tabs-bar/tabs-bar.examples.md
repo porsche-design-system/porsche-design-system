@@ -132,7 +132,7 @@ The background and gradient has to align to your chosen background.
   import Component from 'vue-class-component';
   
   const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-  const buildAnchor = (name: string) => `  <a href="#">Tab ${name}</a>`;
+  const buildAnchor = (name: string) => `  <a>Tab ${name}</a>`;
   const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;

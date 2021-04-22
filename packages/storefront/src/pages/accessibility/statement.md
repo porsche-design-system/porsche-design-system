@@ -64,7 +64,7 @@ We continually assess and work to ensure that our Web presence is in conformance
     If you experience any difficulty in accessing any part of this website, please feel free to contact us. Please be sure to specify the Web page and describe the issue in detail and we will make reasonable efforts to make that page accessible. We welcome feedback on how we can improve as well.
   </p-text>
   <p-text-list>
-    <p-text-list-item>E-mail: <a href="#">[e-mail address]</a></p-text-list-item>
+    <p-text-list-item>E-mail: <a>[e-mail address]</a></p-text-list-item>
     <p-text-list-item>
       Postal address: <br>
       Dr. Ing. h.c. F. Porsche AG<br>
