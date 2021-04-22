@@ -36,5 +36,5 @@ It is recommended to always keep the label short. Try not to use more than two w
 ---
 
 ## Related Component
-* [Tabs](#/components/tabs)
-* [Pagination](#/components/pagination)
+* [Tabs](/components/tabs)
+* [Pagination](/components/pagination)

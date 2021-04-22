@@ -39,7 +39,7 @@ To help inform the user about the **end of support of Microsoft Internet Explore
 
 #### Install
 
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
+It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. If you don't have an account yet, please first [read more about getting started as developer](/start-coding/introduction).
 
 ```
 // install with npm:

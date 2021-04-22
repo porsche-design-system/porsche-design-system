@@ -14,7 +14,7 @@ The label text (always in copytext) gives the user an information about the opti
 
 ### Validation and error
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
-Please find more information in the [Form pattern guideline](#/patterns/forms).
+Please find more information in the [Form pattern guideline](/patterns/forms).
 
 ### Items
 We recommend using a Radio Button for a selection of 3-6 items. For a larger number of items (≥ 7) it is recommended to use a Select component instead. "If possible, use radio buttons rather than Selects. Radio buttons have lower cognitive load because they make all options permanently visible so that users can easily compare (…)." (Jakob Nielsen, 2004)
@@ -45,5 +45,5 @@ Never use a Radio Button alone. In this case you should you the Checkbox instead
 
 ## Related Components
 
-* [Checkbox](#/components/checkbox)
-* [Select](#/components/select)
+* [Checkbox](/components/checkbox)
+* [Select](/components/select)
