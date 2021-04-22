@@ -79,7 +79,7 @@ export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-wi
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
-export type GetStylesFunction = (value: any) => JssStyle;
+export type GetStylesFunction = (value?: any) => JssStyle;
 export const buildResponsiveJss = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
