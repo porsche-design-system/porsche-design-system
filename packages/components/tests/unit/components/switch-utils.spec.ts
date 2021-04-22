@@ -1,12 +1,12 @@
-import { isDisabled } from '../../../src/components/action/switch/switch-utils';
+import { isDisabledOrLoading } from '../../../src/components/action/switch/switch-utils';
 
-describe('isDisabled()', () => {
+describe('isDisabledOrLoading()', () => {
   it.each<[boolean, boolean, boolean]>([
     [true, true, true],
     [true, false, true],
     [false, true, true],
     [false, false, false],
   ])('should for disabled: "%s" and loading: "%s" return "%s"', (disabled, loading, result) => {
-    expect(isDisabled(disabled, loading)).toBe(result);
+    expect(isDisabledOrLoading(disabled, loading)).toBe(result);
   });
 });
