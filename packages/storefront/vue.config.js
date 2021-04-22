@@ -6,7 +6,7 @@ const { META_ICONS_MANIFEST, META_ICONS_CDN_BASE_URL } =
 const { favicon, touchIcon, pinnedTab, mstile } = META_ICONS_MANIFEST;
 
 module.exports = {
-  publicPath: '/',
+  publicPath: './',
   chainWebpack: (config) => {
     config.module
       .rule('vue')
