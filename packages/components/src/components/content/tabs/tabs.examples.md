@@ -5,7 +5,7 @@ between groups of content that are related and at the same level of hierarchy. T
 according to the active tab and all accessibility attributes on your tab and tab content.
 
 This variant does not support `a` tags and should not be used for navigation. 
-If you need to update your window location have a look at [Tabs Bar](#/components/tabs-bar) component.
+If you need to update your window location have a look at [Tabs Bar](/components/tabs-bar) component.
 
 ---
 

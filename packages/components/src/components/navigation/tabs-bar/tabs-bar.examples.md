@@ -9,7 +9,7 @@ content to be rendered beneath. To help with this task the component triggers an
 of the active tab.
 
 If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
-handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs) component.
+handles the correct display of content according to the active tab. Have a look at the [Tabs](/components/tabs) component.
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.

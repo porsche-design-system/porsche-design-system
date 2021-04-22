@@ -2,7 +2,7 @@
 
 The `<p-link-pure>` component is essential for performing changes in page routes.
 It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label  it's best practice to provide a descriptive label text for screen readers.
-In case you want the user to execute an action, you should select the [Button](#/components/button) or [Button Pure](#/components/button-pure) component instead.
+In case you want the user to execute an action, you should select the [Button](/components/button) or [Button Pure](/components/button-pure) component instead.
 
 ## Basic example
 

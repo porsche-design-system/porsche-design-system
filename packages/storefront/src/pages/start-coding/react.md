@@ -4,7 +4,7 @@
 
 To build your own application with the **React** components of Porsche Design System, follow these steps:
 
-- Follow the instructions at (Introduction)[#/start-coding/introduction] to get the required npm package
+- Follow the instructions at (Introduction)[/start-coding/introduction] to get the required npm package
 - Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
   create a directory inside the current folder with the initial project structure called `my-app`
 - To add TypeScript to your **Create React App**, you have to install it:
@@ -70,7 +70,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## When are Porsche Design System components initialized?
 
-See [componentsReady()](#/helpers/components-ready) for further information.
+See [componentsReady()](/helpers/components-ready) for further information.
 
 ## Test the application
 
