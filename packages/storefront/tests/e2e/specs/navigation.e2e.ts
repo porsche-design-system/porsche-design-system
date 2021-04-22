@@ -3,10 +3,10 @@ import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
 
-describe('storefront', () => {
+describe('navigation', () => {
   let browserPage: Page;
-  const logPages: string[] = [];
-  const logTabs: string[] = [];
+  // const logPages: string[] = [];
+  // const logTabs: string[] = [];
 
   beforeEach(async () => (browserPage = await getBrowser().newPage()));
   afterEach(async () => await browserPage.close());
@@ -30,7 +30,7 @@ describe('storefront', () => {
             `//aside[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
           );
           const [linkElement] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(
+            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
               category
             )}\/${paramCase(page)}']`
           );
@@ -54,9 +54,9 @@ describe('storefront', () => {
           if (!Array.isArray(tabs)) {
             for (const [index, tab] of Object.entries(Object.keys(tabs))) {
               const [tabElement] = await browserPage.$x(
-                `//p-tabs-bar//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(
-                  page
-                )}#${paramCase(tab)}']`
+                `//p-tabs-bar//a[contains(., '${tab}')][@href='\/${paramCase(category)}\/${paramCase(page)}${paramCase(
+                  tab
+                )}']`
               );
 
               if (parseInt(index) === 0) {
@@ -82,11 +82,11 @@ describe('storefront', () => {
                 .withContext('should not contain [object Object]')
                 .toBe(false);
 
-              logTabs.push(`${category} > ${page} > ${tab}`);
+              // logTabs.push(`${category} > ${page} > ${tab}`);
             }
           }
 
-          logPages.push(`${category} > ${page}`);
+          // logPages.push(`${category} > ${page}`);
         });
       })(category, page);
     }
