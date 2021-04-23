@@ -32,12 +32,12 @@ export const getMediaQueryStyles = (): string =>
       [mediaQuery('xxs')]: {
         bottom: '-100%',
         willChange: 'opacity, bottom',
-        animation: '600ms 0s $animateMobileOut cubic-bezier(0.5, 1, 0.89, 1) forwards',
+        animation: '600ms 0s $animateMobileOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
       },
       [mediaQuery('s')]: {
         top: '-100%',
         willChange: 'opacity, top',
-        animation: '600ms 0s $animateDesktopOut cubic-bezier(0.5, 1, 0.89, 1) forwards',
+        animation: '600ms 0s $animateDesktopOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
       },
     }),
   });
