@@ -17,7 +17,10 @@ import {
 
 describe('switch', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
+  });
   afterEach(async () => await page.close());
 
   const tagName = 'p-switch';
@@ -130,13 +133,13 @@ describe('switch', () => {
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
-      expect(hostFocusCalls).toBe(0);
-      expect(afterFocusCalls).toBe(1);
+      expect(hostFocusCalls).toBe(0, 'hostFocusCalls after tab');
+      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect(hostFocusCalls).toBe(0);
-      expect(afterFocusCalls).toBe(1);
+      await waitForEventSerialization(page);
+      expect(hostFocusCalls).toBe(0, 'hostFocusCalls after second tab');
+      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
     });
   });
 

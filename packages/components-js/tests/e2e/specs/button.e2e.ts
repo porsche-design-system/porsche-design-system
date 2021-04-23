@@ -310,13 +310,13 @@ describe('button', () => {
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
-    expect(buttonFocusCalls).toBe(0);
-    expect(afterFocusCalls).toBe(1);
+    expect(buttonFocusCalls).toBe(0, 'buttonFocusCalls after tab');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
-    expect(buttonFocusCalls).toBe(0);
-    expect(afterFocusCalls).toBe(1);
+    expect(buttonFocusCalls).toBe(0, 'buttonFocusCalls after second tab');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
   });
 
   it('should submit form via enter key when type is submit', async () => {
