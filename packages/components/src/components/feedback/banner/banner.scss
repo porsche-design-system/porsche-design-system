@@ -2,7 +2,6 @@
 @import '../../../styles/internal.variables';
 
 $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
-$easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
 
 :host {
   --#{$p-global-class-prefix}banner-position-type: fixed;
@@ -26,17 +25,6 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 }
 
-@keyframes animateMobileOut {
-  from {
-    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
-    opacity: 1;
-  }
-  to {
-    bottom: -100%;
-    opacity: 0;
-  }
-}
-
 @keyframes animateDesktopIn {
   from {
     top: -100%;
@@ -48,45 +36,17 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 }
 
-@keyframes animateDesktopOut {
-  from {
-    top: var(--#{$p-global-class-prefix}banner-position-top);
-    opacity: 1;
-  }
-  to {
-    top: -100%;
-    opacity: 0;
-  }
-}
-
 @include p-media-query('xxs', 's') {
-  :host {
-    bottom: -100%;
-    will-change: opacity, bottom;
-  }
   :host(.hydrated) {
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn
       $easeInQuad forwards;
   }
-
-  :host(.banner--close) {
-    animation: var(--p-animation-duration__banner, 600ms) 0s animateMobileOut $easeOutQuad forwards;
-  }
 }
 
 @include p-media-query('s') {
-  :host {
-    top: -100%;
-    will-change: opacity, top;
-  }
-
   :host(.hydrated) {
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn
       $easeInQuad forwards;
-  }
-
-  :host(.banner--close) {
-    animation: var(--p-animation-duration__banner, 600ms) 0s animateDesktopOut $easeOutQuad forwards;
   }
 }
 

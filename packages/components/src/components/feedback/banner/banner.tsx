@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
+import { addCss } from './banner-utils';
 
 @Component({
   tag: 'p-banner',
@@ -106,7 +107,7 @@ export class Banner {
 
   private removeBanner = (): void => {
     this.dismiss.emit();
-    this.host.classList.add('banner--close');
+    addCss(this.host);
     setTimeout(() => this.host.remove(), 1000);
   };
 
