@@ -144,8 +144,6 @@ describe('switch', () => {
   });
 
   describe('events', () => {
-    beforeEach(async () => await initAddEventListener(page));
-
     it('should trigger event on click', async () => {
       await initSwitch({ otherMarkup: clickHandlerScript });
 
