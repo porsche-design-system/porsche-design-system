@@ -87,7 +87,7 @@ describe('button', () => {
     }
   });
 
-  it("submits parent form on click if it's type submit", async () => {
+  it("should submit parent form on click if it's type submit", async () => {
     await setContentWithDesignSystem(
       page,
       `<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`
