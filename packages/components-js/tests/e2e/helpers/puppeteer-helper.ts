@@ -7,7 +7,7 @@ const defaultOptions: Options = { waitUntil: 'networkidle0' };
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
-  const options: Options = { ...defaultOptions, ...opts };
+  const options: Options = { ...defaultOptions, ...{ injectIntoHead: '', ...opts } };
 
   let lifeCycleLogger = '';
   if (options.enableLogging) {
