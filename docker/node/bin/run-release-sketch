@@ -55,8 +55,8 @@ _EOF_
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
 
-  aws s3 cp "${PACKAGE_NAME}.sketch.xml" "${BUCKET_URL}" --only-show-errors
-  aws s3 cp "${PACKAGE_LOCATION}/${PACKAGE_NAME}.sketch" "${BUCKET_URL}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch" --only-show-errors
+  aws s3 cp "${PACKAGE_NAME}.sketch.xml" "${BUCKET_URL}/${BUCKET_FILE_PATH_XML}" --only-show-errors
+  aws s3 cp "${PACKAGE_LOCATION}/${PACKAGE_NAME}.sketch" "${BUCKET_URL}/${BUCKET_FILE_PATH_SKETCH}" --only-show-errors
 
 #  TODO: can't be used with GH Pages and GH Actions because of super strong caching
 #  local n=1
@@ -86,9 +86,25 @@ upload_s3() {
   return 0
 }
 
+purge_cloudfront() {
+  echo "task: [$(date)] \"purge_cloudfront\" (${BUCKET_FILE_PATH_XML})"
+  result="$(aws cloudfront create-invalidation \
+    --distribution-id E2KJVI0036W7XP \
+    --paths "/${BUCKET_FILE_PATH_XML}")"
+  status_code="${PIPESTATUS[@]}"
+
+  if [[ $status_code == 0 ]]; then
+    echo "Cloudfront purge was successful."
+  else
+    echo "Cloudfront purge wasn't successful."
+    echo $result;
+    exit 1
+  fi
+}
+
 is_version_published() {
   echo "task: [$(date)] \"is_version_published\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
-  file=$(aws s3 ls "${BUCKET_URL}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")
+  file=$(aws s3 ls "${BUCKET_URL}/${BUCKET_FILE_PATH_SKETCH}")
 
   if [[ "${file}" ]]; then
     return 0 # true
@@ -115,11 +131,14 @@ PACKAGE_NAME="$(grep NAME "${PACKAGE_INFO}" | cut -d '=' -f2)"
 PACKAGE_VERSION="$(grep VERSION "${PACKAGE_INFO}" | cut -d '=' -f2)"
 GIT_TAG_NAME="sketch-library-${PACKAGE_NAME:22}-v${PACKAGE_VERSION}"
 BUCKET_URL="s3://porsche-design-system-storefront"
+BUCKET_FILE_PATH_SKETCH="sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch"
+BUCKET_FILE_PATH_XML="${PACKAGE_NAME}.sketch.xml"
 
 setup
 if ! is_version_published; then
   copy_sketch_library_and_create_rss_feed
   if upload_s3; then
+    purge_cloudfront
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library published 🎉"
   else
