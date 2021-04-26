@@ -1,7 +1,7 @@
 import { getBrowser, options } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('router', () => {
+fdescribe('router', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
@@ -47,18 +47,18 @@ describe('router', () => {
     });
 
     it('should route to passed tab of page when tabs are configured', async () => {
-      await page.goto(buildUrl('/components/typography#headline'));
-      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography#headline'));
+      await page.goto(buildUrl('/components/typography/headline'));
+      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/headline'));
     });
 
     it('should redirect to first configured tab of page when no tab is passed', async () => {
       await page.goto(buildUrl('/components/typography'));
-      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography#text'));
+      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/text'));
     });
 
     it('should redirect to first configured tab of page when passed tab is invalid', async () => {
-      await page.goto(buildUrl('/components/typography#some-invalid-tab'));
-      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography#text'));
+      await page.goto(buildUrl('/components/typography/some-invalid-tab'));
+      expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/text'));
     });
 
     it('should redirect to 404 when passed category is invalid', async () => {
@@ -74,8 +74,8 @@ describe('router', () => {
 
   describe('pattern view', () => {
     it('should route to pattern', async () => {
-      await page.goto(buildUrl('/patterns/forms/example-login'));
-      expect(await getCurrentUrl()).toBe(buildUrl('/patterns/forms/example-login'));
+      await page.goto(buildUrl('/patterns/forms/example/login'));
+      expect(await getCurrentUrl()).toBe(buildUrl('/patterns/forms/example/login'));
     });
 
     it('should redirect to 404 when category is invalid', async () => {
@@ -84,7 +84,7 @@ describe('router', () => {
     });
 
     it('should redirect to 404 when pattern is invalid', async () => {
-      await page.goto(buildUrl('/patterns/forms/some-invalid-pattern'));
+      await page.goto(buildUrl('/patterns/forms/example/some-invalid-pattern'));
       expect(await getCurrentUrl()).toBe(buildUrl('/404'));
     });
   });

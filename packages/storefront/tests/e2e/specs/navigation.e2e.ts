@@ -54,9 +54,9 @@ describe('navigation', () => {
           if (!Array.isArray(tabs)) {
             for (const [index, tab] of Object.entries(Object.keys(tabs))) {
               const [tabElement] = await browserPage.$x(
-                `//p-tabs-bar//a[contains(., '${tab}')][@href='\/${paramCase(category)}\/${paramCase(page)}#${paramCase(
-                  tab
-                )}']`
+                `//p-tabs-bar//a[contains(., '${tab}')][@href='\/${paramCase(category)}\/${paramCase(
+                  page
+                )}\/${paramCase(tab)}']`
               );
 
               if (parseInt(index) === 0) {
