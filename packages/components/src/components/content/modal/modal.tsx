@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses } from '../../../utils';
+import { getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
 import {
   addCss,
   getFirstAndLastElement,
@@ -81,7 +81,7 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
       ['modal']: true,
-      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off'], true),
+      ...mapBreakpointPropToClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
     };
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

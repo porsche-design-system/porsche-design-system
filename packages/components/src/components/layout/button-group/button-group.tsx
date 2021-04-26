@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses } from '../../../utils';
+import { mapBreakpointPropToClasses } from '../../../utils';
 import type { ButtonGroupDirection } from './button-group-utils';
 
 @Component({
@@ -19,7 +19,7 @@ export class ButtonGroup {
   public render(): JSX.Element {
     const buttonGroupClasses = {
       ['group']: true,
-      ...mapBreakpointPropToPrefixedClasses('group--direction', this.direction, undefined, true),
+      ...mapBreakpointPropToClasses('group--direction', this.direction),
     };
 
     return (

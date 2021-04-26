@@ -5,7 +5,7 @@ import {
   getTagName,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
@@ -67,7 +67,7 @@ export class Text {
       [`text--color-${this.color}`]: this.color !== 'default',
       ['text--ellipsis']: this.ellipsis,
       ['text--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
-      ...mapBreakpointPropToPrefixedClasses('text--size', this.size, undefined, true),
+      ...mapBreakpointPropToClasses('text--size', this.size),
     };
 
     return (
