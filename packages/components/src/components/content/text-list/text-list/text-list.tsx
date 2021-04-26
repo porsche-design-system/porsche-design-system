@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
 import { getClosestHTMLElement, getPrefixedTagNames, isDark } from '../../../../utils';
 import type { Theme } from '../../../../types';
-import { ListType, OrderType } from './text-list-utils';
+import type { ListType, OrderType } from './text-list-utils';
 
 @Component({
   tag: 'p-text-list',

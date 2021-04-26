@@ -1,5 +1,5 @@
 import { attachCss, buildHostStyles, getCss, GetStylesFunction, JssStyle, mergeDeep, pxToRem } from '../../../../utils';
-import { ListType, OrderType } from '../text-list/text-list-utils';
+import type { ListType, OrderType } from '../text-list/text-list-utils';
 
 import { text } from '@porsche-design-system/utilities';
 
