@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 
 # Cache
+.aws-sam
 .npm
 .eslintcache
 
