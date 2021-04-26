@@ -66,13 +66,13 @@ export class RadioButtonWrapper {
 
   public render(): JSX.Element {
     const labelClasses = {
-      ['label']: true,
-      ['label--disabled']: this.input.disabled,
-      [`label--${this.state}`]: this.state !== 'none',
+      ['root']: true,
+      ['root--disabled']: this.input.disabled,
+      [`root--${this.state}`]: this.state !== 'none',
     };
     const labelTextClasses = {
-      ['label__text']: true,
-      ...mapBreakpointPropToClasses('label__text-', this.hideLabel, ['hidden', 'visible']),
+      ['root__text']: true,
+      ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

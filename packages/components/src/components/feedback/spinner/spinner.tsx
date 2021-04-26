@@ -27,9 +27,9 @@ export class Spinner {
 
   public render(): JSX.Element {
     const spinnerClasses = {
-      ['spinner']: true,
-      ['spinner--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('spinner--size', this.size),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     return (

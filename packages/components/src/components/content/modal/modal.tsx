@@ -80,8 +80,8 @@ export class Modal {
   public render(): JSX.Element {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
-      ['modal']: true,
-      ...mapBreakpointPropToClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
+      ['root']: true,
+      ...mapBreakpointPropToClasses('root-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
     };
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

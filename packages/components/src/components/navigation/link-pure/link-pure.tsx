@@ -76,11 +76,11 @@ export class LinkPure {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkPureClasses = {
-      ['link']: true,
-      ['link--theme-dark']: isDark(this.theme),
-      ['link--active']: this.active,
-      ...mapBreakpointPropToClasses('link--size', this.size),
-      ...mapBreakpointPropToClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ['root--active']: this.active,
+      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

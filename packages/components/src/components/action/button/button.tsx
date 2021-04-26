@@ -61,10 +61,10 @@ export class Button {
 
   public render(): JSX.Element {
     const buttonClasses = {
-      ['button']: true,
-      [`button--${this.variant}`]: this.variant !== 'secondary',
-      ['button--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('button-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      [`root--${this.variant}`]: this.variant !== 'secondary',
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const iconProps = {
