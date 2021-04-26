@@ -28,7 +28,7 @@ const router = new VueRouter({
       component: () => import('@/views/Page.vue'),
     },
     {
-      path: '/patterns/:category/:pattern',
+      path: '/patterns/:category/example/:pattern',
       name: 'pattern',
       component: () => import('@/views/Pattern.vue'),
       meta: { standalone: true },
