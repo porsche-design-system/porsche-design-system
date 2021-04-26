@@ -1,7 +1,7 @@
 import { getBrowser, options } from '../helpers';
 import { Page } from 'puppeteer';
 
-fdescribe('router', () => {
+describe('router', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
