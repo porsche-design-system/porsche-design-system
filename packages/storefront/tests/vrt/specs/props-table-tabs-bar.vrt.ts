@@ -7,7 +7,7 @@ describe('Props Table Tabs-Bar', () => {
       await vrt.test(
         'props-table-tabs-bar',
         async () => {
-          await vrt.goTo('/components/tabs-bar#props');
+          await vrt.goTo('/components/tabs-bar/props');
         },
         { elementSelector: '#app > .main > .router-view' }
       )
