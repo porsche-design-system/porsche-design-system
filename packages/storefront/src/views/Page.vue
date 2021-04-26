@@ -51,11 +51,11 @@
     }
 
     @Watch('$route')
-    private onRouteChange(): Promise<void> {
+    private onRouteChange(): void {
       this.loadComponents();
     }
 
-    private mounted(): Promise<void> {
+    private mounted(): void {
       this.loadComponents();
     }
 
