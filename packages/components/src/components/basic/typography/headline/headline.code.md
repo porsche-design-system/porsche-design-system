@@ -35,7 +35,7 @@ If you need more control over sizing and responsiveness, you can use predefined 
 <Playground :markup="customVariantMarkup" :config="config">
  <select v-model="customVariant">
     <option disabled>Select an custom variant</option>
-    <option value="{ base: 'small', l: 'medium' }" selected>Custom Breakpoints</option>
+    <option value="{ base: 'small', l: 'medium' }">Custom Breakpoints</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
