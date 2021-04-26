@@ -5,7 +5,7 @@ import {
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
@@ -56,7 +56,7 @@ export class Link {
       ['link']: true,
       [`link--${this.variant}`]: this.variant !== 'secondary',
       ['link--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'], true),
+      ...mapBreakpointPropToClasses('link-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

@@ -8,7 +8,7 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
@@ -72,7 +72,7 @@ export class CheckboxWrapper {
     };
     const labelTextClasses = {
       ['label__text']: true,
-      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToClasses('label__text-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

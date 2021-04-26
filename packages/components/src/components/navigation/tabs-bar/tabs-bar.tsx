@@ -17,7 +17,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   setAttribute,
 } from '../../../utils';
 
@@ -105,7 +105,7 @@ export class TabsBar {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--weight-semibold']: this.weight !== 'regular',
-      ...mapBreakpointPropToPrefixedClasses('root--size', this.size, undefined, true),
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     const scrollAreaClasses = 'scroll-area';

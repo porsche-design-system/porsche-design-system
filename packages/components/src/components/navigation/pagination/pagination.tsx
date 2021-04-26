@@ -3,7 +3,7 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
@@ -82,7 +82,7 @@ export class Pagination {
     const paginationClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('root--size', this.maxNumberOfPageLinks, undefined, true),
+      ...mapBreakpointPropToClasses('root--size', this.maxNumberOfPageLinks),
     };
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);

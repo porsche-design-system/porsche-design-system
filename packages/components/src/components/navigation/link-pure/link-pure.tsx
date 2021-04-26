@@ -7,7 +7,7 @@ import {
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
@@ -79,8 +79,8 @@ export class LinkPure {
       ['link']: true,
       ['link--theme-dark']: isDark(this.theme),
       ['link--active']: this.active,
-      ...mapBreakpointPropToPrefixedClasses('link--size', this.size, undefined, true),
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'], true),
+      ...mapBreakpointPropToClasses('link--size', this.size),
+      ...mapBreakpointPropToClasses('link-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

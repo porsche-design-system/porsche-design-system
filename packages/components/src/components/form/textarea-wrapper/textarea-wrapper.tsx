@@ -8,7 +8,7 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
@@ -73,7 +73,7 @@ export class TextareaWrapper {
       ['label']: true,
       ['label--disabled']: disabled,
       [`label--${this.state}`]: this.state !== 'none',
-      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
     const textProps = { tag: 'span', color: 'inherit' };
     const labelProps = { ...textProps, onClick: this.labelClick };

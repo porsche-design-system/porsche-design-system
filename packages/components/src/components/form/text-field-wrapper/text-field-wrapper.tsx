@@ -9,7 +9,7 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   observeMutations,
   setAriaAttributes,
   unobserveMutations,
@@ -82,7 +82,7 @@ export class TextFieldWrapper {
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
+      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const textProps = { tag: 'span', color: 'inherit' };

@@ -2,7 +2,7 @@ import { JSX, Component, Prop, h, Watch } from '@stencil/core';
 import type { Theme } from '../../../types';
 import type { SpinnerSize } from './spinner-utils';
 import { verifySpinnerSize } from './spinner-utils';
-import { isDark, mapBreakpointPropToPrefixedClasses } from '../../../utils';
+import { isDark, mapBreakpointPropToClasses } from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
@@ -29,7 +29,7 @@ export class Spinner {
     const spinnerClasses = {
       ['spinner']: true,
       ['spinner--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size, undefined, true),
+      ...mapBreakpointPropToClasses('spinner--size', this.size),
     };
 
     return (

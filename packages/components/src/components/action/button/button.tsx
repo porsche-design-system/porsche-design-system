@@ -4,7 +4,7 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 
@@ -64,7 +64,7 @@ export class Button {
       ['button']: true,
       [`button--${this.variant}`]: this.variant !== 'secondary',
       ['button--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label'], true),
+      ...mapBreakpointPropToClasses('button-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const iconProps = {
