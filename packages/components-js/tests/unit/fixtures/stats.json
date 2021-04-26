@@ -1,26 +1,26 @@
 {
-  "hash": "d7ed0b0bca207fa17803",
+  "hash": "c29136eff4604d0aecdd",
   "version": "5.31.2",
-  "time": 2998,
-  "builtAt": 1619416466876,
+  "time": 2684,
+  "builtAt": 1619426829070,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.2.0890d7a9c51f74e22703.js"
+      "porsche-design-system.v2.0.2.06be0fea282c76cb1a35.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.2.0890d7a9c51f74e22703.js",
+      "name": "porsche-design-system.v2.0.2.06be0fea282c76cb1a35.js",
       "size": 61488,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0890d7a9c51f74e22703",
+        "contenthash": "06be0fea282c76cb1a35",
         "javascriptModule": false,
         "minimized": true,
         "size": 61488
@@ -65,17 +65,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.a687d99f09129257ce87.js",
-      "size": 18873,
+      "name": "porsche-design-system.radio-button-wrapper.a99ee1b7919a2a26c5a1.js",
+      "size": 18802,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a687d99f09129257ce87",
+        "contenthash": "a99ee1b7919a2a26c5a1",
         "javascriptModule": false,
         "minimized": true,
-        "size": 18873
+        "size": 18802
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -90,17 +90,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.c880918650e4db96bcd1.js",
-      "size": 17259,
+      "name": "porsche-design-system.button-pure.5e33dc94bdbc97bc8b72.js",
+      "size": 16887,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c880918650e4db96bcd1",
+        "contenthash": "5e33dc94bdbc97bc8b72",
         "javascriptModule": false,
         "minimized": true,
-        "size": 17259
+        "size": 16887
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -115,14 +115,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.34098c70d5841e1ed7c0.js",
+      "name": "porsche-design-system.link-pure.fc9519e185992578dad3.js",
       "size": 16602,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "34098c70d5841e1ed7c0",
+        "contenthash": "fc9519e185992578dad3",
         "javascriptModule": false,
         "minimized": true,
         "size": 16602
@@ -140,14 +140,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.icon.26e1e2d7e347f275c704.js",
+      "name": "porsche-design-system.icon.6f82f6d0249091712577.js",
       "size": 13957,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "26e1e2d7e347f275c704",
+        "contenthash": "6f82f6d0249091712577",
         "javascriptModule": false,
         "minimized": true,
         "size": 13957
@@ -190,17 +190,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.c98bc7574a2949f4890a.js",
-      "size": 11437,
+      "name": "porsche-design-system.text-field-wrapper.968870fa3eb06d45a42d.js",
+      "size": 11332,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c98bc7574a2949f4890a",
+        "contenthash": "968870fa3eb06d45a42d",
         "javascriptModule": false,
         "minimized": true,
-        "size": 11437
+        "size": 11332
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -215,17 +215,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.a888f201d61a9785ec0a.js",
-      "size": 10035,
+      "name": "porsche-design-system.button.fafa81acfb61c89332da.js",
+      "size": 9845,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a888f201d61a9785ec0a",
+        "contenthash": "fafa81acfb61c89332da",
         "javascriptModule": false,
         "minimized": true,
-        "size": 10035
+        "size": 9845
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -240,14 +240,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.3b3ff1e9c1f7d3fe6428.js",
+      "name": "porsche-design-system.link.41d46619b44b8ef91f6d.js",
       "size": 9177,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3b3ff1e9c1f7d3fe6428",
+        "contenthash": "41d46619b44b8ef91f6d",
         "javascriptModule": false,
         "minimized": true,
         "size": 9177
@@ -265,17 +265,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.99d7d264124ff9a43f64.js",
-      "size": 8780,
+      "name": "porsche-design-system.textarea-wrapper.8568861527037c1c12e1.js",
+      "size": 8725,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "99d7d264124ff9a43f64",
+        "contenthash": "8568861527037c1c12e1",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8780
+        "size": 8725
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -284,31 +284,6 @@
       "related": {},
       "chunks": [
         "textarea-wrapper"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.35cca23541d502c345a7.js",
-      "size": 8465,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "35cca23541d502c345a7",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 8465
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "checkbox-wrapper"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -340,14 +315,39 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.845f218dadc432684771.js",
+      "name": "porsche-design-system.checkbox-wrapper.e854f9d647731fa132ca.js",
+      "size": 8415,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "e854f9d647731fa132ca",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 8415
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "checkbox-wrapper"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.link-social.5d6261e8111598d13261.js",
       "size": 8152,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "845f218dadc432684771",
+        "contenthash": "5d6261e8111598d13261",
         "javascriptModule": false,
         "minimized": true,
         "size": 8152
@@ -365,14 +365,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text.53e9f37d5424319c8ae3.js",
+      "name": "porsche-design-system.text.89942118d43606edff5d.js",
       "size": 7059,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "53e9f37d5424319c8ae3",
+        "contenthash": "89942118d43606edff5d",
         "javascriptModule": false,
         "minimized": true,
         "size": 7059
@@ -390,42 +390,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.headline.d76830c15ea970efcbc4.js",
-      "size": 5937,
+      "name": "porsche-design-system.modal.21dae4a6b258ac2bbb7b.js",
+      "size": 5826,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d76830c15ea970efcbc4",
+        "contenthash": "21dae4a6b258ac2bbb7b",
         "javascriptModule": false,
         "minimized": true,
-        "size": 5937
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "headline"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.modal.22282ded240eb20a2e79.js",
-      "size": 5855,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "22282ded240eb20a2e79",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 5855
+        "size": 5826
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -440,17 +415,42 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.dbbed96f78d248b9e127.js",
-      "size": 5572,
+      "name": "porsche-design-system.headline.e69814b09731ee6f9d29.js",
+      "size": 5781,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "dbbed96f78d248b9e127",
+        "contenthash": "e69814b09731ee6f9d29",
         "javascriptModule": false,
         "minimized": true,
-        "size": 5572
+        "size": 5781
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "headline"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.banner.84c3fd397f8530519740.js",
+      "size": 5640,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "84c3fd397f8530519740",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 5640
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -465,17 +465,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-group.eb1e7cbcece04e1b6616.js",
-      "size": 4039,
+      "name": "porsche-design-system.button-group.5eaa51c83a0a896bc388.js",
+      "size": 4009,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "eb1e7cbcece04e1b6616",
+        "contenthash": "5eaa51c83a0a896bc388",
         "javascriptModule": false,
         "minimized": true,
-        "size": 4039
+        "size": 4009
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -484,31 +484,6 @@
       "related": {},
       "chunks": [
         "button-group"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.spinner.bc3940ac9d4435c9307f.js",
-      "size": 3702,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "bc3940ac9d4435c9307f",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 3702
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "spinner"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -534,6 +509,31 @@
       "related": {},
       "chunks": [
         "text-list"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.spinner.1ec555de9a728e54dbaa.js",
+      "size": 3615,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "1ec555de9a728e54dbaa",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 3615
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "spinner"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -615,31 +615,6 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.divider.954ef8868e9da173df00.js",
-      "size": 1932,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "954ef8868e9da173df00",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 1932
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "divider"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
       "name": "porsche-design-system.grid.63d1ee6c1f2d8c95a88c.js",
       "size": 1897,
       "emitted": true,
@@ -665,17 +640,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.ec81eeb48df4daa88c24.js",
-      "size": 1179,
+      "name": "porsche-design-system.divider.c493a8befbbc45981731.js",
+      "size": 1860,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ec81eeb48df4daa88c24",
+        "contenthash": "c493a8befbbc45981731",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1179
+        "size": 1860
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -683,7 +658,7 @@
       "auxiliaryChunkIdHints": [],
       "related": {},
       "chunks": [
-        "fieldset-wrapper"
+        "divider"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -712,6 +687,31 @@
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.fieldset-wrapper.9470ddbdc3867507e1ae.js",
+      "size": 1083,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "9470ddbdc3867507e1ae",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 1083
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "fieldset-wrapper"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
     }
   ],
   "chunks": [
@@ -720,9 +720,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8117,
+      "size": 8185,
       "sizes": {
-        "javascript": 8117
+        "javascript": 8185
       },
       "names": [],
       "idHints": [],
@@ -730,10 +730,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.dbbed96f78d248b9e127.js"
+        "porsche-design-system.banner.84c3fd397f8530519740.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "f578d1bc641b80062ad0",
+      "hash": "4cfba257ec0b0bae4924",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -746,9 +746,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 6477,
+          "size": 6545,
           "sizes": {
-            "javascript": 6477
+            "javascript": 6545
           },
           "built": true,
           "codeGenerated": true,
@@ -1644,7 +1644,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -1672,7 +1672,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -1700,7 +1700,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -1756,7 +1756,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -1784,7 +1784,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -1980,7 +1980,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -2095,9 +2095,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 12798,
+      "size": 12608,
       "sizes": {
-        "javascript": 12798
+        "javascript": 12608
       },
       "names": [],
       "idHints": [],
@@ -2105,10 +2105,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.a888f201d61a9785ec0a.js"
+        "porsche-design-system.button.fafa81acfb61c89332da.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "36e5047b5ee433af8b12",
+      "hash": "a80471d38c699c2bc29c",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -2553,9 +2553,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 10309,
+          "size": 10119,
           "sizes": {
-            "javascript": 10309
+            "javascript": 10119
           },
           "built": true,
           "codeGenerated": true,
@@ -2733,7 +2733,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -2761,7 +2761,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -2789,7 +2789,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -2845,7 +2845,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -2873,7 +2873,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -3069,7 +3069,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -3184,9 +3184,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 4501,
+      "size": 4471,
       "sizes": {
-        "javascript": 4501
+        "javascript": 4471
       },
       "names": [],
       "idHints": [],
@@ -3194,10 +3194,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-group.eb1e7cbcece04e1b6616.js"
+        "porsche-design-system.button-group.5eaa51c83a0a896bc388.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6de921b1c0e12bf71ea5",
+      "hash": "09ddca24021cfcc7113b",
       "childrenByOrder": {},
       "id": "button-group",
       "siblings": [],
@@ -3210,9 +3210,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4501,
+          "size": 4471,
           "sizes": {
-            "javascript": 4501
+            "javascript": 4471
           },
           "built": true,
           "codeGenerated": true,
@@ -3304,9 +3304,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 24821,
+      "size": 24449,
       "sizes": {
-        "javascript": 24821
+        "javascript": 24449
       },
       "names": [],
       "idHints": [],
@@ -3314,10 +3314,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.c880918650e4db96bcd1.js"
+        "porsche-design-system.button-pure.5e33dc94bdbc97bc8b72.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "728051f7c0b24ad6e05a",
+      "hash": "57093119e3e98dd87eb7",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -3934,9 +3934,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 17182,
+          "size": 16810,
           "sizes": {
-            "javascript": 17182
+            "javascript": 16810
           },
           "built": true,
           "codeGenerated": true,
@@ -4364,7 +4364,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -4392,7 +4392,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -4420,7 +4420,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -4476,7 +4476,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -4504,7 +4504,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -4700,7 +4700,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -4815,9 +4815,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11497,
+      "size": 11447,
       "sizes": {
-        "javascript": 11497
+        "javascript": 11447
       },
       "names": [],
       "idHints": [],
@@ -4825,10 +4825,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.35cca23541d502c345a7.js"
+        "porsche-design-system.checkbox-wrapper.e854f9d647731fa132ca.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "9addabf6498c6d085434",
+      "hash": "26190b5315d2b349451c",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -5059,9 +5059,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9568,
+          "size": 9518,
           "sizes": {
-            "javascript": 9568
+            "javascript": 9518
           },
           "built": true,
           "codeGenerated": true,
@@ -5779,7 +5779,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -5807,7 +5807,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -5835,7 +5835,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -5891,7 +5891,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -5919,7 +5919,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -6115,7 +6115,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -6230,9 +6230,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 2204,
+      "size": 2132,
       "sizes": {
-        "javascript": 2204
+        "javascript": 2132
       },
       "names": [],
       "idHints": [],
@@ -6240,10 +6240,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.divider.954ef8868e9da173df00.js"
+        "porsche-design-system.divider.c493a8befbbc45981731.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "79ff8cc61c84bff73756",
+      "hash": "a95c58df6beee9d3232c",
       "childrenByOrder": {},
       "id": "divider",
       "siblings": [],
@@ -6256,9 +6256,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 2121,
+          "size": 2049,
           "sizes": {
-            "javascript": 2121
+            "javascript": 2049
           },
           "built": true,
           "codeGenerated": true,
@@ -6434,7 +6434,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -6462,7 +6462,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -6490,7 +6490,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -6546,7 +6546,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -6574,7 +6574,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -6770,7 +6770,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -6885,9 +6885,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 1317,
+      "size": 1221,
       "sizes": {
-        "javascript": 1317
+        "javascript": 1221
       },
       "names": [],
       "idHints": [],
@@ -6895,10 +6895,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.ec81eeb48df4daa88c24.js"
+        "porsche-design-system.fieldset-wrapper.9470ddbdc3867507e1ae.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "aebcb51f61d87d2a3066",
+      "hash": "717250bcaf1ab6f7c4da",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -6911,9 +6911,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1317,
+          "size": 1221,
           "sizes": {
-            "javascript": 1317
+            "javascript": 1221
           },
           "built": true,
           "codeGenerated": true,
@@ -7546,9 +7546,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8364,
+      "size": 8208,
       "sizes": {
-        "javascript": 8364
+        "javascript": 8208
       },
       "names": [],
       "idHints": [],
@@ -7556,10 +7556,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.headline.d76830c15ea970efcbc4.js"
+        "porsche-design-system.headline.e69814b09731ee6f9d29.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fa82562fae68a9c04481",
+      "hash": "ce9a4098e66f11cb05f2",
       "childrenByOrder": {},
       "id": "headline",
       "siblings": [],
@@ -7572,9 +7572,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 6783,
+          "size": 6627,
           "sizes": {
-            "javascript": 6783
+            "javascript": 6627
           },
           "built": true,
           "codeGenerated": true,
@@ -8171,7 +8171,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -8199,7 +8199,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -8227,7 +8227,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -8283,7 +8283,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -8311,7 +8311,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -8507,7 +8507,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -8632,10 +8632,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.icon.26e1e2d7e347f275c704.js"
+        "porsche-design-system.icon.6f82f6d0249091712577.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6afae7548a3b0a94c48d",
+      "hash": "71fd6744e2e8e2ef502e",
       "childrenByOrder": {},
       "id": "icon",
       "siblings": [],
@@ -8827,7 +8827,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -8855,7 +8855,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -8883,7 +8883,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -8939,7 +8939,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -8967,7 +8967,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -9163,7 +9163,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -9288,10 +9288,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.3b3ff1e9c1f7d3fe6428.js"
+        "porsche-design-system.link.41d46619b44b8ef91f6d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "bac54572d806e4b572fb",
+      "hash": "a47329a493aad0f46a99",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -10177,7 +10177,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -10205,7 +10205,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -10233,7 +10233,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -10289,7 +10289,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -10317,7 +10317,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -10513,7 +10513,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -10638,10 +10638,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.34098c70d5841e1ed7c0.js"
+        "porsche-design-system.link-pure.fc9519e185992578dad3.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "879406a95afacc99f55e",
+      "hash": "31afd4f357e3cf288c74",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -11949,7 +11949,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -11977,7 +11977,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -12005,7 +12005,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -12061,7 +12061,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -12089,7 +12089,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -12285,7 +12285,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -12410,10 +12410,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.845f218dadc432684771.js"
+        "porsche-design-system.link-social.5d6261e8111598d13261.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c5794f7abf0ce4de4062",
+      "hash": "d1654fade08d28ffb6fa",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -13299,7 +13299,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -13327,7 +13327,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -13355,7 +13355,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -13411,7 +13411,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -13439,7 +13439,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -13635,7 +13635,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -13763,10 +13763,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.2.0890d7a9c51f74e22703.js"
+        "porsche-design-system.v2.0.2.06be0fea282c76cb1a35.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0c367cbda078c1f9f09a",
+      "hash": "b283cda9c06502c189ab",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -14489,7 +14489,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "15:66-92",
+              "loc": "15:65-91",
               "moduleId": 603,
               "resolvedModuleId": 603
             },
@@ -14573,7 +14573,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "52:124-150",
+              "loc": "52:120-146",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -14587,7 +14587,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "52:180-206",
+              "loc": "52:174-200",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -14797,7 +14797,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "40:165-191",
+              "loc": "40:159-185",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -15007,7 +15007,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "60:70-96",
+              "loc": "60:69-95",
               "moduleId": 744,
               "resolvedModuleId": 744
             },
@@ -15315,7 +15315,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "17:182-208",
+              "loc": "17:173-199",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -17359,7 +17359,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "175:59-85",
+              "loc": "175:58-84",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -17863,7 +17863,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "59:70-96",
+              "loc": "59:69-95",
               "moduleId": 25,
               "resolvedModuleId": 25
             },
@@ -19235,7 +19235,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "39:109-135",
+              "loc": "39:103-129",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -20985,7 +20985,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "52:140-166",
+              "loc": "52:137-163",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21083,7 +21083,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:197-198",
+              "loc": "56:196-197",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21097,7 +21097,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:227-237",
+              "loc": "56:226-236",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21111,7 +21111,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:256-257",
+              "loc": "56:255-256",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21125,7 +21125,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:292-312",
+              "loc": "56:291-311",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21139,7 +21139,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:346-347",
+              "loc": "56:345-346",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21153,7 +21153,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:491-492",
+              "loc": "56:488-489",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21167,7 +21167,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:529-530",
+              "loc": "56:526-527",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21181,7 +21181,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:547-563",
+              "loc": "56:544-560",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21195,7 +21195,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:605-606",
+              "loc": "56:602-603",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -21209,7 +21209,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-b028424c.js",
-              "loc": "56:746-747",
+              "loc": "56:743-744",
               "moduleId": 854,
               "resolvedModuleId": 854
             },
@@ -22732,9 +22732,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 9338,
+      "size": 9309,
       "sizes": {
-        "javascript": 9338
+        "javascript": 9309
       },
       "names": [],
       "idHints": [],
@@ -22742,10 +22742,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.22282ded240eb20a2e79.js"
+        "porsche-design-system.modal.21dae4a6b258ac2bbb7b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a5d04e952b192d997c44",
+      "hash": "0c7a9aee210122f92296",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -22890,9 +22890,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 8766,
+          "size": 8737,
           "sizes": {
-            "javascript": 8766
+            "javascript": 8737
           },
           "built": true,
           "codeGenerated": true,
@@ -23636,7 +23636,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -23664,7 +23664,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -23692,7 +23692,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -23748,7 +23748,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -23776,7 +23776,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -23972,7 +23972,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -24087,9 +24087,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 22032,
+      "size": 21961,
       "sizes": {
-        "javascript": 22032
+        "javascript": 21961
       },
       "names": [],
       "idHints": [],
@@ -24097,10 +24097,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.a687d99f09129257ce87.js"
+        "porsche-design-system.radio-button-wrapper.a99ee1b7919a2a26c5a1.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "2ebca5a48a706d408fa1",
+      "hash": "fddcc6f42762a6a542aa",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -24331,9 +24331,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 20103,
+          "size": 20032,
           "sizes": {
-            "javascript": 20103
+            "javascript": 20032
           },
           "built": true,
           "codeGenerated": true,
@@ -25824,7 +25824,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -25852,7 +25852,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -25880,7 +25880,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -25936,7 +25936,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -25964,7 +25964,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -26160,7 +26160,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -26275,9 +26275,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 4455,
+      "size": 4368,
       "sizes": {
-        "javascript": 4455
+        "javascript": 4368
       },
       "names": [],
       "idHints": [],
@@ -26285,10 +26285,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.spinner.bc3940ac9d4435c9307f.js"
+        "porsche-design-system.spinner.1ec555de9a728e54dbaa.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b83a101efc08905aaaeb",
+      "hash": "9aedad81d28207ab2c5c",
       "childrenByOrder": {},
       "id": "spinner",
       "siblings": [],
@@ -26301,9 +26301,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4372,
+          "size": 4285,
           "sizes": {
-            "javascript": 4372
+            "javascript": 4285
           },
           "built": true,
           "codeGenerated": true,
@@ -26479,7 +26479,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -26507,7 +26507,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -26535,7 +26535,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -26591,7 +26591,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -26619,7 +26619,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -26815,7 +26815,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -27554,7 +27554,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -27582,7 +27582,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -27610,7 +27610,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -27666,7 +27666,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -27694,7 +27694,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -27890,7 +27890,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -28015,10 +28015,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text.53e9f37d5424319c8ae3.js"
+        "porsche-design-system.text.89942118d43606edff5d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "bf6b39495eba27e15725",
+      "hash": "d92899a9c7fa935f98f5",
       "childrenByOrder": {},
       "id": "text",
       "siblings": [],
@@ -29052,7 +29052,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -29080,7 +29080,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -29108,7 +29108,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -29164,7 +29164,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -29192,7 +29192,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -29388,7 +29388,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -29503,9 +29503,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 15443,
+      "size": 15338,
       "sizes": {
-        "javascript": 15443
+        "javascript": 15338
       },
       "names": [],
       "idHints": [],
@@ -29513,10 +29513,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.c98bc7574a2949f4890a.js"
+        "porsche-design-system.text-field-wrapper.968870fa3eb06d45a42d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c225ae8223b2d29b56a1",
+      "hash": "1ef47ee486c075a7e564",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -29906,9 +29906,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 12451,
+          "size": 12346,
           "sizes": {
-            "javascript": 12451
+            "javascript": 12346
           },
           "built": true,
           "codeGenerated": true,
@@ -31348,7 +31348,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "90:30-36",
+              "loc": "90:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -31376,7 +31376,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "52:102-108",
+              "loc": "52:98-104",
               "moduleId": 619,
               "resolvedModuleId": 619
             },
@@ -31404,7 +31404,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "40:143-149",
+              "loc": "40:137-143",
               "moduleId": 452,
               "resolvedModuleId": 452
             },
@@ -31460,7 +31460,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "17:160-166",
+              "loc": "17:151-157",
               "moduleId": 4,
               "resolvedModuleId": 4
             },
@@ -31488,7 +31488,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "71:32-38",
+              "loc": "71:28-34",
               "moduleId": 710,
               "resolvedModuleId": 710
             },
@@ -31684,7 +31684,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "39:87-93",
+              "loc": "39:81-87",
               "moduleId": 327,
               "resolvedModuleId": 327
             },
@@ -31799,9 +31799,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11708,
+      "size": 11653,
       "sizes": {
-        "javascript": 11708
+        "javascript": 11653
       },
       "names": [],
       "idHints": [],
@@ -31809,10 +31809,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.99d7d264124ff9a43f64.js"
+        "porsche-design-system.textarea-wrapper.8568861527037c1c12e1.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6e19a80acd4ecd624589",
+      "hash": "59d1c38c79fee421f1fb",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -32043,9 +32043,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9779,
+          "size": 9724,
           "sizes": {
-            "javascript": 9779
+            "javascript": 9724
           },
           "built": true,
           "codeGenerated": true,
@@ -33916,7 +33916,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "15:66-92",
+          "loc": "15:65-91",
           "moduleId": 603,
           "resolvedModuleId": 603
         },
@@ -34000,7 +34000,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "52:124-150",
+          "loc": "52:120-146",
           "moduleId": 619,
           "resolvedModuleId": 619
         },
@@ -34014,7 +34014,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "52:180-206",
+          "loc": "52:174-200",
           "moduleId": 619,
           "resolvedModuleId": 619
         },
@@ -34224,7 +34224,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "40:165-191",
+          "loc": "40:159-185",
           "moduleId": 452,
           "resolvedModuleId": 452
         },
@@ -34434,7 +34434,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "60:70-96",
+          "loc": "60:69-95",
           "moduleId": 744,
           "resolvedModuleId": 744
         },
@@ -34742,7 +34742,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "17:182-208",
+          "loc": "17:173-199",
           "moduleId": 4,
           "resolvedModuleId": 4
         },
@@ -36786,7 +36786,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "175:59-85",
+          "loc": "175:58-84",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -37290,7 +37290,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "59:70-96",
+          "loc": "59:69-95",
           "moduleId": 25,
           "resolvedModuleId": 25
         },
@@ -38662,7 +38662,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "39:109-135",
+          "loc": "39:103-129",
           "moduleId": 327,
           "resolvedModuleId": 327
         },
@@ -40412,7 +40412,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "52:140-166",
+          "loc": "52:137-163",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40510,7 +40510,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:197-198",
+          "loc": "56:196-197",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40524,7 +40524,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:227-237",
+          "loc": "56:226-236",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40538,7 +40538,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:256-257",
+          "loc": "56:255-256",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40552,7 +40552,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:292-312",
+          "loc": "56:291-311",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40566,7 +40566,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:346-347",
+          "loc": "56:345-346",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40580,7 +40580,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:491-492",
+          "loc": "56:488-489",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40594,7 +40594,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:529-530",
+          "loc": "56:526-527",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40608,7 +40608,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:547-563",
+          "loc": "56:544-560",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40622,7 +40622,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:605-606",
+          "loc": "56:602-603",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -40636,7 +40636,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-b028424c.js",
-          "loc": "56:746-747",
+          "loc": "56:743-744",
           "moduleId": 854,
           "resolvedModuleId": 854
         },
@@ -41551,9 +41551,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 6477,
+      "size": 6545,
       "sizes": {
-        "javascript": 6477
+        "javascript": 6545
       },
       "built": true,
       "codeGenerated": true,
@@ -41634,9 +41634,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4501,
+      "size": 4471,
       "sizes": {
-        "javascript": 4501
+        "javascript": 4471
       },
       "built": true,
       "codeGenerated": true,
@@ -41714,9 +41714,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 17182,
+      "size": 16810,
       "sizes": {
-        "javascript": 17182
+        "javascript": 16810
       },
       "built": true,
       "codeGenerated": true,
@@ -41798,9 +41798,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 10309,
+      "size": 10119,
       "sizes": {
-        "javascript": 10309
+        "javascript": 10119
       },
       "built": true,
       "codeGenerated": true,
@@ -41881,9 +41881,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9568,
+      "size": 9518,
       "sizes": {
-        "javascript": 9568
+        "javascript": 9518
       },
       "built": true,
       "codeGenerated": true,
@@ -42044,9 +42044,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 2121,
+      "size": 2049,
       "sizes": {
-        "javascript": 2121
+        "javascript": 2049
       },
       "built": true,
       "codeGenerated": true,
@@ -42125,9 +42125,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 1317,
+      "size": 1221,
       "sizes": {
-        "javascript": 1317
+        "javascript": 1221
       },
       "built": true,
       "codeGenerated": true,
@@ -42368,9 +42368,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 6783,
+      "size": 6627,
       "sizes": {
-        "javascript": 6783
+        "javascript": 6627
       },
       "built": true,
       "codeGenerated": true,
@@ -42863,9 +42863,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 8766,
+      "size": 8737,
       "sizes": {
-        "javascript": 8766
+        "javascript": 8737
       },
       "built": true,
       "codeGenerated": true,
@@ -43027,9 +43027,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 20103,
+      "size": 20032,
       "sizes": {
-        "javascript": 20103
+        "javascript": 20032
       },
       "built": true,
       "codeGenerated": true,
@@ -43193,9 +43193,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4372,
+      "size": 4285,
       "sizes": {
-        "javascript": 4372
+        "javascript": 4285
       },
       "built": true,
       "codeGenerated": true,
@@ -43437,9 +43437,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 12451,
+      "size": 12346,
       "sizes": {
-        "javascript": 12451
+        "javascript": 12346
       },
       "built": true,
       "codeGenerated": true,
@@ -43687,9 +43687,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9779,
+      "size": 9724,
       "sizes": {
-        "javascript": 9779
+        "javascript": 9724
       },
       "built": true,
       "codeGenerated": true,
@@ -44681,7 +44681,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "90:30-36",
+          "loc": "90:28-34",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -44709,7 +44709,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "52:102-108",
+          "loc": "52:98-104",
           "moduleId": 619,
           "resolvedModuleId": 619
         },
@@ -44737,7 +44737,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "40:143-149",
+          "loc": "40:137-143",
           "moduleId": 452,
           "resolvedModuleId": 452
         },
@@ -44793,7 +44793,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "17:160-166",
+          "loc": "17:151-157",
           "moduleId": 4,
           "resolvedModuleId": 4
         },
@@ -44821,7 +44821,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "71:32-38",
+          "loc": "71:28-34",
           "moduleId": 710,
           "resolvedModuleId": 710
         },
@@ -45017,7 +45017,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "39:87-93",
+          "loc": "39:81-87",
           "moduleId": 327,
           "resolvedModuleId": 327
         },
@@ -46593,7 +46593,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.2.0890d7a9c51f74e22703.js",
+          "name": "porsche-design-system.v2.0.2.06be0fea282c76cb1a35.js",
           "size": 61488
         }
       ],
@@ -46615,7 +46615,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.2.0890d7a9c51f74e22703.js",
+          "name": "porsche-design-system.v2.0.2.06be0fea282c76cb1a35.js",
           "size": 61488
         }
       ],
