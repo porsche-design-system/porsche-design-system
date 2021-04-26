@@ -32,7 +32,7 @@ describe('headline', () => {
   const getHost = () => selectNode(page, 'p-headline');
 
   const getHeadlineTagName = async () =>
-    await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.headline').tagName);
+    await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
 
   describe('tag', () => {
     it('should render according to variant', async () => {

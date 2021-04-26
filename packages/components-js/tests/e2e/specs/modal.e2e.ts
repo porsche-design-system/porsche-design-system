@@ -23,7 +23,7 @@ describe('modal', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-modal');
-  const getModal = () => selectNode(page, 'p-modal >>> .modal');
+  const getModal = () => selectNode(page, 'p-modal >>> .root');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');

@@ -72,8 +72,8 @@ export const getDynamicCss = (open: boolean): string => {
           opacity: '1 !important',
           visibility: 'inherit !important',
         }),
-        modal: {
-          transform: 'scale3d(1, 1, 1) !important',
+        root: {
+          transform: 'scale3d(1, 1, 1)',
         },
       })
     : '';
