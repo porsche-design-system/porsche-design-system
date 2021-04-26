@@ -59,7 +59,7 @@ We recommended to use no more than 80 characters or glyphs per line. This might 
 ## Do’s & Don’ts
 
 ### Don't use more than three buttons
-There should be no more than three actions. Actions should always be located within an action bar at the bottom of the Modal. Button order and positioning should follow our guidelines for [Buttons](/components/button#usage).
+There should be no more than three actions. Actions should always be located within an action bar at the bottom of the Modal. Button order and positioning should follow our guidelines for [Buttons](/components/button/usage).
 
 ![Usage Buttons](./assets/modal-dialog-more-than-three-buttons.png)
 
