@@ -1,4 +1,4 @@
-import { attachCss, buildHostStyles, getCss, mediaQuery, pxToRem } from '../../../utils';
+import { attachCss, breakpoint, buildHostStyles, getCss, mediaQuery, pxToRem } from '../../../utils';
 
 const baseCss: string = getCss({});
 
@@ -29,7 +29,7 @@ export const getMediaQueryStyles = (): string =>
       zIndex: 99,
       width: '100%',
 
-      [mediaQuery('xxs')]: {
+      [`${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`]: {
         bottom: '-100%',
         willChange: 'opacity, bottom',
         animation: '600ms 0s $animateMobileOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
