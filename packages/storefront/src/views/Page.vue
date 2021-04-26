@@ -51,12 +51,12 @@
     }
 
     @Watch('$route')
-    private onRouteChange(): void {
-      this.loadComponents();
+    private async onRouteChange(): Promise<void> {
+      await this.loadComponents();
     }
 
-    private mounted(): void {
-      this.loadComponents();
+    private async mounted(): Promise<void> {
+      await this.loadComponents();
     }
 
     private get category(): string {
@@ -93,11 +93,11 @@
       await this.$store.dispatch('toggleLoadingAsync', false);
     }
 
-    private redirect(): void {
+    private async redirect(): Promise<void> {
       if (this.hasTabs) {
-        this.$router.replace(this.createTabLink(this.tabs[0]));
+        await this.$router.replace(this.createTabLink(this.tabs[0]));
       } else {
-        this.$router.replace({ name: `404` });
+        await this.$router.replace({ name: `404` });
       }
     }
   }
