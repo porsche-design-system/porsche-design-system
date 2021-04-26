@@ -10,7 +10,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
   vertical-align: top;
 }
 
-.spinner {
+.root {
   $bem-block: &;
   margin: 0;
   padding: 0;

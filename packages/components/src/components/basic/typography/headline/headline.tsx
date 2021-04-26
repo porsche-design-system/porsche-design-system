@@ -39,12 +39,12 @@ export class Headline {
     const isHeadlineVariantType = isVariantType(this.variant);
 
     const headlineClasses = {
-      ['headline']: true,
-      [`headline--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
-      [`headline--align-${this.align}`]: this.align !== 'left',
-      [`headline--color-${this.color}`]: this.color !== 'default',
-      ['headline--ellipsis']: this.ellipsis,
-      ['headline--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
+      ['root']: true,
+      [`root--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
+      [`root--align-${this.align}`]: this.align !== 'left',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--ellipsis']: this.ellipsis,
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

@@ -61,13 +61,13 @@ export class Text {
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
-      ['text']: true,
-      [`text--weight-${this.weight}`]: this.weight !== 'regular',
-      [`text--align-${this.align}`]: this.align !== 'left',
-      [`text--color-${this.color}`]: this.color !== 'default',
-      ['text--ellipsis']: this.ellipsis,
-      ['text--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
-      ...mapBreakpointPropToClasses('text--size', this.size),
+      ['root']: true,
+      [`root--weight-${this.weight}`]: this.weight !== 'regular',
+      [`root--align-${this.align}`]: this.align !== 'left',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--ellipsis']: this.ellipsis,
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     return (

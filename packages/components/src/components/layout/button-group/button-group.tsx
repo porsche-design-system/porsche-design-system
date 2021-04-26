@@ -18,8 +18,8 @@ export class ButtonGroup {
 
   public render(): JSX.Element {
     const buttonGroupClasses = {
-      ['group']: true,
-      ...mapBreakpointPropToClasses('group--direction', this.direction),
+      ['root']: true,
+      ...mapBreakpointPropToClasses('root--direction', this.direction),
     };
 
     return (

@@ -20,10 +20,10 @@ export class Divider {
 
   public render(): JSX.Element {
     const dividerClasses = {
-      ['divider']: true,
-      [`divider--color-${this.color}`]: this.color !== 'neutral-contrast-low',
-      ['divider--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('divider--orientation', this.orientation),
+      ['root']: true,
+      [`root--color-${this.color}`]: this.color !== 'neutral-contrast-low',
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root--orientation', this.orientation),
     };
 
     return <hr class={dividerClasses} />;

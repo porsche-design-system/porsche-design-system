@@ -51,10 +51,10 @@ export class Icon {
 
   public render(): JSX.Element {
     const iconClasses = {
-      ['icon']: true,
-      [`icon--size-${this.size}`]: this.size !== 'small',
-      [`icon--color-${this.color}`]: this.color !== 'default',
-      ['icon--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
+      ['root']: true,
+      [`root--size-${this.size}`]: this.size !== 'small',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
     };
 
     return (

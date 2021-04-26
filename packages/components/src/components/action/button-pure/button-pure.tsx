@@ -79,10 +79,10 @@ export class ButtonPure {
 
   public render(): JSX.Element {
     const buttonPureClasses = {
-      ['button']: true,
-      ['button--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('button--size', this.size),
-      ...mapBreakpointPropToClasses('button-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const iconProps = {

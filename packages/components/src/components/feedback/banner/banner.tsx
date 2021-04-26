@@ -49,9 +49,9 @@ export class Banner {
 
   public render(): JSX.Element {
     const bannerClasses = {
-      ['banner']: true,
-      [`banner--${this.state}`]: this.state !== 'neutral',
-      ['banner--theme-dark']: isDark(this.theme),
+      ['root']: true,
+      [`root--${this.state}`]: this.state !== 'neutral',
+      ['root--theme-dark']: isDark(this.theme),
     };
 
     const bannerLabelId = 'banner-label';

@@ -76,10 +76,10 @@ export class LinkSocial {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = {
-      ['link']: true,
-      [`link--${this.icon}`]: true, // can produce link--undefined on purpose
-      ['link--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      [`root--${this.icon}`]: true, // can produce link--undefined on purpose
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

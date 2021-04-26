@@ -75,9 +75,9 @@ export class TextFieldWrapper {
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
     const containerClasses = {
-      ['container']: true,
-      [`container--${this.state}`]: this.state !== 'none',
-      ['container--password']: this.isPassword,
+      ['root']: true,
+      [`root--${this.state}`]: this.state !== 'none',
+      ['root--password']: this.isPassword,
     };
     const labelClasses = {
       ['label']: true,
