@@ -90,7 +90,7 @@ Now focus styling is only applied when you navigate through keyboard and ignored
 
 #### Changed focus styling for a better compromise between accessibility and visual appearance
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px width/offset.
-If you have custom components build with the usage of our `@porsche-design-system/utilities` package then update it to the latest version (we also provide a focus [SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss#functions) and [JS function](https://designsystem.porsche.com/latest/utilities/js#functions)).
+If you have custom components build with the usage of our `@porsche-design-system/utilities` package then update it to the latest version (we also provide a focus [SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and [JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
 
 #### Improved geometry of Porsche Next font
 For better alignment and readability we've changed the geometry of the Porsche Next font which results in a visual change of font size and spacing.
