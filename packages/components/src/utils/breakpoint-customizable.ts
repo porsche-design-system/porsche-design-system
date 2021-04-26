@@ -11,14 +11,13 @@ export type BreakpointValues<T> = {
 // string is needed in order to pass and parse objects via prop decorator
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
-type BreakpointValue = string | number | boolean; // TODO: replace with generic T
+type BreakpointValue = string | number | boolean;
 type ClassSuffixes = [string, string];
 
 type JSXClasses = {
   [className: string]: boolean;
 };
 
-/* eslint-disable @typescript-eslint/indent */
 export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
@@ -41,10 +40,13 @@ export const parseJSON = (
 };
 
 const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string =>
-  typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : value.toString();
+  typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : `${value}`;
 
 const getBreakpointSuffix = (breakpoint: Breakpoint): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
 
+/**
+ * @deprecated
+ */
 const createClass = (
   classPrefix: string,
   value: BreakpointValue,
@@ -61,6 +63,7 @@ const createClass = (
 };
 
 /**
+ * @deprecated
  * @param classPrefix
  * @param prop
  * @param classSuffixes
@@ -77,11 +80,41 @@ export const mapBreakpointPropToPrefixedClasses = (
 
   return typeof parsedProp === 'object'
     ? Object.entries(parsedProp).reduce(
-        (classes, [breakpoint, value]) => ({
+        (classes, [breakpoint, value]: [Breakpoint, BreakpointValue]) => ({
           ...classes,
-          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes, disablePrefixP),
+          ...createClass(classPrefix, value, breakpoint, classSuffixes, disablePrefixP),
         }),
-        {}
+        {} as JSXClasses
       )
     : createClass(classPrefix, parsedProp, 'base', classSuffixes, disablePrefixP);
+};
+
+const createJSXClass = (
+  classPrefix: string,
+  value: BreakpointValue,
+  breakpoint: Breakpoint,
+  classSuffixes: ClassSuffixes
+): JSXClasses => {
+  if (value !== null && value !== undefined) {
+    const className = `${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`;
+    return { [className]: true };
+  }
+};
+
+export const mapBreakpointPropToClasses = (
+  classPrefix: string,
+  prop: BreakpointCustomizable<BreakpointValue>,
+  classSuffixes?: ClassSuffixes
+): JSXClasses => {
+  const parsedProp = parseJSON(prop);
+
+  return typeof parsedProp === 'object'
+    ? Object.entries(parsedProp).reduce(
+        (classes, [breakpoint, value]: [Breakpoint, BreakpointValue]) => ({
+          ...classes,
+          ...createJSXClass(classPrefix, value, breakpoint, classSuffixes),
+        }),
+        {} as JSXClasses
+      )
+    : createJSXClass(classPrefix, parsedProp, 'base', classSuffixes);
 };
