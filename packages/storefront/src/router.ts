@@ -23,7 +23,7 @@ const router = new VueRouter({
       component: () => import('@/views/Custom.vue'),
     },
     {
-      path: '/:category/:page',
+      path: '/:category/:page/:tab?',
       name: 'page',
       component: () => import('@/views/Page.vue'),
     },
