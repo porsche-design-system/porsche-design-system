@@ -11,10 +11,11 @@ RUN apt-get update && \
     libgtk2.0-0 xvfb rsync openssh-client procps git curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
+# https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
-    ./aws/install
-
+    ./aws/install && \
+    rm -rf awscliv2.zip ./aws/install
 
 COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
 COPY ./bin "/opt/porsche-design-system/bin"
