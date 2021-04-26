@@ -37,6 +37,11 @@ $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 @include p-media-query('xxs', 's') {
+  :host {
+    bottom: -100%;
+    will-change: opacity, bottom;
+  }
+
   :host(.hydrated) {
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn
       $easeInQuad forwards;
@@ -44,6 +49,11 @@ $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 @include p-media-query('s') {
+  :host {
+    top: -100%;
+    will-change: opacity, top;
+  }
+
   :host(.hydrated) {
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn
       $easeInQuad forwards;
