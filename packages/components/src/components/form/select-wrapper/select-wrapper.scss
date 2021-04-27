@@ -2,30 +2,6 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-@mixin p-text-field-wrapper-label-text-visible() {
-  position: static;
-  width: fit-content;
-  height: auto;
-  margin: 0;
-  padding: 0 0 $p-spacing-4 0;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-}
-
-@mixin p-text-field-wrapper-label-text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-}
-
 :host {
   display: block;
 }
@@ -120,60 +96,60 @@
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
     &--visible {
-      @include p-text-field-wrapper-label-text-visible;
+      @include text-visible;
     }
 
     &--hidden {
-      @include p-text-field-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-xs {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('s') {
       &--visible-s {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-s {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('m') {
       &--visible-m {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-m {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('l') {
       &--visible-l {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-l {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-xl {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
   }
@@ -425,7 +401,7 @@
     }
 
     &-sr {
-      @include p-text-field-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     #{$bem-block}--theme-light & {

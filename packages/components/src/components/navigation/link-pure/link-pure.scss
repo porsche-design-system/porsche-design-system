@@ -1,79 +1,31 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
-@mixin p-link-pure-label-visible() {
-  width: 100%;
-  height: auto;
-  margin-left: p-px-to-rem(4px);
-  padding: 0 0.125em 0 0;
-  white-space: normal;
-  overflow: visible;
-  text-indent: 0;
+@mixin label-visible() {
+  .label,
+  + .subline {
+    width: 100%;
+    height: auto;
+    margin-left: p-px-to-rem(4px);
+    padding: 0 0.125em 0 0;
+    white-space: normal;
+    overflow: visible;
+    text-indent: 0;
+  }
 }
 
-@mixin p-link-pure-label-hidden() {
-  width: 1px;
-  height: 1px;
-  margin-left: -1px;
-  margin-top: 0;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-indent: -1px;
-}
-
-@mixin p-link-pure-size($prefix, $size) {
-  @if $size == 'inherit' {
-    font-size: inherit;
-    line-height: inherit;
-
-    & #{$prefix}__icon {
-      width: 1.5em;
-      height: 1.5em;
-    }
-  } @else {
-    @include p-generate-type-scale($size);
-
-    & #{$prefix}__icon {
-      width: #{p-calculate-line-height($size)}em;
-      height: #{p-calculate-line-height($size)}em;
-    }
-
-    + * {
-      @if $size == $p-font-size-x-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-medium {
-        @include p-generate-type-scale($p-font-size-20);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-large {
-        @include p-generate-type-scale($p-font-size-30);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-x-large {
-        @include p-generate-type-scale($p-font-size-large);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else {
-        @error "Unknown size #{$size}.";
-      }
-    }
+@mixin label-hidden() {
+  .label,
+  + .subline {
+    width: 1px;
+    height: 1px;
+    margin-left: -1px;
+    margin-top: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: -1px;
   }
 }
 
@@ -97,8 +49,7 @@
   margin: 0;
 }
 
-.#{$p-global-class-prefix}link-pure {
-  @include p-focus($p-color-state-focus, 1px, '::before');
+.root {
   $bem-block: &;
   display: flex;
   align-items: flex-start;
@@ -114,10 +65,7 @@
   background: transparent;
   color: $p-color-default;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
-
-  :host([theme='dark']) & {
-    @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
-  }
+  @include p-focus($p-color-state-focus, 1px, '::before');
 
   &:not(a)::before {
     pointer-events: none;
@@ -140,7 +88,7 @@
     }
   }
 
-  &#{$bem-block}--active {
+  &--active {
     color: $p-color-brand;
     + * {
       color: $p-color-brand;
@@ -148,6 +96,7 @@
   }
 
   &--theme-dark {
+    @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
     color: $p-color-theme-dark-default;
     + * {
       color: $p-color-theme-dark-default;
@@ -176,215 +125,191 @@
   }
 
   &--size-x-small {
-    @include p-link-pure-size($bem-block, $p-font-size-x-small);
+    @include adjust-to-font-size($p-font-size-x-small);
   }
-
   &--size-small {
-    @include p-link-pure-size($bem-block, $p-font-size-small);
+    @include adjust-to-font-size($p-font-size-small);
   }
-
   &--size-medium {
-    @include p-link-pure-size($bem-block, $p-font-size-medium);
+    @include adjust-to-font-size($p-font-size-medium);
   }
-
   &--size-large {
-    @include p-link-pure-size($bem-block, $p-font-size-large);
+    @include adjust-to-font-size($p-font-size-large);
   }
-
   &--size-x-large {
-    @include p-link-pure-size($bem-block, $p-font-size-x-large);
+    @include adjust-to-font-size($p-font-size-x-large);
+  }
+  &--size-inherit {
+    @include adjust-to-font-size('inherit');
   }
 
-  &--size-inherit {
-    @include p-link-pure-size($bem-block, 'inherit');
+  &--with-label {
+    @include label-visible;
+  }
+  &--without-label {
+    @include label-hidden;
   }
 
   @include p-media-query('xs') {
     &--size-x-small-xs {
-      @include p-link-pure-size($bem-block, $p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-xs {
-      @include p-link-pure-size($bem-block, $p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-xs {
-      @include p-link-pure-size($bem-block, $p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-xs {
-      @include p-link-pure-size($bem-block, $p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-xs {
-      @include p-link-pure-size($bem-block, $p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-xs {
-      @include p-link-pure-size($bem-block, 'inherit');
+      @include adjust-to-font-size('inherit');
+    }
+
+    &--with-label-xs {
+      @include label-visible;
+    }
+    &--without-label-xs {
+      @include label-hidden;
     }
   }
 
   @include p-media-query('s') {
     &--size-x-small-s {
-      @include p-link-pure-size($bem-block, $p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-s {
-      @include p-link-pure-size($bem-block, $p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-s {
-      @include p-link-pure-size($bem-block, $p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-s {
-      @include p-link-pure-size($bem-block, $p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-s {
-      @include p-link-pure-size($bem-block, $p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-s {
-      @include p-link-pure-size($bem-block, 'inherit');
+      @include adjust-to-font-size('inherit');
+    }
+
+    &--with-label-s {
+      @include label-visible;
+    }
+    &--without-label-s {
+      @include label-hidden;
     }
   }
 
   @include p-media-query('m') {
     &--size-x-small-m {
-      @include p-link-pure-size($bem-block, $p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-m {
-      @include p-link-pure-size($bem-block, $p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-m {
-      @include p-link-pure-size($bem-block, $p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-m {
-      @include p-link-pure-size($bem-block, $p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-m {
-      @include p-link-pure-size($bem-block, $p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-m {
-      @include p-link-pure-size($bem-block, 'inherit');
+      @include adjust-to-font-size('inherit');
+    }
+
+    &--with-label-m {
+      @include label-visible;
+    }
+    &--without-label-m {
+      @include label-hidden;
     }
   }
 
   @include p-media-query('l') {
     &--size-x-small-l {
-      @include p-link-pure-size($bem-block, $p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-l {
-      @include p-link-pure-size($bem-block, $p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-l {
-      @include p-link-pure-size($bem-block, $p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-l {
-      @include p-link-pure-size($bem-block, $p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-l {
-      @include p-link-pure-size($bem-block, $p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-l {
-      @include p-link-pure-size($bem-block, 'inherit');
+      @include adjust-to-font-size('inherit');
+    }
+
+    &--with-label-l {
+      @include label-visible;
+    }
+    &--without-label-l {
+      @include label-hidden;
     }
   }
 
   @include p-media-query('xl') {
     &--size-x-small-xl {
-      @include p-link-pure-size($bem-block, $p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-xl {
-      @include p-link-pure-size($bem-block, $p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-xl {
-      @include p-link-pure-size($bem-block, $p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-xl {
-      @include p-link-pure-size($bem-block, $p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-xl {
-      @include p-link-pure-size($bem-block, $p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-xl {
-      @include p-link-pure-size($bem-block, 'inherit');
+      @include adjust-to-font-size('inherit');
+    }
+
+    &--with-label-xl {
+      @include label-visible;
+    }
+    &--without-label-xl {
+      @include label-hidden;
     }
   }
+}
 
-  &__icon {
-    flex-shrink: 0;
-    width: 1.5em;
-    height: 1.5em;
-  }
+.icon {
+  flex-shrink: 0;
+  width: 1.5em;
+  height: 1.5em;
+}
 
-  &__label {
-    display: block;
-    box-sizing: border-box;
-    border: 0;
-  }
+.label {
+  display: block;
+  box-sizing: border-box;
+  border: 0;
+}
 
-  &__subline {
-    display: flex;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-    margin-top: 4px;
+.subline {
+  display: flex;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  margin-top: 4px;
 
-    &::before {
-      // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
-      content: '';
-    }
-  }
-
-  &__label,
-  &__subline {
-    &--visible {
-      @include p-link-pure-label-visible;
-    }
-
-    &--hidden {
-      @include p-link-pure-label-hidden;
-    }
-
-    @include p-media-query('xs') {
-      &--visible-xs {
-        @include p-link-pure-label-visible;
-      }
-
-      &--hidden-xs {
-        @include p-link-pure-label-hidden;
-      }
-    }
-
-    @include p-media-query('s') {
-      &--visible-s {
-        @include p-link-pure-label-visible;
-      }
-
-      &--hidden-s {
-        @include p-link-pure-label-hidden;
-      }
-    }
-
-    @include p-media-query('m') {
-      &--visible-m {
-        @include p-link-pure-label-visible;
-      }
-
-      &--hidden-m {
-        @include p-link-pure-label-hidden;
-      }
-    }
-
-    @include p-media-query('l') {
-      &--visible-l {
-        @include p-link-pure-label-visible;
-      }
-
-      &--hidden-l {
-        @include p-link-pure-label-hidden;
-      }
-    }
-
-    @include p-media-query('xl') {
-      &--visible-xl {
-        @include p-link-pure-label-visible;
-      }
-
-      &--hidden-xl {
-        @include p-link-pure-label-hidden;
-      }
-    }
+  &::before {
+    // We need a margin-left according to the labels font-size. The size of before gets calculated in the size mixin
+    content: '';
   }
 }

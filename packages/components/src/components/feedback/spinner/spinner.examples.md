@@ -10,9 +10,9 @@ There are predefined sizes for the component available which should cover most u
 If a specific size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="size">
     <option disabled>Select a size</option>
-    <option selected>small</option>
+    <option>small</option>
     <option>medium</option>
     <option>large</option>
     <option>inherit</option>

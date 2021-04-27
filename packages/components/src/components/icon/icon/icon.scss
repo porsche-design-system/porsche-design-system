@@ -6,7 +6,7 @@
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}icon {
+.root {
   $bem-block: &;
   display: flex;
   flex-shrink: 0;
@@ -15,13 +15,13 @@
   box-sizing: border-box;
   width: p-px-to-rem(24px);
   height: p-px-to-rem(24px);
+  fill: $p-color-default;
+
+  &--theme-dark {
+    fill: $p-color-theme-dark-default;
+  }
 
   &--size {
-    &-small {
-      width: p-px-to-rem(24px);
-      height: p-px-to-rem(24px);
-    }
-
     &-medium {
       width: p-px-to-rem(36px);
       height: p-px-to-rem(36px);
@@ -44,14 +44,6 @@
 
       &#{$bem-block}--theme-dark {
         fill: $p-color-theme-dark-brand;
-      }
-    }
-
-    &-default {
-      fill: $p-color-default;
-
-      &#{$bem-block}--theme-dark {
-        fill: $p-color-theme-dark-default;
       }
     }
 

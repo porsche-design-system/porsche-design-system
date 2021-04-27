@@ -22,9 +22,9 @@ describe('text', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-text>
-          <p>Some message with a <a onclick="return false;" href="#">link</a>.</p>
-        </p-text>`
+      <p-text>
+        <p>Some message with a <a onclick="return false;" href="#">link</a>.</p>
+      </p-text>`
     );
   };
 

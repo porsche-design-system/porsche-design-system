@@ -1,15 +1,15 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
-@mixin p-button-with-label() {
+@mixin with-label() {
   padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
 }
 
-@mixin p-button-without-label() {
+@mixin without-label() {
   padding: 0;
 }
 
-@mixin p-button-label-with-label() {
+@mixin label-with-label() {
   position: static;
   width: 100%;
   height: auto;
@@ -22,7 +22,7 @@
   clip-path: none;
 }
 
-@mixin p-button-label-without-label() {
+@mixin label-without-label() {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -35,16 +35,16 @@
   clip-path: inset(50%);
 }
 
-@mixin p-button-icon-with-label() {
-  left: p-px-to-rem(11px);
+@mixin icon-with-label() {
   top: p-px-to-rem(11px);
-  transform: translateX(0) translateY(0);
+  left: p-px-to-rem(11px);
+  transform: translate3d(0, 0, 0);
 }
 
-@mixin p-button-icon-without-label() {
-  left: 50%;
+@mixin icon-without-label() {
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 :host {
@@ -52,8 +52,7 @@
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}button {
-  @include p-focus($p-color-neutral-contrast-high);
+.root {
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -66,43 +65,64 @@
   appearance: none;
   text-decoration: none;
   text-align: left;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid $p-color-neutral-contrast-high;
+  color: $p-color-theme-dark-default;
+  background-color: $p-color-neutral-contrast-high;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
   cursor: pointer;
+  @include p-focus($p-color-neutral-contrast-high);
 
-  &:disabled,
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
-  :host([theme='dark']) & {
+  &--theme-dark {
+    color: $p-color-default;
+    background-color: $p-color-theme-dark-default;
+    border-color: $p-color-theme-dark-default;
     @include p-focus($p-color-theme-dark-default);
   }
 
-  :host([variant='primary']) & {
-    @include p-focus($p-color-brand);
+  &:not(:disabled) {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-neutral-contrast-high, 12%);
+      border-color: darken($p-color-neutral-contrast-high, 12%);
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-default;
+        background-color: darken($p-color-theme-dark-default, 12%);
+        border-color: darken($p-color-theme-dark-default, 12%);
+      }
+    }
   }
 
-  :host([theme='dark'][variant='primary']) & {
-    @include p-focus($p-color-theme-dark-brand);
+  &:disabled {
+    cursor: not-allowed;
+    color: rgba($p-color-theme-dark-default, 0.55);
+    background-color: $p-color-state-disabled;
+    border-color: $p-color-state-disabled;
+
+    &#{$bem-block}--theme-dark {
+      color: rgba($p-color-theme-dark-default, 0.55);
+      background-color: $p-color-theme-dark-state-disabled;
+      border-color: $p-color-theme-dark-state-disabled;
+    }
   }
 
   &--primary {
     color: $p-color-theme-dark-default;
     background-color: $p-color-brand;
     border-color: $p-color-brand;
+    @include p-focus($p-color-brand);
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
       background-color: $p-color-theme-dark-brand;
       border-color: $p-color-theme-dark-brand;
+      @include p-focus($p-color-theme-dark-brand);
     }
 
-    &:enabled,
-    &:not([disabled]) {
+    &:not(:disabled) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -117,49 +137,7 @@
       }
     }
 
-    &:disabled,
-    &[disabled] {
-      color: rgba($p-color-theme-dark-default, 0.55);
-      background-color: $p-color-state-disabled;
-      border-color: $p-color-state-disabled;
-
-      &#{$bem-block}--theme-dark {
-        color: rgba($p-color-theme-dark-default, 0.55);
-        background-color: $p-color-theme-dark-state-disabled;
-        border-color: $p-color-theme-dark-state-disabled;
-      }
-    }
-  }
-
-  &--secondary {
-    color: $p-color-theme-dark-default;
-    background-color: $p-color-neutral-contrast-high;
-    border-color: $p-color-neutral-contrast-high;
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-default;
-      background-color: $p-color-theme-dark-default;
-      border-color: $p-color-theme-dark-default;
-    }
-
-    &:enabled,
-    &:not([disabled]) {
-      &:hover,
-      &:active {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-neutral-contrast-high, 12%);
-        border-color: darken($p-color-neutral-contrast-high, 12%);
-
-        &#{$bem-block}--theme-dark {
-          color: $p-color-default;
-          background-color: darken($p-color-theme-dark-default, 12%);
-          border-color: darken($p-color-theme-dark-default, 12%);
-        }
-      }
-    }
-
-    &:disabled,
-    &[disabled] {
+    &:disabled {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-state-disabled;
       border-color: $p-color-state-disabled;
@@ -183,8 +161,7 @@
       border-color: $p-color-theme-dark-default;
     }
 
-    &:enabled,
-    &:not([disabled]) {
+    &:not(:disabled) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -199,8 +176,7 @@
       }
     }
 
-    &:disabled,
-    &[disabled] {
+    &:disabled {
       color: $p-color-state-disabled;
       background-color: transparent;
       border-color: $p-color-state-disabled;
@@ -214,167 +190,167 @@
   }
 
   &--with-label {
-    @include p-button-with-label;
+    @include with-label;
 
-    #{$bem-block}__label {
-      @include p-button-label-with-label;
+    .label {
+      @include label-with-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-button-icon-with-label;
+    .icon {
+      @include icon-with-label;
     }
   }
 
   &--without-label {
-    @include p-button-without-label;
+    @include without-label;
 
-    #{$bem-block}__label {
-      @include p-button-label-without-label;
+    .label {
+      @include label-without-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-button-icon-without-label;
+    .icon {
+      @include icon-without-label;
     }
   }
 
   @include p-media-query('xs') {
     &--with-label-xs {
-      @include p-button-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xs {
-      @include p-button-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('s') {
     &--with-label-s {
-      @include p-button-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-s {
-      @include p-button-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('m') {
     &--with-label-m {
-      @include p-button-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-m {
-      @include p-button-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('l') {
     &--with-label-l {
-      @include p-button-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-l {
-      @include p-button-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('xl') {
     &--with-label-xl {
-      @include p-button-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xl {
-      @include p-button-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-button-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-button-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
+}
 
-  &__label {
-    display: block;
-    box-sizing: border-box;
-  }
+.label {
+  display: block;
+  box-sizing: border-box;
+}
 
-  &__icon {
-    position: absolute;
-    width: p-px-to-rem(24px);
-    height: p-px-to-rem(24px);
-  }
+.icon {
+  position: absolute;
+  width: p-px-to-rem(24px);
+  height: p-px-to-rem(24px);
 }

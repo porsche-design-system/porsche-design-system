@@ -65,7 +65,7 @@ const ModalPage = (): JSX.Element => {
 <Playground :markup="basic">
   <select v-model="width">
     <option disabled>Select a modal width</option>
-    <option selected value="minWidth">min width</option>
+    <option value="minWidth">min width</option>
     <option value="maxWidth">max width</option>
   </select>
 </Playground>
