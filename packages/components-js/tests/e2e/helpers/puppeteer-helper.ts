@@ -2,12 +2,12 @@ import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
-const defaultOptions: Options = { waitUntil: 'networkidle0' };
+const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
-  const options: Options = { ...defaultOptions, ...{ injectIntoHead: '', ...opts } };
+  const options: Options = { ...defaultOptions, ...opts };
 
   let lifeCycleLogger = '';
   if (options.enableLogging) {
@@ -165,11 +165,7 @@ export const getProperty = async (element: ElementHandle, prop: string): Promise
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
-export const setProperty = async (
-  element: ElementHandle,
-  key: keyof HTMLInputElement,
-  value: string | boolean
-): Promise<void> => {
+export const setProperty = async (element: ElementHandle, key: string, value: string | boolean): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 
@@ -289,3 +285,6 @@ export const enableBrowserLogging = (page: Page) => {
 };
 
 export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
+
+export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
+  page.evaluate((el) => document.activeElement === el, element);

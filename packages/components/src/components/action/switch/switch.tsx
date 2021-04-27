@@ -65,8 +65,8 @@ export class Switch {
       ['root--checked']: this.checked,
       ['root--disabled']: this.disabled || this.loading,
       ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-      ...mapBreakpointPropToClasses('root--align', this.alignLabel),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
+      ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
+      ...mapBreakpointPropToClasses('root--label', this.hideLabel, ['hidden', 'visible']),
       ['root--theme-dark']: this.theme === 'dark',
     };
 
