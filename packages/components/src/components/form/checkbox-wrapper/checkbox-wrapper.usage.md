@@ -28,7 +28,7 @@ The label text (always in copytext) gives the user an information about the opti
 
 ### Validation and error
 Contrary to Radio Buttons, each Checkbox item can have its own validation message.
-Please find more information in the [Form pattern guideline](/patterns/forms).
+Please find more information in the [Form pattern guideline](patterns/forms).
 
 ### A stand-alone Checkbox
 Is used for a single option that the user can turn on or off (e.g. in case of a confirmation of terms and conditions).
@@ -57,5 +57,5 @@ Preferably set Checkboxes vertically left-aligned, as this supports scannability
 ---
 
 ## Related Components
-* [Radio Button](/components/radio-button)
-* [Select](/components/select)
+* [Radio Button](components/radio-button)
+* [Select](components/select)

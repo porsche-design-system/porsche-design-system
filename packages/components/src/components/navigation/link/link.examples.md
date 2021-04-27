@@ -2,7 +2,7 @@
 
 The `<p-link>` component is essential to perform changes in page routes.
 It can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
-In case you want the user to execute an action, you should select the [Button](/components/button) component instead.
+In case you want the user to execute an action, you should select the [Button](components/button) component instead.
 
 
 ## Variants

@@ -71,7 +71,7 @@ const ModalPage = (): JSX.Element => {
 </Playground>
 
 
-Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](/components/button/usage).
+Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
 
 ## Basic Scrollable
 

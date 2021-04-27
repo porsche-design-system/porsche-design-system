@@ -19,7 +19,7 @@ npm init next-app
 `npm install --save-dev typescript @types/react @types/node` 
 * Run `yarn dev` or `npm run dev` which configures your `tsconfig.json` with default values
 * You can convert your files from `.js` to `.tsx` 
-* Follow the instructions at [Introduction](/start-coding/introduction) to get the required npm package
+* Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
 * Install the Porsche Design System  
 ```shell script
 // install with yarn:

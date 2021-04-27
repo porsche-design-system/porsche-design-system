@@ -91,5 +91,5 @@ It is not recommended to use "icon and text" and "icon only" Button variants in 
 ---
 
 ## Related components
-* [Button Group](/components/button-group)
-* [Links](/components/link)
+* [Button Group](components/button-group)
+* [Links](components/link)
