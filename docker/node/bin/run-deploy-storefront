@@ -77,7 +77,7 @@ verify_deployment() {
   local http_response=""
   while true
   do
-    http_response="$(curl -s -H "Cache-Control: no-cache" "https://dnc07obdl6ycv.cloudfront.net/${1}/version.md")"
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://designsystem.porsche.com/${1}/version.md")"
     echo "Check deployment status (${1}). Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified (${1})."
