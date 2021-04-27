@@ -29,11 +29,11 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
 
 <Playground :markup="markupSize" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="size">
     <option disabled>Select a size</option>
     <option>x-small</option>
     <option>small</option>
-    <option selected>medium</option>
+    <option>medium</option>
     <option>large</option>
     <option>x-large</option>
     <option>inherit</option>
@@ -53,9 +53,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="markupWeight" :config="config">
-  <select @change="weight = $event.target.value">
+  <select v-model="weight">
     <option disabled>Select a weight</option>
-    <option selected>thin</option>
+    <option>thin</option>
     <option>regular</option>
     <option>bold</option>
   </select>
@@ -101,9 +101,9 @@ If you need additional information on your button, we provide a `<p slot="sublin
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
 
 <Playground :markup="subline" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="sublineSize">
     <option disabled>Select a size</option>
-    <option selected>small</option>
+    <option>small</option>
     <option>medium</option>
     <option>large</option>
     <option>x-large</option>
@@ -119,6 +119,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     config = { themeable: true, spacing: 'inline' };
 
     size = 'medium';
+    sublineSize = 'small'; 
     weight = 'thin';
     
     withLabel =
@@ -168,11 +169,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
 <p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>`;
 
     get subline() {
-      return `<p-button-pure size="${this.size}">
+      return `<p-button-pure size="${this.sublineSize}">
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>
-<p-button-pure size="${this.size}" weight="semibold">
+<p-button-pure size="${this.sublineSize}" weight="semibold">
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>`;

@@ -7,8 +7,7 @@ import {
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
@@ -77,21 +76,11 @@ export class LinkPure {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkPureClasses = {
-      [prefix('link-pure')]: true,
-      [prefix('link-pure--theme-dark')]: isDark(this.theme),
-      [prefix('link-pure--active')]: this.active,
-      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-    };
-
-    const iconClasses = prefix('link-pure__icon');
-
-    const labelClasses = {
-      [prefix('link-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const sublineClasses = {
-      [prefix('link-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible']),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ['root--active']: this.active,
+      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -109,7 +98,7 @@ export class LinkPure {
           ref={(el) => (this.linkTag = el)}
         >
           <PrefixedTagNames.pIcon
-            class={iconClasses}
+            class="icon"
             color="inherit"
             size="inherit"
             name={this.icon}
@@ -117,12 +106,12 @@ export class LinkPure {
             ref={(el) => (this.iconTag = el)}
             aria-hidden="true"
           />
-          <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
         {hasNamedSlot(this.host, 'subline') && (
-          <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
+          <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}

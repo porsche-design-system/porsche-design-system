@@ -8,7 +8,7 @@ import {
   isLabelVisible,
   isMessageVisible,
   isRequired,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
@@ -70,10 +70,10 @@ export class TextareaWrapper {
   public render(): JSX.Element {
     const { disabled } = this.textarea;
     const labelClasses = {
-      ['label']: true,
-      ['label--disabled']: disabled,
-      [`label--${this.state}`]: this.state !== 'none',
-      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
+      ['root']: true,
+      ['root--disabled']: disabled,
+      [`root--${this.state}`]: this.state !== 'none',
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
     };
     const textProps = { tag: 'span', color: 'inherit' };
     const labelProps = { ...textProps, onClick: this.labelClick };
@@ -84,13 +84,13 @@ export class TextareaWrapper {
       <Host>
         <label class={labelClasses}>
           {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class="label__text" {...labelProps}>
+            <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}
               {isRequired(this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           {isDescriptionVisible(this.host, this.description) && (
-            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
+            <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}

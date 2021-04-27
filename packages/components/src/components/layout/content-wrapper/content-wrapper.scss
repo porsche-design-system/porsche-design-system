@@ -5,7 +5,7 @@
   display: flex;
 }
 
-.#{$p-global-class-prefix}content-wrapper {
+.root {
   $bem-block: &;
   margin: 0 auto;
   padding: 0;

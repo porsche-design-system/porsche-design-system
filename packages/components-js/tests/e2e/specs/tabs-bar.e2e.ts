@@ -21,7 +21,7 @@ import {
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { TabSize } from '@porsche-design-system/components/dist/types/types';
+import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
@@ -66,17 +66,17 @@ describe('tabs-bar', () => {
   const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
   const getAllLinks = () => page.$$('a');
-  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
-  const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
-  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
+  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .scroll-area');
+  const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .status-bar');
+  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .gradient--next');
   const getActionContainers = async () => {
-    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev');
-    const actionNext = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
+    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .action--prev');
+    const actionNext = await selectNode(page, 'p-tabs-bar >>> .action--next');
     return { actionPrev, actionNext };
   };
   const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
+    const prevButton = await selectNode(page, 'p-tabs-bar >>> .action--prev > p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> .action--next > p-button-pure');
     return { prevButton, nextButton };
   };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
@@ -650,9 +650,9 @@ describe('tabs-bar', () => {
         </div>`
       );
       const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
-      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .gradient--next');
       const gradientWidth = await getOffsetWidth(gradientNext);
-      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .scroll-area');
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -748,7 +748,7 @@ describe('tabs-bar', () => {
   });
 
   describe('next/prev buttons', () => {
-    const hiddenClass = 'p-tabs-bar__action--hidden';
+    const hiddenClass = 'action--hidden';
     const tabSizes: TabSize[] = ['small', 'medium'];
 
     tabSizes.forEach((size) => {

@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
+import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
@@ -14,13 +14,13 @@ export const GRID_GUTTERS = [16, 24, 36] as const;
 export type GridGutterType = typeof GRID_GUTTERS[number];
 export type GridGutter = BreakpointCustomizable<GridGutterType>;
 
-const baseCss: string = getCss({
-  ':host': {
+const baseCss: string = getCss(
+  buildHostStyles({
     display: 'flex !important',
     flex: 'auto !important',
     width: 'auto !important',
-  },
-});
+  })
+);
 
 const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType): JssStyle => ({
   flexDirection: `${direction} !important`,
