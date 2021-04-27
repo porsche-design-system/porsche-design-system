@@ -40,4 +40,4 @@ Not be used for primary navigation.
 ---
 
 ## Related Component
-* [Tabs Bar](/components/tabs-bar)
+* [Tabs Bar](components/tabs-bar)

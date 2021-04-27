@@ -70,7 +70,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## When are Porsche Design System components initialized?
 
-See [componentsReady()](/helpers/components-ready) for further information.
+See [componentsReady()](helpers/components-ready) for further information.
 
 ## Test the application
 

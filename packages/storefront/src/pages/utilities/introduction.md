@@ -6,7 +6,7 @@ This package contains helpful SCSS & JS variables, functions and helpers.
 
 ### Install
 It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/utilities` npm package. 
-If you don't have an account yet, please first [read more about getting started as developer](/start-coding/introduction).
+If you don't have an account yet, please first [read more about getting started as developer](start-coding/introduction).
 
 ```
 // install with npm:

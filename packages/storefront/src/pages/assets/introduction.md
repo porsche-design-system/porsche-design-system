@@ -7,14 +7,14 @@ Most of these assets are used within our components (e.g. `<p-marque>`) but can 
 To give teams the possibility to get the versioned file paths to these static assets we provide an asset package which contains **manifest files** (not the assets itself) to easily reference to our global asset files.
 
 **Actually we provide assets for:**
-- [Icons](/assets/icons)
-- [Meta Icons](/assets/meta-icons) (like favicon and touch icons)
-- [Marque](/assets/marque)
-- [Fonts](/assets/fonts)
+- [Icons](assets/icons)
+- [Meta Icons](assets/meta-icons) (like favicon and touch icons)
+- [Marque](assets/marque)
+- [Fonts](assets/fonts)
 
 ### Install
 It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/assets` npm package. 
-If you don't have an account yet, please first [read more about getting started as developer](/start-coding/introduction).
+If you don't have an account yet, please first [read more about getting started as developer](start-coding/introduction).
 
 ```
 // install with npm:
@@ -25,4 +25,4 @@ yarn add @porsche-design-system/assets
 ```
 
 ### Usage
-See corresponding section of [Icons](/assets/icons), [Meta Icons](/assets/meta-icons) (like favicon and touch icons), [Marque](/assets/marque) and [Fonts](/assets/fonts)
+See corresponding section of [Icons](assets/icons), [Meta Icons](assets/meta-icons) (like favicon and touch icons), [Marque](assets/marque) and [Fonts](assets/fonts)

@@ -4,7 +4,7 @@
 Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons**, **Microsoft Windows Tiles** and **Apple Pinned Tab Icon**.
 
 ## Usage
-Once the `@porsche-design-system/assets` package [is installed](/assets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
+Once the `@porsche-design-system/assets` package [is installed](assets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
 
 ```
 import { META_ICONS_CDN_BASE_URL, META_ICONS_MANIFEST } from '@porsche-design-system/assets';

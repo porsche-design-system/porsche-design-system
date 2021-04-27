@@ -2,7 +2,7 @@
 
 The `<p-button-pure>` component is essential to perform events for interactions.
 It can be used with or without a label. When hiding the label make sure to provide a descriptive label text for screen readers.
-Whenever you want to provide navigational elements, stick to the [Link](/components/link) or [Link Pure](/components/link-pure) component instead.
+Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.
 
 ## Basic example
 

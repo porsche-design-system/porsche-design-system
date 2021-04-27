@@ -7,7 +7,7 @@ Due to the fact that the internet provides global access to information, stores,
 In some countries (especially in the U.S.) website owners are **going to get sued** by lawyers which complain about the lack of (basic) accessibility support. 
 There are a lot of [country specific standards](https://www.w3.org/WAI/policies/) and legislation which cannot be covered by only one ruleset mostly known as the Web Content Accessibility Guidelines [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) from the World Wide Web Consortium [W3C](https://www.w3.org/). 
 
-But we can **reduce risk of legal entanglement** (receiving demand letter/getting sued), by following our **[accessibility workflow](/accessibility/workflow)**.
+But we can **reduce risk of legal entanglement** (receiving demand letter/getting sued), by following our **[accessibility workflow](accessibility/workflow)**.
 
 --- 
 
