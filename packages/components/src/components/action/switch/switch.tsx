@@ -1,12 +1,11 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { BreakpointCustomizable } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToClasses,
 } from '../../../utils';
-import { Theme } from '../../../types';
 import { isDisabledOrLoading, SwitchChangeEvent } from './switch-utils';
 
 @Component({
@@ -62,13 +61,13 @@ export class Switch {
 
   public render(): JSX.Element {
     const rootClasses = {
-      ['label']: true,
-      ['checked']: this.checked,
-      ['disabled']: this.disabled || this.loading,
-      ...mapBreakpointPropToClasses('stretch', this.stretch, ['on', 'off']),
-      ...mapBreakpointPropToClasses('label-align', this.alignLabel),
-      ...mapBreakpointPropToClasses('label', this.hideLabel, ['hidden', 'visible']),
-      ['theme-dark']: this.theme === 'dark',
+      ['root']: true,
+      ['root--checked']: this.checked,
+      ['root--disabled']: this.disabled || this.loading,
+      ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
+      ...mapBreakpointPropToClasses('root--align', this.alignLabel),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
+      ['root--theme-dark']: this.theme === 'dark',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
