@@ -9,19 +9,24 @@
   }
 }
 
-@mixin text-visible() {
+// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
+@mixin text-visible($isCheckboxOrRadio: false) {
+  @if $isCheckboxOrRadio {
+    width: auto;
+    padding: 0 0 0 $p-spacing-8;
+  } @else {
+    width: fit-content;
+    padding: 0 0 $p-spacing-4 0;
+  }
   position: static;
-  width: fit-content;
   height: auto;
   margin: 0;
-  padding: 0 0 $p-spacing-4 0;
   white-space: normal;
   overflow: visible;
   clip: auto;
   clip-path: none;
 }
 
-// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
 @mixin text-hidden() {
   position: absolute;
   width: 1px;
@@ -32,18 +37,6 @@
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
-}
-
-@mixin label-text-visible() {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0 0 0 $p-spacing-8;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
 }
 
 @function str-replace($string, $search, $replace: '') {

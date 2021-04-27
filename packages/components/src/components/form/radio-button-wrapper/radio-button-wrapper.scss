@@ -227,7 +227,7 @@
     }
 
     &--visible {
-      @include label-text-visible;
+      @include text-visible(true);
     }
 
     &--hidden {
@@ -236,7 +236,7 @@
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xs {
@@ -246,7 +246,7 @@
 
     @include p-media-query('s') {
       &--visible-s {
-        @include label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-s {
@@ -256,7 +256,7 @@
 
     @include p-media-query('m') {
       &--visible-m {
-        @include label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-m {
@@ -266,7 +266,7 @@
 
     @include p-media-query('l') {
       &--visible-l {
-        @include label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-l {
@@ -276,7 +276,7 @@
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xl {
