@@ -93,8 +93,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     label = 'Facebook';
     
     get variants() {
-      return `<p-link-social href="#linkToSocialMedia" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>
-<p-link-social href="#linkToSocialMedia" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>`;
+      return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>
+<p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>`;
     }
     
     responsive =
@@ -106,8 +106,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 </p-link-social>`;
 
     iconMarkup =
-`<p-link-social href="#tumblr" icon="logo-tumblr" target="_blank" rel="nofollow noopener">Tumblr</p-link-social>
-<p-link-social href="#kaixin" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>`;
+`<p-link-social href="https://example.com" icon="logo-tumblr" target="_blank" rel="nofollow noopener">Tumblr</p-link-social>
+<p-link-social href="https://example.com" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>`;
 
     grouped =
 `<div class="example-grouped">

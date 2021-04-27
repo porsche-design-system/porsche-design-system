@@ -23,14 +23,14 @@ The label text (always in copytext) gives the user an information about the opti
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Textarea the validation belongs to.
-Please find more information in the [Form pattern guideline](#/patterns/forms).
+Please find more information in the [Form pattern guideline](patterns/forms).
 
 ### Height
 We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
-In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](#/patterns/forms).
+In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](patterns/forms).
 
 ### Mandatory and optional fields
-Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](#/patterns/forms).
+Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](patterns/forms).
 
 
  <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
@@ -52,4 +52,4 @@ To ensure that we don't overwhelm users, there should be no more than two Textar
 
 ## Related Components
 
-* [Text Field](#/components/text-field)
+* [Text Field](components/text-field)

@@ -17,14 +17,14 @@ Just think about all the services Porsche wants to offer around the car that has
 Or what about the average age of the target audience of Porsche customers? It's an average of 55 years! As you can see, Web Accessibility is for all users, not just blind people.
 
 And last but not least Porsche as a global company needs to support Web Accessibility by law.  
-[Read more about this topic on our Compliance page.](#/accessibility/compliance)
+[Read more about this topic on our Compliance page.](accessibility/compliance)
 
 ## The "How"
 At Porsche we are driven by excellence and we have the approach to deliver highly usable and accessible components that are not limited to certain users or use cases. They should work everywhere and for everyone! 
 That's why we develop and offer high-quality, standardized and accessible components for all possible environments and use cases which are compliant with and tested against the most important official ruleset of [WCAG 2.1 (AA)](https://www.w3.org/TR/WCAG21/).
 
-To avoid possible [**violations against country-specific law**](#/accessibility/compliance) (e.g. ADA in the U.S.) we highly recommend following our guidelines to gather more accessibility in your projects.
+To avoid possible [**violations against country-specific law**](accessibility/compliance) (e.g. ADA in the U.S.) we highly recommend following our guidelines to gather more accessibility in your projects.
 
 To integrate accessibility into your product workflow, follow these guidelines:
 
-<p-link href="#/accessibility/workflow">The Accessibility Workflow</p-link>
+<p-link href="accessibility/workflow">The Accessibility Workflow</p-link>

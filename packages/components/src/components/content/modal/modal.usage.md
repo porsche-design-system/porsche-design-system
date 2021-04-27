@@ -52,14 +52,14 @@ long list of items, consider a different solution, such as a form or a table.
 The modal can be adjusted in width and can be used depending on the requirements. It is important that the minimum and maximum sizes are observed. In addition, the modal should be aligned with the grid.
 
 ### Line length
-We recommended to use no more than 80 characters or glyphs per line. This might differ a bit depending on the respective line height and viewport size and results in different pixel widths depending on the Porsche type class in use. Please find more information in the [Typography guideline](#/components/typography).
+We recommended to use no more than 80 characters or glyphs per line. This might differ a bit depending on the respective line height and viewport size and results in different pixel widths depending on the Porsche type class in use. Please find more information in the [Typography guideline](components/typography).
 
 ---
 
 ## Do’s & Don’ts
 
 ### Don't use more than three buttons
-There should be no more than three actions. Actions should always be located within an action bar at the bottom of the Modal. Button order and positioning should follow our guidelines for [Buttons](#/components/button#usage).
+There should be no more than three actions. Actions should always be located within an action bar at the bottom of the Modal. Button order and positioning should follow our guidelines for [Buttons](components/button/usage).
 
 ![Usage Buttons](./assets/modal-dialog-more-than-three-buttons.png)
 

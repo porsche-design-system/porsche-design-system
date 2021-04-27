@@ -3,7 +3,7 @@
 ## Quick start
 To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System, follow these steps:
 
-* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
+* Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
 * Install the Porsche Design System
 
 ```shell script
@@ -37,7 +37,7 @@ After adding the `@porsche-design-system/components-js` package to your project,
 ## Advanced usage
 
 ### When are Porsche Design System Components initialized?
-See [componentsReady()](#/helpers/components-ready) for further information.
+See [componentsReady()](helpers/components-ready) for further information.
 
 ### Prefixing
 You can load the Porsche Design System with a custom unique prefix to prevent conflicts. Just pass the prefix as a parameter to the `load` method.
