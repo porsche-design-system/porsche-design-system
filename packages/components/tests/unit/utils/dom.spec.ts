@@ -281,10 +281,10 @@ describe('isMessageVisible()', () => {
 
 describe('isParentFieldsetWrapperRequired()', () => {
   it('should return true if parent is fieldset-wrapper with required="true" property', () => {
-    const parent = document.createElement('p-fieldset-wrapper');
+    const parent: HTMLPFieldsetWrapperElement = document.createElement('p-fieldset-wrapper');
     const child = document.createElement('div');
     parent.appendChild(child);
-    parent.setAttribute('required', 'true');
+    parent.required = true;
 
     expect(isParentFieldsetWrapperRequired(child)).toBe(true);
   });
