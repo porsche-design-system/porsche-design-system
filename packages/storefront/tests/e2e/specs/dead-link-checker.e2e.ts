@@ -20,13 +20,18 @@ describe('check for dead links', () => {
   const getHref = (el: Element): string => el.getAttribute('href') as string;
   const getLinks = () => page.$$('body [href]');
 
-  const scanForLinks = async (): Promise<string[]> =>
-    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref))))
-      .map((x) => (x!.startsWith('#') ? `${options.baseURL}/${x}` : x))
+  const scanForLinks = async (): Promise<string[]> => {
+    const links = await getLinks();
+    const hrefs = await Promise.all(links.map((x) => x.evaluate(getHref)));
+    return hrefs
+      .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
       .filter((x) => whitelistedUrls.indexOf(x) === -1);
+  };
 
-  const getHeadline = async () =>
-    (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const getHeadline = async () => {
+    await page.waitForSelector('.vmark > h1'), { visible: true };
+    return page.$eval('.vmark > h1', (x) => x.innerHTML);
+  };
 
   const getPatternHeadline = async () => {
     await page.waitForSelector('html.hydrated');
