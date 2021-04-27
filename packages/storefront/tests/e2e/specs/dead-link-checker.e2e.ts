@@ -23,6 +23,13 @@ describe('check for dead links', () => {
   const scanForLinks = async (): Promise<string[]> => {
     const links = await getLinks();
     const hrefs = await Promise.all(links.map((x) => x.evaluate(getHref)));
+
+    const startingWithSlash = hrefs.filter((url) => url.startsWith('/'));
+    expect(startingWithSlash.length).toBe(0, 'startingWithSlash.length');
+    if (startingWithSlash.length > 0) {
+      console.error('Link(s) starting with "/" were found:', startingWithSlash);
+    }
+
     return hrefs
       .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
       .filter((x) => whitelistedUrls.indexOf(x) === -1);
@@ -99,6 +106,6 @@ describe('check for dead links', () => {
     const invalidUrls = await linkCheckLoop();
     console.log('Whitelisted Urls', whitelistedUrls);
     console.log('Invalid Urls', invalidUrls);
-    expect(invalidUrls.length).toBe(0);
+    expect(invalidUrls.length).toBe(0, 'invalidUrls');
   });
 });
