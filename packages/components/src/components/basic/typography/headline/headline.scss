@@ -24,13 +24,19 @@
   hyphens: inherit !important;
 }
 
-.#{$p-global-class-prefix}headline {
+.root {
   $bem-block: &;
   padding: 0;
   margin: 0;
+  text-align: left;
+  color: $p-color-default;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+
+  &--theme-dark {
+    color: $p-color-theme-dark-default;
+  }
 
   &--variant {
     &-large-title {
@@ -64,10 +70,6 @@
   }
 
   &--align {
-    &-left {
-      text-align: left;
-    }
-
     &-center {
       text-align: center;
     }
@@ -78,14 +80,6 @@
   }
 
   &--color {
-    &-default {
-      color: $p-color-default;
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
     &-inherit {
       color: inherit;
     }

@@ -4,8 +4,7 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 import { isDisabledOrLoading } from '../switch/switch-utils';
@@ -25,7 +24,7 @@ export class Button {
   @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop({ reflect: true }) public disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -63,17 +62,14 @@ export class Button {
 
   public render(): JSX.Element {
     const buttonClasses = {
-      [prefix('button')]: true,
-      [prefix(`button--${this.variant}`)]: true,
-      [prefix('button--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, {
-        classSuffixes: ['without-label', 'with-label'],
-      }),
+      ['root']: true,
+      [`root--${this.variant}`]: this.variant !== 'secondary',
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
-    const labelClasses = prefix('button__label');
 
     const iconProps = {
-      class: prefix('button__icon'),
+      class: 'icon',
       size: 'inherit',
     };
 
@@ -98,7 +94,7 @@ export class Button {
             aria-hidden="true"
           />
         )}
-        <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit">
+        <PrefixedTagNames.pText class="label" tag="span" color="inherit">
           <slot />
         </PrefixedTagNames.pText>
       </button>

@@ -43,12 +43,6 @@ describe('link-pure', () => {
     );
   };
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(page, `<p-link-pure href="#">Some label</p-link-pure>`);
-    const el = await getLink();
-    expect(el).toBeDefined();
-  });
-
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,

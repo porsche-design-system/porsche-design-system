@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -14,7 +14,8 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
-import { SwitchChangeEvent } from "./components/action/switch/switch-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PBanner {
         /**
@@ -587,40 +588,6 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
-    interface PSwitch {
-        /**
-          * Aligns the label.
-         */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
-        /**
-          * Visualize the switch with on/off status.
-         */
-        "checked"?: boolean;
-        /**
-          * Disables the switch. No events will be triggered while disabled state is active.
-         */
-        "disabled"?: boolean;
-        /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
-         */
-        "loading"?: boolean;
-        /**
-          * Stretches the contents to max available space.
-         */
-        "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * To remove the element from tab order.
-         */
-        "tabbable"?: boolean;
-        /**
-          * Adapts the switch color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -727,11 +694,11 @@ export namespace Components {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -901,12 +868,6 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
-    interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
-    }
-    var HTMLPSwitchElement: {
-        prototype: HTMLPSwitchElement;
-        new (): HTMLPSwitchElement;
-    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -979,7 +940,6 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
-        "p-switch": HTMLPSwitchElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1574,44 +1534,6 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
-    interface PSwitch {
-        /**
-          * Aligns the label.
-         */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
-        /**
-          * Visualize the switch with on/off status.
-         */
-        "checked"?: boolean;
-        /**
-          * Disables the switch. No events will be triggered while disabled state is active.
-         */
-        "disabled"?: boolean;
-        /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
-         */
-        "loading"?: boolean;
-        /**
-          * Emitted when checked status is changed.
-         */
-        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
-        /**
-          * Stretches the contents to max available space.
-         */
-        "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * To remove the element from tab order.
-         */
-        "tabbable"?: boolean;
-        /**
-          * Adapts the switch color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1726,11 +1648,11 @@ declare namespace LocalJSX {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1784,7 +1706,6 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
-        "p-switch": PSwitch;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1822,7 +1743,6 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
-            "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

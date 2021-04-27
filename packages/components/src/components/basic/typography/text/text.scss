@@ -21,7 +21,7 @@
   hyphens: inherit !important;
 }
 
-.#{$p-global-class-prefix}text {
+.root {
   $bem-block: &;
   @include p-text-small;
   text-align: left;
@@ -32,7 +32,12 @@
   hyphens: auto;
   list-style-type: none;
   display: inherit;
+  color: $p-color-default;
   transition: font-size 1ms linear; // used for transitionend event listener
+
+  &--theme-dark {
+    color: $p-color-theme-dark-default;
+  }
 
   &--size-x-small {
     @include p-generate-type-scale($p-font-size-x-small);
@@ -195,14 +200,6 @@
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-brand;
-      }
-    }
-
-    &-default {
-      color: $p-color-default;
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-default;
       }
     }
 

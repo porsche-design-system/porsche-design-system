@@ -1,13 +1,12 @@
-import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, prefix, removeAttribute, setAttribute } from '../../../../utils';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { getHTMLElements, getPrefixedTagNames, removeAttribute, setAttribute } from '../../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../../types';
 import type {
-  BreakpointCustomizable,
   TabChangeEvent,
   TabGradientColorTheme,
   TabSize,
   TabWeight,
-  Theme,
-} from '../../../../types';
+} from '../../../navigation/tabs-bar/tabs-bar-utils';
 
 @Component({
   tag: 'p-tabs',
@@ -63,27 +62,23 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
-    const tabsClasses = prefix('tabs');
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host>
-        <div class={tabsClasses}>
-          <PrefixedTagNames.pTabsBar
-            size={this.size}
-            weight={this.weight}
-            theme={this.theme}
-            gradientColorScheme={this.gradientColorScheme}
-            activeTabIndex={this.activeTabIndex}
-            onTabChange={this.handleTabChange}
-          >
-            {this.tabsItemElements.map((tab, index) => (
-              <button type="button" id={`tab-item-${index}`} aria-controls={`tab-panel-${index}`}>
-                {tab.label}
-              </button>
-            ))}
-          </PrefixedTagNames.pTabsBar>
-        </div>
+        <PrefixedTagNames.pTabsBar
+          size={this.size}
+          weight={this.weight}
+          theme={this.theme}
+          gradientColorScheme={this.gradientColorScheme}
+          activeTabIndex={this.activeTabIndex}
+          onTabChange={this.handleTabChange}
+        >
+          {this.tabsItemElements.map((tab, index) => (
+            <button type="button" id={`tab-item-${index}`} aria-controls={`tab-panel-${index}`}>
+              {tab.label}
+            </button>
+          ))}
+        </PrefixedTagNames.pTabsBar>
         <slot />
       </Host>
     );
@@ -97,8 +92,8 @@ export class Tabs {
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
-        'role': 'tabpanel',
-        'id': `tab-panel-${index}`,
+        role: 'tabpanel',
+        id: `tab-panel-${index}`,
         'aria-labelledby': `tab-item-${index}`,
       };
 
@@ -109,7 +104,7 @@ export class Tabs {
       if (+index === this.activeTabIndex) {
         removeAttribute(tab, 'hidden');
       } else {
-        setAttribute(tab, 'hidden', '');
+        setAttribute(tab, 'hidden');
       }
     }
   };
