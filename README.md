@@ -205,6 +205,17 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
+## AWS
+
+In order to deploy something to AWS from your local machine, you need to follow these steps.
+
+1. Install `awscli` as described here <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
+1. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
+1. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
+1. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
+
+---
+
 # Release management
 
 ## Porsche Design System - Components (JS/Angular/React)

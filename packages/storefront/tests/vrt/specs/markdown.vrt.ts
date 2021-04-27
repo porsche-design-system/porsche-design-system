@@ -7,7 +7,7 @@ describe('Markdown', () => {
       await vrt.test(
         'markdown',
         async () => {
-          await vrt.goTo('/#/markdown');
+          await vrt.goTo('/markdown');
         },
         { elementSelector: '#app > .main > .router-view' }
       )

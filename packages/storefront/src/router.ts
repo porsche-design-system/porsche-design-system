@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
 import $store from '@/store';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-const router = new Router({
+const router = new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -22,12 +23,12 @@ const router = new Router({
       component: () => import('@/views/Custom.vue'),
     },
     {
-      path: '/:category/:page',
+      path: '/:category/:page/:tab?',
       name: 'page',
       component: () => import('@/views/Page.vue'),
     },
     {
-      path: '/patterns/:category/:pattern',
+      path: '/patterns/:category/example/:pattern',
       name: 'pattern',
       component: () => import('@/views/Pattern.vue'),
       meta: { standalone: true },

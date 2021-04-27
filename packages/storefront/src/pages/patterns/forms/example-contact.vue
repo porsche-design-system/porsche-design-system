@@ -256,7 +256,7 @@
               <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
                 <span slot="label">
                   I have read and understood the
-                  <a href="#" target="_blank">Privacy Policy</a>
+                  <a target="_blank">Privacy Policy</a>
                 </span>
                 <input
                   type="checkbox"

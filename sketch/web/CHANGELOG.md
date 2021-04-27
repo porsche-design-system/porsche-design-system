@@ -55,7 +55,7 @@ This guide includes everything you need to migrate your offering.
 
 ## Download Sketch Libraries
 
-Head over to [Start Designing](https://designsystem.porsche.com/v2/#/start-designing/introduction) to set up the new Sketch libraries.
+Head over to [Start Designing](https://designsystem.porsche.com/v2/start-designing/introduction) to set up the new Sketch libraries.
 
 ## Design migration strategy
 
