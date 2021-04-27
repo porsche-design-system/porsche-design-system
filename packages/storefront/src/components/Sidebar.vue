@@ -62,7 +62,8 @@
     }
 
     private static category(route: Route): string {
-      return route.params.category ? capitalCase(route.params.category) : '';
+      const { category } = route.params;
+      return category ? capitalCase(category) : '';
     }
   }
 </script>
