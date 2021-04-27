@@ -137,7 +137,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render required only on fieldset">
-        <PFieldsetWrapper label="Some label" label-size="small" required>
+        <PFieldsetWrapper label="Some label" labelSize="small" required>
           <PTextFieldWrapper label="Some label" state="error">
             <input type="text" name="some-name" required />
           </PTextFieldWrapper>
