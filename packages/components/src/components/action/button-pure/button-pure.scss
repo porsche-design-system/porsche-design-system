@@ -121,22 +121,22 @@
   }
 
   &--size-x-small {
-    @include adjustToFontSize($p-font-size-x-small);
+    @include adjust-to-font-size($p-font-size-x-small);
   }
   &--size-small {
-    @include adjustToFontSize($p-font-size-small);
+    @include adjust-to-font-size($p-font-size-small);
   }
   &--size-medium {
-    @include adjustToFontSize($p-font-size-medium);
+    @include adjust-to-font-size($p-font-size-medium);
   }
   &--size-large {
-    @include adjustToFontSize($p-font-size-large);
+    @include adjust-to-font-size($p-font-size-large);
   }
   &--size-x-large {
-    @include adjustToFontSize($p-font-size-x-large);
+    @include adjust-to-font-size($p-font-size-x-large);
   }
   &--size-inherit {
-    @include adjustToFontSize('inherit');
+    @include adjust-to-font-size('inherit');
   }
 
   &--with-label {
@@ -148,22 +148,22 @@
 
   @include p-media-query('xs') {
     &--size-x-small-xs {
-      @include adjustToFontSize($p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-xs {
-      @include adjustToFontSize($p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-xs {
-      @include adjustToFontSize($p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-xs {
-      @include adjustToFontSize($p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-xs {
-      @include adjustToFontSize($p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-xs {
-      @include adjustToFontSize('inherit');
+      @include adjust-to-font-size('inherit');
     }
 
     &--with-label-xs {
@@ -176,22 +176,22 @@
 
   @include p-media-query('s') {
     &--size-x-small-s {
-      @include adjustToFontSize($p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-s {
-      @include adjustToFontSize($p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-s {
-      @include adjustToFontSize($p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-s {
-      @include adjustToFontSize($p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-s {
-      @include adjustToFontSize($p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-s {
-      @include adjustToFontSize('inherit');
+      @include adjust-to-font-size('inherit');
     }
 
     &--with-label-s {
@@ -204,22 +204,22 @@
 
   @include p-media-query('m') {
     &--size-x-small-m {
-      @include adjustToFontSize($p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-m {
-      @include adjustToFontSize($p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-m {
-      @include adjustToFontSize($p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-m {
-      @include adjustToFontSize($p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-m {
-      @include adjustToFontSize($p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-m {
-      @include adjustToFontSize('inherit');
+      @include adjust-to-font-size('inherit');
     }
 
     &--with-label-m {
@@ -232,22 +232,22 @@
 
   @include p-media-query('l') {
     &--size-x-small-l {
-      @include adjustToFontSize($p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-l {
-      @include adjustToFontSize($p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-l {
-      @include adjustToFontSize($p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-l {
-      @include adjustToFontSize($p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-l {
-      @include adjustToFontSize($p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-l {
-      @include adjustToFontSize('inherit');
+      @include adjust-to-font-size('inherit');
     }
 
     &--with-label-l {
@@ -260,22 +260,22 @@
 
   @include p-media-query('xl') {
     &--size-x-small-xl {
-      @include adjustToFontSize($p-font-size-x-small);
+      @include adjust-to-font-size($p-font-size-x-small);
     }
     &--size-small-xl {
-      @include adjustToFontSize($p-font-size-small);
+      @include adjust-to-font-size($p-font-size-small);
     }
     &--size-medium-xl {
-      @include adjustToFontSize($p-font-size-medium);
+      @include adjust-to-font-size($p-font-size-medium);
     }
     &--size-large-xl {
-      @include adjustToFontSize($p-font-size-large);
+      @include adjust-to-font-size($p-font-size-large);
     }
     &--size-x-large-xl {
-      @include adjustToFontSize($p-font-size-x-large);
+      @include adjust-to-font-size($p-font-size-x-large);
     }
     &--size-inherit-xl {
-      @include adjustToFontSize('inherit');
+      @include adjust-to-font-size('inherit');
     }
 
     &--with-label-xl {
