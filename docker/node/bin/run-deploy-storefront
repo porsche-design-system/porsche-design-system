@@ -57,7 +57,7 @@ purge_cloudfront() {
   echo "task: [$(date)] \"purge_cloudfront\" (${1})"
   result="$(aws cloudfront create-invalidation \
     --distribution-id E2KJVI0036W7XP \
-    --paths "/${1}" "/${1}/*")"
+    --paths "/${1}/" "/${1}/*")"
   status_code="${PIPESTATUS[@]}"
 
   if [[ $status_code == 0 ]]; then
