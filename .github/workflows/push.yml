@@ -448,6 +448,8 @@ jobs:
     needs: [assets]
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
       - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
@@ -493,6 +495,8 @@ jobs:
     needs: [components-js, components-angular, components-react, storefront, production-builds, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
       - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
