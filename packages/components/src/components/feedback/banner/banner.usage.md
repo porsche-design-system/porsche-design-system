@@ -41,7 +41,7 @@ Try to keep the feedback message short and descriptive.
 
 ### Width
 
-The Banner is always as width as the content and therefore stretches over all grid columns (based on the [Content Wrapper](#/components/content-wrapper)). 
+The Banner is always as width as the content and therefore stretches over all grid columns (based on the [Content Wrapper](components/content-wrapper)). 
 
 ---
 

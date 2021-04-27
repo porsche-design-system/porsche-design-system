@@ -120,7 +120,7 @@
           >
             <span slot="label">
               I have read the
-              <a href="#">general terms ans conditions</a> and I accept them.
+              <a>general terms ans conditions</a> and I accept them.
             </span>
             <input
               type="checkbox"
@@ -136,10 +136,7 @@
             v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
           >
-            <span slot="label">
-              I have read the
-              <a href="#">Data Privacy Statement</a>.
-            </span>
+            <span slot="label">I have read the <a>Data Privacy Statement</a>.</span>
             <input
               type="checkbox"
               :ref="validateFieldName('privacy')"

@@ -34,7 +34,9 @@
       this.component = null;
       await this.$store.dispatch('toggleLoadingAsync', true);
       try {
-        this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.pattern}.vue`))()).default;
+        this.component = (
+          await (() => import(`@/pages/patterns/${this.category}/example-${this.pattern}.vue`))()
+        ).default;
       } catch (e) {
         await this.redirect();
       }

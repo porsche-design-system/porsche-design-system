@@ -2,7 +2,7 @@
 
 REGISTRY=docker.pkg.github.com/porscheui/porsche-design-system
 IMAGE=node
-TAG=14.15.1-stretch-slim
+TAG=14.16.1-stretch-slim
 
 docker pull $REGISTRY/$IMAGE:latest
 

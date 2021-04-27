@@ -41,13 +41,13 @@
 
       if (!page || Array.isArray(page)) {
         return [];
+      } else {
+        return Object.keys(page);
       }
-
-      return Object.keys(page);
     }
 
     public createTabLink(name: string): string {
-      return `#${paramCase(name)}`;
+      return '/' + [this.category, this.page, name].map((x) => paramCase(x)).join('/');
     }
 
     @Watch('$route')
@@ -68,7 +68,8 @@
     }
 
     private get tab(): string {
-      return capitalCase(this.$route.hash.substring(1));
+      const { tab } = this.$route.params;
+      return tab && capitalCase(tab);
     }
 
     private get pages(): ComponentListImport {
@@ -76,19 +77,17 @@
 
       if (!page || Array.isArray(page)) {
         return page;
+      } else {
+        return page[this.tab];
       }
-
-      return page[this.tab];
     }
 
     private async loadComponents(): Promise<void> {
       this.components = [];
       await this.$store.dispatch('toggleLoadingAsync', true);
-      try {
-        for (const page of this.pages) {
-          this.components.push((await page()).default);
-        }
-      } catch (e) {
+      if (this.pages?.length) {
+        this.components = await Promise.all(this.pages.map(async (x) => (await x()).default));
+      } else {
         await this.redirect();
       }
       await this.$store.dispatch('toggleLoadingAsync', false);
