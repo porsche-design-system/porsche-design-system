@@ -99,7 +99,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size">
     <option disabled>Select size</option>
-    <option selected value="small">Small</option>
+    <option value="small">Small</option>
     <option value="medium">Medium</option>
   </select>
 </Playground>
@@ -109,7 +109,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight">
     <option disabled>Select weight</option>
-    <option selected value="regular">Regular</option>
+    <option value="regular">Regular</option>
     <option value="semibold">SemiBold</option>
   </select>
 </Playground>
@@ -122,7 +122,7 @@ The background and gradient has to align to your chosen background.
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme">
     <option disabled>Select gradient-color-scheme</option>
-    <option selected value="default">Default</option>
+    <option value="default">Default</option>
     <option value="surface">Surface</option>
   </select>
 </Playground>

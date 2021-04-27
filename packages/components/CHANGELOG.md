@@ -19,7 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
-- A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly.
+- A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly
+- Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`
+- Streamline Angular component styles in dark theme 
+
+#### Changed
+- Aligned focus states of `Checkbox Wrapper` and `Radio Button Wrapper` across browsers
 
 ### [2.0.0] - 2021-04-13
 

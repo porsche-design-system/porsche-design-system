@@ -5,13 +5,12 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  prefix,
   throwIfParentIsNotOfKind,
 } from '../../../../utils';
+import { addCss } from './text-list-item-utils';
 
 @Component({
   tag: 'p-text-list-item',
-  styleUrl: 'text-list-item.scss',
   shadow: true,
 })
 export class TextListItem {
@@ -19,28 +18,20 @@ export class TextListItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTextList');
-  }
-
-  public componentDidLoad(): void {
     this.addSlottedStyles();
   }
 
-  public render(): JSX.Element {
+  public componentWillRender(): void {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
-    const listType = getAttribute(list, 'list-type');
-    const orderType = getAttribute(list, 'order-type');
-    const isNestedList = !!getClosestHTMLElement(this.host, `${PrefixedTagNames.pTextList}[nested]`);
+    const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
+    const { listType, orderType } = list;
+    const isNestedList = getAttribute(list, 'nested') === '';
+    addCss(this.host, listType, orderType, isNestedList);
+  }
 
-    const textListItemClasses = {
-      [prefix('text-list-item')]: true,
-      [prefix(`text-list-item--${listType}`)]: true,
-      [prefix(`text-list-item--ordered-${orderType}`)]: listType === 'ordered',
-      [prefix('text-list-item--nested')]: isNestedList,
-    };
-
+  public render(): JSX.Element {
     return (
-      <Host role="listitem" class={textListItemClasses}>
+      <Host role="listitem">
         <slot />
       </Host>
     );
