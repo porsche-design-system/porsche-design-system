@@ -536,8 +536,6 @@ jobs:
     needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
       - name: 'Docker Login'
         uses: ./.github/actions/docker-login
         with:
@@ -559,8 +557,6 @@ jobs:
     needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
       - name: 'Docker Login'
         uses: ./.github/actions/docker-login
         with:
