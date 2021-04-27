@@ -26,11 +26,11 @@ Text lists are used to display listed data in form of an unordered or ordered li
       const attr = (listType ? ` list-type="${listType}"` : '') + (orderType ? ` order-type="${orderType}"` : '');
       return `<p-text-list${attr}>
   <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-  <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+  <p-text-list-item>The quick <a>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
     <p-text-list${attr}>
       <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
       <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-        <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+        <p-text-list-item>The quick <a>brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
           <p-text-list${attr}>
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>

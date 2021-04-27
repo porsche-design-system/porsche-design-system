@@ -49,7 +49,7 @@
                 />
               </p-text-field-wrapper>
               <div class="spacing-mt-8">
-                <p-link-pure href="#">Forgot password?</p-link-pure>
+                <p-link-pure>Forgot password?</p-link-pure>
               </div>
             </p-flex-item>
           </p-flex>
@@ -69,7 +69,7 @@
     <p-grid class="form-section-spacing form-bottom-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-4" tag="h2">New to Porsche?</p-headline>
-        <p-link-pure href="#" class="spacing-mt-8">Create a new Porsche account</p-link-pure>
+        <p-link-pure class="spacing-mt-8">Create a new Porsche account</p-link-pure>
       </p-grid-item>
     </p-grid>
   </p-content-wrapper>
