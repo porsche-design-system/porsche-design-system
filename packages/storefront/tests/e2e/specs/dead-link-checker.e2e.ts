@@ -1,9 +1,8 @@
 import { Page } from 'puppeteer';
 import { getBrowser, options } from '../helpers';
 
-describe('check for dead links in storefront', () => {
+describe('check for dead links', () => {
   let page: Page;
-
   let originalJasminTimeout: number;
 
   beforeEach(() => {
@@ -16,21 +15,36 @@ describe('check for dead links in storefront', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  // internal functions
-  const getHref = (el: Element): string => el.getAttribute('href') as string;
-  const getLinks = () => page.$$('a[href],p-link[href],p-link-pure[href]');
+  const getHref = (el: Element): string => el.getAttribute('href');
+  const getBodyLinks = () => page.$$('body [href]');
+  const getMarkdownLinks = () => page.$$('.markdown [href]');
 
-  const scanForLinks = async (): Promise<string[]> =>
-    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref))))
-      .map((x) => (x!.startsWith('#') ? `${options.baseURL}/${x}` : x))
+  const scanForLinks = async (): Promise<string[]> => {
+    const bodyLinks = await getBodyLinks();
+    const bodyHrefs = await Promise.all(bodyLinks.map((x) => x.evaluate(getHref)));
+
+    const markdownLinks = await getMarkdownLinks();
+    const markdownHrefs = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
+
+    const markdownHrefsStartingWithSlash = markdownHrefs.filter((url) => url.startsWith('/'));
+    expect(markdownHrefsStartingWithSlash.length).toBe(0, 'markdownHrefsStartingWithSlash.length');
+    if (markdownHrefsStartingWithSlash.length) {
+      console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
+    }
+
+    return bodyHrefs
+      .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
       .filter((x) => whitelistedUrls.indexOf(x) === -1);
+  };
 
-  const getHeadline = async () =>
-    (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const getHeadline = async () => {
+    await page.waitForSelector('.vmark > h1'), { visible: true };
+    return page.$eval('.vmark > h1', (x) => x.innerHTML);
+  };
 
   const getPatternHeadline = async () => {
-    await page.waitForSelector('p-headline[tag="h1"]');
-    await page.waitForTimeout(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
+    await page.waitForSelector('html.hydrated');
+    await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
     return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
   };
 
@@ -54,14 +68,14 @@ describe('check for dead links in storefront', () => {
 
     for (let i = 0; i < links.length; i++) {
       const href = links[i];
-      console.log('Checking', `[${i + 1}/${links.length}]`, href);
+      console.log(`Checking [${i + 1}/${links.length}]`, href);
 
       // Go to internal Url
-      if (href.includes(options.baseURL)) {
-        await page.goto(href, { waitUntil: 'domcontentloaded' });
+      if (href.startsWith('/')) {
+        await page.goto(`${options.baseURL}${href}`, { waitUntil: 'domcontentloaded' });
 
         const headline =
-          href.endsWith('#/') || href.endsWith('#')
+          href === '/'
             ? 'first page'
             : href.includes('patterns/forms/')
             ? await getPatternHeadline()
@@ -73,14 +87,15 @@ describe('check for dead links in storefront', () => {
           const newLinks = await scanForLinks();
           links = links.concat(newLinks).filter((v, i, a) => a.indexOf(v) === i);
         }
+      } else if (href.startsWith('http') && !href.startsWith(`${options.baseURL}/#`)) {
         // Go to external Url
-      } else if (href.startsWith('http')) {
+        // TODO: disabled for now flaky execution
         // const response = await page.goto(href);
         //
         // // Check response
         // if (response?.status() === 404) {
         //   invalidUrls.push(href);
-        // } TODO: flaky execution
+        // }
       } else {
         invalidUrls.push(href);
       }
@@ -93,6 +108,6 @@ describe('check for dead links in storefront', () => {
     const invalidUrls = await linkCheckLoop();
     console.log('Whitelisted Urls', whitelistedUrls);
     console.log('Invalid Urls', invalidUrls);
-    expect(invalidUrls.length).toBe(0);
+    expect(invalidUrls.length).toBe(0, 'invalidUrls');
   });
 });
