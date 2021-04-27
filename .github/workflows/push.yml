@@ -668,7 +668,7 @@ jobs:
           entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
   release-sketch-libraries:
-    name: 'Release Sketch Library Basic'
+    name: 'Release Sketch Libraries'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
