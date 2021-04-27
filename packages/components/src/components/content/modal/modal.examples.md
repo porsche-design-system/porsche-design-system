@@ -65,13 +65,13 @@ const ModalPage = (): JSX.Element => {
 <Playground :markup="basic">
   <select v-model="width">
     <option disabled>Select a modal width</option>
-    <option selected value="minWidth">min width</option>
+    <option value="minWidth">min width</option>
     <option value="maxWidth">max width</option>
   </select>
 </Playground>
 
 
-Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/components/button#usage).
+Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
 
 ## Basic Scrollable
 
@@ -145,7 +145,7 @@ Of course, any combination of the available options is possible.
   
 
     get basic() {
-      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : ' <p-text>Some Content</p-text>';
+      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
       
       return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">

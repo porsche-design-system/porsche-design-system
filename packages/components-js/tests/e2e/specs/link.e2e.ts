@@ -42,12 +42,6 @@ describe('link', () => {
     );
   };
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(page, `<p-link href="#">Some label</p-link>`);
-    const el = await getLink();
-    expect(el).toBeDefined();
-  });
-
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,

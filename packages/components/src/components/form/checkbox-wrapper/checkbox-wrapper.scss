@@ -12,31 +12,6 @@
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#{$color}" d="M3 11h18v1H3z"/></svg>') !important;
 }
 
-@mixin p-checkbox-wrapper-label-text-visible() {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0 0 0 $p-spacing-8;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-}
-
-// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
-@mixin p-checkbox-wrapper-label-text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-}
-
 :host {
   display: block;
 }
@@ -91,14 +66,21 @@
   border-color: $p-color-state-disabled !important;
 }
 
-::slotted(input:focus) {
+::slotted(input:focus),
+::slotted(input:focus-visible) {
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-.label {
+.root {
   $bem-block: &;
   position: relative;
   display: flex;
+
+  @at-root ::slotted(input:focus:not(:focus-visible)),
+    &--error ::slotted(input:focus:not(:focus-visible)),
+    &--success ::slotted(input:focus:not(:focus-visible)) {
+    outline-color: transparent !important;
+  }
 
   &--error {
     ::slotted(input) {
@@ -111,7 +93,9 @@
       // Needs to be set explicitly for safari
       border-color: $p-color-notification-error !important;
     }
-    ::slotted(input:focus) {
+
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-error !important;
     }
 
@@ -136,7 +120,9 @@
       // Needs to be set explicitly for safari
       border-color: $p-color-notification-success !important;
     }
-    ::slotted(input:focus) {
+
+    ::slotted(input:focus),
+    ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-success !important;
     }
 
@@ -171,60 +157,60 @@
     }
 
     &--visible {
-      @include p-checkbox-wrapper-label-text-visible;
+      @include text-visible(true);
     }
 
     &--hidden {
-      @include p-checkbox-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include p-checkbox-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xs {
-        @include p-checkbox-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('s') {
       &--visible-s {
-        @include p-checkbox-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-s {
-        @include p-checkbox-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('m') {
       &--visible-m {
-        @include p-checkbox-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-m {
-        @include p-checkbox-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('l') {
       &--visible-l {
-        @include p-checkbox-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-l {
-        @include p-checkbox-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include p-checkbox-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xl {
-        @include p-checkbox-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
   }

@@ -1,6 +1,7 @@
 import {
   getBrowser,
   getLifecycleStatus,
+  getProperty,
   removeAttribute,
   selectNode,
   setAttribute,
@@ -40,7 +41,7 @@ describe('icon', () => {
 
   const getHost = async () => selectNode(page, 'p-icon');
   const getIcon = async () => selectNode(page, 'p-icon >>> i');
-  const getContent = async (el: ElementHandle): Promise<string> => el.evaluate((el) => el.innerHTML);
+  const getContent = (el: ElementHandle): Promise<string> => getProperty(el, 'innerHTML') as Promise<string>;
 
   describe('loading behavior', () => {
     let responseCounter: number;

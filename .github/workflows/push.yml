@@ -573,7 +573,8 @@ jobs:
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           entrypoint: run-deploy-storefront
   smoke-test:
@@ -743,8 +744,8 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
-  release-sketch-library-basic:
-    name: 'Release Sketch Library Basic'
+  release-sketch-libraries:
+    name: 'Release Sketch Libraries'
     needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -755,30 +756,20 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish Sketch Library'
+      - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch
           args: sketch/basic
-  release-sketch-library-web:
-    name: 'Release Sketch Library Web'
-    needs: [release-sketch-library-basic]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish Sketch Library'
+      - name: 'Publish Sketch Library Web'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch

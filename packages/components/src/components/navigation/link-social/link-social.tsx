@@ -5,8 +5,7 @@ import {
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 
@@ -77,13 +76,11 @@ export class LinkSocial {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = {
-      [prefix('link-social')]: true,
-      [prefix(`link-social--${this.icon}`)]: true,
-      [prefix('link-social--theme-dark')]: isDark(this.theme),
-      ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      [`root--${this.icon}`]: true, // can produce link--undefined on purpose
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
-    const iconClasses = prefix('link-social__icon');
-    const labelClasses = prefix('link-social__label');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -97,14 +94,14 @@ export class LinkSocial {
         })}
       >
         <PrefixedTagNames.pIcon
-          class={iconClasses}
+          class="icon"
           size="inherit"
           name={this.icon}
           source={this.iconSource}
           color="inherit"
           aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
           <slot />
         </PrefixedTagNames.pText>
       </TagType>

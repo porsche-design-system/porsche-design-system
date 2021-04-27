@@ -9,7 +9,7 @@ content to be rendered beneath. To help with this task the component triggers an
 of the active tab.
 
 If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
-handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs) component.
+handles the correct display of content according to the active tab. Have a look at the [Tabs](components/tabs) component.
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
@@ -99,7 +99,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size">
     <option disabled>Select size</option>
-    <option selected value="small">Small</option>
+    <option value="small">Small</option>
     <option value="medium">Medium</option>
   </select>
 </Playground>
@@ -109,7 +109,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight">
     <option disabled>Select weight</option>
-    <option selected value="regular">Regular</option>
+    <option value="regular">Regular</option>
     <option value="semibold">SemiBold</option>
   </select>
 </Playground>
@@ -122,7 +122,7 @@ The background and gradient has to align to your chosen background.
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme">
     <option disabled>Select gradient-color-scheme</option>
-    <option selected value="default">Default</option>
+    <option value="default">Default</option>
     <option value="surface">Surface</option>
   </select>
 </Playground>
@@ -132,7 +132,7 @@ The background and gradient has to align to your chosen background.
   import Component from 'vue-class-component';
   
   const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-  const buildAnchor = (name: string) => `  <a href="#">Tab ${name}</a>`;
+  const buildAnchor = (name: string) => `  <a>Tab ${name}</a>`;
   const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
