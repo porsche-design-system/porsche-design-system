@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Remove IE11 `focusable="false"` workaround from Icons
+
 ### [3.1.0] - 2020-12-02
 
 ### Added

@@ -35,7 +35,7 @@ If you need more control over sizing and responsiveness, you can use predefined 
 <Playground :markup="customVariantMarkup" :config="config">
  <select v-model="customVariant">
     <option disabled>Select an custom variant</option>
-    <option value="{ base: 'small', l: 'medium' }" selected>Custom Breakpoints</option>
+    <option value="{ base: 'small', l: 'medium' }">Custom Breakpoints</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
@@ -53,9 +53,9 @@ If a custom tag hierarchy is needed, **individual headline tags** can be set fro
 A predefined default color associated with its theme is available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select @change="color = $event.target.value">
+  <select v-model="color">
     <option disabled>Select a color</option>
-    <option value="default" selected>Default</option>
+    <option value="default">Default</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
@@ -65,10 +65,10 @@ A predefined default color associated with its theme is available but also inher
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <select @change="align = $event.target.value">
+  <select v-model="align">
     <option disabled>Select an alignment</option>
     <option value="left">Left</option>
-    <option value="center" selected>Center</option>
+    <option value="center">Center</option>
     <option value="right">Right</option>
   </select>
 </Playground>

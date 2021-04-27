@@ -42,7 +42,7 @@ export const getAttribute = (el: HTMLElement | Element, attributeName: string): 
   return el.getAttribute(attributeName);
 };
 
-export const setAttribute = (el: HTMLElement, attributeName: string, attributeValue: string): void => {
+export const setAttribute = (el: HTMLElement, attributeName: string, attributeValue = ''): void => {
   el.setAttribute(attributeName, attributeValue);
 };
 

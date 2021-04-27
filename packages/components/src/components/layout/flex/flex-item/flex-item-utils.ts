@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
+import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 
 export const FLEX_ITEM_WIDTHS = [
   'auto',
@@ -35,14 +35,14 @@ type FlexItemFlexType = typeof FLEX_ITEM_FLEXES[number];
 export type FlexItemFlex = BreakpointCustomizable<FlexItemFlexType>;
 
 const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & { none: number; auto: string } = {
-  'none': 0,
+  none: 0,
   'one-quarter': 25,
   'one-third': 33.333333,
-  'half': 50,
+  half: 50,
   'two-thirds': 66.666667,
   'three-quarters': 75,
-  'full': 100,
-  'auto': 'auto',
+  full: 100,
+  auto: 'auto',
 };
 
 const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle => ({
@@ -62,11 +62,11 @@ const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle => (
   flex: `${flex === 'equal' ? '1 1 0' : flex} !important`,
 });
 
-const baseCss: string = getCss({
-  ':host': {
+const baseCss: string = getCss(
+  buildHostStyles({
     boxSizing: 'border-box !important',
-  },
-});
+  })
+);
 
 export const getDynamicCss = (
   width: FlexItemWidth,

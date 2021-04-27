@@ -11,8 +11,8 @@ export class FieldsetWrapper {
   @Prop() public label?: string = '';
 
   public render(): JSX.Element {
-    const fieldsetClasses = prefix('fieldset-wrapper');
-    const labelClasses = prefix('fieldset-wrapper__label');
+    const fieldsetClasses = prefix('root');
+    const labelClasses = prefix('root__label');
 
     return (
       <fieldset class={fieldsetClasses}>

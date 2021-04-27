@@ -6,7 +6,7 @@
   counter-reset: section !important;
 }
 
-.#{$p-global-class-prefix}text-list {
+.root {
   @include p-text-small;
   display: block;
   padding: 0;

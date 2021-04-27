@@ -5,7 +5,7 @@
   display: block;
 }
 
-.#{$p-global-class-prefix}fieldset-wrapper {
+.#{$p-global-class-prefix}root {
   $bem-block: &;
   margin: 0;
   padding: 0;

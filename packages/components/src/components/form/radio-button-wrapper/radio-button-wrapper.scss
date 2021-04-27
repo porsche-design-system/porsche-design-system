@@ -16,30 +16,6 @@
   background-image: url($image), radial-gradient(circle, $color-1 p-px-to-rem(9px), $color-2 p-px-to-rem(9px)) !important;
 }
 
-@mixin p-radio-button-wrapper-label-text-visible() {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0 0 0 $p-spacing-8;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-}
-
-@mixin p-radio-button-wrapper-label-text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-}
-
 :host {
   display: block;
 }
@@ -115,7 +91,7 @@
   box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
 }
 
-.label {
+.root {
   $bem-block: &;
   display: flex;
   position: relative;
@@ -251,60 +227,60 @@
     }
 
     &--visible {
-      @include p-radio-button-wrapper-label-text-visible;
+      @include text-visible(true);
     }
 
     &--hidden {
-      @include p-radio-button-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include p-radio-button-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xs {
-        @include p-radio-button-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('s') {
       &--visible-s {
-        @include p-radio-button-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-s {
-        @include p-radio-button-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('m') {
       &--visible-m {
-        @include p-radio-button-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-m {
-        @include p-radio-button-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('l') {
       &--visible-l {
-        @include p-radio-button-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-l {
-        @include p-radio-button-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include p-radio-button-wrapper-label-text-visible;
+        @include text-visible(true);
       }
 
       &--hidden-xl {
-        @include p-radio-button-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
   }
