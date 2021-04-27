@@ -332,7 +332,7 @@ describe('text-field-wrapper', () => {
       );
     });
 
-    it('submits parent form on search button click', async () => {
+    it('should submit parent form on search button click', async () => {
       await setContentWithDesignSystem(
         page,
         `

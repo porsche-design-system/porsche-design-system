@@ -9,12 +9,18 @@
   }
 }
 
-@mixin text-visible() {
+// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
+@mixin text-visible($isCheckboxOrRadio: false) {
+  @if $isCheckboxOrRadio {
+    width: auto;
+    padding: 0 0 0 $p-spacing-8;
+  } @else {
+    width: fit-content;
+    padding: 0 0 $p-spacing-4 0;
+  }
   position: static;
-  width: fit-content;
   height: auto;
   margin: 0;
-  padding: 0 0 $p-spacing-4 0;
   white-space: normal;
   overflow: visible;
   clip: auto;
@@ -40,4 +46,59 @@
       str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
   @return $string;
+}
+
+@mixin adjust-to-font-size($size) {
+  @if $size == 'inherit' {
+    font-size: inherit;
+    line-height: inherit;
+
+    .icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  } @else {
+    @include p-generate-type-scale($size);
+
+    .icon {
+      width: #{p-calculate-line-height($size)}em;
+      height: #{p-calculate-line-height($size)}em;
+    }
+
+    + * {
+      @if $size == $p-font-size-x-small {
+        @include p-generate-type-scale($size);
+        &::before {
+          font-size: $size;
+          margin-left: #{p-calculate-line-height($size)}em;
+        }
+      } @else if $size == $p-font-size-small {
+        @include p-generate-type-scale($size);
+        &::before {
+          font-size: $size;
+          margin-left: #{p-calculate-line-height($size)}em;
+        }
+      } @else if $size == $p-font-size-medium {
+        @include p-generate-type-scale($p-font-size-20);
+        &::before {
+          font-size: $size;
+          margin-left: #{p-calculate-line-height($size)}em;
+        }
+      } @else if $size == $p-font-size-large {
+        @include p-generate-type-scale($p-font-size-30);
+        &::before {
+          font-size: $size;
+          margin-left: #{p-calculate-line-height($size)}em;
+        }
+      } @else if $size == $p-font-size-x-large {
+        @include p-generate-type-scale($p-font-size-large);
+        &::before {
+          font-size: $size;
+          margin-left: #{p-calculate-line-height($size)}em;
+        }
+      } @else {
+        @error "Unknown size #{$size}.";
+      }
+    }
+  }
 }
