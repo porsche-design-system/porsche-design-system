@@ -104,7 +104,11 @@ export const removeEventListener = (
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
   const prefixedTagName = getPrefixedTagNames(host).pFieldsetWrapper;
+  const fieldsetWrapper = host.parentElement as HTMLPFieldsetWrapperElement;
+
   return (
-    getTagName(host.parentElement) === prefixedTagName && (host.parentElement as HTMLPFieldsetWrapperElement).required
+    getTagName(host.parentElement) === prefixedTagName &&
+    fieldsetWrapper.required !== undefined &&
+    fieldsetWrapper.required
   );
 };
