@@ -48,7 +48,7 @@
   @return $string;
 }
 
-@mixin adjustToFontSize($size) {
+@mixin adjust-to-font-size($size) {
   @if $size == 'inherit' {
     font-size: inherit;
     line-height: inherit;
