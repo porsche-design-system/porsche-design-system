@@ -6,7 +6,7 @@
           "distributionId": "EXAMPLE"
         },
         "request": {
-          "uri": "/v2/",
+          "uri": "/latest/components/button#examples",
           "method": "GET",
           "clientIp": "2001:cdba::3257:9652"
         }

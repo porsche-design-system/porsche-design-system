@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
   if (!oldUri.match(/\.[0-9a-z]{1,4}$/i)) {
     // Match any '/' that occurs at the end of a URI. Replace it with a default index
     const newUri = oldUri.replace(
-      /(\/(?:issue|housekeeping|release)\/(?:\d+|[\w\d-\.]+)|latest|v0\/(?:core|react)|v\d)\/?.*/,
+      /\/(?:(?:issue|housekeeping|release)\/[\w\d-\.]+|latest|v0\/\/\w+|v\d)\/?.*/,
       '$1/index.html'
     );
 
