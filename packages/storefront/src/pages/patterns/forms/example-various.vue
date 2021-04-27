@@ -138,9 +138,11 @@
                 </p-flex>
               </p-grid-item>
             </p-grid>
-            <span v-if="bag.errors.day" slot="message">{{ bag.errors.day }}<br /></span>
-            <span v-if="bag.errors.month" slot="message">{{ bag.errors.month }}<br /></span>
-            <span v-if="bag.errors.year" slot="message">{{ bag.errors.year }}</span>
+            <span
+              v-if="validateFieldName('day') && validateFieldName('month')"
+              slot="message"
+              v-html="getDateValidationMessage()"
+            ></span>
           </p-fieldset-wrapper>
         </form>
       </p-grid-item>
@@ -172,6 +174,11 @@
   export default class VariousForm extends Vue {
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+    private getDateValidationMessage = (): string => {
+      const { day, month, year } = this.bag.errors;
+      return `<div>${day}</div><div>${month}</div><div>${year}</div>`;
+    };
 
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
