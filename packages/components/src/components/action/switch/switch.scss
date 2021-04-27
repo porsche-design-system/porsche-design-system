@@ -25,30 +25,32 @@
   display: flex !important;
 }
 
-.label {
+$root: '.root';
+
+#{$root} {
   display: flex;
   min-width: 0; // prevents flex child to overflow max available parent size
   min-height: 0; // prevents flex child to overflow max available parent size
   width: auto;
   justify-content: flex-start;
 
-  &:not(.disabled) {
+  &:not(&--disabled) {
     cursor: pointer;
   }
 
-  &.stretch-on {
+  &--stretch-on {
     width: 100%;
     justify-content: space-between;
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
-      &.stretch-on-#{$breakpoint} {
+      &--stretch-on-#{$breakpoint} {
         width: 100%;
         justify-content: space-between;
       }
 
-      &.stretch-off-#{$breakpoint} {
+      &--stretch-off-#{$breakpoint} {
         width: auto;
         justify-content: flex-start;
       }
@@ -65,11 +67,11 @@
   padding-right: 0;
   color: $p-color-default;
 
-  .theme-dark & {
+  #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
   }
 
-  .label-align-left & {
+  #{$root}--label-align-left & {
     order: 0;
     padding-left: 0;
     padding-right: $p-spacing-8;
@@ -77,13 +79,13 @@
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
-      .label-align-left-#{$breakpoint} & {
+      #{$root}--label-align-left-#{$breakpoint} & {
         order: 0;
         padding-left: 0;
         padding-right: $p-spacing-8;
       }
 
-      .label-align-right-#{$breakpoint} & {
+      #{$root}--label-align-right-#{$breakpoint} & {
         order: 1;
         padding-left: $p-spacing-8;
         padding-right: 0;
@@ -91,26 +93,26 @@
     }
   }
 
-  .label-hidden & {
+  #{$root}--label-hidden & {
     @include p-switch-label-hidden;
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
-      .label-visible-#{$breakpoint} & {
+      #{$root}--label-visible-#{$breakpoint} & {
         @include p-switch-label-visible;
       }
 
-      .label-hidden-#{$breakpoint} & {
+      #{$root}--label-hidden-#{$breakpoint} & {
         @include p-switch-label-hidden;
       }
     }
   }
 
-  .disabled & {
+  #{$root}--disabled & {
     color: $p-color-state-disabled;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       color: $p-color-theme-dark-state-disabled;
     }
   }
@@ -131,54 +133,53 @@ button {
   background-color: transparent;
   outline: none;
   cursor: pointer;
-  transition:
-    background-color $p-animation-hover-duration $p-animation-hover-bezier,
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier;
 
-  .theme-dark & {
+  #{$root}--theme-dark & {
     border-color: $p-color-theme-dark-neutral-contrast-high;
   }
 
-  .checked & {
+  #{$root}--checked & {
     border-color: $p-color-notification-success;
     background-color: $p-color-notification-success;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       border-color: $p-color-theme-dark-notification-success;
       background-color: $p-color-theme-dark-notification-success;
     }
   }
 
-  .disabled & {
+  #{$root}--disabled & {
     border-color: $p-color-state-disabled;
     cursor: not-allowed;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       border-color: $p-color-theme-dark-state-disabled;
     }
   }
 
-  .disabled.checked & {
+  #{$root}--disabled#{$root}--checked & {
     background-color: $p-color-state-disabled;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       background-color: $p-color-theme-dark-state-disabled;
     }
   }
 
-  :not(.disabled) &:hover {
+  :not(#{$root}--disabled) &:hover {
     border-color: $p-color-default;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       border-color: $p-color-theme-dark-default;
     }
   }
 
-  :not(.disabled).checked &:hover {
+  :not(#{$root}--disabled)#{$root}--checked &:hover {
     border-color: darken($p-color-notification-success, 12%);
     background-color: darken($p-color-notification-success, 12%);
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       border-color: darken($p-color-theme-dark-notification-success, 12%);
       background-color: darken($p-color-theme-dark-notification-success, 12%);
     }
@@ -187,15 +188,15 @@ button {
   &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-neutral-contrast-high;
 
-    .theme-dark & {
+    #{$root}--theme-dark & {
       box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-neutral-contrast-high;
     }
   }
 
-  .checked &:focus {
+  #{$root}--checked &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-notification-success;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-notification-success;
     }
   }
@@ -215,31 +216,30 @@ button {
   border-radius: 50%;
   background-color: $p-color-neutral-contrast-high;
   transform: translate3d(0, 0, 0);
-  transition:
-    background-color $p-animation-hover-duration $p-animation-hover-bezier,
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     transform $p-animation-hover-duration $p-animation-hover-bezier;
 
-  .theme-dark & {
+  #{$root}--theme-dark & {
     background-color: $p-color-theme-dark-neutral-contrast-high;
   }
 
-  .checked & {
+  #{$root}--checked & {
     transform: translate3d(p-px-to-rem(24px), 0, 0);
     background-color: $p-color-background-default;
   }
 
-  :not(.checked).disabled & {
+  :not(#{$root}--checked)#{$root}--disabled & {
     background-color: $p-color-state-disabled;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       background-color: $p-color-theme-dark-state-disabled;
     }
   }
 
-  :not(.disabled):not(.checked) button:hover & {
+  :not(#{$root}--disabled):not(#{$root}--checked) button:hover & {
     background-color: $p-color-default;
 
-    @at-root .theme-dark#{&} {
+    @at-root #{$root}--theme-dark#{&} {
       background-color: $p-color-theme-dark-default;
     }
   }
