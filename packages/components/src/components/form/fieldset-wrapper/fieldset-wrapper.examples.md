@@ -2,7 +2,7 @@
 
 The **Fieldset** is a grouping component for wrapping contextual associated form elements. 
 Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block.
-You can see some usage examples on our [form patterns section](#/patterns/forms#resources).
+You can see some usage examples on our [form patterns section](patterns/forms/resources).
 
 ## Basic example with label
 
