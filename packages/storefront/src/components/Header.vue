@@ -31,7 +31,7 @@ import Component from 'vue-class-component';
 
     public versionOptions: string[] = ['v1', 'v2', 'latest'];
     public onVersionChange = (event: Event) => {
-      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
+      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}/`;
     };
   }
 </script>
