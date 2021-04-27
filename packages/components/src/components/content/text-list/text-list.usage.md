@@ -25,12 +25,6 @@ It is recommended to stick to a homogeneous writing structure and style within o
 ### Capitalization
 Use sentence-style capitalization for each list item. Capitalize only the first letter of the item.
 
-
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/text-list-examples.png" alt="Examples for ordered and unorderd list"/>
-</div>
-
 ## Do's & Don'ts
 
 ### Hierarchy
