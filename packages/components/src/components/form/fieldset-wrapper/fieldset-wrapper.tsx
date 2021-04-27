@@ -22,8 +22,8 @@ export class FieldsetWrapper {
 
   public render(): JSX.Element {
     const fieldsetClasses = {
-      ['fieldset-wrapper']: true,
-      [`fieldset-wrapper--${this.state}`]: this.state !== 'none',
+      ['root']: true,
+      [`root--${this.state}`]: this.state !== 'none',
     };
     const labelClasses = {
       ['label']: true,

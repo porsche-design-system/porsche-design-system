@@ -47,7 +47,7 @@ describe('banner', () => {
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
-  it('should render', async () => {
+  it('should render and focus close button', async () => {
     await initBanner();
 
     const host = await getHost();

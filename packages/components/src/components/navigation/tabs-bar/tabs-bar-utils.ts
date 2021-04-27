@@ -1,4 +1,4 @@
-import { prefix, pxToRem } from '../../../utils';
+import { getPrefixedTagNames, getTagName, prefix, pxToRem } from '../../../utils';
 import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -123,4 +123,10 @@ export const getScrollPositionAfterPrevNextClick = (
     }
   }
   return scrollPosition;
+};
+
+export const getHasPTabsParent = (hostEl: HTMLElement): boolean => {
+  const { host } = hostEl.getRootNode() as ShadowRoot;
+  const parentTagName = host && getTagName(host as HTMLElement);
+  return parentTagName === getPrefixedTagNames(hostEl).pTabs;
 };
