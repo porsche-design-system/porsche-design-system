@@ -7,7 +7,7 @@ describe('Story', () => {
       await vrt.test(
         'story',
         async () => {
-          await vrt.goTo('/components/pagination#code');
+          await vrt.goTo('/components/pagination/examples');
           await vrt.click('.playground:nth-of-type(1) > p-tabs-bar > button:nth-of-type(2)');
         },
         { elementSelector: '#app > .main > .router-view' }
