@@ -16,8 +16,8 @@ describe('observeMutations()', () => {
     expect(mutationMap.get(node)).toEqual(callback);
   });
 
-  describe('should run callback once on attribute change', () => {
-    it('when observeMutations is reapplied', async () => {
+  describe('on attribute change', () => {
+    it('should run callback once when observeMutations is reapplied', async () => {
       const input = document.createElement('input');
 
       const cb = jest.fn();
@@ -32,7 +32,7 @@ describe('observeMutations()', () => {
       expect(cb).toBeCalledTimes(1);
     });
 
-    it('when observeMutations is called multiple times', async () => {
+    it('should run callback once when observeMutations is called multiple times', async () => {
       const input = document.createElement('input');
 
       const cb = jest.fn();
@@ -47,7 +47,7 @@ describe('observeMutations()', () => {
       expect(cb).toBeCalledTimes(1);
     });
 
-    it('when multiple inputs are observed', async () => {
+    it('should run callback once when multiple inputs are observed', async () => {
       const input1 = document.createElement('input');
       const input2 = document.createElement('input');
 
@@ -64,7 +64,7 @@ describe('observeMutations()', () => {
       expect(cb2).toBeCalledTimes(0);
     });
 
-    it('when multiple attributes are changed', async () => {
+    it('should run callback once when multiple attributes are changed', async () => {
       const input = document.createElement('input');
       const cb = jest.fn();
       const name = 'Some name';

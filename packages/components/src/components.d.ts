@@ -14,6 +14,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SwitchChangeEvent } from "./components/action/switch/switch-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -588,6 +589,40 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PSwitch {
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -868,6 +903,12 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
+    }
+    var HTMLPSwitchElement: {
+        prototype: HTMLPSwitchElement;
+        new (): HTMLPSwitchElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -940,6 +981,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-switch": HTMLPSwitchElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1534,6 +1576,44 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PSwitch {
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when checked status is changed.
+         */
+        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1706,6 +1786,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-switch": PSwitch;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1743,6 +1824,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
