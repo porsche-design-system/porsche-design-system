@@ -3,7 +3,6 @@ import { getBrowser, options } from '../helpers';
 
 describe('check for dead links', () => {
   let page: Page;
-
   let originalJasminTimeout: number;
 
   beforeEach(() => {
@@ -16,21 +15,24 @@ describe('check for dead links', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  // internal functions
-  const getHref = (el: Element): string => el.getAttribute('href') as string;
-  const getLinks = () => page.$$('body [href]');
+  const getHref = (el: Element): string => el.getAttribute('href');
+  const getBodyLinks = () => page.$$('body [href]');
+  const getMarkdownLinks = () => page.$$('.markdown [href]');
 
   const scanForLinks = async (): Promise<string[]> => {
-    const links = await getLinks();
-    const hrefs = await Promise.all(links.map((x) => x.evaluate(getHref)));
+    const bodyLinks = await getBodyLinks();
+    const bodyHrefs = await Promise.all(bodyLinks.map((x) => x.evaluate(getHref)));
 
-    const startingWithSlash = hrefs.filter((url) => url.startsWith('/'));
-    expect(startingWithSlash.length).toBe(0, 'startingWithSlash.length');
-    if (startingWithSlash.length > 0) {
-      console.error('Link(s) starting with "/" were found:', startingWithSlash);
+    const markdownLinks = await getMarkdownLinks();
+    const markdownHrefs = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
+
+    const markdownHrefsStartingWithSlash = markdownHrefs.filter((url) => url.startsWith('/'));
+    expect(markdownHrefsStartingWithSlash.length).toBe(0, 'markdownHrefsStartingWithSlash.length');
+    if (markdownHrefsStartingWithSlash.length) {
+      console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
     }
 
-    return hrefs
+    return bodyHrefs
       .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
       .filter((x) => whitelistedUrls.indexOf(x) === -1);
   };
