@@ -5,12 +5,48 @@
   display: block;
 }
 
-.#{$p-global-class-prefix}pagination {
-  $bem-block: &;
+.root {
   display: flex;
   justify-content: center;
   margin: 0;
   padding: 0;
+
+  &--theme-dark {
+    @include p-focus($p-color-theme-dark-state-focus, 1px);
+
+    .goto {
+      &--current {
+        &:hover {
+          color: $p-color-theme-dark-default;
+        }
+        &::after {
+          background-color: $p-color-theme-dark-brand;
+        }
+      }
+    }
+
+    .goto,
+    .prev,
+    .next {
+      color: $p-color-theme-dark-default;
+      &:hover {
+        color: $p-color-theme-dark-state-hover;
+      }
+      &:active {
+        color: $p-color-theme-dark-state-active;
+      }
+    }
+
+    .prev,
+    .next {
+      &:hover {
+        color: $p-color-theme-dark-state-hover;
+      }
+      &--disabled {
+        color: $p-color-theme-dark-state-disabled;
+      }
+    }
+  }
 
   &--size {
     &-5 {
@@ -28,7 +64,6 @@
         counter-reset: size 7;
       }
     }
-
     @include p-media-query('s') {
       &-5-s {
         counter-reset: size 5;
@@ -37,7 +72,6 @@
         counter-reset: size 7;
       }
     }
-
     @include p-media-query('m') {
       &-5-m {
         counter-reset: size 5;
@@ -46,7 +80,6 @@
         counter-reset: size 7;
       }
     }
-
     @include p-media-query('l') {
       &-5-l {
         counter-reset: size 5;
@@ -55,7 +88,6 @@
         counter-reset: size 7;
       }
     }
-
     @include p-media-query('xl') {
       &-5-xl {
         counter-reset: size 5;
@@ -65,141 +97,87 @@
       }
     }
   }
+}
 
-  &__items {
-    display: flex;
-    margin: 0;
-    padding: 0;
+.items {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.goto,
+.prev,
+.next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  position: relative;
+  width: p-px-to-rem(40px);
+  height: p-px-to-rem(40px);
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  color: $p-color-default;
+  @include p-focus($p-color-state-focus, 1px);
+
+  &:active {
+    outline: none;
+    color: $p-color-state-active;
+  }
+}
+
+.goto {
+  @include p-text-small;
+
+  &:hover {
+    color: $p-color-state-hover;
   }
 
-  &__item {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__goto,
-  &__prev,
-  &__next {
-    @include p-focus($p-color-state-focus, 1px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-    position: relative;
-    width: p-px-to-rem(40px);
-    height: p-px-to-rem(40px);
-    box-sizing: border-box;
-
-    :host([theme='dark']) & {
-      @include p-focus($p-color-theme-dark-state-focus, 1px);
-    }
-
-    &:active {
-      outline: none;
-      color: $p-color-state-active;
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-active;
-      }
-    }
-  }
-
-  &__goto {
-    @include p-text-small;
-    text-decoration: none;
-    cursor: pointer;
-    color: $p-color-default;
-
-    #{$bem-block}--theme-dark & {
-      color: $p-color-theme-dark-default;
-    }
+  &--current {
+    cursor: default;
 
     &:hover {
-      color: $p-color-state-hover;
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-hover;
-      }
+      color: $p-color-default;
     }
 
-    &--current {
-      cursor: default;
-
-      &:hover {
-        color: $p-color-default;
-
-        #{$bem-block}--theme-dark & {
-          color: $p-color-theme-dark-default;
-        }
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: p-px-to-rem(6px);
-        right: p-px-to-rem(6px);
-        height: p-px-to-rem(4px);
-        background-color: $p-color-brand;
-
-        #{$bem-block}--theme-dark & {
-          background-color: $p-color-theme-dark-brand;
-        }
-      }
-    }
-
-    &--ellipsis {
-      cursor: default;
-
-      &:hover {
-        color: $p-color-default;
-
-        #{$bem-block}--theme-dark & {
-          color: $p-color-theme-dark-default;
-        }
-      }
-
-      &::after {
-        content: '…';
-      }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: p-px-to-rem(6px);
+      right: p-px-to-rem(6px);
+      height: p-px-to-rem(4px);
+      background-color: $p-color-brand;
     }
   }
 
-  &__prev,
-  &__next {
-    text-decoration: none;
-    cursor: pointer;
-    color: $p-color-default;
+  &--ellipsis {
+    cursor: default;
+    pointer-events: none;
 
-    #{$bem-block}--theme-dark & {
-      color: $p-color-theme-dark-default;
+    &::after {
+      content: '…';
     }
+  }
+}
 
-    &:hover {
-      color: $p-color-state-hover;
+.prev,
+.next {
+  &:hover {
+    color: $p-color-state-hover;
+  }
 
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-hover;
-      }
-    }
-
-    &--disabled {
-      cursor: default;
-      color: $p-color-state-disabled;
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-disabled;
-      }
-
-      &:hover {
-        color: $p-color-state-disabled;
-
-        #{$bem-block}--theme-dark & {
-          color: $p-color-theme-dark-state-disabled;
-        }
-      }
-    }
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+    color: $p-color-state-disabled;
   }
 }

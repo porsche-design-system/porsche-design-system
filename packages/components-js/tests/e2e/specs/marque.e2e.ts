@@ -10,6 +10,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -357,61 +358,65 @@ describe('marque', () => {
       let afterFocusCalls = 0;
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-      expect(beforeFocusCalls).toBe(0);
-      expect(marqueFocusCalls).toBe(0);
-      expect(marqueFocusInCalls).toBe(0);
-      expect(marqueBlurCalls).toBe(0);
-      expect(marqueFocusOutCalls).toBe(0);
-      expect(afterFocusCalls).toBe(0);
-      expect(await getActiveElementId(page)).toBe('');
+      expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
+      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls initially');
+      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls initially');
+      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls initially');
+      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls initially');
+      expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
+      expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
 
       await page.keyboard.press('Tab');
-      expect(beforeFocusCalls).toBe(1);
-      expect(marqueFocusCalls).toBe(0);
-      expect(marqueFocusInCalls).toBe(0);
-      expect(marqueBlurCalls).toBe(0);
-      expect(marqueFocusOutCalls).toBe(0);
-      expect(afterFocusCalls).toBe(0);
-      expect(await getActiveElementId(page)).toBe('before');
+      await waitForEventSerialization(page);
+      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
+      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls after 1st tab');
+      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls after 1st tab');
+      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 1st tab');
+      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 1st tab');
+      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
+      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
 
       await page.keyboard.press('Tab');
-      expect(beforeFocusCalls).toBe(1);
-      expect(marqueFocusCalls).toBe(1);
-      expect(marqueFocusInCalls).toBe(1);
-      expect(marqueBlurCalls).toBe(0);
-      expect(marqueFocusOutCalls).toBe(0);
-      expect(afterFocusCalls).toBe(0);
-      expect(await getActiveElementId(page)).toBe('my-link');
+      await waitForEventSerialization(page);
+      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
+      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 2nd tab');
+      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 2nd tab');
+      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 2nd tab');
+      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 2nd tab');
+      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
+      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 2nd tab');
 
       await page.keyboard.press('Tab');
-      expect(beforeFocusCalls).toBe(1);
-      expect(marqueFocusCalls).toBe(1);
-      expect(marqueFocusInCalls).toBe(1);
-      expect(marqueBlurCalls).toBe(1);
-      expect(marqueFocusOutCalls).toBe(1);
-      expect(afterFocusCalls).toBe(1);
-      expect(await getActiveElementId(page)).toBe('after');
+      await waitForEventSerialization(page);
+      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
+      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 3rd tab');
+      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 3rd tab');
+      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 3rd tab');
+      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 3rd tab');
+      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
+      expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
 
       // tab back
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
-      expect(beforeFocusCalls).toBe(1);
-      expect(marqueFocusCalls).toBe(2);
-      expect(marqueFocusInCalls).toBe(2);
-      expect(marqueBlurCalls).toBe(1);
-      expect(marqueFocusOutCalls).toBe(1);
-      expect(afterFocusCalls).toBe(1);
-      expect(await getActiveElementId(page)).toBe('my-link');
+      await waitForEventSerialization(page);
+      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
+      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 1st tab back');
+      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 1st tab back');
+      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 1st tab back');
+      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 1st tab back');
+      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
+      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 1st tab back');
 
-      await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
-      expect(beforeFocusCalls).toBe(2);
-      expect(marqueFocusCalls).toBe(2);
-      expect(marqueFocusInCalls).toBe(2);
-      expect(marqueBlurCalls).toBe(2);
-      expect(marqueFocusOutCalls).toBe(2);
-      expect(afterFocusCalls).toBe(1);
-      expect(await getActiveElementId(page)).toBe('before');
+      await waitForEventSerialization(page);
+      expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
+      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 2nd tab back');
+      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 2nd tab back');
+      expect(marqueBlurCalls).toBe(2, 'marqueBlurCalls after 2nd tab back');
+      expect(marqueFocusOutCalls).toBe(2, 'marqueFocusOutCalls after 2nd tab back');
+      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
+      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
 
       await page.keyboard.up('ShiftLeft');
     });

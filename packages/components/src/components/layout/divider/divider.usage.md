@@ -78,5 +78,5 @@ Dividers **should always be used to structure and therefore help the user percei
 
 ## Related components
 
-* [Grid](#/components/grid)
-* [Spacing](#/components/spacing)
+* [Grid](components/grid)
+* [Spacing](components/spacing)

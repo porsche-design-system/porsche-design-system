@@ -5,8 +5,7 @@ import {
   getTagName,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
@@ -62,13 +61,13 @@ export class Text {
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
-      [prefix('text')]: true,
-      [prefix(`text--weight-${this.weight}`)]: this.weight !== 'regular',
-      [prefix(`text--align-${this.align}`)]: this.align !== 'left',
-      [prefix(`text--color-${this.color}`)]: true,
-      [prefix('text--ellipsis')]: this.ellipsis,
-      [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
-      ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
+      ['root']: true,
+      [`root--weight-${this.weight}`]: this.weight !== 'regular',
+      [`root--align-${this.align}`]: this.align !== 'left',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--ellipsis']: this.ellipsis,
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     return (

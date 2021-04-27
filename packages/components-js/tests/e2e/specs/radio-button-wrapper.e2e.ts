@@ -29,7 +29,7 @@ describe('radio-button-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-radio-button-wrapper');
   const getInput = () => selectNode(page, 'p-radio-button-wrapper input');
-  const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .label__text');
+  const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .root__text');
   const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
   const getLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
@@ -252,8 +252,8 @@ describe('radio-button-wrapper', () => {
 
       const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
       const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
-      const labelText1 = await selectNode(page, '#radio-1 >>> .label__text');
-      const labelText2 = await selectNode(page, '#radio-2 >>> .label__text');
+      const labelText1 = await selectNode(page, '#radio-1 >>> .root__text');
+      const labelText2 = await selectNode(page, '#radio-2 >>> .root__text');
       const initialStyleInput1 = await getBackgroundStyle(input1);
       const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -266,14 +266,14 @@ describe('radio-button-wrapper', () => {
 
       expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
       expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
-      expect(await getActiveElementId(page)).toBe('radio-1-input');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
 
       await labelText2.click();
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
       expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
-      expect(await getActiveElementId(page)).toBe('radio-2-input');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
     });
 
     it('should check radio-button when checked attribute is changed programmatically', async () => {
@@ -352,7 +352,7 @@ describe('radio-button-wrapper', () => {
 
       await input.click();
 
-      expect(await getBoxShadowStyle(input)).toBe(visible, 'after click');
+      expect(await getBoxShadowStyle(input)).toBe('none', 'after click');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');

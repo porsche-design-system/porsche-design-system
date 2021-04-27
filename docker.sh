@@ -17,6 +17,6 @@ else
   SERVICE=design-system
 fi
 
-docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --rm change-volume-owner
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --service-ports --rm "${SERVICE}" "${@}"

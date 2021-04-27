@@ -43,12 +43,6 @@ describe('link-social', () => {
   const getLink = () => selectNode(page, 'p-link-social >>> a');
   const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await getLink();
-    expect(el).toBeDefined();
-  });
-
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,

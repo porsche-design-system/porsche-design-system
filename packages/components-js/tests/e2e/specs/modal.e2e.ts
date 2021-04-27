@@ -17,14 +17,16 @@ import { Page } from 'puppeteer';
 
 describe('modal', () => {
   let page: Page;
+  const CSS_TRANSITION_DURATION = 600;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-modal');
-  const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
-  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
+  const getModal = () => selectNode(page, 'p-modal >>> .root');
+  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
+  const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
   const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
     const { isOpen = true } = opts ?? {};
@@ -70,7 +72,7 @@ describe('modal', () => {
 
   it('should not be visible when not open', async () => {
     await initBasicModal({ isOpen: false });
-    await page.waitForTimeout(600); // wait for visibility transition to finish
+    await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
     expect(await getModalVisibility()).toBe('hidden');
   });
 
@@ -128,7 +130,8 @@ describe('modal', () => {
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
-      await (await getHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
+      const host = await getHost();
+      await setAttribute(host, 'disable-backdrop-click', '');
       await waitForStencilLifecycle(page);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
@@ -137,8 +140,9 @@ describe('modal', () => {
     });
 
     it('should not bubble close event', async () => {
+      const body = await selectNode(page, 'body');
       let bodyCalls = 0;
-      await addEventListener(await selectNode(page, 'body'), 'close', () => bodyCalls++);
+      await addEventListener(body, 'close', () => bodyCalls++);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
 
@@ -150,20 +154,24 @@ describe('modal', () => {
   describe('can be controlled via keyboard', () => {
     it('should focus first focusable element', async () => {
       await initAdvancedModal();
+      const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should focus close button when there is no focusable content element', async () => {
       await initBasicModal({ isOpen: false });
+      const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
+      const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'initially'); // close button
+
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
@@ -173,13 +181,15 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'finally'); // close button
     });
 
     it('should reverse cycle tab events within modal', async () => {
       await initAdvancedModal();
+      const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'initially'); // close button
+
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
@@ -190,7 +200,7 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'finally'); // close button
       await page.keyboard.up('ShiftLeft');
     });
 
@@ -226,49 +236,44 @@ describe('modal', () => {
         });
       </script>`
     );
+    await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-    expect(await getModalVisibility()).toBe('hidden');
+    expect(await getModalVisibility()).toBe('hidden', 'initial');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
     expect(await getModalVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
-    await page.waitForTimeout(600); // transition delay for visibility
-    expect(await getModalVisibility()).toBe('hidden');
+    await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
+
+    expect(await getModalVisibility()).toBe('hidden', 'after escape');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
   it('should prevent page from scrolling when open', async () => {
     await initBasicModal({ isOpen: false });
-    const body = await selectNode(page, 'body');
-    const getBodyOverflow = () => getElementStyle(body, 'overflow');
-
     expect(await getBodyOverflow()).toBe('visible');
+
     await openModal();
     expect(await getBodyOverflow()).toBe('hidden');
 
     await (await getHost()).evaluate((el) => el.removeAttribute('open'));
-
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
   });
 
   it('should prevent page from scrolling when initially open', async () => {
     await initBasicModal({ isOpen: true });
-    const body = await selectNode(page, 'body');
-    const getBodyOverflow = () => getElementStyle(body, 'overflow');
-
     expect(await getBodyOverflow()).toBe('hidden');
   });
 
   it('should remove overflow hidden from body if unmounted', async () => {
     await initBasicModal({ isOpen: true });
-    const body = await selectNode(page, 'body');
-    const getBodyOverflow = () => getElementStyle(body, 'overflow');
-
     expect(await getBodyOverflow()).toBe('hidden');
 
     await page.evaluate(() => {

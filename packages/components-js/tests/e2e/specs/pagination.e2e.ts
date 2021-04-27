@@ -17,10 +17,10 @@ describe('pagination', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-pagination');
-  const getPrevButton = () => selectNode(page, 'p-pagination >>> .p-pagination__prev');
-  const getNextButton = () => selectNode(page, 'p-pagination >>> .p-pagination__next');
+  const getPrevButton = () => selectNode(page, 'p-pagination >>> .prev');
+  const getNextButton = () => selectNode(page, 'p-pagination >>> .next');
   const getNav = () => selectNode(page, 'p-pagination >>> nav');
-  const getPaginationItems = async () => (await getNav()).$$('.p-pagination__goto');
+  const getPaginationItems = async () => (await getNav()).$$('.goto');
 
   const initPagination = (opts?: { activePage?: number }) => {
     const { activePage = 1 } = opts ?? {};

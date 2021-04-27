@@ -1,15 +1,15 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
-@mixin p-link-social-with-label() {
+@mixin with-label() {
   padding: p-px-to-rem(12px) p-px-to-rem(16px) p-px-to-rem(12px) p-px-to-rem(40px);
 }
 
-@mixin p-link-social-without-label() {
+@mixin without-label() {
   padding: 0;
 }
 
-@mixin p-link-social-label-with-label() {
+@mixin label-with-label() {
   width: 100%;
   height: auto;
   margin: 0;
@@ -20,7 +20,7 @@
   text-indent: 0;
 }
 
-@mixin p-link-social-label-without-label() {
+@mixin label-without-label() {
   width: 1px;
   height: 1px;
   margin: 0 0 0 -1px;
@@ -31,13 +31,13 @@
   text-indent: -1px;
 }
 
-@mixin p-link-social-icon-with-label() {
+@mixin icon-with-label() {
   left: p-px-to-rem(12px);
   top: p-px-to-rem(12px);
   transform: translateX(0) translateY(0);
 }
 
-@mixin p-link-social-icon-without-label() {
+@mixin icon-without-label() {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -59,8 +59,7 @@
   outline: transparent none !important;
 }
 
-.#{$p-global-class-prefix}link-social {
-  @include p-focus($p-color-default);
+.root {
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -74,12 +73,9 @@
   text-decoration: none;
   background-color: $p-color-neutral-contrast-high;
   color: $p-color-theme-dark-default;
+  @include p-focus($p-color-default);
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
-
-  :host([theme='dark']) & {
-    @include p-focus($p-color-theme-dark-default);
-  }
 
   &:hover,
   &:active {
@@ -90,18 +86,22 @@
   &--theme-dark {
     background-color: $p-color-theme-dark-default;
     color: $p-color-default;
+    @include p-focus($p-color-theme-dark-default);
 
     &:hover,
     &:active {
-      color: $p-color-default;
       background-color: darken($p-color-theme-dark-default, 12%);
+
+      // when icon is undefined
+      &#{$bem-block}--undefined {
+        color: $p-color-default;
+      }
     }
   }
 
   &--logo-facebook {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-facebook;
     }
   }
@@ -109,7 +109,6 @@
   &--logo-google {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-google;
     }
   }
@@ -117,7 +116,6 @@
   &--logo-instagram {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-instagram;
     }
   }
@@ -125,7 +123,6 @@
   &--logo-linkedin {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-linkedin;
     }
   }
@@ -133,7 +130,6 @@
   &--logo-pinterest {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-pinterest;
     }
   }
@@ -141,7 +137,6 @@
   &--logo-twitter {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-twitter;
     }
   }
@@ -149,7 +144,6 @@
   &--logo-wechat {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-wechat;
     }
   }
@@ -157,7 +151,6 @@
   &--logo-whatsapp {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-whatsapp;
     }
   }
@@ -165,7 +158,6 @@
   &--logo-xing {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-xing;
     }
   }
@@ -173,168 +165,167 @@
   &--logo-youtube {
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
       background-color: $p-color-external-youtube;
     }
   }
 
   &--with-label {
-    @include p-link-social-with-label;
+    @include with-label;
 
-    #{$bem-block}__label {
-      @include p-link-social-label-with-label;
+    .label {
+      @include label-with-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-link-social-icon-with-label;
+    .icon {
+      @include icon-with-label;
     }
   }
 
   &--without-label {
-    @include p-link-social-without-label;
+    @include without-label;
 
-    #{$bem-block}__label {
-      @include p-link-social-label-without-label;
+    .label {
+      @include label-without-label;
     }
 
-    #{$bem-block}__icon {
-      @include p-link-social-icon-without-label;
+    .icon {
+      @include icon-without-label;
     }
   }
 
   @include p-media-query('xs') {
     &--with-label-xs {
-      @include p-link-social-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xs {
-      @include p-link-social-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('s') {
     &--with-label-s {
-      @include p-link-social-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-s {
-      @include p-link-social-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('m') {
     &--with-label-m {
-      @include p-link-social-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-m {
-      @include p-link-social-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('l') {
     &--with-label-l {
-      @include p-link-social-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-l {
-      @include p-link-social-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
 
   @include p-media-query('xl') {
     &--with-label-xl {
-      @include p-link-social-with-label;
+      @include with-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-with-label;
+      .label {
+        @include label-with-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-with-label;
+      .icon {
+        @include icon-with-label;
       }
     }
 
     &--without-label-xl {
-      @include p-link-social-without-label;
+      @include without-label;
 
-      #{$bem-block}__label {
-        @include p-link-social-label-without-label;
+      .label {
+        @include label-without-label;
       }
 
-      #{$bem-block}__icon {
-        @include p-link-social-icon-without-label;
+      .icon {
+        @include icon-without-label;
       }
     }
   }
+}
 
-  &__icon {
-    position: absolute;
-    width: p-px-to-rem(24px);
-    height: p-px-to-rem(24px);
-  }
+.icon {
+  position: absolute;
+  width: p-px-to-rem(24px);
+  height: p-px-to-rem(24px);
 }

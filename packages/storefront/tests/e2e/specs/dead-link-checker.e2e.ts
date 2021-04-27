@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import { getBrowser, options } from '../helpers';
 
-describe('check for dead links in storefront', () => {
+describe('check for dead links', () => {
   let page: Page;
 
   let originalJasminTimeout: number;
@@ -18,19 +18,24 @@ describe('check for dead links in storefront', () => {
 
   // internal functions
   const getHref = (el: Element): string => el.getAttribute('href') as string;
-  const getLinks = () => page.$$('a[href],p-link[href],p-link-pure[href]');
+  const getLinks = () => page.$$('body [href]');
 
-  const scanForLinks = async (): Promise<string[]> =>
-    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref))))
-      .map((x) => (x!.startsWith('#') ? `${options.baseURL}/${x}` : x))
+  const scanForLinks = async (): Promise<string[]> => {
+    const links = await getLinks();
+    const hrefs = await Promise.all(links.map((x) => x.evaluate(getHref)));
+    return hrefs
+      .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
       .filter((x) => whitelistedUrls.indexOf(x) === -1);
+  };
 
-  const getHeadline = async () =>
-    (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const getHeadline = async () => {
+    await page.waitForSelector('.vmark > h1'), { visible: true };
+    return page.$eval('.vmark > h1', (x) => x.innerHTML);
+  };
 
   const getPatternHeadline = async () => {
-    await page.waitForSelector('p-headline[tag="h1"]');
-    await page.waitForTimeout(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
+    await page.waitForSelector('html.hydrated');
+    await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
     return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
   };
 
@@ -54,14 +59,14 @@ describe('check for dead links in storefront', () => {
 
     for (let i = 0; i < links.length; i++) {
       const href = links[i];
-      console.log('Checking', `[${i + 1}/${links.length}]`, href);
+      console.log(`Checking [${i + 1}/${links.length}]`, href);
 
       // Go to internal Url
-      if (href.includes(options.baseURL)) {
-        await page.goto(href, { waitUntil: 'domcontentloaded' });
+      if (href.startsWith('/')) {
+        await page.goto(`${options.baseURL}${href}`, { waitUntil: 'domcontentloaded' });
 
         const headline =
-          href.endsWith('#/') || href.endsWith('#')
+          href === '/'
             ? 'first page'
             : href.includes('patterns/forms/')
             ? await getPatternHeadline()
@@ -73,14 +78,15 @@ describe('check for dead links in storefront', () => {
           const newLinks = await scanForLinks();
           links = links.concat(newLinks).filter((v, i, a) => a.indexOf(v) === i);
         }
+      } else if (href.startsWith('http') && !href.startsWith(`${options.baseURL}/#`)) {
         // Go to external Url
-      } else if (href.startsWith('http')) {
+        // TODO: disabled for now flaky execution
         // const response = await page.goto(href);
         //
         // // Check response
         // if (response?.status() === 404) {
         //   invalidUrls.push(href);
-        // } TODO: flaky execution
+        // }
       } else {
         invalidUrls.push(href);
       }

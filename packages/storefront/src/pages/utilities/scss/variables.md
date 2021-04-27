@@ -5,7 +5,7 @@
 A light and dark theme is available depending on which background it's used.   
 
 <br>
-<select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
+<select id="theme-selector" v-model="theme" :data-selected="theme">
   <option disabled>Select a theme</option>
   <option value="light">Theme light</option>
   <option value="dark">Theme dark</option>
@@ -113,7 +113,7 @@ $p-layout-{v};
 ---
 
 ## Font
-For font styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) component or [text/headline scss mixins](#/utilities/scss#mixins).
+For font styling it's recommended to use the [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or [text/headline scss mixins](utilities/scss/mixins).
 
 ### Family
 Contains Porsche Next and predefined fallback fonts:

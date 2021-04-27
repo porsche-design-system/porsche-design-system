@@ -2,7 +2,7 @@
 
 The `<p-link-pure>` component is essential for performing changes in page routes.
 It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label  it's best practice to provide a descriptive label text for screen readers.
-In case you want the user to execute an action, you should select the [Button](#/components/button) or [Button Pure](#/components/button-pure) component instead.
+In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
 
 ## Basic example
 
@@ -29,11 +29,11 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="size">
     <option disabled>Select a style variant</option>
     <option>x-small</option>
     <option>small</option>
-    <option selected>medium</option>
+    <option>medium</option>
     <option>large</option>
     <option>x-large</option>
     <option>inherit</option>
@@ -53,9 +53,9 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="weightMarkup" :config="config">
-  <select @change="weight = $event.target.value">
+  <select v-model="weight">
     <option disabled>Select a weight</option>
-    <option selected>thin</option>
+    <option>thin</option>
     <option>regular</option>
     <option>bold</option>
   </select>
@@ -142,9 +142,9 @@ The size of the *subline* changes according to the size of the *label*. We do no
 **Note** If you intend to use a `<a>` tag inside of the `<p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
 
 <Playground :markup="subline" :config="config">
-  <select @change="size = $event.target.value">
+  <select v-model="sublineSize">
     <option disabled>Select a size</option>
-    <option selected>small</option>
+    <option>small</option>
     <option>medium</option>
     <option>large</option>
     <option>x-large</option>
@@ -161,6 +161,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     config = { themeable: true, spacing: 'inline' };
     
     size = 'medium';
+    sublineSize = 'small';
     weight = 'thin';
     
     withLabel =
@@ -220,11 +221,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
 >Some label</p-link-pure>`;
 
     get subline() {
-      return `<p-link-pure size="${this.size}" href="https://www.porsche.com">
+      return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
   Some label
   <p slot="subline">Some Subline</p>
 </p-link-pure>
-<p-link-pure size="${this.size}" weight="semibold">
+<p-link-pure size="${this.sublineSize}" weight="semibold">
   <a href="https://www.porsche.com">Some label</a>
   <p slot="subline">Some Subline</p>
 </p-link-pure>`;
