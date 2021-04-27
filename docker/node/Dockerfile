@@ -1,4 +1,4 @@
-FROM node:12.16.1-stretch-slim
+FROM node:14.16.1-stretch-slim
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
@@ -8,8 +8,14 @@ RUN apt-get update && \
     libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
     libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
     ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils libnotify-dev \
-    libgtk2.0-0 xvfb rsync openssh-client procps git curl && \
+    libgtk2.0-0 xvfb rsync openssh-client procps git curl unzip && \
     rm -rf /var/lib/apt/lists/*
+
+# https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf awscliv2.zip ./aws/install
 
 COPY ./entrypoint.sh "/opt/porsche-design-system/entrypoint.sh"
 COPY ./bin "/opt/porsche-design-system/bin"
