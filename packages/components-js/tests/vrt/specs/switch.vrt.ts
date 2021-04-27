@@ -74,7 +74,7 @@ describe('Switch', () => {
         await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered);
         await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered);
 
-        await page.waitForTimeout(1000); // we need to wait for CSS transition to be finished
+        await page.waitForTimeout(500); // we need to wait for CSS transition to be finished
       })
     ).toBeFalsy();
   });

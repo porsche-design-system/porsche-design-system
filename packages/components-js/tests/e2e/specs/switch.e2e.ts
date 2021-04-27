@@ -2,15 +2,16 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   getActiveElementId,
-  getActiveElementTagName,
   getAttribute,
   getBrowser,
   getLifecycleStatus,
   getProperty,
+  hasFocus,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -48,12 +49,12 @@ describe('switch', () => {
     const { disabled = false, tabbable = true, loading = false, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch tabbable="${tabbable}" disabled="${disabled}" loading="${loading}" >Some Label</p-switch>${otherMarkup}`
+      `<p-switch tabbable="${tabbable}" disabled="${disabled}" loading="${loading}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
   describe('label', () => {
-    it('should check/uncheck switch on label click', async () => {
+    it('should check/uncheck switch on click', async () => {
       await initSwitch({ otherMarkup: clickHandlerScript });
       const host = await getHost();
       const label = await getLabel();
@@ -82,7 +83,7 @@ describe('switch', () => {
       expect(await getAttribute(button, 'aria-checked')).toBe('true');
     });
 
-    it('should add aria-busy when loading and remove if finished', async () => {
+    it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
       await initSwitch();
 
       const host = await getHost();
@@ -101,23 +102,33 @@ describe('switch', () => {
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
 
-    it('should not be active element if tabbable is set to false', async () => {
-      await initSwitch({ tabbable: false });
-      await page.keyboard.press('Tab');
+    it('should add aria-busy when loading is set via property and remove when finished', async () => {
+      await initSwitch();
 
-      expect(await getActiveElementTagName(page)).not.toBe(tagName);
+      const host = await getHost();
+      const button = await getButton();
+
+      expect(await getProperty(button, 'ariaBusy')).toBeNull();
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(button, 'ariaBusy')).toBe('true');
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(button, 'ariaBusy')).toBeNull();
     });
 
     it('should be removed from tab order for tabbable false', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-switch tabbable="false">Some label</p-switch>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+        `<div id="wrapper">
+ <a href="#" id="before">before</a>
+ <p-switch tabbable="false">Some label</p-switch>
+ <a href="#" id="after">after</a>
+</div>`
       );
 
       const host = await getHost();
@@ -132,12 +143,10 @@ describe('switch', () => {
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
       expect(hostFocusCalls).toBe(0, 'hostFocusCalls after tab');
       expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
 
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
       expect(hostFocusCalls).toBe(0, 'hostFocusCalls after second tab');
       expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
     });
@@ -195,13 +204,11 @@ describe('switch', () => {
     it('should trigger focus & blur events at the correct time', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-switch id="my-switch">Some label</p-switch>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+        `<div id="wrapper">
+ <a href="#" id="before">before</a>
+ <p-switch id="my-switch">Some label</p-switch>
+ <a href="#" id="after">after</a>
+</div>`
       );
 
       const host = await getHost();
@@ -287,27 +294,24 @@ describe('switch', () => {
     it('should provide methods to focus & blur the element', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-switch>Some label</p-switch>
-      </div>
-    `
+        `<div id="wrapper">
+ <a href="#" id="before">before</a>
+ <p-switch>Some label</p-switch>
+</div>`
       );
-
-      const hostHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-switch'));
 
       const host = await getHost();
       const before = await selectNode(page, '#before');
       await before.focus();
-      expect(await hostHasFocus()).toBe(false);
+      expect(await hasFocus(page, host)).toBe(false);
       await host.focus();
-      expect(await hostHasFocus()).toBe(true);
+      expect(await hasFocus(page, host)).toBe(true);
+      // Cant use ElementHandle 'host' because .blur() is not available
       await page.evaluate(() => {
-        const buttonElement = document.querySelector('p-switch') as HTMLElement;
-        buttonElement.blur();
+        const switchElement = document.querySelector('p-switch') as HTMLElement;
+        switchElement.blur();
       });
-      expect(await hostHasFocus()).toBe(false);
+      expect(await hasFocus(page, host)).toBe(false);
     });
   });
 
