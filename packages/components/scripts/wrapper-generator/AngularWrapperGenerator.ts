@@ -69,7 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const constructorCode = [
       'c.detach();',
       'this.el = r.nativeElement;',
-      ...(outputs ? ['proxyOutputs(this, this.el, outputs);'] : []),
+      ...(outputs ? ['proxyOutputs(this, outputs);'] : []),
     ].join('\n    ');
 
     return `${inputsAndOutputs}

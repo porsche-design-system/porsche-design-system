@@ -195,6 +195,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Core Initializer Prefixed',
   },
   {
+    path: 'events',
+    component: fromPages.EventsComponent,
+    name: 'Events',
+  },
+  {
     path: 'form-wrapper-binding',
     component: fromPages.FormWrapperBindingComponent,
     name: 'Form Wrapper Binding',
