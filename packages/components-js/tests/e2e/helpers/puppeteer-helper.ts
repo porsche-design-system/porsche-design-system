@@ -139,6 +139,7 @@ export const forceStateOnElement = async (
     nodeId: elementNode.nodeId,
     forcedPseudoClasses: states,
   });
+  await page.waitForTimeout(40);
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
