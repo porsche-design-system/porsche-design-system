@@ -8,7 +8,7 @@ import {
   mapBreakpointPropToClasses,
 } from '../../../utils';
 
-type SwitchChangeEvent = { checked: boolean };
+export type SwitchChangeEvent = { checked: boolean };
 
 @Component({
   tag: 'p-switch',
