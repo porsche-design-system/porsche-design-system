@@ -26,10 +26,10 @@ fdescribe('Switch', () => {
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
         const body = `
+          <br><br><br><br><br><br><br><br><br><br><br>
           <div class="playground light">
             <p-switch id="switch-hovered">Some label</p-switch>
-            <!-- TODO: when using a hovered + checked switch vrt gets flaky -->
-            <!--<p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>-->
+            <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
           </div>
           <div class="playground dark">
             <p-switch id="switch-dark-hovered" theme="dark">Some label</p-switch>
@@ -63,7 +63,7 @@ fdescribe('Switch', () => {
         const focusedHovered = hovered.concat(focused);
 
         await forceStateOnElement(page, '#switch-hovered >>> button', hovered);
-        // await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered);
+        await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered);
         await forceStateOnElement(page, '#switch-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-checked-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered);
