@@ -6,12 +6,12 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
+  isDisabledOrLoading,
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { isDisabledOrLoading } from '../switch/switch-utils';
 
 @Component({
   tag: 'p-button-pure',

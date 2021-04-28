@@ -4,10 +4,10 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
+  isDisabledOrLoading,
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
-import { isDisabledOrLoading } from '../switch/switch-utils';
 
 @Component({
   tag: 'p-button',

@@ -4,9 +4,11 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
+  isDisabledOrLoading,
   mapBreakpointPropToClasses,
 } from '../../../utils';
-import { isDisabledOrLoading, SwitchChangeEvent } from './switch-utils';
+
+type SwitchChangeEvent = { checked: boolean };
 
 @Component({
   tag: 'p-switch',

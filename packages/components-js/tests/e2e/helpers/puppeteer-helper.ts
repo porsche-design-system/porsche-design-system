@@ -1,9 +1,6 @@
-import { CDPSession, ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import Protocol from 'devtools-protocol';
-import GetNodeForLocationRequest = Protocol.DOM.GetNodeForLocationRequest;
-import ProtocolMapping from 'devtools-protocol/types/protocol-mapping';
-import Commands = ProtocolMapping.Commands;
 
 type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };

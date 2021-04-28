@@ -90,7 +90,7 @@ The `label` can be aligned to the `right` (default) or to the `left` in addition
 
 <Playground :markup="alignment" :config="config">
   <select v-model="alignLabel">
-    <option selected value="right">Right</option>
+    <option value="right">Right</option>
     <option value="left">Left</option>
     <option value="responsive">Responsive</option>
   </select>
