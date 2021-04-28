@@ -140,8 +140,6 @@ export const forceStateOnElement = async (
     nodeId: elementNode.nodeId,
     forcedPseudoClasses: states,
   });
-
-  await page.waitForTimeout(40); // TODO, when removed VRT tests becoming flaky
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);

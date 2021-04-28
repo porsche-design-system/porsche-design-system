@@ -28,6 +28,7 @@ fdescribe('Switch', () => {
         const body = `
           <div class="playground light">
             <p-switch id="switch-hovered">Some label</p-switch>
+            <p-switch>Some label</p-switch> <!-- TODO: when using a hovered + checked switch vrt gets flaky -->
             <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
           </div>
           <div class="playground dark">
