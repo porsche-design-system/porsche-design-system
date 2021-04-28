@@ -1,5 +1,9 @@
-import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { CDPSession, ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
+import Protocol from 'devtools-protocol';
+import GetNodeForLocationRequest = Protocol.DOM.GetNodeForLocationRequest;
+import ProtocolMapping from 'devtools-protocol/types/protocol-mapping';
+import Commands = ProtocolMapping.Commands;
 
 type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
@@ -132,14 +136,13 @@ export const forceStateOnElement = async (
   const elementNode = (await cdp.send('DOM.getNodeForLocation', {
     x: x + width / 2,
     y: y + height / 2,
-  })) as any;
+  })) as Protocol.DOM.GetNodeForLocationResponse;
 
   await cdp.send('CSS.enable');
   await cdp.send('CSS.forcePseudoState', {
     nodeId: elementNode.nodeId,
     forcedPseudoClasses: states,
   });
-  await page.waitForTimeout(40);
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
