@@ -47,7 +47,7 @@ export class Switch {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (isDisabledOrLoading(this.disabled, this.loading)) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
@@ -57,7 +57,7 @@ export class Switch {
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
-      () => isDisabledOrLoading(this.disabled, this.loading)
+      () => this.isDisabledOrLoading
     );
   }
 
@@ -65,7 +65,7 @@ export class Switch {
     const rootClasses = {
       ['root']: true,
       ['root--checked']: this.checked,
-      ['root--disabled']: this.disabled || this.loading,
+      ['root--disabled']: this.isDisabledOrLoading,
       ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
       ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
       ...mapBreakpointPropToClasses('root--label', this.hideLabel, ['hidden', 'visible']),
@@ -83,9 +83,9 @@ export class Switch {
           type="button"
           role="switch"
           aria-checked={this.checked ? 'true' : 'false'}
-          disabled={isDisabledOrLoading(this.disabled, this.loading)}
-          tabindex={this.tabbable ? 0 : -1}
           aria-busy={this.loading ? 'true' : null}
+          disabled={this.isDisabledOrLoading}
+          tabindex={this.tabbable ? 0 : -1}
           onClick={this.handleSwitchClick}
         >
           <span class="toggle">
@@ -101,4 +101,8 @@ export class Switch {
   private handleSwitchClick = (): void => {
     this.switchChange.emit({ checked: !this.checked });
   };
+
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
+  }
 }

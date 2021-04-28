@@ -77,6 +77,10 @@ $root: '.root';
     padding-right: $p-spacing-8;
   }
 
+  #{$root}--label-hidden & {
+    @include p-switch-label-hidden;
+  }
+
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
@@ -90,15 +94,7 @@ $root: '.root';
         padding-left: $p-spacing-8;
         padding-right: 0;
       }
-    }
-  }
 
-  #{$root}--label-hidden & {
-    @include p-switch-label-hidden;
-  }
-
-  @each $breakpoint in $breakpoints {
-    @include p-media-query($breakpoint) {
       #{$root}--label-visible-#{$breakpoint} & {
         @include p-switch-label-visible;
       }

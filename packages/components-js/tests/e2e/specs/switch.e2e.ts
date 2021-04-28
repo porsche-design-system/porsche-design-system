@@ -8,6 +8,7 @@ import {
   getProperty,
   hasFocus,
   initAddEventListener,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -81,6 +82,11 @@ describe('switch', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-checked')).toBe('true');
+
+      await removeAttribute(host, 'checked');
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-checked')).toBe('false');
     });
 
     it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
@@ -100,25 +106,6 @@ describe('switch', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
-    });
-
-    it('should add aria-busy when loading is set via property and remove when finished', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getProperty(button, 'ariaBusy')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getProperty(button, 'ariaBusy')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getProperty(button, 'ariaBusy')).toBeNull();
     });
 
     it('should be removed from tab order for tabbable false', async () => {
@@ -143,10 +130,12 @@ describe('switch', () => {
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
       await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
       expect(hostFocusCalls).toBe(0, 'hostFocusCalls after tab');
       expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
 
       await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
       expect(hostFocusCalls).toBe(0, 'hostFocusCalls after second tab');
       expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
     });
@@ -154,7 +143,7 @@ describe('switch', () => {
 
   describe('events', () => {
     it('should trigger event on click', async () => {
-      await initSwitch({ otherMarkup: clickHandlerScript });
+      await initSwitch();
 
       let eventCounter = 0;
       const host = await getHost();
@@ -162,13 +151,13 @@ describe('switch', () => {
       await addEventListener(host, 'switchChange', () => eventCounter++);
 
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(1);
     });
 
     it('should not trigger event on click if switch is disabled', async () => {
-      await initSwitch({ disabled: true, otherMarkup: clickHandlerScript });
+      await initSwitch({ disabled: true });
 
       let eventCounter = 0;
       const host = await getHost();
@@ -176,7 +165,7 @@ describe('switch', () => {
       await addEventListener(host, 'switchChange', () => eventCounter++);
 
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(0);
     });
@@ -193,7 +182,7 @@ describe('switch', () => {
 
       await button.click();
       await host.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(events.length).toBe(2);
       for (const event of events) {
