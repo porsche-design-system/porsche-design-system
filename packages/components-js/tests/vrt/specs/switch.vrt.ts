@@ -73,8 +73,6 @@ fdescribe('Switch', () => {
         await forceStateOnElement(page, '#switch-dark-checked-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered);
         await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered);
-
-        await page.waitForTimeout(500); // TODO, remove as soon as flakiness without is understood
       })
     ).toBeFalsy();
   });
