@@ -1,4 +1,4 @@
-import { getPrefixedTagNames, getTagName, prefix, pxToRem } from '../../../utils';
+import { getPrefixedTagNames, getTagName, pxToRem } from '../../../utils';
 import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -10,7 +10,7 @@ export type TabGradientColorTheme = 'default' | 'surface';
 
 export type Direction = 'prev' | 'next';
 export const FOCUS_PADDING_WIDTH = 4;
-const ENABLE_TRANSITION_CLASS = prefix('tabs-bar__status-bar--enable-transition');
+const ENABLE_TRANSITION_CLASS = 'status-bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
   // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
