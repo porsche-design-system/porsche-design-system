@@ -4,7 +4,7 @@ import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
 
 const DEFAULT_ICON_URL =
-  'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.e628b114aa820496721ee35a21a0683b.svg';
+  'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
 
 describe('getSvgContent()', () => {
   const getIconUrl = (name: IconName) => `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
