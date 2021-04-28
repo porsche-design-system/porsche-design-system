@@ -27,4 +27,4 @@ To avoid possible [**violations against country-specific law**](accessibility/co
 
 To integrate accessibility into your product workflow, follow these guidelines:
 
-<p-link href="/accessibility/workflow">The Accessibility Workflow</p-link>
+<p-link href="accessibility/workflow">The Accessibility Workflow</p-link>

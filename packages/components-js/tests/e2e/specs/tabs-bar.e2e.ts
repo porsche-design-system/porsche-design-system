@@ -297,6 +297,21 @@ describe('tabs-bar', () => {
   });
 
   describe('scrollArea', () => {
+    it('should have transition and will-change css property applied on stats-bar', async () => {
+      await initTabsBar({ activeTabIndex: 0 });
+      const host = await getHost();
+      await setAttribute(host, 'active-tab-index', '1'); // class with transition property will applied on first change
+      await waitForStencilLifecycle(page);
+
+      const statusBar = await getStatusBar();
+      const statusBarStyleTransition = await getElementStyle(statusBar, 'transition');
+      const statusBarStyleWillChange = await getElementStyle(statusBar, 'willChange');
+
+      expect(statusBarStyleTransition).toContain('transform');
+      expect(statusBarStyleTransition).toContain('width');
+      expect(statusBarStyleWillChange).toBe('width');
+    });
+
     it('should scroll by 20% on button prev/next click', async () => {
       await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
       const { prevButton, nextButton } = await getPrevNextButton();
@@ -552,6 +567,7 @@ describe('tabs-bar', () => {
 
       expect(await getButtonFocus()).toBe(true);
     });
+
     it('should render focus on selected tab on keyboard "tab" press', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 0 });
       const getButtonFocus = async () => {
