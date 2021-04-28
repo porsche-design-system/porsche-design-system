@@ -26,7 +26,6 @@ fdescribe('Switch', () => {
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
         const body = `
-          <br><br><br><br><br><br><br><br><br><br><br>
           <div class="playground light">
             <p-switch id="switch-hovered">Some label</p-switch>
             <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
@@ -74,6 +73,8 @@ fdescribe('Switch', () => {
         await forceStateOnElement(page, '#switch-dark-checked-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered);
         await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered);
+
+        await page.waitForTimeout(500); // TODO, remove as soon as flakiness without is understood
       })
     ).toBeFalsy();
   });
