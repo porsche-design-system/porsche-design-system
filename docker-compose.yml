@@ -17,7 +17,6 @@ services:
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
-      - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
       - GITHUB_TOKEN
@@ -43,11 +42,11 @@ services:
     working_dir: /opt/porsche-design-system-app
     environment:
       - GIT_DEPLOY_KEY
-      - GITHUB_REPOSITORY
-      - GITHUB_ACTOR
       - GITHUB_REF
       - GITHUB_SHA
       - GITHUB_TOKEN
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
     volumes:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages

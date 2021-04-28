@@ -45,7 +45,7 @@ add_deployment_version() {
 
 update_base_tag(){
   echo "task: [$(date)] \"update_base_tag\" (${1})"
-  sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' ./packages/storefront/dist/index.html
+  sed -i -E -e 's$<base href=/ >$<base href="/'${1}'/">$' ./packages/storefront/dist/index.html
 }
 
 upload_s3() {
