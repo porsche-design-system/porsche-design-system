@@ -3,7 +3,7 @@ import { ElementHandle, Page } from 'puppeteer';
 
 import { browser } from '../config';
 
-fdescribe('events', () => {
+describe('events', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
