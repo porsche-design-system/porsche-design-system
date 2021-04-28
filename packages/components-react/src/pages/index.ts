@@ -7,6 +7,7 @@ export * from './ContentWrapper';
 export * from './CoreClassNames';
 export * from './CoreInitializer';
 export * from './Divider';
+export * from './Events';
 export * from './FieldsetWrapper';
 export * from './Flex';
 export * from './Grid';

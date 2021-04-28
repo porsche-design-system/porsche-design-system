@@ -1,4 +1,4 @@
-import { fromEvent } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 
 const proxyInputs = (component: any, inputs: string[]): void => {
   const callback = (item: string): void => {
@@ -27,8 +27,8 @@ const proxyInputs = (component: any, inputs: string[]): void => {
 //   });
 // };
 
-export const proxyOutputs = (instance: any, el: HTMLElement, events: string[]): void => {
-  events.forEach((event) => (instance[event] = fromEvent(el, event)));
+export const proxyOutputs = (instance: any, events: string[]): void => {
+  events.forEach((event) => (instance[event] = new EventEmitter()));
 };
 
 type ProxyCmpOptions = { inputs?: string[]; methods?: string[] };
