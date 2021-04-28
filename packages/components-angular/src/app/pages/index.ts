@@ -7,6 +7,7 @@ import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { DividerComponent } from './divider.component';
+import { EventsComponent } from './events.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
@@ -44,6 +45,7 @@ export const pages = [
   CoreInitializerComponent,
   CoreInitializerPrefixedComponent,
   DividerComponent,
+  EventsComponent,
   FieldsetWrapperComponent,
   FlexComponent,
   FormWrapperBindingComponent,
@@ -81,6 +83,7 @@ export * from './content-wrapper.component';
 export * from './core-initializer.component';
 export * from './core-initializer-prefixed.component';
 export * from './divider.component';
+export * from './events.component';
 export * from './fieldset-wrapper.component';
 export * from './flex.component';
 export * from './form-wrapper-binding.component';
