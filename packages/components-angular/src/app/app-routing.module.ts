@@ -134,6 +134,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Spinner',
   },
   {
+    path: 'switch',
+    component: fromPages.SwitchComponent,
+    name: 'Switch',
+  },
+  {
     path: 'tabs',
     component: fromPages.TabsComponent,
     name: 'Tabs',

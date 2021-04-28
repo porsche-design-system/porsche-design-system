@@ -26,6 +26,7 @@ export * from './Pagination';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
 export * from './Spinner';
+export * from './Switch';
 export * from './Tabs';
 export * from './TabsBar';
 export * from './Text';

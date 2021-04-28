@@ -11,6 +11,7 @@ import {
   removeAttribute,
   isMessageVisible,
   isDescriptionVisible,
+  isDisabledOrLoading,
 } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
@@ -275,5 +276,16 @@ describe('isMessageVisible()', () => {
     }
 
     expect(isMessageVisible(el, message, formState)).toBe(result);
+  });
+});
+
+describe('isDisabledOrLoading()', () => {
+  it.each<[boolean, boolean, boolean]>([
+    [true, true, true],
+    [true, false, true],
+    [false, true, true],
+    [false, false, false],
+  ])('should for disabled: "%s" and loading: "%s" return "%s"', (disabled, loading, result) => {
+    expect(isDisabledOrLoading(disabled, loading)).toBe(result);
   });
 });
