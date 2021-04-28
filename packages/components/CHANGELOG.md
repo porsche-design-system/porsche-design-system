@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+-  Events firing twice in Angular `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
+
 ### [2.0.2] - 2021-04-21
 
 ### [2.0.2-beta.0] - 2021-04-20
