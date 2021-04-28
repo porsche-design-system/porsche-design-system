@@ -1,7 +1,7 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
 
-fdescribe('Switch', () => {
+describe('Switch', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
