@@ -1,7 +1,7 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
 
-describe('Switch', () => {
+fdescribe('Switch', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
@@ -26,13 +26,13 @@ describe('Switch', () => {
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
         const body = `
-          <div class="playground light">
-            <p-switch id="switch-hovered">Some label</p-switch>
-            <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
-          </div>
           <div class="playground dark">
             <p-switch id="switch-dark-hovered" theme="dark">Some label</p-switch>
             <p-switch id="switch-dark-checked-hovered" theme="dark" checked="true">Some label</p-switch>
+          </div>
+          <div class="playground light">
+            <p-switch id="switch-hovered">Some label</p-switch>
+            <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
           </div>
           <div class="playground light">
             <p-switch id="switch-focused">Some label</p-switch>
@@ -63,7 +63,6 @@ describe('Switch', () => {
 
         await forceStateOnElement(page, '#switch-hovered >>> button', hovered);
         await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered);
-        await page.waitForTimeout(40); // TODO, for unknown reasons we need a timeout, otherwise element before is visually flaky
         await forceStateOnElement(page, '#switch-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-checked-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered);
