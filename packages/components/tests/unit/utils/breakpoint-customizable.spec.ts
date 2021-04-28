@@ -18,8 +18,8 @@ describe('mapBreakpointPropToPrefixedClasses()', () => {
   });
 
   it('should create class by passing a "boolean" prop', () => {
-    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', true, { classSuffixes: ['a', 'b'] });
-    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', false, { classSuffixes: ['a', 'b'] });
+    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', true, ['a', 'b']);
+    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', false, ['a', 'b']);
 
     expect(resultA).toEqual({
       'p-some-class-prefix-a': true,
@@ -31,8 +31,8 @@ describe('mapBreakpointPropToPrefixedClasses()', () => {
   });
 
   it('should create class by passing a "string" prop containing a boolean', () => {
-    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'true', { classSuffixes: ['a', 'b'] });
-    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'false', { classSuffixes: ['a', 'b'] });
+    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'true', ['a', 'b']);
+    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'false', ['a', 'b']);
 
     expect(resultA).toEqual({
       'p-some-class-prefix-a': true,
@@ -52,18 +52,10 @@ describe('mapBreakpointPropToPrefixedClasses()', () => {
         m: false,
         xl: 123,
       },
-      { classSuffixes: ['a', 'b'] }
+      ['a', 'b']
     );
-    const resultB = mapBreakpointPropToPrefixedClasses(
-      'some-class-prefix',
-      { base: true },
-      { classSuffixes: ['a', 'b'] }
-    );
-    const resultC = mapBreakpointPropToPrefixedClasses(
-      'some-class-prefix',
-      { base: false },
-      { classSuffixes: ['a', 'b'] }
-    );
+    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', { base: true }, ['a', 'b']);
+    const resultC = mapBreakpointPropToPrefixedClasses('some-class-prefix', { base: false }, ['a', 'b']);
     const resultD = mapBreakpointPropToPrefixedClasses('some-class-prefix', { base: 123 });
     const resultE = mapBreakpointPropToPrefixedClasses('some-class-prefix', {
       base: 1,
@@ -107,12 +99,12 @@ describe('mapBreakpointPropToPrefixedClasses()', () => {
     const resultA = mapBreakpointPropToPrefixedClasses(
       'some-class-prefix',
       `{base: 'some-string', xs: true, m: false, xl: 123}`,
-      { classSuffixes: ['a', 'b'] }
+      ['a', 'b']
     ); // => JSON5
     const resultB = mapBreakpointPropToPrefixedClasses(
       'some-class-prefix',
       '{"base": "some-string", "xs": true, "m": false, "xl": 123}',
-      { classSuffixes: ['a', 'b'] }
+      ['a', 'b']
     ); // => JSON
 
     expect(resultA).toEqual({
