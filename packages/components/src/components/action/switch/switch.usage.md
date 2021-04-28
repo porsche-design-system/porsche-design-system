@@ -31,7 +31,7 @@ Depending on the use case (e.g. list on mobile), the spacing between the switch 
 
 ### Action
 
-Switches should never require users to press a button to apply the settings because a switch is a toggle button. When you require users to press a submit button, you confuse them because it’s not what they expect. You should only use switches on settings that need to take effect instantaneously. 
+Switches should never require users to press a button to apply the settings because a switch is a toggle button. When you require users to press a submit button, you confuse them because it’s not what they expect. You should only use switches on changes that need to take effect instantaneously. 
 
 ### Validation
 
