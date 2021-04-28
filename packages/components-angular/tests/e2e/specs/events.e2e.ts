@@ -1,6 +1,5 @@
-import { selectNode, goto } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-
+import { selectNode, goto } from '../helpers';
 import { browser } from '../config';
 
 describe('events', () => {
