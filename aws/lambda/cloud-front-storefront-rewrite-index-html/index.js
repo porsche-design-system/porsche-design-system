@@ -10,7 +10,10 @@ exports.handler = (event, context, callback) => {
   // Is it not a file?
   if (!oldUri.match(/\.[0-9a-z]{1,4}$/i)) {
     // Match any '/' that occurs at the end of a URI. Replace it with a default index
-    const newUri = oldUri.replace(/(\/(?:issue|housekeeping|release)\/[\w\d-\.]+|latest|v\d)\/?.*/, '$1/index.html');
+    const newUri = oldUri.replace(
+      /(\/(?:(?:issue|housekeeping|release)\/[\w\d-\.]+|latest|v0\/(?:core|react)|v\d))\/?.*/,
+      '$1/index.html'
+    );
 
     // console.log('Old URI: ', oldUri);
     // console.log('New URI: ', newUri);
