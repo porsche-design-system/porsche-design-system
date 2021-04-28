@@ -46,7 +46,7 @@ export class Button {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (isDisabledOrLoading(this.disabled, this.loading)) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
@@ -56,7 +56,7 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => isDisabledOrLoading(this.disabled, this.loading)
+      () => this.isDisabledOrLoading
     );
   }
 
@@ -79,7 +79,7 @@ export class Button {
       <button
         class={buttonClasses}
         type={this.type}
-        disabled={isDisabledOrLoading(this.disabled, this.loading)}
+        disabled={this.isDisabledOrLoading}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
@@ -99,5 +99,9 @@ export class Button {
         </PrefixedTagNames.pText>
       </button>
     );
+  }
+
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

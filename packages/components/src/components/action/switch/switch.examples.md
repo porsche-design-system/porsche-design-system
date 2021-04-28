@@ -36,7 +36,7 @@ switchElement.addEventListener('switchChange', (switchChangeEvent) => {
 
 ```ts
 import { Component } from '@angular/core';
-import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
+import type { SwitchChangeEvent } from '@porsche-design-system/components-angular/lib/types';
 
 @Component({
   selector: 'some-switch-page',
