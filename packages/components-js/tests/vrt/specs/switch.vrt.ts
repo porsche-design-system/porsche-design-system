@@ -26,13 +26,13 @@ fdescribe('Switch', () => {
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
         const body = `
-          <div class="playground dark">
-            <p-switch id="switch-dark-hovered" theme="dark">Some label</p-switch>
-            <p-switch id="switch-dark-checked-hovered" theme="dark" checked="true">Some label</p-switch>
-          </div>
           <div class="playground light">
             <p-switch id="switch-hovered">Some label</p-switch>
             <p-switch id="switch-checked-hovered" checked="true">Some label</p-switch>
+          </div>
+          <div class="playground dark">
+            <p-switch id="switch-dark-hovered" theme="dark">Some label</p-switch>
+            <p-switch id="switch-dark-checked-hovered" theme="dark" checked="true">Some label</p-switch>
           </div>
           <div class="playground light">
             <p-switch id="switch-focused">Some label</p-switch>
