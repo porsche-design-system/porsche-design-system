@@ -1,4 +1,4 @@
-import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, Page } from 'puppeteer';
 import { getElementProp, getOuterHTML, goto, selectNode, waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
