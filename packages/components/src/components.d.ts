@@ -14,7 +14,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
-import { SwitchChangeEvent } from "./components/action/switch/switch-utils";
+import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {

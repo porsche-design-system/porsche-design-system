@@ -63,7 +63,6 @@ describe('Switch', () => {
 
         await forceStateOnElement(page, '#switch-hovered >>> button', hovered);
         await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered);
-        await page.waitForTimeout(40); // TODO, for unknown reasons we need a timeout, otherwise element before is visually flaky
         await forceStateOnElement(page, '#switch-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-checked-focused >>> button', focused);
         await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered);
