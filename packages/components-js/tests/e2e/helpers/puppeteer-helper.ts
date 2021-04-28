@@ -140,6 +140,7 @@ export const forceStateOnElement = async (
     nodeId: elementNode.nodeId,
     forcedPseudoClasses: states,
   });
+  await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
