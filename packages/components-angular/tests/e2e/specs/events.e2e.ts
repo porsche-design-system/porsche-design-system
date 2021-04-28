@@ -36,11 +36,9 @@ describe('events', () => {
   it('pagination should emit events once', async () => {
     await goto(page, 'events');
 
-    const getNav = () => selectNode(page, 'p-pagination >>> nav');
-    const getPaginationItems = async () => (await getNav()).$$('.goto');
-
+    const nav = await selectNode(page, 'p-pagination >>> nav');
     const pageChangeEventCounter = await selectNode(page, 'p-pagination + *');
-    const [firstBtn, secondBtn, thirdBtn] = await getPaginationItems();
+    const [firstBtn, secondBtn, thirdBtn] = await nav.$$('.goto');
 
     await clickElement(secondBtn);
     expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
