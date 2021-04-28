@@ -3,7 +3,7 @@
 ## When to use
 
 • If an instant response of applied settings is required without an explicit action.  
-• To enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox) instead.  
+• To enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](components/checkbox) instead.  
 • When user is toggling independent features or behaviors.
 
 ---
@@ -35,7 +35,7 @@ Switches should never require users to press a button to apply the settings beca
 
 ### Validation
 
-We recommend to use only one validation for errors. Success is already provided by the active switch and does not require any further validation. Use a validation only when necessary. E.g. to show error message or direct feedback of this control. Do not distract users with unimportant information. For page level feedback, use the [Banner](#/components/banner) notification.
+We recommend to use only one validation for errors. Success is already provided by the active switch and does not require any further validation. Use a validation only when necessary. E.g. to show error message or direct feedback of this control. Do not distract users with unimportant information. For page level feedback, use the [Banner](components/banner) notification.
 
 
 ### Helper text
@@ -60,7 +60,7 @@ Don’t use the slide Switch for multiple choice questions
 
 ### Intermediate state
 
-Don’t use slide Switch when an intermediate state is required. [Use Checkbox instead!](#/components/checkbox)
+Don’t use slide Switch when an intermediate state is required. [Use Checkbox instead!](components/checkbox)
 
 ![Intermediate state](./assets/switch-intermediate-state.png)
 
@@ -77,5 +77,5 @@ Preferably set Switches vertically left-aligned, as this supports scannability w
 
 ## Related Components
 
-- [Checkbox](#/components/checkbox)
-- [Button](#/components/button)
+- [Checkbox](components/checkbox)
+- [Button](components/button)
