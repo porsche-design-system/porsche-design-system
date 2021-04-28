@@ -291,7 +291,7 @@ describe('switch', () => {
       await page.keyboard.up('ShiftLeft');
     });
 
-    it('should provide methods to focus & blur the element', async () => {
+    it('should provide functionality to focus & blur the custom element', async () => {
       await setContentWithDesignSystem(
         page,
         `<div id="wrapper">
