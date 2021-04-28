@@ -16,7 +16,6 @@ services:
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
-      - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
       - GITHUB_TOKEN
@@ -48,9 +47,6 @@ services:
     environment:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
-      - GIT_DEPLOY_KEY
-      - GITHUB_REPOSITORY
-      - GITHUB_ACTOR
       - GITHUB_REF
       - GITHUB_SHA
       - GITHUB_TOKEN
