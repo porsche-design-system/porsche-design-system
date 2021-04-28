@@ -187,4 +187,9 @@ export const routes: RouteType[] = [
     path: '/core-class-names',
     component: fromPages.CoreClassNamesPage,
   },
+  {
+    name: 'Events',
+    path: '/events',
+    component: fromPages.EventsPage,
+  },
 ];
