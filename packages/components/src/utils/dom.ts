@@ -101,3 +101,7 @@ export const removeEventListener = (
   listener: () => void,
   options?: boolean | EventListenerOptions
 ): void => el.removeEventListener(type, listener, options);
+
+export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolean => {
+  return disabled || loading;
+};

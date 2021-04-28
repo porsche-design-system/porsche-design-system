@@ -34,6 +34,7 @@ import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { TypographyComponent } from './typography.component';
+import { SwitchComponent } from './switch.component';
 
 export const pages = [
   BannerComponent,
@@ -65,6 +66,7 @@ export const pages = [
   RadioButtonWrapperComponent,
   SelectWrapperComponent,
   SpinnerComponent,
+  SwitchComponent,
   TabsComponent,
   TabsBarComponent,
   TextComponent,
@@ -103,6 +105,7 @@ export * from './pagination.component';
 export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
+export * from './switch.component';
 export * from './tabs.component';
 export * from './tabs-bar.component';
 export * from './text.component';
