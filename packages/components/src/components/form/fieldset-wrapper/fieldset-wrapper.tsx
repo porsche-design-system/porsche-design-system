@@ -21,23 +21,18 @@ export class FieldsetWrapper {
   @Prop() public message?: string = '';
 
   public render(): JSX.Element {
-    const fieldsetClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'none',
-    };
-    const labelClasses = {
-      ['label']: true,
-      ['label--required']: this.required,
-      ['label--size-small']: this.labelSize === 'small',
+      ['root--required']: this.required,
+      ['root--label-size-small']: this.labelSize === 'small',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <fieldset class={fieldsetClasses}>
-        {isLabelVisible(this.host, this.label) && (
-          <legend class={labelClasses}>{this.label || <slot name="label" />}</legend>
-        )}
+      <fieldset class={rootClasses}>
+        {isLabelVisible(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
         <slot />
         {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
