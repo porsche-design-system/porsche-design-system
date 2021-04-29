@@ -52,7 +52,7 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
 
 type ElementsWithRequired = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLPFieldsetWrapperElement;
 
-export const isElementRequired = (el: ElementsWithRequired): boolean => el.required === true;
+export const isElementRequired = (el: ElementsWithRequired): boolean => !!el.required;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
