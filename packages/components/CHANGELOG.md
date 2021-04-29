@@ -8,8 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Switch`
+
 #### Changed
+- `Text` automatically breaks words/strings into new line being too long to fit inside their container
+- `Headline` automatically breaks words/strings into new line being too long to fit inside their container
 - Extended `Fieldset Wrapper` with `labelSize`, `required`, `state` and `message` properties
+
+### [2.0.3] - 2021-04-28
+
+### [2.0.3-beta] - 2021-04-28
+
+#### Fixed
+-  Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
 ### [2.0.2] - 2021-04-21
 
@@ -24,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
 - A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly
 - Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`
-- Streamline Angular component styles in dark theme 
+- Angular: Streamline component styles in dark theme 
 
 #### Changed
 - Aligned focus states of `Checkbox Wrapper` and `Radio Button Wrapper` across browsers

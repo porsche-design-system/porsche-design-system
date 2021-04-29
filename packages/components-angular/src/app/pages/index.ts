@@ -7,6 +7,7 @@ import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { DividerComponent } from './divider.component';
+import { EventsComponent } from './events.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
@@ -33,6 +34,7 @@ import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { TypographyComponent } from './typography.component';
+import { SwitchComponent } from './switch.component';
 
 export const pages = [
   BannerComponent,
@@ -44,6 +46,7 @@ export const pages = [
   CoreInitializerComponent,
   CoreInitializerPrefixedComponent,
   DividerComponent,
+  EventsComponent,
   FieldsetWrapperComponent,
   FlexComponent,
   FormWrapperBindingComponent,
@@ -63,6 +66,7 @@ export const pages = [
   RadioButtonWrapperComponent,
   SelectWrapperComponent,
   SpinnerComponent,
+  SwitchComponent,
   TabsComponent,
   TabsBarComponent,
   TextComponent,
@@ -81,6 +85,7 @@ export * from './content-wrapper.component';
 export * from './core-initializer.component';
 export * from './core-initializer-prefixed.component';
 export * from './divider.component';
+export * from './events.component';
 export * from './fieldset-wrapper.component';
 export * from './flex.component';
 export * from './form-wrapper-binding.component';
@@ -100,6 +105,7 @@ export * from './pagination.component';
 export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
+export * from './switch.component';
 export * from './tabs.component';
 export * from './tabs-bar.component';
 export * from './text.component';

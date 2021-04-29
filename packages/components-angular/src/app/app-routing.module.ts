@@ -134,6 +134,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Spinner',
   },
   {
+    path: 'switch',
+    component: fromPages.SwitchComponent,
+    name: 'Switch',
+  },
+  {
     path: 'tabs',
     component: fromPages.TabsComponent,
     name: 'Tabs',
@@ -188,6 +193,11 @@ export const routes: ExtendedRoute[] = [
     path: 'core-initializer-prefixed',
     component: fromPages.CoreInitializerPrefixedComponent,
     name: 'Core Initializer Prefixed',
+  },
+  {
+    path: 'events',
+    component: fromPages.EventsComponent,
+    name: 'Events',
   },
   {
     path: 'form-wrapper-binding',

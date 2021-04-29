@@ -102,6 +102,10 @@ export const removeEventListener = (
   options?: boolean | EventListenerOptions
 ): void => el.removeEventListener(type, listener, options);
 
+export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolean => {
+  return disabled || loading;
+};
+
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
   const prefixedTagName = getPrefixedTagNames(host).pFieldsetWrapper;
   const fieldsetWrapper = host.parentElement as HTMLPFieldsetWrapperElement;
