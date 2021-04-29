@@ -14,13 +14,7 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
 
 <Playground :markup="slottedLabel"></Playground>
 
---- 
-
-## Without label
-
-<Playground :markup="withoutLabel"></Playground>
-
---- 
+---
 
 ## Size
 
@@ -87,13 +81,6 @@ You should still set required on the input of the wrapped form elements to ensur
     slottedLabel =
 `<p-fieldset-wrapper>
   <span slot="label">Some legend label</span>
-  <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" />
-  </p-text-field-wrapper>
-</p-fieldset-wrapper>`;
-
-    withoutLabel =
-`<p-fieldset-wrapper>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
