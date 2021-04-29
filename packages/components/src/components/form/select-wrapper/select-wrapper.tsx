@@ -8,13 +8,13 @@ import {
   hasNamedSlot,
   insertSlottedStyles,
   isDark,
-  isParentFieldsetWrapperRequired,
   isRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
   setAttribute,
+  setRole,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -179,9 +179,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.select) && (
-                  <span class={requiredFlagClasses} />
-                )}
+                {isRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -231,7 +229,7 @@ export class SelectWrapper {
           )}
         </div>
         {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={setRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}

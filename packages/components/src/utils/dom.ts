@@ -50,8 +50,9 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
-export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): boolean =>
-  getAttribute(el, 'required') !== null;
+type ElementsWithRequired = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLPFieldsetWrapperElement;
+
+export const isElementRequired = (el: ElementsWithRequired): boolean => el.required === true;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
@@ -110,9 +111,13 @@ export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
   const prefixedTagName = getPrefixedTagNames(host).pFieldsetWrapper;
   const fieldsetWrapper = host.parentElement as HTMLPFieldsetWrapperElement;
 
-  return (
-    getTagName(host.parentElement) === prefixedTagName &&
-    fieldsetWrapper.required !== undefined &&
-    fieldsetWrapper.required
-  );
+  return getTagName(host.parentElement) === prefixedTagName && isElementRequired(fieldsetWrapper);
+};
+
+export const isRequired = (host: HTMLElement, slottedElement: ElementsWithRequired): boolean => {
+  return !isParentFieldsetWrapperRequired(host) && isElementRequired(slottedElement);
+};
+
+export const setRole = (state: string): string => {
+  return state === 'error' ? 'alert' : null;
 };

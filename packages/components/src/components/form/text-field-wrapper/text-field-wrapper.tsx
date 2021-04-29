@@ -8,11 +8,11 @@ import {
   isDescriptionVisible,
   isLabelVisible,
   isMessageVisible,
-  isParentFieldsetWrapperRequired,
   isRequired,
   mapBreakpointPropToClasses,
   observeMutations,
   setAriaAttributes,
+  setRole,
   unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -98,7 +98,7 @@ export class TextFieldWrapper {
             {isLabelVisible(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.input) && <span class="required" />}
+                {isRequired(this.host, this.input) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {isDescriptionVisible(this.host, this.description) && (
@@ -121,7 +121,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={setRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
