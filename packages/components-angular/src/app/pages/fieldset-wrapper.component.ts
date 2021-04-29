@@ -4,10 +4,7 @@ import { Component } from '@angular/core';
   selector: 'page-fieldset-wrapper',
   styles: [
     `
-      p-fieldset-wrapper > p-radio-button-wrapper:first-child {
-        margin-bottom: 2px;
-      }
-      p-fieldset-wrapper > p-checkbox-wrapper:not(:last-child) {
+      p-fieldset-wrapper > *:not(:last-child) {
         margin-bottom: 2px;
       }
     `,
