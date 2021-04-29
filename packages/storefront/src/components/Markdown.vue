@@ -17,7 +17,7 @@
         return;
       }
       const href = (target as HTMLElement).getAttribute('href');
-      if (href && !href.startsWith('http')) {
+      if (href && !href.startsWith('http') && !href.startsWith('sketch://')) {
         event.preventDefault();
         this.$router.push('/' + href);
       }
