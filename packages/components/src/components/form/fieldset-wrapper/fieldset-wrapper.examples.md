@@ -6,13 +6,13 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
 
 ## Basic example with label
 
-<Playground :markup="withLabel"></Playground>
+<Playground :markup="withLabelMarkup"></Playground>
 
 --- 
 
 ## Slotted label
 
-<Playground :markup="slottedLabel"></Playground>
+<Playground :markup="slottedLabelMarkup"></Playground>
 
 ---
 
@@ -34,7 +34,7 @@ If the **Fieldset Wrapper** is set to `required="true"`, only the label of the *
 It is removed from all wrapped child components, as long as they are Porsche Design System form element.
 You should still set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
-<Playground :markup="required"></Playground>
+<Playground :markup="requiredMarkup"></Playground>
 
 --- 
 
@@ -52,7 +52,7 @@ You should still set required on the input of the wrapped form elements to ensur
 
 ## Slotted message
 
-<Playground :markup="slottedMessage" :config="config">
+<Playground :markup="slottedMessageMarkup" :config="config">
   <select v-model="slottedMessageState">
     <option disabled>Select a state</option>
     <option value="error">error</option>
@@ -69,16 +69,16 @@ You should still set required on the input of the wrapped form elements to ensur
  
     size = 'small';
     state = 'error';
-    slottedMessageState = 'error';
+    slottedMEssage = 'error';
 
-    withLabel =
+    withLabelMarkup =
 `<p-fieldset-wrapper label="Some legend label">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-    slottedLabel =
+    slottedLabelMarkup =
 `<p-fieldset-wrapper>
   <span slot="label">Some legend label</span>
   <p-text-field-wrapper label="Some label">
@@ -94,7 +94,7 @@ You should still set required on the input of the wrapped form elements to ensur
 </p-fieldset-wrapper>`;
    }
 
-    required =
+    requiredMarkup =
 `<p-fieldset-wrapper label="Some legend label" required="true">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" required />
@@ -116,10 +116,10 @@ You should still set required on the input of the wrapped form elements to ensur
 </p-fieldset-wrapper>`;
    }
 
-   get slottedMessage() {
-    const attr = `${this.slottedMessageState === 'error' ? 'Some error message' : 'Some success message'}`;
-    return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessageState}>
-  <p-text-field-wrapper label="Some label" state=${this.slottedMessageState}>
+   get slottedMessageMarkup() {
+    const attr = `${this.slottedMEssage === 'error' ? 'Some error message' : 'Some success message'}`;
+    return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMEssage}>
+  <p-text-field-wrapper label="Some label" state=${this.slottedMEssage}>
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
   <span slot="message">${attr}</span>

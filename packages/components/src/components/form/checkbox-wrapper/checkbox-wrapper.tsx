@@ -7,12 +7,12 @@ import {
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
-  isRequired,
   mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
-  isParentFieldsetWrapperRequired,
+  setRole,
+  isRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -84,13 +84,13 @@ export class CheckboxWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {!isParentFieldsetWrapperRequired(this.host) && isRequired(this.input) && <span class="required" />}
+              {isRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" color="inherit" role={setRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
