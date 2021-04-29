@@ -294,29 +294,42 @@ describe('isDisabledOrLoading()', () => {
 });
 
 describe('isParentFieldsetWrapperRequired()', () => {
-  it('should return true if parent is fieldset-wrapper with required="true" property', () => {
-    const parent: HTMLPFieldsetWrapperElement = document.createElement('p-fieldset-wrapper');
-    const child = document.createElement('div');
-    parent.appendChild(child);
-    parent.required = true;
+  describe('p-fieldset-wrapper', () => {
+    it('should return true if parent is p-fieldset-wrapper and has required="true" property', () => {
+      const parent: HTMLPFieldsetWrapperElement = document.createElement('p-fieldset-wrapper');
+      const child = document.createElement('div');
+      parent.appendChild(child);
+      parent.required = true;
 
-    expect(isParentFieldsetWrapperRequired(child)).toBe(true);
+      expect(isParentFieldsetWrapperRequired(child)).toBe(true);
+    });
+
+    it('should return false if parent is not p-fieldset-wrapper', () => {
+      const parent = document.createElement('div');
+      const child = document.createElement('div');
+      parent.appendChild(child);
+
+      expect(isParentFieldsetWrapperRequired(child)).toBe(false);
+    });
+
+    it('should return false if parent is p-fieldset-wrapper without required prop', () => {
+      const parent = document.createElement('p-fieldset-wrapper');
+      const child = document.createElement('div');
+      parent.appendChild(child);
+
+      expect(isParentFieldsetWrapperRequired(child)).toBe(false);
+    });
   });
 
-  it('should return false if parent is not fieldset-wrapper', () => {
-    const parent = document.createElement('div');
-    const child = document.createElement('div');
-    parent.appendChild(child);
+  describe('prefixed-p-fieldset-wrapper', () => {
+    it('should return true if parent is prefixed-p-fieldset-wrapper and has required="true" property', () => {
+      const parent: HTMLPFieldsetWrapperElement = document.createElement('prefixed-p-fieldset-wrapper');
+      const child = document.createElement('prefixed-p-checkbox-wrapper');
+      parent.appendChild(child);
+      parent.required = true;
 
-    expect(isParentFieldsetWrapperRequired(child)).toBe(false);
-  });
-
-  it('should return false if parent is fieldset-wrapper without required', () => {
-    const parent = document.createElement('p-fieldset-wrapper');
-    const child = document.createElement('div');
-    parent.appendChild(child);
-
-    expect(isParentFieldsetWrapperRequired(child)).toBe(false);
+      expect(isParentFieldsetWrapperRequired(child)).toBe(true);
+    });
   });
 });
 
