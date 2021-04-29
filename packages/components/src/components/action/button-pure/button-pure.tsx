@@ -6,6 +6,7 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
+  isDisabledOrLoading,
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
@@ -56,7 +57,7 @@ export class ButtonPure {
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
@@ -66,7 +67,7 @@ export class ButtonPure {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabled
+      () => this.isDisabledOrLoading
     );
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
@@ -99,7 +100,7 @@ export class ButtonPure {
         <button
           class={buttonPureClasses}
           type={this.type}
-          disabled={this.isDisabled}
+          disabled={this.isDisabledOrLoading}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
@@ -128,7 +129,7 @@ export class ButtonPure {
     );
   }
 
-  private get isDisabled(): boolean {
-    return this.disabled || this.loading;
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

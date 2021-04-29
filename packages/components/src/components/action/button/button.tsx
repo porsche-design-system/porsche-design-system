@@ -4,6 +4,7 @@ import {
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
+  isDisabledOrLoading,
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
@@ -45,7 +46,7 @@ export class Button {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
@@ -55,7 +56,7 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabled
+      () => this.isDisabledOrLoading
     );
   }
 
@@ -78,7 +79,7 @@ export class Button {
       <button
         class={buttonClasses}
         type={this.type}
-        disabled={this.isDisabled}
+        disabled={this.isDisabledOrLoading}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
@@ -100,7 +101,7 @@ export class Button {
     );
   }
 
-  private get isDisabled(): boolean {
-    return this.disabled || this.loading;
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

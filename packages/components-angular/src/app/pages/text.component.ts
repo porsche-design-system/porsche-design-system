@@ -127,6 +127,21 @@ import { Component } from '@angular/core';
         <legend>The quick brown fox jumps over the lazy dog</legend>
       </p-text>
     </div>
+
+    <div
+      class="playground"
+      title="should automatically break words/strings into new line being too long to fit inside their container"
+    >
+      <p-text style="width: 240px; background: deeppink;"
+        >This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long
+        one.</p-text
+      >
+      <p-text style="width: 240px; background: deepskyblue;">
+        <p style="overflow-wrap: normal; word-wrap: normal; hyphens: manual;">
+          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+        </p>
+      </p-text>
+    </div>
   `,
 })
 export class TextComponent {}

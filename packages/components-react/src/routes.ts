@@ -129,6 +129,11 @@ export const routes: RouteType[] = [
     component: fromPages.SpinnerPage,
   },
   {
+    name: 'Switch',
+    path: '/switch',
+    component: fromPages.SwitchPage,
+  },
+  {
     name: 'Tabs',
     path: '/tabs',
     component: fromPages.TabsPage,
@@ -181,5 +186,10 @@ export const routes: RouteType[] = [
     name: 'Core Class Names',
     path: '/core-class-names',
     component: fromPages.CoreClassNamesPage,
+  },
+  {
+    name: 'Events',
+    path: '/events',
+    component: fromPages.EventsPage,
   },
 ];

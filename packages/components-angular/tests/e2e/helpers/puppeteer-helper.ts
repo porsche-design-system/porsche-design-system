@@ -1,4 +1,7 @@
 import { ElementHandle, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
+
+export const BASE_URL = 'http://localhost:4200';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
@@ -18,3 +21,8 @@ export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate(
 
 export const getElementProp = (el: ElementHandle, prop: string): Promise<string> =>
   el.evaluate((el, prop: string) => el[prop], prop);
+
+export const goto = async (page: Page, url: string) => {
+  await page.goto(`${BASE_URL}/${url}`);
+  await waitForComponentsReady(page);
+};
