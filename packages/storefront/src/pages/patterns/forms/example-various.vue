@@ -139,10 +139,13 @@
               </p-grid-item>
             </p-grid>
             <span
-              v-if="validateFieldName('day') && validateFieldName('month')"
+              v-if="validateFieldName('day') && validateFieldName('month') && validateFieldName('year')"
               slot="message"
-              v-html="getDateValidationMessage()"
-            ></span>
+            >
+              <div v-if="validateFieldName('day')">{{ bag.errors.day }}</div>
+              <div v-if="validateFieldName('month')">{{ bag.errors.month }}</div>
+              <div v-if="validateFieldName('year')">{{ bag.errors.year }}</div>
+            </span>
           </p-fieldset-wrapper>
         </form>
       </p-grid-item>
@@ -175,11 +178,6 @@
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-    private getDateValidationMessage = (): string => {
-      const { day, month, year } = this.bag.errors;
-      return `<div>${day}</div><div>${month}</div><div>${year}</div>`;
-    };
-
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
@@ -204,7 +202,7 @@
           .min(1, 'Please enter valid month 01-12')
           .max(12, 'Please enter valid month 01-12')
           .typeError('Please enter a month'),
-        year: number(), // TODO: enable after yup upgrade: .typeError('Please enter a year'),
+        year: number().required().typeError('Please enter a year'),
       }),
     };
 
