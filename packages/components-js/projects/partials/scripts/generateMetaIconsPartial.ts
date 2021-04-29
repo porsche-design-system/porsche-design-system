@@ -20,7 +20,7 @@ export const generateMetaIconsPartial = (): string => {
     },
     {
       template: '<meta name="apple-mobile-web-app-title" content="$value" />',
-      value: `$appTitle`,
+      value: `"$appTitle"`,
     },
     {
       template: '<meta name="msapplication-TileImage" content="$value" />',
@@ -39,7 +39,7 @@ export const generateMetaIconsPartial = (): string => {
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}`,
     },
     {
-      template: '<link rel="mask-icon" href="$value" />',
+      template: '<link rel="mask-icon" color="#FFFFFF" href="$value" />',
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.pinnedTab.pinnedTabIcon}`,
     },
   ];
