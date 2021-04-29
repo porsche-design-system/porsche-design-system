@@ -19,6 +19,9 @@
   line-height: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
 }
 
 .root {
@@ -27,6 +30,9 @@
   margin: 0;
   text-align: left;
   color: $p-color-default;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
