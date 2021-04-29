@@ -21,10 +21,7 @@ type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
   withoutTags?: true;
 };`;
 
-  const link = minifyHTML('<link rel="preload" href="$URL" as="font" type="font/woff2" crossorigin>').replace(
-    '$URL',
-    '${link}'
-  );
+  const linkTemplate = minifyHTML('<link rel="preload" href="${link}" as="font" type="font/woff2" crossorigin>');
 
   const func = `
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
@@ -88,7 +85,7 @@ Please use only valid font weights:
   }
 
   const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
-  const links = urls.map((link) => \`${link}\`).join('');
+  const links = urls.map((link) => \`${linkTemplate}\`).join('');
 
   return withoutTags ? urls : links;
 };`;
