@@ -1,6 +1,6 @@
 import { getVisualRegressionTester, testOptions } from '../helpers';
 
-fdescribe('Fieldset Wrapper', () => {
+describe('Fieldset Wrapper', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
