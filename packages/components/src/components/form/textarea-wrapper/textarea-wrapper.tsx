@@ -11,7 +11,7 @@ import {
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
-  setRole,
+  getRole,
   isRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -98,7 +98,7 @@ export class TextareaWrapper {
           <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={setRole(this.state)}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}

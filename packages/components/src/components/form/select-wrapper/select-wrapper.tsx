@@ -14,7 +14,7 @@ import {
   prefix,
   setAriaAttributes,
   setAttribute,
-  setRole,
+  getRole,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -229,7 +229,7 @@ export class SelectWrapper {
           )}
         </div>
         {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={setRole(this.state)}>
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
