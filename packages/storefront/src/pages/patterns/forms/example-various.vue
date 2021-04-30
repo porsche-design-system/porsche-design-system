@@ -91,7 +91,7 @@
 
           <p-fieldset-wrapper
             label="Grouped short input"
-            v-bind:state="getState('day') || getState('month')"
+            v-bind:state="getState('day') || getState('month') || getState('year')"
             class="form-section-spacing"
           >
             <p-grid>
@@ -138,13 +138,10 @@
                 </p-flex>
               </p-grid-item>
             </p-grid>
-            <span
-              v-if="validateFieldName('day') && validateFieldName('month') && validateFieldName('year')"
-              slot="message"
-            >
-              <div v-if="validateFieldName('day')">{{ bag.errors.day }}</div>
-              <div v-if="validateFieldName('month')">{{ bag.errors.month }}</div>
-              <div v-if="validateFieldName('year')">{{ bag.errors.year }}</div>
+            <span slot="message">
+              <div v-if="bag.errors.day">{{ bag.errors.day }}</div>
+              <div v-if="bag.errors.month">{{ bag.errors.month }}</div>
+              <div v-if="bag.errors.year">{{ bag.errors.year }}</div>
             </span>
           </p-fieldset-wrapper>
         </form>
