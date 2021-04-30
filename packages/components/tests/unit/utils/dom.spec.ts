@@ -13,12 +13,12 @@ import {
   isDescriptionVisible,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
-  setRole,
+  getRole,
   isRequired,
 } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
-describe('isSlottedElementRequired()', () => {
+describe('isElementRequired()', () => {
   it('should return true if required property is true on element', () => {
     const el = document.createElement('input');
     el.required = true;
@@ -333,14 +333,13 @@ describe('isParentFieldsetWrapperRequired()', () => {
   });
 });
 
-describe('setRole()', () => {
+describe('getRole()', () => {
   it('should return "alert" if state is error', () => {
-    expect(setRole('error')).toBe('alert');
+    expect(getRole('error')).toBe('alert');
   });
 
-  it('should return null if state is not error', () => {
-    expect(setRole('success')).toBeNull();
-    expect(setRole('foo')).toBeNull();
+  it('should return null if state is success', () => {
+    expect(getRole('success')).toBeNull();
   });
 });
 

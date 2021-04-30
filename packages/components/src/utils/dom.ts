@@ -115,9 +115,9 @@ export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
 };
 
 export const isRequired = (host: HTMLElement, slottedElement: HTMLElementWithRequiredProp): boolean => {
-  return !isParentFieldsetWrapperRequired(host) && isElementRequired(slottedElement);
+  return isElementRequired(slottedElement) && !isParentFieldsetWrapperRequired(host);
 };
 
-export const setRole = (state: string): string => {
+export const getRole = (state: FormState): string => {
   return state === 'error' ? 'alert' : null;
 };

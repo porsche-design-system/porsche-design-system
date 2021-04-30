@@ -11,7 +11,7 @@ import {
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
-  setRole,
+  getRole,
   isRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -90,7 +90,7 @@ export class CheckboxWrapper {
           <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={setRole(this.state)}>
+          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}

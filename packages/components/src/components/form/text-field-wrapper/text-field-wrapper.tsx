@@ -12,7 +12,7 @@ import {
   mapBreakpointPropToClasses,
   observeMutations,
   setAriaAttributes,
-  setRole,
+  getRole,
   unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -121,7 +121,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={setRole(this.state)}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
