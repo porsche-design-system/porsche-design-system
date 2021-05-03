@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.1.0-beta.0] - 2021-05-03
+
 #### Added
 - `Switch`
 
 #### Changed
 - `Text` automatically breaks words/strings into new line being too long to fit inside their container
 - `Headline` automatically breaks words/strings into new line being too long to fit inside their container
+- Extended `Fieldset Wrapper` with `labelSize`, `required`, `state` and `message` properties. If the `Fieldset Wrapper` is set to required 
+  only the label of the **Fieldset Wrapper** gets an asterisk. It is removed from all wrapped child components, as long as they are Porsche Design System form elements.
 
 ### [2.0.3] - 2021-04-28
 
