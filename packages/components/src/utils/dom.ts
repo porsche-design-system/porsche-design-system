@@ -50,7 +50,7 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
-type HTMLElementWithRequiredProp = (HTMLElement & { required: boolean }) | HTMLPFieldsetWrapperElement;
+type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
 
 export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
 
@@ -108,14 +108,12 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  const { pFieldsetWrapper } = getPrefixedTagNames(host);
-  const fieldsetWrapper = host.parentElement as HTMLPFieldsetWrapperElement;
-
-  return getTagName(host.parentElement) === pFieldsetWrapper && isRequired(fieldsetWrapper);
+  const fieldsetWrapper = host.parentElement as HTMLElementWithRequiredProp;
+  return isRequired(fieldsetWrapper) && getTagName(fieldsetWrapper) === getPrefixedTagNames(host).pFieldsetWrapper;
 };
 
-export const isParentRequired = (host: HTMLElement, slottedElement: HTMLElementWithRequiredProp): boolean => {
-  return isRequired(slottedElement) && !isParentFieldsetWrapperRequired(host);
+export const isParentRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
+  return isRequired(child) && !isParentFieldsetWrapperRequired(host);
 };
 
 export const getRole = (state: FormState): string => {
