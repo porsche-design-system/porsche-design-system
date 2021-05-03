@@ -248,7 +248,7 @@ describe('button-pure', () => {
     await page.keyboard.up('ShiftLeft');
   });
 
-  it('should provide methods to focus & blur the element', async () => {
+  it('should provide functionality to focus & blur the custom element', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -299,14 +299,14 @@ describe('button-pure', () => {
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect(buttonFocusCalls).toBe(0);
-    expect(afterFocusCalls).toBe(1);
+    await waitForEventSerialization(page);
+    expect(buttonFocusCalls).toBe(0, 'buttonFocusCalls after tab');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect(buttonFocusCalls).toBe(0);
-    expect(afterFocusCalls).toBe(1);
+    await waitForEventSerialization(page);
+    expect(buttonFocusCalls).toBe(0, 'buttonFocusCalls after second tab');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
   });
 
   it('should submit form via enter key when type is submit', async () => {
