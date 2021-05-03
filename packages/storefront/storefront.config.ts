@@ -1,14 +1,14 @@
 import { StorefrontConfig } from './src/models';
 
 export const config: StorefrontConfig = {
-  'About': {
+  About: {
     Introduction: [
       // @ts-ignore
       () => import(`@/pages/about/introduction.md`),
     ],
   },
   'Start Designing': {
-    'Introduction': [
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/start-designing/introduction.md`),
     ],
@@ -22,15 +22,15 @@ export const config: StorefrontConfig = {
     ],
   },
   'Start Coding': {
-    'Introduction': [
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/start-coding/introduction.md`),
     ],
-    'Angular': [
+    Angular: [
       // @ts-ignore
       () => import(`@/pages/start-coding/angular.md`),
     ],
-    'React': [
+    React: [
       // @ts-ignore
       () => import(`@/pages/start-coding/react.md`),
     ],
@@ -42,14 +42,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/start-coding/next-js.md`),
     ],
-    'Gatsby': [
+    Gatsby: [
       // @ts-ignore
       () => import(`@/pages/start-coding/gatsby.md`),
     ],
   },
-  'News': {
+  News: {
     Changelog: {
-      'Components': [
+      Components: [
         // @ts-ignore
         () => import(`@/../../components/CHANGELOG.md`),
       ],
@@ -59,11 +59,11 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/../../../sketch/basic/CHANGELOG.md`),
       ],
-      'Utilities': [
+      Utilities: [
         // @ts-ignore
         () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`),
       ],
-      'Assets': [
+      Assets: [
         // @ts-ignore
         () => import(`@/../../assets/CHANGELOG.md`),
       ],
@@ -77,8 +77,8 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/news/roadmap.md`),
     ],
   },
-  'Components': {
-    'Banner': {
+  Components: {
+    Banner: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/feedback/banner/banner.examples.md`),
@@ -92,7 +92,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/feedback/banner/banner.props.md`),
       ],
     },
-    'Button': {
+    Button: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/action/button/button.examples.md`),
@@ -134,7 +134,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/action/button-pure/button-pure.props.md`),
       ],
     },
-    'Checkbox': {
+    Checkbox: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.examples.md`),
@@ -148,7 +148,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`),
       ],
     },
-    'Color': {
+    Color: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/color/color.examples.md`),
@@ -172,7 +172,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.props.md`),
       ],
     },
-    'Divider': {
+    Divider: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/divider/divider.examples.md`),
@@ -186,7 +186,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/divider/divider.props.md`),
       ],
     },
-    'Fieldset': {
+    Fieldset: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`),
@@ -200,7 +200,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`),
       ],
     },
-    'Flex': {
+    Flex: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/flex/flex.examples.md`),
@@ -212,7 +212,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/flex/flex-item/flex-item.props.md`),
       ],
     },
-    'Grid': {
+    Grid: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/grid/grid.examples.md`),
@@ -228,25 +228,21 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/grid/grid-item/grid-item.props.md`),
       ],
     },
-    'Icon': {
+    Switch: {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`),
+        () => import(`@/../../components/src/components/action/switch/switch.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
-      ],
-      Guideline: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.guideline.md`),
+        () => import(`@/../../components/src/components/action/switch/switch.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
+        () => import(`@/../../components/src/components/action/switch/switch.props.md`),
       ],
     },
-    'Link': {
+    Link: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/link/link.examples.md`),
@@ -288,7 +284,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/link-social/link-social.props.md`),
       ],
     },
-    'Marque': {
+    Marque: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/marque/marque.examples.md`),
@@ -302,7 +298,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/basic/marque/marque.props.md`),
       ],
     },
-    'Modal': {
+    Modal: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/content/modal/modal.examples.md`),
@@ -316,7 +312,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/content/modal/modal.props.md`),
       ],
     },
-    'Pagination': {
+    Pagination: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`),
@@ -344,7 +340,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`),
       ],
     },
-    'Select': {
+    Select: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`),
@@ -358,7 +354,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`),
       ],
     },
-    'Spacing': {
+    Spacing: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`),
@@ -368,7 +364,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`),
       ],
     },
-    'Spinner': {
+    Spinner: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`),
@@ -382,7 +378,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`),
       ],
     },
-    'Tabs': {
+    Tabs: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/content/tabs/tabs.examples.md`),
@@ -440,7 +436,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/content/text-list/text-list/text-list.props.md`),
       ],
     },
-    'Textarea': {
+    Textarea: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`),
@@ -454,7 +450,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.props.md`),
       ],
     },
-    'Typography': {
+    Typography: {
       Text: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
@@ -475,16 +471,16 @@ export const config: StorefrontConfig = {
       ],
     },
   },
-  'Help': {
-    'Support': [
+  Help: {
+    Support: [
       // @ts-ignore
       () => import(`@/pages/help/support.md`),
     ],
-    'Faq': [
+    Faq: [
       // @ts-ignore
       () => import(`@/pages/help/faq.md`),
     ],
-    'Troubleshooting': [
+    Troubleshooting: [
       // @ts-ignore
       () => import(`@/pages/help/troubleshooting.md`),
     ],
@@ -493,16 +489,16 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/basics/browser-compatibility.md`),
     ],
   },
-  'Accessibility': {
-    'Introduction': [
+  Accessibility: {
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/accessibility/introduction.md`),
     ],
-    'Compliance': [
+    Compliance: [
       // @ts-ignore
       () => import(`@/pages/accessibility/compliance.md`),
     ],
-    'Workflow': [
+    Workflow: [
       // @ts-ignore
       () => import(`@/pages/accessibility/workflow.md`),
     ],
@@ -511,7 +507,7 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/accessibility/statement.md`),
     ],
   },
-  'Patterns': {
+  Patterns: {
     Forms: {
       Guidelines: [
         // @ts-ignore
@@ -527,12 +523,12 @@ export const config: StorefrontConfig = {
       ],
     },
   },
-  'Assets': {
-    'Introduction': [
+  Assets: {
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/assets/introduction.md`),
     ],
-    'Icons': [
+    Icons: [
       // @ts-ignore
       () => import(`@/pages/assets/icons.md`),
     ],
@@ -540,16 +536,16 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/assets/meta-icons.md`),
     ],
-    'Marque': [
+    Marque: [
       // @ts-ignore
       () => import(`@/pages/assets/marque.md`),
     ],
-    'Fonts': [
+    Fonts: [
       // @ts-ignore
       () => import(`@/pages/assets/fonts.md`),
     ],
   },
-  'Utilities': {
+  Utilities: {
     Introduction: [
       // @ts-ignore
       () => import(`@/pages/utilities/introduction.md`),
@@ -583,8 +579,8 @@ export const config: StorefrontConfig = {
       ],
     },
   },
-  'Performance': {
-    'Cdn': [
+  Performance: {
+    Cdn: [
       // @ts-ignore
       () => import(`@/pages/performance/cdn.md`),
     ],
@@ -593,7 +589,7 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/performance/loading-behaviour.md`),
     ],
   },
-  'Helpers': {
+  Helpers: {
     'Components Ready': [
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`),
@@ -602,7 +598,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/general/slotted-content.md`),
     ],
-    'Testing': [
+    Testing: [
       // @ts-ignore
       () => import(`@/pages/general/testing.md`),
     ],

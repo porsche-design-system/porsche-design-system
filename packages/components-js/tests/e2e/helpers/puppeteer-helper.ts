@@ -1,8 +1,9 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
+import Protocol from 'devtools-protocol';
 
-type Options = NavigationOptions & { enableLogging?: boolean };
-const defaultOptions: Options = { waitUntil: 'networkidle0' };
+type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
+const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
@@ -16,10 +17,12 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 
   await page.setContent(
-    `
+    `<!DOCTYPE html>
+    <html>
       <head>
-        <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        ${options.injectIntoHead}
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
@@ -92,7 +95,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         </script>
         ${content}
       </body>
-    `,
+    </html>`,
     options
   );
 
@@ -112,6 +115,34 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
   ).asElement();
 };
+
+export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
+export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
+
+export const forceStateOnElement = async (
+  page: Page,
+  selector: string,
+  states: ForcedPseudoClasses[]
+): Promise<void> => {
+  const cdp = await page.target().createCDPSession();
+  await cdp.send('DOM.getDocument');
+
+  const element = await selectNode(page, selector);
+  const { x, y, width, height } = await element.boundingBox();
+
+  const elementNode = (await cdp.send('DOM.getNodeForLocation', {
+    x: x + width / 2,
+    y: y + height / 2,
+  })) as Protocol.DOM.GetNodeForLocationResponse;
+
+  await cdp.send('CSS.enable');
+  await cdp.send('CSS.forcePseudoState', {
+    nodeId: elementNode.nodeId,
+    forcedPseudoClasses: states,
+  });
+  await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
+};
+
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
 export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
@@ -136,11 +167,7 @@ export const getProperty = async (element: ElementHandle, prop: string): Promise
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
-export const setProperty = async (
-  element: ElementHandle,
-  key: keyof HTMLInputElement,
-  value: string | boolean
-): Promise<void> => {
+export const setProperty = async (element: ElementHandle, key: string, value: string | boolean): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 
@@ -260,3 +287,6 @@ export const enableBrowserLogging = (page: Page) => {
 };
 
 export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
+
+export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
+  page.evaluate((el) => document.activeElement === el, element);
