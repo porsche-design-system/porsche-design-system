@@ -21,7 +21,7 @@ describe('getFavTouchThemeMeta()', () => {
   });
 
   it('should return default link', () => {
-    const metaIconsResult = [
+    const favTouchThemeMetaResult = [
       '<meta name=theme-color content=#FFFFFF>',
       '<meta name=apple-mobile-web-app-capable content=yes>',
       '<meta name=apple-mobile-web-app-status-bar-style content=white>',
@@ -31,14 +31,15 @@ describe('getFavTouchThemeMeta()', () => {
       '<link rel=icon type=image/png sizes=16x16 href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-16x16.*.png>',
       '<link rel=icon type=image/png sizes=32x32 href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-32x32.*.png>',
       '<link rel=apple-touch-icon href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/apple-touch-icon-180x180.*.png>',
+      '<link rel=manifest href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/manifest.*.webmanifest>',
     ].join('');
 
     const result = getFavTouchThemeMeta({ appTitle: 'Porsche UX' });
-    expect(result).toMatch(convertToRegex(metaIconsResult));
+    expect(result).toMatch(convertToRegex(favTouchThemeMetaResult));
   });
 
   it('should return default China CDN link', () => {
-    const metaIconsResultCN = [
+    const favTouchThemeMetaResultCN = [
       '<meta name=theme-color content=#FFFFFF>',
       '<meta name=apple-mobile-web-app-capable content=yes>',
       '<meta name=apple-mobile-web-app-status-bar-style content=white>',
@@ -48,9 +49,10 @@ describe('getFavTouchThemeMeta()', () => {
       '<link rel=icon type=image/png sizes=16x16 href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-16x16.*.png>',
       '<link rel=icon type=image/png sizes=32x32 href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-32x32.*.png>',
       '<link rel=apple-touch-icon href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/apple-touch-icon-180x180.*.png>',
+      '<link rel=manifest href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/manifest.cn.*.webmanifest>',
     ].join('');
 
     const result = getFavTouchThemeMeta({ appTitle: 'Porsche UX', cdn: 'cn' });
-    expect(result).toMatch(convertToRegex(metaIconsResultCN));
+    expect(result).toMatch(convertToRegex(favTouchThemeMetaResultCN));
   });
 });
