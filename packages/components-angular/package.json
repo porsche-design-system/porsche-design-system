@@ -47,7 +47,7 @@
     "@types/puppeteer": "^5.4.3",
     "concurrently": "^6.0.2",
     "jasmine": "^3.7.0",
-    "jasmine-spec-reporter": "~6.0.0",
+    "jasmine-spec-reporter": "~7.0.0",
     "ng-packagr": "^11.2.2",
     "puppeteer": "~5.5.0",
     "rollup": "^2.46.0",
