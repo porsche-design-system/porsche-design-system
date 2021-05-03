@@ -8,7 +8,7 @@ import {
   isDescriptionVisible,
   isLabelVisible,
   isMessageVisible,
-  isParentRequired,
+  isRequiredAndParentNotRequired,
   mapBreakpointPropToClasses,
   observeMutations,
   setAriaAttributes,
@@ -98,7 +98,7 @@ export class TextFieldWrapper {
             {isLabelVisible(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isParentRequired(this.host, this.input) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {isDescriptionVisible(this.host, this.description) && (

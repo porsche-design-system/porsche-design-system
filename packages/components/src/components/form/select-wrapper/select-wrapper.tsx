@@ -8,7 +8,7 @@ import {
   hasNamedSlot,
   insertSlottedStyles,
   isDark,
-  isParentRequired,
+  isRequiredAndParentNotRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -179,7 +179,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {isParentRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
