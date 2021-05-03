@@ -1,7 +1,9 @@
 import {
   getComponentChunkLinks,
   getFontFaceStylesheet,
+  getFontLinks,
   getInitialStyles,
+  getMetaIcons,
 } from '@porsche-design-system/components-angular/partials';
 
 describe('partials', () => {
@@ -17,9 +19,21 @@ describe('partials', () => {
     });
   });
 
+  describe('getFontLinks()', () => {
+    it('should be a function', () => {
+      expect(typeof getFontLinks).toBe('function');
+    });
+  });
+
   describe('getComponentChunkLinks()', () => {
     it('should be a function', () => {
       expect(typeof getComponentChunkLinks).toBe('function');
+    });
+  });
+
+  describe('getMetaIcons()', () => {
+    it('should be a function', () => {
+      expect(typeof getMetaIcons).toBe('function');
     });
   });
 });
