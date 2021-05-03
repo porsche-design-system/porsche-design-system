@@ -2,7 +2,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getTagName,
   hasNamedSlot,
-  isElementRequired,
+  isRequired,
   throwIfParentIsNotOfKind,
   addEventListener,
   removeEventListener,
@@ -14,38 +14,38 @@ import {
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
   getRole,
-  isRequired,
+  isParentRequired,
 } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
-describe('isElementRequired()', () => {
+describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
     const el = document.createElement('input');
     el.required = true;
-    expect(isElementRequired(el)).toBe(true);
+    expect(isRequired(el)).toBe(true);
   });
 
   it('should return true if required attribute is empty string on element', () => {
     const el = document.createElement('input');
     el.setAttribute('required', '');
-    expect(isElementRequired(el)).toBe(true);
+    expect(isRequired(el)).toBe(true);
   });
 
   it('should return true if required attribute is any string on element', () => {
     const el = document.createElement('input');
     el.setAttribute('required', 'false');
-    expect(isElementRequired(el)).toBe(true);
+    expect(isRequired(el)).toBe(true);
   });
 
   it('should return false if required attribute or property is missing on element', () => {
     const el = document.createElement('input');
-    expect(isElementRequired(el)).toBe(false);
+    expect(isRequired(el)).toBe(false);
   });
 
   it('should return false if required property is false on element', () => {
     const el = document.createElement('input');
     el.required = false;
-    expect(isElementRequired(el)).toBe(false);
+    expect(isRequired(el)).toBe(false);
   });
 });
 
@@ -294,8 +294,8 @@ describe('isDisabledOrLoading()', () => {
 });
 
 describe('isParentFieldsetWrapperRequired()', () => {
-  describe('p-fieldset-wrapper', () => {
-    it('should return true if parent is p-fieldset-wrapper and has required="true" property', () => {
+  describe('p-fieldset-wrapper without prefix', () => {
+    it('should return true if parent is p-fieldset-wrapper and has required="true"', () => {
       const parent = document.createElement('p-fieldset-wrapper');
       const child = document.createElement('div');
       parent.appendChild(child);
@@ -312,7 +312,7 @@ describe('isParentFieldsetWrapperRequired()', () => {
       expect(isParentFieldsetWrapperRequired(child)).toBe(false);
     });
 
-    it('should return false if parent is p-fieldset-wrapper without required prop', () => {
+    it('should return false if parent is p-fieldset-wrapper without required', () => {
       const parent = document.createElement('p-fieldset-wrapper');
       const child = document.createElement('div');
       parent.appendChild(child);
@@ -321,8 +321,8 @@ describe('isParentFieldsetWrapperRequired()', () => {
     });
   });
 
-  describe('prefixed-p-fieldset-wrapper', () => {
-    it('should return true if parent is prefixed-p-fieldset-wrapper and has required="true" property', () => {
+  describe('prefixed-p-fieldset-wrapper with prefix', () => {
+    it('should return true if parent is p-fieldset-wrapper and has required="true"', () => {
       const parent = document.createElement('prefixed-p-fieldset-wrapper');
       const child = document.createElement('prefixed-p-checkbox-wrapper');
       parent.appendChild(child);
@@ -350,9 +350,13 @@ describe('getRole()', () => {
   it('should return null if state is success', () => {
     expect(getRole('success')).toBeNull();
   });
+
+  it('should return null if state is none', () => {
+    expect(getRole('none')).toBeNull();
+  });
 });
 
-describe('isRequired()', () => {
+describe('isParentRequired()', () => {
   const fieldsetWrapper = 'p-fieldset-wrapper';
   it.each<[string, boolean, boolean, boolean]>([
     [fieldsetWrapper, true, true, false],
@@ -369,13 +373,13 @@ describe('isRequired()', () => {
       child.appendChild(slottedEl);
 
       if (isFieldsetRequired) {
-        (parent as HTMLPFieldsetWrapperElement).required = true;
+        parent['required'] = true;
       }
       if (isSlottedElRequired) {
         slottedEl.required = true;
       }
 
-      expect(isRequired(child, slottedEl)).toBe(result);
+      expect(isParentRequired(child, slottedEl)).toBe(result);
     }
   );
 });
