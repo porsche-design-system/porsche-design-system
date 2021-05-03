@@ -52,7 +52,7 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
 
 type HTMLElementWithRequiredProp = (HTMLElement & { required: boolean }) | HTMLPFieldsetWrapperElement;
 
-export const isElementRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
+export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
@@ -108,14 +108,14 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  const prefixedTagName = getPrefixedTagNames(host).pFieldsetWrapper;
+  const { pFieldsetWrapper } = getPrefixedTagNames(host);
   const fieldsetWrapper = host.parentElement as HTMLPFieldsetWrapperElement;
 
-  return getTagName(host.parentElement) === prefixedTagName && isElementRequired(fieldsetWrapper);
+  return getTagName(host.parentElement) === pFieldsetWrapper && isRequired(fieldsetWrapper);
 };
 
-export const isRequired = (host: HTMLElement, slottedElement: HTMLElementWithRequiredProp): boolean => {
-  return isElementRequired(slottedElement) && !isParentFieldsetWrapperRequired(host);
+export const isParentRequired = (host: HTMLElement, slottedElement: HTMLElementWithRequiredProp): boolean => {
+  return isRequired(slottedElement) && !isParentFieldsetWrapperRequired(host);
 };
 
 export const getRole = (state: FormState): string => {
