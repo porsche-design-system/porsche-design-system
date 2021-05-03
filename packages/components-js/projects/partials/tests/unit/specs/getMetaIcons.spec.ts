@@ -1,6 +1,6 @@
 import { getMetaIcons } from '../../../src';
 
-fdescribe('getMetaIcons()', () => {
+describe('getMetaIcons()', () => {
   describe('validation', () => {
     it('should throw error on unprovided appTitle', () => {
       let error;
