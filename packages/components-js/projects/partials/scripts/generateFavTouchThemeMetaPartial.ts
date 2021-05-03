@@ -1,11 +1,22 @@
 import { minifyHTML } from './utils';
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
-import { CDN_BASE_PATH_META_ICONS } from '../../../../../cdn.config';
-export const generateMetaIconsPartial = (): string => {
+type Template = {
+  template: string;
+  value: string;
+};
+
+const convertTemplates = (templates: Template[]): string[] => {
+  return templates.map(({ template, value }) => {
+    return minifyHTML(template).replace('$value', value);
+  });
+};
+
+export const generateFavTouchThemeMetaPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
-  const linkTemplates = [
+  const metaIconLinkTemplates: Template[] = [
     {
       template: '<meta name="theme-color" content="$value" />',
       value: '#FFFFFF',
@@ -44,9 +55,19 @@ export const generateMetaIconsPartial = (): string => {
     },
   ];
 
-  const metaIconTemplates = linkTemplates.map(({ template, value }) => {
-    return minifyHTML(template).replace('$value', value);
-  });
+  const manifestLinkTemplates: Template[] = [
+    {
+      template: '<link rel="manifest" href="$value">',
+      value: `${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}`,
+    },
+    {
+      template: '<link rel="manifest" href="$value">',
+      value: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}`,
+    },
+  ];
+
+  const metaIconTemplates = convertTemplates(metaIconLinkTemplates);
+  const manifestTemplates = convertTemplates(manifestLinkTemplates);
 
   const types = `
 type MetaIconsOptions = {
@@ -68,9 +89,12 @@ export function getFavTouchThemeMeta(opts?: MetaIconsOptions): string {
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const metaIconTemplates = ${JSON.stringify(metaIconTemplates)};
-  const metaIconTags = metaIconTemplates.map(metaIconTemplate=> metaIconTemplate.replace('$appTitle', appTitle).replace('$cdnBaseUrl', cdnBaseUrl))
+  const manifestTemplates = ${JSON.stringify(manifestTemplates)};
 
-  return metaIconTags.join('');
+  const metaIconTags = metaIconTemplates.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', appTitle).replace('$cdnBaseUrl', cdnBaseUrl));
+  const webManifestTag = manifestTemplates.find(item => item.includes(cdnBaseUrl));
+
+  return [...metaIconTags, webManifestTag].join('');
 };`;
 
   return [types, func].join('\n\n');
