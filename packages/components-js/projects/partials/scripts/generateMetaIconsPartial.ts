@@ -27,6 +27,10 @@ export const generateMetaIconsPartial = (): string => {
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}`,
     },
     {
+      template: '<meta name="msapplication-TileColor" content="$value">',
+      value: '#FFFFFF',
+    },
+    {
       template: '<link rel="icon" type="image/png" sizes="16x16" href="$value" />',
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon_16x16}`,
     },
