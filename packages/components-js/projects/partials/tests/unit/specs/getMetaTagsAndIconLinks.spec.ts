@@ -1,6 +1,6 @@
-import { getFavTouchThemeMeta } from '../../../src';
+import { getMetaTagsAndIconLinks } from '../../../src';
 
-describe('getFavTouchThemeMeta()', () => {
+describe('getMetaTagsAndIconLinks()', () => {
   const convertToRegex = (link: string): RegExp => {
     return new RegExp(`^${link.replace(/(\/|\.)/g, '\\$1').replace(/\*/g, '[a-z0-9]+')}$`);
   };
@@ -9,7 +9,7 @@ describe('getFavTouchThemeMeta()', () => {
     it('should throw error on unprovided appTitle', () => {
       let error;
       try {
-        getFavTouchThemeMeta();
+        getMetaTagsAndIconLinks();
       } catch (e) {
         error = e.message;
       }
@@ -33,7 +33,7 @@ describe('getFavTouchThemeMeta()', () => {
       '<link rel=manifest href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/manifest.*.webmanifest>',
     ].join('');
 
-    const result = getFavTouchThemeMeta({ appTitle: 'Porsche UX' });
+    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX' });
     expect(result).toMatch(convertToRegex(favTouchThemeMetaResult));
   });
 
@@ -50,7 +50,7 @@ describe('getFavTouchThemeMeta()', () => {
       '<link rel=manifest href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/manifest.cn.*.webmanifest>',
     ].join('');
 
-    const result = getFavTouchThemeMeta({ appTitle: 'Porsche UX', cdn: 'cn' });
+    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', cdn: 'cn' });
     expect(result).toMatch(convertToRegex(favTouchThemeMetaResultCN));
   });
 });

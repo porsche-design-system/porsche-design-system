@@ -13,7 +13,7 @@ const convertTemplates = (templates: Template[]): string[] => {
   });
 };
 
-export const generateFavTouchThemeMetaPartial = (): string => {
+export const generateMetaTagsAndIconLinks = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
   const metaIconLinkTemplates: Template[] = [
@@ -72,7 +72,7 @@ type MetaIconsOptions = {
 };`;
 
   const func = `
-export function getFavTouchThemeMeta(opts?: MetaIconsOptions): string {
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string {
   const options: MetaIconsOptions = {
     cdn: 'auto',
     ...opts

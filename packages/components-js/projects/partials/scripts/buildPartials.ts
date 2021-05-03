@@ -5,7 +5,7 @@ import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetP
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
-import { generateFavTouchThemeMetaPartial } from './generateFavTouchThemeMetaPartial';
+import { generateMetaTagsAndIconLinks } from './generateMetaTagsAndIconLinks';
 
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
@@ -23,7 +23,7 @@ const generatePartials = async (): Promise<void> => {
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),
-    generateFavTouchThemeMetaPartial(),
+    generateMetaTagsAndIconLinks(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

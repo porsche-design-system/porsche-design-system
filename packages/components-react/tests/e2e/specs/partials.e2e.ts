@@ -3,7 +3,7 @@ import {
   getFontFaceStylesheet,
   getFontLinks,
   getInitialStyles,
-  getFavTouchThemeMeta,
+  getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
 
 describe('partials', () => {
@@ -31,9 +31,9 @@ describe('partials', () => {
     });
   });
 
-  describe('getFavTouchThemeMeta()', () => {
+  describe('getMetaTagsAndIconLinks()', () => {
     it('should be a function', () => {
-      expect(typeof getFavTouchThemeMeta).toBe('function');
+      expect(typeof getMetaTagsAndIconLinks).toBe('function');
     });
   });
 });
