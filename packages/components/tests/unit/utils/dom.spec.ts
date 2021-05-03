@@ -294,14 +294,22 @@ describe('isDisabledOrLoading()', () => {
 });
 
 describe('isParentFieldsetWrapperRequired()', () => {
-  describe('p-fieldset-wrapper without prefix', () => {
-    it('should return true if parent is p-fieldset-wrapper and has required="true"', () => {
+  describe('without prefix', () => {
+    it('should return true if parent is required', () => {
       const parent = document.createElement('p-fieldset-wrapper');
       const child = document.createElement('div');
       parent.appendChild(child);
       parent['required'] = true;
 
       expect(isParentFieldsetWrapperRequired(child)).toBe(true);
+    });
+
+    it('should return false if parent is not required', () => {
+      const parent = document.createElement('p-fieldset-wrapper');
+      const child = document.createElement('div');
+      parent.appendChild(child);
+
+      expect(isParentFieldsetWrapperRequired(child)).toBe(false);
     });
 
     it('should return false if parent is not p-fieldset-wrapper', () => {
@@ -311,18 +319,10 @@ describe('isParentFieldsetWrapperRequired()', () => {
 
       expect(isParentFieldsetWrapperRequired(child)).toBe(false);
     });
-
-    it('should return false if parent is p-fieldset-wrapper without required', () => {
-      const parent = document.createElement('p-fieldset-wrapper');
-      const child = document.createElement('div');
-      parent.appendChild(child);
-
-      expect(isParentFieldsetWrapperRequired(child)).toBe(false);
-    });
   });
 
-  describe('prefixed-p-fieldset-wrapper with prefix', () => {
-    it('should return true if parent is p-fieldset-wrapper and has required="true"', () => {
+  describe('with prefix', () => {
+    it('should return true if parent is required', () => {
       const parent = document.createElement('prefixed-p-fieldset-wrapper');
       const child = document.createElement('prefixed-p-checkbox-wrapper');
       parent.appendChild(child);
@@ -331,7 +331,7 @@ describe('isParentFieldsetWrapperRequired()', () => {
       expect(isParentFieldsetWrapperRequired(child)).toBe(true);
     });
 
-    it('should return false if parent p-fieldset-wrapper and his child have a different prefix', () => {
+    it('should return false if parent has a different prefix', () => {
       const parent = document.createElement('another-prefix-p-fieldset-wrapper');
       const child = document.createElement('prefixed-p-checkbox-wrapper');
       parent.appendChild(child);
@@ -358,28 +358,21 @@ describe('getRole()', () => {
 
 describe('isParentRequired()', () => {
   const fieldsetWrapper = 'p-fieldset-wrapper';
-  it.each<[string, boolean, boolean, boolean]>([
-    [fieldsetWrapper, true, true, false],
-    [fieldsetWrapper, false, true, true],
-    ['div', false, true, true],
-    ['div', false, false, false],
-  ])(
-    'should for parent element: "%s" required: "%s" and slottedElement with required: "%s" return "%s"',
-    (parentElement, isFieldsetRequired, isSlottedElRequired, result) => {
-      const parent = document.createElement(parentElement);
-      const child = document.createElement('div');
-      const slottedEl = document.createElement('input');
-      parent.appendChild(child);
-      child.appendChild(slottedEl);
+  it.each<[{ parentTagName: string; parentRequired: boolean; inputRequired: boolean }, boolean]>([
+    [{ parentTagName: fieldsetWrapper, parentRequired: true, inputRequired: true }, false],
+    [{ parentTagName: fieldsetWrapper, parentRequired: false, inputRequired: true }, true],
+    [{ parentTagName: 'div', parentRequired: false, inputRequired: true }, true],
+    [{ parentTagName: 'div', parentRequired: false, inputRequired: false }, false],
+  ])('should for "%p" return "%s"', ({ parentTagName, parentRequired, inputRequired }, result) => {
+    const parent = document.createElement(parentTagName);
+    const child = document.createElement('p-textfield-wrapper');
+    const input = document.createElement('input');
+    parent.appendChild(child);
+    child.appendChild(input);
 
-      if (isFieldsetRequired) {
-        parent['required'] = true;
-      }
-      if (isSlottedElRequired) {
-        slottedEl.required = true;
-      }
+    parent['required'] = parentRequired;
+    input.required = inputRequired;
 
-      expect(isParentRequired(child, slottedEl)).toBe(result);
-    }
-  );
+    expect(isParentRequired(child, input)).toBe(result);
+  });
 });
