@@ -12,7 +12,7 @@ import {
   observeMutations,
   unobserveMutations,
   getRole,
-  isParentRequired,
+  isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -87,7 +87,7 @@ export class TextareaWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isParentRequired(this.host, this.textarea) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           {isDescriptionVisible(this.host, this.description) && (

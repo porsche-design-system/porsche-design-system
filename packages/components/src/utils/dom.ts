@@ -50,7 +50,7 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
-type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
+export type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
 
 export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
 
@@ -112,7 +112,7 @@ export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
   return isRequired(fieldsetWrapper) && getTagName(fieldsetWrapper) === getPrefixedTagNames(host).pFieldsetWrapper;
 };
 
-export const isParentRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
+export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
   return isRequired(child) && !isParentFieldsetWrapperRequired(host);
 };
 

@@ -12,7 +12,7 @@ import {
   observeMutations,
   unobserveMutations,
   getRole,
-  isParentRequired,
+  isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -84,7 +84,7 @@ export class RadioButtonWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {isParentRequired(this.host, this.input) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           <slot />
