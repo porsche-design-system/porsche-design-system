@@ -228,18 +228,18 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/layout/grid/grid-item/grid-item.props.md`),
       ],
     },
-    Switch: {
+    Icon: {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/switch/switch.examples.md`),
+        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/switch/switch.usage.md`),
+        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/switch/switch.props.md`),
+        () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
       ],
     },
     Link: {
@@ -376,6 +376,20 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`),
+      ],
+    },
+    Switch: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/action/switch/switch.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/action/switch/switch.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/action/switch/switch.props.md`),
       ],
     },
     Tabs: {
