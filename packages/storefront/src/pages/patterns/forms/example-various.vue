@@ -124,7 +124,7 @@
                     </p-text-field-wrapper>
                   </p-flex-item>
                   <p-flex-item width="one-third" class="form-grid-item">
-                    <p-text-field-wrapper v-bind:state="getState('year')" label="Year">
+                    <p-text-field-wrapper label="Year">
                       <input
                         type="number"
                         placeholder="YYYY"
@@ -138,10 +138,9 @@
                 </p-flex>
               </p-grid-item>
             </p-grid>
-            <span slot="message" v-if="bag.errors.day || bag.errors.month || bag.errors.year">
+            <span slot="message" v-if="bag.errors.day || bag.errors.month">
               <div v-if="bag.errors.day">{{ bag.errors.day }}</div>
               <div v-if="bag.errors.month">{{ bag.errors.month }}</div>
-              <div v-if="bag.errors.year">{{ bag.errors.year }}</div>
             </span>
           </p-fieldset-wrapper>
         </form>
@@ -199,7 +198,7 @@
           .min(1, 'Please enter valid month 01-12')
           .max(12, 'Please enter valid month 01-12')
           .typeError('Please enter a month'),
-        year: number().typeError('Please enter a year'),
+        year: number(),
       }),
     };
 
