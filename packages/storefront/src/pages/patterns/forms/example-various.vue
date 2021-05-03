@@ -138,7 +138,7 @@
                 </p-flex>
               </p-grid-item>
             </p-grid>
-            <span slot="message">
+            <span slot="message" v-if="bag.errors.day || bag.errors.month || bag.errors.year">
               <div v-if="bag.errors.day">{{ bag.errors.day }}</div>
               <div v-if="bag.errors.month">{{ bag.errors.month }}</div>
               <div v-if="bag.errors.year">{{ bag.errors.year }}</div>
