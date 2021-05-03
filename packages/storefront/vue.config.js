@@ -49,20 +49,5 @@ module.exports = {
       maskIcon: null,
       msTileImage: null,
     },
-    manifestOptions: {
-      icons: [
-        {
-          src: `${META_ICONS_CDN_BASE_URL}/${touchIcon.androidChrome_192x192}`,
-          sizes: '192x192',
-          type: 'image/png',
-        },
-        {
-          src: `${META_ICONS_CDN_BASE_URL}/${touchIcon.androidChrome_512x512}`,
-          sizes: '512x512',
-          type: 'image/png',
-        },
-      ],
-      background_color: '#FFFFFF',
-    },
   },
 };
