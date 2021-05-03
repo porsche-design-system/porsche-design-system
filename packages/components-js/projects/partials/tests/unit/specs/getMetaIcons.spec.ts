@@ -71,7 +71,7 @@ describe('getMetaIcons()', () => {
         'https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-16x16.f47c62d49906f99ab4408d691f03ece7.png',
         'https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png',
         'https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdeb42142de51637d67f7532ead2caab.png',
-        'https://cdn.ui.porsche.cn/porsche-design-sgystem/meta-icons/pinned-tab-icon.e2eea3d0fb56b5faf6b84c590f19572b.svg',
+        'https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/pinned-tab-icon.e2eea3d0fb56b5faf6b84c590f19572b.svg',
       ];
       const result = getMetaIcons({ appTitle: 'Porsche UX', withoutTags: true, cdn: 'cn' });
 
