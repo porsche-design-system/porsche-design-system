@@ -3173,7 +3173,7 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*":
+"@types/estree@*", "@types/estree@^0.0.47":
   version "0.0.47"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.47.tgz#d7a51db20f0650efec24cd04994f523d93172ed4"
   integrity sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==
@@ -4426,6 +4426,11 @@ acorn@^8.0.4, acorn@^8.1.0:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.1.1.tgz#fb0026885b9ac9f48bac1e185e4af472971149ff"
   integrity sha512-xYiIVjNuqtKXMxlRMDc6mZUhXehod4a3gbZ1qRlM7icK4EbxUFNLhWoPblCvFtB2Y9CIqHP3CF/rdxLItaQv8g==
+
+acorn@^8.2.1:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.2.2.tgz#c4574e4fea298d6e6ed4b85ab844b06dd59f26d6"
+  integrity sha512-VrMS8kxT0e7J1EX0p6rI/E0FbfOVcvBpbIqHThFv+f8YrZIlMfVotYcXKVPmTvPW8sW5miJzfUFrrvthUZg8VQ==
 
 address@1.1.2, address@^1.0.1, address@^1.1.2:
   version "1.1.2"
@@ -6550,7 +6555,12 @@ core-js@^2.4.0, core-js@^2.5.7:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.10.1, core-js@^3.4.1, core-js@^3.6.5:
+core-js@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.11.1.tgz#f920392bf8ed63a0ec8e4e729857bfa3d121c525"
+  integrity sha512-k93Isqg7e4txZWMGNYwevZL9MiogLk8pd1PtwrmFmi8IBq4GXqUaVW/a33Llt6amSI36uSjd0GWwc9pTT9ALlQ==
+
+core-js@^3.4.1, core-js@^3.6.5:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.1.tgz#e683963978b6806dcc6c0a4a8bd4ab0bdaf3f21a"
   integrity sha512-pwCxEXnj27XG47mu7SXAwhLP3L5CrlvCB91ANUkIz40P27kUcvNfSdvyZJ9CLHiVoKSp+TTChMQMSKQEH/IQxA==
@@ -7731,6 +7741,14 @@ enhanced-resolve@^4.0.0, enhanced-resolve@^4.3.0, enhanced-resolve@^4.5.0:
     graceful-fs "^4.1.2"
     memory-fs "^0.5.0"
     tapable "^1.0.0"
+
+enhanced-resolve@^5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.0.tgz#d9deae58f9d3773b6a111a5a46831da5be5c9ac0"
+  integrity sha512-Sl3KRpJA8OpprrtaIswVki3cWPiPKxXuFxJXBp+zNb6s6VwNWwFRUdtmzd2ReUut8n+sCPx7QCtQ7w5wfJhSgQ==
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
 
 enquirer@^2.3.5, enquirer@^2.3.6:
   version "2.3.6"
@@ -16172,10 +16190,17 @@ rollup@^1.31.1:
     "@types/node" "*"
     acorn "^7.1.0"
 
-rollup@^2.37.0, rollup@^2.45.0:
+rollup@^2.37.0:
   version "2.45.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.45.1.tgz#eae2b94dc2088b4e0a3b7197a5a1ee0bdd589d5c"
   integrity sha512-vPD+JoDj3CY8k6m1bLcAFttXMe78P4CMxoau0iLVS60+S9kLsv2379xaGy4NgYWu+h2WTlucpoLPAoUoixFBag==
+  optionalDependencies:
+    fsevents "~2.3.1"
+
+rollup@^2.46.0:
+  version "2.46.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.46.0.tgz#8cacf89d2ee31a34755f1af40a665168f592b829"
+  integrity sha512-qPGoUBNl+Z8uNu0z7pD3WPTABWRbcOwIrO/5ccDJzmrtzn0LVf6Lj91+L5CcWhXl6iWf23FQ6m8Jkl2CmN1O7Q==
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -18759,10 +18784,10 @@ webpack-bundle-analyzer@^3.8.0:
     opener "^1.5.1"
     ws "^6.0.0"
 
-webpack-bundle-analyzer@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.4.0.tgz#74013106e7e2b07cbd64f3a5ae847f7e814802c7"
-  integrity sha512-9DhNa+aXpqdHk8LkLPTBU/dMfl84Y+WE2+KnfI6rSpNRNVKa0VGLjPd2pjFubDeqnWmulFggxmWBxhfJXZnR0g==
+webpack-bundle-analyzer@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.4.1.tgz#c71fb2eaffc10a4754d7303b224adb2342069da1"
+  integrity sha512-j5m7WgytCkiVBoOGavzNokBOqxe6Mma13X1asfVYtKWM3wxBiRRu1u1iG0Iol5+qp9WgyhkMmBAcvjEfJ2bdDw==
   dependencies:
     acorn "^8.0.4"
     acorn-walk "^8.0.0"
@@ -19016,7 +19041,7 @@ webpack@^4.0.0:
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
 
-webpack@^5.1.0, webpack@^5.31.0:
+webpack@^5.1.0:
   version "5.31.2"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.31.2.tgz#40d9b9d15b7d76af73d3f1cae895b82613a544d6"
   integrity sha512-0bCQe4ybo7T5Z0SC5axnIAH+1WuIdV4FwLYkaAlLtvfBhIx8bPS48WHTfiRZS1VM+pSiYt7e/rgLs3gLrH82lQ==
@@ -19030,6 +19055,35 @@ webpack@^5.1.0, webpack@^5.31.0:
     browserslist "^4.14.5"
     chrome-trace-event "^1.0.2"
     enhanced-resolve "^5.7.0"
+    es-module-lexer "^0.4.0"
+    eslint-scope "^5.1.1"
+    events "^3.2.0"
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.2.4"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^4.2.0"
+    mime-types "^2.1.27"
+    neo-async "^2.6.2"
+    schema-utils "^3.0.0"
+    tapable "^2.1.1"
+    terser-webpack-plugin "^5.1.1"
+    watchpack "^2.0.0"
+    webpack-sources "^2.1.1"
+
+webpack@^5.36.2:
+  version "5.36.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.36.2.tgz#6ef1fb2453ad52faa61e78d486d353d07cca8a0f"
+  integrity sha512-XJumVnnGoH2dV+Pk1VwgY4YT6AiMKpVoudUFCNOXMIVrEKPUgEwdIfWPjIuGLESAiS8EdIHX5+TiJz/5JccmRg==
+  dependencies:
+    "@types/eslint-scope" "^3.7.0"
+    "@types/estree" "^0.0.47"
+    "@webassemblyjs/ast" "1.11.0"
+    "@webassemblyjs/wasm-edit" "1.11.0"
+    "@webassemblyjs/wasm-parser" "1.11.0"
+    acorn "^8.2.1"
+    browserslist "^4.14.5"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^5.8.0"
     es-module-lexer "^0.4.0"
     eslint-scope "^5.1.1"
     events "^3.2.0"
