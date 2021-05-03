@@ -34,20 +34,4 @@ module.exports = {
   devServer: {
     progress: false,
   },
-  pwa: {
-    workboxPluginMode: 'GenerateSW',
-    name: 'Porsche Design System',
-    themeColor: null,
-    msTileColor: null,
-    appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'white',
-    iconPaths: {
-      favicon16: null,
-      favicon32: null,
-      favicon48: null,
-      appleTouchIcon: null,
-      maskIcon: null,
-      msTileImage: null,
-    },
-  },
 };
