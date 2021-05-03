@@ -42,10 +42,6 @@ export const generateMetaIconsPartial = (): string => {
       template: '<link rel="apple-touch-icon" href="$value" />',
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}`,
     },
-    {
-      template: '<link rel="mask-icon" color="#FFFFFF" href="$value" />',
-      value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.pinnedTab.pinnedTabIcon}`,
-    },
   ];
 
   const metaIconTemplates = linkTemplates.map(({ template, value }) => {
@@ -56,25 +52,15 @@ export const generateMetaIconsPartial = (): string => {
 type MetaIconsOptions = {
   appTitle: string;
   cdn?: Cdn;
-  withoutTags?: boolean;
-};
-type MetaIconsOptionsWithTags = MetaIconsOptions & {
-  withoutTags?: false;
-};
-type MetaIconsOptionsWithoutTags = MetaIconsOptions & {
-  withoutTags?: true;
 };`;
 
   const func = `
-export function getMetaIcons(opts?: MetaIconsOptionsWithTags): string;
-export function getMetaIcons(opts?: MetaIconsOptionsWithoutTags): string[];
-export function getMetaIcons(opts?: MetaIconsOptions): string | string[] {
+export function getFavTouchThemeMeta(opts?: MetaIconsOptions): string {
   const options: MetaIconsOptions = {
     cdn: 'auto',
-    withoutTags: false,
     ...opts
   };
-  const { appTitle, cdn,  withoutTags } = options;
+  const { appTitle, cdn } = options;
 
   if (!appTitle) {
     throw new Error('Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />');
@@ -83,9 +69,8 @@ export function getMetaIcons(opts?: MetaIconsOptions): string | string[] {
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const metaIconTemplates = ${JSON.stringify(metaIconTemplates)};
   const metaIconTags = metaIconTemplates.map(metaIconTemplate=> metaIconTemplate.replace('$appTitle', appTitle).replace('$cdnBaseUrl', cdnBaseUrl))
-  const urls = metaIconTags.map((template) => template.match(/(http.*)>/)?.[1]).filter((x) => x);
 
-  return withoutTags ? urls : metaIconTags.join('');
+  return metaIconTags.join('');
 };`;
 
   return [types, func].join('\n\n');
