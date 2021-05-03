@@ -20,7 +20,7 @@ export const generateMetaIconsPartial = (): string => {
     },
     {
       template: '<meta name="apple-mobile-web-app-title" content="$value" />',
-      value: `"$appTitle"`,
+      value: `"$appTitle"`, //wrapped in quotes to work with spaces after minification of template
     },
     {
       template: '<meta name="msapplication-TileImage" content="$value" />',
