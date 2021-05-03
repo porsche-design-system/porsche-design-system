@@ -14,8 +14,9 @@ import {
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
   getRole,
-  isParentRequired,
+  isRequiredAndParentNotRequired,
 } from '../../../src/utils';
+import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
 describe('isRequired', () => {
@@ -323,19 +324,19 @@ describe('isParentFieldsetWrapperRequired()', () => {
 
   describe('with prefix', () => {
     it('should return true if parent is required', () => {
-      const parent = document.createElement('prefixed-p-fieldset-wrapper');
+      const parent = document.createElement('prefixed-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
       const child = document.createElement('prefixed-p-checkbox-wrapper');
       parent.appendChild(child);
-      parent['required'] = true;
+      parent.required = true;
 
       expect(isParentFieldsetWrapperRequired(child)).toBe(true);
     });
 
     it('should return false if parent has a different prefix', () => {
-      const parent = document.createElement('another-prefix-p-fieldset-wrapper');
+      const parent = document.createElement('another-prefix-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
       const child = document.createElement('prefixed-p-checkbox-wrapper');
       parent.appendChild(child);
-      parent['required'] = true;
+      parent.required = true;
 
       expect(isParentFieldsetWrapperRequired(child)).toBe(false);
     });
@@ -356,7 +357,7 @@ describe('getRole()', () => {
   });
 });
 
-describe('isParentRequired()', () => {
+describe('isRequiredAndParentNotRequired()', () => {
   const fieldsetWrapper = 'p-fieldset-wrapper';
   it.each<[{ parentTagName: string; parentRequired: boolean; inputRequired: boolean }, boolean]>([
     [{ parentTagName: fieldsetWrapper, parentRequired: true, inputRequired: true }, false],
@@ -373,6 +374,6 @@ describe('isParentRequired()', () => {
     parent['required'] = parentRequired;
     input.required = inputRequired;
 
-    expect(isParentRequired(child, input)).toBe(result);
+    expect(isRequiredAndParentNotRequired(child, input)).toBe(result);
   });
 });
