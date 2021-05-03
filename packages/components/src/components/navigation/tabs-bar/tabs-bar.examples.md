@@ -40,7 +40,7 @@ tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
 
 ```ts
 import { Component } from '@angular/core';
-import { TabChangeEvent } from '@porsche-design-system/components-angular';
+import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/types';
 
 @Component({
   selector: 'tabs-bar-page',

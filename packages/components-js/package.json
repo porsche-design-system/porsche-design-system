@@ -49,11 +49,11 @@
     "clean:partials:node_modules": "yarn --cwd ./projects/partials clean:node_modules"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.0.3-beta"
+    "@porsche-design-system/components-js": "2.1.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "^3.1.0",
-    "@porsche-design-system/components": "2.0.3-beta",
+    "@porsche-design-system/components": "2.1.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
@@ -65,6 +65,7 @@
     "@types/puppeteer": "^5.4.3",
     "@types/terser-webpack-plugin": "^5.0.3",
     "concurrently": "^6.0.1",
+    "devtools-protocol": "^0.0.876958",
     "globby": "^11.0.3",
     "http-server": "^0.12.3",
     "jasmine": "^3.7.0",
