@@ -12,7 +12,6 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
