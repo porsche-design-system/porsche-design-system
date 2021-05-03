@@ -58,7 +58,7 @@
     "eslint": "^7.25.0",
     "eslint-plugin-vue": "^7.8.0",
     "jasmine": "^3.7.0",
-    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "puppeteer": "~5.5.0",
     "sass": "^1.32.12",
     "sass-loader": "^10.1.1",
