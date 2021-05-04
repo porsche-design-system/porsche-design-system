@@ -237,6 +237,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
       ],
+      Guideline: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/icon/icon/icon.guideline.md`),
+      ],
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
