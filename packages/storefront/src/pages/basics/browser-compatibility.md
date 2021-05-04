@@ -80,7 +80,7 @@ Integration through `includeOverlay()` partial.
 
 ##### React / Vue JS
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
