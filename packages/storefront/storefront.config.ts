@@ -588,7 +588,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/performance/loading-behaviour.md`),
     ],
-    'Meta Tags / Icon Links': [
+    'Meta Tags & Icon Links': [
       // @ts-ignore
       () => import(`@/pages/performance/meta-tags-icon-links.md`),
     ],
