@@ -50,7 +50,7 @@
     // }
 
     public get codepen(): string {
-      const baseHref = document.querySelector('base').href;
+      const baseHref = document.querySelector('base')!.href;
       const path = baseHref === '/' ? '/latest/' : baseHref;
       // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
