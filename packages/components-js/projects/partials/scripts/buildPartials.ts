@@ -5,8 +5,8 @@ import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetP
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
-import { generateMetaTagsAndIconLinks } from './generateMetaTagsAndIconLinks';
 import { generateIconLinksPartial } from './generateIconLinksPartial';
+import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
@@ -24,7 +24,7 @@ const generatePartials = async (): Promise<void> => {
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),
-    generateMetaTagsAndIconLinks(),
+    generateMetaTagsAndIconLinksPartial(),
     generateIconLinksPartial(),
   ].join('\n\n');
 

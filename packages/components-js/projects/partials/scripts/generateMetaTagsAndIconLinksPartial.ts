@@ -13,7 +13,7 @@ const convertTemplates = (templates: Template[]): string[] => {
   });
 };
 
-export const generateMetaTagsAndIconLinks = (): string => {
+export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
   const metaIconLinkTemplates: Template[] = [
