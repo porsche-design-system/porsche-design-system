@@ -83,22 +83,3 @@ The Manifest must be declared in the `<head>` of your document and can be someth
 }
 ```
 
-## Browserconfig.xml
-Microsoft Tile images are served by referencing the corresponding images in the `browserconfig.xml` file which must be placed in the root of your application.
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<browserconfig>
-  <msapplication>
-    <tile>
-      <square128x128logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_128x128}"/>
-      <square144x144logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_144x144}"/>
-      <square270x270logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_270x270}"/>
-      <wide585x270logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_585x270}"/>
-      <wide585x585logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_585x585}"/>
-      <TileColor>#FFFFFF</TileColor>
-    </tile>
-  </msapplication>
-</browserconfig>
-```
-
