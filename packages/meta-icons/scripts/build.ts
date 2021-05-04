@@ -53,8 +53,6 @@ const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
     };
   });
 
-  console.log('Created icon arrays', icons);
-
   const manifest = JSON.stringify({ icons });
   const hash = toHash(manifest);
   const manifestFileName = `manifest${cdn === 'auto' ? '' : `.${cdn}`}.${hash}.webmanifest`;
