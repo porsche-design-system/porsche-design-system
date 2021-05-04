@@ -50,8 +50,8 @@
     // }
 
     public get codepen(): string {
-      const { pathname } = window.location;
-      const path = pathname === '/' ? '/latest/' : pathname;
+      const baseHref = document.querySelector('base').href;
+      const path = baseHref === '/' ? '/latest/' : baseHref;
       // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
         // css_external: 'https://...css',
