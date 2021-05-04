@@ -12,7 +12,6 @@ To simplify the implementation process we provide a `getMetaTagsAndIconLinks` pa
 
 The example shows how to implement the partial in a webpack (or similar) project.
 
-
 ```html
 // index.html
 
@@ -25,7 +24,6 @@ The example shows how to implement the partial in a webpack (or similar) project
   // force using China CDN
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP', cdn: 'cn' }) %>
 </head>
-
 ```
 
 
@@ -50,11 +48,10 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ``` 
 
-
 ## Manual Implementation
 Once the `@porsche-design-system/assets` package [is installed](assets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
 
-```
+```ts
 import { META_ICONS_CDN_BASE_URL, META_ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 const metaIconsUrl = `${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.favicon.favicon_32x32}`;
@@ -64,7 +61,7 @@ const metaIconsUrl = `${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.favicon.f
 Android devices need a `manifest.webmanifest` file in the root of the application where the corresponding references to the Android Touch Icons and colors are stored.
 The Manifest must be declared in the `<head>` of your document and can be something like this:
 
-```
+```json
 {
     "name": "",
     "short_name": "",
@@ -84,13 +81,12 @@ The Manifest must be declared in the `<head>` of your document and can be someth
     "background_color": "#ffffff",
     "display": "standalone"
 }
-
 ```
 
-## Browserconfig xml
+## Browserconfig.xml
 Microsoft Tile images are served by referencing the corresponding images in the `browserconfig.xml` file which must be placed in the root of your application.
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
   <msapplication>
