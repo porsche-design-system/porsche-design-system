@@ -62,19 +62,27 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
 
 export const CDN_BASE_URL = ${cdn};
 export const ICONS_MANIFEST = ${JSON.stringify(manifest)};
-export const ICON_NAMES = ${JSON.stringify(Object.keys(manifest))};`
+export const ICON_NAMES = ${JSON.stringify(Object.keys(manifest))};
+export type IconName = ${Object.keys(manifest)
+      .map((x) => `'${paramCase(x)}'`)
+      .join(' | ')};
+export type IconNameCamelCase = ${Object.keys(manifest)
+      .map((x) => `'${x}'`)
+      .join(' | ')};`
   );
 
   console.log('Created icons manifest.');
 };
 
-(async (): Promise<void> => {
+const generate = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
-  const files = (await globby('./src/**/*.svg')).sort();
+  const files = globby.sync('./src/**/*.svg').sort();
   const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
 
-  await createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
+  createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
     console.error(e);
     process.exit(1);
   });
-})();
+};
+
+generate();
