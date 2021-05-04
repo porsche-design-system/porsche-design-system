@@ -21,7 +21,7 @@ describe('getMetaTagsAndIconLinks()', () => {
   });
 
   it('should return default link', () => {
-    const favTouchThemeMetaResult = [
+    const expectedResult = [
       '<meta name=theme-color content=#FFFFFF>',
       '<meta name=apple-mobile-web-app-capable content=yes>',
       '<meta name=apple-mobile-web-app-status-bar-style content=white>',
@@ -34,11 +34,11 @@ describe('getMetaTagsAndIconLinks()', () => {
     ].join('');
 
     const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX' });
-    expect(result).toMatch(convertToRegex(favTouchThemeMetaResult));
+    expect(result).toMatch(convertToRegex(expectedResult));
   });
 
   it('should return default China CDN link', () => {
-    const favTouchThemeMetaResultCN = [
+    const expectedResult = [
       '<meta name=theme-color content=#FFFFFF>',
       '<meta name=apple-mobile-web-app-capable content=yes>',
       '<meta name=apple-mobile-web-app-status-bar-style content=white>',
@@ -51,6 +51,6 @@ describe('getMetaTagsAndIconLinks()', () => {
     ].join('');
 
     const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', cdn: 'cn' });
-    expect(result).toMatch(convertToRegex(favTouchThemeMetaResultCN));
+    expect(result).toMatch(convertToRegex(expectedResult));
   });
 });
