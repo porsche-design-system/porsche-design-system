@@ -29,7 +29,7 @@ export class DataStructureBuilder {
   }
 
   public extractNonPrimitiveTypes(input: string, isNonPrimitiveType: boolean = false): string[] {
-    const whitelistedTypes = ['CustomEvent', 'Extract', 'T'];
+    const whitelistedTypes = ['CustomEvent', 'Extract', 'T', 'T[]'];
     const nonPrimitiveTypes: string[] = [];
 
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
@@ -63,6 +63,7 @@ export class DataStructureBuilder {
         typeMatch = regex.exec(input); // loop again in case of multiple matches
       }
     }
+
     // get rid of duplicates
     return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
   }
@@ -71,7 +72,8 @@ export class DataStructureBuilder {
   private valueCanBeObject(propValue: string, sharedTypes: string): boolean {
     let result = false;
 
-    if (propValue.includes('{')) {
+    // detect objects, arrays and generic T
+    if (propValue.includes('{') || propValue.includes('[') || !!propValue.match(/T[^\w]/)) {
       result = true;
     } else {
       if (propValue.match(/[A-Z]/g)) {
@@ -98,12 +100,13 @@ export class DataStructureBuilder {
 
   private convertToExtendedProp(propKey: string, propValue: string, sharedTypes: string): ExtendedProp {
     const isEvent = !!propKey.match(/^on[A-Z]/);
+    const isCallback = !isEvent && !!propValue.match(/=>/);
     const canBeObject = !isEvent && this.valueCanBeObject(propValue, sharedTypes);
     const extendedProp: ExtendedProp = {
       key: propKey,
       rawValueType: propValue,
       hasToBeMapped: (!isEvent && !!propKey.match(/[A-Z]/g)) || canBeObject,
-      canBeObject: canBeObject,
+      canBeObject: canBeObject && !isCallback,
       isEvent: isEvent,
     };
     return extendedProp;
