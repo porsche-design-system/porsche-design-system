@@ -185,7 +185,7 @@ export class TextFieldWrapper {
 
     ${tagName} input::-webkit-outer-spin-button,
     ${tagName} input::-webkit-inner-spin-button,
-    ${tagName} input::-webkit-search-decoration {
+    ${tagName} input[type="search"]::-webkit-search-decoration {
       -webkit-appearance: none !important;
       appearance: none !important;
     }
