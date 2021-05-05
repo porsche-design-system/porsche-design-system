@@ -50,7 +50,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ```
 
