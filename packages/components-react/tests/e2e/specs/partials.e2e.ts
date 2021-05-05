@@ -1,7 +1,9 @@
 import {
   getComponentChunkLinks,
   getFontFaceStylesheet,
+  getFontLinks,
   getInitialStyles,
+  getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
 
 describe('partials', () => {
@@ -17,9 +19,21 @@ describe('partials', () => {
     });
   });
 
+  describe('getFontLinks()', () => {
+    it('should be a function', () => {
+      expect(typeof getFontLinks).toBe('function');
+    });
+  });
+
   describe('getComponentChunkLinks()', () => {
     it('should be a function', () => {
       expect(typeof getComponentChunkLinks).toBe('function');
+    });
+  });
+
+  describe('getMetaTagsAndIconLinks()', () => {
+    it('should be a function', () => {
+      expect(typeof getMetaTagsAndIconLinks).toBe('function');
     });
   });
 });
