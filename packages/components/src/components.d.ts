@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, GenericObject, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -643,6 +643,11 @@ export namespace Components {
         "data"?: object[];
         "head"?: string[];
     }
+    interface PTableGenerics {
+        "data"?: string | GenericObject[];
+        "head"?: string | string[];
+        "renderRow": (item: GenericObject) => string;
+    }
     interface PTableThree {
         "data"?: object[];
         "head"?: string[];
@@ -944,6 +949,12 @@ declare global {
         prototype: HTMLPTableElement;
         new (): HTMLPTableElement;
     };
+    interface HTMLPTableGenericsElement extends Components.PTableGenerics, HTMLStencilElement {
+    }
+    var HTMLPTableGenericsElement: {
+        prototype: HTMLPTableGenericsElement;
+        new (): HTMLPTableGenericsElement;
+    };
     interface HTMLPTableThreeElement extends Components.PTableThree, HTMLStencilElement {
     }
     var HTMLPTableThreeElement: {
@@ -1030,6 +1041,7 @@ declare global {
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
+        "p-table-generics": HTMLPTableGenericsElement;
         "p-table-three": HTMLPTableThreeElement;
         "p-table-two": HTMLPTableTwoElement;
         "p-tabs": HTMLPTabsElement;
@@ -1684,6 +1696,11 @@ declare namespace LocalJSX {
         "data"?: object[];
         "head"?: string[];
     }
+    interface PTableGenerics {
+        "data"?: string | GenericObject[];
+        "head"?: string | string[];
+        "renderRow"?: (item: GenericObject) => string;
+    }
     interface PTableThree {
         "data"?: object[];
         "head"?: string[];
@@ -1867,6 +1884,7 @@ declare namespace LocalJSX {
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
+        "p-table-generics": PTableGenerics;
         "p-table-three": PTableThree;
         "p-table-two": PTableTwo;
         "p-tabs": PTabs;
@@ -1908,6 +1926,7 @@ declare module "@stencil/core" {
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
+            "p-table-generics": LocalJSX.PTableGenerics & JSXBase.HTMLAttributes<HTMLPTableGenericsElement>;
             "p-table-three": LocalJSX.PTableThree & JSXBase.HTMLAttributes<HTMLPTableThreeElement>;
             "p-table-two": LocalJSX.PTableTwo & JSXBase.HTMLAttributes<HTMLPTableTwoElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
