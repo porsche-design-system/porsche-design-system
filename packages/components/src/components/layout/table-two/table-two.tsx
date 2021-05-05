@@ -2,7 +2,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 
 @Component({
   tag: 'p-table-two',
-  styleUrl: 'table-two.scss',
+  styleUrl: '../table/table.scss',
   shadow: true,
 })
 export class TableTwo {
