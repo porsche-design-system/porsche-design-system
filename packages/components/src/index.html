@@ -29,6 +29,9 @@
         </tr>
       </template>
     </p-table-three>
+    <br />
+
+    <p-table-generics></p-table-generics>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
@@ -80,17 +83,7 @@
           location: 'Boston',
         },
       ];
-
-      const table = document.querySelector('p-table');
-      const table2 = document.querySelector('p-table-two');
-      const table3 = document.querySelector('p-table-three');
-
-      table.head = head;
-      table.data = data;
-
-      table2.head = head;
-      table2.data = data;
-      table2.renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
+      const renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
         `
 <tr>
   <td>${firstName}</td>
@@ -101,8 +94,26 @@
   <td>${location} (Germany)</td>
 </tr>`;
 
+      const table = document.querySelector('p-table');
+      const table2 = document.querySelector('p-table-two');
+      const table3 = document.querySelector('p-table-three');
+      const tableGenerics = document.querySelector('p-table-generics');
+
+      table.head = head;
+      table.data = data;
+
+      table2.head = head;
+      table2.data = data;
+      table2.renderRow = renderRow;
+
       table3.head = head;
       table3.data = data;
+
+      // tableGenerics.head = head;
+      // tableGenerics.data = data;
+      tableGenerics.setAttribute('head', JSON.stringify(head));
+      tableGenerics.setAttribute('data', JSON.stringify(data));
+      tableGenerics.renderRow = renderRow;
 
       [('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate')].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
