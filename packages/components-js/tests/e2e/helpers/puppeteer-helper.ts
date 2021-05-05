@@ -187,7 +187,7 @@ export const getActiveElementTagName = async (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 };
 
-type Pseudo = '::before' | '::after';
+type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
   pseudo?: Pseudo;
