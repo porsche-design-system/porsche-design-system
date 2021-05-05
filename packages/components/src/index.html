@@ -11,9 +11,61 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-table></p-table>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      const table = document.querySelector('p-table');
+      table.head = ['First name', 'Last name', 'Company', 'Phone', 'Birthday', 'Location'];
+      table.data = [
+        {
+          // id: '202829625',
+          firstName: 'John',
+          lastName: 'Locke',
+          company: '',
+          phoneNumber: '123123121',
+          dateOfBirth: '1981-06-12',
+          location: 'Boston',
+        },
+        {
+          // id: '202829625',
+          firstName: 'Matthias',
+          lastName: 'Kainer',
+          company: 'Company',
+          phoneNumber: '',
+          dateOfBirth: '1981-06-12',
+          location: 'Bretten',
+        },
+        {
+          // id: '202829625',
+          firstName: 'John',
+          lastName: 'Locke',
+          company: '',
+          phoneNumber: '123123121',
+          dateOfBirth: '1981-06-12',
+          location: 'Boston',
+        },
+        {
+          // id: '202829625',
+          firstName: 'Matthias',
+          lastName: 'Kainer',
+          company: 'Company',
+          phoneNumber: '',
+          dateOfBirth: '1981-06-12',
+          location: 'Bretten',
+        },
+        {
+          // id: '202829625',
+          firstName: 'John',
+          lastName: 'Locke',
+          company: '',
+          phoneNumber: '123123121',
+          dateOfBirth: '1981-06-12',
+          location: 'Boston',
+        },
+      ];
+
+      [('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate')].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
