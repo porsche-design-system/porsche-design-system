@@ -607,6 +607,12 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/performance/loading-behaviour.md`),
     ],
   },
+  Security: {
+    CVE: [
+      // @ts-ignore
+      () => import(`@/pages/security/cve.md`),
+    ],
+  },
   Helpers: {
     'Components Ready': [
       // @ts-ignore
