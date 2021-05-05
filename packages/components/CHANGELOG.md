@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - Partial function `getIconLinks()` to preload Porsche Design System Icons
 
-### [2.2.0-beta.0] - 2021-05-04
+### [2.2.0-beta.0] - 2021-05-05
 
 #### Added
 - Partial function `getMetaTagsAndIconLinks()` to simplify cross device fav and meta icons
