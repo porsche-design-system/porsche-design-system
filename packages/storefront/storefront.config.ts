@@ -608,7 +608,7 @@ export const config: StorefrontConfig = {
     ],
   },
   Security: {
-    CVE: [
+    Cve: [
       // @ts-ignore
       () => import(`@/pages/security/cve.md`),
     ],
