@@ -54,6 +54,18 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ```
 
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:metaTagsAndIconLinks"
+  "replace:metaTagsAndIconLinks": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
 
 <script lang="ts">
   import Vue from 'vue';

@@ -65,6 +65,19 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 } 
 ``` 
 
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:intitialStyles"
+  "replace:intitialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
+
 ### Preload component chunks
 
 Porsche Design System components are loaded dynamically from a CDN as soon as they are used for the first time.  
@@ -127,6 +140,19 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ``` 
 
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:componentChunkLinks"
+  "replace:componentChunkLinks": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_COMPONENT_CHUNKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getComponentChunkLinks({ components: [\"button\", \"marque\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
+
 ### Preload icons
 
 Porsche Design System icons are loaded dynamically from a CDN as soon as they are used for the first time.  
@@ -183,6 +209,19 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
   "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_ICONS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrowHeadRight\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ``` 
+
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:iconLinks"
+  "replace:iconLinks": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_ICONS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getIcon({ icons: [\"arrowHeadRight\", \"plus\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
 
 ---
 
@@ -247,6 +286,19 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 } 
 ```
 
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:fontFaceStylesheet"
+  "replace:fontFaceStylesheet": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontFaceStylesheet())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
+
 ### Preload specific font files
 
 Fonts should be loaded as soon as possible but only those which are needed. 
@@ -304,6 +356,19 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
   "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ``` 
+
+In an Angular project the replacement script could look like this:
+
+```json
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "yarn replace:fontPreloading"
+  "replace:fontPreloading": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontLinks({ weights: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
+  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
+}
+```
+You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+
 
 <script lang="ts">
   import Vue from 'vue';
