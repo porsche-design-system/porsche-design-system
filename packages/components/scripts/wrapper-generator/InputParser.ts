@@ -43,9 +43,11 @@ export class InputParser {
       // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
       .replace(/declare global {\n\tinterface Window {\n\t\tPORSCHE_DESIGN_SYSTEM_CDN: "auto" \| "cn";\n\t}\n}/g, '')
       // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
-      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/g, '')
+      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
       // fix consumer typing by removing string which is only necessary for stencil
-      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
+      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
+      // remove dev only type
+      .replace(/.*export declare type GenericObject = object;/, '');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
     this.rawLocalJSX = rawLocalJSX;
@@ -71,16 +73,22 @@ export class InputParser {
     const [, rawComponentInterface] = regex.exec(this.rawLocalJSX) ?? [];
     return rawComponentInterface
       .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
+      .replace(/GenericObject/g, 'T') // replace GenericObject with T
       .replace(/    |\t\t/g, '  ') // adjust indentation
       .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
   }
 
   public getComponentInterface(component: TagName): ParsedInterface {
-    let rawInterface = this.getRawComponentInterface(component);
-    rawInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
+    const rawInterface = this.getRawComponentInterface(component);
+    const cleanedInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',"); // convert to valid js object
 
-    const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
+    const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
     return parsedInterface;
+  }
+
+  public hasGeneric(component: TagName): boolean {
+    const rawInterface = this.getRawComponentInterface(component);
+    return !!rawInterface.match(/: T[^\w]/);
   }
 
   public canHaveChildren(component: TagName): boolean {

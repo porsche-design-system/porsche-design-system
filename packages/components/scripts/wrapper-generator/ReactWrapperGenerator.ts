@@ -41,10 +41,14 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`;
+    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+    return `export type ${this.generatePropsName(
+      component
+    )}${genericType} = HTMLAttributes<{}> & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+    const hasGeneric = this.inputParser.hasGeneric(component);
     const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
@@ -52,7 +56,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const wrapperPropsArr: string[] = [...propsToDestructure.map(({ key }) => key), 'className', '...rest'];
     const wrapperProps = `{ ${wrapperPropsArr.join(', ')} }`;
 
-    const propsName = this.generatePropsName(component);
+    const propsName = this.generatePropsName(component) + (hasGeneric ? '<T>' : '');
     const wrapperPropsType = this.inputParser.canHaveChildren(component)
       ? `PropsWithChildren<${propsName}>`
       : propsName;
@@ -79,8 +83,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ${componentPropsArr.join(',\n      ')}
     };`;
 
+    const genericType = hasGeneric ? '<T extends object>' : '';
+
     return `export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
-  (
+  ${genericType}(
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>
   ): JSX.Element => {
