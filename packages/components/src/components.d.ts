@@ -639,6 +639,10 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PTable {
+        "data"?: object[];
+        "head"?: string[];
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -925,6 +929,12 @@ declare global {
         prototype: HTMLPSwitchElement;
         new (): HTMLPSwitchElement;
     };
+    interface HTMLPTableElement extends Components.PTable, HTMLStencilElement {
+    }
+    var HTMLPTableElement: {
+        prototype: HTMLPTableElement;
+        new (): HTMLPTableElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -998,6 +1008,7 @@ declare global {
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
+        "p-table": HTMLPTableElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1646,6 +1657,10 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PTable {
+        "data"?: object[];
+        "head"?: string[];
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1819,6 +1834,7 @@ declare namespace LocalJSX {
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
+        "p-table": PTable;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1857,6 +1873,7 @@ declare module "@stencil/core" {
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
+            "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
