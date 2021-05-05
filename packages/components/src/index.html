@@ -13,7 +13,22 @@
   <body>
     <p-table></p-table>
     <br />
+
     <p-table-two></p-table-two>
+    <br />
+
+    <p-table-three>
+      <template>
+        <tr>
+          <td>${firstName}</td>
+          <td>${lastName}</td>
+          <td>${company} GmbH</td>
+          <td>${phoneNumber}</td>
+          <td>${dateOfBirth}</td>
+          <td>${location} (USA)</td>
+        </tr>
+      </template>
+    </p-table-three>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
@@ -68,6 +83,7 @@
 
       const table = document.querySelector('p-table');
       const table2 = document.querySelector('p-table-two');
+      const table3 = document.querySelector('p-table-three');
 
       table.head = head;
       table.data = data;
@@ -84,6 +100,9 @@
   <td>† ${dateOfBirth}</td>
   <td>${location} (Germany)</td>
 </tr>`;
+
+      table3.head = head;
+      table3.data = data;
 
       [('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate')].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
