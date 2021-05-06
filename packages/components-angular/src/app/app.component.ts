@@ -1,27 +1,77 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { routes } from './app-routing.module';
+
+type Person = {
+  firstName: string;
+  lastName: string;
+  company: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  location: string;
+};
 
 @Component({
   selector: 'app-root',
-  template: `
-    <select (change)="changeRoute($event.target.value)">
-      <option disabled selected>Select a page</option>
-      <ng-container *ngFor="let route of routes">
-        <option [value]="route.path" [disabled]="route.isDisabled">{{ route.name }}</option>
-      </ng-container>
-    </select>
-    <div id="app">
-      <router-outlet></router-outlet>
-    </div>
-  `,
+  template: `<p-table-generics [head]="head" [data]="data" [renderRow]="renderRow"></p-table-generics>`,
 })
 export class AppComponent {
-  public routes = routes.filter((route) => !!route.name);
+  head = ['First name', 'Last name', 'Company', 'Phone', 'Birthday', 'Location'];
+  data: Person[] = [
+    {
+      // id: '202829625',
+      firstName: 'John',
+      lastName: 'Locke',
+      company: '',
+      phoneNumber: '123123121',
+      dateOfBirth: '1981-06-12',
+      location: 'Boston',
+    },
+    {
+      // id: '202829625',
+      firstName: 'Matthias',
+      lastName: 'Kainer',
+      company: 'Company',
+      phoneNumber: '',
+      dateOfBirth: '1981-06-12',
+      location: 'Bretten',
+    },
+    {
+      // id: '202829625',
+      firstName: 'John',
+      lastName: 'Locke',
+      company: '',
+      phoneNumber: '123123121',
+      dateOfBirth: '1981-06-12',
+      location: 'Boston',
+    },
+    {
+      // id: '202829625',
+      firstName: 'Matthias',
+      lastName: 'Kainer',
+      company: 'Company',
+      phoneNumber: '',
+      dateOfBirth: '1981-06-12',
+      location: 'Bretten',
+    },
+    {
+      // id: '202829625',
+      firstName: 'John',
+      lastName: 'Locke',
+      company: '',
+      phoneNumber: '123123121',
+      dateOfBirth: '1981-06-12',
+      location: 'Boston',
+    },
+  ];
 
-  constructor(private router: Router) {}
-
-  public async changeRoute(path: string): Promise<void> {
-    await this.router.navigateByUrl(`/${path}`);
-  }
+  renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }: any): string => {
+    console.log('renderRow');
+    return `<tr>
+      <td>${firstName}</td>
+      <td>${lastName}</td>
+      <td>${company}</td>
+      <td># ${phoneNumber}</td>
+      <td>† ${dateOfBirth}</td>
+      <td>${location} (Germany)</td>
+    </tr>`;
+  };
 }
