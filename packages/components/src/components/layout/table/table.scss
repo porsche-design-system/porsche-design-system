@@ -8,6 +8,9 @@ table {
   width: 100%;
   border: 1px solid black;
   border-collapse: collapse;
+  @include p-text-small;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 thead {
@@ -29,16 +32,18 @@ td {
 
 th {
   text-align: left;
+  font-weight: $p-font-weight-bold;
 }
 
 td {
+  vertical-align: top;
   overflow: hidden;
 
   a {
     display: block;
     text-decoration: none;
     color: black;
-    margin: -50px;
-    padding: 50px;
+    margin: -100px;
+    padding: 100px;
   }
 }
