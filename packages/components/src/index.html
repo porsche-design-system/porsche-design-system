@@ -95,7 +95,7 @@
         <td><a href="#${firstName}">${firstName}</a></td>
         <td><a href="#${firstName}">${lastName}</a></td>
         <td><a href="#${firstName}">${company}</a></td>
-        <td><a href="#${firstName}"># ${phoneNumber}</a></td>
+        <td><a href="#${firstName}">${phoneNumber ? `# ${phoneNumber}` : ''}</a></td>
         <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
         <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
       </tr>`;
