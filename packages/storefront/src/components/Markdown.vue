@@ -172,6 +172,10 @@
           font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
 
+        code.readonly {
+          user-select: none;
+        }
+
         :not(pre) > code {
           padding: 0.125rem $p-spacing-8;
           background-color: mix($p-color-brand, $p-color-background-default, 10%);
