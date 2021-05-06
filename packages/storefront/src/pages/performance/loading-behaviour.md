@@ -57,7 +57,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
@@ -65,17 +65,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 } 
 ``` 
 
-In an Angular project the replacement script could look like this:
-
-```json
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "yarn replace:intitialStyles"
-  "replace:intitialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
-  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
-}
-```
-You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 ### Preload component chunks
@@ -132,7 +122,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
@@ -140,17 +130,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ``` 
 
-In an Angular project the replacement script could look like this:
-
-```json
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "yarn replace:componentChunkLinks"
-  "replace:componentChunkLinks": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_COMPONENT_CHUNKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getComponentChunkLinks({ components: [\"button\", \"marque\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
-  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
-}
-```
-You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 ### Preload icons
@@ -202,7 +182,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
@@ -210,17 +190,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ``` 
 
-In an Angular project the replacement script could look like this:
-
-```json
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "yarn replace:iconLinks"
-  "replace:iconLinks": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_ICONS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getIcon({ icons: [\"arrowHeadRight\", \"plus\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
-  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
-}
-```
-You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 ---
@@ -278,7 +248,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
@@ -286,17 +256,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 } 
 ```
 
-In an Angular project the replacement script could look like this:
-
-```json
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "yarn replace:fontFaceStylesheet"
-  "replace:fontFaceStylesheet": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontFaceStylesheet())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
-  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
-}
-```
-You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 ### Preload specific font files
@@ -349,7 +309,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
@@ -357,17 +317,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 }
 ``` 
 
-In an Angular project the replacement script could look like this:
-
-```json
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "yarn replace:fontPreloading"
-  "replace:fontPreloading": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontLinks({ weights: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && yarn replace:renameIndexHtml",
-  "replace:renameIndexHtml": "rm src/index.html && mv src/index.tmp.html src/index.html",
-}
-```
-You can find an implemented example in our [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular)
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 <script lang="ts">
