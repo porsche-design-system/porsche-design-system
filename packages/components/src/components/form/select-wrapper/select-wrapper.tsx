@@ -15,6 +15,7 @@ import {
   setAriaAttributes,
   setAttribute,
   getRole,
+  observeProperties,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -85,6 +86,7 @@ export class SelectWrapper {
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
+    observeProperties(this.select, ['value'], this.setOptionList);
   }
 
   public componentDidLoad(): void {
