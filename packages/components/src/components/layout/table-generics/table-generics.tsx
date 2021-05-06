@@ -3,6 +3,7 @@ import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, getPrefixedTagNames, parseJSON } from '../../../utils';
 
 export type HeadItem = {
+  key: string;
   name: string;
   isSortable: boolean;
   direction: 'asc' | 'desc';

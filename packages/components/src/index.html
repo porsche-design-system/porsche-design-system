@@ -45,7 +45,7 @@
           lastName: 'Locke',
           company: '',
           phoneNumber: '123123121',
-          dateOfBirth: '1981-06-12',
+          dateOfBirth: '1979-06-12',
           location: 'Boston',
         },
         {
@@ -61,36 +61,35 @@
         {
           // id: '202829625',
           imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
-          firstName: 'John',
-          lastName: 'Locke',
+          firstName: 'Jason',
+          lastName: 'Bourne',
           company: '',
           phoneNumber: '123123121',
-          dateOfBirth: '1981-06-12',
-          location: 'Boston',
+          dateOfBirth: '1980-06-12',
+          location: 'Berlin',
         },
         {
           // id: '202829625',
           imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
-          firstName: 'Matthias',
-          lastName: 'Kainer',
+          firstName: 'Manni',
+          lastName: 'Frisch',
           company: 'Company',
           phoneNumber: '',
-          dateOfBirth: '1981-06-12',
-          location: 'Bretten',
+          dateOfBirth: '1951-06-12',
+          location: 'Hamburg',
         },
         {
           // id: '202829625',
           imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
-          firstName: 'John',
-          lastName: 'Locke',
+          firstName: 'Jim',
+          lastName: 'Bo',
           company: '',
           phoneNumber: '123123121',
-          dateOfBirth: '1981-06-12',
-          location: 'Boston',
+          dateOfBirth: '1975-06-12',
+          location: 'Köln',
         },
       ];
-      const renderRow = ({ imageUrl, firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
-        `
+      const renderRow = ({ imageUrl, firstName, lastName, company, phoneNumber, dateOfBirth, location }) => `
 <tr>
   <td><a href="#${firstName}"><img src="${imageUrl}" width="80px"></a></td>
   <td><a href="#${firstName}">${firstName}</a></td>
@@ -116,16 +115,19 @@
       table3.head = head;
       table3.data = data;
 
-      // tableGenerics.head = head;
+      const dataKeys = Object.keys(data[0]);
+      const headSortable = head.map((name, i) => ({ key: dataKeys[i], name, isSortable: i > 0, direction: 'asc' }));
+
+      // tableGenerics.head = headSortable;
       // tableGenerics.data = data;
-      tableGenerics.setAttribute(
-        'head',
-        JSON.stringify(head.map((name, i) => ({ name, isSortable: i > 0, direction: 'asc' })))
-      );
+      tableGenerics.setAttribute('head', JSON.stringify(headSortable));
       tableGenerics.setAttribute('data', JSON.stringify(data));
       tableGenerics.renderRow = renderRow;
       tableGenerics.addEventListener('headClick', (e) => {
         console.log('headClick', e.detail);
+        const { key } = e.detail;
+        const dataSorted = data.sort((a, b) => a[key].localeCompare(b[key]));
+        e.target.setAttribute('data', JSON.stringify(dataSorted));
       });
       tableGenerics.addEventListener('rowClick', (e) => {
         console.log('rowClick', e.detail);
