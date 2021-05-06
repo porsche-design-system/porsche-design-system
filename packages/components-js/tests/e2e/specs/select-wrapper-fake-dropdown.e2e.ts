@@ -11,6 +11,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
@@ -319,7 +320,7 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
-      await select.evaluate((el: HTMLSelectElement) => el.options[1].setAttribute('selected', 'selected'));
+      await setProperty(select, 'value', 'b');
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
