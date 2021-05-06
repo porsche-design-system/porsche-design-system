@@ -16,7 +16,7 @@ export class TableTwo {
         <thead>
           <tr>
             {this.head.map((x) => (
-              <td>{x}</td>
+              <th>{x}</th>
             ))}
           </tr>
         </thead>

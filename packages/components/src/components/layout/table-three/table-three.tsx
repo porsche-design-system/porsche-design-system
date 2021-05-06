@@ -22,7 +22,7 @@ export class TableThree {
         <thead>
           <tr>
             {this.head.map((x) => (
-              <td>{x}</td>
+              <th>{x}</th>
             ))}
           </tr>
         </thead>

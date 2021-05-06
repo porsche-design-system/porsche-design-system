@@ -38,7 +38,7 @@ export class TableGenerics {
         <thead>
           <tr>
             {this.headItems.map((x) => (
-              <td>{x}</td>
+              <th scope="col">{x}</th>
             ))}
           </tr>
         </thead>
