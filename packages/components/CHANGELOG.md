@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.2.0-beta.2] - 2021-05-06
+
+#### Fixed
+- `Select Wrapper` value changes are now reflected correctly
+- `Select Wrapper` dark theme background color if used with `filter` prop
+
 ### [2.2.0-beta.1] - 2021-05-05
 
 #### Added
