@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, getPrefixedTagNames, parseJSON } from '../../../utils';
 import type { HeadItem } from './table-utils';
@@ -11,6 +11,7 @@ import { getAriaSort, toggleDirection } from './table-utils';
 })
 export class TableGenerics {
   @Element() public host!: HTMLElement;
+
   @Prop() public head?: string | HeadItem[] = [];
   @Prop() public data?: string | GenericObject[] = [];
   @Prop() public renderRow: (item: GenericObject) => string = () => '';
@@ -21,25 +22,11 @@ export class TableGenerics {
   private headItems: HeadItem[] = [];
   private dataItems: GenericObject[] = [];
 
-  @Watch('head')
-  watchHead(newValue: string) {
-    this.headItems = parseJSON(newValue) as any;
-    console.log('set headItems', newValue, this.headItems);
-  }
-
-  @Watch('data')
-  watchData(newValue: string) {
-    this.dataItems = parseJSON(newValue) as any;
-    console.log('set dataItems', newValue, '>>', this.dataItems);
-  }
-
-  public componentWillLoad(): void {
-    this.watchHead(this.head as string);
-    this.watchData(this.data as string);
-  }
-
   public render(): JSX.Element {
+    this.dataItems = parseJSON(this.data as string) as any;
+    this.headItems = parseJSON(this.head as string) as any;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <table>
         <thead onClick={this.onHeadClick}>
