@@ -1699,6 +1699,8 @@ declare namespace LocalJSX {
     interface PTableGenerics {
         "data"?: string | GenericObject[];
         "head"?: string | string[];
+        "onHeadClick"?: (event: CustomEvent<string>) => void;
+        "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
         "renderRow"?: (item: GenericObject) => string;
     }
     interface PTableThree {

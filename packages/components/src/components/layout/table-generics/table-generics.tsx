@@ -1,6 +1,6 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import type { GenericObject } from '../../../types';
-import { parseJSON } from '../../../utils';
+import { getClosestHTMLElement, parseJSON } from '../../../utils';
 
 @Component({
   tag: 'p-table-generics',
@@ -10,7 +10,10 @@ import { parseJSON } from '../../../utils';
 export class TableGenerics {
   @Prop() public head?: string | string[] = [];
   @Prop() public data?: string | GenericObject[] = [];
-  @Prop() renderRow: (item: GenericObject) => string = () => '';
+  @Prop() public renderRow: (item: GenericObject) => string = () => '';
+
+  @Event({ bubbles: false }) public headClick: EventEmitter<string>;
+  @Event({ bubbles: false }) public rowClick: EventEmitter<GenericObject>;
 
   @State() private headItems: string[] = [];
   @State() private dataItems: GenericObject[] = [];
@@ -35,15 +38,25 @@ export class TableGenerics {
   public render(): JSX.Element {
     return (
       <table>
-        <thead>
+        <thead onClick={this.onHeadClick}>
           <tr>
             {this.headItems.map((x) => (
               <th scope="col">{x}</th>
             ))}
           </tr>
         </thead>
-        <tbody innerHTML={this.dataItems.map(this.renderRow).join('')} />
+        <tbody onClick={this.onBodyClick} innerHTML={this.dataItems.map(this.renderRow).join('')} />
       </table>
     );
   }
+
+  public onHeadClick = (e: MouseEvent): void => {
+    const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
+    this.headClick.emit(this.headItems[cellIndex]);
+  };
+
+  public onBodyClick = (e: MouseEvent): void => {
+    const { rowIndex } = getClosestHTMLElement(e.target as HTMLElement, 'tr');
+    this.rowClick.emit(this.dataItems[rowIndex - 1]);
+  };
 }
