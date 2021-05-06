@@ -4,7 +4,7 @@ This package provides manifests and CDN URLs for fonts, icons and marques.
 
 ## Usage
 
-```
+```js
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 import { META_ICONS_CDN_BASE_URL, META_ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';

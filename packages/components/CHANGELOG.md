@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.2.0-beta.1] - 2021-05-05
+
+#### Added
+- Partial function `getIconLinks()` to preload Porsche Design System Icons
+
 #### Fixed
 - `Text Field Wrapper` spacing in Safari
 
