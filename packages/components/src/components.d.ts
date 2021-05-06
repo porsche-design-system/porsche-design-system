@@ -15,7 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { HeadItem } from "./components/layout/table-generics/table-generics";
+import { HeadItem } from "./components/layout/table-generics/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
