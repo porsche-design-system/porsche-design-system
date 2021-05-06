@@ -19,7 +19,7 @@ type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
   withoutTags?: true;
 };`;
 
-  const link = minifyHTML('<link rel="preload" href="$URL" as="script">').replace('$URL', '${url}');
+  const link = minifyHTML('<link rel="preload" href="${url}" as="script">');
 
   const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];

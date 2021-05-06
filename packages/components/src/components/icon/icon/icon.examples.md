@@ -68,7 +68,7 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
 With the use of SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:
 
 * If icons stand alone, adding descriptive text with an `aria-label` attribute is a good practice:
-```
+```html
 <p-icon aria-label="descriptive text, e.g: close the layer" />
 ```
 
