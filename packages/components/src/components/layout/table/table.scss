@@ -59,10 +59,28 @@ img {
 
   &:hover {
     color: gray;
+
+    .sorting {
+      opacity: 1;
+    }
+  }
+
+  &--asc .sorting *:first-child,
+  &--desc .sorting *:last-child {
+    color: gray;
+  }
+
+  &--active {
+    color: black;
+
+    .sorting {
+      opacity: 1;
+    }
   }
 }
 
 .sorting {
+  opacity: 0;
   margin-left: 3px;
 
   *:last-child {

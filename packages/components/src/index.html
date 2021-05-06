@@ -127,14 +127,14 @@
       tableGenerics.addEventListener('headClick', (e) => {
         console.log('headClick', e.detail);
         const { key, direction } = e.detail;
-        data.sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])));
-        headSortable.splice(
-          headSortable.findIndex((x) => x.key === key),
-          1,
-          e.detail
+
+        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+        const sortedData = [...data].sort((a, b) =>
+          direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
         );
-        e.target.data = [...data];
-        e.target.head = [...headSortable];
+
+        e.target.head = sortedHead;
+        e.target.data = sortedData;
       });
 
       tableGenerics.addEventListener('rowClick', (e) => {

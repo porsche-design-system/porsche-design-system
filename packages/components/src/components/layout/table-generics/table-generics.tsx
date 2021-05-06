@@ -6,6 +6,7 @@ export type HeadItem = {
   key: string;
   name: string;
   isSortable: boolean;
+  isSorting: boolean;
   direction: 'asc' | 'desc';
 };
 
@@ -49,8 +50,11 @@ export class TableGenerics {
       <table>
         <thead onClick={this.onHeadClick}>
           <tr>
-            {this.headItems.map(({ name, isSortable }) => (
-              <th scope="col" class={isSortable ? 'sortable' : ''}>
+            {this.headItems.map(({ name, isSortable, direction, isSorting }) => (
+              <th
+                scope="col"
+                class={{ ['sortable']: isSortable, [`sortable--${direction}`]: true, ['sortable--active']: isSorting }}
+              >
                 {name}
                 {isSortable && (
                   <span class="sorting">
@@ -71,7 +75,7 @@ export class TableGenerics {
     const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
     const headItem = this.headItems[cellIndex];
     if (headItem.isSortable) {
-      this.headClick.emit({ ...headItem, direction: headItem.direction === 'asc' ? 'desc' : 'asc' });
+      this.headClick.emit({ ...headItem, isSorting: true, direction: headItem.direction === 'asc' ? 'desc' : 'asc' });
     }
   };
 
