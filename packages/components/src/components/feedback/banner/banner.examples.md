@@ -38,7 +38,7 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 ## Custom styling
 The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
-``` 
+```scss
 // default CSS variables
 --p-banner-position-type: fixed;
 --p-banner-position-top: p-px-to-rem(56px);

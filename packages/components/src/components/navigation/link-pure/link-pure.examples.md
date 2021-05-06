@@ -87,7 +87,7 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
-``` 
+```html
 <p-link-pure [active]="rla.isActive">
   <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive"></a>
 </p-link-pure>
@@ -95,7 +95,7 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### React
 
-``` 
+```tsx
 <PLinkPure active={isActive}>
   <Link to="/path/to/heaven">Some label</Link>
 </PLinkPure>
@@ -103,7 +103,7 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### VueJs
 
-``` 
+```html
 <router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
   <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
 </router-link>
