@@ -72,6 +72,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...(outputs ? ['proxyOutputs(this, outputs);'] : []),
     ].join('\n    ');
 
+    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+
     return `${inputsAndOutputs}
 
 @ProxyCmp({
@@ -80,7 +82,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 @Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)} {
+export class ${this.generateComponentName(component)}${genericType} {
   ${classMembers}
 
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
