@@ -10,8 +10,12 @@ table {
   border-collapse: collapse;
 }
 
-thead tr {
+thead {
   border-bottom: 1px solid black;
+}
+
+tbody tr:hover a {
+  background: coral;
 }
 
 tr:nth-child(even) {
@@ -25,4 +29,16 @@ td {
 
 th {
   text-align: left;
+}
+
+td {
+  overflow: hidden;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    margin: -50px;
+    padding: 50px;
+  }
 }
