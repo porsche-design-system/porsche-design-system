@@ -26,7 +26,7 @@
           <td>${company} GmbH</td>
           <td>${phoneNumber}</td>
           <td>${dateOfBirth}</td>
-          <td>${location} (USA)</td>
+          <td>${location}<p-text weight="thin">(USA)</p-text></td>
         </tr>
       </template>
     </p-table-three>
@@ -98,7 +98,7 @@
   <td><a href="#${firstName}">${company}</a></td>
   <td><a href="#${firstName}"># ${phoneNumber}</a></td>
   <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
-  <td><a href="#${firstName}">${location} (Germany)</a></td>
+  <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
 </tr>`;
 
       const table = document.querySelector('p-table');
@@ -118,7 +118,10 @@
 
       // tableGenerics.head = head;
       // tableGenerics.data = data;
-      tableGenerics.setAttribute('head', JSON.stringify(head));
+      tableGenerics.setAttribute(
+        'head',
+        JSON.stringify(head.map((name, i) => ({ name, isSortable: i > 0, direction: 'asc' })))
+      );
       tableGenerics.setAttribute('data', JSON.stringify(data));
       tableGenerics.renderRow = renderRow;
       tableGenerics.addEventListener('headClick', (e) => {

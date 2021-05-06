@@ -15,6 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
+import { HeadItem } from "./components/layout/table-generics/table-generics";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -645,7 +646,7 @@ export namespace Components {
     }
     interface PTableGenerics {
         "data"?: string | GenericObject[];
-        "head"?: string | string[];
+        "head"?: string | HeadItem[];
         "renderRow": (item: GenericObject) => string;
     }
     interface PTableThree {
@@ -1698,8 +1699,8 @@ declare namespace LocalJSX {
     }
     interface PTableGenerics {
         "data"?: string | GenericObject[];
-        "head"?: string | string[];
-        "onHeadClick"?: (event: CustomEvent<string>) => void;
+        "head"?: string | HeadItem[];
+        "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
         "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
         "renderRow"?: (item: GenericObject) => string;
     }
