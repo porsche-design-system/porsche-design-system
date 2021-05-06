@@ -86,12 +86,12 @@
       const renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
         `
 <tr>
-  <td>${firstName}</td>
-  <td>${lastName}</td>
-  <td>${company}</td>
-  <td># ${phoneNumber}</td>
-  <td>† ${dateOfBirth}</td>
-  <td>${location} (Germany)</td>
+  <td><a href="#${firstName}">${firstName}</a></td>
+  <td><a href="#${firstName}">${lastName}</a></td>
+  <td><a href="#${firstName}">${company}</a></td>
+  <td><a href="#${firstName}"># ${phoneNumber}</a></td>
+  <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
+  <td><a href="#${firstName}">${location} (Germany)</a></td>
 </tr>`;
 
       const table = document.querySelector('p-table');
