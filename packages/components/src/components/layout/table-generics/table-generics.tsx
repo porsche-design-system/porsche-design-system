@@ -24,7 +24,7 @@ export class TableGenerics {
   @Watch('data')
   watchData(newValue: string) {
     this.dataItems = parseJSON(newValue) as any;
-    console.log('set dataItems', newValue, this.dataItems);
+    console.log('set dataItems', newValue, '>>', this.dataItems);
   }
 
   public componentWillLoad(): void {

@@ -20,6 +20,7 @@
     <p-table-three>
       <template>
         <tr>
+          <td><img src="${imageUrl}" width="80px" /></td>
           <td>${firstName}</td>
           <td>${lastName}</td>
           <td>${company} GmbH</td>
@@ -35,10 +36,11 @@
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const head = ['First name', 'Last name', 'Company', 'Phone', 'Birthday', 'Location'];
+      const head = ['Image', 'First name', 'Last name', 'Company', 'Phone', 'Birthday', 'Location'];
       const data = [
         {
           // id: '202829625',
+          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
           firstName: 'John',
           lastName: 'Locke',
           company: '',
@@ -48,6 +50,7 @@
         },
         {
           // id: '202829625',
+          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
           firstName: 'Matthias',
           lastName: 'Kainer',
           company: 'Company',
@@ -57,6 +60,7 @@
         },
         {
           // id: '202829625',
+          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
           firstName: 'John',
           lastName: 'Locke',
           company: '',
@@ -66,6 +70,7 @@
         },
         {
           // id: '202829625',
+          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
           firstName: 'Matthias',
           lastName: 'Kainer',
           company: 'Company',
@@ -75,6 +80,7 @@
         },
         {
           // id: '202829625',
+          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
           firstName: 'John',
           lastName: 'Locke',
           company: '',
@@ -83,9 +89,10 @@
           location: 'Boston',
         },
       ];
-      const renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
+      const renderRow = ({ imageUrl, firstName, lastName, company, phoneNumber, dateOfBirth, location }) =>
         `
 <tr>
+  <td><a href="#${firstName}"><img src="${imageUrl}" width="80px"></a></td>
   <td><a href="#${firstName}">${firstName}</a></td>
   <td><a href="#${firstName}">${lastName}</a></td>
   <td><a href="#${firstName}">${company}</a></td>
