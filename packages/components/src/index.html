@@ -11,6 +11,14 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-table-wrapper>
+      <table>
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </p-table-wrapper>
+    <br />
+
     <p-table></p-table>
     <br />
 
@@ -139,6 +147,27 @@
 
       tableGenerics.addEventListener('rowClick', (e) => {
         console.log('rowClick', e.detail);
+      });
+
+      const tableHead = document.querySelector('thead');
+      const tableHeadRow = document.createElement('tr');
+      tableHead.appendChild(tableHeadRow);
+      const tableBody = document.querySelector('tbody');
+
+      head.forEach((item) => {
+        const el = document.createElement('th');
+        el.innerText = item;
+        tableHeadRow.append(el);
+      });
+
+      data.forEach((item) => {
+        const el = document.createElement('tr');
+        Object.values(item).forEach((x) => {
+          const elInner = document.createElement('td');
+          elInner.innerText = x;
+          el.append(elInner);
+        });
+        tableBody.append(el);
       });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
