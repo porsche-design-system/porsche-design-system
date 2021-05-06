@@ -1,14 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
 import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, getPrefixedTagNames, parseJSON } from '../../../utils';
-
-export type HeadItem = {
-  key: string;
-  name: string;
-  isSortable: boolean;
-  isSorting: boolean;
-  direction: 'asc' | 'desc';
-};
+import type { HeadItem } from './table-utils';
+import { getAriaSort, toggleDirection } from './table-utils';
 
 @Component({
   tag: 'p-table-generics',
@@ -53,6 +47,8 @@ export class TableGenerics {
             {this.headItems.map(({ name, isSortable, direction, isSorting }) => (
               <th
                 scope="col"
+                role="columnheader"
+                aria-sort={getAriaSort(isSortable, direction)}
                 class={{ ['sortable']: isSortable, [`sortable--${direction}`]: true, ['sortable--active']: isSorting }}
               >
                 {name}
@@ -74,8 +70,13 @@ export class TableGenerics {
   public onHeadClick = (e: MouseEvent): void => {
     const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
     const headItem = this.headItems[cellIndex];
+
     if (headItem.isSortable) {
-      this.headClick.emit({ ...headItem, isSorting: true, direction: headItem.direction === 'asc' ? 'desc' : 'asc' });
+      this.headClick.emit({
+        ...headItem,
+        isSorting: true,
+        direction: toggleDirection(headItem.direction),
+      });
     }
   };
 
