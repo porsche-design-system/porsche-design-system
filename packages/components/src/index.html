@@ -121,6 +121,12 @@
       tableGenerics.setAttribute('head', JSON.stringify(head));
       tableGenerics.setAttribute('data', JSON.stringify(data));
       tableGenerics.renderRow = renderRow;
+      tableGenerics.addEventListener('headClick', (e) => {
+        console.log('headClick', e.detail);
+      });
+      tableGenerics.addEventListener('rowClick', (e) => {
+        console.log('rowClick', e.detail);
+      });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
