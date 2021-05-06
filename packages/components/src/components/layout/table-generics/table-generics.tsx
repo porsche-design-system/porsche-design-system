@@ -71,7 +71,7 @@ export class TableGenerics {
     const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
     const headItem = this.headItems[cellIndex];
     if (headItem.isSortable) {
-      this.headClick.emit(headItem);
+      this.headClick.emit({ ...headItem, direction: headItem.direction === 'asc' ? 'desc' : 'asc' });
     }
   };
 

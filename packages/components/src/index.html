@@ -90,15 +90,15 @@
         },
       ];
       const renderRow = ({ imageUrl, firstName, lastName, company, phoneNumber, dateOfBirth, location }) => `
-<tr>
-  <td><a href="#${firstName}"><img src="${imageUrl}" width="80px"></a></td>
-  <td><a href="#${firstName}">${firstName}</a></td>
-  <td><a href="#${firstName}">${lastName}</a></td>
-  <td><a href="#${firstName}">${company}</a></td>
-  <td><a href="#${firstName}"># ${phoneNumber}</a></td>
-  <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
-  <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
-</tr>`;
+      <tr>
+        <td><a href="#${firstName}"><img src="${imageUrl}" width="80px"></a></td>
+        <td><a href="#${firstName}">${firstName}</a></td>
+        <td><a href="#${firstName}">${lastName}</a></td>
+        <td><a href="#${firstName}">${company}</a></td>
+        <td><a href="#${firstName}"># ${phoneNumber}</a></td>
+        <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
+        <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
+      </tr>`;
 
       const table = document.querySelector('p-table');
       const table2 = document.querySelector('p-table-two');
@@ -123,12 +123,20 @@
       tableGenerics.setAttribute('head', JSON.stringify(headSortable));
       tableGenerics.setAttribute('data', JSON.stringify(data));
       tableGenerics.renderRow = renderRow;
+
       tableGenerics.addEventListener('headClick', (e) => {
         console.log('headClick', e.detail);
-        const { key } = e.detail;
-        const dataSorted = data.sort((a, b) => a[key].localeCompare(b[key]));
-        e.target.setAttribute('data', JSON.stringify(dataSorted));
+        const { key, direction } = e.detail;
+        data.sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])));
+        headSortable.splice(
+          headSortable.findIndex((x) => x.key === key),
+          1,
+          e.detail
+        );
+        e.target.data = [...data];
+        e.target.head = [...headSortable];
       });
+
       tableGenerics.addEventListener('rowClick', (e) => {
         console.log('rowClick', e.detail);
       });
