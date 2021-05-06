@@ -64,7 +64,6 @@ export class AppComponent {
   ];
 
   renderRow = ({ firstName, lastName, company, phoneNumber, dateOfBirth, location }: any): string => {
-    console.log('renderRow');
     return `<tr>
       <td>${firstName}</td>
       <td>${lastName}</td>
