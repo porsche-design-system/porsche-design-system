@@ -14,10 +14,15 @@ thead tr {
   border-bottom: 1px solid black;
 }
 
-td {
-  padding: 2px;
-}
-
 tr:nth-child(even) {
   background: lightgray;
+}
+
+th,
+td {
+  padding: 5px;
+}
+
+th {
+  text-align: left;
 }
