@@ -138,7 +138,7 @@ You can find an implemented example in our [Sample VanillaJS Integration](https:
 Porsche Design System icons are loaded dynamically from a CDN as soon as they are used for the first time.  
 This results in a waterfall like loading behaviour where your application is bootstrapped first, then loads the Porsche Design System Core and when any icon is rendered the corresponding icon is loaded afterwards.  
 This can be optimized by prefetching used icons in parallel while the application is being bootstrapped.
-Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there.
+Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there. [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getIconLinks()` which needs to be imported into the `<head>` of your `index.html`.
 
