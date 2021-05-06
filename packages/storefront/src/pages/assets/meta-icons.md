@@ -46,13 +46,15 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ``` 
 
 ```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ```
+
+You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 
 <script lang="ts">

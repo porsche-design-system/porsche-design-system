@@ -5,6 +5,7 @@ import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetP
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
+import { generateIconLinksPartial } from './generateIconLinksPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 
 const generateSharedCode = (): string => {
@@ -24,6 +25,7 @@ const generatePartials = async (): Promise<void> => {
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),
     generateMetaTagsAndIconLinksPartial(),
+    generateIconLinksPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
