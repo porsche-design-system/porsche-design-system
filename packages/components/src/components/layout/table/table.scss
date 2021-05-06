@@ -17,12 +17,14 @@ thead {
   border-bottom: 1px solid black;
 }
 
-tbody tr:hover a {
-  background: coral;
-}
+tbody tr {
+  &:hover a {
+    background: coral;
+  }
 
-tr:nth-child(even) {
-  background: lightgray;
+  &:nth-child(even) {
+    background: lightgray;
+  }
 }
 
 th,
@@ -50,4 +52,20 @@ td {
 
 img {
   vertical-align: middle;
+}
+
+.sortable {
+  cursor: pointer;
+
+  &:hover {
+    color: gray;
+  }
+}
+
+.sorting {
+  margin-left: 3px;
+
+  *:last-child {
+    margin-left: -12px;
+  }
 }

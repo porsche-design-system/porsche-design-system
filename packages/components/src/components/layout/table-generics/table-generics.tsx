@@ -1,6 +1,12 @@
-import { Component, Event, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
 import type { GenericObject } from '../../../types';
-import { getClosestHTMLElement, parseJSON } from '../../../utils';
+import { getClosestHTMLElement, getPrefixedTagNames, parseJSON } from '../../../utils';
+
+export type HeadItem = {
+  name: string;
+  isSortable: boolean;
+  direction: 'asc' | 'desc';
+};
 
 @Component({
   tag: 'p-table-generics',
@@ -8,15 +14,16 @@ import { getClosestHTMLElement, parseJSON } from '../../../utils';
   shadow: true,
 })
 export class TableGenerics {
-  @Prop() public head?: string | string[] = [];
+  @Element() public host!: HTMLElement;
+  @Prop() public head?: string | HeadItem[] = [];
   @Prop() public data?: string | GenericObject[] = [];
   @Prop() public renderRow: (item: GenericObject) => string = () => '';
 
-  @Event({ bubbles: false }) public headClick: EventEmitter<string>;
+  @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
   @Event({ bubbles: false }) public rowClick: EventEmitter<GenericObject>;
 
-  @State() private headItems: string[] = [];
-  @State() private dataItems: GenericObject[] = [];
+  private headItems: HeadItem[] = [];
+  private dataItems: GenericObject[] = [];
 
   @Watch('head')
   watchHead(newValue: string) {
@@ -36,12 +43,21 @@ export class TableGenerics {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <table>
         <thead onClick={this.onHeadClick}>
           <tr>
-            {this.headItems.map((x) => (
-              <th scope="col">{x}</th>
+            {this.headItems.map(({ name, isSortable }) => (
+              <th scope="col" class={isSortable ? 'sortable' : ''}>
+                {name}
+                {isSortable && (
+                  <span class="sorting">
+                    <PrefixedTagNames.pIcon color="inherit" name="arrow-up" />
+                    <PrefixedTagNames.pIcon color="inherit" name="arrow-down" />
+                  </span>
+                )}
+              </th>
             ))}
           </tr>
         </thead>
@@ -52,11 +68,14 @@ export class TableGenerics {
 
   public onHeadClick = (e: MouseEvent): void => {
     const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
-    this.headClick.emit(this.headItems[cellIndex]);
+    const headItem = this.headItems[cellIndex];
+    if (headItem.isSortable) {
+      this.headClick.emit(headItem);
+    }
   };
 
   public onBodyClick = (e: MouseEvent): void => {
     const { rowIndex } = getClosestHTMLElement(e.target as HTMLElement, 'tr');
-    this.rowClick.emit(this.dataItems[rowIndex - 1]);
+    this.rowClick.emit(this.dataItems[rowIndex - 1]); // compensate row in thead
   };
 }
