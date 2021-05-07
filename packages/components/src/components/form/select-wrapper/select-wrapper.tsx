@@ -86,7 +86,7 @@ export class SelectWrapper {
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
-    observeProperties(this.select, ['value'], this.setOptionList);
+    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
   }
 
   public componentDidLoad(): void {
