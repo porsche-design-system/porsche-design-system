@@ -167,7 +167,11 @@ export const getProperty = async (element: ElementHandle, prop: string): Promise
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
-export const setProperty = async (element: ElementHandle, key: string, value: string | boolean): Promise<void> => {
+export const setProperty = async (
+  element: ElementHandle,
+  key: string,
+  value: string | boolean | number
+): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 

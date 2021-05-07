@@ -75,6 +75,8 @@ describe('select-wrapper fake-dropdown', () => {
   });
 
   describe('custom drop down', () => {
+    const selectedClass = 'p-select-wrapper__fake-option--selected';
+
     it('should render', async () => {
       await setContentWithDesignSystem(
         page,
@@ -299,23 +301,29 @@ describe('select-wrapper fake-dropdown', () => {
     });
 
     it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
+      await initSelect();
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
       const fakeOptionA = await getFakeOptionInPosOne();
       const fakeOptionB = await getFakeOptionInPosTwo();
-      const selectedClass = 'p-select-wrapper__fake-option--selected';
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await select.evaluate((el: HTMLSelectElement) => el.options[1].setAttribute('selected', 'selected'));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+    });
+
+    it('should synchronize fake option and native select if selected value property is changed programmatically', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const fakeOptionList = await getFakeOptionList();
+      const fakeOptionA = await getFakeOptionInPosOne();
+      const fakeOptionB = await getFakeOptionInPosTwo();
 
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
@@ -328,22 +336,29 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
     });
 
+    it('should synchronize fake option and native select if selectedIndex property is changed programmatically', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const fakeOptionList = await getFakeOptionList();
+      const fakeOptionA = await getFakeOptionInPosOne();
+      const fakeOptionB = await getFakeOptionInPosTwo();
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await setProperty(select, 'selectedIndex', 1);
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+    });
+
     it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
       /**
        * This test is for Browser specific behaviour which does not reflect the "selected" property as attribute and will therefore not be observed by the MutationObserver
        */
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
+      await initSelect();
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
       const fakeOptionA = await getFakeOptionInPosOne();
