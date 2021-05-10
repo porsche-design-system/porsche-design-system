@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { insertSlottedStyles } from '../../../utils';
+import { insertSlottedStyles, throwIfElementHasAttribute } from '../../../utils';
 import { TableHead } from './table-head';
 import { getSlottedCss, HeadItem } from '../table-generics/table-utils';
 
@@ -10,7 +10,7 @@ import { getSlottedCss, HeadItem } from '../table-generics/table-utils';
 })
 export class TableWrapperBody {
   @Element() public host!: HTMLElement;
-  @Prop() public head?: string | HeadItem[] = [];
+  @Prop() public head?: HeadItem[] = [];
 
   @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
 
@@ -18,10 +18,14 @@ export class TableWrapperBody {
     this.addSlottedStyles();
   }
 
+  public componentWillRender(): void {
+    throwIfElementHasAttribute(this.host, 'head');
+  }
+
   public render(): JSX.Element {
     return (
       <table>
-        <TableHead head={this.head as HeadItem[]} onHeadClick={this.headClick.emit} />
+        <TableHead head={this.head} onHeadClick={this.headClick.emit} />
         <tbody>
           <slot />
         </tbody>

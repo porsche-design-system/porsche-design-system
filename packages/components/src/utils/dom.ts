@@ -50,6 +50,10 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
+export const hasAttribute = (el: HTMLElement, attributeName: string): boolean => {
+  return el.hasAttribute(attributeName);
+};
+
 export type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
 
 export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
@@ -84,6 +88,12 @@ export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCame
   const prefixedTagName = getPrefixedTagNames(host)[tagName];
   if (getTagName(host.parentElement) !== prefixedTagName) {
     throw new Error(`Parent HTMLElement should be of kind ${prefixedTagName}.`);
+  }
+};
+
+export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
+  if (hasAttribute(el, name)) {
+    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs be set via property.`);
   }
 };
 

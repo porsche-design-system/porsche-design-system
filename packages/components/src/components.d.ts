@@ -645,8 +645,8 @@ export namespace Components {
         "head"?: string[];
     }
     interface PTableGenerics {
-        "data"?: string | GenericObject[];
-        "head"?: string | HeadItem[];
+        "data"?: GenericObject[];
+        "head"?: HeadItem[];
         "renderRow"?: (item: GenericObject) => string;
     }
     interface PTableThree {
@@ -661,7 +661,7 @@ export namespace Components {
     interface PTableWrapper {
     }
     interface PTableWrapperBody {
-        "head"?: string | HeadItem[];
+        "head"?: HeadItem[];
     }
     interface PTabs {
         /**
@@ -1717,8 +1717,8 @@ declare namespace LocalJSX {
         "head"?: string[];
     }
     interface PTableGenerics {
-        "data"?: string | GenericObject[];
-        "head"?: string | HeadItem[];
+        "data"?: GenericObject[];
+        "head"?: HeadItem[];
         "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
         "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
         "renderRow"?: (item: GenericObject) => string;
@@ -1735,7 +1735,7 @@ declare namespace LocalJSX {
     interface PTableWrapper {
     }
     interface PTableWrapperBody {
-        "head"?: string | HeadItem[];
+        "head"?: HeadItem[];
         "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
     }
     interface PTabs {
