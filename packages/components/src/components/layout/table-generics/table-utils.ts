@@ -1,3 +1,5 @@
+import type { AriaAttributes } from 'react';
+
 export type Direction = 'asc' | 'desc';
 
 export type HeadItem = {
@@ -12,5 +14,5 @@ export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
-export const getAriaSort = (isSortable: boolean, dir: Direction): string =>
+export const getAriaSort = (isSortable: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
   isSortable ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
