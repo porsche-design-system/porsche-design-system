@@ -660,6 +660,9 @@ export namespace Components {
     }
     interface PTableWrapper {
     }
+    interface PTableWrapperBody {
+        "head"?: string[];
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -976,6 +979,12 @@ declare global {
         prototype: HTMLPTableWrapperElement;
         new (): HTMLPTableWrapperElement;
     };
+    interface HTMLPTableWrapperBodyElement extends Components.PTableWrapperBody, HTMLStencilElement {
+    }
+    var HTMLPTableWrapperBodyElement: {
+        prototype: HTMLPTableWrapperBodyElement;
+        new (): HTMLPTableWrapperBodyElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -1054,6 +1063,7 @@ declare global {
         "p-table-three": HTMLPTableThreeElement;
         "p-table-two": HTMLPTableTwoElement;
         "p-table-wrapper": HTMLPTableWrapperElement;
+        "p-table-wrapper-body": HTMLPTableWrapperBodyElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1724,6 +1734,9 @@ declare namespace LocalJSX {
     }
     interface PTableWrapper {
     }
+    interface PTableWrapperBody {
+        "head"?: string[];
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1902,6 +1915,7 @@ declare namespace LocalJSX {
         "p-table-three": PTableThree;
         "p-table-two": PTableTwo;
         "p-table-wrapper": PTableWrapper;
+        "p-table-wrapper-body": PTableWrapperBody;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1945,6 +1959,7 @@ declare module "@stencil/core" {
             "p-table-three": LocalJSX.PTableThree & JSXBase.HTMLAttributes<HTMLPTableThreeElement>;
             "p-table-two": LocalJSX.PTableTwo & JSXBase.HTMLAttributes<HTMLPTableTwoElement>;
             "p-table-wrapper": LocalJSX.PTableWrapper & JSXBase.HTMLAttributes<HTMLPTableWrapperElement>;
+            "p-table-wrapper-body": LocalJSX.PTableWrapperBody & JSXBase.HTMLAttributes<HTMLPTableWrapperBodyElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
