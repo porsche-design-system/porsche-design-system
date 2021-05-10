@@ -47,7 +47,7 @@ export class InputParser {
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
       // remove dev only type
-      .replace(/.*export declare type GenericObject = object;/, '');
+      .replace(/.*export declare type GenericObject = Record<string, unknown>;/, '');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
     this.rawLocalJSX = rawLocalJSX;

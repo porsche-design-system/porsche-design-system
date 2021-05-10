@@ -18,7 +18,7 @@ export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(di
 export const getAriaSort = (isSortable: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
   isSortable ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
 
-export const throwIfNotArray = (param: any): void => {
+export const throwIfNotArray = (param: unknown): void => {
   if (!Array.isArray(param)) {
     throw new Error(`Supplied property should be of type 'array' but was '${typeof param}' instead: ${param}`);
   }

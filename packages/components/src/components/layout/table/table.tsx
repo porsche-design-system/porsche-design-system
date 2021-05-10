@@ -1,4 +1,5 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
+import type { AnyObject } from '../../../types';
 
 @Component({
   tag: 'p-table',
@@ -7,7 +8,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 })
 export class Table {
   @Prop() public head?: string[] = [];
-  @Prop() public data?: object[] = [];
+  @Prop() public data?: AnyObject[] = [];
 
   public componentWillRender(): void {
     const [firstItem] = this.data;
