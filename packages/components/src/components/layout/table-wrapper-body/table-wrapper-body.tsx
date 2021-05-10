@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import { getTagName, insertSlottedStyles } from '../../../utils';
-import { TableHeadFunctional } from './table-head-functional';
+import { TableHead } from './table-head';
 import { HeadItem } from '../table-generics/table-utils';
 
 @Component({
@@ -21,7 +21,7 @@ export class TableWrapperBody {
   public render(): JSX.Element {
     return (
       <table>
-        <TableHeadFunctional head={this.head as HeadItem[]} onHeadClick={this.headClick.emit} />
+        <TableHead head={this.head as HeadItem[]} onHeadClick={this.headClick.emit} />
         <tbody>
           <slot />
         </tbody>

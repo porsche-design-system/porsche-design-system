@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX } from '@stencil/core';
+import { Component, Element, h, JSX } from '@stencil/core';
 import { getTagName, insertSlottedStyles } from '../../../utils';
 
 @Component({
@@ -14,11 +14,7 @@ export class TableWrapper {
   }
 
   public render(): JSX.Element {
-    return (
-      <Host>
-        <slot />
-      </Host>
-    );
+    return <slot />;
   }
 
   private addSlottedStyles(): void {

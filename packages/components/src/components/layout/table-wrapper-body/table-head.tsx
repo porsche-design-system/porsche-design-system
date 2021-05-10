@@ -7,7 +7,7 @@ type Props = {
   onHeadClick: (item: HeadItem) => void;
 };
 
-export const TableHeadFunctional: FunctionalComponent<Props> = ({ head = [], onHeadClick }) => {
+export const TableHead: FunctionalComponent<Props> = ({ head = [], onHeadClick }) => {
   const onClick = (headItem: HeadItem): void => {
     if (headItem.isSortable) {
       onHeadClick({
