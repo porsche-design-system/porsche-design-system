@@ -12,9 +12,10 @@ const generateTagNames = (): void => {
     .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension
     .map((file) => {
       const fileContent = fs.readFileSync(file, 'utf8');
-      const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);
+      const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent) || []; // functional components don't match here
       return tag;
     })
+    .filter((x) => x) // filter out undefined values
     .sort();
 
   const content = `export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}] as const;
