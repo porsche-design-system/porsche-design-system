@@ -1,5 +1,7 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, getTagName, insertSlottedStyles } from '../../../utils';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
+import { getTagName, insertSlottedStyles } from '../../../utils';
+import { TableHeadFunctional } from '../table-head/table-head-functional';
+import { HeadItem, toggleDirection } from '../table-generics/table-utils';
 
 @Component({
   tag: 'p-table-wrapper-body',
@@ -8,23 +10,34 @@ import { getPrefixedTagNames, getTagName, insertSlottedStyles } from '../../../u
 })
 export class TableWrapperBody {
   @Element() public host!: HTMLElement;
-  @Prop() public head?: string[] = [];
+  @Prop() public head?: string | HeadItem[] = [];
+
+  @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
 
   public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
   public render(): JSX.Element {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <table>
-        <PrefixedTagNames.pTableHead head={this.head} />
+        <TableHeadFunctional head={this.head as HeadItem[]} onHeadClick={this.onHeadClick} />
         <tbody>
           <slot />
         </tbody>
       </table>
     );
   }
+
+  private onHeadClick = (headItem: HeadItem): void => {
+    if (headItem.isSortable) {
+      this.headClick.emit({
+        ...headItem,
+        isSorting: true,
+        direction: toggleDirection(headItem.direction),
+      });
+    }
+  };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
