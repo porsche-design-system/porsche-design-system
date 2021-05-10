@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/
 import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, parseJSON } from '../../../utils';
 import type { HeadItem } from './table-utils';
-import { TableHeadFunctional } from '../table-wrapper-body/table-head-functional';
+import { TableHead } from '../table-wrapper-body/table-head';
 
 @Component({
   tag: 'p-table-generics',
@@ -26,10 +26,7 @@ export class TableGenerics {
 
     return (
       <table>
-        <TableHeadFunctional
-          head={(parseJSON(this.head as string) as unknown) as HeadItem[]}
-          onHeadClick={this.headClick.emit}
-        />
+        <TableHead head={(parseJSON(this.head as string) as unknown) as HeadItem[]} onHeadClick={this.headClick.emit} />
         <tbody onClick={this.onBodyClick} innerHTML={this.dataItems.map(this.renderRow).join('')} />
       </table>
     );
