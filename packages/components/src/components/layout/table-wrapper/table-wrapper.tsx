@@ -24,7 +24,7 @@ export class TableWrapper {
       border-bottom: 1px solid black;
     }
     ${tagName} tbody tr:nth-child(even) {
-      background: lightgray
+      background: lightgray;
     }
     ${tagName} th, ${tagName} td {
       padding: 5px;

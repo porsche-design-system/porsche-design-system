@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { getTagName, insertSlottedStyles } from '../../../utils';
+import { insertSlottedStyles } from '../../../utils';
 import { TableHead } from './table-head';
-import { HeadItem } from '../table-generics/table-utils';
+import { getSlottedCss, HeadItem } from '../table-generics/table-utils';
 
 @Component({
   tag: 'p-table-wrapper-body',
@@ -30,17 +30,6 @@ export class TableWrapperBody {
   }
 
   private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `
-    ${tagName} tr:nth-child(even) {
-      background: lightgray
-    }
-    ${tagName} td {
-      padding: 5px;
-      vertical-align: top;
-      overflow: hidden;
-    }`;
-
-    insertSlottedStyles(this.host, style);
+    insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 }
