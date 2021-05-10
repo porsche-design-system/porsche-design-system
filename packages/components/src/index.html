@@ -133,8 +133,6 @@
       table3.head = head;
       table3.data = data;
 
-      tableWrapperBody.head = head;
-
       const dataKeys = Object.keys(data[0]);
       const headSortable = head.map((name, i) => ({ key: dataKeys[i], name, isSortable: i > 0, direction: 'asc' }));
 
@@ -182,6 +180,8 @@
         tableBody.append(el);
         tableWrapperBody.append(el.cloneNode(true));
       });
+
+      tableWrapperBody.head = headSortable;
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {

@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getTagName, insertSlottedStyles } from '../../../utils';
+import { getPrefixedTagNames, getTagName, insertSlottedStyles } from '../../../utils';
 
 @Component({
   tag: 'p-table-wrapper-body',
@@ -15,15 +15,10 @@ export class TableWrapperBody {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <table>
-        <thead>
-          <tr>
-            {this.head.map((x) => (
-              <th>{x}</th>
-            ))}
-          </tr>
-        </thead>
+        <PrefixedTagNames.pTableHead head={this.head} />
         <tbody>
           <slot />
         </tbody>

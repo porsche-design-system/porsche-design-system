@@ -649,6 +649,9 @@ export namespace Components {
         "head"?: string | HeadItem[];
         "renderRow": (item: GenericObject) => string;
     }
+    interface PTableHead {
+        "head"?: string | HeadItem[];
+    }
     interface PTableThree {
         "data"?: object[];
         "head"?: string[];
@@ -961,6 +964,12 @@ declare global {
         prototype: HTMLPTableGenericsElement;
         new (): HTMLPTableGenericsElement;
     };
+    interface HTMLPTableHeadElement extends Components.PTableHead, HTMLStencilElement {
+    }
+    var HTMLPTableHeadElement: {
+        prototype: HTMLPTableHeadElement;
+        new (): HTMLPTableHeadElement;
+    };
     interface HTMLPTableThreeElement extends Components.PTableThree, HTMLStencilElement {
     }
     var HTMLPTableThreeElement: {
@@ -1060,6 +1069,7 @@ declare global {
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
         "p-table-generics": HTMLPTableGenericsElement;
+        "p-table-head": HTMLPTableHeadElement;
         "p-table-three": HTMLPTableThreeElement;
         "p-table-two": HTMLPTableTwoElement;
         "p-table-wrapper": HTMLPTableWrapperElement;
@@ -1723,6 +1733,10 @@ declare namespace LocalJSX {
         "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
         "renderRow"?: (item: GenericObject) => string;
     }
+    interface PTableHead {
+        "head"?: string | HeadItem[];
+        "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
+    }
     interface PTableThree {
         "data"?: object[];
         "head"?: string[];
@@ -1912,6 +1926,7 @@ declare namespace LocalJSX {
         "p-switch": PSwitch;
         "p-table": PTable;
         "p-table-generics": PTableGenerics;
+        "p-table-head": PTableHead;
         "p-table-three": PTableThree;
         "p-table-two": PTableTwo;
         "p-table-wrapper": PTableWrapper;
@@ -1956,6 +1971,7 @@ declare module "@stencil/core" {
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-table-generics": LocalJSX.PTableGenerics & JSXBase.HTMLAttributes<HTMLPTableGenericsElement>;
+            "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
             "p-table-three": LocalJSX.PTableThree & JSXBase.HTMLAttributes<HTMLPTableThreeElement>;
             "p-table-two": LocalJSX.PTableTwo & JSXBase.HTMLAttributes<HTMLPTableTwoElement>;
             "p-table-wrapper": LocalJSX.PTableWrapper & JSXBase.HTMLAttributes<HTMLPTableWrapperElement>;
