@@ -1,5 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core';
-import { getAriaSort, HeadItem } from '../table-generics/table-utils';
+import type { HeadItem } from '../table-generics/table-utils';
+import { getAriaSort, toggleDirection } from '../table-generics/table-utils';
 
 type Props = {
   head: HeadItem[];
@@ -7,6 +8,16 @@ type Props = {
 };
 
 export const TableHeadFunctional: FunctionalComponent<Props> = ({ head = [], onHeadClick }) => {
+  const onClick = (headItem: HeadItem): void => {
+    if (headItem.isSortable) {
+      onHeadClick({
+        ...headItem,
+        isSorting: true,
+        direction: toggleDirection(headItem.direction),
+      });
+    }
+  };
+
   return (
     <thead>
       <tr>
@@ -18,7 +29,7 @@ export const TableHeadFunctional: FunctionalComponent<Props> = ({ head = [], onH
               scope="col"
               role="columnheader"
               aria-sort={getAriaSort(isSortable, direction)}
-              onClick={() => onHeadClick(item)}
+              onClick={() => onClick(item)}
             >
               {name}
               {isSortable && (
