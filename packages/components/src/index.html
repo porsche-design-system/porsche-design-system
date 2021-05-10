@@ -136,10 +136,10 @@
       const dataKeys = Object.keys(data[0]);
       const headSortable = head.map((name, i) => ({ key: dataKeys[i], name, isSortable: i > 0, direction: 'asc' }));
 
-      // tableGenerics.head = headSortable;
-      // tableGenerics.data = data;
-      tableGenerics.setAttribute('head', JSON.stringify(headSortable));
-      tableGenerics.setAttribute('data', JSON.stringify(data));
+      tableGenerics.head = headSortable;
+      tableGenerics.data = data;
+      // tableGenerics.setAttribute('head', JSON.stringify(headSortable));
+      // tableGenerics.setAttribute('data', JSON.stringify(data));
       tableGenerics.renderRow = renderRow;
 
       tableGenerics.addEventListener('headClick', (e) => {
