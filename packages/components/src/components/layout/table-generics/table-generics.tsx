@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/
 import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, getPrefixedTagNames, parseJSON } from '../../../utils';
 import type { HeadItem } from './table-utils';
-import { getAriaSort, toggleDirection } from './table-utils';
 
 @Component({
   tag: 'p-table-generics',
@@ -19,53 +18,25 @@ export class TableGenerics {
   @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
   @Event({ bubbles: false }) public rowClick: EventEmitter<GenericObject>;
 
-  private headItems: HeadItem[] = [];
   private dataItems: GenericObject[] = [];
 
   public render(): JSX.Element {
     this.dataItems = parseJSON(this.data as string) as any;
-    this.headItems = parseJSON(this.head as string) as any;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <table>
-        <thead onClick={this.onHeadClick}>
-          <tr>
-            {this.headItems.map(({ name, isSortable, direction, isSorting }) => (
-              <th
-                scope="col"
-                role="columnheader"
-                aria-sort={getAriaSort(isSortable, direction)}
-                class={{ ['sortable']: isSortable, [`sortable--${direction}`]: true, ['sortable--active']: isSorting }}
-              >
-                {name}
-                {isSortable && (
-                  <span class="sorting">
-                    <PrefixedTagNames.pIcon color="inherit" name="arrow-up" />
-                    <PrefixedTagNames.pIcon color="inherit" name="arrow-down" />
-                  </span>
-                )}
-              </th>
-            ))}
-          </tr>
-        </thead>
+        <PrefixedTagNames.pTableHead
+          head={this.head}
+          onHeadClick={(e) => {
+            e.stopPropagation();
+            this.headClick.emit(e.detail);
+          }}
+        />
         <tbody onClick={this.onBodyClick} innerHTML={this.dataItems.map(this.renderRow).join('')} />
       </table>
     );
   }
-
-  public onHeadClick = (e: MouseEvent): void => {
-    const { cellIndex } = getClosestHTMLElement(e.target as HTMLElement, 'th');
-    const headItem = this.headItems[cellIndex];
-
-    if (headItem.isSortable) {
-      this.headClick.emit({
-        ...headItem,
-        isSorting: true,
-        direction: toggleDirection(headItem.direction),
-      });
-    }
-  };
 
   public onBodyClick = (e: MouseEvent): void => {
     const { rowIndex } = getClosestHTMLElement(e.target as HTMLElement, 'tr');
