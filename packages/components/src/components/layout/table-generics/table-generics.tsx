@@ -14,11 +14,13 @@ export class TableGenerics {
 
   @Prop() public head?: string | HeadItem[] = [];
   @Prop() public data?: string | GenericObject[] = [];
-  @Prop() public renderRow: (item: GenericObject) => string = () => '';
+  @Prop() public renderRow?: (item: GenericObject) => string = () => '';
 
+  /* eslint-disable-next-line @typescript-eslint/member-ordering */
   @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
+  /* eslint-disable-next-line @typescript-eslint/member-ordering */
   @Event({ bubbles: false }) public rowClick: EventEmitter<GenericObject>;
-
+  /* eslint-disable-next-line @typescript-eslint/member-ordering */
   private dataItems: GenericObject[] = [];
 
   public render(): JSX.Element {
@@ -32,7 +34,7 @@ export class TableGenerics {
     );
   }
 
-  public onBodyClick = (e: MouseEvent): void => {
+  private onBodyClick = (e: MouseEvent): void => {
     const { rowIndex } = getClosestHTMLElement(e.target as HTMLElement, 'tr');
     this.rowClick.emit(this.dataItems[rowIndex - 1]); // compensate row in thead
   };

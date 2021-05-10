@@ -1,5 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { getHTMLElement } from '../../../utils';
+import type { AnyObject } from '../../../types';
 
 @Component({
   tag: 'p-table-three',
@@ -9,7 +10,8 @@ import { getHTMLElement } from '../../../utils';
 export class TableThree {
   @Element() public host!: HTMLElement;
   @Prop() public head?: string[] = [];
-  @Prop() public data?: object[] = [];
+  @Prop() public data?: AnyObject[] = [];
+
   private body: HTMLTableSectionElement;
 
   public componentDidRender(): void {
@@ -26,7 +28,7 @@ export class TableThree {
             ))}
           </tr>
         </thead>
-        {/*<tbody innerHTML={this.tableContent} />*/}
+        {/* <tbody innerHTML={this.tableContent} /> */}
         <tbody ref={(el) => (this.body = el)} />
       </table>
     );
@@ -36,11 +38,10 @@ export class TableThree {
     const { content } = getHTMLElement(this.host, 'template');
     return this.data.forEach((item) => {
       const clone = content.cloneNode(true);
-      // @ts-ignore
-      const trNode: HTMLTableRowElement = clone.querySelector('tr');
+      const trNode: HTMLTableRowElement = (clone as any).querySelector('tr');
       const tdNodes = trNode.children;
       Object.entries(item).forEach(([key, val], i) => {
-        tdNodes[i].innerHTML = tdNodes[i].innerHTML.replace(`\${${key}}`, val);
+        tdNodes[i].innerHTML = tdNodes[i].innerHTML.replace(`\${${key}}`, val as string);
       });
       this.body.appendChild(clone);
     });

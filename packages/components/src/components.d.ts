@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, GenericObject, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AnyObject, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, GenericObject, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -641,22 +641,22 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PTable {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
     }
     interface PTableGenerics {
         "data"?: string | GenericObject[];
         "head"?: string | HeadItem[];
-        "renderRow": (item: GenericObject) => string;
+        "renderRow"?: (item: GenericObject) => string;
     }
     interface PTableThree {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
     }
     interface PTableTwo {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
-        "renderRow": (item: object) => string;
+        "renderRow"?: (item: AnyObject) => string;
     }
     interface PTableWrapper {
     }
@@ -1713,7 +1713,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PTable {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
     }
     interface PTableGenerics {
@@ -1724,13 +1724,13 @@ declare namespace LocalJSX {
         "renderRow"?: (item: GenericObject) => string;
     }
     interface PTableThree {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
     }
     interface PTableTwo {
-        "data"?: object[];
+        "data"?: AnyObject[];
         "head"?: string[];
-        "renderRow"?: (item: object) => string;
+        "renderRow"?: (item: AnyObject) => string;
     }
     interface PTableWrapper {
     }
