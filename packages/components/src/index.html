@@ -182,6 +182,27 @@
       });
 
       tableWrapperBody.head = headSortable;
+      tableWrapperBody.addEventListener('headClick', (e) => {
+        console.log('headClick', e.detail);
+        const { key, direction } = e.detail;
+
+        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+
+        e.target.head = sortedHead;
+        e.target.innerHTML = '';
+
+        [...data]
+          .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
+          .forEach((item) => {
+            const el = document.createElement('tr');
+            Object.values(item).forEach((x) => {
+              const elInner = document.createElement('td');
+              elInner.innerText = x;
+              el.append(elInner);
+            });
+            e.target.append(el);
+          });
+      });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
