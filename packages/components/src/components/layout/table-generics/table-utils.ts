@@ -15,8 +15,8 @@ export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
-export const getAriaSort = (isSortable: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
-  isSortable ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
+export const getAriaSort = (isSortable: boolean, isSorting: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
+  isSortable && isSorting ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -25,12 +25,15 @@ export const getSlottedCss = (host: HTMLElement): string => {
         '& td': {
           display: 'table-cell !important',
           padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0 !important`,
-          verticalAlign: 'top !important',
+          verticalAlign: 'middle !important',
           '&:last-child': {
             paddingRight: '0 !important',
           },
         },
         '& td > *': {
+          verticalAlign: 'middle !important',
+        },
+        '& img': {
           verticalAlign: 'top !important',
         },
         '& mark': {

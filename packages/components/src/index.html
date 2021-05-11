@@ -16,84 +16,64 @@
     </style>
   </head>
   <body>
-    <!--
-    <p-headline>table-wrapper</p-headline>
-    <p-table-wrapper>
-      <table>
-        <thead></thead>
-        <tbody></tbody>
-      </table>
-    </p-table-wrapper>
-    -->
-
     <p-headline>table-wrapper-body</p-headline>
     <p-table-wrapper-body></p-table-wrapper-body>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const head = ['Image', 'First name', 'Last name', 'Company', 'Phone', 'Birthday', 'Location'];
+      const head = ['Model', 'Interest', 'VIN', 'Purchase Intention', 'Status', 'Lead ID', '', ''];
       const data = [
         {
-          // id: '202829625',
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
-          firstName: 'John',
-          lastName: 'Locke',
-          company: '',
-          phoneNumber: '123123121',
-          dateOfBirth: '1979-06-12',
-          location: 'Boston',
+          model: '911 Carrera S',
+          date: '03.05.2021',
+          interest: 'New Car',
+          vin: '-',
+          purchaseIntention: '08.2020',
+          status: 'Won',
+          leadId: '0000824405',
         },
         {
-          // id: '202829625',
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/taycan.jpg',
-          firstName: 'Matthias',
-          lastName: 'Kainer',
-          company: 'Company',
-          phoneNumber: '',
-          dateOfBirth: '1981-06-12',
-          location: 'Bretten',
+          model: '911 Carrera S',
+          date: '03.05.2021',
+          interest: 'New Car',
+          vin: '-',
+          purchaseIntention: '08.2020',
+          status: 'Won',
+          leadId: '0000824405',
         },
         {
-          // id: '202829625',
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
-          firstName: 'Jason',
-          lastName: 'Bourne',
-          company: '',
-          phoneNumber: '123123121',
-          dateOfBirth: '1980-06-12',
-          location: 'Berlin',
+          model: '911 Carrera S',
+          date: '03.05.2021',
+          interest: 'New Car',
+          vin: '-',
+          purchaseIntention: '08.2020',
+          status: 'Won',
+          leadId: '0000824405',
         },
         {
-          // id: '202829625',
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718.jpg',
-          firstName: 'Manni',
-          lastName: 'Frisch',
-          company: 'Company',
-          phoneNumber: '',
-          dateOfBirth: '1951-06-12',
-          location: 'Hamburg',
+          model: '911 Carrera S',
+          date: '03.05.2021',
+          interest: 'New Car',
+          vin: '-',
+          purchaseIntention: '08.2020',
+          status: 'Won',
+          leadId: '0000824405',
         },
         {
-          // id: '202829625',
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
-          firstName: 'Jim',
-          lastName: 'Bo',
-          company: '',
-          phoneNumber: '123123121',
-          dateOfBirth: '1975-06-12',
-          location: 'Köln',
+          model: '911 Carrera S',
+          date: '03.05.2021',
+          interest: 'New Car',
+          vin: '-',
+          purchaseIntention: '08.2020',
+          status: 'Won',
+          leadId: '0000824405',
         },
       ];
-      const renderRow = ({ imageUrl, firstName, lastName, company, phoneNumber, dateOfBirth, location }) => `
-      <tr>
-        <td><a href="#${firstName}"><img src="${imageUrl}" width="80px"></a></td>
-        <td><a href="#${firstName}">${firstName}</a></td>
-        <td><a href="#${firstName}">${lastName}</a></td>
-        <td><a href="#${firstName}">${company}</a></td>
-        <td><a href="#${firstName}">${phoneNumber ? `# ${phoneNumber}` : ''}</a></td>
-        <td><a href="#${firstName}">† ${dateOfBirth}</a></td>
-        <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
-      </tr>`;
 
       const tableWrapperBody = document.querySelector('p-table-wrapper-body');
 
@@ -101,37 +81,77 @@
       const headSortable = head.map((name, i) => ({
         key: dataKeys[i],
         name,
-        isSortable: i > 0,
-        isSorting: i === 1,
-        direction: 'asc',
+        ...(name && {
+          isSortable: i > 0,
+          isSorting: i === 1,
+          direction: 'asc',
+        }),
       }));
 
-      // const tableHead = document.querySelector('thead');
-      // const tableHeadRow = document.createElement('tr');
-      // tableHead.append(tableHeadRow);
-      // const tableBody = document.querySelector('tbody');
+      const renderRow = (item) => {
+        const el = document.createElement('tr');
 
-      // head.forEach((item) => {
-      //   const el = document.createElement('th');
-      //   el.innerText = item;
-      //   tableHeadRow.append(el);
-      // });
+        const firstTd = document.createElement('td');
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        img.style.marginRight = '5px';
+
+        const model = document.createElement('p-text');
+        model.weight = 'semibold';
+        model.innerText = item.model;
+
+        const date = document.createElement('p-text');
+        date.size = 'x-small';
+        date.innerText = item.date;
+
+        const flex = document.createElement('p-flex');
+        const flexItem1 = document.createElement('p-flex-item');
+        const flexItem2 = document.createElement('p-flex-item');
+
+        flexItem1.appendChild(img);
+        flexItem2.alignSelf = 'center';
+        flexItem2.appendChild(model);
+        flexItem2.appendChild(date);
+
+        flex.appendChild(flexItem1);
+        flex.appendChild(flexItem2);
+        firstTd.appendChild(flex);
+        el.appendChild(firstTd);
+
+        Object.values(item)
+          .slice(3)
+          .forEach((x) => {
+            const elInner = document.createElement('td');
+            elInner.innerText = x;
+            el.appendChild(elInner);
+          });
+
+        const editTd = document.createElement('td');
+        const editBtn = document.createElement('p-button-pure');
+        editBtn.icon = 'edit';
+        const editBtnSpan = document.createElement('span');
+        editBtnSpan.style.whiteSpace = 'nowrap';
+        editBtnSpan.innerText = 'Edit Lead';
+        editBtn.appendChild(editBtnSpan);
+        editTd.appendChild(editBtn);
+        el.appendChild(editTd);
+
+        const ctaTd = document.createElement('td');
+        const ctaBtn = document.createElement('p-button');
+        ctaBtn.variant = 'tertiary';
+        ctaBtn.icon = 'refresh';
+        const ctaBtnSpan = document.createElement('span');
+        ctaBtnSpan.style.whiteSpace = 'nowrap';
+        ctaBtnSpan.innerText = 'Overwrite';
+        ctaBtn.appendChild(ctaBtnSpan);
+        ctaTd.appendChild(ctaBtn);
+        el.appendChild(ctaTd);
+
+        return el;
+      };
 
       data.forEach((item) => {
-        const el = document.createElement('tr');
-        Object.values(item).forEach((x, i) => {
-          const elInner = document.createElement('td');
-          if (i === 0) {
-            const img = document.createElement('img');
-            img.src = x;
-            elInner.appendChild(img);
-          } else {
-            elInner.innerText = x;
-          }
-          el.append(elInner);
-        });
-        // tableBody.append(el);
-        tableWrapperBody.append(el.cloneNode(true));
+        tableWrapperBody.append(renderRow(item));
       });
 
       // tableWrapperBody.query = 'Ma';
@@ -147,20 +167,8 @@
 
         [...data]
           .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
-          .forEach((item, i) => {
-            const el = document.createElement('tr');
-            Object.values(item).forEach((x, i) => {
-              const elInner = document.createElement('td');
-              if (i === 0) {
-                const img = document.createElement('img');
-                img.src = x;
-                elInner.appendChild(img);
-              } else {
-                elInner.innerText = x;
-              }
-              el.appendChild(elInner);
-            });
-            e.target.appendChild(el);
+          .forEach((item) => {
+            e.target.appendChild(renderRow(item));
           });
       });
 
