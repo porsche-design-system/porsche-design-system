@@ -2,11 +2,11 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import type { AnyObject } from '../../../types';
 
 @Component({
-  tag: 'p-table',
+  tag: 'p-simple-table',
   styleUrl: 'table.scss',
   shadow: true,
 })
-export class Table {
+export class SimpleTable {
   @Prop() public head?: string[] = [];
   @Prop() public data?: AnyObject[] = [];
 

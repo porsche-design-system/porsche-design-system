@@ -3,7 +3,7 @@ import { getTagName, insertSlottedStyles } from '../../../utils';
 
 @Component({
   tag: 'p-table-wrapper',
-  styleUrl: '../table/table.scss',
+  styleUrl: '../simple-table/table.scss',
   shadow: true,
 })
 export class TableWrapper {

@@ -16,8 +16,10 @@
     </style>
   </head>
   <body>
-    <p-headline>table-wrapper-body</p-headline>
-    <p-table-wrapper-body></p-table-wrapper-body>
+    <p-table>
+      <p-table-head></p-table-head>
+      <p-table-body></p-table-body>
+    </p-table>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
@@ -84,7 +86,9 @@
         },
       ];
 
-      const tableWrapperBody = document.querySelector('p-table-wrapper-body');
+      const table = document.querySelector('p-table');
+      const tableHead = document.querySelector('p-table-head');
+      const tableBody = document.querySelector('p-table-body');
 
       const headSortable = head.map((item, i) => ({
         ...item,
@@ -95,10 +99,18 @@
         }),
       }));
 
-      const renderRow = (item) => {
-        const el = document.createElement('tr');
+      const tableHeadRow = document.createElement('p-table-row');
+      headSortable.forEach((item) => {
+        const el = document.createElement('p-table-cell');
+        el.innerText = item.name;
+        tableHeadRow.append(el);
+      });
+      tableHead.appendChild(tableHeadRow);
 
-        const firstTd = document.createElement('td');
+      const renderRow = (item) => {
+        const el = document.createElement('p-table-row');
+
+        const firstTd = document.createElement('p-table-cell');
         const img = document.createElement('img');
         img.src = item.imageUrl;
         img.width = 80;
@@ -129,12 +141,12 @@
         Object.values(item)
           .slice(3)
           .forEach((x) => {
-            const elInner = document.createElement('td');
+            const elInner = document.createElement('p-table-cell');
             elInner.innerText = x;
             el.appendChild(elInner);
           });
 
-        const editTd = document.createElement('td');
+        const editTd = document.createElement('p-table-cell');
         const editBtn = document.createElement('p-button-pure');
         editBtn.icon = 'edit';
         const editBtnSpan = document.createElement('span');
@@ -144,7 +156,7 @@
         editTd.appendChild(editBtn);
         el.appendChild(editTd);
 
-        const ctaTd = document.createElement('td');
+        const ctaTd = document.createElement('p-table-cell');
         const ctaBtn = document.createElement('p-button');
         ctaBtn.variant = 'tertiary';
         ctaBtn.icon = 'refresh';
@@ -159,26 +171,25 @@
       };
 
       data.forEach((item) => {
-        tableWrapperBody.append(renderRow(item));
+        tableBody.append(renderRow(item));
       });
 
-      // tableWrapperBody.query = 'Ma';
-      tableWrapperBody.head = headSortable;
-      tableWrapperBody.addEventListener('headClick', (e) => {
-        console.log('headClick', e.detail);
-        const { key, direction } = e.detail;
-
-        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
-
-        e.target.head = sortedHead;
-        Array.from(e.target.children).forEach((x) => x.remove());
-
-        [...data]
-          .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
-          .forEach((item) => {
-            e.target.appendChild(renderRow(item));
-          });
-      });
+      // table.query = 'Ma';
+      // table.addEventListener('headClick', (e) => {
+      //   console.log('headClick', e.detail);
+      //   const { key, direction } = e.detail;
+      //
+      //   const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+      //
+      //   e.target.head = sortedHead;
+      //   Array.from(e.target.children).forEach((x) => x.remove());
+      //
+      //   [...data]
+      //     .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
+      //     .forEach((item) => {
+      //       e.target.appendChild(renderRow(item));
+      //     });
+      // });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
