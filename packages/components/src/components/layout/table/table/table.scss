@@ -1,0 +1,11 @@
+@import '../../../../../../utilities/projects/utilities/scss';
+
+:host {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  @include p-text-small;
+  white-space: nowrap;
+  overflow: auto;
+}

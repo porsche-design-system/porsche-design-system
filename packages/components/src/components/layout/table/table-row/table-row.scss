@@ -1,0 +1,11 @@
+@import '../../../../../../utilities/projects/utilities/scss';
+
+:host {
+  display: table-row;
+  width: 100%;
+  border-bottom: 1px solid $p-color-neutral-contrast-medium;
+}
+
+:host(:first-child:last-child) {
+  border: 0;
+}

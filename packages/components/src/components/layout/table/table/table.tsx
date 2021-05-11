@@ -4,7 +4,7 @@ import { getSlottedCss, TableHeadItem } from '../table-utils';
 
 @Component({
   tag: 'p-table',
-  styleUrl: '../../simple-table/table.scss',
+  styleUrl: './table.scss',
   shadow: true,
 })
 export class Table {
