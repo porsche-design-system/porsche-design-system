@@ -33,9 +33,9 @@ th {
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
 }
 
-//::slotted(tr:nth-child(even)){
-//   background: 'lightgray',
-//}
+// ::slotted(tr:nth-child(even)) {
+//   background: lightgray;
+// }
 
 button {
   display: flex;
