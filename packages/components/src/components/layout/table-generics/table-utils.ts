@@ -30,6 +30,10 @@ export const getSlottedCss = (host: HTMLElement): string => {
           verticalAlign: 'top',
           overflow: 'hidden',
         },
+        '& mark': {
+          background: 'red',
+          fontWeight: 700,
+        },
       },
     })
   );

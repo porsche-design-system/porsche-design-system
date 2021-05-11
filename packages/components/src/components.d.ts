@@ -662,6 +662,7 @@ export namespace Components {
     }
     interface PTableWrapperBody {
         "head"?: HeadItem[];
+        "query"?: string;
     }
     interface PTabs {
         /**
@@ -1737,6 +1738,7 @@ declare namespace LocalJSX {
     interface PTableWrapperBody {
         "head"?: HeadItem[];
         "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
+        "query"?: string;
     }
     interface PTabs {
         /**

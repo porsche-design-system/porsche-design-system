@@ -27,6 +27,7 @@
     <p-headline>table-wrapper-body</p-headline>
     <p-table-wrapper-body></p-table-wrapper-body>
 
+    <!--
     <p-headline>table</p-headline>
     <p-table></p-table>
 
@@ -47,6 +48,7 @@
         </tr>
       </template>
     </p-table-three>
+    -->
 
     <p-headline>table-generics</p-headline>
     <p-table-generics></p-table-generics>
@@ -117,21 +119,21 @@
         <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
       </tr>`;
 
-      const table = document.querySelector('p-table');
-      const table2 = document.querySelector('p-table-two');
-      const table3 = document.querySelector('p-table-three');
+      // const table = document.querySelector('p-table');
+      // const table2 = document.querySelector('p-table-two');
+      // const table3 = document.querySelector('p-table-three');
       const tableGenerics = document.querySelector('p-table-generics');
       const tableWrapperBody = document.querySelector('p-table-wrapper-body');
 
-      table.head = head;
-      table.data = data;
-
-      table2.head = head;
-      table2.data = data;
-      table2.renderRow = renderRow;
-
-      table3.head = head;
-      table3.data = data;
+      // table.head = head;
+      // table.data = data;
+      //
+      // table2.head = head;
+      // table2.data = data;
+      // table2.renderRow = renderRow;
+      //
+      // table3.head = head;
+      // table3.data = data;
 
       const dataKeys = Object.keys(data[0]);
       const headSortable = head.map((name, i) => ({ key: dataKeys[i], name, isSortable: i > 0, direction: 'asc' }));
@@ -161,7 +163,7 @@
 
       const tableHead = document.querySelector('thead');
       const tableHeadRow = document.createElement('tr');
-      tableHead.appendChild(tableHeadRow);
+      tableHead.append(tableHeadRow);
       const tableBody = document.querySelector('tbody');
 
       head.forEach((item) => {
@@ -181,6 +183,7 @@
         tableWrapperBody.append(el.cloneNode(true));
       });
 
+      tableWrapperBody.query = 'Ma';
       tableWrapperBody.head = headSortable;
       tableWrapperBody.addEventListener('headClick', (e) => {
         console.log('headClick', e.detail);

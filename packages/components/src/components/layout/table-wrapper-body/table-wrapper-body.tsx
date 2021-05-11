@@ -11,6 +11,7 @@ import { getSlottedCss, HeadItem } from '../table-generics/table-utils';
 export class TableWrapperBody {
   @Element() public host!: HTMLElement;
   @Prop() public head?: HeadItem[] = [];
+  @Prop() public query?: string = '';
 
   @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
 
@@ -20,6 +21,12 @@ export class TableWrapperBody {
 
   public componentWillRender(): void {
     throwIfElementHasAttribute(this.host, 'head');
+
+    if (this.query) {
+      Array.from(this.host.children).forEach((tr) => {
+        tr.innerHTML = tr.innerHTML.replace(new RegExp(`(${this.query})`, 'gi'), '<mark>$1</mark>');
+      });
+    }
   }
 
   public render(): JSX.Element {
