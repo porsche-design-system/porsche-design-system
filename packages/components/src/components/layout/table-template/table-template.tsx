@@ -3,11 +3,11 @@ import { getHTMLElement } from '../../../utils';
 import type { AnyObject } from '../../../types';
 
 @Component({
-  tag: 'p-table-three',
-  styleUrl: '../table/table.scss',
+  tag: 'p-table-template',
+  styleUrl: '../simple-table/table.scss',
   shadow: true,
 })
-export class TableThree {
+export class TableTemplate {
   @Element() public host!: HTMLElement;
   @Prop() public head?: string[] = [];
   @Prop() public data?: AnyObject[] = [];

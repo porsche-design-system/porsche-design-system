@@ -1,14 +1,14 @@
 import { FunctionalComponent, h } from '@stencil/core';
-import type { HeadItem } from '../table-generics/table-utils';
-import { getAriaSort, toggleDirection } from '../table-generics/table-utils';
+import type { TableHeadItem } from '../table-utils';
+import { getAriaSort, toggleDirection } from '../table-utils';
 
 type Props = {
-  head: HeadItem[];
-  onHeadClick: (item: HeadItem) => void;
+  head: TableHeadItem[];
+  onHeadClick: (item: TableHeadItem) => void;
 };
 
-export const TableHead: FunctionalComponent<Props> = ({ head = [], onHeadClick }) => {
-  const onClick = (headItem: HeadItem): void => {
+export const TableHeadFunctional: FunctionalComponent<Props> = ({ head = [], onHeadClick }) => {
+  const onClick = (headItem: TableHeadItem): void => {
     if (headItem.isSortable) {
       onHeadClick({
         ...headItem,

@@ -3,7 +3,7 @@ import { buildGlobalStyles, getCss, getTagName, pxToRem } from '../../../utils';
 
 export type Direction = 'asc' | 'desc';
 
-export type HeadItem = {
+export type TableHeadItem = {
   key: string;
   name: string;
   isSortable: boolean;

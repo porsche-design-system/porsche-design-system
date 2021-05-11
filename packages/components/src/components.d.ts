@@ -15,7 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { HeadItem } from "./components/layout/table-generics/table-utils";
+import { TableHeadItem } from "./components/layout/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -596,6 +596,10 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PSimpleTable {
+        "data"?: AnyObject[];
+        "head"?: string[];
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -641,28 +645,30 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PTable {
-        "data"?: AnyObject[];
-        "head"?: string[];
     }
-    interface PTableGenerics {
+    interface PTableBody {
+    }
+    interface PTableCell {
+    }
+    interface PTableExperiment {
         "data"?: GenericObject[];
-        "head"?: HeadItem[];
+        "head"?: TableHeadItem[];
         "renderRow"?: (item: GenericObject) => string;
     }
-    interface PTableThree {
-        "data"?: AnyObject[];
-        "head"?: string[];
+    interface PTableHead {
     }
-    interface PTableTwo {
+    interface PTableRenderfunc {
         "data"?: AnyObject[];
         "head"?: string[];
         "renderRow"?: (item: AnyObject) => string;
     }
-    interface PTableWrapper {
+    interface PTableRow {
     }
-    interface PTableWrapperBody {
-        "head"?: HeadItem[];
-        "query"?: string;
+    interface PTableTemplate {
+        "data"?: AnyObject[];
+        "head"?: string[];
+    }
+    interface PTableWrapper {
     }
     interface PTabs {
         /**
@@ -938,6 +944,12 @@ declare global {
         prototype: HTMLPSelectWrapperElement;
         new (): HTMLPSelectWrapperElement;
     };
+    interface HTMLPSimpleTableElement extends Components.PSimpleTable, HTMLStencilElement {
+    }
+    var HTMLPSimpleTableElement: {
+        prototype: HTMLPSimpleTableElement;
+        new (): HTMLPSimpleTableElement;
+    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -956,35 +968,53 @@ declare global {
         prototype: HTMLPTableElement;
         new (): HTMLPTableElement;
     };
-    interface HTMLPTableGenericsElement extends Components.PTableGenerics, HTMLStencilElement {
+    interface HTMLPTableBodyElement extends Components.PTableBody, HTMLStencilElement {
     }
-    var HTMLPTableGenericsElement: {
-        prototype: HTMLPTableGenericsElement;
-        new (): HTMLPTableGenericsElement;
+    var HTMLPTableBodyElement: {
+        prototype: HTMLPTableBodyElement;
+        new (): HTMLPTableBodyElement;
     };
-    interface HTMLPTableThreeElement extends Components.PTableThree, HTMLStencilElement {
+    interface HTMLPTableCellElement extends Components.PTableCell, HTMLStencilElement {
     }
-    var HTMLPTableThreeElement: {
-        prototype: HTMLPTableThreeElement;
-        new (): HTMLPTableThreeElement;
+    var HTMLPTableCellElement: {
+        prototype: HTMLPTableCellElement;
+        new (): HTMLPTableCellElement;
     };
-    interface HTMLPTableTwoElement extends Components.PTableTwo, HTMLStencilElement {
+    interface HTMLPTableExperimentElement extends Components.PTableExperiment, HTMLStencilElement {
     }
-    var HTMLPTableTwoElement: {
-        prototype: HTMLPTableTwoElement;
-        new (): HTMLPTableTwoElement;
+    var HTMLPTableExperimentElement: {
+        prototype: HTMLPTableExperimentElement;
+        new (): HTMLPTableExperimentElement;
+    };
+    interface HTMLPTableHeadElement extends Components.PTableHead, HTMLStencilElement {
+    }
+    var HTMLPTableHeadElement: {
+        prototype: HTMLPTableHeadElement;
+        new (): HTMLPTableHeadElement;
+    };
+    interface HTMLPTableRenderfuncElement extends Components.PTableRenderfunc, HTMLStencilElement {
+    }
+    var HTMLPTableRenderfuncElement: {
+        prototype: HTMLPTableRenderfuncElement;
+        new (): HTMLPTableRenderfuncElement;
+    };
+    interface HTMLPTableRowElement extends Components.PTableRow, HTMLStencilElement {
+    }
+    var HTMLPTableRowElement: {
+        prototype: HTMLPTableRowElement;
+        new (): HTMLPTableRowElement;
+    };
+    interface HTMLPTableTemplateElement extends Components.PTableTemplate, HTMLStencilElement {
+    }
+    var HTMLPTableTemplateElement: {
+        prototype: HTMLPTableTemplateElement;
+        new (): HTMLPTableTemplateElement;
     };
     interface HTMLPTableWrapperElement extends Components.PTableWrapper, HTMLStencilElement {
     }
     var HTMLPTableWrapperElement: {
         prototype: HTMLPTableWrapperElement;
         new (): HTMLPTableWrapperElement;
-    };
-    interface HTMLPTableWrapperBodyElement extends Components.PTableWrapperBody, HTMLStencilElement {
-    }
-    var HTMLPTableWrapperBodyElement: {
-        prototype: HTMLPTableWrapperBodyElement;
-        new (): HTMLPTableWrapperBodyElement;
     };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
@@ -1057,14 +1087,18 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
+        "p-simple-table": HTMLPSimpleTableElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
-        "p-table-generics": HTMLPTableGenericsElement;
-        "p-table-three": HTMLPTableThreeElement;
-        "p-table-two": HTMLPTableTwoElement;
+        "p-table-body": HTMLPTableBodyElement;
+        "p-table-cell": HTMLPTableCellElement;
+        "p-table-experiment": HTMLPTableExperimentElement;
+        "p-table-head": HTMLPTableHeadElement;
+        "p-table-renderfunc": HTMLPTableRenderfuncElement;
+        "p-table-row": HTMLPTableRowElement;
+        "p-table-template": HTMLPTableTemplateElement;
         "p-table-wrapper": HTMLPTableWrapperElement;
-        "p-table-wrapper-body": HTMLPTableWrapperBodyElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1665,6 +1699,10 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PSimpleTable {
+        "data"?: AnyObject[];
+        "head"?: string[];
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -1714,31 +1752,33 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PTable {
-        "data"?: AnyObject[];
-        "head"?: string[];
+        "onHeadClick"?: (event: CustomEvent<TableHeadItem>) => void;
     }
-    interface PTableGenerics {
+    interface PTableBody {
+    }
+    interface PTableCell {
+    }
+    interface PTableExperiment {
         "data"?: GenericObject[];
-        "head"?: HeadItem[];
-        "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
+        "head"?: TableHeadItem[];
+        "onHeadClick"?: (event: CustomEvent<TableHeadItem>) => void;
         "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
         "renderRow"?: (item: GenericObject) => string;
     }
-    interface PTableThree {
-        "data"?: AnyObject[];
-        "head"?: string[];
+    interface PTableHead {
     }
-    interface PTableTwo {
+    interface PTableRenderfunc {
         "data"?: AnyObject[];
         "head"?: string[];
         "renderRow"?: (item: AnyObject) => string;
     }
-    interface PTableWrapper {
+    interface PTableRow {
     }
-    interface PTableWrapperBody {
-        "head"?: HeadItem[];
-        "onHeadClick"?: (event: CustomEvent<HeadItem>) => void;
-        "query"?: string;
+    interface PTableTemplate {
+        "data"?: AnyObject[];
+        "head"?: string[];
+    }
+    interface PTableWrapper {
     }
     interface PTabs {
         /**
@@ -1911,14 +1951,18 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
+        "p-simple-table": PSimpleTable;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
-        "p-table-generics": PTableGenerics;
-        "p-table-three": PTableThree;
-        "p-table-two": PTableTwo;
+        "p-table-body": PTableBody;
+        "p-table-cell": PTableCell;
+        "p-table-experiment": PTableExperiment;
+        "p-table-head": PTableHead;
+        "p-table-renderfunc": PTableRenderfunc;
+        "p-table-row": PTableRow;
+        "p-table-template": PTableTemplate;
         "p-table-wrapper": PTableWrapper;
-        "p-table-wrapper-body": PTableWrapperBody;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1955,14 +1999,18 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
+            "p-simple-table": LocalJSX.PSimpleTable & JSXBase.HTMLAttributes<HTMLPSimpleTableElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
-            "p-table-generics": LocalJSX.PTableGenerics & JSXBase.HTMLAttributes<HTMLPTableGenericsElement>;
-            "p-table-three": LocalJSX.PTableThree & JSXBase.HTMLAttributes<HTMLPTableThreeElement>;
-            "p-table-two": LocalJSX.PTableTwo & JSXBase.HTMLAttributes<HTMLPTableTwoElement>;
+            "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;
+            "p-table-cell": LocalJSX.PTableCell & JSXBase.HTMLAttributes<HTMLPTableCellElement>;
+            "p-table-experiment": LocalJSX.PTableExperiment & JSXBase.HTMLAttributes<HTMLPTableExperimentElement>;
+            "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
+            "p-table-renderfunc": LocalJSX.PTableRenderfunc & JSXBase.HTMLAttributes<HTMLPTableRenderfuncElement>;
+            "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
+            "p-table-template": LocalJSX.PTableTemplate & JSXBase.HTMLAttributes<HTMLPTableTemplateElement>;
             "p-table-wrapper": LocalJSX.PTableWrapper & JSXBase.HTMLAttributes<HTMLPTableWrapperElement>;
-            "p-table-wrapper-body": LocalJSX.PTableWrapperBody & JSXBase.HTMLAttributes<HTMLPTableWrapperBodyElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

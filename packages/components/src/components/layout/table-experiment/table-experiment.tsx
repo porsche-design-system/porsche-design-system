@@ -1,23 +1,23 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { GenericObject } from '../../../types';
 import { getClosestHTMLElement, throwIfElementHasAttribute } from '../../../utils';
-import type { HeadItem } from './table-utils';
-import { TableHead } from '../table-wrapper-body/table-head';
+import type { TableHeadItem } from '../table/table-utils';
+import { TableHeadFunctional } from '../table/table-head/table-head-functional';
 
 @Component({
-  tag: 'p-table-generics',
-  styleUrl: '../table/table.scss',
+  tag: 'p-table-experiment',
+  styleUrl: '../simple-table/table.scss',
   shadow: true,
 })
-export class TableGenerics {
+export class TableExperiment {
   @Element() public host!: HTMLElement;
 
-  @Prop() public head?: HeadItem[] = [];
+  @Prop() public head?: TableHeadItem[] = [];
   @Prop() public data?: GenericObject[] = [];
   @Prop() public renderRow?: (item: GenericObject) => string = () => '';
 
   /* eslint-disable-next-line @typescript-eslint/member-ordering */
-  @Event({ bubbles: false }) public headClick: EventEmitter<HeadItem>;
+  @Event({ bubbles: false }) public headClick: EventEmitter<TableHeadItem>;
   /* eslint-disable-next-line @typescript-eslint/member-ordering */
   @Event({ bubbles: false }) public rowClick: EventEmitter<GenericObject>;
 
@@ -29,7 +29,7 @@ export class TableGenerics {
   public render(): JSX.Element {
     return (
       <table>
-        <TableHead head={this.head} onHeadClick={this.headClick.emit} />
+        <TableHeadFunctional head={this.head} onHeadClick={this.headClick.emit} />
         <tbody onClick={this.onBodyClick} innerHTML={this.data.map(this.renderRow).join('')} />
       </table>
     );
