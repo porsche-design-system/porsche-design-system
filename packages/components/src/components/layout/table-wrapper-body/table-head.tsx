@@ -34,8 +34,8 @@ export const TableHead: FunctionalComponent<Props> = ({ head = [], onHeadClick }
               {name}
               {isSortable && (
                 <span class="sorting">
-                  <p-icon color="inherit" name="arrow-up" />
-                  <p-icon color="inherit" name="arrow-down" />
+                  <p-icon color="inherit" name="arrow-head-up" />
+                  <p-icon color="inherit" name="arrow-head-down" />
                 </span>
               )}
             </th>

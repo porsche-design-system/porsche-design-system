@@ -1,5 +1,5 @@
 import type { AriaAttributes } from 'react';
-import { buildGlobalStyles, getCss, getTagName } from '../../../utils';
+import { buildGlobalStyles, getCss, getTagName, pxToRem } from '../../../utils';
 
 export type Direction = 'asc' | 'desc';
 
@@ -22,17 +22,20 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
       [getTagName(host)]: {
-        '& tr:nth-child(even)': {
-          background: 'lightgray',
-        },
         '& td': {
-          padding: 5,
-          verticalAlign: 'top',
-          overflow: 'hidden',
+          display: 'table-cell !important',
+          padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0 !important`,
+          verticalAlign: 'top !important',
+          '&:last-child': {
+            paddingRight: '0 !important',
+          },
+        },
+        '& td > *': {
+          verticalAlign: 'top !important',
         },
         '& mark': {
-          background: 'red',
-          fontWeight: 700,
+          background: 'red !important',
+          fontWeight: '700 !important',
         },
       },
     })

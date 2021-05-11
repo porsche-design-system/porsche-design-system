@@ -27,7 +27,7 @@ export class TableWrapper {
       background: lightgray;
     }
     ${tagName} th, ${tagName} td {
-      padding: 5px;
+      padding: 0px;
     }
     ${tagName} th {
       text-align: left;
