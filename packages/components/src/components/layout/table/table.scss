@@ -1,13 +1,13 @@
 @import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
 }
 
-table,
-::slotted(table) {
+table {
   width: 100%;
-  border: 1px solid black;
+  border: 0;
   border-collapse: collapse;
   @include p-text-small;
   white-space: nowrap;
@@ -15,76 +15,62 @@ table,
 }
 
 thead {
-  border-bottom: 1px solid black;
-}
-
-tbody tr {
-  &:hover a {
-    background: coral;
-  }
-
-  &:nth-child(even) {
-    background: lightgray;
-  }
-}
-
-th,
-td {
-  padding: 5px;
+  border-bottom: 2px solid $p-color-neutral-contrast-high;
 }
 
 th {
   text-align: left;
   font-weight: $p-font-weight-bold;
-}
+  padding: 0 p-px-to-rem(12px) p-px-to-rem(8px) 0;
 
-td {
-  vertical-align: top;
-  overflow: hidden;
-
-  a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    margin: -100px;
-    padding: 100px;
+  &:last-child {
+    padding-right: 0;
   }
 }
 
-img {
-  vertical-align: middle;
+::slotted(tr) {
+  border-bottom: 1px solid $p-color-neutral-contrast-medium;
 }
 
-.sortable {
+//::slotted(tr:nth-child(even)){
+//   background: 'lightgray',
+//}
+
+button {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  @include p-text-small;
+  font-weight: $p-font-weight-bold;
+  text-decoration: none;
+  text-align: left;
+  background: transparent;
   cursor: pointer;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  @include p-focus();
 
   &:hover {
-    color: gray;
-
-    .sorting {
-      opacity: 1;
-    }
+    color: $p-color-state-hover;
   }
 
-  &--asc .sorting *:first-child,
-  &--desc .sorting *:last-child {
-    color: gray;
-  }
-
-  &--active {
-    color: black;
-
-    .sorting {
+  &:hover,
+  &:focus {
+    .icon {
       opacity: 1;
     }
   }
 }
 
-.sorting {
+.icon {
   opacity: 0;
   margin-left: 3px;
 
-  *:last-child {
-    margin-left: -12px;
+  &--active {
+    opacity: 1;
   }
 }

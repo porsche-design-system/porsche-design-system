@@ -1,7 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { insertSlottedStyles, throwIfElementHasAttribute } from '../../../utils';
-import { TableHead } from './table-head';
-import { getSlottedCss, HeadItem } from '../table-generics/table-utils';
+import { getPrefixedTagNames, insertSlottedStyles, throwIfElementHasAttribute } from '../../../utils';
+import { getAriaSort, getSlottedCss, HeadItem, isDirectionAsc, toggleDirection } from '../table-generics/table-utils';
 
 @Component({
   tag: 'p-table-wrapper-body',
@@ -22,23 +21,60 @@ export class TableWrapperBody {
   public componentWillRender(): void {
     throwIfElementHasAttribute(this.host, 'head');
 
-    if (this.query) {
-      Array.from(this.host.children).forEach((tr) => {
-        tr.innerHTML = tr.innerHTML.replace(new RegExp(`(${this.query})`, 'gi'), '<mark>$1</mark>');
-      });
-    }
+    // if (this.query) {
+    //   Array.from(this.host.children).forEach((tr) => {
+    //     tr.innerHTML = tr.innerHTML.replace(new RegExp(`(${this.query})`, 'gi'), '<mark>$1</mark>');
+    //   });
+    // }
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <table>
-        <TableHead head={this.head} onHeadClick={this.headClick.emit} />
+        <thead>
+          <tr>
+            {this.head.map((item) => {
+              const { name, isSortable, direction, isSorting } = item;
+              return (
+                <th scope="col" role="columnheader" aria-sort={getAriaSort(isSortable, direction)}>
+                  {isSortable ? (
+                    <button onClick={() => this.handleHeadClick(item)}>
+                      {name}
+                      <PrefixedTagNames.pIcon
+                        class={{
+                          ['icon']: true,
+                          ['icon--active']: isSorting,
+                        }}
+                        color="inherit"
+                        name={isDirectionAsc(direction) ? 'arrow-head-down' : 'arrow-head-up'}
+                      />
+                    </button>
+                  ) : (
+                    name
+                  )}
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
         <tbody>
           <slot />
         </tbody>
       </table>
     );
   }
+
+  private handleHeadClick = (headItem: HeadItem): void => {
+    if (headItem.isSortable) {
+      this.headClick.emit({
+        ...headItem,
+        isSorting: true,
+        direction: toggleDirection(headItem.direction),
+      });
+    }
+  };
 
   private addSlottedStyles(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));

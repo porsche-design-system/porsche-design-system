@@ -16,6 +16,7 @@
     </style>
   </head>
   <body>
+    <!--
     <p-headline>table-wrapper</p-headline>
     <p-table-wrapper>
       <table>
@@ -23,35 +24,10 @@
         <tbody></tbody>
       </table>
     </p-table-wrapper>
+    -->
 
     <p-headline>table-wrapper-body</p-headline>
     <p-table-wrapper-body></p-table-wrapper-body>
-
-    <!--
-    <p-headline>table</p-headline>
-    <p-table></p-table>
-
-    <p-headline>table-two</p-headline>
-    <p-table-two></p-table-two>
-
-    <p-headline>table-three</p-headline>
-    <p-table-three>
-      <template>
-        <tr>
-          <td><img src="${imageUrl}" width="80px" /></td>
-          <td>${firstName}</td>
-          <td>${lastName}</td>
-          <td>${company} GmbH</td>
-          <td>${phoneNumber}</td>
-          <td>${dateOfBirth}</td>
-          <td>${location}<p-text weight="thin">(USA)</p-text></td>
-        </tr>
-      </template>
-    </p-table-three>
-    -->
-
-    <p-headline>table-generics</p-headline>
-    <p-table-generics></p-table-generics>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
@@ -59,7 +35,7 @@
       const data = [
         {
           // id: '202829625',
-          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
+          imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
           firstName: 'John',
           lastName: 'Locke',
           company: '',
@@ -69,7 +45,7 @@
         },
         {
           // id: '202829625',
-          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
+          imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/taycan.jpg',
           firstName: 'Matthias',
           lastName: 'Kainer',
           company: 'Company',
@@ -79,7 +55,7 @@
         },
         {
           // id: '202829625',
-          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
+          imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
           firstName: 'Jason',
           lastName: 'Bourne',
           company: '',
@@ -89,7 +65,7 @@
         },
         {
           // id: '202829625',
-          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
+          imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718.jpg',
           firstName: 'Manni',
           lastName: 'Frisch',
           company: 'Company',
@@ -99,7 +75,7 @@
         },
         {
           // id: '202829625',
-          imageUrl: 'https://designsystem.porsche.com/latest/img/validation-fieldset.6feec63e.png',
+          imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
           firstName: 'Jim',
           lastName: 'Bo',
           company: '',
@@ -119,71 +95,46 @@
         <td><a href="#${firstName}">${location}<p-text weight="thin">(Germany)</p-text></a></td>
       </tr>`;
 
-      // const table = document.querySelector('p-table');
-      // const table2 = document.querySelector('p-table-two');
-      // const table3 = document.querySelector('p-table-three');
-      const tableGenerics = document.querySelector('p-table-generics');
       const tableWrapperBody = document.querySelector('p-table-wrapper-body');
 
-      // table.head = head;
-      // table.data = data;
-      //
-      // table2.head = head;
-      // table2.data = data;
-      // table2.renderRow = renderRow;
-      //
-      // table3.head = head;
-      // table3.data = data;
-
       const dataKeys = Object.keys(data[0]);
-      const headSortable = head.map((name, i) => ({ key: dataKeys[i], name, isSortable: i > 0, direction: 'asc' }));
+      const headSortable = head.map((name, i) => ({
+        key: dataKeys[i],
+        name,
+        isSortable: i > 0,
+        isSorting: i === 1,
+        direction: 'asc',
+      }));
 
-      tableGenerics.head = headSortable;
-      tableGenerics.data = data;
-      // tableGenerics.setAttribute('head', JSON.stringify(headSortable));
-      // tableGenerics.setAttribute('data', JSON.stringify(data));
-      tableGenerics.renderRow = renderRow;
+      // const tableHead = document.querySelector('thead');
+      // const tableHeadRow = document.createElement('tr');
+      // tableHead.append(tableHeadRow);
+      // const tableBody = document.querySelector('tbody');
 
-      tableGenerics.addEventListener('headClick', (e) => {
-        console.log('headClick', e.detail);
-        const { key, direction } = e.detail;
-
-        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
-        const sortedData = [...data].sort((a, b) =>
-          direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
-        );
-
-        e.target.head = sortedHead;
-        e.target.data = sortedData;
-      });
-
-      tableGenerics.addEventListener('rowClick', (e) => {
-        console.log('rowClick', e.detail);
-      });
-
-      const tableHead = document.querySelector('thead');
-      const tableHeadRow = document.createElement('tr');
-      tableHead.append(tableHeadRow);
-      const tableBody = document.querySelector('tbody');
-
-      head.forEach((item) => {
-        const el = document.createElement('th');
-        el.innerText = item;
-        tableHeadRow.append(el);
-      });
+      // head.forEach((item) => {
+      //   const el = document.createElement('th');
+      //   el.innerText = item;
+      //   tableHeadRow.append(el);
+      // });
 
       data.forEach((item) => {
         const el = document.createElement('tr');
-        Object.values(item).forEach((x) => {
+        Object.values(item).forEach((x, i) => {
           const elInner = document.createElement('td');
-          elInner.innerText = x;
+          if (i === 0) {
+            const img = document.createElement('img');
+            img.src = x;
+            elInner.appendChild(img);
+          } else {
+            elInner.innerText = x;
+          }
           el.append(elInner);
         });
-        tableBody.append(el);
+        // tableBody.append(el);
         tableWrapperBody.append(el.cloneNode(true));
       });
 
-      tableWrapperBody.query = 'Ma';
+      // tableWrapperBody.query = 'Ma';
       tableWrapperBody.head = headSortable;
       tableWrapperBody.addEventListener('headClick', (e) => {
         console.log('headClick', e.detail);
@@ -192,18 +143,24 @@
         const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
 
         e.target.head = sortedHead;
-        e.target.innerHTML = '';
+        Array.from(e.target.children).forEach((x) => x.remove());
 
         [...data]
           .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
-          .forEach((item) => {
+          .forEach((item, i) => {
             const el = document.createElement('tr');
-            Object.values(item).forEach((x) => {
+            Object.values(item).forEach((x, i) => {
               const elInner = document.createElement('td');
-              elInner.innerText = x;
-              el.append(elInner);
+              if (i === 0) {
+                const img = document.createElement('img');
+                img.src = x;
+                elInner.appendChild(img);
+              } else {
+                elInner.innerText = x;
+              }
+              el.appendChild(elInner);
             });
-            e.target.append(el);
+            e.target.appendChild(el);
           });
       });
 
