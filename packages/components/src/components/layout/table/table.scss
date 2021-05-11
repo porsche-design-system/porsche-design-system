@@ -23,9 +23,20 @@ th {
   text-align: left;
   font-weight: $p-font-weight-bold;
   padding: 0 p-px-to-rem(12px) p-px-to-rem(8px) 0;
+  vertical-align: bottom;
+
+  &:first-child {
+    button {
+      margin-left: 3px; // compensate focus outline being cropped because of overflow
+    }
+  }
 
   &:last-child {
     padding-right: 0;
+
+    button {
+      margin-right: 3px; // compensate focus outline being cropped because of overflow
+    }
   }
 }
 
@@ -40,7 +51,7 @@ th {
 button {
   display: flex;
   align-items: center;
-  margin: 0;
+  margin: 3px 0 0;
   padding: 0;
   box-sizing: border-box;
   appearance: none;
