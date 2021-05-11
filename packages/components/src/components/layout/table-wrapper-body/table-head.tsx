@@ -28,7 +28,7 @@ export const TableHead: FunctionalComponent<Props> = ({ head = [], onHeadClick }
               class={{ ['sortable']: isSortable, [`sortable--${direction}`]: true, ['sortable--active']: isSorting }}
               scope="col"
               role="columnheader"
-              aria-sort={getAriaSort(isSortable, direction)}
+              aria-sort={getAriaSort(isSortable, isSorting, direction)}
               onClick={() => onClick(item)}
             >
               {name}

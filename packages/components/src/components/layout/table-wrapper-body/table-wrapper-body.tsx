@@ -38,7 +38,7 @@ export class TableWrapperBody {
             {this.head.map((item) => {
               const { name, isSortable, direction, isSorting } = item;
               return (
-                <th scope="col" role="columnheader" aria-sort={getAriaSort(isSortable, direction)}>
+                <th scope="col" role="columnheader" aria-sort={getAriaSort(isSortable, isSorting, direction)}>
                   {isSortable ? (
                     <button onClick={() => this.handleHeadClick(item)}>
                       {name}
