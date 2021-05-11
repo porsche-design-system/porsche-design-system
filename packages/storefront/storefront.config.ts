@@ -396,6 +396,12 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/action/switch/switch.props.md`),
       ],
     },
+    Table: {
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/table/table.usage.md`),
+      ],
+    },
     Tabs: {
       Examples: [
         // @ts-ignore
