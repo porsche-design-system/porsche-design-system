@@ -101,7 +101,8 @@
 
       const tableHeadRow = document.createElement('p-table-row');
       headSortable.forEach((item) => {
-        const el = document.createElement('p-table-cell');
+        const el = document.createElement('p-table-head-cell');
+        el.item = item;
         el.innerText = item.name;
         tableHeadRow.append(el);
       });
@@ -114,7 +115,7 @@
         const img = document.createElement('img');
         img.src = item.imageUrl;
         img.width = 80;
-        img.style.marginRight = '5px';
+        img.style.marginRight = '8px';
 
         const model = document.createElement('p-text');
         model.weight = 'semibold';

@@ -657,6 +657,9 @@ export namespace Components {
     }
     interface PTableHead {
     }
+    interface PTableHeadCell {
+        "item"?: TableHeadItem;
+    }
     interface PTableRenderfunc {
         "data"?: AnyObject[];
         "head"?: string[];
@@ -992,6 +995,12 @@ declare global {
         prototype: HTMLPTableHeadElement;
         new (): HTMLPTableHeadElement;
     };
+    interface HTMLPTableHeadCellElement extends Components.PTableHeadCell, HTMLStencilElement {
+    }
+    var HTMLPTableHeadCellElement: {
+        prototype: HTMLPTableHeadCellElement;
+        new (): HTMLPTableHeadCellElement;
+    };
     interface HTMLPTableRenderfuncElement extends Components.PTableRenderfunc, HTMLStencilElement {
     }
     var HTMLPTableRenderfuncElement: {
@@ -1095,6 +1104,7 @@ declare global {
         "p-table-cell": HTMLPTableCellElement;
         "p-table-experiment": HTMLPTableExperimentElement;
         "p-table-head": HTMLPTableHeadElement;
+        "p-table-head-cell": HTMLPTableHeadCellElement;
         "p-table-renderfunc": HTMLPTableRenderfuncElement;
         "p-table-row": HTMLPTableRowElement;
         "p-table-template": HTMLPTableTemplateElement;
@@ -1767,6 +1777,9 @@ declare namespace LocalJSX {
     }
     interface PTableHead {
     }
+    interface PTableHeadCell {
+        "item"?: TableHeadItem;
+    }
     interface PTableRenderfunc {
         "data"?: AnyObject[];
         "head"?: string[];
@@ -1959,6 +1972,7 @@ declare namespace LocalJSX {
         "p-table-cell": PTableCell;
         "p-table-experiment": PTableExperiment;
         "p-table-head": PTableHead;
+        "p-table-head-cell": PTableHeadCell;
         "p-table-renderfunc": PTableRenderfunc;
         "p-table-row": PTableRow;
         "p-table-template": PTableTemplate;
@@ -2007,6 +2021,7 @@ declare module "@stencil/core" {
             "p-table-cell": LocalJSX.PTableCell & JSXBase.HTMLAttributes<HTMLPTableCellElement>;
             "p-table-experiment": LocalJSX.PTableExperiment & JSXBase.HTMLAttributes<HTMLPTableExperimentElement>;
             "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
+            "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
             "p-table-renderfunc": LocalJSX.PTableRenderfunc & JSXBase.HTMLAttributes<HTMLPTableRenderfuncElement>;
             "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
             "p-table-template": LocalJSX.PTableTemplate & JSXBase.HTMLAttributes<HTMLPTableTemplateElement>;
