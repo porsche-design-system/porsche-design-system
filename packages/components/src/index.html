@@ -21,7 +21,16 @@
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const head = ['Model', 'Interest', 'VIN', 'Purchase Intention', 'Status', 'Lead ID', '', ''];
+      const head = [
+        { name: 'Model' },
+        { name: 'Interest', key: 'interest' },
+        { name: 'VIN', key: 'vin' },
+        { name: 'Purchase Intention', key: 'purchaseIntention' },
+        { name: 'Status', key: 'status' },
+        { name: 'Lead ID', key: 'leadId' },
+        { name: '' },
+        { name: '' },
+      ];
       const data = [
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
@@ -31,7 +40,7 @@
           vin: '-',
           purchaseIntention: '08.2020',
           status: 'Won',
-          leadId: '0000824405',
+          leadId: '0000824402',
         },
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/taycan.jpg',
@@ -39,29 +48,29 @@
           date: '03.05.2021',
           interest: 'New Car',
           vin: '-',
-          purchaseIntention: '08.2020',
-          status: 'Won',
-          leadId: '0000824405',
+          purchaseIntention: '11.2020',
+          status: 'Lost',
+          leadId: '0000824409',
         },
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
           model: '911 Carrera S',
           date: '03.05.2021',
-          interest: 'New Car',
+          interest: 'Used Car',
           vin: '-',
-          purchaseIntention: '08.2020',
+          purchaseIntention: '09.2020',
           status: 'Won',
-          leadId: '0000824405',
+          leadId: '0000824408',
         },
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718.jpg',
           model: '911 Carrera S',
           date: '03.05.2021',
-          interest: 'New Car',
+          interest: 'Used Car',
           vin: '-',
-          purchaseIntention: '08.2020',
-          status: 'Won',
-          leadId: '0000824405',
+          purchaseIntention: '04.2020',
+          status: 'Lost',
+          leadId: '0000824407',
         },
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
@@ -69,19 +78,17 @@
           date: '03.05.2021',
           interest: 'New Car',
           vin: '-',
-          purchaseIntention: '08.2020',
+          purchaseIntention: '03.2020',
           status: 'Won',
-          leadId: '0000824405',
+          leadId: '0000824406',
         },
       ];
 
       const tableWrapperBody = document.querySelector('p-table-wrapper-body');
 
-      const dataKeys = Object.keys(data[0]);
-      const headSortable = head.map((name, i) => ({
-        key: dataKeys[i],
-        name,
-        ...(name && {
+      const headSortable = head.map((item, i) => ({
+        ...item,
+        ...(item.name && {
           isSortable: i > 0,
           isSorting: i === 1,
           direction: 'asc',
@@ -94,6 +101,7 @@
         const firstTd = document.createElement('td');
         const img = document.createElement('img');
         img.src = item.imageUrl;
+        img.width = 80;
         img.style.marginRight = '5px';
 
         const model = document.createElement('p-text');
