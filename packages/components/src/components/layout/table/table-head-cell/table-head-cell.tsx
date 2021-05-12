@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
 import { getPrefixedTagNames } from '../../../../utils';
-import { addCss, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
+import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
 
 @Component({
   tag: 'p-table-head-cell',
@@ -20,7 +20,7 @@ export class TableHeadCell {
     const { isSortable, direction, isSorting } = this.item || {};
 
     return (
-      <Host scope="col" role="columnheader">
+      <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.item)}>
         {isSortable ? (
           <button onClick={this.handleButtonClick}>
             <slot />
