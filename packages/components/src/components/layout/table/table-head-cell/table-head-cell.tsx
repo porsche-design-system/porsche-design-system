@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
-import { getPrefixedTagNames } from '../../../../utils';
+import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
 
 @Component({
@@ -10,6 +10,10 @@ import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection }
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
   @Prop() public item?: TableHeadItem;
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pTableRow');
+  }
 
   public componentWillRender(): void {
     addCss(this.host);

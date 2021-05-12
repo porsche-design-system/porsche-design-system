@@ -90,6 +90,10 @@ export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCame
   }
 };
 
+export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagNameCamelCase[]): void => {
+  tagNames.forEach((x) => throwIfParentIsNotOfKind(host, x));
+};
+
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
   if (hasAttribute(el, name)) {
     throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs be set via property.`);
