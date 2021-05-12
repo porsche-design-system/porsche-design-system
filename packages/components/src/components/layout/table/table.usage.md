@@ -1,4 +1,4 @@
-# Data Table
+# Table
 
 ## When to use
 
