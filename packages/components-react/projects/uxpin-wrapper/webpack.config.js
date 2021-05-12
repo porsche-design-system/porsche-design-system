@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     modules: [__dirname, 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.tsx'],
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
   },
   devtool: 'source-map',
   module: {
@@ -31,6 +31,18 @@ module.exports = {
       },
       {
         loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env',
+            [
+              '@babel/preset-react',
+              {
+                runtime: 'automatic',
+              },
+            ],
+            '@babel/preset-typescript',
+          ],
+        },
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
       },
