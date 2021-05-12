@@ -71,7 +71,6 @@ export class InputParser {
     const [, rawComponentInterface] = regex.exec(this.rawLocalJSX) ?? [];
     return rawComponentInterface
       .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
-      .replace(/GenericObject/g, 'T') // replace GenericObject with T
       .replace(/    |\t\t/g, '  ') // adjust indentation
       .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
   }
