@@ -34,9 +34,10 @@ export class DataStructureBuilder {
 
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
-        // extract potential generics
+        // extract potential generic and array
         const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
         const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
+        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) ?? [];
 
         if (genericType) {
           if (!whitelistedTypes.includes(genericRootType)) {
@@ -44,6 +45,8 @@ export class DataStructureBuilder {
           }
           const genericTypes = this.splitLiteralTypeToNonPrimitiveTypes(genericType);
           genericTypes.forEach(handleCustomGenericTypes);
+        } else if (arrayType && !whitelistedTypes.includes(arrayType)) {
+          nonPrimitiveTypes.push(arrayType);
         } else {
           nonPrimitiveTypes.push(nonPrimitiveType);
         }
