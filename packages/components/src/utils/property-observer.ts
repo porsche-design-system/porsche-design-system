@@ -1,9 +1,10 @@
 export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
   const proto = Object.getPrototypeOf(node);
-  const createPropObject = (prop) => {
+  const properties = props.reduce((result, prop) => {
     // eslint-disable-next-line @typescript-eslint/unbound-method
     const { get, set } = Object.getOwnPropertyDescriptor(proto, prop);
     return {
+      ...result,
       [prop]: {
         configurable: true,
         get() {
@@ -15,14 +16,6 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
         },
       },
     };
-  };
-
-  const properties = props
-    .map((prop) => createPropObject(prop))
-    .reduce((target, item) => {
-      const propName = Object.keys(item)[0];
-      return Object.assign(target, { [propName]: item[propName] });
-    });
-
+  }, {} as PropertyDescriptorMap);
   Object.defineProperties(node, properties);
 };
