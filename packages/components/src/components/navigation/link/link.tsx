@@ -1,10 +1,11 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
+  getTagName,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDark,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
@@ -14,7 +15,7 @@ import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme }
   shadow: true,
 })
 export class Link {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The style variant of the link. */
   @Prop() public variant?: LinkVariant = 'secondary';
@@ -43,24 +44,22 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
   }
 
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = {
-      [prefix('link')]: true,
-      [prefix(`link--${this.variant}`)]: true,
-      [prefix(`link--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      [`root--${this.variant}`]: this.variant !== 'secondary',
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
-    const iconClasses = prefix('link__icon');
-    const labelClasses = prefix('link__label');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <TagType
@@ -73,14 +72,14 @@ export class Link {
         })}
       >
         <PrefixedTagNames.pIcon
-          class={iconClasses}
+          class="icon"
           size="inherit"
           name={this.icon}
           source={this.iconSource}
           color="inherit"
           aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
           <slot />
         </PrefixedTagNames.pText>
       </TagType>
@@ -88,7 +87,7 @@ export class Link {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.element.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
@@ -123,6 +122,6 @@ export class Link {
       outline-color: transparent !important;
     }`;
 
-    insertSlottedStyles(this.element, style);
+    insertSlottedStyles(this.host, style);
   }
 }

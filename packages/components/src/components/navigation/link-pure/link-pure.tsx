@@ -1,16 +1,17 @@
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
-  getHTMLElement,
   getPrefixedTagNames,
+  getTagName,
+  hasNamedSlot,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 @Component({
   tag: 'p-link-pure',
@@ -56,41 +57,33 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    transitionListener(this.linkTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.linkTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.linkTag, 'font-size', () => {
+        const size = `${calcLineHeightForElement(this.linkTag)}em`;
+        this.iconTag.style.width = size;
+        this.iconTag.style.height = size;
+      });
+    }
   }
 
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkPureClasses = {
-      [prefix('link-pure')]: true,
-      [prefix('link-pure--theme-dark')]: isDark(this.theme),
-      [prefix('link-pure--active')]: this.active,
-      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ['root--active']: this.active,
+      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
-    const iconClasses = prefix('link-pure__icon');
-
-    const labelClasses = {
-      [prefix('link-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const sublineClasses = {
-      [prefix('link-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible']),
-    };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -102,23 +95,23 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
           })}
-          ref={(el) => (this.linkTag = el as HTMLElement)}
+          ref={(el) => (this.linkTag = el)}
         >
           <PrefixedTagNames.pIcon
-            class={iconClasses}
+            class="icon"
             color="inherit"
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            ref={(el) => (this.iconTag = el as HTMLElement)}
+            ref={(el) => (this.iconTag = el)}
             aria-hidden="true"
           />
-          <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {this.hasSubline && (
-          <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
+        {hasNamedSlot(this.host, 'subline') && (
+          <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
@@ -126,12 +119,8 @@ export class LinkPure {
     );
   }
 
-  private get hasSubline(): boolean {
-    return !!getHTMLElement(this.host, '[slot="subline"]');
-  }
-
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {

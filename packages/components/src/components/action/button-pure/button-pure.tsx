@@ -1,15 +1,17 @@
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
-  getHTMLElement,
   getPrefixedTagNames,
+  hasNamedSlot,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDark,
+  isDisabledOrLoading,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -26,7 +28,7 @@ export class ButtonPure {
   @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop({ reflect: true }) public disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -55,7 +57,7 @@ export class ButtonPure {
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
@@ -65,71 +67,61 @@ export class ButtonPure {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabled
+      () => this.isDisabledOrLoading
     );
-
-    transitionListener(this.buttonTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.buttonTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.buttonTag, 'font-size', () => {
+        const size = `${calcLineHeightForElement(this.buttonTag)}em`;
+        this.iconTag.style.width = size;
+        this.iconTag.style.height = size;
+      });
+    }
   }
 
   public render(): JSX.Element {
     const buttonPureClasses = {
-      [prefix('button-pure')]: true,
-      [prefix(`button-pure--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
-    const iconClasses = prefix('button-pure__icon');
-
-    const labelClasses = {
-      [prefix('button-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible']),
+    const iconProps = {
+      class: 'icon',
+      size: 'inherit',
+      theme: this.theme,
+      ref: (el: HTMLElement) => (this.iconTag = el),
     };
 
-    const sublineClasses = {
-      [prefix('button-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
-    };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text', 'p-spinner']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <button
           class={buttonPureClasses}
           type={this.type}
-          disabled={this.isDisabled}
+          disabled={this.isDisabledOrLoading}
           tabindex={this.tabbable ? 0 : -1}
-          ref={(el) => (this.buttonTag = el as HTMLElement)}
+          ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
-            <PrefixedTagNames.pSpinner
-              class={iconClasses}
-              size="inherit"
-              theme={this.theme}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
-            />
+            <PrefixedTagNames.pSpinner {...iconProps} />
           ) : (
             <PrefixedTagNames.pIcon
-              class={iconClasses}
+              {...iconProps}
               color="inherit"
-              size="inherit"
               name={this.icon}
               source={this.iconSource}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
               aria-hidden="true"
             />
           )}
-          <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+          <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </button>
-        {this.hasSubline && (
-          <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
+        {hasNamedSlot(this.host, 'subline') && (
+          <PrefixedTagNames.pText class="subline" tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
@@ -137,11 +129,7 @@ export class ButtonPure {
     );
   }
 
-  private get hasSubline(): boolean {
-    return !!getHTMLElement(this.host, '[slot="subline"]');
-  }
-
-  private get isDisabled(): boolean {
-    return this.disabled || this.loading;
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

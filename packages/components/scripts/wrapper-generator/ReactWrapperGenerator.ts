@@ -1,4 +1,4 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
@@ -15,25 +15,25 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
     const reactImports = [
+      'ForwardedRef',
+      'forwardRef',
       'HTMLAttributes',
       'useRef',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
-    const providerImports = [
-      'usePrefix',
-      'useMergedClass',
-      ...(hasEventProps ? ['useEventCallback'] : []),
-      ...(canBeObject ? ['jsonStringify'] : []),
-    ];
-    const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
+    const hooksImports = ['usePrefix', 'useMergedClass', ...(hasEventProps ? ['useEventCallback'] : [])];
+    const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
+
+    const utilsImports = ['syncRef', ...(canBeObject ? ['jsonStringify'] : [])];
+    const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const importsFromTypes = nonPrimitiveTypes.length
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return [importsFromReact, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
+    return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
   }
 
   private generatePropsName(component: TagName): string {
@@ -41,11 +41,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    const content = `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`
-      .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
-      .replace(/    |\t\t/g, '  ') // adjust indentation
-      .replace(/(  |\t)};/g, '};'); // adjust indentation at closing };
-    return content;
+    return `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
@@ -68,7 +64,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ),
       `const Tag = usePrefix('${component}');`,
     ];
-    const componentHooks = componentHooksArr.join('\n  ');
+    const componentHooks = componentHooksArr.join('\n    ');
 
     const componentPropsArr: string[] = [
       '...rest',
@@ -76,19 +72,24 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
       ),
       'class: useMergedClass(elementRef, className)',
-      'ref: elementRef',
+      'ref: syncRef(elementRef, ref)',
     ];
 
     const componentProps = `const props = {
-    ${componentPropsArr.join(',\n    ')}
-  };`;
+      ${componentPropsArr.join(',\n      ')}
+    };`;
 
-    return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
-  ${componentHooks}
+    return `export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
+  (
+    ${wrapperProps}: ${wrapperPropsType},
+    ref: ForwardedRef<HTMLElement>
+  ): JSX.Element => {
+    ${componentHooks}
 
-  ${componentProps}
+    ${componentProps}
 
-  return <Tag {...props} />;
-};`;
+    return <Tag {...props} />;
+  }
+);`;
   }
 }

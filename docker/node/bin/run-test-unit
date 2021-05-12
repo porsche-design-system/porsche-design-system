@@ -5,8 +5,11 @@ set -o pipefail
 
 if
   [[ "--components" == "${1}" ]] ||
+  [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-js:components-manager-core" == "${1}" ]] ||
+  [[ "--components-js:components-wrapper" == "${1}" ]] ||
+  [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
-  [[ "--partials" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then

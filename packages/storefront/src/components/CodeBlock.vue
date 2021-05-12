@@ -1,9 +1,13 @@
 <template>
   <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(frameWork, index) in frameworks" :key="index" @click="setFramework(index)">
-        {{ frameWork }}
-      </button>
+      <button
+        type="button"
+        v-for="(frameWork, index) in frameworks"
+        :key="index"
+        @click="setFramework(index)"
+        v-text="frameWork"
+      ></button>
     </p-tabs-bar>
     <pre><code v-html="highlightedMarkup"></code></pre>
   </div>
@@ -26,8 +30,8 @@
 
     frameworks: { [key in Framework]: string } = {
       'vanilla-js': 'Vanilla JS',
-      'angular': 'Angular',
-      'react': 'React',
+      angular: 'Angular',
+      react: 'React',
     };
 
     public get activeTabIndex(): number {

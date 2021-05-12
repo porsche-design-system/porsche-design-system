@@ -39,7 +39,7 @@ To help inform the user about the **end of support of Microsoft Internet Explore
 
 #### Install
 
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
+It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. If you don't have an account yet, please first [read more about getting started as developer](start-coding/introduction).
 
 ```
 // install with npm:
@@ -80,7 +80,7 @@ Integration through `includeOverlay()` partial.
 
 ##### React / Vue JS
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,8 +107,8 @@ Integration through `includeOverlay()` partial.
 
 // package.json
 "scripts": {
-  "banner": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeBanner().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
-  "overlay": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html"
+  "banner": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeBanner().replace((\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+  "overlay": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeOverlay().replace((\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html"
 }
 ```
 

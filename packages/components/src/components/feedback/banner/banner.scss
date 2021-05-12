@@ -2,7 +2,6 @@
 @import '../../../styles/internal.variables';
 
 $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
-$easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
 
 :host {
   --#{$p-global-class-prefix}banner-position-type: fixed;
@@ -26,17 +25,6 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 }
 
-@keyframes animateMobileOut {
-  from {
-    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
-    opacity: 1;
-  }
-  to {
-    bottom: -100%;
-    opacity: 0;
-  }
-}
-
 @keyframes animateDesktopIn {
   from {
     top: -100%;
@@ -48,29 +36,15 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 }
 
-@keyframes animateDesktopOut {
-  from {
-    top: var(--#{$p-global-class-prefix}banner-position-top);
-    opacity: 1;
-  }
-  to {
-    top: -100%;
-    opacity: 0;
-  }
-}
-
 @include p-media-query('xxs', 's') {
   :host {
     bottom: -100%;
     will-change: opacity, bottom;
   }
+
   :host(.hydrated) {
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn
       $easeInQuad forwards;
-  }
-
-  :host(.#{$p-global-class-prefix}banner--close) {
-    animation: var(--p-animation-duration__banner, 600ms) 0s animateMobileOut $easeOutQuad forwards;
   }
 }
 
@@ -84,17 +58,13 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
     animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn
       $easeInQuad forwards;
   }
-
-  :host(.#{$p-global-class-prefix}banner--close) {
-    animation: var(--p-animation-duration__banner, 600ms) 0s animateDesktopOut $easeOutQuad forwards;
-  }
 }
 
-.#{$p-global-class-prefix}banner {
-  $bem-block: &;
+.root {
   display: flex;
   position: relative;
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
+  background-color: $p-color-notification-neutral-soft;
   box-shadow: 0 p-px-to-rem(2px) p-px-to-rem(4px) 0 rgba(0, 0, 0, 0.05),
     0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
 
@@ -105,22 +75,11 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
     top: 0;
     bottom: 0;
     width: p-px-to-rem(4px);
+    background-color: $p-color-notification-neutral;
   }
 
-  &--neutral {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-notification-neutral-soft;
-      &::before {
-        background-color: $p-color-notification-neutral;
-      }
-    }
-
-    &#{$bem-block}--theme-dark {
-      background-color: $p-color-theme-dark-notification-neutral-soft;
-      &::before {
-        background-color: $p-color-notification-neutral;
-      }
-    }
+  &--theme-dark {
+    background-color: $p-color-theme-dark-notification-neutral-soft;
   }
 
   &--warning {
@@ -138,30 +97,29 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
       background-color: $p-color-notification-error;
     }
   }
+}
 
-  &__content {
-    max-width: p-px-to-rem(800px);
-    padding-right: p-px-to-rem(48px);
-  }
+.content {
+  max-width: p-px-to-rem(800px);
+  padding-right: p-px-to-rem(48px);
 
-  &__icon {
-    display: none;
-  }
-
-  &__title + &__description {
+  // p-text for description
+  *:nth-child(2):not(.close) {
     margin-top: p-px-to-rem(8px);
   }
+}
+
+.icon {
+  display: none;
 
   @include p-media-query('s') {
-    &__icon {
-      display: block;
-      padding-right: p-px-to-rem(12px);
-    }
+    display: block;
+    padding-right: p-px-to-rem(12px);
   }
+}
 
-  &__button {
-    position: absolute;
-    right: p-px-to-rem(16px);
-    top: p-px-to-rem(16px);
-  }
+.close {
+  position: absolute;
+  top: p-px-to-rem(16px);
+  right: p-px-to-rem(16px);
 }

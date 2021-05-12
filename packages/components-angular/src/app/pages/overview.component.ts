@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -62,6 +62,13 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default button">
           <p-button>Some label</p-button>
+        </div>
+
+        <div class="playground light" title="should render default button-group">
+          <p-button-group>
+            <p-button>Some label</p-button>
+            <p-button>Some label</p-button>
+          </p-button-group>
         </div>
 
         <div class="playground light" title="should render default button-pure">
@@ -155,7 +162,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
-          <p-tabs-bar>
+          <p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
             <button>Tab3</button>
@@ -183,46 +190,55 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline with custom prefix">
-          <my-prefix-p-headline>Prefixed Components</my-prefix-p-headline>
+          <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render headline for variant large with custom prefix">
-          <my-prefix-p-headline [variant]="{ base: 'large', l: 'x-large' }">Prefixed Components</my-prefix-p-headline>
+          <my-prefix-p-headline p-headline [variant]="{ base: 'large', l: 'x-large' }">
+            Prefixed Components
+          </my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default banner with custom prefix">
-          <my-prefix-p-banner *ngIf="allReady">
+          <my-prefix-p-banner p-banner *ngIf="allReady">
             <span slot="title">Some banner title</span>
             <span slot="description">Some banner description.</span>
           </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
-          <my-prefix-p-divider></my-prefix-p-divider>
+          <my-prefix-p-divider p-divider></my-prefix-p-divider>
         </div>
 
         <div class="playground light" title="should render default button with custom prefix">
-          <my-prefix-p-button>Some label</my-prefix-p-button>
+          <my-prefix-p-button p-button>Some label</my-prefix-p-button>
+        </div>
+
+        <div class="playground light" title="should render default button-group with custom prefix">
+          <my-prefix-p-button-group p-button-group>
+            <my-prefix-p-button p-button>Some label</my-prefix-p-button>
+            <my-prefix-p-button p-button>Some label</my-prefix-p-button>
+          </my-prefix-p-button-group>
         </div>
 
         <div class="playground light" title="should render default button-pure with custom prefix">
-          <my-prefix-p-button-pure>Some label</my-prefix-p-button-pure>
+          <my-prefix-p-button-pure p-button-pure>Some label</my-prefix-p-button-pure>
         </div>
 
         <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
-          <my-prefix-p-checkbox-wrapper label="Some label">
+          <my-prefix-p-checkbox-wrapper p-checkbox-wrapper label="Some label">
             <input type="checkbox" />
           </my-prefix-p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
-          <my-prefix-p-radio-button-wrapper label="Some label">
+          <my-prefix-p-radio-button-wrapper p-radio-button-wrapper label="Some label">
             <input type="radio" />
           </my-prefix-p-radio-button-wrapper>
         </div>
 
         <div class="playground light" title="should render default select-wrapper with custom prefix">
-          <my-prefix-p-select-wrapper label="Some label">
+          <my-prefix-p-select-wrapper p-select-wrapper label="Some label">
             <select>
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -232,73 +248,78 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper with custom prefix">
-          <my-prefix-p-text-field-wrapper label="Some label">
+          <my-prefix-p-text-field-wrapper p-text-field-wrapper label="Some label">
             <input type="text" />
           </my-prefix-p-text-field-wrapper>
         </div>
 
         <div class="playground light" title="should render default textarea-wrapper with custom prefix">
-          <my-prefix-p-textarea-wrapper label="Some label">
+          <my-prefix-p-textarea-wrapper p-textarea-wrapper label="Some label">
             <textarea></textarea>
           </my-prefix-p-textarea-wrapper>
         </div>
 
         <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <my-prefix-p-fieldset-wrapper label="Some label"></my-prefix-p-fieldset-wrapper>
+          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper label="Some label"></my-prefix-p-fieldset-wrapper>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
-          <my-prefix-p-content-wrapper>
+          <my-prefix-p-content-wrapper p-content-wrapper>
             <p>Some content</p>
           </my-prefix-p-content-wrapper>
         </div>
 
         <div class="playground light" title="should render default text with custom prefix">
-          <my-prefix-p-text>The quick brown fox jumps over the lazy dog</my-prefix-p-text>
+          <my-prefix-p-text p-text>The quick brown fox jumps over the lazy dog</my-prefix-p-text>
         </div>
 
         <div class="playground light" title="should render default text-list with custom prefix">
-          <my-prefix-p-text-list>
+          <my-prefix-p-text-list p-text-list>
             <my-prefix-p-text-list-item>The quick brown fox jumps over the lazy dog </my-prefix-p-text-list-item>
           </my-prefix-p-text-list>
         </div>
 
         <div class="playground light" title="should render default icon with custom prefix">
-          <my-prefix-p-icon></my-prefix-p-icon>
+          <my-prefix-p-icon p-icon></my-prefix-p-icon>
         </div>
 
         <div class="playground light" title="should render default link with custom prefix">
-          <my-prefix-p-link href="https://www.porsche.com">Some label</my-prefix-p-link>
+          <my-prefix-p-link p-link href="https://www.porsche.com">Some label</my-prefix-p-link>
         </div>
 
         <div class="playground light" title="should render default link-pure with custom prefix">
-          <my-prefix-p-link-pure href="https://www.porsche.com">Some label</my-prefix-p-link-pure>
+          <my-prefix-p-link-pure p-link-pure href="https://www.porsche.com">Some label</my-prefix-p-link-pure>
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <my-prefix-p-link-social href="https://www.porsche.com" icon="logo-facebook"
+          <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook"
             >Some label
           </my-prefix-p-link-social>
         </div>
 
         <div class="playground light" title="should render default marque with custom prefix">
-          <my-prefix-p-marque></my-prefix-p-marque>
+          <my-prefix-p-marque p-marque></my-prefix-p-marque>
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
-          <my-prefix-p-pagination total-items-count="500" items-per-page="25" active-page="1"></my-prefix-p-pagination>
+          <my-prefix-p-pagination
+            p-pagination
+            total-items-count="500"
+            items-per-page="25"
+            active-page="1"
+          ></my-prefix-p-pagination>
         </div>
 
         <div class="playground light" title="should render default tabs with custom prefix">
-          <my-prefix-p-tabs>
-            <my-prefix-p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+          <my-prefix-p-tabs p-tabs>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
           </my-prefix-p-tabs>
         </div>
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
-          <my-prefix-p-tabs-bar>
+          <my-prefix-p-tabs-bar p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
             <button>Tab3</button>
@@ -306,27 +327,27 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default spinner with custom prefix">
-          <my-prefix-p-spinner></my-prefix-p-spinner>
+          <my-prefix-p-spinner p-spinner></my-prefix-p-spinner>
         </div>
 
         <div class="playground light" title="should render default flex with custom prefix">
-          <my-prefix-p-flex>
-            <my-prefix-p-flex-item><p>1</p></my-prefix-p-flex-item>
-            <my-prefix-p-flex-item><p>2</p></my-prefix-p-flex-item>
+          <my-prefix-p-flex p-flex>
+            <my-prefix-p-flex-item p-flex-item><p>1</p></my-prefix-p-flex-item>
+            <my-prefix-p-flex-item p-flex-item><p>2</p></my-prefix-p-flex-item>
           </my-prefix-p-flex>
         </div>
 
         <div class="playground light" title="should render default grid with custom prefix">
-          <my-prefix-p-grid>
-            <my-prefix-p-grid-item size="6"><p>1</p></my-prefix-p-grid-item>
-            <my-prefix-p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
+          <my-prefix-p-grid p-grid>
+            <my-prefix-p-grid-item p-grid-item size="6"><p>1</p></my-prefix-p-grid-item>
+            <my-prefix-p-grid-item p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
         </div>
       </div>
     </div>
   `,
 })
-export class OverviewComponent {
+export class OverviewComponent implements OnInit {
   // solve race-condition between non-prefixed and prefixed banner focus
   public allReady: boolean = false;
 

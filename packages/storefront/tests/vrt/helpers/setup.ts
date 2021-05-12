@@ -4,6 +4,7 @@ import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
+let visualRegressionTesterPropTable: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -18,6 +19,9 @@ const testOptions: VisualRegressionTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// TODO: remove @ts-ignore when https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
+//@ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
@@ -38,4 +42,12 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionTester;
+};
+
+export const getVisualRegressionTesterPropTable = (): VisualRegressionTester => {
+  if (!visualRegressionTesterPropTable) {
+    visualRegressionTesterPropTable = new VisualRegressionTester(browser, { ...testOptions, viewports: [1760] });
+  }
+
+  return visualRegressionTesterPropTable;
 };

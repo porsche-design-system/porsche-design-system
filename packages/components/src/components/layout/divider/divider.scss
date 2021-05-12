@@ -5,17 +5,20 @@
   display: block;
 }
 
-.#{$p-global-class-prefix}divider {
+.root {
   $bem-block: &;
   margin: 0;
   padding: 0;
   border: none;
   text-align: left;
+  background-color: $p-color-neutral-contrast-low;
+
+  &--theme-dark {
+    background-color: $p-color-theme-dark-neutral-contrast-low;
+  }
 
   &--color-neutral-contrast-high {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-high;
-    }
+    background-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       background-color: $p-color-theme-dark-neutral-contrast-high;
@@ -23,22 +26,10 @@
   }
 
   &--color-neutral-contrast-medium {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-medium;
-    }
+    background-color: $p-color-neutral-contrast-medium;
 
     &#{$bem-block}--theme-dark {
       background-color: $p-color-theme-dark-neutral-contrast-medium;
-    }
-  }
-
-  &--color-neutral-contrast-low {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-low;
-    }
-
-    &#{$bem-block}--theme-dark {
-      background-color: $p-color-theme-dark-neutral-contrast-low;
     }
   }
 

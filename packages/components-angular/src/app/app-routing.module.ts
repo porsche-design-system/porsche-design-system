@@ -24,6 +24,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Button',
   },
   {
+    path: 'button-group',
+    component: fromPages.ButtonGroupComponent,
+    name: 'Button Group',
+  },
+  {
     path: 'button-pure',
     component: fromPages.ButtonPureComponent,
     name: 'Button Pure',
@@ -94,14 +99,19 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Basic',
   },
   {
-    path: 'modal-scrollable',
-    component: fromPages.ModalScrollableComponent,
-    name: 'Modal Scrollable',
+    path: 'modal-fullscreen',
+    component: fromPages.ModalFullscreenComponent,
+    name: 'Modal Fullscreen',
   },
   {
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
     name: 'Modal Prefixed',
+  },
+  {
+    path: 'modal-scrollable',
+    component: fromPages.ModalScrollableComponent,
+    name: 'Modal Scrollable',
   },
   {
     path: 'pagination',
@@ -122,6 +132,11 @@ export const routes: ExtendedRoute[] = [
     path: 'spinner',
     component: fromPages.SpinnerComponent,
     name: 'Spinner',
+  },
+  {
+    path: 'switch',
+    component: fromPages.SwitchComponent,
+    name: 'Switch',
   },
   {
     path: 'tabs',
@@ -173,6 +188,21 @@ export const routes: ExtendedRoute[] = [
     path: 'core-initializer',
     component: fromPages.CoreInitializerComponent,
     name: 'Core Initializer',
+  },
+  {
+    path: 'core-initializer-prefixed',
+    component: fromPages.CoreInitializerPrefixedComponent,
+    name: 'Core Initializer Prefixed',
+  },
+  {
+    path: 'events',
+    component: fromPages.EventsComponent,
+    name: 'Events',
+  },
+  {
+    path: 'form-wrapper-binding',
+    component: fromPages.FormWrapperBindingComponent,
+    name: 'Form Wrapper Binding',
   },
 ];
 

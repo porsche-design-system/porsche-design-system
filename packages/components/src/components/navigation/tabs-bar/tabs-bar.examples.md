@@ -9,7 +9,7 @@ content to be rendered beneath. To help with this task the component triggers an
 of the active tab.
 
 If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
-handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs) component.
+handles the correct display of content according to the active tab. Have a look at the [Tabs](components/tabs) component.
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
@@ -18,8 +18,62 @@ in your application! Therefore, we avoid messing with the window location.
 
 ## Basic example
 
+`p-tabs-bar` is a component which does not work by itself and needs to be controlled from the outside.
+This grants you flexible control over the active tab.
+
+
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
-tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors. 
+tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
+
+In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
+
+### Vanilla JS
+
+```js
+tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+  const { activeTabIndex } = tabChangeEvent.detail;
+  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+});
+```
+
+### Angular
+
+```ts
+import { Component } from '@angular/core';
+import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/types';
+
+@Component({
+  selector: 'tabs-bar-page',
+  template: `<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>`,
+})
+export class TabsBarPage {
+  tabIndex: number;
+
+  handleTabChange(e: CustomEvent<TabChangeEvent>) {
+    const { activeTabIndex } = e.detail;
+    this.tabIndex = activeTabIndex;
+  }
+}
+```
+
+### React
+
+```tsx
+import { useCallback, useState } from 'react';
+import { PTabsBar } from '@porsche-design-system/components-react';
+import type { TabChangeEvent } from '@porsche-design-system/components-react';
+
+const TabsBarPage = (): JSX.Element => {
+    const [tabIndex, setTabIndex] = useState<number>();
+    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+        const { activeTabIndex } = e.detail;
+        setTabIndex(activeTabIndex);
+    }, []);
+
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+}
+```
+
 
 <Playground :markup="basicButton" :config="config"></Playground>
 <Playground :markup="basicAnchor" :config="config"></Playground>
@@ -34,13 +88,18 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
 
 ---
+## Active Tab
+
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
+
+<Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size">
     <option disabled>Select size</option>
-    <option selected value="small">Small</option>
+    <option value="small">Small</option>
     <option value="medium">Medium</option>
   </select>
 </Playground>
@@ -50,7 +109,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight">
     <option disabled>Select weight</option>
-    <option selected value="regular">Regular</option>
+    <option value="regular">Regular</option>
     <option value="semibold">SemiBold</option>
   </select>
 </Playground>
@@ -63,23 +122,17 @@ The background and gradient has to align to your chosen background.
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme">
     <option disabled>Select gradient-color-scheme</option>
-    <option selected value="default">Default</option>
+    <option value="default">Default</option>
     <option value="surface">Surface</option>
   </select>
 </Playground>
-
-## Active Tab
-
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. 
-
-<Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   
   const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-  const buildAnchor = (name: string) => `  <a href="#">Tab ${name}</a>`;
+  const buildAnchor = (name: string) => `  <a>Tab ${name}</a>`;
   const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
@@ -136,31 +189,43 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     
     mounted(){
-      // initially update accessibility playground
-      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));
-      
-      this.registerEvents();
+      // initially update tabsBars with activeTabIndex attribute in playground
+     this.updateAndRegister();
       
       // theme switch needs to register event listeners again
-      const themeTabs = this.$el.querySelectorAll('.playground-tabs-bar p-tabs-bar');
+      const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
       themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
-        this.registerEvents();
-      }));
+        this.updateAndRegister(); 
+      }));    
     }
     
     updated(){
       this.registerEvents();
     }
+
+    updateAndRegister() {
+      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
+      this.registerEvents();
+    }
     
     registerEvents() {
-      const tabsBars = this.$el.querySelectorAll('.playground-tabs-bar .example p-tabs-bar');
-      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
-        const { activeTabIndex } = e.detail;
-        this.updateActiveTabIndex(tabsBar, activeTabIndex);
+      const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
+      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
+
+      //bind tabsBars with activeTabIndex set as attribute
+      const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
+      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
+        this.handleTabChange(e);
+        this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
       }));
     }
     
     hiddenNodes = null;
+    handleTabChange =  (e: CustomEvent) => {
+        const { activeTabIndex } = e.detail;
+        e.target.setAttribute('active-tab-index', activeTabIndex);     
+    }
+
     updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
       // manipulate code only section only in order to not rerender component and loose animations
       const example = tabs.parentElement.parentElement;
@@ -170,7 +235,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
       
       // manipulate activeTabIndex
       if (attrs.length) {
-        attrs[attrs.length - 1].innerText = `="${newIndex}"`;
+        attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
       }
       
       // manipulate hidden attribute in code of accessibility playground
@@ -178,7 +243,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
         if (!this.hiddenNodes) {
           this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         }
-        
+
         // hide/show and adjust offset of hidden attribute
         for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
           const item = this.hiddenNodes.snapshotItem(i);

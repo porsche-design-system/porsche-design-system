@@ -13,13 +13,57 @@ In web applications for the United States and/or Canada as well as with internat
 This variant is to be used whenever the United States and/or Canada are not part of the web application's target markets.
 <Playground :markup="marqueWithoutTM"></Playground>
 
+## Link
+
+The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provided.
+
+<Playground :markup="marqueWithTMAndLink"></Playground>
+
+## Bind events to the link
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the custom element.
+
+<Playground :markup="eventsMarkup"></Playground>
+
+---
+
+## Size
+
+By default, the sizing is responsive, but can be changed to a static size when needed.
+
+<Playground :markup="sizeMarkup">
+  <select v-model="size">
+    <option disabled>Select a size variant</option>
+    <option value="responsive">Responsive</option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+  </select>
+</Playground>
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   
   @Component
   export default class Code extends Vue {
+    size = 'small';
+
     marqueWithTM = `<p-marque></p-marque>`;
+    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com"></p-marque>`;
     marqueWithoutTM = `<p-marque trademark="false"></p-marque>`;
+
+    get sizeMarkup() {
+      return `<p-marque size="${this.size}"></p-marque>`;
+    }
+
+    eventsMarkup =
+`<p-marque
+  href="https://www.porsche.com"
+  onclick="alert('click'); return false;"
+  onfocus="console.log('focus')"
+  onfocusin="console.log('focusin')"
+  onblur="console.log('blur')"
+  onfocusout="console.log('focusout')"
+></p-marque>`;
   }
 </script>

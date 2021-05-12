@@ -11,6 +11,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   getLifecycleStatus,
+  waitForEventSerialization,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -41,12 +42,6 @@ describe('link', () => {
     );
   };
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(page, `<p-link href="#">Some label</p-link>`);
-    const el = await getLink();
-    expect(el).toBeDefined();
-  });
-
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,
@@ -70,7 +65,7 @@ describe('link', () => {
     }
   });
 
-  it(`should trigger focus&blur events at the correct time`, async () => {
+  it('should trigger focus & blur events at the correct time', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -99,66 +94,70 @@ describe('link', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(beforeFocusCalls).toBe(0);
-    expect(linkFocusCalls).toBe(0);
-    expect(linkFocusInCalls).toBe(0);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId(page)).toBe('');
+    expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
+    expect(linkFocusCalls).toBe(0, 'linkFocusCalls initially');
+    expect(linkFocusInCalls).toBe(0, 'linkFocusInCalls initially');
+    expect(linkBlurCalls).toBe(0, 'linkBlurCalls initially');
+    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls initially');
+    expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
+    expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(0);
-    expect(linkFocusInCalls).toBe(0);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId(page)).toBe('before');
+    await waitForEventSerialization(page);
+    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
+    expect(linkFocusCalls).toBe(0, 'linkFocusCalls after 1st tab');
+    expect(linkFocusInCalls).toBe(0, 'linkFocusInCalls after 1st tab');
+    expect(linkBlurCalls).toBe(0, 'linkBlurCalls after 1st tab');
+    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls after 1st tab');
+    expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
+    expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(1);
-    expect(linkFocusInCalls).toBe(1);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId(page)).toBe('my-link');
+    await waitForEventSerialization(page);
+    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
+    expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 2nd tab');
+    expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 2nd tab');
+    expect(linkBlurCalls).toBe(0, 'linkBlurCalls after 2nd tab');
+    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls after 2nd tab');
+    expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
+    expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 2nd tab');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(1);
-    expect(linkFocusInCalls).toBe(1);
-    expect(linkBlurCalls).toBe(1);
-    expect(linkFocusOutCalls).toBe(1);
-    expect(afterFocusCalls).toBe(1);
-    expect(await getActiveElementId(page)).toBe('after');
+    await waitForEventSerialization(page);
+    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
+    expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 3rd tab');
+    expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 3rd tab');
+    expect(linkBlurCalls).toBe(1, 'linkBlurCalls after 3rd tab');
+    expect(linkFocusOutCalls).toBe(1, 'linkFocusOutCalls after 3rd tab');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
+    expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(2);
-    expect(linkFocusInCalls).toBe(2);
-    expect(linkBlurCalls).toBe(1);
-    expect(linkFocusOutCalls).toBe(1);
-    expect(afterFocusCalls).toBe(1);
-    expect(await getActiveElementId(page)).toBe('my-link');
+    await waitForEventSerialization(page);
+    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
+    expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 1st tab back');
+    expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 1st tab back');
+    expect(linkBlurCalls).toBe(1, 'linkBlurCalls after 1st tab back');
+    expect(linkFocusOutCalls).toBe(1, 'linkFocusOutCalls after 1st tab back');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
+    expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 1st tab back');
 
-    await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(2);
-    expect(linkFocusCalls).toBe(2);
-    expect(linkFocusInCalls).toBe(2);
-    expect(linkBlurCalls).toBe(2);
-    expect(linkFocusOutCalls).toBe(2);
-    expect(afterFocusCalls).toBe(1);
-    expect(await getActiveElementId(page)).toBe('before');
+    await waitForEventSerialization(page);
+    expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
+    expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 2nd tab back');
+    expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 2nd tab back');
+    expect(linkBlurCalls).toBe(2, 'linkBlurCalls after 2nd tab back');
+    expect(linkFocusOutCalls).toBe(2, 'linkFocusOutCalls after 2nd tab back');
+    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
+    expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
 
     await page.keyboard.up('ShiftLeft');
   });
 
-  it(`should provide methods to focus&blur the element`, async () => {
+  it('should provide functionality to focus & blur the custom element', async () => {
     await setContentWithDesignSystem(
       page,
       `

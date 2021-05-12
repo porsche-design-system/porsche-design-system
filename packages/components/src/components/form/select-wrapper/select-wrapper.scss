@@ -1,29 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
-
-@mixin p-text-field-wrapper-label-text-visible() {
-  position: static;
-  width: fit-content;
-  height: auto;
-  margin: 0;
-  padding: 0 0 $p-spacing-4 0;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-}
-
-@mixin p-text-field-wrapper-label-text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-}
+@import '../../../styles/mixins';
 
 :host {
   display: block;
@@ -119,60 +96,60 @@
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
     &--visible {
-      @include p-text-field-wrapper-label-text-visible;
+      @include text-visible;
     }
 
     &--hidden {
-      @include p-text-field-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-xs {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('s') {
       &--visible-s {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-s {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('m') {
       &--visible-m {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-m {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('l') {
       &--visible-l {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-l {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include p-text-field-wrapper-label-text-visible;
+        @include text-visible;
       }
 
       &--hidden-xl {
-        @include p-text-field-wrapper-label-text-hidden;
+        @include text-hidden;
       }
     }
   }
@@ -198,9 +175,10 @@
   }
 
   &__required {
-    &::after {
-      content: '*';
-      color: $p-color-notification-error;
+    @include required;
+
+    #{$bem-block}--theme-dark & {
+      @include required('dark');
     }
   }
 
@@ -247,7 +225,7 @@
     }
 
     #{$bem-block}--theme-dark & {
-      background-color: $p-color-default;
+      background-color: $p-color-theme-dark-background-default;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
     }
 
@@ -317,7 +295,7 @@
     border: 1px solid;
     left: 0;
     right: 0;
-    max-height: p-px-to-rem(320px);
+    max-height: p-px-to-rem(308px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -335,7 +313,7 @@
 
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
-      background-color: $p-color-default;
+      background-color: $p-color-theme-dark-background-default;
     }
 
     #{$bem-block}--theme-dark:hover & {
@@ -423,7 +401,7 @@
     }
 
     &-sr {
-      @include p-text-field-wrapper-label-text-hidden;
+      @include text-hidden;
     }
 
     #{$bem-block}--theme-light & {
@@ -442,7 +420,7 @@
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-hover;
-        background-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-default;
       }
     }
 
@@ -458,7 +436,7 @@
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
-        background-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-default;
       }
 
       span + #{$bem-block}__fake-option-icon {
@@ -474,7 +452,7 @@
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
-        background-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-default;
       }
     }
 

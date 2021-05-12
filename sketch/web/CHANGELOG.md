@@ -8,40 +8,98 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Migration path from v1 to v2
-We recommend upgrading to `v2. This guide includes everything you need to migrate your offering. 
-The transition causes a major break in the UI. Ask yourself during the entire visual review and iteration process
+### [2.0.3] - 2021-04-16
+
+#### Fixed
+
+Type | Web Library |
+|---|---|
+Component | Improve Modal |
+
+### [2.0.2] - 2021-03-18
+
+#### Fixed
+
+Type | Web Library |
+|---|---|
+Component |  Various bug fixes |
+
+### [2.0.1] - 2021-01-29
+
+# v1 to v2
+
+## Introduction
+
+We recommend upgrading to v2.
+This guide includes everything you need to migrate your offering.
+
+## Why you should migrate?
+
+**Adjustments**
+
+- Porsche Next Font with new metrics
+- Surface color for dark theme regarding accessibility criteria
+- Hover/Active color for dark theme regarding accessibility criteria
+- Focus state for light and dark theme
+- Neutral color low for light theme
+- Validation Forms
+
+**New**
+
+- Select Combobox
+- Select for dark theme
+- Banner Notification
+- Modal
+- Notification soft colors for dark theme
+- Tabs and Tabs Bar
+
+## Download Sketch Libraries
+
+Head over to [Start Designing](https://designsystem.porsche.com/v2/start-designing/introduction) to set up the new Sketch libraries.
+
+## Design migration strategy
+
+The transition cause a major break in the UI.
+
+Ask yourself during the entire visual review and iteration process
+
 - Are you using the new Porsche Next?
 - Are you using the color styles correctly?
 - Is the spacing between components correct?
 - Does the general layout still work?
 
-##### Download Sketch Libraries
-Head over to [Start Designing](#/start-designing/introduction) to set up the new Sketch libraries.
+### Please note
 
-##### Please note
-Upgrading to the v2 Library will not automatically change any component created in previous version of the Library. For some Components with Text (like Buttons) you have to “Shrink the element to fit the content” in Overrides and if you have line-breaks you can set the “auto-size” Alignment.
+Upgrading to the v2 Library will not automatically change any component created in previous version of the Library. For some Components with Text (like Buttons) you have to “Shrink the element to fit the content” in Overrides and if you have
+line-breaks you can set the “auto-size” Alignment.
 
 We don’t recommend a piece-by-piece migration of your product in production. Teams should perform the migration first in a separate branch (or branches). This allows the creation of new design specs for any possible rough spots in alignment or sizing that may appear in the UI after upgrading.
 
 Meet with stakeholders from design, OM, and engineering to kick off the migration process.
 
-The font for Porsche remains Porsche Next. The font metrics was redesigned for better clarity and legibility. Work with your development team to discuss how this new metrics might affect your team’s workflow.
-[Download the modified Porsche Next](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip)
+The font for Porsche remains Porsche Next. The font metrics was redesigned for better clarity and legibility. Work with your development team to discuss how this new metrics might affect your team’s workflow. [Download the modified Porsche Next](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip)
 
-##### Get help
-If you run into trouble and need support, the Porsche Design System Team is here to help. 
-Simply go to our contribution board and [open an issue](https://github.com/porscheui/porsche-design-system-contribution) to get in touch with us. 
+## Get help
+
+If you run into trouble and need support, the Porsche Design System Team is here to help.
+Simply go to our contribution board and [open an issue](https://github.com/porscheui/porsche-design-system-contribution) to get in touch with us.
 We'll always do our best to answer your questions and connect you with the right people quickly.
 
 #### Added
+
 Type | Web Library |
 |---|---|
-Components | Select Combobox |
-Components | Select for dark theme |
-Components | Banner Notification | 
-Components | Modal |
-Components | Tabs and Tabs Bar | 
+Component | Select Combobox |
+Component | Select for dark theme |
+Component | Banner Notification |
+Component | Modal |
+Component | Tabs and Tabs Bar |
+
+#### Fixed
+
+Type | Web Library |
+|---|---|
+Component |  Validation Forms |
 
 ### [2.0.0] - 2020-08-21
 

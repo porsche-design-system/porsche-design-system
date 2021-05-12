@@ -1,40 +1,19 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
-
-@mixin p-text-field-wrapper-label-text-visible() {
-  position: static;
-  width: fit-content;
-  height: auto;
-  margin: 0;
-  padding: 0 0 $p-spacing-4 0;
-  white-space: normal;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-}
-
-@mixin p-text-field-wrapper-label-text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-}
+@import '../../../styles/mixins';
 
 :host {
   display: block;
 }
 
 ::slotted(input) {
-  position: absolute !important;
+  position: relative !important;
   top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: 100% !important;
+  height: p-px-to-rem(48px) !important;
   display: block !important;
   padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
@@ -42,10 +21,9 @@
   outline-offset: 2px !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border-width: 1px !important;
-  border-color: transparent !important;
+  border: 1px solid $p-color-neutral-contrast-medium !important;
   border-radius: 0 !important;
-  background-color: transparent !important;
+  background-color: $p-color-background-default !important;
   opacity: 1 !important;
   font-family: $p-font-family !important;
   font-weight: $p-font-weight-regular !important;
@@ -53,51 +31,41 @@
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-default !important;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-// Focus
+::slotted(input:hover) {
+  border-color: $p-color-default !important;
+}
+
 ::slotted(input:focus) {
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([state='success']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-success !important;
-}
-
-:host([state='error']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-error !important;
-}
-
-::slotted(input:read-only:focus),
-:host([state]) ::slotted(input:read-only:focus) {
+::slotted(input[readonly]:focus) {
   outline-color: transparent !important;
 }
 
-:host([state='success']) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
-:host([state='error']) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
-  outline-offset: -5px !important;
+::slotted(input:disabled) {
+  color: $p-color-state-disabled !important;
+  border-color: $p-color-state-disabled !important;
+  -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
+  cursor: not-allowed !important;
 }
 
-::slotted(input[type='search']),
-::slotted(input[type='password']) {
-  padding-right: 3rem !important;
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
 }
 
-// Read only
-::slotted(input:not(:disabled):read-only) {
-  border-width: 0 !important;
-  padding: p-px-to-rem(12px) !important;
+::slotted(input[readonly]:not(:disabled)) {
   color: $p-color-neutral-contrast-medium !important;
 }
 
-// Disabled
-::slotted(input:disabled) {
-  border-width: 0 !important;
-  padding: p-px-to-rem(12px) !important;
-  color: $p-color-state-disabled !important;
-  -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
-  cursor: not-allowed !important;
+::slotted(input[type='number']) {
+  -moz-appearance: textfield !important; // hides up/down spin button for Firefox
 }
 
 // Reset webkit autofill styles
@@ -108,196 +76,191 @@
   -webkit-background-clip: padding-box !important;
 }
 
-.#{$p-global-class-prefix}text-field-wrapper {
+.root {
+  position: relative;
+  display: block;
+
+  &--success,
+  &--error {
+    button:focus {
+      outline-offset: -5px;
+    }
+    ::slotted(input) {
+      border-width: 2px !important;
+      padding: p-px-to-rem(10px) !important;
+    }
+    ::slotted(input[readonly]:focus) {
+      outline-color: transparent !important;
+    }
+  }
+
+  &--success {
+    ::slotted(input) {
+      border-color: $p-color-notification-success !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-success !important;
+    }
+
+    .label__text:hover ~ ::slotted(input:not(:disabled):not([readonly])),
+    ::slotted(input:hover:not(:disabled):not([readonly])) {
+      border-color: darken($p-color-notification-success, 12%) !important;
+    }
+
+    + .message {
+      color: $p-color-notification-success;
+    }
+  }
+
+  &--error {
+    ::slotted(input) {
+      border-color: $p-color-notification-error !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-error !important;
+    }
+
+    .label__text:hover ~ ::slotted(input:not(:disabled):not([readonly])),
+    ::slotted(input:hover:not(:disabled):not([readonly])) {
+      border-color: darken($p-color-notification-error, 12%) !important;
+    }
+
+    + .message {
+      color: $p-color-notification-error;
+    }
+  }
+  @at-root &--password ::slotted(input),
+    ::slotted(input[type='search']) {
+    padding-right: 3rem !important;
+  }
+}
+
+.label {
   $bem-block: &;
+  display: block;
 
-  &__container {
-    position: relative;
-    display: block;
+  &--visible #{$bem-block}__text {
+    @include text-visible;
   }
 
-  &__label {
-    display: block;
+  &--hidden #{$bem-block}__text {
+    @include text-hidden;
   }
 
-  &__label-text,
-  &__description-text {
+  @include p-media-query('xs') {
+    &--visible-xs #{$bem-block}__text {
+      @include text-visible;
+    }
+
+    &--hidden-xs #{$bem-block}__text {
+      @include text-hidden;
+    }
+  }
+
+  @include p-media-query('s') {
+    &--visible-s #{$bem-block}__text {
+      @include text-visible;
+    }
+
+    &--hidden-s #{$bem-block}__text {
+      @include text-hidden;
+    }
+  }
+
+  @include p-media-query('m') {
+    &--visible-m #{$bem-block}__text {
+      @include text-visible;
+    }
+
+    &--hidden-m #{$bem-block}__text {
+      @include text-hidden;
+    }
+  }
+
+  @include p-media-query('l') {
+    &--visible-l #{$bem-block}__text {
+      @include text-visible;
+    }
+
+    &--hidden-l #{$bem-block}__text {
+      @include text-hidden;
+    }
+  }
+
+  @include p-media-query('xl') {
+    &--visible-xl #{$bem-block}__text {
+      @include text-visible;
+    }
+
+    &--hidden-xl #{$bem-block}__text {
+      @include text-hidden;
+    }
+  }
+
+  &--disabled #{$bem-block}__text {
+    color: $p-color-state-disabled;
+  }
+
+  &__text {
     display: block;
     width: fit-content;
     color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &--disabled {
-      color: $p-color-state-disabled;
+    &--description {
+      color: $p-color-neutral-contrast-medium;
     }
 
-    &--visible {
-      @include p-text-field-wrapper-label-text-visible;
-    }
-
-    &--hidden {
-      @include p-text-field-wrapper-label-text-hidden;
-    }
-
-    @include p-media-query('xs') {
-      &--visible-xs {
-        @include p-text-field-wrapper-label-text-visible;
-      }
-
-      &--hidden-xs {
-        @include p-text-field-wrapper-label-text-hidden;
-      }
-    }
-
-    @include p-media-query('s') {
-      &--visible-s {
-        @include p-text-field-wrapper-label-text-visible;
-      }
-
-      &--hidden-s {
-        @include p-text-field-wrapper-label-text-hidden;
-      }
-    }
-
-    @include p-media-query('m') {
-      &--visible-m {
-        @include p-text-field-wrapper-label-text-visible;
-      }
-
-      &--hidden-m {
-        @include p-text-field-wrapper-label-text-hidden;
-      }
-    }
-
-    @include p-media-query('l') {
-      &--visible-l {
-        @include p-text-field-wrapper-label-text-visible;
-      }
-
-      &--hidden-l {
-        @include p-text-field-wrapper-label-text-hidden;
-      }
-    }
-
-    @include p-media-query('xl') {
-      &--visible-xl {
-        @include p-text-field-wrapper-label-text-visible;
-      }
-
-      &--hidden-xl {
-        @include p-text-field-wrapper-label-text-hidden;
-      }
-    }
-  }
-
-  &__required {
-    &::after {
-      content: '*';
-      color: $p-color-notification-error;
-    }
-  }
-
-  &__description-text {
-    color: $p-color-neutral-contrast-medium;
-
-    &--disabled {
-      color: $p-color-state-disabled;
-    }
-
-    #{$bem-block}__label-text ~ & {
+    + #{$bem-block}__text--description {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
-  }
 
-  &__fake-input {
-    position: relative;
-    width: 100%;
-    height: p-px-to-rem(48px);
-    display: block;
-    background-color: $p-color-background-default;
-    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
-    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-      background-color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
-    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-default;
-    }
-
-    &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
-      background-color: $p-color-background-default;
-    }
-
-    &--readonly {
-      box-shadow: inset 0 0 0 1px #ebebeb;
-      background-color: #ebebeb;
-    }
-
-    &--success {
-      box-shadow: inset 0 0 0 2px $p-color-notification-success;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-      }
-    }
-
-    &--error {
-      box-shadow: inset 0 0 0 2px $p-color-notification-error;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-      }
+    &:hover ~ ::slotted(input:not(:disabled):not([readonly])) {
+      border-color: $p-color-default !important;
     }
   }
+}
 
-  &__message {
-    margin-top: $p-spacing-4;
-    color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+.required {
+  @include required;
+}
 
-    &--success {
-      color: $p-color-notification-success;
-    }
+.message {
+  margin-top: $p-spacing-4;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+}
 
-    &--error {
-      color: $p-color-notification-error;
-    }
+button {
+  @include p-focus($p-color-state-focus, -4px);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  width: p-px-to-rem(48px);
+  height: p-px-to-rem(48px);
+  padding: p-px-to-rem(12px);
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &:hover {
+    color: $p-color-state-hover;
   }
 
-  &__button {
-    @include p-focus($p-color-state-focus, -4px);
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    width: p-px-to-rem(48px);
-    height: p-px-to-rem(48px);
-    padding: p-px-to-rem(12px);
-    box-sizing: border-box;
-    outline: transparent none;
-    appearance: none;
-    border: none;
-    text-decoration: none;
-    background: transparent;
-    cursor: pointer;
-    color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  &:active {
+    color: $p-color-state-active;
+  }
 
-    &:hover {
-      color: $p-color-state-hover;
-    }
-
-    &:active {
-      color: $p-color-state-active;
-    }
-
-    &:disabled {
-      color: $p-color-state-disabled;
-      cursor: not-allowed;
-    }
+  &:disabled {
+    color: $p-color-state-disabled;
+    cursor: not-allowed;
   }
 }

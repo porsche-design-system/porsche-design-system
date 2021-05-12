@@ -1,48 +1,44 @@
-import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
-import type { BreakpointCustomizable } from '../../../../types';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import type {
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexInline,
+  FlexJustifyContent,
+  FlexWrap,
+} from './flex-utils';
+import { addCss } from './flex-utils';
 
 @Component({
   tag: 'p-flex',
-  styleUrl: 'flex.scss',
+  shadow: true,
 })
 export class Flex {
-  /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
-  @Prop() public inline?: BreakpointCustomizable<boolean> = false;
+  @Element() public host!: HTMLElement;
 
-  /** If set, overflowing elements will wrap to a new line. */
-  @Prop() public wrap?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'> = 'nowrap';
+  /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
+  @Prop() public inline?: FlexInline = false;
+
+  /** Handles wrapping behaviour of elements. */
+  @Prop() public wrap?: FlexWrap = 'nowrap';
 
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */
-  @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
+  @Prop() public direction?: FlexDirection = 'row';
 
   /** Defines how the flex items are aligned along the main axis. */
-  @Prop() public justifyContent?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  > = 'flex-start';
+  @Prop() public justifyContent?: FlexJustifyContent = 'flex-start';
 
   /** Defines how the flex items are aligned along the cross axis. */
-  @Prop() public alignItems?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'> =
-    'stretch';
+  @Prop() public alignItems?: FlexAlignItems = 'stretch';
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
-  @Prop() public alignContent?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  > = 'stretch';
+  @Prop() public alignContent?: FlexAlignContent = 'stretch';
+
+  public componentWillRender(): void {
+    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
+  }
 
   public render(): JSX.Element {
-    const flexClasses = {
-      [prefix('flex')]: true,
-      ...(this.inline !== false && mapBreakpointPropToPrefixedClasses('flex-', this.inline, ['inline', 'default'])),
-      ...(this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap)),
-      ...(this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction)),
-      ...(this.justifyContent !== 'flex-start' &&
-        mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent)),
-      ...(this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems)),
-      ...(this.alignContent !== 'stretch' &&
-        mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent)),
-    };
-
-    return <Host class={flexClasses} />;
+    return <slot />;
   }
 }

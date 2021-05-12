@@ -38,19 +38,10 @@ export const CheckboxWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in indeterminate mode">
         <PCheckboxWrapper label="Some label">
-          <input
-            type="checkbox"
-            name="some-name"
-            ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
-          />
+          <input type="checkbox" name="some-name" ref={(el) => el && (el.indeterminate = true)} />
         </PCheckboxWrapper>
         <PCheckboxWrapper label="Some label">
-          <input
-            type="checkbox"
-            name="some-name"
-            defaultChecked
-            ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
-          />
+          <input type="checkbox" name="some-name" defaultChecked ref={(el) => el && (el.indeterminate = true)} />
         </PCheckboxWrapper>
       </div>
 

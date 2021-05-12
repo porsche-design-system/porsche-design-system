@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -16,7 +16,6 @@ services:
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
-      - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
       - GITHUB_TOKEN
@@ -27,7 +26,6 @@ services:
       - ./:/opt/porsche-design-system-app:cached
       - home:/home/design-system
       - monorepo-node-modules:/opt/porsche-design-system-app/node_modules
-      - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - assets-node-modules:/opt/porsche-design-system-app/packages/assets/node_modules
       - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
@@ -37,15 +35,18 @@ services:
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
       - meta-icons-node-modules:/opt/porsche-design-system-app/packages/meta-icons/node_modules
-      - partials-node-modules:/opt/porsche-design-system-app/packages/partials/node_modules
+      - partials-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/partials/node_modules
+      - components-manager-cli-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-cli/node_modules
+      - components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
+      - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
+      - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
   design-system-deploy:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
-      - GIT_DEPLOY_KEY
-      - GITHUB_REPOSITORY
-      - GITHUB_ACTOR
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
       - GITHUB_REF
       - GITHUB_SHA
       - GITHUB_TOKEN
@@ -53,7 +54,7 @@ services:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages
   design-system-deploy-assets:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - CDN_USER
@@ -61,11 +62,10 @@ services:
     volumes:
       - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
-      - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
       - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
@@ -76,13 +76,16 @@ services:
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
       - meta-icons-node-modules:/opt/porsche-design-system-volumes/meta-icons-node_modules
       - partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
+      - components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
+      - components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
+      - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
+      - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
   home:
   monorepo-node-modules:
-  storefront-node-modules:
   assets-node-modules:
   components-node-modules:
   components-js-node-modules:
@@ -93,4 +96,8 @@ volumes:
   marque-node-modules:
   meta-icons-node-modules:
   partials-node-modules:
+  components-manager-cli-node-modules:
+  components-manager-core-node-modules:
+  shared-node-modules:
+  storefront-node-modules:
   utilities-node-modules:

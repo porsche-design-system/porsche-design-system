@@ -39,7 +39,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
+1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
 1. If you have to exclude code fom being prettified, see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
@@ -205,6 +205,17 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
+## AWS
+
+In order to deploy something to AWS from your local machine, you need to follow these steps.
+
+1. Install `awscli` as described here <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
+1. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
+1. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
+1. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
+
+---
+
 # Release management
 
 ## Porsche Design System - Components (JS/Angular/React)
@@ -320,32 +331,6 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 1. Create a commit with following message structure `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
-1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
-
-### Communicate
-
-1. For the moment it's treated as silent release, so no communication is required
-
----
-
-## Porsche Design System - Partials
-
-### Preparation
-
-1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
-1. Create a new branch e.g. **release/partials-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section **[Unreleased]**
-
-- `./packages/partials/CHANGELOG.md`
-
-1. Run `./docker.sh run-prepare-release-partials ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
-
-### Release
-
-1. Create a commit with following message structure `Release Porsche Design System - Partials v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/partials-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
 

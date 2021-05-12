@@ -1,0 +1,13 @@
+{
+  "name": "create-athena-partition",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && mkdir -p ./dist && zip -r ./dist/function.zip . -x '.*' -x 'yarn.lock' -x 'package.json' -x 'readme.md' -x 'dist/*'",
+    "deploy": "aws lambda update-function-code --function-name CreateAthenaPartition --zip-file fileb://dist/function.zip"
+  },
+  "dependencies": {
+    "athena-express": "^6.0.4"
+  }
+}

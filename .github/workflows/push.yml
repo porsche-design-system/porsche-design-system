@@ -8,8 +8,8 @@ on:
       - release/*
 name: 'Porsche Design System'
 jobs:
-  components-js-unit:
-    name: 'Components JS Unit'
+  components-unit:
+    name: 'Components Unit'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -46,6 +46,65 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components
+  components-js-unit:
+    name: 'Components JS Unit'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker Login'
+        uses: ./.github/actions/docker-login
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Unit Test Components Manager Core'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-manager-core
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-prod
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js-prod
+      - name: 'Unit Test Components Wrapper'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-wrapper
+      - name: 'Unit Test Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:partials
+      - name: 'Unit Regression'
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-unit-regression
+          path: ./packages/components-js/tests/unit/results
   components-js-e2e:
     name: 'Components JS E2E'
     runs-on: ubuntu-latest
@@ -79,11 +138,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -127,11 +181,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -181,11 +230,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -245,11 +289,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -286,49 +325,6 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-  partials:
-    name: 'Partials'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components' # needed for fresh TAG_NAMES
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
-          args: --partials
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
@@ -362,11 +358,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -381,11 +372,6 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
-          args: --storefront
-      - name: 'Build Storefront'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
           args: --storefront
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
@@ -436,11 +422,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Build Partials Prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -486,6 +467,16 @@ jobs:
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
+      - name: 'Store Chunks Manifest Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
+      - name: 'Store Shared Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -542,7 +533,7 @@ jobs:
           path: ./packages/utilities/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -565,7 +556,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -582,7 +573,8 @@ jobs:
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           entrypoint: run-deploy-storefront
   smoke-test:
@@ -612,6 +604,16 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Chunks Manifest Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
+      - name: 'Restore Shared Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Smoke Test'
         uses: ./.github/actions/docker-run
         with:
@@ -742,8 +744,8 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
-  release-sketch-library-basic:
-    name: 'Release Sketch Library Basic'
+  release-sketch-libraries:
+    name: 'Release Sketch Libraries'
     needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -754,30 +756,20 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish Sketch Library'
+      - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch
           args: sketch/basic
-  release-sketch-library-web:
-    name: 'Release Sketch Library Web'
-    needs: [release-sketch-library-basic]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish Sketch Library'
+      - name: 'Publish Sketch Library Web'
         uses: ./.github/actions/docker-run
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch

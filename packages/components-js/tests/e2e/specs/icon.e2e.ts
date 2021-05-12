@@ -2,27 +2,46 @@ import {
   getBrowser,
   getLifecycleStatus,
   getProperty,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
-describe('p-icon', () => {
+describe('icon', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initIcon = async (name?: IconName): Promise<void> => {
-    const attributes = name ? ` name="${name}"` : '';
-    await setContentWithDesignSystem(page, `<p-icon${attributes}></p-icon>`);
+  type InitOptions = {
+    name?: IconName;
+    isLazy?: boolean;
+    isScrollable?: boolean;
+  };
+
+  const initOptions: InitOptions[] = [{}, { isLazy: true }];
+
+  const initIcon = async (opts?: InitOptions): Promise<void> => {
+    const { name, isLazy, isScrollable } = opts ?? {};
+
+    const nameAttribute = name ? `name="${name}"` : '';
+    const lazyAttribute = isLazy ? `lazy="${isLazy}"` : '';
+    const attributes = `${nameAttribute} ${lazyAttribute}`;
+
+    const scrollContainer = `<div style="height:1000px"></div>`;
+    const content = `${isScrollable ? scrollContainer : ''}<p-icon ${attributes} />`;
+
+    await setContentWithDesignSystem(page, content);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
-  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
+  const getIcon = async () => selectNode(page, 'p-icon >>> i');
+  const getContent = (el: ElementHandle): Promise<string> => getProperty(el, 'innerHTML') as Promise<string>;
 
   describe('loading behavior', () => {
     let responseCounter: number;
@@ -74,108 +93,157 @@ describe('p-icon', () => {
       });
     };
 
-    it('should have only one response for default icon', async () => {
+    it('should load icon if lazy attribute is set to true', async () => {
       await setSvgRequestInterceptor(page, []);
-      // render with default icon "arrow-head-right"
-      await initIcon();
+      await initIcon({ name: 'highway', isLazy: true });
 
-      expect(await getContent()).toContain('arrow-head-right');
-      expect(responseCounter).toEqual(1);
+      const icon = await getIcon();
+      expect(await getContent(icon)).toContain('highway');
     });
 
-    /**
-     *                   request of default icon
-     *           |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌄
-     * TIME ===================================================>
-     *                 |_______________________⌃
-     *                   request of actual icon
-     */
-    it('should render correct icon if default-icon request takes longer than icon request', async () => {
-      const delay = 2000;
-      await setSvgRequestInterceptor(page, [delay, 0]);
+    it('should load icon if lazy attribute is set to false and icon is outside of viewport', async () => {
+      await setSvgRequestInterceptor(page, []);
+      await setContentWithDesignSystem(
+        page,
+        `<div style="height:1000px"></div><p-icon lazy="false" name="information"></p-icon>`
+      );
 
-      // render with default icon "arrow-head-right"
-      await setContentWithDesignSystem(page, `<p-icon></p-icon>`, { waitUntil: 'networkidle2' });
-      const iconComponent = await getHost();
-
-      // change icon name to "question"
-      await iconComponent.evaluate((el) => el.setAttribute('name', 'question'));
-
-      // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
-      await page.waitForTimeout(delay);
-
-      expect(await getContent()).toContain('question');
-      expect(responseCounter).toEqual(2);
+      const icon = await getIcon();
+      expect(await getContent(icon)).toContain('information');
     });
 
-    /**
-     *       request 1st icon
-     *         |‾‾‾‾‾‾‾‾‾‾⌄
-     * TIME ==================xxxxxxxxxxxx==================>
-     *                        |__________⌃
-     *                      request 2nd icon
-     */
-    it('should unset previous icon if name prop is changed', async () => {
-      await setSvgRequestInterceptor(page, [0, 1000]);
-      await initIcon('highway');
+    it('should load icon lazily if scrolled into viewport', async () => {
+      await setSvgRequestInterceptor(page, []);
+      await initIcon({ name: 'information', isLazy: true, isScrollable: true });
 
-      const iconComponent = await getHost();
-      expect(await getContent()).toContain('highway');
+      const icon = await getIcon();
+      expect(await getContent(icon)).not.toContain('information');
 
-      await iconComponent.evaluate((el) => el.setAttribute('name', 'light'));
-      expect(await getContent()).toEqual('');
-
-      await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
-
+      await page.evaluate(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      });
       await waitForStencilLifecycle(page);
 
-      expect(await getContent()).toContain('light');
-      expect(responseCounter).toEqual(2);
+      expect(await getContent(icon)).toContain('information');
     });
 
-    it('should unset previous icon if name prop is removed', async () => {
-      await setSvgRequestInterceptor(page, [2000]);
-      await initIcon('highway');
+    initOptions.forEach((opts) => {
+      describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
+        it('should have only one response for default icon', async () => {
+          await setSvgRequestInterceptor(page, []);
+          // render with default icon "arrow-head-right"
+          await initIcon(opts);
 
-      const iconComponent = await getHost();
-      expect(await getContent()).toContain('highway');
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('arrow-head-right');
+          expect(responseCounter).toEqual(1);
+        });
 
-      await iconComponent.evaluate((el) => el.removeAttribute('name'));
+        /**
+         *                   request of default icon
+         *           |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ===================================================>
+         *                 |_______________________⌃
+         *                   request of actual icon
+         */
+        it('should render correct icon if default-icon request takes longer than icon request', async () => {
+          const delay = 2000;
+          await setSvgRequestInterceptor(page, [delay, 0]);
 
-      // check name attribute
-      const outerHTML = await iconComponent.evaluate((el) => el.outerHTML);
-      await waitForStencilLifecycle(page);
+          // render with default icon "arrow-head-right"
+          await setContentWithDesignSystem(page, `<p-icon${opts.isLazy ? ' lazy="true"' : ''}></p-icon>`, {
+            waitUntil: 'networkidle2',
+          });
+          const iconComponent = await getHost();
 
-      expect(outerHTML).not.toContain('name=');
-      expect(await getContent()).toContain('arrow-head-right');
-      expect(responseCounter).toEqual(2);
+          // change icon name to "question"
+          await setAttribute(iconComponent, 'name', 'question');
+
+          // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
+          await page.waitForTimeout(delay);
+
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('question');
+          expect(responseCounter).toEqual(2);
+        });
+
+        /**
+         *       request 1st icon
+         *         |‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ==================xxxxxxxxxxxx==================>
+         *                        |__________⌃
+         *                      request 2nd icon
+         */
+        it('should unset previous icon if name prop is changed', async () => {
+          await setSvgRequestInterceptor(page, [0, 1000]);
+          await initIcon({ ...opts, name: 'highway' });
+
+          const iconComponent = await getHost();
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('highway');
+
+          await setAttribute(iconComponent, 'name', 'light');
+          await waitForEventSerialization(page);
+          expect(await getContent(icon)).toEqual('');
+
+          await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
+
+          await waitForStencilLifecycle(page);
+
+          expect(await getContent(icon)).toContain('light');
+          expect(responseCounter).toEqual(2);
+        });
+
+        it('should unset previous icon if name prop is removed', async () => {
+          await setSvgRequestInterceptor(page, [2000]);
+          await initIcon({ ...opts, name: 'highway' });
+
+          const iconComponent = await getHost();
+          const icon = await getIcon();
+          expect(await getContent(icon)).toContain('highway');
+
+          await removeAttribute(iconComponent, 'name');
+
+          // check name attribute
+          const outerHTML = await iconComponent.evaluate((el) => el.outerHTML);
+          await waitForStencilLifecycle(page);
+
+          expect(outerHTML).not.toContain('name=');
+          expect(await getContent(icon)).toContain('arrow-head-right');
+          expect(responseCounter).toEqual(2);
+        });
+      });
     });
   });
 
   describe('lifecycle', () => {
-    it('should work without unnecessary round trips on init', async () => {
-      await initIcon();
-      const status = await getLifecycleStatus(page);
+    initOptions.forEach((opts) => {
+      describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
+        it('should work without unnecessary round trips on init', async () => {
+          await initIcon(opts);
+          const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+          expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
 
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
-    });
+          expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+          expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+        });
 
-    it('should work without unnecessary round trips after state change', async () => {
-      await initIcon('highway');
-      const host = await getHost();
+        it('should work without unnecessary round trips after state change', async () => {
+          await initIcon({ ...opts, name: 'highway' });
+          const host = await getHost();
 
-      await setAttribute(host, 'name', 'car');
-      await waitForStencilLifecycle(page);
+          await setAttribute(host, 'name', 'car');
+          await waitForStencilLifecycle(page);
 
-      const status = await getLifecycleStatus(page);
+          const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+          expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
 
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+          expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+          expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+        });
+      });
     });
   });
 });

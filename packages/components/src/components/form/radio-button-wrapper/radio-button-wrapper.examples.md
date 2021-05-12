@@ -8,11 +8,17 @@ A `label` is a caption which informs the user what information a particular form
 
 <Playground :markup="basic" :config="config">
   <select v-model="label">
-    <option selected value="show">With label</option>
+    <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
   </select>
 </Playground>
+
+---
+
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
 
 ---
 
@@ -66,12 +72,20 @@ Please make sure to set the corresponding **aria** attributes.
 </p-radio-button-wrapper>`;
     }
     
+    required =
+`<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" required />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" required checked />
+</p-radio-button-wrapper>`;
+
     disabled =
 `<p-radio-button-wrapper label="Some label">
   <input type="radio" name="some-name-4" disabled />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" checked disabled />
+  <input type="radio" name="some-name-4" disabled checked />
 </p-radio-button-wrapper>`;
 
     get validation() {

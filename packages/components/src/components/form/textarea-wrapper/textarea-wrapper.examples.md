@@ -12,7 +12,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 <Playground :markup="basic" :config="config">
   <select v-model="label">
     <option disabled>Select a label mode</option>
-    <option selected value="show">With label</option>
+    <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
   </select>
@@ -25,6 +25,12 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
+
+---
+
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
 
 ---
 
@@ -87,6 +93,11 @@ Please make sure to set the corresponding **aria** attributes.
     withDescriptionText =
 `<p-textarea-wrapper label="Some label" description="Some description">
   <textarea name="some-name"></textarea>
+</p-textarea-wrapper>`;
+
+    required =
+`<p-textarea-wrapper label="Some label">
+  <textarea name="some-name" required>Some value</textarea>
 </p-textarea-wrapper>`;
 
     disabled =

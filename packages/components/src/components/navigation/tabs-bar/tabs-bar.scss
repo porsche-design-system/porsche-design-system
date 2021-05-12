@@ -29,19 +29,9 @@
   transition: color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-:host([theme='dark']) ::slotted(a),
-:host([theme='dark']) ::slotted(button) {
-  color: $p-color-theme-dark-default !important;
-}
-
 ::slotted(a:hover),
 ::slotted(button:hover) {
   color: $p-color-state-hover !important;
-}
-
-:host([theme='dark']) ::slotted(a:hover),
-:host([theme='dark']) ::slotted(button:hover) {
-  color: $p-color-theme-dark-state-hover !important;
 }
 
 ::slotted(a:active),
@@ -51,27 +41,13 @@
   color: $p-color-state-active !important;
 }
 
-:host([theme='dark']) ::slotted(a:active),
-:host([theme='dark']) ::slotted(a[aria-selected='true']),
-:host([theme='dark']) ::slotted(button:active),
-:host([theme='dark']) ::slotted(button[aria-selected='true']) {
-  color: $p-color-theme-dark-state-active !important;
-}
-
 ::slotted(a:focus),
 ::slotted(button:focus) {
   outline-color: $p-color-state-focus !important;
 }
 
-:host([theme='dark']) ::slotted(a:focus),
-:host([theme='dark']) ::slotted(button:focus) {
-  outline-color: $p-color-theme-dark-state-focus !important;
-}
-
 ::slotted(a:focus:not(:focus-visible)),
-::slotted(button:focus:not(:focus-visible)),
-:host([theme='dark']) ::slotted(a:focus:not(:focus-visible)),
-:host([theme='dark']) ::slotted(button:focus:not(:focus-visible)) {
+::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
 
@@ -80,15 +56,99 @@
   margin-right: 1em !important;
 }
 
-.#{$p-global-class-prefix}tabs-bar {
-  $bem-block: &;
+.root {
   @include p-generate-type-scale($p-font-size-small);
   font-weight: $p-font-weight-regular;
   position: relative;
   margin: 0 -4px;
 
+  &--theme-dark {
+    .status-bar {
+      background-color: $p-color-theme-dark-state-active;
+    }
+
+    .gradient--prev {
+      background: -webkit-linear-gradient(
+        rgba($p-color-theme-dark-background-default, 1) 50%,
+        rgba($p-color-theme-dark-background-default, 0) 100%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-theme-dark-background-default, 1) 50%,
+        rgba($p-color-theme-dark-background-default, 0) 100%
+      );
+
+      &.gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(
+          rgba($p-color-theme-dark-background-surface, 1) 50%,
+          rgba($p-color-theme-dark-background-surface, 0) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-theme-dark-background-surface, 1) 50%,
+          rgba($p-color-theme-dark-background-surface, 0) 100%
+        );
+      }
+    }
+
+    .gradient--next {
+      background: -webkit-linear-gradient(
+        rgba($p-color-theme-dark-background-default, 0) 0%,
+        rgba($p-color-theme-dark-background-default, 1) 50%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-theme-dark-background-default, 0) 0%,
+        rgba($p-color-theme-dark-background-default, 1) 50%
+      );
+
+      &.gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(
+          rgba($p-color-theme-dark-background-surface, 0) 0%,
+          rgba($p-color-theme-dark-background-surface, 1) 50%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-theme-dark-background-surface, 0) 0%,
+          rgba($p-color-theme-dark-background-surface, 1) 50%
+        );
+      }
+    }
+
+    ::slotted(a),
+    ::slotted(button) {
+      color: $p-color-theme-dark-default !important;
+    }
+
+    ::slotted(a:hover),
+    ::slotted(button:hover) {
+      color: $p-color-theme-dark-state-hover !important;
+    }
+
+    ::slotted(a:active),
+    ::slotted(a[aria-selected='true']),
+    ::slotted(button:active),
+    ::slotted(button[aria-selected='true']) {
+      color: $p-color-theme-dark-state-active !important;
+    }
+
+    ::slotted(a:focus),
+    ::slotted(button:focus) {
+      outline-color: $p-color-theme-dark-state-focus !important;
+    }
+
+    ::slotted(a:focus:not(:focus-visible)),
+    ::slotted(button:focus:not(:focus-visible)) {
+      outline-color: transparent !important;
+    }
+  }
+
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
+
+    .status-bar {
+      height: 0.125em;
+    }
   }
 
   &--size-small {
@@ -148,200 +208,136 @@
       @include p-generate-type-scale($p-font-size-medium);
     }
   }
+}
+.scroll-area {
+  position: relative;
+  padding: 4px 4px 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
-  &__scroll-area {
-    position: relative;
-    padding: 4px 4px 0;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    white-space: nowrap;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  &::-webkit-scrollbar {
+    display: none;
   }
+}
 
-  /* Extra wrapper needed to compensate different offset parent calculation depending of browser.
+/* Extra wrapper needed to compensate different offset parent calculation depending of browser.
   Needed for position of status bar. */
-  &__scroll-wrapper {
-    display: inline-block;
-    position: relative;
-    padding: 0 0 0.5em;
-    min-width: 100%;
+.scroll-wrapper {
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0.5em;
+  min-width: 100%;
 
-    &__trigger {
-      display: block;
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 1px;
-      visibility: hidden;
-
-      &:first-of-type {
-        left: 0;
-      }
-
-      &:last-of-type {
-        right: 0;
-      }
-    }
-  }
-
-  &__status-bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 1px;
-    height: 0.09375em;
+  &__trigger {
     display: block;
-    background-color: $p-color-state-active;
-
-    &--theme-dark {
-      background-color: $p-color-theme-dark-state-active;
-    }
-
-    &--weight-semibold {
-      height: 0.125em;
-    }
-
-    &--enable-transition {
-      will-change: width;
-      transition: transform $p-tabs-transition-duration, width $p-tabs-transition-duration;
-    }
-  }
-
-  &__action {
     position: absolute;
-    top: 4px;
-    display: flex;
-    transform: translate3d(0, 0, 0);
+    top: 0;
+    height: 100%;
+    width: 1px;
+    visibility: hidden;
 
-    &--prev {
+    &:first-of-type {
       left: 0;
-      justify-content: flex-start;
     }
 
-    &--next {
+    &:last-of-type {
       right: 0;
-      justify-content: flex-end;
     }
+  }
+}
 
-    &--hidden {
-      visibility: hidden; // to make offsetWidth work
+.status-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0.09375em;
+  display: block;
+  background-color: $p-color-state-active;
+
+  &--enable-transition {
+    will-change: width;
+    transition: transform $p-tabs-transition-duration, width $p-tabs-transition-duration;
+  }
+}
+
+.action {
+  position: absolute;
+  top: 4px;
+  display: flex;
+  transform: translate3d(0, 0, 0);
+
+  &--prev {
+    left: 0;
+    justify-content: flex-start;
+  }
+
+  &--next {
+    right: 0;
+    justify-content: flex-end;
+  }
+
+  &--hidden {
+    visibility: hidden; // to make offsetWidth work
+  }
+}
+
+.gradient {
+  $bem-block: &;
+  position: absolute;
+  top: -4px;
+  bottom: -0.5em;
+  width: 2em;
+  pointer-events: none;
+
+  &--prev {
+    background: -webkit-linear-gradient(
+      rgba($p-color-background-default, 1) 50%,
+      rgba($p-color-background-default, 0) 100%
+    );
+    background: linear-gradient(
+      90deg,
+      rgba($p-color-background-default, 1) 50%,
+      rgba($p-color-background-default, 0) 100%
+    );
+
+    &#{$bem-block}--color-scheme-surface {
+      background: -webkit-linear-gradient(
+        rgba($p-color-background-surface, 1) 50%,
+        rgba($p-color-background-surface, 0) 100%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-background-surface, 1) 50%,
+        rgba($p-color-background-surface, 0) 100%
+      );
     }
   }
 
-  &__gradient {
-    position: absolute;
-    top: -4px;
-    bottom: -0.5em;
-    width: 2em;
-    pointer-events: none;
+  &--next {
+    background: -webkit-linear-gradient(
+      rgba($p-color-background-default, 0) 0%,
+      rgba($p-color-background-default, 1) 50%
+    );
+    background: linear-gradient(
+      90deg,
+      rgba($p-color-background-default, 0) 0%,
+      rgba($p-color-background-default, 1) 50%
+    );
 
-    &--prev {
-      &#{$bem-block}__gradient--color-scheme-default {
-        background: -webkit-linear-gradient(
-          rgba($p-color-background-default, 1) 50%,
-          rgba($p-color-background-default, 0) 100%
-        );
-        background: linear-gradient(
-          90deg,
-          rgba($p-color-background-default, 1) 50%,
-          rgba($p-color-background-default, 0) 100%
-        );
-      }
-
-      &#{$bem-block}__gradient--color-scheme-surface {
-        background: -webkit-linear-gradient(
-          rgba($p-color-background-surface, 1) 50%,
-          rgba($p-color-background-surface, 0) 100%
-        );
-        background: linear-gradient(
-          90deg,
-          rgba($p-color-background-surface, 1) 50%,
-          rgba($p-color-background-surface, 0) 100%
-        );
-      }
-
-      &#{$bem-block}__gradient--theme-dark {
-        &#{$bem-block}__gradient--color-scheme-default {
-          background: -webkit-linear-gradient(
-            rgba($p-color-theme-dark-background-default, 1) 50%,
-            rgba($p-color-theme-dark-background-default, 0) 100%
-          );
-          background: linear-gradient(
-            90deg,
-            rgba($p-color-theme-dark-background-default, 1) 50%,
-            rgba($p-color-theme-dark-background-default, 0) 100%
-          );
-        }
-
-        &#{$bem-block}__gradient--color-scheme-surface {
-          background: -webkit-linear-gradient(
-            rgba($p-color-theme-dark-background-surface, 1) 50%,
-            rgba($p-color-theme-dark-background-surface, 0) 100%
-          );
-          background: linear-gradient(
-            90deg,
-            rgba($p-color-theme-dark-background-surface, 1) 50%,
-            rgba($p-color-theme-dark-background-surface, 0) 100%
-          );
-        }
-      }
-    }
-
-    &--next {
-      &#{$bem-block}__gradient--color-scheme-default {
-        background: -webkit-linear-gradient(
-          rgba($p-color-background-default, 0) 0%,
-          rgba($p-color-background-default, 1) 50%
-        );
-        background: linear-gradient(
-          90deg,
-          rgba($p-color-background-default, 0) 0%,
-          rgba($p-color-background-default, 1) 50%
-        );
-      }
-
-      &#{$bem-block}__gradient--color-scheme-surface {
-        background: -webkit-linear-gradient(
-          rgba($p-color-background-surface, 0) 0%,
-          rgba($p-color-background-surface, 1) 50%
-        );
-        background: linear-gradient(
-          90deg,
-          rgba($p-color-background-surface, 0) 0%,
-          rgba($p-color-background-surface, 1) 50%
-        );
-      }
-
-      &#{$bem-block}__gradient--theme-dark {
-        &#{$bem-block}__gradient--color-scheme-default {
-          background: -webkit-linear-gradient(
-            rgba($p-color-theme-dark-background-default, 0) 0%,
-            rgba($p-color-theme-dark-background-default, 1) 50%
-          );
-          background: linear-gradient(
-            90deg,
-            rgba($p-color-theme-dark-background-default, 0) 0%,
-            rgba($p-color-theme-dark-background-default, 1) 50%
-          );
-        }
-
-        &#{$bem-block}__gradient--color-scheme-surface {
-          background: -webkit-linear-gradient(
-            rgba($p-color-theme-dark-background-surface, 0) 0%,
-            rgba($p-color-theme-dark-background-surface, 1) 50%
-          );
-          background: linear-gradient(
-            90deg,
-            rgba($p-color-theme-dark-background-surface, 0) 0%,
-            rgba($p-color-theme-dark-background-surface, 1) 50%
-          );
-        }
-      }
+    &#{$bem-block}--color-scheme-surface {
+      background: -webkit-linear-gradient(
+        rgba($p-color-background-surface, 0) 0%,
+        rgba($p-color-background-surface, 1) 50%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-background-surface, 0) 0%,
+        rgba($p-color-background-surface, 1) 50%
+      );
     }
   }
 }

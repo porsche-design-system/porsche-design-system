@@ -10,9 +10,24 @@ A `label` is a caption which informs the user what information a particular form
 <Playground :markup="basic" :config="config">
   <select v-model="label">
     <option disabled>Select a label mode</option>
-    <option selected value="show">With label</option>
+    <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
+  </select>
+</Playground>
+
+---
+
+## Basic example without preselection
+
+To ensure the user makes a conscious choice, use `<option></option>` as placeholder.
+If the select is required, use `<option hidden></option>` to enforce a selection.
+
+<Playground :markup="basicNoPreselection" :config="config">
+  <select v-model="isRequired">
+    <option disabled>Select a label mode</option>
+    <option value="false">optional</option>
+    <option value="true">required</option>
   </select>
 </Playground>
 
@@ -37,7 +52,7 @@ The filter reduces the amount of option items by searching for the typed charact
 <Playground :markup="direction" :config="config">
   <select v-model="dropdownDirection">
     <option disabled>Select a dropdown mode</option>
-    <option selected value="down">Direction down</option>
+    <option value="down">Direction down</option>
     <option value="up">Direction up</option>
     <option value="auto">Direction auto</option>
   </select>
@@ -50,6 +65,12 @@ The filter reduces the amount of option items by searching for the typed charact
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
+
+---
+
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
 
 ---
 
@@ -112,6 +133,7 @@ selectElement.options[0].removeAttribute('selected');
     label = 'show';
     state = 'error';
     dropdownDirection = 'auto';
+    isRequired = 'false';
     
     get basic() {
       const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -121,6 +143,20 @@ selectElement.options[0].removeAttribute('selected');
   </select>
 </p-select-wrapper>`;
     }
+
+    get basicNoPreselection() { 
+  
+      const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
+      const required = this.isRequired === 'true' ? ' required' : '';
+      
+      return `<p-select-wrapper label="Some label">
+  <select name="some-name"${required}>
+    ${option}
+    ${buildOptions(['a','b','c']).join('\n    ')}
+  </select>
+</p-select-wrapper>`;
+    }
+
     
     get withFilter() {
       const options = {
@@ -404,6 +440,13 @@ get direction() {
     withDescriptionText =
 `<p-select-wrapper label="Some label" description="Some description">
   <select name="some-name">
+    ${buildOptions(['a','b','c']).join('\n    ')}
+  </select>
+</p-select-wrapper>`;
+
+    required =
+`<p-select-wrapper label="Some label">
+  <select name="some-name" required>
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
 </p-select-wrapper>`;

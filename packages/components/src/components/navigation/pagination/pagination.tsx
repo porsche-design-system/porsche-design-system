@@ -2,8 +2,8 @@ import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } f
 import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDark,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
@@ -16,7 +16,7 @@ import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme 
   shadow: true,
 })
 export class Pagination {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The total count of items. */
   @Prop() public totalItemsCount = 1;
@@ -26,7 +26,6 @@ export class Pagination {
 
   /** Index of the currently active page. */
   @Prop({
-    reflect: true,
     mutable: true,
   })
   public activePage?: number = 1;
@@ -65,7 +64,7 @@ export class Pagination {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     this.unlistenResize = listenResize(() => {
       this.updateMaxNumberOfPageLinks();
     });
@@ -81,11 +80,11 @@ export class Pagination {
     const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
     const paginationClasses = {
-      [prefix('pagination')]: true,
-      [prefix(`pagination--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root--size', this.maxNumberOfPageLinks),
     };
-    const paginationItemsClasses = prefix('pagination__items');
+
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
 
@@ -99,20 +98,18 @@ export class Pagination {
     let prevItem: JSX.Element;
     let nextItem: JSX.Element;
 
-    const paginationItemClasses = prefix('pagination__item');
-
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     paginationModel.forEach((pageModel) => {
       const { type, isActive, value } = pageModel;
       if (type === itemTypes.PREVIOUS_PAGE_LINK) {
         const paginationPrevClasses = {
-          [prefix('pagination__prev')]: true,
-          [prefix('pagination__prev--disabled')]: !isActive,
+          ['prev']: true,
+          ['prev--disabled']: !isActive,
         };
 
         prevItem = (
-          <li {...pageModel} class={paginationItemClasses}>
+          <li {...pageModel} class="item">
             <span
               class={paginationPrevClasses}
               role="button"
@@ -128,21 +125,21 @@ export class Pagination {
         );
       } else if (type === itemTypes.ELLIPSIS) {
         const paginationGoToClasses = {
-          [prefix('pagination__goto')]: true,
-          [prefix('pagination__goto--ellipsis')]: true,
+          ['goto']: true,
+          ['goto--ellipsis']: true,
         };
         pageItems.push(
-          <li {...pageModel} class={paginationItemClasses}>
+          <li {...pageModel} class="item">
             <span class={paginationGoToClasses} />
           </li>
         );
       } else if (type === itemTypes.PAGE) {
         const paginationGoToClasses = {
-          [prefix('pagination__goto')]: true,
-          [prefix('pagination__goto--current')]: isActive,
+          ['goto']: true,
+          ['goto--current']: isActive,
         };
         pageItems.push(
-          <li {...pageModel} class={paginationItemClasses}>
+          <li {...pageModel} class="item">
             <span
               class={paginationGoToClasses}
               role="button"
@@ -159,12 +156,12 @@ export class Pagination {
         );
       } else if (type === itemTypes.NEXT_PAGE_LINK) {
         const paginationNextClasses = {
-          [prefix('pagination__next')]: true,
-          [prefix('pagination__next--disabled')]: !isActive,
+          ['next']: true,
+          ['next--disabled']: !isActive,
         };
 
         nextItem = (
-          <li {...pageModel} class={paginationItemClasses}>
+          <li {...pageModel} class="item">
             <span
               class={paginationNextClasses}
               role="button"
@@ -188,7 +185,7 @@ export class Pagination {
         aria-label={this.allyLabel}
         ref={(el) => (this.navigationElement = el)}
       >
-        <ul class={paginationItemsClasses}>
+        <ul class="items">
           {prevItem}
           {pageItems}
           {nextItem}

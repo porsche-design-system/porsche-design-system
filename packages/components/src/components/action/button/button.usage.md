@@ -40,15 +40,34 @@ The default icon is an arrow right that should serve in most cases. It should be
 The text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
 
 
-### Button position
+### Alignment
 
-By default the Button is to be positioned left-aligned within a page or module. In special cases, where it serves a better user guidance, the position can be changed.
+#### **1. Left alignment (F-shaped reading pattern)**
 
-![Button position](./assets/button-position.png)
+Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
+  
+This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007). 
+  
+![F-shaped reading pattern](./assets/patterns-buttons-alignment-left-form.png)
 
-### Button width
+#### **2. Centered alignment**
 
-Even if there is no technical limit to the Button width, you should always make sure that the button remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px button width).
+**In exceptional cases** it's even possible to place Buttons **centered** to their related content: 
+
+If the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:
+  
+  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-aesthetic.png)
+If the Button relates to a larger part or even the whole page, e.g. a "Load more" Button:
+  
+  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)
+
+
+#### **3. Smaller viewports**
+
+On smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
+
+![Mobile view for Buttons](./assets/patterns-buttons-alignment-viewport-xs.png)
+
 
 ### Multi-line Buttons
 
@@ -68,3 +87,9 @@ Though it's technically possible to use multiline text in Porsche Buttons, it's 
 It is not recommended to use "icon and text" and "icon only" Button variants in direct combination. Always try to stick to a homogeneous usage of Button variants in favour of a seamless UX. 
   
 ![Example for uppercase text](./assets/button-dont.png)
+  
+---
+
+## Related components
+* [Button Group](components/button-group)
+* [Links](components/link)

@@ -5,13 +5,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.eslintcache
 
 # Dependency directories
 node_modules
 
-# Optional npm cache directory
+# Cache
+.aws-sam
 .npm
+.eslintcache
 
 # Yarn Integrity file
 .yarn-integrity

@@ -124,6 +124,14 @@ import { Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Some label'">
         <input type="password" name="some-name" value="some password" readonly />
       </p-text-field-wrapper>
+      <br />
+      <p-text-field-wrapper [label]="'Some label'" style="width: 240px;">
+        <input
+          type="password"
+          name="some-name"
+          value="some really long password with many words and amazing special characters, letters big and small, numbers"
+        />
+      </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type search in different states">

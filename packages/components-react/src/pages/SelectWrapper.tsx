@@ -143,6 +143,23 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
 
+      <div className="playground dark" title="should render in required state on dark theme">
+        <PSelectWrapper label="Some label" theme="dark">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+        <PSelectWrapper label="This is a very insanely super long label across multiple lines" theme="dark">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+      </div>
+
       <div className="playground light" title="should render in disabled state">
         <PSelectWrapper label="Some label" description="Some description">
           <select name="some-name" disabled>
@@ -433,13 +450,21 @@ export const SelectWrapperPage = (): JSX.Element => {
       <div
         className="playground light"
         title="should render in focus state and be open"
-        style={{ paddingBottom: 'calc(1rem + 126px)' }}
+        style={{ paddingBottom: 'calc(1rem + 340px)' }}
       >
         <PSelectWrapper label="Some label">
           <select id="open-options" name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+            <option value="g">Option G</option>
+            <option value="h">Option H</option>
+            <option value="i">Option I</option>
+            <option value="j">Option J</option>
+            <option value="k">Option K</option>
           </select>
         </PSelectWrapper>
       </div>
