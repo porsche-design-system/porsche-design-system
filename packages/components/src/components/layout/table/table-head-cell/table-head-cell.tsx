@@ -1,16 +1,20 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
 import { getPrefixedTagNames } from '../../../../utils';
-import { isDirectionAsc } from '../table-utils';
+import { addCss, isDirectionAsc } from '../table-utils';
 
 @Component({
   tag: 'p-table-head-cell',
-  styleUrl: './table-head-cell.scss',
+  // styleUrl: './table-head-cell.scss',
   shadow: true,
 })
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
   @Prop() public item?: TableHeadItem;
+
+  public componentWillRender(): void {
+    addCss(this.host);
+  }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -19,7 +23,7 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader">
         {isSortable ? (
-          <button onClick={() => {}}>
+          <button>
             <slot />
             <PrefixedTagNames.pIcon
               class={{

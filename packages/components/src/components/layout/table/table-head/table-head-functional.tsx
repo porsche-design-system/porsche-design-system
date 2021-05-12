@@ -22,7 +22,7 @@ export const TableHeadFunctional: FunctionalComponent<Props> = ({ head = [], onH
     <thead>
       <tr>
         {head.map((item) => {
-          const { name, isSortable, direction, isSorting } = item;
+          const { name, isSortable, direction, isSorting } = item as any;
           return (
             <th
               class={{ ['sortable']: isSortable, [`sortable--${direction}`]: true, ['sortable--active']: isSorting }}
