@@ -1,10 +1,10 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX } from '@stencil/core';
 import { insertSlottedStyles } from '../../../../utils';
-import { getSlottedCss, TableHeadItem } from '../table-utils';
+import { addCss, getSlottedCss, TableHeadItem } from '../table-utils';
 
 @Component({
   tag: 'p-table',
-  styleUrl: './table.scss',
+  // styleUrl: './table.scss',
   shadow: true,
 })
 export class Table {
@@ -14,6 +14,10 @@ export class Table {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
+  }
+
+  public componentWillRender(): void {
+    addCss(this.host);
   }
 
   public render(): JSX.Element {
