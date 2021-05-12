@@ -11,6 +11,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
@@ -33,6 +34,8 @@ describe('select-wrapper fake-dropdown', () => {
     selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
   const getFakeOptionInPosTwo = () =>
     selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+  const getFakeOptionInPosFour = () =>
+    selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(4)');
 
   const initSelect = (): Promise<void> => {
     return setContentWithDesignSystem(
@@ -74,6 +77,8 @@ describe('select-wrapper fake-dropdown', () => {
   });
 
   describe('custom drop down', () => {
+    const selectedClass = 'p-select-wrapper__fake-option--selected';
+
     it('should render', async () => {
       await setContentWithDesignSystem(
         page,
@@ -284,6 +289,26 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getNumberOfOptions()).toEqual(await getNumberOfFakeOptions());
     });
 
+    it('should observe selected property changes of native option if added programmatically', async () => {
+      await initSelect();
+      const select = await getSelect();
+
+      await select.evaluate((el: HTMLSelectElement) => {
+        const option = document.createElement('option');
+        option.text = 'Test';
+        el.add(option);
+
+        el.options[3].selected = true;
+      });
+      await waitForStencilLifecycle(page);
+
+      const fakeOptionList = await getFakeOptionList();
+      const fakeOptionD = await getFakeOptionInPosFour();
+
+      expect(await getCssClasses(fakeOptionD)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(3);
+    });
+
     it('should add/remove disabled state to fake option item if added/removed to native select programmatically', async () => {
       await initSelect();
       const select = await getSelect();
@@ -298,23 +323,11 @@ describe('select-wrapper fake-dropdown', () => {
     });
 
     it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
+      await initSelect();
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
       const fakeOptionA = await getFakeOptionInPosOne();
       const fakeOptionB = await getFakeOptionInPosTwo();
-      const selectedClass = 'p-select-wrapper__fake-option--selected';
 
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
@@ -327,38 +340,58 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
     });
 
-    it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
-      /**
-       * This test is for Browser specific behaviour which does not reflect the "selected" property as attribute and will therefore not be observed by the MutationObserver
-       */
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
+    it('should synchronize fake option and native select if selected value property is changed programmatically', async () => {
+      await initSelect();
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
       const fakeOptionA = await getFakeOptionInPosOne();
       const fakeOptionB = await getFakeOptionInPosTwo();
-      const selectedClass = 'p-select-wrapper__fake-option--selected';
 
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
-      await select.evaluate((el: HTMLSelectElement) => (el.options[0].selected = false));
+      await setProperty(select, 'value', 'b');
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+    });
+
+    it('should synchronize fake option and native select if selectedIndex property is changed programmatically', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const fakeOptionList = await getFakeOptionList();
+      const fakeOptionA = await getFakeOptionInPosOne();
+      const fakeOptionB = await getFakeOptionInPosTwo();
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await setProperty(select, 'selectedIndex', 1);
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+    });
+
+    it('should add selected state to fake option item if selected property of option is set', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const fakeOptionList = await getFakeOptionList();
+      const fakeOptionA = await getFakeOptionInPosOne();
+      const fakeOptionB = await getFakeOptionInPosTwo();
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
-      expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
-      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
     });
 
     it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {

@@ -15,6 +15,7 @@ import {
   setAriaAttributes,
   setAttribute,
   getRole,
+  observeProperties,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -78,13 +79,18 @@ export class SelectWrapper {
   }
 
   public connectedCallback(): void {
-    this.initSelect();
+    this.setSelect();
+    this.setOptions();
     this.observeSelect();
     this.addSlottedStyles();
   }
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
+    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
+    this.options.forEach((x) => {
+      observeProperties(x, ['selected'], this.setOptionList);
+    });
   }
 
   public componentDidLoad(): void {
@@ -252,12 +258,16 @@ export class SelectWrapper {
   /*
    * <START NATIVE SELECT>
    */
-  private initSelect(): void {
+  private setSelect(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
 
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
     }
+  }
+
+  private setOptions(): void {
+    this.options = getHTMLElements(this.select, 'option');
   }
 
   private get disabled(): boolean {
@@ -473,7 +483,7 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.options = getHTMLElements(this.select, 'option');
+    this.setOptions();
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
