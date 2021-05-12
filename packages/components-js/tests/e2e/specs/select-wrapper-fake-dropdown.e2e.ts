@@ -76,7 +76,7 @@ describe('select-wrapper fake-dropdown', () => {
     });
   });
 
-  fdescribe('custom drop down', () => {
+  describe('custom drop down', () => {
     const selectedClass = 'p-select-wrapper__fake-option--selected';
 
     it('should render', async () => {
