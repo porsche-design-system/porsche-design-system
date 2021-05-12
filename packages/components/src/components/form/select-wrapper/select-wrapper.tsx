@@ -80,6 +80,7 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.initSelect();
+    this.initOptions();
     this.observeSelect();
     this.addSlottedStyles();
   }
@@ -87,6 +88,9 @@ export class SelectWrapper {
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
+    this.options.forEach((x) => {
+      observeProperties(x, ['selected'], this.setOptionList);
+    });
   }
 
   public componentDidLoad(): void {
@@ -260,6 +264,10 @@ export class SelectWrapper {
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
     }
+  }
+
+  private initOptions(): void {
+    this.options = getHTMLElements(this.select, 'option');
   }
 
   private get disabled(): boolean {
@@ -475,7 +483,7 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.options = getHTMLElements(this.select, 'option');
+    this.initOptions();
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
