@@ -3,7 +3,6 @@ import { addCss } from '../table-utils';
 
 @Component({
   tag: 'p-table-head',
-  // styleUrl: './table-head.scss',
   shadow: true,
 })
 export class TableHead {

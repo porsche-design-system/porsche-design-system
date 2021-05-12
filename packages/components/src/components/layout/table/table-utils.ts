@@ -42,34 +42,34 @@ type TableComponentType = 'table' | 'table-head' | 'table-head-cell' | 'table-bo
 const baseCss: { [key in TableComponentType]: string } = {
   table: getCss(
     buildHostStyles({
-      display: 'table',
-      width: '100%',
-      borderCollapse: 'collapse',
-      borderSpacing: 0,
-      fontFamily: font.family,
+      display: 'table !important',
+      width: '100% !important',
+      borderCollapse: 'collapse !important',
+      borderSpacing: '0 !important',
+      fontFamily: `${font.family} !important`,
       ...font.size.small,
-      whiteSpace: 'nowrap',
+      whiteSpace: 'nowrap !important',
       overflow: 'auto',
     })
   ),
   'table-head': getCss({
     ...buildHostStyles({
-      display: 'table-header-group',
-      width: '100%',
-      textAlign: 'left',
-      fontWeight: font.weight.bold,
-      borderBottom: `2px solid ${color.neutralContrast.high}`,
+      display: 'table-header-group !important',
+      width: '100% !important',
+      textAlign: 'left !important',
+      fontWeight: `${font.weight.bold} !important`,
+      borderBottom: `2px solid ${color.neutralContrast.high} !important`,
     }),
-    '::slotted(*)': { border: 0 },
+    '::slotted(*)': { border: '0 !important' },
   }),
   'table-head-cell': getCss({
     ...buildHostStyles({
-      display: 'table-cell',
-      textAlign: 'left',
-      padding: `0 ${pxToRem(12)}rem ${pxToRem(8)}rem 0`,
-      verticalAlign: 'bottom',
+      display: 'table-cell !important',
+      // textAlign: 'left !important',
+      padding: `0 ${pxToRem(12)}rem ${pxToRem(8)}rem 0 !important`,
+      verticalAlign: 'bottom !important',
       '&:last-child': {
-        paddingRight: 0,
+        paddingRight: '0 !important',
       },
     }),
     ...buildGlobalStyles({
@@ -116,24 +116,25 @@ const baseCss: { [key in TableComponentType]: string } = {
   }),
   'table-body': getCss(
     buildHostStyles({
-      display: 'table-row-group',
-      width: '100%',
+      display: 'table-row-group !important',
+      width: '100% !important',
     })
   ),
   'table-row': getCss(
     buildHostStyles({
-      display: 'table-row',
-      width: '100%',
-      borderBottom: `1px solid ${color.neutralContrast.medium}`,
+      display: 'table-row !important',
+      width: '100% !important',
+      borderBottom: `1px solid ${color.neutralContrast.medium} !important`,
     })
   ),
   'table-cell': getCss({
     ...buildHostStyles({
-      display: 'table-cell',
-      padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0`,
+      display: 'table-cell !important',
+      padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0 !important`,
+      margin: '0 !important',
       verticalAlign: 'middle',
       '&:last-child': {
-        paddingRight: 0,
+        paddingRight: '0 !important',
       },
     }),
     '::slotted(*)': {
