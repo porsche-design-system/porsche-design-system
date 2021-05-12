@@ -1,26 +1,26 @@
 {
-  "hash": "7ad8ed65534ac76e3bda",
+  "hash": "25d19707076baefbd6ec",
   "version": "5.36.2",
-  "time": 3146,
-  "builtAt": 1620310096299,
+  "time": 2994,
+  "builtAt": 1620830054815,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.0-beta.1.e467c7efb5743bac2e5e.js"
+      "porsche-design-system.v2.2.0-beta.2.2bbeb30f9b01e7cab455.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.0-beta.1.e467c7efb5743bac2e5e.js",
+      "name": "porsche-design-system.v2.2.0-beta.2.2bbeb30f9b01e7cab455.js",
       "size": 62037,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "e467c7efb5743bac2e5e",
+        "contenthash": "2bbeb30f9b01e7cab455",
         "javascriptModule": false,
         "minimized": true,
         "size": 62037
@@ -40,17 +40,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.select-wrapper.edf6e0471d6f243a337a.js",
-      "size": 35127,
+      "name": "porsche-design-system.select-wrapper.0fcf633960d70ab012a0.js",
+      "size": 35298,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "edf6e0471d6f243a337a",
+        "contenthash": "0fcf633960d70ab012a0",
         "javascriptModule": false,
         "minimized": true,
-        "size": 35127
+        "size": 35298
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -65,14 +65,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.3fa06dbfd7d5cdd022b3.js",
+      "name": "porsche-design-system.radio-button-wrapper.50a63e7ab62df142c0be.js",
       "size": 18812,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3fa06dbfd7d5cdd022b3",
+        "contenthash": "50a63e7ab62df142c0be",
         "javascriptModule": false,
         "minimized": true,
         "size": 18812
@@ -90,14 +90,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.3ffc98ec7a9647c0d55a.js",
+      "name": "porsche-design-system.button-pure.80bd938d809413f07e8c.js",
       "size": 16944,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3ffc98ec7a9647c0d55a",
+        "contenthash": "80bd938d809413f07e8c",
         "javascriptModule": false,
         "minimized": true,
         "size": 16944
@@ -115,14 +115,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.284de75c633d62f1e2d6.js",
+      "name": "porsche-design-system.link-pure.f6e10e6f6f54be1db031.js",
       "size": 16616,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "284de75c633d62f1e2d6",
+        "contenthash": "f6e10e6f6f54be1db031",
         "javascriptModule": false,
         "minimized": true,
         "size": 16616
@@ -140,14 +140,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.icon.9431a9043568e43e7914.js",
+      "name": "porsche-design-system.icon.408534ac666f9b94c5db.js",
       "size": 13971,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9431a9043568e43e7914",
+        "contenthash": "408534ac666f9b94c5db",
         "javascriptModule": false,
         "minimized": true,
         "size": 13971
@@ -165,14 +165,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.51f1b8a7c52deb744f08.js",
+      "name": "porsche-design-system.tabs-bar.6a821e786c3ffe41c849.js",
       "size": 12121,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "51f1b8a7c52deb744f08",
+        "contenthash": "6a821e786c3ffe41c849",
         "javascriptModule": false,
         "minimized": true,
         "size": 12121
@@ -190,14 +190,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.d39466d5d957780ae083.js",
+      "name": "porsche-design-system.text-field-wrapper.52b17af53e3d8923ef97.js",
       "size": 11393,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d39466d5d957780ae083",
+        "contenthash": "52b17af53e3d8923ef97",
         "javascriptModule": false,
         "minimized": true,
         "size": 11393
@@ -215,14 +215,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.1cfeaadbe47acac96c17.js",
+      "name": "porsche-design-system.button.a74dae37500377b9ab72.js",
       "size": 9902,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "1cfeaadbe47acac96c17",
+        "contenthash": "a74dae37500377b9ab72",
         "javascriptModule": false,
         "minimized": true,
         "size": 9902
@@ -240,14 +240,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.0460928435e1efc3b104.js",
+      "name": "porsche-design-system.link.37afefca14448d72c76e.js",
       "size": 9191,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0460928435e1efc3b104",
+        "contenthash": "37afefca14448d72c76e",
         "javascriptModule": false,
         "minimized": true,
         "size": 9191
@@ -265,14 +265,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.c5c48adfce6fa4d5d3d9.js",
+      "name": "porsche-design-system.textarea-wrapper.a5ff5185a1e9818dd572.js",
       "size": 8735,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c5c48adfce6fa4d5d3d9",
+        "contenthash": "a5ff5185a1e9818dd572",
         "javascriptModule": false,
         "minimized": true,
         "size": 8735
@@ -290,14 +290,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.2eebd466a1cd5b9d9b1f.js",
+      "name": "porsche-design-system.pagination.c3dc54e62ea9985e4246.js",
       "size": 8477,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2eebd466a1cd5b9d9b1f",
+        "contenthash": "c3dc54e62ea9985e4246",
         "javascriptModule": false,
         "minimized": true,
         "size": 8477
@@ -315,14 +315,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.switch.4518b87a619169611aab.js",
+      "name": "porsche-design-system.switch.a769b85277e4fd047dcb.js",
       "size": 8445,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "4518b87a619169611aab",
+        "contenthash": "a769b85277e4fd047dcb",
         "javascriptModule": false,
         "minimized": true,
         "size": 8445
@@ -340,14 +340,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.0a38df8084e8454a9611.js",
+      "name": "porsche-design-system.checkbox-wrapper.8e84236e8f79cefa8439.js",
       "size": 8425,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0a38df8084e8454a9611",
+        "contenthash": "8e84236e8f79cefa8439",
         "javascriptModule": false,
         "minimized": true,
         "size": 8425
@@ -365,14 +365,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.7f61c7be4fd161f27f94.js",
+      "name": "porsche-design-system.link-social.8d64f166f11f07bd5032.js",
       "size": 8166,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "7f61c7be4fd161f27f94",
+        "contenthash": "8d64f166f11f07bd5032",
         "javascriptModule": false,
         "minimized": true,
         "size": 8166
@@ -390,14 +390,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text.a7582f8a000e40f71c5a.js",
+      "name": "porsche-design-system.text.7b98eb4d6a10d3677be4.js",
       "size": 7325,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a7582f8a000e40f71c5a",
+        "contenthash": "7b98eb4d6a10d3677be4",
         "javascriptModule": false,
         "minimized": true,
         "size": 7325
@@ -415,14 +415,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.headline.92012ecdb82ac33bd350.js",
+      "name": "porsche-design-system.headline.0ad469d1fe2de4282d82.js",
       "size": 6047,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "92012ecdb82ac33bd350",
+        "contenthash": "0ad469d1fe2de4282d82",
         "javascriptModule": false,
         "minimized": true,
         "size": 6047
@@ -440,14 +440,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.c93b60297efd0fb51885.js",
+      "name": "porsche-design-system.modal.a31e4b002052f86ca83d.js",
       "size": 5851,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c93b60297efd0fb51885",
+        "contenthash": "a31e4b002052f86ca83d",
         "javascriptModule": false,
         "minimized": true,
         "size": 5851
@@ -465,14 +465,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.69116a017a502cdd96a2.js",
+      "name": "porsche-design-system.banner.08cf783eead63a91f2b8.js",
       "size": 5687,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "69116a017a502cdd96a2",
+        "contenthash": "08cf783eead63a91f2b8",
         "javascriptModule": false,
         "minimized": true,
         "size": 5687
@@ -490,14 +490,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-group.e5051879b3b8bc7a10c5.js",
+      "name": "porsche-design-system.button-group.04a3b528504475daf479.js",
       "size": 4023,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "e5051879b3b8bc7a10c5",
+        "contenthash": "04a3b528504475daf479",
         "javascriptModule": false,
         "minimized": true,
         "size": 4023
@@ -515,14 +515,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-list.70b945d2e3dac626979b.js",
+      "name": "porsche-design-system.text-list.d6ad0a5f038cbba5312d.js",
       "size": 3664,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "70b945d2e3dac626979b",
+        "contenthash": "d6ad0a5f038cbba5312d",
         "javascriptModule": false,
         "minimized": true,
         "size": 3664
@@ -540,14 +540,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.spinner.37530194f432a7094237.js",
+      "name": "porsche-design-system.spinner.e55710ef1112639714a2.js",
       "size": 3629,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "37530194f432a7094237",
+        "contenthash": "e55710ef1112639714a2",
         "javascriptModule": false,
         "minimized": true,
         "size": 3629
@@ -565,14 +565,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.37f516640e79ca63d86f.js",
+      "name": "porsche-design-system.marque.0f65003e08988071ed07.js",
       "size": 3280,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "37f516640e79ca63d86f",
+        "contenthash": "0f65003e08988071ed07",
         "javascriptModule": false,
         "minimized": true,
         "size": 3280
@@ -590,14 +590,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs.dbd0a45abe8d0f7b85ac.js",
+      "name": "porsche-design-system.tabs.22055e2dc951e586afc5.js",
       "size": 2380,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "dbd0a45abe8d0f7b85ac",
+        "contenthash": "22055e2dc951e586afc5",
         "javascriptModule": false,
         "minimized": true,
         "size": 2380
@@ -615,14 +615,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.flex.9825dfbdf9f4142876b7.js",
+      "name": "porsche-design-system.flex.95ddf67808d69e3796a7.js",
       "size": 2010,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9825dfbdf9f4142876b7",
+        "contenthash": "95ddf67808d69e3796a7",
         "javascriptModule": false,
         "minimized": true,
         "size": 2010
@@ -640,14 +640,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.grid.2ead7826733518ce79d4.js",
+      "name": "porsche-design-system.grid.a81e3ebb0e60fdc921f8.js",
       "size": 1911,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2ead7826733518ce79d4",
+        "contenthash": "a81e3ebb0e60fdc921f8",
         "javascriptModule": false,
         "minimized": true,
         "size": 1911
@@ -665,14 +665,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.divider.f193b861d02a87a33b1e.js",
+      "name": "porsche-design-system.divider.289221ec9cc6450db074.js",
       "size": 1874,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "f193b861d02a87a33b1e",
+        "contenthash": "289221ec9cc6450db074",
         "javascriptModule": false,
         "minimized": true,
         "size": 1874
@@ -690,14 +690,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.a428be3cd5a25c8774c8.js",
+      "name": "porsche-design-system.fieldset-wrapper.3ec33c9f6dd56a677f99.js",
       "size": 1823,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a428be3cd5a25c8774c8",
+        "contenthash": "3ec33c9f6dd56a677f99",
         "javascriptModule": false,
         "minimized": true,
         "size": 1823
@@ -715,14 +715,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.content-wrapper.ad954856866ebfa31ad1.js",
+      "name": "porsche-design-system.content-wrapper.e2b8e08c8b2ee84e663d.js",
       "size": 1175,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ad954856866ebfa31ad1",
+        "contenthash": "e2b8e08c8b2ee84e663d",
         "javascriptModule": false,
         "minimized": true,
         "size": 1175
@@ -755,10 +755,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.69116a017a502cdd96a2.js"
+        "porsche-design-system.banner.08cf783eead63a91f2b8.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "19073dc21916c710a20b",
+      "hash": "addcf8b0b6f29d7045e5",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -1145,7 +1145,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -1981,7 +1981,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -2134,10 +2134,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.1cfeaadbe47acac96c17.js"
+        "porsche-design-system.button.a74dae37500377b9ab72.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fb4fe8bc18fdf5560677",
+      "hash": "f4043ccfcbefd3f5140b",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -3132,7 +3132,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -3285,10 +3285,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-group.e5051879b3b8bc7a10c5.js"
+        "porsche-design-system.button-group.04a3b528504475daf479.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "684acbc4224c67275c35",
+      "hash": "144b27bcc5532a63229d",
       "childrenByOrder": {},
       "id": "button-group",
       "siblings": [],
@@ -3406,10 +3406,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.3ffc98ec7a9647c0d55a.js"
+        "porsche-design-system.button-pure.80bd938d809413f07e8c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c61eeccfb4afdb33e5b3",
+      "hash": "73df80966e3af2ac0673",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -4828,7 +4828,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -4981,10 +4981,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.0a38df8084e8454a9611.js"
+        "porsche-design-system.checkbox-wrapper.8e84236e8f79cefa8439.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "802adcfa75c6f1db5124",
+      "hash": "b9b9ad463c3118dee3e8",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -5139,7 +5139,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-efd25e24.js",
-              "loc": "265:4-21",
+              "loc": "272:4-21",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -5589,7 +5589,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -5744,10 +5744,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.content-wrapper.ad954856866ebfa31ad1.js"
+        "porsche-design-system.content-wrapper.e2b8e08c8b2ee84e663d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "483415805bb9436d0015",
+      "hash": "19318e059656a9062a73",
       "childrenByOrder": {},
       "id": "content-wrapper",
       "siblings": [],
@@ -6248,7 +6248,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -6401,10 +6401,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.divider.f193b861d02a87a33b1e.js"
+        "porsche-design-system.divider.289221ec9cc6450db074.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a35c55d086032b9265c7",
+      "hash": "ea44e2cfce502c5c29ef",
       "childrenByOrder": {},
       "id": "divider",
       "siblings": [],
@@ -6905,7 +6905,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -7058,10 +7058,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.a428be3cd5a25c8774c8.js"
+        "porsche-design-system.fieldset-wrapper.3ec33c9f6dd56a677f99.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "05775c64a31f7d35e749",
+      "hash": "67ffc341fc03e12868bc",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -7179,10 +7179,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.flex.9825dfbdf9f4142876b7.js"
+        "porsche-design-system.flex.95ddf67808d69e3796a7.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "262a0815fb49124e4ff9",
+      "hash": "4aa4ccd6bf84bbf92eee",
       "childrenByOrder": {},
       "id": "flex",
       "siblings": [],
@@ -7301,10 +7301,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.grid.2ead7826733518ce79d4.js"
+        "porsche-design-system.grid.a81e3ebb0e60fdc921f8.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "815827d6864d57674e8f",
+      "hash": "083fd75a5efb61465e3a",
       "childrenByOrder": {},
       "id": "grid",
       "siblings": [],
@@ -7723,10 +7723,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.headline.92012ecdb82ac33bd350.js"
+        "porsche-design-system.headline.0ad469d1fe2de4282d82.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0abaf031341657b98d83",
+      "hash": "b912f79353d9fd1d711e",
       "childrenByOrder": {},
       "id": "headline",
       "siblings": [],
@@ -8112,7 +8112,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -8649,7 +8649,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -8802,10 +8802,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.icon.9431a9043568e43e7914.js"
+        "porsche-design-system.icon.408534ac666f9b94c5db.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b6b80c6f322b7c33c856",
+      "hash": "9231b78e7992edd74d61",
       "childrenByOrder": {},
       "id": "icon",
       "siblings": [],
@@ -9307,7 +9307,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -9460,10 +9460,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.0460928435e1efc3b104.js"
+        "porsche-design-system.link.37afefca14448d72c76e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "efd1cd11c6e48a6fb2e1",
+      "hash": "7f85708ef348591ef11a",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -10153,7 +10153,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -10690,7 +10690,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -10843,10 +10843,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.284de75c633d62f1e2d6.js"
+        "porsche-design-system.link-pure.f6e10e6f6f54be1db031.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "99d75df361a814b234e5",
+      "hash": "d989b80dc248e24141d6",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -11710,7 +11710,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -12497,7 +12497,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -12650,10 +12650,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.7f61c7be4fd161f27f94.js"
+        "porsche-design-system.link-social.8d64f166f11f07bd5032.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "cc39b024448b3972a963",
+      "hash": "654f6373fef0c88169c3",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -13343,7 +13343,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -13880,7 +13880,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -14036,10 +14036,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.0-beta.1.e467c7efb5743bac2e5e.js"
+        "porsche-design-system.v2.2.0-beta.2.2bbeb30f9b01e7cab455.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "e036b3b51f1a9d907f5d",
+      "hash": "755493a3a3d99736809a",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -14196,35 +14196,35 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "1:0-59",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "7:19-36",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14234,11 +14234,11 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "2:0-76",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14248,11 +14248,11 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "8:11-25",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14262,7 +14262,7 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "12:9-22",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
@@ -14322,11 +14322,11 @@
               "resolvedModuleId": 913
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "module": "../components/dist/esm/app-globals-8bc01a2b.js",
-              "moduleName": "../components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "module": "../components/dist/esm/app-globals-f95a804b.js",
+              "moduleName": "../components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
@@ -14336,11 +14336,11 @@
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "module": "../components/dist/esm/app-globals-8bc01a2b.js",
-              "moduleName": "../components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "module": "../components/dist/esm/app-globals-f95a804b.js",
+              "moduleName": "../components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
@@ -18531,7 +18531,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "41:4-20",
+              "loc": "44:4-20",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18545,7 +18545,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "172:21-36",
+              "loc": "278:6-18",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18559,7 +18559,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "271:6-18",
+              "loc": "289:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18573,7 +18573,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "282:7-13",
+              "loc": "290:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18587,7 +18587,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "283:7-13",
+              "loc": "292:42-48",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18601,7 +18601,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "285:42-48",
+              "loc": "292:83-89",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18615,119 +18615,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "285:83-89",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "285:144-178",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "287:7-13",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "288:7-13",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "290:48-54",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "290:95-101",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "290:162-196",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "292:7-13",
-              "moduleId": 510,
-              "resolvedModuleId": 510
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "module": "../components/dist/esm/p-select-wrapper.entry.js",
-              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-1faf5940.js",
-              "loc": "293:7-13",
+              "loc": "292:144-178",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18755,7 +18643,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "297:7-13",
+              "loc": "295:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18769,7 +18657,35 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "298:7-13",
+              "loc": "297:48-54",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "297:95-101",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "297:162-196",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18797,7 +18713,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "302:7-13",
+              "loc": "300:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18811,7 +18727,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "303:7-13",
+              "loc": "301:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18839,7 +18755,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "307:7-13",
+              "loc": "305:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18853,7 +18769,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "308:7-13",
+              "loc": "306:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18881,7 +18797,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "312:7-13",
+              "loc": "310:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18895,7 +18811,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "313:7-13",
+              "loc": "311:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18937,7 +18853,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "317:29-48",
+              "loc": "316:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18951,7 +18867,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:12-13",
+              "loc": "319:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18965,7 +18881,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:14-18",
+              "loc": "320:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18979,7 +18895,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:26-27",
+              "loc": "321:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -18993,7 +18909,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:61-62",
+              "loc": "322:7-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19007,7 +18923,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:115-116",
+              "loc": "324:29-48",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19021,7 +18937,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:237-238",
+              "loc": "325:12-13",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19035,7 +18951,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:267-297",
+              "loc": "325:14-18",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19049,7 +18965,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:325-326",
+              "loc": "325:26-27",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19063,7 +18979,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:400-401",
+              "loc": "325:61-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19077,7 +18993,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:551-552",
+              "loc": "325:115-116",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19091,7 +19007,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:589-590",
+              "loc": "325:237-238",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19105,7 +19021,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:629-630",
+              "loc": "325:267-297",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19119,7 +19035,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "318:723-724",
+              "loc": "325:325-326",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19133,7 +19049,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "319:6-7",
+              "loc": "325:400-401",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19147,7 +19063,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "320:6-7",
+              "loc": "325:551-552",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19161,7 +19077,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "321:37-38",
+              "loc": "325:589-590",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19175,7 +19091,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "321:438-439",
+              "loc": "325:629-630",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19189,7 +19105,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "321:513-520",
+              "loc": "325:723-724",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19203,7 +19119,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "321:552-553",
+              "loc": "326:6-7",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19217,7 +19133,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "324:27-39",
+              "loc": "327:6-7",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19231,7 +19147,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "327:33-45",
+              "loc": "328:37-38",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19245,7 +19161,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "330:30-42",
+              "loc": "328:438-439",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19259,7 +19175,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "336:18-51",
+              "loc": "328:513-520",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19273,7 +19189,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "338:6-18",
+              "loc": "328:552-553",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19287,7 +19203,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "398:23-38",
+              "loc": "331:27-39",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19301,7 +19217,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "398:68-74",
+              "loc": "334:33-45",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19315,7 +19231,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "431:29-48",
+              "loc": "337:30-42",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19329,7 +19245,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "432:37-38",
+              "loc": "343:18-51",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19343,7 +19259,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "432:55-61",
+              "loc": "345:6-18",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19357,7 +19273,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "432:135-136",
+              "loc": "349:19-34",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19371,7 +19287,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "432:180-181",
+              "loc": "408:23-38",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19385,7 +19301,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "432:199-205",
+              "loc": "408:68-74",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19399,7 +19315,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "437:8-18",
+              "loc": "441:29-48",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19413,7 +19329,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "437:98-99",
+              "loc": "442:37-38",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19427,7 +19343,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "437:117-123",
+              "loc": "442:55-61",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19441,7 +19357,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "437:188-209",
+              "loc": "442:135-136",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19455,7 +19371,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "438:8-9",
+              "loc": "442:180-181",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19469,7 +19385,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "439:13-19",
+              "loc": "442:199-205",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19483,7 +19399,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "440:13-19",
+              "loc": "447:8-18",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19497,7 +19413,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "441:13-19",
+              "loc": "447:98-99",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19511,7 +19427,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "442:13-19",
+              "loc": "447:117-123",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19525,7 +19441,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "443:13-19",
+              "loc": "447:188-209",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19539,7 +19455,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "444:320-321",
+              "loc": "448:8-9",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19553,7 +19469,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "444:374-375",
+              "loc": "449:13-19",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19567,7 +19483,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "444:409-415",
+              "loc": "450:13-19",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19581,7 +19497,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "470:39-54",
+              "loc": "451:13-19",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19595,7 +19511,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "494:20-30",
+              "loc": "452:13-19",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -19609,7 +19525,91 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
-              "loc": "498:22-32",
+              "loc": "453:13-19",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "454:320-321",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "454:374-375",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "454:409-415",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "480:39-54",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "504:20-30",
+              "moduleId": 510,
+              "resolvedModuleId": 510
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "module": "../components/dist/esm/p-select-wrapper.entry.js",
+              "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+              "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1faf5940.js",
+              "loc": "508:22-32",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -22085,7 +22085,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22095,11 +22095,11 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "4:0-60",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22109,7 +22109,7 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "7:7-16",
-              "moduleId": 113,
+              "moduleId": 446,
               "resolvedModuleId": null
             },
             {
@@ -22246,7 +22246,7 @@
           "codeGenerated": true,
           "buildTimeExecuted": false,
           "cached": false,
-          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "name": "./projects/components-wrapper/src/index.js + 4 modules",
           "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
           "index": 0,
@@ -22260,7 +22260,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 113,
+          "id": 446,
           "chunks": [
             "main"
           ],
@@ -22552,9 +22552,9 @@
               "codeGenerated": false,
               "buildTimeExecuted": false,
               "cached": false,
-              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-              "name": "../components/dist/esm/app-globals-8bc01a2b.js",
-              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
+              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+              "name": "../components/dist/esm/app-globals-f95a804b.js",
+              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
               "index": 4,
               "preOrderIndex": 4,
               "index2": 2,
@@ -22594,7 +22594,7 @@
                   "type": "harmony side effect evaluation",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-8bc01a2b.js",
+                  "userRequest": "./app-globals-f95a804b.js",
                   "loc": "3:0-63",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -22608,7 +22608,7 @@
                   "type": "harmony import specifier",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-8bc01a2b.js",
+                  "userRequest": "./app-globals-f95a804b.js",
                   "loc": "11:2-15",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -23035,10 +23035,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.37f516640e79ca63d86f.js"
+        "porsche-design-system.marque.0f65003e08988071ed07.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0640d273e8558bfc4358",
+      "hash": "6113467ed3706134f140",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23460,10 +23460,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.c93b60297efd0fb51885.js"
+        "porsche-design-system.modal.a31e4b002052f86ca83d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "d913f0d7b04d99dab660",
+      "hash": "846b0e9a17d68f630b6d",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -23587,7 +23587,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./device-detection-be3e2cc5.js",
-              "loc": "367:35-48",
+              "loc": "377:35-48",
               "moduleId": 510,
               "resolvedModuleId": 510
             }
@@ -23715,10 +23715,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.2eebd466a1cd5b9d9b1f.js"
+        "porsche-design-system.pagination.c3dc54e62ea9985e4246.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "121de635197942955d57",
+      "hash": "f32628896fe41d974cad",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -24697,7 +24697,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -24850,10 +24850,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.3fa06dbfd7d5cdd022b3.js"
+        "porsche-design-system.radio-button-wrapper.50a63e7ab62df142c0be.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b5e20526b95b65021730",
+      "hash": "d46d0399774a5e5368f2",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -25008,7 +25008,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-efd25e24.js",
-              "loc": "265:4-21",
+              "loc": "272:4-21",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -25458,7 +25458,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -25603,9 +25603,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 45323,
+      "size": 45358,
       "sizes": {
-        "javascript": 45323
+        "javascript": 45358
       },
       "names": [],
       "idHints": [],
@@ -25613,10 +25613,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.select-wrapper.edf6e0471d6f243a337a.js"
+        "porsche-design-system.select-wrapper.0fcf633960d70ab012a0.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "583dfdff9f9948bd8660",
+      "hash": "3630ea426e5a28701a56",
       "childrenByOrder": {},
       "id": "select-wrapper",
       "siblings": [],
@@ -25771,7 +25771,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-efd25e24.js",
-              "loc": "265:4-21",
+              "loc": "272:4-21",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -25959,7 +25959,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./device-detection-be3e2cc5.js",
-              "loc": "367:35-48",
+              "loc": "377:35-48",
               "moduleId": 510,
               "resolvedModuleId": 510
             }
@@ -25981,9 +25981,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 42739,
+          "size": 42774,
           "sizes": {
-            "javascript": 42739
+            "javascript": 42774
           },
           "built": true,
           "codeGenerated": true,
@@ -26054,7 +26054,7 @@
             "p_select_wrapper"
           ],
           "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 500:0-39",
+            "Statement (ExpressionStatement) with side effects in source code at 510:0-39",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-efd25e24.js: Module ../components/dist/esm/a11y-efd25e24.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-modal.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-1faf5940.js: Module ../components/dist/esm/jss-1faf5940.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
@@ -26356,7 +26356,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -26893,7 +26893,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -27046,10 +27046,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.spinner.37530194f432a7094237.js"
+        "porsche-design-system.spinner.e55710ef1112639714a2.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "2f84b466e9bceb7ffe93",
+      "hash": "7be055a39e07e8f590db",
       "childrenByOrder": {},
       "id": "spinner",
       "siblings": [],
@@ -27550,7 +27550,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -27703,10 +27703,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.switch.4518b87a619169611aab.js"
+        "porsche-design-system.switch.a769b85277e4fd047dcb.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "4d97fb65f8226f41fa05",
+      "hash": "3b56c555f5e51897655c",
       "childrenByOrder": {},
       "id": "switch",
       "siblings": [],
@@ -28318,10 +28318,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs.dbd0a45abe8d0f7b85ac.js"
+        "porsche-design-system.tabs.22055e2dc951e586afc5.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b511f9d9a23c8013a037",
+      "hash": "21a1329dcd18c56ffbda",
       "childrenByOrder": {},
       "id": "tabs",
       "siblings": [],
@@ -28440,10 +28440,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.51f1b8a7c52deb744f08.js"
+        "porsche-design-system.tabs-bar.6a821e786c3ffe41c849.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "38a5452e5a074116f69d",
+      "hash": "c071fa3ebe00057de457",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -29244,7 +29244,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -29397,10 +29397,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text.a7582f8a000e40f71c5a.js"
+        "porsche-design-system.text.7b98eb4d6a10d3677be4.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "4e24db5b5e2133693870",
+      "hash": "b1b5e6509f185f0d9f9e",
       "childrenByOrder": {},
       "id": "text",
       "siblings": [],
@@ -29960,7 +29960,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -30747,7 +30747,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -30900,10 +30900,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.d39466d5d957780ae083.js"
+        "porsche-design-system.text-field-wrapper.52b17af53e3d8923ef97.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b53c329c89bd59d2e410",
+      "hash": "91e12718f1c15da1875e",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -31058,7 +31058,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-efd25e24.js",
-              "loc": "265:4-21",
+              "loc": "272:4-21",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -31698,7 +31698,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -31853,10 +31853,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-list.70b945d2e3dac626979b.js"
+        "porsche-design-system.text-list.d6ad0a5f038cbba5312d.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "7f79b66f7479385623b7",
+      "hash": "96cd71e671d3457b6e2e",
       "childrenByOrder": {},
       "id": "text-list",
       "siblings": [],
@@ -32244,7 +32244,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -33080,7 +33080,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "288:56-62",
+              "loc": "295:56-62",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -33233,10 +33233,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.c5c48adfce6fa4d5d3d9.js"
+        "porsche-design-system.textarea-wrapper.a5ff5185a1e9818dd572.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0ef9f1d220cd3c1ab837",
+      "hash": "ec8fa559542a988640d4",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -33391,7 +33391,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./a11y-efd25e24.js",
-              "loc": "265:4-21",
+              "loc": "272:4-21",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -33841,7 +33841,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "496:4-23",
+              "loc": "506:4-23",
               "moduleId": 510,
               "resolvedModuleId": 510
             },
@@ -33995,7 +33995,7 @@
       "codeGenerated": true,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
       "name": "./projects/components-wrapper/src/index.js + 4 modules",
       "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
       "index": 0,
@@ -34008,7 +34008,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 113,
+      "id": 446,
       "chunks": [
         "main"
       ],
@@ -34297,9 +34297,9 @@
           "codeGenerated": false,
           "buildTimeExecuted": false,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "name": "../components/dist/esm/app-globals-8bc01a2b.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "name": "../components/dist/esm/app-globals-f95a804b.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
           "index": 4,
           "preOrderIndex": 4,
           "index2": 2,
@@ -34338,7 +34338,7 @@
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-8bc01a2b.js",
+              "userRequest": "./app-globals-f95a804b.js",
               "loc": "3:0-63",
               "moduleId": null,
               "resolvedModuleId": null
@@ -34352,7 +34352,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-8bc01a2b.js",
+              "userRequest": "./app-globals-f95a804b.js",
               "loc": "11:2-15",
               "moduleId": null,
               "resolvedModuleId": null
@@ -34699,7 +34699,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -34709,11 +34709,11 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "2:0-95",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -34723,7 +34723,7 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "4:0-29",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         }
       ],
@@ -34784,35 +34784,35 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "1:0-59",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "7:19-36",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34822,11 +34822,11 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "2:0-76",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34836,11 +34836,11 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "8:11-25",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34850,7 +34850,7 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "12:9-22",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
@@ -34910,11 +34910,11 @@
           "resolvedModuleId": 913
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "module": "../components/dist/esm/app-globals-8bc01a2b.js",
-          "moduleName": "../components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "module": "../components/dist/esm/app-globals-f95a804b.js",
+          "moduleName": "../components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
@@ -34924,11 +34924,11 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "module": "../components/dist/esm/app-globals-8bc01a2b.js",
-          "moduleName": "../components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-          "resolvedModule": "../components/dist/esm/app-globals-8bc01a2b.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "module": "../components/dist/esm/app-globals-f95a804b.js",
+          "moduleName": "../components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+          "resolvedModule": "../components/dist/esm/app-globals-f95a804b.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
@@ -39119,7 +39119,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "41:4-20",
+          "loc": "44:4-20",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39133,7 +39133,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "172:21-36",
+          "loc": "278:6-18",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39147,7 +39147,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "271:6-18",
+          "loc": "289:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39161,7 +39161,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "282:7-13",
+          "loc": "290:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39175,7 +39175,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "283:7-13",
+          "loc": "292:42-48",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39189,7 +39189,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "285:42-48",
+          "loc": "292:83-89",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39203,119 +39203,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "285:83-89",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "285:144-178",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "287:7-13",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "288:7-13",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "290:48-54",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "290:95-101",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "290:162-196",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "292:7-13",
-          "moduleId": 510,
-          "resolvedModuleId": 510
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "module": "../components/dist/esm/p-select-wrapper.entry.js",
-          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
-          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-1faf5940.js",
-          "loc": "293:7-13",
+          "loc": "292:144-178",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39343,7 +39231,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "297:7-13",
+          "loc": "295:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39357,7 +39245,35 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "298:7-13",
+          "loc": "297:48-54",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "297:95-101",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "297:162-196",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39385,7 +39301,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "302:7-13",
+          "loc": "300:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39399,7 +39315,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "303:7-13",
+          "loc": "301:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39427,7 +39343,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "307:7-13",
+          "loc": "305:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39441,7 +39357,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "308:7-13",
+          "loc": "306:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39469,7 +39385,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "312:7-13",
+          "loc": "310:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39483,7 +39399,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "313:7-13",
+          "loc": "311:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39525,7 +39441,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "317:29-48",
+          "loc": "316:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39539,7 +39455,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:12-13",
+          "loc": "319:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39553,7 +39469,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:14-18",
+          "loc": "320:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39567,7 +39483,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:26-27",
+          "loc": "321:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39581,7 +39497,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:61-62",
+          "loc": "322:7-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39595,7 +39511,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:115-116",
+          "loc": "324:29-48",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39609,7 +39525,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:237-238",
+          "loc": "325:12-13",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39623,7 +39539,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:267-297",
+          "loc": "325:14-18",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39637,7 +39553,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:325-326",
+          "loc": "325:26-27",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39651,7 +39567,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:400-401",
+          "loc": "325:61-62",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39665,7 +39581,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:551-552",
+          "loc": "325:115-116",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39679,7 +39595,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:589-590",
+          "loc": "325:237-238",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39693,7 +39609,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:629-630",
+          "loc": "325:267-297",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39707,7 +39623,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "318:723-724",
+          "loc": "325:325-326",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39721,7 +39637,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "319:6-7",
+          "loc": "325:400-401",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39735,7 +39651,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "320:6-7",
+          "loc": "325:551-552",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39749,7 +39665,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "321:37-38",
+          "loc": "325:589-590",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39763,7 +39679,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "321:438-439",
+          "loc": "325:629-630",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39777,7 +39693,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "321:513-520",
+          "loc": "325:723-724",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39791,7 +39707,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "321:552-553",
+          "loc": "326:6-7",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39805,7 +39721,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "324:27-39",
+          "loc": "327:6-7",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39819,7 +39735,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "327:33-45",
+          "loc": "328:37-38",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39833,7 +39749,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "330:30-42",
+          "loc": "328:438-439",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39847,7 +39763,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "336:18-51",
+          "loc": "328:513-520",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39861,7 +39777,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "338:6-18",
+          "loc": "328:552-553",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39875,7 +39791,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "398:23-38",
+          "loc": "331:27-39",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39889,7 +39805,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "398:68-74",
+          "loc": "334:33-45",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39903,7 +39819,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "431:29-48",
+          "loc": "337:30-42",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39917,7 +39833,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "432:37-38",
+          "loc": "343:18-51",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39931,7 +39847,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "432:55-61",
+          "loc": "345:6-18",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39945,7 +39861,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "432:135-136",
+          "loc": "349:19-34",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39959,7 +39875,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "432:180-181",
+          "loc": "408:23-38",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39973,7 +39889,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "432:199-205",
+          "loc": "408:68-74",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -39987,7 +39903,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "437:8-18",
+          "loc": "441:29-48",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40001,7 +39917,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "437:98-99",
+          "loc": "442:37-38",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40015,7 +39931,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "437:117-123",
+          "loc": "442:55-61",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40029,7 +39945,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "437:188-209",
+          "loc": "442:135-136",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40043,7 +39959,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "438:8-9",
+          "loc": "442:180-181",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40057,7 +39973,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "439:13-19",
+          "loc": "442:199-205",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40071,7 +39987,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "440:13-19",
+          "loc": "447:8-18",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40085,7 +40001,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "441:13-19",
+          "loc": "447:98-99",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40099,7 +40015,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "442:13-19",
+          "loc": "447:117-123",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40113,7 +40029,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "443:13-19",
+          "loc": "447:188-209",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40127,7 +40043,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "444:320-321",
+          "loc": "448:8-9",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40141,7 +40057,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "444:374-375",
+          "loc": "449:13-19",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40155,7 +40071,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "444:409-415",
+          "loc": "450:13-19",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40169,7 +40085,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "470:39-54",
+          "loc": "451:13-19",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40183,7 +40099,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "494:20-30",
+          "loc": "452:13-19",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -40197,7 +40113,91 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
-          "loc": "498:22-32",
+          "loc": "453:13-19",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "454:320-321",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "454:374-375",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "454:409-415",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "480:39-54",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "504:20-30",
+          "moduleId": 510,
+          "resolvedModuleId": 510
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "module": "../components/dist/esm/p-select-wrapper.entry.js",
+          "moduleName": "../components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-select-wrapper.entry.js",
+          "resolvedModule": "../components/dist/esm/p-select-wrapper.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1faf5940.js",
+          "loc": "508:22-32",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -42637,9 +42637,9 @@
       "codeGenerated": false,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
-      "name": "../components/dist/esm/app-globals-8bc01a2b.js",
-      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-8bc01a2b.js",
+      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
+      "name": "../components/dist/esm/app-globals-f95a804b.js",
+      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-f95a804b.js",
       "index": 4,
       "preOrderIndex": 4,
       "index2": 2,
@@ -42678,7 +42678,7 @@
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-8bc01a2b.js",
+          "userRequest": "./app-globals-f95a804b.js",
           "loc": "3:0-63",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42692,7 +42692,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-8bc01a2b.js",
+          "userRequest": "./app-globals-f95a804b.js",
           "loc": "11:2-15",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42756,7 +42756,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42766,11 +42766,11 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "4:0-60",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42780,7 +42780,7 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "7:7-16",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
@@ -43164,7 +43164,7 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43174,11 +43174,11 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "1:0-41",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|53745a88c65cd31ddb1dd09494b0bbb0",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|0ea9fc4aab448a6d082d5b9dcc32e42e",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43188,7 +43188,7 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "11:8-17",
-          "moduleId": 113,
+          "moduleId": 446,
           "resolvedModuleId": null
         }
       ],
@@ -44968,9 +44968,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 42739,
+      "size": 42774,
       "sizes": {
-        "javascript": 42739
+        "javascript": 42774
       },
       "built": true,
       "codeGenerated": true,
@@ -45040,7 +45040,7 @@
         "p_select_wrapper"
       ],
       "optimizationBailout": [
-        "Statement (ExpressionStatement) with side effects in source code at 500:0-39",
+        "Statement (ExpressionStatement) with side effects in source code at 510:0-39",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-efd25e24.js: Module ../components/dist/esm/a11y-efd25e24.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-modal.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-1faf5940.js: Module ../components/dist/esm/jss-1faf5940.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
@@ -46109,7 +46109,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "496:4-23",
+          "loc": "506:4-23",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -46943,7 +46943,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "288:56-62",
+          "loc": "295:56-62",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -48125,7 +48125,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./a11y-efd25e24.js",
-          "loc": "265:4-21",
+          "loc": "272:4-21",
           "moduleId": 510,
           "resolvedModuleId": 510
         },
@@ -48312,7 +48312,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./device-detection-be3e2cc5.js",
-          "loc": "367:35-48",
+          "loc": "377:35-48",
           "moduleId": 510,
           "resolvedModuleId": 510
         }
@@ -48619,7 +48619,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0-beta.1.e467c7efb5743bac2e5e.js",
+          "name": "porsche-design-system.v2.2.0-beta.2.2bbeb30f9b01e7cab455.js",
           "size": 62037
         }
       ],
@@ -48641,7 +48641,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0-beta.1.e467c7efb5743bac2e5e.js",
+          "name": "porsche-design-system.v2.2.0-beta.2.2bbeb30f9b01e7cab455.js",
           "size": 62037
         }
       ],
