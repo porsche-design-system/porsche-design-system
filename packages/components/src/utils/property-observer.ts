@@ -11,11 +11,6 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
       },
       set(val) {
         set.call(this, val);
-
-        // full-circle moment for react
-        // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/inputValueTracking.js#L95
-        (node as any)._valueTracker?.setValue(val); // eslint-disable-line no-underscore-dangle
-
         callback();
       },
     });
