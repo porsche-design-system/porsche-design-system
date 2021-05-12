@@ -21,7 +21,7 @@ The icons themselves are built upon a base grid structure and guidelines for siz
 
 ### Interactive
 
-For interactive icons you should use the [Button Pure](#/components/button-pure) that comes with a dedicated click/touch area and with different states.
+For interactive icons you should use the [Button Pure](components/button-pure) that comes with a dedicated click/touch area and with different states.
 
 ### Color
 

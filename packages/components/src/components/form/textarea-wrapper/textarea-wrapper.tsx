@@ -1,12 +1,18 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  getAttribute,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDescriptionVisible,
+  isLabelVisible,
+  isMessageVisible,
+  mapBreakpointPropToClasses,
   setAriaAttributes,
+  observeMutations,
+  unobserveMutations,
+  getRole,
+  isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -33,117 +39,24 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private disabled: boolean;
-  @State() private readonly: boolean;
-
   private textarea: HTMLTextAreaElement;
-  private textareaObserver: MutationObserver;
 
   public connectedCallback(): void {
-    this.setTextarea();
-    this.setAriaAttributes();
-    this.setState();
-    this.initMutationObserver();
     this.addSlottedStyles();
+    this.observeMutations();
   }
 
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentWillLoad(): void {
+    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
+    this.observeMutations();
   }
 
-  public disconnectedCallback(): void {
-    this.textareaObserver.disconnect();
-  }
-
-  public render(): JSX.Element {
-    const labelClasses = prefix('textarea-wrapper__label');
-    const labelTextClasses = {
-      [prefix('textarea-wrapper__label-text')]: true,
-      [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const descriptionTextClasses = {
-      [prefix('textarea-wrapper__description-text')]: true,
-      [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
-        'hidden',
-        'visible',
-      ]),
-    };
-    const fakeTextareaClasses = {
-      [prefix('textarea-wrapper__fake-textarea')]: true,
-      [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
-      [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly,
-    };
-    const messageClasses = {
-      [prefix('textarea-wrapper__message')]: true,
-      [prefix(`textarea-wrapper__message--${this.state}`)]: true,
-    };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
-
-    return (
-      <Host>
-        <label class={labelClasses}>
-          {this.isLabelVisible && (
-            <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
-              {this.label || <slot name="label" />}
-              {this.isRequired && <span class={prefix('textarea-wrapper__required')}></span>}
-            </PrefixedTagNames.pText>
-          )}
-          {this.isDescriptionVisible && (
-            <PrefixedTagNames.pText
-              class={descriptionTextClasses}
-              tag="span"
-              color="inherit"
-              size="x-small"
-              onClick={this.labelClick}
-            >
-              {this.description || <slot name="description" />}
-            </PrefixedTagNames.pText>
-          )}
-          <span class={fakeTextareaClasses}>
-            <slot />
-          </span>
-        </label>
-        {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
-      </Host>
-    );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
-  }
-
-  private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.textarea, 'required') !== null;
-  }
-
-  private setTextarea(): void {
-    this.textarea = getHTMLElement(this.host, 'textarea');
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-   */
-  private setAriaAttributes(): void {
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
     setAriaAttributes(this.textarea, {
       label: this.label,
       message: this.message || this.description,
@@ -151,31 +64,62 @@ export class TextareaWrapper {
     });
   }
 
-  private setState = (): void => {
-    this.disabled = this.textarea.disabled;
-    this.readonly = this.textarea.readOnly;
-  };
+  public disconnectedCallback(): void {
+    unobserveMutations(this.textarea);
+  }
+
+  public render(): JSX.Element {
+    const { disabled } = this.textarea;
+    const labelClasses = {
+      ['root']: true,
+      ['root--disabled']: disabled,
+      [`root--${this.state}`]: this.state !== 'none',
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
+    };
+    const textProps = { tag: 'span', color: 'inherit' };
+    const labelProps = { ...textProps, onClick: this.labelClick };
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    return (
+      <Host>
+        <label class={labelClasses}>
+          {isLabelVisible(this.host, this.label) && (
+            <PrefixedTagNames.pText class="root__text" {...labelProps}>
+              {this.label || <slot name="label" />}
+              {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
+            </PrefixedTagNames.pText>
+          )}
+          {isDescriptionVisible(this.host, this.description) && (
+            <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
+              {this.description || <slot name="description" />}
+            </PrefixedTagNames.pText>
+          )}
+          <slot />
+        </label>
+        {isMessageVisible(this.host, this.message, this.state) && (
+          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
+            {this.message || <slot name="message" />}
+          </PrefixedTagNames.pText>
+        )}
+      </Host>
+    );
+  }
 
   private labelClick = (): void => {
     this.textarea.focus();
   };
 
-  private initMutationObserver = (): void => {
-    this.textareaObserver = new MutationObserver((): void => {
-      this.setState();
-    });
-    this.textareaObserver.observe(this.textarea, {
-      attributeFilter: ['disabled', 'readonly'],
-    });
+  private observeMutations = (): void => {
+    observeMutations(this.textarea, ['disabled', 'readonly'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

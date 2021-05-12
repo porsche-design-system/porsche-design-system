@@ -1,28 +1,23 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
-  getAttribute,
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
+  getTagName,
+  hasNamedSlot,
   insertSlottedStyles,
+  isDark,
+  isRequiredAndParentNotRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
   setAttribute,
+  getRole,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
-
-type OptionMap = {
-  readonly key: number;
-  readonly value: string;
-  readonly disabled: boolean;
-  readonly hidden: boolean;
-  readonly initiallyHidden: boolean;
-  readonly selected: boolean;
-  readonly highlighted: boolean;
-};
+import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -60,7 +55,7 @@ export class SelectWrapper {
   @Prop() public native?: boolean = false;
 
   @State() private fakeOptionListHidden = true;
-  @State() private optionMaps: readonly OptionMap[] = [];
+  @State() private optionMaps: OptionMap[] = [];
   @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
@@ -85,9 +80,11 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.initSelect();
     this.observeSelect();
-    this.defineTypeOfDropDown();
-    this.setAriaAttributes();
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.defineTypeOfDropDown();
   }
 
   public componentDidLoad(): void {
@@ -99,8 +96,21 @@ export class SelectWrapper {
     }
   }
 
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
+    setAriaAttributes(this.select, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
+
+    if (this.filter) {
+      setAttribute(this.select, 'aria-hidden', 'true');
+    }
   }
 
   public disconnectedCallback(): void {
@@ -119,6 +129,10 @@ export class SelectWrapper {
       [prefix('select-wrapper__label')]: true,
       [prefix('select-wrapper__label--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
+    };
+    const requiredFlagClasses = {
+      [prefix('select-wrapper__required')]: true,
+      [prefix('select-wrapper__required--theme-dark')]: isDark(this.theme),
     };
     const descriptionClasses = {
       [prefix('select-wrapper__description')]: true,
@@ -155,16 +169,17 @@ export class SelectWrapper {
       [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <div class={selectClasses}>
-          <label>
+          <label id="p-label">
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {this.isRequired && <span class={prefix('select-wrapper__required')}></span>}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -206,7 +221,7 @@ export class SelectWrapper {
               aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
               tabIndex={-1}
               aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
-              aria-labelledby={this.label}
+              aria-labelledby="p-label"
               ref={(el) => (this.fakeOptionListNode = el)}
             >
               {this.createFakeOptionList()}
@@ -214,7 +229,7 @@ export class SelectWrapper {
           )}
         </div>
         {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
@@ -223,47 +238,25 @@ export class SelectWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
+    return !!this.description || hasNamedSlot(this.host, 'description');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.select, 'required') !== null;
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   /*
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = getHTMLElement(this.host, 'select');
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
-    }
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.select, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
-
-    if (this.filter) {
-      setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
@@ -326,7 +319,7 @@ export class SelectWrapper {
   }
 
   private handleClickOutside = (e: MouseEvent): void => {
-    if (!this.host.contains(e.target as HTMLElement)) {
+    if (!e.composedPath().includes(this.host)) {
       this.handleVisibilityOfFakeOptionList('hide');
     }
   };
@@ -484,7 +477,7 @@ export class SelectWrapper {
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
-      const selected = item.selected && !item.disabled;
+      const selected = item.selected;
       const highlighted = selected;
       const option: OptionMap = {
         key: index,
@@ -509,9 +502,7 @@ export class SelectWrapper {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResults = true;
-      if (document.activeElement !== this.filterInput) {
-        this.filterInput.focus();
-      }
+      this.filterInput.focus();
     } else {
       if (document.activeElement !== this.select) {
         this.select.focus();
@@ -532,7 +523,7 @@ export class SelectWrapper {
   };
 
   private createFakeOptionList(): JSX.Element[][] {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return !this.filterHasResults ? (
       <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
         <span aria-hidden="true">---</span>
@@ -543,7 +534,7 @@ export class SelectWrapper {
       this.options.map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
-          item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
+          getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
               {getClosestHTMLElement(item, 'optgroup').label}
             </span>
@@ -562,9 +553,10 @@ export class SelectWrapper {
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
+            aria-label={!item.text ? 'Empty value' : null}
           >
             {item.text && <span>{item.text}</span>}
-            {selected && (
+            {selected && !disabled && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}
                 aria-hidden="true"
@@ -609,14 +601,16 @@ export class SelectWrapper {
         this.getHighlightedIndex(this.optionMaps)
       ];
 
-      const { scrollTop } = this.fakeOptionListNode;
-      const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
-      const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
-      } else if (offsetTop < scrollTop) {
-        this.fakeOptionListNode.scrollTop = offsetTop;
+      if (this.fakeOptionHighlightedNode) {
+        const { scrollTop } = this.fakeOptionListNode;
+        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
+        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
+        const elementBottom = offsetTop + offsetHeight;
+        if (elementBottom > scrollBottom) {
+          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
+        } else if (offsetTop < scrollTop) {
+          this.fakeOptionListNode.scrollTop = offsetTop;
+        }
       }
     }
   }
@@ -659,10 +653,7 @@ export class SelectWrapper {
 
   private handleFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = this.optionMaps.map((item) => ({
-      ...item,
-      hidden: !item.initiallyHidden && !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
-    }));
+    this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
 
     const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
@@ -670,12 +661,11 @@ export class SelectWrapper {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

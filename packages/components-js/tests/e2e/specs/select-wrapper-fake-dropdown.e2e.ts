@@ -395,6 +395,76 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
     });
 
+    it('should not throw error with long option list and the same item is selected and disabled', async () => {
+      const consoleErrors: string[] = [];
+
+      page.on('pageerror', function (error) {
+        consoleErrors.push(error.toString());
+      });
+
+      await setContentWithDesignSystem(
+        page,
+        `
+         <p-select-wrapper label="Some label">
+           <select name="some-name">
+             <option value="default" disabled selected>Bitte wählen Sie Ihr Land</option>
+             <option value="AF">Afghanistan</option>
+             <option value="AX">Åland Islands</option>
+             <option value="AL">Albania</option>
+             <option value="DZ">Algeria</option>
+             <option value="AS">American Samoa</option>
+             <option value="AD">Andorra</option>
+             <option value="AO">Angola</option>
+             <option value="AI">Anguilla</option>
+             <option value="AQ">Antarctica</option>
+             <option value="AG">Antigua and Barbuda</option>
+             <option value="AR">Argentina</option>
+             <option value="AM">Armenia</option>
+             <option value="AW">Aruba</option>
+             <option value="AU">Australia</option>
+             <option value="AT">Austria</option
+          </select>
+        </p-select-wrapper>
+        `
+      );
+
+      const select = await getSelect();
+
+      await select.click();
+
+      await waitForStencilLifecycle(page);
+
+      expect(consoleErrors.length).toBe(0, 'get errorsAmount after click');
+
+      await page.evaluate(() => {
+        const script = document.createElement('script');
+        script.innerText = "throw new Error('I am an error');";
+        document.body.appendChild(script);
+      });
+
+      expect(consoleErrors.length).toBe(1, 'get errorsAmount after custom error');
+    });
+
+    it('should not set checkmark icon if option is both selected and disabled', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="" disabled selected>Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+      );
+
+      const fakeOptionListCheckmarkIcon = await selectNode(
+        page,
+        'p-select-wrapper >>> .p-select-wrapper__fake-option-icon'
+      );
+
+      expect(fakeOptionListCheckmarkIcon).toBeNull();
+    });
+
     describe('dropdown position', () => {
       it('should set direction to up', async () => {
         await setContentWithDesignSystem(
@@ -897,6 +967,57 @@ describe('select-wrapper fake-dropdown', () => {
         expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
         expect(await getSelectedFakeOption()).toBe(1, 'for selected fake option');
         expect(await getSelectedIndex()).toBe(1, 'for selected index');
+      });
+
+      it('should select second option on mouseclick when used in custom element', async () => {
+        const initCustomElement = `
+<script type="text/javascript">
+  window.customElements.define(
+    'my-custom-element',
+    class extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.innerHTML = \`
+<p-select-wrapper>
+  <select>
+    <option value='Option A'>Option A</option>
+    <option value='Option B'>Option B</option>
+    <option value='Option C'>Option C</option>
+  </select>
+</p-select-wrapper>
+\`; }});
+</script>`;
+
+        await setContentWithDesignSystem(
+          page,
+          `
+${initCustomElement}
+<my-custom-element></my-custom-element>
+`
+        );
+        const customElementName = 'my-custom-element';
+        const select = await selectNode(page, `${customElementName} >>> p-select-wrapper select`);
+
+        const fakeOptionPosTwo = await selectNode(
+          page,
+          `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)`
+        );
+        const boundingBoxFakeOptionPosTwo = await fakeOptionPosTwo.boundingBox();
+
+        const getFakeOptionListInCustomElement = () =>
+          selectNode(page, `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option-list`);
+        const getSelectedFakeOptionInCustomElement = async () =>
+          await getElementIndex(await getFakeOptionListInCustomElement(), '.p-select-wrapper__fake-option--selected');
+
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(0, 'for selected fake option initial');
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+        await page.mouse.click(boundingBoxFakeOptionPosTwo.x + 2, boundingBoxFakeOptionPosTwo.y + 2);
+        await waitForStencilLifecycle(page);
+
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(1, 'for selected fake option after click');
       });
 
       it('should close fakeSelect on Tab', async () => {

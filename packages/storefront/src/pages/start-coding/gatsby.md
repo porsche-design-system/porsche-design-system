@@ -6,7 +6,7 @@ To build your own **Gatsby** application with the **React** components of the Po
 ### Requirement
 * To get Gatsby up and running follow [official Gatsby guidlines](https://www.gatsbyjs.com/docs/quick-start/)
 * To support TypeScript follow [Gatsby Typescript guidelines](https://www.gatsbyjs.com/docs/typescript/)
-* Follow the instructions at [Introduction](#/start-coding/introduction) to get access to the required npm package of the Porsche Design System
+* Follow the instructions at [Introduction](start-coding/introduction) to get access to the required npm package of the Porsche Design System
 * Install the Porsche Design System  
 ```shell script
 // install with yarn:

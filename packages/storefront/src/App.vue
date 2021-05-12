@@ -13,7 +13,7 @@
     </aside>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-      <p-spinner v-if="isLoading" class="spinner" size="medium" aria-label="Loading page"></p-spinner>
+      <p-spinner v-if="isLoading" size="medium" aria-label="Loading page"></p-spinner>
     </main>
     <Menu class="menu"></Menu>
   </div>
@@ -240,62 +240,6 @@
     padding-right: $p-spacing-8;
   }
 
-  // form item
-  .form-item-width {
-    &--full {
-      width: 100%;
-    }
-
-    &--auto {
-      width: auto;
-    }
-
-    @include p-media-query('xs') {
-      &--full-xs {
-        width: 100%;
-      }
-      &--auto-xs {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('s') {
-      &--full-s {
-        width: 100%;
-      }
-      &--auto-s {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('m') {
-      &--full-m {
-        width: 100%;
-      }
-      &--auto-m {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('l') {
-      &--full-l {
-        width: 100%;
-      }
-      &--auto-l {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('xl') {
-      &--full-xl {
-        width: 100%;
-      }
-      &--auto-xl {
-        width: auto;
-      }
-    }
-  }
-
   .form-fieldset {
     display: block;
     border: 0;
@@ -396,12 +340,16 @@
     }
   }
 
-  .spinner {
+  p-spinner {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     z-index: 10;
+
+    @include p-media-query('s') {
+      left: calc(50% + #{p-px-to-rem(280px) / 2});
+    }
   }
 
   .menu {

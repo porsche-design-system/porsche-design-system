@@ -35,12 +35,12 @@ div {
   color: inherit;
   
   // from 480px to 760px viewport width apply color aqua
-  @include p-media-query('480px', '760px') {
+  @include p-media-query(480px, 760px) {
     color: aqua;
   }
 
   // from 760px viewport width apply color deeppink
-  @include p-media-query('760px') {
+  @include p-media-query(760px) {
     color: deeppink;
   }
 }
@@ -50,7 +50,7 @@ div {
 
 ## Typography
 
-**Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
+**Note:** For font-styling it's recommended to use the [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
 
 ### Text
 

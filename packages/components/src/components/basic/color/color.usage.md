@@ -232,7 +232,7 @@ Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/man
 
 ## Accessibility
 
-In order to make content accessible for a wide range of people and to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/accessibility/guidelines) when designing Porsche web applications.
+In order to make content accessible for a wide range of people and to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-21/) when designing Porsche web applications.
 
 - Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 for larger text sizes.
 
@@ -243,10 +243,6 @@ In order to make content accessible for a wide range of people and to improve th
 ---
 
 ## Helpful tools and resources
-
-### Sketch palette
-Feel free to download the [Porsche color palette for Sketch](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette) in order to use it as "Document Colors" or "Global Colors" in your color picker.
-The easiest way to import the palette to Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).
 
 ### Sketch plugins
 - [Stark](https://getstark.co)

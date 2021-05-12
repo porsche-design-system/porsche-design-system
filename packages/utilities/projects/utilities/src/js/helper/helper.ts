@@ -1,5 +1,6 @@
-import { font, FontSizeLineHeight, FontWeight } from '../variables';
-import * as CSS from 'csstype';
+import { font } from '../variables';
+import type { FontSizeLineHeight, FontWeight } from '../variables';
+import type * as CSS from 'csstype';
 
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 const REM_BASE = 16;
@@ -53,6 +54,7 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
   };
 };
 
+// TODO: caching?
 export const calculateLineHeight = (fontSize: string): number => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {

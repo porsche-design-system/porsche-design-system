@@ -1,6 +1,7 @@
 import {
   PBanner,
   PButton,
+  PButtonGroup,
   PButtonPure,
   PHeadline,
   PText,
@@ -107,6 +108,13 @@ export const OverviewPage = (): JSX.Element => {
             <PButton>Some label</PButton>
           </div>
 
+          <div className="playground light" title="should render default button-group">
+            <PButtonGroup>
+              <PButton>Some label</PButton>
+              <PButton>Some label</PButton>
+            </PButtonGroup>
+          </div>
+
           <div className="playground light" title="should render default button-pure">
             <PButtonPure>Some label</PButtonPure>
           </div>
@@ -200,7 +208,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default tabs-bar">
-            <PTabsBar>
+            <PTabsBar activeTabIndex={0}>
               <button>Tab1</button>
               <button>Tab2</button>
               <button>Tab3</button>
@@ -259,6 +267,13 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default button with custom prefix">
               <PButton>Some label</PButton>
+            </div>
+
+            <div className="playground light" title="should render default button-group with custom prefix">
+              <PButtonGroup>
+                <PButton>Some label</PButton>
+                <PButton>Some label</PButton>
+              </PButtonGroup>
             </div>
 
             <div className="playground light" title="should render default button-pure with custom prefix">
@@ -354,7 +369,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default tabs-bar with custom prefix">
-              <PTabsBar>
+              <PTabsBar activeTabIndex={0}>
                 <button>Tab1</button>
                 <button>Tab2</button>
                 <button>Tab3</button>

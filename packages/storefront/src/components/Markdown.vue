@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown">
+  <div class="markdown" @click="onContentClick">
     <slot />
   </div>
 </template>
@@ -9,7 +9,20 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class Markdown extends Vue {}
+  export default class Markdown extends Vue {
+    // handling for raw anchor links to prevent full reload and respect base tag
+    onContentClick(event: MouseEvent): void {
+      const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
+      if (metaKey || altKey || ctrlKey || shiftKey) {
+        return;
+      }
+      const href = (target as HTMLElement).getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('sketch://')) {
+        event.preventDefault();
+        this.$router.push('/' + href);
+      }
+    }
+  }
 </script>
 
 <style scoped lang="scss">
@@ -159,6 +172,10 @@
           font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
 
+        code.readonly {
+          user-select: none;
+        }
+
         :not(pre) > code {
           padding: 0.125rem $p-spacing-8;
           background-color: mix($p-color-brand, $p-color-background-default, 10%);
@@ -181,8 +198,11 @@
         // Tables
         table {
           margin-top: $p-spacing-24;
-          width: 80%;
           border-collapse: collapse;
+
+          code ~ code::before {
+            content: '| ';
+          }
 
           thead {
             @include p-text-small;

@@ -8,7 +8,7 @@ A `label` is a caption which informs the user what information a particular form
 
 <Playground :markup="basic" :config="config">
   <select v-model="label">
-    <option selected value="show">With label</option>
+    <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
   </select>
@@ -29,6 +29,12 @@ only affects how the checkbox is shown. The current value is hidden from the use
 checkbox still keeps it's `checked` state. You can find more details in [the specification](https://www.w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
 
 <Playground :markup="indeterminate" :config="config"></Playground>
+
+---
+
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
 
 ---
 
@@ -86,16 +92,24 @@ Please make sure to set the corresponding **aria** attributes.
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
 </p-checkbox-wrapper>
-<p-checkbox-wrapper label="Some label" indeterminate="true">
+<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked />
 </p-checkbox-wrapper>`;
     
+    required =
+`<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" required />
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" required checked />
+</p-checkbox-wrapper>`;
+
     disabled =
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" disabled />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
-  <input type="checkbox" name="some-name" checked disabled />
+  <input type="checkbox" name="some-name" disabled checked />
 </p-checkbox-wrapper>`;
     
     get validation() {

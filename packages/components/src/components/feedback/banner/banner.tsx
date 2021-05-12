@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles, getHTMLElement } from '../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
+import { addCss } from './banner-utils';
 
 @Component({
   tag: 'p-banner',
@@ -31,9 +32,6 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.handleKeyboardEvents);
     }
-  }
-
-  public componentWillLoad(): void {
     this.addSlottedStyles();
   }
 
@@ -51,27 +49,14 @@ export class Banner {
 
   public render(): JSX.Element {
     const bannerClasses = {
-      [prefix('banner')]: true,
-      [prefix(`banner--${this.state}`)]: true,
-      [prefix(`banner--theme-${this.theme}`)]: true,
+      ['root']: true,
+      [`root--${this.state}`]: this.state !== 'neutral',
+      ['root--theme-dark']: isDark(this.theme),
     };
 
-    const contentClasses = prefix('banner__content');
-    const iconClasses = prefix('banner__icon');
-    const titleClasses = prefix('banner__title');
-    const descriptionClasses = prefix('banner__description');
-    const buttonClasses = prefix('banner__button');
-
-    const bannerLabelId = prefix('banner-label');
-    const bannerDescriptionId = prefix('banner-description');
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host, [
-      'p-content-wrapper',
-      'p-headline',
-      'p-text',
-      'p-icon',
-      'p-button-pure',
-    ]);
+    const bannerLabelId = 'banner-label';
+    const bannerDescriptionId = 'banner-description';
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <PrefixedTagNames.pContentWrapper
@@ -82,21 +67,21 @@ export class Banner {
       >
         <div class={bannerClasses}>
           {this.state !== 'neutral' && (
-            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses} />
+            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
           )}
-          <div class={contentClasses}>
-            {this.isTitleDefined && (
-              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId} class={titleClasses}>
+          <div class="content">
+            {hasNamedSlot(this.host, 'title') && (
+              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
                 <slot name="title" />
               </PrefixedTagNames.pHeadline>
             )}
-            {this.isDescriptionDefined && (
-              <PrefixedTagNames.pText id={bannerDescriptionId} class={descriptionClasses}>
+            {hasNamedSlot(this.host, 'description') && (
+              <PrefixedTagNames.pText id={bannerDescriptionId}>
                 <slot name="description" />
               </PrefixedTagNames.pText>
             )}
             {!this.persistent && (
-              <div class={buttonClasses}>
+              <div class="close">
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
@@ -122,25 +107,16 @@ export class Banner {
 
   private removeBanner = (): void => {
     this.dismiss.emit();
-    this.host.classList.add(prefix('banner--close'));
+    addCss(this.host);
     setTimeout(() => this.host.remove(), 1000);
   };
 
-  private get isTitleDefined(): boolean {
-    return !!getHTMLElement(this.host, '[slot="title"]');
-  }
-
-  private get isDescriptionDefined(): boolean {
-    return !!getHTMLElement(this.host, '[slot="description"]');
-  }
-
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

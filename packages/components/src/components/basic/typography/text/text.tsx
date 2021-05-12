@@ -2,12 +2,14 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
+  getTagName,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDark,
+  mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import { isSizeInherit } from './text-utils';
 
 @Component({
   tag: 'p-text',
@@ -41,52 +43,46 @@ export class Text {
 
   private textTag: HTMLElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
-    this.bindFontSizeListener();
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.textTag, 'font-size', () => {
+        this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+      });
+    }
   }
 
   public render(): JSX.Element {
-    const TagType = this.hasSlottedTextTag ? 'div' : this.tag;
+    const firstChild = getHTMLElement(this.host, ':first-child');
+    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
-      [prefix('text')]: true,
-      [prefix(`text--weight-${this.weight}`)]: true,
-      [prefix(`text--align-${this.align}`)]: true,
-      [prefix(`text--color-${this.color}`)]: true,
-      [prefix('text--ellipsis')]: this.ellipsis,
-      [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
-      ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
+      ['root']: true,
+      [`root--weight-${this.weight}`]: this.weight !== 'regular',
+      [`root--align-${this.align}`]: this.align !== 'left',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--ellipsis']: this.ellipsis,
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     return (
-      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
+      <TagType class={textClasses} ref={(el) => (this.textTag = el)}>
         <slot />
       </TagType>
     );
   }
 
-  private get hasSlottedTextTag(): boolean {
-    const el = getHTMLElement(this.host, ':first-child');
-    return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
-  }
-
-  private bindFontSizeListener(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
-  }
-
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
@@ -102,7 +98,12 @@ export class Text {
 
     ${tagName} a:focus:not(:focus-visible) {
       outline-color: transparent !important;
-    }`;
+    }
+
+    ${tagName} em, ${tagName} i {
+      font-style: normal;
+    }
+    `;
 
     insertSlottedStyles(this.host, style);
   }

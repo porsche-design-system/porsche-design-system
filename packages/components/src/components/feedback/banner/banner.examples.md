@@ -38,7 +38,7 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 ## Custom styling
 The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
-``` 
+```scss
 // default CSS variables
 --p-banner-position-type: fixed;
 --p-banner-position-top: p-px-to-rem(56px);
@@ -53,6 +53,7 @@ p-banner {
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { componentsReady } from '@porsche-design-system/components-js';
   
   @Component
   export default class Code extends Vue {
@@ -64,7 +65,7 @@ p-banner {
     get basic() {
       return `<p-banner state="${this.state}">
   <span slot="title">Some banner title</span>
-  <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
+  <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
 </p-banner>`
     }
     
@@ -93,6 +94,11 @@ p-banner {
     mounted(): void {
       const banners = document.querySelectorAll('p-banner');
       banners.forEach((el) => el.addEventListener("dismiss", () => console.log("dismissed")));
+
+      // scroll to top since banners have autofocus on close button via componentDidLoad
+      componentsReady(this.$el).then(() => {
+        document.querySelector('html').scrollTop = 0;
+      });
     }
   }
 </script>

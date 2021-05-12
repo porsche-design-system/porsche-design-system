@@ -19,11 +19,7 @@ import { routes } from './app-routing.module';
 export class AppComponent {
   public routes = routes.filter((route) => !!route.name);
 
-  private router: Router;
-
-  constructor(router: Router) {
-    this.router = router;
-  }
+  constructor(private router: Router) {}
 
   public async changeRoute(path: string): Promise<void> {
     await this.router.navigateByUrl(`/${path}`);

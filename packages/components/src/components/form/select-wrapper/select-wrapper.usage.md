@@ -33,7 +33,7 @@ The label text (always in copytext) gives the user an information about the opti
 
 ### Validation and error
 Validation text for a Select is placed right below the field box. This places the error next to the offending select,
-so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](#/patterns/forms).
+so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](patterns/forms).
 
 ### Knowledge
 Do the users know their input without having to look at a list of the different options? If the answer is 'no' it might be better to use a component showing the options directly (such as Radio Buttons).
@@ -69,5 +69,5 @@ Users don’t need to be told to ‘please select’ if there’s a field that�
 
 ## Related Components
 
-* [Checkbox](#/components/checkbox)
-* [Radio Button](#/components/radio-button)
+* [Checkbox](components/checkbox)
+* [Radio Button](components/radio-button)

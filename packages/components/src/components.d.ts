@@ -5,8 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
+import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
+import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
+import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SwitchChangeEvent } from "./components/action/switch/switch";
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PBanner {
         /**
@@ -63,6 +73,12 @@ export namespace Components {
           * The style variant of the button.
          */
         "variant"?: ButtonVariant;
+    }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
         /**
@@ -126,6 +142,14 @@ export namespace Components {
     }
     interface PContentWrapper {
         /**
+          * Defines the background color.
+         */
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: 'basic' | 'extended' | 'fluid';
@@ -149,84 +173,98 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
-          * If set, overflowing elements will wrap to a new line.
+          * Handles wrapping behaviour of elements.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<
-    'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
-  >;
+        "alignSelf"?: FlexItemAlignSelf;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: FlexItemFlex;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: BreakpointCustomizable<0 | 1>;
+        "grow"?: FlexItemGrow;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-    'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: FlexItemOffset;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: BreakpointCustomizable<1 | 0>;
+        "shrink"?: FlexItemShrink;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-    'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: FlexItemWidth;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: GridWrap;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>;
+        "offset"?: GridItemOffset;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
+        "size"?: GridItemSize;
     }
     interface PHeadline {
         /**
@@ -425,6 +463,18 @@ export namespace Components {
     }
     interface PMarque {
         /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of marque.
+         */
+        "size"?: MarqueSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
           * Show/hide trademark sign.
          */
         "trademark"?: boolean;
@@ -438,6 +488,10 @@ export namespace Components {
           * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * The title of the modal
          */
@@ -545,9 +599,43 @@ export namespace Components {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: SpinnerSize;
         /**
           * Adapts the spinner color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PSwitch {
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -575,9 +663,9 @@ export namespace Components {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
          */
-        "activeTabIndex"?: number;
+        "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -657,11 +745,11 @@ export namespace Components {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -704,6 +792,12 @@ declare global {
     var HTMLPButtonElement: {
         prototype: HTMLPButtonElement;
         new (): HTMLPButtonElement;
+    };
+    interface HTMLPButtonGroupElement extends Components.PButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPButtonGroupElement: {
+        prototype: HTMLPButtonGroupElement;
+        new (): HTMLPButtonGroupElement;
     };
     interface HTMLPButtonPureElement extends Components.PButtonPure, HTMLStencilElement {
     }
@@ -825,6 +919,12 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
+    }
+    var HTMLPSwitchElement: {
+        prototype: HTMLPSwitchElement;
+        new (): HTMLPSwitchElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -876,6 +976,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
+        "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -896,6 +997,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-switch": HTMLPSwitchElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -967,6 +1069,12 @@ declare namespace LocalJSX {
          */
         "variant"?: ButtonVariant;
     }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
+    }
     interface PButtonPure {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -1029,6 +1137,14 @@ declare namespace LocalJSX {
     }
     interface PContentWrapper {
         /**
+          * Defines the background color.
+         */
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: 'basic' | 'extended' | 'fluid';
@@ -1052,84 +1168,98 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
-          * If set, overflowing elements will wrap to a new line.
+          * Handles wrapping behaviour of elements.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<
-    'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
-  >;
+        "alignSelf"?: FlexItemAlignSelf;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: FlexItemFlex;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: BreakpointCustomizable<0 | 1>;
+        "grow"?: FlexItemGrow;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-    'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: FlexItemOffset;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: BreakpointCustomizable<1 | 0>;
+        "shrink"?: FlexItemShrink;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-    'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: FlexItemWidth;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: GridWrap;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>;
+        "offset"?: GridItemOffset;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: BreakpointCustomizable<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
+        "size"?: GridItemSize;
     }
     interface PHeadline {
         /**
@@ -1328,6 +1458,18 @@ declare namespace LocalJSX {
     }
     interface PMarque {
         /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of marque.
+         */
+        "size"?: MarqueSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
           * Show/hide trademark sign.
          */
         "trademark"?: boolean;
@@ -1341,6 +1483,10 @@ declare namespace LocalJSX {
           * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * The title of the modal
          */
@@ -1456,9 +1602,47 @@ declare namespace LocalJSX {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: SpinnerSize;
         /**
           * Adapts the spinner color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PSwitch {
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when checked status is changed.
+         */
+        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -1490,9 +1674,9 @@ declare namespace LocalJSX {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
          */
-        "activeTabIndex"?: number;
+        "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -1576,11 +1760,11 @@ declare namespace LocalJSX {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: ListType;
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: OrderType;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1613,6 +1797,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "p-banner": PBanner;
         "p-button": PButton;
+        "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -1633,6 +1818,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-switch": PSwitch;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1649,6 +1835,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+            "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
@@ -1669,6 +1856,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

@@ -256,7 +256,7 @@
               <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
                 <span slot="label">
                   I have read and understood the
-                  <a href="#" target="_blank">Privacy Policy</a>
+                  <a target="_blank">Privacy Policy</a>
                 </span>
                 <input
                   type="checkbox"
@@ -269,26 +269,10 @@
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex
-            direction="{ base: 'column', s: 'row' }"
-            class="form-section-spacing form-bottom-spacing form-grid-item-container"
-          >
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
-            </p-flex-item>
-            <p-flex-item
-              width="{base: 'full', s: 'auto'}"
-              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
-            >
-              <p-button
-                variant="tertiary"
-                icon="close"
-                class="form-item-width--full form-item-width--auto-s"
-                @click="onReset"
-                >Cancel</p-button
-              >
-            </p-flex-item>
-          </p-flex>
+          <p-button-group class="form-section-spacing form-bottom-spacing">
+            <p-button type="submit">Send</p-button>
+            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+          </p-button-group>
         </form>
       </p-grid-item>
     </p-grid>

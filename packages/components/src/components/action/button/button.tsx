@@ -3,8 +3,9 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isDark,
+  isDisabledOrLoading,
+  mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 
@@ -14,7 +15,7 @@ import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme
   shadow: true,
 })
 export class Button {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
@@ -23,7 +24,7 @@ export class Button {
   @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop({ reflect: true }) public disabled?: boolean = false;
+  @Prop() public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -45,63 +46,62 @@ export class Button {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled) {
+    if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
-      this.element,
+      this.host,
       () => this.type,
-      () => this.isDisabled
+      () => this.isDisabledOrLoading
     );
   }
 
   public render(): JSX.Element {
     const buttonClasses = {
-      [prefix('button')]: true,
-      [prefix(`button--${this.variant}`)]: true,
-      [prefix(`button--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
+      ['root']: true,
+      [`root--${this.variant}`]: this.variant !== 'secondary',
+      ['root--theme-dark']: isDark(this.theme),
+      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
-    const iconClasses = prefix('button__icon');
-    const labelClasses = prefix('button__label');
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-spinner', 'p-text']);
+
+    const iconProps = {
+      class: 'icon',
+      size: 'inherit',
+    };
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <button
         class={buttonClasses}
         type={this.type}
-        disabled={this.isDisabled}
+        disabled={this.isDisabledOrLoading}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
         {this.loading ? (
-          <PrefixedTagNames.pSpinner
-            class={iconClasses}
-            size="inherit"
-            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
-          />
+          <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
         ) : (
           <PrefixedTagNames.pIcon
-            class={iconClasses}
-            size="inherit"
+            {...iconProps}
             name={this.icon}
             source={this.iconSource}
             color="inherit"
             aria-hidden="true"
           />
         )}
-        <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit">
+        <PrefixedTagNames.pText class="label" tag="span" color="inherit">
           <slot />
         </PrefixedTagNames.pText>
       </button>
     );
   }
 
-  private get isDisabled(): boolean {
-    return this.disabled || this.loading;
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

@@ -1,14 +1,18 @@
-import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
+import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/core';
 import {
-  getAttribute,
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  isLabelVisible,
+  isMessageVisible,
+  mapBreakpointPropToClasses,
   setAriaAttributes,
-  transitionListener,
+  observeMutations,
+  unobserveMutations,
+  getRole,
+  isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -32,89 +36,24 @@ export class RadioButtonWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private checked: boolean;
-  @State() private disabled: boolean;
-
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    this.setInput();
-    this.setAriaAttributes();
-    this.setState();
-    this.bindStateListener();
     this.addSlottedStyles();
+    this.observeMutations();
   }
 
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentWillLoad(): void {
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
+    this.observeMutations();
   }
 
-  public render(): JSX.Element {
-    const labelClasses = prefix('radio-button-wrapper__label');
-    const fakeRadioButtonClasses = {
-      [prefix('radio-button-wrapper__fake-radio-button')]: true,
-      [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
-      [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
-      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
-    };
-    const labelTextClasses = {
-      [prefix('radio-button-wrapper__label-text')]: true,
-      [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const messageClasses = {
-      [prefix('radio-button-wrapper__message')]: true,
-      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
-    };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
-
-    return (
-      <Host>
-        <label class={labelClasses}>
-          {this.isLabelVisible && (
-            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
-              {this.label || <slot name="label" />}
-              {this.isRequired && <span class={prefix('radio-button-wrapper__required')}></span>}
-            </PrefixedTagNames.pText>
-          )}
-          <span class={fakeRadioButtonClasses}>
-            <slot />
-          </span>
-        </label>
-        {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
-        )}
-      </Host>
-    );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
-  }
-
-  private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.input, 'required') !== null;
-  }
-
-  private setInput(): void {
-    this.input = getHTMLElement(this.host, 'input[type="radio"]');
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
-   */
-  private setAriaAttributes(): void {
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+     */
     setAriaAttributes(this.input, {
       label: this.label,
       message: this.message,
@@ -122,33 +61,62 @@ export class RadioButtonWrapper {
     });
   }
 
+  public disconnectedCallback(): void {
+    unobserveMutations(this.input);
+  }
+
+  public render(): JSX.Element {
+    const labelClasses = {
+      ['root']: true,
+      ['root--disabled']: this.input.disabled,
+      [`root--${this.state}`]: this.state !== 'none',
+    };
+    const labelTextClasses = {
+      ['root__text']: true,
+      ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
+    };
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    return (
+      <Host>
+        <label class={labelClasses}>
+          {isLabelVisible(this.host, this.label) && (
+            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+              {this.label || <slot name="label" />}
+              {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+            </PrefixedTagNames.pText>
+          )}
+          <slot />
+        </label>
+        {isMessageVisible(this.host, this.message, this.state) && (
+          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
+            {this.message || <slot name="message" />}
+          </PrefixedTagNames.pText>
+        )}
+      </Host>
+    );
+  }
+
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out of the box
      */
-    if (this.host.shadowRoot?.host && getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.focus();
+    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.click();
     }
   };
 
-  private setState = (): void => {
-    this.checked = this.input.checked;
-    this.disabled = this.input.disabled;
+  private observeMutations = (): void => {
+    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', this.setState);
-  }
-
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

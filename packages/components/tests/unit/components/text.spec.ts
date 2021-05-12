@@ -1,30 +1,26 @@
-import { newSpecPage } from '@stencil/core/testing';
 import { Text } from '../../../src/components/basic/typography/text/text';
+import * as transitionListenerUtils from '../../../src/utils/transition-listener';
 
-describe('Component <p-text>', () => {
-  it('should render correctly in default mode with shadow dom', async () => {
-    const page = await newSpecPage({
-      components: [Text],
-      html: `<p-text>Some text</p-text>`,
+describe('button-pure', () => {
+  describe('componentDidLoad', () => {
+    let spy: jest.SpyInstance;
+    beforeEach(() => {
+      spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
     });
-    expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('p.p-text')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('p.p-text')).toBeTruthy();
-  });
 
-  it('should render correctly with tag of <span>', async () => {
-    const page = await newSpecPage({
-      components: [Text],
-      html: `<p-text tag="span">Some text</p-text>`,
-    });
-    expect(page.root.shadowRoot.querySelector('span.p-text')).toBeTruthy();
-  });
+    it('should not call transitionListener for default size', () => {
+      const component = new Text();
+      component.componentDidLoad();
 
-  it('should render correctly with tag of <p> if tag is set as slot', async () => {
-    const page = await newSpecPage({
-      components: [Text],
-      html: `<p-text><p>Some text</p></p-text>`,
+      expect(spy).toBeCalledTimes(0);
     });
-    expect(page.root.shadowRoot.querySelector('div.p-text')).toBeTruthy();
+
+    it('should call transitionListener when size="inherit"', () => {
+      const component = new Text();
+      component.size = 'inherit';
+      component.componentDidLoad();
+
+      expect(spy).toBeCalledTimes(1);
+    });
   });
 });

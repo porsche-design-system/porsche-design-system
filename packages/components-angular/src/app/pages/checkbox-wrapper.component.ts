@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-checkbox-wrapper',
@@ -131,7 +131,7 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class CheckboxWrapperComponent {
+export class CheckboxWrapperComponent implements OnInit {
   ngOnInit() {
     document.querySelectorAll('.example-set-to-indeterminate').forEach((checkbox: HTMLFormElement) => {
       checkbox.indeterminate = true;

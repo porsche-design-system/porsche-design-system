@@ -13,11 +13,6 @@ ImageOptim makes images load faster and removes bloated metadata. It saves disk 
 [Copy / Paste Layout Settings](https://sketchpacks.herokuapp.com/plugins/sketch-copy-paste-layout-settings)  
 This Plugin helps you to copy layout settings from one artboard and paste into multiples artboards.
   
-## Sketch Palettes  
-[GitHub - andrewfiorillo/sketch-palettes](https://github.com/andrewfiorillo/sketch-palettes)  
-A Sketch plugin for exporting and importing fill presets. It supports colors, gradients and pattern fills.
-→ Useful for importing the porsche-design-system.sketchpalette!  
-
 ## Sketch Runner  
 [Sketch Runner](https://sketchrunner.com/)  
 Runner helps you to get around Sketch faster by giving you an intuitive interface to supercharge your daily workflow. Stop searching through your menu and start running commands directly from your keyboard.

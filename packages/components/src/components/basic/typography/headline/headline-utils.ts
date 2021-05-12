@@ -28,7 +28,6 @@ export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const variantToTagMap: { [key in VariantType]: string } = {
   'large-title': 'h1',
   'headline-1': 'h1',
@@ -38,7 +37,7 @@ const variantToTagMap: { [key in VariantType]: string } = {
   'headline-5': 'h5',
 };
 
-export const getTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
+export const getHeadlineTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
   if (hasSlottedHeadlineTag(host)) {
     return 'div';
   } else if (tag) {

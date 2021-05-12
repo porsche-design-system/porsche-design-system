@@ -1,18 +1,21 @@
-import { camelCase } from 'change-case';
-import { TagName, TagNameCamelCase, TAG_NAMES } from '../tags';
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getTagName, paramCaseToCamelCase } from '.';
 
 type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
-const prefixRegex = /^(.*-)p-(.*)$/;
+export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 
-export const getPrefixedTagNames = (host: HTMLElement, rawTagNames: TagName[]): Partial<PrefixedTagNames> => {
-  const [, prefix = ''] = prefixRegex.exec(host.tagName.toLowerCase()) ?? [];
-  const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
-  for (const tag of rawTagNames) {
-    tagNames[camelCase(tag)] = `${prefix}${tag}`;
+export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
+  const [, prefix = ''] = /^(.*)-p-(.*)$/.exec(getTagName(host)) || [];
+
+  if (!PREFIXED_TAG_NAMES_CACHE.has(prefix)) {
+    const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
+    for (const tag of TAG_NAMES) {
+      tagNames[paramCaseToCamelCase(tag)] = prefix ? `${prefix}-${tag}` : tag;
+    }
+    PREFIXED_TAG_NAMES_CACHE.set(prefix, tagNames);
   }
-  return tagNames;
-};
 
-export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames =>
-  getPrefixedTagNames(host, (TAG_NAMES as unknown) as TagName[]) as PrefixedTagNames;
+  return PREFIXED_TAG_NAMES_CACHE.get(prefix);
+};

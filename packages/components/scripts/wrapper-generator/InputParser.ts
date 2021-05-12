@@ -1,10 +1,12 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as globby from 'globby';
 
-const BASE_DIR = path.normalize('./dist');
-const SOURCE_DIR = path.resolve(BASE_DIR, 'types');
-const CJS_DIR = path.resolve(BASE_DIR, 'cjs');
+const ROOT_DIR = path.normalize(__dirname + '/../../');
+const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
+const DIST_TYPES_DIR = path.resolve(DIST_DIR, 'types');
+const SRC_DIR = path.resolve(ROOT_DIR, 'src/components');
 
 export type ParsedInterface = { [key: string]: string };
 export type IntrinsicElements = { [key in TagName]?: string };
@@ -27,7 +29,7 @@ export class InputParser {
   private parseInput(): void {
     // read bundle.d.ts as the base of everything
     const bundleDtsFileName = 'bundle.d.ts';
-    const bundleDtsFile = path.resolve(SOURCE_DIR, bundleDtsFileName);
+    const bundleDtsFile = path.resolve(DIST_TYPES_DIR, bundleDtsFileName);
     const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
     this.sharedTypes = bundleDtsContent
@@ -35,9 +37,13 @@ export class InputParser {
       // remove unused HTMLStencilElement interface
       .replace(/.*interface HTMLStencilElement(.|\n)*?}\n/, '')
       // remove unused EventEmitter interface
-      .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
+      // .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
       .replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '')
+      // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
+      .replace(/declare global {\n\tinterface Window {\n\t\tPORSCHE_DESIGN_SYSTEM_CDN: "auto" \| "cn";\n\t}\n}/g, '')
+      // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
+      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/g, '')
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
 
@@ -63,7 +69,10 @@ export class InputParser {
     // We need semicolon and double newline to ensure comments are ignored
     const regex = new RegExp(`interface ${this.intrinsicElements[component]} ({(?:\\s|.)*?;?\\s\\s})`);
     const [, rawComponentInterface] = regex.exec(this.rawLocalJSX) ?? [];
-    return rawComponentInterface;
+    return rawComponentInterface
+      .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
+      .replace(/    |\t\t/g, '  ') // adjust indentation
+      .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
   }
 
   public getComponentInterface(component: TagName): ParsedInterface {
@@ -75,15 +84,10 @@ export class InputParser {
   }
 
   public canHaveChildren(component: TagName): boolean {
-    const whitelistedComponents: TagName[] = ['p-flex', 'p-flex-item', 'p-grid', 'p-grid-item'];
-    if (whitelistedComponents.includes(component)) {
-      return true;
-    }
-
-    const fileName = `${component}.cjs.entry.js`;
-    const filePath = path.resolve(CJS_DIR, fileName);
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    return fileContent.includes('h("slot"');
+    return fileContent.includes('<slot');
   }
 }

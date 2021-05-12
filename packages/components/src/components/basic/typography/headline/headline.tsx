@@ -1,8 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
+import { getPrefixedTagNames, getTagName, insertSlottedStyles, isDark } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
-import { getTagName, isVariantType } from './headline-utils';
+import { getHeadlineTagName, isVariantType } from './headline-utils';
 
 @Component({
   tag: 'p-headline',
@@ -35,19 +35,19 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const TagName = getTagName(this.host, this.variant, this.tag);
+    const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
     const isHeadlineVariantType = isVariantType(this.variant);
 
     const headlineClasses = {
-      [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariantType || this.variant === 'inherit',
-      [prefix(`headline--align-${this.align}`)]: true,
-      [prefix(`headline--color-${this.color}`)]: true,
-      [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
+      ['root']: true,
+      [`root--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
+      [`root--align-${this.align}`]: this.align !== 'left',
+      [`root--color-${this.color}`]: this.color !== 'default',
+      ['root--ellipsis']: this.ellipsis,
+      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <TagName class={headlineClasses}>
@@ -63,7 +63,7 @@ export class Headline {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       color: inherit !important;
       text-decoration: none !important;

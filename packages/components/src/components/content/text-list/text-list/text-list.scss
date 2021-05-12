@@ -6,15 +6,12 @@
   counter-reset: section !important;
 }
 
-.#{$p-global-class-prefix}text-list {
+.root {
   @include p-text-small;
   display: block;
   padding: 0;
   margin: 0;
-
-  &--theme-light {
-    color: $p-color-default;
-  }
+  color: $p-color-default;
 
   &--theme-dark {
     color: $p-color-theme-dark-default;

@@ -1,4 +1,3 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
   FONTS_CDN_BASE_URL,
@@ -11,14 +10,15 @@ import {
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
-import * as fs from 'fs';
-import * as path from 'path';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
+import { setContentWithDesignSystem } from '../helpers';
+import { browser } from '../config';
 
 describe('cdn', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type RequestType = { url: string };
@@ -158,29 +158,9 @@ describe('cdn', () => {
     };
 
     describe('components', () => {
-      // read web components manager to retrieve url to stencil core entrypoint
-      const indexJsFile = require.resolve('@porsche-design-system/components-js');
-      const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
-
-      if (indexJsCode.includes('localhost:3001')) {
-        throw new Error('You need to run `yarn build:components-js-prod` in order to have a prod build.');
-      }
-
-      const [, coreFileName] = /porsche-design-system\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
-
-      // read stencil core entrypoint to retrieve component chunk mapping
-      const coreJsFile = path.resolve(indexJsFile, '../../components', coreFileName);
-      const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
-
-      const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode);
-      const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
-      const chunkFileNames = Object.entries(chunkFileMapping).map(
-        ([chunk, hash]) => `porsche-design-system.${chunk}.${hash}.js`
-      );
-
-      const fileNames = [coreFileName, ...chunkFileNames];
+      const chunks = objectToFlatArray(COMPONENT_CHUNKS_MANIFEST);
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
-      bulkRequestItems(fileNames, baseUrl);
+      bulkRequestItems(chunks, baseUrl);
     });
 
     describe('fonts', () => {

@@ -19,6 +19,11 @@ export const routes: RouteType[] = [
     component: fromPages.ButtonPage,
   },
   {
+    name: 'Button Group',
+    path: '/button-group',
+    component: fromPages.ButtonGroupPage,
+  },
+  {
     name: 'Button Pure',
     path: '/button-pure',
     component: fromPages.ButtonPurePage,
@@ -89,14 +94,19 @@ export const routes: RouteType[] = [
     component: fromPages.ModalBasicPage,
   },
   {
-    name: 'Modal Scrollable',
-    path: '/modal-scrollable',
-    component: fromPages.ModalScrollablePage,
+    name: 'Modal Fullscreen',
+    path: '/modal-fullscreen',
+    component: fromPages.ModalFullscreenPage,
   },
   {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
+  },
+  {
+    name: 'Modal Scrollable',
+    path: '/modal-scrollable',
+    component: fromPages.ModalScrollablePage,
   },
   {
     name: 'Pagination',
@@ -117,6 +127,11 @@ export const routes: RouteType[] = [
     name: 'Spinner',
     path: '/spinner',
     component: fromPages.SpinnerPage,
+  },
+  {
+    name: 'Switch',
+    path: '/switch',
+    component: fromPages.SwitchPage,
   },
   {
     name: 'Tabs',
@@ -171,5 +186,10 @@ export const routes: RouteType[] = [
     name: 'Core Class Names',
     path: '/core-class-names',
     component: fromPages.CoreClassNamesPage,
+  },
+  {
+    name: 'Events',
+    path: '/events',
+    component: fromPages.EventsPage,
   },
 ];

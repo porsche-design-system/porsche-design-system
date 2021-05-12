@@ -120,7 +120,7 @@
           >
             <span slot="label">
               I have read the
-              <a href="#">general terms ans conditions</a> and I accept them.
+              <a>general terms ans conditions</a> and I accept them.
             </span>
             <input
               type="checkbox"
@@ -136,10 +136,7 @@
             v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
           >
-            <span slot="label">
-              I have read the
-              <a href="#">Data Privacy Statement</a>.
-            </span>
+            <span slot="label">I have read the <a>Data Privacy Statement</a>.</span>
             <input
               type="checkbox"
               :ref="validateFieldName('privacy')"
@@ -149,28 +146,10 @@
               required
             />
           </p-checkbox-wrapper>
-          <p-flex
-            direction="{ base: 'column', s: 'row' }"
-            class="form-section-spacing form-bottom-spacing form-grid-item-container"
-          >
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s"
-                >Create Porsche account</p-button
-              >
-            </p-flex-item>
-            <p-flex-item
-              width="{base: 'full', s: 'auto'}"
-              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
-            >
-              <p-button
-                variant="tertiary"
-                icon="close"
-                class="form-item-width--full form-item-width--auto-s"
-                @click="onReset"
-                >Cancel</p-button
-              >
-            </p-flex-item>
-          </p-flex>
+          <p-button-group class="form-section-spacing form-bottom-spacing">
+            <p-button type="submit">Create Porsche account</p-button>
+            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+          </p-button-group>
         </form>
       </p-grid-item>
     </p-grid>
