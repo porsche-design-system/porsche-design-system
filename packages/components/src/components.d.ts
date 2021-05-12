@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AnyObject, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, GenericObject, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AnyObject, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -650,11 +650,6 @@ export namespace Components {
     }
     interface PTableCell {
     }
-    interface PTableExperiment {
-        "data"?: GenericObject[];
-        "head"?: TableHeadItem[];
-        "renderRow"?: (item: GenericObject) => string;
-    }
     interface PTableHead {
     }
     interface PTableHeadCell {
@@ -983,12 +978,6 @@ declare global {
         prototype: HTMLPTableCellElement;
         new (): HTMLPTableCellElement;
     };
-    interface HTMLPTableExperimentElement extends Components.PTableExperiment, HTMLStencilElement {
-    }
-    var HTMLPTableExperimentElement: {
-        prototype: HTMLPTableExperimentElement;
-        new (): HTMLPTableExperimentElement;
-    };
     interface HTMLPTableHeadElement extends Components.PTableHead, HTMLStencilElement {
     }
     var HTMLPTableHeadElement: {
@@ -1102,7 +1091,6 @@ declare global {
         "p-table": HTMLPTableElement;
         "p-table-body": HTMLPTableBodyElement;
         "p-table-cell": HTMLPTableCellElement;
-        "p-table-experiment": HTMLPTableExperimentElement;
         "p-table-head": HTMLPTableHeadElement;
         "p-table-head-cell": HTMLPTableHeadCellElement;
         "p-table-renderfunc": HTMLPTableRenderfuncElement;
@@ -1768,13 +1756,6 @@ declare namespace LocalJSX {
     }
     interface PTableCell {
     }
-    interface PTableExperiment {
-        "data"?: GenericObject[];
-        "head"?: TableHeadItem[];
-        "onHeadClick"?: (event: CustomEvent<TableHeadItem>) => void;
-        "onRowClick"?: (event: CustomEvent<GenericObject>) => void;
-        "renderRow"?: (item: GenericObject) => string;
-    }
     interface PTableHead {
     }
     interface PTableHeadCell {
@@ -1970,7 +1951,6 @@ declare namespace LocalJSX {
         "p-table": PTable;
         "p-table-body": PTableBody;
         "p-table-cell": PTableCell;
-        "p-table-experiment": PTableExperiment;
         "p-table-head": PTableHead;
         "p-table-head-cell": PTableHeadCell;
         "p-table-renderfunc": PTableRenderfunc;
@@ -2019,7 +1999,6 @@ declare module "@stencil/core" {
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;
             "p-table-cell": LocalJSX.PTableCell & JSXBase.HTMLAttributes<HTMLPTableCellElement>;
-            "p-table-experiment": LocalJSX.PTableExperiment & JSXBase.HTMLAttributes<HTMLPTableExperimentElement>;
             "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
             "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
             "p-table-renderfunc": LocalJSX.PTableRenderfunc & JSXBase.HTMLAttributes<HTMLPTableRenderfuncElement>;
