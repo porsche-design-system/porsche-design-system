@@ -19,7 +19,7 @@ export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(di
 export const getAriaSort = (isSortable: boolean, isSorting: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
   isSortable && isSorting ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
 
-export const SORT_EVENT_NAME = 'tableSortingChange';
+export const SORT_EVENT_NAME = 'internalSortingChange';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
