@@ -50,15 +50,16 @@ const baseCss: { [key in TableComponentType]: string } = {
       overflow: 'auto',
     })
   ),
-  'table-head': getCss(
-    buildHostStyles({
+  'table-head': getCss({
+    ...buildHostStyles({
       display: 'table-header-group',
       width: '100%',
       textAlign: 'left',
       fontWeight: font.weight.bold,
       borderBottom: `2px solid ${color.neutralContrast.high}`,
-    })
-  ),
+    }),
+    '::slotted(*)': { border: 0 },
+  }),
   'table-head-cell': getCss({
     ...buildHostStyles({
       display: 'table-cell',
@@ -87,7 +88,12 @@ const baseCss: { [key in TableComponentType]: string } = {
         cursor: 'pointer',
         color: color.default,
         transition: 'color $p-animation-hover-duration $p-animation-hover-bezier',
-        // @include p-focus(),
+        // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
+        outline: 'transparent solid 1px',
+        outlineOffset: 0,
+        '::-moz-focus-inner': { border: 0 },
+        '&:focus': { outlineColor: '#000' },
+        '&:focus:not(:focus-visible)': { outlineColor: 'transparent' },
         '&:hover': {
           color: color.state.hover,
         },
