@@ -79,8 +79,8 @@ export class SelectWrapper {
   }
 
   public connectedCallback(): void {
-    this.initSelect();
-    this.initOptions();
+    this.setSelect();
+    this.setOptions();
     this.observeSelect();
     this.addSlottedStyles();
   }
@@ -258,7 +258,7 @@ export class SelectWrapper {
   /*
    * <START NATIVE SELECT>
    */
-  private initSelect(): void {
+  private setSelect(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
 
     if (this.filter) {
@@ -266,7 +266,7 @@ export class SelectWrapper {
     }
   }
 
-  private initOptions(): void {
+  private setOptions(): void {
     this.options = getHTMLElements(this.select, 'option');
   }
 
@@ -483,7 +483,7 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.initOptions();
+    this.setOptions();
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
