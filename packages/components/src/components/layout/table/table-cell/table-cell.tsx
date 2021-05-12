@@ -3,7 +3,6 @@ import { addCss } from '../table-utils';
 
 @Component({
   tag: 'p-table-cell',
-  // styleUrl: './table-cell.scss',
   shadow: true,
 })
 export class TableCell {

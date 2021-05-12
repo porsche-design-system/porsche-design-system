@@ -5,7 +5,6 @@ import type { TableHeadItem } from '../table-utils';
 
 @Component({
   tag: 'p-table',
-  // styleUrl: './table.scss',
   shadow: true,
 })
 export class Table {

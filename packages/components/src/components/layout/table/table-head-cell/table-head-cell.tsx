@@ -5,7 +5,6 @@ import { addCss, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../tab
 
 @Component({
   tag: 'p-table-head-cell',
-  // styleUrl: './table-head-cell.scss',
   shadow: true,
 })
 export class TableHeadCell {
