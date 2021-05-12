@@ -32,6 +32,7 @@ const isDevBuild = process.env.PDS_IS_STAGING === '1';
 const bundles: { components: TagName[] }[] = [
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-table', 'p-table-body', 'p-table-head', 'p-table-row', 'p-table-head-cell', 'p-table-cell'] },
   { components: ['p-tabs', 'p-tabs-item'] },
   { components: ['p-text-list', 'p-text-list-item'] },
 ];
