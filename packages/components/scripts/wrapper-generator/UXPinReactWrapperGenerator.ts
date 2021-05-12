@@ -14,19 +14,49 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     return super
       .generateImports(component, extendedProps, nonPrimitiveTypes)
-      .replace(/(?:HTMLAttributes|useMergedClass)(?:, )?/g, '');
+      .replace(/(?:HTMLAttributes|useMergedClass)(?:, )?/g, ''); // remove unused imports
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return super.generateProps(component, rawComponentInterface).replace('HTMLAttributes<{}> & ', '');
+    return super.generateProps(component, rawComponentInterface).replace('HTMLAttributes<{}> & ', ''); // remove HTMLAttributes since it just adds useless noise
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    return super
+    let cleanedComponent = super
       .generateComponent(component, extendedProps)
-      .replace(/export const P(\w+) =/, 'export const $1 =')
-      .replace('className, ', '')
-      .replace(/\s+class.*/, '');
+      .replace(/export const P(\w+) =/, 'export const $1 =') // adjust component name to match file name
+      .replace('className, ', '') // remove className from props destructuring since it is useless
+      .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
+
+    // add default children for components that support it
+    if (cleanedComponent.includes('PropsWithChildren')) {
+      const componentWithChildJSXMap: { [key in TagName]?: string } = {
+        'p-checkbox-wrapper': '<input type="checkbox" />',
+        'p-radio-button-wrapper': '<input type="radio" />',
+        'p-text-field-wrapper': '<input type="text" />',
+        'p-textarea-wrapper': '<textarea />',
+        'p-select-wrapper': `<select>${Array.from(Array(3))
+          .map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`)
+          .join('')}</select>`,
+      };
+
+      // handle form wrappers
+      if (Object.keys(componentWithChildJSXMap).includes(component)) {
+        const jsx = componentWithChildJSXMap[component];
+        cleanedComponent = cleanedComponent
+          .replace(/(<Tag \{\.\.\.props}) \/>/, `(\n      $1>\n        ${jsx}\n      </Tag>\n    )`) // add jsx within tag
+          .replace(/PropsWithChildren<(\w+)>/, '$1') // strip PropsWithChildren
+          .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true).replace('Wrapper', '')}', $1`) // set default label value in props destructuring
+          .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
+      } else {
+        // other components receive their component name as default
+        cleanedComponent = cleanedComponent
+          .replace(/(\.\.\.rest)/, `children = '${this.getComponentFileName(component, true)}', $1`) // set default children value in props destructuring
+          .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
+      }
+    }
+
+    return cleanedComponent;
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
