@@ -35,16 +35,6 @@ export class Table {
     );
   }
 
-  // private handleHeadClick = (headItem: HeadItem): void => {
-  //   if (headItem.isSortable) {
-  //     this.headClick.emit({
-  //       ...headItem,
-  //       isSorting: true,
-  //       direction: toggleDirection(headItem.direction),
-  //     });
-  //   }
-  // };
-
   private addSlottedStyles(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
