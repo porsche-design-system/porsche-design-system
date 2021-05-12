@@ -14,9 +14,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     return super
       .generateImports(component, extendedProps, nonPrimitiveTypes)
-      .replace(/import type/g, 'import')
-      .replace(/(?:HTMLAttributes|useMergedClass)(?:, )?/g, '')
-      .replace(/(import) ({.*} from 'react')/, '$1 React, $2');
+      .replace(/(?:HTMLAttributes|useMergedClass)(?:, )?/g, '');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -26,24 +24,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     return super
       .generateComponent(component, extendedProps)
-      .replace(/export const \w+ =/, 'export default')
+      .replace(/export const P(\w+) =/, 'export const $1 =')
       .replace('className, ', '')
-      .replace(/\s+class.*/, '')
-      .replace(/(return <Tag {\.\.\.props} \/>;)/, '// @ts-ignore\n  $1');
+      .replace(/\s+class.*/, '');
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
-    const uxPinWrapperContent = `import React, { useEffect } from 'react';
-import { load } from '@porsche-design-system/components-js';
-
-export default ({ children }): JSX.Element => {
-  useEffect(() => {
-    load();
-  }, []);
-
-  return children;
-};`;
-
     const uxPinConfigContent = `module.exports = {
   components: {
     categories: [
@@ -54,15 +40,12 @@ export default ({ children }): JSX.Element => {
         ],
       },
     ],
-    wrapper: 'src/lib/UXPinWrapper.tsx',
+    wrapper: 'src/UXPinWrapper.tsx',
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
 };`;
 
-    return [
-      { name: 'UXPinWrapper.tsx', relativePath: '../', content: uxPinWrapperContent },
-      { name: 'uxpin.config.js', relativePath: '../../../', content: uxPinConfigContent },
-    ];
+    return [{ name: 'uxpin.config.js', relativePath: '../../../', content: uxPinConfigContent }];
   }
 }
