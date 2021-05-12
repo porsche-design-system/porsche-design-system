@@ -1,3 +1,8 @@
+.uxpin-merge
+
 /src/lib
 /src/provider.tsx
+/src/hooks.ts
+/src/utils.ts
+
 uxpin.config.js
