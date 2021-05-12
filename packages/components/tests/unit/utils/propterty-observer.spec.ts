@@ -63,15 +63,4 @@ describe('observeProperties()', () => {
     node.checked = true;
     expect(callback).toHaveBeenCalledTimes(1);
   });
-
-  it('should execute _valueTracker.setValue() if it exists', () => {
-    const setValue = jest.fn();
-    const node = document.createElement('input');
-    (node as any)._valueTracker = { setValue };
-    observeProperties(node, ['checked'], callback);
-
-    expect(setValue).toHaveBeenCalledTimes(0);
-    node.checked = true;
-    expect(setValue).toHaveBeenCalledTimes(1);
-  });
 });
