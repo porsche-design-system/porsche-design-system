@@ -397,6 +397,10 @@ export const config: StorefrontConfig = {
       ],
     },
     Table: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/table/table.examples.md`),
+      ],
       Usage: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/table/table.usage.md`),
