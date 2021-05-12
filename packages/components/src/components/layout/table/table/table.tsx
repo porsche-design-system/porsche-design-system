@@ -19,7 +19,6 @@ export class Table {
 
   public componentWillLoad(): void {
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableHeadItem>) => {
-      console.log('headClick', e);
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
     });
