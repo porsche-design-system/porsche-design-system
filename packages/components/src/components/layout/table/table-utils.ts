@@ -19,6 +19,8 @@ export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(di
 export const getAriaSort = (isSortable: boolean, isSorting: boolean, dir: Direction): AriaAttributes['aria-sort'] =>
   isSortable && isSorting ? (isDirectionAsc(dir) ? 'ascending' : 'descending') : 'none';
 
+export const SORT_EVENT_NAME = 'tableSortingChange';
+
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
@@ -142,8 +144,8 @@ const baseCss: { [key in TableComponentType]: string } = {
 
 export const addCss = (host: HTMLElement): void => {
   const [, tableComponent] = /^(?:.*)-?p-(.*)$/.exec(getTagName(host)) || [];
-  if (tableComponent === 'table-cell') {
-    console.log(baseCss[tableComponent]);
-  }
+  // if (tableComponent === 'table-cell') {
+  //   console.log(baseCss[tableComponent]);
+  // }
   attachCss(host, baseCss[tableComponent]);
 };
