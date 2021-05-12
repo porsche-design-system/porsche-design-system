@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX } from '@stencil/core';
 import { insertSlottedStyles } from '../../../../utils';
-import { addCss, getSlottedCss, TableHeadItem } from '../table-utils';
+import { addCss, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
+import type { TableHeadItem } from '../table-utils';
 
 @Component({
   tag: 'p-table',
@@ -10,10 +11,18 @@ import { addCss, getSlottedCss, TableHeadItem } from '../table-utils';
 export class Table {
   @Element() public host!: HTMLElement;
 
-  @Event({ bubbles: false }) public headClick: EventEmitter<TableHeadItem>;
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadItem>;
 
   public connectedCallback(): void {
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableHeadItem>) => {
+      console.log('headClick', e);
+      e.stopPropagation();
+      this.sortingChange.emit(e.detail);
+    });
   }
 
   public componentWillRender(): void {

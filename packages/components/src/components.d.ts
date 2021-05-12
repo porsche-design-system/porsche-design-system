@@ -1762,7 +1762,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PTable {
-        "onHeadClick"?: (event: CustomEvent<TableHeadItem>) => void;
+        "onSortingChange"?: (event: CustomEvent<TableHeadItem>) => void;
     }
     interface PTableBody {
     }

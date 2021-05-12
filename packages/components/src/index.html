@@ -99,14 +99,20 @@
         }),
       }));
 
-      const tableHeadRow = document.createElement('p-table-row');
-      headSortable.forEach((item) => {
-        const el = document.createElement('p-table-head-cell');
-        el.item = item;
-        el.innerText = item.name;
-        tableHeadRow.append(el);
-      });
-      tableHead.appendChild(tableHeadRow);
+      const renderHead = (headItems) => {
+        const tableHeadRow = document.createElement('p-table-row');
+
+        headItems.forEach((item) => {
+          const el = document.createElement('p-table-head-cell');
+          el.item = item;
+          el.innerText = item.name;
+          tableHeadRow.appendChild(el);
+        });
+
+        return tableHeadRow;
+      };
+
+      tableHead.appendChild(renderHead(headSortable));
 
       const renderRow = (item) => {
         const el = document.createElement('p-table-row');
@@ -172,25 +178,26 @@
       };
 
       data.forEach((item) => {
-        tableBody.append(renderRow(item));
+        tableBody.appendChild(renderRow(item));
       });
 
       // table.query = 'Ma';
-      // table.addEventListener('headClick', (e) => {
-      //   console.log('headClick', e.detail);
-      //   const { key, direction } = e.detail;
-      //
-      //   const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
-      //
-      //   e.target.head = sortedHead;
-      //   Array.from(e.target.children).forEach((x) => x.remove());
-      //
-      //   [...data]
-      //     .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
-      //     .forEach((item) => {
-      //       e.target.appendChild(renderRow(item));
-      //     });
-      // });
+      table.addEventListener('sortingChange', (e) => {
+        console.log('sortingChange', e.detail);
+        const { key, direction } = e.detail;
+
+        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+
+        Array.from(tableHead.children).forEach((x) => x.remove());
+        tableHead.appendChild(renderHead(sortedHead));
+
+        Array.from(tableBody.children).forEach((x) => x.remove());
+        [...data]
+          .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
+          .forEach((item) => {
+            tableBody.appendChild(renderRow(item));
+          });
+      });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {

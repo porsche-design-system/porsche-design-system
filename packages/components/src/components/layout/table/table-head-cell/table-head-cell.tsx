@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
 import { getPrefixedTagNames } from '../../../../utils';
-import { addCss, isDirectionAsc } from '../table-utils';
+import { addCss, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
 
 @Component({
   tag: 'p-table-head-cell',
@@ -23,7 +23,7 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader">
         {isSortable ? (
-          <button>
+          <button onClick={this.handleButtonClick}>
             <slot />
             <PrefixedTagNames.pIcon
               class={{
@@ -40,4 +40,13 @@ export class TableHeadCell {
       </Host>
     );
   }
+
+  private handleButtonClick = (): void => {
+    this.host.dispatchEvent(
+      new CustomEvent<TableHeadItem>(SORT_EVENT_NAME, {
+        bubbles: true,
+        detail: { ...this.item, isSorting: true, direction: toggleDirection(this.item.direction) },
+      })
+    );
+  };
 }
