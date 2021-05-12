@@ -8,7 +8,7 @@
     "prestart": "yarn copyUtils && yarn clean:build",
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
     "predeploy": "yarn copyUtils && yarn clean:build",
-    "deploy": "",
+    "deploy": "uxpin-merge push --branch issue/1121 --token ***REMOVED***",
     "copyUtils": "cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
     "@uxpin/merge-cli": "^2.7.5",
+    "babel-loader": "^8.2.2",
     "eslint-loader": "^4.0.2",
     "typescript": "~4.2.4"
   }
