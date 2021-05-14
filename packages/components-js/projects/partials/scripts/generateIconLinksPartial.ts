@@ -31,7 +31,7 @@ export function getIconLinks(opts?: IconLinksOptions): string | string[] {
   };
   const { icons, cdn, withoutTags } = options;
 
-  const supportedIconNames: IconName[] = ${JSON.stringify(ICON_NAMES)};
+  const supportedIconNames: IconNameCamelCase[] = ${JSON.stringify(ICON_NAMES)};
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));
 
   if (invalidIconNames.length) {
