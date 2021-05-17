@@ -34,13 +34,13 @@ describe('patchThemeIntoMarkup', () => {
 
 describe('convertToAngular', () => {
   it('should convert markup to Angular syntax', () => {
-    const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
+    const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`;
 
     expect(convertToAngular(markup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
