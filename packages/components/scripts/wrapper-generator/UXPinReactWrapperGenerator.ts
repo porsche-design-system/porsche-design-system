@@ -12,13 +12,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    return super
-      .generateImports(component, extendedProps, nonPrimitiveTypes)
-      .replace(/(?:HTMLAttributes|useMergedClass)(?:, )?/g, ''); // remove unused imports
-  }
-
-  public generateProps(component: TagName, rawComponentInterface: string): string {
-    return super.generateProps(component, rawComponentInterface).replace('HTMLAttributes<{}> & ', ''); // remove HTMLAttributes since it just adds useless noise
+    return super.generateImports(component, extendedProps, nonPrimitiveTypes).replace(/(?:, useMergedClass)?/g, ''); // remove unused imports
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
@@ -46,7 +40,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         cleanedComponent = cleanedComponent
           .replace(/(<Tag \{\.\.\.props}) \/>/, `(\n      $1>\n        ${jsx}\n      </Tag>\n    )`) // add jsx within tag
           .replace(/PropsWithChildren<(\w+)>/, '$1') // strip PropsWithChildren
-          .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true).replace('Wrapper', '')}', $1`) // set default label value in props destructuring
+          .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true)}', $1`) // set default label value in props destructuring
           .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
       } else {
         // other components receive their component name as default
