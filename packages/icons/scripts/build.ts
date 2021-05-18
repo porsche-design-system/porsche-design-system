@@ -56,17 +56,21 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     }
   }
 
-  const manifestKeys = Object.keys(manifest).sort();
+  const sortedManifestKeys = Object.keys(manifest).sort();
+  const sortedManifest: Manifest = sortedManifestKeys.reduce((result, key) => {
+    result[key] = manifest[key];
+    return result;
+  }, {} as Manifest);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
     `${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
-export const ICONS_MANIFEST = ${JSON.stringify(manifest)};
-export const ICON_NAMES = ${JSON.stringify(manifestKeys)};
-export type IconName = ${manifestKeys.map((x) => `'${paramCase(x)}'`).join(' | ')};
-export type IconNameCamelCase = ${manifestKeys.map((x) => `'${x}'`).join(' | ')};`
+export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
+export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)};
+export type IconName = ${sortedManifestKeys.map((x) => `'${paramCase(x)}'`).join(' | ')};
+export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join(' | ')};`
   );
 
   console.log('Created icons manifest.');
