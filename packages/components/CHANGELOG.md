@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode
+
 ### [2.2.0-beta.2] - 2021-05-12
 
 #### Fixed
