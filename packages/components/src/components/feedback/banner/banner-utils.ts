@@ -1,4 +1,4 @@
-import { attachCss, breakpoint, buildHostStyles, getCss, mediaQuery, pxToRem } from '../../../utils';
+import { attachCss, breakpoint, getCss, mediaQuery, pxToRem } from '../../../utils';
 
 const baseCss: string = getCss({});
 
@@ -24,7 +24,7 @@ export const getMediaQueryStyles = (): string =>
         opacity: 0,
       },
     },
-    ...buildHostStyles({
+    ':host(.banner--close)': {
       position: 'fixed',
       zIndex: 99,
       width: '100%',
@@ -39,7 +39,7 @@ export const getMediaQueryStyles = (): string =>
         willChange: 'opacity, top',
         animation: '600ms 0s $animateDesktopOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
       },
-    }),
+    },
   });
 
 export const addCss = (host: HTMLElement): void => {
