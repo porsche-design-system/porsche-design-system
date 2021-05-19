@@ -1,5 +1,5 @@
 import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
-import { selectNode } from '../../../../components-js/tests/e2e/helpers';
+import { selectNode } from '../../e2e/helpers';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
