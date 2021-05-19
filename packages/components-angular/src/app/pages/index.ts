@@ -1,4 +1,5 @@
 import { BannerComponent } from './banner.component';
+import { BannerBehaviourComponent } from './banner-behaviour.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
@@ -38,6 +39,7 @@ import { SwitchComponent } from './switch.component';
 
 export const pages = [
   BannerComponent,
+  BannerBehaviourComponent,
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
@@ -77,6 +79,7 @@ export const pages = [
 ];
 
 export * from './banner.component';
+export * from './banner-behaviour.component';
 export * from './button.component';
 export * from './button-group.component';
 export * from './button-pure.component';

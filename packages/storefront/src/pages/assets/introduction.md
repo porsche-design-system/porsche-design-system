@@ -16,7 +16,7 @@ To give teams the possibility to get the versioned file paths to these static as
 It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/assets` npm package. 
 If you don't have an account yet, please first [read more about getting started as developer](start-coding/introduction).
 
-```
+```shell
 // install with npm:
 npm install @porsche-design-system/assets
 

@@ -53,7 +53,7 @@ You should still set required on the input of the wrapped form elements to ensur
 ## Slotted message
 
 <Playground :markup="slottedMessageMarkup" :config="config">
-  <select v-model="slottedMessageState">
+  <select v-model="slottedMessage">
     <option disabled>Select a state</option>
     <option value="error">error</option>
     <option value="success">success</option>
@@ -69,7 +69,7 @@ You should still set required on the input of the wrapped form elements to ensur
  
     size = 'small';
     state = 'error';
-    slottedMEssage = 'error';
+    slottedMessage = 'error';
 
     withLabelMarkup =
 `<p-fieldset-wrapper label="Some legend label">
@@ -117,9 +117,9 @@ You should still set required on the input of the wrapped form elements to ensur
    }
 
    get slottedMessageMarkup() {
-    const attr = `${this.slottedMEssage === 'error' ? 'Some error message' : 'Some success message'}`;
-    return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMEssage}>
-  <p-text-field-wrapper label="Some label" state=${this.slottedMEssage}>
+    const attr = `${this.slottedMessage === 'error' ? 'Some error message' : 'Some success message'}`;
+    return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>
+  <p-text-field-wrapper label="Some label" state=${this.slottedMessage}>
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
   <span slot="message">${attr}</span>

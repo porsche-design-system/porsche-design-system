@@ -359,6 +359,13 @@ describe('text-field-wrapper', () => {
       const input = await getInput();
       expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
     });
+
+    it('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+
+      expect(await getElementStyle(input, 'webkitAppearance', { pseudo: '::-webkit-search-decoration' })).toBe('none');
+    });
   });
 
   describe('focus state', () => {

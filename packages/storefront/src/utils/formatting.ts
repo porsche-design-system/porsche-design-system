@@ -17,6 +17,8 @@ export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
 
 export const convertToAngular = (markup: string): string =>
   markup
+    // mark aria attributes with % to preserve from conversion
+    .replace(/\s(aria-\S+)=(".*?")/g, ' $1%=$2')
     // transform to event binding syntax
     .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
       return ` (${$key})="${$value}"`;
@@ -36,7 +38,9 @@ export const convertToAngular = (markup: string): string =>
     // remove single quotes from boolean values
     .replace(/\s(\[\S+\])="'(true|false)'"/g, ' $1="$2"')
     // remove brackets from "class" and "slot("|slot) attributes
-    .replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"');
+    .replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"')
+    //remove preserve marker
+    .replace(/%=/g, '=');
 
 export const convertToReact = (markup: string): string =>
   markup

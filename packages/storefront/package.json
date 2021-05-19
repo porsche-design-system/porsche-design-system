@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "2.0.0",
-    "@porsche-design-system/components-js": "2.1.0",
+    "@porsche-design-system/components-js": "2.2.0",
     "change-case": "^4.1.2",
     "core-js": "^3.11.2",
     "prismjs": "^1.21.0",
@@ -33,7 +33,6 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "3.1.0",
     "@porsche-design-system/utilities": "4.0.0",
     "@porsche-design-system/vmark": "~1.2.0",
     "@porsche-design-system/vmark-loader": "^1.0.0",
@@ -46,7 +45,6 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-plugin-pwa": "^4.5.12",
     "@vue/cli-plugin-router": "^4.5.12",
     "@vue/cli-plugin-typescript": "^4.5.12",
     "@vue/cli-plugin-unit-jest": "^4.5.12",
