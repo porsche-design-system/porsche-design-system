@@ -274,8 +274,8 @@ describe('select-wrapper combobox', () => {
 
     await page.keyboard.press('ArrowDown');
     await filterInput.press('Enter');
-    const value = await select.evaluate((el: HTMLSelectElement) => el.value);
     await waitForEventSerialization(page);
+    const value = await select.evaluate((el: HTMLSelectElement) => el.value);
 
     expect(value).toBe('b');
   });
