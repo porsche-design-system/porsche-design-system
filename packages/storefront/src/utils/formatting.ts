@@ -35,6 +35,8 @@ export const convertToAngular = (markup: string): string =>
     .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
       return ` [${camelCase($key)}]="${$value}"`;
     })
+    //surround numeric name values with single quotes
+    .replace(/\s(\[name\])="(\d+)"/g, ` $1="'$2'"`)
     // remove single quotes from boolean values
     .replace(/\s(\[\S+\])="'(true|false)'"/g, ' $1="$2"')
     // remove brackets from "class" and "slot("|slot) attributes
