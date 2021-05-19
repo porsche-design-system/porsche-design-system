@@ -29,6 +29,7 @@ jasmine.getEnv().addReporter(new SpecReporter());
 beforeAll(async () => {
   browser = await launch({
     args: [
+      '--font-render-hinting=none',
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
