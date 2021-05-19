@@ -8,6 +8,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.2.0] - 2021-05-19
+
+#### Fixed
+- `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode
+- `Banner` can now be re-opened after closing
+- Closing one `Banner` will not close other `Banners` on the site
+
+### [2.2.0-beta.2] - 2021-05-12
+
+#### Fixed
+- `Select Wrapper` value changes are now reflected correctly
+- `Select Wrapper` dark theme background color if used with `filter` prop
+
+### [2.2.0-beta.1] - 2021-05-05
+
+#### Added
+- Partial function `getIconLinks()` to preload Porsche Design System Icons
+
+#### Fixed
+- `Text Field Wrapper` spacing in Safari
+
+### [2.2.0-beta.0] - 2021-05-05
+
+#### Added
+- Partial function `getMetaTagsAndIconLinks()` to simplify cross device fav and meta icons
+
 ### [2.1.0] - 2021-05-03
 
 ### [2.1.0-beta.0] - 2021-05-03

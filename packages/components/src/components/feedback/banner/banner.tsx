@@ -35,6 +35,10 @@ export class Banner {
     this.addSlottedStyles();
   }
 
+  public componentWillRender(): void {
+    addCss(this.host);
+  }
+
   public componentDidLoad(): void {
     if (!this.persistent) {
       this.closeButton.focus();
@@ -107,8 +111,10 @@ export class Banner {
 
   private removeBanner = (): void => {
     this.dismiss.emit();
-    addCss(this.host);
-    setTimeout(() => this.host.remove(), 1000);
+    this.host.classList.add('banner--close');
+    setTimeout(() => {
+      this.host.remove();
+    }, 1000);
   };
 
   private addSlottedStyles(): void {
