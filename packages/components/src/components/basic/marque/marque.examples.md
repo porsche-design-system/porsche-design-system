@@ -19,6 +19,9 @@ The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provide
 
 <Playground :markup="marqueWithTMAndLink"></Playground>
 
+### ♿️ Accessibility hints
+If the Marque is used with a link, make sure to add a descriptive ARIA label to inform screen reader users what the link stands for. 
+
 ## Bind events to the link
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the custom element.
@@ -49,7 +52,7 @@ By default, the sizing is responsive, but can be changed to a static size when n
     size = 'small';
 
     marqueWithTM = `<p-marque></p-marque>`;
-    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com"></p-marque>`;
+    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com" aria-label="Porsche Homepage"></p-marque>`;
     marqueWithoutTM = `<p-marque trademark="false"></p-marque>`;
 
     get sizeMarkup() {
