@@ -1,8 +1,8 @@
-import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
+import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import Protocol from 'devtools-protocol';
 
-type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
+type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
