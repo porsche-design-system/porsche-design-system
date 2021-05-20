@@ -35,7 +35,7 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 
 <p-button type="button" v-on:click="openBanner($event)" id="p-open-banner">Open Banner</p-button>
 
-### ♿️ Accessibility
+### ♿️ Accessibility hints
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC` or `Enter` key:
 The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is closed. This is important to keep focus order consistent.
 You can test it out by navigation this example with the keyboard only.
