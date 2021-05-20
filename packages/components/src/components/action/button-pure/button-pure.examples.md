@@ -1,7 +1,8 @@
 # Button Pure
 
-The `<p-button-pure>` component is essential to perform events for interactions.
-It can be used with or without a label. When hiding the label make sure to provide a descriptive label text for screen readers.
+The `<p-button-pure>` component is essential to perform events for **interactions**.
+A Button can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.
 
 ## Basic example
@@ -17,6 +18,11 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
+
+### ♿️ Accessibility hints
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Submit contact form"`
+* If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
+* In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not showing why these elements are disabled.
 
 ---
 
