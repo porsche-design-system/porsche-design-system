@@ -1,6 +1,7 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import Protocol from 'devtools-protocol';
+import { emitKeypressEvents } from 'readline';
 
 type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
@@ -122,22 +123,32 @@ export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 export const forceStateOnElement = async (
   page: Page,
   selector: string,
-  states: ForcedPseudoClasses[]
+  states: ForcedPseudoClasses[],
+  getNodeFromCenter?: boolean
 ): Promise<void> => {
   const cdp = await page.target().createCDPSession();
   await cdp.send('DOM.getDocument');
 
   const element = await selectNode(page, selector);
+
   const { x, y, width, height } = await element.boundingBox();
 
   const elementNode = (await cdp.send('DOM.getNodeForLocation', {
-    x: x + width / 2,
-    y: y + height / 2,
+    x: Math.ceil(getNodeFromCenter ? x + width / 2 : x),
+    y: Math.ceil(getNodeFromCenter ? y + height / 2 : y),
   })) as Protocol.DOM.GetNodeForLocationResponse;
+
+  const temp = await cdp.send('DOM.querySelector', {
+    nodeId: elementNode.nodeId,
+    selector: 'p-button-pure',
+  });
+
+  console.log('node ----->', temp);
 
   await cdp.send('CSS.enable');
   await cdp.send('CSS.forcePseudoState', {
-    nodeId: elementNode.nodeId,
+    // @ts-ignore
+    nodeId: temp.nodeId,
     forcedPseudoClasses: states,
   });
   await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
