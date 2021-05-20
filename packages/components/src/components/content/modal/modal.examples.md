@@ -73,6 +73,11 @@ const ModalPage = (): JSX.Element => {
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
 
+### ♿️ Accessibility hints
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
+The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
+You can test it out by navigation this example with the keyboard only.
+
 ## Basic Scrollable
 
 If the Modal's content does not fit into the current boundaries the content becomes scrollable.
