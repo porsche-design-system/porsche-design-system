@@ -33,7 +33,12 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 
 ## Example with user interaction
 
-<p-button v-on:click="openBanner">Open Banner</p-button>
+<p-button type="button" v-on:click="openBanner($event)" id="p-open-banner">Open Banner</p-button>
+
+### ♿️ Accessibility
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC` or `Enter` key:
+The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is closed. This is important to keep focus order consistent.
+You can test it out by navigation this example with the keyboard only.
 
 ## Custom styling
 The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
@@ -82,13 +87,17 @@ p-banner {
 </p-banner>`;
     }
     
-    openBanner = () => {
+    openBanner = (event) => {
       const el = document.createElement('p-banner');
+      const elID = event.currentTarget.id;
       el.innerHTML = `
         <span slot="title">Some banner title</span>
         <span slot="description">Some banner description.</span>
       `;
       document.getElementById('app').append(el);
+      el.addEventListener("dismiss", () => {
+        document.getElementById(elID).focus();
+      });
     };
   
     mounted(): void {
