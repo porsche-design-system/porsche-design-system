@@ -22,6 +22,7 @@ const vrtTestOptions: VisualRegressionTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
+// @ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {

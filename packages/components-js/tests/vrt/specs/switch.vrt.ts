@@ -61,18 +61,18 @@ describe('Switch', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#switch-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#switch-focused >>> button', focused);
-        await forceStateOnElement(page, '#switch-checked-focused >>> button', focused);
-        await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#switch-checked-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#switch-dark-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#switch-dark-focused >>> button', focused);
-        await forceStateOnElement(page, '#switch-dark-checked-focused >>> button', focused);
-        await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered);
+        await forceStateOnElement(page, '#switch-hovered >>> button', hovered, true);
+        await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered, true);
+        await forceStateOnElement(page, '#switch-focused >>> button', focused, true);
+        await forceStateOnElement(page, '#switch-checked-focused >>> button', focused, true);
+        await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-checked-hovered-focused >>> button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-dark-hovered >>> button', hovered, true);
+        await forceStateOnElement(page, '#switch-dark-checked-hovered >>> button', hovered, true);
+        await forceStateOnElement(page, '#switch-dark-focused >>> button', focused, true);
+        await forceStateOnElement(page, '#switch-dark-checked-focused >>> button', focused, true);
+        await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered, true);
       })
     ).toBeFalsy();
   });
