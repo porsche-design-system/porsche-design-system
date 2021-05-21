@@ -87,6 +87,7 @@ export class Banner {
             {!this.persistent && (
               <div class="close">
                 <PrefixedTagNames.pButtonPure
+                  type="button"
                   icon="close"
                   hideLabel={true}
                   onClick={this.removeBanner}

@@ -152,17 +152,17 @@ Of course, any combination of the available options is possible.
     get basic() {
       const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
       
-      return `<p-button>Open Modal</p-button>
+      return `<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;}
     
     scrollable =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
   <div style="height: 40vh;"></div>
@@ -171,24 +171,24 @@ Of course, any combination of the available options is possible.
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;
     
     withoutHeading =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
     
     withoutCloseButton =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
     fullscreen =
-`<p-button>Open Modal</p-button>
+`<p-button type="button" type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">
@@ -196,7 +196,7 @@ Of course, any combination of the available options is possible.
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button variant="tertiary">Close</p-button>
+      <p-button type="button" variant="tertiary">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;

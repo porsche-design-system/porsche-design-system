@@ -78,7 +78,7 @@ const TabsBarPage = (): JSX.Element => {
 <Playground :markup="basicButton" :config="config"></Playground>
 <Playground :markup="basicAnchor" :config="config"></Playground>
 
-## Accessibility
+### ♿️ Accessibility hints
 
 The `<p-tabs-bar>` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
