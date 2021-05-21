@@ -15,7 +15,7 @@
 
 | Short | XY |
 
-| Tall | XY |
+| Tall | X |
 
 ## Behavior
 
