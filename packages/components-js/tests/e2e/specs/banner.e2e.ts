@@ -3,15 +3,16 @@ import {
   expectedStyleOnFocus,
   getActiveElementTagNameInShadowRoot,
   getBrowser,
+  getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
-  getProperty,
   getStyleOnFocus,
   initAddEventListener,
   reattachElement,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForEventSerialization,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -85,7 +86,7 @@ describe('banner', () => {
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
       // we have to wait for the animation to end before the dom is cleared
       await page.waitForTimeout(CSS_FADE_OUT_DURATION);
       expect(await getHost()).toBeNull();
@@ -96,7 +97,7 @@ describe('banner', () => {
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
       // we have to wait for the animation to end before the dom is cleared
       await page.waitForTimeout(CSS_FADE_OUT_DURATION);
       expect(await getHost()).toBeNull();
@@ -112,7 +113,7 @@ describe('banner', () => {
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
       expect(calls).toBe(1);
     });
 
@@ -129,7 +130,7 @@ describe('banner', () => {
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
       expect(calls).toBe(1);
     });
 
@@ -149,24 +150,24 @@ describe('banner', () => {
 
       const bannerOne = await selectNode(page, '#bannerOne');
       const bannerTwo = await selectNode(page, '#bannerTwo');
-      const closeButton = await selectNode(page, '#bannerTwo >>> p-button-pure');
+      const closeButtonBannerTwo = await selectNode(page, '#bannerTwo >>> p-button-pure');
 
-      let classListBannerOne = await getProperty(bannerOne, 'classList');
-      let classListBannerTwo = await getProperty(bannerTwo, 'classList');
-      let bannerOneStyles = await getComputedElementHandleStyles(bannerOne);
-      let bannerTwoStyles = await getComputedElementHandleStyles(bannerTwo);
-
-      expect(classListBannerOne).toEqual(classListBannerTwo);
-      expect(bannerOneStyles).toEqual(bannerTwoStyles);
-
-      await closeButton.click();
-      await waitForStencilLifecycle(page);
-
-      classListBannerOne = await getProperty(bannerOne, 'classList');
-      bannerOneStyles = await getComputedElementHandleStyles(bannerOne);
+      const classListBannerOne = await getCssClasses(bannerOne);
+      const classListBannerTwo = await getCssClasses(bannerTwo);
+      const bannerOneStyles = await getComputedElementHandleStyles(bannerOne);
+      const bannerTwoStyles = await getComputedElementHandleStyles(bannerTwo);
 
       expect(classListBannerOne).toEqual(classListBannerTwo);
       expect(bannerOneStyles).toEqual(bannerTwoStyles);
+
+      await closeButtonBannerTwo.click();
+      await waitForEventSerialization(page);
+
+      const classListBannerOneAfterClick = await getCssClasses(bannerOne);
+      const bannerOneStylesAfterClick = await getComputedElementHandleStyles(bannerOne);
+
+      expect(classListBannerOne).toEqual(classListBannerOneAfterClick);
+      expect(bannerOneStyles).toEqual(bannerOneStylesAfterClick);
     });
   });
 
