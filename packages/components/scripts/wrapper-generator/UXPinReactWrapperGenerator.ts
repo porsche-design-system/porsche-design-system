@@ -18,8 +18,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const props = super.generateProps(component, rawComponentInterface);
 
-    // add onClick prop for buttons and links
-    if (!!component.match(/(button|link)/)) {
+    // add onClick prop for buttons and links, but not button-group
+    if (!!component.match(/(button|link)(?!-group)/)) {
       return props.replace(/(};)$/, '  onClick?: (e: MouseEvent) => void;\n$1');
     } else {
       return props;
