@@ -15,6 +15,17 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return super.generateImports(component, extendedProps, nonPrimitiveTypes).replace(/(?:useMergedClass)(?:, )?/g, ''); // remove unused imports
   }
 
+  public generateProps(component: TagName, rawComponentInterface: string): string {
+    const props = super.generateProps(component, rawComponentInterface);
+
+    // add onClick prop for buttons and links
+    if (!!component.match(/(button|link)/)) {
+      return props.replace(/(};)$/, '  onClick?: (e: MouseEvent) => void;\n$1');
+    } else {
+      return props;
+    }
+  }
+
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     let cleanedComponent = super
       .generateComponent(component, extendedProps)
