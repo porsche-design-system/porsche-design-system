@@ -47,6 +47,16 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         'p-tabs-bar': Array.from(Array(3))
           .map((_, i) => `<button>Tab ${i + 1}</button>`)
           .join('\\n'),
+        'p-banner': ['<span slot="title">Banner Title</span>', '<span slot="description">Banner Description'].join(
+          '\\n'
+        ),
+        'p-modal': [
+          '<p-text>Some Content</p-text>',
+          '<p-button-group class="footer">',
+          '<p-button>Save</p-button>',
+          '<p-button variant="tertiary">Close</p-button>',
+          '</p-button-group>',
+        ].join('\\n'),
       };
 
       if (Object.keys(componentWithChildrenMap).includes(component)) {
