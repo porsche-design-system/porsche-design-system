@@ -12,7 +12,7 @@
     "build:jsdom-polyfill": "yarn build:jsdom-polyfill:bundle && yarn build:jsdom-polyfill:cleanInjectGlobalStyles",
     "build:jsdom-polyfill:bundle": "rollup -c ./projects/jsdom-polyfill/rollup.config.js && cp -r projects/jsdom-polyfill/src/lib/. dist/components-wrapper/jsdom-polyfill/lib",
     "build:jsdom-polyfill:cleanInjectGlobalStyles": "ts-node --project './tsconfig.node.json' 'scripts/cleanInjectGlobalStyles.ts'",
-    "build:uxpin-wrapper": "yarn  --cwd ./projects/uxpin-wrapper build",
+    "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "yarn test:jsdom-polyfill && yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:jsdom-polyfill": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'jest -c tests/jsdom-polyfill/config/jest.config.js'",
