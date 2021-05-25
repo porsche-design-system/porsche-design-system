@@ -12,7 +12,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    return super.generateImports(component, extendedProps, nonPrimitiveTypes).replace(/(?:, useMergedClass)?/g, ''); // remove unused imports
+    return super.generateImports(component, extendedProps, nonPrimitiveTypes).replace(/(?:useMergedClass)(?:, )?/g, ''); // remove unused imports
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
