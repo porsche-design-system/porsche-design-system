@@ -24,6 +24,7 @@
 .root {
   $bem-block: &;
   @include p-text-small;
+  -webkit-text-size-adjust: none; // stop iOS safari from adjusting font size when screen rotation is changing
   text-align: left;
   padding: 0;
   margin: 0;
