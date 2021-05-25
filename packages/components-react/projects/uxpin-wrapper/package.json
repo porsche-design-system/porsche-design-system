@@ -5,11 +5,11 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestart": "yarn copyUtils && yarn clean:build",
+    "prestart": "yarn clean:build && yarn build",
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
-    "predeploy": "yarn copyUtils && yarn clean:build",
+    "build": "cp ../components-wrapper/src/provider.tsx ./src && cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
+    "predeploy": "yarn clean:build && yarn build",
     "deploy": "uxpin-merge push --branch issue/1121 --token 67877b0048032081e1fc940d151d3d95bd111ecc",
-    "copyUtils": "cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge"
