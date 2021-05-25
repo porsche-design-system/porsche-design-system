@@ -22,26 +22,34 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
 
-    // add default children for components that support it
+    // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
-      const componentWithChildJSXMap: { [key in TagName]?: string } = {
+      const componentWithChildrenMap: { [key in TagName]?: string } = {
         'p-checkbox-wrapper': '<input type="checkbox" />',
         'p-radio-button-wrapper': '<input type="radio" />',
         'p-text-field-wrapper': '<input type="text" />',
         'p-textarea-wrapper': '<textarea />',
-        'p-select-wrapper': `<select>${Array.from(Array(3))
-          .map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`)
-          .join('')}</select>`,
+        'p-select-wrapper': ['<select>']
+          .concat(Array.from(Array(3)).map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`))
+          .concat(['</select>'])
+          .join('\\n'),
+        'p-tabs-bar': Array.from(Array(3))
+          .map((_, i) => `<button>Tab ${i + 1}</button>`)
+          .join('\\n'),
       };
 
-      // handle form wrappers
-      if (Object.keys(componentWithChildJSXMap).includes(component)) {
-        const jsx = componentWithChildJSXMap[component];
+      if (Object.keys(componentWithChildrenMap).includes(component)) {
+        const children = componentWithChildrenMap[component];
         cleanedComponent = cleanedComponent
-          .replace(/(<Tag \{\.\.\.props}) \/>/, `(\n      $1>\n        ${jsx}\n      </Tag>\n    )`) // add jsx within tag
-          .replace(/PropsWithChildren<(\w+)>/, '$1') // strip PropsWithChildren
-          .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true)}', $1`) // set default label value in props destructuring
-          .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
+          .replace(/(\.\.\.rest)/, `children = '${children}', $1`) // set default children value in props destructuring
+          .replace(/(\.\.\.rest,\n)/, '$1      dangerouslySetInnerHTML: { __html: children },\n'); // put destructured children into props object
+
+        // add default label for components that have it
+        if (this.inputParser.getRawComponentInterface(component).includes('label?: string;')) {
+          cleanedComponent = cleanedComponent
+            .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true)}', $1`) // set default label value in props destructuring
+            .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
+        }
       } else {
         // other components receive their component name as default
         cleanedComponent = cleanedComponent
