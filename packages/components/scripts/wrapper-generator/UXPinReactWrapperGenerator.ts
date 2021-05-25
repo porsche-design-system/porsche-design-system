@@ -68,7 +68,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         // add default label for components that have it
         if (this.inputParser.getRawComponentInterface(component).includes('label?: string;')) {
           cleanedComponent = cleanedComponent
-            .replace(/(\.\.\.rest)/, `label = '${this.getComponentFileName(component, true)}', $1`) // set default label value in props destructuring
+            .replace(/(\.\.\.rest)/, `label = 'Some Label', $1`) // set default label value in props destructuring
             .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
         }
       } else {
