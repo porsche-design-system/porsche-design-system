@@ -8,8 +8,6 @@
     "prestart": "yarn clean:build && yarn build",
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
     "build": "cp ../components-wrapper/src/provider.tsx ./src && cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
-    "predeploy": "yarn clean:build && yarn build",
-    "deploy": "uxpin-merge push --branch issue/1121 --token ***REMOVED***",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge"
