@@ -1,4 +1,5 @@
 export * from './Banner';
+export * from './BannerBehaviour';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './ButtonPure';
