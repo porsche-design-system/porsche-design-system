@@ -14,8 +14,13 @@
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge"
   },
+  "dependencies": {
+    "@porsche-design-system/components-js": "2.2.0",
+    "react": "^17.0.2"
+  },
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
+    "@types/react": "^17.0.4",
     "@uxpin/merge-cli": "^2.7.6",
     "babel-loader": "^8.2.2",
     "eslint-loader": "^4.0.2",
