@@ -21,6 +21,11 @@ services:
       - GITHUB_TOKEN
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - CDN_USER
+      - CDN_SSH_KEY
+      - UXPIN_TOKEN
       - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached
@@ -41,26 +46,6 @@ services:
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
-  design-system-deploy:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-    working_dir: /opt/porsche-design-system-app
-    environment:
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - GITHUB_REF
-      - GITHUB_SHA
-      - GITHUB_TOKEN
-    volumes:
-      - ./:/opt/porsche-design-system-app:cached
-      - /opt/porsche-design-system-gh-pages
-  design-system-deploy-assets:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-    working_dir: /opt/porsche-design-system-app
-    environment:
-      - CDN_USER
-      - CDN_SSH_KEY
-    volumes:
-      - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
     image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     volumes:
