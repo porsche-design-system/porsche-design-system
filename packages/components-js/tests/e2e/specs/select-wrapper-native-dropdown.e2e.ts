@@ -358,13 +358,14 @@ describe('select-wrapper native-dropdown', () => {
       // Ensure no update on native select render
       await select.click();
       await secondOption.evaluate((el: HTMLOptionElement) => (el.selected = true));
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(select, 'value')).toBe('b');
 
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all'); // Fake Dropdown gets updated
     });
   });
 });
