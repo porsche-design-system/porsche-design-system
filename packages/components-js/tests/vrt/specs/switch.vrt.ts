@@ -1,5 +1,6 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION } from '../../e2e/specs/tabs-bar.e2e';
 
 describe('Switch', () => {
   it('should have no visual regression', async () => {
@@ -61,18 +62,21 @@ describe('Switch', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#switch-hovered >>> button', hovered, true);
-        await forceStateOnElement(page, '#switch-checked-hovered >>> button', hovered, true);
-        await forceStateOnElement(page, '#switch-focused >>> button', focused, true);
-        await forceStateOnElement(page, '#switch-checked-focused >>> button', focused, true);
-        await forceStateOnElement(page, '#switch-hovered-focused >>> button', focusedHovered, true);
-        await forceStateOnElement(page, '#switch-checked-hovered-focused >>> button', focusedHovered, true);
-        await forceStateOnElement(page, '#switch-dark-hovered >>> button', hovered, true);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered >>> button', hovered, true);
-        await forceStateOnElement(page, '#switch-dark-focused >>> button', focused, true);
-        await forceStateOnElement(page, '#switch-dark-checked-focused >>> button', focused, true);
-        await forceStateOnElement(page, '#switch-dark-hovered-focused >>> button', focusedHovered, true);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused >>> button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-hovered', 'button', hovered, true);
+        await forceStateOnElement(page, '#switch-checked-hovered', 'button', hovered, true);
+        await forceStateOnElement(page, '#switch-focused', 'button', focused, true);
+        await forceStateOnElement(page, '#switch-checked-focused', 'button', focused, true);
+        await forceStateOnElement(page, '#switch-hovered-focused', 'button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-checked-hovered-focused', 'button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-dark-hovered', 'button', hovered, true);
+        await forceStateOnElement(page, '#switch-dark-checked-hovered', 'button', hovered, true);
+        await forceStateOnElement(page, '#switch-dark-focused', 'button', focused, true);
+        await forceStateOnElement(page, '#switch-dark-checked-focused', 'button', focused, true);
+        await forceStateOnElement(page, '#switch-dark-hovered-focused', 'button', focusedHovered, true);
+        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused', 'button', focusedHovered, true);
+
+        //wait for all style transitions to finish
+        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

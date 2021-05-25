@@ -1,5 +1,6 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION } from '../../e2e/specs/tabs-bar.e2e';
 
 describe('Button', () => {
   it('should have no visual regression', async () => {
@@ -67,24 +68,27 @@ describe('Button', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#button-primary-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-secondary-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-tertiary-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-secondary-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-tertiary-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-primary-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-secondary-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-tertiary-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-dark-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-dark-secondary-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-dark-tertiary-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-dark-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered-focused >>> button', focusedHovered);
+        await forceStateOnElement(page, '#button-primary-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-secondary-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-tertiary-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-secondary-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-tertiary-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-primary-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-secondary-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-tertiary-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-dark-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-dark-secondary-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-dark-tertiary-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-dark-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-dark-secondary-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-dark-tertiary-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-dark-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-dark-secondary-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-dark-tertiary-hovered-focused', 'button', focusedHovered);
+
+        //wait for all style transitions to finish
+        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

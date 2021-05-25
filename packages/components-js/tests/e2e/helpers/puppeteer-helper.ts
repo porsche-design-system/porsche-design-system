@@ -122,6 +122,7 @@ export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
 export const forceStateOnElement = async (
   page: Page,
+  hostElementId: string,
   selector: string,
   states: ForcedPseudoClasses[],
   getNodeFromCenter?: boolean
@@ -129,28 +130,77 @@ export const forceStateOnElement = async (
   const cdp = await page.target().createCDPSession();
   await cdp.send('DOM.getDocument');
 
-  const element = await selectNode(page, selector);
+  // const element = await selectNode(page, `${id} >>> ${selector}`);
+  //
+  // const { x, y, width, height } = await element.boundingBox();
+  //
+  // const elementNode = (await cdp.send('DOM.getNodeForLocation', {
+  //   x: Math.ceil(getNodeFromCenter ? x + width / 2 : x),
+  //   y: Math.ceil(getNodeFromCenter ? y + height / 2 : y),
+  // })) as Protocol.DOM.GetNodeForLocationResponse;
 
-  const { x, y, width, height } = await element.boundingBox();
+  const document = await cdp.send('DOM.getDocument', { depth: -1, pierce: true });
 
-  const elementNode = (await cdp.send('DOM.getNodeForLocation', {
-    x: Math.ceil(getNodeFromCenter ? x + width / 2 : x),
-    y: Math.ceil(getNodeFromCenter ? y + height / 2 : y),
-  })) as Protocol.DOM.GetNodeForLocationResponse;
-
-  const temp = await cdp.send('DOM.querySelector', {
-    nodeId: elementNode.nodeId,
-    selector: 'p-button-pure',
+  const hostElement = await cdp.send('DOM.querySelector', {
+    // @ts-ignore
+    nodeId: document.root.nodeId,
+    selector: hostElementId,
   });
+  // @ts-ignore
+  const hostNode = (await cdp.send('DOM.describeNode', { nodeId: hostElement.nodeId, depth: -1, pierce: true })).node;
+  // console.log('-> hostNode', hostNode);
+  // @ts-ignore
+  // console.log('-> hostNode', hostNode);
+  // @ts-ignore
+  // console.log('-> hostNode children', hostNode.children);
+  // @ts-ignore
+  // console.log(
+  //   '-> hostNode shadow',
+  //   hostNode.shadowRoots[0].children.find((el) => el.localName === selector)
+  // );
+  // TODO: children that are deeper in the shadow dom?? like in normal buton
+  const elementIds = await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
+    // @ts-ignore
+    backendNodeIds: [hostNode.shadowRoots[0].children.find((el) => el.localName === selector).backendNodeId],
+  });
+  console.log('-> elementId', elementIds);
 
-  console.log('node ----->', temp);
+  //
+  // const element = await cdp.send('DOM.querySelector', {
+  //   // @ts-ignore
+  //   nodeId: hostElement.nodeId,
+  //   selector: 'button',
+  // });
+  // const
+  // // @ts-ignore
+  // console.log(
+  //   '-> document.root.children[1].body...',
+  //   // @ts-ignore
+  //   document.root.children[1].children
+  //     .find((child) => child.nodeName === 'BODY')
+  //     .children // @ts-ignore
+  //     .filter((element) => element.nodeName === 'DIV')
+  //     // @ts-ignore
+  //     .reduce((acc, x) => acc.concat(x.children), [])
+  //     // @ts-ignore
+  //     .find((child) => child.nodeId === hostElement.nodeId)
+  // );
+  //
+  // // @ts-ignore
+  // const children = document.root.children[1].find((element) => element.nodeId === hostElement.nodeId);
+  // console.log('-> children', children);
+  //
+  // console.log('nodes ----->', elementIds);
+  // console.log('-> hostElement', hostElement);
+  // console.log('-> element', element);
 
-  await cdp.send('CSS.enable');
+  await cdp.send('CSS.enable'); // @ts-ignore
   await cdp.send('CSS.forcePseudoState', {
     // @ts-ignore
-    nodeId: temp.nodeId,
+    nodeId: elementIds.nodeIds[0],
     forcedPseudoClasses: states,
   });
+
   await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
 };
 

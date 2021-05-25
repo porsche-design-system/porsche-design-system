@@ -1,5 +1,6 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION } from '../../e2e/specs/tabs-bar.e2e';
 
 describe('Button Pure', () => {
   it('should have no visual regression', async () => {
@@ -61,23 +62,26 @@ describe('Button Pure', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#button-pure-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-pure-subline-hovered >>> button', hovered);
+        await forceStateOnElement(page, '#button-pure-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-pure-subline-hovered', 'button', hovered);
 
-        await forceStateOnElement(page, '#button-pure-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-pure-subline-focused >>> button', focused);
+        await forceStateOnElement(page, '#button-pure-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-pure-subline-focused', 'button', focused);
 
-        await forceStateOnElement(page, '#button-pure-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-pure-subline-hovered-focused >>> button', focusedHovered);
+        await forceStateOnElement(page, '#button-pure-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-pure-subline-hovered-focused', 'button', focusedHovered);
 
-        await forceStateOnElement(page, '#button-pure-dark-hovered >>> button', hovered);
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered >>> button', hovered);
+        await forceStateOnElement(page, '#button-pure-dark-hovered', 'button', hovered);
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered', 'button', hovered);
 
-        await forceStateOnElement(page, '#button-pure-dark-focused >>> button', focused);
-        await forceStateOnElement(page, '#button-pure-subline-dark-focused >>> button', focused);
+        await forceStateOnElement(page, '#button-pure-dark-focused', 'button', focused);
+        await forceStateOnElement(page, '#button-pure-subline-dark-focused', 'button', focused);
 
-        await forceStateOnElement(page, '#button-pure-dark-hovered-focused >>> button', focusedHovered);
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused >>> button', focusedHovered);
+        await forceStateOnElement(page, '#button-pure-dark-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused', 'button', focusedHovered);
+
+        //wait for all style transitions to finish
+        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });
