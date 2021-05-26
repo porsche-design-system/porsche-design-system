@@ -1,7 +1,6 @@
-import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { CDPSession, ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import Protocol from 'devtools-protocol';
-import { emitKeypressEvents } from 'readline';
 
 type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
@@ -137,22 +136,20 @@ export const findBackendNodeId = (currentNode: Protocol.DOM.Node, selector: stri
 
 export const forceStateOnElement = async (
   page: Page,
-  hostElementId: string,
-  selector: string,
-  states: ForcedPseudoClasses[]
+  hostElementSelector: string,
+  states: ForcedPseudoClasses[],
+  shadowRootSelector?: string
 ): Promise<void> => {
   const cdp = await page.target().createCDPSession();
-  await cdp.send('DOM.getDocument');
-  const { root } = (await cdp.send('DOM.getDocument', {
-    depth: -1,
-    pierce: true,
-  })) as Protocol.DOM.GetDocumentResponse;
+  const nodeId = await getHostElementNodeId(cdp, hostElementSelector);
+  await forceStateOnNodeId(
+    cdp,
+    shadowRootSelector ? await getElementNodeIdInShadowRoot(cdp, nodeId, shadowRootSelector) : nodeId,
+    states
+  );
+};
 
-  const { nodeId } = (await cdp.send('DOM.querySelector', {
-    nodeId: root.nodeId,
-    selector: hostElementId,
-  })) as Protocol.DOM.QuerySelectorResponse;
-
+const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: number, selector: string): Promise<number> => {
   const hostNode: Protocol.DOM.Node = (
     (await cdp.send('DOM.describeNode', {
       nodeId,
@@ -163,14 +160,37 @@ export const forceStateOnElement = async (
 
   const backendNodeId = findBackendNodeId(hostNode.shadowRoots[0], selector);
 
-  const { nodeIds } = (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
-    backendNodeIds: [backendNodeId],
-  })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse;
+  return (
+    (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
+      backendNodeIds: [backendNodeId],
+    })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse
+  ).nodeIds[0];
+};
 
+const getHostElementNodeId = async (cdp: CDPSession, selector: string): Promise<number> => {
+  await cdp.send('DOM.getDocument');
+  const { root } = (await cdp.send('DOM.getDocument', {
+    depth: -1,
+    pierce: true,
+  })) as Protocol.DOM.GetDocumentResponse;
+
+  return (
+    (await cdp.send('DOM.querySelector', {
+      nodeId: root.nodeId,
+      selector,
+    })) as Protocol.DOM.QuerySelectorResponse
+  ).nodeId;
+};
+
+const forceStateOnNodeId = async (
+  cdp: CDPSession,
+  nodeId: number,
+  forcedPseudoClasses: ForcedPseudoClasses[]
+): Promise<void> => {
   await cdp.send('CSS.enable'); // @ts-ignore
   await cdp.send('CSS.forcePseudoState', {
-    nodeId: nodeIds[0],
-    forcedPseudoClasses: states,
+    nodeId,
+    forcedPseudoClasses,
   });
 };
 

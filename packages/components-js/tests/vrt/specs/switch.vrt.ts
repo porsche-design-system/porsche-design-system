@@ -62,18 +62,18 @@ describe('Switch', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#switch-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#switch-checked-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#switch-focused', 'button', focused);
-        await forceStateOnElement(page, '#switch-checked-focused', 'button', focused);
-        await forceStateOnElement(page, '#switch-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#switch-checked-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#switch-dark-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#switch-dark-focused', 'button', focused);
-        await forceStateOnElement(page, '#switch-dark-checked-focused', 'button', focused);
-        await forceStateOnElement(page, '#switch-dark-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#switch-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#switch-checked-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#switch-focused', focused, 'button');
+        await forceStateOnElement(page, '#switch-checked-focused', focused, 'button');
+        await forceStateOnElement(page, '#switch-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#switch-checked-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#switch-dark-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#switch-dark-checked-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#switch-dark-focused', focused, 'button');
+        await forceStateOnElement(page, '#switch-dark-checked-focused', focused, 'button');
+        await forceStateOnElement(page, '#switch-dark-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#switch-dark-checked-hovered-focused', focusedHovered, 'button');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
