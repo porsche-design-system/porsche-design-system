@@ -26,7 +26,7 @@ export const convertToAngular = (markup: string): string =>
       return ` [${camelCase($key)}]="{${$value}}"`;
     })
     // transform all other keys to camel case, surround them in brackets and surround all values with single quotes
-    .replace(/\s([a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
+    .replace(/\s([a-z-]+)="(\D.*?)"/g, (m, $key, $value) => {
       if ($key.startsWith('aria-')) {
         // handle aria attributes
         return ` ${$key}="${$value}"`;
