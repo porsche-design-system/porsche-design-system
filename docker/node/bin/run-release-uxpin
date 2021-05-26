@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${UXPIN_TOKEN}" ]]; then
+  echo "Please provide the \$UXPIN_TOKEN environment variable."
+  exit 1
+fi
+
+publish() {
+  echo "task: [$(date)] \"publish\""
+  pushd "./packages/components-react/projects/uxpin-wrapper"
+    result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}")
+  popd
+
+  if [[ ${result} == *"Library bundle uploaded successfully!"* ]]; then
+    return 0 # true
+  else
+    return 1 # false
+  fi
+}
+
+if publish; then
+  echo "New version of components-uxpin published 🎉"
+else
+  echo "Publishing new version of components-uxpin failed 😢"
+  exit 1
+fi
