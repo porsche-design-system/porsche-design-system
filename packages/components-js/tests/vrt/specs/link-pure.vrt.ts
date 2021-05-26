@@ -34,28 +34,28 @@ describe('Link Pure', () => {
 
         const body = `
           <div class="playground light">
-            <p-link-pure id="link-pure-hovered">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-hovered">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-hovered" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-hovered" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>
           <div class="playground dark">
-            <p-link-pure id="link-pure-dark-hovered" theme="dark">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-dark-hovered" theme="dark">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-dark-hovered" theme="dark" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-dark-hovered" theme="dark" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>
           <div class="playground light">
-            <p-link-pure id="link-pure-focused">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-focused">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-focused" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-focused" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>
           <div class="playground dark">
-            <p-link-pure id="link-pure-dark-focused" theme="dark">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-dark-focused" theme="dark">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-dark-focused" theme="dark" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-dark-focused" theme="dark" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>
           <div class="playground light">
-            <p-link-pure id="link-pure-hovered-focused">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-hovered-focused">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-hovered-focused" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-hovered-focused" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>
           <div class="playground dark">
-            <p-link-pure id="link-pure-dark-hovered-focused" theme="dark">Some label</p-link-pure>
-            <p-link-pure id="link-pure-subline-dark-hovered-focused" theme="dark">Some label <p slot="subline">Some Subline</p></p-link-pure>
+            <p-link-pure id="link-pure-dark-hovered-focused" theme="dark" href="#">Some label</p-link-pure>
+            <p-link-pure id="link-pure-subline-dark-hovered-focused" theme="dark" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
