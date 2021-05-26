@@ -88,11 +88,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     categories: [
       {
         name: 'Uncategorized',
-        include: ['./src/lib/components/*.tsx'],
+        include: ['src/lib/components/*.tsx'],
       },
     ],
-    wrapper: './src/UXPinWrapper.tsx',
-    webpackConfig: './webpack.config.js',
+    wrapper: 'src/UXPinWrapper.tsx',
+    webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
 };`;
