@@ -16,7 +16,7 @@ describe('Button Pure', () => {
     ).toBeFalsy();
   });
 
-  fit('should have no visual regression for :hover + :focus-visible', async () => {
+  it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('button-pure-states', async () => {
