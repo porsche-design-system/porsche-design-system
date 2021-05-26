@@ -649,7 +649,12 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Restore Source Artifact'
+      - name: 'Restore Components JS Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Restore Components UXPin Source Artifact'
         uses: actions/download-artifact@v2
         with:
           name: components-uxpin-source
