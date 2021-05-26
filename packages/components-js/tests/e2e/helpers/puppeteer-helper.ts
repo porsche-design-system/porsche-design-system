@@ -7,6 +7,13 @@ const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' 
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
+export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
+export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
+
+export const HOVERED: ForcedPseudoClasses[] = ['hover'];
+export const FOCUSED: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
+export const FOCUS_HOVERED = HOVERED.concat(FOCUSED);
+
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = { ...defaultOptions, ...opts };
 
@@ -115,9 +122,6 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
   ).asElement();
 };
-
-export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
-export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
 export const findBackendNodeId = (currentNode: Protocol.DOM.Node, selector: string): number => {
   if (currentNode.localName === selector) {
