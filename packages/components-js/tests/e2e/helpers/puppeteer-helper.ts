@@ -120,88 +120,58 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
 export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
 export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
+export const findBackendNodeId = (currentNode: Protocol.DOM.Node, selector: string): number => {
+  if (currentNode.localName === selector) {
+    return currentNode.backendNodeId;
+  } else {
+    for (let i = 0; i < currentNode.children?.length; i++) {
+      const currentChild = currentNode.children[i];
+      const result = findBackendNodeId(currentChild, selector);
+      if (result) {
+        return result;
+      }
+    }
+    return undefined;
+  }
+};
+
 export const forceStateOnElement = async (
   page: Page,
   hostElementId: string,
   selector: string,
-  states: ForcedPseudoClasses[],
-  getNodeFromCenter?: boolean
+  states: ForcedPseudoClasses[]
 ): Promise<void> => {
   const cdp = await page.target().createCDPSession();
   await cdp.send('DOM.getDocument');
+  const { root } = (await cdp.send('DOM.getDocument', {
+    depth: -1,
+    pierce: true,
+  })) as Protocol.DOM.GetDocumentResponse;
 
-  // const element = await selectNode(page, `${id} >>> ${selector}`);
-  //
-  // const { x, y, width, height } = await element.boundingBox();
-  //
-  // const elementNode = (await cdp.send('DOM.getNodeForLocation', {
-  //   x: Math.ceil(getNodeFromCenter ? x + width / 2 : x),
-  //   y: Math.ceil(getNodeFromCenter ? y + height / 2 : y),
-  // })) as Protocol.DOM.GetNodeForLocationResponse;
-
-  const document = await cdp.send('DOM.getDocument', { depth: -1, pierce: true });
-
-  const hostElement = await cdp.send('DOM.querySelector', {
-    // @ts-ignore
-    nodeId: document.root.nodeId,
+  const { nodeId } = (await cdp.send('DOM.querySelector', {
+    nodeId: root.nodeId,
     selector: hostElementId,
-  });
-  // @ts-ignore
-  const hostNode = (await cdp.send('DOM.describeNode', { nodeId: hostElement.nodeId, depth: -1, pierce: true })).node;
-  // console.log('-> hostNode', hostNode);
-  // @ts-ignore
-  // console.log('-> hostNode', hostNode);
-  // @ts-ignore
-  // console.log('-> hostNode children', hostNode.children);
-  // @ts-ignore
-  // console.log(
-  //   '-> hostNode shadow',
-  //   hostNode.shadowRoots[0].children.find((el) => el.localName === selector)
-  // );
-  // TODO: children that are deeper in the shadow dom?? like in normal buton
-  const elementIds = await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
-    // @ts-ignore
-    backendNodeIds: [hostNode.shadowRoots[0].children.find((el) => el.localName === selector).backendNodeId],
-  });
-  console.log('-> elementId', elementIds);
+  })) as Protocol.DOM.QuerySelectorResponse;
 
-  //
-  // const element = await cdp.send('DOM.querySelector', {
-  //   // @ts-ignore
-  //   nodeId: hostElement.nodeId,
-  //   selector: 'button',
-  // });
-  // const
-  // // @ts-ignore
-  // console.log(
-  //   '-> document.root.children[1].body...',
-  //   // @ts-ignore
-  //   document.root.children[1].children
-  //     .find((child) => child.nodeName === 'BODY')
-  //     .children // @ts-ignore
-  //     .filter((element) => element.nodeName === 'DIV')
-  //     // @ts-ignore
-  //     .reduce((acc, x) => acc.concat(x.children), [])
-  //     // @ts-ignore
-  //     .find((child) => child.nodeId === hostElement.nodeId)
-  // );
-  //
-  // // @ts-ignore
-  // const children = document.root.children[1].find((element) => element.nodeId === hostElement.nodeId);
-  // console.log('-> children', children);
-  //
-  // console.log('nodes ----->', elementIds);
-  // console.log('-> hostElement', hostElement);
-  // console.log('-> element', element);
+  const hostNode: Protocol.DOM.Node = (
+    (await cdp.send('DOM.describeNode', {
+      nodeId,
+      depth: -1,
+      pierce: true,
+    })) as Protocol.DOM.DescribeNodeResponse
+  ).node;
+
+  const backendNodeId = findBackendNodeId(hostNode.shadowRoots[0], selector);
+
+  const { nodeIds } = (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
+    backendNodeIds: [backendNodeId],
+  })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse;
 
   await cdp.send('CSS.enable'); // @ts-ignore
   await cdp.send('CSS.forcePseudoState', {
-    // @ts-ignore
-    nodeId: elementIds.nodeIds[0],
+    nodeId: nodeIds[0],
     forcedPseudoClasses: states,
   });
-
-  await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
