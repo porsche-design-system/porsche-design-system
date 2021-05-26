@@ -19,11 +19,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Banner',
   },
   {
-    path: 'banner-behaviour',
-    component: fromPages.BannerBehaviourComponent,
-    name: 'Banner Behaviour',
-  },
-  {
     path: 'button',
     component: fromPages.ButtonComponent,
     name: 'Button',
