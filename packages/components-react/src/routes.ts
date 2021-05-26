@@ -14,11 +14,6 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPage,
   },
   {
-    name: 'Banner Behaviour',
-    path: '/banner-behaviour',
-    component: fromPages.BannerBehaviourPage,
-  },
-  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage,

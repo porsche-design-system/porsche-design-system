@@ -1,20 +1,22 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
+  getActiveElementTagNameInShadowRoot,
   getBrowser,
+  getCssClasses,
+  getLifecycleStatus,
+  getOutlineStyle,
   getStyleOnFocus,
   initAddEventListener,
   reattachElement,
   selectNode,
-  setContentWithDesignSystem,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  waitForInheritedCSSTransition,
-  getLifecycleStatus,
   setAttribute,
-  getActiveElementTagNameInShadowRoot,
+  setContentWithDesignSystem,
+  waitForEventSerialization,
+  waitForInheritedCSSTransition,
+  waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
 const CSS_FADE_IN_DURATION = 2000;
@@ -70,59 +72,103 @@ describe('banner', () => {
     expect(el).toBeNull();
   });
 
-  it('should remove banner from DOM by click on close button', async () => {
-    await initBanner();
+  describe('close', () => {
+    const getComputedElementHandleStyles = async (elHandle: ElementHandle<Element>): Promise<CSSStyleDeclaration> => {
+      return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
+        return getComputedStyle(el);
+      });
+    };
 
-    const button = await getButton();
+    it('should remove banner from DOM by click on close button', async () => {
+      await initBanner();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await button.click();
-    await waitForStencilLifecycle(page);
-    // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
-    expect(await getHost()).toBeNull();
-  });
+      const button = await getButton();
 
-  it('should remove banner from DOM by trigger ESC key', async () => {
-    await initBanner();
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+      await button.click();
+      await waitForEventSerialization(page);
+      // we have to wait for the animation to end before the dom is cleared
+      await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+      expect(await getHost()).toBeNull();
+    });
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await page.keyboard.press('Escape');
-    await waitForStencilLifecycle(page);
-    // we have to wait for the animation to end before the dom is cleared
-    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
-    expect(await getHost()).toBeNull();
-  });
+    it('should remove banner from DOM by trigger ESC key', async () => {
+      await initBanner();
 
-  it('should emit custom event by click on close button', async () => {
-    await initBanner();
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      // we have to wait for the animation to end before the dom is cleared
+      await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+      expect(await getHost()).toBeNull();
+    });
 
-    const host = await getHost();
-    const button = await getButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    it('should emit custom event by click on close button', async () => {
+      await initBanner();
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await button.click();
-    await waitForStencilLifecycle(page);
-    expect(calls).toBe(1);
-  });
+      const host = await getHost();
+      const button = await getButton();
+      let calls = 0;
+      await addEventListener(host, 'dismiss', () => calls++);
 
-  it('should remove and re-attach event', async () => {
-    await initBanner();
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+      await button.click();
+      await waitForEventSerialization(page);
+      expect(calls).toBe(1);
+    });
 
-    const host = await getHost();
-    const button = await getButton();
-    let calls = 0;
-    await addEventListener(host, 'dismiss', () => calls++);
+    it('should remove and re-attach event', async () => {
+      await initBanner();
 
-    // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-banner');
+      const host = await getHost();
+      const button = await getButton();
+      let calls = 0;
+      await addEventListener(host, 'dismiss', () => calls++);
 
-    await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await button.click();
-    await waitForStencilLifecycle(page);
-    expect(calls).toBe(1);
+      // Remove and re-attach component to check if events are duplicated / fire at all
+      await reattachElement(page, 'p-banner');
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+      await button.click();
+      await waitForEventSerialization(page);
+      expect(calls).toBe(1);
+    });
+
+    it('should not influence other banner styles', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-banner id="bannerOne" style="--p-banner-position-type: static">
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>
+      <p-banner id="bannerTwo" style="--p-banner-position-type: static">
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>`
+      );
+
+      const bannerOne = await selectNode(page, '#bannerOne');
+      const bannerTwo = await selectNode(page, '#bannerTwo');
+      const closeButtonBannerTwo = await selectNode(page, '#bannerTwo >>> p-button-pure');
+
+      const classListBannerOne = await getCssClasses(bannerOne);
+      const classListBannerTwo = await getCssClasses(bannerTwo);
+      const bannerOneStyles = await getComputedElementHandleStyles(bannerOne);
+      const bannerTwoStyles = await getComputedElementHandleStyles(bannerTwo);
+
+      expect(classListBannerOne).toEqual(classListBannerTwo);
+      expect(bannerOneStyles).toEqual(bannerTwoStyles);
+
+      await closeButtonBannerTwo.click();
+      await waitForEventSerialization(page);
+
+      const classListBannerOneAfterClick = await getCssClasses(bannerOne);
+      const bannerOneStylesAfterClick = await getComputedElementHandleStyles(bannerOne);
+
+      expect(classListBannerOne).toEqual(classListBannerOneAfterClick);
+      expect(bannerOneStyles).toEqual(bannerOneStylesAfterClick);
+    });
   });
 
   describe('focus state', () => {
