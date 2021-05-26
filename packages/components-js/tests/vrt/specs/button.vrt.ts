@@ -68,24 +68,24 @@ describe('Button', () => {
         const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
         const focusedHovered = hovered.concat(focused);
 
-        await forceStateOnElement(page, '#button-primary-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-secondary-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-tertiary-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-secondary-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-tertiary-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-primary-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#button-secondary-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#button-tertiary-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered', 'button', hovered);
-        await forceStateOnElement(page, '#button-dark-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-dark-secondary-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-dark-tertiary-focused', 'button', focused);
-        await forceStateOnElement(page, '#button-dark-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered-focused', 'button', focusedHovered);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered-focused', 'button', focusedHovered);
+        await forceStateOnElement(page, '#button-primary-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-secondary-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-tertiary-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-secondary-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-tertiary-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-primary-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-secondary-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-tertiary-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-dark-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-dark-secondary-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-dark-tertiary-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-dark-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-dark-secondary-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-dark-tertiary-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-dark-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-dark-secondary-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-dark-tertiary-hovered-focused', focusedHovered, 'button');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
