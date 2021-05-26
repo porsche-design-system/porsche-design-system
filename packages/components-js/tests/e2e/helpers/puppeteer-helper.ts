@@ -10,9 +10,9 @@ export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
 export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
-export const HOVERED: ForcedPseudoClasses[] = ['hover'];
-export const FOCUSED: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-export const FOCUS_HOVERED = HOVERED.concat(FOCUSED);
+export const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
+export const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
+export const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = { ...defaultOptions, ...opts };
