@@ -1,5 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import { ForcedPseudoClasses, forceStateOnElement, setContentWithDesignSystem } from '../../e2e/helpers';
+import { FOCUS_HOVERED, FOCUSED, forceStateOnElement, HOVERED, setContentWithDesignSystem } from '../../e2e/helpers';
 import { CSS_ANIMATION_DURATION } from '../../e2e/specs/tabs-bar.e2e';
 
 describe('Button Pure', () => {
@@ -58,27 +58,23 @@ describe('Button Pure', () => {
         const height = await page.evaluate(() => document.body.clientHeight);
         await page.setViewport({ width: 1000, height: height });
 
-        const hovered: ForcedPseudoClasses[] = ['hover'];
-        const focused: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-        const focusedHovered = hovered.concat(focused);
+        await forceStateOnElement(page, '#button-pure-hovered', HOVERED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-hovered', HOVERED, 'button');
 
-        await forceStateOnElement(page, '#button-pure-hovered', hovered, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-pure-focused', FOCUSED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-focused', FOCUSED, 'button');
 
-        await forceStateOnElement(page, '#button-pure-focused', focused, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-focused', focused, 'button');
+        await forceStateOnElement(page, '#button-pure-hovered-focused', FOCUS_HOVERED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-hovered-focused', FOCUS_HOVERED, 'button');
 
-        await forceStateOnElement(page, '#button-pure-hovered-focused', focusedHovered, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-hovered', HOVERED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered', HOVERED, 'button');
 
-        await forceStateOnElement(page, '#button-pure-dark-hovered', hovered, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered', hovered, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-focused', FOCUSED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-dark-focused', FOCUSED, 'button');
 
-        await forceStateOnElement(page, '#button-pure-dark-focused', focused, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-focused', focused, 'button');
-
-        await forceStateOnElement(page, '#button-pure-dark-hovered-focused', focusedHovered, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused', focusedHovered, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-hovered-focused', FOCUS_HOVERED, 'button');
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused', FOCUS_HOVERED, 'button');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
