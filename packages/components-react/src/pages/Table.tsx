@@ -10,24 +10,48 @@ import {
   PTableHeadCell,
   PTableRow,
   PText,
+  TableHeadItem,
 } from '@porsche-design-system/components-react';
-import { data, head } from '@porsche-design-system/shared';
+import { data as rawData, head as rawHead } from '@porsche-design-system/shared';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const TablePage = (): JSX.Element => {
+  const headRow = useRef<HTMLElement>();
+  const [head, setHead] = useState(rawHead);
+  const [data, setData] = useState(rawData);
+
+  const onSortingChange = useCallback((e: CustomEvent<TableHeadItem>) => {
+    const { key, direction } = e.detail;
+    setHead((prev) => prev.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) })));
+    setData((prev) =>
+      [...prev].sort((a, b) =>
+        // @ts-ignore
+        direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
+      )
+    );
+  }, []);
+
+  // workaround to pass data via property since our react wrappers set attributes
+  useEffect(() => {
+    headRow.current.childNodes.forEach((node, i) => {
+      (node as any).item = head[i];
+    });
+  }, [head]);
+
   return (
     <>
       <div className="playground light table" title="should render table">
-        <PTable>
+        <PTable onSortingChange={onSortingChange}>
           <PTableHead>
-            <PTableRow>
-              {head.map((item) => (
-                <PTableHeadCell key={(item as any).name} item={item} children={(item as any).name} />
+            <PTableRow ref={headRow}>
+              {head.map((item, i) => (
+                <PTableHeadCell key={i} item={item} children={item.name} />
               ))}
             </PTableRow>
           </PTableHead>
           <PTableBody>
             {data.map((item) => (
-              <PTableRow>
+              <PTableRow key={item.leadId}>
                 <PTableCell>
                   <PFlex>
                     <PFlexItem>
