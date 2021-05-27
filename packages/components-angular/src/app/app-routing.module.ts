@@ -139,6 +139,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Switch',
   },
   {
+    path: 'table',
+    component: fromPages.TableComponent,
+    name: 'Table',
+  },
+  {
     path: 'tabs',
     component: fromPages.TabsComponent,
     name: 'Tabs',
