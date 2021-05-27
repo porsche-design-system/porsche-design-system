@@ -30,7 +30,7 @@ describe('Radio Button Wrapper', () => {
 
         const head = `
           <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-radio-button-wrapper:not(:last-child) { margin-top: 16px; }</style>`;
+          <style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
 
         const body = `
             <div class="playground light">
