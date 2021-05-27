@@ -21,8 +21,8 @@ export const getAriaSort = ({ isSortable, isSorting, direction }: TableHeadItem)
 
 export const SORT_EVENT_NAME = 'internalSortingChange';
 
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
+export const getSlottedCss = (host: HTMLElement): string =>
+  getCss(
     buildGlobalStyles({
       [getTagName(host)]: {
         '& img': {
@@ -35,9 +35,16 @@ export const getSlottedCss = (host: HTMLElement): string => {
       },
     })
   );
-};
 
-type TableComponentType = 'table' | 'table-head' | 'table-head-cell' | 'table-body' | 'table-row' | 'table-cell';
+export const TABLE_COMPONENTS = [
+  'table',
+  'table-head',
+  'table-head-cell',
+  'table-body',
+  'table-row',
+  'table-cell',
+] as const;
+export type TableComponentType = typeof TABLE_COMPONENTS[number];
 
 const baseCss: { [key in TableComponentType]: string } = {
   table: getCss(
@@ -143,10 +150,11 @@ const baseCss: { [key in TableComponentType]: string } = {
   }),
 };
 
-export const addCss = (host: HTMLElement): void => {
+export const getTableCss = (host: HTMLElement): string => {
   const [, tableComponent] = /^(?:.*)-?p-(.*)$/.exec(getTagName(host)) || [];
-  // if (tableComponent === 'table-cell') {
-  //   console.log(baseCss[tableComponent]);
-  // }
-  attachCss(host, baseCss[tableComponent]);
+  return baseCss[tableComponent];
+};
+
+export const addCss = (host: HTMLElement): void => {
+  attachCss(host, getTableCss(host));
 };
