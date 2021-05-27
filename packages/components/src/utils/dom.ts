@@ -83,15 +83,30 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
+  return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
+};
+
 export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
-  const prefixedTagName = getPrefixedTagNames(host)[tagName];
-  if (getTagName(host.parentElement) !== prefixedTagName) {
-    throw new Error(`Parent HTMLElement should be of kind ${prefixedTagName}.`);
+  if (!isParentOfKind(host, tagName)) {
+    const allowedTagName = getPrefixedTagNames(host)[tagName];
+    const actualTagName = getTagName(host.parentElement);
+    throw new Error(
+      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}.`
+    );
   }
 };
 
 export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagNameCamelCase[]): void => {
-  tagNames.forEach((x) => throwIfParentIsNotOfKind(host, x));
+  if (!tagNames.some((tagName) => isParentOfKind(host, tagName))) {
+    const prefixedTagNames = getPrefixedTagNames(host);
+    const allowedTagNames = tagNames.map((tagName) => prefixedTagNames[tagName]).join(', ');
+    const actualTagName = getTagName(host.parentElement);
+
+    throw new Error(
+      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}.`
+    );
+  }
 };
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
@@ -121,8 +136,7 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  const fieldsetWrapper = host.parentElement as HTMLElementWithRequiredProp;
-  return isRequired(fieldsetWrapper) && getTagName(fieldsetWrapper) === getPrefixedTagNames(host).pFieldsetWrapper;
+  return isRequired(host.parentElement as HTMLElementWithRequiredProp) && isParentOfKind(host, 'pFieldsetWrapper');
 };
 
 export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
