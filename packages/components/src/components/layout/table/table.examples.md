@@ -45,7 +45,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { data, headSortable } from './table.data';
+  import { data, headSortable } from './table-data';
   
   @Component
   export default class Code extends Vue {
