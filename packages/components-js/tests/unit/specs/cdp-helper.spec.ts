@@ -1,5 +1,6 @@
 import Protocol from 'devtools-protocol';
-import { findBackendNodeId } from '../../e2e/helpers';
+import { findBackendNodeId } from '../../e2e/helpers/cdp-helper';
+
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
 type TestCase = {
@@ -8,7 +9,7 @@ type TestCase = {
   expect: number;
 };
 
-describe('puppeteer-helper', () => {
+describe('cdp-helper', () => {
   describe('findBackendNodeId()', () => {
     const testCases: TestCase[] = [
       { node: { localName: 'test', backendNodeId: 1 }, selector: 'test', expect: 1 },
@@ -46,7 +47,7 @@ describe('puppeteer-helper', () => {
     ];
 
     testCases.forEach((test) => {
-      it(`should for ${test.node} and selector ${test.selector} return ${test.expect}`, () => {
+      it(`should for ${JSON.stringify(test.node)} and selector "${test.selector}" return "${test.expect}"`, () => {
         expect(findBackendNodeId(test.node as Protocol.DOM.Node, test.selector)).toBe(test.expect);
       });
     });
