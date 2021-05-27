@@ -60,10 +60,6 @@ describe('Link Pure', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        // TODO: currently needed because VRT Tester resets the height to 1px while executing the scenario
-        const height = await page.evaluate(() => document.body.clientHeight);
-        await page.setViewport({ width: 1000, height: height });
-
         await forceStateOnElement(page, '#link-pure-hovered', HOVERED_STATE, 'a');
         await forceStateOnElement(page, '#link-pure-subline-hovered', HOVERED_STATE, 'a');
 

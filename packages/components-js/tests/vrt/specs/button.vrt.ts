@@ -66,10 +66,6 @@ describe('Button', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        // TODO: currently needed because VRT Tester resets the height to 1px while executing the scenario
-        const height = await page.evaluate(() => document.body.clientHeight);
-        await page.setViewport({ width: 1000, height: height });
-
         await forceStateOnElement(page, '#button-primary-hovered', HOVERED_STATE, 'button');
         await forceStateOnElement(page, '#button-secondary-hovered', HOVERED_STATE, 'button');
         await forceStateOnElement(page, '#button-tertiary-hovered', HOVERED_STATE, 'button');
