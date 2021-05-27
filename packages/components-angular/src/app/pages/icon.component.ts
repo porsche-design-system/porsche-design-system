@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 
 @Component({
@@ -69,6 +69,7 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
       ></p-icon>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
   public icons = ICON_NAMES;

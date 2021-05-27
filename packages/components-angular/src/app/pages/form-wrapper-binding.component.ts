@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'form-wrapper-binding',
@@ -17,5 +17,6 @@ import { Component, OnInit } from '@angular/core';
       </p-text-field-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormWrapperBindingComponent {}

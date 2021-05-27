@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'events',
@@ -25,6 +25,7 @@ import { Component } from '@angular/core';
       <p>{{ tabChangeEventCounter }}</p>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent {
   pageChangeEventCounter: number = 0;

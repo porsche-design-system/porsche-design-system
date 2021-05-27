@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-link',
@@ -94,5 +94,6 @@ import { Component } from '@angular/core';
       >
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkComponent {}

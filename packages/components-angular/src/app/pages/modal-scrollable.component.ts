@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-modal-scrollable',
@@ -57,6 +57,7 @@ import { Component } from '@angular/core';
       </p-modal>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalScrollableComponent {
   constructor() {
