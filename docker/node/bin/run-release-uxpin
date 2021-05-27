@@ -14,6 +14,8 @@ publish() {
     result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}")
   popd
 
+  echo $result
+  
   if [[ ${result} == *"Library bundle uploaded successfully!"* ]]; then
     return 0 # true
   else
