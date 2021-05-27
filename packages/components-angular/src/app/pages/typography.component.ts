@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-typography',
@@ -2960,5 +2960,6 @@ import { Component } from '@angular/core';
       <p-text weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypographyComponent {}

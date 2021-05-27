@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-button',
@@ -89,5 +89,6 @@ import { Component } from '@angular/core';
       <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-text-list',
@@ -99,5 +99,6 @@ import { Component } from '@angular/core';
       </p-text-list>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextListComponent {}

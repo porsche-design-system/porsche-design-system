@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -346,6 +346,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit {
   // solve race-condition between non-prefixed and prefixed banner focus

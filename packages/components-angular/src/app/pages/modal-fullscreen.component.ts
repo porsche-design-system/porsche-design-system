@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-modal-fullscreen',
@@ -37,6 +37,7 @@ import { Component } from '@angular/core';
       </p-modal>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalFullscreenComponent {
   constructor() {

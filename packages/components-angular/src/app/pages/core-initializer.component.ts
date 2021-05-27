@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-core-initializer',
@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
       </p-text-field-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoreInitializerComponent implements OnInit {
   public isEnabled = false;
