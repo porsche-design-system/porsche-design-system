@@ -6,6 +6,7 @@ type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: s
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
+export const CSS_ANIMATION_DURATION = 1000;
 
 export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
 export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
