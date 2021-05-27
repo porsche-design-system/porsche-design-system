@@ -13,7 +13,7 @@ export class Table {
   @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadItem>;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 
   public componentWillLoad(): void {
@@ -33,9 +33,5 @@ export class Table {
         <slot />
       </Host>
     );
-  }
-
-  private addSlottedStyles(): void {
-    insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 }
