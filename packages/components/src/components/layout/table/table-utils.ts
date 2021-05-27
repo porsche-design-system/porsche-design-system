@@ -16,7 +16,7 @@ export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
-export const getAriaSort = ({ isSortable, isSorting, direction }: TableHeadItem): AriaAttributes['aria-sort'] =>
+export const getAriaSort = ({ isSortable, isSorting, direction }: TableHeadItem = {}): AriaAttributes['aria-sort'] =>
   isSortable && isSorting ? (isDirectionAsc(direction) ? 'ascending' : 'descending') : 'none';
 
 export const SORT_EVENT_NAME = 'internalSortingChange';

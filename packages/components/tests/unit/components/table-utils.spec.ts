@@ -39,6 +39,8 @@ describe('getAriaSort()', () => {
     [{ isSortable: true, isSorting: false, direction: 'desc' }, 'none'],
     [{ isSortable: true, isSorting: true, direction: 'asc' }, 'ascending'],
     [{ isSortable: true, isSorting: true, direction: 'desc' }, 'descending'],
+    [undefined, 'none'],
+    [{}, 'none'],
   ];
   it.each(data)('should for %s return %s', (params, result) => {
     expect(getAriaSort(params)).toBe(result);
