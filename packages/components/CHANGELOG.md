@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.2.0] - 2021-05-19
+
+#### Fixed
+- `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode
+- `Banner` can now be re-opened after closing
+- Closing one `Banner` will not close other `Banners` on the site
+
 ### [2.2.0-beta.2] - 2021-05-12
 
 #### Fixed
