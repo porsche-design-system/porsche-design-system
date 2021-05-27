@@ -134,6 +134,11 @@ export const routes: RouteType[] = [
     component: fromPages.SwitchPage,
   },
   {
+    name: 'Table',
+    path: '/table',
+    component: fromPages.TablePage,
+  },
+  {
     name: 'Tabs',
     path: '/tabs',
     component: fromPages.TabsPage,
