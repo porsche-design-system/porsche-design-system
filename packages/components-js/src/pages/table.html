@@ -1,14 +1,12 @@
 <div class="playground light table" title="should render table">
   <script>
-    fetch('assets/table-data.ts')
+    fetch('assets/shared.js')
       .then((res) => res.text())
       .then((content) => {
-        const [, headStr] = /const head: HeadItem\[] = ((.|\s)*?);/.exec(content);
-        const head = eval(headStr); // needed for the following eval of headSortable
-        const [, headSortableStr] = /const headSortable = ((.|\s)*?);/.exec(content);
-        const headSortable = eval(headSortableStr.replace(/<[A-Za-z]+>/, ''));
+        const [, headStr] = /const head = ((.|\s)*?);/.exec(content) || [];
+        const head = eval(headStr);
 
-        const [, dataStr] = /const data: DataItem\[] = ((.|\s)*?);/.exec(content);
+        const [, dataStr] = /const data = ((.|\s)*?);/.exec(content) || [];
         const data = eval(dataStr);
 
         const renderTableHeadCells = (items) =>
@@ -22,7 +20,7 @@
   <p-table-cell>
     <p-flex>
       <p-flex-item>
-        <img src='${item.imageUrl}' width='80' style='margin-right: 8px' alt=''>
+        <img src="${item.imageUrl}" width="80" style="margin-right: 8px" alt="">
       </p-flex-item>
       <p-flex-item>
         <p-text weight='semibold'>${item.model}</p-text>
@@ -36,13 +34,13 @@
   <p-table-cell>${item.status}</p-table-cell>
   <p-table-cell>${item.leadId}</p-table-cell>
   <p-table-cell>
-    <p-button-pure icon='edit'>
-      <span style='white-space: nowrap'>Edit Lead</span>
+    <p-button-pure icon="edit">
+      <span style="white-space: nowrap">Edit Lead</span>
     </p-button-pure>
   </p-table-cell>
   <p-table-cell>
-    <p-button variant='tertiary' icon='refresh'>
-      <span style='white-space: nowrap'>Overwrite</span>
+    <p-button variant="tertiary" icon="refresh">
+      <span style="white-space: nowrap">Overwrite</span>
     </p-button>
   </p-table-cell>
 </p-table-row>`
@@ -52,7 +50,7 @@
         const markup = `
 <p-table>
   <p-table-head>
-    <p-table-row>${renderTableHeadCells(headSortable)}</p-table-row>
+    <p-table-row>${renderTableHeadCells(head)}</p-table-row>
   </p-table-head>
   <p-table-body>${renderTableBodyRows(data)}</p-table-body>
 </p-table>`;
@@ -70,12 +68,12 @@
             el.item = items[index];
           });
 
-        passHeadItemToNodes(headSortable);
+        passHeadItemToNodes(head);
 
         table.addEventListener('sortingChange', (e) => {
           const { key, direction } = e.detail;
 
-          const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+          const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
           const sortedData = [...data].sort((a, b) =>
             direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
           );

@@ -45,11 +45,11 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { data, headSortable } from './table-data';
+  import { data, head } from '@porsche-design-system/shared';
   
   @Component
   export default class Code extends Vue {
-    headData = headSortable;
+    headData = head;
     bodyData = data;
 
     mounted(): void {

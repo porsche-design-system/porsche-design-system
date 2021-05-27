@@ -1,5 +1,3 @@
-import { TableHeadItem } from './table-utils';
-
 type HeadItem = {
   name: string;
   key?: string;
@@ -26,7 +24,14 @@ export const head: HeadItem[] = [
   { name: 'Lead ID', key: 'leadId' },
   { name: '' },
   { name: '' },
-];
+].map((item, i) => ({
+  ...item,
+  ...(item.name && {
+    isSortable: i > 0,
+    isSorting: i === 1,
+    direction: 'asc',
+  }),
+}));
 
 export const data: DataItem[] = [
   {
@@ -80,12 +85,3 @@ export const data: DataItem[] = [
     leadId: '0000824406',
   },
 ];
-
-export const headSortable = head.map<TableHeadItem>((item, i) => ({
-  ...item,
-  ...(item.name && {
-    isSortable: i > 0,
-    isSorting: i === 1,
-    direction: 'asc',
-  }),
-}));
