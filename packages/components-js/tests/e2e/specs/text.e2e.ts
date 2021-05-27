@@ -109,6 +109,6 @@ describe('text', () => {
     const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust');
 
     // when webkitTextSizeAdjust is set to "none", it defaults to 100%
-    expect(webkitTextSizeAdjustStyle).toBe('none');
+    expect(webkitTextSizeAdjustStyle).toBe('100%');
   });
 });
