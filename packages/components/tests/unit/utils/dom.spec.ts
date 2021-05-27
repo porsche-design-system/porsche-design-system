@@ -16,6 +16,7 @@ import {
   getRole,
   isRequiredAndParentNotRequired,
   hasAttribute,
+  throwIfElementHasAttribute,
 } from '../../../src/utils';
 import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
@@ -110,7 +111,7 @@ describe('throwIfParentIsNotOfKind()', () => {
 
     let error = undefined;
     try {
-      throwIfParentIsNotOfKind(child, `pGrid`);
+      throwIfParentIsNotOfKind(child, 'pGrid');
     } catch (e) {
       error = e.message;
     }
@@ -139,6 +140,33 @@ describe('throwIfParentIsNotOfKind()', () => {
     let error = undefined;
     try {
       throwIfParentIsNotOfKind(child, 'pGrid');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
+describe('throwIfElementHasAttribute()', () => {
+  it('should throw error if attribute exists', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'some title');
+
+    let error = undefined;
+    try {
+      throwIfElementHasAttribute(element, 'title');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if attribute does not exist', () => {
+    const element = document.createElement('div');
+
+    let error = undefined;
+    try {
+      throwIfElementHasAttribute(element, 'title');
     } catch (e) {
       error = e.message;
     }
