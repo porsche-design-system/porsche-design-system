@@ -4,13 +4,13 @@ import { attachCss, buildGlobalStyles, buildHostStyles, getCss, getTagName, pxTo
 
 export type Direction = 'asc' | 'desc';
 
-export type TableHeadItem = {
+export type TableHeadItem = Partial<{
   key: string;
   // name: string;
   isSortable: boolean;
   isSorting: boolean;
   direction: Direction;
-};
+}>;
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
