@@ -13,7 +13,7 @@
     "build:app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www",
     "build:app:components": "cp ./dist/components-wrapper/index.js ./www",
     "build:app:assets": "cp ../assets/dist/esm/index.js ./www/assets/assets.js",
-    "build:app:table-data": "cp ../components/src/components/layout/table/table-data.ts ./www/assets/table-data.ts",
+    "build:app:table-data": "cp ../shared/dist/esm/index.js ./www/assets/shared.js",
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",
     "build:components-wrapper": "yarn build:components-wrapper:environment && yarn build:components-wrapper:webpack && yarn build:components-wrapper:cm && yarn build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder && yarn build:components-wrapper:generateChunksManifest",
