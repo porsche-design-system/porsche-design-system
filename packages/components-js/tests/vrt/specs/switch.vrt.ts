@@ -60,10 +60,6 @@ describe('Switch', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        // TODO: currently needed because VRT Tester resets the height to 1px while executing the scenario
-        const height = await page.evaluate(() => document.body.clientHeight);
-        await page.setViewport({ width: 1000, height });
-
         await forceStateOnElement(page, '#switch-hovered', HOVERED_STATE, 'button');
         await forceStateOnElement(page, '#switch-checked-hovered', HOVERED_STATE, 'button');
         await forceStateOnElement(page, '#switch-focused', FOCUSED_STATE, 'button');

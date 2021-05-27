@@ -97,10 +97,6 @@ describe('Radio Button Wrapper', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        // TODO: currently needed because VRT Tester resets the height to 1px while executing the scenario
-        const height = await page.evaluate(() => document.body.clientHeight);
-        await page.setViewport({ width: 1000, height: height });
-
         await forceStateOnElement(page, '#radio-button-wrapper-hovered input[type="radio"]', HOVERED_STATE);
         await forceStateOnElement(page, '#radio-button-wrapper-error-hovered input[type="radio"]', HOVERED_STATE);
         await forceStateOnElement(page, '#radio-button-wrapper-success-hovered input[type="radio"]', HOVERED_STATE);
