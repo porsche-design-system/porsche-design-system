@@ -1,6 +1,7 @@
-import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
+  CSS_ANIMATION_DURATION,
   expectedStyleOnFocus,
   getAttribute,
   getBrowser,
@@ -23,7 +24,6 @@ import {
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
 
-export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
 const TABS_SCROLL_PERCENTAGE = 0.2;
 
@@ -673,7 +673,7 @@ describe('tabs-bar', () => {
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      const pressKey = async (key: string) => {
+      const pressKey = async (key: KeyInput) => {
         await page.keyboard.press(key);
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
       };

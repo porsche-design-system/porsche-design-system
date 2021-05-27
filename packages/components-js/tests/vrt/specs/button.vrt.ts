@@ -1,12 +1,12 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
+  CSS_ANIMATION_DURATION,
   FOCUSED_HOVERED_STATE,
   FOCUSED_STATE,
   forceStateOnElement,
   HOVERED_STATE,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
-import { CSS_ANIMATION_DURATION } from '../../e2e/specs/tabs-bar.e2e';
 
 describe('Button', () => {
   it('should have no visual regression', async () => {
