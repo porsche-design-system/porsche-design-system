@@ -69,6 +69,7 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabledOrLoading
     );
+
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;

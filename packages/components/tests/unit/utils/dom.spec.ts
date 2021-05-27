@@ -259,7 +259,6 @@ describe('Event Listener', () => {
 
       addEventListener(element, 'change', listener, false);
 
-      expect(spy1).toBeCalledTimes(1);
       expect(spy1).toBeCalledWith('change', listener, false);
     });
   });
@@ -272,7 +271,6 @@ describe('Event Listener', () => {
       addEventListener(element, 'change', listener, false);
       removeEventListener(element, 'change', listener, false);
 
-      expect(spy1).toBeCalledTimes(1);
       expect(spy1).toBeCalledWith('change', listener, false);
     });
   });
