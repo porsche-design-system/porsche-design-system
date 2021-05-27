@@ -133,10 +133,10 @@ const baseCss: { [key in TableComponentType]: string } = {
       padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0 !important`,
       margin: '0 !important',
       verticalAlign: 'middle',
-      '&:last-child': {
-        paddingRight: '0 !important',
-      },
     }),
+    ':host(:last-child)': {
+      paddingRight: '0 !important',
+    },
     '::slotted(*)': {
       verticalAlign: 'middle !important',
     },
