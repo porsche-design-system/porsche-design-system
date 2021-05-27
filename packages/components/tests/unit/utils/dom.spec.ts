@@ -17,6 +17,8 @@ import {
   isRequiredAndParentNotRequired,
   hasAttribute,
   throwIfElementHasAttribute,
+  throwIfParentIsNotOneOfKind,
+  isParentOfKind,
 } from '../../../src/utils';
 import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
@@ -103,6 +105,24 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
   });
 });
 
+describe('isParentOfKind()', () => {
+  it('should return true if parent tag matches', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    expect(isParentOfKind(child, 'pGrid')).toBe(true);
+  });
+
+  it('should return false if parent tag does not match', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    expect(isParentOfKind(child, 'pGrid')).toBe(false);
+  });
+});
+
 describe('throwIfParentIsNotOfKind()', () => {
   it('should throw error if parent tag does not match', () => {
     const parent = document.createElement('div');
@@ -140,6 +160,50 @@ describe('throwIfParentIsNotOfKind()', () => {
     let error = undefined;
     try {
       throwIfParentIsNotOfKind(child, 'pGrid');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
+describe('throwIfParentIsNotOneOfKind()', () => {
+  it('should throw error if parent tag does not match', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pGrid']);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if parent tag matches 1st element', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex']);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+
+  it('should not throw error if parent tag matches 2nd element', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid']);
     } catch (e) {
       error = e.message;
     }
