@@ -46,9 +46,9 @@
     }
 
     /* Child selectors for h1, h2, h3, etc. and in all possible nested combinations of themselves are necessary to be sure no style
-   * is getting applied to our <playground> component or anything that is rendered within a <div> inside this component. Imagine
-   * the usage of an <a> tag inside <h1> or <ul>/<li> where the style should be applied but not for `playground > a` or `div > a`.
-   */
+     * is getting applied to our <playground> component or anything that is rendered within a <div> inside this component. Imagine
+     * the usage of an <a> tag inside <h1> or <ul>/<li> where the style should be applied but not for `playground > a` or `div > a`.
+     */
     & > {
       @at-root #{&},
         & h1,
@@ -74,7 +74,7 @@
         & img,
         & code,
         & pre {
-        :not(div):not(pre):not(hr):not(table):not(img) {
+        :not(div):not(pre):not(hr):not(table):not(img):not(p-tabs) {
           max-width: 800px;
         }
 
@@ -183,7 +183,8 @@
           color: $p-color-brand;
         }
 
-        pre {
+        pre,
+        p-tabs pre {
           margin-top: $p-spacing-8;
           display: block;
           padding: $p-spacing-8 $p-spacing-24;
