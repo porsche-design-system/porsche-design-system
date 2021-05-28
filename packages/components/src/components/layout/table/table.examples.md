@@ -42,15 +42,29 @@
   </p-table>
 </Playground>
 
+### Angular
+
+```ts
+{{ angularExample }}
+```
+
+### React
+
+```tsx
+{{ reactExample }}
+```
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { data, head } from '@porsche-design-system/shared';
-  
+  import { data, head, getTableCodeSample } from '@porsche-design-system/shared';
+
   @Component
   export default class Code extends Vue {
     headData = head;
     bodyData = data;
+    angularExample = getTableCodeSample('angular');
+    reactExample = getTableCodeSample('react');
 
     mounted(): void {
       this.syncHeadCellProperties();
