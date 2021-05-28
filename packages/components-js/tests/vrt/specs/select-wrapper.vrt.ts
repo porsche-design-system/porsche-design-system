@@ -1,12 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import {
-  CSS_ANIMATION_DURATION,
-  FOCUSED_HOVERED_STATE,
-  FOCUSED_STATE,
-  forceStateOnElement,
-  HOVERED_STATE,
-  setContentWithDesignSystem,
-} from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
 
 describe('Select Wrapper', () => {
   it('should have no visual regression', async () => {
@@ -32,148 +25,71 @@ describe('Select Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
 
+        const elements = `
+          <p-select-wrapper label="Some label" message="Some error validation message.">
+            <select name="some-name" aria-invalid="false">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper label="Some label" state="error" message="Some error validation message.">
+            <select name="some-name" aria-invalid="true">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper label="Some label" state="success" message="Some error validation message.">
+            <select name="some-name" aria-invalid="false">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>`;
+
+        const elementsDark = `
+          <p-select-wrapper theme="dark" label="Some label" message="Some error validation message.">
+            <select name="some-name" aria-invalid="false">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper theme="dark" label="Some label" state="error" message="Some error validation message.">
+            <select name="some-name" aria-invalid="true">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper theme="dark" label="Some label" state="success" message="Some error validation message.">
+            <select name="some-name" aria-invalid="false">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>`;
+
         const body = `
-           <div class="playground light">
-                <p-select-wrapper id="select-wrapper-hovered" label="Some label" message="Some error validation message.">
-                    <select name="some-name" aria-invalid="false">
-                        <option value="a">Option A</option>
-                    </select>
-                </p-select-wrapper>
-                <p-select-wrapper id="select-wrapper-error-hovered" label="Some label" state="error"
-                                  message="Some error validation message.">
-                    <select name="some-name" aria-invalid="true">
-                        <option value="a">Option A</option>
-                    </select>
-                </p-select-wrapper>
-                <p-select-wrapper id="select-wrapper-success-hovered" label="Some label" state="success"
-                                  message="Some error validation message.">
-                    <select name="some-name" aria-invalid="false">
-                        <option value="a">Option A</option>
-                    </select>
-                </p-select-wrapper>
-            </div>
-           <div class="playground dark">
-               <p-select-wrapper id="select-wrapper-dark-hovered" theme="dark" label="Some label"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-error-hovered" theme="dark" label="Some label" state="error"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="true">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-success-hovered" theme="dark" label="Some label" state="success"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-           </div>
-           <div class="playground light">
-               <p-select-wrapper id="select-wrapper-focused" label="Some label" message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-error-focused" label="Some label" state="error"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="true">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-success-focused" label="Some label" state="success"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-           </div>
-           <div class="playground dark">
-               <p-select-wrapper id="select-wrapper-dark-focused" theme="dark" label="Some label"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-error-focused" theme="dark" label="Some label" state="error"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="true">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-success-focused" theme="dark" label="Some label" state="success"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-           </div>
-           <div class="playground light">
-               <p-select-wrapper id="select-wrapper-hovered-focused" label="Some label" message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-error-hovered-focused" label="Some label" state="error"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="true">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-success-hovered-focused" label="Some label" state="success"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-           </div>
-           <div class="playground dark">
-               <p-select-wrapper id="select-wrapper-dark-hovered-focused" theme="dark" label="Some label"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-error-hovered-focused" theme="dark" label="Some label" state="error"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="true">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-               <p-select-wrapper id="select-wrapper-dark-success-hovered-focused" theme="dark" label="Some label" state="success"
-                                 message="Some error validation message.">
-                   <select name="some-name" aria-invalid="false">
-                       <option value="a">Option A</option>
-                   </select>
-               </p-select-wrapper>
-           </div>
+          <div id="hovered" class="playground light">
+            ${elements}
+          </div>
+          <div id="dark-hovered" class="playground dark">
+            ${elementsDark}
+          </div>
+          <div id="focused" class="playground light">
+            ${elements}
+          </div>
+          <div id="dark-focused" class="playground dark">
+            ${elementsDark}
+          </div>
+          <div id="hovered-focused" class="playground light">
+            ${elements}
+          </div>
+          <div id="dark-hovered-focused" class="playground dark">
+            ${elementsDark}
+          </div>
           `;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#select-wrapper-hovered select', HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-error-hovered select', HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-success-hovered select', HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-hovered select', HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-error-hovered select', HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-success-hovered select', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#select-wrapper-focused select', FOCUSED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-error-focused select', FOCUSED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-success-focused select', FOCUSED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-focused select', FOCUSED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-error-focused select', FOCUSED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-success-focused select', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#select-wrapper-hovered-focused select', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-error-hovered-focused select', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-success-hovered-focused select', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-hovered-focused select', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-error-hovered-focused select', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#select-wrapper-dark-success-hovered-focused select', FOCUSED_HOVERED_STATE);
+        await forceStateOnElements(page, [
+          '#hovered > p-select-wrapper select',
+          '#dark-hovered > p-select-wrapper select',
+          '#focused > p-select-wrapper select',
+          '#dark-focused > p-select-wrapper select',
+          '#hovered-focused > p-select-wrapper select',
+          '#dark-hovered-focused > p-select-wrapper select',
+        ]);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
