@@ -60,23 +60,23 @@ describe('Link Pure', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#link-pure-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-hovered', HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-hovered >>> a', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-pure-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-focused', FOCUSED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-focused >>> a', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#link-pure-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-pure-dark-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-dark-hovered', HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-dark-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-dark-hovered >>> a', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-pure-dark-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-dark-focused', FOCUSED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-dark-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-dark-focused >>> a', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#link-pure-dark-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-pure-subline-dark-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-pure-dark-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-pure-subline-dark-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

@@ -32,19 +32,26 @@ const CDP = (function () {
 
 export const forceStateOnElement = async (
   page: Page,
-  hostElementSelector: string,
-  states: ForcedPseudoClasses[],
-  shadowRootSelector?: string
+  selector: string,
+  states: ForcedPseudoClasses[]
 ): Promise<void> => {
   // const cdp = await CDP.getInstance(page); // TODO: causes previous actions to get removed (multiple sessions per state?)
   const cdp = await page.target().createCDPSession();
 
+  const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
+
   const nodeId = await getHostElementNodeId(cdp, hostElementSelector);
+
   await forceStateOnNodeId(
     cdp,
-    shadowRootSelector ? await getElementNodeIdInShadowRoot(cdp, nodeId, shadowRootSelector) : nodeId,
+    shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, nodeId, shadowRootNodeName) : nodeId,
     states
   );
+};
+
+const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
+  const selectorParts = selector.split('>>>');
+  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName: selectorParts[1].trim() };
 };
 
 const getHostElementNodeId = async (cdp: CDPSession, selector: string): Promise<number> => {
@@ -62,13 +69,13 @@ const getHostElementNodeId = async (cdp: CDPSession, selector: string): Promise<
   ).nodeId;
 };
 
-export const findBackendNodeId = (currentNode: Protocol.DOM.Node, selector: string): number => {
-  if (currentNode.localName === selector) {
+export const findBackendNodeId = (currentNode: Protocol.DOM.Node, localNodeName: string): number => {
+  if (currentNode.localName === localNodeName) {
     return currentNode.backendNodeId;
   } else {
     for (let i = 0; i < currentNode.children?.length; i++) {
       const currentChild = currentNode.children[i];
-      const result = findBackendNodeId(currentChild, selector);
+      const result = findBackendNodeId(currentChild, localNodeName);
       if (result) {
         return result;
       }
