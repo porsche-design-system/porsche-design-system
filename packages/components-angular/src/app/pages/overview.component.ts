@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -352,9 +352,12 @@ export class OverviewComponent implements OnInit {
   // solve race-condition between non-prefixed and prefixed banner focus
   public allReady: boolean = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngOnInit() {
     componentsReady().then(() => {
       this.allReady = true;
+      this.cdr.markForCheck();
     });
   }
 }

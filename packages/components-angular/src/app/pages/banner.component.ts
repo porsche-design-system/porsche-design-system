@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -111,9 +111,12 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 export class BannerComponent implements OnInit {
   public allReady: boolean = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngOnInit() {
     componentsReady().then(() => {
       this.allReady = true;
+      this.cdr.markForCheck();
     });
   }
 }
