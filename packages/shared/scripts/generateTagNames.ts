@@ -5,7 +5,7 @@ import { camelCase } from 'change-case';
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
-  const sourceDirectory = path.resolve(path.normalize('../components/src/components'));
+  const sourceDirectory = path.resolve('../components/src/components');
 
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
   const tags = componentFiles
