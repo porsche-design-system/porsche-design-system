@@ -1,12 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import {
-  CSS_ANIMATION_DURATION,
-  FOCUSED_HOVERED_STATE,
-  FOCUSED_STATE,
-  forceStateOnElement,
-  HOVERED_STATE,
-  setContentWithDesignSystem,
-} from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
 
 describe('Button', () => {
   it('should have no visual regression', async () => {
@@ -32,63 +25,46 @@ describe('Button', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-button:not(:last-child) { margin-right: 8px; }</style>`;
 
+        const elements = `
+          <p-button variant="primary">Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+          <p-button variant="tertiary">Some label</p-button>`;
+
+        const elementsDark = `
+          <p-button theme="dark" variant="primary">Some label</p-button>
+          <p-button theme="dark" variant="secondary">Some label</p-button>
+          <p-button theme="dark" variant="tertiary">Some label</p-button>`;
+
         const body = `
-          <div class="playground light">
-            <p-button id="button-primary-hovered" variant="primary">Some label</p-button>
-            <p-button id="button-secondary-hovered" variant="secondary">Some label</p-button>
-            <p-button id="button-tertiary-hovered" variant="tertiary">Some label</p-button>
+          <div id="hovered" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button id="button-dark-hovered" theme="dark" variant="primary">Some label</p-button>
-            <p-button id="button-dark-secondary-hovered" theme="dark" variant="secondary">Some label</p-button>
-            <p-button id="button-dark-tertiary-hovered" theme="dark" variant="tertiary">Some label</p-button>
+          <div id="dark-hovered" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-button id="button-focused" variant="primary">Some label</p-button>
-             <p-button id="button-secondary-focused" variant="secondary">Some label</p-button>
-            <p-button id="button-tertiary-focused" variant="tertiary">Some label</p-button>
+          <div id="focused" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button id="button-dark-focused" theme="dark" variant="primary">Some label</p-button>
-            <p-button id="button-dark-secondary-focused" theme="dark" variant="secondary">Some label</p-button>
-            <p-button id="button-dark-tertiary-focused" theme="dark" variant="tertiary">Some label</p-button>
+          <div id="dark-focused" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-button id="button-primary-hovered-focused" variant="primary">Some label</p-button>
-            <p-button id="button-secondary-hovered-focused" variant="secondary"">Some label</p-button>
-            <p-button id="button-tertiary-hovered-focused" variant="tertiary"">Some label</p-button>
+          <div id="hovered-focused" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button id="button-dark-hovered-focused" theme="dark" variant="primary">Some label</p-button>
-            <p-button id="button-dark-secondary-hovered-focused" theme="dark" variant="secondary">Some label</p-button>
-            <p-button id="button-dark-tertiary-hovered-focused" theme="dark" variant="tertiary">Some label</p-button>
+          <div id="dark-hovered-focused" class="playground dark">
+            ${elementsDark}
           </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#button-primary-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-secondary-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-tertiary-hovered >>> button', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-secondary-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-tertiary-focused >>> button', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#button-primary-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-secondary-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-tertiary-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-dark-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered >>> button', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-dark-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-dark-secondary-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-dark-tertiary-focused >>> button', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#button-dark-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-dark-secondary-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-dark-tertiary-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
+        await forceStateOnElements(page, [
+          '#hovered > p-button >>> button',
+          '#dark-hovered > p-button >>> button',
+          '#focused > p-button >>> button',
+          '#dark-focused > p-button >>> button',
+          '#hovered-focused > p-button >>> button',
+          '#dark-hovered-focused > p-button >>> button',
+        ]);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

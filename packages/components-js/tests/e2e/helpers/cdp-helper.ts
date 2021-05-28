@@ -1,5 +1,7 @@
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
+import NodeId = Protocol.DOM.NodeId;
+import BackendNodeId = Protocol.DOM.BackendNodeId;
 
 export const CSS_ANIMATION_DURATION = 1000;
 
@@ -9,52 +11,39 @@ type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 export const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
 export const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 export const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
-export const FORCEABLE_PSEUDO_CLASSES: ForcedPseudoClasses[][] = [HOVERED_STATE, FOCUSED_STATE, FOCUSED_HOVERED_STATE];
 
-const CDP = (function () {
-  let _instance: CDPSession;
-  let _page: Page;
+export const generateGUID = (): string => {
+  const s4 = (): string =>
+    Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
 
-  async function createInstance(page: Page) {
-    return await page.target().createCDPSession();
+  //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+};
+
+export const forceStateOnElements = async (page: Page, selectors: string[]): Promise<void> => {
+  for (const selector of selectors) {
+    const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
+    const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
+    const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
+
+    for (const hostNodeId of hostNodeIds) {
+      await forceStateOnNodeId(
+        cdp,
+        shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName) : hostNodeId,
+        getStates(selector)
+      );
+    }
   }
-
-  return {
-    getInstance: async function (page: Page) {
-      if (!_instance || _page !== page) {
-        _instance = await createInstance(page);
-      }
-      _page = page;
-      return _instance;
-    },
-  };
-})();
-
-export const forceStateOnElement = async (
-  page: Page,
-  selector: string,
-  states: ForcedPseudoClasses[]
-): Promise<void> => {
-  // const cdp = await CDP.getInstance(page); // TODO: causes previous actions to get removed (multiple sessions per state?)
-  const cdp = await page.target().createCDPSession();
-
-  const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
-
-  const nodeId = await getHostElementNodeId(cdp, hostElementSelector);
-
-  await forceStateOnNodeId(
-    cdp,
-    shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, nodeId, shadowRootNodeName) : nodeId,
-    states
-  );
 };
 
 const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
   const selectorParts = selector.split('>>>');
-  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName: selectorParts[1].trim() };
+  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName: selectorParts[1]?.trim() };
 };
 
-const getHostElementNodeId = async (cdp: CDPSession, selector: string): Promise<number> => {
+const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {
   await cdp.send('DOM.getDocument');
   const { root } = (await cdp.send('DOM.getDocument', {
     depth: -1,
@@ -62,14 +51,14 @@ const getHostElementNodeId = async (cdp: CDPSession, selector: string): Promise<
   })) as Protocol.DOM.GetDocumentResponse;
 
   return (
-    (await cdp.send('DOM.querySelector', {
+    (await cdp.send('DOM.querySelectorAll', {
       nodeId: root.nodeId,
       selector,
-    })) as Protocol.DOM.QuerySelectorResponse
-  ).nodeId;
+    })) as Protocol.DOM.QuerySelectorAllResponse
+  ).nodeIds;
 };
 
-export const findBackendNodeId = (currentNode: Protocol.DOM.Node, localNodeName: string): number => {
+export const findBackendNodeId = (currentNode: Protocol.DOM.Node, localNodeName: string): BackendNodeId => {
   if (currentNode.localName === localNodeName) {
     return currentNode.backendNodeId;
   } else {
@@ -84,7 +73,7 @@ export const findBackendNodeId = (currentNode: Protocol.DOM.Node, localNodeName:
   }
 };
 
-const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: number, selector: string): Promise<number> => {
+const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, selector: string): Promise<NodeId> => {
   const hostNode: Protocol.DOM.Node = (
     (await cdp.send('DOM.describeNode', {
       nodeId,
@@ -104,7 +93,7 @@ const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: number, sel
 
 const forceStateOnNodeId = async (
   cdp: CDPSession,
-  nodeId: number,
+  nodeId: NodeId,
   forcedPseudoClasses: ForcedPseudoClasses[]
 ): Promise<void> => {
   await cdp.send('CSS.enable');
@@ -112,4 +101,14 @@ const forceStateOnNodeId = async (
     nodeId,
     forcedPseudoClasses,
   });
+};
+
+const getStates = (selector: string): ForcedPseudoClasses[] => {
+  if (selector.includes('hovered') && selector.includes('focused')) {
+    return FOCUSED_HOVERED_STATE;
+  } else if (selector.includes('hovered')) {
+    return HOVERED_STATE;
+  } else if (selector.includes('focused')) {
+    return FOCUSED_STATE;
+  }
 };

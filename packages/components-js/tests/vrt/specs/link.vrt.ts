@@ -1,12 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import {
-  CSS_ANIMATION_DURATION,
-  FOCUSED_HOVERED_STATE,
-  FOCUSED_STATE,
-  forceStateOnElement,
-  HOVERED_STATE,
-  setContentWithDesignSystem,
-} from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
 
 describe('Link', () => {
   it('should have no visual regression', async () => {
@@ -32,63 +25,46 @@ describe('Link', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link:not(:last-child) { margin-right: 8px; }</style>`;
 
+        const elements = `
+          <p-link variant="primary" href="#">Some label</p-link>
+          <p-link variant="secondary" href="#">Some label</p-link>
+          <p-link variant="tertiary" href="#">Some label</p-link>`;
+
+        const elementsDark = `
+          <p-link theme="dark" variant="primary" href="#">Some label</p-link>
+          <p-link theme="dark" variant="secondary" href="#">Some label</p-link>
+          <p-link theme="dark" variant="tertiary" href="#">Some label</p-link>`;
+
         const body = `
-          <div class="playground light">
-            <p-link id="link-primary-hovered" variant="primary" href="#">Some label</p-link>
-            <p-link id="link-secondary-hovered" variant="secondary" href="#">Some label</p-link>
-            <p-link id="link-tertiary-hovered" variant="tertiary" href="#">Some label</p-link>
+          <div id="hovered" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-link id="link-dark-hovered" theme="dark" variant="primary" href="#">Some label</p-link>
-            <p-link id="link-dark-secondary-hovered" theme="dark" variant="secondary" href="#">Some label</p-link>
-            <p-link id="link-dark-tertiary-hovered" theme="dark" variant="tertiary" href="#">Some label</p-link>
+          <div id="dark-hovered" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-link id="link-focused" variant="primary" href="#">Some label</p-link>
-             <p-link id="link-secondary-focused" variant="secondary" href="#">Some label</p-link>
-            <p-link id="link-tertiary-focused" variant="tertiary" href="#">Some label</p-link>
+          <div id="focused" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-link id="link-dark-focused" theme="dark" variant="primary" href="#">Some label</p-link>
-            <p-link id="link-dark-secondary-focused" theme="dark" variant="secondary" href="#">Some label</p-link>
-            <p-link id="link-dark-tertiary-focused" theme="dark" variant="tertiary" href="#">Some label</p-link>
+          <div id="dark-focused" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-link id="link-primary-hovered-focused" variant="primary" href="#">Some label</p-link>
-            <p-link id="link-secondary-hovered-focused" variant="secondary"" href="#">Some label</p-link>
-            <p-link id="link-tertiary-hovered-focused" variant="tertiary"" href="#">Some label</p-link>
+          <div id="hovered-focused" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-link id="link-dark-hovered-focused" theme="dark" variant="primary" href="#">Some label</p-link>
-            <p-link id="link-dark-secondary-hovered-focused" theme="dark" variant="secondary" href="#">Some label</p-link>
-            <p-link id="link-dark-tertiary-hovered-focused" theme="dark" variant="tertiary" href="#">Some label</p-link>
+          <div id="dark-hovered-focused" class="playground dark">
+            ${elementsDark}
           </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#link-primary-hovered >>> a', HOVERED_STATE);
-        await forceStateOnElement(page, '#link-secondary-hovered >>> a', HOVERED_STATE);
-        await forceStateOnElement(page, '#link-tertiary-hovered >>> a', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#link-focused >>> a', FOCUSED_STATE);
-        await forceStateOnElement(page, '#link-secondary-focused >>> a', FOCUSED_STATE);
-        await forceStateOnElement(page, '#link-tertiary-focused >>> a', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#link-primary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#link-secondary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#link-tertiary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
-
-        await forceStateOnElement(page, '#link-dark-hovered >>> a', HOVERED_STATE);
-        await forceStateOnElement(page, '#link-dark-secondary-hovered >>> a', HOVERED_STATE);
-        await forceStateOnElement(page, '#link-dark-tertiary-hovered >>> a', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#link-dark-focused >>> a', FOCUSED_STATE);
-        await forceStateOnElement(page, '#link-dark-secondary-focused >>> a', FOCUSED_STATE);
-        await forceStateOnElement(page, '#link-dark-tertiary-focused >>> a', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#link-dark-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#link-dark-secondary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#link-dark-tertiary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElements(page, [
+          '#hovered > p-link >>> a',
+          '#dark-hovered > p-link >>> a',
+          '#focused > p-link >>> a',
+          '#dark-focused > p-link >>> a',
+          '#hovered-focused > p-link >>> a',
+          '#dark-hovered-focused > p-link >>> a',
+        ]);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

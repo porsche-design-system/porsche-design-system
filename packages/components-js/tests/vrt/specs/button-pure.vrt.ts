@@ -1,12 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import {
-  CSS_ANIMATION_DURATION,
-  FOCUSED_HOVERED_STATE,
-  FOCUSED_STATE,
-  forceStateOnElement,
-  HOVERED_STATE,
-  setContentWithDesignSystem,
-} from '../../e2e/helpers';
+import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
 
 describe('Button Pure', () => {
   it('should have no visual regression', async () => {
@@ -32,51 +25,43 @@ describe('Button Pure', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-button-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
+        const elements = `
+          <p-button-pure>Some label</p-button-pure>
+          <p-button-pure>Some label <p slot="subline">Some Subline</p></p-button-pure>`;
+        const elementsDark = `
+          <p-button-pure theme="dark">Some label</p-button-pure>
+          <p-button-pure theme="dark">Some label <p slot="subline">Some Subline</p></p-button-pure>`;
+
         const body = `
-          <div class="playground light">
-            <p-button-pure id="button-pure-hovered">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-hovered">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="hovered" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button-pure id="button-pure-dark-hovered" theme="dark">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-dark-hovered" theme="dark">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="dark-hovered" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-button-pure id="button-pure-focused">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-focused">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="focused" class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button-pure id="button-pure-dark-focused" theme="dark">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-dark-focused" theme="dark">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="dark-focused" class="playground dark">
+            ${elementsDark}
           </div>
-          <div class="playground light">
-            <p-button-pure id="button-pure-hovered-focused">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-hovered-focused">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="hovered-focused"  class="playground light">
+            ${elements}
           </div>
-          <div class="playground dark">
-            <p-button-pure id="button-pure-dark-hovered-focused" theme="dark">Some label</p-button-pure>
-            <p-button-pure id="button-pure-subline-dark-hovered-focused" theme="dark">Some label <p slot="subline">Some Subline</p></p-button-pure>
+          <div id="dark-hovered-focused" class="playground dark">
+            ${elementsDark}
           </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#button-pure-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-hovered >>> button', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-pure-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-focused >>> button', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#button-pure-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-pure-dark-hovered >>> button', HOVERED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered >>> button', HOVERED_STATE);
-
-        await forceStateOnElement(page, '#button-pure-dark-focused >>> button', FOCUSED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-dark-focused >>> button', FOCUSED_STATE);
-
-        await forceStateOnElement(page, '#button-pure-dark-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
+        await forceStateOnElements(page, [
+          '#hovered > p-button-pure >>> button',
+          '#dark-hovered > p-button-pure >>> button',
+          '#focused > p-button-pure >>> button',
+          '#dark-focused > p-button-pure >>> button',
+          '#hovered-focused > p-button-pure >>> button',
+          '#dark-hovered-focused > p-button-pure >>> button',
+        ]);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

@@ -1,5 +1,5 @@
 import Protocol from 'devtools-protocol';
-import { findBackendNodeId } from '../../e2e/helpers/cdp-helper';
+import { findBackendNodeId, generateGUID } from '../../e2e/helpers/cdp-helper';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
@@ -50,6 +50,16 @@ describe('cdp-helper', () => {
       it(`should for ${JSON.stringify(test.node)} and selector "${test.selector}" return "${test.expect}"`, () => {
         expect(findBackendNodeId(test.node as Protocol.DOM.Node, test.selector)).toBe(test.expect);
       });
+    });
+  });
+  describe('generateGUID()', () => {
+    it('should generate different GUIDs', () => {
+      const id1 = generateGUID();
+      const id2 = generateGUID();
+      const id3 = generateGUID();
+      expect(id1).not.toEqual(id2);
+      expect(id1).not.toEqual(id3);
+      expect(id2).not.toEqual(id3);
     });
   });
 });
