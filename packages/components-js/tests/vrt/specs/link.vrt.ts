@@ -66,29 +66,29 @@ describe('Link', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#link-primary-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-secondary-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-tertiary-hovered', HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-primary-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-secondary-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-tertiary-hovered >>> a', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-secondary-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-tertiary-focused', FOCUSED_STATE, 'a');
+        await forceStateOnElement(page, '#link-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-secondary-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-tertiary-focused >>> a', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#link-primary-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-secondary-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-tertiary-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-primary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-secondary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-tertiary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-dark-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-secondary-hovered', HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-tertiary-hovered', HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-dark-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-dark-secondary-hovered >>> a', HOVERED_STATE);
+        await forceStateOnElement(page, '#link-dark-tertiary-hovered >>> a', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#link-dark-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-secondary-focused', FOCUSED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-tertiary-focused', FOCUSED_STATE, 'a');
+        await forceStateOnElement(page, '#link-dark-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-dark-secondary-focused >>> a', FOCUSED_STATE);
+        await forceStateOnElement(page, '#link-dark-tertiary-focused >>> a', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#link-dark-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-secondary-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
-        await forceStateOnElement(page, '#link-dark-tertiary-hovered-focused', FOCUSED_HOVERED_STATE, 'a');
+        await forceStateOnElement(page, '#link-dark-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-dark-secondary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#link-dark-tertiary-hovered-focused >>> a', FOCUSED_HOVERED_STATE);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

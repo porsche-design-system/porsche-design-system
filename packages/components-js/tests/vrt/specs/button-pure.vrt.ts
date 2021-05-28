@@ -60,23 +60,23 @@ describe('Button Pure', () => {
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElement(page, '#button-pure-hovered', HOVERED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-hovered', HOVERED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-hovered >>> button', HOVERED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-hovered >>> button', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#button-pure-focused', FOCUSED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-focused', FOCUSED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-focused >>> button', FOCUSED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-focused >>> button', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#button-pure-hovered-focused', FOCUSED_HOVERED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-hovered-focused', FOCUSED_HOVERED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
 
-        await forceStateOnElement(page, '#button-pure-dark-hovered', HOVERED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered', HOVERED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-hovered >>> button', HOVERED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered >>> button', HOVERED_STATE);
 
-        await forceStateOnElement(page, '#button-pure-dark-focused', FOCUSED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-focused', FOCUSED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-focused >>> button', FOCUSED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-dark-focused >>> button', FOCUSED_STATE);
 
-        await forceStateOnElement(page, '#button-pure-dark-hovered-focused', FOCUSED_HOVERED_STATE, 'button');
-        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused', FOCUSED_HOVERED_STATE, 'button');
+        await forceStateOnElement(page, '#button-pure-dark-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
+        await forceStateOnElement(page, '#button-pure-subline-dark-hovered-focused >>> button', FOCUSED_HOVERED_STATE);
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
