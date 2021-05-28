@@ -1,8 +1,9 @@
+@use "sass:math";
 /* Internal functions, - interface or output might change in future releases! */
 
 @function __p-strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+    @return math.div($number, $number * 0 + 1);
   }
 
   @return $number;
@@ -65,7 +66,7 @@
 }
 
 @function __p-exp-maclaurin($x, $n) {
-  @return (__p-pow($x, $n) / __p-factorial($n));
+  @return math.div(__p-pow($x, $n), __p-factorial($n));
 }
 
 @function __p-exp($value) {
@@ -73,7 +74,7 @@
 }
 
 @function __p-ln-maclaurin($x, $n) {
-  @return (__p-pow(-1, $n + 1) / $n) * (__p-pow($x - 1, $n));
+  @return math.div(__p-pow(-1, $n + 1), $n) * (__p-pow($x - 1, $n));
 }
 
 @function __p-ln($value) {
@@ -84,5 +85,5 @@
     $ten-exp: $ten-exp + 1;
   }
 
-  @return __p-summation(__p-ln-maclaurin, $value / __p-pow(10, $ten-exp), 1, 100) + $ten-exp * $ln-ten;
+  @return __p-summation(__p-ln-maclaurin, math.div($value, __p-pow(10, $ten-exp)), 1, 100) + $ten-exp * $ln-ten;
 }
