@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-core-initializer',
@@ -18,7 +18,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class CoreInitializerComponent implements OnInit {
   public isEnabled = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   public ngOnInit() {
-    setTimeout(() => (this.isEnabled = true), 1000);
+    setTimeout(() => {
+      this.isEnabled = true;
+      this.cdr.markForCheck();
+    }, 1000);
   }
 }
