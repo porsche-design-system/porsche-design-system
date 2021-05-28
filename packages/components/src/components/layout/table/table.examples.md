@@ -42,17 +42,16 @@
   </p-table>
 </Playground>
 
-### Angular
+## Framework Implementations
 
-```ts
-{{ angularExample }}
-```
-
-### React
-
-```tsx
-{{ reactExample }}
-```
+<p-tabs>
+  <p-tabs-item label="Angular">
+    <pre><code class="language-ts">{{ angularExample }}</code></pre>
+  </p-tabs-item>
+  <p-tabs-item label="React">
+  <pre><code class="language-tsx">{{ reactExample }}</code></pre>
+  </p-tabs-item>
+</p-tabs>
 
 <script lang="ts">
   import Vue from 'vue';
