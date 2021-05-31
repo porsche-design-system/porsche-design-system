@@ -8,9 +8,9 @@ export const CSS_ANIMATION_DURATION = 1000;
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
-export const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
-export const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-export const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
+const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
+const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
+const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
 
 export const generateGUID = (): string => {
   const s4 = (): string =>
@@ -22,19 +22,27 @@ export const generateGUID = (): string => {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
-export const forceStateOnElements = async (page: Page, selectors: string[]): Promise<void> => {
-  for (const selector of selectors) {
-    const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
-    const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
-    const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
+export const forceHovered = async (page: Page, selector: string): Promise<void> => {
+  await forceStateOnElements(page, selector, HOVERED_STATE);
+};
+export const forceFocused = async (page: Page, selector: string): Promise<void> => {
+  await forceStateOnElements(page, selector, FOCUSED_STATE);
+};
+export const forceFocusedHovered = async (page: Page, selector: string): Promise<void> => {
+  await forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
+};
 
-    for (const hostNodeId of hostNodeIds) {
-      await forceStateOnNodeId(
-        cdp,
-        shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName) : hostNodeId,
-        getStates(selector)
-      );
-    }
+const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
+  const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
+  const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
+  const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
+
+  for (const hostNodeId of hostNodeIds) {
+    await forceStateOnNodeId(
+      cdp,
+      shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName) : hostNodeId,
+      states
+    );
   }
 };
 
@@ -100,14 +108,4 @@ const forceStateOnNodeId = async (
     nodeId,
     forcedPseudoClasses,
   });
-};
-
-const getStates = (selector: string): ForcedPseudoClasses[] => {
-  if (selector.includes('hovered') && selector.includes('focused')) {
-    return FOCUSED_HOVERED_STATE;
-  } else if (selector.includes('hovered')) {
-    return HOVERED_STATE;
-  } else if (selector.includes('focused')) {
-    return FOCUSED_STATE;
-  }
 };
