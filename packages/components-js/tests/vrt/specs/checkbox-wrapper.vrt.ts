@@ -1,6 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -56,9 +55,6 @@ describe('Checkbox Wrapper', () => {
         await forceHovered(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
         await forceFocused(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');
         await forceFocusedHovered(page, '.focused-hovered > p-checkbox-wrapper input[type="checkbox"]');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

@@ -1,6 +1,5 @@
 import {
   addEventListener,
-  CSS_ANIMATION_DURATION,
   getAttribute,
   getBrowser,
   getLifecycleStatus,
@@ -16,6 +15,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;

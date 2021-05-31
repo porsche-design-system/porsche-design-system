@@ -1,6 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -55,9 +54,6 @@ describe('Select Wrapper', () => {
         await forceHovered(page, '.hovered > p-select-wrapper select');
         await forceFocused(page, '.focused > p-select-wrapper select');
         await forceFocusedHovered(page, '.focused-hovered > p-select-wrapper select');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

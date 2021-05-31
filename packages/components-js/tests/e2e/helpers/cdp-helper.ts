@@ -4,8 +4,6 @@ import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 import { Theme } from '@porsche-design-system/utilities';
 
-export const CSS_ANIMATION_DURATION = 1000;
-
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 

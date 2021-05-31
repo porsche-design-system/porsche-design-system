@@ -1,7 +1,6 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import { Theme } from '@porsche-design-system/utilities';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -45,9 +44,6 @@ describe('Tabs Bar', () => {
         await forceHovered(page, '.hovered > p-tabs-bar button');
         await forceFocused(page, '.focused > p-tabs-bar button');
         await forceFocusedHovered(page, '.focused-hovered > p-tabs-bar button');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

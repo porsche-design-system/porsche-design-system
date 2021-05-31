@@ -1,6 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -42,9 +41,6 @@ describe('Button Pure', () => {
         await forceHovered(page, '.hovered > p-button-pure >>> button');
         await forceFocused(page, '.focused > p-button-pure >>> button');
         await forceFocusedHovered(page, '.focused-hovered > p-button-pure >>> button');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });
