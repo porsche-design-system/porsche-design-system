@@ -77,6 +77,7 @@ describe('cdp-helper', () => {
   <div class="playground focused-hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>`;
+
       expect(getBody(getElements)).toBe(result);
     });
   });

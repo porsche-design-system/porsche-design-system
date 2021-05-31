@@ -1,6 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -48,9 +47,6 @@ describe('Text Field Wrapper', () => {
         await forceHovered(page, '.hovered > p-text-field-wrapper input[type="text"]');
         await forceFocused(page, '.focused > p-text-field-wrapper input[type="text"]');
         await forceFocusedHovered(page, '.focused-hovered > p-text-field-wrapper input[type="text"]');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });

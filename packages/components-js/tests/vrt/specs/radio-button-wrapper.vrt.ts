@@ -1,6 +1,5 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  CSS_ANIMATION_DURATION,
   forceFocused,
   forceFocusedHovered,
   forceHovered,
@@ -58,9 +57,6 @@ describe('Radio Button Wrapper', () => {
         await forceHovered(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
         await forceFocused(page, '.focused > p-radio-button-wrapper input[type="radio"]');
         await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
-
-        //wait for all style transitions to finish
-        await page.waitForTimeout(CSS_ANIMATION_DURATION);
       })
     ).toBeFalsy();
   });
