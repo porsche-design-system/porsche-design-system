@@ -5,6 +5,7 @@ import {
   forceFocusedHovered,
   forceHovered,
   generateGUID,
+  getBody,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -52,18 +53,7 @@ describe('Radio Button Wrapper', () => {
             <input type="radio" name="${generateGUID()}" checked />
           </p-radio-button-wrapper>`;
 
-        const body = `
-          <div class="playground light hovered">
-            ${getElements()}
-          </div>
-          <div class="playground light focused">
-            ${getElements()}
-          </div>
-          <div class="playground light focused-hovered">
-            ${getElements()}
-          </div>`;
-
-        await setContentWithDesignSystem(page, body, { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
         await forceFocused(page, '.focused > p-radio-button-wrapper input[type="radio"]');

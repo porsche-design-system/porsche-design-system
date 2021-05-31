@@ -2,6 +2,7 @@ import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
+import { Theme } from '@porsche-design-system/utilities';
 
 export const CSS_ANIMATION_DURATION = 1000;
 
@@ -11,6 +12,40 @@ type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
+
+export type GetElements = () => string;
+export type GetThemedElements = (theme?: Theme) => string;
+
+export const getBody = (getElements: GetElements) => `
+  <div class="playground light hovered">
+  ${getElements()}
+  </div>
+  <div class="playground light focused">
+  ${getElements()}
+  </div>
+  <div class="playground focused-hovered">
+  ${getElements()}
+  </div>`;
+
+export const getThemedBody = (getElements: GetThemedElements): string => `
+  <div class="playground light hovered">
+    ${getElements()}
+  </div>
+  <div class="playground dark hovered">
+    ${getElements('dark')}
+  </div>
+  <div class="playground light focused">
+    ${getElements()}
+  </div>
+  <div class="playground dark focused">
+    ${getElements('dark')}
+  </div>
+  <div class="playground light focused-hovered">
+    ${getElements()}
+  </div>
+  <div class="playground dark focused-hovered">
+    ${getElements('dark')}
+  </div>`;
 
 export const generateGUID = (): string => {
   const s4 = (): string =>

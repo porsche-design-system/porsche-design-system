@@ -4,6 +4,7 @@ import {
   forceFocused,
   forceFocusedHovered,
   forceHovered,
+  getThemedBody,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 import { Theme } from '@porsche-design-system/utilities';
@@ -32,7 +33,7 @@ describe('Select Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
 
-        const getElements = (theme: Theme = 'light') => `
+        const getElements = (theme: Theme = 'light'): string => `
           <p-select-wrapper theme="${theme}" label="Some label" message="Some error validation message.">
             <select name="some-name" aria-invalid="false">
               <option value="a">Option A</option>
@@ -49,27 +50,7 @@ describe('Select Wrapper', () => {
             </select>
           </p-select-wrapper>`;
 
-        const body = `
-          <div class="playground light hovered">
-            ${getElements()}
-          </div>
-          <div class="playground dark hovered">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused-hovered">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused-hovered">
-            ${getElements('dark')}
-          </div>`;
-
-        await setContentWithDesignSystem(page, body, { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-select-wrapper select');
         await forceFocused(page, '.focused > p-select-wrapper select');

@@ -4,6 +4,7 @@ import {
   forceFocused,
   forceFocusedHovered,
   forceHovered,
+  getThemedBody,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 import { Theme } from '@porsche-design-system/utilities';
@@ -32,32 +33,12 @@ describe('Link', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const getElements = (theme: Theme = 'light') => `
+        const getElements = (theme: Theme = 'light'): string => `
           <p-link theme="${theme}" variant="primary" href="#">Some label</p-link>
           <p-link theme="${theme}" variant="secondary" href="#">Some label</p-link>
           <p-link theme="${theme}" variant="tertiary" href="#">Some label</p-link>`;
 
-        const body = `
-          <div class="playground light hovered">
-            ${getElements()}
-          </div>
-          <div class="playground dark hovered">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused-hovered">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused-hovered">
-            ${getElements('dark')}
-          </div>`;
-
-        await setContentWithDesignSystem(page, body, { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-link >>> a');
         await forceFocused(page, '.focused > p-link >>> a');
