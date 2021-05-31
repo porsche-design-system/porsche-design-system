@@ -18,13 +18,13 @@ export type GetThemedElements = (theme?: Theme) => string;
 
 export const getBody = (getElements: GetElements) => `
   <div class="playground light hovered">
-  ${getElements()}
+    ${getElements()}
   </div>
   <div class="playground light focused">
-  ${getElements()}
+    ${getElements()}
   </div>
   <div class="playground focused-hovered">
-  ${getElements()}
+    ${getElements()}
   </div>`;
 
 export const getThemedBody = (getElements: GetThemedElements): string => `
