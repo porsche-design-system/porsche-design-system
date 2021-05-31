@@ -72,14 +72,17 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 
 ### Start
 
+**Important:** before executing a start command it's necessary to have `./docker.sh run-build` executed.
+
 1. Switch to **project root directory**
 1. For the different applications, select one of the following commands:
-   - `./docker.sh run-start` (starts the entire application)
-   - `./docker.sh run-start --components` (starts playground)
-   - `./docker.sh run-start --components-js` (starts native web components)
-   - `./docker.sh run-start --components-angular` (starts angular components)
-   - `./docker.sh run-start --components-react` (starts react components)
-   - `./docker.sh run-start --storefront` (starts storefront)
+   - `./docker.sh run-start` (starts storefront as default)
+   - `./docker.sh run-start --components`
+   - `./docker.sh run-start --components-js`
+   - `./docker.sh run-start --components-angular`
+   - `./docker.sh run-start --components-react`
+   - `./docker.sh run-start --storefront`
+   - `./docker.sh run-start --utilities`
 
 ### Linting
 

@@ -29,6 +29,7 @@ describe('text', () => {
 
   const getHost = () => selectNode(page, 'p-text');
   const getLink = () => selectNode(page, 'p-text a');
+  const getParagraph = () => selectNode(page, 'p-text >>> p');
 
   describe('focus state', () => {
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -77,5 +78,20 @@ describe('text', () => {
       expect(status.componentDidUpdate['p-text']).toBe(1, 'componentDidUpdate: p-text');
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
+  });
+
+  it('should have "text-size-adjust: none" set', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text>
+        Some message
+      </p-text>`
+    );
+    const paragraph = await getParagraph();
+    const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust');
+
+    // when webkitTextSizeAdjust is set to "none", it defaults to 100%
+    expect(webkitTextSizeAdjustStyle).toBe('100%');
   });
 });
