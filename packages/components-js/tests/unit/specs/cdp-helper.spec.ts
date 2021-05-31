@@ -1,5 +1,5 @@
 import Protocol from 'devtools-protocol';
-import { findBackendNodeId, generateGUID } from '../../e2e/helpers/cdp-helper';
+import { findBackendNodeId, generateGUID, getBody, getThemedBody } from '../../e2e/helpers/cdp-helper';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
@@ -10,6 +10,8 @@ type TestCase = {
 };
 
 describe('cdp-helper', () => {
+  const getElements = (): string => '<div>SomeDiv</div><div>SomeDiv</div>';
+
   describe('findBackendNodeId()', () => {
     const testCases: TestCase[] = [
       { node: { localName: 'test', backendNodeId: 1 }, selector: 'test', expect: 1 },
@@ -60,6 +62,48 @@ describe('cdp-helper', () => {
       expect(id1).not.toEqual(id2);
       expect(id1).not.toEqual(id3);
       expect(id2).not.toEqual(id3);
+    });
+  });
+
+  describe('getBody()', () => {
+    it('should put elements in playground divs', () => {
+      const result = `
+  <div class="playground light hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground light focused">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground focused-hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>`;
+      expect(getBody(getElements)).toBe(result);
+    });
+  });
+
+  describe('getThemedBody()', () => {
+    it('should put elements in themed playground divs', () => {
+      const result = `
+  <div class="playground light hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground dark hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground light focused">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground dark focused">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground light focused-hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>
+  <div class="playground dark focused-hovered">
+    <div>SomeDiv</div><div>SomeDiv</div>
+  </div>`;
+
+      expect(getThemedBody(getElements)).toBe(result);
     });
   });
 });
