@@ -71,11 +71,13 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
   const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
 
   for (const hostNodeId of hostNodeIds) {
-    await forceStateOnNodeId(
-      cdp,
-      shadowRootNodeName ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName) : hostNodeId,
-      states
-    );
+    const nodeId = shadowRootNodeName
+      ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName)
+      : hostNodeId;
+    //only execute if a valid nodeId was found
+    if (nodeId) {
+      await forceStateOnNodeId(cdp, nodeId, states);
+    }
   }
 };
 
@@ -124,11 +126,13 @@ const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, sel
 
   const backendNodeId = findBackendNodeId(hostNode.shadowRoots[0], selector);
 
-  return (
-    (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
-      backendNodeIds: [backendNodeId],
-    })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse
-  ).nodeIds[0];
+  return backendNodeId
+    ? (
+        (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
+          backendNodeIds: [backendNodeId],
+        })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse
+      ).nodeIds[0]
+    : undefined;
 };
 
 const forceStateOnNodeId = async (
