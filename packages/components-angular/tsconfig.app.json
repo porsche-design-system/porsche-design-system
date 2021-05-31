@@ -3,8 +3,5 @@
   "compilerOptions": {
     "outDir": "./dist/app"
   },
-  "files": ["src/main.ts", "src/polyfills.ts"],
-  "angularCompilerOptions": {
-    "enableIvy": false
-  }
+  "files": ["src/main.ts", "src/polyfills.ts"]
 }

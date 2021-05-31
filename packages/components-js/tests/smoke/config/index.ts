@@ -6,7 +6,7 @@ export let browser: Browser;
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new SpecReporter());
+jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 beforeAll(async () => {
   browser = await launch({
