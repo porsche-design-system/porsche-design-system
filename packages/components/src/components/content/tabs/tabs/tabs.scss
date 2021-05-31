@@ -5,6 +5,6 @@
   display: block;
 }
 
-*:first-child {
-  margin-bottom: 0.5em;
+.tabs-bar {
+  margin-bottom: $p-spacing-8;
 }
