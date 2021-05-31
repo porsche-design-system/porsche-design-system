@@ -46,8 +46,7 @@ const resolveSelector = (selector: string): { hostElementSelector: string; shado
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {
   await cdp.send('DOM.getDocument');
   const { root } = (await cdp.send('DOM.getDocument', {
-    depth: -1,
-    pierce: true,
+    depth: 0,
   })) as Protocol.DOM.GetDocumentResponse;
 
   return (
