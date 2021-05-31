@@ -1,19 +1,18 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
   getBrowser,
-  getStyleOnFocus,
+  getLifecycleStatus,
+  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
   waitForEventSerialization,
+  waitForInheritedCSSTransition,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -398,24 +397,6 @@ describe('button-pure', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(visible);
-    });
-
-    it('should show outline of shadowed <button> when it is focused', async () => {
-      await initButtonPure();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getStyleOnFocus(button, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ offset: '1px' })
-      );
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(button, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
-      );
     });
   });
 

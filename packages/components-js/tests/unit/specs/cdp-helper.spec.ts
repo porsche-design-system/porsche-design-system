@@ -1,5 +1,5 @@
 import Protocol from 'devtools-protocol';
-import { findBackendNodeId, generateGUID, getBody, getThemedBody } from '../../e2e/helpers/cdp-helper';
+import { findBackendNodeId, generateGUID, getBody, GetElements, getThemedBody } from '../../e2e/helpers/cdp-helper';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
@@ -10,7 +10,7 @@ type TestCase = {
 };
 
 describe('cdp-helper', () => {
-  const getElements = (): string => '<div>SomeDiv</div><div>SomeDiv</div>';
+  const getElements: GetElements = () => '<div>SomeDiv</div><div>SomeDiv</div>';
 
   describe('findBackendNodeId()', () => {
     const testCases: TestCase[] = [

@@ -7,7 +7,6 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
   initAddEventListener,
   selectNode,
   setAttribute,
@@ -442,68 +441,6 @@ describe('text-field-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <input> when it is focused', async () => {
-      await initTextField();
-
-      const host = await getHost();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }));
-
-      await setAttribute(input, 'readonly', 'true');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'transparent' }));
-    });
-
-    it('should show outline of password toggle button when it is focused', async () => {
-      await initTextField({ type: 'password' });
-
-      const host = await getHost();
-      const toggle = await getButton();
-
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-4px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-5px' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-5px' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initTextField({
-        useSlottedLabel: true,
-        useSlottedDescription: true,
-        useSlottedMessage: true,
-        state: 'error',
-      });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
 
     it('should focus input when label text is clicked', async () => {

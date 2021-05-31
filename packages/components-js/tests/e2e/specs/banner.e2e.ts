@@ -1,12 +1,10 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  getActiveElementTagNameInShadowRoot,
   getBrowser,
   getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
-  getStyleOnFocus,
   initAddEventListener,
   reattachElement,
   selectNode,
@@ -48,15 +46,6 @@ describe('banner', () => {
   const getButton = () => selectNode(page, 'p-banner >>> p-button-pure');
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
-
-  it('should render and focus close button', async () => {
-    await initBanner();
-
-    const host = await getHost();
-    const activeElement = await getActiveElementTagNameInShadowRoot(host);
-
-    expect(activeElement.toLowerCase()).toBe('p-button-pure');
-  });
 
   it('should render without button', async () => {
     await setContentWithDesignSystem(
@@ -208,18 +197,6 @@ describe('banner', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(descriptionLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initBanner();
-
-      await page.waitForTimeout(CSS_FADE_IN_DURATION);
-
-      const titleLink = await getTitleLink();
-      const descriptionLink = await getDescriptionLink();
-
-      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
     });
   });
 

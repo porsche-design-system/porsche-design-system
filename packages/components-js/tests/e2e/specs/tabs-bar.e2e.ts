@@ -9,7 +9,6 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
   initAddEventListener,
   isElementAtIndexFocused,
   reattachElement,
@@ -959,48 +958,6 @@ describe('tabs-bar', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(secondLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <button> when it is focused', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0 });
-
-      const host = await getHost();
-      const allButtons = await getAllButtons();
-
-      expect(await getStyleOnFocus(allButtons[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
-      expect(await getStyleOnFocus(allButtons[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(allButtons[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(allButtons[0])).toBe(
-        expectedStyleOnFocus({ color: 'active', theme: 'dark', offset: '1px' })
-      );
-      expect(await getStyleOnFocus(allButtons[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
-      expect(await getStyleOnFocus(allButtons[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
-
-      const host = await getHost();
-      const allLinks = await getAllLinks();
-
-      expect(await getStyleOnFocus(allLinks[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
-      expect(await getStyleOnFocus(allLinks[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(allLinks[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(allLinks[0])).toBe(
-        expectedStyleOnFocus({ color: 'active', theme: 'dark', offset: '1px' })
-      );
-      expect(await getStyleOnFocus(allLinks[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
-      expect(await getStyleOnFocus(allLinks[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
     });
   });
 
