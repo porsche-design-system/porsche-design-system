@@ -8,9 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Changed
-- Division by slash (`/`) to `math.div`, make sure to add `@use "sass:math";` within your scss files where you are using this package. See <https://sass-lang.com/documentation/breaking-changes/slash-div> for further information. 
-
 ### [4.0.0] - 2020-12-17
 
 #### Changed

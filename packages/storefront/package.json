@@ -59,7 +59,7 @@
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^7.0.0",
     "puppeteer": "~5.5.0",
-    "sass": "^1.32.12",
+    "sass": "1.32.12",
     "sass-loader": "^10.1.1",
     "ts-node": "^10.0.0",
     "typescript": "~4.3.2",
