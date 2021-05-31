@@ -4,9 +4,9 @@ import {
   forceFocusedHovered,
   forceHovered,
   getThemedBody,
+  GetThemedElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
-import { Theme } from '@porsche-design-system/utilities';
 
 describe('Link Pure', () => {
   it('should have no visual regression', async () => {
@@ -32,15 +32,19 @@ describe('Link Pure', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const getElements = (theme: Theme = 'light'): string => `
+        const getElements: GetThemedElements = (theme = 'light') => `
           <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>
-          <p-link-pure theme="${theme}" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>`;
+          <p-link-pure theme="${theme}" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
+          <p-link-pure theme="${theme}"><a href="#">Some label</a></p-link-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-link-pure >>> a');
+        await forceHovered(page, '.hovered > p-link-pure >>> span');
         await forceFocused(page, '.focused > p-link-pure >>> a');
+        await forceFocused(page, '.focused > p-link-pure >>> span');
         await forceFocusedHovered(page, '.focused-hovered > p-link-pure >>> a');
+        await forceFocusedHovered(page, '.focused-hovered > p-link-pure >>> span');
       })
     ).toBeFalsy();
   });

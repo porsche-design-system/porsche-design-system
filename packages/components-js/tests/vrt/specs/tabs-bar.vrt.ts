@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import { Theme } from '@porsche-design-system/utilities';
 import {
   forceFocused,
   forceFocusedHovered,
   forceHovered,
   getThemedBody,
+  GetThemedElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,18 +32,26 @@ describe('Tabs Bar', () => {
         const head = `
           <link rel="stylesheet" href="styles.css" />`;
 
-        const getElements = (theme: Theme = 'light'): string => `
+        const getElements: GetThemedElements = (theme = 'light') => `
           <p-tabs-bar theme="${theme}">
             <button type="button">Tab One</button>
             <button type="button">Tab Two</button>
             <button type="button">Tab Three</button>
+          </p-tabs-bar>
+          <p-tabs-bar theme="${theme}">
+            <a>Tab One</a>
+            <a>Tab Two</a>
+            <a>Tab Three</a>
           </p-tabs-bar>`;
 
         await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-tabs-bar button');
+        await forceHovered(page, '.hovered > p-tabs-bar a');
         await forceFocused(page, '.focused > p-tabs-bar button');
+        await forceFocused(page, '.focused > p-tabs-bar a');
         await forceFocusedHovered(page, '.focused-hovered > p-tabs-bar button');
+        await forceFocusedHovered(page, '.focused-hovered > p-tabs-bar a');
       })
     ).toBeFalsy();
   });

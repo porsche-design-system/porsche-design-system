@@ -4,9 +4,9 @@ import {
   forceFocusedHovered,
   forceHovered,
   getThemedBody,
+  GetThemedElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
-import { Theme } from '@porsche-design-system/utilities';
 
 describe('Button', () => {
   it('should have no visual regression', async () => {
@@ -32,7 +32,7 @@ describe('Button', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-button:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const getElements = (theme: Theme = 'light'): string => `
+        const getElements: GetThemedElements = (theme = 'light') => `
           <p-button theme="${theme}" variant="primary">Some label</p-button>
           <p-button theme="${theme}" variant="secondary">Some label</p-button>
           <p-button theme="${theme}" variant="tertiary">Some label</p-button>`;
