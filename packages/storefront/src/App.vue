@@ -260,6 +260,7 @@
 </style>
 
 <style scoped lang="scss">
+  @use "sass:math";
   @import '~@porsche-design-system/utilities/scss';
 
   .content {
@@ -348,7 +349,7 @@
     z-index: 10;
 
     @include p-media-query('s') {
-      left: calc(50% + #{p-px-to-rem(280px) / 2});
+      left: calc(50% + #{math.div(p-px-to-rem(280px), 2)});
     }
   }
 
