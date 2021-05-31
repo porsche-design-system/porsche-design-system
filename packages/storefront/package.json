@@ -4,6 +4,7 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
+    "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
     "prestart": "yarn preparePDSLoader",
     "prebuild": "yarn preparePDSLoader",
     "preparePDSLoader": "ts-node --project './tsconfig.node.json' './scripts/preparePDSLoader.ts'",
