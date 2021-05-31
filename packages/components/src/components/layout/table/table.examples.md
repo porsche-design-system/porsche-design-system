@@ -49,7 +49,10 @@
     <pre><code class="language-ts">{{ angularExample }}</code></pre>
   </p-tabs-item>
   <p-tabs-item label="React">
-  <pre><code class="language-tsx">{{ reactExample }}</code></pre>
+    <pre><code class="language-tsx">{{ reactExample }}</code></pre>
+  </p-tabs-item>
+  <p-tabs-item label="Shared Data">
+    <pre><code class="language-tsx">{{ sharedData }}</code></pre>
   </p-tabs-item>
 </p-tabs>
 
@@ -65,6 +68,7 @@
     bodyData = data;
     angularExample = getTableCodeSample('angular');
     reactExample = getTableCodeSample('react');
+    sharedData = getTableCodeSample('shared');
 
     mounted(): void {
       this.syncHeadCellProperties();
