@@ -216,15 +216,6 @@ export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleO
   return await getElementStyle(element, 'boxShadow', { pseudo });
 };
 
-export const getStyleOnFocus = async (
-  element: ElementHandle,
-  property: 'outline' | 'boxShadow' = 'outline',
-  opts?: GetStyleOnFocusOptions
-): Promise<string> => {
-  await element.focus();
-  return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
-};
-
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
   await page.waitForTimeout(500);
 };
