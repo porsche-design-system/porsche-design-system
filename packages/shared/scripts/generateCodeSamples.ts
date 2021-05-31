@@ -8,19 +8,23 @@ type CodeSample = {
   fileNames: string[];
 };
 
-type Framework = 'angular' | 'react';
+type Framework = 'shared' | 'angular' | 'react';
 
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
     {
       component: 'p-table',
-      fileNames: ['../components-angular/src/app/pages/table.component.ts', '../components-react/src/pages/Table.tsx'],
+      fileNames: [
+        'src/table-data.ts',
+        '../components-angular/src/app/pages/table.component.ts',
+        '../components-react/src/pages/Table.tsx',
+      ],
     },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');
 
-  const types = `type Framework = 'angular' | 'react';`;
+  const types = `type Framework = 'shared' | 'angular' | 'react';`;
 
   const functions = codeSamples
     .map((sample) => {
@@ -29,7 +33,7 @@ const generateCodeSamples = (): void => {
       const fileContents: { [key in Framework]?: string }[] = sample.fileNames.map((fileName) => {
         const filePath = path.resolve(fileName);
         const filePathFromPackagesFolder = filePath.replace(packagesFolder, '');
-        const [, framework] = filePathFromPackagesFolder.match(/\/components-([a-z]+)\//) || [];
+        const [, framework = 'shared'] = filePathFromPackagesFolder.match(/\/components-([a-z]+)\//) || [];
 
         console.log(`– Reading content of ${filePathFromPackagesFolder}`);
         const fileContent = fs.readFileSync(fileName, 'utf8');
