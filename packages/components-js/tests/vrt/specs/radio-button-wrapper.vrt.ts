@@ -5,6 +5,7 @@ import {
   forceHovered,
   generateGUID,
   getBody,
+  GetElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,7 +33,7 @@ describe('Radio Button Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
 
-        const getElements = (): string => `
+        const getElements: GetElements = () => `
           <p-radio-button-wrapper label="Some label">
             <input type="radio" name="some-name" />
           </p-radio-button-wrapper>
@@ -50,13 +51,28 @@ describe('Radio Button Wrapper', () => {
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
             <input type="radio" name="${generateGUID()}" checked />
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper>
+            <span slot="label">Some label with a <a href="#">link</a>.</span>
+            <input type="radio" name="some-name" />
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper label="Some label" state="error">
+            <input type="radio" name="some-name" />
+            <span slot="message">Some error message with a <a href="#">link</a>.</span>
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper label="Some label" state="success">
+            <input type="radio" name="some-name" />
+            <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-radio-button-wrapper>`;
 
         await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
+        await forceHovered(page, '.hovered > p-radio-button-wrapper span a');
         await forceFocused(page, '.focused > p-radio-button-wrapper input[type="radio"]');
+        await forceFocused(page, '.focused > p-radio-button-wrapper span a');
         await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
+        await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper span a');
       })
     ).toBeFalsy();
   });

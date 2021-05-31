@@ -4,9 +4,9 @@ import {
   forceFocusedHovered,
   forceHovered,
   getThemedBody,
+  GetThemedElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
-import { Theme } from '@porsche-design-system/utilities';
 
 describe('Switch', () => {
   it('should have no visual regression', async () => {
@@ -32,7 +32,7 @@ describe('Switch', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
-        const getElements = (theme: Theme = 'light'): string => `
+        const getElements: GetThemedElements = (theme = 'light') => `
           <p-switch theme="${theme}">Some label</p-switch>
           <p-switch theme="${theme}" checked="true">Some label</p-switch>`;
 

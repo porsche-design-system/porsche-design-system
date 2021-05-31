@@ -4,6 +4,7 @@ import {
   forceFocusedHovered,
   forceHovered,
   getBody,
+  GetElements,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -30,7 +31,7 @@ describe('Textarea Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-textarea-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
 
-        const getElements = (): string => `
+        const getElements: GetElements = () => `
           <p-textarea-wrapper label="Some label" message="Some error validation message.">
             <textarea name="some-name"></textarea>
           </p-textarea-wrapper>
@@ -39,13 +40,29 @@ describe('Textarea Wrapper', () => {
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Some label" state="success" message="Some success validation message.">
             <textarea name="some-name"></textarea>
+          </p-textarea-wrapper>
+          <p-textarea-wrapper>
+            <span slot="label">Some label with a <a href="#">link</a>.</span>
+            <span slot="description">Some description with a <a href="#">link</a>.</span>
+            <textarea name="some-name"></textarea>
+          </p-textarea-wrapper>
+          <p-textarea-wrapper label="Some label" description="Some description" state="error">
+            <textarea name="some-name"></textarea>
+            <span slot="message">Some error message with a <a href="#">link</a>.</span>
+          </p-textarea-wrapper>
+          <p-textarea-wrapper label="Some label" description="Some description" state="success">
+            <textarea name="some-name"></textarea>
+            <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-textarea-wrapper>`;
 
         await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-textarea-wrapper textarea');
+        await forceHovered(page, '.hovered > p-textarea-wrapper span a');
         await forceFocused(page, '.focused > p-textarea-wrapper textarea');
+        await forceFocused(page, '.focused > p-textarea-wrapper span a');
         await forceFocusedHovered(page, '.focused-hovered > p-textarea-wrapper textarea');
+        await forceFocusedHovered(page, '.focused-hovered > p-textarea-wrapper span a');
       })
     ).toBeFalsy();
   });
