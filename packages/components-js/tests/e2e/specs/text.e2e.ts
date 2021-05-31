@@ -1,6 +1,7 @@
 import {
   expectedStyleOnFocus,
   getBrowser,
+  getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
   selectNode,
