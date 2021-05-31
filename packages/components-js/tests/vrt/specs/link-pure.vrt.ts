@@ -1,5 +1,12 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
+import {
+  CSS_ANIMATION_DURATION,
+  forceFocused,
+  forceFocusedHovered,
+  forceHovered,
+  setContentWithDesignSystem,
+} from '../../e2e/helpers';
+import { Theme } from '@porsche-design-system/utilities';
 
 describe('Link Pure', () => {
   it('should have no visual regression', async () => {
@@ -25,44 +32,35 @@ describe('Link Pure', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const elements = `
-          <p-link-pure href="#">Some label</p-link-pure>
-          <p-link-pure href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>`;
-
-        const elementsDark = `
-          <p-link-pure theme="dark" href="#">Some label</p-link-pure>
-          <p-link-pure theme="dark" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>`;
+        const getElements = (theme: Theme = 'light') => `
+          <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>
+          <p-link-pure theme="${theme}" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>`;
 
         const body = `
-          <div id="hovered" class="playground light">
-            ${elements}
+          <div class="playground light hovered">
+             ${getElements()}
           </div>
-          <div id="dark-hovered" class="playground dark">
-            ${elementsDark}
+          <div class="playground dark hovered">
+            ${getElements('dark')}
           </div>
-          <div id="focused" class="playground light">
-            ${elements}
+          <div class="playground light focused">
+             ${getElements()}
           </div>
-          <div id="dark-focused" class="playground dark">
-            ${elementsDark}
+          <div class="playground dark focused">
+            ${getElements('dark')}
           </div>
-          <div id="hovered-focused" class="playground light">
-            ${elements}
+          <div class="playground light focused-hovered">
+             ${getElements()}
           </div>
-          <div id="dark-hovered-focused" class="playground dark">
-            ${elementsDark}
+          <div class="playground dark focused-hovered">
+            ${getElements('dark')}
           </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElements(page, [
-          '#hovered > p-link-pure >>> a',
-          '#dark-hovered > p-link-pure >>> a',
-          '#focused > p-link-pure >>> a',
-          '#dark-focused > p-link-pure >>> a',
-          '#hovered-focused > p-link-pure >>> a',
-          '#dark-hovered-focused > p-link-pure >>> a',
-        ]);
+        await forceHovered(page, '.hovered > p-link-pure >>> a');
+        await forceFocused(page, '.focused > p-link-pure >>> a');
+        await forceFocusedHovered(page, '.focused-hovered > p-link-pure >>> a');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

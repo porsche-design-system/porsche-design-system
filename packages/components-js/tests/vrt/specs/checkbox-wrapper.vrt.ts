@@ -1,5 +1,11 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
-import { CSS_ANIMATION_DURATION, forceStateOnElements, setContentWithDesignSystem } from '../../e2e/helpers';
+import {
+  CSS_ANIMATION_DURATION,
+  forceFocused,
+  forceFocusedHovered,
+  forceHovered,
+  setContentWithDesignSystem,
+} from '../../e2e/helpers';
 
 describe('Checkbox Wrapper', () => {
   it('should have no visual regression', async () => {
@@ -45,24 +51,22 @@ describe('Checkbox Wrapper', () => {
           </p-checkbox-wrapper>`;
 
         const body = `
-            <div id="hovered" class="playground light">
+            <div class="playground light hovered">
               ${elements}
             </div>
-            <div id="focused" class="playground light">
+            <div class="playground light focused">
               ${elements}
             </div>
-            <div id="hovered-focused" class="playground light">
+            <div class="playground focused-hovered">
               ${elements}
             </div>
           `;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElements(page, [
-          '#hovered > p-checkbox-wrapper input[type="checkbox"]',
-          '#focused > p-checkbox-wrapper input[type="checkbox"]',
-          '#hovered-focused > p-checkbox-wrapper input[type="checkbox"]',
-        ]);
+        await forceHovered(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
+        await forceFocused(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');
+        await forceFocusedHovered(page, '.focused-hovered > p-checkbox-wrapper input[type="checkbox"]');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);

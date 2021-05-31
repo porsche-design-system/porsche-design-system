@@ -1,7 +1,9 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
   CSS_ANIMATION_DURATION,
-  forceStateOnElements,
+  forceFocused,
+  forceFocusedHovered,
+  forceHovered,
   generateGUID,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
@@ -48,28 +50,24 @@ describe('Radio Button Wrapper', () => {
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
             <input type="radio" name="${generateGUID()}" checked />
-          </p-radio-button-wrapper>
-        `;
+          </p-radio-button-wrapper>`;
 
         const body = `
-            <div id="hovered" class="playground light">
-              ${getElements()}
-            </div>
-            <div id="focused" class="playground light">
-              ${getElements()}
-            </div>
-            <div id="hovered-focused" class="playground light">
-              ${getElements()}
-            </div>
-          `;
+          <div class="playground light hovered">
+            ${getElements()}
+          </div>
+          <div class="playground light focused">
+            ${getElements()}
+          </div>
+          <div class="playground light focused-hovered">
+            ${getElements()}
+          </div>`;
 
         await setContentWithDesignSystem(page, body, { injectIntoHead: head });
 
-        await forceStateOnElements(page, [
-          '#hovered > p-radio-button-wrapper input[type="radio"]',
-          '#focused > p-radio-button-wrapper input[type="radio"]',
-          '#hovered-focused > p-radio-button-wrapper input[type="radio"]',
-        ]);
+        await forceHovered(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
+        await forceFocused(page, '.focused > p-radio-button-wrapper input[type="radio"]');
+        await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
 
         //wait for all style transitions to finish
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
