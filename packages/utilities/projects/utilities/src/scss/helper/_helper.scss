@@ -1,3 +1,4 @@
+@use "sass:math";
 @import 'internal';
 
 /**
@@ -10,7 +11,7 @@
   @if __p-is-px($px) {
     $px: __p-strip-unit($px);
     $base: __p-strip-unit($p-rem-base);
-    @return ($px / $base) * 1rem;
+    @return math.div($px, $base) * 1rem;
   } @else {
     @error 'p-px-to-rem() Scss function only accepts value in px for param $px, e.g. 12px';
   }
@@ -69,7 +70,7 @@
 
   $font-size: __p-strip-unit($font-size);
   $e: 2.71828;
-  $exact-line-height-factor: 0.911 / (2.97 + 0.005 * __p-pow($e, 0.2 * $font-size)) + 1.2;
+  $exact-line-height-factor: math.div(0.911, 2.9699999999999998 + 0.005 * __p-pow($e, 0.2 * $font-size));
   $exact-line-height-px: $font-size * $exact-line-height-factor;
   $remaining-px: $exact-line-height-px % 4;
 
@@ -78,7 +79,7 @@
   }
 
   $fitted-line-height-px: $exact-line-height-px - $remaining-px;
-  $fitted-line-height-factor: $fitted-line-height-px / $font-size;
+  $fitted-line-height-factor: math.div($fitted-line-height-px, $font-size);
 
   @return $fitted-line-height-factor;
 }
