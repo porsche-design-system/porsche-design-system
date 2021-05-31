@@ -4,6 +4,7 @@ import {
   forceFocused,
   forceFocusedHovered,
   forceHovered,
+  getBody,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -30,7 +31,7 @@ describe('Checkbox Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-checkbox-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
 
-        const elements = `
+        const getElements = (): string => `
           <p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
@@ -50,19 +51,7 @@ describe('Checkbox Wrapper', () => {
             <input type="checkbox" name="some-name" checked />
           </p-checkbox-wrapper>`;
 
-        const body = `
-            <div class="playground light hovered">
-              ${elements}
-            </div>
-            <div class="playground light focused">
-              ${elements}
-            </div>
-            <div class="playground focused-hovered">
-              ${elements}
-            </div>
-          `;
-
-        await setContentWithDesignSystem(page, body, { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
         await forceFocused(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');

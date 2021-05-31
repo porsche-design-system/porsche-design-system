@@ -4,6 +4,7 @@ import {
   forceFocused,
   forceFocusedHovered,
   forceHovered,
+  getThemedBody,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 import { Theme } from '@porsche-design-system/utilities';
@@ -31,7 +32,7 @@ describe('Link Social', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link-social { margin-right: 16px; margin-top: 16px; }</style>`;
 
-        const getElements = (theme: Theme = 'light') => `
+        const getElements = (theme: Theme = 'light'): string => `
           <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook"target="_blank" rel="nofollow noopener">Facebook</p-link-social>
           <p-link-social theme="${theme}" href="https://www.google.com/" icon="logo-google"target="_blank" rel="nofollow noopener">Google</p-link-social>
           <p-link-social theme="${theme}" href="https://www.instagram.com/" icon="logo-instagram"target="_blank" rel="nofollow noopener">Instagram</p-link-social>
@@ -43,27 +44,7 @@ describe('Link Social', () => {
           <p-link-social theme="${theme}" href="https://www.xing.com" icon="logo-xing"target="_blank" rel="nofollow noopener">XING</p-link-social>
           <p-link-social theme="${theme}" href="https://www.youtube.com" icon="logo-youtube"target="_blank" rel="nofollow noopener">Youtube</p-link-social>`;
 
-        const body = `
-          <div class="playground light hovered">
-           ${getElements()}
-          </div>
-          <div class="playground dark hovered">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused">
-            ${getElements('dark')}
-          </div>
-          <div class="playground light focused-hovered">
-            ${getElements()}
-          </div>
-          <div class="playground dark focused-hovered">
-            ${getElements('dark')}
-          </div>`;
-
-        await setContentWithDesignSystem(page, body, { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
 
         await forceHovered(page, '.hovered > p-link-social >>> a');
         await forceFocused(page, '.focused > p-link-social >>> a');
