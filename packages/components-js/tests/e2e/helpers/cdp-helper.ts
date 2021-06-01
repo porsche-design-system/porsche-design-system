@@ -25,24 +25,24 @@ export const getBody = (getElements: GetElements) => `
     ${getElements()}
   </div>`;
 
-export const getThemedBody = (getElements: GetThemedElements): string => `
+export const getThemedBody = (getThemedElements: GetThemedElements): string => `
   <div class="playground light hovered">
-    ${getElements()}
+    ${getThemedElements()}
   </div>
   <div class="playground dark hovered">
-    ${getElements('dark')}
+    ${getThemedElements('dark')}
   </div>
   <div class="playground light focused">
-    ${getElements()}
+    ${getThemedElements()}
   </div>
   <div class="playground dark focused">
-    ${getElements('dark')}
+    ${getThemedElements('dark')}
   </div>
   <div class="playground light focused-hovered">
-    ${getElements()}
+    ${getThemedElements()}
   </div>
   <div class="playground dark focused-hovered">
-    ${getElements('dark')}
+    ${getThemedElements('dark')}
   </div>`;
 
 export const generateGUID = (): string => {
@@ -81,7 +81,7 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
   }
 };
 
-const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
+export const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
   const selectorParts = selector.split('>>>');
   return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName: selectorParts[1]?.trim() };
 };

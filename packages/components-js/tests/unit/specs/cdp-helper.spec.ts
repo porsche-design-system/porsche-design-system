@@ -1,5 +1,12 @@
 import Protocol from 'devtools-protocol';
-import { findBackendNodeId, generateGUID, getBody, GetElements, getThemedBody } from '../../e2e/helpers/cdp-helper';
+import {
+  findBackendNodeId,
+  generateGUID,
+  getBody,
+  GetElements,
+  getThemedBody,
+  resolveSelector,
+} from '../../e2e/helpers/cdp-helper';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
@@ -54,6 +61,7 @@ describe('cdp-helper', () => {
       });
     });
   });
+
   describe('generateGUID()', () => {
     it('should generate different GUIDs', () => {
       const id1 = generateGUID();
@@ -105,6 +113,16 @@ describe('cdp-helper', () => {
   </div>`;
 
       expect(getThemedBody(getElements)).toBe(result);
+    });
+  });
+
+  describe('resolveSelector()', () => {
+    it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
+      expect(resolveSelector('abc dfg >>> hij')).toBe({ hostElementSelector: 'abc dfg', shadowRootNodeName: 'hij' });
+    });
+
+    it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
+      expect(resolveSelector('abc dfg')).toBe({ hostElementSelector: 'abc dfg', shadowRootNodeName: undefined });
     });
   });
 });
