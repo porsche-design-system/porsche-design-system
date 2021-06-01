@@ -1,15 +1,11 @@
-import { useEffect } from 'react';
-import { PButton, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const ModalPrefixedPage = (): JSX.Element => {
-  useEffect(() => {
-    document.body.style.height = '500px';
-  }, []);
-
   const style = `
     .playground {
       height: 500px;
       padding: 0;
+      transform: translate3d(0, 0, 0);
     }
   `;
 

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
       .playground {
         height: 500px;
         padding: 0;
+        transform: translate3d(0, 0, 0);
       }
     `,
   ],
@@ -50,16 +51,8 @@ import { Component } from '@angular/core';
         consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
         diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
         takimata sanctus est Lorem ipsum dolor sit amet.
-        <div>
-          <p-button>Confirm</p-button>
-          <p-button variant="tertiary">Cancel</p-button>
-        </div>
       </p-modal>
     </div>
   `,
 })
-export class ModalScrollableComponent {
-  constructor() {
-    document.body.style.height = '500px';
-  }
-}
+export class ModalScrollableComponent {}
