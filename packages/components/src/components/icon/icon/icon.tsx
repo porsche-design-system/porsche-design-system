@@ -36,6 +36,7 @@ export class Icon {
 
   private intersectionObserver?: IntersectionObserver;
   private lazyIconResolve: () => void;
+  private key = 0; // use unique random key to trick stencil cache
 
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
@@ -59,7 +60,7 @@ export class Icon {
 
     return (
       <Host>
-        <i class={iconClasses} innerHTML={this.svgContent} />
+        <i key={this.key++} class={iconClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }
