@@ -8,6 +8,7 @@ let visualRegressionOverviewTester: VisualRegressionTester;
 let visualRegressionGridTester: VisualRegressionTester;
 let visualRegressionMarque2xTester: VisualRegressionTester;
 let visualRegressionMarque3xTester: VisualRegressionTester;
+let visualRegressionStatesTester: VisualRegressionTester;
 
 const vrtTestOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -43,6 +44,17 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionTester;
+};
+
+export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
+  if (!visualRegressionStatesTester) {
+    visualRegressionStatesTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: [1000],
+    });
+  }
+
+  return visualRegressionStatesTester;
 };
 
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {

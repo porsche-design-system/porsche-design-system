@@ -1,6 +1,5 @@
-import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
+import { getVisualRegressionContentWrapperTester, getVisualRegressionStatesTester, testOptions } from '../helpers';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionStatesTester } from '../../../../components-js/tests/vrt/helpers';
 
 describe('Modal', () => {
   let vrt: VisualRegressionTester;
