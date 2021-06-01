@@ -11,11 +11,11 @@ import { Component } from '@angular/core';
     `,
   ],
   template: `
-    <div class="playground light" title="should show scrollable modal on light background">
+    <div class="playground light" title="should show fullscreen modal on light background">
       <p-modal
         [heading]="'Some Heading with a very long title across multiple lines'"
-        [open]="'true'"
-        [fullscreen]="{ base: true, s: false }"
+        [open]="true"
+        [fullscreen]="'true'"
       >
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -30,10 +30,6 @@ import { Component } from '@angular/core';
         consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
         diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
         takimata sanctus est Lorem ipsum dolor sit amet.
-        <div>
-          <p-button>Confirm</p-button>
-          <p-button variant="tertiary">Cancel</p-button>
-        </div>
       </p-modal>
     </div>
   `,
