@@ -20,10 +20,6 @@ export const ModalPrefixedPage = (): JSX.Element => {
         <PorscheDesignSystemProvider prefix="my-prefix">
           <PModal heading="Some Heading" open>
             Some Content
-            <div>
-              <PButton>Confirm</PButton>
-              <PButton variant="tertiary">Cancel</PButton>
-            </div>
           </PModal>
         </PorscheDesignSystemProvider>
       </div>

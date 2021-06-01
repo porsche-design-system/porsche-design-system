@@ -1,11 +1,11 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 
 describe('Modal', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
-    vrt = getVisualRegressionTester();
+    vrt = getVisualRegressionContentWrapperTester();
   });
 
   it('should have no visual regression for basic modal', async () => {
