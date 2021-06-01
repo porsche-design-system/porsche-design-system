@@ -1,11 +1,13 @@
 import {
   getBrowser,
+  getElementStyle,
   getLifecycleStatus,
   getProperty,
   removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -244,6 +246,23 @@ describe('icon', () => {
           expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
         });
       });
+    });
+
+    it('should keep svg when new lifecycle is triggered', async () => {
+      await initIcon({ name: 'highway' });
+
+      const host = await getHost();
+      // const icon = async () => await getIcon();
+      const iconContent = await getContent(await getIcon());
+
+      expect(await getContent(await getIcon())).not.toBe('');
+      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(0, 0, 0)');
+
+      await setProperty(host, 'color', 'notification-error');
+      await waitForStencilLifecycle(page);
+
+      expect(await getContent(await getIcon())).toBe(iconContent);
+      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(224, 0, 0)');
     });
   });
 });
