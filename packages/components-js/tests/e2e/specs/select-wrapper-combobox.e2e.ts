@@ -272,6 +272,7 @@ describe('select-wrapper combobox', () => {
     expect(visibleElementClasses).not.toContain('p-select-wrapper__fake-option--hidden');
 
     await page.keyboard.press('ArrowDown');
+    await waitForEventSerialization(page);
     await filterInput.press('Enter');
     await waitForEventSerialization(page);
     const value = await select.evaluate((el: HTMLSelectElement) => el.value);
