@@ -104,6 +104,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Fullscreen',
   },
   {
+    path: 'modal-fullscreen-breakpoint',
+    component: fromPages.ModalFullscreenBreakpointComponent,
+    name: 'Modal Fullscreen Breakpoint',
+  },
+  {
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
     name: 'Modal Prefixed',
