@@ -118,11 +118,11 @@ describe('cdp-helper', () => {
 
   describe('resolveSelector()', () => {
     it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
-      expect(resolveSelector('abc dfg >>> hij')).toBe({ hostElementSelector: 'abc dfg', shadowRootNodeName: 'hij' });
+      expect(resolveSelector('abc dfg >>> hij')).toEqual({ hostElementSelector: 'abc dfg', shadowRootNodeName: 'hij' });
     });
 
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
-      expect(resolveSelector('abc dfg')).toBe({ hostElementSelector: 'abc dfg', shadowRootNodeName: undefined });
+      expect(resolveSelector('abc dfg')).toEqual({ hostElementSelector: 'abc dfg', shadowRootNodeName: undefined });
     });
   });
 });
