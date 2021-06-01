@@ -59,7 +59,8 @@ export class Icon {
 
     return (
       <Host>
-        <i class={iconClasses} innerHTML={this.svgContent} />
+        {/* use unique random key to trick stencil cache */}
+        <i key={new Date().toISOString()} class={iconClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }
