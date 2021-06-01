@@ -1,15 +1,11 @@
-import { PModal, PButton } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
+import { PModal } from '@porsche-design-system/components-react';
 
 export const ModalFullscreenPage = (): JSX.Element => {
-  useEffect(() => {
-    document.body.style.height = '500px';
-  }, []);
-
   const style = `
     .playground {
       height: 500px;
       padding: 0;
+      transform: translate3d(0, 0, 0);
     }
   `;
 

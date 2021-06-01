@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
       .playground {
         height: 500px;
         padding: 0;
+        transform: translate3d(0, 0, 0);
       }
     `,
   ],
@@ -34,8 +35,4 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class ModalFullscreenComponent {
-  constructor() {
-    document.body.style.height = '500px';
-  }
-}
+export class ModalFullscreenComponent {}

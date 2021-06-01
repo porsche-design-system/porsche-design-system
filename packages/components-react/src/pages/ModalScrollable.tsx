@@ -1,15 +1,11 @@
-import { PModal, PButton } from '@porsche-design-system/components-react';
-import { useEffect } from 'react';
+import { PModal } from '@porsche-design-system/components-react';
 
 export const ModalScrollablePage = (): JSX.Element => {
-  useEffect(() => {
-    document.body.style.height = '500px';
-  }, []);
-
   const style = `
     .playground {
       height: 500px;
       padding: 0;
+      transform: translate3d(0, 0, 0);
     }
   `;
 
@@ -55,10 +51,6 @@ export const ModalScrollablePage = (): JSX.Element => {
           consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet.
-          <div>
-            <PButton>Confirm</PButton>
-            <PButton variant="tertiary">Cancel</PButton>
-          </div>
         </PModal>
       </div>
     </>
