@@ -1,4 +1,4 @@
-import { PModal, PButton } from '@porsche-design-system/components-react';
+import { PModal, PButton, PContentWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const ModalFullscreenBreakpointPage = (): JSX.Element => {
@@ -17,6 +17,9 @@ export const ModalFullscreenBreakpointPage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should show fullscreen breakpoint modal on light background">
+        <PContentWrapper>
+          <div style={{ background: 'deeppink', height: '100vh' }} />
+        </PContentWrapper>
         <PModal
           heading="Some Heading with a very long title across multiple lines"
           open
