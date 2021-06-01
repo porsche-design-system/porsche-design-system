@@ -14,12 +14,18 @@ describe('Modal', () => {
   });
 
   it('should have no visual regression for scrollable modal', async () => {
-    expect(await vrt.test('modal-scrollable', async () => {
-      await vrt.goTo('/modal-scrollable');
-      await vrt.getPage().evaluate(() => {
-        document.querySelector('p-modal').scrollBy(0, 5000);
-      });
-    },, testOptions)).toBeFalsy();
+    expect(
+      await vrt.test(
+        'modal-scrollable',
+        async () => {
+          await vrt.goTo('/modal-scrollable');
+          await vrt.getPage().evaluate(() => {
+            document.querySelector('p-modal').scrollBy(0, 5000);
+          });
+        },
+        testOptions
+      )
+    ).toBeFalsy();
   });
 
   it('should have no visual regression for prefixed modal', async () => {
