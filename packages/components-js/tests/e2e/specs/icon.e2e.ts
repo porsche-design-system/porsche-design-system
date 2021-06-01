@@ -1,11 +1,13 @@
 import {
   getBrowser,
+  getElementStyle,
   getLifecycleStatus,
   getProperty,
   removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -97,8 +99,7 @@ describe('icon', () => {
       await setSvgRequestInterceptor(page, []);
       await initIcon({ name: 'highway', isLazy: true });
 
-      const icon = await getIcon();
-      expect(await getContent(icon)).toContain('highway');
+      expect(await getContent(await getIcon())).toContain('highway');
     });
 
     it('should load icon if lazy attribute is set to false and icon is outside of viewport', async () => {
@@ -108,23 +109,21 @@ describe('icon', () => {
         `<div style="height:1000px"></div><p-icon lazy="false" name="information"></p-icon>`
       );
 
-      const icon = await getIcon();
-      expect(await getContent(icon)).toContain('information');
+      expect(await getContent(await getIcon())).toContain('information');
     });
 
     it('should load icon lazily if scrolled into viewport', async () => {
       await setSvgRequestInterceptor(page, []);
       await initIcon({ name: 'information', isLazy: true, isScrollable: true });
 
-      const icon = await getIcon();
-      expect(await getContent(icon)).not.toContain('information');
+      expect(await getContent(await getIcon())).not.toContain('information');
 
       await page.evaluate(() => {
         window.scrollTo(0, document.body.scrollHeight);
       });
       await waitForStencilLifecycle(page);
 
-      expect(await getContent(icon)).toContain('information');
+      expect(await getContent(await getIcon())).toContain('information');
     });
 
     initOptions.forEach((opts) => {
@@ -134,8 +133,7 @@ describe('icon', () => {
           // render with default icon "arrow-head-right"
           await initIcon(opts);
 
-          const icon = await getIcon();
-          expect(await getContent(icon)).toContain('arrow-head-right');
+          expect(await getContent(await getIcon())).toContain('arrow-head-right');
           expect(responseCounter).toEqual(1);
         });
 
@@ -154,16 +152,15 @@ describe('icon', () => {
           await setContentWithDesignSystem(page, `<p-icon${opts.isLazy ? ' lazy="true"' : ''}></p-icon>`, {
             waitUntil: 'networkidle2',
           });
-          const iconComponent = await getHost();
+          const host = await getHost();
 
           // change icon name to "question"
-          await setAttribute(iconComponent, 'name', 'question');
+          await setAttribute(host, 'name', 'question');
 
           // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
           await page.waitForTimeout(delay);
 
-          const icon = await getIcon();
-          expect(await getContent(icon)).toContain('question');
+          expect(await getContent(await getIcon())).toContain('question');
           expect(responseCounter).toEqual(2);
         });
 
@@ -178,19 +175,18 @@ describe('icon', () => {
           await setSvgRequestInterceptor(page, [0, 1000]);
           await initIcon({ ...opts, name: 'highway' });
 
-          const iconComponent = await getHost();
-          const icon = await getIcon();
-          expect(await getContent(icon)).toContain('highway');
+          const host = await getHost();
+          expect(await getContent(await getIcon())).toContain('highway');
 
-          await setAttribute(iconComponent, 'name', 'light');
+          await setAttribute(host, 'name', 'light');
           await waitForEventSerialization(page);
-          expect(await getContent(icon)).toEqual('');
+          expect(await getContent(await getIcon())).toEqual('');
 
           await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
 
           await waitForStencilLifecycle(page);
 
-          expect(await getContent(icon)).toContain('light');
+          expect(await getContent(await getIcon())).toContain('light');
           expect(responseCounter).toEqual(2);
         });
 
@@ -198,18 +194,17 @@ describe('icon', () => {
           await setSvgRequestInterceptor(page, [2000]);
           await initIcon({ ...opts, name: 'highway' });
 
-          const iconComponent = await getHost();
-          const icon = await getIcon();
-          expect(await getContent(icon)).toContain('highway');
+          const host = await getHost();
+          expect(await getContent(await getIcon())).toContain('highway');
 
-          await removeAttribute(iconComponent, 'name');
+          await removeAttribute(host, 'name');
 
           // check name attribute
-          const outerHTML = await iconComponent.evaluate((el) => el.outerHTML);
+          const outerHTML = await host.evaluate((el) => el.outerHTML);
           await waitForStencilLifecycle(page);
 
           expect(outerHTML).not.toContain('name=');
-          expect(await getContent(icon)).toContain('arrow-head-right');
+          expect(await getContent(await getIcon())).toContain('arrow-head-right');
           expect(responseCounter).toEqual(2);
         });
       });
@@ -244,6 +239,22 @@ describe('icon', () => {
           expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
         });
       });
+    });
+
+    it('should keep svg when new lifecycle is triggered', async () => {
+      await initIcon({ name: 'highway' });
+
+      const host = await getHost();
+      const iconContent = await getContent(await getIcon());
+
+      expect(await getContent(await getIcon())).not.toBe('');
+      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(0, 0, 0)');
+
+      await setProperty(host, 'color', 'notification-error');
+      await waitForStencilLifecycle(page);
+
+      expect(await getContent(await getIcon())).toBe(iconContent);
+      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(224, 0, 0)');
     });
   });
 });
