@@ -30,7 +30,7 @@ describe('Modal', () => {
   it('should have no visual regression for prefixed modal', async () => {
     const vrtSingleResolution = getVisualRegressionStatesTester();
     expect(
-      await vrtSingleResolution.test('modal-prefixed', () => vrt.goTo('/#modal-prefixed'), testOptions)
+      await vrtSingleResolution.test('modal-prefixed', () => vrtSingleResolution.goTo('/#modal-prefixed'), testOptions)
     ).toBeFalsy();
   });
 
