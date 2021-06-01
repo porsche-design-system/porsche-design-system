@@ -1,5 +1,6 @@
 import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
+import { getVisualRegressionStatesTester } from '../../../../components-js/tests/vrt/helpers';
 
 describe('Modal', () => {
   let vrt: VisualRegressionTester;
@@ -13,11 +14,19 @@ describe('Modal', () => {
   });
 
   it('should have no visual regression for scrollable modal', async () => {
-    expect(await vrt.test('modal-scrollable', () => vrt.goTo('/modal-scrollable'), testOptions)).toBeFalsy();
+    expect(await vrt.test('modal-scrollable', async () => {
+      await vrt.goTo('/modal-scrollable');
+      await vrt.getPage().evaluate(() => {
+        document.querySelector('p-modal').scrollBy(0, 5000);
+      });
+    },, testOptions)).toBeFalsy();
   });
 
   it('should have no visual regression for prefixed modal', async () => {
-    expect(await vrt.test('modal-prefixed', () => vrt.goTo('/modal-prefixed'), testOptions)).toBeFalsy();
+    const vrtSingleResolution = getVisualRegressionStatesTester();
+    expect(
+      await vrtSingleResolution.test('modal-prefixed', () => vrt.goTo('/modal-prefixed'), testOptions)
+    ).toBeFalsy();
   });
 
   it('should have no visual regression for fullscreen modal', async () => {
