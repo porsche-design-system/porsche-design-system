@@ -245,7 +245,6 @@ describe('icon', () => {
       await initIcon({ name: 'highway' });
 
       const host = await getHost();
-      // const icon = async () => await getIcon();
       const iconContent = await getContent(await getIcon());
 
       expect(await getContent(await getIcon())).not.toBe('');
