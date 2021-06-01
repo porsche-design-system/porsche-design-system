@@ -12,6 +12,9 @@ import { Component } from '@angular/core';
   ],
   template: `
     <div class="playground light" title="should show fullscreen modal on light background">
+      <p-content-wrapper>
+        <div style="background: deeppink; height: 100vh"></div>
+      </p-content-wrapper>
       <p-modal
         [heading]="'Some Heading with a very long title across multiple lines'"
         [open]="true"
