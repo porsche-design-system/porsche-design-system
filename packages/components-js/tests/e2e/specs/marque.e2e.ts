@@ -10,10 +10,11 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  getProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 describe('marque', () => {
   let page: Page;
@@ -47,6 +48,7 @@ describe('marque', () => {
     );
 
   const getHost = () => selectNode(page, 'p-marque');
+  const getSource = (): Promise<ElementHandle> => selectNode(page, 'p-marque >>> source');
   const getLink = () => selectNode(page, 'p-marque >>> a');
 
   const resolution1x = '@1x';
@@ -115,6 +117,25 @@ describe('marque', () => {
       beforeEach(async () => {
         await page.setCacheEnabled(false);
         await page.setViewport({ width: 1300, height: 300 });
+      });
+
+      it('should set correct srcSet', async () => {
+        await setContentWithTrademark();
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('initial size')
+          .toContain(fileNameMedium);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after first change')
+          .toContain(fileNameSmall);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after second change')
+          .toContain(fileNameMedium);
       });
 
       it('should request correct image for 1x resolution', async () => {
@@ -231,6 +252,25 @@ describe('marque', () => {
       beforeEach(async () => {
         await page.setCacheEnabled(false);
         await page.setViewport({ width: 1300, height: 300 });
+      });
+
+      it('should set correct srcSet', async () => {
+        await setContentWithoutTrademark();
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('initial size')
+          .toContain(fileNameMedium);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after first change')
+          .toContain(fileNameSmall);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after second change')
+          .toContain(fileNameMedium);
       });
 
       it('should request correct image for 1x resolution', async () => {
