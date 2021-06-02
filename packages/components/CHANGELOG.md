@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Margin of `Tabs Bar` within `Tabs` for Firefox and Safari
 - SVG of `Icon` is not removed after prop change, e.g. on color change
-– Fullscreen behavior of `Modal` on screens larger than 1760px
+- Fullscreen behavior of `Modal` on screens larger than 1760px
 
 ### [2.2.0] - 2021-05-19
 
