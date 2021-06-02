@@ -3,6 +3,12 @@
 
 $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
+$p-modal-margin: 7vh $p-content-wrapper-margin;
+$p-modal-margin-xl: 10vh $p-content-wrapper-margin-xl;
+$p-modal-margin-xxl: 10vh $p-content-wrapper-margin-xxl;
+$p-modal-min-width: p-px-to-rem(272px);
+$p-modal-max-width: $p-content-wrapper-max-width;
+
 .root {
   display: flex;
   flex-direction: column;
@@ -12,9 +18,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
   padding: p-px-to-rem(32px);
   min-width: $p-modal-min-width;
-  max-width: $p-content-wrapper-max-width;
+  max-width: $p-modal-max-width;
   min-height: auto;
-  margin: $p-content-wrapper-margin;
+  margin: $p-modal-margin;
 
   &--fullscreen-on {
     min-width: 100%;
@@ -26,9 +32,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('xs') {
     &--fullscreen-off-xs {
       min-width: $p-modal-min-width;
-      max-width: $p-content-wrapper-max-width;
+      max-width: $p-modal-max-width;
       min-height: auto;
-      margin: $p-content-wrapper-margin;
+      margin: $p-modal-margin;
     }
 
     &--fullscreen-on-xs {
@@ -42,9 +48,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('s') {
     &--fullscreen-off-s {
       min-width: $p-modal-min-width;
-      max-width: $p-content-wrapper-max-width;
+      max-width: $p-modal-max-width;
       min-height: auto;
-      margin: $p-content-wrapper-margin;
+      margin: $p-modal-margin;
     }
 
     &--fullscreen-on-s {
@@ -60,9 +66,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
     &--fullscreen-off-m {
       min-width: $p-modal-min-width;
-      max-width: $p-content-wrapper-max-width;
+      max-width: $p-modal-max-width;
       min-height: auto;
-      margin: $p-content-wrapper-margin;
+      margin: $p-modal-margin;
     }
 
     &--fullscreen-on-m {
@@ -76,9 +82,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('l') {
     &--fullscreen-off-l {
       min-width: $p-modal-min-width;
-      max-width: $p-content-wrapper-max-width;
+      max-width: $p-modal-max-width;
       min-height: auto;
-      margin: $p-content-wrapper-margin;
+      margin: $p-modal-margin;
     }
 
     &--fullscreen-on-l {
@@ -90,15 +96,14 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @include p-media-query('xl') {
-    margin: $p-content-wrapper-margin-xl; // because of content-wrapper's behavior
+    margin: $p-modal-margin-xl;
 
     &--fullscreen-off-xl {
       min-width: $p-modal-min-width;
-      max-width: $p-content-wrapper-max-width;
+      max-width: $p-modal-max-width;
       min-height: auto;
     }
 
-    // to be in sync with content-wrapper, would be nicer with JSS
     &--fullscreen-on-xl {
       min-width: 100%;
       max-width: none;
@@ -117,8 +122,8 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @include p-media-query('xxl') {
+    margin: $p-modal-margin-xxl;
     padding: p-px-to-rem(64px);
-    margin: $p-content-wrapper-margin-xxl;
 
     // to be in sync with content-wrapper, would be nicer with JSS
     &--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs),

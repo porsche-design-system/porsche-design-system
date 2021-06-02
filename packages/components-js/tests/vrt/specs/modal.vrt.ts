@@ -19,7 +19,7 @@ describe('Modal', () => {
         async () => {
           await vrt.goTo('/#modal-scrollable');
           await vrt.getPage().evaluate(() => {
-            document.querySelector('p-modal').scrollBy(0, 5000);
+            document.querySelector('p-modal').scrollTo(0, 10000);
           });
         },
         testOptions
