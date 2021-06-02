@@ -5,7 +5,6 @@ export const ModalScrollablePage = (): JSX.Element => {
     .playground {
       height: 500px;
       padding: 0;
-      transform: translate3d(0, 0, 0);
     }
   `;
 
