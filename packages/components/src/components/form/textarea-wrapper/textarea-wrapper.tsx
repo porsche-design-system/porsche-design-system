@@ -70,7 +70,7 @@ export class TextareaWrapper {
 
   public render(): JSX.Element {
     const { disabled } = this.textarea;
-    const labelClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--disabled']: disabled,
       [`root--${this.state}`]: this.state !== 'none',
@@ -83,7 +83,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={rootClasses}>
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}

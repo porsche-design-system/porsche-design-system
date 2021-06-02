@@ -66,12 +66,12 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--disabled']: this.input.disabled,
       [`root--${this.state}`]: this.state !== 'none',
     };
-    const labelTextClasses = {
+    const rootTextClasses = {
       ['root__text']: true,
       ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
     };
@@ -80,9 +80,9 @@ export class RadioButtonWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={rootClasses}>
           {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>

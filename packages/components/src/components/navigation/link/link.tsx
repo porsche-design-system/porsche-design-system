@@ -52,7 +52,7 @@ export class Link {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.variant}`]: this.variant !== 'secondary',
       ['root--theme-dark']: isDark(this.theme),
@@ -63,7 +63,7 @@ export class Link {
 
     return (
       <TagType
-        class={linkClasses}
+        class={rootClasses}
         {...(TagType === 'a' && {
           href: this.href,
           target: `${this.target}`,
