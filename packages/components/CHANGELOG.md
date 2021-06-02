@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.2.1-beta.1] - 2021-06-02
+
 #### Fixed
 - Margin of `Tabs Bar` within `Tabs` for Firefox and Safari
 - SVG of `Icon` is not removed after prop change, e.g. on color change
