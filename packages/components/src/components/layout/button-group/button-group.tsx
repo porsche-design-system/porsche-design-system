@@ -17,13 +17,13 @@ export class ButtonGroup {
   };
 
   public render(): JSX.Element {
-    const buttonGroupClasses = {
+    const rootClasses = {
       ['root']: true,
       ...mapBreakpointPropToClasses('root--direction', this.direction),
     };
 
     return (
-      <div class={buttonGroupClasses} role="group">
+      <div class={rootClasses} role="group">
         <slot />
       </div>
     );
