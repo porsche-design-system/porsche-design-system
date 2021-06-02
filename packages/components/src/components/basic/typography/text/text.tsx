@@ -60,7 +60,7 @@ export class Text {
     const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
-    const textClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--weight-${this.weight}`]: this.weight !== 'regular',
       [`root--align-${this.align}`]: this.align !== 'left',
@@ -71,7 +71,7 @@ export class Text {
     };
 
     return (
-      <TagType class={textClasses} ref={(el) => (this.textTag = el)}>
+      <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
         <slot />
       </TagType>
     );

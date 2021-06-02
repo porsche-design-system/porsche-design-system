@@ -75,7 +75,7 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
-    const containerClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'none',
       ['root--password']: this.isPassword,
@@ -93,7 +93,7 @@ export class TextFieldWrapper {
 
     return (
       <Host>
-        <div class={containerClasses}>
+        <div class={rootClasses}>
           <label class={labelClasses}>
             {isLabelVisible(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>

@@ -25,14 +25,14 @@ export class TextList {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
 
-    const textListClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
     };
 
     return (
       <Host nested={isNestedList}>
-        <TagType role="list" class={textListClasses}>
+        <TagType role="list" class={rootClasses}>
           <slot />
         </TagType>
       </Host>
