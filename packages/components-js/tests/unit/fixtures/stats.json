@@ -1,29 +1,29 @@
 {
-  "hash": "f52cdd85168202f32d60",
+  "hash": "0f2bf7fd5d018e543193",
   "version": "5.38.1",
-  "time": 2655,
-  "builtAt": 1622623975747,
+  "time": 2477,
+  "builtAt": 1622638805904,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js"
+      "porsche-design-system.v2.2.1-beta.1.6f15c413638d0132a97c.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
-      "size": 61988,
+      "name": "porsche-design-system.v2.2.1-beta.1.6f15c413638d0132a97c.js",
+      "size": 62037,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "b6ebe6c2b53469dbd9cf",
+        "contenthash": "6f15c413638d0132a97c",
         "javascriptModule": false,
         "minimized": true,
-        "size": 61988
+        "size": 62037
       },
       "chunkNames": [
         "main"
@@ -40,17 +40,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.select-wrapper.b792ab663aaaa1eab2be.js",
-      "size": 35240,
+      "name": "porsche-design-system.select-wrapper.adadcd26ee8cab3ad6f3.js",
+      "size": 35288,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "b792ab663aaaa1eab2be",
+        "contenthash": "adadcd26ee8cab3ad6f3",
         "javascriptModule": false,
         "minimized": true,
-        "size": 35240
+        "size": 35288
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -65,17 +65,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.6a37f635e21cf3696413.js",
-      "size": 18798,
+      "name": "porsche-design-system.radio-button-wrapper.49a5b41ffecc7b86d3f6.js",
+      "size": 18951,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "6a37f635e21cf3696413",
+        "contenthash": "49a5b41ffecc7b86d3f6",
         "javascriptModule": false,
         "minimized": true,
-        "size": 18798
+        "size": 18951
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -90,17 +90,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.0ed068b63a7d50a9ca5a.js",
-      "size": 16930,
+      "name": "porsche-design-system.button-pure.79960c996dc8a39a596c.js",
+      "size": 17014,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0ed068b63a7d50a9ca5a",
+        "contenthash": "79960c996dc8a39a596c",
         "javascriptModule": false,
         "minimized": true,
-        "size": 16930
+        "size": 17014
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -115,17 +115,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.997171f57dc2d6885f63.js",
-      "size": 16602,
+      "name": "porsche-design-system.link-pure.e9394663e5773112a5bf.js",
+      "size": 16686,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "997171f57dc2d6885f63",
+        "contenthash": "e9394663e5773112a5bf",
         "javascriptModule": false,
         "minimized": true,
-        "size": 16602
+        "size": 16686
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -140,17 +140,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.icon.353c44ac5ad1a407b9cf.js",
-      "size": 13983,
+      "name": "porsche-design-system.icon.946aeb570a9580ae2bfd.js",
+      "size": 13997,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "353c44ac5ad1a407b9cf",
+        "contenthash": "946aeb570a9580ae2bfd",
         "javascriptModule": false,
         "minimized": true,
-        "size": 13983
+        "size": 13997
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -165,17 +165,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.310a936466b0d83844c8.js",
-      "size": 12107,
+      "name": "porsche-design-system.tabs-bar.a9b51213b5acc40853ed.js",
+      "size": 12156,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "310a936466b0d83844c8",
+        "contenthash": "a9b51213b5acc40853ed",
         "javascriptModule": false,
         "minimized": true,
-        "size": 12107
+        "size": 12156
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -190,17 +190,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.8fcef703e00b29d78dab.js",
-      "size": 11379,
+      "name": "porsche-design-system.text-field-wrapper.5609fddc2d3c6f0692e9.js",
+      "size": 11637,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8fcef703e00b29d78dab",
+        "contenthash": "5609fddc2d3c6f0692e9",
         "javascriptModule": false,
         "minimized": true,
-        "size": 11379
+        "size": 11637
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -215,17 +215,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.e26977038676bba666d4.js",
-      "size": 9888,
+      "name": "porsche-design-system.button.8b7a5e9adf4ac39312ee.js",
+      "size": 10007,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "e26977038676bba666d4",
+        "contenthash": "8b7a5e9adf4ac39312ee",
         "javascriptModule": false,
         "minimized": true,
-        "size": 9888
+        "size": 10007
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -240,17 +240,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.909992cbb654929b235a.js",
-      "size": 9177,
+      "name": "porsche-design-system.link.2af28d1f8c81c680ae94.js",
+      "size": 9296,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "909992cbb654929b235a",
+        "contenthash": "2af28d1f8c81c680ae94",
         "javascriptModule": false,
         "minimized": true,
-        "size": 9177
+        "size": 9296
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -265,17 +265,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.17a2cbc5246a0611ab25.js",
-      "size": 8721,
+      "name": "porsche-design-system.textarea-wrapper.1d64d928bf6303cd16dd.js",
+      "size": 8944,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "17a2cbc5246a0611ab25",
+        "contenthash": "1d64d928bf6303cd16dd",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8721
+        "size": 8944
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -290,67 +290,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.c0720ecb3e8b9af2743c.js",
-      "size": 8463,
+      "name": "porsche-design-system.checkbox-wrapper.df202f839c61b146316b.js",
+      "size": 8599,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c0720ecb3e8b9af2743c",
+        "contenthash": "df202f839c61b146316b",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8463
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "pagination"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.switch.eb00321f0815b5b5d810.js",
-      "size": 8431,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "eb00321f0815b5b5d810",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 8431
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "switch"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.c1bd55a97018c0f09c16.js",
-      "size": 8411,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "c1bd55a97018c0f09c16",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 8411
+        "size": 8599
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -365,17 +315,67 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.d45d2ad1146eaf9f0b27.js",
-      "size": 8152,
+      "name": "porsche-design-system.pagination.dcc7d9530707105add51.js",
+      "size": 8512,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d45d2ad1146eaf9f0b27",
+        "contenthash": "dcc7d9530707105add51",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8152
+        "size": 8512
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "pagination"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.switch.ef155193f4843459b11e.js",
+      "size": 8437,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "ef155193f4843459b11e",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 8437
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "switch"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.link-social.7a7e44b8e3509a02daea.js",
+      "size": 8236,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "7a7e44b8e3509a02daea",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 8236
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -390,17 +390,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text.d07012cc253010a03a74.js",
-      "size": 7341,
+      "name": "porsche-design-system.text.c80c011a2b2930303c37.js",
+      "size": 7389,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d07012cc253010a03a74",
+        "contenthash": "c80c011a2b2930303c37",
         "javascriptModule": false,
         "minimized": true,
-        "size": 7341
+        "size": 7389
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -415,17 +415,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.c19860af6a0093b2011e.js",
-      "size": 7079,
+      "name": "porsche-design-system.modal.b5eeece434475faffa0c.js",
+      "size": 7093,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c19860af6a0093b2011e",
+        "contenthash": "b5eeece434475faffa0c",
         "javascriptModule": false,
         "minimized": true,
-        "size": 7079
+        "size": 7093
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -440,17 +440,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.headline.49d1aee9bd13d1e711b7.js",
-      "size": 6033,
+      "name": "porsche-design-system.headline.5cf0c38562d180632cc7.js",
+      "size": 6047,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "49d1aee9bd13d1e711b7",
+        "contenthash": "5cf0c38562d180632cc7",
         "javascriptModule": false,
         "minimized": true,
-        "size": 6033
+        "size": 6047
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -465,17 +465,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.75031c2020a9f9b00858.js",
-      "size": 5738,
+      "name": "porsche-design-system.banner.540a458750bfaa13e93b.js",
+      "size": 5786,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "75031c2020a9f9b00858",
+        "contenthash": "540a458750bfaa13e93b",
         "javascriptModule": false,
         "minimized": true,
-        "size": 5738
+        "size": 5786
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -490,17 +490,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-group.2f823cb35e4b26841dec.js",
-      "size": 4009,
+      "name": "porsche-design-system.button-group.19374e9d93cd25b054d9.js",
+      "size": 4023,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2f823cb35e4b26841dec",
+        "contenthash": "19374e9d93cd25b054d9",
         "javascriptModule": false,
         "minimized": true,
-        "size": 4009
+        "size": 4023
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -515,17 +515,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-list.13beb932696fbd92bea9.js",
-      "size": 3650,
+      "name": "porsche-design-system.text-list.a8a767b6897eadf63380.js",
+      "size": 3698,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "13beb932696fbd92bea9",
+        "contenthash": "a8a767b6897eadf63380",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3650
+        "size": 3698
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -540,17 +540,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.spinner.2e81c9966cca2ab5e7c5.js",
-      "size": 3615,
+      "name": "porsche-design-system.spinner.991f58cb5d1395f181d6.js",
+      "size": 3629,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2e81c9966cca2ab5e7c5",
+        "contenthash": "991f58cb5d1395f181d6",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3615
+        "size": 3629
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -565,17 +565,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.8eba701a96e3effce251.js",
-      "size": 3266,
+      "name": "porsche-design-system.marque.2d24078bc9b041362e63.js",
+      "size": 3280,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8eba701a96e3effce251",
+        "contenthash": "2d24078bc9b041362e63",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3266
+        "size": 3280
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -590,17 +590,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs.fe6d39e4fb21f201192f.js",
-      "size": 2380,
+      "name": "porsche-design-system.tabs.29ab65e3cfeb1b355edf.js",
+      "size": 2394,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "fe6d39e4fb21f201192f",
+        "contenthash": "29ab65e3cfeb1b355edf",
         "javascriptModule": false,
         "minimized": true,
-        "size": 2380
+        "size": 2394
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -615,17 +615,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.flex.fb6eab8123dbe532dcb3.js",
-      "size": 1996,
+      "name": "porsche-design-system.flex.05ec3d1ca207257a0fd1.js",
+      "size": 2010,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "fb6eab8123dbe532dcb3",
+        "contenthash": "05ec3d1ca207257a0fd1",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1996
+        "size": 2010
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -640,17 +640,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.grid.8ab5c06384b3a6c36202.js",
-      "size": 1897,
+      "name": "porsche-design-system.grid.d768eb2ab4e9d674c117.js",
+      "size": 1911,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8ab5c06384b3a6c36202",
+        "contenthash": "d768eb2ab4e9d674c117",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1897
+        "size": 1911
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -665,17 +665,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.divider.840c39a49fa1e1ef573b.js",
-      "size": 1860,
+      "name": "porsche-design-system.divider.9f48c2c17d010126652e.js",
+      "size": 1874,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "840c39a49fa1e1ef573b",
+        "contenthash": "9f48c2c17d010126652e",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1860
+        "size": 1874
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -690,17 +690,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.24236617c3725b10e9ed.js",
-      "size": 1809,
+      "name": "porsche-design-system.fieldset-wrapper.3d5903eaf57b4492b68f.js",
+      "size": 1823,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "24236617c3725b10e9ed",
+        "contenthash": "3d5903eaf57b4492b68f",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1809
+        "size": 1823
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -715,17 +715,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.content-wrapper.62061e6175a22055d59f.js",
-      "size": 1161,
+      "name": "porsche-design-system.content-wrapper.aad6f4d110181f92fb84.js",
+      "size": 1175,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "62061e6175a22055d59f",
+        "contenthash": "aad6f4d110181f92fb84",
         "javascriptModule": false,
         "minimized": true,
-        "size": 1161
+        "size": 1175
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -745,9 +745,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8339,
+      "size": 8373,
       "sizes": {
-        "javascript": 8339
+        "javascript": 8373
       },
       "names": [],
       "idHints": [],
@@ -755,10 +755,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.75031c2020a9f9b00858.js"
+        "porsche-design-system.banner.540a458750bfaa13e93b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "55fc97c1a6eb0397ec47",
+      "hash": "2315ac1dfcb70b980dd2",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -771,9 +771,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 6699,
+          "size": 6733,
           "sizes": {
-            "javascript": 6699
+            "javascript": 6733
           },
           "built": true,
           "codeGenerated": true,
@@ -2124,9 +2124,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 12685,
+      "size": 12790,
       "sizes": {
-        "javascript": 12685
+        "javascript": 12790
       },
       "names": [],
       "idHints": [],
@@ -2134,10 +2134,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.e26977038676bba666d4.js"
+        "porsche-design-system.button.8b7a5e9adf4ac39312ee.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "8049934106ce63527a60",
+      "hash": "5e88a79c0b5e325282ef",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -2642,9 +2642,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 10196,
+          "size": 10301,
           "sizes": {
-            "javascript": 10196
+            "javascript": 10301
           },
           "built": true,
           "codeGenerated": true,
@@ -3285,10 +3285,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-group.2f823cb35e4b26841dec.js"
+        "porsche-design-system.button-group.19374e9d93cd25b054d9.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0033ba9c9f48267da5d7",
+      "hash": "2da6a36696323b78923d",
       "childrenByOrder": {},
       "id": "button-group",
       "siblings": [],
@@ -3396,9 +3396,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 24518,
+      "size": 24588,
       "sizes": {
-        "javascript": 24518
+        "javascript": 24588
       },
       "names": [],
       "idHints": [],
@@ -3406,10 +3406,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.0ed068b63a7d50a9ca5a.js"
+        "porsche-design-system.button-pure.79960c996dc8a39a596c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "546c2cbac12d35883b01",
+      "hash": "cf184dacb6680dc26d2c",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -4087,9 +4087,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 16879,
+          "size": 16949,
           "sizes": {
-            "javascript": 16879
+            "javascript": 16949
           },
           "built": true,
           "codeGenerated": true,
@@ -4971,9 +4971,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11488,
+      "size": 11662,
       "sizes": {
-        "javascript": 11488
+        "javascript": 11662
       },
       "names": [],
       "idHints": [],
@@ -4981,10 +4981,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.c1bd55a97018c0f09c16.js"
+        "porsche-design-system.checkbox-wrapper.df202f839c61b146316b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fd72d92a2d1ab2d44847",
+      "hash": "73549fee0575a103de75",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -5216,9 +5216,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9559,
+          "size": 9733,
           "sizes": {
-            "javascript": 9559
+            "javascript": 9733
           },
           "built": true,
           "codeGenerated": true,
@@ -5744,10 +5744,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.content-wrapper.62061e6175a22055d59f.js"
+        "porsche-design-system.content-wrapper.aad6f4d110181f92fb84.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fd0075789311eb9e9b17",
+      "hash": "5f0080a6ad4b73d57bb0",
       "childrenByOrder": {},
       "id": "content-wrapper",
       "siblings": [],
@@ -6401,10 +6401,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.divider.840c39a49fa1e1ef573b.js"
+        "porsche-design-system.divider.9f48c2c17d010126652e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "87dc7519245386e14ff8",
+      "hash": "c647b08e659f8365925c",
       "childrenByOrder": {},
       "id": "divider",
       "siblings": [],
@@ -7058,10 +7058,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.24236617c3725b10e9ed.js"
+        "porsche-design-system.fieldset-wrapper.3d5903eaf57b4492b68f.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "2ef68b7f851dc4d25af1",
+      "hash": "438d3b1740ee8b4cf210",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -7179,10 +7179,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.flex.fb6eab8123dbe532dcb3.js"
+        "porsche-design-system.flex.05ec3d1ca207257a0fd1.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "15bcfa0a30b47a85baaa",
+      "hash": "6644631499c613388c5f",
       "childrenByOrder": {},
       "id": "flex",
       "siblings": [],
@@ -7301,10 +7301,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.grid.8ab5c06384b3a6c36202.js"
+        "porsche-design-system.grid.d768eb2ab4e9d674c117.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c65f8fdff1cdb417b239",
+      "hash": "16f5071af0747718f501",
       "childrenByOrder": {},
       "id": "grid",
       "siblings": [],
@@ -7723,10 +7723,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.headline.49d1aee9bd13d1e711b7.js"
+        "porsche-design-system.headline.5cf0c38562d180632cc7.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6bb79cac641315c7a5e6",
+      "hash": "58a142c772710a520506",
       "childrenByOrder": {},
       "id": "headline",
       "siblings": [],
@@ -8802,10 +8802,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.icon.353c44ac5ad1a407b9cf.js"
+        "porsche-design-system.icon.946aeb570a9580ae2bfd.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c268f3316912c1cc79de",
+      "hash": "b2fc8eb12a9d1f7f40df",
       "childrenByOrder": {},
       "id": "icon",
       "siblings": [],
@@ -9450,9 +9450,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 12336,
+      "size": 12441,
       "sizes": {
-        "javascript": 12336
+        "javascript": 12441
       },
       "names": [],
       "idHints": [],
@@ -9460,10 +9460,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.909992cbb654929b235a.js"
+        "porsche-design-system.link.2af28d1f8c81c680ae94.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "46d43c7871557bfe3ae0",
+      "hash": "318e157e50a26c1b9b18",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -9779,9 +9779,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9412,
+          "size": 9517,
           "sizes": {
-            "javascript": 9412
+            "javascript": 9517
           },
           "built": true,
           "codeGenerated": true,
@@ -10833,9 +10833,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 24520,
+      "size": 24590,
       "sizes": {
-        "javascript": 24520
+        "javascript": 24590
       },
       "names": [],
       "idHints": [],
@@ -10843,10 +10843,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.997171f57dc2d6885f63.js"
+        "porsche-design-system.link-pure.e9394663e5773112a5bf.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "5148a4eb081798f6a9de",
+      "hash": "dea9a48750826efaf374",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -11335,9 +11335,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 16446,
+          "size": 16516,
           "sizes": {
-            "javascript": 16446
+            "javascript": 16516
           },
           "built": true,
           "codeGenerated": true,
@@ -12640,9 +12640,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11069,
+      "size": 11139,
       "sizes": {
-        "javascript": 11069
+        "javascript": 11139
       },
       "names": [],
       "idHints": [],
@@ -12650,10 +12650,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.d45d2ad1146eaf9f0b27.js"
+        "porsche-design-system.link-social.7a7e44b8e3509a02daea.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "0e1d7e3664729736c01b",
+      "hash": "398b0b7e3aa098c4c613",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -12969,9 +12969,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 8145,
+          "size": 8215,
           "sizes": {
-            "javascript": 8145
+            "javascript": 8215
           },
           "built": true,
           "codeGenerated": true,
@@ -14023,10 +14023,10 @@
       "initial": true,
       "entry": true,
       "recorded": false,
-      "size": 166273,
+      "size": 166301,
       "sizes": {
-        "javascript": 159290,
-        "runtime": 6983
+        "javascript": 159297,
+        "runtime": 7004
       },
       "names": [
         "main"
@@ -14036,10 +14036,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js"
+        "porsche-design-system.v2.2.1-beta.1.6f15c413638d0132a97c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "43c27164c8a3a9b0f477",
+      "hash": "fcdfbc562dc6a4df75e7",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -14196,35 +14196,35 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "1:0-59",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "7:19-36",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14234,11 +14234,11 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "2:0-76",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14248,11 +14248,11 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "8:11-25",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -14262,7 +14262,7 @@
               "explanation": "",
               "userRequest": "./jss-1faf5940.js",
               "loc": "12:9-22",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
@@ -14322,11 +14322,11 @@
               "resolvedModuleId": 913
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "module": "../components/dist/esm/app-globals-63ef2fa8.js",
-              "moduleName": "../components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "module": "../components/dist/esm/app-globals-115e7397.js",
+              "moduleName": "../components/dist/esm/app-globals-115e7397.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
@@ -14336,11 +14336,11 @@
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "module": "../components/dist/esm/app-globals-63ef2fa8.js",
-              "moduleName": "../components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "module": "../components/dist/esm/app-globals-115e7397.js",
+              "moduleName": "../components/dist/esm/app-globals-115e7397.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
@@ -22071,7 +22071,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22081,11 +22081,11 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "4:0-60",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
-              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+              "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
               "module": "./projects/components-wrapper/src/index.js + 4 modules",
               "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -22095,7 +22095,7 @@
               "explanation": "",
               "userRequest": "./ssr-handling-e00a3462.js",
               "loc": "7:7-16",
-              "moduleId": 369,
+              "moduleId": 453,
               "resolvedModuleId": null
             },
             {
@@ -22224,15 +22224,15 @@
           "type": "module",
           "moduleType": "javascript/esm",
           "layer": null,
-          "size": 8800,
+          "size": 8807,
           "sizes": {
-            "javascript": 8800
+            "javascript": 8807
           },
           "built": true,
           "codeGenerated": true,
           "buildTimeExecuted": false,
           "cached": false,
-          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "name": "./projects/components-wrapper/src/index.js + 4 modules",
           "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
           "index": 0,
@@ -22246,7 +22246,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 369,
+          "id": 453,
           "chunks": [
             "main"
           ],
@@ -22530,17 +22530,17 @@
               "type": "module",
               "moduleType": "javascript/auto",
               "layer": null,
-              "size": 1571,
+              "size": 1578,
               "sizes": {
-                "javascript": 1571
+                "javascript": 1578
               },
               "built": true,
               "codeGenerated": false,
               "buildTimeExecuted": false,
               "cached": false,
-              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-              "name": "../components/dist/esm/app-globals-63ef2fa8.js",
-              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
+              "identifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+              "name": "../components/dist/esm/app-globals-115e7397.js",
+              "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
               "index": 4,
               "preOrderIndex": 4,
               "index2": 2,
@@ -22580,7 +22580,7 @@
                   "type": "harmony side effect evaluation",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-63ef2fa8.js",
+                  "userRequest": "./app-globals-115e7397.js",
                   "loc": "3:0-63",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -22594,7 +22594,7 @@
                   "type": "harmony import specifier",
                   "active": true,
                   "explanation": "",
-                  "userRequest": "./app-globals-63ef2fa8.js",
+                  "userRequest": "./app-globals-115e7397.js",
                   "loc": "11:2-15",
                   "moduleId": null,
                   "resolvedModuleId": null
@@ -22855,9 +22855,9 @@
           "type": "module",
           "moduleType": "runtime",
           "layer": null,
-          "size": 3117,
+          "size": 3131,
           "sizes": {
-            "runtime": 3117
+            "runtime": 3131
           },
           "built": false,
           "codeGenerated": true,
@@ -22891,9 +22891,9 @@
           "type": "module",
           "moduleType": "runtime",
           "layer": null,
-          "size": 1547,
+          "size": 1554,
           "sizes": {
-            "runtime": 1547
+            "runtime": 1554
           },
           "built": false,
           "codeGenerated": true,
@@ -23021,10 +23021,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.8eba701a96e3effce251.js"
+        "porsche-design-system.marque.2d24078bc9b041362e63.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "cfd05a183e3aa2e46dbe",
+      "hash": "5a4c576babc069eaf90e",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23446,10 +23446,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.c19860af6a0093b2011e.js"
+        "porsche-design-system.modal.b5eeece434475faffa0c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "1e34da2b2fa2a5660e89",
+      "hash": "ccefcf21b598efc711c6",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -23691,9 +23691,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 20555,
+      "size": 20590,
       "sizes": {
-        "javascript": 20555
+        "javascript": 20590
       },
       "names": [],
       "idHints": [],
@@ -23701,10 +23701,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.c0720ecb3e8b9af2743c.js"
+        "porsche-design-system.pagination.dcc7d9530707105add51.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a5de9647c8f944a9eed5",
+      "hash": "bbe9ca80ece9ccc57fb3",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -24193,9 +24193,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 14994,
+          "size": 15029,
           "sizes": {
-            "javascript": 14994
+            "javascript": 15029
           },
           "built": true,
           "codeGenerated": true,
@@ -24826,9 +24826,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 22002,
+      "size": 22141,
       "sizes": {
-        "javascript": 22002
+        "javascript": 22141
       },
       "names": [],
       "idHints": [],
@@ -24836,10 +24836,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.6a37f635e21cf3696413.js"
+        "porsche-design-system.radio-button-wrapper.49a5b41ffecc7b86d3f6.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "1fe98d65cf71b0ae27be",
+      "hash": "a612d20ca4ca4df73110",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -25071,9 +25071,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 20073,
+          "size": 20212,
           "sizes": {
-            "javascript": 20073
+            "javascript": 20212
           },
           "built": true,
           "codeGenerated": true,
@@ -25589,9 +25589,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 45192,
+      "size": 45226,
       "sizes": {
-        "javascript": 45192
+        "javascript": 45226
       },
       "names": [],
       "idHints": [],
@@ -25599,10 +25599,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.select-wrapper.b792ab663aaaa1eab2be.js"
+        "porsche-design-system.select-wrapper.adadcd26ee8cab3ad6f3.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "76a7fcccd78b3d0b0db7",
+      "hash": "58ad3477b0ba378163da",
       "childrenByOrder": {},
       "id": "select-wrapper",
       "siblings": [],
@@ -25967,9 +25967,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 42608,
+          "size": 42642,
           "sizes": {
-            "javascript": 42608
+            "javascript": 42642
           },
           "built": true,
           "codeGenerated": true,
@@ -27032,10 +27032,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.spinner.2e81c9966cca2ab5e7c5.js"
+        "porsche-design-system.spinner.991f58cb5d1395f181d6.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a7ec842ba8f362298cd9",
+      "hash": "aaa9b9e966fbd04a70f4",
       "childrenByOrder": {},
       "id": "spinner",
       "siblings": [],
@@ -27679,9 +27679,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11193,
+      "size": 11185,
       "sizes": {
-        "javascript": 11193
+        "javascript": 11185
       },
       "names": [],
       "idHints": [],
@@ -27689,10 +27689,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.switch.eb00321f0815b5b5d810.js"
+        "porsche-design-system.switch.ef155193f4843459b11e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6152983f9952dbe9d7b9",
+      "hash": "32d0c6546886b62bc7a4",
       "childrenByOrder": {},
       "id": "switch",
       "siblings": [],
@@ -28197,9 +28197,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 8787,
+          "size": 8779,
           "sizes": {
-            "javascript": 8787
+            "javascript": 8779
           },
           "built": true,
           "codeGenerated": true,
@@ -28304,10 +28304,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs.fe6d39e4fb21f201192f.js"
+        "porsche-design-system.tabs.29ab65e3cfeb1b355edf.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "1e8fec356822234ebf8c",
+      "hash": "e63c5a2e385b1d79762f",
       "childrenByOrder": {},
       "id": "tabs",
       "siblings": [],
@@ -28416,9 +28416,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 20965,
+      "size": 21000,
       "sizes": {
-        "javascript": 20965
+        "javascript": 21000
       },
       "names": [],
       "idHints": [],
@@ -28426,10 +28426,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.310a936466b0d83844c8.js"
+        "porsche-design-system.tabs-bar.a9b51213b5acc40853ed.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "81ba9efaefc4f2ace841",
+      "hash": "2f655962bb8b8423c5f8",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -28442,9 +28442,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 20823,
+          "size": 20858,
           "sizes": {
-            "javascript": 20823
+            "javascript": 20858
           },
           "built": true,
           "codeGenerated": true,
@@ -29373,9 +29373,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 14018,
+      "size": 14052,
       "sizes": {
-        "javascript": 14018
+        "javascript": 14052
       },
       "names": [],
       "idHints": [],
@@ -29383,10 +29383,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text.d07012cc253010a03a74.js"
+        "porsche-design-system.text.c80c011a2b2930303c37.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "fde050ec73714b4301df",
+      "hash": "5f75f284b8085b6d2890",
       "childrenByOrder": {},
       "id": "text",
       "siblings": [],
@@ -29572,9 +29572,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 7287,
+          "size": 7321,
           "sizes": {
-            "javascript": 7287
+            "javascript": 7321
           },
           "built": true,
           "codeGenerated": true,
@@ -30876,9 +30876,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 15430,
+      "size": 15674,
       "sizes": {
-        "javascript": 15430
+        "javascript": 15674
       },
       "names": [],
       "idHints": [],
@@ -30886,10 +30886,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.8fcef703e00b29d78dab.js"
+        "porsche-design-system.text-field-wrapper.5609fddc2d3c6f0692e9.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "f9d09b81aef2a55f3a4b",
+      "hash": "eb220132025b285d20e2",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -31310,9 +31310,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 12438,
+          "size": 12682,
           "sizes": {
-            "javascript": 12438
+            "javascript": 12682
           },
           "built": true,
           "codeGenerated": true,
@@ -31829,9 +31829,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 6766,
+      "size": 6800,
       "sizes": {
-        "javascript": 6766
+        "javascript": 6800
       },
       "names": [],
       "idHints": [],
@@ -31839,10 +31839,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-list.13beb932696fbd92bea9.js"
+        "porsche-design-system.text-list.a8a767b6897eadf63380.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "2d6ddb4247acb3bba0ec",
+      "hash": "3e4685585f7f06b8982e",
       "childrenByOrder": {},
       "id": "text-list",
       "siblings": [],
@@ -31855,9 +31855,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 5126,
+          "size": 5160,
           "sizes": {
-            "javascript": 5126
+            "javascript": 5160
           },
           "built": true,
           "codeGenerated": true,
@@ -33209,9 +33209,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11696,
+      "size": 11905,
       "sizes": {
-        "javascript": 11696
+        "javascript": 11905
       },
       "names": [],
       "idHints": [],
@@ -33219,10 +33219,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.17a2cbc5246a0611ab25.js"
+        "porsche-design-system.textarea-wrapper.1d64d928bf6303cd16dd.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "8f2edc0dd5e7add595d8",
+      "hash": "d3b352570fdb9082d789",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -33454,9 +33454,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9767,
+          "size": 9976,
           "sizes": {
-            "javascript": 9767
+            "javascript": 9976
           },
           "built": true,
           "codeGenerated": true,
@@ -33973,15 +33973,15 @@
       "type": "module",
       "moduleType": "javascript/esm",
       "layer": null,
-      "size": 8800,
+      "size": 8807,
       "sizes": {
-        "javascript": 8800
+        "javascript": 8807
       },
       "built": true,
       "codeGenerated": true,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+      "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
       "name": "./projects/components-wrapper/src/index.js + 4 modules",
       "nameForCondition": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
       "index": 0,
@@ -33994,7 +33994,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 369,
+      "id": 453,
       "chunks": [
         "main"
       ],
@@ -34275,17 +34275,17 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1571,
+          "size": 1578,
           "sizes": {
-            "javascript": 1571
+            "javascript": 1578
           },
           "built": true,
           "codeGenerated": false,
           "buildTimeExecuted": false,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "name": "../components/dist/esm/app-globals-63ef2fa8.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "name": "../components/dist/esm/app-globals-115e7397.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
           "index": 4,
           "preOrderIndex": 4,
           "index2": 2,
@@ -34324,7 +34324,7 @@
               "type": "harmony side effect evaluation",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-63ef2fa8.js",
+              "userRequest": "./app-globals-115e7397.js",
               "loc": "3:0-63",
               "moduleId": null,
               "resolvedModuleId": null
@@ -34338,7 +34338,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./app-globals-63ef2fa8.js",
+              "userRequest": "./app-globals-115e7397.js",
               "loc": "11:2-15",
               "moduleId": null,
               "resolvedModuleId": null
@@ -34685,7 +34685,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -34695,11 +34695,11 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "2:0-95",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -34709,7 +34709,7 @@
           "explanation": "",
           "userRequest": "@porsche-design-system/components-manager-core",
           "loc": "4:0-29",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         }
       ],
@@ -34770,35 +34770,35 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "1:0-59",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "7:19-36",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34808,11 +34808,11 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "2:0-76",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34822,11 +34822,11 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "8:11-25",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -34836,7 +34836,7 @@
           "explanation": "",
           "userRequest": "./jss-1faf5940.js",
           "loc": "12:9-22",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
@@ -34896,11 +34896,11 @@
           "resolvedModuleId": 913
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "module": "../components/dist/esm/app-globals-63ef2fa8.js",
-          "moduleName": "../components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "module": "../components/dist/esm/app-globals-115e7397.js",
+          "moduleName": "../components/dist/esm/app-globals-115e7397.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
@@ -34910,11 +34910,11 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "module": "../components/dist/esm/app-globals-63ef2fa8.js",
-          "moduleName": "../components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-          "resolvedModule": "../components/dist/esm/app-globals-63ef2fa8.js",
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "module": "../components/dist/esm/app-globals-115e7397.js",
+          "moduleName": "../components/dist/esm/app-globals-115e7397.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+          "resolvedModule": "../components/dist/esm/app-globals-115e7397.js",
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
@@ -42601,17 +42601,17 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 1571,
+      "size": 1578,
       "sizes": {
-        "javascript": 1571
+        "javascript": 1578
       },
       "built": true,
       "codeGenerated": false,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
-      "name": "../components/dist/esm/app-globals-63ef2fa8.js",
-      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-63ef2fa8.js",
+      "identifier": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
+      "name": "../components/dist/esm/app-globals-115e7397.js",
+      "nameForCondition": "/github/workspace/packages/components/dist/esm/app-globals-115e7397.js",
       "index": 4,
       "preOrderIndex": 4,
       "index2": 2,
@@ -42650,7 +42650,7 @@
           "type": "harmony side effect evaluation",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-63ef2fa8.js",
+          "userRequest": "./app-globals-115e7397.js",
           "loc": "3:0-63",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42664,7 +42664,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./app-globals-63ef2fa8.js",
+          "userRequest": "./app-globals-115e7397.js",
           "loc": "11:2-15",
           "moduleId": null,
           "resolvedModuleId": null
@@ -42728,7 +42728,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42738,11 +42738,11 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "4:0-60",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/loader-cleaned.js",
@@ -42752,7 +42752,7 @@
           "explanation": "",
           "userRequest": "./ssr-handling-e00a3462.js",
           "loc": "7:7-16",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
@@ -43136,7 +43136,7 @@
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43146,11 +43146,11 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "1:0-41",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         },
         {
-          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|ba3e4a4c226242a630c0964e82e82c35",
+          "moduleIdentifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js|d420867e85624450b1c9d1ca6b5bfd87",
           "module": "./projects/components-wrapper/src/index.js + 4 modules",
           "moduleName": "./projects/components-wrapper/src/index.js + 4 modules",
           "resolvedModuleIdentifier": "/github/workspace/packages/components-js/projects/components-manager-core/dist/services/library-handler.js",
@@ -43160,7 +43160,7 @@
           "explanation": "",
           "userRequest": "./add-script",
           "loc": "11:8-17",
-          "moduleId": 369,
+          "moduleId": 453,
           "resolvedModuleId": null
         }
       ],
@@ -43363,9 +43363,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 6699,
+      "size": 6733,
       "sizes": {
-        "javascript": 6699
+        "javascript": 6733
       },
       "built": true,
       "codeGenerated": true,
@@ -43528,9 +43528,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 16879,
+      "size": 16949,
       "sizes": {
-        "javascript": 16879
+        "javascript": 16949
       },
       "built": true,
       "codeGenerated": true,
@@ -43613,9 +43613,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 10196,
+      "size": 10301,
       "sizes": {
-        "javascript": 10196
+        "javascript": 10301
       },
       "built": true,
       "codeGenerated": true,
@@ -43697,9 +43697,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9559,
+      "size": 9733,
       "sizes": {
-        "javascript": 9559
+        "javascript": 9733
       },
       "built": true,
       "codeGenerated": true,
@@ -44356,9 +44356,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 16446,
+      "size": 16516,
       "sizes": {
-        "javascript": 16446
+        "javascript": 16516
       },
       "built": true,
       "codeGenerated": true,
@@ -44441,9 +44441,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 8145,
+      "size": 8215,
       "sizes": {
-        "javascript": 8145
+        "javascript": 8215
       },
       "built": true,
       "codeGenerated": true,
@@ -44525,9 +44525,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9412,
+      "size": 9517,
       "sizes": {
-        "javascript": 9412
+        "javascript": 9517
       },
       "built": true,
       "codeGenerated": true,
@@ -44773,9 +44773,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 14994,
+      "size": 15029,
       "sizes": {
-        "javascript": 14994
+        "javascript": 15029
       },
       "built": true,
       "codeGenerated": true,
@@ -44857,9 +44857,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 20073,
+      "size": 20212,
       "sizes": {
-        "javascript": 20073
+        "javascript": 20212
       },
       "built": true,
       "codeGenerated": true,
@@ -44940,9 +44940,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 42608,
+      "size": 42642,
       "sizes": {
-        "javascript": 42608
+        "javascript": 42642
       },
       "built": true,
       "codeGenerated": true,
@@ -45107,9 +45107,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 8787,
+      "size": 8779,
       "sizes": {
-        "javascript": 8787
+        "javascript": 8779
       },
       "built": true,
       "codeGenerated": true,
@@ -45190,9 +45190,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 20823,
+      "size": 20858,
       "sizes": {
-        "javascript": 20823
+        "javascript": 20858
       },
       "built": true,
       "codeGenerated": true,
@@ -45355,9 +45355,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 12438,
+      "size": 12682,
       "sizes": {
-        "javascript": 12438
+        "javascript": 12682
       },
       "built": true,
       "codeGenerated": true,
@@ -45439,9 +45439,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 5126,
+      "size": 5160,
       "sizes": {
-        "javascript": 5126
+        "javascript": 5160
       },
       "built": true,
       "codeGenerated": true,
@@ -45524,9 +45524,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 7287,
+      "size": 7321,
       "sizes": {
-        "javascript": 7287
+        "javascript": 7321
       },
       "built": true,
       "codeGenerated": true,
@@ -45608,9 +45608,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9767,
+      "size": 9976,
       "sizes": {
-        "javascript": 9767
+        "javascript": 9976
       },
       "built": true,
       "codeGenerated": true,
@@ -48446,9 +48446,9 @@
       "type": "module",
       "moduleType": "runtime",
       "layer": null,
-      "size": 3117,
+      "size": 3131,
       "sizes": {
-        "runtime": 3117
+        "runtime": 3131
       },
       "built": false,
       "codeGenerated": true,
@@ -48481,9 +48481,9 @@
       "type": "module",
       "moduleType": "runtime",
       "layer": null,
-      "size": 1547,
+      "size": 1554,
       "sizes": {
-        "runtime": 1547
+        "runtime": 1554
       },
       "built": false,
       "codeGenerated": true,
@@ -48591,12 +48591,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
-          "size": 61988
+          "name": "porsche-design-system.v2.2.1-beta.1.6f15c413638d0132a97c.js",
+          "size": 62037
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 61988,
+      "assetsSize": 62037,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -48613,12 +48613,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
-          "size": 61988
+          "name": "porsche-design-system.v2.2.1-beta.1.6f15c413638d0132a97c.js",
+          "size": 62037
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 61988,
+      "assetsSize": 62037,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
