@@ -8,6 +8,7 @@ let visualRegressionOverviewTester: VisualRegressionTester;
 let visualRegressionGridTester: VisualRegressionTester;
 let visualRegressionMarque2xTester: VisualRegressionTester;
 let visualRegressionMarque3xTester: VisualRegressionTester;
+let visualRegressionStatesTester: VisualRegressionTester;
 
 const vrtTestOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -21,8 +22,6 @@ const vrtTestOptions: VisualRegressionTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
-// TODO: remove @ts-ignore when https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
-//@ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 beforeAll(async () => {
@@ -43,6 +42,17 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionTester;
+};
+
+export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
+  if (!visualRegressionStatesTester) {
+    visualRegressionStatesTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: [1000],
+    });
+  }
+
+  return visualRegressionStatesTester;
 };
 
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {

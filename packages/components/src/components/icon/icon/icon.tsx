@@ -51,7 +51,7 @@ export class Icon {
   }
 
   public render(): JSX.Element {
-    const iconClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--size-${this.size}`]: this.size !== 'small',
       [`root--color-${this.color}`]: this.color !== 'default',
@@ -60,7 +60,7 @@ export class Icon {
 
     return (
       <Host>
-        <i key={this.key++} class={iconClasses} innerHTML={this.svgContent} />
+        <i key={this.key++} class={rootClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }

@@ -19,6 +19,7 @@ export * from './LinkSocial';
 export * from './Marque';
 export * from './ModalBasic';
 export * from './ModalFullscreen';
+export * from './ModalFullscreenBreakpoint';
 export * from './ModalPrefixed';
 export * from './ModalScrollable';
 export * from './Overview';
