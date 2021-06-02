@@ -106,6 +106,14 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
       min-height: 100%;
       margin: 0;
     }
+
+    // to be in sync with content-wrapper, would be nicer with JSS
+    &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s),
+    &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m),
+    &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l),
+    &--fullscreen-on-l:not(&--fullscreen-off-xl) {
+      margin: 0;
+    }
   }
 
   @include p-media-query('xxl') {
