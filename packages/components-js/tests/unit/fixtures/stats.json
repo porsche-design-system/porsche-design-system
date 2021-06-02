@@ -1,26 +1,26 @@
 {
-  "hash": "eb55036db1cde135d338",
+  "hash": "f52cdd85168202f32d60",
   "version": "5.38.1",
-  "time": 3345,
-  "builtAt": 1622619025362,
+  "time": 2655,
+  "builtAt": 1622623975747,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.0.a13e55531ffdba08a113.js"
+      "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.0.a13e55531ffdba08a113.js",
+      "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
       "size": 61988,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a13e55531ffdba08a113",
+        "contenthash": "b6ebe6c2b53469dbd9cf",
         "javascriptModule": false,
         "minimized": true,
         "size": 61988
@@ -415,17 +415,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.8650ccfac52fabf3bc47.js",
-      "size": 6683,
+      "name": "porsche-design-system.modal.c19860af6a0093b2011e.js",
+      "size": 7079,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8650ccfac52fabf3bc47",
+        "contenthash": "c19860af6a0093b2011e",
         "javascriptModule": false,
         "minimized": true,
-        "size": 6683
+        "size": 7079
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -14036,10 +14036,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.0.a13e55531ffdba08a113.js"
+        "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "6a263c9798c50de32036",
+      "hash": "43c27164c8a3a9b0f477",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -23436,9 +23436,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 10166,
+      "size": 10562,
       "sizes": {
-        "javascript": 10166
+        "javascript": 10562
       },
       "names": [],
       "idHints": [],
@@ -23446,10 +23446,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.8650ccfac52fabf3bc47.js"
+        "porsche-design-system.modal.c19860af6a0093b2011e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "862550014bde91e6de0a",
+      "hash": "1e34da2b2fa2a5660e89",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -23595,9 +23595,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9594,
+          "size": 9990,
           "sizes": {
-            "javascript": 9594
+            "javascript": 9990
           },
           "built": true,
           "codeGenerated": true,
@@ -44691,9 +44691,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9594,
+      "size": 9990,
       "sizes": {
-        "javascript": 9594
+        "javascript": 9990
       },
       "built": true,
       "codeGenerated": true,
@@ -48591,7 +48591,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0.a13e55531ffdba08a113.js",
+          "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
           "size": 61988
         }
       ],
@@ -48613,7 +48613,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.0.a13e55531ffdba08a113.js",
+          "name": "porsche-design-system.v2.2.0.b6ebe6c2b53469dbd9cf.js",
           "size": 61988
         }
       ],
