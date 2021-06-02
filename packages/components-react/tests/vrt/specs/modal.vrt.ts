@@ -47,7 +47,7 @@ describe('Modal', () => {
       await vrt.test(
         'modal-fullscreen-breakpoint-m',
         async () => {
-          await vrt.goTo('/#modal-fullscreen-breakpoint');
+          await vrt.goTo('/modal-fullscreen-breakpoint');
           await vrt.getPage().evaluate(() => {
             (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
           });
