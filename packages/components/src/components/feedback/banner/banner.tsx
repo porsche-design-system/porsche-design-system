@@ -52,7 +52,7 @@ export class Banner {
   }
 
   public render(): JSX.Element {
-    const bannerClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'neutral',
       ['root--theme-dark']: isDark(this.theme),
@@ -69,7 +69,7 @@ export class Banner {
         aria-labelledby={bannerLabelId}
         aria-describedby={bannerDescriptionId}
       >
-        <div class={bannerClasses}>
+        <div class={rootClasses}>
           {this.state !== 'neutral' && (
             <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
           )}

@@ -26,14 +26,14 @@ export class Spinner {
   }
 
   public render(): JSX.Element {
-    const spinnerClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     return (
-      <span class={spinnerClasses} aria-busy="true" aria-live="polite">
+      <span class={rootClasses} aria-busy="true" aria-live="polite">
         <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false">
           <circle r="9" />
           <circle r="9" />
