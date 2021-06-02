@@ -98,7 +98,8 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
       min-height: auto;
     }
 
-    &--fullscreen-on,
+    // to be in sync with content-wrapper, would be nicer with JSS
+    &--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs),
     &--fullscreen-on-xl {
       min-width: 100%;
       max-width: none;
@@ -109,6 +110,17 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
   @include p-media-query('xxl') {
     padding: p-px-to-rem(64px);
+    margin: $p-content-wrapper-margin-xxl;
+
+    // to be in sync with content-wrapper, would be nicer with JSS
+    &--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs),
+    &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s),
+    &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m),
+    &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l),
+    &--fullscreen-on-l:not(&--fullscreen-off-xl),
+    &--fullscreen-on-xl {
+      margin: 0;
+    }
   }
 }
 
