@@ -61,7 +61,7 @@ export class Button {
   }
 
   public render(): JSX.Element {
-    const buttonClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.variant}`]: this.variant !== 'secondary',
       ['root--theme-dark']: isDark(this.theme),
@@ -77,7 +77,7 @@ export class Button {
 
     return (
       <button
-        class={buttonClasses}
+        class={rootClasses}
         type={this.type}
         disabled={this.isDisabledOrLoading}
         tabindex={this.tabbable ? 0 : -1}

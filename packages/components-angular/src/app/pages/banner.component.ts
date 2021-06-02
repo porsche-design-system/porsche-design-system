@@ -79,7 +79,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       </div>
 
       <div class="playground light" title="should show banner in persistent mode">
-        <p-banner [persistent]="'true'">
+        <p-banner [persistent]="true">
           <span slot="title">Some notification title</span>
           <span slot="description"
             >Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.</span

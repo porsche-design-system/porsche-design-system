@@ -101,25 +101,21 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
-    const tabsNavClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--weight-semibold']: this.weight !== 'regular',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
-    const scrollAreaClasses = 'scroll-area';
-    const scrollWrapperClasses = 'scroll-wrapper';
     const scrollWrapperTriggerClasses = 'scroll-wrapper__trigger';
 
-    const statusBarClasses = 'status-bar';
-
     return (
-      <div class={tabsNavClasses}>
-        <div class={scrollAreaClasses} role="tablist">
-          <div class={scrollWrapperClasses}>
+      <div class={rootClasses}>
+        <div class="scroll-area" role="tablist">
+          <div class="scroll-wrapper">
             <slot />
-            <span class={statusBarClasses} />
+            <span class="status-bar" />
             <div class={scrollWrapperTriggerClasses} />
             <div class={scrollWrapperTriggerClasses} />
           </div>
