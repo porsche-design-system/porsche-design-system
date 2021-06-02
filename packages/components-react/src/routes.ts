@@ -99,6 +99,11 @@ export const routes: RouteType[] = [
     component: fromPages.ModalFullscreenPage,
   },
   {
+    name: 'Modal Fullscreen Breakpoint',
+    path: '/modal-fullscreen-breakpoint',
+    component: fromPages.ModalFullscreenBreakpointPage,
+  },
+  {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
