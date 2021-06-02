@@ -32,7 +32,7 @@ describe('Banner', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">
             .playground { padding: 100px 0; }
-            .playground p-banner {  --p-banner-position-type: static;}
+            .playground p-banner { --p-banner-position-type: static; }
           </style>`;
 
         const getElements: GetElements = () => `
