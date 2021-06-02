@@ -16,10 +16,7 @@
     </style>
   </head>
   <body>
-    <p-table>
-      <p-table-head></p-table-head>
-      <p-table-body></p-table-body>
-    </p-table>
+    <div class="playground"></div>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
@@ -32,7 +29,15 @@
         { name: 'Lead ID', key: 'leadId' },
         { name: '' },
         { name: '' },
-      ];
+      ].map((item, i) => ({
+        ...item,
+        ...(item.name && {
+          isSortable: i > 0,
+          isSorting: i === 1,
+          direction: 'asc',
+        }),
+      }));
+
       const data = [
         {
           imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
@@ -86,117 +91,79 @@
         },
       ];
 
+      const renderTableHeadCells = (items) =>
+        items.map((item) => `<p-table-head-cell>${item.name}</p-table-head-cell>`).join('');
+
+      const renderTableBodyRows = (items) =>
+        items
+          .map(
+            (item) => `
+<p-table-row>
+  <p-table-cell>
+    <p-flex>
+      <p-flex-item>
+        <img src="${item.imageUrl}" width="80" style="margin-right: 8px" alt="">
+      </p-flex-item>
+      <p-flex-item>
+        <p-text weight='semibold'>${item.model}</p-text>
+        <p-text size='x-small'>${item.date}</p-text>
+      </p-flex-item>
+    </p-flex>
+  </p-table-cell>
+  <p-table-cell>${item.interest}</p-table-cell>
+  <p-table-cell>${item.vin}</p-table-cell>
+  <p-table-cell>${item.purchaseIntention}</p-table-cell>
+  <p-table-cell>${item.status}</p-table-cell>
+  <p-table-cell>${item.leadId}</p-table-cell>
+  <p-table-cell>
+    <p-button-pure icon="edit">
+      <span style="white-space: nowrap">Edit Lead</span>
+    </p-button-pure>
+  </p-table-cell>
+  <p-table-cell>
+    <p-button variant="tertiary" icon="refresh">
+      <span style="white-space: nowrap">Overwrite</span>
+    </p-button>
+  </p-table-cell>
+</p-table-row>`
+          )
+          .join('');
+
+      const markup = `
+<p-table>
+  <p-table-head>
+    <p-table-row>${renderTableHeadCells(head)}</p-table-row>
+  </p-table-head>
+  <p-table-body>${renderTableBodyRows(data)}</p-table-body>
+</p-table>`;
+
+      const playground = document.querySelector('.playground');
+      playground.innerHTML = markup;
+
       const table = document.querySelector('p-table');
       const tableHead = document.querySelector('p-table-head');
       const tableBody = document.querySelector('p-table-body');
 
-      const headSortable = head.map((item, i) => ({
-        ...item,
-        ...(item.name && {
-          isSortable: i > 0,
-          isSorting: i === 1,
-          direction: 'asc',
-        }),
-      }));
-
-      const renderHead = (headItems) => {
-        const tableHeadRow = document.createElement('p-table-row');
-
-        headItems.forEach((item) => {
-          const el = document.createElement('p-table-head-cell');
-          el.item = item;
-          el.innerText = item.name;
-          tableHeadRow.appendChild(el);
+      // pass head item via property
+      const passHeadItemToNodes = (items) =>
+        Array.from(tableHead.querySelectorAll('p-table-head-cell')).forEach((el, index) => {
+          el.item = items[index];
         });
 
-        return tableHeadRow;
-      };
-
-      tableHead.appendChild(renderHead(headSortable));
-
-      const renderRow = (item) => {
-        const el = document.createElement('p-table-row');
-
-        const firstTd = document.createElement('p-table-cell');
-        const img = document.createElement('img');
-        img.src = item.imageUrl;
-        img.width = 80;
-        img.style.marginRight = '8px';
-
-        const model = document.createElement('p-text');
-        model.weight = 'semibold';
-        model.innerText = item.model;
-
-        const date = document.createElement('p-text');
-        date.size = 'x-small';
-        date.innerText = item.date;
-
-        const flex = document.createElement('p-flex');
-        const flexItem1 = document.createElement('p-flex-item');
-        const flexItem2 = document.createElement('p-flex-item');
-
-        flexItem1.appendChild(img);
-        flexItem2.alignSelf = 'center';
-        flexItem2.appendChild(model);
-        flexItem2.appendChild(date);
-
-        flex.appendChild(flexItem1);
-        flex.appendChild(flexItem2);
-        firstTd.appendChild(flex);
-        el.appendChild(firstTd);
-
-        Object.values(item)
-          .slice(3)
-          .forEach((x) => {
-            const elInner = document.createElement('p-table-cell');
-            elInner.innerText = x;
-            el.appendChild(elInner);
-          });
-
-        const editTd = document.createElement('p-table-cell');
-        const editBtn = document.createElement('p-button-pure');
-        editBtn.icon = 'edit';
-        const editBtnSpan = document.createElement('span');
-        editBtnSpan.style.whiteSpace = 'nowrap';
-        editBtnSpan.innerText = 'Edit Lead';
-        editBtn.appendChild(editBtnSpan);
-        editTd.appendChild(editBtn);
-        el.appendChild(editTd);
-
-        const ctaTd = document.createElement('p-table-cell');
-        const ctaBtn = document.createElement('p-button');
-        ctaBtn.variant = 'tertiary';
-        ctaBtn.icon = 'refresh';
-        const ctaBtnSpan = document.createElement('span');
-        ctaBtnSpan.style.whiteSpace = 'nowrap';
-        ctaBtnSpan.innerText = 'Overwrite';
-        ctaBtn.appendChild(ctaBtnSpan);
-        ctaTd.appendChild(ctaBtn);
-        el.appendChild(ctaTd);
-
-        return el;
-      };
-
-      data.forEach((item) => {
-        tableBody.appendChild(renderRow(item));
-      });
+      passHeadItemToNodes(head);
 
       // table.query = 'Ma';
       table.addEventListener('sortingChange', (e) => {
         console.log('sortingChange', e.detail);
         const { key, direction } = e.detail;
 
-        const sortedHead = headSortable.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+        const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+        const sortedData = [...data].sort((a, b) =>
+          direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
+        );
 
-        Array.from(tableHead.children).forEach((x) => x.remove());
-        tableHead.appendChild(renderHead(sortedHead));
-
-        Array.from(tableBody.children).forEach((x) => x.remove());
-        [...data]
-          .sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])))
-          .forEach((item) => {
-            tableBody.appendChild(renderRow(item));
-          });
+        passHeadItemToNodes(sortedHead);
+        tableBody.innerHTML = renderTableBodyRows(sortedData);
       });
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
