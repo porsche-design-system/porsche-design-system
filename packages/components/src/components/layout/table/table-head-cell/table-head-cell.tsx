@@ -27,7 +27,9 @@ export class TableHeadCell {
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.item)}>
         {isSortable ? (
           <button onClick={this.handleButtonClick}>
-            <slot />
+            <span>
+              <slot />
+            </span>
             <PrefixedTagNames.pIcon
               class={{
                 ['icon']: true,
