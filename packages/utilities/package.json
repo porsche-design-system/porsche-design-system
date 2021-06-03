@@ -20,7 +20,7 @@
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
-    "@porsche-design-system/visual-regression-tester": "^3.0.0",
+    "@porsche-design-system/visual-regression-tester": "^4.0.0",
     "@types/jasmine": "^3.6.10",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.1",
