@@ -1,17 +1,15 @@
 import {
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
-import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
   generateGUID,
   getBodyMarkup,
   GetMarkup,
-} from '../../e2e/helpers';
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Radio Button Wrapper', () => {
   it('should have no visual regression', async () => {

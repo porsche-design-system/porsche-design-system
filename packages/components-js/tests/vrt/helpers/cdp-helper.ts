@@ -57,7 +57,7 @@ export const generateGUID = (): string => {
       .toString(16)
       .substring(1);
 
-  //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+  // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
@@ -80,21 +80,20 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
     const nodeId = shadowRootNodeName
       ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName)
       : hostNodeId;
-    //only execute if a valid nodeId was found
+    // only execute if a valid nodeId was found
     if (nodeId) {
       await forceStateOnNodeId(cdp, nodeId, states);
     }
   }
 };
 export const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootNodeName = selectorParts[1]?.trim();
+  const [hostElementSelector, shadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
 
   if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+$/)) {
     throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
   }
 
-  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName };
+  return { hostElementSelector, shadowRootNodeName };
 };
 
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {

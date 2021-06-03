@@ -1,16 +1,14 @@
 import {
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
-import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-} from '../../e2e/helpers';
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Link', () => {
   it('should have no visual regression', async () => {

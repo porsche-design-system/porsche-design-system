@@ -1,16 +1,14 @@
 import {
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
-import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
-} from '../../e2e/helpers';
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Text Field Wrapper', () => {
   it('should have no visual regression', async () => {

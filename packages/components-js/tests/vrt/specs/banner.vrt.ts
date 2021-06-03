@@ -1,16 +1,14 @@
 import {
-  getVisualRegressionContentWrapperTester,
-  getVisualRegressionStatesTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
-import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
-} from '../../e2e/helpers';
+  getVisualRegressionContentWrapperTester,
+  getVisualRegressionStatesTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
