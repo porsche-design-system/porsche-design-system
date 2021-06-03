@@ -2,6 +2,7 @@ import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/
 import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 import { addCss } from './banner-utils';
+import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-banner',
@@ -123,7 +124,7 @@ export class Banner {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color var(--p-animation-hover-duration, 0.24s) ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }

@@ -68,9 +68,9 @@
   border: 1px solid $p-color-neutral-contrast-high;
   color: $p-color-theme-dark-default;
   background-color: $p-color-neutral-contrast-high;
-  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-    border-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    color $p-animation-hover-duration-var $p-animation-hover-bezier;
   cursor: pointer;
   @include p-focus($p-color-neutral-contrast-high);
 

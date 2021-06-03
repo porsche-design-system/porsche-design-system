@@ -31,9 +31,9 @@
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-default !important;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-    border-color $p-animation-hover-duration $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration-var $p-animation-hover-bezier !important;
 }
 
 ::slotted(input:hover) {
@@ -205,7 +205,7 @@
     display: block;
     width: fit-content;
     color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &--description {
       color: $p-color-neutral-contrast-medium;
@@ -229,7 +229,7 @@
 .message {
   margin-top: $p-spacing-4;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 }
 
 button {
@@ -249,7 +249,7 @@ button {
   background: transparent;
   cursor: pointer;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   &:hover {
     color: $p-color-state-hover;
