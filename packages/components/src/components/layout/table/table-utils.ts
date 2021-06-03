@@ -70,7 +70,7 @@ const baseCss: { [key in TableComponentType]: string } = {
       overflow: 'hidden !important',
     }),
     '::slotted(*)': {
-      border: `0 !important`, // p-table-row
+      border: '0 !important', // p-table-row
     },
   }),
   'table-head-cell': getCss({
