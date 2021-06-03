@@ -2,7 +2,7 @@
 
 $p-global-class-prefix: 'p-' !default;
 
-$p-animation-hover-duration: var(--p-animation-hover-duration, 0.24s);
+$p-animation-hover-duration-var: var(--p-animation-hover-duration, 0.24s);
 $p-animation-hover-bezier: ease;
 $p-tabs-transition-duration: 0.4s;
 

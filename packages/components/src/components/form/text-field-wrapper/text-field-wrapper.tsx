@@ -16,6 +16,7 @@ import {
   unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -166,7 +167,7 @@ export class TextFieldWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color var(--p-animation-hover-duration, 0.24s) ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }

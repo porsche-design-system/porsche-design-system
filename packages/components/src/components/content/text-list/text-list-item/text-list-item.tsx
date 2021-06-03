@@ -8,6 +8,7 @@ import {
   throwIfParentIsNotOfKind,
 } from '../../../../utils';
 import { addCss } from './text-list-item-utils';
+import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
 
 @Component({
   tag: 'p-text-list-item',
@@ -43,7 +44,7 @@ export class TextListItem {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color var(--p-animation-hover-duration, 0.24s) ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }
