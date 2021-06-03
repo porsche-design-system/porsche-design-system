@@ -7,7 +7,7 @@ import {
   getThemedBodyMarkup,
   GetThemedMarkup,
   resolveSelector,
-} from '../../e2e/helpers/cdp-helper';
+} from '../../vrt/helpers/cdp-helper';
 
 type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
@@ -77,15 +77,15 @@ describe('cdp-helper', () => {
       const getElementsMarkup: GetMarkup = () => '<div>SomeDiv</div><div>SomeDiv</div>';
 
       const result = `
-  <p-headline variant="headline-1">Hovered</p-headline>
+  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
-  <p-headline variant="headline-1">Focused</p-headline>
+  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
-  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>`;
@@ -97,29 +97,29 @@ describe('cdp-helper', () => {
   describe('getThemedBody()', () => {
     it('should put elements in themed playground divs', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
-        `<div theme="${theme}">SomeDiv</div><div theme="${theme}">SomeDiv</div>`;
+        `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
       const result = `
-  <p-headline variant="headline-1">Hovered</p-headline>
+  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
-    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
+    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>
   <div class="playground dark hovered">
-    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
+    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
   </div>
-  <p-headline variant="headline-1">Focused</p-headline>
+  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
-    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
+    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>
   <div class="playground dark focused">
-    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
+    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
   </div>
-  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
-    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
+    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>
   <div class="playground dark focused-hovered">
-    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
+    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
   </div>`;
 
       expect(getThemedBodyMarkup(getThemedElementsMarkup)).toBe(result);
@@ -128,15 +128,15 @@ describe('cdp-helper', () => {
 
   describe('resolveSelector()', () => {
     it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
-      expect(resolveSelector('.hydrated p-tabs >>> p-tabs-bar')).toEqual({
-        hostElementSelector: '.hydrated p-tabs',
-        shadowRootNodeName: 'p-tabs-bar',
+      expect(resolveSelector('.hovered > p-button-pure >>> button')).toEqual({
+        hostElementSelector: '.hovered > p-button-pure',
+        shadowRootNodeName: 'button',
       });
     });
 
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
-      expect(resolveSelector('#tab-item-0 button')).toEqual({
-        hostElementSelector: '#tab-item-0 button',
+      expect(resolveSelector('.hovered > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
+        hostElementSelector: '.hovered > p-checkbox-wrapper input[type="checkbox"]',
         shadowRootNodeName: undefined,
       });
     });
@@ -144,7 +144,7 @@ describe('cdp-helper', () => {
     it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
       let error;
       try {
-        resolveSelector('.hydrated p-tabs >>> .tabs-bar');
+        resolveSelector('.hovered > p-checkbox-wrapper >>> .tabs-bar');
       } catch (e) {
         error = e.message;
       }
