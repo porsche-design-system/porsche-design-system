@@ -14,11 +14,6 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPage,
   },
   {
-    name: 'Banner Behaviour',
-    path: '/banner-behaviour',
-    component: fromPages.BannerBehaviourPage,
-  },
-  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage,
@@ -102,6 +97,11 @@ export const routes: RouteType[] = [
     name: 'Modal Fullscreen',
     path: '/modal-fullscreen',
     component: fromPages.ModalFullscreenPage,
+  },
+  {
+    name: 'Modal Fullscreen Breakpoint',
+    path: '/modal-fullscreen-breakpoint',
+    component: fromPages.ModalFullscreenBreakpointPage,
   },
   {
     name: 'Modal Prefixed',

@@ -1,15 +1,11 @@
-import { useEffect } from 'react';
-import { PButton, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { PContentWrapper, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const ModalPrefixedPage = (): JSX.Element => {
-  useEffect(() => {
-    document.body.style.height = '500px';
-  }, []);
-
   const style = `
     .playground {
       height: 500px;
       padding: 0;
+      transform: translate3d(0, 0, 0);
     }
   `;
 
@@ -18,12 +14,11 @@ export const ModalPrefixedPage = (): JSX.Element => {
       <style children={style} />
       <div className="playground light" title="should show prefixed modal on light background">
         <PorscheDesignSystemProvider prefix="my-prefix">
+          <PContentWrapper>
+            <div style={{ background: 'deeppink', height: '100vh' }} />
+          </PContentWrapper>
           <PModal heading="Some Heading" open>
             Some Content
-            <div>
-              <PButton>Confirm</PButton>
-              <PButton variant="tertiary">Cancel</PButton>
-            </div>
           </PModal>
         </PorscheDesignSystemProvider>
       </div>

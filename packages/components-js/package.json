@@ -10,7 +10,7 @@
     "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors -s'",
     "build": "yarn clean:build && yarn build:components-manager-core && yarn build:components-manager-cli && yarn build:components-wrapper && yarn build:partials && yarn build:app && yarn build:cleanEnvironment",
     "build:app": "yarn build:app:base && yarn build:app:components && yarn build:app:assets",
-    "build:app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www ",
+    "build:app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www",
     "build:app:components": "cp ./dist/components-wrapper/index.js ./www",
     "build:app:assets": "cp ../assets/dist/esm/index.js ./www/assets.js",
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
@@ -49,11 +49,11 @@
     "clean:partials:node_modules": "yarn --cwd ./projects/partials clean:node_modules"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.2.0"
+    "@porsche-design-system/components-js": "2.2.1-beta.1"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.2.0",
-    "@porsche-design-system/components": "2.2.0",
+    "@porsche-design-system/components": "2.2.1-beta.1",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
@@ -65,15 +65,15 @@
     "@types/puppeteer": "^5.4.3",
     "@types/terser-webpack-plugin": "^5.0.3",
     "concurrently": "^6.0.2",
-    "devtools-protocol": "^0.0.878340",
+    "devtools-protocol": "^0.0.887064",
     "globby": "^11.0.3",
     "http-server": "^0.12.3",
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jsdom": "^16.5.3",
     "puppeteer": "~5.5.0",
-    "ts-node": "^9.1.1",
-    "typescript": "~4.2.4",
+    "ts-node": "^10.0.0",
+    "typescript": "~4.3.2",
     "wait-on": "^5.3.0",
     "webpack": "^5.36.2",
     "webpack-bundle-analyzer": "^4.4.1",

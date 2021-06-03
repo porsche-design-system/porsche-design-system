@@ -1,5 +1,4 @@
 import { BannerComponent } from './banner.component';
-import { BannerBehaviourComponent } from './banner-behaviour.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
@@ -21,6 +20,7 @@ import { LinkSocialComponent } from './link-social.component';
 import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
 import { ModalFullscreenComponent } from './modal-fullscreen.component';
+import { ModalFullscreenBreakpointComponent } from './modal-fullscreen-breakpoint.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { OverviewComponent } from './overview.component';
@@ -39,7 +39,6 @@ import { SwitchComponent } from './switch.component';
 
 export const pages = [
   BannerComponent,
-  BannerBehaviourComponent,
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
@@ -61,6 +60,7 @@ export const pages = [
   MarqueComponent,
   ModalBasicComponent,
   ModalFullscreenComponent,
+  ModalFullscreenBreakpointComponent,
   ModalPrefixedComponent,
   ModalScrollableComponent,
   OverviewComponent,
@@ -79,7 +79,6 @@ export const pages = [
 ];
 
 export * from './banner.component';
-export * from './banner-behaviour.component';
 export * from './button.component';
 export * from './button-group.component';
 export * from './button-pure.component';
@@ -101,6 +100,7 @@ export * from './link-social.component';
 export * from './marque.component';
 export * from './modal-basic.component';
 export * from './modal-fullscreen.component';
+export * from './modal-fullscreen-breakpoint.component';
 export * from './modal-prefixed.component';
 export * from './modal-scrollable.component';
 export * from './overview.component';

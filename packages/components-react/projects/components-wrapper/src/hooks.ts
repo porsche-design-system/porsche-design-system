@@ -17,7 +17,7 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return tagName;
   } else {
-    const { prefix } = useContext(PorscheDesignSystemContext);
+    const { prefix } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
 
     if (prefix === undefined) {
       throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
@@ -38,7 +38,7 @@ export const useEventCallback = /*#__PURE__*/ (
       current.addEventListener(eventName, eventHandler);
       return () => current?.removeEventListener(eventName, eventHandler);
     }
-  }, [eventHandler]);
+  }, [eventHandler]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>, className: string) => {
@@ -54,5 +54,5 @@ export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>,
     }
     prevComponentClassName.current = className;
     return newClassName;
-  }, [className]);
+  }, [className]); // eslint-disable-line react-hooks/exhaustive-deps
 };

@@ -19,13 +19,13 @@ export class Divider {
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
-    const dividerClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--color-${this.color}`]: this.color !== 'neutral-contrast-low',
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--orientation', this.orientation),
     };
 
-    return <hr class={dividerClasses} />;
+    return <hr class={rootClasses} />;
   }
 }
