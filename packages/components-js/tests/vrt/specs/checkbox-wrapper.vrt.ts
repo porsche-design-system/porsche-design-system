@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Checkbox Wrapper', () => {
@@ -27,9 +31,7 @@ describe('Checkbox Wrapper', () => {
       await vrt.test('checkbox-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-checkbox-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
+        const head = `<style type="text/css">p-checkbox-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
 
         const getElementsMarkup: GetMarkup = () => `
           <p-checkbox-wrapper label="Some label">
