@@ -46,44 +46,47 @@ export const TABLE_COMPONENTS = [
 ] as const;
 export type TableComponentType = typeof TABLE_COMPONENTS[number];
 
+const defaultColumnWidth = 120;
+
 const baseCss: { [key in TableComponentType]: string } = {
   table: getCss(
     buildHostStyles({
-      display: 'table !important',
+      display: 'flex !important',
+      flexFlow: 'column wrap !important',
       width: '100% !important',
-      borderCollapse: 'collapse !important',
-      borderSpacing: '0 !important',
       fontFamily: `${font.family} !important`,
-      ...font.size.small,
+      ...font.size.small, // TODO: !important is missing
+      textAlign: 'left !important',
       whiteSpace: 'nowrap !important',
-      overflow: 'auto',
+      overflow: 'auto', // can be overridden
     })
   ),
   'table-head': getCss({
     ...buildHostStyles({
-      display: 'table-header-group !important',
-      width: '100% !important',
-      textAlign: 'left !important',
+      display: 'flex !important',
+      flexDirection: 'column !important',
       fontWeight: `${font.weight.bold} !important`,
       borderBottom: `2px solid ${color.neutralContrast.high} !important`,
+      overflow: 'hidden !important',
     }),
-    '::slotted(*)': { border: '0 !important' },
+    '::slotted(*)': {
+      border: `0 !important`, // p-table-row
+    },
   }),
   'table-head-cell': getCss({
     ...buildHostStyles({
-      display: 'table-cell !important',
-      // textAlign: 'left !important',
+      display: 'flex !important',
+      alignItems: 'center', // can be overridden
       padding: `0 ${pxToRem(12)}rem ${pxToRem(8)}rem 0 !important`,
-      verticalAlign: 'bottom !important',
-      '&:last-child': {
-        paddingRight: '0 !important',
-      },
+      width: defaultColumnWidth, // can be overridden
     }),
+    ':host(:last-child)': {
+      paddingRight: '0 !important',
+    },
     ...buildGlobalStyles({
       button: {
         display: 'flex',
         alignItems: 'center',
-        margin: '3px 0 0',
         padding: 0,
         boxSizing: 'border-box',
         appearance: 'none',
@@ -96,7 +99,8 @@ const baseCss: { [key in TableComponentType]: string } = {
         background: 'transparent',
         cursor: 'pointer',
         color: color.default,
-        transition: 'color $p-animation-hover-duration $p-animation-hover-bezier',
+        overflow: 'hidden',
+        transition: 'color $p-animation-hover-duration $p-animation-hover-bezier', // TODO: actual values
         // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
         outline: 'transparent solid 1px',
         outlineOffset: 0,
@@ -112,6 +116,10 @@ const baseCss: { [key in TableComponentType]: string } = {
           },
         },
       },
+      span: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      },
     }),
     icon: {
       opacity: 0,
@@ -121,31 +129,35 @@ const baseCss: { [key in TableComponentType]: string } = {
       },
     },
   }),
-  'table-body': getCss(
-    buildHostStyles({
-      display: 'table-row-group !important',
+  'table-body': getCss({
+    ...buildHostStyles({
+      display: 'flex !important',
+      flexDirection: 'column !important',
+      overflow: 'hidden !important',
+    }),
+  }),
+  'table-row': getCss({
+    ...buildHostStyles({
+      display: 'flex !important',
+      flexDirection: 'row !important',
+      alignItems: 'center !important',
+      flexWrap: 'nowrap !important',
       width: '100% !important',
-    })
-  ),
-  'table-row': getCss(
-    buildHostStyles({
-      display: 'table-row !important',
-      width: '100% !important',
-      borderBottom: `1px solid ${color.neutralContrast.medium} !important`,
-    })
-  ),
+      position: 'relative',
+      // no !important style, so it can be overridden via ::slotted selector in table-head
+      borderBottom: `1px solid ${color.neutralContrast.medium}`,
+    }),
+  }),
   'table-cell': getCss({
     ...buildHostStyles({
-      display: 'table-cell !important',
       padding: `${pxToRem(12)}rem ${pxToRem(12)}rem ${pxToRem(12)}rem 0 !important`,
       margin: '0 !important',
-      verticalAlign: 'middle',
+      width: defaultColumnWidth, // can be overridden
+      textOverflow: 'ellipsis', // can be overridden
+      overflow: 'hidden', // can be overridden
     }),
     ':host(:last-child)': {
       paddingRight: '0 !important',
-    },
-    '::slotted(*)': {
-      verticalAlign: 'middle !important',
     },
   }),
 };

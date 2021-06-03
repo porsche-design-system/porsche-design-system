@@ -10,8 +10,23 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
     <style>
-      p-headline {
-        margin-top: 10px;
+      a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-indent: -9999px;
+      }
+
+      a:hover {
+        background: #ff14937d;
+      }
+
+      p-button,
+      p-button-pure {
+        position: relative;
+        z-index: 1;
       }
     </style>
   </head>
@@ -20,6 +35,8 @@
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
+      const widths = [200, 80, 80, 100, 80, 100, 100, 122];
+
       const head = [
         { name: 'Model' },
         { name: 'Interest', key: 'interest' },
@@ -66,7 +83,7 @@
           interest: 'Used Car',
           vin: '-',
           purchaseIntention: '09.2020',
-          status: 'Won',
+          status: 'Won but then canceled again',
           leadId: '0000824408',
         },
         {
@@ -92,14 +109,16 @@
       ];
 
       const renderTableHeadCells = (items) =>
-        items.map((item) => `<p-table-head-cell>${item.name}</p-table-head-cell>`).join('');
+        items
+          .map((item, i) => `<p-table-head-cell style="width: ${widths[i]}px">${item.name}</p-table-head-cell>`)
+          .join('');
 
       const renderTableBodyRows = (items) =>
         items
           .map(
             (item) => `
 <p-table-row>
-  <p-table-cell>
+  <p-table-cell style="width: ${widths[0]}px">
     <p-flex>
       <p-flex-item>
         <img src="${item.imageUrl}" width="80" style="margin-right: 8px" alt="">
@@ -110,20 +129,21 @@
       </p-flex-item>
     </p-flex>
   </p-table-cell>
-  <p-table-cell>${item.interest}</p-table-cell>
-  <p-table-cell>${item.vin}</p-table-cell>
-  <p-table-cell>${item.purchaseIntention}</p-table-cell>
-  <p-table-cell>${item.status}</p-table-cell>
-  <p-table-cell>${item.leadId}</p-table-cell>
-  <p-table-cell>
+  <p-table-cell style="width: ${widths[1]}px">${item.interest}</p-table-cell>
+  <p-table-cell style="width: ${widths[2]}px">${item.vin}</p-table-cell>
+  <p-table-cell style="width: ${widths[3]}px">${item.purchaseIntention}</p-table-cell>
+  <p-table-cell style="width: ${widths[4]}px">${item.status}</p-table-cell>
+  <p-table-cell style="width: ${widths[5]}px">${item.leadId}</p-table-cell>
+  <p-table-cell style="width: ${widths[6]}px">
     <p-button-pure icon="edit">
       <span style="white-space: nowrap">Edit Lead</span>
     </p-button-pure>
   </p-table-cell>
-  <p-table-cell>
+  <p-table-cell style="width: ${widths[7]}px">
     <p-button variant="tertiary" icon="refresh">
       <span style="white-space: nowrap">Overwrite</span>
     </p-button>
+    <a href='#${item.leadId}'>Open Detail</a>
   </p-table-cell>
 </p-table-row>`
           )
