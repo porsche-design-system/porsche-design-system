@@ -1,12 +1,16 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   generateGUID,
   getBodyMarkup,
   GetMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Radio Button Wrapper', () => {
@@ -29,9 +33,7 @@ describe('Radio Button Wrapper', () => {
       await vrt.test('radio-button-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
 
         const getElementsMarkup: GetMarkup = () => `
           <p-radio-button-wrapper label="Some label">

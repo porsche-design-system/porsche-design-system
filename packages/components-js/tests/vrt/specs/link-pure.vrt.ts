@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Link Pure', () => {
@@ -28,9 +32,7 @@ describe('Link Pure', () => {
       await vrt.test('link-pure-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
+        const head = `<style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>

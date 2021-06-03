@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Text List', () => {
@@ -28,9 +32,6 @@ describe('Text List', () => {
       await vrt.test('text-list-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />`;
-
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-text-list theme="${theme}">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
@@ -41,7 +42,7 @@ describe('Text List', () => {
             </p-text-list-item>
           </p-text-list>`;
 
-        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
         await forceHoveredState(page, '.hovered > p-text-list a');
         await forceFocusedState(page, '.focused > p-text-list a');

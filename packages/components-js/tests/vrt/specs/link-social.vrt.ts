@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Link Social', () => {
@@ -27,9 +31,7 @@ describe('Link Social', () => {
       await vrt.test('link-social-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-link-social { margin-right: 16px; margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-link-social { margin-right: 16px; margin-top: 16px; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>

@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Tabs Bar', () => {
@@ -29,9 +33,6 @@ describe('Tabs Bar', () => {
       await vrt.test('tabs-bar-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />`;
-
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-tabs-bar theme="${theme}" active-tab-index="1">
             <button type="button">Button Tab One</button>
@@ -44,7 +45,7 @@ describe('Tabs Bar', () => {
             <a>Anchor Tab Three</a>
           </p-tabs-bar>`;
 
-        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
         await forceHoveredState(page, '.hovered > p-tabs-bar button');
         await forceHoveredState(page, '.hovered > p-tabs-bar a');

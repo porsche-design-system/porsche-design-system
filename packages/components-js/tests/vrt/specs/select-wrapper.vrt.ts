@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Select Wrapper', () => {
@@ -28,9 +32,7 @@ describe('Select Wrapper', () => {
       await vrt.test('select-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-select-wrapper theme="${theme}" label="Some label" message="Some error validation message.">

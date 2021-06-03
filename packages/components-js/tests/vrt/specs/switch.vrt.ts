@@ -1,11 +1,15 @@
-import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Switch', () => {
@@ -28,9 +32,7 @@ describe('Switch', () => {
       await vrt.test('switch-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `
-          <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
+        const head = `<style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-switch theme="${theme}">Some label</p-switch>

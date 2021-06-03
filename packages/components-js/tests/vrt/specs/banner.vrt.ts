@@ -1,11 +1,15 @@
-import { getVisualRegressionContentWrapperTester, getVisualRegressionStatesTester, testOptions } from '../helpers';
 import {
-  forceFocusedState,
+  getVisualRegressionContentWrapperTester,
+  getVisualRegressionStatesTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
+import {
   forceFocusedHoveredState,
+  forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
-  setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
 describe('Banner', () => {
@@ -29,7 +33,6 @@ describe('Banner', () => {
         const page = await vrt.getPage();
 
         const head = `
-          <link rel="stylesheet" href="styles.css" />
           <style type="text/css">
             .playground { padding: 50px 0; }
             .playground p-banner { --p-banner-position-type: static; }
