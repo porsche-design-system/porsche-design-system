@@ -19,9 +19,6 @@ const testOptions: VisualRegressionTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
-// TODO: remove @ts-ignore when https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 beforeAll(async () => {
