@@ -1,8 +1,8 @@
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
+import { Theme } from '@porsche-design-system/utilities';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
-import { Theme } from '@porsche-design-system/utilities';
 
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
@@ -12,7 +12,7 @@ const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
 
 export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme) => string;
+export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) => `
   <p-headline variant="headline-1">Hovered</p-headline>
