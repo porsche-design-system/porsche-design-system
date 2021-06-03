@@ -15,35 +15,35 @@ export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) => `
-  <p-headline variant="headline-1">Hovered</p-headline>
+  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
     ${getElements()}
   </div>
-  <p-headline variant="headline-1">Focused</p-headline>
+  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
     ${getElements()}
   </div>
-  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
     ${getElements()}
   </div>`;
 
 export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup): string => `
-  <p-headline variant="headline-1">Hovered</p-headline>
+  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
     ${getThemedElements('light')}
   </div>
   <div class="playground dark hovered">
     ${getThemedElements('dark')}
   </div>
-  <p-headline variant="headline-1">Focused</p-headline>
+  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
     ${getThemedElements('light')}
   </div>
   <div class="playground dark focused">
     ${getThemedElements('dark')}
   </div>
-  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
     ${getThemedElements('light')}
   </div>
