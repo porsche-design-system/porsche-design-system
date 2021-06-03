@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -31,23 +31,21 @@ describe('Text List', () => {
         const head = `
           <link rel="stylesheet" href="styles.css" />`;
 
-        const getElements: GetThemedElements = (theme) => `
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-text-list theme="${theme}">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item>
               The quick
-              <a onclick="return false;" href="#">
-                brown fox
-              </a>
+              <a onclick="return false;" href="#">brown fox</a>
               jumps over the lazy dog
             </p-text-list-item>
           </p-text-list>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-text-list a');
-        await forceFocused(page, '.focused > p-text-list a');
-        await forceFocusedHovered(page, '.focused-hovered > p-text-list a');
+        await forceHoveredState(page, '.hovered > p-text-list a');
+        await forceFocusedState(page, '.focused > p-text-list a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-text-list a');
       })
     ).toBeFalsy();
   });

@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -31,14 +31,14 @@ describe('Text', () => {
         const head = `
           <link rel="stylesheet" href="styles.css" />`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-text theme="${theme}">Lorem ipsum dolor sit amet <a>linked text</a></p-text>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-text a');
-        await forceFocused(page, '.focused > p-text a');
-        await forceFocusedHovered(page, '.focused-hovered > p-text a');
+        await forceHoveredState(page, '.hovered > p-text a');
+        await forceFocusedState(page, '.focused > p-text a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-text a');
       })
     ).toBeFalsy();
   });

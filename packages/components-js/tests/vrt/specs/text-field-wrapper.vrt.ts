@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getBody,
-  GetElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getBodyMarkup,
+  GetMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,7 +32,7 @@ describe('Text Field Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-text-field-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
 
-        const getElements: GetElements = () => `
+        const getElementsMarkup: GetMarkup = () => `
           <p-text-field-wrapper label="Some label">
             <input type="password" name="some-name" />
           </p-text-field-wrapper>
@@ -60,19 +60,25 @@ describe('Text Field Wrapper', () => {
           <p-text-field-wrapper label="Some label" description="Some description" state="success">
             <input type="text" name="some-name" />
             <span slot="message">Some success message with a <a href="#">link</a>.</span>
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Some label">
+            <input type="text" name="some-name" value="Disabled" disabled/>
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Some label">
+            <input type="text" name="some-name" value="Readonly" readonly/>
           </p-text-field-wrapper>`;
 
-        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-text-field-wrapper input[type="text"]');
-        await forceHovered(page, '.hovered > p-text-field-wrapper span a');
-        await forceHovered(page, '.hovered > p-text-field-wrapper >>> button');
-        await forceFocused(page, '.focused > p-text-field-wrapper input[type="text"]');
-        await forceFocused(page, '.focused > p-text-field-wrapper span a');
-        await forceFocused(page, '.focused > p-text-field-wrapper >>> button');
-        await forceFocusedHovered(page, '.focused-hovered > p-text-field-wrapper input[type="text"]');
-        await forceFocusedHovered(page, '.focused-hovered > p-text-field-wrapper span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-text-field-wrapper >>> button');
+        await forceHoveredState(page, '.hovered > p-text-field-wrapper input[type="text"]');
+        await forceHoveredState(page, '.hovered > p-text-field-wrapper span a');
+        await forceHoveredState(page, '.hovered > p-text-field-wrapper >>> button');
+        await forceFocusedState(page, '.focused > p-text-field-wrapper input[type="text"]');
+        await forceFocusedState(page, '.focused > p-text-field-wrapper span a');
+        await forceFocusedState(page, '.focused > p-text-field-wrapper >>> button');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-text-field-wrapper input[type="text"]');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-text-field-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-text-field-wrapper >>> button');
       })
     ).toBeFalsy();
   });

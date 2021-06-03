@@ -1,10 +1,10 @@
 import { getVisualRegressionContentWrapperTester, getVisualRegressionStatesTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getBody,
-  GetElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getBodyMarkup,
+  GetMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -31,21 +31,21 @@ describe('Banner', () => {
         const head = `
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">
-            .playground { padding: 100px 0; }
-            .playground p-banner { --p-banner-position-type: static; }
+            .playground { padding: 50px 0; }
+            .playground p-banner {  --p-banner-position-type: static;}
           </style>`;
 
-        const getElements: GetElements = () => `
+        const getElementsMarkup: GetMarkup = () => `
           <p-banner state="neutral">
             <span slot="title">Some banner title</span>
             <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
           </p-banner>`;
 
-        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-banner span a');
-        await forceFocused(page, '.focused > p-banner span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-banner span a');
+        await forceHoveredState(page, '.hovered > p-banner span a');
+        await forceFocusedState(page, '.focused > p-banner span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-banner span a');
       })
     ).toBeFalsy();
   });

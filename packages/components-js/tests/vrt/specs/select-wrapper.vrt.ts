@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,9 +32,14 @@ describe('Select Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-select-wrapper theme="${theme}" label="Some label" message="Some error validation message.">
             <select name="some-name" aria-invalid="false">
+              <option value="a">Option A</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper theme="${theme}" label="Disabled">
+            <select name="some-name" aria-invalid="false" disabled>
               <option value="a">Option A</option>
             </select>
           </p-select-wrapper>
@@ -70,14 +75,14 @@ describe('Select Wrapper', () => {
           </p-select-wrapper>`;
         // TODO add hover test on fake option after select refactoring
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-select-wrapper select');
-        await forceHovered(page, '.hovered > p-select-wrapper span a');
-        await forceFocused(page, '.focused > p-select-wrapper select');
-        await forceFocused(page, '.focused > p-select-wrapper span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-select-wrapper select');
-        await forceFocusedHovered(page, '.focused-hovered > p-select-wrapper span a');
+        await forceHoveredState(page, '.hovered > p-select-wrapper select');
+        await forceHoveredState(page, '.hovered > p-select-wrapper span a');
+        await forceFocusedState(page, '.focused > p-select-wrapper select');
+        await forceFocusedState(page, '.focused > p-select-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-select-wrapper select');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-select-wrapper span a');
       })
     ).toBeFalsy();
   });

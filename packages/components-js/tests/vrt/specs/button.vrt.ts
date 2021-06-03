@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,16 +32,18 @@ describe('Button', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-button:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
-          <p-button theme="${theme}" variant="primary">Some label</p-button>
-          <p-button theme="${theme}" variant="secondary">Some label</p-button>
-          <p-button theme="${theme}" variant="tertiary">Some label</p-button>`;
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-button theme="${theme}" variant="primary">Primary</p-button>
+          <p-button theme="${theme}" variant="secondary">Secondary</p-button>
+          <p-button theme="${theme}" variant="tertiary">Tertiary</p-button>
+          <p-button theme="${theme}" disabled="true">Disabled</p-button>
+          <p-button theme="${theme}" loading="true">Loading</p-button>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-button >>> button');
-        await forceFocused(page, '.focused > p-button >>> button');
-        await forceFocusedHovered(page, '.focused-hovered > p-button >>> button');
+        await forceHoveredState(page, '.hovered > p-button >>> button');
+        await forceFocusedState(page, '.focused > p-button >>> button');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-button >>> button');
       })
     ).toBeFalsy();
   });

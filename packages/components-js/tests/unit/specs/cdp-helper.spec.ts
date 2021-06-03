@@ -2,9 +2,10 @@ import Protocol from 'devtools-protocol';
 import {
   findBackendNodeId,
   generateGUID,
-  getBody,
-  GetElements,
-  getThemedBody,
+  getBodyMarkup,
+  GetMarkup,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   resolveSelector,
 } from '../../e2e/helpers/cdp-helper';
 
@@ -17,8 +18,6 @@ type TestCase = {
 };
 
 describe('cdp-helper', () => {
-  const getElements: GetElements = () => '<div>SomeDiv</div><div>SomeDiv</div>';
-
   describe('findBackendNodeId()', () => {
     const testCases: TestCase[] = [
       { node: { localName: 'test', backendNodeId: 1 }, selector: 'test', expect: 1 },
@@ -75,54 +74,81 @@ describe('cdp-helper', () => {
 
   describe('getBody()', () => {
     it('should put elements in playground divs', () => {
+      const getElementsMarkup: GetMarkup = () => '<div>SomeDiv</div><div>SomeDiv</div>';
+
       const result = `
+  <p-headline variant="headline-1">Hovered</p-headline>
   <div class="playground light hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
+  <p-headline variant="headline-1">Focused</p-headline>
   <div class="playground light focused">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
-  <div class="playground focused-hovered">
+  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <div class="playground light focused-hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>`;
 
-      expect(getBody(getElements)).toBe(result);
+      expect(getBodyMarkup(getElementsMarkup)).toBe(result);
     });
   });
 
   describe('getThemedBody()', () => {
     it('should put elements in themed playground divs', () => {
+      const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
+        `<div theme="${theme}">SomeDiv</div><div theme="${theme}">SomeDiv</div>`;
+
       const result = `
+  <p-headline variant="headline-1">Hovered</p-headline>
   <div class="playground light hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
   </div>
   <div class="playground dark hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
   </div>
+  <p-headline variant="headline-1">Focused</p-headline>
   <div class="playground light focused">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
   </div>
   <div class="playground dark focused">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
   </div>
+  <p-headline variant="headline-1">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="light">SomeDiv</div><div theme="light">SomeDiv</div>
   </div>
   <div class="playground dark focused-hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
+    <div theme="dark">SomeDiv</div><div theme="dark">SomeDiv</div>
   </div>`;
 
-      expect(getThemedBody(getElements)).toBe(result);
+      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toBe(result);
     });
   });
 
   describe('resolveSelector()', () => {
     it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
-      expect(resolveSelector('abc dfg >>> hij')).toEqual({ hostElementSelector: 'abc dfg', shadowRootNodeName: 'hij' });
+      expect(resolveSelector('.hydrated p-tabs >>> p-tabs-bar')).toEqual({
+        hostElementSelector: '.hydrated p-tabs',
+        shadowRootNodeName: 'p-tabs-bar',
+      });
     });
 
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
-      expect(resolveSelector('abc dfg')).toEqual({ hostElementSelector: 'abc dfg', shadowRootNodeName: undefined });
+      expect(resolveSelector('#tab-item-0 button')).toEqual({
+        hostElementSelector: '#tab-item-0 button',
+        shadowRootNodeName: undefined,
+      });
+    });
+
+    it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
+      let error;
+      try {
+        resolveSelector('.hydrated p-tabs >>> .tabs-bar');
+      } catch (e) {
+        error = e.message;
+      }
+      expect(error).toEqual('">>> .tabs-bar" selector has to be an "Element.localName" in shadow-root');
     });
   });
 });

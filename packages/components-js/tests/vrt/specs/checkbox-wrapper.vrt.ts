@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getBody,
-  GetElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getBodyMarkup,
+  GetMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -31,9 +31,12 @@ describe('Checkbox Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-checkbox-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
 
-        const getElements: GetElements = () => `
+        const getElementsMarkup: GetMarkup = () => `
           <p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" />
+          </p-checkbox-wrapper>
+          <p-checkbox-wrapper label="Disabled">
+            <input type="checkbox" name="some-name" disabled/>
           </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="checkbox" name="some-name" />
@@ -43,6 +46,9 @@ describe('Checkbox Wrapper', () => {
           </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" checked/>
+          </p-checkbox-wrapper>
+          <p-checkbox-wrapper label="Disabled">
+            <input type="checkbox" name="some-name" checked disabled/>
           </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="checkbox" name="some-name" checked/>
@@ -63,14 +69,14 @@ describe('Checkbox Wrapper', () => {
             <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-checkbox-wrapper>`;
 
-        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
-        await forceHovered(page, '.hovered > p-checkbox-wrapper span a');
-        await forceFocused(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');
-        await forceFocused(page, '.focused > p-checkbox-wrapper span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-checkbox-wrapper input[type="checkbox"]');
-        await forceFocusedHovered(page, '.focused-hovered > p-checkbox-wrapper span a');
+        await forceHoveredState(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
+        await forceHoveredState(page, '.hovered > p-checkbox-wrapper span a');
+        await forceFocusedState(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');
+        await forceFocusedState(page, '.focused > p-checkbox-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-checkbox-wrapper input[type="checkbox"]');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-checkbox-wrapper span a');
       })
     ).toBeFalsy();
   });
