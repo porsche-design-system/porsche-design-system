@@ -11,35 +11,41 @@ const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
 
-export type GetElements = () => string;
-export type GetThemedElements = (theme?: Theme) => string;
+export type GetMarkup = () => string;
+export type GetThemedMarkup = (theme) => string;
 
-export const getBody = (getElements: GetElements) => `
+export const getBodyMarkup = (getElements: GetMarkup) => `
+  <p-headline variant="headline-1">Hovered</p-headline>
   <div class="playground light hovered">
     ${getElements()}
   </div>
+  <p-headline variant="headline-1">Focused</p-headline>
   <div class="playground light focused">
     ${getElements()}
   </div>
-  <div class="playground focused-hovered">
+  <p-headline variant="headline-1">Focused+Hovered</p-headline>
+  <div class="playground light focused-hovered">
     ${getElements()}
   </div>`;
 
-export const getThemedBody = (getThemedElements: GetThemedElements): string => `
+export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup): string => `
+  <p-headline variant="headline-1">Hovered</p-headline>
   <div class="playground light hovered">
-    ${getThemedElements()}
+    ${getThemedElements('light')}
   </div>
   <div class="playground dark hovered">
     ${getThemedElements('dark')}
   </div>
+  <p-headline variant="headline-1">Focused</p-headline>
   <div class="playground light focused">
-    ${getThemedElements()}
+    ${getThemedElements('light')}
   </div>
   <div class="playground dark focused">
     ${getThemedElements('dark')}
   </div>
+  <p-headline variant="headline-1">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
-    ${getThemedElements()}
+    ${getThemedElements('light')}
   </div>
   <div class="playground dark focused-hovered">
     ${getThemedElements('dark')}
@@ -55,13 +61,13 @@ export const generateGUID = (): string => {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
-export const forceHovered = async (page: Page, selector: string): Promise<void> => {
+export const forceHoveredState = async (page: Page, selector: string): Promise<void> => {
   await forceStateOnElements(page, selector, HOVERED_STATE);
 };
-export const forceFocused = async (page: Page, selector: string): Promise<void> => {
+export const forceFocusedState = async (page: Page, selector: string): Promise<void> => {
   await forceStateOnElements(page, selector, FOCUSED_STATE);
 };
-export const forceFocusedHovered = async (page: Page, selector: string): Promise<void> => {
+export const forceFocusedHoveredState = async (page: Page, selector: string): Promise<void> => {
   await forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
 };
 
@@ -80,10 +86,15 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
     }
   }
 };
-
 export const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
   const selectorParts = selector.split('>>>');
-  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName: selectorParts[1]?.trim() };
+  const shadowRootNodeName = selectorParts[1]?.trim();
+
+  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+$/)) {
+    throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
+  }
+
+  return { hostElementSelector: selectorParts[0].trim(), shadowRootNodeName };
 };
 
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {

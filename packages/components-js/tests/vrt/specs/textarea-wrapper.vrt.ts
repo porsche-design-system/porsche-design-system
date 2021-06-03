@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getBody,
-  GetElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getBodyMarkup,
+  GetMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -29,11 +29,20 @@ describe('Textarea Wrapper', () => {
 
         const head = `
           <link rel="stylesheet" href="styles.css" />
-          <style type="text/css">p-textarea-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
+          <style type="text/css">
+            p-textarea-wrapper:not(:last-child) { margin-bottom: 16px; }
+            textarea { min-height: initial; }
+          </style>`;
 
-        const getElements: GetElements = () => `
+        const getElementsMarkup: GetMarkup = () => `
           <p-textarea-wrapper label="Some label" message="Some error validation message.">
             <textarea name="some-name"></textarea>
+          </p-textarea-wrapper>
+          <p-textarea-wrapper label="Disabled">
+            <textarea name="some-name" disabled>Disabled</textarea>
+          </p-textarea-wrapper>
+          <p-textarea-wrapper label="Readonly">
+            <textarea name="some-name" readonly>Readonly</textarea>
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Some label" state="error" message="Some error validation message.">
             <textarea name="some-name"></textarea>
@@ -55,14 +64,14 @@ describe('Textarea Wrapper', () => {
             <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-textarea-wrapper>`;
 
-        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-textarea-wrapper textarea');
-        await forceHovered(page, '.hovered > p-textarea-wrapper span a');
-        await forceFocused(page, '.focused > p-textarea-wrapper textarea');
-        await forceFocused(page, '.focused > p-textarea-wrapper span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-textarea-wrapper textarea');
-        await forceFocusedHovered(page, '.focused-hovered > p-textarea-wrapper span a');
+        await forceHoveredState(page, '.hovered > p-textarea-wrapper textarea');
+        await forceHoveredState(page, '.hovered > p-textarea-wrapper span a');
+        await forceFocusedState(page, '.focused > p-textarea-wrapper textarea');
+        await forceFocusedState(page, '.focused > p-textarea-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-textarea-wrapper textarea');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-textarea-wrapper span a');
       })
     ).toBeFalsy();
   });

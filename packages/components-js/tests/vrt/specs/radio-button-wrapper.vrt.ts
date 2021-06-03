@@ -1,11 +1,11 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
   generateGUID,
-  getBody,
-  GetElements,
+  getBodyMarkup,
+  GetMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -33,9 +33,12 @@ describe('Radio Button Wrapper', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
 
-        const getElements: GetElements = () => `
+        const getElementsMarkup: GetMarkup = () => `
           <p-radio-button-wrapper label="Some label">
             <input type="radio" name="some-name" />
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper label="Disabled">
+            <input type="radio" name="some-name" disabled/>
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="radio" name="some-name" />
@@ -45,6 +48,9 @@ describe('Radio Button Wrapper', () => {
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label">
             <input type="radio" name="${generateGUID()}" checked/>
+          </p-radio-button-wrapper>
+          <p-radio-button-wrapper label="Disabled">
+            <input type="radio" name="${generateGUID()}" disabled checked/>
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="radio" name="${generateGUID()}" checked/>
@@ -65,14 +71,14 @@ describe('Radio Button Wrapper', () => {
             <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-radio-button-wrapper>`;
 
-        await setContentWithDesignSystem(page, getBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
-        await forceHovered(page, '.hovered > p-radio-button-wrapper span a');
-        await forceFocused(page, '.focused > p-radio-button-wrapper input[type="radio"]');
-        await forceFocused(page, '.focused > p-radio-button-wrapper span a');
-        await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
-        await forceFocusedHovered(page, '.focused-hovered > p-radio-button-wrapper span a');
+        await forceHoveredState(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
+        await forceHoveredState(page, '.hovered > p-radio-button-wrapper span a');
+        await forceFocusedState(page, '.focused > p-radio-button-wrapper input[type="radio"]');
+        await forceFocusedState(page, '.focused > p-radio-button-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-radio-button-wrapper span a');
       })
     ).toBeFalsy();
   });

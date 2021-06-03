@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,15 +32,19 @@ describe('Switch', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-switch theme="${theme}">Some label</p-switch>
-          <p-switch theme="${theme}" checked="true">Some label</p-switch>`;
+          <p-switch theme="${theme}" checked="true">Some label</p-switch>
+          <p-switch theme="${theme}" disabled="true">Disabled</p-switch>
+          <p-switch theme="${theme}" disabled="true" checked="true">Disabled</p-switch>
+          <p-switch theme="${theme}" loading="true">Loading</p-switch>
+          <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-switch >>> button');
-        await forceFocused(page, '.focused > p-switch >>> button');
-        await forceFocusedHovered(page, '.focused-hovered > p-switch >>> button');
+        await forceHoveredState(page, '.hovered > p-switch >>> button');
+        await forceFocusedState(page, '.focused > p-switch >>> button');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-switch >>> button');
       })
     ).toBeFalsy();
   });

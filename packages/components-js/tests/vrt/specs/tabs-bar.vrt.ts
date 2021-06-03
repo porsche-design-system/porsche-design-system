@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,26 +32,26 @@ describe('Tabs Bar', () => {
         const head = `
           <link rel="stylesheet" href="styles.css" />`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
-          <p-tabs-bar theme="${theme}">
-            <button type="button">Tab One</button>
-            <button type="button">Tab Two</button>
-            <button type="button">Tab Three</button>
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-tabs-bar theme="${theme}" active-tab-index="1">
+            <button type="button">Button Tab One</button>
+            <button type="button">Button Tab Two</button>
+            <button type="button">Button Tab Three</button>
           </p-tabs-bar>
-          <p-tabs-bar theme="${theme}">
-            <a>Tab One</a>
-            <a>Tab Two</a>
-            <a>Tab Three</a>
+          <p-tabs-bar theme="${theme}" active-tab-index="1">
+            <a>Anchor Tab One</a>
+            <a>Anchor Tab Two</a>
+            <a>Anchor Tab Three</a>
           </p-tabs-bar>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-tabs-bar button');
-        await forceHovered(page, '.hovered > p-tabs-bar a');
-        await forceFocused(page, '.focused > p-tabs-bar button');
-        await forceFocused(page, '.focused > p-tabs-bar a');
-        await forceFocusedHovered(page, '.focused-hovered > p-tabs-bar button');
-        await forceFocusedHovered(page, '.focused-hovered > p-tabs-bar a');
+        await forceHoveredState(page, '.hovered > p-tabs-bar button');
+        await forceHoveredState(page, '.hovered > p-tabs-bar a');
+        await forceFocusedState(page, '.focused > p-tabs-bar button');
+        await forceFocusedState(page, '.focused > p-tabs-bar a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar button');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar a');
       })
     ).toBeFalsy();
   });

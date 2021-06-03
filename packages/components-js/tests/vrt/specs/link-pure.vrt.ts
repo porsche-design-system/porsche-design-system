@@ -1,10 +1,10 @@
 import { getVisualRegressionStatesTester, getVisualRegressionTester, testOptions } from '../helpers';
 import {
-  forceFocused,
-  forceFocusedHovered,
-  forceHovered,
-  getThemedBody,
-  GetThemedElements,
+  forceFocusedState,
+  forceFocusedHoveredState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../../e2e/helpers';
 
@@ -32,19 +32,19 @@ describe('Link Pure', () => {
           <link rel="stylesheet" href="styles.css" />
           <style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
-        const getElements: GetThemedElements = (theme = 'light') => `
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>
           <p-link-pure theme="${theme}" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
           <p-link-pure theme="${theme}"><a href="#">Some label</a></p-link-pure>`;
 
-        await setContentWithDesignSystem(page, getThemedBody(getElements), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHovered(page, '.hovered > p-link-pure >>> a');
-        await forceHovered(page, '.hovered > p-link-pure >>> span');
-        await forceFocused(page, '.focused > p-link-pure >>> a');
-        await forceFocused(page, '.focused > p-link-pure >>> span');
-        await forceFocusedHovered(page, '.focused-hovered > p-link-pure >>> a');
-        await forceFocusedHovered(page, '.focused-hovered > p-link-pure >>> span');
+        await forceHoveredState(page, '.hovered > p-link-pure >>> a');
+        await forceHoveredState(page, '.hovered > p-link-pure >>> span');
+        await forceFocusedState(page, '.focused > p-link-pure >>> a');
+        await forceFocusedState(page, '.focused > p-link-pure >>> span');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link-pure >>> a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link-pure >>> span');
       })
     ).toBeFalsy();
   });
