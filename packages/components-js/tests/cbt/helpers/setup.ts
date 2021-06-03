@@ -23,7 +23,7 @@ const options: CrossBrowserTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new SpecReporter());
+jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 export const getCrossBrowserTester = (): CrossBrowserTester => {
   if (!crossBrowserTester) {

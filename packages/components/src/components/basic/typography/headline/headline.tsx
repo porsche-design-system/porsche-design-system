@@ -38,7 +38,7 @@ export class Headline {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
     const isHeadlineVariantType = isVariantType(this.variant);
 
-    const headlineClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
       [`root--align-${this.align}`]: this.align !== 'left',
@@ -50,7 +50,7 @@ export class Headline {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagName class={headlineClasses}>
+      <TagName class={rootClasses}>
         {!isHeadlineVariantType ? (
           <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
             <slot />

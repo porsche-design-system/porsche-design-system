@@ -18,7 +18,7 @@ export class ContentWrapper {
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
-    const contentWrapperClasses = {
+    const rootClasses = {
       ['root']: true,
       [`root--${this.width}`]: this.width !== 'fluid',
       ['root--background-default']: this.backgroundColor === 'default',
@@ -26,7 +26,7 @@ export class ContentWrapper {
     };
 
     return (
-      <div class={contentWrapperClasses}>
+      <div class={rootClasses}>
         <slot />
       </div>
     );
