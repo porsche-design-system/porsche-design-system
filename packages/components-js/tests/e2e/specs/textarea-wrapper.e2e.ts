@@ -1,18 +1,17 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getAttribute,
   getBrowser,
+  getLifecycleStatus,
+  getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
   waitForInheritedCSSTransition,
-  expectedStyleOnFocus,
   waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -245,51 +244,6 @@ describe('textarea-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <textarea> when it is focused', async () => {
-      await initTextarea();
-
-      const host = await getHost();
-      const textarea = await getTextarea();
-
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '2px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'success', offset: '2px' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '2px' }));
-
-      await setAttribute(textarea, 'readonly', 'true');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '2px' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initTextarea({
-        useSlottedLabel: true,
-        useSlottedDescription: true,
-        useSlottedMessage: true,
-        state: 'error',
-      });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 

@@ -42,7 +42,7 @@
   );
   background-size: p-px-to-rem(28px) !important;
   border: 2px solid $p-color-background-default !important;
-  transition: background $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: background $p-animation-hover-duration-var $p-animation-hover-bezier !important;
 }
 
 ::slotted(input:checked) {
@@ -204,7 +204,7 @@
     display: inline-block;
     cursor: pointer;
     color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
@@ -332,5 +332,5 @@
 .message {
   margin-top: $p-spacing-4;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 }

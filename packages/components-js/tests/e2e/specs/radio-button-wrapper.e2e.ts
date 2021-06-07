@@ -1,22 +1,21 @@
 import {
+  expectedStyleOnFocus,
   getActiveElementId,
   getActiveElementTagName,
   getAttribute,
-  getStyleOnFocus,
+  getBoxShadowStyle,
   getBrowser,
+  getElementStyle,
+  getLifecycleStatus,
+  getOutlineStyle,
   getProperty,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
   waitForInheritedCSSTransition,
-  getOutlineStyle,
-  getBoxShadowStyle,
-  getLifecycleStatus,
-  getElementStyle,
   waitForInputTransition,
-  removeAttribute,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -396,46 +395,6 @@ describe('radio-button-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <input> when it is focused', async () => {
-      await initRadioButton();
-
-      const host = await getHost();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow' })
-      );
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'success', css: 'boxShadow' })
-      );
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'error', css: 'boxShadow' })
-      );
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initRadioButton({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 

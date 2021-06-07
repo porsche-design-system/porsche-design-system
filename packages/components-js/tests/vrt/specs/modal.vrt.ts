@@ -19,7 +19,10 @@ describe('Modal', () => {
         async () => {
           await vrt.goTo('/#modal-scrollable');
           await vrt.getPage().evaluate(() => {
-            document.querySelector('p-modal').scrollTo(0, 10000);
+            // screenshot triggers resize, so we need to scroll the modal after that
+            window.addEventListener('resize', () => {
+              document.querySelector('p-modal').scrollTo(0, 10000);
+            });
           });
         },
         testOptions

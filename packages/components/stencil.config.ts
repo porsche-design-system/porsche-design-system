@@ -9,6 +9,7 @@ import replace from '@rollup/plugin-replace';
 // @ts-ignore
 import CleanCSS from 'clean-css';
 import type { TagName } from '@porsche-design-system/shared';
+import { constantCase } from 'change-case';
 
 /**
  * TODO: Remove this workaround
@@ -69,11 +70,17 @@ export const config: Config = {
         // minify slotted styles
         find: /const style = `((.|\s)*?)`/g,
         replace: (_, $1) => {
-          const placeholder = /\${tagName}/g;
-          const tmpPlaceholder = /TAG_NAME/g;
-          return `const style = \`${minifyCSS($1.replace(placeholder, 'TAG_NAME')).replace(
-            tmpPlaceholder,
-            '${tagName}'
+          const placeholder = /\${(tagName|P_ANIMATION_HOVER_DURATION)}/g;
+          const placeholderReverted = /(TAG_NAME|P_ANIMATION_HOVER_DURATION)/g;
+
+          const escapeForMinify = (match: string, p1: string) =>
+            p1 === 'P_ANIMATION_HOVER_DURATION' ? p1 : constantCase(p1);
+          const reAddInterpolation = (match: string, p1: string) =>
+            p1 === 'P_ANIMATION_HOVER_DURATION' ? '${P_ANIMATION_HOVER_DURATION}' : '${tagName}';
+
+          return `const style = \`${minifyCSS($1.replace(placeholder, escapeForMinify)).replace(
+            placeholderReverted,
+            reAddInterpolation
           )}\``;
         },
       }),
