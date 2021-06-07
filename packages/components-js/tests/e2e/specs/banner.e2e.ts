@@ -2,6 +2,7 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getActiveElementTagNameInShadowRoot,
+  getAttribute,
   getBrowser,
   getCssClasses,
   getLifecycleStatus,
@@ -54,7 +55,9 @@ describe('banner', () => {
 
     const host = await getHost();
     const activeElement = await getActiveElementTagNameInShadowRoot(host);
+    const closeBtnReal = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
 
+    expect(await getAttribute(await closeBtnReal(), 'type')).toBe('button');
     expect(activeElement.toLowerCase()).toBe('p-button-pure');
   });
 
