@@ -39,9 +39,6 @@ describe('Textarea Wrapper', () => {
           <p-textarea-wrapper label="Some label" message="Some error validation message.">
             <textarea name="some-name"></textarea>
           </p-textarea-wrapper>
-          <p-textarea-wrapper label="Disabled">
-            <textarea name="some-name" disabled>Disabled</textarea>
-          </p-textarea-wrapper>
           <p-textarea-wrapper label="Readonly">
             <textarea name="some-name" readonly>Readonly</textarea>
           </p-textarea-wrapper>

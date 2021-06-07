@@ -35,8 +35,6 @@ describe('Switch', () => {
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-switch theme="${theme}">Some label</p-switch>
           <p-switch theme="${theme}" checked="true">Some label</p-switch>
-          <p-switch theme="${theme}" disabled="true">Disabled</p-switch>
-          <p-switch theme="${theme}" disabled="true" checked="true">Disabled</p-switch>
           <p-switch theme="${theme}" loading="true">Loading</p-switch>
           <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
 

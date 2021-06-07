@@ -62,9 +62,6 @@ describe('Text Field Wrapper', () => {
             <span slot="message">Some success message with a <a href="#">link</a>.</span>
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Some label">
-            <input type="text" name="some-name" value="Disabled" disabled/>
-          </p-text-field-wrapper>
-          <p-text-field-wrapper label="Some label">
             <input type="text" name="some-name" value="Readonly" readonly/>
           </p-text-field-wrapper>`;
 

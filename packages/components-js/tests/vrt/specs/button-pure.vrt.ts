@@ -34,10 +34,8 @@ describe('Button Pure', () => {
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-button-pure theme="${theme}">Some label</p-button-pure>
-          <p-button-pure theme="${theme}" disabled="true">Disabled</p-button-pure>
           <p-button-pure theme="${theme}" loading="true">Loading</p-button-pure>
           <p-button-pure theme="${theme}">Some label <p slot="subline">Some Subline</p></p-button-pure>
-          <p-button-pure theme="${theme}" disabled="true">Disabled <p slot="subline">Some Subline</p></p-button-pure>
           <p-button-pure theme="${theme}" loading="true">Loading <p slot="subline">Some Subline</p></p-button-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
