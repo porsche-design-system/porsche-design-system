@@ -38,11 +38,6 @@ describe('Select Wrapper', () => {
               <option value="a">Option A</option>
             </select>
           </p-select-wrapper>
-          <p-select-wrapper theme="${theme}" label="Disabled">
-            <select name="some-name" aria-invalid="false" disabled>
-              <option value="a">Option A</option>
-            </select>
-          </p-select-wrapper>
           <p-select-wrapper theme="${theme}" label="Some label" state="error" message="Some error validation message.">
             <select name="some-name" aria-invalid="true">
               <option value="a">Option A</option>

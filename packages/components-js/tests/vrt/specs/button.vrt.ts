@@ -36,7 +36,6 @@ describe('Button', () => {
           <p-button theme="${theme}" variant="primary">Primary</p-button>
           <p-button theme="${theme}" variant="secondary">Secondary</p-button>
           <p-button theme="${theme}" variant="tertiary">Tertiary</p-button>
-          <p-button theme="${theme}" disabled="true">Disabled</p-button>
           <p-button theme="${theme}" loading="true">Loading</p-button>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });

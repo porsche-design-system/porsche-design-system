@@ -35,9 +35,6 @@ describe('Checkbox Wrapper', () => {
           <p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
-          <p-checkbox-wrapper label="Disabled">
-            <input type="checkbox" name="some-name" disabled/>
-          </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="checkbox" name="some-name" />
           </p-checkbox-wrapper>
@@ -46,9 +43,6 @@ describe('Checkbox Wrapper', () => {
           </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label">
             <input type="checkbox" name="some-name" checked/>
-          </p-checkbox-wrapper>
-          <p-checkbox-wrapper label="Disabled">
-            <input type="checkbox" name="some-name" checked disabled/>
           </p-checkbox-wrapper>
           <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="checkbox" name="some-name" checked/>

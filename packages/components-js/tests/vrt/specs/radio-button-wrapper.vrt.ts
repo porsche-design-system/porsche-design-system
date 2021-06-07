@@ -37,9 +37,6 @@ describe('Radio Button Wrapper', () => {
           <p-radio-button-wrapper label="Some label">
             <input type="radio" name="some-name" />
           </p-radio-button-wrapper>
-          <p-radio-button-wrapper label="Disabled">
-            <input type="radio" name="some-name" disabled/>
-          </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="radio" name="some-name" />
           </p-radio-button-wrapper>
@@ -48,9 +45,6 @@ describe('Radio Button Wrapper', () => {
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label">
             <input type="radio" name="${generateGUID()}" checked/>
-          </p-radio-button-wrapper>
-          <p-radio-button-wrapper label="Disabled">
-            <input type="radio" name="${generateGUID()}" disabled checked/>
           </p-radio-button-wrapper>
           <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
             <input type="radio" name="${generateGUID()}" checked/>
