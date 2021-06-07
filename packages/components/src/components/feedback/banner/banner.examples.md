@@ -33,7 +33,7 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 
 ## Example with user interaction
 
-<p-button type="button" v-on:click="openBanner($event)" id="p-open-banner">Open Banner</p-button>
+<p-button type="button" v-on:click="openBanner($event)">Open Banner</p-button>
 
 ### ♿️ Accessibility hints
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC` or `Enter` key:
@@ -89,14 +89,14 @@ p-banner {
     
     openBanner = (event) => {
       const el = document.createElement('p-banner');
-      const elID = event.currentTarget.id;
+      const currentTarget = event.currentTarget;
       el.innerHTML = `
         <span slot="title">Some banner title</span>
         <span slot="description">Some banner description.</span>
       `;
       document.getElementById('app').append(el);
-      el.addEventListener("dismiss", () => {
-        document.getElementById(elID).focus();
+      el.addEventListener('dismiss', () => {
+        currentTarget.focus();
       });
     };
   

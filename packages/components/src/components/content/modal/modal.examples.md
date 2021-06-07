@@ -188,7 +188,7 @@ Of course, any combination of the available options is possible.
 </p-modal>`;
 
     fullscreen =
-`<p-button type="button" type="button">Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">
