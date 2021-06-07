@@ -34,8 +34,7 @@
   color: inherit;
   text-indent: 0 !important;
   cursor: pointer !important;
-  transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-    border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
@@ -93,7 +92,7 @@
   &__description {
     display: block;
     width: fit-content;
-    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &--visible {
       @include text-visible;
@@ -212,8 +211,8 @@
     width: 100%;
     height: p-px-to-rem(48px);
     display: block;
-    transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier,
+      background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     #{$bem-block}--theme-light & {
       background-color: $p-color-background-default;
@@ -299,7 +298,7 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    transition: border-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: border-color $p-animation-hover-duration-var $p-animation-hover-bezier;
     transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
 
     #{$bem-block}--theme-light & {
@@ -393,8 +392,8 @@
     cursor: pointer;
     text-align: left;
     word-break: break-word;
-    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier,
+      background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &[role='status'] {
       cursor: not-allowed;
@@ -489,7 +488,7 @@
     position: absolute;
     top: p-px-to-rem(12px);
     right: p-px-to-rem(12px);
-    transition: transform var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     #{$bem-block}--theme-light & {
       color: $p-color-default;
@@ -516,7 +515,7 @@
 
   &__message {
     margin-top: $p-spacing-4;
-    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &#{$bem-block}--theme-light {
       color: $p-color-default;
@@ -646,7 +645,7 @@
       height: p-px-to-rem(48px);
       outline: transparent solid 1px;
       outline-offset: 2px;
-      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
 

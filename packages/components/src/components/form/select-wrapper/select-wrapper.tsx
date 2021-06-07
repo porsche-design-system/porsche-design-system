@@ -19,6 +19,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
+import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -676,7 +677,7 @@ export class SelectWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color .24s ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }

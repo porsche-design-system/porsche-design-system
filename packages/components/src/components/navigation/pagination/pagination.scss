@@ -117,7 +117,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   position: relative;
   width: p-px-to-rem(40px);
   height: p-px-to-rem(40px);

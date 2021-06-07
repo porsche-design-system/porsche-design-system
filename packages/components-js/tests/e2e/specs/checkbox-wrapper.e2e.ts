@@ -1,20 +1,19 @@
 import {
+  expectedStyleOnFocus,
   getActiveElementTagName,
   getAttribute,
   getBrowser,
+  getElementStyle,
+  getLifecycleStatus,
+  getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
   waitForInheritedCSSTransition,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
-  getElementStyle,
   waitForInputTransition,
-  removeAttribute,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -418,57 +417,6 @@ describe('checkbox-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <input> when it is focused', async () => {
-      await initCheckbox();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-    });
-
-    it('should show outline of slotted <input> when it is focused on success', async () => {
-      await initCheckbox();
-
-      const host = await getHost();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success' }), 'on success');
-    });
-
-    it('should show outline of slotted <input> when it is focused on error', async () => {
-      await initCheckbox();
-
-      const host = await getHost();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }), 'on error');
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initCheckbox({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 
