@@ -129,9 +129,8 @@ button {
   background-color: transparent;
   outline: none;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration-switch, $p-animation-hover-duration)
-      $p-animation-hover-bezier,
-    border-color var(--p-transition-duration-switch, $p-animation-hover-duration) $p-animation-hover-bezier;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    border-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   #{$root}--theme-dark & {
     border-color: $p-color-theme-dark-neutral-contrast-high;
@@ -213,9 +212,8 @@ button {
   border-radius: 50%;
   background-color: $p-color-neutral-contrast-high;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration-switch, $p-animation-hover-duration)
-      $p-animation-hover-bezier,
-    transform var(--p-transition-duration-switch, $p-animation-hover-duration) $p-animation-hover-bezier;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   #{$root}--theme-dark & {
     background-color: $p-color-theme-dark-neutral-contrast-high;

@@ -4,7 +4,6 @@ import {
   getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
-  getStyleOnFocus,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -54,21 +53,6 @@ describe('text', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(link)).toBe(visible);
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initText();
-
-      const host = await getHost();
-      const link = await getLink();
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
     });
   });
 

@@ -472,7 +472,7 @@ get direction() {
     get validationStates() {
       const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
       return `<p-select-wrapper label="Some label" state="${this.state}" ${attr}>
-  <select name="some-name" :aria-invalid="state === 'error'">
+  <select name="some-name" aria-invalid="${this.state === 'error'}">
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
 </p-select-wrapper>`
