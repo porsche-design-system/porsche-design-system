@@ -1,14 +1,14 @@
 import {
+  expectedStyleOnFocus,
   getBrowser,
-  getStyleOnFocus,
+  getElementStyle,
+  getLifecycleStatus,
+  getOutlineStyle,
   selectNode,
   setAttribute,
-  expectedStyleOnFocus,
   setContentWithDesignSystem,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -30,6 +30,7 @@ describe('text', () => {
 
   const getHost = () => selectNode(page, 'p-text');
   const getLink = () => selectNode(page, 'p-text a');
+  const getParagraph = () => selectNode(page, 'p-text >>> p');
 
   describe('focus state', () => {
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -52,21 +53,6 @@ describe('text', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(link)).toBe(visible);
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initText();
-
-      const host = await getHost();
-      const link = await getLink();
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
     });
   });
 
@@ -93,5 +79,20 @@ describe('text', () => {
       expect(status.componentDidUpdate['p-text']).toBe(1, 'componentDidUpdate: p-text');
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
+  });
+
+  it('should have "text-size-adjust: none" set', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text>
+        Some message
+      </p-text>`
+    );
+    const paragraph = await getParagraph();
+    const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust');
+
+    // when webkitTextSizeAdjust is set to "none", it defaults to 100%
+    expect(webkitTextSizeAdjustStyle).toBe('100%');
   });
 });

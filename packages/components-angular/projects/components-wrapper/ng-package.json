@@ -7,5 +7,5 @@
       "@porsche-design-system/components-js": "porscheDesignSystemComponentsJs"
     }
   },
-  "whitelistedNonPeerDependencies": ["@porsche-design-system/components-js"]
+  "allowedNonPeerDependencies": ["@porsche-design-system/components-js"]
 }

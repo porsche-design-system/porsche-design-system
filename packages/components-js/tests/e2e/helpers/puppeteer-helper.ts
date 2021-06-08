@@ -1,8 +1,7 @@
-import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
-import Protocol from 'devtools-protocol';
 
-type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
+type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
@@ -116,33 +115,6 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
-export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
-export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
-
-export const forceStateOnElement = async (
-  page: Page,
-  selector: string,
-  states: ForcedPseudoClasses[]
-): Promise<void> => {
-  const cdp = await page.target().createCDPSession();
-  await cdp.send('DOM.getDocument');
-
-  const element = await selectNode(page, selector);
-  const { x, y, width, height } = await element.boundingBox();
-
-  const elementNode = (await cdp.send('DOM.getNodeForLocation', {
-    x: x + width / 2,
-    y: y + height / 2,
-  })) as Protocol.DOM.GetNodeForLocationResponse;
-
-  await cdp.send('CSS.enable');
-  await cdp.send('CSS.forcePseudoState', {
-    nodeId: elementNode.nodeId,
-    forcedPseudoClasses: states,
-  });
-  await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
-};
-
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
 export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
@@ -242,15 +214,6 @@ export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleO
   };
   const { pseudo } = options;
   return await getElementStyle(element, 'boxShadow', { pseudo });
-};
-
-export const getStyleOnFocus = async (
-  element: ElementHandle,
-  property: 'outline' | 'boxShadow' = 'outline',
-  opts?: GetStyleOnFocusOptions
-): Promise<string> => {
-  await element.focus();
-  return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
 };
 
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {

@@ -19,11 +19,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Banner',
   },
   {
-    path: 'banner-behaviour',
-    component: fromPages.BannerBehaviourComponent,
-    name: 'Banner Behaviour',
-  },
-  {
     path: 'button',
     component: fromPages.ButtonComponent,
     name: 'Button',
@@ -107,6 +102,11 @@ export const routes: ExtendedRoute[] = [
     path: 'modal-fullscreen',
     component: fromPages.ModalFullscreenComponent,
     name: 'Modal Fullscreen',
+  },
+  {
+    path: 'modal-fullscreen-breakpoint',
+    component: fromPages.ModalFullscreenBreakpointComponent,
+    name: 'Modal Fullscreen Breakpoint',
   },
   {
     path: 'modal-prefixed',

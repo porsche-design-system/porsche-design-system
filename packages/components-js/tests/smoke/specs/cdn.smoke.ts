@@ -27,6 +27,7 @@ describe('cdn', () => {
   const responses: ResponseType[] = [];
 
   beforeEach(async () => {
+    await page.setCacheEnabled(false);
     await page.setRequestInterception(true);
 
     requests.length = 0; // clear old array

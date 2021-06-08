@@ -1,18 +1,17 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
-  getStyleOnFocus,
+  getLifecycleStatus,
+  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
   waitForEventSerialization,
+  waitForInheritedCSSTransition,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -227,42 +226,6 @@ describe('link-pure', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
-    });
-
-    it('should show outline of shadowed <a> when it is focused', async () => {
-      await initLinkPure();
-
-      const host = await getHost();
-      const link = await getLink();
-
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ offset: '1px' })
-      );
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
-      );
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initLinkPure({ useSlottedAnchor: true });
-
-      const host = await getHost();
-      const link = await getSlottedLink();
-
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ offset: '1px' })
-      );
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
-      );
     });
   });
 

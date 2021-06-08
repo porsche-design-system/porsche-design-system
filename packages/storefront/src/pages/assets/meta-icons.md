@@ -64,6 +64,6 @@ You can find an implemented example in our [Sample VanillaJS Integration](https:
   
   @Component
   export default class Code extends Vue {
-    public metaTagsAndIconLinks: string = getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }).replaceAll('><', '>\n<');
+    public metaTagsAndIconLinks: string = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
   }
 </script>

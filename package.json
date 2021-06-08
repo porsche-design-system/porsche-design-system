@@ -9,6 +9,7 @@
       "packages/components-js/dist/components-wrapper",
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/dist/components-wrapper",
+      "packages/components-react/projects/uxpin-wrapper",
       "packages/utilities/projects/utilities"
     ],
     "nohoist": [
@@ -49,8 +50,7 @@
     "preinstall:components-js": "TARGET=./packages/components-js/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-js/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-angular": "TARGET=./packages/components-angular/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-react": "TARGET=./packages/components-react/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/components-wrapper/package.json $TARGET",
-    "start": "yarn build && concurrently --kill-others-on-fail -n 'components-js,storefront' 'yarn start:components-js' 'yarn start:storefront'",
-    "start:assets": "yarn --cwd ./packages/assets start",
+    "start": "yarn start:storefront",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
     "start:components-angular": "yarn --cwd ./packages/components-angular start",
@@ -82,7 +82,7 @@
     "test:unit:components": "yarn --cwd ./packages/components test:unit",
     "test:unit:components-js": "yarn --cwd ./packages/components-js test:unit",
     "test:unit:components-js:components-manager-core": "yarn --cwd ./packages/components-js test:unit:components-manager-core",
-    "test:unit:components-js:components-wrapper": "yarn --cwd ./packages/components-js test:unit:components-wrapper",
+    "test:unit:components-js:components-wrapper": "yarn --cwd ./packages/components-js test:unit:components-js",
     "test:unit:components-js:partials": "yarn --cwd ./packages/components-js test:unit:partials",
     "test:unit:components-react": "yarn --cwd ./packages/components-react test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",

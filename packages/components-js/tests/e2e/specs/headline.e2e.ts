@@ -7,7 +7,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
+import { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('headline', () => {
   let page: Page;
