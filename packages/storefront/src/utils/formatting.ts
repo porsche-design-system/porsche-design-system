@@ -17,30 +17,36 @@ export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
 
 export const convertToAngular = (markup: string): string =>
   markup
-    // mark aria attributes with % to preserve from conversion
-    .replace(/\s(aria-\S+)=(".*?")/g, ' $1%=$2')
     // transform to event binding syntax
     .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
       return ` (${$key})="${$value}"`;
     })
     // transform all keys of object values to camel case and surround them in brackets
-    .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+    .replace(/\s([a-z-]+)="{(.*?)}"/g, (m, $key, $value) => {
       return ` [${camelCase($key)}]="{${$value}}"`;
     })
     // transform all other keys to camel case, surround them in brackets and surround all values with single quotes
-    .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
-      return ` [${camelCase($key)}]="'${$value}'"`;
+    .replace(/\s([a-z-]+)="(\D.*?)"/g, (m, $key, $value) => {
+      if ($key.startsWith('aria-')) {
+        // handle aria attributes
+        return ` ${$key}="${$value}"`;
+      } else {
+        return ` [${camelCase($key)}]="'${$value}'"`;
+      }
     })
     // transform all keys to camel case which have digits as a value
-    .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
-      return ` [${camelCase($key)}]="${$value}"`;
+    .replace(/\s([a-z-]+)="(\d*)"/g, (m, $key, $value) => {
+      if ($key === 'name') {
+        // surround numeric "name" attribute values with single quotes
+        return ` [${$key}]="'${$value}'"`;
+      } else {
+        return ` [${camelCase($key)}]="${$value}"`;
+      }
     })
     // remove single quotes from boolean values
-    .replace(/\s(\[\S+\])="'(true|false)'"/g, ' $1="$2"')
+    .replace(/\s(\[[A-Za-z]+\])="'(true|false)'"/g, ' $1="$2"')
     // remove brackets from "class" and "slot("|slot) attributes
-    .replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"')
-    //remove preserve marker
-    .replace(/%=/g, '=');
+    .replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"');
 
 export const convertToReact = (markup: string): string =>
   markup

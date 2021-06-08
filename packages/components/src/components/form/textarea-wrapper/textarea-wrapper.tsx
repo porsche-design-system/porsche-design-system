@@ -15,6 +15,7 @@ import {
   isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -70,7 +71,7 @@ export class TextareaWrapper {
 
   public render(): JSX.Element {
     const { disabled } = this.textarea;
-    const labelClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--disabled']: disabled,
       [`root--${this.state}`]: this.state !== 'none',
@@ -83,7 +84,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={rootClasses}>
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}
@@ -120,7 +121,7 @@ export class TextareaWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color .24s ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }

@@ -79,7 +79,7 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
-    const buttonPureClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
@@ -98,7 +98,7 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          class={buttonPureClasses}
+          class={rootClasses}
           type={this.type}
           disabled={this.isDisabledOrLoading}
           tabindex={this.tabbable ? 0 : -1}

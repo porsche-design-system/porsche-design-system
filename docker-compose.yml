@@ -21,6 +21,11 @@ services:
       - GITHUB_TOKEN
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - CDN_USER
+      - CDN_SSH_KEY
+      - UXPIN_TOKEN
       - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached
@@ -31,6 +36,7 @@ services:
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
@@ -41,26 +47,6 @@ services:
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
-  design-system-deploy:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-    working_dir: /opt/porsche-design-system-app
-    environment:
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - GITHUB_REF
-      - GITHUB_SHA
-      - GITHUB_TOKEN
-    volumes:
-      - ./:/opt/porsche-design-system-app:cached
-      - /opt/porsche-design-system-gh-pages
-  design-system-deploy-assets:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-    working_dir: /opt/porsche-design-system-app
-    environment:
-      - CDN_USER
-      - CDN_SSH_KEY
-    volumes:
-      - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
     image: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     volumes:
@@ -71,6 +57,7 @@ services:
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
@@ -91,6 +78,7 @@ volumes:
   components-js-node-modules:
   components-angular-node-modules:
   components-react-node-modules:
+  components-react-uxpin-wrapper-node-modules:
   fonts-node-modules:
   icons-node-modules:
   marque-node-modules:

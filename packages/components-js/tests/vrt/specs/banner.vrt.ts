@@ -1,5 +1,14 @@
-import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
-import { selectNode } from '../../e2e/helpers';
+import {
+  forceFocusedHoveredState,
+  forceFocusedState,
+  forceHoveredState,
+  getBodyMarkup,
+  GetMarkup,
+  getVisualRegressionContentWrapperTester,
+  getVisualRegressionStatesTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
@@ -15,21 +24,30 @@ describe('Banner', () => {
     ).toBeFalsy();
   });
 
-  it('should have no visual regression closing behaviour', async () => {
-    const vrt = getVisualRegressionContentWrapperTester();
+  it('should have no visual regression for :hover + :focus-visible', async () => {
+    const vrt = getVisualRegressionStatesTester();
     expect(
-      await vrt.test(
-        'banner-behaviour',
-        async () => {
-          await vrt.goTo('/#banner-behaviour');
-          const page = await vrt.getPage();
+      await vrt.test('banner-states', async () => {
+        const page = await vrt.getPage();
 
-          const closeButton = await selectNode(page, '#banner-close >>> p-button-pure');
-          await closeButton.click();
-          await page.waitForTimeout(700);
-        },
-        testOptions
-      )
+        const head = `
+          <style type="text/css">
+            .playground { padding: 50px 0; }
+            .playground p-banner { --p-banner-position-type: static; }
+          </style>`;
+
+        const getElementsMarkup: GetMarkup = () => `
+          <p-banner state="neutral">
+            <span slot="title">Some banner title</span>
+            <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
+          </p-banner>`;
+
+        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+
+        await forceHoveredState(page, '.hovered > p-banner span a');
+        await forceFocusedState(page, '.focused > p-banner span a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-banner span a');
+      })
     ).toBeFalsy();
   });
 });

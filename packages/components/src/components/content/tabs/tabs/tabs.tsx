@@ -66,6 +66,7 @@ export class Tabs {
     return (
       <Host>
         <PrefixedTagNames.pTabsBar
+          class="tabs-bar"
           size={this.size}
           weight={this.weight}
           theme={this.theme}
