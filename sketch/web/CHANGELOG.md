@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.1.0] - 2021-06-08
+
+#### Added
+
+Type | Web Library |
+|---|---|
+Component | Switch |
+
+#### Changed
+
+Type | Web Library |
+|---|---|
+Colors | Update Layer Styles with color variables |
+
 ### [2.0.3] - 2021-04-16
 
 #### Fixed
