@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.1.0] - 2021-06-08
+
+#### Added
+
+Type | Basic Library |
+|---|---|
+Color | Add color variables
+
+#### Changed
+
+Type | Basic Library |
+|---|---|
+Colors | Update Layer Styles with color variables |
+
 ### [2.0.1] - 2021-01-29
 
 #### Added
