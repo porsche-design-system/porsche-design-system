@@ -78,7 +78,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground :markup="disabled" :config="config"></Playground>
 
-### ♿️ Accessibility hints
+### Accessibility hints
 In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users.
 They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
