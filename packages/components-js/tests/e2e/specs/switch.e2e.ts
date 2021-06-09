@@ -20,7 +20,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-fdescribe('switch', () => {
+describe('switch', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
