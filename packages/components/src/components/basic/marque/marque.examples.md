@@ -19,7 +19,7 @@ The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provide
 
 <Playground :markup="marqueWithTMAndLink"></Playground>
 
-### ♿️ Accessibility hints
+### Accessibility hints
 If the Marque is used with a link, make sure to add a descriptive ARIA label to inform screen reader users what the link stands for. 
 
 ## Bind events to the link

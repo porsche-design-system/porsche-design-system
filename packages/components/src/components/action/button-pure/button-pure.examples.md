@@ -19,7 +19,7 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### ♿️ Accessibility hints
+### Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Submit contact form"`
 * If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not showing why these elements are disabled.
