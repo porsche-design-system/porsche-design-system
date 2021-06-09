@@ -17,6 +17,6 @@ export const injectGlobalStyle = (): void => {
     document.querySelector('head').appendChild(link);
 
     console.warn(`The Porsche Design System had to inject our font-face.css file into your head. Please preload it in the head of your 'index.html'.
-You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/#/performance/loading-behaviour`);
+You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/performance/loading-behaviour`);
   }
 };
