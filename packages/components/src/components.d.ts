@@ -641,6 +641,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PTable {
+        /**
+          * A caption describing the contents of the table.
+         */
+        "caption"?: string;
     }
     interface PTableBody {
     }
@@ -649,7 +653,10 @@ export namespace Components {
     interface PTableHead {
     }
     interface PTableHeadCell {
+        "hideLabel"?: boolean;
         "item"?: TableHeadItem;
+    }
+    interface PTableHeadRow {
     }
     interface PTableRow {
     }
@@ -969,6 +976,12 @@ declare global {
         prototype: HTMLPTableHeadCellElement;
         new (): HTMLPTableHeadCellElement;
     };
+    interface HTMLPTableHeadRowElement extends Components.PTableHeadRow, HTMLStencilElement {
+    }
+    var HTMLPTableHeadRowElement: {
+        prototype: HTMLPTableHeadRowElement;
+        new (): HTMLPTableHeadRowElement;
+    };
     interface HTMLPTableRowElement extends Components.PTableRow, HTMLStencilElement {
     }
     var HTMLPTableRowElement: {
@@ -1053,6 +1066,7 @@ declare global {
         "p-table-cell": HTMLPTableCellElement;
         "p-table-head": HTMLPTableHeadElement;
         "p-table-head-cell": HTMLPTableHeadCellElement;
+        "p-table-head-row": HTMLPTableHeadRowElement;
         "p-table-row": HTMLPTableRowElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
@@ -1703,6 +1717,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PTable {
+        /**
+          * A caption describing the contents of the table.
+         */
+        "caption"?: string;
         "onSortingChange"?: (event: CustomEvent<TableHeadItem>) => void;
     }
     interface PTableBody {
@@ -1712,7 +1730,10 @@ declare namespace LocalJSX {
     interface PTableHead {
     }
     interface PTableHeadCell {
+        "hideLabel"?: boolean;
         "item"?: TableHeadItem;
+    }
+    interface PTableHeadRow {
     }
     interface PTableRow {
     }
@@ -1894,6 +1915,7 @@ declare namespace LocalJSX {
         "p-table-cell": PTableCell;
         "p-table-head": PTableHead;
         "p-table-head-cell": PTableHeadCell;
+        "p-table-head-row": PTableHeadRow;
         "p-table-row": PTableRow;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
@@ -1938,6 +1960,7 @@ declare module "@stencil/core" {
             "p-table-cell": LocalJSX.PTableCell & JSXBase.HTMLAttributes<HTMLPTableCellElement>;
             "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
             "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
+            "p-table-head-row": LocalJSX.PTableHeadRow & JSXBase.HTMLAttributes<HTMLPTableHeadRowElement>;
             "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;

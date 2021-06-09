@@ -1,1 +1,49 @@
+import { breakpoint, color } from '@porsche-design-system/utilities';
+import type { JssStyle } from 'jss';
+
+export const transitionHoverDuration = '.24s';
+export const transitionHoverBezier = 'ease';
+
 export const pxToRem = (px: number): number => px / 16;
+export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
+
+export const hover = (): JssStyle => {
+  return {
+    transition: `color ${transitionHoverDuration} ${transitionHoverBezier} !important`,
+    '&:hover': {
+      color: `${color.state.hover} !important`,
+    },
+  };
+};
+
+type Options = {
+  color?: string;
+  offset?: number;
+};
+
+const defaultOptions: Options = {
+  color: color.state.focus,
+  offset: 2,
+};
+
+export const focus = (opts?: Options): JssStyle => {
+  const options: Options = { ...defaultOptions, ...opts };
+
+  return {
+    outline: 'transparent solid 1px !important',
+    outlineOffset: `${options.offset}px !important`,
+    '&::-moz-focus-inner': {
+      border: '0 !important',
+    },
+    '&:focus': {
+      outlineColor: `${options.color} !important`,
+    },
+    '&:focus:not(:focus-visible)': {
+      outlineColor: 'transparent !important',
+    },
+  };
+};
+
+export { breakpoint } from '@porsche-design-system/utilities';
+export type BreakPoint = keyof typeof breakpoint;
+export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
