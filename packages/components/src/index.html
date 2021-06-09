@@ -9,34 +9,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-    <style>
-      a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        text-indent: -9999px;
-      }
-
-      a:hover {
-        background: #ff14937d;
-      }
-
-      p-button,
-      p-button-pure {
-        position: relative;
-        z-index: 1;
-      }
-    </style>
   </head>
   <body>
     <div class="playground"></div>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const widths = [200, 80, 80, 100, 80, 100, 100, 122];
-
       const head = [
         { name: 'Model' },
         { name: 'Interest', key: 'interest' },
@@ -44,12 +22,11 @@
         { name: 'Purchase Intention', key: 'purchaseIntention' },
         { name: 'Status', key: 'status' },
         { name: 'Lead ID', key: 'leadId' },
-        { name: '' },
-        { name: '' },
+        { name: 'Actions' },
       ].map((item, i) => ({
         ...item,
         ...(item.name && {
-          isSortable: i > 0,
+          isSortable: i > 0 && i !== 6,
           isSorting: i === 1,
           direction: 'asc',
         }),
@@ -110,7 +87,7 @@
 
       const renderTableHeadCells = (items) =>
         items
-          .map((item, i) => `<p-table-head-cell style="width: ${widths[i]}px">${item.name}</p-table-head-cell>`)
+          .map((item, i) => {return `<p-table-head-cell ${i === 6 ? 'hide-label': ''}>${i === 4 ? item.name +'<br>with a subline' : item.name}</p-table-head-cell>`})
           .join('');
 
       const renderTableBodyRows = (items) =>
@@ -118,41 +95,37 @@
           .map(
             (item) => `
 <p-table-row>
-  <p-table-cell style="width: ${widths[0]}px">
+  <p-table-cell>
     <p-flex>
       <p-flex-item>
-        <img src="${item.imageUrl}" width="80" style="margin-right: 8px" alt="">
+        <img src="${item.imageUrl}" width="80" height="48" style="margin-right: .5rem" alt="Some image description.">
       </p-flex-item>
       <p-flex-item>
-        <p-text weight='semibold'>${item.model}</p-text>
-        <p-text size='x-small'>${item.date}</p-text>
+        <p-text weight="semibold"><a href="#">${item.model}</a></p-text>
+        <p-text size="x-small">${item.date}</p-text>
       </p-flex-item>
     </p-flex>
   </p-table-cell>
-  <p-table-cell style="width: ${widths[1]}px">${item.interest}</p-table-cell>
-  <p-table-cell style="width: ${widths[2]}px">${item.vin}</p-table-cell>
-  <p-table-cell style="width: ${widths[3]}px">${item.purchaseIntention}</p-table-cell>
-  <p-table-cell style="width: ${widths[4]}px">${item.status}</p-table-cell>
-  <p-table-cell style="width: ${widths[5]}px">${item.leadId}</p-table-cell>
-  <p-table-cell style="width: ${widths[6]}px">
-    <p-button-pure icon="edit">
-      <span style="white-space: nowrap">Edit Lead</span>
-    </p-button-pure>
+  <p-table-cell>
+    <b>${item.interest}</b>
   </p-table-cell>
-  <p-table-cell style="width: ${widths[7]}px">
-    <p-button variant="tertiary" icon="refresh">
-      <span style="white-space: nowrap">Overwrite</span>
-    </p-button>
-    <a href='#${item.leadId}'>Open Detail</a>
+  <p-table-cell>${item.vin}</p-table-cell>
+  <p-table-cell>${item.purchaseIntention}</p-table-cell>
+  <p-table-cell>${item.status}</p-table-cell>
+  <p-table-cell>${item.leadId}</p-table-cell>
+  <p-table-cell>
+      <p-link-pure style="padding: .5rem;" href="#" icon="edit">Edit</p-link-pure>
+      <p-link-pure style="padding: .5rem;" href="#" icon="delete">Delete</p-link-pure>
   </p-table-cell>
 </p-table-row>`
           )
           .join('');
 
       const markup = `
-<p-table>
+<br><br>
+<p-table caption="Porsche Data Table">
   <p-table-head>
-    <p-table-row>${renderTableHeadCells(head)}</p-table-row>
+    <p-table-head-row>${renderTableHeadCells(head)}</p-table-head-row>
   </p-table-head>
   <p-table-body>${renderTableBodyRows(data)}</p-table-body>
 </p-table>`;
@@ -193,6 +166,11 @@
         })
       );
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="height: 2000px; background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);"></div>
     <!-- /END -->
   </body>
 </html>

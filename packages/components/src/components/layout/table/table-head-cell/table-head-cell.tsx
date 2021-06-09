@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
-import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
+import { getPrefixedTagNames } from '../../../../utils';
 import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
 
 @Component({
@@ -9,10 +9,14 @@ import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection }
 })
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
+
   @Prop() public item?: TableHeadItem;
 
+  /* Hides the label but stays accessible for screen readers. Only has affect when item is not defined as sortable. */
+  @Prop() public hideLabel?: boolean = false;
+
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTableRow');
+    // throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
   }
 
   public componentWillRender(): void {
@@ -26,21 +30,19 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.item)}>
         {isSortable ? (
-          <button onClick={this.handleButtonClick}>
-            <span>
-              <slot />
-            </span>
+          <button class="button" onClick={this.handleButtonClick}>
+            <slot />
             <PrefixedTagNames.pIcon
               class={{
                 ['icon']: true,
                 ['icon--active']: isSorting,
               }}
               color="inherit"
-              name={isDirectionAsc(direction) ? 'arrow-head-down' : 'arrow-head-up'}
+              name={isDirectionAsc(direction) ? 'arrow-down' : 'arrow-up'}
             />
           </button>
         ) : (
-          <slot />
+          <slot data-hidden={this.hideLabel} />
         )}
       </Host>
     );

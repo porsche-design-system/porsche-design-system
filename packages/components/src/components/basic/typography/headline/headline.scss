@@ -22,6 +22,7 @@
   overflow-wrap: inherit !important;
   word-wrap: inherit !important;
   hyphens: inherit !important;
+  white-space: inherit !important;
 }
 
 .root {
@@ -33,6 +34,7 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  white-space: inherit;
 
   &--theme-dark {
     color: $p-color-theme-dark-default;

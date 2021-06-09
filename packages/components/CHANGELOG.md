@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Table`
+  
+#### Changed
+- `Text` and `Headline` inherits white-space CSS property
+
 #### Changed
 - Optimize vertical alignment of `Modal`
 
