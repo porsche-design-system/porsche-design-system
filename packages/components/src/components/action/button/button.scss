@@ -81,7 +81,7 @@
     @include p-focus($p-color-theme-dark-default);
   }
 
-  &:not(:disabled) {
+  &:not(:disabled):not(&--loading) {
     &:hover,
     &:active {
       color: $p-color-theme-dark-default;
@@ -96,7 +96,7 @@
     }
   }
 
-  &:disabled {
+  &:disabled, &--loading {
     cursor: not-allowed;
     color: rgba($p-color-theme-dark-default, 0.55);
     background-color: $p-color-state-disabled;
@@ -122,7 +122,7 @@
       @include p-focus($p-color-theme-dark-brand);
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -137,7 +137,7 @@
       }
     }
 
-    &:disabled {
+    &:disabled, &#{$bem-block}--loading  {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-state-disabled;
       border-color: $p-color-state-disabled;
@@ -161,7 +161,7 @@
       border-color: $p-color-theme-dark-default;
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -176,7 +176,7 @@
       }
     }
 
-    &:disabled {
+    &:disabled, &#{$bem-block}--loading {
       color: $p-color-state-disabled;
       background-color: transparent;
       border-color: $p-color-state-disabled;

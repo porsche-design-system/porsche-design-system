@@ -63,6 +63,7 @@ export class Button {
   public render(): JSX.Element {
     const rootClasses = {
       ['root']: true,
+      ['root--loading']: this.loading,
       [`root--${this.variant}`]: this.variant !== 'secondary',
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
@@ -79,7 +80,7 @@ export class Button {
       <button
         class={rootClasses}
         type={this.type}
-        disabled={this.isDisabledOrLoading}
+        disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
