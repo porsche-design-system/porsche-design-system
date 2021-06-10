@@ -65,7 +65,8 @@ export class Switch {
     const rootClasses = {
       ['root']: true,
       ['root--checked']: this.checked,
-      ['root--disabled']: this.isDisabledOrLoading,
+      ['root--disabled-loading']: this.isDisabledOrLoading,
+      ['root--loading']: this.loading,
       ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
       ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
       ...mapBreakpointPropToClasses('root--label', this.hideLabel, ['hidden', 'visible']),
@@ -84,7 +85,7 @@ export class Switch {
           role="switch"
           aria-checked={this.checked ? 'true' : 'false'}
           aria-busy={this.loading ? 'true' : null}
-          disabled={this.isDisabledOrLoading}
+          disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
           onClick={this.handleSwitchClick}
         >

@@ -29,8 +29,12 @@ describe('grid', () => {
   };
 
   const initGrid = async (opts?: InitOptions) => {
-    const { childrenSizes = [6, 6, 6], direction = 'row', wrap = 'wrap', gutter = { base: 16, s: 24, m: 36 } } =
-      opts ?? {};
+    const {
+      childrenSizes = [6, 6, 6],
+      direction = 'row',
+      wrap = 'wrap',
+      gutter = { base: 16, s: 24, m: 36 },
+    } = opts ?? {};
     const styles = `<style type="text/css">
       p-grid-item > p {
       margin: 0;
