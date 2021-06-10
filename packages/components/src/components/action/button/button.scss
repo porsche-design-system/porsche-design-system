@@ -116,13 +116,17 @@
     color: $p-color-theme-dark-default;
     background-color: $p-color-brand;
     border-color: $p-color-brand;
-    @include p-focus($p-color-brand);
+    &:focus {
+      outline-color: $p-color-brand;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
       background-color: $p-color-theme-dark-brand;
       border-color: $p-color-theme-dark-brand;
-      @include p-focus($p-color-theme-dark-brand);
+      &:focus {
+        outline-color: $p-color-theme-dark-brand;
+      }
     }
 
     &:not(:disabled):not(&#{$bem-block}--loading) {
@@ -145,13 +149,17 @@
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-state-disabled;
       border-color: $p-color-state-disabled;
-      @include p-focus($p-color-state-disabled);
+      &:focus {
+        outline-color: $p-color-state-disabled;
+      }
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
         background-color: $p-color-theme-dark-state-disabled;
         border-color: $p-color-theme-dark-state-disabled;
-        @include p-focus($p-color-theme-dark-state-disabled);
+        &:focus {
+          outline-color: $p-color-theme-dark-state-disabled;
+        }
       }
     }
   }
@@ -187,13 +195,11 @@
       color: $p-color-state-disabled;
       background-color: transparent;
       border-color: $p-color-state-disabled;
-      @include p-focus($p-color-state-disabled);
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-state-disabled;
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
-        @include p-focus($p-color-theme-dark-state-disabled);
       }
     }
   }
