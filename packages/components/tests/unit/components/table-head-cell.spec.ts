@@ -11,7 +11,7 @@ describe('table-head-cell', () => {
         component.connectedCallback();
       } catch (e) {}
 
-      expect(spy).toBeCalledWith(undefined, 'pTableRow');
+      expect(spy).toBeCalledWith(undefined, 'pTableHeadRow');
     });
   });
 });

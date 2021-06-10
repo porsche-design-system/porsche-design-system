@@ -1,13 +1,14 @@
 import {
   getAriaSort,
+  getScrollByX,
   getSlottedCss,
   getTableCss,
   isDirectionAsc,
-  TABLE_COMPONENTS,
   TableHeadItem,
   toggleDirection,
 } from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
+import { TABLE_COMPONENTS } from '../../../src/components/layout/table/table-styles';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {
@@ -75,4 +76,15 @@ describe('getTableCss()', () => {
       expect(getTableCss(host)).toMatchSnapshot();
     }
   );
+});
+
+describe('getScrollByX()', () => {
+  const data: [HTMLElement, number][] = [
+    [{ offsetWidth: 0 } as HTMLElement, 0],
+    [{ offsetWidth: 100 } as HTMLElement, 20],
+    [{ offsetWidth: 500 } as HTMLElement, 100],
+  ];
+  it.each(data)('should for %s return %s', (params, result) => {
+    expect(getScrollByX(params)).toBe(result);
+  });
 });
