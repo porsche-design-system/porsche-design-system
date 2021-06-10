@@ -645,6 +645,10 @@ export namespace Components {
           * A caption describing the contents of the table.
          */
         "caption"?: string;
+        /**
+          * Hides the caption but stays accessible for screen readers.
+         */
+        "hideCaption"?: boolean;
     }
     interface PTableBody {
     }
@@ -1721,6 +1725,10 @@ declare namespace LocalJSX {
           * A caption describing the contents of the table.
          */
         "caption"?: string;
+        /**
+          * Hides the caption but stays accessible for screen readers.
+         */
+        "hideCaption"?: boolean;
         "onSortingChange"?: (event: CustomEvent<TableHeadItem>) => void;
     }
     interface PTableBody {

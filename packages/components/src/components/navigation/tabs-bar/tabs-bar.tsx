@@ -248,6 +248,7 @@ export class TabsBar {
         }
       },
       {
+        // TODO: shouldn't root be the the scrollable div rather than the host?
         root: this.host,
         // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
         // In his case 0.9px of the trigger have to be hidden to show the gradient
