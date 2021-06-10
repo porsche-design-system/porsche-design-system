@@ -452,7 +452,8 @@ describe('button', () => {
       const host = await getHost();
       const button = await getButton();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'loadingDisabled' });
+      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
+      const visibleLoading = expectedStyleOnFocus({ color: 'loadingDisabled' });
 
       expect(await getOutlineStyle(button))
         .withContext('initial focus style')
@@ -469,7 +470,7 @@ describe('button', () => {
 
       expect(await getOutlineStyle(button))
         .withContext('focus style on loading')
-        .toBe(visible);
+        .toBe(visibleLoading);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
