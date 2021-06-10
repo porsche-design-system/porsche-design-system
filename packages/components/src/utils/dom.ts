@@ -59,8 +59,8 @@ export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.req
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
-export const isCaptionVisible = (host: Host, caption: string): boolean => {
-  return !!caption || hasNamedSlot(host, 'caption');
+export const isCaptionVisible = (host: Host, caption: string, hideCaption: boolean): boolean => {
+  return !hideCaption && (!!caption || hasNamedSlot(host, 'caption'));
 };
 
 export const isLabelVisible = (host: Host, label: string): boolean => {

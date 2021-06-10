@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadItem } from '../table-utils';
-import { getPrefixedTagNames } from '../../../../utils';
+import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
 
 @Component({
@@ -16,7 +16,7 @@ export class TableHeadCell {
   @Prop() public hideLabel?: boolean = false;
 
   public connectedCallback(): void {
-    // throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
+    throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
   }
 
   public componentWillRender(): void {

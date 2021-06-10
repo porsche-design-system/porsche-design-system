@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElement, getPrefixedTagNames, insertSlottedStyles, isCaptionVisible } from '../../../../utils';
-import { addCss, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
+import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 import type { TableHeadItem } from '../table-utils';
 
 @Component({
@@ -13,12 +13,17 @@ export class Table {
   /** A caption describing the contents of the table. */
   @Prop() public caption?: string = '';
 
+  /** Hides the caption but stays accessible for screen readers. */
+  @Prop() public hideCaption?: boolean = false;
+
   @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadItem>;
 
-  @State() public isScrollHelperVisible = false;
+  @State() public isScrollIndicatorVisible = false;
 
   private intersectionObserver: IntersectionObserver;
   private scrollInterval: NodeJS.Timeout;
+  private scrollAreaElement: HTMLElement;
+  private scrollTriggerElement: HTMLElement;
 
   public connectedCallback(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
@@ -36,6 +41,7 @@ export class Table {
   }
 
   public componentDidLoad(): void {
+    this.defineHTMLElements();
     this.initIntersectionObserver();
   }
 
@@ -47,8 +53,13 @@ export class Table {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host role="table" aria-describedby="caption">
-        {isCaptionVisible(this.host, this.caption) && (
+      <Host
+        role="table"
+        {...(isCaptionVisible(this.host, this.caption, this.hideCaption)
+          ? { 'aria-describedby': 'caption' }
+          : { 'aria-label': this.caption })}
+      >
+        {isCaptionVisible(this.host, this.caption, this.hideCaption) && (
           <PrefixedTagNames.pText
             tag="span"
             weight="semibold"
@@ -66,7 +77,7 @@ export class Table {
               <span class="scroll-trigger" />
             </div>
           </div>
-          {this.isScrollHelperVisible && (
+          {this.isScrollIndicatorVisible && (
             <div class="scroll-indicator">
               <PrefixedTagNames.pButtonPure
                 class="scroll-button"
@@ -75,7 +86,7 @@ export class Table {
                 hide-label="true"
                 size="inherit"
                 icon="arrow-head-right"
-                onClick={() => this.scrollOnNextClick()}
+                onClick={() => this.handleClickOnScrollIndicator()}
               >
                 Next
               </PrefixedTagNames.pButtonPure>
@@ -86,45 +97,46 @@ export class Table {
     );
   }
 
-  private initIntersectionObserver = (): void => {
-    const scrollArea = getHTMLElement(this.host.shadowRoot, '.scroll-area');
-    const scrollTrigger = getHTMLElement(this.host.shadowRoot, '.scroll-trigger');
+  private defineHTMLElements = (): void => {
+    const { shadowRoot } = this.host;
+    this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
+    this.scrollTriggerElement = getHTMLElement(shadowRoot, '.scroll-trigger');
+  };
 
+  private initIntersectionObserver = (): void => {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const { isIntersecting } of entries) {
-          this.isScrollHelperVisible = !isIntersecting;
+          this.isScrollIndicatorVisible = !isIntersecting;
         }
       },
       {
-        root: scrollArea,
+        root: this.scrollAreaElement,
         threshold: 0,
       }
     );
 
-    this.intersectionObserver.observe(scrollTrigger);
+    this.intersectionObserver.observe(this.scrollTriggerElement);
   };
 
-  private scrollOnNextClick = (): void => {
-    const root = getHTMLElement(this.host.shadowRoot, '.scroll-area');
-    const { offsetWidth } = root as HTMLElement;
-    const scrollLeft = Math.round(offsetWidth * 0.2);
+  private handleClickOnScrollIndicator = (): void => {
+    const scrollLeft = getScrollByX(this.scrollAreaElement);
 
     if ('scrollBehavior' in document?.documentElement?.style) {
-      root.scrollBy({ left: scrollLeft, top: 0, behavior: 'smooth' });
+      this.scrollAreaElement.scrollBy({ left: scrollLeft, top: 0, behavior: 'smooth' });
     } else {
       // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
       let i = 0;
       const steps = 20;
-      const initialScrollLeft = root.scrollLeft;
+      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
       const endScrollLeft = initialScrollLeft + scrollLeft;
       const scrollStep = scrollLeft / steps;
 
       clearInterval(this.scrollInterval);
       this.scrollInterval = setInterval(() => {
-        root.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
+        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
         if (++i >= steps) {
-          root.scrollLeft = endScrollLeft;
+          this.scrollAreaElement.scrollLeft = endScrollLeft;
           clearInterval(this.scrollInterval);
         }
       }, 10);
