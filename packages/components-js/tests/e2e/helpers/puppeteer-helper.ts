@@ -21,7 +21,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="styles-override.css" />
+        <link rel="stylesheet" href="overrides.css" >
         ${options.injectIntoHead}
       </head>
       <body>
