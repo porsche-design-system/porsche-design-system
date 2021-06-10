@@ -330,6 +330,11 @@ describe('switch', () => {
       const button = await getButton();
       const hidden = 'none';
       const visible = expectedStyleOnFocus({
+        color: 'contrastHigh',
+        css: 'boxShadowWithInnerOffset',
+        offset: '3px',
+      });
+      const visibleLoading = expectedStyleOnFocus({
         color: 'loadingDisabled',
         css: 'boxShadowWithInnerOffset',
         offset: '3px',
@@ -350,7 +355,7 @@ describe('switch', () => {
 
       expect(await getBoxShadowStyle(button))
         .withContext('focus style on loading')
-        .toBe(visible);
+        .toBe(visibleLoading);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
