@@ -431,29 +431,29 @@ describe('button-pure', () => {
       const host = await getHost();
       const button = await getButton();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
-      expect(await getOutlineStyle(button))
+      expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('initial focus style')
         .toBe(hidden);
 
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(button))
+      expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('after Tab')
         .toBe(visible);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button))
+      expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('focus style on loading')
         .toBe(visible);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button))
+      expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('final focus style')
         .toBe(visible);
     });
