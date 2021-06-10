@@ -446,7 +446,7 @@ describe('button', () => {
       expect(await getOutlineStyle(button)).toBe(visible);
     });
 
-    it('should keep focus if state switches to loading', async () => {
+    fit('should keep focus if state switches to loading', async () => {
       await initButton();
 
       const host = await getHost();
