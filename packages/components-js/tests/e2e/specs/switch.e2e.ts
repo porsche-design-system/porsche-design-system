@@ -327,42 +327,27 @@ describe('switch', () => {
       await initSwitch();
 
       const host = await getHost();
-      const button = await getButton();
-      const hidden = 'none';
-      const visible = expectedStyleOnFocus({
-        color: 'contrastHigh',
-        css: 'boxShadowWithInnerOffset',
-        offset: '3px',
-      });
-      const visibleLoading = expectedStyleOnFocus({
-        color: 'loadingDisabled',
-        css: 'boxShadowWithInnerOffset',
-        offset: '3px',
-      });
-
-      expect(await getBoxShadowStyle(button))
-        .withContext('initial focus style')
-        .toBe(hidden);
+      expect(await hasFocus(page, host)).toBe(false);
 
       await page.keyboard.press('Tab');
 
-      expect(await getBoxShadowStyle(button))
+      expect(await hasFocus(page, host))
         .withContext('after Tab')
-        .toBe(visible);
+        .toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await getBoxShadowStyle(button))
+      expect(await hasFocus(page, host))
         .withContext('focus style on loading')
-        .toBe(visibleLoading);
+        .toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await getBoxShadowStyle(button))
+      expect(await hasFocus(page, host))
         .withContext('final focus style')
-        .toBe(visible);
+        .toBe(true);
     });
   });
 
