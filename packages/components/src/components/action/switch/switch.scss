@@ -187,9 +187,17 @@ button {
     #{$root}--theme-dark & {
       box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-neutral-contrast-high;
     }
+
+    #{$root}--disabled & {
+      box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-state-disabled;
+
+      @at-root #{$root}--theme-dark#{&} {
+        box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-state-disabled;
+      }
+    }
   }
 
-  #{$root}--checked &:focus {
+  #{$root}--checked:not(#{$root}--disabled) &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-notification-success;
 
     @at-root #{$root}--theme-dark#{&} {
