@@ -6,6 +6,7 @@ import {
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
+  hasFocus,
   initAddEventListener,
   selectNode,
   setAttribute,
@@ -427,35 +428,27 @@ describe('button-pure', () => {
       await initButtonPure();
 
       const host = await getHost();
-      const button = await getButton();
-
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'default', offset: '1px' });
-      const loading = expectedStyleOnFocus({ color: 'loadingDisabled', offset: '1px' });
-
-      expect(await getOutlineStyle(button, { pseudo: '::before' }))
-        .withContext('initial focus style')
-        .toBe(hidden);
+      expect(await hasFocus(page, host)).toBe(false);
 
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(button, { pseudo: '::before' }))
+      expect(await hasFocus(page, host))
         .withContext('after Tab')
-        .toBe(visible);
+        .toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button, { pseudo: '::before' }))
+      expect(await hasFocus(page, host))
         .withContext('focus style on loading')
-        .toBe(loading);
+        .toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button, { pseudo: '::before' }))
+      expect(await hasFocus(page, host))
         .withContext('final focus style')
-        .toBe(visible);
+        .toBe(true);
     });
   });
 
