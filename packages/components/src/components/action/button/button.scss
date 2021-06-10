@@ -96,16 +96,19 @@
     }
   }
 
-  &:disabled, &--loading {
+  &:disabled,
+  &--loading {
     cursor: not-allowed;
     color: rgba($p-color-theme-dark-default, 0.55);
     background-color: $p-color-state-disabled;
     border-color: $p-color-state-disabled;
+    @include p-focus($p-color-state-disabled);
 
     &#{$bem-block}--theme-dark {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-theme-dark-state-disabled;
       border-color: $p-color-theme-dark-state-disabled;
+      @include p-focus($p-color-theme-dark-state-disabled);
     }
   }
 
@@ -137,15 +140,18 @@
       }
     }
 
-    &:disabled, &#{$bem-block}--loading  {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-state-disabled;
       border-color: $p-color-state-disabled;
+      @include p-focus($p-color-state-disabled);
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
         background-color: $p-color-theme-dark-state-disabled;
         border-color: $p-color-theme-dark-state-disabled;
+        @include p-focus($p-color-theme-dark-state-disabled);
       }
     }
   }
@@ -176,15 +182,18 @@
       }
     }
 
-    &:disabled, &#{$bem-block}--loading {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: $p-color-state-disabled;
       background-color: transparent;
       border-color: $p-color-state-disabled;
+      @include p-focus($p-color-state-disabled);
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-state-disabled;
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
+        @include p-focus($p-color-theme-dark-state-disabled);
       }
     }
   }
