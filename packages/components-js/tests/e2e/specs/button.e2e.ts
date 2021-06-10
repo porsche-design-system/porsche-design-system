@@ -452,7 +452,7 @@ describe('button', () => {
       const host = await getHost();
       const button = await getButton();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
+      const visible = expectedStyleOnFocus({ color: 'loadingDisabled' });
 
       expect(await getOutlineStyle(button))
         .withContext('initial focus style')

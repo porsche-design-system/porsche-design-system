@@ -329,7 +329,11 @@ describe('switch', () => {
       const host = await getHost();
       const button = await getButton();
       const hidden = 'none';
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh', css: 'boxShadowWithInnerOffset', offset: '3px' });
+      const visible = expectedStyleOnFocus({
+        color: 'loadingDisabled',
+        css: 'boxShadowWithInnerOffset',
+        offset: '3px',
+      });
 
       expect(await getBoxShadowStyle(button))
         .withContext('initial focus style')
