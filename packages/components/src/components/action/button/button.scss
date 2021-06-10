@@ -119,6 +119,9 @@
     &:focus {
       outline-color: $p-color-brand;
     }
+    &:focus:not(:focus-visible) {
+      outline-color: transparent;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -126,6 +129,9 @@
       border-color: $p-color-theme-dark-brand;
       &:focus {
         outline-color: $p-color-theme-dark-brand;
+      }
+      &:focus:not(:focus-visible) {
+        outline-color: transparent;
       }
     }
 
@@ -152,6 +158,9 @@
       &:focus {
         outline-color: $p-color-state-disabled;
       }
+      &:focus:not(:focus-visible) {
+        outline-color: transparent;
+      }
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
@@ -159,6 +168,9 @@
         border-color: $p-color-theme-dark-state-disabled;
         &:focus {
           outline-color: $p-color-theme-dark-state-disabled;
+        }
+        &:focus:not(:focus-visible) {
+          outline-color: transparent;
         }
       }
     }
