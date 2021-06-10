@@ -29,8 +29,8 @@
   background-size: p-px-to-rem(24px) !important;
   background-position: -1px -1px !important;
   background-color: $p-color-background-default !important;
-  transition: border $p-animation-hover-duration $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: border $p-animation-hover-duration-var $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration-var $p-animation-hover-bezier !important;
   opacity: 1 !important;
   border: $p-color-neutral-contrast-medium solid 1px !important;
   border-radius: 0 !important;
@@ -148,7 +148,7 @@
     display: inline-block;
     cursor: pointer;
     color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
@@ -223,5 +223,5 @@
 .message {
   margin-top: $p-spacing-4;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 }

@@ -1,18 +1,17 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
-  getStyleOnFocus,
+  getLifecycleStatus,
+  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  waitForInheritedCSSTransition,
-  getLifecycleStatus,
   waitForEventSerialization,
+  waitForInheritedCSSTransition,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -204,34 +203,6 @@ describe('link-social', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(link)).toBe(visible);
-    });
-
-    it('should show outline of shadowed <a> when it is focused', async () => {
-      await initLinkSocial();
-
-      const host = await getHost();
-      const link = await getLink();
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus());
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initLinkSocial({ useSlottedAnchor: true });
-
-      const host = await getHost();
-      const link = await getSlottedLink();
-
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(expectedStyleOnFocus());
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ theme: 'dark' })
-      );
     });
   });
 

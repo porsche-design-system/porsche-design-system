@@ -6,7 +6,6 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -39,8 +38,12 @@ describe('select-wrapper native-dropdown', () => {
   };
 
   const initSelect = (opts?: InitOptions): Promise<void> => {
-    const { useSlottedLabel = false, useSlottedDescription = false, useSlottedMessage = false, state = 'none' } =
-      opts ?? {};
+    const {
+      useSlottedLabel = false,
+      useSlottedDescription = false,
+      useSlottedMessage = false,
+      state = 'none',
+    } = opts ?? {};
 
     const label = !useSlottedLabel ? 'label="Some label"' : '';
     const description = !useSlottedDescription ? 'description="Some description"' : '';
@@ -282,56 +285,6 @@ describe('select-wrapper native-dropdown', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
-    it('should show outline of slotted <select> when it is focused', async () => {
-      await initSelect();
-
-      const host = await getHost();
-      const select = await getSelect();
-
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'success' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'error' }));
-
-      await setAttribute(host, 'theme', 'dark');
-
-      await setAttribute(host, 'state', 'none');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'neutral', theme: 'dark' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'success', theme: 'dark' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'error', theme: 'dark' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initSelect({ useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error' });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 
