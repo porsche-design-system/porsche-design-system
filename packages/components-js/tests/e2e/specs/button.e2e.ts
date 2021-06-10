@@ -43,7 +43,7 @@ describe('button', () => {
     );
   };
 
-  const clickableTests = [
+  const clickableTests: { state: string; setContent: () => Promise<void> }[] = [
     {
       state: 'disabled',
       setContent: async () => await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`),
