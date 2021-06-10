@@ -1,26 +1,26 @@
 {
-  "hash": "953d73f61e365ae950ab",
+  "hash": "2de6cfdb60e21bb39902",
   "version": "5.38.1",
-  "time": 3187,
-  "builtAt": 1623330989378,
+  "time": 3287,
+  "builtAt": 1623333541234,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.1.33458e1ba7a352300242.js"
+      "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.1.33458e1ba7a352300242.js",
+      "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
       "size": 61986,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "33458e1ba7a352300242",
+        "contenthash": "afce3dc573bde7f44ee8",
         "javascriptModule": false,
         "minimized": true,
         "size": 61986
@@ -215,17 +215,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.47e93fc8e0cd2dd146b2.js",
-      "size": 11165,
+      "name": "porsche-design-system.button.d2a6456b1743585953f6.js",
+      "size": 11612,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "47e93fc8e0cd2dd146b2",
+        "contenthash": "d2a6456b1743585953f6",
         "javascriptModule": false,
         "minimized": true,
-        "size": 11165
+        "size": 11612
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -2428,9 +2428,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 13966,
+      "size": 14413,
       "sizes": {
-        "javascript": 13966
+        "javascript": 14413
       },
       "names": [],
       "idHints": [],
@@ -2438,10 +2438,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.47e93fc8e0cd2dd146b2.js"
+        "porsche-design-system.button.d2a6456b1743585953f6.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "dd6501e7c23ed4b0c339",
+      "hash": "aedc7e0ee60cc171049a",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -2946,9 +2946,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 11477,
+          "size": 11924,
           "sizes": {
-            "javascript": 11477
+            "javascript": 11924
           },
           "built": true,
           "codeGenerated": true,
@@ -14644,10 +14644,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.1.33458e1ba7a352300242.js"
+        "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "703047f8e8ae7fe39b16",
+      "hash": "c3b3fbc9f30918ffb815",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -46046,9 +46046,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 11477,
+      "size": 11924,
       "sizes": {
-        "javascript": 11477
+        "javascript": 11924
       },
       "built": true,
       "codeGenerated": true,
@@ -51333,7 +51333,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.33458e1ba7a352300242.js",
+          "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
           "size": 61986
         }
       ],
@@ -51355,7 +51355,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.33458e1ba7a352300242.js",
+          "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
           "size": 61986
         }
       ],
