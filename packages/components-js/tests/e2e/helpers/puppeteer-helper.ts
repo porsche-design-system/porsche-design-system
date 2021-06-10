@@ -2,6 +2,7 @@ import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
+export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';

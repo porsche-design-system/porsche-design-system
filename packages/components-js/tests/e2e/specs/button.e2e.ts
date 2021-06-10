@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  ClickableTests,
   expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
@@ -43,7 +44,7 @@ describe('button', () => {
     );
   };
 
-  const clickableTests: { state: string; setContent: () => Promise<void> }[] = [
+  const clickableTests: ClickableTests = [
     {
       state: 'disabled',
       setContent: async () => await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`),
