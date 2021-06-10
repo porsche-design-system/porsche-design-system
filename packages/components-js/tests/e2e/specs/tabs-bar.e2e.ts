@@ -17,7 +17,7 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForComponentsReady,
-  waitForInheritedCSSTransition,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
@@ -926,7 +926,8 @@ describe('tabs-bar', () => {
       expect(await getOutlineStyle(secondButton)).toBe(hidden);
 
       await secondButton.click();
-      await waitForInheritedCSSTransition(page);
+      // wait for transition of focus bar
+      await page.waitForTimeout(500);
 
       expect(await getOutlineStyle(secondButton)).toBe(hidden);
 
@@ -948,7 +949,6 @@ describe('tabs-bar', () => {
       expect(await getOutlineStyle(secondLink)).toBe(hidden);
 
       await secondLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(secondLink)).toBe(hidden);
 

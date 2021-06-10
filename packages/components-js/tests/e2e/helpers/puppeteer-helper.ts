@@ -21,6 +21,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        <link rel="stylesheet" href="styles.css" />
         ${options.injectIntoHead}
       </head>
       <body>
@@ -214,10 +215,6 @@ export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleO
   };
   const { pseudo } = options;
   return await getElementStyle(element, 'boxShadow', { pseudo });
-};
-
-export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
-  await page.waitForTimeout(500);
 };
 
 export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>

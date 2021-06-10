@@ -10,7 +10,8 @@ import {
   initAddEventListener,
   selectNode,
   setAttribute,
-  setContentWithDesignSystem, setProperty,
+  setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -453,21 +454,29 @@ describe('button', () => {
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
       const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
 
-      expect(await getOutlineStyle(button)).withContext('initial focus style').toBe(hidden);
+      expect(await getOutlineStyle(button))
+        .withContext('initial focus style')
+        .toBe(hidden);
 
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(button)).withContext('after Tab').toBe(visible);
+      expect(await getOutlineStyle(button))
+        .withContext('after Tab')
+        .toBe(visible);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button)).withContext('focus style on loading').toBe(visible);
+      expect(await getOutlineStyle(button))
+        .withContext('focus style on loading')
+        .toBe(visible);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(button)).withContext('final focus style').toBe(visible);
+      expect(await getOutlineStyle(button))
+        .withContext('final focus style')
+        .toBe(visible);
     });
   });
 
