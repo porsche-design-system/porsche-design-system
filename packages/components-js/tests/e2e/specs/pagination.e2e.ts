@@ -131,7 +131,7 @@ describe('pagination', () => {
     expect(getErrorsAmount(consoleMessages)).toBe(1);
   });
 
-  //TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
+  // TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
   xdescribe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initPagination();

@@ -55,7 +55,7 @@
   background: transparent;
   cursor: pointer;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
   @include p-focus($p-color-state-focus, 1px, '::before');
 
   + * {
@@ -299,7 +299,7 @@
 
 .subline {
   display: flex;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-top: p-px-to-rem(4px);
 
   &::before {

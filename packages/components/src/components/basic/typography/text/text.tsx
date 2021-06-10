@@ -8,8 +8,9 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../../utils';
-import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { isSizeInherit } from './text-utils';
+import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
 
 @Component({
   tag: 'p-text',
@@ -83,7 +84,7 @@ export class Text {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color .24s ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }
