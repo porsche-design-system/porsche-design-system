@@ -657,7 +657,13 @@ export namespace Components {
     interface PTableHead {
     }
     interface PTableHeadCell {
+        /**
+          * Hides the label but stays accessible for screen readers.
+         */
         "hideLabel"?: boolean;
+        /**
+          * Defines sortability properties.
+         */
         "item"?: TableHeadItem;
     }
     interface PTableHeadRow {
@@ -1729,6 +1735,9 @@ declare namespace LocalJSX {
           * Hides the caption but stays accessible for screen readers.
          */
         "hideCaption"?: boolean;
+        /**
+          * Emitted when sorting is changed.
+         */
         "onSortingChange"?: (event: CustomEvent<TableHeadItem>) => void;
     }
     interface PTableBody {
@@ -1738,7 +1747,13 @@ declare namespace LocalJSX {
     interface PTableHead {
     }
     interface PTableHeadCell {
+        /**
+          * Hides the label but stays accessible for screen readers.
+         */
         "hideLabel"?: boolean;
+        /**
+          * Defines sortability properties.
+         */
         "item"?: TableHeadItem;
     }
     interface PTableHeadRow {

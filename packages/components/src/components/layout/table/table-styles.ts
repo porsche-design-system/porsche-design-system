@@ -114,7 +114,7 @@ export const styles: { [key in TableComponentType]: string } = {
     }),
     button: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       padding: 0,
       boxSizing: 'border-box',
       appearance: 'none',

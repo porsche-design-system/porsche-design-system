@@ -16,6 +16,7 @@ export class Table {
   /** Hides the caption but stays accessible for screen readers. */
   @Prop() public hideCaption?: boolean = false;
 
+  /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadItem>;
 
   @State() public isScrollIndicatorVisible = false;

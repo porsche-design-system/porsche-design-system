@@ -10,9 +10,10 @@ import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection }
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
 
+  /** Defines sortability properties. */
   @Prop() public item?: TableHeadItem;
 
-  /* Hides the label but stays accessible for screen readers. Only has affect when item is not defined as sortable. */
+  /** Hides the label but stays accessible for screen readers. */
   @Prop() public hideLabel?: boolean = false;
 
   public connectedCallback(): void {
