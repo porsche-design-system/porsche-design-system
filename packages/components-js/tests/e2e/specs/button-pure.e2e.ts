@@ -12,7 +12,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -413,7 +412,6 @@ describe('button-pure', () => {
       expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(hidden);
 
       await button.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(hidden);
 
@@ -430,8 +428,10 @@ describe('button-pure', () => {
 
       const host = await getHost();
       const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
+
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'default', offset: '1px' });
+      const loading = expectedStyleOnFocus({ color: 'loadingDisabled', offset: '1px' });
 
       expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('initial focus style')
@@ -448,7 +448,7 @@ describe('button-pure', () => {
 
       expect(await getOutlineStyle(button, { pseudo: '::before' }))
         .withContext('focus style on loading')
-        .toBe(visible);
+        .toBe(loading);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);

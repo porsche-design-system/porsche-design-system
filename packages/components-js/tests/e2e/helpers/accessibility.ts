@@ -2,7 +2,17 @@ import { Page } from 'puppeteer';
 
 type Options = {
   theme?: 'light' | 'dark';
-  color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'hover' | 'transparent';
+  color?:
+    | 'default'
+    | 'neutral'
+    | 'contrastHigh'
+    | 'success'
+    | 'error'
+    | 'brand'
+    | 'active'
+    | 'hover'
+    | 'transparent'
+    | 'loadingDisabled';
   css?: 'outline' | 'boxShadow' | 'boxShadowWithInnerOffset';
   offset?: string;
 };
@@ -10,6 +20,7 @@ type Options = {
 type FocusColors = {
   default: string;
   backgroundDefault: string;
+  loadingDisabled: string;
   neutral: string;
   contrastHigh: string;
   success: string;
@@ -29,6 +40,7 @@ const colors: Colors = {
   light: {
     default: 'rgb(0, 0, 0)',
     backgroundDefault: 'rgb(255, 255, 255)',
+    loadingDisabled: 'rgb(150, 152, 154)',
     neutral: 'rgb(98, 102, 105)',
     contrastHigh: 'rgb(50, 54, 57)',
     success: 'rgb(1, 138, 22)',
@@ -41,6 +53,7 @@ const colors: Colors = {
   dark: {
     default: 'rgb(255, 255, 255)',
     backgroundDefault: 'rgb(14, 20, 24)',
+    loadingDisabled: 'rgb(124, 127, 129)',
     neutral: 'rgb(176, 177, 178)',
     contrastHigh: 'rgb(227, 228, 229)',
     success: 'rgb(1, 186, 29)',

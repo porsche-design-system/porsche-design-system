@@ -7,7 +7,6 @@ import {
   getBoxShadowStyle,
   getBrowser,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   hasFocus,
   initAddEventListener,
