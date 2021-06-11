@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, HeadlineVariant as HeadlineVariant1, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -13,11 +13,14 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { PanelSize, PanelStateChangeEvent } from "./components/content/panel/panel-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
+    interface PAccordionItem {
+    }
     interface PBanner {
         /**
           * Defines if the banner can be closed/removed by the user.
@@ -539,6 +542,28 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    interface PPanel {
+        /**
+          * Predefined style of the headline.
+         */
+        "headlineVariant"?: HeadlineVariant;
+        /**
+          * Defines if panel is open.
+         */
+        "open"?: boolean;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<PanelSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the title used in panel.
+         */
+        "title": string;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -781,6 +806,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPAccordionItemElement extends Components.PAccordionItem, HTMLStencilElement {
+    }
+    var HTMLPAccordionItemElement: {
+        prototype: HTMLPAccordionItemElement;
+        new (): HTMLPAccordionItemElement;
+    };
     interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
     }
     var HTMLPBannerElement: {
@@ -901,6 +932,12 @@ declare global {
         prototype: HTMLPPaginationElement;
         new (): HTMLPPaginationElement;
     };
+    interface HTMLPPanelElement extends Components.PPanel, HTMLStencilElement {
+    }
+    var HTMLPPanelElement: {
+        prototype: HTMLPPanelElement;
+        new (): HTMLPPanelElement;
+    };
     interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {
     }
     var HTMLPRadioButtonWrapperElement: {
@@ -974,6 +1011,7 @@ declare global {
         new (): HTMLPTextareaWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "p-accordion-item": HTMLPAccordionItemElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -994,6 +1032,7 @@ declare global {
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
+        "p-panel": HTMLPPanelElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -1009,6 +1048,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PAccordionItem {
+    }
     interface PBanner {
         /**
           * Emitted when the close button is clicked.
@@ -1542,6 +1583,32 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    interface PPanel {
+        /**
+          * Predefined style of the headline.
+         */
+        "headlineVariant"?: HeadlineVariant;
+        /**
+          * Emitted when panel state is changed.
+         */
+        "onStateChange"?: (event: CustomEvent<PanelStateChangeEvent>) => void;
+        /**
+          * Defines if panel is open.
+         */
+        "open"?: boolean;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<PanelSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the title used in panel.
+         */
+        "title"?: string;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -1795,6 +1862,7 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface IntrinsicElements {
+        "p-accordion-item": PAccordionItem;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -1815,6 +1883,7 @@ declare namespace LocalJSX {
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-pagination": PPagination;
+        "p-panel": PPanel;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
@@ -1833,6 +1902,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "p-accordion-item": LocalJSX.PAccordionItem & JSXBase.HTMLAttributes<HTMLPAccordionItemElement>;
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
@@ -1853,6 +1923,7 @@ declare module "@stencil/core" {
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            "p-panel": LocalJSX.PPanel & JSXBase.HTMLAttributes<HTMLPPanelElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
