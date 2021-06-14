@@ -7,6 +7,7 @@ describe('table', () => {
       const spy = jest.spyOn(slottedStylesUtils, 'insertSlottedStyles');
       const component = new Table();
       component.host = document.createElement('p-table');
+      component.host.attachShadow({ mode: 'open' });
       component.connectedCallback();
 
       expect(spy).toBeCalledWith(component.host, expect.anything());

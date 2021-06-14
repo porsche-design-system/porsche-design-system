@@ -32,8 +32,8 @@ export class Table {
   private scrollTriggerElement: HTMLElement;
 
   public connectedCallback(): void {
-    addCss(this.host);
     insertSlottedStyles(this.host, getSlottedCss(this.host));
+    addCss(this.host);
   }
 
   public componentWillLoad(): void {
