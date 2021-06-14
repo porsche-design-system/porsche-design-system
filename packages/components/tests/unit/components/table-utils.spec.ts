@@ -4,7 +4,7 @@ import {
   getSlottedCss,
   getTableCss,
   isDirectionAsc,
-  TableHeadItem,
+  TableHeadCellSort,
   toggleDirection,
 } from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
@@ -31,17 +31,13 @@ describe('toggleDirection()', () => {
 });
 
 describe('getAriaSort()', () => {
-  const data: [TableHeadItem, AriaAttributes['aria-sort']][] = [
-    [{ isSortable: false, isSorting: false, direction: 'asc' }, 'none'],
-    [{ isSortable: false, isSorting: false, direction: 'desc' }, 'none'],
-    [{ isSortable: false, isSorting: true, direction: 'asc' }, 'none'],
-    [{ isSortable: false, isSorting: true, direction: 'desc' }, 'none'],
-    [{ isSortable: true, isSorting: false, direction: 'asc' }, 'none'],
-    [{ isSortable: true, isSorting: false, direction: 'desc' }, 'none'],
-    [{ isSortable: true, isSorting: true, direction: 'asc' }, 'ascending'],
-    [{ isSortable: true, isSorting: true, direction: 'desc' }, 'descending'],
+  const data: [TableHeadCellSort, AriaAttributes['aria-sort']][] = [
+    [{ id: 'some-id', active: false, direction: 'asc' }, 'none'],
+    [{ id: 'some-id', active: false, direction: 'desc' }, 'none'],
+    [{ id: 'some-id', active: true, direction: 'asc' }, 'ascending'],
+    [{ id: 'some-id', active: true, direction: 'desc' }, 'descending'],
     [undefined, 'none'],
-    [{}, 'none'],
+    [{} as TableHeadCellSort, 'none'],
   ];
   it.each(data)('should for %s return %s', (params, result) => {
     expect(getAriaSort(params)).toBe(result);

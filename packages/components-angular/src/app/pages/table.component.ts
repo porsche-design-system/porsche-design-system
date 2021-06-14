@@ -1,44 +1,51 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { data, head } from '@porsche-design-system/shared';
-import { TableHeadItem } from '@porsche-design-system/components-angular/lib/types';
+
+const head = [
+  { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
+  { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
+  { name: 'Min width cell', style: { minWidth: 250 } },
+  { name: 'Multiline<br/>header<br/>cell', sort: { id: 'some-id', active: true, direction: 'asc' } },
+  { name: 'Hide header cell', hideLabel: true },
+];
 
 @Component({
   selector: 'page-table',
   template: `
-    <div class="playground light table" title="should render table">
-      <p-table (sortingChange)="onSortingChange($event)">
+    <div class="playground light" title="should render table">
+      <p-table caption="Some caption">
         <p-table-head>
-          <p-table-row>
-            <p-table-head-cell *ngFor="let item of head" [item]="item">{{ item.name }}</p-table-head-cell>
-          </p-table-row>
+          <p-table-head-row>
+            <p-table-head-cell
+              *ngFor="let item of head"
+              [sort]="item.sort"
+              [hideLabel]="item.hideLabel"
+              [style]="item.style?.minWidth ? 'min-width: 250px;' : null"
+              [innerHTML]="item.name"
+            ></p-table-head-cell>
+          </p-table-head-row>
         </p-table-head>
         <p-table-body>
-          <p-table-row *ngFor="let item of data">
+          <p-table-row *ngFor="let item of [0, 1, 2, 3]">
             <p-table-cell>
-              <p-flex>
-                <p-flex-item>
-                  <img src="{{ item.imageUrl }}" width="80" style="margin-right: 8px" alt="" />
-                </p-flex-item>
-                <p-flex-item>
-                  <p-text weight="semibold">{{ item.model }}</p-text>
-                  <p-text size="x-small">{{ item.date }}</p-text>
-                </p-flex-item>
-              </p-flex>
+              <img
+                src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+                width="80"
+                height="48"
+                style="margin-right: .5rem;"
+                alt=""
+              />
+              <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
+                >emphasized</em
+              >
             </p-table-cell>
-            <p-table-cell>{{ item.interest }}</p-table-cell>
-            <p-table-cell>{{ item.vin }}</p-table-cell>
-            <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
-            <p-table-cell>{{ item.status }}</p-table-cell>
-            <p-table-cell>{{ item.leadId }}</p-table-cell>
+            <p-table-cell style="white-space: normal"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell
+            >
+            <p-table-cell>Some text</p-table-cell>
+            <p-table-cell>Some text</p-table-cell>
             <p-table-cell>
-              <p-button-pure icon="edit">
-                <span style="white-space: nowrap">Edit Lead</span>
-              </p-button-pure>
-            </p-table-cell>
-            <p-table-cell>
-              <p-button variant="tertiary" icon="refresh">
-                <span style="white-space: nowrap">Overwrite</span>
-              </p-button>
+              <p-button-pure icon="edit" style="padding: .5rem;">Edit</p-button-pure>
+              <p-button-pure icon="delete" style="padding: .5rem;">Delete</p-button-pure>
             </p-table-cell>
           </p-table-row>
         </p-table-body>
@@ -49,13 +56,4 @@ import { TableHeadItem } from '@porsche-design-system/components-angular/lib/typ
 })
 export class TableComponent {
   public head = head;
-  public data = data;
-
-  onSortingChange(e: CustomEvent<TableHeadItem>): void {
-    const { key, direction } = e.detail;
-    this.head = this.head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
-    this.data = [...this.data].sort((a, b) =>
-      direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
-    );
-  }
 }

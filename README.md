@@ -39,7 +39,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css}`
+1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
 1. If you have to exclude code fom being prettified, see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)

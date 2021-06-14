@@ -15,7 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { TableHeadItem } from "./components/layout/table/table-utils";
+import { TableHeadCellSort } from "./components/layout/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -658,13 +658,13 @@ export namespace Components {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but stays accessible for screen readers.
+          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
          */
         "hideLabel"?: boolean;
         /**
           * Defines sortability properties.
          */
-        "item"?: TableHeadItem;
+        "sort"?: TableHeadCellSort;
     }
     interface PTableHeadRow {
     }
@@ -1738,7 +1738,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: CustomEvent<TableHeadItem>) => void;
+        "onSortingChange"?: (event: CustomEvent<TableHeadCellSort>) => void;
     }
     interface PTableBody {
     }
@@ -1748,13 +1748,13 @@ declare namespace LocalJSX {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but stays accessible for screen readers.
+          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
          */
         "hideLabel"?: boolean;
         /**
           * Defines sortability properties.
          */
-        "item"?: TableHeadItem;
+        "sort"?: TableHeadCellSort;
     }
     interface PTableHeadRow {
     }
