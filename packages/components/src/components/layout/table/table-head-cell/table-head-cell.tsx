@@ -18,10 +18,6 @@ export class TableHeadCell {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
-  }
-
-  // TODO: move to connectedCallback()
-  public componentWillRender(): void {
     addCss(this.host);
   }
 

@@ -11,9 +11,6 @@ export class TableRow {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableBody');
-  }
-
-  public componentWillRender(): void {
     addCss(this.host);
   }
 

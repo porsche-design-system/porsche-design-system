@@ -12,7 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Table`
 
 #### Changed
+- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 - `Text` and `Headline` inherits white-space CSS property
+
+### Fixed
+- Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components
 
 ### [2.2.1] - 2021-06-08
 

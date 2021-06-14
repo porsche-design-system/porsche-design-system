@@ -1,5 +1,11 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
-import { getHTMLElement, getPrefixedTagNames, insertSlottedStyles, isCaptionVisible } from '../../../../utils';
+import {
+  getHTMLElement,
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isCaptionVisible,
+  scrollElementBy,
+} from '../../../../utils';
 import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 import type { TableHeadCellSort } from '../table-utils';
 
@@ -23,12 +29,12 @@ export class Table {
   @State() public isScrollIndicatorVisible = false;
 
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval: NodeJS.Timeout;
   private scrollAreaElement: HTMLElement;
   private scrollTriggerElement: HTMLElement;
 
   public connectedCallback(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
+    addCss(this.host);
   }
 
   public componentWillLoad(): void {
@@ -36,10 +42,6 @@ export class Table {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
     });
-  }
-
-  public componentWillRender(): void {
-    addCss(this.host);
   }
 
   public componentDidLoad(): void {
@@ -53,21 +55,18 @@ export class Table {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const isCapVisible = isCaptionVisible(this.host, this.caption, this.hideCaption);
+    const captionId = 'caption';
 
     return (
-      <Host
-        role="table"
-        {...(isCaptionVisible(this.host, this.caption, this.hideCaption)
-          ? { 'aria-describedby': 'caption' }
-          : { 'aria-label': this.caption })}
-      >
-        {isCaptionVisible(this.host, this.caption, this.hideCaption) && (
+      <Host role="table" {...(isCapVisible ? { 'aria-describedby': captionId } : { 'aria-label': this.caption })}>
+        {isCapVisible && (
           <PrefixedTagNames.pText
+            id={captionId}
+            class="caption"
             tag="span"
             weight="semibold"
             size="{ base: 'medium', m: 'large' }"
-            id="caption"
-            class="caption"
           >
             {this.caption || <slot name="caption" />}
           </PrefixedTagNames.pText>
@@ -88,7 +87,7 @@ export class Table {
                 hide-label="true"
                 size="inherit"
                 icon="arrow-head-right"
-                onClick={() => this.handleClickOnScrollIndicator()}
+                onClick={this.handleScrollClick}
               >
                 Next
               </PrefixedTagNames.pButtonPure>
@@ -108,9 +107,7 @@ export class Table {
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        for (const { isIntersecting } of entries) {
-          this.isScrollIndicatorVisible = !isIntersecting;
-        }
+        this.isScrollIndicatorVisible = !entries.some((x) => x.isIntersecting);
       },
       {
         root: this.scrollAreaElement,
@@ -121,27 +118,7 @@ export class Table {
     this.intersectionObserver.observe(this.scrollTriggerElement);
   };
 
-  private handleClickOnScrollIndicator = (): void => {
-    const scrollLeft = getScrollByX(this.scrollAreaElement);
-
-    if ('scrollBehavior' in document?.documentElement?.style) {
-      this.scrollAreaElement.scrollBy({ left: scrollLeft, top: 0, behavior: 'smooth' });
-    } else {
-      // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
-      let i = 0;
-      const steps = 20;
-      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
-      const endScrollLeft = initialScrollLeft + scrollLeft;
-      const scrollStep = scrollLeft / steps;
-
-      clearInterval(this.scrollInterval);
-      this.scrollInterval = setInterval(() => {
-        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
-        if (++i >= steps) {
-          this.scrollAreaElement.scrollLeft = endScrollLeft;
-          clearInterval(this.scrollInterval);
-        }
-      }, 10);
-    }
+  private handleScrollClick = (): void => {
+    scrollElementBy(this.scrollAreaElement, getScrollByX(this.scrollAreaElement));
   };
 }
