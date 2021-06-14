@@ -6,11 +6,11 @@ import {
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
+  getProperty,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  getProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';

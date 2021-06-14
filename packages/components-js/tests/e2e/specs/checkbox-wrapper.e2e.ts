@@ -11,7 +11,6 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -395,7 +394,6 @@ describe('checkbox-wrapper', () => {
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
       await labelLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
 
@@ -407,7 +405,6 @@ describe('checkbox-wrapper', () => {
       expect(await getOutlineStyle(labelLink)).toBe(visible);
 
       await messageLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 

@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  ClickableTests,
   expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
@@ -7,10 +8,12 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
+  hasFocus,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -41,30 +44,43 @@ describe('button', () => {
     );
   };
 
-  it('should not be clickable when disabled', async () => {
-    await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`);
-    const host = await getHost();
-    const button = await getButton();
+  const clickableTests: ClickableTests = [
+    {
+      state: 'disabled',
+      setContent: async () => await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`),
+    },
+    {
+      state: 'loading',
+      setContent: async () => await initButton({ isLoading: true }),
+    },
+  ];
 
-    let calls = 0;
-    await addEventListener(host, 'click', () => calls++);
+  for (const { state, setContent } of clickableTests) {
+    it(`should not be clickable when ${state}`, async () => {
+      await setContent();
+      const host = await getHost();
+      const button = await getButton();
 
-    await host.click();
-    await button.click();
+      let calls = 0;
+      await addEventListener(host, 'click', () => calls++);
 
-    const coords = await host.boundingBox();
-    await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
-    await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
-    await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
-    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
-    await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
-    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
-    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+      await host.click();
+      await button.click();
 
-    await waitForStencilLifecycle(page);
+      const coords = await host.boundingBox();
+      await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
+      await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
+      await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
+      await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
+      await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
+      await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+      await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
 
-    expect(calls).toBe(0);
-  });
+      await waitForStencilLifecycle(page);
+
+      expect(calls).toBe(0);
+    });
+  }
 
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
@@ -418,6 +434,33 @@ describe('button', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(button)).toBe(visible);
+    });
+
+    it('should keep focus if state switches to loading', async () => {
+      await initButton();
+
+      const host = await getHost();
+      expect(await hasFocus(page, host)).toBe(false);
+
+      await page.keyboard.press('Tab');
+
+      expect(await hasFocus(page, host))
+        .withContext('after Tab')
+        .toBe(true);
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('focus style on loading')
+        .toBe(true);
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('final focus style')
+        .toBe(true);
     });
   });
 
