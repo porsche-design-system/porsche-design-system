@@ -17,6 +17,7 @@ $root: '.root';
 
 .headline {
   padding: p-px-to-rem(24px) 0;
+  cursor: pointer;
 
   &--closed {
     &:hover,
@@ -35,7 +36,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 p-px-to-rem(8px);
+  padding: 0 $p-spacing-8;
   width: 100%;
   outline: transparent solid p-px-to-rem(1px);
   outline-offset: p-px-to-rem(1px);
@@ -43,6 +44,7 @@ button {
   border: 0;
   background: transparent;
   color: $p-color-default;
+  cursor: pointer;
 
   #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
@@ -57,9 +59,9 @@ button {
 }
 
 .content {
-  padding: 0 p-px-to-rem(8px);
+  padding: 0 $p-spacing-8;
 }
 
 .divider--open {
-  margin-top: p-px-to-rem(40px);
+  margin-top: $p-spacing-40;
 }
