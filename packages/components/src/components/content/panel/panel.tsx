@@ -89,7 +89,12 @@ export class Panel {
           >
             <span class="title">
               {this.title}
-              <p-icon name="plus" aria-label="Plus icon" class="icon"></p-icon>
+              <p-icon
+                name={this.open ? 'close' : 'plus'}
+                aria-label={this.open ? 'Close Icon' : 'Plus icon'}
+                class="icon"
+                lazy={true}
+              ></p-icon>
             </span>
           </button>
         </p-headline>
