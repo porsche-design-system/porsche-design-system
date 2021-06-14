@@ -12,7 +12,6 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -182,7 +181,6 @@ describe('banner', () => {
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
       await titleLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(titleLink)).toBe(hidden);
 
@@ -194,7 +192,6 @@ describe('banner', () => {
       expect(await getOutlineStyle(titleLink)).toBe(visible);
 
       await descriptionLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 

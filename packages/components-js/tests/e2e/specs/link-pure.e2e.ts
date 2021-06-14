@@ -10,7 +10,6 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -194,7 +193,6 @@ describe('link-pure', () => {
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
@@ -216,7 +214,6 @@ describe('link-pure', () => {
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
