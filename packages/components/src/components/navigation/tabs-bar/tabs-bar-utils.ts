@@ -1,10 +1,9 @@
-import { getPrefixedTagNames, getTagName, pxToRem, SubsetTextWeight } from '../../../utils';
+import { getPrefixedTagNames, getTagName, pxToRem } from '../../../utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
 
 export type TabChangeEvent = { activeTabIndex: number };
-export type TabWeight = SubsetTextWeight;
 export type TabGradientColorTheme = 'default' | 'surface';
 
 export type Direction = 'prev' | 'next';

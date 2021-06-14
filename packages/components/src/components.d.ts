@@ -13,10 +13,11 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
-import { PanelSize, PanelStateChangeEvent, PanelWeight } from "./components/content/panel/panel-utils";
+import { PanelSize, PanelStateChangeEvent } from "./components/content/panel/panel-utils";
+import { SubsetTextWeight } from "./utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabSize } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PAccordionItem {
@@ -566,7 +567,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: PanelWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PRadioButtonWrapper {
         /**
@@ -688,7 +689,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PTabsBar {
         /**
@@ -710,7 +711,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PTabsItem {
         /**
@@ -1615,7 +1616,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: PanelWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PRadioButtonWrapper {
         /**
@@ -1745,7 +1746,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PTabsBar {
         /**
@@ -1771,7 +1772,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: SubsetTextWeight;
     }
     interface PTabsItem {
         /**
