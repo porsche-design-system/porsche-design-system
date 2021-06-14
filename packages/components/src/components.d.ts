@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, HeadlineVariant as HeadlineVariant1, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -13,7 +13,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
-import { PanelSize, PanelStateChangeEvent } from "./components/content/panel/panel-utils";
+import { PanelSize, PanelStateChangeEvent, PanelWeight } from "./components/content/panel/panel-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
@@ -544,25 +544,29 @@ export namespace Components {
     }
     interface PPanel {
         /**
-          * Predefined style of the headline.
-         */
-        "headlineVariant"?: HeadlineVariant;
-        /**
           * Defines if panel is open.
          */
         "open"?: boolean;
+        /**
+          * Defines the title used in panel.
+         */
+        "panelTitle": string;
         /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<PanelSize>;
         /**
+          * Sets a headline tag, so it fits correctly within the outline of the page.
+         */
+        "tag"?: HeadlineTag;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
-          * Defines the title used in panel.
+          * The text weight.
          */
-        "title": string;
+        "weight"?: PanelWeight;
     }
     interface PRadioButtonWrapper {
         /**
@@ -1585,29 +1589,33 @@ declare namespace LocalJSX {
     }
     interface PPanel {
         /**
-          * Predefined style of the headline.
-         */
-        "headlineVariant"?: HeadlineVariant;
-        /**
           * Emitted when panel state is changed.
          */
-        "onStateChange"?: (event: CustomEvent<PanelStateChangeEvent>) => void;
+        "onPanelStateChange"?: (event: CustomEvent<PanelStateChangeEvent>) => void;
         /**
           * Defines if panel is open.
          */
         "open"?: boolean;
         /**
+          * Defines the title used in panel.
+         */
+        "panelTitle"?: string;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<PanelSize>;
+        /**
+          * Sets a headline tag, so it fits correctly within the outline of the page.
+         */
+        "tag"?: HeadlineTag;
         /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
-          * Defines the title used in panel.
+          * The text weight.
          */
-        "title"?: string;
+        "weight"?: PanelWeight;
     }
     interface PRadioButtonWrapper {
         /**
