@@ -32,6 +32,7 @@ export class Table {
   private scrollTriggerElement: HTMLElement;
 
   public connectedCallback(): void {
+    addCss(this.host);
     insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 
@@ -40,10 +41,6 @@ export class Table {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
     });
-  }
-
-  public componentWillRender(): void {
-    addCss(this.host);
   }
 
   public componentDidLoad(): void {

@@ -10,11 +10,8 @@ export class TableCell {
   @Element() public host!: HTMLElement;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTableRow');
-  }
-
-  public componentWillRender(): void {
     addCss(this.host);
+    throwIfParentIsNotOfKind(this.host, 'pTableRow');
   }
 
   public render(): JSX.Element {
