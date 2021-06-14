@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import { getPrefixedTagNames, isDark } from '../../../utils';
 import { generateGUID, getTitleTag, PanelSize, PanelStateChangeEvent, PanelWeight } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
@@ -41,12 +41,13 @@ export class Panel {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-      ['root--weight-semibold']: this.weight !== 'regular',
-      ...mapBreakpointPropToClasses('root--size', this.size),
     };
     const dividerClasses = {
-      ['divider']: true,
       ['divider--open']: this.open,
+    };
+    const headlineClasses = {
+      ['headline']: true,
+      ['headline--closed']: !this.open,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -54,9 +55,9 @@ export class Panel {
 
     return (
       <div class={rootClasses}>
-        <TagName>
-          <button aria-expanded={this.open} aria-controls={this.panelTitle} id={id} onClick={this.handleToggleClick}>
-            <PrefixedTagNames.pText size={this.size} weight={this.weight} color="inherit" tag="span">
+        <TagName class={headlineClasses} onClick={this.handleToggleClick}>
+          <button aria-expanded={this.open} aria-controls={this.panelTitle} id={id}>
+            <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
               {this.panelTitle}
               {/* TODO: slotted title? */}
             </PrefixedTagNames.pText>
@@ -65,18 +66,14 @@ export class Panel {
               aria-label={this.open ? 'Close Icon' : 'Plus icon'}
               class="icon"
               lazy={true}
-              color="inherit"
-            ></PrefixedTagNames.pIcon>
+              theme={this.theme}
+            />
           </button>
         </TagName>
         <div id={this.panelTitle} class="content" role="region" aria-labelledby={id} hidden={!this.open}>
           <slot />
         </div>
-        <PrefixedTagNames.pDivider
-          class={dividerClasses}
-          color="neutral-contrast-medium"
-          theme={this.theme}
-        ></PrefixedTagNames.pDivider>
+        <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />
       </div>
     );
   }
