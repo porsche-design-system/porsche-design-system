@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getPrefixedTagNames, isDark } from '../../../utils';
-import { generateGUID, getTitleTag, PanelSize, PanelStateChangeEvent, PanelWeight } from './panel-utils';
+import { getPrefixedTagNames, isDark, SubsetTextWeight } from '../../../utils';
+import { generateGUID, getTitleTag, PanelSize, PanelStateChangeEvent } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
 @Component({
@@ -16,7 +16,7 @@ export class Panel {
   @Prop() public size?: BreakpointCustomizable<PanelSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: PanelWeight = 'semibold';
+  @Prop() public weight?: SubsetTextWeight = 'semibold';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -51,12 +51,13 @@ export class Panel {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const id = `panel-${generateGUID()}`;
+    const labelledId = `label-${generateGUID()}`;
+    const controlsId = `controls-${generateGUID()}`;
 
     return (
-      <div class={rootClasses}>
-        <TagName class={headlineClasses} onClick={this.handleToggleClick}>
-          <button aria-expanded={this.open} aria-controls={this.panelTitle} id={id}>
+      <span class={rootClasses}>
+        <TagName class={headlineClasses} onClick={this.handlePanelClick}>
+          <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
             <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
               {this.panelTitle}
               {/* TODO: slotted title? */}
@@ -70,15 +71,15 @@ export class Panel {
             />
           </button>
         </TagName>
-        <div id={this.panelTitle} class="content" role="region" aria-labelledby={id} hidden={!this.open}>
+        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId} hidden={!this.open}>
           <slot />
         </div>
         <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />
-      </div>
+      </span>
     );
   }
 
-  private handleToggleClick = (): void => {
+  private handlePanelClick = (): void => {
     this.panelStateChange.emit({ open: !this.open });
   };
 }
