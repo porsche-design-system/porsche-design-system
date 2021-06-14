@@ -1,0 +1,22 @@
+.root {
+  position: static !important;
+  height: p-px-to-rem(24px) !important;
+  width: p-px-to-rem(24px) !important;
+  //flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  //appearance: none !important;
+  box-sizing: border-box !important;
+  //background-size: p-px-to-rem(24px) !important;
+  //background-position: -1px -1px !important;
+  //background-color: $p-color-background-default !important;
+  //transition: border $p-animation-hover-duration-var $p-animation-hover-bezier,
+  //background-color $p-animation-hover-duration-var $p-animation-hover-bezier !important;
+  //opacity: 1 !important;
+  //border: $p-color-neutral-contrast-medium solid 1px !important;
+  //border-radius: 0 !important;
+  //outline: transparent solid 1px !important;
+  //outline-offset: 2px !important;
+  cursor: pointer !important;
+}
