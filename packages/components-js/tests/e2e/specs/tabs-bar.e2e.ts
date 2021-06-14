@@ -17,7 +17,6 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForComponentsReady,
-  waitForEventSerialization,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
