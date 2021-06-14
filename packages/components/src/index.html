@@ -23,15 +23,7 @@
     <!-- /END -->
   </body>
 
-  <p-panel
-    id="panel1"
-    size="small"
-    weight="regular"
-    theme="light"
-    title="Test Panel"
-    headlineVariant="headline-1"
-    open="false"
-  >
+  <p-panel size="small" weight="regular" theme="light" panel-title="Test Panel" tag="h2" open="false">
     <div>
       Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -39,18 +31,11 @@
       consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
       diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
       sanctus est Lorem ipsum dolor sit amet.
+      <input type="text" />
     </div>
   </p-panel>
 
-  <p-panel
-    id="panel2"
-    size="small"
-    weight="regular"
-    theme="light"
-    title="Test Panel"
-    headlineVariant="headline-1"
-    open="true"
-  >
+  <p-panel size="small" weight="regular" theme="light" panel-title="Test Panel" tag="h3" open="true">
     <div>
       Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -62,17 +47,12 @@
   </p-panel>
 
   <script>
-    const panel = document.getElementById('panel1');
-    panel.addEventListener('stateChange', (stateChangeEvent) => {
-      const { open } = stateChangeEvent.detail;
-      console.log('-> stateChangeEvent', stateChangeEvent);
-      stateChangeEvent.target.setAttribute('open', open);
-    });
-    const panel2 = document.getElementById('panel2');
-    panel2.addEventListener('stateChange', (stateChangeEvent) => {
-      const { open } = stateChangeEvent.detail;
-      console.log('-> stateChangeEvent', stateChangeEvent);
-      stateChangeEvent.target.setAttribute('open', open);
-    });
+    const panels = document.querySelectorAll('p-panel');
+    for (const panel of panels) {
+      panel.addEventListener('panelStateChange', (stateChangeEvent) => {
+        const { open } = stateChangeEvent.detail;
+        stateChangeEvent.target.setAttribute('open', open);
+      });
+    }
   </script>
 </html>
