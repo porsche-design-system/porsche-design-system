@@ -1,82 +1,77 @@
 import {
-  PButton,
   PButtonPure,
-  PFlex,
-  PFlexItem,
   PTable,
   PTableBody,
   PTableCell,
   PTableHead,
   PTableHeadCell,
+  PTableHeadRow,
   PTableRow,
-  PText,
-  TableHeadItem,
 } from '@porsche-design-system/components-react';
-import { data as rawData, head as rawHead } from '@porsche-design-system/shared';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const rawHead: any[] = [
+  { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
+  { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
+  { name: 'Min width cell', style: { minWidth: 250 } },
+  { name: 'Multiline<br/>header<br/>cell', sort: { id: 'some-id', active: true, direction: 'asc' } },
+  { name: 'Hide header cell', hideLabel: true },
+];
 
 export const TablePage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
   const [head, setHead] = useState(rawHead);
-  const [data, setData] = useState(rawData);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadItem>) => {
-    const { key, direction } = e.detail;
-    setHead((prev) => prev.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) })));
-    setData((prev) =>
-      [...prev].sort((a, b) =>
-        // @ts-ignore
-        direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
-      )
-    );
-  }, []);
-
-  // workaround to pass data via property since our react wrappers set attributes
+  // TODO: workaround to pass data via property since our react wrappers set attributes
+  // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
   useEffect(() => {
     headRow.current.childNodes.forEach((node, i) => {
-      (node as any).item = head[i];
+      (node as any).sort = head[i].sort;
     });
   }, [head]);
 
   return (
     <>
-      <div className="playground light table" title="should render table">
-        <PTable onSortingChange={onSortingChange}>
+      <div className="playground light" title="should render table">
+        <PTable caption="Some caption">
           <PTableHead>
-            <PTableRow ref={headRow}>
+            <PTableHeadRow ref={headRow}>
               {head.map((item, i) => (
-                <PTableHeadCell key={i} item={item} children={item.name} />
+                <PTableHeadCell
+                  key={i}
+                  sort={item.sort}
+                  hideLabel={item.hideLabel}
+                  style={item.style}
+                  dangerouslySetInnerHTML={{ __html: item.name }}
+                />
               ))}
-            </PTableRow>
+            </PTableHeadRow>
           </PTableHead>
           <PTableBody>
-            {data.map((item) => (
-              <PTableRow key={item.leadId}>
+            {[0, 1, 2, 3].map((item, i) => (
+              <PTableRow key={i}>
                 <PTableCell>
-                  <PFlex>
-                    <PFlexItem>
-                      <img src={item.imageUrl} width="80" style={{ marginRight: 8 }} alt="" />
-                    </PFlexItem>
-                    <PFlexItem>
-                      <PText weight="semibold">{item.model}</PText>
-                      <PText size="x-small">{item.date}</PText>
-                    </PFlexItem>
-                  </PFlex>
+                  <img
+                    src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+                    width="80"
+                    height="48"
+                    style={{ marginRight: '.5rem' }}
+                    alt=""
+                  />
+                  <a href="#">link</a> <b>bold</b> <i>italic</i> <strong>strong</strong> <em>emphasized</em>
                 </PTableCell>
-                <PTableCell>{item.interest}</PTableCell>
-                <PTableCell>{item.vin}</PTableCell>
-                <PTableCell>{item.purchaseIntention}</PTableCell>
-                <PTableCell>{item.status}</PTableCell>
-                <PTableCell>{item.leadId}</PTableCell>
+                <PTableCell style={{ whiteSpace: 'normal' }}>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                </PTableCell>
+                <PTableCell>Some text</PTableCell>
+                <PTableCell>Some text</PTableCell>
                 <PTableCell>
-                  <PButtonPure icon="edit">
-                    <span style={{ whiteSpace: 'nowrap' }}>Edit Lead</span>
+                  <PButtonPure style={{ padding: '.5rem' }} icon="edit">
+                    Edit
                   </PButtonPure>
-                </PTableCell>
-                <PTableCell>
-                  <PButton variant="tertiary" icon="refresh">
-                    <span style={{ whiteSpace: 'nowrap' }}>Overwrite</span>
-                  </PButton>
+                  <PButtonPure style={{ padding: '.5rem' }} icon="delete">
+                    Delete
+                  </PButtonPure>
                 </PTableCell>
               </PTableRow>
             ))}

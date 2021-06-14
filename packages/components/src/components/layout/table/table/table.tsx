@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElement, getPrefixedTagNames, insertSlottedStyles, isCaptionVisible } from '../../../../utils';
 import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
-import type { TableHeadItem } from '../table-utils';
+import type { TableHeadCellSort } from '../table-utils';
 
 @Component({
   tag: 'p-table',
@@ -10,6 +10,7 @@ import type { TableHeadItem } from '../table-utils';
 export class Table {
   @Element() public host!: HTMLElement;
 
+  // TODO: maybe we should use PTableCaption instead?
   /** A caption describing the contents of the table. */
   @Prop() public caption?: string = '';
 
@@ -17,7 +18,7 @@ export class Table {
   @Prop() public hideCaption?: boolean = false;
 
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadItem>;
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadCellSort>;
 
   @State() public isScrollIndicatorVisible = false;
 
@@ -31,7 +32,7 @@ export class Table {
   }
 
   public componentWillLoad(): void {
-    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableHeadItem>) => {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableHeadCellSort>) => {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
     });

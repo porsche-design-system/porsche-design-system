@@ -4,19 +4,18 @@ import { slottedStyles, styles } from './table-styles';
 
 export type Direction = 'asc' | 'desc';
 
-export type TableHeadItem = Partial<{
-  key: string;
-  isSortable: boolean;
-  isSorting: boolean;
+export type TableHeadCellSort = {
+  id: string;
+  active: boolean;
   direction: Direction;
-}>;
+};
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
-export const getAriaSort = ({ isSortable, isSorting, direction }: TableHeadItem = {}): AriaAttributes['aria-sort'] => {
-  return isSortable && isSorting ? (isDirectionAsc(direction) ? 'ascending' : 'descending') : 'none';
+export const getAriaSort = (sort: TableHeadCellSort): AriaAttributes['aria-sort'] => {
+  return sort?.active ? (isDirectionAsc(sort.direction) ? 'ascending' : 'descending') : 'none';
 };
 
 export const SORT_EVENT_NAME = 'internalSortingChange';

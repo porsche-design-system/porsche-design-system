@@ -22,8 +22,7 @@ export const head: HeadItem[] = [
   { name: 'Purchase Intention', key: 'purchaseIntention' },
   { name: 'Status', key: 'status' },
   { name: 'Lead ID', key: 'leadId' },
-  { name: '' },
-  { name: '' },
+  { name: 'Action' },
 ].map((item, i) => ({
   ...item,
   ...(item.name && {
@@ -35,7 +34,7 @@ export const head: HeadItem[] = [
 
 export const data: DataItem[] = [
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
+    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',
     date: '03.05.2021',
     interest: 'New Car',
@@ -45,7 +44,7 @@ export const data: DataItem[] = [
     leadId: '0000824402',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/taycan.jpg',
+    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',
     date: '03.05.2021',
     interest: 'New Car',
@@ -55,7 +54,7 @@ export const data: DataItem[] = [
     leadId: '0000824409',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
+    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',
     date: '03.05.2021',
     interest: 'Used Car',
@@ -65,7 +64,7 @@ export const data: DataItem[] = [
     leadId: '0000824408',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718.jpg',
+    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',
     date: '03.05.2021',
     interest: 'Used Car',
@@ -75,7 +74,7 @@ export const data: DataItem[] = [
     leadId: '0000824407',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911.jpg',
+    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',
     date: '03.05.2021',
     interest: 'New Car',
