@@ -1,8 +1,10 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
+  getBoxShadowStyle,
   getBrowser,
   getLifecycleStatus,
   getProperty,
@@ -12,6 +14,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -39,17 +42,17 @@ describe('switch', () => {
     </script>`;
 
   type InitOptions = {
-    disabled?: boolean;
-    tabbable?: boolean;
-    loading?: boolean;
+    isDisabled?: boolean;
+    isTabbable?: boolean;
+    isLoading?: boolean;
     otherMarkup?: string;
   };
 
   const initSwitch = (opts?: InitOptions): Promise<void> => {
-    const { disabled = false, tabbable = true, loading = false, otherMarkup = '' } = opts ?? {};
+    const { isDisabled = false, isTabbable = true, isLoading = false, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch tabbable="${tabbable}" disabled="${disabled}" loading="${loading}">Some Label</p-switch>${otherMarkup}`
+      `<p-switch tabbable="${isTabbable}" disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
@@ -156,7 +159,7 @@ describe('switch', () => {
     });
 
     it('should not trigger event on click if switch is disabled', async () => {
-      await initSwitch({ disabled: true });
+      await initSwitch({ isDisabled: true });
 
       let eventCounter = 0;
       const host = await getHost();
@@ -164,6 +167,22 @@ describe('switch', () => {
       await addEventListener(host, 'switchChange', () => eventCounter++);
 
       await button.click();
+      await waitForEventSerialization(page);
+
+      expect(eventCounter).toBe(0);
+    });
+
+    it('should not trigger event on click if switch is loading', async () => {
+      await initSwitch({ isLoading: true });
+
+      let eventCounter = 0;
+      const host = await getHost();
+      const button = await getButton();
+      await addEventListener(host, 'switchChange', () => eventCounter++);
+
+      await button.click();
+      await waitForEventSerialization(page);
+      await host.click();
       await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(0);
@@ -303,6 +322,35 @@ describe('switch', () => {
     });
   });
 
+  describe('focus', () => {
+    it('should keep focus if state switches to loading', async () => {
+      await initSwitch();
+
+      const host = await getHost();
+      expect(await hasFocus(page, host)).toBe(false);
+
+      await page.keyboard.press('Tab');
+
+      expect(await hasFocus(page, host))
+        .withContext('after Tab')
+        .toBe(true);
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('focus style on loading')
+        .toBe(true);
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('final focus style')
+        .toBe(true);
+    });
+  });
+
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initSwitch();
@@ -316,7 +364,7 @@ describe('switch', () => {
     });
 
     it('should work without unnecessary round trips with spinner', async () => {
-      await initSwitch({ loading: true });
+      await initSwitch({ isLoading: true });
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-switch']).toBe(1, 'componentDidLoad: p-switch');
