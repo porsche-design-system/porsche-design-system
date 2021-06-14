@@ -1,5 +1,11 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
-import { getHTMLElement, getPrefixedTagNames, insertSlottedStyles, isCaptionVisible } from '../../../../utils';
+import {
+  getHTMLElement,
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isCaptionVisible,
+  scrollElementBy,
+} from '../../../../utils';
 import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 import type { TableHeadItem } from '../table-utils';
 
@@ -22,7 +28,6 @@ export class Table {
   @State() public isScrollIndicatorVisible = false;
 
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval: NodeJS.Timeout;
   private scrollAreaElement: HTMLElement;
   private scrollTriggerElement: HTMLElement;
 
@@ -115,27 +120,7 @@ export class Table {
     this.intersectionObserver.observe(this.scrollTriggerElement);
   };
 
-  private handleClickOnScrollIndicator = (): void => {
-    const scrollLeft = getScrollByX(this.scrollAreaElement);
-
-    if ('scrollBehavior' in document?.documentElement?.style) {
-      this.scrollAreaElement.scrollBy({ left: scrollLeft, top: 0, behavior: 'smooth' });
-    } else {
-      // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
-      let i = 0;
-      const steps = 20;
-      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
-      const endScrollLeft = initialScrollLeft + scrollLeft;
-      const scrollStep = scrollLeft / steps;
-
-      clearInterval(this.scrollInterval);
-      this.scrollInterval = setInterval(() => {
-        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
-        if (++i >= steps) {
-          this.scrollAreaElement.scrollLeft = endScrollLeft;
-          clearInterval(this.scrollInterval);
-        }
-      }, 10);
-    }
+  private handleScrollClick = (): void => {
+    scrollElementBy(this.scrollAreaElement, getScrollByX(this.scrollAreaElement));
   };
 }

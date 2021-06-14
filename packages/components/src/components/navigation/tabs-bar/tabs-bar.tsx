@@ -18,6 +18,7 @@ import {
   getPrefixedTagNames,
   isDark,
   mapBreakpointPropToClasses,
+  scrollElementTo,
   setAttribute,
 } from '../../../utils';
 
@@ -52,7 +53,6 @@ export class TabsBar {
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval: NodeJS.Timeout;
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
@@ -313,38 +313,13 @@ export class TabsBar {
     if (opts?.skipAnimation) {
       this.scrollAreaElement.scrollLeft = scrollActivePosition;
     } else {
-      this.scrollTo(scrollActivePosition);
+      scrollElementTo(this.scrollAreaElement, scrollActivePosition);
     }
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
-    this.scrollTo(scrollPosition);
-  };
-
-  private scrollTo = (scrollPosition: number): void => {
-    if ('scrollBehavior' in document?.documentElement?.style) {
-      this.scrollAreaElement.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth',
-      });
-    } else {
-      // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
-      let i = 0;
-      const steps = 20;
-      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
-      const scrollDistance = scrollPosition - initialScrollLeft;
-      const scrollStep = scrollDistance / steps;
-
-      clearInterval(this.scrollInterval);
-      this.scrollInterval = setInterval(() => {
-        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
-        if (++i >= steps) {
-          this.scrollAreaElement.scrollLeft = scrollPosition;
-          clearInterval(this.scrollInterval);
-        }
-      }, 10);
-    }
+    scrollElementTo(this.scrollAreaElement, scrollPosition);
   };
 
   private get focusedTabIndex(): number {
