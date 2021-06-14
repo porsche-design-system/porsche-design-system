@@ -1,22 +1,67 @@
-.root {
-  position: static !important;
-  height: p-px-to-rem(24px) !important;
-  width: p-px-to-rem(24px) !important;
-  //flex-shrink: 0 !important;
-  display: block !important;
+@import '../../../styles/internal.variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 !important;
-  padding: 0 !important;
-  //appearance: none !important;
-  box-sizing: border-box !important;
-  //background-size: p-px-to-rem(24px) !important;
-  //background-position: -1px -1px !important;
-  //background-color: $p-color-background-default !important;
+}
+
+.root {
+  position: static;
+  //flex-shrink: 0;
+  display: block;
+  margin: 24px 0px;
+  padding: 0;
+  width: 800px;
+  //appearance: none;
+  box-sizing: border-box;
+
+  //background-size: p-px-to-rem(24px);
+  //background-position: -1px -1px;
+  //background-color: $p-color-background-default;
   //transition: border $p-animation-hover-duration-var $p-animation-hover-bezier,
-  //background-color $p-animation-hover-duration-var $p-animation-hover-bezier !important;
-  //opacity: 1 !important;
-  //border: $p-color-neutral-contrast-medium solid 1px !important;
-  //border-radius: 0 !important;
-  //outline: transparent solid 1px !important;
-  //outline-offset: 2px !important;
-  cursor: pointer !important;
+  //background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+  //opacity: 1;
+  //border: $p-color-neutral-contrast-medium solid 1px;
+  //border-radius: 0;
+}
+
+button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8px 0px 8px;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  outline: transparent solid 1px;
+  outline-offset: 1px;
+  text-decoration: none;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  display: flex;
+  color: $p-color-default;
+
+  &:focus {
+    outline-color: $p-color-state-focus;
+  }
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+}
+
+.content {
+  padding: 24px 8px 0 8px;
+}
+
+.divider {
+  margin-top: 25px;
+
+  &--open {
+    margin-top: 40px;
+  }
 }

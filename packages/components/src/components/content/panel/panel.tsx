@@ -16,7 +16,7 @@ export class Panel {
   @Prop() public size?: BreakpointCustomizable<PanelSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: PanelWeight = 'regular';
+  @Prop() public weight?: PanelWeight = 'semibold';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -44,6 +44,10 @@ export class Panel {
       ['root--weight-semibold']: this.weight !== 'regular',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
+    const dividerClasses = {
+      ['divider']: true,
+      ['divider--open']: this.open,
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const id = `panel-${generateGUID()}`;
@@ -55,18 +59,24 @@ export class Panel {
             <PrefixedTagNames.pText size={this.size} weight={this.weight} color="inherit" tag="span">
               {this.panelTitle}
               {/* TODO: slotted title? */}
-              <PrefixedTagNames.pIcon
-                name={this.open ? 'close' : 'plus'}
-                aria-label={this.open ? 'Close Icon' : 'Plus icon'}
-                class="icon"
-                lazy={true}
-              ></PrefixedTagNames.pIcon>
             </PrefixedTagNames.pText>
+            <PrefixedTagNames.pIcon
+              name={this.open ? 'close' : 'plus'}
+              aria-label={this.open ? 'Close Icon' : 'Plus icon'}
+              class="icon"
+              lazy={true}
+              color="inherit"
+            ></PrefixedTagNames.pIcon>
           </button>
         </TagName>
-        <div id={this.panelTitle} role="region" aria-labelledby={id} class="content" hidden={!this.open}>
+        <div id={this.panelTitle} class="content" role="region" aria-labelledby={id} hidden={!this.open}>
           <slot />
         </div>
+        <PrefixedTagNames.pDivider
+          class={dividerClasses}
+          color="neutral-contrast-medium"
+          theme={this.theme}
+        ></PrefixedTagNames.pDivider>
       </div>
     );
   }
