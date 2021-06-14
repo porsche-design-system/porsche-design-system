@@ -31,6 +31,7 @@ $root: '.root';
 }
 
 button {
+
   // TODO: reset Button styles?
   display: flex;
   justify-content: space-between;
@@ -43,6 +44,7 @@ button {
   border: 0;
   background: transparent;
   color: $p-color-default;
+
   // iOS Safari users should not see tap highlight color on button
   -webkit-tap-highlight-color: transparent;
 
