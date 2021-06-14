@@ -46,6 +46,9 @@ button {
   color: $p-color-default;
   cursor: pointer;
 
+  // iOS Safari users should not see tap highlight color on button
+  -webkit-tap-highlight-color: transparent;
+
   #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
   }

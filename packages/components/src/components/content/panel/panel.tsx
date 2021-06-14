@@ -34,6 +34,13 @@ export class Panel {
   @Event({ bubbles: false }) public panelStateChange: EventEmitter<PanelStateChangeEvent>;
 
   // private hasAccordionParent: boolean = getHasPAccordionParent(this.host);
+  private labelledId: string;
+  private controlsId: string;
+
+  public componentWillLoad(): void {
+    this.labelledId = `label-${generateGUID()}`;
+    this.controlsId = `controls-${generateGUID()}`;
+  }
 
   public render(): JSX.Element {
     const TagName = getTitleTag(this.tag);
@@ -51,13 +58,11 @@ export class Panel {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const labelledId = `label-${generateGUID()}`;
-    const controlsId = `controls-${generateGUID()}`;
 
     return (
       <span class={rootClasses}>
         <TagName class={headlineClasses} onClick={this.handlePanelClick}>
-          <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
+          <button aria-expanded={this.open} aria-controls={this.controlsId} id={this.labelledId}>
             <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
               {this.panelTitle}
               {/* TODO: slotted title? */}
@@ -71,7 +76,7 @@ export class Panel {
             />
           </button>
         </TagName>
-        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId} hidden={!this.open}>
+        <div id={this.controlsId} class="content" role="region" aria-labelledby={this.labelledId} hidden={!this.open}>
           <slot />
         </div>
         <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />
