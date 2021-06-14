@@ -1,11 +1,11 @@
 import { breakpoint, color } from '@porsche-design-system/utilities';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '.';
 
 export const transitionHoverDuration = '.24s';
 export const transitionHoverBezier = 'ease';
 
 export const pxToRem = (px: number): number => px / 16;
-export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
+export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
 export const hover = (): JssStyle => {
   return {
