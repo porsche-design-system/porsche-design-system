@@ -9,42 +9,44 @@ h6 {
   margin: 0 !important;
 }
 
-.root {
-  position: static;
-  //flex-shrink: 0;
-  display: block;
-  margin: 24px 0px;
-  padding: 0;
-  width: 800px;
-  //appearance: none;
-  box-sizing: border-box;
+$root: '.root';
 
-  //background-size: p-px-to-rem(24px);
-  //background-position: -1px -1px;
-  //background-color: $p-color-background-default;
-  //transition: border $p-animation-hover-duration-var $p-animation-hover-bezier,
-  //background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  //opacity: 1;
-  //border: $p-color-neutral-contrast-medium solid 1px;
-  //border-radius: 0;
+#{$root} {
+  width: 800px;
+}
+
+.headline {
+  padding: 24px 0;
+
+  &--closed {
+    &:hover,
+    &:active {
+      background-color: $p-color-background-surface;
+
+      #{$root}--theme-dark & {
+        background-color: $p-color-theme-dark-background-surface;
+      }
+    }
+  }
 }
 
 button {
+  // TODO: reset Button styles?
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 8px 0px 8px;
   width: 100%;
-  box-sizing: border-box;
-  appearance: none;
   outline: transparent solid 1px;
   outline-offset: 1px;
   text-decoration: none;
-  text-align: left;
   border: 0;
   background: transparent;
-  display: flex;
   color: $p-color-default;
+
+  #{$root}--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
 
   &:focus {
     outline-color: $p-color-state-focus;
@@ -55,13 +57,9 @@ button {
 }
 
 .content {
-  padding: 24px 8px 0 8px;
+  padding: 0 8px;
 }
 
-.divider {
-  margin-top: 25px;
-
-  &--open {
-    margin-top: 40px;
-  }
+.divider--open {
+  margin-top: 40px;
 }
