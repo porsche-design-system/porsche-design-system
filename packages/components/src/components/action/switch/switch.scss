@@ -34,7 +34,7 @@ $root: '.root';
   width: auto;
   justify-content: flex-start;
 
-  &:not(&--disabled) {
+  &:not(&--disabled-loading) {
     cursor: pointer;
   }
 
@@ -105,7 +105,7 @@ $root: '.root';
     }
   }
 
-  #{$root}--disabled & {
+  #{$root}--disabled-loading & {
     color: $p-color-state-disabled;
 
     @at-root #{$root}--theme-dark#{&} {
@@ -146,7 +146,7 @@ button {
     }
   }
 
-  #{$root}--disabled & {
+  #{$root}--disabled-loading & {
     border-color: $p-color-state-disabled;
     cursor: not-allowed;
 
@@ -155,7 +155,7 @@ button {
     }
   }
 
-  #{$root}--disabled#{$root}--checked & {
+  #{$root}--disabled-loading#{$root}--checked & {
     background-color: $p-color-state-disabled;
 
     @at-root #{$root}--theme-dark#{&} {
@@ -163,7 +163,7 @@ button {
     }
   }
 
-  :not(#{$root}--disabled) &:hover {
+  :not(#{$root}--disabled-loading) &:hover {
     border-color: $p-color-default;
 
     @at-root #{$root}--theme-dark#{&} {
@@ -171,7 +171,7 @@ button {
     }
   }
 
-  :not(#{$root}--disabled)#{$root}--checked &:hover {
+  :not(#{$root}--disabled-loading)#{$root}--checked &:hover {
     border-color: darken($p-color-notification-success, 12%);
     background-color: darken($p-color-notification-success, 12%);
 
@@ -187,9 +187,17 @@ button {
     #{$root}--theme-dark & {
       box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-neutral-contrast-high;
     }
+
+    #{$root}--loading & {
+      box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-state-disabled;
+
+      @at-root #{$root}--theme-dark#{&} {
+        box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-state-disabled;
+      }
+    }
   }
 
-  #{$root}--checked &:focus {
+  #{$root}--checked:not(#{$root}--loading) &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-notification-success;
 
     @at-root #{$root}--theme-dark#{&} {
@@ -224,7 +232,7 @@ button {
     background-color: $p-color-background-default;
   }
 
-  :not(#{$root}--checked)#{$root}--disabled & {
+  :not(#{$root}--checked)#{$root}--disabled-loading & {
     background-color: $p-color-state-disabled;
 
     @at-root #{$root}--theme-dark#{&} {
@@ -232,7 +240,7 @@ button {
     }
   }
 
-  :not(#{$root}--disabled):not(#{$root}--checked) button:hover & {
+  :not(#{$root}--disabled-loading):not(#{$root}--checked) button:hover & {
     background-color: $p-color-default;
 
     @at-root #{$root}--theme-dark#{&} {

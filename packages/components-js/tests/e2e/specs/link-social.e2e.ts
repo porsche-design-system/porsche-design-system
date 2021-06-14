@@ -10,7 +10,6 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -193,7 +192,6 @@ describe('link-social', () => {
       expect(await getOutlineStyle(link)).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 

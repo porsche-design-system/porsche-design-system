@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Table`
 
 #### Changed
+- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 - `Text` and `Headline` inherits white-space CSS property
 
 ### [2.2.1] - 2021-06-08
