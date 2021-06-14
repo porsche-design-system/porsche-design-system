@@ -60,4 +60,19 @@
       sanctus est Lorem ipsum dolor sit amet.
     </div>
   </p-panel>
+
+  <script>
+    const panel = document.getElementById('panel1');
+    panel.addEventListener('stateChange', (stateChangeEvent) => {
+      const { open } = stateChangeEvent.detail;
+      console.log('-> stateChangeEvent', stateChangeEvent);
+      stateChangeEvent.target.setAttribute('open', open);
+    });
+    const panel2 = document.getElementById('panel2');
+    panel2.addEventListener('stateChange', (stateChangeEvent) => {
+      const { open } = stateChangeEvent.detail;
+      console.log('-> stateChangeEvent', stateChangeEvent);
+      stateChangeEvent.target.setAttribute('open', open);
+    });
+  </script>
 </html>
