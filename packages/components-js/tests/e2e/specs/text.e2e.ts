@@ -7,7 +7,6 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -43,7 +42,6 @@ describe('text', () => {
       expect(await getOutlineStyle(link)).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 

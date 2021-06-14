@@ -13,7 +13,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -408,7 +407,6 @@ describe('text-field-wrapper', () => {
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
       await labelLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
 
@@ -420,7 +418,6 @@ describe('text-field-wrapper', () => {
       expect(await getOutlineStyle(labelLink)).toBe(visible);
 
       await descriptionLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
@@ -431,7 +428,6 @@ describe('text-field-wrapper', () => {
       expect(await getOutlineStyle(descriptionLink)).toBe(visible);
 
       await messageLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 

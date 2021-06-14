@@ -11,7 +11,6 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   waitForEventSerialization,
   waitForStencilLifecycle,
