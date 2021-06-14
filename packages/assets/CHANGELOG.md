@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [4.0.0] - 2021-06-11
+
+### Fixed
+- Use correct icon for `arrow-last` and `arrow-first`
+
 ### [3.2.0] - 2021-05-18
 
 #### Changed

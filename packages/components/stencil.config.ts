@@ -34,7 +34,17 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-button', 'p-button-group'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
-  { components: ['p-table', 'p-table-body', 'p-table-head', 'p-table-row', 'p-table-head-cell', 'p-table-cell'] },
+  {
+    components: [
+      'p-table',
+      'p-table-body',
+      'p-table-head',
+      'p-table-head-row',
+      'p-table-head-cell',
+      'p-table-row',
+      'p-table-cell',
+    ],
+  },
   { components: ['p-tabs', 'p-tabs-item'] },
   { components: ['p-text-list', 'p-text-list-item'] },
 ];

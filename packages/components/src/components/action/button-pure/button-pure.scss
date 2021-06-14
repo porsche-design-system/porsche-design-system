@@ -62,7 +62,7 @@
     color: $p-color-default;
   }
 
-  &:not(:disabled) {
+  &:not(:disabled):not(&--loading) {
     &:hover {
       color: $p-color-state-hover;
       + * {
@@ -78,7 +78,8 @@
     }
   }
 
-  &:disabled {
+  &:disabled,
+  &--loading {
     cursor: not-allowed;
     color: $p-color-state-disabled;
     + * {
@@ -94,7 +95,7 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
         + * {
@@ -110,7 +111,8 @@
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: $p-color-theme-dark-state-disabled;
       + * {
         color: $p-color-theme-dark-state-disabled;

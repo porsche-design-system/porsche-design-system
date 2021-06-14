@@ -9,7 +9,6 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -252,7 +251,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
       await labelLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
 
@@ -264,7 +262,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(labelLink)).toBe(visible);
 
       await descriptionLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
@@ -275,7 +272,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(descriptionLink)).toBe(visible);
 
       await messageLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 

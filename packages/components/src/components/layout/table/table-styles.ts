@@ -1,13 +1,14 @@
 import { color, font, spacing } from '@porsche-design-system/utilities';
 import {
   buildHostStyles,
-  getCss,
-  mediaQuery,
   focus,
-  transitionHoverDuration,
-  transitionHoverBezier,
+  getCss,
   hover,
+  JssStyle,
+  mediaQuery,
   pxToRemWithUnit,
+  transitionHoverBezier,
+  transitionHoverDuration,
 } from '../../../utils';
 
 export const TABLE_COMPONENTS = [
@@ -169,7 +170,7 @@ export const styles: { [key in TableComponentType]: string } = {
   }),
 };
 
-export const slottedStyles = {
+export const slottedStyles: JssStyle = {
   '& a': {
     color: 'inherit !important',
     textDecoration: 'underline !important',
