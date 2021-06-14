@@ -2,6 +2,7 @@ import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
+export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
@@ -21,6 +22,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        <link rel="stylesheet" href="overrides.css" >
         ${options.injectIntoHead}
       </head>
       <body>
