@@ -52,21 +52,18 @@ export class Table {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const isCapVisible = isCaptionVisible(this.host, this.caption, this.hideCaption);
+    const captionId = 'caption';
 
     return (
-      <Host
-        role="table"
-        {...(isCaptionVisible(this.host, this.caption, this.hideCaption)
-          ? { 'aria-describedby': 'caption' }
-          : { 'aria-label': this.caption })}
-      >
-        {isCaptionVisible(this.host, this.caption, this.hideCaption) && (
+      <Host role="table" {...(isCapVisible ? { 'aria-describedby': captionId } : { 'aria-label': this.caption })}>
+        {isCapVisible && (
           <PrefixedTagNames.pText
+            id={captionId}
+            class="caption"
             tag="span"
             weight="semibold"
             size="{ base: 'medium', m: 'large' }"
-            id="caption"
-            class="caption"
           >
             {this.caption || <slot name="caption" />}
           </PrefixedTagNames.pText>
@@ -87,7 +84,7 @@ export class Table {
                 hide-label="true"
                 size="inherit"
                 icon="arrow-head-right"
-                onClick={() => this.handleClickOnScrollIndicator()}
+                onClick={this.handleScrollClick}
               >
                 Next
               </PrefixedTagNames.pButtonPure>
@@ -107,9 +104,7 @@ export class Table {
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        for (const { isIntersecting } of entries) {
-          this.isScrollIndicatorVisible = !isIntersecting;
-        }
+        this.isScrollIndicatorVisible = !entries.some((x) => x.isIntersecting);
       },
       {
         root: this.scrollAreaElement,
