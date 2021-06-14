@@ -12,11 +12,11 @@ h6 {
 $root: '.root';
 
 #{$root} {
-  width: 800px;
+  width: p-px-to-rem(800px);
 }
 
 .headline {
-  padding: 24px 0;
+  padding: p-px-to-rem(24px) 0;
 
   &--closed {
     &:hover,
@@ -35,10 +35,10 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 p-px-to-rem(8px);
   width: 100%;
-  outline: transparent solid 1px;
-  outline-offset: 1px;
+  outline: transparent solid p-px-to-rem(1px);
+  outline-offset: p-px-to-rem(1px);
   text-decoration: none;
   border: 0;
   background: transparent;
@@ -57,9 +57,9 @@ button {
 }
 
 .content {
-  padding: 0 8px;
+  padding: 0 p-px-to-rem(8px);
 }
 
 .divider--open {
-  margin-top: 40px;
+  margin-top: p-px-to-rem(40px);
 }
