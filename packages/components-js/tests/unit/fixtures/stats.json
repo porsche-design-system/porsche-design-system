@@ -1,26 +1,26 @@
 {
-  "hash": "7c7e2f73dbaffd339d09",
+  "hash": "900b36acf2760ab5a6e1",
   "version": "5.38.1",
-  "time": 3245,
-  "builtAt": 1623656844471,
+  "time": 4419,
+  "builtAt": 1623666564902,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.1.07313f11b00bd2706d51.js"
+      "porsche-design-system.v2.2.1.a1901a688e98d518b40e.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.1.07313f11b00bd2706d51.js",
+      "name": "porsche-design-system.v2.2.1.a1901a688e98d518b40e.js",
       "size": 64473,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "07313f11b00bd2706d51",
+        "contenthash": "a1901a688e98d518b40e",
         "javascriptModule": false,
         "minimized": true,
         "size": 64473
@@ -340,31 +340,6 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.table.8a9b35110284b6718b57.js",
-      "size": 8527,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "8a9b35110284b6718b57",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 8527
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "table"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
       "name": "porsche-design-system.pagination.cc466780ce290918829a.js",
       "size": 8498,
       "emitted": true,
@@ -384,6 +359,31 @@
       "related": {},
       "chunks": [
         "pagination"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.table.6b29e8014f04f75df453.js",
+      "size": 8395,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "6b29e8014f04f75df453",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 8395
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "table"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -1477,7 +1477,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -5835,7 +5835,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -8087,7 +8087,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -10157,7 +10157,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -11743,7 +11743,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -13405,7 +13405,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -14098,10 +14098,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.1.07313f11b00bd2706d51.js"
+        "porsche-design-system.v2.2.1.a1901a688e98d518b40e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "057ba33ceefab3a3df91",
+      "hash": "ff546271ed0863d4b645",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -20861,7 +20861,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "183:29-48",
+              "loc": "181:29-48",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20875,7 +20875,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "184:25-41",
+              "loc": "182:25-41",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20889,7 +20889,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:12-13",
+              "loc": "184:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20903,7 +20903,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:14-18",
+              "loc": "184:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20917,7 +20917,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:156-157",
+              "loc": "184:156-157",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20931,7 +20931,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:308-309",
+              "loc": "184:308-309",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20945,7 +20945,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:342-343",
+              "loc": "184:342-343",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20959,7 +20959,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:370-371",
+              "loc": "184:370-371",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20973,7 +20973,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:405-406",
+              "loc": "184:405-406",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -20987,7 +20987,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:434-435",
+              "loc": "184:434-435",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21001,7 +21001,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:451-452",
+              "loc": "184:451-452",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21015,7 +21015,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:527-528",
+              "loc": "184:527-528",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21029,7 +21029,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "186:567-568",
+              "loc": "184:567-568",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21043,7 +21043,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "188:22-32",
+              "loc": "186:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21057,7 +21057,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "193:4-20",
+              "loc": "191:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21071,7 +21071,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "196:4-28",
+              "loc": "195:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21085,7 +21085,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "202:12-13",
+              "loc": "198:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21099,7 +21099,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "202:14-18",
+              "loc": "198:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21113,7 +21113,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "202:42-43",
+              "loc": "198:42-43",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21127,7 +21127,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "204:22-32",
+              "loc": "200:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21141,7 +21141,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "209:4-20",
+              "loc": "205:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21155,7 +21155,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "212:4-28",
+              "loc": "209:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21169,7 +21169,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "218:12-13",
+              "loc": "212:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21183,7 +21183,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "218:14-18",
+              "loc": "212:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21197,7 +21197,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "218:38-39",
+              "loc": "212:38-39",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21211,7 +21211,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "220:22-32",
+              "loc": "214:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21225,7 +21225,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "225:4-20",
+              "loc": "219:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21239,7 +21239,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "228:4-28",
+              "loc": "223:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21253,7 +21253,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "234:12-13",
+              "loc": "226:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21267,7 +21267,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "234:14-18",
+              "loc": "226:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21281,7 +21281,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "234:42-43",
+              "loc": "226:42-43",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21295,7 +21295,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "236:22-32",
+              "loc": "228:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21309,7 +21309,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "241:4-20",
+              "loc": "233:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21323,7 +21323,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "252:4-28",
+              "loc": "244:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21337,7 +21337,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "258:29-48",
+              "loc": "250:29-48",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21351,7 +21351,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "260:12-13",
+              "loc": "252:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21365,7 +21365,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "260:14-18",
+              "loc": "252:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21379,7 +21379,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "260:111-112",
+              "loc": "252:111-112",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21393,7 +21393,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "260:177-178",
+              "loc": "252:177-178",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21407,7 +21407,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "260:194-195",
+              "loc": "252:194-195",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21421,7 +21421,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "263:95-96",
+              "loc": "255:95-96",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21435,7 +21435,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "265:22-32",
+              "loc": "257:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21449,7 +21449,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "270:4-20",
+              "loc": "262:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21463,7 +21463,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "273:4-28",
+              "loc": "266:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21477,7 +21477,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "279:12-13",
+              "loc": "269:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21491,7 +21491,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "279:14-18",
+              "loc": "269:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21505,7 +21505,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "279:37-38",
+              "loc": "269:37-38",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21519,7 +21519,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "281:22-32",
+              "loc": "271:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21533,7 +21533,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "286:4-20",
+              "loc": "276:4-20",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21547,7 +21547,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "289:4-28",
+              "loc": "280:4-28",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21561,7 +21561,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "295:12-13",
+              "loc": "283:12-13",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21575,7 +21575,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "295:14-18",
+              "loc": "283:14-18",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21589,7 +21589,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "295:37-38",
+              "loc": "283:37-38",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -21603,7 +21603,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-795b31bb.js",
-              "loc": "297:22-32",
+              "loc": "285:22-32",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -27581,7 +27581,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -28812,7 +28812,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -30764,9 +30764,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 14319,
+      "size": 14139,
       "sizes": {
-        "javascript": 14319
+        "javascript": 14139
       },
       "names": [],
       "idHints": [],
@@ -30774,10 +30774,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.table.8a9b35110284b6718b57.js"
+        "porsche-design-system.table.6b29e8014f04f75df453.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "bbcbd9c40b94372a53f6",
+      "hash": "5d9fe542456d5e78e73c",
       "childrenByOrder": {},
       "id": "table",
       "siblings": [],
@@ -30790,9 +30790,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 11199,
+          "size": 11019,
           "sizes": {
-            "javascript": 11199
+            "javascript": 11019
           },
           "built": true,
           "codeGenerated": true,
@@ -31343,7 +31343,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -33319,7 +33319,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -35390,7 +35390,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -36268,7 +36268,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -37899,7 +37899,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "164:4-23",
+              "loc": "165:4-23",
               "moduleId": 559,
               "resolvedModuleId": 559
             },
@@ -45445,7 +45445,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "183:29-48",
+          "loc": "181:29-48",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45459,7 +45459,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "184:25-41",
+          "loc": "182:25-41",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45473,7 +45473,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:12-13",
+          "loc": "184:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45487,7 +45487,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:14-18",
+          "loc": "184:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45501,7 +45501,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:156-157",
+          "loc": "184:156-157",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45515,7 +45515,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:308-309",
+          "loc": "184:308-309",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45529,7 +45529,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:342-343",
+          "loc": "184:342-343",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45543,7 +45543,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:370-371",
+          "loc": "184:370-371",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45557,7 +45557,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:405-406",
+          "loc": "184:405-406",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45571,7 +45571,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:434-435",
+          "loc": "184:434-435",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45585,7 +45585,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:451-452",
+          "loc": "184:451-452",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45599,7 +45599,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:527-528",
+          "loc": "184:527-528",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45613,7 +45613,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "186:567-568",
+          "loc": "184:567-568",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45627,7 +45627,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "188:22-32",
+          "loc": "186:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45641,7 +45641,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "193:4-20",
+          "loc": "191:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45655,7 +45655,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "196:4-28",
+          "loc": "195:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45669,7 +45669,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "202:12-13",
+          "loc": "198:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45683,7 +45683,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "202:14-18",
+          "loc": "198:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45697,7 +45697,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "202:42-43",
+          "loc": "198:42-43",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45711,7 +45711,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "204:22-32",
+          "loc": "200:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45725,7 +45725,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "209:4-20",
+          "loc": "205:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45739,7 +45739,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "212:4-28",
+          "loc": "209:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45753,7 +45753,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "218:12-13",
+          "loc": "212:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45767,7 +45767,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "218:14-18",
+          "loc": "212:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45781,7 +45781,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "218:38-39",
+          "loc": "212:38-39",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45795,7 +45795,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "220:22-32",
+          "loc": "214:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45809,7 +45809,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "225:4-20",
+          "loc": "219:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45823,7 +45823,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "228:4-28",
+          "loc": "223:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45837,7 +45837,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "234:12-13",
+          "loc": "226:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45851,7 +45851,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "234:14-18",
+          "loc": "226:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45865,7 +45865,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "234:42-43",
+          "loc": "226:42-43",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45879,7 +45879,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "236:22-32",
+          "loc": "228:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45893,7 +45893,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "241:4-20",
+          "loc": "233:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45907,7 +45907,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "252:4-28",
+          "loc": "244:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45921,7 +45921,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "258:29-48",
+          "loc": "250:29-48",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45935,7 +45935,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "260:12-13",
+          "loc": "252:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45949,7 +45949,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "260:14-18",
+          "loc": "252:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45963,7 +45963,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "260:111-112",
+          "loc": "252:111-112",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45977,7 +45977,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "260:177-178",
+          "loc": "252:177-178",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -45991,7 +45991,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "260:194-195",
+          "loc": "252:194-195",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46005,7 +46005,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "263:95-96",
+          "loc": "255:95-96",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46019,7 +46019,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "265:22-32",
+          "loc": "257:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46033,7 +46033,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "270:4-20",
+          "loc": "262:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46047,7 +46047,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "273:4-28",
+          "loc": "266:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46061,7 +46061,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "279:12-13",
+          "loc": "269:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46075,7 +46075,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "279:14-18",
+          "loc": "269:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46089,7 +46089,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "279:37-38",
+          "loc": "269:37-38",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46103,7 +46103,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "281:22-32",
+          "loc": "271:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46117,7 +46117,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "286:4-20",
+          "loc": "276:4-20",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46131,7 +46131,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "289:4-28",
+          "loc": "280:4-28",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46145,7 +46145,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "295:12-13",
+          "loc": "283:12-13",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46159,7 +46159,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "295:14-18",
+          "loc": "283:14-18",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46173,7 +46173,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "295:37-38",
+          "loc": "283:37-38",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -46187,7 +46187,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-795b31bb.js",
-          "loc": "297:22-32",
+          "loc": "285:22-32",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -50926,9 +50926,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 11199,
+      "size": 11019,
       "sizes": {
-        "javascript": 11199
+        "javascript": 11019
       },
       "built": true,
       "codeGenerated": true,
@@ -51938,7 +51938,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "164:4-23",
+          "loc": "165:4-23",
           "moduleId": 559,
           "resolvedModuleId": 559
         },
@@ -54596,7 +54596,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.07313f11b00bd2706d51.js",
+          "name": "porsche-design-system.v2.2.1.a1901a688e98d518b40e.js",
           "size": 64473
         }
       ],
@@ -54618,7 +54618,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.07313f11b00bd2706d51.js",
+          "name": "porsche-design-system.v2.2.1.a1901a688e98d518b40e.js",
           "size": 64473
         }
       ],
