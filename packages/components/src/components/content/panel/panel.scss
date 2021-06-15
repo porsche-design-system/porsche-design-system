@@ -3,9 +3,8 @@
 $root: '.root';
 
 #{$root} {
-  max-width: p-px-to-rem(800px);
-  width: 100%;
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
+  transition: padding $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   &--open {
     padding-bottom: $p-spacing-40;
