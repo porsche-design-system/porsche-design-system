@@ -85,9 +85,16 @@ button {
     outline-color: transparent;
   }
 }
-
+.heading {
+  padding-right: $p-spacing-24;
+}
 .icon {
-  padding-left: $p-spacing-24;
+  transform-origin: 50% 50%;
+  transition: transform 0.24s $p-animation-hover-bezier;
+
+  #{$root}--open & {
+    transform: rotate(-180deg);
+  }
 }
 
 .content {
