@@ -14,6 +14,14 @@ $root: '.root';
 #{$root} {
   max-width: p-px-to-rem(800px);
   width: 100%;
+  border-bottom: 1px solid $p-color-neutral-contrast-medium;
+
+  &--open {
+    padding-bottom: $p-spacing-40;
+  }
+  &--theme-dark {
+    border-bottom-color: $p-color-theme-dark-neutral-contrast-medium;
+  }
 }
 
 .headline {
@@ -21,14 +29,14 @@ $root: '.root';
   cursor: pointer;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  &--closed {
-    &:hover,
-    &:active {
-      background-color: $p-color-background-surface;
+  // iOS Safari users should not see tap highlight color on headline
+  -webkit-tap-highlight-color: transparent;
 
-      #{$root}--theme-dark & {
-        background-color: $p-color-theme-dark-background-surface;
-      }
+  :not(#{$root}--open) &:hover {
+    background-color: $p-color-background-surface;
+
+    @at-root #{$root}--theme-dark#{&} {
+      background-color: $p-color-theme-dark-background-surface;
     }
   }
 }
@@ -74,13 +82,9 @@ button {
   visibility: hidden;
   height: 0;
 
-  &--open{
+  #{$root}--open & {
     opacity: 1;
     visibility: visible;
     height: auto;
   }
-}
-
-.divider--open {
-  margin-top: $p-spacing-40;
 }

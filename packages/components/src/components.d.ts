@@ -545,13 +545,13 @@ export namespace Components {
     }
     interface PPanel {
         /**
+          * Defines the heading used in panel.
+         */
+        "heading"?: string;
+        /**
           * Defines if panel is open.
          */
         "open"?: boolean;
-        /**
-          * Defines the title used in panel.
-         */
-        "panelTitle": string;
         /**
           * The text size.
          */
@@ -1590,6 +1590,10 @@ declare namespace LocalJSX {
     }
     interface PPanel {
         /**
+          * Defines the heading used in panel.
+         */
+        "heading"?: string;
+        /**
           * Emitted when panel state is changed.
          */
         "onPanelStateChange"?: (event: CustomEvent<PanelStateChangeEvent>) => void;
@@ -1597,10 +1601,6 @@ declare namespace LocalJSX {
           * Defines if panel is open.
          */
         "open"?: boolean;
-        /**
-          * Defines the title used in panel.
-         */
-        "panelTitle"?: string;
         /**
           * The text size.
          */
