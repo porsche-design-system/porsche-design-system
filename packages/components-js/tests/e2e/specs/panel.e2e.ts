@@ -39,6 +39,8 @@ describe('panel', () => {
 
   it('should emit panelStateChange on click ', () => {});
 
+  it('should not have focusable content when closed', ()=>{});
+
   describe('accessibility', () => {
     it('should have correct icon name on open / close', () => {});
     it('should have correct icon aria-label on open / close', () => {});
