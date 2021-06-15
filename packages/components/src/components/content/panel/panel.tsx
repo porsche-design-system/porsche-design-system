@@ -60,7 +60,7 @@ export class Panel {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <span class={rootClasses}>
+      <div class={rootClasses}>
         <TagName class={headlineClasses} onClick={this.handlePanelClick}>
           <button aria-expanded={this.open} aria-controls={this.controlsId} id={this.labelledId}>
             <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
@@ -80,7 +80,7 @@ export class Panel {
           <slot />
         </div>
         <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />
-      </span>
+      </div>
     );
   }
 
