@@ -1,8 +1,3 @@
-type HeadItem = {
-  name: string;
-  id?: string;
-};
-
 type DataItem = {
   id?: string;
   imageUrl: string;
@@ -15,19 +10,19 @@ type DataItem = {
   leadId: string;
 };
 
-export const head: HeadItem[] = [
-  { name: 'Model' },
+export const head: any[] = [
+  { name: 'Model', id: 'model' },
   { name: 'Interest', id: 'interest' },
   { name: 'VIN', id: 'vin' },
   { name: 'Purchase Intention', id: 'purchaseIntention' },
   { name: 'Status', id: 'status' },
   { name: 'Lead ID', id: 'leadId' },
-  { name: 'Action' },
+  { name: 'Action', id: 'action' },
 ].map((item, i) => ({
   ...item,
-  ...(item.name && {
-    isSortable: i > 0,
-    isSorting: i === 1,
+  hideLabel: false,
+  ...(i > 0 && {
+    active: i === 1,
     direction: 'asc',
   }),
 }));
