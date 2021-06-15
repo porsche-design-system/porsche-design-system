@@ -1,5 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
+import * as fromExamples from './examples';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -201,5 +202,14 @@ export const routes: RouteType[] = [
     name: 'Events',
     path: '/events',
     component: fromPages.EventsPage,
+  },
+  {
+    name: '---',
+    isDisabled: true,
+  },
+  {
+    name: 'Table Example',
+    path: '/table-example',
+    component: fromExamples.TableExamplePage,
   },
 ];

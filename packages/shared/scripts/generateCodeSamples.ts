@@ -17,7 +17,7 @@ const generateCodeSamples = (): void => {
       fileNames: [
         'src/table-data.ts',
         '../components-angular/src/app/examples/table-example.component.ts',
-        '../components-react/src/examples/Table.tsx',
+        '../components-react/src/examples/TableExample.tsx',
       ],
     },
   ];
