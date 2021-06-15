@@ -12,7 +12,6 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
