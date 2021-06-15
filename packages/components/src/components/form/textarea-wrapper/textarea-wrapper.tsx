@@ -4,9 +4,9 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  isDescriptionVisible,
-  isLabelVisible,
-  isMessageVisible,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
@@ -85,20 +85,20 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={rootClasses}>
-          {isLabelVisible(this.host, this.label) && (
+          {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
-          {isDescriptionVisible(this.host, this.description) && (
+          {hasDescription(this.host, this.description) && (
             <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
