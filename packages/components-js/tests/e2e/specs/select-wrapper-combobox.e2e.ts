@@ -16,6 +16,8 @@ import {
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
+const NATIVE_SEARCH_OPTIONS_DELAY = 105; // timeout is 100 ms in component with some buffer
+
 describe('select-wrapper combobox', () => {
   let page: Page;
 
@@ -257,6 +259,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('b');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const visibleElement = await selectNode(
@@ -295,6 +298,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('d');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const errorOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option > span');
@@ -330,6 +334,7 @@ describe('select-wrapper combobox', () => {
     expect(await numberOfFakeOptions()).toBe(3);
 
     await filterInput.type('x');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const getValue = () => getProperty(filterInput, 'value');
@@ -359,6 +364,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('B');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
