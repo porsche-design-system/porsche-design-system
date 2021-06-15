@@ -1,14 +1,5 @@
 @import '../../../styles/internal.variables';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 !important;
-}
-
 $root: '.root';
 
 #{$root} {
@@ -55,6 +46,31 @@ button {
   background: transparent;
   color: $p-color-default;
   cursor: pointer;
+  text-align: left;
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+
+  #{$root}--size-small & {
+    @include p-generate-type-scale($p-font-size-small);
+  }
+
+  #{$root}--size-medium & {
+    @include p-generate-type-scale($p-font-size-medium);
+  }
+
+  #{$root}--weight-regular & {
+    font-weight: $p-font-weight-regular;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--size-small-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-small);
+      }
+      #{$root}--size-medium-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-medium);
+      }
+    }
+  }
 
   // iOS Safari users should not see tap highlight color on button
   -webkit-tap-highlight-color: transparent;
