@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { data, head } from '@porsche-design-system/shared';
-import { TableHeadItem } from '@porsche-design-system/components-angular/lib/types';
+import { TableHeadCellSort } from '@porsche-design-system/components-angular/lib/types';
 
 @Component({
-  selector: 'page-table',
+  selector: 'page-table-example',
   template: `
     <div class="playground light table" title="should render table">
       <p-table (sortingChange)="onSortingChange($event)">
         <p-table-head>
-          <p-table-row>
-            <p-table-head-cell *ngFor="let item of head" [item]="item">{{ item.name }}</p-table-head-cell>
-          </p-table-row>
+          <p-table-head-row>
+            <p-table-head-cell *ngFor="let item of head" [sort]="item">{{ item.name }}</p-table-head-cell>
+          </p-table-head-row>
         </p-table-head>
         <p-table-body>
           <p-table-row *ngFor="let item of data">
@@ -47,15 +47,15 @@ import { TableHeadItem } from '@porsche-design-system/components-angular/lib/typ
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent {
+export class TableExampleComponent {
   public head = head;
   public data = data;
 
-  onSortingChange(e: CustomEvent<TableHeadItem>): void {
-    const { key, direction } = e.detail;
-    this.head = this.head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+  onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
+    const { id, direction } = e.detail;
+    this.head = this.head.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
-      direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
+      direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
     );
   }
 }
