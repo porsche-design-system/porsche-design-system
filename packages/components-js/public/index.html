@@ -53,6 +53,8 @@
       <option disabled>---</option>
       <option value="overview">Overview</option>
       <option value="core-initializer">Core Initializer</option>
+      <option disabled>---</option>
+      <option value="table-example">Table Example</option>
     </select>
     <div id="app"></div>
     <script>
@@ -63,7 +65,8 @@
 
         const app = document.getElementById('app');
         const page = document.location.hash.substr(1);
-        app.innerHTML = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
+        const directory = page.match(/^[a-z]+-example$/) ? 'examples' : 'pages';
+        app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
 
         // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');

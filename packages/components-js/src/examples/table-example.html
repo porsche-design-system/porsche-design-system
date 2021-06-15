@@ -50,7 +50,7 @@
         const markup = `
 <p-table>
   <p-table-head>
-    <p-table-row>${renderTableHeadCells(head)}</p-table-row>
+    <p-table-head-row>${renderTableHeadCells(head)}</p-table-head-row>
   </p-table-head>
   <p-table-body>${renderTableBodyRows(data)}</p-table-body>
 </p-table>`;
@@ -65,17 +65,17 @@
         // pass head item via property
         const passHeadItemToNodes = (items) =>
           Array.from(tableHead.querySelectorAll('p-table-head-cell')).forEach((el, index) => {
-            el.item = items[index];
+            el.sort = items[index];
           });
 
         passHeadItemToNodes(head);
 
         table.addEventListener('sortingChange', (e) => {
-          const { key, direction } = e.detail;
+          const { id, direction } = e.detail;
 
-          const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+          const sortedHead = head.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
           const sortedData = [...data].sort((a, b) =>
-            direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
+            direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
           );
 
           passHeadItemToNodes(sortedHead);
