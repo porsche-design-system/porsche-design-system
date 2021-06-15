@@ -49,6 +49,7 @@ export class TableHeadCell {
 
   private handleButtonClick = (): void => {
     this.host.dispatchEvent(
+      // TODO: extract into utils with unit test
       new CustomEvent<TableHeadCellSort>(SORT_EVENT_NAME, {
         bubbles: true,
         detail: { ...this.sort, active: true, direction: toggleDirection(this.sort.direction) },
