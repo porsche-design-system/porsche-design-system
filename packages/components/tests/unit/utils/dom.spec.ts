@@ -1,26 +1,27 @@
+import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import {
-  getHTMLElementAndThrowIfUndefined,
-  getTagName,
-  hasNamedSlot,
-  isRequired,
-  throwIfParentIsNotOfKind,
   addEventListener,
-  removeEventListener,
   getAttribute,
-  setAttribute,
-  removeAttribute,
-  isMessageVisible,
-  isDescriptionVisible,
+  getHTMLElementAndThrowIfUndefined,
+  getRole,
+  getTagName,
+  hasAttribute,
+  hasCaption,
+  hasDescription,
+  hasMessage,
+  hasNamedSlot,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
-  getRole,
-  isRequiredAndParentNotRequired,
-  hasAttribute,
-  throwIfElementHasAttribute,
-  throwIfParentIsNotOneOfKind,
   isParentOfKind,
+  isRequired,
+  isRequiredAndParentNotRequired,
+  removeAttribute,
+  removeEventListener,
+  setAttribute,
+  throwIfElementHasAttribute,
+  throwIfParentIsNotOfKind,
+  throwIfParentIsNotOneOfKind,
 } from '../../../src/utils';
-import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
 describe('isRequired', () => {
@@ -319,7 +320,7 @@ describe('hasAttribute()', () => {
   });
 });
 
-describe('isLabelVisible()', () => {
+describe('hasLabel()', () => {
   const label = 'Some description';
   it.each<[{ label: string; slotted: boolean }, boolean]>([
     [{ label, slotted: false }, true],
@@ -329,18 +330,17 @@ describe('isLabelVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { label, slotted } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('description', label);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'description';
       el.appendChild(slot);
     }
 
-    expect(isDescriptionVisible(el, label)).toBe(result);
+    expect(hasDescription(el, label)).toBe(result);
   });
 });
 
-describe('isDescriptionVisible()', () => {
+describe('hasDescription()', () => {
   const description = 'Some description';
   it.each<[{ description: string; slotted: boolean }, boolean]>([
     [{ description, slotted: false }, true],
@@ -350,18 +350,17 @@ describe('isDescriptionVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { description, slotted } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('description', description);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'description';
       el.appendChild(slot);
     }
 
-    expect(isDescriptionVisible(el, description)).toBe(result);
+    expect(hasDescription(el, description)).toBe(result);
   });
 });
 
-describe('isMessageVisible()', () => {
+describe('hasMessage()', () => {
   const message = 'Some message';
   it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
     [{ message, slotted: false, formState: 'error' }, true],
@@ -376,14 +375,13 @@ describe('isMessageVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { message, slotted, formState } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('message', message);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'message';
       el.appendChild(slot);
     }
 
-    expect(isMessageVisible(el, message, formState)).toBe(result);
+    expect(hasMessage(el, message, formState)).toBe(result);
   });
 });
 

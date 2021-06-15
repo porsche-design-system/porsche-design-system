@@ -63,15 +63,15 @@ export const isCaptionVisible = (host: Host, caption: string, hideCaption: boole
   return !hideCaption && (!!caption || hasNamedSlot(host, 'caption'));
 };
 
-export const isLabelVisible = (host: Host, label: string): boolean => {
+export const hasLabel = (host: Host, label: string): boolean => {
   return !!label || hasNamedSlot(host, 'label');
 };
 
-export const isMessageVisible = (host: Host, message: string, state: FormState): boolean => {
+export const hasMessage = (host: Host, message: string, state: FormState): boolean => {
   return !!(message || hasNamedSlot(host, 'message')) && ['success', 'error'].includes(state);
 };
 
-export const isDescriptionVisible = (host: Host, description: string): boolean => {
+export const hasDescription = (host: Host, description: string): boolean => {
   return !!description || hasNamedSlot(host, 'description');
 };
 
