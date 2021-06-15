@@ -19,6 +19,7 @@ $root: '.root';
 .headline {
   padding: p-px-to-rem(24px) 0;
   cursor: pointer;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   &--closed {
     &:hover,
