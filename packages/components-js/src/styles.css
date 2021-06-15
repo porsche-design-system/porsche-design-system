@@ -29,6 +29,7 @@ body > select {
   color: white;
   font-weight: bold;
   padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .playground.hovered::before {
