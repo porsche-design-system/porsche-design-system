@@ -64,7 +64,7 @@ export class Table {
           <PrefixedTagNames.pText
             id={captionId}
             class="caption"
-            tag="span"
+            tag="caption"
             weight="semibold"
             size="{ base: 'medium', m: 'large' }"
           >
