@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getPrefixedTagNames, isDark, SubsetTextWeight } from '../../../utils';
-import { generateGUID, getTitleTag, PanelSize, PanelStateChangeEvent } from './panel-utils';
+import { getTitleTag, PanelSize, PanelStateChangeEvent } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
 @Component({
@@ -21,8 +21,8 @@ export class Panel {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Defines the title used in panel. */
-  @Prop() public panelTitle: string;
+  /** Defines the heading used in panel. */
+  @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: HeadlineTag;
@@ -34,42 +34,27 @@ export class Panel {
   @Event({ bubbles: false }) public panelStateChange: EventEmitter<PanelStateChangeEvent>;
 
   // private hasAccordionParent: boolean = getHasPAccordionParent(this.host);
-  private labelledId: string;
-  private controlsId: string;
-
-  public componentWillLoad(): void {
-    this.labelledId = `label-${generateGUID()}`;
-    this.controlsId = `controls-${generateGUID()}`;
-  }
 
   public render(): JSX.Element {
     const TagName = getTitleTag(this.tag);
 
+    const labelledId = 'labelled';
+    const controlsId = 'controls';
+
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-    };
-    const dividerClasses = {
-      ['divider--open']: this.open,
-    };
-    const headlineClasses = {
-      ['headline']: true,
-      ['headline--closed']: !this.open,
-    };
-    const contentClasses = {
-      ['content']: true,
-      ['content--open']: this.open,
+      ['root--open']: this.open,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div class={rootClasses}>
-        <TagName class={headlineClasses} onClick={this.handlePanelClick}>
-          <button aria-expanded={this.open} aria-controls={this.controlsId} id={this.labelledId}>
+        <TagName class="headline" onClick={this.handlePanelClick}>
+          <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
             <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
-              {this.panelTitle}
-              {/* TODO: slotted title? */}
+              {this.heading}
             </PrefixedTagNames.pText>
             <PrefixedTagNames.pIcon
               name={this.open ? 'close' : 'plus'}
@@ -80,10 +65,9 @@ export class Panel {
             />
           </button>
         </TagName>
-        <div id={this.controlsId} class={contentClasses} role="region" aria-labelledby={this.labelledId} >
+        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId} >
           <slot />
         </div>
-        <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />
       </div>
     );
   }
