@@ -56,6 +56,10 @@ export class Panel {
       ['headline']: true,
       ['headline--closed']: !this.open,
     };
+    const contentClasses = {
+      ['content']: true,
+      ['content--open']: this.open,
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -76,7 +80,7 @@ export class Panel {
             />
           </button>
         </TagName>
-        <div id={this.controlsId} class="content" role="region" aria-labelledby={this.labelledId} hidden={!this.open}>
+        <div id={this.controlsId} class={contentClasses} role="region" aria-labelledby={this.labelledId} >
           <slot />
         </div>
         <PrefixedTagNames.pDivider class={dividerClasses} color="neutral-contrast-medium" theme={this.theme} />

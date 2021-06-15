@@ -69,6 +69,16 @@ button {
 
 .content {
   padding: 0 $p-spacing-8;
+  transition: opacity $p-animation-hover-duration-var $p-animation-hover-bezier;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+
+  &--open{
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
 }
 
 .divider--open {
