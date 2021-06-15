@@ -12,7 +12,8 @@ h6 {
 $root: '.root';
 
 #{$root} {
-  width: p-px-to-rem(800px);
+  max-width: p-px-to-rem(800px);
+  width: 100%;
 }
 
 .headline {
