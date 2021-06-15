@@ -21,8 +21,17 @@ export class Text {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
-  @Prop() public tag?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend' =
-    'p';
+  @Prop() public tag?:
+    | 'p'
+    | 'span'
+    | 'div'
+    | 'address'
+    | 'blockquote'
+    | 'figcaption'
+    | 'cite'
+    | 'time'
+    | 'legend'
+    | 'caption' = 'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';

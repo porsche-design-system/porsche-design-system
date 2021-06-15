@@ -32,8 +32,8 @@ export const TablePage = (): JSX.Element => {
 
   return (
     <>
-      <div className="playground light" title="should render table">
-        <PTable caption="Some caption">
+      <div className="playground light" title="should render table with hidden caption">
+        <PTable caption="Some caption" hideCaption>
           <PTableHead>
             <PTableHeadRow ref={headRow}>
               {head.map((item, i) => (
@@ -76,6 +76,16 @@ export const TablePage = (): JSX.Element => {
               </PTableRow>
             ))}
           </PTableBody>
+        </PTable>
+      </div>
+      <div className="playground light" title="should render table with caption">
+        <PTable caption="Some caption" />
+      </div>
+      <div className="playground light" title="should render table with slotted caption">
+        <PTable>
+          <span slot="caption">
+            Some caption <a href="#">with a link</a>
+          </span>
         </PTable>
       </div>
     </>

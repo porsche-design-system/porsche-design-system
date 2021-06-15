@@ -31,7 +31,8 @@ describe('Table', () => {
         const page = await vrt.getPage();
 
         const getElementsMarkup: GetMarkup = () => `
-<p-table caption="Some caption">
+<p-table>
+  <span slot="caption">Some caption <a href="#">with a link</a></span>
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell style="min-width: 2000px;">Some head cell</p-table-head-cell>
@@ -60,11 +61,14 @@ describe('Table', () => {
         // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
         await forceHoveredState(page, '.hovered p-table-head-cell >>> button');
         await forceHoveredState(page, '.hovered p-table-cell a');
+        await forceHoveredState(page, '.hovered [slot="caption"] a');
         await forceHoveredState(page, '.hovered p-table-row:nth-child(3)');
         await forceFocusedState(page, '.focused p-table-head-cell >>> button');
         await forceFocusedState(page, '.focused p-table-cell a');
+        await forceFocusedState(page, '.focused [slot="caption"] a');
         await forceFocusedHoveredState(page, '.focused-hovered p-table-head-cell >>> button');
         await forceFocusedHoveredState(page, '.focused-hovered p-table-cell a');
+        await forceFocusedHoveredState(page, '.focused-hovered [slot="caption"] a');
       })
     ).toBeFalsy();
   });
