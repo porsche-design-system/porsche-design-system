@@ -271,8 +271,10 @@ describe('select-wrapper combobox', () => {
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
+    await waitForStencilLifecycle(page); // 🙈
     await filterInput.press('Enter');
     await waitForStencilLifecycle(page);
+    await waitForStencilLifecycle(page); // 🙈
     const value = await select.evaluate((el: HTMLSelectElement) => el.value);
 
     expect(value).toBe('b');
@@ -330,15 +332,15 @@ describe('select-wrapper combobox', () => {
     await filterInput.type('x');
     await waitForStencilLifecycle(page);
 
-    const value = () => getProperty(filterInput, 'value');
+    const getValue = () => getProperty(filterInput, 'value');
 
-    expect(await value()).toBe('x');
+    expect(await getValue()).toBe('x');
     expect(await numberOfFakeOptions()).toBe(1);
 
     await text.click();
     await waitForStencilLifecycle(page);
 
-    expect(await value()).toBe('');
+    expect(await getValue()).toBe('');
     expect(await numberOfFakeOptions()).toBe(3);
   });
 
@@ -357,7 +359,9 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('B');
+    await waitForStencilLifecycle(page);
     await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
     await filterInput.press('Enter');
     await waitForStencilLifecycle(page);
 
