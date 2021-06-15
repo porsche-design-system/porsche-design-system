@@ -2,12 +2,12 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   getHTMLElement,
   getPrefixedTagNames,
+  hasCaption,
   insertSlottedStyles,
-  isCaptionVisible,
   scrollElementBy,
 } from '../../../../utils';
-import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 import type { TableHeadCellSort } from '../table-utils';
+import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 
 @Component({
   tag: 'p-table',
@@ -55,12 +55,18 @@ export class Table {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isCapVisible = isCaptionVisible(this.host, this.caption, this.hideCaption);
+    const hasCap = hasCaption(this.host, this.caption);
+    const hasVisibleCap = hasCap && !this.hideCaption;
     const captionId = 'caption';
 
     return (
-      <Host role="table" {...(isCapVisible ? { 'aria-describedby': captionId } : { 'aria-label': this.caption })}>
-        {isCapVisible && (
+      <Host
+        role="table"
+        {...(hasVisibleCap
+          ? { 'aria-describedby': captionId }
+          : this.caption && this.hideCaption && { 'aria-label': this.caption })}
+      >
+        {hasVisibleCap && (
           <PrefixedTagNames.pText
             id={captionId}
             class="caption"

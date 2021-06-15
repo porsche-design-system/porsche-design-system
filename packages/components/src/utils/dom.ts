@@ -59,10 +59,6 @@ export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.req
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
-export const isCaptionVisible = (host: Host, caption: string, hideCaption: boolean): boolean => {
-  return !hideCaption && (!!caption || hasNamedSlot(host, 'caption'));
-};
-
 export const hasLabel = (host: Host, label: string): boolean => {
   return !!label || hasNamedSlot(host, 'label');
 };
@@ -73,6 +69,10 @@ export const hasMessage = (host: Host, message: string, state: FormState): boole
 
 export const hasDescription = (host: Host, description: string): boolean => {
   return !!description || hasNamedSlot(host, 'description');
+};
+
+export const hasCaption = (host: Host, caption: string): boolean => {
+  return !!caption || hasNamedSlot(host, 'caption');
 };
 
 // prettier-ignore
