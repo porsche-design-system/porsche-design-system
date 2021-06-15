@@ -4,9 +4,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as fromPages from './pages';
+import * as fromExamples from './examples';
 
 @NgModule({
-  declarations: [AppComponent, ...fromPages.pages],
+  declarations: [AppComponent, ...fromPages.pages, ...fromExamples.examples],
   imports: [
     BrowserModule,
     AppRoutingModule,

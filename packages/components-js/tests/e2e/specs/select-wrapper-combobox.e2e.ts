@@ -12,10 +12,11 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
+
+const NATIVE_SEARCH_OPTIONS_DELAY = 105; // timeout is 100 ms in component with some buffer
 
 describe('select-wrapper combobox', () => {
   let page: Page;
@@ -258,6 +259,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('b');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const visibleElement = await selectNode(
@@ -271,9 +273,11 @@ describe('select-wrapper combobox', () => {
     expect(visibleElementClasses).not.toContain('p-select-wrapper__fake-option--hidden');
 
     await page.keyboard.press('ArrowDown');
-    await waitForEventSerialization(page);
+    await waitForStencilLifecycle(page);
+    await waitForStencilLifecycle(page); // 🙈
     await filterInput.press('Enter');
-    await waitForEventSerialization(page);
+    await waitForStencilLifecycle(page);
+    await waitForStencilLifecycle(page); // 🙈
     const value = await select.evaluate((el: HTMLSelectElement) => el.value);
 
     expect(value).toBe('b');
@@ -294,6 +298,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('d');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const errorOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option > span');
@@ -329,17 +334,18 @@ describe('select-wrapper combobox', () => {
     expect(await numberOfFakeOptions()).toBe(3);
 
     await filterInput.type('x');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
-    const value = () => getProperty(filterInput, 'value');
+    const getValue = () => getProperty(filterInput, 'value');
 
-    expect(await value()).toBe('x');
+    expect(await getValue()).toBe('x');
     expect(await numberOfFakeOptions()).toBe(1);
 
     await text.click();
     await waitForStencilLifecycle(page);
 
-    expect(await value()).toBe('');
+    expect(await getValue()).toBe('');
     expect(await numberOfFakeOptions()).toBe(3);
   });
 
@@ -358,7 +364,10 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('B');
+    await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
+    await waitForStencilLifecycle(page);
     await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
     await filterInput.press('Enter');
     await waitForStencilLifecycle(page);
 
