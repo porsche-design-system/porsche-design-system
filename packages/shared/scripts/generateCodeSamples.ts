@@ -16,9 +16,9 @@ const generateCodeSamples = (): void => {
       component: 'p-table',
       fileNames: [
         'src/table-data.ts',
-        '../components-js/src/examples/table.html',
-        '../components-angular/src/app/examples/table.component.ts',
-        '../components-react/src/examples/Table.tsx',
+        '../components-js/src/examples/table-example.html',
+        '../components-angular/src/app/examples/table-example.component.ts',
+        '../components-react/src/examples/TableExample.tsx',
       ],
     },
   ];

@@ -154,6 +154,7 @@ describe('switch', () => {
 
       await button.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
 
       expect(eventCounter).toBe(1);
     });
