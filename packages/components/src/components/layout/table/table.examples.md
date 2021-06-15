@@ -45,6 +45,9 @@
 ## Framework Implementations
 
 <p-tabs>
+  <p-tabs-item label="Vanilla JS">
+    <pre><code class="language-js">{{ vanillaJsExample }}</code></pre>
+  </p-tabs-item>
   <p-tabs-item label="Angular">
     <pre><code class="language-ts">{{ angularExample }}</code></pre>
   </p-tabs-item>
@@ -66,6 +69,7 @@
   export default class Code extends Vue {
     headData = head;
     bodyData = data;
+    vanillaJsExample = getTableCodeSample('vanilla-js');
     angularExample = getTableCodeSample('angular');
     reactExample = getTableCodeSample('react');
     sharedData = getTableCodeSample('shared');

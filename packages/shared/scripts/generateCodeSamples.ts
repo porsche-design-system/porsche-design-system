@@ -8,7 +8,7 @@ type CodeSample = {
   fileNames: string[];
 };
 
-type Framework = 'shared' | 'angular' | 'react';
+type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
 
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
@@ -16,15 +16,16 @@ const generateCodeSamples = (): void => {
       component: 'p-table',
       fileNames: [
         'src/table-data.ts',
-        '../components-angular/src/app/pages/table.component.ts',
-        '../components-react/src/pages/Table.tsx',
+        '../components-js/src/examples/table.html',
+        '../components-angular/src/app/examples/table.component.ts',
+        '../components-react/src/examples/Table.tsx',
       ],
     },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');
 
-  const types = `type Framework = 'shared' | 'angular' | 'react';`;
+  const types = `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';`;
 
   const functions = codeSamples
     .map((sample) => {
@@ -37,7 +38,7 @@ const generateCodeSamples = (): void => {
 
         console.log(`– Reading content of ${filePathFromPackagesFolder}`);
         const fileContent = fs.readFileSync(fileName, 'utf8');
-        return { [framework]: fileContent.replace(/\s$/, '') };
+        return { [framework === 'js' ? 'vanilla-js' : framework]: fileContent.replace(/\s$/, '') };
       });
 
       const functionName = `get${pascalCase(sample.component.replace('p-', ''))}CodeSample`;
