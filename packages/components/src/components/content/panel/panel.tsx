@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getPrefixedTagNames, isDark, SubsetTextWeight } from '../../../utils';
-import { getTitleTag, PanelSize, PanelStateChangeEvent } from './panel-utils';
+import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses, SubsetTextWeight } from '../../../utils';
+import { PanelSize, PanelStateChangeEvent } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
 @Component({
@@ -25,7 +25,7 @@ export class Panel {
   @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: HeadlineTag;
+  @Prop() public tag?: HeadlineTag = 'h2';
 
   /** Defines if panel is open. */
   @Prop() public open?: boolean;
@@ -36,8 +36,6 @@ export class Panel {
   // private hasAccordionParent: boolean = getHasPAccordionParent(this.host);
 
   public render(): JSX.Element {
-    const TagName = getTitleTag(this.tag);
-
     const labelledId = 'labelled';
     const controlsId = 'controls';
 
@@ -45,17 +43,23 @@ export class Panel {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
+      ['root--weight-regular']: this.weight !== 'semibold',
+      ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div class={rootClasses}>
-        <TagName class="headline" onClick={this.handlePanelClick}>
+        <PrefixedTagNames.pHeadline
+          tag={this.tag}
+          theme={this.theme}
+          class="headline"
+          variant="inherit"
+          onClick={this.handlePanelClick}
+        >
           <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
-            <PrefixedTagNames.pText size={this.size} weight={this.weight} theme={this.theme} tag="span">
-              {this.heading}
-            </PrefixedTagNames.pText>
+            {this.heading}
             <PrefixedTagNames.pIcon
               name={this.open ? 'close' : 'plus'}
               aria-label={this.open ? 'Close Icon' : 'Plus icon'}
@@ -64,8 +68,8 @@ export class Panel {
               theme={this.theme}
             />
           </button>
-        </TagName>
-        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId} >
+        </PrefixedTagNames.pHeadline>
+        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId}>
           <slot />
         </div>
       </div>
