@@ -7,20 +7,10 @@ import {
   JssStyle,
   mediaQuery,
   pxToRemWithUnit,
-  transitionHoverBezier,
-  transitionHoverDuration,
+  transitionDuration,
+  transitionTimingFunction,
 } from '../../../utils';
-
-export const TABLE_COMPONENTS = [
-  'table',
-  'table-head',
-  'table-head-row',
-  'table-head-cell',
-  'table-body',
-  'table-row',
-  'table-cell',
-] as const;
-type TableComponentType = typeof TABLE_COMPONENTS[number];
+import type { TableComponentType } from './table-utils';
 
 export const styles: { [key in TableComponentType]: string } = {
   table: getCss({
@@ -139,7 +129,7 @@ export const styles: { [key in TableComponentType]: string } = {
     icon: {
       marginLeft: spacing['4'],
       opacity: 0,
-      transition: `opacity ${transitionHoverDuration} ${transitionHoverBezier}`,
+      transition: `opacity ${transitionDuration} ${transitionTimingFunction}`,
       '&--active': {
         opacity: 1,
       },
@@ -153,7 +143,7 @@ export const styles: { [key in TableComponentType]: string } = {
   'table-row': getCss({
     ...buildHostStyles({
       display: 'table-row !important',
-      transition: `background-color ${transitionHoverDuration} ${transitionHoverBezier} !important`,
+      transition: `background-color ${transitionDuration} ${transitionTimingFunction} !important`,
     }),
     ':host(:hover)': {
       backgroundColor: `${color.background.surface} !important`,

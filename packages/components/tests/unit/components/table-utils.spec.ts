@@ -4,11 +4,11 @@ import {
   getSlottedCss,
   getTableCss,
   isDirectionAsc,
+  TABLE_COMPONENTS,
   TableHeadCellSort,
   toggleDirection,
 } from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
-import { TABLE_COMPONENTS } from '../../../src/components/layout/table/table-styles';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {

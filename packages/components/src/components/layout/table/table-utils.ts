@@ -4,6 +4,17 @@ import { slottedStyles, styles } from './table-styles';
 
 export type Direction = 'asc' | 'desc';
 
+export const TABLE_COMPONENTS = [
+  'table',
+  'table-head',
+  'table-head-row',
+  'table-head-cell',
+  'table-body',
+  'table-row',
+  'table-cell',
+] as const;
+export type TableComponentType = typeof TABLE_COMPONENTS[number];
+
 export type TableHeadCellSort = {
   id: string;
   active: boolean;
