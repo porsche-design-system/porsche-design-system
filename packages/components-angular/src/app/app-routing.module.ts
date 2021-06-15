@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
+import * as fromExamples from './examples';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -213,6 +214,17 @@ export const routes: ExtendedRoute[] = [
     path: 'form-wrapper-binding',
     component: fromPages.FormWrapperBindingComponent,
     name: 'Form Wrapper Binding',
+  },
+  {
+    path: '---',
+    name: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    path: 'table-example',
+    component: fromExamples.TableExampleComponent,
+    name: 'Table Example',
   },
 ];
 

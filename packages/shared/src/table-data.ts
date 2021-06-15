@@ -1,6 +1,6 @@
 type HeadItem = {
   name: string;
-  key?: string;
+  id?: string;
 };
 
 type DataItem = {
@@ -17,11 +17,11 @@ type DataItem = {
 
 export const head: HeadItem[] = [
   { name: 'Model' },
-  { name: 'Interest', key: 'interest' },
-  { name: 'VIN', key: 'vin' },
-  { name: 'Purchase Intention', key: 'purchaseIntention' },
-  { name: 'Status', key: 'status' },
-  { name: 'Lead ID', key: 'leadId' },
+  { name: 'Interest', id: 'interest' },
+  { name: 'VIN', id: 'vin' },
+  { name: 'Purchase Intention', id: 'purchaseIntention' },
+  { name: 'Status', id: 'status' },
+  { name: 'Lead ID', id: 'leadId' },
   { name: 'Action' },
 ].map((item, i) => ({
   ...item,
