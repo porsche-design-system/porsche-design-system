@@ -59,10 +59,10 @@ export class Panel {
           onClick={this.handlePanelClick}
         >
           <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
-            {this.heading || <slot name="heading" />}
+            <span class="heading">{this.heading || <slot name="heading" />}</span>
             <PrefixedTagNames.pIcon
-              name={this.open ? 'close' : 'plus'}
-              aria-label={this.open ? 'Close Icon' : 'Plus icon'}
+              name="arrowHeadDown"
+              aria-label={this.open ? 'Close icon' : 'Open icon'}
               class="icon"
               lazy={true}
               theme={this.theme}
