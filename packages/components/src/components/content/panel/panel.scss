@@ -39,8 +39,8 @@ button {
   align-items: center;
   padding: 0 $p-spacing-8;
   width: 100%;
-  outline: transparent solid p-px-to-rem(1px);
-  outline-offset: p-px-to-rem(1px);
+  outline: transparent solid 1px;
+  outline-offset: 1px;
   text-decoration: none;
   border: 0;
   background: transparent;
