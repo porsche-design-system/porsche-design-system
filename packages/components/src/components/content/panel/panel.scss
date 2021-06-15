@@ -36,7 +36,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 $p-spacing-8;
+  padding: 0 p-px-to-rem(12px);
   width: 100%;
   outline: transparent solid 1px;
   outline-offset: 1px;
@@ -98,7 +98,7 @@ button {
 }
 
 .content {
-  padding: 0 $p-spacing-8;
+  padding: 0 p-px-to-rem(12px);
   transition: opacity $p-animation-hover-duration-var $p-animation-hover-bezier;
   opacity: 0;
   visibility: hidden;
