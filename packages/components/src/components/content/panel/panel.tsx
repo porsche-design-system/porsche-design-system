@@ -64,7 +64,6 @@ export class Panel {
               name="arrowHeadDown"
               aria-label={this.open ? 'Close icon' : 'Open icon'}
               class="icon"
-              lazy={true}
               theme={this.theme}
             />
           </button>
