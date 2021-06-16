@@ -19,49 +19,6 @@ In order to get notified when the Modal gets closed by clicking the `x` button, 
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
-### Vanilla JS
-
-```js
-modal.addEventListener('close', () => {
-  modal.removeAttribute('open');
-});
-```
-
-### Angular
-
-```ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'modal-page',
-  template: `<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>`,
-})
-export class ModalPage {
-  isModalOpen = false;
-
-  handleModalClose(e: CustomEvent<void>) {
-    this.isModalOpen = false;
-  }
-}
-```
-
-### React
-
-```tsx 
-import { useCallback, useState } from 'react';
-import { PModal } from '@porsche-design-system/components-react';
-
-const ModalPage = (): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleModalClose = useCallback(() => {
-    setIsModalOpen(false);
-  }, []);
-
-  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
-}
-
-```
-
 <Playground :markup="basic">
   <select v-model="width">
     <option disabled>Select a modal width</option>
@@ -70,8 +27,11 @@ const ModalPage = (): JSX.Element => {
   </select>
 </Playground>
 
-
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
+
+### Framework Implementations
+
+<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
 
 ## Basic Scrollable
 
@@ -111,6 +71,36 @@ Of course, any combination of the available options is possible.
   export default class Code extends Vue {
     modals = [];
     width = 'minWidth';
+
+    frameworks = {
+      'vanilla-js': `modal.addEventListener('close', () => {
+  modal.removeAttribute('open');
+});`,
+      angular: `import { Component } from '@angular/core';
+
+@Component({
+  selector: 'modal-page',
+  template: \`<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>\`,
+})
+export class ModalPage {
+  isModalOpen = false;
+
+  handleModalClose(e: CustomEvent<void>) {
+    this.isModalOpen = false;
+  }
+}`,
+      react: `import { useCallback, useState } from 'react';
+import { PModal } from '@porsche-design-system/components-react';
+
+const ModalPage = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
+}`,
+    };
     
     mounted() {
       this.registerEvents();

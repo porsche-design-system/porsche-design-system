@@ -42,7 +42,7 @@
   </p-table>
 </Playground>
 
-## Framework Implementations
+### Framework Implementations
 
 <CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
 

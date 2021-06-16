@@ -27,55 +27,16 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 
 In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
 
-### Vanilla JS
+### Framework Implementations
 
-```js
-tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
-  const { activeTabIndex } = tabChangeEvent.detail;
-  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
-});
-```
+<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
 
-### Angular
-
-```ts
-import { Component } from '@angular/core';
-import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/types';
-
-@Component({
-  selector: 'tabs-bar-page',
-  template: `<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>`,
-})
-export class TabsBarPage {
-  tabIndex: number;
-
-  handleTabChange(e: CustomEvent<TabChangeEvent>) {
-    const { activeTabIndex } = e.detail;
-    this.tabIndex = activeTabIndex;
-  }
-}
-```
-
-### React
-
-```tsx
-import { useCallback, useState } from 'react';
-import { PTabsBar } from '@porsche-design-system/components-react';
-import type { TabChangeEvent } from '@porsche-design-system/components-react';
-
-const TabsBarPage = (): JSX.Element => {
-    const [tabIndex, setTabIndex] = useState<number>();
-    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        const { activeTabIndex } = e.detail;
-        setTabIndex(activeTabIndex);
-    }, []);
-
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
-}
-```
-
+### Buttons
 
 <Playground :markup="basicButton" :config="config"></Playground>
+
+### Links
+
 <Playground :markup="basicAnchor" :config="config"></Playground>
 
 ## Accessibility
@@ -140,6 +101,41 @@ The background and gradient has to align to your chosen background.
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
+
+    frameworks = {
+      'vanilla-js': `tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+  const { activeTabIndex } = tabChangeEvent.detail;
+  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+});`,
+      angular: `import { Component } from '@angular/core';
+import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/types';
+
+@Component({
+  selector: 'tabs-bar-page',
+  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>\`,
+})
+export class TabsBarPage {
+  tabIndex: number;
+
+  handleTabChange(e: CustomEvent<TabChangeEvent>) {
+    const { activeTabIndex } = e.detail;
+    this.tabIndex = activeTabIndex;
+  }
+}`,
+      react: `import { useCallback, useState } from 'react';
+import { PTabsBar } from '@porsche-design-system/components-react';
+import type { TabChangeEvent } from '@porsche-design-system/components-react';
+
+const TabsBarPage = (): JSX.Element => {
+    const [tabIndex, setTabIndex] = useState<number>();
+    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+        const { activeTabIndex } = e.detail;
+        setTabIndex(activeTabIndex);
+    }, []);
+
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+}`,
+    };
 
     weight = 'semibold';
     size = 'medium';

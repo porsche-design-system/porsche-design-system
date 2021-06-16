@@ -59,6 +59,11 @@
   @import '../styles/code-highlighting';
 
   .code-block {
+    margin-top: 1rem;
+    padding: $p-spacing-32;
+    border: 1px solid $p-color-neutral-contrast-low;
+    overflow-x: auto;
+
     @include codeHighlighting('light');
   }
 
