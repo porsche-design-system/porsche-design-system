@@ -1,4 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
+import { spacing } from '@porsche-design-system/utilities';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -7,6 +8,8 @@ import { pascalCase } from 'change-case';
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
   protected ignoreComponents: TagName[] = ['p-content-wrapper', 'p-pagination'];
+
+  private spacingProps: string[] = ['top', 'left', 'right', 'bottom'].map((x) => `spacing${pascalCase(x)}`);
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
@@ -28,12 +31,17 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       return props.replace(new RegExp(`\\s\\s\\/\\*\\*(.*\\n){3}\\s\\s${prop}.*\\n`), '');
     };
 
+    // remove useless props
     if (component === 'p-marque') {
       props = removePropFromProps(props, 'href');
       props = removePropFromProps(props, 'target');
     } else if (component === 'p-button' || component === 'p-button-pure') {
       props = removePropFromProps(props, 'type');
     }
+
+    // add margin props to every component
+    const spacings = this.spacingProps.map((x) => `${x}: ${Object.keys(spacing).join(' | ')};`).join('\n  ');
+    props = props.replace(/(HTMLAttributes<\{}> & \{\n)/, `$1  ${spacings}\n`);
 
     return props;
   }
@@ -90,6 +98,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
     }
+
+    // destructure margin props
+    const spacings = this.spacingProps.join(', ');
+    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
+
+    // build inline style prop
+    const styleSpacings = this.spacingProps.map((x) => `padding${x.replace('spacing', '')}: ${x}`).join(', ');
+    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest,\n)/, `$1      style: { ${styleSpacings} },\n`);
 
     return cleanedComponent;
   }
