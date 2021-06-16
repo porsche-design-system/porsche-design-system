@@ -19,14 +19,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public generateProps(component: TagName, rawComponentInterface: string): string {
     let props = super.generateProps(component, rawComponentInterface);
 
-    // add onClick prop for buttons and links, but not button-group
+    // add onClick prop for marque, buttons and links, but not button-group
     if (!!component.match(/(button|link|marque)(?!-group)/)) {
       props = props.replace(/(};)$/, '  onClick?: (e: MouseEvent) => void;\n$1');
     }
 
+    const removePropFromProps = (props: string, prop: string) => {
+      return props.replace(new RegExp(`\\s\\s\\/\\*\\*(.*\\n){3}\\s\\s${prop}.*\\n`), '');
+    };
+
     if (component === 'p-marque') {
-      props = props.replace(/\s\s\/\*\*(.*\n){3}\s\shref.*\n/, ''); // remove href
-      props = props.replace(/\s\s\/\*\*(.*\n){3}\s\starget.*\n/, ''); // remove target
+      props = removePropFromProps(props, 'href');
+      props = removePropFromProps(props, 'target');
+    } else if (component === 'p-button' || component === 'p-button-pure') {
+      props = removePropFromProps(props, 'type');
     }
 
     return props;
