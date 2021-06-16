@@ -5,9 +5,9 @@
 <Playground>
   <p-table ref="table">
     <p-table-head>
-      <p-table-row>
+      <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headData" :key="index" ref="headCells">{{ item.name }}</p-table-head-cell>
-      </p-table-row>
+      </p-table-head-row>
     </p-table-head>
     <p-table-body>
       <p-table-row v-for="(item, index) in bodyData" :key="index">
@@ -46,7 +46,7 @@
 
 <p-tabs>
   <p-tabs-item label="Vanilla JS">
-    <pre><code class="language-js">{{ vanillaJsExample }}</code></pre>
+    <pre><code class="language-markup">{{ vanillaJsExample }}</code></pre>
   </p-tabs-item>
   <p-tabs-item label="Angular">
     <pre><code class="language-ts">{{ angularExample }}</code></pre>
@@ -80,7 +80,7 @@
       
       this.$el.querySelectorAll('code').forEach((el) => {
         const { className } = el;
-        if (className === 'language-ts') {
+        if (className === 'language-ts' || className === 'language-markup') {
           el.innerHTML = highlight(el.innerText, languages.markup, 'markup');
         } else if (className === 'language-tsx') {
           el.innerHTML = highlight(el.innerText, languages.jsx, 'language-jsx');
@@ -91,16 +91,17 @@
     registerEvents(): void {
       const { table } = this.$refs;
       table.addEventListener('sortingChange', (e) => {
-        const { key, direction } = e.detail;
-        this.headData = this.headData.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
-        this.bodyData = [...this.bodyData].sort((a, b) => (direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])));
+        const { id, direction } = e.detail;
+        this.headData = this.headData.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
+        this.bodyData = [...this.bodyData].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
         this.syncHeadCellProperties();
       });
     }
 
     syncHeadCellProperties(): void {
       this.$refs.headCells.forEach((cell, i) => {
-        cell.item = this.headData[i];
+        cell.sort = this.headData[i];
+        cell.hideLabel = this.headData[i].hideLabel;
       });
     }
   }
