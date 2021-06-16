@@ -11,7 +11,8 @@
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge",
-    "deploy": "./node_modules/.bin/uxpin-merge push --token 4d3947ced4d9c53b0f07462c1a9697a48de3276f --branch issue/1452"
+    "deploy": "./node_modules/.bin/uxpin-merge push --token 4d3947ced4d9c53b0f07462c1a9697a48de3276f --branch issue/1452",
+    "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "2.2.1",
