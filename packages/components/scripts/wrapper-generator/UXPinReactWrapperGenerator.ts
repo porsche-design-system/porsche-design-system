@@ -16,7 +16,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    return super.generateImports(component, extendedProps, nonPrimitiveTypes).replace(/(?:useMergedClass)(?:, )?/g, ''); // remove unused imports
+    return super
+      .generateImports(component, extendedProps, nonPrimitiveTypes)
+      .replace(/(?:useMergedClass|BreakpointCustomizable)(?:, )?/g, ''); // remove unused imports
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -66,9 +68,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         'p-select-wrapper': ['<select>']
           .concat(Array.from(Array(3)).map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`))
           .concat(['</select>'])
-          .join('\\n'),
-        'p-tabs-bar': Array.from(Array(3))
-          .map((_, i) => `<button>Tab ${i + 1}</button>`)
           .join('\\n'),
         'p-banner': ['<span slot="title">Banner Title</span>', '<span slot="description">Banner Description'].join(
           '\\n'
@@ -125,6 +124,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       {
         name: 'Uncategorized',
         include: ['src/lib/components/*.tsx'],
+      },
+      {
+        name: 'Dummy',
+        include: ['src/dummy/*.tsx'],
       },
     ],
     wrapper: 'src/UXPinWrapper.tsx',
