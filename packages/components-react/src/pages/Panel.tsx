@@ -134,6 +134,29 @@ export const PanelPage = (): JSX.Element => {
         </PPanel>
       </div>
 
+      <div style={{ width: '400px' }}>
+        <div
+          className="playground light"
+          title="should render panel weight regular and size medium on light background"
+        >
+          <PPanel heading="Some extra long heading that should break to the second line">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
+          </PPanel>
+        </div>
+
+        <div className="playground dark" title="should render panel weight regular and size medium on dark background">
+          <PPanel heading=" Some extra long heading that should break to the second line" theme="dark">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
+          </PPanel>
+        </div>
+      </div>
+
       <div className="playground light" title="should render multiple panels with one open on light background">
         <PPanel heading="Some heading">
           <p>

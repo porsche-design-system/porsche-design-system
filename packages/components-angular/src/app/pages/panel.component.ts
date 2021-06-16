@@ -131,6 +131,26 @@ import { Component } from '@angular/core';
       </p-panel>
     </div>
 
+    <div style="width: 400px">
+      <div class="playground light" title="should render panel weight regular and size medium on light background">
+        <p-panel [heading]="'Some extra long heading that should break to the second line'">
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          </p>
+        </p-panel>
+      </div>
+
+      <div class="playground dark" title="should render panel weight regular and size medium on dark background">
+        <p-panel [heading]="'Some extra long heading that should break to the second line'" [theme]="'dark'">
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          </p>
+        </p-panel>
+      </div>
+    </div>
+
     <div class="playground light" title="should render multiple panels with one open on light background">
       <p-panel [heading]="'Some heading'">
         <p>

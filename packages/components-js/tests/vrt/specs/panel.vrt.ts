@@ -1,4 +1,14 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import {
+  forceFocusedHoveredStateOnDifferentSelectors,
+  forceFocusedState,
+  forceHoveredState,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  setContentWithDesignSystem,
+  testOptions,
+} from '../helpers';
 
 describe('Panel', () => {
   it('should have no visual regression', async () => {
@@ -15,33 +25,32 @@ describe('Panel', () => {
     ).toBeFalsy();
   });
 
-  /* it('should have no visual regression for :hover + :focus-visible', async () => {
+  it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
-      await vrt.test('tabs-bar-states', async () => {
+      await vrt.test('panel-states', async () => {
         const page = await vrt.getPage();
+        const hoverElementSelector = 'p-panel >>> p-headline';
+        const focusElementSelector = 'p-panel >>> button';
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-tabs-bar theme="${theme}" active-tab-index="1">
-            <button type="button">Button Tab One</button>
-            <button type="button">Button Tab Two</button>
-            <button type="button">Button Tab Three</button>
-          </p-tabs-bar>
-          <p-tabs-bar theme="${theme}" active-tab-index="1">
-            <a>Anchor Tab One</a>
-            <a>Anchor Tab Two</a>
-            <a>Anchor Tab Three</a>
-          </p-tabs-bar>`;
+          <p-panel theme="${theme}" heading="Some heading">
+            <p>
+             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+             sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+          </p-panel>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-        await forceHoveredState(page, '.hovered > p-tabs-bar button');
-        await forceHoveredState(page, '.hovered > p-tabs-bar a');
-        await forceFocusedState(page, '.focused > p-tabs-bar button');
-        await forceFocusedState(page, '.focused > p-tabs-bar a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar button');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar a');
+        await forceHoveredState(page, `.hovered > ${hoverElementSelector}`);
+        await forceFocusedState(page, `.focused > ${focusElementSelector}`);
+        await forceFocusedHoveredStateOnDifferentSelectors(
+          page,
+          `.focused-hovered > ${hoverElementSelector}`,
+          `.focused-hovered > ${focusElementSelector}`
+        );
       })
     ).toBeFalsy();
-  });*/
+  });
 });
