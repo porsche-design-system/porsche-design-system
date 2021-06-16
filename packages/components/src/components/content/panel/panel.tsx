@@ -54,7 +54,7 @@ export class Panel {
         <PrefixedTagNames.pHeadline
           tag={this.tag}
           theme={this.theme}
-          class="headline"
+          class="heading-wrapper"
           variant="inherit"
           onClick={this.handlePanelClick}
         >

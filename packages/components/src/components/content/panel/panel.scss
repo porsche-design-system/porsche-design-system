@@ -6,6 +6,27 @@ $root: '.root';
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
   transition: padding $p-animation-hover-duration-var $p-animation-hover-bezier;
 
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+
+  &--size-small {
+    @include p-generate-type-scale($p-font-size-small);
+  }
+
+  &--size-medium {
+    @include p-generate-type-scale($p-font-size-medium);
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-small-#{$breakpoint} {
+        @include p-generate-type-scale($p-font-size-small);
+      }
+      &--size-medium-#{$breakpoint} {
+        @include p-generate-type-scale($p-font-size-medium);
+      }
+    }
+  }
+
   &--open {
     padding-bottom: $p-spacing-40;
   }
@@ -14,7 +35,7 @@ $root: '.root';
   }
 }
 
-.headline {
+.heading-wrapper {
   padding: p-px-to-rem(24px) 0;
   cursor: pointer;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
@@ -43,39 +64,25 @@ button {
   text-decoration: none;
   border: 0;
   background: transparent;
-  color: $p-color-default;
   cursor: pointer;
-  text-align: left;
-  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
-
-  #{$root}--size-small & {
-    @include p-generate-type-scale($p-font-size-small);
-  }
-
-  #{$root}--size-medium & {
-    @include p-generate-type-scale($p-font-size-medium);
-  }
-
-  #{$root}--weight-regular & {
-    font-weight: $p-font-weight-regular;
-  }
-
-  @each $breakpoint in $breakpoints {
-    @include p-media-query($breakpoint) {
-      #{$root}--size-small-#{$breakpoint} & {
-        @include p-generate-type-scale($p-font-size-small);
-      }
-      #{$root}--size-medium-#{$breakpoint} & {
-        @include p-generate-type-scale($p-font-size-medium);
-      }
-    }
-  }
+  font-weight: $p-font-weight-semibold;
 
   // iOS Safari users should not see tap highlight color on button
   -webkit-tap-highlight-color: transparent;
 
-  #{$root}--theme-dark & {
-    color: $p-color-theme-dark-default;
+  // inherit headline styles exvept for slotted semibold weight override
+  margin: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: inherit;
+  overflow-wrap: inherit;
+  word-wrap: inherit;
+  hyphens: inherit;
+
+  #{$root}--weight-regular & {
+    font-weight: $p-font-weight-regular;
   }
 
   &:focus {
@@ -85,9 +92,11 @@ button {
     outline-color: transparent;
   }
 }
+
 .heading {
   padding-right: $p-spacing-24;
 }
+
 .icon {
   transform-origin: 50% 50%;
   transition: transform 0.24s $p-animation-hover-bezier;
@@ -108,5 +117,13 @@ button {
     opacity: 1;
     visibility: visible;
     height: auto;
+  }
+
+  & > ::slotted(*) {
+    display: none;
+
+    #{$root}--open & {
+      display: block;
+    }
   }
 }
