@@ -191,13 +191,11 @@ describe('panel', () => {
     it('should work without unnecessary round trips on prop change', async () => {
       await initPanel();
       const host = await getHost();
+      await setProperty(host, 'open', true);
+      await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-panel']).withContext('componentDidLoad: p-panel').toBe(1);
-
-      await setProperty(host, 'open', true);
-
-      expect(status.componentDidUpdate['p-panel']).withContext('componentDidLoad: p-panel').toBe(1);
+      expect(status.componentDidUpdate['p-panel']).withContext('componentDidUpdate: p-panel').toBe(1);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
       expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
     });
