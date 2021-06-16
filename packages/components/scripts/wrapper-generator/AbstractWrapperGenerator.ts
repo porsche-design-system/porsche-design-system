@@ -16,6 +16,7 @@ export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
   protected barrelFileName: string = 'index.ts';
+  protected ignoreComponents: TagName[] = [];
   private libDir: string = '';
   private componentsDir: string = '';
 
@@ -71,7 +72,10 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private generateComponentWrappers(): void {
-    const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
+    const componentTagNames: TagName[] = (Object.keys(this.intrinsicElements) as TagName[]).filter(
+      (item) => !this.ignoreComponents.includes(item)
+    );
+
     componentTagNames
       // .filter((_, index) => index === 11) // temporary filter for easier development
       .forEach((component) => {
