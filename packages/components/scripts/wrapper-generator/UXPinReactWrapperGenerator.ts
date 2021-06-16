@@ -27,6 +27,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = props.replace(/(};)$/, '  onClick?: (e: MouseEvent) => void;\n$1');
     }
 
+    // remove BreakpointCustomizable types since designers can't use JSON
+    props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
+
     const removePropFromProps = (props: string, prop: string) => {
       return props.replace(new RegExp(`\\s\\s\\/\\*\\*(.*\\n){3}\\s\\s${prop}.*\\n`), '');
     };
