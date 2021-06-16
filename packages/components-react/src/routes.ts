@@ -119,6 +119,11 @@ export const routes: RouteType[] = [
     component: fromPages.PaginationPage,
   },
   {
+    name: 'Panel',
+    path: '/panel',
+    component: fromPages.PanelPage,
+  },
+  {
     name: 'Radio Button',
     path: '/radio-button-wrapper',
     component: fromPages.RadioButtonWrapperPage,

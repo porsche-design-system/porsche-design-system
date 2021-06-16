@@ -17,7 +17,7 @@ describe('Tabs Bar', () => {
       await vrt.test(
         'tabs-bar',
         async () => {
-          await vrt.goTo('/#text'); // so ensure fonts are already loaded before js is initialized
+          await vrt.goTo('/#text'); // to ensure fonts are already loaded before js is initialized
           await vrt.goTo('/#tabs-bar');
         },
         testOptions

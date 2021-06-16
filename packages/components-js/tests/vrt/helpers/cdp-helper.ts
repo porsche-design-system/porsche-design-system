@@ -70,6 +70,14 @@ export const forceFocusedState = async (page: Page, selector: string): Promise<v
 export const forceFocusedHoveredState = async (page: Page, selector: string): Promise<void> => {
   await forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
 };
+export const forceFocusedHoveredStateOnDifferentSelectors = async (
+  page: Page,
+  hoverSelector: string,
+  focusSelector: string
+): Promise<void> => {
+  await forceStateOnElements(page, hoverSelector, HOVERED_STATE);
+  await forceStateOnElements(page, focusSelector, FOCUSED_STATE);
+};
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
   const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted

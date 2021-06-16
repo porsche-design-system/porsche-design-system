@@ -153,7 +153,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         </div>
 
-        <div class="playground light" title="should render default tabs with custom prefix">
+        <div class="playground light" title="should render default tabs">
           <p-tabs>
             <p-tabs-item label="Tab1">Content 1</p-tabs-item>
             <p-tabs-item label="Tab2">Content 2</p-tabs-item>
@@ -161,12 +161,21 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-tabs>
         </div>
 
-        <div class="playground light" title="should render default tabs-bar with custom prefix">
+        <div class="playground light" title="should render default tabs-bar">
           <p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
             <button>Tab3</button>
           </p-tabs-bar>
+        </div>
+
+        <div class="playground light" title="should render panel">
+          <p-panel [heading]="'Some heading'">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
+          </p-panel>
         </div>
 
         <div class="playground light" title="should render default spinner">
@@ -324,6 +333,15 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <button>Tab2</button>
             <button>Tab3</button>
           </my-prefix-p-tabs-bar>
+        </div>
+
+        <div class="playground light" title="should render panel with custom prefix">
+          <p-panel [heading]="'Some heading'">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
+          </p-panel>
         </div>
 
         <div class="playground light" title="should render default spinner with custom prefix">
