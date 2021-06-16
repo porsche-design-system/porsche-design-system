@@ -102,6 +102,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     }
 
+    // adjust tabs-bar
+    if (component === 'p-tabs-bar') {
+      cleanedComponent = cleanedComponent.replace(/({ activeTabIndex),/, '$1 = 0,');
+    }
+
     // destructure margin props
     const spacings = this.spacingProps.join(', ');
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
