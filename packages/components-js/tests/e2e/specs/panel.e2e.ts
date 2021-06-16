@@ -9,7 +9,6 @@ import {
   hasFocus,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
