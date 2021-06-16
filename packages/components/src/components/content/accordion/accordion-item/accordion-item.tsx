@@ -1,6 +1,6 @@
 import { Component, h } from '@stencil/core';
 // import { throwIfParentIsNotOfKind } from '../../../../utils';
-// import { PanelStateChangeEvent } from '../../panel/panel-utils';
+// import { PanelChangeEvent } from '../../panel/panel-utils';
 
 @Component({
   tag: 'p-accordion-item',
@@ -17,7 +17,7 @@ export class AccordionItem {
   // @Prop() public open: boolean;
   //
   // /** Emitted when panel state is changed. */
-  // @Event({ bubbles: false }) public stateChange: EventEmitter<PanelStateChangeEvent>;
+  // @Event({ bubbles: false }) public stateChange: EventEmitter<PanelChangeEvent>;
   //
   // public connectedCallback(): void {
   //   throwIfParentIsNotOfKind(this.host, 'pAccordion');

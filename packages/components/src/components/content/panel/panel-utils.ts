@@ -4,7 +4,7 @@ import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
 const PANEL_SIZE = ['small', 'medium'] as const;
 export type PanelSize = typeof PANEL_SIZE[number];
-export type PanelStateChangeEvent = { open: boolean };
+export type PanelChangeEvent = { open: boolean };
 
 // export const getHasPAccordionParent = (hostEl: HTMLElement): boolean => {
 //   const { host } = hostEl.getRootNode() as ShadowRoot;

@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses, SubsetTextWeight } from '../../../utils';
-import { PanelSize, PanelStateChangeEvent } from './panel-utils';
+import { PanelSize, PanelChangeEvent } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 
 @Component({
@@ -31,7 +31,7 @@ export class Panel {
   @Prop() public open?: boolean;
 
   /** Emitted when panel state is changed. */
-  @Event({ bubbles: false }) public panelStateChange: EventEmitter<PanelStateChangeEvent>;
+  @Event({ bubbles: false }) public panelChange: EventEmitter<PanelChangeEvent>;
 
   // private hasAccordionParent: boolean = getHasPAccordionParent(this.host);
 
@@ -76,6 +76,6 @@ export class Panel {
   }
 
   private handlePanelClick = (): void => {
-    this.panelStateChange.emit({ open: !this.open });
+    this.panelChange.emit({ open: !this.open });
   };
 }

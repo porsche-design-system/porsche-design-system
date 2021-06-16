@@ -30,7 +30,7 @@ describe('panel', () => {
   const clickHandlerScript = `
     <script>
       const panel = document.querySelector('p-panel')
-      panel.addEventListener('panelStateChange', (panelChangeEvent) => {
+      panel.addEventListener('panelChange', (panelChangeEvent) => {
           const { open } = panelChangeEvent.detail;
           panelChangeEvent.target.setAttribute('open', open);
       });
@@ -58,12 +58,12 @@ describe('panel', () => {
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
 
-    it('should emit panelStateChange event on headline mouse click', async () => {
+    it('should emit panelChange event on headline mouse click', async () => {
       await initPanel({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
       const headline = await getHeadline();
-      await addEventListener(host, 'panelStateChange', () => eventCounter++);
+      await addEventListener(host, 'panelChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
@@ -73,12 +73,12 @@ describe('panel', () => {
       expect(eventCounter).toBe(1);
     });
 
-    it('should emit panelStateChange event on button mouse click', async () => {
+    it('should emit panelChange event on button mouse click', async () => {
       await initPanel({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
       const button = await getButton();
-      await addEventListener(host, 'panelStateChange', () => eventCounter++);
+      await addEventListener(host, 'panelChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
@@ -88,11 +88,11 @@ describe('panel', () => {
       expect(eventCounter).toBe(1);
     });
 
-    it('should emit panelStateChange event on enter press', async () => {
+    it('should emit panelChange event on enter press', async () => {
       await initPanel({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
-      await addEventListener(host, 'panelStateChange', () => eventCounter++);
+      await addEventListener(host, 'panelChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
