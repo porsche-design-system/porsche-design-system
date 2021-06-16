@@ -330,6 +330,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`),
       ],
     },
+    Panel: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/panel/panel.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/panel/panel.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/panel/panel.props.md`),
+      ],
+    },
     'Radio Button': {
       Examples: [
         // @ts-ignore
