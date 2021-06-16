@@ -1,7 +1,7 @@
 <template>
-  <div class="code-block" :class="`code-block--${theme}`">
-    <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(framework, index) in frameworks" :key="index" @click="setFramework(index)">
+  <div class="code-block">
+    <p-tabs-bar :active-tab-index="activeTabIndex">
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
         {{ framework }}
       </button>
     </p-tabs-bar>
@@ -13,22 +13,29 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { Framework, FrameworkMarkup, Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact, getHighlightedCode } from '@/utils';
+  import type { Framework, FrameworkMarkup } from '@/models';
+  import { getHighlightedCode } from '@/utils';
 
   @Component
-  export default class CodeBlock extends Vue {
-    @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: 'light' }) public theme!: Theme;
+  export default class CodeBlockExtended extends Vue {
+    @Prop({ default: [] }) public frameworks!: FrameworkMarkup;
 
-    frameworks: FrameworkMarkup = {
+    allFrameworks: Required<FrameworkMarkup> = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React',
+      shared: 'Shared',
     };
 
+    public get usedFrameworks(): FrameworkMarkup {
+      return Object.keys(this.frameworks).reduce((prev, key) => {
+        prev[key as Framework] = this.allFrameworks[key as Framework];
+        return prev;
+      }, {} as FrameworkMarkup);
+    }
+
     public get activeTabIndex(): number {
-      return Object.keys(this.frameworks).indexOf(this.framework);
+      return Object.keys(this.usedFrameworks).indexOf(this.framework);
     }
 
     public get framework(): Framework {
@@ -40,19 +47,8 @@
     }
 
     get highlightedMarkup(): string {
-      return getHighlightedCode(this.convert(this.markup), this.framework);
-    }
-
-    private convert(markup: string): string {
-      markup = cleanMarkup(markup);
-      switch (this.framework) {
-        case 'angular':
-          return convertToAngular(markup);
-        case 'react':
-          return convertToReact(markup);
-        default:
-          return markup;
-      }
+      const markup = this.frameworks[this.framework]!;
+      return getHighlightedCode(markup, this.framework);
     }
   }
 </script>
@@ -63,13 +59,7 @@
   @import '../styles/code-highlighting';
 
   .code-block {
-    &--light {
-      @include codeHighlighting('light');
-    }
-
-    &--dark {
-      @include codeHighlighting('dark');
-    }
+    @include codeHighlighting('light');
   }
 
   code,

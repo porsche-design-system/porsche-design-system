@@ -44,48 +44,29 @@
 
 ## Framework Implementations
 
-<p-tabs>
-  <p-tabs-item label="Vanilla JS">
-    <pre><code class="language-markup">{{ vanillaJsExample }}</code></pre>
-  </p-tabs-item>
-  <p-tabs-item label="Angular">
-    <pre><code class="language-ts">{{ angularExample }}</code></pre>
-  </p-tabs-item>
-  <p-tabs-item label="React">
-    <pre><code class="language-tsx">{{ reactExample }}</code></pre>
-  </p-tabs-item>
-  <p-tabs-item label="Shared Data">
-    <pre><code class="language-tsx">{{ sharedData }}</code></pre>
-  </p-tabs-item>
-</p-tabs>
+<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
+
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { highlight, languages } from 'prismjs';
   import { data, head, getTableCodeSample } from '@porsche-design-system/shared';
 
   @Component
   export default class Code extends Vue {
     headData = head;
     bodyData = data;
-    vanillaJsExample = getTableCodeSample('vanilla-js');
-    angularExample = getTableCodeSample('angular');
-    reactExample = getTableCodeSample('react');
-    sharedData = getTableCodeSample('shared');
+
+    frameworks = {
+      'vanilla-js': getTableCodeSample('vanilla-js'),
+      angular: getTableCodeSample('angular'),
+      react: getTableCodeSample('react'),
+      shared: getTableCodeSample('shared'),
+    };
 
     mounted(): void {
       this.syncHeadCellProperties();
       this.registerEvents();
-      
-      this.$el.querySelectorAll('code').forEach((el) => {
-        const { className } = el;
-        if (className === 'language-ts' || className === 'language-markup') {
-          el.innerHTML = highlight(el.innerText, languages.markup, 'markup');
-        } else if (className === 'language-tsx') {
-          el.innerHTML = highlight(el.innerText, languages.jsx, 'language-jsx');
-        }
-      });
     }
 
     registerEvents(): void {
@@ -106,72 +87,3 @@
     }
   }
 </script>
-
-<style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
-
-  code,
-  pre {
-    color: $p-color-default;
-    text-shadow: 0 1px rgba(255, 255, 255, 0.3);
-  }
-
-  pre {
-    code ::v-deep {
-      .token.comment,
-      .token.prolog,
-      .token.doctype,
-      .token.cdata {
-        color: #aaa;
-      }
-
-      .token.punctuation {
-        color: #999;
-      }
-
-      .token.property,
-      .token.tag,
-      .token.boolean,
-      .token.number,
-      .token.constant,
-      .token.symbol {
-        color: #0cf;
-      }
-
-      .token.selector,
-      .token.attr-name,
-      .token.string,
-      .token.char,
-      .token.builtin {
-        color: royalblue;
-      }
-
-      .token.operator,
-      .token.entity,
-      .token.url,
-      .toke.variable,
-      .token.inserted {
-        color: yellowgreen;
-      }
-
-      .token.atrule,
-      .token.attr-value,
-      .token.keyword {
-        color: deeppink;
-      }
-
-      .token.script {
-        color: hotpink;
-      }
-
-      .token.regex,
-      .token.important {
-        color: orange;
-      }
-
-      .token.deleted {
-        color: red;
-      }
-    }
-  }
-</style>
