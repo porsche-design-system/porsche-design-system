@@ -12,6 +12,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
+const SCROLL_DURATION = 205; // with 20 steps and an interval of 10, we get 200ms plus 5ms for safety
+
 describe('table', () => {
   let page: Page;
   beforeEach(async () => {
@@ -31,6 +33,9 @@ describe('table', () => {
   const getFirstTableRow = () => selectNode(page, 'p-table-row:nth-child(1)');
   const getFirstTableRowCell = () => selectNode(page, 'p-table-row:nth-child(1) p-table-cell:nth-child(1)');
   const getCaption = () => selectNode(page, 'p-table >>> .caption');
+  const getScrollArea = () => selectNode(page, 'p-table >>> .scroll-area');
+  const getScrollIndicator = () => selectNode(page, 'p-table >>> .scroll-indicator');
+  const getScrollButton = () => selectNode(page, 'p-table >>> .scroll-button');
 
   type InitOptions = {
     columnAmount?: number;
@@ -73,7 +78,65 @@ ${script}`
     );
   };
 
-  describe('scroll button', () => {});
+  describe('scroll button', () => {
+    const makeTableOverflow = async () => {
+      const firstTableHeadCell = await getFirstTableHeadCell();
+      await firstTableHeadCell.evaluate((el) => {
+        (el as HTMLElement).style.minWidth = '2000px';
+      });
+      await waitForStencilLifecycle(page);
+    };
+
+    it("should be visible when table's content is overflowing", async () => {
+      await initTable();
+
+      expect(await getScrollIndicator())
+        .withContext('initially')
+        .toBeNull();
+
+      await makeTableOverflow();
+
+      expect(await getScrollIndicator())
+        .withContext('finally')
+        .not.toBeNull();
+    });
+
+    it('should disappear when scrolled to the very right', async () => {
+      await initTable();
+      await makeTableOverflow();
+
+      expect(await getScrollIndicator())
+        .withContext('initially')
+        .not.toBeNull();
+
+      const scrollArea = await getScrollArea();
+      await scrollArea.evaluate((el) => (el.scrollLeft = 2000));
+      await waitForStencilLifecycle(page);
+
+      expect(await getScrollIndicator())
+        .withContext('finally')
+        .toBeNull();
+    });
+
+    it('should scroll table on click', async () => {
+      await initTable();
+      await makeTableOverflow();
+
+      const scrollArea = await getScrollArea();
+      const getScrollLeft = () => scrollArea.evaluate((el) => el.scrollLeft);
+
+      const initialScrollLeft = await getScrollLeft();
+      expect(initialScrollLeft).withContext('initially').toBe(0);
+
+      const scrollButton = await getScrollButton();
+      await scrollButton.click();
+      await page.waitForTimeout(SCROLL_DURATION);
+
+      const scrollLeftAfterClick = await getScrollLeft();
+      expect(scrollLeftAfterClick).withContext('after click').toBeGreaterThan(0);
+      expect(scrollLeftAfterClick).withContext('after click').not.toBe(initialScrollLeft);
+    });
+  });
 
   describe('accessibility', () => {
     it('should set correct role and scope on table components', async () => {
