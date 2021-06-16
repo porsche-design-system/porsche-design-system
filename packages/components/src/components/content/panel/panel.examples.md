@@ -100,7 +100,7 @@ const PanelPage = (): JSX.Element => {
 ## Slotted heading
 Sometimes it's useful to be able to render markup for `heading`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 
-Please **defer** from using any other than text content as slotted markup.
+Please **refrain** from using any other than text content as slotted markup.
 
 <Playground :markup="slottedMarkup" :config="config"></Playground>
 
