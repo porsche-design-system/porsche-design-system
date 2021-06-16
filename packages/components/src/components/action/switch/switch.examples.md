@@ -152,10 +152,10 @@ export default class Code extends Vue {
 <p-switch tabbable="true">Some label</p-switch>`;
 
   mounted() {
-    // initially update switch with checked attribute in playground
+    /* initially update switch with checked attribute in playground */
     this.registerEvents();
 
-    // theme switch needs to register event listeners again
+    /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
     themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
       this.registerEvents();
@@ -171,7 +171,7 @@ export default class Code extends Vue {
     switches.forEach(switchEl => switchEl.addEventListener('switchChange', this.handleSwitchChange));
   }
 
-  handleSwitchChange =  (e: CustomEvent) => {
+  handleSwitchChange =  (e) => {
     const { checked } = e.detail;
     e.target.setAttribute('checked', checked);
   }
