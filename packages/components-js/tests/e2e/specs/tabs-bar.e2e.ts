@@ -701,7 +701,7 @@ describe('tabs-bar', () => {
 
     it('should trigger event on button click', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
-      const host = await selectNode(page, 'p-tabs-bar');
+      const host = await getHost();
       const [firstButton, secondButton, thirdButton] = await getAllButtons();
       let eventCounter = 0;
       await addEventListener(host, 'tabChange', () => eventCounter++);
