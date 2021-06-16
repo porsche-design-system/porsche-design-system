@@ -124,6 +124,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Pagination',
   },
   {
+    path: 'panel',
+    component: fromPages.PanelComponent,
+    name: 'Panel',
+  },
+  {
     path: 'radio-button-wrapper',
     component: fromPages.RadioButtonWrapperComponent,
     name: 'Radio Button',
