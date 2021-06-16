@@ -99,7 +99,7 @@ button {
 
 .icon {
   transform-origin: 50% 50%;
-  transition: transform 0.24s $p-animation-hover-bezier;
+  transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   #{$root}--open & {
     transform: rotate(-180deg);
