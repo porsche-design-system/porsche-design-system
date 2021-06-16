@@ -6,6 +6,7 @@ import { pascalCase } from 'change-case';
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
+  protected ignoreComponents: TagName[] = ['p-content-wrapper', 'p-pagination'];
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
