@@ -13,7 +13,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
-import { PanelSize, PanelStateChangeEvent } from "./components/content/panel/panel-utils";
+import { PanelChangeEvent, PanelSize } from "./components/content/panel/panel-utils";
 import { SubsetTextWeight } from "./utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -1596,7 +1596,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when panel state is changed.
          */
-        "onPanelStateChange"?: (event: CustomEvent<PanelStateChangeEvent>) => void;
+        "onPanelChange"?: (event: CustomEvent<PanelChangeEvent>) => void;
         /**
           * Defines if panel is open.
          */
