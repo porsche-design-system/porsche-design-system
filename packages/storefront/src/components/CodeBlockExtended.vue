@@ -60,8 +60,6 @@
 
   .code-block {
     margin-top: 1rem;
-    padding: $p-spacing-32;
-    border: 1px solid $p-color-neutral-contrast-low;
     overflow-x: auto;
 
     @include codeHighlighting('light');
@@ -85,7 +83,9 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin: $p-spacing-16 0;
+    padding: $p-spacing-32;
+    border: 1px solid $p-color-neutral-contrast-low;
+    margin: 0 0 $p-spacing-16;
 
     code ::v-deep {
       .namespace {
