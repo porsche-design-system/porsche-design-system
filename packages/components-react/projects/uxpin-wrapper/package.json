@@ -10,7 +10,8 @@
     "build": "cp ../components-wrapper/src/provider.tsx ./src && cp ../components-wrapper/src/hooks.ts ./src && cp ../components-wrapper/src/utils.ts ./src",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./.uxpin-merge"
+    "clean:build": "rm -rf ./.uxpin-merge",
+    "deploy": "./node_modules/.bin/uxpin-merge push --token ***REMOVED*** --branch issue/1452"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "2.2.1",
