@@ -11,7 +11,6 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
@@ -68,7 +67,7 @@ describe('panel', () => {
       expect(eventCounter).toBe(0);
 
       await headline.click();
-      await waitForEventSerialization(page);
+      await waitForStencilLifecycle(page);
 
       expect(eventCounter).toBe(1);
     });
@@ -83,7 +82,7 @@ describe('panel', () => {
       expect(eventCounter).toBe(0);
 
       await button.click();
-      await waitForEventSerialization(page);
+      await waitForStencilLifecycle(page);
 
       expect(eventCounter).toBe(1);
     });
@@ -98,6 +97,7 @@ describe('panel', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
 
       expect(eventCounter).toBe(1);
     });
