@@ -1,31 +1,21 @@
-import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
-  getThemedBodyMarkup,
-  GetThemedMarkup,
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+import { getVisualRegressionTester, testOptions } from '../helpers';
 
-describe('Tabs Bar', () => {
+describe('Panel', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
-        'tabs-bar',
+        'panel',
         async () => {
           await vrt.goTo('/#text'); // to ensure fonts are already loaded before js is initialized
-          await vrt.goTo('/#tabs-bar');
+          await vrt.goTo('/#panel');
         },
         testOptions
       )
     ).toBeFalsy();
   });
 
-  it('should have no visual regression for :hover + :focus-visible', async () => {
+  /* it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('tabs-bar-states', async () => {
@@ -53,5 +43,5 @@ describe('Tabs Bar', () => {
         await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar a');
       })
     ).toBeFalsy();
-  });
+  });*/
 });
