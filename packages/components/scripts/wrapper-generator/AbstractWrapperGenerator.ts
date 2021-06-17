@@ -23,6 +23,24 @@ export abstract class AbstractWrapperGenerator {
   protected inputParser = InputParser.Instance;
   private dataStructureBuilder = DataStructureBuilder.Instance;
   protected intrinsicElements = this.inputParser.getIntrinsicElements();
+  protected relevantComponentTagNames: TagName[] = [];
+
+  public generate(): void {
+    console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
+    this.setRelevantComponentTagNames();
+    this.generateDirs();
+    this.generateSharedTypes();
+    this.generateComponentWrappers();
+    this.generateBarrelFile();
+    this.generateAdditionalFiles();
+    console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
+  }
+
+  private setRelevantComponentTagNames(): void {
+    this.relevantComponentTagNames = (Object.keys(this.intrinsicElements) as TagName[]).filter(
+      (item) => !this.ignoreComponents.includes(item)
+    );
+  }
 
   private generateDir(dirName: string): void {
     fs.rmdirSync(dirName, { recursive: true });
@@ -37,16 +55,6 @@ export abstract class AbstractWrapperGenerator {
     this.generateDir(this.componentsDir);
   }
 
-  public generate(): void {
-    console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
-    this.generateDirs();
-    this.generateSharedTypes();
-    this.generateComponentWrappers();
-    this.generateBarrelFile();
-    this.generateAdditionalFiles();
-    console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
-  }
-
   private generateSharedTypes(): void {
     const content = this.inputParser.getSharedTypes();
 
@@ -57,12 +65,19 @@ export abstract class AbstractWrapperGenerator {
     console.log(`Generated shared types: ${targetFileName}`);
   }
 
+  private getComponentSubDir(component: TagName): string {
+    return this.shouldGenerateFolderPerComponent(component) ? this.getComponentFileName(component, true) : '';
+  }
+
   private generateBarrelFile(): void {
     const targetFile = path.resolve(this.componentsDir, this.barrelFileName);
-    const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
 
-    const componentExports = componentTagNames
-      .map((component) => `export * from './${this.getComponentFileName(component, true)}';`)
+    const componentExports = this.relevantComponentTagNames
+      .map((component) => {
+        const componentSubDir = this.getComponentSubDir(component);
+        const componentFileName = this.getComponentFileName(component, true);
+        return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileName}';`;
+      })
       .join('\n');
 
     const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
@@ -72,17 +87,13 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private generateComponentWrappers(): void {
-    const componentTagNames: TagName[] = (Object.keys(this.intrinsicElements) as TagName[]).filter(
-      (item) => !this.ignoreComponents.includes(item)
-    );
-
-    componentTagNames
+    this.relevantComponentTagNames
       // .filter((_, index) => index === 11) // temporary filter for easier development
       .forEach((component) => {
         this.generateComponentWrapper(component);
       });
 
-    console.log(`Generated ${componentTagNames.length} components`);
+    console.log(`Generated ${this.relevantComponentTagNames.length} components`);
   }
 
   private generateComponentWrapper(component: TagName): void {
@@ -96,8 +107,13 @@ export abstract class AbstractWrapperGenerator {
 
     const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
 
+    const componentSubDir = this.getComponentSubDir(component);
+    if (componentSubDir) {
+      this.generateDir(path.resolve(this.componentsDir, componentSubDir));
+    }
+
     const targetFileName = this.getComponentFileName(component);
-    const targetFile = path.resolve(this.componentsDir, targetFileName);
+    const targetFile = path.resolve(this.componentsDir, componentSubDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
     // console.log(`Generated wrapper: ${targetFileName}`);
@@ -107,8 +123,10 @@ export abstract class AbstractWrapperGenerator {
     const files = this.getAdditionalFiles();
     if (files.length) {
       files.forEach(({ name, content, relativePath = '' }) => {
-        const targetFile = path.resolve(this.componentsDir, relativePath, name);
+        const targetDir = path.resolve(this.componentsDir, relativePath);
+        const targetFile = path.resolve(targetDir, name);
 
+        fs.mkdirSync(targetDir, { recursive: true });
         fs.writeFileSync(targetFile, content);
         console.log(`Generated file: ${name}`);
       });
@@ -123,6 +141,11 @@ export abstract class AbstractWrapperGenerator {
   // helper that can be used to inject other files to be generated
   public getAdditionalFiles(): AdditionalFile[] {
     return [];
+  }
+
+  // helper that can be used to have wrapper generated into separate folder
+  public shouldGenerateFolderPerComponent(component: TagName): boolean {
+    return false;
   }
 
   // prettier-ignore

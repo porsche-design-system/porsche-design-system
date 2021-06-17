@@ -16,9 +16,16 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    return super
+    let imports = super
       .generateImports(component, extendedProps, nonPrimitiveTypes)
       .replace(/(?:useMergedClass|BreakpointCustomizable)(?:, )?/g, ''); // remove unused imports
+
+    // when component is nested we need to fix relative imports
+    if (this.shouldGenerateFolderPerComponent(component)) {
+      imports = imports.replace(/'(\.\.\/)/g, "'$1$1");
+    }
+
+    return imports;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -61,7 +68,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
       const componentWithChildrenMap: { [key in TagName]?: string } = {
-        'p-checkbox-wrapper': '<input type="checkbox" />',
         'p-radio-button-wrapper': '<input type="radio" />',
         'p-text-field-wrapper': '<input type="text" />',
         'p-textarea-wrapper': '<textarea />',
@@ -117,13 +123,31 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return cleanedComponent;
   }
 
+  public shouldGenerateFolderPerComponent(component: TagName): boolean {
+    return !!component.match(/(checkbox-wrapper)/);
+  }
+
   public getAdditionalFiles(): AdditionalFile[] {
+    const componentsBasePath = 'src/lib/components/';
+    const componentPaths = this.relevantComponentTagNames
+      .map((component) => {
+        const componentSubDir = this.shouldGenerateFolderPerComponent(component)
+          ? this.getComponentFileName(component, true) + '/'
+          : '';
+        const fileName = this.getComponentFileName(component);
+        return `${componentsBasePath}${componentSubDir}${fileName}`;
+      })
+      .map((path) => `'${path}'`)
+      .join(',\n          ');
+
     const uxPinConfigContent = `module.exports = {
   components: {
     categories: [
       {
         name: 'Uncategorized',
-        include: ['src/lib/components/*.tsx'],
+        include: [
+          ${componentPaths}
+        ],
       },
       {
         name: 'Dummy',
