@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import { ChangeEvent, FocusEvent, TextareaHTMLAttributes, useState } from 'react';
 
 type Props = {
   disabled?: boolean;
@@ -11,6 +11,18 @@ type Props = {
   onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
 };
 
-export const DummyTextarea = (props: Props): JSX.Element => {
+export const DummyTextarea = ({ value, onChange, ...rest }: Props): JSX.Element => {
+  const [valueState, setValueState] = useState(value);
+
+  const props: TextareaHTMLAttributes<HTMLTextAreaElement> = {
+    ...rest,
+    value: valueState,
+    onChange: (e) => {
+      const { value } = e.target;
+      setValueState(value);
+      onChange(e);
+    },
+  };
+
   return <textarea {...props} />;
 };
