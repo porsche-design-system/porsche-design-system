@@ -12,8 +12,8 @@ type Props = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyTextField = ({ value = 'DummyInput', ...rest }: Props): JSX.Element => {
-  const props = { ...rest, value };
+export const DummyTextField = ({ type = 'text', ...rest }: Props): JSX.Element => {
+  const props = { ...rest, type };
 
   return <input {...props} />;
 };
