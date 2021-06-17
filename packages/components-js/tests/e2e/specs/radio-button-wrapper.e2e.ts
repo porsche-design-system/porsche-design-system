@@ -117,29 +117,43 @@ describe('radio-button-wrapper', () => {
     const radioComponent = await getHost();
     const input = await selectNode(page, 'input');
 
-    expect(await getMessage()).toBeNull('initially');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeNull();
     await setAttribute(radioComponent, 'state', 'error');
     await setAttribute(radioComponent, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('initially')
+      .toEqual('Some label. Some error message');
 
     await setAttribute(radioComponent, 'state', 'success');
     await setAttribute(radioComponent, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = success')
+      .toBeNull();
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('when state = success')
+      .toEqual('Some label. Some success message');
 
     await setAttribute(radioComponent, 'state', 'none');
     await setAttribute(radioComponent, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeNull('when state = none');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
+    expect(await getMessage())
+      .withContext('when state = none')
+      .toBeNull();
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('when state = none')
+      .toEqual('Some label');
   });
 
   it('should disable radio-button when disabled attribute is set programmatically', async () => {
@@ -346,18 +360,24 @@ describe('radio-button-wrapper', () => {
       const input = await getInput();
       const visible = expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow', offset: '1px' });
 
-      expect(await getBoxShadowStyle(input)).toBe('none', 'initial');
+      expect(await getBoxShadowStyle(input))
+        .withContext('initial')
+        .toBe('none');
 
       await input.click();
 
-      expect(await getBoxShadowStyle(input)).toBe('none', 'after click');
+      expect(await getBoxShadowStyle(input))
+        .withContext('after click')
+        .toBe('none');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getBoxShadowStyle(input)).toBe(visible, 'after keyboard navigation');
+      expect(await getBoxShadowStyle(input))
+        .withContext('after keyboard navigation')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -400,11 +420,13 @@ describe('radio-button-wrapper', () => {
       await initRadioButton({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-radio-button-wrapper']).toBe(1, 'componentDidLoad: p-radio-button-wrapper');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-radio-button-wrapper'])
+        .withContext('componentDidLoad: p-radio-button-wrapper')
+        .toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -416,8 +438,8 @@ describe('radio-button-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });
