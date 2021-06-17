@@ -1,7 +1,6 @@
 # Panel
 
-A Panel is a component that reveals or hides associated sections of content.
-
+A Panel is a component that reveals or hides associated sections of content.  
 Panels are flexible in the context and can include other components of the Porsche Design System.
 
 ## Basic example
@@ -11,11 +10,14 @@ Panels are flexible in the context and can include other components of the Porsc
 You can set the `open` property to `true` so that the panel is open by default.
 <Playground :markup="basicOpen" :config="config"></Playground>
 
+The panel width is 100% of the parent container.
+We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
+Parent containers with a maximum width of 800px are recommended.
+
 ### Headline Tag
 
-The `tag` needs to be set in order for the panel to fit into the outline of the page. If no `tag` property is provided, it defaults to `h2`.
-
-Our example panels use heading level 3 to fit correctly within the outline of the page; the examples are contained in sections titled with a level 2 heading.
+The `tag` property needs to be set in order for the panel to fit into the outline of the page. If there is no `tag` property provided, it defaults to `h2`.
+For instance our example panels use heading level 3 because they are contained in sections titled with a level 2 heading.
 
 ### Event binding
 
@@ -98,7 +100,8 @@ const PanelPage = (): JSX.Element => {
 ---
 
 ## Slotted heading
-Sometimes it's useful to be able to render markup for `heading`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not** to define
+the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 
 Please **refrain** from using any other than text content as slotted markup.
 
@@ -155,7 +158,7 @@ Please **refrain** from using any other than text content as slotted markup.
   
       /* theme switch needs to register event listeners again */
       const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-      themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
+      themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
         this.registerEvents();
       }));
     }
