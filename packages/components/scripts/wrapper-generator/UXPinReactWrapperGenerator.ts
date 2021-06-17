@@ -113,6 +113,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
     switch (component) {
+      case 'p-button-group':
       case 'p-checkbox-wrapper':
       case 'p-radio-button-wrapper':
       case 'p-select-wrapper':
@@ -127,6 +128,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   public getAdditionalFiles(): AdditionalFile[] {
     const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
+      'p-button-group': {
+        children: [
+          '<Button variant="primary" uxpId="button-primary" />',
+          '<Button variant="secondary" uxpId="button-secondary" />',
+        ].join('\n    '),
+      },
       'p-checkbox-wrapper': {
         props: 'label="CheckboxWrapper"',
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
@@ -160,13 +167,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       ([component, { props, children }]) => {
         const componentName = this.getComponentFileName(component as TagName, true);
 
-        // extract dummy components and get rid of duplicates
-        const dummyComponents = (children?.match(/(Dummy[A-Za-z]+)/g) || [])
-          .filter((x, i, a) => a.indexOf(x) === i)
-          .join(', ');
-        const dummyImports = dummyComponents ? `import { ${dummyComponents} } from '../../../../dummy';` : '';
+        // extract other components and get rid of duplicates
+        const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
+          .map((x) => x.replace('<', ''))
+          .filter((x, i, a) => a.indexOf(x) === i);
 
-        const imports = [`import { ${componentName} } from '../${componentName}';`, dummyImports]
+        const otherComponents = allComponents.filter((x) => !x.startsWith('Dummy'));
+        const dummyComponents = allComponents.filter((x) => x.startsWith('Dummy'));
+
+        const otherImports = otherComponents.length ? `import { ${otherComponents.join(', ')} } from '../..';` : '';
+        const dummyImports = dummyComponents.length
+          ? `import { ${dummyComponents.join(', ')} } from '../../../../dummy';`
+          : '';
+
+        const imports = [`import { ${componentName} } from '../${componentName}';`, otherImports, dummyImports]
           .filter((x) => x)
           .join('\n');
 
