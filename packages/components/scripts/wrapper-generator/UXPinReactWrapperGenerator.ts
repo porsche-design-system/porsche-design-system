@@ -104,11 +104,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     }
 
-    // adjust tabs-bar
-    if (component === 'p-tabs-bar') {
-      cleanedComponent = cleanedComponent.replace(/({ activeTabIndex),/, '$1 = 0,');
-    }
-
     // destructure margin props
     const spacings = this.spacingProps.join(', ');
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
@@ -126,6 +121,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-radio-button-wrapper':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
+      case 'p-tabs-bar':
         return true;
       default:
         return false;
@@ -149,6 +145,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-textarea-wrapper': {
         props: 'label="TextareaWrapper"',
         children: '<DummyTextarea uxpId="dummy-textarea" />',
+      },
+      'p-tabs-bar': {
+        props: 'activeTabIndex={0}',
+        children: Array.from(Array(3))
+          .map(() => `<DummyButton uxpId="dummy-button" children="Tab" />`)
+          .join('\n    '),
       },
     };
 
