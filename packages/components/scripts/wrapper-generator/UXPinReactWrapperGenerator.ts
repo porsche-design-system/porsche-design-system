@@ -115,6 +115,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     switch (component) {
       case 'p-button-group':
       case 'p-checkbox-wrapper':
+      case 'p-flex':
+      case 'p-grid':
       case 'p-radio-button-wrapper':
       case 'p-select-wrapper':
       case 'p-text-field-wrapper':
@@ -137,6 +139,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-checkbox-wrapper': {
         props: 'label="CheckboxWrapper"',
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
+      },
+      'p-flex': {
+        children: ['<FlexItem uxpId="flex-item-1" />', '<FlexItem uxpId="flex-item-2" />'].join('\n    '),
+      },
+      'p-grid': {
+        children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(
+          '\n    '
+        ),
       },
       'p-radio-button-wrapper': {
         props: 'label="RadioButtonWrapper"',
