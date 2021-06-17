@@ -21,16 +21,19 @@ export class Accordion {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Defines the heading used in panel. */
+  /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: HeadlineTag = 'h2';
 
-  /** Defines if panel is open. */
+  /** Defines if accordion is open. */
   @Prop() public open?: boolean;
 
-  /** Emitted when panel state is changed. */
+  /** If it is the first Accordion it gets a border on top. */
+  @Prop() public firstItem?: boolean;
+
+  /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
   public render(): JSX.Element {
@@ -42,6 +45,7 @@ export class Accordion {
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
       ['root--weight-regular']: this.weight !== 'semibold',
+      ['root--first-item']: this.firstItem,
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
@@ -54,7 +58,7 @@ export class Accordion {
           theme={this.theme}
           class="heading-wrapper"
           variant="inherit"
-          onClick={this.handlePanelClick}
+          onClick={this.handleAccordionClick}
         >
           <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
             <span class="heading">{this.heading || <slot name="heading" />}</span>
@@ -73,7 +77,7 @@ export class Accordion {
     );
   }
 
-  private handlePanelClick = (): void => {
+  private handleAccordionClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
   };
 }

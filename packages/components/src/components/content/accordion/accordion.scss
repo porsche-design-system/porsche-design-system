@@ -16,6 +16,10 @@ $root: '.root';
     @include p-generate-type-scale($p-font-size-medium);
   }
 
+  &--first-item {
+    border-top: 1px solid $p-color-neutral-contrast-medium;
+  }
+
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       &--size-small-#{$breakpoint} {
@@ -32,6 +36,7 @@ $root: '.root';
   }
   &--theme-dark {
     border-bottom-color: $p-color-theme-dark-neutral-contrast-medium;
+    border-top-color: $p-color-theme-dark-neutral-contrast-medium;
   }
 }
 
