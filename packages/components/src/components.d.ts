@@ -20,8 +20,6 @@ import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { TabChangeEvent, TabGradientColorTheme, TabSize } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
-    interface PAccordionItem {
-    }
     interface PBanner {
         /**
           * Defines if the banner can be closed/removed by the user.
@@ -811,12 +809,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLPAccordionItemElement extends Components.PAccordionItem, HTMLStencilElement {
-    }
-    var HTMLPAccordionItemElement: {
-        prototype: HTMLPAccordionItemElement;
-        new (): HTMLPAccordionItemElement;
-    };
     interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
     }
     var HTMLPBannerElement: {
@@ -1016,7 +1008,6 @@ declare global {
         new (): HTMLPTextareaWrapperElement;
     };
     interface HTMLElementTagNameMap {
-        "p-accordion-item": HTMLPAccordionItemElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -1053,8 +1044,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface PAccordionItem {
-    }
     interface PBanner {
         /**
           * Emitted when the close button is clicked.
@@ -1871,7 +1860,6 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface IntrinsicElements {
-        "p-accordion-item": PAccordionItem;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -1911,7 +1899,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "p-accordion-item": LocalJSX.PAccordionItem & JSXBase.HTMLAttributes<HTMLPAccordionItemElement>;
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
