@@ -68,9 +68,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
       const componentWithChildrenMap: { [key in TagName]?: string } = {
-        'p-radio-button-wrapper': '<input type="radio" />',
-        'p-text-field-wrapper': '<input type="text" />',
-        'p-textarea-wrapper': '<textarea />',
         'p-select-wrapper': ['<select>']
           .concat(Array.from(Array(3)).map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`))
           .concat(['</select>'])
@@ -124,19 +121,43 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
-    return !!component.match(/(checkbox-wrapper)/);
+    switch (component) {
+      case 'p-checkbox-wrapper':
+      case 'p-radio-button-wrapper':
+      case 'p-text-field-wrapper':
+      case 'p-textarea-wrapper':
+        return true;
+      default:
+        return false;
+    }
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
-    const componentsWithPresetChildrenMap: { [key in TagName]?: string } = {
-      'p-checkbox-wrapper': '<DummyCheckbox uxpId="dummy-checkbox" />',
+    const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
+      'p-checkbox-wrapper': {
+        props: 'label="CheckboxWrapper"',
+        children: '<DummyCheckbox uxpId="dummy-checkbox" />',
+      },
+      'p-radio-button-wrapper': {
+        props: 'label="RadioButtonWrapper"',
+        children: '<DummyRadioButton uxpId="dummy-radio-button" />',
+      },
+      'p-text-field-wrapper': {
+        props: 'label="TextFieldWrapper"',
+        children: '<DummyTextField uxpId="dummy-text-field" />',
+      },
+      'p-textarea-wrapper': {
+        props: 'label="TextareaWrapper"',
+        children: '<DummyTextarea uxpId="dummy-textarea" />',
+      },
     };
+
     const componentPresetFiles: AdditionalFile[] = Object.entries(componentsWithPresetChildrenMap).map(
-      ([component, children]) => {
+      ([component, { props, children }]) => {
         const componentName = this.getComponentFileName(component as TagName, true);
 
         // extract dummy components and get rid of duplicates
-        const dummyComponents = (children.match(/(Dummy[A-Za-z]+)/g) || [])
+        const dummyComponents = (children?.match(/(Dummy[A-Za-z]+)/g) || [])
           .filter((x, i, a) => a.indexOf(x) === i)
           .join(', ');
         const dummyImports = dummyComponents ? `import { ${dummyComponents} } from '../../../../dummy';` : '';
@@ -148,13 +169,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         const content = `${imports}
 
 export default (
-  <${componentName} uxpId="${paramCase(componentName)}">
+  <${componentName} uxpId="${paramCase(componentName)}"${props ? ' ' + props : ''}>
     ${children}
   </${componentName}>
 );`;
 
         const additionalFile: AdditionalFile = {
-          name: '0-preset.jsx',
+          name: '0-default.jsx',
           relativePath: componentName + '/presets',
           content,
         };
