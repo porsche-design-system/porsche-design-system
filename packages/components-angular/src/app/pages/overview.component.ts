@@ -169,7 +169,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-tabs-bar>
         </div>
 
-        <div class="playground light" title="should render panel">
+        <div class="playground light" title="should render default panel">
           <p-panel [heading]="'Some heading'">
             <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
@@ -335,7 +335,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </my-prefix-p-tabs-bar>
         </div>
 
-        <div class="playground light" title="should render panel with custom prefix">
+        <div class="playground light" title="should render default panel with custom prefix">
           <p-panel [heading]="'Some heading'">
             <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
