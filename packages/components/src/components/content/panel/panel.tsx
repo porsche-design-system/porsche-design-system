@@ -33,8 +33,6 @@ export class Panel {
   /** Emitted when panel state is changed. */
   @Event({ bubbles: false }) public panelChange: EventEmitter<PanelChangeEvent>;
 
-  // private hasAccordionParent: boolean = getHasPAccordionParent(this.host);
-
   public render(): JSX.Element {
     const labelledId = 'labelled';
     const controlsId = 'controls';
