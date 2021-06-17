@@ -51,7 +51,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = removePropFromProps(props, 'type');
     }
 
-    // add margin props to every component
+    // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: ${Object.keys(spacing).join(' | ')};`).join('\n  ');
     props = props.replace(/(HTMLAttributes<\{}> & \{\n)/, `$1  ${spacings}\n`);
 
@@ -100,7 +100,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     }
 
-    // destructure margin props
+    // destructure spacing props
     const spacings = this.spacingProps.join(', ');
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
 
