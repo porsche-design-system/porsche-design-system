@@ -39,10 +39,8 @@ describe('panel', () => {
     const { tag, otherMarkup, hasInput } = opts ?? {};
 
     const content = `<p-panel headline="Some Panel" tag="${tag}">
-  <p>
-    Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-    ut labore et dolore magna aliquyam erat, sed diam voluptua.
-  </p>${hasInput ? '<input type="text"/>' : ''}
+  <p>Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<input type="text"/>' : ''}
 </p-panel>${otherMarkup}`;
 
     await setContentWithDesignSystem(page, content);
