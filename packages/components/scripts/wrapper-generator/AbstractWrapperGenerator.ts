@@ -128,7 +128,7 @@ export abstract class AbstractWrapperGenerator {
 
         fs.mkdirSync(targetDir, { recursive: true });
         fs.writeFileSync(targetFile, content);
-        console.log(`Generated file: ${name}`);
+        console.log(`Generated file: ${relativePath}/${name}`);
       });
     }
   }
