@@ -3,7 +3,7 @@ import { spacing } from '@porsche-design-system/utilities';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
-import { pascalCase } from 'change-case';
+import { pascalCase, paramCase } from 'change-case';
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
@@ -128,6 +128,40 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
+    const componentsWithPresetChildrenMap: { [key in TagName]?: string } = {
+      'p-checkbox-wrapper': '<DummyCheckbox uxpId="dummy-checkbox" />',
+    };
+    const componentPresetFiles: AdditionalFile[] = Object.entries(componentsWithPresetChildrenMap).map(
+      ([component, children]) => {
+        const componentName = this.getComponentFileName(component as TagName, true);
+
+        // extract dummy components and get rid of duplicates
+        const dummyComponents = (children.match(/(Dummy[A-Za-z]+)/g) || [])
+          .filter((x, i, a) => a.indexOf(x) === i)
+          .join(', ');
+        const dummyImports = dummyComponents ? `import { ${dummyComponents} } from '../../../../dummy';` : '';
+
+        const imports = [`import { ${componentName} } from '../${componentName}';`, dummyImports]
+          .filter((x) => x)
+          .join('\n');
+
+        const content = `${imports}
+
+export default (
+  <${componentName} uxpId="${paramCase(componentName)}">
+    ${children}
+  </${componentName}>
+);`;
+
+        const additionalFile: AdditionalFile = {
+          name: '0-preset.jsx',
+          relativePath: componentName + '/presets',
+          content,
+        };
+        return additionalFile;
+      }
+    );
+
     const componentsBasePath = 'src/lib/components/';
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
@@ -160,6 +194,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   name: 'Porsche Design System',
 };`;
 
-    return [{ name: 'uxpin.config.js', relativePath: '../../../', content: uxPinConfigContent }];
+    return [
+      ...componentPresetFiles,
+      { name: 'uxpin.config.js', relativePath: '../../../', content: uxPinConfigContent },
+    ];
   }
 }
