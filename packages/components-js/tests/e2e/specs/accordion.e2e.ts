@@ -15,7 +15,7 @@ import {
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
 
-describe('panel', () => {
+fdescribe('accordion', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
@@ -28,39 +28,39 @@ describe('panel', () => {
 
   const clickHandlerScript = `
     <script>
-      const panel = document.querySelector('p-panel')
-      panel.addEventListener('panelChange', (panelChangeEvent) => {
-          const { open } = panelChangeEvent.detail;
-          panelChangeEvent.target.setAttribute('open', open);
+      const accordion = document.querySelector('p-accordion')
+      accordion.addEventListener('accordionChange', (accordionChangeEvent) => {
+          const { open } = accordionChangeEvent.detail;
+          accordionChangeEvent.target.setAttribute('open', open);
       });
     </script>`;
 
-  const initPanel = async (opts?: InitOptions) => {
+  const initAccordion = async (opts?: InitOptions) => {
     const { tag, otherMarkup, hasInput } = opts ?? {};
 
-    const content = `<p-panel headline="Some Panel" tag="${tag}">
+    const content = `<p-accordion headline="Some Accordion" tag="${tag}">
   <p>Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<input type="text"/>' : ''}
-</p-panel>${otherMarkup}`;
+</p-accordion>${otherMarkup}`;
 
     await setContentWithDesignSystem(page, content);
   };
 
-  const getHost = () => selectNode(page, 'p-panel');
-  const getHeadline = () => selectNode(page, 'p-panel >>> p-headline');
-  const getButton = () => selectNode(page, 'p-panel >>> button');
-  const getIcon = () => selectNode(page, 'p-panel >>> p-icon');
+  const getHost = () => selectNode(page, 'p-accordion');
+  const getHeadline = () => selectNode(page, 'p-accordion >>> p-headline');
+  const getButton = () => selectNode(page, 'p-accordion >>> button');
+  const getIcon = () => selectNode(page, 'p-accordion >>> p-icon');
   const getInput = () => selectNode(page, 'input');
 
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
 
-    it('should emit panelChange event on headline mouse click', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript });
+    it('should emit accordionChange event on headline mouse click', async () => {
+      await initAccordion({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
       const headline = await getHeadline();
-      await addEventListener(host, 'panelChange', () => eventCounter++);
+      await addEventListener(host, 'accordionChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
@@ -70,12 +70,12 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
       expect(eventCounter).toBe(1);
     });
 
-    it('should emit panelChange event on button mouse click', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript });
+    it('should emit accordionChange event on button mouse click', async () => {
+      await initAccordion({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
       const button = await getButton();
-      await addEventListener(host, 'panelChange', () => eventCounter++);
+      await addEventListener(host, 'accordionChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
@@ -85,11 +85,11 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
       expect(eventCounter).toBe(1);
     });
 
-    it('should emit panelChange event on enter press', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript });
+    it('should emit accordionChange event on enter press', async () => {
+      await initAccordion({ otherMarkup: clickHandlerScript });
       let eventCounter = 0;
       const host = await getHost();
-      await addEventListener(host, 'panelChange', () => eventCounter++);
+      await addEventListener(host, 'accordionChange', () => eventCounter++);
 
       expect(eventCounter).toBe(0);
 
@@ -103,7 +103,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
 
   describe('focus', () => {
     it('should not have focus on click', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript });
+      await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
       const visible = expectedStyleOnFocus({ color: 'default', offset: '1px' });
@@ -130,7 +130,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
     });
 
     it('should have focusable content when opened', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript, hasInput: true });
+      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
       const button = await getButton();
       const input = await getInput();
 
@@ -144,7 +144,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
     });
 
     it('should not have focusable content when closed', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript, hasInput: true });
+      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
       const input = await getInput();
 
       expect(await hasFocus(page, input)).toBe(false);
@@ -158,7 +158,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
 
   describe('accessibility', () => {
     it('should have correct icon aria-label name on open / close', async () => {
-      await initPanel({ otherMarkup: clickHandlerScript });
+      await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
       const icon = await getIcon();
 
@@ -173,10 +173,10 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initPanel();
+      await initAccordion();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-panel']).withContext('componentDidLoad: p-panel').toBe(1);
+      expect(status.componentDidLoad['p-accordion']).withContext('componentDidLoad: p-accordion').toBe(1);
       expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
       expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
@@ -186,13 +186,13 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
-      await initPanel();
+      await initAccordion();
       const host = await getHost();
       await setProperty(host, 'open', true);
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-panel']).withContext('componentDidUpdate: p-panel').toBe(1);
+      expect(status.componentDidUpdate['p-accordion']).withContext('componentDidUpdate: p-accordion').toBe(1);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
       expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
     });

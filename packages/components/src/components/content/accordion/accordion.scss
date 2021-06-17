@@ -43,10 +43,10 @@ $root: '.root';
   // iOS Safari users should not see tap highlight color on headline
   -webkit-tap-highlight-color: transparent;
 
-  :not(#{$root}--open) &:hover {
+  &:hover {
     background-color: $p-color-background-surface;
 
-    @at-root #{$root}--theme-dark#{&} {
+    #{$root}--theme-dark & {
       background-color: $p-color-theme-dark-background-surface;
     }
   }
@@ -69,7 +69,7 @@ button {
   // iOS Safari users should not see tap highlight color on button
   -webkit-tap-highlight-color: transparent;
 
-  // inherit headline styles exvept for slotted semibold weight override
+  // inherit headline styles except for slotted semibold weight override
   margin: inherit;
   font-family: inherit;
   font-size: inherit;
@@ -101,7 +101,7 @@ button {
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   #{$root}--open & {
-    transform: rotate(-180deg);
+    transform: rotate(180deg);
   }
 }
 

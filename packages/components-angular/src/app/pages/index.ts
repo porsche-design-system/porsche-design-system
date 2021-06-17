@@ -25,7 +25,7 @@ import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
-import { PanelComponent } from './panel.component';
+import { AccordionComponent } from './accordion.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
@@ -39,6 +39,7 @@ import { TypographyComponent } from './typography.component';
 import { SwitchComponent } from './switch.component';
 
 export const pages = [
+  AccordionComponent,
   BannerComponent,
   ButtonComponent,
   ButtonGroupComponent,
@@ -66,7 +67,6 @@ export const pages = [
   ModalScrollableComponent,
   OverviewComponent,
   PaginationComponent,
-  PanelComponent,
   RadioButtonWrapperComponent,
   SelectWrapperComponent,
   SpinnerComponent,
@@ -80,6 +80,7 @@ export const pages = [
   TypographyComponent,
 ];
 
+export * from './accordion.component';
 export * from './banner.component';
 export * from './button.component';
 export * from './button-group.component';
@@ -107,7 +108,6 @@ export * from './modal-prefixed.component';
 export * from './modal-scrollable.component';
 export * from './overview.component';
 export * from './pagination.component';
-export * from './panel.component';
 export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';

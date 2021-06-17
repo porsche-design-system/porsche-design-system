@@ -14,6 +14,11 @@ export const routes: ExtendedRoute[] = [
     pathMatch: 'full',
   },
   {
+    path: 'accordion',
+    component: fromPages.AccordionComponent,
+    name: 'Accordion',
+  },
+  {
     path: 'banner',
     component: fromPages.BannerComponent,
     name: 'Banner',
@@ -122,11 +127,6 @@ export const routes: ExtendedRoute[] = [
     path: 'pagination',
     component: fromPages.PaginationComponent,
     name: 'Pagination',
-  },
-  {
-    path: 'panel',
-    component: fromPages.PanelComponent,
-    name: 'Panel',
   },
   {
     path: 'radio-button-wrapper',
