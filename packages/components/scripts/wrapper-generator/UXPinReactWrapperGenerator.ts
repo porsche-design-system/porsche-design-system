@@ -68,10 +68,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
       const componentWithChildrenMap: { [key in TagName]?: string } = {
-        'p-select-wrapper': ['<select>']
-          .concat(Array.from(Array(3)).map((_, i) => `<option value="${i + 1}">Option ${i + 1}</option>`))
-          .concat(['</select>'])
-          .join('\\n'),
         'p-banner': ['<span slot="title">Banner Title</span>', '<span slot="description">Banner Description'].join(
           '\\n'
         ),
@@ -119,6 +115,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     switch (component) {
       case 'p-checkbox-wrapper':
       case 'p-radio-button-wrapper':
+      case 'p-select-wrapper':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
       case 'p-tabs-bar':
@@ -137,6 +134,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-radio-button-wrapper': {
         props: 'label="RadioButtonWrapper"',
         children: '<DummyRadioButton uxpId="dummy-radio-button" />',
+      },
+      'p-select-wrapper': {
+        props: 'label="SelectWrapper"',
+        children:
+          '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
       },
       'p-text-field-wrapper': {
         props: 'label="TextFieldWrapper"',
