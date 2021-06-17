@@ -404,65 +404,77 @@ describe('marque', () => {
       let afterFocusCalls = 0;
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-      expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
-      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls initially');
-      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls initially');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls initially');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls initially');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
-      expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls initially').toBe(0);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls initially').toBe(0);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls initially').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls initially').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId initially')
+        .toBe('');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
-      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls after 1st tab');
-      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls after 1st tab');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 1st tab');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 1st tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 1st tab').toBe(0);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 1st tab').toBe(0);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 1st tab').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 1st tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab')
+        .toBe('before');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
-      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 2nd tab');
-      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 2nd tab');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 2nd tab');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 2nd tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
-      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 2nd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 2nd tab').toBe(1);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 2nd tab').toBe(1);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 2nd tab').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 2nd tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab')
+        .toBe('my-link');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
-      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 3rd tab');
-      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 3rd tab');
-      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 3rd tab');
-      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 3rd tab');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
-      expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 3rd tab').toBe(1);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 3rd tab').toBe(1);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 3rd tab').toBe(1);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 3rd tab').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 3rd tab')
+        .toBe('after');
 
       // tab back
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
-      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 1st tab back');
-      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 1st tab back');
-      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 1st tab back');
-      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 1st tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
-      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 1st tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 1st tab back').toBe(2);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 1st tab back').toBe(2);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 1st tab back').toBe(1);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 1st tab back').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab back')
+        .toBe('my-link');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
-      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 2nd tab back');
-      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 2nd tab back');
-      expect(marqueBlurCalls).toBe(2, 'marqueBlurCalls after 2nd tab back');
-      expect(marqueFocusOutCalls).toBe(2, 'marqueFocusOutCalls after 2nd tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 2nd tab back').toBe(2);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 2nd tab back').toBe(2);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab back')
+        .toBe('before');
 
       await page.keyboard.up('ShiftLeft');
     });
@@ -522,10 +534,10 @@ describe('marque', () => {
       await setContentWithTrademark();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-marque']).toBe(1, 'componentDidLoad: p-marque');
+      expect(status.componentDidLoad['p-marque']).withContext('componentDidLoad: p-marque').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });

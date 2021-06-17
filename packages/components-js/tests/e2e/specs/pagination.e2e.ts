@@ -139,11 +139,11 @@ describe('pagination', () => {
 
       console.log(status);
 
-      expect(status.componentDidLoad['p-pagination']).toBe(1, 'componentDidLoad: p-pagination');
-      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon');
+      expect(status.componentDidLoad['p-pagination']).withContext('componentDidLoad: p-pagination').toBe(1);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });
