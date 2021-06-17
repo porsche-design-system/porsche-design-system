@@ -9,6 +9,11 @@ export type RouteType = RouteProps & {
 
 export const routes: RouteType[] = [
   {
+    name: 'Accordion',
+    path: '/accordion',
+    component: fromPages.AccordionPage,
+  },
+  {
     name: 'Banner',
     path: '/banner',
     component: fromPages.BannerPage,
@@ -117,11 +122,6 @@ export const routes: RouteType[] = [
     name: 'Pagination',
     path: '/pagination',
     component: fromPages.PaginationPage,
-  },
-  {
-    name: 'Panel',
-    path: '/panel',
-    component: fromPages.PanelPage,
   },
   {
     name: 'Radio Button',

@@ -1,19 +1,19 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses, SubsetTextWeight } from '../../../utils';
-import { PanelSize, PanelChangeEvent } from './panel-utils';
 import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
+import { AccordionChangeEvent, AccordionHeaderSize } from './accordion-utils';
 
 @Component({
-  tag: 'p-panel',
-  styleUrl: 'panel.scss',
+  tag: 'p-accordion',
+  styleUrl: 'accordion.scss',
   shadow: true,
 })
-export class Panel {
+export class Accordion {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<PanelSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<AccordionHeaderSize> = 'small';
 
   /** The text weight. */
   @Prop() public weight?: SubsetTextWeight = 'semibold';
@@ -31,7 +31,7 @@ export class Panel {
   @Prop() public open?: boolean;
 
   /** Emitted when panel state is changed. */
-  @Event({ bubbles: false }) public panelChange: EventEmitter<PanelChangeEvent>;
+  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
   public render(): JSX.Element {
     const labelledId = 'labelled';
@@ -74,6 +74,6 @@ export class Panel {
   }
 
   private handlePanelClick = (): void => {
-    this.panelChange.emit({ open: !this.open });
+    this.accordionChange.emit({ open: !this.open });
   };
 }

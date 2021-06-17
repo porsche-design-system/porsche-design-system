@@ -1,4 +1,5 @@
 import {
+  PAccordion,
   PBanner,
   PButton,
   PButtonGroup,
@@ -26,7 +27,6 @@ import {
   PSpinner,
   PMarque,
   PPagination,
-  PPanel,
   PLink,
   PLinkPure,
   PLinkSocial,
@@ -216,14 +216,14 @@ export const OverviewPage = (): JSX.Element => {
             </PTabsBar>
           </div>
 
-          <div className="playground light" title="should render default panel">
-            <PPanel heading="Some heading">
+          <div className="playground light" title="should render default accordion">
+            <PAccordion heading="Some heading">
               <p>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                 labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
                 ea rebum.
               </p>
-            </PPanel>
+            </PAccordion>
           </div>
 
           <div className="playground light" title="should render default spinner">
@@ -387,14 +387,14 @@ export const OverviewPage = (): JSX.Element => {
               </PTabsBar>
             </div>
 
-            <div className="playground light" title="should render default panel with custom prefix">
-              <PPanel heading="Some heading">
+            <div className="playground light" title="should render default accordion with custom prefix">
+              <PAccordion heading="Some heading">
                 <p>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                   labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
                   et ea rebum.
                 </p>
-              </PPanel>
+              </PAccordion>
             </div>
 
             <div className="playground light" title="should render default spinner with custom prefix">
