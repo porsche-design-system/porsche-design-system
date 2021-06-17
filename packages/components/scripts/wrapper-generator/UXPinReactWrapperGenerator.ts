@@ -151,7 +151,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-tabs-bar': {
         props: 'activeTabIndex={0}',
         children: Array.from(Array(3))
-          .map(() => `<DummyButton uxpId="dummy-button" children="Tab" />`)
+          .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
           .join('\n    '),
       },
     };
@@ -221,7 +221,7 @@ export default (
 
     return [
       ...componentPresetFiles,
-      { name: 'uxpin.config.js', relativePath: '../../../', content: uxPinConfigContent },
+      { name: 'uxpin.config.js', relativePath: '../../..', content: uxPinConfigContent },
     ];
   }
 }
