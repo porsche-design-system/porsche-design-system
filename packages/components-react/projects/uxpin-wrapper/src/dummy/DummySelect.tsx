@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import { ChangeEvent, FocusEvent, SelectHTMLAttributes, useState } from 'react';
 
 type Props = {
   disabled?: boolean;
@@ -13,9 +13,23 @@ type Props = {
 };
 
 export const DummySelect = ({
+  value,
+  onChange,
   options = Array.from(Array(3)).map((_, i) => `Option ${i + 1}`),
-  ...props
+  ...rest
 }: Props): JSX.Element => {
+  const [valueState, setValueState] = useState(value);
+
+  const props: SelectHTMLAttributes<HTMLSelectElement> = {
+    ...rest,
+    value: valueState,
+    onChange: (e) => {
+      const { value } = e.target;
+      setValueState(value);
+      onChange(e);
+    },
+  };
+
   return (
     <select {...props}>
       {options.map((item, i) => (

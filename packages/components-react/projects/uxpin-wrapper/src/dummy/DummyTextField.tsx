@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import { ChangeEvent, FocusEvent, InputHTMLAttributes, useState } from 'react';
 
 type Props = {
   type?: 'text' | 'number' | 'email' | 'tel' | 'search' | 'url' | 'date' | 'time' | 'month' | 'week' | 'password';
@@ -12,8 +12,19 @@ type Props = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyTextField = ({ type = 'text', ...rest }: Props): JSX.Element => {
-  const props = { ...rest, type };
+export const DummyTextField = ({ type = 'text', value, onChange, ...rest }: Props): JSX.Element => {
+  const [valueState, setValueState] = useState(value);
+
+  const props: InputHTMLAttributes<HTMLInputElement> = {
+    ...rest,
+    type,
+    value: valueState,
+    onChange: (e) => {
+      const { value } = e.target;
+      setValueState(value);
+      onChange(e);
+    },
+  };
 
   return <input {...props} />;
 };
