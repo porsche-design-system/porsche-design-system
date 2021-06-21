@@ -86,7 +86,9 @@
       this.components = [];
       await this.$store.dispatch('toggleLoadingAsync', true);
       if (this.pages?.length) {
-        this.components = await Promise.all(this.pages.map(async (x) => (await x()).default));
+        this.components = await Promise.all(
+          this.pages.map(async (x) => ((await x()) as { default: ComponentType }).default)
+        );
       } else {
         await this.redirect();
       }
