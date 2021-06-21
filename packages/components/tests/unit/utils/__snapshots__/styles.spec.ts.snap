@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`focus() should return correct JSSStyle 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0 !important",
+  },
+  "&:focus": Object {
+    "outlineColor": "currentColor !important",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent !important",
+  },
+  "outline": "transparent solid 1px !important",
+  "outlineOffset": "2px !important",
+}
+`;
+
+exports[`hover() should return correct JSSStyle 1`] = `
+Object {
+  "&:hover": Object {
+    "color": "#d5001c !important",
+  },
+  "transition": "color var(--p-transition-duration, .24s) ease !important",
+}
+`;
