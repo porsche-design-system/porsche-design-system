@@ -502,10 +502,10 @@ describe('select-wrapper combobox', () => {
       await addEventListener(select, 'change', () => calls++);
 
       expect(await getHighlightedFakeOption())
-        .withContext('for highlighted fake option')
+        .withContext('for highlighted fake option initially')
         .toBe(0);
       expect(await getSelectedFakeOption())
-        .withContext('for selected fake option')
+        .withContext('for selected fake option initially')
         .toBe(0);
 
       await page.keyboard.press('Tab');
@@ -513,10 +513,10 @@ describe('select-wrapper combobox', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getOpacity())
-        .withContext('for opacity')
+        .withContext('for opacity after arrow down')
         .toBe('1');
       expect(await getHighlightedFakeOption())
-        .withContext('for highlighted fake option')
+        .withContext('for highlighted fake option after arrow down')
         .toBe(1);
       expect(await getSelectedIndex())
         .withContext('for selected index')
@@ -526,20 +526,20 @@ describe('select-wrapper combobox', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getOpacity())
-        .withContext('for opacity')
+        .withContext('for opacity after enter')
         .toBe('0');
       expect(await getHighlightedFakeOption())
-        .withContext('for highlighted fake option')
+        .withContext('for highlighted fake option after enter')
         .toBe(1);
       expect(await getSelectedFakeOption())
-        .withContext('for selected fake option')
+        .withContext('for selected fake option after enter')
         .toBe(1);
       expect(await getElementIndex(await getFakeOptionList(), '[aria-selected=true]')).toBe(1);
       expect(await getSelectedIndex())
-        .withContext('for selected index')
+        .withContext('for selected index after enter')
         .toBe(1);
 
-      expect(calls).toBe(1, 'for calls');
+      expect(calls).withContext('for calls').toBe(1);
       expect(await getActiveDescendant()).toEqual(`option-${await getSelectedFakeOption()}`);
     });
 

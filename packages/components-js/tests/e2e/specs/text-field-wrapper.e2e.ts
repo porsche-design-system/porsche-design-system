@@ -182,11 +182,11 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'cursor'))
-        .withContext('disabled cursor').not
-        .toBe(initialCursor);
+        .withContext('disabled cursor')
+        .not.toBe(initialCursor);
       expect(await getElementStyle(input, 'borderColor'))
-        .withContext('disabled border').not
-        .toBe(initialBorderColor);
+        .withContext('disabled border')
+        .not.toBe(initialBorderColor);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
@@ -276,11 +276,11 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'cursor'))
-        .withContext('disabled cursor').not
-        .toBe(initialCursor);
+        .withContext('disabled cursor')
+        .not.toBe(initialCursor);
       expect(await getElementStyle(input, 'borderColor'))
-        .withContext('disabled borderColor').not
-        .toBe(initialBorderColor);
+        .withContext('disabled borderColor')
+        .not.toBe(initialBorderColor);
       expect(await isButtonDisabled()).toBe(true);
 
       await setProperty(input, 'disabled', false);
@@ -312,14 +312,14 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'color'))
-        .withContext('readonly color').not
-        .toBe(initialColor);
+        .withContext('readonly color')
+        .not.toBe(initialColor);
       expect(await getElementStyle(input, 'borderColor'))
-        .withContext('readonly border').not
-        .toBe(initialBorderColor);
+        .withContext('readonly border')
+        .not.toBe(initialBorderColor);
       expect(await getElementStyle(input, 'backgroundColor'))
-        .withContext('readonly backgroundColor').not
-        .toBe(initialBackgroundColor);
+        .withContext('readonly backgroundColor')
+        .not.toBe(initialBackgroundColor);
       expect(await isButtonDisabled()).toBe(true);
 
       await setProperty(input, 'readOnly', false);
@@ -359,11 +359,11 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'borderColor'))
-        .withContext('readonly and disabled border').not
-        .toBe(disabledBorderColor);
+        .withContext('readonly and disabled border')
+        .not.toBe(disabledBorderColor);
       expect(await getElementStyle(input, 'backgroundColor'))
-        .withContext('readonly and disabled backgroundColor').not
-        .toBe(disabledBackgroundColor);
+        .withContext('readonly and disabled backgroundColor')
+        .not.toBe(disabledBackgroundColor);
     });
 
     it('should submit parent form on search button click', async () => {
