@@ -208,6 +208,11 @@ export const routes: RouteType[] = [
     isDisabled: true,
   },
   {
+    name: 'Table Example Basic',
+    path: '/table-example-basic',
+    component: fromExamples.TableExampleBasicPage,
+  },
+  {
     name: 'Table Example Advanced',
     path: '/table-example-advanced',
     component: fromExamples.TableExampleAdvancedPage,
