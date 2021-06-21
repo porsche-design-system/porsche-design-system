@@ -5,7 +5,7 @@ import { TagName } from '../src';
 
 type CodeSample = {
   component: TagName;
-  fileNames: string[];
+  samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
 type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
@@ -14,11 +14,13 @@ const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
     {
       component: 'p-table',
-      fileNames: [
-        'src/table-data.ts',
-        '../components-js/src/examples/table-example.html',
-        '../components-angular/src/app/examples/table-example.component.ts',
-        '../components-react/src/examples/TableExample.tsx',
+      samples: [
+        [
+          '../components-js/src/examples/table-example.html',
+          '../components-angular/src/app/examples/table-example.component.ts',
+          '../components-react/src/examples/TableExample.tsx',
+          'src/table-data.ts', // order is important since part of filename is extracted for param types of function name
+        ],
       ],
     },
   ];
@@ -29,24 +31,57 @@ const generateCodeSamples = (): void => {
 
   const functions = codeSamples
     .map((sample) => {
-      console.log(`Generating sample for ${sample.component}`);
+      console.log(`Generating samples for ${sample.component}`);
 
-      const fileContents: { [key in Framework]?: string }[] = sample.fileNames.map((fileName) => {
-        const filePath = path.resolve(fileName);
-        const filePathFromPackagesFolder = filePath.replace(packagesFolder, '');
-        const [, framework = 'shared'] = filePathFromPackagesFolder.match(/\/components-([a-z]+)\//) || [];
+      const sampleNamesAndContents: { sampleName: string; samples: { [key in Framework]?: string }[] }[] =
+        sample.samples.map((sample, idx) => {
+          // generate sampleName from first file of array
+          const firstFileName = path.basename(sample[0]);
+          const [, sampleName] = firstFileName.match(/-([a-z-\d]+)/) || [];
+          console.log(`– Sample #${idx + 1}: ${sampleName}`);
 
-        console.log(`– Reading content of ${filePathFromPackagesFolder}`);
-        const fileContent = fs.readFileSync(fileName, 'utf8');
-        return { [framework === 'js' ? 'vanilla-js' : framework]: fileContent.replace(/\s$/, '') };
-      });
+          const sampleContents: { [key in Framework]?: string }[] = sample.map((fileName) => {
+            const filePath = path.resolve(fileName);
+            const filePathFromPackagesFolder = filePath.replace(packagesFolder, '');
+            const [, extractedFramework = 'shared'] = filePathFromPackagesFolder.match(/\/components-([a-z]+)\//) || [];
+            const framework: Framework = extractedFramework === 'js' ? 'vanilla-js' : (extractedFramework as Framework);
 
-      const functionName = `get${pascalCase(sample.component.replace('p-', ''))}CodeSample`;
+            console.log(`  – Reading content of ${filePathFromPackagesFolder}`);
+            const fileContent = fs.readFileSync(fileName, 'utf8').replace(/\s$/, '');
+            return { [framework]: fileContent };
+          });
 
-      return `export const ${functionName} = (framework: Framework): string => {
-  const samples: { [key in Framework]?: string } = ${JSON.stringify(Object.assign({}, ...fileContents))};
+          return { sampleName, samples: sampleContents };
+        });
+
+      const componentName = pascalCase(sample.component.replace('p-', ''));
+      const functionName = `get${componentName}CodeSample`;
+      const sampleParams = sampleNamesAndContents.map(({ sampleName }) => sampleName);
+
+      const arrayToObjectJSON = (arr: any[]): string => JSON.stringify(Object.assign({}, ...arr));
+
+      if (sampleParams.length === 1) {
+        return `export const ${functionName} = (framework: Framework): string => {
+  const samples: { [key in Framework]?: string } = ${arrayToObjectJSON(sampleNamesAndContents[0].samples)};
   return samples[framework];
 }`;
+      } else {
+        // multiple samples per component needs a 2nd parameter to select the sample
+        const sampleData = sampleNamesAndContents.reduce(
+          (result, curr) => ({
+            ...result,
+            [curr.sampleName]: JSON.parse(arrayToObjectJSON(curr.samples)),
+          }),
+          {}
+        );
+
+        const typeName = `${componentName}SampleName`;
+        return `type ${typeName} = ${sampleParams.map((x) => `'${x}'`).join(' | ')};
+export const ${functionName} = (framework: Framework, sampleName: ${typeName}): string => {
+  const samples: { [key in ${typeName}]: { [key in Framework]?: string } } = ${JSON.stringify(sampleData)};
+  return samples[sampleName][framework];
+}`;
+      }
     })
     .join('\n\n');
 
