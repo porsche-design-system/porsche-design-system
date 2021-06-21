@@ -41,10 +41,11 @@ describe('table', () => {
     columnAmount?: number;
     rowAmount?: number;
     isSortable?: boolean;
+    hasSlottedCaption?: boolean;
   };
 
   const initTable = (opts?: InitOptions): Promise<void> => {
-    const { columnAmount = 5, rowAmount = 3, isSortable = false } = opts ?? {};
+    const { columnAmount = 5, rowAmount = 3, isSortable = false, hasSlottedCaption = false } = opts ?? {};
 
     const script = isSortable
       ? `
@@ -59,6 +60,7 @@ describe('table', () => {
       page,
       `
 <p-table>
+  ${hasSlottedCaption ? '<span slot="caption">Some caption</span>' : ''}
   <p-table-head>
     <p-table-head-row>
       ${Array.from(Array(columnAmount)).map((_, i) => `<p-table-head-cell>Column ${i + 1}</p-table-head-cell>`)}
@@ -176,125 +178,121 @@ ${script}`
         .toBe('cell');
     });
 
-    it('should set correct aria-describedby for caption', async () => {
-      await initTable();
+    describe('caption', () => {
+      it('should set correct aria-label for caption property', async () => {
+        await initTable();
 
-      const host = await getHost();
-      expect(await getAttribute(host, 'aria-label'))
-        .withContext('initial aria-label')
-        .toBeNull();
-      expect(await getAttribute(host, 'aria-describedby'))
-        .withContext('initial aria-describedby')
-        .toBeNull();
+        const host = await getHost();
+        expect(await getAttribute(host, 'aria-label'))
+          .withContext('initial aria-label')
+          .toBeNull();
+        expect(await getAttribute(host, 'aria-describedby'))
+          .withContext('initial aria-describedby')
+          .toBeNull();
 
-      await setProperty(host, 'caption', 'Some caption');
-      await waitForStencilLifecycle(page);
+        await setProperty(host, 'caption', 'Some caption');
+        await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(host, 'aria-label'))
-        .withContext('final aria-label')
-        .toBeNull();
-      expect(await getAttribute(host, 'aria-describedby'))
-        .withContext('final aria-describedby')
-        .toBe('caption');
+        expect(await getAttribute(host, 'aria-label'))
+          .withContext('final aria-label')
+          .toBe('Some caption');
+        expect(await getAttribute(host, 'aria-describedby'))
+          .withContext('final aria-describedby')
+          .toBeNull();
 
-      const caption = await getCaption();
-      expect(await getAttribute(caption, 'id'))
-        .withContext('.caption id')
-        .toBe('caption');
-    });
-
-    it('should set correct aria-label for hidden caption', async () => {
-      await initTable();
-
-      const host = await getHost();
-      expect(await getAttribute(host, 'aria-label'))
-        .withContext('initial aria-label')
-        .toBeNull();
-      expect(await getAttribute(host, 'aria-describedby'))
-        .withContext('initial aria-describedby')
-        .toBeNull();
-
-      await setProperty(host, 'caption', 'Some caption');
-      await setProperty(host, 'hideCaption', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(host, 'aria-label'))
-        .withContext('final aria-label')
-        .toBe('Some caption');
-      expect(await getAttribute(host, 'aria-describedby'))
-        .withContext('final aria-describedby')
-        .toBeNull();
-    });
-
-    it('should set correct aria-sort value when sortable', async () => {
-      await initTable({ isSortable: true });
-
-      const host = await getHost();
-      const firstTableHeadCell = await getFirstTableHeadCell();
-      const secondTableHeadCell = await getSecondTableHeadCell();
-      const thirdTableHeadCell = await getThirdTableHeadCell();
-
-      expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-        .withContext('1st cell initially')
-        .toBe('ascending');
-      expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-        .withContext('2nd cell initially')
-        .toBe('none');
-      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-        .withContext('3rd cell initially')
-        .toBe('none');
-
-      await host.evaluate((host) => {
-        host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-          (el as any).sort = { id: i, active: i === 0, direction: 'desc' };
-        });
+        const caption = await getCaption();
+        expect(caption).withContext('slotted caption').toBeNull();
       });
-      await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-        .withContext('1st cell after change')
-        .toBe('descending');
-      expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-        .withContext('2nd cell after change')
-        .toBe('none');
-      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-        .withContext('3rd cell after change')
-        .toBe('none');
+      it('should set correct aria-describedby for slotted caption', async () => {
+        await initTable({ hasSlottedCaption: true });
+        const host = await getHost();
 
-      await host.evaluate((host) => {
-        host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-          (el as any).sort = { id: i, active: i === 1, direction: 'asc' };
-        });
+        expect(await getAttribute(host, 'aria-label'))
+          .withContext('initial aria-label')
+          .toBeNull();
+        expect(await getAttribute(host, 'aria-describedby'))
+          .withContext('initial aria-describedby')
+          .toBe('caption');
+
+        const caption = await getCaption();
+        expect(await getAttribute(caption, 'id'))
+          .withContext('caption id')
+          .toBe('caption');
       });
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-        .withContext('1st cell finally')
-        .toBe('none');
-      expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-        .withContext('2nd cell finally')
-        .toBe('ascending');
-      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-        .withContext('3rd cell finally')
-        .toBe('none');
     });
 
-    it('should set correct aria-sort value when not sortable', async () => {
-      await initTable({ isSortable: false });
+    describe('sorting', () => {
+      it('should set correct aria-sort value when sortable', async () => {
+        await initTable({ isSortable: true });
 
-      const firstTableHeadCell = await getFirstTableHeadCell();
-      const secondTableHeadCell = await getSecondTableHeadCell();
-      const thirdTableHeadCell = await getThirdTableHeadCell();
+        const host = await getHost();
+        const firstTableHeadCell = await getFirstTableHeadCell();
+        const secondTableHeadCell = await getSecondTableHeadCell();
+        const thirdTableHeadCell = await getThirdTableHeadCell();
 
-      expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-        .withContext('1st cell')
-        .toBe('none');
-      expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-        .withContext('2nd cell')
-        .toBe('none');
-      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-        .withContext('3rd cell')
-        .toBe('none');
+        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
+          .withContext('1st cell initially')
+          .toBe('ascending');
+        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
+          .withContext('2nd cell initially')
+          .toBe('none');
+        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
+          .withContext('3rd cell initially')
+          .toBe('none');
+
+        await host.evaluate((host) => {
+          host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
+            (el as any).sort = { id: i, active: i === 0, direction: 'desc' };
+          });
+        });
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
+          .withContext('1st cell after change')
+          .toBe('descending');
+        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
+          .withContext('2nd cell after change')
+          .toBe('none');
+        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
+          .withContext('3rd cell after change')
+          .toBe('none');
+
+        await host.evaluate((host) => {
+          host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
+            (el as any).sort = { id: i, active: i === 1, direction: 'asc' };
+          });
+        });
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
+          .withContext('1st cell finally')
+          .toBe('none');
+        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
+          .withContext('2nd cell finally')
+          .toBe('ascending');
+        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
+          .withContext('3rd cell finally')
+          .toBe('none');
+      });
+
+      it('should set correct aria-sort value when not sortable', async () => {
+        await initTable({ isSortable: false });
+
+        const firstTableHeadCell = await getFirstTableHeadCell();
+        const secondTableHeadCell = await getSecondTableHeadCell();
+        const thirdTableHeadCell = await getThirdTableHeadCell();
+
+        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
+          .withContext('1st cell')
+          .toBe('none');
+        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
+          .withContext('2nd cell')
+          .toBe('none');
+        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
+          .withContext('3rd cell')
+          .toBe('none');
+      });
     });
   });
 
