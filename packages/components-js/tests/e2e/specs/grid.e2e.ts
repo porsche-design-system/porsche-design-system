@@ -70,20 +70,32 @@ describe('grid', () => {
       const grid = await getGrid();
       const gridItem = await getGridItem();
 
-      expect(await getGridMargin(grid)).toBe('0px -8px', 'should have correct initial margin on grid');
-      expect(await getGridItemPadding(gridItem)).toBe('0px 8px', 'should have correct initial padding on grid-item');
+      expect(await getGridMargin(grid))
+        .withContext('initial margin of grid')
+        .toBe('0px -8px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('initial padding of grid-item')
+        .toBe('0px 8px');
 
       await setAttribute(grid, 'gutter', '{base: 24}');
       await waitForStencilLifecycle(page);
 
-      expect(await getGridMargin(grid)).toBe('0px -12px', 'should change margin of grid');
-      expect(await getGridItemPadding(gridItem)).toBe('0px 12px', 'should change padding of grid-item');
+      expect(await getGridMargin(grid))
+        .withContext('margin of grid for base 24')
+        .toBe('0px -12px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('padding of grid-item for base 24')
+        .toBe('0px 12px');
 
       await setAttribute(grid, 'gutter', '{base: 36}');
       await waitForStencilLifecycle(page);
 
-      expect(await getGridMargin(grid)).toBe('0px -18px', 'should change margin of grid');
-      expect(await getGridItemPadding(gridItem)).toBe('0px 18px', 'should change padding of grid-item');
+      expect(await getGridMargin(grid))
+        .withContext('margin of grid for base 36')
+        .toBe('0px -18px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('padding of grid-item for base 36')
+        .toBe('0px 18px');
     });
 
     it('should correctly handle breakpoints', async () => {
@@ -95,33 +107,36 @@ describe('grid', () => {
       const grid = await getGrid();
       const gridItem = await getGridItem();
 
-      expect(await getGridMargin(grid)).toBe('0px -8px', 'should have correct margin on grid with viewport < s');
-      expect(await getGridItemPadding(gridItem)).toBe(
-        '0px 8px',
-        'should have correct padding on grid-item with viewport < s'
-      );
+      expect(await getGridMargin(grid))
+        .withContext('margin of grid with viewport < s')
+        .toBe('0px -8px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('padding of grid-item with viewport < s')
+        .toBe('0px 8px');
 
       await page.setViewport({
         width: 800,
         height: 600,
       });
 
-      expect(await getGridMargin(grid)).toBe('0px -12px', 'should adjust margin of grid with viewport < m');
-      expect(await getGridItemPadding(gridItem)).toBe(
-        '0px 12px',
-        'should adjust padding of grid-item with viewport < m'
-      );
+      expect(await getGridMargin(grid))
+        .withContext('margin of grid with viewport < m')
+        .toBe('0px -12px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('padding of grid-item with viewport < m')
+        .toBe('0px 12px');
 
       await page.setViewport({
         width: 1200,
         height: 600,
       });
 
-      expect(await getGridMargin(grid)).toBe('0px -18px', 'should adjust margin of grid with viewport > m');
-      expect(await getGridItemPadding(gridItem)).toBe(
-        '0px 18px',
-        'should adjust padding of grid-item with viewport > m'
-      );
+      expect(await getGridMargin(grid))
+        .withContext('margin of grid with viewport > m')
+        .toBe('0px -18px');
+      expect(await getGridItemPadding(gridItem))
+        .withContext('padding of grid-item with viewport > m')
+        .toBe('0px 18px');
     });
   });
 });

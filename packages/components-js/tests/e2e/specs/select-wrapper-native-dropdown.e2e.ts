@@ -136,7 +136,9 @@ describe('select-wrapper native-dropdown', () => {
     const selectComponent = await getHost();
     const select = await getSelect();
 
-    expect(await getMessage()).toBeNull('initially');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeNull();
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'error');
@@ -144,9 +146,15 @@ describe('select-wrapper native-dropdown', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
-    expect(await getAttribute(await getMessage(), 'role')).toEqual('alert', 'when state = error');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
+    expect(await getMessage())
+      .withContext('when state = error')
+      .toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = error')
+      .toEqual('alert');
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = error')
+      .toEqual('Some label. Some error message');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -155,8 +163,12 @@ describe('select-wrapper native-dropdown', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = success')
+      .toBeNull();
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = success')
+      .toEqual('Some label. Some success message');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -164,8 +176,12 @@ describe('select-wrapper native-dropdown', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeNull('when state = none');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some description', 'when state = none');
+    expect(await getMessage())
+      .withContext('when state = none')
+      .toBeNull();
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = none')
+      .toEqual('Some label. Some description');
   });
 
   it('should focus select when label text is clicked', async () => {
@@ -195,17 +211,23 @@ describe('select-wrapper native-dropdown', () => {
     const select = await getSelect();
     const disabledClass = 'p-select-wrapper__fake-select--disabled';
 
-    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'initially');
+    expect(await getCssClasses(fakeSelect))
+      .not.withContext('initially')
+      .toContain(disabledClass);
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = true));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).toContain(disabledClass, 'when disabled = true');
+    expect(await getCssClasses(fakeSelect))
+      .withContext('when disabled = true')
+      .toContain(disabledClass);
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = false));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
+    expect(await getCssClasses(fakeSelect))
+      .not.withContext('when disabled = false')
+      .toContain(disabledClass);
   });
 
   describe('focus state', () => {
@@ -220,7 +242,9 @@ describe('select-wrapper native-dropdown', () => {
 
       await select.click();
 
-      expect(await getOutlineStyle(select)).toBe(visible, 'after click');
+      expect(await getOutlineStyle(select))
+        .withContext('after click')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation for slotted <select>', async () => {
@@ -234,7 +258,9 @@ describe('select-wrapper native-dropdown', () => {
 
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
+      expect(await getOutlineStyle(select))
+        .withContext('after keyboard navigation')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -289,12 +315,12 @@ describe('select-wrapper native-dropdown', () => {
       await initSelect();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-select-wrapper']).toBe(1, 'componentDidLoad: p-select-wrapper');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // label and message
-      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon'); // arrow down
+      expect(status.componentDidLoad['p-select-wrapper']).withContext('componentDidLoad: p-select-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // label and message
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1); // arrow down
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on dropdown open', async () => {
@@ -313,8 +339,8 @@ describe('select-wrapper native-dropdown', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all'); // Fake Dropdown gets updated
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1); // Fake Dropdown gets updated
     });
   });
 });

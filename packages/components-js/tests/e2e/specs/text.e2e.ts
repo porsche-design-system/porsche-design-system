@@ -59,10 +59,10 @@ describe('text', () => {
       await initText();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all).withContext('componentDidUpdate: all').toBe(1);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -74,8 +74,8 @@ describe('text', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-text']).toBe(1, 'componentDidUpdate: p-text');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate['p-text']).withContext('componentDidUpdate: p-text').toBe(1);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
 
