@@ -1,6 +1,18 @@
 # Table
 
-## Live Example
+## Simple Table
+
+### Basic
+
+### Caption
+
+### Sorting
+
+### Hide Label
+
+## Advanced Table
+
+### Live Example
 
 <Playground>
   <p-table ref="table">
