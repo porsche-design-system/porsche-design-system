@@ -129,7 +129,7 @@ describe('radio-button-wrapper', () => {
       .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel'))
-      .withContext('initially')
+      .withContext('when state = error')
       .toEqual('Some label. Some error message');
 
     await setAttribute(radioComponent, 'state', 'success');
