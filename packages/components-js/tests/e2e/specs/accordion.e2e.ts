@@ -156,21 +156,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
     });
   });
 
-  describe('accessibility', () => {
-    it('should have correct icon aria-label name on open / close', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript });
-      const button = await getButton();
-      const icon = await getIcon();
-
-      expect(await getProperty(icon, 'ariaLabel')).toBe('Open icon');
-
-      await button.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getProperty(icon, 'ariaLabel')).toBe('Close icon');
-    });
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initAccordion();
