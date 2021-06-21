@@ -1,1 +1,1 @@
-# Panel
+# Accordion
