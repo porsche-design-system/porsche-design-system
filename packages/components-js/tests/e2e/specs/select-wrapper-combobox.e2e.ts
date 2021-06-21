@@ -275,8 +275,10 @@ describe('select-wrapper combobox', () => {
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
     await waitForStencilLifecycle(page); // 🙈
+    await waitForStencilLifecycle(page); // 🙈
     await filterInput.press('Enter');
     await waitForStencilLifecycle(page);
+    await waitForStencilLifecycle(page); // 🙈
     await waitForStencilLifecycle(page); // 🙈
     const value = await select.evaluate((el: HTMLSelectElement) => el.value);
 
