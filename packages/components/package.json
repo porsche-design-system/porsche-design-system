@@ -50,7 +50,7 @@
     "concurrently": "^6.0.2",
     "construct-style-sheets-polyfill": "^2.4.16",
     "dts-bundle-generator": "^5.8.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.24.0",
     "globby": "^11.0.4",
