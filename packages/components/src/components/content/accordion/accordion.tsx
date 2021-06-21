@@ -56,14 +56,9 @@ export class Accordion {
           variant="inherit"
           onClick={this.handleAccordionClick}
         >
-          <button aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
+          <button type="button" aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
             <span class="heading">{this.heading || <slot name="heading" />}</span>
-            <PrefixedTagNames.pIcon
-              name="arrowHeadDown"
-              aria-label={this.open ? 'Close icon' : 'Open icon'}
-              class="icon"
-              theme={this.theme}
-            />
+            <PrefixedTagNames.pIcon name="arrowHeadDown" aria-hidden="true" class="icon" theme={this.theme} />
           </button>
         </PrefixedTagNames.pHeadline>
         <div id={controlsId} class="content" role="region" aria-labelledby={labelledId}>
