@@ -30,9 +30,6 @@ export class Accordion {
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
 
-  /** If it is the first Accordion it gets a border on top. */
-  @Prop() public firstItem?: boolean;
-
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
@@ -45,7 +42,6 @@ export class Accordion {
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
       ['root--weight-regular']: this.weight !== 'semibold',
-      ['root--first-item']: this.firstItem,
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 

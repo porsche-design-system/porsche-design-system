@@ -22,10 +22,6 @@ import { ListType, OrderType } from "./components/content/text-list/text-list/te
 export namespace Components {
     interface PAccordion {
         /**
-          * If it is the first Accordion it gets a border on top.
-         */
-        "firstItem"?: boolean;
-        /**
           * Defines the heading used in accordion.
          */
         "heading"?: string;
@@ -1049,10 +1045,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PAccordion {
-        /**
-          * If it is the first Accordion it gets a border on top.
-         */
-        "firstItem"?: boolean;
         /**
           * Defines the heading used in accordion.
          */
