@@ -81,7 +81,7 @@
   }
 
   pre {
-    max-height: 20rem;
+    max-height: 50rem;
     overflow: auto;
     padding: $p-spacing-32;
     border: 1px solid $p-color-neutral-contrast-low;
