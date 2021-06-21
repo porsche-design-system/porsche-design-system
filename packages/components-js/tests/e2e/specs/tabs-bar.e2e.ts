@@ -157,7 +157,7 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('should have correct initial position')
+        .withContext('correct initial position')
         .toEqual(95);
 
       await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
@@ -165,7 +165,7 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('should have correct position after button name change')
+        .withContext('correct position after button name change')
         .toEqual(265);
     });
 
@@ -184,14 +184,14 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after adding a new button')
+        .withContext('correct position after adding a new button')
         .toEqual(8);
 
       const [, secondButton] = await getAllButtons();
       await clickElement(secondButton);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after click')
+        .withContext('correct position after click')
         .toEqual(115);
     });
 
@@ -200,7 +200,7 @@ describe('tabs-bar', () => {
       const statusBar = await getStatusBar();
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position before removing a button')
+        .withContext('correct position before removing a button')
         .toEqual(111);
 
       await page.evaluate(() => {
@@ -215,7 +215,7 @@ describe('tabs-bar', () => {
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after removing a button')
+        .withContext('correct position after removing a button')
         .toEqual(111);
     });
 
@@ -236,7 +236,7 @@ describe('tabs-bar', () => {
       expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after removing last active button')
+        .withContext('correct position after removing last active button')
         .toEqual(8);
     });
 
@@ -259,7 +259,7 @@ describe('tabs-bar', () => {
       expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after removing button in the middle')
+        .withContext('correct position after removing button in the middle')
         .toEqual(8);
       expect(await getStatusBarWidth(statusBar)).toBe('0px');
     });
@@ -280,7 +280,7 @@ describe('tabs-bar', () => {
 
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('should have correct position after removing active button in the middle')
+        .withContext('correct position after removing active button in the middle')
         .toEqual(111);
       expect(await getStatusBarWidth(statusBar)).toBe('87px');
     });
@@ -409,7 +409,7 @@ describe('tabs-bar', () => {
       await clickElement(firstButton);
 
       expect((await getElementPositions(page, firstButton)).left)
-        .withContext('should have correct offsetLeft after click')
+        .withContext('correct offsetLeft after click')
         .toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
     });
 
@@ -433,7 +433,7 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, thirdButton)).left))
-        .withContext('should have correct offset width after click on third button')
+        .withContext('correct offset width after click on third button')
         .toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
     });
 
