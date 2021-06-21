@@ -642,7 +642,7 @@ describe('select-wrapper fake-dropdown', () => {
 
         expect(calls).withContext('for calls').toBe(1);
         expect(await getActiveDescendant())
-          .withContext(' for active descendant')
+          .withContext('for active descendant')
           .toEqual(`option-${await getSelectedFakeOption()}`);
       });
 
