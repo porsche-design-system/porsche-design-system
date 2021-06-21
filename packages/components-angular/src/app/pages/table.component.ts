@@ -12,7 +12,7 @@ const head = [
   selector: 'page-table',
   template: `
     <div class="playground light" title="should render table">
-      <p-table>
+      <p-table caption="Some caption">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell
@@ -52,13 +52,9 @@ const head = [
       </p-table>
     </div>
 
-    <div class="playground light" title="should render table with caption">
-      <p-table caption="Some caption"></p-table>
-    </div>
-
-    <div class="playground light" title="should render table with slotted caption">
+    <div class="playground light" title="should render table with unstyled slotted caption">
       <p-table>
-        <span slot="caption">Some caption <a href="#">with a link</a></span>
+        <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
       </p-table>
     </div>
   `,

@@ -32,7 +32,7 @@ export const TablePage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should render table">
-        <PTable>
+        <PTable caption="Some caption">
           <PTableHead>
             <PTableHeadRow ref={headRow}>
               {head.map((item, i) => (
@@ -65,10 +65,10 @@ export const TablePage = (): JSX.Element => {
                 <PTableCell>Some text</PTableCell>
                 <PTableCell>Some text</PTableCell>
                 <PTableCell>
-                  <PButtonPure style={{ padding: '.5rem' }} icon="edit">
+                  <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
                     Edit
                   </PButtonPure>
-                  <PButtonPure style={{ padding: '.5rem' }} icon="delete">
+                  <PButtonPure icon="delete" style={{ padding: '.5rem' }}>
                     Delete
                   </PButtonPure>
                 </PTableCell>
@@ -77,13 +77,11 @@ export const TablePage = (): JSX.Element => {
           </PTableBody>
         </PTable>
       </div>
-      <div className="playground light" title="should render table with caption">
-        <PTable caption="Some caption" />
-      </div>
-      <div className="playground light" title="should render table with slotted caption">
+
+      <div className="playground light" title="should render table with unstyled slotted caption">
         <PTable>
           <span slot="caption">
-            Some caption <a href="#">with a link</a>
+            Some unstyled caption <a href="#">with a link</a>
           </span>
         </PTable>
       </div>
