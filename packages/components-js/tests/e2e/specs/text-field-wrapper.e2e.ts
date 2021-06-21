@@ -182,10 +182,10 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'cursor'))
-        .not.withContext('disabled cursor')
+        .withContext('disabled cursor').not
         .toBe(initialCursor);
       expect(await getElementStyle(input, 'borderColor'))
-        .not.withContext('disabled border')
+        .withContext('disabled border').not
         .toBe(initialBorderColor);
 
       await setProperty(input, 'disabled', false);
@@ -276,10 +276,10 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'cursor'))
-        .not.withContext('disabled cursor')
+        .withContext('disabled cursor').not
         .toBe(initialCursor);
       expect(await getElementStyle(input, 'borderColor'))
-        .not.withContext('disabled borderColor')
+        .withContext('disabled borderColor').not
         .toBe(initialBorderColor);
       expect(await isButtonDisabled()).toBe(true);
 
@@ -312,13 +312,13 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'color'))
-        .not.withContext('readonly color')
+        .withContext('readonly color').not
         .toBe(initialColor);
       expect(await getElementStyle(input, 'borderColor'))
-        .not.withContext('readonly border')
+        .withContext('readonly border').not
         .toBe(initialBorderColor);
       expect(await getElementStyle(input, 'backgroundColor'))
-        .not.withContext('readonly backgroundColor')
+        .withContext('readonly backgroundColor').not
         .toBe(initialBackgroundColor);
       expect(await isButtonDisabled()).toBe(true);
 
@@ -359,10 +359,10 @@ describe('text-field-wrapper', () => {
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
       expect(await getElementStyle(input, 'borderColor'))
-        .not.withContext('readonly and disabled border')
+        .withContext('readonly and disabled border').not
         .toBe(disabledBorderColor);
       expect(await getElementStyle(input, 'backgroundColor'))
-        .not.withContext('readonly and disabled backgroundColor')
+        .withContext('readonly and disabled backgroundColor').not
         .toBe(disabledBackgroundColor);
     });
 
