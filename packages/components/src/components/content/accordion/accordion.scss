@@ -112,7 +112,7 @@ button {
 }
 
 .content {
-  padding: 0 p-px-to-rem(12px);
+  padding: $p-spacing-8 p-px-to-rem(12px) 0;
   transition: opacity $p-animation-hover-duration-var $p-animation-hover-bezier;
   opacity: 0;
   visibility: hidden;
