@@ -40,8 +40,9 @@ export class TableHeadCell {
             />
           </button>
         ) : (
-          /* TODO: verify if hide-label works on prop change */
-          <slot data-hidden={this.hideLabel ? true : null} />
+          <span hidden={this.hideLabel ? true : null}>
+            <slot />
+          </span>
         )}
       </Host>
     );
