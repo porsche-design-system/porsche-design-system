@@ -24,6 +24,14 @@ describe('examples', () => {
 
   const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
+  it('table example basic should work without errors', async () => {
+    await goto(page, 'table-example-basic');
+    expect(getErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getErrorsAmount()).toBe(1);
+  });
+
   it('table example advanced should work without errors', async () => {
     await goto(page, 'table-example-advanced');
     expect(getErrorsAmount()).toBe(0);

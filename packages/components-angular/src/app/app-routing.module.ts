@@ -222,6 +222,11 @@ export const routes: ExtendedRoute[] = [
     children: [],
   },
   {
+    path: 'table-example-basic',
+    component: fromExamples.TableExampleBasicComponent,
+    name: 'Table Example Basic',
+  },
+  {
     path: 'table-example-advanced',
     component: fromExamples.TableExampleAdvancedComponent,
     name: 'Table Example Advanced',
