@@ -15,7 +15,7 @@ import {
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
 
-fdescribe('accordion', () => {
+describe('accordion', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
