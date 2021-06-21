@@ -642,13 +642,9 @@ export namespace Components {
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table.
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
          */
         "caption"?: string;
-        /**
-          * Hides the caption but stays accessible for screen readers.
-         */
-        "hideCaption"?: boolean;
     }
     interface PTableBody {
     }
@@ -1737,13 +1733,9 @@ declare namespace LocalJSX {
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table.
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
          */
         "caption"?: string;
-        /**
-          * Hides the caption but stays accessible for screen readers.
-         */
-        "hideCaption"?: boolean;
         /**
           * Emitted when sorting is changed.
          */
