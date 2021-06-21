@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   getHTMLElement,
   getPrefixedTagNames,
-  hasCaption,
+  hasNamedSlot,
   insertSlottedStyles,
   scrollElementBy,
 } from '../../../../utils';
@@ -16,12 +16,9 @@ import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-u
 export class Table {
   @Element() public host!: HTMLElement;
 
-  // TODO: maybe we should use PTableCaption instead?
-  /** A caption describing the contents of the table. */
+  /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
+   * Use an element with an attribute of slot="name" for a visible caption. */
   @Prop() public caption?: string = '';
-
-  /** Hides the caption but stays accessible for screen readers. */
-  @Prop() public hideCaption?: boolean = false;
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadCellSort>;
@@ -55,27 +52,16 @@ export class Table {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const hasCap = hasCaption(this.host, this.caption);
-    const hasVisibleCap = hasCap && !this.hideCaption;
+    const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
     const captionId = 'caption';
+    const hostProps = hasSlottedCaption ? { 'aria-describedby': captionId } : { 'aria-label': this.caption || null };
 
     return (
-      <Host
-        role="table"
-        {...(hasVisibleCap
-          ? { 'aria-describedby': captionId }
-          : this.caption && this.hideCaption && { 'aria-label': this.caption })}
-      >
-        {hasVisibleCap && (
-          <PrefixedTagNames.pText
-            id={captionId}
-            class="caption"
-            tag="caption"
-            weight="semibold"
-            size="{ base: 'medium', m: 'large' }"
-          >
-            {this.caption || <slot name="caption" />}
-          </PrefixedTagNames.pText>
+      <Host role="table" {...hostProps}>
+        {hasSlottedCaption && (
+          <span id={captionId} class="caption">
+            <slot name="caption" />
+          </span>
         )}
         <div class="root">
           <div class="scroll-area">

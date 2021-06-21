@@ -71,10 +71,6 @@ export const hasDescription = (host: Host, description: string): boolean => {
   return !!description || hasNamedSlot(host, 'description');
 };
 
-export const hasCaption = (host: Host, caption: string): boolean => {
-  return !!caption || hasNamedSlot(host, 'caption');
-};
-
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
 export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(host: Host, selector: string): E | null;

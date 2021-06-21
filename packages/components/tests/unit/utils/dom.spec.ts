@@ -6,7 +6,6 @@ import {
   getRole,
   getTagName,
   hasAttribute,
-  hasCaption,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -383,26 +382,6 @@ describe('hasMessage()', () => {
     }
 
     expect(hasMessage(el, message, formState)).toBe(result);
-  });
-});
-
-describe('hasCaption()', () => {
-  const caption = 'Some caption';
-  it.each<[{ caption: string; slotted: boolean }, boolean]>([
-    [{ caption, slotted: false }, true],
-    [{ caption: '', slotted: true }, true],
-    [{ caption: '', slotted: false }, false],
-    [{ caption, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { caption, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'caption';
-      el.appendChild(slot);
-    }
-
-    expect(hasCaption(el, caption)).toBe(result);
   });
 });
 
