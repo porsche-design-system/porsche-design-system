@@ -1,1 +1,1 @@
-export * from './TableExample';
+export * from './TableExampleAdvanced';

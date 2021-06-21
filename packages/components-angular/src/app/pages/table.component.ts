@@ -11,8 +11,8 @@ const head = [
 @Component({
   selector: 'page-table',
   template: `
-    <div class="playground light" title="should render table with hidden caption">
-      <p-table caption="Some caption" hideCaption>
+    <div class="playground light" title="should render table">
+      <p-table>
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell

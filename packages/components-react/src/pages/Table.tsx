@@ -8,9 +8,9 @@ import {
   PTableHeadRow,
   PTableRow,
 } from '@porsche-design-system/components-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-const rawHead: any[] = [
+const head: any[] = [
   { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
   { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
   { name: 'Min width cell', style: { minWidth: 250 } },
@@ -20,7 +20,6 @@ const rawHead: any[] = [
 
 export const TablePage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
-  const [head, setHead] = useState(rawHead);
 
   // TODO: workaround to pass data via property since our react wrappers set attributes
   // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
@@ -28,12 +27,12 @@ export const TablePage = (): JSX.Element => {
     headRow.current.childNodes.forEach((node, i) => {
       (node as any).sort = head[i].sort;
     });
-  }, [head]);
+  }, []);
 
   return (
     <>
-      <div className="playground light" title="should render table with hidden caption">
-        <PTable caption="Some caption" hideCaption>
+      <div className="playground light" title="should render table">
+        <PTable>
           <PTableHead>
             <PTableHeadRow ref={headRow}>
               {head.map((item, i) => (
