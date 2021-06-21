@@ -203,15 +203,15 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-banner']).toBe(1, 'componentDidLoad: p-banner');
-      expect(status.componentDidLoad['p-content-wrapper']).toBe(1, 'componentDidLoad: p-content-wrapper');
-      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // one included in button-pure
-      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon'); // one included in button-pure
-      expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure');
+      expect(status.componentDidLoad['p-banner']).withContext('componentDidLoad: p-banner').toBe(1);
+      expect(status.componentDidLoad['p-content-wrapper']).withContext('componentDidLoad: p-content-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(8, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -223,11 +223,11 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-banner']).toBe(1, 'componentDidUpdate: p-banner');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-banner']).withContext('componentDidUpdate: p-banner').toBe(1);
+      expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(8, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
     });
   });
 });
