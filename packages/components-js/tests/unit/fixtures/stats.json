@@ -1,29 +1,28 @@
 {
-  "hash": "2de6cfdb60e21bb39902",
-  "version": "5.38.1",
-  "time": 3287,
-  "builtAt": 1623333541234,
+  "hash": "18d4dacb7e12f7419c6e",
+  "version": "5.39.1",
+  "time": 2924,
+  "builtAt": 1624020536652,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js"
+      "porsche-design-system.v2.2.1.5fc7ed19103594977b70.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
-      "size": 61986,
+      "name": "porsche-design-system.v2.2.1.5fc7ed19103594977b70.js",
+      "size": 62918,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "afce3dc573bde7f44ee8",
+        "contenthash": "5fc7ed19103594977b70",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 61986
+        "size": 62918
       },
       "chunkNames": [
         "main"
@@ -40,17 +39,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.select-wrapper.7a65a1b157a097cb2382.js",
-      "size": 35365,
+      "name": "porsche-design-system.select-wrapper.5fb87600069760a44426.js",
+      "size": 35309,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "7a65a1b157a097cb2382",
+        "contenthash": "5fb87600069760a44426",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 35365
+        "size": 35309
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -65,17 +63,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.radio-button-wrapper.83a43cfab640207dd678.js",
-      "size": 19028,
+      "name": "porsche-design-system.radio-button-wrapper.d955fc8361dcad7170d1.js",
+      "size": 19022,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "83a43cfab640207dd678",
+        "contenthash": "d955fc8361dcad7170d1",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 19028
+        "size": 19022
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -90,17 +87,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.8e0356a1a6030003e8ef.js",
-      "size": 17344,
+      "name": "porsche-design-system.button-pure.898d3b89226de699bc72.js",
+      "size": 17351,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "8e0356a1a6030003e8ef",
+        "contenthash": "898d3b89226de699bc72",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 17344
+        "size": 17351
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -115,17 +111,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.31740aad2b85f40e9201.js",
-      "size": 16672,
+      "name": "porsche-design-system.link-pure.2c1ff20c667bf13443aa.js",
+      "size": 16689,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "31740aad2b85f40e9201",
+        "contenthash": "2c1ff20c667bf13443aa",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 16672
+        "size": 16689
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -140,17 +135,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.icon.0be952607360e4217b3e.js",
-      "size": 13983,
+      "name": "porsche-design-system.icon.e54036784df2d81389b5.js",
+      "size": 13997,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0be952607360e4217b3e",
+        "contenthash": "e54036784df2d81389b5",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 13983
+        "size": 13997
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -165,17 +159,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.9dde6630155f83204a94.js",
-      "size": 12142,
+      "name": "porsche-design-system.tabs-bar.07ed64474675bcc7f52a.js",
+      "size": 12176,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9dde6630155f83204a94",
+        "contenthash": "07ed64474675bcc7f52a",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 12142
+        "size": 12176
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -190,17 +183,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.7ad9d8b2ded7b2758ee5.js",
-      "size": 11714,
+      "name": "porsche-design-system.text-field-wrapper.b77896997e9b83dfedca.js",
+      "size": 11696,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "7ad9d8b2ded7b2758ee5",
+        "contenthash": "b77896997e9b83dfedca",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 11714
+        "size": 11696
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -215,17 +207,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.d2a6456b1743585953f6.js",
-      "size": 11612,
+      "name": "porsche-design-system.button.e0a5771f6c6d4c93e3f7.js",
+      "size": 11625,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d2a6456b1743585953f6",
+        "contenthash": "e0a5771f6c6d4c93e3f7",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 11612
+        "size": 11625
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -240,17 +231,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.889c6ce639b11cf2fa8e.js",
-      "size": 9282,
+      "name": "porsche-design-system.link.feaf6c79b47041654ae3.js",
+      "size": 9303,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "889c6ce639b11cf2fa8e",
+        "contenthash": "feaf6c79b47041654ae3",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 9282
+        "size": 9303
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -265,17 +255,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.aeb968f55d4e1006fce8.js",
-      "size": 9021,
+      "name": "porsche-design-system.textarea-wrapper.b1a799b3cc4e72f1efcc.js",
+      "size": 9015,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "aeb968f55d4e1006fce8",
+        "contenthash": "b1a799b3cc4e72f1efcc",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 9021
+        "size": 9015
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -290,17 +279,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.switch.4b1274d046b5d80e02c2.js",
-      "size": 8775,
+      "name": "porsche-design-system.switch.a3f371b157699401b73f.js",
+      "size": 8790,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "4b1274d046b5d80e02c2",
+        "contenthash": "a3f371b157699401b73f",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 8775
+        "size": 8790
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -315,17 +303,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.checkbox-wrapper.9254fdd4a846844a5a62.js",
-      "size": 8676,
+      "name": "porsche-design-system.checkbox-wrapper.100a87e904553dfa3f9c.js",
+      "size": 8670,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9254fdd4a846844a5a62",
+        "contenthash": "100a87e904553dfa3f9c",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 8676
+        "size": 8670
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -340,17 +327,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.f13e7af6dd9cb681410f.js",
-      "size": 8498,
+      "name": "porsche-design-system.pagination.535ca59e0fab985e5cc6.js",
+      "size": 8511,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "f13e7af6dd9cb681410f",
+        "contenthash": "535ca59e0fab985e5cc6",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 8498
+        "size": 8511
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -365,17 +351,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.6d8867382f408d6b158b.js",
-      "size": 8222,
+      "name": "porsche-design-system.link-social.8eeded8b29d922b29faa.js",
+      "size": 8245,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "6d8867382f408d6b158b",
+        "contenthash": "8eeded8b29d922b29faa",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 8222
+        "size": 8245
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -390,17 +375,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text.d3c67e70785026b3d467.js",
-      "size": 7466,
+      "name": "porsche-design-system.text.4094e6eab0a753a4aee3.js",
+      "size": 7452,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d3c67e70785026b3d467",
+        "contenthash": "4094e6eab0a753a4aee3",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 7466
+        "size": 7452
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -415,17 +399,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.3dc469a46afb5065c4a6.js",
-      "size": 7109,
+      "name": "porsche-design-system.modal.9ffdcd665dd7750a77fc.js",
+      "size": 7132,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3dc469a46afb5065c4a6",
+        "contenthash": "9ffdcd665dd7750a77fc",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 7109
+        "size": 7132
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -440,17 +423,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.headline.0681f20e868bb58a0a0f.js",
-      "size": 6033,
+      "name": "porsche-design-system.headline.7a02abbe59e654887b5b.js",
+      "size": 6025,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0681f20e868bb58a0a0f",
+        "contenthash": "7a02abbe59e654887b5b",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 6033
+        "size": 6025
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -465,17 +447,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.c28c329d94b9d88842be.js",
-      "size": 5863,
+      "name": "porsche-design-system.banner.f789e40b6aa971d4e9d4.js",
+      "size": 5883,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c28c329d94b9d88842be",
+        "contenthash": "f789e40b6aa971d4e9d4",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 5863
+        "size": 5883
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -499,7 +480,6 @@
         "immutable": true,
         "contenthash": "8810d99eda09bca87d7b",
         "javascriptModule": false,
-        "minimized": true,
         "size": 4009
       },
       "chunkNames": [],
@@ -515,17 +495,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-list.60cec8fbae3a878a45fe.js",
-      "size": 3775,
+      "name": "porsche-design-system.text-list.74dd3e950422bed50aa9.js",
+      "size": 3765,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "60cec8fbae3a878a45fe",
+        "contenthash": "74dd3e950422bed50aa9",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 3775
+        "size": 3765
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -549,7 +528,6 @@
         "immutable": true,
         "contenthash": "a7949b7514393a22aeaa",
         "javascriptModule": false,
-        "minimized": true,
         "size": 3615
       },
       "chunkNames": [],
@@ -565,17 +543,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.aa44527c97c80d7e0bd2.js",
-      "size": 3266,
+      "name": "porsche-design-system.marque.5eebdabef8d2ab79771c.js",
+      "size": 3289,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "aa44527c97c80d7e0bd2",
+        "contenthash": "5eebdabef8d2ab79771c",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 3266
+        "size": 3289
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -590,17 +567,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs.cb8bd645d5cbeefb9116.js",
-      "size": 2380,
+      "name": "porsche-design-system.tabs.1f86050038b2a4177ce4.js",
+      "size": 2366,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "cb8bd645d5cbeefb9116",
+        "contenthash": "1f86050038b2a4177ce4",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 2380
+        "size": 2366
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -615,17 +591,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.flex.d687f1e4f67592f6717b.js",
-      "size": 1996,
+      "name": "porsche-design-system.flex.bb7c15a466b64d98f7be.js",
+      "size": 1976,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d687f1e4f67592f6717b",
+        "contenthash": "bb7c15a466b64d98f7be",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 1996
+        "size": 1976
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -640,17 +615,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.grid.6d7ece028d8ab9494adf.js",
-      "size": 1897,
+      "name": "porsche-design-system.grid.33c8e220afe081323e88.js",
+      "size": 1887,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "6d7ece028d8ab9494adf",
+        "contenthash": "33c8e220afe081323e88",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 1897
+        "size": 1887
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -665,17 +639,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.divider.94f75ce24d19cfbd2558.js",
-      "size": 1860,
+      "name": "porsche-design-system.divider.f5909dd4e6317a26d508.js",
+      "size": 1858,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "94f75ce24d19cfbd2558",
+        "contenthash": "f5909dd4e6317a26d508",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 1860
+        "size": 1858
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -690,17 +663,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.fieldset-wrapper.c2ff1ba67b8fa844f2b5.js",
-      "size": 1809,
+      "name": "porsche-design-system.fieldset-wrapper.a48c478ea3a69eae876c.js",
+      "size": 1807,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c2ff1ba67b8fa844f2b5",
+        "contenthash": "a48c478ea3a69eae876c",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 1809
+        "size": 1807
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -715,17 +687,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.content-wrapper.c5b73333d41cc02d2ae8.js",
-      "size": 1161,
+      "name": "porsche-design-system.content-wrapper.aabbb6756771981b5b38.js",
+      "size": 1159,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c5b73333d41cc02d2ae8",
+        "contenthash": "aabbb6756771981b5b38",
         "javascriptModule": false,
-        "minimized": true,
-        "size": 1161
+        "size": 1159
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -755,10 +726,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.c28c329d94b9d88842be.js"
+        "porsche-design-system.banner.f789e40b6aa971d4e9d4.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "9247812b47f96a817291",
+      "hash": "e3437ab17c88e87ca2d2",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -1133,7 +1104,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-banner.entry.js",
@@ -2438,10 +2409,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.d2a6456b1743585953f6.js"
+        "porsche-design-system.button.e0a5771f6c6d4c93e3f7.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "aedc7e0ee60cc171049a",
+      "hash": "07d1d163f38bf111025e",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -3005,7 +2976,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-button.entry.js",
@@ -3592,7 +3563,7 @@
         "porsche-design-system.button-group.8810d99eda09bca87d7b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "96844ebdbfb1270544c7",
+      "hash": "d0a258599e0cbaed1a30",
       "childrenByOrder": {},
       "id": "button-group",
       "siblings": [],
@@ -3664,7 +3635,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-button-group.entry.js",
@@ -3710,10 +3681,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.8e0356a1a6030003e8ef.js"
+        "porsche-design-system.button-pure.898d3b89226de699bc72.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c3294b40bd90a10e182f",
+      "hash": "bfd932b9143d1049cbcd",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -4450,7 +4421,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-button-pure.entry.js",
@@ -5285,10 +5256,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.checkbox-wrapper.9254fdd4a846844a5a62.js"
+        "porsche-design-system.checkbox-wrapper.100a87e904553dfa3f9c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "46517659ca7354479bac",
+      "hash": "04c79dbc1562ddd1d1f0",
       "childrenByOrder": {},
       "id": "checkbox-wrapper",
       "siblings": [],
@@ -5882,7 +5853,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-checkbox-wrapper.entry.js",
@@ -6352,10 +6323,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.content-wrapper.c5b73333d41cc02d2ae8.js"
+        "porsche-design-system.content-wrapper.aabbb6756771981b5b38.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a310414b815eb7ecf9cb",
+      "hash": "e7d978fb7ae0af8de56e",
       "childrenByOrder": {},
       "id": "content-wrapper",
       "siblings": [],
@@ -6427,7 +6398,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-content-wrapper.entry.js",
@@ -7009,10 +6980,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.divider.94f75ce24d19cfbd2558.js"
+        "porsche-design-system.divider.f5909dd4e6317a26d508.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "3345c39cf655b8b8432e",
+      "hash": "42c4ac28987f97861f98",
       "childrenByOrder": {},
       "id": "divider",
       "siblings": [],
@@ -7084,7 +7055,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-divider.entry.js",
@@ -7666,10 +7637,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.fieldset-wrapper.c2ff1ba67b8fa844f2b5.js"
+        "porsche-design-system.fieldset-wrapper.a48c478ea3a69eae876c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "70ed5939222c8d488e3e",
+      "hash": "567f64124c996eed9f8f",
       "childrenByOrder": {},
       "id": "fieldset-wrapper",
       "siblings": [],
@@ -7741,7 +7712,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-fieldset-wrapper.entry.js",
@@ -7787,10 +7758,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.flex.d687f1e4f67592f6717b.js"
+        "porsche-design-system.flex.bb7c15a466b64d98f7be.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a7877feb0285101c87e4",
+      "hash": "a82f5051502819c06d63",
       "childrenByOrder": {},
       "id": "flex",
       "siblings": [],
@@ -7862,7 +7833,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-flex_2.entry.js",
@@ -7909,10 +7880,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.grid.6d7ece028d8ab9494adf.js"
+        "porsche-design-system.grid.33c8e220afe081323e88.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "d2cf739fc616a2afea7f",
+      "hash": "2effcee184f89ad593f1",
       "childrenByOrder": {},
       "id": "grid",
       "siblings": [],
@@ -7984,7 +7955,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-grid_2.entry.js",
@@ -8331,10 +8302,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.headline.0681f20e868bb58a0a0f.js"
+        "porsche-design-system.headline.7a02abbe59e654887b5b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "f9046ae51a1ee2c9a671",
+      "hash": "1c20b1a733a7762e7a8b",
       "childrenByOrder": {},
       "id": "headline",
       "siblings": [],
@@ -8406,7 +8377,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-headline.entry.js",
@@ -9410,10 +9381,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.icon.0be952607360e4217b3e.js"
+        "porsche-design-system.icon.e54036784df2d81389b5.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "3e65cd4294cc1d5ab9a3",
+      "hash": "4dc4cecc188a9b83d6f1",
       "childrenByOrder": {},
       "id": "icon",
       "siblings": [],
@@ -9485,7 +9456,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-icon.entry.js",
@@ -10068,10 +10039,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.889c6ce639b11cf2fa8e.js"
+        "porsche-design-system.link.feaf6c79b47041654ae3.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c2294c12dc6307fd976a",
+      "hash": "e2cb185d4e04b94f49f5",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -10446,7 +10417,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-link.entry.js",
@@ -11451,10 +11422,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.31740aad2b85f40e9201.js"
+        "porsche-design-system.link-pure.2c1ff20c667bf13443aa.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "3972e816bdbaf9b95620",
+      "hash": "2739ed308ab5cc281a75",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -12002,7 +11973,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-link-pure.entry.js",
@@ -13258,10 +13229,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.6d8867382f408d6b158b.js"
+        "porsche-design-system.link-social.8eeded8b29d922b29faa.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "ad734ed1d56623563235",
+      "hash": "9918a86a6f2f9cb7bd6f",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -13636,7 +13607,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-link-social.entry.js",
@@ -14644,10 +14615,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js"
+        "porsche-design-system.v2.2.1.5fc7ed19103594977b70.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c3b3fbc9f30918ffb815",
+      "hash": "84382e8f8b934b57e457",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -23629,10 +23600,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.aa44527c97c80d7e0bd2.js"
+        "porsche-design-system.marque.5eebdabef8d2ab79771c.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "661a636947530b101ba7",
+      "hash": "43e871b48fad40b0dd6e",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -24007,7 +23978,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-marque.entry.js",
@@ -24054,10 +24025,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.3dc469a46afb5065c4a6.js"
+        "porsche-design-system.modal.9ffdcd665dd7750a77fc.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "076504dce5d9ef2bc77a",
+      "hash": "3a172ca4cd25946dcff5",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -24262,7 +24233,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-modal.entry.js",
@@ -24309,10 +24280,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.f13e7af6dd9cb681410f.js"
+        "porsche-design-system.pagination.535ca59e0fab985e5cc6.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c2cd0944591116fa4d62",
+      "hash": "75eb418df1238d6ed46f",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -24860,7 +24831,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-pagination.entry.js",
@@ -25444,10 +25415,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.radio-button-wrapper.83a43cfab640207dd678.js"
+        "porsche-design-system.radio-button-wrapper.d955fc8361dcad7170d1.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "e86ac0e7cd02582ed88d",
+      "hash": "21d68d4f10f4457ac668",
       "childrenByOrder": {},
       "id": "radio-button-wrapper",
       "siblings": [],
@@ -26041,7 +26012,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-radio-button-wrapper.entry.js",
@@ -26511,10 +26482,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.select-wrapper.7a65a1b157a097cb2382.js"
+        "porsche-design-system.select-wrapper.5fb87600069760a44426.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "cf0d7542694b178fb468",
+      "hash": "e14c4ca426fc4eaa7859",
       "childrenByOrder": {},
       "id": "select-wrapper",
       "siblings": [],
@@ -27241,7 +27212,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-select-wrapper.entry.js",
@@ -28251,7 +28222,7 @@
         "porsche-design-system.spinner.a7949b7514393a22aeaa.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "ec442cd4861df63afeb3",
+      "hash": "b2b4b24769d7c189f3e1",
       "childrenByOrder": {},
       "id": "spinner",
       "siblings": [],
@@ -28323,7 +28294,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-spinner.entry.js",
@@ -28905,10 +28876,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.switch.4b1274d046b5d80e02c2.js"
+        "porsche-design-system.switch.a3f371b157699401b73f.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "bb676b87619817d9817e",
+      "hash": "c45864ea8834d7ae13c7",
       "childrenByOrder": {},
       "id": "switch",
       "siblings": [],
@@ -29472,7 +29443,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-switch.entry.js",
@@ -29520,10 +29491,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs.cb8bd645d5cbeefb9116.js"
+        "porsche-design-system.tabs.1f86050038b2a4177ce4.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "f4f8b11d411d958e0837",
+      "hash": "875c1f4dab3ed5c1f02a",
       "childrenByOrder": {},
       "id": "tabs",
       "siblings": [],
@@ -29595,7 +29566,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-tabs_2.entry.js",
@@ -29642,10 +29613,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.9dde6630155f83204a94.js"
+        "porsche-design-system.tabs-bar.07ed64474675bcc7f52a.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "e699738f368308adcae7",
+      "hash": "14150476cbb9231802d6",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -29717,7 +29688,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-tabs-bar.entry.js",
@@ -30599,10 +30570,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text.d3c67e70785026b3d467.js"
+        "porsche-design-system.text.4094e6eab0a753a4aee3.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "38e5bd37023353c852f6",
+      "hash": "1ef439b6d53d9efaaee5",
       "childrenByOrder": {},
       "id": "text",
       "siblings": [],
@@ -31150,7 +31121,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-text.entry.js",
@@ -32406,10 +32377,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.7ad9d8b2ded7b2758ee5.js"
+        "porsche-design-system.text-field-wrapper.b77896997e9b83dfedca.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "7ab8133c02d7a9d40236",
+      "hash": "33ba7bcc16aab6fd0727",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -33192,7 +33163,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-text-field-wrapper.entry.js",
@@ -33663,10 +33634,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-list.60cec8fbae3a878a45fe.js"
+        "porsche-design-system.text-list.74dd3e950422bed50aa9.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "25f4b4673e85dc427004",
+      "hash": "4efaae26dd6597b69bef",
       "childrenByOrder": {},
       "id": "text-list",
       "siblings": [],
@@ -34041,7 +34012,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-text-list_2.entry.js",
@@ -35347,10 +35318,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.aeb968f55d4e1006fce8.js"
+        "porsche-design-system.textarea-wrapper.b1a799b3cc4e72f1efcc.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "86a39323c44905660759",
+      "hash": "db32d462505c4c830fbe",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -35944,7 +35915,7 @@
               "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
               "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
               "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-              "type": "context element",
+              "type": "import() context element",
               "active": true,
               "explanation": "",
               "userRequest": "./p-textarea-wrapper.entry.js",
@@ -45853,7 +45824,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-banner.entry.js",
@@ -45938,7 +45909,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-button-group.entry.js",
@@ -46019,7 +45990,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-button-pure.entry.js",
@@ -46104,7 +46075,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-button.entry.js",
@@ -46188,7 +46159,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-checkbox-wrapper.entry.js",
@@ -46272,7 +46243,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-content-wrapper.entry.js",
@@ -46354,7 +46325,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-divider.entry.js",
@@ -46436,7 +46407,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-fieldset-wrapper.entry.js",
@@ -46517,7 +46488,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-flex_2.entry.js",
@@ -46599,7 +46570,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-grid_2.entry.js",
@@ -46682,7 +46653,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-headline.entry.js",
@@ -46765,7 +46736,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-icon.entry.js",
@@ -46848,7 +46819,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-link-pure.entry.js",
@@ -46933,7 +46904,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-link-social.entry.js",
@@ -47017,7 +46988,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-link.entry.js",
@@ -47101,7 +47072,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-marque.entry.js",
@@ -47183,7 +47154,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-modal.entry.js",
@@ -47265,7 +47236,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-pagination.entry.js",
@@ -47349,7 +47320,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-radio-button-wrapper.entry.js",
@@ -47433,7 +47404,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-select-wrapper.entry.js",
@@ -47519,7 +47490,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-spinner.entry.js",
@@ -47601,7 +47572,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-switch.entry.js",
@@ -47684,7 +47655,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-tabs-bar.entry.js",
@@ -47767,7 +47738,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-tabs_2.entry.js",
@@ -47849,7 +47820,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-text-field-wrapper.entry.js",
@@ -47934,7 +47905,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-text-list_2.entry.js",
@@ -48020,7 +47991,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-text.entry.js",
@@ -48105,7 +48076,7 @@
           "moduleName": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
           "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm|lazy|/^\\.\\/.*\\.entry\\.js$/|include: /\\.entry\\.js$/|exclude: /\\.system\\.entry\\.js$/|groupOptions: {}|namespace object",
           "resolvedModule": "../components/dist/esm/ lazy ^\\.\\/.*\\.entry\\.js$ include: \\.entry\\.js$ exclude: \\.system\\.entry\\.js$ namespace object",
-          "type": "context element",
+          "type": "import() context element",
           "active": true,
           "explanation": "",
           "userRequest": "./p-textarea-wrapper.entry.js",
@@ -51333,12 +51304,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
-          "size": 61986
+          "name": "porsche-design-system.v2.2.1.5fc7ed19103594977b70.js",
+          "size": 62918
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 61986,
+      "assetsSize": 62918,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -51355,12 +51326,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.2.1.afce3dc573bde7f44ee8.js",
-          "size": 61986
+          "name": "porsche-design-system.v2.2.1.5fc7ed19103594977b70.js",
+          "size": 62918
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 61986,
+      "assetsSize": 62918,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
