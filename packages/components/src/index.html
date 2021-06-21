@@ -17,12 +17,12 @@
     <script>
       const head = [
         { name: 'Model' },
-        { name: 'Interest', key: 'interest' },
-        { name: 'VIN', key: 'vin' },
-        { name: 'Purchase Intention', key: 'purchaseIntention' },
-        { name: 'Status', key: 'status' },
-        { name: 'Lead ID', key: 'leadId' },
-        { name: 'Actions' },
+        { name: 'Interest', id: 'interest' },
+        { name: 'VIN', id: 'vin' },
+        { name: 'Purchase Intention', id: 'purchaseIntention' },
+        { name: 'Status', id: 'status' },
+        { name: 'Lead ID', id: 'leadId' },
+        { name: 'Actions', hideLabel: true },
       ].map((item, i) => ({
         ...item,
         ...(item.name && {
@@ -87,7 +87,11 @@
 
       const renderTableHeadCells = (items) =>
         items
-          .map((item, i) => {return `<p-table-head-cell ${i === 6 ? 'hide-label': ''}>${i === 4 ? item.name +'<br>with a subline' : item.name}</p-table-head-cell>`})
+          .map((item, i) => {
+            return `<p-table-head-cell ${i === 6 ? 'hide-label' : ''}>${
+              i === 4 ? item.name + '<br>with a subline' : item.name
+            }</p-table-head-cell>`;
+          })
           .join('');
 
       const renderTableBodyRows = (items) =>
@@ -114,8 +118,8 @@
   <p-table-cell>${item.status}</p-table-cell>
   <p-table-cell>${item.leadId}</p-table-cell>
   <p-table-cell>
-      <p-link-pure style="padding: .5rem;" href="#" icon="edit">Edit</p-link-pure>
-      <p-link-pure style="padding: .5rem;" href="#" icon="delete">Delete</p-link-pure>
+    <p-link-pure style="padding: .5rem;" href="#" icon="edit">Edit</p-link-pure>
+    <p-link-pure style="padding: .5rem;" href="#" icon="delete">Delete</p-link-pure>
   </p-table-cell>
 </p-table-row>`
           )
@@ -140,6 +144,7 @@
       // pass head item via property
       const passHeadItemToNodes = (items) =>
         Array.from(tableHead.querySelectorAll('p-table-head-cell')).forEach((el, index) => {
+          el.hideLabel = items.hideLabel;
           el.item = items[index];
         });
 
@@ -148,11 +153,11 @@
       // table.query = 'Ma';
       table.addEventListener('sortingChange', (e) => {
         console.log('sortingChange', e.detail);
-        const { key, direction } = e.detail;
+        const { id, direction } = e.detail;
 
-        const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.key === key && e.detail) }));
+        const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
         const sortedData = [...data].sort((a, b) =>
-          direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key])
+          direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
         );
 
         passHeadItemToNodes(sortedHead);
@@ -166,11 +171,13 @@
         })
       );
     </script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style="height: 2000px; background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);"></div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div
+      style="height: 2000px; background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%)"
+    ></div>
     <!-- /END -->
   </body>
 </html>

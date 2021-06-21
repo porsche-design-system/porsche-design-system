@@ -90,7 +90,7 @@ export const styles: { [key in TableComponentType]: string } = {
       borderBottom: `1px solid ${color.neutralContrast.medium} !important`,
       verticalAlign: 'bottom !important',
       fontWeight: `${font.weight.bold} !important`,
-      '& [data-hidden]': {
+      '& [hidden]': {
         position: 'absolute',
         width: 1,
         height: 1,
