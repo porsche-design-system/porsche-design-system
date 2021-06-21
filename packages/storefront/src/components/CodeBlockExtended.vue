@@ -60,7 +60,6 @@
 
   .code-block {
     margin-top: 1rem;
-    overflow-x: auto;
 
     @include codeHighlighting('light');
   }
