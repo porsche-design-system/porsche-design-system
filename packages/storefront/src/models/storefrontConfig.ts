@@ -1,4 +1,4 @@
-import { EsModuleComponent } from 'vue/types/options';
+import { Component, EsModule } from 'vue/types/options';
 
 export type StorefrontConfig = {
   [category: string]: {
@@ -10,4 +10,4 @@ export type StorefrontConfig = {
   };
 };
 
-export type ComponentListImport = Array<() => Promise<EsModuleComponent>>;
+export type ComponentListImport = Array<() => Promise<EsModule<Component>>>;
