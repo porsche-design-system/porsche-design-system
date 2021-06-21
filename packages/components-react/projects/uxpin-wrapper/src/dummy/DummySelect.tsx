@@ -1,10 +1,13 @@
-import { ChangeEvent, FocusEvent, SelectHTMLAttributes, useState } from 'react';
+import { ChangeEvent, FocusEvent } from 'react';
 
 type Props = {
   disabled?: boolean;
   placeholder?: string;
   readOnly?: boolean;
   required?: boolean;
+  /**
+   * @uxpinbind onChange 0.target.value
+   */
   value?: string;
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (e: FocusEvent<HTMLSelectElement>) => void;
@@ -13,23 +16,9 @@ type Props = {
 };
 
 export const DummySelect = ({
-  value,
-  onChange,
   options = Array.from(Array(3)).map((_, i) => `Option ${i + 1}`),
-  ...rest
+  ...props
 }: Props): JSX.Element => {
-  const [valueState, setValueState] = useState(value);
-
-  const props: SelectHTMLAttributes<HTMLSelectElement> = {
-    ...rest,
-    value: valueState,
-    onChange: (e) => {
-      const { value } = e.target;
-      setValueState(value);
-      onChange(e);
-    },
-  };
-
   return (
     <select {...props}>
       {options.map((item, i) => (
