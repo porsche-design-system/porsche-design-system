@@ -125,7 +125,7 @@ describe('radio-button-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
-      .withContext('initially')
+      .withContext('when state = error')
       .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel'))
