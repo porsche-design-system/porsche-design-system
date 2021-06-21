@@ -1,37 +1,37 @@
-# Panel
+# Accordion
 
-A Panel is a component that reveals or hides associated sections of content.  
-Panels are flexible in the context and can include other components of the Porsche Design System.
+A Accordion is a component that reveals or hides associated sections of content.  
+Accordions are flexible in the context and can include other components of the Porsche Design System.
 
 ## Basic example
 
 <Playground :markup="basic" :config="config"></Playground>
 
-You can set the `open` property to `true` so that the panel is open by default.
+You can set the `open` property to `true` so that the accordion is open by default.
 <Playground :markup="basicOpen" :config="config"></Playground>
 
-The panel width is 100% of the parent container.
+The accordion width is 100% of the parent container.
 We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
 Parent containers with a maximum width of 800px are recommended.
 
 ### Headline Tag
 
-The `tag` property needs to be set in order for the panel to fit into the outline of the page. If there is no `tag` property provided, it defaults to `h2`.
-For instance our example panels use heading level 3 because they are contained in sections titled with a level 2 heading.
+The `tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is no `tag` property provided, it defaults to `h2`.
+For instance our example accordions use heading level 3 because they are contained in sections titled with a level 2 heading.
 
 ### Event binding
 
-`p-panel` is a component which does not work by itself and needs to be controlled from the outside.  
+`p-accordion` is a component which does not work by itself and needs to be controlled from the outside.  
 This grants you flexible control over the `open` state.
 
-In order to get notified when the Panel gets closed by clicking the `headline` you need to register an event listener for the `panelChange` event which is emitted by `p-panel`.
+In order to get notified when the Accordion gets closed by clicking the `headline` you need to register an event listener for the `accordionChange` event which is emitted by `p-accordion`.
 
 #### Vanilla JS
 
 ```js
-panel.addEventListener('panelChange', (panelChangeEvent) => {
-  const { open } = panelChangeEvent.detail;
-  panelChangeEvent.target.setAttribute('open', open);
+accordion.addEventListener('accordionChange', (accordionChangeEvent) => {
+  const { open } = accordionChangeEvent.detail;
+  accordionChangeEvent.target.setAttribute('open', open);
 });
 ```
 
@@ -39,18 +39,18 @@ panel.addEventListener('panelChange', (panelChangeEvent) => {
 
 ```ts
 import { Component } from '@angular/core';
-import type { PanelChangeEvent }  from '@porsche-design-system/components-angular/lib/types';
+import type { AccordionChangeEvent }  from '@porsche-design-system/components-angular/lib/types';
 
 @Component({
-  selector: 'panel-page',
-  template: `<p-panel [open]="isPanelOpen" (panelChange)="handlePanelChange($event)" heading="Some Heading">Some Content</p-panel>`,
+  selector: 'accordion-page',
+  template: `<p-accordion [open]="isAccordionOpen" (accordionChange)="handleAccordionChange($event)" heading="Some Heading">Some Content</p-accordion>`,
 })
-export class PanelPage {
-  isPanelOpen = false;
+export class AccordionPage {
+  isAccordionOpen = false;
 
-  handlePanelChange(e: CustomEvent<PanelChangeEvent>) {
+  handleAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
     const { open } = e.detail;
-    this.isPanelOpen = open;
+    this.isAccordionOpen = open;
   }
 }
 ```
@@ -59,17 +59,17 @@ export class PanelPage {
 
 ```tsx 
 import { useCallback, useState } from 'react';
-import { PPanel } from '@porsche-design-system/components-react';
-import type { PanelChangeEvent } from '@porsche-design-system/components-react';
+import { PAccordion } from '@porsche-design-system/components-react';
+import type { AccordionChangeEvent } from '@porsche-design-system/components-react';
 
-const PanelPage = (): JSX.Element => {
+const AccordionPage = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>();
-  const handlePanelChange = useCallback((e: CustomEvent<PanelChangeEvent>) => {
+  const handleAccordionChange = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     const { open } = e.detail;
     setIsOpen(open);
   }, []);
 
-  return <PPanel open={isOpen} onPanelChange={handlePanelChange}>Some label</PPanel>
+  return <PAccordion open={isOpen} onAccordionChange={handleAccordionChange}>Some label</PAccordion>
 }
 ```
 ---
@@ -122,38 +122,54 @@ Please **refrain** from using any other than text content as slotted markup.
     content= '<p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-text>';
 
     get basic() {      
-      return `<p-panel heading="Some Heading" tag="h3">
+      return `<p-accordion heading="Some Heading" tag="h3">
   ${this.content}
-</p-panel>`;
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3">
+  ${this.content}
+</p-accordion>`;
     }
     
     get basicOpen() {      
-      return `<p-panel heading="Some Heading" tag="h3" open="true" >
+      return `<p-accordion heading="Some Heading" tag="h3" open="true" >
   ${this.content}
-</p-panel>`;
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3" >
+  ${this.content}
+</p-accordion>`;
     }
   
     get sizeMarkup() {
-      return `<p-panel heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
+      return `<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
   ${this.content}
-</p-panel>`;
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
+  ${this.content}
+</p-accordion>`;
     }  
   
     get weightMarkup() {
-      return `<p-panel heading="Some Heading" tag="h3" weight="${this.weight}">
+      return `<p-accordion heading="Some Heading" tag="h3" weight="${this.weight}">
   ${this.content}
-</p-panel>`;
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3" weight="${this.weight}">
+  ${this.content}
+</p-accordion>`;
     }
 
     get slottedMarkup(){
-      return `<p-panel tag="h3">
+      return `<p-accordion tag="h3">
   <span slot="heading">Some slotted heading</span>
   ${this.content}
-</p-panel>`;
+</p-accordion>
+<p-accordion tag="h3">
+  <span slot="heading">Some slotted heading</span>
+  ${this.content}
+</p-accordion>`;
     }
  
     mounted() {
-      /* initially update panel with open attribute in playground */
+      /* initially update accordion with open attribute in playground */
       this.registerEvents();
   
       /* theme switch needs to register event listeners again */
@@ -168,11 +184,11 @@ Please **refrain** from using any other than text content as slotted markup.
     }
   
     registerEvents() {
-      const panels = this.$el.querySelectorAll('.playground .demo p-panel');
-      panels.forEach(panelEl => panelEl.addEventListener('panelChange', this.handlePanelChange));
+      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
+      accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.handleAccordionChange));
     }
   
-    handlePanelChange =  (e) => {
+    handleAccordionChange =  (e) => {
       const { open } = e.detail;
       e.target.setAttribute('open', open);
     }
