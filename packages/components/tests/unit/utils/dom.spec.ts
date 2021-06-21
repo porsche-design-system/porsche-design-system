@@ -8,6 +8,7 @@ import {
   hasAttribute,
   hasCaption,
   hasDescription,
+  hasLabel,
   hasMessage,
   hasNamedSlot,
   isDisabledOrLoading,
@@ -332,11 +333,11 @@ describe('hasLabel()', () => {
     const el = document.createElement('div');
     if (slotted) {
       const slot = document.createElement('span');
-      slot.slot = 'description';
+      slot.slot = 'label';
       el.appendChild(slot);
     }
 
-    expect(hasDescription(el, label)).toBe(result);
+    expect(hasLabel(el, label)).toBe(result);
   });
 });
 
