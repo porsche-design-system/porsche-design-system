@@ -129,9 +129,15 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
-    expect(await getAttribute(await getMessage(), 'role')).toBe('alert', 'when state = error');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message', 'when state = error');
+    expect(await getMessage())
+      .withContext('when state = error')
+      .toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = error')
+      .toBe('alert');
+    expect(await getProperty(textarea, 'ariaLabel'))
+      .withContext('when state = error')
+      .toBe('Some label. Some error message');
 
     await textareaComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -140,8 +146,12 @@ describe('textarea-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some success message', 'when state = success');
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = success')
+      .toBeNull();
+    expect(await getProperty(textarea, 'ariaLabel'))
+      .withContext('when state = success')
+      .toBe('Some label. Some success message');
 
     await textareaComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -150,7 +160,9 @@ describe('textarea-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeNull('when state = none');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label', 'when state = none');
+    expect(await getProperty(textarea, 'ariaLabel'))
+      .withContext('when state = none')
+      .toBe('Some label');
   });
 
   it('should focus textarea when label text is clicked', async () => {
@@ -253,11 +265,11 @@ describe('textarea-wrapper', () => {
       });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
-      expect(status.componentDidLoad['p-text']).toBe(3, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-textarea-wrapper']).withContext('componentDidLoad: p-textarea-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(3);
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on init', async () => {
@@ -273,10 +285,12 @@ describe('textarea-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(1, 'componentDidUpdate: p-textarea-wrapper');
+      expect(status.componentDidUpdate['p-textarea-wrapper'])
+        .withContext('componentDidUpdate: p-textarea-wrapper')
+        .toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
 });
