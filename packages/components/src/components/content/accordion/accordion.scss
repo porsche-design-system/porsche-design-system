@@ -6,7 +6,6 @@ $root: '.root';
   // add overlapping of borders
   margin-top: -1px;
   padding-top: 1px;
-
   border-top: 1px solid $p-color-neutral-contrast-medium;
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
   transition: padding $p-animation-hover-duration-var $p-animation-hover-bezier;
