@@ -1,5 +1,5 @@
-import { TableExampleComponent } from './table-example.component';
+import { TableExampleAdvancedComponent } from './table-example-advanced.component';
 
-export const examples = [TableExampleComponent];
+export const examples = [TableExampleAdvancedComponent];
 
-export * from './table-example.component';
+export * from './table-example-advanced.component';

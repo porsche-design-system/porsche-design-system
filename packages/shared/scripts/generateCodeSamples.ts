@@ -16,10 +16,10 @@ const generateCodeSamples = (): void => {
       component: 'p-table',
       samples: [
         [
-          '../components-js/src/examples/table-example.html',
-          '../components-angular/src/app/examples/table-example.component.ts',
-          '../components-react/src/examples/TableExample.tsx',
-          'src/table-data.ts', // order is important since part of filename is extracted for param types of function name
+          '../components-js/src/examples/table-example-advanced.html',
+          '../components-angular/src/app/examples/table-example-advanced.component.ts',
+          '../components-react/src/examples/TableExampleAdvanced.tsx',
+          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],
     },

@@ -1,5 +1,29 @@
+type HeadItem = {
+  id: string;
+  name: string;
+  hideLabel: boolean;
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+
+export const headAdvanced: HeadItem[] = [
+  { name: 'Model', id: 'model' } as HeadItem,
+  { name: 'Interest', id: 'interest' } as HeadItem,
+  { name: 'VIN', id: 'vin' } as HeadItem,
+  { name: 'Purchase Intention', id: 'purchaseIntention' } as HeadItem,
+  { name: 'Status', id: 'status' } as HeadItem,
+  { name: 'Lead ID', id: 'leadId' } as HeadItem,
+  { name: 'Action', id: 'action', hideLabel: true } as HeadItem,
+].map((item, i) => ({
+  ...item,
+  ...(i > 0 &&
+    item.name && {
+      active: i === 1,
+      direction: 'asc',
+    }),
+}));
+
 type DataItem = {
-  id?: string;
   imageUrl: string;
   model: string;
   date: string;
@@ -10,24 +34,7 @@ type DataItem = {
   leadId: string;
 };
 
-export const head: any[] = [
-  { name: 'Model', id: 'model' },
-  { name: 'Interest', id: 'interest' },
-  { name: 'VIN', id: 'vin' },
-  { name: 'Purchase Intention', id: 'purchaseIntention' },
-  { name: 'Status', id: 'status' },
-  { name: 'Lead ID', id: 'leadId' },
-  { name: 'Action', id: 'action' },
-].map((item, i) => ({
-  ...item,
-  hideLabel: false,
-  ...(i > 0 && {
-    active: i === 1,
-    direction: 'asc',
-  }),
-}));
-
-export const data: DataItem[] = [
+export const dataAdvanced: DataItem[] = [
   {
     imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
     model: '911 Carrera S',

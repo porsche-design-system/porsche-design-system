@@ -1,4 +1,4 @@
-<div class="playground light table" title="should render table with hidden caption">
+<div class="playground light table" title="should render table">
   <script>
     const head = [
       { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
@@ -46,7 +46,7 @@
         .join('');
 
     const markup = `
-<p-table caption="Some caption" hide-caption="true">
+<p-table>
   <p-table-head>
     <p-table-head-row>${renderTableHeadCells(head)}</p-table-head-row>
   </p-table-head>
