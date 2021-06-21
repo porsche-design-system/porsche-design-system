@@ -54,7 +54,9 @@ export class Table {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
     const captionId = 'caption';
-    const hostProps = hasSlottedCaption ? { 'aria-describedby': captionId } : { 'aria-label': this.caption || null };
+    const hostProps = this.caption
+      ? { 'aria-label': this.caption }
+      : hasSlottedCaption && { 'aria-describedby': captionId };
 
     return (
       <Host role="table" {...hostProps}>
