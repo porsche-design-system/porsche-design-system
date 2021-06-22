@@ -9,10 +9,10 @@ $root: '.root';
 :host(:first-of-type) {
   #{$root} {
     border-top: 1px solid $p-color-neutral-contrast-medium;
-  }
 
-  #{$root}--theme-dark {
-    border-color: $p-color-theme-dark-neutral-contrast-medium;
+    &--theme-dark {
+      border-color: $p-color-theme-dark-neutral-contrast-medium;
+    }
   }
 }
 
@@ -50,7 +50,7 @@ $root: '.root';
 }
 
 .headline {
-  padding: p-px-to-rem(24px) 0;
+  padding: p-px-to-rem(24px) p-px-to-rem(12px);
   cursor: pointer;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
@@ -58,11 +58,10 @@ $root: '.root';
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    // hover color into internal variables
-    background-color: $p-hover-color;
+    background-color: $p-hover-background-color;
 
     #{$root}--theme-dark & {
-      background-color: $p-hover-color-theme-dark;
+      background-color: $p-hover-background-color-theme-dark;
     }
   }
 }
@@ -71,15 +70,15 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 p-px-to-rem(12px);
+  padding: 0;
   width: 100%;
-  outline: transparent solid 1px;
-  outline-offset: 1px;
   text-decoration: none;
   border: 0;
   background: transparent;
   cursor: pointer;
   font-weight: $p-font-weight-semibold;
+
+  @include p-focus($p-color-state-focus, 1px);
 
   // iOS Safari users should not see tap highlight color on button
   -webkit-tap-highlight-color: transparent;
@@ -98,13 +97,6 @@ button {
   #{$root}--weight-regular & {
     font-weight: $p-font-weight-regular;
   }
-
-  &:focus {
-    outline-color: $p-color-state-focus;
-  }
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
 }
 
 .icon {
@@ -113,7 +105,7 @@ button {
   margin-left: $p-spacing-24;
 
   #{$root}--open & {
-    transform: rotate(180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
   }
 }
 
@@ -128,13 +120,5 @@ button {
     opacity: 1;
     visibility: visible;
     height: auto;
-  }
-
-  & > ::slotted(*) {
-    display: none;
-
-    #{$root}--open & {
-      display: block;
-    }
   }
 }

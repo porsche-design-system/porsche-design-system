@@ -34,8 +34,8 @@ export class Accordion {
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
   public render(): JSX.Element {
-    const labelledId = 'labelled';
-    const controlsId = 'controls';
+    const buttonId = 'accordion-control';
+    const contentId = 'accordion-panel';
 
     const rootClasses = {
       ['root']: true,
@@ -50,25 +50,25 @@ export class Accordion {
     return (
       <div class={rootClasses}>
         <PrefixedTagNames.pHeadline
+          class="headline"
           tag={this.tag}
           theme={this.theme}
-          class="headline"
           variant="inherit"
-          onClick={this.handleAccordionClick}
+          onClick={this.handleHeadlineClick}
         >
-          <button type="button" aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
+          <button id={buttonId} type="button" aria-expanded={this.open} aria-controls={contentId}>
             {this.heading || <slot name="heading" />}
-            <PrefixedTagNames.pIcon name="arrowHeadDown" aria-hidden="true" class="icon" theme={this.theme} />
+            <PrefixedTagNames.pIcon class="icon" name="arrowHeadDown" theme={this.theme} aria-hidden="true" />
           </button>
         </PrefixedTagNames.pHeadline>
-        <div id={controlsId} class="content" role="region" aria-labelledby={labelledId}>
+        <div id={contentId} class="content" role="region" aria-labelledby={buttonId}>
           <slot />
         </div>
       </div>
     );
   }
 
-  private handleAccordionClick = (): void => {
+  private handleHeadlineClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
   };
 }
