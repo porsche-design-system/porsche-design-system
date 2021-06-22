@@ -6,6 +6,9 @@ $p-animation-hover-duration-var: var(--p-animation-hover-duration, 0.24s);
 $p-animation-hover-bezier: ease;
 $p-tabs-transition-duration: 0.4s;
 
+$p-hover-color: $p-color-background-surface;
+$p-hover-color-theme-dark: $p-color-theme-dark-background-surface;
+
 $p-content-wrapper-margin: 7vw;
 $p-content-wrapper-margin-xl: 10vw;
 $p-content-wrapper-margin-xxl: p-px-to-rem(192px);

@@ -1,12 +1,22 @@
 @import '../../../styles/internal.variables';
 
+:host {
+  display: block;
+}
+
 $root: '.root';
 
+:host(:first-of-type) {
+  #{$root} {
+    border-top: 1px solid $p-color-neutral-contrast-medium;
+  }
+
+  #{$root}--theme-dark {
+    border-color: $p-color-theme-dark-neutral-contrast-medium;
+  }
+}
+
 #{$root} {
-  // add overlapping of borders
-  margin-top: -1px;
-  padding-top: 1px;
-  border-top: 1px solid $p-color-neutral-contrast-medium;
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
   transition: padding $p-animation-hover-duration-var $p-animation-hover-bezier;
 
@@ -35,12 +45,11 @@ $root: '.root';
     padding-bottom: $p-spacing-40;
   }
   &--theme-dark {
-    border-bottom-color: $p-color-theme-dark-neutral-contrast-medium;
-    border-top-color: $p-color-theme-dark-neutral-contrast-medium;
+    border-color: $p-color-theme-dark-neutral-contrast-medium;
   }
 }
 
-.heading-wrapper {
+.headline {
   padding: p-px-to-rem(24px) 0;
   cursor: pointer;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
@@ -49,10 +58,11 @@ $root: '.root';
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background-color: $p-color-background-surface;
+    // hover color into internal variables
+    background-color: $p-hover-color;
 
     #{$root}--theme-dark & {
-      background-color: $p-color-theme-dark-background-surface;
+      background-color: $p-hover-color-theme-dark;
     }
   }
 }
@@ -97,13 +107,10 @@ button {
   }
 }
 
-.heading {
-  padding-right: $p-spacing-24;
-}
-
 .icon {
   transform-origin: 50% 50%;
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
+  margin-left: $p-spacing-24;
 
   #{$root}--open & {
     transform: rotate(180deg);
