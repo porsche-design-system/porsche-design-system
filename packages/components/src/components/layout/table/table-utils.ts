@@ -16,7 +16,7 @@ export const TABLE_COMPONENTS = [
 export type TableComponentType = typeof TABLE_COMPONENTS[number];
 
 export type TableHeadCellSort = {
-  id: string;
+  id: string; // TODO: why?
   active: boolean;
   direction: Direction;
 };
