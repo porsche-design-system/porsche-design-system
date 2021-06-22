@@ -1,6 +1,6 @@
 # Table
 
-## Simple Table
+## Basic Table
 
 ### Live Example
 
@@ -29,9 +29,26 @@
 
 ### Caption
 
-### Sorting
+A caption that describes the content of the table can set in 2 ways.
 
-### Hide Label
+#### Via property
+
+Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.  
+
+<Playground :markup="captionProperty"></Playground>
+
+#### Via slot
+
+When using the `caption` slot its content will be rendered while offering full control of appearance.  
+
+<Playground :markup="captionSlot"></Playground>
+
+### Column Headers
+
+
+#### Sorting
+
+#### Hide Label
 
 ## Advanced Table
 
@@ -100,6 +117,26 @@
       react: getTableCodeSample('react', 'example-advanced'),
       shared: getTableCodeSample('shared', 'example-advanced'),
     };
+
+    basicTableHead = `<p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell>Column 1</p-table-head-cell>
+      <p-table-head-cell>Column 2</p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>`;
+
+    basicTableBody = `<p-table-body></p-table-body>`;
+
+    captionProperty = `<p-table caption="Some caption">
+  ${this.basicTableHead}
+  ${this.basicTableBody}
+</p-table>`;
+
+    captionSlot = `<p-table>
+  <p-headline slot="caption" variant="headline-3" align="center" style="margin-bottom: 1rem">Some slotted caption</p-headline>
+  ${this.basicTableHead}
+  ${this.basicTableBody}
+</p-table>`;
 
     mounted(): void {
       this.syncHeadCellProperties();
