@@ -5,12 +5,12 @@ import {
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
-  getProperty,
   hasFocus,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
@@ -39,8 +39,8 @@ describe('accordion', () => {
     const { tag, otherMarkup, hasInput } = opts ?? {};
 
     const content = `<p-accordion headline="Some Accordion" tag="${tag}">
-  <p>Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<input type="text"/>' : ''}
+Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 </p-accordion>${otherMarkup}`;
 
     await setContentWithDesignSystem(page, content);
@@ -49,7 +49,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
   const getHost = () => selectNode(page, 'p-accordion');
   const getHeadline = () => selectNode(page, 'p-accordion >>> p-headline');
   const getButton = () => selectNode(page, 'p-accordion >>> button');
-  const getIcon = () => selectNode(page, 'p-accordion >>> p-icon');
   const getInput = () => selectNode(page, 'input');
 
   describe('events', () => {
@@ -65,7 +64,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
       expect(eventCounter).toBe(0);
 
       await headline.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(1);
     });
@@ -80,7 +79,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
       expect(eventCounter).toBe(0);
 
       await button.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(1);
     });
@@ -95,7 +94,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(1);
     });
@@ -153,6 +152,12 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>${hasInput ? '<in
       await page.keyboard.press('Tab');
 
       expect(await hasFocus(page, input)).toBe(false);
+    });
+
+    it('should lose focus on content when closed', async () => {
+      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
+
+      expect(true).toBe(false);
     });
   });
 

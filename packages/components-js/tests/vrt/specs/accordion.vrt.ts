@@ -1,5 +1,4 @@
 import {
-  forceFocusedHoveredStateOnDifferentSelectors,
   forceFocusedState,
   forceHoveredState,
   getThemedBodyMarkup,
@@ -17,7 +16,6 @@ describe('Accordion', () => {
       await vrt.test(
         'accordion',
         async () => {
-          await vrt.goTo('/#text'); // to ensure fonts are already loaded before js is initialized
           await vrt.goTo('/#accordion');
         },
         testOptions
@@ -51,11 +49,9 @@ describe('Accordion', () => {
 
         await forceHoveredState(page, `.hovered > ${hoverElementSelector}`);
         await forceFocusedState(page, `.focused > ${focusElementSelector}`);
-        await forceFocusedHoveredStateOnDifferentSelectors(
-          page,
-          `.focused-hovered > ${hoverElementSelector}`,
-          `.focused-hovered > ${focusElementSelector}`
-        );
+
+        await forceHoveredState(page, `.focused-hovered > ${hoverElementSelector}`);
+        await forceFocusedState(page, `.focused-hovered > ${focusElementSelector}`);
       })
     ).toBeFalsy();
   });
