@@ -191,7 +191,9 @@ describe('modal', () => {
       await initAdvancedModal();
       const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'initially'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host))
+        .withContext('initially')
+        .toBe('P-BUTTON-PURE'); // close button
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
@@ -203,7 +205,9 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'finally'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host))
+        .withContext('finally')
+        .toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.up('ShiftLeft');
     });
 
@@ -241,7 +245,9 @@ describe('modal', () => {
     );
     await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-    expect(await getModalVisibility()).toBe('hidden', 'initial');
+    expect(await getModalVisibility())
+      .withContext('initial')
+      .toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
@@ -254,7 +260,9 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
 
-    expect(await getModalVisibility()).toBe('hidden', 'after escape');
+    expect(await getModalVisibility())
+      .withContext('after escape')
+      .toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
@@ -304,15 +312,14 @@ describe('modal', () => {
       await initBasicModal();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-modal']).toBe(1, 'componentDidLoad: p-modal');
-      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
-      expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure'); // has p-icon and p-text
+      expect(status.componentDidLoad['p-modal']).withContext('componentDidLoad: p-modal').toBe(1);
+      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
 
-      expect(status.componentDidLoad.all).toBe(
-        6,
-        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
-      );
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all)
+        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
+        .toBe(6);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -324,13 +331,14 @@ describe('modal', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-modal');
+      expect(status.componentDidUpdate['p-modal']).withContext('componentDidUpdate: p-modal').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(
-        6,
-        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
-      );
-      expect(status.componentDidUpdate.all).toBe(3, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)');
+      expect(status.componentDidLoad.all)
+        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
+        .toBe(6);
+      expect(status.componentDidUpdate.all)
+        .withContext('componentDidUpdate: all | p-modal, (p-headline -> p-text)')
+        .toBe(3);
     });
   });
 });
