@@ -2,10 +2,8 @@
 
 ## Basic Table
 
-### Live Example
-
-<Playground>
-  <p-table ref="tableBasic">
+<CodeBlockExtended :frameworks="basic">
+   <p-table ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
@@ -21,11 +19,9 @@
       </p-table-row>
     </p-table-body>
   </p-table>
-</Playground>
+</CodeBlockExtended>
 
-### Framework Implementations
-
-<CodeBlockExtended :frameworks="basic"></CodeBlockExtended>
+---
 
 ### Caption
 
@@ -43,18 +39,38 @@ When using the `caption` slot its content will be rendered while offering full c
 
 <Playground :markup="captionSlot"></Playground>
 
+---
+
 ### Column Headers
 
+The `table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
 
 #### Sorting
 
+In order to have a sortable table column you need to provide the `sort` property.
+
+<CodeBlockExtended :frameworks="sorting">
+  <p-table>
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell v-for="(item, index) in sortingHeadData" :key="index" ref="headCellsSorting">Column {{ index + 1 }}</p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+    <p-table-body v-html="basicTableBodyRow"></p-table-body>
+  </p-table>
+</CodeBlockExtended>
+
 #### Hide Label
+
+Sometimes you want to hide the label of table column for example when the columns content is self-explanatory. This can be achieved by setting the `hide-label` property.
+
+<Playground :markup="hideLabel"></Playground>
+
+---
 
 ## Advanced Table
 
-### Live Example
-
-<Playground>
+<CodeBlockExtended :frameworks="advanced">
   <p-table ref="tableAdvanced">
     <p-table-head>
       <p-table-head-row>
@@ -85,11 +101,7 @@ When using the `caption` slot its content will be rendered while offering full c
       </p-table-row>
     </p-table-body>
   </p-table>
-</Playground>
-
-### Framework Implementations
-
-<CodeBlockExtended :frameworks="advanced"></CodeBlockExtended>
+</CodeBlockExtended>
 
 
 <script lang="ts">
@@ -125,7 +137,14 @@ When using the `caption` slot its content will be rendered while offering full c
     </p-table-head-row>
   </p-table-head>`;
 
-    basicTableBody = `<p-table-body></p-table-body>`;
+    basicTableBodyRow = `<p-table-row>
+      <p-table-cell>Cell 1</p-table-cell>
+      <p-table-cell>Cell 2</p-table-cell>
+    </p-table-row>`
+
+    basicTableBody = `<p-table-body>
+     ${this.basicTableBodyRow}
+  </p-table-body>`;
 
     captionProperty = `<p-table caption="Some caption">
   ${this.basicTableHead}
@@ -135,6 +154,38 @@ When using the `caption` slot its content will be rendered while offering full c
     captionSlot = `<p-table>
   <p-headline slot="caption" variant="headline-3" align="center" style="margin-bottom: 1rem">Some slotted caption</p-headline>
   ${this.basicTableHead}
+  ${this.basicTableBody}
+</p-table>`;
+
+    sortingHeadData: any[] = [
+      { active: true, direction: 'asc' },
+      { active: false, direction: 'asc' },
+    ];
+
+    sorting = {
+      'vanilla-js' :`Array.from(document.querySelectorAll('#sortable-table .p-table-head-cell')).forEach((el, index) => {
+  el.sort = items[index];
+});`,
+      angular: `<p-table-head-cell *ngFor="let item of items" [sort]="item">
+  {{ item.name }}
+</p-table-head-cell>`,
+      react: `const headRow = useRef<HTMLElement>();
+
+useEffect(() => {
+  headRow.current.childNodes.forEach((node, index) => {
+    (node as any).sort = head[index];
+  });
+}, [items]);`,
+      shared: `const items: TableHeadCellSort[] = ${JSON.stringify(this.sortingHeadData)};`
+  };
+
+    hideLabel = `<p-table>
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell>Column 1</p-table-head-cell>
+      <p-table-head-cell hide-label="true">Column 2</p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>
   ${this.basicTableBody}
 </p-table>`;
 
@@ -157,6 +208,11 @@ When using the `caption` slot its content will be rendered while offering full c
       this.$refs.headCellsAdvanced.forEach((cell, i) => {
         cell.sort = this.headAdvanced[i];
         cell.hideLabel = this.headAdvanced[i].hideLabel;
+      });
+
+      console.log(this.$refs);
+      this.$refs.headCellsSorting.forEach((cell, i) => {
+        cell.sort = this.sortingHeadData[i];
       });
     }
   }
