@@ -1,7 +1,7 @@
 <template>
   <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(framework, index) in frameworks" :key="index" @click="setFramework(index)">
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
         {{ framework }}
       </button>
     </p-tabs-bar>
@@ -20,15 +20,24 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
-    frameworks: FrameworkMarkup = {
+    allFrameworks: Required<FrameworkMarkup> = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React',
+      shared: 'Shared',
     };
 
+    public get usedFrameworks(): FrameworkMarkup {
+      return this.frameworks.reduce((prev, key) => {
+        prev[key as Framework] = this.allFrameworks[key as Framework];
+        return prev;
+      }, {} as FrameworkMarkup);
+    }
+
     public get activeTabIndex(): number {
-      return Object.keys(this.frameworks).indexOf(this.framework);
+      return Object.keys(this.usedFrameworks).indexOf(this.framework);
     }
 
     public get framework(): Framework {
@@ -60,15 +69,134 @@
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
   @import '../styles/internal.variables';
-  @import '../styles/code-highlighting';
 
   .code-block {
     &--light {
-      @include codeHighlighting('light');
+      code,
+      pre {
+        color: $p-color-default;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+      }
+
+      pre {
+        code ::v-deep {
+          .token.comment,
+          .token.prolog,
+          .token.doctype,
+          .token.cdata {
+            color: #aaa;
+          }
+
+          .token.punctuation {
+            color: #999;
+          }
+
+          .token.property,
+          .token.tag,
+          .token.boolean,
+          .token.number,
+          .token.constant,
+          .token.symbol {
+            color: #0cf;
+          }
+
+          .token.selector,
+          .token.attr-name,
+          .token.string,
+          .token.char,
+          .token.builtin {
+            color: royalblue;
+          }
+
+          .token.operator,
+          .token.entity,
+          .token.url,
+          .toke.variable,
+          .token.inserted {
+            color: yellowgreen;
+          }
+
+          .token.atrule,
+          .token.attr-value,
+          .token.keyword {
+            color: deeppink;
+          }
+
+          .token.script {
+            color: hotpink;
+          }
+
+          .token.regex,
+          .token.important {
+            color: orange;
+          }
+
+          .token.deleted {
+            color: red;
+          }
+        }
+      }
     }
 
     &--dark {
-      @include codeHighlighting('dark');
+      code,
+      pre {
+        color: $p-color-theme-dark-default;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+      }
+
+      pre {
+        code ::v-deep {
+          .token.comment,
+          .token.prolog,
+          .token.doctype,
+          .token.cdata {
+            color: #4a5f78;
+          }
+
+          .token.punctuation {
+            color: #4a5f78;
+          }
+
+          .token.tag,
+          .token.operator,
+          .token.number {
+            color: #0aa370;
+          }
+
+          .token.property,
+          .token.function {
+            color: #57718e;
+          }
+
+          .token.tag-id,
+          .token.selector,
+          .token.atrule-id {
+            color: #ebf4ff;
+          }
+
+          .token.attr-name {
+            color: #7eb6f6;
+          }
+
+          .token.boolean,
+          .token.string,
+          .token.entity,
+          .token.url,
+          .token.attr-value,
+          .token.keyword,
+          .token.control,
+          .token.directive,
+          .token.unit,
+          .token.statement,
+          .token.regex,
+          .token.atrule,
+          .token.placeholder,
+          .token.variable {
+            color: #47ebb4;
+          }
+        }
+      }
     }
   }
 
@@ -90,7 +218,7 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin: $p-spacing-16 0;
+    margin-top: $p-spacing-16;
 
     code ::v-deep {
       .namespace {

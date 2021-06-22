@@ -70,6 +70,7 @@
 
     public theme: Theme = 'light';
     public activeThemeTabIndex = 0;
+
     public handleActiveTabIndex(event: CustomEvent<{ activeTabIndex: number }>): void {
       const { activeTabIndex } = event.detail;
       this.activeThemeTabIndex = activeTabIndex;
@@ -184,6 +185,10 @@
 
     .demo ~ .code-block {
       margin-top: $p-spacing-32;
+    }
+
+    .code-block {
+      margin-bottom: $p-spacing-16;
     }
   }
 </style>
