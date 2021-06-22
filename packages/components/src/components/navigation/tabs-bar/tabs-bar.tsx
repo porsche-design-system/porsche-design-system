@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import type { Direction, TabChangeEvent, TabGradientColorTheme, TabSize } from './tabs-bar-utils';
+import type { Direction, TabChangeEvent, TabGradientColorTheme, TabsBarWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -19,7 +19,6 @@ import {
   isDark,
   mapBreakpointPropToClasses,
   setAttribute,
-  SubsetTextWeight,
 } from '../../../utils';
 
 @Component({
@@ -34,7 +33,7 @@ export class TabsBar {
   @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: SubsetTextWeight = 'regular';
+  @Prop() public weight?: TabsBarWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -105,7 +104,7 @@ export class TabsBar {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-      ['root--weight-semibold']: this.weight !== 'regular',
+      ['root--weight-semibold']: this.weight === 'semibold',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 

@@ -6,8 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionHeaderSize } from "./components/content/accordion/accordion-utils";
-import { SubsetTextWeight } from "./utils";
+import { AccordionChangeEvent, AccordionHeaderSize, AccordionWeight } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
@@ -17,7 +16,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { TabChangeEvent, TabGradientColorTheme, TabSize } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabsBarWeight, TabSize } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PAccordion {
@@ -44,7 +43,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: AccordionWeight;
     }
     interface PBanner {
         /**
@@ -687,7 +686,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsBar {
         /**
@@ -709,7 +708,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsItem {
         /**
@@ -1072,7 +1071,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: AccordionWeight;
     }
     interface PBanner {
         /**
@@ -1735,7 +1734,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsBar {
         /**
@@ -1761,7 +1760,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: SubsetTextWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsItem {
         /**

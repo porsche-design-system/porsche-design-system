@@ -1,13 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
-import {
-  getHTMLElements,
-  getPrefixedTagNames,
-  removeAttribute,
-  setAttribute,
-  SubsetTextWeight,
-} from '../../../../utils';
+import { getHTMLElements, getPrefixedTagNames, removeAttribute, setAttribute } from '../../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize } from '../../../navigation/tabs-bar/tabs-bar-utils';
+import type {
+  TabChangeEvent,
+  TabGradientColorTheme,
+  TabsBarWeight,
+  TabSize,
+} from '../../../navigation/tabs-bar/tabs-bar-utils';
 
 @Component({
   tag: 'p-tabs',
@@ -21,7 +20,7 @@ export class Tabs {
   @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: SubsetTextWeight = 'regular';
+  @Prop() public weight?: TabsBarWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
