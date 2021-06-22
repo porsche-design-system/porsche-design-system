@@ -1,8 +1,8 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses, SubsetTextWeight } from '../../../utils';
-import { HeadlineTag } from '../../basic/typography/headline/headline-utils';
-import { AccordionChangeEvent, AccordionHeaderSize } from './accordion-utils';
+import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
+import type { AccordionChangeEvent, AccordionHeaderSize, AccordionWeight } from './accordion-utils';
 
 @Component({
   tag: 'p-accordion',
@@ -16,7 +16,7 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionHeaderSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: SubsetTextWeight = 'semibold';
+  @Prop() public weight?: AccordionWeight = 'semibold';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -41,7 +41,7 @@ export class Accordion {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
-      ['root--weight-regular']: this.weight !== 'semibold',
+      ['root--weight-regular']: this.weight === 'regular',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
@@ -52,12 +52,12 @@ export class Accordion {
         <PrefixedTagNames.pHeadline
           tag={this.tag}
           theme={this.theme}
-          class="heading-wrapper"
+          class="headline"
           variant="inherit"
           onClick={this.handleAccordionClick}
         >
           <button type="button" aria-expanded={this.open} aria-controls={controlsId} id={labelledId}>
-            <span class="heading">{this.heading || <slot name="heading" />}</span>
+            {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon name="arrowHeadDown" aria-hidden="true" class="icon" theme={this.theme} />
           </button>
         </PrefixedTagNames.pHeadline>
