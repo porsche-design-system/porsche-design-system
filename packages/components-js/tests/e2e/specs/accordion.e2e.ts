@@ -24,6 +24,7 @@ describe('accordion', () => {
     tag?: HeadlineTag;
     otherMarkup?: string;
     hasInput?: boolean;
+    open?: boolean;
   };
 
   const clickHandlerScript = `
@@ -36,9 +37,9 @@ describe('accordion', () => {
     </script>`;
 
   const initAccordion = async (opts?: InitOptions) => {
-    const { tag, otherMarkup, hasInput } = opts ?? {};
+    const { tag, otherMarkup, hasInput, open = false } = opts ?? {};
 
-    const content = `<p-accordion headline="Some Accordion" tag="${tag}">
+    const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${open}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 </p-accordion>${otherMarkup}`;
@@ -155,9 +156,20 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     });
 
     it('should lose focus on content when closed', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
+      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, open: true });
+      const host = await getHost();
+      const input = await getInput();
 
-      expect(true).toBe(false);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+
+      expect(await hasFocus(page, input)).toBe(true);
+
+      await setProperty(host, 'open', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, input)).toBe(false);
     });
   });
 
