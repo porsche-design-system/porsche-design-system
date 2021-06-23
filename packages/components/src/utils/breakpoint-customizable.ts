@@ -1,12 +1,14 @@
 import { prefix } from './prefix';
 
+// TODO: resolve overlap with Breakpoint type from utilities package
 export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
-export type Breakpoint = typeof BREAKPOINTS[number];
+export type BreakpointKey = typeof BREAKPOINTS[number];
 export type BreakpointValues<T> = {
-  [key in Breakpoint]?: T;
+  [key in BreakpointKey]?: T;
 } & {
   base: T;
 };
+
 // string is needed in order to pass and parse objects via prop decorator
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
@@ -41,7 +43,7 @@ export const parseJSON = (
 const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string =>
   typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : `${value}`;
 
-const getBreakpointSuffix = (breakpoint: Breakpoint): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
+const getBreakpointSuffix = (breakpoint: BreakpointKey): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
 
 /**
  * @deprecated
@@ -49,7 +51,7 @@ const getBreakpointSuffix = (breakpoint: Breakpoint): string => (breakpoint !== 
 const createClass = (
   classPrefix: string,
   value: BreakpointValue,
-  breakpoint: Breakpoint,
+  breakpoint: BreakpointKey,
   classSuffixes: ClassSuffixes
 ): JSXClasses => {
   if (value !== null && value !== undefined) {
@@ -77,7 +79,7 @@ export const mapBreakpointPropToPrefixedClasses = (
 
   return typeof parsedProp === 'object'
     ? Object.entries(parsedProp).reduce(
-        (classes, [breakpoint, value]: [Breakpoint, BreakpointValue]) => ({
+        (classes, [breakpoint, value]: [BreakpointKey, BreakpointValue]) => ({
           ...classes,
           ...createClass(classPrefix, value, breakpoint, classSuffixes),
         }),
@@ -89,7 +91,7 @@ export const mapBreakpointPropToPrefixedClasses = (
 const createJSXClass = (
   classPrefix: string,
   value: BreakpointValue,
-  breakpoint: Breakpoint,
+  breakpoint: BreakpointKey,
   classSuffixes: ClassSuffixes
 ): JSXClasses => {
   if (value !== null && value !== undefined) {
@@ -107,7 +109,7 @@ export const mapBreakpointPropToClasses = (
 
   return typeof parsedProp === 'object'
     ? Object.entries(parsedProp).reduce(
-        (classes, [breakpoint, value]: [Breakpoint, BreakpointValue]) => ({
+        (classes, [breakpoint, value]: [BreakpointKey, BreakpointValue]) => ({
           ...classes,
           ...createJSXClass(classPrefix, value, breakpoint, classSuffixes),
         }),
