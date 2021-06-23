@@ -223,6 +223,18 @@ ${script}`
     });
 
     describe('sorting', () => {
+      it('should not render sorting button if invalid sort options are provided', async () => {
+        await initTable({ isSortable: true });
+        const firstTableHeadCell = await getFirstTableHeadCell();
+
+        expect(await getFirstTableHeadCellButton()).not.toBeNull();
+
+        await firstTableHeadCell.evaluate((el) => {
+          (el as any).sort = { some: 'object' };
+        });
+        expect(await getFirstTableHeadCellButton()).toBeNull();
+      });
+
       it('should set correct aria-sort value when sortable', async () => {
         await initTable({ isSortable: true });
 
