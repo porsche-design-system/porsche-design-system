@@ -3,6 +3,7 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getBrowser,
+  getElementPositions,
   getLifecycleStatus,
   getOutlineStyle,
   hasFocus,
@@ -37,7 +38,7 @@ describe('accordion', () => {
     </script>`;
 
   const initAccordion = async (opts?: InitOptions) => {
-    const { tag, otherMarkup, hasInput, open = false } = opts ?? {};
+    const { tag, otherMarkup = '', hasInput, open = false } = opts ?? {};
 
     const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${open}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
