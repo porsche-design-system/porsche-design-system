@@ -45,4 +45,5 @@ export const focus = (opts?: Options): JssStyle => {
   };
 };
 
+export { breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;

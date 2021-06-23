@@ -9,7 +9,7 @@ import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { mediaQuery } from './styles';
-import type { BreakPoint } from './styles';
+import type { Breakpoint } from './styles';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -90,7 +90,7 @@ export const buildResponsiveJss = <T>(
         // hence it is used as the initial object within reduce function
         .filter((key) => key !== 'base')
         .reduce(
-          (result, breakpointValue: BreakPoint) => ({
+          (result, breakpointValue: Breakpoint) => ({
             ...result,
             [mediaQuery(breakpointValue)]: buildHostStyles(getStyles(value[breakpointValue])),
           }),
