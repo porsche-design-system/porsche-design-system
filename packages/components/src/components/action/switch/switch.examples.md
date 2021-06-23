@@ -171,7 +171,7 @@ export default class Code extends Vue {
     switches.forEach(switchEl => switchEl.addEventListener('switchChange', this.handleSwitchChange));
   }
 
-  handleSwitchChange =  (e) => {
+  handleSwitchChange =  (e: CustomEvent) => {
     const { checked } = e.detail;
     e.target.setAttribute('checked', checked);
   }

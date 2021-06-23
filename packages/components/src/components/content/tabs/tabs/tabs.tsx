@@ -4,7 +4,7 @@ import type { BreakpointCustomizable, Theme } from '../../../../types';
 import type {
   TabChangeEvent,
   TabGradientColorTheme,
-  TabsBarWeight,
+  TabWeight,
   TabSize,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
 
@@ -20,7 +20,7 @@ export class Tabs {
   @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: TabsBarWeight = 'regular';
+  @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
