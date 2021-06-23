@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [
     `
       p-switch ~ p-switch {
-        margin-top: 8px;
+        margin-top: 0.5rem;
       }
     `,
   ],

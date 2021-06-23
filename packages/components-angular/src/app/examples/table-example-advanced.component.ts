@@ -18,7 +18,7 @@ import type { TableHeadCellSort } from '@porsche-design-system/components-angula
           <p-table-cell>
             <p-flex>
               <p-flex-item>
-                <img src="{{ item.imageUrl }}" width="80" style="margin-right: 8px" alt="" />
+                <img src="{{ item.imageUrl }}" width="80" style="margin-right: .5rem" alt="" />
               </p-flex-item>
               <p-flex-item>
                 <p-text weight="semibold">{{ item.model }}</p-text>
