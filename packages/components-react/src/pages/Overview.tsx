@@ -217,7 +217,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default accordion">
-            <PAccordion heading="Some heading">
+            <PAccordion heading="Some accordion heading">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
               et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </PAccordion>
@@ -385,7 +385,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default accordion with custom prefix">
-              <PAccordion heading="Some heading">
+              <PAccordion heading="Some accordion heading">
                 <p>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                   labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
