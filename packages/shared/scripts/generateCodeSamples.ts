@@ -53,7 +53,13 @@ const generateCodeSamples = (): void => {
             const framework: Framework = extractedFramework === 'js' ? 'vanilla-js' : (extractedFramework as Framework);
 
             console.log(`  – Reading content of ${filePathFromPackagesFolder}`);
-            const fileContent = fs.readFileSync(fileName, 'utf8').replace(/\s$/, '');
+            let fileContent = fs.readFileSync(fileName, 'utf8').replace(/\s$/, '');
+
+            if (framework === 'vanilla-js') {
+              // remove getHeadAndData() helper function
+              fileContent = fileContent.replace(/\s\sconst getHeadAndData = (.|\s)*?return(.*\s){3}/, '');
+            }
+
             return { [framework]: fileContent };
           });
 
