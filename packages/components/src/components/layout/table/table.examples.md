@@ -47,10 +47,21 @@ The `table`'s head can be configured by setting one or more of the following pro
 
 #### Sorting
 
-In order to have a sortable table column you need to provide the `sort` property.
+In order to have a sortable table column you need to provide the `sort` property.  
+It has the following structure:
+
+```ts
+type TableHeadCellSort = {
+  id: string;
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+```
+
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should subscribe to.
 
 <CodeBlockExtended :frameworks="sorting">
-  <p-table>
+  <p-table ref="tableSorting">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in sortingHeadData" :key="index" ref="headCellsSorting">Column {{ index + 1 }}</p-table-head-cell>
@@ -70,11 +81,13 @@ Sometimes you want to hide the label of table column for example when the column
 
 ## Advanced Table
 
+The appearance of a table's contents can be customized as illustrated in the following example. 
+
 <CodeBlockExtended :frameworks="advanced">
   <p-table ref="tableAdvanced">
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
+        <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" :hide-label="item.hideLabel" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
     <p-table-body>
@@ -158,25 +171,72 @@ Sometimes you want to hide the label of table column for example when the column
 </p-table>`;
 
     sortingHeadData: any[] = [
-      { active: true, direction: 'asc' },
-      { active: false, direction: 'asc' },
+      { id: 'col1', active: true, direction: 'asc' },
+      { id: 'col2', active: false, direction: 'asc' },
     ];
 
     sorting = {
-      'vanilla-js' :`Array.from(document.querySelectorAll('#sortable-table .p-table-head-cell')).forEach((el, index) => {
-  el.sort = items[index];
+      'vanilla-js' :`const table = document.getElementById('#sortable-table');
+const tableHeadCells = table.querySelectorAll('p-table-head-cell');
+
+const passHeadItemsToNodes = (items) => 
+  tableHeadCells.forEach((el, index) => {
+    el.sort = items[index];
+  });
+
+passHeadItemsToNodes(headItems); // initial state
+
+table.addEventListener('sortingChange', (e) => {
+  const { id } = e.detail;
+  const sortedHeadItems = headItems.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+  passHeadItemsToNodes(sortedHeadItems);
 });`,
-      angular: `<p-table-head-cell *ngFor="let item of items" [sort]="item">
-  {{ item.name }}
-</p-table-head-cell>`,
+      angular: `// template code
+<p-table (sortingChange)="onSortingChange($event)">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell *ngFor="let item of headItems" [sort]="item">
+        {{ item.name }}
+      </p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>
+  <p-table-body>...</p-table-body>
+</p-table>
+
+// component code
+onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
+  const { id } = e.detail;
+  this.headItems = this.headItems.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+}`,
       react: `const headRow = useRef<HTMLElement>();
+const [head, setHead] = useState(headItems);
 
 useEffect(() => {
   headRow.current.childNodes.forEach((node, index) => {
     (node as any).sort = head[index];
   });
-}, [items]);`,
-      shared: `const items: TableHeadCellSort[] = ${JSON.stringify(this.sortingHeadData)};`
+}, [headItems]);
+
+const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
+  const { id } = e.detail;
+  setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
+}, []);
+
+return (
+  <PTable onSortingChange={onSortingChange}>
+    <PTableHead>
+      <PTableHeadRow ref={headRow}>
+        {head.map((item, i) => (
+          <PTableHeadCell key={i} sort={item}>{item.name}</PTableHeadCell>
+        ))}
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>...</PTableBody>
+  </PTable>
+);`,
+      shared: `const headItems: TableHeadCellSort[] = [\n  ${this.sortingHeadData
+        .map(x => JSON.stringify(x).replace('{', '{ ').replace('}', ' }').replace(/,"/g, ', "').replace(/"([a-z]+)":/g, '$1: '))
+        .join(',\n  ')}\n];`
   };
 
     hideLabel = `<p-table>
@@ -195,11 +255,16 @@ useEffect(() => {
     }
 
     registerEvents(): void {
-      const { tableAdvanced } = this.$refs;
-      tableAdvanced.addEventListener('sortingChange', (e) => {
+      this.$refs.tableAdvanced.addEventListener('sortingChange', (e) => {
         const { id, direction } = e.detail;
-        this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
+        this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
         this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
+        this.syncHeadCellProperties();
+      });
+
+      this.$refs.tableSorting.addEventListener('sortingChange', (e) => {
+        const { id } = e.detail;
+        this.sortingHeadData = this.sortingHeadData.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
         this.syncHeadCellProperties();
       });
     }
@@ -210,7 +275,6 @@ useEffect(() => {
         cell.hideLabel = this.headAdvanced[i].hideLabel;
       });
 
-      console.log(this.$refs);
       this.$refs.headCellsSorting.forEach((cell, i) => {
         cell.sort = this.sortingHeadData[i];
       });

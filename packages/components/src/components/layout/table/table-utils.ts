@@ -16,7 +16,7 @@ export const TABLE_COMPONENTS = [
 export type TableComponentType = typeof TABLE_COMPONENTS[number];
 
 export type TableHeadCellSort = {
-  id: string; // TODO: why?
+  id: string; // the only way for the consumer to identify which table column has been clicked on event callback
   active: boolean;
   direction: Direction;
 };

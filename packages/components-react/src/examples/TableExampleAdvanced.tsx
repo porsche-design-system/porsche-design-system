@@ -20,23 +20,6 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
-    const { id, direction } = e.detail;
-    setHead((prev) =>
-      prev.map((x) => ({
-        ...x,
-        active: false,
-        ...(x.id === id && { sort: e.detail }),
-      }))
-    );
-    setData((prev) =>
-      [...prev].sort((a, b) => {
-        // @ts-ignore
-        return direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id]);
-      })
-    );
-  }, []);
-
   // TODO: workaround to pass data via property since our react wrappers set attributes
   // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
   useEffect(() => {
@@ -44,6 +27,17 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
       (node as any).sort = head[i];
     });
   }, [head]);
+
+  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
+    const { id, direction } = e.detail;
+    setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
+    setData((prev) =>
+      [...prev].sort((a, b) => {
+        // @ts-ignore
+        return direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id]);
+      })
+    );
+  }, []);
 
   return (
     <PTable caption="Some caption" onSortingChange={onSortingChange}>

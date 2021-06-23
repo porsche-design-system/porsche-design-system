@@ -26,8 +26,7 @@
       ].map((item, i) => ({
         ...item,
         ...(item.name && {
-          isSortable: i > 0 && i !== 6,
-          isSorting: i === 1,
+          active: i === 1,
           direction: 'asc',
         }),
       }));
@@ -155,7 +154,7 @@
         console.log('sortingChange', e.detail);
         const { id, direction } = e.detail;
 
-        const sortedHead = head.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
+        const sortedHead = head.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
         const sortedData = [...data].sort((a, b) =>
           direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
         );

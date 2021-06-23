@@ -8,9 +8,9 @@ import { TableHeadCellSort } from '@porsche-design-system/components-angular/lib
     <p-table (sortingChange)="onSortingChange($event)">
       <p-table-head>
         <p-table-head-row>
-          <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">{{
-            item.name
-          }}</p-table-head-cell>
+          <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">
+            {{ item.name }}
+          </p-table-head-cell>
         </p-table-head-row>
       </p-table-head>
       <p-table-body>
@@ -46,7 +46,7 @@ export class TableExampleAdvancedComponent {
 
   onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
     const { id, direction } = e.detail;
-    this.head = this.head.map((x) => ({ ...x, isSorting: false, ...(x.id === id && e.detail) }));
+    this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
     );
