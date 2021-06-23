@@ -1,4 +1,5 @@
 import { breakpoint, color } from '@porsche-design-system/utilities';
+import type { Breakpoint } from '@porsche-design-system/utilities';
 import type { JssStyle } from '.';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -44,6 +45,4 @@ export const focus = (opts?: Options): JssStyle => {
   };
 };
 
-export { breakpoint } from '@porsche-design-system/utilities';
-export type BreakPoint = keyof typeof breakpoint;
-export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
+export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
