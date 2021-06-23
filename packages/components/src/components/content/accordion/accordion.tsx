@@ -1,8 +1,9 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
-import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
-import type { AccordionChangeEvent, AccordionHeaderSize, AccordionWeight } from './accordion-utils';
+import type { AccordionChangeEvent, AccordionSize, AccordionWeight } from './accordion-utils';
+import { getSlottedCss } from './accordion-utils';
 
 @Component({
   tag: 'p-accordion',
@@ -13,7 +14,7 @@ export class Accordion {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<AccordionHeaderSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** The text weight. */
   @Prop() public weight?: AccordionWeight = 'semibold';

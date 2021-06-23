@@ -1,5 +1,5 @@
 import { getPrefixedTagNames, getTagName, pxToRem } from '../../../utils';
-import { TextWeight } from '../../../types';
+import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
