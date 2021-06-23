@@ -39,7 +39,7 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { Framework, Theme } from '@/models';
+  import type { Framework, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {

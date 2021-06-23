@@ -29,6 +29,15 @@
       shared: 'Shared',
     };
 
+    frameworkBeforeShared = this.framework;
+
+    private destroyed(): void {
+      // reset framework to what is was before selecting "shared" since that one is usually not available
+      if (this.framework === 'shared') {
+        this.$store.commit('setSelectedFramework', this.frameworkBeforeShared);
+      }
+    }
+
     public get usedFrameworks(): FrameworkMarkup {
       return this.frameworks.reduce((prev, key) => {
         prev[key as Framework] = this.allFrameworks[key as Framework];
@@ -45,6 +54,9 @@
     }
 
     public setFramework(framework: Framework): void {
+      if (framework === 'shared') {
+        this.frameworkBeforeShared = this.framework;
+      }
       this.$store.commit('setSelectedFramework', framework);
     }
 
