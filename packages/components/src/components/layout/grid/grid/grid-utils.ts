@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
+import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
@@ -34,11 +34,11 @@ const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle =>
   if (!GRID_GUTTERS.includes(gutter)) {
     throw new Error(`Gutter 'size="${gutter}"' has to be a value of: ${GRID_GUTTERS.join(', ')}`);
   }
-  const gutterRem = `${pxToRem(gutter) / 2}rem !important`;
+  const gutterRem = `-${pxToRemWithUnit(gutter / 2)} !important`;
 
   return {
-    marginLeft: '-' + gutterRem,
-    marginRight: '-' + gutterRem,
+    marginLeft: gutterRem,
+    marginRight: gutterRem,
   };
 };
 

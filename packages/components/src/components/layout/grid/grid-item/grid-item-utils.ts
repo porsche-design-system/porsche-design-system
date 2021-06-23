@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
+import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
@@ -18,19 +18,7 @@ const baseCss: string = getCss(
 );
 
 const gridItemWidths = [
-  0,
-  8.333333,
-  16.666667,
-  25,
-  33.333333,
-  41.666667,
-  50,
-  58.333333,
-  66.666667,
-  75,
-  83.333333,
-  91.666667,
-  100,
+  0, 8.333333, 16.666667, 25, 33.333333, 41.666667, 50, 58.333333, 66.666667, 75, 83.333333, 91.666667, 100,
 ];
 
 const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
@@ -43,7 +31,7 @@ const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyl
 });
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
-  const gutterRem = `${pxToRem(gutter) / 2}rem !important`;
+  const gutterRem = `${pxToRemWithUnit(gutter / 2)} !important`;
   return {
     paddingLeft: gutterRem,
     paddingRight: gutterRem,

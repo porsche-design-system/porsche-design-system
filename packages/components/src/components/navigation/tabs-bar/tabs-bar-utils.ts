@@ -1,4 +1,4 @@
-import { getPrefixedTagNames, getTagName, pxToRem } from '../../../utils';
+import { getPrefixedTagNames, getTagName, pxToRemWithUnit } from '../../../utils';
 import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -41,14 +41,14 @@ export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLEle
   const statusBarCenter = statusBarWidth / 2;
   const statusBarPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
   const xTranslation = statusBarPositionLeft + statusBarCenter;
-  const xTranslate = xTranslation ? pxToRem(xTranslation) : '0';
-  return `transform: translate3d(${xTranslate}rem,0,0); width: 0;`;
+  const xTranslate = pxToRemWithUnit(xTranslation || 0);
+  return `transform: translate3d(${xTranslate},0,0); width: 0;`;
 };
 
 export const getTransformationToActive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
-  const statusBarWidth = offsetWidth ? pxToRem(offsetWidth) : 0;
-  const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(offsetLeft) : 0;
-  return `transform: translate3d(${statusBarPositionLeft}rem,0,0); width: ${statusBarWidth}rem;`;
+  const statusBarWidth = pxToRemWithUnit(offsetWidth || 0);
+  const statusBarPositionLeft = pxToRemWithUnit(offsetLeft > 0 ? offsetLeft : 0);
+  return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
 };
 
 export const determineEnableTransitionClass = (
