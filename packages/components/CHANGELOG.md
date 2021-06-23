@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `Table`
-- **tag** property of `Text` is extended by `caption`
+- support `caption` as value for `Text`'s **tag** property 
 
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
