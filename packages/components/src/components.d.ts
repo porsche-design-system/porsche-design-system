@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionHeaderSize, AccordionWeight } from "./components/content/accordion/accordion-utils";
+import { AccordionChangeEvent, AccordionSize, AccordionWeight } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
@@ -31,7 +31,7 @@ export namespace Components {
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<AccordionHeaderSize>;
+        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
@@ -1059,7 +1059,7 @@ declare namespace LocalJSX {
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<AccordionHeaderSize>;
+        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */

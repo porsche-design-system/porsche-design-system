@@ -1,10 +1,10 @@
-import { TextWeight } from '../../../types';
+import type { TextWeight } from '../../../types';
 import { buildGlobalStyles, getCss, getTagName } from '../../../utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 import type { JssStyle } from 'jss';
 
-const ACCORDION_HEADER_SIZE = ['small', 'medium'] as const;
-export type AccordionHeaderSize = typeof ACCORDION_HEADER_SIZE[number];
+const ACCORDION_SIZE = ['small', 'medium'] as const;
+export type AccordionSize = typeof ACCORDION_SIZE[number];
 export type AccordionChangeEvent = { open: boolean };
 export type AccordionWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 
