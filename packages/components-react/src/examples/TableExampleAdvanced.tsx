@@ -56,7 +56,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
             <PTableCell>
               <PFlex>
                 <PFlexItem>
-                  <img src={item.imageUrl} width="80" style={{ marginRight: 8 }} alt="" />
+                  <img src={item.imageUrl} width={80} height={45} style={{ marginRight: 8 }} alt="" />
                 </PFlexItem>
                 <PFlexItem>
                   <PText weight="semibold">{item.model}</PText>
