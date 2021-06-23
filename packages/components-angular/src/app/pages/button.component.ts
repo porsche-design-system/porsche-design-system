@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [
     `
       p-button:not(:last-child) {
-        margin-right: 8px;
+        margin-right: 0.5rem;
       }
     `,
   ],
