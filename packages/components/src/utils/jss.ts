@@ -78,6 +78,7 @@ export type BreakPoint = keyof typeof breakpoint;
 export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
+export const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
 
 export type GetStylesFunction = (value?: any) => JssStyle;
 export const buildResponsiveJss = <T>(
