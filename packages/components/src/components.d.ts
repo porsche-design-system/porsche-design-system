@@ -16,7 +16,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { TabChangeEvent, TabGradientColorTheme, TabsBarWeight, TabSize } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PAccordion {
@@ -686,7 +686,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: TabsBarWeight;
+        "weight"?: TabWeight;
     }
     interface PTabsBar {
         /**
@@ -708,7 +708,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: TabsBarWeight;
+        "weight"?: TabWeight;
     }
     interface PTabsItem {
         /**
@@ -1734,7 +1734,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: TabsBarWeight;
+        "weight"?: TabWeight;
     }
     interface PTabsBar {
         /**
@@ -1760,7 +1760,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: TabsBarWeight;
+        "weight"?: TabWeight;
     }
     interface PTabsItem {
         /**
