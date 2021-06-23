@@ -108,7 +108,7 @@ The background and gradient has to align to your chosen background.
   tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
 });`,
       angular: `import { Component } from '@angular/core';
-import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/types';
+import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'tabs-bar-page',
