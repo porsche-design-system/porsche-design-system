@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
-import { TableHeadCellSort } from '@porsche-design-system/components-angular/lib/types';
+import type { TableHeadCellSort } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-table-example-advanced',
