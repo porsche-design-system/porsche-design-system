@@ -50,26 +50,27 @@
       const table = document.querySelector('p-table');
       table.innerHTML = markup;
       const tableHead = table.querySelector('p-table-head');
+      const tableHeadCells = tableHead.querySelectorAll('p-table-head-cell');
       const tableBody = table.querySelector('p-table-body');
 
-      // pass head item via property
-      const passHeadItemToNodes = (items) =>
-        Array.from(tableHead.querySelectorAll('p-table-head-cell')).forEach((el, index) => {
+      // pass head items via property
+      const passHeadItemsToNodes = (items) =>
+        tableHeadCells.forEach((el, index) => {
           el.hideLabel = items.hideLabel;
           el.sort = items[index];
         });
 
-      passHeadItemToNodes(head);
+      passHeadItemsToNodes(head); // initial state
 
       table.addEventListener('sortingChange', (e) => {
         const { id, direction } = e.detail;
 
-        const sortedHead = head.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
+        const sortedHead = head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
         const sortedData = [...data].sort((a, b) =>
           direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
         );
 
-        passHeadItemToNodes(sortedHead);
+        passHeadItemsToNodes(sortedHead);
         tableBody.innerHTML = renderTableBodyRows(sortedData);
       });
     });

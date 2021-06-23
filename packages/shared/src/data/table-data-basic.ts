@@ -10,35 +10,35 @@ type DataItem = {
 
 export const dataBasic: DataItem[] = [
   {
-    model: '911 Carrera S',
-    date: '03.05.2021',
+    model: '718 Cayman',
+    date: '23.06.2021',
     interest: 'New Car',
     status: 'Won',
     leadId: '0000824402',
   },
   {
-    model: '911 Carrera S',
-    date: '03.05.2021',
+    model: 'Panamera 4S',
+    date: '19.06.2021',
     interest: 'New Car',
     status: 'Lost',
     leadId: '0000824409',
   },
   {
     model: '911 Carrera S',
-    date: '03.05.2021',
+    date: '19.05.2021',
     interest: 'Used Car',
     status: 'Won',
     leadId: '0000824408',
   },
   {
-    model: '911 Carrera S',
-    date: '03.05.2021',
+    model: 'Macan Turbo',
+    date: '10.05.2021',
     interest: 'Used Car',
     status: 'Lost',
     leadId: '0000824407',
   },
   {
-    model: '911 Carrera S',
+    model: 'Taycan',
     date: '03.05.2021',
     interest: 'New Car',
     status: 'Won',
