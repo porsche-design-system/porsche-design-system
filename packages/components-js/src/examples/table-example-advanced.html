@@ -1,22 +1,31 @@
 <p-table></p-table>
 
 <script>
-  fetch('assets/shared.js')
-    .then((res) => res.text())
-    .then((content) => {
-      const [, headStr] = /const headAdvanced = ((.|\s)*?);/.exec(content) || [];
-      const head = eval(headStr);
+  const getHeadAndData = async () => {
+    const content = await fetch('assets/shared.js').then((res) => res.text());
+    const [, headStr] = /const headAdvanced = ((.|\s)*?);/.exec(content) || [];
+    const headAdvanced = eval(headStr);
 
-      const [, dataStr] = /const dataAdvanced = ((.|\s)*?);/.exec(content) || [];
-      const data = eval(dataStr);
+    const [, dataStr] = /const dataAdvanced = ((.|\s)*?);/.exec(content) || [];
+    const dataAdvanced = eval(dataStr);
 
-      const renderTableHeadCells = (items) =>
-        items.map((item) => `<p-table-head-cell>${item.name || ''}</p-table-head-cell>`).join('');
+    return { headAdvanced, dataAdvanced };
+  };
 
-      const renderTableBodyRows = (items) =>
-        items
-          .map(
-            (item) => `
+  (async () => {
+    const { headAdvanced, dataAdvanced } = await getHeadAndData();
+
+    const renderTableHeadRow = (items) =>
+      [
+        '<p-table-head-row>',
+        ...items.map((item) => `<p-table-head-cell>${item.name || ''}</p-table-head-cell>`),
+        '</p-table-head-row>',
+      ].join('');
+
+    const renderTableBodyRows = (items) =>
+      items
+        .map(
+          (item) => `
 <p-table-row>
   <p-table-cell>
     <p-flex>
@@ -38,40 +47,38 @@
     <p-button-pure icon="edit" style="padding: .5rem">Edit Lead</p-button-pure>
   </p-table-cell>
 </p-table-row>`
-          )
-          .join('');
+        )
+        .join('');
 
-      const markup = `
-<p-table-head>
-  <p-table-head-row>${renderTableHeadCells(head)}</p-table-head-row>
-</p-table-head>
-<p-table-body>${renderTableBodyRows(data)}</p-table-body>`;
+    const markup = `
+<p-table-head>${renderTableHeadRow(headAdvanced)}</p-table-head>
+<p-table-body>${renderTableBodyRows(dataAdvanced)}</p-table-body>`;
 
-      const table = document.querySelector('p-table');
-      table.innerHTML = markup;
-      const tableHead = table.querySelector('p-table-head');
-      const tableHeadCells = tableHead.querySelectorAll('p-table-head-cell');
-      const tableBody = table.querySelector('p-table-body');
+    const table = document.querySelector('p-table');
+    table.innerHTML = markup;
+    const tableHead = table.querySelector('p-table-head');
+    const tableHeadCells = tableHead.querySelectorAll('p-table-head-cell');
+    const tableBody = table.querySelector('p-table-body');
 
-      // pass head items via property
-      const passHeadItemsToNodes = (items) =>
-        tableHeadCells.forEach((el, index) => {
-          el.hideLabel = items.hideLabel;
-          el.sort = items[index];
-        });
-
-      passHeadItemsToNodes(head); // initial state
-
-      table.addEventListener('sortingChange', (e) => {
-        const { id, direction } = e.detail;
-
-        const sortedHead = head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
-        const sortedData = [...data].sort((a, b) =>
-          direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
-        );
-
-        passHeadItemsToNodes(sortedHead);
-        tableBody.innerHTML = renderTableBodyRows(sortedData);
+    // pass head items via property
+    const passHeadItemsToNodes = (items) =>
+      tableHeadCells.forEach((el, index) => {
+        el.hideLabel = items[index].hideLabel;
+        el.sort = items[index];
       });
+
+    passHeadItemsToNodes(headAdvanced); // initial state
+
+    table.addEventListener('sortingChange', (e) => {
+      const { id, direction } = e.detail;
+
+      const sortedHead = headAdvanced.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+      const sortedData = [...dataAdvanced].sort((a, b) =>
+        direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+      );
+
+      passHeadItemsToNodes(sortedHead);
+      tableBody.innerHTML = renderTableBodyRows(sortedData);
     });
+  })();
 </script>

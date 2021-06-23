@@ -1,5 +1,11 @@
 # Table
 
+The `p-table` component displays tabular data and offers column-wise sorting options.  
+It combines a consistent appearance together with great accessibility while not having restrictions regarding its content.
+Therefore, it can be used for plain text but also rich content like images, form elements and buttons.
+
+It is a controlled component. This means it does not contain any internal state, and you got full control over its behavior.
+
 ## Basic Table
 
 <CodeBlockExtended :frameworks="basic">
@@ -43,7 +49,7 @@ When using the `caption` slot its content will be rendered while offering full c
 
 ### Column Headers
 
-The `table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
+The `p-table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
 
 #### Sorting
 
