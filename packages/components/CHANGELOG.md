@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `Accordion` component
 
-### Changed
+#### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 
 ### [2.2.1] - 2021-06-08
