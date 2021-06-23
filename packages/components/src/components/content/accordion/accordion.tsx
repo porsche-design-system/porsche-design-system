@@ -33,6 +33,10 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
+  public connectedCallback(): void {
+    insertSlottedStyles(this.host, getSlottedCss(this.host));
+  }
+
   public render(): JSX.Element {
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
