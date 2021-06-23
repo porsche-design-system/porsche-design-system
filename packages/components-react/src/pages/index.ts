@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Banner';
 export * from './Button';
 export * from './ButtonGroup';
@@ -24,7 +25,6 @@ export * from './ModalPrefixed';
 export * from './ModalScrollable';
 export * from './Overview';
 export * from './Pagination';
-export * from './Accordion';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
 export * from './Spinner';
