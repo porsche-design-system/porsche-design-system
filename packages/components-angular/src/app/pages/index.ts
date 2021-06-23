@@ -1,3 +1,4 @@
+import { AccordionComponent } from './accordion.component';
 import { BannerComponent } from './banner.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
@@ -25,7 +26,6 @@ import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
-import { AccordionComponent } from './accordion.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
