@@ -1,4 +1,5 @@
-import { attachCss, buildHostStyles, getCss, GetStylesFunction, JssStyle, mergeDeep, pxToRem } from '../../../../utils';
+import { attachCss, buildHostStyles, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
 import { text } from '@porsche-design-system/utilities';
@@ -9,7 +10,7 @@ const baseCss: string = getCss(
     display: 'list-item !important',
     color: 'inherit !important',
     listStyleType: 'none !important',
-    paddingLeft: `${pxToRem(24)}rem !important`,
+    paddingLeft: `${pxToRemWithUnit(24)} !important`,
     '&:before': {
       position: 'absolute !important',
     },
@@ -20,14 +21,14 @@ const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyl
     ? {
         '&:before': {
           height: '1px !important',
-          width: `${pxToRem(8)}rem !important`,
+          width: `${pxToRemWithUnit(8)} !important`,
           top: 'calc(1.5em / 2) !important',
         },
       }
     : {};
 };
 const getOrderedStyles: GetStylesFunction = (): JssStyle => ({
-  paddingLeft: `${pxToRem(40)}rem !important`,
+  paddingLeft: `${pxToRemWithUnit(40)} !important`,
 
   '&:before': {
     right: 'calc(100% - 24px) !important',
@@ -46,8 +47,8 @@ const getUnorderedStyles: GetStylesFunction = (): JssStyle => ({
     content: '"" !important',
     left: '0 !important',
     top: 'calc(1.5em / 2 - 0.125em) !important',
-    width: `${pxToRem(4)}rem !important`,
-    height: `${pxToRem(4)}rem !important`,
+    width: `${pxToRemWithUnit(4)} !important`,
+    height: `${pxToRemWithUnit(4)} !important`,
     backgroundColor: 'currentColor !important',
   },
 });
