@@ -171,10 +171,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default accordion">
           <p-accordion [heading]="'Some heading'">
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            </p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           </p-accordion>
         </div>
 
@@ -337,10 +335,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default accordion with custom prefix">
           <my-prefix-p-accordion [heading]="'Some heading'">
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            </p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           </my-prefix-p-accordion>
         </div>
 
