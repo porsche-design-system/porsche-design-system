@@ -232,6 +232,8 @@ ${script}`
         await firstTableHeadCell.evaluate((el) => {
           (el as any).sort = { some: 'object' };
         });
+        await waitForStencilLifecycle(page);
+
         expect(await getFirstTableHeadCellButton()).toBeNull();
       });
 
