@@ -44,7 +44,8 @@
   <p-table-cell>${item.status}</p-table-cell>
   <p-table-cell>${item.leadId}</p-table-cell>
   <p-table-cell>
-    <p-button-pure icon="edit" style="padding: .5rem">Edit Lead</p-button-pure>
+    <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>
+    <p-button-pure icon="delete" style="padding: .5rem">Delete</p-button-pure>
   </p-table-cell>
 </p-table-row>`
         )
@@ -56,8 +57,7 @@
 
     const table = document.querySelector('p-table');
     table.innerHTML = markup;
-    const tableHead = table.querySelector('p-table-head');
-    const tableHeadCells = tableHead.querySelectorAll('p-table-head-cell');
+    const tableHeadCells = table.querySelectorAll('p-table-head-cell');
     const tableBody = table.querySelector('p-table-body');
 
     // pass head items via property

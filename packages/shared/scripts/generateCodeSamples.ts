@@ -22,6 +22,12 @@ const generateCodeSamples = (): void => {
           'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
         ],
         [
+          '../components-js/src/examples/table-example-sorting.html',
+          '../components-angular/src/app/examples/table-example-sorting.component.ts',
+          '../components-react/src/examples/TableExampleSorting.tsx',
+          'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
+        ],
+        [
           '../components-js/src/examples/table-example-advanced.html',
           '../components-angular/src/app/examples/table-example-advanced.component.ts',
           '../components-react/src/examples/TableExampleAdvanced.tsx',
