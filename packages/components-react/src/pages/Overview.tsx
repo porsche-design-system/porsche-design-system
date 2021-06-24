@@ -1,36 +1,43 @@
 import {
+  componentsReady,
   PBanner,
   PButton,
   PButtonGroup,
   PButtonPure,
-  PHeadline,
-  PText,
-  PDivider,
-  PIcon,
   PCheckboxWrapper,
-  PRadioButtonWrapper,
-  PSelectWrapper,
-  PTextFieldWrapper,
-  PTextareaWrapper,
-  PFieldsetWrapper,
   PContentWrapper,
-  PGrid,
-  PGridItem,
+  PDivider,
+  PFieldsetWrapper,
   PFlex,
   PFlexItem,
-  PTabs,
-  PTabsItem,
-  PTabsBar,
-  PTextList,
-  PTextListItem,
-  PSpinner,
-  PMarque,
-  PPagination,
+  PGrid,
+  PGridItem,
+  PHeadline,
+  PIcon,
   PLink,
   PLinkPure,
   PLinkSocial,
+  PMarque,
   PorscheDesignSystemProvider,
-  componentsReady,
+  PPagination,
+  PRadioButtonWrapper,
+  PSelectWrapper,
+  PSpinner,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
+  PText,
+  PTextareaWrapper,
+  PTextFieldWrapper,
+  PTextList,
+  PTextListItem,
 } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
@@ -199,6 +206,23 @@ export const OverviewPage = (): JSX.Element => {
             <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
           </div>
 
+          <div className="playground light" title="should render default table">
+            <PTable>
+              <PTableHead>
+                <PTableHeadRow>
+                  <PTableHeadCell>Column 1</PTableHeadCell>
+                  <PTableHeadCell>Column 2</PTableHeadCell>
+                </PTableHeadRow>
+              </PTableHead>
+              <PTableBody>
+                <PTableRow>
+                  <PTableCell>Cell 1</PTableCell>
+                  <PTableCell>Cell 2</PTableCell>
+                </PTableRow>
+              </PTableBody>
+            </PTable>
+          </div>
+
           <div className="playground light" title="should render default tabs">
             <PTabs>
               <PTabsItem label="Tab1">Content 1</PTabsItem>
@@ -358,6 +382,23 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default pagination with custom prefix">
               <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
+            </div>
+
+            <div className="playground light" title="should render default table with custom prefix">
+              <PTable>
+                <PTableHead>
+                  <PTableHeadRow>
+                    <PTableHeadCell>Column 1</PTableHeadCell>
+                    <PTableHeadCell>Column 2</PTableHeadCell>
+                  </PTableHeadRow>
+                </PTableHead>
+                <PTableBody>
+                  <PTableRow>
+                    <PTableCell>Cell 1</PTableCell>
+                    <PTableCell>Cell 2</PTableCell>
+                  </PTableRow>
+                </PTableBody>
+              </PTable>
             </div>
 
             <div className="playground light" title="should render default tabs with custom prefix">
