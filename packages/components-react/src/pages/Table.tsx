@@ -9,14 +9,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react';
 import { useEffect, useRef } from 'react';
-
-const head: any[] = [
-  { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
-  { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
-  { name: 'Min width cell', style: { minWidth: 250 } },
-  { name: 'Multiline<br/>header<br/>cell', sort: { id: 'some-id', active: true, direction: 'asc' } },
-  { name: 'Hide header cell', hideLabel: true },
-];
+import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
 export const TablePage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
@@ -25,9 +18,9 @@ export const TablePage = (): JSX.Element => {
   // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
   useEffect(() => {
     headRow.current.childNodes.forEach((node, i) => {
-      (node as any).sort = head[i].sort;
+      (node as any).sort = head[i];
     });
-  }, []);
+  }, [head]);
 
   return (
     <>
@@ -38,7 +31,7 @@ export const TablePage = (): JSX.Element => {
               {head.map((item, i) => (
                 <PTableHeadCell
                   key={i}
-                  sort={item.sort}
+                  // sort={item}
                   hideLabel={item.hideLabel}
                   style={item.style}
                   dangerouslySetInnerHTML={{ __html: item.name }}
@@ -47,23 +40,21 @@ export const TablePage = (): JSX.Element => {
             </PTableHeadRow>
           </PTableHead>
           <PTableBody>
-            {[0, 1, 2, 3].map((item, i) => (
+            {data.map((item, i) => (
               <PTableRow key={i}>
                 <PTableCell>
                   <img
-                    src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
-                    width="80"
-                    height="48"
+                    src={item.imageUrl}
+                    width={item.imageWidth}
+                    height={item.imageHeight}
                     style={{ marginRight: '.5rem' }}
                     alt=""
                   />
-                  <a href="#">link</a> <b>bold</b> <i>italic</i> <strong>strong</strong> <em>emphasized</em>
+                  <span dangerouslySetInnerHTML={{ __html: item.html }} />
                 </PTableCell>
-                <PTableCell style={{ whiteSpace: 'normal' }}>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-                </PTableCell>
-                <PTableCell>Some text</PTableCell>
-                <PTableCell>Some text</PTableCell>
+                <PTableCell style={{ whiteSpace: 'normal' }}>{item.longText}</PTableCell>
+                <PTableCell>{item.shortText}</PTableCell>
+                <PTableCell>{item.shortText}</PTableCell>
                 <PTableCell>
                   <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
                     Edit
