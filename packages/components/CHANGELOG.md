@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimize vertical alignment of `Modal`
 
 #### Fixed
-- URL of inject global styles warning
+- URL in inject global style warning
 
 ### [2.2.1-beta.1] - 2021-06-02
 
