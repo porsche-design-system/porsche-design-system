@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TableHeadCellSort } from '../table-utils';
 import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
-import { addCss, getAriaSort, isDirectionAsc, SORT_EVENT_NAME, toggleDirection } from '../table-utils';
+import { addCss, createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from '../table-utils';
 
 @Component({
   tag: 'p-table-head-cell',
@@ -50,11 +50,7 @@ export class TableHeadCell {
 
   private handleButtonClick = (): void => {
     this.host.dispatchEvent(
-      // TODO: extract into utils with unit test
-      new CustomEvent<TableHeadCellSort>(SORT_EVENT_NAME, {
-        bubbles: true,
-        detail: { ...this.sort, active: true, direction: toggleDirection(this.sort.direction) },
-      })
+      new CustomEvent<TableHeadCellSort>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
     );
   };
 }

@@ -29,8 +29,6 @@ export const getAriaSort = (sort: TableHeadCellSort): AriaAttributes['aria-sort'
   return sort?.active ? (isDirectionAsc(sort.direction) ? 'ascending' : 'descending') : 'none';
 };
 
-export const SORT_EVENT_NAME = 'internalSortingChange';
-
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
@@ -47,3 +45,10 @@ export const getTableCss = (host: HTMLElement): string => {
 export const addCss = (host: HTMLElement): void => {
   attachCss(host, getTableCss(host));
 };
+
+export const SORT_EVENT_NAME = 'internalSortingChange';
+
+export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<TableHeadCellSort> => ({
+  bubbles: true,
+  detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
+});
