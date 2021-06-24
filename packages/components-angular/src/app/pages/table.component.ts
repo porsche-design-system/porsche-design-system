@@ -1,12 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-const head = [
-  { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
-  { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
-  { name: 'Min width cell', style: { minWidth: 250 } },
-  { name: 'Multiline<br/>header<br/>cell', sort: { id: 'some-id', active: true, direction: 'asc' } },
-  { name: 'Hide header cell', hideLabel: true },
-];
+import { dataVrt, headVrt } from '@porsche-design-system/shared';
 
 @Component({
   selector: 'page-table',
@@ -17,7 +10,7 @@ const head = [
           <p-table-head-row>
             <p-table-head-cell
               *ngFor="let item of head"
-              [sort]="item.sort"
+              [sort]="item"
               [hideLabel]="item.hideLabel"
               [style]="item.style?.minWidth ? 'min-width: 250px;' : null"
               [innerHTML]="item.name"
@@ -25,24 +18,20 @@ const head = [
           </p-table-head-row>
         </p-table-head>
         <p-table-body>
-          <p-table-row *ngFor="let item of [0, 1, 2, 3]">
+          <p-table-row *ngFor="let item of data">
             <p-table-cell>
               <img
-                src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
-                width="80"
-                height="48"
+                [src]="item.imageUrl"
+                [width]="item.imageWidth"
+                [height]="item.imageHeight"
                 style="margin-right: .5rem;"
                 alt=""
               />
-              <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
-                >emphasized</em
-              >
+              <span [innerHTML]="item.html"></span>
             </p-table-cell>
-            <p-table-cell style="white-space: normal"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell
-            >
-            <p-table-cell>Some text</p-table-cell>
-            <p-table-cell>Some text</p-table-cell>
+            <p-table-cell style="white-space: normal">{{ item.longText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>
               <p-button-pure icon="edit" style="padding: .5rem;">Edit</p-button-pure>
               <p-button-pure icon="delete" style="padding: .5rem;">Delete</p-button-pure>
@@ -61,5 +50,6 @@ const head = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-  public head = head;
+  public head = headVrt;
+  public data = dataVrt;
 }

@@ -1,69 +1,72 @@
 <div class="playground light table" title="should render table">
   <script>
-    const head = [
-      { name: 'Slotted Styles', sort: { id: 'some-id', active: false, direction: 'asc' } },
-      { name: 'Multiline text', sort: { id: 'some-id', active: true, direction: 'desc' } },
-      { name: 'Min width cell', style: { minWidth: 250 } },
-      { name: 'Multiline<br/>header<br/>cell', sort: { id: 'some-id', active: true, direction: 'asc' } },
-      { name: 'Hide header cell', hideLabel: true },
-    ];
+    const getHeadAndData = async () => {
+      const content = await fetch('assets/shared.js').then((res) => res.text());
+      const [, headStr] = /const headVrt = ((.|\s)*?);/.exec(content) || [];
+      const head = eval(headStr);
 
-    const renderTableHeadCells = (items) => {
-      return items
-        .map(
-          (item) =>
-            `<p-table-head-cell ${item.hideLabel ? 'hide-label' : ''} ${
-              item.style && item.style.minWidth ? 'style="min-width: 250px;"' : ''
-            }>${item.name}</p-table-head-cell>`
-        )
-        .join('');
+      const [, dataStr] = /const dataVrt = ((.|\s)*?\));/.exec(content) || [];
+      const data = eval(dataStr);
+
+      return { head, data };
     };
 
-    const renderTableBodyRows = () =>
-      [0, 1, 2, 3]
-        .map(
-          (item) => `
+    (async () => {
+      const { head, data } = await getHeadAndData();
+
+      const renderTableHeadRow = (items) =>
+        [
+          '<p-table-head-row>',
+          ...items.map((item) => {
+            const attrs = item.style?.minWidth ? 'style="min-width: 250px;"' : '';
+            return `<p-table-head-cell ${attrs}>${item.name}</p-table-head-cell>`;
+          }),
+          '</p-table-head-row>',
+        ].join('');
+
+      const renderTableBodyRows = (items) =>
+        items
+          .map(
+            (item) => `
 <p-table-row>
   <p-table-cell>
-      <img
-        src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
-        width="80"
-        height="48"
-        style="margin-right: .5rem;"
-        alt=""
-      />
-      <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em>emphasized</em>
+    <img
+      src="${item.imageUrl}"
+      width=${item.imageWidth}"
+      height=${item.imageHeight}"
+      style='margin-right: .5rem;'
+      alt=''
+    />
+    ${item.html}
   </p-table-cell>
-  <p-table-cell style="white-space: normal">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
-  <p-table-cell>Some text</p-table-cell>
-  <p-table-cell>Some text</p-table-cell>
+  <p-table-cell style='white-space: normal'>${item.longText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
   <p-table-cell>
-    <p-button-pure icon="edit" style="padding: .5rem;">Edit</p-button-pure>
-    <p-button-pure icon="delete" style="padding: .5rem;">Delete</p-button-pure>
+    <p-button-pure icon='edit' style='padding: .5rem;'>Edit</p-button-pure>
+    <p-button-pure icon='delete' style='padding: .5rem;'>Delete</p-button-pure>
   </p-table-cell>
 </p-table-row>`
-        )
-        .join('');
+          )
+          .join('');
 
-    const markup = `
-<p-table caption="Some caption">
-  <p-table-head>
-    <p-table-head-row>${renderTableHeadCells(head)}</p-table-head-row>
-  </p-table-head>
-  <p-table-body>${renderTableBodyRows()}</p-table-body>
+      const markup = `
+<p-table caption='Some caption'>
+  <p-table-head>${renderTableHeadRow(head)}</p-table-head>
+  <p-table-body>${renderTableBodyRows(data)}</p-table-body>
 </p-table>`;
 
-    const playground = document.querySelector('.table');
-    playground.innerHTML = markup;
+      const playground = document.querySelector('.table');
+      playground.innerHTML = markup;
 
-    const table = playground.querySelector('p-table');
-    const tableHead = table.querySelector('p-table-head');
-    const tableBody = table.querySelector('p-table-body');
+      const tableHeadCells = playground.querySelectorAll('p-table-head-cell');
 
-    // pass head item via property
-    Array.from(tableHead.querySelectorAll('p-table-head-cell')).forEach((el, index) => {
-      el.sort = head[index].sort;
-    });
+      // pass head item via property
+      tableHeadCells.forEach((el, index) => {
+        el.hideLabel = head[index].hideLabel;
+        el.sort = head[index];
+      });
+    })();
   </script>
 </div>
 
