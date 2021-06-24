@@ -43,3 +43,8 @@ export const scrollElementBy = (el: HTMLElement, amount: number): void => {
     intervalScroll(el, scrollStep, initialScrollLeft, endScrollLeft);
   }
 };
+
+export const getScrollByX = (scrollAreaElement: HTMLElement): number => {
+  const { offsetWidth } = scrollAreaElement;
+  return Math.round(offsetWidth * 0.2);
+};
