@@ -74,6 +74,12 @@ export const TablePage = (): JSX.Element => {
           <span slot="caption">
             Some unstyled caption <a href="#">with a link</a>
           </span>
+          <PTableHead>
+            <PTableHeadRow>
+              <PTableHeadCell>Column 1</PTableHeadCell>
+              <PTableHeadCell>Column 2</PTableHeadCell>
+            </PTableHeadRow>
+          </PTableHead>
         </PTable>
       </div>
     </>

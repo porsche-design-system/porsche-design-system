@@ -44,6 +44,12 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
     <div class="playground light" title="should render table with unstyled slotted caption">
       <p-table>
         <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
+        <p-table-head>
+          <p-table-head-row>
+            <p-table-head-cell>Column 1</p-table-head-cell>
+            <p-table-head-cell>Column 2</p-table-head-cell>
+          </p-table-head-row>
+        </p-table-head>
       </p-table>
     </div>
   `,
