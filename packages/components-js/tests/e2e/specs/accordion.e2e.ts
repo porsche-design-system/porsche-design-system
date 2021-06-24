@@ -3,7 +3,7 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getBrowser,
-  getElementPositions,
+  getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
   hasFocus,
@@ -25,7 +25,7 @@ describe('accordion', () => {
     tag?: HeadlineTag;
     otherMarkup?: string;
     hasInput?: boolean;
-    open?: boolean;
+    isOpen?: boolean;
   };
 
   const clickHandlerScript = `
@@ -37,21 +37,89 @@ describe('accordion', () => {
       });
     </script>`;
 
-  const initAccordion = async (opts?: InitOptions) => {
-    const { tag, otherMarkup = '', hasInput, open = false } = opts ?? {};
+  // we need a minimal transition, so that the transitionend listener is triggered
+  const minimalTransition = `<style>:root {--p-animation-hover-duration: 0.01s}</style>`;
 
-    const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${open}">
+  const initAccordion = async (opts?: InitOptions) => {
+    const { tag, otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
+
+    const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 </p-accordion>${otherMarkup}`;
 
-    await setContentWithDesignSystem(page, content);
+    await setContentWithDesignSystem(page, content, { injectIntoHead: minimalTransition });
   };
 
   const getHost = () => selectNode(page, 'p-accordion');
   const getHeadline = () => selectNode(page, 'p-accordion >>> p-headline');
   const getButton = () => selectNode(page, 'p-accordion >>> button');
   const getInput = () => selectNode(page, 'input');
+  const getCollapsibleEl = () => selectNode(page, 'p-accordion >>> .collapsible ');
+
+  it('should set visibility on initial open', async () => {
+    await initAccordion({ isOpen: true });
+    const collapsible = await getCollapsibleEl();
+    expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
+  });
+
+  it('should set visibility on initial close', async () => {
+    await initAccordion();
+    const collapsible = await getCollapsibleEl();
+    expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
+  });
+
+  it('should set visibility on open change', async () => {
+    await initAccordion();
+    const host = await getHost();
+    const collapsible = await getCollapsibleEl();
+
+    expect(await getElementStyle(collapsible, 'visibility'))
+      .withContext('initially')
+      .toBe('hidden');
+
+    await setProperty(host, 'open', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'visibility'))
+      .withContext('after open=true')
+      .toBe('visible');
+
+    await setProperty(host, 'open', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'visibility'))
+      .withContext('after open=false')
+      .toBe('hidden');
+  });
+
+  it('should have correct visibility after open/close re-trigger', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+    const headline = await getHeadline();
+    const collapsible = await getCollapsibleEl();
+
+    // expand -> collapse -> expand
+    await headline.click();
+    await headline.click();
+    await headline.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
+  });
+
+  it('should have correct visibility after close/open re-trigger', async () => {
+    await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
+    const headline = await getHeadline();
+    const collapsible = await getCollapsibleEl();
+
+    // collapse -> expand -> collapse
+    await headline.click();
+    await headline.click();
+    await headline.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
+  });
 
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
@@ -157,7 +225,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     });
 
     it('should lose focus on content when closed', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, open: true });
+      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, isOpen: true });
       const host = await getHost();
       const input = await getInput();
 
