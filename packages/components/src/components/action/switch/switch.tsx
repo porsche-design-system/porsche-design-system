@@ -7,6 +7,7 @@ import {
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
 } from '../../../utils';
+import { DEFAULT_EVENT_OPTIONS } from '../../../constants';
 
 export type SwitchChangeEvent = { checked: boolean };
 
@@ -43,7 +44,7 @@ export class Switch {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
+  @Event(DEFAULT_EVENT_OPTIONS) public switchChange: EventEmitter<SwitchChangeEvent>;
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {

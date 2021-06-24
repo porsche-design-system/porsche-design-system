@@ -8,6 +8,7 @@ import {
 } from '../../../../utils';
 import type { TableHeadCellSort } from '../table-utils';
 import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
+import { DEFAULT_EVENT_OPTIONS } from '../../../../constants';
 
 @Component({
   tag: 'p-table',
@@ -21,7 +22,7 @@ export class Table {
   @Prop() public caption?: string = '';
 
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadCellSort>;
+  @Event(DEFAULT_EVENT_OPTIONS) public sortingChange: EventEmitter<TableHeadCellSort>;
 
   @State() public isScrollIndicatorVisible = false;
 
