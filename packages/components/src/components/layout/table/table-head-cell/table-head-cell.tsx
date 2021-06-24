@@ -28,7 +28,7 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {active !== undefined && direction !== undefined ? (
-          <button class="button" onClick={this.handleButtonClick}>
+          <button onClick={this.handleButtonClick}>
             <slot />
             <PrefixedTagNames.pIcon
               class={{
@@ -40,7 +40,7 @@ export class TableHeadCell {
             />
           </button>
         ) : (
-          <span hidden={this.hideLabel ? true : null}>
+          <span class={{ hidden: this.hideLabel }}>
             <slot />
           </span>
         )}
