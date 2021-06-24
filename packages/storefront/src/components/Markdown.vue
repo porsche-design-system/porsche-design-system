@@ -30,8 +30,8 @@
   @import '../styles/internal.variables';
 
   /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
- * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
- */
+   * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
+   */
   .markdown ::v-deep > .vmark {
     &:first-child > {
       :first-child {
@@ -74,7 +74,7 @@
         & img,
         & code,
         & pre {
-        :not(div):not(pre):not(hr):not(table):not(img):not(p-tabs) {
+        :not(div):not(pre):not(hr):not(table):not(img) {
           max-width: 800px;
         }
 
@@ -183,8 +183,7 @@
           color: $p-color-brand;
         }
 
-        pre,
-        p-tabs pre {
+        pre {
           margin-top: $p-spacing-8;
           display: block;
           padding: $p-spacing-8 $p-spacing-24;
