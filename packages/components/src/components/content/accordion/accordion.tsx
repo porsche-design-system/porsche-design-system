@@ -117,8 +117,13 @@ export class Accordion {
     const contentInnerHeight = this.contentWrapper.scrollHeight;
     this.collapsibleElement.style.visibility = 'visible';
 
+    const transition = this.collapsibleElement.style.transition;
+    this.collapsibleElement.style.transition = '';
+
     requestAnimationFrame(() => {
       this.collapsibleElement.style.height = `${contentInnerHeight}px`;
+      this.collapsibleElement.style.transition = transition;
+
       requestAnimationFrame(() => {
         this.collapsibleElement.style.height = '0px';
       });
