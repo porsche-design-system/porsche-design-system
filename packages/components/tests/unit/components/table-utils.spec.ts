@@ -1,4 +1,5 @@
 import {
+  createSortedEventInitDictDetail,
   getAriaSort,
   getSlottedCss,
   getTableCss,
@@ -7,7 +8,9 @@ import {
   TableHeadCellSort,
   toggleDirection,
 } from '../../../src/components/layout/table/table-utils';
+import * as tableUtils from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
+import * as slottedStylesUtils from '../../../src/utils/slotted-styles';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {
@@ -71,4 +74,29 @@ describe('getTableCss()', () => {
       expect(getTableCss(host)).toMatchSnapshot();
     }
   );
+});
+
+describe('createSortedEventInitDictDetail()', () => {
+  const activeSort: TableHeadCellSort = { id: '1', active: true, direction: 'asc' };
+  const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
+
+  it('should call toggleDirection()', () => {
+    const spy = jest.spyOn(tableUtils, 'toggleDirection');
+    createSortedEventInitDictDetail(activeSort);
+    expect(spy).toBeCalledWith('asc');
+  });
+
+  it('should return correct eventInitDict when active', () => {
+    expect(createSortedEventInitDictDetail(activeSort)).toEqual({
+      bubbles: true,
+      detail: { id: '1', active: true, direction: 'desc' },
+    });
+  });
+
+  it('should return correct eventInitDict when not active', () => {
+    expect(createSortedEventInitDictDetail(inactiveSort)).toEqual({
+      bubbles: true,
+      detail: { id: '1', active: true, direction: 'desc' },
+    });
+  });
 });
