@@ -101,7 +101,8 @@ button {
   margin-left: $p-spacing-24;
 
   #{$root}--open & {
-    transform: rotate3d(0, 0, 1, 180deg);
+    // needs to be rotate, since safari rotates in a different direction on rotate3d
+    transform: rotate(180deg);
   }
 }
 
