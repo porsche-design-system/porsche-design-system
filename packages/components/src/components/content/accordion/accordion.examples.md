@@ -24,7 +24,7 @@ For instance our example accordions use heading level 3 because they are contain
 `p-accordion` is a component which does not work by itself and needs to be controlled from the outside.  
 This grants you flexible control over the `open` state.
 
-In order to get notified when the Accordion gets closed by clicking the `headline` you need to register an event listener for the `accordionChange` event which is emitted by `p-accordion`.
+In order to get notified when the Accordion gets closed by clicking the `heading` you need to register an event listener for the `accordionChange` event which is emitted by `p-accordion`.
 
 #### Vanilla JS
 
