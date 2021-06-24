@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ example: isSlotSet }">
+  <div :class="{ 'code-block-extended': true, example: isSlotSet }">
     <div v-if="isSlotSet" class="demo">
       <slot />
     </div>

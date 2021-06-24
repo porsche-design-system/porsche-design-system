@@ -259,7 +259,8 @@
         }
 
         // Special
-        .playground {
+        .playground,
+        .code-block-extended {
           margin-top: $p-spacing-16;
         }
       }
