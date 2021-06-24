@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
@@ -34,6 +34,18 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
+  private collapsibleElement: HTMLDivElement;
+  private contentWrapper: HTMLDivElement;
+
+  @Watch('open')
+  public openChangeHandler(isOpen: boolean): void {
+    if (isOpen) {
+      this.expandContent();
+    } else {
+      this.collapseContent();
+    }
+  }
+
   public connectedCallback(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
@@ -66,8 +78,16 @@ export class Accordion {
             <PrefixedTagNames.pIcon class="icon" name="arrowHeadDown" theme={this.theme} aria-hidden="true" />
           </button>
         </PrefixedTagNames.pHeadline>
-        <div id={contentId} class="content" role="region" aria-labelledby={buttonId}>
-          <slot />
+        <div
+          id={contentId}
+          class="collapsible"
+          role="region"
+          aria-labelledby={buttonId}
+          ref={(el) => (this.collapsibleElement = el)}
+        >
+          <div ref={(el) => (this.contentWrapper = el)}>
+            <slot />
+          </div>
         </div>
       </div>
     );
@@ -75,5 +95,43 @@ export class Accordion {
 
   private handleHeadlineClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
+  };
+
+  private expandContent = (): void => {
+    // clean inline visibility that is set on collapseContent
+    this.collapsibleElement.style.visibility = null;
+
+    const contentInnerHeight = this.contentWrapper.scrollHeight;
+    this.collapsibleElement.style.height = `${contentInnerHeight}px`;
+
+    this.collapsibleElement.addEventListener(
+      'transitionend',
+      () => {
+        this.collapsibleElement.style.height = null;
+      },
+      { once: true }
+    );
+  };
+
+  private collapseContent = (): void => {
+    const contentInnerHeight = this.contentWrapper.scrollHeight;
+    this.collapsibleElement.style.visibility = 'visible';
+
+    requestAnimationFrame(() => {
+      this.collapsibleElement.style.height = `${contentInnerHeight}px`;
+      requestAnimationFrame(() => {
+        this.collapsibleElement.style.height = '0px';
+      });
+    });
+
+    this.collapsibleElement.addEventListener(
+      'transitionend',
+      () => {
+        if (!this.open) {
+          this.collapsibleElement.style.visibility = 'hidden';
+        }
+      },
+      { once: true }
+    );
   };
 }
