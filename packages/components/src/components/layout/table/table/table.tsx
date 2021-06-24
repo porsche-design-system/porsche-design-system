@@ -62,9 +62,9 @@ export class Table {
     return (
       <Host role="table" {...hostProps}>
         {hasSlottedCaption && (
-          <span id={captionId} class="caption">
+          <div id={captionId} class="caption">
             <slot name="caption" />
-          </span>
+          </div>
         )}
         <div class="root">
           <div class="scroll-area">
