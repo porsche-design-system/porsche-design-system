@@ -47,7 +47,7 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    insertSlottedStyles(this.host, getSlottedCss(this.host));
+    insertSlottedStyles(this.host, getSlottedCss(this.host, this.theme));
   }
 
   public render(): JSX.Element {
