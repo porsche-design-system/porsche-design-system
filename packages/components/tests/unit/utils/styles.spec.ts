@@ -1,4 +1,4 @@
-import { focus, hover, pxToRem, pxToRemWithUnit } from '../../../src/utils';
+import { getFocusStyles, getHoverStyles, pxToRem, pxToRemWithUnit } from '../../../src/utils';
 
 describe('pxToRem()', () => {
   it.each([
@@ -22,14 +22,15 @@ describe('pxToRemWithUnit()', () => {
   });
 });
 
-describe('hover()', () => {
-  it('should return correct JSSStyle', () => {
-    expect(hover()).toMatchSnapshot();
+describe('getHoverStyles()', () => {
+  it('should return correct default JssStyle', () => {
+    expect(getHoverStyles()).toMatchSnapshot();
   });
 });
 
-describe('focus()', () => {
-  it('should return correct JSSStyle', () => {
-    expect(focus()).toMatchSnapshot();
+describe('getFocusStyles()', () => {
+  it('should return correct default JssStyle', () => {
+    expect(getFocusStyles()).toMatchSnapshot();
+  });
   });
 });
