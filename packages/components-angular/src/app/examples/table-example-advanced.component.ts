@@ -32,7 +32,8 @@ import type { TableHeadCellSort } from '@porsche-design-system/components-angula
           <p-table-cell>{{ item.status }}</p-table-cell>
           <p-table-cell>{{ item.leadId }}</p-table-cell>
           <p-table-cell>
-            <p-button-pure icon="edit" style="padding: .5rem">Edit Lead</p-button-pure>
+            <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>
+            <p-button-pure icon="delete" style="padding: .5rem">Delete</p-button-pure>
           </p-table-cell>
         </p-table-row>
       </p-table-body>

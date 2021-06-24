@@ -1,7 +1,4 @@
 import {
-  PButtonPure,
-  PFlex,
-  PFlexItem,
   PTable,
   PTableBody,
   PTableCell,
@@ -9,16 +6,15 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
-  PText,
   TableHeadCellSort,
 } from '@porsche-design-system/components-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { headAdvanced, dataAdvanced } from '@porsche-design-system/shared';
+import { dataSorting, headSorting } from '@porsche-design-system/shared';
 
-export const TableExampleAdvancedPage = (): JSX.Element => {
+export const TableExampleSortingPage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
-  const [head, setHead] = useState(headAdvanced);
-  const [data, setData] = useState(dataAdvanced);
+  const [head, setHead] = useState(headSorting);
+  const [data, setData] = useState(dataSorting);
 
   // TODO: workaround to pass data via property since our react wrappers set attributes
   // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
@@ -44,7 +40,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
       <PTableHead>
         <PTableHeadRow ref={headRow}>
           {head.map((item, i) => (
-            <PTableHeadCell key={i} sort={item} hideLabel={item.hideLabel}>
+            <PTableHeadCell key={i} sort={item}>
               {item.name}
             </PTableHeadCell>
           ))}
@@ -53,30 +49,9 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
       <PTableBody>
         {data.map((item, i) => (
           <PTableRow key={i}>
-            <PTableCell>
-              <PFlex>
-                <PFlexItem>
-                  <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
-                </PFlexItem>
-                <PFlexItem>
-                  <PText weight="semibold">{item.model}</PText>
-                  <PText size="x-small">{item.date}</PText>
-                </PFlexItem>
-              </PFlex>
-            </PTableCell>
-            <PTableCell>{item.interest}</PTableCell>
-            <PTableCell>{item.vin}</PTableCell>
-            <PTableCell>{item.purchaseIntention}</PTableCell>
-            <PTableCell>{item.status}</PTableCell>
-            <PTableCell>{item.leadId}</PTableCell>
-            <PTableCell>
-              <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
-                Edit
-              </PButtonPure>
-              <PButtonPure icon="delete" style={{ padding: '.5rem' }}>
-                Delete
-              </PButtonPure>
-            </PTableCell>
+            <PTableCell>{item.col1}</PTableCell>
+            <PTableCell>{item.col2}</PTableCell>
+            <PTableCell>{item.col3}</PTableCell>
           </PTableRow>
         ))}
       </PTableBody>

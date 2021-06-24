@@ -227,6 +227,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Table Example Basic',
   },
   {
+    path: 'table-example-sorting',
+    component: fromExamples.TableExampleSortingComponent,
+    name: 'Table Example Sorting',
+  },
+  {
     path: 'table-example-advanced',
     component: fromExamples.TableExampleAdvancedComponent,
     name: 'Table Example Advanced',

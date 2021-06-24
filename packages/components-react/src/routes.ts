@@ -213,6 +213,11 @@ export const routes: RouteType[] = [
     component: fromExamples.TableExampleBasicPage,
   },
   {
+    name: 'Table Example Sorting',
+    path: '/table-example-sorting',
+    component: fromExamples.TableExampleSortingPage,
+  },
+  {
     name: 'Table Example Advanced',
     path: '/table-example-advanced',
     component: fromExamples.TableExampleAdvancedPage,
