@@ -37,8 +37,6 @@ export type PageChangeEvent = { page: number; previousPage: number };
 // BreakpointCustomizable Types
 export type { BreakpointKey, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
-export type AnyObject = Record<string, unknown>;
-
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
