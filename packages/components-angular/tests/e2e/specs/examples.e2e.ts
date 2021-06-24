@@ -32,6 +32,14 @@ describe('examples', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
+  it('table example sorting should work without errors', async () => {
+    await goto(page, 'table-example-sorting');
+    expect(getErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getErrorsAmount()).toBe(1);
+  });
+
   it('table example advanced should work without errors', async () => {
     await goto(page, 'table-example-advanced');
     expect(getErrorsAmount()).toBe(0);
