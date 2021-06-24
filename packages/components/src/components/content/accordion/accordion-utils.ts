@@ -1,4 +1,4 @@
-import type { TextWeight, Theme } from '../../../types';
+import type { TextWeight } from '../../../types';
 import { buildGlobalStyles, getCss, getTagName } from '../../../utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 import type { JssStyle } from 'jss';
@@ -9,7 +9,7 @@ export type AccordionSize = typeof ACCORDION_SIZE[number];
 export type AccordionChangeEvent = { open: boolean };
 export type AccordionWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 
-const getSlottedStyles = (theme: Theme): JssStyle => ({
+const getSlottedStyles = (): JssStyle => ({
   '& a': {
     color: 'inherit !important',
     textDecoration: 'underline !important',
@@ -17,7 +17,7 @@ const getSlottedStyles = (theme: Theme): JssStyle => ({
     outline: 'transparent solid 1px !important',
     outlineOffset: '1px !important',
     '&:hover': {
-      color: `${theme === 'light' ? color.state.hover : color.darkTheme.state.hover} !important`,
+      color: `${color.state.hover} !important`,
     },
     '&:focus': {
       outlineColor: 'currentColor !important',
@@ -26,15 +26,25 @@ const getSlottedStyles = (theme: Theme): JssStyle => ({
       outlineColor: 'transparent !important',
     },
   },
+
   '& em, & i': {
     fontStyle: 'normal !important',
   },
 });
 
-export const getSlottedCss = (host: HTMLElement, theme: Theme): string => {
+const getThemedSlottedStyles = (): JssStyle => ({
+  '& a': {
+    '&:hover': {
+      color: `${color.darkTheme.state.hover} !important`,
+    },
+  },
+});
+
+export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
-      [`${getTagName(host)} [slot="heading"]`]: getSlottedStyles(theme),
+      [`${getTagName(host)} [slot="heading"]`]: getSlottedStyles(),
+      [`${getTagName(host)}[theme="dark"] [slot="heading"]`]: getThemedSlottedStyles(),
     })
   );
 };
