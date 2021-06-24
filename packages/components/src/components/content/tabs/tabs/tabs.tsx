@@ -7,7 +7,6 @@ import type {
   TabSize,
   TabWeight,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
-import { DEFAULT_EVENT_OPTIONS } from '../../../../constants';
 
 @Component({
   tag: 'p-tabs',
@@ -33,7 +32,7 @@ export class Tabs {
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changed. */
-  @Event(DEFAULT_EVENT_OPTIONS) public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
