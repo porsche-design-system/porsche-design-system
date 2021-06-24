@@ -136,7 +136,6 @@ ${script}`
 
       const scrollLeftAfterClick = await getScrollLeft();
       expect(scrollLeftAfterClick).withContext('after click').toBeGreaterThan(0);
-      expect(scrollLeftAfterClick).withContext('after click').not.toBe(initialScrollLeft);
     });
   });
 
