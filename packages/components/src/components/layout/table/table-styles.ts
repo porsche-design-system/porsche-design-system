@@ -73,16 +73,16 @@ export const styles: { [key in TableComponentType]: string } = {
       pointerEvents: 'auto',
     },
   }),
-  'table-head': getCss({
-    ...buildHostStyles({
+  'table-head': getCss(
+    buildHostStyles({
       display: 'table-header-group !important',
-    }),
-  }),
-  'table-head-row': getCss({
-    ...buildHostStyles({
+    })
+  ),
+  'table-head-row': getCss(
+    buildHostStyles({
       display: 'table-row !important',
-    }),
-  }),
+    })
+  ),
   'table-head-cell': getCss({
     ...buildHostStyles({
       display: 'table-cell !important',
@@ -135,11 +135,11 @@ export const styles: { [key in TableComponentType]: string } = {
       },
     },
   }),
-  'table-body': getCss({
-    ...buildHostStyles({
+  'table-body': getCss(
+    buildHostStyles({
       display: 'table-row-group !important',
-    }),
-  }),
+    })
+  ),
   'table-row': getCss({
     ...buildHostStyles({
       display: 'table-row !important',
@@ -149,15 +149,15 @@ export const styles: { [key in TableComponentType]: string } = {
       backgroundColor: `${color.background.surface} !important`,
     },
   }),
-  'table-cell': getCss({
-    ...buildHostStyles({
+  'table-cell': getCss(
+    buildHostStyles({
       display: 'table-cell !important',
       padding: `${pxToRemWithUnit(12)} !important`,
       margin: '0 !important',
       verticalAlign: 'middle !important',
       borderBottom: `1px solid ${color.neutralContrast.low} !important`,
-    }),
-  }),
+    })
+  ),
 };
 
 export const slottedStyles: JssStyle = {
