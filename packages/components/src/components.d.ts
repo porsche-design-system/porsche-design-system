@@ -736,16 +736,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: | 'p'
-    | 'span'
-    | 'div'
-    | 'address'
-    | 'blockquote'
-    | 'figcaption'
-    | 'cite'
-    | 'time'
-    | 'legend'
-    | 'caption';
+        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1839,16 +1830,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: | 'p'
-    | 'span'
-    | 'div'
-    | 'address'
-    | 'blockquote'
-    | 'figcaption'
-    | 'cite'
-    | 'time'
-    | 'legend'
-    | 'caption';
+        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
