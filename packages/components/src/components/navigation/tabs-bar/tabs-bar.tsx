@@ -98,7 +98,7 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     this.hostObserver.disconnect();
-    this.intersectionObserver.disconnect();
+    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {

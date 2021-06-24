@@ -49,7 +49,7 @@ export class Table {
   }
 
   public disconnectedCallback(): void {
-    this.intersectionObserver.disconnect();
+    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
