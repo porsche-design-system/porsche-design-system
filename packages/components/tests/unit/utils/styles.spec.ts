@@ -32,5 +32,12 @@ describe('getFocusStyles()', () => {
   it('should return correct default JssStyle', () => {
     expect(getFocusStyles()).toMatchSnapshot();
   });
+
+  it('should return correct JssStyle for custom color', () => {
+    expect(getFocusStyles({ color: 'red' })).toMatchSnapshot();
+  });
+
+  it('should return correct JssStyle for custom offset', () => {
+    expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
   });
 });
