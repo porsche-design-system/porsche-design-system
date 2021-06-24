@@ -409,14 +409,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/layout/table/table/table.props.md'),
         // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table-body/table-body.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table-head/table-head.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table-row/table-row.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table-cell/table-cell.props.md'),
-        // @ts-ignore
         () => import('@/../../components/src/components/layout/table/table-head-cell/table-head-cell.props.md'),
       ],
     },
