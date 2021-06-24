@@ -29,47 +29,40 @@ describe('Accordion', () => {
     expect(
       await vrt.test('accordion-states', async () => {
         const page = await vrt.getPage();
-        const hoverElementSelector = 'p-accordion >>> p-headline';
-        const focusElementSelector = 'p-accordion >>> button';
-        const headingSlotSelector = 'p-accordion > span a';
-        const contentSlotSelector = 'p-accordion > div a';
+
+        const content = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+             sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-accordion theme="${theme}" heading="Some heading">
-             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-             sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            ${content}
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some heading" open="true">
             <div ${theme === 'dark' && 'style="color: white"'}>
-             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-             sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" open="true">
             <span slot="heading">Some <i>italic</i> and <em>emphasis</em> heading with <a href="#">Link</a></span>
             <div ${theme === 'dark' && 'style="color: white"'}>
-             Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>.
-             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-             sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+             Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
             </div>
           </p-accordion>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-        await forceHoveredState(page, `.hovered > ${hoverElementSelector}`);
-        await forceFocusedState(page, `.focused > ${focusElementSelector}`);
+        await forceHoveredState(page, `.hovered > p-accordion >>> p-headline`);
+        await forceHoveredState(page, `.hovered > p-accordion > span a`);
+        await forceHoveredState(page, `.hovered > p-accordion > div a`);
 
-        await forceHoveredState(page, `.hovered > ${headingSlotSelector}`);
-        await forceFocusedState(page, `.focused > ${headingSlotSelector}`);
+        await forceFocusedState(page, `.focused > p-accordion >>> button`);
+        await forceFocusedState(page, `.focused > p-accordion > span a`);
+        await forceFocusedState(page, `.focused > p-accordion > div a`);
 
-        await forceHoveredState(page, `.hovered > ${contentSlotSelector}`);
-        await forceFocusedState(page, `.focused > ${contentSlotSelector}`);
-
-        await forceHoveredState(page, `.focused-hovered > ${hoverElementSelector}`);
-        await forceFocusedState(page, `.focused-hovered > ${focusElementSelector}`);
-
-        await forceFocusedHoveredState(page, `.focused-hovered > ${headingSlotSelector}`);
-        await forceFocusedHoveredState(page, `.focused-hovered > ${contentSlotSelector}`);
+        await forceFocusedState(page, `.focused-hovered > p-accordion >>> button`);
+        await forceHoveredState(page, `.focused-hovered > p-accordion >>> p-headline`);
+        await forceFocusedHoveredState(page, `.focused-hovered > p-accordion > span a`);
+        await forceFocusedHoveredState(page, `.focused-hovered > p-accordion > div a`);
       })
     ).toBeFalsy();
   });
