@@ -27,7 +27,9 @@ import type { TableHeadCellSort } from '@porsche-design-system/components-angula
             </p-flex>
           </p-table-cell>
           <p-table-cell>{{ item.interest }}</p-table-cell>
-          <p-table-cell>{{ item.vin }}</p-table-cell>
+          <p-table-cell>
+            <a href="https://porsche.com">{{ item.vin }}</a>
+          </p-table-cell>
           <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
           <p-table-cell>{{ item.status }}</p-table-cell>
           <p-table-cell>{{ item.leadId }}</p-table-cell>

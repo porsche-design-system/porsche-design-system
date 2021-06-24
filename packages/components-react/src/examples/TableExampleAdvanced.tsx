@@ -65,7 +65,9 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
               </PFlex>
             </PTableCell>
             <PTableCell>{item.interest}</PTableCell>
-            <PTableCell>{item.vin}</PTableCell>
+            <PTableCell>
+              <a href="https://porsche.com">{item.vin}</a>
+            </PTableCell>
             <PTableCell>{item.purchaseIntention}</PTableCell>
             <PTableCell>{item.status}</PTableCell>
             <PTableCell>{item.leadId}</PTableCell>
