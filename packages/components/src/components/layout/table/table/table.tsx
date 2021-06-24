@@ -2,12 +2,13 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   getHTMLElement,
   getPrefixedTagNames,
+  getScrollByX,
   hasNamedSlot,
   insertSlottedStyles,
   scrollElementBy,
 } from '../../../../utils';
 import type { TableHeadCellSort } from '../table-utils';
-import { addCss, getScrollByX, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
+import { addCss, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 import { DEFAULT_EVENT_OPTIONS } from '../../../../constants';
 
 @Component({

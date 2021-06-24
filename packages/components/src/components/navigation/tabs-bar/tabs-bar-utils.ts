@@ -1,4 +1,4 @@
-import { getPrefixedTagNames, getTagName, pxToRemWithUnit } from '../../../utils';
+import { getPrefixedTagNames, getScrollByX, getTagName, pxToRemWithUnit } from '../../../utils';
 import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -102,7 +102,7 @@ export const getScrollPositionAfterPrevNextClick = (
 ): number => {
   const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = tabElements[tabElements.length - 1] ?? {};
   const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollAreaElement ?? {};
-  const scrollToStep = Math.round(scrollAreaWidth * 0.2);
+  const scrollToStep = getScrollByX(scrollAreaElement);
   const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
 
   let scrollPosition: number;

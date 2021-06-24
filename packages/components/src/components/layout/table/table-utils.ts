@@ -47,8 +47,3 @@ export const getTableCss = (host: HTMLElement): string => {
 export const addCss = (host: HTMLElement): void => {
   attachCss(host, getTableCss(host));
 };
-
-export const getScrollByX = (scrollAreaElement: HTMLElement): number => {
-  const { offsetWidth } = scrollAreaElement;
-  return Math.round(offsetWidth * 0.2);
-};
