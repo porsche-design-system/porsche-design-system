@@ -133,6 +133,10 @@ export const styles: { [key in TableComponentType]: string } = {
       marginLeft: spacing['4'],
       opacity: 0,
       transition: `opacity ${transitionDuration} ${transitionTimingFunction}`,
+      '&--asc': {
+        transform: 'rotate3d(0, 0, 1, 180deg)',
+        transformOrigin: '50% 50%', // for iOS
+      },
       '&--active': {
         opacity: 1,
       },

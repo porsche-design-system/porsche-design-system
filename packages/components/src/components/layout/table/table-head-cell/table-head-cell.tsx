@@ -34,9 +34,10 @@ export class TableHeadCell {
               class={{
                 ['icon']: true,
                 ['icon--active']: active,
+                ['icon--asc']: isDirectionAsc(direction), // rotate instead of loading 2nd icon
               }}
               color="inherit"
-              name={isDirectionAsc(direction) ? 'arrow-down' : 'arrow-up'}
+              name="arrow-up"
             />
           </button>
         ) : (
