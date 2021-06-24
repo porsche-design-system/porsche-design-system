@@ -1,9 +1,9 @@
 import { color, font, spacing } from '@porsche-design-system/utilities';
 import {
   buildHostStyles,
-  focus,
+  getFocusStyles,
   getCss,
-  hover,
+  getHoverStyles,
   JssStyle,
   mediaQuery,
   pxToRemWithUnit,
@@ -118,8 +118,8 @@ export const styles: { [key in TableComponentType]: string } = {
       textAlign: 'left',
       background: 'transparent',
       cursor: 'pointer',
-      ...hover(),
-      ...focus({ offset: 1 }),
+      ...getHoverStyles(),
+      ...getFocusStyles({ offset: 1 }),
       '&:hover, &:focus': {
         '& .icon': {
           opacity: 1,
@@ -164,8 +164,8 @@ export const slottedStyles: JssStyle = {
   '& a': {
     color: 'inherit !important',
     textDecoration: 'underline !important',
-    ...hover(),
-    ...focus({ offset: 1 }),
+    ...getHoverStyles(),
+    ...getFocusStyles({ offset: 1 }),
   },
   '& b, & strong': {
     fontWeight: `${font.weight.bold} !important`,

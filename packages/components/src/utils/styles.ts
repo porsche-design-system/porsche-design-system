@@ -8,7 +8,7 @@ export const transitionTimingFunction = 'ease';
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
-export const hover = (): JssStyle => {
+export const getHoverStyles = (): JssStyle => {
   return {
     transition: `color ${transitionDuration} ${transitionTimingFunction} !important`,
     '&:hover': {
@@ -27,7 +27,7 @@ const defaultOptions: Options = {
   offset: 2,
 };
 
-export const focus = (opts?: Options): JssStyle => {
+export const getFocusStyles = (opts?: Options): JssStyle => {
   const options: Options = { ...defaultOptions, ...opts };
 
   return {
