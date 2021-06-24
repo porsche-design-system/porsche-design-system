@@ -3,6 +3,7 @@ import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagN
 import type { BannerState, Theme } from '../../../types';
 import { addCss } from './banner-utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { DEFAULT_EVENT_OPTIONS } from '../../../constants';
 
 @Component({
   tag: 'p-banner',
@@ -25,7 +26,7 @@ export class Banner {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  @Event(DEFAULT_EVENT_OPTIONS) public dismiss?: EventEmitter<void>;
 
   private closeButton: HTMLButtonElement;
 

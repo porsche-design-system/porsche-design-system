@@ -21,6 +21,7 @@ import {
   scrollElementTo,
   setAttribute,
 } from '../../../utils';
+import { DEFAULT_EVENT_OPTIONS } from '../../../constants';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -46,7 +47,7 @@ export class TabsBar {
   @Prop() public activeTabIndex?: number | undefined = undefined;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+  @Event(DEFAULT_EVENT_OPTIONS) public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;

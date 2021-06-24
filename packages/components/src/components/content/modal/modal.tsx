@@ -8,6 +8,7 @@ import {
   getScrollTopOnTouch,
   setScrollLock,
 } from './modal-utils';
+import { DEFAULT_EVENT_OPTIONS } from '../../../constants';
 
 @Component({
   tag: 'p-modal',
@@ -28,7 +29,7 @@ export class Modal {
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
   /** Emitted when the component requests to be closed. */
-  @Event({ bubbles: false }) public close?: EventEmitter<void>;
+  @Event(DEFAULT_EVENT_OPTIONS) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
