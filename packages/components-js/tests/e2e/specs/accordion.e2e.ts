@@ -52,7 +52,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   };
 
   const getHost = () => selectNode(page, 'p-accordion');
-  const getHeadline = () => selectNode(page, 'p-accordion >>> p-headline');
   const getButton = () => selectNode(page, 'p-accordion >>> button');
   const getInput = () => selectNode(page, 'input');
   const getCollapsibleEl = () => selectNode(page, 'p-accordion >>> .collapsible ');
@@ -95,13 +94,13 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
   it('should have correct visibility after open/close re-trigger', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
-    const headline = await getHeadline();
+    const button = await getButton();
     const collapsible = await getCollapsibleEl();
 
     // expand -> collapse -> expand
-    await headline.click();
-    await headline.click();
-    await headline.click();
+    await button.click();
+    await button.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
@@ -109,13 +108,13 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
   it('should have correct visibility after close/open re-trigger', async () => {
     await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
-    const headline = await getHeadline();
+    const button = await getButton();
     const collapsible = await getCollapsibleEl();
 
     // collapse -> expand -> collapse
-    await headline.click();
-    await headline.click();
-    await headline.click();
+    await button.click();
+    await button.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
@@ -123,21 +122,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
-
-    it('should emit accordionChange event on headline mouse click', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript });
-      let eventCounter = 0;
-      const host = await getHost();
-      const headline = await getHeadline();
-      await addEventListener(host, 'accordionChange', () => eventCounter++);
-
-      expect(eventCounter).toBe(0);
-
-      await headline.click();
-      await waitForEventSerialization(page);
-
-      expect(eventCounter).toBe(1);
-    });
 
     it('should emit accordionChange event on button mouse click', async () => {
       await initAccordion({ otherMarkup: clickHandlerScript });
