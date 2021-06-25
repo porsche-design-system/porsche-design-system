@@ -1,5 +1,13 @@
-import { Component, Element, Event, EventEmitter, Prop, h, Watch } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses, pxToRem } from '../../../utils';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import {
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isDark,
+  mapBreakpointPropToClasses,
+  observeResize,
+  pxToRem,
+  unobserveResize,
+} from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize, AccordionWeight } from './accordion-utils';
@@ -36,7 +44,6 @@ export class Accordion {
 
   private collapsibleElement: HTMLDivElement;
   private contentWrapper: HTMLDivElement;
-  private contentResizeObserver: ResizeObserver;
   private contentWrapperHeight: string;
 
   @Watch('open')
@@ -53,11 +60,24 @@ export class Accordion {
   }
 
   public componentDidLoad(): void {
-    this.initResizeObserver();
+    observeResize(
+      this.contentWrapper,
+      ({ borderBoxSize }) => {
+        // Firefox implements `contentBoxSize` as a single content rect, rather than an array
+        const contentBorderBoxSize = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
+        const blockSize = contentBorderBoxSize.blockSize;
+
+        this.contentWrapperHeight = `${pxToRem(blockSize)}rem`;
+        if (this.open) {
+          this.collapsibleElement.style.height = this.contentWrapperHeight;
+        }
+      },
+      { box: 'border-box' }
+    );
   }
 
   public disconnectedCallback(): void {
-    this.contentResizeObserver.disconnect();
+    unobserveResize(this.contentWrapper);
   }
 
   public render(): JSX.Element {
@@ -105,20 +125,5 @@ export class Accordion {
 
   private handleButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
-  };
-
-  private initResizeObserver = (): void => {
-    this.contentResizeObserver = new ResizeObserver((entries) => {
-      for (const {
-        contentRect: { height },
-      } of entries) {
-        const CONTENT_WRAPPER_PADDING = 8;
-        this.contentWrapperHeight = `${pxToRem(height + CONTENT_WRAPPER_PADDING)}rem`;
-        if (this.open) {
-          this.collapsibleElement.style.height = this.contentWrapperHeight;
-        }
-      }
-    });
-    this.contentResizeObserver.observe(this.contentWrapper);
   };
 }
