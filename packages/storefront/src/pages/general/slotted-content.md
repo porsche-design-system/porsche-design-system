@@ -4,7 +4,7 @@ Some of our components use slots to provide text/html content with predefined st
 
 ```html
 <p-text>
-  The quick brown fox <a>jumps over</a> the lazy dog
+  The quick brown fox <a href="#">jumps over</a> the lazy dog
 </p-text>
 ```  
 
