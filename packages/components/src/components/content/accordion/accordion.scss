@@ -45,33 +45,29 @@ $root: '.root';
   }
 }
 
-.headline {
-  padding: p-px-to-rem(24px) p-px-to-rem(12px);
-  cursor: pointer;
-  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
-
-  &:hover {
-    background-color: $p-hover-background-color;
-
-    #{$root}--theme-dark & {
-      background-color: $p-hover-background-color-theme-dark;
-    }
-  }
-}
-
 button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  padding: p-px-to-rem(24px) p-px-to-rem(12px);
   width: 100%;
   text-decoration: none;
   border: 0;
   background: transparent;
   cursor: pointer;
   font-weight: $p-font-weight-semibold;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  @include p-focus($p-color-state-focus, 1px);
+  @include p-focus($p-color-state-focus, 0px);
+
+  &:hover,
+  &:focus-visible {
+    background-color: $p-hover-background-color;
+
+    #{$root}--theme-dark & {
+      background-color: $p-hover-background-color-theme-dark;
+    }
+  }
 
   // inherit headline styles except for slotted semibold weight override
   margin: inherit;
@@ -102,7 +98,6 @@ button {
 
 .collapsible {
   height: 0;
-  min-height: 0;
   padding: 0 p-px-to-rem(12px);
   visibility: hidden;
   overflow: hidden;
@@ -113,6 +108,7 @@ button {
     height: auto;
     padding-bottom: $p-spacing-40;
     visibility: visible;
+    overflow: auto;
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
   }
