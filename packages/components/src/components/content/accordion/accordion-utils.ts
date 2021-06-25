@@ -9,7 +9,7 @@ export type AccordionSize = typeof ACCORDION_SIZE[number];
 export type AccordionChangeEvent = { open: boolean };
 export type AccordionWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 
-const getSlottedStyles = (): JssStyle => ({
+const slottedStyles: JssStyle = {
   '& a': {
     color: 'inherit !important',
     textDecoration: 'underline !important',
@@ -30,21 +30,12 @@ const getSlottedStyles = (): JssStyle => ({
   '& em, & i': {
     fontStyle: 'normal !important',
   },
-});
-
-const getThemedSlottedStyles = (): JssStyle => ({
-  '& a': {
-    '&:hover': {
-      color: `${color.darkTheme.state.hover} !important`,
-    },
-  },
-});
+};
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
-      [`${getTagName(host)} [slot="heading"]`]: getSlottedStyles(),
-      [`${getTagName(host)}[theme="dark"] [slot="heading"]`]: getThemedSlottedStyles(),
+      [`${getTagName(host)} [slot="heading"]`]: slottedStyles,
     })
   );
 };
