@@ -50,9 +50,6 @@ $root: '.root';
   cursor: pointer;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  // iOS Safari users should not see tap highlight color on headline
-  -webkit-tap-highlight-color: transparent;
-
   &:hover {
     background-color: $p-hover-background-color;
 
@@ -75,9 +72,6 @@ button {
   font-weight: $p-font-weight-semibold;
 
   @include p-focus($p-color-state-focus, 1px);
-
-  // iOS Safari users should not see tap highlight color on button
-  -webkit-tap-highlight-color: transparent;
 
   // inherit headline styles except for slotted semibold weight override
   margin: inherit;
