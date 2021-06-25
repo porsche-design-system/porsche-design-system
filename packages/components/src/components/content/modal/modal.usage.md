@@ -39,6 +39,9 @@ The background overlay animates once a Modal is launched to grab a user’s atte
 ### Close
 Within a Modal are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
 
+### Back Button Behavior
+Users tend to use the back button of the browser to close a modal. We recommend overwriting the native back button behavior of the browser to close the modal instead of directing the user to the previous page.
+
 ## Usage
 
 ### Attention
@@ -52,7 +55,12 @@ long list of items, consider a different solution, such as a form or a table.
 The modal can be adjusted in width and can be used depending on the requirements. It is important that the minimum and maximum sizes are observed. In addition, the modal should be aligned with the grid.
 
 ### Line length
-We recommended to use no more than 80 characters or glyphs per line. This might differ a bit depending on the respective line height and viewport size and results in different pixel widths depending on the Porsche type class in use. Please find more information in the [Typography guideline](components/typography).
+We recommend to use no more than 80 characters or glyphs per line. This might differ a bit depending on the respective line height and viewport size and results in different pixel widths depending on the Porsche type class in use. Please find more information in the [Typography guideline](components/typography).
+
+### Loading Behavior (API Calls)
+The task completion action should take place immediately and close the modal. If a duration is needed for the response we recommend closing the modal and use an overlay with loading spinner. Please consider for longer loading periods it makes sense to not block the user from using your product while waiting for the answer of the api call. For any sort of feedback relating to the request use the provided banner component.
+
+![Loading behvior for api calls](./assets/modal-dialog-loading-behavior.gif)
 
 ---
 
