@@ -112,11 +112,14 @@ button {
   padding: 0 p-px-to-rem(12px);
   visibility: hidden;
   overflow: hidden;
-  transition: height $p-animation-hover-duration-var $p-animation-hover-bezier;
+  transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
+    visibility $p-animation-hover-duration-var linear $p-animation-hover-duration-var;
 
   #{$root}--open & {
     height: auto;
     padding-bottom: $p-spacing-40;
     visibility: visible;
+    transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
+      visibility $p-animation-hover-duration-var;
   }
 }

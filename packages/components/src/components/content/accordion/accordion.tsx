@@ -98,9 +98,6 @@ export class Accordion {
   };
 
   private expandContent = (): void => {
-    // clean inline visibility that is set on collapseContent
-    this.collapsibleElement.style.visibility = null;
-
     const contentInnerHeight = this.contentWrapper.scrollHeight;
     this.collapsibleElement.style.height = `${contentInnerHeight}px`;
 
@@ -115,8 +112,6 @@ export class Accordion {
 
   private collapseContent = (): void => {
     const contentInnerHeight = this.contentWrapper.scrollHeight;
-    this.collapsibleElement.style.visibility = 'visible';
-
     const transition = this.collapsibleElement.style.transition;
     this.collapsibleElement.style.transition = '';
 
@@ -128,15 +123,5 @@ export class Accordion {
         this.collapsibleElement.style.height = '0px';
       });
     });
-
-    this.collapsibleElement.addEventListener(
-      'transitionend',
-      () => {
-        if (!this.open) {
-          this.collapsibleElement.style.visibility = 'hidden';
-        }
-      },
-      { once: true }
-    );
   };
 }
