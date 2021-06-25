@@ -158,8 +158,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     it('should not have focus on click', async () => {
       await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'default', offset: '1px' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '0px' });
+      const visible = expectedStyleOnFocus({ color: 'default', offset: '0px' });
 
       expect(await getOutlineStyle(button))
         .withContext('before click')
