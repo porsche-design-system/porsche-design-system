@@ -3,7 +3,7 @@ import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToCl
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize, AccordionWeight } from './accordion-utils';
-import { getSlottedCss } from './accordion-utils';
+import { getSlottedCss, setCollapsibleHeight } from './accordion-utils';
 
 @Component({
   tag: 'p-accordion',
@@ -39,11 +39,7 @@ export class Accordion {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    if (isOpen) {
-      this.expandContent();
-    } else {
-      this.collapseContent();
-    }
+    setCollapsibleHeight(this.collapsibleElement, this.contentWrapper, isOpen);
   }
 
   public connectedCallback(): void {
@@ -66,14 +62,14 @@ export class Accordion {
 
     return (
       <div class={rootClasses}>
-        <PrefixedTagNames.pHeadline
-          class="headline"
-          tag={this.tag}
-          theme={this.theme}
-          variant="inherit"
-          onClick={this.handleHeadlineClick}
-        >
-          <button id={buttonId} type="button" aria-expanded={this.open} aria-controls={contentId}>
+        <PrefixedTagNames.pHeadline tag={this.tag} theme={this.theme} variant="inherit">
+          <button
+            id={buttonId}
+            type="button"
+            aria-expanded={this.open}
+            aria-controls={contentId}
+            onClick={this.handleButtonClick}
+          >
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon class="icon" name="arrowHeadDown" theme={this.theme} aria-hidden="true" />
           </button>
@@ -93,35 +89,7 @@ export class Accordion {
     );
   }
 
-  private handleHeadlineClick = (): void => {
+  private handleButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
-  };
-
-  private expandContent = (): void => {
-    const contentInnerHeight = this.contentWrapper.scrollHeight;
-    this.collapsibleElement.style.height = `${contentInnerHeight}px`;
-
-    this.collapsibleElement.addEventListener(
-      'transitionend',
-      () => {
-        this.collapsibleElement.style.height = null;
-      },
-      { once: true }
-    );
-  };
-
-  private collapseContent = (): void => {
-    const contentInnerHeight = this.contentWrapper.scrollHeight;
-    const transition = this.collapsibleElement.style.transition;
-    this.collapsibleElement.style.transition = '';
-
-    requestAnimationFrame(() => {
-      this.collapsibleElement.style.height = `${contentInnerHeight}px`;
-      this.collapsibleElement.style.transition = transition;
-
-      requestAnimationFrame(() => {
-        this.collapsibleElement.style.height = '0px';
-      });
-    });
   };
 }
