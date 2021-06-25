@@ -85,7 +85,7 @@ export class Accordion {
           aria-labelledby={buttonId}
           ref={(el) => (this.collapsibleElement = el)}
         >
-          <div ref={(el) => (this.contentWrapper = el)}>
+          <div class="content" ref={(el) => (this.contentWrapper = el)}>
             <slot />
           </div>
         </div>
