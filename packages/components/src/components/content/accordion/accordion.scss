@@ -58,7 +58,7 @@ button {
   font-weight: $p-font-weight-semibold;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  @include p-focus($p-color-state-focus, 0px);
+  @include p-focus($p-color-state-focus, 0);
 
   &:hover,
   &:focus-visible {
@@ -114,6 +114,6 @@ button {
   }
 }
 
-.content {
+.content-wrapper {
   padding-top: $p-spacing-8;
 }

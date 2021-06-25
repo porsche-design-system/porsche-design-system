@@ -1,9 +1,9 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import { Component, Element, Event, EventEmitter, Prop, h, Watch } from '@stencil/core';
+import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses, pxToRem } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize, AccordionWeight } from './accordion-utils';
-import { getSlottedCss, setCollapsibleHeight } from './accordion-utils';
+import { getSlottedCss } from './accordion-utils';
 
 @Component({
   tag: 'p-accordion',
@@ -36,14 +36,28 @@ export class Accordion {
 
   private collapsibleElement: HTMLDivElement;
   private contentWrapper: HTMLDivElement;
+  private contentResizeObserver: ResizeObserver;
+  private contentWrapperHeight: string;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    setCollapsibleHeight(this.collapsibleElement, this.contentWrapper, isOpen);
+    if (isOpen) {
+      this.collapsibleElement.style.height = this.contentWrapperHeight;
+    } else {
+      this.collapsibleElement.style.height = '0';
+    }
   }
 
   public connectedCallback(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
+  }
+
+  public componentDidLoad(): void {
+    this.initResizeObserver();
+  }
+
+  public disconnectedCallback(): void {
+    this.contentResizeObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -81,7 +95,7 @@ export class Accordion {
           aria-labelledby={buttonId}
           ref={(el) => (this.collapsibleElement = el)}
         >
-          <div class="content" ref={(el) => (this.contentWrapper = el)}>
+          <div class="content-wrapper" ref={(el) => (this.contentWrapper = el)}>
             <slot />
           </div>
         </div>
@@ -91,5 +105,20 @@ export class Accordion {
 
   private handleButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
+  };
+
+  private initResizeObserver = (): void => {
+    this.contentResizeObserver = new ResizeObserver((entries) => {
+      for (const {
+        contentRect: { height },
+      } of entries) {
+        const CONTENT_WRAPPER_PADDING = 8;
+        this.contentWrapperHeight = `${pxToRem(height + CONTENT_WRAPPER_PADDING)}rem`;
+        if (this.open) {
+          this.collapsibleElement.style.height = this.contentWrapperHeight;
+        }
+      }
+    });
+    this.contentResizeObserver.observe(this.contentWrapper);
   };
 }

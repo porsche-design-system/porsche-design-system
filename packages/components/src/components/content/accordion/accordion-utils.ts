@@ -39,36 +39,3 @@ export const getSlottedCss = (host: HTMLElement): string => {
     })
   );
 };
-
-//ToDo: use resize observer? https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
-export const setCollapsibleHeight = (
-  collapsibleElement: HTMLElement,
-  contentElement: HTMLElement,
-  isOpen: boolean
-): void => {
-  const contentInnerHeight = contentElement.scrollHeight;
-
-  if (isOpen) {
-    collapsibleElement.style.height = `${contentInnerHeight}px`;
-
-    collapsibleElement.addEventListener(
-      'transitionend',
-      () => {
-        collapsibleElement.style.height = null;
-      },
-      { once: true }
-    );
-  } else {
-    const transition = collapsibleElement.style.transition;
-    collapsibleElement.style.transition = '';
-
-    requestAnimationFrame(() => {
-      collapsibleElement.style.height = `${contentInnerHeight}px`;
-      collapsibleElement.style.transition = transition;
-
-      requestAnimationFrame(() => {
-        collapsibleElement.style.height = '0px';
-      });
-    });
-  }
-};
