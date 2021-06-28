@@ -1,21 +1,21 @@
-type HeadItem = {
-  id?: string;
+export type HeadVrt = {
+  id: string;
   name: string;
   hideLabel?: boolean;
-  active?: boolean;
-  direction?: 'asc' | 'desc';
+  active: boolean;
+  direction: 'asc' | 'desc';
   style?: React.CSSProperties;
 };
 
-export const headVrt: HeadItem[] = [
+export const headVrt: HeadVrt[] = [
   { name: 'Slotted Styles', id: 'some-id', active: false, direction: 'asc' },
   { name: 'Multiline text', id: 'some-id', active: true, direction: 'desc' },
-  { name: 'Min width cell', style: { minWidth: 250 } },
+  { name: 'Min width cell', style: { minWidth: 250 } } as HeadVrt,
   { name: 'Multiline<br/>header<br/>cell', id: 'some-id', active: true, direction: 'asc' },
-  { name: 'Hide header cell', hideLabel: true },
+  { name: 'Hide header cell', hideLabel: true } as HeadVrt,
 ];
 
-type DataItem = {
+export type DataVrt = {
   imageUrl: string;
   imageWidth: number;
   imageHeight: number;
@@ -24,7 +24,7 @@ type DataItem = {
   shortText: string;
 };
 
-export const dataVrt: DataItem[] = Array.from(Array(4)).map(() => ({
+export const dataVrt: DataVrt[] = Array.from(Array(4)).map(() => ({
   imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
   imageWidth: 80,
   imageHeight: 48,

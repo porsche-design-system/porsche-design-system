@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 import type { TableHeadCellSort } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -48,7 +48,7 @@ export class TableExampleAdvancedComponent {
   public data = dataAdvanced;
 
   onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
-    const { id, direction } = e.detail;
+    const { id, direction } = e.detail as TableHeadCellSort & { id: keyof DataAdvanced };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])

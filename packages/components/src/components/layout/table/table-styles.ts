@@ -1,5 +1,6 @@
 import { color, font, spacing } from '@porsche-design-system/utilities';
 import {
+  addImportantToEachRule,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
@@ -15,9 +16,14 @@ import type { TableComponentType } from './table-utils';
 
 export const styles: { [key in TableComponentType]: string } = {
   table: getCss({
-    ...buildHostStyles({
-      display: 'block !important',
-    }),
+    ...buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'block',
+        },
+        true
+      )
+    ),
     caption: {
       marginBottom: spacing['8'],
       [mediaQuery('m')]: {
@@ -75,23 +81,38 @@ export const styles: { [key in TableComponentType]: string } = {
     },
   }),
   'table-head': getCss(
-    buildHostStyles({
-      display: 'table-header-group !important',
-    })
+    buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-header-group',
+        },
+        true
+      )
+    )
   ),
   'table-head-row': getCss(
-    buildHostStyles({
-      display: 'table-row !important',
-    })
+    buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-row',
+        },
+        true
+      )
+    )
   ),
   'table-head-cell': getCss({
-    ...buildHostStyles({
-      display: 'table-cell !important',
-      padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)} !important`,
-      borderBottom: `1px solid ${color.neutralContrast.medium} !important`,
-      verticalAlign: 'bottom !important',
-      fontWeight: `${font.weight.bold} !important`,
-    }),
+    ...buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-cell',
+          padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+          borderBottom: `1px solid ${color.neutralContrast.medium}`,
+          verticalAlign: 'bottom',
+          fontWeight: `${font.weight.bold}`,
+        },
+        true
+      )
+    ),
     ...buildGlobalStyles({
       button: {
         display: 'flex',
@@ -144,44 +165,62 @@ export const styles: { [key in TableComponentType]: string } = {
     },
   }),
   'table-body': getCss(
-    buildHostStyles({
-      display: 'table-row-group !important',
-    })
+    buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-row-group',
+        },
+        true
+      )
+    )
   ),
   'table-row': getCss(
-    buildHostStyles({
-      display: 'table-row !important',
-      transition: `background-color ${transitionDuration} ${transitionTimingFunction} !important`,
-      '&(:hover)': {
-        backgroundColor: `${color.background.surface} !important`,
-      },
-    })
+    buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-row',
+          transition: `background-color ${transitionDuration} ${transitionTimingFunction}`,
+          '&(:hover)': {
+            backgroundColor: color.background.surface,
+          },
+        },
+        true
+      )
+    )
   ),
   'table-cell': getCss(
-    buildHostStyles({
-      display: 'table-cell !important',
-      padding: `${pxToRemWithUnit(12)} !important`,
-      margin: '0 !important',
-      verticalAlign: 'middle !important',
-      borderBottom: `1px solid ${color.neutralContrast.low} !important`,
-    })
+    buildHostStyles(
+      addImportantToEachRule(
+        {
+          display: 'table-cell',
+          padding: pxToRemWithUnit(12),
+          margin: 0,
+          verticalAlign: 'middle',
+          borderBottom: `1px solid ${color.neutralContrast.low}`,
+        },
+        true
+      )
+    )
   ),
 };
 
-export const slottedStyles: JssStyle = {
-  '& a': {
-    color: 'inherit !important',
-    textDecoration: 'underline !important',
-    ...getHoverStyles(),
-    ...getFocusStyles({ offset: 1 }),
+export const slottedStyles: JssStyle = addImportantToEachRule(
+  {
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'underline',
+      ...getHoverStyles(),
+      ...getFocusStyles({ offset: 1 }),
+    },
+    '& b, & strong': {
+      fontWeight: `${font.weight.bold}`,
+    },
+    '& em, & i': {
+      fontStyle: 'normal',
+    },
+    '& img': {
+      verticalAlign: 'middle',
+    },
   },
-  '& b, & strong': {
-    fontWeight: `${font.weight.bold} !important`,
-  },
-  '& em, & i': {
-    fontStyle: 'normal !important',
-  },
-  '& img': {
-    verticalAlign: 'middle !important',
-  },
-};
+  true
+);

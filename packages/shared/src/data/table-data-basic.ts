@@ -1,6 +1,6 @@
 export const headBasic: string[] = ['Model', 'Date', 'Purchase Intention', 'Status', 'Lead ID'];
 
-type DataItem = {
+export type DataBasic = {
   model: string;
   date: string;
   interest: string;
@@ -8,7 +8,7 @@ type DataItem = {
   leadId: string;
 };
 
-export const dataBasic: DataItem[] = [
+export const dataBasic: DataBasic[] = [
   {
     model: '718 Cayman',
     date: '23.06.2021',

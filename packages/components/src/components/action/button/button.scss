@@ -71,6 +71,15 @@
     color $p-animation-hover-duration-var $p-animation-hover-bezier;
   cursor: pointer;
   @include p-focus($p-color-neutral-contrast-high);
+  @include with-label;
+
+  .label {
+    @include label-with-label;
+  }
+
+  .icon {
+    @include icon-with-label;
+  }
 
   &--theme-dark {
     color: $p-color-default;
@@ -211,18 +220,6 @@
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
       }
-    }
-  }
-
-  &--with-label {
-    @include with-label;
-
-    .label {
-      @include label-with-label;
-    }
-
-    .icon {
-      @include icon-with-label;
     }
   }
 
