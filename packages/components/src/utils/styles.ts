@@ -8,10 +8,12 @@ export const transitionTimingFunction = 'ease';
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
 export const addImportantToEachRule = (style: JssStyle, important: boolean): JssStyle => {
   if (important) {
+    // eslint-disable-next-line guard-for-in
     for (const key in style) {
       const value = style[key];
       style[key] =
@@ -31,16 +33,16 @@ const defaultHoverStylesOptions: GetHoverStylesOptions = {
 };
 
 export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const { important }: GetFocusStylesOptions = { ...defaultHoverStylesOptions, ...opts };
+  const options: GetFocusStylesOptions = { ...defaultHoverStylesOptions, ...opts };
 
   return addImportantToEachRule(
     {
       transition: `color ${transitionDuration} ${transitionTimingFunction}`,
       '&:hover': {
-        color: `${color.state.hover}`,
+        color: color.state.hover,
       },
     },
-    important
+    options.important
   );
 };
 
@@ -57,23 +59,23 @@ const defaultFocusStylesOptions: GetFocusStylesOptions = {
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const { offset, color, important }: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
+  const options: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
 
   return addImportantToEachRule(
     {
       outline: 'transparent solid 1px',
-      outlineOffset: `${offset}px`,
+      outlineOffset: `${options.offset}px`,
       '&::-moz-focus-inner': {
         border: '0',
       },
       '&:focus': {
-        outlineColor: `${color}`,
+        outlineColor: options.color,
       },
       '&:focus:not(:focus-visible)': {
         outlineColor: 'transparent',
       },
     },
-    important
+    options.important
   );
 };
 
