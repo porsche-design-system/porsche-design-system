@@ -54,7 +54,11 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
 
-    const wrapperPropsArr: string[] = [...propsToDestructure.map(({ key }) => key), 'className', '...rest'];
+    const wrapperPropsArr: string[] = [
+      ...propsToDestructure.map(({ key, defaultValue, isEvent }) => (isEvent ? key : `${key} = ${defaultValue}`)),
+      'className',
+      '...rest',
+    ];
     const wrapperProps = `{ ${wrapperPropsArr.join(', ')} }`;
 
     const propsName = this.generatePropsName(component) + (hasGeneric ? '<T>' : '');
@@ -71,22 +75,24 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
+    const [firstPropToSync] = propsToSync;
     const componentEffectsArr: string[] =
       propsToSync.length === 1
         ? [
             `useEffect(() => {
-      (elementRef.current as any).${propsToSync[0].key} = ${propsToSync[0].key};
-    }, [${propsToSync[0].key}]);`,
+      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key};
+    }, [${firstPropToSync.key}]);`,
           ]
         : [
             `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
             `useEffect(() => {
-      [${propsToSync
-        .map(({ key }) => `'${key}'`)
-        .join(', ')}].forEach((propName, i) => ((elementRef.current as any)[propName] = propsToSync[i]));
+      const { current } = elementRef;
+      [${propsToSync.map(({ key }) => `'${key}'`).join(', ')}].forEach(
+        (propName, i) => ((current as any)[propName] = propsToSync[i])
+      );
     }, propsToSync);`,
           ];
-    const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
+    const componentEffects = componentEffectsArr.join('\n    ');
 
     const componentPropsArr: string[] = [
       '...rest',
