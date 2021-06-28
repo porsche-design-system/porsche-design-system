@@ -103,7 +103,7 @@ export class InputParser {
     const fileContent = this.getComponentSourceCode(component);
     // extract values in same line, next line or multi line, but also respect not default
     const [, defaultValue] =
-      fileContent.match(new RegExp(`@Prop\\(\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+      fileContent.match(new RegExp(`@Prop\\(.*?\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
     return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }
