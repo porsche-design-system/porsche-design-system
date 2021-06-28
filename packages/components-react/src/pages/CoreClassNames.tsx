@@ -19,8 +19,10 @@ const Button = (): JSX.Element => {
 export const CoreClassNamesPage = (): JSX.Element => {
   return (
     <>
-      <Button />
-      <Button />
+      <div className="playground light">
+        <Button />
+        <Button />
+      </div>
     </>
   );
 };
