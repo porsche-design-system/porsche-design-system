@@ -65,9 +65,13 @@ export class Accordion {
       ({ borderBoxSize }) => {
         // Firefox implements `contentBoxSize` as a single content rect, rather than an array
         const contentBorderBoxSize = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
-        const blockSize = contentBorderBoxSize.blockSize;
 
-        this.contentWrapperHeight = `${pxToRem(blockSize)}rem`;
+        // when content is wider than the accordion we get a vertical scrollbar, which takes some space away from the content
+        // thus this size needs to be added to the contentWrapperHeight
+        const scrollBarHeight: number = this.collapsibleElement.offsetHeight - this.collapsibleElement.clientHeight;
+        const blockSize: number = contentBorderBoxSize.blockSize;
+
+        this.contentWrapperHeight = `${pxToRem(blockSize + scrollBarHeight)}rem`;
         if (this.open) {
           this.collapsibleElement.style.height = this.contentWrapperHeight;
         }
