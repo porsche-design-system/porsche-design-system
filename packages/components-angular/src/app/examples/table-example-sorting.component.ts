@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataSorting, headSorting } from '@porsche-design-system/shared';
+import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';
 import type { TableHeadCellSort } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -29,7 +29,7 @@ export class TableExampleSortingComponent {
   public data = dataSorting;
 
   onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
-    const { id, direction } = e.detail;
+    const { id, direction } = e.detail as TableHeadCellSort & { id: keyof DataSorting };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
