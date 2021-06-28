@@ -22,7 +22,6 @@ describe('observeResize()', () => {
     it('should run callback once when observeResize is reapplied', async () => {
       const node = document.createElement('div');
       const cb = jest.fn();
-      node.style.height = '100%';
 
       observeResize(node, cb);
       unobserveResize(node);
@@ -122,5 +121,5 @@ describe('unobserveResize()', () => {
     expect(resizeMap.get(node2)).toEqual(callback2);
   });
 
-  test.todo('test 3 diff options { box: "border-box" }');
+  test.todo('test all ResizeObserverBoxOptions { "border-box", "content-box", "device-pixel-content-box"};');
 });
