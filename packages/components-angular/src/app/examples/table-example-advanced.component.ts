@@ -47,8 +47,8 @@ export class TableExampleAdvancedComponent {
   public head = headAdvanced;
   public data = dataAdvanced;
 
-  onSortingChange(e: CustomEvent<TableHeadCellSort<DataAdvanced>>): void {
-    const { id, direction } = e.detail;
+  onSortingChange(e: CustomEvent<TableHeadCellSort>): void {
+    const { id, direction } = e.detail as TableHeadCellSort & { id: keyof DataAdvanced };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
