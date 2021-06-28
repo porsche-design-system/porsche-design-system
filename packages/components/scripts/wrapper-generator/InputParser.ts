@@ -57,6 +57,12 @@ export class InputParser {
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }
 
+  private getComponentSourceCode(component: TagName): string {
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
   public getSharedTypes(): string {
     return this.sharedTypes;
   }
@@ -89,10 +95,15 @@ export class InputParser {
   }
 
   public canHaveChildren(component: TagName): boolean {
-    const fileName = `${component.replace('p-', '')}.tsx`;
-    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-
+    const fileContent = this.getComponentSourceCode(component);
     return fileContent.includes('<slot');
+  }
+
+  public getDefaultValueForProp(component: TagName, prop: string): string {
+    const fileContent = this.getComponentSourceCode(component);
+    // extract values in same line, next line or multi line, but also respect not default
+    const [, defaultValue] =
+      fileContent.match(new RegExp(`@Prop\\(\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+    return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }
