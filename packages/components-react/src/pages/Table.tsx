@@ -8,30 +8,19 @@ import {
   PTableHeadRow,
   PTableRow,
 } from '@porsche-design-system/components-react';
-import { useEffect, useRef } from 'react';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
 export const TablePage = (): JSX.Element => {
-  const headRow = useRef<HTMLElement>();
-
-  // TODO: workaround to pass data via property since our react wrappers set attributes
-  // as alternative we could also provide sort-active, sort-direction, sort-id,… and that's it.
-  useEffect(() => {
-    headRow.current.childNodes.forEach((node, i) => {
-      (node as any).sort = head[i];
-    });
-  }, [head]);
-
   return (
     <>
       <div className="playground light" title="should render table">
         <PTable caption="Some caption">
           <PTableHead>
-            <PTableHeadRow ref={headRow}>
+            <PTableHeadRow>
               {head.map((item, i) => (
                 <PTableHeadCell
                   key={i}
-                  // sort={item}
+                  sort={item}
                   hideLabel={item.hideLabel}
                   style={item.style}
                   dangerouslySetInnerHTML={{ __html: item.name }}
