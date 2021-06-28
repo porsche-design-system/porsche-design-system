@@ -8,41 +8,73 @@ export const transitionTimingFunction = 'ease';
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
-export const getHoverStyles = (): JssStyle => {
-  return {
-    transition: `color ${transitionDuration} ${transitionTimingFunction} !important`,
-    '&:hover': {
-      color: `${color.state.hover} !important`,
-    },
-  };
+export const addImportantToRule = (value: any): string => `${value} !important`;
+
+export const addImportantToEachRule = (style: JssStyle, important: boolean): JssStyle => {
+  if (important) {
+    for (const key in style) {
+      const value = style[key];
+      style[key] =
+        typeof value === 'object' ? addImportantToEachRule(style[key], important) : addImportantToRule(value);
+    }
+  }
+
+  return style;
 };
 
-type Options = {
+type GetHoverStylesOptions = {
+  important?: boolean;
+};
+
+const defaultHoverStylesOptions: GetHoverStylesOptions = {
+  important: false,
+};
+
+export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
+  const { important }: GetFocusStylesOptions = { ...defaultHoverStylesOptions, ...opts };
+
+  return addImportantToEachRule(
+    {
+      transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+      '&:hover': {
+        color: `${color.state.hover}`,
+      },
+    },
+    important
+  );
+};
+
+type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
+  important?: boolean;
 };
 
-const defaultOptions: Options = {
+const defaultFocusStylesOptions: GetFocusStylesOptions = {
   color: color.state.focus,
   offset: 2,
+  important: false,
 };
 
-export const getFocusStyles = (opts?: Options): JssStyle => {
-  const options: Options = { ...defaultOptions, ...opts };
+export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
+  const { offset, color, important }: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
 
-  return {
-    outline: 'transparent solid 1px !important',
-    outlineOffset: `${options.offset}px !important`,
-    '&::-moz-focus-inner': {
-      border: '0 !important',
+  return addImportantToEachRule(
+    {
+      outline: 'transparent solid 1px',
+      outlineOffset: `${offset}px`,
+      '&::-moz-focus-inner': {
+        border: '0',
+      },
+      '&:focus': {
+        outlineColor: `${color}`,
+      },
+      '&:focus:not(:focus-visible)': {
+        outlineColor: 'transparent',
+      },
     },
-    '&:focus': {
-      outlineColor: `${options.color} !important`,
-    },
-    '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent !important',
-    },
-  };
+    important
+  );
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
