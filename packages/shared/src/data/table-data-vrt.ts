@@ -1,18 +1,18 @@
 export type HeadVrt = {
-  id?: string;
+  id: string;
   name: string;
   hideLabel?: boolean;
-  active?: boolean;
-  direction?: 'asc' | 'desc';
+  active: boolean;
+  direction: 'asc' | 'desc';
   style?: React.CSSProperties;
 };
 
 export const headVrt: HeadVrt[] = [
   { name: 'Slotted Styles', id: 'some-id', active: false, direction: 'asc' },
   { name: 'Multiline text', id: 'some-id', active: true, direction: 'desc' },
-  { name: 'Min width cell', style: { minWidth: 250 } },
+  { name: 'Min width cell', style: { minWidth: 250 } } as HeadVrt,
   { name: 'Multiline<br/>header<br/>cell', id: 'some-id', active: true, direction: 'asc' },
-  { name: 'Hide header cell', hideLabel: true },
+  { name: 'Hide header cell', hideLabel: true } as HeadVrt,
 ];
 
 export type DataVrt = {

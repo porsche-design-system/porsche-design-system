@@ -18,12 +18,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       'ForwardedRef',
       'forwardRef',
       'HTMLAttributes',
-      'useRef',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
+      ...(extendedProps.some(({ isEvent }) => !isEvent) ? ['useEffect'] : []),
+      'useRef',
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
-    const hooksImports = ['usePrefix', 'useMergedClass', ...(hasEventProps ? ['useEventCallback'] : [])];
+    const hooksImports = [...(hasEventProps ? ['useEventCallback'] : []), 'useMergedClass', 'usePrefix'];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
     const utilsImports = ['syncRef', ...(canBeObject ? ['jsonStringify'] : [])];
@@ -49,9 +50,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const hasGeneric = this.inputParser.hasGeneric(component);
-    const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
+    const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
-    const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
+    const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
 
     const wrapperPropsArr: string[] = [...propsToDestructure.map(({ key }) => key), 'className', '...rest'];
     const wrapperProps = `{ ${wrapperPropsArr.join(', ')} }`;
@@ -70,11 +71,25 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
+    const componentEffectsArr: string[] =
+      propsToSync.length === 1
+        ? [
+            `useEffect(() => {
+      (elementRef.current as any).${propsToSync[0].key} = ${propsToSync[0].key};
+    }, [${propsToSync[0].key}]);`,
+          ]
+        : [
+            `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
+            `useEffect(() => {
+      [${propsToSync
+        .map(({ key }) => `'${key}'`)
+        .join(', ')}].forEach((propName, i) => ((elementRef.current as any)[propName] = propsToSync[i]));
+    }, propsToSync);`,
+          ];
+    const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
+
     const componentPropsArr: string[] = [
       '...rest',
-      ...propsToMap.map(
-        ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
-      ),
       'class: useMergedClass(elementRef, className)',
       'ref: syncRef(elementRef, ref)',
     ];
@@ -90,9 +105,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>
   ): JSX.Element => {
-    ${componentHooks}
-
-    ${componentProps}
+    ${[componentHooks, componentEffects, componentProps].filter((x) => x).join('\n\n    ')}
 
     return <Tag {...props} />;
   }
