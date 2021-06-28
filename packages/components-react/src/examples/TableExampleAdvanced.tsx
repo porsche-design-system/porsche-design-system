@@ -19,8 +19,8 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort<DataAdvanced>>) => {
-    const { id, direction } = e.detail;
+  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
+    const { id, direction } = e.detail as TableHeadCellSort & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
