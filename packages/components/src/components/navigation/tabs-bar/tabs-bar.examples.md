@@ -29,7 +29,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### Framework Implementations
 
-<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
+<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
 
 ### Buttons
 

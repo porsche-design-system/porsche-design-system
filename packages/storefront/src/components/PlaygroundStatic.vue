@@ -1,9 +1,9 @@
 <template>
-  <div :class="{ 'code-block-extended': true, example: isSlotSet }">
+  <div class="playground-static">
     <div v-if="isSlotSet" class="demo">
       <slot />
     </div>
-    <CodeBlock :markup="markup" :frameworks="Object.keys(frameworks)"></CodeBlock>
+    <CodeBlock class="code-block" :markup="markup" :frameworks="Object.keys(frameworks)"></CodeBlock>
   </div>
 </template>
 
@@ -19,14 +19,14 @@
       CodeBlock,
     },
   })
-  export default class CodeBlockExtended extends Vue {
+  export default class PlaygroundStatic extends Vue {
     @Prop({ default: {} }) public frameworks!: FrameworkMarkup;
 
     public get framework(): Framework {
       return this.$store.getters.selectedFramework;
     }
 
-    get markup(): string {
+    public get markup(): string {
       return this.frameworks[this.framework]!;
     }
 
@@ -38,17 +38,16 @@
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
-  @import '../styles/internal.variables';
 
-  .example {
+  .playground-static {
     padding: $p-spacing-32;
+    overflow-x: auto;
     border: 1px solid $p-color-neutral-contrast-low;
     background: $p-color-background-default;
-    margin-top: 1rem;
   }
 
-  ::v-deep pre {
-    max-height: 50rem;
+  .code-block ::v-deep pre {
+    max-height: 40rem;
   }
 
   .demo ~ .code-block {
