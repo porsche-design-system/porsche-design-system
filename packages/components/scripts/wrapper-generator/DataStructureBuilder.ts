@@ -6,7 +6,9 @@ export type ExtendedProp = {
   rawValueType: string;
   hasToBeMapped: boolean;
   canBeObject: boolean;
+  canBeUndefined: boolean;
   isEvent: boolean;
+  defaultValue: string;
 };
 
 export class DataStructureBuilder {
@@ -101,16 +103,23 @@ export class DataStructureBuilder {
     return result;
   }
 
-  private convertToExtendedProp(propKey: string, propValue: string, sharedTypes: string): ExtendedProp {
+  private convertToExtendedProp(
+    component: TagName,
+    propKey: string,
+    propValueType: string,
+    sharedTypes: string
+  ): ExtendedProp {
     const isEvent = !!propKey.match(/^on[A-Z]/);
-    const isCallback = !isEvent && !!propValue.match(/=>/);
-    const canBeObject = !isEvent && this.valueCanBeObject(propValue, sharedTypes);
+    const isCallback = !isEvent && !!propValueType.match(/=>/);
+    const canBeObject = !isEvent && this.valueCanBeObject(propValueType, sharedTypes);
     const extendedProp: ExtendedProp = {
       key: propKey,
-      rawValueType: propValue,
+      rawValueType: propValueType,
       hasToBeMapped: (!isEvent && !!propKey.match(/[A-Z]/g)) || canBeObject,
       canBeObject: canBeObject && !isCallback,
+      canBeUndefined: !!propValueType.match(/undefined/),
       isEvent: isEvent,
+      defaultValue: !isEvent ? this.inputParser.getDefaultValueForProp(component, propKey) : '',
     };
     return extendedProp;
   }
@@ -120,8 +129,8 @@ export class DataStructureBuilder {
     const parsedInterface = this.inputParser.getComponentInterface(component);
     const sharedTypes = this.inputParser.getSharedTypes();
 
-    return Object.entries(parsedInterface).map(([propKey, propValue]) =>
-      this.convertToExtendedProp(propKey, propValue, sharedTypes)
+    return Object.entries(parsedInterface).map(([propKey, propValueType]) =>
+      this.convertToExtendedProp(component, propKey, propValueType, sharedTypes)
     );
   }
 }
