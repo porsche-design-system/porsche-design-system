@@ -25,10 +25,7 @@ export class Pagination {
   @Prop() public itemsPerPage = 1;
 
   /** Index of the currently active page. */
-  @Prop({
-    mutable: true,
-  })
-  public activePage?: number = 1;
+  @Prop({ mutable: true }) public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
   @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks> = {
