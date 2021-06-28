@@ -92,7 +92,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       );
     }, propsToSync);`,
           ];
-    const componentEffects = componentEffectsArr.join('\n    ');
+    const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
     const componentPropsArr: string[] = [
       '...rest',
