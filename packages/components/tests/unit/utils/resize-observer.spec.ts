@@ -1,4 +1,6 @@
-import { observeResize, unobserveResize, resizeMap } from '../../../src/utils';
+import { observeResize, unobserveResize, resizeMap } from '../../../src/utils/resize-observer';
+
+jest.mock('../../../src/utils/dom');
 
 describe('observeResize()', () => {
   beforeEach(() => {
@@ -8,7 +10,7 @@ describe('observeResize()', () => {
   const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
   it('should add callback and key to resizeMap', () => {
-    const node = document.createElement('input');
+    const node = document.createElement('div');
     const callback = () => {};
 
     observeResize(node, callback);
@@ -16,78 +18,76 @@ describe('observeResize()', () => {
     expect(resizeMap.get(node)).toEqual(callback);
   });
 
-  describe('on attribute change', () => {
+  describe('on size change', () => {
     it('should run callback once when observeResize is reapplied', async () => {
-      const input = document.createElement('input');
-
+      const node = document.createElement('div');
       const cb = jest.fn();
+      node.style.height = '100%';
 
-      observeResize(input, cb);
-      unobserveResize(input);
-      observeResize(input, cb);
-
-      input.setAttribute('disabled', '');
+      observeResize(node, cb);
+      unobserveResize(node);
+      observeResize(node, cb);
 
       await tick();
       expect(cb).toBeCalledTimes(1);
     });
 
     it('should run callback once when observeResize is called multiple times', async () => {
-      const input = document.createElement('input');
+      const node = document.createElement('div');
 
       const cb = jest.fn();
 
-      observeResize(input, cb);
-      observeResize(input, cb);
-      observeResize(input, cb);
+      observeResize(node, cb);
+      observeResize(node, cb);
+      observeResize(node, cb);
 
-      input.style.height = '20px';
+      node.style.height = '20px';
 
       await tick();
       expect(cb).toBeCalledTimes(1);
     });
 
-    it('should run callback once when multiple inputs are observed', async () => {
-      const input1 = document.createElement('input');
-      const input2 = document.createElement('input');
+    it('should run callback once when multiple divs are observed', async () => {
+      const node1 = document.createElement('div');
+      const node2 = document.createElement('div');
 
       const cb1 = jest.fn();
       const cb2 = jest.fn();
 
-      observeResize(input1, cb1);
-      observeResize(input2, cb2);
+      observeResize(node1, cb1);
+      observeResize(node2, cb2);
 
-      input1.style.height = '20px';
+      node1.style.height = '20px';
 
       await tick();
       expect(cb1).toBeCalledTimes(1);
       expect(cb2).toBeCalledTimes(0);
     });
 
-    it('should run callback once when multiple attributes are changed', async () => {
-      const input = document.createElement('input');
-      const cb = jest.fn();
+    it('should pass ResizeObserverEntry to callback', async () => {
+      const node = document.createElement('div');
 
-      observeResize(input, cb);
+      const cb = jest.fn((resizeEntry: ResizeObserverEntry) => {
+        console.log('-> cb', resizeEntry);
+      });
 
-      input.style.height = '20px';
-      input.style.height = '30px';
-      input.style.height = '0px';
+      observeResize(node, cb);
+
+      node.style.height = '20px';
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledWith({});
     });
-    it('should pass ResizeObserverEntry to callback');
   });
 
   it('should not execute callback when resizeMap is cleared', async () => {
-    const input = document.createElement('input');
+    const node = document.createElement('div');
     const cb = jest.fn();
 
-    observeResize(input, cb);
+    observeResize(node, cb);
     resizeMap.clear();
 
-    input.style.height = '30px';
+    node.style.height = '30px';
     await tick();
 
     expect(cb).toBeCalledTimes(0);
@@ -100,9 +100,9 @@ describe('unobserveResize()', () => {
   });
 
   it('should remove correct element from resizeCallbacks array', () => {
-    const node1 = document.createElement('input');
+    const node1 = document.createElement('div');
     const node2 = document.createElement('select');
-    const node3 = document.createElement('input');
+    const node3 = document.createElement('div');
     const callback1 = () => {};
     const callback2 = () => {};
     const callback3 = () => {};
@@ -121,4 +121,6 @@ describe('unobserveResize()', () => {
     expect(resizeMap.size).toBe(1);
     expect(resizeMap.get(node2)).toEqual(callback2);
   });
+
+  test.todo('test 3 diff options { box: "border-box" }');
 });
