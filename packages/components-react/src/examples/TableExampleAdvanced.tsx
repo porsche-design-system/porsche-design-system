@@ -13,7 +13,7 @@ import {
   TableHeadCellSort,
 } from '@porsche-design-system/components-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { headAdvanced, dataAdvanced } from '@porsche-design-system/shared';
+import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 export const TableExampleAdvancedPage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
@@ -28,12 +28,11 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
     });
   }, [head]);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
+  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort<DataAdvanced>>) => {
     const { id, direction } = e.detail;
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
-        // @ts-ignore
         return direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id]);
       })
     );
