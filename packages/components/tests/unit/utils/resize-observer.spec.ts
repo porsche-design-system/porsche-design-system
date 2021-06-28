@@ -1,13 +1,11 @@
 import { observeResize, unobserveResize, resizeMap } from '../../../src/utils/resize-observer';
 
-jest.mock('../../../src/utils/dom');
-
 describe('observeResize()', () => {
   beforeEach(() => {
     resizeMap.clear();
   });
 
-  const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
+  const tick = () => new Promise((resolve) => setTimeout(resolve, 40));
 
   it('should add callback and key to resizeMap', () => {
     const node = document.createElement('div');
@@ -19,20 +17,29 @@ describe('observeResize()', () => {
   });
 
   describe('on size change', () => {
-    it('should run callback once when observeResize is reapplied', async () => {
+    const getNode = (): HTMLDivElement => {
       const node = document.createElement('div');
+      Object.defineProperty(node, 'offsetHeight', { writable: true, configurable: true, value: 20 });
+      document.body.appendChild(node);
+      return node;
+    };
+
+    it('should run callback once when observeResize is reapplied', async () => {
+      const node = getNode();
       const cb = jest.fn();
 
       observeResize(node, cb);
       unobserveResize(node);
       observeResize(node, cb);
 
+      node.style.height = '20px';
+
       await tick();
       expect(cb).toBeCalledTimes(1);
     });
 
     it('should run callback once when observeResize is called multiple times', async () => {
-      const node = document.createElement('div');
+      const node = getNode();
 
       const cb = jest.fn();
 
@@ -47,8 +54,8 @@ describe('observeResize()', () => {
     });
 
     it('should run callback once when multiple divs are observed', async () => {
-      const node1 = document.createElement('div');
-      const node2 = document.createElement('div');
+      const node1 = getNode();
+      const node2 = getNode();
 
       const cb1 = jest.fn();
       const cb2 = jest.fn();
@@ -64,18 +71,17 @@ describe('observeResize()', () => {
     });
 
     it('should pass ResizeObserverEntry to callback', async () => {
-      const node = document.createElement('div');
+      const node = getNode();
+      let tempResizeEntry;
 
-      const cb = jest.fn((resizeEntry: ResizeObserverEntry) => {
-        console.log('-> cb', resizeEntry);
-      });
+      const cb = jest.fn((resizeEntry: ResizeObserverEntry) => (tempResizeEntry = resizeEntry));
 
       observeResize(node, cb);
 
       node.style.height = '20px';
 
       await tick();
-      expect(cb).toHaveBeenCalledWith({});
+      expect(cb).toHaveBeenCalledWith(tempResizeEntry);
     });
   });
 
@@ -120,6 +126,4 @@ describe('unobserveResize()', () => {
     expect(resizeMap.size).toBe(1);
     expect(resizeMap.get(node2)).toEqual(callback2);
   });
-
-  test.todo('test all ResizeObserverBoxOptions { "border-box", "content-box", "device-pixel-content-box"};');
 });
