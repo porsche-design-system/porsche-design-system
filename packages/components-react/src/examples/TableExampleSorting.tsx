@@ -9,7 +9,7 @@ import {
   TableHeadCellSort,
 } from '@porsche-design-system/components-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { dataSorting, headSorting } from '@porsche-design-system/shared';
+import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';
 
 export const TableExampleSortingPage = (): JSX.Element => {
   const headRow = useRef<HTMLElement>();
@@ -24,12 +24,11 @@ export const TableExampleSortingPage = (): JSX.Element => {
     });
   }, [head]);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
+  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort<DataSorting>>) => {
     const { id, direction } = e.detail;
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
-        // @ts-ignore
         return direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id]);
       })
     );
