@@ -260,7 +260,7 @@
 
         // Special
         .playground,
-        .code-block-extended {
+        .playground-static {
           margin-top: $p-spacing-16;
         }
       }

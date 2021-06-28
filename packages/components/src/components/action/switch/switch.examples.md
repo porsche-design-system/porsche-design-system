@@ -26,7 +26,7 @@ In order to get notified when `checked` state changes, you need to register an e
 
 ### Framework Implementations
 
-<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
+<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
 
 ---
 

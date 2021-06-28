@@ -31,7 +31,7 @@ Note that `.footer` is a custom CSS class in order to responsively style the but
 
 ### Framework Implementations
 
-<CodeBlockExtended :frameworks="frameworks"></CodeBlockExtended>
+<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
 
 ## Basic Scrollable
 
