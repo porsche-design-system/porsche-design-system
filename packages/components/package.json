@@ -33,6 +33,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "devDependencies": {
+    "@juggle/resize-observer": "^3.3.1",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
@@ -60,7 +61,6 @@
     "jss": "^10.5.1",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.5.1",
-    "resize-observer-polyfill": "^1.5.1",
     "rollup-plugin-modify": "^3.0.0",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
