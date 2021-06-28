@@ -1,4 +1,4 @@
-type HeadItem = {
+export type HeadSorting = {
   id: string;
   name: string;
   hideLabel: boolean;
@@ -6,23 +6,23 @@ type HeadItem = {
   direction: 'asc' | 'desc';
 };
 
-export const headSorting: HeadItem[] = [
-  { name: 'Column 1', id: 'col1' } as HeadItem,
-  { name: 'Column 2', id: 'col2' } as HeadItem,
-  { name: 'Column 3', id: 'col3' } as HeadItem,
+export const headSorting: HeadSorting[] = [
+  { name: 'Column 1', id: 'col1' } as HeadSorting,
+  { name: 'Column 2', id: 'col2' } as HeadSorting,
+  { name: 'Column 3', id: 'col3' } as HeadSorting,
 ].map((item, i) => ({
   ...item,
   active: i === 1,
   direction: 'asc',
 }));
 
-type DataItem = {
+export type DataSorting = {
   col1: string;
   col2: string;
   col3: string;
 };
 
-export const dataSorting: DataItem[] = [
+export const dataSorting: DataSorting[] = [
   {
     col1: 'Name A',
     col2: '9',

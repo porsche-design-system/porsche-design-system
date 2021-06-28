@@ -1,4 +1,4 @@
-type HeadItem = {
+export type HeadAdvanced = {
   id: string;
   name: string;
   hideLabel: boolean;
@@ -6,14 +6,14 @@ type HeadItem = {
   direction: 'asc' | 'desc';
 };
 
-export const headAdvanced: HeadItem[] = [
-  { name: 'Model', id: 'model' } as HeadItem,
-  { name: 'Interest', id: 'interest' } as HeadItem,
-  { name: 'VIN', id: 'vin' } as HeadItem,
-  { name: 'Purchase Intention', id: 'purchaseIntention' } as HeadItem,
-  { name: 'Status', id: 'status' } as HeadItem,
-  { name: 'Lead ID', id: 'leadId' } as HeadItem,
-  { name: 'Action', id: 'action', hideLabel: true } as HeadItem,
+export const headAdvanced: HeadAdvanced[] = [
+  { name: 'Model', id: 'model' } as HeadAdvanced,
+  { name: 'Interest', id: 'interest' } as HeadAdvanced,
+  { name: 'VIN', id: 'vin' } as HeadAdvanced,
+  { name: 'Purchase Intention', id: 'purchaseIntention' } as HeadAdvanced,
+  { name: 'Status', id: 'status' } as HeadAdvanced,
+  { name: 'Lead ID', id: 'leadId' } as HeadAdvanced,
+  { name: 'Action', id: 'action', hideLabel: true } as HeadAdvanced,
 ].map((item, i) => ({
   ...item,
   ...(i > 0 &&
@@ -23,7 +23,7 @@ export const headAdvanced: HeadItem[] = [
     }),
 }));
 
-type DataItem = {
+export type DataAdvanced = {
   imageUrl: string;
   model: string;
   date: string;
@@ -34,7 +34,7 @@ type DataItem = {
   leadId: string;
 };
 
-export const dataAdvanced: DataItem[] = [
+export const dataAdvanced: DataAdvanced[] = [
   {
     imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718@2x.jpg',
     model: '718 Cayman',
