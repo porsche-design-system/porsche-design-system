@@ -16,8 +16,8 @@ describe('accordion', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveMutations()', () => {
-      const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+    it('should call unobserveResize()', () => {
+      const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
       const component = new Accordion();
       component.disconnectedCallback();
 
