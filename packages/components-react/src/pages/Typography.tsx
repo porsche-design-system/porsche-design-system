@@ -3,6 +3,10 @@ import type { TextAlign, TextSize } from '@porsche-design-system/components-reac
 
 export const TypographyPage = (): JSX.Element => {
   const style = `
+    .playground {
+      overflow: hidden;
+    }
+
     .playground:nth-child(-n+4) p-text {
       display: block;
       vertical-align: top;
@@ -14,7 +18,7 @@ export const TypographyPage = (): JSX.Element => {
       float: left;
     }
 
-    br {
+    div, br {
       clear: both;
     }
   `;
