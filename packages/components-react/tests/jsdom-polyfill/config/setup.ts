@@ -3,3 +3,7 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 import { skipCheckForPorscheDesignSystemProviderDuringTests } from '@porsche-design-system/components-react';
 
 skipCheckForPorscheDesignSystemProviderDuringTests();
+
+import { ResizeObserver } from '@juggle/resize-observer';
+
+global.ResizeObserver = ResizeObserver;
