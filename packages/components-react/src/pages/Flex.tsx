@@ -954,7 +954,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
+          <PFlexItem className="align-self" alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
