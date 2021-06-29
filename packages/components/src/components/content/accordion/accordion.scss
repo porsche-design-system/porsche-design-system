@@ -10,7 +10,11 @@ $root: '.root';
   #{$root} {
     border-top: 1px solid $p-color-neutral-contrast-medium;
 
-    &--theme-dark {
+    &--compact {
+      border-top: none;
+    }
+
+    &--theme-dark:not(&--compact) {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
     }
   }
@@ -20,6 +24,10 @@ $root: '.root';
   border-bottom: 1px solid $p-color-neutral-contrast-medium;
 
   @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+
+  &--compact {
+    border-bottom: none;
+  }
 
   &--size-small {
     @include p-generate-type-scale($p-font-size-small);
@@ -60,11 +68,30 @@ button {
 
   @include p-focus($p-color-state-focus, 0);
 
+  #{$root}--compact & {
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+    padding: p-px-to-rem(16px) 0;
+
+    @include p-focus($p-color-state-focus);
+
+    &:hover {
+      color: $p-color-state-hover;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+      #{$root}--theme-dark {
+        background-color: transparent;
+      }
+    }
+  }
+
   &:hover,
   &:focus-visible {
     background-color: $p-hover-background-color;
 
-    #{$root}--theme-dark & {
+    #{$root}--theme-dark:not(#{$root}--compact) & {
       background-color: $p-hover-background-color-theme-dark;
     }
   }
@@ -79,16 +106,24 @@ button {
   overflow-wrap: inherit;
   word-wrap: inherit;
   hyphens: inherit;
-
-  #{$root}--weight-regular & {
-    font-weight: $p-font-weight-regular;
-  }
 }
 
 .icon {
   transform-origin: 50% 50%;
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-left: $p-spacing-24;
+
+  #{$root}--compact & {
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+    &:hover {
+      color: $p-color-state-hover;
+    }
+
+    #{$root}--theme-dark & {
+      color: $p-hover-background-color-theme-dark;
+    }
+  }
 
   #{$root}--open & {
     // needs to be rotate, since safari rotates in a different direction on rotate3d
@@ -104,6 +139,10 @@ button {
   transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
     visibility $p-animation-hover-duration-var linear $p-animation-hover-duration-var;
 
+  #{$root}--compact & {
+    padding: 0;
+  }
+
   #{$root}--open & {
     height: auto;
     padding-bottom: $p-spacing-40;
@@ -116,4 +155,7 @@ button {
 
 .content-wrapper {
   padding-top: $p-spacing-8;
+  #{$root}--compact & {
+    padding-top: 0;
+  }
 }
