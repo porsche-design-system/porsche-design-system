@@ -181,10 +181,22 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '</TableHead>',
           '<TableBody uxpId="table-body">',
           ...[
-            '<TableRow uxpId="table-row">',
+            '<TableRow uxpId="table-row-1">',
             ...[
-              '<TableCell uxpId="table-cell-1">Cell 1</TableCell>',
-              '<TableCell uxpId="table-cell-2">Cell 2</TableCell>',
+              '<TableCell uxpId="table-row-1-cell-1">Cell 1</TableCell>',
+              '<TableCell uxpId="table-row-1-cell-2">Cell 2</TableCell>',
+            ].map(addNestedIndentation),
+            '</TableRow>',
+            '<TableRow uxpId="table-row-2">',
+            ...[
+              '<TableCell uxpId="table-row-2-cell-1">Cell 1</TableCell>',
+              '<TableCell uxpId="table-row-2-cell-2">Cell 2</TableCell>',
+            ].map(addNestedIndentation),
+            '</TableRow>',
+            '<TableRow uxpId="table-row-3">',
+            ...[
+              '<TableCell uxpId="table-row-3-cell-1">Cell 1</TableCell>',
+              '<TableCell uxpId="table-row-3-cell-2">Cell 2</TableCell>',
             ].map(addNestedIndentation),
             '</TableRow>',
           ].map(addNestedIndentation),
