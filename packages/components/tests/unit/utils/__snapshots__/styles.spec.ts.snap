@@ -13,19 +13,6 @@ Object {
 }
 `;
 
-exports[`addImportantToEachRule() should not add !important to each rule 1`] = `
-Object {
-  "&:hover": Object {
-    "&:focus": Object {
-      "color": "orange",
-    },
-    "color": "blue",
-  },
-  "color": "red",
-  "display": "block",
-}
-`;
-
 exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
