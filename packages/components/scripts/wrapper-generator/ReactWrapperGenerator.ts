@@ -55,7 +55,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
 
     const wrapperPropsArr: string[] = [
-      ...propsToDestructure.map(({ key, defaultValue, isEvent }) => (isEvent ? key : `${key} = ${defaultValue}`)),
+      ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
+        isEvent || defaultValue === undefined ? key : `${key} = ${defaultValue}`
+      ),
       'className',
       '...rest',
     ];
