@@ -4,13 +4,18 @@ import type { TextAlign, TextSize } from '@porsche-design-system/components-reac
 export const TypographyPage = (): JSX.Element => {
   const style = `
     .playground:nth-child(-n+4) p-text {
-      display: inline-block !important;
+      display: block;
       vertical-align: top;
       margin: 4px;
       padding: 4px;
       background: #f1f1f1;
       width: 36px;
       height: 36px;
+      float: left;
+    }
+
+    br {
+      clear: both;
     }
   `;
   const props: { size: TextSize; align: TextAlign } = { size: 'medium', align: 'center' };
