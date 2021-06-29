@@ -11,7 +11,7 @@ export class TableHeadCell {
   @Element() public host!: HTMLElement;
 
   /** Defines sortability properties. */
-  @Prop() public sort?: TableHeadCellSort = undefined;
+  @Prop() public sort?: TableHeadCellSort;
 
   /** Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined. */
   @Prop() public hideLabel?: boolean = false;

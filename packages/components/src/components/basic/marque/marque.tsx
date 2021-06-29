@@ -18,7 +18,7 @@ export class Marque {
   @Prop() public size?: MarqueSize = 'responsive';
 
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string = undefined;
+  @Prop() public href?: string;
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
