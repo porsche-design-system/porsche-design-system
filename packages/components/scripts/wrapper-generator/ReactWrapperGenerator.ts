@@ -27,7 +27,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const hooksImports = [...(hasEventProps ? ['useEventCallback'] : []), 'useMergedClass', 'usePrefix'];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
-    const utilsImports = ['syncRef', ...(canBeObject ? ['jsonStringify'] : [])];
+    const utilsImports = ['syncRef'];
     const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const importsFromTypes = nonPrimitiveTypes.length
