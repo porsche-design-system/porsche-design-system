@@ -97,6 +97,16 @@ Please **refrain** from using any other than text content as slotted markup.
 
 ---
 
+## Compact
+
+By setting `compact` to `true` you can have a more compact accordion with less whitespace.
+
+Be aware, that the `size` property will be ignored when `compact` is set to `true`.
+
+<Playground :markup="compactMarkup" :config="config"></Playground>
+
+---
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
@@ -104,8 +114,7 @@ Please **refrain** from using any other than text content as slotted markup.
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
-  
-    weight = 'semibold';
+
     size = 'small';
     content= `<p-text>
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
@@ -177,6 +186,15 @@ Please **refrain** from using any other than text content as slotted markup.
 </p-accordion>
 <p-accordion tag="h3">
   <span slot="heading">Some slotted heading</span>
+  ${this.content}
+</p-accordion>`;
+    }
+
+    get compactMarkup() {      
+      return `<p-accordion heading="Some Heading" tag="h3" compact="true">
+  ${this.content}
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3" compact="true" open="true">
   ${this.content}
 </p-accordion>`;
     }
