@@ -10,7 +10,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
-import type { AccordionChangeEvent, AccordionSize, AccordionWeight } from './accordion-utils';
+import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import { getSlottedCss } from './accordion-utils';
 
 @Component({
@@ -24,8 +24,6 @@ export class Accordion {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
-  /** The text weight. */
-  @Prop() public weight?: AccordionWeight = 'semibold';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -92,7 +90,6 @@ export class Accordion {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
-      ['root--weight-regular']: this.weight === 'regular',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
