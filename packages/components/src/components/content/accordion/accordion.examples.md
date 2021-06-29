@@ -87,18 +87,6 @@ const AccordionPage = (): JSX.Element => {
 
 ---
 
-## Weight
-
-<Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight">
-    <option disabled>Select weight</option>
-    <option value="regular">Regular</option>
-    <option value="semibold">SemiBold</option>
-  </select>
-</Playground>
-
----
-
 ## Slotted heading
 Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not** to define
 the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
@@ -181,15 +169,6 @@ Please **refrain** from using any other than text content as slotted markup.
   ${this.content}
 </p-accordion>`;
     }  
-  
-    get weightMarkup() {
-      return `<p-accordion heading="Some Heading" tag="h3" weight="${this.weight}">
-  ${this.content}
-</p-accordion>
-<p-accordion heading="Some Heading" tag="h3" weight="${this.weight}">
-  ${this.content}
-</p-accordion>`;
-    }
 
     get slottedMarkup(){
       return `<p-accordion tag="h3">
