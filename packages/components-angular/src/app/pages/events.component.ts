@@ -12,6 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-pagination>
       <p>{{ pageChangeEventCounter }}</p>
     </div>
+
     <div class="playground light">
       <p-tabs-bar [activeTabIndex]="0" (tabChange)="onTabsBarChange()">
         <button>Tab 1</button>
@@ -20,6 +21,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tabs-bar>
       <p>{{ tabsBarChangeEventCounter }}</p>
     </div>
+
     <div class="playground light">
       <p-tabs [activeTabIndex]="0" (tabChange)="onTabsChange()">
         <p-tabs-item label="Tab 1">Content 1</p-tabs-item>
@@ -28,14 +30,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tabs>
       <p>{{ tabsChangeEventCounter }}</p>
     </div>
+
     <div class="playground light">
       <p-switch (switchChange)="onSwitchChange()">Switch</p-switch>
       <p>{{ switchChangeEventCounter }}</p>
     </div>
+
     <div class="playground light">
       <p-modal [open]="isModalOpen" (close)="onModalClose()">Modal</p-modal>
       <p>{{ modalCloseEventCounter }} <button (click)="openModal()">Open Modal</button></p>
     </div>
+
     <div class="playground light">
       <p-table (sortingChange)="onTableSortingChange()">
         <p-table-head>

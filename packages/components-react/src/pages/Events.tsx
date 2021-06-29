@@ -38,6 +38,7 @@ export const EventsPage = (): JSX.Element => {
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onPageChange={onPageChange} />
         <p>{pageChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
         <PTabsBar activeTabIndex={0} onTabChange={onTabsBarChange}>
           <button>Tab 1</button>
@@ -46,6 +47,7 @@ export const EventsPage = (): JSX.Element => {
         </PTabsBar>
         <p>{tabsBarChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
         <PTabs activeTabIndex={0} onTabChange={onTabsChange}>
           <PTabsItem label="Tab 1">Content 1</PTabsItem>
@@ -54,10 +56,12 @@ export const EventsPage = (): JSX.Element => {
         </PTabs>
         <p>{tabsChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
         <PSwitch onSwitchChange={onSwitchChange}>Switch</PSwitch>
         <p>{switchChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
         <PModal open={isModalOpen} onClose={onModalClose}>
           Modal
@@ -66,6 +70,7 @@ export const EventsPage = (): JSX.Element => {
           {modalCloseEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
         </p>
       </div>
+
       <div className="playground light">
         <PTable onSortingChange={onTableSortingChange}>
           <PTableHead>
