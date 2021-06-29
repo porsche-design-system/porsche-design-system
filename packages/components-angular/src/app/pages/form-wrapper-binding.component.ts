@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'form-wrapper-binding',
+  selector: 'page-form-wrapper-binding',
   template: `
     <div class="playground light">
       <p-radio-button-wrapper [label]="'Some Label'">
