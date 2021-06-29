@@ -70,7 +70,7 @@ button {
 
   #{$root}--compact & {
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-    padding: p-px-to-rem(16px) 0;
+    padding: p-px-to-rem(8px) 0;
 
     @include p-focus($p-color-state-focus);
 
@@ -114,8 +114,6 @@ button {
   margin-left: $p-spacing-24;
 
   #{$root}--compact & {
-    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-
     &:hover {
       color: $p-color-state-hover;
     }
@@ -141,6 +139,10 @@ button {
 
   #{$root}--compact & {
     padding: 0;
+  }
+
+  #{$root}--compact #{$root}--open & {
+    padding-bottom: $p-spacing-16;
   }
 
   #{$root}--open & {
