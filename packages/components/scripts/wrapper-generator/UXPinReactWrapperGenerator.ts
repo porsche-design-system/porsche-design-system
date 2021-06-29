@@ -121,6 +121,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-select-wrapper':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
+      case 'p-table':
       case 'p-tabs-bar':
         return true;
       default:
@@ -129,24 +130,25 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
+    const addNestedIndentation = (x: string): string => `  ${x}`;
+    const glue = '\n    ';
+
     const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
       'p-button-group': {
         children: [
           '<Button variant="primary" uxpId="button-primary" />',
           '<Button variant="secondary" uxpId="button-secondary" />',
-        ].join('\n    '),
+        ].join(glue),
       },
       'p-checkbox-wrapper': {
         props: 'label="CheckboxWrapper"',
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
       },
       'p-flex': {
-        children: ['<FlexItem uxpId="flex-item-1" />', '<FlexItem uxpId="flex-item-2" />'].join('\n    '),
+        children: ['<FlexItem uxpId="flex-item-1" />', '<FlexItem uxpId="flex-item-2" />'].join(glue),
       },
       'p-grid': {
-        children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(
-          '\n    '
-        ),
+        children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(glue),
       },
       'p-radio-button-wrapper': {
         props: 'label="RadioButtonWrapper"',
@@ -165,11 +167,35 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: 'label="TextareaWrapper"',
         children: '<DummyTextarea uxpId="dummy-textarea" />',
       },
+      'p-table': {
+        children: [
+          '<TableHead uxpId="table-head">',
+          ...[
+            '<TableHeadRow uxpId="table-head-row">',
+            ...[
+              '<TableHeadCell uxpId="table-head-cell-1" sort={{ id: "col1", active: true, direction: "asc" }}>Column 1</TableHeadCell>',
+              '<TableHeadCell uxpId="table-head-cell-2" sort={{ id: "col2", active: false, direction: "asc" }}>Column 2</TableHeadCell>',
+            ].map(addNestedIndentation),
+            '</TableHeadRow>',
+          ].map(addNestedIndentation),
+          '</TableHead>',
+          '<TableBody uxpId="table-body">',
+          ...[
+            '<TableRow uxpId="table-row">',
+            ...[
+              '<TableCell uxpId="table-cell-1">Cell 1</TableCell>',
+              '<TableCell uxpId="table-cell-2">Cell 2</TableCell>',
+            ].map(addNestedIndentation),
+            '</TableRow>',
+          ].map(addNestedIndentation),
+          '</TableBody>',
+        ].join(glue),
+      },
       'p-tabs-bar': {
         props: 'activeTabIndex={0}',
         children: Array.from(Array(3))
           .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
-          .join('\n    '),
+          .join(glue),
       },
     };
 
