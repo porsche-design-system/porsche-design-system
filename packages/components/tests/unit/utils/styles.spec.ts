@@ -57,12 +57,8 @@ describe('addImportantToEachRule()', () => {
     },
   };
 
-  it('should not add !important to each rule', () => {
-    expect(addImportantToEachRule(input, false)).toMatchSnapshot();
-  });
-
   it('should add !important to each rule', () => {
-    expect(addImportantToEachRule(input, true)).toMatchSnapshot();
+    expect(addImportantToEachRule(input)).toMatchSnapshot();
   });
 });
 

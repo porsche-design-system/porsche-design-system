@@ -17,12 +17,9 @@ import type { TableComponentType } from './table-utils';
 export const styles: { [key in TableComponentType]: string } = {
   table: getCss({
     ...buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'block',
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'block',
+      })
     ),
     caption: {
       marginBottom: spacing['8'],
@@ -82,36 +79,27 @@ export const styles: { [key in TableComponentType]: string } = {
   }),
   'table-head': getCss(
     buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-header-group',
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'table-header-group',
+      })
     )
   ),
   'table-head-row': getCss(
     buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-row',
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'table-row',
+      })
     )
   ),
   'table-head-cell': getCss({
     ...buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-cell',
-          padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-          borderBottom: `1px solid ${color.neutralContrast.medium}`,
-          verticalAlign: 'bottom',
-          fontWeight: `${font.weight.bold}`,
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'table-cell',
+        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+        borderBottom: `1px solid ${color.neutralContrast.medium}`,
+        verticalAlign: 'bottom',
+        fontWeight: `${font.weight.bold}`,
+      })
     ),
     ...buildGlobalStyles({
       button: {
@@ -166,61 +154,49 @@ export const styles: { [key in TableComponentType]: string } = {
   }),
   'table-body': getCss(
     buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-row-group',
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'table-row-group',
+      })
     )
   ),
   'table-row': getCss(
     buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-row',
-          transition: `background-color ${transitionDuration} ${transitionTimingFunction}`,
-          '&(:hover)': {
-            backgroundColor: color.background.surface,
-          },
+      addImportantToEachRule({
+        display: 'table-row',
+        transition: `background-color ${transitionDuration} ${transitionTimingFunction}`,
+        '&(:hover)': {
+          backgroundColor: color.background.surface,
         },
-        true
-      )
+      })
     )
   ),
   'table-cell': getCss(
     buildHostStyles(
-      addImportantToEachRule(
-        {
-          display: 'table-cell',
-          padding: pxToRemWithUnit(12),
-          margin: 0,
-          verticalAlign: 'middle',
-          borderBottom: `1px solid ${color.neutralContrast.low}`,
-        },
-        true
-      )
+      addImportantToEachRule({
+        display: 'table-cell',
+        padding: pxToRemWithUnit(12),
+        margin: 0,
+        verticalAlign: 'middle',
+        borderBottom: `1px solid ${color.neutralContrast.low}`,
+      })
     )
   ),
 };
 
-export const slottedStyles: JssStyle = addImportantToEachRule(
-  {
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      ...getHoverStyles(),
-      ...getFocusStyles({ offset: 1 }),
-    },
-    '& b, & strong': {
-      fontWeight: `${font.weight.bold}`,
-    },
-    '& em, & i': {
-      fontStyle: 'normal',
-    },
-    '& img': {
-      verticalAlign: 'middle',
-    },
+export const slottedStyles: JssStyle = addImportantToEachRule({
+  '& a': {
+    color: 'inherit',
+    textDecoration: 'underline',
+    ...getHoverStyles(),
+    ...getFocusStyles({ offset: 1 }),
   },
-  true
-);
+  '& b, & strong': {
+    fontWeight: `${font.weight.bold}`,
+  },
+  '& em, & i': {
+    fontStyle: 'normal',
+  },
+  '& img': {
+    verticalAlign: 'middle',
+  },
+});
