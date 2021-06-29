@@ -1,4 +1,5 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
+import { color } from '@porsche-design-system/utilities';
 import { attachCss, buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
@@ -36,7 +37,7 @@ const baseCss: string = getCss({
     a: {
       display: 'block',
       textDecoration: 'none',
-      ...getFocusStyles({ offset: 0 }),
+      ...getFocusStyles({ color: color.default, offset: 0 }),
     },
     picture: {
       display: 'block',
