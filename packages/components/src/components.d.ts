@@ -530,7 +530,7 @@ export namespace Components {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1604,7 +1604,7 @@ declare namespace LocalJSX {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Emitted when the page changes.
          */
