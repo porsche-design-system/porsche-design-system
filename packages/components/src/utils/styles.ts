@@ -15,7 +15,7 @@ export const addImportantToEachRule = (style: JssStyle): JssStyle => {
   // eslint-disable-next-line guard-for-in
   for (const key in style) {
     const value = style[key];
-    style[key] = typeof value === 'object' ? addImportantToEachRule(style[key]) : addImportantToRule(value);
+    style[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
   }
 
   return style;
