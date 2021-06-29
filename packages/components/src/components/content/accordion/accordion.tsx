@@ -24,7 +24,6 @@ export class Accordion {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
-
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
@@ -36,6 +35,9 @@ export class Accordion {
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
+
+  /** Displays the Accordion as compact version with thinner border and smaller paddings */
+  @Prop() public compact?: boolean;
 
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
@@ -90,7 +92,8 @@ export class Accordion {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
-      ...mapBreakpointPropToClasses('root--size', this.size),
+      ...(!this.compact && { ...mapBreakpointPropToClasses('root--size', this.size) }),
+      ['root--compact']: this.compact,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -106,7 +109,13 @@ export class Accordion {
             onClick={this.handleButtonClick}
           >
             {this.heading || <slot name="heading" />}
-            <PrefixedTagNames.pIcon class="icon" name="arrowHeadDown" theme={this.theme} aria-hidden="true" />
+            <PrefixedTagNames.pIcon
+              class="icon"
+              color="inherit"
+              name="arrowHeadDown"
+              theme={this.theme}
+              aria-hidden="true"
+            />
           </button>
         </PrefixedTagNames.pHeadline>
         <div

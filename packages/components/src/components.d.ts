@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionSize, AccordionWeight } from "./components/content/accordion/accordion-utils";
+import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
@@ -20,6 +20,10 @@ import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./com
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PAccordion {
+        /**
+          * Displays the Accordion as compact version with thinner border and smaller paddings
+         */
+        "compact"?: boolean;
         /**
           * Defines the heading used in accordion.
          */
@@ -40,10 +44,6 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
-        /**
-          * The text weight.
-         */
-        "weight"?: AccordionWeight;
     }
     interface PBanner {
         /**
@@ -1045,6 +1045,10 @@ declare global {
 declare namespace LocalJSX {
     interface PAccordion {
         /**
+          * Displays the Accordion as compact version with thinner border and smaller paddings
+         */
+        "compact"?: boolean;
+        /**
           * Defines the heading used in accordion.
          */
         "heading"?: string;
@@ -1068,10 +1072,6 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
-        /**
-          * The text weight.
-         */
-        "weight"?: AccordionWeight;
     }
     interface PBanner {
         /**
