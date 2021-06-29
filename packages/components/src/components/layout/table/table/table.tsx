@@ -60,7 +60,7 @@ export class Table {
       : hasSlottedCaption && { 'aria-describedby': captionId };
 
     return (
-      <Host role="table" {...hostProps}>
+      <Host {...hostProps}>
         {hasSlottedCaption && (
           <div id={captionId} class="caption">
             <slot name="caption" />
@@ -68,7 +68,7 @@ export class Table {
         )}
         <div class="root">
           <div class="scroll-area">
-            <div class="table">
+            <div class="table" role="table">
               <slot />
               <span class="scroll-trigger" />
             </div>

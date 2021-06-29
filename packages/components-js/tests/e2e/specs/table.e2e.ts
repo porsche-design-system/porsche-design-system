@@ -23,6 +23,7 @@ describe('table', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-table');
+  const getShadowedTable = () => selectNode(page, 'p-table >>> .table');
   const getTableHead = () => selectNode(page, 'p-table-head');
   const getTableHeadRow = () => selectNode(page, 'p-table-head-row');
   const getFirstTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(1)');
@@ -143,7 +144,7 @@ ${script}`
     it('should set correct role and scope on table components', async () => {
       await initTable();
 
-      const host = await getHost();
+      const shadowedTable = await getShadowedTable();
       const tableHead = await getTableHead();
       const tableHeadRow = await getTableHeadRow();
       const firstTableHeadCell = await getFirstTableHeadCell();
@@ -151,7 +152,7 @@ ${script}`
       const firstTableRow = await getFirstTableRow();
       const firstTableRowCell = await getFirstTableRowCell();
 
-      expect(await getAttribute(host, 'role'))
+      expect(await getAttribute(shadowedTable, 'role'))
         .withContext('table')
         .toBe('table');
       expect(await getAttribute(tableHead, 'role'))
