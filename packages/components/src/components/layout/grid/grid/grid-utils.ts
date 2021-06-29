@@ -1,6 +1,15 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  attachCss,
+  buildHostStyles,
+  buildResponsiveJss,
+  getCss,
+  mergeDeep,
+  pxToRemWithUnit,
+} from '../../../../utils';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
@@ -15,26 +24,25 @@ export type GridGutterType = typeof GRID_GUTTERS[number];
 export type GridGutter = BreakpointCustomizable<GridGutterType>;
 
 const baseCss: string = getCss(
-  buildHostStyles({
-    display: 'flex !important',
-    flex: 'auto !important',
-    width: 'auto !important',
-  })
+  buildHostStyles(
+    addImportantToEachRule({
+      display: 'flex',
+      flex: 'auto',
+      width: 'auto',
+    })
+  )
 );
 
-const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType): JssStyle => ({
-  flexDirection: `${direction} !important`,
-});
+const getDirectionStyles: GetStylesFunction = (flexDirection: GridDirectionType): JssStyle =>
+  addImportantToEachRule({ flexDirection });
 
-const getWrapStyles: GetStylesFunction = (wrap: GridWrapType): JssStyle => ({
-  flexWrap: `${wrap} !important`,
-});
+const getWrapStyles: GetStylesFunction = (flexWrap: GridWrapType): JssStyle => addImportantToEachRule({ flexWrap });
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
   if (!GRID_GUTTERS.includes(gutter)) {
     throw new Error(`Gutter 'size="${gutter}"' has to be a value of: ${GRID_GUTTERS.join(', ')}`);
   }
-  const gutterRem = `-${pxToRemWithUnit(gutter / 2)} !important`;
+  const gutterRem = addImportantToRule(`-${pxToRemWithUnit(gutter / 2)}`);
 
   return {
     marginLeft: gutterRem,
