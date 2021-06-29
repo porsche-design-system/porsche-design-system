@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [
     `
       .playground:nth-child(-n + 3) p-text {
-        display: inline-block !important;
+        display: inline-block;
         vertical-align: top;
         margin: 4px;
         padding: 4px;
