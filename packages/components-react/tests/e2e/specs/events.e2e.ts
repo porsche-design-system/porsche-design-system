@@ -15,7 +15,8 @@ describe('events', () => {
   const getCounterValue = async (el: ElementHandle): Promise<string> =>
     await el.evaluate((element) => element.innerHTML, el);
 
-  it('pagination should emit events once', async () => {
+  // TODO: should be enabled and fixed with #578
+  xit('pagination should emit events once', async () => {
     await goto(page, 'events');
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
