@@ -108,7 +108,7 @@ button {
     height: auto;
     padding-bottom: $p-spacing-40;
     visibility: visible;
-    overflow: auto;
+    overflow: visible;
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
   }
