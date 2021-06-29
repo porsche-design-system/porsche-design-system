@@ -28,7 +28,7 @@ export class Pagination {
   @Prop({ mutable: true }) public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
-  @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks> = {
+  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<NumberOfPageLinks> = {
     base: 5,
     xs: 7,
   };
@@ -49,7 +49,7 @@ export class Pagination {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the page changes. */
-  @Event() public pageChange!: EventEmitter<PageChangeEvent>;
+  @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
