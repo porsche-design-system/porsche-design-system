@@ -68,39 +68,6 @@ import { Component } from '@angular/core';
       </p-accordion>
     </div>
 
-    <div class="playground light" title="should render accordion weight regular on light background">
-      <p-accordion [heading]="'Some heading weight regular'" [weight]="'regular'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-      </p-accordion>
-    </div>
-
-    <div class="playground dark" title="should render accordion weight regular on dark background">
-      <p-accordion [heading]="'Some heading weight regular'" [theme]="'dark'" [weight]="'regular'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-      </p-accordion>
-    </div>
-
-    <div class="playground light" title="should render accordion weight regular and size medium on light background">
-      <p-accordion [heading]="'Some heading weight regular size medium'" [weight]="'regular'" [size]="'medium'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-      </p-accordion>
-    </div>
-
-    <div class="playground dark" title="should render accordion weight regular and size medium on dark background">
-      <p-accordion
-        [heading]="'Some heading weight regular size medium'"
-        [theme]="'dark'"
-        [weight]="'regular'"
-        [size]="'medium'"
-      >
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-      </p-accordion>
-    </div>
-
     <div
       class="playground light"
       title="should render accordion with long heading that breaks to second line on light background"
