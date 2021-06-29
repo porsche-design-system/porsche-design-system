@@ -47,6 +47,11 @@ describe('Accordion', () => {
             <div ${theme === 'dark' && 'style="color: white"'}>
              Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
             </div>
+          </p-accordion>
+          <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
+            <div ${theme === 'dark' && 'style="color: white"'}>
+            ${content}
+            </div>
           </p-accordion>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
