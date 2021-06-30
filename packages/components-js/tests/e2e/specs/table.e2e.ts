@@ -23,7 +23,7 @@ describe('table', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-table');
-  const getShadowedTable = () => selectNode(page, 'p-table >>> .table');
+  const getTable = () => selectNode(page, 'p-table >>> .table');
   const getTableHead = () => selectNode(page, 'p-table-head');
   const getTableHeadRow = () => selectNode(page, 'p-table-head-row');
   const getFirstTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(1)');
@@ -81,14 +81,21 @@ ${script}`
     );
   };
 
+  const makeTableOverflow = async () => {
+    const firstTableHeadCell = await getFirstTableHeadCell();
+    await firstTableHeadCell.evaluate((el) => {
+      (el as HTMLElement).style.minWidth = '2000px';
+    });
+    await waitForStencilLifecycle(page);
+  };
+
   describe('scroll button', () => {
-    const makeTableOverflow = async () => {
-      const firstTableHeadCell = await getFirstTableHeadCell();
-      await firstTableHeadCell.evaluate((el) => {
-        (el as HTMLElement).style.minWidth = '2000px';
-      });
-      await waitForStencilLifecycle(page);
-    };
+    it('should have type="button" attribute', async () => {
+      await initTable();
+      await makeTableOverflow();
+
+      expect(await getAttribute(await getScrollButton(), 'type')).toBe('button');
+    });
 
     it("should be visible when table's content is overflowing", async () => {
       await initTable();
@@ -144,7 +151,7 @@ ${script}`
     it('should set correct role and scope on table components', async () => {
       await initTable();
 
-      const shadowedTable = await getShadowedTable();
+      const table = await getTable();
       const tableHead = await getTableHead();
       const tableHeadRow = await getTableHeadRow();
       const firstTableHeadCell = await getFirstTableHeadCell();
@@ -152,7 +159,7 @@ ${script}`
       const firstTableRow = await getFirstTableRow();
       const firstTableRowCell = await getFirstTableRowCell();
 
-      expect(await getAttribute(shadowedTable, 'role'))
+      expect(await getAttribute(table, 'role'))
         .withContext('table')
         .toBe('table');
       expect(await getAttribute(tableHead, 'role'))
@@ -183,42 +190,95 @@ ${script}`
         await initTable();
 
         const host = await getHost();
-        expect(await getAttribute(host, 'aria-label'))
+        const table = await getTable();
+        expect(await getAttribute(table, 'aria-label'))
           .withContext('initial aria-label')
           .toBeNull();
-        expect(await getAttribute(host, 'aria-describedby'))
-          .withContext('initial aria-describedby')
+        expect(await getAttribute(table, 'aria-labelledby'))
+          .withContext('initial aria-labelledby')
           .toBeNull();
 
         await setProperty(host, 'caption', 'Some caption');
         await waitForStencilLifecycle(page);
 
-        expect(await getAttribute(host, 'aria-label'))
+        expect(await getAttribute(table, 'aria-label'))
           .withContext('final aria-label')
           .toBe('Some caption');
-        expect(await getAttribute(host, 'aria-describedby'))
-          .withContext('final aria-describedby')
+        expect(await getAttribute(table, 'aria-labelledby'))
+          .withContext('final aria-labelledby')
           .toBeNull();
 
         const caption = await getCaption();
         expect(caption).withContext('slotted caption').toBeNull();
       });
 
-      it('should set correct aria-describedby for slotted caption', async () => {
+      it('should set correct aria-labelledby for slotted caption', async () => {
         await initTable({ hasSlottedCaption: true });
-        const host = await getHost();
+        const table = await getTable();
 
-        expect(await getAttribute(host, 'aria-label'))
+        expect(await getAttribute(table, 'aria-label'))
           .withContext('initial aria-label')
           .toBeNull();
-        expect(await getAttribute(host, 'aria-describedby'))
-          .withContext('initial aria-describedby')
+        expect(await getAttribute(table, 'aria-labelledby'))
+          .withContext('initial aria-labelledby')
           .toBe('caption');
 
         const caption = await getCaption();
         expect(await getAttribute(caption, 'id'))
           .withContext('caption id')
           .toBe('caption');
+      });
+    });
+
+    describe('scroll area', () => {
+      it('should be tabbable if scrollable', async () => {
+        await initTable({ hasSlottedCaption: true });
+
+        const host = await getHost();
+        const scrollArea = await getScrollArea();
+
+        expect(await getAttribute(scrollArea, 'tabindex'))
+          .withContext('initial: tabindex')
+          .toBeUndefined();
+        expect(await getAttribute(scrollArea, 'role'))
+          .withContext('initial: role')
+          .toBeUndefined();
+        expect(await getAttribute(scrollArea, 'aria-label'))
+          .withContext('initial: aria-label')
+          .toBeUndefined();
+        expect(await getAttribute(scrollArea, 'aria-labelledby'))
+          .withContext('initial: aria-labelledby')
+          .toBeUndefined();
+
+        await makeTableOverflow();
+
+        expect(await getAttribute(scrollArea, 'tabindex'))
+          .withContext('after overflow: tabindex')
+          .toBe('1');
+        expect(await getAttribute(scrollArea, 'role'))
+          .withContext('after overflow: role')
+          .toBe('region');
+        expect(await getAttribute(scrollArea, 'aria-label'))
+          .withContext('after overflow: aria-label')
+          .toBeUndefined();
+        expect(await getAttribute(scrollArea, 'aria-labelledby'))
+          .withContext('after overflow: aria-labelledby')
+          .toBe('caption');
+
+        await setProperty(host, 'caption', 'Some caption');
+
+        expect(await getAttribute(scrollArea, 'tabindex'))
+          .withContext('after caption: tabindex')
+          .toBe('1');
+        expect(await getAttribute(scrollArea, 'role'))
+          .withContext('after caption: role')
+          .toBe('region');
+        expect(await getAttribute(scrollArea, 'aria-label'))
+          .withContext('after caption: aria-label')
+          .toBe('Some caption');
+        expect(await getAttribute(scrollArea, 'aria-labelledby'))
+          .withContext('after caption: aria-labelledby')
+          .toBeUndefined();
       });
     });
 
@@ -250,10 +310,10 @@ ${script}`
           .toBe('ascending');
         expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
           .withContext('2nd cell initially')
-          .toBe('none');
+          .toBeUndefined();
         expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
           .withContext('3rd cell initially')
-          .toBe('none');
+          .toBeUndefined();
 
         await host.evaluate((host) => {
           host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
@@ -267,10 +327,10 @@ ${script}`
           .toBe('descending');
         expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
           .withContext('2nd cell after change')
-          .toBe('none');
+          .toBeUndefined();
         expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
           .withContext('3rd cell after change')
-          .toBe('none');
+          .toBeUndefined();
 
         await host.evaluate((host) => {
           host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
@@ -281,13 +341,13 @@ ${script}`
 
         expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
           .withContext('1st cell finally')
-          .toBe('none');
+          .toBeUndefined();
         expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
           .withContext('2nd cell finally')
           .toBe('ascending');
         expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
           .withContext('3rd cell finally')
-          .toBe('none');
+          .toBeUndefined();
       });
 
       it('should set correct aria-sort value when not sortable', async () => {
@@ -299,13 +359,13 @@ ${script}`
 
         expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
           .withContext('1st cell')
-          .toBe('none');
+          .toBeUndefined();
         expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
           .withContext('2nd cell')
-          .toBe('none');
+          .toBeUndefined();
         expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
           .withContext('3rd cell')
-          .toBe('none');
+          .toBeUndefined();
       });
     });
   });

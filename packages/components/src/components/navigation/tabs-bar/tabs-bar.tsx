@@ -146,6 +146,7 @@ export class TabsBar {
         <span class={gradientClasses} />
         <PrefixedTagNames.pButtonPure
           aria-hidden="true"
+          type="button"
           tabbable={false}
           theme={this.theme}
           hide-label="true"

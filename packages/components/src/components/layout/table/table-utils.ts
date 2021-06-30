@@ -26,7 +26,7 @@ export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
 export const getAriaSort = (sort: TableHeadCellSort): AriaAttributes['aria-sort'] => {
-  return sort?.active ? (isDirectionAsc(sort.direction) ? 'ascending' : 'descending') : 'none';
+  return sort?.active ? (isDirectionAsc(sort.direction) ? 'ascending' : 'descending') : null;
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

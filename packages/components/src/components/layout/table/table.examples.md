@@ -31,7 +31,8 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Caption
 
-A caption that describes the content of the table can be set in two ways.
+A caption that describes the content of the table can be set in two ways. 
+It's mandatory to define a descriptive caption to fulfill accessibility criteria.
 
 ### Via property
 

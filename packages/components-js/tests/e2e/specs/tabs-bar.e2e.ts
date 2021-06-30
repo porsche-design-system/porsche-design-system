@@ -759,6 +759,15 @@ describe('tabs-bar', () => {
   });
 
   describe('next/prev buttons', () => {
+    it('should have type="button" attribute', async () => {
+      await initTabsBar();
+
+      const { prevButton, nextButton } = await getPrevNextButton();
+
+      expect(await getAttribute(prevButton, 'type')).toBe('button');
+      expect(await getAttribute(nextButton, 'type')).toBe('button');
+    });
+
     const hiddenClass = 'action--hidden';
     const tabSizes: TabSize[] = ['small', 'medium'];
 
