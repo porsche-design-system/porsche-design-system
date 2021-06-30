@@ -10,7 +10,7 @@ import {
   testOptions,
 } from '../helpers';
 
-describe('Table', () => {
+fdescribe('Table', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
@@ -59,6 +59,7 @@ describe('Table', () => {
         });
 
         // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
+        // TODO: `await forceFocusedState(page, '.focused p-table >>> .scroll-area');`, no class is selectable after piercing selector
         await forceHoveredState(page, '.hovered p-table-head-cell >>> button');
         await forceHoveredState(page, '.hovered p-table-cell a');
         await forceHoveredState(page, '.hovered [slot="caption"] a');
