@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ICON_NAMES } from '@porsche-design-system/assets';
+import type { IconName } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-icon',
@@ -71,5 +72,5 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
   `,
 })
 export class IconComponent {
-  public icons = ICON_NAMES;
+  public icons = ICON_NAMES as IconName[];
 }

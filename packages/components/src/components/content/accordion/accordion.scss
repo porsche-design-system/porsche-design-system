@@ -150,7 +150,8 @@ button {
       visibility $p-animation-hover-duration-var;
   }
 
-  #{$root}--compact #{$root}--open & {
+  #{$root}--compact,
+  #{$root}--open & {
     padding-bottom: $p-spacing-16;
   }
 }
