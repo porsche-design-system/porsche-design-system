@@ -199,8 +199,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default grid">
           <p-grid>
-            <p-grid-item size="6"><p>1</p></p-grid-item>
-            <p-grid-item size="6"><p>2</p></p-grid-item>
+            <p-grid-item [size]="6"><p>1</p></p-grid-item>
+            <p-grid-item [size]="6"><p>2</p></p-grid-item>
           </p-grid>
         </div>
       </div>
@@ -373,8 +373,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default grid with custom prefix">
           <my-prefix-p-grid p-grid>
-            <my-prefix-p-grid-item p-grid-item size="6"><p>1</p></my-prefix-p-grid-item>
-            <my-prefix-p-grid-item p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
+            <my-prefix-p-grid-item p-grid-item [size]="6"><p>1</p></my-prefix-p-grid-item>
+            <my-prefix-p-grid-item p-grid-item [size]="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
         </div>
       </div>
