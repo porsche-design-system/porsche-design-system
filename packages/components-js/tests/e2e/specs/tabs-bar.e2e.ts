@@ -764,8 +764,8 @@ describe('tabs-bar', () => {
 
       const { prevButton, nextButton } = await getPrevNextButton();
 
-      expect(await getAttribute(prevButton, 'type')).toBe('button');
-      expect(await getAttribute(nextButton, 'type')).toBe('button');
+      expect(await getProperty(prevButton, 'type')).toBe('button');
+      expect(await getProperty(nextButton, 'type')).toBe('button');
     });
 
     const hiddenClass = 'action--hidden';
