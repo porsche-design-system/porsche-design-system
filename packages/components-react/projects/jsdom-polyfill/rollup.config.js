@@ -5,6 +5,7 @@ import pkg from '@porsche-design-system/js/package.json';
 const polyfills = [
   'construct-style-sheets-polyfill',
   'intersection-observer',
+  'resize-observer-polyfill',
   'scroll-behavior-polyfill',
   'whatwg-fetch',
 ];
