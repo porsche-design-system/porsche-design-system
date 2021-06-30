@@ -120,6 +120,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell><a href="https://porsche.com">{{ item.vin }}</a></p-table-cell>
         <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
         <p-table-cell>{{ item.status }}</p-table-cell>
+        <p-table-cell style="min-width: 10rem; white-space: normal;">{{ item.comment }}</p-table-cell>
         <p-table-cell>{{ item.leadId }}</p-table-cell>
         <p-table-cell>
           <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>

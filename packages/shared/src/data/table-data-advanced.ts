@@ -12,12 +12,14 @@ export const headAdvanced: HeadAdvanced[] = [
   { name: 'VIN', id: 'vin' } as HeadAdvanced,
   { name: 'Purchase Intention', id: 'purchaseIntention' } as HeadAdvanced,
   { name: 'Status', id: 'status' } as HeadAdvanced,
+  { name: 'Comment', id: 'comment' } as HeadAdvanced,
   { name: 'Lead ID', id: 'leadId' } as HeadAdvanced,
   { name: 'Action', id: 'action', hideLabel: true } as HeadAdvanced,
 ].map((item, i) => ({
   ...item,
   ...(i > 0 &&
-    i < 6 && {
+    i < 7 &&
+    i !== 5 && {
       active: i === 1,
       direction: 'asc',
     }),
@@ -31,6 +33,7 @@ export type DataAdvanced = {
   vin: string;
   purchaseIntention: string;
   status: string;
+  comment: string;
   leadId: string;
 };
 
@@ -43,6 +46,7 @@ export const dataAdvanced: DataAdvanced[] = [
     vin: '1FM5K7F84FGB16304',
     purchaseIntention: '08/2021',
     status: 'Won',
+    comment: '-',
     leadId: '0000824402',
   },
   {
@@ -53,6 +57,7 @@ export const dataAdvanced: DataAdvanced[] = [
     vin: '2GCEC13T141374801',
     purchaseIntention: '11/2021',
     status: 'Lost',
+    comment: 'Some multiline text and a column with a min width.',
     leadId: '0000824409',
   },
   {
@@ -63,6 +68,7 @@ export const dataAdvanced: DataAdvanced[] = [
     vin: '5GAKVCKD8EJ335750',
     purchaseIntention: '09/2021',
     status: 'Won',
+    comment: '-',
     leadId: '0000824408',
   },
   {
@@ -73,6 +79,7 @@ export const dataAdvanced: DataAdvanced[] = [
     vin: '1FMPU17L83LC09302',
     purchaseIntention: '07/2021',
     status: 'Lost',
+    comment: '-',
     leadId: '0000824407',
   },
   {
@@ -83,6 +90,7 @@ export const dataAdvanced: DataAdvanced[] = [
     vin: 'JN1BY1AR3BM375187',
     purchaseIntention: '05/2021',
     status: 'Won',
+    comment: '-',
     leadId: '0000824406',
   },
 ];
