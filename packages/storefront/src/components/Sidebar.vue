@@ -1,23 +1,20 @@
 <template>
   <nav>
-    <ul class="list">
-      <li v-for="(pages, category, index) in config" :key="index">
-        <p-button-pure
-          size="small"
-          weight="bold"
-          :icon="accordion[category] ? 'minus' : 'plus'"
-          @click="toggleActive(category)"
-          >{{ category }}
-        </p-button-pure>
-        <ul v-show="accordion[category]">
-          <li v-for="(tabs, page, index) in pages" :key="index">
-            <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
-              <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
-            </router-link>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <p-accordion
+      compact="true"
+      :key="index"
+      v-bind:open="accordion[category]"
+      v-on:accordionChange="toggleActive(category)"
+    >
+      <span slot="heading">{{ category }}</span>
+      <ul v-show="accordion[category]">
+        <li v-for="(tabs, page, index) in pages" :key="index">
+          <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
+            <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
+          </router-link>
+        </li>
+      </ul>
+    </p-accordion>
   </nav>
 </template>
 
@@ -74,24 +71,6 @@
   ul,
   li {
     list-style: none;
-  }
-
-  .list {
-    width: 100%;
-    display: inline-block;
-    margin-top: $p-spacing-24;
-
-    &:last-child {
-      margin-bottom: $p-spacing-16;
-    }
-
-    > li:not(:first-child) {
-      margin-top: $p-spacing-16;
-    }
-
-    ul {
-      margin-top: $p-spacing-8;
-    }
   }
 
   .link {
