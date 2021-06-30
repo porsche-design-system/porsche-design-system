@@ -7,7 +7,7 @@ import {
   insertSlottedStyles,
   scrollElementBy,
 } from '../../../../utils';
-import type { TableHeadCellSort } from '../table-utils';
+import type { SortingChangeEvent } from '../table-utils';
 import { addCss, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
 
 @Component({
@@ -22,7 +22,7 @@ export class Table {
   @Prop() public caption?: string = '';
 
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadCellSort>;
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
 
   @State() public isScrollIndicatorVisible = false;
   @State() public isScrollable = false;
@@ -38,7 +38,7 @@ export class Table {
   }
 
   public componentWillLoad(): void {
-    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableHeadCellSort>) => {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<SortingChangeEvent>) => {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);
     });

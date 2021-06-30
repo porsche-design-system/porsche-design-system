@@ -15,7 +15,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { TableHeadCellSort } from "./components/layout/table/table-utils";
+import { SortingChangeEvent, TableHeadCellSort } from "./components/layout/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -1730,7 +1730,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: CustomEvent<TableHeadCellSort>) => void;
+        "onSortingChange"?: (event: CustomEvent<SortingChangeEvent>) => void;
     }
     interface PTableBody {
     }

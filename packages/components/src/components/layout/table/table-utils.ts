@@ -20,6 +20,7 @@ export type TableHeadCellSort = {
   active: boolean;
   direction: Direction;
 };
+export type SortingChangeEvent = TableHeadCellSort; // to have consistent event types
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
@@ -48,7 +49,7 @@ export const addCss = (host: HTMLElement): void => {
 
 export const SORT_EVENT_NAME = 'internalSortingChange';
 
-export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<TableHeadCellSort> => ({
+export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<SortingChangeEvent> => ({
   bubbles: true,
   detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
 });

@@ -10,8 +10,8 @@ import {
   PTableHeadRow,
   PTableRow,
   PText,
-  TableHeadCellSort,
 } from '@porsche-design-system/components-react';
+import type { SortingChangeEvent } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
@@ -19,8 +19,8 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onSortingChange = useCallback((e: CustomEvent<TableHeadCellSort>) => {
-    const { id, direction } = e.detail as TableHeadCellSort & { id: keyof DataAdvanced };
+  const onSortingChange = useCallback((e: CustomEvent<SortingChangeEvent>) => {
+    const { id, direction } = e.detail as SortingChangeEvent & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {

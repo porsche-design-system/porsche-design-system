@@ -9,7 +9,7 @@ It is a controlled component. This means it does not contain any internal state,
 ## Basic Table
 
 <PlaygroundStatic :frameworks="basic">
-   <p-table ref="tableBasic">
+  <p-table ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
@@ -59,7 +59,7 @@ It has the following structure:
 
 ```ts
 type TableHeadCellSort = {
-  id: string;
+  id: string; // identifier for the column to be sorted by
   active: boolean;
   direction: 'asc' | 'desc';
 };

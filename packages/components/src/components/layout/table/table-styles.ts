@@ -48,7 +48,7 @@ export const styles: { [key in TableComponentType]: string } = {
     'scroll-trigger': {
       position: 'absolute',
       top: 0,
-      right: 0,
+      right: 1,
       width: 1,
       height: 1,
       visibility: 'hidden',

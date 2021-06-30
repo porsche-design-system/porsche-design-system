@@ -1,4 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  PageChangeEvent,
+  SortingChangeEvent,
+  SwitchChangeEvent,
+  TabChangeEvent,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-events',
@@ -8,13 +14,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [totalItemsCount]="500"
         [itemsPerPage]="25"
         [activePage]="1"
-        (pageChange)="onPageChange()"
+        (pageChange)="onPageChange($event)"
       ></p-pagination>
       <p>{{ pageChangeEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-tabs-bar [activeTabIndex]="0" (tabChange)="onTabsBarChange()">
+      <p-tabs-bar [activeTabIndex]="0" (tabChange)="onTabsBarChange($event)">
         <button>Tab 1</button>
         <button>Tab 2</button>
         <button>Tab 3</button>
@@ -23,7 +29,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light">
-      <p-tabs [activeTabIndex]="0" (tabChange)="onTabsChange()">
+      <p-tabs [activeTabIndex]="0" (tabChange)="onTabsChange($event)">
         <p-tabs-item label="Tab 1">Content 1</p-tabs-item>
         <p-tabs-item label="Tab 2">Content 2</p-tabs-item>
         <p-tabs-item label="Tab 3">Content 3</p-tabs-item>
@@ -32,7 +38,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light">
-      <p-switch (switchChange)="onSwitchChange()">Switch</p-switch>
+      <p-switch (switchChange)="onSwitchChange($event)">Switch</p-switch>
       <p>{{ switchChangeEventCounter }}</p>
     </div>
 
@@ -42,7 +48,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light">
-      <p-table (sortingChange)="onTableSortingChange()">
+      <p-table (sortingChange)="onTableSortingChange($event)">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell [sort]="{ id: 'col1', active: true, direction: 'asc' }">Col 1</p-table-head-cell>
@@ -63,19 +69,19 @@ export class EventsComponent {
   isModalOpen = false;
   tableSortingChangeEventCounter: number = 0;
 
-  onPageChange() {
+  onPageChange(e: CustomEvent<PageChangeEvent>) {
     this.pageChangeEventCounter++;
   }
 
-  onTabsBarChange() {
+  onTabsBarChange(e: CustomEvent<TabChangeEvent>) {
     this.tabsBarChangeEventCounter++;
   }
 
-  onTabsChange() {
+  onTabsChange(e: CustomEvent<TabChangeEvent>) {
     this.tabsChangeEventCounter++;
   }
 
-  onSwitchChange() {
+  onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
     this.switchChangeEventCounter++;
   }
 
@@ -88,7 +94,7 @@ export class EventsComponent {
     this.isModalOpen = false;
   }
 
-  onTableSortingChange() {
+  onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
     this.tableSortingChangeEventCounter++;
   }
 }

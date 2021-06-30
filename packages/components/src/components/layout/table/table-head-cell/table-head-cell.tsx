@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { TableHeadCellSort } from '../table-utils';
+import type { SortingChangeEvent, TableHeadCellSort } from '../table-utils';
 import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addCss, createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from '../table-utils';
 
@@ -51,7 +51,7 @@ export class TableHeadCell {
 
   private handleButtonClick = (): void => {
     this.host.dispatchEvent(
-      new CustomEvent<TableHeadCellSort>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
+      new CustomEvent<SortingChangeEvent>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
     );
   };
 }
