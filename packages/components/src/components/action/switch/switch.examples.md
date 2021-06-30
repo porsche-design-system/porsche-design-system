@@ -82,7 +82,7 @@ export default class Code extends Vue {
   const { checked } = switchChangeEvent.detail;
   switchChangeEvent.target.setAttribute('checked', checked);
 });`,
-    angular: `import { Component } from '@angular/core';
+  angular: `import { Component } from '@angular/core';
 import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -97,7 +97,7 @@ export class SomeSwitchPage {
     this.checked = checked;
   }
 }`,
-    react: `import { useCallback, useState } from 'react';
+  react: `import { useCallback, useState } from 'react';
 import { PSwitch } from '@porsche-design-system/components-react';
 import type { SwitchChangeEvent } from '@porsche-design-system/components-react';
 
