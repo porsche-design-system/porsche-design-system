@@ -36,7 +36,6 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@juggle/resize-observer": "^3.3.1",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/visual-regression-tester": "^4.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
