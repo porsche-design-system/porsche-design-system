@@ -1,5 +1,6 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { attachCss, buildGlobalStyles, buildHostStyles, getCss, mediaQuery } from '../../../utils';
+import { color } from '@porsche-design-system/utilities';
+import { attachCss, buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -36,12 +37,7 @@ const baseCss: string = getCss({
     a: {
       display: 'block',
       textDecoration: 'none',
-      // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
-      outline: 'transparent solid 1px',
-      outlineOffset: 0,
-      '::-moz-focus-inner': { border: 0 },
-      '&:focus': { outlineColor: '#000' },
-      '&:focus:not(:focus-visible)': { outlineColor: 'transparent' },
+      ...getFocusStyles({ color: color.default, offset: 0 }),
     },
     picture: {
       display: 'block',

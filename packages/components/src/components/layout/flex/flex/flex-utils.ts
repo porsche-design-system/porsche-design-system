@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 
 type FlexInlineType = BreakpointCustomizable<boolean>;
 export type FlexInline = FlexInlineType;
@@ -40,22 +40,24 @@ export const FLEX_ALIGN_CONTENTS = [
 type FlexAlignContentType = typeof FLEX_ALIGN_CONTENTS[number];
 export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
 
-const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
-  display: `${inline ? 'inline-flex' : 'flex'} !important`,
-});
-const getWrapStyles: GetStylesFunction = (wrap: FlexWrapType): JssStyle => ({ flexWrap: `${wrap} !important` });
-const getDirectionStyles: GetStylesFunction = (direction: FlexDirectionType): JssStyle => ({
-  flexDirection: `${direction} !important`,
-});
-const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle => ({
-  justifyContent: `${justifyContent} !important`,
-});
-const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle => ({
-  alignItems: `${alignItems} !important`,
-});
-const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle => ({
-  alignContent: `${alignContent} !important`,
-});
+const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle =>
+  addImportantToEachRule({
+    display: inline ? 'inline-flex' : 'flex',
+  });
+
+const getWrapStyles: GetStylesFunction = (flexWrap: FlexWrapType): JssStyle => addImportantToEachRule({ flexWrap });
+
+const getDirectionStyles: GetStylesFunction = (flexDirection: FlexDirectionType): JssStyle =>
+  addImportantToEachRule({ flexDirection });
+
+const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle =>
+  addImportantToEachRule({ justifyContent });
+
+const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle =>
+  addImportantToEachRule({ alignItems });
+
+const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle =>
+  addImportantToEachRule({ alignContent });
 
 export const getDynamicCss = (
   inline: FlexInline,
