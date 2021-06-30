@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - Angular: export types from package root
 
+#### Fixed
+- Angular: support `"strictTemplates": true` option in `tsconfig.json`
+
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 
