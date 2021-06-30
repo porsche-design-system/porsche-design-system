@@ -10,7 +10,7 @@ import {
   testOptions,
 } from '../helpers';
 
-fdescribe('Table', () => {
+describe('Table', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
