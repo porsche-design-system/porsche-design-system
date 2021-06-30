@@ -61,7 +61,7 @@ export const TablePage = (): JSX.Element => {
       <div className="playground light" title="should render table with unstyled slotted caption">
         <PTable>
           <span slot="caption">
-            Some unstyled caption <a href="#">with a link</a>
+            Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>
           <PTableHead>
             <PTableHeadRow>

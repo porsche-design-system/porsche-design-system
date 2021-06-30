@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import {
-  PBanner,
   PModal,
   PPagination,
   PSwitch,
@@ -12,6 +11,12 @@ import {
   PTabsBar,
   PTabsItem,
 } from '@porsche-design-system/components-react';
+import type {
+  PageChangeEvent,
+  SortingChangeEvent,
+  SwitchChangeEvent,
+  TabChangeEvent,
+} from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
   const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
@@ -22,15 +27,30 @@ export const EventsPage = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
 
-  const onPageChange = useCallback(() => setPageChangeEventCounter((prev) => prev + 1), []);
-  const onTabsBarChange = useCallback(() => setTabsBarChangeEventCounter((prev) => prev + 1), []);
-  const onTabsChange = useCallback(() => setTabsChangeEventCounter((prev) => prev + 1), []);
-  const onSwitchChange = useCallback(() => setSwitchChangeEventCounter((prev) => prev + 1), []);
+  const onPageChange = useCallback(
+    (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onTabsBarChange = useCallback(
+    (e: CustomEvent<TabChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onTabsChange = useCallback(
+    (e: CustomEvent<TabChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onSwitchChange = useCallback(
+    (e: CustomEvent<SwitchChangeEvent>) => setSwitchChangeEventCounter((prev) => prev + 1),
+    []
+  );
   const onModalClose = useCallback(() => {
     setModalCloseEventCounter((prev) => prev + 1);
     setIsModalOpen(false);
   }, []);
-  const onTableSortingChange = useCallback(() => setTableSortingChangeEventCounter((prev) => prev + 1), []);
+  const onTableSortingChange = useCallback(
+    (e: CustomEvent<SortingChangeEvent>) => setTableSortingChangeEventCounter((prev) => prev + 1),
+    []
+  );
 
   return (
     <>
