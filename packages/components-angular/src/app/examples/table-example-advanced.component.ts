@@ -32,6 +32,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-angul
           </p-table-cell>
           <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
           <p-table-cell>{{ item.status }}</p-table-cell>
+          <p-table-cell style="min-width: 10rem; white-space: normal;">{{ item.comment }}</p-table-cell>
           <p-table-cell>{{ item.leadId }}</p-table-cell>
           <p-table-cell>
             <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>

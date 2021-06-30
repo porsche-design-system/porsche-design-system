@@ -60,6 +60,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
             </PTableCell>
             <PTableCell>{item.purchaseIntention}</PTableCell>
             <PTableCell>{item.status}</PTableCell>
+            <PTableCell style={{ minWidth: '10rem', whiteSpace: 'normal' }}>{item.comment}</PTableCell>
             <PTableCell>{item.leadId}</PTableCell>
             <PTableCell>
               <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
