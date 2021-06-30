@@ -25,10 +25,12 @@ export class Table {
   @Event({ bubbles: false }) public sortingChange: EventEmitter<TableHeadCellSort>;
 
   @State() public isScrollIndicatorVisible = false;
+  @State() public isScrollable = false;
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;
   private scrollTriggerElement: HTMLElement;
+  private tableElement: HTMLElement;
 
   public connectedCallback(): void {
     insertSlottedStyles(this.host, getSlottedCss(this.host));
@@ -55,20 +57,21 @@ export class Table {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
     const captionId = 'caption';
-    const hostProps = this.caption
+    const tableAttr = this.caption
       ? { 'aria-label': this.caption }
-      : hasSlottedCaption && { 'aria-describedby': captionId };
+      : hasSlottedCaption && { 'aria-labelledby': captionId };
+    const scrollAreaAttr = this.isScrollable && { ...tableAttr, role: 'region', tabindex: '0' };
 
     return (
-      <Host {...hostProps}>
+      <Host>
         {hasSlottedCaption && (
           <div id={captionId} class="caption">
             <slot name="caption" />
           </div>
         )}
         <div class="root">
-          <div class="scroll-area">
-            <div class="table" role="table">
+          <div class="scroll-area" {...scrollAreaAttr}>
+            <div class="table" role="table" {...tableAttr}>
               <slot />
               <span class="scroll-trigger" />
             </div>
@@ -78,6 +81,7 @@ export class Table {
               <PrefixedTagNames.pButtonPure
                 class="scroll-button"
                 aria-hidden="true"
+                type="button"
                 tabbable={false}
                 hide-label="true"
                 size="inherit"
@@ -97,20 +101,28 @@ export class Table {
     const { shadowRoot } = this.host;
     this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
     this.scrollTriggerElement = getHTMLElement(shadowRoot, '.scroll-trigger');
+    this.tableElement = getHTMLElement(shadowRoot, '.table');
   };
 
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        this.isScrollIndicatorVisible = !entries.some((x) => x.isIntersecting);
+        for (const { target, isIntersecting } of entries) {
+          if (target === this.scrollTriggerElement) {
+            this.isScrollIndicatorVisible = !isIntersecting;
+          } else if (target === this.tableElement) {
+            this.isScrollable = !isIntersecting;
+          }
+        }
       },
       {
         root: this.scrollAreaElement,
-        threshold: 0,
+        threshold: 1,
       }
     );
 
-    this.intersectionObserver.observe(this.scrollTriggerElement);
+    this.intersectionObserver.observe(this.scrollTriggerElement); // to check if table should show a scroll indicator
+    this.intersectionObserver.observe(this.tableElement); // to check if table is scrollable in general
   };
 
   private handleScrollClick = (): void => {

@@ -32,6 +32,7 @@ export const styles: { [key in TableComponentType]: string } = {
     },
     'scroll-area': {
       overflow: 'auto visible',
+      ...getFocusStyles({ offset: -1 }),
     },
     table: {
       position: 'relative',

@@ -10,7 +10,6 @@ import {
 } from '../../../src/components/layout/table/table-utils';
 import * as tableUtils from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
-import * as slottedStylesUtils from '../../../src/utils/slotted-styles';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {
@@ -34,12 +33,12 @@ describe('toggleDirection()', () => {
 
 describe('getAriaSort()', () => {
   const data: [TableHeadCellSort, AriaAttributes['aria-sort']][] = [
-    [{ id: 'some-id', active: false, direction: 'asc' }, 'none'],
-    [{ id: 'some-id', active: false, direction: 'desc' }, 'none'],
+    [{ id: 'some-id', active: false, direction: 'asc' }, null],
+    [{ id: 'some-id', active: false, direction: 'desc' }, null],
     [{ id: 'some-id', active: true, direction: 'asc' }, 'ascending'],
     [{ id: 'some-id', active: true, direction: 'desc' }, 'descending'],
-    [undefined, 'none'],
-    [{} as TableHeadCellSort, 'none'],
+    [undefined, null],
+    [{} as TableHeadCellSort, null],
   ];
   it.each(data)('should for %s return %s', (params, result) => {
     expect(getAriaSort(params)).toBe(result);
