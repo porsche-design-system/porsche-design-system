@@ -141,10 +141,6 @@ button {
     padding: 0;
   }
 
-  #{$root}--compact #{$root}--open & {
-    padding-bottom: $p-spacing-16;
-  }
-
   #{$root}--open & {
     height: auto;
     padding-bottom: $p-spacing-40;
@@ -152,6 +148,10 @@ button {
     overflow: visible;
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
+  }
+
+  #{$root}--compact #{$root}--open & {
+    padding-bottom: $p-spacing-16;
   }
 }
 

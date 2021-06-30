@@ -99,9 +99,11 @@ Please **refrain** from using any other than text content as slotted markup.
 
 ## Compact
 
-By setting `compact` to `true` you can have a more compact accordion with less whitespace.
+By setting `compact` to `true` you can have a more compact accordion.
+It removes the `border-top` and `border-bottom` and reduces the spacings.
 
 Be aware, that the `size` property will be ignored when `compact` is set to `true`.
+We recommend using the property in case you need a `side-navigation` with a `accordion` like behavior.
 
 <Playground :markup="compactMarkup" :config="config"></Playground>
 
@@ -170,12 +172,14 @@ Be aware, that the `size` property will be ignored when `compact` is set to `tru
     }
 
     get compactMarkup() {      
-      return `<p-accordion heading="Some Heading" tag="h3" compact="true">
-  ${this.content}
-</p-accordion>
-<p-accordion heading="Some Heading" tag="h3" compact="true" open="true">
-  ${this.content}
-</p-accordion>`;
+      return `<div style="width: 400px">
+  <p-accordion heading="Some Heading" tag="h3" compact="true">
+      <p-link-pure>Some label</p-link-pure>
+  </p-accordion>
+  <p-accordion heading="Some Heading" tag="h3" compact="true" open="true">
+    <p-link-pure>Some label</p-link-pure>
+  </p-accordion>
+</div>`;
     }
  
     mounted() {
