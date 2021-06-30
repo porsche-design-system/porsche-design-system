@@ -3,6 +3,7 @@
     <p-accordion
       compact="true"
       :key="index"
+      v-for="(pages, category, index) in config"
       v-bind:open="accordion[category]"
       v-on:accordionChange="toggleActive(category)"
     >
