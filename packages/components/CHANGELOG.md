@@ -12,14 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Table`
 - Angular: export types from package root
 
-#### Fixed
-- Angular: support `"strictTemplates": true` option in `tsconfig.json`
-
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 - `Text` and `Headline` inherits white-space CSS property
 
 #### Fixed
+- Angular: support `"strictTemplates": true` option in `tsconfig.json`
 - Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components
 
 ### [2.2.1] - 2021-06-08
