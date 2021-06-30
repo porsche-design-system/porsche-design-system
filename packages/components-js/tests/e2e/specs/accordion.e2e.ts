@@ -216,6 +216,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page);
 
       expect(await hasFocus(page, input)).toBe(true);
 
