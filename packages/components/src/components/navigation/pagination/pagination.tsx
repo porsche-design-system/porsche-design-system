@@ -79,7 +79,7 @@ export class Pagination {
   public render(): JSX.Element {
     const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
-    const paginationClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.maxNumberOfPageLinks),
@@ -180,7 +180,7 @@ export class Pagination {
 
     return (
       <nav
-        class={paginationClasses}
+        class={rootClasses}
         role="navigation"
         aria-label={this.allyLabel}
         ref={(el) => (this.navigationElement = el)}

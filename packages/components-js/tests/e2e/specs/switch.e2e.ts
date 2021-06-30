@@ -1,8 +1,10 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
+  getBoxShadowStyle,
   getBrowser,
   getLifecycleStatus,
   getProperty,
@@ -12,6 +14,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -39,17 +42,17 @@ describe('switch', () => {
     </script>`;
 
   type InitOptions = {
-    disabled?: boolean;
-    tabbable?: boolean;
-    loading?: boolean;
+    isDisabled?: boolean;
+    isTabbable?: boolean;
+    isLoading?: boolean;
     otherMarkup?: string;
   };
 
   const initSwitch = (opts?: InitOptions): Promise<void> => {
-    const { disabled = false, tabbable = true, loading = false, otherMarkup = '' } = opts ?? {};
+    const { isDisabled = false, isTabbable = true, isLoading = false, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch tabbable="${tabbable}" disabled="${disabled}" loading="${loading}">Some Label</p-switch>${otherMarkup}`
+      `<p-switch tabbable="${isTabbable}" disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
@@ -130,13 +133,13 @@ describe('switch', () => {
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(hostFocusCalls).toBe(0, 'hostFocusCalls after tab');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after tab');
+      expect(hostFocusCalls).withContext('hostFocusCalls after tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after tab').toBe(1);
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(hostFocusCalls).toBe(0, 'hostFocusCalls after second tab');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after second tab');
+      expect(hostFocusCalls).withContext('hostFocusCalls after second tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after second tab').toBe(1);
     });
   });
 
@@ -156,7 +159,7 @@ describe('switch', () => {
     });
 
     it('should not trigger event on click if switch is disabled', async () => {
-      await initSwitch({ disabled: true });
+      await initSwitch({ isDisabled: true });
 
       let eventCounter = 0;
       const host = await getHost();
@@ -164,6 +167,22 @@ describe('switch', () => {
       await addEventListener(host, 'switchChange', () => eventCounter++);
 
       await button.click();
+      await waitForEventSerialization(page);
+
+      expect(eventCounter).toBe(0);
+    });
+
+    it('should not trigger event on click if switch is loading', async () => {
+      await initSwitch({ isLoading: true });
+
+      let eventCounter = 0;
+      const host = await getHost();
+      const button = await getButton();
+      await addEventListener(host, 'switchChange', () => eventCounter++);
+
+      await button.click();
+      await waitForEventSerialization(page);
+      await host.click();
       await waitForEventSerialization(page);
 
       expect(eventCounter).toBe(0);
@@ -216,65 +235,77 @@ describe('switch', () => {
       let afterFocusCalls = 0;
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-      expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
-      expect(hostFocusCalls).toBe(0, 'buttonFocusCalls initially');
-      expect(hostFocusInCalls).toBe(0, 'buttonFocusInCalls initially');
-      expect(hostBlurCalls).toBe(0, 'buttonBlurCalls initially');
-      expect(hostFocusOutCalls).toBe(0, 'buttonFocusOutCalls initially');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
-      expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
+      expect(hostFocusCalls).withContext('buttonFocusCalls initially').toBe(0);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls initially').toBe(0);
+      expect(hostBlurCalls).withContext('buttonBlurCalls initially').toBe(0);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls initially').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId initially')
+        .toBe('');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
-      expect(hostFocusCalls).toBe(0, 'buttonFocusCalls after 1st tab');
-      expect(hostFocusInCalls).toBe(0, 'buttonFocusInCalls after 1st tab');
-      expect(hostBlurCalls).toBe(0, 'buttonBlurCalls after 1st tab');
-      expect(hostFocusOutCalls).toBe(0, 'buttonFocusOutCalls after 1st tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
+      expect(hostFocusCalls).withContext('buttonFocusCalls after 1st tab').toBe(0);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls after 1st tab').toBe(0);
+      expect(hostBlurCalls).withContext('buttonBlurCalls after 1st tab').toBe(0);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls after 1st tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab')
+        .toBe('before');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
-      expect(hostFocusCalls).toBe(1, 'buttonFocusCalls after 2nd tab');
-      expect(hostFocusInCalls).toBe(1, 'buttonFocusInCalls after 2nd tab');
-      expect(hostBlurCalls).toBe(0, 'buttonBlurCalls after 2nd tab');
-      expect(hostFocusOutCalls).toBe(0, 'buttonFocusOutCalls after 2nd tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
-      expect(await getActiveElementId(page)).toBe('my-switch', 'activeElementId after 2nd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
+      expect(hostFocusCalls).withContext('buttonFocusCalls after 2nd tab').toBe(1);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls after 2nd tab').toBe(1);
+      expect(hostBlurCalls).withContext('buttonBlurCalls after 2nd tab').toBe(0);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls after 2nd tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab')
+        .toBe('my-switch');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
-      expect(hostFocusCalls).toBe(1, 'buttonFocusCalls after 3rd tab');
-      expect(hostFocusInCalls).toBe(1, 'buttonFocusInCalls after 3rd tab');
-      expect(hostBlurCalls).toBe(1, 'buttonBlurCalls after 3rd tab');
-      expect(hostFocusOutCalls).toBe(1, 'buttonFocusOutCalls after 3rd tab');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
-      expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
+      expect(hostFocusCalls).withContext('buttonFocusCalls after 3rd tab').toBe(1);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls after 3rd tab').toBe(1);
+      expect(hostBlurCalls).withContext('buttonBlurCalls after 3rd tab').toBe(1);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls after 3rd tab').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 3rd tab')
+        .toBe('after');
 
       // tab back
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
-      expect(hostFocusCalls).toBe(2, 'buttonFocusCalls after 1st tab back');
-      expect(hostFocusInCalls).toBe(2, 'buttonFocusInCalls after 1st tab back');
-      expect(hostBlurCalls).toBe(1, 'buttonBlurCalls after 1st tab back');
-      expect(hostFocusOutCalls).toBe(1, 'buttonFocusOutCalls after 1st tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
-      expect(await getActiveElementId(page)).toBe('my-switch', 'activeElementId after 1st tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
+      expect(hostFocusCalls).withContext('buttonFocusCalls after 1st tab back').toBe(2);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls after 1st tab back').toBe(2);
+      expect(hostBlurCalls).withContext('buttonBlurCalls after 1st tab back').toBe(1);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls after 1st tab back').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab back')
+        .toBe('my-switch');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
-      expect(hostFocusCalls).toBe(2, 'buttonFocusCalls after 2nd tab back');
-      expect(hostFocusInCalls).toBe(2, 'buttonFocusInCalls after 2nd tab back');
-      expect(hostBlurCalls).toBe(2, 'buttonBlurCalls after 2nd tab back');
-      expect(hostFocusOutCalls).toBe(2, 'buttonFocusOutCalls after 2nd tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
+      expect(hostFocusCalls).withContext('buttonFocusCalls after 2nd tab back').toBe(2);
+      expect(hostFocusInCalls).withContext('buttonFocusInCalls after 2nd tab back').toBe(2);
+      expect(hostBlurCalls).withContext('buttonBlurCalls after 2nd tab back').toBe(2);
+      expect(hostFocusOutCalls).withContext('buttonFocusOutCalls after 2nd tab back').toBe(2);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab back')
+        .toBe('before');
 
       await page.keyboard.up('ShiftLeft');
     });
@@ -303,28 +334,57 @@ describe('switch', () => {
     });
   });
 
+  describe('focus', () => {
+    it('should keep focus if state switches to loading', async () => {
+      await initSwitch();
+
+      const host = await getHost();
+      expect(await hasFocus(page, host)).toBe(false);
+
+      await page.keyboard.press('Tab');
+
+      expect(await hasFocus(page, host))
+        .withContext('after Tab')
+        .toBe(true);
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('focus style on loading')
+        .toBe(true);
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await hasFocus(page, host))
+        .withContext('final focus style')
+        .toBe(true);
+    });
+  });
+
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initSwitch();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-switch']).toBe(1, 'componentDidLoad: p-switch');
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-switch']).withContext('componentDidLoad: p-switch').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips with spinner', async () => {
-      await initSwitch({ loading: true });
+      await initSwitch({ isLoading: true });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-switch']).toBe(1, 'componentDidLoad: p-switch');
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
-      expect(status.componentDidLoad['p-spinner']).toBe(1, 'componentDidLoad: p-spinner');
+      expect(status.componentDidLoad['p-switch']).withContext('componentDidLoad: p-switch').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-spinner']).withContext('componentDidLoad: p-spinner').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -336,10 +396,10 @@ describe('switch', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-switch']).toBe(1, 'componentDidUpdate: p-switch');
+      expect(status.componentDidUpdate['p-switch']).withContext('componentDidUpdate: p-switch').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
 });

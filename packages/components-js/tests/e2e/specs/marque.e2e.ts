@@ -6,6 +6,7 @@ import {
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
+  getProperty,
   initAddEventListener,
   selectNode,
   setAttribute,
@@ -13,7 +14,7 @@ import {
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 describe('marque', () => {
   let page: Page;
@@ -47,6 +48,7 @@ describe('marque', () => {
     );
 
   const getHost = () => selectNode(page, 'p-marque');
+  const getSource = (): Promise<ElementHandle> => selectNode(page, 'p-marque >>> source');
   const getLink = () => selectNode(page, 'p-marque >>> a');
 
   const resolution1x = '@1x';
@@ -112,12 +114,34 @@ describe('marque', () => {
     });
 
     describe('on large screen', () => {
-      beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
+      beforeEach(async () => {
+        await page.setCacheEnabled(false);
+        await page.setViewport({ width: 1300, height: 300 });
+      });
+
+      it('should set correct srcSet', async () => {
+        await setContentWithTrademark();
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('initial size')
+          .toContain(fileNameMedium);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after first change')
+          .toContain(fileNameSmall);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after second change')
+          .toContain(fileNameMedium);
+      });
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution1x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -126,15 +150,15 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution1x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution2x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -143,15 +167,15 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution2x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution3x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -160,8 +184,8 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution3x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution3x);
       });
     });
   });
@@ -225,12 +249,34 @@ describe('marque', () => {
     });
 
     describe('on large screen', () => {
-      beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
+      beforeEach(async () => {
+        await page.setCacheEnabled(false);
+        await page.setViewport({ width: 1300, height: 300 });
+      });
+
+      it('should set correct srcSet', async () => {
+        await setContentWithoutTrademark();
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('initial size')
+          .toContain(fileNameMedium);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after first change')
+          .toContain(fileNameSmall);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
+        expect(await getProperty(await getSource(), 'srcset'))
+          .withContext('size after second change')
+          .toContain(fileNameMedium);
+      });
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution1x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -239,15 +285,15 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution1x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution2x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -256,15 +302,15 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution2x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution3x);
+        expect(requestedImagePath).withContext('initial request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('initial request resolution').toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
         await waitForStencilLifecycle(page);
@@ -273,8 +319,8 @@ describe('marque', () => {
 
         await setAttribute(await getHost(), 'size', 'medium');
         await waitForStencilLifecycle(page);
-        expect(requestedImagePath).toContain(fileNameMedium);
-        expect(requestedImagePath).toContain(resolution3x);
+        expect(requestedImagePath).withContext('final request size').toContain(fileNameMedium);
+        expect(requestedImagePath).withContext('final request resolution').toContain(resolution3x);
       });
     });
   });
@@ -358,65 +404,77 @@ describe('marque', () => {
       let afterFocusCalls = 0;
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-      expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
-      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls initially');
-      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls initially');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls initially');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls initially');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
-      expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls initially').toBe(0);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls initially').toBe(0);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls initially').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls initially').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId initially')
+        .toBe('');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
-      expect(marqueFocusCalls).toBe(0, 'marqueFocusCalls after 1st tab');
-      expect(marqueFocusInCalls).toBe(0, 'marqueFocusInCalls after 1st tab');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 1st tab');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 1st tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 1st tab').toBe(0);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 1st tab').toBe(0);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 1st tab').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 1st tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab')
+        .toBe('before');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
-      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 2nd tab');
-      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 2nd tab');
-      expect(marqueBlurCalls).toBe(0, 'marqueBlurCalls after 2nd tab');
-      expect(marqueFocusOutCalls).toBe(0, 'marqueFocusOutCalls after 2nd tab');
-      expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
-      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 2nd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 2nd tab').toBe(1);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 2nd tab').toBe(1);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 2nd tab').toBe(0);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 2nd tab').toBe(0);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab')
+        .toBe('my-link');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
-      expect(marqueFocusCalls).toBe(1, 'marqueFocusCalls after 3rd tab');
-      expect(marqueFocusInCalls).toBe(1, 'marqueFocusInCalls after 3rd tab');
-      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 3rd tab');
-      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 3rd tab');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
-      expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 3rd tab').toBe(1);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 3rd tab').toBe(1);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 3rd tab').toBe(1);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 3rd tab').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 3rd tab')
+        .toBe('after');
 
       // tab back
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
-      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 1st tab back');
-      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 1st tab back');
-      expect(marqueBlurCalls).toBe(1, 'marqueBlurCalls after 1st tab back');
-      expect(marqueFocusOutCalls).toBe(1, 'marqueFocusOutCalls after 1st tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
-      expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 1st tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 1st tab back').toBe(2);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 1st tab back').toBe(2);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 1st tab back').toBe(1);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 1st tab back').toBe(1);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 1st tab back')
+        .toBe('my-link');
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
-      expect(marqueFocusCalls).toBe(2, 'marqueFocusCalls after 2nd tab back');
-      expect(marqueFocusInCalls).toBe(2, 'marqueFocusInCalls after 2nd tab back');
-      expect(marqueBlurCalls).toBe(2, 'marqueBlurCalls after 2nd tab back');
-      expect(marqueFocusOutCalls).toBe(2, 'marqueFocusOutCalls after 2nd tab back');
-      expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
-      expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
+      expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusCalls).withContext('marqueFocusCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusInCalls).withContext('marqueFocusInCalls after 2nd tab back').toBe(2);
+      expect(marqueBlurCalls).withContext('marqueBlurCalls after 2nd tab back').toBe(2);
+      expect(marqueFocusOutCalls).withContext('marqueFocusOutCalls after 2nd tab back').toBe(2);
+      expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
+      expect(await getActiveElementId(page))
+        .withContext('activeElementId after 2nd tab back')
+        .toBe('before');
 
       await page.keyboard.up('ShiftLeft');
     });
@@ -476,10 +534,10 @@ describe('marque', () => {
       await setContentWithTrademark();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-marque']).toBe(1, 'componentDidLoad: p-marque');
+      expect(status.componentDidLoad['p-marque']).withContext('componentDidLoad: p-marque').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });

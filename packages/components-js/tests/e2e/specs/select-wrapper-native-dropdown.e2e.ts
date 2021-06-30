@@ -6,11 +6,9 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  getStyleOnFocus,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -39,8 +37,12 @@ describe('select-wrapper native-dropdown', () => {
   };
 
   const initSelect = (opts?: InitOptions): Promise<void> => {
-    const { useSlottedLabel = false, useSlottedDescription = false, useSlottedMessage = false, state = 'none' } =
-      opts ?? {};
+    const {
+      useSlottedLabel = false,
+      useSlottedDescription = false,
+      useSlottedMessage = false,
+      state = 'none',
+    } = opts ?? {};
 
     const label = !useSlottedLabel ? 'label="Some label"' : '';
     const description = !useSlottedDescription ? 'description="Some description"' : '';
@@ -134,7 +136,9 @@ describe('select-wrapper native-dropdown', () => {
     const selectComponent = await getHost();
     const select = await getSelect();
 
-    expect(await getMessage()).toBeNull('initially');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeNull();
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'error');
@@ -142,9 +146,15 @@ describe('select-wrapper native-dropdown', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
-    expect(await getAttribute(await getMessage(), 'role')).toEqual('alert', 'when state = error');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
+    expect(await getMessage())
+      .withContext('when state = error')
+      .toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = error')
+      .toEqual('alert');
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = error')
+      .toEqual('Some label. Some error message');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -153,8 +163,12 @@ describe('select-wrapper native-dropdown', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = success')
+      .toBeNull();
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = success')
+      .toEqual('Some label. Some success message');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -162,8 +176,12 @@ describe('select-wrapper native-dropdown', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeNull('when state = none');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some description', 'when state = none');
+    expect(await getMessage())
+      .withContext('when state = none')
+      .toBeNull();
+    expect(await getProperty(select, 'ariaLabel'))
+      .withContext('when state = none')
+      .toEqual('Some label. Some description');
   });
 
   it('should focus select when label text is clicked', async () => {
@@ -193,17 +211,23 @@ describe('select-wrapper native-dropdown', () => {
     const select = await getSelect();
     const disabledClass = 'p-select-wrapper__fake-select--disabled';
 
-    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'initially');
+    expect(await getCssClasses(fakeSelect))
+      .not.withContext('initially')
+      .toContain(disabledClass);
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = true));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).toContain(disabledClass, 'when disabled = true');
+    expect(await getCssClasses(fakeSelect))
+      .withContext('when disabled = true')
+      .toContain(disabledClass);
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = false));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
+    expect(await getCssClasses(fakeSelect))
+      .not.withContext('when disabled = false')
+      .toContain(disabledClass);
   });
 
   describe('focus state', () => {
@@ -218,7 +242,9 @@ describe('select-wrapper native-dropdown', () => {
 
       await select.click();
 
-      expect(await getOutlineStyle(select)).toBe(visible, 'after click');
+      expect(await getOutlineStyle(select))
+        .withContext('after click')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation for slotted <select>', async () => {
@@ -232,7 +258,9 @@ describe('select-wrapper native-dropdown', () => {
 
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
+      expect(await getOutlineStyle(select))
+        .withContext('after keyboard navigation')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -249,7 +277,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
       await labelLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
 
@@ -261,7 +288,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(labelLink)).toBe(visible);
 
       await descriptionLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
@@ -272,7 +298,6 @@ describe('select-wrapper native-dropdown', () => {
       expect(await getOutlineStyle(descriptionLink)).toBe(visible);
 
       await messageLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
@@ -283,56 +308,6 @@ describe('select-wrapper native-dropdown', () => {
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
     });
-
-    it('should show outline of slotted <select> when it is focused', async () => {
-      await initSelect();
-
-      const host = await getHost();
-      const select = await getSelect();
-
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'success' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'error' }));
-
-      await setAttribute(host, 'theme', 'dark');
-
-      await setAttribute(host, 'state', 'none');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'neutral', theme: 'dark' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'success', theme: 'dark' }));
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(select)).toBe(expectedStyleOnFocus({ color: 'error', theme: 'dark' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initSelect({ useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error' });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
-    });
   });
 
   describe('lifecycle', () => {
@@ -340,12 +315,12 @@ describe('select-wrapper native-dropdown', () => {
       await initSelect();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-select-wrapper']).toBe(1, 'componentDidLoad: p-select-wrapper');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // label and message
-      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon'); // arrow down
+      expect(status.componentDidLoad['p-select-wrapper']).withContext('componentDidLoad: p-select-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // label and message
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1); // arrow down
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on dropdown open', async () => {
@@ -364,8 +339,8 @@ describe('select-wrapper native-dropdown', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all'); // Fake Dropdown gets updated
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1); // Fake Dropdown gets updated
     });
   });
 });

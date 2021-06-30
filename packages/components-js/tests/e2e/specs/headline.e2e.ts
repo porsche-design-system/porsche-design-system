@@ -7,7 +7,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
+import { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('headline', () => {
   let page: Page;
@@ -37,22 +37,34 @@ describe('headline', () => {
   describe('tag', () => {
     it('should render according to variant', async () => {
       await initHeadline({ variant: 'large-title' });
-      expect(await getHeadlineTagName()).toBe('H1', 'for variant="large-title"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="large-title"')
+        .toBe('H1');
 
       await initHeadline({ variant: 'headline-1' });
-      expect(await getHeadlineTagName()).toBe('H1', 'for variant="headline-1"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="headline-1"')
+        .toBe('H1');
 
       await initHeadline({ variant: 'headline-2' });
-      expect(await getHeadlineTagName()).toBe('H2', 'for variant="headline-2"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="headline-2"')
+        .toBe('H2');
 
       await initHeadline({ variant: 'headline-3' });
-      expect(await getHeadlineTagName()).toBe('H3', 'for variant="headline-3"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="headline-3"')
+        .toBe('H3');
 
       await initHeadline({ variant: 'headline-4' });
-      expect(await getHeadlineTagName()).toBe('H4', 'for variant="headline-4"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="headline-4"')
+        .toBe('H4');
 
       await initHeadline({ variant: 'headline-5' });
-      expect(await getHeadlineTagName()).toBe('H5', 'for variant="headline-5"');
+      expect(await getHeadlineTagName())
+        .withContext('for variant="headline-5"')
+        .toBe('H5');
     });
 
     it('should render according to tag h6 when variant is set', async () => {
@@ -86,22 +98,22 @@ describe('headline', () => {
       await initHeadline({ variant: 'headline-1' });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
-      expect(status.componentDidUpdate['p-headline']).toBe(0, 'componentDidUpdate: p-headline');
+      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidUpdate['p-headline']).withContext('componentDidUpdate: p-headline').toBe(0);
 
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips with custom breakpoints', async () => {
       await initHeadline({ variant: { base: 'small', l: 'large' } });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -113,9 +125,9 @@ describe('headline', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+      expect(status.componentDidUpdate['p-headline']).withContext('componentDidUpdate: p-headline').toBe(1);
 
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
 
     it('should work without unnecessary round trips after state change with custom breakpoints', async () => {
@@ -127,9 +139,9 @@ describe('headline', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+      expect(status.componentDidUpdate['p-headline']).withContext('componentDidUpdate: p-headline').toBe(1);
 
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
 });

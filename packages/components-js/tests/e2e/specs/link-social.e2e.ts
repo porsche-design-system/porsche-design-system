@@ -1,18 +1,16 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
-  getStyleOnFocus,
+  getLifecycleStatus,
+  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  getOutlineStyle,
-  waitForInheritedCSSTransition,
-  getLifecycleStatus,
   waitForEventSerialization,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -41,7 +39,6 @@ describe('link-social', () => {
 
   const getHost = () => selectNode(page, 'p-link-social');
   const getLink = () => selectNode(page, 'p-link-social >>> a');
-  const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
@@ -94,65 +91,77 @@ describe('link-social', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(beforeFocusCalls).toBe(0, 'beforeFocusCalls initially');
-    expect(linkFocusCalls).toBe(0, 'linkFocusCalls initially');
-    expect(linkFocusInCalls).toBe(0, 'linkFocusInCalls initially');
-    expect(linkBlurCalls).toBe(0, 'linkBlurCalls initially');
-    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls initially');
-    expect(afterFocusCalls).toBe(0, 'afterFocusCalls initially');
-    expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
+    expect(linkFocusCalls).withContext('linkFocusCalls initially').toBe(0);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls initially').toBe(0);
+    expect(linkBlurCalls).withContext('linkBlurCalls initially').toBe(0);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls initially').toBe(0);
+    expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId initially')
+      .toBe('');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
-    expect(linkFocusCalls).toBe(0, 'linkFocusCalls after 1st tab');
-    expect(linkFocusInCalls).toBe(0, 'linkFocusInCalls after 1st tab');
-    expect(linkBlurCalls).toBe(0, 'linkBlurCalls after 1st tab');
-    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls after 1st tab');
-    expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 1st tab');
-    expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
+    expect(linkFocusCalls).withContext('linkFocusCalls after 1st tab').toBe(0);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls after 1st tab').toBe(0);
+    expect(linkBlurCalls).withContext('linkBlurCalls after 1st tab').toBe(0);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 1st tab').toBe(0);
+    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId after 1st tab')
+      .toBe('before');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
-    expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 2nd tab');
-    expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 2nd tab');
-    expect(linkBlurCalls).toBe(0, 'linkBlurCalls after 2nd tab');
-    expect(linkFocusOutCalls).toBe(0, 'linkFocusOutCalls after 2nd tab');
-    expect(afterFocusCalls).toBe(0, 'afterFocusCalls after 2nd tab');
-    expect(await getActiveElementId(page)).toBe('my-link-social', 'activeElementId after 2nd tab');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
+    expect(linkFocusCalls).withContext('linkFocusCalls after 2nd tab').toBe(1);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls after 2nd tab').toBe(1);
+    expect(linkBlurCalls).withContext('linkBlurCalls after 2nd tab').toBe(0);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 2nd tab').toBe(0);
+    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId after 2nd tab')
+      .toBe('my-link-social');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
-    expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 3rd tab');
-    expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 3rd tab');
-    expect(linkBlurCalls).toBe(1, 'linkBlurCalls after 3rd tab');
-    expect(linkFocusOutCalls).toBe(1, 'linkFocusOutCalls after 3rd tab');
-    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 3rd tab');
-    expect(await getActiveElementId(page)).toBe('after', 'activeElementId after 3rd tab');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
+    expect(linkFocusCalls).withContext('linkFocusCalls after 3rd tab').toBe(1);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls after 3rd tab').toBe(1);
+    expect(linkBlurCalls).withContext('linkBlurCalls after 3rd tab').toBe(1);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 3rd tab').toBe(1);
+    expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId after 3rd tab')
+      .toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
-    expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 1st tab back');
-    expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 1st tab back');
-    expect(linkBlurCalls).toBe(1, 'linkBlurCalls after 1st tab back');
-    expect(linkFocusOutCalls).toBe(1, 'linkFocusOutCalls after 1st tab back');
-    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 1st tab back');
-    expect(await getActiveElementId(page)).toBe('my-link-social', 'activeElementId after 1st tab back');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
+    expect(linkFocusCalls).withContext('linkFocusCalls after 1st tab back').toBe(2);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls after 1st tab back').toBe(2);
+    expect(linkBlurCalls).withContext('linkBlurCalls after 1st tab back').toBe(1);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 1st tab back').toBe(1);
+    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId after 1st tab back')
+      .toBe('my-link-social');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
-    expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 2nd tab back');
-    expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 2nd tab back');
-    expect(linkBlurCalls).toBe(2, 'linkBlurCalls after 2nd tab back');
-    expect(linkFocusOutCalls).toBe(2, 'linkFocusOutCalls after 2nd tab back');
-    expect(afterFocusCalls).toBe(1, 'afterFocusCalls after 2nd tab back');
-    expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 2nd tab back');
+    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
+    expect(linkFocusCalls).withContext('linkFocusCalls after 2nd tab back').toBe(2);
+    expect(linkFocusInCalls).withContext('linkFocusInCalls after 2nd tab back').toBe(2);
+    expect(linkBlurCalls).withContext('linkBlurCalls after 2nd tab back').toBe(2);
+    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 2nd tab back').toBe(2);
+    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
+    expect(await getActiveElementId(page))
+      .withContext('activeElementId after 2nd tab back')
+      .toBe('before');
 
     await page.keyboard.up('ShiftLeft');
   });
@@ -194,7 +203,6 @@ describe('link-social', () => {
       expect(await getOutlineStyle(link)).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
@@ -205,34 +213,6 @@ describe('link-social', () => {
 
       expect(await getOutlineStyle(link)).toBe(visible);
     });
-
-    it('should show outline of shadowed <a> when it is focused', async () => {
-      await initLinkSocial();
-
-      const host = await getHost();
-      const link = await getLink();
-
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus());
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initLinkSocial({ useSlottedAnchor: true });
-
-      const host = await getHost();
-      const link = await getSlottedLink();
-
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(expectedStyleOnFocus());
-
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
-        expectedStyleOnFocus({ theme: 'dark' })
-      );
-    });
   });
 
   describe('lifecycle', () => {
@@ -240,12 +220,12 @@ describe('link-social', () => {
       await initLinkSocial();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-link-social']).toBe(1, 'componentDidLoad: p-link-social');
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
-      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+      expect(status.componentDidLoad['p-link-social']).withContext('componentDidLoad: p-link-social').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -256,10 +236,10 @@ describe('link-social', () => {
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-link-social']).toBe(1, 'componentDidUpdate: p-link-social');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-link-social']).withContext('componentDidUpdate: p-link-social').toBe(1);
+      expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
 
-      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
     });
   });
 });

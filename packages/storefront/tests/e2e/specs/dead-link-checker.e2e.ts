@@ -21,12 +21,13 @@ describe('check for dead links', () => {
 
   const scanForLinks = async (): Promise<string[]> => {
     const bodyLinks = await getBodyLinks();
-    const bodyHrefs = await Promise.all(bodyLinks.map((x) => x.evaluate(getHref)));
+
+    const bodyHrefs: string[] = await Promise.all(bodyLinks.map((x) => x.evaluate(getHref)));
 
     const markdownLinks = await getMarkdownLinks();
-    const markdownHrefs = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
+    const markdownHrefs: string[] = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
 
-    const markdownHrefsStartingWithSlash = markdownHrefs.filter((url) => url.startsWith('/'));
+    const markdownHrefsStartingWithSlash = markdownHrefs.filter((url: string) => url.startsWith('/'));
     expect(markdownHrefsStartingWithSlash.length).toBe(0, 'markdownHrefsStartingWithSlash.length');
     if (markdownHrefsStartingWithSlash.length) {
       console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);

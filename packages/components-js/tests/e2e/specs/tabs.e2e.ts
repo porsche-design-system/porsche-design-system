@@ -330,12 +330,12 @@ describe('tabs', () => {
       await initTabs({ amount: 3 });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-tabs']).toBe(1, 'componentDidLoad: p-tabs');
-      expect(status.componentDidLoad['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar'); // Includes 7 didLoad calls
-      expect(status.componentDidLoad['p-tabs-item']).toBe(3, 'componentDidLoad: p-tabs-item');
+      expect(status.componentDidLoad['p-tabs']).withContext('componentDidLoad: p-tabs').toBe(1);
+      expect(status.componentDidLoad['p-tabs-bar']).withContext('componentDidLoad: p-tabs-bar').toBe(1); // Includes 7 didLoad calls
+      expect(status.componentDidLoad['p-tabs-item']).withContext('componentDidLoad: p-tabs-item').toBe(3);
 
-      expect(status.componentDidLoad.all).toBe(11, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(11);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -347,11 +347,11 @@ describe('tabs', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs']).toBe(1, 'componentDidUpdate: p-tabs');
-      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidUpdate: p-tabs-bar');
+      expect(status.componentDidUpdate['p-tabs']).withContext('componentDidUpdate: p-tabs').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar']).withContext('componentDidUpdate: p-tabs-bar').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(11, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(11);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
     });
   });
 });
