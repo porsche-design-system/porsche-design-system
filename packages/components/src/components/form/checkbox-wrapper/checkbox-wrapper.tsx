@@ -3,18 +3,19 @@ import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getRole,
   getTagName,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
-  mapBreakpointPropToClasses,
-  setAriaAttributes,
-  observeMutations,
-  unobserveMutations,
-  getRole,
   isRequiredAndParentNotRequired,
+  mapBreakpointPropToClasses,
+  observeMutations,
+  setAriaAttributes,
+  unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -66,12 +67,12 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--disabled']: this.input.disabled,
       [`root--${this.state}`]: this.state !== 'none',
     };
-    const labelTextClasses = {
+    const rootTextClasses = {
       ['root__text']: true,
       ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
     };
@@ -80,9 +81,9 @@ export class CheckboxWrapper {
 
     return (
       <Host>
-        <label class={labelClasses}>
+        <label class={rootClasses}>
           {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
@@ -118,7 +119,7 @@ export class CheckboxWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      transition: color .24s ease !important;
+      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
     }

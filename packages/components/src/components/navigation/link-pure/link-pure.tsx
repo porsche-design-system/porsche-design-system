@@ -75,7 +75,7 @@ export class LinkPure {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkPureClasses = {
+    const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
@@ -88,7 +88,7 @@ export class LinkPure {
     return (
       <Host>
         <TagType
-          class={linkPureClasses}
+          class={rootClasses}
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,

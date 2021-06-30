@@ -26,7 +26,7 @@
   vertical-align: top !important;
   color: $p-color-default !important;
   cursor: pointer !important;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier !important;
 }
 
 ::slotted(a:hover),

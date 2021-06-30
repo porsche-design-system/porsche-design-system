@@ -2,13 +2,25 @@ import { Page } from 'puppeteer';
 
 type Options = {
   theme?: 'light' | 'dark';
-  color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'hover' | 'transparent';
-  css?: 'outline' | 'boxShadow';
+  color?:
+    | 'default'
+    | 'neutral'
+    | 'contrastHigh'
+    | 'success'
+    | 'error'
+    | 'brand'
+    | 'active'
+    | 'hover'
+    | 'transparent'
+    | 'loadingDisabled';
+  css?: 'outline' | 'boxShadow' | 'boxShadowWithInnerOffset';
   offset?: string;
 };
 
 type FocusColors = {
   default: string;
+  backgroundDefault: string;
+  loadingDisabled: string;
   neutral: string;
   contrastHigh: string;
   success: string;
@@ -27,6 +39,8 @@ type Colors = {
 const colors: Colors = {
   light: {
     default: 'rgb(0, 0, 0)',
+    backgroundDefault: 'rgb(255, 255, 255)',
+    loadingDisabled: 'rgb(150, 152, 154)',
     neutral: 'rgb(98, 102, 105)',
     contrastHigh: 'rgb(50, 54, 57)',
     success: 'rgb(1, 138, 22)',
@@ -38,6 +52,8 @@ const colors: Colors = {
   },
   dark: {
     default: 'rgb(255, 255, 255)',
+    backgroundDefault: 'rgb(14, 20, 24)',
+    loadingDisabled: 'rgb(124, 127, 129)',
     neutral: 'rgb(176, 177, 178)',
     contrastHigh: 'rgb(227, 228, 229)',
     success: 'rgb(1, 186, 29)',
@@ -58,10 +74,14 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     ...opts,
   };
   const { css, theme, color, offset } = options;
-
-  return css === 'boxShadow'
-    ? `${colors[theme][color]} 0px 0px 0px 1px`
-    : `${colors[theme][color]} solid 1px ${offset}`;
+  switch (css) {
+    case 'boxShadow':
+      return `${colors[theme][color]} 0px 0px 0px 1px`;
+    case 'boxShadowWithInnerOffset':
+      return `${colors[theme]['backgroundDefault']} 0px 0px 0px 2px, ${colors[theme][color]} 0px 0px 0px ${offset}`;
+    default:
+      return `${colors[theme][color]} solid 1px ${offset}`;
+  }
 };
 
 export const isElementAtIndexFocused = async (page: Page, elementIndex: number): Promise<boolean> => {

@@ -1,8 +1,8 @@
-import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
-import Protocol from 'devtools-protocol';
 
-type Options = NavigationOptions & { enableLogging?: boolean; injectIntoHead?: string };
+type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
+export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
@@ -22,6 +22,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        <link rel="stylesheet" href="overrides.css" >
         ${options.injectIntoHead}
       </head>
       <body>
@@ -114,33 +115,6 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
   ).asElement();
-};
-
-export const FORCED_PSEUDO_CLASSES = ['focus', 'focus-visible', 'hover'] as const;
-export type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
-
-export const forceStateOnElement = async (
-  page: Page,
-  selector: string,
-  states: ForcedPseudoClasses[]
-): Promise<void> => {
-  const cdp = await page.target().createCDPSession();
-  await cdp.send('DOM.getDocument');
-
-  const element = await selectNode(page, selector);
-  const { x, y, width, height } = await element.boundingBox();
-
-  const elementNode = (await cdp.send('DOM.getNodeForLocation', {
-    x: x + width / 2,
-    y: y + height / 2,
-  })) as Protocol.DOM.GetNodeForLocationResponse;
-
-  await cdp.send('CSS.enable');
-  await cdp.send('CSS.forcePseudoState', {
-    nodeId: elementNode.nodeId,
-    forcedPseudoClasses: states,
-  });
-  await page.waitForTimeout(50); // TODO, remove as soon as flakiness without is understood and fixed
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
@@ -242,15 +216,6 @@ export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleO
   };
   const { pseudo } = options;
   return await getElementStyle(element, 'boxShadow', { pseudo });
-};
-
-export const getStyleOnFocus = async (
-  element: ElementHandle,
-  property: 'outline' | 'boxShadow' = 'outline',
-  opts?: GetStyleOnFocusOptions
-): Promise<string> => {
-  await element.focus();
-  return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
 };
 
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {

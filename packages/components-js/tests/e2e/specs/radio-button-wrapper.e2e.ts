@@ -1,22 +1,20 @@
 import {
+  expectedStyleOnFocus,
   getActiveElementId,
   getActiveElementTagName,
   getAttribute,
-  getStyleOnFocus,
+  getBoxShadowStyle,
   getBrowser,
+  getElementStyle,
+  getLifecycleStatus,
+  getOutlineStyle,
   getProperty,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  expectedStyleOnFocus,
-  waitForStencilLifecycle,
-  waitForInheritedCSSTransition,
-  getOutlineStyle,
-  getBoxShadowStyle,
-  getLifecycleStatus,
-  getElementStyle,
   waitForInputTransition,
-  removeAttribute,
+  waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -119,29 +117,43 @@ describe('radio-button-wrapper', () => {
     const radioComponent = await getHost();
     const input = await selectNode(page, 'input');
 
-    expect(await getMessage()).toBeNull('initially');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeNull();
     await setAttribute(radioComponent, 'state', 'error');
     await setAttribute(radioComponent, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
+    expect(await getMessage())
+      .withContext('when state = error')
+      .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('when state = error')
+      .toEqual('Some label. Some error message');
 
     await setAttribute(radioComponent, 'state', 'success');
     await setAttribute(radioComponent, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
+    expect(await getAttribute(await getMessage(), 'role'))
+      .withContext('when state = success')
+      .toBeNull();
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('when state = success')
+      .toEqual('Some label. Some success message');
 
     await setAttribute(radioComponent, 'state', 'none');
     await setAttribute(radioComponent, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeNull('when state = none');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
+    expect(await getMessage())
+      .withContext('when state = none')
+      .toBeNull();
+    expect(await getProperty(input, 'ariaLabel'))
+      .withContext('when state = none')
+      .toEqual('Some label');
   });
 
   it('should disable radio-button when disabled attribute is set programmatically', async () => {
@@ -348,18 +360,24 @@ describe('radio-button-wrapper', () => {
       const input = await getInput();
       const visible = expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow', offset: '1px' });
 
-      expect(await getBoxShadowStyle(input)).toBe('none', 'initial');
+      expect(await getBoxShadowStyle(input))
+        .withContext('initial')
+        .toBe('none');
 
       await input.click();
 
-      expect(await getBoxShadowStyle(input)).toBe('none', 'after click');
+      expect(await getBoxShadowStyle(input))
+        .withContext('after click')
+        .toBe('none');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getBoxShadowStyle(input)).toBe(visible, 'after keyboard navigation');
+      expect(await getBoxShadowStyle(input))
+        .withContext('after keyboard navigation')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -374,7 +392,6 @@ describe('radio-button-wrapper', () => {
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
       await labelLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
 
@@ -386,7 +403,6 @@ describe('radio-button-wrapper', () => {
       expect(await getOutlineStyle(labelLink)).toBe(visible);
 
       await messageLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
 
@@ -397,46 +413,6 @@ describe('radio-button-wrapper', () => {
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
     });
-
-    it('should show outline of slotted <input> when it is focused', async () => {
-      await initRadioButton();
-
-      const host = await getHost();
-      const input = await getInput();
-
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow' })
-      );
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'success', css: 'boxShadow' })
-      );
-
-      await setAttribute(host, 'state', 'error');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
-        expectedStyleOnFocus({ color: 'error', css: 'boxShadow' })
-      );
-    });
-
-    it('should show outline of slotted <a> when it is focused', async () => {
-      await initRadioButton({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
-
-      const host = await getHost();
-      const labelLink = await getLabelLink();
-      const messageLink = await getMessageLink();
-
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
-
-      await setAttribute(host, 'state', 'success');
-      await waitForStencilLifecycle(page);
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
-    });
   });
 
   describe('lifecycle', () => {
@@ -444,11 +420,13 @@ describe('radio-button-wrapper', () => {
       await initRadioButton({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-radio-button-wrapper']).toBe(1, 'componentDidLoad: p-radio-button-wrapper');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-radio-button-wrapper'])
+        .withContext('componentDidLoad: p-radio-button-wrapper')
+        .toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -460,8 +438,8 @@ describe('radio-button-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });

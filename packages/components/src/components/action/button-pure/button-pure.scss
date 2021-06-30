@@ -57,14 +57,14 @@
   background: transparent;
   cursor: pointer;
   color: $p-color-default;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
   @include p-focus($p-color-state-focus, 1px, '::before');
 
   + * {
     color: $p-color-default;
   }
 
-  &:not(:disabled) {
+  &:not(:disabled):not(&--loading) {
     &:hover {
       color: $p-color-state-hover;
       + * {
@@ -80,7 +80,8 @@
     }
   }
 
-  &:disabled {
+  &:disabled,
+  &--loading {
     cursor: not-allowed;
     color: $p-color-state-disabled;
     + * {
@@ -96,7 +97,7 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
         + * {
@@ -112,7 +113,8 @@
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: $p-color-theme-dark-state-disabled;
       + * {
         color: $p-color-theme-dark-state-disabled;
@@ -301,7 +303,7 @@
 
 .subline {
   display: flex;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-top: p-px-to-rem(4px);
 
   &::before {

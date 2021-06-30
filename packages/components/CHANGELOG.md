@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Angular: export types from package root
+
+#### Changed
+- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
+
+### [2.2.1] - 2021-06-08
+
+#### Changed
+- Optimize vertical alignment of `Modal`
+
+#### Fixed
+- URL of inject global styles warning
+
+### [2.2.1-beta.1] - 2021-06-02
+
+#### Fixed
+- Margin of `Tabs Bar` within `Tabs` for Firefox and Safari
+- SVG of `Icon` is not removed after prop change, e.g. on color change
+- Fullscreen behavior of `Modal` on screens larger than 1760px
+
 ### [2.2.0] - 2021-05-19
 
 #### Fixed
@@ -52,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [2.0.3-beta] - 2021-04-28
 
 #### Fixed
--  Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
+- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
 ### [2.0.2] - 2021-04-21
 
