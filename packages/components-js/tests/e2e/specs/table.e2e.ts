@@ -383,10 +383,12 @@ ${script}`
       const firstTableHeadCellButton = await getFirstTableHeadCellButton();
       await firstTableHeadCellButton.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
       expect(eventCounter).toBe(1);
 
       await firstTableHeadCellButton.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
       expect(eventCounter).toBe(2);
     });
 
