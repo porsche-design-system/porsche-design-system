@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { SortingChangeEvent, TableHeadCellSort } from '../table-utils';
-import { getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
+import { getPrefixedTagNames, throwIfElementHasAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addCss, createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from '../table-utils';
 
 @Component({
@@ -18,6 +18,7 @@ export class TableHeadCell {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
+    throwIfElementHasAttribute(this.host, 'sort');
     addCss(this.host);
   }
 
