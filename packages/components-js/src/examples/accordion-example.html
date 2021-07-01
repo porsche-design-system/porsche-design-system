@@ -1,8 +1,8 @@
 <script>
   const accordions = document.querySelectorAll('p-accordion');
 
-  accordions.forEach(() =>
-    addEventListener('accordionChange', (accordionChangeEvent) => {
+  accordions.forEach((accordion) =>
+    accordion.addEventListener('accordionChange', (accordionChangeEvent) => {
       const { open } = accordionChangeEvent.detail;
       accordionChangeEvent.target.setAttribute('open', open);
     })
