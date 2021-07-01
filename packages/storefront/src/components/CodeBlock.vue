@@ -20,6 +20,7 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
     allFrameworks: Required<FrameworkMarkup> = {
@@ -61,7 +62,8 @@
     }
 
     get highlightedMarkup(): string {
-      return getHighlightedCode(this.convert(this.markup), this.framework);
+      const markup = this.convertMarkup ? this.convert(this.markup) : this.markup;
+      return getHighlightedCode(markup, this.framework);
     }
 
     private convert(markup: string): string {
