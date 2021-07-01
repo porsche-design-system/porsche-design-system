@@ -227,6 +227,11 @@ export const routes: ExtendedRoute[] = [
     children: [],
   },
   {
+    path: 'accordion-example',
+    component: fromExamples.AccordionExampleComponent,
+    name: 'Accordion Example',
+  },
+  {
     path: 'table-example-basic',
     component: fromExamples.TableExampleBasicComponent,
     name: 'Table Example Basic',
