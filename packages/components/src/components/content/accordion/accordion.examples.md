@@ -5,19 +5,11 @@ Accordions are flexible in the context and can include other components of the P
 
 ## Basic example
 
-<Playground :markup="basic" :config="config"></Playground>
-
-You can set the `open` property to `true` so that the accordion is open by default.
-<Playground :markup="basicOpen" :config="config"></Playground>
+<PlaygroundStatic :frameworks="codeExample" :config="config" :markup="basic"></PlaygroundStatic>
 
 The accordion width is 100% of the parent container.
 We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
-Parent containers with a maximum width of 800px are recommended.
-
-### Headline Tag
-
-The `tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is no `tag` property provided, it defaults to `h2`.
-For instance our example accordions use heading level 3 because they are contained in sections titled with a level 2 heading.
+Parent containers with a maximum width of `800px` are recommended.
 
 ### Event binding
 
@@ -26,52 +18,14 @@ This grants you flexible control over the `open` state.
 
 In order to get notified when the Accordion gets closed by clicking the `heading` you need to register an event listener for the `accordionChange` event which is emitted by `p-accordion`.
 
-#### Vanilla JS
+You can set the `open` property to `true` so that the accordion is open by default.
 
-```js
-accordion.addEventListener('accordionChange', (accordionChangeEvent) => {
-  const { open } = accordionChangeEvent.detail;
-  accordionChangeEvent.target.setAttribute('open', open);
-});
-```
 
-#### Angular
+### Headline Tag
 
-```ts
-import { Component } from '@angular/core';
-import type { AccordionChangeEvent }  from '@porsche-design-system/components-angular/lib/types';
+The `tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is no `tag` property provided, it defaults to `h2`.
+For instance our example accordions use heading level 3 because they are contained in sections titled with a level 2 heading.
 
-@Component({
-  selector: 'accordion-page',
-  template: `<p-accordion [open]="isAccordionOpen" (accordionChange)="handleAccordionChange($event)" heading="Some Heading">Some Content</p-accordion>`,
-})
-export class AccordionPage {
-  isAccordionOpen = false;
-
-  handleAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
-    const { open } = e.detail;
-    this.isAccordionOpen = open;
-  }
-}
-```
-
-#### React
-
-```tsx 
-import { useCallback, useState } from 'react';
-import { PAccordion } from '@porsche-design-system/components-react';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-react';
-
-const AccordionPage = (): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>();
-  const handleAccordionChange = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
-    const { open } = e.detail;
-    setIsOpen(open);
-  }, []);
-
-  return <PAccordion open={isOpen} onAccordionChange={handleAccordionChange}>Some label</PAccordion>
-}
-```
 ---
 
 ## Size
@@ -112,41 +66,30 @@ We recommend using the property in case you need a `side-navigation` with a `acc
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+import { getAccordionCodeSamples }from '@porsche-design-system/shared';
   
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
 
+    codeExample = getAccordionCodeSamples();
+
     size = 'small';
     content= `<p-text>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
-    ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-    sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores 
-    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, 
-    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-  </p-text>
-  <p-text>
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero 
-    eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, 
-    consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-  </p-text>`;
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+  magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+  gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</p-text>
+<p-text>
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+  magna aliquam erat volutpat.
+</p-text>`;
     
     get basic() {      
       return `<p-accordion heading="Some Heading" tag="h3">
   ${this.content}
 </p-accordion>
 <p-accordion heading="Some Heading" tag="h3">
-  ${this.content}
-</p-accordion>`;
-    }
-    
-    get basicOpen() {      
-      return `<p-accordion heading="Some Heading" tag="h3" open="true" >
-  ${this.content}
-</p-accordion>
-<p-accordion heading="Some Heading" tag="h3" >
   ${this.content}
 </p-accordion>`;
     }
@@ -176,7 +119,7 @@ We recommend using the property in case you need a `side-navigation` with a `acc
   <p-accordion heading="Some Heading" tag="h3" compact="true">
       <p-link-pure>Some label</p-link-pure>
   </p-accordion>
-  <p-accordion heading="Some Heading" tag="h3" compact="true" open="true">
+  <p-accordion heading="Some Heading" tag="h3" compact="true">
     <p-link-pure>Some label</p-link-pure>
   </p-accordion>
 </div>`;
@@ -198,7 +141,7 @@ We recommend using the property in case you need a `side-navigation` with a `acc
     }
   
     registerEvents() {
-      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
+      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion, .playground-static p-accordion');
       accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.handleAccordionChange));
     }
   
