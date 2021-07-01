@@ -7,13 +7,11 @@ describe('tabs-item', () => {
       const spy = jest.spyOn(domUtils, 'throwIfParentIsNotOfKind');
       const component = new TabsItem();
 
-      expect(spy).toBeCalledTimes(0);
-
       try {
         component.connectedCallback();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'pTabs');
     });
   });
 });

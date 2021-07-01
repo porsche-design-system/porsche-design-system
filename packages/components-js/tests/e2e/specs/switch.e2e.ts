@@ -1,10 +1,8 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
-  expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
-  getBoxShadowStyle,
   getBrowser,
   getLifecycleStatus,
   getProperty,
@@ -27,8 +25,7 @@ describe('switch', () => {
   });
   afterEach(async () => await page.close());
 
-  const tagName = 'p-switch';
-  const getHost = () => selectNode(page, tagName);
+  const getHost = () => selectNode(page, 'p-switch');
   const getButton = () => selectNode(page, 'p-switch >>> button');
   const getLabel = () => selectNode(page, 'p-switch >>> p-text');
 
@@ -154,6 +151,7 @@ describe('switch', () => {
 
       await button.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
 
       expect(eventCounter).toBe(1);
     });

@@ -5,16 +5,17 @@ import { camelCase } from 'change-case';
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
-  const sourceDirectory = path.resolve(path.normalize('../components/src/components'));
+  const sourceDirectory = path.resolve('../components/src/components');
 
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
   const tags = componentFiles
     .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension
     .map((file) => {
       const fileContent = fs.readFileSync(file, 'utf8');
-      const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);
+      const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent) || []; // functional components don't match here
       return tag;
     })
+    .filter((x) => x) // filter out undefined values
     .sort();
 
   const content = `export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}] as const;

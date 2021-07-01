@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-text-field-wrapper',
@@ -217,5 +217,6 @@ import { Component } from '@angular/core';
       </p-text-field-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextFieldWrapperComponent {}

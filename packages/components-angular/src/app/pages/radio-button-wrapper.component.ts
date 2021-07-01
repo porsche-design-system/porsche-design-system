@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-radio-button',
@@ -143,5 +143,6 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioButtonWrapperComponent {}

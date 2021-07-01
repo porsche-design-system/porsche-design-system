@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-select',
@@ -461,5 +461,6 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectWrapperComponent {}

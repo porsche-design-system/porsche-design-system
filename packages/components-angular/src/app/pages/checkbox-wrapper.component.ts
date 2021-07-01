@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-checkbox-wrapper',
@@ -130,6 +130,7 @@ import { Component, OnInit } from '@angular/core';
       </p-checkbox-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxWrapperComponent implements OnInit {
   ngOnInit() {

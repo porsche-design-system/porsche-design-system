@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'form-wrapper-binding',
+  selector: 'page-form-wrapper-binding',
   template: `
     <div class="playground light">
       <p-radio-button-wrapper [label]="'Some Label'">
@@ -17,5 +17,6 @@ import { Component, OnInit } from '@angular/core';
       </p-text-field-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormWrapperBindingComponent {}

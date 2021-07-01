@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-switch',
   styles: [
     `
       p-switch ~ p-switch {
-        margin-top: 8px;
+        margin-top: 0.5rem;
       }
     `,
   ],
@@ -79,5 +79,6 @@ import { Component } from '@angular/core';
       >
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {}
