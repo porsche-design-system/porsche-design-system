@@ -9,7 +9,7 @@ It is a controlled component. This means it does not contain any internal state,
 ## Basic Table
 
 <PlaygroundStatic :frameworks="basic">
-  <p-table ref="tableBasic">
+  <p-table caption="Some caption" ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
@@ -68,7 +68,7 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should subscribe to.
 
 <PlaygroundStatic :frameworks="sorting">
-  <p-table ref="tableSorting">
+  <p-table caption="Some caption" ref="tableSorting">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headSorting" :key="index" ref="headCellsSorting">{{ item.name }}</p-table-head-cell>
@@ -98,6 +98,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
 
 <PlaygroundStatic :frameworks="advanced">
   <p-table ref="tableAdvanced">
+    <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
@@ -179,7 +180,7 @@ export default class Code extends Vue {
   ${this.basicTableBody}
 </p-table>`;
 
-  hideLabel = `<p-table>
+  hideLabel = `<p-table caption="Some caption">
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell>Column 1</p-table-head-cell>

@@ -6,6 +6,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-angul
   selector: 'page-table-example-advanced',
   template: `
     <p-table (sortingChange)="onSortingChange($event)">
+      <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">
