@@ -8,7 +8,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = [`import type { TagName } from '..'`].join('\n');
+  const imports = [`import type { TagName } from './tagNames'`].join('\n');
 
   const types = [`type Meta = { isThemeable: boolean; };`, `type ComponentMeta = { [key in TagName]: Meta };`].join(
     '\n'
