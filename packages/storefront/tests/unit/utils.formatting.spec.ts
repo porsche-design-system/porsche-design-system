@@ -19,16 +19,27 @@ describe('cleanMarkup', () => {
 });
 
 describe('patchThemeIntoMarkup', () => {
-  it('should not add light theme', () => {
-    const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
-    expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
+  it('should not add light theme to any tag', () => {
+    const markup1 = `<p-some-tag some-attribute="some value"></p-some-tag>`;
+    expect(patchThemeIntoMarkup(markup1, 'light')).toBe(markup1);
+
+    const markup2 = `<p-button some-attribute="some value"></p-button>`;
+    expect(patchThemeIntoMarkup(markup2, 'light')).toBe(markup2);
   });
 
-  it('should add dark theme', () => {
+  it('should add dark theme to themeable tag', () => {
+    const markup = `<p-button some-attribute="some value"></p-button>`;
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(`<p-button theme="dark" some-attribute="some value"></p-button>`);
+  });
+
+  it('should not add dark theme to unknown tag', () => {
     const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
-    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(
-      `<p-some-tag theme="dark" some-attribute="some value"></p-some-tag>`
-    );
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(markup);
+  });
+
+  it('should not add light theme to unknown tag', () => {
+    const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
+    expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
   });
 });
 
