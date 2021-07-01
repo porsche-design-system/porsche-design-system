@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [4.1.0] - 2021-07-01
+
+#### Added
+- Export `Breakpoint` type
+
 ### [4.0.0] - 2020-12-17
 
 #### Changed

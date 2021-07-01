@@ -29,11 +29,11 @@ export const FlexPage = (): JSX.Element => {
       background-color: royalblue;
     }
 
-    p-flex-item[align-self] > p {
+    p-flex-item.align-self > p {
       background-color: deeppink;
     }
 
-    p-flex[wrap] p {
+    .wrap p-flex p {
       min-width: 10rem;
     }
   `;
@@ -168,7 +168,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render flex items by wrap mode 'nowrap'">
+      <div className="playground wrap" title="should render flex items by wrap mode 'nowrap'">
         <PFlex wrap="nowrap">
           <PFlexItem>
             <p>1</p>
@@ -200,7 +200,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render flex items by wrap mode 'wrap'">
+      <div className="playground wrap" title="should render flex items by wrap mode 'wrap'">
         <PFlex wrap="wrap">
           <PFlexItem>
             <p>1</p>
@@ -232,7 +232,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render flex items by wrap mode 'wrap-reverse'">
+      <div className="playground wrap" title="should render flex items by wrap mode 'wrap-reverse'">
         <PFlex wrap="wrap-reverse">
           <PFlexItem>
             <p>1</p>
@@ -264,7 +264,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should adapt wrap mode depending on viewport">
+      <div className="playground wrap" title="should adapt wrap mode depending on viewport">
         <PFlex wrap={{ base: 'nowrap', l: 'wrap-reverse' }}>
           <PFlexItem>
             <p>1</p>
@@ -478,7 +478,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'stretch'">
+      <div className="playground wrap" title="should render with align-content mode 'stretch'">
         <PFlex wrap="wrap" alignContent="stretch" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -510,7 +510,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'flex-start'">
+      <div className="playground wrap" title="should render with align-content mode 'flex-start'">
         <PFlex wrap="wrap" alignContent="flex-start" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -542,7 +542,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'flex-end'">
+      <div className="playground wrap" title="should render with align-content mode 'flex-end'">
         <PFlex wrap="wrap" alignContent="flex-end" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -574,7 +574,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'center'">
+      <div className="playground wrap" title="should render with align-content mode 'center'">
         <PFlex wrap="wrap" alignContent="center" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -606,7 +606,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'space-between'">
+      <div className="playground wrap" title="should render with align-content mode 'space-between'">
         <PFlex wrap="wrap" alignContent="space-between" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -638,7 +638,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'space-around'">
+      <div className="playground wrap" title="should render with align-content mode 'space-around'">
         <PFlex wrap="wrap" alignContent="space-around" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -670,7 +670,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should render with align-content mode 'space-evenly'">
+      <div className="playground wrap" title="should render with align-content mode 'space-evenly'">
         <PFlex wrap="wrap" alignContent="space-evenly" style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -702,7 +702,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should adapt align-content mode depending on viewport">
+      <div className="playground wrap" title="should adapt align-content mode depending on viewport">
         <PFlex wrap="wrap" alignContent={{ base: 'flex-start', l: 'flex-end' }} style={{ height: 180 }}>
           <PFlexItem>
             <p>1</p>
@@ -791,7 +791,7 @@ export const FlexPage = (): JSX.Element => {
         </PFlex>
       </div>
 
-      <div className="playground" title="should adapt width depending on viewport">
+      <div className="playground wrap" title="should adapt width depending on viewport">
         <PFlex wrap="wrap">
           <PFlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>1</p>
@@ -846,13 +846,13 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render with align-self mode 'auto'">
         <PFlex style={{ height: 180 }} alignItems="flex-end">
-          <PFlexItem alignSelf="stretch">
+          <PFlexItem className="align-self" alignSelf="stretch">
             <p>1</p>
           </PFlexItem>
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="auto">
+          <PFlexItem className="align-self" alignSelf="auto">
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -869,7 +869,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="stretch">
+          <PFlexItem className="align-self" alignSelf="stretch">
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -886,7 +886,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="flex-start">
+          <PFlexItem className="align-self" alignSelf="flex-start">
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -903,7 +903,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="flex-end">
+          <PFlexItem className="align-self" alignSelf="flex-end">
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -920,7 +920,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="center">
+          <PFlexItem className="align-self" alignSelf="center">
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -931,13 +931,13 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render with align-self mode 'baseline'">
         <PFlex style={{ height: 180 }}>
-          <PFlexItem alignSelf="baseline">
+          <PFlexItem className="align-self" alignSelf="baseline">
             <p>1</p>
           </PFlexItem>
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf="baseline" style={{ marginTop: '1rem' }}>
+          <PFlexItem className="align-self" alignSelf="baseline" style={{ marginTop: '1rem' }}>
             <p>3</p>
           </PFlexItem>
           <PFlexItem>
@@ -954,7 +954,7 @@ export const FlexPage = (): JSX.Element => {
           <PFlexItem>
             <p>2</p>
           </PFlexItem>
-          <PFlexItem alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
+          <PFlexItem className="align-self" alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
             <p>3</p>
           </PFlexItem>
           <PFlexItem>

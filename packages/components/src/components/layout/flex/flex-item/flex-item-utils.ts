@@ -1,6 +1,13 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
+import {
+  addImportantToEachRule,
+  attachCss,
+  buildHostStyles,
+  buildResponsiveJss,
+  getCss,
+  mergeDeep,
+} from '../../../../utils';
 
 export const FLEX_ITEM_WIDTHS = [
   'auto',
@@ -45,27 +52,35 @@ const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & 
   auto: 'auto',
 };
 
-const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle => ({
-  width: `${flexItemWidths[width]}% !important`,
-});
-const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType): JssStyle => ({
-  marginLeft: `${flexItemWidths[offset]}% !important`,
-});
-const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType): JssStyle => ({
-  alignSelf: `${alignSelf} !important`,
-});
-const getGrowStyles: GetStylesFunction = (grow: FlexItemGrowType): JssStyle => ({ flexGrow: `${grow} !important` });
-const getShrinkStyles: GetStylesFunction = (shrink: FlexItemShrinkType): JssStyle => ({
-  flexShrink: `${shrink} !important`,
-});
-const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle => ({
-  flex: `${flex === 'equal' ? '1 1 0' : flex} !important`,
-});
+const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle =>
+  addImportantToEachRule({
+    width: `${flexItemWidths[width]}%`,
+  });
+
+const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType): JssStyle =>
+  addImportantToEachRule({
+    marginLeft: `${flexItemWidths[offset]}%`,
+  });
+
+const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType): JssStyle =>
+  addImportantToEachRule({ alignSelf });
+
+const getGrowStyles: GetStylesFunction = (flexGrow: FlexItemGrowType): JssStyle => addImportantToEachRule({ flexGrow });
+
+const getShrinkStyles: GetStylesFunction = (flexShrink: FlexItemShrinkType): JssStyle =>
+  addImportantToEachRule({ flexShrink });
+
+const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle =>
+  addImportantToEachRule({
+    flex: flex === 'equal' ? '1 1 0' : flex,
+  });
 
 const baseCss: string = getCss(
-  buildHostStyles({
-    boxSizing: 'border-box !important',
-  })
+  buildHostStyles(
+    addImportantToEachRule({
+      boxSizing: 'border-box',
+    })
+  )
 );
 
 export const getDynamicCss = (

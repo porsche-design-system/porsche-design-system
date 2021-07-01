@@ -1,10 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { META_ICONS_MANIFEST, META_ICONS_CDN_BASE_URL } =
-  process.env.NODE_ENV !== 'test'
-    ? require('@porsche-design-system/assets')
-    : require('./tests/unit/assets.package.mock.js');
-const { favicon, touchIcon, pinnedTab, mstile } = META_ICONS_MANIFEST;
-
 module.exports = {
   publicPath: './',
   chainWebpack: (config) => {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-divider',
@@ -65,5 +65,6 @@ import { Component } from '@angular/core';
       <p-divider [theme]="'dark'" [color]="'neutral-contrast-high'"></p-divider>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DividerComponent {}

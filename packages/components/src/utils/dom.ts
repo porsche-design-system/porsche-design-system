@@ -1,6 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { FormState } from '../types';
-
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
 import { getPrefixedTagNames } from './get-prefixed-tag-name';
 
@@ -50,21 +49,25 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
+export const hasAttribute = (el: HTMLElement, attributeName: string): boolean => {
+  return el.hasAttribute(attributeName);
+};
+
 export type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
 
 export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
-export const isLabelVisible = (host: Host, label: string): boolean => {
+export const hasLabel = (host: Host, label: string): boolean => {
   return !!label || hasNamedSlot(host, 'label');
 };
 
-export const isMessageVisible = (host: Host, message: string, state: FormState): boolean => {
+export const hasMessage = (host: Host, message: string, state: FormState): boolean => {
   return !!(message || hasNamedSlot(host, 'message')) && ['success', 'error'].includes(state);
 };
 
-export const isDescriptionVisible = (host: Host, description: string): boolean => {
+export const hasDescription = (host: Host, description: string): boolean => {
   return !!description || hasNamedSlot(host, 'description');
 };
 
@@ -80,10 +83,35 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
+  return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
+};
+
 export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
-  const prefixedTagName = getPrefixedTagNames(host)[tagName];
-  if (getTagName(host.parentElement) !== prefixedTagName) {
-    throw new Error(`Parent HTMLElement should be of kind ${prefixedTagName}.`);
+  if (!isParentOfKind(host, tagName)) {
+    const allowedTagName = getPrefixedTagNames(host)[tagName];
+    const actualTagName = getTagName(host.parentElement);
+    throw new Error(
+      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}.`
+    );
+  }
+};
+
+export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagNameCamelCase[]): void => {
+  if (!tagNames.some((tagName) => isParentOfKind(host, tagName))) {
+    const prefixedTagNames = getPrefixedTagNames(host);
+    const allowedTagNames = tagNames.map((tagName) => prefixedTagNames[tagName]).join(', ');
+    const actualTagName = getTagName(host.parentElement);
+
+    throw new Error(
+      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}.`
+    );
+  }
+};
+
+export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
+  if (hasAttribute(el, name)) {
+    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs be set via property.`);
   }
 };
 
@@ -108,8 +136,7 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  const fieldsetWrapper = host.parentElement as HTMLElementWithRequiredProp;
-  return isRequired(fieldsetWrapper) && getTagName(fieldsetWrapper) === getPrefixedTagNames(host).pFieldsetWrapper;
+  return isRequired(host.parentElement as HTMLElementWithRequiredProp) && isParentOfKind(host, 'pFieldsetWrapper');
 };
 
 export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
