@@ -69,7 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const classMembers = [
       'protected el: HTMLElement;',
       ...inputProps.map((x) => `${x.key}: ${x.rawValueType};`),
-      ...outputProps.map((x) => `${x.key}!: EventEmitter<${x.rawValueType.match(/<(.*?)>/)?.[1]}>;`),
+      ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
     const constructorCode = [
@@ -77,6 +77,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       'this.el = r.nativeElement;',
       ...(outputs ? ['proxyOutputs(this, outputs);'] : []),
     ].join('\n    ');
+
+    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
 
     return `${inputsAndOutputs}
 
@@ -86,7 +88,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 @Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)} {
+export class ${this.generateComponentName(component)}${genericType} {
   ${classMembers}
 
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

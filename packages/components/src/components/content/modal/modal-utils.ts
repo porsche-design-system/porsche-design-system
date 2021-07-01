@@ -1,4 +1,12 @@
-import { attachCss, buildHostStyles, getCss, getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
+import {
+  addImportantToEachRule,
+  attachCss,
+  buildHostStyles,
+  getCss,
+  getHTMLElements,
+  getPrefixedTagNames,
+  isIos,
+} from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
@@ -46,20 +54,22 @@ export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
 
 const baseCss: string = getCss(
   buildHostStyles({
-    position: 'fixed !important',
-    top: '0 !important',
-    left: '0 !important',
-    right: '0 !important',
-    bottom: '0 !important',
-    zIndex: '99999 !important',
-    display: 'flex !important',
-    alignItems: 'center !important',
-    justifyContent: 'center !important',
-    flexWrap: 'wrap !important',
-    background: `${color.darkTheme.background.default}e6 !important`, // e6 = 0.9 alpha
-    transition: 'opacity 0.2s $easing !important ',
-    opacity: '0 !important',
-    visibility: 'hidden !important',
+    ...addImportantToEachRule({
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: '99999',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
+      transition: 'opacity 0.2s $easing ',
+      opacity: 0,
+      visibility: 'hidden',
+    }),
     overflowY: 'auto',
   })
 );
@@ -67,14 +77,16 @@ const baseCss: string = getCss(
 export const getDynamicCss = (open: boolean): string => {
   return open
     ? getCss({
-        ...buildHostStyles({
-          transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear !important',
-          opacity: '1 !important',
-          visibility: 'inherit !important',
+        ...buildHostStyles(
+          addImportantToEachRule({
+            transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear',
+            opacity: 1,
+            visibility: 'inherit',
+          })
+        ),
+        root: addImportantToEachRule({
+          transform: 'scale3d(1, 1, 1)',
         }),
-        root: {
-          transform: 'scale3d(1, 1, 1) !important',
-        },
       })
     : '';
 };

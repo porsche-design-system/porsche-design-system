@@ -3,7 +3,7 @@ import { PLinkSocial } from '@porsche-design-system/components-react';
 export const LinkSocialPage = (): JSX.Element => {
   const style = `
     p-link-social:not(:last-child) {
-      margin-right: 8px;
+      margin-right: 0.5rem;
     }
   `;
 

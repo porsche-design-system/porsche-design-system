@@ -29,6 +29,7 @@ import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
+import { TableComponent } from './table.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
 import { TextComponent } from './text.component';
@@ -71,6 +72,7 @@ export const pages = [
   SelectWrapperComponent,
   SpinnerComponent,
   SwitchComponent,
+  TableComponent,
   TabsComponent,
   TabsBarComponent,
   TextComponent,
@@ -112,6 +114,7 @@ export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
 export * from './switch.component';
+export * from './table.component';
 export * from './tabs.component';
 export * from './tabs-bar.component';
 export * from './text.component';

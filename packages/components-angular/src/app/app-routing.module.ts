@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
+import * as fromExamples from './examples';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -149,6 +150,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Switch',
   },
   {
+    path: 'table',
+    component: fromPages.TableComponent,
+    name: 'Table',
+  },
+  {
     path: 'tabs',
     component: fromPages.TabsComponent,
     name: 'Tabs',
@@ -213,6 +219,27 @@ export const routes: ExtendedRoute[] = [
     path: 'form-wrapper-binding',
     component: fromPages.FormWrapperBindingComponent,
     name: 'Form Wrapper Binding',
+  },
+  {
+    path: '---',
+    name: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    path: 'table-example-basic',
+    component: fromExamples.TableExampleBasicComponent,
+    name: 'Table Example Basic',
+  },
+  {
+    path: 'table-example-sorting',
+    component: fromExamples.TableExampleSortingComponent,
+    name: 'Table Example Sorting',
+  },
+  {
+    path: 'table-example-advanced',
+    component: fromExamples.TableExampleAdvancedComponent,
+    name: 'Table Example Advanced',
   },
 ];
 

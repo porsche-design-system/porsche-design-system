@@ -1,38 +1,118 @@
 import { useCallback, useState } from 'react';
-import { PPagination, PTabsBar, PAccordion } from '@porsche-design-system/components-react';
+import {
+  PAccordion,
+  PModal,
+  PPagination,
+  PSwitch,
+  PTable,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
+} from '@porsche-design-system/components-react';
+import type {
+  AccordionChangeEvent,
+  PageChangeEvent,
+  SortingChangeEvent,
+  SwitchChangeEvent,
+  TabChangeEvent,
+} from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
   const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
   const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
-  const [tabChangeEventCounter, setTabChangeEventCounter] = useState(0);
+  const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
+  const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
+  const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
+  const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
 
-  console.log(accordionChangeEventCounter, pageChangeEventCounter, tabChangeEventCounter);
+  const onAccordionChange = useCallback(
+    (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
+    []
+  );
 
-  const onAccordionChange = useCallback(() => setAccordionChangeEventCounter((prev) => prev + 1), []);
-  const onPageChange = useCallback(() => setPageChangeEventCounter((prev) => prev + 1), []);
-  const onTabChange = useCallback(() => setTabChangeEventCounter((prev) => prev + 1), []);
+  const onPageChange = useCallback(
+    (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onTabsBarChange = useCallback(
+    (e: CustomEvent<TabChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onTabsChange = useCallback(
+    (e: CustomEvent<TabChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onSwitchChange = useCallback(
+    (e: CustomEvent<SwitchChangeEvent>) => setSwitchChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onModalClose = useCallback(() => {
+    setModalCloseEventCounter((prev) => prev + 1);
+    setIsModalOpen(false);
+  }, []);
+  const onTableSortingChange = useCallback(
+    (e: CustomEvent<SortingChangeEvent>) => setTableSortingChangeEventCounter((prev) => prev + 1),
+    []
+  );
 
   return (
     <>
       <div className="playground light">
+        <PAccordion heading={'Some heading'} onAccordionChange={onAccordionChange} />
+        <p>{accordionChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onPageChange={onPageChange} />
         <p>{pageChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
-        <PTabsBar activeTabIndex={0} onTabChange={onTabChange}>
+        <PTabsBar activeTabIndex={0} onTabChange={onTabsBarChange}>
           <button>Tab 1</button>
           <button>Tab 2</button>
           <button>Tab 3</button>
-          <button>Tab 4</button>
-          <button>Tab 5</button>
-          <button>Tab 6</button>
-          <button>Tab 7</button>
         </PTabsBar>
-        <p>{tabChangeEventCounter}</p>
+        <p>{tabsBarChangeEventCounter}</p>
       </div>
+
       <div className="playground light">
-        <PAccordion heading={'Some heading'} onAccordionChange={onAccordionChange} />
-        <p>{accordionChangeEventCounter}</p>
+        <PTabs activeTabIndex={0} onTabChange={onTabsChange}>
+          <PTabsItem label="Tab 1">Content 1</PTabsItem>
+          <PTabsItem label="Tab 2">Content 2</PTabsItem>
+          <PTabsItem label="Tab 3">Content 3</PTabsItem>
+        </PTabs>
+        <p>{tabsChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PSwitch onSwitchChange={onSwitchChange}>Switch</PSwitch>
+        <p>{switchChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PModal open={isModalOpen} onClose={onModalClose}>
+          Modal
+        </PModal>
+        <p>
+          {modalCloseEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+        </p>
+      </div>
+
+      <div className="playground light">
+        <PTable onSortingChange={onTableSortingChange}>
+          <PTableHead>
+            <PTableHeadRow>
+              <PTableHeadCell sort={{ id: 'col1', active: true, direction: 'asc' }}>Col 1</PTableHeadCell>
+            </PTableHeadRow>
+          </PTableHead>
+        </PTable>
+        <p>{tableSortingChangeEventCounter}</p>
       </div>
     </>
   );

@@ -6,7 +6,9 @@ export type ExtendedProp = {
   rawValueType: string;
   hasToBeMapped: boolean;
   canBeObject: boolean;
+  canBeUndefined: boolean;
   isEvent: boolean;
+  defaultValue: string;
 };
 
 export class DataStructureBuilder {
@@ -29,14 +31,15 @@ export class DataStructureBuilder {
   }
 
   public extractNonPrimitiveTypes(input: string, isNonPrimitiveType: boolean = false): string[] {
-    const whitelistedTypes = ['CustomEvent', 'Extract', 'T'];
+    const whitelistedTypes = ['CustomEvent', 'Extract', 'T', 'T[]'];
     const nonPrimitiveTypes: string[] = [];
 
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
-        // extract potential generics
+        // extract potential generic and array
         const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
         const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
+        const [, arrayType] = /^([A-Z]\w+)\[]$/.exec(nonPrimitiveType) ?? [];
 
         if (genericType) {
           if (!whitelistedTypes.includes(genericRootType)) {
@@ -44,6 +47,8 @@ export class DataStructureBuilder {
           }
           const genericTypes = this.splitLiteralTypeToNonPrimitiveTypes(genericType);
           genericTypes.forEach(handleCustomGenericTypes);
+        } else if (arrayType && !whitelistedTypes.includes(arrayType)) {
+          nonPrimitiveTypes.push(arrayType);
         } else {
           nonPrimitiveTypes.push(nonPrimitiveType);
         }
@@ -63,6 +68,7 @@ export class DataStructureBuilder {
         typeMatch = regex.exec(input); // loop again in case of multiple matches
       }
     }
+
     // get rid of duplicates
     return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
   }
@@ -71,7 +77,8 @@ export class DataStructureBuilder {
   private valueCanBeObject(propValue: string, sharedTypes: string): boolean {
     let result = false;
 
-    if (propValue.includes('{')) {
+    // detect objects, arrays and generic T
+    if (propValue.includes('{') || propValue.includes('[') || !!propValue.match(/T[^\w]/)) {
       result = true;
     } else {
       if (propValue.match(/[A-Z]/g)) {
@@ -96,15 +103,23 @@ export class DataStructureBuilder {
     return result;
   }
 
-  private convertToExtendedProp(propKey: string, propValue: string, sharedTypes: string): ExtendedProp {
+  private convertToExtendedProp(
+    component: TagName,
+    propKey: string,
+    propValueType: string,
+    sharedTypes: string
+  ): ExtendedProp {
     const isEvent = !!propKey.match(/^on[A-Z]/);
-    const canBeObject = !isEvent && this.valueCanBeObject(propValue, sharedTypes);
+    const isCallback = !isEvent && !!propValueType.match(/=>/);
+    const canBeObject = !isEvent && this.valueCanBeObject(propValueType, sharedTypes);
     const extendedProp: ExtendedProp = {
       key: propKey,
-      rawValueType: propValue,
+      rawValueType: propValueType,
       hasToBeMapped: (!isEvent && !!propKey.match(/[A-Z]/g)) || canBeObject,
-      canBeObject: canBeObject,
+      canBeObject: canBeObject && !isCallback,
+      canBeUndefined: !!propValueType.match(/undefined/),
       isEvent: isEvent,
+      defaultValue: !isEvent ? this.inputParser.getDefaultValueForProp(component, propKey) : '',
     };
     return extendedProp;
   }
@@ -114,8 +129,8 @@ export class DataStructureBuilder {
     const parsedInterface = this.inputParser.getComponentInterface(component);
     const sharedTypes = this.inputParser.getSharedTypes();
 
-    return Object.entries(parsedInterface).map(([propKey, propValue]) =>
-      this.convertToExtendedProp(propKey, propValue, sharedTypes)
+    return Object.entries(parsedInterface).map(([propKey, propValueType]) =>
+      this.convertToExtendedProp(component, propKey, propValueType, sharedTypes)
     );
   }
 }

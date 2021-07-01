@@ -1,0 +1,66 @@
+<p-table></p-table>
+
+<script>
+  const getHeadAndData = async () => {
+    const content = await fetch('assets/shared.js').then((res) => res.text());
+    const [, headStr] = /const headSorting = ((.|\s)*?);/.exec(content) || [];
+    const head = eval(headStr);
+
+    const [, dataStr] = /const dataSorting = ((.|\s)*?);/.exec(content) || [];
+    const data = eval(dataStr);
+
+    return { head, data };
+  };
+
+  (async () => {
+    const { head, data } = await getHeadAndData();
+
+    const renderTableHeadRow = (items) =>
+      [
+        '<p-table-head-row>',
+        ...items.map((item) => `<p-table-head-cell>${item.name}</p-table-head-cell>`),
+        '</p-table-head-row>',
+      ].join('');
+
+    const renderTableBodyRows = (items) =>
+      items
+        .map(
+          (item) => `
+  <p-table-row>
+    <p-table-cell>${item.col1}</p-table-cell>
+    <p-table-cell>${item.col2}</p-table-cell>
+    <p-table-cell>${item.col3}</p-table-cell>
+  </p-table-row>`
+        )
+        .join('');
+
+    const markup = `
+  <p-table-head>${renderTableHeadRow(head)}</p-table-head>
+  <p-table-body>${renderTableBodyRows(data)}</p-table-body>`;
+
+    const table = document.querySelector('p-table');
+    table.innerHTML = markup;
+    const tableHeadCells = table.querySelectorAll('p-table-head-cell');
+    const tableBody = table.querySelector('p-table-body');
+
+    // pass head items via property
+    const passHeadItemsToNodes = (items) =>
+      tableHeadCells.forEach((el, index) => {
+        el.sort = items[index];
+      });
+
+    passHeadItemsToNodes(head); // initial state
+
+    table.addEventListener('sortingChange', (e) => {
+      const { id, direction } = e.detail;
+
+      const sortedHead = head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+      const sortedData = [...data].sort((a, b) =>
+        direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+      );
+
+      passHeadItemsToNodes(sortedHead);
+      tableBody.innerHTML = renderTableBodyRows(sortedData);
+    });
+  })();
+</script>

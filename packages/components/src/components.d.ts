@@ -16,6 +16,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
+import { SortingChangeEvent, TableHeadCellSort } from "./components/layout/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -556,7 +557,7 @@ export namespace Components {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -665,6 +666,32 @@ export namespace Components {
           * Adapts the switch color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PTable {
+        /**
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
+         */
+        "caption"?: string;
+    }
+    interface PTableBody {
+    }
+    interface PTableCell {
+    }
+    interface PTableHead {
+    }
+    interface PTableHeadCell {
+        /**
+          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Defines sortability properties.
+         */
+        "sort"?: TableHeadCellSort;
+    }
+    interface PTableHeadRow {
+    }
+    interface PTableRow {
     }
     interface PTabs {
         /**
@@ -958,6 +985,48 @@ declare global {
         prototype: HTMLPSwitchElement;
         new (): HTMLPSwitchElement;
     };
+    interface HTMLPTableElement extends Components.PTable, HTMLStencilElement {
+    }
+    var HTMLPTableElement: {
+        prototype: HTMLPTableElement;
+        new (): HTMLPTableElement;
+    };
+    interface HTMLPTableBodyElement extends Components.PTableBody, HTMLStencilElement {
+    }
+    var HTMLPTableBodyElement: {
+        prototype: HTMLPTableBodyElement;
+        new (): HTMLPTableBodyElement;
+    };
+    interface HTMLPTableCellElement extends Components.PTableCell, HTMLStencilElement {
+    }
+    var HTMLPTableCellElement: {
+        prototype: HTMLPTableCellElement;
+        new (): HTMLPTableCellElement;
+    };
+    interface HTMLPTableHeadElement extends Components.PTableHead, HTMLStencilElement {
+    }
+    var HTMLPTableHeadElement: {
+        prototype: HTMLPTableHeadElement;
+        new (): HTMLPTableHeadElement;
+    };
+    interface HTMLPTableHeadCellElement extends Components.PTableHeadCell, HTMLStencilElement {
+    }
+    var HTMLPTableHeadCellElement: {
+        prototype: HTMLPTableHeadCellElement;
+        new (): HTMLPTableHeadCellElement;
+    };
+    interface HTMLPTableHeadRowElement extends Components.PTableHeadRow, HTMLStencilElement {
+    }
+    var HTMLPTableHeadRowElement: {
+        prototype: HTMLPTableHeadRowElement;
+        new (): HTMLPTableHeadRowElement;
+    };
+    interface HTMLPTableRowElement extends Components.PTableRow, HTMLStencilElement {
+    }
+    var HTMLPTableRowElement: {
+        prototype: HTMLPTableRowElement;
+        new (): HTMLPTableRowElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -1032,6 +1101,13 @@ declare global {
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
+        "p-table": HTMLPTableElement;
+        "p-table-body": HTMLPTableBodyElement;
+        "p-table-cell": HTMLPTableCellElement;
+        "p-table-head": HTMLPTableHeadElement;
+        "p-table-head-cell": HTMLPTableHeadCellElement;
+        "p-table-head-row": HTMLPTableHeadRowElement;
+        "p-table-row": HTMLPTableRowElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1592,7 +1668,7 @@ declare namespace LocalJSX {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Emitted when the page changes.
          */
@@ -1709,6 +1785,36 @@ declare namespace LocalJSX {
           * Adapts the switch color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PTable {
+        /**
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
+         */
+        "caption"?: string;
+        /**
+          * Emitted when sorting is changed.
+         */
+        "onSortingChange"?: (event: CustomEvent<SortingChangeEvent>) => void;
+    }
+    interface PTableBody {
+    }
+    interface PTableCell {
+    }
+    interface PTableHead {
+    }
+    interface PTableHeadCell {
+        /**
+          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Defines sortability properties.
+         */
+        "sort"?: TableHeadCellSort;
+    }
+    interface PTableHeadRow {
+    }
+    interface PTableRow {
     }
     interface PTabs {
         /**
@@ -1884,6 +1990,13 @@ declare namespace LocalJSX {
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
+        "p-table": PTable;
+        "p-table-body": PTableBody;
+        "p-table-cell": PTableCell;
+        "p-table-head": PTableHead;
+        "p-table-head-cell": PTableHeadCell;
+        "p-table-head-row": PTableHeadRow;
+        "p-table-row": PTableRow;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1923,6 +2036,13 @@ declare module "@stencil/core" {
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
+            "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
+            "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;
+            "p-table-cell": LocalJSX.PTableCell & JSXBase.HTMLAttributes<HTMLPTableCellElement>;
+            "p-table-head": LocalJSX.PTableHead & JSXBase.HTMLAttributes<HTMLPTableHeadElement>;
+            "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
+            "p-table-head-row": LocalJSX.PTableHeadRow & JSXBase.HTMLAttributes<HTMLPTableHeadRowElement>;
+            "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

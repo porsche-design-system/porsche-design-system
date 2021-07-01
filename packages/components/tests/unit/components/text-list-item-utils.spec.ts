@@ -1,5 +1,9 @@
-import { getDynamicCss } from '../../../src/components/content/text-list/text-list-item/text-list-item-utils';
+import { baseCss, getDynamicCss } from '../../../src/components/content/text-list/text-list-item/text-list-item-utils';
 import { ListType, OrderType } from '../../../src/components/content/text-list/text-list/text-list-utils';
+
+it('should match snapshot for baseCss', () => {
+  expect(baseCss).toMatchSnapshot();
+});
 
 describe('getDynamicCss()', () => {
   it.each([

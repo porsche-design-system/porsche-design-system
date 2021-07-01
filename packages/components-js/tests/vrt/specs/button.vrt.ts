@@ -30,7 +30,7 @@ describe('Button', () => {
       await vrt.test('button-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-button:not(:last-child) { margin-right: 8px; }</style>`;
+        const head = `<style type="text/css">p-button:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-button theme="${theme}" variant="primary">Primary</p-button>
