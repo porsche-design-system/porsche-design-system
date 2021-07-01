@@ -100,7 +100,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
   <p-table ref="tableAdvanced">
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" :hide-label="item.hideLabel" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
+        <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
     <p-table-body>
