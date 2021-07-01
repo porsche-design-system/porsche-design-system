@@ -11,17 +11,19 @@ import type { ListType, OrderType } from '../text-list/text-list-utils';
 
 import { text } from '@porsche-design-system/utilities';
 
-const baseCss: string = getCss(
-  buildHostStyles({
-    position: 'relative',
-    display: 'list-item',
-    color: 'inherit',
-    listStyleType: 'none',
-    paddingLeft: pxToRemWithUnit(24),
-    '&:before': {
-      position: 'absolute',
-    },
-  })
+export const baseCss: string = getCss(
+  buildHostStyles(
+    addImportantToEachRule({
+      position: 'relative',
+      display: 'list-item',
+      color: 'inherit',
+      listStyleType: 'none',
+      paddingLeft: pxToRemWithUnit(24),
+      '&:before': {
+        position: 'absolute',
+      },
+    })
+  )
 );
 
 const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle => {

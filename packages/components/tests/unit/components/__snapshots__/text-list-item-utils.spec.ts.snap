@@ -15,3 +15,5 @@ exports[`getDynamicCss() should match snapshot for getDynamicCss unordered 2`] =
 exports[`getDynamicCss() should match snapshot for getDynamicCss unordered 3`] = `":host:before{content:\\"\\" !important;left:0 !important;top:calc(1.5em / 2 - 0.125em) !important;width:0.25rem !important;height:0.25rem !important;background-color:currentColor !important}"`;
 
 exports[`getDynamicCss() should match snapshot for getDynamicCss unordered 4`] = `":host:before{content:\\"\\" !important;left:0 !important;top:calc(1.5em / 2) !important;width:0.5rem !important;height:1px !important;background-color:currentColor !important}"`;
+
+exports[`should match snapshot for baseCss 1`] = `":host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:1.5rem !important}:host:before{position:absolute !important}"`;
