@@ -135,7 +135,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { dataBasic, headBasic, dataSorting, headSorting, dataAdvanced, headAdvanced, getTableCodeSample } from '@porsche-design-system/shared';
+import { dataBasic, headBasic, dataSorting, headSorting, dataAdvanced, headAdvanced, getTableCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
@@ -146,26 +146,9 @@ export default class Code extends Vue {
   headAdvanced = headAdvanced;
   dataAdvanced = dataAdvanced;
 
-  basic = {
-    'vanilla-js': getTableCodeSample('vanilla-js', 'example-basic'),
-    angular: getTableCodeSample('angular', 'example-basic'),
-    react: getTableCodeSample('react', 'example-basic'),
-    shared: getTableCodeSample('shared', 'example-basic'),
-  };
-
-  sorting = {
-    'vanilla-js': getTableCodeSample('vanilla-js', 'example-sorting'),
-    angular: getTableCodeSample('angular', 'example-sorting'),
-    react: getTableCodeSample('react', 'example-sorting'),
-    shared: getTableCodeSample('shared', 'example-sorting'),
-  };
-
-  advanced = {
-    'vanilla-js': getTableCodeSample('vanilla-js', 'example-advanced'),
-    angular: getTableCodeSample('angular', 'example-advanced'),
-    react: getTableCodeSample('react', 'example-advanced'),
-    shared: getTableCodeSample('shared', 'example-advanced'),
-  };
+  basic = getTableCodeSamples('example-basic');
+  sorting = getTableCodeSamples('example-sorting');
+  advanced = getTableCodeSamples('example-advanced');
 
   basicTableHead = `<p-table-head>
     <p-table-head-row>
