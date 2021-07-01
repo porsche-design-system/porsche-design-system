@@ -145,9 +145,9 @@ button {
     height: auto;
     padding-bottom: $p-spacing-40;
     visibility: visible;
-    overflow: visible;
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
+    animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards 'openAnimation';
   }
 
   #{$root}--compact,
@@ -160,5 +160,17 @@ button {
   padding-top: $p-spacing-8;
   #{$root}--compact & {
     padding-top: 0;
+  }
+}
+
+@keyframes openAnimation {
+  0% {
+    overflow: hidden;
+  }
+  99% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
   }
 }
