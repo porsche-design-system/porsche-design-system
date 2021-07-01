@@ -1,12 +1,14 @@
 import { useCallback, useState } from 'react';
-import { PPagination, PTabsBar } from '@porsche-design-system/components-react';
+import { PPagination, PTabsBar, PAccordion } from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
+  const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
   const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
   const [tabChangeEventCounter, setTabChangeEventCounter] = useState(0);
 
-  console.log(pageChangeEventCounter, tabChangeEventCounter);
+  console.log(accordionChangeEventCounter, pageChangeEventCounter, tabChangeEventCounter);
 
+  const onAccordionChange = useCallback(() => setAccordionChangeEventCounter((prev) => prev + 1), []);
   const onPageChange = useCallback(() => setPageChangeEventCounter((prev) => prev + 1), []);
   const onTabChange = useCallback(() => setTabChangeEventCounter((prev) => prev + 1), []);
 
@@ -27,6 +29,10 @@ export const EventsPage = (): JSX.Element => {
           <button>Tab 7</button>
         </PTabsBar>
         <p>{tabChangeEventCounter}</p>
+      </div>
+      <div className="playground light">
+        <PAccordion heading={'Some heading'} onAccordionChange={onAccordionChange} />
+        <p>{accordionChangeEventCounter}</p>
       </div>
     </>
   );

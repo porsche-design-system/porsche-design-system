@@ -48,4 +48,20 @@ describe('events', () => {
     await clickElement(firstBtn);
     expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
   });
+
+  it('pagination should emit events once', async () => {
+    await goto(page, 'events');
+
+    const accordionButton = await selectNode(page, 'p-accordion >>> button');
+    const pageChangeEventCounter = await selectNode(page, 'p-accordion + *');
+
+    await clickElement(accordionButton);
+    expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
+
+    await clickElement(accordionButton);
+    expect(await getCounterValue(pageChangeEventCounter)).toBe('2');
+
+    await clickElement(accordionButton);
+    expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
+  });
 });
