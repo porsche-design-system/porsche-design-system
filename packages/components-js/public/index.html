@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="overrides.css" />
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="index.js"></script>
-    <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES--><style>p-accordion,p-banner,p-button,p-button-group,p-button-pure,p-checkbox-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-flex-item,p-grid,p-grid-item,p-headline,p-icon,p-link,p-link-pure,p-link-social,p-marque,p-modal,p-pagination,p-radio-button-wrapper,p-select-wrapper,p-spinner,p-switch,p-tabs,p-tabs-bar,p-tabs-item,p-text,p-text-field-wrapper,p-text-list,p-text-list-item,p-textarea-wrapper{visibility:hidden}</style>
+    <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES--><style>p-accordion,p-banner,p-button,p-button-group,p-button-pure,p-checkbox-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-flex-item,p-grid,p-grid-item,p-headline,p-icon,p-link,p-link-pure,p-link-social,p-marque,p-modal,p-pagination,p-radio-button-wrapper,p-select-wrapper,p-spinner,p-switch,p-table,p-table-body,p-table-cell,p-table-head,p-table-head-cell,p-table-head-row,p-table-row,p-tabs,p-tabs-bar,p-tabs-item,p-text,p-text-field-wrapper,p-text-list,p-text-list-item,p-textarea-wrapper{visibility:hidden}</style>
   </head>
   <body>
     <select onchange="document.location.hash = `#${this.value}`">
@@ -43,6 +43,7 @@
       <option value="select-wrapper">Select</option>
       <option value="spinner">Spinner</option>
       <option value="switch">Switch</option>
+      <option value="table">Table</option>
       <option value="tabs">Tabs</option>
       <option value="tabs-bar">Tabs Bar</option>
       <option value="text">Text</option>
@@ -53,6 +54,10 @@
       <option disabled>---</option>
       <option value="overview">Overview</option>
       <option value="core-initializer">Core Initializer</option>
+      <option disabled>---</option>
+      <option value="table-example-basic">Table Example Basic</option>
+      <option value="table-example-sorting">Table Example Sorting</option>
+      <option value="table-example-advanced">Table Example Advanced</option>
     </select>
     <div id="app"></div>
     <script>
@@ -63,7 +68,8 @@
 
         const app = document.getElementById('app');
         const page = document.location.hash.substr(1);
-        app.innerHTML = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
+        const directory = page.match(/^[a-z]+-example/) ? 'examples' : 'pages';
+        app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
 
         // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');

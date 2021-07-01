@@ -1,6 +1,15 @@
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  attachCss,
+  buildHostStyles,
+  buildResponsiveJss,
+  getCss,
+  mergeDeep,
+  pxToRemWithUnit,
+} from '../../../../utils';
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
@@ -12,38 +21,28 @@ type GridItemOffsetType = typeof GRID_ITEM_OFFSETS[number];
 export type GridItemOffset = BreakpointCustomizable<GridItemOffsetType>;
 
 const baseCss: string = getCss(
-  buildHostStyles({
-    boxSizing: 'border-box !important',
-  })
+  buildHostStyles(
+    addImportantToEachRule({
+      boxSizing: 'border-box',
+    })
+  )
 );
 
 const gridItemWidths = [
-  0,
-  8.333333,
-  16.666667,
-  25,
-  33.333333,
-  41.666667,
-  50,
-  58.333333,
-  66.666667,
-  75,
-  83.333333,
-  91.666667,
-  100,
+  0, 8.333333, 16.666667, 25, 33.333333, 41.666667, 50, 58.333333, 66.666667, 75, 83.333333, 91.666667, 100,
 ];
 
-const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
-  width: `${gridItemWidths[size]}% !important`,
-  minWidth: `${gridItemWidths[size]}% !important`,
-});
+const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle =>
+  addImportantToEachRule({
+    width: `${gridItemWidths[size]}%`,
+    minWidth: `${gridItemWidths[size]}%`,
+  });
 
-const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle => ({
-  marginLeft: `${gridItemWidths[offset]}% !important`,
-});
+const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle =>
+  addImportantToEachRule({ marginLeft: `${gridItemWidths[offset]}%` });
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
-  const gutterRem = `${pxToRem(gutter) / 2}rem !important`;
+  const gutterRem = addImportantToRule(pxToRemWithUnit(gutter / 2));
   return {
     paddingLeft: gutterRem,
     paddingRight: gutterRem,

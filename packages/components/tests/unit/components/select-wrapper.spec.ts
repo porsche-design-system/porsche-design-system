@@ -11,7 +11,7 @@ describe('select-wrapper', () => {
         component.connectedCallback();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'select');
     });
   });
 

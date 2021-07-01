@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-link',
   styles: [
     `
       p-link:not(:last-child) {
-        margin-right: 8px;
+        margin-right: 0.5rem;
       }
     `,
   ],
@@ -94,5 +94,6 @@ import { Component } from '@angular/core';
       >
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkComponent {}

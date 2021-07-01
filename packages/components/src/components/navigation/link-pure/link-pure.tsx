@@ -31,10 +31,10 @@ export class LinkPure {
   @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string = undefined;
+  @Prop() public href?: string;
 
   /** Display link in active state. */
   @Prop() public active?: boolean = false;
@@ -49,10 +49,10 @@ export class LinkPure {
   @Prop() public target?: LinkTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
-  @Prop() public download?: string = undefined;
+  @Prop() public download?: string;
 
   /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string = undefined;
+  @Prop() public rel?: string;
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;

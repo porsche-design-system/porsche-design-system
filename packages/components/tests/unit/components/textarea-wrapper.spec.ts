@@ -12,7 +12,7 @@ describe('textarea-wrapper', () => {
       const component = new TextareaWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
     });
   });
 
@@ -24,7 +24,7 @@ describe('textarea-wrapper', () => {
         component.componentWillLoad();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'textarea');
     });
 
     it('should call observeMutations()', () => {
@@ -32,7 +32,7 @@ describe('textarea-wrapper', () => {
       const component = new TextareaWrapper();
       component.componentWillLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
     });
   });
 
@@ -42,7 +42,7 @@ describe('textarea-wrapper', () => {
       const component = new TextareaWrapper();
       component.disconnectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined);
     });
   });
 });

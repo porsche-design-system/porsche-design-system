@@ -27,55 +27,16 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 
 In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
 
-### Vanilla JS
+### Framework Implementations
 
-```js
-tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
-  const { activeTabIndex } = tabChangeEvent.detail;
-  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
-});
-```
+<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
 
-### Angular
-
-```ts
-import { Component } from '@angular/core';
-import type { TabChangeEvent } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'tabs-bar-page',
-  template: `<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>`,
-})
-export class TabsBarPage {
-  tabIndex: number;
-
-  handleTabChange(e: CustomEvent<TabChangeEvent>) {
-    const { activeTabIndex } = e.detail;
-    this.tabIndex = activeTabIndex;
-  }
-}
-```
-
-### React
-
-```tsx
-import { useCallback, useState } from 'react';
-import { PTabsBar } from '@porsche-design-system/components-react';
-import type { TabChangeEvent } from '@porsche-design-system/components-react';
-
-const TabsBarPage = (): JSX.Element => {
-    const [tabIndex, setTabIndex] = useState<number>();
-    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        const { activeTabIndex } = e.detail;
-        setTabIndex(activeTabIndex);
-    }, []);
-
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
-}
-```
-
+### Buttons
 
 <Playground :markup="basicButton" :config="config"></Playground>
+
+### Links
+
 <Playground :markup="basicAnchor" :config="config"></Playground>
 
 ## Accessibility
@@ -128,34 +89,69 @@ The background and gradient has to align to your chosen background.
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-  const buildAnchor = (name: string) => `  <a>Tab ${name}</a>`;
-  const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
+const buildAnchor = (name: string) => `  <a>Tab ${name}</a>`;
+const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
 
-    weight = 'semibold';
-    size = 'medium';
-    gradientColorScheme = 'surface';
+  frameworks = {
+    'vanilla-js': `tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+  const { activeTabIndex } = tabChangeEvent.detail;
+  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+});`,
+    angular: `import { Component } from '@angular/core';
+import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
-    basicButton =
+@Component({
+  selector: 'tabs-bar-page',
+  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>\`,
+})
+export class TabsBarPage {
+  tabIndex: number;
+
+  handleTabChange(e: CustomEvent<TabChangeEvent>) {
+    const { activeTabIndex } = e.detail;
+    this.tabIndex = activeTabIndex;
+  }
+}`,
+    react: `import { useCallback, useState } from 'react';
+import { PTabsBar } from '@porsche-design-system/components-react';
+import type { TabChangeEvent } from '@porsche-design-system/components-react';
+
+const TabsBarPage = (): JSX.Element => {
+    const [tabIndex, setTabIndex] = useState<number>();
+    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+        const { activeTabIndex } = e.detail;
+        setTabIndex(activeTabIndex);
+    }, []);
+
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+}`,
+    };
+
+  weight = 'semibold';
+  size = 'medium';
+  gradientColorScheme = 'surface';
+
+  basicButton =
 `<p-tabs-bar>
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
 
-    basicAnchor =
+  basicAnchor =
 `<p-tabs-bar>
 ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
 </p-tabs-bar>`;
 
-    accessibility =
+  accessibility =
 `<p-tabs-bar active-tab-index="0">
   <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
   <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
@@ -164,106 +160,106 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
  
 ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
-    get sizeMarkup() {
-      return `<p-tabs-bar size="${this.size}">
+  get sizeMarkup() {
+    return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
-    }
+  }
 
-    get weightMarkup() {
-      return `<p-tabs-bar weight="${this.weight}">
+  get weightMarkup() {
+    return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     }
     
-    get gradientMarkup() {
-      return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
+  get gradientMarkup() {
+    return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
   .map(buildButton).join('\n')}
 </p-tabs-bar>`;
-    }
+  }
     
-    activeTab =
+  activeTab =
 `<p-tabs-bar active-tab-index="0">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     
-    mounted(){
-      // initially update tabsBars with activeTabIndex attribute in playground
-     this.updateAndRegister();
-      
-      // theme switch needs to register event listeners again
-      const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
-      themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
-        this.updateAndRegister(); 
-      }));    
+  mounted(){
+    // initially update tabsBars with activeTabIndex attribute in playground
+   this.updateAndRegister();
+    
+    // theme switch needs to register event listeners again
+    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
+    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
+      this.updateAndRegister(); 
+    }));    
+  }
+  
+  updated(){
+    this.registerEvents();
+  }
+
+  updateAndRegister() {
+    this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
+    this.registerEvents();
+  }
+  
+  registerEvents() {
+    const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
+
+    //bind tabsBars with activeTabIndex set as attribute
+    const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
+      this.handleTabChange(e);
+      this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
+    }));
+  }
+  
+  hiddenNodes = null;
+  handleTabChange =  (e: CustomEvent) => {
+      const { activeTabIndex } = e.detail;
+      e.target.setAttribute('active-tab-index', activeTabIndex);     
+  }
+
+  updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
+    // manipulate code only section only in order to not rerender component and loose animations
+    const example = tabs.parentElement.parentElement;
+    const demo = example.querySelector('.demo');
+    const code = example.querySelector('code');
+    const attrs = code.querySelectorAll('.token:first-child .attr-value');
+    
+    // manipulate activeTabIndex
+    if (attrs.length) {
+      attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
     }
     
-    updated(){
-      this.registerEvents();
-    }
-
-    updateAndRegister() {
-      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
-      this.registerEvents();
-    }
-    
-    registerEvents() {
-      const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
-
-      //bind tabsBars with activeTabIndex set as attribute
-      const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-        this.handleTabChange(e);
-        this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
-      }));
-    }
-    
-    hiddenNodes = null;
-    handleTabChange =  (e: CustomEvent) => {
-        const { activeTabIndex } = e.detail;
-        e.target.setAttribute('active-tab-index', activeTabIndex);     
-    }
-
-    updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
-      // manipulate code only section only in order to not rerender component and loose animations
-      const example = tabs.parentElement.parentElement;
-      const demo = example.querySelector('.demo');
-      const code = example.querySelector('code');
-      const attrs = code.querySelectorAll('.token:first-child .attr-value');
-      
-      // manipulate activeTabIndex
-      if (attrs.length) {
-        attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
+    // manipulate hidden attribute in code of accessibility playground
+    if (code.innerHTML.includes('Your content of Tab')) {
+      if (!this.hiddenNodes) {
+        this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
       }
-      
-      // manipulate hidden attribute in code of accessibility playground
-      if (code.innerHTML.includes('Your content of Tab')) {
-        if (!this.hiddenNodes) {
-          this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-        }
 
-        // hide/show and adjust offset of hidden attribute
-        for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
-          const item = this.hiddenNodes.snapshotItem(i);
-          item.style.marginLeft = '';
-          item.innerText = 'hidden';
-          
-          if (i === newIndex) {
-            item.style.marginLeft = '-9px';
-            item.innerText = '';
-          }
-        }
+      // hide/show and adjust offset of hidden attribute
+      for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
+        const item = this.hiddenNodes.snapshotItem(i);
+        item.style.marginLeft = '';
+        item.innerText = 'hidden';
         
-        const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
-        panels.forEach((panel, i) => {
-          panel.setAttribute('hidden', '');
-          if (i === newIndex) {
-            panel.removeAttribute('hidden');
-          }
-        });
+        if (i === newIndex) {
+          item.style.marginLeft = '-9px';
+          item.innerText = '';
+        }
       }
+      
+      const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
+      panels.forEach((panel, i) => {
+        panel.setAttribute('hidden', '');
+        if (i === newIndex) {
+          panel.removeAttribute('hidden');
+        }
+      });
     }
   }
+}
 </script>

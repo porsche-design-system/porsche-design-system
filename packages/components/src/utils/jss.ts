@@ -1,4 +1,3 @@
-import { breakpoint } from '@porsche-design-system/utilities';
 import type { JssStyle, Rule, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
@@ -9,6 +8,8 @@ import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
+import { mediaQuery } from './styles';
+import type { Breakpoint } from './styles';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -73,10 +74,6 @@ export const attachCss = (host: HTMLElement, css: string): void => {
   }
 };
 
-export { breakpoint } from '@porsche-design-system/utilities';
-export type BreakPoint = keyof typeof breakpoint;
-export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
-
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 export const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
 
@@ -93,7 +90,7 @@ export const buildResponsiveJss = <T>(
         // hence it is used as the initial object within reduce function
         .filter((key) => key !== 'base')
         .reduce(
-          (result, breakpointValue: BreakPoint) => ({
+          (result, breakpointValue: Breakpoint) => ({
             ...result,
             [mediaQuery(breakpointValue)]: buildHostStyles(getStyles(value[breakpointValue])),
           }),
