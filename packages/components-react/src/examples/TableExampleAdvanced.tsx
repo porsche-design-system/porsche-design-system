@@ -2,6 +2,7 @@ import {
   PButtonPure,
   PFlex,
   PFlexItem,
+  PHeadline,
   PTable,
   PTableBody,
   PTableCell,
@@ -30,7 +31,10 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   }, []);
 
   return (
-    <PTable caption="Some caption" onSortingChange={onSortingChange}>
+    <PTable onSortingChange={onSortingChange}>
+      <PHeadline slot="caption" variant="headline-3">
+        Some visual caption
+      </PHeadline>
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
