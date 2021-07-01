@@ -21,14 +21,24 @@
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
       }"
     >
-      <div v-if="isSlotSet" class="configurator">
+      <div :class="this.markup ? '' : 'demo'" v-if="isSlotSet" class="configurator">
         <slot :theme="theme" />
       </div>
       <template v-if="this.markup">
         <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
-        <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
-        <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
+        <template v-if="!hasFrameworkMarkup">
+          <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
+          <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
+        </template>
       </template>
+      <template v-if="hasFrameworkMarkup">
+        <CodeBlock
+          class="code-block code-block--framework"
+          :markup="patchedFrameworkMarkup"
+          :theme="theme"
+          :frameworks="Object.keys(frameworks)"
+        ></CodeBlock
+      ></template>
     </div>
   </div>
 </template>
@@ -39,11 +49,12 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import type { Framework, Theme } from '@/models';
+  import type { Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {
     themeable: boolean;
+    hasFrameworks: boolean;
     colorScheme: 'default' | 'surface';
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
@@ -52,6 +63,7 @@
 
   export const initialConfig: PlaygroundConfig = {
     themeable: false,
+    hasFrameworks: false,
     colorScheme: 'default',
     height: 'auto',
     spacing: 'none',
@@ -66,6 +78,7 @@
   })
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
+    @Prop({ default: () => ({}) }) public frameworks!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
@@ -86,6 +99,10 @@
       return patchThemeIntoMarkup(this.markup, this.theme);
     }
 
+    public get patchedFrameworkMarkup(): string {
+      return patchThemeIntoMarkup(this.frameworkMarkup, this.theme);
+    }
+
     public cleanDemoMarkup(input: string): string {
       return input.replace(/\n/g, '');
     }
@@ -98,8 +115,15 @@
       return this.$store.getters.selectedFramework;
     }
 
+    public get frameworkMarkup(): string {
+      return this.frameworks[this.framework]!;
+    }
+
     public get isSlotSet(): boolean {
       return !!this.$scopedSlots.default;
+    }
+    public get hasFrameworkMarkup(): boolean {
+      return Object.keys(this.frameworks).length !== 0;
     }
   }
 </script>
@@ -189,6 +213,9 @@
 
     .code-block {
       margin-bottom: $p-spacing-16;
+      &--framework ::v-deep pre {
+        max-height: 40rem;
+      }
     }
   }
 </style>

@@ -24,11 +24,21 @@ describe('patchThemeIntoMarkup', () => {
     expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
   });
 
+  it('should not add light theme in react', () => {
+    const markup = `<PSomeTag some-attribute="some value"></PSomeTag>`;
+    expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
+  });
+
   it('should add dark theme', () => {
     const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
     expect(patchThemeIntoMarkup(markup, 'dark')).toBe(
       `<p-some-tag theme="dark" some-attribute="some value"></p-some-tag>`
     );
+  });
+
+  it('should add dark theme in React', () => {
+    const markup = `<PSomeTag some-attribute="some value"></PSomeTag>`;
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(`<PSomeTag theme="dark" some-attribute="some value"></PSomeTag>`);
   });
 });
 
