@@ -10,7 +10,7 @@
 
 ### Requirements
 
-- [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org) - make sure to use the same node version as defined in `./docker/node/Dockerfile`
 - [Yarn](https://yarnpkg.com)
 - [Docker](https://www.docker.com) ([see below](#docker-installation-steps))
 
@@ -28,9 +28,10 @@
 1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at <https://github.com/settings/tokens>
 1. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
 1. Login to the GitHub docker registry via `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://docker.pkg.github.com -u YOUR_USERNAME --password-stdin`
-1. Run `./docker.sh run-install` - this may take up to several minutes at first start depending on your internet connection
+1. Run `./docker.sh run-install` (to have npm dependencies installed within Docker container) - this may take up to several minutes at first start depending on your internet connection
+1. Run `yarn` (to have npm dependencies installed on your machine for better IDE support) - this may take up to several minutes at first start depending on your internet connection
 
-_Note: `./docker.sh run-install` should be executed after every pull._
+_Note: `./docker.sh run-install` and `yarn` should be executed after every pull._
 
 ### Setup prettier
 
@@ -39,7 +40,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css}`
+1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
 1. If you have to exclude code fom being prettified, see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)

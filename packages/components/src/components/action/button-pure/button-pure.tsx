@@ -43,7 +43,7 @@ export class ButtonPure {
   @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop() public iconSource?: string;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -69,6 +69,7 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabledOrLoading
     );
+
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;

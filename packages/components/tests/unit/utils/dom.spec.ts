@@ -1,22 +1,27 @@
+import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import {
-  getHTMLElementAndThrowIfUndefined,
-  getTagName,
-  hasNamedSlot,
-  isRequired,
-  throwIfParentIsNotOfKind,
   addEventListener,
-  removeEventListener,
   getAttribute,
-  setAttribute,
-  removeAttribute,
-  isMessageVisible,
-  isDescriptionVisible,
+  getHTMLElementAndThrowIfUndefined,
+  getRole,
+  getTagName,
+  hasAttribute,
+  hasDescription,
+  hasLabel,
+  hasMessage,
+  hasNamedSlot,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
-  getRole,
+  isParentOfKind,
+  isRequired,
   isRequiredAndParentNotRequired,
+  removeAttribute,
+  removeEventListener,
+  setAttribute,
+  throwIfElementHasAttribute,
+  throwIfParentIsNotOfKind,
+  throwIfParentIsNotOneOfKind,
 } from '../../../src/utils';
-import type { HTMLElementWithRequiredProp } from '../../../src/utils';
 import type { FormState } from '../../../src/types';
 
 describe('isRequired', () => {
@@ -101,6 +106,24 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
   });
 });
 
+describe('isParentOfKind()', () => {
+  it('should return true if parent tag matches', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    expect(isParentOfKind(child, 'pGrid')).toBe(true);
+  });
+
+  it('should return false if parent tag does not match', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    expect(isParentOfKind(child, 'pGrid')).toBe(false);
+  });
+});
+
 describe('throwIfParentIsNotOfKind()', () => {
   it('should throw error if parent tag does not match', () => {
     const parent = document.createElement('div');
@@ -109,7 +132,7 @@ describe('throwIfParentIsNotOfKind()', () => {
 
     let error = undefined;
     try {
-      throwIfParentIsNotOfKind(child, `pGrid`);
+      throwIfParentIsNotOfKind(child, 'pGrid');
     } catch (e) {
       error = e.message;
     }
@@ -145,6 +168,77 @@ describe('throwIfParentIsNotOfKind()', () => {
   });
 });
 
+describe('throwIfParentIsNotOneOfKind()', () => {
+  it('should throw error if parent tag does not match', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pGrid']);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if parent tag matches 1st element', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex']);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+
+  it('should not throw error if parent tag matches 2nd element', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid']);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
+describe('throwIfElementHasAttribute()', () => {
+  it('should throw error if attribute exists', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'some title');
+
+    let error = undefined;
+    try {
+      throwIfElementHasAttribute(element, 'title');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if attribute does not exist', () => {
+    const element = document.createElement('div');
+
+    let error = undefined;
+    try {
+      throwIfElementHasAttribute(element, 'title');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
 describe('getTagName()', () => {
   it.each([
     ['div', 'div'],
@@ -166,7 +260,6 @@ describe('Event Listener', () => {
 
       addEventListener(element, 'change', listener, false);
 
-      expect(spy1).toBeCalledTimes(1);
       expect(spy1).toBeCalledWith('change', listener, false);
     });
   });
@@ -179,7 +272,6 @@ describe('Event Listener', () => {
       addEventListener(element, 'change', listener, false);
       removeEventListener(element, 'change', listener, false);
 
-      expect(spy1).toBeCalledTimes(1);
       expect(spy1).toBeCalledWith('change', listener, false);
     });
   });
@@ -215,7 +307,20 @@ describe('removeAttribute()', () => {
   });
 });
 
-describe('isLabelVisible()', () => {
+describe('hasAttribute()', () => {
+  it('should return true if attribute exists', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'Some title');
+    expect(hasAttribute(element, 'title')).toBe(true);
+  });
+
+  it('should return false if attribute does not exist', () => {
+    const element = document.createElement('div');
+    expect(hasAttribute(element, 'title')).toBe(false);
+  });
+});
+
+describe('hasLabel()', () => {
   const label = 'Some description';
   it.each<[{ label: string; slotted: boolean }, boolean]>([
     [{ label, slotted: false }, true],
@@ -225,18 +330,17 @@ describe('isLabelVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { label, slotted } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('description', label);
     if (slotted) {
       const slot = document.createElement('span');
-      slot.slot = 'description';
+      slot.slot = 'label';
       el.appendChild(slot);
     }
 
-    expect(isDescriptionVisible(el, label)).toBe(result);
+    expect(hasLabel(el, label)).toBe(result);
   });
 });
 
-describe('isDescriptionVisible()', () => {
+describe('hasDescription()', () => {
   const description = 'Some description';
   it.each<[{ description: string; slotted: boolean }, boolean]>([
     [{ description, slotted: false }, true],
@@ -246,18 +350,17 @@ describe('isDescriptionVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { description, slotted } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('description', description);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'description';
       el.appendChild(slot);
     }
 
-    expect(isDescriptionVisible(el, description)).toBe(result);
+    expect(hasDescription(el, description)).toBe(result);
   });
 });
 
-describe('isMessageVisible()', () => {
+describe('hasMessage()', () => {
   const message = 'Some message';
   it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
     [{ message, slotted: false, formState: 'error' }, true],
@@ -272,14 +375,13 @@ describe('isMessageVisible()', () => {
   ])('should be called with parameter %o and return %s', (parameter, result) => {
     const { message, slotted, formState } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('message', message);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'message';
       el.appendChild(slot);
     }
 
-    expect(isMessageVisible(el, message, formState)).toBe(result);
+    expect(hasMessage(el, message, formState)).toBe(result);
   });
 });
 

@@ -30,7 +30,7 @@
     "@angular/platform-browser": "^12.0.5",
     "@angular/platform-browser-dynamic": "^12.0.5",
     "@angular/router": "^12.0.5",
-    "@porsche-design-system/components-angular": "2.2.1",
+    "@porsche-design-system/components-angular": "2.3.0-beta.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
