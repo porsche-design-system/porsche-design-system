@@ -31,7 +31,7 @@ Note that `.footer` is a custom CSS class in order to responsively style the but
 
 ### Framework Implementations
 
-<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
+<Playground :frameworks="frameworks"></Playground>
 
 ## Basic Scrollable
 
@@ -74,7 +74,7 @@ export default class Code extends Vue {
 
   frameworks = {
     'vanilla-js': `modal.addEventListener('close', () => {
-modal.removeAttribute('open');
+  modal.removeAttribute('open');
 });`,
     angular: `import { Component } from '@angular/core';
 

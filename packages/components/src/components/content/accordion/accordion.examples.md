@@ -5,7 +5,7 @@ Accordions are flexible in the context and can include other components of the P
 
 ## Basic example
 
-<PlaygroundStatic :frameworks="codeExample" :config="config" :markup="basic"></PlaygroundStatic>
+<Playground :frameworks="codeExample" :config="config" :markup="basic"></Playground>
 
 The accordion width is 100% of the parent container.
 We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
@@ -79,8 +79,8 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
   magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
   gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</p-text>
-<p-text>
+  </p-text>
+  <p-text>
   Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
   magna aliquam erat volutpat.
 </p-text>`;
@@ -141,7 +141,7 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
     }
   
     registerEvents() {
-      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion, .playground-static p-accordion');
+      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
       accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.handleAccordionChange));
     }
   

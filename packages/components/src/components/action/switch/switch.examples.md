@@ -26,7 +26,7 @@ In order to get notified when `checked` state changes, you need to register an e
 
 ### Framework Implementations
 
-<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
+<Playground :frameworks="frameworks"></Playground>
 
 ---
 

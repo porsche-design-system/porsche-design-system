@@ -8,7 +8,7 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Basic Table
 
-<PlaygroundStatic :frameworks="basic">
+<Playground :frameworks="basic">
   <p-table ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
@@ -25,7 +25,7 @@ It is a controlled component. This means it does not contain any internal state,
       </p-table-row>
     </p-table-body>
   </p-table>
-</PlaygroundStatic>
+</Playground>
 
 ---
 
@@ -67,7 +67,7 @@ type TableHeadCellSort = {
 
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should subscribe to.
 
-<PlaygroundStatic :frameworks="sorting">
+<Playground :frameworks="sorting">
   <p-table ref="tableSorting">
     <p-table-head>
       <p-table-head-row>
@@ -82,7 +82,7 @@ Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sor
       </p-table-row>
     </p-table-body>
   </p-table>
-</PlaygroundStatic>
+</Playground>
 
 ### Hide Label
 
@@ -96,7 +96,7 @@ Sometimes you want to hide the label of a table column for example when the colu
 
 The appearance of a table's contents can be customized as illustrated in the following example. 
 
-<PlaygroundStatic :frameworks="advanced">
+<Playground :frameworks="advanced">
   <p-table ref="tableAdvanced">
     <p-table-head>
       <p-table-head-row>
@@ -129,7 +129,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
       </p-table-row>
     </p-table-body>
   </p-table>
-</PlaygroundStatic>
+</Playground>
 
 
 <script lang="ts">
