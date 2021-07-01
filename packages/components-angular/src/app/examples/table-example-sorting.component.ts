@@ -5,7 +5,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-angul
 @Component({
   selector: 'page-table-example-sorting',
   template: `
-    <p-table (sortingChange)="onSortingChange($event)">
+    <p-table caption="Some caption" (sortingChange)="onSortingChange($event)">
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell *ngFor="let item of head" [sort]="item">

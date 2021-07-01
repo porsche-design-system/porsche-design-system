@@ -8,14 +8,6 @@
 
 ---
 
-## Variants
-
-| Variant | Usage |
-|----|----|
-| Default | The default table comes with a base style for the caption, header and table elements. |
-
----
-
 ## Behavior
 
 ### Column header

@@ -111,7 +111,7 @@ const ModalPage = (): JSX.Element => {
     // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
     // timeout is needed for component to render 
     setTimeout(() => {
-      document.getElementById('modal-scrollable').shadowRoot.querySelector('.p-modal').style.alignSelf = 'start'
+      document.getElementById('modal-scrollable').shadowRoot.querySelector('.root').style.alignSelf = 'start'
     }, 1000);
   }
 
