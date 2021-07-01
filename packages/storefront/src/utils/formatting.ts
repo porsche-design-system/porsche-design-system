@@ -13,6 +13,7 @@ export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
     ? markup
         // add dark theme attribute
         .replace(/(<p-[\w-]+)/g, '$1 theme="dark"')
+        .replace(/(<P[A-Z][\w-]+)/g, '$1 theme="dark"')
     : markup;
 
 export const convertToAngular = (markup: string): string =>
