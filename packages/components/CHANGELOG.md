@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `Table`
 - Angular: export types from package root
+- Accessibility icon
 
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
