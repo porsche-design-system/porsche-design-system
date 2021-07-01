@@ -213,6 +213,11 @@ export const routes: RouteType[] = [
     isDisabled: true,
   },
   {
+    name: 'Accordion Example',
+    path: '/accordion-example',
+    component: fromExamples.AccordionExamplePage,
+  },
+  {
     name: 'Table Example Basic',
     path: '/table-example-basic',
     component: fromExamples.TableExampleBasicPage,
