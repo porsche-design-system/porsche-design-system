@@ -3,7 +3,12 @@ import { TableExampleAdvancedComponent } from './table-example-advanced.componen
 import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
 
-export const examples = [TableExampleAdvancedComponent, TableExampleBasicComponent, TableExampleSortingComponent];
+export const examples = [
+  AccordionExampleComponent,
+  TableExampleAdvancedComponent,
+  TableExampleBasicComponent,
+  TableExampleSortingComponent,
+];
 
 export * from './accordion-example.component';
 export * from './table-example-advanced.component';
