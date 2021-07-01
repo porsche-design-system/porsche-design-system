@@ -24,11 +24,23 @@ import { Component } from '@angular/core';
       </p-tabs-bar>
       <p>{{ tabChangeEventCounter }}</p>
     </div>
+    <div class="playground light">
+      <p-accordion [heading]="'Some heading'" (accordionChange)="onAccordionChange()">
+        Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua.
+      </p-accordion>
+      <p>{{ accordionChangeEventCounter }}</p>
+    </div>
   `,
 })
 export class EventsComponent {
+  accordionChangeEventCounter: number = 0;
   pageChangeEventCounter: number = 0;
   tabChangeEventCounter: number = 0;
+
+  onAccordionChange() {
+    this.accordionChangeEventCounter++;
+  }
 
   onPageChange() {
     this.pageChangeEventCounter++;
