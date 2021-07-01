@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.3.0-beta.0] - 2021-06-30
+### [2.3.0-beta.0] - 2021-07-01
 
 #### Added
 - `Table`
@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 - `Text` and `Headline` inherits white-space CSS property
+- React: sync component props via property instead of attribute 
 
 #### Fixed
 - Angular: support `"strictTemplates": true` option in `tsconfig.json`
