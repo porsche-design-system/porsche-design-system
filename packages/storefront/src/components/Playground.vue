@@ -27,7 +27,7 @@
       <template v-if="this.markup">
         <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
         <template v-if="!hasFrameworkMarkup">
-          <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
+          <CodeBlock :markup="patchedMarkup" :convert-markup="true" :theme="theme"></CodeBlock>
           <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
         </template>
       </template>

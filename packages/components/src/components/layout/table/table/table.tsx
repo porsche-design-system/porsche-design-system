@@ -8,7 +8,7 @@ import {
   scrollElementBy,
 } from '../../../../utils';
 import type { SortingChangeEvent } from '../table-utils';
-import { addCss, getSlottedCss, SORT_EVENT_NAME } from '../table-utils';
+import { addCss, getSlottedCss, SORT_EVENT_NAME, warnIfCaptionIsUndefined } from '../table-utils';
 
 @Component({
   tag: 'p-table',
@@ -19,7 +19,7 @@ export class Table {
 
   /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
    * Use an element with an attribute of slot="name" for a visible caption. */
-  @Prop() public caption?: string = '';
+  @Prop() public caption?: string;
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
@@ -38,6 +38,7 @@ export class Table {
   }
 
   public componentWillLoad(): void {
+    warnIfCaptionIsUndefined(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<SortingChangeEvent>) => {
       e.stopPropagation();
       this.sortingChange.emit(e.detail);

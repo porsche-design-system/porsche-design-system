@@ -68,6 +68,7 @@ describe('CodeBlock.vue', () => {
         markup: `<p-some-tag some-attribute="some value">
   <span>some text</span>
 </p-some-tag>`,
+        convertMarkup: true,
       },
     });
 
@@ -94,6 +95,7 @@ describe('CodeBlock.vue', () => {
         markup: `<p-some-tag some-attribute="some value">
   <span>some text</span>
 </p-some-tag>`,
+        convertMarkup: true,
       },
     });
 
@@ -139,6 +141,7 @@ describe('CodeBlock.vue', () => {
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`,
+        convertMarkup: true,
       },
     });
 
@@ -162,6 +165,7 @@ describe('CodeBlock.vue', () => {
         markup: `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
 </p-some-tag>`,
+        convertMarkup: true,
       },
     });
 
@@ -182,6 +186,7 @@ describe('CodeBlock.vue', () => {
       store,
       propsData: {
         markup: `<div></div><br><div></div><br><div></div>`,
+        convertMarkup: true,
       },
     });
 
@@ -196,6 +201,7 @@ describe('CodeBlock.vue', () => {
       store,
       propsData: {
         markup: `<div></div><br><br><div></div><br><br><br><div></div>`,
+        convertMarkup: true,
       },
     });
 
