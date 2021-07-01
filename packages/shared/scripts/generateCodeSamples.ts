@@ -39,7 +39,10 @@ const generateCodeSamples = (): void => {
 
   const packagesFolder = path.resolve(__dirname, '../../');
 
-  const types = `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';`;
+  const types = [
+    `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';`,
+    `type FrameworkMarkup = { [key in Framework]?: string };`,
+  ].join('\n');
 
   const functions = codeSamples
     .map((sample) => {
@@ -73,16 +76,16 @@ const generateCodeSamples = (): void => {
         });
 
       const componentName = pascalCase(sample.component.replace('p-', ''));
-      const functionName = `get${componentName}CodeSample`;
+      const functionName = `get${componentName}CodeSamples`;
       const sampleParams = sampleNamesAndContents.map(({ sampleName }) => sampleName);
 
       const arrayToObjectJSON = (arr: any[]): string => JSON.stringify(Object.assign({}, ...arr));
 
       if (sampleParams.length === 1) {
-        return `export const ${functionName} = (framework: Framework): string => {
+        return `export const ${functionName} = (): FrameworkMarkup => {
   const samples: { [key in Framework]?: string } = ${arrayToObjectJSON(sampleNamesAndContents[0].samples)};
-  return samples[framework];
-}`;
+  return samples;
+};`;
       } else {
         // multiple samples per component needs a 2nd parameter to select the sample
         const sampleData = sampleNamesAndContents.reduce(
@@ -95,10 +98,10 @@ const generateCodeSamples = (): void => {
 
         const typeName = `${componentName}SampleName`;
         return `type ${typeName} = ${sampleParams.map((x) => `'${x}'`).join(' | ')};
-export const ${functionName} = (framework: Framework, sampleName: ${typeName}): string => {
+export const ${functionName} = (sampleName: ${typeName}): FrameworkMarkup => {
   const samples: { [key in ${typeName}]: { [key in Framework]?: string } } = ${JSON.stringify(sampleData)};
-  return samples[sampleName][framework];
-}`;
+  return samples[sampleName];
+};`;
       }
     })
     .join('\n\n');
