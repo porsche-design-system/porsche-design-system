@@ -64,19 +64,19 @@ Furthermore, you lose helpful functionality like backdrop click. This is why ful
 Of course, any combination of the available options is possible.
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    modals = [];
-    width = 'minWidth';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    frameworks = {
-      'vanilla-js': `modal.addEventListener('close', () => {
-  modal.removeAttribute('open');
+@Component
+export default class Code extends Vue {
+  modals = [];
+  width = 'minWidth';
+
+  frameworks = {
+    'vanilla-js': `modal.addEventListener('close', () => {
+modal.removeAttribute('open');
 });`,
-      angular: `import { Component } from '@angular/core';
+    angular: `import { Component } from '@angular/core';
 
 @Component({
   selector: 'modal-page',
@@ -89,7 +89,7 @@ export class ModalPage {
     this.isModalOpen = false;
   }
 }`,
-      react: `import { useCallback, useState } from 'react';
+    react: `import { useCallback, useState } from 'react';
 import { PModal } from '@porsche-design-system/components-react';
 
 const ModalPage = (): JSX.Element => {
@@ -100,44 +100,44 @@ const ModalPage = (): JSX.Element => {
 
   return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
 }`,
-    };
-    
-    mounted() {
-      this.registerEvents();
-      
-      // workaround for iOS 13.x masking modal within example
-      document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
+  };
 
-      // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
-      // timeout is needed for component to render 
-      setTimeout(() => {
-        document.getElementById('modal-scrollable').shadowRoot.querySelector('.p-modal').style.alignSelf = 'start'
-      }, 1000);
-    }
+  mounted() {
+    this.registerEvents();
     
-    updated() {
-      // event handling is registered again on every update since markup is changing and references are lost
-      this.registerEvents();
-    }
-    
-    registerEvents() {
-      this.modals = Array.from(document.querySelectorAll('p-modal'));
-      
-      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
-      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
-      
-      this.modals.forEach((modal, index) => {
-        modal.addEventListener('close', () => this.closeModal(index));
-        const buttons = Array.from(modal.querySelectorAll('p-button'));
-        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
-      });
-    }
-  
+    // workaround for iOS 13.x masking modal within example
+    document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
 
-    get basic() {
-      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
-      
-      return `<p-button>Open Modal</p-button>
+    // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
+    // timeout is needed for component to render 
+    setTimeout(() => {
+      document.getElementById('modal-scrollable').shadowRoot.querySelector('.p-modal').style.alignSelf = 'start'
+    }, 1000);
+  }
+
+  updated() {
+    // event handling is registered again on every update since markup is changing and references are lost
+    this.registerEvents();
+  }
+
+  registerEvents() {
+    this.modals = Array.from(document.querySelectorAll('p-modal'));
+    
+    const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+    buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+    
+    this.modals.forEach((modal, index) => {
+      modal.addEventListener('close', () => this.closeModal(index));
+      const buttons = Array.from(modal.querySelectorAll('p-button'));
+      buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
+    });
+  }
+
+
+  get basic() {
+    const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
+    
+    return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
   <p-button-group class="footer">
@@ -145,8 +145,8 @@ const ModalPage = (): JSX.Element => {
     <p-button variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;}
-    
-    scrollable =
+  
+  scrollable =
 `<p-button>Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
@@ -159,20 +159,20 @@ const ModalPage = (): JSX.Element => {
     <p-button variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;
-    
-    withoutHeading =
+
+  withoutHeading =
 `<p-button>Open Modal</p-button>
 <p-modal open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
-    
-    withoutCloseButton =
+
+  withoutCloseButton =
 `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
-    fullscreen =
+  fullscreen =
 `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
@@ -185,15 +185,15 @@ const ModalPage = (): JSX.Element => {
     </p-button-group>
   </p-flex>
 </p-modal>`;
-    
-    openModal(index: number): void {
-      this.modals[index].setAttribute('open', 'true');
-    }
-    
-    closeModal(index: number): void {
-      this.modals[index].setAttribute('open', 'false');
-    }
+
+  openModal(index: number): void {
+    this.modals[index].setAttribute('open', 'true');
   }
+  
+  closeModal(index: number): void {
+    this.modals[index].setAttribute('open', 'false');
+  }
+}
 </script>
 
 <style scoped lang="scss">

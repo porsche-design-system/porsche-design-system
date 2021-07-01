@@ -133,41 +133,41 @@ The appearance of a table's contents can be customized as illustrated in the fol
 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { dataBasic, headBasic, dataSorting, headSorting, dataAdvanced, headAdvanced, getTableCodeSample } from '@porsche-design-system/shared';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { dataBasic, headBasic, dataSorting, headSorting, dataAdvanced, headAdvanced, getTableCodeSample } from '@porsche-design-system/shared';
 
-  @Component
-  export default class Code extends Vue {
-    headBasic = headBasic;
-    dataBasic = dataBasic;
-    headSorting = headSorting;
-    dataSorting = dataSorting;
-    headAdvanced = headAdvanced;
-    dataAdvanced = dataAdvanced;
+@Component
+export default class Code extends Vue {
+  headBasic = headBasic;
+  dataBasic = dataBasic;
+  headSorting = headSorting;
+  dataSorting = dataSorting;
+  headAdvanced = headAdvanced;
+  dataAdvanced = dataAdvanced;
 
-    basic = {
-      'vanilla-js': getTableCodeSample('vanilla-js', 'example-basic'),
-      angular: getTableCodeSample('angular', 'example-basic'),
-      react: getTableCodeSample('react', 'example-basic'),
-      shared: getTableCodeSample('shared', 'example-basic'),
-    };
+  basic = {
+    'vanilla-js': getTableCodeSample('vanilla-js', 'example-basic'),
+    angular: getTableCodeSample('angular', 'example-basic'),
+    react: getTableCodeSample('react', 'example-basic'),
+    shared: getTableCodeSample('shared', 'example-basic'),
+  };
 
-    sorting = {
-      'vanilla-js': getTableCodeSample('vanilla-js', 'example-sorting'),
-      angular: getTableCodeSample('angular', 'example-sorting'),
-      react: getTableCodeSample('react', 'example-sorting'),
-      shared: getTableCodeSample('shared', 'example-sorting'),
-    };
+  sorting = {
+    'vanilla-js': getTableCodeSample('vanilla-js', 'example-sorting'),
+    angular: getTableCodeSample('angular', 'example-sorting'),
+    react: getTableCodeSample('react', 'example-sorting'),
+    shared: getTableCodeSample('shared', 'example-sorting'),
+  };
 
-    advanced = {
-      'vanilla-js': getTableCodeSample('vanilla-js', 'example-advanced'),
-      angular: getTableCodeSample('angular', 'example-advanced'),
-      react: getTableCodeSample('react', 'example-advanced'),
-      shared: getTableCodeSample('shared', 'example-advanced'),
-    };
+  advanced = {
+    'vanilla-js': getTableCodeSample('vanilla-js', 'example-advanced'),
+    angular: getTableCodeSample('angular', 'example-advanced'),
+    react: getTableCodeSample('react', 'example-advanced'),
+    shared: getTableCodeSample('shared', 'example-advanced'),
+  };
 
-    basicTableHead = `<p-table-head>
+  basicTableHead = `<p-table-head>
     <p-table-head-row>
       <p-table-head-cell>Column 1</p-table-head-cell>
       <p-table-head-cell>Column 2</p-table-head-cell>
@@ -175,28 +175,28 @@ The appearance of a table's contents can be customized as illustrated in the fol
     </p-table-head-row>
   </p-table-head>`;
 
-    basicTableBodyRow = `<p-table-row>
+  basicTableBodyRow = `<p-table-row>
       <p-table-cell>Cell 1</p-table-cell>
       <p-table-cell>Cell 2</p-table-cell>
       <p-table-cell>Cell 3</p-table-cell>
     </p-table-row>`;
 
-    basicTableBody = `<p-table-body>
+  basicTableBody = `<p-table-body>
      ${this.basicTableBodyRow}
   </p-table-body>`;
 
-    captionProperty = `<p-table caption="Some caption">
+  captionProperty = `<p-table caption="Some caption">
   ${this.basicTableHead}
   ${this.basicTableBody}
 </p-table>`;
 
-    captionSlot = `<p-table>
+  captionSlot = `<p-table>
   <p-headline slot="caption" variant="headline-3">Some slotted caption</p-headline>
   ${this.basicTableHead}
   ${this.basicTableBody}
 </p-table>`;
 
-    hideLabel = `<p-table>
+  hideLabel = `<p-table>
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell>Column 1</p-table-head-cell>
@@ -207,36 +207,36 @@ The appearance of a table's contents can be customized as illustrated in the fol
   ${this.basicTableBody}
 </p-table>`;
 
-    mounted(): void {
-      this.syncHeadCellProperties();
-      this.registerEvents();
-    }
-
-    registerEvents(): void {
-      this.$refs.tableAdvanced.addEventListener('sortingChange', (e) => {
-        const { id, direction } = e.detail;
-        this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
-        this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
-        this.syncHeadCellProperties();
-      });
-
-      this.$refs.tableSorting.addEventListener('sortingChange', (e) => {
-        const { id, direction } = e.detail;
-        this.headSorting = this.headSorting.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
-        this.dataSorting = [...this.dataSorting].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
-        this.syncHeadCellProperties();
-      });
-    }
-
-    syncHeadCellProperties(): void {
-      this.$refs.headCellsAdvanced.forEach((cell, i) => {
-        cell.sort = this.headAdvanced[i];
-        cell.hideLabel = this.headAdvanced[i].hideLabel;
-      });
-
-      this.$refs.headCellsSorting.forEach((cell, i) => {
-        cell.sort = this.headSorting[i];
-      });
-    }
+  mounted(): void {
+    this.syncHeadCellProperties();
+    this.registerEvents();
   }
+
+  registerEvents(): void {
+    this.$refs.tableAdvanced.addEventListener('sortingChange', (e) => {
+      const { id, direction } = e.detail;
+      this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
+      this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
+      this.syncHeadCellProperties();
+    });
+
+    this.$refs.tableSorting.addEventListener('sortingChange', (e) => {
+      const { id, direction } = e.detail;
+      this.headSorting = this.headSorting.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
+      this.dataSorting = [...this.dataSorting].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
+      this.syncHeadCellProperties();
+    });
+  }
+
+  syncHeadCellProperties(): void {
+    this.$refs.headCellsAdvanced.forEach((cell, i) => {
+      cell.sort = this.headAdvanced[i];
+      cell.hideLabel = this.headAdvanced[i].hideLabel;
+    });
+
+    this.$refs.headCellsSorting.forEach((cell, i) => {
+      cell.sort = this.headSorting[i];
+    });
+  }
+}
 </script>
