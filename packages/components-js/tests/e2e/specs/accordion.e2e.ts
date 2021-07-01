@@ -222,6 +222,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
+      await page.waitForTimeout(40);
 
       expect(await hasFocus(page, input)).toBe(false);
     });
