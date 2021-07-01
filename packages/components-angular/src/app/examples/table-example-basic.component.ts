@@ -4,7 +4,7 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
 @Component({
   selector: 'page-table-example-basic',
   template: `
-    <p-table>
+    <p-table caption="Some caption">
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell *ngFor="let item of head">{{ item }}</p-table-head-cell>

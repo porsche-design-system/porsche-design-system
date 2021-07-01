@@ -7,6 +7,7 @@ import {
   TABLE_COMPONENTS,
   TableHeadCellSort,
   toggleDirection,
+  warnIfCaptionIsUndefined,
 } from '../../../src/components/layout/table/table-utils';
 import * as tableUtils from '../../../src/components/layout/table/table-utils';
 import { AriaAttributes } from 'react';
@@ -97,5 +98,34 @@ describe('createSortedEventInitDictDetail()', () => {
       bubbles: true,
       detail: { id: '1', active: true, direction: 'desc' },
     });
+  });
+});
+
+describe('warnIfCaptionIsUndefined()', () => {
+  beforeEach(() => {
+    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  });
+
+  it('should print warning when no caption as prop or named slot is defined', () => {
+    const host = document.createElement('p-table');
+
+    warnIfCaptionIsUndefined(host, '');
+    warnIfCaptionIsUndefined(host, undefined);
+    warnIfCaptionIsUndefined(host, null);
+    warnIfCaptionIsUndefined(host, 'some valid caption');
+
+    expect(console.warn).toBeCalledTimes(3);
+  });
+
+  it('should not print warning when caption as slot is defined', () => {
+    const host = document.createElement('p-table');
+    const slot = document.createElement('span');
+    slot.setAttribute('slot', 'caption');
+    host.appendChild(slot);
+
+    warnIfCaptionIsUndefined(host, undefined);
+    warnIfCaptionIsUndefined(host, 'some valid caption');
+
+    expect(console.warn).toBeCalledTimes(0);
   });
 });

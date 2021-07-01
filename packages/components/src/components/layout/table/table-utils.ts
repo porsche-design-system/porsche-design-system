@@ -1,5 +1,5 @@
 import type { AriaAttributes } from 'react';
-import { attachCss, buildGlobalStyles, getCss, getTagName } from '../../../utils';
+import { attachCss, buildGlobalStyles, getCss, getTagName, hasNamedSlot } from '../../../utils';
 import { slottedStyles, styles } from './table-styles';
 
 export type Direction = 'asc' | 'desc';
@@ -53,3 +53,13 @@ export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): Custom
   bubbles: true,
   detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
 });
+
+export const warnIfCaptionIsUndefined = (host: HTMLElement, caption: string): void => {
+  if (!caption && !hasNamedSlot(host, 'caption')) {
+    console.warn(
+      `Property "caption" of ${getTagName(
+        host
+      )} needs to be provided to fulfill accessibility requirements, either as prop or named slot.`
+    );
+  }
+};
