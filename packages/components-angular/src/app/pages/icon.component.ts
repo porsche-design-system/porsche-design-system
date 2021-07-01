@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 import type { IconName } from '@porsche-design-system/components-angular';
 
@@ -70,6 +70,7 @@ import type { IconName } from '@porsche-design-system/components-angular';
       ></p-icon>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
   public icons = ICON_NAMES as IconName[];

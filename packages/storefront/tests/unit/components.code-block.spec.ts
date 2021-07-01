@@ -22,7 +22,7 @@ describe('CodeBlock.vue', () => {
       selectedFramework: 'vanilla-js',
     },
     getters: {
-      selectedFramework: (state: PartialState) => state.selectedFramework,
+      selectedFramework: (state: PartialState): Framework => state.selectedFramework,
     },
     mutations: {
       setSelectedFramework: (state: PartialState, payload: Framework): void => {

@@ -23,52 +23,10 @@ This grants you flexible control over the `checked` state.
 
 In order to get notified when `checked` state changes, you need to register an event listener for the `switchChange` event which is emitted by **Switch**.
 
-### Vanilla JS
 
-```js
-switchElement.addEventListener('switchChange', (switchChangeEvent) => {
-  const { checked } = switchChangeEvent.detail;
-  switchChangeEvent.target.setAttribute('checked', checked);
-});
-```
+### Framework Implementations
 
-### Angular
-
-```ts
-import { Component } from '@angular/core';
-import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'some-switch-page',
-  template: `<p-switch [checked]="checked" (switchChange)="handleSwitchChange($event)">Some label</p-switch>`,
-})
-export class SomeSwitchPage {
-  checked: boolean;
-
-  handleSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
-    const { checked } = e.detail;
-    this.checked = checked;
-  }
-}
-```
-
-### React
-
-```tsx
-import { useCallback, useState } from 'react';
-import { PSwitch } from '@porsche-design-system/components-react';
-import type { SwitchChangeEvent } from '@porsche-design-system/components-react';
-
-const SomeSwitchPage = (): JSX.Element => {
-  const [checked, setChecked] = useState<boolean>();
-  const handleSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
-    const { checked } = e.detail;
-    setChecked(checked);
-  }, []);
-
-  return <PSwitch checked={checked} onSwitchChange={handleSwitchChange}>Some label</PSwitch>
-}
-```
+<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
 
 ---
 
@@ -118,6 +76,41 @@ import Component from 'vue-class-component';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
+
+  frameworks = {
+    'vanilla-js': `switchElement.addEventListener('switchChange', (switchChangeEvent) => {
+  const { checked } = switchChangeEvent.detail;
+  switchChangeEvent.target.setAttribute('checked', checked);
+});`,
+    angular: `import { Component } from '@angular/core';
+import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'some-switch-page',
+  template: \`<p-switch [checked]="checked" (switchChange)="handleSwitchChange($event)">Some label</p-switch>\`,
+})
+export class SomeSwitchPage {
+  checked: boolean;
+
+  handleSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+    const { checked } = e.detail;
+    this.checked = checked;
+  }
+}`,
+    react: `import { useCallback, useState } from 'react';
+import { PSwitch } from '@porsche-design-system/components-react';
+import type { SwitchChangeEvent } from '@porsche-design-system/components-react';
+
+const SomeSwitchPage = (): JSX.Element => {
+  const [checked, setChecked] = useState<boolean>();
+  const handleSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
+    const { checked } = e.detail;
+    setChecked(checked);
+  }, []);
+
+  return <PSwitch checked={checked} onSwitchChange={handleSwitchChange}>Some label</PSwitch>
+}`,
+  };
 
   label = 'show';
   alignLabel = 'right';

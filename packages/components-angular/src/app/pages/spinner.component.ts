@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-spinner',
@@ -26,5 +26,6 @@ import { Component } from '@angular/core';
       <p-spinner [size]="undefined"></p-spinner>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpinnerComponent {}

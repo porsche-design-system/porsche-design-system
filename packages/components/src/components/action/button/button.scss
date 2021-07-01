@@ -15,7 +15,6 @@
   height: auto;
   margin: 0;
   padding: 0;
-  white-space: normal;
   overflow: visible;
   border: 0;
   clip: auto;
@@ -28,7 +27,6 @@
   height: 1px;
   margin: -1px;
   padding: 0;
-  white-space: nowrap;
   overflow: hidden;
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -73,6 +71,15 @@
     color $p-animation-hover-duration-var $p-animation-hover-bezier;
   cursor: pointer;
   @include p-focus($p-color-neutral-contrast-high);
+  @include with-label;
+
+  .label {
+    @include label-with-label;
+  }
+
+  .icon {
+    @include icon-with-label;
+  }
 
   &--theme-dark {
     color: $p-color-default;
@@ -213,18 +220,6 @@
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
       }
-    }
-  }
-
-  &--with-label {
-    @include with-label;
-
-    .label {
-      @include label-with-label;
-    }
-
-    .icon {
-      @include icon-with-label;
     }
   }
 

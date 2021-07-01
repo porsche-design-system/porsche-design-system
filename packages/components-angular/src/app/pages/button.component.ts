@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-button',
   styles: [
     `
       p-button:not(:last-child) {
-        margin-right: 8px;
+        margin-right: 0.5rem;
       }
     `,
   ],
@@ -89,5 +89,6 @@ import { Component } from '@angular/core';
       <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {}

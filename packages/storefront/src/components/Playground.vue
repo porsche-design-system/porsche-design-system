@@ -39,7 +39,7 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { Framework, Theme } from '@/models';
+  import type { Framework, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {
@@ -70,6 +70,7 @@
 
     public theme: Theme = 'light';
     public activeThemeTabIndex = 0;
+
     public handleActiveTabIndex(event: CustomEvent<{ activeTabIndex: number }>): void {
       const { activeTabIndex } = event.detail;
       this.activeThemeTabIndex = activeTabIndex;
@@ -184,6 +185,10 @@
 
     .demo ~ .code-block {
       margin-top: $p-spacing-32;
+    }
+
+    .code-block {
+      margin-bottom: $p-spacing-16;
     }
   }
 </style>

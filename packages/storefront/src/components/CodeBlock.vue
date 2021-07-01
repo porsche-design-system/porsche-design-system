@@ -1,13 +1,9 @@
 <template>
   <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button
-        type="button"
-        v-for="(frameWork, index) in frameworks"
-        :key="index"
-        @click="setFramework(index)"
-        v-text="frameWork"
-      ></button>
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
+        {{ framework }}
+      </button>
     </p-tabs-bar>
     <pre><code v-html="highlightedMarkup"></code></pre>
   </div>
@@ -17,25 +13,40 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { highlight, languages } from 'prismjs';
-  import 'prismjs/components/prism-jsx';
-  import 'prismjs/components/prism-markup';
-  import { Framework, Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
+  import type { Framework, FrameworkMarkup, Theme } from '@/models';
+  import { cleanMarkup, convertToAngular, convertToReact, getHighlightedCode } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
-    frameworks: { [key in Framework]: string } = {
+    allFrameworks: Required<FrameworkMarkup> = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React',
+      shared: 'Shared',
     };
 
+    frameworkBeforeShared = this.framework;
+
+    private destroyed(): void {
+      // reset framework to what is was before selecting "shared" since that one is usually not available
+      if (this.framework === 'shared') {
+        this.$store.commit('setSelectedFramework', this.frameworkBeforeShared);
+      }
+    }
+
+    public get usedFrameworks(): FrameworkMarkup {
+      return this.frameworks.reduce((prev, key) => {
+        prev[key as Framework] = this.allFrameworks[key as Framework];
+        return prev;
+      }, {} as FrameworkMarkup);
+    }
+
     public get activeTabIndex(): number {
-      return Object.keys(this.frameworks).indexOf(this.framework);
+      return Object.keys(this.usedFrameworks).indexOf(this.framework);
     }
 
     public get framework(): Framework {
@@ -43,11 +54,14 @@
     }
 
     public setFramework(framework: Framework): void {
+      if (framework === 'shared') {
+        this.frameworkBeforeShared = this.framework;
+      }
       this.$store.commit('setSelectedFramework', framework);
     }
 
     get highlightedMarkup(): string {
-      return this.highlight(this.convert(this.markup));
+      return getHighlightedCode(this.convert(this.markup), this.framework);
     }
 
     private convert(markup: string): string {
@@ -60,11 +74,6 @@
         default:
           return markup;
       }
-    }
-
-    private highlight(markup: string): string {
-      const isReact = this.framework === 'react';
-      return highlight(markup, languages[isReact ? 'jsx' : 'markup'], isReact ? 'language-jsx' : 'markup');
     }
   }
 </script>
@@ -221,7 +230,7 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin: $p-spacing-16 0;
+    margin-top: $p-spacing-16;
 
     code ::v-deep {
       .namespace {
