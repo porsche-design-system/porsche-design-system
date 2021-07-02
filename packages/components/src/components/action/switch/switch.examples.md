@@ -87,12 +87,12 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-angula
 
 @Component({
   selector: 'some-switch-page',
-  template: \`<p-switch [checked]="checked" (switchChange)="handleSwitchChange($event)">Some label</p-switch>\`,
+  template: \`<p-switch [checked]="checked" (switchChange)="onSwitchChange($event)">Some label</p-switch>\`,
 })
 export class SomeSwitchPage {
   checked: boolean;
 
-  handleSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+  onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
     const { checked } = e.detail;
     this.checked = checked;
   }
@@ -103,12 +103,12 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-react'
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const handleSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
+  const onSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
     const { checked } = e.detail;
     setChecked(checked);
   }, []);
 
-  return <PSwitch checked={checked} onSwitchChange={handleSwitchChange}>Some label</PSwitch>
+  return <PSwitch checked={checked} onSwitchChange={onSwitchChange}>Some label</PSwitch>
 }`,
   };
 
@@ -161,10 +161,10 @@ const SomeSwitchPage = (): JSX.Element => {
 
   registerEvents() {
     const switches = this.$el.querySelectorAll('.playground .demo p-switch');
-    switches.forEach(switchEl => switchEl.addEventListener('switchChange', this.handleSwitchChange));
+    switches.forEach(switchEl => switchEl.addEventListener('switchChange', this.onSwitchChange));
   }
 
-  handleSwitchChange =  (e: CustomEvent) => {
+  onSwitchChange =  (e: CustomEvent) => {
     const { checked } = e.detail;
     e.target.setAttribute('checked', checked);
   }
