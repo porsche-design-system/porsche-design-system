@@ -54,7 +54,6 @@
 
   export type PlaygroundConfig = {
     themeable: boolean;
-    hasFrameworks: boolean;
     colorScheme: 'default' | 'surface';
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
@@ -63,7 +62,6 @@
 
   export const initialConfig: PlaygroundConfig = {
     themeable: false,
-    hasFrameworks: false,
     colorScheme: 'default',
     height: 'auto',
     spacing: 'none',
