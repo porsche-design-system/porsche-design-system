@@ -29,10 +29,6 @@ $root: '.root';
     border-bottom: none;
   }
 
-  &--size-small {
-    @include p-generate-type-scale($p-font-size-small);
-  }
-
   &--size-medium {
     @include p-generate-type-scale($p-font-size-medium);
   }
