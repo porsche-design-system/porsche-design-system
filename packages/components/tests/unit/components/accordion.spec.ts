@@ -24,7 +24,7 @@ describe('accordion', () => {
       const component = new Accordion();
       component.componentDidLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, expect.anything(), { box: 'border-box' });
     });
   });
 
@@ -34,7 +34,7 @@ describe('accordion', () => {
       const component = new Accordion();
       component.disconnectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined);
     });
   });
 });
