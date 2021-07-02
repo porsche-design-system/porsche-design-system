@@ -147,7 +147,7 @@ export default class Code extends Vue {
   
   onAccordionChange =  (e) => {
     const { open } = e.detail;
-    e.target.setAttribute('open', open);
+    e.target.open = open;
   }
 }
 </script>
