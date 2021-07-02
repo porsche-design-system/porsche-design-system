@@ -2,12 +2,12 @@
   <nav>
     <p-accordion
       compact="true"
+      :heading="category"
       :key="index"
       v-for="(pages, category, index) in config"
       v-bind:open="accordion[category]"
       v-on:accordionChange="toggleActive(category)"
     >
-      <span slot="heading">{{ category }}</span>
       <ul v-show="accordion[category]">
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
