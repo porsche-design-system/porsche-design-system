@@ -3,34 +3,24 @@ import { AccordionChangeEvent, PAccordion, PText } from '@porsche-design-system/
 
 export const AccordionExamplePage = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>();
-  const handleAccordionChange = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordionChange = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     const { open } = e.detail;
     setIsOpen(open);
   }, []);
 
+  const content =
+    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
+    'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
+
   return (
     <>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen} onAccordionChange={handleAccordionChange}>
-        <PText>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </PText>
-        <PText>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat.
-        </PText>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen} onAccordionChange={onAccordionChange}>
+        <PText>{content}</PText>
+        <PText>{content}</PText>
       </PAccordion>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen} onAccordionChange={handleAccordionChange}>
-        <PText>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </PText>
-        <PText>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat.
-        </PText>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen} onAccordionChange={onAccordionChange}>
+        <PText>{content}</PText>
+        <PText>{content}</PText>
       </PAccordion>
     </>
   );

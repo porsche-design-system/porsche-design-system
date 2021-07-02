@@ -142,10 +142,10 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
   
     registerEvents() {
       const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-      accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.handleAccordionChange));
+      accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.onAccordionChange));
     }
   
-    handleAccordionChange =  (e) => {
+    onAccordionChange =  (e) => {
       const { open } = e.detail;
       e.target.setAttribute('open', open);
     }

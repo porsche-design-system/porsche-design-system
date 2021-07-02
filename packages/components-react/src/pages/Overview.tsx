@@ -40,7 +40,7 @@ import {
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 export const OverviewPage = (): JSX.Element => {
   // solve race-condition between non-prefixed and prefixed banner focus

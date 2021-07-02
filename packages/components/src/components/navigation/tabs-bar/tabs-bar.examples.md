@@ -112,12 +112,12 @@ import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'tabs-bar-page',
-  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>\`,
+  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="onTabChange($event)">...</p-tabs-bar>\`,
 })
 export class TabsBarPage {
   tabIndex: number;
 
-  handleTabChange(e: CustomEvent<TabChangeEvent>) {
+  onTabChange(e: CustomEvent<TabChangeEvent>) {
     const { activeTabIndex } = e.detail;
     this.tabIndex = activeTabIndex;
   }
@@ -128,12 +128,12 @@ import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
 const TabsBarPage = (): JSX.Element => {
     const [tabIndex, setTabIndex] = useState<number>();
-    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+    const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
         const { activeTabIndex } = e.detail;
         setTabIndex(activeTabIndex);
     }, []);
 
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
 }`,
     };
 
@@ -206,18 +206,18 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
 
     //bind tabsBars with activeTabIndex set as attribute
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.handleTabChange(e);
+      this.onTabChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
   
   hiddenNodes = null;
-  handleTabChange =  (e: CustomEvent) => {
+  onTabChange =  (e: CustomEvent) => {
       const { activeTabIndex } = e.detail;
       e.target.setAttribute('active-tab-index', activeTabIndex);     
   }

@@ -5,45 +5,39 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="playground light" title="should render accordion on light background">
       <p-accordion [heading]="'Some heading'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render accordion on dark background">
       <p-accordion [heading]="'Some heading'" [theme]="'dark'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground light" title="should render accordion with slotted heading on light background">
       <p-accordion>
         <span slot="heading">Some slotted heading</span>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render accordion with slotted heading on dark background">
       <p-accordion [theme]="'dark'">
         <span slot="heading">Some slotted heading</span>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground light" title="should render accordion size medium on light background">
       <p-accordion [heading]="'Some heading size medium'" [size]="'medium'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render accordion size medium on dark background">
       <p-accordion [heading]="'Some heading size medium'" [theme]="'dark'" [size]="'medium'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
@@ -52,8 +46,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [heading]="'Some heading responsive size'"
         [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
       >
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
@@ -63,8 +56,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [theme]="'dark'"
         [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
       >
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
@@ -77,8 +69,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <span slot="heading" style="background: deeppink">
           Some extra long heading that should break to the second line
         </span>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
@@ -91,35 +82,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <span slot="heading" style="background: deeppink">
           Some extra long heading that should break to the second line
         </span>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground light" title="should render multiple accordions with one open on light background">
       <p-accordion [heading]="'Some heading'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
       <p-accordion [heading]="'Some heading'" [open]="true">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render multiple accordions with one open on dark background">
       <p-accordion [heading]="'Some heading'" [theme]="'dark'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
       <p-accordion [heading]="'Some heading'" [theme]="'dark'" [open]="true">
         <div style="color: white">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {{ content }}
         </div>
       </p-accordion>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionComponent {}
+export class AccordionComponent {
+  content =
+    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et  dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
+}

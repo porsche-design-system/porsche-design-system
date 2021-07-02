@@ -72,7 +72,7 @@ export class Tabs {
           theme={this.theme}
           gradientColorScheme={this.gradientColorScheme}
           activeTabIndex={this.activeTabIndex}
-          onTabChange={this.handleTabChange}
+          onTabChange={this.onTabChange}
         >
           {this.tabsItemElements.map((tab, index) => (
             <button type="button" id={`tab-item-${index}`} aria-controls={`tab-panel-${index}`}>
@@ -123,7 +123,7 @@ export class Tabs {
     });
   };
 
-  private handleTabChange = (e: CustomEvent<TabChangeEvent>): void => {
+  private onTabChange = (e: CustomEvent<TabChangeEvent>): void => {
     const {
       detail: { activeTabIndex },
     } = e;
