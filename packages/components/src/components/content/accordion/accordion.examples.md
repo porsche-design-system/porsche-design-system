@@ -35,7 +35,7 @@ For instance our example accordions use heading level 3 because they are contain
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
-   <option value="responsive">Responsive</option>
+    <option value="responsive">Responsive</option>
   </select>
 </Playground>
 
@@ -64,29 +64,29 @@ We recommend using the property in case you need a `side-navigation` with a `acc
 ---
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import { getAccordionCodeSamples }from '@porsche-design-system/shared';
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
 
-    codeExample = getAccordionCodeSamples();
+  codeExample = getAccordionCodeSamples();
 
-    size = 'small';
-    content= `<p-text>
-  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-  magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-  gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  size = 'small';
+  content= `<p-text>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </p-text>
   <p-text>
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-  magna aliquam erat volutpat.
-</p-text>`;
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+    magna aliquam erat volutpat.
+  </p-text>`;
     
-    get basic() {      
-      return `<p-accordion heading="Some Heading" tag="h3">
+  get basic() {      
+    return `<p-accordion heading="Some Heading" tag="h3">
   ${this.content}
 </p-accordion>
 <p-accordion heading="Some Heading" tag="h3">
@@ -94,8 +94,8 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
 </p-accordion>`;
     }
   
-    get sizeMarkup() {
-      return `<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
+  get sizeMarkup() {
+    return `<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
   ${this.content}
 </p-accordion>
 <p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
@@ -103,8 +103,8 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
 </p-accordion>`;
     }  
 
-    get slottedMarkup(){
-      return `<p-accordion tag="h3">
+  get slottedMarkup(){
+    return `<p-accordion tag="h3">
   <span slot="heading">Some slotted heading</span>
   ${this.content}
 </p-accordion>
@@ -114,8 +114,8 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
 </p-accordion>`;
     }
 
-    get compactMarkup() {      
-      return `<div style="width: 400px">
+  get compactMarkup() {      
+    return `<div style="width: 400px">
   <p-accordion heading="Some Heading" tag="h3" compact="true">
       <p-link-pure>Some label</p-link-pure>
   </p-accordion>
@@ -125,29 +125,29 @@ import { getAccordionCodeSamples }from '@porsche-design-system/shared';
 </div>`;
     }
  
-    mounted() {
-      /* initially update accordion with open attribute in playground */
+  mounted() {
+    /* initially update accordion with open attribute in playground */
+    this.registerEvents();
+  
+    /* theme switch needs to register event listeners again */
+    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
+    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
       this.registerEvents();
-  
-      /* theme switch needs to register event listeners again */
-      const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-      themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
-        this.registerEvents();
-      }));
-    }
-  
-    updated(){
-      this.registerEvents();
-    }
-  
-    registerEvents() {
-      const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-      accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.onAccordionChange));
-    }
-  
-    onAccordionChange =  (e) => {
-      const { open } = e.detail;
-      e.target.setAttribute('open', open);
-    }
+    }));
   }
+  
+  updated(){
+    this.registerEvents();
+  }
+  
+  registerEvents() {
+    const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
+    accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.onAccordionChange));
+  }
+  
+  onAccordionChange =  (e) => {
+    const { open } = e.detail;
+    e.target.setAttribute('open', open);
+  }
+}
 </script>
