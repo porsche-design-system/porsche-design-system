@@ -29,6 +29,11 @@ The size of `p-modal` adjusts itself to the content with a predefined min/max wi
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
 
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
+The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
+You can test it out by navigation this example with the keyboard only.
+
 ### Framework Implementations
 
 <PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
@@ -137,17 +142,17 @@ const ModalPage = (): JSX.Element => {
   get basic() {
     const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
     
-    return `<p-button>Open Modal</p-button>
+    return `<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;}
   
   scrollable =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
   <div style="height: 40vh;"></div>
@@ -156,24 +161,24 @@ const ModalPage = (): JSX.Element => {
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;
 
   withoutHeading =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   withoutCloseButton =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   fullscreen =
-`<p-button>Open Modal</p-button>
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">
@@ -181,7 +186,7 @@ const ModalPage = (): JSX.Element => {
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button variant="tertiary">Close</p-button>
+      <p-button type="button" variant="tertiary">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;

@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  getAttribute,
   getBrowser,
   getCssClasses,
   getLifecycleStatus,
@@ -45,6 +46,12 @@ describe('banner', () => {
   const getButton = () => selectNode(page, 'p-banner >>> p-button-pure');
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
+
+  it('should render close button with type of "button"', async () => {
+    await initBanner();
+    const closeBtnReal = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    expect(await getAttribute(await closeBtnReal(), 'type')).toBe('button');
+  });
 
   it('should render without button', async () => {
     await setContentWithDesignSystem(
