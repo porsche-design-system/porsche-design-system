@@ -76,9 +76,6 @@ button {
     &:hover,
     &:focus-visible {
       background-color: transparent;
-      #{$root}--theme-dark {
-        background-color: transparent;
-      }
     }
   }
 
