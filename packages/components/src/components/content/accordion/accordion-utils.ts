@@ -1,6 +1,12 @@
-import { addImportantToEachRule, buildGlobalStyles, getCss, getTagName, JssStyle } from '../../../utils';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
-import { color } from '@porsche-design-system/utilities';
+import {
+  addImportantToEachRule,
+  buildGlobalStyles,
+  getCss,
+  getFocusStyles,
+  getHoverStyles,
+  getTagName,
+  JssStyle,
+} from '../../../utils';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZE[number];
@@ -10,18 +16,8 @@ const slottedStyles: JssStyle = addImportantToEachRule({
   '& a': {
     color: 'inherit',
     textDecoration: 'underline',
-    transition: `color ${P_ANIMATION_HOVER_DURATION} ease`,
-    outline: 'transparent solid 1px',
-    outlineOffset: '1px',
-    '&:hover': {
-      color: `${color.state.hover}`,
-    },
-    '&:focus': {
-      outlineColor: 'currentColor',
-    },
-    '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent',
-    },
+    ...getFocusStyles({ offset: 1, color: 'currentColor' }),
+    ...getHoverStyles(),
   },
 
   '& em, & i': {
