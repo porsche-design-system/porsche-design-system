@@ -67,8 +67,7 @@ button {
   #{$root}--compact & {
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
     padding: p-px-to-rem(8px) 0;
-
-    @include p-focus($p-color-state-focus);
+    outline-offset: 2px;
 
     &:hover {
       color: $p-color-state-hover;
