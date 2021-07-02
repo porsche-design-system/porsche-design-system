@@ -128,15 +128,15 @@ describe('events', () => {
     await goto(page, 'events');
 
     const accordionButton = await selectNode(page, 'p-accordion >>> button');
-    const pageChangeEventCounter = await selectNode(page, 'p-accordion + *');
+    const accordionChangeEventCounter = await selectNode(page, 'p-accordion + *');
 
     await clickElement(accordionButton);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('1');
 
     await clickElement(accordionButton);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('2');
 
     await clickElement(accordionButton);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
   });
 });

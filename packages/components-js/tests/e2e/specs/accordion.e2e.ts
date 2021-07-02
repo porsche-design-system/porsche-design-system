@@ -54,24 +54,24 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   const getHost = () => selectNode(page, 'p-accordion');
   const getButton = () => selectNode(page, 'p-accordion >>> button');
   const getInput = () => selectNode(page, 'input');
-  const getCollapsibleEl = () => selectNode(page, 'p-accordion >>> .collapsible ');
+  const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible ');
 
-  it('should set visibility on initial open', async () => {
+  it('should set "visibility: visible" on collapsible on initial open', async () => {
     await initAccordion({ isOpen: true });
-    const collapsible = await getCollapsibleEl();
+    const collapsible = await getCollapsible();
     expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
   });
 
-  it('should set visibility on initial close', async () => {
+  it('should set "visibility: visible" on collapsible on initial close', async () => {
     await initAccordion();
-    const collapsible = await getCollapsibleEl();
+    const collapsible = await getCollapsible();
     expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
   });
 
-  it('should set visibility on open change', async () => {
+  it('should set "visibility: visible" on collapsible on open change', async () => {
     await initAccordion();
     const host = await getHost();
-    const collapsible = await getCollapsibleEl();
+    const collapsible = await getCollapsible();
 
     expect(await getElementStyle(collapsible, 'visibility'))
       .withContext('initially')
@@ -92,10 +92,10 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       .toBe('hidden');
   });
 
-  it('should have correct visibility after open/close re-trigger', async () => {
+  it('should have correct visibility after fast open/close re-trigger', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsibleEl();
+    const collapsible = await getCollapsible();
 
     // expand -> collapse -> expand
     await button.click();
@@ -106,10 +106,10 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
   });
 
-  it('should have correct visibility after close/open re-trigger', async () => {
+  it('should have correct visibility after fast close/open re-trigger', async () => {
     await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsibleEl();
+    const collapsible = await getCollapsible();
 
     // collapse -> expand -> collapse
     await button.click();
@@ -215,14 +215,11 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      await waitForEventSerialization(page);
 
       expect(await hasFocus(page, input)).toBe(true);
 
       await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(40);
 
       expect(await hasFocus(page, input)).toBe(false);
     });
