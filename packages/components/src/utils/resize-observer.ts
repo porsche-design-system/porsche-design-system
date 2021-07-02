@@ -1,10 +1,7 @@
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 
 const resizeObserver = new ResizeObserver((entries) => {
-  entries
-    // remove duplicates so we call forceUpdate only once per node
-    .filter((resizeEntry, idx, arr) => arr.findIndex((m) => m.target === resizeEntry.target) === idx)
-    .forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
+  entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
 });
 
 export const observeResize = <T extends HTMLElement>(
