@@ -1,5 +1,11 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses, pxToRem } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isDark,
+  mapBreakpointPropToClasses,
+  pxToRemWithUnit,
+} from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
@@ -55,16 +61,24 @@ export class Accordion {
   public componentDidLoad(): void {
     observeResize(
       this.contentWrapper,
-      ({ borderBoxSize }) => {
-        // Firefox implements `contentBoxSize` as a single content rect, rather than an array
-        const contentBorderBoxSize = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
+      ({ borderBoxSize, contentRect }) => {
+        let contentBlockHeight: number;
+
+        // Safari does not support borderBoySize
+        if (!borderBoxSize) {
+          const PADDING = this.compact ? 16 : 40;
+          contentBlockHeight = contentRect.height + PADDING;
+        } else {
+          // Firefox implements `contentBoxSize` as a single content rect, rather than an array
+          const contentBorderBoxSize = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
+          contentBlockHeight = contentBorderBoxSize.blockSize;
+        }
 
         // when content is wider than the accordion we get a vertical scrollbar, which takes some space away from the content
         // thus this size needs to be added to the contentWrapperHeight
         const scrollBarHeight: number = this.collapsibleElement.offsetHeight - this.collapsibleElement.clientHeight;
-        const blockSize: number = contentBorderBoxSize.blockSize;
 
-        this.contentWrapperHeight = `${pxToRem(blockSize + scrollBarHeight)}rem`;
+        this.contentWrapperHeight = `${pxToRemWithUnit(contentBlockHeight + scrollBarHeight)}`;
         if (this.open) {
           this.collapsibleElement.style.height = this.contentWrapperHeight;
         }
