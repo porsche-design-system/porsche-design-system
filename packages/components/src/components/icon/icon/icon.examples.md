@@ -11,10 +11,10 @@ To reference an icon just use the `name` property with a predefined icon id.
 
 <Playground :markup="name" :config="config"></Playground>
 
-### ♿️ Accessibility hints
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 With the use of SVG icons, there are options to enhance accessibility to users using screen readers. Here are some good practices:
 
-**If icons are purely decorative, hide the icon for screen readers:**
+**If icons are purely decorative or are used in combination with text, hide the icon for screen readers:**
 ```html
 <p-icon name="arrow" aria-hidden="true" />
 ```

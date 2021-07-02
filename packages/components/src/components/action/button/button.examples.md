@@ -26,7 +26,7 @@ Choose between predefined styling variants.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### Accessibility hints
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Submit contact form"`
 * If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
@@ -61,7 +61,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
     config = { themeable: true, spacing: 'inline' };
     
     primary = 
-`<p-button variant="primary">Some label</p-button>
+`<p-button variant="primary" aria-label="Some descriptive label">Some label</p-button>
 <p-button variant="primary" disabled>Some label</p-button>
 <p-button variant="primary" loading>Some label</p-button>
 <br>
