@@ -9,8 +9,8 @@
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
     <div
-      class="example"
       :class="{
+        example: true,
         'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
         'example--dark': mergedConfig.themeable && theme === 'dark',
         'example--surface': mergedConfig.colorScheme === 'surface',
@@ -21,7 +21,13 @@
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
       }"
     >
-      <div :class="this.markup ? '' : 'demo'" v-if="isSlotSet" class="configurator">
+      <div
+        v-if="isSlotSet"
+        :class="{
+          configurator: true,
+          demo: this.markup,
+        }"
+      >
         <slot :theme="theme" />
       </div>
       <template v-if="this.markup">
