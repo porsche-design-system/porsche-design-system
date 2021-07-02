@@ -39,7 +39,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 <Playground :markup="basicAnchor" :config="config"></Playground>
 
-### ♿️ Accessibility hints
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 
 The `<p-tabs-bar>` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
