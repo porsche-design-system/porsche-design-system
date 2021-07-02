@@ -116,6 +116,7 @@ describe('button', () => {
 
     for (const triggerElement of [host, button]) {
       await triggerElement.click();
+      await waitForEventSerialization(page);
     }
     await waitForEventSerialization(page);
     expect(calls).toBe(2);

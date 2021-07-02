@@ -1,5 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
+import * as fromExamples from './examples';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -139,6 +140,11 @@ export const routes: RouteType[] = [
     component: fromPages.SwitchPage,
   },
   {
+    name: 'Table',
+    path: '/table',
+    component: fromPages.TablePage,
+  },
+  {
     name: 'Tabs',
     path: '/tabs',
     component: fromPages.TabsPage,
@@ -196,5 +202,24 @@ export const routes: RouteType[] = [
     name: 'Events',
     path: '/events',
     component: fromPages.EventsPage,
+  },
+  {
+    name: '---',
+    isDisabled: true,
+  },
+  {
+    name: 'Table Example Basic',
+    path: '/table-example-basic',
+    component: fromExamples.TableExampleBasicPage,
+  },
+  {
+    name: 'Table Example Sorting',
+    path: '/table-example-sorting',
+    component: fromExamples.TableExampleSortingPage,
+  },
+  {
+    name: 'Table Example Advanced',
+    path: '/table-example-advanced',
+    component: fromExamples.TableExampleAdvancedPage,
   },
 ];

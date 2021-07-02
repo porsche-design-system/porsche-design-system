@@ -77,15 +77,12 @@ describe('cdp-helper', () => {
       const getElementsMarkup: GetMarkup = () => '<div>SomeDiv</div><div>SomeDiv</div>';
 
       const result = `
-  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
-  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>
-  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
     <div>SomeDiv</div><div>SomeDiv</div>
   </div>`;
@@ -100,21 +97,18 @@ describe('cdp-helper', () => {
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
       const result = `
-  <p-headline variant="headline-4">Hovered</p-headline>
   <div class="playground light hovered">
     <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>
   <div class="playground dark hovered">
     <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
   </div>
-  <p-headline variant="headline-4">Focused</p-headline>
   <div class="playground light focused">
     <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>
   <div class="playground dark focused">
     <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
   </div>
-  <p-headline variant="headline-4">Focused+Hovered</p-headline>
   <div class="playground light focused-hovered">
     <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
   </div>

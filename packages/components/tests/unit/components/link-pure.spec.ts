@@ -3,7 +3,7 @@ import { LinkPure } from '../../../src/components/navigation/link-pure/link-pure
 
 jest.mock('../../../src/utils/focus-handling');
 
-describe('button-pure', () => {
+describe('link-pure', () => {
   describe('componentDidLoad', () => {
     let spy: jest.SpyInstance;
     beforeEach(() => {
@@ -22,7 +22,7 @@ describe('button-pure', () => {
       component.size = 'inherit';
       component.componentDidLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
     });
   });
 });

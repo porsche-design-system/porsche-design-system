@@ -99,7 +99,7 @@
       if (this.hasTabs) {
         await this.$router.replace(this.createTabLink(this.tabs[0]));
       } else {
-        await this.$router.replace({ name: `404` });
+        await this.$router.replace({ name: '404' });
       }
     }
   }

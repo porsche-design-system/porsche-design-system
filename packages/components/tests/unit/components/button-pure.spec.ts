@@ -23,7 +23,7 @@ describe('button-pure', () => {
       component.size = 'inherit';
       component.componentDidLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
     });
   });
 });

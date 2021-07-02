@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addImportantToEachRule() should add !important to each rule 1`] = `
+Object {
+  "&:hover": Object {
+    "&:focus": Object {
+      "color": "orange !important",
+    },
+    "color": "blue !important",
+  },
+  "color": "red !important",
+  "display": "block !important",
+}
+`;
+
+exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "outlineColor": "red",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "2px",
+}
+`;
+
+exports[`getFocusStyles() should return correct JssStyle for custom offset 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "outlineColor": "currentColor",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "1px",
+}
+`;
+
+exports[`getFocusStyles() should return correct JssStyle with important 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0 !important",
+  },
+  "&:focus": Object {
+    "outlineColor": "currentColor !important",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent !important",
+  },
+  "outline": "transparent solid 1px !important",
+  "outlineOffset": "2px !important",
+}
+`;
+
+exports[`getFocusStyles() should return correct default JssStyle 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "outlineColor": "currentColor",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "2px",
+}
+`;
+
+exports[`getHoverStyles() should return correct JssStyle with important 1`] = `
+Object {
+  "&:hover": Object {
+    "color": "#d5001c !important",
+  },
+  "transition": "color var(--p-transition-duration, .24s) ease !important",
+}
+`;
+
+exports[`getHoverStyles() should return correct default JssStyle 1`] = `
+Object {
+  "&:hover": Object {
+    "color": "#d5001c",
+  },
+  "transition": "color var(--p-transition-duration, .24s) ease",
+}
+`;

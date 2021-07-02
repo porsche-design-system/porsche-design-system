@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -153,7 +153,24 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         </div>
 
-        <div class="playground light" title="should render default tabs with custom prefix">
+        <div class="playground light" title="should render default table">
+          <p-table>
+            <p-table-head>
+              <p-table-head-row>
+                <p-table-head-cell>Column 1</p-table-head-cell>
+                <p-table-head-cell>Column 2</p-table-head-cell>
+              </p-table-head-row>
+            </p-table-head>
+            <p-table-body>
+              <p-table-row>
+                <p-table-cell>Cell 1</p-table-cell>
+                <p-table-cell>Cell 2</p-table-cell>
+              </p-table-row>
+            </p-table-body>
+          </p-table>
+        </div>
+
+        <div class="playground light" title="should render default tabs">
           <p-tabs>
             <p-tabs-item label="Tab1">Content 1</p-tabs-item>
             <p-tabs-item label="Tab2">Content 2</p-tabs-item>
@@ -161,7 +178,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-tabs>
         </div>
 
-        <div class="playground light" title="should render default tabs-bar with custom prefix">
+        <div class="playground light" title="should render default tabs-bar">
           <p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
@@ -310,6 +327,23 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           ></my-prefix-p-pagination>
         </div>
 
+        <div class="playground light" title="should render default table with custom prefix">
+          <my-prefix-p-table>
+            <my-prefix-p-table-head>
+              <my-prefix-p-table-head-row>
+                <my-prefix-p-table-head-cell>Column 1</my-prefix-p-table-head-cell>
+                <my-prefix-p-table-head-cell>Column 2</my-prefix-p-table-head-cell>
+              </my-prefix-p-table-head-row>
+            </my-prefix-p-table-head>
+            <my-prefix-p-table-body>
+              <my-prefix-p-table-row>
+                <my-prefix-p-table-cell>Cell 1</my-prefix-p-table-cell>
+                <my-prefix-p-table-cell>Cell 2</my-prefix-p-table-cell>
+              </my-prefix-p-table-row>
+            </my-prefix-p-table-body>
+          </my-prefix-p-table>
+        </div>
+
         <div class="playground light" title="should render default tabs with custom prefix">
           <my-prefix-p-tabs p-tabs>
             <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
@@ -346,14 +380,18 @@ import { componentsReady } from '@porsche-design-system/components-angular';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit {
   // solve race-condition between non-prefixed and prefixed banner focus
   public allReady: boolean = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngOnInit() {
     componentsReady().then(() => {
       this.allReady = true;
+      this.cdr.markForCheck();
     });
   }
 }

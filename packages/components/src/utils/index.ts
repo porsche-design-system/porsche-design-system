@@ -11,6 +11,7 @@ export * from './line-height';
 export * from './prefix';
 export * from './property-observer';
 export * from './dom';
+export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './styles';

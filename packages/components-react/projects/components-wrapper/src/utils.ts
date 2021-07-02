@@ -23,15 +23,13 @@ export const getMergedClassName = /*#__PURE__*/ (
   return componentClasses.concat(domClasses).join(' ');
 };
 
-export const jsonStringify = /*#__PURE__*/ (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
-
-export const syncRef = /*#__PURE__*/ (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) => (
-  el: HTMLElement
-): void => {
-  elementRef.current = el;
-  if (typeof ref === 'function') {
-    ref(el);
-  } else if (ref !== null) {
-    ref.current = el;
-  }
-};
+export const syncRef = /*#__PURE__*/
+  (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) =>
+  (el: HTMLElement): void => {
+    elementRef.current = el;
+    if (typeof ref === 'function') {
+      ref(el);
+    } else if (ref !== null) {
+      ref.current = el;
+    }
+  };

@@ -1,5 +1,6 @@
 import {
   attachCss,
+  buildGlobalStyles,
   buildHostStyles,
   buildResponsiveJss,
   getCss,
@@ -46,6 +47,10 @@ describe('getCss()', () => {
       },
       result:
         ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+    },
+    {
+      input: { '@global': { div: { display: 'block' } } },
+      result: 'div{display:block}',
     },
   ];
   it.each(
@@ -107,6 +112,12 @@ describe('attachCss()', () => {
 describe('buildHostStyles()', () => {
   it('should return :host styles object', () => {
     expect(buildHostStyles({ marginLeft: 5 })).toStrictEqual({ ':host': { marginLeft: 5 } });
+  });
+});
+
+describe('buildGlobalStyles()', () => {
+  it('should return @global styles object', () => {
+    expect(buildGlobalStyles({ div: { marginLeft: 5 } })).toStrictEqual({ '@global': { div: { marginLeft: 5 } } });
   });
 });
 

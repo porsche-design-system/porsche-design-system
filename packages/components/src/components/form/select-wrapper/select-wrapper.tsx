@@ -1,21 +1,23 @@
-import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
+  getRole,
   getTagName,
-  hasNamedSlot,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   insertSlottedStyles,
   isDark,
   isRequiredAndParentNotRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
+  observeProperties,
   prefix,
   setAriaAttributes,
   setAttribute,
-  getRole,
-  observeProperties,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -183,13 +185,13 @@ export class SelectWrapper {
       <Host>
         <div class={selectClasses}>
           <label id="p-label">
-            {this.isLabelVisible && (
+            {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
-            {this.isDescriptionVisible && (
+            {hasDescription(this.host, this.description) && (
               <PrefixedTagNames.pText
                 class={descriptionClasses}
                 tag="span"
@@ -235,25 +237,13 @@ export class SelectWrapper {
             </div>
           )}
         </div>
-        {this.isMessageVisible && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || hasNamedSlot(this.host, 'description');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   /*

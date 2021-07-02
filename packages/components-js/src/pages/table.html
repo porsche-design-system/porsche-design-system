@@ -1,0 +1,82 @@
+<div class="playground light table" title="should render table">
+  <script>
+    const getHeadAndData = async () => {
+      const content = await fetch('assets/shared.js').then((res) => res.text());
+      const [, headStr] = /const headVrt = ((.|\s)*?);/.exec(content) || [];
+      const head = eval(headStr);
+
+      const [, dataStr] = /const dataVrt = ((.|\s)*?\));/.exec(content) || [];
+      const data = eval(dataStr);
+
+      return { head, data };
+    };
+
+    (async () => {
+      const { head, data } = await getHeadAndData();
+
+      const renderTableHeadRow = (items) =>
+        [
+          '<p-table-head-row>',
+          ...items.map((item) => {
+            const attrs = item.style?.minWidth ? 'style="min-width: 250px;"' : '';
+            return `<p-table-head-cell ${attrs}>${item.name}</p-table-head-cell>`;
+          }),
+          '</p-table-head-row>',
+        ].join('');
+
+      const renderTableBodyRows = (items) =>
+        items
+          .map(
+            (item) => `
+<p-table-row>
+  <p-table-cell>
+    <img
+      src="${item.imageUrl}"
+      width=${item.imageWidth}"
+      height=${item.imageHeight}"
+      style='margin-right: .5rem;'
+      alt=''
+    />${item.html}
+  </p-table-cell>
+  <p-table-cell style='white-space: normal'>${item.longText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>
+    <p-button-pure icon='edit' style='padding: .5rem;'>Edit</p-button-pure>
+    <p-button-pure icon='delete' style='padding: .5rem;'>Delete</p-button-pure>
+  </p-table-cell>
+</p-table-row>`
+          )
+          .join('');
+
+      const markup = `
+<p-table caption='Some caption'>
+  <p-table-head>${renderTableHeadRow(head)}</p-table-head>
+  <p-table-body>${renderTableBodyRows(data)}</p-table-body>
+</p-table>`;
+
+      const playground = document.querySelector('.table');
+      playground.innerHTML = markup;
+
+      const tableHeadCells = playground.querySelectorAll('p-table-head-cell');
+
+      // pass head item via property
+      tableHeadCells.forEach((el, index) => {
+        el.hideLabel = head[index].hideLabel;
+        el.sort = head[index];
+      });
+    })();
+  </script>
+</div>
+
+<div class="playground light" title="should render table with unstyled slotted caption">
+  <p-table>
+    <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell>Column 1</p-table-head-cell>
+        <p-table-head-cell>Column 2</p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+  </p-table>
+</div>
