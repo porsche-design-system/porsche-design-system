@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-marque',
@@ -15,5 +15,6 @@ import { Component } from '@angular/core';
       <p-marque [trademark]="false" [size]="'medium'"></p-marque>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MarqueComponent {}

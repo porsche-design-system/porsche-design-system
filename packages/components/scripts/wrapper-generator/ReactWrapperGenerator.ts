@@ -18,15 +18,16 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       'ForwardedRef',
       'forwardRef',
       'HTMLAttributes',
-      'useRef',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
+      ...(extendedProps.some(({ isEvent }) => !isEvent) ? ['useEffect'] : []),
+      'useRef',
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
-    const hooksImports = ['usePrefix', 'useMergedClass', ...(hasEventProps ? ['useEventCallback'] : [])];
+    const hooksImports = [...(hasEventProps ? ['useEventCallback'] : []), 'useMergedClass', 'usePrefix'];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
-    const utilsImports = ['syncRef', ...(canBeObject ? ['jsonStringify'] : [])];
+    const utilsImports = ['syncRef'];
     const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const importsFromTypes = nonPrimitiveTypes.length
@@ -41,18 +42,28 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`;
+    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+    return `export type ${this.generatePropsName(
+      component
+    )}${genericType} = HTMLAttributes<{}> & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
+    const hasGeneric = this.inputParser.hasGeneric(component);
+    const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
-    const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
+    const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
 
-    const wrapperPropsArr: string[] = [...propsToDestructure.map(({ key }) => key), 'className', '...rest'];
+    const wrapperPropsArr: string[] = [
+      ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
+        isEvent || defaultValue === undefined ? key : `${key} = ${defaultValue}`
+      ),
+      'className',
+      '...rest',
+    ];
     const wrapperProps = `{ ${wrapperPropsArr.join(', ')} }`;
 
-    const propsName = this.generatePropsName(component);
+    const propsName = this.generatePropsName(component) + (hasGeneric ? '<T>' : '');
     const wrapperPropsType = this.inputParser.canHaveChildren(component)
       ? `PropsWithChildren<${propsName}>`
       : propsName;
@@ -66,11 +77,27 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
+    const [firstPropToSync] = propsToSync;
+    const componentEffectsArr: string[] =
+      propsToSync.length === 1
+        ? [
+            `useEffect(() => {
+      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key};
+    }, [${firstPropToSync.key}]);`,
+          ]
+        : [
+            `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
+            `useEffect(() => {
+      const { current } = elementRef;
+      [${propsToSync.map(({ key }) => `'${key}'`).join(', ')}].forEach(
+        (propName, i) => ((current as any)[propName] = propsToSync[i])
+      );
+    }, propsToSync);`,
+          ];
+    const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
+
     const componentPropsArr: string[] = [
       '...rest',
-      ...propsToMap.map(
-        ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
-      ),
       'class: useMergedClass(elementRef, className)',
       'ref: syncRef(elementRef, ref)',
     ];
@@ -79,14 +106,14 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ${componentPropsArr.join(',\n      ')}
     };`;
 
+    const genericType = hasGeneric ? '<T extends object>' : '';
+
     return `export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
-  (
+  ${genericType}(
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>
   ): JSX.Element => {
-    ${componentHooks}
-
-    ${componentProps}
+    ${[componentHooks, componentEffects, componentProps].filter((x) => x).join('\n\n    ')}
 
     return <Tag {...props} />;
   }

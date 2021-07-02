@@ -5,9 +5,9 @@ import {
   getTagName,
   handleButtonEvent,
   insertSlottedStyles,
-  isDescriptionVisible,
-  isLabelVisible,
-  isMessageVisible,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   isRequiredAndParentNotRequired,
   mapBreakpointPropToClasses,
   observeMutations,
@@ -96,13 +96,13 @@ export class TextFieldWrapper {
       <Host>
         <div class={rootClasses}>
           <label class={labelClasses}>
-            {isLabelVisible(this.host, this.label) && (
+            {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
-            {isDescriptionVisible(this.host, this.description) && (
+            {hasDescription(this.host, this.description) && (
               <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
@@ -121,7 +121,7 @@ export class TextFieldWrapper {
             )
           )}
         </div>
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>

@@ -5,8 +5,8 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  isLabelVisible,
-  isMessageVisible,
+  hasLabel,
+  hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
   observeMutations,
@@ -82,7 +82,7 @@ export class RadioButtonWrapper {
     return (
       <Host>
         <label class={rootClasses}>
-          {isLabelVisible(this.host, this.label) && (
+          {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
@@ -90,7 +90,7 @@ export class RadioButtonWrapper {
           )}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>

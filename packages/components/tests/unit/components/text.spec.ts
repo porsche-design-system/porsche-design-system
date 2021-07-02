@@ -1,7 +1,7 @@
 import { Text } from '../../../src/components/basic/typography/text/text';
 import * as transitionListenerUtils from '../../../src/utils/transition-listener';
 
-describe('button-pure', () => {
+describe('text', () => {
   describe('componentDidLoad', () => {
     let spy: jest.SpyInstance;
     beforeEach(() => {
@@ -20,7 +20,7 @@ describe('button-pure', () => {
       component.size = 'inherit';
       component.componentDidLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
     });
   });
 });

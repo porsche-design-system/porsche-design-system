@@ -33,7 +33,7 @@
 
     codepenIcon = require('../assets/icon-codepen.svg');
 
-    // public mounted(): void {
+    // private mounted(): void {
     //   // @ts-ignore
     //   window.__CPEmbed(this.$el.querySelector('.codepen'));
     //   <script async src="https://static.codepen.io/assets/embed/ei.js"><\/script>

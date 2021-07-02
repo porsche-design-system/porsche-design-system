@@ -50,10 +50,10 @@ export class LinkSocial {
     | 'logo-youku' = undefined;
 
   /** A custom URL path to a custom social icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string = undefined;
+  @Prop() public href?: string;
 
   /** Adapts the icon color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -62,7 +62,7 @@ export class LinkSocial {
   @Prop() public target?: LinkTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string = undefined;
+  @Prop() public rel?: string;
 
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

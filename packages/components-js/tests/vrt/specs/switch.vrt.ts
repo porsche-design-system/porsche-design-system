@@ -30,7 +30,7 @@ describe('Switch', () => {
       await vrt.test('switch-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-switch ~ p-switch { margin-top: 8px; }</style>`;
+        const head = `<style type="text/css">p-switch ~ p-switch { margin-top: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-switch theme="${theme}">Some label</p-switch>

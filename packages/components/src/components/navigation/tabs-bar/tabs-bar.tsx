@@ -18,6 +18,7 @@ import {
   getPrefixedTagNames,
   isDark,
   mapBreakpointPropToClasses,
+  scrollElementTo,
   setAttribute,
 } from '../../../utils';
 
@@ -42,7 +43,7 @@ export class TabsBar {
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
-  @Prop() public activeTabIndex?: number | undefined = undefined;
+  @Prop() public activeTabIndex?: number | undefined;
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
@@ -52,7 +53,6 @@ export class TabsBar {
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval: NodeJS.Timeout;
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
@@ -97,7 +97,7 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     this.hostObserver.disconnect();
-    this.intersectionObserver.disconnect();
+    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
@@ -146,6 +146,7 @@ export class TabsBar {
         <span class={gradientClasses} />
         <PrefixedTagNames.pButtonPure
           aria-hidden="true"
+          type="button"
           tabbable={false}
           theme={this.theme}
           hide-label="true"
@@ -248,6 +249,7 @@ export class TabsBar {
         }
       },
       {
+        // TODO: shouldn't root be the the scrollable div rather than the host?
         root: this.host,
         // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
         // In his case 0.9px of the trigger have to be hidden to show the gradient
@@ -312,38 +314,13 @@ export class TabsBar {
     if (opts?.skipAnimation) {
       this.scrollAreaElement.scrollLeft = scrollActivePosition;
     } else {
-      this.scrollTo(scrollActivePosition);
+      scrollElementTo(this.scrollAreaElement, scrollActivePosition);
     }
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
-    this.scrollTo(scrollPosition);
-  };
-
-  private scrollTo = (scrollPosition: number): void => {
-    if ('scrollBehavior' in document?.documentElement?.style) {
-      this.scrollAreaElement.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth',
-      });
-    } else {
-      // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
-      let i = 0;
-      const steps = 20;
-      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
-      const scrollDistance = scrollPosition - initialScrollLeft;
-      const scrollStep = scrollDistance / steps;
-
-      clearInterval(this.scrollInterval);
-      this.scrollInterval = setInterval(() => {
-        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
-        if (++i >= steps) {
-          this.scrollAreaElement.scrollLeft = scrollPosition;
-          clearInterval(this.scrollInterval);
-        }
-      }, 10);
-    }
+    scrollElementTo(this.scrollAreaElement, scrollPosition);
   };
 
   private get focusedTabIndex(): number {

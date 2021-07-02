@@ -43,7 +43,7 @@ export class InputParser {
       // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
       .replace(/declare global {\n\tinterface Window {\n\t\tPORSCHE_DESIGN_SYSTEM_CDN: "auto" \| "cn";\n\t}\n}/g, '')
       // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
-      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/g, '')
+      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
 
@@ -55,6 +55,12 @@ export class InputParser {
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
+  }
+
+  private getComponentSourceCode(component: TagName): string {
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
+    return fs.readFileSync(filePath, 'utf8');
   }
 
   public getSharedTypes(): string {
@@ -76,18 +82,28 @@ export class InputParser {
   }
 
   public getComponentInterface(component: TagName): ParsedInterface {
-    let rawInterface = this.getRawComponentInterface(component);
-    rawInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
+    const rawInterface = this.getRawComponentInterface(component);
+    const cleanedInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',"); // convert to valid js object
 
-    const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
+    const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
     return parsedInterface;
   }
 
-  public canHaveChildren(component: TagName): boolean {
-    const fileName = `${component.replace('p-', '')}.tsx`;
-    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+  public hasGeneric(component: TagName): boolean {
+    const rawInterface = this.getRawComponentInterface(component);
+    return !!rawInterface.match(/: T[^\w]/);
+  }
 
+  public canHaveChildren(component: TagName): boolean {
+    const fileContent = this.getComponentSourceCode(component);
     return fileContent.includes('<slot');
+  }
+
+  public getDefaultValueForProp(component: TagName, prop: string): string {
+    const fileContent = this.getComponentSourceCode(component);
+    // extract values in same line, next line or multi line, but also respect not default
+    const [, defaultValue] =
+      fileContent.match(new RegExp(`@Prop\\(.*?\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+    return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }

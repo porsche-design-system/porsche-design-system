@@ -12,7 +12,7 @@ describe('text-field-wrapper', () => {
       const component = new TextFieldWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
     });
   });
 
@@ -24,7 +24,11 @@ describe('text-field-wrapper', () => {
         component.componentWillLoad();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      const selector = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
+        .map((type) => `input[type=${type}]`)
+        .join(',');
+
+      expect(spy).toBeCalledWith(undefined, selector);
     });
 
     it('should call observeMutations()', () => {
@@ -34,7 +38,7 @@ describe('text-field-wrapper', () => {
         component.componentWillLoad();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
     });
   });
 
@@ -44,7 +48,7 @@ describe('text-field-wrapper', () => {
       const component = new TextFieldWrapper();
       component.disconnectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined);
     });
   });
 });

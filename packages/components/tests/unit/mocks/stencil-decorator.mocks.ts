@@ -12,3 +12,4 @@ export const Element = jest.fn();
 export const State = jest.fn();
 export const Prop = jest.fn();
 export const Listen = jest.fn();
+export const Event = jest.fn();

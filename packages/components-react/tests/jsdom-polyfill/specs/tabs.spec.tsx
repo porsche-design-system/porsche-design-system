@@ -18,9 +18,15 @@ const Sample = (): JSX.Element => {
         }}
         data-testid="host"
       >
-        <PTabsItem label="Some label">Content 1</PTabsItem>
-        <PTabsItem label="Some label">Content 2</PTabsItem>
-        <PTabsItem label="Some label">Content 3</PTabsItem>
+        <PTabsItem label="Some label" data-testid="child1">
+          Content 1
+        </PTabsItem>
+        <PTabsItem label="Some label" data-testid="child2">
+          Content 2
+        </PTabsItem>
+        <PTabsItem label="Some label" data-testid="child3">
+          Content 3
+        </PTabsItem>
       </PTabs>
       <button type="button" data-testid="button1" onClick={() => setActiveTab(2)} />
       <button type="button" data-testid="button2" onClick={() => setActiveTab(1)} />
@@ -37,6 +43,9 @@ describe('PTabs', () => {
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
+    expect(getByTestId('child1').shadowRoot).not.toBeNull();
+    expect(getByTestId('child2').shadowRoot).not.toBeNull();
+    expect(getByTestId('child3').shadowRoot).not.toBeNull();
   });
 
   it('should have working events', async () => {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-grid',
@@ -396,5 +396,6 @@ import { Component } from '@angular/core';
       </p-grid>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent {}

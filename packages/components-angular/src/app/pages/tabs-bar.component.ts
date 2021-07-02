@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-tabs-bar',
@@ -216,5 +216,6 @@ import { Component } from '@angular/core';
       </p-tabs-bar>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsBarComponent {}

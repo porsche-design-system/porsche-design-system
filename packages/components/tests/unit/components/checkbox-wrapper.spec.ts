@@ -12,7 +12,7 @@ describe('checkbox-wrapper', () => {
       const component = new CheckboxWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
     });
   });
 
@@ -24,7 +24,7 @@ describe('checkbox-wrapper', () => {
         component.componentWillLoad();
       } catch (e) {}
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, 'input[type="checkbox"]');
     });
 
     it('should call observeMutations()', () => {
@@ -32,7 +32,7 @@ describe('checkbox-wrapper', () => {
       const component = new CheckboxWrapper();
       component.componentWillLoad();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
     });
   });
 
@@ -42,7 +42,7 @@ describe('checkbox-wrapper', () => {
       const component = new CheckboxWrapper();
       component.disconnectedCallback();
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(undefined);
     });
   });
 });

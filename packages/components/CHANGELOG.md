@@ -8,14 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Added
-- Angular: export types from package root
+### [2.3.0-beta.0] - 2021-07-01
 
-#### Fixed
-- Angular: support `"strictTemplates": true` option in `tsconfig.json`
+#### Added
+- `Table`
+- Angular: export types from package root
+- Accessibility icon
 
 #### Changed
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
+- `Text` and `Headline` inherits white-space CSS property
+- React: sync component props via property instead of attribute 
+
+#### Fixed
+- Angular: support `"strictTemplates": true` option in `tsconfig.json`
+- Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components
 
 ### [2.2.1] - 2021-06-08
 
@@ -23,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimize vertical alignment of `Modal`
 
 #### Fixed
-- URL of inject global styles warning
+- URL in inject global style warning
 
 ### [2.2.1-beta.1] - 2021-06-02
 
