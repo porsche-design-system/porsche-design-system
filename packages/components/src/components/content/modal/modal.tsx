@@ -104,6 +104,7 @@ export class Modal {
               {!this.disableCloseButton && (
                 <div class="close">
                   <PrefixedTagNames.pButtonPure
+                    type="button"
                     ref={(el) => (this.closeBtn = el)}
                     hideLabel
                     icon="close"
