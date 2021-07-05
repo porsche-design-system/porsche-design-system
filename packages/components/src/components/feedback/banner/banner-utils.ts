@@ -1,47 +1,38 @@
-import { attachCss, breakpoint, getCss, mediaQuery, pxToRem } from '../../../utils';
+import { addImportantToRule, attachCss, breakpoint, getCss, mediaQuery } from '../../../utils';
 
-const baseCss: string = getCss({});
+const easeOutQuad = 'cubic-bezier(0.5, 1, 0.89, 1)';
 
-export const getMediaQueryStyles = (): string =>
-  getCss({
-    '@keyframes animateMobileOut': {
-      from: {
-        bottom: pxToRem(56),
-        opacity: 1,
-      },
-      to: {
-        bottom: '-100%',
-        opacity: 0,
-      },
+export const closeStyles = getCss({
+  '@keyframes animateMobileOut': {
+    from: {
+      opacity: 1,
+      transform: 'translate3d(0,0,0)',
     },
-    '@keyframes animateDesktopOut': {
-      from: {
-        top: pxToRem(56),
-        opacity: 1,
-      },
-      to: {
-        top: '-100%',
-        opacity: 0,
-      },
+    to: {
+      opacity: 0,
+      transform: 'translate3d(0, calc(var(--p-banner-position-bottom) + 100%), 0)',
     },
-    ':host(.banner--close)': {
-      position: 'fixed',
-      zIndex: 99,
-      width: '100%',
-
-      [`${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`]: {
-        bottom: '-100%',
-        willChange: 'opacity, bottom',
-        animation: '600ms 0s $animateMobileOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
-      },
-      [mediaQuery('s')]: {
-        top: '-100%',
-        willChange: 'opacity, top',
-        animation: '600ms 0s $animateDesktopOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important',
-      },
+  },
+  '@keyframes animateDesktopOut': {
+    from: {
+      opacity: 1,
+      transform: 'translate3d(0,0,0)',
     },
-  });
+    to: {
+      opacity: 0,
+      transform: 'translate3d(0, calc(-100% - var(--p-banner-position-bottom)), 0)',
+    },
+  },
+  ':host(.banner--close)': {
+    [`${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`]: {
+      animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
+    },
+    [mediaQuery('s')]: {
+      animation: addImportantToRule(`600ms $animateDesktopOut ${easeOutQuad} forwards`),
+    },
+  },
+});
 
 export const addCss = (host: HTMLElement): void => {
-  attachCss(host, baseCss + getMediaQueryStyles());
+  attachCss(host, closeStyles);
 };
