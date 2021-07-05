@@ -49,8 +49,8 @@ describe('banner', () => {
 
   it('should render close button with type of "button"', async () => {
     await initBanner();
-    const closeBtnReal = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
-    expect(await getAttribute(await closeBtnReal(), 'type')).toBe('button');
+    const closeBtnReal = await selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
   it('should render without button', async () => {
