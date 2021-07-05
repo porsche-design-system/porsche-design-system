@@ -17,8 +17,8 @@ import {
 import { ElementHandle, Page } from 'puppeteer';
 import { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_FADE_IN_DURATION = 2000;
-const CSS_FADE_OUT_DURATION = 1000;
+const CSS_FADE_IN_DURATION = 600;
+const CSS_FADE_OUT_DURATION = 600;
 
 describe('banner', () => {
   let page: Page;
@@ -49,8 +49,8 @@ describe('banner', () => {
 
   it('should render close button with type of "button"', async () => {
     await initBanner();
-    const closeBtnReal = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
-    expect(await getAttribute(await closeBtnReal(), 'type')).toBe('button');
+    const closeBtnReal = await selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
   it('should render without button', async () => {
