@@ -39,7 +39,6 @@ export const getCollapsibleElementHeight = (isOpen: boolean, contentWrapperHeigh
 };
 
 export const getContentWrapperHeight = (
-  compact: boolean,
   borderBoxSize: ResizeObserverSize | readonly ResizeObserverSize[],
   contentRect: DOMRectReadOnly
 ): string => {
@@ -47,12 +46,11 @@ export const getContentWrapperHeight = (
 
   // Safari does not support borderBoxSize
   if (!borderBoxSize) {
-    const PADDING = compact ? 16 : 40;
-    contentBlockHeight = contentRect.height + PADDING;
+    contentBlockHeight = contentRect.height;
   } else {
     // Firefox implements `borderBoxSize` as a single content rect, rather than an array
     const { blockSize } = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
     contentBlockHeight = blockSize;
   }
-  return `${pxToRemWithUnit(contentBlockHeight)}`;
+  return pxToRemWithUnit(contentBlockHeight);
 };

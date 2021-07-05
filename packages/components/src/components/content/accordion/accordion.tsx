@@ -52,7 +52,7 @@ export class Accordion {
     observeResize(
       this.contentWrapper,
       ({ borderBoxSize, contentRect }) => {
-        this.contentWrapperHeight = getContentWrapperHeight(this.compact, borderBoxSize, contentRect);
+        this.contentWrapperHeight = getContentWrapperHeight(borderBoxSize, contentRect);
         if (this.open) {
           this.collapsibleElement.style.height = this.contentWrapperHeight;
         }

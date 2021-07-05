@@ -16,22 +16,16 @@ describe('getCollapsibleElementHeight()', () => {
 
 describe('getContentWrapperHeight()', () => {
   it.each([
-    [true, undefined, { height: 20 }, '2.25rem'],
-    [false, undefined, { height: 20 }, '3.75rem'],
-    [true, { blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [true, [{ blockSize: 300 }], { height: 20 }, '18.75rem'],
-    [false, { blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [false, [{ blockSize: 300 }], { height: 20 }, '18.75rem'],
+    [undefined, { height: 20 }, '2.25rem'],
+    [undefined, { height: 20 }, '3.75rem'],
+    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
+    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
+    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
+    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
   ])(
-    'should for compact = %s border boxSize = %o and contentRect = %o return %s',
-    (compact: boolean, borderBoxSize: any, contentRect: DOMRectReadOnly, expected: string) => {
-      expect(
-        getContentWrapperHeight(
-          compact,
-          borderBoxSize as ResizeObserverSize | readonly ResizeObserverSize[],
-          contentRect
-        )
-      ).toBe(expected);
+    'should for border boxSize = %o and contentRect = %o return %s',
+    (borderBoxSize: ResizeObserverSize[], contentRect: DOMRectReadOnly, expected: string) => {
+      expect(getContentWrapperHeight(borderBoxSize, contentRect)).toBe(expected);
     }
   );
 });
