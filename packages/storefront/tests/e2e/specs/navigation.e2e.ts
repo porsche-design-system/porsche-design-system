@@ -21,23 +21,26 @@ describe('navigation', () => {
   const hasPageObjectObject = async (page: Page): Promise<boolean> =>
     page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
+  const injectCSSOverrides = async () => {
+    const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
+    const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
+    const overrides = fs.readFileSync(pathToOverrides).toString();
+
+    await browserPage.evaluate((overrides) => {
+      const styleTag = document.createElement('style');
+      styleTag.innerText = overrides;
+      document.getElementsByTagName('head')[0].appendChild(styleTag);
+    }, overrides);
+  };
+
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
       ((category: string, page: string) => {
         it(`should navigate to "${category} > ${page}"`, async () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
-
-          const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
-          const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
-          const overrides = fs.readFileSync(pathToOverrides).toString();
-
-          await browserPage.evaluate((overrides) => {
-            const styleTag = document.createElement('style');
-            styleTag.innerText = overrides;
-            document.getElementsByTagName('head')[0].appendChild(styleTag);
-          }, overrides);
-
+          await injectCSSOverrides();
           await browserPage.waitForSelector('html.hydrated');
+
           const [accordionButton] = await browserPage.$x(
             `//aside[@class='sidebar']/nav/p-accordion[@heading='${category}']`
           );
