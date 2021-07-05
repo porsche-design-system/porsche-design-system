@@ -17,10 +17,10 @@ describe('getCollapsibleElementHeight()', () => {
 describe('getContentWrapperHeight()', () => {
   it.each([
     [undefined, { height: 20 }, '1.25rem'],
-    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
-    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
+    [{ blockSize: 300 }, undefined, '18.75rem'],
+    [[{ blockSize: 300 }], undefined, '18.75rem'],
+    [{ blockSize: 300 }, { height: 20 }, , '18.75rem'],
+    [[{ blockSize: 300 }], { height: 20 }, , '18.75rem'],
   ])(
     'should for border boxSize = %o and contentRect = %o return %s',
     (borderBoxSize: ResizeObserverSize[], contentRect: DOMRectReadOnly, expected: string) => {
