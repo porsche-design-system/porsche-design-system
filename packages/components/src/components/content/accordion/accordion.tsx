@@ -9,7 +9,7 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { getCollapsibleElementHeight, getSlottedCss } from './accordion-utils';
+import { getCollapsibleElementHeight, getContentWrapperHeight, getSlottedCss } from './accordion-utils';
 import { observeResize, unobserveResize } from '../../../utils/resize-observer';
 
 @Component({
@@ -58,19 +58,7 @@ export class Accordion {
     observeResize(
       this.contentWrapper,
       ({ borderBoxSize, contentRect }) => {
-        let contentBlockHeight: number;
-
-        // Safari does not support borderBoxSize
-        if (!borderBoxSize) {
-          const PADDING = this.compact ? 16 : 40;
-          contentBlockHeight = contentRect.height + PADDING;
-        } else {
-          // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-          const contentBorderBoxSize = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
-          contentBlockHeight = contentBorderBoxSize.blockSize;
-        }
-
-        this.contentWrapperHeight = `${pxToRemWithUnit(contentBlockHeight)}`;
+        this.contentWrapperHeight = getContentWrapperHeight(this.compact, borderBoxSize, contentRect);
         if (this.open) {
           this.collapsibleElement.style.height = this.contentWrapperHeight;
         }

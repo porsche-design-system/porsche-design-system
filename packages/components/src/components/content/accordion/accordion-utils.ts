@@ -6,6 +6,7 @@ import {
   getHoverStyles,
   getTagName,
   JssStyle,
+  pxToRemWithUnit,
 } from '../../../utils';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
@@ -35,4 +36,23 @@ export const getSlottedCss = (host: HTMLElement): string => {
 
 export const getCollapsibleElementHeight = (isOpen: boolean, contentWrapperHeight: string): string => {
   return isOpen ? contentWrapperHeight : '0';
+};
+
+export const getContentWrapperHeight = (
+  compact: boolean,
+  borderBoxSize: ResizeObserverSize | readonly ResizeObserverSize[],
+  contentRect: DOMRectReadOnly
+): string => {
+  let contentBlockHeight;
+
+  // Safari does not support borderBoxSize
+  if (!borderBoxSize) {
+    const PADDING = compact ? 16 : 40;
+    contentBlockHeight = contentRect.height + PADDING;
+  } else {
+    // Firefox implements `borderBoxSize` as a single content rect, rather than an array
+    const { blockSize } = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
+    contentBlockHeight = blockSize;
+  }
+  return `${pxToRemWithUnit(contentBlockHeight)}`;
 };
