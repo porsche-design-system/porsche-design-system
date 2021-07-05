@@ -8,7 +8,7 @@
       v-bind:open="accordion[category]"
       v-on:accordionChange="toggleActive(category)"
     >
-      <ul v-show="accordion[category]">
+      <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
             <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
