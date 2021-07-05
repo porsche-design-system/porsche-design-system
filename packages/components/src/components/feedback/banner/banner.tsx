@@ -104,8 +104,7 @@ export class Banner {
     );
   }
 
-  private handleKeyboardEvents = (e: KeyboardEvent): void => {
-    const { key } = e;
+  private handleKeyboardEvents = ({ key }: KeyboardEvent): void => {
     if (key === 'Esc' || key === 'Escape') {
       this.removeBanner();
     }
@@ -116,7 +115,7 @@ export class Banner {
     this.host.classList.add('banner--close');
     setTimeout(() => {
       this.host.remove();
-    }, 1000);
+    }, 600); // duration of animation
   };
 
   private addSlottedStyles(): void {
