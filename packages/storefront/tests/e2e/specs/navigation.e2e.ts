@@ -25,8 +25,8 @@ describe('navigation', () => {
         it(`should navigate to "${category} > ${page}"`, async () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
           await browserPage.waitForSelector('html.hydrated');
-          const [buttonElement] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-accordion//span[contains(., '${category}')]`
+          const [accordionButton] = await browserPage.$x(
+            `//aside[@class='sidebar']//nav//p-accordion//p-headline//button[contains(., '${category}')]`
           );
           const [linkElement] = await browserPage.$x(
             `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
@@ -34,7 +34,7 @@ describe('navigation', () => {
             )}\/${paramCase(page)}']`
           );
 
-          await buttonElement.click();
+          await accordionButton.click();
 
           expect(await isLinkActive(linkElement))
             .withContext('link should be inactive initially')
