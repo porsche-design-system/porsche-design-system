@@ -23,8 +23,13 @@ describe('observeMutations()', () => {
       const cb = jest.fn();
 
       observeMutations(input, ['disabled'], cb);
+      expect(mutationMap.size).toBe(1);
+
       unobserveMutations(input);
+      expect(mutationMap.size).toBe(0);
+
       observeMutations(input, ['disabled'], cb);
+      expect(mutationMap.size).toBe(1);
 
       input.setAttribute('disabled', '');
 
@@ -78,19 +83,6 @@ describe('observeMutations()', () => {
       await tick();
       expect(cb).toBeCalledTimes(1);
     });
-  });
-
-  it('should not execute callback when mutationMap is cleared', async () => {
-    const input = document.createElement('input');
-    const cb = jest.fn();
-
-    observeMutations(input, ['disabled'], cb);
-    mutationMap.clear();
-
-    input.setAttribute('disabled', '');
-    await tick();
-
-    expect(cb).toBeCalledTimes(0);
   });
 });
 

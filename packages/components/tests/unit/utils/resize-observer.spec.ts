@@ -17,20 +17,27 @@ describe('observeResize()', () => {
   });
 
   describe('on size change', () => {
-    const getNode = (): HTMLDivElement => {
+    const createResizeableNode = (): HTMLDivElement => {
       const node = document.createElement('div');
+      // in order for JSDOM to trigger the ResizeObserver event correctly,
+      // the readonly offsetHeight property needs to be manually overridden
       Object.defineProperty(node, 'offsetHeight', { writable: true, configurable: true, value: 20 });
       document.body.appendChild(node);
       return node;
     };
 
     it('should run callback once when observeResize is reapplied', async () => {
-      const node = getNode();
+      const node = createResizeableNode();
       const cb = jest.fn();
 
       observeResize(node, cb);
+      expect(resizeMap.size).toBe(1);
+
       unobserveResize(node);
+      expect(resizeMap.size).toBe(0);
+
       observeResize(node, cb);
+      expect(resizeMap.size).toBe(1);
 
       node.style.height = '20px';
 
@@ -39,7 +46,7 @@ describe('observeResize()', () => {
     });
 
     it('should run callback once when observeResize is called multiple times', async () => {
-      const node = getNode();
+      const node = createResizeableNode();
 
       const cb = jest.fn();
 
@@ -54,8 +61,8 @@ describe('observeResize()', () => {
     });
 
     it('should run callback once when multiple divs are observed', async () => {
-      const node1 = getNode();
-      const node2 = getNode();
+      const node1 = createResizeableNode();
+      const node2 = createResizeableNode();
 
       const cb1 = jest.fn();
       const cb2 = jest.fn();
@@ -71,7 +78,7 @@ describe('observeResize()', () => {
     });
 
     it('should pass ResizeObserverEntry to callback', async () => {
-      const node = getNode();
+      const node = createResizeableNode();
       let tempResizeEntry;
 
       const cb = jest.fn((resizeEntry: ResizeObserverEntry) => (tempResizeEntry = resizeEntry));
@@ -83,19 +90,6 @@ describe('observeResize()', () => {
       await tick();
       expect(cb).toHaveBeenCalledWith(tempResizeEntry);
     });
-  });
-
-  it('should not execute callback when resizeMap is cleared', async () => {
-    const node = document.createElement('div');
-    const cb = jest.fn();
-
-    observeResize(node, cb);
-    resizeMap.clear();
-
-    node.style.height = '30px';
-    await tick();
-
-    expect(cb).toBeCalledTimes(0);
   });
 });
 
