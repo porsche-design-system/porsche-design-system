@@ -2,9 +2,9 @@
   <nav>
     <p-accordion
       compact="true"
-      :heading="category"
-      :key="index"
       v-for="(pages, category, index) in config"
+      :key="index"
+      :heading="category"
       v-bind:open="accordion[category]"
       v-on:accordionChange="toggleActive(category)"
     >
