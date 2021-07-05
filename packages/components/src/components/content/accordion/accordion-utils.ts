@@ -49,7 +49,7 @@ export const getContentWrapperHeight = (
     contentBlockHeight = contentRect.height;
   } else {
     // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-    const { blockSize } = Array.isArray(borderBoxSize) ? borderBoxSize[0] : borderBoxSize;
+    const { blockSize } = borderBoxSize[0] || borderBoxSize;
     contentBlockHeight = blockSize;
   }
   return pxToRemWithUnit(contentBlockHeight);
