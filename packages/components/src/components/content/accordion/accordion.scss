@@ -129,10 +129,6 @@ button {
   transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
     visibility $p-animation-hover-duration-var linear $p-animation-hover-duration-var;
 
-  #{$root}--compact & {
-    padding: 0;
-  }
-
   #{$root}--open & {
     height: auto;
     padding-bottom: $p-spacing-40;
@@ -142,9 +138,12 @@ button {
     animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards openAnimation;
   }
 
-  #{$root}--compact,
-  #{$root}--open & {
-    padding-bottom: $p-spacing-16;
+  #{$root}--compact & {
+    padding: 0;
+
+    #{$root}--open & {
+      padding-bottom: $p-spacing-16;
+    }
   }
 }
 
