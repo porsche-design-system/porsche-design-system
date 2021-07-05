@@ -29,7 +29,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### Framework Implementations
 
-<Playground :frameworks="frameworks"></Playground>
+<Playground :frameworkMarkup="frameworks"></Playground>
 
 ### Buttons
 

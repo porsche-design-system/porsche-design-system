@@ -5,7 +5,7 @@ Accordions are flexible in the context and can include other components of the P
 
 ## Basic example
 
-<Playground :frameworks="codeExample" :config="config" :markup="basic"></Playground>
+<Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
 
 The accordion width is 100% of the parent container.
 We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
