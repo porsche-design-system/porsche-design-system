@@ -113,11 +113,14 @@ describe('unobserveResize()', () => {
 
     unobserveResize(node1);
     expect(resizeMap.size).toBe(2);
+    expect(resizeMap.get(node1)).toEqual(undefined);
     expect(resizeMap.get(node2)).toEqual(callback2);
     expect(resizeMap.get(node3)).toEqual(callback3);
 
     unobserveResize(node3);
     expect(resizeMap.size).toBe(1);
+    expect(resizeMap.get(node1)).toEqual(undefined);
     expect(resizeMap.get(node2)).toEqual(callback2);
+    expect(resizeMap.get(node3)).toEqual(undefined);
   });
 });
