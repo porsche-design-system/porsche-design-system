@@ -1,6 +1,7 @@
 import {
   getCollapsibleElementHeight,
   getContentWrapperHeight,
+  getSlottedCss,
 } from '../../../src/components/content/accordion/accordion-utils';
 
 describe('getCollapsibleElementHeight()', () => {
@@ -33,4 +34,9 @@ describe('getContentWrapperHeight()', () => {
       ).toBe(expected);
     }
   );
+});
+
+describe('getSlottedCss() should contain correct css', () => {
+  const host = document.createElement('p-accordion');
+  expect(getSlottedCss(host)).toMatchSnapshot();
 });
