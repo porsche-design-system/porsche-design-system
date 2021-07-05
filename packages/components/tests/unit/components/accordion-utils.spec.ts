@@ -16,8 +16,7 @@ describe('getCollapsibleElementHeight()', () => {
 
 describe('getContentWrapperHeight()', () => {
   it.each([
-    [undefined, { height: 20 }, '2.25rem'],
-    [undefined, { height: 20 }, '3.75rem'],
+    [undefined, { height: 20 }, '1.25rem'],
     [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
     [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
     [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
