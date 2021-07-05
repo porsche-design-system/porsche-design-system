@@ -8,38 +8,40 @@ $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
   --#{$p-global-class-prefix}banner-position-top: #{p-px-to-rem(56px)};
   --#{$p-global-class-prefix}banner-position-bottom: #{p-px-to-rem(56px)};
   --#{$p-global-class-prefix}banner-z-index: 99;
+  display: block;
   position: var(--#{$p-global-class-prefix}banner-position-type);
   z-index: var(--#{$p-global-class-prefix}banner-z-index);
-  width: 100%;
   opacity: 0;
+  left: 0;
+  right: 0;
+  will-change: opacity, transform;
 }
 
 @keyframes animateMobileIn {
   from {
-    bottom: -100%;
     opacity: 0;
+    transform: translate3d(0, calc(var(--#{$p-global-class-prefix}banner-position-bottom) + 100%), 0);
   }
   to {
-    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes animateDesktopIn {
   from {
-    top: -100%;
     opacity: 0;
+    transform: translate3d(0, calc(-100% - var(--#{$p-global-class-prefix}banner-position-bottom)), 0);
   }
   to {
-    top: var(--#{$p-global-class-prefix}banner-position-top);
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @include p-media-query('xxs', 's') {
   :host {
-    bottom: -100%;
-    will-change: opacity, bottom;
+    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
   }
 
   :host(.hydrated) {
@@ -49,8 +51,7 @@ $easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
 
 @include p-media-query('s') {
   :host {
-    top: -100%;
-    will-change: opacity, top;
+    top: var(--#{$p-global-class-prefix}banner-position-top);
   }
 
   :host(.hydrated) {
