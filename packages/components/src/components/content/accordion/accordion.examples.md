@@ -142,12 +142,7 @@ export default class Code extends Vue {
   
   registerEvents() {
     const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-    accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', this.onAccordionChange));
-  }
-  
-  onAccordionChange =  (e) => {
-    const { open } = e.detail;
-    e.target.open = open;
+    accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', (e) => (e.target.open = e.detail.open)));
   }
 }
 </script>
