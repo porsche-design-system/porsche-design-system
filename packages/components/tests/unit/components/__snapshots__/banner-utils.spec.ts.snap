@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`closeStyles should contain correct css 1`] = `"@keyframes keyframes-animateMobileOut{from{opacity:1;transform:translate3d(0, 0, 0)}to{opacity:0;transform:translate3d(0, calc(var(--p-banner-position-bottom) + 100%), 0)}}@keyframes keyframes-animateDesktopOut{from{opacity:1;transform:translate3d(0, 0, 0)}to{opacity:0;transform:translate3d(0, calc(-100% - var(--p-banner-position-bottom)), 0)}}@media(min-width:0px) and (max-width:760px){:host(.banner--close){animation:600ms keyframes-animateMobileOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important}}@media(min-width:760px){:host(.banner--close){animation:600ms keyframes-animateDesktopOut cubic-bezier(0.5, 1, 0.89, 1) forwards !important}}"`;
