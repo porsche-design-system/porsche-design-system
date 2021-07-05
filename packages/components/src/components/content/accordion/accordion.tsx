@@ -36,7 +36,7 @@ export class Accordion {
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
   private collapsibleElement: HTMLDivElement;
-  private contentWrapper: HTMLDivElement;
+  private content: HTMLDivElement;
   private contentWrapperHeight: string;
 
   @Watch('open')
@@ -50,7 +50,7 @@ export class Accordion {
 
   public componentDidLoad(): void {
     observeResize(
-      this.contentWrapper,
+      this.content,
       ({ borderBoxSize, contentRect }) => {
         this.contentWrapperHeight = getContentWrapperHeight(borderBoxSize, contentRect);
         if (this.open) {
@@ -62,7 +62,7 @@ export class Accordion {
   }
 
   public disconnectedCallback(): void {
-    unobserveResize(this.contentWrapper);
+    unobserveResize(this.content);
   }
 
   public render(): JSX.Element {
@@ -73,7 +73,7 @@ export class Accordion {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--open']: this.open,
-      ...(!this.compact && { ...mapBreakpointPropToClasses('root--size', this.size) }),
+      ...(!this.compact && mapBreakpointPropToClasses('root--size', this.size)),
       ['root--compact']: this.compact,
     };
 
@@ -106,7 +106,7 @@ export class Accordion {
           aria-labelledby={buttonId}
           ref={(el) => (this.collapsibleElement = el)}
         >
-          <div class="content-wrapper" ref={(el) => (this.contentWrapper = el)}>
+          <div class="content" ref={(el) => (this.content = el)}>
             <slot />
           </div>
         </div>
