@@ -1,11 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  insertSlottedStyles,
-  isDark,
-  mapBreakpointPropToClasses,
-  pxToRemWithUnit,
-} from '../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
