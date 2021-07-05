@@ -117,7 +117,7 @@ export default class Code extends Vue {
   get compactMarkup() {      
     return `<div style="width: 400px">
   <p-accordion heading="Some Heading" tag="h3" compact="true">
-      <p-link-pure>Some label</p-link-pure>
+    <p-link-pure>Some label</p-link-pure>
   </p-accordion>
   <p-accordion heading="Some Heading" tag="h3" compact="true">
     <p-link-pure>Some label</p-link-pure>
