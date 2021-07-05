@@ -17,6 +17,9 @@ export const observeResize = <T extends HTMLElement>(
 };
 
 export const unobserveResize = <T extends HTMLElement>(node: T): void => {
-  resizeObserver.unobserve(node);
+  // node might not be defined in disconnectedCallback
+  if (node) {
+    resizeObserver.unobserve(node);
+  }
   resizeMap.delete(node);
 };
