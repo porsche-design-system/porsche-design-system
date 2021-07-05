@@ -106,11 +106,14 @@ describe('unobserveMutations()', () => {
 
     unobserveMutations(node1);
     expect(mutationMap.size).toBe(2);
+    expect(mutationMap.get(node1)).toEqual(undefined);
     expect(mutationMap.get(node2)).toEqual(callback2);
     expect(mutationMap.get(node3)).toEqual(callback3);
 
     unobserveMutations(node3);
     expect(mutationMap.size).toBe(1);
+    expect(mutationMap.get(node1)).toEqual(undefined);
     expect(mutationMap.get(node2)).toEqual(callback2);
+    expect(mutationMap.get(node3)).toEqual(undefined);
   });
 });
