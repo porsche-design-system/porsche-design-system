@@ -34,8 +34,12 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
-export const getCollapsibleElementHeight = (isOpen: boolean, contentWrapperHeight: string): string => {
-  return isOpen ? contentWrapperHeight : '0';
+export const setCollapsibleElementHeight = (
+  collapsibleElement: HTMLDivElement,
+  isOpen: boolean,
+  contentWrapperHeight: string
+): void => {
+  collapsibleElement.style.height = isOpen ? contentWrapperHeight : '0';
 };
 
 export const getContentWrapperHeight = (

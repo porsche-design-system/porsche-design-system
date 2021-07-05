@@ -1,16 +1,28 @@
 import {
-  getCollapsibleElementHeight,
+  setCollapsibleElementHeight,
   getContentWrapperHeight,
   getSlottedCss,
 } from '../../../src/components/content/accordion/accordion-utils';
 
-describe('getCollapsibleElementHeight()', () => {
-  it('should return "200px" if isOpen = true', () => {
-    expect(getCollapsibleElementHeight(true, '200px')).toBe('200px');
+describe('setCollapsibleElementHeight()', () => {
+  it('should set style.height on element to "200px" if isOpen = true', () => {
+    const collapsible = document.createElement('div');
+
+    expect(collapsible.style.height).toBe('');
+
+    setCollapsibleElementHeight(collapsible, true, '200px');
+
+    expect(collapsible.style.height).toBe('200px');
   });
 
-  it('should return "0" if isOpen = false', () => {
-    expect(getCollapsibleElementHeight(false, '200px')).toBe('0');
+  it('should set style.height on element to "0" if isOpen = false', () => {
+    const collapsible = document.createElement('div');
+
+    expect(collapsible.style.height).toBe('');
+
+    setCollapsibleElementHeight(collapsible, false, '200px');
+
+    expect(collapsible.style.height).toBe('0px');
   });
 });
 

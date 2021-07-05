@@ -3,7 +3,7 @@ import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToCl
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { getCollapsibleElementHeight, getContentWrapperHeight, getSlottedCss } from './accordion-utils';
+import { setCollapsibleElementHeight, getContentWrapperHeight, getSlottedCss } from './accordion-utils';
 import { observeResize, unobserveResize } from '../../../utils/resize-observer';
 
 @Component({
@@ -40,8 +40,8 @@ export class Accordion {
   private contentWrapperHeight: string;
 
   @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    this.collapsibleElement.style.height = getCollapsibleElementHeight(isOpen, this.contentWrapperHeight);
+  public openChangeHandler(): void {
+    this.setCollapsibleElementHeight();
   }
 
   public connectedCallback(): void {
@@ -53,9 +53,7 @@ export class Accordion {
       this.content,
       ({ borderBoxSize, contentRect }) => {
         this.contentWrapperHeight = getContentWrapperHeight(borderBoxSize, contentRect);
-        if (this.open) {
-          this.collapsibleElement.style.height = this.contentWrapperHeight;
-        }
+        this.setCollapsibleElementHeight();
       },
       { box: 'border-box' }
     );
@@ -117,4 +115,8 @@ export class Accordion {
   private handleButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
   };
+
+  private setCollapsibleElementHeight(): void {
+    setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentWrapperHeight);
+  }
 }
