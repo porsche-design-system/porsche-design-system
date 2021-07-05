@@ -2,6 +2,8 @@ import { getBrowser, options } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
+import * as path from 'path';
+import * as fs from 'fs';
 
 describe('navigation', () => {
   let browserPage: Page;
@@ -24,14 +26,24 @@ describe('navigation', () => {
       ((category: string, page: string) => {
         it(`should navigate to "${category} > ${page}"`, async () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
+
+          const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
+          const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
+          const overrides = fs.readFileSync(pathToOverrides).toString();
+
+          await browserPage.evaluate((overrides) => {
+            const styleTag = document.createElement('style');
+            styleTag.innerText = overrides;
+            document.getElementsByTagName('head')[0].appendChild(styleTag);
+          }, overrides);
+
           await browserPage.waitForSelector('html.hydrated');
           const [accordionButton] = await browserPage.$x(
             `//aside[@class='sidebar']/nav/p-accordion[@heading='${category}']`
           );
+          const href = `\/${paramCase(category)}\/${paramCase(page)}`;
           const [linkElement] = await browserPage.$x(
-            `//aside[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
-              category
-            )}\/${paramCase(page)}']`
+            `//aside[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
           );
 
           await accordionButton.click();
