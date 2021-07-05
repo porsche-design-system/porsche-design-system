@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `Accordion` component
 
+#### Changed
+- Removed initial delay of `Banner`
+
 ### [2.3.0-beta.0] - 2021-07-01
 
 #### Added
