@@ -17,8 +17,8 @@ import {
 import { ElementHandle, Page } from 'puppeteer';
 import { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_FADE_IN_DURATION = 2000;
-const CSS_FADE_OUT_DURATION = 1000;
+const CSS_FADE_IN_DURATION = 600;
+const CSS_FADE_OUT_DURATION = 600;
 
 describe('banner', () => {
   let page: Page;
