@@ -139,7 +139,7 @@ button {
     visibility: visible;
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
-    animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards 'openAnimation';
+    animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards openAnimation;
   }
 
   #{$root}--compact,
