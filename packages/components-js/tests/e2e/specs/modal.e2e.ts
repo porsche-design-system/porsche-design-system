@@ -90,8 +90,8 @@ describe('modal', () => {
       const closeBtn = await getModalCloseButton();
       expect(closeBtn).not.toBeNull();
 
-      const closeBtnReal = () => selectNode(page, 'p-modal >>> .close p-button-pure >>> button');
-      expect(await getAttribute(await closeBtnReal(), 'type')).toBe('button');
+      const closeBtnReal = await selectNode(page, 'p-modal >>> .close p-button-pure >>> button');
+      expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 
       await closeBtn.click();
       await waitForStencilLifecycle(page);
