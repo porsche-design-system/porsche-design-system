@@ -26,10 +26,10 @@ describe('navigation', () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
           await browserPage.waitForSelector('html.hydrated');
           const [accordionButton] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-accordion//p-headline//button[contains(., '${category}')]`
+            `//aside[@class='sidebar']/nav/p-accordion[@heading='${category}']`
           );
           const [linkElement] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
+            `//aside[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
               category
             )}\/${paramCase(page)}']`
           );
