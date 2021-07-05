@@ -23,8 +23,7 @@
 
   accordions.forEach((accordion) =>
     accordion.addEventListener('accordionChange', (e) => {
-      const { open } = e.detail;
-      e.target.open = open;
+      e.target.open = e.detail.open;
     })
   );
 </script>
