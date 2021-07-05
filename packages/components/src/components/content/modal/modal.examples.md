@@ -36,7 +36,7 @@ You can test it out by navigation this example with the keyboard only.
 
 ### Framework Implementations
 
-<Playground :frameworks="frameworks"></Playground>
+<Playground :frameworkMarkup="frameworks"></Playground>
 
 ## Basic Scrollable
 

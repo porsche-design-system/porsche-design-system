@@ -8,7 +8,7 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Basic Table
 
-<Playground :frameworks="basic">
+<Playground :frameworkMarkup="basic">
   <p-table caption="Some caption" ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
@@ -67,7 +67,7 @@ type TableHeadCellSort = {
 
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should subscribe to.
 
-<Playground :frameworks="sorting">
+<Playground :frameworkMarkup="sorting">
   <p-table caption="Some caption" ref="tableSorting">
     <p-table-head>
       <p-table-head-row>
@@ -96,7 +96,7 @@ Sometimes you want to hide the label of a table column for example when the colu
 
 The appearance of a table's contents can be customized as illustrated in the following example. 
 
-<Playground :frameworks="advanced">
+<Playground :frameworkMarkup="advanced">
   <p-table ref="tableAdvanced">
     <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
     <p-table-head>

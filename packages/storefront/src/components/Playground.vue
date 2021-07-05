@@ -24,27 +24,28 @@
       <div
         v-if="isSlotSet"
         :class="{
-          configurator: true,
-          demo: this.markup,
+          configurator: !hasFrameworkMarkup,
+          demo: hasFrameworkMarkup,
         }"
       >
         <slot :theme="theme" />
       </div>
-      <template v-if="this.markup">
-        <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
-        <template v-if="!hasFrameworkMarkup">
-          <CodeBlock :markup="patchedMarkup" :convert-markup="true" :theme="theme"></CodeBlock>
-          <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
-        </template>
-      </template>
-      <template v-if="hasFrameworkMarkup">
+      <div v-if="markup" class="demo" v-html="cleanedDemoMarkup"></div>
+      <template v-if="codeBlockMarkup">
         <CodeBlock
-          class="code-block code-block--framework"
-          :markup="patchedFrameworkMarkup"
+          :class="{ 'code-block--framework': hasFrameworkMarkup }"
+          :markup="codeBlockMarkup"
+          :convert-markup="!hasFrameworkMarkup"
           :theme="theme"
-          :frameworks="Object.keys(frameworks)"
-        ></CodeBlock
-      ></template>
+          :frameworks="frameworks"
+        ></CodeBlock>
+        <CodeEditor
+          v-if="!hasFrameworkMarkup"
+          :markup="cleanedEditorMarkup"
+          :theme="theme"
+          :framework="activeFramework"
+        ></CodeEditor>
+      </template>
     </div>
   </div>
 </template>
@@ -82,7 +83,7 @@
   })
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
-    @Prop({ default: () => ({}) }) public frameworks!: FrameworkMarkup;
+    @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
@@ -93,41 +94,46 @@
       this.activeThemeTabIndex = activeTabIndex;
     }
 
-    public cleanEditorMarkup = cleanMarkup;
+    public switchTheme(theme: Theme): void {
+      this.theme = theme;
+    }
+
+    public get cleanedEditorMarkup(): string {
+      return cleanMarkup(this.codeBlockMarkup);
+    }
 
     public get mergedConfig(): PlaygroundConfig {
       return { ...initialConfig, ...this.config };
     }
 
-    public get patchedMarkup(): string {
-      return patchThemeIntoMarkup(this.markup, this.theme);
+    public get codeBlockMarkup(): string {
+      return patchThemeIntoMarkup(this.activeFrameworkMarkup ?? this.markup, this.theme);
     }
 
-    public get patchedFrameworkMarkup(): string {
-      return patchThemeIntoMarkup(this.frameworkMarkup, this.theme);
+    public get cleanedDemoMarkup(): string {
+      return patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
     }
 
-    public cleanDemoMarkup(input: string): string {
-      return input.replace(/\n/g, '');
+    public get frameworks(): Framework[] {
+      return this.hasFrameworkMarkup
+        ? (Object.keys(this.frameworkMarkup) as Framework[])
+        : (undefined as unknown as Framework[]);
     }
 
-    public switchTheme(theme: Theme): void {
-      this.theme = theme;
-    }
-
-    public get framework(): Framework {
+    public get activeFramework(): Framework {
       return this.$store.getters.selectedFramework;
     }
 
-    public get frameworkMarkup(): string {
-      return this.frameworks[this.framework]!;
+    public get activeFrameworkMarkup(): string {
+      return this.frameworkMarkup[this.activeFramework]!;
     }
 
     public get isSlotSet(): boolean {
       return !!this.$scopedSlots.default;
     }
+
     public get hasFrameworkMarkup(): boolean {
-      return Object.keys(this.frameworks).length !== 0;
+      return Object.keys(this.frameworkMarkup).length !== 0;
     }
   }
 </script>
@@ -215,8 +221,11 @@
       margin-top: $p-spacing-32;
     }
 
+    .code-block ~ form {
+      margin-top: $p-spacing-16;
+    }
+
     .code-block {
-      margin-bottom: $p-spacing-16;
       &--framework ::v-deep pre {
         max-height: 40rem;
       }
