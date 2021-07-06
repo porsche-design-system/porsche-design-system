@@ -29,7 +29,7 @@ export class Accordion {
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
 
-  /** Displays the Accordion as compact version with thinner border and smaller paddings */
+  /** Displays the Accordion as compact version with thinner border and smaller paddings. */
   @Prop() public compact?: boolean;
 
   /** Emitted when accordion state is changed. */

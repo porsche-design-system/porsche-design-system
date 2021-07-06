@@ -39,11 +39,11 @@ describe('PAccordion', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const open = getByTestId('host').shadowRoot.querySelector('p-headline button');
+    const button = getByTestId('host').shadowRoot.querySelector('p-headline button');
 
     expect(debug.innerHTML).toBe('Status: false; Event Counter: 0;');
 
-    userEvent.click(open);
+    userEvent.click(button);
     expect(debug.innerHTML).toBe('Status: true; Event Counter: 1;');
   });
 });
