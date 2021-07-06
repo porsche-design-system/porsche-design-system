@@ -1,5 +1,5 @@
 import { ElementHandle, Page } from 'puppeteer';
-import { selectNode, goto, waitForComponentsReady } from '../helpers';
+import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode, waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
 describe('events', () => {
@@ -50,6 +50,21 @@ describe('events', () => {
 
       await clickElement(firstBtn);
       expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+    });
+
+    it('should not throw error error when used with router', async () => {
+      initConsoleObserver(page);
+      await goto(page, 'tabs-bar'); // to load component chunk
+
+      // navigate via select, otherwise we would have a reload
+      const select = await selectNode(page, 'select');
+      await select.click();
+      await page.keyboard.type('Events');
+      await page.keyboard.press('Enter');
+      expect(getConsoleErrorsAmount()).toBe(0);
+
+      await page.evaluate(() => console.error('test error'));
+      expect(getConsoleErrorsAmount()).toBe(1);
     });
   });
 
