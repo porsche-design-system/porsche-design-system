@@ -106,8 +106,7 @@ import type { TabChangeEvent } from '@porsche-design-system/components-react';
 export const SingleComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
   const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-    const { activeTabIndex } = e.detail;
-    setActiveTab(activeTabIndex);
+    setActiveTab(e.detail.activeTabIndex);
   }, []);
 
   return (

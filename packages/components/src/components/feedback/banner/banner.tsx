@@ -31,7 +31,7 @@ export class Banner {
 
   public connectedCallback(): void {
     if (!this.persistent) {
-      document.addEventListener('keydown', this.handleKeyboardEvents);
+      document.addEventListener('keydown', this.onKeyboardEvents);
     }
     this.addSlottedStyles();
   }
@@ -48,7 +48,7 @@ export class Banner {
 
   public disconnectedCallback(): void {
     if (!this.persistent) {
-      document.removeEventListener('keydown', this.handleKeyboardEvents);
+      document.removeEventListener('keydown', this.onKeyboardEvents);
     }
   }
 
@@ -104,7 +104,7 @@ export class Banner {
     );
   }
 
-  private handleKeyboardEvents = ({ key }: KeyboardEvent): void => {
+  private onKeyboardEvents = ({ key }: KeyboardEvent): void => {
     if (key === 'Esc' || key === 'Escape') {
       this.removeBanner();
     }

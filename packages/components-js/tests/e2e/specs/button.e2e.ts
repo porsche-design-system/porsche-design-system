@@ -132,8 +132,8 @@ describe('button', () => {
         </form>
       </div>
       <script>
-        document.querySelector('#wrapper').addEventListener('click', function(event) {
-          event.preventDefault();
+        document.querySelector('#wrapper').addEventListener('click', (e) => {
+          e.preventDefault();
         });
       </script>
     `

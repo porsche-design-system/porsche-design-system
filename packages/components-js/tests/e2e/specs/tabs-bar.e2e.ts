@@ -42,9 +42,8 @@ describe('tabs-bar', () => {
   const clickHandlerScript = `
     <script>
       const tabsBar = document.querySelector('p-tabs-bar')
-      tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
-          const { activeTabIndex } = tabChangeEvent.detail;
-          tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+      tabsBar.addEventListener('tabChange', (e) => {
+          e.target.activeTabIndex = e.detail.activeTabIndex;
       });
     </script>`;
   const initTabsBar = async (opts?: InitOptions) => {

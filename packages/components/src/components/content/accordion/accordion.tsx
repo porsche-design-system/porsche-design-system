@@ -85,7 +85,7 @@ export class Accordion {
             type="button"
             aria-expanded={this.open}
             aria-controls={contentId}
-            onClick={this.handleButtonClick}
+            onClick={this.onButtonClick}
           >
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon
@@ -112,7 +112,7 @@ export class Accordion {
     );
   }
 
-  private handleButtonClick = (): void => {
+  private onButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
   };
 
