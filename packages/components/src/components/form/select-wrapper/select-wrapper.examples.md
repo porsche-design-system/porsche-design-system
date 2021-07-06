@@ -1,9 +1,11 @@
-# Select
+# Select Wrapper
 
-The **Select** component is a styling wrapper for the native HTML `<select>` form element.
+The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element.
 To improve accessibility on devices with touch support, it defaults to the native user interface behaviour.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Select Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for.
+The `p-select-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible.
+When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 ## Basic example
 
@@ -87,7 +89,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Validation states
 
-The **Select Wrapper** component supports the visualisation of inline validation.
+The `p-select-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">

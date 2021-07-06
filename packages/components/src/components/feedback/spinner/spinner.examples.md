@@ -1,6 +1,7 @@
 # Spinner
 
-There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing of information or requests). These  moments should be bridged with a good user feedback in order to not leave the user uncertain about what's currently happening - also to avoid a high bounce rate and to obtain a positive impression of your website or application.
+There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing of information or requests).
+These moments should be bridged with a good user feedback in order to not leave the user uncertain about what's currently happening - also to avoid a high bounce rate and to obtain a positive impression of your website or application.
 
 For ongoing operations between 2-10 seconds, where the loading progress cannot be determined, use a **Spinner** (looped indicator) to inform the user about an ongoing operation. Use it either stand-alone (for example as page loader) or within components, such as in Buttons to indicate progress after clicking "save".
 

@@ -1,6 +1,6 @@
 # Switch
 
-The **Switch** component is a control that is used to quickly switch between two possible states. 
+The `p-switch` component is a control that is used to quickly switch between two possible states. 
 A switch is only used for these binary actions that occur immediately after the user “flips the switch”. 
 Commonly it is used for “on/off” state.
 
@@ -9,7 +9,7 @@ This means it does not contain any internal state, and you got full control over
 
 ## Basic example
 
-The **Switch** component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.
+The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.
 A `label` is a caption which informs the user which action is followed by interaction.
 When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
