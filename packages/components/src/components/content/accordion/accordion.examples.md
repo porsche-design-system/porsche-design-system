@@ -3,6 +3,9 @@
 A Accordion is a component that reveals or hides associated sections of content.  
 Accordions are flexible in the context and can include other components of the Porsche Design System.
 
+It is a controlled component.
+This means it does not contain any internal state, and you got full control over its behavior.
+
 ## Basic example
 
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
@@ -10,16 +13,6 @@ Accordions are flexible in the context and can include other components of the P
 The accordion width is 100% of the parent container.
 We do strongly advise you to not use the full display width, as this will quickly result in a loss of context.
 Parent containers with a maximum width of `800px` are recommended.
-
-### Event binding
-
-`p-accordion` is a component which does not work by itself and needs to be controlled from the outside.  
-This grants you flexible control over the `open` state.
-
-In order to get notified when the Accordion gets closed by clicking the `heading` you need to register an event listener for the `accordionChange` event which is emitted by `p-accordion`.
-
-You can set the `open` property to `true` so that the accordion is open by default.
-
 
 ### Headline Tag
 
@@ -54,10 +47,10 @@ Please **refrain** from using any other than text content as slotted markup.
 ## Compact
 
 By setting `compact` to `true` you can have a more compact accordion.
-It removes the `border-top` and `border-bottom` and reduces the spacings.
+It removes the borders and reduces the spacings.
 
 Be aware, that the `size` property will be ignored when `compact` is set to `true`.
-We recommend using the property in case you need a `side-navigation` with a `accordion` like behavior.
+We recommend using the property in case you need a side-navigation with an accordion like behavior.
 
 <Playground :markup="compactMarkup" :config="config"></Playground>
 
@@ -66,7 +59,7 @@ We recommend using the property in case you need a `side-navigation` with a `acc
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getAccordionCodeSamples }from '@porsche-design-system/shared';
+import { getAccordionCodeSamples } from '@porsche-design-system/shared';
   
 @Component
 export default class Code extends Vue {
