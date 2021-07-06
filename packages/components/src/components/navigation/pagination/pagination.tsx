@@ -198,7 +198,7 @@ export class Pagination {
     }
   }
 
-  private updateMaxNumberOfPageLinks(): void {
+  private updateMaxNumberOfPageLinks = (): void => {
     this.breakpointMaxNumberOfPageLinks = getCounterResetValue(this.navigationElement);
-  }
+  };
 }
