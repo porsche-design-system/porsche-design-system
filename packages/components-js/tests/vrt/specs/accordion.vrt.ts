@@ -39,18 +39,18 @@ describe('Accordion', () => {
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some heading" open="true">
             <div ${theme === 'dark' && 'style="color: white"'}>
-            ${content}
+              ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" open="true">
             <span slot="heading">Some <i>italic</i> and <em>emphasis</em> heading with <a href="#">Link</a></span>
             <div ${theme === 'dark' && 'style="color: white"'}>
-             Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
+              Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
             <div ${theme === 'dark' && 'style="color: white"'}>
-            ${content}
+              ${content}
             </div>
           </p-accordion>`;
 
