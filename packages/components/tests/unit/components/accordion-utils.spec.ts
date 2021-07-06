@@ -1,8 +1,8 @@
 import {
   setCollapsibleElementHeight,
   getContentWrapperHeight,
-  getSlottedCss,
 } from '../../../src/components/content/accordion/accordion-utils';
+import { getSlottedCss } from '../../../src/components/content/accordion/accordion-styles';
 
 describe('setCollapsibleElementHeight()', () => {
   it('should set style.height on element to "200px" if isOpen = true', () => {
@@ -41,7 +41,14 @@ describe('getContentWrapperHeight()', () => {
   );
 });
 
-describe('getSlottedCss() should contain correct css', () => {
-  const host = document.createElement('p-accordion');
-  expect(getSlottedCss(host)).toMatchSnapshot();
+describe('getSlottedCss()', () => {
+  it('should contain correct css', () => {
+    const host = document.createElement('p-accordion');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+
+  it('should return correct css with prefix', () => {
+    const host = document.createElement('prefixed-p-accordion');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
 });
