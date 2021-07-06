@@ -22,7 +22,7 @@ import { ListType, OrderType } from "./components/content/text-list/text-list/te
 export namespace Components {
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings
+          * Displays the Accordion as compact version with thinner border and smaller paddings.
          */
         "compact"?: boolean;
         /**
@@ -1121,7 +1121,7 @@ declare global {
 declare namespace LocalJSX {
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings
+          * Displays the Accordion as compact version with thinner border and smaller paddings.
          */
         "compact"?: boolean;
         /**
