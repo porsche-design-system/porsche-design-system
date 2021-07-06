@@ -102,9 +102,8 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   frameworks = {
-    'vanilla-js': `tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
-  const { activeTabIndex } = tabChangeEvent.detail;
-  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+    'vanilla-js': `tabsBar.addEventListener('tabChange', (e) => {
+  e.target.activeTabIndex = e.detail.activeTabIndex;
 });`,
     angular: `import { Component } from '@angular/core';
 import type { TabChangeEvent } from '@porsche-design-system/components-angular';
@@ -117,8 +116,7 @@ export class TabsBarPage {
   tabIndex: number;
 
   onTabChange(e: CustomEvent<TabChangeEvent>) {
-    const { activeTabIndex } = e.detail;
-    this.tabIndex = activeTabIndex;
+    this.tabIndex = e.detail.activeTabIndex;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
@@ -128,8 +126,7 @@ import type { TabChangeEvent } from '@porsche-design-system/components-react';
 const TabsBarPage = (): JSX.Element => {
     const [tabIndex, setTabIndex] = useState<number>();
     const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        const { activeTabIndex } = e.detail;
-        setTabIndex(activeTabIndex);
+        setTabIndex(e.detail.activeTabIndex);
     }, []);
 
     return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
@@ -189,7 +186,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     
     // theme switch needs to register event listeners again
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
-    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
+    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
     }));    
   }
@@ -217,8 +214,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   
   hiddenNodes = null;
   onTabChange =  (e: CustomEvent) => {
-      const { activeTabIndex } = e.detail;
-      e.target.setAttribute('active-tab-index', activeTabIndex);     
+      e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 
   updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {

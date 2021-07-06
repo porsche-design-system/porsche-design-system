@@ -75,9 +75,8 @@ export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
 
   frameworks = {
-    'vanilla-js': `switchElement.addEventListener('switchChange', (switchChangeEvent) => {
-  const { checked } = switchChangeEvent.detail;
-  switchChangeEvent.target.setAttribute('checked', checked);
+    'vanilla-js': `switchElement.addEventListener('switchChange', (e) => {
+  e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
 import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
@@ -90,8 +89,7 @@ export class SomeSwitchPage {
   checked: boolean;
 
   onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
-    const { checked } = e.detail;
-    this.checked = checked;
+    this.checked = e.detail.checked;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
@@ -101,8 +99,7 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-react'
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
   const onSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
-    const { checked } = e.detail;
-    setChecked(checked);
+    setChecked(e.detail.checked);
   }, []);
 
   return <PSwitch checked={checked} onSwitchChange={onSwitchChange}>Some label</PSwitch>
@@ -147,7 +144,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
+    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
       this.registerEvents();
     }));
   }
@@ -158,12 +155,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
   registerEvents() {
     const switches = this.$el.querySelectorAll('.playground .demo p-switch');
-    switches.forEach(switchEl => switchEl.addEventListener('switchChange', this.onSwitchChange));
-  }
-
-  onSwitchChange =  (e: CustomEvent) => {
-    const { checked } = e.detail;
-    e.target.setAttribute('checked', checked);
+    switches.forEach(switchEl => switchEl.addEventListener('switchChange', (e) => (e.target.checked = e.detail.checked)));
   }
 }
 </script>

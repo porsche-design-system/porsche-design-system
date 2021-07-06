@@ -89,9 +89,8 @@
     public theme: Theme = 'light';
     public activeThemeTabIndex = 0;
 
-    public handleActiveTabIndex(event: CustomEvent<{ activeTabIndex: number }>): void {
-      const { activeTabIndex } = event.detail;
-      this.activeThemeTabIndex = activeTabIndex;
+    public handleActiveTabIndex(e: CustomEvent<{ activeTabIndex: number }>): void {
+      this.activeThemeTabIndex = e.detail.activeTabIndex;
     }
 
     public switchTheme(theme: Theme): void {

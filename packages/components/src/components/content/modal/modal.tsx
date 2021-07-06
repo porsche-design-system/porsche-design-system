@@ -86,7 +86,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
+      <Host onClick={!this.disableBackdropClick && this.onHostClick}>
         <aside
           class={rootClasses}
           role="dialog"
@@ -128,10 +128,10 @@ export class Modal {
   };
 
   private setKeyboardListener = (active: boolean): void => {
-    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
+    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvents);
   };
 
-  private handleKeyboardEvents = (e: KeyboardEvent): void => {
+  private onKeyboardEvents = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
     if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
@@ -165,7 +165,7 @@ export class Modal {
     this.close.emit();
   };
 
-  private handleHostClick = (e: MouseEvent): void => {
+  private onHostClick = (e: MouseEvent): void => {
     const [firstEl] = e.composedPath() as HTMLElement[];
     if (firstEl === this.host) {
       this.closeModal();

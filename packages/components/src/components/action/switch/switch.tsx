@@ -46,7 +46,7 @@ export class Switch {
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
   @Listen('click', { capture: true })
-  public handleOnClick(e: MouseEvent): void {
+  public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
@@ -87,7 +87,7 @@ export class Switch {
           aria-busy={this.loading ? 'true' : null}
           disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
-          onClick={this.handleSwitchClick}
+          onClick={this.onSwitchClick}
         >
           <span class="toggle">
             {this.loading && (
@@ -99,7 +99,7 @@ export class Switch {
     );
   }
 
-  private handleSwitchClick = (): void => {
+  private onSwitchClick = (): void => {
     this.switchChange.emit({ checked: !this.checked });
   };
 

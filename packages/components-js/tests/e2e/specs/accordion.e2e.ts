@@ -31,9 +31,8 @@ describe('accordion', () => {
   const clickHandlerScript = `
     <script>
       const accordion = document.querySelector('p-accordion')
-      accordion.addEventListener('accordionChange', (accordionChangeEvent) => {
-          const { open } = accordionChangeEvent.detail;
-          accordionChangeEvent.target.setAttribute('open', open);
+      accordion.addEventListener('accordionChange', (e) => {
+          e.target.open = e.detail.open;
       });
     </script>`;
 
