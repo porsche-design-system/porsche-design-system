@@ -66,7 +66,8 @@ button {
 
   #{$root}--compact & {
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-    padding: p-px-to-rem(8px) 0;
+    padding: p-px-to-rem(4px) 0;
+    margin: p-px-to-rem(4px) 0;
     outline-offset: 2px;
 
     &:hover {
@@ -139,7 +140,7 @@ button {
   }
 
   #{$root}--compact & {
-    padding: 0;
+    padding: 0 0 p-px-to-rem(8px);
 
     #{$root}--open & {
       padding-bottom: $p-spacing-16;
