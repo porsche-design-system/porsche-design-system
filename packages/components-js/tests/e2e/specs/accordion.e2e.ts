@@ -37,7 +37,7 @@ describe('accordion', () => {
     </script>`;
 
   const initAccordion = async (opts?: InitOptions) => {
-    const { tag, otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
+    const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
 
     const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -50,7 +50,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   const getHost = () => selectNode(page, 'p-accordion');
   const getButton = () => selectNode(page, 'p-accordion >>> button');
   const getInput = () => selectNode(page, 'input');
-  const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible ');
+  const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
 
   it('should set "visibility: visible" on collapsible on initial open', async () => {
     await initAccordion({ isOpen: true });
