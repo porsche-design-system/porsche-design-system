@@ -105,7 +105,7 @@ async function copyDefinitionFile(targetDirectory: string) {
 async function extendDefinitionFile(targetDirectory: string, definitionFiles: string[]) {
   if (definitionFiles.length) {
     const targetFilePath = getDefinitionsFilePath(targetDirectory);
-    const content = fs.readFileSync(targetFilePath).toString();
+    const content = fs.readFileSync(targetFilePath, 'utf8');
 
     const result = `${content}\n\n${definitionFiles.map((file) => fs.readFileSync(file).toString()).join('\n\n')}`;
     fs.writeFileSync(targetFilePath, result);

@@ -24,7 +24,7 @@ describe('navigation', () => {
   const injectCSSOverrides = async () => {
     const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
     const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
-    const overrides = fs.readFileSync(pathToOverrides).toString();
+    const overrides = fs.readFileSync(pathToOverrides, 'utf8');
 
     await browserPage.evaluate((overrides) => {
       const styleTag = document.createElement('style');
