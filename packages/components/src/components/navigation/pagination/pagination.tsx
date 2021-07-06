@@ -103,7 +103,6 @@ export class Pagination {
               tabIndex: isActive ? 0 : null,
               onClick: () => this.onClick(value),
               onKeyDown: (e) => this.onKeyDown(e, value),
-              ariaDisabled: !isActive ? 'true' : null,
             };
 
             switch (type) {
@@ -115,7 +114,12 @@ export class Pagination {
 
                 return (
                   <li class="item">
-                    <span class={paginationPrevClasses} {...spanProps} aria-label={this.allyLabelPrev}>
+                    <span
+                      class={paginationPrevClasses}
+                      {...spanProps}
+                      aria-disabled={!isActive ? 'true' : null}
+                      aria-label={this.allyLabelPrev}
+                    >
                       <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
                     </span>
                   </li>
@@ -162,7 +166,12 @@ export class Pagination {
 
                 return (
                   <li class="item">
-                    <span class={paginationNextClasses} {...spanProps} aria-label={this.allyLabelNext}>
+                    <span
+                      class={paginationNextClasses}
+                      {...spanProps}
+                      aria-disabled={!isActive ? 'true' : null}
+                      aria-label={this.allyLabelNext}
+                    >
                       <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
                     </span>
                   </li>
