@@ -1,26 +1,26 @@
 {
-  "hash": "1dd421b3e8d3398f664c",
+  "hash": "d5a9323c9759be70a491",
   "version": "5.39.1",
-  "time": 2850,
-  "builtAt": 1625469906772,
+  "time": 2666,
+  "builtAt": 1625549559370,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.3.0-beta.0.576f7c9e2f48d73c66d7.js"
+      "porsche-design-system.v2.3.0-beta.0.c58fdc0210b025072f6a.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.3.0-beta.0.576f7c9e2f48d73c66d7.js",
+      "name": "porsche-design-system.v2.3.0-beta.0.c58fdc0210b025072f6a.js",
       "size": 66090,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "576f7c9e2f48d73c66d7",
+        "contenthash": "c58fdc0210b025072f6a",
         "javascriptModule": false,
         "size": 66090
       },
@@ -351,16 +351,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.1d5d6acf24e1c1988436.js",
-      "size": 8525,
+      "name": "porsche-design-system.pagination.701d717079598976880b.js",
+      "size": 8010,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "1d5d6acf24e1c1988436",
+        "contenthash": "701d717079598976880b",
         "javascriptModule": false,
-        "size": 8525
+        "size": 8010
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -471,16 +471,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.39d16bac1b539ce56b01.js",
-      "size": 5957,
+      "name": "porsche-design-system.banner.fc4ca570287c39861e7f.js",
+      "size": 5949,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "39d16bac1b539ce56b01",
+        "contenthash": "fc4ca570287c39861e7f",
         "javascriptModule": false,
-        "size": 5957
+        "size": 5949
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -716,9 +716,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8549,
+      "size": 8588,
       "sizes": {
-        "javascript": 8549
+        "javascript": 8588
       },
       "names": [],
       "idHints": [],
@@ -726,10 +726,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.39d16bac1b539ce56b01.js"
+        "porsche-design-system.banner.fc4ca570287c39861e7f.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "54b6aed2decb55bc2a7d",
+      "hash": "593cc7554330ae15b5ef",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -761,8 +761,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -785,16 +785,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -1045,9 +1045,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 6845,
+          "size": 6884,
           "sizes": {
-            "javascript": 6845
+            "javascript": 6884
           },
           "built": true,
           "codeGenerated": true,
@@ -1149,8 +1149,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -1173,16 +1173,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -1957,7 +1957,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -2600,7 +2600,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -3109,7 +3109,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -3752,7 +3752,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -3911,7 +3911,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./index-467074a1.js",
-              "loc": "152:21-29",
+              "loc": "157:21-29",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -4684,7 +4684,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -4900,8 +4900,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -4924,16 +4924,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+              "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+              "id": 22
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 31,
-          "issuerId": 854,
+          "issuerId": 22,
           "chunks": [
             "checkbox-wrapper",
             "radio-button-wrapper",
@@ -5119,8 +5119,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -5143,16 +5143,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -5507,8 +5507,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -5531,16 +5531,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -6437,7 +6437,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -7094,7 +7094,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -7759,8 +7759,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -7783,16 +7783,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -8567,7 +8567,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -9225,7 +9225,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -9679,7 +9679,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -9829,8 +9829,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -9853,16 +9853,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -10637,7 +10637,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -11091,7 +11091,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -11250,7 +11250,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./index-467074a1.js",
-              "loc": "152:21-29",
+              "loc": "157:21-29",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -11415,8 +11415,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -11439,16 +11439,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -12473,7 +12473,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -12927,7 +12927,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -13077,8 +13077,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -13101,16 +13101,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -13885,7 +13885,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -14069,10 +14069,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.3.0-beta.0.576f7c9e2f48d73c66d7.js"
+        "porsche-design-system.v2.3.0-beta.0.c58fdc0210b025072f6a.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "ef55c1b27f8a071607d5",
+      "hash": "1f32922b3522c2e5bd54",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -14434,7 +14434,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "1:0-221",
+              "loc": "1:0-246",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -14490,7 +14490,35 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
+              "loc": "30:17-35",
+              "moduleId": 215,
+              "resolvedModuleId": 215
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+              "module": "../components/dist/esm/p-banner.entry.js",
+              "moduleName": "../components/dist/esm/p-banner.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+              "resolvedModule": "../components/dist/esm/p-banner.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1371f008.js",
               "loc": "32:5-15",
+              "moduleId": 215,
+              "resolvedModuleId": 215
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+              "module": "../components/dist/esm/p-banner.entry.js",
+              "moduleName": "../components/dist/esm/p-banner.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+              "resolvedModule": "../components/dist/esm/p-banner.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-1371f008.js",
+              "loc": "33:17-35",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -18354,7 +18382,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "196:4-20",
+              "loc": "187:4-20",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18368,7 +18396,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "197:22-33",
+              "loc": "188:22-33",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18382,7 +18410,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "237:100-126",
+              "loc": "225:100-126",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18396,7 +18424,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "249:29-48",
+              "loc": "232:29-48",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18410,7 +18438,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "257:20-21",
+              "loc": "233:12-13",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18424,7 +18452,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "257:77-78",
+              "loc": "233:139-140",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18438,7 +18466,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "257:326-327",
+              "loc": "248:18-19",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18452,7 +18480,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "264:23-24",
+              "loc": "248:45-46",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18466,7 +18494,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "264:80-81",
+              "loc": "248:153-154",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18480,7 +18508,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "271:23-24",
+              "loc": "254:18-19",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18494,7 +18522,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "271:80-81",
+              "loc": "254:45-46",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18508,7 +18536,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "278:20-21",
+              "loc": "260:18-19",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18522,7 +18550,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "278:77-78",
+              "loc": "260:45-46",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18536,7 +18564,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "278:326-327",
+              "loc": "266:18-19",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18550,7 +18578,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "281:12-13",
+              "loc": "266:45-46",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18564,7 +18592,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "281:139-140",
+              "loc": "266:153-154",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -18578,7 +18606,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-1371f008.js",
-              "loc": "305:22-32",
+              "loc": "289:22-32",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -25631,7 +25659,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -26028,9 +26056,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 20590,
+      "size": 19746,
       "sizes": {
-        "javascript": 20590
+        "javascript": 19746
       },
       "names": [],
       "idHints": [],
@@ -26038,10 +26066,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.1d5d6acf24e1c1988436.js"
+        "porsche-design-system.pagination.701d717079598976880b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "5161dcc4d800f1992252",
+      "hash": "5be22a2fab9eb0f2c337",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -26311,7 +26339,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -26470,7 +26498,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./index-467074a1.js",
-              "loc": "152:21-29",
+              "loc": "157:21-29",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -26530,9 +26558,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 15029,
+          "size": 14185,
           "sizes": {
-            "javascript": 15029
+            "javascript": 14185
           },
           "built": true,
           "codeGenerated": true,
@@ -26992,7 +27020,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -27208,8 +27236,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -27232,16 +27260,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+              "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+              "id": 22
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 31,
-          "issuerId": 854,
+          "issuerId": 22,
           "chunks": [
             "checkbox-wrapper",
             "radio-button-wrapper",
@@ -27427,8 +27455,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -27451,16 +27479,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -27815,8 +27843,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -27839,16 +27867,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -28304,8 +28332,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -28328,16 +28356,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+              "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+              "id": 22
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 31,
-          "issuerId": 854,
+          "issuerId": 22,
           "chunks": [
             "checkbox-wrapper",
             "radio-button-wrapper",
@@ -28656,8 +28684,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -28680,16 +28708,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -29046,8 +29074,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -29070,16 +29098,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -29854,7 +29882,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -30511,7 +30539,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -31154,7 +31182,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "226:4-40",
+              "loc": "217:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -31607,8 +31635,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -31631,16 +31659,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -32835,7 +32863,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -33145,7 +33173,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./index-467074a1.js",
-              "loc": "152:21-29",
+              "loc": "157:21-29",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -33224,8 +33252,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -33248,16 +33276,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -33613,8 +33641,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -33637,16 +33665,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -34671,7 +34699,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -34887,8 +34915,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -34911,16 +34939,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+              "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+              "id": 22
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 31,
-          "issuerId": 854,
+          "issuerId": 22,
           "chunks": [
             "checkbox-wrapper",
             "radio-button-wrapper",
@@ -35295,8 +35323,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -35319,16 +35347,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -35684,8 +35712,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -35708,16 +35736,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -36173,8 +36201,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -36197,16 +36225,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -36562,8 +36590,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -36586,16 +36614,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -37370,7 +37398,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "237:78-84",
+              "loc": "225:78-84",
               "moduleId": 406,
               "resolvedModuleId": 406
             },
@@ -37586,8 +37614,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -37610,16 +37638,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+              "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+              "id": 22
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 31,
-          "issuerId": 854,
+          "issuerId": 22,
           "chunks": [
             "checkbox-wrapper",
             "radio-button-wrapper",
@@ -37805,8 +37833,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -37829,16 +37857,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 54,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -38193,8 +38221,8 @@
           "optional": false,
           "orphan": false,
           "dependent": true,
-          "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+          "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "issuerName": "../components/dist/esm/p-text.entry.js",
           "issuerPath": [
             {
               "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -38217,16 +38245,16 @@
               "id": 861
             },
             {
-              "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-              "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-              "id": 854
+              "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+              "name": "../components/dist/esm/p-text.entry.js",
+              "id": 365
             }
           ],
           "failed": false,
           "errors": 0,
           "warnings": 0,
           "id": 821,
-          "issuerId": 854,
+          "issuerId": 365,
           "chunks": [
             "banner",
             "checkbox-wrapper",
@@ -39640,7 +39668,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "1:0-221",
+          "loc": "1:0-246",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -39696,7 +39724,35 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
+          "loc": "30:17-35",
+          "moduleId": 215,
+          "resolvedModuleId": 215
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+          "module": "../components/dist/esm/p-banner.entry.js",
+          "moduleName": "../components/dist/esm/p-banner.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+          "resolvedModule": "../components/dist/esm/p-banner.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1371f008.js",
           "loc": "32:5-15",
+          "moduleId": 215,
+          "resolvedModuleId": 215
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+          "module": "../components/dist/esm/p-banner.entry.js",
+          "moduleName": "../components/dist/esm/p-banner.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-banner.entry.js",
+          "resolvedModule": "../components/dist/esm/p-banner.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-1371f008.js",
+          "loc": "33:17-35",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43560,7 +43616,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "196:4-20",
+          "loc": "187:4-20",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43574,7 +43630,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "197:22-33",
+          "loc": "188:22-33",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43588,7 +43644,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "237:100-126",
+          "loc": "225:100-126",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43602,7 +43658,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "249:29-48",
+          "loc": "232:29-48",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43616,7 +43672,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "257:20-21",
+          "loc": "233:12-13",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43630,7 +43686,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "257:77-78",
+          "loc": "233:139-140",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43644,7 +43700,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "257:326-327",
+          "loc": "248:18-19",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43658,7 +43714,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "264:23-24",
+          "loc": "248:45-46",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43672,7 +43728,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "264:80-81",
+          "loc": "248:153-154",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43686,7 +43742,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "271:23-24",
+          "loc": "254:18-19",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43700,7 +43756,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "271:80-81",
+          "loc": "254:45-46",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43714,7 +43770,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "278:20-21",
+          "loc": "260:18-19",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43728,7 +43784,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "278:77-78",
+          "loc": "260:45-46",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43742,7 +43798,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "278:326-327",
+          "loc": "266:18-19",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43756,7 +43812,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "281:12-13",
+          "loc": "266:45-46",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43770,7 +43826,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "281:139-140",
+          "loc": "266:153-154",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -43784,7 +43840,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-1371f008.js",
-          "loc": "305:22-32",
+          "loc": "289:22-32",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -50332,9 +50388,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 6845,
+      "size": 6884,
       "sizes": {
-        "javascript": 6845
+        "javascript": 6884
       },
       "built": true,
       "codeGenerated": true,
@@ -51662,9 +51718,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 15029,
+      "size": 14185,
       "sizes": {
-        "javascript": 15029
+        "javascript": 14185
       },
       "built": true,
       "codeGenerated": true,
@@ -52794,8 +52850,8 @@
       "cacheable": true,
       "optional": false,
       "orphan": false,
-      "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-      "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+      "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+      "issuerName": "../components/dist/esm/p-text.entry.js",
       "issuerPath": [
         {
           "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -52818,16 +52874,16 @@
           "id": 861
         },
         {
-          "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-          "id": 854
+          "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "name": "../components/dist/esm/p-text.entry.js",
+          "id": 365
         }
       ],
       "failed": false,
       "errors": 0,
       "warnings": 0,
       "id": 821,
-      "issuerId": 854,
+      "issuerId": 365,
       "chunks": [
         "banner",
         "checkbox-wrapper",
@@ -53601,7 +53657,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "237:78-84",
+          "loc": "225:78-84",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -53777,8 +53833,8 @@
       "cacheable": true,
       "optional": false,
       "orphan": false,
-      "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-      "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+      "issuer": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+      "issuerName": "../components/dist/esm/p-text.entry.js",
       "issuerPath": [
         {
           "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -53801,16 +53857,16 @@
           "id": 861
         },
         {
-          "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-          "id": 854
+          "identifier": "/github/workspace/packages/components/dist/esm/p-text.entry.js",
+          "name": "../components/dist/esm/p-text.entry.js",
+          "id": 365
         }
       ],
       "failed": false,
       "errors": 0,
       "warnings": 0,
       "id": 54,
-      "issuerId": 854,
+      "issuerId": 365,
       "chunks": [
         "banner",
         "checkbox-wrapper",
@@ -54422,7 +54478,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./index-467074a1.js",
-          "loc": "152:21-29",
+          "loc": "157:21-29",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -54738,7 +54794,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./focus-handling-ac55b07c.js",
-          "loc": "226:4-40",
+          "loc": "217:4-40",
           "moduleId": 406,
           "resolvedModuleId": 406
         },
@@ -54990,8 +55046,8 @@
       "cacheable": true,
       "optional": false,
       "orphan": false,
-      "issuer": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-      "issuerName": "../components/dist/esm/p-textarea-wrapper.entry.js",
+      "issuer": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+      "issuerName": "../components/dist/esm/p-text-field-wrapper.entry.js",
       "issuerPath": [
         {
           "identifier": "/github/workspace/packages/components-js/projects/components-wrapper/src/index.js",
@@ -55014,16 +55070,16 @@
           "id": 861
         },
         {
-          "identifier": "/github/workspace/packages/components/dist/esm/p-textarea-wrapper.entry.js",
-          "name": "../components/dist/esm/p-textarea-wrapper.entry.js",
-          "id": 854
+          "identifier": "/github/workspace/packages/components/dist/esm/p-text-field-wrapper.entry.js",
+          "name": "../components/dist/esm/p-text-field-wrapper.entry.js",
+          "id": 22
         }
       ],
       "failed": false,
       "errors": 0,
       "warnings": 0,
       "id": 31,
-      "issuerId": 854,
+      "issuerId": 22,
       "chunks": [
         "checkbox-wrapper",
         "radio-button-wrapper",
@@ -55781,7 +55837,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.0.576f7c9e2f48d73c66d7.js",
+          "name": "porsche-design-system.v2.3.0-beta.0.c58fdc0210b025072f6a.js",
           "size": 66090
         }
       ],
@@ -55803,7 +55859,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.0.576f7c9e2f48d73c66d7.js",
+          "name": "porsche-design-system.v2.3.0-beta.0.c58fdc0210b025072f6a.js",
           "size": 66090
         }
       ],
