@@ -306,6 +306,12 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
+    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
+    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
+    if (!this.scrollAreaElement) {
+      return;
+    }
+
     const scrollActivePosition = getScrollActivePosition(
       this.tabElements,
       this.direction,
