@@ -36,9 +36,6 @@ describe('accordion', () => {
       });
     </script>`;
 
-  // we need a minimal transition, so that the transitionend listener is triggered
-  const minimalTransition = `<style>:root {--p-animation-hover-duration: 0.01s}</style>`;
-
   const initAccordion = async (opts?: InitOptions) => {
     const { tag, otherMarkup = '', hasInput, isOpen = false } = opts ?? {};
 
@@ -47,7 +44,7 @@ Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam n
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 </p-accordion>${otherMarkup}`;
 
-    await setContentWithDesignSystem(page, content, { injectIntoHead: minimalTransition });
+    await setContentWithDesignSystem(page, content);
   };
 
   const getHost = () => selectNode(page, 'p-accordion');
