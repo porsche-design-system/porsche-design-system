@@ -3,7 +3,7 @@
     <p-tabs-bar
       v-if="mergedConfig.themeable"
       :active-tab-index="activeThemeTabIndex"
-      v-on:tabChange="handleActiveTabIndex"
+      v-on:tabChange="onActiveTabIndexChange"
     >
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
@@ -89,7 +89,7 @@
     public theme: Theme = 'light';
     public activeThemeTabIndex = 0;
 
-    public handleActiveTabIndex(e: CustomEvent<{ activeTabIndex: number }>): void {
+    public onActiveTabIndexChange(e: CustomEvent<{ activeTabIndex: number }>): void {
       this.activeThemeTabIndex = e.detail.activeTabIndex;
     }
 
