@@ -3,8 +3,9 @@ import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToCl
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { setCollapsibleElementHeight, getContentWrapperHeight, getSlottedCss } from './accordion-utils';
+import { setCollapsibleElementHeight, getContentWrapperHeight } from './accordion-utils';
 import { observeResize, unobserveResize } from '../../../utils/resize-observer';
+import { getSlottedCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
