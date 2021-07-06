@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -15,6 +15,8 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
+export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
+
 const BASE_URL = 'http://localhost:3000';
 
 export const goto = async (page: Page, url: string) => {
@@ -22,3 +24,20 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
   await page.waitForSelector('html.hydrated');
 };
+
+let consoleMessages: ConsoleMessage[] = [];
+
+export const initConsoleObserver = (page: Page): void => {
+  consoleMessages = []; // reset
+
+  page.on('console', (msg) => {
+    consoleMessages.push(msg);
+    if (msg.type() === 'error') {
+      const { description } = msg.args()[0]['_remoteObject'];
+      if (description) {
+        console.log(description);
+      }
+    }
+  });
+};
+export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
