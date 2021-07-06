@@ -1,10 +1,16 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isDark,
+  mapBreakpointPropToClasses,
+  observeResize,
+  unobserveResize,
+} from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { setCollapsibleElementHeight, getContentWrapperHeight } from './accordion-utils';
-import { observeResize, unobserveResize } from '../../../utils/resize-observer';
+import { getContentWrapperHeight, setCollapsibleElementHeight } from './accordion-utils';
 import { getSlottedCss } from './accordion-styles';
 
 @Component({

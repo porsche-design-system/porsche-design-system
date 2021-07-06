@@ -5,6 +5,7 @@ export * from './change-case';
 export * from './device-detection';
 export * from './dom';
 export * from './focus-handling';
+export * from './resize-observer';
 export * from './get-prefixed-tag-name';
 export * from './jss';
 export * from './line-height';

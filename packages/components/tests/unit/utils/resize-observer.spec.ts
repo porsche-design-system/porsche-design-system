@@ -1,4 +1,4 @@
-import { observeResize, unobserveResize, resizeMap } from '../../../src/utils/resize-observer';
+import { observeResize, unobserveResize, resizeMap } from '../../../src/utils';
 
 describe('observeResize()', () => {
   beforeEach(() => {
