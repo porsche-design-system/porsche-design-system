@@ -20,7 +20,7 @@ describe('events', () => {
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
     const pageChangeEventCounter = await selectNode(page, 'p-pagination + p');
-    const [firstBtn, secondBtn, thirdBtn] = await nav.$$('.goto');
+    const [, secondBtn, thirdBtn, fourthBtn] = await nav.$$('.goto');
 
     await clickElement(secondBtn);
     expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
@@ -28,7 +28,7 @@ describe('events', () => {
     await clickElement(thirdBtn);
     expect(await getCounterValue(pageChangeEventCounter)).toBe('2');
 
-    await clickElement(firstBtn);
+    await clickElement(fourthBtn);
     expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
   });
 
