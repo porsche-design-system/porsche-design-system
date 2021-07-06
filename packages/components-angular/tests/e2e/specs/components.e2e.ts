@@ -1,5 +1,13 @@
-import { ConsoleMessage, Page } from 'puppeteer';
-import { getElementProp, getOuterHTML, goto, selectNode, waitForComponentsReady } from '../helpers';
+import { Page } from 'puppeteer';
+import {
+  getConsoleErrorsAmount,
+  getElementProp,
+  getOuterHTML,
+  goto,
+  initConsoleObserver,
+  selectNode,
+  waitForComponentsReady,
+} from '../helpers';
 import { browser } from '../config';
 
 describe('components', () => {
@@ -8,24 +16,13 @@ describe('components', () => {
   afterEach(async () => await page.close());
 
   it('overview should work without errors', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          console.log(description);
-        }
-      }
-    });
-    const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
-
+    initConsoleObserver(page);
     await goto(page, 'overview');
 
-    expect(getErrorsAmount()).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
-    expect(getErrorsAmount()).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   describe('without prefix', () => {
@@ -61,30 +58,19 @@ describe('components', () => {
     });
   });
 
-  const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
-
   describe('Form Wrapper with slotted input', () => {
     it('should have no console error if input type is bound', async () => {
-      const consoleMessages: ConsoleMessage[] = [];
-      page.on('console', (msg) => {
-        consoleMessages.push(msg);
-        if (msg.type() === 'error') {
-          const { description } = msg.args()[0]['_remoteObject'];
-          if (description) {
-            console.log(description);
-          }
-        }
-      });
+      initConsoleObserver(page);
       await goto(page, 'form-wrapper-binding');
 
       await page.select('select', 'overview');
       await waitForComponentsReady(page);
       await page.select('select', 'form-wrapper-binding');
 
-      expect(getErrorsAmount(consoleMessages)).toBe(0);
+      expect(getConsoleErrorsAmount()).toBe(0);
 
       await page.evaluate(() => console.error('test error'));
-      expect(getErrorsAmount(consoleMessages)).toBe(1);
+      expect(getConsoleErrorsAmount()).toBe(1);
     });
   });
 });
