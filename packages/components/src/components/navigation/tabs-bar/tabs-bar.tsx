@@ -80,8 +80,9 @@ export class TabsBar {
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
       // skip scrolling on first render when no activeTabIndex is set
-      this.scrollActiveTabIntoView({ skipAnimation: true });
+      this.scrollActiveTabIntoView(true);
     }
+
     // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setStatusBarStyle();
@@ -135,7 +136,7 @@ export class TabsBar {
 
     const gradientClasses = {
       ['gradient']: true,
-      ['gradient--color-scheme-surface']: this.gradientColorScheme !== 'default',
+      ['gradient--color-scheme-surface']: this.gradientColorScheme === 'surface',
       [`gradient--${direction}`]: true,
     };
 
@@ -177,10 +178,12 @@ export class TabsBar {
   };
 
   private setStatusBarStyle = (): void => {
+    // TODO: move entire function into utilities and refactor to single setAttribute call
     // statusBarElement is undefined on first render
     if (!this.statusBarElement) {
       return;
     }
+
     if (this.activeTabIndex === undefined && this.prevActiveTabIndex !== undefined) {
       // handle initial inactive + active to inactive cases
       addEnableTransitionClass(this.statusBarElement);
@@ -302,7 +305,7 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
+  private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
     const scrollActivePosition = getScrollActivePosition(
       this.tabElements,
       this.direction,
@@ -311,7 +314,7 @@ export class TabsBar {
       this.firstGradientElement.offsetWidth
     );
 
-    if (opts?.skipAnimation) {
+    if (skipAnimation) {
       this.scrollAreaElement.scrollLeft = scrollActivePosition;
     } else {
       scrollElementTo(this.scrollAreaElement, scrollActivePosition);
@@ -324,10 +327,10 @@ export class TabsBar {
   };
 
   private get focusedTabIndex(): number {
-    const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
     if (this.hasPTabsParent) {
       return this.activeTabIndex ?? 0;
     } else {
+      const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
       return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
     }
   }
