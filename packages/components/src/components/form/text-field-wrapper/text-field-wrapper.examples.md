@@ -1,8 +1,8 @@
-# Text Field
+# Text Field Wrapper
 
-The **Text Field** component is a styling wrapper for the native HTML input types and is essential for mostly any form.
+The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly any form.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Text Field Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
@@ -52,7 +52,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Types
 
-The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
+The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component.
 For better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 ### Basic
@@ -85,7 +85,7 @@ For better accessibility it's recommended to **not** reset these browser default
 
 ## Validation states
 
-The **Text Field Wrapper** component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
+The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">

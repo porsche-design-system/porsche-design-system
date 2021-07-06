@@ -1,9 +1,9 @@
-# Textarea
+# Textarea Wrapper
 
-The **Textarea** component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
+The `p-textarea-wrapper` component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
 such as a phone number or name. In this case, you should use the Text Field component. 
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Textarea Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
@@ -53,7 +53,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Validation states
 
-The **Textarea Wrapper** component supports the visualisation of inline validation. 
+The `p-textarea-wrapper` component supports the visualisation of inline validation. 
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">

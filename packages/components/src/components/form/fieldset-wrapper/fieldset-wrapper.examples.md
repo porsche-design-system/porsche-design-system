@@ -1,6 +1,6 @@
-# Fieldset
+# Fieldset Wrapper
 
-The **Fieldset** is a grouping component for wrapping contextual associated form elements. 
+The `p-fieldset-wraper` is a grouping component for wrapping contextual associated form elements. 
 Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block.
 You can see some usage examples on our [form patterns section](patterns/forms/resources).
 
@@ -30,7 +30,7 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
 
 ## Required
 
-If the **Fieldset Wrapper** is set to `required="true"`, only the label of the **Fieldset Wrapper** gets an asterisk. 
+If the `p-fieldset-wraper` is set to `required="true"`, only the label of the `p-fieldset-wraper` gets an asterisk. 
 It is removed from all wrapped child components, as long as they are Porsche Design System form elements.
 You should still set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
