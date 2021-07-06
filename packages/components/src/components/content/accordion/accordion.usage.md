@@ -2,10 +2,10 @@
 
 ## When to use
 
-• If you want to show additional information that isn't curial for the user to proceed their journey.
-• To shorten pages and reduce scrolling when content is not crucial to read in full.
-• When the available space is limited and long content can't be displayed all at once (for example on mobile devices or inside sidebars).
-• To organize various information in one place.
+- If you want to show additional information that isn't curial for the user to proceed their journey.
+- To shorten pages and reduce scrolling when content is not crucial to read in full.
+- When the available space is limited and long content can't be displayed all at once (for example on mobile devices or inside sidebars).
+- To organize various information in one place.
  
 
 ---
