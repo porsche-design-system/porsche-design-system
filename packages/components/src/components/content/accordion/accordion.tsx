@@ -52,8 +52,8 @@ export class Accordion {
   public componentDidLoad(): void {
     observeResize(
       this.content,
-      ({ borderBoxSize, contentRect }) => {
-        this.contentWrapperHeight = getContentWrapperHeight(borderBoxSize, contentRect);
+      ({ contentRect }) => {
+        this.contentWrapperHeight = getContentWrapperHeight(contentRect);
         this.setCollapsibleElementHeight();
       },
       { box: 'border-box' }

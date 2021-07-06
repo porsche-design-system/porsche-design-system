@@ -27,18 +27,9 @@ describe('setCollapsibleElementHeight()', () => {
 });
 
 describe('getContentWrapperHeight()', () => {
-  it.each([
-    [undefined, { height: 20 }, '1.25rem'],
-    [{ blockSize: 300 }, undefined, '18.75rem'],
-    [[{ blockSize: 300 }], undefined, '18.75rem'],
-    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
-  ])(
-    'should for border boxSize = %o and contentRect = %o return %s',
-    (borderBoxSize: ResizeObserverSize[], contentRect: DOMRectReadOnly, expected: string) => {
-      expect(getContentWrapperHeight(borderBoxSize, contentRect)).toBe(expected);
-    }
-  );
+  it('should return height value in rem', () => {
+    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
+  });
 });
 
 describe('getSlottedCss()', () => {
