@@ -140,11 +140,11 @@ button {
   }
 
   #{$root}--compact & {
-    padding: 0 0 p-px-to-rem(8px);
+    padding: 0;
+  }
 
-    #{$root}--open & {
-      padding-bottom: $p-spacing-16;
-    }
+  #{$root}--open#{$root}--compact & {
+    padding-bottom: $p-spacing-8;
   }
 }
 
