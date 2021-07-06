@@ -1,4 +1,4 @@
-import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, Element, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
 import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
@@ -60,18 +60,11 @@ export class Pagination {
 
   private navigationElement: HTMLElement;
 
-  @Watch('activePage')
-  public onActivePageChange(page: number, previousPage: number): void {
-    this.pageChange.emit({ page, previousPage });
-  }
-
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    this.unlistenResize = listenResize(() => {
-      this.updateMaxNumberOfPageLinks();
-    });
+    this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
 
-    this.updateMaxNumberOfPageLinks();
+    this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {
@@ -200,7 +193,8 @@ export class Pagination {
 
   private onClick(page: number): void {
     if (page !== this.activePage) {
-      this.activePage = page;
+      this.pageChange.emit({ page, previousPage: this.activePage });
+      this.activePage = page; // TODO: should become a controlled component
     }
   }
 
