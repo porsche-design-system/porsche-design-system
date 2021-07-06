@@ -14,13 +14,12 @@ handles the correct display of content according to the active tab. Have a look 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
 
+It is a controlled component.
+This means it does not contain any internal state, and you got full control over its behavior.
+
 ---
 
 ## Basic example
-
-`p-tabs-bar` is a component which does not work by itself and needs to be controlled from the outside.
-This grants you flexible control over the active tab.
-
 
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.

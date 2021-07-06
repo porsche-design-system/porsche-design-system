@@ -4,6 +4,9 @@ The **Switch** component is a control that is used to quickly switch between two
 A switch is only used for these binary actions that occur immediately after the user “flips the switch”. 
 Commonly it is used for “on/off” state.
 
+It is a controlled component.
+This means it does not contain any internal state, and you got full control over its behavior.
+
 ## Basic example
 
 The **Switch** component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.
@@ -17,12 +20,6 @@ When used with hidden label, it's best practice to provide a descriptive label t
     <option value="responsive">Responsive</option>
   </select>
 </Playground>
-
-**Switch** is a component which does not work by itself and needs to be controlled from the outside.
-This grants you flexible control over the `checked` state.
-
-In order to get notified when `checked` state changes, you need to register an event listener for the `switchChange` event which is emitted by **Switch**.
-
 
 ### Framework Implementations
 
