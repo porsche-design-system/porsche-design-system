@@ -3,8 +3,8 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-rea
 import { PAccordion, PText } from '@porsche-design-system/components-react';
 
 export const AccordionExamplePage = (): JSX.Element => {
-  const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>();
-  const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>();
+  const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
+  const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
   const onAccordion1Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     setIsAccordion1Open(e.detail.open);
