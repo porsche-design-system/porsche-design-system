@@ -99,7 +99,7 @@ export const styles: { [key in TableComponentType]: string } = {
         padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
         borderBottom: `1px solid ${color.neutralContrast.medium}`,
         verticalAlign: 'bottom',
-        fontWeight: `${font.weight.bold}`,
+        fontWeight: font.weight.semibold,
       })
     ),
     ...buildGlobalStyles({
@@ -112,7 +112,7 @@ export const styles: { [key in TableComponentType]: string } = {
         border: 'none',
         fontFamily: font.family,
         ...font.size.small,
-        fontWeight: font.weight.bold,
+        fontWeight: font.weight.semibold,
         color: color.default,
         textDecoration: 'none',
         textAlign: 'left',

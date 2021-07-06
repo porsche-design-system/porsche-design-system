@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - Removed initial delay of `Banner`
 
+#### Fixed
+- `Table Head Cell` uses semi bold instead of bold as font weight
+
 ### [2.3.0-beta.0] - 2021-07-01
 
 #### Added
