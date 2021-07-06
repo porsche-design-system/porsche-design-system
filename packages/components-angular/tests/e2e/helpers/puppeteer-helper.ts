@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 export const BASE_URL = 'http://localhost:4200';
@@ -26,3 +26,20 @@ export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/${url}`);
   await waitForComponentsReady(page);
 };
+
+let consoleMessages: ConsoleMessage[] = [];
+
+export const initConsoleObserver = (page: Page): void => {
+  consoleMessages = []; // reset
+
+  page.on('console', (msg) => {
+    consoleMessages.push(msg);
+    if (msg.type() === 'error') {
+      const { description } = msg.args()[0]['_remoteObject'];
+      if (description) {
+        console.log(description);
+      }
+    }
+  });
+};
+export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
