@@ -212,3 +212,9 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
 
   return Math.ceil(totalItemsCount / itemsPerPage);
 };
+
+export const getCounterResetValue = (element: Element): number => {
+  const computedStyles = getComputedStyle(element);
+  const [, value] = computedStyles.getPropertyValue('counter-reset').split(' ');
+  return parseInt(value, 10);
+};

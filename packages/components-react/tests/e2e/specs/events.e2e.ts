@@ -16,7 +16,7 @@ describe('events', () => {
     await el.evaluate((element) => element.innerHTML, el);
 
   describe('pagination', () => {
-    xit('should emit events once', async () => {
+    it('should emit events once', async () => {
       await goto(page, 'events');
 
       const nav = await selectNode(page, 'p-pagination >>> nav');
