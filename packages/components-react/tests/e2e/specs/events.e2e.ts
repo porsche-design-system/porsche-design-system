@@ -15,12 +15,11 @@ describe('events', () => {
   const getCounterValue = async (el: ElementHandle): Promise<string> =>
     await el.evaluate((element) => element.innerHTML, el);
 
-  // TODO: should be enabled and fixed with #578
-  xit('pagination should emit events once', async () => {
+  it('pagination should emit events once', async () => {
     await goto(page, 'events');
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
-    const pageChangeEventCounter = await selectNode(page, 'p-pagination + *');
+    const pageChangeEventCounter = await selectNode(page, 'p-pagination + p');
     const [firstBtn, secondBtn, thirdBtn] = await nav.$$('.goto');
 
     await clickElement(secondBtn);

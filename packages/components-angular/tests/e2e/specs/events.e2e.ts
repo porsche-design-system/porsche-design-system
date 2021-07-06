@@ -19,7 +19,7 @@ describe('events', () => {
     await goto(page, 'events');
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
-    const pageChangeEventCounter = await selectNode(page, 'p-pagination + *');
+    const pageChangeEventCounter = await selectNode(page, 'p-pagination + p');
     const [firstBtn, secondBtn, thirdBtn] = await nav.$$('.goto');
 
     await clickElement(secondBtn);
