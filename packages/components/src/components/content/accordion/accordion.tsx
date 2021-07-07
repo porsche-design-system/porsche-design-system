@@ -10,7 +10,7 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { getContentWrapperHeight, setCollapsibleElementHeight, throwIfCompactAndSizeIsSet } from './accordion-utils';
+import { getContentHeight, setCollapsibleElementHeight, throwIfCompactAndSizeIsSet } from './accordion-utils';
 import { getSlottedCss } from './accordion-styles';
 
 @Component({
@@ -44,7 +44,7 @@ export class Accordion {
 
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
-  private contentWrapperHeight: string;
+  private contentHeight: string;
 
   @Watch('open')
   public openChangeHandler(): void {
@@ -60,7 +60,7 @@ export class Accordion {
     observeResize(
       this.content,
       ({ contentRect }) => {
-        this.contentWrapperHeight = getContentWrapperHeight(contentRect, this.compact);
+        this.contentHeight = getContentHeight(contentRect, this.compact);
         this.setCollapsibleElementHeight();
       },
       { box: 'border-box' }
@@ -125,6 +125,6 @@ export class Accordion {
   };
 
   private setCollapsibleElementHeight(): void {
-    setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentWrapperHeight);
+    setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
 }
