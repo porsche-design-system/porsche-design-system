@@ -114,62 +114,59 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render multiple compact accordions with one open on light background">
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [open]="true">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render multiple compact accordions with one open on dark background">
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [theme]="'dark'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [open]="true" [theme]="'dark'">
         <div style="color: white">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {{ content }}
         </div>
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [theme]="'dark'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
 
     <div class="playground light" title="should render navigation like accordion on light background">
       <p-accordion [heading]="'Some Category'" [compact]="true">
-        <div><p-link-pure href="https://www.porsche.com">Some link</p-link-pure></div>
-        <div><p-link-pure href="https://www.porsche.com">Some link</p-link-pure></div>
+        <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
+        <br />
+        <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
       </p-accordion>
       <p-accordion [heading]="'Some Category'" [compact]="true" [open]="true">
-        <div><p-link-pure href="https://www.porsche.com">Some link</p-link-pure></div>
-        <div><p-link-pure href="https://www.porsche.com">Some link</p-link-pure></div>
+        <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
+        <br />
+        <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
       </p-accordion>
     </div>
 
     <div class="playground dark" title="should render navigation like accordion on dark background">
       <p-accordion [heading]="'Some Category'" [compact]="true" [theme]="'dark'">
-        <div><p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure></div>
-        <div><p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure></div>
+        <p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure>
+        <br />
+        <p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure>
       </p-accordion>
       <p-accordion [heading]="'Some Category'" [compact]="true" [open]="true" [theme]="'dark'">
-        <div><p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure></div>
-        <div><p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure></div>
+        <p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure>
+        <br />
+        <p-link-pure href="https://www.porsche.com" [theme]="'dark'">Some link</p-link-pure>
       </p-accordion>
     </div>
 
     <div class="playground light" title="should ignore size prop and render compact accordion">
       <p-accordion [heading]="'Some compact Accordion with ignored size prop'" [compact]="true" [size]="'medium'">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        {{ content }}
       </p-accordion>
     </div>
   `,
