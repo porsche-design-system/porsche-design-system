@@ -1,4 +1,4 @@
-# Checkbox Wrapper
+# Checkbox
 
 The `p-checkbox-wrapper` component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
 
