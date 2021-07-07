@@ -119,16 +119,13 @@ export const AccordionPage = (): JSX.Element => {
         title="should render multiple compact accordions with one open on light background"
       >
         <PAccordion heading="Some compact Accordion heading" compact={true}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {content}
         </PAccordion>
         <PAccordion heading="Some compact Accordion heading" compact={true} open={true}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {content}
         </PAccordion>
         <PAccordion heading="Some compact Accordion heading" compact={true}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {content}
         </PAccordion>
       </div>
 
@@ -137,64 +134,47 @@ export const AccordionPage = (): JSX.Element => {
         title="should render multiple compact accordions with one open on dark background"
       >
         <PAccordion heading="Some compact Accordion heading" compact={true} theme="dark">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {content}
         </PAccordion>
         <PAccordion heading="Some compact Accordion heading" compact={true} open={true} theme="dark">
-          <div style={{ color: 'white' }}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          </div>
+          <div style={{ color: 'white' }}>{content}</div>
         </PAccordion>
         <PAccordion heading="Some compact Accordion heading" compact={true} theme="dark">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          {content}
         </PAccordion>
       </div>
 
       <div className="playground light" title="should render navigation like accordion on light background">
         <PAccordion heading="Some Category" compact={true}>
-          <div>
-            <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
-          </div>
-          <div>
-            <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
-          </div>
+          <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
+          <br />
+          <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
         </PAccordion>
         <PAccordion heading="Some Category" compact={true} open={true}>
-          <div>
-            <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
-          </div>
-          <div>
-            <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
-          </div>
+          <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
+          <br />
+          <PLinkPure href="https://www.porsche.com">Some link</PLinkPure>
         </PAccordion>
       </div>
 
       <div className="playground dark" title="should render navigation like accordion on dark background">
         <PAccordion heading="Some Category" compact={true} theme="dark">
-          <div>
-            <PLinkPure href="https://www.porsche.com" theme="dark">
-              Some link
-            </PLinkPure>
-          </div>
-          <div>
-            <PLinkPure href="https://www.porsche.com" theme="dark">
-              Some link
-            </PLinkPure>
-          </div>
+          <PLinkPure href="https://www.porsche.com" theme="dark">
+            Some link
+          </PLinkPure>
+          <br />
+          <PLinkPure href="https://www.porsche.com" theme="dark">
+            Some link
+          </PLinkPure>
         </PAccordion>
         <PAccordion heading="Some Category" compact={true} open={true} theme="dark">
-          <div>
-            <PLinkPure href="https://www.porsche.com" theme="dark">
-              Some link
-            </PLinkPure>
-          </div>
-          <div>
-            <PLinkPure href="https://www.porsche.com" theme="dark">
-              Some link
-            </PLinkPure>
-          </div>
+          <PLinkPure href="https://www.porsche.com" theme="dark">
+            Some link
+          </PLinkPure>
+          <br />
+          <PLinkPure href="https://www.porsche.com" theme="dark">
+            Some link
+          </PLinkPure>
         </PAccordion>
       </div>
 
