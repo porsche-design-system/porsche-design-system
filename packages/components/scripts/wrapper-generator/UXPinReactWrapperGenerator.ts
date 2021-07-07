@@ -5,6 +5,8 @@ import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { pascalCase, paramCase } from 'change-case';
 
+const addNestedIndentation = (x: string): string => `  ${x}`;
+
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
   protected ignoreComponents: TagName[] = ['p-content-wrapper', 'p-pagination'];
@@ -29,43 +31,53 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    let props = super.generateProps(component, rawComponentInterface);
+    const addProp = (props: string, prop: string): string => {
+      return props.replace(/(};)$/, `  ${prop}\n$1`);
+    };
 
-    // add onClick prop for marque, buttons and links, but not button-group
-    if (!!component.match(/(button|link|marque)(?!-group)/)) {
-      props = props.replace(/(};)$/, '  onClick?: (e: MouseEvent) => void;\n$1');
-    }
-
-    // remove BreakpointCustomizable types since designers can't use JSON
-    props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
-
-    const removePropFromProps = (props: string, prop: string) => {
+    const removeProp = (props: string, prop: string): string => {
       return props.replace(new RegExp(`\\s\\s\\/\\*\\*(.*\\n){3}\\s\\s${prop}.*\\n`), '');
     };
 
-    // remove useless props
-    if (component === 'p-marque') {
-      props = removePropFromProps(props, 'href');
-      props = removePropFromProps(props, 'target');
-    } else if (component === 'p-button' || component === 'p-button-pure') {
-      props = removePropFromProps(props, 'type');
-    }
-
-    const addUxPinBindAnnotationToProp = (props: string, prop: string, eventProp: string, eventDetail: string) => {
+    const addUxPinBindAnnotation = (props: string, prop: string, eventProp: string, eventDetail: string): string => {
       return props.replace(
         new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`),
         `\n   * @uxpinbind ${eventProp} 0.detail.${eventDetail}$1`
       );
     };
 
+    let props = super.generateProps(component, rawComponentInterface);
+
+    // add onClick prop for marque, buttons and links, but not button-group
+    if (!!component.match(/(button|link|marque)(?!-group)/)) {
+      props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
+    }
+
+    // add custom props to wrappers
+    if (component === 'p-banner') {
+      props = addProp(props, 'title?: string;');
+      props = addProp(props, 'description?: string;');
+    }
+
+    // remove BreakpointCustomizable types since designers can't use JSON
+    props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
+
+    // remove useless props
+    if (component === 'p-marque') {
+      props = removeProp(props, 'href');
+      props = removeProp(props, 'target');
+    } else if (component === 'p-button' || component === 'p-button-pure') {
+      props = removeProp(props, 'type');
+    }
+
     // add uxpinbind annotations
     if (component === 'p-switch') {
-      props = addUxPinBindAnnotationToProp(props, 'checked', 'onSwitchChange', 'checked');
+      props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     }
 
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: ${Object.keys(spacing).join(' | ')};`).join('\n  ');
-    props = props.replace(/(HTMLAttributes<\{}> & \{\n)/, `$1  ${spacings}\n`);
+    props = props.replace(/(HTMLAttributes<{}> & {\n)/, `$1  ${spacings}\n`);
 
     return props;
   }
@@ -79,24 +91,26 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
-      const componentWithChildrenMap: { [key in TagName]?: string } = {
-        'p-banner': ['<span slot="title">Banner Title</span>', '<span slot="description">Banner Description'].join(
-          '\\n'
-        ),
-      };
-
-      if (Object.keys(componentWithChildrenMap).includes(component)) {
-        const children = componentWithChildrenMap[component];
+      // special treatments
+      if (component === 'p-banner') {
         cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${children}', $1`) // set default children value in props destructuring
-          .replace(/(\.\.\.rest,\n)/, '$1      dangerouslySetInnerHTML: { __html: children },\n'); // put destructured children into props object
-
-        // add default label for components that have it
-        if (this.inputParser.getRawComponentInterface(component).includes('label?: string;')) {
-          cleanedComponent = cleanedComponent
-            .replace(/(\.\.\.rest)/, `label = 'Some Label', $1`) // set default label value in props destructuring
-            .replace(/(\.\.\.rest,\n)/, '$1      label,\n'); // put destructured label into props object
-        }
+          .replace(/(\.\.\.rest)/, `title = 'Title', description = 'Description', $1`) // set default children value in props destructuring
+          .replace(/PropsWithChildren<(.*)>/, '$1') // remove PropsWithChildren
+          .replace(
+            // map custom title and description props to slotted children
+            /(<Tag {...props}) \/>/,
+            [
+              '(',
+              ...[
+                '$1>',
+                ...['<span slot="title" children={title} />', '<span slot="description" children={description} />'].map(
+                  addNestedIndentation
+                ),
+                '</Tag>',
+              ].map(addNestedIndentation),
+              ')',
+            ].join('\n    ')
+          );
       } else {
         // other components receive their component name as default
         cleanedComponent = cleanedComponent
@@ -137,7 +151,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
-    const addNestedIndentation = (x: string): string => `  ${x}`;
     const glue = '\n    ';
 
     const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
