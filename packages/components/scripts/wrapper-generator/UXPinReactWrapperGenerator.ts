@@ -49,15 +49,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     let props = super.generateProps(component, rawComponentInterface);
 
-    // add onClick prop for marque, buttons and links, but not button-group
-    if (!!component.match(/(button|link|marque)(?!-group)/)) {
-      props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
-    }
-
     // add custom props to wrappers
     if (component === 'p-banner') {
       props = addProp(props, 'title?: string;');
       props = addProp(props, 'description?: string;');
+    }
+    // add onClick prop for marque, buttons and links, but not button-group
+    else if (!!component.match(/(button|link|marque)(?!-group)/)) {
+      props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
     // remove BreakpointCustomizable types since designers can't use JSON
@@ -94,6 +93,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
 
+    // destructure spacing props
+    const spacings = this.spacingProps.join(', ');
+    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
+
+    // build inline style prop
+    const styleSpacings = this.spacingProps.map((x) => `padding${x.replace('spacing', '')}: ${x}`).join(', ');
+    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest,\n)/, `$1      style: { ${styleSpacings} },\n`);
+
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
       // special treatments
@@ -124,13 +131,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     }
 
-    // destructure spacing props
-    const spacings = this.spacingProps.join(', ');
-    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
-
-    // build inline style prop
-    const styleSpacings = this.spacingProps.map((x) => `padding${x.replace('spacing', '')}: ${x}`).join(', ');
-    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest,\n)/, `$1      style: { ${styleSpacings} },\n`);
 
     return cleanedComponent;
   }
