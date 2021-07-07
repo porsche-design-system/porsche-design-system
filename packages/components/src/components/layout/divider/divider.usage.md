@@ -24,7 +24,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 Dividers should generally **only be used in neutral colors**. Depending on the purpose the Porsche Design System provides three neutral scales for both Light and Dark Theme. Prefererably they should be used only on the themes' background colors (Background or Surface color).
 
 #### Neutral Contrast Low
-This subtle color version **should be used only for "nice to have" and merely decorative dividers** that have no immediate effect on the user's perception of the page content as the color "Neutral Contrast Low" is not accessibility-safe for neither Light nor Dark Theme. Or in other words: You can use a divider in Neutral Contrast Low whenever the answer to "Would the user safely find his way around without the divider?" would definitely be "Yes". In these examples the dividers are helpful, but without them the large spacing would do the job of making the separation between the text parts recognizable:
+This subtle color version **should be used only for "nice to have" and merely decorative dividers** that have no immediate effect on the user's perception of the page content as the color "Neutral Contrast Low" is not accessibility-safe for neither Light nor Dark Theme. Or in other words: You can use a divider in Neutral Contrast Low whenever the answer to "Would the user safely find their way around without the divider?" would definitely be "Yes". In these examples the dividers are helpful, but without them the large spacing would do the job of making the separation between the text parts recognizable:
 
 ![Example for divider in Neutral Contrast Low](./assets/divider-neutralcontrast-low1.png)  
   
