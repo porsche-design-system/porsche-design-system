@@ -57,7 +57,7 @@ Include the **Browser Notification** into your project by importing and calling 
 
 ##### Banner notification
 
-The **Banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
+The **Banner** variant is meant to inform the user if they access the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
 
 Integration through `includeBanner()` partial.
 
@@ -69,7 +69,7 @@ Integration through `includeBanner()` partial.
 
 ##### Overlay notification
 
-The **Overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components. The overlay is placed above the page, covers it completely and can't be closed or removed by the user.
+The **Overlay** variant is meant to inform the user if they access the application if their browser doesn't support **custom elements** which are required to render the Porsche Design System components. The overlay is placed above the page, covers it completely and can't be closed or removed by the user.
 
 Integration through `includeOverlay()` partial.
 

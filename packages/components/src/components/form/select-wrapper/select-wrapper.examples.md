@@ -36,7 +36,7 @@ If the select is required, use `<option hidden></option>` to enforce a selection
 ---
 
 ## With filter
-This option enhances the native select filter by providing an additional search field where the user can type his own search string. 
+This option enhances the native select filter by providing an additional search field where the user can type their own search string. 
 The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
 
 <Playground :markup="withFilter" :config="config"></Playground>
