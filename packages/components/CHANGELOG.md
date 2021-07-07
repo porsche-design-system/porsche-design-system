@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Checkbox Wrapper`, `Radiobutton Wrapper`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper` now reflect changes of the `required` attribute on their child component
+
 #### Changed
 - Removed initial delay of `Banner`
 
