@@ -186,7 +186,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     
     // theme switch needs to register event listeners again
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
-    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', () => {
+    themeTabs.forEach(tabs => tab.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
     }));    
   }
