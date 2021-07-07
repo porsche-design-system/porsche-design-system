@@ -9,6 +9,7 @@ import {
   setContentWithDesignSystem,
   testOptions,
 } from '../helpers';
+import { Theme } from '@porsche-design-system/utilities';
 
 describe('Accordion', () => {
   it('should have no visual regression', async () => {
@@ -33,29 +34,32 @@ describe('Accordion', () => {
         const content = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`;
 
+        const getColorInlineStyle = (theme: Theme) => (theme === 'dark' ? ' style="color: white"' : '');
+
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-accordion theme="${theme}" heading="Some heading">
             ${content}
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some heading" open="true">
-            <div${theme === 'dark' ? ' style="color: white"' : ''}>
+            <div${getColorInlineStyle(theme)}>
               ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" open="true">
             <span slot="heading">Some <i>italic</i> and <em>emphasis</em> heading with <a href="#">Link</a></span>
-            <div${theme === 'dark' ? ' style="color: white"' : ''}>
+            <div${getColorInlineStyle(theme)}>
               Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
-            <div${theme === 'dark' ? ' style="color: white"' : ''}>
+            <div${getColorInlineStyle(theme)}>
               ${content}
             </div>
           </p-accordion>
           <p-accordion theme="${theme}" heading="Some navigation like accordion" open="true" compact="true">
-            <div><p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure></div>
-            <div><p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure></div>
+            <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
+            <br />
+            <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
           </p-accordion>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
