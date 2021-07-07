@@ -1,10 +1,17 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isDark,
+  mapBreakpointPropToClasses,
+  observeResize,
+  unobserveResize,
+} from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { setCollapsibleElementHeight, getContentWrapperHeight, getSlottedCss } from './accordion-utils';
-import { observeResize, unobserveResize } from '../../../utils/resize-observer';
+import { getContentWrapperHeight, setCollapsibleElementHeight, throwIfCompactAndSizeIsSet } from './accordion-utils';
+import { getSlottedCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
@@ -45,14 +52,15 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
+    throwIfCompactAndSizeIsSet(this.host, this.compact, this.size);
     insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 
   public componentDidLoad(): void {
     observeResize(
       this.content,
-      ({ borderBoxSize, contentRect }) => {
-        this.contentWrapperHeight = getContentWrapperHeight(borderBoxSize, contentRect);
+      ({ contentRect }) => {
+        this.contentWrapperHeight = getContentWrapperHeight(contentRect, this.compact);
         this.setCollapsibleElementHeight();
       },
       { box: 'border-box' }

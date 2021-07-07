@@ -1,8 +1,9 @@
 # Radio Button
 
-The **Radio Button** component is a styling wrapper for the native HTML input type `radio` form element. The singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored.
+The `p-radio-buttom-wrapper` component is a styling wrapper for the native HTML input type `radio` form element.
+The singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Radio Button Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-radio-buttom-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 ## Basic examples
 
@@ -35,7 +36,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Validation states
 
-The **Radio Button Wrapper** component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
+The `p-radio-buttom-wrapper` component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validation" :config="config">
   <select v-model="state">

@@ -1,6 +1,6 @@
 # Button
 
-The `<p-button>` component is essential for performing form or **interaction** events. 
+The `p-button` component is essential for performing form or **interaction** events. 
 For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (**Primary**, **Secondary**, **Tertiary**) are available for usage. 
 A Button can be used with or without a label but it's recommended to keep the **label visible** for better **usability** whenever possible. 
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. 

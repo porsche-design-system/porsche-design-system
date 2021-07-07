@@ -1,8 +1,11 @@
 import {
   setCollapsibleElementHeight,
   getContentWrapperHeight,
-  getSlottedCss,
+  throwIfCompactAndSizeIsSet,
+  AccordionSize,
 } from '../../../src/components/content/accordion/accordion-utils';
+import { getSlottedCss } from '../../../src/components/content/accordion/accordion-styles';
+import { BreakpointCustomizable } from '../../../src/utils';
 
 describe('setCollapsibleElementHeight()', () => {
   it('should set style.height on element to "200px" if isOpen = true', () => {
@@ -24,24 +27,58 @@ describe('setCollapsibleElementHeight()', () => {
 
     expect(collapsible.style.height).toBe('0px');
   });
+
+  it('should not style.height when no element is present', () => {
+    let error;
+    try {
+      setCollapsibleElementHeight(undefined, false, '200px');
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBe(undefined);
+  });
 });
 
 describe('getContentWrapperHeight()', () => {
-  it.each([
-    [undefined, { height: 20 }, '1.25rem'],
-    [{ blockSize: 300 }, undefined, '18.75rem'],
-    [[{ blockSize: 300 }], undefined, '18.75rem'],
-    [{ blockSize: 300 }, { height: 20 }, '18.75rem'],
-    [[{ blockSize: 300 }], { height: 20 }, '18.75rem'],
-  ])(
-    'should for border boxSize = %o and contentRect = %o return %s',
-    (borderBoxSize: ResizeObserverSize[], contentRect: DOMRectReadOnly, expected: string) => {
-      expect(getContentWrapperHeight(borderBoxSize, contentRect)).toBe(expected);
-    }
-  );
+  it('should return height value with extra padding in rem', () => {
+    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, false)).toBe('1.5rem');
+  });
+
+  it('should return height value without extra padding for compact = true in rem', () => {
+    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, true)).toBe('1rem');
+  });
 });
 
-describe('getSlottedCss() should contain correct css', () => {
-  const host = document.createElement('p-accordion');
-  expect(getSlottedCss(host)).toMatchSnapshot();
+describe('getSlottedCss()', () => {
+  it('should contain correct css', () => {
+    const host = document.createElement('p-accordion');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+
+  it('should return correct css with prefix', () => {
+    const host = document.createElement('prefixed-p-accordion');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+});
+
+describe('throwIfCompactAndSizeIsSet()', () => {
+  it.each([
+    [true, 'medium', `Size of \'"medium"\' is ignored when compact is set to 'true' on p-accordion.`],
+    [
+      true,
+      { base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' },
+      `Size of '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}' is ignored when compact is set to 'true' on p-accordion.`,
+    ],
+    [false, 'medium', undefined],
+    [false, 'small', undefined],
+  ])('should throw error for compact = %s and size = %o', (compact, size, expected) => {
+    const host = document.createElement('p-accordion');
+    let error;
+    try {
+      throwIfCompactAndSizeIsSet(host, compact, size as BreakpointCustomizable<AccordionSize>);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(expected);
+  });
 });

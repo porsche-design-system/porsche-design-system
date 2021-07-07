@@ -1,12 +1,12 @@
 <template>
   <nav>
     <p-accordion
-      compact="true"
       v-for="(pages, category, index) in config"
       :key="index"
       :heading="category"
       v-bind:open="accordion[category]"
       v-on:accordionChange="toggleActive(category)"
+      compact="true"
     >
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">

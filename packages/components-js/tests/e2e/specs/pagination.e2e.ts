@@ -5,15 +5,14 @@ import {
   getLifecycleStatus,
   selectNode,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
 describe('pagination', () => {
   let page: Page;
 
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-pagination');
@@ -39,7 +38,7 @@ describe('pagination', () => {
 
     expect(await getAttribute(prevButton, 'aria-disabled')).toBe('true');
 
-    await host.evaluate((el) => el.setAttribute('active-page', '5'));
+    await setProperty(host, 'activePage', 5);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(prevButton, 'aria-disabled')).toBeNull();
@@ -53,7 +52,7 @@ describe('pagination', () => {
 
     expect(await getAttribute(nextButton, 'aria-disabled')).toBe('true');
 
-    await host.evaluate((el) => el.setAttribute('active-page', '15'));
+    await setProperty(host, 'activePage', 15);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(nextButton, 'aria-disabled')).toBeNull();
@@ -69,12 +68,12 @@ describe('pagination', () => {
 
       expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
 
-      await host.evaluate((el) => el.setAttribute('active-page', '2'));
+      await setProperty(host, 'activePage', 2);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(firstPageItem, 'aria-current')).toBeNull();
 
-      await host.evaluate((el) => el.setAttribute('active-page', '1'));
+      await setProperty(host, 'activePage', 1);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
@@ -89,12 +88,12 @@ describe('pagination', () => {
 
       expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
 
-      await host.evaluate((el) => el.setAttribute('active-page', '2'));
+      await setProperty(host, 'activePage', 2);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(firstPageItem, 'aria-disabled')).toBeNull();
 
-      await host.evaluate((el) => el.setAttribute('active-page', '1'));
+      await setProperty(host, 'activePage', 1);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
