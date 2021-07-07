@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { spacing } from '@porsche-design-system/utilities';
+import { spacing, font } from '@porsche-design-system/utilities';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -70,6 +70,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = removeProp(props, 'type');
     }
 
+    // override props
+    if (component === 'p-text') {
+      const sizeValues = Object.keys(font.size)
+        .filter((x) => !x.match(/[a-z]/)) // only keep numeric fvalues
+        .join(' | ');
+      props = props.replace(/(size\?: )TextSize/, `$1${sizeValues}`);
+    }
+
     // add uxpinbind annotations
     if (component === 'p-switch') {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
@@ -129,8 +137,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest)/, `children = '${this.getComponentFileName(component, true)}', $1`) // set default children value in props destructuring
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
-    }
 
+      // another special treatment that needs default children
+      if (component === 'p-text') {
+        cleanedComponent = cleanedComponent
+          .replace(/(size =) 'small'/, '$1 16') // change destructured size
+          .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
+          .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
+      }
+    }
 
     return cleanedComponent;
   }
