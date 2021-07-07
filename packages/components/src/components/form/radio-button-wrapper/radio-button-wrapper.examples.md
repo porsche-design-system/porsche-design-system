@@ -1,4 +1,4 @@
-# Radio Button Wrapper
+# Radio Button
 
 The `p-radio-buttom-wrapper` component is a styling wrapper for the native HTML input type `radio` form element.
 The singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored.

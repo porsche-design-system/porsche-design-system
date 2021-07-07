@@ -1,4 +1,4 @@
-# Fieldset Wrapper
+# Fieldset
 
 The `p-fieldset-wraper` is a grouping component for wrapping contextual associated form elements. 
 Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block.
