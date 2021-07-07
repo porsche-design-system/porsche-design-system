@@ -6,7 +6,7 @@
 - To shorten pages and reduce scrolling.
 - When space is at a rare and long content can't be displayed all at once (for example mobile or sidebars).
 - To organize various information in one place.
-- Amount of accordions are more than two.
+- Amount of accordions is more than two.
  
 ---
  
@@ -33,19 +33,19 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
  
 ### Heading
 
-The heading stays the same and does not change for collapsed or expanded state of the accordion. No customization of the heading like links, 
-additional icons or any styling is allowed. It is recommended to keep the heading short & descriptive.
+The heading stays the same and does not change for collapsed or expanded state of the accordion. Customization of the heading like links, 
+additional icons or any styling is **not** allowed. It is recommended to keep the heading short & descriptive.
  
 ### Content Type
-Content within an Accordion should be short and easy to perceive with less interaction options. An accordion can contain copies, links, images.
+Content within an accordion should be short and easy to perceive with less interaction options. An accordion can contain copies, links, images.
 Elements should be arranged with the `p-grid` component. All content should be additional information that isn't crucial for the user journey, or 
 the goals to achieve. We do not recommend to place widgets or complex interaction tasks within an accordion.
  
 ### Width & Height
 To ensure that the heading, and the icon are perceived as a visual group (Law of proximity), we recommend not stretching the component over the 
-entire viewport. To ensure a good  readability of copy please use not more than approximately 80 characters per line. Please find more information in 
+entire viewport. To ensure a good readability of copy please use not more than approximately 80 characters per line. Please find more information in 
 the [Typography guideline](components/typography). The height of an accordion results from the content within the component.
-  
+
 
 ## Usage
  
