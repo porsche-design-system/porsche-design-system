@@ -27,8 +27,12 @@ describe('setCollapsibleElementHeight()', () => {
 });
 
 describe('getContentWrapperHeight()', () => {
-  it('should return height value in rem', () => {
-    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
+  it('should return height value with extra padding in rem', () => {
+    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, false)).toBe('1.5rem');
+  });
+
+  it('should return height value without extra padding for compact = true in rem', () => {
+    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, true)).toBe('1rem');
   });
 });
 
