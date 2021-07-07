@@ -110,7 +110,7 @@ export class CheckboxWrapper {
   };
 
   private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
+    observeMutations(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

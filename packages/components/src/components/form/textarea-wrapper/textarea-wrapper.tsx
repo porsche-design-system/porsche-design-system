@@ -112,7 +112,7 @@ export class TextareaWrapper {
   };
 
   private observeMutations = (): void => {
-    observeMutations(this.textarea, ['disabled', 'readonly'], () => forceUpdate(this.host));
+    observeMutations(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
