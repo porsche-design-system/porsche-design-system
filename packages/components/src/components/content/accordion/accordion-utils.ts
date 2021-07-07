@@ -1,60 +1,31 @@
-import {
-  addImportantToEachRule,
-  buildGlobalStyles,
-  getCss,
-  getFocusStyles,
-  getHoverStyles,
-  getTagName,
-  JssStyle,
-  pxToRemWithUnit,
-} from '../../../utils';
+import { BreakpointCustomizable, getTagName, pxToRemWithUnit } from '../../../utils';
+import { stringify } from '../../../../tests/unit/helper';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZE[number];
 export type AccordionChangeEvent = { open: boolean };
-
-const slottedStyles: JssStyle = addImportantToEachRule({
-  '& a': {
-    color: 'inherit',
-    textDecoration: 'underline',
-    ...getFocusStyles({ offset: 1, color: 'currentColor' }),
-    ...getHoverStyles(),
-  },
-
-  '& em, & i': {
-    fontStyle: 'normal',
-  },
-});
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildGlobalStyles({
-      [`${getTagName(host)} [slot="heading"]`]: slottedStyles,
-    })
-  );
-};
 
 export const setCollapsibleElementHeight = (
   collapsibleElement: HTMLDivElement,
   isOpen: boolean,
   contentWrapperHeight: string
 ): void => {
-  collapsibleElement.style.height = isOpen ? contentWrapperHeight : '0';
+  if (collapsibleElement) {
+    collapsibleElement.style.height = isOpen ? contentWrapperHeight : '0';
+  }
 };
 
-export const getContentWrapperHeight = (
-  borderBoxSize: ResizeObserverSize | readonly ResizeObserverSize[],
-  contentRect: DOMRectReadOnly
-): string => {
-  let contentBlockHeight;
+export const getContentWrapperHeight = ({ height }: DOMRectReadOnly, isCompact: boolean): string => {
+  const CONTENT_PADDING_TOP = isCompact ? 0 : 8;
+  return pxToRemWithUnit(height + CONTENT_PADDING_TOP);
+};
 
-  // Safari does not support borderBoxSize
-  if (!borderBoxSize) {
-    contentBlockHeight = contentRect.height;
-  } else {
-    // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-    const { blockSize } = borderBoxSize[0] || borderBoxSize;
-    contentBlockHeight = blockSize;
+export const throwIfCompactAndSizeIsSet = (
+  host: HTMLElement,
+  compact: boolean,
+  size: BreakpointCustomizable<AccordionSize>
+): void => {
+  if (compact && size !== 'small') {
+    throw new Error(`Size of '${stringify(size)}' is ignored when compact is set to 'true' on ${getTagName(host)}.`);
   }
-  return pxToRemWithUnit(contentBlockHeight);
 };

@@ -1,6 +1,6 @@
 # Tabs Bar
 
-The component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
+The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
 your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element
 and therefore change the appearance of your content or as skip navigation to move on a longer page.
 
@@ -40,7 +40,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 
-The `<p-tabs-bar>` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
+The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).

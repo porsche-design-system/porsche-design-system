@@ -1,6 +1,6 @@
 # Link Social
 
-The `<p-link-social>` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
+The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
 
 ## Variants
 
