@@ -192,6 +192,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(glue),
       },
       'p-modal': {
+        props: 'heading="Heading"',
         children: [
           '<Text uxpId="modal-text">Some Content</Text>',
           '<ButtonGroup uxpId="modal-button-group" spacingTop={32}>',
