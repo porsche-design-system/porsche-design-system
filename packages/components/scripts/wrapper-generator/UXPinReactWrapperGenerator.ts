@@ -149,6 +149,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-table':
       case 'p-tabs':
       case 'p-tabs-bar':
+      case 'p-text-list':
         return true;
       default:
         return false;
@@ -241,6 +242,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: 'activeTabIndex={0}',
         children: Array.from(Array(3))
           .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
+          .join(glue),
+      },
+      'p-text-list': {
+        children: Array.from(Array(2))
+          .map((_, i) => `<TextListItem uxpId="text-list-item-${i + 1}" children="Item ${i + 1}" />`)
           .join(glue),
       },
     };
