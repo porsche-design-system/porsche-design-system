@@ -39,10 +39,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       return props.replace(new RegExp(`\\s\\s\\/\\*\\*(.*\\n){3}\\s\\s${prop}.*\\n`), '');
     };
 
-    const addUxPinBindAnnotation = (props: string, prop: string, eventProp: string, eventDetail: string): string => {
+    const addUxPinBindAnnotation = (props: string, prop: string, eventProp: string, eventDetail?: string): string => {
+      const detailChild = eventDetail ? `.${eventDetail}` : '';
       return props.replace(
         new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`),
-        `\n   * @uxpinbind ${eventProp} 0.detail.${eventDetail}$1`
+        `\n   * @uxpinbind ${eventProp} 0.detail${detailChild}$1`
       );
     };
 
@@ -73,6 +74,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinbind annotations
     if (component === 'p-switch') {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
+    } else if (component === 'p-modal') {
+      props = addUxPinBindAnnotation(props, 'open', 'onClose');
     }
 
     // add spacing props to every component
