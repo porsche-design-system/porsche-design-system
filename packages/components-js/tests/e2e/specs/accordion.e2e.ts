@@ -117,6 +117,54 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
   });
 
+  it('should have correct overflow when changed from closed to open to closed', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+    const button = await getButton();
+    const collapsible = await getCollapsible();
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('initial closed')
+      .toBe('hidden');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to open')
+      .toBe('visible');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to close')
+      .toBe('hidden');
+  });
+
+  it('should have correct overflow when changed from opened to closed to opened', async () => {
+    await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
+    const button = await getButton();
+    const collapsible = await getCollapsible();
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('initial opened')
+      .toBe('visible');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to close')
+      .toBe('hidden');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to open')
+      .toBe('visible');
+  });
+
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
 
