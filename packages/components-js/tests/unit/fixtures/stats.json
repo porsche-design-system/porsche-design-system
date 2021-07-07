@@ -1,26 +1,26 @@
 {
-  "hash": "03b8bef48659657765c3",
+  "hash": "1f0f68742b7c03990c5b",
   "version": "5.39.1",
-  "time": 2989,
-  "builtAt": 1625582799795,
+  "time": 2698,
+  "builtAt": 1625650485226,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.3.0-beta.0.e55d00c3c0c11d0d5014.js"
+      "porsche-design-system.v2.3.0-beta.0.8e6606fe6d3d27a480fd.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.3.0-beta.0.e55d00c3c0c11d0d5014.js",
+      "name": "porsche-design-system.v2.3.0-beta.0.8e6606fe6d3d27a480fd.js",
       "size": 66513,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "e55d00c3c0c11d0d5014",
+        "contenthash": "8e6606fe6d3d27a480fd",
         "javascriptModule": false,
         "size": 66513
       },
@@ -447,16 +447,16 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.accordion.0949b93842ac7a9e2ed7.js",
-      "size": 6187,
+      "name": "porsche-design-system.accordion.6b9b11405e42db8faa72.js",
+      "size": 6417,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "0949b93842ac7a9e2ed7",
+        "contenthash": "6b9b11405e42db8faa72",
         "javascriptModule": false,
-        "size": 6187
+        "size": 6417
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -740,9 +740,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8602,
+      "size": 9069,
       "sizes": {
-        "javascript": 8602
+        "javascript": 9069
       },
       "names": [],
       "idHints": [],
@@ -750,10 +750,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.accordion.0949b93842ac7a9e2ed7.js"
+        "porsche-design-system.accordion.6b9b11405e42db8faa72.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a29b9a50098f6f49b330",
+      "hash": "290d7e5c84121b81b2a1",
       "childrenByOrder": {},
       "id": "accordion",
       "siblings": [],
@@ -766,9 +766,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 7021,
+          "size": 7488,
           "sizes": {
-            "javascript": 7021
+            "javascript": 7488
           },
           "built": true,
           "codeGenerated": true,
@@ -839,7 +839,7 @@
             "p_accordion"
           ],
           "optimizationBailout": [
-            "Statement (VariableDeclaration) with side effects in source code at 12:0-17:3",
+            "Statement (VariableDeclaration) with side effects in source code at 22:0-27:3",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/mutation-observer-070c19f0.js: Module ../components/dist/esm/mutation-observer-070c19f0.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button_2.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -945,7 +945,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -1427,7 +1427,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2415,7 +2415,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2897,7 +2897,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -4078,7 +4078,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -5682,7 +5682,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -6889,7 +6889,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -7493,7 +7493,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -8179,7 +8179,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9228,7 +9228,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9710,7 +9710,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -10397,7 +10397,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -11385,7 +11385,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -11867,7 +11867,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13029,7 +13029,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13761,7 +13761,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -14749,7 +14749,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -15231,7 +15231,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -15723,10 +15723,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.3.0-beta.0.e55d00c3c0c11d0d5014.js"
+        "porsche-design-system.v2.3.0-beta.0.8e6606fe6d3d27a480fd.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "8f653cfc1ba0b615050b",
+      "hash": "428d21c1f3280476cf5b",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -16103,7 +16103,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "9:9-24",
+              "loc": "14:9-24",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16117,7 +16117,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "12:22-44",
+              "loc": "18:96-106",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16131,7 +16131,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "13:88-102",
+              "loc": "22:22-44",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16145,7 +16145,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "13:143-157",
+              "loc": "23:88-102",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16159,7 +16159,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "19:9-15",
+              "loc": "23:143-157",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16173,7 +16173,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "19:16-33",
+              "loc": "29:9-15",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16187,7 +16187,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "20:8-18",
+              "loc": "29:16-33",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16201,7 +16201,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "28:4-20",
+              "loc": "30:8-18",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16215,7 +16215,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "29:27-38",
+              "loc": "38:4-20",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16229,7 +16229,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "47:4-17",
+              "loc": "39:27-38",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16243,7 +16243,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "53:4-19",
+              "loc": "58:4-17",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16257,7 +16257,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "58:159-185",
+              "loc": "64:4-19",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16271,7 +16271,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "59:29-48",
+              "loc": "69:159-185",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16285,7 +16285,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:12-13",
+              "loc": "70:29-48",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16299,7 +16299,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:45-46",
+              "loc": "71:12-13",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16313,7 +16313,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:133-134",
+              "loc": "71:45-46",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16327,7 +16327,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:280-281",
+              "loc": "71:133-134",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16341,7 +16341,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:312-313",
+              "loc": "71:280-281",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16355,7 +16355,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:443-444",
+              "loc": "71:312-313",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16369,7 +16369,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:583-584",
+              "loc": "71:443-444",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16383,7 +16383,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "60:648-649",
+              "loc": "71:583-584",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16397,7 +16397,21 @@
               "active": true,
               "explanation": "",
               "userRequest": "./mutation-observer-070c19f0.js",
-              "loc": "65:22-32",
+              "loc": "71:648-649",
+              "moduleId": 893,
+              "resolvedModuleId": 893
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
+              "module": "../components/dist/esm/p-accordion.entry.js",
+              "moduleName": "../components/dist/esm/p-accordion.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
+              "resolvedModule": "../components/dist/esm/p-accordion.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./mutation-observer-070c19f0.js",
+              "loc": "76:22-32",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -28722,7 +28736,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -29929,7 +29943,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31189,7 +31203,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31671,7 +31685,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -32357,7 +32371,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -33837,7 +33851,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -34739,7 +34753,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -35901,7 +35915,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -36633,7 +36647,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -38030,7 +38044,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -38937,7 +38951,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -39419,7 +39433,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "58:92-98",
+              "loc": "69:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -40626,7 +40640,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "44:4-23",
+              "loc": "55:4-23",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -42040,7 +42054,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "9:9-24",
+          "loc": "14:9-24",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42054,7 +42068,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "12:22-44",
+          "loc": "18:96-106",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42068,7 +42082,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "13:88-102",
+          "loc": "22:22-44",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42082,7 +42096,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "13:143-157",
+          "loc": "23:88-102",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42096,7 +42110,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "19:9-15",
+          "loc": "23:143-157",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42110,7 +42124,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "19:16-33",
+          "loc": "29:9-15",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42124,7 +42138,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "20:8-18",
+          "loc": "29:16-33",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42138,7 +42152,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "28:4-20",
+          "loc": "30:8-18",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42152,7 +42166,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "29:27-38",
+          "loc": "38:4-20",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42166,7 +42180,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "47:4-17",
+          "loc": "39:27-38",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42180,7 +42194,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "53:4-19",
+          "loc": "58:4-17",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42194,7 +42208,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "58:159-185",
+          "loc": "64:4-19",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42208,7 +42222,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "59:29-48",
+          "loc": "69:159-185",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42222,7 +42236,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:12-13",
+          "loc": "70:29-48",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42236,7 +42250,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:45-46",
+          "loc": "71:12-13",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42250,7 +42264,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:133-134",
+          "loc": "71:45-46",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42264,7 +42278,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:280-281",
+          "loc": "71:133-134",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42278,7 +42292,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:312-313",
+          "loc": "71:280-281",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42292,7 +42306,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:443-444",
+          "loc": "71:312-313",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42306,7 +42320,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:583-584",
+          "loc": "71:443-444",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42320,7 +42334,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "60:648-649",
+          "loc": "71:583-584",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42334,7 +42348,21 @@
           "active": true,
           "explanation": "",
           "userRequest": "./mutation-observer-070c19f0.js",
-          "loc": "65:22-32",
+          "loc": "71:648-649",
+          "moduleId": 893,
+          "resolvedModuleId": 893
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
+          "module": "../components/dist/esm/p-accordion.entry.js",
+          "moduleName": "../components/dist/esm/p-accordion.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
+          "resolvedModule": "../components/dist/esm/p-accordion.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./mutation-observer-070c19f0.js",
+          "loc": "76:22-32",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -53072,9 +53100,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 7021,
+      "size": 7488,
       "sizes": {
-        "javascript": 7021
+        "javascript": 7488
       },
       "built": true,
       "codeGenerated": true,
@@ -53144,7 +53172,7 @@
         "p_accordion"
       ],
       "optimizationBailout": [
-        "Statement (VariableDeclaration) with side effects in source code at 12:0-17:3",
+        "Statement (VariableDeclaration) with side effects in source code at 22:0-27:3",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/mutation-observer-070c19f0.js: Module ../components/dist/esm/mutation-observer-070c19f0.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button_2.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -55693,7 +55721,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "44:4-23",
+          "loc": "55:4-23",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -56174,7 +56202,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "58:92-98",
+          "loc": "69:92-98",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -58662,7 +58690,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.0.e55d00c3c0c11d0d5014.js",
+          "name": "porsche-design-system.v2.3.0-beta.0.8e6606fe6d3d27a480fd.js",
           "size": 66513
         }
       ],
@@ -58684,7 +58712,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.0.e55d00c3c0c11d0d5014.js",
+          "name": "porsche-design-system.v2.3.0-beta.0.8e6606fe6d3d27a480fd.js",
           "size": 66513
         }
       ],
