@@ -51,6 +51,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = removePropFromProps(props, 'type');
     }
 
+    const addUxPinBindAnnotationToProp = (props: string, prop: string, eventProp: string, eventDetail: string) => {
+      return props.replace(
+        new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`),
+        `\n   * @uxpinbind ${eventProp} 0.detail.${eventDetail}$1`
+      );
+    };
+
+    // add uxpinbind annotations
+    if (component === 'p-switch') {
+      props = addUxPinBindAnnotationToProp(props, 'checked', 'onSwitchChange', 'checked');
+    }
+
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: ${Object.keys(spacing).join(' | ')};`).join('\n  ');
     props = props.replace(/(HTMLAttributes<\{}> & \{\n)/, `$1  ${spacings}\n`);
