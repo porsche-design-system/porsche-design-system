@@ -1,12 +1,5 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import {
-  getAttribute,
-  getClosestHTMLElement,
-  getPrefixedTagNames,
-  getTagName,
-  insertSlottedStyles,
-  throwIfParentIsNotOfKind,
-} from '../../../../utils';
+import { getAttribute, getTagName, insertSlottedStyles, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addCss } from './text-list-item-utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
 
@@ -23,8 +16,7 @@ export class TextListItem {
   }
 
   public componentWillRender(): void {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const list: HTMLPTextListElement = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
+    const list = this.host.parentElement as HTMLPTextListElement;
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
     addCss(this.host, listType, orderType, isNestedList);
