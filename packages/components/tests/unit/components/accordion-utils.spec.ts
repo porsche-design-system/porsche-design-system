@@ -1,6 +1,6 @@
 import {
   setCollapsibleElementHeight,
-  getContentWrapperHeight,
+  getContentHeight,
   throwIfCompactAndSizeIsSet,
   AccordionSize,
 } from '../../../src/components/content/accordion/accordion-utils';
@@ -28,7 +28,7 @@ describe('setCollapsibleElementHeight()', () => {
     expect(collapsible.style.height).toBe('0px');
   });
 
-  it('should not style.height when no element is present', () => {
+  it('should throw error when no element is present', () => {
     let error;
     try {
       setCollapsibleElementHeight(undefined, false, '200px');
@@ -39,13 +39,13 @@ describe('setCollapsibleElementHeight()', () => {
   });
 });
 
-describe('getContentWrapperHeight()', () => {
+describe('getContentHeight()', () => {
   it('should return height value with extra padding in rem', () => {
-    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, false)).toBe('1.5rem');
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly, false)).toBe('1.5rem');
   });
 
   it('should return height value without extra padding for compact = true in rem', () => {
-    expect(getContentWrapperHeight({ height: 16 } as DOMRectReadOnly, true)).toBe('1rem');
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly, true)).toBe('1rem');
   });
 });
 
