@@ -10,7 +10,7 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import { getContentWrapperHeight, setCollapsibleElementHeight } from './accordion-utils';
+import { getContentWrapperHeight, setCollapsibleElementHeight, throwIfCompactAndSizeIsSet } from './accordion-utils';
 import { getSlottedCss } from './accordion-styles';
 
 @Component({
@@ -52,6 +52,7 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
+    throwIfCompactAndSizeIsSet(this.host, this.compact, this.size);
     insertSlottedStyles(this.host, getSlottedCss(this.host));
   }
 
