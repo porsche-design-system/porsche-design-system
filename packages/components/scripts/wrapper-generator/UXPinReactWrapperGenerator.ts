@@ -83,13 +83,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         'p-banner': ['<span slot="title">Banner Title</span>', '<span slot="description">Banner Description'].join(
           '\\n'
         ),
-        'p-modal': [
-          '<p-text>Some Content</p-text>',
-          '<p-button-group class="footer">',
-          '<p-button>Save</p-button>',
-          '<p-button variant="tertiary">Close</p-button>',
-          '</p-button-group>',
-        ].join('\\n'),
       };
 
       if (Object.keys(componentWithChildrenMap).includes(component)) {
@@ -129,11 +122,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-checkbox-wrapper':
       case 'p-flex':
       case 'p-grid':
+      case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-select-wrapper':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
       case 'p-table':
+      case 'p-tabs':
       case 'p-tabs-bar':
         return true;
       default:
@@ -161,6 +156,17 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-grid': {
         children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(glue),
+      },
+      'p-modal': {
+        children: [
+          '<Text uxpId="modal-text">Some Content</Text>',
+          '<ButtonGroup uxpId="modal-button-group" spacingTop={32}>',
+          ...[
+            '<Button uxpId="modal-button-1" children="Save" />',
+            '<Button uxpId="modal-button-2" variant="tertiary" children="Close" />',
+          ].map(addNestedIndentation),
+          '</ButtonGroup>',
+        ].join(glue),
       },
       'p-radio-button-wrapper': {
         props: 'label="RadioButtonWrapper"',
@@ -192,28 +198,26 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].map(addNestedIndentation),
           '</TableHead>',
           '<TableBody uxpId="table-body">',
-          ...[
-            '<TableRow uxpId="table-row-1">',
-            ...[
-              '<TableCell uxpId="table-row-1-cell-1">Cell 1</TableCell>',
-              '<TableCell uxpId="table-row-1-cell-2">Cell 2</TableCell>',
-            ].map(addNestedIndentation),
-            '</TableRow>',
-            '<TableRow uxpId="table-row-2">',
-            ...[
-              '<TableCell uxpId="table-row-2-cell-1">Cell 1</TableCell>',
-              '<TableCell uxpId="table-row-2-cell-2">Cell 2</TableCell>',
-            ].map(addNestedIndentation),
-            '</TableRow>',
-            '<TableRow uxpId="table-row-3">',
-            ...[
-              '<TableCell uxpId="table-row-3-cell-1">Cell 1</TableCell>',
-              '<TableCell uxpId="table-row-3-cell-2">Cell 2</TableCell>',
-            ].map(addNestedIndentation),
-            '</TableRow>',
-          ].map(addNestedIndentation),
+          ...Array.from(Array(3)).map((_, i) =>
+            [
+              `<TableRow uxpId="table-row-${i + 1}">`,
+              ...[
+                `<TableCell uxpId="table-row-${i + 1}-cell-1">Cell 1</TableCell>`,
+                `<TableCell uxpId="table-row-${i + 1}-cell-2">Cell 2</TableCell>`,
+              ].map(addNestedIndentation),
+              '</TableRow>',
+            ]
+              .map(addNestedIndentation)
+              .join(glue)
+          ),
           '</TableBody>',
         ].join(glue),
+      },
+      'p-tabs': {
+        props: 'activeTabIndex={0}',
+        children: Array.from(Array(2))
+          .map((_, i) => `<TabsItem label="Tab ${i + 1}" uxpId="tabs-item-${i + 1}" children="Content ${i + 1}" />`)
+          .join(glue),
       },
       'p-tabs-bar': {
         props: 'activeTabIndex={0}',
