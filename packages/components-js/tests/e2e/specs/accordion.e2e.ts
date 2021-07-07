@@ -51,6 +51,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   const getButton = () => selectNode(page, 'p-accordion >>> button');
   const getInput = () => selectNode(page, 'input');
   const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
+  const getBody = () => selectNode(page, 'body');
 
   it('should set "visibility: visible" on collapsible on initial open', async () => {
     await initAccordion({ isOpen: true });
@@ -114,6 +115,54 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     await waitForStencilLifecycle(page);
 
     expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
+  });
+
+  it('should have correct overflow when changed from closed to open to closed', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+    const button = await getButton();
+    const collapsible = await getCollapsible();
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('initial closed')
+      .toBe('hidden');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to open')
+      .toBe('visible');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to close')
+      .toBe('hidden');
+  });
+
+  it('should have correct overflow when changed from opened to closed to opened', async () => {
+    await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
+    const button = await getButton();
+    const collapsible = await getCollapsible();
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('initial opened')
+      .toBe('visible');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to close')
+      .toBe('hidden');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(collapsible, 'overflow'))
+      .withContext('after click to open')
+      .toBe('visible');
   });
 
   describe('events', () => {
@@ -182,8 +231,9 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
       const button = await getButton();
       const input = await getInput();
+      const body = await getBody();
 
-      expect(await hasFocus(page, input)).toBe(false);
+      expect(await hasFocus(page, body)).toBe(true);
 
       await button.click();
       await waitForStencilLifecycle(page);
@@ -195,8 +245,9 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     it('should not have focusable content when closed', async () => {
       await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
       const input = await getInput();
+      const body = await getBody();
 
-      expect(await hasFocus(page, input)).toBe(false);
+      expect(await hasFocus(page, body)).toBe(true);
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -208,6 +259,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, isOpen: true });
       const host = await getHost();
       const input = await getInput();
+      const body = await getBody();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -217,7 +269,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, input)).toBe(false);
+      expect(await hasFocus(page, body)).toBe(true);
     });
   });
 

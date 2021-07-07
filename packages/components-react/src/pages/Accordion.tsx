@@ -171,7 +171,7 @@ export const AccordionPage = (): JSX.Element => {
         </PAccordion>
       </div>
 
-      <div className="playground light" title="should render navigation like accordion on dark background">
+      <div className="playground dark" title="should render navigation like accordion on dark background">
         <PAccordion heading="Some Category" compact={true} theme="dark">
           <div>
             <PLinkPure href="https://www.porsche.com" theme="dark">
