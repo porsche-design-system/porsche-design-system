@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectedStyleOnFocus,
@@ -53,38 +53,39 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
   const getBody = () => selectNode(page, 'body');
 
+  const getOverflowOnCollapsible = async () => await getElementStyle(await getCollapsible(), 'overflow');
+
+  const getVisibilityOnCollapsible = async () => await getElementStyle(await getCollapsible(), 'visibility');
+
   it('should set "visibility: visible" on collapsible on initial open', async () => {
     await initAccordion({ isOpen: true });
-    const collapsible = await getCollapsible();
-    expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
+    expect(await getVisibilityOnCollapsible()).toBe('visible');
   });
 
   it('should set "visibility: visible" on collapsible on initial close', async () => {
     await initAccordion();
-    const collapsible = await getCollapsible();
-    expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
+    expect(await getVisibilityOnCollapsible()).toBe('hidden');
   });
 
   it('should set "visibility: visible" on collapsible on open change', async () => {
     await initAccordion();
     const host = await getHost();
-    const collapsible = await getCollapsible();
 
-    expect(await getElementStyle(collapsible, 'visibility'))
+    expect(await getVisibilityOnCollapsible())
       .withContext('initially')
       .toBe('hidden');
 
     await setProperty(host, 'open', true);
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'visibility'))
+    expect(await getVisibilityOnCollapsible())
       .withContext('after open=true')
       .toBe('visible');
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'visibility'))
+    expect(await getVisibilityOnCollapsible())
       .withContext('after open=false')
       .toBe('hidden');
   });
@@ -92,7 +93,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   it('should have correct visibility after fast open/close re-trigger', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsible();
 
     // expand -> collapse -> expand
     await button.click();
@@ -100,13 +100,12 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'visibility')).toBe('visible');
+    expect(await getVisibilityOnCollapsible()).toBe('visible');
   });
 
   it('should have correct visibility after fast close/open re-trigger', async () => {
     await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsible();
 
     // collapse -> expand -> collapse
     await button.click();
@@ -114,29 +113,28 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'visibility')).toBe('hidden');
+    expect(await getVisibilityOnCollapsible()).toBe('hidden');
   });
 
   it('should have correct overflow when changed from closed to open to closed', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsible();
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('initial closed')
       .toBe('hidden');
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('after click to open')
       .toBe('visible');
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('after click to close')
       .toBe('hidden');
   });
@@ -144,23 +142,22 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   it('should have correct overflow when changed from opened to closed to opened', async () => {
     await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
     const button = await getButton();
-    const collapsible = await getCollapsible();
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('initial opened')
       .toBe('visible');
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('after click to close')
       .toBe('hidden');
 
     await button.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(collapsible, 'overflow'))
+    expect(await getOverflowOnCollapsible())
       .withContext('after click to open')
       .toBe('visible');
   });
