@@ -76,6 +76,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     } else if (component === 'p-modal') {
       props = addUxPinBindAnnotation(props, 'open', 'onClose');
+    } else if (component === 'p-tabs-bar') {
+      props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
 
     // add spacing props to every component
