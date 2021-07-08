@@ -25,7 +25,6 @@ describe('accordion', () => {
       const spy = jest.spyOn(accordionUtils, 'warnIfCompactAndSizeIsSet');
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
-      component.host.attachShadow({ mode: 'open' });
       component.componentWillLoad();
 
       expect(spy).toBeCalledWith(component.host, undefined, 'small');
