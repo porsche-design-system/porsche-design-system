@@ -385,6 +385,7 @@ describe('text-field-wrapper', () => {
       await searchButton.click();
       await waitForEventSerialization(page);
       await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
 
       expect(formFocusCalls).toBe(1);
     });
