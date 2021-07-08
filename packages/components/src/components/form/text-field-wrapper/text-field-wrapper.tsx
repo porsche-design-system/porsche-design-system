@@ -115,7 +115,7 @@ export class TextFieldWrapper {
             </button>
           ) : (
             this.input.type === 'search' && (
-              <button type="submit" onClick={this.onSubmitHandler} disabled={disabled || readOnly}>
+              <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
                 <PrefixedTagNames.pIcon name="search" color="inherit" />
               </button>
             )
@@ -148,7 +148,7 @@ export class TextFieldWrapper {
     this.labelClick();
   };
 
-  private onSubmitHandler = (event: MouseEvent): void => {
+  private onSubmit = (event: MouseEvent): void => {
     handleButtonEvent(
       event,
       this.host,
@@ -164,7 +164,6 @@ export class TextFieldWrapper {
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

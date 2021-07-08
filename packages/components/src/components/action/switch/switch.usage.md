@@ -40,7 +40,7 @@ We recommend to use only one validation for errors. Success is already provided 
 
 ### Helper text
 
-Provide help only when help is truly required! For example, if it is important for the user to know what consequences his activation of the Switch will cause.
+Provide help only when help is truly required! For example, if it is important for the user to know what consequences their activation of the Switch will cause.
 
 
 ### Switch

@@ -46,7 +46,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "4.0.0",
+    "@porsche-design-system/utilities": "4.1.0",
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/html-minifier": "^4.0.0",
     "@types/jest": "^26.0.23",

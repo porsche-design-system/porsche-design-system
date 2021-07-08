@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import {
+  PAccordion,
   PModal,
   PPagination,
   PSwitch,
@@ -12,6 +13,7 @@ import {
   PTabsItem,
 } from '@porsche-design-system/components-react';
 import type {
+  AccordionChangeEvent,
   PageChangeEvent,
   SortingChangeEvent,
   SwitchChangeEvent,
@@ -19,6 +21,7 @@ import type {
 } from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
+  const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
   const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
   const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
   const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
@@ -26,6 +29,11 @@ export const EventsPage = (): JSX.Element => {
   const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
+
+  const onAccordionChange = useCallback(
+    (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
+    []
+  );
 
   const onPageChange = useCallback(
     (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
@@ -54,6 +62,11 @@ export const EventsPage = (): JSX.Element => {
 
   return (
     <>
+      <div className="playground light">
+        <PAccordion heading={'Some heading'} onAccordionChange={onAccordionChange} />
+        <p>{accordionChangeEventCounter}</p>
+      </div>
+
       <div className="playground light">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onPageChange={onPageChange} />
         <p>{pageChangeEventCounter}</p>

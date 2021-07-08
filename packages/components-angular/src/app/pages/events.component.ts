@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  AccordionChangeEvent,
   PageChangeEvent,
   SortingChangeEvent,
   SwitchChangeEvent,
@@ -9,6 +10,14 @@ import {
 @Component({
   selector: 'page-events',
   template: `
+    <div class="playground light">
+      <p-accordion [heading]="'Some heading'" (accordionChange)="onAccordionChange($event)">
+        Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua.
+      </p-accordion>
+      <p>{{ accordionChangeEventCounter }}</p>
+    </div>
+
     <div class="playground light">
       <p-pagination
         [totalItemsCount]="500"
@@ -61,6 +70,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent {
+  accordionChangeEventCounter: number = 0;
   pageChangeEventCounter: number = 0;
   tabsBarChangeEventCounter: number = 0;
   tabsChangeEventCounter: number = 0;
@@ -68,6 +78,10 @@ export class EventsComponent {
   modalCloseEventCounter: number = 0;
   isModalOpen = false;
   tableSortingChangeEventCounter: number = 0;
+
+  onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
+    this.accordionChangeEventCounter++;
+  }
 
   onPageChange(e: CustomEvent<PageChangeEvent>) {
     this.pageChangeEventCounter++;

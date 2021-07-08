@@ -45,7 +45,7 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   @Listen('click', { capture: true })
-  public handleOnClick(e: MouseEvent): void {
+  public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }

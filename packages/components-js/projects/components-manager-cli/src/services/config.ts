@@ -67,6 +67,6 @@ export function getProjectPackageJson(): PackageJson {
     process.exit(1);
   }
 
-  const packageJsonString = fs.readFileSync(packageJsonPath, 'utf-8');
+  const packageJsonString = fs.readFileSync(packageJsonPath, 'utf8');
   return JSON.parse(packageJsonString);
 }

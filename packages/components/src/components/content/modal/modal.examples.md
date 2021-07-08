@@ -1,13 +1,13 @@
 # Modal
 
-A Modal is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
+The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
 
 Modals are flexible in the context and can include other components of the Porsche Design System.
 
-## Basic
-
-`p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
+It is a controlled component.
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
+
+## Basic
 
 It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
 Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place. 
@@ -36,7 +36,7 @@ You can test it out by navigation this example with the keyboard only.
 
 ### Framework Implementations
 
-<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
+<Playground :frameworkMarkup="frameworks"></Playground>
 
 ## Basic Scrollable
 
@@ -79,7 +79,7 @@ export default class Code extends Vue {
 
   frameworks = {
     'vanilla-js': `modal.addEventListener('close', () => {
-modal.removeAttribute('open');
+  modal.removeAttribute('open');
 });`,
     angular: `import { Component } from '@angular/core';
 
