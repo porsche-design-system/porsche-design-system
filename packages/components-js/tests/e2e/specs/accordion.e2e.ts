@@ -240,16 +240,21 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     });
 
     it('should not have focusable content when closed', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
-      const input = await getInput();
+      const otherMarkup = '<a href="#">Some Link</a>';
+      await initAccordion({ otherMarkup, hasInput: true });
+      const host = await getHost();
       const body = await getBody();
+      const link = await selectNode(page, 'a');
 
       expect(await hasFocus(page, body)).toBe(true);
 
       await page.keyboard.press('Tab');
+
+      expect(await hasFocus(page, host)).toBe(true);
+
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, input)).toBe(false);
+      expect(await hasFocus(page, link)).toBe(true);
     });
 
     it('should lose focus on content when closed', async () => {
@@ -259,6 +264,9 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       const body = await getBody();
 
       await page.keyboard.press('Tab');
+
+      expect(await hasFocus(page, host)).toBe(true);
+
       await page.keyboard.press('Tab');
 
       expect(await hasFocus(page, input)).toBe(true);
