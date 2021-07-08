@@ -79,10 +79,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add uxpinbind annotations
-    if (component === 'p-switch') {
-      props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
+    if (component === 'p-accordion') {
+      props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
     } else if (component === 'p-modal') {
       props = addUxPinBindAnnotation(props, 'open', 'onClose');
+    } else if (component === 'p-switch') {
+      props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     } else if (component === 'p-tabs-bar') {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
@@ -152,6 +154,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
     switch (component) {
+      case 'p-accordion':
       case 'p-button-group':
       case 'p-checkbox-wrapper':
       case 'p-flex':
@@ -175,6 +178,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     const glue = '\n    ';
 
     const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
+      'p-accordion': {
+        props: 'heading="Heading"',
+        children: '<Text uxpId="accordion-text" children="Content" />',
+      },
       'p-button-group': {
         children: [
           '<Button variant="primary" uxpId="button-primary" />',
