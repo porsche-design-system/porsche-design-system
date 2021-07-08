@@ -2,7 +2,7 @@ import * as resizeObserverUtils from '../../../src/utils/resize-observer';
 import { Accordion } from '../../../src/components/content/accordion/accordion';
 import * as slottedStylesUtils from '../../../src/utils/slotted-styles';
 import * as accordionUtils from '../../../src/components/content/accordion/accordion-utils';
-import { throwIfCompactAndSizeIsSet } from '../../../src/components/content/accordion/accordion-utils';
+import { warnIfCompactAndSizeIsSet } from '../../../src/components/content/accordion/accordion-utils';
 
 jest.mock('../../../src/utils/dom');
 jest.mock('../../../src/utils/slotted-styles');
@@ -18,13 +18,15 @@ describe('accordion', () => {
 
       expect(spy).toBeCalledWith(component.host, expect.anything());
     });
+  });
 
+  describe('componentWillLoad', () => {
     it('should call throwIfCompactAndSizeIsSet()', () => {
-      const spy = jest.spyOn(accordionUtils, 'throwIfCompactAndSizeIsSet');
+      const spy = jest.spyOn(accordionUtils, 'warnIfCompactAndSizeIsSet');
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
       component.host.attachShadow({ mode: 'open' });
-      component.connectedCallback();
+      component.componentWillLoad();
 
       expect(spy).toBeCalledWith(component.host, undefined, 'small');
     });
