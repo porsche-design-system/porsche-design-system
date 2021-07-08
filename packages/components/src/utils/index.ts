@@ -16,6 +16,7 @@ export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './styles';
+export * from './sync';
 export * from './theme';
 export * from './tracking';
 export * from './transition-listener';

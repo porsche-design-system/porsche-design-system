@@ -13,6 +13,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -443,35 +444,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: | 'logo-facebook'
-    | 'logo-google'
-    | 'logo-instagram'
-    | 'logo-linkedin'
-    | 'logo-pinterest'
-    | 'logo-twitter'
-    | 'logo-wechat'
-    | 'logo-whatsapp'
-    | 'logo-xing'
-    | 'logo-youtube'
-    | 'logo-baidu'
-    | 'logo-delicious'
-    | 'logo-digg'
-    | 'logo-foursquare'
-    | 'logo-gmail'
-    | 'logo-hatena'
-    | 'logo-kaixin'
-    | 'logo-qq-share'
-    | 'logo-qq'
-    | 'logo-skyrock'
-    | 'logo-sohu'
-    | 'logo-tecent'
-    | 'logo-telegram'
-    | 'logo-tumblr'
-    | 'logo-viber'
-    | 'logo-vk'
-    | 'logo-weibo'
-    | 'logo-yahoo'
-    | 'logo-youku';
+        "icon"?: SocialIconName;
         /**
           * A custom URL path to a custom social icon.
          */
@@ -1550,35 +1523,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: | 'logo-facebook'
-    | 'logo-google'
-    | 'logo-instagram'
-    | 'logo-linkedin'
-    | 'logo-pinterest'
-    | 'logo-twitter'
-    | 'logo-wechat'
-    | 'logo-whatsapp'
-    | 'logo-xing'
-    | 'logo-youtube'
-    | 'logo-baidu'
-    | 'logo-delicious'
-    | 'logo-digg'
-    | 'logo-foursquare'
-    | 'logo-gmail'
-    | 'logo-hatena'
-    | 'logo-kaixin'
-    | 'logo-qq-share'
-    | 'logo-qq'
-    | 'logo-skyrock'
-    | 'logo-sohu'
-    | 'logo-tecent'
-    | 'logo-telegram'
-    | 'logo-tumblr'
-    | 'logo-viber'
-    | 'logo-vk'
-    | 'logo-weibo'
-    | 'logo-yahoo'
-    | 'logo-youku';
+        "icon"?: SocialIconName;
         /**
           * A custom URL path to a custom social icon.
          */

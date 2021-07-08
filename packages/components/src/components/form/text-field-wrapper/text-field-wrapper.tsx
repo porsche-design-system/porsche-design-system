@@ -158,7 +158,7 @@ export class TextFieldWrapper {
   };
 
   private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled', 'readonly'], () => forceUpdate(this.host));
+    observeMutations(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

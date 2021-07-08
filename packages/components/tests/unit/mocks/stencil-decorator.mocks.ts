@@ -14,3 +14,5 @@ export const Listen = jest.fn();
 export const Prop = jest.fn();
 export const State = jest.fn();
 export const Watch = jest.fn();
+
+export const forceUpdate = jest.fn();
