@@ -1,5 +1,4 @@
 import { BreakpointCustomizable, getTagName, pxToRemWithUnit } from '../../../utils';
-import { stringify } from '../../../../tests/unit/helper';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZE[number];
@@ -20,12 +19,12 @@ export const getContentHeight = ({ height }: DOMRectReadOnly, isCompact: boolean
   return pxToRemWithUnit(height + CONTENT_PADDING_TOP);
 };
 
-export const throwIfCompactAndSizeIsSet = (
+export const warnIfCompactAndSizeIsSet = (
   host: HTMLElement,
   compact: boolean,
   size: BreakpointCustomizable<AccordionSize>
 ): void => {
   if (compact && size !== 'small') {
-    throw new Error(`Size of '${stringify(size)}' is ignored when compact is set to 'true' on ${getTagName(host)}.`);
+    console.warn(`Property "size" of ${getTagName(host)} is ignored when property "compact" is set to "true".`);
   }
 };
