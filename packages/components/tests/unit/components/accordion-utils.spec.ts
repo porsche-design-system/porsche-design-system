@@ -1,7 +1,7 @@
 import {
   setCollapsibleElementHeight,
   getContentHeight,
-  throwIfCompactAndSizeIsSet,
+  warnIfCompactAndSizeIsSet,
   AccordionSize,
 } from '../../../src/components/content/accordion/accordion-utils';
 import { getSlottedCss } from '../../../src/components/content/accordion/accordion-styles';
@@ -61,24 +61,25 @@ describe('getSlottedCss()', () => {
   });
 });
 
-describe('throwIfCompactAndSizeIsSet()', () => {
-  it.each([
-    [true, 'medium', `Size of \'"medium"\' is ignored when compact is set to 'true' on p-accordion.`],
-    [
-      true,
-      { base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' },
-      `Size of '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}' is ignored when compact is set to 'true' on p-accordion.`,
-    ],
-    [false, 'medium', undefined],
-    [false, 'small', undefined],
-  ])('should throw error for compact = %s and size = %o', (compact, size, expected) => {
+describe('warnIfCompactAndSizeIsSet()', () => {
+  beforeEach(() => {
+    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  });
+
+  it('should print warning when compact and size is defined', () => {
     const host = document.createElement('p-accordion');
-    let error;
-    try {
-      throwIfCompactAndSizeIsSet(host, compact, size as BreakpointCustomizable<AccordionSize>);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(expected);
+
+    warnIfCompactAndSizeIsSet(host, true, 'small');
+    warnIfCompactAndSizeIsSet(host, false, 'medium');
+    expect(console.warn).toBeCalledTimes(0);
+
+    warnIfCompactAndSizeIsSet(host, true, 'medium');
+    warnIfCompactAndSizeIsSet(
+      host,
+      true,
+      '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}'
+    );
+
+    expect(console.warn).toBeCalledTimes(2);
   });
 });
