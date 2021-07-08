@@ -1,8 +1,8 @@
 # Checkbox
 
-The **Checkbox** component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
+The `p-checkbox-wrapper` component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Checkbox Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-checkbox-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 ## Basic example
 
@@ -51,7 +51,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Validation states
 
-The **Checkbox Wrapper** component supports the visualisation of inline validation. The `message` and `checkbox` is colored and visible/hidden depending on the defined `state`.
+The `p-checkbox-wrapper` component supports the visualisation of inline validation. The `message` and `checkbox` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validation" :config="config">
   <select v-model="state">

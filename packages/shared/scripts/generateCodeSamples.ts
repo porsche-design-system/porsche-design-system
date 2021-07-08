@@ -35,6 +35,16 @@ const generateCodeSamples = (): void => {
         ],
       ],
     },
+    {
+      component: 'p-accordion',
+      samples: [
+        [
+          '../components-js/src/examples/accordion-example.html',
+          '../components-angular/src/app/examples/accordion-example.component.ts',
+          '../components-react/src/examples/AccordionExample.tsx',
+        ],
+      ],
+    },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');

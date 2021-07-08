@@ -33,7 +33,6 @@ export class TextListItem {
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "2.3.0-beta.0",
+  "version": "2.3.0-beta.1",
   "private": true,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -33,6 +33,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "devDependencies": {
+    "@juggle/resize-observer": "^3.3.1",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
