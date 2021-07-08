@@ -15,6 +15,11 @@ export const routes: ExtendedRoute[] = [
     pathMatch: 'full',
   },
   {
+    path: 'accordion',
+    component: fromPages.AccordionComponent,
+    name: 'Accordion',
+  },
+  {
     path: 'banner',
     component: fromPages.BannerComponent,
     name: 'Banner',
@@ -220,6 +225,11 @@ export const routes: ExtendedRoute[] = [
     name: '---',
     isDisabled: true,
     children: [],
+  },
+  {
+    path: 'accordion-example',
+    component: fromExamples.AccordionExampleComponent,
+    name: 'Accordion Example',
   },
   {
     path: 'table-example-basic',

@@ -1,6 +1,6 @@
 # Link
 
-The `<p-link>` component is essential to perform changes in **page routes**.
+The `p-link` component is essential to perform changes in **page routes**.
 For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Links (**Primary**, **Secondary**, **Tertiary**) are available for usage.
 A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.

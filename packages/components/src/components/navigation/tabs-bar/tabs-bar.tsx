@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import type { Direction, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
+import type { Direction, TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -105,7 +105,7 @@ export class TabsBar {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-      ['root--weight-semibold']: this.weight !== 'regular',
+      ['root--weight-semibold']: this.weight === 'semibold',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
@@ -217,10 +217,10 @@ export class TabsBar {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
       if (newTabIndex >= 0) {
-        this.handleTabClick(newTabIndex);
+        this.onTabClick(newTabIndex);
       }
     });
-    this.scrollAreaElement.addEventListener('keydown', this.handleKeydown);
+    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
   };
 
   private initMutationObserver = (): void => {
@@ -264,11 +264,11 @@ export class TabsBar {
     this.intersectionObserver.observe(lastTrigger);
   };
 
-  private handleTabClick = (newTabIndex: number): void => {
+  private onTabClick = (newTabIndex: number): void => {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
-  private handleKeydown = (e: KeyboardEvent): void => {
+  private onKeydown = (e: KeyboardEvent): void => {
     let upcomingFocusedTabIndex: number;
     switch (e.key) {
       case 'ArrowLeft':
@@ -290,7 +290,7 @@ export class TabsBar {
         break;
 
       case 'Enter':
-        this.handleTabClick(this.focusedTabIndex);
+        this.onTabClick(this.focusedTabIndex);
         return;
 
       default:
@@ -298,7 +298,7 @@ export class TabsBar {
     }
 
     if (this.hasPTabsParent) {
-      this.handleTabClick(upcomingFocusedTabIndex);
+      this.onTabClick(upcomingFocusedTabIndex);
     }
     this.tabElements[upcomingFocusedTabIndex].focus();
 

@@ -56,7 +56,7 @@ export class ButtonPure {
 
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
-  public handleOnClick(e: MouseEvent): void {
+  public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }

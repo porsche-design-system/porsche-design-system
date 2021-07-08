@@ -32,9 +32,8 @@ describe('switch', () => {
   const clickHandlerScript = `
     <script>
       const switchComponent = document.querySelector('p-switch')
-      switchComponent.addEventListener('switchChange', (switchChangeEvent) => {
-          const { checked } = switchChangeEvent.detail;
-          switchChangeEvent.target.setAttribute('checked', checked);
+      switchComponent.addEventListener('switchChange', (e) => {
+          e.target.checked = e.detail.checked;
       });
     </script>`;
 
