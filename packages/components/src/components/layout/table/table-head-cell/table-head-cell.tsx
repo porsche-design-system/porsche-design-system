@@ -29,7 +29,7 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {active !== undefined && direction !== undefined ? (
-          <button onClick={this.handleButtonClick}>
+          <button onClick={this.onButtonClick}>
             <slot />
             <PrefixedTagNames.pIcon
               class={{
@@ -50,7 +50,7 @@ export class TableHeadCell {
     );
   }
 
-  private handleButtonClick = (): void => {
+  private onButtonClick = (): void => {
     this.host.dispatchEvent(
       new CustomEvent<SortingChangeEvent>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
     );

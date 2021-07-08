@@ -87,7 +87,7 @@ export class Table {
                 hide-label="true"
                 size="inherit"
                 icon="arrow-head-right"
-                onClick={this.handleScrollClick}
+                onClick={this.onScrollClick}
               >
                 Next
               </PrefixedTagNames.pButtonPure>
@@ -126,7 +126,7 @@ export class Table {
     this.intersectionObserver.observe(this.tableElement); // to check if table is scrollable in general
   };
 
-  private handleScrollClick = (): void => {
+  private onScrollClick = (): void => {
     scrollElementBy(this.scrollAreaElement, getScrollByX(this.scrollAreaElement));
   };
 }

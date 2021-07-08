@@ -11,7 +11,12 @@ describe('examples', () => {
   });
   afterEach(async () => await page.close());
 
-  for (const example of ['table-example-basic', 'table-example-sorting', 'table-example-advanced']) {
+  for (const example of [
+    'accordion-example',
+    'table-example-basic',
+    'table-example-sorting',
+    'table-example-advanced',
+  ]) {
     it(`should work without error for ${example}`, async () => {
       await goto(page, example);
       expect(getConsoleErrorsAmount()).toBe(0);
