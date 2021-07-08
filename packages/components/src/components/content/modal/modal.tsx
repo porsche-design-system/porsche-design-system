@@ -128,10 +128,10 @@ export class Modal {
   };
 
   private setKeyboardListener = (active: boolean): void => {
-    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvents);
+    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvent);
   };
 
-  private onKeyboardEvents = (e: KeyboardEvent): void => {
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
     if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
