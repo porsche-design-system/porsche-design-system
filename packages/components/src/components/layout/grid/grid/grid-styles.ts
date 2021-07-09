@@ -50,16 +50,24 @@ const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle =>
   };
 };
 
-export const getDynamicCss = (direction: GridDirection, wrap: GridWrap, gutter: GridGutter): string => {
-  return getCss(
-    mergeDeep(
-      buildResponsiveJss(direction, getDirectionStyles),
-      buildResponsiveJss(wrap, getWrapStyles),
-      buildResponsiveJss(gutter, getGutterStyles)
+export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter: GridGutter): string => {
+  return (
+    baseCss +
+    getCss(
+      mergeDeep(
+        buildResponsiveJss(direction, getDirectionStyles),
+        buildResponsiveJss(wrap, getWrapStyles),
+        buildResponsiveJss(gutter, getGutterStyles)
+      )
     )
   );
 };
 
-export const addCss = (host: HTMLElement, direction: GridDirection, wrap: GridWrap, gutter: GridGutter): void => {
-  attachCss(host, baseCss + getDynamicCss(direction, wrap, gutter));
+export const addComponentCss = (
+  host: HTMLElement,
+  direction: GridDirection,
+  wrap: GridWrap,
+  gutter: GridGutter
+): void => {
+  attachCss(host, getComponentCss(direction, wrap, gutter));
 };
