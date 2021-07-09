@@ -59,7 +59,7 @@ const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType):
 const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle =>
   addImportantToEachRule({ alignContent });
 
-export const getDynamicCss = (
+export const getComponentCss = (
   inline: FlexInline,
   wrap: FlexWrap,
   direction: FlexDirection,
@@ -79,7 +79,7 @@ export const getDynamicCss = (
   );
 };
 
-export const addCss = (
+export const addComponentCss = (
   host: HTMLElement,
   inline: FlexInline,
   wrap: FlexWrap,
@@ -88,5 +88,5 @@ export const addCss = (
   alignItems: FlexAlignItems,
   alignContent: FlexAlignContent
 ): void => {
-  attachCss(host, getDynamicCss(inline, wrap, direction, justifyContent, alignItems, alignContent));
+  attachCss(host, getComponentCss(inline, wrap, direction, justifyContent, alignItems, alignContent));
 };

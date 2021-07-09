@@ -83,7 +83,7 @@ const baseCss: string = getCss(
   )
 );
 
-export const getDynamicCss = (
+export const getComponentCss = (
   width: FlexItemWidth,
   offset: FlexItemOffset,
   alignSelf: FlexItemAlignSelf,
@@ -91,19 +91,22 @@ export const getDynamicCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): string => {
-  return getCss(
-    mergeDeep(
-      buildResponsiveJss(width, getWidthStyles),
-      buildResponsiveJss(offset, getOffsetStyles),
-      buildResponsiveJss(alignSelf, getAlignSelfStyles),
-      flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-        ? buildResponsiveJss(flex, getFlexStyles)
-        : mergeDeep(buildResponsiveJss(grow, getGrowStyles), buildResponsiveJss(shrink, getShrinkStyles))
+  return (
+    baseCss +
+    getCss(
+      mergeDeep(
+        buildResponsiveJss(width, getWidthStyles),
+        buildResponsiveJss(offset, getOffsetStyles),
+        buildResponsiveJss(alignSelf, getAlignSelfStyles),
+        flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
+          ? buildResponsiveJss(flex, getFlexStyles)
+          : mergeDeep(buildResponsiveJss(grow, getGrowStyles), buildResponsiveJss(shrink, getShrinkStyles))
+      )
     )
   );
 };
 
-export const addCss = (
+export const addComponentCss = (
   host: HTMLElement,
   width: FlexItemWidth,
   offset: FlexItemOffset,
@@ -112,5 +115,5 @@ export const addCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): void => {
-  attachCss(host, baseCss + getDynamicCss(width, offset, alignSelf, grow, shrink, flex));
+  attachCss(host, getComponentCss(width, offset, alignSelf, grow, shrink, flex));
 };
