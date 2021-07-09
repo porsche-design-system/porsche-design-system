@@ -4,7 +4,7 @@ import type {
   GridDirection,
   GridGutter,
   GridWrap,
-} from '@porsche-design-system/components/src/components/layout/grid/grid/grid-utils';
+} from '@porsche-design-system/components/src/components/layout/grid/grid/grid-styles';
 import {
   getBrowser,
   getElementStyle,
