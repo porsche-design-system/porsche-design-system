@@ -259,8 +259,7 @@
         }
 
         // Special
-        .playground,
-        .playground-static {
+        .playground {
           margin-top: $p-spacing-16;
         }
       }

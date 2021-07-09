@@ -1,6 +1,6 @@
 # Tabs Bar
 
-The component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
+The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
 your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element
 and therefore change the appearance of your content or as skip navigation to move on a longer page.
 
@@ -14,13 +14,12 @@ handles the correct display of content according to the active tab. Have a look 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
 
+It is a controlled component.
+This means it does not contain any internal state, and you got full control over its behavior.
+
 ---
 
 ## Basic example
-
-`p-tabs-bar` is a component which does not work by itself and needs to be controlled from the outside.
-This grants you flexible control over the active tab.
-
 
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
@@ -29,7 +28,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### Framework Implementations
 
-<PlaygroundStatic :frameworks="frameworks"></PlaygroundStatic>
+<Playground :frameworkMarkup="frameworks"></Playground>
 
 ### Buttons
 
@@ -41,7 +40,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 
-The `<p-tabs-bar>` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
+The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
@@ -103,23 +102,21 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   frameworks = {
-    'vanilla-js': `tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
-  const { activeTabIndex } = tabChangeEvent.detail;
-  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+    'vanilla-js': `tabsBar.addEventListener('tabChange', (e) => {
+  e.target.activeTabIndex = e.detail.activeTabIndex;
 });`,
     angular: `import { Component } from '@angular/core';
 import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'tabs-bar-page',
-  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>\`,
+  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="onTabChange($event)">...</p-tabs-bar>\`,
 })
 export class TabsBarPage {
   tabIndex: number;
 
-  handleTabChange(e: CustomEvent<TabChangeEvent>) {
-    const { activeTabIndex } = e.detail;
-    this.tabIndex = activeTabIndex;
+  onTabChange(e: CustomEvent<TabChangeEvent>) {
+    this.tabIndex = e.detail.activeTabIndex;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
@@ -128,12 +125,11 @@ import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
 const TabsBarPage = (): JSX.Element => {
     const [tabIndex, setTabIndex] = useState<number>();
-    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        const { activeTabIndex } = e.detail;
-        setTabIndex(activeTabIndex);
+    const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+        setTabIndex(e.detail.activeTabIndex);
     }, []);
 
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
 }`,
     };
 
@@ -190,7 +186,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     
     // theme switch needs to register event listeners again
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
-    themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
+    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
     }));    
   }
@@ -206,20 +202,19 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
 
     //bind tabsBars with activeTabIndex set as attribute
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.handleTabChange(e);
+      this.onTabChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
   
   hiddenNodes = null;
-  handleTabChange =  (e: CustomEvent) => {
-      const { activeTabIndex } = e.detail;
-      e.target.setAttribute('active-tab-index', activeTabIndex);     
+  onTabChange =  (e: CustomEvent) => {
+      e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 
   updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {

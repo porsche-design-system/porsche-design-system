@@ -12,7 +12,7 @@ describe('textarea-wrapper', () => {
       const component = new TextareaWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
     });
   });
 
@@ -32,7 +32,7 @@ describe('textarea-wrapper', () => {
       const component = new TextareaWrapper();
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
     });
   });
 

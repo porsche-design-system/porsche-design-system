@@ -23,7 +23,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
   for (const file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
-    const svgRawData = fs.readFileSync(svgRawPath, { encoding: 'utf8' });
+    const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = (await svgo.optimize(svgRawData)).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
     const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
@@ -39,7 +39,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     const nameKey = camelCase(svgRawName);
     manifest[nameKey] = svgOptimizedFilename;
 
-    fs.writeFileSync(svgOptimizedPath, svgOptimizedData, { encoding: 'utf8' });
+    fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
     const svgRawSize = fs.statSync(svgRawPath).size;
     const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
@@ -79,7 +79,7 @@ export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join('
 const generate = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
   const files = globby.sync('./src/**/*.svg').sort();
-  const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
+  const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), 'utf8')) as SVGO.Options;
 
   createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
     console.error(e);

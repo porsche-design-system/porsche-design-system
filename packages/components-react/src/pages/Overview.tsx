@@ -1,5 +1,6 @@
 import {
   componentsReady,
+  PAccordion,
   PBanner,
   PButton,
   PButtonGroup,
@@ -239,6 +240,13 @@ export const OverviewPage = (): JSX.Element => {
             </PTabsBar>
           </div>
 
+          <div className="playground light" title="should render default accordion">
+            <PAccordion heading="Some accordion heading">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </PAccordion>
+          </div>
+
           <div className="playground light" title="should render default spinner">
             <PSpinner />
           </div>
@@ -415,6 +423,14 @@ export const OverviewPage = (): JSX.Element => {
                 <button>Tab2</button>
                 <button>Tab3</button>
               </PTabsBar>
+            </div>
+
+            <div className="playground light" title="should render default accordion with custom prefix">
+              <PAccordion heading="Some accordion heading">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum.
+              </PAccordion>
             </div>
 
             <div className="playground light" title="should render default spinner with custom prefix">

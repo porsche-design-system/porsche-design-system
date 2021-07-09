@@ -425,7 +425,7 @@
         Prevent using <strong>acronyms</strong> and complex technical terms.
       </p-text-list-item>
       <p-text-list-item>
-         <strong>"Design for the ears"</strong>. Make sure that the context of your texts and interaction elements are clear, even if you won’t see the UI and images around. Name your buttons so that the action is clear to the user or he knows exactly where he is going by clicking.
+         <strong>"Design for the ears"</strong>. Make sure that the context of your texts and interaction elements are clear, even if you won’t see the UI and images around. Name your buttons so that the action is clear to the user or they know exactly where they are going by clicking.
       </p-text-list-item>
       <p-text-list-item>
         Provide <strong>textual alternatives</strong> to images, videos, charts and every content which transports meaning without text. Especially when they have a functionality, e.g., icons in a mobile interface.

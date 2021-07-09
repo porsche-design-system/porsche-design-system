@@ -12,7 +12,7 @@ describe('text-field-wrapper', () => {
       const component = new TextFieldWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
     });
   });
 
@@ -38,7 +38,7 @@ describe('text-field-wrapper', () => {
         component.componentWillLoad();
       } catch (e) {}
 
-      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
     });
   });
 

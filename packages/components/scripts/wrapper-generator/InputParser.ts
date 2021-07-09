@@ -78,6 +78,7 @@ export class InputParser {
     return rawComponentInterface
       .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
       .replace(/    |\t\t/g, '  ') // adjust indentation
+      .replace(/    \*/g, '   *') // adjust indentation before jsdocs
       .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
   }
 

@@ -1,5 +1,5 @@
-import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { goto } from '../helpers';
+import { Page } from 'puppeteer';
+import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
 import { browser } from '../config';
 
 describe('components', () => {
@@ -8,24 +8,13 @@ describe('components', () => {
   afterEach(async () => await page.close());
 
   it('overview should work without errors', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          console.log(description);
-        }
-      }
-    });
-    const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
-
+    initConsoleObserver(page);
     await goto(page, 'overview');
 
-    expect(getErrorsAmount()).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
-    expect(getErrorsAmount()).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   it('should stringify object props correctly', async () => {
@@ -43,7 +32,6 @@ describe('components', () => {
     await page.waitForTimeout(1000);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
-    const getOuterHTML = (elHandle: ElementHandle) => elHandle.evaluate((el) => el.outerHTML);
 
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);

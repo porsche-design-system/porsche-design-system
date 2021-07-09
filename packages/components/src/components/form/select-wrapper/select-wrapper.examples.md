@@ -1,9 +1,11 @@
 # Select
 
-The **Select** component is a styling wrapper for the native HTML `<select>` form element.
+The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element.
 To improve accessibility on devices with touch support, it defaults to the native user interface behaviour.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Select Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for.
+The `p-select-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible.
+When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 ## Basic example
 
@@ -34,7 +36,7 @@ If the select is required, use `<option hidden></option>` to enforce a selection
 ---
 
 ## With filter
-This option enhances the native select filter by providing an additional search field where the user can type his own search string. 
+This option enhances the native select filter by providing an additional search field where the user can type their own search string. 
 The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
 
 <Playground :markup="withFilter" :config="config"></Playground>
@@ -87,7 +89,7 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Validation states
 
-The **Select Wrapper** component supports the visualisation of inline validation.
+The `p-select-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">

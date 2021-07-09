@@ -6,12 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
+import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
-import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -19,6 +21,32 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/layout/table
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
+    interface PAccordion {
+        /**
+          * Displays the Accordion as compact version with thinner border and smaller paddings.
+         */
+        "compact"?: boolean;
+        /**
+          * Defines the heading used in accordion.
+         */
+        "heading"?: string;
+        /**
+          * Defines if accordion is open.
+         */
+        "open"?: boolean;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<AccordionSize>;
+        /**
+          * Sets a headline tag, so it fits correctly within the outline of the page.
+         */
+        "tag"?: HeadlineTag;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PBanner {
         /**
           * Defines if the banner can be closed/removed by the user.
@@ -416,35 +444,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: | 'logo-facebook'
-    | 'logo-google'
-    | 'logo-instagram'
-    | 'logo-linkedin'
-    | 'logo-pinterest'
-    | 'logo-twitter'
-    | 'logo-wechat'
-    | 'logo-whatsapp'
-    | 'logo-xing'
-    | 'logo-youtube'
-    | 'logo-baidu'
-    | 'logo-delicious'
-    | 'logo-digg'
-    | 'logo-foursquare'
-    | 'logo-gmail'
-    | 'logo-hatena'
-    | 'logo-kaixin'
-    | 'logo-qq-share'
-    | 'logo-qq'
-    | 'logo-skyrock'
-    | 'logo-sohu'
-    | 'logo-tecent'
-    | 'logo-telegram'
-    | 'logo-tumblr'
-    | 'logo-viber'
-    | 'logo-vk'
-    | 'logo-weibo'
-    | 'logo-yahoo'
-    | 'logo-youku';
+        "icon"?: SocialIconName;
         /**
           * A custom URL path to a custom social icon.
          */
@@ -812,6 +812,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
+    }
+    var HTMLPAccordionElement: {
+        prototype: HTMLPAccordionElement;
+        new (): HTMLPAccordionElement;
+    };
     interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
     }
     var HTMLPBannerElement: {
@@ -1047,6 +1053,7 @@ declare global {
         new (): HTMLPTextareaWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -1089,6 +1096,36 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PAccordion {
+        /**
+          * Displays the Accordion as compact version with thinner border and smaller paddings.
+         */
+        "compact"?: boolean;
+        /**
+          * Defines the heading used in accordion.
+         */
+        "heading"?: string;
+        /**
+          * Emitted when accordion state is changed.
+         */
+        "onAccordionChange"?: (event: CustomEvent<AccordionChangeEvent>) => void;
+        /**
+          * Defines if accordion is open.
+         */
+        "open"?: boolean;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<AccordionSize>;
+        /**
+          * Sets a headline tag, so it fits correctly within the outline of the page.
+         */
+        "tag"?: HeadlineTag;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PBanner {
         /**
           * Emitted when the close button is clicked.
@@ -1490,35 +1527,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: | 'logo-facebook'
-    | 'logo-google'
-    | 'logo-instagram'
-    | 'logo-linkedin'
-    | 'logo-pinterest'
-    | 'logo-twitter'
-    | 'logo-wechat'
-    | 'logo-whatsapp'
-    | 'logo-xing'
-    | 'logo-youtube'
-    | 'logo-baidu'
-    | 'logo-delicious'
-    | 'logo-digg'
-    | 'logo-foursquare'
-    | 'logo-gmail'
-    | 'logo-hatena'
-    | 'logo-kaixin'
-    | 'logo-qq-share'
-    | 'logo-qq'
-    | 'logo-skyrock'
-    | 'logo-sohu'
-    | 'logo-tecent'
-    | 'logo-telegram'
-    | 'logo-tumblr'
-    | 'logo-viber'
-    | 'logo-vk'
-    | 'logo-weibo'
-    | 'logo-yahoo'
-    | 'logo-youku';
+        "icon"?: SocialIconName;
         /**
           * A custom URL path to a custom social icon.
          */
@@ -1909,6 +1918,7 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface IntrinsicElements {
+        "p-accordion": PAccordion;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -1954,6 +1964,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
