@@ -1,6 +1,7 @@
-import { breakpoint, color } from '@porsche-design-system/utilities';
+import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import type { JssStyle } from '.';
+import type { JssStyle, Styles } from '.';
+import { buildGlobalStyles, getCss, getTagName } from '.';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
@@ -76,3 +77,25 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
+
+export const getDefaultSlottedCss = (host: HTMLElement, additionalStyles?: Styles): string => {
+  return getCss(
+    buildGlobalStyles({
+      [getTagName(host)]: addImportantToEachRule({
+        '& a': {
+          color: 'inherit',
+          textDecoration: 'underline',
+          ...getHoverStyles(),
+          ...getFocusStyles({ offset: 1 }),
+        },
+        '& b, & strong': {
+          fontWeight: `${font.weight.bold}`,
+        },
+        '& em, & i': {
+          fontStyle: 'normal',
+        },
+        ...additionalStyles,
+      }),
+    })
+  );
+};
