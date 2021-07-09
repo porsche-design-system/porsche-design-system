@@ -1,5 +1,5 @@
-import * as domUtils from '../../../src/utils/dom';
-import { TableBody } from '../../../src/components/layout/table/table-body/table-body';
+import * as domUtils from '../../../../utils/dom';
+import { TableBody } from './table-body';
 
 describe('table-body', () => {
   describe('connectedCallback', () => {
