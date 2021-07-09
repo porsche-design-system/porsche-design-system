@@ -1,5 +1,5 @@
-import * as domUtils from '../../../src/utils/dom';
-import { FlexItem } from '../../../src/components/layout/flex/flex-item/flex-item';
+import * as domUtils from '../../../../utils/dom';
+import { FlexItem } from './flex-item';
 
 describe('flex-item', () => {
   describe('connectedCallback', () => {

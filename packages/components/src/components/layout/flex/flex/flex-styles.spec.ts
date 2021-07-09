@@ -10,14 +10,14 @@ import {
   FlexInline,
   FlexJustifyContent,
   FlexWrap,
-  getDynamicCss,
-} from '../../../src/components/layout/flex/flex/flex-utils';
-import { stringify } from '../helper';
+  getComponentCss,
+} from './flex-styles';
+import { stringify } from '../../../../../tests/unit/helper';
 
 describe('getDynamicCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];
   it.each(dataInline.map(stringify))('should return correct css for inline: %s', (inline: FlexInline) => {
-    expect(getDynamicCss(inline, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
+    expect(getComponentCss(inline, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
   const dataWrap: FlexWrap[] = [
@@ -25,7 +25,7 @@ describe('getDynamicCss()', () => {
     { base: 'nowrap', xs: 'wrap', s: 'nowrap', m: 'wrap', l: 'nowrap', xl: 'wrap' },
   ];
   it.each(dataWrap.map(stringify))('should return correct css for wrap: %s', (wrap: FlexWrap) => {
-    expect(getDynamicCss(false, wrap, 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
+    expect(getComponentCss(false, wrap, 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
   const dataDirection: FlexDirection[] = [
@@ -33,7 +33,7 @@ describe('getDynamicCss()', () => {
     { base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' },
   ];
   it.each(dataDirection.map(stringify))('should return correct css for direction: %s', (direction: FlexDirection) => {
-    expect(getDynamicCss(false, 'nowrap', direction, 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
+    expect(getComponentCss(false, 'nowrap', direction, 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
   const dataJustifyContent: FlexJustifyContent[] = [
@@ -43,7 +43,7 @@ describe('getDynamicCss()', () => {
   it.each(dataJustifyContent.map(stringify))(
     'should return correct css for justifyContent: %s',
     (justifyContent: FlexJustifyContent) => {
-      expect(getDynamicCss(false, 'nowrap', 'row', justifyContent, 'stretch', 'stretch')).toMatchSnapshot();
+      expect(getComponentCss(false, 'nowrap', 'row', justifyContent, 'stretch', 'stretch')).toMatchSnapshot();
     }
   );
 
@@ -54,7 +54,7 @@ describe('getDynamicCss()', () => {
   it.each(dataAlignItems.map(stringify))(
     'should return correct css for alignItems: %s',
     (alignItems: FlexAlignItems) => {
-      expect(getDynamicCss(false, 'nowrap', 'row', 'flex-start', alignItems, 'stretch')).toMatchSnapshot();
+      expect(getComponentCss(false, 'nowrap', 'row', 'flex-start', alignItems, 'stretch')).toMatchSnapshot();
     }
   );
 
@@ -65,13 +65,13 @@ describe('getDynamicCss()', () => {
   it.each(dataAlignContent.map(stringify))(
     'should return correct css for alignContent: %s',
     (alignContent: FlexAlignContent) => {
-      expect(getDynamicCss(false, 'nowrap', 'row', 'flex-start', 'stretch', alignContent)).toMatchSnapshot();
+      expect(getComponentCss(false, 'nowrap', 'row', 'flex-start', 'stretch', alignContent)).toMatchSnapshot();
     }
   );
 
   it('should return correct css for all props being breakpoint customizable', () => {
     expect(
-      getDynamicCss(
+      getComponentCss(
         [...dataInline].pop(),
         [...dataWrap].pop(),
         [...dataDirection].pop(),

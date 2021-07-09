@@ -1,13 +1,13 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
-  addCss,
+  addComponentCss,
   FlexItemAlignSelf,
   FlexItemFlex,
   FlexItemGrow,
   FlexItemOffset,
   FlexItemShrink,
   FlexItemWidth,
-} from './flex-item-utils';
+} from './flex-item-styles';
 import { throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
@@ -40,7 +40,7 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
-    addCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
+    addComponentCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
   }
 
   public render(): JSX.Element {
