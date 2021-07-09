@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `multiline` property to `Table Cell`
+
 #### Changed
 - Removed initial delay of `Banner`
 

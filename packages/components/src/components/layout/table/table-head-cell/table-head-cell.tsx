@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { SortingChangeEvent, TableHeadCellSort } from '../table-utils';
 import { getPrefixedTagNames, throwIfElementHasAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
-import { addCss, createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from '../table-utils';
+import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from './table-head-cell-utils';
+import type { TableHeadCellSort, SortingChangeEvent } from './table-head-cell-utils';
+import { addComponentCss } from './table-head-cell-styles';
 
 @Component({
   tag: 'p-table-head-cell',
@@ -19,7 +20,7 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
     throwIfElementHasAttribute(this.host, 'sort');
-    addCss(this.host);
+    addComponentCss(this.host);
   }
 
   public render(): JSX.Element {

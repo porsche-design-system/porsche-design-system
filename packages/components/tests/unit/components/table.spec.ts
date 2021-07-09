@@ -1,5 +1,5 @@
 import * as slottedStylesUtils from '../../../src/utils/slotted-styles';
-import * as tableUtils from '../../../src/components/layout/table/table-utils';
+import * as tableUtils from '../../../src/components/layout/table/table/table-utils';
 import { Table } from '../../../src/components/layout/table/table/table';
 
 describe('table', () => {

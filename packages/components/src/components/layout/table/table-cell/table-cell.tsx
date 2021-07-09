@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { addCss } from '../table-utils';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { throwIfParentIsNotOfKind } from '../../../../utils';
+import { addComponentCss } from './table-cell-styles';
 
 @Component({
   tag: 'p-table-cell',
@@ -9,9 +9,15 @@ import { throwIfParentIsNotOfKind } from '../../../../utils';
 export class TableCell {
   @Element() public host!: HTMLElement;
 
+  /** Displays slotted text multiline or forced into a single line. */
+  @Prop() public multiline?: boolean = false;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableRow');
-    addCss(this.host);
+  }
+
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.multiline);
   }
 
   public render(): JSX.Element {

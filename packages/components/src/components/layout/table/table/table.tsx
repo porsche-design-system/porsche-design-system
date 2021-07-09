@@ -1,14 +1,9 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
-import {
-  getHTMLElement,
-  getPrefixedTagNames,
-  getScrollByX,
-  hasNamedSlot,
-  insertSlottedStyles,
-  scrollElementBy,
-} from '../../../../utils';
-import type { SortingChangeEvent } from '../table-utils';
-import { addCss, getSlottedCss, SORT_EVENT_NAME, warnIfCaptionIsUndefined } from '../table-utils';
+import { getHTMLElement, getPrefixedTagNames, getScrollByX, hasNamedSlot, scrollElementBy } from '../../../../utils';
+import { addComponentCss, addSlottedCss } from './table-styles';
+import { warnIfCaptionIsUndefined } from './table-utils';
+import { SORT_EVENT_NAME } from '../table-head-cell/table-head-cell-utils';
+import type { SortingChangeEvent } from '../table-head-cell/table-head-cell-utils';
 
 @Component({
   tag: 'p-table',
@@ -33,8 +28,8 @@ export class Table {
   private tableElement: HTMLElement;
 
   public connectedCallback(): void {
-    insertSlottedStyles(this.host, getSlottedCss(this.host));
-    addCss(this.host);
+    addComponentCss(this.host);
+    addSlottedCss(this.host);
   }
 
   public componentWillLoad(): void {

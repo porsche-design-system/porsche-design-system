@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { addCss } from '../table-utils';
 import { throwIfParentIsNotOfKind } from '../../../../utils';
+import { addComponentCss } from './table-row-styles';
 
 @Component({
   tag: 'p-table-row',
@@ -11,7 +11,7 @@ export class TableRow {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableBody');
-    addCss(this.host);
+    addComponentCss(this.host);
   }
 
   public render(): JSX.Element {
