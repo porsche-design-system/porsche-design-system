@@ -2,6 +2,8 @@ import { getBrowser, options } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
+import * as path from 'path';
+import * as fs from 'fs';
 
 describe('navigation', () => {
   let browserPage: Page;
@@ -19,23 +21,35 @@ describe('navigation', () => {
   const hasPageObjectObject = async (page: Page): Promise<boolean> =>
     page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
+  const injectCSSOverrides = async () => {
+    const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
+    const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
+    const overrides = fs.readFileSync(pathToOverrides, 'utf8');
+
+    await browserPage.evaluate((overrides) => {
+      const styleTag = document.createElement('style');
+      styleTag.innerText = overrides;
+      document.getElementsByTagName('head')[0].appendChild(styleTag);
+    }, overrides);
+  };
+
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
       ((category: string, page: string) => {
         it(`should navigate to "${category} > ${page}"`, async () => {
           await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
+          await injectCSSOverrides();
           await browserPage.waitForSelector('html.hydrated');
 
-          const [buttonElement] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
+          const [accordionButton] = await browserPage.$x(
+            `//aside[@class='sidebar']/nav/p-accordion[@heading='${category}']`
           );
+          const href = `\/${paramCase(category)}\/${paramCase(page)}`;
           const [linkElement] = await browserPage.$x(
-            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='\/${paramCase(
-              category
-            )}\/${paramCase(page)}']`
+            `//aside[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
           );
 
-          await buttonElement.click();
+          await accordionButton.click();
 
           expect(await isLinkActive(linkElement))
             .withContext('link should be inactive initially')

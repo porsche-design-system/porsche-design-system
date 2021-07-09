@@ -1,3 +1,4 @@
+import { AccordionComponent } from './accordion.component';
 import { BannerComponent } from './banner.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
@@ -39,6 +40,7 @@ import { TypographyComponent } from './typography.component';
 import { SwitchComponent } from './switch.component';
 
 export const pages = [
+  AccordionComponent,
   BannerComponent,
   ButtonComponent,
   ButtonGroupComponent,
@@ -80,6 +82,7 @@ export const pages = [
   TypographyComponent,
 ];
 
+export * from './accordion.component';
 export * from './banner.component';
 export * from './button.component';
 export * from './button-group.component';

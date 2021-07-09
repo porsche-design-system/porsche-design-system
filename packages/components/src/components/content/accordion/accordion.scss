@@ -1,0 +1,168 @@
+@import '../../../styles/internal.variables';
+
+:host {
+  display: block;
+}
+
+$root: '.root';
+
+:host(:first-of-type) {
+  #{$root} {
+    border-top: 1px solid $p-color-neutral-contrast-medium;
+
+    &--compact {
+      border-top: none;
+    }
+
+    &--theme-dark:not(&--compact) {
+      border-color: $p-color-theme-dark-neutral-contrast-medium;
+    }
+  }
+}
+
+#{$root} {
+  border-bottom: 1px solid $p-color-neutral-contrast-medium;
+
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+
+  &--compact {
+    border-bottom: none;
+  }
+
+  &--size-medium {
+    @include p-generate-type-scale($p-font-size-medium);
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-small-#{$breakpoint} {
+        @include p-generate-type-scale($p-font-size-small);
+      }
+      &--size-medium-#{$breakpoint} {
+        @include p-generate-type-scale($p-font-size-medium);
+      }
+    }
+  }
+
+  &--theme-dark {
+    border-color: $p-color-theme-dark-neutral-contrast-medium;
+  }
+}
+
+button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: p-px-to-rem(24px) p-px-to-rem(12px);
+  width: 100%;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-weight: $p-font-weight-semibold;
+  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+  @include p-focus($p-color-state-focus, 0);
+
+  #{$root}--compact & {
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+    padding: p-px-to-rem(4px) 0;
+    margin: p-px-to-rem(4px) 0;
+    outline-offset: 2px;
+
+    &:hover {
+      color: $p-color-state-hover;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $p-hover-background-color;
+
+    #{$root}--theme-dark:not(#{$root}--compact) & {
+      background-color: $p-hover-background-color-theme-dark;
+    }
+  }
+
+  // inherit headline styles except for slotted semibold weight override
+  margin: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: inherit;
+  overflow-wrap: inherit;
+  word-wrap: inherit;
+  hyphens: inherit;
+}
+
+.icon {
+  transform-origin: 50% 50%;
+  transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
+  margin-left: $p-spacing-24;
+
+  #{$root}--compact & {
+    &:hover {
+      color: $p-color-state-hover;
+    }
+
+    #{$root}--theme-dark & {
+      color: $p-hover-background-color-theme-dark;
+    }
+  }
+
+  #{$root}--open & {
+    // needs to be rotate, since safari rotates in a different direction on rotate3d
+    transform: rotate(180deg);
+  }
+}
+
+.collapsible {
+  height: 0;
+  padding: 0 p-px-to-rem(12px);
+  visibility: hidden;
+  overflow: hidden;
+  transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
+    visibility $p-animation-hover-duration-var linear $p-animation-hover-duration-var;
+
+  #{$root}--open & {
+    height: auto;
+    padding-bottom: $p-spacing-40;
+    visibility: visible;
+    transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
+      visibility $p-animation-hover-duration-var;
+    animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards openAnimation;
+  }
+
+  #{$root}--compact & {
+    padding: 0;
+  }
+
+  #{$root}--open#{$root}--compact & {
+    padding-bottom: $p-spacing-8;
+  }
+}
+
+.content {
+  padding-top: $p-spacing-8;
+  #{$root}--compact & {
+    padding-top: 0;
+  }
+}
+
+@keyframes openAnimation {
+  0% {
+    overflow: hidden;
+  }
+  99% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
+  }
+}

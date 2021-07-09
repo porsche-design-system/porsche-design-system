@@ -112,13 +112,12 @@ export class TextareaWrapper {
   };
 
   private observeMutations = (): void => {
-    observeMutations(this.textarea, ['disabled', 'readonly'], () => forceUpdate(this.host));
+    observeMutations(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

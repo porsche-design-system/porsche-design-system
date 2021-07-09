@@ -12,7 +12,7 @@ describe('checkbox-wrapper', () => {
       const component = new CheckboxWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'required'], expect.anything());
     });
   });
 
@@ -32,7 +32,7 @@ describe('checkbox-wrapper', () => {
       const component = new CheckboxWrapper();
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'required'], expect.anything());
     });
   });
 

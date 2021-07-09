@@ -12,7 +12,7 @@ describe('radio-button-wrapper', () => {
       const component = new RadioButtonWrapper();
       component.connectedCallback();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'required'], expect.anything());
     });
   });
 
@@ -32,7 +32,7 @@ describe('radio-button-wrapper', () => {
       const component = new RadioButtonWrapper();
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(undefined, ['disabled'], expect.anything());
+      expect(spy).toBeCalledWith(undefined, ['disabled', 'required'], expect.anything());
     });
   });
 

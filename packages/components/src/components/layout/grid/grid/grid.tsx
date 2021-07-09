@@ -1,6 +1,7 @@
-import { JSX, Component, Prop, h, Element, Watch, forceUpdate } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-styles';
 import { addComponentCss } from './grid-styles';
+import { updateChildren } from '../../../../utils';
 
 @Component({
   tag: 'p-grid',
@@ -20,7 +21,7 @@ export class Grid {
 
   @Watch('gutter')
   public handleGutterChange(): void {
-    Array.from(this.host.children).forEach(forceUpdate);
+    updateChildren(this.host);
   }
 
   public componentWillRender(): void {

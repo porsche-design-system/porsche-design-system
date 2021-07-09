@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import type { Direction, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
+import type { Direction, TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -80,8 +80,9 @@ export class TabsBar {
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
       // skip scrolling on first render when no activeTabIndex is set
-      this.scrollActiveTabIntoView({ skipAnimation: true });
+      this.scrollActiveTabIntoView(true);
     }
+
     // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setStatusBarStyle();
@@ -104,7 +105,7 @@ export class TabsBar {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
-      ['root--weight-semibold']: this.weight !== 'regular',
+      ['root--weight-semibold']: this.weight === 'semibold',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 
@@ -135,7 +136,7 @@ export class TabsBar {
 
     const gradientClasses = {
       ['gradient']: true,
-      ['gradient--color-scheme-surface']: this.gradientColorScheme !== 'default',
+      ['gradient--color-scheme-surface']: this.gradientColorScheme === 'surface',
       [`gradient--${direction}`]: true,
     };
 
@@ -177,10 +178,12 @@ export class TabsBar {
   };
 
   private setStatusBarStyle = (): void => {
+    // TODO: move entire function into utilities and refactor to single setAttribute call
     // statusBarElement is undefined on first render
     if (!this.statusBarElement) {
       return;
     }
+
     if (this.activeTabIndex === undefined && this.prevActiveTabIndex !== undefined) {
       // handle initial inactive + active to inactive cases
       addEnableTransitionClass(this.statusBarElement);
@@ -214,10 +217,10 @@ export class TabsBar {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
       if (newTabIndex >= 0) {
-        this.handleTabClick(newTabIndex);
+        this.onTabClick(newTabIndex);
       }
     });
-    this.scrollAreaElement.addEventListener('keydown', this.handleKeydown);
+    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
   };
 
   private initMutationObserver = (): void => {
@@ -261,11 +264,11 @@ export class TabsBar {
     this.intersectionObserver.observe(lastTrigger);
   };
 
-  private handleTabClick = (newTabIndex: number): void => {
+  private onTabClick = (newTabIndex: number): void => {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
-  private handleKeydown = (e: KeyboardEvent): void => {
+  private onKeydown = (e: KeyboardEvent): void => {
     let upcomingFocusedTabIndex: number;
     switch (e.key) {
       case 'ArrowLeft':
@@ -287,7 +290,7 @@ export class TabsBar {
         break;
 
       case 'Enter':
-        this.handleTabClick(this.focusedTabIndex);
+        this.onTabClick(this.focusedTabIndex);
         return;
 
       default:
@@ -295,14 +298,20 @@ export class TabsBar {
     }
 
     if (this.hasPTabsParent) {
-      this.handleTabClick(upcomingFocusedTabIndex);
+      this.onTabClick(upcomingFocusedTabIndex);
     }
     this.tabElements[upcomingFocusedTabIndex].focus();
 
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
+  private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
+    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
+    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
+    if (!this.scrollAreaElement) {
+      return;
+    }
+
     const scrollActivePosition = getScrollActivePosition(
       this.tabElements,
       this.direction,
@@ -311,7 +320,7 @@ export class TabsBar {
       this.firstGradientElement.offsetWidth
     );
 
-    if (opts?.skipAnimation) {
+    if (skipAnimation) {
       this.scrollAreaElement.scrollLeft = scrollActivePosition;
     } else {
       scrollElementTo(this.scrollAreaElement, scrollActivePosition);
@@ -324,10 +333,10 @@ export class TabsBar {
   };
 
   private get focusedTabIndex(): number {
-    const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
     if (this.hasPTabsParent) {
       return this.activeTabIndex ?? 0;
     } else {
+      const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
       return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
     }
   }

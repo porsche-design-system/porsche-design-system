@@ -10,6 +10,11 @@ export type RouteType = RouteProps & {
 
 export const routes: RouteType[] = [
   {
+    name: 'Accordion',
+    path: '/accordion',
+    component: fromPages.AccordionPage,
+  },
+  {
     name: 'Banner',
     path: '/banner',
     component: fromPages.BannerPage,
@@ -206,6 +211,11 @@ export const routes: RouteType[] = [
   {
     name: '---',
     isDisabled: true,
+  },
+  {
+    name: 'Accordion Example',
+    path: '/accordion-example',
+    component: fromExamples.AccordionExamplePage,
   },
   {
     name: 'Table Example Basic',

@@ -4,7 +4,6 @@ import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
-import PlaygroundStatic from '@/components/PlaygroundStatic.vue';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
@@ -21,7 +20,6 @@ Vue.use({
   install(vue: VueConstructor) {
     vue.component('Playground', Playground);
     vue.component('ColorBadge', ColorBadge);
-    vue.component('PlaygroundStatic', PlaygroundStatic);
   },
 });
 

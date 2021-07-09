@@ -3,6 +3,7 @@ import polyfill from 'rollup-plugin-polyfill';
 import pkg from '@porsche-design-system/js/package.json';
 
 const polyfills = [
+  '@juggle/resize-observer',
   'construct-style-sheets-polyfill',
   'intersection-observer',
   'scroll-behavior-polyfill',

@@ -39,11 +39,11 @@ describe('PBanner', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const dismiss = getByTestId('host').shadowRoot.querySelector('p-content-wrapper p-button-pure');
+    const button = getByTestId('host').shadowRoot.querySelector('p-content-wrapper p-button-pure');
 
     expect(debug.innerHTML).toBe('Status: visible; Event Counter: 0;');
 
-    userEvent.click(dismiss);
+    userEvent.click(button);
     expect(debug.innerHTML).toBe('Status: hidden; Event Counter: 1;');
   });
 });

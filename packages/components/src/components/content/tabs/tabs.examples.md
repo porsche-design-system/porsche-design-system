@@ -1,6 +1,6 @@
 # Tabs
 
-The component makes it easy to explore and switch between different views. You can organize and allow navigation
+The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow navigation
 between groups of content that are related and at the same level of hierarchy. The component handles the display of content
 according to the active tab and all accessibility attributes on your tab and tab content.
 

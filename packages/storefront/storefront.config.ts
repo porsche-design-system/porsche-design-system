@@ -78,6 +78,20 @@ export const config: StorefrontConfig = {
     ],
   },
   Components: {
+    Accordion: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/accordion/accordion.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/accordion/accordion.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/accordion/accordion.props.md`),
+      ],
+    },
     Banner: {
       Examples: [
         // @ts-ignore

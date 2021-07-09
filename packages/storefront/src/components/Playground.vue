@@ -3,14 +3,14 @@
     <p-tabs-bar
       v-if="mergedConfig.themeable"
       :active-tab-index="activeThemeTabIndex"
-      v-on:tabChange="handleActiveTabIndex"
+      v-on:tabChange="onActiveTabIndexChange"
     >
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
     <div
-      class="example"
       :class="{
+        example: true,
         'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
         'example--dark': mergedConfig.themeable && theme === 'dark',
         'example--surface': mergedConfig.colorScheme === 'surface',
@@ -21,13 +21,30 @@
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
       }"
     >
-      <div v-if="isSlotSet" class="configurator">
+      <div
+        v-if="isSlotSet"
+        :class="{
+          configurator: !hasFrameworkMarkup,
+          demo: hasFrameworkMarkup,
+        }"
+      >
         <slot :theme="theme" />
       </div>
-      <template v-if="this.markup">
-        <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
-        <CodeBlock :markup="patchedMarkup" :convert-markup="true" :theme="theme"></CodeBlock>
-        <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
+      <div v-if="markup" class="demo" v-html="cleanedDemoMarkup"></div>
+      <template v-if="codeBlockMarkup">
+        <CodeBlock
+          :class="{ 'code-block--framework': hasFrameworkMarkup }"
+          :markup="codeBlockMarkup"
+          :convert-markup="!hasFrameworkMarkup"
+          :theme="theme"
+          :frameworks="frameworks"
+        ></CodeBlock>
+        <CodeEditor
+          v-if="!hasFrameworkMarkup"
+          :markup="cleanedEditorMarkup"
+          :theme="theme"
+          :framework="activeFramework"
+        ></CodeEditor>
       </template>
     </div>
   </div>
@@ -39,7 +56,7 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import type { Framework, Theme } from '@/models';
+  import type { Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {
@@ -66,40 +83,56 @@
   })
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
+    @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
     public activeThemeTabIndex = 0;
 
-    public handleActiveTabIndex(event: CustomEvent<{ activeTabIndex: number }>): void {
-      const { activeTabIndex } = event.detail;
-      this.activeThemeTabIndex = activeTabIndex;
-    }
-
-    public cleanEditorMarkup = cleanMarkup;
-
-    public get mergedConfig(): PlaygroundConfig {
-      return { ...initialConfig, ...this.config };
-    }
-
-    public get patchedMarkup(): string {
-      return patchThemeIntoMarkup(this.markup, this.theme);
-    }
-
-    public cleanDemoMarkup(input: string): string {
-      return input.replace(/\n/g, '');
+    public onActiveTabIndexChange(e: CustomEvent<{ activeTabIndex: number }>): void {
+      this.activeThemeTabIndex = e.detail.activeTabIndex;
     }
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
     }
 
-    public get framework(): Framework {
+    public get cleanedEditorMarkup(): string {
+      return cleanMarkup(this.codeBlockMarkup);
+    }
+
+    public get mergedConfig(): PlaygroundConfig {
+      return { ...initialConfig, ...this.config };
+    }
+
+    public get codeBlockMarkup(): string {
+      return patchThemeIntoMarkup(this.activeFrameworkMarkup ?? this.markup, this.theme);
+    }
+
+    public get cleanedDemoMarkup(): string {
+      return patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
+    }
+
+    public get frameworks(): Framework[] {
+      return this.hasFrameworkMarkup
+        ? (Object.keys(this.frameworkMarkup) as Framework[])
+        : (undefined as unknown as Framework[]);
+    }
+
+    public get activeFramework(): Framework {
       return this.$store.getters.selectedFramework;
+    }
+
+    public get activeFrameworkMarkup(): string {
+      return this.frameworkMarkup[this.activeFramework]!;
     }
 
     public get isSlotSet(): boolean {
       return !!this.$scopedSlots.default;
+    }
+
+    public get hasFrameworkMarkup(): boolean {
+      return Object.keys(this.frameworkMarkup).length !== 0;
     }
   }
 </script>
@@ -187,8 +220,14 @@
       margin-top: $p-spacing-32;
     }
 
+    .code-block ~ form {
+      margin-top: $p-spacing-16;
+    }
+
     .code-block {
-      margin-bottom: $p-spacing-16;
+      &--framework ::v-deep pre {
+        max-height: 40rem;
+      }
     }
   }
 </style>

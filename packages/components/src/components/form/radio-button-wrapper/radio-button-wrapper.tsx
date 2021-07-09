@@ -109,13 +109,12 @@ export class RadioButtonWrapper {
   };
 
   private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
+    observeMutations(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
-import { getClosestHTMLElement, getPrefixedTagNames, isDark } from '../../../../utils';
+import { JSX, Component, Prop, h, Host, Element, Watch } from '@stencil/core';
+import { getClosestHTMLElement, getPrefixedTagNames, isDark, updateChildren } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
 
@@ -19,6 +19,16 @@ export class TextList {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  @Watch('listType')
+  public handleListTypeChange(): void {
+    updateChildren(this.host);
+  }
+
+  @Watch('orderType')
+  public handleOrderTypeChange(): void {
+    updateChildren(this.host);
+  }
 
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';

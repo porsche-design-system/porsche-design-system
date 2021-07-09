@@ -1,5 +1,5 @@
 import { ElementHandle, Page } from 'puppeteer';
-import { selectNode, goto, waitForComponentsReady } from '../helpers';
+import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode, waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
 describe('events', () => {
@@ -15,112 +15,155 @@ describe('events', () => {
   const getCounterValue = async (el: ElementHandle): Promise<string> =>
     await el.evaluate((element) => element.innerHTML, el);
 
-  it('pagination should emit events once', async () => {
-    await goto(page, 'events');
+  describe('pagination', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
 
-    const nav = await selectNode(page, 'p-pagination >>> nav');
-    const pageChangeEventCounter = await selectNode(page, 'p-pagination + *');
-    const [firstBtn, secondBtn, thirdBtn] = await nav.$$('.goto');
+      const nav = await selectNode(page, 'p-pagination >>> nav');
+      const pageChangeEventCounter = await selectNode(page, 'p-pagination + p');
+      const [, secondBtn, thirdBtn, fourthBtn] = await nav.$$('.goto');
 
-    await clickElement(secondBtn);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
+      await clickElement(secondBtn);
+      expect(await getCounterValue(pageChangeEventCounter)).toBe('1');
 
-    await clickElement(thirdBtn);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('2');
+      await clickElement(thirdBtn);
+      expect(await getCounterValue(pageChangeEventCounter)).toBe('2');
 
-    await clickElement(firstBtn);
-    expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
+      await clickElement(fourthBtn);
+      expect(await getCounterValue(pageChangeEventCounter)).toBe('3');
+    });
   });
 
-  it('tabs-bar should emit events once', async () => {
-    await goto(page, 'events');
+  describe('tabs-bar', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const tabChangeEventCounter = await selectNode(page, 'p-tabs-bar + p');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+      const tabsBar = await selectNode(page, 'p-tabs-bar');
+      const tabChangeEventCounter = await selectNode(page, 'p-tabs-bar + p');
+      const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
-    await clickElement(secondBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('1');
+      await clickElement(secondBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('1');
 
-    await clickElement(thirdBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('2');
+      await clickElement(thirdBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('2');
 
-    await clickElement(firstBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+      await clickElement(firstBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+    });
+
+    it('should not throw error error when used with router', async () => {
+      initConsoleObserver(page);
+      await goto(page, 'tabs-bar'); // to load component chunk
+
+      // navigate via select, otherwise we would have a reload
+      const select = await selectNode(page, 'select');
+      await select.click();
+      await page.keyboard.type('Events');
+      await page.keyboard.press('Enter');
+      expect(getConsoleErrorsAmount()).toBe(0);
+
+      await page.evaluate(() => console.error('test error'));
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
   });
 
-  it('tabs should emit events once', async () => {
-    await goto(page, 'events');
+  describe('tabs', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
-    const tabChangeEventCounter = await selectNode(page, 'p-tabs + p');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+      const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
+      const tabChangeEventCounter = await selectNode(page, 'p-tabs + p');
+      const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
-    await clickElement(secondBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('1');
+      await clickElement(secondBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('1');
 
-    await clickElement(thirdBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('2');
+      await clickElement(thirdBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('2');
 
-    await clickElement(firstBtn);
-    expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+      await clickElement(firstBtn);
+      expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+    });
   });
 
-  it('switch should emit events once', async () => {
-    await goto(page, 'events');
+  describe('switch', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
 
-    const switchBtn = await selectNode(page, 'p-switch >>> button');
-    const switchChangeEventCounter = await selectNode(page, 'p-switch + p');
+      const switchBtn = await selectNode(page, 'p-switch >>> button');
+      const switchChangeEventCounter = await selectNode(page, 'p-switch + p');
 
-    await clickElement(switchBtn);
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('1');
+      await clickElement(switchBtn);
+      expect(await getCounterValue(switchChangeEventCounter)).toBe('1');
 
-    await clickElement(switchBtn);
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('2');
+      await clickElement(switchBtn);
+      expect(await getCounterValue(switchChangeEventCounter)).toBe('2');
 
-    await clickElement(switchBtn);
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('3');
+      await clickElement(switchBtn);
+      expect(await getCounterValue(switchChangeEventCounter)).toBe('3');
+    });
   });
 
-  it('modal should emit events once', async () => {
-    await goto(page, 'events');
+  describe('modal', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
 
-    const modalOpenBtn = await selectNode(page, 'p-modal + p button');
-    const modalCloseBtn = await selectNode(page, 'p-modal >>> p-button-pure >>> button');
-    const modalCloseEventCounter = await selectNode(page, 'p-modal + p');
+      const modalOpenBtn = await selectNode(page, 'p-modal + p button');
+      const modalCloseBtn = await selectNode(page, 'p-modal >>> p-button-pure >>> button');
+      const modalCloseEventCounter = await selectNode(page, 'p-modal + p');
 
-    await clickElement(modalOpenBtn);
-    await waitForComponentsReady(page);
-    await clickElement(modalCloseBtn);
-    await waitForComponentsReady(page);
-    expect(await getCounterValue(modalCloseEventCounter)).toBe('1 <button>Open Modal</button>');
+      await clickElement(modalOpenBtn);
+      await waitForComponentsReady(page);
+      await clickElement(modalCloseBtn);
+      await waitForComponentsReady(page);
+      expect(await getCounterValue(modalCloseEventCounter)).toBe('1 <button>Open Modal</button>');
 
-    await clickElement(modalOpenBtn);
-    await waitForComponentsReady(page);
-    await clickElement(modalCloseBtn);
-    await waitForComponentsReady(page);
-    expect(await getCounterValue(modalCloseEventCounter)).toBe('2 <button>Open Modal</button>');
+      await clickElement(modalOpenBtn);
+      await waitForComponentsReady(page);
+      await clickElement(modalCloseBtn);
+      await waitForComponentsReady(page);
+      expect(await getCounterValue(modalCloseEventCounter)).toBe('2 <button>Open Modal</button>');
 
-    await clickElement(modalOpenBtn);
-    await waitForComponentsReady(page);
-    await clickElement(modalCloseBtn);
-    await waitForComponentsReady(page);
-    expect(await getCounterValue(modalCloseEventCounter)).toBe('3 <button>Open Modal</button>');
+      await clickElement(modalOpenBtn);
+      await waitForComponentsReady(page);
+      await clickElement(modalCloseBtn);
+      await waitForComponentsReady(page);
+      expect(await getCounterValue(modalCloseEventCounter)).toBe('3 <button>Open Modal</button>');
+    });
   });
 
-  it('table should emit events once', async () => {
+  describe('table', () => {
+    it('should emit events once', async () => {
+      await goto(page, 'events');
+
+      const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
+      const tableSortingChangeEventCounter = await selectNode(page, 'p-table + p');
+
+      await clickElement(tableHeadBtn);
+      expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('1');
+
+      await clickElement(tableHeadBtn);
+      expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('2');
+
+      await clickElement(tableHeadBtn);
+      expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('3');
+    });
+  });
+
+  it('accordion should emit events once', async () => {
     await goto(page, 'events');
 
-    const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
-    const tableSortingChangeEventCounter = await selectNode(page, 'p-table + p');
+    const accordionButton = await selectNode(page, 'p-accordion >>> button');
+    const accordionChangeEventCounter = await selectNode(page, 'p-accordion + p');
 
-    await clickElement(tableHeadBtn);
-    expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('1');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('1');
 
-    await clickElement(tableHeadBtn);
-    expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('2');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('2');
 
-    await clickElement(tableHeadBtn);
-    expect(await getCounterValue(tableSortingChangeEventCounter)).toBe('3');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
   });
 });
