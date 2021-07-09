@@ -1,5 +1,5 @@
-import * as domUtils from '../../../src/utils/dom';
-import { TableHeadRow } from '../../../src/components/layout/table/table-head-row/table-head-row';
+import * as domUtils from '../../../../utils/dom';
+import { TableHeadRow } from './table-head-row';
 
 describe('table-head-row', () => {
   describe('connectedCallback', () => {
