@@ -10,7 +10,7 @@ import {
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
-import type { GridGutter, GridGutterType } from '../grid/grid-utils';
+import type { GridGutter, GridGutterType } from '../grid/grid-styles';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 type GridItemSizeType = typeof GRID_ITEM_SIZES[number];
@@ -49,16 +49,24 @@ const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle =>
   };
 };
 
-export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): string => {
-  return getCss(
-    mergeDeep(
-      buildResponsiveJss(size, getSizeStyles),
-      buildResponsiveJss(offset, getOffsetStyles),
-      buildResponsiveJss(gutter, getGutterStyles)
+export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): string => {
+  return (
+    baseCss +
+    getCss(
+      mergeDeep(
+        buildResponsiveJss(size, getSizeStyles),
+        buildResponsiveJss(offset, getOffsetStyles),
+        buildResponsiveJss(gutter, getGutterStyles)
+      )
     )
   );
 };
 
-export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): void => {
-  attachCss(host, baseCss + getDynamicCss(size, offset, gutter));
+export const addComponentCss = (
+  host: HTMLElement,
+  size: GridItemSize,
+  offset: GridItemOffset,
+  gutter: GridGutter
+): void => {
+  attachCss(host, getComponentCss(size, offset, gutter));
 };

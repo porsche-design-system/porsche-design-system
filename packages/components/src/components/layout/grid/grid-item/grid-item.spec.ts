@@ -1,5 +1,5 @@
-import * as domUtils from '../../../src/utils/dom';
-import { GridItem } from '../../../src/components/layout/grid/grid-item/grid-item';
+import * as domUtils from '../../../../utils/dom';
+import { GridItem } from './grid-item';
 
 describe('grid-item', () => {
   describe('connectedCallback', () => {
