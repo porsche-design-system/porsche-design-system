@@ -6,12 +6,11 @@ import {
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
+import { text } from '@porsche-design-system/utilities';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
-import { text } from '@porsche-design-system/utilities';
-
-export const baseCss: string = getCss(
+const baseCss: string = getCss(
   buildHostStyles(
     addImportantToEachRule({
       position: 'relative',
@@ -88,16 +87,24 @@ const getTypeStyles = (listType: ListType, orderType: OrderType, isNestedList: b
   );
 };
 
-export const getDynamicCss = (listType: ListType, orderType: OrderType, isNestedList: boolean): string => {
-  return getCss(
-    buildHostStyles(
-      addImportantToEachRule(
-        mergeDeep(getTypeStyles(listType, orderType, isNestedList), getNestedListStyles(isNestedList, listType))
+export const getComponentCss = (listType: ListType, orderType: OrderType, isNestedList: boolean): string => {
+  return (
+    baseCss +
+    getCss(
+      buildHostStyles(
+        addImportantToEachRule(
+          mergeDeep(getTypeStyles(listType, orderType, isNestedList), getNestedListStyles(isNestedList, listType))
+        )
       )
     )
   );
 };
 
-export const addCss = (host: HTMLElement, listType: ListType, orderType: OrderType, isNestedList: boolean): void => {
-  attachCss(host, baseCss + getDynamicCss(listType, orderType, isNestedList));
+export const addComponentCss = (
+  host: HTMLElement,
+  listType: ListType,
+  orderType: OrderType,
+  isNestedList: boolean
+): void => {
+  attachCss(host, getComponentCss(listType, orderType, isNestedList));
 };

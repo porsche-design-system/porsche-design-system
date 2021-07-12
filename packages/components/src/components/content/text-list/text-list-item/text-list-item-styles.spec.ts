@@ -1,11 +1,7 @@
-import { baseCss, getDynamicCss } from './text-list-item-utils';
+import { getComponentCss } from './text-list-item-styles';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
-it('should match snapshot for baseCss', () => {
-  expect(baseCss).toMatchSnapshot();
-});
-
-describe('getDynamicCss()', () => {
+describe('getComponentCss()', () => {
   it.each([
     ['unordered', 'numbered', false],
     ['unordered', 'numbered', true],
@@ -16,9 +12,9 @@ describe('getDynamicCss()', () => {
     ['ordered', 'alphabetically', false],
     ['ordered', 'alphabetically', true],
   ])(
-    'should match snapshot for getDynamicCss %s',
+    'should return correct css for listType %s, orderType %s, isNestedList %s',
     (listType: ListType, orderType: OrderType, isNestedList: boolean) => {
-      expect(getDynamicCss(listType, orderType, isNestedList)).toMatchSnapshot();
+      expect(getComponentCss(listType, orderType, isNestedList)).toMatchSnapshot();
     }
   );
 });
