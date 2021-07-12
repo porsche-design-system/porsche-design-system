@@ -220,6 +220,33 @@ In order to deploy something to AWS from your local machine, you need to follow 
 
 ---
 
+## Open Source Check via OSS Review Toolkit (ORT)
+
+Follow these steps for generating a `analyzer-result.yml` manually.
+
+```shell
+# Configure AWS with technical user
+aws configure
+# AWS Access Key ID [****************KHE3]: AKIAZYZ66ZSFNRTFKHE3
+# AWS Secret Access Key [****************44bT]: <SEE_KEEPASS>
+# Default region name [eu-central-1]: eu-central-1
+# Default output format [None]:
+
+# Login to docker registry
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 215495424956.dkr.ecr.eu-central-1.amazonaws.com
+
+# Pull image
+IMAGE_NAME=215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest
+docker pull $IMAGE_NAME
+
+# Run scan
+docker run -v $PWD:/project $IMAGE_NAME analyze -i /project/ -o /project/ --package-curations-file /curations/curations.yml
+```
+
+After about 5 minutes, there should be a `analyzer-result.yml` at the root of this repo.
+
+---
+
 # Release management
 
 ## Porsche Design System - Components (JS/Angular/React)
