@@ -1,3 +1,4 @@
+import { getComponentCss } from './flex-item-styles';
 import {
   FLEX_ITEM_ALIGN_SELFS,
   FLEX_ITEM_FLEXES,
@@ -11,8 +12,7 @@ import {
   FlexItemOffset,
   FlexItemShrink,
   FlexItemWidth,
-  getComponentCss,
-} from './flex-item-styles';
+} from './flex-item-utils';
 import { stringify } from '../../../../../tests/unit/helper';
 
 describe('getComponentCss()', () => {

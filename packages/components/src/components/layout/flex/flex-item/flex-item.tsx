@@ -1,13 +1,13 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import {
-  addComponentCss,
+import type {
   FlexItemAlignSelf,
   FlexItemFlex,
   FlexItemGrow,
   FlexItemOffset,
   FlexItemShrink,
   FlexItemWidth,
-} from './flex-item-styles';
+} from './flex-item-utils';
+import { addComponentCss } from './flex-item-styles';
 import { throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
