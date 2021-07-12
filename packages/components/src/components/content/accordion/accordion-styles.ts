@@ -1,30 +1,20 @@
-import type { JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
   buildGlobalStyles,
+  getBaseSlottedStyles,
   getCss,
-  getFocusStyles,
-  getHoverStyles,
   getTagName,
+  insertSlottedStyles,
 } from '../../../utils';
-
-const slottedStyles: JssStyle = addImportantToEachRule({
-  '& a': {
-    color: 'inherit',
-    textDecoration: 'underline',
-    ...getFocusStyles({ offset: 1, color: 'currentColor' }),
-    ...getHoverStyles(),
-  },
-
-  '& em, & i': {
-    fontStyle: 'normal',
-  },
-});
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
-      [`${getTagName(host)} [slot="heading"]`]: slottedStyles,
+      [`${getTagName(host)} [slot="heading"]`]: addImportantToEachRule(getBaseSlottedStyles()),
     })
   );
+};
+
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };
