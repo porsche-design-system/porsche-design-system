@@ -1,26 +1,26 @@
 {
-  "hash": "c2ff4c4a072383598121",
+  "hash": "f1178dd07852a381dbe6",
   "version": "5.44.0",
-  "time": 3298,
-  "builtAt": 1626100078599,
+  "time": 3358,
+  "builtAt": 1626103612567,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.3.0-beta.1.f71e11da396f1939f28a.js"
+      "porsche-design-system.v2.3.0-beta.1.8cff94bee8a8c9c126c5.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.3.0-beta.1.f71e11da396f1939f28a.js",
+      "name": "porsche-design-system.v2.3.0-beta.1.8cff94bee8a8c9c126c5.js",
       "size": 65809,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "f71e11da396f1939f28a",
+        "contenthash": "8cff94bee8a8c9c126c5",
         "javascriptModule": false,
         "minimized": true,
         "size": 65809
@@ -440,17 +440,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.fa1e5cb947a47bf19db7.js",
-      "size": 6971,
+      "name": "porsche-design-system.modal.e9530bc366b36b00265b.js",
+      "size": 6973,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "fa1e5cb947a47bf19db7",
+        "contenthash": "e9530bc366b36b00265b",
         "javascriptModule": false,
         "minimized": true,
-        "size": 6971
+        "size": 6973
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -465,17 +465,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.accordion.2606785473cb8cb58a39.js",
-      "size": 6382,
+      "name": "porsche-design-system.accordion.2e8466abe19ed7161ffb.js",
+      "size": 6221,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "2606785473cb8cb58a39",
+        "contenthash": "2e8466abe19ed7161ffb",
         "javascriptModule": false,
         "minimized": true,
-        "size": 6382
+        "size": 6221
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -515,17 +515,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.banner.3ee2945e3254e2a43bb7.js",
-      "size": 5863,
+      "name": "porsche-design-system.banner.7b70e5faf11f8e5ba640.js",
+      "size": 5861,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3ee2945e3254e2a43bb7",
+        "contenthash": "7b70e5faf11f8e5ba640",
         "javascriptModule": false,
         "minimized": true,
-        "size": 5863
+        "size": 5861
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -540,14 +540,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-list.deab473bfd99a202d0b9.js",
+      "name": "porsche-design-system.text-list.c577a2a09299d5764426.js",
       "size": 3656,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "deab473bfd99a202d0b9",
+        "contenthash": "c577a2a09299d5764426",
         "javascriptModule": false,
         "minimized": true,
         "size": 3656
@@ -590,14 +590,14 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.60248fc41553e39070c0.js",
+      "name": "porsche-design-system.marque.fa30e363e51246888eae.js",
       "size": 3139,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "60248fc41553e39070c0",
+        "contenthash": "fa30e363e51246888eae",
         "javascriptModule": false,
         "minimized": true,
         "size": 3139
@@ -770,9 +770,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 9015,
+      "size": 8828,
       "sizes": {
-        "javascript": 9015
+        "javascript": 8828
       },
       "names": [],
       "idHints": [],
@@ -780,10 +780,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.accordion.2606785473cb8cb58a39.js"
+        "porsche-design-system.accordion.2e8466abe19ed7161ffb.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "cec52445d75dea5d92f5",
+      "hash": "31b56de4107298d7502b",
       "childrenByOrder": {},
       "id": "accordion",
       "siblings": [],
@@ -796,9 +796,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 7434,
+          "size": 7247,
           "sizes": {
-            "javascript": 7434
+            "javascript": 7247
           },
           "built": true,
           "codeGenerated": true,
@@ -869,7 +869,7 @@
             "p_accordion"
           ],
           "optimizationBailout": [
-            "Statement (VariableDeclaration) with side effects in source code at 20:0-25:3",
+            "Statement (ExpressionStatement) with side effects in source code at 78:0-31",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button_2.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -961,7 +961,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -975,7 +975,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -1003,7 +1003,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -1283,7 +1283,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -1443,7 +1443,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -1457,7 +1457,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -1485,7 +1485,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -1936,9 +1936,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8550,
+      "size": 8656,
       "sizes": {
-        "javascript": 8550
+        "javascript": 8656
       },
       "names": [],
       "idHints": [],
@@ -1946,10 +1946,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.banner.3ee2945e3254e2a43bb7.js"
+        "porsche-design-system.banner.7b70e5faf11f8e5ba640.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "b6a3e38ed4f250968e1f",
+      "hash": "49024c139942a4f59ad0",
       "childrenByOrder": {},
       "id": "banner",
       "siblings": [],
@@ -2051,7 +2051,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -2191,7 +2191,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -2265,9 +2265,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 6846,
+          "size": 6952,
           "sizes": {
-            "javascript": 6846
+            "javascript": 6952
           },
           "built": true,
           "codeGenerated": true,
@@ -2338,7 +2338,7 @@
             "p_banner"
           ],
           "optimizationBailout": [
-            "Statement (VariableDeclaration) with side effects in source code at 7:0-36:3",
+            "Statement (ExpressionStatement) with side effects in source code at 107:0-25",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/internal.variables-6867664f.js: Module ../components/dist/esm/internal.variables-6867664f.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-accordion.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
@@ -2431,7 +2431,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2445,7 +2445,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2473,7 +2473,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -2753,7 +2753,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -2913,7 +2913,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2927,7 +2927,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -2955,7 +2955,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -3850,7 +3850,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -4094,7 +4094,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -4108,7 +4108,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -4136,7 +4136,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -5031,7 +5031,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -5698,7 +5698,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -5712,7 +5712,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -5740,7 +5740,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -6525,7 +6525,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -6665,7 +6665,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -6905,7 +6905,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -6919,7 +6919,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -6947,7 +6947,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -7227,7 +7227,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -7509,7 +7509,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -7523,7 +7523,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -7551,7 +7551,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -8195,7 +8195,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -8209,7 +8209,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -8237,7 +8237,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -9391,7 +9391,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9405,7 +9405,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9433,7 +9433,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -9713,7 +9713,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -9873,7 +9873,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9887,7 +9887,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -9915,7 +9915,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -10560,7 +10560,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -10574,7 +10574,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -10602,7 +10602,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -11308,7 +11308,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -11548,7 +11548,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -11562,7 +11562,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -11590,7 +11590,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -11870,7 +11870,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -12030,7 +12030,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -12044,7 +12044,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -12072,7 +12072,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -12778,7 +12778,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -13192,7 +13192,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13206,7 +13206,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13234,7 +13234,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -13514,7 +13514,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -13924,7 +13924,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13938,7 +13938,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -13966,7 +13966,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -14672,7 +14672,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -14912,7 +14912,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -14926,7 +14926,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -14954,7 +14954,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -15234,7 +15234,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -15394,7 +15394,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -15408,7 +15408,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -15436,7 +15436,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -15900,10 +15900,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.3.0-beta.1.f71e11da396f1939f28a.js"
+        "porsche-design-system.v2.3.0-beta.1.8cff94bee8a8c9c126c5.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "5d71d9b47c819add05c8",
+      "hash": "3a5baf9be67f7b17ba1e",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -16266,7 +16266,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "1:0-356",
+              "loc": "1:0-341",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16308,7 +16308,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "20:22-44",
+              "loc": "21:9-15",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16322,7 +16322,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "21:88-102",
+              "loc": "21:16-33",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16336,7 +16336,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "21:143-157",
+              "loc": "22:8-18",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16350,7 +16350,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "27:9-15",
+              "loc": "22:46-68",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16364,7 +16364,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "27:16-33",
+              "loc": "22:69-89",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16378,7 +16378,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "28:8-18",
+              "loc": "33:4-20",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16392,7 +16392,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "36:4-20",
+              "loc": "34:27-38",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16406,7 +16406,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "37:27-38",
+              "loc": "55:4-17",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16420,7 +16420,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "58:4-17",
+              "loc": "61:4-19",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16434,7 +16434,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "64:4-19",
+              "loc": "66:159-185",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16448,7 +16448,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "69:159-185",
+              "loc": "67:29-48",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16462,7 +16462,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "70:29-48",
+              "loc": "68:12-13",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16476,7 +16476,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:12-13",
+              "loc": "68:45-46",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16490,7 +16490,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:45-46",
+              "loc": "68:133-134",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16504,7 +16504,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:133-134",
+              "loc": "68:280-281",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16518,7 +16518,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:280-281",
+              "loc": "68:312-313",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16532,7 +16532,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:312-313",
+              "loc": "68:443-444",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16546,7 +16546,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:443-444",
+              "loc": "68:583-584",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16560,7 +16560,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:583-584",
+              "loc": "68:648-649",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16574,21 +16574,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "71:648-649",
-              "moduleId": 893,
-              "resolvedModuleId": 893
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
-              "module": "../components/dist/esm/p-accordion.entry.js",
-              "moduleName": "../components/dist/esm/p-accordion.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
-              "resolvedModule": "../components/dist/esm/p-accordion.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "76:22-32",
+              "loc": "73:22-32",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -16616,7 +16602,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "7:20-26",
+              "loc": "8:9-15",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16630,7 +16616,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "29:8-18",
+              "loc": "30:10-20",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16644,7 +16630,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "29:45-57",
+              "loc": "30:47-59",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16658,7 +16644,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "30:17-35",
+              "loc": "31:19-37",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16672,7 +16658,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "32:5-15",
+              "loc": "33:7-17",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16686,7 +16672,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "33:17-35",
+              "loc": "34:19-37",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16700,7 +16686,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "38:2-11",
+              "loc": "40:2-11",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16714,7 +16700,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "45:4-20",
+              "loc": "47:4-20",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16728,7 +16714,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "46:19-30",
+              "loc": "48:19-30",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16742,7 +16728,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "95:29-48",
+              "loc": "97:29-48",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16756,7 +16742,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:12-13",
+              "loc": "98:12-13",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16770,7 +16756,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:167-168",
+              "loc": "98:167-168",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16784,7 +16770,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:229-230",
+              "loc": "98:229-230",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16798,7 +16784,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:334-335",
+              "loc": "98:334-335",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16812,7 +16798,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:365-377",
+              "loc": "98:365-377",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16826,7 +16812,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:402-403",
+              "loc": "98:402-403",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16840,7 +16826,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:478-479",
+              "loc": "98:478-479",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16854,7 +16840,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:510-522",
+              "loc": "98:510-522",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16868,7 +16854,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:553-554",
+              "loc": "98:553-554",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16882,7 +16868,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:608-609",
+              "loc": "98:608-609",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16896,7 +16882,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:667-668",
+              "loc": "98:667-668",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16910,7 +16896,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "96:696-697",
+              "loc": "98:696-697",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16924,7 +16910,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "99:20-30",
+              "loc": "101:20-30",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -16938,7 +16924,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "103:22-32",
+              "loc": "105:22-32",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -19892,7 +19878,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "22:16-22",
+              "loc": "23:16-22",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19906,7 +19892,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "22:55-70",
+              "loc": "23:55-70",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19920,7 +19906,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "25:5-22",
+              "loc": "26:5-22",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19934,7 +19920,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "26:65-79",
+              "loc": "27:65-79",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19948,7 +19934,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "26:89-102",
+              "loc": "27:89-102",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19962,7 +19948,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "27:82-92",
+              "loc": "28:82-92",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19976,7 +19962,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "35:9-15",
+              "loc": "37:4-10",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19990,7 +19976,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "35:16-33",
+              "loc": "37:11-28",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20004,7 +19990,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "40:2-11",
+              "loc": "42:2-11",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20018,7 +20004,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "45:4-20",
+              "loc": "47:4-20",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20032,7 +20018,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "61:21-22",
+              "loc": "63:21-22",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20046,7 +20032,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "62:6-7",
+              "loc": "64:6-7",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20060,7 +20046,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "62:87-99",
+              "loc": "64:87-99",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20074,7 +20060,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "63:6-7",
+              "loc": "65:6-7",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20088,7 +20074,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "64:10-11",
+              "loc": "66:10-11",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20102,7 +20088,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "64:74-75",
+              "loc": "66:74-75",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20116,7 +20102,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "65:12-13",
+              "loc": "67:12-13",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20130,7 +20116,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "65:14-18",
+              "loc": "67:14-18",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20144,7 +20130,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "65:65-66",
+              "loc": "67:65-66",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20158,7 +20144,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "67:22-32",
+              "loc": "69:22-32",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -20214,7 +20200,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "41:16-22",
+              "loc": "42:16-22",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20228,7 +20214,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "41:23-38",
+              "loc": "42:23-38",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20242,7 +20228,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "41:71-93",
+              "loc": "42:71-93",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20256,7 +20242,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "52:17-51",
+              "loc": "53:17-51",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20270,7 +20256,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "59:6-12",
+              "loc": "61:8-14",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20284,7 +20270,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "59:45-60",
+              "loc": "61:47-62",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20298,7 +20284,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "59:61-83",
+              "loc": "61:63-85",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20312,7 +20298,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "63:18-40",
+              "loc": "65:20-42",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20326,7 +20312,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "69:2-11",
+              "loc": "71:2-11",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20340,7 +20326,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "76:4-20",
+              "loc": "78:4-20",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20354,7 +20340,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "77:17-28",
+              "loc": "79:17-28",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20368,7 +20354,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "174:58-84",
+              "loc": "176:58-84",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20382,7 +20368,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "175:29-48",
+              "loc": "177:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20396,7 +20382,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:12-13",
+              "loc": "178:12-13",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20410,7 +20396,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:14-18",
+              "loc": "178:14-18",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20424,7 +20410,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:81-82",
+              "loc": "178:81-82",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20438,7 +20424,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:242-243",
+              "loc": "178:242-243",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20452,7 +20438,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:277-278",
+              "loc": "178:277-278",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20466,7 +20452,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:397-398",
+              "loc": "178:397-398",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20480,7 +20466,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:426-427",
+              "loc": "178:426-427",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20494,7 +20480,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "176:585-586",
+              "loc": "178:585-586",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -20508,7 +20494,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "178:22-32",
+              "loc": "180:22-32",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -25758,7 +25744,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "95:9-15",
+              "loc": "96:4-10",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25772,7 +25758,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "95:16-31",
+              "loc": "96:11-26",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25786,7 +25772,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "95:32-54",
+              "loc": "96:27-49",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25800,7 +25786,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "95:55-64",
+              "loc": "96:50-59",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25814,7 +25800,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "98:2-11",
+              "loc": "99:2-11",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25828,7 +25814,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "103:4-20",
+              "loc": "104:4-20",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25842,7 +25828,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "106:4-28",
+              "loc": "107:4-28",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25856,7 +25842,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "112:25-37",
+              "loc": "113:25-37",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25870,7 +25856,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "116:12-13",
+              "loc": "117:12-13",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25884,7 +25870,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "116:14-18",
+              "loc": "117:14-18",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25898,7 +25884,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "116:42-43",
+              "loc": "117:42-43",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25912,7 +25898,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "119:20-30",
+              "loc": "120:20-30",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -25926,7 +25912,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./resize-observer-c68e1f9c.js",
-              "loc": "123:22-32",
+              "loc": "124:22-32",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -27578,9 +27564,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 5193,
+      "size": 5226,
       "sizes": {
-        "javascript": 5193
+        "javascript": 5226
       },
       "names": [],
       "idHints": [],
@@ -27588,10 +27574,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.60248fc41553e39070c0.js"
+        "porsche-design-system.marque.fa30e363e51246888eae.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "e6d4d75e16dcf6c097ed",
+      "hash": "9732381747ffe930985e",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -27833,7 +27819,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -27907,9 +27893,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3850,
+          "size": 3883,
           "sizes": {
-            "javascript": 3850
+            "javascript": 3883
           },
           "built": true,
           "codeGenerated": true,
@@ -28003,9 +27989,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 10529,
+      "size": 10576,
       "sizes": {
-        "javascript": 10529
+        "javascript": 10576
       },
       "names": [],
       "idHints": [],
@@ -28013,10 +27999,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.fa1e5cb947a47bf19db7.js"
+        "porsche-design-system.modal.e9530bc366b36b00265b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "528dcaf436557168abce",
+      "hash": "8f08c28034c88ccd00e1",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -28162,9 +28148,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9957,
+          "size": 10004,
           "sizes": {
-            "javascript": 9957
+            "javascript": 10004
           },
           "built": true,
           "codeGenerated": true,
@@ -28235,7 +28221,7 @@
             "p_modal"
           ],
           "optimizationBailout": [
-            "Statement (VariableDeclaration) with side effects in source code at 41:0-56:30",
+            "Statement (VariableDeclaration) with side effects in source code at 42:0-57:30",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-select-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
           ],
@@ -28513,7 +28499,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -28929,7 +28915,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -28943,7 +28929,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -28971,7 +28957,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -29756,7 +29742,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -29896,7 +29882,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -30136,7 +30122,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -30150,7 +30136,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -30178,7 +30164,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -30458,7 +30444,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -31014,7 +31000,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -31154,7 +31140,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -31396,7 +31382,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31410,7 +31396,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31438,7 +31424,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -31718,7 +31704,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -31878,7 +31864,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31892,7 +31878,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -31920,7 +31906,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -32564,7 +32550,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -32578,7 +32564,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -32606,7 +32592,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -33501,7 +33487,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-ac55b07c.js",
-              "loc": "54:4-40",
+              "loc": "56:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -34044,7 +34030,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -34058,7 +34044,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -34086,7 +34072,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -34366,7 +34352,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -34946,7 +34932,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -34960,7 +34946,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -34988,7 +34974,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -35727,7 +35713,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -35867,7 +35853,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -36108,7 +36094,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -36122,7 +36108,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -36150,7 +36136,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -36430,7 +36416,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -36840,7 +36826,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -36854,7 +36840,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -36882,7 +36868,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -37856,7 +37842,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -37996,7 +37982,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -38237,7 +38223,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -38251,7 +38237,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -38279,7 +38265,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -38559,7 +38545,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -38648,9 +38634,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 7083,
+      "size": 7111,
       "sizes": {
-        "javascript": 7083
+        "javascript": 7111
       },
       "names": [],
       "idHints": [],
@@ -38658,10 +38644,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-list.deab473bfd99a202d0b9.js"
+        "porsche-design-system.text-list.c577a2a09299d5764426.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "3e6ed909aea6e314b6b0",
+      "hash": "476b07edb7263b077f2a",
       "childrenByOrder": {},
       "id": "text-list",
       "siblings": [],
@@ -38763,7 +38749,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -38903,7 +38889,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -38977,9 +38963,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 5191,
+          "size": 5219,
           "sizes": {
-            "javascript": 5191
+            "javascript": 5219
           },
           "built": true,
           "codeGenerated": true,
@@ -39145,7 +39131,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -39159,7 +39145,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -39187,7 +39173,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -39467,7 +39453,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -39773,7 +39759,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "3:0-50",
+              "loc": "2:0-50",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -39787,7 +39773,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "69:92-98",
+              "loc": "66:92-98",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -39815,7 +39801,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "91:28-34",
+              "loc": "93:28-34",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -40600,7 +40586,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "100:111-137",
+              "loc": "102:111-137",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -40740,7 +40726,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./internal.variables-6867664f.js",
-              "loc": "120:111-137",
+              "loc": "121:111-137",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -40980,7 +40966,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "2:0-72",
+              "loc": "3:0-72",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -40994,7 +40980,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "52:4-23",
+              "loc": "26:2-21",
               "moduleId": 893,
               "resolvedModuleId": 893
             },
@@ -41022,7 +41008,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "101:4-23",
+              "loc": "103:4-23",
               "moduleId": 215,
               "resolvedModuleId": 215
             },
@@ -41302,7 +41288,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./slotted-styles-50276109.js",
-              "loc": "121:4-23",
+              "loc": "122:4-23",
               "moduleId": 717,
               "resolvedModuleId": 717
             },
@@ -42394,7 +42380,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "1:0-356",
+          "loc": "1:0-341",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42436,7 +42422,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "20:22-44",
+          "loc": "21:9-15",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42450,7 +42436,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "21:88-102",
+          "loc": "21:16-33",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42464,7 +42450,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "21:143-157",
+          "loc": "22:8-18",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42478,7 +42464,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "27:9-15",
+          "loc": "22:46-68",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42492,7 +42478,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "27:16-33",
+          "loc": "22:69-89",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42506,7 +42492,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "28:8-18",
+          "loc": "33:4-20",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42520,7 +42506,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "36:4-20",
+          "loc": "34:27-38",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42534,7 +42520,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "37:27-38",
+          "loc": "55:4-17",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42548,7 +42534,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "58:4-17",
+          "loc": "61:4-19",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42562,7 +42548,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "64:4-19",
+          "loc": "66:159-185",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42576,7 +42562,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "69:159-185",
+          "loc": "67:29-48",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42590,7 +42576,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "70:29-48",
+          "loc": "68:12-13",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42604,7 +42590,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:12-13",
+          "loc": "68:45-46",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42618,7 +42604,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:45-46",
+          "loc": "68:133-134",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42632,7 +42618,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:133-134",
+          "loc": "68:280-281",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42646,7 +42632,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:280-281",
+          "loc": "68:312-313",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42660,7 +42646,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:312-313",
+          "loc": "68:443-444",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42674,7 +42660,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:443-444",
+          "loc": "68:583-584",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42688,7 +42674,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:583-584",
+          "loc": "68:648-649",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42702,21 +42688,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "71:648-649",
-          "moduleId": 893,
-          "resolvedModuleId": 893
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
-          "module": "../components/dist/esm/p-accordion.entry.js",
-          "moduleName": "../components/dist/esm/p-accordion.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-accordion.entry.js",
-          "resolvedModule": "../components/dist/esm/p-accordion.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "76:22-32",
+          "loc": "73:22-32",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -42744,7 +42716,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "7:20-26",
+          "loc": "8:9-15",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42758,7 +42730,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "29:8-18",
+          "loc": "30:10-20",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42772,7 +42744,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "29:45-57",
+          "loc": "30:47-59",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42786,7 +42758,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "30:17-35",
+          "loc": "31:19-37",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42800,7 +42772,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "32:5-15",
+          "loc": "33:7-17",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42814,7 +42786,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "33:17-35",
+          "loc": "34:19-37",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42828,7 +42800,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "38:2-11",
+          "loc": "40:2-11",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42842,7 +42814,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "45:4-20",
+          "loc": "47:4-20",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42856,7 +42828,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "46:19-30",
+          "loc": "48:19-30",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42870,7 +42842,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "95:29-48",
+          "loc": "97:29-48",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42884,7 +42856,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:12-13",
+          "loc": "98:12-13",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42898,7 +42870,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:167-168",
+          "loc": "98:167-168",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42912,7 +42884,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:229-230",
+          "loc": "98:229-230",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42926,7 +42898,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:334-335",
+          "loc": "98:334-335",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42940,7 +42912,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:365-377",
+          "loc": "98:365-377",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42954,7 +42926,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:402-403",
+          "loc": "98:402-403",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42968,7 +42940,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:478-479",
+          "loc": "98:478-479",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42982,7 +42954,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:510-522",
+          "loc": "98:510-522",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -42996,7 +42968,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:553-554",
+          "loc": "98:553-554",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43010,7 +42982,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:608-609",
+          "loc": "98:608-609",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43024,7 +42996,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:667-668",
+          "loc": "98:667-668",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43038,7 +43010,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "96:696-697",
+          "loc": "98:696-697",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43052,7 +43024,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "99:20-30",
+          "loc": "101:20-30",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -43066,7 +43038,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "103:22-32",
+          "loc": "105:22-32",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -46020,7 +45992,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "22:16-22",
+          "loc": "23:16-22",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46034,7 +46006,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "22:55-70",
+          "loc": "23:55-70",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46048,7 +46020,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "25:5-22",
+          "loc": "26:5-22",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46062,7 +46034,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "26:65-79",
+          "loc": "27:65-79",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46076,7 +46048,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "26:89-102",
+          "loc": "27:89-102",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46090,7 +46062,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "27:82-92",
+          "loc": "28:82-92",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46104,7 +46076,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "35:9-15",
+          "loc": "37:4-10",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46118,7 +46090,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "35:16-33",
+          "loc": "37:11-28",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46132,7 +46104,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "40:2-11",
+          "loc": "42:2-11",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46146,7 +46118,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "45:4-20",
+          "loc": "47:4-20",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46160,7 +46132,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "61:21-22",
+          "loc": "63:21-22",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46174,7 +46146,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "62:6-7",
+          "loc": "64:6-7",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46188,7 +46160,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "62:87-99",
+          "loc": "64:87-99",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46202,7 +46174,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "63:6-7",
+          "loc": "65:6-7",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46216,7 +46188,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "64:10-11",
+          "loc": "66:10-11",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46230,7 +46202,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "64:74-75",
+          "loc": "66:74-75",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46244,7 +46216,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "65:12-13",
+          "loc": "67:12-13",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46258,7 +46230,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "65:14-18",
+          "loc": "67:14-18",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46272,7 +46244,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "65:65-66",
+          "loc": "67:65-66",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46286,7 +46258,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "67:22-32",
+          "loc": "69:22-32",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -46342,7 +46314,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "41:16-22",
+          "loc": "42:16-22",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46356,7 +46328,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "41:23-38",
+          "loc": "42:23-38",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46370,7 +46342,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "41:71-93",
+          "loc": "42:71-93",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46384,7 +46356,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "52:17-51",
+          "loc": "53:17-51",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46398,7 +46370,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "59:6-12",
+          "loc": "61:8-14",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46412,7 +46384,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "59:45-60",
+          "loc": "61:47-62",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46426,7 +46398,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "59:61-83",
+          "loc": "61:63-85",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46440,7 +46412,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "63:18-40",
+          "loc": "65:20-42",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46454,7 +46426,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "69:2-11",
+          "loc": "71:2-11",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46468,7 +46440,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "76:4-20",
+          "loc": "78:4-20",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46482,7 +46454,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "77:17-28",
+          "loc": "79:17-28",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46496,7 +46468,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "174:58-84",
+          "loc": "176:58-84",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46510,7 +46482,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "175:29-48",
+          "loc": "177:29-48",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46524,7 +46496,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:12-13",
+          "loc": "178:12-13",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46538,7 +46510,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:14-18",
+          "loc": "178:14-18",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46552,7 +46524,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:81-82",
+          "loc": "178:81-82",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46566,7 +46538,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:242-243",
+          "loc": "178:242-243",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46580,7 +46552,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:277-278",
+          "loc": "178:277-278",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46594,7 +46566,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:397-398",
+          "loc": "178:397-398",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46608,7 +46580,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:426-427",
+          "loc": "178:426-427",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46622,7 +46594,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "176:585-586",
+          "loc": "178:585-586",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -46636,7 +46608,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "178:22-32",
+          "loc": "180:22-32",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -51886,7 +51858,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "95:9-15",
+          "loc": "96:4-10",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51900,7 +51872,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "95:16-31",
+          "loc": "96:11-26",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51914,7 +51886,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "95:32-54",
+          "loc": "96:27-49",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51928,7 +51900,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "95:55-64",
+          "loc": "96:50-59",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51942,7 +51914,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "98:2-11",
+          "loc": "99:2-11",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51956,7 +51928,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "103:4-20",
+          "loc": "104:4-20",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51970,7 +51942,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "106:4-28",
+          "loc": "107:4-28",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51984,7 +51956,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "112:25-37",
+          "loc": "113:25-37",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -51998,7 +51970,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "116:12-13",
+          "loc": "117:12-13",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -52012,7 +51984,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "116:14-18",
+          "loc": "117:14-18",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -52026,7 +51998,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "116:42-43",
+          "loc": "117:42-43",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -52040,7 +52012,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "119:20-30",
+          "loc": "120:20-30",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -52054,7 +52026,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./resize-observer-c68e1f9c.js",
-          "loc": "123:22-32",
+          "loc": "124:22-32",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -53484,9 +53456,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 7434,
+      "size": 7247,
       "sizes": {
-        "javascript": 7434
+        "javascript": 7247
       },
       "built": true,
       "codeGenerated": true,
@@ -53556,7 +53528,7 @@
         "p_accordion"
       ],
       "optimizationBailout": [
-        "Statement (VariableDeclaration) with side effects in source code at 20:0-25:3",
+        "Statement (ExpressionStatement) with side effects in source code at 78:0-31",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button_2.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -53567,9 +53539,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 6846,
+      "size": 6952,
       "sizes": {
-        "javascript": 6846
+        "javascript": 6952
       },
       "built": true,
       "codeGenerated": true,
@@ -53639,7 +53611,7 @@
         "p_banner"
       ],
       "optimizationBailout": [
-        "Statement (VariableDeclaration) with side effects in source code at 7:0-36:3",
+        "Statement (ExpressionStatement) with side effects in source code at 107:0-25",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/internal.variables-6867664f.js: Module ../components/dist/esm/internal.variables-6867664f.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-accordion.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-table_7.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
@@ -54734,9 +54706,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 3850,
+      "size": 3883,
       "sizes": {
-        "javascript": 3850
+        "javascript": 3883
       },
       "built": true,
       "codeGenerated": true,
@@ -54816,9 +54788,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9957,
+      "size": 10004,
       "sizes": {
-        "javascript": 9957
+        "javascript": 10004
       },
       "built": true,
       "codeGenerated": true,
@@ -54888,7 +54860,7 @@
         "p_modal"
       ],
       "optimizationBailout": [
-        "Statement (VariableDeclaration) with side effects in source code at 41:0-56:30",
+        "Statement (VariableDeclaration) with side effects in source code at 42:0-57:30",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-select-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/resize-observer-c68e1f9c.js: Module ../components/dist/esm/resize-observer-c68e1f9c.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
       ],
@@ -55656,9 +55628,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 5191,
+      "size": 5219,
       "sizes": {
-        "javascript": 5191
+        "javascript": 5219
       },
       "built": true,
       "codeGenerated": true,
@@ -56093,7 +56065,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "2:0-72",
+          "loc": "3:0-72",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -56107,7 +56079,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "52:4-23",
+          "loc": "26:2-21",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -56135,7 +56107,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "101:4-23",
+          "loc": "103:4-23",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -56415,7 +56387,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./slotted-styles-50276109.js",
-          "loc": "121:4-23",
+          "loc": "122:4-23",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -56574,7 +56546,7 @@
           "active": false,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "3:0-50",
+          "loc": "2:0-50",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -56588,7 +56560,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "69:92-98",
+          "loc": "66:92-98",
           "moduleId": 893,
           "resolvedModuleId": 893
         },
@@ -56616,7 +56588,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "91:28-34",
+          "loc": "93:28-34",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -57142,7 +57114,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./internal.variables-6867664f.js",
-          "loc": "100:111-137",
+          "loc": "102:111-137",
           "moduleId": 215,
           "resolvedModuleId": 215
         },
@@ -57282,7 +57254,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./internal.variables-6867664f.js",
-          "loc": "120:111-137",
+          "loc": "121:111-137",
           "moduleId": 717,
           "resolvedModuleId": 717
         },
@@ -58005,7 +57977,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./focus-handling-ac55b07c.js",
-          "loc": "54:4-40",
+          "loc": "56:4-40",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -59221,7 +59193,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.1.f71e11da396f1939f28a.js",
+          "name": "porsche-design-system.v2.3.0-beta.1.8cff94bee8a8c9c126c5.js",
           "size": 65809
         }
       ],
@@ -59243,7 +59215,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.3.0-beta.1.f71e11da396f1939f28a.js",
+          "name": "porsche-design-system.v2.3.0-beta.1.8cff94bee8a8c9c126c5.js",
           "size": 65809
         }
       ],
