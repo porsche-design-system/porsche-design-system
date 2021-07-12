@@ -1,5 +1,5 @@
 import type { InnerManifest, MarqueSize } from './marque-utils';
-import { buildSrcSet, getDynamicCss, getManifestPath } from './marque-utils';
+import { buildSrcSet, getManifestPath } from './marque-utils';
 import { MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
 describe('getManifestPath()', () => {
@@ -40,10 +40,4 @@ describe('buildSrcSet()', () => {
       expect(buildSrcSet(manifestPath, size)).toBe(result);
     }
   );
-});
-
-describe('getDynamicCss()', () => {
-  it.each([['responsive'], ['medium'], ['small']])('should match snapshot for getDynamicCss %s', (size: MarqueSize) => {
-    expect(getDynamicCss(size)).toMatchSnapshot();
-  });
 });
