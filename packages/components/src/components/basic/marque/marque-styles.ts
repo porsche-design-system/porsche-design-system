@@ -37,22 +37,17 @@ const baseCss: string = getCss({
   }),
 });
 
-const getDynamicCss = (size: MarqueSize): string => {
-  return getCss(
-    buildGlobalStyles({
-      picture: baseSizes[size],
-    })
-  );
-};
-
 export const getComponentCss = (size: MarqueSize): string => {
-  return getCss(
-    buildGlobalStyles({
-      picture: baseSizes[size],
-    })
+  return (
+    baseCss +
+    getCss(
+      buildGlobalStyles({
+        picture: baseSizes[size],
+      })
+    )
   );
 };
 
 export const addComponentCss = (host: HTMLElement, size: MarqueSize): void => {
-  attachCss(host, baseCss + getDynamicCss(size));
+  attachCss(host, getComponentCss(size));
 };
