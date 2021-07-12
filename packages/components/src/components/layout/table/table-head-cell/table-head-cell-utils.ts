@@ -1,15 +1,5 @@
 import { AriaAttributes } from 'react';
-
-export type Direction = 'asc' | 'desc';
-
-export type TableHeadCellSort = {
-  id: string; // the only way for the consumer to identify which table column has been clicked on event callback
-  active: boolean;
-  direction: Direction;
-};
-export type SortingChangeEvent = TableHeadCellSort; // to have consistent event types
-
-export const SORT_EVENT_NAME = 'internalSortingChange';
+import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
