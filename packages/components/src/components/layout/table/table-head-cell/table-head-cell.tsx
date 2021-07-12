@@ -1,8 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, throwIfElementHasAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
-import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, SORT_EVENT_NAME } from './table-head-cell-utils';
-import type { TableHeadCellSort, SortingChangeEvent } from './table-head-cell-utils';
+import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc } from './table-head-cell-utils';
+import type { TableHeadCellSort, SortingChangeEvent } from '../table/table-utils';
 import { addComponentCss } from './table-head-cell-styles';
+import { SORT_EVENT_NAME } from '../table/table-utils';
 
 @Component({
   tag: 'p-table-head-cell',
