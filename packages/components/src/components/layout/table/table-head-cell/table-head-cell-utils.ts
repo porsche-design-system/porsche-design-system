@@ -1,4 +1,4 @@
-import { AriaAttributes } from 'react';
+import type { AriaAttributes } from 'react';
 import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
