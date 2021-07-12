@@ -1,3 +1,4 @@
+import { getComponentCss } from './flex-styles';
 import {
   FLEX_ALIGN_CONTENTS,
   FLEX_ALIGN_ITEMS,
@@ -10,11 +11,10 @@ import {
   FlexInline,
   FlexJustifyContent,
   FlexWrap,
-  getComponentCss,
-} from './flex-styles';
+} from './flex-utils';
 import { stringify } from '../../../../../tests/unit/helper';
 
-describe('getDynamicCss()', () => {
+describe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];
   it.each(dataInline.map(stringify))('should return correct css for inline: %s', (inline: FlexInline) => {
     expect(getComponentCss(inline, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();

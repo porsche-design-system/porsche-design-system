@@ -6,7 +6,7 @@ import type {
   FlexInline,
   FlexJustifyContent,
   FlexWrap,
-} from './flex-styles';
+} from './flex-utils';
 import { addComponentCss } from './flex-styles';
 
 @Component({
