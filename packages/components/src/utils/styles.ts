@@ -89,7 +89,7 @@ export const getDefaultSlottedCss = (host: HTMLElement, additionalStyles?: Style
           ...getFocusStyles({ offset: 1 }),
         },
         '& b, & strong': {
-          fontWeight: `${font.weight.bold}`,
+          fontWeight: font.weight.bold,
         },
         '& em, & i': {
           fontStyle: 'normal',
