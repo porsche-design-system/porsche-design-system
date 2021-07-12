@@ -4,7 +4,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   verbose: true,
   setupFiles: ['<rootDir>/tests/unit/config/setup.ts'],
-  testMatch: ['**/tests/unit/**/*.spec.ts', '**/src/**/*.spec.ts'],
+  testMatch: ['**/src/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   moduleNameMapper: {
     '^@stencil/core$': '<rootDir>/tests/unit/mocks/stencil-decorator.mocks.ts',
