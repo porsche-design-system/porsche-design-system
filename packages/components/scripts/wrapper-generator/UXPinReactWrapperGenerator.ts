@@ -282,7 +282,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     };
 
     const componentPresetFiles: AdditionalFile[] = Object.entries(componentsWithPresetChildrenMap).map(
-      ([component, { props, children }]) => {
+      ([component, { props, children = '' }]) => {
         const componentName = this.getComponentFileName(component as TagName, true);
 
         // extract other components and get rid of duplicates
