@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for multiline: medium 1`] = `"picture{width:120px;height:72px}"`;
+
+exports[`getComponentCss() should return correct css for multiline: responsive 1`] = `""`;
+
+exports[`getComponentCss() should return correct css for multiline: small 1`] = `"picture{width:100px;height:60px}"`;
