@@ -1,14 +1,15 @@
 import {
   addImportantToEachRule,
   attachCss,
+  buildGlobalStyles,
   buildHostStyles,
+  getBaseSlottedStyles,
   getCss,
-  getDefaultSlottedCss,
   getFocusStyles,
+  getTagName,
   insertSlottedStyles,
   mediaQuery,
   pxToRemWithUnit,
-  Styles,
 } from '../../../../utils';
 import { color, font, spacing } from '@porsche-design-system/utilities';
 
@@ -79,12 +80,16 @@ export const getComponentCss = (): string => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const additionalStyles: Styles = {
-    '& img': {
-      verticalAlign: 'middle',
-    },
-  };
-  return getDefaultSlottedCss(host, additionalStyles);
+  return getCss(
+    buildGlobalStyles({
+      [getTagName(host)]: addImportantToEachRule({
+        ...getBaseSlottedStyles(),
+        '& img': {
+          verticalAlign: 'middle',
+        },
+      }),
+    })
+  );
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
