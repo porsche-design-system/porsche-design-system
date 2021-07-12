@@ -1,4 +1,3 @@
-import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
@@ -10,15 +9,8 @@ import {
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
-import type { GridGutter, GridGutterType } from '../grid/grid-styles';
-
-export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
-type GridItemSizeType = typeof GRID_ITEM_SIZES[number];
-export type GridItemSize = BreakpointCustomizable<GridItemSizeType>;
-
-export const GRID_ITEM_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
-type GridItemOffsetType = typeof GRID_ITEM_OFFSETS[number];
-export type GridItemOffset = BreakpointCustomizable<GridItemOffsetType>;
+import type { GridGutter, GridGutterType } from '../grid/grid-utils';
+import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
 
 const baseCss: string = getCss(
   buildHostStyles(

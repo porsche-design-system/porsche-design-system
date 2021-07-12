@@ -1,10 +1,5 @@
 import { getComponentCss } from './flex-styles';
-import {
-  FLEX_ALIGN_CONTENTS,
-  FLEX_ALIGN_ITEMS,
-  FLEX_DIRECTION,
-  FLEX_JUSTIFY_CONTENTS,
-  FLEX_WRAPS,
+import type {
   FlexAlignContent,
   FlexAlignItems,
   FlexDirection,
@@ -12,6 +7,7 @@ import {
   FlexJustifyContent,
   FlexWrap,
 } from './flex-utils';
+import { FLEX_ALIGN_CONTENTS, FLEX_ALIGN_ITEMS, FLEX_DIRECTION, FLEX_JUSTIFY_CONTENTS, FLEX_WRAPS } from './flex-utils';
 import { stringify } from '../../../../../tests/unit/helper';
 
 describe('getComponentCss()', () => {
