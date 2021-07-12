@@ -1,5 +1,6 @@
-import type { GridDirection, GridGutter, GridWrap } from './grid-styles';
-import { getComponentCss, GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-styles';
+import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
+import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
+import { getComponentCss } from './grid-styles';
 import { stringify } from '../../../../../tests/unit/helper';
 
 describe('getComponentCss()', () => {

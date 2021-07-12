@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { GridItemOffset, GridItemSize } from './grid-item-styles';
+import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import { addComponentCss } from './grid-item-styles';
 import { throwIfParentIsNotOfKind } from '../../../../utils';
 

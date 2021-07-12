@@ -1,4 +1,12 @@
 import { getComponentCss } from './flex-item-styles';
+import type {
+  FlexItemAlignSelf,
+  FlexItemFlex,
+  FlexItemGrow,
+  FlexItemOffset,
+  FlexItemShrink,
+  FlexItemWidth,
+} from './flex-item-utils';
 import {
   FLEX_ITEM_ALIGN_SELFS,
   FLEX_ITEM_FLEXES,
@@ -6,12 +14,6 @@ import {
   FLEX_ITEM_OFFSETS,
   FLEX_ITEM_SHRINKS,
   FLEX_ITEM_WIDTHS,
-  FlexItemAlignSelf,
-  FlexItemFlex,
-  FlexItemGrow,
-  FlexItemOffset,
-  FlexItemShrink,
-  FlexItemWidth,
 } from './flex-item-utils';
 import { stringify } from '../../../../../tests/unit/helper';
 

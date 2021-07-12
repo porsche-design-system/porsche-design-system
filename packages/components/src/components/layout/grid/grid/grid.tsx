@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
-import type { GridDirection, GridGutter, GridWrap } from './grid-styles';
+import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { addComponentCss } from './grid-styles';
 import { updateChildren } from '../../../../utils';
 
