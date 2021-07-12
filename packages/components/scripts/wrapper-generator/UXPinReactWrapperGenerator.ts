@@ -47,6 +47,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       );
     };
 
+    const addUxPinIgnorePropAnnotation = (props: string, prop: string): string => {
+      return props.replace(new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`), `\n   * @uxpinignoreprop$1`);
+    };
+
     let props = super.generateProps(component, rawComponentInterface);
 
     // add custom props to wrappers
@@ -78,11 +82,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = props.replace(/(size\?: )TextSize/, `$1${sizeValues}`);
     }
 
+    // add uxpinignoreprop annotations
+    if (component === 'p-modal') {
+      props = addUxPinIgnorePropAnnotation(props, 'open');
+    }
+
     // add uxpinbind annotations
     if (component === 'p-accordion') {
       props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
-    } else if (component === 'p-modal') {
-      props = addUxPinBindAnnotation(props, 'open', 'onClose');
     } else if (component === 'p-switch') {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     } else if (component === 'p-tabs-bar') {
