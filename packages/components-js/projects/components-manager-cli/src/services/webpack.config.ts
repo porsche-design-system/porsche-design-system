@@ -6,13 +6,13 @@ import { getProjectRootPath } from './config';
 
 export function generateWebPackConfig(targetDirectory: string, config: EntryConfig): webpack.Configuration {
   const entryFile = 'with-prefix.js';
-  const { tempEntryPointFilePath, additionalEntryFiles = [] } = config;
+  const { tempEntryPointFilePath, additionalEntryFiles = [], iife } = config;
 
   let additionalFileContents = '';
   if (additionalEntryFiles.length) {
     const listItemPrefix = '  - ';
     console.log(
-      `Bundeling additional files into entrypoint:\n${listItemPrefix}${additionalEntryFiles
+      `Bundling additional files into entrypoint:\n${listItemPrefix}${additionalEntryFiles
         .map((file) => file.filePath)
         .join(listItemPrefix)}`
     );
@@ -26,13 +26,13 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
 
   const strippedConfig = (({ version, script }) => ({ version, script }))(config);
 
-  return {
+  const finalConfig: webpack.Configuration = {
     entry: tempEntryPointFilePath,
     output: {
       path: path.resolve(getProjectRootPath(), targetDirectory),
       filename: 'index.js',
       library: 'porscheDesignSystem', // needs to be same as CM_KEY
-      libraryTarget: 'umd',
+      ...(iife ? { iife: true } : { libraryTarget: 'umd' }), // iife build for partial, umd build for npm package
       globalObject: "typeof self !== 'undefined' ? self : this",
     },
     plugins: [
@@ -41,4 +41,6 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
       }),
     ],
   };
+
+  return finalConfig;
 }
