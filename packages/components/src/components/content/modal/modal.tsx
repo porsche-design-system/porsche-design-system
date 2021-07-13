@@ -1,13 +1,8 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
 import { getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
-import {
-  addCss,
-  getFirstAndLastElement,
-  getFocusableElements,
-  getScrollTopOnTouch,
-  setScrollLock,
-} from './modal-utils';
+import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
+import { addComponentCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -61,7 +56,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    addCss(this.host, this.open);
+    addComponentCss(this.host, this.open);
   }
 
   public componentDidUpdate(): void {

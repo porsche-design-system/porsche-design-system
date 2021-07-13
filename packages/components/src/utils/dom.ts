@@ -111,7 +111,7 @@ export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagName
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
   if (hasAttribute(el, name)) {
-    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs be set via property.`);
+    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property.`);
   }
 };
 
