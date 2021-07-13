@@ -10,21 +10,6 @@ import { text } from '@porsche-design-system/utilities';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
-const baseCss: string = getCss(
-  buildHostStyles(
-    addImportantToEachRule({
-      position: 'relative',
-      display: 'list-item',
-      color: 'inherit',
-      listStyleType: 'none',
-      paddingLeft: pxToRemWithUnit(24),
-      '&:before': {
-        position: 'absolute',
-      },
-    })
-  )
-);
-
 const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle => {
   return isNestedList && listType === 'unordered'
     ? {
@@ -88,13 +73,21 @@ const getTypeStyles = (listType: ListType, orderType: OrderType, isNestedList: b
 };
 
 export const getComponentCss = (listType: ListType, orderType: OrderType, isNestedList: boolean): string => {
-  return (
-    baseCss +
-    getCss(
-      buildHostStyles(
-        addImportantToEachRule(
-          mergeDeep(getTypeStyles(listType, orderType, isNestedList), getNestedListStyles(isNestedList, listType))
-        )
+  return getCss(
+    addImportantToEachRule(
+      mergeDeep(
+        buildHostStyles({
+          position: 'relative',
+          display: 'list-item',
+          color: 'inherit',
+          listStyleType: 'none',
+          paddingLeft: pxToRemWithUnit(24),
+          '&:before': {
+            position: 'absolute',
+          },
+        }),
+        buildHostStyles(getTypeStyles(listType, orderType, isNestedList)),
+        buildHostStyles(getNestedListStyles(isNestedList, listType))
       )
     )
   );
