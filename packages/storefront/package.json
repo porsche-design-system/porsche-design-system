@@ -5,9 +5,6 @@
   "description": "Porsche Design System",
   "scripts": {
     "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
-    "prestart": "yarn preparePDSLoader",
-    "prebuild": "yarn preparePDSLoader",
-    "preparePDSLoader": "ts-node --project './tsconfig.node.json' './scripts/preparePDSLoader.ts'",
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",

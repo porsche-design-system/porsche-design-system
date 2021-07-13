@@ -23,7 +23,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { color } from '@porsche-design-system/utilities';
-  import { PDS_LOADER_FILENAME } from '../../hashedLoaderFilename';
+  import { getLoader } from '@porsche-design-system/components-js/partials';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -50,8 +50,6 @@
     // }
 
     public get codepen(): string {
-      const baseHref = document.querySelector('base')!.href;
-      const path = baseHref === '/' ? '/latest/' : baseHref;
       // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
         // css_external: 'https://...css',
@@ -60,8 +58,8 @@
         title: 'Porsche Design System',
         html: this.markup,
         ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
-        js_external: `${path}${PDS_LOADER_FILENAME}`,
-        js: 'porscheDesignSystem.load()',
+        // js_external: `${path}${PDS_LOADER_FILENAME}`,
+        js: getLoader({ withoutTags: true }) + 'porscheDesignSystem.load()',
       });
     }
   }
