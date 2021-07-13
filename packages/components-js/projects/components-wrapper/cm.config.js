@@ -1,7 +1,9 @@
-const { cdnDistPath, npmDistPath, deployUrl, version } = require('./environment');
+const { cdnDistPath, deployUrl, npmDistPath, npmDistTmpPath, version } = require('./environment');
 
 console.log('Version:', version);
 console.log('Deploy URL:', deployUrl);
+
+const isTpmBuild = process.env.TMP_BUILD === '1';
 
 // type PorscheWebComponentManagerConfig = {
 //   version: string;
@@ -16,7 +18,7 @@ console.log('Deploy URL:', deployUrl);
 
 module.exports = {
   version: version,
-  targetDirectory: npmDistPath,
+  targetDirectory: isTpmBuild ? npmDistTmpPath : npmDistPath,
   deployUrl: deployUrl,
   script: `${cdnDistPath}/porsche-design-system.v*.js`,
   copyFiles: [
@@ -37,10 +39,12 @@ module.exports = {
       targetDirectory: npmDistPath,
     },
   ],
-  additionalEntryFiles: [
-    {
-      filePath: '../components/dist/collection/components-ready.js',
-      typingFilePath: '../components/dist/types/components-ready.d.ts',
-    },
-  ],
+  ...(!isTpmBuild && {
+    additionalEntryFiles: [
+      {
+        filePath: '../components/dist/collection/components-ready.js',
+        typingFilePath: '../components/dist/types/components-ready.d.ts',
+      },
+    ],
+  }),
 };
