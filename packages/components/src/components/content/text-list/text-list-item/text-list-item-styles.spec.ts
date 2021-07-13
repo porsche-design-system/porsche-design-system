@@ -2,7 +2,7 @@ import { getComponentCss } from './text-list-item-styles';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
 describe('getComponentCss()', () => {
-  it.each([
+  it.each<[ListType, OrderType, boolean]>([
     ['unordered', 'numbered', false],
     ['unordered', 'numbered', true],
     ['unordered', 'alphabetically', false],
