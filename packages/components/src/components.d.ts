@@ -17,7 +17,7 @@ import { SocialIconName } from "./components/navigation/link-social/link-social-
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
-import { SortingChangeEvent, TableHeadCellSort } from "./components/layout/table/table-utils";
+import { SortingChangeEvent, TableHeadCellSort } from "./components/layout/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
@@ -649,6 +649,10 @@ export namespace Components {
     interface PTableBody {
     }
     interface PTableCell {
+        /**
+          * Displays slotted text multiline or forced into a single line.
+         */
+        "multiline"?: boolean;
     }
     interface PTableHead {
     }
@@ -1744,6 +1748,10 @@ declare namespace LocalJSX {
     interface PTableBody {
     }
     interface PTableCell {
+        /**
+          * Displays slotted text multiline or forced into a single line.
+         */
+        "multiline"?: boolean;
     }
     interface PTableHead {
     }

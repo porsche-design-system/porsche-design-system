@@ -29,7 +29,7 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
               />
               <span [innerHTML]="item.html"></span>
             </p-table-cell>
-            <p-table-cell style="white-space: normal">{{ item.longText }}</p-table-cell>
+            <p-table-cell [multiline]="true">{{ item.longText }}</p-table-cell>
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>

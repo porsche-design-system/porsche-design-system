@@ -41,7 +41,7 @@ export const TablePage = (): JSX.Element => {
                   />
                   <span dangerouslySetInnerHTML={{ __html: item.html }} />
                 </PTableCell>
-                <PTableCell style={{ whiteSpace: 'normal' }}>{item.longText}</PTableCell>
+                <PTableCell multiline={true}>{item.longText}</PTableCell>
                 <PTableCell>{item.shortText}</PTableCell>
                 <PTableCell>{item.shortText}</PTableCell>
                 <PTableCell>

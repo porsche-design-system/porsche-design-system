@@ -1,7 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  insertSlottedStyles,
   isDark,
   mapBreakpointPropToClasses,
   observeResize,
@@ -11,7 +10,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import { getContentHeight, setCollapsibleElementHeight, warnIfCompactAndSizeIsSet } from './accordion-utils';
-import { getSlottedCss } from './accordion-styles';
+import { addSlottedCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
@@ -52,7 +51,7 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    insertSlottedStyles(this.host, getSlottedCss(this.host));
+    addSlottedCss(this.host);
   }
 
   public componentWillLoad(): void {

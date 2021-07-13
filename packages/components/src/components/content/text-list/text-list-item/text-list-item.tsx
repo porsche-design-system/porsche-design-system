@@ -1,7 +1,7 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
 import { getAttribute, getTagName, insertSlottedStyles, throwIfParentIsNotOfKind } from '../../../../utils';
-import { addCss } from './text-list-item-utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
+import { addComponentCss } from './text-list-item-styles';
 
 @Component({
   tag: 'p-text-list-item',
@@ -19,7 +19,7 @@ export class TextListItem {
     const list = this.host.parentElement as HTMLPTextListElement;
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
-    addCss(this.host, listType, orderType, isNestedList);
+    addComponentCss(this.host, listType, orderType, isNestedList);
   }
 
   public render(): JSX.Element {
