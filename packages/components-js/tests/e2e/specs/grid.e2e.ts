@@ -13,7 +13,8 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle,
 } from '../helpers';
-import { stringify } from '../../../../components/tests/unit/helper';
+
+const stringify = (x: any): string => JSON.stringify(x);
 
 describe('grid', () => {
   let page: Page;
