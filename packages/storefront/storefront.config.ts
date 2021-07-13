@@ -413,17 +413,17 @@ export const config: StorefrontConfig = {
     Table: {
       Examples: [
         // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table.examples.md'),
+        () => import('@/../../components/src/components/content/table/table.examples.md'),
       ],
       Usage: [
         // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table.usage.md'),
+        () => import('@/../../components/src/components/content/table/table.usage.md'),
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table/table.props.md'),
+        () => import('@/../../components/src/components/content/table/table/table.props.md'),
         // @ts-ignore
-        () => import('@/../../components/src/components/layout/table/table-head-cell/table-head-cell.props.md'),
+        () => import('@/../../components/src/components/content/table/table-head-cell/table-head-cell.props.md'),
       ],
     },
     Tabs: {

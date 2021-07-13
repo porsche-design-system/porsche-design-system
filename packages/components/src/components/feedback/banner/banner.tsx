@@ -1,8 +1,8 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
-import { addCss } from './banner-utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { addComponentCss } from './banner-styles';
 
 @Component({
   tag: 'p-banner',
@@ -37,7 +37,7 @@ export class Banner {
   }
 
   public componentWillRender(): void {
-    addCss(this.host);
+    addComponentCss(this.host);
   }
 
   public componentDidLoad(): void {

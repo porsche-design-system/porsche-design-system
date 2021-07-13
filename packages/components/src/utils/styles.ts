@@ -1,6 +1,6 @@
-import { breakpoint, color } from '@porsche-design-system/utilities';
+import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import type { JssStyle } from '.';
+import type { JssStyle, Styles } from '.';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
@@ -11,10 +11,12 @@ export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
-export const addImportantToEachRule = (style: JssStyle): JssStyle => {
+export const addImportantToEachRule = <T extends Record<string, unknown>>(style: T): T => {
   // eslint-disable-next-line guard-for-in
   for (const key in style) {
     const value = style[key];
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     style[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
   }
 
@@ -76,3 +78,20 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
+
+export const getBaseSlottedStyles = (): Styles => {
+  return {
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'underline',
+      ...getHoverStyles(),
+      ...getFocusStyles({ offset: 1 }),
+    },
+    '& b, & strong': {
+      fontWeight: font.weight.bold,
+    },
+    '& em, & i': {
+      fontStyle: 'normal',
+    },
+  };
+};
