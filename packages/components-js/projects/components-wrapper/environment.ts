@@ -9,9 +9,10 @@ export const deployUrl = isDev
   ? 'http://localhost:3001/components'
   : `%%%CDN_BASE_URL_DYNAMIC%%%/${CDN_BASE_PATH_COMPONENTS}`; // placeholder is replaced via replace.ts script
 
-export const cdnDistPath = path.resolve('./dist/components');
-export const npmDistPath = path.resolve('./dist/components-wrapper');
-export const npmDistTmpPath = path.resolve('./dist/components-tmp');
+export const cdnDistPath = path.resolve(__dirname, './dist/components');
+export const npmDistPath = path.resolve(__dirname, './dist/components-wrapper');
+export const npmDistTmpSubPath = 'dist/components-tmp';
+export const npmDistTmpPath = path.resolve(__dirname, npmDistTmpSubPath);
 
 export { version } from './package.json';
 export const snakeCaseVersion = version.replace(/\.|-/g, '_');
