@@ -13,39 +13,30 @@ const baseSizes = {
   },
 };
 
-const baseCss: string = getCss({
-  ...buildHostStyles({
-    display: 'inline-flex',
-    verticalAlign: 'top',
-  }),
-  ...buildGlobalStyles({
-    a: {
-      display: 'block',
-      textDecoration: 'none',
-      ...getFocusStyles({ color: color.default, offset: 0 }),
-    },
-    picture: {
-      display: 'block',
-      ...baseSizes.small,
-      [mediaQuery('l')]: baseSizes.medium,
-    },
-    img: {
-      display: 'block',
-      width: '100%',
-      height: 'auto',
-    },
-  }),
-});
-
 export const getComponentCss = (size: MarqueSize): string => {
-  return (
-    baseCss +
-    getCss(
-      buildGlobalStyles({
-        picture: baseSizes[size],
-      })
-    )
-  );
+  return getCss({
+    ...buildHostStyles({
+      display: 'inline-flex',
+      verticalAlign: 'top',
+    }),
+    ...buildGlobalStyles({
+      a: {
+        display: 'block',
+        textDecoration: 'none',
+        ...getFocusStyles({ color: color.default, offset: 0 }),
+      },
+      picture: {
+        display: 'block',
+        ...baseSizes.small,
+        ...(size !== 'responsive' ? baseSizes[size] : { [mediaQuery('l')]: baseSizes.medium }),
+      },
+      img: {
+        display: 'block',
+        width: '100%',
+        height: 'auto',
+      },
+    }),
+  });
 };
 
 export const addComponentCss = (host: HTMLElement, size: MarqueSize): void => {
