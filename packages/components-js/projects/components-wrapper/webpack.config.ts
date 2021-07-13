@@ -2,7 +2,7 @@ import * as webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
 const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config: webpack.Configuration = {
   mode: 'production',

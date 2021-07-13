@@ -11,5 +11,7 @@ export const deployUrl = isDev
 
 export const cdnDistPath = path.resolve('./dist/components');
 export const npmDistPath = path.resolve('./dist/components-wrapper');
+export const npmDistTmpPath = path.resolve('./dist/components-tmp');
+
 export { version } from './package.json';
 export const snakeCaseVersion = version.replace(/\.|-/g, '_');
