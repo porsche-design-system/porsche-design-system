@@ -8,8 +8,7 @@ export const generateInitialStylesPartial = (): string => {
 
   const tagNames = TAG_NAMES.map((x) => `'${x}'`).join(', ');
 
-  const func = `
-export const getInitialStyles = (opts?: InitialStylesOptions): string => {
+  const func = `export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
     prefix: '',
     withoutTags: false,
