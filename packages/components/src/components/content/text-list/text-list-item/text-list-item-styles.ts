@@ -73,21 +73,25 @@ const getTypeStyles = (listType: ListType, orderType: OrderType, isNestedList: b
 };
 
 export const getComponentCss = (listType: ListType, orderType: OrderType, isNestedList: boolean): string => {
+  const baseComponentStyle: JssStyle = {
+    position: 'relative',
+    display: 'list-item',
+    color: 'inherit',
+    listStyleType: 'none',
+    paddingLeft: pxToRemWithUnit(24),
+    '&:before': {
+      position: 'absolute',
+    },
+  };
+
   return getCss(
-    addImportantToEachRule(
-      mergeDeep(
-        buildHostStyles({
-          position: 'relative',
-          display: 'list-item',
-          color: 'inherit',
-          listStyleType: 'none',
-          paddingLeft: pxToRemWithUnit(24),
-          '&:before': {
-            position: 'absolute',
-          },
-        }),
-        buildHostStyles(getTypeStyles(listType, orderType, isNestedList)),
-        buildHostStyles(getNestedListStyles(isNestedList, listType))
+    buildHostStyles(
+      addImportantToEachRule(
+        mergeDeep(
+          baseComponentStyle,
+          getTypeStyles(listType, orderType, isNestedList),
+          getNestedListStyles(isNestedList, listType)
+        )
       )
     )
   );
