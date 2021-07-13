@@ -7,7 +7,7 @@ import type {
   FlexJustifyContent,
   FlexWrap,
 } from './flex-utils';
-import { addCss } from './flex-utils';
+import { addComponentCss } from './flex-styles';
 
 @Component({
   tag: 'p-flex',
@@ -35,7 +35,15 @@ export class Flex {
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
   public componentWillRender(): void {
-    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
+    addComponentCss(
+      this.host,
+      this.inline,
+      this.wrap,
+      this.direction,
+      this.justifyContent,
+      this.alignItems,
+      this.alignContent
+    );
   }
 
   public render(): JSX.Element {
