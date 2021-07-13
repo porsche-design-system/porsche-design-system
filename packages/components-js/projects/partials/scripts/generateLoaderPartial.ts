@@ -19,7 +19,7 @@ export const generateLoaderPartial = (): string => {
   };
   const { withoutTags } = options;
 
-  const scriptContent = '${fileContent}';
+  const scriptContent = ${JSON.stringify(fileContent)};
 
   return withoutTags ? scriptContent : \`<script>\${scriptContent}</script>\`;
 };`;
