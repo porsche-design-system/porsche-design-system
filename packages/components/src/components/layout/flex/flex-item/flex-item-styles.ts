@@ -33,36 +33,23 @@ const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & 
   auto: 'auto',
 };
 
-const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle =>
-  addImportantToEachRule({
-    width: `${flexItemWidths[width]}%`,
-  });
+const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle => ({
+  width: `${flexItemWidths[width]}%`,
+});
 
-const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType): JssStyle =>
-  addImportantToEachRule({
-    marginLeft: `${flexItemWidths[offset]}%`,
-  });
+const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType): JssStyle => ({
+  marginLeft: `${flexItemWidths[offset]}%`,
+});
 
-const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType): JssStyle =>
-  addImportantToEachRule({ alignSelf });
+const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType): JssStyle => ({ alignSelf });
 
-const getGrowStyles: GetStylesFunction = (flexGrow: FlexItemGrowType): JssStyle => addImportantToEachRule({ flexGrow });
+const getGrowStyles: GetStylesFunction = (flexGrow: FlexItemGrowType): JssStyle => ({ flexGrow });
 
-const getShrinkStyles: GetStylesFunction = (flexShrink: FlexItemShrinkType): JssStyle =>
-  addImportantToEachRule({ flexShrink });
+const getShrinkStyles: GetStylesFunction = (flexShrink: FlexItemShrinkType): JssStyle => ({ flexShrink });
 
-const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle =>
-  addImportantToEachRule({
-    flex: flex === 'equal' ? '1 1 0' : flex,
-  });
-
-const baseCss: string = getCss(
-  buildHostStyles(
-    addImportantToEachRule({
-      boxSizing: 'border-box',
-    })
-  )
-);
+const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle => ({
+  flex: flex === 'equal' ? '1 1 0' : flex,
+});
 
 export const getComponentCss = (
   width: FlexItemWidth,
@@ -72,10 +59,12 @@ export const getComponentCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): string => {
-  return (
-    baseCss +
-    getCss(
+  return getCss(
+    addImportantToEachRule(
       mergeDeep(
+        buildHostStyles({
+          boxSizing: 'border-box',
+        }),
         buildResponsiveJss(width, getWidthStyles),
         buildResponsiveJss(offset, getOffsetStyles),
         buildResponsiveJss(alignSelf, getAlignSelfStyles),

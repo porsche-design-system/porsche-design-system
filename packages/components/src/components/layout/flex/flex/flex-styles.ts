@@ -15,24 +15,21 @@ import type {
   FlexAlignContentType,
 } from './flex-utils';
 
-const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle =>
-  addImportantToEachRule({
-    display: inline ? 'inline-flex' : 'flex',
-  });
+const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
+  display: inline ? 'inline-flex' : 'flex',
+});
 
-const getWrapStyles: GetStylesFunction = (flexWrap: FlexWrapType): JssStyle => addImportantToEachRule({ flexWrap });
+const getWrapStyles: GetStylesFunction = (flexWrap: FlexWrapType): JssStyle => ({ flexWrap });
 
-const getDirectionStyles: GetStylesFunction = (flexDirection: FlexDirectionType): JssStyle =>
-  addImportantToEachRule({ flexDirection });
+const getDirectionStyles: GetStylesFunction = (flexDirection: FlexDirectionType): JssStyle => ({ flexDirection });
 
-const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle =>
-  addImportantToEachRule({ justifyContent });
+const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle => ({
+  justifyContent,
+});
 
-const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle =>
-  addImportantToEachRule({ alignItems });
+const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle => ({ alignItems });
 
-const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle =>
-  addImportantToEachRule({ alignContent });
+const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle => ({ alignContent });
 
 export const getComponentCss = (
   inline: FlexInline,
@@ -43,13 +40,15 @@ export const getComponentCss = (
   alignContent: FlexAlignContent
 ): string => {
   return getCss(
-    mergeDeep(
-      buildResponsiveJss(inline, getInlineStyles),
-      buildResponsiveJss(wrap, getWrapStyles),
-      buildResponsiveJss(direction, getDirectionStyles),
-      buildResponsiveJss(justifyContent, getJustifyContentStyles),
-      buildResponsiveJss(alignItems, getAlignItemsStyles),
-      buildResponsiveJss(alignContent, getAlignContentStyles)
+    addImportantToEachRule(
+      mergeDeep(
+        buildResponsiveJss(inline, getInlineStyles),
+        buildResponsiveJss(wrap, getWrapStyles),
+        buildResponsiveJss(direction, getDirectionStyles),
+        buildResponsiveJss(justifyContent, getJustifyContentStyles),
+        buildResponsiveJss(alignItems, getAlignItemsStyles),
+        buildResponsiveJss(alignContent, getAlignContentStyles)
+      )
     )
   );
 };
