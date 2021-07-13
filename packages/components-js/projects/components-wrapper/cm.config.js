@@ -18,6 +18,7 @@ console.log('targetDirectory:', deployUrl);
 //   inlineStyles?: string;
 //   script: string;
 //   copyFiles?: CopyFile[];
+//   iife?: boolean;
 // }
 
 module.exports = {
@@ -25,30 +26,32 @@ module.exports = {
   targetDirectory,
   deployUrl: deployUrl,
   script: `${cdnDistPath}/porsche-design-system.v*.js`,
-  ...(!isTpmBuild && {
-    copyFiles: [
-      {
-        pattern: '../components/CHANGELOG.md',
-        targetDirectory,
-      },
-      {
-        pattern: './projects/components-wrapper/package.json',
-        targetDirectory,
-      },
-      {
-        pattern: './projects/components-wrapper/LICENSE',
-        targetDirectory,
-      },
-      {
-        pattern: './projects/components-wrapper/README.md',
-        targetDirectory,
-      },
-    ],
-    additionalEntryFiles: [
-      {
-        filePath: '../components/dist/collection/components-ready.js',
-        typingFilePath: '../components/dist/types/components-ready.d.ts',
-      },
-    ],
-  }),
+  ...(isTpmBuild
+    ? { iife: true }
+    : {
+        copyFiles: [
+          {
+            pattern: '../components/CHANGELOG.md',
+            targetDirectory,
+          },
+          {
+            pattern: './projects/components-wrapper/package.json',
+            targetDirectory,
+          },
+          {
+            pattern: './projects/components-wrapper/LICENSE',
+            targetDirectory,
+          },
+          {
+            pattern: './projects/components-wrapper/README.md',
+            targetDirectory,
+          },
+        ],
+        additionalEntryFiles: [
+          {
+            filePath: '../components/dist/collection/components-ready.js',
+            typingFilePath: '../components/dist/types/components-ready.d.ts',
+          },
+        ],
+      }),
 };
