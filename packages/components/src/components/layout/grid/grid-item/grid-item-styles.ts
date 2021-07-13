@@ -1,7 +1,6 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   attachCss,
   buildHostStyles,
   buildResponsiveJss,
@@ -12,29 +11,21 @@ import {
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
 
-const baseCss: string = getCss(
-  buildHostStyles(
-    addImportantToEachRule({
-      boxSizing: 'border-box',
-    })
-  )
-);
-
 const gridItemWidths = [
   0, 8.333333, 16.666667, 25, 33.333333, 41.666667, 50, 58.333333, 66.666667, 75, 83.333333, 91.666667, 100,
 ];
 
-const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle =>
-  addImportantToEachRule({
-    width: `${gridItemWidths[size]}%`,
-    minWidth: `${gridItemWidths[size]}%`,
-  });
+const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
+  width: `${gridItemWidths[size]}%`,
+  minWidth: `${gridItemWidths[size]}%`,
+});
 
-const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle =>
-  addImportantToEachRule({ marginLeft: `${gridItemWidths[offset]}%` });
+const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle => ({
+  marginLeft: `${gridItemWidths[offset]}%`,
+});
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
-  const gutterRem = addImportantToRule(pxToRemWithUnit(gutter / 2));
+  const gutterRem = pxToRemWithUnit(gutter / 2);
   return {
     paddingLeft: gutterRem,
     paddingRight: gutterRem,
@@ -42,10 +33,12 @@ const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle =>
 };
 
 export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): string => {
-  return (
-    baseCss +
-    getCss(
+  return getCss(
+    addImportantToEachRule(
       mergeDeep(
+        buildHostStyles({
+          boxSizing: 'border-box',
+        }),
         buildResponsiveJss(size, getSizeStyles),
         buildResponsiveJss(offset, getOffsetStyles),
         buildResponsiveJss(gutter, getGutterStyles)
