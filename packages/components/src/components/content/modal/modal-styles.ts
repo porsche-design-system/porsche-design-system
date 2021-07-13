@@ -29,10 +29,8 @@ export const getComponentCss = (open: boolean): string => {
       }),
       overflowY: 'auto',
     }),
-    ...(open && {
-      root: addImportantToEachRule({
-        transform: 'scale3d(1, 1, 1)',
-      }),
+    root: addImportantToEachRule({
+      transform: 'scale3d(1, 1, 1)',
     }),
   });
 };

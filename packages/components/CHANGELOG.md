@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - `Table Head Cell` uses semi bold instead of bold as font weight
+- Transition of `Modal`
 
 ### [2.3.0-beta.1] - 2021-07-08
 
