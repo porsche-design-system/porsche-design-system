@@ -23,7 +23,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { color } from '@porsche-design-system/utilities';
-  import { getLoader } from '@porsche-design-system/components-js/partials';
+  import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -59,7 +59,7 @@
         html: this.markup,
         ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
         // js_external: `${path}${PDS_LOADER_FILENAME}`,
-        js: getLoader({ withoutTags: true }) + 'porscheDesignSystem.load()',
+        js: getLoaderScript({ withoutTags: true }),
       });
     }
   }
