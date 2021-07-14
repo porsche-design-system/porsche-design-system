@@ -627,6 +627,32 @@ export const config: StorefrontConfig = {
       ],
     },
   },
+  Partials: {
+    GetInitialStyles: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-initial-styles.md'),
+    ],
+    GetComponentChunks: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-component-chunks.md'),
+    ],
+    GetFontFaceStylesheet: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-font-face-stylesheet.md'),
+    ],
+    GetFontLinks: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-font-links.md'),
+    ],
+    GetIconLinks: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-icon-links.md'),
+    ],
+    GetLoaderScript: [
+      // @ts-ignore
+      () => import('@/pages/partials/get-loader-script.md'),
+    ],
+  },
   Performance: {
     Cdn: [
       // @ts-ignore
