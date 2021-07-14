@@ -3,7 +3,7 @@ import * as path from 'path';
 import { npmDistTmpSubPath } from '../../components-wrapper/environment';
 
 export const generateLoaderPartial = (): string => {
-  const types = `type LoaderOptions = {
+  const types = `type LoaderScriptOptions = {
   withoutTags?: boolean;
 }`;
 
@@ -12,14 +12,14 @@ export const generateLoaderPartial = (): string => {
   const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
-  const func = `export const getLoader = (opts?: LoaderOptions): string => {
+  const func = `export const getLoaderScript = (opts?: LoaderScriptOptions): string => {
   const options: LoaderOptions = {
     withoutTags: false,
     ...opts
   };
   const { withoutTags } = options;
 
-  const scriptContent = ${JSON.stringify(fileContent)};
+  const scriptContent = ${JSON.stringify(fileContent)} + 'porscheDesignSystem.load()';
 
   return withoutTags ? scriptContent : \`<script>\${scriptContent}</script>\`;
 };`;
