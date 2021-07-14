@@ -1,4 +1,5 @@
-# getFontFaceStylesheet()
+# Font Face Stylesheet
+**Function name:** `getFontFaceStylesheet()`
 
 If you use the Porsche Design System components we inject a stylesheet with all font-face definitions into the head of your application as soon as our core is loaded.
 Regarding which font-styles you use on your page, these fonts are downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 

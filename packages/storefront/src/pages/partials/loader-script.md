@@ -1,4 +1,5 @@
-# getLoaderScriptScript()
+# Loader Script
+**Function name:** `getLoaderScriptScript()`
 
 When using `porsche-design-system/components-{angular|react}` our core loader gets bundled into your application.  
 This impacts the loading behavior of Porsche Design System components because the code gets executed later once the framework bootstraps.

@@ -1,4 +1,5 @@
-# getFontLinks()
+# Font Links
+**Function name:** `getFontLinks()`
 
 Fonts should be loaded as soon as possible but only those which are needed. 
 The Porsche Design System is not able to determine which components you use on the site and which fonts to be provided **initially**.

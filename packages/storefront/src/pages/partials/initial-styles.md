@@ -1,4 +1,5 @@
-# getInitialStyles()
+# Initial Styles
+**Function name:** `getInitialStyles()`
 
 If you use `Porsche Design System` components, we take care that your application only renders those if they are fully styled.
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
