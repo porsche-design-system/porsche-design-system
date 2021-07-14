@@ -628,29 +628,33 @@ export const config: StorefrontConfig = {
     },
   },
   Partials: {
-    GetInitialStyles: [
+    'Loader Script': [
       // @ts-ignore
-      () => import('@/pages/partials/get-initial-styles.md'),
+      () => import('@/pages/partials/loader-script.md'),
     ],
-    GetComponentChunks: [
+    'Component Chunk Links': [
       // @ts-ignore
-      () => import('@/pages/partials/get-component-chunks.md'),
+      () => import('@/pages/partials/component-chunk-links.md'),
     ],
-    GetFontFaceStylesheet: [
+    'Initial Styles': [
       // @ts-ignore
-      () => import('@/pages/partials/get-font-face-stylesheet.md'),
+      () => import('@/pages/partials/initial-styles.md'),
     ],
-    GetFontLinks: [
+    'Font Face Stylesheet': [
       // @ts-ignore
-      () => import('@/pages/partials/get-font-links.md'),
+      () => import('@/pages/partials/font-face-stylesheet.md'),
     ],
-    GetIconLinks: [
+    'Font Links': [
       // @ts-ignore
-      () => import('@/pages/partials/get-icon-links.md'),
+      () => import('@/pages/partials/font-links.md'),
     ],
-    GetLoaderScript: [
+    'Icon Links': [
       // @ts-ignore
-      () => import('@/pages/partials/get-loader-script.md'),
+      () => import('@/pages/partials/icon-links.md'),
+    ],
+    'Meta Tags And Icon Links': [
+      // @ts-ignore
+      () => import('@/pages/partials/meta-tags-and-icon-links.md'),
     ],
   },
   Performance: {

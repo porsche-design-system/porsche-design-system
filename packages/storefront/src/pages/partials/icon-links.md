@@ -1,4 +1,5 @@
-# getIconLinks()
+# Icon Links
+**Function name:** `getIconLinks()`
 
 Porsche Design System icons are loaded dynamically from a CDN as soon as they are used for the first time.  
 This results in a waterfall like loading behaviour where your application is bootstrapped first, then loads the Porsche Design System Core and when any icon is rendered the corresponding icon is loaded afterwards.  
@@ -61,12 +62,10 @@ You can find an implemented example in our [Sample VanillaJS Integration](https:
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { COMPONENT_CHUNK_NAMES } from '../../../../components-js/projects/components-wrapper';
   import { ICON_NAMES } from '@porsche-design-system/icons';
   
   @Component
   export default class Code extends Vue {
-    public componentChunks: string = COMPONENT_CHUNK_NAMES.map(x => `'${x}'`).join(' | ');
     public iconNames: string = ICON_NAMES.map(x => `'${x}'`).join(' | ');
   }
 </script>
