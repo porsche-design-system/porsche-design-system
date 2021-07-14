@@ -4,7 +4,7 @@ import {
   getFontLinks,
   getInitialStyles,
   getMetaTagsAndIconLinks,
-  getLoader,
+  getLoaderScript,
 } from '@porsche-design-system/components-react/partials';
 
 describe('partials', () => {
@@ -38,9 +38,9 @@ describe('partials', () => {
     });
   });
 
-  describe('getLoader()', () => {
+  describe('getLoaderScript()', () => {
     it('should be a function', () => {
-      expect(typeof getLoader).toBe('function');
+      expect(typeof getLoaderScript).toBe('function');
     });
   });
 });
