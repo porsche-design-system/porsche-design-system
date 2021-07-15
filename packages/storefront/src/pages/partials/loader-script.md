@@ -7,6 +7,7 @@ This impacts the loading behavior of Porsche Design System components because th
 To achieve this bootstrapping earlier we provide a partial called `getLoaderScript()` in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be imported into the `<body>` of your `index.html`.
 
 ## Supported options:
+- **prefix**: string | string[] = undefined
 - **withoutTags**: boolean = false
 
 ### Example usage with dynamic template
@@ -19,10 +20,16 @@ The example shows how to implement the partial in a webpack (or similar) project
 <body>
   // Using template syntax
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript() %>
+
+  // With custom prefix
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript({ prefix: 'my-prefix' }) %>
+
+  // With multiple custom prefixes
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript({ prefix: ['my-prefix', 'another-prefix'] }) %>
 </body>
 
 <body>
-  // without link tags  
+  // without script tag  
   <script><%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript({ withoutTags: true }) %></script>
 </body>
 ```
