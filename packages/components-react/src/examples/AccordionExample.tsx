@@ -21,10 +21,8 @@ export const AccordionExamplePage = (): JSX.Element => {
     <>
       <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onAccordionChange={onAccordion1Change}>
         <PText>{content}</PText>
-        <PText>{content}</PText>
       </PAccordion>
       <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onAccordionChange={onAccordion2Change}>
-        <PText>{content}</PText>
         <PText>{content}</PText>
       </PAccordion>
     </>

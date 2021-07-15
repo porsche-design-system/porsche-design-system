@@ -11,7 +11,6 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
       (accordionChange)="onAccordion1Change($event)"
     >
       <p-text>{{ content }}</p-text>
-      <p-text>{{ content }}</p-text>
     </p-accordion>
     <p-accordion
       heading="Some Heading"
@@ -19,7 +18,6 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
       [open]="isAccordion2Open"
       (accordionChange)="onAccordion2Change($event)"
     >
-      <p-text>{{ content }}</p-text>
       <p-text>{{ content }}</p-text>
     </p-accordion>
   `,
@@ -29,7 +27,8 @@ export class AccordionExampleComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
   content =
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et  dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
+    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
+    'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
 
   onAccordion1Change(e: CustomEvent<AccordionChangeEvent>) {
     this.isAccordion1Open = e.detail.open;
