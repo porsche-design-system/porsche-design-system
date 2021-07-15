@@ -5,9 +5,6 @@
   "description": "Porsche Design System",
   "scripts": {
     "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
-    "prestart": "yarn preparePDSLoader",
-    "prebuild": "yarn preparePDSLoader",
-    "preparePDSLoader": "ts-node --project './tsconfig.node.json' './scripts/preparePDSLoader.ts'",
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
@@ -22,7 +19,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "2.0.0",
-    "@porsche-design-system/components-js": "2.3.0-beta.1",
+    "@porsche-design-system/components-js": "2.3.0-beta.2",
     "change-case": "^4.1.2",
     "core-js": "^3.15.2",
     "prismjs": "^1.24.1",

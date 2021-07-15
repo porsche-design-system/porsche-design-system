@@ -80,7 +80,6 @@
         }
       }
     </style>
-    <script src="<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
   </head>
   <body>
     <noscript>
@@ -98,10 +97,9 @@
           </svg>
         </div>
       </div>
-      <script>
-        porscheDesignSystem.load();
-      </script>
     </div>
+    <!-- prettier-ignore -->
+    <%= require('@porsche-design-system/components-js/partials').getLoaderScript() %>
     <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
     <!-- built files will be auto injected -->
   </body>

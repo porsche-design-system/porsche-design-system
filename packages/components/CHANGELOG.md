@@ -8,9 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.3.0-beta.2] - 2021-07-15
+
 #### Added
 - `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` now reflect changes of the `required` attribute on their child component
 - `multiline` property to `Table Cell`
+- Partial function `getLoaderScript()` to initialize Porsche Design System as early as possible
 
 #### Fixed
 - `Table Head Cell` uses semi bold instead of bold as font weight
