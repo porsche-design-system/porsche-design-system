@@ -2,8 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { npmDistTmpSubPath } from '../../components-wrapper/environment';
 
-export const generateLoaderPartial = (): string => {
+export const generateLoaderScriptPartial = (): string => {
   const types = `type LoaderScriptOptions = {
+  prefix?: string | string[];
   withoutTags?: boolean;
 }`;
 
@@ -13,13 +14,19 @@ export const generateLoaderPartial = (): string => {
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
   const func = `export const getLoaderScript = (opts?: LoaderScriptOptions): string => {
-  const options: LoaderOptions = {
+  const options: LoaderScriptOptions = {
+    prefix: undefined,
     withoutTags: false,
     ...opts
   };
-  const { withoutTags } = options;
+  const { prefix, withoutTags } = options;
 
-  const scriptContent = ${JSON.stringify(fileContent)} + 'porscheDesignSystem.load()';
+  const loadCalls = prefix
+    ? Array.isArray(prefix)
+      ? prefix.map((x) => \`porscheDesignSystem.load({prefix:'\${x}'})\`).join(';')
+      : \`porscheDesignSystem.load({prefix:'\${prefix}'})\`
+    : 'porscheDesignSystem.load()';
+  const scriptContent = ${JSON.stringify(fileContent)} + loadCalls;
 
   return withoutTags ? scriptContent : \`<script>\${scriptContent}</script>\`;
 };`;
