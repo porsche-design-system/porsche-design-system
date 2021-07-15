@@ -2,9 +2,9 @@
 **Function name:** `getLoaderScriptScript()`
 
 When using `porsche-design-system/components-{angular|react}` our core loader gets bundled into your application.  
-This impacts the loading behavior of Porsche Design System components because the code gets executed later once the framework bootstraps.
+This impacts the loading behavior of Porsche Design System components because the code gets executed later, once the framework bootstraps.
 
-To achieve this bootstrapping earlier we provide a partial called `getLoaderScript()` in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be imported into the `<head>` of your `index.html`.
+To achieve this bootstrapping earlier we provide a partial called `getLoaderScript()` in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be imported into the `<body>` of your `index.html`.
 
 ## Supported options:
 - **withoutTags**: boolean = false
@@ -16,22 +16,14 @@ The example shows how to implement the partial in a webpack (or similar) project
 ```html
 // index.html
 
-<head>
-  // Using template syntax (make sure to preload only icons which are really needed initially!)
+<body>
+  // Using template syntax
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript() %>
-</head>
-
-<head>
-  // without link tags  
-  <script><%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript({ withoutTags: true }) %></script>
-</head>
-
+</body>
 
 <body>
-  <script>
-    porscheDesignSystem.load(); // default without prefix
-    porscheDesignSystem.load({ prefix: 'sample-prefix' }); // alternative with custom prefix, can be called multiple times with different parameters
-  </script>
+  // without link tags  
+  <script><%= require('@porsche-design-system/components-{js|angular|react}/partials').getLoaderScript({ withoutTags: true }) %></script>
 </body>
 ```
 
@@ -42,15 +34,8 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 ```html
 // index.html
 
-<head>
-  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_LOADER-->
-</head>
-
 <body>
-  <script>
-    porscheDesignSystem.load(); // default without prefix
-    porscheDesignSystem.load({ prefix: 'sample-prefix' }); // alternative with custom prefix, can be called multiple times with different parameters
-  </script>
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_LOADER_SCRIPT-->
 </body>
 ``` 
 
@@ -59,6 +44,6 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_LOADER-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ```
