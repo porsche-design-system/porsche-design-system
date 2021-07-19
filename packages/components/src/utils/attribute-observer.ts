@@ -9,7 +9,7 @@ const mutationObserver = new MutationObserver((mutations) => {
     .forEach((mutation) => mutationMap.get(mutation.target)?.());
 });
 
-export const observeMutations = <T extends HTMLElement, K = keyof T>(
+export const observeAttributes = <T extends HTMLElement, K = keyof T>(
   node: T,
   attributes: Lowercase<K extends string ? K : string>[],
   callback: () => void
@@ -21,6 +21,6 @@ export const observeMutations = <T extends HTMLElement, K = keyof T>(
   }
 };
 
-export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
+export const unobserveAttributes = <T extends HTMLElement>(node: T): void => {
   mutationMap.delete(node);
 };
