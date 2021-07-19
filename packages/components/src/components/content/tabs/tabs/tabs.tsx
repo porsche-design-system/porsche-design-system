@@ -1,5 +1,5 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, removeAttribute, setAttribute } from '../../../../utils';
+import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
+import { getPrefixedTagNames, observeProperties, removeAttribute, setAttribute } from '../../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../../types';
 import type {
   TabChangeEvent,
@@ -47,6 +47,7 @@ export class Tabs {
   public connectedCallback(): void {
     this.defineTabsItemElements();
     this.initMutationObserver();
+    this.observeProperties();
   }
 
   public componentDidLoad(): void {
@@ -110,24 +111,22 @@ export class Tabs {
   };
 
   private initMutationObserver = (): void => {
-    this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
-        this.defineTabsItemElements();
-      }
+    // host observer tracks children being added or removed
+    this.hostObserver = new MutationObserver(() => {
+      this.defineTabsItemElements();
+      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
     });
     this.hostObserver.observe(this.host, {
       childList: true,
-      subtree: true,
-      attributeFilter: ['label'],
     });
   };
 
-  private onTabChange = (e: CustomEvent<TabChangeEvent>): void => {
-    const {
-      detail: { activeTabIndex },
-    } = e;
-    e.stopPropagation(); // prevent double event emission because of identical name
+  private observeProperties = (): void => {
+    this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
+  };
 
-    this.activeTabIndex = activeTabIndex;
+  private onTabChange = (e: CustomEvent<TabChangeEvent>): void => {
+    e.stopPropagation(); // prevent double event emission because of identical name
+    this.activeTabIndex = e.detail.activeTabIndex;
   };
 }
