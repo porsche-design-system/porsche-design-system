@@ -1,6 +1,6 @@
 import * as domUtils from '../../../utils/dom';
 import { RadioButtonWrapper } from './radio-button-wrapper';
-import * as mutationObserverUtils from '../../../utils/mutation-observer';
+import * as attributeObserverUtils from '../../../utils/attribute-observer';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -8,7 +8,7 @@ jest.mock('../../../utils/slotted-styles');
 describe('radio-button-wrapper', () => {
   describe('connectedCallback', () => {
     it('should call observeAttributes()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
+      const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new RadioButtonWrapper();
       component.connectedCallback();
 
@@ -28,7 +28,7 @@ describe('radio-button-wrapper', () => {
     });
 
     it('should call observeAttributes()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
+      const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new RadioButtonWrapper();
       component.componentWillLoad();
 
@@ -38,7 +38,7 @@ describe('radio-button-wrapper', () => {
 
   describe('disconnectedCallback', () => {
     it('should call unobserveAttributes()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'unobserveAttributes');
+      const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
       const component = new RadioButtonWrapper();
       component.disconnectedCallback();
 
