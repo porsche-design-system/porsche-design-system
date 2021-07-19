@@ -1,7 +1,8 @@
-import { ElementHandle, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectedStyleOnFocus,
+  getAttribute,
   getBrowser,
   getElementStyle,
   getLifecycleStatus,
@@ -160,6 +161,29 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getOverflowOnCollapsible())
       .withContext('after click to open')
       .toBe('visible');
+  });
+
+  it('should show aria-expanded true when open and false when closed', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+    const button = await getButton();
+
+    expect(await getAttribute(button, 'aria-expanded'))
+      .withContext('initial when closed')
+      .toBe('false');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-expanded'))
+      .withContext('after click to open')
+      .toBe('true');
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-expanded'))
+      .withContext('after click to close')
+      .toBe('false');
   });
 
   describe('events', () => {
