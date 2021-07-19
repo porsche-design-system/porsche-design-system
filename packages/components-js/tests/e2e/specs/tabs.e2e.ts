@@ -323,6 +323,24 @@ describe('tabs', () => {
     expect(getConsoleErrorsAmount()).toBe(1);
   });
 
+  it('should not inherit nested tabs to parent', async () => {
+    await initTabs({ amount: 3 });
+
+    // add tabs into first tab
+    const [firstTabsItem] = await getAllTabsItems();
+    await firstTabsItem.evaluate((el) => {
+      const markup = `<p-tabs>
+  <p-tabs-item label="Nested Tab 1">Nested Tab 1 Content</p-tabs-item>
+  <p-tabs-item label="Nested Tab 2">Nested Tab 2 Content</p-tabs-item>
+</p-tabs>`;
+      el.innerHTML = markup;
+    });
+
+    await waitForStencilLifecycle(page);
+
+    expect((await getAllTabs()).length).toBe(3);
+  });
+
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initTabs({ amount: 3 });
