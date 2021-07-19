@@ -93,7 +93,7 @@ export class Accordion {
           <button
             id={buttonId}
             type="button"
-            aria-expanded={this.open}
+            aria-expanded={this.open ? 'true' : 'false'}
             aria-controls={contentId}
             onClick={this.onButtonClick}
           >

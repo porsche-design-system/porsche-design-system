@@ -2,7 +2,9 @@ import { ConsoleMessage, Page } from 'puppeteer';
 import {
   getAttribute,
   getBrowser,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -101,18 +103,7 @@ describe('pagination', () => {
   });
 
   it('should have no errors if disconnected before fully loaded', async () => {
-    const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
-
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          console.log(description);
-        }
-      }
-    });
+    initConsoleObserver(page);
 
     await setContentWithDesignSystem(page, ``);
     await page.evaluate(() => {
@@ -124,10 +115,10 @@ describe('pagination', () => {
 
     await page.waitForTimeout(10);
 
-    expect(getErrorsAmount(consoleMessages)).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
-    expect(getErrorsAmount(consoleMessages)).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   // TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
