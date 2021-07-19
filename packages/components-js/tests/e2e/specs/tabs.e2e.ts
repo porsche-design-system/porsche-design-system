@@ -2,9 +2,11 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
+  initConsoleObserver,
   isElementAtIndexFocused,
   reattachElement,
   removeAttribute,
@@ -305,24 +307,13 @@ describe('tabs', () => {
   });
 
   it('should not crash without children', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          console.log(description);
-        }
-      }
-    });
-
-    const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+    initConsoleObserver(page);
 
     await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
-    expect(getErrorsAmount()).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
-    expect(getErrorsAmount()).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   describe('lifecycle', () => {
