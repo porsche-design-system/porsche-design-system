@@ -10,9 +10,9 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   mapBreakpointPropToClasses,
-  observeMutations,
+  observeAttributes,
   setAriaAttributes,
-  unobserveMutations,
+  unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
@@ -41,12 +41,12 @@ export class CheckboxWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentDidRender(): void {
@@ -63,7 +63,7 @@ export class CheckboxWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.input);
+    unobserveAttributes(this.input);
   }
 
   public render(): JSX.Element {
@@ -109,8 +109,8 @@ export class CheckboxWrapper {
     }
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

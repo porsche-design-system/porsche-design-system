@@ -1,14 +1,14 @@
 import * as domUtils from '../../../utils/dom';
 import { CheckboxWrapper } from './checkbox-wrapper';
-import * as mutationObserverUtils from '../../../utils/mutation-observer';
+import * as attributeObserverUtils from '../../../utils/attribute-observer';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('checkbox-wrapper', () => {
   describe('connectedCallback', () => {
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new CheckboxWrapper();
       component.connectedCallback();
 
@@ -27,8 +27,8 @@ describe('checkbox-wrapper', () => {
       expect(spy).toBeCalledWith(undefined, 'input[type="checkbox"]');
     });
 
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new CheckboxWrapper();
       component.componentWillLoad();
 
@@ -37,8 +37,8 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'unobserveMutations');
+    it('should call unobserveAttributes()', () => {
+      const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
       const component = new CheckboxWrapper();
       component.disconnectedCallback();
 

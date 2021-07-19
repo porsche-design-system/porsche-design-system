@@ -9,8 +9,8 @@ import {
   hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
-  observeMutations,
-  unobserveMutations,
+  observeAttributes,
+  unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
@@ -44,12 +44,12 @@ export class TextareaWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentDidRender(): void {
@@ -66,7 +66,7 @@ export class TextareaWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.textarea);
+    unobserveAttributes(this.textarea);
   }
 
   public render(): JSX.Element {
@@ -111,8 +111,8 @@ export class TextareaWrapper {
     this.textarea.focus();
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
