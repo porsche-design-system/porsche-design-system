@@ -7,8 +7,8 @@ jest.mock('../../../utils/slotted-styles');
 
 describe('text-field-wrapper', () => {
   describe('connectedCallback', () => {
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
       const component = new TextFieldWrapper();
       component.connectedCallback();
 
@@ -31,8 +31,8 @@ describe('text-field-wrapper', () => {
       expect(spy).toBeCalledWith(undefined, selector);
     });
 
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
       const component = new TextFieldWrapper();
       try {
         component.componentWillLoad();
@@ -43,8 +43,8 @@ describe('text-field-wrapper', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'unobserveMutations');
+    it('should call unobserveAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'unobserveAttributes');
       const component = new TextFieldWrapper();
       component.disconnectedCallback();
 

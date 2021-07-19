@@ -10,10 +10,10 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   mapBreakpointPropToClasses,
-  observeMutations,
+  observeAttributes,
   setAriaAttributes,
   getRole,
-  unobserveMutations,
+  unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
@@ -48,12 +48,12 @@ export class TextFieldWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.setInput();
-    this.observeMutations();
+    this.observeAttributes();
     this.isPassword = this.input.type === 'password';
   }
 
@@ -71,7 +71,7 @@ export class TextFieldWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.input);
+    unobserveAttributes(this.input);
   }
 
   public render(): JSX.Element {
@@ -157,8 +157,8 @@ export class TextFieldWrapper {
     );
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

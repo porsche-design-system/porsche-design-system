@@ -7,8 +7,8 @@ jest.mock('../../../utils/slotted-styles');
 
 describe('textarea-wrapper', () => {
   describe('connectedCallback', () => {
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
       const component = new TextareaWrapper();
       component.connectedCallback();
 
@@ -27,8 +27,8 @@ describe('textarea-wrapper', () => {
       expect(spy).toBeCalledWith(undefined, 'textarea');
     });
 
-    it('should call observeMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
+    it('should call observeAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'observeAttributes');
       const component = new TextareaWrapper();
       component.componentWillLoad();
 
@@ -37,8 +37,8 @@ describe('textarea-wrapper', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveMutations()', () => {
-      const spy = jest.spyOn(mutationObserverUtils, 'unobserveMutations');
+    it('should call unobserveAttributes()', () => {
+      const spy = jest.spyOn(mutationObserverUtils, 'unobserveAttributes');
       const component = new TextareaWrapper();
       component.disconnectedCallback();
 

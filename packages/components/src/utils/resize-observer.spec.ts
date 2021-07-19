@@ -98,7 +98,7 @@ describe('unobserveResize()', () => {
     resizeMap.clear();
   });
 
-  it('should remove correct element from resizeCallbacks array', () => {
+  it('should remove correct element from resizeMap', () => {
     const node1 = document.createElement('div');
     const node2 = document.createElement('select');
     const node3 = document.createElement('div');
