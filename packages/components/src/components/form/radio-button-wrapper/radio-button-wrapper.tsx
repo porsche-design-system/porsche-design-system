@@ -9,8 +9,8 @@ import {
   hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
-  observeMutations,
-  unobserveMutations,
+  observeAttributes,
+  unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
@@ -41,12 +41,12 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentDidRender(): void {
@@ -63,7 +63,7 @@ export class RadioButtonWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.input);
+    unobserveAttributes(this.input);
   }
 
   public render(): JSX.Element {
@@ -108,8 +108,8 @@ export class RadioButtonWrapper {
     }
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

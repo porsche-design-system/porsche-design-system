@@ -2,15 +2,17 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
+  initConsoleObserver,
   isElementAtIndexFocused,
   reattachElement,
   removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -38,8 +40,8 @@ describe('tabs', () => {
   const getAllTabsItems = () => page.$$('p-tabs-item');
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
-  const getHidden = (element: ElementHandle) => getAttribute(element, 'hidden');
-  const isHidden = async (element: ElementHandle): Promise<boolean> => (await getHidden(element)) === '';
+  const getHiddenAttribute = (element: ElementHandle) => getAttribute(element, 'hidden');
+  const isHidden = async (element: ElementHandle): Promise<boolean> => (await getHiddenAttribute(element)) === '';
 
   it('should render', async () => {
     await initTabs();
@@ -73,7 +75,7 @@ describe('tabs', () => {
 
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
 
-    await firstTabsItem.evaluate((el) => el.setAttribute('label', 'newButtonName'));
+    await setProperty(firstTabsItem, 'label', 'newButtonName');
     await waitForStencilLifecycle(page);
 
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
@@ -83,8 +85,9 @@ describe('tabs', () => {
     await initTabs();
     const host = await getHost();
     const [firstTabsItem, secondTabsItem, thirdTabsItem] = await getAllTabsItems();
+
     const setActiveTabIndex = async (index: number) => {
-      await host.evaluate((el, index: number) => el.setAttribute('active-tab-index', String(index)), index);
+      await setProperty(host, 'activeTabIndex', index);
       await waitForStencilLifecycle(page);
     };
 
@@ -102,6 +105,7 @@ describe('tabs', () => {
     expect(await isHidden(secondTabsItem)).toBe(false);
     expect(await isHidden(thirdTabsItem)).toBe(true);
   });
+
   describe('slotted content changes', () => {
     it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
       await initTabs({ amount: 1, activeTabIndex: 0 });
@@ -110,11 +114,12 @@ describe('tabs', () => {
       await page.evaluate(() => {
         const tabs = document.querySelector('p-tabs');
         const tab = document.createElement('p-tabs-item');
-        tab.setAttribute('label', `Tabs Item Added`);
-        tab.innerText = `Added Tabs Item Content`;
+        (tab as any).label = 'Tabs Item Added';
+        tab.innerText = 'Added Tabs Item Content';
         tabs.append(tab);
       });
       await waitForStencilLifecycle(page);
+
       const [, secondButton] = await getAllTabs();
       const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
@@ -137,6 +142,7 @@ describe('tabs', () => {
         tabs.removeChild(tabs.children[2]);
       });
       await waitForStencilLifecycle(page);
+
       const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
       expect(await isHidden(secondTabsItem)).toBe(false);
@@ -152,6 +158,7 @@ describe('tabs', () => {
         tabs.removeChild(tabs.children[2]);
       });
       await waitForStencilLifecycle(page);
+
       const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
       expect(await isHidden(secondTabsItem)).toBe(true);
@@ -167,6 +174,7 @@ describe('tabs', () => {
         tabs.removeChild(tabs.children[1]);
       });
       await waitForStencilLifecycle(page);
+
       const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
       expect(await isHidden(secondTabsItem)).toBe(true);
@@ -182,6 +190,7 @@ describe('tabs', () => {
         tabs.removeChild(tabs.children[1]);
       });
       await waitForStencilLifecycle(page);
+
       const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
       expect(await isHidden(secondTabsItem)).toBe(false);
@@ -275,7 +284,7 @@ describe('tabs', () => {
 
         Array.from(Array(2)).forEach((_, i) => {
           const child = document.createElement('p-tabs-item');
-          child.setAttribute('label', `Tab ${i + 1}`);
+          (child as any).label = `Tab ${i + 1}`;
           child.innerText = `Content ${i + 1}`;
           el.appendChild(child);
         });
@@ -305,24 +314,31 @@ describe('tabs', () => {
   });
 
   it('should not crash without children', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          console.log(description);
-        }
-      }
-    });
-
-    const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+    initConsoleObserver(page);
 
     await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
-    expect(getErrorsAmount()).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
-    expect(getErrorsAmount()).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+
+  it('should not inherit nested tabs to parent', async () => {
+    await initTabs({ amount: 3 });
+
+    // add tabs into first tab
+    const [firstTabsItem] = await getAllTabsItems();
+    await firstTabsItem.evaluate((el) => {
+      const markup = `<p-tabs>
+  <p-tabs-item label="Nested Tab 1">Nested Tab 1 Content</p-tabs-item>
+  <p-tabs-item label="Nested Tab 2">Nested Tab 2 Content</p-tabs-item>
+</p-tabs>`;
+      el.innerHTML = markup;
+    });
+
+    await waitForStencilLifecycle(page);
+
+    expect((await getAllTabs()).length).toBe(3);
   });
 
   describe('lifecycle', () => {
@@ -342,7 +358,7 @@ describe('tabs', () => {
       await initTabs({ amount: 3 });
       const host = await getHost();
 
-      await setAttribute(host, 'active-tab-index', '2');
+      await setProperty(host, 'activeTabIndex', '2');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
