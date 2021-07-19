@@ -1,4 +1,5 @@
 export * from './a11y';
+export * from './attribute-observer';
 export * from './breakpoint-customizable';
 export * from './button-handling';
 export * from './change-case';
@@ -8,7 +9,6 @@ export * from './focus-handling';
 export * from './get-prefixed-tag-name';
 export * from './jss';
 export * from './line-height';
-export * from './mutation-observer';
 export * from './prefix';
 export * from './property-observer';
 export * from './resize-observer';

@@ -1,6 +1,6 @@
-import { observeMutations, unobserveMutations, mutationMap } from '.';
+import { observeAttributes, unobserveAttributes, mutationMap } from '.';
 
-describe('observeMutations()', () => {
+describe('observeAttributes()', () => {
   beforeEach(() => {
     mutationMap.clear();
   });
@@ -11,24 +11,24 @@ describe('observeMutations()', () => {
     const node = document.createElement('input');
     const callback = () => {};
 
-    observeMutations(node, ['checked'], callback);
+    observeAttributes(node, ['checked'], callback);
     expect(mutationMap.size).toBe(1);
     expect(mutationMap.get(node)).toEqual(callback);
   });
 
   describe('on attribute change', () => {
-    it('should run callback once when observeMutations is reapplied', async () => {
+    it('should run callback once when observeAttributes is reapplied', async () => {
       const input = document.createElement('input');
 
       const cb = jest.fn();
 
-      observeMutations(input, ['disabled'], cb);
+      observeAttributes(input, ['disabled'], cb);
       expect(mutationMap.size).toBe(1);
 
-      unobserveMutations(input);
+      unobserveAttributes(input);
       expect(mutationMap.size).toBe(0);
 
-      observeMutations(input, ['disabled'], cb);
+      observeAttributes(input, ['disabled'], cb);
       expect(mutationMap.size).toBe(1);
 
       input.setAttribute('disabled', '');
@@ -37,14 +37,14 @@ describe('observeMutations()', () => {
       expect(cb).toBeCalledTimes(1);
     });
 
-    it('should run callback once when observeMutations is called multiple times', async () => {
+    it('should run callback once when observeAttributes is called multiple times', async () => {
       const input = document.createElement('input');
 
       const cb = jest.fn();
 
-      observeMutations(input, ['disabled'], cb);
-      observeMutations(input, ['disabled'], cb);
-      observeMutations(input, ['disabled'], cb);
+      observeAttributes(input, ['disabled'], cb);
+      observeAttributes(input, ['disabled'], cb);
+      observeAttributes(input, ['disabled'], cb);
 
       input.setAttribute('disabled', '');
 
@@ -59,8 +59,8 @@ describe('observeMutations()', () => {
       const cb1 = jest.fn();
       const cb2 = jest.fn();
 
-      observeMutations(input1, ['disabled'], cb1);
-      observeMutations(input2, ['disabled'], cb2);
+      observeAttributes(input1, ['disabled'], cb1);
+      observeAttributes(input2, ['disabled'], cb2);
 
       input1.setAttribute('disabled', '');
 
@@ -74,7 +74,7 @@ describe('observeMutations()', () => {
       const cb = jest.fn();
       const name = 'Some name';
 
-      observeMutations(input, ['disabled', 'checked', 'name'], cb);
+      observeAttributes(input, ['disabled', 'checked', 'name'], cb);
 
       input.setAttribute('disabled', '');
       input.setAttribute('checked', '');
@@ -86,12 +86,12 @@ describe('observeMutations()', () => {
   });
 });
 
-describe('unobserveMutations()', () => {
+describe('unobserveAttributes()', () => {
   beforeEach(() => {
     mutationMap.clear();
   });
 
-  it('should remove correct element from mutationCallbacks array', () => {
+  it('should remove correct element from mutationMap', () => {
     const node1 = document.createElement('input');
     const node2 = document.createElement('select');
     const node3 = document.createElement('input');
@@ -99,18 +99,18 @@ describe('unobserveMutations()', () => {
     const callback2 = () => {};
     const callback3 = () => {};
 
-    observeMutations(node1, ['checked'], callback1);
-    observeMutations(node2, ['disabled'], callback2);
-    observeMutations(node3, ['checked'], callback3);
+    observeAttributes(node1, ['checked'], callback1);
+    observeAttributes(node2, ['disabled'], callback2);
+    observeAttributes(node3, ['checked'], callback3);
     expect(mutationMap.size).toBe(3);
 
-    unobserveMutations(node1);
+    unobserveAttributes(node1);
     expect(mutationMap.size).toBe(2);
     expect(mutationMap.get(node1)).toEqual(undefined);
     expect(mutationMap.get(node2)).toEqual(callback2);
     expect(mutationMap.get(node3)).toEqual(callback3);
 
-    unobserveMutations(node3);
+    unobserveAttributes(node3);
     expect(mutationMap.size).toBe(1);
     expect(mutationMap.get(node1)).toEqual(undefined);
     expect(mutationMap.get(node2)).toEqual(callback2);

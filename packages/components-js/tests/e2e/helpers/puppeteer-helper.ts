@@ -1,4 +1,4 @@
-import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
@@ -259,3 +259,20 @@ export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
 
 export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
   page.evaluate((el) => document.activeElement === el, element);
+
+let consoleMessages: ConsoleMessage[] = [];
+
+export const initConsoleObserver = (page: Page): void => {
+  consoleMessages = []; // reset
+
+  page.on('console', (msg) => {
+    consoleMessages.push(msg);
+    if (msg.type() === 'error') {
+      const { description } = msg.args()[0]['_remoteObject'];
+      if (description) {
+        console.log(description);
+      }
+    }
+  });
+};
+export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
