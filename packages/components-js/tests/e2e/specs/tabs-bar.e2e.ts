@@ -4,12 +4,14 @@ import {
   expectedStyleOnFocus,
   getAttribute,
   getBrowser,
+  getConsoleErrorsAmount,
   getElementPositions,
   getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
   initAddEventListener,
+  initConsoleObserver,
   isElementAtIndexFocused,
   reattachElement,
   removeAttribute,
@@ -867,19 +869,8 @@ describe('tabs-bar', () => {
   });
 
   describe('errors', () => {
-    const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
-
     it('should not cause TypeError within scrollActiveTabIntoView', async () => {
-      const consoleMessages: ConsoleMessage[] = [];
-      page.on('console', (msg) => {
-        consoleMessages.push(msg);
-        if (msg.type() === 'error') {
-          const { description } = msg.args()[0]['_remoteObject'];
-          if (description) {
-            console.log(description);
-          }
-        }
-      });
+      initConsoleObserver(page);
 
       await setContentWithDesignSystem(page, ''); // empty page
       await page.evaluate(() => {
@@ -895,29 +886,20 @@ describe('tabs-bar', () => {
       });
 
       await waitForStencilLifecycle(page);
-      expect(getErrorsAmount(consoleMessages)).toBe(0);
+      expect(getConsoleErrorsAmount()).toBe(0);
 
       await page.evaluate(() => console.error('test error'));
-      expect(getErrorsAmount(consoleMessages)).toBe(1);
+      expect(getConsoleErrorsAmount()).toBe(1);
     });
 
     it('should not crash without children', async () => {
-      const consoleMessages: ConsoleMessage[] = [];
-      page.on('console', (msg) => {
-        consoleMessages.push(msg);
-        if (msg.type() === 'error') {
-          const { description } = msg.args()[0]['_remoteObject'];
-          if (description) {
-            console.log(description);
-          }
-        }
-      });
+      initConsoleObserver(page);
 
       await setContentWithDesignSystem(page, `<p-tabs-bar active-tab-index="0"></p-tabs-bar>`);
-      expect(getErrorsAmount(consoleMessages)).toBe(0);
+      expect(getConsoleErrorsAmount()).toBe(0);
 
       await page.evaluate(() => console.error('test error'));
-      expect(getErrorsAmount(consoleMessages)).toBe(1);
+      expect(getConsoleErrorsAmount()).toBe(1);
     });
   });
 
