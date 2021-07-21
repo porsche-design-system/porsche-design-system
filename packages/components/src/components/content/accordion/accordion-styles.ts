@@ -11,7 +11,7 @@ export const getSlottedAccordionCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
       [`${getTagName(host)} [slot="heading"]`]: addImportantToEachRule(getBaseSlottedStyles()),
-      [`${getTagName(host)}[theme="dark"] [slot="heading"]`]: addImportantToEachRule(getBaseSlottedStyles('dark')),
+      /*      [`${getTagName(host)}[theme="dark"] [slot="heading"]`]: addImportantToEachRule(getBaseSlottedStyles('dark')),*/
     })
   );
 };
