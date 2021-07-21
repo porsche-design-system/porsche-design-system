@@ -31,7 +31,7 @@ describe('Headline', () => {
         const page = await vrt.getPage();
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-headline theme="${theme}">Some Headline with <a href="#">link</a></p-headline>`;
+          <p-headline variant="headline-3" theme="${theme}">Some Headline with <a href="#">link</a></p-headline>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
