@@ -1,6 +1,6 @@
 import { getSlottedTextFieldWrapperCss } from './text-field-wrapper-styles';
 
-describe('getSlottedCss()', () => {
+describe('getSlottedTextFieldWrapperCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-accordion');
     expect(getSlottedTextFieldWrapperCss(host)).toMatchSnapshot();
