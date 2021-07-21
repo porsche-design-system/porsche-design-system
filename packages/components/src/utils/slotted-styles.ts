@@ -1,3 +1,7 @@
+import { getTagName } from './dom';
+import { addImportantToEachRule, getBaseSlottedStyles } from './styles';
+import { buildGlobalStyles, getCss } from './jss';
+
 type HTMLElementOrDocument = HTMLElement | Document;
 type ElementMap = Map<HTMLElementOrDocument, boolean>;
 
@@ -45,4 +49,29 @@ export const insertSlottedStyles = (element: HTMLElement, css: string): void => 
       prependTo.appendChild(style);
     }
   }
+};
+
+type SlottedCssOptions = {
+  host: HTMLElement;
+  themed?: boolean;
+};
+
+export const getSlottedCss = (opts: SlottedCssOptions): string => {
+  const { host } = opts;
+  let jssStyle = {
+    [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
+  };
+
+  /*  if (themed) {
+    jssStyle = {
+      ...jssStyle,
+      [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(getBaseSlottedStyles('dark')),
+    };
+  }*/
+  return getCss(buildGlobalStyles(jssStyle));
+};
+
+export const addSlottedCss = (opts: SlottedCssOptions): void => {
+  const { host, themed } = opts;
+  insertSlottedStyles(host, getSlottedCss({ host, themed }));
 };
