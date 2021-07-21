@@ -29,7 +29,7 @@ export class Link {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
