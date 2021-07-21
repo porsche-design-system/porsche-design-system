@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
-  addSlottedBaseCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
@@ -21,6 +20,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
+import { addSlottedCss } from './select-wrapper-styles';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -84,7 +84,7 @@ export class SelectWrapper {
     this.setSelect();
     this.setOptions();
     this.observeSelect();
-    addSlottedBaseCss({ host: this.host, themed: true });
+    addSlottedCss(this.host);
   }
 
   public componentWillLoad(): void {

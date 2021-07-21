@@ -1,8 +1,12 @@
 import {
   addImportantToEachRule,
   attachCss,
+  buildGlobalStyles,
   buildHostStyles,
+  getBaseSlottedStyles,
   getCss,
+  getTagName,
+  insertSlottedStyles,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -104,4 +108,16 @@ export const addComponentCss = (
   isNestedList: boolean
 ): void => {
   attachCss(host, getComponentCss(listType, orderType, isNestedList));
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildGlobalStyles({
+      [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
+    })
+  );
+};
+
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };

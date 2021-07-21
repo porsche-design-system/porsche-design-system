@@ -1,7 +1,6 @@
 import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
@@ -26,12 +25,12 @@ export const addImportantToEachRule = <T extends Record<string, unknown>>(style:
 
 type GetHoverStylesOptions = {
   important?: boolean;
-  theme?: Theme;
+  theme?: boolean;
 };
 
 const defaultHoverStylesOptions: GetHoverStylesOptions = {
   important: false,
-  theme: 'light',
+  theme: false,
 };
 
 export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
@@ -40,7 +39,7 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   const style: JssStyle = {
     transition: `color ${transitionDuration} ${transitionTimingFunction}`,
     '&:hover': {
-      color: options.theme !== 'dark' ? color.state.hover : color.darkTheme.state.hover,
+      color: options.theme ? color.state.hover : color.darkTheme.state.hover,
     },
   };
 
@@ -51,14 +50,14 @@ type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
   important?: boolean;
-  theme?: Theme;
+  theme?: boolean;
 };
 
 const defaultFocusStylesOptions: GetFocusStylesOptions = {
   color: color.state.focus,
   offset: 2,
   important: false,
-  theme: 'light',
+  theme: false,
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
@@ -71,7 +70,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       border: '0',
     },
     '&:focus': {
-      outlineColor: options.theme !== 'dark' ? options.color : color.darkTheme.state.focus,
+      outlineColor: options.theme ? options.color : color.darkTheme.state.focus,
     },
     '&:focus:not(:focus-visible)': {
       outlineColor: 'transparent',
@@ -84,7 +83,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
-export const getBaseSlottedStyles = (theme?: Theme): Styles => {
+export const getBaseSlottedStyles = (theme?: boolean): Styles => {
   return {
     '& a': {
       color: 'inherit',

@@ -1,4 +1,15 @@
-import { addImportantToRule, attachCss, breakpoint, getCss, mediaQuery } from '../../../utils';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  attachCss,
+  breakpoint,
+  buildGlobalStyles,
+  getBaseSlottedStyles,
+  getCss,
+  getTagName,
+  insertSlottedStyles,
+  mediaQuery,
+} from '../../../utils';
 
 const easeOutQuad = 'cubic-bezier(0.5, 1, 0.89, 1)';
 
@@ -37,4 +48,16 @@ export const getComponentCss = (): string => {
 
 export const addComponentCss = (host: HTMLElement): void => {
   attachCss(host, getComponentCss());
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildGlobalStyles({
+      [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
+    })
+  );
+};
+
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };

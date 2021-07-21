@@ -11,9 +11,9 @@ import {
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
-  addSlottedBaseCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { addSlottedCss } from './checkbox-wrapper-styles';
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -38,7 +38,7 @@ export class CheckboxWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedBaseCss({ host: this.host });
+    addSlottedCss(this.host);
     this.observeAttributes();
   }
 
