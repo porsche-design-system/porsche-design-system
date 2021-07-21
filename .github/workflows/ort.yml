@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Setup npm credentials'
-        run: echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}" >> ./.npmrc
-        shell: bash
+#      - name: 'Setup npm credentials'
+#        run: echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}" >> ./.npmrc
+#        shell: bash
       - name: 'ORT Docker Login'
         uses: ./.github/actions/ort-docker-login
         with:
@@ -27,6 +27,6 @@ jobs:
         with:
           name: ort-analysis
           path: ./ort
-      - name: 'Cleanup npm credentials'
-        run: rm ./.npmrc
-        shell: bash
+#      - name: 'Cleanup npm credentials'
+#        run: rm ./.npmrc
+#        shell: bash
