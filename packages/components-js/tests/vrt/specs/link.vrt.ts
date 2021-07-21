@@ -34,11 +34,17 @@ describe('Link', () => {
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>
+          <p-link theme="${theme}">
+            <a href="#">Slotted Primary</a>
+          </p-link>
           <p-link theme="${theme}" variant="secondary" href="#">Secondary</p-link>
           <p-link theme="${theme}">
-            <a href="#">Slotted</a>
+            <a href="#">Slotted Secondary</a>
           </p-link>
-          <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>`;
+          <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
+          <p-link theme="${theme}">
+            <a href="#">Slotted Tertiary</a>
+          </p-link>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
