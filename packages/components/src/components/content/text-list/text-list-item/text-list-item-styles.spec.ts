@@ -1,4 +1,4 @@
-import { getComponentCss } from './text-list-item-styles';
+import { getComponentCss, getSlottedCss } from './text-list-item-styles';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
 describe('getComponentCss()', () => {
@@ -17,4 +17,16 @@ describe('getComponentCss()', () => {
       expect(getComponentCss(listType, orderType, isNestedList)).toMatchSnapshot();
     }
   );
+});
+
+describe('getSlottedCss()', () => {
+  it('should return correct css', () => {
+    const host = document.createElement('p-text-list-item');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+
+  it('should return correct css with prefix', () => {
+    const host = document.createElement('prefixed-p-text-list-item');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
 });
