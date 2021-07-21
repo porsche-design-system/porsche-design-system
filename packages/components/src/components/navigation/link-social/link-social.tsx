@@ -1,14 +1,13 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  getTagName,
   improveFocusHandlingForCustomElement,
-  insertSlottedStyles,
   isDark,
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
+import { addSlottedLinkSocialCss } from './link-social-styles';
 
 @Component({
   tag: 'p-link-social',
@@ -28,7 +27,7 @@ export class LinkSocial {
   @Prop() public href?: string;
 
   /** Adapts the icon color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -40,7 +39,7 @@ export class LinkSocial {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedLinkSocialCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
 
@@ -78,37 +77,5 @@ export class LinkSocial {
         </PrefixedTagNames.pText>
       </TagType>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
-    ${tagName} a::before {
-      content: "" !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      display: block !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 2px !important;
-    }
-
-    ${tagName} a:focus::before {
-      outline-color: #000 !important;
-    }
-
-    ${tagName}[theme="dark"] a:focus::before {
-      outline-color: #fff !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible)::before,
-    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }
