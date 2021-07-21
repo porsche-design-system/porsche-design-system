@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
-  addSlottedCss,
+  addSlottedBaseCss,
   calcLineHeightForElement,
   getHTMLElement,
   isDark,
@@ -43,7 +43,7 @@ export class Text {
   private textTag: HTMLElement;
 
   public connectedCallback(): void {
-    addSlottedCss({ host: this.host, themed: true });
+    addSlottedBaseCss({ host: this.host, themed: true });
   }
 
   public componentDidLoad(): void {

@@ -11,7 +11,7 @@ import {
   unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
-  addSlottedCss,
+  addSlottedBaseCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -38,7 +38,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedCss({ host: this.host });
+    addSlottedBaseCss({ host: this.host });
     this.observeAttributes();
   }
 

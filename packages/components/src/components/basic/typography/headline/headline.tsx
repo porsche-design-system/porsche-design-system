@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { addSlottedCss, getPrefixedTagNames, isDark } from '../../../../utils';
+import { addSlottedBaseCss, getPrefixedTagNames, isDark } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
@@ -31,7 +31,7 @@ export class Headline {
   @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   public connectedCallback(): void {
-    addSlottedCss({ host: this.host, themed: true });
+    addSlottedBaseCss({ host: this.host, themed: true });
   }
 
   public render(): JSX.Element {

@@ -56,7 +56,7 @@ type SlottedCssOptions = {
   themed?: boolean;
 };
 
-export const getSlottedCss = (opts: SlottedCssOptions): string => {
+export const getSlottedBaseCss = (opts: SlottedCssOptions): string => {
   const { host } = opts;
   let jssStyle = {
     [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
@@ -71,7 +71,7 @@ export const getSlottedCss = (opts: SlottedCssOptions): string => {
   return getCss(buildGlobalStyles(jssStyle));
 };
 
-export const addSlottedCss = (opts: SlottedCssOptions): void => {
+export const addSlottedBaseCss = (opts: SlottedCssOptions): void => {
   const { host, themed } = opts;
-  insertSlottedStyles(host, getSlottedCss({ host, themed }));
+  insertSlottedStyles(host, getSlottedBaseCss({ host, themed }));
 };
