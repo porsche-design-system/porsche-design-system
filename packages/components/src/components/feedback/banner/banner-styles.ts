@@ -54,6 +54,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildGlobalStyles({
       [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
+      [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(getBaseSlottedStyles(true)),
     })
   );
 };
