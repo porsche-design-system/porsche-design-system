@@ -10,7 +10,6 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import { getContentHeight, setCollapsibleElementHeight, warnIfCompactAndSizeIsSet } from './accordion-utils';
-import { addSlottedAccordionCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
@@ -48,10 +47,6 @@ export class Accordion {
   @Watch('open')
   public openChangeHandler(): void {
     this.setCollapsibleElementHeight();
-  }
-
-  public connectedCallback(): void {
-    addSlottedAccordionCss(this.host);
   }
 
   public componentWillLoad(): void {
