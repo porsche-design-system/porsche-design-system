@@ -1,5 +1,5 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import { addSlottedCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
+import { addSlottedBaseCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
 import { addComponentCss } from './text-list-item-styles';
 
 @Component({
@@ -11,7 +11,7 @@ export class TextListItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTextList');
-    addSlottedCss({ host: this.host });
+    addSlottedBaseCss({ host: this.host });
   }
 
   public componentWillRender(): void {

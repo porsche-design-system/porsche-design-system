@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
-  addSlottedCss,
+  addSlottedBaseCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
@@ -84,7 +84,7 @@ export class SelectWrapper {
     this.setSelect();
     this.setOptions();
     this.observeSelect();
-    addSlottedCss({ host: this.host, themed: true });
+    addSlottedBaseCss({ host: this.host, themed: true });
   }
 
   public componentWillLoad(): void {
