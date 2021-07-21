@@ -39,7 +39,7 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   const style: JssStyle = {
     transition: `color ${transitionDuration} ${transitionTimingFunction}`,
     '&:hover': {
-      color: options.theme ? color.state.hover : color.darkTheme.state.hover,
+      color: options.theme === true ? color.darkTheme.state.hover : color.state.hover,
     },
   };
 
@@ -70,7 +70,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       border: '0',
     },
     '&:focus': {
-      outlineColor: options.theme ? options.color : color.darkTheme.state.focus,
+      outlineColor: options.theme === true ? color.darkTheme.state.focus : options.color,
     },
     '&:focus:not(:focus-visible)': {
       outlineColor: 'transparent',
