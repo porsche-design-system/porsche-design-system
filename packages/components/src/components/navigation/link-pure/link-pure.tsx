@@ -10,7 +10,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { addSlottedLinkPureCss } from './link-pure-styles';
+import { addSlottedCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -57,7 +57,7 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public connectedCallback(): void {
-    addSlottedLinkPureCss(this.host);
+    addSlottedCss(this.host);
   }
 
   public componentDidLoad(): void {

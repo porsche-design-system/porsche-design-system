@@ -14,7 +14,7 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedTextFieldWrapperCss } from './text-field-wrapper-styles';
+import { addSlottedCss } from './text-field-wrapper-styles';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -45,7 +45,7 @@ export class TextFieldWrapper {
   private isPassword: boolean;
 
   public connectedCallback(): void {
-    addSlottedTextFieldWrapperCss(this.host);
+    addSlottedCss(this.host);
     this.observeAttributes();
   }
 

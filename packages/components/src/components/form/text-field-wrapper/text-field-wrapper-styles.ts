@@ -8,7 +8,7 @@ import {
   Styles,
 } from '../../../utils';
 
-export const getSlottedTextFieldWrapperStyles = (): Styles => {
+export const getSlottedStyles = (): Styles => {
   return {
     ...getBaseSlottedStyles(),
     '& input&::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
@@ -23,13 +23,13 @@ export const getSlottedTextFieldWrapperStyles = (): Styles => {
   };
 };
 
-export const getSlottedTextFieldWrapperCss = (host: HTMLElement): string => {
+export const getSlottedCss = (host: HTMLElement): string => {
   const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedTextFieldWrapperStyles()),
+    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
   };
   return getCss(buildGlobalStyles(jssStyle));
 };
 
-export const addSlottedTextFieldWrapperCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedTextFieldWrapperCss(host));
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };

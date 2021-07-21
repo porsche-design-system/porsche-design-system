@@ -1,7 +1,7 @@
 import type { Styles } from 'jss';
 import { addImportantToEachRule, buildGlobalStyles, getCss, getTagName, insertSlottedStyles } from '../../../utils';
 
-export const getSlottedLinkPureStyles = (): Styles => {
+export const getSlottedStyles = (): Styles => {
   return {
     '& a::before': {
       content: '""',
@@ -25,13 +25,13 @@ export const getSlottedLinkPureStyles = (): Styles => {
   };
 };
 
-export const getSlottedLinkPureCss = (host: HTMLElement): string => {
+export const getSlottedCss = (host: HTMLElement): string => {
   const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedLinkPureStyles()),
+    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
   };
   return getCss(buildGlobalStyles(jssStyle));
 };
 
-export const addSlottedLinkPureCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedLinkPureCss(host));
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };
