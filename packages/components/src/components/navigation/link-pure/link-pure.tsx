@@ -2,16 +2,15 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  getTagName,
   hasNamedSlot,
   improveFocusHandlingForCustomElement,
-  insertSlottedStyles,
   isDark,
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
+import { addSlottedLinkPureCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -43,7 +42,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -58,7 +57,7 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedLinkPureCss(this.host);
   }
 
   public componentDidLoad(): void {
@@ -117,32 +116,5 @@ export class LinkPure {
         )}
       </Host>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
-    ${tagName} a::before {
-      content: "" !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      display: block !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:focus::before {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible)::before {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }
