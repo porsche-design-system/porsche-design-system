@@ -1,13 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  getTagName,
   improveFocusHandlingForCustomElement,
-  insertSlottedStyles,
   isDark,
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
+import { addSlottedLinkCss } from './link-styles';
 
 @Component({
   tag: 'p-link',
@@ -45,7 +44,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedLinkCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
 
@@ -84,44 +83,5 @@ export class Link {
         </PrefixedTagNames.pText>
       </TagType>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
-    ${tagName} a::before {
-      content: "" !important;
-      position: absolute !important;
-      top: -1px !important;
-      left: -1px !important;
-      right: -1px !important;
-      bottom: -1px !important;
-      display: block !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 2px !important;
-    }
-
-    ${tagName} a:focus::before {
-      outline-color: #323639 !important;
-    }
-
-    ${tagName}[theme="dark"] a:focus::before {
-      outline-color: #fff !important;
-    }
-
-    ${tagName}[variant="primary"] a:focus::before,
-    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
-      outline-color: #d5001c !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible)::before,
-    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
-    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
-    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }
