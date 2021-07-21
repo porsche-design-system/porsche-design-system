@@ -10,7 +10,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import { getContentHeight, setCollapsibleElementHeight, warnIfCompactAndSizeIsSet } from './accordion-utils';
-import { addSlottedCss } from './accordion-styles';
+import { addSlottedAccordionCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
@@ -24,7 +24,7 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
@@ -51,7 +51,7 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    addSlottedAccordionCss(this.host);
   }
 
   public componentWillLoad(): void {
