@@ -61,6 +61,7 @@ button {
   cursor: pointer;
   font-weight: $p-font-weight-semibold;
   transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+  overflow: hidden; // fixes rotating icon to increase bounding box of focus outline in firefox
 
   @include p-focus($p-color-state-focus, 0);
 
@@ -103,6 +104,7 @@ button {
 
 .icon {
   transform-origin: 50% 50%;
+  transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-left: $p-spacing-24;
 
@@ -117,8 +119,7 @@ button {
   }
 
   #{$root}--open & {
-    // needs to be rotate, since safari rotates in a different direction on rotate3d
-    transform: rotate(180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
   }
 }
 
