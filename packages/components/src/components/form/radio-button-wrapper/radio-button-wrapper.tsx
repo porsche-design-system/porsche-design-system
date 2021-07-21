@@ -13,7 +13,7 @@ import {
   isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './radio-button-styles';
+import { addSlottedCss } from './radio-button-wrapper-styles';
 
 @Component({
   tag: 'p-radio-button-wrapper',
