@@ -7,7 +7,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { addSlottedLinkSocialCss } from './link-social-styles';
+import { addSlottedCss } from './link-social-styles';
 
 @Component({
   tag: 'p-link-social',
@@ -39,7 +39,7 @@ export class LinkSocial {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    addSlottedLinkSocialCss(this.host);
+    addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
 
