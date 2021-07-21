@@ -58,7 +58,7 @@ type SlottedCssOptions = {
 
 export const getSlottedBaseCss = (opts: SlottedCssOptions): string => {
   const { host } = opts;
-  let jssStyle = {
+  const jssStyle = {
     [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
   };
 
