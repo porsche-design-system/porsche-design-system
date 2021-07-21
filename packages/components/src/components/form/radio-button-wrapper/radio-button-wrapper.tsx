@@ -11,9 +11,9 @@ import {
   unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
-  addSlottedBaseCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { addSlottedCss } from './radio-button-styles';
 
 @Component({
   tag: 'p-radio-button-wrapper',
@@ -38,7 +38,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedBaseCss({ host: this.host });
+    addSlottedCss(this.host);
     this.observeAttributes();
   }
 

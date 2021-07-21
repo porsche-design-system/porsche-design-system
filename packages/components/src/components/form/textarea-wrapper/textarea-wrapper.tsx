@@ -11,9 +11,9 @@ import {
   unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
-  addSlottedBaseCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { addSlottedCss } from './textarea-wrapper-styles';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -41,7 +41,7 @@ export class TextareaWrapper {
   private textarea: HTMLTextAreaElement;
 
   public connectedCallback(): void {
-    addSlottedBaseCss({ host: this.host });
+    addSlottedCss(this.host);
     this.observeAttributes();
   }
 

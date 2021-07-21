@@ -1,6 +1,5 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
-  addSlottedBaseCss,
   calcLineHeightForElement,
   getHTMLElement,
   isDark,
@@ -9,6 +8,7 @@ import {
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { isSizeInherit } from './text-utils';
+import { addSlottedCss } from './text-styles';
 
 @Component({
   tag: 'p-text',
@@ -43,7 +43,7 @@ export class Text {
   private textTag: HTMLElement;
 
   public connectedCallback(): void {
-    addSlottedBaseCss({ host: this.host, themed: true });
+    addSlottedCss(this.host);
   }
 
   public componentDidLoad(): void {
