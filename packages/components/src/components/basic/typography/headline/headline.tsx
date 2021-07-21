@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, getTagName, insertSlottedStyles, isDark } from '../../../../utils';
+import { addSlottedCss, getPrefixedTagNames, isDark } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
@@ -28,10 +28,10 @@ export class Headline {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedCss({ host: this.host, themed: true });
   }
 
   public render(): JSX.Element {
@@ -60,15 +60,5 @@ export class Headline {
         )}
       </TagName>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: none !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }
