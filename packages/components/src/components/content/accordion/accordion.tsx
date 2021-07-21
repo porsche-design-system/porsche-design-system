@@ -23,7 +23,7 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
