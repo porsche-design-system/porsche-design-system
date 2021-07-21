@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
+import { getPrefixedTagNames, hasNamedSlot, isDark, addSlottedCss } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 import { addComponentCss } from './banner-styles';
 
 @Component({
@@ -22,7 +21,7 @@ export class Banner {
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Adapts the banner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -33,7 +32,7 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    this.addSlottedStyles();
+    addSlottedCss({ host: this.host, themed: true });
   }
 
   public componentWillRender(): void {
@@ -117,29 +116,4 @@ export class Banner {
       this.host.remove();
     }, 600); // duration of animation
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

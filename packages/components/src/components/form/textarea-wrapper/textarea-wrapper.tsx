@@ -2,8 +2,6 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
-  getTagName,
-  insertSlottedStyles,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -13,9 +11,9 @@ import {
   unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
+  addSlottedCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -43,7 +41,7 @@ export class TextareaWrapper {
   private textarea: HTMLTextAreaElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedCss({ host: this.host });
     this.observeAttributes();
   }
 
@@ -114,29 +112,4 @@ export class TextareaWrapper {
   private observeAttributes = (): void => {
     observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

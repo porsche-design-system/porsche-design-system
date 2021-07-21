@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
+  addSlottedCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
@@ -9,7 +10,6 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  insertSlottedStyles,
   isDark,
   isRequiredAndParentNotRequired,
   isTouchDevice,
@@ -21,7 +21,6 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -50,7 +49,7 @@ export class SelectWrapper {
   @Prop() public filter?: boolean = false;
 
   /** Adapts the select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
@@ -85,7 +84,7 @@ export class SelectWrapper {
     this.setSelect();
     this.setOptions();
     this.observeSelect();
-    this.addSlottedStyles();
+    addSlottedCss({ host: this.host, themed: true });
   }
 
   public componentWillLoad(): void {
@@ -660,29 +659,4 @@ export class SelectWrapper {
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }
