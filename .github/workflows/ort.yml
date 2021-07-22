@@ -41,9 +41,10 @@ jobs:
           aws-access-key-id: ${{ secrets.OSS_OFFICE_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.OSS_OFFICE_AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      - name: "Login AWS"
+      - name: "Login AWS ECR"
         run: |
-          docker run --rm amazon/aws-cli ecr get-login-password --region eu-central-1
+          aws ecr get-login-password --region eu-central-1 | \
+          docker login --username AWS --password-stdin 215495424956.dkr.ecr.eu-central-1.amazonaws.com
         shell: bash
 #      - name: 'ORT'
 #        uses: ./.github/actions/ort-docker-login
