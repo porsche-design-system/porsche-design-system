@@ -6,7 +6,7 @@ import {
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
-import { addSlottedLinkCss } from './link-styles';
+import { addSlottedCss } from './link-styles';
 
 @Component({
   tag: 'p-link',
@@ -44,7 +44,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    addSlottedLinkCss(this.host);
+    addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
 
