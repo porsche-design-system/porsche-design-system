@@ -415,32 +415,32 @@ jobs:
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --core-dependencies
       - name: 'Build Components Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
-          args: --components-prod
+          entrypoint: run-build-prod
+          args: --components
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
-          args: --components-js-prod
+          entrypoint: run-build-prod
+          args: --components-js
       - name: 'Build Components Angular Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --components-angular
       - name: 'Build Components React Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --components-react
       - name: 'Build Storefront Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --storefront
       - name: 'Store Assets CDN Artifact'
         uses: actions/upload-artifact@v2
