@@ -1,5 +1,6 @@
 import type { Styles } from 'jss';
 import { addImportantToEachRule, buildGlobalStyles, getCss, getTagName, insertSlottedStyles } from '../../../utils';
+import { color } from '@porsche-design-system/utilities';
 
 export const getSlottedStyles = (): Styles => {
   return {
@@ -16,11 +17,11 @@ export const getSlottedStyles = (): Styles => {
     },
 
     '& a:focus::before': {
-      outlineColor: '#000',
+      outlineColor: color.default,
     },
 
     '&[theme="dark"] a:focus::before': {
-      outlineColor: '#fff',
+      outlineColor: color.background.default,
     },
 
     ' & a:focus:not(:focus-visible)::before, &[theme="dark"] a:focus:not(:focus-visible)::before': {
