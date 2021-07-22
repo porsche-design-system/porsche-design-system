@@ -4,8 +4,6 @@ on:
       - master
       - v*
       - issue/*
-      - housekeeping/*
-      - release/*
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -48,9 +46,12 @@ jobs:
           docker pull ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest
       - name: "Run ORT"
         run: |
+          source "./docker/node/shared/ensure-artifactory-credentials.sh"
           docker run -v "$PWD":/project ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-curations-file /curations/curations.yml --package-managers yarn
           docker run -v "$PWD":/project ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v2
         with:
