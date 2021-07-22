@@ -41,14 +41,11 @@ jobs:
           registry: ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSS_OFFICE_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSS_OFFICE_AWS_SECRET_ACCESS_KEY }}
-      - name: "Pull Docker image"
+      - name: "Pull ORT Docker Image"
         run: |
           docker pull ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest
       - name: "Run ORT"
         run: |
-          set -o errexit
-          set -o pipefail
-
           cleanup_npm_credentials() {
             local exit_code=$?
             echo "task: [$(date)] \"cleanup_npm_credentials\""
