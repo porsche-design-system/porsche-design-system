@@ -43,7 +43,7 @@ jobs:
           aws-region: eu-central-1
       - name: "Login AWS"
         run: |
-          docker run --rm -it amazon/aws-cli ecr get-login-password --region eu-central-1
+          docker run --rm amazon/aws-cli ecr get-login-password --region eu-central-1
         shell: bash
 #      - name: 'ORT'
 #        uses: ./.github/actions/ort-docker-login
