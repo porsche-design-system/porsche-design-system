@@ -45,7 +45,7 @@ const config: webpack.Configuration = {
       openAnalyzer: false,
       generateStatsFile: true,
       reportFilename: '../../tests/unit/results/report.html',
-      statsFilename: '../../tests/unit/results/stats.json',
+      statsFilename: '../../tests/unit/results/stats-raw.json',
     }),
   ],
 };
