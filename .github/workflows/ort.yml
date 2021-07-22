@@ -14,40 +14,44 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        id: cache
+#      - name: 'Cache node_modules'
+#        uses: actions/cache@v2
+#        id: cache
+#        with:
+#          path: '**/node_modules'
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+#      - name: 'Docker Login'
+#        uses: ./.github/actions/docker-login
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#      - name: 'Install'
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        uses: ./.github/actions/docker-run
+#        env:
+#          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+#        with:
+#          entrypoint: run-install
+#      - name: 'Build'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-build
+      - name: "Configure AWS Credentials"
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-        with:
-          entrypoint: run-install
-      - name: 'Build'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-#      - name: 'Setup npm credentials'
-#        run: echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}" >> ./.npmrc
-#        shell: bash
-      - name: 'ORT'
-        uses: ./.github/actions/ort-docker-login
-        with:
-          user: ${{ secrets.DOCKER_OSS_OFFICE_USER }}
-          password: ${{ secrets.DOCKER_OSS_OFFICE_PASSWORD }}
-      - name: 'Store ORT Analysis'
-        uses: actions/upload-artifact@v2
-        with:
-          name: ort-analysis
-          path: ./ort
-#      - name: 'Cleanup npm credentials'
-#        run: rm ./.npmrc
-#        shell: bash
+          aws-access-key-id: ${{ secrets.OSS_OFFICE_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.OSS_OFFICE_AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - name: "Login AWS"
+        run: |
+          docker run --rm -it amazon/aws-cli ecr get-login-password --region eu-central-1
+        shell: bash
+#      - name: 'ORT'
+#        uses: ./.github/actions/ort-docker-login
+#        with:
+#          user: ${{ secrets.DOCKER_OSS_OFFICE_USER }}
+#          password: ${{ secrets.DOCKER_OSS_OFFICE_PASSWORD }}
+#      - name: 'Store ORT Analysis'
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: ort-analysis
+#          path: ./ort
