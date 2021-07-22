@@ -43,10 +43,12 @@
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
-  "devDependencies": {
+  "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "4.1.0",
+    "@porsche-design-system/utilities": "4.1.0"
+  },
+  "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/html-minifier": "^4.0.1",
     "@types/jest": "^26.0.24",
