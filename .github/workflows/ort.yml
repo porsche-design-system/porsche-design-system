@@ -14,27 +14,27 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-#      - name: 'Cache node_modules'
-#        uses: actions/cache@v2
-#        id: cache
-#        with:
-#          path: '**/node_modules'
-#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-#      - name: 'Docker Login'
-#        uses: ./.github/actions/docker-login
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#      - name: 'Install'
-#        if: steps.cache.outputs.cache-hit != 'true'
-#        uses: ./.github/actions/docker-run
-#        env:
-#          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-#        with:
-#          entrypoint: run-install
-#      - name: 'Production Builds'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-build-prod
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker Login'
+        uses: ./.github/actions/docker-login
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Production Builds'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
       - name: "Login to AWS ECR"
         uses: docker/login-action@v1
         with:
@@ -46,23 +46,23 @@ jobs:
           docker pull ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest
       - name: "Run ORT"
         run: |
-          cleanup_credentials() {
+          set -o errexit
+          set -o pipefail
+
+          cleanup_npm_credentials() {
             local exit_code=$?
-            echo "task: [$(date)] \"cleanup_credentials\""
+            echo "task: [$(date)] \"cleanup_npm_credentials\""
             rm "./.npmrc"
-            ls -al
             exit $exit_code
           }
 
-          setup_credentials() {
-            echo "task: [$(date)] \"setup_credentials\""
-            echo "//porscheui2.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "./.npmrc"
-            cat "./.npmrc"
-            ls -al
+          setup_npm_credentials() {
+            echo "task: [$(date)] \"setup_npm_credentials\""
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "./.npmrc"
           }
 
-          trap cleanup_credentials EXIT
-          setup_credentials
+          trap cleanup_npm_credentials EXIT
+          setup_npm_credentials
 
           docker run -v "$PWD":/project ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-curations-file /curations/curations.yml --package-managers yarn
           docker run -v "$PWD":/project ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
