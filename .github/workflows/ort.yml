@@ -35,18 +35,19 @@ jobs:
 #        uses: ./.github/actions/docker-run
 #        with:
 #          entrypoint: run-build
-      - name: "Configure AWS Credentials"
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: "Login to ECR"
+        uses: docker/login-action@v1
         with:
-          aws-access-key-id: ${{ secrets.OSS_OFFICE_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.OSS_OFFICE_AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
+          registry: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
+          username: ${{ secrets.OSS_OFFICE_AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.OSS_OFFICE_AWS_SECRET_ACCESS_KEY }}
+      - name: "Pull Docker image"
+        run: |
+          docker pull 215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest
       - name: "Run ORT"
         run: |
-          aws ecr get-login-password --region eu-central-1 | \
-          docker login --username AWS --password-stdin 215495424956.dkr.ecr.eu-central-1.amazonaws.com
-          docker pull 215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest
           docker run -v "$PWD":/project 215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-managers yarn
+          docker run -v "$PWD":/project 215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v2
