@@ -56,7 +56,7 @@ jobs:
 
           setup_credentials() {
             echo "task: [$(date)] \"setup_credentials\""
-            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "./.npmrc"
+            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "./.npmrc"
             cat "./.npmrc"
           }
 
