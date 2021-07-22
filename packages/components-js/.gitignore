@@ -6,6 +6,7 @@
 /tests/cbt/results
 /tests/vrt/results
 /tests/unit/results
+/tests/unit/results/stats-raw.json
 
 *~
 *.sw[mnpcod]
