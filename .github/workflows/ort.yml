@@ -52,7 +52,7 @@ jobs:
           docker run -v "$PWD":/project ${{ env.OSS_OFFICE_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
         env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ***REMOVED***
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v2
         with:
