@@ -1,5 +1,5 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, isDark } from '../../../../utils';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { getPrefixedTagNames, isDark, reflectThemeOnDark } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
@@ -29,7 +29,7 @@ export class Headline {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
@@ -51,15 +51,17 @@ export class Headline {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagName class={rootClasses}>
-        {!isHeadlineVariantType ? (
-          <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
+      <Host {...reflectThemeOnDark(this.theme)}>
+        <TagName class={rootClasses}>
+          {!isHeadlineVariantType ? (
+            <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
+              <slot />
+            </PrefixedTagNames.pText>
+          ) : (
             <slot />
-          </PrefixedTagNames.pText>
-        ) : (
-          <slot />
-        )}
-      </TagName>
+          )}
+        </TagName>
+      </Host>
     );
   }
 }

@@ -29,7 +29,7 @@ export class Link {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -61,27 +61,29 @@ export class Link {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagType
-        class={rootClasses}
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: `${this.target}`,
-          download: this.download,
-          rel: this.rel,
-        })}
-      >
-        <PrefixedTagNames.pIcon
-          class="icon"
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          aria-hidden="true"
-        />
-        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
-          <slot />
-        </PrefixedTagNames.pText>
-      </TagType>
+      <Host {...reflectThemeOnDark(this.theme)}>
+        <TagType
+          class={rootClasses}
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: `${this.target}`,
+            download: this.download,
+            rel: this.rel,
+          })}
+        >
+          <PrefixedTagNames.pIcon
+            class="icon"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            color="inherit"
+            aria-hidden="true"
+          />
+          <PrefixedTagNames.pText tag="span" color="inherit" class="label">
+            <slot />
+          </PrefixedTagNames.pText>
+        </TagType>
+      </Host>
     );
   }
 }

@@ -1,9 +1,10 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
+  reflectThemeOnDark,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
@@ -27,7 +28,7 @@ export class LinkSocial {
   @Prop() public href?: string;
 
   /** Adapts the icon color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -56,26 +57,28 @@ export class LinkSocial {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagType
-        class={rootClasses}
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: this.target,
-          rel: this.rel,
-        })}
-      >
-        <PrefixedTagNames.pIcon
-          class="icon"
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          aria-hidden="true"
-        />
-        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
-          <slot />
-        </PrefixedTagNames.pText>
-      </TagType>
+      <Host {...reflectThemeOnDark(this.theme)}>
+        <TagType
+          class={rootClasses}
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: this.target,
+            rel: this.rel,
+          })}
+        >
+          <PrefixedTagNames.pIcon
+            class="icon"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            color="inherit"
+            aria-hidden="true"
+          />
+          <PrefixedTagNames.pText tag="span" color="inherit" class="label">
+            <slot />
+          </PrefixedTagNames.pText>
+        </TagType>
+      </Host>
     );
   }
 }
