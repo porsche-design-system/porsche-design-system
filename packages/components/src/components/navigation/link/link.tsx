@@ -1,12 +1,13 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
+  reflectThemeOnDark,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
-import { addSlottedCss } from './link-styles';
+import { addComponentCss, addSlottedCss } from './link-styles';
 
 @Component({
   tag: 'p-link',
@@ -44,6 +45,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
+    addComponentCss(this.host, this.theme, this.variant);
     addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
