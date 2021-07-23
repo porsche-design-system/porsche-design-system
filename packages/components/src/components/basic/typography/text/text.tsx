@@ -1,9 +1,10 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
   isDark,
   mapBreakpointPropToClasses,
+  reflectThemeOnDark,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
@@ -38,7 +39,7 @@ export class Text {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   private textTag: HTMLElement;
 
@@ -70,9 +71,11 @@ export class Text {
     };
 
     return (
-      <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
-        <slot />
-      </TagType>
+      <Host {...reflectThemeOnDark(this.theme)}>
+        <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
+          <slot />
+        </TagType>
+      </Host>
     );
   }
 }

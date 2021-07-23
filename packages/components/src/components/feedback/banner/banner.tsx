@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { getPrefixedTagNames, hasNamedSlot, isDark } from '../../../utils';
+import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
+import { getPrefixedTagNames, hasNamedSlot, isDark, reflectThemeOnDark } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 import { addComponentCss, addSlottedCss } from './banner-styles';
 
@@ -21,7 +21,7 @@ export class Banner {
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Adapts the banner color depending on the theme. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -63,43 +63,45 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pContentWrapper
-        width={this.width}
-        role="alertdialog"
-        aria-labelledby={bannerLabelId}
-        aria-describedby={bannerDescriptionId}
-      >
-        <div class={rootClasses}>
-          {this.state !== 'neutral' && (
-            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
-          )}
-          <div class="content">
-            {hasNamedSlot(this.host, 'title') && (
-              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
-                <slot name="title" />
-              </PrefixedTagNames.pHeadline>
+      <Host {...reflectThemeOnDark(this.theme)}>
+        <PrefixedTagNames.pContentWrapper
+          width={this.width}
+          role="alertdialog"
+          aria-labelledby={bannerLabelId}
+          aria-describedby={bannerDescriptionId}
+        >
+          <div class={rootClasses}>
+            {this.state !== 'neutral' && (
+              <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
             )}
-            {hasNamedSlot(this.host, 'description') && (
-              <PrefixedTagNames.pText id={bannerDescriptionId}>
-                <slot name="description" />
-              </PrefixedTagNames.pText>
-            )}
-            {!this.persistent && (
-              <div class="close">
-                <PrefixedTagNames.pButtonPure
-                  type="button"
-                  icon="close"
-                  hideLabel={true}
-                  onClick={this.removeBanner}
-                  ref={(el) => (this.closeButton = el)}
-                >
-                  Close notification
-                </PrefixedTagNames.pButtonPure>
-              </div>
-            )}
+            <div class="content">
+              {hasNamedSlot(this.host, 'title') && (
+                <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
+                  <slot name="title" />
+                </PrefixedTagNames.pHeadline>
+              )}
+              {hasNamedSlot(this.host, 'description') && (
+                <PrefixedTagNames.pText id={bannerDescriptionId}>
+                  <slot name="description" />
+                </PrefixedTagNames.pText>
+              )}
+              {!this.persistent && (
+                <div class="close">
+                  <PrefixedTagNames.pButtonPure
+                    type="button"
+                    icon="close"
+                    hideLabel={true}
+                    onClick={this.removeBanner}
+                    ref={(el) => (this.closeButton = el)}
+                  >
+                    Close notification
+                  </PrefixedTagNames.pButtonPure>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </PrefixedTagNames.pContentWrapper>
+        </PrefixedTagNames.pContentWrapper>
+      </Host>
     );
   }
 

@@ -15,6 +15,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   observeProperties,
   prefix,
+  reflectThemeOnDark,
   setAriaAttributes,
   setAttribute,
 } from '../../../utils';
@@ -49,7 +50,7 @@ export class SelectWrapper {
   @Prop() public filter?: boolean = false;
 
   /** Adapts the select color depending on the theme. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
@@ -181,7 +182,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
+      <Host {...reflectThemeOnDark(this.theme)}>
         <div class={selectClasses}>
           <label id="p-label">
             {hasLabel(this.host, this.label) && (
