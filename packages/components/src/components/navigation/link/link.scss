@@ -41,112 +41,8 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-:host {
-  display: inline-flex;
-  vertical-align: top;
-  cursor: pointer;
-}
-
-::slotted(a) {
-  display: block !important;
-  position: static !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  line-height: inherit !important;
-  outline: transparent none !important;
-}
-
 .root {
   $bem-block: &;
-  display: flex;
-  width: 100%;
-  min-width: p-px-to-rem(48px);
-  min-height: p-px-to-rem(48px);
-  position: relative;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  appearance: none;
-  text-decoration: none;
-  color: $p-color-theme-dark-default;
-  background-color: $p-color-neutral-contrast-high;
-  border: 1px solid $p-color-neutral-contrast-high;
-  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier,
-    border-color $p-animation-hover-duration-var $p-animation-hover-bezier,
-    color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  @include p-focus($p-color-neutral-contrast-high);
-
-  &--theme-dark {
-    color: $p-color-default;
-    background-color: $p-color-theme-dark-default;
-    border-color: $p-color-theme-dark-default;
-    @include p-focus($p-color-theme-dark-default);
-  }
-
-  &:hover,
-  &:active {
-    color: $p-color-theme-dark-default;
-    background-color: darken($p-color-neutral-contrast-high, 12%);
-    border-color: darken($p-color-neutral-contrast-high, 12%);
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-default;
-      background-color: darken($p-color-theme-dark-default, 12%);
-      border-color: darken($p-color-theme-dark-default, 12%);
-    }
-  }
-
-  &--primary {
-    color: $p-color-theme-dark-default;
-    background-color: $p-color-brand;
-    border-color: $p-color-brand;
-    @include p-focus($p-color-brand);
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-dark-brand;
-      border-color: $p-color-theme-dark-brand;
-      @include p-focus($p-color-theme-dark-brand);
-    }
-
-    &:hover,
-    &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-state-hover, 12%);
-      border-color: darken($p-color-state-hover, 12%);
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-dark-state-hover, 12%);
-        border-color: darken($p-color-theme-dark-state-hover, 12%);
-      }
-    }
-  }
-
-  &--tertiary {
-    color: $p-color-default;
-    background-color: transparent;
-    border-color: $p-color-neutral-contrast-high;
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-dark-default;
-      background-color: transparent;
-      border-color: $p-color-theme-dark-default;
-    }
-
-    &:hover,
-    &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-neutral-contrast-high, 12%);
-      border-color: darken($p-color-neutral-contrast-high, 12%);
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-default;
-        background-color: $p-color-theme-dark-default;
-        border-color: $p-color-theme-dark-default;
-      }
-    }
-  }
 
   &--with-label {
     @include with-label;
@@ -301,15 +197,4 @@
       }
     }
   }
-}
-
-.label {
-  display: block;
-  box-sizing: border-box;
-}
-
-.icon {
-  position: absolute;
-  width: p-px-to-rem(24px);
-  height: p-px-to-rem(24px);
 }
