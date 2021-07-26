@@ -1,14 +1,14 @@
 import {
-  addImportantToEachRule,
   addImportantToRule,
   attachCss,
   breakpoint,
-  buildGlobalStyles,
+  buildSlottedStyles,
+  buildSlottedStylesForDarkTheme,
   getBaseSlottedStyles,
   getCss,
-  getTagName,
   insertSlottedStyles,
   mediaQuery,
+  mergeDeep,
 } from '../../../utils';
 
 const easeOutQuad = 'cubic-bezier(0.5, 1, 0.89, 1)';
@@ -52,10 +52,10 @@ export const addComponentCss = (host: HTMLElement): void => {
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
-    buildGlobalStyles({
-      [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
-      [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(getBaseSlottedStyles(true)),
-    })
+    mergeDeep(
+      buildSlottedStyles(host, getBaseSlottedStyles()),
+      buildSlottedStylesForDarkTheme(host, getBaseSlottedStyles(true))
+    )
   );
 };
 

@@ -2,7 +2,6 @@ import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   attachCss,
-  buildGlobalStyles,
   buildHostStyles,
   getCss,
   getFocusStyles,
@@ -11,6 +10,7 @@ import {
   isDark,
   pxToRemWithUnit,
   mergeDeep,
+  buildSlottedStyles,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import { P_ANIMATION_HOVER_BEZIER, P_ANIMATION_HOVER_DURATION } from '../../../styles';
@@ -197,10 +197,7 @@ export const getSlottedStyles = (): Styles => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
-  };
-  return getCss(buildGlobalStyles(jssStyle));
+  return getCss(buildSlottedStyles(host, getSlottedStyles()));
 };
 
 export const addComponentCss = (host: HTMLElement, theme: Theme, variant: LinkVariant): void => {

@@ -1,18 +1,18 @@
 import {
-  addImportantToEachRule,
-  buildGlobalStyles,
+  buildSlottedStyles,
+  buildSlottedStylesForDarkTheme,
   getBaseSlottedStyles,
   getCss,
-  getTagName,
   insertSlottedStyles,
+  mergeDeep,
 } from '../../../../utils';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
-    buildGlobalStyles({
-      [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
-      [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(getBaseSlottedStyles(true)),
-    })
+    mergeDeep(
+      buildSlottedStyles(host, getBaseSlottedStyles()),
+      buildSlottedStylesForDarkTheme(host, getBaseSlottedStyles(true))
+    )
   );
 };
 

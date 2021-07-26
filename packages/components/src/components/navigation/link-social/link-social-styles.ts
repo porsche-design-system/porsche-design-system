@@ -1,5 +1,9 @@
 import type { Styles } from 'jss';
-import { addImportantToEachRule, buildGlobalStyles, getCss, getTagName, insertSlottedStyles } from '../../../utils';
+import {
+  buildSlottedStyles,
+  getCss,
+  insertSlottedStyles,
+} from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getSlottedStyles = (): Styles => {
@@ -15,26 +19,20 @@ export const getSlottedStyles = (): Styles => {
       outline: 'transparent solid 1px',
       outlineOffset: '2px',
     },
-
     '& a:focus::before': {
       outlineColor: color.default,
     },
-
     '&[theme="dark"] a:focus::before': {
       outlineColor: color.background.default,
     },
-
-    ' & a:focus:not(:focus-visible)::before, &[theme="dark"] a:focus:not(:focus-visible)::before': {
+    '& a:focus:not(:focus-visible)::before, &[theme="dark"] a:focus:not(:focus-visible)::before': {
       outlineColor: 'transparent',
     },
   };
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
-  };
-  return getCss(buildGlobalStyles(jssStyle));
+  return getCss(buildSlottedStyles(host, getSlottedStyles());
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

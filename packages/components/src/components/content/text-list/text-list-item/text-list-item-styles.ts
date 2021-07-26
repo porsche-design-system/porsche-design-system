@@ -1,11 +1,10 @@
 import {
   addImportantToEachRule,
   attachCss,
-  buildGlobalStyles,
   buildHostStyles,
+  buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getTagName,
   insertSlottedStyles,
   mergeDeep,
   pxToRemWithUnit,
@@ -111,11 +110,7 @@ export const addComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildGlobalStyles({
-      [`${getTagName(host)}`]: addImportantToEachRule(getBaseSlottedStyles()),
-    })
-  );
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

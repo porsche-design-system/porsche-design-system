@@ -1,12 +1,4 @@
-import {
-  addImportantToEachRule,
-  buildGlobalStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getTagName,
-  insertSlottedStyles,
-  Styles,
-} from '../../../utils';
+import { buildSlottedStyles, getBaseSlottedStyles, getCss, insertSlottedStyles, Styles } from '../../../utils';
 
 export const getSlottedStyles = (): Styles => {
   return {
@@ -24,10 +16,7 @@ export const getSlottedStyles = (): Styles => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
-  };
-  return getCss(buildGlobalStyles(jssStyle));
+  return getCss(buildSlottedStyles(host, getSlottedStyles()));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
