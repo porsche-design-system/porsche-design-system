@@ -73,10 +73,6 @@ describe('getHoverStyles()', () => {
   it('should return correct default JssStyle', () => {
     expect(getHoverStyles()).toMatchSnapshot();
   });
-
-  it('should return correct JssStyle with important', () => {
-    expect(getHoverStyles({ important: true })).toMatchSnapshot();
-  });
 });
 
 describe('getFocusStyles()', () => {
@@ -90,9 +86,5 @@ describe('getFocusStyles()', () => {
 
   it('should return correct JssStyle for custom offset', () => {
     expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
-  });
-
-  it('should return correct JssStyle with important', () => {
-    expect(getFocusStyles({ important: true })).toMatchSnapshot();
   });
 });
