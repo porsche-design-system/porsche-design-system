@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { addImportantToEachRule, buildGlobalStyles, getCss, getTagName, insertSlottedStyles } from '../../../utils';
+import { buildSlottedStyles, getCss, insertSlottedStyles } from '../../../utils';
 
 export const getSlottedStyles = (): Styles => {
   return {
@@ -14,11 +14,9 @@ export const getSlottedStyles = (): Styles => {
       outline: 'transparent solid 1px',
       outlineOffset: '1px',
     },
-
     '& a:focus::before': {
       outlineColor: 'currentColor',
     },
-
     '& a:focus:not(:focus-visible)::before': {
       outlineColor: 'transparent',
     },
@@ -26,10 +24,7 @@ export const getSlottedStyles = (): Styles => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const jssStyle = {
-    [`${getTagName(host)}`]: addImportantToEachRule(getSlottedStyles()),
-  };
-  return getCss(buildGlobalStyles(jssStyle));
+  return getCss(buildSlottedStyles(host, getSlottedStyles()));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

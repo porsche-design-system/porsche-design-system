@@ -7,8 +7,8 @@ import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
-import { getShadowRootHTMLElement } from './dom';
-import { mediaQuery } from './styles';
+import { getShadowRootHTMLElement, getTagName } from './dom';
+import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
 
 export type { Styles, JssStyle } from 'jss';
@@ -76,6 +76,14 @@ export const attachCss = (host: HTMLElement, css: string): void => {
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 export const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
+export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
+  buildGlobalStyles({
+    [getTagName(host)]: addImportantToEachRule(jssStyle),
+  });
+export const buildSlottedStylesForDarkTheme = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
+  buildGlobalStyles({
+    [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(jssStyle),
+  });
 
 export type GetStylesFunction = (value?: any) => JssStyle;
 export const buildResponsiveJss = <T>(
