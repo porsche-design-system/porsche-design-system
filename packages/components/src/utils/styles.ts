@@ -24,12 +24,10 @@ export const addImportantToEachRule = <T extends Record<string, unknown>>(style:
 };
 
 type GetHoverStylesOptions = {
-  important?: boolean;
   theme?: boolean;
 };
 
 const defaultHoverStylesOptions: GetHoverStylesOptions = {
-  important: false,
   theme: false,
 };
 
@@ -43,20 +41,18 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
     },
   };
 
-  return options.important ? addImportantToEachRule(style) : style;
+  return style;
 };
 
 type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
-  important?: boolean;
   theme?: boolean;
 };
 
 const defaultFocusStylesOptions: GetFocusStylesOptions = {
   color: color.state.focus,
   offset: 2,
-  important: false,
   theme: false,
 };
 
@@ -77,7 +73,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
     },
   };
 
-  return options.important ? addImportantToEachRule(style) : style;
+  return style;
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
