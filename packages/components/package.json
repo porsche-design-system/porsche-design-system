@@ -60,7 +60,6 @@
     "jss": "^10.7.1",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.7.1",
-    "rollup-plugin-modify": "^3.0.0",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
