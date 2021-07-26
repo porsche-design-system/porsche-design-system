@@ -75,22 +75,6 @@ Object {
 }
 `;
 
-exports[`getFocusStyles() should return correct JssStyle with important 1`] = `
-Object {
-  "&::-moz-focus-inner": Object {
-    "border": "0 !important",
-  },
-  "&:focus": Object {
-    "outlineColor": "currentColor !important",
-  },
-  "&:focus:not(:focus-visible)": Object {
-    "outlineColor": "transparent !important",
-  },
-  "outline": "transparent solid 1px !important",
-  "outlineOffset": "2px !important",
-}
-`;
-
 exports[`getFocusStyles() should return correct default JssStyle 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
@@ -104,15 +88,6 @@ Object {
   },
   "outline": "transparent solid 1px",
   "outlineOffset": "2px",
-}
-`;
-
-exports[`getHoverStyles() should return correct JssStyle with important 1`] = `
-Object {
-  "&:hover": Object {
-    "color": "#d5001c !important",
-  },
-  "transition": "color var(--p-transition-duration, .24s) ease !important",
 }
 `;
 
