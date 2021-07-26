@@ -54,9 +54,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
   const getBody = () => selectNode(page, 'body');
 
-  const getOverflowOnCollapsible = async () => await getElementStyle(await getCollapsible(), 'overflow');
-
-  const getVisibilityOnCollapsible = async () => await getElementStyle(await getCollapsible(), 'visibility');
+  const getOverflowOnCollapsible = async () => getElementStyle(await getCollapsible(), 'overflow');
+  const getVisibilityOnCollapsible = async () => getElementStyle(await getCollapsible(), 'visibility');
 
   it('should set "visibility: visible" on collapsible on initial open', async () => {
     await initAccordion({ isOpen: true });
@@ -117,7 +116,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getVisibilityOnCollapsible()).toBe('hidden');
   });
 
-  it('should have correct overflow when changed from closed to open to closed', async () => {
+  it('should have correct overflow when changed from closed to opened to closed', async () => {
     await initAccordion({ otherMarkup: clickHandlerScript });
     const button = await getButton();
 
