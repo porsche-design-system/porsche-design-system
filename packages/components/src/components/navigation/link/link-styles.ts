@@ -5,15 +5,15 @@ import {
   buildHostStyles,
   getCss,
   getFocusStyles,
-  getTagName,
   insertSlottedStyles,
   isDark,
   pxToRemWithUnit,
   mergeDeep,
   buildSlottedStyles,
+  transitionDuration,
+  transitionTimingFunction,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import { P_ANIMATION_HOVER_BEZIER, P_ANIMATION_HOVER_DURATION } from '../../../styles';
 import type { LinkVariant, Theme } from '../../../types';
 
 const P_LINK_SECONDARY_HOVER_COLOR = '#151718';
@@ -139,9 +139,9 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
         variant === 'tertiary' && getTertiaryColorStyles(theme)
       ),
       border: '1px solid ',
-      transition: `background-color ${P_ANIMATION_HOVER_DURATION} ${P_ANIMATION_HOVER_BEZIER},
-        border-color ${P_ANIMATION_HOVER_DURATION} ${P_ANIMATION_HOVER_BEZIER},
-        color ${P_ANIMATION_HOVER_DURATION} ${P_ANIMATION_HOVER_BEZIER}`,
+      transition: `background-color ${transitionDuration} ${transitionTimingFunction},
+        border-color ${transitionDuration} ${transitionTimingFunction},
+        color ${transitionDuration} ${transitionTimingFunction}`,
       ...getFocusStyles(),
       ...mergeDeep(
         getDefaultHoverColorStyles(theme),
@@ -176,19 +176,15 @@ export const getSlottedStyles = (): Styles => {
       outline: 'transparent solid 1px',
       outlineOffset: '2px',
     },
-
     '& a:focus::before': {
       outlineColor: color.neutralContrast.high,
     },
-
     '&[theme="dark"] a:focus::before': {
       outlineColor: color.background.default,
     },
-
     '&[variant="primary"] a:focus::before, &[theme="dark"][variant="primary"] a:focus::before': {
       outlineColor: color.state.hover,
     },
-
     '& a:focus:not(:focus-visible)::before, &[theme="dark"] a:focus:not(:focus-visible)::before, &[variant="primary"] a:focus:not(:focus-visible)::before, &[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before':
       {
         outlineColor: 'transparent',
