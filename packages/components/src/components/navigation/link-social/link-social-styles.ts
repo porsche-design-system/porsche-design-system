@@ -1,9 +1,5 @@
 import type { Styles } from 'jss';
-import {
-  buildSlottedStyles,
-  getCss,
-  insertSlottedStyles,
-} from '../../../utils';
+import { buildSlottedStyles, getCss, insertSlottedStyles } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getSlottedStyles = (): Styles => {
@@ -32,7 +28,7 @@ export const getSlottedStyles = (): Styles => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getSlottedStyles());
+  return getCss(buildSlottedStyles(host, getSlottedStyles()));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
