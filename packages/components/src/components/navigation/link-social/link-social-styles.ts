@@ -1,21 +1,24 @@
-import type { Styles } from '../../../utils';
-import { buildSlottedStyles, getCss, getFocusPseudoStyles, insertSlottedStyles } from '../../../utils';
+import {
+  buildSlottedStyles,
+  buildSlottedStylesForDarkTheme,
+  getCss,
+  getFocusPseudoStyles,
+  insertSlottedStyles,
+  mergeDeep,
+} from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
-export const getSlottedStyles = (): Styles => {
-  return {
-    ...getFocusPseudoStyles({ color: color.default }),
-    '&[theme="dark"] a:focus::before': {
-      outlineColor: color.background.default,
-    },
-    '&[theme="dark"] a:focus:not(:focus-visible)::before': {
-      outlineColor: 'transparent',
-    },
-  };
-};
-
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getSlottedStyles()));
+  return getCss(
+    mergeDeep(
+      buildSlottedStyles(host, getFocusPseudoStyles({ color: color.default })),
+      buildSlottedStylesForDarkTheme(host, {
+        '& a:focus::before': {
+          outlineColor: color.background.default,
+        },
+      })
+    )
+  );
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

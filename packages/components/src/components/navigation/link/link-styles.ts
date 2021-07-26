@@ -13,6 +13,7 @@ import {
   transitionDuration,
   transitionTimingFunction,
   getFocusPseudoStyles,
+  buildSlottedStylesForDarkTheme,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { LinkVariant, Theme } from '../../../types';
@@ -129,8 +130,8 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
       minWidth: pxToRemWithUnit(48),
       minHeight: pxToRemWithUnit(48),
       position: 'relative',
-      margin: '0',
-      padding: '0',
+      margin: 0,
+      padding: 0,
       boxSizing: 'border-box',
       appearance: 'none',
       textDecoration: 'none',
@@ -139,7 +140,7 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
         variant === 'primary' && getPrimaryColorStyles(theme),
         variant === 'tertiary' && getTertiaryColorStyles(theme)
       ),
-      border: '1px solid ',
+      border: '1px solid',
       transition: `background-color ${transitionDuration} ${transitionTimingFunction},
         border-color ${transitionDuration} ${transitionTimingFunction},
         color ${transitionDuration} ${transitionTimingFunction}`,
@@ -151,37 +152,43 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
       ),
     },
     label: {
+      ...iconLabelColorStyle,
       display: 'block',
       boxSizing: 'border-box',
-      ...iconLabelColorStyle,
     },
     icon: {
+      ...iconLabelColorStyle,
       position: 'absolute',
       width: pxToRemWithUnit(24),
       height: pxToRemWithUnit(24),
-      ...iconLabelColorStyle,
     },
   });
 };
 
-export const getSlottedStyles = (): Styles => {
-  return {
-    ...getFocusPseudoStyles({ offset: 3, color: color.neutralContrast.high }),
-    '&[theme="dark"] a:focus::before': {
-      outlineColor: color.background.default,
-    },
-    '&[variant="primary"] a:focus::before, &[theme="dark"][variant="primary"] a:focus::before': {
-      outlineColor: color.state.hover,
-    },
-    '&[theme="dark"] a:focus:not(:focus-visible)::before, &[variant="primary"] a:focus:not(:focus-visible)::before, &[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before':
-      {
-        outlineColor: 'transparent',
-      },
-  };
-};
+// export const getSlottedStyles = (): Styles => {
+//   return {
+//     '&[variant="primary"]': {
+//       '&a:focus::before, &[theme="dark"] a:focus::before': {
+//         outlineColor: color.state.hover,
+//       },
+//       'a:focus:not(:focus-visible)::before, &[theme="dark"] a:focus:not(:focus-visible)::before': {
+//         outlineColor: 'transparent',
+//       },
+//     },
+//   };
+// };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getSlottedStyles()));
+  return getCss(
+    mergeDeep(
+      buildSlottedStyles(host, getFocusPseudoStyles({ offset: 3, color: color.neutralContrast.high })),
+      buildSlottedStylesForDarkTheme(host, {
+        '& a:focus::before': {
+          outlineColor: color.background.default,
+        },
+      })
+    )
+  );
 };
 
 export const addComponentCss = (host: HTMLElement, theme: Theme, variant: LinkVariant): void => {
