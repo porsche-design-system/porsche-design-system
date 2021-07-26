@@ -4,7 +4,7 @@ import {
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
-  reflectThemeOnDark,
+  getThemeDarkAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
@@ -57,7 +57,7 @@ export class LinkSocial {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...reflectThemeOnDark(this.theme)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
         <TagType
           class={rootClasses}
           {...(TagType === 'a' && {

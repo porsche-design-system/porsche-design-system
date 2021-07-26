@@ -4,7 +4,7 @@ import {
   getHTMLElement,
   isDark,
   mapBreakpointPropToClasses,
-  reflectThemeOnDark,
+  getThemeDarkAttribute,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
@@ -71,7 +71,7 @@ export class Text {
     };
 
     return (
-      <Host {...reflectThemeOnDark(this.theme)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
         <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
           <slot />
         </TagType>
