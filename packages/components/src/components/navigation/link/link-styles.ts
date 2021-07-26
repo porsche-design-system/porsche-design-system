@@ -18,97 +18,64 @@ import {
 import { color } from '@porsche-design-system/utilities';
 import type { LinkVariant, Theme } from '../../../types';
 
-const P_LINK_SECONDARY_HOVER_COLOR = '#151718';
-const P_LINK_SECONDARY_THEME_DARK_HOVER_COLOR = '#e0e0e0';
+const { darkTheme } = color;
 
-const P_LINK_PRIMARY_HOVER_COLOR = '#980014';
-const P_LINK_PRIMARY_THEME_DARK_HOVER_COLOR = '#c4001a';
+const getIconColor = (variant: LinkVariant, isDarkTheme: boolean): string => {
+  switch (variant) {
+    case 'primary':
+      return darkTheme.default;
+    case 'tertiary':
+      return isDarkTheme ? darkTheme.default : color.default;
+    default:
+      return isDarkTheme ? color.default : darkTheme.default;
+  }
+};
 
-const getDefaultColorStyles = (theme: Theme): Styles => {
-  const defaultColor = isDark(theme) ? color.darkTheme.default : color.neutralContrast.high;
+const getMainColors = (variant: LinkVariant, isDarkTheme: boolean): { defaultColor: string; hoverColor: string } => {
+  switch (variant) {
+    case 'primary':
+      return {
+        defaultColor: isDarkTheme ? darkTheme.brand : color.brand,
+        hoverColor: isDarkTheme ? '#c4001a' : '#980014',
+      };
+    case 'tertiary':
+      return {
+        defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+        hoverColor: isDarkTheme ? darkTheme.default : '#151718',
+      };
+    default:
+      return {
+        defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+        hoverColor: isDarkTheme ? '#e0e0e0' : '#151718',
+      };
+  }
+};
+
+const getMainColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
+  const { defaultColor, hoverColor } = getMainColors(variant, isDarkTheme);
+  const isTertiary = variant === 'tertiary';
 
   return {
     color: defaultColor,
     backgroundColor: defaultColor,
+    ...(isTertiary && {
+      backgroundColor: 'transparent',
+    }),
     borderColor: defaultColor,
-  };
-};
-
-const getDefaultHoverColorStyles = (theme: Theme): Styles => {
-  const defaultHoverColor = isDark(theme) ? P_LINK_SECONDARY_THEME_DARK_HOVER_COLOR : P_LINK_SECONDARY_HOVER_COLOR;
-
-  return {
     '&:hover, &:active': {
-      color: defaultHoverColor,
-      backgroundColor: defaultHoverColor,
-      borderColor: defaultHoverColor,
+      color: hoverColor,
+      backgroundColor: hoverColor,
+      borderColor: hoverColor,
+      ...(isTertiary && {
+        color: isDarkTheme ? color.default : darkTheme.default,
+      }),
     },
   };
 };
 
-const getPrimaryColorStyles = (theme: Theme): Styles => {
-  const primaryColor = isDark(theme) ? color.darkTheme.brand : color.brand;
-
-  return {
-    color: primaryColor,
-    backgroundColor: primaryColor,
-    borderColor: primaryColor,
-  };
-};
-
-const getPrimaryHoverColorStyles = (theme: Theme): Styles => {
-  const primaryHoverColor = isDark(theme) ? P_LINK_PRIMARY_THEME_DARK_HOVER_COLOR : P_LINK_PRIMARY_HOVER_COLOR;
-
-  return {
-    '&:hover, &:active': {
-      color: primaryHoverColor,
-      backgroundColor: primaryHoverColor,
-      borderColor: primaryHoverColor,
-    },
-  };
-};
-
-const getTertiaryColorStyles = (theme: Theme): Styles => {
-  const tertiaryColor = isDark(theme) ? color.darkTheme.default : color.neutralContrast.high;
-
-  return {
-    color: tertiaryColor,
-    backgroundColor: 'transparent',
-    borderColor: tertiaryColor,
-  };
-};
-
-const getTertiaryHoverColorStyles = (theme: Theme): Styles => {
-  const tertiaryHoverColor = isDark(theme) ? color.darkTheme.default : P_LINK_SECONDARY_HOVER_COLOR;
-
-  return {
-    '&:hover, &:active': {
-      color: tertiaryHoverColor,
-      backgroundColor: tertiaryHoverColor,
-      borderColor: tertiaryHoverColor,
-      '& $label, & $icon': {
-        color: theme === 'light' ? color.darkTheme.default : color.default,
-      },
-    },
-  };
-};
-
-const getDefaultIconLabelColor = (theme: Theme): Styles => {
-  return { color: isDark(theme) ? color.default : color.darkTheme.default };
-};
-const getPrimaryIconLabelColor = (): Styles => {
-  return { color: color.darkTheme.default };
-};
-const getTertiaryIconLabelColor = (theme: Theme): Styles => {
-  return { color: isDark(theme) ? color.darkTheme.default : color.default };
-};
-
-export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
-  const iconLabelColorStyle = mergeDeep(
-    getDefaultIconLabelColor(theme),
-    variant === 'primary' && getPrimaryIconLabelColor(),
-    variant === 'tertiary' && getTertiaryIconLabelColor(theme)
-  );
+export const getComponentCss = (variant: LinkVariant, theme: Theme): string => {
+  const isDarkTheme = isDark(theme);
+  const iconColor = getIconColor(variant, isDarkTheme);
 
   return getCss({
     ...buildHostStyles({
@@ -122,7 +89,7 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
       textDecoration: 'none',
       color: 'inherit',
       lineHeight: 'inherit',
-      outline: ' transparent none',
+      outline: 'transparent none',
     }),
     root: {
       display: 'flex',
@@ -135,32 +102,23 @@ export const getComponentCss = (theme: Theme, variant: LinkVariant): string => {
       boxSizing: 'border-box',
       appearance: 'none',
       textDecoration: 'none',
-      ...mergeDeep(
-        getDefaultColorStyles(theme),
-        variant === 'primary' && getPrimaryColorStyles(theme),
-        variant === 'tertiary' && getTertiaryColorStyles(theme)
-      ),
       border: '1px solid',
+      ...getMainColorStyles(variant, isDarkTheme),
       transition: `background-color ${transitionDuration} ${transitionTimingFunction},
         border-color ${transitionDuration} ${transitionTimingFunction},
         color ${transitionDuration} ${transitionTimingFunction}`,
       ...getFocusStyles(),
-      ...mergeDeep(
-        getDefaultHoverColorStyles(theme),
-        variant === 'primary' && getPrimaryHoverColorStyles(theme),
-        variant === 'tertiary' && getTertiaryHoverColorStyles(theme)
-      ),
     },
     label: {
-      ...iconLabelColorStyle,
       display: 'block',
       boxSizing: 'border-box',
+      color: iconColor,
     },
     icon: {
-      ...iconLabelColorStyle,
       position: 'absolute',
       width: pxToRemWithUnit(24),
       height: pxToRemWithUnit(24),
+      color: iconColor,
     },
   });
 };
@@ -191,8 +149,8 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
-export const addComponentCss = (host: HTMLElement, theme: Theme, variant: LinkVariant): void => {
-  attachCss(host, getComponentCss(theme, variant));
+export const addComponentCss = (host: HTMLElement, variant: LinkVariant, theme: Theme): void => {
+  attachCss(host, getComponentCss(variant, theme));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
