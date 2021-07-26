@@ -1,4 +1,18 @@
-import { getSlottedCss } from './link-styles';
+import { getComponentCss, getSlottedCss } from './link-styles';
+import { LinkVariant, Theme } from '../../../types';
+
+describe('getComponentCss()', () => {
+  it.each<[LinkVariant, Theme]>([
+    ['primary', 'light'],
+    ['primary', 'dark'],
+    ['secondary', 'light'],
+    ['secondary', 'dark'],
+    ['tertiary', 'light'],
+    ['tertiary', 'dark'],
+  ])('should return correct css for variant: %s', (variant, theme) => {
+    expect(getComponentCss(variant, theme)).toMatchSnapshot();
+  });
+});
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
