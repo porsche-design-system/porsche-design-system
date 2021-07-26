@@ -20,10 +20,16 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker image'
+        run: |
+          docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
+        shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
