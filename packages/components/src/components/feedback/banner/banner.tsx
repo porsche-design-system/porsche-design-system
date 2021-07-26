@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
-import { getPrefixedTagNames, hasNamedSlot, isDark, reflectThemeOnDark } from '../../../utils';
+import { getPrefixedTagNames, hasNamedSlot, isDark, getThemeDarkAttribute } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 import { addComponentCss, addSlottedCss } from './banner-styles';
 
@@ -63,7 +63,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...reflectThemeOnDark(this.theme)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
         <PrefixedTagNames.pContentWrapper
           width={this.width}
           role="alertdialog"

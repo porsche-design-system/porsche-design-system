@@ -4,7 +4,7 @@ import {
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
-  reflectThemeOnDark,
+  getThemeDarkAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 import { addComponentCss, addSlottedCss } from './link-styles';
@@ -63,7 +63,7 @@ export class Link {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...reflectThemeOnDark(this.theme)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
         <TagType
           class={rootClasses}
           {...(TagType === 'a' && {

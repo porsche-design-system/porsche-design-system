@@ -15,7 +15,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   observeProperties,
   prefix,
-  reflectThemeOnDark,
+  getThemeDarkAttribute,
   setAriaAttributes,
   setAttribute,
 } from '../../../utils';
@@ -182,7 +182,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...reflectThemeOnDark(this.theme)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
         <div class={selectClasses}>
           <label id="p-label">
             {hasLabel(this.host, this.label) && (
