@@ -56,7 +56,7 @@ export class Link {
           class="root"
           {...(TagType === 'a' && {
             href: this.href,
-            target: `${this.target}`,
+            target: this.target,
             download: this.download,
             rel: this.rel,
           })}
