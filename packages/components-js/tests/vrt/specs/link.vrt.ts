@@ -42,18 +42,18 @@ describe('Link', () => {
             <a href="#">Slotted Secondary</a>
           </p-link>
           <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
-          <p-link theme="${theme}" variant="tertiary" >
+          <p-link theme="${theme}" variant="tertiary">
             <a href="#">Slotted Tertiary</a>
           </p-link>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-link >>> a');
-        await forceHoveredState(page, '.hovered > p-link >>> span'); // why span? should be since it is nested 'p-link a'
+        await forceHoveredState(page, '.hovered > p-link >>> span'); // why span? should be 'p-link a' since it is nested
         await forceFocusedState(page, '.focused > p-link >>> a');
-        await forceFocusedState(page, '.focused > p-link >>> span'); // why span? should be since it is nested 'p-link a'
+        await forceFocusedState(page, '.focused > p-link >>> span'); // why span? should be 'p-link a' since it is nested
         await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> span'); // why span? should be since it is nested 'p-link a'
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> span'); // why span? should be 'p-link a' since it is nested
       })
     ).toBeFalsy();
   });
