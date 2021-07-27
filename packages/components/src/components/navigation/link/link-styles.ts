@@ -31,7 +31,7 @@ const getIconColor = (variant: LinkVariant, isDarkTheme: boolean): string => {
   }
 };
 
-const getMainColors = (variant: LinkVariant, isDarkTheme: boolean): { defaultColor: string; hoverColor: string } => {
+const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { defaultColor: string; hoverColor: string } => {
   switch (variant) {
     case 'primary':
       return {
@@ -51,22 +51,21 @@ const getMainColors = (variant: LinkVariant, isDarkTheme: boolean): { defaultCol
   }
 };
 
-const getMainColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
-  const { defaultColor, hoverColor } = getMainColors(variant, isDarkTheme);
+const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
+  const { defaultColor, hoverColor } = getVariantColors(variant, isDarkTheme);
   const isTertiary = variant === 'tertiary';
 
   return {
     color: defaultColor,
-    backgroundColor: defaultColor,
     ...(isTertiary && {
       backgroundColor: 'transparent',
     }),
-    borderColor: defaultColor,
     '&:hover, &:active': {
       color: hoverColor,
-      backgroundColor: hoverColor,
-      borderColor: hoverColor,
-      ...(isTertiary && {
+      ...(variant !== 'primary' && {
+        ...(isTertiary && {
+            backgroundColor: 'currentColor',
+        }),
         '& $label, & $icon': {
           color: isDarkTheme ? color.default : darkTheme.default,
         },
@@ -104,16 +103,15 @@ export const getComponentCss = (variant: LinkVariant, theme: Theme): string => {
       boxSizing: 'border-box',
       appearance: 'none',
       textDecoration: 'none',
-      border: '1px solid',
-      ...getMainColorStyles(variant, isDarkTheme),
+      backgroundColor: 'currentColor',
+      border: '1px solid currentColor',
+      ...getColorStyles(variant, isDarkTheme),
       transition: `background-color ${transitionDuration} ${transitionTimingFunction},
         border-color ${transitionDuration} ${transitionTimingFunction},
         color ${transitionDuration} ${transitionTimingFunction}`,
       ...getFocusStyles(),
     },
     label: {
-      display: 'block',
-      boxSizing: 'border-box',
       color: iconColor,
     },
     icon: {
