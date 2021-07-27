@@ -34,15 +34,15 @@ describe('Link', () => {
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>
-          <p-link theme="${theme}">
+          <p-link theme="${theme}" variant="primary">
             <a href="#">Slotted Primary</a>
           </p-link>
           <p-link theme="${theme}" variant="secondary" href="#">Secondary</p-link>
-          <p-link theme="${theme}">
+          <p-link theme="${theme}" variant="secondary">
             <a href="#">Slotted Secondary</a>
           </p-link>
           <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
-          <p-link theme="${theme}">
+          <p-link theme="${theme}" variant="tertiary" >
             <a href="#">Slotted Tertiary</a>
           </p-link>`;
 
