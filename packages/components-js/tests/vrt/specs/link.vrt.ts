@@ -49,11 +49,11 @@ describe('Link', () => {
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-link >>> a');
-        await forceHoveredState(page, '.hovered > p-link >>> span'); // why span? should be 'p-link a' since it is nested
+        await forceHoveredState(page, '.hovered > p-link > span');
         await forceFocusedState(page, '.focused > p-link >>> a');
-        await forceFocusedState(page, '.focused > p-link >>> span'); // why span? should be 'p-link a' since it is nested
+        await forceFocusedState(page, '.focused > p-link > span');
         await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> span'); // why span? should be 'p-link a' since it is nested
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link > span');
       })
     ).toBeFalsy();
   });
