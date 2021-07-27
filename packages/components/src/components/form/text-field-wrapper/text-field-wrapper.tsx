@@ -110,12 +110,20 @@ export class TextFieldWrapper {
             <slot />
           </label>
           {this.isPassword ? (
-            <button type="button" onClick={this.togglePassword} disabled={disabled}>
+            <button
+              type="button"
+              onClick={this.togglePassword}
+              disabled={disabled}
+              role="switch"
+              aria-pressed={this.showPassword ? 'true' : 'false'}
+            >
+              <span class="sr-only">Toggle password visibility</span>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
           ) : (
             this.input.type === 'search' && (
               <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
+                <span class="sr-only">Search</span>
                 <PrefixedTagNames.pIcon name="search" color="inherit" />
               </button>
             )
