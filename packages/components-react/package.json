@@ -14,18 +14,18 @@
     "build:jsdom-polyfill:cleanInjectGlobalStyles": "ts-node --project './tsconfig.node.json' 'scripts/cleanInjectGlobalStyles.ts'",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "test": "yarn test:jsdom-polyfill && yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:cbt",
+    "test": "yarn test:jsdom-polyfill && yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:jsdom-polyfill": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'jest -c tests/jsdom-polyfill/config/jest.config.js'",
     "test:unit": "jest -c tests/unit/config/jest.config.js",
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
-    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "2.3.0-beta.2",
+    "@juggle/resize-observer": "^3.3.1",
     "construct-style-sheets-polyfill": "^2.4.16",
     "intersection-observer": "^0.12.0",
     "react": "^17.0.2",
@@ -36,10 +36,8 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@juggle/resize-observer": "^3.3.1",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/visual-regression-tester": "^4.0.0",
-    "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
     "@testing-library/jest-dom": "^5.14.1",
