@@ -15,7 +15,7 @@ files.forEach((file) =>
 );
 
 // read and remove props from package.json
-const propsToRemove = ['scripts', 'devDependencies', 'files', 'bin'];
+const propsToRemove = ['scripts', 'dependencies', 'devDependencies', 'files', 'bin'];
 const pkgJson = require('../package.json');
 propsToRemove.forEach((prop) => Reflect.deleteProperty(pkgJson, prop));
 
