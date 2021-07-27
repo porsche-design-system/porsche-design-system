@@ -45,9 +45,12 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    addComponentCss(this.host, this.variant, this.theme);
     addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
+  }
+
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.variant, this.theme);
   }
 
   public render(): JSX.Element {
