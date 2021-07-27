@@ -1,17 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  isDark,
-  mapBreakpointPropToClasses,
-  getThemeDarkAttribute,
-} from '../../../utils';
+import { getPrefixedTagNames, getThemeDarkAttribute, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 import { addComponentCss, addSlottedCss } from './link-styles';
 
 @Component({
   tag: 'p-link',
-  styleUrl: 'link.scss',
   shadow: true,
 })
 export class Link {
@@ -50,25 +43,17 @@ export class Link {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.variant, this.theme);
+    addComponentCss(this.host, this.variant, this.hideLabel, this.theme);
   }
 
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
-
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.variant}`]: this.variant !== 'secondary',
-      ['root--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
         <TagType
-          class={rootClasses}
+          class="root"
           {...(TagType === 'a' && {
             href: this.href,
             target: `${this.target}`,

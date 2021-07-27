@@ -1,4 +1,4 @@
-import type { Styles } from '../../../utils';
+import type { BreakpointCustomizable, JssStyle, Styles } from '../../../utils';
 import {
   addImportantToEachRule,
   attachCss,
@@ -14,6 +14,8 @@ import {
   transitionTimingFunction,
   getFocusPseudoStyles,
   buildSlottedStylesForDarkTheme,
+  GetStylesFunction,
+  buildResponsiveStyles,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { LinkVariant, Theme } from '../../../types';
@@ -64,7 +66,7 @@ const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
       color: hoverColor,
       ...(variant !== 'primary' && {
         ...(isTertiary && {
-            backgroundColor: 'currentColor',
+          backgroundColor: 'currentColor',
         }),
         '& $label, & $icon': {
           color: isDarkTheme ? color.default : darkTheme.default,
@@ -74,53 +76,103 @@ const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
   };
 };
 
-export const getComponentCss = (variant: LinkVariant, theme: Theme): string => {
+const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
+  hideLabel
+    ? {
+        root: {
+          padding: 0,
+        },
+        label: {
+          width: 1,
+          height: 1,
+          margin: '0 0 0 -1px',
+          padding: 0,
+          overflow: 'hidden',
+          border: 0,
+          textIndent: -1,
+        },
+        icon: {
+          left: '50%',
+          top: '50%',
+          transform: 'translate3d(-50%, -50%, 0)',
+        },
+      }
+    : {
+        root: {
+          padding: `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`,
+        },
+        label: {
+          width: '100%',
+          height: 'auto',
+          margin: 0,
+          padding: 0,
+          overflow: 'visible',
+          border: 0,
+          textIndent: 0,
+        },
+        icon: {
+          left: pxToRemWithUnit(11),
+          top: pxToRemWithUnit(11),
+          // transform: translateX(0) translateY(0),
+        },
+      };
+
+export const getComponentCss = (
+  variant: LinkVariant,
+  hideLabel: BreakpointCustomizable<boolean>,
+  theme: Theme
+): string => {
   const isDarkTheme = isDark(theme);
   const iconColor = getIconColor(variant, isDarkTheme);
 
-  return getCss({
-    ...buildHostStyles({
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      cursor: 'pointer',
-    }),
-    '::slotted(a)': addImportantToEachRule({
-      display: 'block',
-      position: 'static',
-      textDecoration: 'none',
-      color: 'inherit',
-      lineHeight: 'inherit',
-      outline: 'transparent none',
-    }),
-    root: {
-      display: 'flex',
-      width: '100%',
-      minWidth: pxToRemWithUnit(48),
-      minHeight: pxToRemWithUnit(48),
-      position: 'relative',
-      margin: 0,
-      padding: 0,
-      boxSizing: 'border-box',
-      appearance: 'none',
-      textDecoration: 'none',
-      backgroundColor: 'currentColor',
-      border: '1px solid currentColor',
-      ...getColorStyles(variant, isDarkTheme),
-      transition: `background-color ${transitionDuration} ${transitionTimingFunction},
+  return getCss(
+    mergeDeep<Styles>(
+      {
+        ...buildHostStyles({
+          display: 'inline-flex',
+          verticalAlign: 'top',
+          cursor: 'pointer',
+        }),
+        '::slotted(a)': addImportantToEachRule({
+          display: 'block',
+          position: 'static',
+          textDecoration: 'none',
+          color: 'inherit',
+          lineHeight: 'inherit',
+          outline: 'transparent none',
+        }),
+        root: {
+          display: 'flex',
+          width: '100%',
+          minWidth: pxToRemWithUnit(48),
+          minHeight: pxToRemWithUnit(48),
+          position: 'relative',
+          margin: 0,
+          padding: 0,
+          boxSizing: 'border-box',
+          appearance: 'none',
+          textDecoration: 'none',
+          backgroundColor: 'currentColor',
+          border: '1px solid currentColor',
+          ...getColorStyles(variant, isDarkTheme), // overrides backgroundColor for tertiary
+          transition: `background-color ${transitionDuration} ${transitionTimingFunction},
         border-color ${transitionDuration} ${transitionTimingFunction},
         color ${transitionDuration} ${transitionTimingFunction}`,
-      ...getFocusStyles(),
-    },
-    label: {
-      color: iconColor,
-    },
-    icon: {
-      position: 'absolute',
-      width: pxToRemWithUnit(24),
-      height: pxToRemWithUnit(24),
-      color: iconColor,
-    },
-  });
+          ...getFocusStyles(),
+        },
+        label: {
+          color: iconColor,
+        },
+        icon: {
+          position: 'absolute',
+          width: pxToRemWithUnit(24),
+          height: pxToRemWithUnit(24),
+          color: iconColor,
+        },
+      },
+      buildResponsiveStyles(hideLabel, getHideLabelStyles)
+    )
+  );
 };
 
 // export const getSlottedStyles = (): Styles => {
@@ -149,8 +201,13 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
-export const addComponentCss = (host: HTMLElement, variant: LinkVariant, theme: Theme): void => {
-  attachCss(host, getComponentCss(variant, theme));
+export const addComponentCss = (
+  host: HTMLElement,
+  variant: LinkVariant,
+  hideLabel: BreakpointCustomizable<boolean>,
+  theme: Theme
+): void => {
+  attachCss(host, getComponentCss(variant, hideLabel, theme));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
