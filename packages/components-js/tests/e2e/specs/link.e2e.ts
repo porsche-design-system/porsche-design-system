@@ -220,8 +220,8 @@ describe('link', () => {
       await initLink({ useSlottedAnchor: true });
 
       const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '3px' });
+      const visible = expectedStyleOnFocus({ color: 'contrastHigh', offset: '3px' });
 
       expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
