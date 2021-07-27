@@ -1,0 +1,12 @@
+excludes:
+  paths:
+  - pattern: "aws/**"
+    reason: "BUILD_TOOL_OF"
+    comment: "The path only contains tools used for building infrastructure source code for AWS which is not included in any distributed artifacts."
+  - pattern: "docker/**"
+    reason: "OTHER"
+    comment: "The path only contains tools and executables used for CI/CD automation which is not included in any distributed artifacts."
+  scopes:
+  - pattern: "devDependencies"
+    reason: "DEV_DEPENDENCY_OF"
+    comment: "Packages for development only."
