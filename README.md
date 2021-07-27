@@ -143,20 +143,11 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
    - `./docker.sh run-test-smoke` (smoke tests for the entire application)
    - `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
 
-### Cross Browser Tests
+#### What to do when VRT tests are failing
 
-1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
-   - `./docker.sh run-test-cbt` (cbt tests for the entire application)
-   - `./docker.sh run-test-cbt --components-js` (cbt tests for the native web components)
-   - `./docker.sh run-test-cbt --components-angular` (cbt tests for angular components)
-   - `./docker.sh run-test-cbt --components-react` (cbt tests for react components)
-
-#### What to do when vrt or cbt tests are failing
-
-1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/{vrt/cbt}/results`. Here you can find the belonging `diff` and `regression` images.
+1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the belonging `diff` and `regression` images.
 1. Check if you would like to accept the changes
-   - **If yes**: Replace the reference shot in the `/{vrt/cbt}/fixtures` folder with the belonging one in the `/{vrt/cbt}/results` folder and delete the images in the `/{vrt/cbt}/results` directory afterwards manually.
+   - **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results` folder and delete the images in the `/vrt/results` directory afterwards manually.
    - **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ---
@@ -222,28 +213,19 @@ In order to deploy something to AWS from your local machine, you need to follow 
 
 ## Open Source Check via OSS Review Toolkit (ORT)
 
-Follow these steps for generating a `analyzer-result.yml` manually.
+The OSS Review Toolkit (ORT) aims to assist with the tasks that commonly needs to be performed in the context of license compliance checks, especially for Free and Open Source Software dependencies.
 
-```shell
-# Configure AWS with technical user
-aws configure
-# AWS Access Key ID [****************KHE3]: AKIAZYZ66ZSFNRTFKHE3
-# AWS Secret Access Key [****************44bT]: <SEE_KEEPASS>
-# Default region name [eu-central-1]: eu-central-1
-# Default output format [None]:
+### When should the ORT - Analyzer be running?
+An ORT analysis file, `analyzer-result.yml`, is generated on every merge into `master` or `v*` branch by our CI/CD and stored as artifact in GitHub Actions.
 
-# Login to docker registry
-aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 215495424956.dkr.ecr.eu-central-1.amazonaws.com
+### How often should the ORT - Analyzer be running?
+The ORT analysis on the source code files for generating `analyzer-result.yml` file should be submitted to OSO (F.4) prior to any production release of feature(s) which includes either a new or update existing FOSS component(s).
 
-# Pull image
-IMAGE_NAME=215495424956.dkr.ecr.eu-central-1.amazonaws.com/ort-porsche:latest
-docker pull $IMAGE_NAME
+### How should I provide "analyzer-result.yml" file?
+Once the `analyzer-result.yml` file is generated, it needs to be attached to a [OSO service desk](https://skyway.porsche.com/jira/plugins/servlet/desk/portal/261) Jira Ticket to be analyzed by the OSO team of Porsche to check against license violations of FOSS component(s).
 
-# Run scan
-docker run -v $PWD:/project $IMAGE_NAME analyze -i /project/ -o /project/ --package-curations-file /curations/curations.yml
-```
-
-After about 5 minutes, there should be a `analyzer-result.yml` at the root of this repo.
+### Where can I access the list of licenses which can be used in product development lifecycle?
+Please refer to the link below for accessing license list: [Porsche License List](https://skyway.porsche.com/confluence/download/attachments/89643039/23112020_Porsche%20Lizenzliste.xlsx?version=2&modificationDate=1611828503000&api=v2)
 
 ---
 
