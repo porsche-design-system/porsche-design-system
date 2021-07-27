@@ -202,18 +202,24 @@ describe('link', () => {
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
       const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
 
-      expect(await getOutlineStyle(link)).withContext('initially').toBe(hidden);
+      expect(await getOutlineStyle(link))
+        .withContext('initially')
+        .toBe(hidden);
 
       await link.click();
 
-      expect(await getOutlineStyle(link)).withContext('after click').toBe(hidden);
+      expect(await getOutlineStyle(link))
+        .withContext('after click')
+        .toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(link)).withContext('finally').toBe(visible);
+      expect(await getOutlineStyle(link))
+        .withContext('finally')
+        .toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
@@ -223,18 +229,24 @@ describe('link', () => {
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '3px' });
       const visible = expectedStyleOnFocus({ color: 'contrastHigh', offset: '3px' });
 
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).withContext('initially').toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' }))
+        .withContext('initially')
+        .toBe(hidden);
 
       await link.click();
 
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).withContext('after click').toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' }))
+        .withContext('after click')
+        .toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).withContext('finally').toBe(visible);
+      expect(await getOutlineStyle(link, { pseudo: '::before' }))
+        .withContext('finally')
+        .toBe(visible);
     });
   });
 
