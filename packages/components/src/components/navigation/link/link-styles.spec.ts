@@ -2,15 +2,15 @@ import { getComponentCss, getSlottedCss } from './link-styles';
 import { LinkVariant, Theme } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[LinkVariant, Theme]>([
-    ['primary', 'light'],
-    ['primary', 'dark'],
-    ['secondary', 'light'],
-    ['secondary', 'dark'],
-    ['tertiary', 'light'],
-    ['tertiary', 'dark'],
-  ])('should return correct css for variant: %s', (variant, theme) => {
-    expect(getComponentCss(variant, theme)).toMatchSnapshot();
+  it.each<[LinkVariant, boolean, Theme]>([
+    ['primary', false, 'light'],
+    ['primary', false, 'dark'],
+    ['secondary', false, 'light'],
+    ['secondary', false, 'dark'],
+    ['tertiary', false, 'light'],
+    ['tertiary', false, 'dark'],
+  ])('should return correct css for variant: %s', (variant, hideLabel, theme) => {
+    expect(getComponentCss(variant, hideLabel, theme)).toMatchSnapshot();
   });
 });
 
