@@ -12,7 +12,6 @@
 
 # testing
 /tests/vrt/results
-/tests/cbt/results
 
 # profiling files
 chrome-profiler-events*.json

@@ -3,7 +3,6 @@ on:
     branches:
       - master
       - v*
-      - issue/*
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -47,9 +46,9 @@ jobs:
           registry: ${{ env.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
-      - name: "Pull ORT Docker Image"
-        run: |
-          docker pull ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest
+#      - name: "Pull ORT Docker Image"
+#        run: |
+#          docker pull ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest
       - name: "Run ORT"
         run: |
           cleanup_npm_credentials() {
