@@ -2,7 +2,7 @@ import {
   attachCss,
   buildGlobalStyles,
   buildHostStyles,
-  buildResponsiveJss,
+  buildResponsiveHostStyles,
   getCss,
   isObject,
   mergeDeep,
@@ -121,15 +121,15 @@ describe('buildGlobalStyles()', () => {
   });
 });
 
-describe('buildResponsiveJss()', () => {
+describe('buildResponsiveHostStyles()', () => {
   const getStyles = (val: number): JssStyle => ({ width: 100 * val });
 
   it('should return flat jss for simple type', () => {
-    expect(buildResponsiveJss(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+    expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
   });
 
   it('should return nested jss for responsive type', () => {
-    expect(buildResponsiveJss({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+    expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
       ':host': { width: 600 },
       '@media (min-width: 480px)': { ':host': { width: 300 } },
       '@media (min-width: 760px)': { ':host': { width: 400 } },
