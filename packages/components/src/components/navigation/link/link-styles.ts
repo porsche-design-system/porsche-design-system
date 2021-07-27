@@ -67,7 +67,9 @@ const getMainColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles 
       backgroundColor: hoverColor,
       borderColor: hoverColor,
       ...(isTertiary && {
-        color: isDarkTheme ? color.default : darkTheme.default,
+        '& $label, & $icon': {
+          color: isDarkTheme ? color.default : darkTheme.default,
+        },
       }),
     },
   };
