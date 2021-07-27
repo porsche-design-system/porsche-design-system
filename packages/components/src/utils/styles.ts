@@ -27,12 +27,11 @@ type GetHoverStylesOptions = {
   theme?: boolean;
 };
 
-const defaultHoverStylesOptions: GetHoverStylesOptions = {
-  theme: false,
-};
-
 export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const options: GetHoverStylesOptions = { ...defaultHoverStylesOptions, ...opts };
+  const options: GetHoverStylesOptions = {
+    theme: false,
+    ...opts,
+  };
 
   const style: JssStyle = {
     transition: `color ${transitionDuration} ${transitionTimingFunction}`,
@@ -50,14 +49,13 @@ type GetFocusStylesOptions = {
   theme?: boolean;
 };
 
-const defaultFocusStylesOptions: GetFocusStylesOptions = {
-  color: color.state.focus,
-  offset: 2,
-  theme: false,
-};
-
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
+  const options: GetFocusStylesOptions = {
+    color: color.state.focus,
+    offset: 2,
+    theme: false,
+    ...opts,
+  };
 
   const style: JssStyle = {
     outline: 'transparent solid 1px',
