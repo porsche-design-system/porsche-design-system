@@ -32,14 +32,20 @@
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
-  "devDependencies": {
-    "@juggle/resize-observer": "^3.3.1",
+  "dependencies": {
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "4.1.0",
-    "@rollup/plugin-replace": "^2.4.2",
     "@stencil/core": "~2.6.0",
+    "jss": "^10.7.1",
+    "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
+    "jss-preset-default": "^10.7.1",
+    "throttle-debounce": "^3.0.1"
+  },
+  "devDependencies": {
+    "@juggle/resize-observer": "^3.3.1",
+    "@rollup/plugin-replace": "^2.4.2",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.24",
@@ -57,14 +63,10 @@
     "globby": "^11.0.4",
     "http-server": "^0.12.3",
     "jest": "^27.0.6",
-    "jss": "^10.7.1",
-    "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
-    "jss-preset-default": "^10.7.1",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0",
-    "throttle-debounce": "^3.0.1",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
     "typescript": "~4.3.5",

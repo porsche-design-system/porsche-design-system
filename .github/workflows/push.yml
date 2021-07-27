@@ -7,6 +7,8 @@ on:
       - housekeeping/*
       - release/*
 name: 'Porsche Design System'
+env:
+  PDS_DOCKER_IMAGE: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -20,10 +22,16 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -58,10 +66,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -117,10 +130,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -160,10 +178,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -209,10 +232,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -268,10 +296,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -337,10 +370,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -401,10 +439,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -415,32 +458,32 @@ jobs:
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --core-dependencies
       - name: 'Build Components Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
-          args: --components-prod
+          entrypoint: run-build-prod
+          args: --components
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
-          args: --components-js-prod
+          entrypoint: run-build-prod
+          args: --components-js
       - name: 'Build Components Angular Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --components-angular
       - name: 'Build Components React Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --components-react
       - name: 'Build Storefront Prod'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-build
+          entrypoint: run-build-prod
           args: --storefront
       - name: 'Store Assets CDN Artifact'
         uses: actions/upload-artifact@v2
@@ -504,10 +547,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -543,10 +591,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -566,10 +619,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -595,10 +653,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -640,10 +703,15 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -675,10 +743,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -700,10 +773,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -725,10 +803,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -750,10 +833,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -775,10 +863,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -800,10 +893,15 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: |
+          docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run
         env:
