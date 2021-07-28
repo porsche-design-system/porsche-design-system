@@ -183,6 +183,19 @@ export const AccordionPage = (): JSX.Element => {
           {content}
         </PAccordion>
       </div>
+
+      <div
+        className="playground light"
+        title="should ignore size prop as breakpoint customizable and render compact accordion"
+      >
+        <PAccordion
+          heading="Some compact Accordion with ignored size prop"
+          compact={true}
+          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+        >
+          {content}
+        </PAccordion>
+      </div>
     </>
   );
 };
