@@ -43,7 +43,7 @@ export class Link {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.variant, this.hideLabel, this.theme);
+    addComponentCss(this.host, this.variant, this.hideLabel, !!this.href, this.theme);
   }
 
   public render(): JSX.Element {
