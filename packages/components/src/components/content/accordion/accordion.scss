@@ -53,7 +53,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: p-px-to-rem(16px) p-px-to-rem(0px);
+  padding: p-px-to-rem(16px) 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -66,7 +66,7 @@ button {
   @include p-focus($p-color-state-focus, 0);
 
   #{$root}--size-medium & {
-    padding: p-px-to-rem(24px) p-px-to-rem(0px);
+    padding: p-px-to-rem(24px) 0;
   }
 
   #{$root}--compact & {
