@@ -7,13 +7,9 @@ import {
   pxToRem,
   pxToRemWithUnit,
   getBaseSlottedStyles,
+  getFocusPseudoStyles,
 } from './';
 
-describe('getBaseSlottedStyles()', () => {
-  it('should return correct css', () => {
-    expect(getBaseSlottedStyles()).toMatchSnapshot();
-  });
-});
 
 describe('pxToRem()', () => {
   it.each([
@@ -73,11 +69,19 @@ describe('getHoverStyles()', () => {
   it('should return correct default JssStyle', () => {
     expect(getHoverStyles()).toMatchSnapshot();
   });
+
+  it('should return correct default JssStyle for dark theme', () => {
+    expect(getHoverStyles({ theme: 'dark' })).toMatchSnapshot();
+  });
 });
 
 describe('getFocusStyles()', () => {
   it('should return correct default JssStyle', () => {
     expect(getFocusStyles()).toMatchSnapshot();
+  });
+
+  it('should return correct default JssStyle for dark theme', () => {
+    expect(getFocusStyles({ theme: 'dark' })).toMatchSnapshot();
   });
 
   it('should return correct JssStyle for custom color', () => {
@@ -86,5 +90,21 @@ describe('getFocusStyles()', () => {
 
   it('should return correct JssStyle for custom offset', () => {
     expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
+  });
+});
+
+describe('getFocusPseudoStyles()', () => {
+  it('should return correct default JssStyle', () => {
+    expect(getFocusPseudoStyles()).toMatchSnapshot();
+  });
+});
+
+describe('getBaseSlottedStyles()', () => {
+  it('should return correct styles', () => {
+    expect(getBaseSlottedStyles()).toMatchSnapshot();
+  });
+
+  it('should return correct styles for dark theme', () => {
+    expect(getBaseSlottedStyles('dark')).toMatchSnapshot();
   });
 });
