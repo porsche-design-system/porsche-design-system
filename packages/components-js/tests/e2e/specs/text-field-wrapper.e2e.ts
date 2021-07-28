@@ -218,6 +218,24 @@ describe('text-field-wrapper', () => {
       expect(await getIconName(icon)).toBe('view');
     });
 
+    it('should toggle aria-pressed state when password visibility button is clicked', async () => {
+      await initTextField({ type: 'password', hasLabel: true });
+      const toggleButton = await getButton();
+
+      const ariaPressedState = async () => await toggleButton.evaluate((el) => el.getAttribute('aria-pressed'));
+      expect(await ariaPressedState()).toBe('false');
+
+      await toggleButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(await ariaPressedState()).toBe('true');
+
+      await toggleButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(await ariaPressedState()).toBe('false');
+    });
+
     it('should have padding-right', async () => {
       await initTextField({ type: 'password', hasLabel: true });
       const input = await getInput();
