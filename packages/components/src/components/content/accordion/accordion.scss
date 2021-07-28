@@ -129,7 +129,7 @@ button {
 
 .collapsible {
   height: 0;
-  padding: 0 p-px-to-rem(12px);
+  padding: 0;
   visibility: hidden;
   overflow: hidden;
   transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
@@ -142,10 +142,6 @@ button {
     transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
       visibility $p-animation-hover-duration-var;
     animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards openAnimation;
-  }
-
-  #{$root}--compact & {
-    padding: 0;
   }
 
   #{$root}--open#{$root}--compact & {
