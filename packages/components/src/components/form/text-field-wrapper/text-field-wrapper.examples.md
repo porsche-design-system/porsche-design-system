@@ -1,8 +1,8 @@
 # Text Field
 
-The **Text Field** component is a styling wrapper for the native HTML input types and is essential for mostly any form.
+The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly any form.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Text Field Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
@@ -37,6 +37,11 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground :markup="disabled" :config="config"></Playground>
 
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. 
+They can be confusing for sighted users as well by not pointing out why these elements are disabled. 
+A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
+
 ---
 
 ## Read only
@@ -47,7 +52,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 ## Types
 
-The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
+The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component.
 For better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 ### Basic
@@ -80,7 +85,7 @@ For better accessibility it's recommended to **not** reset these browser default
 
 ## Validation states
 
-The **Text Field Wrapper** component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
+The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">
@@ -97,9 +102,15 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
-Please make sure to set the corresponding **aria** attributes.
 
 <Playground :markup="slots" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
+1. Add a unique ID to the `slot="label"` element
+1. Add a unique ID to the `slot="message"` element (if they are created)
+1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
+1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `label` ID when the (error) message appears
 
 <script lang="ts">
   import Vue from 'vue';

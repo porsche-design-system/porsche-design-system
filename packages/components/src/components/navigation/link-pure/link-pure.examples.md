@@ -1,7 +1,8 @@
 # Link Pure
 
-The `<p-link-pure>` component is essential for performing changes in page routes.
-It can be used with or without a label but it's recommend to keep the label visible for better accessibility whenever possible. When used without a label  it's best practice to provide a descriptive label text for screen readers.
+The `p-link-pure` component is essential for performing changes in **page routes**.
+A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
 
 ## Basic example
@@ -17,6 +18,11 @@ In case you want the user to execute an action, you should select the [Button](c
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Porsche Taycan model page"`
+* If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
+* In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
 ---
 
@@ -139,7 +145,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
 
-**Note** If you intend to use a `<a>` tag inside of the `<p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
+**Note** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
 
 <Playground :markup="subline" :config="config">
   <select v-model="sublineSize">

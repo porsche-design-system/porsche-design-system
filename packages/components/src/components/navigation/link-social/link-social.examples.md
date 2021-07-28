@@ -1,6 +1,6 @@
 # Link Social
 
-The `<p-link-social>` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
+The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
 
 ## Variants
 
@@ -136,9 +136,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   rel="nofollow noopener"
 >Facebook</p-link-social>`;
 
-    setLabel(event: ChangeEvent) {
-      const { options } = event.target;
-      this.label = options[options.selectedIndex].textContent;
+    setLabel(e: ChangeEvent) {
+      this.label = options[e.target.options.selectedIndex].textContent;
     };
   }
 </script>

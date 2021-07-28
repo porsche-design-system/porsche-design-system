@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -43,20 +43,21 @@
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./bin"
   },
-  "devDependencies": {
+  "dependencies": {
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/meta-icons": "0.0.0",
-    "@porsche-design-system/utilities": "4.0.0",
+    "@porsche-design-system/utilities": "4.1.0"
+  },
+  "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
-    "@types/http-server": "^0.10.1",
+    "@types/http-server": "^0.12.1",
     "http-server": "^0.12.3",
-    "rollup": "^2.50.5",
+    "rollup": "^2.53.0",
     "ts-node": "^10.0.0",
-    "tslib": "^2.2.0",
-    "typescript": "~4.3.2"
+    "typescript": "~4.3.5"
   },
   "files": [
     "dist/"

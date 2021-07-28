@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-modal-prefixed',
@@ -19,5 +19,6 @@ import { Component } from '@angular/core';
       <my-prefix-p-modal p-modal [heading]="'Some Heading'" [open]="true">Some Content</my-prefix-p-modal>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalPrefixedComponent {}

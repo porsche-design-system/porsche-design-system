@@ -1,7 +1,0 @@
-{
-  "spec_dir": ".",
-  "spec_files": ["tests/unit/specs/**/*.spec.ts"],
-  "helpers": ["tests/unit/config/setup.ts"],
-  "stopSpecOnExpectationFailure": false,
-  "random": false
-}

@@ -43,7 +43,7 @@ export class ButtonPure {
   @Prop() public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop() public iconSource?: string;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -56,7 +56,7 @@ export class ButtonPure {
 
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
-  public handleOnClick(e: MouseEvent): void {
+  public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
@@ -69,6 +69,7 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabledOrLoading
     );
+
     if (isSizeInherit(this.size)) {
       transitionListener(this.buttonTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.buttonTag)}em`;
@@ -81,6 +82,7 @@ export class ButtonPure {
   public render(): JSX.Element {
     const rootClasses = {
       ['root']: true,
+      ['root--loading']: this.loading,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
@@ -100,7 +102,7 @@ export class ButtonPure {
         <button
           class={rootClasses}
           type={this.type}
-          disabled={this.isDisabledOrLoading}
+          disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}

@@ -1,7 +1,8 @@
-import { ElementHandle, Page, WaitForOptions } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
+export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
 const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
@@ -21,6 +22,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        <link rel="stylesheet" href="overrides.css" >
         ${options.injectIntoHead}
       </head>
       <body>
@@ -257,3 +259,20 @@ export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
 
 export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
   page.evaluate((el) => document.activeElement === el, element);
+
+let consoleMessages: ConsoleMessage[] = [];
+
+export const initConsoleObserver = (page: Page): void => {
+  consoleMessages = []; // reset
+
+  page.on('console', (msg) => {
+    consoleMessages.push(msg);
+    if (msg.type() === 'error') {
+      const { description } = msg.args()[0]['_remoteObject'];
+      if (description) {
+        console.log(description);
+      }
+    }
+  });
+};
+export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;

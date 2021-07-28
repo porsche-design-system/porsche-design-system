@@ -15,7 +15,6 @@
   height: auto;
   margin: 0;
   padding: 0;
-  white-space: normal;
   overflow: visible;
   border: 0;
   clip: auto;
@@ -28,7 +27,6 @@
   height: 1px;
   margin: -1px;
   padding: 0;
-  white-space: nowrap;
   overflow: hidden;
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -73,6 +71,15 @@
     color $p-animation-hover-duration-var $p-animation-hover-bezier;
   cursor: pointer;
   @include p-focus($p-color-neutral-contrast-high);
+  @include with-label;
+
+  .label {
+    @include label-with-label;
+  }
+
+  .icon {
+    @include icon-with-label;
+  }
 
   &--theme-dark {
     color: $p-color-default;
@@ -81,7 +88,7 @@
     @include p-focus($p-color-theme-dark-default);
   }
 
-  &:not(:disabled) {
+  &:not(:disabled):not(&--loading) {
     &:hover,
     &:active {
       color: $p-color-theme-dark-default;
@@ -96,16 +103,19 @@
     }
   }
 
-  &:disabled {
+  &:disabled,
+  &--loading {
     cursor: not-allowed;
     color: rgba($p-color-theme-dark-default, 0.55);
     background-color: $p-color-state-disabled;
     border-color: $p-color-state-disabled;
+    @include p-focus($p-color-state-disabled);
 
     &#{$bem-block}--theme-dark {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-theme-dark-state-disabled;
       border-color: $p-color-theme-dark-state-disabled;
+      @include p-focus($p-color-theme-dark-state-disabled);
     }
   }
 
@@ -113,16 +123,26 @@
     color: $p-color-theme-dark-default;
     background-color: $p-color-brand;
     border-color: $p-color-brand;
-    @include p-focus($p-color-brand);
+    &:focus {
+      outline-color: $p-color-brand;
+    }
+    &:focus:not(:focus-visible) {
+      outline-color: transparent;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
       background-color: $p-color-theme-dark-brand;
       border-color: $p-color-theme-dark-brand;
-      @include p-focus($p-color-theme-dark-brand);
+      &:focus {
+        outline-color: $p-color-theme-dark-brand;
+      }
+      &:focus:not(:focus-visible) {
+        outline-color: transparent;
+      }
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -137,15 +157,28 @@
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: rgba($p-color-theme-dark-default, 0.55);
       background-color: $p-color-state-disabled;
       border-color: $p-color-state-disabled;
+      &:focus {
+        outline-color: $p-color-state-disabled;
+      }
+      &:focus:not(:focus-visible) {
+        outline-color: transparent;
+      }
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
         background-color: $p-color-theme-dark-state-disabled;
         border-color: $p-color-theme-dark-state-disabled;
+        &:focus {
+          outline-color: $p-color-theme-dark-state-disabled;
+        }
+        &:focus:not(:focus-visible) {
+          outline-color: transparent;
+        }
       }
     }
   }
@@ -161,7 +194,7 @@
       border-color: $p-color-theme-dark-default;
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
         color: $p-color-theme-dark-default;
@@ -176,7 +209,8 @@
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: $p-color-state-disabled;
       background-color: transparent;
       border-color: $p-color-state-disabled;
@@ -186,18 +220,6 @@
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
       }
-    }
-  }
-
-  &--with-label {
-    @include with-label;
-
-    .label {
-      @include label-with-label;
-    }
-
-    .icon {
-      @include icon-with-label;
     }
   }
 

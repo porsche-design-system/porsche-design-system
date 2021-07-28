@@ -8,6 +8,7 @@ import {
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
+import type { SocialIconName } from './link-social-utils';
 
 @Component({
   tag: 'p-link-social',
@@ -18,42 +19,13 @@ export class LinkSocial {
   @Element() public host!: HTMLElement;
 
   /** The icon shown. */
-  @Prop() public icon?:
-    | 'logo-facebook'
-    | 'logo-google'
-    | 'logo-instagram'
-    | 'logo-linkedin'
-    | 'logo-pinterest'
-    | 'logo-twitter'
-    | 'logo-wechat'
-    | 'logo-whatsapp'
-    | 'logo-xing'
-    | 'logo-youtube'
-    | 'logo-baidu'
-    | 'logo-delicious'
-    | 'logo-digg'
-    | 'logo-foursquare'
-    | 'logo-gmail'
-    | 'logo-hatena'
-    | 'logo-kaixin'
-    | 'logo-qq-share'
-    | 'logo-qq'
-    | 'logo-skyrock'
-    | 'logo-sohu'
-    | 'logo-tecent'
-    | 'logo-telegram'
-    | 'logo-tumblr'
-    | 'logo-viber'
-    | 'logo-vk'
-    | 'logo-weibo'
-    | 'logo-yahoo'
-    | 'logo-youku' = undefined;
+  @Prop() public icon?: SocialIconName;
 
   /** A custom URL path to a custom social icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */
-  @Prop() public href?: string = undefined;
+  @Prop() public href?: string;
 
   /** Adapts the icon color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -62,7 +34,7 @@ export class LinkSocial {
   @Prop() public target?: LinkTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string = undefined;
+  @Prop() public rel?: string;
 
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

@@ -12,7 +12,7 @@ import { runWebpack } from '../services/webpack';
 import { copyFileByPattern, fileContentByPattern, filenameByPattern } from '../services/file-by-pattern';
 
 export const buildCommand = 'build';
-const DEFINTIONS_FILE_NAME = 'index.d.ts';
+const DEFINITIONS_FILE_NAME = 'index.d.ts';
 
 export const build = async () => {
   const componentsManagerConfig = await getConfig();
@@ -25,6 +25,7 @@ export const build = async () => {
     version = null,
     copyFiles = [],
     additionalEntryFiles = [],
+    iife,
   } = componentsManagerConfig;
   const { version: fallbackVersion } = getProjectPackageJson();
 
@@ -45,6 +46,7 @@ export const build = async () => {
     inlineStyles: inlineStylesContent ?? '',
     additionalEntryFiles,
     tempEntryPointFilePath,
+    iife,
   });
   await runWebpack(webpackConfig);
 
@@ -94,18 +96,18 @@ async function getInlineStylesContent(inlineStyles: string | null): Promise<stri
 }
 
 const getDefinitionsFilePath = (targetDirectory: string): string =>
-  path.resolve(getProjectRootPath(), targetDirectory, DEFINTIONS_FILE_NAME);
+  path.resolve(getProjectRootPath(), targetDirectory, DEFINITIONS_FILE_NAME);
 
 async function copyDefinitionFile(targetDirectory: string) {
-  const defintionsFile = 'with-prefix.d.ts';
-  const defintionsFilePath = path.resolve(__dirname, '../../library-entry', defintionsFile);
-  await fs.promises.copyFile(defintionsFilePath, getDefinitionsFilePath(targetDirectory));
+  const definitionsFile = 'with-prefix.d.ts';
+  const definitionsFilePath = path.resolve(__dirname, '../../library-entry', definitionsFile);
+  await fs.promises.copyFile(definitionsFilePath, getDefinitionsFilePath(targetDirectory));
 }
 
 async function extendDefinitionFile(targetDirectory: string, definitionFiles: string[]) {
   if (definitionFiles.length) {
     const targetFilePath = getDefinitionsFilePath(targetDirectory);
-    const content = fs.readFileSync(targetFilePath).toString();
+    const content = fs.readFileSync(targetFilePath, 'utf8');
 
     const result = `${content}\n\n${definitionFiles.map((file) => fs.readFileSync(file).toString()).join('\n\n')}`;
     fs.writeFileSync(targetFilePath, result);

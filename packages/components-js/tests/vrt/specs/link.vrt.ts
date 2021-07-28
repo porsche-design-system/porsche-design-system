@@ -30,7 +30,7 @@ describe('Link', () => {
       await vrt.test('link-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-link:not(:last-child) { margin-right: 8px; }</style>`;
+        const head = `<style type="text/css">p-link:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>

@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  getAttribute,
   getBrowser,
   getCssClasses,
   getLifecycleStatus,
@@ -11,14 +12,13 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   waitForEventSerialization,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_FADE_IN_DURATION = 2000;
-const CSS_FADE_OUT_DURATION = 1000;
+const CSS_FADE_IN_DURATION = 600;
+const CSS_FADE_OUT_DURATION = 600;
 
 describe('banner', () => {
   let page: Page;
@@ -46,6 +46,12 @@ describe('banner', () => {
   const getButton = () => selectNode(page, 'p-banner >>> p-button-pure');
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
+
+  it('should render close button with type of "button"', async () => {
+    await initBanner();
+    const closeBtnReal = await selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
+  });
 
   it('should render without button', async () => {
     await setContentWithDesignSystem(
@@ -175,7 +181,6 @@ describe('banner', () => {
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
       await titleLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(titleLink)).toBe(hidden);
 
@@ -187,7 +192,6 @@ describe('banner', () => {
       expect(await getOutlineStyle(titleLink)).toBe(visible);
 
       await descriptionLink.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
 
@@ -206,15 +210,15 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-banner']).toBe(1, 'componentDidLoad: p-banner');
-      expect(status.componentDidLoad['p-content-wrapper']).toBe(1, 'componentDidLoad: p-content-wrapper');
-      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
-      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // one included in button-pure
-      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon'); // one included in button-pure
-      expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure');
+      expect(status.componentDidLoad['p-banner']).withContext('componentDidLoad: p-banner').toBe(1);
+      expect(status.componentDidLoad['p-content-wrapper']).withContext('componentDidLoad: p-content-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(8, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -226,11 +230,11 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-banner']).toBe(1, 'componentDidUpdate: p-banner');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-banner']).withContext('componentDidUpdate: p-banner').toBe(1);
+      expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).toBe(8, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
     });
   });
 });

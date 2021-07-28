@@ -1,5 +1,4 @@
-import { attachCss, buildHostStyles, getCss, getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
+import { getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
 
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
   const PrefixedTagNames = getPrefixedTagNames(host);
@@ -42,43 +41,4 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
 
 export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
   return [elements[0], elements.slice(-1)[0]];
-};
-
-const baseCss: string = getCss(
-  buildHostStyles({
-    position: 'fixed !important',
-    top: '0 !important',
-    left: '0 !important',
-    right: '0 !important',
-    bottom: '0 !important',
-    zIndex: '99999 !important',
-    display: 'flex !important',
-    alignItems: 'center !important',
-    justifyContent: 'center !important',
-    flexWrap: 'wrap !important',
-    background: `${color.darkTheme.background.default}e6 !important`, // e6 = 0.9 alpha
-    transition: 'opacity 0.2s $easing !important ',
-    opacity: '0 !important',
-    visibility: 'hidden !important',
-    overflowY: 'auto',
-  })
-);
-
-export const getDynamicCss = (open: boolean): string => {
-  return open
-    ? getCss({
-        ...buildHostStyles({
-          transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear !important',
-          opacity: '1 !important',
-          visibility: 'inherit !important',
-        }),
-        root: {
-          transform: 'scale3d(1, 1, 1) !important',
-        },
-      })
-    : '';
-};
-
-export const addCss = (host: HTMLElement, open: boolean): void => {
-  attachCss(host, baseCss + getDynamicCss(open));
 };

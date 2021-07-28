@@ -16,15 +16,21 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    // const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
-    const angularImports = ['ChangeDetectionStrategy', 'ChangeDetectorRef', 'Component', 'ElementRef', 'NgZone'];
+    const angularImports = [
+      'ChangeDetectionStrategy',
+      'ChangeDetectorRef',
+      'Component',
+      'ElementRef',
+      ...(hasEventProps ? ['EventEmitter'] : []),
+      'NgZone',
+    ];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
 
-    const typesImports = nonPrimitiveTypes.concat(hasEventProps ? ['EventEmitter'] : []);
+    const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
     return [importsFromAngular, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
@@ -63,7 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const classMembers = [
       'protected el: HTMLElement;',
       ...inputProps.map((x) => `${x.key}: ${x.rawValueType};`),
-      ...outputProps.map((x) => `${x.key}!: EventEmitter<${x.rawValueType.match(/<(.*?)>/)?.[1]}>;`),
+      ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
     const constructorCode = [
@@ -71,6 +77,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       'this.el = r.nativeElement;',
       ...(outputs ? ['proxyOutputs(this, outputs);'] : []),
     ].join('\n    ');
+
+    const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
 
     return `${inputsAndOutputs}
 
@@ -80,7 +88,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 @Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)} {
+export class ${this.generateComponentName(component)}${genericType} {
   ${classMembers}
 
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

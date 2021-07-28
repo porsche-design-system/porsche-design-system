@@ -30,13 +30,15 @@ describe('Button', () => {
       await vrt.test('button-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-button:not(:last-child) { margin-right: 8px; }</style>`;
+        const head = `<style type="text/css">p-button:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-button theme="${theme}" variant="primary">Primary</p-button>
           <p-button theme="${theme}" variant="secondary">Secondary</p-button>
           <p-button theme="${theme}" variant="tertiary">Tertiary</p-button>
-          <p-button theme="${theme}" loading="true">Loading</p-button>`;
+          <p-button theme="${theme}" variant="primary" loading>Loading Primary</p-button>
+          <p-button theme="${theme}" variant="secondary" loading>Loading Secondary</p-button>
+          <p-button theme="${theme}" variant="tertiary" loading>Loading Tertiary</p-button>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 

@@ -1,4 +1,4 @@
-import type { Breakpoint, BreakpointCustomizable } from '../../../types';
+import type { BreakpointKey, BreakpointCustomizable } from '../../../types';
 import { BREAKPOINTS, parseJSON } from '../../../utils';
 
 const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
@@ -13,7 +13,7 @@ export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
   if (typeof parsedSpinnerSize === 'object') {
     for (const [key, value] of Object.entries(parsedSpinnerSize)) {
       if (
-        (!BREAKPOINTS.includes(key as Breakpoint) && key !== undefined) ||
+        (!BREAKPOINTS.includes(key as BreakpointKey) && key !== undefined) ||
         (!SPINNER_SIZES.includes(value as SpinnerSizeType) && value !== undefined)
       ) {
         console.warn(errorMessage);

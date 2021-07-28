@@ -35,7 +35,7 @@ export type NumberOfPageLinks = 5 | 7;
 export type PageChangeEvent = { page: number; previousPage: number };
 
 // BreakpointCustomizable Types
-export type { Breakpoint, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
+export type { BreakpointKey, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {

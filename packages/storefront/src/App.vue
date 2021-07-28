@@ -66,7 +66,7 @@
     }
 
     public get isStandalone(): boolean {
-      return this.$route.meta.standalone;
+      return this.$route.meta?.standalone;
     }
   }
 </script>

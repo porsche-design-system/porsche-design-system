@@ -5,12 +5,12 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  isLabelVisible,
-  isMessageVisible,
+  hasLabel,
+  hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
-  observeMutations,
-  unobserveMutations,
+  observeAttributes,
+  unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
@@ -41,12 +41,12 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentDidRender(): void {
@@ -63,7 +63,7 @@ export class RadioButtonWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.input);
+    unobserveAttributes(this.input);
   }
 
   public render(): JSX.Element {
@@ -82,7 +82,7 @@ export class RadioButtonWrapper {
     return (
       <Host>
         <label class={rootClasses}>
-          {isLabelVisible(this.host, this.label) && (
+          {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
@@ -90,7 +90,7 @@ export class RadioButtonWrapper {
           )}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
@@ -108,14 +108,13 @@ export class RadioButtonWrapper {
     }
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

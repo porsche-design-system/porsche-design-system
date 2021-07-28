@@ -1,7 +1,9 @@
 # Icon
 
-Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized.
-The Porsche Design System is using a **SVG icon system** to visually present an icon object. Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible.
+Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. 
+The clear graphic symbols allow quick orientation and are internationally recognized.
+The Porsche Design System is using a **SVG icon system** to visually present an icon object. 
+Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible.
 
 
 ## Name
@@ -10,6 +12,19 @@ For more information and a complete overview of all available Porsche icons, hea
 To reference an icon just use the `name` property with a predefined icon id.
 
 <Playground :markup="name" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+With the use of SVG icons, there are options to enhance accessibility to users using screen readers. Here are some good practices:
+
+**If icons are purely decorative or are used in combination with text, hide the icon for screen readers:**
+```html
+<p-icon name="arrow" aria-hidden="true" />
+```
+
+**If icons stand alone and transport meaning, adding descriptive text with an `aria-label` attribute is mandatory:**
+```html
+<p-icon name="warning" aria-label="Icon for a warning message" />
+```
     
 ---
 
@@ -63,14 +78,6 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
 <Playground :markup="lazy" :config="config"></Playground>
 
 ---
-
-## Accessibility
-With the use of SVG icons, there are options to give more accessibility to users using screen readers. Here are some good practices:
-
-* If icons stand alone, adding descriptive text with an `aria-label` attribute is a good practice:
-```html
-<p-icon aria-label="descriptive text, e.g: close the layer" />
-```
 
 <script lang="ts">
   import Vue from 'vue';

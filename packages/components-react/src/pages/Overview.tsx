@@ -1,36 +1,44 @@
 import {
+  componentsReady,
+  PAccordion,
   PBanner,
   PButton,
   PButtonGroup,
   PButtonPure,
-  PHeadline,
-  PText,
-  PDivider,
-  PIcon,
   PCheckboxWrapper,
-  PRadioButtonWrapper,
-  PSelectWrapper,
-  PTextFieldWrapper,
-  PTextareaWrapper,
-  PFieldsetWrapper,
   PContentWrapper,
-  PGrid,
-  PGridItem,
+  PDivider,
+  PFieldsetWrapper,
   PFlex,
   PFlexItem,
-  PTabs,
-  PTabsItem,
-  PTabsBar,
-  PTextList,
-  PTextListItem,
-  PSpinner,
-  PMarque,
-  PPagination,
+  PGrid,
+  PGridItem,
+  PHeadline,
+  PIcon,
   PLink,
   PLinkPure,
   PLinkSocial,
+  PMarque,
   PorscheDesignSystemProvider,
-  componentsReady,
+  PPagination,
+  PRadioButtonWrapper,
+  PSelectWrapper,
+  PSpinner,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
+  PText,
+  PTextareaWrapper,
+  PTextFieldWrapper,
+  PTextList,
+  PTextListItem,
 } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
@@ -199,6 +207,23 @@ export const OverviewPage = (): JSX.Element => {
             <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
           </div>
 
+          <div className="playground light" title="should render default table">
+            <PTable>
+              <PTableHead>
+                <PTableHeadRow>
+                  <PTableHeadCell>Column 1</PTableHeadCell>
+                  <PTableHeadCell>Column 2</PTableHeadCell>
+                </PTableHeadRow>
+              </PTableHead>
+              <PTableBody>
+                <PTableRow>
+                  <PTableCell>Cell 1</PTableCell>
+                  <PTableCell>Cell 2</PTableCell>
+                </PTableRow>
+              </PTableBody>
+            </PTable>
+          </div>
+
           <div className="playground light" title="should render default tabs">
             <PTabs>
               <PTabsItem label="Tab1">Content 1</PTabsItem>
@@ -213,6 +238,13 @@ export const OverviewPage = (): JSX.Element => {
               <button>Tab2</button>
               <button>Tab3</button>
             </PTabsBar>
+          </div>
+
+          <div className="playground light" title="should render default accordion">
+            <PAccordion heading="Some accordion heading">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </PAccordion>
           </div>
 
           <div className="playground light" title="should render default spinner">
@@ -360,6 +392,23 @@ export const OverviewPage = (): JSX.Element => {
               <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
             </div>
 
+            <div className="playground light" title="should render default table with custom prefix">
+              <PTable>
+                <PTableHead>
+                  <PTableHeadRow>
+                    <PTableHeadCell>Column 1</PTableHeadCell>
+                    <PTableHeadCell>Column 2</PTableHeadCell>
+                  </PTableHeadRow>
+                </PTableHead>
+                <PTableBody>
+                  <PTableRow>
+                    <PTableCell>Cell 1</PTableCell>
+                    <PTableCell>Cell 2</PTableCell>
+                  </PTableRow>
+                </PTableBody>
+              </PTable>
+            </div>
+
             <div className="playground light" title="should render default tabs with custom prefix">
               <PTabs>
                 <PTabsItem label="Tab1">Content 1</PTabsItem>
@@ -374,6 +423,14 @@ export const OverviewPage = (): JSX.Element => {
                 <button>Tab2</button>
                 <button>Tab3</button>
               </PTabsBar>
+            </div>
+
+            <div className="playground light" title="should render default accordion with custom prefix">
+              <PAccordion heading="Some accordion heading">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum.
+              </PAccordion>
             </div>
 
             <div className="playground light" title="should render default spinner with custom prefix">

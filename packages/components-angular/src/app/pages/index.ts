@@ -1,3 +1,4 @@
+import { AccordionComponent } from './accordion.component';
 import { BannerComponent } from './banner.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
@@ -28,6 +29,7 @@ import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
+import { TableComponent } from './table.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
 import { TextComponent } from './text.component';
@@ -38,6 +40,7 @@ import { TypographyComponent } from './typography.component';
 import { SwitchComponent } from './switch.component';
 
 export const pages = [
+  AccordionComponent,
   BannerComponent,
   ButtonComponent,
   ButtonGroupComponent,
@@ -69,6 +72,7 @@ export const pages = [
   SelectWrapperComponent,
   SpinnerComponent,
   SwitchComponent,
+  TableComponent,
   TabsComponent,
   TabsBarComponent,
   TextComponent,
@@ -78,6 +82,7 @@ export const pages = [
   TypographyComponent,
 ];
 
+export * from './accordion.component';
 export * from './banner.component';
 export * from './button.component';
 export * from './button-group.component';
@@ -109,6 +114,7 @@ export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
 export * from './switch.component';
+export * from './table.component';
 export * from './tabs.component';
 export * from './tabs-bar.component';
 export * from './text.component';
