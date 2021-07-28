@@ -79,16 +79,15 @@ type GetFocusPseudoStylesOptions = {
   offset?: number;
 };
 
-const defaultFocusPseudoStylesOptions: GetFocusPseudoStylesOptions = {
-  color: 'currentColor',
-  offset: 2,
-};
-
 /**
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
 export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles => {
-  const options: GetFocusPseudoStylesOptions = { ...defaultFocusPseudoStylesOptions, ...opts };
+  const options: GetFocusPseudoStylesOptions = {
+    color: 'currentColor',
+    offset: 2,
+    ...opts,
+  };
 
   const style: Styles = {
     '& a::before': {
