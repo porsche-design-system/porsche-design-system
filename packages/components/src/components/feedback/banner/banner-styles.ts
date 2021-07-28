@@ -54,7 +54,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     mergeDeep(
       buildSlottedStyles(host, getBaseSlottedStyles()),
-      buildSlottedStylesForDarkTheme(host, getBaseSlottedStyles(true))
+      buildSlottedStylesForDarkTheme(host, getBaseSlottedStyles('dark'))
     )
   );
 };
