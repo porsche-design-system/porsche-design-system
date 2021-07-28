@@ -89,7 +89,7 @@ export class Accordion {
 
     return (
       <div class={rootClasses}>
-        <PrefixedTagNames.pHeadline tag={this.tag} theme={this.theme} variant="inherit">
+        <PrefixedTagNames.pHeadline class="headline" tag={this.tag} theme={this.theme} variant="inherit">
           <button
             id={buttonId}
             type="button"
@@ -103,6 +103,7 @@ export class Accordion {
               color="inherit"
               name="arrowHeadDown"
               theme={this.theme}
+              size="inherit"
               aria-hidden="true"
             />
           </button>
