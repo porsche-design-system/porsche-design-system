@@ -27,28 +27,14 @@ $root: '.root';
     border-bottom: none;
   }
 
-  &--theme-dark {
+  &--theme-dark:not(&--compact) {
     border-color: $p-color-theme-dark-neutral-contrast-low;
   }
 }
 
-.headline {
-  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
-
-  #{$root}--size-medium & {
-    @include p-generate-type-scale($p-font-size-medium);
-  }
-
-  @each $breakpoint in $breakpoints {
-    @include p-media-query($breakpoint) {
-      &--size-small-#{$breakpoint} {
-        @include p-generate-type-scale($p-font-size-small);
-      }
-      &--size-medium-#{$breakpoint} {
-        @include p-generate-type-scale($p-font-size-medium);
-      }
-    }
-  }
+.heading {
+  margin: 0;
+  padding: 0;
 }
 
 button {
@@ -61,20 +47,41 @@ button {
   border: 0;
   background: transparent;
   cursor: pointer;
-  font-weight: $p-font-weight-semibold;
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   overflow: hidden; // fixes rotating icon to increase bounding box of focus outline in firefox
-
+  text-align: left;
+  color: $p-color-default;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
   @include p-focus($p-color-state-focus);
 
+  #{$root}--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
+
   #{$root}--size-medium & {
-    padding: p-px-to-rem(24px) 0;
+    @include p-generate-type-scale($p-font-size-medium);
+    padding: p-px-to-rem(20px) 0;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--size-small-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-small);
+        padding: p-px-to-rem(12px) 0;
+      }
+
+      #{$root}--size-medium-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-medium);
+        padding: p-px-to-rem(20px) 0;
+      }
+    }
   }
 
   #{$root}--compact & {
     padding: p-px-to-rem(4px) 0;
-    margin: p-px-to-rem(4px) 0;
-    outline-offset: 2px;
   }
 
   &:hover {
@@ -84,16 +91,6 @@ button {
       color: $p-color-theme-dark-state-hover;
     }
   }
-
-  // inherit headline styles except for slotted semibold weight override
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  text-align: inherit;
-  overflow-wrap: inherit;
-  word-wrap: inherit;
-  hyphens: inherit;
 }
 
 .icon {
@@ -103,6 +100,7 @@ button {
   transform-origin: 50% 50%;
   transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
+
   #{$root}--open & {
     transform: rotate3d(0, 0, 1, 180deg);
   }
@@ -118,6 +116,7 @@ button {
         width: #{p-calculate-line-height($p-font-size-small)}em;
         height: #{p-calculate-line-height($p-font-size-small)}em;
       }
+
       &--size-medium-#{$breakpoint} {
         width: #{p-calculate-line-height($p-font-size-medium)}em;
         height: #{p-calculate-line-height($p-font-size-medium)}em;
