@@ -43,6 +43,148 @@ Object {
 }
 `;
 
+exports[`getBaseSlottedStyles() should return correct default JssStyle 1`] = `
+Object {
+  "& a": Object {
+    "&::-moz-focus-inner": Object {
+      "border": "0",
+    },
+    "&:focus": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "&:hover": Object {
+      "color": "#d5001c",
+    },
+    "color": "inherit",
+    "outline": "transparent solid 1px",
+    "outlineOffset": "1px",
+    "textDecoration": "underline",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+  "& b, & strong": Object {
+    "fontWeight": 700,
+  },
+  "& em, & i": Object {
+    "fontStyle": "normal",
+  },
+}
+`;
+
+exports[`getBaseSlottedStyles() should return correct default JssStyle for dark theme 1`] = `
+Object {
+  "& a": Object {
+    "&::-moz-focus-inner": Object {
+      "border": "0",
+    },
+    "&:focus": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "&:hover": Object {
+      "color": "#ff0223",
+    },
+    "color": "inherit",
+    "outline": "transparent solid 1px",
+    "outlineOffset": "1px",
+    "textDecoration": "underline",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+  "& b, & strong": Object {
+    "fontWeight": 700,
+  },
+  "& em, & i": Object {
+    "fontStyle": "normal",
+  },
+}
+`;
+
+exports[`getBaseSlottedStyles() should return correct styles 1`] = `
+Object {
+  "& a": Object {
+    "&::-moz-focus-inner": Object {
+      "border": "0",
+    },
+    "&:focus": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "&:hover": Object {
+      "color": "#d5001c",
+    },
+    "color": "inherit",
+    "outline": "transparent solid 1px",
+    "outlineOffset": "1px",
+    "textDecoration": "underline",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+  "& b, & strong": Object {
+    "fontWeight": 700,
+  },
+  "& em, & i": Object {
+    "fontStyle": "normal",
+  },
+}
+`;
+
+exports[`getBaseSlottedStyles() should return correct styles for dark theme 1`] = `
+Object {
+  "& a": Object {
+    "&::-moz-focus-inner": Object {
+      "border": "0",
+    },
+    "&:focus": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "&:hover": Object {
+      "color": "#ff0223",
+    },
+    "color": "inherit",
+    "outline": "transparent solid 1px",
+    "outlineOffset": "1px",
+    "textDecoration": "underline",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+  "& b, & strong": Object {
+    "fontWeight": 700,
+  },
+  "& em, & i": Object {
+    "fontStyle": "normal",
+  },
+}
+`;
+
+exports[`getFocusPseudoStyles() should return correct default JssStyle 1`] = `
+Object {
+  "& a::before": Object {
+    "bottom": 0,
+    "content": "\\"\\"",
+    "display": "block",
+    "left": 0,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "& a:focus::before": Object {
+    "outlineColor": "currentColor",
+  },
+  "& a:focus:not(:focus-visible)::before": Object {
+    "outlineColor": "transparent",
+  },
+}
+`;
+
 exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
@@ -91,10 +233,35 @@ Object {
 }
 `;
 
+exports[`getFocusStyles() should return correct default JssStyle for dark theme 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "outlineColor": "currentColor",
+  },
+  "&:focus:not(:focus-visible)": Object {
+    "outlineColor": "transparent",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "2px",
+}
+`;
+
 exports[`getHoverStyles() should return correct default JssStyle 1`] = `
 Object {
   "&:hover": Object {
     "color": "#d5001c",
+  },
+  "transition": "color var(--p-transition-duration, .24s) ease",
+}
+`;
+
+exports[`getHoverStyles() should return correct default JssStyle for dark theme 1`] = `
+Object {
+  "&:hover": Object {
+    "color": "#ff0223",
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
 }
