@@ -120,6 +120,7 @@ const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
 export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
+  hasHref: boolean,
   theme: Theme
 ): string => {
   const isDarkTheme = isDark(theme);
@@ -158,7 +159,7 @@ export const getComponentCss = (
           transition: `background-color ${transitionDuration} ${transitionTimingFunction},
         border-color ${transitionDuration} ${transitionTimingFunction},
         color ${transitionDuration} ${transitionTimingFunction}`,
-          ...getFocusStyles(),
+          ...(hasHref && getFocusStyles()),
         },
         label: {
           color: iconColor,
@@ -205,9 +206,10 @@ export const addComponentCss = (
   host: HTMLElement,
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
+  hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(variant, hideLabel, theme));
+  attachCss(host, getComponentCss(variant, hideLabel, hasHref, theme));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
