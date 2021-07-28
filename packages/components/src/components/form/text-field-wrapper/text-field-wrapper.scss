@@ -232,6 +232,10 @@
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 }
 
+.sr-only {
+  @include text-hidden;
+}
+
 button {
   @include p-focus($p-color-state-focus, -4px);
   position: absolute;
