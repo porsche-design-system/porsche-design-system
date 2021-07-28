@@ -39,7 +39,7 @@ describe('PAccordion', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const button = getByTestId('host').shadowRoot.querySelector('p-headline button');
+    const button = getByTestId('host').shadowRoot.querySelector('button');
 
     expect(debug.innerHTML).toBe('Status: false; Event Counter: 0;');
 
