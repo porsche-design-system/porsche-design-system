@@ -59,18 +59,12 @@ describe('Accordion', () => {
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
         await forceHoveredState(page, '.hovered > p-accordion >>> button');
-        await forceHoveredState(page, '.hovered > p-accordion > span a');
-        await forceHoveredState(page, '.hovered > p-accordion > div a');
         await forceHoveredState(page, '.hovered > p-accordion > p-link-pure >>> a');
 
         await forceFocusedState(page, '.focused > p-accordion >>> button');
-        await forceFocusedState(page, '.focused > p-accordion > span a');
-        await forceFocusedState(page, '.focused > p-accordion > div a');
         await forceFocusedState(page, '.focused > p-accordion > p-link-pure >>> a');
 
         await forceFocusedHoveredState(page, '.focused-hovered > p-accordion >>> button');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-accordion > span a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-accordion > div a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-accordion > p-link-pure >>> a');
       })
     ).toBeFalsy();
