@@ -115,9 +115,9 @@
     }
 
     &#{$bem-block}--active {
-      color: $p-color-theme-dark-brand;
+      color: $p-color-theme-dark-state-active;
       + * {
-        color: $p-color-theme-dark-brand;
+        color: $p-color-theme-dark-state-active;
       }
     }
   }
