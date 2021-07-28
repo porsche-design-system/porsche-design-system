@@ -8,20 +8,20 @@ $root: '.root';
 
 :host(:first-of-type) {
   #{$root} {
-    border-top: 1px solid $p-color-neutral-contrast-medium;
+    border-top: 1px solid $p-color-theme-light-neutral-contrast-low;
 
     &--compact {
       border-top: none;
     }
 
     &--theme-dark:not(&--compact) {
-      border-color: $p-color-theme-dark-neutral-contrast-medium;
+      border-color: $p-color-theme-dark-neutral-contrast-low;
     }
   }
 }
 
 #{$root} {
-  border-bottom: 1px solid $p-color-neutral-contrast-medium;
+  border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
 
   @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
 
@@ -45,7 +45,7 @@ $root: '.root';
   }
 
   &--theme-dark {
-    border-color: $p-color-theme-dark-neutral-contrast-medium;
+    border-color: $p-color-theme-dark-neutral-contrast-low;
   }
 }
 
