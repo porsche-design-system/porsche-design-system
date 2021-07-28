@@ -63,7 +63,7 @@ button {
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   overflow: hidden; // fixes rotating icon to increase bounding box of focus outline in firefox
 
-  @include p-focus($p-color-state-focus, 0);
+  @include p-focus($p-color-state-focus);
 
   #{$root}--size-medium & {
     padding: p-px-to-rem(24px) 0;
