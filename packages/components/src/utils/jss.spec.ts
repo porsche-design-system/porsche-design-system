@@ -4,6 +4,8 @@ import {
   buildHostStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
+  buildSlottedStyles,
+  buildSlottedStylesForDarkTheme,
   getCss,
   isObject,
   mergeDeep,
@@ -119,6 +121,24 @@ describe('buildHostStyles()', () => {
 describe('buildGlobalStyles()', () => {
   it('should return @global styles object', () => {
     expect(buildGlobalStyles({ div: { marginLeft: 5 } })).toStrictEqual({ '@global': { div: { marginLeft: 5 } } });
+  });
+});
+
+describe('buildSlottedStyles()', () => {
+  it('should return @global styles object with node selector and important styles', () => {
+    const el = document.createElement('p-button');
+    expect(buildSlottedStyles(el, { div: { marginLeft: 5 } })).toStrictEqual({
+      '@global': { 'p-button': { div: { marginLeft: '5 !important' } } },
+    });
+  });
+});
+
+describe('buildSlottedStylesForDarkTheme()', () => {
+  it('should return @global styles object with node and attribute selector and important styles', () => {
+    const el = document.createElement('p-button');
+    expect(buildSlottedStylesForDarkTheme(el, { div: { marginLeft: 5 } })).toStrictEqual({
+      '@global': { 'p-button[theme="dark"]': { div: { marginLeft: '5 !important' } } },
+    });
   });
 });
 
