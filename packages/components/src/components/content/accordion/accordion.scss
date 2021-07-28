@@ -23,13 +23,19 @@ $root: '.root';
 #{$root} {
   border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
 
-  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
-
   &--compact {
     border-bottom: none;
   }
 
-  &--size-medium {
+  &--theme-dark {
+    border-color: $p-color-theme-dark-neutral-contrast-low;
+  }
+}
+
+.headline {
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+
+  #{$root}--size-medium & {
     @include p-generate-type-scale($p-font-size-medium);
   }
 
@@ -42,10 +48,6 @@ $root: '.root';
         @include p-generate-type-scale($p-font-size-medium);
       }
     }
-  }
-
-  &--theme-dark {
-    border-color: $p-color-theme-dark-neutral-contrast-low;
   }
 }
 
