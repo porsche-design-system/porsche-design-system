@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- `Link Pure` dark theme active color
+
 ### [2.3.0-beta.2] - 2021-07-15
 
 #### Added
