@@ -10,7 +10,6 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import { getContentHeight, setCollapsibleElementHeight, warnIfCompactAndSizeIsSet } from './accordion-utils';
-import { addSlottedCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
@@ -50,10 +49,6 @@ export class Accordion {
     this.setCollapsibleElementHeight();
   }
 
-  public connectedCallback(): void {
-    addSlottedCss(this.host);
-  }
-
   public componentWillLoad(): void {
     warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
@@ -86,10 +81,11 @@ export class Accordion {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const Heading = this.tag;
 
     return (
       <div class={rootClasses}>
-        <PrefixedTagNames.pHeadline tag={this.tag} theme={this.theme} variant="inherit">
+        <Heading class="heading">
           <button
             id={buttonId}
             type="button"
@@ -103,10 +99,11 @@ export class Accordion {
               color="inherit"
               name="arrowHeadDown"
               theme={this.theme}
+              size="inherit"
               aria-hidden="true"
             />
           </button>
-        </PrefixedTagNames.pHeadline>
+        </Heading>
         <div
           id={contentId}
           class="collapsible"
@@ -114,7 +111,7 @@ export class Accordion {
           aria-labelledby={buttonId}
           ref={(el) => (this.collapsibleElement = el)}
         >
-          <div class="content" ref={(el) => (this.content = el)}>
+          <div ref={(el) => (this.content = el)}>
             <slot />
           </div>
         </div>

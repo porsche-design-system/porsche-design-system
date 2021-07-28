@@ -223,8 +223,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     it('should not have focus on click', async () => {
       await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '0px' });
-      const visible = expectedStyleOnFocus({ color: 'default', offset: '0px' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'hover' });
 
       expect(await getOutlineStyle(button))
         .withContext('before click')
@@ -307,12 +307,10 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-accordion']).withContext('componentDidLoad: p-accordion').toBe(1);
-      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
       expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -324,7 +322,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       expect(status.componentDidUpdate['p-accordion']).withContext('componentDidUpdate: p-accordion').toBe(1);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
     });
   });
 });

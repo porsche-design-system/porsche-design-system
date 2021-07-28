@@ -169,6 +169,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         {{ content }}
       </p-accordion>
     </div>
+
+    <div
+      class="playground light"
+      title="should ignore size prop as breakpoint customizable and render compact accordion"
+    >
+      <p-accordion
+        [heading]="'Some compact Accordion with ignored size prop'"
+        [compact]="true"
+        [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
+      >
+        {{ content }}
+      </p-accordion>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
