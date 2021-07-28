@@ -113,7 +113,7 @@ const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
         icon: {
           left: pxToRemWithUnit(11),
           top: pxToRemWithUnit(11),
-          // transform: translateX(0) translateY(0),
+          transform: 'translate3d(0,0,0)',
         },
       };
 
