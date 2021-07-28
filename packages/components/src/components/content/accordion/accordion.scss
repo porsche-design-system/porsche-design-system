@@ -153,13 +153,6 @@ button {
   }
 }
 
-.content {
-  padding-top: $p-spacing-8;
-  #{$root}--compact & {
-    padding-top: 0;
-  }
-}
-
 @keyframes openAnimation {
   0% {
     overflow: hidden;
