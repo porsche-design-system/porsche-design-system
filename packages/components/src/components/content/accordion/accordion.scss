@@ -97,13 +97,32 @@ button {
 }
 
 .icon {
+  width: #{p-calculate-line-height($p-font-size-small)}em;
+  height: #{p-calculate-line-height($p-font-size-small)}em;
+  margin-left: $p-spacing-24;
   transform-origin: 50% 50%;
   transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
-  margin-left: $p-spacing-24;
-
   #{$root}--open & {
     transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  #{$root}--size-medium & {
+    width: #{p-calculate-line-height($p-font-size-medium)}em;
+    height: #{p-calculate-line-height($p-font-size-medium)}em;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-small-#{$breakpoint} {
+        width: #{p-calculate-line-height($p-font-size-small)}em;
+        height: #{p-calculate-line-height($p-font-size-small)}em;
+      }
+      &--size-medium-#{$breakpoint} {
+        width: #{p-calculate-line-height($p-font-size-medium)}em;
+        height: #{p-calculate-line-height($p-font-size-medium)}em;
+      }
+    }
   }
 }
 
