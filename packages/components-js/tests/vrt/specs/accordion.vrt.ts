@@ -45,12 +45,6 @@ describe('Accordion', () => {
               ${content}
             </div>
           </p-accordion>
-          <p-accordion theme="${theme}" open="true">
-            <span slot="heading">Some <i>italic</i> and <em>emphasis</em> heading with <a href="#">Link</a></span>
-            <div${getColorInlineStyle(theme)}>
-              Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
-            </div>
-          </p-accordion>
           <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
             <div${getColorInlineStyle(theme)}>
               ${content}
