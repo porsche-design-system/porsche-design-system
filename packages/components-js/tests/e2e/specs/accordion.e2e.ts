@@ -224,7 +224,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'default' });
+      const visible = expectedStyleOnFocus({ color: 'hover' });
 
       expect(await getOutlineStyle(button))
         .withContext('before click')
