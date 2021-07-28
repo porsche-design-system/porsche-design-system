@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { getPrefixedTagNames, isLabelVisible, isMessageVisible, getRole } from '../../../utils';
+import { getPrefixedTagNames, hasLabel, hasMessage, getRole } from '../../../utils';
 import type { FormState, TextSize } from '../../../types';
 
 @Component({
@@ -32,9 +32,9 @@ export class FieldsetWrapper {
 
     return (
       <fieldset class={rootClasses}>
-        {isLabelVisible(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
+        {hasLabel(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
         <slot />
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>

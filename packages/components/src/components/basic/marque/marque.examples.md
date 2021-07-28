@@ -1,6 +1,6 @@
 # Marque
 
-The marque gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
+The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
 
 ## Variants
 
@@ -18,6 +18,9 @@ This variant is to be used whenever the United States and/or Canada are not part
 The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provided.
 
 <Playground :markup="marqueWithTMAndLink"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+If the Marque is used with a link, make sure to add a descriptive ARIA label to inform screen reader users what the link stands for. 
 
 ## Bind events to the link
 
@@ -49,7 +52,7 @@ By default, the sizing is responsive, but can be changed to a static size when n
     size = 'small';
 
     marqueWithTM = `<p-marque></p-marque>`;
-    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com"></p-marque>`;
+    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com" aria-label="Porsche Homepage"></p-marque>`;
     marqueWithoutTM = `<p-marque trademark="false"></p-marque>`;
 
     get sizeMarkup() {

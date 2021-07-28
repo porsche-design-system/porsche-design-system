@@ -19,8 +19,8 @@ export const App = (): JSX.Element => {
         <option disabled value="">
           Select a page
         </option>
-        {routes.map((route) => (
-          <option key={route.path ?? route.name} disabled={route.isDisabled} value={route.path} children={route.name} />
+        {routes.map((route, i) => (
+          <option key={i} disabled={route.isDisabled} value={route.path} children={route.name} />
         ))}
       </select>
 
@@ -28,8 +28,8 @@ export const App = (): JSX.Element => {
         <Switch>
           {routes
             .filter((route) => !route.isDisabled)
-            .map((route) => (
-              <Route key={route.path} {...route} />
+            .map((route, i) => (
+              <Route key={i} {...route} />
             ))}
         </Switch>
       </div>

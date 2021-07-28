@@ -1,13 +1,4 @@
-import {
-  expectedStyleOnFocus,
-  getBrowser,
-  getOutlineStyle,
-  selectNode,
-  setAttribute,
-  setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { expectedStyleOnFocus, getBrowser, getOutlineStyle, selectNode, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('text-list', () => {
@@ -40,7 +31,6 @@ describe('text-list', () => {
       expect(await getOutlineStyle(link)).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 

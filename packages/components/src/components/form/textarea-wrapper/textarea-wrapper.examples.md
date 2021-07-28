@@ -1,9 +1,9 @@
 # Textarea
 
-The **Textarea** component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
+The `p-textarea-wrapper` component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
 such as a phone number or name. In this case, you should use the Text Field component. 
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Textarea Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
@@ -38,6 +38,11 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground :markup="disabled" :config="config"></Playground>
 
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users.
+They can be confusing for sighted users as well by not pointing out why these elements are disabled.
+A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
+
 ---
 
 ## Read only
@@ -48,7 +53,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 ## Validation states
 
-The **Textarea Wrapper** component supports the visualisation of inline validation. 
+The `p-textarea-wrapper` component supports the visualisation of inline validation. 
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state">
@@ -65,9 +70,15 @@ The **Textarea Wrapper** component supports the visualisation of inline validati
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
-Please make sure to set the corresponding **aria** attributes.
 
 <Playground :markup="slots" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
+1. Add a unique ID to the `slot="label"` element
+1. Add a unique ID to the `slot="message"` element (if they are created)
+1. Add corresponding `aria-labelledby="some-label-id"` to the `textarea` element which points to the `label` ID
+1. Add corresponding `aria-describedby="some-message-id"` to the `textarea` element which points to the `label` ID when the (error) message appears
 
 <script lang="ts">
   import Vue from 'vue';

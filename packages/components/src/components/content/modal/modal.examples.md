@@ -1,13 +1,13 @@
 # Modal
 
-A Modal is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
+The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
 
 Modals are flexible in the context and can include other components of the Porsche Design System.
 
-## Basic
-
-`p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
+It is a controlled component.
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
+
+## Basic
 
 It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
 Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place. 
@@ -19,49 +19,6 @@ In order to get notified when the Modal gets closed by clicking the `x` button, 
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
-### Vanilla JS
-
-```js
-modal.addEventListener('close', () => {
-  modal.removeAttribute('open');
-});
-```
-
-### Angular
-
-```ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'modal-page',
-  template: `<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>`,
-})
-export class ModalPage {
-  isModalOpen = false;
-
-  handleModalClose(e: CustomEvent<void>) {
-    this.isModalOpen = false;
-  }
-}
-```
-
-### React
-
-```tsx 
-import { useCallback, useState } from 'react';
-import { PModal } from '@porsche-design-system/components-react';
-
-const ModalPage = (): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleModalClose = useCallback(() => {
-    setIsModalOpen(false);
-  }, []);
-
-  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
-}
-
-```
-
 <Playground :markup="basic">
   <select v-model="width">
     <option disabled>Select a modal width</option>
@@ -70,8 +27,16 @@ const ModalPage = (): JSX.Element => {
   </select>
 </Playground>
 
-
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
+The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
+You can test it out by navigation this example with the keyboard only.
+
+### Framework Implementations
+
+<Playground :frameworkMarkup="frameworks"></Playground>
 
 ## Basic Scrollable
 
@@ -104,60 +69,90 @@ Furthermore, you lose helpful functionality like backdrop click. This is why ful
 Of course, any combination of the available options is possible.
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    modals = [];
-    width = 'minWidth';
-    
-    mounted() {
-      this.registerEvents();
-      
-      // workaround for iOS 13.x masking modal within example
-      document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-      // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
-      // timeout is needed for component to render 
-      setTimeout(() => {
-        document.getElementById('modal-scrollable').shadowRoot.querySelector('.p-modal').style.alignSelf = 'start'
-      }, 1000);
-    }
-    
-    updated() {
-      // event handling is registered again on every update since markup is changing and references are lost
-      this.registerEvents();
-    }
-    
-    registerEvents() {
-      this.modals = Array.from(document.querySelectorAll('p-modal'));
-      
-      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
-      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
-      
-      this.modals.forEach((modal, index) => {
-        modal.addEventListener('close', () => this.closeModal(index));
-        const buttons = Array.from(modal.querySelectorAll('p-button'));
-        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
-      });
-    }
-  
+@Component
+export default class Code extends Vue {
+  modals = [];
+  width = 'minWidth';
 
-    get basic() {
-      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
-      
-      return `<p-button>Open Modal</p-button>
+  frameworks = {
+    'vanilla-js': `modal.addEventListener('close', () => {
+  modal.removeAttribute('open');
+});`,
+    angular: `import { Component } from '@angular/core';
+
+@Component({
+  selector: 'modal-page',
+  template: \`<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>\`,
+})
+export class ModalPage {
+  isModalOpen = false;
+
+  handleModalClose(e: CustomEvent<void>) {
+    this.isModalOpen = false;
+  }
+}`,
+    react: `import { useCallback, useState } from 'react';
+import { PModal } from '@porsche-design-system/components-react';
+
+const ModalPage = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
+}`,
+  };
+
+  mounted() {
+    this.registerEvents();
+    
+    // workaround for iOS 13.x masking modal within example
+    document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
+
+    // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
+    // timeout is needed for component to render 
+    setTimeout(() => {
+      document.getElementById('modal-scrollable').shadowRoot.querySelector('.root').style.alignSelf = 'start'
+    }, 1000);
+  }
+
+  updated() {
+    // event handling is registered again on every update since markup is changing and references are lost
+    this.registerEvents();
+  }
+
+  registerEvents() {
+    this.modals = Array.from(document.querySelectorAll('p-modal'));
+    
+    const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+    buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+    
+    this.modals.forEach((modal, index) => {
+      modal.addEventListener('close', () => this.closeModal(index));
+      const buttons = Array.from(modal.querySelectorAll('p-button'));
+      buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
+    });
+  }
+
+
+  get basic() {
+    const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
+    
+    return `<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;}
-    
-    scrollable =
-`<p-button>Open Modal</p-button>
+  
+  scrollable =
+`<p-button type="button">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
   <div style="height: 40vh;"></div>
@@ -166,24 +161,24 @@ Of course, any combination of the available options is possible.
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary">Close</p-button>
   </p-button-group>
 </p-modal>`;
-    
-    withoutHeading =
-`<p-button>Open Modal</p-button>
+
+  withoutHeading =
+`<p-button type="button">Open Modal</p-button>
 <p-modal open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
-    
-    withoutCloseButton =
-`<p-button>Open Modal</p-button>
+
+  withoutCloseButton =
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
-    fullscreen =
-`<p-button>Open Modal</p-button>
+  fullscreen =
+`<p-button type="button">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">
@@ -191,19 +186,19 @@ Of course, any combination of the available options is possible.
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button variant="tertiary">Close</p-button>
+      <p-button type="button" variant="tertiary">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;
-    
-    openModal(index: number): void {
-      this.modals[index].setAttribute('open', 'true');
-    }
-    
-    closeModal(index: number): void {
-      this.modals[index].setAttribute('open', 'false');
-    }
+
+  openModal(index: number): void {
+    this.modals[index].setAttribute('open', 'true');
   }
+  
+  closeModal(index: number): void {
+    this.modals[index].setAttribute('open', 'false');
+  }
+}
 </script>
 
 <style scoped lang="scss">

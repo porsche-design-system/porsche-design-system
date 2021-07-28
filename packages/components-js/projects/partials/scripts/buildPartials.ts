@@ -7,6 +7,7 @@ import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
 import { generateIconLinksPartial } from './generateIconLinksPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
+import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
@@ -26,6 +27,7 @@ const generatePartials = async (): Promise<void> => {
     generateComponentChunkLinksPartial(),
     generateMetaTagsAndIconLinksPartial(),
     generateIconLinksPartial(),
+    generateLoaderScriptPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

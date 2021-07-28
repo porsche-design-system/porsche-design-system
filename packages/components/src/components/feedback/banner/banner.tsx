@@ -1,8 +1,8 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
-import { addCss } from './banner-utils';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { addComponentCss } from './banner-styles';
 
 @Component({
   tag: 'p-banner',
@@ -31,13 +31,13 @@ export class Banner {
 
   public connectedCallback(): void {
     if (!this.persistent) {
-      document.addEventListener('keydown', this.handleKeyboardEvents);
+      document.addEventListener('keydown', this.onKeyboardEvent);
     }
     this.addSlottedStyles();
   }
 
   public componentWillRender(): void {
-    addCss(this.host);
+    addComponentCss(this.host);
   }
 
   public componentDidLoad(): void {
@@ -48,7 +48,7 @@ export class Banner {
 
   public disconnectedCallback(): void {
     if (!this.persistent) {
-      document.removeEventListener('keydown', this.handleKeyboardEvents);
+      document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
@@ -88,6 +88,7 @@ export class Banner {
             {!this.persistent && (
               <div class="close">
                 <PrefixedTagNames.pButtonPure
+                  type="button"
                   icon="close"
                   hideLabel={true}
                   onClick={this.removeBanner}
@@ -103,8 +104,7 @@ export class Banner {
     );
   }
 
-  private handleKeyboardEvents = (e: KeyboardEvent): void => {
-    const { key } = e;
+  private onKeyboardEvent = ({ key }: KeyboardEvent): void => {
     if (key === 'Esc' || key === 'Escape') {
       this.removeBanner();
     }
@@ -115,13 +115,12 @@ export class Banner {
     this.host.classList.add('banner--close');
     setTimeout(() => {
       this.host.remove();
-    }, 1000);
+    }, 600); // duration of animation
   };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

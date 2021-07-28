@@ -1,21 +1,23 @@
-import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
+  getRole,
   getTagName,
-  hasNamedSlot,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   insertSlottedStyles,
   isDark,
   isRequiredAndParentNotRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
+  observeProperties,
   prefix,
   setAriaAttributes,
   setAttribute,
-  getRole,
-  observeProperties,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
@@ -73,7 +75,7 @@ export class SelectWrapper {
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
-  public handleOnClick(e: MouseEvent): void {
+  public onClick(e: MouseEvent): void {
     if (this.filter) {
       e.stopPropagation();
     }
@@ -96,10 +98,10 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if (this.filter) {
-      this.fakeFilter.addEventListener('click', this.handleFilterInputClick);
-      this.filterInput.addEventListener('mousedown', this.handleFilterInputClick);
-      this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
-      this.filterInput.addEventListener('input', this.handleFilterSearch);
+      this.fakeFilter.addEventListener('click', this.onFilterInputClick);
+      this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
+      this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
+      this.filterInput.addEventListener('input', this.onFilterSearch);
     }
   }
 
@@ -183,13 +185,13 @@ export class SelectWrapper {
       <Host>
         <div class={selectClasses}>
           <label id="p-label">
-            {this.isLabelVisible && (
+            {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
-            {this.isDescriptionVisible && (
+            {hasDescription(this.host, this.description) && (
               <PrefixedTagNames.pText
                 class={descriptionClasses}
                 tag="span"
@@ -235,25 +237,13 @@ export class SelectWrapper {
             </div>
           )}
         </div>
-        {this.isMessageVisible && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || hasNamedSlot(this.host, 'description');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   /*
@@ -295,7 +285,7 @@ export class SelectWrapper {
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
-      attributeFilter: ['disabled', 'selected', 'hidden'],
+      attributeFilter: ['disabled', 'selected', 'hidden', 'required'],
     });
   }
 
@@ -310,39 +300,39 @@ export class SelectWrapper {
 
     if (this.renderCustomDropDown) {
       this.setOptionList();
-      this.select.addEventListener('keydown', this.handleKeyboardEvents);
+      this.select.addEventListener('keydown', this.onKeyboardEvents);
 
       if (!this.filter) {
-        this.select.addEventListener('mousedown', this.handleMouseEvents);
+        this.select.addEventListener('mousedown', this.onMouseEvents);
       }
       if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.handleClickOutside, true);
+        document.addEventListener('mousedown', this.onClickOutside, true);
       }
     }
   }
 
   private disconnectCustomDropDown(): void {
-    this.select.removeEventListener('mousedown', this.handleMouseEvents);
-    this.select.removeEventListener('keydown', this.handleKeyboardEvents);
+    this.select.removeEventListener('mousedown', this.onMouseEvents);
+    this.select.removeEventListener('keydown', this.onKeyboardEvents);
     if (typeof document !== 'undefined') {
-      document.removeEventListener('mousedown', this.handleClickOutside, true);
+      document.removeEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
-  private handleClickOutside = (e: MouseEvent): void => {
+  private onClickOutside = (e: MouseEvent): void => {
     if (!e.composedPath().includes(this.host)) {
       this.handleVisibilityOfFakeOptionList('hide');
     }
   };
 
-  private handleMouseEvents = (e: MouseEvent): void => {
+  private onMouseEvents = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-    this.handleFocus(e);
+    this.onFocus(e);
     this.handleVisibilityOfFakeOptionList('toggle');
   };
 
-  private handleFocus(e: MouseEvent): void {
+  private onFocus(e: MouseEvent): void {
     if (!this.filter) {
       this.select.focus();
     } else {
@@ -390,7 +380,7 @@ export class SelectWrapper {
     }
   }
 
-  private handleKeyboardEvents = (e: KeyboardEvent): void => {
+  private onKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
@@ -560,7 +550,7 @@ export class SelectWrapper {
               [prefix('select-wrapper__fake-option--disabled')]: disabled,
               [prefix('select-wrapper__fake-option--hidden')]: hidden || initiallyHidden,
             }}
-            onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.handleFocus(e))}
+            onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.onFocus(e))}
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
@@ -645,7 +635,7 @@ export class SelectWrapper {
   /*
    * <START CUSTOM FILTER>
    */
-  private handleFilterInputClick = (): void => {
+  private onFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
       this.handleVisibilityOfFakeOptionList('toggle');
@@ -662,7 +652,7 @@ export class SelectWrapper {
     }));
   };
 
-  private handleFilterSearch = (ev: InputEvent): void => {
+  private onFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
 
@@ -674,7 +664,6 @@ export class SelectWrapper {
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

@@ -23,8 +23,7 @@ type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
-  const func = `
-export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
+  const func = `export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
 export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
   const options: FontPreloadLinkOptions = {

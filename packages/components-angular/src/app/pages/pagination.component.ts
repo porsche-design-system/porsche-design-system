@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-pagination',
@@ -57,5 +57,6 @@ import { Component } from '@angular/core';
       ></p-pagination>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {}

@@ -1,6 +1,6 @@
 import { cleanMarkup, convertToAngular, convertToReact, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
 
-describe('cleanMarkup', () => {
+describe('cleanMarkup()', () => {
   it('should replace multiple br tags with new line', () => {
     const markup = `<div></div><br><div></div><br><div></div>`;
     expect(cleanMarkup(markup)).toBe(`<div></div>
@@ -18,21 +18,54 @@ describe('cleanMarkup', () => {
   });
 });
 
-describe('patchThemeIntoMarkup', () => {
-  it('should not add light theme', () => {
+describe('patchThemeIntoMarkup()', () => {
+  it('should not add light theme to any tag', () => {
+    const markup1 = `<p-some-tag some-attribute="some value"></p-some-tag>`;
+    expect(patchThemeIntoMarkup(markup1, 'light')).toBe(markup1);
+
+    const markup2 = `<p-button some-attribute="some value"></p-button>`;
+    expect(patchThemeIntoMarkup(markup2, 'light')).toBe(markup2);
+  });
+
+  it('should not add light theme to unknown tag', () => {
     const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
     expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
   });
 
-  it('should add dark theme', () => {
+  it('should add dark theme to themeable tag', () => {
+    const markup = `<p-button some-attribute="some value"></p-button>`;
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(`<p-button theme="dark" some-attribute="some value"></p-button>`);
+  });
+
+  it('should not add dark theme to unknown tag', () => {
     const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
-    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(
-      `<p-some-tag theme="dark" some-attribute="some value"></p-some-tag>`
-    );
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(markup);
+  });
+
+  describe('in React', () => {
+    it('should not add light theme', () => {
+      const markup = `<PButton some-attribute="some value"></PButton>`;
+      expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
+    });
+
+    it('should not add light theme to unknown tag', () => {
+      const markup = `<PSomeTag some-attribute="some value"></PSomeTag>`;
+      expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
+    });
+
+    it('should not add dark theme to unknown tag', () => {
+      const markup = `<PSomeTag some-attribute="some value"></PSomeTag>`;
+      expect(patchThemeIntoMarkup(markup, 'dark')).toBe(markup);
+    });
+
+    it('should add dark theme', () => {
+      const markup = `<PButton some-attribute="some value"></PButton>`;
+      expect(patchThemeIntoMarkup(markup, 'dark')).toBe(`<PButton theme="dark" some-attribute="some value"></PButton>`);
+    });
   });
 });
 
-describe('convertToAngular', () => {
+describe('convertToAngular()', () => {
   it('should convert markup to Angular syntax', () => {
     const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
@@ -48,7 +81,7 @@ describe('convertToAngular', () => {
   });
 });
 
-describe('convertToReact', () => {
+describe('convertToReact()', () => {
   it('should convert markup to React syntax', () => {
     const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
@@ -82,7 +115,7 @@ describe('convertToReact', () => {
   });
 });
 
-describe('escapeHtml', () => {
+describe('escapeHtml()', () => {
   it('should replace special characters', () => {
     const markup = `<a href="https://porsche.com?param1=x&param2=y" target='_blank'>Link</a>`;
     expect(escapeHtml(markup)).toBe(

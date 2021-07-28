@@ -8,13 +8,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.3.0] - 2021-07-28
+
+### [2.3.0-beta.3] - 2021-07-28
+
+#### Changed
+- `Accordion` reduce paddings, vertically align carets to the first heading row, adjust border color and hover styles
+
+#### Fixed
+- `Text Field Wrapper` accessibility of type password and search
+
+### [2.3.0-beta.2] - 2021-07-15
+
+#### Added
+- `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` now reflect changes of the `required` attribute on their child component
+- `multiline` property to `Table Cell`
+- Partial function `getLoaderScript()` to initialize Porsche Design System as early as possible
+
+#### Fixed
+- `Table Head Cell` uses semi bold instead of bold as font weight
+- Transition of `Modal`
+
+### [2.3.0-beta.1] - 2021-07-08
+
+#### Added
+- `Accordion`
+
+#### Changed
+- Removed initial delay of `Banner`
+
+### [2.3.0-beta.0] - 2021-07-01
+
+#### Added
+- `Table`
+- Angular: export types from package root
+- Accessibility icon
+
+#### Changed
+- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
+- `Text` and `Headline` inherits white-space CSS property
+- React: sync component props via property instead of attribute 
+
+#### Fixed
+- Angular: support `"strictTemplates": true` option in `tsconfig.json`
+- Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components
+
 ### [2.2.1] - 2021-06-08
 
 #### Changed
 - Optimize vertical alignment of `Modal`
 
 #### Fixed
-- URL of inject global style warning
+- URL in inject global style warning
 
 ### [2.2.1-beta.1] - 2021-06-02
 
@@ -67,7 +112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [2.0.3-beta] - 2021-04-28
 
 #### Fixed
--  Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
+- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
 ### [2.0.2] - 2021-04-21
 

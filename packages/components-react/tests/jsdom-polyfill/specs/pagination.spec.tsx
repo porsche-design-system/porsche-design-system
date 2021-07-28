@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 
 const Sample = (): JSX.Element => {
   const [activePage, setActivePage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
   const [eventCounter, setEventCounter] = useState(0);
 
   return (
@@ -15,15 +14,13 @@ const Sample = (): JSX.Element => {
         itemsPerPage={25}
         activePage={activePage}
         onPageChange={(e) => {
-          setCurrentPage(e.detail.page);
+          setActivePage(e.detail.page);
           setEventCounter(eventCounter + 1);
         }}
         data-testid="host"
       />
-      <button type="button" data-testid="button1" onClick={() => setActivePage(4)} />
-      <button type="button" data-testid="button2" onClick={() => setActivePage(7)} />
       <div data-testid="debug">
-        {`Current Page: ${currentPage};`} {`Event Counter: ${eventCounter};`}
+        {`Current Page: ${activePage};`} {`Event Counter: ${eventCounter};`}
       </div>
     </>
   );
@@ -42,15 +39,14 @@ describe('PPagination', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const button1 = getByTestId('button1');
-    const button2 = getByTestId('button2');
+    const [, btn2, btn3] = Array.from(getByTestId('host').shadowRoot.querySelectorAll('.goto'));
 
     expect(debug.innerHTML).toBe('Current Page: 1; Event Counter: 0;');
 
-    userEvent.click(button1);
-    expect(debug.innerHTML).toBe('Current Page: 4; Event Counter: 1;');
+    userEvent.click(btn2);
+    expect(debug.innerHTML).toBe('Current Page: 2; Event Counter: 1;');
 
-    userEvent.click(button2);
-    expect(debug.innerHTML).toBe('Current Page: 7; Event Counter: 2;');
+    userEvent.click(btn3);
+    expect(debug.innerHTML).toBe('Current Page: 3; Event Counter: 2;');
   });
 });

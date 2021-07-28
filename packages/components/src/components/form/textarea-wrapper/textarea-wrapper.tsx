@@ -4,13 +4,13 @@ import {
   getPrefixedTagNames,
   getTagName,
   insertSlottedStyles,
-  isDescriptionVisible,
-  isLabelVisible,
-  isMessageVisible,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   mapBreakpointPropToClasses,
   setAriaAttributes,
-  observeMutations,
-  unobserveMutations,
+  observeAttributes,
+  unobserveAttributes,
   getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
@@ -44,12 +44,12 @@ export class TextareaWrapper {
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-    this.observeMutations();
+    this.observeAttributes();
   }
 
   public componentDidRender(): void {
@@ -66,7 +66,7 @@ export class TextareaWrapper {
   }
 
   public disconnectedCallback(): void {
-    unobserveMutations(this.textarea);
+    unobserveAttributes(this.textarea);
   }
 
   public render(): JSX.Element {
@@ -85,20 +85,20 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={rootClasses}>
-          {isLabelVisible(this.host, this.label) && (
+          {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class="root__text" {...labelProps}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
-          {isDescriptionVisible(this.host, this.description) && (
+          {hasDescription(this.host, this.description) && (
             <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
           <slot />
         </label>
-        {isMessageVisible(this.host, this.message, this.state) && (
+        {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
@@ -111,14 +111,13 @@ export class TextareaWrapper {
     this.textarea.focus();
   };
 
-  private observeMutations = (): void => {
-    observeMutations(this.textarea, ['disabled', 'readonly'], () => forceUpdate(this.host));
+  private observeAttributes = (): void => {
+    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
     const style = `${tagName} a {
-      outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
       transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;

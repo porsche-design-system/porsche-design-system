@@ -1,9 +1,9 @@
 # Banner
-The **Banner** component are used to provide action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics. 
+The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics. 
 Whenever you want to provide brief, temporary notifications stick to the **Toast component** (work in progress) instead. They are noticeable but do not disrupt the user experience and do not require an action to be taken.
 
 ## Basic implementation
-The **Banner** component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
+The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
 
 <Playground :markup="basic" :config="config">
   <select v-model="state">
@@ -20,7 +20,7 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 <Playground :markup="persistent" :config="config"></Playground>
 
 ## Width
-The **Banner** behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
+The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
 
 <Playground :markup="markupWidth" :config="config">
   <select v-model="width">
@@ -33,10 +33,15 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 
 ## Example with user interaction
 
-<p-button v-on:click="openBanner">Open Banner</p-button>
+<p-button type="button" v-on:click="openBanner($event)">Open Banner</p-button>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC` or `Enter` key:
+The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is closed. This is important to keep focus order consistent.
+You can test it out by navigation this example with the keyboard only.
 
 ## Custom styling
-The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+The `p-banner` component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
 ```scss
 // default CSS variables
@@ -82,13 +87,17 @@ p-banner {
 </p-banner>`;
     }
     
-    openBanner = () => {
+    openBanner = (event) => {
       const el = document.createElement('p-banner');
+      const currentTarget = event.currentTarget;
       el.innerHTML = `
         <span slot="title">Some banner title</span>
         <span slot="description">Some banner description.</span>
       `;
       document.getElementById('app').append(el);
+      el.addEventListener('dismiss', () => {
+        currentTarget.focus();
+      });
     };
   
     mounted(): void {

@@ -7,7 +7,6 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -43,7 +42,6 @@ describe('text', () => {
       expect(await getOutlineStyle(link)).toBe(hidden);
 
       await link.click();
-      await waitForInheritedCSSTransition(page);
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
@@ -61,10 +59,10 @@ describe('text', () => {
       await initText();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
-      expect(status.componentDidLoad.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all).withContext('componentDidUpdate: all').toBe(1);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -76,8 +74,8 @@ describe('text', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-text']).toBe(1, 'componentDidUpdate: p-text');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate['p-text']).withContext('componentDidUpdate: p-text').toBe(1);
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
 

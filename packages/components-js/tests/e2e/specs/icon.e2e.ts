@@ -218,10 +218,10 @@ describe('icon', () => {
           await initIcon(opts);
           const status = await getLifecycleStatus(page);
 
-          expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+          expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
-          expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-          expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+          expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
+          expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
         });
 
         it('should work without unnecessary round trips after state change', async () => {
@@ -233,10 +233,10 @@ describe('icon', () => {
 
           const status = await getLifecycleStatus(page);
 
-          expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+          expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
 
-          expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-          expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+          expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
+          expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
         });
       });
     });

@@ -1,13 +1,8 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
 import { getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
-import {
-  addCss,
-  getFirstAndLastElement,
-  getFocusableElements,
-  getScrollTopOnTouch,
-  setScrollLock,
-} from './modal-utils';
+import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
+import { addComponentCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -61,7 +56,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    addCss(this.host, this.open);
+    addComponentCss(this.host, this.open);
   }
 
   public componentDidUpdate(): void {
@@ -86,7 +81,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
+      <Host onClick={!this.disableBackdropClick && this.onHostClick}>
         <aside
           class={rootClasses}
           role="dialog"
@@ -104,6 +99,7 @@ export class Modal {
               {!this.disableCloseButton && (
                 <div class="close">
                   <PrefixedTagNames.pButtonPure
+                    type="button"
                     ref={(el) => (this.closeBtn = el)}
                     hideLabel
                     icon="close"
@@ -127,10 +123,10 @@ export class Modal {
   };
 
   private setKeyboardListener = (active: boolean): void => {
-    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
+    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvent);
   };
 
-  private handleKeyboardEvents = (e: KeyboardEvent): void => {
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
     if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
@@ -164,7 +160,7 @@ export class Modal {
     this.close.emit();
   };
 
-  private handleHostClick = (e: MouseEvent): void => {
+  private onHostClick = (e: MouseEvent): void => {
     const [firstEl] = e.composedPath() as HTMLElement[];
     if (firstEl === this.host) {
       this.closeModal();

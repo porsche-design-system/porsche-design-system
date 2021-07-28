@@ -2,7 +2,6 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
@@ -22,9 +21,10 @@ describe('chunks', () => {
     const baseDir = path.resolve(path.normalize('./'), 'tests/unit');
     const fixturesDir = path.resolve(baseDir, 'fixtures');
     const resultsDir = path.resolve(baseDir, 'results');
+    const rawStatsFileName = 'stats-raw.json';
     const statsFileName = 'stats.json';
 
-    type Stats = {
+    type RawStats = {
       [key: string]: any;
       assets: {
         type: string;
@@ -34,42 +34,63 @@ describe('chunks', () => {
       }[];
     };
 
-    const getStats = (type: 'fixture' | 'result'): Stats => {
-      const statsDir = type === 'fixture' ? fixturesDir : resultsDir;
-      const statsFile = path.resolve(statsDir, statsFileName);
+    const getRawStats = (): RawStats => {
+      const statsFile = path.resolve(resultsDir, rawStatsFileName);
       const statsFileContent = fs.readFileSync(statsFile, 'utf8');
       return JSON.parse(statsFileContent);
     };
 
-    const statsFixture = getStats('fixture');
-    const statsResult = getStats('result');
+    const getFixtureStats = (): FixtureStats[] => {
+      const statsFile = path.resolve(fixturesDir, statsFileName);
+      const statsFileContent = fs.readFileSync(statsFile, 'utf8');
+      return JSON.parse(statsFileContent);
+    };
+
+    const writeStatsResults = (stats: FixtureStats[]): void => {
+      const statsFile = path.resolve(resultsDir, statsFileName);
+      fs.writeFileSync(statsFile, JSON.stringify(stats, null, 2));
+    };
+
+    const fixtureStats = getFixtureStats();
+    const rawStatsResult = getRawStats();
+
+    type FixtureStats = {
+      chunkShortName: string;
+      size: number;
+      gzipSize: number;
+    };
 
     type StatsResult = {
       chunkName: string;
       chunkShortName: string;
       oldSize: number;
       newSize: number;
-      newGzipSize: number;
       diffSize: number;
+      oldGzipSize?: number;
+      newGzipSize: number;
+      diffGzipSize?: number;
     };
     const statsResults: StatsResult[] = [];
 
-    statsResult.assets
+    rawStatsResult.assets
       .sort((a, b) => a.chunks[0].localeCompare(b.chunks[0])) // sort by shortChunkName
       .forEach((assetResult) => {
         const [chunkShortName] = assetResult.chunks;
         const { name: chunkName, size: newSize } = assetResult;
 
-        const assetFixture = statsFixture.assets.find((x) => x.chunks[0] === chunkShortName);
-        const { size: oldSize } = assetFixture;
+        const { size: oldSize, gzipSize: oldGzipSize } =
+          fixtureStats.find((x) => x.chunkShortName === chunkShortName) || {};
+        const newGzipSize = gzipSize.sync(getChunkContent(chunkName));
 
         const stat: StatsResult = {
           chunkName,
           chunkShortName,
           oldSize,
           newSize,
-          newGzipSize: gzipSize.sync(getChunkContent(chunkName)),
           diffSize: newSize - oldSize,
+          oldGzipSize,
+          newGzipSize,
+          diffGzipSize: newGzipSize - oldGzipSize,
         };
 
         statsResults.push(stat);
@@ -80,6 +101,13 @@ describe('chunks', () => {
           expect(stat.diffSize).toBeLessThanOrEqual(allowedSizeChange);
           expect(stat.diffSize).toBeGreaterThanOrEqual(-allowedSizeChange);
         });
+
+        const fixtureResults = statsResults.map<FixtureStats>(({ chunkShortName, newSize, newGzipSize }) => ({
+          chunkShortName,
+          size: newSize,
+          gzipSize: newGzipSize,
+        }));
+        writeStatsResults(fixtureResults);
       });
 
     afterAll(() => {
@@ -94,21 +122,42 @@ describe('chunks', () => {
         return `${getSign(parseFloat(value))}${value} %`;
       };
 
-      const formatTable = ({ chunkShortName, oldSize, newSize, diffSize, newGzipSize }: StatsResult): string =>
+      const formatTable = ({
+        chunkShortName,
+        oldSize,
+        newSize,
+        diffSize,
+        oldGzipSize,
+        newGzipSize,
+        diffGzipSize,
+      }: StatsResult): string =>
         [
           formatFirstCol(chunkShortName),
           formatNumberCol(`${formatKB(oldSize)}`),
           formatNumberCol(`${formatKB(newSize)}`),
           formatNumberCol(`${formatKB(diffSize, true)}`),
           formatNumberCol(`${formatPercent(oldSize, diffSize)}`),
+          formatNumberCol(`${formatKB(oldGzipSize)}`),
           formatNumberCol(`${formatKB(newGzipSize)}`),
+          formatNumberCol(`${formatKB(diffGzipSize, true)}`),
+          formatNumberCol(`${formatPercent(oldGzipSize, diffGzipSize)}`),
         ].join('');
 
-      const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %', 'gzipSize'];
+      const header = [
+        'chunkName',
+        'oldSize',
+        'newSize',
+        'diffSize',
+        'diff %',
+        'oldGzipSize',
+        'newGzipSize',
+        'diffGzip',
+        'diff %',
+      ];
 
       const tableHead = [
         header.map((x, idx) => (idx === 0 ? formatFirstCol(x) : formatNumberCol(x))),
-        Array.from(Array(6)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+        Array.from(Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
       ]
         .map((arr) => arr.join(''))
         .join('\n');
@@ -116,18 +165,28 @@ describe('chunks', () => {
       const tableBody = statsResults.map(formatTable).join('\n');
 
       const totalStats: StatsResult = statsResults.reduce(
-        (pv, { oldSize, newSize, diffSize, newGzipSize }) => {
+        (pv, { oldSize, newSize, diffSize, oldGzipSize, newGzipSize, diffGzipSize }) => {
           pv.oldSize += oldSize;
           pv.newSize += newSize;
           pv.diffSize += diffSize;
+          pv.oldGzipSize += oldGzipSize;
           pv.newGzipSize += newGzipSize;
+          pv.diffGzipSize += diffGzipSize;
           return pv;
         },
-        { chunkShortName: 'total', oldSize: 0, newSize: 0, diffSize: 0, newGzipSize: 0 } as StatsResult
+        {
+          chunkShortName: 'total',
+          oldSize: 0,
+          newSize: 0,
+          diffSize: 0,
+          oldGzipSize: 0,
+          newGzipSize: 0,
+          diffGzipSize: 0,
+        } as StatsResult
       );
 
       const tableFooter = [
-        Array.from(Array(6)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+        Array.from(Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
         [totalStats].map(formatTable),
       ]
         .map((arr) => arr.join(''))

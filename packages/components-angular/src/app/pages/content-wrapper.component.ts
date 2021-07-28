@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-content-wrapper',
@@ -66,5 +66,6 @@ import { Component } from '@angular/core';
       </p-content-wrapper>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentWrapperComponent {}

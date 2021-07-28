@@ -1,5 +1,6 @@
-import { camelCase, pascalCase } from 'change-case';
+import { camelCase, paramCase, pascalCase } from 'change-case';
 import { Theme } from '@/models';
+import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 
 export const cleanMarkup = (markup: string): string =>
   markup
@@ -11,8 +12,12 @@ export const cleanMarkup = (markup: string): string =>
 export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
   theme === 'dark'
     ? markup
-        // add dark theme attribute
-        .replace(/(<p-[\w-]+)/g, '$1 theme="dark"')
+        // add dark theme attribute if component supports it
+        .replace(/(<[pP][\w-]+)/g, (m, $tag) => {
+          return getComponentMeta(paramCase($tag.replace('<', '')) as TagName)?.isThemeable
+            ? `${$tag} theme="dark"`
+            : $tag;
+        })
     : markup;
 
 export const convertToAngular = (markup: string): string =>

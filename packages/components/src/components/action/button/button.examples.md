@@ -1,6 +1,10 @@
 # Button
 
-The `<p-button>` component is essential for performing form or interaction events. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. It can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label,it is best practice to provide a descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the [Link](components/link) component instead.
+The `p-button` component is essential for performing form or **interaction** events. 
+For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (**Primary**, **Secondary**, **Tertiary**) are available for usage. 
+A Button can be used with or without a label but it's recommended to keep the **label visible** for better **usability** whenever possible. 
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. 
+Whenever you want to provide navigational elements, stick to the [Link](components/link) component instead.
 
 ## Variants
 
@@ -21,6 +25,11 @@ Choose between predefined styling variants.
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Submit contact form"`
+* If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
+* In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 
 ---
 
@@ -52,7 +61,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
     config = { themeable: true, spacing: 'inline' };
     
     primary = 
-`<p-button variant="primary">Some label</p-button>
+`<p-button variant="primary" aria-label="Some descriptive label">Some label</p-button>
 <p-button variant="primary" disabled>Some label</p-button>
 <p-button variant="primary" loading>Some label</p-button>
 <br>

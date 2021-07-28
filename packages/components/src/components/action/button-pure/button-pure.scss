@@ -10,7 +10,6 @@
     height: auto;
     margin-left: p-px-to-rem(4px);
     padding: 0 0.125em 0 0;
-    white-space: normal;
     overflow: visible;
     clip: auto;
     clip-path: none;
@@ -26,7 +25,6 @@
     margin-left: -1px;
     margin-top: 0;
     padding: 0;
-    white-space: nowrap;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
@@ -64,7 +62,7 @@
     color: $p-color-default;
   }
 
-  &:not(:disabled) {
+  &:not(:disabled):not(&--loading) {
     &:hover {
       color: $p-color-state-hover;
       + * {
@@ -80,7 +78,8 @@
     }
   }
 
-  &:disabled {
+  &:disabled,
+  &--loading {
     cursor: not-allowed;
     color: $p-color-state-disabled;
     + * {
@@ -96,7 +95,7 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not(:disabled) {
+    &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
         + * {
@@ -112,7 +111,8 @@
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &#{$bem-block}--loading {
       color: $p-color-theme-dark-state-disabled;
       + * {
         color: $p-color-theme-dark-state-disabled;

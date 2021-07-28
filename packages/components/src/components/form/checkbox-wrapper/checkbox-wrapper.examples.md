@@ -1,8 +1,8 @@
 # Checkbox
 
-The **Checkbox** component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
+The `p-checkbox-wrapper` component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The **Checkbox Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-checkbox-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
 ## Basic example
 
@@ -42,11 +42,16 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
 
 <Playground :markup="disabled" :config="config"></Playground>
 
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users.
+They can be confusing for sighted users as well by not pointing out why these elements are disabled.
+A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
+
 ---
 
 ## Validation states
 
-The **Checkbox Wrapper** component supports the visualisation of inline validation. The `message` and `checkbox` is colored and visible/hidden depending on the defined `state`.
+The `p-checkbox-wrapper` component supports the visualisation of inline validation. The `message` and `checkbox` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validation" :config="config">
   <select v-model="state">
@@ -63,9 +68,15 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
-Please make sure to set the corresponding **aria** attributes.
 
 <Playground :markup="slots" :config="config"></Playground>
+
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information: 
+1. Add a unique ID to the `slot="label"` element
+1. Add a unique ID to the `slot="message"` element (if they are created)
+1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
+1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `label` ID when the (error) message appears
 
 <script lang="ts">
   import Vue from 'vue';
