@@ -150,18 +150,9 @@ export class SelectWrapper {
       ['label--disabled']: this.disabled,
       ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
-    const fakeSelectClasses = {
-      ['fake-select']: true,
-      ['fake-select--disabled']: this.disabled,
-    };
     const iconClasses = {
       ['icon']: true,
-      ['icon--disabled']: this.disabled,
       ['icon--opened']: !this.fakeOptionListHidden,
-    };
-    const inputClasses = {
-      ['input']: true,
-      ['input--disabled']: this.disabled,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
@@ -184,7 +175,7 @@ export class SelectWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            <span class={fakeSelectClasses}>
+            <span class="fake-select">
               <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" />
               <slot />
             </span>
@@ -192,7 +183,6 @@ export class SelectWrapper {
           {this.filter && [
             <input
               type="text"
-              class={inputClasses}
               role="combobox"
               aria-autocomplete="both"
               aria-controls="p-listbox"
