@@ -9,7 +9,6 @@ export * from './focus-handling';
 export * from './get-prefixed-tag-name';
 export * from './jss';
 export * from './line-height';
-export * from './prefix';
 export * from './property-observer';
 export * from './resize-observer';
 export * from './scrolling';

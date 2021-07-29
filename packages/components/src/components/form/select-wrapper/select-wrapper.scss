@@ -75,7 +75,7 @@
   cursor: not-allowed !important;
 }
 
-.#{$p-global-class-prefix}select-wrapper {
+.root {
   $bem-block: &;
   display: block;
   position: relative;
@@ -84,482 +84,420 @@
   &--theme-dark {
     color: $p-color-theme-dark-default;
   }
+}
 
-  &__label,
-  &__description {
-    display: block;
-    width: fit-content;
-    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+.label,
+.description {
+  display: block;
+  width: fit-content;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-    &--visible {
+  &--visible {
+    @include text-visible;
+  }
+
+  &--hidden {
+    @include text-hidden;
+  }
+
+  @include p-media-query('xs') {
+    &--visible-xs {
       @include text-visible;
     }
 
-    &--hidden {
+    &--hidden-xs {
       @include text-hidden;
     }
+  }
 
-    @include p-media-query('xs') {
-      &--visible-xs {
-        @include text-visible;
-      }
-
-      &--hidden-xs {
-        @include text-hidden;
-      }
+  @include p-media-query('s') {
+    &--visible-s {
+      @include text-visible;
     }
 
-    @include p-media-query('s') {
-      &--visible-s {
-        @include text-visible;
-      }
+    &--hidden-s {
+      @include text-hidden;
+    }
+  }
 
-      &--hidden-s {
-        @include text-hidden;
-      }
+  @include p-media-query('m') {
+    &--visible-m {
+      @include text-visible;
     }
 
-    @include p-media-query('m') {
-      &--visible-m {
-        @include text-visible;
-      }
+    &--hidden-m {
+      @include text-hidden;
+    }
+  }
 
-      &--hidden-m {
-        @include text-hidden;
-      }
+  @include p-media-query('l') {
+    &--visible-l {
+      @include text-visible;
     }
 
-    @include p-media-query('l') {
-      &--visible-l {
-        @include text-visible;
-      }
+    &--hidden-l {
+      @include text-hidden;
+    }
+  }
 
-      &--hidden-l {
-        @include text-hidden;
-      }
+  @include p-media-query('xl') {
+    &--visible-xl {
+      @include text-visible;
     }
 
-    @include p-media-query('xl') {
-      &--visible-xl {
-        @include text-visible;
-      }
+    &--hidden-xl {
+      @include text-hidden;
+    }
+  }
+}
 
-      &--hidden-xl {
-        @include text-hidden;
+.label {
+  color: $p-color-default;
+
+  .root--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
+
+  &--disabled {
+    color: $p-color-state-disabled;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-disabled;
+    }
+  }
+}
+
+.required {
+  @include required;
+
+  .root--theme-dark & {
+    @include required('dark');
+  }
+}
+
+.description {
+  color: $p-color-neutral-contrast-medium;
+
+  .root--theme-dark & {
+    color: $p-color-theme-dark-neutral-contrast-medium;
+  }
+
+  &--disabled {
+    color: $p-color-state-disabled;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-disabled;
+    }
+  }
+
+  .label ~ & {
+    margin-top: -$p-spacing-4;
+    padding-bottom: $p-spacing-8;
+  }
+}
+
+.fake-select {
+  position: relative;
+  width: 100%;
+  height: p-px-to-rem(48px);
+  display: block;
+  transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+  background-color: $p-color-background-default;
+  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+
+  &:hover &:not(&--disabled):not(&--success):not(&--error) {
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+  }
+
+  .root--theme-dark & {
+    background-color: $p-color-theme-dark-background-default;
+    box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
+
+    &:hover &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+    }
+  }
+
+  &--disabled {
+    background-color: $p-color-background-default;
+    box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+
+    .root--theme-dark & {
+      background-color: $p-color-default;
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
+    }
+  }
+
+  &--success {
+    box-shadow: inset 0 0 0 2px $p-color-notification-success;
+
+    .root--theme-dark & {
+      box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
+    }
+
+    &:hover,
+    .label:hover ~ & {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+
+      .root--theme-dark & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
       }
     }
   }
 
-  &__label {
-    #{$bem-block}--theme-light & {
-      color: $p-color-default;
+  &--error {
+    box-shadow: inset 0 0 0 2px $p-color-notification-error;
+
+    .root--theme-dark & {
+      box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
     }
 
-    #{$bem-block}--theme-dark & {
+    &:hover,
+    .label:hover ~ & {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+
+      .root--theme-dark & {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
+      }
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  top: p-px-to-rem(12px);
+  right: p-px-to-rem(12px);
+  transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
+  color: $p-color-default;
+
+  .root--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
+
+  &--disabled {
+    color: $p-color-state-disabled;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-disabled;
+    }
+  }
+
+  &--opened {
+    transform: rotate(180deg);
+  }
+}
+
+.message {
+  margin-top: $p-spacing-4;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+  color: $p-color-default;
+
+  .root--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
+
+  &--success {
+    color: $p-color-notification-success;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-notification-success;
+    }
+  }
+
+  &--error {
+    color: $p-color-notification-error;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-notification-error;
+    }
+  }
+}
+
+.filter-input {
+  position: absolute;
+  z-index: 1;
+  bottom: 2px;
+  left: 2px;
+  display: block;
+  width: calc(100% - #{p-px-to-rem(44px)});
+  height: p-px-to-rem(44px);
+  padding: p-px-to-rem(10px);
+  outline: transparent none;
+  appearance: none;
+  box-sizing: border-box;
+  border: none;
+  opacity: 0;
+  font-family: $p-font-family;
+  font-weight: $p-font-weight-regular;
+  font-size: $p-font-size-small;
+  line-height: p-calculate-line-height($p-font-size-small);
+  text-indent: 0;
+  cursor: text;
+
+  color: $p-color-default;
+  background-color: $p-color-background-default;
+
+  .root--theme-dark & {
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-theme-dark-background-default;
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: $p-color-default;
+
+    .root--theme-dark & {
       color: $p-color-theme-dark-default;
     }
+  }
 
-    &--disabled {
-      #{$bem-block}--theme-light & {
-        color: $p-color-state-disabled;
-      }
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    color: $p-color-default;
 
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-disabled;
-      }
+    .root--theme-dark & {
+      color: $p-color-theme-dark-default;
     }
   }
 
-  &__required {
-    @include required;
+  &::-moz-placeholder {
+    opacity: 1;
+    color: $p-color-default;
 
-    #{$bem-block}--theme-dark & {
-      @include required('dark');
+    .root--theme-dark & {
+      color: $p-color-theme-dark-default;
     }
   }
 
-  &__description {
-    #{$bem-block}--theme-light & {
-      color: $p-color-neutral-contrast-medium;
-    }
+  &:-ms-input-placeholder {
+    opacity: 1;
+    color: $p-color-default;
 
-    #{$bem-block}--theme-dark & {
-      color: $p-color-theme-dark-neutral-contrast-medium;
-    }
-
-    &--disabled {
-      #{$bem-block}--theme-light & {
-        color: $p-color-state-disabled;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-disabled;
-      }
-    }
-
-    #{$bem-block}__label ~ & {
-      margin-top: -$p-spacing-4;
-      padding-bottom: $p-spacing-8;
+    .root--theme-dark & {
+      color: $p-color-theme-dark-default;
     }
   }
 
-  &__fake-select {
-    position: relative;
-    width: 100%;
+  &:-moz-placeholder {
+    opacity: 1;
+    color: $p-color-default;
+
+    .root--theme-dark & {
+      color: $p-color-theme-dark-default;
+    }
+  }
+
+  + span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: p-px-to-rem(48px);
-    display: block;
-    transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier,
-      background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+    outline: transparent solid 1px;
+    outline-offset: 2px;
+    transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier;
+    pointer-events: all;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
 
-    #{$bem-block}--theme-light & {
-      background-color: $p-color-background-default;
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
-    }
-
-    #{$bem-block}--theme-light:hover &:not(&--disabled):not(&--success):not(&--error) {
+    .root--theme-light:hover & {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
     }
 
-    #{$bem-block}--theme-dark & {
-      background-color: $p-color-theme-dark-background-default;
+    .root--theme-dark & {
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
-    }
 
-    #{$bem-block}--theme-dark:hover &:not(&--disabled):not(&--success):not(&--error) {
+      &:hover & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
+  }
+
+  &:hover:not(&--disabled):not(&--success):not(&--error) + span {
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+
+    .root--theme-dark & {
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
     }
+  }
 
-    &--disabled {
-      #{$bem-block}--theme-light & {
-        background-color: $p-color-background-default;
-        box-shadow: inset 0 0 0 1px $p-color-state-disabled;
-      }
+  label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+  }
 
-      #{$bem-block}--theme-dark & {
-        background-color: $p-color-default;
+  .root--theme-dark label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+    box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    + span {
+      cursor: not-allowed;
+      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+
+      .root--theme-dark & {
         box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
       }
     }
+  }
 
-    &--success {
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 2px $p-color-notification-success;
-      }
+  &--success {
+    + span {
+      box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
-      #{$bem-block}--theme-dark & {
+      .root--theme-dark & {
         box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
       }
-
-      &:hover,
-      #{$bem-block}__label:hover ~ & {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
-        }
-      }
     }
 
-    &--error {
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 2px $p-color-notification-error;
-      }
+    &:hover + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
 
-      #{$bem-block}--theme-dark & {
-        box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
-      }
-
-      &:hover,
-      #{$bem-block}__label:hover ~ & {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
-        }
-      }
-    }
-  }
-
-  &__icon {
-    position: absolute;
-    top: p-px-to-rem(12px);
-    right: p-px-to-rem(12px);
-    transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
-
-    #{$bem-block}--theme-light & {
-      color: $p-color-default;
-    }
-
-    #{$bem-block}--theme-dark & {
-      color: $p-color-theme-dark-default;
-    }
-
-    &--disabled {
-      #{$bem-block}--theme-light & {
-        color: $p-color-state-disabled;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-state-disabled;
-      }
-    }
-
-    &--opened {
-      transform: rotate(180deg);
-    }
-  }
-
-  &__message {
-    margin-top: $p-spacing-4;
-    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-
-    &#{$bem-block}--theme-light {
-      color: $p-color-default;
-    }
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-dark-default;
-    }
-
-    &--success {
-      &#{$bem-block}--theme-light {
-        color: $p-color-notification-success;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-notification-success;
-      }
-    }
-
-    &--error {
-      &#{$bem-block}--theme-light {
-        color: $p-color-notification-error;
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-notification-error;
-      }
-    }
-  }
-
-  &__filter-input {
-    position: absolute;
-    z-index: 1;
-    bottom: 2px;
-    left: 2px;
-    display: block;
-    width: calc(100% - #{p-px-to-rem(44px)});
-    height: p-px-to-rem(44px);
-    padding: p-px-to-rem(10px);
-    outline: transparent none;
-    appearance: none;
-    box-sizing: border-box;
-    border: none;
-    opacity: 0;
-    font-family: $p-font-family;
-    font-weight: $p-font-weight-regular;
-    font-size: $p-font-size-small;
-    line-height: p-calculate-line-height($p-font-size-small);
-    text-indent: 0;
-    cursor: text;
-
-    #{$bem-block}--theme-light & {
-      color: $p-color-default;
-      background-color: $p-color-background-default;
-    }
-
-    #{$bem-block}--theme-dark & {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-dark-background-default;
-    }
-
-    &::placeholder {
-      opacity: 1;
-
-      #{$bem-block}--theme-light & {
-        color: $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
-    &::-webkit-input-placeholder {
-      opacity: 1;
-
-      #{$bem-block}--theme-light & {
-        color: $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
-    &::-moz-placeholder {
-      opacity: 1;
-
-      #{$bem-block}--theme-light & {
-        color: $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
-    &:-ms-input-placeholder {
-      opacity: 1;
-
-      #{$bem-block}--theme-light & {
-        color: $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
-    &:-moz-placeholder {
-      opacity: 1;
-
-      #{$bem-block}--theme-light & {
-        color: $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-default;
-      }
-    }
-
-    + span {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: p-px-to-rem(48px);
-      outline: transparent solid 1px;
-      outline-offset: 2px;
-      transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier;
-      pointer-events: all;
-      cursor: pointer;
-
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
-      }
-
-      #{$bem-block}--theme-light:hover & {
-        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-      }
-
-      #{$bem-block}--theme-dark & {
-        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
-      }
-
-      #{$bem-block}--theme-dark:hover & {
-        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
-      }
-    }
-
-    &:hover:not(&--disabled):not(&--success):not(&--error) + span {
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-      }
-
-      #{$bem-block}--theme-dark & {
-        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
-      }
-    }
-
-    #{$bem-block}--theme-light label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-    }
-
-    #{$bem-block}--theme-dark label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
-      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
-    }
-
-    &:focus {
-      opacity: 1;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      + span {
-        cursor: not-allowed;
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 1px $p-color-state-disabled;
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
-        }
-      }
-    }
-
-    &--success {
-      + span {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px $p-color-notification-success;
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
-        }
-      }
-
-      &:hover + span {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
-        }
-      }
-
-      #{$bem-block}--theme-light label:hover + & + span {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-      }
-
-      #{$bem-block}--theme-dark label:hover + & + span {
+      .root--theme-dark & {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
       }
     }
 
-    &--error {
-      + span {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px $p-color-notification-error;
-        }
+    label:hover + & + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+    }
 
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
-        }
+    .root--theme-dark label:hover + & + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+    }
+  }
+
+  &--error {
+    + span {
+      box-shadow: inset 0 0 0 2px $p-color-notification-error;
+
+      .root--theme-dark & {
+        box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
       }
+    }
 
-      &:hover + span {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-        }
+    &:hover + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
 
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
-        }
-      }
-
-      #{$bem-block}--theme-light label:hover + & + span {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-      }
-
-      #{$bem-block}--theme-dark label:hover + & + span {
+      .root--theme-dark & {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
       }
+    }
+
+    label:hover + & + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+    }
+
+    .root--theme-dark label:hover + & + span {
+      box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
     }
   }
 }

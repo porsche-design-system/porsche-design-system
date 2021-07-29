@@ -10,9 +10,8 @@ import {
   isDark,
   isRequiredAndParentNotRequired,
   isTouchDevice,
-  mapBreakpointPropToPrefixedClasses,
+  mapBreakpointPropToClasses,
   observeProperties,
-  prefix,
   setAriaAttributes,
   setAttribute,
 } from '../../../utils';
@@ -141,57 +140,52 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
-    const selectClasses = {
-      [prefix('select-wrapper')]: true,
-      [prefix(`select-wrapper--theme-${this.theme}`)]: true,
+    const rootClasses = {
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
     };
     const labelClasses = {
-      [prefix('select-wrapper__label')]: true,
-      [prefix('select-wrapper__label--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const requiredFlagClasses = {
-      [prefix('select-wrapper__required')]: true,
-      [prefix('select-wrapper__required--theme-dark')]: isDark(this.theme),
+      ['label']: true,
+      ['label--disabled']: this.disabled,
+      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionClasses = {
-      [prefix('select-wrapper__description')]: true,
-      [prefix('select-wrapper__description--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('select-wrapper__description-', this.hideLabel, ['hidden', 'visible']),
+      ['description']: true,
+      ['description--disabled']: this.disabled,
+      ...mapBreakpointPropToClasses('description-', this.hideLabel, ['hidden', 'visible']),
     };
     const fakeSelectClasses = {
-      [prefix('select-wrapper__fake-select')]: true,
-      [prefix('select-wrapper__fake-select--disabled')]: this.disabled,
-      [prefix(`select-wrapper__fake-select--${this.state}`)]: this.state !== 'none',
+      ['fake-select']: true,
+      ['fake-select--disabled']: this.disabled,
+      [`fake-select--${this.state}`]: this.state !== 'none',
     };
-
     const iconClasses = {
-      [prefix('select-wrapper__icon')]: true,
-      [prefix('select-wrapper__icon--disabled')]: this.disabled,
-      [prefix('select-wrapper__icon--opened')]: !this.fakeOptionListHidden,
+      ['icon']: true,
+      ['icon--disabled']: this.disabled,
+      ['icon--opened']: !this.fakeOptionListHidden,
     };
     const messageClasses = {
-      [prefix('select-wrapper__message')]: true,
-      [prefix(`select-wrapper--theme-${this.theme}`)]: true,
-      [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none',
+      ['message']: true,
+      [`select-wrapper--theme-${this.theme}`]: true,
+      [`message--${this.state}`]: this.state !== 'none',
     };
     const filterInputClasses = {
-      [prefix('select-wrapper__filter-input')]: true,
-      [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true,
-      [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
-      [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
+      ['filter-input']: true,
+      [`filter-input--theme-${this.theme}`]: true,
+      ['filter-input--disabled']: this.disabled,
+      [`filter-input--${this.state}`]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <div class={selectClasses}>
+        <div class={rootClasses}>
           <label id="p-label">
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.select) && <span class={requiredFlagClasses} />}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (
