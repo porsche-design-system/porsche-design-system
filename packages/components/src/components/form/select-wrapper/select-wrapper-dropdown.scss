@@ -1,0 +1,191 @@
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
+
+:host {
+  display: block;
+}
+
+.root {
+  $bem-block: &;
+  @include p-text-small;
+  position: absolute;
+  z-index: 10;
+  border: 1px solid;
+  left: 0;
+  right: 0;
+  max-height: p-px-to-rem(308px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  transition: border-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+  transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
+
+  border-color: $p-color-neutral-contrast-medium;
+  background-color: $p-color-background-default;
+
+  &:hover {
+    border-color: $p-color-neutral-contrast-high;
+  }
+
+  &--theme-dark {
+    border-color: $p-color-theme-dark-neutral-contrast-medium;
+    background-color: $p-color-theme-dark-background-default;
+
+    &:hover {
+      border-color: $p-color-theme-dark-neutral-contrast-high;
+    }
+  }
+
+  &--direction {
+    &-down {
+      top: calc(100% - 1px);
+      border-top: none;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 12px 25px 0 rgba(0, 0, 0, 0.1);
+
+      &::before {
+        content: '';
+        display: block;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 1px;
+      }
+
+      &::before {
+        background-color: $p-color-neutral-contrast-low;
+      }
+
+      #{$bem-block}--theme-dark &::before {
+        background-color: $p-color-theme-dark-neutral-contrast-low;
+      }
+    }
+
+    &-up {
+      bottom: p-px-to-rem(47px);
+      border-bottom: none;
+      box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05), 0 -12px 25px 0 rgba(0, 0, 0, 0.075);
+
+      &::after {
+        content: '';
+        display: block;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+      }
+
+      &::after {
+        background-color: $p-color-neutral-contrast-low;
+      }
+
+      #{$bem-block}--theme-dark &::after {
+        background-color: $p-color-theme-dark-neutral-contrast-low;
+      }
+    }
+  }
+
+  // Firefox scrollbar styling
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--hidden {
+    display: block;
+    top: calc(100% - 3px);
+    opacity: 0;
+    overflow: hidden;
+    height: 1px;
+    pointer-events: none;
+  }
+}
+
+.option {
+  display: flex;
+  padding: $p-spacing-4 p-px-to-rem(11px);
+  min-height: $p-spacing-24;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+  &[role='status'] {
+    cursor: not-allowed;
+  }
+
+  &-sr {
+    @include text-hidden;
+  }
+
+  color: $p-color-default;
+
+  //#{$bem-block}--theme-dark & {
+  //  color: $p-color-theme-dark-default;
+  //}
+
+  &:not([aria-disabled]):not([role='status']):hover {
+    color: $p-color-state-hover;
+    background-color: $p-color-background-surface;
+
+    //#{$bem-block}--theme-dark & {
+    //  color: $p-color-theme-dark-state-hover;
+    //  background-color: $p-color-default;
+    //}
+  }
+
+  &--selected {
+    cursor: default;
+    pointer-events: none;
+    padding-right: $p-spacing-32;
+    color: $p-color-state-active;
+    background-color: $p-color-background-surface;
+
+    //#{$bem-block}--theme-dark & {
+    //  color: $p-color-theme-dark-state-active;
+    //  background-color: $p-color-default;
+    //}
+    //
+    .icon {
+      margin-left: $p-spacing-4;
+    }
+  }
+
+  &--highlighted:not(&--selected) {
+    color: $p-color-state-active;
+    background-color: $p-color-background-surface;
+
+    //#{$bem-block}--theme-dark & {
+    //  color: $p-color-theme-dark-state-active;
+    //  background-color: $p-color-default;
+    //}
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    color: $p-color-state-disabled;
+
+    //#{$bem-block}--theme-dark & {
+    //  color: $p-color-theme-dark-state-disabled;
+    //}
+  }
+
+  &--hidden,
+  &--initiallyHidden {
+    display: none;
+  }
+}
+
+.optgroup-label {
+  display: block;
+  padding: $p-spacing-8 p-px-to-rem(12px);
+  margin-top: $p-spacing-8;
+  font-weight: $p-font-weight-bold;
+
+  //& ~ #{$bem-block}__fake-option {
+  //  padding-left: $p-spacing-24;
+  //}
+}
