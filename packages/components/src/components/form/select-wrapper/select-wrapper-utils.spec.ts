@@ -1,4 +1,4 @@
-import { updatedFilteredOptionMaps, OptionMap } from './select-wrapper-utils';
+import { updateFilteredOptionMaps, OptionMap } from './select-wrapper-utils';
 
 describe('applyFilterOnOptionMaps()', () => {
   const defaultOptionMapValues: Partial<OptionMap> = {
@@ -30,7 +30,7 @@ describe('applyFilterOnOptionMaps()', () => {
     ${'ir'}          | ${2}
     ${'st Val'}      | ${1}
   `("should be called with ('$searchString') and have '$expected' visible options", ({ searchString, expected }) => {
-    const result = updatedFilteredOptionMaps(optionMaps, searchString);
+    const result = updateFilteredOptionMaps(optionMaps, searchString);
     expect(getVisibleOptions(result)).toBe(expected);
   });
 });

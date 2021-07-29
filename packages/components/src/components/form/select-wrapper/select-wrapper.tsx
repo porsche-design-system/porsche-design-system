@@ -18,13 +18,15 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import {
-  updatedFilteredOptionMaps,
+  updateFilteredOptionMaps,
   CHANGE_EVENT_NAME,
   getHighlightedIndex,
   getOptionMaps,
   getOptionsElements,
   OptionMap,
   updateSelectedOptionMap,
+  updateHighlightedOptionMaps,
+  updateLastHighlightedOptionMaps,
 } from './select-wrapper-utils';
 
 @Component({
@@ -87,13 +89,13 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.setSelect();
-    this.setOptions();
     this.observeSelect();
     // this.addSlottedStyles();
   }
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
+    this.options = getOptionsElements(this.select);
 
     // TODO: later added options should be tracked
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
@@ -253,10 +255,6 @@ export class SelectWrapper {
     }
   }
 
-  private setOptions(): void {
-    this.options = getOptionsElements(this.select);
-  }
-
   private get disabled(): boolean {
     return this.select.disabled;
   }
@@ -273,6 +271,7 @@ export class SelectWrapper {
    * <START CUSTOM SELECT DROPDOWN>
    */
   private observeSelect(): void {
+    // TODO: use shared attribute observer
     this.selectObserver = new MutationObserver((mutations) => {
       if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         this.setOptionList();
@@ -286,6 +285,7 @@ export class SelectWrapper {
   }
 
   private defineTypeOfDropDown(): void {
+    // TODO: extract util
     if (this.filter) {
       this.renderCustomDropDown = true;
     } else if (this.native) {
@@ -370,6 +370,7 @@ export class SelectWrapper {
     }
   }
 
+  // TODO: move into dropdown
   private onKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
@@ -435,21 +436,14 @@ export class SelectWrapper {
       case 'PageUp':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
-          this.optionMaps = this.optionMaps.map((item, index) => ({
-            ...item,
-            highlighted: index === 0,
-          }));
+          this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, 0);
           this.handleScroll();
         }
         break;
       case 'PageDown':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
-          const lastIndex = this.options.length - 1;
-          this.optionMaps = this.optionMaps.map((item, index) => ({
-            ...item,
-            highlighted: index === lastIndex,
-          }));
+          this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
@@ -464,7 +458,7 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.setOptions();
+    this.options = getOptionsElements(this.select);
     this.optionMaps = getOptionMaps(this.options);
   };
 
@@ -572,7 +566,7 @@ export class SelectWrapper {
 
   private onFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = updatedFilteredOptionMaps(this.optionMaps, this.searchString);
+    this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
 
     // const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     // this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
