@@ -123,18 +123,18 @@
 
   color: $p-color-default;
 
-  //#{$bem-block}--theme-dark & {
-  //  color: $p-color-theme-dark-default;
-  //}
+  .root--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
 
   &:not([aria-disabled]):not([role='status']):hover {
     color: $p-color-state-hover;
     background-color: $p-color-background-surface;
 
-    //#{$bem-block}--theme-dark & {
-    //  color: $p-color-theme-dark-state-hover;
-    //  background-color: $p-color-default;
-    //}
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-hover;
+      background-color: $p-color-default;
+    }
   }
 
   &--selected {
@@ -144,11 +144,11 @@
     color: $p-color-state-active;
     background-color: $p-color-background-surface;
 
-    //#{$bem-block}--theme-dark & {
-    //  color: $p-color-theme-dark-state-active;
-    //  background-color: $p-color-default;
-    //}
-    //
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-active;
+      background-color: $p-color-default;
+    }
+
     .icon {
       margin-left: $p-spacing-4;
     }
@@ -158,19 +158,19 @@
     color: $p-color-state-active;
     background-color: $p-color-background-surface;
 
-    //#{$bem-block}--theme-dark & {
-    //  color: $p-color-theme-dark-state-active;
-    //  background-color: $p-color-default;
-    //}
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-active;
+      background-color: $p-color-default;
+    }
   }
 
   &--disabled {
     cursor: not-allowed;
     color: $p-color-state-disabled;
 
-    //#{$bem-block}--theme-dark & {
-    //  color: $p-color-theme-dark-state-disabled;
-    //}
+    .root--theme-dark & {
+      color: $p-color-theme-dark-state-disabled;
+    }
   }
 
   &--hidden,
@@ -185,7 +185,7 @@
   margin-top: $p-spacing-8;
   font-weight: $p-font-weight-bold;
 
-  //& ~ #{$bem-block}__fake-option {
-  //  padding-left: $p-spacing-24;
-  //}
+  & ~ .option {
+    padding-left: $p-spacing-24;
+  }
 }

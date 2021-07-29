@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames } from '../../../utils';
+import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
 import type { OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import { CHANGE_EVENT_NAME, InternalChangeEvent } from './select-wrapper-utils';
@@ -72,6 +72,7 @@ export class SelectWrapperDropdown {
       ['root']: true,
       [`root--direction-${this.dropdownDirection}`]: true,
       ['root--hidden']: this.hidden,
+      ['root--theme-dark']: isDark(this.theme),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
