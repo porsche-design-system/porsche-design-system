@@ -134,14 +134,6 @@ export const getComponentCss = (
           verticalAlign: 'top',
           cursor: 'pointer',
         }),
-        '::slotted(a)': addImportantToEachRule({
-          display: 'block',
-          position: 'static',
-          textDecoration: 'none',
-          color: 'inherit',
-          lineHeight: 'inherit',
-          outline: 'transparent none',
-        }),
         root: {
           display: 'flex',
           width: '100%',
@@ -156,9 +148,10 @@ export const getComponentCss = (
           backgroundColor: 'currentColor',
           border: '1px solid currentColor',
           ...getColorStyles(variant, isDarkTheme), // overrides backgroundColor for tertiary
-          transition: `background-color ${transitionDuration} ${transitionTimingFunction},
-        border-color ${transitionDuration} ${transitionTimingFunction},
-        color ${transitionDuration} ${transitionTimingFunction}`,
+          transition:
+            `background-color ${transitionDuration} ${transitionTimingFunction},` +
+            `border-color ${transitionDuration} ${transitionTimingFunction},` +
+            `color ${transitionDuration} ${transitionTimingFunction}`,
           ...(hasHref && getFocusStyles()),
         },
         label: {
@@ -170,6 +163,14 @@ export const getComponentCss = (
           height: pxToRemWithUnit(24),
           color: iconColor,
         },
+        '::slotted(a)': addImportantToEachRule({
+          display: 'block',
+          position: 'static',
+          textDecoration: 'none',
+          color: 'inherit',
+          lineHeight: 'inherit',
+          outline: 'transparent none',
+        }),
       },
       buildResponsiveStyles(hideLabel, getHideLabelStyles)
     )
