@@ -142,6 +142,7 @@ export class SelectWrapper {
   public render(): JSX.Element {
     const rootClasses = {
       ['root']: true,
+      [`root--${this.state}`]: this.state !== 'none',
       ['root--theme-dark']: isDark(this.theme),
     };
     const labelClasses = {
@@ -149,51 +150,37 @@ export class SelectWrapper {
       ['label--disabled']: this.disabled,
       ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
-    const descriptionClasses = {
-      ['description']: true,
-      ['description--disabled']: this.disabled,
-      ...mapBreakpointPropToClasses('description-', this.hideLabel, ['hidden', 'visible']),
-    };
     const fakeSelectClasses = {
       ['fake-select']: true,
       ['fake-select--disabled']: this.disabled,
-      [`fake-select--${this.state}`]: this.state !== 'none',
     };
     const iconClasses = {
       ['icon']: true,
       ['icon--disabled']: this.disabled,
       ['icon--opened']: !this.fakeOptionListHidden,
     };
-    const messageClasses = {
-      ['message']: true,
-      [`message--${this.state}`]: this.state !== 'none',
-    };
     const inputClasses = {
       ['input']: true,
       ['input--disabled']: this.disabled,
-      [`input--${this.state}`]: this.state !== 'none',
     };
+
+    const textProps = { tag: 'span', color: 'inherit' };
+    const labelProps = { ...textProps, onClick: this.labelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <div class={rootClasses}>
-          <label id="p-label">
+          <label id="p-label" class={labelClasses}>
             {hasLabel(this.host, this.label) && (
-              <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
+              <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.select) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (
-              <PrefixedTagNames.pText
-                class={descriptionClasses}
-                tag="span"
-                color="inherit"
-                size="x-small"
-                onClick={this.labelClick}
-              >
+              <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
@@ -229,7 +216,7 @@ export class SelectWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}

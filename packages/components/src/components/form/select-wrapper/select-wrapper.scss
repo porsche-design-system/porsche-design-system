@@ -86,84 +86,89 @@
   }
 }
 
-.label,
-.description {
+.label {
+  $bem-block: &;
   display: block;
-  width: fit-content;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  &--visible {
+  &--visible #{$bem-block}__text {
     @include text-visible;
   }
 
-  &--hidden {
+  &--hidden #{$bem-block}__text {
     @include text-hidden;
   }
 
   @include p-media-query('xs') {
-    &--visible-xs {
+    &--visible-xs #{$bem-block}__text {
       @include text-visible;
     }
 
-    &--hidden-xs {
+    &--hidden-xs #{$bem-block}__text {
       @include text-hidden;
     }
   }
 
   @include p-media-query('s') {
-    &--visible-s {
+    &--visible-s #{$bem-block}__text {
       @include text-visible;
     }
 
-    &--hidden-s {
+    &--hidden-s #{$bem-block}__text {
       @include text-hidden;
     }
   }
 
   @include p-media-query('m') {
-    &--visible-m {
+    &--visible-m #{$bem-block}__text {
       @include text-visible;
     }
 
-    &--hidden-m {
+    &--hidden-m #{$bem-block}__text {
       @include text-hidden;
     }
   }
 
   @include p-media-query('l') {
-    &--visible-l {
+    &--visible-l #{$bem-block}__text {
       @include text-visible;
     }
 
-    &--hidden-l {
+    &--hidden-l #{$bem-block}__text {
       @include text-hidden;
     }
   }
 
   @include p-media-query('xl') {
-    &--visible-xl {
+    &--visible-xl #{$bem-block}__text {
       @include text-visible;
     }
 
-    &--hidden-xl {
+    &--hidden-xl #{$bem-block}__text {
       @include text-hidden;
     }
   }
-}
 
-.label {
-  color: $p-color-default;
-
-  .root--theme-dark & {
-    color: $p-color-theme-dark-default;
+  &--disabled #{$bem-block}__text {
+    color: $p-color-state-disabled;
   }
 
-  &--disabled {
-    color: $p-color-state-disabled;
+  &__text {
+    display: block;
+    width: fit-content;
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-    .root--theme-dark & {
-      color: $p-color-theme-dark-state-disabled;
+    &--description {
+      color: $p-color-neutral-contrast-medium;
     }
+
+    + #{$bem-block}__text--description {
+      margin-top: -$p-spacing-4;
+      padding-bottom: $p-spacing-8;
+    }
+
+    //&:hover ~ ::slotted(input:not(:disabled):not([readonly])) {
+    //  border-color: $p-color-default !important;
+    //}
   }
 }
 
@@ -175,24 +180,13 @@
   }
 }
 
-.description {
-  color: $p-color-neutral-contrast-medium;
+.message {
+  margin-top: $p-spacing-4;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
-  .root--theme-dark & {
-    color: $p-color-theme-dark-neutral-contrast-medium;
-  }
-
-  &--disabled {
-    color: $p-color-state-disabled;
-
-    .root--theme-dark & {
-      color: $p-color-theme-dark-state-disabled;
-    }
-  }
-
-  .label ~ & {
-    margin-top: -$p-spacing-4;
-    padding-bottom: $p-spacing-8;
+  .root--theme-dark + & {
+    color: $p-color-theme-dark-default;
   }
 }
 
@@ -286,33 +280,6 @@
 
   &--opened {
     transform: rotate(180deg);
-  }
-}
-
-.message {
-  margin-top: $p-spacing-4;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-
-  color: $p-color-default;
-
-  .root--theme-dark & {
-    color: $p-color-theme-dark-default;
-  }
-
-  &--success {
-    color: $p-color-notification-success;
-
-    .root--theme-dark & {
-      color: $p-color-theme-dark-notification-success;
-    }
-  }
-
-  &--error {
-    color: $p-color-notification-error;
-
-    .root--theme-dark & {
-      color: $p-color-theme-dark-notification-error;
-    }
   }
 }
 
