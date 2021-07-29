@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - `Link Pure` dark theme active color
 
+### [2.3.0] - 2021-07-28
+
+### [2.3.0-beta.3] - 2021-07-28
+
+#### Changed
+- `Accordion` reduce paddings, vertically align carets to the first heading row, adjust border color and hover styles
+
+#### Fixed
+- `Text Field Wrapper` accessibility of type password and search
+
 ### [2.3.0-beta.2] - 2021-07-15
 
 #### Added

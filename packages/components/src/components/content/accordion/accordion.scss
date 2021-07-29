@@ -8,124 +8,126 @@ $root: '.root';
 
 :host(:first-of-type) {
   #{$root} {
-    border-top: 1px solid $p-color-neutral-contrast-medium;
+    border-top: 1px solid $p-color-theme-light-neutral-contrast-low;
 
     &--compact {
       border-top: none;
     }
 
     &--theme-dark:not(&--compact) {
-      border-color: $p-color-theme-dark-neutral-contrast-medium;
+      border-color: $p-color-theme-dark-neutral-contrast-low;
     }
   }
 }
 
 #{$root} {
-  border-bottom: 1px solid $p-color-neutral-contrast-medium;
-
-  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+  border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
 
   &--compact {
     border-bottom: none;
   }
 
-  &--size-medium {
-    @include p-generate-type-scale($p-font-size-medium);
+  &--theme-dark:not(&--compact) {
+    border-color: $p-color-theme-dark-neutral-contrast-low;
   }
+}
 
-  @each $breakpoint in $breakpoints {
-    @include p-media-query($breakpoint) {
-      &--size-small-#{$breakpoint} {
-        @include p-generate-type-scale($p-font-size-small);
-      }
-      &--size-medium-#{$breakpoint} {
-        @include p-generate-type-scale($p-font-size-medium);
-      }
-    }
-  }
-
-  &--theme-dark {
-    border-color: $p-color-theme-dark-neutral-contrast-medium;
-  }
+.heading {
+  margin: 0;
+  padding: 0;
 }
 
 button {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: p-px-to-rem(24px) p-px-to-rem(12px);
+  padding: p-px-to-rem(12px) 0;
+  margin: p-px-to-rem(4px) 0;
   width: 100%;
   text-decoration: none;
   border: 0;
   background: transparent;
   cursor: pointer;
-  font-weight: $p-font-weight-semibold;
-  transition: background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
+  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   overflow: hidden; // fixes rotating icon to increase bounding box of focus outline in firefox
+  text-align: left;
+  color: $p-color-default;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-semibold);
+  @include p-focus($p-color-state-focus);
 
-  @include p-focus($p-color-state-focus, 0);
+  #{$root}--theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
+
+  #{$root}--size-medium & {
+    @include p-generate-type-scale($p-font-size-medium);
+    padding: p-px-to-rem(20px) 0;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--size-small-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-small);
+        padding: p-px-to-rem(12px) 0;
+      }
+
+      #{$root}--size-medium-#{$breakpoint} & {
+        @include p-generate-type-scale($p-font-size-medium);
+        padding: p-px-to-rem(20px) 0;
+      }
+    }
+  }
 
   #{$root}--compact & {
-    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
     padding: p-px-to-rem(4px) 0;
-    margin: p-px-to-rem(4px) 0;
-    outline-offset: 2px;
-
-    &:hover {
-      color: $p-color-state-hover;
-    }
-
-    &:hover,
-    &:focus-visible {
-      background-color: transparent;
-    }
   }
 
-  &:hover,
-  &:focus-visible {
-    background-color: $p-hover-background-color;
+  &:hover {
+    color: $p-color-theme-light-state-hover;
 
-    #{$root}--theme-dark:not(#{$root}--compact) & {
-      background-color: $p-hover-background-color-theme-dark;
+    #{$root}--theme-dark & {
+      color: $p-color-theme-dark-state-hover;
     }
   }
-
-  // inherit headline styles except for slotted semibold weight override
-  margin: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  text-align: inherit;
-  overflow-wrap: inherit;
-  word-wrap: inherit;
-  hyphens: inherit;
 }
 
 .icon {
+  width: #{p-calculate-line-height($p-font-size-small)}em;
+  height: #{p-calculate-line-height($p-font-size-small)}em;
+  margin-left: $p-spacing-24;
   transform-origin: 50% 50%;
   transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
-  margin-left: $p-spacing-24;
-
-  #{$root}--compact & {
-    &:hover {
-      color: $p-color-state-hover;
-    }
-
-    #{$root}--theme-dark & {
-      color: $p-hover-background-color-theme-dark;
-    }
-  }
 
   #{$root}--open & {
     transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  #{$root}--size-medium & {
+    width: #{p-calculate-line-height($p-font-size-medium)}em;
+    height: #{p-calculate-line-height($p-font-size-medium)}em;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-small-#{$breakpoint} {
+        width: #{p-calculate-line-height($p-font-size-small)}em;
+        height: #{p-calculate-line-height($p-font-size-small)}em;
+      }
+
+      &--size-medium-#{$breakpoint} {
+        width: #{p-calculate-line-height($p-font-size-medium)}em;
+        height: #{p-calculate-line-height($p-font-size-medium)}em;
+      }
+    }
   }
 }
 
 .collapsible {
   height: 0;
-  padding: 0 p-px-to-rem(12px);
+  padding: 0;
   visibility: hidden;
   overflow: hidden;
   transition: height $p-animation-hover-duration-var $p-animation-hover-bezier,
@@ -140,19 +142,8 @@ button {
     animation: $p-animation-hover-duration-var $p-animation-hover-bezier forwards openAnimation;
   }
 
-  #{$root}--compact & {
-    padding: 0;
-  }
-
   #{$root}--open#{$root}--compact & {
     padding-bottom: $p-spacing-8;
-  }
-}
-
-.content {
-  padding-top: $p-spacing-8;
-  #{$root}--compact & {
-    padding-top: 0;
   }
 }
 

@@ -45,12 +45,6 @@ describe('Accordion', () => {
               ${content}
             </div>
           </p-accordion>
-          <p-accordion theme="${theme}" open="true">
-            <span slot="heading">Some heading</span>
-            <div${getColorInlineStyle(theme)}>
-              Some <i>italic</i> and <em>emphasis</em> content with <a href="#">Link</a>. ${content}
-            </div>
-          </p-accordion>
           <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
             <div${getColorInlineStyle(theme)}>
               ${content}
@@ -65,15 +59,12 @@ describe('Accordion', () => {
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
         await forceHoveredState(page, '.hovered > p-accordion >>> button');
-        await forceHoveredState(page, '.hovered > p-accordion > div a');
         await forceHoveredState(page, '.hovered > p-accordion > p-link-pure >>> a');
 
         await forceFocusedState(page, '.focused > p-accordion >>> button');
-        await forceFocusedState(page, '.focused > p-accordion > div a');
         await forceFocusedState(page, '.focused > p-accordion > p-link-pure >>> a');
 
         await forceFocusedHoveredState(page, '.focused-hovered > p-accordion >>> button');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-accordion > div a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-accordion > p-link-pure >>> a');
       })
     ).toBeFalsy();
