@@ -24,9 +24,10 @@ import {
   getOptionMaps,
   getOptionsElements,
   OptionMap,
-  updateSelectedOptionMap,
+  updateSelectedOptionMaps,
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
+  InternalChangeEvent,
 } from './select-wrapper-utils';
 
 @Component({
@@ -272,8 +273,10 @@ export class SelectWrapper {
    */
   private observeSelect(): void {
     // TODO: use shared attribute observer
+    // most likely observing attributes is redundant with property observer, so watching children is enough
     this.selectObserver = new MutationObserver((mutations) => {
       if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
+        // console.log('mutation observer');
         this.setOptionList();
       }
     });
@@ -295,9 +298,9 @@ export class SelectWrapper {
     }
 
     if (this.renderCustomDropDown) {
-      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent) => {
+      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
         e.stopPropagation();
-        this.setOptionSelected(e.detail);
+        this.setOptionSelected(e.detail.newIndex);
       });
 
       this.setOptionList();
@@ -459,13 +462,13 @@ export class SelectWrapper {
 
   private setOptionList = (): void => {
     this.options = getOptionsElements(this.select);
-    this.optionMaps = getOptionMaps(this.options);
+    this.optionMaps = updateSelectedOptionMaps(getOptionMaps(this.options), this.select.selectedIndex);
   };
 
   private setOptionSelected = (newIndex: number): void => {
-    const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.select.selectedIndex = newIndex;
-    const newSelectedValue = this.select.options[this.select.selectedIndex].text;
+    // const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
+    // this.select.selectedIndex = newIndex;
+    // const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.handleVisibilityOfFakeOptionList('hide');
 
     if (this.filter) {
@@ -479,10 +482,8 @@ export class SelectWrapper {
       }
     }
 
-    const { selectedIndex } = this.select;
-    this.optionMaps = updateSelectedOptionMap(this.optionMaps, selectedIndex);
-
-    if (oldSelectedValue !== newSelectedValue) {
+    if (this.select.selectedIndex !== newIndex) {
+      this.select.selectedIndex = newIndex;
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
     }
   };
