@@ -25,7 +25,7 @@ describe('getComponentCss()', () => {
     ['logo-xing', false, 'dark'],
     ['logo-youtube', false, 'light'],
     ['logo-youtube', false, 'dark'],
-    ['logo-youtube', { base: true, xs: false, s: true, m: false, l: true, xl: false }, true, 'dark'],
+    ['logo-youtube', { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'dark'],
   ])('should return correct css for variant: %s, hideLabel: %s and theme: %s', (variant, hideLabel, theme) => {
     expect(getComponentCss(variant, hideLabel, theme)).toMatchSnapshot();
   });
