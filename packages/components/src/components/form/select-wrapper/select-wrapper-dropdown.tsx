@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElements, getPrefixedTagNames } from '../../../utils';
 import type { OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
+import { CHANGE_EVENT_NAME } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -26,12 +27,12 @@ export class SelectWrapperDropdown {
 
   @State() private filterHasResults = true;
 
-  private select: HTMLSelectElement;
+  // private select: HTMLSelectElement;
   // private options: HTMLOptionElement[];
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   // private selectObserver: MutationObserver;
-  private filterInput: HTMLInputElement;
+  // private filterInput: HTMLInputElement;
   // private fakeFilter: HTMLSpanElement;
   // private searchString: string;
   // private dropdownDirectionInternal: 'down' | 'up' = 'down';
@@ -94,8 +95,7 @@ export class SelectWrapperDropdown {
             </div>
           ) : (
             // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
-            this.optionMaps.map((item, index) => {
-              const { disabled, hidden, initiallyHidden, selected, highlighted } = item;
+            this.optionMaps.map(({ value, disabled, hidden, initiallyHidden, selected, highlighted }, index) => {
               return [
                 // getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
                 //   <span class="optgroup-label" role="presentation">
@@ -116,9 +116,9 @@ export class SelectWrapperDropdown {
                   aria-selected={highlighted ? 'true' : null}
                   aria-disabled={disabled ? 'true' : null}
                   aria-hidden={hidden || initiallyHidden ? 'true' : null}
-                  aria-label={!item.value ? 'Empty value' : null}
+                  aria-label={!value ? 'Empty value' : null}
                 >
-                  {item.value && <span>{item.value}</span>}
+                  {value && <span>{value}</span>}
                   {selected && !disabled && (
                     <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
                   )}
@@ -131,13 +131,13 @@ export class SelectWrapperDropdown {
     );
   }
 
-  private onFocus(e: MouseEvent): void {
-    if (!this.filter) {
-      this.select.focus();
-    } else {
-      e.preventDefault();
-      this.filterInput.focus();
-    }
+  private onFocus(_: MouseEvent): void {
+    // if (!this.filter) {
+    //   this.select.focus();
+    // } else {
+    //   e.preventDefault();
+    //   this.filterInput.focus();
+    // }
   }
 
   private handleDropdownDirection(): void {
@@ -196,32 +196,33 @@ export class SelectWrapperDropdown {
   // };
 
   private setOptionSelected = (newIndex: number): void => {
-    const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.select.selectedIndex = newIndex;
-    const newSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.handleVisibilityOfFakeOptionList('hide');
+    // const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
+    // this.select.selectedIndex = newIndex;
+    // const newSelectedValue = this.select.options[this.select.selectedIndex].text;
+    false && this.handleVisibilityOfFakeOptionList('hide');
 
     if (this.filter) {
-      this.filterInput.value = '';
+      // this.filterInput.value = '';
       // this.searchString = '';
       this.filterHasResults = true;
-      this.filterInput.focus();
+      // this.filterInput.focus();
     } else {
-      if (document.activeElement !== this.select) {
-        this.select.focus();
-      }
+      // if (document.activeElement !== this.select) {
+      //   this.select.focus();
+      // }
     }
 
-    const { selectedIndex } = this.select;
-    this.optionMaps = this.optionMaps.map((item, index) => ({
-      ...item,
-      selected: index === selectedIndex,
-      highlighted: index === selectedIndex,
-      hidden: false,
-    }));
+    // const { selectedIndex } = this.select;
+    // this.optionMaps = this.optionMaps.map((item, index) => ({
+    //   ...item,
+    //   selected: index === selectedIndex,
+    //   highlighted: index === selectedIndex,
+    //   hidden: false,
+    // }));
 
-    if (oldSelectedValue !== newSelectedValue) {
-      this.select.dispatchEvent(new Event('change', { bubbles: true }));
+    const oldSelectedIndex = this.optionMaps.findIndex((item) => item.selected);
+    if (oldSelectedIndex !== newIndex) {
+      this.host.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } }));
     }
   };
 
