@@ -1,6 +1,7 @@
 import { getHTMLElements, hasAttribute } from '../../../utils';
 
 export const CHANGE_EVENT_NAME = 'internalChange';
+export type InternalChangeEvent = { newIndex: number };
 
 export type OptionMap = {
   key: number; // unused?
@@ -30,27 +31,27 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     return option;
   });
 
-export const updateSelectedOptionMap = (options: OptionMap[], newIndex: number): OptionMap[] =>
-  options.map((item, idx) => ({
+export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] => {
+  return options.map((item, idx) => ({
     ...item,
     selected: idx === newIndex,
     highlighted: idx === newIndex,
     hidden: false,
   }));
+};
 
 export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
-
   return options.map((item) => ({
     ...item,
     hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
   }));
 };
 
-export const updateHighlightedOptionMaps = (options: OptionMap[], highlightedIndex: number): OptionMap[] => {
+export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] => {
   return options.map((item, idx) => ({
     ...item,
-    highlighted: idx === highlightedIndex,
+    highlighted: idx === newIndex,
   }));
 };
 

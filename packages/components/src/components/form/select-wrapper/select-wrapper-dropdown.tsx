@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElements, getPrefixedTagNames } from '../../../utils';
 import type { OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
-import { CHANGE_EVENT_NAME } from './select-wrapper-utils';
+import { CHANGE_EVENT_NAME, InternalChangeEvent } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -222,7 +222,9 @@ export class SelectWrapperDropdown {
 
     const oldSelectedIndex = this.optionMaps.findIndex((item) => item.selected);
     if (oldSelectedIndex !== newIndex) {
-      this.host.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } }));
+      this.host.dispatchEvent(
+        new CustomEvent<InternalChangeEvent>(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } })
+      );
     }
   };
 
