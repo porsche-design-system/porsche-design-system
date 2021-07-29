@@ -1,15 +1,12 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
-  getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
   getRole,
-  getTagName,
   hasDescription,
   hasLabel,
   hasMessage,
-  insertSlottedStyles,
   isDark,
   isRequiredAndParentNotRequired,
   isTouchDevice,
@@ -20,8 +17,7 @@ import {
   setAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
-import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { applyFilterOnOptionMaps, getOptionMaps, getOptions, OptionMap } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -60,7 +56,7 @@ export class SelectWrapper {
 
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: OptionMap[] = [];
-  @State() private filterHasResults = true;
+  // @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
   private options: HTMLOptionElement[];
@@ -85,11 +81,13 @@ export class SelectWrapper {
     this.setSelect();
     this.setOptions();
     this.observeSelect();
-    this.addSlottedStyles();
+    // this.addSlottedStyles();
   }
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
+
+    // TODO: later added options should be tracked
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
     this.options.forEach((x) => {
       observeProperties(x, ['selected'], this.setOptionList);
@@ -153,15 +151,7 @@ export class SelectWrapper {
       [prefix('select-wrapper__fake-select--disabled')]: this.disabled,
       [prefix(`select-wrapper__fake-select--${this.state}`)]: this.state !== 'none',
     };
-    const fakeOptionListClasses = {
-      [prefix('select-wrapper__fake-option-list')]: true,
-      [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
-      [prefix(
-        `select-wrapper__fake-option-list--direction-${
-          this.dropdownDirection === 'auto' ? this.dropdownDirectionInternal : this.dropdownDirection
-        }`
-      )]: true,
-    };
+
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,
       [prefix('select-wrapper__icon--disabled')]: this.disabled,
@@ -223,18 +213,13 @@ export class SelectWrapper {
             <span ref={(el) => (this.fakeFilter = el)} />,
           ]}
           {this.renderCustomDropDown && (
-            <div
-              class={fakeOptionListClasses}
-              role="listbox"
-              id="p-listbox"
-              aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
-              tabIndex={-1}
-              aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
-              aria-labelledby="p-label"
-              ref={(el) => (this.fakeOptionListNode = el)}
-            >
-              {this.createFakeOptionList()}
-            </div>
+            <p-select-wrapper-dropdown
+              optionMaps={this.optionMaps}
+              dropdownDirection={this.dropdownDirectionInternal}
+              hidden={this.fakeOptionListHidden}
+              filter={this.filter}
+              theme={this.theme}
+            />
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
@@ -258,7 +243,7 @@ export class SelectWrapper {
   }
 
   private setOptions(): void {
-    this.options = getHTMLElements(this.select, 'option');
+    this.options = getOptions(this.select);
   }
 
   private get disabled(): boolean {
@@ -475,22 +460,7 @@ export class SelectWrapper {
 
   private setOptionList = (): void => {
     this.setOptions();
-    this.optionMaps = this.options.map((item, index) => {
-      const initiallyHidden = item.hasAttribute('hidden');
-      const disabled = item.hasAttribute('disabled');
-      const selected = item.selected;
-      const highlighted = selected;
-      const option: OptionMap = {
-        key: index,
-        value: item.text,
-        disabled,
-        hidden: false,
-        initiallyHidden,
-        selected,
-        highlighted,
-      };
-      return option;
-    });
+    this.optionMaps = getOptionMaps(this.options);
   };
 
   private setOptionSelected = (newIndex: number): void => {
@@ -502,7 +472,7 @@ export class SelectWrapper {
     if (this.filter) {
       this.filterInput.value = '';
       this.searchString = '';
-      this.filterHasResults = true;
+      // this.filterHasResults = true;
       this.filterInput.focus();
     } else {
       if (document.activeElement !== this.select) {
@@ -522,54 +492,6 @@ export class SelectWrapper {
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
     }
   };
-
-  private createFakeOptionList(): JSX.Element[][] {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    return !this.filterHasResults ? (
-      <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
-        <span aria-hidden="true">---</span>
-        <span class={prefix('select-wrapper__fake-option-sr')}>No results found</span>
-      </div>
-    ) : (
-      // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
-      this.options.map((item, index) => {
-        const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
-        return [
-          getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
-            <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
-              {getClosestHTMLElement(item, 'optgroup').label}
-            </span>
-          ),
-          <div
-            id={`option-${index}`}
-            role="option"
-            class={{
-              [prefix('select-wrapper__fake-option')]: true,
-              [prefix('select-wrapper__fake-option--selected')]: selected,
-              [prefix('select-wrapper__fake-option--highlighted')]: highlighted,
-              [prefix('select-wrapper__fake-option--disabled')]: disabled,
-              [prefix('select-wrapper__fake-option--hidden')]: hidden || initiallyHidden,
-            }}
-            onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.onFocus(e))}
-            aria-selected={highlighted ? 'true' : null}
-            aria-disabled={disabled ? 'true' : null}
-            aria-hidden={hidden || initiallyHidden ? 'true' : null}
-            aria-label={!item.text ? 'Empty value' : null}
-          >
-            {item.text && <span>{item.text}</span>}
-            {selected && !disabled && (
-              <PrefixedTagNames.pIcon
-                class={prefix('select-wrapper__fake-option-icon')}
-                aria-hidden="true"
-                name="check"
-                color="inherit"
-              />
-            )}
-          </div>,
-        ];
-      })
-    );
-  }
 
   private cycleFakeOptionList(direction: string): void {
     const validItems = this.optionMaps.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
@@ -645,7 +567,7 @@ export class SelectWrapper {
   private resetFilterInput = (): void => {
     this.filterInput.value = '';
     this.searchString = '';
-    this.filterHasResults = true;
+    // this.filterHasResults = true;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
       hidden: false,
@@ -656,33 +578,8 @@ export class SelectWrapper {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
 
-    const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
-    this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
+    // const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
+    // this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }
