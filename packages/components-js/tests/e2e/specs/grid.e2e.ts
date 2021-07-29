@@ -3,14 +3,15 @@ import { ElementHandle, Page } from 'puppeteer';
 import type {
   GridDirection,
   GridGutter,
+  GridGutterType,
   GridWrap,
 } from '@porsche-design-system/components/src/components/layout/grid/grid/grid-utils';
 import {
   getBrowser,
   getElementStyle,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -78,7 +79,7 @@ describe('grid', () => {
         .withContext('initial padding of grid-item')
         .toBe('0px 8px');
 
-      await setAttribute(grid, 'gutter', '{base: 24}');
+      await setProperty<GridGutterType>(grid, 'gutter', { base: 24 });
       await waitForStencilLifecycle(page);
 
       expect(await getGridMargin(grid))
@@ -88,7 +89,7 @@ describe('grid', () => {
         .withContext('padding of grid-item for base 24')
         .toBe('0px 12px');
 
-      await setAttribute(grid, 'gutter', '{base: 36}');
+      await setProperty<GridGutterType>(grid, 'gutter', { base: 36 });
       await waitForStencilLifecycle(page);
 
       expect(await getGridMargin(grid))

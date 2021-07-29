@@ -7,8 +7,8 @@ import {
   getOutlineStyle,
   getProperty,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -123,8 +123,8 @@ describe('select-wrapper native-dropdown', () => {
 
     expect(await getLabel()).toBeNull();
 
-    const selectComponent = await getHost();
-    await setAttribute(selectComponent, 'label', 'Some label');
+    const host = await getHost();
+    await setProperty(host, 'label', 'Some label');
     await waitForStencilLifecycle(page);
 
     expect(await getLabel()).not.toBeNull();
@@ -133,17 +133,15 @@ describe('select-wrapper native-dropdown', () => {
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     await initSelect();
 
-    const selectComponent = await getHost();
+    const host = await getHost();
     const select = await getSelect();
 
     expect(await getMessage())
       .withContext('initially')
       .toBeNull();
 
-    await selectComponent.evaluate((el) => {
-      el.setAttribute('state', 'error');
-      el.setAttribute('message', 'Some error message');
-    });
+    await setProperty(host, 'state', 'error');
+    await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -156,13 +154,13 @@ describe('select-wrapper native-dropdown', () => {
       .withContext('when state = error')
       .toEqual('Some label. Some error message');
 
-    await selectComponent.evaluate((el) => {
-      el.setAttribute('state', 'success');
-      el.setAttribute('message', 'Some success message');
-    });
+    await setProperty(host, 'state', 'success');
+    await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = success');
+    expect(await getMessage())
+      .withContext('when state = success')
+      .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role'))
       .withContext('when state = success')
       .toBeNull();
@@ -170,10 +168,8 @@ describe('select-wrapper native-dropdown', () => {
       .withContext('when state = success')
       .toEqual('Some label. Some success message');
 
-    await selectComponent.evaluate((el) => {
-      el.setAttribute('state', 'none');
-      el.setAttribute('message', '');
-    });
+    await setProperty(host, 'state', 'none');
+    await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -215,14 +211,14 @@ describe('select-wrapper native-dropdown', () => {
       .not.withContext('initially')
       .toContain(disabledClass);
 
-    await select.evaluate((el: HTMLSelectElement) => (el.disabled = true));
+    await setProperty(select, 'disabled', true);
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeSelect))
       .withContext('when disabled = true')
       .toContain(disabledClass);
 
-    await select.evaluate((el: HTMLSelectElement) => (el.disabled = false));
+    await setProperty(select, 'disabled', false);
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeSelect))
@@ -332,7 +328,7 @@ describe('select-wrapper native-dropdown', () => {
 
       // Ensure no update on native select render
       await select.click();
-      await secondOption.evaluate((el: HTMLOptionElement) => (el.selected = true));
+      await setProperty(secondOption, 'selected', true);
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(select, 'value')).toBe('b');
