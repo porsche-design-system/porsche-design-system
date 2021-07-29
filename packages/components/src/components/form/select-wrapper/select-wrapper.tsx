@@ -17,7 +17,15 @@ import {
   setAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
-import { applyFilterOnOptionMaps, getOptionMaps, getOptions, OptionMap } from './select-wrapper-utils';
+import {
+  updatedFilteredOptionMaps,
+  CHANGE_EVENT_NAME,
+  getHighlightedIndex,
+  getOptionMaps,
+  getOptionsElements,
+  OptionMap,
+  updateSelectedOptionMap,
+} from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -60,7 +68,7 @@ export class SelectWrapper {
 
   private select: HTMLSelectElement;
   private options: HTMLOptionElement[];
-  private fakeOptionListNode: HTMLDivElement;
+  private dropdown: HTMLPSelectWrapperDropdownElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
@@ -123,7 +131,9 @@ export class SelectWrapper {
   public disconnectedCallback(): void {
     this.selectObserver.disconnect();
     if (this.renderCustomDropDown) {
-      this.disconnectCustomDropDown();
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('mousedown', this.onClickOutside, true);
+      }
     }
   }
 
@@ -206,7 +216,7 @@ export class SelectWrapper {
               aria-controls="p-listbox"
               disabled={this.disabled}
               aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
-              aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+              aria-activedescendant={`option-${getHighlightedIndex(this.optionMaps)}`}
               placeholder={this.options[this.select.selectedIndex].text}
               ref={(el) => (this.filterInput = el)}
             />,
@@ -214,6 +224,7 @@ export class SelectWrapper {
           ]}
           {this.renderCustomDropDown && (
             <p-select-wrapper-dropdown
+              ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirectionInternal}
               hidden={this.fakeOptionListHidden}
@@ -243,7 +254,7 @@ export class SelectWrapper {
   }
 
   private setOptions(): void {
-    this.options = getOptions(this.select);
+    this.options = getOptionsElements(this.select);
   }
 
   private get disabled(): boolean {
@@ -284,6 +295,11 @@ export class SelectWrapper {
     }
 
     if (this.renderCustomDropDown) {
+      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent) => {
+        e.stopPropagation();
+        this.setOptionSelected(e.detail);
+      });
+
       this.setOptionList();
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
@@ -293,14 +309,6 @@ export class SelectWrapper {
       if (typeof document !== 'undefined') {
         document.addEventListener('mousedown', this.onClickOutside, true);
       }
-    }
-  }
-
-  private disconnectCustomDropDown(): void {
-    this.select.removeEventListener('mousedown', this.onMouseEvents);
-    this.select.removeEventListener('keydown', this.onKeyboardEvents);
-    if (typeof document !== 'undefined') {
-      document.removeEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
@@ -328,10 +336,7 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const children = getHTMLElements(
-        this.fakeOptionListNode,
-        `.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`
-      );
+      const children = getHTMLElements(this.dropdown.shadowRoot, '.option:not([aria-hidden="true"])');
       const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
@@ -400,7 +405,7 @@ export class SelectWrapper {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
           if (this.fakeOptionListHidden) {
-            this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
+            this.setOptionSelected(getHighlightedIndex(this.optionMaps));
           }
         }
         break;
@@ -408,7 +413,7 @@ export class SelectWrapper {
         e.preventDefault();
         this.handleVisibilityOfFakeOptionList('hide');
         if (!this.filter) {
-          this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
+          this.setOptionSelected(getHighlightedIndex(this.optionMaps));
         } else {
           const itemValue =
             !!this.searchString &&
@@ -416,7 +421,7 @@ export class SelectWrapper {
           if (itemValue.length === 1) {
             this.setOptionSelected(itemValue[0].key);
           } else {
-            this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
+            this.setOptionSelected(getHighlightedIndex(this.optionMaps));
           }
         }
         break;
@@ -481,12 +486,7 @@ export class SelectWrapper {
     }
 
     const { selectedIndex } = this.select;
-    this.optionMaps = this.optionMaps.map((item, index) => ({
-      ...item,
-      selected: index === selectedIndex,
-      highlighted: index === selectedIndex,
-      hidden: false,
-    }));
+    this.optionMaps = updateSelectedOptionMap(this.optionMaps, selectedIndex);
 
     if (oldSelectedValue !== newSelectedValue) {
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -499,7 +499,7 @@ export class SelectWrapper {
     if (validMax < 0) {
       return;
     }
-    let i = this.getHighlightedIndex(validItems);
+    let i = getHighlightedIndex(validItems);
     if (direction === 'down' || direction === 'right') {
       i = i < validMax ? i + 1 : 0;
     } else if (direction === 'up' || direction === 'left') {
@@ -511,7 +511,7 @@ export class SelectWrapper {
     }));
 
     if (direction === 'left' || direction === 'right') {
-      this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
+      this.setOptionSelected(getHighlightedIndex(this.optionMaps));
     }
 
     this.handleScroll();
@@ -519,20 +519,18 @@ export class SelectWrapper {
 
   private handleScroll(): void {
     const fakeOptionListNodeHeight = 200;
-    if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = getHTMLElements(this.fakeOptionListNode, 'div')[
-        this.getHighlightedIndex(this.optionMaps)
-      ];
+    if (this.dropdown.scrollHeight > fakeOptionListNodeHeight) {
+      this.fakeOptionHighlightedNode = getHTMLElements(this.dropdown, 'div')[getHighlightedIndex(this.optionMaps)];
 
       if (this.fakeOptionHighlightedNode) {
-        const { scrollTop } = this.fakeOptionListNode;
+        const { scrollTop } = this.dropdown;
         const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
         const scrollBottom = fakeOptionListNodeHeight + scrollTop;
         const elementBottom = offsetTop + offsetHeight;
         if (elementBottom > scrollBottom) {
-          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
+          this.dropdown.scrollTop = elementBottom - fakeOptionListNodeHeight;
         } else if (offsetTop < scrollTop) {
-          this.fakeOptionListNode.scrollTop = offsetTop;
+          this.dropdown.scrollTop = offsetTop;
         }
       }
     }
@@ -551,8 +549,6 @@ export class SelectWrapper {
       this.handleScroll();
     }, 100);
   }
-
-  private getHighlightedIndex = (arr: readonly OptionMap[]): number => arr.findIndex((item) => item.highlighted);
 
   /*
    * <START CUSTOM FILTER>
@@ -576,7 +572,7 @@ export class SelectWrapper {
 
   private onFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
+    this.optionMaps = updatedFilteredOptionMaps(this.optionMaps, this.searchString);
 
     // const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     // this.filterHasResults = hiddenItems.length !== this.optionMaps.length;

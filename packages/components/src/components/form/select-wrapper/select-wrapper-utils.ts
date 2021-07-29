@@ -1,5 +1,7 @@
 import { getHTMLElements, hasAttribute } from '../../../utils';
 
+export const CHANGE_EVENT_NAME = 'internalChange';
+
 export type OptionMap = {
   key: number; // unused?
   // name: string;
@@ -11,16 +13,7 @@ export type OptionMap = {
   highlighted: boolean; // TODO: rename
 };
 
-export const applyFilterOnOptionMaps = (optionMaps: OptionMap[], searchString: string): OptionMap[] => {
-  const lowerCaseSearchString = searchString.toLowerCase();
-
-  return optionMaps.map((item) => ({
-    ...item,
-    hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
-  }));
-};
-
-export const getOptions = (select: HTMLSelectElement): HTMLOptionElement[] => getHTMLElements(select, 'option');
+export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => getHTMLElements(select, 'option');
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
   options.map((item, idx) => {
@@ -36,3 +29,22 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     };
     return option;
   });
+
+export const updateSelectedOptionMap = (options: OptionMap[], newIndex: number): OptionMap[] =>
+  options.map((item, index) => ({
+    ...item,
+    selected: index === newIndex,
+    highlighted: index === newIndex,
+    hidden: false,
+  }));
+
+export const updatedFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
+  const lowerCaseSearchString = searchString.toLowerCase();
+
+  return options.map((item) => ({
+    ...item,
+    hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
+  }));
+};
+
+export const getHighlightedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
