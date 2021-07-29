@@ -81,10 +81,11 @@ export class Accordion {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const Heading = this.tag;
 
     return (
       <div class={rootClasses}>
-        <PrefixedTagNames.pHeadline tag={this.tag} theme={this.theme} variant="inherit">
+        <Heading class="heading">
           <button
             id={buttonId}
             type="button"
@@ -98,10 +99,11 @@ export class Accordion {
               color="inherit"
               name="arrowHeadDown"
               theme={this.theme}
+              size="inherit"
               aria-hidden="true"
             />
           </button>
-        </PrefixedTagNames.pHeadline>
+        </Heading>
         <div
           id={contentId}
           class="collapsible"
@@ -109,7 +111,7 @@ export class Accordion {
           aria-labelledby={buttonId}
           ref={(el) => (this.collapsibleElement = el)}
         >
-          <div class="content" ref={(el) => (this.content = el)}>
+          <div ref={(el) => (this.content = el)}>
             <slot />
           </div>
         </div>
