@@ -5,7 +5,6 @@ import {
   getProperty,
   removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -155,7 +154,7 @@ describe('icon', () => {
           const host = await getHost();
 
           // change icon name to "question"
-          await setAttribute(host, 'name', 'question');
+          await setProperty(host, 'name', 'question');
 
           // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
           await page.waitForTimeout(delay);
@@ -178,7 +177,7 @@ describe('icon', () => {
           const host = await getHost();
           expect(await getContent(await getIcon())).toContain('highway');
 
-          await setAttribute(host, 'name', 'light');
+          await setProperty(host, 'name', 'light');
           await waitForEventSerialization(page);
           expect(await getContent(await getIcon())).toEqual('');
 
@@ -228,7 +227,7 @@ describe('icon', () => {
           await initIcon({ ...opts, name: 'highway' });
           const host = await getHost();
 
-          await setAttribute(host, 'name', 'car');
+          await setProperty(host, 'name', 'car');
           await waitForStencilLifecycle(page);
 
           const status = await getLifecycleStatus(page);

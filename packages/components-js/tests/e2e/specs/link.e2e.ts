@@ -7,8 +7,8 @@ import {
   getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -255,7 +255,7 @@ describe('link', () => {
       await initLink();
       const host = await getHost();
 
-      await setAttribute(host, 'variant', 'tertiary');
+      await setProperty(host, 'variant', 'tertiary');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
