@@ -76,7 +76,7 @@ const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
   };
 };
 
-const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
+export const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
   hideLabel
     ? {
         root: {

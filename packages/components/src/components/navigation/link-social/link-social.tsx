@@ -1,18 +1,11 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  isDark,
-  mapBreakpointPropToClasses,
-  getThemeDarkAttribute,
-} from '../../../utils';
+import { getPrefixedTagNames, improveFocusHandlingForCustomElement, getThemeDarkAttribute } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { addSlottedCss } from './link-social-styles';
+import { addComponentCss, addSlottedCss } from './link-social-styles';
 
 @Component({
   tag: 'p-link-social',
-  styleUrl: 'link-social.scss',
   shadow: true,
 })
 export class LinkSocial {
@@ -44,22 +37,18 @@ export class LinkSocial {
     improveFocusHandlingForCustomElement(this.host);
   }
 
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.icon, this.hideLabel, this.theme);
+  }
+
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
-
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.icon}`]: true, // can produce link--undefined on purpose
-      ['root--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
         <TagType
-          class={rootClasses}
+          class="root"
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
