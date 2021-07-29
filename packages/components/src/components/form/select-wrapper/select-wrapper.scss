@@ -316,7 +316,7 @@
   }
 }
 
-.filter-input {
+.input {
   position: absolute;
   z-index: 1;
   bottom: 2px;
@@ -381,6 +381,7 @@
     }
   }
 
+  // TODO: why with just one ':'?
   &:-moz-placeholder {
     opacity: 1;
     color: $p-color-default;
@@ -403,7 +404,7 @@
     cursor: pointer;
     box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
 
-    .root--theme-light:hover & {
+    .root:hover & {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
     }
 

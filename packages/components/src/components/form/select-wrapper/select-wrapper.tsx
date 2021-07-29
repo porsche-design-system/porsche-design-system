@@ -166,14 +166,12 @@ export class SelectWrapper {
     };
     const messageClasses = {
       ['message']: true,
-      [`select-wrapper--theme-${this.theme}`]: true,
       [`message--${this.state}`]: this.state !== 'none',
     };
-    const filterInputClasses = {
-      ['filter-input']: true,
-      [`filter-input--theme-${this.theme}`]: true,
-      ['filter-input--disabled']: this.disabled,
-      [`filter-input--${this.state}`]: this.state !== 'none',
+    const inputClasses = {
+      ['input']: true,
+      ['input--disabled']: this.disabled,
+      [`input--${this.state}`]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -207,7 +205,7 @@ export class SelectWrapper {
           {this.filter && [
             <input
               type="text"
-              class={filterInputClasses}
+              class={inputClasses}
               role="combobox"
               aria-autocomplete="both"
               aria-controls="p-listbox"
