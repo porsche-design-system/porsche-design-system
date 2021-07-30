@@ -83,6 +83,10 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const hasChild = (host: HTMLElement, selector: string): boolean => {
+  return !!getHTMLElement(host, selector);
+};
+
 export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
   return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
 };

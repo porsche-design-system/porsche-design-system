@@ -14,7 +14,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for variant: %s, hideLabel: %s, hasRef: %s and theme: %s',
     (variant, hideLabel, hasHref, theme) => {
-      expect(getComponentCss(variant, hideLabel, hasHref, theme)).toMatchSnapshot();
+      expect(getComponentCss(false, variant, hideLabel, hasHref, theme)).toMatchSnapshot();
     }
   );
 });
