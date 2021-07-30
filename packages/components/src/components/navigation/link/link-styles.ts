@@ -40,6 +40,11 @@ const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { default
         defaultColor: isDarkTheme ? darkTheme.brand : color.brand,
         hoverColor: isDarkTheme ? '#c4001a' : '#980014',
       };
+    case 'secondary':
+      return {
+        defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+        hoverColor: isDarkTheme ? '#e0e0e0' : '#151718',
+      };
     case 'tertiary':
       return {
         defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
@@ -53,10 +58,9 @@ const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { default
   }
 };
 
-const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
+const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean, hasSlottedAnchor: boolean): Styles => {
   const { defaultColor, hoverColor } = getVariantColors(variant, isDarkTheme);
   const isTertiary = variant === 'tertiary';
-
   return {
     color: defaultColor,
     ...(isTertiary && {
@@ -76,11 +80,13 @@ const getColorStyles = (variant: LinkVariant, isDarkTheme: boolean): Styles => {
   };
 };
 
-export const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
+const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
   hideLabel
     ? {
-        root: {
-          padding: 0,
+        icon: {
+          left: '50%',
+          top: '50%',
+          transform: 'translate3d(-50%, -50%, 0)',
         },
         label: {
           width: 1,
@@ -91,15 +97,12 @@ export const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssSt
           border: 0,
           textIndent: -1,
         },
-        icon: {
-          left: '50%',
-          top: '50%',
-          transform: 'translate3d(-50%, -50%, 0)',
-        },
       }
     : {
-        root: {
-          padding: `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`,
+        icon: {
+          left: pxToRemWithUnit(11),
+          top: pxToRemWithUnit(11),
+          transform: 'translate3d(0,0,0)',
         },
         label: {
           width: '100%',
@@ -110,14 +113,17 @@ export const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssSt
           border: 0,
           textIndent: 0,
         },
-        icon: {
-          left: pxToRemWithUnit(11),
-          top: pxToRemWithUnit(11),
-          transform: 'translate3d(0,0,0)',
-        },
       };
+const linkPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
+
+export const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
+  root: {
+    padding: hideLabel ? 0 : linkPadding,
+  },
+});
 
 export const getComponentCss = (
+  hasSlottedAnchor: boolean,
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasHref: boolean,
@@ -125,6 +131,8 @@ export const getComponentCss = (
 ): string => {
   const isDarkTheme = isDark(theme);
   const iconColor = getIconColor(variant, isDarkTheme);
+  const { defaultColor, hoverColor } = getVariantColors(variant, isDarkTheme);
+  const isTertiary = variant === 'tertiary';
 
   return getCss(
     mergeDeep<Styles>(
@@ -133,6 +141,43 @@ export const getComponentCss = (
           display: 'inline-flex',
           verticalAlign: 'top',
           cursor: 'pointer',
+        }),
+
+        ...(hasSlottedAnchor && {
+          '::slotted(a)': addImportantToEachRule({
+            display: 'block',
+            position: 'static',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent none',
+            padding: linkPadding,
+            ...(isTertiary
+              ? {
+                  border: `1px solid ${defaultColor}`,
+                  // background: 'purple',
+                }
+              : {
+                  border: '1px solid transparent',
+                }),
+          }),
+          //TODO
+          '::slotted(a:hover)': addImportantToEachRule({
+            backgroundColor: hoverColor,
+            borderColor: hoverColor,
+            background: isTertiary && hasSlottedAnchor ? '#151718' : hoverColor, //isDarkTheme ? '#c4001a' : '#980014',
+          }),
+          '::slotted(a:focus)': addImportantToEachRule({
+            // outline: '1px transparent none',
+            // outline: 'transparent solid 1px',
+            outlineColor: 'purple',
+            outlineOffset: '2px',
+          }),
+          '::slotted(a:focus:not(:focus-visible))': addImportantToEachRule({
+            // background: 'red',
+            outlineColor: 'purple',
+            outlineOffset: '2px',
+          }),
         }),
         root: {
           display: 'flex',
@@ -146,6 +191,11 @@ export const getComponentCss = (
           appearance: 'none',
           textDecoration: 'none',
           backgroundColor: 'currentColor',
+          ...(!hasSlottedAnchor && { border: '1px solid currentColor' }),
+          ...getColorStyles(variant, isDarkTheme, hasSlottedAnchor), // overrides backgroundColor for tertiary
+          transition: `background-color ${transitionDuration} ${transitionTimingFunction},
+        border-color ${transitionDuration} ${transitionTimingFunction},
+        color ${transitionDuration} ${transitionTimingFunction}`,
           border: '1px solid currentColor',
           ...getColorStyles(variant, isDarkTheme), // overrides backgroundColor for tertiary
           transition:
@@ -172,7 +222,8 @@ export const getComponentCss = (
           outline: 'transparent none',
         }),
       },
-      buildResponsiveStyles(hideLabel, getHideLabelStyles)
+      buildResponsiveStyles(hideLabel, getIconLabelStyles),
+      !hasSlottedAnchor && buildResponsiveStyles(hideLabel, getRootStyles)
     )
   );
 };
@@ -193,7 +244,7 @@ export const getComponentCss = (
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     mergeDeep(
-      buildSlottedStyles(host, getFocusPseudoStyles({ offset: 3, color: color.neutralContrast.high })),
+      buildSlottedStyles(host, getFocusPseudoStyles({ offset: 2, color: color.neutralContrast.high })),
       buildSlottedStylesForDarkTheme(host, {
         '& a:focus::before': {
           outlineColor: color.background.default,
@@ -205,12 +256,13 @@ export const getSlottedCss = (host: HTMLElement): string => {
 
 export const addComponentCss = (
   host: HTMLElement,
+  hasSlottedAnchor: boolean,
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(variant, hideLabel, hasHref, theme));
+  attachCss(host, getComponentCss(hasSlottedAnchor, variant, hideLabel, hasHref, theme));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

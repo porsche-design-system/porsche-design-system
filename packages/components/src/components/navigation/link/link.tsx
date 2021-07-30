@@ -1,5 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, getThemeDarkAttribute, improveFocusHandlingForCustomElement } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  getThemeDarkAttribute,
+  hasChild,
+  improveFocusHandlingForCustomElement,
+} from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 import { addComponentCss, addSlottedCss } from './link-styles';
 
@@ -37,13 +42,16 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  private hasSlottedAnchor = false;
+
   public connectedCallback(): void {
-    addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
+    this.hasSlottedAnchor = hasChild(this.host, 'a');
+    addSlottedCss(this.host);
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.variant, this.hideLabel, !!this.href, this.theme);
+    addComponentCss(this.host, this.hasSlottedAnchor, this.variant, this.hideLabel, !!this.href, this.theme);
   }
 
   public render(): JSX.Element {
