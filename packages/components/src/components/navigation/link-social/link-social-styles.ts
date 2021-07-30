@@ -23,7 +23,7 @@ import {
 import { color } from '@porsche-design-system/utilities';
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { getHideLabelStyles as getLinkHideLabelStyles } from '../link/link-styles';
+import { getIconLabelStyles as getLinkHideLabelStyles } from '../link/link-styles';
 
 const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   const baseHideLabelStyles = getLinkHideLabelStyles(hideLabel);
