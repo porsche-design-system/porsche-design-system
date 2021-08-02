@@ -72,7 +72,6 @@ export class SelectWrapper {
 
   @State() private isDropdownHidden = true;
   @State() private optionMaps: OptionMap[] = [];
-  // @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
   private selectObserver: MutationObserver;
@@ -279,13 +278,12 @@ export class SelectWrapper {
   private onMouseDown = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-    this.onFocus(e);
+    this.onFocus();
     this.handleVisibilityOfFakeOptionList('toggle');
   };
 
-  private onFocus(e: MouseEvent): void {
+  private onFocus(): void {
     if (this.filter) {
-      e.preventDefault();
       this.filterInput.focus();
     } else {
       this.select.focus();
@@ -300,9 +298,7 @@ export class SelectWrapper {
     } else {
       if (type === 'hide' || type === 'toggle') {
         this.isDropdownHidden = true;
-        if (this.filter) {
-          this.resetFilterInput();
-        }
+        this.resetFilter();
       }
     }
   }
@@ -402,22 +398,15 @@ export class SelectWrapper {
   private setOptionSelected = (newIndex: number): void => {
     this.handleVisibilityOfFakeOptionList('hide');
 
-    // TODO: use this.onFocus()
-    if (this.filter) {
-      this.filterInput.value = '';
-      this.searchString = '';
-      // this.filterHasResults = true;
-      this.filterInput.focus();
-    } else {
-      this.select.focus();
-    }
-
     if (this.selectedIndex !== newIndex) {
       this.select.selectedIndex = newIndex;
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
     } else {
       this.optionMaps = resetHighlightedIndex(this.optionMaps);
     }
+
+    this.resetFilter();
+    this.onFocus();
   };
 
   private cycleFakeOptionList(direction: KeyboardDirectionInternal): void {
@@ -443,19 +432,18 @@ export class SelectWrapper {
     }
   };
 
-  private resetFilterInput = (): void => {
-    this.filterInput.value = '';
-    this.searchString = '';
-    // this.filterHasResults = true;
-    this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
+  private resetFilter = (): void => {
+    if (this.filter) {
+      this.filterInput.value = '';
+      this.searchString = '';
+      this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
+    }
   };
 
   private onFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
 
-    // const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
-    // this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   };
 }
