@@ -31,14 +31,13 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     return option;
   });
 
-export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] => {
-  return options.map((item, idx) => ({
+export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
+  options.map((item, idx) => ({
     ...item,
     selected: idx === newIndex,
     highlighted: idx === newIndex,
     hidden: false,
   }));
-};
 
 export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
@@ -48,12 +47,27 @@ export const updateFilteredOptionMaps = (options: OptionMap[], searchString: str
   }));
 };
 
-export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] => {
-  return options.map((item, idx) => ({
+export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
+  options.map((item) => ({
+    ...item,
+    hidden: false,
+  }));
+
+export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
+  options.map((item, idx) => ({
     ...item,
     highlighted: idx === newIndex,
   }));
-};
+
+export const updateHighlightedAndSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
+  options.map((item, idx) => ({
+    ...item,
+    highlighted: idx === newIndex,
+    selected: idx === newIndex,
+  }));
+
+export const updateFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
+  updateHighlightedOptionMaps(options, 0);
 
 export const updateLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
   updateHighlightedOptionMaps(options, options.length - 1);

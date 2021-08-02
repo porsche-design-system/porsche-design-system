@@ -27,6 +27,9 @@ import {
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
   InternalChangeEvent,
+  resetFilteredOptionMaps,
+  updateFirstHighlightedOptionMaps,
+  updateHighlightedAndSelectedOptionMaps,
 } from './select-wrapper-utils';
 
 @Component({
@@ -408,7 +411,7 @@ export class SelectWrapper {
       case 'PageUp':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
-          this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, 0);
+          this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
@@ -469,10 +472,7 @@ export class SelectWrapper {
     } else if (direction === 'up' || direction === 'left') {
       i = i > 0 ? i - 1 : validMax;
     }
-    this.optionMaps = this.optionMaps.map((item, index) => ({
-      ...item,
-      highlighted: index === validItems[i].key,
-    }));
+    this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, validItems[i].key);
 
     if (direction === 'left' || direction === 'right') {
       this.setOptionSelected(getHighlightedIndex(this.optionMaps));
@@ -503,13 +503,7 @@ export class SelectWrapper {
   private handleNativeSearchOptions(): void {
     // timeout is needed if fast keyboard events are triggered and dom needs time to update state
     setTimeout(() => {
-      const { selectedIndex } = this.select;
-      this.optionMaps = this.optionMaps.map((item, index) => ({
-        ...item,
-        highlighted: index === selectedIndex,
-        selected: index === selectedIndex,
-      }));
-
+      this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
       this.handleScroll();
     }, 100);
   }
@@ -528,10 +522,7 @@ export class SelectWrapper {
     this.filterInput.value = '';
     this.searchString = '';
     // this.filterHasResults = true;
-    this.optionMaps = this.optionMaps.map((item) => ({
-      ...item,
-      hidden: false,
-    }));
+    this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
   };
 
   private onFilterSearch = (ev: InputEvent): void => {
