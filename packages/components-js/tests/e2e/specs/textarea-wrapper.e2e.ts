@@ -8,8 +8,8 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -106,11 +106,11 @@ describe('textarea-wrapper', () => {
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await initTextarea();
-    const textareaComponent = await getHost();
+    const host = await getHost();
 
     expect(await getLabel()).toBeNull();
 
-    await textareaComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
+    await setProperty(host, 'label', 'Some label');
     await waitForStencilLifecycle(page);
 
     expect(await getLabel()).toBeDefined();
@@ -118,15 +118,15 @@ describe('textarea-wrapper', () => {
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     await initTextarea({ hasLabel: true });
-    const textareaComponent = await getHost();
+    const host = await getHost();
     const textarea = await getTextarea();
 
-    expect(await getMessage()).toBeNull('initially');
+    expect(await getMessage())
+      .withContext('initially')
+      .toBeNull();
 
-    await textareaComponent.evaluate((el) => {
-      el.setAttribute('state', 'error');
-      el.setAttribute('message', 'Some error message');
-    });
+    await setProperty(host, 'state', 'error');
+    await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -139,13 +139,13 @@ describe('textarea-wrapper', () => {
       .withContext('when state = error')
       .toBe('Some label. Some error message');
 
-    await textareaComponent.evaluate((el) => {
-      el.setAttribute('state', 'success');
-      el.setAttribute('message', 'Some success message');
-    });
+    await setProperty(host, 'state', 'success');
+    await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = success');
+    expect(await getMessage())
+      .withContext('when state = success')
+      .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role'))
       .withContext('when state = success')
       .toBeNull();
@@ -153,13 +153,13 @@ describe('textarea-wrapper', () => {
       .withContext('when state = success')
       .toBe('Some label. Some success message');
 
-    await textareaComponent.evaluate((el) => {
-      el.setAttribute('state', 'none');
-      el.setAttribute('message', '');
-    });
+    await setProperty(host, 'state', 'none');
+    await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeNull('when state = none');
+    expect(await getMessage())
+      .withContext('when state = none')
+      .toBeNull();
     expect(await getProperty(textarea, 'ariaLabel'))
       .withContext('when state = none')
       .toBe('Some label');
@@ -280,7 +280,7 @@ describe('textarea-wrapper', () => {
         state: 'error',
       });
       const host = await getHost();
-      await setAttribute(host, 'state', 'none');
+      await setProperty(host, 'state', 'none');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
