@@ -3,7 +3,7 @@ import {
   attachCss,
   BreakpointCustomizable,
   buildHostStyles,
-  buildResponsiveStyles, colorDarken,
+  buildResponsiveStyles,
   getCss,
   getFocusStyles,
   isDark,
@@ -24,7 +24,7 @@ const getColors = (isDarkTheme: boolean, icon: SocialIconName): { baseColor: str
 
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-    baseColorHover: externalBrandColor ? externalBrandColor : isDarkTheme ? colorDarken.darkTheme.default : colorDarken.neutralContrast.high,
+    baseColorHover: externalBrandColor ? externalBrandColor : isDarkTheme ? '#e0e0e0' : '#151718',
     textColor: isDarkTheme ? color.default : darkTheme.default,
     textColorHover: externalBrandColor ? darkTheme.default : undefined
   };
