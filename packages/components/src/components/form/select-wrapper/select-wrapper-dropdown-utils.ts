@@ -33,3 +33,23 @@ export const determineDropdownDirection = (host: HTMLElement): DropdownDirection
   const spaceBottom = window.innerHeight - spaceTop - SELECT_HEIGHT;
   return spaceBottom <= listHeight && spaceTop >= listHeight ? 'up' : 'down';
 };
+
+export const handleScroll = (rootElement: HTMLElement, highlightedIndex: number): void => {
+  const rootElementHeightThreshold = 200; // ??
+  const { scrollHeight, scrollTop } = rootElement;
+
+  if (scrollHeight > rootElementHeightThreshold) {
+    const fakeOptionHighlightedNode = getHTMLElements(rootElement, 'div')[highlightedIndex];
+
+    if (fakeOptionHighlightedNode) {
+      const { offsetTop, offsetHeight } = fakeOptionHighlightedNode;
+      const scrollBottom = rootElementHeightThreshold + scrollTop;
+      const elementBottom = offsetTop + offsetHeight;
+      if (elementBottom > scrollBottom) {
+        rootElement.scrollTop = elementBottom - rootElementHeightThreshold;
+      } else if (offsetTop < scrollTop) {
+        rootElement.scrollTop = offsetTop;
+      }
+    }
+  }
+};
