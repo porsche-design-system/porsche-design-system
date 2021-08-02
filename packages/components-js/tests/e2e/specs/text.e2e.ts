@@ -5,8 +5,8 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -69,7 +69,7 @@ describe('text', () => {
       await initText();
       const host = await getHost();
 
-      await setAttribute(host, 'weight', 'semibold');
+      await setProperty(host, 'weight', 'semibold');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

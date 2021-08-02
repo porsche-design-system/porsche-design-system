@@ -10,7 +10,6 @@ import {
   hasFocus,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -366,23 +365,23 @@ describe('button-pure', () => {
     await focusElAndPressEnter(input);
     expect(submitCalls).toBe(1);
 
-    const button = await getHost();
-    await focusElAndPressEnter(button);
+    const host = await getHost();
+    await focusElAndPressEnter(host);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await button.evaluate((el) => el.setAttribute('type', 'button'));
-    await focusElAndPressEnter(button);
+    await setProperty(host, 'type', 'button');
+    await focusElAndPressEnter(host);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await button.evaluate((el) => el.setAttribute('type', 'reset'));
-    await focusElAndPressEnter(button);
+    await setProperty(host, 'type', 'reset');
+    await focusElAndPressEnter(host);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await button.evaluate((el) => el.setAttribute('type', 'submit'));
-    await focusElAndPressEnter(button);
+    await setProperty(host, 'type', 'submit');
+    await focusElAndPressEnter(host);
     expect(submitCalls).toBe(2);
 
-    await focusElAndPressEnter(button);
+    await focusElAndPressEnter(host);
     expect(submitCalls).toBe(3);
   });
 
@@ -393,12 +392,12 @@ describe('button-pure', () => {
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
 
-    await host.evaluate((el) => el.setAttribute('loading', 'true'));
+    await setProperty(host, 'loading', true);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBe('true');
 
-    await host.evaluate((el) => el.setAttribute('loading', 'false'));
+    await setProperty(host, 'loading', false);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
@@ -483,7 +482,7 @@ describe('button-pure', () => {
       await initButtonPure();
       const host = await getHost();
 
-      await setAttribute(host, 'size', 'medium');
+      await setProperty(host, 'size', 'medium');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
