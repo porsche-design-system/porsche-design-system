@@ -7,8 +7,8 @@ import {
   getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -255,7 +255,7 @@ describe('link-pure', () => {
       await initLinkPure();
       const host = await getHost();
 
-      await setAttribute(host, 'size', 'medium');
+      await setProperty(host, 'size', 'medium');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
