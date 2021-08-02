@@ -1,7 +1,17 @@
-import { getHTMLElements, hasAttribute } from '../../../utils';
+import { getHTMLElements, hasAttribute, isTouchDevice } from '../../../utils';
 
 export const CHANGE_EVENT_NAME = 'internalChange';
 export type InternalChangeEvent = { newIndex: number };
+
+export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
+  if (filter) {
+    return true;
+  } else if (native) {
+    return false;
+  } else {
+    return !isTouchDevice();
+  }
+};
 
 export type OptionMap = {
   key: number; // unused?
