@@ -3,6 +3,7 @@ import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
 import type { OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import { CHANGE_EVENT_NAME, InternalChangeEvent } from './select-wrapper-utils';
+import { getOptionAriaAttributes, getRootAriaAttributes } from './select-wrapper-dropdown-utils';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -40,6 +41,7 @@ export class SelectWrapperDropdown {
 
   public connectedCallback(): void {
     // this.observeSelect();
+    // TODO: validate this is used within `p-select-wrapper`
   }
 
   public componentWillLoad(): void {
@@ -83,10 +85,11 @@ export class SelectWrapperDropdown {
           class={rootClasses}
           role="listbox"
           id="p-listbox"
-          aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
           tabIndex={-1}
-          aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
           aria-labelledby="p-label"
+          {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
+          // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
+          // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
           ref={(el) => (this.fakeOptionListNode = el)}
         >
           {!this.filterHasResults ? (
@@ -96,7 +99,8 @@ export class SelectWrapperDropdown {
             </div>
           ) : (
             // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
-            this.optionMaps.map(({ value, disabled, hidden, initiallyHidden, selected, highlighted }, index) => {
+            this.optionMaps.map((option, index) => {
+              const { value, disabled, hidden, initiallyHidden, selected, highlighted } = option;
               return [
                 // getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
                 //   <span class="optgroup-label" role="presentation">
@@ -114,10 +118,11 @@ export class SelectWrapperDropdown {
                     ['option--hidden']: hidden || initiallyHidden,
                   }}
                   onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.onFocus(e))}
-                  aria-selected={highlighted ? 'true' : null}
-                  aria-disabled={disabled ? 'true' : null}
-                  aria-hidden={hidden || initiallyHidden ? 'true' : null}
-                  aria-label={!value ? 'Empty value' : null}
+                  {...getOptionAriaAttributes(option)}
+                  // aria-selected={highlighted ? 'true' : null}
+                  // aria-disabled={disabled ? 'true' : null}
+                  // aria-hidden={hidden || initiallyHidden ? 'true' : null}
+                  // aria-label={!value ? 'Empty value' : null}
                 >
                   {value && <span>{value}</span>}
                   {selected && !disabled && (
