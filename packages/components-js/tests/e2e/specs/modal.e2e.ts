@@ -8,9 +8,10 @@ import {
   getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
+  removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -58,7 +59,7 @@ describe('modal', () => {
   };
 
   const openModal = async () => {
-    await (await getHost()).evaluate((el) => el.setAttribute('open', ''));
+    await setProperty(await getHost(), 'open', true);
     await waitForStencilLifecycle(page);
   };
 
@@ -108,7 +109,7 @@ describe('modal', () => {
 
     it('should not be closable via esc key when disableCloseButton is set', async () => {
       const host = await getHost();
-      await host.evaluate((el) => el.setAttribute('disable-close-button', ''));
+      await setProperty(host, 'disableCloseButton', true);
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
@@ -134,8 +135,9 @@ describe('modal', () => {
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       const host = await getHost();
-      await setAttribute(host, 'disable-backdrop-click', '');
+      await setProperty(host, 'disableBackdropClick', true);
       await waitForStencilLifecycle(page);
+
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
 
@@ -236,10 +238,10 @@ describe('modal', () => {
       <script>
         const modal = document.getElementById('modal');
         document.getElementById('btn-open').addEventListener('click', () => {
-          modal.setAttribute('open', '');
+          modal.open = true;
         });
         modal.addEventListener('close', () => {
-          modal.removeAttribute('open');
+          modal.open = false;
         });
       </script>`
     );
@@ -273,7 +275,7 @@ describe('modal', () => {
     await openModal();
     expect(await getBodyOverflow()).toBe('hidden');
 
-    await (await getHost()).evaluate((el) => el.removeAttribute('open'));
+    await setProperty(await getHost(), 'open', false);
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
   });
@@ -326,7 +328,7 @@ describe('modal', () => {
       await initBasicModal();
       const host = await getHost();
 
-      await setAttribute(host, 'open', 'false');
+      await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

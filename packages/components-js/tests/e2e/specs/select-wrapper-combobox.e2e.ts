@@ -304,7 +304,7 @@ describe('select-wrapper combobox', () => {
     await waitForStencilLifecycle(page);
 
     const errorOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option > span');
-    const errorOptionValue = await errorOption.evaluate((el) => el.textContent);
+    const errorOptionValue = await getProperty(errorOption, 'textContent');
 
     expect(await getHiddenOptionAmount()).toBe(0);
     expect(errorOptionValue).toBe('---');

@@ -9,14 +9,19 @@ import type { FormState, TextSize } from '../../../types';
 })
 export class FieldsetWrapper {
   @Element() public host!: HTMLElement;
+
   /** The label text. */
   @Prop() public label?: string = '';
+
   /** The size of the label text. */
   @Prop() public labelSize?: Extract<TextSize, 'small' | 'medium'> = 'medium';
+
   /** Marks the Fieldset as required. */
   @Prop() public required?: boolean = false;
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
+
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 

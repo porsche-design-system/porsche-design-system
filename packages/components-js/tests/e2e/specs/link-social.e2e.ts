@@ -7,8 +7,8 @@ import {
   getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -262,7 +262,7 @@ describe('link-social', () => {
       await initLinkSocial();
       const host = await getHost();
 
-      await setAttribute(host, 'icon', 'logo-xing');
+      await setProperty(host, 'icon', 'logo-xing');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 

@@ -3,8 +3,8 @@ import {
   getAttribute,
   getBrowser,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -43,7 +43,7 @@ describe('fieldset-wrapper', () => {
 
       const host = await getHost();
 
-      await setAttribute(host, 'state', 'error');
+      await setProperty(host, 'state', 'error');
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(await getMessage(), 'role')).toBe('alert');

@@ -16,8 +16,8 @@ import {
   reattachElement,
   removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForComponentsReady,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
@@ -291,7 +291,7 @@ describe('tabs-bar', () => {
     it('should have transition and will-change css property applied on stats-bar', async () => {
       await initTabsBar({ activeTabIndex: 0 });
       const host = await getHost();
-      await setAttribute(host, 'active-tab-index', '1'); // class with transition property will applied on first change
+      await setProperty(host, 'activeTabIndex', 1); // class with transition property will applied on first change
       await waitForStencilLifecycle(page);
 
       const statusBar = await getStatusBar();
@@ -875,7 +875,7 @@ describe('tabs-bar', () => {
       await setContentWithDesignSystem(page, ''); // empty page
       await page.evaluate(() => {
         const el = document.createElement('p-tabs-bar');
-        el.setAttribute('active-tab-index', '-1');
+        el['activeTabIndex'] = -1;
 
         Array.from(Array(2)).forEach((_, i) => {
           const child = document.createElement('button');
@@ -967,7 +967,7 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3, tag: 'button', activeTabIndex: 0 });
       const host = await getHost();
 
-      await setAttribute(host, 'active-tab-index', '2');
+      await setProperty(host, 'activeTabIndex', 2);
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
