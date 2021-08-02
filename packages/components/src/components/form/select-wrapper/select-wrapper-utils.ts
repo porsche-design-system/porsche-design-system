@@ -3,7 +3,8 @@ import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../
 export const CHANGE_EVENT_NAME = 'internalChange';
 export type InternalChangeEvent = { newIndex: number };
 
-export type DropdownDirection = 'auto' | 'down' | 'up';
+export type DropdownDirectionInternal = 'down' | 'up';
+export type DropdownDirection = DropdownDirectionInternal | 'auto';
 
 export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
   if (filter) {

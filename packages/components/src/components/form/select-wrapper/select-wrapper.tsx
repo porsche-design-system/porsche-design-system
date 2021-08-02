@@ -80,7 +80,6 @@ export class SelectWrapper {
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
-  private dropdownDirectionInternal: 'down' | 'up' = 'down';
   private hasCustomDropdown: boolean;
 
   // this stops click events when filter input is clicked
@@ -216,7 +215,7 @@ export class SelectWrapper {
             <p-select-wrapper-dropdown
               ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
-              dropdownDirection={this.dropdownDirectionInternal}
+              dropdownDirection={this.dropdownDirection}
               hidden={this.isCustomDropdownHidden}
               filter={this.filter}
               theme={this.theme}
@@ -296,30 +295,11 @@ export class SelectWrapper {
     }
   }
 
-  private handleDropdownDirection(): void {
-    if (this.dropdownDirection === 'auto') {
-      const children = getHTMLElements(this.dropdown.shadowRoot, '.option:not([aria-hidden="true"])');
-      const { top: spaceTop } = this.select.getBoundingClientRect();
-      const listNodeChildrenHeight = children[0].clientHeight;
-      const numberOfChildNodes = children.length;
-
-      // Max number of children visible is set to 10
-      const listNodeHeight =
-        numberOfChildNodes >= 10 ? listNodeChildrenHeight * 10 : listNodeChildrenHeight * numberOfChildNodes;
-      const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
-      if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
-        this.dropdownDirectionInternal = 'up';
-      } else {
-        this.dropdownDirectionInternal = 'down';
-      }
-    }
-  }
-
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
     if (this.isCustomDropdownHidden) {
       if (type === 'show' || type === 'toggle') {
         this.isCustomDropdownHidden = false;
-        this.handleDropdownDirection();
+        // this.handleDropdownDirection();
         this.handleScroll();
       }
     } else {
