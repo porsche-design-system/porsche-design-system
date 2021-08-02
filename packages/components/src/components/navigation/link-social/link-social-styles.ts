@@ -6,9 +6,7 @@ import {
   buildResponsiveStyles,
   getCss,
   getFocusStyles,
-  GetStylesFunction,
   isDark,
-  JssStyle,
   mergeDeep,
   pxToRemWithUnit,
   Styles,
@@ -18,80 +16,18 @@ import {
 import { color } from '@porsche-design-system/utilities';
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-
-const { darkTheme } = color;
+import { getIconLabelStyles, getRootStyles, getSlottedLinkStyles } from '../link/link-styles';
 
 const getColors = (isDarkTheme: boolean, icon: SocialIconName): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
+  const { darkTheme } = color;
   const externalBrandColor = color.external[icon?.split('-')[1]];
+
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
     baseColorHover: externalBrandColor ? externalBrandColor : isDarkTheme ? '#e0e0e0' : '#151718',
     textColor: isDarkTheme ? color.default : darkTheme.default,
     textColorHover: externalBrandColor ? darkTheme.default : undefined
   };
-};
-
-// TODO: can be optimized by reducing getVisibilityStyle + getSlottedLinkStyles depending on hasHref prop
-const getVisibilityStyle = (visible: boolean): JssStyle => {
-  return visible ? {
-    width: 'auto',
-    height: 'auto',
-    margin: 0,
-    overflow: 'visible',
-    textIndent: 0,
-  } : {
-    width: 1,
-    height: 1,
-    margin: '0 0 0 -1px',
-    overflow: 'hidden',
-    textIndent: -1,
-  };
-};
-
-const linkPadding = `${pxToRemWithUnit(12)} ${pxToRemWithUnit(16)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(40)}`;
-
-const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
-  root: {
-    padding: hideLabel ? 0 : linkPadding,
-  },
-});
-
-const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel ? {
-    icon: {
-      left: '50%',
-      top: '50%',
-      transform: 'translate3d(-50%, -50%, 0)',
-    },
-    label: getVisibilityStyle(!hideLabel)
-  } : {
-    icon: {
-      left: pxToRemWithUnit(12),
-      top: pxToRemWithUnit(12),
-      transform: 'translate3d(0,0,0)',
-    },
-    label: getVisibilityStyle(!hideLabel),
-  };
-};
-
-const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
-  return addImportantToEachRule({
-    '::slotted(a)': hideLabel ? {
-      position: 'absolute',
-      inset: 0,
-      padding: 0,
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      textIndent: '99999px',
-    } : {
-      position: 'static',
-      inset: 'auto',
-      padding: linkPadding,
-      overflow: 'visible',
-      whiteSpace: 'normal',
-      textIndent: 0,
-    }
-  });
 };
 
 export const getComponentCss = (
@@ -122,9 +58,11 @@ export const getComponentCss = (
           boxSizing: 'border-box',
           appearance: 'none',
           textDecoration: 'none',
+          border: '1px solid currentColor',
           backgroundColor: 'currentColor',
           color: baseColor,
           transition: `background-color ${transitionDuration} ${transitionTimingFunction},`+
+            `border-color ${transitionDuration} ${transitionTimingFunction},`+
             `color ${transitionDuration} ${transitionTimingFunction}`,
           '&:hover, &:active': {
             color: baseColorHover,
@@ -153,7 +91,7 @@ export const getComponentCss = (
             color: 'inherit',
             lineHeight: 'inherit',
             outline: 'transparent solid 1px',
-            outlineOffset: '2px',
+            outlineOffset: '3px',
           },
           '::slotted(a::-moz-focus-inner)': {
             border: 0,

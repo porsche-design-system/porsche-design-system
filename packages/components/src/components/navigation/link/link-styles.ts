@@ -42,7 +42,7 @@ const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { baseCol
 };
 
 // TODO: can be optimized by reducing getVisibilityStyle + getSlottedLinkStyles depending on hasHref prop
-const getVisibilityStyle = (visible: boolean): JssStyle => {
+export const getVisibilityStyle = (visible: boolean): JssStyle => {
   return visible ? {
     width: 'auto',
     height: 'auto',
@@ -60,13 +60,13 @@ const getVisibilityStyle = (visible: boolean): JssStyle => {
 
 const linkPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
 
-const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
+export const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
   root: {
     padding: hideLabel ? 0 : linkPadding,
   },
 });
 
-const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel ? {
     icon: {
       left: '50%',
@@ -84,7 +84,7 @@ const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => 
   };
 };
 
-const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return addImportantToEachRule({
     '::slotted(a)': hideLabel ? {
       position: 'absolute',
