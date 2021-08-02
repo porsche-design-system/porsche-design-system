@@ -67,7 +67,7 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  @State() private fakeOptionListHidden = true;
+  @State() private isCustomDropdownHidden = true;
   @State() private optionMaps: OptionMap[] = [];
   // @State() private filterHasResults = true;
 
@@ -153,7 +153,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--opened']: !this.fakeOptionListHidden,
+      ['icon--opened']: !this.isCustomDropdownHidden,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
@@ -188,7 +188,7 @@ export class SelectWrapper {
               aria-autocomplete="both"
               aria-controls="p-listbox"
               disabled={this.disabled}
-              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-expanded={this.isCustomDropdownHidden ? 'false' : 'true'}
               aria-activedescendant={`option-${getHighlightedIndex(this.optionMaps)}`}
               placeholder={this.options[this.select.selectedIndex].text}
               ref={(el) => (this.filterInput = el)}
@@ -200,7 +200,7 @@ export class SelectWrapper {
               ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirectionInternal}
-              hidden={this.fakeOptionListHidden}
+              hidden={this.isCustomDropdownHidden}
               filter={this.filter}
               theme={this.theme}
             />
@@ -320,15 +320,15 @@ export class SelectWrapper {
   }
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (this.fakeOptionListHidden) {
+    if (this.isCustomDropdownHidden) {
       if (type === 'show' || type === 'toggle') {
-        this.fakeOptionListHidden = false;
+        this.isCustomDropdownHidden = false;
         this.handleDropdownDirection();
         this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
-        this.fakeOptionListHidden = true;
+        this.isCustomDropdownHidden = true;
         if (this.filter) {
           this.resetFilterInput();
         }
@@ -364,14 +364,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          if (this.fakeOptionListHidden) {
+          if (this.isCustomDropdownHidden) {
             e.preventDefault();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          if (this.fakeOptionListHidden) {
+          if (this.isCustomDropdownHidden) {
             this.setOptionSelected(getHighlightedIndex(this.optionMaps));
           }
         }
@@ -379,9 +379,7 @@ export class SelectWrapper {
       case 'Enter':
         e.preventDefault();
         this.handleVisibilityOfFakeOptionList('hide');
-        if (!this.filter) {
-          this.setOptionSelected(getHighlightedIndex(this.optionMaps));
-        } else {
+        if (this.filter) {
           const itemValue =
             !!this.searchString &&
             this.optionMaps.filter((item) => item.value.toLowerCase() === this.searchString.toLowerCase());
@@ -390,6 +388,8 @@ export class SelectWrapper {
           } else {
             this.setOptionSelected(getHighlightedIndex(this.optionMaps));
           }
+        } else {
+          this.setOptionSelected(getHighlightedIndex(this.optionMaps));
         }
         break;
       case 'Escape':
@@ -401,25 +401,29 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (!this.fakeOptionListHidden) {
+        if (!this.isCustomDropdownHidden) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
       case 'PageDown':
         e.preventDefault();
-        if (!this.fakeOptionListHidden) {
+        if (!this.isCustomDropdownHidden) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
       case 'Tab':
-        if (!this.fakeOptionListHidden) {
+        if (!this.isCustomDropdownHidden) {
           this.handleVisibilityOfFakeOptionList('hide');
         }
         break;
       default:
-        this.handleNativeSearchOptions();
+        // timeout is needed if fast keyboard events are triggered and dom needs time to update state
+        setTimeout(() => {
+          this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
+          this.handleScroll();
+        }, 100);
     }
   };
 
@@ -489,14 +493,6 @@ export class SelectWrapper {
         }
       }
     }
-  }
-
-  private handleNativeSearchOptions(): void {
-    // timeout is needed if fast keyboard events are triggered and dom needs time to update state
-    setTimeout(() => {
-      this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
-      this.handleScroll();
-    }, 100);
   }
 
   /*
