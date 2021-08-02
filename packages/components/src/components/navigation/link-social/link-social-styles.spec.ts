@@ -4,6 +4,8 @@ import { SocialIconName } from './link-social-utils';
 
 describe('getComponentCss()', () => {
   it.each<[SocialIconName, BreakpointCustomizable<boolean>, boolean, Theme]>([
+    [undefined, false, false, 'light'],
+    [undefined, false, false, 'dark'],
     ['logo-facebook', false, false, 'light'],
     ['logo-facebook', false, false, 'dark'],
     ['logo-google', false, false, 'light'],

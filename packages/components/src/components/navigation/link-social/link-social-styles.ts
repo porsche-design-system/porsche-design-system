@@ -22,11 +22,12 @@ import type { SocialIconName } from './link-social-utils';
 const { darkTheme } = color;
 
 const getColors = (isDarkTheme: boolean, icon: SocialIconName): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
+  const externalBrandColor = color.external[icon?.split('-')[1]];
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-    baseColorHover: color.external[icon.split('-')[1]],
+    baseColorHover: externalBrandColor ? externalBrandColor : isDarkTheme ? '#e0e0e0' : '#151718',
     textColor: isDarkTheme ? color.default : darkTheme.default,
-    textColorHover: darkTheme.default
+    textColorHover: externalBrandColor ? darkTheme.default : undefined
   };
 };
 
