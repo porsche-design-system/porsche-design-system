@@ -8,8 +8,8 @@ import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement, getTagName } from './dom';
-import { breakpoint } from '@porsche-design-system/utilities';
-import type { Breakpoint } from '@porsche-design-system/utilities';
+import { addImportantToEachRule, mediaQuery } from './styles';
+import type { Breakpoint } from './styles';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -22,27 +22,6 @@ declare global {
     adoptedStyleSheets: CSSStyleSheet[];
   }
 }
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const addImportantToRule = (value: any): string => `${value} !important`;
-
-export const addImportantToEachRule = <T extends Record<string, unknown>>(style: T): T => {
-  // eslint-disable-next-line guard-for-in
-  for (const key in style) {
-    const value = style[key];
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    style[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
-  }
-
-  return style;
-};
-
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
-export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
-
-export const pxToRem = (px: number): number => px / 16;
-export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
