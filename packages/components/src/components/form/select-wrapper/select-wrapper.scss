@@ -187,9 +187,9 @@ $root: '.root';
       padding-bottom: $p-spacing-8;
     }
 
-    //&:hover ~ ::slotted(input:not(:disabled):not([readonly])) {
-    //  border-color: $p-color-default !important;
-    //}
+    // &:hover ~ ::slotted(input:not(:disabled):not([readonly])) {
+    //   border-color: $p-color-default !important;
+    // }
   }
 }
 
@@ -208,15 +208,14 @@ $root: '.root';
 }
 
 .fake-select {
+  display: block;
   position: relative;
   width: 100%;
   height: p-px-to-rem(48px);
-  display: block;
-  transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
-
   background-color: $p-color-background-default;
   box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+  transition: box-shadow $p-animation-hover-duration-var $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   &:hover &:not(&--disabled):not(&--success):not(&--error) {
     box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
