@@ -38,6 +38,7 @@ export const addImportantToEachRule = <T extends Record<string, unknown>>(style:
   return style;
 };
 
+export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const pxToRem = (px: number): number => px / 16;

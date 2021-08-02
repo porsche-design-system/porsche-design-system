@@ -7,7 +7,6 @@ import {
   pxToRem,
   pxToRemWithUnit,
   getBaseSlottedStyles,
-  getFocusPseudoStyles,
 } from './';
 
 
@@ -90,12 +89,6 @@ describe('getFocusStyles()', () => {
 
   it('should return correct JssStyle for custom offset', () => {
     expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
-  });
-});
-
-describe('getFocusPseudoStyles()', () => {
-  it('should return correct default JssStyle', () => {
-    expect(getFocusPseudoStyles()).toMatchSnapshot();
   });
 });
 
