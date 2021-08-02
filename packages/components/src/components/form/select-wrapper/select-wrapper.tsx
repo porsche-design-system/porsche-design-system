@@ -31,6 +31,8 @@ import {
   isCustomDropdown,
   getSelectedOption,
   DropdownDirection,
+  getNextOptionMapIndex,
+  KeyboardDirectionInternal,
 } from './select-wrapper-utils';
 
 @Component({
@@ -97,6 +99,8 @@ export class SelectWrapper {
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
 
     if (this.hasCustomDropdown) {
+      this.setOptionMaps();
+
       // TODO: later added options should be tracked
       observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
       getOptionsElements(this.select).forEach((el) => {
@@ -108,15 +112,12 @@ export class SelectWrapper {
         this.setOptionSelected(e.detail.newIndex);
       });
 
-      this.setOptionMaps();
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
       if (!this.filter) {
         this.select.addEventListener('mousedown', this.onMouseEvents);
       }
-      if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.onClickOutside, true);
-      }
+      document.addEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
@@ -148,7 +149,7 @@ export class SelectWrapper {
 
   public disconnectedCallback(): void {
     this.selectObserver.disconnect();
-    if (this.hasCustomDropdown && typeof document !== 'undefined') {
+    if (this.hasCustomDropdown) {
       document.removeEventListener('mousedown', this.onClickOutside, true);
     }
   }
@@ -375,14 +376,12 @@ export class SelectWrapper {
         e.preventDefault();
         if (!this.isDropdownHidden) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
-          // this.handleScroll();
         }
         break;
       case 'PageDown':
         e.preventDefault();
         if (!this.isDropdownHidden) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
-          // this.handleScroll();
         }
         break;
       case 'Tab':
@@ -394,7 +393,6 @@ export class SelectWrapper {
         // timeout is needed if fast keyboard events are triggered and dom needs time to update state
         setTimeout(() => {
           this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
-          // this.handleScroll();
         }, 100);
     }
   };
@@ -407,20 +405,16 @@ export class SelectWrapper {
   };
 
   private setOptionSelected = (newIndex: number): void => {
-    // const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    // this.select.selectedIndex = newIndex;
-    // const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.handleVisibilityOfFakeOptionList('hide');
 
+    // TODO: use this.onFocus()
     if (this.filter) {
       this.filterInput.value = '';
       this.searchString = '';
       // this.filterHasResults = true;
       this.filterInput.focus();
     } else {
-      if (document.activeElement !== this.select) {
-        this.select.focus();
-      }
+      this.select.focus();
     }
 
     if (this.select.selectedIndex !== newIndex) {
@@ -429,25 +423,13 @@ export class SelectWrapper {
     }
   };
 
-  private cycleFakeOptionList(direction: string): void {
-    const validItems = this.optionMaps.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
-    const validMax = validItems.length - 1;
-    if (validMax < 0) {
-      return;
-    }
-    let i = getHighlightedIndex(validItems);
-    if (direction === 'down' || direction === 'right') {
-      i = i < validMax ? i + 1 : 0;
-    } else if (direction === 'up' || direction === 'left') {
-      i = i > 0 ? i - 1 : validMax;
-    }
-    this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, validItems[i].key);
+  private cycleFakeOptionList(direction: KeyboardDirectionInternal): void {
+    const newIndex = getNextOptionMapIndex(this.optionMaps, direction);
+    this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
 
     if (direction === 'left' || direction === 'right') {
-      this.setOptionSelected(getHighlightedIndex(this.optionMaps));
+      this.setOptionSelected(newIndex);
     }
-
-    // this.handleScroll();
   }
 
   /*

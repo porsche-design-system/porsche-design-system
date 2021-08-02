@@ -6,6 +6,8 @@ export type InternalChangeEvent = { newIndex: number };
 export type DropdownDirectionInternal = 'down' | 'up';
 export type DropdownDirection = DropdownDirectionInternal | 'auto';
 
+export type KeyboardDirectionInternal = DropdownDirectionInternal | 'left' | 'right';
+
 export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
   if (filter) {
     return true;
@@ -90,3 +92,23 @@ export const updateLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap
 
 export const getHighlightedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
 export const getSelectedOption = (arr: OptionMap[]): OptionMap => arr.find((item) => item.selected);
+
+export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
+  options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
+
+export const getNextOptionMapIndex = (options: OptionMap[], direction: KeyboardDirectionInternal): number => {
+  const validItems = getValidOptions(options);
+  const validMax = validItems.length - 1;
+  if (validMax < 0) {
+    return;
+  }
+
+  let i = getHighlightedIndex(validItems);
+  if (direction === 'down' || direction === 'right') {
+    i = i < validMax ? i + 1 : 0;
+  } else if (direction === 'up' || direction === 'left') {
+    i = i > 0 ? i - 1 : validMax;
+  }
+
+  return validItems[i].key;
+};
