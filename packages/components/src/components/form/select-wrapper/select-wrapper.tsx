@@ -97,13 +97,30 @@ export class SelectWrapper {
   }
 
   public componentWillLoad(): void {
-    this.defineTypeOfDropDown();
+    this.hasCustomDropDown = isCustomDropdown(this.filter, this.native);
 
     // TODO: later added options should be tracked
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
     getOptionsElements(this.select).forEach((el) => {
       observeProperties(el, ['selected'], this.setOptionList);
     });
+
+    if (this.hasCustomDropDown) {
+      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
+        e.stopPropagation();
+        this.setOptionSelected(e.detail.newIndex);
+      });
+
+      this.setOptionList();
+      this.select.addEventListener('keydown', this.onKeyboardEvents);
+
+      if (!this.filter) {
+        this.select.addEventListener('mousedown', this.onMouseEvents);
+      }
+      if (typeof document !== 'undefined') {
+        document.addEventListener('mousedown', this.onClickOutside, true);
+      }
+    }
   }
 
   public componentDidLoad(): void {
@@ -254,27 +271,6 @@ export class SelectWrapper {
       subtree: true,
       attributeFilter: ['disabled', 'selected', 'hidden', 'required'],
     });
-  }
-
-  private defineTypeOfDropDown(): void {
-    this.hasCustomDropDown = isCustomDropdown(this.filter, this.native);
-
-    if (this.hasCustomDropDown) {
-      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
-        e.stopPropagation();
-        this.setOptionSelected(e.detail.newIndex);
-      });
-
-      this.setOptionList();
-      this.select.addEventListener('keydown', this.onKeyboardEvents);
-
-      if (!this.filter) {
-        this.select.addEventListener('mousedown', this.onMouseEvents);
-      }
-      if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.onClickOutside, true);
-      }
-    }
   }
 
   private onClickOutside = (e: MouseEvent): void => {
