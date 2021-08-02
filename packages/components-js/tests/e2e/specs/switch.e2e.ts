@@ -8,9 +8,7 @@ import {
   getProperty,
   hasFocus,
   initAddEventListener,
-  removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -76,12 +74,12 @@ describe('switch', () => {
 
       expect(await getAttribute(button, 'aria-checked')).toBe('false');
 
-      await setAttribute(host, 'checked', 'true');
+      await setProperty(host, 'checked', true);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-checked')).toBe('true');
 
-      await removeAttribute(host, 'checked');
+      await setProperty(host, 'checked', false);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-checked')).toBe('false');
@@ -95,12 +93,12 @@ describe('switch', () => {
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
 
-      await setAttribute(host, 'loading', 'true');
+      await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBe('true');
 
-      await setAttribute(host, 'loading', 'false');
+      await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
@@ -388,7 +386,7 @@ describe('switch', () => {
       await initSwitch();
       const host = await getHost();
 
-      await setAttribute(host, 'checked', 'true');
+      await setProperty(host, 'checked', true);
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

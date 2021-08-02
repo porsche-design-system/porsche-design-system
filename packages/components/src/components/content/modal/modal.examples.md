@@ -79,7 +79,7 @@ export default class Code extends Vue {
 
   frameworks = {
     'vanilla-js': `modal.addEventListener('close', () => {
-  modal.removeAttribute('open');
+  modal.open = false;
 });`,
     angular: `import { Component } from '@angular/core';
 
@@ -192,11 +192,11 @@ const ModalPage = (): JSX.Element => {
 </p-modal>`;
 
   openModal(index: number): void {
-    this.modals[index].setAttribute('open', 'true');
+    this.modals[index].open = true;
   }
   
   closeModal(index: number): void {
-    this.modals[index].setAttribute('open', 'false');
+    this.modals[index].open = false;
   }
 }
 </script>

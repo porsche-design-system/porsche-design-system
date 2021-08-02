@@ -19,7 +19,7 @@ describe('warnIfCaptionIsUndefined()', () => {
   it('should not print warning when caption as slot is defined', () => {
     const host = document.createElement('p-table');
     const slot = document.createElement('span');
-    slot.setAttribute('slot', 'caption');
+    slot['slot'] = 'caption';
     host.appendChild(slot);
 
     warnIfCaptionIsUndefined(host, undefined);
