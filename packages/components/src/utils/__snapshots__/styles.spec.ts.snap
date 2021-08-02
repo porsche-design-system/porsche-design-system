@@ -73,28 +73,6 @@ Object {
 }
 `;
 
-exports[`getFocusPseudoStyles() should return correct default JssStyle 1`] = `
-Object {
-  "& a::before": Object {
-    "bottom": 0,
-    "content": "\\"\\"",
-    "display": "block",
-    "left": 0,
-    "outline": "1px solid transparent",
-    "outlineOffset": "2px",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "& a:focus::before": Object {
-    "outlineColor": "currentColor",
-  },
-  "& a:focus:not(:focus-visible)::before": Object {
-    "outlineColor": "transparent",
-  },
-}
-`;
-
 exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
