@@ -31,6 +31,7 @@ import {
   updateHighlightedAndSelectedOptionMaps,
   isCustomDropdown,
   getSelectedOption,
+  DropdownDirection,
 } from './select-wrapper-utils';
 
 @Component({
@@ -63,7 +64,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
+  @Prop() public dropdownDirection?: DropdownDirection = 'auto';
 
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;

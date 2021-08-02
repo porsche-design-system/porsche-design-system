@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
-import type { OptionMap } from './select-wrapper-utils';
+import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import { CHANGE_EVENT_NAME, getHighlightedIndex, InternalChangeEvent } from './select-wrapper-utils';
 import { getOptionAriaAttributes, getRootAriaAttributes } from './select-wrapper-dropdown-utils';
@@ -16,7 +16,7 @@ export class SelectWrapperDropdown {
   @Prop() public optionMaps: OptionMap[] = [];
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
+  @Prop() public dropdownDirection?: DropdownDirection = 'auto';
 
   /** Filters select options by typing a character */
   @Prop() public filter?: boolean = false;
