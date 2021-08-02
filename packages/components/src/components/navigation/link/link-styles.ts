@@ -18,7 +18,7 @@ import type { LinkVariant, Theme } from '../../../types';
 
 const { darkTheme } = color;
 
-const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { baseColor: string; baseColorHover: string; textColor: string; } => {
+const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { baseColor: string; baseColorHover: string; textColor: string } => {
   switch (variant) {
     case 'primary':
       return {

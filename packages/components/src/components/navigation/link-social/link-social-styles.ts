@@ -21,7 +21,7 @@ import type { SocialIconName } from './link-social-utils';
 
 const { darkTheme } = color;
 
-const getColors = (isDarkTheme: boolean, icon: SocialIconName): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string; } => {
+const getColors = (isDarkTheme: boolean, icon: SocialIconName): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
     baseColorHover: color.external[icon.split('-')[1]],
