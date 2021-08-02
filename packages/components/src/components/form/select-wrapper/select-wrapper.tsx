@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
-  getHTMLElements,
   getPrefixedTagNames,
   getRole,
   hasDescription,
@@ -74,7 +73,6 @@ export class SelectWrapper {
   // @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
-  private dropdown: HTMLPSelectWrapperDropdownElement;
   private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
@@ -212,7 +210,6 @@ export class SelectWrapper {
           ]}
           {this.hasCustomDropdown && (
             <p-select-wrapper-dropdown
-              ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
               hidden={this.isDropdownHidden}
@@ -299,7 +296,7 @@ export class SelectWrapper {
       if (type === 'show' || type === 'toggle') {
         this.isDropdownHidden = false;
         // this.handleDropdownDirection();
-        this.handleScroll();
+        // this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
@@ -378,14 +375,14 @@ export class SelectWrapper {
         e.preventDefault();
         if (!this.isDropdownHidden) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
-          this.handleScroll();
+          // this.handleScroll();
         }
         break;
       case 'PageDown':
         e.preventDefault();
         if (!this.isDropdownHidden) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
-          this.handleScroll();
+          // this.handleScroll();
         }
         break;
       case 'Tab':
@@ -397,7 +394,7 @@ export class SelectWrapper {
         // timeout is needed if fast keyboard events are triggered and dom needs time to update state
         setTimeout(() => {
           this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
-          this.handleScroll();
+          // this.handleScroll();
         }, 100);
     }
   };
@@ -450,26 +447,7 @@ export class SelectWrapper {
       this.setOptionSelected(getHighlightedIndex(this.optionMaps));
     }
 
-    this.handleScroll();
-  }
-
-  private handleScroll(): void {
-    const fakeOptionListNodeHeight = 200;
-    if (this.dropdown.scrollHeight > fakeOptionListNodeHeight) {
-      const fakeOptionHighlightedNode = getHTMLElements(this.dropdown, 'div')[getHighlightedIndex(this.optionMaps)];
-
-      if (fakeOptionHighlightedNode) {
-        const { scrollTop } = this.dropdown;
-        const { offsetTop, offsetHeight } = fakeOptionHighlightedNode;
-        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-        const elementBottom = offsetTop + offsetHeight;
-        if (elementBottom > scrollBottom) {
-          this.dropdown.scrollTop = elementBottom - fakeOptionListNodeHeight;
-        } else if (offsetTop < scrollTop) {
-          this.dropdown.scrollTop = offsetTop;
-        }
-      }
-    }
+    // this.handleScroll();
   }
 
   /*

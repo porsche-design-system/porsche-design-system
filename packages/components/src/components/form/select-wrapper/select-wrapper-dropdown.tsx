@@ -1,12 +1,14 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
+import { getPrefixedTagNames, isDark } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
-import { CHANGE_EVENT_NAME, getHighlightedIndex, InternalChangeEvent } from './select-wrapper-utils';
+import type { InternalChangeEvent } from './select-wrapper-utils';
+import { CHANGE_EVENT_NAME, getHighlightedIndex } from './select-wrapper-utils';
 import {
   determineDropdownDirection,
   getOptionAriaAttributes,
   getRootAriaAttributes,
+  handleScroll,
 } from './select-wrapper-dropdown-utils';
 
 @Component({
@@ -32,12 +34,15 @@ export class SelectWrapperDropdown {
 
   @State() private filterHasResults = true;
 
-  private fakeOptionListNode: HTMLDivElement;
-  private fakeOptionHighlightedNode: HTMLDivElement;
+  private rootElement: HTMLDivElement;
 
   public connectedCallback(): void {
     // this.observeSelect();
     // TODO: validate this is used within `p-select-wrapper`
+  }
+
+  public componentDidRender(): void {
+    handleScroll(this.rootElement, getHighlightedIndex(this.optionMaps));
   }
 
   public render(): JSX.Element {
@@ -64,7 +69,7 @@ export class SelectWrapperDropdown {
           {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
           // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
           // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
-          ref={(el) => (this.fakeOptionListNode = el)}
+          ref={(el) => (this.rootElement = el)}
         >
           {!this.filterHasResults ? (
             <div class="option" aria-live="polite" role="status">
@@ -119,44 +124,7 @@ export class SelectWrapperDropdown {
     // }
   }
 
-  private handleDropdownDirection(): void {
-    if (this.dropdownDirection === 'auto') {
-      // const children = getHTMLElements(this.fakeOptionListNode, `.option:not([aria-hidden="true"])`);
-      // const { top: spaceTop } = this.select.getBoundingClientRect();
-      // const listNodeChildrenHeight = children[0].clientHeight;
-      // const numberOfChildNodes = children.length;
-      // Max number of children visible is set to 10
-      // const listNodeHeight =
-      //   numberOfChildNodes >= 10 ? listNodeChildrenHeight * 10 : listNodeChildrenHeight * numberOfChildNodes;
-      // const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
-      // if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
-      //   this.dropdownDirectionInternal = 'up';
-      // } else {
-      //   this.dropdownDirectionInternal = 'down';
-      // }
-    }
-  }
-
-  private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (this.hidden) {
-      if (type === 'show' || type === 'toggle') {
-        this.hidden = false;
-        this.handleDropdownDirection();
-        this.handleScroll();
-      }
-    } else {
-      if (type === 'hide' || type === 'toggle') {
-        this.hidden = true;
-        // if (this.filter) {
-        //   this.resetFilterInput();
-        // }
-      }
-    }
-  }
-
   private setOptionSelected = (newIndex: number): void => {
-    false && this.handleVisibilityOfFakeOptionList('hide');
-
     if (this.filter) {
       // this.filterInput.value = '';
       // this.searchString = '';
@@ -175,25 +143,4 @@ export class SelectWrapperDropdown {
       );
     }
   };
-
-  private handleScroll(): void {
-    const fakeOptionListNodeHeight = 200; // ??
-    if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = getHTMLElements(this.fakeOptionListNode, 'div')[
-        getHighlightedIndex(this.optionMaps)
-      ];
-
-      if (this.fakeOptionHighlightedNode) {
-        const { scrollTop } = this.fakeOptionListNode;
-        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
-        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-        const elementBottom = offsetTop + offsetHeight;
-        if (elementBottom > scrollBottom) {
-          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
-        } else if (offsetTop < scrollTop) {
-          this.fakeOptionListNode.scrollTop = offsetTop;
-        }
-      }
-    }
-  }
 }
