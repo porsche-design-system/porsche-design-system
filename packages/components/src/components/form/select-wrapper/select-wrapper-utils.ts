@@ -57,32 +57,14 @@ export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number)
     hidden: false,
   }));
 
-export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
-  const lowerCaseSearchString = searchString.toLowerCase();
-  return options.map((item) => ({
-    ...item,
-    hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
-  }));
-};
-
-export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
-  options.map((item) => ({
-    ...item,
-    hidden: false,
-  }));
-
 export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
   options.map((item, idx) => ({
     ...item,
     highlighted: idx === newIndex,
   }));
 
-export const updateHighlightedAndSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
-  options.map((item, idx) => ({
-    ...item,
-    highlighted: idx === newIndex,
-    selected: idx === newIndex,
-  }));
+export const resetHighlightedIndex = (options: OptionMap[]): OptionMap[] =>
+  options.map((item) => ({ ...item, highlighted: false }));
 
 export const updateFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
   updateHighlightedOptionMaps(options, 0);
@@ -98,7 +80,21 @@ export const getSelectedOptionMap = (arr: OptionMap[]): OptionMap => arr.find((i
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
 
-export const getNextOptionMapIndex = (options: OptionMap[], direction: KeyboardDirectionInternal): number => {
+export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
+  const lowerCaseSearchString = searchString.toLowerCase();
+  return options.map((item) => ({
+    ...item,
+    hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
+  }));
+};
+
+export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
+  options.map((item) => ({
+    ...item,
+    hidden: false,
+  }));
+
+export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {

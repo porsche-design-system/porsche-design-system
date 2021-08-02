@@ -27,12 +27,12 @@ import {
   InternalChangeEvent,
   resetFilteredOptionMaps,
   updateFirstHighlightedOptionMaps,
-  updateHighlightedAndSelectedOptionMaps,
   isCustomDropdown,
   getSelectedOptionMap,
   DropdownDirection,
-  getNextOptionMapIndex,
+  getNewOptionMapIndex,
   KeyboardDirectionInternal,
+  resetHighlightedIndex,
 } from './select-wrapper-utils';
 
 @Component({
@@ -390,7 +390,7 @@ export class SelectWrapper {
       default:
         // timeout is needed if fast keyboard events are triggered and dom needs time to update state
         setTimeout(() => {
-          this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.selectedIndex);
+          this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
         }, 100);
     }
   };
@@ -415,11 +415,13 @@ export class SelectWrapper {
     if (this.selectedIndex !== newIndex) {
       this.select.selectedIndex = newIndex;
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
+    } else {
+      this.optionMaps = resetHighlightedIndex(this.optionMaps);
     }
   };
 
   private cycleFakeOptionList(direction: KeyboardDirectionInternal): void {
-    const newIndex = getNextOptionMapIndex(this.optionMaps, direction);
+    const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
 
     if (direction === 'left' || direction === 'right') {
