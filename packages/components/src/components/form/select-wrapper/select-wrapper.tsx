@@ -30,6 +30,7 @@ import {
   updateFirstHighlightedOptionMaps,
   updateHighlightedAndSelectedOptionMaps,
   isCustomDropdown,
+  getSelectedOption,
 } from './select-wrapper-utils';
 
 @Component({
@@ -72,7 +73,6 @@ export class SelectWrapper {
   // @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
-  private options: HTMLOptionElement[];
   private dropdown: HTMLPSelectWrapperDropdownElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
@@ -98,12 +98,11 @@ export class SelectWrapper {
 
   public componentWillLoad(): void {
     this.defineTypeOfDropDown();
-    this.options = getOptionsElements(this.select);
 
     // TODO: later added options should be tracked
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
-    this.options.forEach((x) => {
-      observeProperties(x, ['selected'], this.setOptionList);
+    getOptionsElements(this.select).forEach((el) => {
+      observeProperties(el, ['selected'], this.setOptionList);
     });
   }
 
@@ -190,7 +189,7 @@ export class SelectWrapper {
               disabled={this.disabled}
               aria-expanded={this.isCustomDropdownHidden ? 'false' : 'true'}
               aria-activedescendant={`option-${getHighlightedIndex(this.optionMaps)}`}
-              placeholder={this.options[this.select.selectedIndex].text}
+              placeholder={getSelectedOption(this.optionMaps)?.value}
               ref={(el) => (this.filterInput = el)}
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
@@ -428,8 +427,10 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.options = getOptionsElements(this.select);
-    this.optionMaps = updateSelectedOptionMaps(getOptionMaps(this.options), this.select.selectedIndex);
+    this.optionMaps = updateSelectedOptionMaps(
+      getOptionMaps(getOptionsElements(this.select)),
+      this.select.selectedIndex
+    );
   };
 
   private setOptionSelected = (newIndex: number): void => {
