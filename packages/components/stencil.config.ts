@@ -34,6 +34,7 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-button', 'p-button-group'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   {
     components: [
       'p-table',
