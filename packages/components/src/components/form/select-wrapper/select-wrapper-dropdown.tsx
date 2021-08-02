@@ -65,15 +65,14 @@ export class SelectWrapperDropdown {
               <span class="option-sr">No results found</span>
             </div>
           ) : (
-            // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
             this.optionMaps.map((option, index) => {
-              const { value, disabled, hidden, initiallyHidden, selected, highlighted } = option;
+              const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
               return [
-                // getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
-                //   <span class="optgroup-label" role="presentation">
-                //     {getClosestHTMLElement(item, 'optgroup').label}
-                //   </span>
-                // ),
+                title && (
+                  <span class="optgroup-label" role="presentation">
+                    {title}
+                  </span>
+                ),
                 <div
                   id={`option-${index}`}
                   role="option"

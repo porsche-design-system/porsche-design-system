@@ -1,4 +1,4 @@
-import { getHTMLElements, hasAttribute, isTouchDevice } from '../../../utils';
+import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../../utils';
 
 export const CHANGE_EVENT_NAME = 'internalChange';
 export type InternalChangeEvent = { newIndex: number };
@@ -22,13 +22,14 @@ export type OptionMap = {
   initiallyHidden: boolean; // TODO: rename
   selected: boolean; // TODO: rename
   highlighted: boolean; // TODO: rename
+  title?: string;
 };
 
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => getHTMLElements(select, 'option');
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
   options.map((item, idx) => {
-    const { selected } = item;
+    const { selected, parentElement, previousElementSibling } = item;
     const option: OptionMap = {
       key: idx,
       value: item.text,
@@ -37,6 +38,8 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
       initiallyHidden: hasAttribute(item, 'hidden'),
       selected,
       highlighted: selected,
+      ...(getTagName(parentElement) === 'optgroup' &&
+        previousElementSibling === null && { title: (parentElement as HTMLOptGroupElement).label }),
     };
     return option;
   });
