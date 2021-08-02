@@ -78,7 +78,7 @@ export class SelectWrapper {
   private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
-  private searchString: string;
+  private searchString: string; // TODO: refactor into getter
   private hasCustomDropdown: boolean;
 
   // this stops click events when filter input is clicked

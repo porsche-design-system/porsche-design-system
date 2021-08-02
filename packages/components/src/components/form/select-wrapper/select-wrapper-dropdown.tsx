@@ -1,9 +1,9 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, isDark } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import type { InternalChangeEvent } from './select-wrapper-utils';
-import { CHANGE_EVENT_NAME, getHighlightedIndex } from './select-wrapper-utils';
+import { CHANGE_EVENT_NAME, getHighlightedIndex, getSelectedIndex } from './select-wrapper-utils';
 import {
   determineDropdownDirection,
   getOptionAriaAttributes,
@@ -32,12 +32,9 @@ export class SelectWrapperDropdown {
 
   @Prop() public hidden = true;
 
-  @State() private filterHasResults = true;
-
   private rootElement: HTMLDivElement;
 
   public connectedCallback(): void {
-    // this.observeSelect();
     // TODO: validate this is used within `p-select-wrapper`
   }
 
@@ -61,6 +58,7 @@ export class SelectWrapperDropdown {
     return (
       <Host>
         <div
+          ref={(el) => (this.rootElement = el)}
           class={rootClasses}
           role="listbox"
           id="p-listbox"
@@ -69,9 +67,8 @@ export class SelectWrapperDropdown {
           {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
           // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
           // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
-          ref={(el) => (this.rootElement = el)}
         >
-          {!this.filterHasResults ? (
+          {this.filter && !this.optionMaps.length ? (
             <div class="option" aria-live="polite" role="status">
               <span aria-hidden="true">---</span>
               <span class="option-sr">No results found</span>
@@ -95,7 +92,7 @@ export class SelectWrapperDropdown {
                     ['option--disabled']: disabled,
                     ['option--hidden']: hidden || initiallyHidden,
                   }}
-                  onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.onFocus(e))}
+                  onClick={(e) => (!(disabled && selected) ? this.onClick(index) : this.onFocus(e))}
                   {...getOptionAriaAttributes(option)}
                   // aria-selected={highlighted ? 'true' : null}
                   // aria-disabled={disabled ? 'true' : null}
@@ -124,19 +121,8 @@ export class SelectWrapperDropdown {
     // }
   }
 
-  private setOptionSelected = (newIndex: number): void => {
-    if (this.filter) {
-      // this.filterInput.value = '';
-      // this.searchString = '';
-      this.filterHasResults = true;
-      // this.filterInput.focus();
-    } else {
-      // if (document.activeElement !== this.select) {
-      //   this.select.focus();
-      // }
-    }
-
-    const oldSelectedIndex = this.optionMaps.findIndex((item) => item.selected);
+  private onClick = (newIndex: number): void => {
+    const oldSelectedIndex = getSelectedIndex(this.optionMaps);
     if (oldSelectedIndex !== newIndex) {
       this.host.dispatchEvent(
         new CustomEvent<InternalChangeEvent>(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } })
