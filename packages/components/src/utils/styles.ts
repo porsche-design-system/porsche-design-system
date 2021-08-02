@@ -7,6 +7,21 @@ import type { Theme } from '../types';
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
 
+export const colorDarken = {
+  neutralContrast: {
+    high: '#151718'
+  },
+  state: {
+    hover: '#980014'
+  },
+  darkTheme: {
+    default: '#e0e0e0',
+    state: {
+      hover: '#c4001a'
+    },
+  }
+};
+
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
@@ -69,44 +84,6 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       outlineColor: isDark(options.theme) ? color.darkTheme.state.focus : options.color,
     },
     '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent',
-    },
-  };
-
-  return style;
-};
-
-type GetFocusPseudoStylesOptions = {
-  color?: string;
-  offset?: number;
-};
-
-/**
- * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
- */
-export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles => {
-  const options: GetFocusPseudoStylesOptions = {
-    color: 'currentColor',
-    offset: 2,
-    ...opts,
-  };
-
-  const style: Styles = {
-    '& a::before': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      outline: '1px solid transparent',
-      outlineOffset: `${options.offset}px`,
-    },
-    '& a:focus::before': {
-      outlineColor: options.color,
-    },
-    '& a:focus:not(:focus-visible)::before': {
       outlineColor: 'transparent',
     },
   };
