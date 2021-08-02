@@ -90,10 +90,10 @@ export const updateFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMa
 export const updateLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
   updateHighlightedOptionMaps(options, options.length - 1);
 
-export const getHighlightedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
-export const getSelectedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.selected);
+export const getHighlightedOptionMapIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
+export const getSelectedOptionMapIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.selected);
 
-export const getSelectedOption = (arr: OptionMap[]): OptionMap => arr.find((item) => item.selected);
+export const getSelectedOptionMap = (arr: OptionMap[]): OptionMap => arr.find((item) => item.selected);
 
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
@@ -105,7 +105,7 @@ export const getNextOptionMapIndex = (options: OptionMap[], direction: KeyboardD
     return;
   }
 
-  let i = getHighlightedIndex(validItems);
+  let i = getHighlightedOptionMapIndex(validItems);
   if (direction === 'down' || direction === 'right') {
     i = i < validMax ? i + 1 : 0;
   } else if (direction === 'up' || direction === 'left') {
