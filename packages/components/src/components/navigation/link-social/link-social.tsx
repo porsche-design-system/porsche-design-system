@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, improveFocusHandlingForCustomElement, getThemeDarkAttribute } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { addComponentCss, addSlottedCss } from './link-social-styles';
+import { addComponentCss } from './link-social-styles';
 
 @Component({
   tag: 'p-link-social',
@@ -20,7 +20,7 @@ export class LinkSocial {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
 
-  /** Adapts the icon color when used on dark background. */
+  /** Adapts the link color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
@@ -33,12 +33,11 @@ export class LinkSocial {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
     improveFocusHandlingForCustomElement(this.host);
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.icon, this.hideLabel, this.theme);
+    addComponentCss(this.host, this.icon, this.hideLabel, !!this.href, this.theme);
   }
 
   public render(): JSX.Element {

@@ -11,31 +11,35 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <p-link variant="primary" href="#">Link</p-link>
-    <p-link variant="primary"><a href="#">Slotted Link</a></p-link>
-    <p-link variant="secondary" href="#">Link</p-link>
-    <p-link variant="secondary"><a href="#">Slotted Link</a></p-link>
-    <p-link variant="tertiary" href="#">Link</p-link>
-    <p-link variant="tertiary"><a href="#">Slotted Link</a></p-link>
-    <div style="background: black; padding: 10px; margin: 10px -10px 0">
-      <p-link theme="dark" variant="primary" href="#">Link</p-link>
-      <p-link theme="dark" variant="primary"><a href="#">Slotted Link</a></p-link>
-      <p-link theme="dark" variant="secondary" href="#">Link</p-link>
-      <p-link theme="dark" variant="secondary"><a href="#">Slotted Link</a></p-link>
-      <p-link
-        theme="dark"
-        variant="tertiary"
-        href="#"
-        hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-        >Link</p-link
-      >
-      <p-link
-        theme="dark"
-        variant="tertiary"
-        hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-        ><a href="#">Slotted Link</a></p-link
-      >
-    </div>
+
+  <div style="background: white; padding: 1rem;">
+    <p-link-social href="https://www.facebook.com" icon="logo-facebook">Some label</p-link-social>
+    <p-link-social icon="logo-facebook"><a href="https://www.facebook.com">Some label</a></p-link-social>
+    <p-link-social href="https://www.facebook.com" hide-label="true" icon="logo-facebook">Some label</p-link-social>
+    <p-link-social icon="logo-facebook" hide-label="true"><a href="https://www.facebook.com">Some label</a></p-link-social>
+  </div>
+
+  <div style="background: black; padding: 1rem;">
+    <p-link-social theme="dark" href="https://www.facebook.com" icon="logo-facebook">Some label</p-link-social>
+    <p-link-social theme="dark" icon="logo-facebook"><a href="https://www.facebook.com">Some label</a></p-link-social>
+    <p-link-social theme="dark" href="https://www.facebook.com" hide-label="true" icon="logo-facebook">Some label</p-link-social>
+    <p-link-social theme="dark" icon="logo-facebook" hide-label="true"><a href="https://www.facebook.com">Some label</a></p-link-social>
+  </div>
+
+  <div style="background: white; padding: 1rem;">
+    <p-link-social href="https://www.facebook.com" icon="logo-youtube">Some label</p-link-social>
+    <p-link-social icon="logo-youtube"><a href="https://www.facebook.com">Some label</a></p-link-social>
+    <p-link-social href="https://www.facebook.com" hide-label="true" icon="logo-youtube">Some label</p-link-social>
+    <p-link-social icon="logo-youtube" hide-label="true"><a href="https://www.facebook.com">Some label</a></p-link-social>
+  </div>
+
+  <div style="background: black; padding: 1rem;">
+    <p-link-social theme="dark" href="https://www.facebook.com" icon="logo-youtube">Some label</p-link-social>
+    <p-link-social theme="dark" icon="logo-youtube"><a href="https://www.facebook.com">Some label</a></p-link-social>
+    <p-link-social theme="dark" href="https://www.facebook.com" hide-label="true" icon="logo-youtube">Some label</p-link-social>
+    <p-link-social theme="dark" icon="logo-youtube" hide-label="true"><a href="https://www.facebook.com">Some label</a></p-link-social>
+  </div>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
