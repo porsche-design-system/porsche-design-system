@@ -109,7 +109,7 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if (this.filter) {
-      this.fakeFilter.addEventListener('click', this.onFilterInputClick);
+      this.fakeFilter.addEventListener('click', this.onFilterInputClick); // span element
       this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
       this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
       this.filterInput.addEventListener('input', this.onFilterSearch);
@@ -231,10 +231,10 @@ export class SelectWrapper {
   }
 
   private labelClick = (): void => {
-    if (!this.filter) {
-      this.select.focus();
-    } else {
+    if (this.filter) {
       this.filterInput.focus();
+    } else {
+      this.select.focus();
     }
   };
 
@@ -292,11 +292,11 @@ export class SelectWrapper {
   };
 
   private onFocus(e: MouseEvent): void {
-    if (!this.filter) {
-      this.select.focus();
-    } else {
+    if (this.filter) {
       e.preventDefault();
       this.filterInput.focus();
+    } else {
+      this.select.focus();
     }
   }
 
