@@ -2,8 +2,8 @@ import {
   getBrowser,
   getLifecycleStatus,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -120,7 +120,7 @@ describe('headline', () => {
       await initHeadline({ variant: 'headline-1' });
       const host = await getHost();
 
-      await setAttribute(host, 'variant', 'headline-4');
+      await setProperty(host, 'variant', 'headline-4');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
@@ -134,7 +134,7 @@ describe('headline', () => {
       await initHeadline({ variant: { base: 'small', l: 'large' } });
       const host = await getHost();
 
-      await setAttribute(host, 'variant', 'headline-4');
+      await setProperty(host, 'variant', 'headline-4');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
