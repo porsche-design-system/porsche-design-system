@@ -28,45 +28,12 @@ export class SelectWrapperDropdown {
 
   @State() private filterHasResults = true;
 
-  // private select: HTMLSelectElement;
-  // private options: HTMLOptionElement[];
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
-  // private selectObserver: MutationObserver;
-  // private filterInput: HTMLInputElement;
-  // private fakeFilter: HTMLSpanElement;
-  // private searchString: string;
-  // private dropdownDirectionInternal: 'down' | 'up' = 'down';
-  // private renderCustomDropDown: boolean;
 
   public connectedCallback(): void {
     // this.observeSelect();
     // TODO: validate this is used within `p-select-wrapper`
-  }
-
-  public componentWillLoad(): void {
-    // observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
-    // this.options.forEach((x) => {
-    //   observeProperties(x, ['selected'], this.setOptionList);
-    // });
-  }
-
-  public componentDidLoad(): void {
-    // if (this.filter) {
-    //   this.fakeFilter.addEventListener('click', this.onFilterInputClick);
-    //   this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
-    //   this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
-    //   this.filterInput.addEventListener('input', this.onFilterSearch);
-    // }
-  }
-
-  public componentDidRender(): void {}
-
-  public disconnectedCallback(): void {
-    // this.selectObserver.disconnect();
-    // if (this.renderCustomDropDown) {
-    //   this.disconnectCustomDropDown();
-    // }
   }
 
   public render(): JSX.Element {
