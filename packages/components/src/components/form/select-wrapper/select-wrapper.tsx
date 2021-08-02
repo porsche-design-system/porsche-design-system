@@ -9,7 +9,6 @@ import {
   hasMessage,
   isDark,
   isRequiredAndParentNotRequired,
-  isTouchDevice,
   mapBreakpointPropToClasses,
   observeProperties,
   setAriaAttributes,
@@ -30,6 +29,7 @@ import {
   resetFilteredOptionMaps,
   updateFirstHighlightedOptionMaps,
   updateHighlightedAndSelectedOptionMaps,
+  isCustomDropdown,
 } from './select-wrapper-utils';
 
 @Component({
@@ -80,7 +80,7 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
-  private renderCustomDropDown: boolean;
+  private hasCustomDropDown: boolean;
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -135,10 +135,8 @@ export class SelectWrapper {
 
   public disconnectedCallback(): void {
     this.selectObserver.disconnect();
-    if (this.renderCustomDropDown) {
-      if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.onClickOutside, true);
-      }
+    if (this.hasCustomDropDown && typeof document !== 'undefined') {
+      document.removeEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
@@ -197,7 +195,7 @@ export class SelectWrapper {
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
           ]}
-          {this.renderCustomDropDown && (
+          {this.hasCustomDropDown && (
             <p-select-wrapper-dropdown
               ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
@@ -260,16 +258,9 @@ export class SelectWrapper {
   }
 
   private defineTypeOfDropDown(): void {
-    // TODO: extract util
-    if (this.filter) {
-      this.renderCustomDropDown = true;
-    } else if (this.native) {
-      this.renderCustomDropDown = false;
-    } else {
-      this.renderCustomDropDown = !isTouchDevice();
-    }
+    this.hasCustomDropDown = isCustomDropdown(this.filter, this.native);
 
-    if (this.renderCustomDropDown) {
+    if (this.hasCustomDropDown) {
       this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
         e.stopPropagation();
         this.setOptionSelected(e.detail.newIndex);
