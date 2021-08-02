@@ -17,7 +17,7 @@ import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import {
   updateFilteredOptionMaps,
   CHANGE_EVENT_NAME,
-  getHighlightedIndex,
+  getHighlightedOptionMapIndex,
   getOptionMaps,
   getOptionsElements,
   OptionMap,
@@ -29,7 +29,7 @@ import {
   updateFirstHighlightedOptionMaps,
   updateHighlightedAndSelectedOptionMaps,
   isCustomDropdown,
-  getSelectedOption,
+  getSelectedOptionMap,
   DropdownDirection,
   getNextOptionMapIndex,
   KeyboardDirectionInternal,
@@ -115,7 +115,7 @@ export class SelectWrapper {
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
       if (!this.filter) {
-        this.select.addEventListener('mousedown', this.onMouseEvents);
+        this.select.addEventListener('mousedown', this.onMouseDown);
       }
       document.addEventListener('mousedown', this.onClickOutside, true);
     }
@@ -203,8 +203,8 @@ export class SelectWrapper {
               aria-controls="p-listbox"
               disabled={this.disabled}
               aria-expanded={this.isDropdownHidden ? 'false' : 'true'}
-              aria-activedescendant={`option-${getHighlightedIndex(this.optionMaps)}`}
-              placeholder={getSelectedOption(this.optionMaps)?.value}
+              aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               ref={(el) => (this.filterInput = el)}
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
@@ -276,7 +276,7 @@ export class SelectWrapper {
     }
   };
 
-  private onMouseEvents = (e: MouseEvent): void => {
+  private onMouseDown = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
     this.onFocus(e);
@@ -296,8 +296,6 @@ export class SelectWrapper {
     if (this.isDropdownHidden) {
       if (type === 'show' || type === 'toggle') {
         this.isDropdownHidden = false;
-        // this.handleDropdownDirection();
-        // this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
@@ -345,7 +343,7 @@ export class SelectWrapper {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
           if (this.isDropdownHidden) {
-            this.setOptionSelected(getHighlightedIndex(this.optionMaps));
+            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
         }
         break;
@@ -359,10 +357,10 @@ export class SelectWrapper {
           if (itemValue.length === 1) {
             this.setOptionSelected(itemValue[0].key);
           } else {
-            this.setOptionSelected(getHighlightedIndex(this.optionMaps));
+            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
         } else {
-          this.setOptionSelected(getHighlightedIndex(this.optionMaps));
+          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         }
         break;
       case 'Escape':
@@ -370,7 +368,7 @@ export class SelectWrapper {
         if (this.filter) {
           this.filterInput.value = '';
         }
-        this.setOptionSelected(this.select.selectedIndex);
+        this.setOptionSelected(this.selectedIndex);
         break;
       case 'PageUp':
         e.preventDefault();
@@ -392,16 +390,13 @@ export class SelectWrapper {
       default:
         // timeout is needed if fast keyboard events are triggered and dom needs time to update state
         setTimeout(() => {
-          this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.select.selectedIndex);
+          this.optionMaps = updateHighlightedAndSelectedOptionMaps(this.optionMaps, this.selectedIndex);
         }, 100);
     }
   };
 
   private setOptionMaps = (): void => {
-    this.optionMaps = updateSelectedOptionMaps(
-      getOptionMaps(getOptionsElements(this.select)),
-      this.select.selectedIndex
-    );
+    this.optionMaps = updateSelectedOptionMaps(getOptionMaps(getOptionsElements(this.select)), this.selectedIndex);
   };
 
   private setOptionSelected = (newIndex: number): void => {
@@ -417,7 +412,7 @@ export class SelectWrapper {
       this.select.focus();
     }
 
-    if (this.select.selectedIndex !== newIndex) {
+    if (this.selectedIndex !== newIndex) {
       this.select.selectedIndex = newIndex;
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
     }
@@ -430,6 +425,10 @@ export class SelectWrapper {
     if (direction === 'left' || direction === 'right') {
       this.setOptionSelected(newIndex);
     }
+  }
+
+  private get selectedIndex(): number {
+    return this.select.selectedIndex;
   }
 
   /*

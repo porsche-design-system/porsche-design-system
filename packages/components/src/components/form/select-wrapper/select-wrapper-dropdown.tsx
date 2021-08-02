@@ -3,7 +3,7 @@ import { getPrefixedTagNames, isDark } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import type { InternalChangeEvent } from './select-wrapper-utils';
-import { CHANGE_EVENT_NAME, getHighlightedIndex, getSelectedIndex } from './select-wrapper-utils';
+import { CHANGE_EVENT_NAME, getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from './select-wrapper-utils';
 import {
   determineDropdownDirection,
   getOptionAriaAttributes,
@@ -39,7 +39,7 @@ export class SelectWrapperDropdown {
   }
 
   public componentDidRender(): void {
-    handleScroll(this.rootElement, getHighlightedIndex(this.optionMaps));
+    handleScroll(this.rootElement, getHighlightedOptionMapIndex(this.optionMaps));
   }
 
   public render(): JSX.Element {
@@ -122,7 +122,7 @@ export class SelectWrapperDropdown {
   }
 
   private onClick = (newIndex: number): void => {
-    const oldSelectedIndex = getSelectedIndex(this.optionMaps);
+    const oldSelectedIndex = getSelectedOptionMapIndex(this.optionMaps);
     if (oldSelectedIndex !== newIndex) {
       this.host.dispatchEvent(
         new CustomEvent<InternalChangeEvent>(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } })

@@ -1,10 +1,10 @@
 import type { AriaAttributes } from 'react';
 import type { DropdownDirectionInternal, OptionMap } from './select-wrapper-utils';
-import { getHighlightedIndex } from './select-wrapper-utils';
+import { getHighlightedOptionMapIndex } from './select-wrapper-utils';
 import { getHTMLElements } from '../../../utils';
 
 export const getRootAriaAttributes = (optionMaps: OptionMap[], hidden: boolean, filter: boolean): AriaAttributes => ({
-  'aria-activedescendant': !filter && `option-${getHighlightedIndex(optionMaps)}`,
+  'aria-activedescendant': !filter && `option-${getHighlightedOptionMapIndex(optionMaps)}`,
   'aria-expanded': !filter && !hidden,
 });
 
