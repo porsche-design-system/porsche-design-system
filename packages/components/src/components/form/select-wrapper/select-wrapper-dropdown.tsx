@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
 import type { OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
-import { CHANGE_EVENT_NAME, InternalChangeEvent } from './select-wrapper-utils';
+import { CHANGE_EVENT_NAME, getHighlightedIndex, InternalChangeEvent } from './select-wrapper-utils';
 import { getOptionAriaAttributes, getRootAriaAttributes } from './select-wrapper-dropdown-utils';
 
 @Component({
@@ -181,30 +181,7 @@ export class SelectWrapperDropdown {
     }
   }
 
-  // private setOptionList = (): void => {
-  //   // this.setOptions();
-  //   this.optionMaps = this.options.map((item, index) => {
-  //     const initiallyHidden = item.hasAttribute('hidden');
-  //     const disabled = item.hasAttribute('disabled');
-  //     const selected = item.selected;
-  //     const highlighted = selected;
-  //     const option: OptionMap = {
-  //       key: index,
-  //       value: item.text,
-  //       disabled,
-  //       hidden: false,
-  //       initiallyHidden,
-  //       selected,
-  //       highlighted,
-  //     };
-  //     return option;
-  //   });
-  // };
-
   private setOptionSelected = (newIndex: number): void => {
-    // const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    // this.select.selectedIndex = newIndex;
-    // const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     false && this.handleVisibilityOfFakeOptionList('hide');
 
     if (this.filter) {
@@ -218,14 +195,6 @@ export class SelectWrapperDropdown {
       // }
     }
 
-    // const { selectedIndex } = this.select;
-    // this.optionMaps = this.optionMaps.map((item, index) => ({
-    //   ...item,
-    //   selected: index === selectedIndex,
-    //   highlighted: index === selectedIndex,
-    //   hidden: false,
-    // }));
-
     const oldSelectedIndex = this.optionMaps.findIndex((item) => item.selected);
     if (oldSelectedIndex !== newIndex) {
       this.host.dispatchEvent(
@@ -235,10 +204,10 @@ export class SelectWrapperDropdown {
   };
 
   private handleScroll(): void {
-    const fakeOptionListNodeHeight = 200;
+    const fakeOptionListNodeHeight = 200; // ??
     if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
       this.fakeOptionHighlightedNode = getHTMLElements(this.fakeOptionListNode, 'div')[
-        this.getHighlightedIndex(this.optionMaps)
+        getHighlightedIndex(this.optionMaps)
       ];
 
       if (this.fakeOptionHighlightedNode) {
@@ -254,6 +223,4 @@ export class SelectWrapperDropdown {
       }
     }
   }
-
-  private getHighlightedIndex = (arr: readonly OptionMap[]): number => arr.findIndex((item) => item.highlighted);
 }
