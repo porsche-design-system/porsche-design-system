@@ -11,7 +11,6 @@ import {
   hasFocus,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -375,15 +374,15 @@ describe('button', () => {
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await setAttribute(host, 'type', 'button');
+    await setProperty(host, 'type', 'button');
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await setAttribute(host, 'type', 'reset');
+    await setProperty(host, 'type', 'reset');
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
-    await setAttribute(host, 'type', 'submit');
+    await setProperty(host, 'type', 'submit');
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(2);
 
@@ -398,12 +397,12 @@ describe('button', () => {
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
 
-    await setAttribute(host, 'loading', 'true');
+    await setProperty(host, 'loading', true);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBe('true');
 
-    await setAttribute(host, 'loading', 'false');
+    await setProperty(host, 'loading', false);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
@@ -416,12 +415,12 @@ describe('button', () => {
 
     expect(await getProperty(spinner, 'theme')).toBe('dark');
 
-    await setAttribute(host, 'theme', 'light');
+    await setProperty(host, 'theme', 'light');
     await waitForStencilLifecycle(page);
 
     expect(await getProperty(spinner, 'theme')).toBe('dark');
 
-    await setAttribute(host, 'variant', 'tertiary');
+    await setProperty(host, 'variant', 'tertiary');
     await waitForStencilLifecycle(page);
 
     expect(await getProperty(spinner, 'theme')).toBe('light');
@@ -506,7 +505,7 @@ describe('button', () => {
       await initButton();
       const host = await getHost();
 
-      await setAttribute(host, 'variant', 'tertiary');
+      await setProperty(host, 'variant', 'tertiary');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
