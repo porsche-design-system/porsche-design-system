@@ -9,8 +9,8 @@ import {
   getBrowser,
   getElementStyle,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -78,7 +78,7 @@ describe('grid', () => {
         .withContext('initial padding of grid-item')
         .toBe('0px 8px');
 
-      await setAttribute(grid, 'gutter', '{base: 24}');
+      await setProperty(grid, 'gutter', { base: 24 });
       await waitForStencilLifecycle(page);
 
       expect(await getGridMargin(grid))
@@ -88,7 +88,7 @@ describe('grid', () => {
         .withContext('padding of grid-item for base 24')
         .toBe('0px 12px');
 
-      await setAttribute(grid, 'gutter', '{base: 36}');
+      await setProperty(grid, 'gutter', { base: 36 });
       await waitForStencilLifecycle(page);
 
       expect(await getGridMargin(grid))
