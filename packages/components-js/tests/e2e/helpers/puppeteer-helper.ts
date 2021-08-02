@@ -1,6 +1,5 @@
 import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
-import { BreakpointCustomizable } from '@porsche-design-system/components/src/utils';
 
 type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
 export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
@@ -145,7 +144,7 @@ export const getProperty = async (element: ElementHandle, prop: string): Promise
 export const setProperty = async <T>(
   element: ElementHandle,
   key: string,
-  value: string | boolean | number | BreakpointCustomizable<T>
+  value: string | boolean | number | T
 ): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
 };
