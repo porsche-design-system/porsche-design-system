@@ -30,6 +30,7 @@ export class SelectWrapperDropdown {
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  @Prop() public onFocus: () => void;
   @Prop() public hidden = true;
 
   private rootElement: HTMLDivElement;
@@ -92,14 +93,14 @@ export class SelectWrapperDropdown {
                     ['option--disabled']: disabled,
                     ['option--hidden']: hidden || initiallyHidden,
                   }}
-                  onClick={(e) => (!(disabled && selected) ? this.onClick(index) : this.onFocus(e))}
+                  onClick={() => (!disabled && !selected ? this.onClick(index) : this.onFocus())}
                   {...getOptionAriaAttributes(option)}
                   // aria-selected={highlighted ? 'true' : null}
                   // aria-disabled={disabled ? 'true' : null}
                   // aria-hidden={hidden || initiallyHidden ? 'true' : null}
                   // aria-label={!value ? 'Empty value' : null}
                 >
-                  {value && <span>{value}</span>}
+                  {value}
                   {selected && !disabled && (
                     <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
                   )}
@@ -112,18 +113,8 @@ export class SelectWrapperDropdown {
     );
   }
 
-  private onFocus(_: MouseEvent): void {
-    // if (!this.filter) {
-    //   this.select.focus();
-    // } else {
-    //   e.preventDefault();
-    //   this.filterInput.focus();
-    // }
-  }
-
   private onClick = (newIndex: number): void => {
-    const oldSelectedIndex = getSelectedOptionMapIndex(this.optionMaps);
-    if (oldSelectedIndex !== newIndex) {
+    if (getSelectedOptionMapIndex(this.optionMaps) !== newIndex) {
       this.host.dispatchEvent(
         new CustomEvent<InternalChangeEvent>(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } })
       );
