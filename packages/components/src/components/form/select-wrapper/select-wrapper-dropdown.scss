@@ -19,7 +19,7 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   transition: border-color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
+  transform: translate3d(0, 0, 0); // fix iOS bug if less than 5 items are displayed
 
   border-color: $p-color-neutral-contrast-medium;
   background-color: $p-color-background-default;
@@ -137,10 +137,8 @@
     }
   }
 
+  &--highlighted,
   &--selected {
-    cursor: default;
-    pointer-events: none;
-    padding-right: $p-spacing-32;
     color: $p-color-state-active;
     background-color: $p-color-background-surface;
 
@@ -154,14 +152,10 @@
     }
   }
 
-  &--highlighted:not(&--selected) {
-    color: $p-color-state-active;
-    background-color: $p-color-background-surface;
-
-    .root--theme-dark & {
-      color: $p-color-theme-dark-state-active;
-      background-color: $p-color-default;
-    }
+  &--selected {
+    cursor: default;
+    pointer-events: none;
+    padding-right: $p-spacing-32;
   }
 
   &--disabled {
@@ -173,8 +167,7 @@
     }
   }
 
-  &--hidden,
-  &--initiallyHidden {
+  &--hidden {
     display: none;
   }
 }
