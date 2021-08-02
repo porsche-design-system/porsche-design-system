@@ -91,6 +91,8 @@ export const updateLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap
   updateHighlightedOptionMaps(options, options.length - 1);
 
 export const getHighlightedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
+export const getSelectedIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.selected);
+
 export const getSelectedOption = (arr: OptionMap[]): OptionMap => arr.find((item) => item.selected);
 
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
