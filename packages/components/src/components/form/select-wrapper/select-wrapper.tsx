@@ -80,7 +80,7 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
-  private hasCustomDropDown: boolean;
+  private hasCustomDropdown: boolean;
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -97,21 +97,21 @@ export class SelectWrapper {
   }
 
   public componentWillLoad(): void {
-    this.hasCustomDropDown = isCustomDropdown(this.filter, this.native);
+    this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
 
-    // TODO: later added options should be tracked
-    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionList);
-    getOptionsElements(this.select).forEach((el) => {
-      observeProperties(el, ['selected'], this.setOptionList);
-    });
+    if (this.hasCustomDropdown) {
+      // TODO: later added options should be tracked
+      observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
+      getOptionsElements(this.select).forEach((el) => {
+        observeProperties(el, ['selected'], this.setOptionMaps);
+      });
 
-    if (this.hasCustomDropDown) {
       this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
         e.stopPropagation();
         this.setOptionSelected(e.detail.newIndex);
       });
 
-      this.setOptionList();
+      this.setOptionMaps();
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
       if (!this.filter) {
@@ -151,7 +151,7 @@ export class SelectWrapper {
 
   public disconnectedCallback(): void {
     this.selectObserver.disconnect();
-    if (this.hasCustomDropDown && typeof document !== 'undefined') {
+    if (this.hasCustomDropdown && typeof document !== 'undefined') {
       document.removeEventListener('mousedown', this.onClickOutside, true);
     }
   }
@@ -211,7 +211,7 @@ export class SelectWrapper {
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
           ]}
-          {this.hasCustomDropDown && (
+          {this.hasCustomDropdown && (
             <p-select-wrapper-dropdown
               ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
@@ -263,7 +263,7 @@ export class SelectWrapper {
     this.selectObserver = new MutationObserver((mutations) => {
       if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         // console.log('mutation observer');
-        this.setOptionList();
+        this.setOptionMaps();
       }
     });
     this.selectObserver.observe(this.select, {
@@ -422,7 +422,7 @@ export class SelectWrapper {
     }
   };
 
-  private setOptionList = (): void => {
+  private setOptionMaps = (): void => {
     this.optionMaps = updateSelectedOptionMaps(
       getOptionMaps(getOptionsElements(this.select)),
       this.select.selectedIndex
