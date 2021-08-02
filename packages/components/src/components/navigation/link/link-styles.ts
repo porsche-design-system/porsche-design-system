@@ -18,24 +18,24 @@ import type { LinkVariant, Theme } from '../../../types';
 
 const { darkTheme } = color;
 
-const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { defaultColor: string; hoverColor: string; textColor: string; } => {
+const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { baseColor: string; baseColorHover: string; textColor: string; } => {
   switch (variant) {
     case 'primary':
       return {
-        defaultColor: isDarkTheme ? darkTheme.brand : color.brand,
-        hoverColor: isDarkTheme ? '#c4001a' : '#980014',
+        baseColor: isDarkTheme ? darkTheme.brand : color.brand,
+        baseColorHover: isDarkTheme ? '#c4001a' : '#980014',
         textColor: darkTheme.default
       };
     case 'tertiary':
       return {
-        defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        hoverColor: isDarkTheme ? darkTheme.default : '#151718',
+        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+        baseColorHover: isDarkTheme ? darkTheme.default : '#151718',
         textColor: isDarkTheme ? darkTheme.default : color.default
       };
     default:
       return {
-        defaultColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        hoverColor: isDarkTheme ? '#e0e0e0' : '#151718',
+        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+        baseColorHover: isDarkTheme ? '#e0e0e0' : '#151718',
         textColor: isDarkTheme ? color.default : darkTheme.default
       };
   }
@@ -66,7 +66,7 @@ const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
   },
 });
 
-export const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel ? {
     icon: {
       left: '50%',
@@ -84,7 +84,7 @@ export const getIconLabelStyles: GetStylesFunction = (hideLabel: boolean): JssSt
   };
 };
 
-export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return addImportantToEachRule({
     '::slotted(a)': hideLabel ? {
       position: 'absolute',
@@ -112,7 +112,7 @@ export const getComponentCss = (
 ): string => {
   const isDarkTheme = isDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { defaultColor, hoverColor, textColor } = getVariantColors(variant, isDarkTheme);
+  const { baseColor, baseColorHover, textColor } = getVariantColors(variant, isDarkTheme);
 
   return getCss(
     mergeDeep<Styles>(
@@ -135,12 +135,12 @@ export const getComponentCss = (
           textDecoration: 'none',
           border: '1px solid currentColor',
           backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-          color: defaultColor,
+          color: baseColor,
           transition: `background-color ${transitionDuration} ${transitionTimingFunction},`+
             `border-color ${transitionDuration} ${transitionTimingFunction},`+
             `color ${transitionDuration} ${transitionTimingFunction}`,
           '&:hover, &:active': {
-            color: hoverColor,
+            color: baseColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
               '& $label, & $icon': {
@@ -175,10 +175,10 @@ export const getComponentCss = (
             border: 0,
           },
           '::slotted(a:focus)': {
-            outlineColor: defaultColor,
+            outlineColor: baseColor,
           },
           '::slotted(a:hover:focus)': {
-            outlineColor: hoverColor,
+            outlineColor: baseColorHover,
           },
           '::slotted(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',
