@@ -607,6 +607,7 @@ export namespace Components {
          */
         "filter"?: boolean;
         "hidden": boolean;
+        "onFocus": () => void;
         "optionMaps": OptionMap[];
         /**
           * Adapts the select color depending on the theme.
@@ -1721,6 +1722,7 @@ declare namespace LocalJSX {
          */
         "filter"?: boolean;
         "hidden"?: boolean;
+        "onFocus"?: () => void;
         "optionMaps"?: OptionMap[];
         /**
           * Adapts the select color depending on the theme.

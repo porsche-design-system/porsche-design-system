@@ -215,6 +215,7 @@ export class SelectWrapper {
               hidden={this.isDropdownHidden}
               filter={this.filter}
               theme={this.theme}
+              onFocus={this.onFocus}
             />
           )}
         </div>
@@ -282,13 +283,9 @@ export class SelectWrapper {
     this.handleVisibilityOfFakeOptionList('toggle');
   };
 
-  private onFocus(): void {
-    if (this.filter) {
-      this.filterInput.focus();
-    } else {
-      this.select.focus();
-    }
-  }
+  private onFocus = (): void => {
+    (this.filter ? this.filterInput : this.select).focus();
+  };
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
     if (this.isDropdownHidden) {
