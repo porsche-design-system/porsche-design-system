@@ -69,13 +69,12 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  @State() private isCustomDropdownHidden = true;
+  @State() private isDropdownHidden = true;
   @State() private optionMaps: OptionMap[] = [];
   // @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
   private dropdown: HTMLPSelectWrapperDropdownElement;
-  private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
@@ -169,7 +168,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--opened']: !this.isCustomDropdownHidden,
+      ['icon--opened']: !this.isDropdownHidden,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
@@ -204,7 +203,7 @@ export class SelectWrapper {
               aria-autocomplete="both"
               aria-controls="p-listbox"
               disabled={this.disabled}
-              aria-expanded={this.isCustomDropdownHidden ? 'false' : 'true'}
+              aria-expanded={this.isDropdownHidden ? 'false' : 'true'}
               aria-activedescendant={`option-${getHighlightedIndex(this.optionMaps)}`}
               placeholder={getSelectedOption(this.optionMaps)?.value}
               ref={(el) => (this.filterInput = el)}
@@ -216,7 +215,7 @@ export class SelectWrapper {
               ref={(el) => (this.dropdown = el)}
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
-              hidden={this.isCustomDropdownHidden}
+              hidden={this.isDropdownHidden}
               filter={this.filter}
               theme={this.theme}
             />
@@ -296,15 +295,15 @@ export class SelectWrapper {
   }
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (this.isCustomDropdownHidden) {
+    if (this.isDropdownHidden) {
       if (type === 'show' || type === 'toggle') {
-        this.isCustomDropdownHidden = false;
+        this.isDropdownHidden = false;
         // this.handleDropdownDirection();
         this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
-        this.isCustomDropdownHidden = true;
+        this.isDropdownHidden = true;
         if (this.filter) {
           this.resetFilterInput();
         }
@@ -340,14 +339,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          if (this.isCustomDropdownHidden) {
+          if (this.isDropdownHidden) {
             e.preventDefault();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          if (this.isCustomDropdownHidden) {
+          if (this.isDropdownHidden) {
             this.setOptionSelected(getHighlightedIndex(this.optionMaps));
           }
         }
@@ -377,20 +376,20 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (!this.isCustomDropdownHidden) {
+        if (!this.isDropdownHidden) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
       case 'PageDown':
         e.preventDefault();
-        if (!this.isCustomDropdownHidden) {
+        if (!this.isDropdownHidden) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
           this.handleScroll();
         }
         break;
       case 'Tab':
-        if (!this.isCustomDropdownHidden) {
+        if (!this.isDropdownHidden) {
           this.handleVisibilityOfFakeOptionList('hide');
         }
         break;
@@ -457,11 +456,11 @@ export class SelectWrapper {
   private handleScroll(): void {
     const fakeOptionListNodeHeight = 200;
     if (this.dropdown.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = getHTMLElements(this.dropdown, 'div')[getHighlightedIndex(this.optionMaps)];
+      const fakeOptionHighlightedNode = getHTMLElements(this.dropdown, 'div')[getHighlightedIndex(this.optionMaps)];
 
-      if (this.fakeOptionHighlightedNode) {
+      if (fakeOptionHighlightedNode) {
         const { scrollTop } = this.dropdown;
-        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
+        const { offsetTop, offsetHeight } = fakeOptionHighlightedNode;
         const scrollBottom = fakeOptionListNodeHeight + scrollTop;
         const elementBottom = offsetTop + offsetHeight;
         if (elementBottom > scrollBottom) {
