@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
+
 #### Fixed
-- `Link Pure` dark theme active color
+- Slotted `<a>` coloring in dark theme
 
 ### [2.3.0] - 2021-07-28
 
