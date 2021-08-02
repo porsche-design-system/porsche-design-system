@@ -3,7 +3,11 @@ import { getHTMLElements, getPrefixedTagNames, isDark } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import { CHANGE_EVENT_NAME, getHighlightedIndex, InternalChangeEvent } from './select-wrapper-utils';
-import { getOptionAriaAttributes, getRootAriaAttributes } from './select-wrapper-dropdown-utils';
+import {
+  determineDropdownDirection,
+  getOptionAriaAttributes,
+  getRootAriaAttributes,
+} from './select-wrapper-dropdown-utils';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -37,9 +41,12 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
+    const direction =
+      this.dropdownDirection === 'auto' ? determineDropdownDirection(this.host) : this.dropdownDirection;
+
     const rootClasses = {
       ['root']: true,
-      [`root--direction-${this.dropdownDirection}`]: true,
+      [`root--direction-${direction}`]: true,
       ['root--hidden']: this.hidden,
       ['root--theme-dark']: isDark(this.theme),
     };

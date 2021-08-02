@@ -1,5 +1,7 @@
-import { AriaAttributes } from 'react';
-import { getHighlightedIndex, OptionMap } from './select-wrapper-utils';
+import type { AriaAttributes } from 'react';
+import type { DropdownDirectionInternal, OptionMap } from './select-wrapper-utils';
+import { getHighlightedIndex } from './select-wrapper-utils';
+import { getHTMLElements } from '../../../utils';
 
 export const getRootAriaAttributes = (optionMaps: OptionMap[], hidden: boolean, filter: boolean): AriaAttributes => ({
   'aria-activedescendant': !filter && `option-${getHighlightedIndex(optionMaps)}`,
@@ -18,3 +20,16 @@ export const getOptionAriaAttributes = ({
   'aria-hidden': hidden || initiallyHidden ? 'true' : null,
   'aria-label': !value ? 'Empty value' : null,
 });
+
+const OPTION_HEIGHT = 24; // opgroups are higher and ignored
+const SELECT_HEIGHT = 48;
+const MAX_CHILDREN = 10;
+
+export const determineDropdownDirection = (host: HTMLElement): DropdownDirectionInternal => {
+  const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
+  const { top: spaceTop } = host.getBoundingClientRect();
+
+  const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
+  const spaceBottom = window.innerHeight - spaceTop - SELECT_HEIGHT;
+  return spaceBottom <= listHeight && spaceTop >= listHeight ? 'up' : 'down';
+};
