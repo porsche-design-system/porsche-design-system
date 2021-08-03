@@ -31,7 +31,7 @@ describe('Textarea Wrapper', () => {
 
         const head = `
           <style type="text/css">
-            p-textarea-wrapper:not(:last-child) { margin-bottom: 16px; }
+            p-textarea-wrapper:not(:last-child) { margin-bottom: 1rem; }
             textarea { min-height: initial; }
           </style>`;
 

@@ -30,7 +30,7 @@ describe('Link Pure', () => {
       await vrt.test('link-pure-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
+        const head = `<style type="text/css">p-link-pure:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>
