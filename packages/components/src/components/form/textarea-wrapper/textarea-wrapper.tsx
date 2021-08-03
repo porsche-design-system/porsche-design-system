@@ -100,6 +100,12 @@ export class TextareaWrapper {
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name={this.state === 'error' ? 'exclamation' : 'check'}
+              color="inherit"
+              aria-hidden="true"
+            />
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
