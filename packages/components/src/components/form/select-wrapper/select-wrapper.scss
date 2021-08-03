@@ -244,11 +244,15 @@ input:focus + span {
 
     &--description {
       color: $p-color-neutral-contrast-medium;
+    }
+
+    + #{$bem-block}__text--description {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
 
-    &:hover ~ ::slotted(select:not(:disabled):not([readonly])) {
+    @at-root #{$root}:hover ::slotted(select:not(:disabled):not([readonly])),
+      &:hover ~ ::slotted(select:not(:disabled):not([readonly])) {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
     }
   }
