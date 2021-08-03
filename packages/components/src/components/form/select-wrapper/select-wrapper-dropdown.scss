@@ -11,14 +11,13 @@
   @include p-text-small;
   position: absolute;
   z-index: 10;
-  border: 1px solid;
   left: 0;
   right: 0;
   max-height: p-px-to-rem(308px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border-color: $p-color-neutral-contrast-medium;
+  border: 1px solid $p-color-neutral-contrast-medium;
   background-color: $p-color-background-default;
   transition: border-color $p-animation-hover-duration-var $p-animation-hover-bezier;
   transform: translate3d(0, 0, 0); // fix iOS bug if less than 5 items are displayed
