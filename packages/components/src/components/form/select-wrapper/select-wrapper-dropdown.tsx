@@ -30,14 +30,14 @@ export class SelectWrapperDropdown {
 
   @Prop() public onSelect: (newIndex: number) => void;
   @Prop() public onFocus: () => void;
-  @Prop() public hidden = true;
+  @Prop() public open = false;
 
   public connectedCallback(): void {
     // TODO: validate this is used within `p-select-wrapper`
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.dropdownDirection, this.hidden, this.theme);
+    addComponentCss(this.host, this.dropdownDirection, this.open, this.theme);
   }
 
   public componentDidRender(): void {
@@ -51,7 +51,7 @@ export class SelectWrapperDropdown {
       <Host
         role="listbox"
         tabIndex={-1}
-        {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
+        {...getRootAriaAttributes(this.optionMaps, this.open, this.filter)}
         // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
         // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
       >
