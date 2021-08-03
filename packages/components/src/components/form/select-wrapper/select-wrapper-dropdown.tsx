@@ -2,8 +2,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, isDark } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
-import type { InternalChangeEvent } from './select-wrapper-utils';
-import { CHANGE_EVENT_NAME, getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from './select-wrapper-utils';
+import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from './select-wrapper-utils';
 import {
   determineDropdownDirection,
   getOptionAriaAttributes,
@@ -30,6 +29,7 @@ export class SelectWrapperDropdown {
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  @Prop() public onSelect: (newIndex: number) => void;
   @Prop() public onFocus: () => void;
   @Prop() public hidden = true;
 
@@ -115,9 +115,7 @@ export class SelectWrapperDropdown {
 
   private onClick = (newIndex: number): void => {
     if (getSelectedOptionMapIndex(this.optionMaps) !== newIndex) {
-      this.host.dispatchEvent(
-        new CustomEvent<InternalChangeEvent>(CHANGE_EVENT_NAME, { bubbles: true, detail: { newIndex } })
-      );
+      this.onSelect(newIndex);
     }
   };
 }
