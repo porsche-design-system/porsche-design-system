@@ -55,10 +55,10 @@ export const getComponentCss = (): string => {
       marginLeft: spacing['4'],
       opacity: 0,
       transition: `opacity ${transitionDuration} ${transitionTimingFunction}`,
-      transform: 'rotate3d(0, 0, 1, 0deg)',
+      transform: 'rotate3d(0,0,1,0deg)',
       transformOrigin: '50% 50%', // for iOS
       '&--asc': {
-        transform: 'rotate3d(0, 0, 1, 180deg)',
+        transform: 'rotate3d(0,0,1,180deg)',
       },
       '&--active': {
         opacity: 1,
