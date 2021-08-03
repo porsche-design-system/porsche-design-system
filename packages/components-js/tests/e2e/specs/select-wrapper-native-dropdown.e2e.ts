@@ -21,10 +21,10 @@ describe('select-wrapper native-dropdown', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
-  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
+  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .fake-select');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
-  const getMessage = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__message');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
+  const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
+  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
   const getLabelLink = () => selectNode(page, 'p-select-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-select-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-select-wrapper [slot="message"] a');
@@ -205,7 +205,7 @@ describe('select-wrapper native-dropdown', () => {
 
     const fakeSelect = await getFakeSelect();
     const select = await getSelect();
-    const disabledClass = 'p-select-wrapper__fake-select--disabled';
+    const disabledClass = 'fake-select--disabled';
 
     expect(await getCssClasses(fakeSelect))
       .not.withContext('initially')

@@ -29,10 +29,10 @@ describe('select-wrapper combobox', () => {
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
-  const getFilterInput = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input');
-  const getFilterInputOverlay = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input + span');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
-  const getFakeOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+  const getFilterInput = () => selectNode(page, 'p-select-wrapper >>> input');
+  const getFilterInputOverlay = () => selectNode(page, 'p-select-wrapper >>> input + span');
+  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
+  const getFakeOptionList = () => selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root');
   const getSelectedText = async () =>
     (await getSelect()).evaluate((el: HTMLSelectElement) => {
       const options = el.querySelectorAll('option');
@@ -43,7 +43,7 @@ describe('select-wrapper combobox', () => {
   const getOpacity = async () => getElementStyle(await getFakeOptionList(), 'opacity');
   const getHiddenOptionAmount = async () =>
     (await getHost()).evaluate((el) => {
-      return Array.from(el.shadowRoot.querySelectorAll('.p-select-wrapper__fake-option--hidden')).length;
+      return Array.from(el.shadowRoot.querySelectorAll('.option--hidden')).length;
     });
 
   const initCombobox = (): Promise<void> => {
@@ -73,7 +73,10 @@ describe('select-wrapper combobox', () => {
     );
 
     const fakeOptionList = await getFakeOptionList();
-    const fakeOptionSelected = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--selected');
+    const fakeOptionSelected = await selectNode(
+      page,
+      'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option--selected'
+    );
     const activeDescendant = await getAttribute(await getFilterInput(), 'aria-activedescendant');
     const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
@@ -264,13 +267,13 @@ describe('select-wrapper combobox', () => {
 
     const visibleElement = await selectNode(
       page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option:not(.p-select-wrapper__fake-option--hidden)'
+      'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:not(.option--hidden)'
     );
     const visibleElementClasses = await getCssClasses(visibleElement);
 
     expect(await getOpacity()).toBe('1');
     expect(await getHiddenOptionAmount()).toBe(2);
-    expect(visibleElementClasses).not.toContain('p-select-wrapper__fake-option--hidden');
+    expect(visibleElementClasses).not.toContain('option--hidden');
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -303,7 +306,7 @@ describe('select-wrapper combobox', () => {
     await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
-    const errorOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option > span');
+    const errorOption = await selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option');
     const errorOptionValue = await getProperty(errorOption, 'textContent');
 
     expect(await getHiddenOptionAmount()).toBe(0);
@@ -330,7 +333,7 @@ describe('select-wrapper combobox', () => {
     const fakeOptionList = await getFakeOptionList();
     const numberOfFakeOptions = () =>
       fakeOptionList.evaluate((el: HTMLElement) => {
-        return el.querySelectorAll('.p-select-wrapper__fake-option').length;
+        return el.querySelectorAll('.option').length;
       });
 
     expect(await numberOfFakeOptions()).toBe(3);
@@ -394,7 +397,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await getFilterInput();
     const fakeOptionInPosTwo = await selectNode(
       page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)'
+      'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(2)'
     );
 
     await filterInput.click();
@@ -421,7 +424,7 @@ describe('select-wrapper combobox', () => {
 
     const fakeOptionListDirectionUp = await selectNode(
       page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+      'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root--direction-up'
     );
 
     expect(fakeOptionListDirectionUp).not.toBeNull();
@@ -455,7 +458,7 @@ describe('select-wrapper combobox', () => {
 
     const fakeOptionListDirectionUp = await selectNode(
       page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+      'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root--direction-up'
     );
 
     expect(fakeOptionListDirectionUp).not.toBeNull();
@@ -463,16 +466,15 @@ describe('select-wrapper combobox', () => {
 
   describe('keyboard and click events', () => {
     const getFakeOptionInPosOne = async () =>
-      await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      await selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(2)');
     const getActiveDescendant = async () => await getAttribute(await getFilterInput(), 'aria-activedescendant');
     const getSelectedIndex = () =>
       page.evaluate(() => {
         return document.querySelector('select').selectedIndex;
       });
     const getHighlightedFakeOption = async () =>
-      await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--highlighted');
-    const getSelectedFakeOption = async () =>
-      await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--selected');
+      await getElementIndex(await getFakeOptionList(), '.option--highlighted');
+    const getSelectedFakeOption = async () => await getElementIndex(await getFakeOptionList(), '.option--selected');
 
     it('should focus filter input on tab', async () => {
       await setContentWithDesignSystem(
