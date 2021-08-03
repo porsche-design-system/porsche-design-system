@@ -26,16 +26,16 @@ describe('select-wrapper fake-dropdown', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
-  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
+  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .fake-select');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
-  const getFakeOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
+  const getFakeOptionList = () => selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root');
   const getFakeOptionInPosOne = () =>
-    selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+    selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(1)');
   const getFakeOptionInPosTwo = () =>
-    selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+    selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(2)');
   const getFakeOptionInPosFour = () =>
-    selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(4)');
+    selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(4)');
 
   const initSelect = (): Promise<void> => {
     return setContentWithDesignSystem(
@@ -77,7 +77,7 @@ describe('select-wrapper fake-dropdown', () => {
   });
 
   describe('custom drop down', () => {
-    const selectedClass = 'p-select-wrapper__fake-option--selected';
+    const selectedClass = '.option--selected';
 
     it('should render', async () => {
       await setContentWithDesignSystem(
@@ -94,11 +94,11 @@ describe('select-wrapper fake-dropdown', () => {
       const fakeOptionList = await getFakeOptionList();
       const fakeOptionDisabled = await selectNode(
         page,
-        'p-select-wrapper >>> .p-select-wrapper__fake-option--disabled'
+        'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option--disabled'
       );
       const fakeOptionSelected = await selectNode(
         page,
-        'p-select-wrapper >>> .p-select-wrapper__fake-option--selected'
+        'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option--selected'
       );
       const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
       const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
@@ -129,10 +129,10 @@ describe('select-wrapper fake-dropdown', () => {
 
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
-      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label');
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .optgroup-label');
       const fakeOptionSelected = await selectNode(
         page,
-        'p-select-wrapper >>> .p-select-wrapper__fake-option--selected'
+        'p-select-wrapper >>> .p-select-wrapper-dropdown >>> .option--selected'
       );
       const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
       const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
@@ -141,7 +141,7 @@ describe('select-wrapper fake-dropdown', () => {
         return el.querySelectorAll('optgroup').length;
       });
       const numberOfFakeOptgroups = await fakeOptionList.evaluate((el: HTMLElement) => {
-        return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
+        return el.querySelectorAll('.optgroup-label').length;
       });
 
       expect(fakeOptionList).not.toBeNull();
@@ -168,13 +168,13 @@ describe('select-wrapper fake-dropdown', () => {
 
       const select = await getSelect();
       const fakeOptionList = await getFakeOptionList();
-      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label');
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .optgroup-label');
 
       const numberOfOptgroups = await select.evaluate((el: HTMLElement) => {
         return el.querySelectorAll('optgroup').length;
       });
       const numberOfFakeOptgroups = await fakeOptionList.evaluate((el: HTMLElement) => {
-        return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
+        return el.querySelectorAll('p-select-wrapper-dropdown >>> .optgroup-label').length;
       });
 
       expect(fakeOptionList).not.toBeNull();
@@ -281,7 +281,7 @@ describe('select-wrapper fake-dropdown', () => {
         el.add(option, 0);
       });
       const text = await getProperty(
-        await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:first-child'),
+        await selectNode(page, 'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:first-child'),
         'innerHTML'
       );
       expect(text).toContain('Test');
@@ -313,13 +313,16 @@ describe('select-wrapper fake-dropdown', () => {
       await initSelect();
       const select = await getSelect();
       const fakeOptionList = async () => await getFakeOptionList();
-      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const fakeOption = await selectNode(
+        page,
+        'p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(2)'
+      );
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].disabled = true));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
+      expect(await getCssClasses(fakeOption)).toContain('option--disabled');
+      expect(await getElementIndex(await fakeOptionList(), '.option--disabled')).toBe(1);
     });
 
     it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
@@ -403,13 +406,13 @@ describe('select-wrapper fake-dropdown', () => {
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
-      expect(await getElementIndex(fakeOptionList, '.p-select-wrapper__fake-option--hidden')).toBe(1);
+      expect(await getCssClasses(fakeOption)).toContain('option--hidden');
+      expect(await getElementIndex(fakeOptionList, '.option--hidden')).toBe(1);
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = false));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeOption)).not.toContain('p-select-wrapper__fake-option--hidden');
+      expect(await getCssClasses(fakeOption)).not.toContain('option--hidden');
     });
 
     it('should not render initial hidden option fields', async () => {
@@ -425,7 +428,7 @@ describe('select-wrapper fake-dropdown', () => {
       );
       const fakeOption = await getFakeOptionInPosOne();
 
-      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
+      expect(await getCssClasses(fakeOption)).toContain('option--hidden');
     });
 
     it('should not throw error with long option list and the same item is selected and disabled', async () => {
@@ -492,7 +495,7 @@ describe('select-wrapper fake-dropdown', () => {
 
       const fakeOptionListCheckmarkIcon = await selectNode(
         page,
-        'p-select-wrapper >>> .p-select-wrapper__fake-option-icon'
+        'p-select-wrapper >>> p-select-wrapper-dropdown >>> .icon'
       );
 
       expect(fakeOptionListCheckmarkIcon).toBeNull();
@@ -513,7 +516,7 @@ describe('select-wrapper fake-dropdown', () => {
 
         const fakeOptionListDirectionUp = await selectNode(
           page,
-          'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+          'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root---direction-up'
         );
 
         expect(fakeOptionListDirectionUp).not.toBeNull();
@@ -539,7 +542,7 @@ describe('select-wrapper fake-dropdown', () => {
 
         const fakeOptionListDirectionDown = await selectNode(
           page,
-          'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
+          'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root--direction-down'
         );
 
         expect(fakeOptionListDirectionDown).not.toBeNull();
@@ -573,7 +576,7 @@ describe('select-wrapper fake-dropdown', () => {
 
         const fakeOptionListDirectionUp = await selectNode(
           page,
-          'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+          'p-select-wrapper >>> p-select-wrapper-dropdown >>> .root--direction-up'
         );
 
         expect(fakeOptionListDirectionUp).not.toBeNull();
@@ -589,9 +592,8 @@ describe('select-wrapper fake-dropdown', () => {
           return document.querySelector('select').selectedIndex;
         });
       const getHighlightedFakeOption = async () =>
-        await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--highlighted');
-      const getSelectedFakeOption = async () =>
-        await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--selected');
+        await getElementIndex(await getFakeOptionList(), '.option--highlighted');
+      const getSelectedFakeOption = async () => await getElementIndex(await getFakeOptionList(), '.option--selected');
 
       it('should highlight first position on arrow down', async () => {
         await initSelect();
@@ -1168,14 +1170,14 @@ ${initCustomElement}
 
         const fakeOptionPosTwo = await selectNode(
           page,
-          `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)`
+          `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> .option:nth-child(2)`
         );
         const boundingBoxFakeOptionPosTwo = await fakeOptionPosTwo.boundingBox();
 
         const getFakeOptionListInCustomElement = () =>
-          selectNode(page, `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option-list`);
+          selectNode(page, `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> .option-list`);
         const getSelectedFakeOptionInCustomElement = async () =>
-          await getElementIndex(await getFakeOptionListInCustomElement(), '.p-select-wrapper__fake-option--selected');
+          await getElementIndex(await getFakeOptionListInCustomElement(), '.option--selected');
 
         expect(await getSelectedFakeOptionInCustomElement())
           .withContext('for selected fake option initial')
