@@ -95,3 +95,16 @@ export const getBaseSlottedStyles = (): Styles => {
     },
   };
 };
+
+export const getScreenReaderJssStyle = (): JssStyle => ({
+  position: 'absolute',
+  display: 'block',
+  width: 1,
+  height: 1,
+  margin: -1,
+  padding: 0,
+  overflow: 'hidden',
+  border: 0,
+  clip: 'rect(1px,1px,1px,1px)',
+  clipPath: 'inset(50%)',
+});

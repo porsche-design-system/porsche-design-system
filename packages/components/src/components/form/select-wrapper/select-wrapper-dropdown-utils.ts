@@ -4,16 +4,15 @@ import { getHighlightedOptionMapIndex } from './select-wrapper-utils';
 import {
   addImportantToEachRule,
   attachCss,
-  buildGlobalStyles,
   buildHostStyles,
   getCss,
   getHTMLElements,
+  getScreenReaderJssStyle,
   isDark,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../utils';
-import type { JssStyle } from '../../../utils';
 import type { Theme } from '../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
@@ -68,30 +67,6 @@ export const handleScroll = (host: HTMLElement, highlightedIndex: number): void 
   }
 };
 
-const staticHostStyles: JssStyle = {
-  fontFamily: font.family,
-  ...font.size.small,
-  display: 'block',
-  position: 'absolute',
-  zIndex: 10,
-  left: 0,
-  right: 0,
-  maxHeight: pxToRemWithUnit(308),
-  overflowY: 'auto',
-  WebkitOverflowScrolling: 'touch',
-  scrollBehavior: 'smooth',
-  background: color.background.default,
-  borderWidth: '1px', // separate css property to allow color override via parent
-  borderStyle: 'solid', // separate css property to allow color override via parent
-  scrollbarWidth: 'thin', // firefox
-  scrollbarColor: 'auto', // firefox
-  transition: `border-color ${transitionDuration} ${transitionTimingFunction}`,
-  transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-  '&:focus': {
-    outline: 'none',
-  },
-};
-
 export const getComponentCss = (direction: DropdownDirectionInternal, hidden: boolean, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
   const isDirectionDown = direction === 'down';
@@ -105,7 +80,25 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
         borderColor: isDarkTheme ? darkTheme.neutralContrast.high : color.neutralContrast.high,
       },
       ...addImportantToEachRule({
-        ...staticHostStyles,
+        fontFamily: font.family,
+        ...font.size.small,
+        display: 'block',
+        position: 'absolute',
+        zIndex: 10,
+        left: 0,
+        right: 0,
+        maxHeight: pxToRemWithUnit(308),
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        scrollBehavior: 'smooth',
+        background: color.background.default,
+        borderWidth: '1px', // separate css property to allow color override via parent
+        borderStyle: 'solid', // separate css property to allow color override via parent
+        scrollbarWidth: 'thin', // firefox
+        scrollbarColor: 'auto', // firefox
+        transition: `border-color ${transitionDuration} ${transitionTimingFunction}`,
+        transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+        outline: 'none',
         ...(isDarkTheme && {
           background: darkTheme.background.default,
         }),
@@ -147,9 +140,53 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
         }),
       }),
     }),
-    ...buildGlobalStyles({
-      a: {},
-    }),
+    option: {
+      display: 'flex',
+      padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(11)}`,
+      minHeight: pxToRemWithUnit(24),
+      cursor: 'pointer',
+      textAlign: 'left',
+      wordBreak: 'break-word',
+      color: isDarkTheme ? darkTheme.default : color.default,
+      transition:
+        `color ${transitionDuration} ${transitionTimingFunction},` +
+        `background-color ${transitionDuration} ${transitionTimingFunction}`,
+      '&[role="status"]': {
+        cursor: 'not-allowed',
+      },
+      '&-sr': getScreenReaderJssStyle(),
+      '&:not([aria-disabled]):not([role="status"]):hover': {
+        color: isDarkTheme ? darkTheme.state.hover : color.state.hover,
+        background: isDarkTheme ? color.default : color.background.surface,
+      },
+      '&--highlighted, &--selected': {
+        color: isDarkTheme ? darkTheme.state.active : color.state.active,
+        background: isDarkTheme ? color.default : color.background.surface,
+      },
+      '&--selected': {
+        cursor: 'default',
+        pointerEvents: 'none',
+      },
+      '&--disabled': {
+        cursor: 'not-allowed',
+        color: isDarkTheme ? darkTheme.state.disabled : color.state.disabled,
+      },
+      '&--hidden': {
+        display: 'none',
+      },
+    },
+    icon: {
+      marginLeft: pxToRemWithUnit(4),
+    },
+    optgroup: {
+      display: 'block',
+      padding: `${pxToRemWithUnit(8)} ${pxToRemWithUnit(12)}`,
+      marginTop: pxToRemWithUnit(8),
+      fontWeight: font.weight.bold,
+      '& ~ .option': {
+        paddingLeft: pxToRemWithUnit(24),
+      },
+    },
   });
 };
 
