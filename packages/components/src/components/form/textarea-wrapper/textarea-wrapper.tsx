@@ -78,7 +78,7 @@ export class TextareaWrapper {
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
     };
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -107,7 +107,7 @@ export class TextareaWrapper {
     );
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     this.textarea.focus();
   };
 

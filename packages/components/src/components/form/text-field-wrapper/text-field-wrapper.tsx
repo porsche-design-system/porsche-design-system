@@ -88,7 +88,7 @@ export class TextFieldWrapper {
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -146,14 +146,14 @@ export class TextFieldWrapper {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     this.input.focus();
   };
 
   private togglePassword = (): void => {
     this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
-    this.labelClick();
+    this.onLabelClick();
   };
 
   private onSubmit = (event: MouseEvent): void => {

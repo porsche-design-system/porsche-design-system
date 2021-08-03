@@ -163,7 +163,7 @@ export class SelectWrapper {
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -241,7 +241,7 @@ export class SelectWrapper {
     return this.select.selectedIndex;
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     if (this.filter) {
       this.filterInput.focus();
     } else {
