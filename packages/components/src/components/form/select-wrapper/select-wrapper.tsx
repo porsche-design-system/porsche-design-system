@@ -133,10 +133,6 @@ export class SelectWrapper {
       message: this.message || this.description,
       state: this.state,
     });
-
-    if (this.filter) {
-      setAttribute(this.select, 'aria-hidden', 'true');
-    }
   }
 
   public disconnectedCallback(): void {
@@ -230,6 +226,7 @@ export class SelectWrapper {
 
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
+      setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
