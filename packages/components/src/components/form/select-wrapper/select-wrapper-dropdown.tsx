@@ -58,7 +58,7 @@ export class SelectWrapperDropdown {
         {this.filter && !this.optionMaps.length ? (
           <div class="option" aria-live="polite" role="status">
             <span aria-hidden="true">---</span>
-            <span class="option-sr">No results found</span>
+            <span class="option__sr">No results found</span>
           </div>
         ) : (
           this.optionMaps.map((option, index) => {
