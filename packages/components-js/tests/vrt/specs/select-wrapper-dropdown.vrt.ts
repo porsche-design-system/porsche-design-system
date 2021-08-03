@@ -60,6 +60,9 @@ fdescribe('Select Wrapper Dropdown', () => {
   document.querySelectorAll('.direction-up').forEach((el) => {
     el.direction = 'up';
   });
+  document.querySelectorAll('[filter]').forEach((el) => {
+    el.optionMaps = [];
+  });
 </script>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
@@ -69,6 +72,7 @@ fdescribe('Select Wrapper Dropdown', () => {
           <p-select-wrapper-dropdown theme="${theme}" class="with-optgroup"></p-select-wrapper-dropdown>
           <p-select-wrapper-dropdown theme="${theme}" class="scrollable"></p-select-wrapper-dropdown>
           <p-select-wrapper-dropdown theme="${theme}" class="direction-up"></p-select-wrapper-dropdown>
+          <p-select-wrapper-dropdown theme="${theme}" filter></p-select-wrapper-dropdown>
         `;
 
         const markup = `
