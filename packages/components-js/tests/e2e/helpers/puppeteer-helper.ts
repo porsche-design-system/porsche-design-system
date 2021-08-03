@@ -1,14 +1,24 @@
 import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
-type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
-export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
-const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
+type Options = WaitForOptions & {
+  enableLogging?: boolean;
+  injectIntoHead?: string;
+};
+
+export type ClickableTests = {
+  state: string;
+  setContent: () => Promise<void>;
+}[];
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
-  const options: Options = { ...defaultOptions, ...opts };
+  const options: Options = {
+    waitUntil: 'networkidle0',
+    injectIntoHead: '',
+    ...opts,
+  };
 
   let lifeCycleLogger = '';
   if (options.enableLogging) {
