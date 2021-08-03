@@ -42,11 +42,11 @@ describe('navigation', () => {
           await browserPage.waitForSelector('html.hydrated');
 
           const [accordionButton] = await browserPage.$x(
-            `//aside[@class='sidebar']/nav/p-accordion[@heading='${category}']`
+            `//div[@class='sidebar']/nav/p-accordion[@heading='${category}']`
           );
           const href = `\/${paramCase(category)}\/${paramCase(page)}`;
           const [linkElement] = await browserPage.$x(
-            `//aside[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
+            `//div[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
           );
 
           await accordionButton.click();
