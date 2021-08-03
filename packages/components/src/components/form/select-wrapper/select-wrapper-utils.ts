@@ -1,8 +1,5 @@
 import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../../utils';
 
-export const CHANGE_EVENT_NAME = 'internalChange';
-export type InternalChangeEvent = { newIndex: number };
-
 export type DropdownDirectionInternal = 'down' | 'up';
 export type DropdownDirection = DropdownDirectionInternal | 'auto';
 

@@ -16,7 +16,6 @@ import {
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 import {
   updateFilteredOptionMaps,
-  CHANGE_EVENT_NAME,
   getHighlightedOptionMapIndex,
   getOptionMaps,
   getOptionsElements,
@@ -24,7 +23,6 @@ import {
   updateSelectedOptionMaps,
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
-  InternalChangeEvent,
   resetFilteredOptionMaps,
   updateFirstHighlightedOptionMaps,
   isCustomDropdown,
@@ -104,11 +102,6 @@ export class SelectWrapper {
       observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
       getOptionsElements(this.select).forEach((el) => {
         observeProperties(el, ['selected'], this.setOptionMaps);
-      });
-
-      this.host.shadowRoot.addEventListener(CHANGE_EVENT_NAME, (e: CustomEvent<InternalChangeEvent>) => {
-        e.stopPropagation();
-        this.setOptionSelected(e.detail.newIndex);
       });
 
       this.select.addEventListener('keydown', this.onKeyboardEvents);
@@ -215,6 +208,7 @@ export class SelectWrapper {
               hidden={this.isDropdownHidden}
               filter={this.filter}
               theme={this.theme}
+              onSelect={this.setOptionSelected}
               onFocus={this.onFocus}
             />
           )}
