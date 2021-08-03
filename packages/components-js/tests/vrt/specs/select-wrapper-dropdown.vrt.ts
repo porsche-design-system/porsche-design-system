@@ -1,18 +1,13 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
   forceHoveredState,
-  getThemedBodyMarkup,
   GetThemedMarkup,
   getVisualRegressionStatesTester,
-  getVisualRegressionTester,
   setContentWithDesignSystem,
-  testOptions,
 } from '../helpers';
 import { OptionMap } from '@porsche-design-system/components/dist/types/components/form/select-wrapper/select-wrapper-utils';
 import { waitForComponentsReady } from '../../e2e/helpers';
 
-fdescribe('Select Wrapper Dropdown', () => {
+describe('Select Wrapper Dropdown', () => {
   it('should have no visual regression for :hover', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
