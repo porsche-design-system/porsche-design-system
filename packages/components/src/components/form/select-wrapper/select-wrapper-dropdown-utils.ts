@@ -34,8 +34,8 @@ export const getOptionAriaAttributes = ({
   'aria-label': !value ? 'Empty value' : null,
 });
 
-const OPTION_HEIGHT = 24; // opgroups are higher and ignored
-const SELECT_HEIGHT = 48;
+const OPTION_HEIGHT = 24; // optgroups are higher and ignored
+const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper
 const MAX_CHILDREN = 10;
 
 export const determineDropdownDirection = (host: HTMLElement): DropdownDirectionInternal => {
@@ -143,7 +143,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
     option: {
       display: 'flex',
       padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(11)}`,
-      minHeight: pxToRemWithUnit(24),
+      minHeight: pxToRemWithUnit(OPTION_HEIGHT),
       cursor: 'pointer',
       textAlign: 'left',
       wordBreak: 'break-word',
