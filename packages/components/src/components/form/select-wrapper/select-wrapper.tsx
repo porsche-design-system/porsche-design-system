@@ -157,11 +157,11 @@ export class SelectWrapper {
     const rootClasses = {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'none',
+      ['root--disabled']: this.disabled,
       ['root--theme-dark']: isDark(this.theme),
     };
     const labelClasses = {
       ['label']: true,
-      ['label--disabled']: this.disabled,
       ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
     const iconClasses = {
@@ -241,6 +241,10 @@ export class SelectWrapper {
 
   private get disabled(): boolean {
     return this.select.disabled;
+  }
+
+  private get selectedIndex(): number {
+    return this.select.selectedIndex;
   }
 
   private labelClick = (): void => {
@@ -413,10 +417,6 @@ export class SelectWrapper {
     if (direction === 'left' || direction === 'right') {
       this.setOptionSelected(newIndex);
     }
-  }
-
-  private get selectedIndex(): number {
-    return this.select.selectedIndex;
   }
 
   /*
