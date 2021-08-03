@@ -514,6 +514,7 @@
   }
 
   &__message {
+    display: flex;
     margin-top: $p-spacing-4;
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
@@ -543,6 +544,10 @@
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-notification-error;
       }
+    }
+
+    &-icon {
+      margin-right: $p-spacing-4;
     }
   }
 
