@@ -63,8 +63,20 @@ input:focus + span {
   position: relative;
   color: $p-color-default;
 
+  &:hover {
+    .dropdown {
+      border-color: $p-color-neutral-contrast-high;
+    }
+  }
+
   &--theme-dark {
     color: $p-color-theme-dark-default;
+
+    &:hover {
+      .dropdown {
+        border-color: $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
 
     ::slotted(select) {
       background: $p-color-theme-dark-background-default !important;

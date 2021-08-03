@@ -81,7 +81,8 @@ const staticHostStyles: JssStyle = {
   WebkitOverflowScrolling: 'touch',
   scrollBehavior: 'smooth',
   background: color.background.default,
-  border: `1px solid ${color.neutralContrast.medium}`,
+  borderWidth: '1px', // separate css property to allow color override via parent
+  borderStyle: 'solid', // separate css property to allow color override via parent
   scrollbarWidth: 'thin', // firefox
   scrollbarColor: 'auto', // firefox
   transition: `border-color ${transitionDuration} ${transitionTimingFunction}`,
@@ -97,14 +98,15 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
   const { darkTheme } = color;
 
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
+    ...buildHostStyles({
+      // borderColors are not set with !important to allow color override via parent
+      borderColor: isDarkTheme ? darkTheme.neutralContrast.medium : color.neutralContrast.medium,
+      '&:hover': {
+        borderColor: isDarkTheme ? darkTheme.neutralContrast.high : color.neutralContrast.high,
+      },
+      ...addImportantToEachRule({
         ...staticHostStyles,
-        '&:hover': {
-          borderColor: isDarkTheme ? darkTheme.neutralContrast.high : color.neutralContrast.high,
-        },
         ...(isDarkTheme && {
-          borderColor: darkTheme.neutralContrast.medium,
           background: darkTheme.background.default,
         }),
         ...(isDirectionDown
@@ -143,8 +145,8 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
           height: 1,
           pointerEvents: 'none',
         }),
-      })
-    ),
+      }),
+    }),
     ...buildGlobalStyles({
       a: {},
     }),

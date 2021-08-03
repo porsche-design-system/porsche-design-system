@@ -201,6 +201,7 @@ export class SelectWrapper {
           {this.hasCustomDropdown && (
             <PrefixedTagNames.pSelectWrapperDropdown
               id={dropdownId}
+              class="dropdown"
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
               hidden={this.isDropdownHidden}
