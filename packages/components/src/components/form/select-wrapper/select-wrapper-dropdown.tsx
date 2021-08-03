@@ -12,7 +12,6 @@ import {
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
-  styleUrl: 'select-wrapper-dropdown.scss',
   shadow: true,
 })
 export class SelectWrapperDropdown {
@@ -66,7 +65,7 @@ export class SelectWrapperDropdown {
             const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
             return [
               title && (
-                <span class="optgroup-label" role="presentation">
+                <span class="optgroup" role="presentation">
                   {title}
                 </span>
               ),
