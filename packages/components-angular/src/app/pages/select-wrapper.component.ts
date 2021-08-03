@@ -108,7 +108,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render in disabled state with filter">
-      <p-select-wrapper [label]="'Some label with filter'" [filter]="true">
+      <p-select-wrapper [label]="'Some label disabled with filter'" [filter]="true">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -117,7 +117,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
     <div class="playground dark" title="should render in disabled state with filter on dark theme">
-      <p-select-wrapper [label]="'Some label with filter'" [filter]="true" [theme]="'dark'">
+      <p-select-wrapper [label]="'Some label disabled with filter'" [filter]="true" [theme]="'dark'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -161,7 +161,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render in disabled state">
-      <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
+      <p-select-wrapper [label]="'Some label disabled'" [description]="'Some description'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -170,7 +170,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
     <div class="playground dark" title="should render in disabled state on dark theme">
-      <p-select-wrapper [label]="'Some label'" [description]="'Some description'" [theme]="'dark'">
+      <p-select-wrapper [label]="'Some label disabled'" [description]="'Some description'" [theme]="'dark'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>

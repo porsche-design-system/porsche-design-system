@@ -108,7 +108,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render in disabled state with filter">
-        <PSelectWrapper label="Some label with filter" filter>
+        <PSelectWrapper label="Some label disabled with filter" filter>
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -117,7 +117,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render in disabled state with filter on dark theme">
-        <PSelectWrapper label="Some label with filter" filter theme="dark">
+        <PSelectWrapper label="Some label disabled with filter" filter theme="dark">
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -161,7 +161,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render in disabled state">
-        <PSelectWrapper label="Some label" description="Some description">
+        <PSelectWrapper label="Some label disabled" description="Some description">
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -170,7 +170,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render in disabled state on dark theme">
-        <PSelectWrapper label="Some label" description="Some description" theme="dark">
+        <PSelectWrapper label="Some label disabled" description="Some description" theme="dark">
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
