@@ -30,7 +30,7 @@ describe('Select Wrapper', () => {
       await vrt.test('select-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-select-wrapper { margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-select-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-select-wrapper theme="${theme}" label="Some label" message="Some error validation message.">
