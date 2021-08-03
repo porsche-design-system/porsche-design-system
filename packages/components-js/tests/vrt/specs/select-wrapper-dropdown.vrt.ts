@@ -42,7 +42,7 @@ fdescribe('Select Wrapper Dropdown', () => {
   document.querySelectorAll('p-select-wrapper-dropdown').forEach((el, idx) => {
     el.optionMaps = optionMaps;
     el.open = true;
-    el.dropdownDirection = 'down';
+    el.direction = 'down';
   });
 
   document.querySelectorAll('.with-selected-option').forEach((el) => {
@@ -58,7 +58,7 @@ fdescribe('Select Wrapper Dropdown', () => {
     el.optionMaps = optionMaps.concat(optionMaps, optionMaps).map((x, idx) => ({ ...x, value: \`Option \${idx + 1}\` }));
   });
   document.querySelectorAll('.direction-up').forEach((el) => {
-    el.dropdownDirection = 'up';
+    el.direction = 'up';
   });
 </script>`;
 

@@ -45,7 +45,7 @@ const OPTION_HEIGHT = 24; // optgroups are higher and ignored
 const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper
 const MAX_CHILDREN = 10;
 
-export const determineDropdownDirection = (host: HTMLElement): DropdownDirectionInternal => {
+export const determineDirection = (host: HTMLElement): DropdownDirectionInternal => {
   const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
   const { top: spaceTop } = host.getBoundingClientRect();
 
@@ -204,5 +204,5 @@ export const addComponentCss = (
   isOpen: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(direction === 'auto' ? determineDropdownDirection(host) : direction, isOpen, theme));
+  attachCss(host, getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, theme));
 };

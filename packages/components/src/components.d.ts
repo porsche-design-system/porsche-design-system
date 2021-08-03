@@ -601,7 +601,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: DropdownDirection;
+        "direction"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -1717,7 +1717,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: DropdownDirection;
+        "direction"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */

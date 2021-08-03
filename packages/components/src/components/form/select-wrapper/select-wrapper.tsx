@@ -203,7 +203,7 @@ export class SelectWrapper {
               id={dropdownId}
               class="dropdown"
               optionMaps={this.optionMaps}
-              dropdownDirection={this.dropdownDirection}
+              direction={this.dropdownDirection}
               open={this.isDropdownOpen}
               filter={this.filter}
               theme={this.theme}
