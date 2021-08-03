@@ -158,6 +158,9 @@ export class SelectWrapper {
       ['icon--open']: !this.isDropdownHidden,
     };
 
+    const labelId = 'label';
+    const dropdownId = 'dropdown';
+
     const textProps = { tag: 'span', color: 'inherit' };
     const labelProps = { ...textProps, onClick: this.onLabelClick };
 
@@ -166,7 +169,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class={rootClasses}>
-          <label id="p-label" class={labelClasses}>
+          <label id={labelId} class={labelClasses}>
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
@@ -185,18 +188,19 @@ export class SelectWrapper {
             <input
               type="text"
               role="combobox"
-              aria-autocomplete="both"
-              aria-controls="p-listbox"
               disabled={this.disabled}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              aria-autocomplete="both"
+              aria-controls={dropdownId}
               aria-expanded={this.isDropdownHidden ? 'false' : 'true'}
               aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
-              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               ref={(el) => (this.filterInput = el)}
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
           ]}
           {this.hasCustomDropdown && (
             <PrefixedTagNames.pSelectWrapperDropdown
+              id={dropdownId}
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
               hidden={this.isDropdownHidden}
@@ -204,6 +208,7 @@ export class SelectWrapper {
               theme={this.theme}
               onSelect={this.setOptionSelected}
               onFocus={this.onFocus}
+              aria-labelledby={labelId}
             />
           )}
         </div>

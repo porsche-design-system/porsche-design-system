@@ -1,10 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, isDark } from '../../../utils';
+import { getPrefixedTagNames } from '../../../utils';
 import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
 import type { Theme } from '../../../types';
 import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from './select-wrapper-utils';
 import {
-  determineDropdownDirection,
+  addComponentCss,
   getOptionAriaAttributes,
   getRootAriaAttributes,
   handleScroll,
@@ -33,82 +33,68 @@ export class SelectWrapperDropdown {
   @Prop() public onFocus: () => void;
   @Prop() public hidden = true;
 
-  private rootElement: HTMLDivElement;
-
   public connectedCallback(): void {
     // TODO: validate this is used within `p-select-wrapper`
   }
 
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.dropdownDirection, this.hidden, this.theme);
+  }
+
   public componentDidRender(): void {
-    handleScroll(this.rootElement, getHighlightedOptionMapIndex(this.optionMaps));
+    handleScroll(this.host, getHighlightedOptionMapIndex(this.optionMaps));
   }
 
   public render(): JSX.Element {
-    const direction =
-      this.dropdownDirection === 'auto' ? determineDropdownDirection(this.host) : this.dropdownDirection;
-
-    const rootClasses = {
-      ['root']: true,
-      [`root--direction-${direction}`]: true,
-      ['root--hidden']: this.hidden,
-      ['root--theme-dark']: isDark(this.theme),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div
-          ref={(el) => (this.rootElement = el)}
-          class={rootClasses}
-          role="listbox"
-          id="p-listbox"
-          tabIndex={-1}
-          aria-labelledby="p-label"
-          {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
-          // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
-          // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
-        >
-          {this.filter && !this.optionMaps.length ? (
-            <div class="option" aria-live="polite" role="status">
-              <span aria-hidden="true">---</span>
-              <span class="option-sr">No results found</span>
-            </div>
-          ) : (
-            this.optionMaps.map((option, index) => {
-              const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
-              return [
-                title && (
-                  <span class="optgroup-label" role="presentation">
-                    {title}
-                  </span>
-                ),
-                <div
-                  id={`option-${index}`}
-                  role="option"
-                  class={{
-                    ['option']: true,
-                    ['option--selected']: selected,
-                    ['option--highlighted']: highlighted,
-                    ['option--disabled']: disabled,
-                    ['option--hidden']: hidden || initiallyHidden,
-                  }}
-                  onClick={() => (!disabled && !selected ? this.onClick(index) : this.onFocus())}
-                  {...getOptionAriaAttributes(option)}
-                  // aria-selected={highlighted ? 'true' : null}
-                  // aria-disabled={disabled ? 'true' : null}
-                  // aria-hidden={hidden || initiallyHidden ? 'true' : null}
-                  // aria-label={!value ? 'Empty value' : null}
-                >
-                  {value}
-                  {selected && !disabled && (
-                    <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
-                  )}
-                </div>,
-              ];
-            })
-          )}
-        </div>
+      <Host
+        role="listbox"
+        tabIndex={-1}
+        {...getRootAriaAttributes(this.optionMaps, this.hidden, this.filter)}
+        // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
+        // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
+      >
+        {this.filter && !this.optionMaps.length ? (
+          <div class="option" aria-live="polite" role="status">
+            <span aria-hidden="true">---</span>
+            <span class="option-sr">No results found</span>
+          </div>
+        ) : (
+          this.optionMaps.map((option, index) => {
+            const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+            return [
+              title && (
+                <span class="optgroup-label" role="presentation">
+                  {title}
+                </span>
+              ),
+              <div
+                id={`option-${index}`}
+                role="option"
+                class={{
+                  ['option']: true,
+                  ['option--selected']: selected,
+                  ['option--highlighted']: highlighted,
+                  ['option--disabled']: disabled,
+                  ['option--hidden']: hidden || initiallyHidden,
+                }}
+                onClick={() => (!disabled && !selected ? this.onClick(index) : this.onFocus())}
+                {...getOptionAriaAttributes(option)}
+                // aria-selected={highlighted ? 'true' : null}
+                // aria-disabled={disabled ? 'true' : null}
+                // aria-hidden={hidden || initiallyHidden ? 'true' : null}
+                // aria-label={!value ? 'Empty value' : null}
+              >
+                {value}
+                {selected && !disabled && (
+                  <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
+                )}
+              </div>,
+            ];
+          })
+        )}
       </Host>
     );
   }
