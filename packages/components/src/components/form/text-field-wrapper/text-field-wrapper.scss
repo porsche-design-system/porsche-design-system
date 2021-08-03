@@ -210,6 +210,9 @@
 
     &--description {
       color: $p-color-neutral-contrast-medium;
+    }
+
+    + #{$bem-block}__text--description {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
