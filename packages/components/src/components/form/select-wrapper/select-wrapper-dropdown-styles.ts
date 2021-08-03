@@ -54,9 +54,9 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         }),
         ...(isDirectionDown
           ? {
-              top: 'calc(100% - 1px)',
+              top: 'calc(100%-1px)',
               borderTop: 'none',
-              boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 12px 25px 0 rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)',
               '&::before': {
                 content: '""',
                 display: 'block',
@@ -70,7 +70,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
           : {
               bottom: pxToRemWithUnit(47),
               borderBottom: 'none',
-              boxShadow: '0 -2px 4px 0 rgba(0, 0, 0, 0.05), 0 -12px 25px 0 rgba(0, 0, 0, 0.075)',
+              boxShadow: '0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)',
               '&::after': {
                 content: '""',
                 display: 'block',
@@ -82,7 +82,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
               },
             }),
         ...(!isOpen && {
-          top: 'calc(100% - 3px)',
+          top: 'calc(100%-3px)',
           opacity: 0,
           overflow: 'hidden',
           height: 1,
@@ -132,7 +132,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       padding: `${pxToRemWithUnit(8)} ${pxToRemWithUnit(12)}`,
       marginTop: pxToRemWithUnit(8),
       fontWeight: font.weight.bold,
-      '& ~ .option': {
+      '& ~ $option': {
         paddingLeft: pxToRemWithUnit(24),
       },
     },
