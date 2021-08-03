@@ -6,6 +6,8 @@
   display: block;
 }
 
+$root: '.root';
+
 .root {
   $bem-block: &;
   @include p-text-small;
@@ -114,7 +116,7 @@
     @include text-hidden;
   }
 
-  .root--theme-dark & {
+  #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
   }
 
@@ -122,7 +124,7 @@
     color: $p-color-state-hover;
     background-color: $p-color-background-surface;
 
-    .root--theme-dark & {
+    #{$root}--theme-dark & {
       color: $p-color-theme-dark-state-hover;
       background-color: $p-color-default;
     }
@@ -133,7 +135,7 @@
     color: $p-color-state-active;
     background-color: $p-color-background-surface;
 
-    .root--theme-dark & {
+    #{$root}--theme-dark & {
       color: $p-color-theme-dark-state-active;
       background-color: $p-color-default;
     }
@@ -153,7 +155,7 @@
     cursor: not-allowed;
     color: $p-color-state-disabled;
 
-    .root--theme-dark & {
+    #{$root}--theme-dark & {
       color: $p-color-theme-dark-state-disabled;
     }
   }
