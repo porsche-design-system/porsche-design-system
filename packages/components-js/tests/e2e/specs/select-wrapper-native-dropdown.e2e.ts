@@ -313,9 +313,9 @@ describe('select-wrapper native-dropdown', () => {
 
       expect(status.componentDidLoad['p-select-wrapper']).withContext('componentDidLoad: p-select-wrapper').toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // label and message
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // arrow down and state
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1); // arrow down
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
@@ -335,7 +335,7 @@ describe('select-wrapper native-dropdown', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1); // Fake Dropdown gets updated
     });
   });
