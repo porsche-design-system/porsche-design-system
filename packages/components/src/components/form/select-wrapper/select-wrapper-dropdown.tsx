@@ -20,7 +20,7 @@ export class SelectWrapperDropdown {
   @Prop() public optionMaps: OptionMap[] = [];
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: DropdownDirection = 'auto';
+  @Prop() public direction?: DropdownDirection = 'auto';
 
   /** Filters select options by typing a character */
   @Prop() public filter?: boolean = false;
@@ -37,7 +37,7 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.dropdownDirection, this.open, this.theme);
+    addComponentCss(this.host, this.direction, this.open, this.theme);
   }
 
   public componentDidRender(): void {
