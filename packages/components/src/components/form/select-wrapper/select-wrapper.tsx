@@ -68,7 +68,7 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  @State() private isDropdownHidden = true;
+  @State() private isDropdownOpen = false;
   @State() private optionMaps: OptionMap[] = [];
 
   private select: HTMLSelectElement;
@@ -155,7 +155,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--open']: !this.isDropdownHidden,
+      ['icon--open']: this.isDropdownOpen,
     };
 
     const labelId = 'label';
@@ -192,7 +192,7 @@ export class SelectWrapper {
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               aria-autocomplete="both"
               aria-controls={dropdownId}
-              aria-expanded={this.isDropdownHidden ? 'false' : 'true'}
+              aria-expanded={this.isDropdownOpen ? 'true' : 'false'}
               aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
               ref={(el) => (this.filterInput = el)}
             />,
@@ -204,7 +204,7 @@ export class SelectWrapper {
               class="dropdown"
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
-              open={!this.isDropdownHidden}
+              open={this.isDropdownOpen}
               filter={this.filter}
               theme={this.theme}
               onSelect={this.setOptionSelected}
@@ -287,13 +287,13 @@ export class SelectWrapper {
   };
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (this.isDropdownHidden) {
+    if (!this.isDropdownOpen) {
       if (type === 'show' || type === 'toggle') {
-        this.isDropdownHidden = false;
+        this.isDropdownOpen = true;
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
-        this.isDropdownHidden = true;
+        this.isDropdownOpen = false;
         this.resetFilter();
       }
     }
@@ -327,14 +327,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          if (this.isDropdownHidden) {
+          if (!this.isDropdownOpen) {
             e.preventDefault();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          if (this.isDropdownHidden) {
+          if (!this.isDropdownOpen) {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
         }
@@ -364,18 +364,18 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (!this.isDropdownHidden) {
+        if (this.isDropdownOpen) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
         }
         break;
       case 'PageDown':
         e.preventDefault();
-        if (!this.isDropdownHidden) {
+        if (this.isDropdownOpen) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
         }
         break;
       case 'Tab':
-        if (!this.isDropdownHidden) {
+        if (this.isDropdownOpen) {
           this.handleVisibilityOfFakeOptionList('hide');
         }
         break;
