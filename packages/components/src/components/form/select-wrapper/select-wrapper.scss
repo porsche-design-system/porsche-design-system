@@ -169,8 +169,12 @@ $root: '.root';
     }
   }
 
-  &--disabled #{$bem-block}__text {
+  #{$root}--disabled & #{$bem-block}__text {
     color: $p-color-state-disabled;
+
+    @at-root #{$root}--theme-dark#{&} {
+      color: $p-color-theme-dark-state-disabled;
+    }
   }
 
   &__text {
@@ -180,9 +184,6 @@ $root: '.root';
 
     &--description {
       color: $p-color-neutral-contrast-medium;
-    }
-
-    + #{$bem-block}__text--description {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
@@ -230,11 +231,11 @@ $root: '.root';
     }
   }
 
-  &--disabled {
+  #{$root}--disabled & {
     background-color: $p-color-background-default;
     box-shadow: inset 0 0 0 1px $p-color-state-disabled;
 
-    #{$root}--theme-dark & {
+    @at-root #{$root}--theme-dark#{&} {
       background-color: $p-color-default;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
     }
@@ -243,7 +244,7 @@ $root: '.root';
   #{$root}--success & {
     box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
-    #{$root}--theme-dark & {
+    @at-root #{$root}--theme-dark#{&} {
       box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
     }
 
@@ -251,7 +252,7 @@ $root: '.root';
     .label:hover ~ & {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
       }
     }
@@ -260,7 +261,7 @@ $root: '.root';
   #{$root}--error & {
     box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
-    #{$root}--theme-dark & {
+    @at-root #{$root}--theme-dark#{&} {
       box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
     }
 
@@ -268,7 +269,7 @@ $root: '.root';
     .label:hover ~ & {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
       }
     }
@@ -279,23 +280,24 @@ $root: '.root';
   position: absolute;
   top: p-px-to-rem(12px);
   right: p-px-to-rem(12px);
-  transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
   color: $p-color-default;
+  transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
+  transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
   #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
   }
 
-  &--disabled {
+  #{$root}--disabled & {
     color: $p-color-state-disabled;
 
-    #{$root}--theme-dark & {
+    @at-root #{$root}--theme-dark#{&} {
       color: $p-color-theme-dark-state-disabled;
     }
   }
 
   &--opened {
-    transform: rotate(180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
   }
 }
 
@@ -436,7 +438,7 @@ input {
     + span {
       box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
       }
     }
@@ -444,7 +446,7 @@ input {
     &:hover + span {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
       }
     }
@@ -453,7 +455,7 @@ input {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
     }
 
-    #{$root}--theme-dark label:hover + & + span {
+    @at-root #{$root}--theme-dark#{&} label:hover + & + span {
       box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
     }
   }
@@ -462,7 +464,7 @@ input {
     + span {
       box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
       }
     }
@@ -470,7 +472,7 @@ input {
     &:hover + span {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
 
-      #{$root}--theme-dark & {
+      @at-root #{$root}--theme-dark#{&} {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
       }
     }
@@ -479,7 +481,7 @@ input {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
     }
 
-    #{$root}--theme-dark label:hover + & + span {
+    @at-root #{$root}--theme-dark#{&} label:hover + & + span {
       box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
     }
   }
