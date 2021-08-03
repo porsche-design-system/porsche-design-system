@@ -155,7 +155,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--opened']: !this.isDropdownHidden,
+      ['icon--open']: !this.isDropdownHidden,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
@@ -178,10 +178,8 @@ export class SelectWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            <span class="fake-select">
-              <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" />
-              <slot />
-            </span>
+            <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" />
+            <slot />
           </label>
           {this.filter && [
             <input
@@ -198,7 +196,7 @@ export class SelectWrapper {
             <span ref={(el) => (this.fakeFilter = el)} />,
           ]}
           {this.hasCustomDropdown && (
-            <p-select-wrapper-dropdown
+            <PrefixedTagNames.pSelectWrapperDropdown
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
               hidden={this.isDropdownHidden}
