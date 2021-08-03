@@ -77,7 +77,7 @@ describe('select-wrapper fake-dropdown', () => {
   });
 
   describe('custom drop down', () => {
-    const selectedClass = '.option--selected';
+    const selectedClass = 'option--selected';
 
     it('should render', async () => {
       await setContentWithDesignSystem(
