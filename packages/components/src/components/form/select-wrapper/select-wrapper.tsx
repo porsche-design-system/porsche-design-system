@@ -204,7 +204,7 @@ export class SelectWrapper {
               class="dropdown"
               optionMaps={this.optionMaps}
               dropdownDirection={this.dropdownDirection}
-              hidden={this.isDropdownHidden}
+              open={!this.isDropdownHidden}
               filter={this.filter}
               theme={this.theme}
               onSelect={this.setOptionSelected}

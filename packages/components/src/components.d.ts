@@ -606,9 +606,9 @@ export namespace Components {
           * Filters select options by typing a character
          */
         "filter"?: boolean;
-        "hidden": boolean;
         "onFocus": () => void;
         "onSelect": (newIndex: number) => void;
+        "open": boolean;
         "optionMaps": OptionMap[];
         /**
           * Adapts the select color depending on the theme.
@@ -1722,9 +1722,9 @@ declare namespace LocalJSX {
           * Filters select options by typing a character
          */
         "filter"?: boolean;
-        "hidden"?: boolean;
         "onFocus"?: () => void;
         "onSelect"?: (newIndex: number) => void;
+        "open"?: boolean;
         "optionMaps"?: OptionMap[];
         /**
           * Adapts the select color depending on the theme.

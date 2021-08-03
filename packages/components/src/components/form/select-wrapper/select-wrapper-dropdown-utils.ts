@@ -16,10 +16,17 @@ import {
 import type { Theme } from '../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
-export const getRootAriaAttributes = (optionMaps: OptionMap[], hidden: boolean, filter: boolean): AriaAttributes => ({
-  'aria-activedescendant': !filter && `option-${getHighlightedOptionMapIndex(optionMaps)}`,
-  'aria-expanded': !filter && !hidden,
-});
+export const dropdownPositionVar = '--p-dropdown-position';
+
+export const getRootAriaAttributes = (optionMaps: OptionMap[], open: boolean, filter: boolean): AriaAttributes => {
+  const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
+  return filter
+    ? {}
+    : {
+        ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${getHighlightedOptionMapIndex(optionMaps)}` }),
+        'aria-expanded': open,
+      };
+};
 
 export const getOptionAriaAttributes = ({
   value,
@@ -67,13 +74,14 @@ export const handleScroll = (host: HTMLElement, highlightedIndex: number): void 
   }
 };
 
-export const getComponentCss = (direction: DropdownDirectionInternal, hidden: boolean, theme: Theme): string => {
+export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
   const isDirectionDown = direction === 'down';
   const { darkTheme } = color;
 
   return getCss({
     ...buildHostStyles({
+      [dropdownPositionVar]: 'absolute',
       // borderColors are not set with !important to allow color override via parent
       borderColor: isDarkTheme ? darkTheme.neutralContrast.medium : color.neutralContrast.medium,
       '&:hover': {
@@ -83,7 +91,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
         fontFamily: font.family,
         ...font.size.small,
         display: 'block',
-        position: 'absolute',
+        position: `var(${dropdownPositionVar})`,
         zIndex: 10,
         left: 0,
         right: 0,
@@ -131,7 +139,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
                 background: isDarkTheme ? darkTheme.neutralContrast.low : color.neutralContrast.low,
               },
             }),
-        ...(hidden && {
+        ...(!isOpen && {
           top: 'calc(100% - 3px)',
           opacity: 0,
           overflow: 'hidden',
@@ -193,8 +201,8 @@ export const getComponentCss = (direction: DropdownDirectionInternal, hidden: bo
 export const addComponentCss = (
   host: HTMLElement,
   direction: DropdownDirection,
-  hidden: boolean,
+  isOpen: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(direction === 'auto' ? determineDropdownDirection(host) : direction, hidden, theme));
+  attachCss(host, getComponentCss(direction === 'auto' ? determineDropdownDirection(host) : direction, isOpen, theme));
 };
