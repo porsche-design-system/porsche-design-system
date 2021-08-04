@@ -6,7 +6,7 @@ import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from '../sele
 import {
   addComponentCss,
   getOptionAriaAttributes,
-  getRootAriaAttributes,
+  getAriaAttributes,
   handleScroll,
 } from './select-wrapper-dropdown-utils';
 
@@ -23,7 +23,7 @@ export class SelectWrapperDropdown {
   @Prop() public direction?: DropdownDirection = 'auto';
 
   /** Filters select options by typing a character */
-  @Prop() public filter?: boolean = false;
+  @Prop() public filter?: boolean = false; // TODO: remove this and handle it via optionMaps
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -51,7 +51,7 @@ export class SelectWrapperDropdown {
       <Host
         role="listbox"
         tabIndex={-1}
-        {...getRootAriaAttributes(this.optionMaps, this.open, this.filter)}
+        {...getAriaAttributes(this.optionMaps, this.open, this.filter)}
         // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
         // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
       >
