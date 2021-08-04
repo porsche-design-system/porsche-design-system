@@ -1,4 +1,5 @@
 import {
+  forceFocusedHoveredState,
   forceFocusedState,
   getBodyMarkup,
   GetMarkup,
@@ -59,6 +60,7 @@ describe('Marque', () => {
         await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
 
         await forceFocusedState(page, '.focused > p-marque >>> a');
+        await forceFocusedHoveredState(page, '.focused-hovered > p-marque >>> a');
       })
     ).toBeFalsy();
   });
