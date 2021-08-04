@@ -1,4 +1,4 @@
-import type { DropdownDirectionInternal } from './select-wrapper-utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   addImportantToEachRule,
   buildHostStyles,
@@ -8,8 +8,8 @@ import {
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
-} from '../../../utils';
-import type { Theme } from '../../../types';
+} from '../../../../utils';
+import type { Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 import { OPTION_HEIGHT } from './select-wrapper-dropdown-utils';
 

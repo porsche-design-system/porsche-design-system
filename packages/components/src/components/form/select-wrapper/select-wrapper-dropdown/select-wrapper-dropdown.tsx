@@ -1,8 +1,8 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames } from '../../../utils';
-import type { DropdownDirection, OptionMap } from './select-wrapper-utils';
-import type { Theme } from '../../../types';
-import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from './select-wrapper-utils';
+import { getPrefixedTagNames } from '../../../../utils';
+import type { DropdownDirection, OptionMap } from '../select-wrapper/select-wrapper-utils';
+import type { Theme } from '../../../../types';
+import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
 import {
   addComponentCss,
   getOptionAriaAttributes,

@@ -1,8 +1,8 @@
 import type { AriaAttributes } from 'react';
-import type { DropdownDirection, DropdownDirectionInternal, OptionMap } from './select-wrapper-utils';
-import { getHighlightedOptionMapIndex } from './select-wrapper-utils';
-import { attachCss, getHTMLElements } from '../../../utils';
-import type { Theme } from '../../../types';
+import type { DropdownDirection, DropdownDirectionInternal, OptionMap } from '../select-wrapper/select-wrapper-utils';
+import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
+import { attachCss, getHTMLElements } from '../../../../utils';
+import type { Theme } from '../../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 export const OPTION_HEIGHT = 24; // optgroups are higher and ignored

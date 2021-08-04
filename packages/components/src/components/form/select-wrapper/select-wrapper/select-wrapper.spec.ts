@@ -1,4 +1,4 @@
-import * as domUtils from '../../../utils/dom';
+import * as domUtils from '../../../../utils/dom';
 import { SelectWrapper } from './select-wrapper';
 
 describe('select-wrapper', () => {

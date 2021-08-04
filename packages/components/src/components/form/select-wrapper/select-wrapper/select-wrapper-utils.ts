@@ -1,4 +1,4 @@
-import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../../utils';
+import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../../../utils';
 
 export type DropdownDirectionInternal = 'down' | 'up';
 export type DropdownDirection = DropdownDirectionInternal | 'auto';
