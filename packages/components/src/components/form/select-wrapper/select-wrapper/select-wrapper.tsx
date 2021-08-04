@@ -12,14 +12,13 @@ import {
   observeProperties,
   setAriaAttributes,
   setAttribute,
-} from '../../../utils';
-import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
+} from '../../../../utils';
+import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
 import {
   updateFilteredOptionMaps,
   getHighlightedOptionMapIndex,
   getOptionMaps,
   getOptionsElements,
-  OptionMap,
   updateSelectedOptionMaps,
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
@@ -27,11 +26,10 @@ import {
   updateFirstHighlightedOptionMaps,
   isCustomDropdown,
   getSelectedOptionMap,
-  DropdownDirection,
   getNewOptionMapIndex,
-  KeyboardDirectionInternal,
   resetHighlightedIndex,
 } from './select-wrapper-utils';
+import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
