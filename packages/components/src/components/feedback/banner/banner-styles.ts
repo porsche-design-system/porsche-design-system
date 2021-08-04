@@ -3,12 +3,10 @@ import {
   attachCss,
   breakpoint,
   buildSlottedStyles,
-  buildSlottedStylesForDarkTheme,
   getBaseSlottedStyles,
   getCss,
   insertSlottedStyles,
   mediaQuery,
-  mergeDeep,
 } from '../../../utils';
 
 const easeOutQuad = 'cubic-bezier(0.5, 1, 0.89, 1)';
@@ -51,12 +49,7 @@ export const addComponentCss = (host: HTMLElement): void => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    mergeDeep(
-      buildSlottedStyles(host, getBaseSlottedStyles()),
-      buildSlottedStylesForDarkTheme(host, getBaseSlottedStyles('dark'))
-    )
-  );
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {

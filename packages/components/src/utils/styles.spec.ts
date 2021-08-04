@@ -91,8 +91,4 @@ describe('getBaseSlottedStyles()', () => {
   it('should return correct styles', () => {
     expect(getBaseSlottedStyles()).toMatchSnapshot();
   });
-
-  it('should return correct styles for dark theme', () => {
-    expect(getBaseSlottedStyles('dark')).toMatchSnapshot();
-  });
 });
