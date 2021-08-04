@@ -41,7 +41,7 @@ describe('Banner', () => {
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-banner state="neutral" theme="${theme}">
             <span slot="title">Some banner title</span>
-            <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
+            <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
           </p-banner>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
