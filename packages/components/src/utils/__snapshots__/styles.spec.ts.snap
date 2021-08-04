@@ -40,12 +40,7 @@ Object {
   "& em, & i": Object {
     "fontStyle": "normal",
   },
-}
-`;
-
-exports[`getBaseSlottedStyles() should return correct styles for dark theme 1`] = `
-Object {
-  "& a:hover": Object {
+  "&[theme=\\"dark\\"] a:hover": Object {
     "color": "#ff0223",
   },
 }
