@@ -127,6 +127,9 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
+export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle> =>
+  (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
 export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
@@ -233,10 +236,10 @@ export const waitForInheritedCSSTransition = async (page: Page): Promise<void> =
 };
 
 export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>
-  element.evaluate(async (el: Element, selector: string): Promise<number> => {
+  element.evaluate(async (el, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);
     let pos = 0;
-    while ((option = option.previousSibling) !== null) {
+    while (option && (option = option.previousSibling) !== null) {
       pos++;
     }
     return pos;
