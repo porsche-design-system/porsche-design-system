@@ -615,6 +615,17 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PSelectWrapperFilter {
+        "disabled"?: boolean;
+        "dropdownId"?: string;
+        "highlightedOptionMap"?: OptionMap;
+        "isOpen"?: boolean;
+        "onChange": (e: InputEvent) => void;
+        "onClick"?: () => void;
+        "selectedOptionMap"?: OptionMap;
+        "theme"?: Theme;
+        "value": string;
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -975,6 +986,12 @@ declare global {
         prototype: HTMLPSelectWrapperDropdownElement;
         new (): HTMLPSelectWrapperDropdownElement;
     };
+    interface HTMLPSelectWrapperFilterElement extends Components.PSelectWrapperFilter, HTMLStencilElement {
+    }
+    var HTMLPSelectWrapperFilterElement: {
+        prototype: HTMLPSelectWrapperFilterElement;
+        new (): HTMLPSelectWrapperFilterElement;
+    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -1102,6 +1119,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
+        "p-select-wrapper-filter": HTMLPSelectWrapperFilterElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
@@ -1731,6 +1749,17 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PSelectWrapperFilter {
+        "disabled"?: boolean;
+        "dropdownId"?: string;
+        "highlightedOptionMap"?: OptionMap;
+        "isOpen"?: boolean;
+        "onChange"?: (e: InputEvent) => void;
+        "onClick"?: () => void;
+        "selectedOptionMap"?: OptionMap;
+        "theme"?: Theme;
+        "value"?: string;
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -1986,6 +2015,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
+        "p-select-wrapper-filter": PSelectWrapperFilter;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
@@ -2033,6 +2063,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
+            "p-select-wrapper-filter": LocalJSX.PSelectWrapperFilter & JSXBase.HTMLAttributes<HTMLPSelectWrapperFilterElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
