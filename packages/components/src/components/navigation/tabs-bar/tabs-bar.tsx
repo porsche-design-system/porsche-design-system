@@ -13,6 +13,7 @@ import {
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
 import {
+  booleanToString,
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
@@ -169,7 +170,7 @@ export class TabsBar {
       const attrs = {
         role: 'tab',
         tabindex: isFocusable ? '0' : '-1',
-        'aria-selected': isSelected ? 'true' : 'false',
+        'aria-selected': booleanToString(isSelected),
       };
       for (const [key, value] of Object.entries(attrs)) {
         setAttribute(tab, key, value);

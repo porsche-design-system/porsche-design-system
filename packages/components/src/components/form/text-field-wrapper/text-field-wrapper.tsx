@@ -14,6 +14,7 @@ import {
   setAriaAttributes,
   getRole,
   unobserveAttributes,
+  booleanToString,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
@@ -115,7 +116,7 @@ export class TextFieldWrapper {
               onClick={this.togglePassword}
               disabled={disabled}
               role="switch"
-              aria-pressed={this.showPassword ? 'true' : 'false'}
+              aria-pressed={booleanToString(this.showPassword)}
             >
               <span class="sr-only">Toggle password visibility</span>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
