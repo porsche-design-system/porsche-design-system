@@ -67,7 +67,7 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  @State() private isDropdownOpen = false;
+  @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
 
   private select: HTMLSelectElement;
@@ -96,12 +96,7 @@ export class SelectWrapper {
 
     if (this.hasCustomDropdown) {
       this.setOptionMaps();
-
-      // TODO: later added options should be tracked
-      observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
-      getOptionsElements(this.select).forEach((el) => {
-        observeProperties(el, ['selected'], this.setOptionMaps);
-      });
+      this.observeOptions();
 
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
@@ -154,7 +149,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--open']: this.isDropdownOpen,
+      ['icon--open']: this.isOpen,
     };
 
     const labelId = 'label';
@@ -191,7 +186,7 @@ export class SelectWrapper {
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               aria-autocomplete="both"
               aria-controls={dropdownId}
-              aria-expanded={booleanToString(this.isDropdownOpen)}
+              aria-expanded={booleanToString(this.isOpen)}
               aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
               ref={(el) => (this.filterInput = el)}
             />,
@@ -203,7 +198,7 @@ export class SelectWrapper {
               class="dropdown"
               optionMaps={this.optionMaps}
               direction={this.dropdownDirection}
-              open={this.isDropdownOpen}
+              open={this.isOpen}
               filter={this.filter}
               theme={this.theme}
               onSelect={this.setOptionSelected}
@@ -221,18 +216,6 @@ export class SelectWrapper {
     );
   }
 
-  /*
-   * <START NATIVE SELECT>
-   */
-  private setSelect(): void {
-    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
-
-    if (this.filter) {
-      setAttribute(this.select, 'tabindex', '-1');
-      setAttribute(this.select, 'aria-hidden', 'true');
-    }
-  }
-
   private get disabled(): boolean {
     return this.select.disabled;
   }
@@ -248,6 +231,26 @@ export class SelectWrapper {
       this.select.focus();
     }
   };
+
+  /*
+   * <START NATIVE SELECT>
+   */
+  private setSelect(): void {
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+
+    if (this.filter) {
+      setAttribute(this.select, 'tabindex', '-1');
+      setAttribute(this.select, 'aria-hidden', 'true');
+    }
+  }
+
+  private observeOptions(): void {
+    // TODO: later added options should be tracked
+    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
+    getOptionsElements(this.select).forEach((el) => {
+      observeProperties(el, ['selected'], this.setOptionMaps);
+    });
+  }
 
   /*
    * <START CUSTOM SELECT DROPDOWN>
@@ -286,13 +289,13 @@ export class SelectWrapper {
   };
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (!this.isDropdownOpen) {
+    if (!this.isOpen) {
       if (type === 'show' || type === 'toggle') {
-        this.isDropdownOpen = true;
+        this.isOpen = true;
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
-        this.isDropdownOpen = false;
+        this.isOpen = false;
         this.resetFilter();
       }
     }
@@ -326,14 +329,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          if (!this.isDropdownOpen) {
+          if (!this.isOpen) {
             e.preventDefault();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          if (!this.isDropdownOpen) {
+          if (!this.isOpen) {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
         }
@@ -363,18 +366,18 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (this.isDropdownOpen) {
+        if (this.isOpen) {
           this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
         }
         break;
       case 'PageDown':
         e.preventDefault();
-        if (this.isDropdownOpen) {
+        if (this.isOpen) {
           this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
         }
         break;
       case 'Tab':
-        if (this.isDropdownOpen) {
+        if (this.isOpen) {
           this.handleVisibilityOfFakeOptionList('hide');
         }
         break;
