@@ -9,17 +9,17 @@ export const transitionTimingFunction = 'ease';
 
 export const colorDarken = {
   neutralContrast: {
-    high: '#151718'
+    high: '#151718',
   },
   state: {
-    hover: '#980014'
+    hover: '#980014',
   },
   darkTheme: {
     default: '#e0e0e0',
     state: {
-      hover: '#c4001a'
+      hover: '#c4001a',
     },
-  }
+  },
 };
 
 export const pxToRem = (px: number): number => px / 16;
@@ -133,18 +133,24 @@ export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (theme?: Theme): Styles => {
-  return {
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      ...getHoverStyles({ theme }),
-      ...getFocusStyles({ offset: 1, theme }),
-    },
-    '& b, & strong': {
-      fontWeight: font.weight.bold,
-    },
-    '& em, & i': {
-      fontStyle: 'normal',
-    },
-  };
+  return theme === 'dark'
+    ? {
+        '& a': {
+          ...getHoverStyles({ theme }),
+        },
+      }
+    : {
+        '& a': {
+          color: 'inherit',
+          textDecoration: 'underline',
+          ...getHoverStyles({ theme }),
+          ...getFocusStyles({ offset: 1, theme }),
+        },
+        '& b, & strong': {
+          fontWeight: font.weight.bold,
+        },
+        '& em, & i': {
+          fontStyle: 'normal',
+        },
+      };
 };
