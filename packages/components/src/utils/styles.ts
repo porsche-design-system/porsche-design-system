@@ -125,11 +125,9 @@ export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (theme?: Theme): Styles => {
-  return theme === 'dark'
+  return isDark(theme)
     ? {
-        '& a': {
-          ...getHoverStyles({ theme }),
-        },
+        '& a:hover': getHoverStyles({ theme })['&:hover'],
       }
     : {
         '& a': {
