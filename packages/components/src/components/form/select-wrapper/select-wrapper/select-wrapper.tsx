@@ -1,6 +1,5 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
-  booleanToString,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getRole,
@@ -71,11 +70,10 @@ export class SelectWrapper {
 
   @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
+  @State() private searchString: string = '';
 
   private select: HTMLSelectElement;
-  private filterInput: HTMLInputElement;
-  private fakeFilter: HTMLSpanElement;
-  private searchString: string; // TODO: refactor into getter
+  private filterElement: HTMLPSelectWrapperFilterElement;
   private hasCustomDropdown: boolean;
 
   // this stops click events when filter input is clicked
@@ -108,11 +106,12 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if (this.filter) {
-      this.fakeFilter.addEventListener('click', this.onFilterInputClick); // span element
-      this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
-      this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
-      this.filterInput.addEventListener('input', this.onFilterSearch);
+    if (false && this.filter) {
+      // @ts-ignores
+      // this.fakeFilter.addEventListener('click', this.onFilterInputClick); // span element
+      // this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
+      this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
+      this.filterElement.addEventListener('input', this.onFilterChange);
     }
   }
 
@@ -155,7 +154,7 @@ export class SelectWrapper {
     const dropdownId = 'dropdown';
 
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.onLabelClick };
+    const labelProps = { ...textProps, onClick: this.onFocus };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -177,20 +176,19 @@ export class SelectWrapper {
             <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" />
             <slot />
           </label>
-          {this.filter && [
-            <input
-              type="text"
-              role="combobox"
+          {this.filter && (
+            <PrefixedTagNames.pSelectWrapperFilter
+              selectedOptionMap={getSelectedOptionMap(this.optionMaps)}
+              // highlightedOptionMap={getHighlightedOptionMap(this.optionMaps)}
+              dropdownId={dropdownId}
               disabled={this.disabled}
-              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
-              aria-autocomplete="both"
-              aria-controls={dropdownId}
-              aria-expanded={booleanToString(this.isOpen)}
-              aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
-              ref={(el) => (this.filterInput = el)}
-            />,
-            <span ref={(el) => (this.fakeFilter = el)} />,
-          ]}
+              isOpen={this.isOpen}
+              value={this.searchString}
+              onChange={this.onFilterChange}
+              onClick={() => this.handleVisibilityOfFakeOptionList('toggle')}
+              ref={(el) => (this.filterElement = el)}
+            />
+          )}
           {this.hasCustomDropdown && (
             <PrefixedTagNames.pSelectWrapperDropdown
               id={dropdownId}
@@ -222,14 +220,6 @@ export class SelectWrapper {
   private get selectedIndex(): number {
     return this.select.selectedIndex;
   }
-
-  private onLabelClick = (): void => {
-    if (this.filter) {
-      this.filterInput.focus();
-    } else {
-      this.select.focus();
-    }
-  };
 
   /*
    * <START NATIVE SELECT>
@@ -281,10 +271,11 @@ export class SelectWrapper {
   };
 
   private onFocus = (): void => {
-    (this.filter ? this.filterInput : this.select).focus();
+    (this.filter ? this.filterElement : this.select).focus();
   };
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
+    // TODO: extract into util
     if (!this.isOpen) {
       if (type === 'show' || type === 'toggle') {
         this.isOpen = true;
@@ -355,9 +346,7 @@ export class SelectWrapper {
         break;
       case 'Escape':
       case 'Esc':
-        if (this.filter) {
-          this.filterInput.value = '';
-        }
+        this.resetFilter();
         this.setOptionSelected(this.selectedIndex);
         break;
       case 'PageUp':
@@ -415,23 +404,15 @@ export class SelectWrapper {
   /*
    * <START CUSTOM FILTER>
    */
-  private onFilterInputClick = (): void => {
-    if (!this.disabled) {
-      this.filterInput.focus();
-      this.handleVisibilityOfFakeOptionList('toggle');
-    }
-  };
-
   private resetFilter = (): void => {
     if (this.filter) {
-      this.filterInput.value = '';
       this.searchString = '';
       this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
     }
   };
 
-  private onFilterSearch = (ev: InputEvent): void => {
-    this.searchString = (ev.target as HTMLInputElement).value;
+  private onFilterChange = (e: InputEvent): void => {
+    this.searchString = (e.target as HTMLInputElement).value;
     this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
 
     this.handleVisibilityOfFakeOptionList('show');
