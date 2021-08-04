@@ -41,7 +41,7 @@ $root: '.root';
     color $p-animation-hover-duration-var $p-animation-hover-bezier;
 }
 
-::slotted(select:hover:not(:disabled):not([readonly])) {
+::slotted(select:hover:not(:disabled)) {
   box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
 }
 
@@ -82,8 +82,8 @@ input:focus + span {
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium !important;
     }
 
-    .label__text:hover ~ ::slotted(select:not(:disabled):not([readonly])),
-    ::slotted(select:hover:not(:disabled):not([readonly])) {
+    .label__text:hover ~ ::slotted(select:not(:disabled)),
+    ::slotted(select:hover:not(:disabled)) {
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high !important;
     }
 
@@ -107,8 +107,8 @@ input:focus + span {
       }
     }
 
-    .label__text:hover ~ ::slotted(select:not(:disabled):not([readonly])),
-    ::slotted(select:hover:not(:disabled):not([readonly])) {
+    .label__text:hover ~ ::slotted(select:not(:disabled)),
+    ::slotted(select:hover:not(:disabled)) {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
     }
 
@@ -118,8 +118,8 @@ input:focus + span {
     }
 
     @at-root #{$root}--theme-dark#{&} {
-      .label__text:hover ~ ::slotted(select:not(:disabled):not([readonly])),
-      ::slotted(select:hover:not(:disabled):not([readonly])) {
+      .label__text:hover ~ ::slotted(select:not(:disabled)),
+      ::slotted(select:hover:not(:disabled)) {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%) !important;
       }
 
@@ -147,8 +147,8 @@ input:focus + span {
       }
     }
 
-    .label__text:hover ~ ::slotted(select:not(:disabled):not([readonly])),
-    ::slotted(select:hover:not(:disabled):not([readonly])) {
+    .label__text:hover ~ ::slotted(select:not(:disabled)),
+    ::slotted(select:hover:not(:disabled)) {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
     }
 
@@ -158,8 +158,8 @@ input:focus + span {
     }
 
     @at-root #{$root}--theme-dark#{&} {
-      .label__text:hover ~ ::slotted(select:not(:disabled):not([readonly])),
-      ::slotted(select:hover:not(:disabled):not([readonly])) {
+      .label__text:hover ~ ::slotted(select:not(:disabled)),
+      ::slotted(select:hover:not(:disabled)) {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%) !important;
       }
 
@@ -267,8 +267,8 @@ input:focus + span {
       padding-bottom: $p-spacing-8;
     }
 
-    @at-root #{$root}:hover ::slotted(select:not(:disabled):not([readonly])),
-      &:hover ~ ::slotted(select:not(:disabled):not([readonly])) {
+    @at-root #{$root}:hover ::slotted(select:not(:disabled)),
+      &:hover ~ ::slotted(select:not(:disabled)) {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
     }
   }
