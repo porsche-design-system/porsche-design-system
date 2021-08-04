@@ -1,7 +1,12 @@
-import { buildSlottedStyles, getBaseSlottedStyles, getCss, insertSlottedStyles } from '../../../../utils';
+import { buildSlottedStyles, getBaseSlottedStyles, getCss, insertSlottedStyles, mergeDeep } from '../../../../utils';
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+  return getCss(
+    mergeDeep(
+      buildSlottedStyles(host, getBaseSlottedStyles()),
+      buildSlottedStyles(host, { '& a': { textDecoration: 'none' } })
+    )
+  );
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
