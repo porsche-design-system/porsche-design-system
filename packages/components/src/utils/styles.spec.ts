@@ -9,7 +9,6 @@ import {
   getBaseSlottedStyles,
 } from './';
 
-
 describe('pxToRem()', () => {
   it.each([
     [0, 0],
@@ -77,10 +76,6 @@ describe('getHoverStyles()', () => {
 describe('getFocusStyles()', () => {
   it('should return correct default JssStyle', () => {
     expect(getFocusStyles()).toMatchSnapshot();
-  });
-
-  it('should return correct default JssStyle for dark theme', () => {
-    expect(getFocusStyles({ theme: 'dark' })).toMatchSnapshot();
   });
 
   it('should return correct JssStyle for custom color', () => {

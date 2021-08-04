@@ -1,7 +1,7 @@
-import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { isDark } from '.';
+import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
+import { isDark } from '.';
 import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -50,45 +50,39 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
     ...opts,
   };
 
-  const style: JssStyle = {
+  return {
     transition: `color ${transitionDuration} ${transitionTimingFunction}`,
     '&:hover': {
       color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
     },
   };
-
-  return style;
 };
 
 type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
-  theme?: Theme;
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const options: GetFocusStylesOptions = {
     color: color.state.focus,
     offset: 2,
-    theme: 'light',
     ...opts,
   };
 
-  const style: JssStyle = {
+  return {
     outline: 'transparent solid 1px',
     outlineOffset: `${options.offset}px`,
     '&::-moz-focus-inner': {
       border: '0',
     },
     '&:focus': {
-      outlineColor: isDark(options.theme) ? color.darkTheme.state.focus : options.color,
+      outlineColor: options.color,
     },
     '&:focus:not(:focus-visible)': {
       outlineColor: 'transparent',
     },
   };
-
-  return style;
 };
 
 type GetFocusPseudoStylesOptions = {
@@ -106,7 +100,7 @@ export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles
     ...opts,
   };
 
-  const style: Styles = {
+  return {
     '& a::before': {
       content: '""',
       display: 'block',
@@ -125,8 +119,6 @@ export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles
       outlineColor: 'transparent',
     },
   };
-
-  return style;
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
@@ -144,7 +136,7 @@ export const getBaseSlottedStyles = (theme?: Theme): Styles => {
           color: 'inherit',
           textDecoration: 'underline',
           ...getHoverStyles({ theme }),
-          ...getFocusStyles({ offset: 1, theme }),
+          ...getFocusStyles({ offset: 1 }),
         },
         '& b, & strong': {
           fontWeight: font.weight.bold,
