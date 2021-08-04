@@ -1,8 +1,8 @@
-import { observeAttributes, unobserveAttributes, mutationMap } from '.';
+import { observeAttributes, unobserveAttributes, attributeMutationMap } from '.';
 
 describe('observeAttributes()', () => {
   beforeEach(() => {
-    mutationMap.clear();
+    attributeMutationMap.clear();
   });
 
   const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
@@ -12,8 +12,8 @@ describe('observeAttributes()', () => {
     const callback = () => {};
 
     observeAttributes(node, ['checked'], callback);
-    expect(mutationMap.size).toBe(1);
-    expect(mutationMap.get(node)).toEqual(callback);
+    expect(attributeMutationMap.size).toBe(1);
+    expect(attributeMutationMap.get(node)).toEqual(callback);
   });
 
   describe('on attribute change', () => {
@@ -23,13 +23,13 @@ describe('observeAttributes()', () => {
       const cb = jest.fn();
 
       observeAttributes(input, ['disabled'], cb);
-      expect(mutationMap.size).toBe(1);
+      expect(attributeMutationMap.size).toBe(1);
 
       unobserveAttributes(input);
-      expect(mutationMap.size).toBe(0);
+      expect(attributeMutationMap.size).toBe(0);
 
       observeAttributes(input, ['disabled'], cb);
-      expect(mutationMap.size).toBe(1);
+      expect(attributeMutationMap.size).toBe(1);
 
       input.setAttribute('disabled', '');
 
@@ -88,7 +88,7 @@ describe('observeAttributes()', () => {
 
 describe('unobserveAttributes()', () => {
   beforeEach(() => {
-    mutationMap.clear();
+    attributeMutationMap.clear();
   });
 
   it('should remove correct element from mutationMap', () => {
@@ -102,18 +102,18 @@ describe('unobserveAttributes()', () => {
     observeAttributes(node1, ['checked'], callback1);
     observeAttributes(node2, ['disabled'], callback2);
     observeAttributes(node3, ['checked'], callback3);
-    expect(mutationMap.size).toBe(3);
+    expect(attributeMutationMap.size).toBe(3);
 
     unobserveAttributes(node1);
-    expect(mutationMap.size).toBe(2);
-    expect(mutationMap.get(node1)).toEqual(undefined);
-    expect(mutationMap.get(node2)).toEqual(callback2);
-    expect(mutationMap.get(node3)).toEqual(callback3);
+    expect(attributeMutationMap.size).toBe(2);
+    expect(attributeMutationMap.get(node1)).toEqual(undefined);
+    expect(attributeMutationMap.get(node2)).toEqual(callback2);
+    expect(attributeMutationMap.get(node3)).toEqual(callback3);
 
     unobserveAttributes(node3);
-    expect(mutationMap.size).toBe(1);
-    expect(mutationMap.get(node1)).toEqual(undefined);
-    expect(mutationMap.get(node2)).toEqual(callback2);
-    expect(mutationMap.get(node3)).toEqual(undefined);
+    expect(attributeMutationMap.size).toBe(1);
+    expect(attributeMutationMap.get(node1)).toEqual(undefined);
+    expect(attributeMutationMap.get(node2)).toEqual(callback2);
+    expect(attributeMutationMap.get(node3)).toEqual(undefined);
   });
 });
