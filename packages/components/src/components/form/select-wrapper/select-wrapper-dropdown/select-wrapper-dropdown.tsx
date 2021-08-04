@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames } from '../../../../utils';
 import type { DropdownDirection, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import type { Theme } from '../../../../types';
-import { getHighlightedOptionMapIndex, getSelectedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
+import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
 import {
   addComponentCss,
   getOptionAriaAttributes,
@@ -48,13 +48,7 @@ export class SelectWrapperDropdown {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host
-        role="listbox"
-        tabIndex={-1}
-        {...getAriaAttributes(this.optionMaps, this.open, this.filter)}
-        // aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
-        // aria-expanded={!this.filter && (this.hidden ? 'false' : 'true')}
-      >
+      <Host role="listbox" tabIndex={-1} {...getAriaAttributes(this.optionMaps, this.open, this.filter)}>
         {this.filter && !this.optionMaps.length ? (
           <div class="option" aria-live="polite" role="status">
             <span aria-hidden="true">---</span>
@@ -79,12 +73,8 @@ export class SelectWrapperDropdown {
                   ['option--disabled']: disabled,
                   ['option--hidden']: hidden || initiallyHidden,
                 }}
-                onClick={() => (!disabled && !selected ? this.onClick(index) : this.onFocus())}
+                onClick={() => (!disabled && !selected ? this.onSelect(index) : this.onFocus())}
                 {...getOptionAriaAttributes(option)}
-                // aria-selected={highlighted ? 'true' : null}
-                // aria-disabled={disabled ? 'true' : null}
-                // aria-hidden={hidden || initiallyHidden ? 'true' : null}
-                // aria-label={!value ? 'Empty value' : null}
               >
                 {value}
                 {selected && !disabled && (
@@ -97,10 +87,4 @@ export class SelectWrapperDropdown {
       </Host>
     );
   }
-
-  private onClick = (newIndex: number): void => {
-    if (getSelectedOptionMapIndex(this.optionMaps) !== newIndex) {
-      this.onSelect(newIndex);
-    }
-  };
 }
