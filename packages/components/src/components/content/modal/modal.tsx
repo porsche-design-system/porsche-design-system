@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
+import { booleanToString, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
 import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
 import { addComponentCss } from './modal-styles';
 
@@ -87,7 +87,7 @@ export class Modal {
           role="dialog"
           aria-modal="true"
           aria-label={this.heading}
-          aria-hidden={!this.open ? 'true' : 'false'}
+          aria-hidden={booleanToString(!this.open)}
         >
           {hasHeader && (
             <header>
