@@ -1,10 +1,8 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setAttribute,
@@ -191,58 +189,6 @@ describe('link-social', () => {
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
-      await initLinkSocial();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.mouse.move(0, 0);
-
-      expect(await getOutlineStyle(link)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initLinkSocial({ useSlottedAnchor: true });
-
-      const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '3px' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh', offset: '3px' });
-
-      expect(await getOutlineStyle(link))
-        .withContext('initially')
-        .toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link))
-        .withContext('after click')
-        .toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.mouse.move(0, 0);
-
-      expect(await getOutlineStyle(link))
-        .withContext('finally')
-        .toBe(visible);
-    });
   });
 
   describe('lifecycle', () => {

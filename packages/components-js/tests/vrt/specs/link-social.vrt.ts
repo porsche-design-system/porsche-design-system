@@ -53,7 +53,7 @@ describe('Link Social', () => {
         await forceFocusedState(page, '.focused > p-link-social >>> a');
         await forceFocusedState(page, '.focused > p-link-social a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-link-social >>> a');
-        await forceHoveredState(page, '.focused-hovered > p-link-social >>> span');
+        await forceHoveredState(page, '.focused-hovered > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
         await forceFocusedHoveredState(page, '.focused-hovered > p-link-social a');
       })
     ).toBeFalsy();
