@@ -6,6 +6,7 @@ it('should have one unit test per component', () => {
   const whitelistedComponents: TagName[] = [
     'p-flex-item',
     'p-grid-item',
+    'p-select-wrapper-dropdown',
     'p-tabs-item',
     'p-text-list-item',
     'p-table-head',
