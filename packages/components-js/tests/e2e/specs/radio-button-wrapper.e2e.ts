@@ -9,10 +9,9 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -98,7 +97,7 @@ describe('radio-button-wrapper', () => {
     const radioComponent = await getHost();
     expect(await getLabelText()).toBeNull();
 
-    await setAttribute(radioComponent, 'label', 'Some label');
+    await setProperty(radioComponent, 'label', 'Some label');
     await waitForStencilLifecycle(page);
 
     expect(await getLabelText()).not.toBeNull();
@@ -120,8 +119,8 @@ describe('radio-button-wrapper', () => {
     expect(await getMessage())
       .withContext('initially')
       .toBeNull();
-    await setAttribute(radioComponent, 'state', 'error');
-    await setAttribute(radioComponent, 'message', 'Some error message');
+    await setProperty(radioComponent, 'state', 'error');
+    await setProperty(radioComponent, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -132,8 +131,8 @@ describe('radio-button-wrapper', () => {
       .withContext('when state = error')
       .toEqual('Some label. Some error message');
 
-    await setAttribute(radioComponent, 'state', 'success');
-    await setAttribute(radioComponent, 'message', 'Some success message');
+    await setProperty(radioComponent, 'state', 'success');
+    await setProperty(radioComponent, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
@@ -144,8 +143,8 @@ describe('radio-button-wrapper', () => {
       .withContext('when state = success')
       .toEqual('Some label. Some success message');
 
-    await setAttribute(radioComponent, 'state', 'none');
-    await setAttribute(radioComponent, 'message', '');
+    await setProperty(radioComponent, 'state', 'none');
+    await setProperty(radioComponent, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -154,36 +153,6 @@ describe('radio-button-wrapper', () => {
     expect(await getProperty(input, 'ariaLabel'))
       .withContext('when state = none')
       .toEqual('Some label');
-  });
-
-  it('should disable radio-button when disabled attribute is set programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
-    );
-
-    const input = await getInput();
-    const initialStyle = await getBackgroundStyle(input);
-    const label = await getLabelText();
-    const defaultLabelColor = 'rgb(0, 0, 0)';
-    const getLabelColor = () => getElementStyle(label, 'color');
-
-    expect(await getLabelColor()).toBe(defaultLabelColor);
-
-    await setAttribute(input, 'disabled', 'true');
-    await waitForInputTransition(page);
-
-    expect(await getLabelColor()).not.toBe(defaultLabelColor);
-    expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
-
-    await removeAttribute(input, 'disabled');
-    await waitForInputTransition(page);
-
-    expect(await getLabelColor()).toBe(defaultLabelColor);
-    expect(await getBackgroundStyle(input)).toEqual(initialStyle);
   });
 
   it('should disable radio-button when disabled property is set programmatically', async () => {
@@ -203,13 +172,13 @@ describe('radio-button-wrapper', () => {
 
     expect(await getLabelColor()).toBe(defaultLabelColor);
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await setProperty(input, 'disabled', true);
     await waitForInputTransition(page);
 
     expect(await getLabelColor()).not.toBe(defaultLabelColor);
     expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await setProperty(input, 'disabled', false);
     await waitForInputTransition(page);
 
     expect(await getLabelColor()).toBe(defaultLabelColor);
@@ -307,13 +276,13 @@ describe('radio-button-wrapper', () => {
 
       expect(initialStyleInput1).toEqual(initialStyleInput2);
 
-      await setAttribute(input1, 'checked', 'true');
+      await setProperty(input1, 'checked', true);
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
       expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
 
-      await setAttribute(input2, 'checked', 'true');
+      await setProperty(input2, 'checked', true);
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
@@ -340,13 +309,13 @@ describe('radio-button-wrapper', () => {
 
     expect(initialStyleInput1).toEqual(initialStyleInput2);
 
-    await input1.evaluate((el: HTMLInputElement) => (el.checked = true));
+    await setProperty(input1, 'checked', true);
     await waitForInputTransition(page);
 
     expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
     expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
 
-    await input2.evaluate((el: HTMLInputElement) => (el.checked = true));
+    await setProperty(input2, 'checked', true);
     await waitForInputTransition(page);
 
     expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
