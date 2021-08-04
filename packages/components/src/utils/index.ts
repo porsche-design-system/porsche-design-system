@@ -3,6 +3,7 @@ export * from './attribute-observer';
 export * from './breakpoint-customizable';
 export * from './button-handling';
 export * from './change-case';
+export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
 export * from './focus-handling';

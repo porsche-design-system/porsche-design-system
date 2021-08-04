@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
   booleanToString,
   getHTMLElementAndThrowIfUndefined,
@@ -10,6 +10,8 @@ import {
   isDark,
   isRequiredAndParentNotRequired,
   mapBreakpointPropToClasses,
+  observeAttributes,
+  observeChildren,
   observeProperties,
   setAriaAttributes,
   setAttribute,
@@ -71,7 +73,6 @@ export class SelectWrapper {
   @State() private optionMaps: OptionMap[] = [];
 
   private select: HTMLSelectElement;
-  private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
   private searchString: string; // TODO: refactor into getter
@@ -95,8 +96,7 @@ export class SelectWrapper {
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
 
     if (this.hasCustomDropdown) {
-      this.setOptionMaps();
-      this.observeOptions();
+      this.observePropertiesAndChildren();
 
       this.select.addEventListener('keydown', this.onKeyboardEvents);
 
@@ -130,7 +130,6 @@ export class SelectWrapper {
   }
 
   public disconnectedCallback(): void {
-    this.selectObserver.disconnect();
     if (this.hasCustomDropdown) {
       document.removeEventListener('mousedown', this.onClickOutside, true);
     }
@@ -244,31 +243,28 @@ export class SelectWrapper {
     }
   }
 
-  /*
-   * <START CUSTOM SELECT DROPDOWN>
-   */
   private observeSelect(): void {
-    // TODO: use shared attribute observer
-    // most likely observing attributes is redundant with property observer, so watching children is enough
-    this.selectObserver = new MutationObserver((mutations) => {
-      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
-        // console.log('mutation observer');
-        this.setOptionMaps(); // TODO: shouldn't be called for native dropdown
-      }
-    });
-    this.selectObserver.observe(this.select, {
-      childList: true,
-      subtree: true,
-      attributeFilter: ['disabled', 'selected', 'hidden', 'required'],
+    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
+  }
+
+  /*
+   * <START CUSTOM DROPDOWN>
+   */
+  private observePropertiesAndChildren(): void {
+    this.setOptionMaps(); // initial
+    this.observeOptions(); // initial
+
+    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
+    observeChildren(this.select, () => {
+      this.setOptionMaps();
+      this.observeOptions(); // new option might have been added
     });
   }
 
   private observeOptions(): void {
-    // TODO: later added options should be tracked
-    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
-    getOptionsElements(this.select).forEach((el) => {
-      observeProperties(el, ['selected'], this.setOptionMaps);
-    });
+    getOptionsElements(this.select).forEach((el) =>
+      observeProperties(el, ['selected', 'disabled'], this.setOptionMaps)
+    );
   }
 
   private onClickOutside = (e: MouseEvent): void => {
