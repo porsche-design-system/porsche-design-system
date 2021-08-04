@@ -76,7 +76,7 @@ describe('select-wrapper fake-dropdown', () => {
     });
   });
 
-  describe('custom drop down', () => {
+  describe('custom dropdown', () => {
     const selectedClass = 'option--selected';
 
     it('should render', async () => {
@@ -108,6 +108,32 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(0);
       expect(await getElementIndex(fakeOptionList, '[aria-disabled=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
+    });
+
+    it('should disable fake select when select is disabled programmatically', async () => {
+      await initSelect();
+
+      const fakeSelect = await getFakeSelect();
+      const select = await getSelect();
+      const disabledClass = 'fake-select--disabled';
+
+      expect(await getCssClasses(fakeSelect))
+        .not.withContext('initially')
+        .toContain(disabledClass);
+
+      await setProperty(select, 'disabled', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeSelect))
+        .withContext('when disabled = true')
+        .toContain(disabledClass);
+
+      await setProperty(select, 'disabled', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeSelect))
+        .not.withContext('when disabled = false')
+        .toContain(disabledClass);
     });
 
     it('should render with optgroups', async () => {

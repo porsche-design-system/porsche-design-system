@@ -2,10 +2,10 @@ import {
   expectedStyleOnFocus,
   getAttribute,
   getBrowser,
-  getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
+  hasFocus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -14,14 +14,13 @@ import {
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-describe('select-wrapper native-dropdown', () => {
+describe('select-wrapper native', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
-  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .fake-select');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
   const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
@@ -73,22 +72,17 @@ describe('select-wrapper native-dropdown', () => {
     );
   };
 
-  it('should render', async () => {
-    await initSelect();
-    const el = await getFakeSelect();
-    expect(el).toBeDefined();
-  });
+  describe('accessibility', () => {
+    it('should add aria-label to select', async () => {
+      await initSelect();
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
+    });
 
-  it('should add aria-label to support screen readers properly', async () => {
-    await initSelect();
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-  });
-
-  it('should add aria-label with description text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
+    it('should add aria-label with description text to select', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
       <p-select-wrapper label="Some label" description="Some description" native="true">
         <select name="some-name">
           <option value="a">Option A</option>
@@ -97,15 +91,16 @@ describe('select-wrapper native-dropdown', () => {
         </select>
       </p-select-wrapper>
     `
-    );
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
-  });
+      );
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
+    });
 
-  it('should add aria-label with message text to support screen readers properly', async () => {
-    await initSelect({ state: 'error' });
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
+    it('should add aria-label with message text to select', async () => {
+      await initSelect({ state: 'error' });
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
+    });
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -182,50 +177,17 @@ describe('select-wrapper native-dropdown', () => {
 
   it('should focus select when label text is clicked', async () => {
     await initSelect();
+    const select = await getSelect();
+    const hasSelectFocus = () => hasFocus(page, select);
 
     const labelText = await getLabel();
-    expect(labelText).toBeDefined();
-
-    async function hasSelectFocus() {
-      return await page.evaluate(() => {
-        const selectElement = document.querySelector('select');
-        return document.activeElement === selectElement;
-      });
-    }
-
     expect(await hasSelectFocus()).toBe(false);
 
     await labelText.click();
-
     expect(await hasSelectFocus()).toBe(true);
   });
 
-  it('should disable fake select when select is disabled programmatically', async () => {
-    await initSelect();
-
-    const fakeSelect = await getFakeSelect();
-    const select = await getSelect();
-    const disabledClass = 'fake-select--disabled';
-
-    expect(await getCssClasses(fakeSelect))
-      .not.withContext('initially')
-      .toContain(disabledClass);
-
-    await setProperty(select, 'disabled', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeSelect))
-      .withContext('when disabled = true')
-      .toContain(disabledClass);
-
-    await setProperty(select, 'disabled', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeSelect))
-      .not.withContext('when disabled = false')
-      .toContain(disabledClass);
-  });
-
+  // TODO: isn't this covered by vrt state test?
   describe('focus state', () => {
     it('should be shown on click for slotted <select>', async () => {
       await initSelect();
@@ -268,41 +230,53 @@ describe('select-wrapper native-dropdown', () => {
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
       const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+      expect(await getOutlineStyle(labelLink))
+        .withContext('labelLink initially')
+        .toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink))
+        .withContext('descriptionLink initially')
+        .toBe(hidden);
+      expect(await getOutlineStyle(messageLink))
+        .withContext('messageLink initially')
+        .toBe(hidden);
 
       await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+      expect(await getOutlineStyle(labelLink))
+        .withContext('labelLink after click')
+        .toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
+      expect(await getOutlineStyle(labelLink))
+        .withContext('labelLink after tab')
+        .toBe(visible);
 
       await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink))
+        .withContext('descriptionLink after click')
+        .toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
+      expect(await getOutlineStyle(descriptionLink))
+        .withContext('descriptionLink after tab')
+        .toBe(visible);
 
       await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+      expect(await getOutlineStyle(messageLink))
+        .withContext('messageLink after click')
+        .toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
+      expect(await getOutlineStyle(messageLink))
+        .withContext('messageLink after tab')
+        .toBe(visible);
     });
   });
 
@@ -319,7 +293,7 @@ describe('select-wrapper native-dropdown', () => {
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
-    it('should work without unnecessary round trips on dropdown open', async () => {
+    it('should work without unnecessary round trips when opened', async () => {
       await initSelect();
       const select = await getSelect();
       const [, secondOption] = await select.$$('option');
@@ -336,7 +310,7 @@ describe('select-wrapper native-dropdown', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1); // Fake Dropdown gets updated
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });
