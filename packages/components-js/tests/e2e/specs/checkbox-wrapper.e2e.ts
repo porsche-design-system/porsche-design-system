@@ -7,10 +7,9 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -31,15 +30,11 @@ describe('checkbox-wrapper', () => {
   const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
   const setIndeterminate = async (element: ElementHandle, value: boolean) => {
-    await element.evaluate((el: HTMLInputElement, value: boolean) => {
-      el.indeterminate = value;
-    }, value);
+    await setProperty(element, 'indeterminate', value);
   };
 
   const setChecked = async (element: ElementHandle, value: boolean) => {
-    await element.evaluate((element: HTMLInputElement, value: boolean) => {
-      element.checked = value;
-    }, value);
+    await setProperty(element, 'checked', value);
   };
 
   const getBackgroundImage = (input: ElementHandle) => getElementStyle(input, 'backgroundImage');
@@ -110,7 +105,7 @@ describe('checkbox-wrapper', () => {
     const host = await getHost();
     expect(await getLabelText()).toBeNull();
 
-    await setAttribute(host, 'label', 'Some Label');
+    await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
     expect(await getLabelText()).not.toBeNull();
   });
@@ -130,11 +125,13 @@ describe('checkbox-wrapper', () => {
       .withContext('initially')
       .toBeNull();
 
-    await setAttribute(host, 'state', 'error');
-    await setAttribute(host, 'message', 'Some error message');
+    await setProperty(host, 'state', 'error');
+    await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = error');
+    expect(await getMessage())
+      .withContext('when state = error')
+      .toBeDefined();
     expect(await getAttribute(await getMessage(), 'role'))
       .withContext('when state = error')
       .toEqual('alert');
@@ -142,8 +139,8 @@ describe('checkbox-wrapper', () => {
       .withContext('when state = error')
       .toEqual('Some label. Some error message');
 
-    await setAttribute(host, 'state', 'success');
-    await setAttribute(host, 'message', 'Some success message');
+    await setProperty(host, 'state', 'success');
+    await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -156,8 +153,8 @@ describe('checkbox-wrapper', () => {
       .withContext('when state = success')
       .toEqual('Some label. Some success message');
 
-    await setAttribute(host, 'state', 'none');
-    await setAttribute(host, 'message', '');
+    await setProperty(host, 'state', 'none');
+    await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage())
@@ -230,10 +227,10 @@ describe('checkbox-wrapper', () => {
 
     expect(await getBackgroundImage(input)).toBe('none');
 
-    await setAttribute(input, 'checked', 'true');
+    await setProperty(input, 'checked', true);
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-    await removeAttribute(input, 'checked');
+    await setProperty(input, 'checked', false);
     expect(await getBackgroundImage(input)).toBe('none');
   });
 
@@ -250,35 +247,11 @@ describe('checkbox-wrapper', () => {
 
     expect(await getBackgroundImage(input)).toBe('none');
 
-    await input.evaluate((el: HTMLInputElement) => (el.checked = true));
+    await setProperty(input, 'checked', true);
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-    await input.evaluate((el: HTMLInputElement) => (el.checked = false));
+    await setProperty(input, 'checked', false);
     expect(await getBackgroundImage(input)).toBe('none');
-  });
-
-  it('should disable checkbox when disabled attribute is set programmatically', async () => {
-    await initCheckbox();
-
-    const input = await getInput();
-    const label = await getLabelText();
-    const getLabelStyle = () => getElementStyle(label, 'color');
-    const getCursor = () => getElementStyle(input, 'cursor');
-
-    expect(await getCursor()).toBe('pointer');
-    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
-
-    await setAttribute(input, 'disabled', 'true');
-    await waitForInputTransition(page);
-
-    expect(await getCursor()).toBe('not-allowed');
-    expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
-
-    await removeAttribute(input, 'disabled');
-    await waitForInputTransition(page);
-
-    expect(await getCursor()).toBe('pointer');
-    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
   });
 
   it('should disable checkbox when disabled property is set programmatically', async () => {
@@ -292,13 +265,13 @@ describe('checkbox-wrapper', () => {
     expect(await getCursor()).toBe('pointer');
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await setProperty(input, 'disabled', true);
     await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('not-allowed');
     expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await setProperty(input, 'disabled', false);
     await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('pointer');
