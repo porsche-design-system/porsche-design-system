@@ -45,11 +45,8 @@ Object {
 
 exports[`getBaseSlottedStyles() should return correct styles for dark theme 1`] = `
 Object {
-  "& a": Object {
-    "&:hover": Object {
-      "color": "#ff0223",
-    },
-    "transition": "color var(--p-transition-duration, .24s) ease",
+  "& a:hover": Object {
+    "color": "#ff0223",
   },
 }
 `;
