@@ -110,7 +110,7 @@ export const TextPage = (): JSX.Element => {
       <div className="playground" title="should apply custom styles for dedicated slotted content">
         <PText>
           <span>
-            Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+            Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}
             <em>emphasized</em> and <i>italic</i> text
           </span>
         </PText>

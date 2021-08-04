@@ -103,7 +103,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList>
           <PTextListItem>
             <span>
-              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}
               <em>emphasized</em> and <i>italic</i> text
             </span>
           </PTextListItem>
