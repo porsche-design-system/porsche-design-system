@@ -59,49 +59,18 @@ describe('select-wrapper native', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper state="${state}" native="true" ${label} ${description} ${message}>
-          ${slottedLabel}
-          ${slottedDescription}
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-          ${slottedMessage}
-        </p-select-wrapper>`
-    );
-  };
-
-  describe('accessibility', () => {
-    it('should add aria-label to select', async () => {
-      await initSelect();
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-    });
-
-    it('should add aria-label with description text to select', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label" description="Some description" native="true">
-        <select name="some-name">
+      <p-select-wrapper state="${state}" native="true" ${label} ${description} ${message}>
+        ${slottedLabel}
+        ${slottedDescription}
+        <select>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
         </select>
-      </p-select-wrapper>
-    `
-      );
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
-    });
-
-    it('should add aria-label with message text to select', async () => {
-      await initSelect({ state: 'error' });
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-    });
-  });
+        ${slottedMessage}
+      </p-select-wrapper>`
+    );
+  };
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await setContentWithDesignSystem(
@@ -127,7 +96,6 @@ describe('select-wrapper native', () => {
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     await initSelect();
-
     const host = await getHost();
     const select = await getSelect();
 
@@ -185,6 +153,36 @@ describe('select-wrapper native', () => {
 
     await labelText.click();
     expect(await hasSelectFocus()).toBe(true);
+  });
+
+  describe('accessibility', () => {
+    it('should add aria-label to select', async () => {
+      await initSelect();
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
+    });
+
+    it('should add aria-label with description text to select', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper label="Some label" description="Some description" native="true">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
+    });
+
+    it('should add aria-label with message text to select', async () => {
+      await initSelect({ state: 'error' });
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
+    });
   });
 
   // TODO: isn't this covered by vrt state test?
