@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list>
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list>
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list [theme]="'dark'">
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list [theme]="'dark'">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -39,7 +39,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list [listType]="'ordered'">
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list [listType]="'ordered'">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -55,7 +55,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list [listType]="'ordered'" [theme]="'dark'">
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list [listType]="'ordered'" [theme]="'dark'">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -71,7 +71,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list [listType]="'ordered'" [orderType]="'alphabetically'">
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list [listType]="'ordered'" [orderType]="'alphabetically'">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -87,7 +87,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list [listType]="'ordered'" [orderType]="'alphabetically'" [theme]="'dark'">
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
         <p-text-list-item
-          >The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          >The quick brown fox jumps over the lazy dog
           <p-text-list [listType]="'ordered'" [orderType]="'alphabetically'" [theme]="'dark'">
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item
@@ -96,6 +96,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-text-list>
         </p-text-list-item>
         <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground light" title="should apply custom styles for dedicated slotted content">
+      <p-text-list>
+        <p-text-list-item
+          ><span
+            >Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text</span
+          ></p-text-list-item
+        >
       </p-text-list>
     </div>
   `,
