@@ -1,7 +1,6 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  getThemeDarkAttribute,
   improveFocusHandlingForCustomElement,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
@@ -54,29 +53,27 @@ export class Link {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
-        <TagType
-          class="root"
-          {...(TagType === 'a' && {
-            href: this.href,
-            target: this.target,
-            download: this.download,
-            rel: this.rel,
-          })}
-        >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            color="inherit"
-            aria-hidden="true"
-          />
-          <PrefixedTagNames.pText tag="span" color="inherit" class="label">
-            <slot />
-          </PrefixedTagNames.pText>
-        </TagType>
-      </Host>
+      <TagType
+        class="root"
+        {...(TagType === 'a' && {
+          href: this.href,
+          target: this.target,
+          download: this.download,
+          rel: this.rel,
+        })}
+      >
+        <PrefixedTagNames.pIcon
+          class="icon"
+          size="inherit"
+          name={this.icon}
+          source={this.iconSource}
+          color="inherit"
+          aria-hidden="true"
+        />
+        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
+          <slot />
+        </PrefixedTagNames.pText>
+      </TagType>
     );
   }
 }

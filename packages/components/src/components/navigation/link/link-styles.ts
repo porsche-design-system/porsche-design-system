@@ -11,7 +11,7 @@ import {
   transitionDuration,
   transitionTimingFunction,
   GetStylesFunction,
-  buildResponsiveStyles,
+  buildResponsiveStyles, colorDarken,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { LinkVariant, Theme } from '../../../types';
@@ -23,19 +23,19 @@ const getVariantColors = (variant: LinkVariant, isDarkTheme: boolean): { baseCol
     case 'primary':
       return {
         baseColor: isDarkTheme ? darkTheme.brand : color.brand,
-        baseColorHover: isDarkTheme ? '#c4001a' : '#980014',
+        baseColorHover: isDarkTheme ? colorDarken.darkTheme.state.hover : colorDarken.state.hover,
         textColor: darkTheme.default
       };
     case 'tertiary':
       return {
         baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? darkTheme.default : '#151718',
+        baseColorHover: isDarkTheme ? darkTheme.default : colorDarken.neutralContrast.high,
         textColor: isDarkTheme ? darkTheme.default : color.default
       };
     default:
       return {
         baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? '#e0e0e0' : '#151718',
+        baseColorHover: isDarkTheme ? colorDarken.darkTheme.default : colorDarken.neutralContrast.high,
         textColor: isDarkTheme ? color.default : darkTheme.default
       };
   }

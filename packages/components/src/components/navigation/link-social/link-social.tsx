@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, improveFocusHandlingForCustomElement, getThemeDarkAttribute } from '../../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { getPrefixedTagNames, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { addComponentCss } from './link-social-styles';
@@ -45,28 +45,26 @@ export class LinkSocial {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
-        <TagType
-          class="root"
-          {...(TagType === 'a' && {
-            href: this.href,
-            target: this.target,
-            rel: this.rel,
-          })}
-        >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            color="inherit"
-            aria-hidden="true"
-          />
-          <PrefixedTagNames.pText tag="span" color="inherit" class="label">
-            <slot />
-          </PrefixedTagNames.pText>
-        </TagType>
-      </Host>
+      <TagType
+        class="root"
+        {...(TagType === 'a' && {
+          href: this.href,
+          target: this.target,
+          rel: this.rel,
+        })}
+      >
+        <PrefixedTagNames.pIcon
+          class="icon"
+          size="inherit"
+          name={this.icon}
+          source={this.iconSource}
+          color="inherit"
+          aria-hidden="true"
+        />
+        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
+          <slot />
+        </PrefixedTagNames.pText>
+      </TagType>
     );
   }
 }
