@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import {
+  booleanToString,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getRole,
@@ -190,7 +191,7 @@ export class SelectWrapper {
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               aria-autocomplete="both"
               aria-controls={dropdownId}
-              aria-expanded={this.isDropdownOpen ? 'true' : 'false'}
+              aria-expanded={booleanToString(this.isDropdownOpen)}
               aria-activedescendant={`option-${getHighlightedOptionMapIndex(this.optionMaps)}`}
               ref={(el) => (this.filterInput = el)}
             />,

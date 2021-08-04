@@ -1,7 +1,7 @@
 import type { AriaAttributes } from 'react';
 import type { DropdownDirection, DropdownDirectionInternal, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
-import { attachCss, getHTMLElements } from '../../../../utils';
+import { attachCss, booleanToString, getHTMLElements } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
@@ -9,13 +9,13 @@ export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
 export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper
 const MAX_CHILDREN = 10;
 
-export const getRootAriaAttributes = (optionMaps: OptionMap[], open: boolean, filter: boolean): AriaAttributes => {
+export const getAriaAttributes = (optionMaps: OptionMap[], open: boolean, filter: boolean): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return filter
     ? {}
     : {
         ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${getHighlightedOptionMapIndex(optionMaps)}` }),
-        'aria-expanded': open,
+        'aria-expanded': booleanToString(open),
       };
 };
 
