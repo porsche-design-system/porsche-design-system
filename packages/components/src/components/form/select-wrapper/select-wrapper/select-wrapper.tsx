@@ -244,14 +244,6 @@ export class SelectWrapper {
     }
   }
 
-  private observeOptions(): void {
-    // TODO: later added options should be tracked
-    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
-    getOptionsElements(this.select).forEach((el) => {
-      observeProperties(el, ['selected'], this.setOptionMaps);
-    });
-  }
-
   /*
    * <START CUSTOM SELECT DROPDOWN>
    */
@@ -261,13 +253,21 @@ export class SelectWrapper {
     this.selectObserver = new MutationObserver((mutations) => {
       if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         // console.log('mutation observer');
-        this.setOptionMaps();
+        this.setOptionMaps(); // TODO: shouldn't be called for native dropdown
       }
     });
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
       attributeFilter: ['disabled', 'selected', 'hidden', 'required'],
+    });
+  }
+
+  private observeOptions(): void {
+    // TODO: later added options should be tracked
+    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
+    getOptionsElements(this.select).forEach((el) => {
+      observeProperties(el, ['selected'], this.setOptionMaps);
     });
   }
 
