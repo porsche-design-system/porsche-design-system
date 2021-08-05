@@ -70,7 +70,7 @@ export class SelectWrapper {
 
   @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
-  @State() private searchString: string = '';
+  @State() private searchString = '';
 
   private select: HTMLSelectElement;
   private filterElement: HTMLPSelectWrapperFilterElement;
@@ -106,13 +106,10 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if (false && this.filter) {
-      // @ts-ignores
-      // this.fakeFilter.addEventListener('click', this.onFilterInputClick); // span element
-      // this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
-      this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
-      this.filterElement.addEventListener('input', this.onFilterChange);
-    }
+    // if (false && this.filter) {
+    //   this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
+    //   this.filterElement.addEventListener('input', this.onFilterChange);
+    // }
   }
 
   public componentDidRender(): void {

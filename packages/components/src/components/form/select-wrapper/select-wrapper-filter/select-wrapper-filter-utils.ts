@@ -1,7 +1,7 @@
 import type { AriaAttributes } from 'react';
 import { booleanToString } from '../../../../utils';
 
-export const getAriaAttributes = (isOpen: boolean, dropdownId: string, activeDescendantId): AriaAttributes => {
+export const getAriaAttributes = (isOpen: boolean, dropdownId: string, activeDescendantId: number): AriaAttributes => {
   return {
     'aria-autocomplete': 'both',
     'aria-controls': dropdownId,
