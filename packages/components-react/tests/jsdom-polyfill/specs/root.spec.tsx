@@ -7,6 +7,7 @@ it('should have one unit test per component', () => {
     'p-flex-item',
     'p-grid-item',
     'p-select-wrapper-dropdown',
+    'p-select-wrapper-filter',
     'p-tabs-item',
     'p-text-list-item',
     'p-table-head',
