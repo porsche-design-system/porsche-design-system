@@ -80,10 +80,6 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   buildGlobalStyles({
     [getTagName(host)]: addImportantToEachRule(jssStyle),
   });
-export const buildSlottedStylesForDarkTheme = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
-  buildGlobalStyles({
-    [`${getTagName(host)}[theme="dark"]`]: addImportantToEachRule(jssStyle),
-  });
 
 export type GetStylesFunction = (value?: any) => JssStyle;
 export const buildResponsiveHostStyles = <T>(
@@ -107,10 +103,7 @@ export const buildResponsiveHostStyles = <T>(
     : buildHostStyles(getStyles(value));
 };
 
-export const buildResponsiveStyles = <T>(
-  rawValue: BreakpointCustomizable<T>,
-  getStyles: GetStylesFunction
-): Styles => {
+export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
   const value: any = parseJSON(rawValue as any);
 
   return typeof value === 'object'
@@ -125,7 +118,7 @@ export const buildResponsiveStyles = <T>(
           }),
           getStyles(value.base) as Styles
         )
-    : getStyles(value) as Styles;
+    : (getStyles(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
