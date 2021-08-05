@@ -11,11 +11,11 @@ import {
   setAriaAttributes,
   observeAttributes,
   unobserveAttributes,
-  getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-radio-button-wrapper',
@@ -91,15 +91,7 @@ export class RadioButtonWrapper {
           <slot />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={this.state === 'error' ? 'exclamation' : 'check'}
-              color="inherit"
-              aria-hidden="true"
-            />
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );
