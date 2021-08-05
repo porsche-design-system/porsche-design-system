@@ -3,7 +3,7 @@ import {
   addImportantToEachRule,
   attachCss,
   buildHostStyles,
-  buildResponsiveJss,
+  buildResponsiveHostStyles,
   getCss,
   mergeDeep,
   pxToRemWithUnit,
@@ -43,9 +43,9 @@ export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter
           flex: 'auto',
           width: 'auto',
         }),
-        buildResponsiveJss(direction, getDirectionStyles),
-        buildResponsiveJss(wrap, getWrapStyles),
-        buildResponsiveJss(gutter, getGutterStyles)
+        buildResponsiveHostStyles(direction, getDirectionStyles),
+        buildResponsiveHostStyles(wrap, getWrapStyles),
+        buildResponsiveHostStyles(gutter, getGutterStyles)
       )
     )
   );

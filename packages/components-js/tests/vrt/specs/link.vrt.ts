@@ -34,20 +34,27 @@ describe('Link', () => {
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>
-          <p-link theme="${theme}" variant="secondary" href="#">Secondary</p-link>
-          <p-link theme="${theme}">
-            <a href="#">Slotted</a>
+          <p-link theme="${theme}" variant="primary">
+            <a href="#">Slotted Primary</a>
           </p-link>
-          <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>`;
+          <p-link theme="${theme}" variant="secondary" href="#">Secondary</p-link>
+          <p-link theme="${theme}" variant="secondary">
+            <a href="#">Slotted Secondary</a>
+          </p-link>
+          <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
+          <p-link theme="${theme}" variant="tertiary">
+            <a href="#">Slotted Tertiary</a>
+          </p-link>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-link >>> a');
         await forceHoveredState(page, '.hovered > p-link >>> span');
         await forceFocusedState(page, '.focused > p-link >>> a');
-        await forceFocusedState(page, '.focused > p-link >>> span');
+        await forceFocusedState(page, '.focused > p-link a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> span');
+        await forceHoveredState(page, '.focused-hovered > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link a');
       })
     ).toBeFalsy();
   });

@@ -89,9 +89,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-pure [active]="true"><a href="https://www.porsche.com">Some label</a></p-link-pure>
     </div>
 
+    <div class="playground dark" title="should render with active state on dark background">
+      <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [theme]="'dark'">Some label</p-link-pure>
+      <p-link-pure [active]="true" [theme]="'dark'"><a href="https://www.porsche.com">Some label</a></p-link-pure>
+    </div>
+
     <div class="playground light" title="should render with specific icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'">Some label</p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'assets/icon-custom-kaixin.svg'"
+        >Some label</p-link-pure
+      >
+    </div>
+
+    <div class="playground dark" title="should render with specific icon on dark background">
+      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'" [theme]="'dark'">Some label</p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'assets/icon-custom-kaixin.svg'" [theme]="'dark'"
         >Some label</p-link-pure
       >
     </div>
