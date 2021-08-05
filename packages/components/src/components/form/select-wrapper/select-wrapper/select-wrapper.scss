@@ -62,19 +62,21 @@ input:focus + span {
   position: relative;
   color: $p-color-default;
 
-  &:hover {
-    .dropdown {
-      border-color: $p-color-neutral-contrast-high;
-    }
+  &:hover .dropdown {
+    border-color: $p-color-neutral-contrast-high;
+  }
+
+  // next rules are unnecessarily nested
+  .label__text:hover ~ ::slotted(select:not(:disabled)),
+  ::slotted(select:hover:not(:disabled)) {
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
   }
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
 
-    &:hover {
-      .dropdown {
-        border-color: $p-color-theme-dark-neutral-contrast-high;
-      }
+    &:hover .dropdown {
+      border-color: $p-color-theme-dark-neutral-contrast-high;
     }
 
     ::slotted(select) {
@@ -265,11 +267,6 @@ input:focus + span {
     + #{$bem-block}__text--description {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
-    }
-
-    @at-root #{$root}:hover ::slotted(select:not(:disabled)),
-      &:hover ~ ::slotted(select:not(:disabled)) {
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
     }
   }
 }
