@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import type { FormState, Theme } from '../../../../types';
 import type { OptionMap } from '../select-wrapper/select-wrapper-utils';
-import { getAriaAttributes, addComponentCss } from './select-wrapper-filter-utils';
+import { getAriaAttributes } from './select-wrapper-filter-utils';
+import { addComponentCss } from './select-wrapper-filter-styles';
 
 @Component({
   tag: 'p-select-wrapper-filter',

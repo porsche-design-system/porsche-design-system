@@ -1,5 +1,6 @@
 import {
   addImportantToEachRule,
+  attachCss,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
@@ -112,4 +113,8 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
       },
     }),
   });
+};
+
+export const addComponentCss = (host: HTMLElement, disabled: boolean, state: FormState, theme: Theme): void => {
+  attachCss(host, getComponentCss(disabled, state, theme));
 };
