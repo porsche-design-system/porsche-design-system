@@ -18,7 +18,9 @@ describe('select-wrapper', () => {
       component['select'] = document.createElement('select');
       jest.spyOn(component, 'setSelect' as any).mockImplementation();
       const spy = jest.spyOn(component, 'observeSelect' as any);
-      component.connectedCallback();
+      try {
+        component.connectedCallback();
+      } catch (e) {}
 
       expect(spy).toBeCalledTimes(1);
     });
