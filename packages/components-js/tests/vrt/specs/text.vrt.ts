@@ -31,7 +31,7 @@ describe('Text', () => {
         const page = await vrt.getPage();
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-text theme="${theme}">Lorem ipsum dolor sit amet <a>linked text</a></p-text>`;
+          <p-text theme="${theme}">Lorem ipsum dolor sit amet <a href="#">linked text</a></p-text>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 

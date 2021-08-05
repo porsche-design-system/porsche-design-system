@@ -7,8 +7,8 @@ import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
-import { getShadowRootHTMLElement } from './dom';
-import { mediaQuery } from './styles';
+import { getShadowRootHTMLElement, getTagName } from './dom';
+import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
 
 export type { Styles, JssStyle } from 'jss';
@@ -76,9 +76,13 @@ export const attachCss = (host: HTMLElement, css: string): void => {
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 export const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
+export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
+  buildGlobalStyles({
+    [getTagName(host)]: addImportantToEachRule(jssStyle),
+  });
 
 export type GetStylesFunction = (value?: any) => JssStyle;
-export const buildResponsiveJss = <T>(
+export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
 ): Styles<':host'> => {
@@ -99,14 +103,31 @@ export const buildResponsiveJss = <T>(
     : buildHostStyles(getStyles(value));
 };
 
-/* eslint-disable-next-line @typescript-eslint/ban-types */
-export const isObject = <T extends object>(obj: T): boolean => typeof obj === 'object' && !Array.isArray(obj);
+export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+  const value: any = parseJSON(rawValue as any);
+
+  return typeof value === 'object'
+    ? Object.keys(value)
+        // base styles are applied on root object, responsive styles are nested within
+        // hence it is used as the initial object within reduce function
+        .filter((key) => key !== 'base')
+        .reduce(
+          (result, breakpointValue: Breakpoint) => ({
+            ...result,
+            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+          }),
+          getStyles(value.base) as Styles
+        )
+    : (getStyles(value) as Styles);
+};
+
+export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
+  typeof obj === 'object' && !Array.isArray(obj);
 
 // NOTE: taken from https://stackoverflow.com/a/48218209
-/* eslint-disable-next-line @typescript-eslint/ban-types */
-export const mergeDeep = <T extends object>(...objects: T[]): T => {
+export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => {
   return objects.reduce((prev, obj) => {
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach((key: keyof T) => {
       const pVal = prev[key];
       const oVal = obj[key];
 

@@ -142,11 +142,29 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
+      <div className="playground dark" title="should render with active state on dark background">
+        <PLinkPure href="https://www.porsche.com" active theme="dark">
+          Some label
+        </PLinkPure>
+        <PLinkPure active theme="dark">
+          <a href="https://www.porsche.com">Some label</a>
+        </PLinkPure>
+      </div>
+
       <div className="playground light" title="should render with specific icon">
         <PLinkPure href="https://www.porsche.com" icon="phone">
           Some label
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg">
+          Some label
+        </PLinkPure>
+      </div>
+
+      <div className="playground dark" title="should render with specific icon on dark background">
+        <PLinkPure href="https://www.porsche.com" icon="phone" theme="dark">
+          Some label
+        </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
           Some label
         </PLinkPure>
       </div>

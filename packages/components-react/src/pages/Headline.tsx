@@ -71,10 +71,11 @@ export const HeadlinePage = (): JSX.Element => {
         </PHeadline>
       </div>
 
-      <div className="playground" title="should show headline with a link">
+      <div className="playground" title="should apply custom styles for dedicated slotted content">
         <PHeadline>
           <span>
-            Lorem ipsum dolor sit amet <a href="#x">linked text</a> et.
+            Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}
+            <em>emphasized</em> and <i>italic</i> text
           </span>
         </PHeadline>
       </div>
