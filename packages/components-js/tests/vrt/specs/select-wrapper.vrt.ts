@@ -24,6 +24,7 @@ describe('Select Wrapper', () => {
       )
     ).toBeFalsy();
   });
+
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(

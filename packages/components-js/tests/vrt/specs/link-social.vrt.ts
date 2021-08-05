@@ -23,6 +23,7 @@ describe('Link Social', () => {
       )
     ).toBeFalsy();
   });
+
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
@@ -32,6 +33,7 @@ describe('Link Social', () => {
         const head = `<style type="text/css">p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>
           <p-link-social theme="${theme}" href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
           <p-link-social theme="${theme}" href="https://www.google.com/" icon="logo-google">Google</p-link-social>
           <p-link-social theme="${theme}" href="https://www.instagram.com/" icon="logo-instagram">Instagram</p-link-social>
@@ -49,9 +51,10 @@ describe('Link Social', () => {
         await forceHoveredState(page, '.hovered > p-link-social >>> a');
         await forceHoveredState(page, '.hovered > p-link-social >>> span');
         await forceFocusedState(page, '.focused > p-link-social >>> a');
-        await forceFocusedState(page, '.focused > p-link-social >>> span');
+        await forceFocusedState(page, '.focused > p-link-social a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-link-social >>> a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-link-social >>> span');
+        await forceHoveredState(page, '.focused-hovered > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+        await forceFocusedHoveredState(page, '.focused-hovered > p-link-social a');
       })
     ).toBeFalsy();
   });

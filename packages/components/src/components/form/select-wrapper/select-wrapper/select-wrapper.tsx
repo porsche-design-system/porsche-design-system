@@ -32,6 +32,7 @@ import {
   resetHighlightedIndex,
 } from './select-wrapper-utils';
 import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
+import { addSlottedCss } from './select-wrapper-styles';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -87,7 +88,7 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.setSelect();
     this.observeSelect();
-    // this.addSlottedStyles();
+    addSlottedCss(this.host);
   }
 
   public componentWillLoad(): void {
