@@ -180,6 +180,8 @@ export class SelectWrapper {
               dropdownId={dropdownId}
               disabled={this.disabled}
               isOpen={this.isOpen}
+              state={this.state}
+              theme={this.theme}
               value={this.searchString}
               onChange={this.onFilterChange}
               onClick={() => this.handleVisibilityOfFakeOptionList('toggle')}

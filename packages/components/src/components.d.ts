@@ -623,6 +623,7 @@ export namespace Components {
         "onChange": (e: InputEvent) => void;
         "onClick"?: () => void;
         "selectedOptionMap"?: OptionMap;
+        "state"?: FormState;
         "theme"?: Theme;
         "value": string;
     }
@@ -1757,6 +1758,7 @@ declare namespace LocalJSX {
         "onChange"?: (e: InputEvent) => void;
         "onClick"?: () => void;
         "selectedOptionMap"?: OptionMap;
+        "state"?: FormState;
         "theme"?: Theme;
         "value"?: string;
     }
