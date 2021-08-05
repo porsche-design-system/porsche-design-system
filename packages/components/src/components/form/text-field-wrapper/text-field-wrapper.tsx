@@ -12,11 +12,11 @@ import {
   mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
-  getRole,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -130,15 +130,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={this.state === 'error' ? 'exclamation' : 'check'}
-              color="inherit"
-              aria-hidden="true"
-            />
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );
