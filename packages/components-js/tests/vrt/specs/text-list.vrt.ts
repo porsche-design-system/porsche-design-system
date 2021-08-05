@@ -35,7 +35,7 @@ describe('Text List', () => {
             <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
             <p-text-list-item>
               The quick
-              <a onclick="return false;" href="#">brown fox</a>
+              <a href="#">brown fox</a>
               jumps over the lazy dog
             </p-text-list-item>
           </p-text-list>`;

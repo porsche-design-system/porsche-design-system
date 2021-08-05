@@ -50,9 +50,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-headline>
     </div>
 
-    <div class="playground" title="should show headline with a link">
+    <div class="playground" title="should apply custom styles for dedicated slotted content">
       <p-headline>
-        <span>Lorem ipsum dolor sit amet <a href="#">linked text</a> et.</span>
+        <span
+          >Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text</span
+        >
       </p-headline>
     </div>
 

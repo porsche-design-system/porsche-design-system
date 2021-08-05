@@ -1,16 +1,15 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
-  getTagName,
-  insertSlottedStyles,
   isDark,
   mapBreakpointPropToClasses,
+  getThemeDarkAttribute,
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { isSizeInherit } from './text-utils';
-import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
+import { addSlottedCss } from './text-styles';
 
 @Component({
   tag: 'p-text',
@@ -45,7 +44,7 @@ export class Text {
   private textTag: HTMLElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedCss(this.host);
   }
 
   public componentDidLoad(): void {
@@ -72,39 +71,11 @@ export class Text {
     };
 
     return (
-      <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
-        <slot />
-      </TagType>
+      <Host {...getThemeDarkAttribute(this.theme)}>
+        <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
+          <slot />
+        </TagType>
+      </Host>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }
-
-    ${tagName} em, ${tagName} i {
-      font-style: normal !important;
-    }
-    `;
-
-    insertSlottedStyles(this.host, style);
   }
 }

@@ -38,9 +38,9 @@ describe('Tabs Bar', () => {
             <button type="button">Button Tab Three</button>
           </p-tabs-bar>
           <p-tabs-bar theme="${theme}" active-tab-index="1">
-            <a>Anchor Tab One</a>
-            <a>Anchor Tab Two</a>
-            <a>Anchor Tab Three</a>
+            <a href="#">Anchor Tab One</a>
+            <a href="#">Anchor Tab Two</a>
+            <a href="#">Anchor Tab Three</a>
           </p-tabs-bar>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));

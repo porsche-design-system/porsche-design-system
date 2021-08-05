@@ -9,12 +9,6 @@ import {
   getBaseSlottedStyles,
 } from './';
 
-describe('getBaseSlottedStyles()', () => {
-  it('should return correct css', () => {
-    expect(getBaseSlottedStyles()).toMatchSnapshot();
-  });
-});
-
 describe('pxToRem()', () => {
   it.each([
     [0, 0],
@@ -74,8 +68,8 @@ describe('getHoverStyles()', () => {
     expect(getHoverStyles()).toMatchSnapshot();
   });
 
-  it('should return correct JssStyle with important', () => {
-    expect(getHoverStyles({ important: true })).toMatchSnapshot();
+  it('should return correct default JssStyle for dark theme', () => {
+    expect(getHoverStyles({ theme: 'dark' })).toMatchSnapshot();
   });
 });
 
@@ -91,8 +85,10 @@ describe('getFocusStyles()', () => {
   it('should return correct JssStyle for custom offset', () => {
     expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
   });
+});
 
-  it('should return correct JssStyle with important', () => {
-    expect(getFocusStyles({ important: true })).toMatchSnapshot();
+describe('getBaseSlottedStyles()', () => {
+  it('should return correct styles', () => {
+    expect(getBaseSlottedStyles()).toMatchSnapshot();
   });
 });
