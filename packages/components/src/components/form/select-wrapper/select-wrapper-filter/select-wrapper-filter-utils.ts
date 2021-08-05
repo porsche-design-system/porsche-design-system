@@ -13,6 +13,5 @@ export const getAriaAttributes = (isOpen: boolean, dropdownId: string, activeDes
 };
 
 export const addComponentCss = (host: HTMLElement, disabled: boolean, state: FormState, theme: Theme): void => {
-  console.log(getComponentCss(disabled, state, theme));
   attachCss(host, getComponentCss(disabled, state, theme));
 };

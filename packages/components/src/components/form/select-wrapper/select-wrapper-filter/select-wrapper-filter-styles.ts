@@ -31,8 +31,8 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
   )[state];
 
   const [boxShadow, boxShadowHover] = stateColor
-    ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]
-    : [getBoxShadow(contrastMediumColor), getBoxShadow(contrastHighColor)];
+    ? [getStateBoxShadow('currentColor'), getStateBoxShadow(stateHoverColor)]
+    : [getBoxShadow('currentColor'), getBoxShadow(contrastHighColor)];
 
   const placeHolderStyles: JssStyle = {
     opacity: 1,
@@ -40,15 +40,16 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
   };
 
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
+    ...buildHostStyles({
+      color: stateColor || contrastMediumColor, // allow override by select-wrapper when label is hovered
+      ...addImportantToEachRule({
         display: 'block',
         position: 'absolute',
         bottom: '2px',
         left: '2px',
         width: `calc(100% - ${pxToRemWithUnit(44)})`,
-      })
-    ),
+      }),
+    }),
     ...buildGlobalStyles({
       input: {
         display: 'block',
@@ -85,7 +86,7 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
               cursor: 'not-allowed',
               '&+$span': {
                 cursor: 'not-allowed',
-                boxShadow: getBoxShadow(disabledColor),
+                boxShadow: stateColor ? getStateBoxShadow(stateColor) : getBoxShadow(disabledColor),
               },
             }
           : {
