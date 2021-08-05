@@ -49,7 +49,7 @@ export class SelectWrapperFilter {
 
   public render(): JSX.Element {
     return (
-      <Host tabindex={0}>
+      <Host {...(!this.disabled && { tabindex: 0 })}>
         <input
           type="text"
           role="combobox"
