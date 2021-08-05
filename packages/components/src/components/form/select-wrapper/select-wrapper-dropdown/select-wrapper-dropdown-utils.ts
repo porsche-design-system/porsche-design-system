@@ -1,9 +1,7 @@
 import type { AriaAttributes } from 'react';
-import type { DropdownDirection, DropdownDirectionInternal, OptionMap } from '../select-wrapper/select-wrapper-utils';
+import type { DropdownDirectionInternal, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
-import { attachCss, booleanToString, getHTMLElements } from '../../../../utils';
-import type { Theme } from '../../../../types';
-import { getComponentCss } from './select-wrapper-dropdown-styles';
+import { booleanToString, getHTMLElements } from '../../../../utils';
 
 export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
 export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper
@@ -59,13 +57,4 @@ export const handleScroll = (host: HTMLElement, highlightedIndex: number): void 
       }
     }
   }
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  direction: DropdownDirection,
-  isOpen: boolean,
-  theme: Theme
-): void => {
-  attachCss(host, getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, theme));
 };

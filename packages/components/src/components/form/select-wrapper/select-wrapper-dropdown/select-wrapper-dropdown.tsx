@@ -3,12 +3,8 @@ import { getPrefixedTagNames } from '../../../../utils';
 import type { DropdownDirection, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import type { Theme } from '../../../../types';
 import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
-import {
-  addComponentCss,
-  getOptionAriaAttributes,
-  getAriaAttributes,
-  handleScroll,
-} from './select-wrapper-dropdown-utils';
+import { getOptionAriaAttributes, getAriaAttributes, handleScroll } from './select-wrapper-dropdown-utils';
+import { addComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
