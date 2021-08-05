@@ -175,6 +175,7 @@ export class SelectWrapper {
           </label>
           {this.filter && (
             <PrefixedTagNames.pSelectWrapperFilter
+              class="filter"
               selectedOptionMap={getSelectedOptionMap(this.optionMaps)}
               // highlightedOptionMap={getHighlightedOptionMap(this.optionMaps)}
               dropdownId={dropdownId}

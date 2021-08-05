@@ -27,8 +27,7 @@ $root: '.root';
   border-radius: 0 !important; // for safari
   background: $p-color-background-default !important;
   box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium !important;
-
-  // opacity: 1 !important;
+  opacity: 1 !important; // chrome applies 0.7 via :disabled
   font-family: $p-font-family !important;
   font-weight: $p-font-weight-regular !important;
   font-size: $p-font-size-small !important;
@@ -67,6 +66,9 @@ input:focus + span {
   }
 
   // next rules are unnecessarily nested
+  .label:hover + .filter {
+    color: $p-color-neutral-contrast-high;
+  }
   .label__text:hover ~ ::slotted(select:not(:disabled)),
   ::slotted(select:hover:not(:disabled)) {
     box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
@@ -82,6 +84,10 @@ input:focus + span {
     ::slotted(select) {
       background: $p-color-theme-dark-background-default !important;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium !important;
+    }
+
+    .label:hover + .filter {
+      color: $p-color-theme-dark-neutral-contrast-high;
     }
 
     .label__text:hover ~ ::slotted(select:not(:disabled)),
@@ -109,6 +115,10 @@ input:focus + span {
       }
     }
 
+    .label:hover + .filter {
+      color: darken($p-color-notification-success, 12%);
+    }
+
     .label__text:hover ~ ::slotted(select:not(:disabled)),
     ::slotted(select:hover:not(:disabled)) {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
@@ -120,6 +130,10 @@ input:focus + span {
     }
 
     @at-root #{$root}--theme-dark#{&} {
+      .label:hover + .filter {
+        color: darken($p-color-theme-dark-notification-success, 12%);
+      }
+
       .label__text:hover ~ ::slotted(select:not(:disabled)),
       ::slotted(select:hover:not(:disabled)) {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%) !important;
@@ -149,6 +163,10 @@ input:focus + span {
       }
     }
 
+    .label:hover + .filter {
+      color: darken($p-color-notification-error, 12%);
+    }
+
     .label__text:hover ~ ::slotted(select:not(:disabled)),
     ::slotted(select:hover:not(:disabled)) {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
@@ -160,6 +178,10 @@ input:focus + span {
     }
 
     @at-root #{$root}--theme-dark#{&} {
+      .label:hover + .filter {
+        color: darken($p-color-theme-dark-notification-error, 12%);
+      }
+
       .label__text:hover ~ ::slotted(select:not(:disabled)),
       ::slotted(select:hover:not(:disabled)) {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%) !important;
