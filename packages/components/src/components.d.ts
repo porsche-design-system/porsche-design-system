@@ -459,7 +459,7 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Adapts the icon color when used on dark background.
+          * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
     }
@@ -1586,7 +1586,7 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Adapts the icon color when used on dark background.
+          * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
     }

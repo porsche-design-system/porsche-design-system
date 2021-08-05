@@ -7,7 +7,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList>
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList>
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -23,7 +23,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList theme="dark">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList theme="dark">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -39,7 +39,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList listType="ordered">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList listType="ordered">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -55,7 +55,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList listType="ordered" theme="dark">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList listType="ordered" theme="dark">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -71,7 +71,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList listType="ordered" orderType="alphabetically">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList listType="ordered" orderType="alphabetically">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -87,7 +87,7 @@ export const TextListPage = (): JSX.Element => {
         <PTextList listType="ordered" orderType="alphabetically" theme="dark">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
-            The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+            The quick brown fox jumps over the lazy dog
             <PTextList listType="ordered" orderType="alphabetically" theme="dark">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
@@ -96,6 +96,17 @@ export const TextListPage = (): JSX.Element => {
             </PTextList>
           </PTextListItem>
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground light" title="should apply custom styles for dedicated slotted content">
+        <PTextList>
+          <PTextListItem>
+            <span>
+              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}
+              <em>emphasized</em> and <i>italic</i> text
+            </span>
+          </PTextListItem>
         </PTextList>
       </div>
     </>

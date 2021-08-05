@@ -1,5 +1,5 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { addImportantToEachRule, attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, attachCss, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -42,12 +42,12 @@ export const getComponentCss = (
   return getCss(
     addImportantToEachRule(
       mergeDeep(
-        buildResponsiveJss(inline, getInlineStyles),
-        buildResponsiveJss(wrap, getWrapStyles),
-        buildResponsiveJss(direction, getDirectionStyles),
-        buildResponsiveJss(justifyContent, getJustifyContentStyles),
-        buildResponsiveJss(alignItems, getAlignItemsStyles),
-        buildResponsiveJss(alignContent, getAlignContentStyles)
+        buildResponsiveHostStyles(inline, getInlineStyles),
+        buildResponsiveHostStyles(wrap, getWrapStyles),
+        buildResponsiveHostStyles(direction, getDirectionStyles),
+        buildResponsiveHostStyles(justifyContent, getJustifyContentStyles),
+        buildResponsiveHostStyles(alignItems, getAlignItemsStyles),
+        buildResponsiveHostStyles(alignContent, getAlignContentStyles)
       )
     )
   );

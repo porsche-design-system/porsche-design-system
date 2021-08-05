@@ -37,10 +37,6 @@
   position: relative !important;
 }
 
-::slotted(p) {
-  margin: 0;
-}
-
 .root {
   $bem-block: &;
   display: flex;

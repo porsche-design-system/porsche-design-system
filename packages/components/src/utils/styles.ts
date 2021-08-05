@@ -1,9 +1,26 @@
-import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
+import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
+import { isDark } from '.';
+import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
+
+export const colorDarken = {
+  neutralContrast: {
+    high: '#151718',
+  },
+  state: {
+    hover: '#980014',
+  },
+  darkTheme: {
+    default: '#e0e0e0',
+    state: {
+      hover: '#c4001a',
+    },
+  },
+};
 
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
@@ -24,42 +41,36 @@ export const addImportantToEachRule = <T extends Record<string, unknown>>(style:
 };
 
 type GetHoverStylesOptions = {
-  important?: boolean;
-};
-
-const defaultHoverStylesOptions: GetHoverStylesOptions = {
-  important: false,
+  theme?: Theme;
 };
 
 export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = { ...defaultHoverStylesOptions, ...opts };
-
-  const style: JssStyle = {
-    transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-    '&:hover': {
-      color: color.state.hover,
-    },
+  const options: GetHoverStylesOptions = {
+    theme: 'light',
+    ...opts,
   };
 
-  return options.important ? addImportantToEachRule(style) : style;
+  return {
+    transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+    '&:hover': {
+      color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
+    },
+  };
 };
 
 type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
-  important?: boolean;
-};
-
-const defaultFocusStylesOptions: GetFocusStylesOptions = {
-  color: color.state.focus,
-  offset: 2,
-  important: false,
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
+  const options: GetFocusStylesOptions = {
+    color: color.state.focus,
+    offset: 2,
+    ...opts,
+  };
 
-  const style: JssStyle = {
+  return {
     outline: 'transparent solid 1px',
     outlineOffset: `${options.offset}px`,
     '&::-moz-focus-inner': {
@@ -72,8 +83,42 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       outlineColor: 'transparent',
     },
   };
+};
 
-  return options.important ? addImportantToEachRule(style) : style;
+type GetFocusPseudoStylesOptions = {
+  color?: string;
+  offset?: number;
+};
+
+/**
+ * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
+ */
+export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles => {
+  const options: GetFocusPseudoStylesOptions = {
+    color: 'currentColor',
+    offset: 2,
+    ...opts,
+  };
+
+  return {
+    '& a::before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      outline: '1px solid transparent',
+      outlineOffset: `${options.offset}px`,
+    },
+    '& a:focus::before': {
+      outlineColor: options.color,
+    },
+    '& a:focus:not(:focus-visible)::before': {
+      outlineColor: 'transparent',
+    },
+  };
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
@@ -87,6 +132,7 @@ export const getBaseSlottedStyles = (): Styles => {
       ...getHoverStyles(),
       ...getFocusStyles({ offset: 1 }),
     },
+    '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
     '& b, & strong': {
       fontWeight: font.weight.bold,
     },

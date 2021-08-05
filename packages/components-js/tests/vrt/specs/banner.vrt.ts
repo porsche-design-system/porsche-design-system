@@ -4,6 +4,8 @@ import {
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   getVisualRegressionContentWrapperTester,
   getVisualRegressionStatesTester,
   setContentWithDesignSystem,
@@ -36,13 +38,13 @@ describe('Banner', () => {
             .playground p-banner { --p-banner-position-type: static; }
           </style>`;
 
-        const getElementsMarkup: GetMarkup = () => `
-          <p-banner state="neutral">
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-banner state="neutral" theme="${theme}">
             <span slot="title">Some banner title</span>
-            <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
+            <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
           </p-banner>`;
 
-        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-banner span a');
         await forceFocusedState(page, '.focused > p-banner span a');

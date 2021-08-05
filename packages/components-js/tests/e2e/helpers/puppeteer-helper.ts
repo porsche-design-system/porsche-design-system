@@ -216,10 +216,9 @@ export const getOutlineStyle = async (element: ElementHandle, opts?: GetStyleOnF
     pseudo: null,
     ...opts,
   };
-  const { pseudo } = options;
-  return `${await getElementStyle(element, 'outline', { pseudo })} ${await getElementStyle(element, 'outlineOffset', {
-    pseudo,
-  })}`;
+  const outline = await getElementStyle(element, 'outline', options);
+  const outlineOffset = await getElementStyle(element, 'outlineOffset', options);
+  return `${outline} ${outlineOffset}`;
 };
 
 export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
