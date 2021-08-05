@@ -3,8 +3,6 @@ import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
-  getTagName,
-  insertSlottedStyles,
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
@@ -14,7 +12,7 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { addSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -40,7 +38,7 @@ export class CheckboxWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    addSlottedCss(this.host);
     this.observeAttributes();
   }
 
@@ -110,29 +108,4 @@ export class CheckboxWrapper {
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

@@ -399,7 +399,7 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 - `./sketch/web/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` - **make sure major and minor version is in sync with components release** (If something goes wrong, make sure to revert all local changes before executing the task again.)
+1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` - e.g. **./docker.sh run-prepare-release-sketch-library web 2.2.3 make sure major and minor version is in sync with components release** (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Sketch Library
 
@@ -412,7 +412,7 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 ### Release
 
-1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}` e.g. **.Release Porsche Design System - Sketch Library Web v1.1.1 | aa**
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)

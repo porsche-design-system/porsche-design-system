@@ -2,7 +2,9 @@ import {
   attachCss,
   buildGlobalStyles,
   buildHostStyles,
-  buildResponsiveJss,
+  buildResponsiveHostStyles,
+  buildResponsiveStyles,
+  buildSlottedStyles,
   getCss,
   isObject,
   mergeDeep,
@@ -121,21 +123,49 @@ describe('buildGlobalStyles()', () => {
   });
 });
 
-describe('buildResponsiveJss()', () => {
+describe('buildSlottedStyles()', () => {
+  it('should return @global styles object with node selector and important styles', () => {
+    const el = document.createElement('p-button');
+    expect(buildSlottedStyles(el, { div: { marginLeft: 5 } })).toStrictEqual({
+      '@global': { 'p-button': { div: { marginLeft: '5 !important' } } },
+    });
+  });
+});
+
+describe('buildResponsiveHostStyles()', () => {
   const getStyles = (val: number): JssStyle => ({ width: 100 * val });
 
   it('should return flat jss for simple type', () => {
-    expect(buildResponsiveJss(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+    expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
   });
 
   it('should return nested jss for responsive type', () => {
-    expect(buildResponsiveJss({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+    expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
       ':host': { width: 600 },
       '@media (min-width: 480px)': { ':host': { width: 300 } },
       '@media (min-width: 760px)': { ':host': { width: 400 } },
       '@media (min-width: 1000px)': { ':host': { width: 500 } },
       '@media (min-width: 1300px)': { ':host': { width: 600 } },
       '@media (min-width: 1760px)': { ':host': { width: 700 } },
+    });
+  });
+});
+
+describe('buildResponsiveStyles()', () => {
+  const getStyles = (val: number): JssStyle => ({ root: { width: 100 * val } });
+
+  it('should return flat jss for simple type', () => {
+    expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ root: { width: 600 } });
+  });
+
+  it('should return nested jss for responsive type', () => {
+    expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      root: { width: 600 },
+      '@media (min-width: 480px)': { root: { width: 300 } },
+      '@media (min-width: 760px)': { root: { width: 400 } },
+      '@media (min-width: 1000px)': { root: { width: 500 } },
+      '@media (min-width: 1300px)': { root: { width: 600 } },
+      '@media (min-width: 1760px)': { root: { width: 700 } },
     });
   });
 });

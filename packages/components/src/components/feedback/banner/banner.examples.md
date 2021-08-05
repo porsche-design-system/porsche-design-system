@@ -70,7 +70,7 @@ p-banner {
     get basic() {
       return `<p-banner state="${this.state}">
   <span slot="title">Some banner title</span>
-  <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
+  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
 </p-banner>`
     }
     
