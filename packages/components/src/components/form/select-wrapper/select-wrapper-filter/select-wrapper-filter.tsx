@@ -25,8 +25,7 @@ export class SelectWrapperFilter {
   private inputElement: HTMLInputElement;
 
   @Listen('focus', { capture: false })
-  public onFocus(e: FocusEvent): void {
-    console.log('onFocus', e);
+  public onFocus(): void {
     this.inputElement.focus();
   }
 
