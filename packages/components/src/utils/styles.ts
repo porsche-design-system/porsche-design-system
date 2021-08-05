@@ -7,15 +7,27 @@ import type { Theme } from '../types';
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 export const transitionTimingFunction = 'ease';
 
-export const colorDarken = {
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
+export const colorDarken: DeepPartial<typeof color> = {
   neutralContrast: {
     high: '#151718',
+  },
+  notification: {
+    success: '#014d0c',
+    error: '#a30000',
   },
   state: {
     hover: '#980014',
   },
   darkTheme: {
     default: '#e0e0e0',
+    notification: {
+      success: '#017d14',
+      error: '#d30303',
+    },
     state: {
       hover: '#c4001a',
     },

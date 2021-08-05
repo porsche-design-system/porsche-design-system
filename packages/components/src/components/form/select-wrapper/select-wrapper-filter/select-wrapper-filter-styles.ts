@@ -3,6 +3,7 @@ import {
   attachCss,
   buildGlobalStyles,
   buildHostStyles,
+  colorDarken,
   getCss,
   isDark,
   pxToRemWithUnit,
@@ -27,9 +28,7 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
   } = isDarkTheme ? color.darkTheme : color;
 
   const stateColor = notification[state];
-  const stateHoverColor = (
-    isDarkTheme ? { success: '#017d14', error: '#d30303' } : { success: '#014d0c', error: '#a30000' }
-  )[state];
+  const stateHoverColor = (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state];
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow('currentColor'), getStateBoxShadow(stateHoverColor)]
