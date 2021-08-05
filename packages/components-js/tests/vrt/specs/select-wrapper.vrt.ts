@@ -32,7 +32,7 @@ describe('Select Wrapper', () => {
 
         const head = `<style type="text/css">p-select-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
-        const slottedMarkup = `span slot="label">Some slotted label with a <a href="#">link</a>.</span>
+        const slottedMarkup = `<span slot="label">Some slotted label with a <a href="#">link</a>.</span>
 <span slot="description">Some slotted description with a <a href="#">link</a>.</span>
 <span slot="message">Some slotted validation message with a <a href="#">link</a>.</span>`;
 
