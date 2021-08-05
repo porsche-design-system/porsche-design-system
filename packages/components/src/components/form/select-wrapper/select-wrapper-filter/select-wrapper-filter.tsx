@@ -1,11 +1,10 @@
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
-import type { Theme } from '../../../../types';
+import type { FormState, Theme } from '../../../../types';
 import type { OptionMap } from '../select-wrapper/select-wrapper-utils';
-import { getAriaAttributes } from './select-wrapper-filter-utils';
+import { getAriaAttributes, addComponentCss } from './select-wrapper-filter-utils';
 
 @Component({
   tag: 'p-select-wrapper-filter',
-  styleUrl: 'select-wrapper-filter.scss',
   shadow: true,
 })
 export class SelectWrapperFilter {
@@ -18,6 +17,7 @@ export class SelectWrapperFilter {
   @Prop() public value: string;
   @Prop() public disabled?: boolean = false;
   @Prop() public isOpen?: boolean = false;
+  @Prop() public state?: FormState;
   @Prop() public dropdownId?: string;
   @Prop() public onClick?: () => void;
   @Prop() public onChange: (e: InputEvent) => void;
@@ -40,6 +40,10 @@ export class SelectWrapperFilter {
     //   this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
     //   this.filterInput.addEventListener('input', this.onFilterSearch);
     // }
+  }
+
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.disabled, this.state, this.theme);
   }
 
   public render(): JSX.Element {
