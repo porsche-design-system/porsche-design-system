@@ -14,8 +14,8 @@ import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 import type { JssStyle } from 'jss';
 
-const getBoxShadow = (color: string): string => `${color} 0 0 0 1px inset`;
-const getStateBoxShadow = (color: string): string => `${color} 0 0 0 2px inset`;
+const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
+const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
 export const getComponentCss = (disabled: boolean, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
@@ -103,7 +103,7 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
         transition: `box-shadow ${transitionDuration} ${transitionTimingFunction}`,
         pointerEvents: 'all',
         cursor: 'pointer',
-        boxShadow: boxShadow,
+        boxShadow,
         ...(!disabled && {
           '&:hover': {
             boxShadow: boxShadowHover,
