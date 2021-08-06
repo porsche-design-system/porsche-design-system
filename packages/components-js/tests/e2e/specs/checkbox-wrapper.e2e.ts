@@ -418,8 +418,9 @@ describe('checkbox-wrapper', () => {
 
       expect(status.componentDidLoad['p-checkbox-wrapper']).withContext('componentDidLoad: p-checkbox-wrapper').toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
@@ -436,7 +437,7 @@ describe('checkbox-wrapper', () => {
         .withContext('componentDidUpdate: p-checkbox-wrapper')
         .toBe(0);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });

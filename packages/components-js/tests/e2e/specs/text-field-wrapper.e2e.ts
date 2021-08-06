@@ -527,10 +527,10 @@ describe('text-field-wrapper', () => {
         .withContext('componentDidLoad: p-text-field-wrapper')
         .toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(3);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
 
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(6);
     });
 
     it('should work without unnecessary round trips after prop change', async () => {

@@ -172,6 +172,9 @@ export class SelectWrapper {
       [prefix(`select-wrapper--theme-${this.theme}`)]: true,
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
+    const messageIconClasses = {
+      [prefix('select-wrapper__message-icon')]: true,
+    };
     const filterInputClasses = {
       [prefix('select-wrapper__filter-input')]: true,
       [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true,
@@ -239,6 +242,12 @@ export class SelectWrapper {
         </div>
         {hasMessage(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={getRole(this.state)}>
+            <PrefixedTagNames.pIcon
+              class={messageIconClasses}
+              name={this.state === 'error' ? 'exclamation' : 'check'}
+              color="inherit"
+              aria-hidden="true"
+            />
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
