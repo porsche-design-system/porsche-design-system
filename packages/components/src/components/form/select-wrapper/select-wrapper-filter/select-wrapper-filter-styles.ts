@@ -11,8 +11,8 @@ import {
   transitionTimingFunction,
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
+import type { JssStyle } from '../../../../utils';
 import { color, font } from '@porsche-design-system/utilities';
-import type { JssStyle } from 'jss';
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
