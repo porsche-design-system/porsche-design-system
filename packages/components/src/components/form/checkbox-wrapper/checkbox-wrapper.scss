@@ -220,8 +220,4 @@
   @include required;
 }
 
-.message {
-  margin-top: $p-spacing-4;
-  color: $p-color-default;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-}
+@include state-message;
