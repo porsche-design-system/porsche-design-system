@@ -18,17 +18,23 @@ import { DropdownDirection } from '../select-wrapper/select-wrapper-utils';
 const dropdownPositionVar = '--p-dropdown-position';
 
 export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): string => {
-  const isDarkTheme = isDark(theme);
   const isDirectionDown = direction === 'down';
-  const { darkTheme } = color;
+  const isDarkTheme = isDark(theme);
+  const {
+    default: textColor,
+    background: { default: backgroundColor, surface: surfaceColor },
+    neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
+    state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
+  } = isDarkTheme ? color.darkTheme : color;
+  const highlightedSelectedColor = isDarkTheme ? textColor : surfaceColor; // strange that surfaceColor isn't used for dark theme
 
   return getCss({
     ...buildHostStyles({
       [dropdownPositionVar]: 'absolute',
       // borderColors are not set with !important to allow color override via parent
-      borderColor: isDarkTheme ? darkTheme.neutralContrast.medium : color.neutralContrast.medium,
+      borderColor: contrastMediumColor,
       '&:hover': {
-        borderColor: isDarkTheme ? darkTheme.neutralContrast.high : color.neutralContrast.high,
+        borderColor: contrastHighColor,
       },
       ...addImportantToEachRule({
         fontFamily: font.family,
@@ -42,8 +48,8 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
-        color: isDarkTheme ? darkTheme.default : color.default,
-        background: color.background.default,
+        color: textColor,
+        background: backgroundColor,
         borderWidth: '1px', // separate css property to allow color override via parent
         borderStyle: 'solid', // separate css property to allow color override via parent
         scrollbarWidth: 'thin', // firefox
@@ -51,9 +57,6 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         transition: `border-color ${transitionDuration} ${transitionTimingFunction}`,
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
-        ...(isDarkTheme && {
-          background: darkTheme.background.default,
-        }),
         ...(isDirectionDown
           ? {
               top: 'calc(100%-1px)',
@@ -66,7 +69,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
                 top: 0,
                 width: '100%',
                 height: '1px',
-                background: isDarkTheme ? darkTheme.neutralContrast.low : color.neutralContrast.low,
+                background: contrastLowColor,
               },
             }
           : {
@@ -80,7 +83,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
                 bottom: 0,
                 width: '100%',
                 height: '1px',
-                background: isDarkTheme ? darkTheme.neutralContrast.low : color.neutralContrast.low,
+                background: contrastLowColor,
               },
             }),
         ...(!isOpen && {
@@ -107,12 +110,12 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       },
       '&__sr': getScreenReaderJssStyle(),
       '&:not([aria-disabled]):not([role="status"]):hover': {
-        color: isDarkTheme ? darkTheme.state.hover : color.state.hover,
-        background: isDarkTheme ? color.default : color.background.surface,
+        color: hoverColor,
+        background: highlightedSelectedColor,
       },
       '&--highlighted, &--selected': {
-        color: isDarkTheme ? darkTheme.state.active : color.state.active,
-        background: isDarkTheme ? color.default : color.background.surface,
+        color: activeColor,
+        background: highlightedSelectedColor,
       },
       '&--selected': {
         cursor: 'default',
@@ -120,7 +123,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       },
       '&--disabled': {
         cursor: 'not-allowed',
-        color: isDarkTheme ? darkTheme.state.disabled : color.state.disabled,
+        color: disabledColor,
       },
       '&--hidden': {
         display: 'none',
