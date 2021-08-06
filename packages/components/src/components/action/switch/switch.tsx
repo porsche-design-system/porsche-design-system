@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import {
-  booleanToString,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
@@ -84,7 +83,7 @@ export class Switch {
         <button
           type="button"
           role="switch"
-          aria-checked={booleanToString(this.checked)}
+          aria-checked={this.checked ? 'true' : 'false'}
           aria-busy={this.loading ? 'true' : null}
           disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}

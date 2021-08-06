@@ -62,7 +62,7 @@ export class SelectWrapperFilter {
           {...getAriaAttributes(this.isOpen, this.dropdownId, this.highlightedOptionMap?.key)}
           // aria-autocomplete="both"
           // aria-controls={this.dropdownId}
-          // aria-expanded={booleanToString(this.isOpen)}
+          // aria-expanded={this.isOpen ? 'true' : 'false'}
           // aria-activedescendant={`option-${this.highlightedOptionMap?.key}`}
         />
         <span onClick={this.onFilterClick} />

@@ -12,7 +12,6 @@ import {
   setAriaAttributes,
   getRole,
   unobserveAttributes,
-  booleanToString,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { addSlottedCss } from './text-field-wrapper-styles';
@@ -114,7 +113,7 @@ export class TextFieldWrapper {
               onClick={this.togglePassword}
               disabled={disabled}
               role="switch"
-              aria-pressed={booleanToString(this.showPassword)}
+              aria-pressed={this.showPassword ? 'true' : 'false'}
             >
               <span class="sr-only">Toggle password visibility</span>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />

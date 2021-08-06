@@ -19,5 +19,3 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
     removeAttribute(el, 'aria-invalid');
   }
 };
-
-export const booleanToString = (value: boolean): 'true' | 'false' => (value ? 'true' : 'false');
