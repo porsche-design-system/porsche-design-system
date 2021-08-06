@@ -1,4 +1,4 @@
-import { booleanToString, setAriaAttributes, SetAriaAttributesOptions } from '.';
+import { setAriaAttributes, SetAriaAttributesOptions } from '.';
 import * as domUtils from './dom';
 
 describe('setAriaAttributes()', () => {
@@ -32,16 +32,5 @@ describe('setAriaAttributes()', () => {
     } else if (options.state) {
       expect(removeAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid');
     }
-  });
-});
-
-describe('booleanToString()', () => {
-  it.each<[boolean, string]>([
-    [true, 'true'],
-    [false, 'false'],
-    [null, 'false'],
-    [undefined, 'false'],
-  ])('should for %o return %o', (value, result) => {
-    expect(booleanToString(value)).toBe(result);
   });
 });
