@@ -31,7 +31,7 @@
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jest": "^27.0.6",
-    "puppeteer": "~10.2.0",
+    "puppeteer": "~10.1.0",
     "react-scripts": "^4.0.2",
     "sass": "^1.35.2",
     "ts-jest": "^27.0.3",
