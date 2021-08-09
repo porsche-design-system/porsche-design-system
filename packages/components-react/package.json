@@ -54,7 +54,7 @@
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jest": "^27.0.6",
-    "puppeteer": "~10.2.0",
+    "puppeteer": "~10.1.0",
     "react-scripts": "^4.0.2",
     "rollup": "^2.56.1",
     "rollup-plugin-polyfill": "^3.0.0",
