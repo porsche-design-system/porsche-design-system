@@ -11,6 +11,27 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-toast></p-toast>
+    <button type="button">Add Toast</button>
+    <script>
+      // - provide function toast('some message') which appends the p-toast-item and removes it after a couple of seconds
+      // - append to dom / conditional rendering (similar to banner) and removes itself after a couple of seconds
+      // - open prop won't work properly
+      document.querySelector('button').addEventListener('click', () => {
+        ToastController.addMessage({ message: 'Some neutral message' });
+        ToastController.addMessage({ message: 'Some success message', state: 'success' });
+        ToastController.addMessage({ message: 'Some warning message', state: 'warning' });
+        ToastController.addMessage({ message: 'Some error message', state: 'error' });
+        ToastController.addMessage({
+          message: 'Some neutral message',
+          action: {
+            label: 'Retry',
+            callback: () => alert('Some custom action callback.'),
+          },
+        });
+      });
+    </script>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
