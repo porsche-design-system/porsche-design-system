@@ -54,7 +54,7 @@
     "@typescript-eslint/parser": "^4.28.2",
     "autoprefixer": "^10.2.5",
     "change-case": "^4.1.2",
-    "concurrently": "^6.0.2",
+    "concurrently": "^6.2.1",
     "construct-style-sheets-polyfill": "^2.4.16",
     "dts-bundle-generator": "^5.8.0",
     "eslint": "^7.30.0",
