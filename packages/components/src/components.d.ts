@@ -20,6 +20,7 @@ import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
+import { ToastState } from "./components/feedback/toast/toast-types";
 export namespace Components {
     interface PAccordion {
         /**
@@ -810,6 +811,18 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PToast {
+    }
+    interface PToastItem {
+        /**
+          * Defines a call to action button.
+         */
+        "action"?: { label: string; callback: () => void };
+        /**
+          * Defines visual appearance.
+         */
+        "state"?: ToastState;
+    }
 }
 declare global {
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
@@ -1052,6 +1065,18 @@ declare global {
         prototype: HTMLPTextareaWrapperElement;
         new (): HTMLPTextareaWrapperElement;
     };
+    interface HTMLPToastElement extends Components.PToast, HTMLStencilElement {
+    }
+    var HTMLPToastElement: {
+        prototype: HTMLPToastElement;
+        new (): HTMLPToastElement;
+    };
+    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
+    }
+    var HTMLPToastItemElement: {
+        prototype: HTMLPToastItemElement;
+        new (): HTMLPToastItemElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1093,6 +1118,8 @@ declare global {
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
+        "p-toast": HTMLPToastElement;
+        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -1917,6 +1944,18 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PToast {
+    }
+    interface PToastItem {
+        /**
+          * Defines a call to action button.
+         */
+        "action"?: { label: string; callback: () => void };
+        /**
+          * Defines visual appearance.
+         */
+        "state"?: ToastState;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -1958,6 +1997,8 @@ declare namespace LocalJSX {
         "p-text-list": PTextList;
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
+        "p-toast": PToast;
+        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
@@ -2004,6 +2045,8 @@ declare module "@stencil/core" {
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
+            "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
+            "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
     }
 }
