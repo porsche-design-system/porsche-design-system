@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7050,
-    "gzipSize": 2191
+    "size": 6936,
+    "gzipSize": 2169
   },
   {
     "chunkShortName": "pagination",
