@@ -28,6 +28,7 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
+  private clickedElement: HTMLElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -81,7 +82,10 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.disableBackdropClick && this.onHostClick}>
+      <Host
+        onMouseDown={!this.disableBackdropClick && this.onMouseDown}
+        onMouseUp={!this.disableBackdropClick && this.onMouseUp}
+      >
         <aside
           class={rootClasses}
           role="dialog"
@@ -160,9 +164,13 @@ export class Modal {
     this.close.emit();
   };
 
-  private onHostClick = (e: MouseEvent): void => {
-    const [firstEl] = e.composedPath() as HTMLElement[];
-    if (firstEl === this.host) {
+  private onMouseDown = (e: MouseEvent): void => {
+    const [firstElement] = e.composedPath() as HTMLElement[];
+    this.clickedElement = firstElement;
+  };
+
+  private onMouseUp = (): void => {
+    if (this.clickedElement === this.host) {
       this.closeModal();
     }
   };
