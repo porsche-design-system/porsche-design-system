@@ -8,7 +8,6 @@ import {
   getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
-  removeAttribute,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -131,6 +130,18 @@ describe('modal', () => {
       await waitForStencilLifecycle(page);
 
       expect(calls).toBe(4);
+    });
+
+    it('should not be closed if clicked inside modal an click released outside', async () => {
+      // click inside modal
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      // move outside and release click
+      await page.mouse.move(5, 5);
+      await page.mouse.up();
+      await waitForStencilLifecycle(page);
+
+      expect(calls).toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
