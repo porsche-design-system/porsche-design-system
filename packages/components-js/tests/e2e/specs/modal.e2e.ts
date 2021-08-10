@@ -132,7 +132,7 @@ describe('modal', () => {
       expect(calls).toBe(4);
     });
 
-    it('should not be closed if clicked inside modal an click released outside', async () => {
+    it('should not be closed if mousedown inside and mouseup outside modal', async () => {
       // click inside modal
       await page.mouse.move(960, 400);
       await page.mouse.down();
