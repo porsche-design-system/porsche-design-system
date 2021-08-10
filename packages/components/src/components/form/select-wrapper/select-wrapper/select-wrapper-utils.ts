@@ -27,6 +27,7 @@ export type OptionMap = {
   title?: string;
 };
 
+// only alias for function, unit?
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => getHTMLElements(select, 'option');
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
@@ -94,6 +95,7 @@ export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
 export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
+  // prob. needs to be <= 0
   if (validMax < 0) {
     return;
   }
