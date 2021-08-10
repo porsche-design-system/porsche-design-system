@@ -4,13 +4,13 @@
   </main>
   <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <aside class="sidebar">
+    <div class="sidebar">
       <Header />
       <p-divider class="divider-spacing-small"></p-divider>
       <Sidebar />
       <p-divider class="divider-spacing-small"></p-divider>
       <Footer />
-    </aside>
+    </div>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
       <p-spinner v-if="isLoading" size="medium" aria-label="Loading page"></p-spinner>

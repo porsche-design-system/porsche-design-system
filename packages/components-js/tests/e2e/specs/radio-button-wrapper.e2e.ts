@@ -393,8 +393,9 @@ describe('radio-button-wrapper', () => {
         .withContext('componentDidLoad: p-radio-button-wrapper')
         .toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
@@ -407,7 +408,7 @@ describe('radio-button-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
