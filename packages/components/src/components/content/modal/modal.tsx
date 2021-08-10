@@ -28,7 +28,7 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
-  private clickedElement: HTMLElement;
+  private elementOnMouseDown: HTMLElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -166,11 +166,11 @@ export class Modal {
 
   private onMouseDown = (e: MouseEvent): void => {
     const [firstElement] = e.composedPath() as HTMLElement[];
-    this.clickedElement = firstElement;
+    this.elementOnMouseDown = firstElement;
   };
 
   private onMouseUp = (): void => {
-    if (this.clickedElement === this.host) {
+    if (this.elementOnMouseDown === this.host) {
       this.closeModal();
     }
   };
