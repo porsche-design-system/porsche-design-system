@@ -81,7 +81,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.disableBackdropClick && this.onHostClick}>
+      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
         <aside
           class={rootClasses}
           role="dialog"
@@ -160,7 +160,7 @@ export class Modal {
     this.close.emit();
   };
 
-  private onHostClick = (e: MouseEvent): void => {
+  private onMouseDown = (e: MouseEvent): void => {
     const [firstEl] = e.composedPath() as HTMLElement[];
     if (firstEl === this.host) {
       this.closeModal();
