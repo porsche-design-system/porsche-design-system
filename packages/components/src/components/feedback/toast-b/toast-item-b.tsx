@@ -1,19 +1,19 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from './toast-item-styles';
-import type { ToastState } from './toast-types';
+import { addComponentCss } from './toast-item-b-styles';
+import type { CallToAction, ToastState } from './toast-b-types';
 
 @Component({
-  tag: 'p-toast-item',
+  tag: 'p-toast-item-b',
   shadow: true,
 })
-export class ToastItem {
+export class ToastItemB {
   @Element() public host!: HTMLElement;
 
   /** Defines visual appearance. */
   @Prop() public state?: ToastState = 'neutral';
 
   /** Defines a call to action button. */
-  @Prop() public action?: { label: string; callback: () => void };
+  @Prop() public action?: CallToAction;
 
   public connectedCallback(): void {
     addComponentCss(this.host, this.state);

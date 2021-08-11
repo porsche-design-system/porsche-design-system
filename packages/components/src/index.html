@@ -11,13 +11,26 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <p-toast></p-toast>
-    <button type="button">Add Toast</button>
+    <button id="button-a" type="button">Add Toast "A"</button>
+    <button id="button-b" type="button">Add Toast "B"</button>
+
+    <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      // - provide function toast('some message') which appends the p-toast-item and removes it after a couple of seconds
-      // - append to dom / conditional rendering (similar to banner) and removes itself after a couple of seconds
-      // - open prop won't work properly
-      document.querySelector('button').addEventListener('click', () => {
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+        window.addEventListener(`stencil_${x}`, (e) => {
+          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+        })
+      );
+    </script>
+    <!-- /END -->
+    <p-toast-a></p-toast-a>
+    <p-toast-b></p-toast-b>
+
+    <div></div>
+
+    <script>
+      document.querySelector('#button-a').addEventListener('click', () => {
         ToastController.addMessage({ message: 'Some neutral message' });
         ToastController.addMessage({ message: 'Some success message', state: 'success' });
         ToastController.addMessage({ message: 'Some warning message', state: 'warning' });
@@ -30,17 +43,13 @@
           },
         });
       });
-    </script>
 
-    <!-- START: keep this snippet to log component lifecycle events -->
-    <script>
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-        window.addEventListener(`stencil_${x}`, (e) => {
-          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-        })
-      );
+      const toastB = document.querySelector('p-toast-b');
+      document.querySelector('#button-b').addEventListener('click', async () => {
+        // TODO: probably componentsReady(toastB) is more convenient?
+        await customElements.whenDefined('p-toast-b');
+        await toastB.addMessage({ message: 'hallo', state: 'success' });
+      });
     </script>
-    <!-- /END -->
   </body>
 </html>
