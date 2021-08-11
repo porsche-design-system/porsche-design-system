@@ -8,7 +8,6 @@ import {
   getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
-  removeAttribute,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -118,19 +117,35 @@ describe('modal', () => {
 
     it('should be closable via backdrop', async () => {
       // click in each corner based on 1920x800 screen
-      await page.mouse.click(5, 5);
-      await page.mouse.click(1915, 5);
-      await page.mouse.click(5, 795);
-      await page.mouse.click(1915, 795);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await page.mouse.move(1915, 5);
+      await page.mouse.down();
+      await page.mouse.move(5, 795);
+      await page.mouse.down();
+      await page.mouse.move(1915, 795);
+      await page.mouse.down();
       await waitForStencilLifecycle(page);
 
       expect(calls).toBe(4);
 
-      // click in middle should not close modal
-      await page.mouse.click(960, 400);
+      await page.mouse.up();
       await waitForStencilLifecycle(page);
 
       expect(calls).toBe(4);
+    });
+
+    it('should not be closed if mousedown inside modal', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForStencilLifecycle(page);
+
+      expect(calls).toBe(0);
+
+      await page.mouse.up();
+      await waitForStencilLifecycle(page);
+
+      expect(calls).toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
@@ -138,7 +153,8 @@ describe('modal', () => {
       await setProperty(host, 'disableBackdropClick', true);
       await waitForStencilLifecycle(page);
 
-      await page.mouse.click(5, 5);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
       await waitForStencilLifecycle(page);
 
       expect(calls).toBe(0);
@@ -148,7 +164,8 @@ describe('modal', () => {
       const body = await selectNode(page, 'body');
       let bodyCalls = 0;
       await addEventListener(body, 'close', () => bodyCalls++);
-      await page.mouse.click(5, 5);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
       await waitForStencilLifecycle(page);
 
       expect(calls).toBe(1);
