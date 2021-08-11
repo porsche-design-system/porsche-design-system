@@ -1,19 +1,16 @@
 import { forceUpdate } from '@stencil/core';
-import type { ToastState } from './toast-types';
+import type { CallToAction, ToastState } from './toast-a-types';
 
 export const timeout = 6000;
 
 type MessageOptions = {
   message: string;
   state?: ToastState;
-  action?: {
-    label: string;
-    callback: () => void;
-  };
+  action?: CallToAction;
 };
 type Message = MessageOptions & { timeout: any };
 
-class ToastManager {
+class ToastAManager {
   private toast: HTMLElement;
   private messages: Message[] = [];
 
@@ -48,5 +45,5 @@ class ToastManager {
   }
 }
 
-export const ToastController = new ToastManager();
+export const ToastController = new ToastAManager();
 (window as any).ToastController = ToastController;

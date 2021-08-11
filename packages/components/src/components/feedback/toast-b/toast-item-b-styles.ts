@@ -1,7 +1,8 @@
 import { addImportantToEachRule, attachCss, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import { timeout } from './toast-manager';
-import type { ToastState } from './toast-types';
+import type { ToastState } from './toast-b-types';
+
+export const timeout = 6000;
 
 const getStateColor = (state: ToastState): { baseColor: string; softColor: string } => {
   const { success, successSoft, warning, warningSoft, error, errorSoft, neutral, neutralSoft } = color.notification;

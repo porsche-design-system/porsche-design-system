@@ -1,15 +1,13 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { addComponentCss } from './toast-styles';
-import { ToastController } from './toast-manager';
+import { addComponentCss } from './toast-a-styles';
+import { ToastController } from './toast-a-manager';
 
 @Component({
-  tag: 'p-toast',
+  tag: 'p-toast-a',
   shadow: true,
 })
-export class Toast {
+export class ToastA {
   @Element() public host!: HTMLElement;
-
-  // use method to expose ToastController
 
   public connectedCallback(): void {
     ToastController.registerToastElement(this.host);
@@ -20,9 +18,9 @@ export class Toast {
     return (
       <Host>
         {ToastController.getMessages().map((message) => (
-          <p-toast-item state={message.state} action={message.action}>
+          <p-toast-item-a state={message.state} action={message.action}>
             <p-text>{message.message}</p-text>
-          </p-toast-item>
+          </p-toast-item-a>
         ))}
       </Host>
     );
