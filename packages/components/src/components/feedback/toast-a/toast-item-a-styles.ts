@@ -1,9 +1,9 @@
 import { addImportantToEachRule, attachCss, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import { timeout } from './toast-a-manager';
-import type { ToastState } from './toast-a-types';
+import type { ToastState2 } from './toast-a-types';
 
-const getStateColor = (state: ToastState): { baseColor: string; softColor: string } => {
+const getStateColor = (state: ToastState2): { baseColor: string; softColor: string } => {
   const { success, successSoft, warning, warningSoft, error, errorSoft, neutral, neutralSoft } = color.notification;
 
   switch (state) {
@@ -18,7 +18,7 @@ const getStateColor = (state: ToastState): { baseColor: string; softColor: strin
   }
 };
 
-export const getComponentCss = (state: ToastState): string => {
+export const getComponentCss = (state: ToastState2): string => {
   const { baseColor, softColor } = getStateColor(state);
 
   return getCss({
@@ -52,6 +52,6 @@ export const getComponentCss = (state: ToastState): string => {
   });
 };
 
-export const addComponentCss = (host: HTMLElement, state: ToastState): void => {
+export const addComponentCss = (host: HTMLElement, state: ToastState2): void => {
   attachCss(host, getComponentCss(state));
 };

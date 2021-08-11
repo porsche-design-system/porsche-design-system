@@ -21,8 +21,8 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { MessageOptions } from "./components/feedback/toast-b/toast-b";
-import { CallToAction, ToastState } from "./components/feedback/toast-a/toast-a-types";
-import { CallToAction as CallToAction1, ToastState as ToastState1 } from "./components/feedback/toast-b/toast-b-types";
+import { CallToAction2, ToastState2 } from "./components/feedback/toast-a/toast-a-types";
+import { CallToAction, ToastState } from "./components/feedback/toast-b/toast-b-types";
 export namespace Components {
     interface PAccordion {
         /**
@@ -822,11 +822,11 @@ export namespace Components {
         /**
           * Defines a call to action button.
          */
-        "action"?: CallToAction;
+        "action"?: CallToAction2;
         /**
           * Defines visual appearance.
          */
-        "state"?: ToastState;
+        "state"?: ToastState2;
     }
     interface PToastItemB {
         /**
@@ -1981,11 +1981,11 @@ declare namespace LocalJSX {
         /**
           * Defines a call to action button.
          */
-        "action"?: CallToAction;
+        "action"?: CallToAction2;
         /**
           * Defines visual appearance.
          */
-        "state"?: ToastState;
+        "state"?: ToastState2;
     }
     interface PToastItemB {
         /**
