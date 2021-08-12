@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Introduce breaking change: Slash as Division. https://sass-lang.com/documentation/breaking-changes/slash-div
+
 ### [4.1.0] - 2021-07-01
 
 #### Added
