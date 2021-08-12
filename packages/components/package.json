@@ -45,9 +45,9 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
+    "@porsche-design-system/stencil-sass": "^0.0.1",
     "@rollup/plugin-replace": "^3.0.0",
     "@stencil/postcss": "^2.0.0",
-    "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.24",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
