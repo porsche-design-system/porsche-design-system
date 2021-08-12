@@ -16,8 +16,8 @@ Legend: ✅ Completed
 
 ### Generic components
 * Switch ✅
-* Data Table
-* Accordion
+* Data Table ✅
+* Accordion ✅
 * Toast
 * Progress Indicator
 * Tooltip
@@ -28,7 +28,7 @@ Legend: ✅ Completed
 * Re-enable SSR support ✅
 
 ### UXPin
-* Optimize Components for UXPin
+* Optimize Components for UXPin ✅
 * Enable Design System for UXPin ✅
 
 ---

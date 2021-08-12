@@ -2691,6 +2691,11 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
   integrity sha1-OrEoxC2YywSf/AsUE2L2lj4Kk9c=
 
+"@porsche-design-system/stencil-sass@^0.0.1":
+  version "0.0.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/stencil-sass/-/@porsche-design-system/stencil-sass-0.0.1.tgz#0bcb2f38032af1fd01eddb4af471e4ee57fa2f48"
+  integrity sha1-C8svOAMq8f0B7dtK9HHk7lf6L0g=
+
 "@porsche-design-system/visual-regression-tester@^4.0.0":
   version "4.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-4.0.0.tgz#0b76a7a5737a30d1b91eeec32107b290941501ca"
@@ -2862,11 +2867,6 @@
   integrity sha512-eTZVQEXb3AGw8A7tstKoOklV6ATXCKASs8VoykyVSYRZCjU0kECM76YgUZkzolwzEq6JG6LVwStT8xpTBSEZ+Q==
   dependencies:
     postcss "~8.2.1"
-
-"@stencil/sass@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.4.1.tgz#ef5a1dd1b56c024ed08e80475e8a6f8d1c25bb10"
-  integrity sha512-aFKoqtxZ/8BRbvNFiWRycGiqvMI22Ifn5qsKfq0U23j43XD81jT6d7K0WQd55ejNpoSpdxJcbOuFgQy3mXizfA==
 
 "@stylelint/postcss-css-in-js@^0.37.2":
   version "0.37.2"
@@ -16947,7 +16947,7 @@ sass@1.36.0:
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
-sass@^1.32.8, sass@^1.35.2:
+sass@^1.32.8, sass@^1.35.2, sass@^1.37.5:
   version "1.37.5"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.37.5.tgz#f6838351f7cc814c4fcfe1d9a20e0cabbd1e7b3c"
   integrity sha512-Cx3ewxz9QB/ErnVIiWg2cH0kiYZ0FPvheDTVC6BsiEGBTZKKZJ1Gq5Kq6jy3PKtL6+EJ8NIoaBW/RSd2R6cZOA==
