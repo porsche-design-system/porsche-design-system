@@ -8,9 +8,11 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
-import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { addSlottedCss } from './link-pure-styles';
+import { hasIcon } from './link-pure-utils';
+import type { ExtendedIconName } from './link-pure-utils';
 
 @Component({
   tag: 'p-link-pure',
@@ -20,14 +22,17 @@ import { addSlottedCss } from './link-pure-styles';
 export class LinkPure {
   @Element() public host!: HTMLElement;
 
+  /** Aligns the label. */
+  @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text (only has effect with visible label). */
   @Prop() public weight?: TextWeight = 'regular';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed */
+  @Prop() public icon?: ExtendedIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -78,8 +83,10 @@ export class LinkPure {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
+      ['root--with-icon']: hasIcon(this.icon),
+      ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
+      ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -96,15 +103,17 @@ export class LinkPure {
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            color="inherit"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            ref={(el) => (this.iconTag = el)}
-            aria-hidden="true"
-          />
+          {hasIcon(this.icon) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              color="inherit"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              ref={(el) => (this.iconTag = el)}
+              aria-hidden="true"
+            />
+          )}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
