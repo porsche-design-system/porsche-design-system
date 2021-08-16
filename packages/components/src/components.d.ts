@@ -13,6 +13,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { ExtendedIconName } from "./components/navigation/link-pure/link-pure-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -392,6 +393,10 @@ export namespace Components {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -404,9 +409,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: ExtendedIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1475,6 +1480,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1487,9 +1496,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: ExtendedIconName;
         /**
           * A custom URL path to a custom icon.
          */

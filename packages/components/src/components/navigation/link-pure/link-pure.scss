@@ -47,6 +47,8 @@
   margin: 0;
 }
 
+$root: '.root';
+
 .root {
   $bem-block: &;
   display: flex;
@@ -293,6 +295,22 @@
   flex-shrink: 0;
   width: 1.5em;
   height: 1.5em;
+
+  #{$root}--label-align-left & {
+    order: 1;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--label-align-left-#{$breakpoint} & {
+        order: 0;
+      }
+
+      #{$root}--label-align-right-#{$breakpoint} & {
+        order: 1;
+      }
+    }
+  }
 }
 
 .label {
@@ -306,7 +324,7 @@
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-top: 4px;
 
-  &::before {
+  #{$root}--with-icon + &::before {
     // We need a margin-left according to the labels font-size. The size of before gets calculated in the size mixin
     content: '';
   }
