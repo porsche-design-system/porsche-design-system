@@ -10,7 +10,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { addSlottedCss } from './link-pure-styles';
+import { addComponentCss, addSlottedCss } from './link-pure-styles';
 import { hasIcon } from './link-pure-utils';
 import type { ExtendedIconName } from './link-pure-utils';
 
@@ -24,6 +24,9 @@ export class LinkPure {
 
   /** Aligns the label. */
   @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+
+  /** Stretches the area between icon and label to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -63,6 +66,7 @@ export class LinkPure {
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
+    !hasNamedSlot(this.host, 'subline') && addComponentCss(this.host, this.stretch);
   }
 
   public componentDidLoad(): void {
@@ -84,8 +88,10 @@ export class LinkPure {
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
       ['root--with-icon']: hasIcon(this.icon),
-      ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
       ...mapBreakpointPropToClasses('root--size', this.size),
+      ...(!hasNamedSlot(this.host, 'subline') &&
+        mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
+      ...(!hasNamedSlot(this.host, 'subline') && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
       ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 

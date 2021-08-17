@@ -6,7 +6,7 @@
   .label,
   + .subline {
     position: static;
-    width: 100%;
+    width: auto;
     left: auto;
     height: 100%;
     overflow: visible;
@@ -27,7 +27,6 @@
 }
 
 :host {
-  display: inline-block;
   vertical-align: top;
   position: relative !important;
   cursor: pointer;
@@ -119,6 +118,22 @@ $root: '.root';
       color: $p-color-theme-dark-state-active;
       + * {
         color: $p-color-theme-dark-state-active;
+      }
+    }
+  }
+
+  &--stretch-on {
+    justify-content: space-between;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--stretch-on-#{$breakpoint} {
+        justify-content: space-between;
+      }
+
+      &--stretch-off-#{$breakpoint} {
+        justify-content: flex-start;
       }
     }
   }

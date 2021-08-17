@@ -425,6 +425,10 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
@@ -1511,6 +1515,10 @@ declare namespace LocalJSX {
           * Size of the link.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
          */
