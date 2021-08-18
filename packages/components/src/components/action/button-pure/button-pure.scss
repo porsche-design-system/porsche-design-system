@@ -25,7 +25,6 @@
 }
 
 :host {
-  display: inline-block;
   vertical-align: top;
   position: relative !important;
 }
@@ -107,6 +106,22 @@ $root: '.root';
       color: $p-color-theme-dark-state-disabled;
       + * {
         color: $p-color-theme-dark-state-disabled;
+      }
+    }
+  }
+
+  &--stretch-on {
+    justify-content: space-between;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--stretch-on-#{$breakpoint} {
+        justify-content: space-between;
+      }
+
+      &--stretch-off-#{$breakpoint} {
+        justify-content: flex-start;
       }
     }
   }
