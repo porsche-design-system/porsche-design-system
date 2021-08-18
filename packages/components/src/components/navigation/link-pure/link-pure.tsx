@@ -2,7 +2,6 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  hasNamedSlot,
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
@@ -11,7 +10,7 @@ import {
 import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { addComponentCss, addSlottedCss } from './link-pure-styles';
-import { hasIcon } from './link-pure-utils';
+import { hasIcon, hasSubline } from './link-pure-utils';
 import type { ExtendedIconName } from './link-pure-utils';
 
 @Component({
@@ -89,9 +88,8 @@ export class LinkPure {
       ['root--active']: this.active,
       ['root--with-icon']: hasIcon(this.icon),
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasNamedSlot(this.host, 'subline') &&
-        mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
-      ...(!hasNamedSlot(this.host, 'subline') && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
+      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
+      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
       ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
@@ -124,7 +122,7 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasNamedSlot(this.host, 'subline') && (
+        {hasSubline(this.host) && (
           <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
