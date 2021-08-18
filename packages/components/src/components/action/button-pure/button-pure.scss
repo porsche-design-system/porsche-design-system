@@ -6,13 +6,10 @@
   .label,
   + .subline {
     position: static;
-    width: 100%;
-    height: auto;
-    margin-left: p-px-to-rem(4px);
-    padding: 0 0.125em 0 0;
+    width: auto;
+    left: auto;
+    height: 100%;
     overflow: visible;
-    clip: auto;
-    clip-path: none;
   }
 }
 
@@ -20,14 +17,10 @@
   .label,
   + .subline {
     position: absolute;
+    left: -99999px;
     width: 1px;
     height: 1px;
-    margin-left: -1px;
-    margin-top: 0;
-    padding: 0;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
   }
 }
 
@@ -196,4 +189,10 @@ $root: '.root';
     // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
     content: '';
   }
+}
+
+.label,
+.subline {
+  margin-left: p-px-to-rem(4px);
+  padding: 0 0.125em 0 0;
 }
