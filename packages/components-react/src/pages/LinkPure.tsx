@@ -211,6 +211,86 @@ export const LinkPurePage = (): JSX.Element => {
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
+
+      <div className="playground light" title="should render with no icon">
+        <PLinkPure href="https://www.porsche.com" icon="none">
+          Without icon
+        </PLinkPure>
+        <PLinkPure icon="none">
+          <a href="https://www.porsche.com">Slotted without icon</a>
+        </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" size="small" icon="none">
+          Without icon
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should render icon if hide-label and icon none is set">
+        <PLinkPure href="https://www.porsche.com" hide-label={true} icon="none">
+          With hideLabel and no icon
+        </PLinkPure>
+        <PLinkPure hide-label={true} icon="none">
+          <a href="https://www.porsche.com">With hideLabel and no icon</a>
+        </PLinkPure>
+        <PLinkPure hide-label={true} size="small" icon="none">
+          <a href="https://www.porsche.com">With hideLabel and no icon</a>
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should align label to the left">
+        <PLinkPure href="https://www.porsche.com" align-label="left">
+          Align-label left
+        </PLinkPure>
+        <PLinkPure align-label="left">
+          <a href="https://www.porsche.com">Slotted align-label left</a>
+        </PLinkPure>
+      </div>
+      <div className="playground light" title="should align label to the left or right depending on viewport">
+        <PLinkPure
+          href="https://www.porsche.com"
+          align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
+        >
+          With breakpoint customizable align-label
+        </PLinkPure>
+        <PLinkPure align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
+          <a href="https://www.porsche.com">Slotted with breakpoint customizable align-label</a>
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should render with stretched label">
+        <PLinkPure href="https://www.porsche.com" stretch={true}>
+          Stretched icon left
+        </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" stretch={true} align-label="left">
+          Stretched icon right
+        </PLinkPure>
+        <PLinkPure stretch={true}>
+          <a href="https://www.porsche.com">Slotted stretched icon left</a>
+        </PLinkPure>
+        <PLinkPure stretch={true} align-label="left">
+          <a href="https://www.porsche.com">Slotted stretched icon right</a>
+        </PLinkPure>
+      </div>
+      <div className="playground light" title="should render with stretched label depending on viewport">
+        <PLinkPure
+          href="https://www.porsche.com"
+          stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+        >
+          Stretched depending on viewport
+        </PLinkPure>
+      </div>
+
+      <div className="playground light" title="should not align label left or stretch if it has a subline">
+        <PLinkPure href="https://www.porsche.com" align-label="left">
+          With align-label and subline
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" stretch={true}>
+          With strech and subline
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
+      </div>
     </>
   );
 };
