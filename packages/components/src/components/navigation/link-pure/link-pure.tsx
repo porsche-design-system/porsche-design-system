@@ -66,7 +66,7 @@ export class LinkPure {
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
-    !hasNamedSlot(this.host, 'subline') && addComponentCss(this.host, this.stretch);
+    addComponentCss(this.host, !hasSubline(this.host) ? this.stretch : false);
   }
 
   public componentDidLoad(): void {
