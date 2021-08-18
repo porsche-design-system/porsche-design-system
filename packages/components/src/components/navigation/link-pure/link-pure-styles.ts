@@ -22,7 +22,6 @@ const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boo
   display: stretch ? 'flex' : 'inline-block',
 });
 
-// ToDo: snapshot test
 export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
   return getCss(addImportantToEachRule(mergeDeep(buildResponsiveHostStyles(stretch, getStretchStyles))));
 };

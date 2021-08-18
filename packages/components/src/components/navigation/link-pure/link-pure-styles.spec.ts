@@ -1,4 +1,4 @@
-import { getSlottedCss } from './link-pure-styles';
+import { getComponentCss, getSlottedCss } from './link-pure-styles';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
@@ -9,5 +9,19 @@ describe('getSlottedCss()', () => {
   it('should return correct css with prefix', () => {
     const host = document.createElement('prefixed-p-link-pure');
     expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+});
+
+describe('getComponentCss()', () => {
+  it('should return correct css with stretch true', () => {
+    expect(getComponentCss(true)).toMatchSnapshot();
+  });
+
+  it('should return correct css with stretch BreakpointCustomizable', () => {
+    expect(getComponentCss({ base: true, xs: true, s: false, m: true, l: false, xl: true })).toMatchSnapshot();
+  });
+
+  it('should return correct css with stretch false', () => {
+    expect(getComponentCss(false)).toMatchSnapshot();
   });
 });
