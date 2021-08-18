@@ -1,7 +1,5 @@
-import { IconName } from '@porsche-design-system/icons';
-import { hasNamedSlot } from '../../../utils';
-
-export type ExtendedIconName = IconName | 'none';
+import { hasNamedSlot } from './dom';
+import type { ExtendedIconName } from '../types';
 
 export const hasIcon = (iconName: ExtendedIconName): boolean => {
   return iconName !== 'none';

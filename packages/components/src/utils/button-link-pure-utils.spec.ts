@@ -1,4 +1,4 @@
-import { hasIcon, hasSubline } from './link-pure-utils';
+import { hasIcon, hasSubline } from './button-link-pure-utils';
 
 describe('hasIcon', () => {
   it('should return true if called with valid iconName', () => {

@@ -6,12 +6,12 @@ import {
   isDark,
   mapBreakpointPropToClasses,
   transitionListener,
+  hasIcon,
+  hasSubline,
 } from '../../../utils';
-import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme, ExtendedIconName } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { addComponentCss, addSlottedCss } from './link-pure-styles';
-import { hasIcon, hasSubline } from './link-pure-utils';
-import type { ExtendedIconName } from './link-pure-utils';
 
 @Component({
   tag: 'p-link-pure',
