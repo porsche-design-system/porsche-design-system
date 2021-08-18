@@ -2,6 +2,7 @@ import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
+  hasIcon,
   hasNamedSlot,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
@@ -10,8 +11,9 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, ButtonType, ExtendedIconName, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
+import { throwIfIconNoneAndLoading } from './button-pure-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -40,7 +42,7 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  @Prop() public icon?: ExtendedIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -60,6 +62,10 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
+  }
+
+  public connectedCallback(): void {
+    throwIfIconNoneAndLoading(this.host, this.icon, this.loading);
   }
 
   public componentDidLoad(): void {
@@ -86,6 +92,7 @@ export class ButtonPure {
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
+      ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const iconProps = {
@@ -110,13 +117,15 @@ export class ButtonPure {
           {this.loading ? (
             <PrefixedTagNames.pSpinner {...iconProps} />
           ) : (
-            <PrefixedTagNames.pIcon
-              {...iconProps}
-              color="inherit"
-              name={this.icon}
-              source={this.iconSource}
-              aria-hidden="true"
-            />
+            hasIcon(this.icon) && (
+              <PrefixedTagNames.pIcon
+                {...iconProps}
+                color="inherit"
+                name={this.icon}
+                source={this.iconSource}
+                aria-hidden="true"
+              />
+            )
           )}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
