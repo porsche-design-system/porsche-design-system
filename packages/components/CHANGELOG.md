@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Button-Pure` and `Link-Pure` support now `icon='none'` which displays them without icon
+- Property `align-label` to `Button-Pure` and `Link-Pure` which changes the position of the icon (left/right)
+- Property `stretch` to `Button-Pure` and `Link-Pure` which stretches the area between icon and label to maximum available space
+
 #### Changed
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
