@@ -37,6 +37,8 @@
   position: relative !important;
 }
 
+$root: '.root';
+
 .root {
   $bem-block: &;
   display: flex;
@@ -142,143 +144,33 @@
     @include label-hidden;
   }
 
-  @include p-media-query('xs') {
-    &--size-x-small-xs {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-xs {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-xs {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-xs {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-xs {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-xs {
-      @include adjust-to-font-size('inherit');
-    }
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-x-small-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-x-small);
+      }
 
-    &--with-label-xs {
-      @include label-visible;
-    }
-    &--without-label-xs {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('s') {
-    &--size-x-small-s {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-s {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-s {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-s {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-s {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-s {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-s {
-      @include label-visible;
-    }
-    &--without-label-s {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('m') {
-    &--size-x-small-m {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-m {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-m {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-m {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-m {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-m {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-m {
-      @include label-visible;
-    }
-    &--without-label-m {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('l') {
-    &--size-x-small-l {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-l {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-l {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-l {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-l {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-l {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-l {
-      @include label-visible;
-    }
-    &--without-label-l {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('xl') {
-    &--size-x-small-xl {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-xl {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-xl {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-xl {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-xl {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-xl {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-xl {
-      @include label-visible;
-    }
-    &--without-label-xl {
-      @include label-hidden;
+      &--size-small-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-small);
+      }
+      &--size-medium-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-medium);
+      }
+      &--size-large-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-large);
+      }
+      &--size-x-large-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-x-large);
+      }
+      &--size-inherit-#{$breakpoint} {
+        @include adjust-to-font-size('inherit');
+      }
+      &--with-label-#{$breakpoint} {
+        @include label-visible;
+      }
+      &--without-label-#{$breakpoint} {
+        @include label-hidden;
+      }
     }
   }
 }
