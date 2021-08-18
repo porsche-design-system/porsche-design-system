@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, ExtendedIconName, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -13,7 +13,6 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
-import { ExtendedIconName } from "./components/navigation/link-pure/link-pure-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -112,6 +111,10 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -122,7 +125,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: ExtendedIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1203,6 +1206,10 @@ declare namespace LocalJSX {
     }
     interface PButtonPure {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -1213,7 +1220,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: ExtendedIconName;
         /**
           * A custom URL path to a custom icon.
          */

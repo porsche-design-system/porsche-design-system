@@ -4,6 +4,7 @@ import {
   getPrefixedTagNames,
   hasIcon,
   hasNamedSlot,
+  hasSubline,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
@@ -50,6 +51,9 @@ export class ButtonPure {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Aligns the label. */
+  @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -91,7 +95,7 @@ export class ButtonPure {
       ['root--loading']: this.loading,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
+      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
       ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
