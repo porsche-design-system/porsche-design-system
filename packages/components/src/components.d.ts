@@ -139,6 +139,10 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
           * To remove the element from tab order.
          */
         "tabbable"?: boolean;
@@ -1233,6 +1237,10 @@ declare namespace LocalJSX {
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */

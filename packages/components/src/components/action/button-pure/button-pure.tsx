@@ -15,6 +15,7 @@ import {
 import type { BreakpointCustomizable, ButtonType, ExtendedIconName, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { throwIfIconNoneAndLoading } from './button-pure-utils';
+import { addComponentCss } from './button-pure-styles';
 
 @Component({
   tag: 'p-button-pure',
@@ -54,6 +55,9 @@ export class ButtonPure {
   /** Aligns the label. */
   @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
 
+  /** Stretches the area between icon and label to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
+
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -70,6 +74,7 @@ export class ButtonPure {
 
   public connectedCallback(): void {
     throwIfIconNoneAndLoading(this.host, this.icon, this.loading);
+    addComponentCss(this.host, !hasSubline(this.host) ? this.stretch : false);
   }
 
   public componentDidLoad(): void {
@@ -95,6 +100,7 @@ export class ButtonPure {
       ['root--loading']: this.loading,
       ['root--theme-dark']: isDark(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
+      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
       ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
       ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };

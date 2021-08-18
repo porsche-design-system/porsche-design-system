@@ -1,4 +1,6 @@
 // common type definitions
+import { IconName } from '@porsche-design-system/icons';
+
 export { TextSize } from './components/basic/typography/text/text-utils';
 export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
 
@@ -43,3 +45,5 @@ declare global {
 }
 
 export type { IconName } from '@porsche-design-system/icons';
+
+export type ExtendedIconName = IconName | 'none';
