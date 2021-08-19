@@ -26,6 +26,16 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 ---
 
+### Without Icon
+
+By choosing `icon="none"` the component is shown without icon.
+
+**Caution:** You can´t combine  this with the prop `loading="true"` nor the prop `hide-label`
+
+<Playground :markup="withoutIcon" :config="config"></Playground>
+
+---
+
 ## Size
 
 There are predefined text sizes for the component which should cover most use cases. 
@@ -76,6 +86,20 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
+## Alignment + Stretch
+
+The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.
+
+<Playground :markup="alignment" :config="config">
+  <select v-model="alignLabel">
+    <option value="right">Right</option>
+    <option value="left">Left</option>
+    <option value="responsive">Responsive</option>
+  </select>
+</Playground>
+
+---
+
 ## Button with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
@@ -104,7 +128,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 ## Button with Subline
 
 If you need additional information on your button, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `align-label`in this pattern so far.
 
 <Playground :markup="subline" :config="config">
   <select v-model="sublineSize">
@@ -127,6 +151,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
     size = 'medium';
     sublineSize = 'small'; 
     weight = 'thin';
+    alignLabel = 'right';
+
+    withoutIcon =
+`<p-button-pure icon="none">Some label</p-button-pure>
+<p-button-pure icon="none" disabled="true">Some label</p-button-pure>`;
     
     withLabel =
 `<p-button-pure>Some label</p-button-pure>
@@ -157,6 +186,12 @@ The size of the *subline* changes according to the size of the *label*. We do no
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
  
+
+    get alignment() {
+      const alignLabel = this.alignLabel === 'left' ? ' align-label="left"' : this.alignLabel === 'responsive' ? ' align-label="{ base: \'left\', l: \'right\' }"  stretch="{ base: true, l: false }"' : '';
+      return `<p-button-pure${alignLabel}>Some label</p-button-pure>`;
+    };
+
     clickableArea =
 `<p-button-pure style="padding: 1rem;">Some label</p-button-pure>
 <p-button-pure hide-label="true" style="padding: 1rem;">Some label</p-button-pure>`;

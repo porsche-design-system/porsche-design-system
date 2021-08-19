@@ -26,6 +26,14 @@ In case you want the user to execute an action, you should select the [Button](c
 
 ---
 
+### Without Icon
+
+By choosing `icon="none"` the component is shown without icon.
+
+**Caution:** You can´t combine  this with the prop `hide-label`
+
+<Playground :markup="withoutIcon" :config="config"></Playground>
+
 ## Size
 
 There are predefined text sizes for the component which should cover most use cases. 
@@ -123,6 +131,20 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
+## Alignment + Stretch
+
+The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.
+
+<Playground :markup="alignment" :config="config">
+  <select v-model="alignLabel">
+    <option value="right">Right</option>
+    <option value="left">Left</option>
+    <option value="responsive">Responsive</option>
+  </select>
+</Playground>
+
+---
+
 ## Link with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
@@ -143,7 +165,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 ## Link Pure with Subline
 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `align-label`in this pattern so far.
 
 **Note** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
 
@@ -169,6 +191,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     size = 'medium';
     sublineSize = 'small';
     weight = 'thin';
+    alignLabel = 'right';
     
     withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
@@ -178,6 +201,9 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
     responsive =
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
+
+    withoutIcon =
+`<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>`;
 
     get sizeMarkup() {
       const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
@@ -215,6 +241,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
 <a href="https://www.porsche.com" class="example-link">
   <p-link-pure hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
 </a>`;
+
+    get alignment() {
+      const alignLabel = this.alignLabel === 'left' ? ' align-label="left"' : this.alignLabel === 'responsive' ? ' align-label="{ base: \'left\', l: \'right\' }"  stretch="{ base: true, l: false }"' : '';
+      return `<p-link-pure${alignLabel}>Some label</p-link-pure>`;
+    };
 
     events =
 `<p-link-pure
