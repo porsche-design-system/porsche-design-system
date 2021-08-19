@@ -9,8 +9,7 @@ import {
   hasIcon,
   hasSubline,
 } from '../../../utils';
-import type { ExtendedIconName } from '../../../utils';
-import type { BreakpointCustomizable, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, ExtendedIconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { addComponentCss, addSlottedCss } from './link-pure-styles';
 
