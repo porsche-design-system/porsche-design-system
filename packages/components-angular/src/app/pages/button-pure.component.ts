@@ -119,7 +119,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render icon if hide-label and icon none is set">
       <p-button-pure [hideLabel]="true" [icon]="'none'">With hideLabel and no icon</p-button-pure>
       <p-button-pure [hideLabel]="true" [size]="'small'" [icon]="'none'"
-        >With hideLabel and no icon‚
+        >With hideLabel and no icon
         <p slot="subline">Some subline</p></p-button-pure
       >
     </div>
@@ -138,7 +138,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with stretched label">
       <p-button-pure [stretch]="true">Stretched icon left</p-button-pure>
-      <p-button-pure [stretch]="true" [alignLabel]="'left'">Stretched icon right</p-button-pure>‚‚
+      <p-button-pure [stretch]="true" [alignLabel]="'left'">Stretched icon right</p-button-pure>
     </div>
     <div class="playground light" title="should render with stretched label depending on viewport">
       <p-button-pure
