@@ -239,21 +239,21 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should align label to the left">
-        <PLinkPure href="https://www.porsche.com" align-label="left">
+        <PLinkPure href="https://www.porsche.com" alignLabel="left">
           Align-label left
         </PLinkPure>
-        <PLinkPure align-label="left">
+        <PLinkPure alignLabel="left">
           <a href="https://www.porsche.com">Slotted align-label left</a>
         </PLinkPure>
       </div>
       <div className="playground light" title="should align label to the left or right depending on viewport">
         <PLinkPure
           href="https://www.porsche.com"
-          align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
+          alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
         >
           With breakpoint customizable align-label
         </PLinkPure>
-        <PLinkPure align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
+        <PLinkPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
           <a href="https://www.porsche.com">Slotted with breakpoint customizable align-label</a>
         </PLinkPure>
       </div>
@@ -262,13 +262,13 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure href="https://www.porsche.com" stretch={true}>
           Stretched icon left
         </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" stretch={true} align-label="left">
+        <PLinkPure href="https://www.porsche.com" stretch={true} alignLabel="left">
           Stretched icon right
         </PLinkPure>
         <PLinkPure stretch={true}>
           <a href="https://www.porsche.com">Slotted stretched icon left</a>
         </PLinkPure>
-        <PLinkPure stretch={true} align-label="left">
+        <PLinkPure stretch={true} alignLabel="left">
           <a href="https://www.porsche.com">Slotted stretched icon right</a>
         </PLinkPure>
       </div>
@@ -282,7 +282,7 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should not align label left or stretch if it has a subline">
-        <PLinkPure href="https://www.porsche.com" align-label="left">
+        <PLinkPure href="https://www.porsche.com" alignLabel="left">
           With align-label and subline
           <p slot="subline">Some subline</p>
         </PLinkPure>
