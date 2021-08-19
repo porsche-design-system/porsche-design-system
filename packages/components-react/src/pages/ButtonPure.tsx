@@ -142,17 +142,17 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should align label to the left">
-        <PButtonPure align-label="left">Align-label left</PButtonPure>
+        <PButtonPure alignLabel="left">Align-label left</PButtonPure>
       </div>
       <div className="playground light" title="should align label to the left or right depending on viewport">
-        <PButtonPure align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
+        <PButtonPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
           With breakpoint customizable align-label
         </PButtonPure>
       </div>
 
       <div className="playground light" title="should render with stretched label">
         <PButtonPure stretch={true}>Stretched icon left</PButtonPure>
-        <PButtonPure stretch={true} align-label="left">
+        <PButtonPure stretch={true} alignLabel="left">
           Stretched icon right
         </PButtonPure>
       </div>
@@ -163,7 +163,7 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should not align label left or stretch if it has a subline">
-        <PButtonPure align-label="left">
+        <PButtonPure alignLabel="left">
           With align-label and subline
           <p slot="subline">Some subline</p>
         </PButtonPure>
