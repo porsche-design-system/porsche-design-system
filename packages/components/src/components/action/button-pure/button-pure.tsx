@@ -12,7 +12,8 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, ExtendedIconName, TextSize, TextWeight, Theme } from '../../../types';
+import type { ExtendedIconName } from '../../../utils';
+import type { BreakpointCustomizable, ButtonType, TextSize, TextWeight, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { throwIfIconNoneAndLoading } from './button-pure-utils';
 import { addComponentCss } from './button-pure-styles';
