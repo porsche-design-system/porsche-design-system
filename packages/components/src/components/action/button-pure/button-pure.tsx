@@ -99,6 +99,7 @@ export class ButtonPure {
       ['root']: true,
       ['root--loading']: this.loading,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--with-icon']: hasIcon(this.icon),
       ...mapBreakpointPropToClasses('root--size', this.size),
       ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
       ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
