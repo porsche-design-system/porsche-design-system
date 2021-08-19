@@ -171,28 +171,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div class="playground light" title="should align label to the left">
-        <p-link-pure [href]="'https://www.porsche.com'" [alignlabel]="'left'">Align-label left</p-link-pure>
-        <p-link-pure [alignlabel]="'left'"><a href="https://www.porsche.com">Slotted align-label left</a></p-link-pure>
+        <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">Align-label left</p-link-pure>
+        <p-link-pure [alignLabel]="'left'"><a href="https://www.porsche.com">Slotted align-label left</a></p-link-pure>
       </div>
       <div class="playground light" title="should align label to the left or right depending on viewport">
         <p-link-pure
           href="https://www.porsche.com"
-          [alignlabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
+          [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
         >
           With breakpoint customizable align-label
         </p-link-pure>
-        <p-link-pure [alignlabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
+        <p-link-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
           <a href="https://www.porsche.com">Slotted with breakpoint customizable align-label</a>
         </p-link-pure>
       </div>
 
       <div class="playground light" title="should render with stretched label">
         <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">Stretched icon left</p-link-pure>
-        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true" [alignlabel]="'left'"
+        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true" [alignLabel]="'left'"
           >Stretched icon right</p-link-pure
         >
         <p-link-pure [stretch]="true"><a href="https://www.porsche.com">Slotted stretched icon left</a></p-link-pure>
-        <p-link-pure [stretch]="true" [alignlabel]="'left'"
+        <p-link-pure [stretch]="true" [alignLabel]="'left'"
           ><a href="https://www.porsche.com">Slotted stretched icon right</a></p-link-pure
         >
       </div>
@@ -205,7 +205,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div class="playground light" title="should not align label left or stretch if it has a subline">
-        <p-link-pure [href]="'https://www.porsche.com'" [alignlabel]="'left'">
+        <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">
           With align-label and subline
           <p slot="subline">Some subline</p>
         </p-link-pure>
