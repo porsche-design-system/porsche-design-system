@@ -122,6 +122,56 @@ export const ButtonPurePage = (): JSX.Element => {
           Some label<p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
+
+      <div className="playground light" title="should render with no icon">
+        <PButtonPure icon="none">Without icon</PButtonPure>
+        <PButtonPure size="small" icon="none">
+          Without icon
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should render icon if hide-label and icon none is set">
+        <PButtonPure hide-label={true} icon="none">
+          With hideLabel and no icon
+        </PButtonPure>
+        <PButtonPure hide-label={true} size="small" icon="none">
+          With hideLabel and no icon
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should align label to the left">
+        <PButtonPure align-label="left">Align-label left</PButtonPure>
+      </div>
+      <div className="playground light" title="should align label to the left or right depending on viewport">
+        <PButtonPure align-label={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
+          With breakpoint customizable align-label
+        </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should render with stretched label">
+        <PButtonPure stretch={true}>Stretched icon left</PButtonPure>
+        <PButtonPure stretch={true} align-label="left">
+          Stretched icon right
+        </PButtonPure>
+      </div>
+      <div className="playground light" title="should render with stretched label depending on viewport">
+        <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
+          Stretched depending on viewport
+        </PButtonPure>
+      </div>
+
+      <div className="playground light" title="should not align label left or stretch if it has a subline">
+        <PButtonPure align-label="left">
+          With align-label and subline
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+        <PButtonPure stretch={true}>
+          With stretch and subline
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+      </div>
     </>
   );
 };

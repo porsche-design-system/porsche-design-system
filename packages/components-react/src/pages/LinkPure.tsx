@@ -230,7 +230,7 @@ export const LinkPurePage = (): JSX.Element => {
           With hideLabel and no icon
         </PLinkPure>
         <PLinkPure hide-label={true} icon="none">
-          <a href="https://www.porsche.com">With hideLabel and no icon</a>
+          <a href="https://www.porsche.com">Slotted with hideLabel and no icon</a>
         </PLinkPure>
         <PLinkPure hide-label={true} size="small" icon="none">
           <a href="https://www.porsche.com">With hideLabel and no icon</a>
@@ -287,7 +287,7 @@ export const LinkPurePage = (): JSX.Element => {
           <p slot="subline">Some subline</p>
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" stretch={true}>
-          With strech and subline
+          With stretch and subline
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>

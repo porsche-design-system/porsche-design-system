@@ -149,20 +149,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-pure>
 
       <div class="playground light" title="should render with no icon">
-        <p-link-pure [href]="'https:  //www.porsche.com'" [icon]="'none'">Without icon</p-link-pure>
+        <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Without icon</p-link-pure>
         <p-link-pure [icon]="'none'"><a href="https://www.porsche.com">Slotted without icon</a></p-link-pure>
-        <p-link-pure [href]="'https:  //www.porsche.com'" [size]="'small'" [icon]="'none'"
+        <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'"
           >Without icon
           <p slot="subline">Some subline</p></p-link-pure
         >
       </div>
 
       <div class="playground light" title="should render icon if hide-label and icon none is set">
-        <p-link-pure [href]="'https:  //www.porsche.com'" [hideLabel]="true" [icon]="'none'"
+        <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'none'"
           >With hideLabel and no icon</p-link-pure
         >
         <p-link-pure [hideLabel]="true" [icon]="'none'"
-          ><a href="https://www.porsche.com">With hideLabel and no icon</a></p-link-pure
+          ><a href="https://www.porsche.com">Slotted with hideLabel and no icon</a></p-link-pure
         >
         <p-link-pure [hideLabel]="true" [size]="'small'" [icon]="'none'"
           ><a href="https://www.porsche.com">With hideLabel and no icon</a>
@@ -171,7 +171,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div class="playground light" title="should align label to the left">
-        <p-link-pure [href]="'https:  //www.porsche.com'" [alignlabel]="'left'">Align-label left</p-link-pure>
+        <p-link-pure [href]="'https://www.porsche.com'" [alignlabel]="'left'">Align-label left</p-link-pure>
         <p-link-pure [alignlabel]="'left'"><a href="https://www.porsche.com">Slotted align-label left</a></p-link-pure>
       </div>
       <div class="playground light" title="should align label to the left or right depending on viewport">
@@ -187,8 +187,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div class="playground light" title="should render with stretched label">
-        <p-link-pure [href]="'https:  //www.porsche.com'" [stretch]="true">Stretched icon left</p-link-pure>
-        <p-link-pure [href]="'https:  //www.porsche.com'" [stretch]="true" [alignlabel]="'left'"
+        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">Stretched icon left</p-link-pure>
+        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true" [alignlabel]="'left'"
           >Stretched icon right</p-link-pure
         >
         <p-link-pure [stretch]="true"><a href="https://www.porsche.com">Slotted stretched icon left</a></p-link-pure>
@@ -205,12 +205,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div class="playground light" title="should not align label left or stretch if it has a subline">
-        <p-link-pure [href]="'https:  //www.porsche.com'" [alignlabel]="'left'">
+        <p-link-pure [href]="'https://www.porsche.com'" [alignlabel]="'left'">
           With align-label and subline
           <p slot="subline">Some subline</p>
         </p-link-pure>
-        <p-link-pure [href]="'https:  //www.porsche.com'" [stretch]="true">
-          With strech and subline
+        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">
+          With stretch and subline
           <p slot="subline">Some subline</p>
         </p-link-pure>
       </div>
