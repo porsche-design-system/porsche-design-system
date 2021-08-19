@@ -16,8 +16,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 16916,
-    "gzipSize": 3065
+    "size": 19373,
+    "gzipSize": 3564
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -66,8 +66,8 @@
   },
   {
     "chunkShortName": "link-pure",
-    "size": 18911,
-    "gzipSize": 3474
+    "size": 19057,
+    "gzipSize": 3506
   },
   {
     "chunkShortName": "link-social",
@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 66650,
-    "gzipSize": 22498
+    "size": 66691,
+    "gzipSize": 22501
   },
   {
     "chunkShortName": "marque",
