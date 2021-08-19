@@ -1,5 +1,5 @@
 import { getTagName } from '../../../utils';
-import type { ExtendedIconName } from '../../../utils';
+import { ExtendedIconName } from '../../../types';
 
 export const throwIfIconNoneAndLoading = (host: HTMLElement, iconName: ExtendedIconName, loading: boolean): void => {
   if (iconName === 'none' && loading) {

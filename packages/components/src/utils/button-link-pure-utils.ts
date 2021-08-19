@@ -1,7 +1,5 @@
 import { hasNamedSlot } from './dom';
-import type { IconName } from '../types';
-
-export type ExtendedIconName = IconName | 'none';
+import type { ExtendedIconName } from '../types';
 
 export const hasIcon = (iconName: ExtendedIconName): boolean => {
   return iconName !== 'none';
