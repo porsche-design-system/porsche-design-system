@@ -105,10 +105,10 @@ export default class Code extends Vue {
   get compactMarkup() {      
     return `<div style="max-width: 400px">
   <p-accordion heading="Some Heading" tag="h3" compact="true">
-    <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
   <p-accordion heading="Some Heading" tag="h3" compact="true">
-    <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
 </div>`;
     }
