@@ -147,73 +147,73 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <a href="https://www.porsche.com">Some label</a>
         <p slot="subline">Some subline</p>
       </p-link-pure>
+    </div>
 
-      <div class="playground light" title="should render with no icon">
-        <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Without icon</p-link-pure>
-        <p-link-pure [icon]="'none'"><a href="https://www.porsche.com">Slotted without icon</a></p-link-pure>
-        <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'"
-          >Without icon
-          <p slot="subline">Some subline</p></p-link-pure
-        >
-      </div>
+    <div class="playground light" title="should render with no icon">
+      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'none'">Without icon</p-link-pure>
+      <p-link-pure [icon]="'none'"><a href="https://www.porsche.com">Slotted without icon</a></p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'" [icon]="'none'"
+        >Without icon
+        <p slot="subline">Some subline</p></p-link-pure
+      >
+    </div>
 
-      <div class="playground light" title="should render icon if hide-label and icon none is set">
-        <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'none'"
-          >With hideLabel and no icon</p-link-pure
-        >
-        <p-link-pure [hideLabel]="true" [icon]="'none'"
-          ><a href="https://www.porsche.com">Slotted with hideLabel and no icon</a></p-link-pure
-        >
-        <p-link-pure [hideLabel]="true" [size]="'small'" [icon]="'none'"
-          ><a href="https://www.porsche.com">With hideLabel and no icon</a>
-          <p slot="subline">Some subline</p></p-link-pure
-        >
-      </div>
+    <div class="playground light" title="should render icon if hide-label and icon none is set">
+      <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true" [icon]="'none'"
+        >With hideLabel and no icon</p-link-pure
+      >
+      <p-link-pure [hideLabel]="true" [icon]="'none'"
+        ><a href="https://www.porsche.com">Slotted with hideLabel and no icon</a></p-link-pure
+      >
+      <p-link-pure [hideLabel]="true" [size]="'small'" [icon]="'none'"
+        ><a href="https://www.porsche.com">With hideLabel and no icon</a>
+        <p slot="subline">Some subline</p></p-link-pure
+      >
+    </div>
 
-      <div class="playground light" title="should align label to the left">
-        <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">Align-label left</p-link-pure>
-        <p-link-pure [alignLabel]="'left'"><a href="https://www.porsche.com">Slotted align-label left</a></p-link-pure>
-      </div>
-      <div class="playground light" title="should align label to the left or right depending on viewport">
-        <p-link-pure
-          href="https://www.porsche.com"
-          [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
-        >
-          With breakpoint customizable align-label
-        </p-link-pure>
-        <p-link-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-          <a href="https://www.porsche.com">Slotted with breakpoint customizable align-label</a>
-        </p-link-pure>
-      </div>
+    <div class="playground light" title="should align label to the left">
+      <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">Align-label left</p-link-pure>
+      <p-link-pure [alignLabel]="'left'"><a href="https://www.porsche.com">Slotted align-label left</a></p-link-pure>
+    </div>
+    <div class="playground light" title="should align label to the left or right depending on viewport">
+      <p-link-pure
+        href="https://www.porsche.com"
+        [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
+      >
+        With breakpoint customizable align-label
+      </p-link-pure>
+      <p-link-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
+        <a href="https://www.porsche.com">Slotted with breakpoint customizable align-label</a>
+      </p-link-pure>
+    </div>
 
-      <div class="playground light" title="should render with stretched label">
-        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">Stretched icon left</p-link-pure>
-        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true" [alignLabel]="'left'"
-          >Stretched icon right</p-link-pure
-        >
-        <p-link-pure [stretch]="true"><a href="https://www.porsche.com">Slotted stretched icon left</a></p-link-pure>
-        <p-link-pure [stretch]="true" [alignLabel]="'left'"
-          ><a href="https://www.porsche.com">Slotted stretched icon right</a></p-link-pure
-        >
-      </div>
-      <div class="playground light" title="should render with stretched label depending on viewport">
-        <p-link-pure
-          href="https://www.porsche.com"
-          [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-          >Stretched depending on viewport</p-link-pure
-        >
-      </div>
+    <div class="playground light" title="should render with stretched label">
+      <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">Stretched icon left</p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true" [alignLabel]="'left'"
+        >Stretched icon right</p-link-pure
+      >
+      <p-link-pure [stretch]="true"><a href="https://www.porsche.com">Slotted stretched icon left</a></p-link-pure>
+      <p-link-pure [stretch]="true" [alignLabel]="'left'"
+        ><a href="https://www.porsche.com">Slotted stretched icon right</a></p-link-pure
+      >
+    </div>
+    <div class="playground light" title="should render with stretched label depending on viewport">
+      <p-link-pure
+        href="https://www.porsche.com"
+        [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        >Stretched depending on viewport</p-link-pure
+      >
+    </div>
 
-      <div class="playground light" title="should not align label left or stretch if it has a subline">
-        <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">
-          With align-label and subline
-          <p slot="subline">Some subline</p>
-        </p-link-pure>
-        <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">
-          With stretch and subline
-          <p slot="subline">Some subline</p>
-        </p-link-pure>
-      </div>
+    <div class="playground light" title="should not align label left or stretch if it has a subline">
+      <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">
+        With align-label and subline
+        <p slot="subline">Some subline</p>
+      </p-link-pure>
+      <p-link-pure [href]="'https://www.porsche.com'" [stretch]="true">
+        With stretch and subline
+        <p slot="subline">Some subline</p>
+      </p-link-pure>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
