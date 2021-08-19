@@ -125,12 +125,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should align label to the left">
-      <p-button-pure [alignlabel]="'left'">Align-label left</p-button-pure>
+      <p-button-pure [alignLabel]="'left'">Align-label left</p-button-pure>
     </div>
     <div class="playground light" title="should align label to the left or right depending on viewport">
       <p-button-pure
         href="https://www.porsche.com"
-        [alignlabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
+        [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
       >
         With breakpoint customizable align-label
       </p-button-pure>
@@ -138,7 +138,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with stretched label">
       <p-button-pure [stretch]="true">Stretched icon left</p-button-pure>
-      <p-button-pure [stretch]="true" [alignlabel]="'left'">Stretched icon right</p-button-pure>‚‚
+      <p-button-pure [stretch]="true" [alignLabel]="'left'">Stretched icon right</p-button-pure>‚‚
     </div>
     <div class="playground light" title="should render with stretched label depending on viewport">
       <p-button-pure
@@ -149,7 +149,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should not align label left or stretch if it has a subline">
-      <p-button-pure [alignlabel]="'left'">
+      <p-button-pure [alignLabel]="'left'">
         With align-label and subline
         <p slot="subline">Some subline</p>
       </p-button-pure>
