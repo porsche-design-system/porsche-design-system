@@ -120,16 +120,20 @@ describe('modal', () => {
       // click in each corner based on 1920x800 screen
       await page.mouse.move(5, 5);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
+      await waitForEventSerialization(page);
       await page.mouse.move(1915, 5);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
+      await waitForEventSerialization(page);
       await page.mouse.move(5, 795);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
+      await waitForEventSerialization(page);
       await page.mouse.move(1915, 795);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(4);
 
