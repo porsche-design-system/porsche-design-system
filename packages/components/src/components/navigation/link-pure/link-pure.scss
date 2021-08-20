@@ -199,26 +199,19 @@ $root: '.root';
   flex-shrink: 0;
   width: 1.5em;
   height: 1.5em;
-  margin-right: p-px-to-rem(4px);
 
   #{$root}--label-align-left & {
     order: 1;
-    margin-right: 0;
-    margin-left: p-px-to-rem(4px);
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
         order: 1;
-        margin-right: 0;
-        margin-left: p-px-to-rem(4px);
       }
 
       #{$root}--label-align-right-#{$breakpoint} & {
         order: 0;
-        margin-left: 0;
-        margin-right: p-px-to-rem(4px);
       }
     }
   }
@@ -230,18 +223,28 @@ $root: '.root';
   border: 0;
   padding: 0 0.125em 0 0;
 
+  #{$root}--with-icon & {
+    margin-left: p-px-to-rem(4px);
+  }
+
   #{$root}--label-align-left & {
     padding: 0;
+    margin-left: 0;
+    margin-right: p-px-to-rem(4px);
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
         padding: 0;
+        margin-left: 0;
+        margin-right: p-px-to-rem(4px);
       }
 
       #{$root}--label-align-right-#{$breakpoint} & {
         padding: 0 0.125em 0 0;
+        margin-right: 0;
+        margin-left: p-px-to-rem(4px);
       }
     }
   }
