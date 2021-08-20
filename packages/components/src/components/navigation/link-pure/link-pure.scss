@@ -199,19 +199,26 @@ $root: '.root';
   flex-shrink: 0;
   width: 1.5em;
   height: 1.5em;
+  margin-right: p-px-to-rem(4px);
 
   #{$root}--label-align-left & {
     order: 1;
+    margin-right: 0;
+    margin-left: p-px-to-rem(4px);
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
-        order: 0;
+        order: 1;
+        margin-right: 0;
+        margin-left: p-px-to-rem(4px);
       }
 
       #{$root}--label-align-right-#{$breakpoint} & {
-        order: 1;
+        order: 0;
+        margin-left: 0;
+        margin-right: p-px-to-rem(4px);
       }
     }
   }
@@ -221,43 +228,34 @@ $root: '.root';
   display: block;
   box-sizing: border-box;
   border: 0;
+  padding: 0 0.125em 0 0;
+
+  #{$root}--label-align-left & {
+    padding: 0;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--label-align-left-#{$breakpoint} & {
+        padding: 0;
+      }
+
+      #{$root}--label-align-right-#{$breakpoint} & {
+        padding: 0 0.125em 0 0;
+      }
+    }
+  }
 }
 
 .subline {
   display: flex;
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-top: 4px;
+  padding: 0 0.125em 0 0;
+  margin-left: p-px-to-rem(4px);
 
   #{$root}--with-icon + &::before {
     // We need a margin-left according to the labels font-size. The size of before gets calculated in the size mixin
     content: '';
-  }
-}
-
-.label,
-.subline {
-  margin-left: p-px-to-rem(4px);
-  padding: 0 0.125em 0 0;
-
-  #{$root}--label-align-left & {
-    padding: 0;
-    margin-left: 0;
-    margin-right: p-px-to-rem(4px);
-  }
-
-  @each $breakpoint in $breakpoints {
-    @include p-media-query($breakpoint) {
-      #{$root}--label-align-left-#{$breakpoint} & {
-        margin-left: p-px-to-rem(4px);
-        margin-right: 0;
-        padding: 0 0.125em 0 0;
-      }
-
-      #{$root}--label-align-right-#{$breakpoint} & {
-        padding: 0;
-        margin-left: 0;
-        margin-right: p-px-to-rem(4px);
-      }
-    }
   }
 }
