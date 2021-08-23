@@ -1,25 +1,25 @@
-import { hasIcon, hasSubline } from './button-link-pure-utils';
+import { hasVisibleIcon, hasSlottedSubline } from './button-link-pure-utils';
 
-describe('hasIcon', () => {
+describe('hasVisibleIcon', () => {
   it('should return true if called with valid iconName', () => {
-    expect(hasIcon('highway')).toBe(true);
+    expect(hasVisibleIcon('highway')).toBe(true);
   });
   it('should return false if iconName = none', () => {
-    expect(hasIcon('none')).toBe(false);
+    expect(hasVisibleIcon('none')).toBe(false);
   });
 });
 
-describe('hasSubline', () => {
+describe('hasSlottedSubline', () => {
   it('should return true with slotted subline', () => {
     const host = document.createElement('p-link-pure');
     const paragraph = document.createElement('p');
     paragraph.slot = 'subline';
     host.appendChild(paragraph);
 
-    expect(hasSubline(host)).toBe(true);
+    expect(hasSlottedSubline(host)).toBe(true);
   });
   it('should return false without subline', () => {
     const host = document.createElement('p-link-pure');
-    expect(hasSubline(host)).toBe(false);
+    expect(hasSlottedSubline(host)).toBe(false);
   });
 });

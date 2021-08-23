@@ -1,10 +1,10 @@
 import { hasNamedSlot } from './dom';
-import type { ExtendedIconName } from '../types';
+import type { LinkButtonPureIconName } from '../types';
 
-export const hasIcon = (iconName: ExtendedIconName): boolean => {
+export const hasVisibleIcon = (iconName: LinkButtonPureIconName): boolean => {
   return iconName !== 'none';
 };
 
-export const hasSubline = (host: HTMLElement) => {
+export const hasSlottedSubline = (host: HTMLElement): boolean => {
   return hasNamedSlot(host, 'subline');
 };
