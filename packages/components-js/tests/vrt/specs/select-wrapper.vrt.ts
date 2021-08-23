@@ -44,7 +44,8 @@ describe('Select Wrapper', () => {
           }
         </style>`;
 
-        const getSelectMarkup = (opts?: { disabled?: boolean }): string => `
+        type GetSelectMarkupOptions = { disabled?: boolean };
+        const getSelectMarkup = (opts?: GetSelectMarkupOptions): string => `
 <select${opts?.disabled ? ' disabled' : ''}>
   <option value="a">Option A</option>
 </select>`;
@@ -53,6 +54,8 @@ describe('Select Wrapper', () => {
 <span slot="label">Some${opts?.disabled ? ' disabled' : ''} slotted label with a <a href="#">link</a>.</span>
 <span slot="description">Some slotted description with a <a href="#">link</a>.</span>
 <span slot="message">Some slotted message with a <a href="#">link</a>.</span>`;
+
+        const disabledOptions: GetSelectMarkupOptions = { disabled: true };
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <div>
@@ -80,24 +83,24 @@ describe('Select Wrapper', () => {
 
           <div>
             <p-select-wrapper theme="${theme}" label="Some disabled label">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" label="Some disabled label" state="error" message="Some error message.">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" label="Some disabled label" state="success" message="Some success message.">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
           </div>
           <div>
             <p-select-wrapper theme="${theme}" filter label="Some disabled filter label">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" filter label="Some disabled filter label" state="error" message="Some error message.">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" filter label="Some disabled filter label" state="success" message="Some success message.">
-              ${getSelectMarkup({ disabled: true })}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
           </div>
 
@@ -117,28 +120,28 @@ describe('Select Wrapper', () => {
           </div>
           <div>
             <p-select-wrapper theme="${theme}">
-              ${getSlottedMarkup({ disabled: true })}
-              ${getSelectMarkup({ disabled: true })}
+              ${getSlottedMarkup(disabledOptions)}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" state="error">
-              ${getSlottedMarkup({ disabled: true })}
-              ${getSelectMarkup({ disabled: true })}
+              ${getSlottedMarkup(disabledOptions)}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
             <p-select-wrapper theme="${theme}" state="success">
-              ${getSlottedMarkup({ disabled: true })}
-              ${getSelectMarkup({ disabled: true })}
+              ${getSlottedMarkup(disabledOptions)}
+              ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
           </div>`;
         // TODO add hover test on fake option after select refactoring
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHoveredState(page, '.hovered > p-select-wrapper select');
-        await forceHoveredState(page, '.hovered > p-select-wrapper span a');
-        await forceFocusedState(page, '.focused > p-select-wrapper select');
-        await forceFocusedState(page, '.focused > p-select-wrapper span a');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-select-wrapper select');
-        await forceFocusedHoveredState(page, '.focused-hovered > p-select-wrapper span a');
+        await forceHoveredState(page, '.hovered p-select-wrapper select');
+        await forceHoveredState(page, '.hovered p-select-wrapper span a');
+        await forceFocusedState(page, '.focused p-select-wrapper select');
+        await forceFocusedState(page, '.focused p-select-wrapper span a');
+        await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper select');
+        await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper span a');
       })
     ).toBeFalsy();
   });
