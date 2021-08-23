@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, ExtendedIconName, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -113,7 +113,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -125,7 +125,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: ExtendedIconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -402,7 +402,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -418,7 +418,7 @@ export namespace Components {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: ExtendedIconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -626,7 +626,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */
@@ -1212,7 +1212,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1224,7 +1224,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: ExtendedIconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1501,7 +1501,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1517,7 +1517,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: ExtendedIconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1733,7 +1733,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */
