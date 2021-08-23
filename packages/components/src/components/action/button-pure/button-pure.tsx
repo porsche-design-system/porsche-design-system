@@ -80,11 +80,14 @@ export class ButtonPure {
   }
 
   public connectedCallback(): void {
-    throwIfIconIsNoneAndIsLoading(this.host, this.icon, this.loading);
     // move to helper which adds display styles in both scenarios
     if (!hasSlottedSubline(this.host)) {
       addComponentCss(this.host, this.stretch);
     }
+  }
+
+  public componentWillRender(): void {
+    throwIfIconIsNoneAndIsLoading(this.host, this.icon, this.loading);
   }
 
   public componentDidLoad(): void {
