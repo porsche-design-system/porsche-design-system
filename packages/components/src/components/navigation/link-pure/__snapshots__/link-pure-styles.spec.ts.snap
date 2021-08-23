@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css with stretch BreakpointCustomizable 1`] = `":host{display:flex !important}@media(min-width:480px){:host{display:flex !important}}@media(min-width:760px){:host{display:inline-block !important}}@media(min-width:1000px){:host{display:flex !important}}@media(min-width:1300px){:host{display:inline-block !important}}@media(min-width:1760px){:host{display:flex !important}}"`;
+exports[`getComponentCss() should return correct css with stretch BreakpointCustomizable 1`] = `":host{display:flex}@media(min-width:480px){:host{display:flex}}@media(min-width:760px){:host{display:inline-block}}@media(min-width:1000px){:host{display:flex}}@media(min-width:1300px){:host{display:inline-block}}@media(min-width:1760px){:host{display:flex}}"`;
 
-exports[`getComponentCss() should return correct css with stretch false 1`] = `":host{display:inline-block !important}"`;
+exports[`getComponentCss() should return correct css with stretch false 1`] = `":host{display:inline-block}"`;
 
-exports[`getComponentCss() should return correct css with stretch true 1`] = `":host{display:flex !important}"`;
+exports[`getComponentCss() should return correct css with stretch true 1`] = `":host{display:flex}"`;
 
 exports[`getSlottedCss() should return correct css 1`] = `"p-link-pure a::before{content:\\"\\" !important;display:block !important;position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;outline:1px solid transparent !important;outline-offset:1px !important}p-link-pure a:focus::before{outline-color:currentColor !important}p-link-pure a:focus:not(:focus-visible)::before{outline-color:transparent !important}"`;
 
