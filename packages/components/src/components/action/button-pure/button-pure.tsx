@@ -2,9 +2,8 @@ import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  hasIcon,
-  hasNamedSlot,
-  hasSubline,
+  hasVisibleIcon,
+  hasSlottedSubline,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
@@ -12,9 +11,17 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, ExtendedIconName, TextSize, TextWeight, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  ButtonType,
+  LinkButtonPureIconName,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { throwIfIconNoneAndLoading } from './button-pure-utils';
+import { throwIfIconIsNoneAndIsLoading } from './button-pure-utils';
 import { addComponentCss } from './button-pure-styles';
 
 @Component({
@@ -44,7 +51,7 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: ExtendedIconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -53,7 +60,7 @@ export class ButtonPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+  @Prop() public alignLabel?: AlignLabel = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -73,8 +80,11 @@ export class ButtonPure {
   }
 
   public connectedCallback(): void {
-    throwIfIconNoneAndLoading(this.host, this.icon, this.loading);
-    addComponentCss(this.host, !hasSubline(this.host) ? this.stretch : false);
+    throwIfIconIsNoneAndIsLoading(this.host, this.icon, this.loading);
+    // move to helper which adds display styles in both scenarios
+    if (!hasSlottedSubline(this.host)) {
+      addComponentCss(this.host, this.stretch);
+    }
   }
 
   public componentDidLoad(): void {
@@ -95,15 +105,20 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
+    const hasIcon = hasVisibleIcon(this.icon);
+    const hasSubline = hasSlottedSubline(this.host);
+
     const rootClasses = {
       ['root']: true,
-      ['root--loading']: this.loading,
+      ['root--loading']: this.loading && hasIcon,
       ['root--theme-dark']: isDark(this.theme),
-      ['root--with-icon']: hasIcon(this.icon),
+      ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
-      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
-      ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
+      ...(!hasSubline && {
+        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
+        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
+      }),
+      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const iconProps = {
@@ -142,7 +157,7 @@ export class ButtonPure {
             <slot />
           </PrefixedTagNames.pText>
         </button>
-        {hasNamedSlot(this.host, 'subline') && (
+        {hasSubline && (
           <PrefixedTagNames.pText class="subline" tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
