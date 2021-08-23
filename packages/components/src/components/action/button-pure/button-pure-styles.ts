@@ -6,7 +6,7 @@ const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boo
 });
 
 export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
-  return getCss(addImportantToEachRule(mergeDeep(buildResponsiveHostStyles(stretch, getStretchStyles))));
+  return getCss(mergeDeep(buildResponsiveHostStyles(stretch, getStretchStyles)));
 };
 
 export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
