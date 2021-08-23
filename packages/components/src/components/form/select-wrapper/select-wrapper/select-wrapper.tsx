@@ -2,7 +2,6 @@ import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop, State } fr
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
-  getRole,
   hasDescription,
   hasLabel,
   hasMessage,
