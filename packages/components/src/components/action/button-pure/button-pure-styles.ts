@@ -1,13 +1,5 @@
-import {
-  addImportantToEachRule,
-  attachCss,
-  BreakpointCustomizable,
-  buildResponsiveHostStyles,
-  getCss,
-  GetStylesFunction,
-  JssStyle,
-  mergeDeep,
-} from '../../../utils';
+import { attachCss, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../utils';
+import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 
 const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
   display: stretch ? 'flex' : 'inline-block',
