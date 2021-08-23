@@ -7,6 +7,7 @@
   + .subline {
     position: static;
     width: auto;
+    top: auto;
     left: auto;
     height: 100%;
     overflow: visible;
@@ -18,6 +19,7 @@
   + .subline {
     position: absolute;
     left: -99999px;
+    top: auto;
     width: 1px;
     height: 1px;
     overflow: hidden;
