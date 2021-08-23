@@ -301,10 +301,7 @@ input:focus + span {
   }
 }
 
-.message {
-  margin-top: $p-spacing-4;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-}
+@include state-message;
 
 .icon {
   position: absolute;

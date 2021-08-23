@@ -10,11 +10,11 @@ import {
   mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
-  getRole,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { addSlottedCss } from './text-field-wrapper-styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -128,9 +128,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );

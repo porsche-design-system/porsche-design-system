@@ -102,3 +102,16 @@
     }
   }
 }
+
+@mixin state-message() {
+  .message {
+    display: flex;
+    margin-top: $p-spacing-4;
+    color: $p-color-default; // TODO: is this needed?
+    transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
+
+    &__icon {
+      margin-right: $p-spacing-4;
+    }
+  }
+}

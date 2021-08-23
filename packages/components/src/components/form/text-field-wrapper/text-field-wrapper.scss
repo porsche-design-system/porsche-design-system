@@ -227,10 +227,7 @@
   @include required;
 }
 
-.message {
-  margin-top: $p-spacing-4;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-}
+@include state-message;
 
 .sr-only {
   @include text-hidden;

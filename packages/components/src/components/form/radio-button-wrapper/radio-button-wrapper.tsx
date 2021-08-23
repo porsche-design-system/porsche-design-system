@@ -9,11 +9,11 @@ import {
   setAriaAttributes,
   observeAttributes,
   unobserveAttributes,
-  getRole,
   isRequiredAndParentNotRequired,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { addSlottedCss } from './radio-button-wrapper-styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-radio-button-wrapper',
@@ -89,9 +89,7 @@ export class RadioButtonWrapper {
           <slot />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );

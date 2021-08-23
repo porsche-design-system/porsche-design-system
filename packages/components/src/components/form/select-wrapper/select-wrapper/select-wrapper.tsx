@@ -33,6 +33,7 @@ import {
 } from './select-wrapper-utils';
 import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
 import { addSlottedCss } from './select-wrapper-styles';
+import { StateMessage } from '../../../common/state-message';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -206,9 +207,7 @@ export class SelectWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );
