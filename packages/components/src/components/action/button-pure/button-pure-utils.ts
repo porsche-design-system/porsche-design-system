@@ -1,13 +1,13 @@
 import { getTagName, hasVisibleIcon } from '../../../utils';
 import { LinkButtonPureIconName } from '../../../types';
 
-export const throwIfIconIsNoneAndIsLoading = (
+export const warnIfIconIsNoneAndIsLoading = (
   host: HTMLElement,
   iconName: LinkButtonPureIconName,
   loading: boolean
 ): void => {
   if (!hasVisibleIcon(iconName) && loading) {
-    throw new Error(
+    console.warn(
       `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
         host
       )} is not allowed.`
