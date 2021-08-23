@@ -95,60 +95,60 @@
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
 
     &--visible {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden {
-      @include text-hidden;
+      @include form-text-hidden;
     }
 
     @include p-media-query('xs') {
       &--visible-xs {
-        @include text-visible;
+        @include form-text-visible;
       }
 
       &--hidden-xs {
-        @include text-hidden;
+        @include form-text-hidden;
       }
     }
 
     @include p-media-query('s') {
       &--visible-s {
-        @include text-visible;
+        @include form-text-visible;
       }
 
       &--hidden-s {
-        @include text-hidden;
+        @include form-text-hidden;
       }
     }
 
     @include p-media-query('m') {
       &--visible-m {
-        @include text-visible;
+        @include form-text-visible;
       }
 
       &--hidden-m {
-        @include text-hidden;
+        @include form-text-hidden;
       }
     }
 
     @include p-media-query('l') {
       &--visible-l {
-        @include text-visible;
+        @include form-text-visible;
       }
 
       &--hidden-l {
-        @include text-hidden;
+        @include form-text-hidden;
       }
     }
 
     @include p-media-query('xl') {
       &--visible-xl {
-        @include text-visible;
+        @include form-text-visible;
       }
 
       &--hidden-xl {
-        @include text-hidden;
+        @include form-text-hidden;
       }
     }
   }
@@ -400,7 +400,7 @@
     }
 
     &-sr {
-      @include text-hidden;
+      @include form-text-hidden;
     }
 
     #{$bem-block}--theme-light & {

@@ -126,13 +126,13 @@ $root: '.root';
   &--with-label {
     .label,
     + .subline {
-      @include text-visible();
+      @include text-visible;
     }
   }
   &--without-label {
     .label,
     + .subline {
-      @include text-hidden();
+      @include text-hidden;
     }
   }
 
@@ -160,13 +160,13 @@ $root: '.root';
       &--with-label-#{$breakpoint} {
         .label,
         + .subline {
-          @include text-visible();
+          @include text-visible;
         }
       }
       &--without-label-#{$breakpoint} {
         .label,
         + .subline {
-          @include text-hidden();
+          @include text-hidden;
         }
       }
     }
