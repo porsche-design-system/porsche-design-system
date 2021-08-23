@@ -2,30 +2,6 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-@mixin label-visible() {
-  .label,
-  + .subline {
-    position: static;
-    width: auto;
-    top: auto;
-    left: auto;
-    height: 100%;
-    overflow: visible;
-  }
-}
-
-@mixin label-hidden() {
-  .label,
-  + .subline {
-    position: absolute;
-    left: -99999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-}
-
 :host {
   vertical-align: top;
   position: relative !important;
@@ -148,10 +124,16 @@ $root: '.root';
   }
 
   &--with-label {
-    @include label-visible;
+    .label,
+    + .subline {
+      @include text-visible();
+    }
   }
   &--without-label {
-    @include label-hidden;
+    .label,
+    + .subline {
+      @include text-hidden();
+    }
   }
 
   @each $breakpoint in $breakpoints {
@@ -176,10 +158,16 @@ $root: '.root';
         @include adjust-to-font-size('inherit');
       }
       &--with-label-#{$breakpoint} {
-        @include label-visible;
+        .label,
+        + .subline {
+          @include text-visible();
+        }
       }
       &--without-label-#{$breakpoint} {
-        @include label-hidden;
+        .label,
+        + .subline {
+          @include text-hidden();
+        }
       }
     }
   }
