@@ -1,5 +1,6 @@
 // common type definitions
 import { IconName } from '@porsche-design-system/icons';
+import { BreakpointCustomizable } from './utils';
 
 export { TextSize } from './components/basic/typography/text/text-utils';
 export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
@@ -46,4 +47,6 @@ declare global {
 
 export type { IconName } from '@porsche-design-system/icons';
 
-export type ExtendedIconName = IconName | 'none';
+export type LinkButtonPureIconName = IconName | 'none';
+
+export type AlignLabel = BreakpointCustomizable<'left' | 'right'>;

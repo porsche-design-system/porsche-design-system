@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { AlignLabel, BreakpointCustomizable, Theme } from '../../../types';
 import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
@@ -19,7 +19,7 @@ export class Switch {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+  @Prop() public alignLabel?: AlignLabel = 'right';
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

@@ -6,10 +6,18 @@ import {
   isDark,
   mapBreakpointPropToClasses,
   transitionListener,
-  hasIcon,
-  hasSubline,
+  hasVisibleIcon,
+  hasSlottedSubline,
 } from '../../../utils';
-import type { BreakpointCustomizable, ExtendedIconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  LinkTarget,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { addComponentCss, addSlottedCss } from './link-pure-styles';
 
@@ -22,7 +30,7 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+  @Prop() public alignLabel?: AlignLabel = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -34,7 +42,7 @@ export class LinkPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
-  @Prop() public icon?: ExtendedIconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -65,7 +73,7 @@ export class LinkPure {
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
-    addComponentCss(this.host, !hasSubline(this.host) ? this.stretch : false);
+    addComponentCss(this.host, !hasSlottedSubline(this.host) ? this.stretch : false);
   }
 
   public componentDidLoad(): void {
@@ -86,11 +94,13 @@ export class LinkPure {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
-      ['root--with-icon']: hasIcon(this.icon),
+      ['root--with-icon']: hasVisibleIcon(this.icon),
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
-      ...(!hasSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
-      ...(hasIcon(this.icon) && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
+      ...(!hasSlottedSubline(this.host) &&
+        mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
+      ...(!hasSlottedSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
+      ...(hasVisibleIcon(this.icon) &&
+        mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -107,7 +117,7 @@ export class LinkPure {
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          {hasIcon(this.icon) && (
+          {hasVisibleIcon(this.icon) && (
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
@@ -122,7 +132,7 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasSubline(this.host) && (
+        {hasSlottedSubline(this.host) && (
           <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
