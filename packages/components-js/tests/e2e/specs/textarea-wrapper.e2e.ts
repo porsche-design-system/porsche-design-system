@@ -267,12 +267,13 @@ describe('textarea-wrapper', () => {
 
       expect(status.componentDidLoad['p-textarea-wrapper']).withContext('componentDidLoad: p-textarea-wrapper').toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(3);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
-    it('should work without unnecessary round trips on init', async () => {
+    it('should work without unnecessary round trips after state change', async () => {
       await initTextarea({
         useSlottedLabel: true,
         useSlottedMessage: true,
@@ -289,7 +290,7 @@ describe('textarea-wrapper', () => {
         .withContext('componentDidUpdate: p-textarea-wrapper')
         .toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });

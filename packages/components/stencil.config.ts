@@ -1,5 +1,5 @@
 import { Config } from '@stencil/core';
-import { sass } from '@stencil/sass';
+import { sass } from '@porsche-design-system/stencil-sass';
 import { postcss } from '@stencil/postcss';
 // @ts-ignore
 import autoprefixer from 'autoprefixer';
