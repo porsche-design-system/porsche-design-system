@@ -1,12 +1,12 @@
-import { attachCss, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../utils';
+import { attachCss, buildResponsiveHostStyles, getCss } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 
-const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  display: stretch ? 'flex' : 'inline-block',
+const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
+  display: stretch ? 'block' : 'inline-block',
 });
 
 export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
-  return getCss(mergeDeep(buildResponsiveHostStyles(stretch, getStretchStyles)));
+  return getCss(buildResponsiveHostStyles(stretch, getStretchStyles));
 };
 
 export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
