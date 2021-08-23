@@ -21,7 +21,7 @@ import type {
   Theme,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { throwIfIconIsNoneAndIsLoading } from './button-pure-utils';
+import { warnIfIconIsNoneAndIsLoading } from './button-pure-utils';
 import { addComponentCss } from './button-pure-styles';
 
 @Component({
@@ -84,7 +84,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    throwIfIconIsNoneAndIsLoading(this.host, this.icon, this.loading);
+    warnIfIconIsNoneAndIsLoading(this.host, this.icon, this.loading);
   }
 
   public componentDidLoad(): void {
