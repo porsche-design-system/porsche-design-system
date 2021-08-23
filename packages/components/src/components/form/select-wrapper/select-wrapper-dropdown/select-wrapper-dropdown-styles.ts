@@ -44,6 +44,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         zIndex: 10,
         left: 0,
         right: 0,
+        marginTop: '-1px',
         maxHeight: pxToRemWithUnit(308),
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
