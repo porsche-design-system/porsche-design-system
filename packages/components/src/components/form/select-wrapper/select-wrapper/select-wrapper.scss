@@ -44,8 +44,7 @@ $root: '.root';
   box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
 }
 
-::slotted(select:focus),
-input:focus + span {
+::slotted(select:focus) {
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
@@ -95,8 +94,7 @@ input:focus + span {
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high !important;
     }
 
-    ::slotted(select:focus),
-    input:focus + span {
+    ::slotted(select:focus) {
       outline-color: $p-color-theme-dark-neutral-contrast-medium !important;
     }
 
@@ -124,8 +122,7 @@ input:focus + span {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
     }
 
-    ::slotted(select:focus),
-    input:focus + span {
+    ::slotted(select:focus) {
       outline-color: $p-color-notification-success !important;
     }
 
@@ -139,8 +136,7 @@ input:focus + span {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%) !important;
       }
 
-      ::slotted(select:focus),
-      input:focus + span {
+      ::slotted(select:focus) {
         outline-color: $p-color-theme-dark-notification-success !important;
       }
     }
@@ -172,8 +168,7 @@ input:focus + span {
       box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
     }
 
-    ::slotted(select:focus),
-    input:focus + span {
+    ::slotted(select:focus) {
       outline-color: $p-color-notification-error !important ;
     }
 
@@ -187,8 +182,7 @@ input:focus + span {
         box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%) !important;
       }
 
-      ::slotted(select:focus),
-      input:focus + span {
+      ::slotted(select:focus) {
         outline-color: $p-color-theme-dark-notification-error !important;
       }
     }
