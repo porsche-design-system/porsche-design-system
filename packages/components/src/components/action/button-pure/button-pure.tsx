@@ -140,10 +140,10 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
         >
-          {this.loading ? (
-            <PrefixedTagNames.pSpinner {...iconProps} />
-          ) : (
-            hasIcon(this.icon) && (
+          {hasIcon &&
+            (this.loading ? (
+              <PrefixedTagNames.pSpinner {...iconProps} />
+            ) : (
               <PrefixedTagNames.pIcon
                 {...iconProps}
                 color="inherit"
@@ -151,8 +151,7 @@ export class ButtonPure {
                 source={this.iconSource}
                 aria-hidden="true"
               />
-            )
-          )}
+            ))}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
