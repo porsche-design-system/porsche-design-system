@@ -1,12 +1,12 @@
-import { throwIfIconNoneAndLoading } from './button-pure-utils';
+import { throwIfIconIsNoneAndIsLoading } from './button-pure-utils';
 
-describe('throwIfIconNoneAndLoading()', () => {
+describe('throwIfIconIsNoneAndIsLoading()', () => {
   it('should throw error if property icon = none and loading = true', () => {
     const host = document.createElement('p-button-pure');
 
     let error = undefined;
     try {
-      throwIfIconNoneAndLoading(host, 'none', true);
+      throwIfIconIsNoneAndIsLoading(host, 'none', true);
     } catch (e) {
       error = e.message;
     }
@@ -17,7 +17,7 @@ describe('throwIfIconNoneAndLoading()', () => {
     const host = document.createElement('p-button-pure');
     let error = undefined;
     try {
-      throwIfIconNoneAndLoading(host, 'highway', true);
+      throwIfIconIsNoneAndIsLoading(host, 'highway', true);
     } catch (e) {
       error = e.message;
     }
@@ -28,7 +28,7 @@ describe('throwIfIconNoneAndLoading()', () => {
     const host = document.createElement('p-button-pure');
     let error = undefined;
     try {
-      throwIfIconNoneAndLoading(host, 'none', false);
+      throwIfIconIsNoneAndIsLoading(host, 'none', false);
     } catch (e) {
       error = e.message;
     }
