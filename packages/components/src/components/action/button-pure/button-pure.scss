@@ -247,7 +247,7 @@ $root: '.root';
   margin-top: p-px-to-rem(4px);
   padding-right: 0.125em;
 
-  #{$root}--with-icon & {
+  #{$root}--with-icon + & {
     margin-left: p-px-to-rem(4px);
   }
 
