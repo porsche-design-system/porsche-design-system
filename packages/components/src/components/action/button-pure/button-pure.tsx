@@ -80,10 +80,7 @@ export class ButtonPure {
   }
 
   public connectedCallback(): void {
-    // move to helper which adds display styles in both scenarios
-    if (!hasSlottedSubline(this.host)) {
-      addComponentCss(this.host, this.stretch);
-    }
+    addComponentCss(this.host, this.stretch);
   }
 
   public componentWillRender(): void {
