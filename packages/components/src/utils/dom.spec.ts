@@ -21,6 +21,7 @@ import {
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   throwIfParentIsNotOneOfKind,
+  throwIfRootNodeIsNotOfKind,
 } from '.';
 import type { FormState } from '../types';
 
@@ -106,6 +107,50 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
   });
 });
 
+describe('throwIfRootNodeIsNotOfKind()', () => {
+  it('should throw error if root node tag does not match', () => {
+    const child = document.createElement('p-select-wrapper-dropdown');
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if root node tag matches', () => {
+    const parent = document.createElement('p-select-wrapper');
+    const child = document.createElement('p-select-wrapper-dropdown');
+    parent.attachShadow({ mode: 'open' });
+    parent.shadowRoot.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+
+  it('should not throw error if prefixed root node tag matches', () => {
+    const parent = document.createElement('my-prefix-p-select-wrapper');
+    const child = document.createElement('my-prefix-p-select-wrapper-dropdown');
+    parent.attachShadow({ mode: 'open' });
+    parent.shadowRoot.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
 describe('isParentOfKind()', () => {
   it('should return true if parent tag matches', () => {
     const parent = document.createElement('p-grid');
@@ -139,7 +184,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     expect(error).not.toBe(undefined);
   });
 
-  it('should not throw error if parent tag does match', () => {
+  it('should not throw error if parent tag matches', () => {
     const parent = document.createElement('p-grid');
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
@@ -153,7 +198,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     expect(error).toBe(undefined);
   });
 
-  it('should not throw error if prefixed parent tag does match', () => {
+  it('should not throw error if prefixed parent tag matches', () => {
     const parent = document.createElement('my-prefix-p-grid');
     const child = document.createElement('my-prefix-p-grid-item');
     parent.appendChild(child);
