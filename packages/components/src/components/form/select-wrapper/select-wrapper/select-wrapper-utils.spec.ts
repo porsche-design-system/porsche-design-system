@@ -32,10 +32,9 @@ const getOptions = (props?: GetOptions): OptionMap[] => {
   const { selectedIndex, hiddenIndex } = props || {};
 
   const options = ['First', 'Second', 'Third', 'Fourth'].map(
-    (value, idx) =>
+    (value) =>
       ({
         ...defaultOptionMap,
-        key: idx + 1,
         value: `${value} Value`,
       } as OptionMap)
   );
@@ -220,14 +219,14 @@ describe('getNewOptionMapIndex()', () => {
 
   it.each`
     selectedIndex | direction  | expected
-    ${0}          | ${'down'}  | ${2}
-    ${0}          | ${'right'} | ${2}
-    ${3}          | ${'down'}  | ${1}
-    ${3}          | ${'right'} | ${1}
-    ${1}          | ${'up'}    | ${1}
-    ${1}          | ${'left'}  | ${1}
-    ${0}          | ${'up'}    | ${4}
-    ${0}          | ${'left'}  | ${4}
+    ${0}          | ${'down'}  | ${1}
+    ${0}          | ${'right'} | ${1}
+    ${3}          | ${'down'}  | ${0}
+    ${3}          | ${'right'} | ${0}
+    ${1}          | ${'up'}    | ${0}
+    ${1}          | ${'left'}  | ${0}
+    ${0}          | ${'up'}    | ${3}
+    ${0}          | ${'left'}  | ${3}
   `(
     "should be called with selectedIndex='$selectedIndex' and direction='$direction' and result to '$expected'",
     ({ selectedIndex, direction, expected }) => {
