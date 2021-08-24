@@ -78,6 +78,11 @@ export const getSelectedOptionMap = (arr: OptionMap[]): OptionMap => arr.find((i
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
 
+export const getMatchingOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
+  const lowerCaseSearchString = searchString.toLowerCase();
+  return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
+};
+
 export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
   return options.map((item) => ({
