@@ -178,8 +178,8 @@ export class SelectWrapper {
           {this.filter && (
             <PrefixedTagNames.pSelectWrapperFilter
               class="filter"
-              selectedOptionMap={getSelectedOptionMap(this.optionMaps)}
-              // highlightedOptionMap={getHighlightedOptionMap(this.optionMaps)}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              highlightedIndex={getHighlightedOptionMapIndex(this.optionMaps)}
               dropdownId={dropdownId}
               disabled={this.disabled}
               isOpen={this.isOpen}
@@ -340,7 +340,7 @@ export class SelectWrapper {
         if (this.filter) {
           const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
           if (matchingOptions.length === 1) {
-            this.setOptionSelected(matchingOptions[0].key);
+            this.setOptionSelected(this.optionMaps.indexOf(matchingOptions[0]));
           } else {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
