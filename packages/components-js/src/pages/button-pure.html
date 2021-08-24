@@ -5,14 +5,14 @@
 </style>
 
 <div class="playground light" title="should render button with label">
-  <p-button-pure>Some label</p-button-pure>
-  <p-button-pure disabled="true">Some label</p-button-pure>
-  <p-button-pure loading="true">Some label</p-button-pure>
+  <p-button-pure>Label default</p-button-pure>
+  <p-button-pure disabled="true">Label disabled</p-button-pure>
+  <p-button-pure loading="true">Label loading</p-button-pure>
 </div>
 <div class="playground dark" title="should render button with label on dark theme">
-  <p-button-pure theme="dark">Some label</p-button-pure>
-  <p-button-pure disabled="true" theme="dark">Some label</p-button-pure>
-  <p-button-pure loading="true" theme="dark">Some label</p-button-pure>
+  <p-button-pure theme="dark">Label default</p-button-pure>
+  <p-button-pure disabled="true" theme="dark">Label disabled</p-button-pure>
+  <p-button-pure loading="true" theme="dark">Label loading</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button without label">
@@ -28,122 +28,122 @@
 
 <div class="playground light" title="should render button with responsive label">
   <p-button-pure hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-    >Some label
+    >Label Responsive
   </p-button-pure>
   <p-button-pure hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-    >Some label
+    >Label Responsive
     <p slot="subline">Some subline</p>
   </p-button-pure>
 </div>
 
 <div class="playground light" title="should render button with different size">
-  <p-button-pure size="x-small">Some label</p-button-pure>
+  <p-button-pure size="x-small">Label size x-small</p-button-pure>
   <br />
-  <p-button-pure size="small">Some label</p-button-pure>
+  <p-button-pure size="small">Label size small</p-button-pure>
   <br />
-  <p-button-pure size="medium">Some label</p-button-pure>
+  <p-button-pure size="medium">Label size medium</p-button-pure>
   <br />
-  <p-button-pure size="large">Some label</p-button-pure>
+  <p-button-pure size="large">Label size large</p-button-pure>
   <br />
-  <p-button-pure size="x-large">Some label</p-button-pure>
+  <p-button-pure size="x-large">Label size x-large</p-button-pure>
   <br />
-  <p-button-pure size="inherit" style="font-size: 48px">Some label</p-button-pure>
+  <p-button-pure size="inherit" style="font-size: 48px">Label size inherit</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button with responsive size">
   <p-button-pure
     size="{'base': 'x-small', 'xs': 'small', 's': 'medium', 'm': 'large', 'l': 'x-large', 'xl': 'inherit'}"
     style="font-size: 48px"
-    >Some label
+    >Label responsive size
   </p-button-pure>
 </div>
 
 <div class="playground light" title="should render button with different weight">
-  <p-button-pure weight="thin">Some label</p-button-pure>
-  <p-button-pure weight="regular">Some label</p-button-pure>
-  <p-button-pure weight="semibold">Some label</p-button-pure>
-  <p-button-pure weight="bold">Some label</p-button-pure>
+  <p-button-pure weight="thin">Label weight thin</p-button-pure>
+  <p-button-pure weight="regular">Label weight regular</p-button-pure>
+  <p-button-pure weight="semibold">Label weight semibold</p-button-pure>
+  <p-button-pure weight="bold">Label weight bold</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button with specific icon">
-  <p-button-pure icon="delete">Some label</p-button-pure>
-  <p-button-pure icon-source="./assets/icon-custom-kaixin.svg">Some label</p-button-pure>
+  <p-button-pure icon="delete">Label with specific icon</p-button-pure>
+  <p-button-pure icon-source="./assets/icon-custom-kaixin.svg">Label with local icon-source</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button with multiline label">
-  <p-button-pure style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
+  <p-button-pure style="width: 240px">Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button-pure with custom clickable area">
-  <p-button-pure style="padding: 1rem">Some label</p-button-pure>
-  <p-button-pure hide-label="true" style="padding: 1rem">Some label</p-button-pure>
+  <p-button-pure style="padding: 1rem">Label with custom click-area</p-button-pure>
+  <p-button-pure hide-label="true" style="padding: 1rem">Label with custom click-area</p-button-pure>
 </div>
 
 <div class="playground light" title="should render with subline">
   <p-button-pure size="small"
-    >Some label
+    >Label size small
     <p slot="subline">Some subline</p></p-button-pure
   >
   <p-button-pure size="medium"
-    >Some label
+    >Label size medium
     <p slot="subline">Some subline</p></p-button-pure
   >
   <p-button-pure size="large"
-    >Some label
+    >Label size large
     <p slot="subline">Some subline</p></p-button-pure
   >
   <p-button-pure size="x-large"
-    >Some label
+    >Label size x-large
     <p slot="subline">Some subline</p></p-button-pure
   >
   <p-button-pure size="medium" disabled="true"
-    >Some label
+    >Label disabled
     <p slot="subline">Some subline</p></p-button-pure
   >
 </div>
 
 <div class="playground light" title="should render with no icon">
-  <p-button-pure icon="none">Without icon</p-button-pure>
+  <p-button-pure icon="none">Label without icon</p-button-pure>
   <p-button-pure size="small" icon="none"
-    >Without icon
+    >Label without icon
     <p slot="subline">Some subline</p></p-button-pure
   >
 </div>
 
 <div class="playground light" title="should render icon if hide-label and icon none is set">
-  <p-button-pure hide-label="true" icon="none">With hideLabel and no icon</p-button-pure>
+  <p-button-pure hide-label="true" icon="none">Label with hideLabel and no icon</p-button-pure>
   <p-button-pure hide-label="true" size="small" icon="none"
-    >With hideLabel and no icon
+    >Label with hideLabel and no icon
     <p slot="subline">Some subline</p></p-button-pure
   >
 </div>
 
 <div class="playground light" title="should align label to the left">
-  <p-button-pure align-label="left">Align-label left</p-button-pure>
+  <p-button-pure align-label="left">Label aligned left</p-button-pure>
 </div>
 <div class="playground light" title="should align label to the left or right depending on viewport">
   <p-button-pure align-label="{'base': 'left', 'xs': 'right', 's': 'left', 'm': 'right', 'l': 'left', 'xl': 'right'}">
-    With breakpoint customizable align-label
+    Label responsive aligned left
   </p-button-pure>
 </div>
 
 <div class="playground light" title="should render with stretched label">
-  <p-button-pure stretch="true">Stretched icon left</p-button-pure>
-  <p-button-pure stretch="true" align-label="left">Stretched icon right</p-button-pure>
+  <p-button-pure stretch="true">Label stretched</p-button-pure>
+  <p-button-pure stretch="true" align-label="left">Label stretched aligned left</p-button-pure>
 </div>
 <div class="playground light" title="should render with stretched label depending on viewport">
   <p-button-pure stretch="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-    >Stretched depending on viewport</p-button-pure
+    >Label responsive stretched</p-button-pure
   >
 </div>
 
 <div class="playground light" title="should not align label left or stretch if it has a subline">
   <p-button-pure align-label="left">
-    With align-label and subline
+    Label aligned left
     <p slot="subline">Some subline</p>
   </p-button-pure>
   <p-button-pure stretch="true">
-    With stretch and subline
+    Label streched
     <p slot="subline">Some subline</p>
   </p-button-pure>
 </div>
