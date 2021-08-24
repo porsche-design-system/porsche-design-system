@@ -244,10 +244,16 @@ export class SelectWrapper {
     this.observeOptions(); // initial
 
     observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
-    observeChildren(this.select, () => {
-      this.setOptionMaps();
-      this.observeOptions(); // new option might have been added
-    });
+    observeChildren(
+      this.select,
+      () => {
+        this.setOptionMaps();
+        this.observeOptions(); // new option might have been added
+      },
+      // unfortunately we can't observe hidden property of option elements via observeProperties
+      // therefore we do it here via attribute
+      ['hidden']
+    );
   }
 
   private observeOptions(): void {

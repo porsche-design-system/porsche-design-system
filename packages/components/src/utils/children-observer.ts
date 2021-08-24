@@ -11,11 +11,20 @@ const childrenObserver = new MutationObserver((mutations) => {
     .forEach((node) => childrenMutationMap.get(node)());
 });
 
-export const observeChildren = <T extends HTMLElement>(node: T, callback: () => void): void => {
+export const observeChildren = <T extends HTMLElement, K = keyof T>(
+  node: T,
+  callback: () => void,
+  attributes?: Lowercase<K extends string ? K : string>[]
+): void => {
   // node might not be defined in connectedCallback
   if (node) {
     childrenMutationMap.set(node, callback);
-    childrenObserver.observe(node, { childList: true, subtree: true, characterData: true });
+    childrenObserver.observe(node, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributeFilter: attributes,
+    });
   }
 };
 
