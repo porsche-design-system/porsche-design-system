@@ -1,4 +1,4 @@
-import { getHTMLElements, getTagName, hasAttribute, isTouchDevice } from '../../../../utils';
+import { getTagName, hasAttribute, isTouchDevice } from '../../../../utils';
 
 export type DropdownDirectionInternal = 'down' | 'up';
 export type DropdownDirection = DropdownDirectionInternal | 'auto';
@@ -28,7 +28,7 @@ export type OptionMap = {
 };
 
 // only alias for function, unit?
-export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => getHTMLElements(select, 'option');
+export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
   options.map((item, idx) => {
