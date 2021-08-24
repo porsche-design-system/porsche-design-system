@@ -214,7 +214,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div class="playground dark" title="should render with error state and error message with filter on dark theme">
       <p-select-wrapper
-        [label]="'Some label'"
+        [label]="'Some label with filter'"
         [filter]="true"
         [state]="'error'"
         [message]="'Some error message.'"
@@ -282,7 +282,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div class="playground dark" title="should render with success state and success message with filter on dark theme">
       <p-select-wrapper
-        [label]="'Some label'"
+        [label]="'Some label with filter'"
         [filter]="true"
         [state]="'success'"
         [message]="'Some success message.'"
