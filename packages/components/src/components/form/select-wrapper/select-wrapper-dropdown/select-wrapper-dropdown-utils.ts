@@ -17,17 +17,11 @@ export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, filt
       };
 };
 
-export const getOptionAriaAttributes = ({
-  value,
-  highlighted,
-  hidden,
-  disabled,
-  initiallyHidden,
-}: OptionMap): AriaAttributes => ({
-  'aria-selected': highlighted ? 'true' : null,
-  'aria-disabled': disabled ? 'true' : null,
-  'aria-hidden': hidden || initiallyHidden ? 'true' : null,
-  'aria-label': !value ? 'Empty value' : null,
+export const getOptionAriaAttributes = (option: OptionMap): AriaAttributes => ({
+  'aria-selected': option.highlighted ? 'true' : null,
+  'aria-disabled': option.disabled ? 'true' : null,
+  'aria-hidden': option.hidden || option.initiallyHidden ? 'true' : null,
+  'aria-label': option.value ? null : 'Empty value',
 });
 
 export const determineDirection = (host: HTMLElement): DropdownDirectionInternal => {
