@@ -45,7 +45,7 @@ describe('Button Pure', () => {
           <p-button-pure theme="${theme}" align-label="left" stretch="true">Label aligned left stretched</p-button-pure>
           <br/>
           <p-button-pure theme="${theme}" icon="none">Label without Icon</p-button-pure>
-          <p-button-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some Subline</p></p-button-pure>`;
+          <p-button-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some slightly longer subline</p></p-button-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 

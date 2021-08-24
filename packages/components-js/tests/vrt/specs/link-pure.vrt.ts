@@ -44,7 +44,7 @@ describe('Link Pure', () => {
           <p-link-pure theme="${theme}" align-label="left" stretch="true">Label aligned left stretched</p-link-pure>
           <br/>
           <p-link-pure theme="${theme}" icon="none">Label without Icon</p-link-pure>
-          <p-link-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some Subline</p></p-link-pure>`;
+          <p-link-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some slightly longer subline</p></p-link-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
