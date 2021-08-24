@@ -33,10 +33,19 @@ describe('Button Pure', () => {
         const head = `<style type="text/css">p-button-pure:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-button-pure theme="${theme}">Some label</p-button-pure>
-          <p-button-pure theme="${theme}" loading="true">Loading</p-button-pure>
-          <p-button-pure theme="${theme}">Some label <p slot="subline">Some Subline</p></p-button-pure>
-          <p-button-pure theme="${theme}" loading="true">Loading <p slot="subline">Some Subline</p></p-button-pure>`;
+          <p-button-pure theme="${theme}">Label default</p-button-pure>
+          <p-button-pure theme="${theme}" loading="true">Label Loading</p-button-pure>
+          <p-button-pure theme="${theme}">Label default <p slot="subline">Some Subline</p></p-button-pure>
+          <p-button-pure theme="${theme}" loading="true">Label loading <p slot="subline">Some Subline</p></p-button-pure>
+          <p-button-pure theme="${theme}" align-label="left">Label aligned left</p-button-pure>
+          <br/>
+          <br/>
+          <p-button-pure theme="${theme}" stretch="true">Label stretched</p-button-pure>
+          <br/>
+          <p-button-pure theme="${theme}" align-label="left" stretch="true">Label aligned left stretched</p-button-pure>
+          <br/>
+          <p-button-pure theme="${theme}" icon="none">Label without Icon</p-button-pure>
+          <p-button-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some Subline</p></p-button-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
