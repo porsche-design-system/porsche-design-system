@@ -3,6 +3,7 @@ import type { FormState, Theme } from '../../../../types';
 import type { OptionMap } from '../select-wrapper/select-wrapper-utils';
 import { getAriaAttributes } from './select-wrapper-filter-utils';
 import { addComponentCss } from './select-wrapper-filter-styles';
+import { throwIfRootNodeIsNotOfKind } from '../../../../utils';
 
 @Component({
   tag: 'p-select-wrapper-filter',
@@ -31,7 +32,7 @@ export class SelectWrapperFilter {
   }
 
   public connectedCallback(): void {
-    // TODO: validate this is used within `p-select-wrapper`
+    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
 
   public componentDidLoad(): void {

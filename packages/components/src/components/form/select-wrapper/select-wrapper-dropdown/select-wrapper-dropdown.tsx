@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames } from '../../../../utils';
+import { getPrefixedTagNames, throwIfRootNodeIsNotOfKind } from '../../../../utils';
 import type { DropdownDirection, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import type { Theme } from '../../../../types';
 import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
@@ -29,7 +29,7 @@ export class SelectWrapperDropdown {
   @Prop() public open = false;
 
   public connectedCallback(): void {
-    // TODO: validate this is used within `p-select-wrapper`
+    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
 
   public componentWillRender(): void {
