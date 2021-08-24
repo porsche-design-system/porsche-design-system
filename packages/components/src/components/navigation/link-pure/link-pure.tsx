@@ -73,7 +73,7 @@ export class LinkPure {
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
-    addComponentCss(this.host, !hasSlottedSubline(this.host) ? this.stretch : false);
+    addComponentCss(this.host, this.stretch);
   }
 
   public componentDidLoad(): void {
@@ -88,19 +88,21 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    const hasIcon = hasVisibleIcon(this.icon);
+    const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
-      ['root--with-icon']: hasVisibleIcon(this.icon),
+      ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSlottedSubline(this.host) &&
-        mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off'])),
-      ...(!hasSlottedSubline(this.host) && mapBreakpointPropToClasses('root--label-align', this.alignLabel)),
-      ...(hasVisibleIcon(this.icon) &&
-        mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
+      ...(!hasSubline && {
+        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
+        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
+      }),
+      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -117,7 +119,7 @@ export class LinkPure {
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          {hasVisibleIcon(this.icon) && (
+          {hasIcon && (
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
@@ -132,7 +134,7 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasSlottedSubline(this.host) && (
+        {hasSubline && (
           <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
