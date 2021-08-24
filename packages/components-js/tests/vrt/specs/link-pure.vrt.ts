@@ -33,9 +33,18 @@ describe('Link Pure', () => {
         const head = `<style type="text/css">p-link-pure:not(:last-child) { margin-right: 8px; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-link-pure theme="${theme}" href="#">Some label</p-link-pure>
-          <p-link-pure theme="${theme}" href="#">Some label <p slot="subline">Some Subline</p></p-link-pure>
-          <p-link-pure theme="${theme}"><a href="#">Some label</a></p-link-pure>`;
+          <p-link-pure theme="${theme}" href="#">Label default</p-link-pure>
+          <p-link-pure theme="${theme}" href="#">Label default <p slot="subline">Some Subline</p></p-link-pure>
+          <p-link-pure theme="${theme}"><a href="#">Label slotted</a></p-link-pure>
+           <p-link-pure theme="${theme}" align-label="left">Label aligned left</p-link-pure>
+          <br/>
+          <br/>
+          <p-link-pure theme="${theme}" stretch="true">Label stretched</p-link-pure>
+          <br/>
+          <p-link-pure theme="${theme}" align-label="left" stretch="true">Label aligned left stretched</p-link-pure>
+          <br/>
+          <p-link-pure theme="${theme}" icon="none">Label without Icon</p-link-pure>
+          <p-link-pure theme="${theme}" icon="none">Label without Icon <p slot="subline">Some Subline</p></p-link-pure>`;
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
