@@ -4,7 +4,7 @@ import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-u
 import { getHTMLElements } from '../../../../utils';
 
 export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
-export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper
+export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper with JSS at some point
 const MAX_CHILDREN = 10;
 
 export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, filter: boolean): AriaAttributes => {

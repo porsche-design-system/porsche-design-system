@@ -598,21 +598,12 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
-        /**
-          * Changes the direction to which the dropdown list appears.
-         */
         "direction"?: DropdownDirection;
-        /**
-          * Filters select options by typing a character
-         */
         "filter"?: boolean;
         "onFocus": () => void;
         "onSelect": (newIndex: number) => void;
         "open": boolean;
         "optionMaps": OptionMap[];
-        /**
-          * Adapts the select color depending on the theme.
-         */
         "theme"?: Theme;
     }
     interface PSelectWrapperFilter {
@@ -1733,21 +1724,12 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
-        /**
-          * Changes the direction to which the dropdown list appears.
-         */
         "direction"?: DropdownDirection;
-        /**
-          * Filters select options by typing a character
-         */
         "filter"?: boolean;
         "onFocus"?: () => void;
         "onSelect"?: (newIndex: number) => void;
         "open"?: boolean;
         "optionMaps"?: OptionMap[];
-        /**
-          * Adapts the select color depending on the theme.
-         */
         "theme"?: Theme;
     }
     interface PSelectWrapperFilter {
