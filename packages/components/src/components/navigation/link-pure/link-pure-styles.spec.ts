@@ -1,4 +1,5 @@
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { BreakpointCustomizable } from '../../../utils';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
@@ -13,15 +14,11 @@ describe('getSlottedCss()', () => {
 });
 
 describe('getComponentCss()', () => {
-  it('should return correct css with stretch true', () => {
-    expect(getComponentCss(true)).toMatchSnapshot();
-  });
-
-  it('should return correct css with stretch BreakpointCustomizable', () => {
-    expect(getComponentCss({ base: true, xs: true, s: false, m: true, l: false, xl: true })).toMatchSnapshot();
-  });
-
-  it('should return correct css with stretch false', () => {
-    expect(getComponentCss(false)).toMatchSnapshot();
+  it.each<BreakpointCustomizable<boolean>>([
+    false,
+    true,
+    { base: true, xs: false, s: true, m: false, l: true, xl: false },
+  ])('should return correct css for stretch: %o', (stretch) => {
+    expect(getComponentCss(stretch)).toMatchSnapshot();
   });
 });
