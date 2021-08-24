@@ -27,7 +27,7 @@
 }
 
 // Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
-@mixin text-visible($isCheckboxOrRadio: false) {
+@mixin text-visible() {
   position: static;
   width: auto;
   height: auto;
