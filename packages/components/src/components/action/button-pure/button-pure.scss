@@ -195,7 +195,6 @@ $root: '.root';
   }
 }
 
-//todo: shorthand for margin
 .label {
   display: block;
   box-sizing: border-box;
@@ -203,33 +202,30 @@ $root: '.root';
 
   #{$root}--with-icon & {
     padding-right: 0.125em;
-    margin-left: p-px-to-rem(4px);
+    margin: 0 0 0 p-px-to-rem(4px);
   }
 
   #{$root}--label-align-left & {
     padding: 0;
-    margin-left: 0;
-    margin-right: p-px-to-rem(4px);
+    margin: 0 p-px-to-rem(4px) 0 0;
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
         padding: 0;
-        margin-left: 0;
-        margin-right: p-px-to-rem(4px);
+        margin: 0 p-px-to-rem(4px) 0 0;
       }
 
       #{$root}--label-align-right-#{$breakpoint} & {
         padding-right: 0.125em;
-        margin-right: 0;
-        margin-left: p-px-to-rem(4px);
+        margin: 0 0 0 p-px-to-rem(4px);
       }
     }
   }
 }
 
-.subline {
+.subline.hydrated {
   display: flex;
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
   margin-top: p-px-to-rem(4px);
