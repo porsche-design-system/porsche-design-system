@@ -6,6 +6,8 @@ export type DropdownDirection = DropdownDirectionInternal | 'auto';
 export type KeyboardDirectionInternal = DropdownDirectionInternal | 'left' | 'right';
 
 export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
+  // TODO: one liner?
+  // return filter || !native || !isTouchDevice()
   if (filter) {
     return true;
   } else if (native) {
@@ -16,14 +18,13 @@ export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
 };
 
 export type OptionMap = {
-  key: number; // unused?
-  // name: string;
+  key: number; // tracks the index of the option
   value: string;
-  disabled: boolean; // TODO: rename
-  hidden: boolean; // TODO: rename
-  initiallyHidden: boolean; // TODO: rename
-  selected: boolean; // TODO: rename
-  highlighted: boolean; // TODO: rename
+  disabled: boolean;
+  hidden: boolean;
+  initiallyHidden: boolean;
+  selected: boolean;
+  highlighted: boolean;
   title?: string;
 };
 
