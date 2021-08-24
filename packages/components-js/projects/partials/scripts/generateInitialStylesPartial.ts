@@ -1,4 +1,4 @@
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
@@ -6,7 +6,9 @@ export const generateInitialStylesPartial = (): string => {
   withoutTags?: boolean;
 }`;
 
-  const tagNames = TAG_NAMES.map((x) => `'${x}'`).join(', ');
+  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))
+    .map((x) => `'${x}'`)
+    .join(', ');
 
   const func = `export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
