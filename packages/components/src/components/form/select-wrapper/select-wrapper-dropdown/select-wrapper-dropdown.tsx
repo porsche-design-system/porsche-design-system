@@ -14,15 +14,9 @@ export class SelectWrapperDropdown {
   @Element() public host!: HTMLElement;
 
   @Prop() public optionMaps: OptionMap[] = [];
-
-  /** Changes the direction to which the dropdown list appears. */
   @Prop() public direction?: DropdownDirection = 'auto';
-
-  /** Filters select options by typing a character */
-  @Prop() public filter?: boolean = false; // TODO: remove this and handle it via optionMaps
-
-  /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+  @Prop() public filter?: boolean = false;
 
   @Prop() public onSelect: (newIndex: number) => void;
   @Prop() public onFocus: () => void;
