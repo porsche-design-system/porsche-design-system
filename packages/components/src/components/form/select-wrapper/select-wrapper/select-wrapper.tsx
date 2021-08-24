@@ -29,6 +29,7 @@ import {
   getSelectedOptionMap,
   getNewOptionMapIndex,
   resetHighlightedIndex,
+  getMatchingOptionMaps,
 } from './select-wrapper-utils';
 import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
 import { addSlottedCss } from './select-wrapper-styles';
@@ -337,11 +338,9 @@ export class SelectWrapper {
         e.preventDefault();
         this.handleVisibilityOfFakeOptionList('hide');
         if (this.filter) {
-          const itemValue =
-            !!this.searchString &&
-            this.optionMaps.filter((item) => item.value.toLowerCase() === this.searchString.toLowerCase());
-          if (itemValue.length === 1) {
-            this.setOptionSelected(itemValue[0].key);
+          const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
+          if (matchingOptions.length === 1) {
+            this.setOptionSelected(matchingOptions[0].key);
           } else {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
