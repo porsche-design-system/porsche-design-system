@@ -609,11 +609,11 @@ export namespace Components {
     interface PSelectWrapperFilter {
         "disabled"?: boolean;
         "dropdownId"?: string;
-        "highlightedOptionMap"?: OptionMap;
+        "highlightedIndex"?: number;
         "isOpen"?: boolean;
         "onChange": (e: InputEvent) => void;
         "onClick"?: () => void;
-        "selectedOptionMap"?: OptionMap;
+        "placeholder"?: string;
         "state"?: FormState;
         "theme"?: Theme;
         "value": string;
@@ -1735,11 +1735,11 @@ declare namespace LocalJSX {
     interface PSelectWrapperFilter {
         "disabled"?: boolean;
         "dropdownId"?: string;
-        "highlightedOptionMap"?: OptionMap;
+        "highlightedIndex"?: number;
         "isOpen"?: boolean;
         "onChange"?: (e: InputEvent) => void;
         "onClick"?: () => void;
-        "selectedOptionMap"?: OptionMap;
+        "placeholder"?: string;
         "state"?: FormState;
         "theme"?: Theme;
         "value"?: string;

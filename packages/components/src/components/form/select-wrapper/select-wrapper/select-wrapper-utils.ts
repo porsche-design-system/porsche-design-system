@@ -18,7 +18,6 @@ export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
 };
 
 export type OptionMap = {
-  key: number; // tracks the index of the option
   value: string;
   disabled: boolean;
   hidden: boolean;
@@ -32,10 +31,9 @@ export type OptionMap = {
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
-  options.map((item, idx) => {
+  options.map((item) => {
     const { selected, parentElement, previousElementSibling } = item;
     const option: OptionMap = {
-      key: idx,
       value: item.text,
       disabled: hasAttribute(item, 'disabled'),
       hidden: false,
@@ -113,5 +111,5 @@ export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDi
     i = i > 0 ? i - 1 : validMax;
   }
 
-  return validItems[i].key;
+  return options.indexOf(validItems[i]);
 };

@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import type { FormState, Theme } from '../../../../types';
-import type { OptionMap } from '../select-wrapper/select-wrapper-utils';
 import { getAriaAttributes } from './select-wrapper-filter-utils';
 import { addComponentCss } from './select-wrapper-filter-styles';
 import { throwIfRootNodeIsNotOfKind } from '../../../../utils';
@@ -13,8 +12,8 @@ export class SelectWrapperFilter {
   @Element() public host!: HTMLElement;
 
   @Prop() public theme?: Theme = 'light';
-  @Prop() public selectedOptionMap?: OptionMap;
-  @Prop() public highlightedOptionMap?: OptionMap;
+  @Prop() public placeholder?: string;
+  @Prop() public highlightedIndex?: number;
 
   @Prop() public value: string;
   @Prop() public disabled?: boolean = false;
@@ -55,12 +54,12 @@ export class SelectWrapperFilter {
           type="text"
           role="combobox"
           disabled={this.disabled}
-          placeholder={this.selectedOptionMap?.value}
+          placeholder={this.placeholder}
           value={this.value}
           onInput={this.onChange}
           onMouseDown={this.onFilterClick}
           ref={(el) => (this.inputElement = el)}
-          {...getAriaAttributes(this.isOpen, this.dropdownId, this.highlightedOptionMap?.key)}
+          {...getAriaAttributes(this.isOpen, this.dropdownId, this.highlightedIndex)}
           // aria-autocomplete="both"
           // aria-controls={this.dropdownId}
           // aria-expanded={this.isOpen ? 'true' : 'false'}
