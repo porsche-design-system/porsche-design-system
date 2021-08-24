@@ -69,7 +69,7 @@ export class SelectWrapperDropdown {
                   ['option--disabled']: disabled,
                   ['option--hidden']: hidden || initiallyHidden,
                 }}
-                onClick={() => (!disabled && !selected ? this.onSelect(index) : this.onFocus())}
+                onClick={() => (!selected && !disabled ? this.onSelect(index) : this.onFocus())}
                 {...getOptionAriaAttributes(option)}
               >
                 {value}
