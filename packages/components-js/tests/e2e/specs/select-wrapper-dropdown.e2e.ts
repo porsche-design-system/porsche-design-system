@@ -4,6 +4,7 @@ import {
   getBrowser,
   getCssClasses,
   getElementIndex,
+  getElementPositions,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
@@ -28,6 +29,7 @@ describe('select-wrapper dropdown', () => {
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
+  const getSelectIcon = () => selectNode(page, 'p-select-wrapper >>> .icon');
   const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
@@ -1063,20 +1065,50 @@ describe('select-wrapper dropdown', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity())
-        .withContext('for opacity')
+        .withContext('for opacity after 1st click')
         .toBe('1');
       expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
+        .withContext('for highlighted custom option  after 1st click')
         .toBe(0);
 
       await select.click();
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity())
-        .withContext('for opacity')
+        .withContext('for opacity after 2nd click')
         .toBe('0');
       expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
+        .withContext('for highlighted custom option after 2nd click')
+        .toBe(0);
+    });
+
+    it('should open/close select on icon click', async () => {
+      await initSelect();
+      const icon = await getSelectIcon();
+
+      const clickIcon = async () => {
+        const { top, bottom, left, right } = await getElementPositions(page, icon);
+        // click center of where icon is located
+        await page.mouse.click(left + (right - left) / 2, top + (bottom - top) / 2);
+        await waitForStencilLifecycle(page);
+      };
+
+      await clickIcon();
+
+      expect(await getDropdownOpacity())
+        .withContext('for opacity after 1st click')
+        .toBe('1');
+      expect(await getHighlightedDropdownOptionIndex())
+        .withContext('for highlighted custom option after 1st click')
+        .toBe(0);
+
+      await clickIcon();
+
+      expect(await getDropdownOpacity())
+        .withContext('for opacity after 2nd click')
+        .toBe('0');
+      expect(await getHighlightedDropdownOptionIndex())
+        .withContext('for highlighted custom option after 2nd click')
         .toBe(0);
     });
 
