@@ -302,6 +302,7 @@ $root: '.root';
   bottom: p-px-to-rem(12px);
   right: p-px-to-rem(12px);
   color: $p-color-default;
+  pointer-events: none; // let events through to select which is visually underneath
   transform: rotate3d(0, 0, 1, 0.0001deg); // needs to be a little bit more than 0 for correct direction in safari
   transition: transform $p-animation-hover-duration-var $p-animation-hover-bezier;
 
