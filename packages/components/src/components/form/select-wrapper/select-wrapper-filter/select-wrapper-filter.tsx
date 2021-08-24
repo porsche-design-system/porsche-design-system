@@ -60,10 +60,6 @@ export class SelectWrapperFilter {
           onMouseDown={this.onFilterClick}
           ref={(el) => (this.inputElement = el)}
           {...getAriaAttributes(this.isOpen, this.dropdownId, this.highlightedIndex)}
-          // aria-autocomplete="both"
-          // aria-controls={this.dropdownId}
-          // aria-expanded={this.isOpen ? 'true' : 'false'}
-          // aria-activedescendant={`option-${this.highlightedOptionMap?.key}`}
         />
         <span onClick={this.onFilterClick} />
       </Host>
