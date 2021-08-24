@@ -133,7 +133,9 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ## Alignment + Stretch
 
-The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.
+The `label` can be aligned to the `right` (default) or to the `left` of the icon.
+In addition with enabled `stretch` property, the area between icon and label gets extended to the maximum available space.
+It is recommended to use stretch only on `left` alignment for e.g. mobile views.
 
 <Playground :markup="alignment" :config="config">
   <select v-model="alignLabel">
@@ -203,7 +205,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
 
     withoutIcon =
-`<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
+<p-link-pure icon="none" size="small" weight="semibold" href="https://www.porsche.com">
+  Some label
+  <p slot="subline">Some Subline</p>
+</p-link-pure>`;
 
     get sizeMarkup() {
       const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
