@@ -228,7 +228,7 @@ $root: '.root';
 .subline.hydrated {
   display: flex;
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  margin-top: p-px-to-rem(4px);
+  margin-top: 4px;
   padding-right: 0.125em;
 
   #{$root}--with-icon + & {

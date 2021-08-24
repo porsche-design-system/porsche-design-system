@@ -4,8 +4,8 @@ import {
   buildSlottedStyles,
   getCss,
   getFocusPseudoStyles,
+  hasSlottedSubline,
   insertSlottedStyles,
-  mergeDeep,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 
@@ -18,13 +18,17 @@ export const addSlottedCss = (host: HTMLElement): void => {
 };
 
 const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  display: stretch ? 'flex' : 'inline-block',
+  display: stretch ? 'block' : 'inline-block',
 });
 
 export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
-  return getCss(mergeDeep(buildResponsiveHostStyles(stretch, getStretchStyles)));
+  return getCss(buildResponsiveHostStyles(stretch, getStretchStyles));
 };
 
 export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
-  attachCss(host, getComponentCss(stretch));
+  if (hasSlottedSubline(host)) {
+    attachCss(host, getComponentCss(false));
+  } else {
+    attachCss(host, getComponentCss(stretch));
+  }
 };
