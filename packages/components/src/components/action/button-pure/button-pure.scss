@@ -26,21 +26,21 @@ $root: '.root';
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
   @include p-focus($p-color-state-focus, 1px, '::before');
 
-  + * {
+  + .subline {
     color: $p-color-default;
   }
 
   &:not(:disabled):not(&--loading) {
     &:hover {
       color: $p-color-state-hover;
-      + * {
+      + .subline {
         color: $p-color-state-hover;
       }
     }
 
     &:active {
       color: $p-color-state-active;
-      + * {
+      + .subline {
         color: $p-color-state-active;
       }
     }
@@ -50,7 +50,7 @@ $root: '.root';
   &--loading {
     cursor: not-allowed;
     color: $p-color-state-disabled;
-    + * {
+    + .subline {
       color: $p-color-state-disabled;
     }
   }
@@ -59,21 +59,21 @@ $root: '.root';
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
     color: $p-color-theme-dark-default;
 
-    + * {
+    + .subline {
       color: $p-color-theme-dark-default;
     }
 
     &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
-        + * {
+        + .subline {
           color: $p-color-theme-dark-state-hover;
         }
       }
 
       &:active {
         color: $p-color-theme-dark-state-active;
-        + * {
+        + .subline {
           color: $p-color-theme-dark-state-active;
         }
       }
@@ -82,7 +82,7 @@ $root: '.root';
     &:disabled,
     &#{$bem-block}--loading {
       color: $p-color-theme-dark-state-disabled;
-      + * {
+      + .subline {
         color: $p-color-theme-dark-state-disabled;
       }
     }
