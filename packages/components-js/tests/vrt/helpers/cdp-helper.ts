@@ -67,27 +67,37 @@ export const forceFocusedHoveredState = async (page: Page, selector: string): Pr
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
   const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
-  const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
+  const { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName } = resolveSelector(selector);
   const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
 
   for (const hostNodeId of hostNodeIds) {
-    const nodeId = shadowRootNodeName
+    let nodeId = shadowRootNodeName
       ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName)
       : hostNodeId;
+
+    if (nodeId && deepShadowRootNodeName) {
+      nodeId = await getElementNodeIdInShadowRoot(cdp, nodeId, deepShadowRootNodeName);
+    }
+
     // only execute if a valid nodeId was found
     if (nodeId) {
       await forceStateOnNodeId(cdp, nodeId, states);
     }
   }
 };
-export const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
-  const [hostElementSelector, shadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
+export const resolveSelector = (
+  selector: string
+): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
+  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
 
   if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+$/)) {
     throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
   }
+  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+$/)) {
+    throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
+  }
 
-  return { hostElementSelector, shadowRootNodeName };
+  return { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName };
 };
 
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {
