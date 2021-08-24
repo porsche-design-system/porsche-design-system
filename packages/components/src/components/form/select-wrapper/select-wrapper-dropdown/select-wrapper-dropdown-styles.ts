@@ -1,4 +1,4 @@
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   addImportantToEachRule,
   attachCss,
@@ -13,7 +13,6 @@ import {
 import type { Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 import { determineDirection, OPTION_HEIGHT } from './select-wrapper-dropdown-utils';
-import { DropdownDirection } from '../select-wrapper/select-wrapper-utils';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
