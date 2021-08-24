@@ -16,7 +16,7 @@ export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
   protected barrelFileName: string = 'index.ts';
-  protected ignoreComponents: TagName[] = [];
+  protected ignoreComponents: TagName[] = ['p-select-wrapper-dropdown', 'p-select-wrapper-filter'];
   private libDir: string = '';
   private componentsDir: string = '';
 
