@@ -26,9 +26,6 @@ export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): strin
 };
 
 export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
-  if (hasSlottedSubline(host)) {
-    attachCss(host, getComponentCss(false));
-  } else {
-    attachCss(host, getComponentCss(stretch));
-  }
+  // Subline does not support stretch, therefore it needs to be called with false if with subline
+  attachCss(host, getComponentCss(hasSlottedSubline(host) ? false : stretch));
 };
