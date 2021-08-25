@@ -1,6 +1,6 @@
 import { hasVisibleIcon, hasSlottedSubline } from './button-link-pure-utils';
 
-describe('hasVisibleIcon', () => {
+describe('hasVisibleIcon()', () => {
   it('should return true if called with valid iconName', () => {
     expect(hasVisibleIcon('highway')).toBe(true);
   });
@@ -9,7 +9,7 @@ describe('hasVisibleIcon', () => {
   });
 });
 
-describe('hasSlottedSubline', () => {
+describe('hasSlottedSubline()', () => {
   it('should return true with slotted subline', () => {
     const host = document.createElement('p-link-pure');
     const paragraph = document.createElement('p');
