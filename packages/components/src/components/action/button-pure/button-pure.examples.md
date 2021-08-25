@@ -9,11 +9,11 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 ### With label
 
-<Playground :markup="withLabel" :config="config"></Playground>
+<Playground :markup="withLabel" :config="configInline"></Playground>
 
 ### Without label
 
-<Playground :markup="withoutLabel" :config="config"></Playground>
+<Playground :markup="withoutLabel" :config="configInline"></Playground>
 
 ### Responsive
 
@@ -32,7 +32,7 @@ By choosing `icon="none"` the component is shown without icon.
 
 **Caution:** You can't combine  this with the prop `loading="true"` nor the prop `hideLabel`
 
-<Playground :markup="withoutIcon" :config="config"></Playground>
+<Playground :markup="withoutIcon" :config="configInline"></Playground>
 
 ---
 
@@ -82,7 +82,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 ## Button with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
-<Playground :markup="icon" :config="config"></Playground>
+<Playground :markup="icon" :config="configInline"></Playground>
 
 ---
 
@@ -105,11 +105,13 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="stretchMarkup" :config="config">
+<Playground :markup="stretchMarkup" :config="configBlock">
   <select v-model="stretch">
-    <option value="true">True</option>
-    <option value="false">False</option>
-    <option value="{ base: true, l: false }">Responsive</option>
+    <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
+    <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
+    <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
+    <option value='stretch="false" align-label="right"'>stretch false, align-label right</option>
+    <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
   </select>
 </Playground>
 
@@ -120,7 +122,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
 
-<Playground :markup="clickableArea" :config="config"></Playground>
+<Playground :markup="clickableArea" :config="configInline"></Playground>
 
 ---
 
@@ -136,7 +138,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
 
-<Playground :markup="taborder" :config="config"></Playground>
+<Playground :markup="taborder" :config="configInline"></Playground>
 
 ---
 
@@ -145,7 +147,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 If you need additional information on your button, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel` in this pattern so far.
 
-<Playground :markup="subline" :config="config">
+<Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize">
     <option disabled>Select a size</option>
     <option>small</option>
@@ -161,13 +163,14 @@ The size of the *subline* changes according to the size of the *label*. We do no
   
   @Component
   export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
+    config = { themeable: true };
+    configInline = { ...this.config, spacing: 'inline' };
 
     size = 'medium';
     sublineSize = 'small'; 
     weight = 'thin';
     alignLabel = 'left';
-    stretch = 'true';
+    stretch = 'stretch="true" align-label="left"';
 
     withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
@@ -212,7 +215,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     };
 
     get stretchMarkup() {
-      return `<p-button-pure stretch="${this.stretch}" align-label="left">Some label</p-button-pure>`;
+      return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
     };
 
     clickableArea =
