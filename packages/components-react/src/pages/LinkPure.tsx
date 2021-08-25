@@ -50,13 +50,13 @@ export const LinkPurePage = (): JSX.Element => {
           href="https://www.porsche.com"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          Label Responsive
+          Label responsive
         </PLinkPure>
         <PLinkPure
           href="https://www.porsche.com"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          Label Responsive
+          Label responsive
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
@@ -111,7 +111,7 @@ export const LinkPurePage = (): JSX.Element => {
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: 48 }}
         >
-          Label responsive size
+          Label size responsive
         </PLinkPure>
       </div>
 
@@ -260,7 +260,7 @@ export const LinkPurePage = (): JSX.Element => {
           href="https://www.porsche.com"
           alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
         >
-          Label responsive aligned left
+          Label align responsive
         </PLinkPure>
         <PLinkPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
           <a href="https://www.porsche.com">Label slotted responsive aligned left</a>
@@ -289,7 +289,7 @@ export const LinkPurePage = (): JSX.Element => {
           href="https://www.porsche.com"
           stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          Label responsive stretched
+          Label stretch responsive
         </PLinkPure>
         <PLinkPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           <a href="https://www.porsche.com">Label slotted responsive stretched</a>
