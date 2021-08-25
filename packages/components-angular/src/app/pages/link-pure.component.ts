@@ -35,12 +35,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-pure
         [href]="'https://www.porsche.com'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-        >Label Responsive
+        >Label responsive
       </p-link-pure>
       <p-link-pure
         [href]="'https://www.porsche.com'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-        >Label Responsive
+        >Label responsive
         <p slot="subline">Some subline</p>
       </p-link-pure>
     </div>
@@ -74,7 +74,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [href]="'https://www.porsche.com'"
         [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
         style="font-size: 48px;"
-        >Label responsive size
+        >Label size responsive
       </p-link-pure>
     </div>
 
@@ -193,7 +193,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         href="https://www.porsche.com"
         [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
       >
-        Label responsive aligned left
+        Label align responsive
       </p-link-pure>
       <p-link-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
         <a href="https://www.porsche.com">Label slotted responsive aligned left</a>
@@ -214,7 +214,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-pure
         href="https://www.porsche.com"
         [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-        >Label responsive stretched</p-link-pure
+        >Label stretch responsive</p-link-pure
       >
       <p-link-pure [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
         ><a href="https://www.porsche.com">Label slotted responsive stretched</a></p-link-pure

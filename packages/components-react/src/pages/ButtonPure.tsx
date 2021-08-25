@@ -52,10 +52,10 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with responsive label">
         <PButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          Label Responsive
+          Label responsive
         </PButtonPure>
         <PButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          Label Responsive
+          Label responsive
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
@@ -81,7 +81,7 @@ export const ButtonPurePage = (): JSX.Element => {
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: 48 }}
         >
-          Label responsive size
+          Label size responsive
         </PButtonPure>
       </div>
 
@@ -156,7 +156,7 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
       <div className="playground light" title="should align label to the left or right depending on viewport">
         <PButtonPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
-          Label responsive aligned left
+          Label align responsive
         </PButtonPure>
       </div>
 
@@ -168,7 +168,7 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
       <div className="playground light" title="should render with stretched label depending on viewport">
         <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          Label responsive stretched
+          Label stretch responsive
         </PButtonPure>
       </div>
 
