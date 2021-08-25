@@ -10,7 +10,7 @@ export const warnIfIsLoadingAndIconIsNone = (
     console.warn(
       `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
         host
-      )} is not allowed.`
+      )} is not supported.`
     );
   }
 };
