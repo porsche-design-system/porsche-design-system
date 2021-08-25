@@ -102,11 +102,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render with specific icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'">Label with specific icon</p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'./assets/icon-custom-kaixin.svg'"
-        >Label with local icon-source</p-link-pure
+        >Label with iconSource</p-link-pure
       >
     </div>
 
-    <div class="playground light" title="should render with specific icon on dark background">
+    <div class="playground dark" title="should render with specific icon on dark background">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'" [theme]="'dark'"
         >Label with specific icon</p-link-pure
       >
@@ -196,7 +196,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         Label align responsive
       </p-link-pure>
       <p-link-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-        <a href="https://www.porsche.com">Label slotted responsive align left</a>
+        <a href="https://www.porsche.com">Label slotted align responsive</a>
       </p-link-pure>
     </div>
 

@@ -34,7 +34,7 @@ describe('Button Pure', () => {
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-button-pure theme="${theme}">Label default</p-button-pure>
-          <p-button-pure theme="${theme}" loading="true">Label Loading</p-button-pure>
+          <p-button-pure theme="${theme}" loading="true">Label loading</p-button-pure>
           <p-button-pure theme="${theme}">Label default <p slot="subline">Some Subline</p></p-button-pure>
           <p-button-pure theme="${theme}" loading="true">Label loading <p slot="subline">Some Subline</p></p-button-pure>
           <p-button-pure theme="${theme}" align-label="left">Label aligned left</p-button-pure>

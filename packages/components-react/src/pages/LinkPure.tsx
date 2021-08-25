@@ -263,7 +263,7 @@ export const LinkPurePage = (): JSX.Element => {
           Label align responsive
         </PLinkPure>
         <PLinkPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
-          <a href="https://www.porsche.com">Label slotted align left responsive</a>
+          <a href="https://www.porsche.com">Label slotted align responsive</a>
         </PLinkPure>
       </div>
 
