@@ -1,9 +1,9 @@
 // common type definitions
-import { IconName } from '@porsche-design-system/icons';
-import { BreakpointCustomizable } from './utils';
+import type { IconName } from '@porsche-design-system/icons';
+import type { BreakpointCustomizable } from './utils';
 
-export { TextSize } from './components/basic/typography/text/text-utils';
-export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
+export type { TextSize } from './components/basic/typography/text/text-utils';
+export type { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
 
 export type BannerState = 'error' | 'warning' | 'neutral';
 
