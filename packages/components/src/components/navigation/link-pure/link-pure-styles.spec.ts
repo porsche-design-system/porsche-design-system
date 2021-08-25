@@ -1,5 +1,5 @@
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
-import { BreakpointCustomizable } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
