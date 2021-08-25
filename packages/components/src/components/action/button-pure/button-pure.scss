@@ -192,6 +192,7 @@ $root: '.root';
 
       #{$root}--label-align-right-#{$breakpoint} & {
         order: 0;
+        margin-right: 0;
       }
     }
   }
