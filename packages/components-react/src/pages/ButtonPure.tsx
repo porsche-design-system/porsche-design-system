@@ -128,7 +128,7 @@ export const ButtonPurePage = (): JSX.Element => {
           <p slot="subline">Some subline</p>
         </PButtonPure>
         <PButtonPure size="medium" disabled>
-          Label disabled
+          Label size medium disabled
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
