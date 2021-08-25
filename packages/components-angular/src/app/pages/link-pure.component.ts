@@ -106,6 +106,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       >
     </div>
 
+    <div class="playground light" title="should render with specific icon on dark background">
+      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'" [theme]="'dark'"
+        >Label with specific icon</p-link-pure
+      >
+      <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'"
+        >Label with iconSource</p-link-pure
+      >
+    </div>
+
     <div class="playground light" title="should render with multiline label">
       <p-link-pure [href]="'https://www.porsche.com'" style="width: 240px;"
         >Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-link-pure

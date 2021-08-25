@@ -159,7 +159,16 @@ export const LinkPurePage = (): JSX.Element => {
           Label with specific icon
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg">
-          Label with local icon-source
+          Label with iconSource
+        </PLinkPure>
+      </div>
+
+      <div className="playground dark" title="should render with specific icon on dark background">
+        <PLinkPure href="https://www.porsche.com" icon="phone" theme="dark">
+          Label with specific icon
+        </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
+          Label with iconSource
         </PLinkPure>
       </div>
 
