@@ -44,6 +44,7 @@ export class SelectWrapperFilter {
   }
 
   public componentWillRender(): void {
+    // TODO: this is executed way too often, for example on every character being entered
     addComponentCss(this.host, this.disabled, this.state, this.theme);
   }
 
