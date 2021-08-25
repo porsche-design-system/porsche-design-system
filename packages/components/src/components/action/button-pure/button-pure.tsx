@@ -79,11 +79,8 @@ export class ButtonPure {
     }
   }
 
-  public connectedCallback(): void {
-    addComponentCss(this.host, this.stretch);
-  }
-
   public componentWillRender(): void {
+    addComponentCss(this.host, this.stretch);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 

@@ -73,6 +73,9 @@ export class LinkPure {
 
   public connectedCallback(): void {
     addSlottedCss(this.host);
+  }
+
+  public componentWillRender(): void {
     addComponentCss(this.host, this.stretch);
   }
 
