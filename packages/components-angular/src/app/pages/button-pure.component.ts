@@ -108,7 +108,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p slot="subline">Some subline</p></p-button-pure
       >
       <p-button-pure [size]="'medium'" [disabled]="true"
-        >Label disabled
+        >Label size medium disabled
         <p slot="subline">Some subline</p></p-button-pure
       >
     </div>
