@@ -97,6 +97,15 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure icon-source="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
       </div>
 
+      <div className="playground dark" title="should render button with specific icon on dark background">
+        <PButtonPure icon="delete" theme="dark">
+          Label with specific icon
+        </PButtonPure>
+        <PButtonPure icon-source="./assets/icon-custom-kaixin.svg" theme="dark">
+          Label with local icon-source
+        </PButtonPure>
+      </div>
+
       <div className="playground light" title="should render button with multiline label">
         <PButtonPure style={{ width: 240 }}>
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing

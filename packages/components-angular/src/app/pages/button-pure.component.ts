@@ -79,6 +79,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
     </div>
 
+    <div class="playground dark" title="should render button with specific icon on dark background">
+      <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
+      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'"
+        >Label with local icon-source</p-button-pure
+      >
+    </div>
+
     <div class="playground light" title="should render button with multiline label">
       <p-button-pure style="width: 240px;"
         >Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure
