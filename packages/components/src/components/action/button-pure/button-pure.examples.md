@@ -30,7 +30,7 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 By choosing `icon="none"` the component is shown without icon.
 
-**Caution:** You can´t combine  this with the prop `loading="true"` nor the prop `hide-label`
+**Caution:** You can't combine  this with the prop `loading="true"` nor the prop `hideLabel`
 
 <Playground :markup="withoutIcon" :config="config"></Playground>
 
@@ -86,17 +86,30 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
-## Alignment + Stretch
+## Alignment
 
 The `label` can be aligned to the `right` (default) or to the `left` of the icon.
-In addition with enabled `stretch` property, the area between icon and label gets extended to the maximum available space.
-It is recommended to use stretch only on `left` alignment for e.g. mobile views.
 
-<Playground :markup="alignment" :config="config">
+<Playground :markup="alignmentMarkup" :config="config">
   <select v-model="alignLabel">
-    <option value="right">Right</option>
     <option value="left">Left</option>
-    <option value="responsive">Responsive</option>
+    <option value="right">Right</option>
+    <option value="{ base: 'left', l: 'right' }">Responsive</option>
+  </select>
+</Playground>
+
+---
+
+## Stretch
+
+The `stretch` property extends the area between icon and label to the maximum available space.
+It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
+
+<Playground :markup="stretchMarkup" :config="config">
+  <select v-model="stretch">
+    <option value="true">True</option>
+    <option value="false">False</option>
+    <option value="{ base: true, l: false }">Responsive</option>
   </select>
 </Playground>
 
@@ -130,7 +143,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 ## Button with Subline
 
 If you need additional information on your button, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `align-label`in this pattern so far.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel` in this pattern so far.
 
 <Playground :markup="subline" :config="config">
   <select v-model="sublineSize">
@@ -153,7 +166,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
     size = 'medium';
     sublineSize = 'small'; 
     weight = 'thin';
-    alignLabel = 'right';
+    alignLabel = 'left';
+    stretch = 'true';
 
     withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
@@ -193,9 +207,12 @@ The size of the *subline* changes according to the size of the *label*. We do no
 <p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
  
 
-    get alignment() {
-      const alignLabel = this.alignLabel === 'left' ? ' align-label="left"' : this.alignLabel === 'responsive' ? ' align-label="{ base: \'left\', l: \'right\' }"  stretch="{ base: true, l: false }"' : '';
-      return `<p-button-pure${alignLabel}>Some label</p-button-pure>`;
+    get alignmentMarkup() {
+      return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
+    };
+
+    get stretchMarkup() {
+      return `<p-button-pure stretch="${this.stretch}" align-label="left">Some label</p-button-pure>`;
     };
 
     clickableArea =
