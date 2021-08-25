@@ -7,9 +7,9 @@ export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
 export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper with JSS at some point
 const MAX_CHILDREN = 10;
 
-export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, filter: boolean): AriaAttributes => {
+export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, hasFilter: boolean): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
-  return filter
+  return hasFilter
     ? {}
     : {
         ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${getHighlightedOptionMapIndex(optionMaps)}` }),
