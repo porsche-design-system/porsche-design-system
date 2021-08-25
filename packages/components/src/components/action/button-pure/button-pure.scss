@@ -180,12 +180,14 @@ $root: '.root';
 
   #{$root}--label-align-left & {
     order: 1;
+    margin-right: -0.125em;
   }
 
   @each $breakpoint in $breakpoints {
     @include p-media-query($breakpoint) {
       #{$root}--label-align-left-#{$breakpoint} & {
         order: 1;
+        margin-right: -0.125em;
       }
 
       #{$root}--label-align-right-#{$breakpoint} & {
