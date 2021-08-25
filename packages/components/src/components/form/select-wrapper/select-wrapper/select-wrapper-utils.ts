@@ -20,11 +20,11 @@ export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
 export type OptionMap = {
   value: string;
   disabled: boolean;
-  hidden: boolean;
+  hidden: boolean; // used for filtering
   initiallyHidden: boolean;
   selected: boolean;
   highlighted: boolean;
-  title?: string;
+  title?: string; // for optgroup
 };
 
 // only alias for function, unit?
