@@ -32,7 +32,7 @@ By choosing `icon="none"` the component is shown without icon.
 
 **Caution:** You can't combine  this with the prop `hideLabel`
 
-<Playground :markup="withoutIcon" :config="config"></Playground>
+<Playground :markup="withoutIcon" :config="configInline"></Playground>
 
 ## Size
 
@@ -127,7 +127,7 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
-<Playground :markup="icon" :config="config"></Playground>
+<Playground :markup="icon" :config="configInline"></Playground>
 
 ---
 
@@ -150,11 +150,13 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="stretchMarkup" :config="config">
+<Playground :markup="stretchMarkup" :config="configBlock">
   <select v-model="stretch">
-    <option value="true">True</option>
-    <option value="false">False</option>
-    <option value="{ base: true, l: false }">Responsive</option>
+    <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
+    <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
+    <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
+    <option value='stretch="false" align-label="right"'>stretch false, align-label right</option>
+     <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
   </select>
 </Playground>
 
@@ -165,7 +167,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
 
-<Playground :markup="clickableArea" :config="config"></Playground>
+<Playground :markup="clickableArea" :config="configInline"></Playground>
 
 ---
 
@@ -184,7 +186,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
 **Note** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
 
-<Playground :markup="subline" :config="config">
+<Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize">
     <option disabled>Select a size</option>
     <option>small</option>
@@ -201,13 +203,14 @@ The size of the *subline* changes according to the size of the *label*. We do no
   
   @Component
   export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
+    config = { themeable: true };
+    configInline = { ...this.config, spacing: 'inline' };
     
     size = 'medium';
     sublineSize = 'small';
     weight = 'thin';
     alignLabel = 'left';
-    stretch = 'true';
+    stretch = 'stretch="true" align-label="left"';
     
     withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
@@ -267,7 +270,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     };
 
     get stretchMarkup() {
-      return `<p-link-pure stretch="${this.stretch}" align-label="left" href="https://www.porsche.com">Some label</p-link-pure>`;
+      return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
     };
 
     events =
