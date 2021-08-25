@@ -114,23 +114,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with no icon">
-      <p-button-pure [icon]="'none'">Label without icon</p-button-pure>
+      <p-button-pure [icon]="'none'">Label icon none</p-button-pure>
       <p-button-pure [size]="'small'" [icon]="'none'"
-        >Label without icon
+        >Label icon none
         <p slot="subline">Some subline</p></p-button-pure
       >
     </div>
 
     <div class="playground light" title="should render icon if hide-label and icon none is set">
-      <p-button-pure [hideLabel]="true" [icon]="'none'">Label with hideLabel and no icon</p-button-pure>
+      <p-button-pure [hideLabel]="true" [icon]="'none'">Label hide-label icon none</p-button-pure>
       <p-button-pure [hideLabel]="true" [size]="'small'" [icon]="'none'"
-        >Label with hideLabel and no icon
+        >Label hide-label icon none
         <p slot="subline">Some subline</p></p-button-pure
       >
     </div>
 
     <div class="playground light" title="should align label to the left">
-      <p-button-pure [alignLabel]="'left'">Label aligned left</p-button-pure>
+      <p-button-pure [alignLabel]="'left'">Label align left</p-button-pure>
     </div>
     <div class="playground light" title="should align label to the left or right depending on viewport">
       <p-button-pure [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
@@ -139,8 +139,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light stretched-buttons" title="should render with stretched label">
-      <p-button-pure [stretch]="true">Label stretched</p-button-pure>
-      <p-button-pure [stretch]="true" [alignLabel]="'left'">Label stretched aligned left</p-button-pure>
+      <p-button-pure [stretch]="true">Label stretch</p-button-pure>
+      <p-button-pure [stretch]="true" [alignLabel]="'left'">Label stretch align left</p-button-pure>
     </div>
     <div class="playground light" title="should render with stretched label depending on viewport">
       <p-button-pure
@@ -152,11 +152,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should not align label left or stretch if it has a subline">
       <p-button-pure [alignLabel]="'left'">
-        Label aligned left
+        Label align left
         <p slot="subline">Some subline</p>
       </p-button-pure>
       <p-button-pure [stretch]="true">
-        Label streched
+        Label stretch
         <p slot="subline">Some subline</p>
       </p-button-pure>
     </div>

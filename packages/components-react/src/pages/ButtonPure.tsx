@@ -134,25 +134,25 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with no icon">
-        <PButtonPure icon="none">Label without icon</PButtonPure>
+        <PButtonPure icon="none">Label icon none</PButtonPure>
         <PButtonPure size="small" icon="none">
-          Label without icon
+          Label icon none
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
 
       <div className="playground light" title="should render icon if hide-label and icon none is set">
         <PButtonPure hideLabel icon="none">
-          Label with hideLabel and no icon
+          Label hide-label icon none
         </PButtonPure>
         <PButtonPure hideLabel size="small" icon="none">
-          Label with hideLabel and no icon
+          Label hide-label icon none
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
 
       <div className="playground light" title="should align label to the left">
-        <PButtonPure alignLabel="left">Label aligned left</PButtonPure>
+        <PButtonPure alignLabel="left">Label align left</PButtonPure>
       </div>
       <div className="playground light" title="should align label to the left or right depending on viewport">
         <PButtonPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
@@ -161,9 +161,9 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light stretched-buttons" title="should render with stretched label">
-        <PButtonPure stretch>Label stretched</PButtonPure>
+        <PButtonPure stretch>Label stretch</PButtonPure>
         <PButtonPure stretch alignLabel="left">
-          Label stretched aligned left
+          Label stretch align left
         </PButtonPure>
       </div>
       <div className="playground light" title="should render with stretched label depending on viewport">
@@ -174,11 +174,11 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should not align label left or stretch if it has a subline">
         <PButtonPure alignLabel="left">
-          Label aligned left
+          Label align left
           <p slot="subline">Some subline</p>
         </PButtonPure>
         <PButtonPure stretch>
-          Label streched
+          Label stretch
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>

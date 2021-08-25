@@ -223,36 +223,36 @@ export const LinkPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render with no icon">
         <PLinkPure href="https://www.porsche.com" icon="none">
-          Label without icon
+          Label icon none
         </PLinkPure>
         <PLinkPure icon="none">
-          <a href="https://www.porsche.com">Label slotted without icon</a>
+          <a href="https://www.porsche.com">Label slotted icon none</a>
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="small" icon="none">
-          Label without icon
+          Label icon none
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
 
       <div className="playground light" title="should render icon if hide-label and icon none is set">
         <PLinkPure href="https://www.porsche.com" hideLabel icon="none">
-          Label with hideLabel and no icon
+          Label hide-label icon none
         </PLinkPure>
         <PLinkPure hideLabel icon="none">
           <a href="https://www.porsche.com">Label slotted with hideLabel and no icon</a>
         </PLinkPure>
         <PLinkPure hideLabel size="small" icon="none">
-          <a href="https://www.porsche.com">Label with hideLabel and no icon</a>
+          <a href="https://www.porsche.com">Label hide-label icon none</a>
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
 
       <div className="playground light" title="should align label to the left">
         <PLinkPure href="https://www.porsche.com" alignLabel="left">
-          Label aligned left
+          Label align left
         </PLinkPure>
         <PLinkPure alignLabel="left">
-          <a href="https://www.porsche.com">Label slotted aligned left</a>
+          <a href="https://www.porsche.com">Label slotted align left</a>
         </PLinkPure>
       </div>
       <div className="playground light" title="should align label to the left or right depending on viewport">
@@ -263,22 +263,22 @@ export const LinkPurePage = (): JSX.Element => {
           Label align responsive
         </PLinkPure>
         <PLinkPure alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}>
-          <a href="https://www.porsche.com">Label slotted responsive aligned left</a>
+          <a href="https://www.porsche.com">Label slotted align left responsive</a>
         </PLinkPure>
       </div>
 
       <div className="playground light stretched-links" title="should render with stretched label">
         <PLinkPure href="https://www.porsche.com" stretch>
-          Label stretched
+          Label stretch
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" stretch alignLabel="left">
-          Label stretched aligned left
+          Label stretch align left
         </PLinkPure>
         <PLinkPure stretch>
-          <a href="https://www.porsche.com">Label slotted stretched</a>
+          <a href="https://www.porsche.com">Label slotted stretch</a>
         </PLinkPure>
         <PLinkPure stretch alignLabel="left">
-          <a href="https://www.porsche.com">Label slotted stretched aligned left</a>
+          <a href="https://www.porsche.com">Label slotted stretch align left</a>
         </PLinkPure>
       </div>
       <div
@@ -292,17 +292,17 @@ export const LinkPurePage = (): JSX.Element => {
           Label stretch responsive
         </PLinkPure>
         <PLinkPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          <a href="https://www.porsche.com">Label slotted responsive stretched</a>
+          <a href="https://www.porsche.com">Label slotted stretch responsive</a>
         </PLinkPure>
       </div>
 
       <div className="playground light" title="should not align label left or stretch if it has a subline">
         <PLinkPure href="https://www.porsche.com" alignLabel="left">
-          Label aligned left
+          Label align left
           <p slot="subline">Some subline</p>
         </PLinkPure>
         <PLinkPure href="https://www.porsche.com" stretch>
-          Label stretched
+          Label stretch
           <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
