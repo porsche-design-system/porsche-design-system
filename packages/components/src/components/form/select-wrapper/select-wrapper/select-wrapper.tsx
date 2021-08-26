@@ -30,6 +30,7 @@ import {
   getNewOptionMapIndex,
   resetHighlightedIndex,
   getMatchingOptionMaps,
+  hasFilterResults,
 } from './select-wrapper-utils';
 import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
 import { addSlottedCss } from './select-wrapper-styles';
@@ -109,8 +110,8 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if (this.filter) {
+      // TODO: apply in render function
       this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
-      this.filterElement.addEventListener('input', this.onFilterChange);
     }
   }
 
@@ -199,6 +200,7 @@ export class SelectWrapper {
               direction={this.dropdownDirection}
               open={this.isOpen}
               filter={this.filter}
+              hasFilterResults={hasFilterResults(this.optionMaps)}
               theme={this.theme}
               onSelect={this.setOptionSelected}
               onFocus={this.onFocus}
@@ -371,10 +373,11 @@ export class SelectWrapper {
         }
         break;
       default:
-        // timeout is needed if fast keyboard events are triggered and dom needs time to update state
-        setTimeout(() => {
-          this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
-        }, 100);
+      // console.log(e.key);
+      // timeout is needed if fast keyboard events are triggered and dom needs time to update state
+      // setTimeout(() => {
+      //   this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
+      // }, 100);
     }
   };
 
@@ -419,6 +422,7 @@ export class SelectWrapper {
     this.searchString = (e.target as HTMLInputElement).value;
     this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
 
+    // in case input is focused via tab instead of click
     this.handleVisibilityOfFakeOptionList('show');
   };
 }

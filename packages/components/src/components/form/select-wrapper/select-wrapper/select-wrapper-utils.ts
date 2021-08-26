@@ -96,6 +96,9 @@ export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
     hidden: false,
   }));
 
+export const hasFilterResults = (options: OptionMap[]): boolean =>
+  options.some((item) => !item.hidden && !item.initiallyHidden);
+
 export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
