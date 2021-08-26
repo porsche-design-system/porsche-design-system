@@ -1043,7 +1043,7 @@ describe('select-wrapper dropdown', () => {
         );
         await page.keyboard.press('Tab');
         await page.keyboard.press('c');
-        await page.waitForTimeout(120); // eww
+        await waitForStencilLifecycle(page);
 
         expect(await getHighlightedDropdownOptionIndex())
           .withContext('for highlighted custom option')

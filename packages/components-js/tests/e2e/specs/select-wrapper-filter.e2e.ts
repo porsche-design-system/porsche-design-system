@@ -17,8 +17,6 @@ import {
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
-// const NATIVE_SEARCH_OPTIONS_DELAY = 105; // timeout is 100 ms in component with some buffer
-
 describe('select-wrapper filter', () => {
   let page: Page;
 
@@ -73,16 +71,16 @@ describe('select-wrapper filter', () => {
       hiddenClass
     );
 
-  type InitSelectOptions = {
+  type InitOptions = {
     amount?: 3 | 5;
     isNative?: boolean;
     markupBefore?: string;
     disabledIndex?: number;
     selectedIndex?: number;
   };
-  const initSelect = (opts?: InitSelectOptions): Promise<void> => {
+
+  const initSelect = (opts?: InitOptions): Promise<void> => {
     const { amount = 3, isNative = false, markupBefore = '', disabledIndex, selectedIndex } = opts ?? {};
-    const attributes = isNative ? 'native="true"' : '';
 
     const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : '', selectedIndex === idx ? 'selected' : ''].join(' ');
@@ -92,7 +90,7 @@ describe('select-wrapper filter', () => {
     return setContentWithDesignSystem(
       page,
       `${markupBefore}
-      <p-select-wrapper label="Some label" filter="true" ${attributes}>
+      <p-select-wrapper label="Some label" filter="true" ${isNative ? 'native="true"' : ''}>
         <select>
           ${options}
         </select>
@@ -225,7 +223,6 @@ describe('select-wrapper filter', () => {
 
     const filterInput = await getFilterInput();
     await filterInput.type('b');
-    // await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownOpacity())
@@ -253,7 +250,6 @@ describe('select-wrapper filter', () => {
 
     const filterInput = await getFilterInput();
     await filterInput.type('d');
-    // await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     const dropdownOption1 = await getDropdownOption1();
@@ -272,7 +268,6 @@ describe('select-wrapper filter', () => {
     expect(await getAmountOfDropdownOptions()).toBe(3);
 
     await filterInput.type('x');
-    // await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     expect(await getFilterInputValue()).toBe('x');
@@ -291,7 +286,6 @@ describe('select-wrapper filter', () => {
     const filterInput = await getFilterInput();
 
     await filterInput.type('B');
-    // await page.waitForTimeout(NATIVE_SEARCH_OPTIONS_DELAY);
     await waitForStencilLifecycle(page);
 
     await page.keyboard.press('ArrowDown');
