@@ -90,12 +90,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render with active state">
       <p-link-pure [href]="'https://www.porsche.com'" [active]="true">Label active</p-link-pure>
       <p-link-pure [active]="true"><a href="https://www.porsche.com">Label slotted active</a></p-link-pure>
+      <p-link-pure [active]="true" [href]="'https://www.porsche.com'"
+        >Label active
+        <p slot="subline">Some subline</p></p-link-pure
+      >
     </div>
 
     <div class="playground dark" title="should render with active state on dark background">
       <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [theme]="'dark'">Label active</p-link-pure>
       <p-link-pure [active]="true" [theme]="'dark'"
         ><a href="https://www.porsche.com">Label slotted active</a></p-link-pure
+      >
+      <p-link-pure [active]="true" [href]="'https://www.porsche.com'" [theme]="'dark'"
+        >Label active
+        <p slot="subline">Some subline</p></p-link-pure
       >
     </div>
 
