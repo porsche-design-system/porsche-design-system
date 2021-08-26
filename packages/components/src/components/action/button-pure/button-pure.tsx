@@ -2,7 +2,8 @@ import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  hasNamedSlot,
+  hasVisibleIcon,
+  hasSlottedSubline,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDark,
@@ -10,8 +11,18 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  ButtonType,
+  LinkButtonPureIconName,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
+import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { addComponentCss } from './button-pure-styles';
 
 @Component({
   tag: 'p-button-pure',
@@ -40,13 +51,19 @@ export class ButtonPure {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Aligns the label. */
+  @Prop() public alignLabel?: AlignLabel = 'right';
+
+  /** Stretches the area between icon and label to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -60,6 +77,11 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
+  }
+
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.stretch);
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
   public componentDidLoad(): void {
@@ -80,12 +102,20 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
+    const hasIcon = hasVisibleIcon(this.icon);
+    const hasSubline = hasSlottedSubline(this.host);
+
     const rootClasses = {
       ['root']: true,
-      ['root--loading']: this.loading,
+      ['root--loading']: this.loading && hasIcon,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
+      ...(!hasSubline && {
+        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
+        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
+      }),
+      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const iconProps = {
@@ -107,22 +137,23 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
         >
-          {this.loading ? (
-            <PrefixedTagNames.pSpinner {...iconProps} />
-          ) : (
-            <PrefixedTagNames.pIcon
-              {...iconProps}
-              color="inherit"
-              name={this.icon}
-              source={this.iconSource}
-              aria-hidden="true"
-            />
-          )}
+          {hasIcon &&
+            (this.loading ? (
+              <PrefixedTagNames.pSpinner {...iconProps} />
+            ) : (
+              <PrefixedTagNames.pIcon
+                {...iconProps}
+                color="inherit"
+                name={this.icon}
+                source={this.iconSource}
+                aria-hidden="true"
+              />
+            ))}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </button>
-        {hasNamedSlot(this.host, 'subline') && (
+        {hasSubline && (
           <PrefixedTagNames.pText class="subline" tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>

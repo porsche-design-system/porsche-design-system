@@ -2,15 +2,24 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  hasNamedSlot,
   improveFocusHandlingForCustomElement,
   isDark,
   mapBreakpointPropToClasses,
   transitionListener,
+  hasVisibleIcon,
+  hasSlottedSubline,
 } from '../../../utils';
-import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  LinkTarget,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { addSlottedCss } from './link-pure-styles';
+import { addComponentCss, addSlottedCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -20,14 +29,20 @@ import { addSlottedCss } from './link-pure-styles';
 export class LinkPure {
   @Element() public host!: HTMLElement;
 
+  /** Aligns the label. */
+  @Prop() public alignLabel?: AlignLabel = 'right';
+
+  /** Stretches the area between icon and label to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
+
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text (only has effect with visible label). */
   @Prop() public weight?: TextWeight = 'regular';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed */
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -60,6 +75,10 @@ export class LinkPure {
     addSlottedCss(this.host);
   }
 
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.stretch);
+  }
+
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
     if (isSizeInherit(this.size)) {
@@ -72,14 +91,21 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    const hasIcon = hasVisibleIcon(this.icon);
+    const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
       ['root--active']: this.active,
+      ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
+      ...(!hasSubline && {
+        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
+        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
+      }),
+      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -96,20 +122,22 @@ export class LinkPure {
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            color="inherit"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            ref={(el) => (this.iconTag = el)}
-            aria-hidden="true"
-          />
+          {hasIcon && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              color="inherit"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              ref={(el) => (this.iconTag = el)}
+              aria-hidden="true"
+            />
+          )}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasNamedSlot(this.host, 'subline') && (
+        {hasSubline && (
           <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
