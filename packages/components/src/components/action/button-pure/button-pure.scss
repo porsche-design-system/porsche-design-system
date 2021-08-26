@@ -44,6 +44,13 @@ $root: '.root';
         color: $p-color-state-active;
       }
     }
+
+    &#{$bem-block}--active {
+      color: $p-color-brand;
+      + .subline {
+        color: $p-color-brand;
+      }
+    }
   }
 
   &:disabled,
@@ -72,6 +79,13 @@ $root: '.root';
       }
 
       &:active {
+        color: $p-color-theme-dark-state-active;
+        + .subline {
+          color: $p-color-theme-dark-state-active;
+        }
+      }
+
+      &#{$bem-block}--active {
         color: $p-color-theme-dark-state-active;
         + .subline {
           color: $p-color-theme-dark-state-active;

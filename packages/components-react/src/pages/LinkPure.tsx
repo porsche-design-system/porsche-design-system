@@ -143,6 +143,10 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure active>
           <a href="https://www.porsche.com">Label slotted active</a>
         </PLinkPure>
+        <PLinkPure href="https://www.porsche.com" active>
+          Label active
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
@@ -151,6 +155,10 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
         <PLinkPure active theme="dark">
           <a href="https://www.porsche.com">Label slotted active</a>
+        </PLinkPure>
+        <PLinkPure active theme="dark">
+          Label active
+          <p slot="subline">Some subline</p>
         </PLinkPure>
       </div>
 
