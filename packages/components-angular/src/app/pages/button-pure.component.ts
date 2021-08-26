@@ -74,6 +74,26 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [weight]="'bold'">Label weight bold</p-button-pure>
     </div>
 
+    <div class="playground light" title="should render with active state">
+      <p-button-pure [active]="true">Label active</p-button-pure>
+      <p-button-pure [active]="true" [disabled]="true">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [loading]="true">Label active loading</p-button-pure>
+      <p-button-pure [active]="true"
+        >Label active
+        <p slot="subline">Some subline</p>
+      </p-button-pure>
+    </div>
+
+    <div class="playground dark" title="should render with active state on dark background">
+      <p-button-pure [active]="true" [theme]="'dark'">Label active</p-button-pure>
+      <p-button-pure [active]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
+      <p-button-pure [active]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
+      <p-button-pure [active]="true" [theme]="'dark'"
+        >Label active
+        <p slot="subline">Some subline</p>
+      </p-button-pure>
+    </div>
+
     <div class="playground light" title="should render button with specific icon">
       <p-button-pure [icon]="'delete'">Label with specific icon</p-button-pure>
       <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
