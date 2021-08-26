@@ -81,7 +81,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Active state
 
-The look of a ‘pressed’ button can be achieved by setting the `active` property.
+The look of a 'pressed' button can be achieved by setting the `active` property.
 
 <Playground :markup="markupActive" :config="config"></Playground>
 
