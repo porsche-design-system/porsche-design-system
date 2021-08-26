@@ -109,6 +109,7 @@ export class SelectWrapper {
 
       if (!this.filter) {
         this.select.addEventListener('mousedown', this.onMouseDown);
+        this.select.addEventListener('change', this.syncSelectedIndex);
       }
       document.addEventListener('mousedown', this.onClickOutside, true);
     }
@@ -134,10 +135,12 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
+    const { disabled } = this.select;
+
     const rootClasses = {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'none',
-      ['root--disabled']: this.disabled,
+      ['root--disabled']: disabled,
       ['root--theme-dark']: isDark(this.theme),
     };
     const labelClasses = {
@@ -181,7 +184,7 @@ export class SelectWrapper {
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               highlightedIndex={getHighlightedOptionMapIndex(this.optionMaps)}
               dropdownId={dropdownId}
-              disabled={this.disabled}
+              disabled={disabled}
               isOpen={this.isOpen}
               state={this.state}
               theme={this.theme}
@@ -215,10 +218,6 @@ export class SelectWrapper {
     );
   }
 
-  private get disabled(): boolean {
-    return this.select.disabled;
-  }
-
   private get selectedIndex(): number {
     return this.select.selectedIndex;
   }
@@ -246,7 +245,7 @@ export class SelectWrapper {
     this.setOptionMaps(); // initial
     this.observeOptions(); // initial
 
-    observeProperties(this.select, ['value', 'selectedIndex'], this.setOptionMaps);
+    observeProperties(this.select, ['value', 'selectedIndex'], this.syncSelectedIndex);
     observeChildren(
       this.select,
       () => {
@@ -356,13 +355,11 @@ export class SelectWrapper {
       case 'Tab':
         this.setDropdownVisibility('hide');
         break;
-      default:
-      // console.log(e.key);
-      // timeout is needed if fast keyboard events are triggered and dom needs time to update state
-      // setTimeout(() => {
-      //   this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
-      // }, 100);
     }
+  };
+
+  private syncSelectedIndex = (): void => {
+    this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
   };
 
   private setOptionMaps = (): void => {
