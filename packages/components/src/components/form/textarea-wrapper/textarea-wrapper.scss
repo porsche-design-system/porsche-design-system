@@ -117,60 +117,60 @@
   }
 
   &--visible #{$bem-block}__text {
-    @include text-visible;
+    @include form-text-visible;
   }
 
   &--hidden #{$bem-block}__text {
-    @include text-hidden;
+    @include form-text-hidden;
   }
 
   @include p-media-query('xs') {
     &--visible-xs #{$bem-block}__text {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden-xs #{$bem-block}__text {
-      @include text-hidden;
+      @include form-text-hidden;
     }
   }
 
   @include p-media-query('s') {
     &--visible-s #{$bem-block}__text {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden-s #{$bem-block}__text {
-      @include text-hidden;
+      @include form-text-hidden;
     }
   }
 
   @include p-media-query('m') {
     &--visible-m #{$bem-block}__text {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden-m #{$bem-block}__text {
-      @include text-hidden;
+      @include form-text-hidden;
     }
   }
 
   @include p-media-query('l') {
     &--visible-l #{$bem-block}__text {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden-l #{$bem-block}__text {
-      @include text-hidden;
+      @include form-text-hidden;
     }
   }
 
   @include p-media-query('xl') {
     &--visible-xl #{$bem-block}__text {
-      @include text-visible;
+      @include form-text-visible;
     }
 
     &--hidden-xl #{$bem-block}__text {
-      @include text-hidden;
+      @include form-text-hidden;
     }
   }
 

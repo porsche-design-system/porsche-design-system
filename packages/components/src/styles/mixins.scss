@@ -9,8 +9,9 @@
   }
 }
 
-// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
-@mixin text-visible($isCheckboxOrRadio: false) {
+@mixin form-text-visible($isCheckboxOrRadio: false) {
+  @include text-visible();
+
   @if $isCheckboxOrRadio {
     width: auto;
     padding: 0 0 0 $p-spacing-8;
@@ -18,7 +19,17 @@
     width: fit-content;
     padding: 0 0 $p-spacing-4 0;
   }
+}
+
+@mixin form-text-hidden() {
+  @include text-hidden();
+  padding: 0;
+}
+
+// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
+@mixin text-visible() {
   position: static;
+  width: auto;
   height: auto;
   margin: 0;
   white-space: normal;
@@ -32,7 +43,6 @@
   width: 1px;
   height: 1px;
   margin: -1px;
-  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);

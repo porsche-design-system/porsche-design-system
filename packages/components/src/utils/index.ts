@@ -2,6 +2,7 @@ export * from './a11y';
 export * from './attribute-observer';
 export * from './breakpoint-customizable';
 export * from './button-handling';
+export * from './button-link-pure-utils';
 export * from './change-case';
 export * from './device-detection';
 export * from './dom';
