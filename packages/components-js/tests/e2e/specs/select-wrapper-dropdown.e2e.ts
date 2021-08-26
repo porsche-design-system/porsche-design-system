@@ -30,7 +30,7 @@ describe('select-wrapper dropdown', () => {
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getSelectIcon = () => selectNode(page, 'p-select-wrapper >>> .icon');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
+  const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
   const highlightedClass = 'option--highlighted';
@@ -53,7 +53,7 @@ describe('select-wrapper dropdown', () => {
 
   const getDropdownOpacity = async () => await getElementStyle(await getDropdown(), 'opacity');
   const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
-  const getSelectedIndex = async () => (await getSelect()).evaluate((el: HTMLSelectElement) => el.selectedIndex);
+  const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
   const getSelectedDropdownOptionIndex = async () =>
     await getElementIndex(await getDropdownShadowRoot(), `.${selectedClass}`);
   const getHiddenDropdownOptionIndex = async () =>
@@ -487,7 +487,7 @@ describe('select-wrapper dropdown', () => {
       await initSelect();
 
       const select = await getSelect();
-      const labelText = await getLabel();
+      const labelText = await getLabelText();
       const initialBoxShadow = await getElementStyle(select, 'boxShadow');
 
       await labelText.hover();
