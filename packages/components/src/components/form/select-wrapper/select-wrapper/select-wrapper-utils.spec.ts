@@ -13,6 +13,8 @@ import {
   resetFilteredOptionMaps,
   getValidOptions,
   getNewOptionMapIndex,
+  DropdownInteractionType,
+  getDropdownVisibility,
 } from './select-wrapper-utils';
 
 const defaultOptionMap: Partial<OptionMap> = {
@@ -235,4 +237,18 @@ describe('getNewOptionMapIndex()', () => {
       expect(getNewOptionMapIndex(options, direction)).toBe(expected);
     }
   );
+});
+
+describe('getDropdownVisibility()', () => {
+  const resetFilter = jest.fn();
+  it.each<[boolean, DropdownInteractionType, boolean]>([
+    [true, 'show', true],
+    [true, 'toggle', false],
+    [true, 'hide', false],
+    [false, 'show', true],
+    [false, 'toggle', true],
+    [false, 'hide', false],
+  ])('should for isOpen %s and type: %s return %s', (isOpen, type, result) => {
+    expect(getDropdownVisibility(isOpen, type, resetFilter)).toBe(result);
+  });
 });

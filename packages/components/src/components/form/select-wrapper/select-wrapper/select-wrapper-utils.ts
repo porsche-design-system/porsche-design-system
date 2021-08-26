@@ -116,3 +116,19 @@ export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDi
 
   return options.indexOf(validItems[i]);
 };
+
+export type DropdownInteractionType = 'show' | 'hide' | 'toggle';
+export const getDropdownVisibility = (
+  isOpen: boolean,
+  type: DropdownInteractionType,
+  resetFilter: () => void
+): boolean => {
+  if (isOpen && (type === 'hide' || type === 'toggle')) {
+    resetFilter();
+    return false;
+  } else if (!isOpen && (type === 'show' || type === 'toggle')) {
+    return true;
+  } else {
+    return isOpen;
+  }
+};
