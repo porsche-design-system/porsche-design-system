@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.4.0-beta.0] - 2021-08-25
+### [2.4.0-beta.0] - 2021-08-26
 
 #### Added
 - `icon` property of `Button Pure` and `Link Pure` was extended by `none` value
