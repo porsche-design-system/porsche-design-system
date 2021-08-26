@@ -71,6 +71,10 @@ describe('isCustomDropdown()', () => {
   });
 });
 
+describe('getOptionsElements()', () => {});
+
+describe('getOptionMaps()', () => {});
+
 describe('updateSelectedOptionMaps()', () => {
   const getIndexOfSelectedOption = (options: OptionMap[]): number => {
     return options.findIndex((item) => item.selected);
@@ -180,6 +184,8 @@ describe('getValidOptions()', () => {
   });
 });
 
+describe('getMatchingOptionMaps()', () => {});
+
 describe('updateFilteredOptionMaps()', () => {
   const options = getOptions();
   const getVisibleOptionsAmount = (options: OptionMap[]): number => {
@@ -207,6 +213,8 @@ describe('resetFilteredOptionMaps()', () => {
     expect(getIndexOfHiddenOption(resetFilteredOptionMaps(options))).toBe(-1);
   });
 });
+
+describe('hasFilterResults()', () => {});
 
 describe('getNewOptionMapIndex()', () => {
   it('should return undefined if there are no valid option to navigate to', () => {
