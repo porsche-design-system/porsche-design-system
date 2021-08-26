@@ -108,10 +108,10 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    // if (false && this.filter) {
-    //   this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
-    //   this.filterElement.addEventListener('input', this.onFilterChange);
-    // }
+    if (this.filter) {
+      this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
+      this.filterElement.addEventListener('input', this.onFilterChange);
+    }
   }
 
   public componentDidRender(): void {

@@ -34,15 +34,6 @@ export class SelectWrapperFilter {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
 
-  public componentDidLoad(): void {
-    // if (this.filter) {
-    //   this.fakeFilter.addEventListener('click', this.onFilterInputClick); // span element
-    //   this.filterInput.addEventListener('mousedown', this.onFilterInputClick);
-    //   this.filterInput.addEventListener('keydown', this.onKeyboardEvents);
-    //   this.filterInput.addEventListener('input', this.onFilterSearch);
-    // }
-  }
-
   public componentWillRender(): void {
     // TODO: this is executed way too often, for example on every character being entered
     addComponentCss(this.host, this.disabled, this.state, this.theme);
