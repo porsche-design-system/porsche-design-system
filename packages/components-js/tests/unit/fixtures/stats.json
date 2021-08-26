@@ -16,28 +16,28 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 20121,
-    "gzipSize": 3611
+    "size": 20511,
+    "gzipSize": 3640
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 8598,
-    "gzipSize": 2280
+    "size": 8587,
+    "gzipSize": 2279
   },
   {
     "chunkShortName": "content-wrapper",
     "size": 1078,
-    "gzipSize": 538
+    "gzipSize": 539
   },
   {
     "chunkShortName": "divider",
     "size": 1777,
-    "gzipSize": 587
+    "gzipSize": 588
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 2258,
-    "gzipSize": 967
+    "size": 2247,
+    "gzipSize": 965
   },
   {
     "chunkShortName": "flex",
@@ -62,7 +62,7 @@
   {
     "chunkShortName": "link",
     "size": 4080,
-    "gzipSize": 1710
+    "gzipSize": 1708
   },
   {
     "chunkShortName": "link-pure",
@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "main",
-    "size": 67650,
-    "gzipSize": 22890
+    "size": 67661,
+    "gzipSize": 22880
   },
   {
     "chunkShortName": "marque",
     "size": 3112,
-    "gzipSize": 1517
+    "gzipSize": 1515
   },
   {
     "chunkShortName": "modal",
@@ -96,13 +96,13 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 18950,
+    "size": 18939,
     "gzipSize": 2626
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 23857,
-    "gzipSize": 6460
+    "size": 23846,
+    "gzipSize": 6459
   },
   {
     "chunkShortName": "spinner",
@@ -122,12 +122,12 @@
   {
     "chunkShortName": "tabs",
     "size": 2759,
-    "gzipSize": 1118
+    "gzipSize": 1119
   },
   {
     "chunkShortName": "tabs-bar",
     "size": 12153,
-    "gzipSize": 3631
+    "gzipSize": 3632
   },
   {
     "chunkShortName": "text",
@@ -136,7 +136,7 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 11954,
+    "size": 11943,
     "gzipSize": 3117
   },
   {
@@ -146,7 +146,7 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 8936,
-    "gzipSize": 2216
+    "size": 8925,
+    "gzipSize": 2217
   }
 ]
