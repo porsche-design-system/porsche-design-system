@@ -1,5 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
 @mixin with-label() {
   padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
@@ -10,27 +11,11 @@
 }
 
 @mixin label-with-label() {
-  position: static;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
-  border: 0;
-  clip: auto;
-  clip-path: none;
+  @include text-visible;
 }
 
 @mixin label-without-label() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  @include text-hidden;
 }
 
 @mixin icon-with-label() {
