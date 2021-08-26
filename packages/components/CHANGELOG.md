@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `active` property to `Button Pure`
+
 ### [2.4.0-beta.0] - 2021-08-26
 
 #### Added
