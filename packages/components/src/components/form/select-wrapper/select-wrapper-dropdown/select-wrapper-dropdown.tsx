@@ -17,6 +17,7 @@ export class SelectWrapperDropdown {
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
+  @Prop() public hasFilterResults?: boolean = false;
 
   @Prop() public onSelect: (newIndex: number) => void;
   @Prop() public onFocus: () => void;
@@ -39,7 +40,7 @@ export class SelectWrapperDropdown {
 
     return (
       <Host role="listbox" tabIndex={-1} {...getAriaAttributes(this.optionMaps, this.open, this.filter)}>
-        {this.filter && !this.optionMaps.length ? (
+        {this.filter && !this.hasFilterResults ? (
           <div class="option" aria-live="polite" role="status">
             <span aria-hidden="true">---</span>
             <span class="option__sr">No results found</span>
