@@ -48,6 +48,7 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
         bottom: '2px',
         left: '2px',
         width: `calc(100% - ${pxToRemWithUnit(44)})`,
+        outline: 0,
       }),
     }),
     ...buildGlobalStyles({
