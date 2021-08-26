@@ -4,21 +4,11 @@
 
 // Standard approach to show/hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
 @mixin p-switch-label-visible() {
-  position: static;
-  left: auto;
-  top: auto;
-  width: auto;
-  height: auto;
-  overflow: visible;
+  @include text-visible;
 }
 
 @mixin p-switch-label-hidden() {
-  position: absolute;
-  left: -99999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  @include text-hidden;
 }
 
 :host {
