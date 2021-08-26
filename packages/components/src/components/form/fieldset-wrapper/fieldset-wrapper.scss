@@ -40,7 +40,4 @@ legend {
   color: $p-color-default;
 }
 
-.message {
-  margin-top: $p-spacing-16;
-  transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-}
+@include state-message;
