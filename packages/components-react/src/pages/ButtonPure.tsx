@@ -100,6 +100,10 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure active loading>
           Label active loading
         </PButtonPure>
+        <PButtonPure active>
+          Label active
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
@@ -111,6 +115,10 @@ export const ButtonPurePage = (): JSX.Element => {
         </PButtonPure>
         <PButtonPure active loading theme="dark">
           Label active loading
+        </PButtonPure>
+        <PButtonPure active theme="dark">
+          Label active
+          <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
 
