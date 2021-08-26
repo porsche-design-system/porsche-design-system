@@ -112,6 +112,10 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
+        /**
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
@@ -1246,6 +1250,10 @@ declare namespace LocalJSX {
         "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
+        /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
         /**
           * Aligns the label.
          */

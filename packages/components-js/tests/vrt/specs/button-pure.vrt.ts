@@ -47,6 +47,10 @@ describe('Button Pure', () => {
             <p-button-pure theme="${theme}" hide-label="true">Without label</p-button-pure>
           </div>
           <div>
+            <p-button-pure theme="${theme}" active="true">Label active</p-button-pure>
+            <p-button-pure theme="${theme}" active="true">Label active<p slot="subline">Some subline</p></p-button-pure>
+          </div>
+          <div>
             <p-button-pure theme="${theme}" icon="none">Label icon none</p-button-pure>
             <p-button-pure theme="${theme}" icon="none">Label icon none <p slot="subline">Some slightly longer subline</p></p-button-pure>
           </div>
