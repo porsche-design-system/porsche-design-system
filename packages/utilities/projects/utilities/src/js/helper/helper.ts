@@ -85,7 +85,6 @@ export const srOnlyStyles = (): CSS.Properties => {
     height: '1px',
     width: '1px',
     border: '0',
-    padding: '0',
     margin: '-1px',
     overflow: 'hidden',
     clip: 'rect(1px, 1px, 1px, 1px)',
