@@ -108,13 +108,6 @@ export class SelectWrapper {
     }
   }
 
-  public componentDidLoad(): void {
-    if (this.filter) {
-      // TODO: apply in render function
-      this.filterElement.addEventListener('keydown', this.onKeyboardEvents);
-    }
-  }
-
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
@@ -188,7 +181,8 @@ export class SelectWrapper {
               theme={this.theme}
               value={this.searchString}
               onChange={this.onFilterChange}
-              onClick={() => this.handleVisibilityOfFakeOptionList('toggle')}
+              onClick={() => this.setDropdownVisibility('toggle')}
+              onKeyDown={this.onKeyboardEvents}
               ref={(el) => (this.filterElement = el)}
             />
           )}
@@ -267,7 +261,7 @@ export class SelectWrapper {
 
   private onClickOutside = (e: MouseEvent): void => {
     if (!e.composedPath().includes(this.host)) {
-      this.handleVisibilityOfFakeOptionList('hide');
+      this.setDropdownVisibility('hide');
     }
   };
 
@@ -275,62 +269,58 @@ export class SelectWrapper {
     e.preventDefault();
     e.stopPropagation();
     this.onFocus();
-    this.handleVisibilityOfFakeOptionList('toggle');
+    this.setDropdownVisibility('toggle');
   };
 
   private onFocus = (): void => {
     (this.filter ? this.filterElement : this.select).focus();
   };
 
-  private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
+  private setDropdownVisibility(type: 'show' | 'hide' | 'toggle'): void {
     // TODO: extract into util
-    if (!this.isOpen) {
-      if (type === 'show' || type === 'toggle') {
-        this.isOpen = true;
-      }
-    } else {
+    if (this.isOpen) {
       if (type === 'hide' || type === 'toggle') {
         this.isOpen = false;
         this.resetFilter();
       }
+    } else {
+      if (type === 'show' || type === 'toggle') {
+        this.isOpen = true;
+      }
     }
   }
 
-  // TODO: move into dropdown
   private onKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
         e.preventDefault();
-        this.handleVisibilityOfFakeOptionList('show');
-        this.cycleFakeOptionList('up');
+        this.setDropdownVisibility('show');
+        this.cycleDropdown('up');
         break;
       case 'ArrowDown':
       case 'Down':
         e.preventDefault();
-        this.handleVisibilityOfFakeOptionList('show');
-        this.cycleFakeOptionList('down');
+        this.setDropdownVisibility('show');
+        this.cycleDropdown('down');
         break;
       case 'ArrowLeft':
       case 'Left':
         e.preventDefault();
-        this.cycleFakeOptionList('left');
+        this.cycleDropdown('left');
         break;
       case 'ArrowRight':
       case 'Right':
         e.preventDefault();
-        this.cycleFakeOptionList('right');
+        this.cycleDropdown('right');
         break;
       case ' ':
       case 'Spacebar':
+        e.preventDefault();
         if (this.filter) {
-          if (!this.isOpen) {
-            e.preventDefault();
-            this.handleVisibilityOfFakeOptionList('show');
-          }
+          this.setDropdownVisibility('show');
         } else {
-          e.preventDefault();
-          this.handleVisibilityOfFakeOptionList('toggle');
+          this.setDropdownVisibility('toggle');
           if (!this.isOpen) {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
@@ -338,7 +328,7 @@ export class SelectWrapper {
         break;
       case 'Enter':
         e.preventDefault();
-        this.handleVisibilityOfFakeOptionList('hide');
+        this.setDropdownVisibility('hide');
         if (this.filter) {
           const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
           if (matchingOptions.length === 1) {
@@ -368,9 +358,7 @@ export class SelectWrapper {
         }
         break;
       case 'Tab':
-        if (this.isOpen) {
-          this.handleVisibilityOfFakeOptionList('hide');
-        }
+        this.setDropdownVisibility('hide');
         break;
       default:
       // console.log(e.key);
@@ -386,7 +374,7 @@ export class SelectWrapper {
   };
 
   private setOptionSelected = (newIndex: number): void => {
-    this.handleVisibilityOfFakeOptionList('hide');
+    this.setDropdownVisibility('hide');
 
     if (this.selectedIndex !== newIndex) {
       this.select.selectedIndex = newIndex;
@@ -399,7 +387,7 @@ export class SelectWrapper {
     this.onFocus();
   };
 
-  private cycleFakeOptionList(direction: KeyboardDirectionInternal): void {
+  private cycleDropdown(direction: KeyboardDirectionInternal): void {
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
 
@@ -423,6 +411,6 @@ export class SelectWrapper {
     this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
 
     // in case input is focused via tab instead of click
-    this.handleVisibilityOfFakeOptionList('show');
+    this.setDropdownVisibility('show');
   };
 }
