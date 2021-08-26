@@ -41,3 +41,7 @@ legend {
 }
 
 @include state-message;
+
+.message {
+  margin-top: $p-spacing-16;
+}
