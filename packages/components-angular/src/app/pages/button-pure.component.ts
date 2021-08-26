@@ -85,7 +85,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should render with active state on dark background">
-      <p-button-pure [active]="true" theme="dark">Label active</p-button-pure>
+      <p-button-pure [active]="true" [theme]="'dark'">Label active</p-button-pure>
       <p-button-pure [active]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
       <p-button-pure [active]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
       <p-button-pure [active]="true" [theme]="'dark'"
