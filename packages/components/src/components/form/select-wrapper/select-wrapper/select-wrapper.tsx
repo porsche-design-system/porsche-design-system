@@ -31,8 +31,14 @@ import {
   resetHighlightedIndex,
   getMatchingOptionMaps,
   hasFilterResults,
+  getDropdownVisibility,
 } from './select-wrapper-utils';
-import type { OptionMap, DropdownDirection, KeyboardDirectionInternal } from './select-wrapper-utils';
+import type {
+  OptionMap,
+  DropdownDirection,
+  DropdownInteractionType,
+  KeyboardDirectionInternal,
+} from './select-wrapper-utils';
 import { addSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message';
 
@@ -276,19 +282,9 @@ export class SelectWrapper {
     (this.filter ? this.filterElement : this.select).focus();
   };
 
-  private setDropdownVisibility(type: 'show' | 'hide' | 'toggle'): void {
-    // TODO: extract into util
-    if (this.isOpen) {
-      if (type === 'hide' || type === 'toggle') {
-        this.isOpen = false;
-        this.resetFilter();
-      }
-    } else {
-      if (type === 'show' || type === 'toggle') {
-        this.isOpen = true;
-      }
-    }
-  }
+  private setDropdownVisibility = (type: DropdownInteractionType): void => {
+    this.isOpen = getDropdownVisibility(this.isOpen, type, this.resetFilter);
+  };
 
   private onKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
