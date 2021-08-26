@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -111,6 +111,10 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -121,7 +125,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -134,6 +138,10 @@ export namespace Components {
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */
@@ -392,6 +400,10 @@ export namespace Components {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -404,9 +416,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -419,6 +431,10 @@ export namespace Components {
           * Size of the link.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -610,7 +626,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */
@@ -1194,6 +1210,10 @@ declare namespace LocalJSX {
     }
     interface PButtonPure {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -1204,7 +1224,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1217,6 +1237,10 @@ declare namespace LocalJSX {
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */
@@ -1475,6 +1499,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1487,9 +1515,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1502,6 +1530,10 @@ declare namespace LocalJSX {
           * Size of the link.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -1701,7 +1733,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */

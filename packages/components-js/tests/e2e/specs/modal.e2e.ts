@@ -11,6 +11,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -116,46 +117,50 @@ describe('modal', () => {
     });
 
     it('should be closable via backdrop', async () => {
-      // click in each corner based on 1920x800 screen
       await page.mouse.move(5, 5);
       await page.mouse.down();
-      await page.mouse.move(1915, 5);
-      await page.mouse.down();
-      await page.mouse.move(5, 795);
-      await page.mouse.down();
-      await page.mouse.move(1915, 795);
-      await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
-      expect(calls).toBe(4);
+      expect(calls).withContext('after mouse down').toBe(1);
 
       await page.mouse.up();
-      await waitForStencilLifecycle(page);
 
-      expect(calls).toBe(4);
+      expect(calls).withContext('after mouse up').toBe(1);
     });
 
     it('should not be closed if mousedown inside modal', async () => {
       await page.mouse.move(960, 400);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
-      expect(calls).toBe(0);
+      expect(calls).withContext('after mouse down').toBe(0);
 
       await page.mouse.up();
-      await waitForStencilLifecycle(page);
 
-      expect(calls).toBe(0);
+      expect(calls).withContext('after mouse up').toBe(0);
+    });
+
+    it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
+
+      expect(calls).withContext('after mouse down').toBe(0);
+
+      await page.mouse.move(5, 5);
+      await page.mouse.up();
+
+      expect(calls).withContext('after mouse up').toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       const host = await getHost();
       await setProperty(host, 'disableBackdropClick', true);
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       await page.mouse.move(5, 5);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(0);
     });
@@ -166,7 +171,7 @@ describe('modal', () => {
       await addEventListener(body, 'close', () => bodyCalls++);
       await page.mouse.move(5, 5);
       await page.mouse.down();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(1);
       expect(bodyCalls).toBe(0);
