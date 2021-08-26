@@ -8,10 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.4.0-beta.0] - 2021-08-26
+
+#### Added
+- `icon` property of `Button Pure` and `Link Pure` was extended by `none` value
+- `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`
+
 #### Changed
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
 - Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state.
+- `Modal` backdrop behavior to close modal on mouse-down
 
 #### Fixed
 - Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`
