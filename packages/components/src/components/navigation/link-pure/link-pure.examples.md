@@ -156,7 +156,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
     <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
     <option value='stretch="false" align-label="right"'>stretch false, align-label right</option>
-     <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
+    <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
   </select>
 </Playground>
 
