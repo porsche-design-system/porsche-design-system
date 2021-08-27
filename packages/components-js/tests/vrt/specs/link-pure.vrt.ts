@@ -48,6 +48,11 @@ describe('Link Pure', () => {
             <p-link-pure theme="${theme}" hide-label="true"><a href="#">Without label slotted</a></p-link-pure>
           </div>
           <div>
+            <p-link-pure theme="${theme}" active="true" href="#">Label active</p-link-pure>
+            <p-link-pure theme="${theme}" active="true"><a href="#">Label slotted active</a></p-link-pure>
+            <p-link-pure theme="${theme}" active="true" href="#">Label active <p slot="subline">Some subline</p></p-link-pure>
+          </div>
+          <div>
             <p-link-pure theme="${theme}" icon="none" href="#">Label icon none</p-link-pure>
             <p-link-pure theme="${theme}" icon="none"><a href="#">Label slotted icon none</a></p-link-pure>
             <p-link-pure theme="${theme}" icon="none" href="#">Label icon none<p slot="subline">Some slightly longer subline</p></p-link-pure>

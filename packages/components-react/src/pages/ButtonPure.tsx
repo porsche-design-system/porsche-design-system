@@ -92,6 +92,36 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure weight="bold">Label weight bold</PButtonPure>
       </div>
 
+      <div className="playground light" title="should render with active state">
+        <PButtonPure active>Label active</PButtonPure>
+        <PButtonPure active disabled>
+          Label active disabled
+        </PButtonPure>
+        <PButtonPure active loading>
+          Label active loading
+        </PButtonPure>
+        <PButtonPure active>
+          Label active
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+      </div>
+
+      <div className="playground dark" title="should render with active state on dark background">
+        <PButtonPure active theme="dark">
+          Label active
+        </PButtonPure>
+        <PButtonPure active disabled theme="dark">
+          Label active disabled
+        </PButtonPure>
+        <PButtonPure active loading theme="dark">
+          Label active loading
+        </PButtonPure>
+        <PButtonPure active theme="dark">
+          Label active
+          <p slot="subline">Some subline</p>
+        </PButtonPure>
+      </div>
+
       <div className="playground light" title="should render button with specific icon">
         <PButtonPure icon="delete">Label with specific icon</PButtonPure>
         <PButtonPure icon-source="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>

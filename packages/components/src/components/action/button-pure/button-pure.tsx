@@ -56,6 +56,9 @@ export class ButtonPure {
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
+  /** Display button in active state. */
+  @Prop() public active?: boolean = false;
+
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
@@ -109,6 +112,7 @@ export class ButtonPure {
       ['root']: true,
       ['root--loading']: this.loading && hasIcon,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--active']: this.active,
       ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
       ...(!hasSubline && {

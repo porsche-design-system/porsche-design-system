@@ -79,6 +79,14 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ---
 
+## Active state
+
+The look of a 'pressed' button can be achieved by setting the `active` property.
+
+<Playground :markup="markupActive" :config="config"></Playground>
+
+---
+
 ## Button with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
@@ -90,7 +98,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 The `label` can be aligned to the `right` (default) or to the `left` of the icon.
 
-<Playground :markup="alignmentMarkup" :config="config">
+<Playground :markup="markupAlignment" :config="config">
   <select v-model="alignLabel">
     <option value="left">Left</option>
     <option value="right">Right</option>
@@ -105,7 +113,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="stretchMarkup" :config="configBlock">
+<Playground :markup="markupStretch" :config="configBlock">
   <select v-model="stretch">
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
@@ -205,16 +213,19 @@ The size of the *subline* changes according to the size of the *label*. We do no
       return `<p-button-pure size="medium" weight="${this.weight}">Some label</p-button-pure>`;
     }
 
+    markupActive =
+`<p-button-pure active="true">Some label</p-link-pure>`;
+
     icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
  
 
-    get alignmentMarkup() {
+    get markupAlignment() {
       return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
     };
 
-    get stretchMarkup() {
+    get markupStretch() {
       return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
     };
 
