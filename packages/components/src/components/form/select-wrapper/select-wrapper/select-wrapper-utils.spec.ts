@@ -15,9 +15,11 @@ import {
   getNewOptionMapIndex,
   DropdownInteractionType,
   getDropdownVisibility,
+  KeyboardDirectionInternal,
 } from './select-wrapper-utils';
 
-const defaultOptionMap: Partial<OptionMap> = {
+const baseOptionMap: OptionMap = {
+  value: 'Some Value',
   disabled: false,
   hidden: false,
   initiallyHidden: false,
@@ -25,69 +27,50 @@ const defaultOptionMap: Partial<OptionMap> = {
   highlighted: false,
 };
 
-type GetOptions = {
+type GenerateOptionMapsOptions = {
+  amount?: number;
   selectedIndex?: number;
   hiddenIndex?: number;
 };
 
-const getOptions = (props?: GetOptions): OptionMap[] => {
-  const { selectedIndex, hiddenIndex } = props || {};
+export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
+  const { amount = 4, selectedIndex, hiddenIndex } = props || {};
 
-  const options = ['First', 'Second', 'Third', 'Fourth'].map(
-    (value) =>
-      ({
-        ...defaultOptionMap,
-        value: `${value} Value`,
-      } as OptionMap)
-  );
-
-  if (selectedIndex >= 0) {
-    options[selectedIndex].selected = true;
-    options[selectedIndex].highlighted = true;
-  }
-  if (hiddenIndex >= 0) {
-    options[hiddenIndex].hidden = true;
-  }
-  return options;
+  return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
+    ...baseOptionMap,
+    value: `Value ${idx + 1}`,
+    ...(selectedIndex === idx && { selected: true, highlighted: true }),
+    ...(hiddenIndex === idx && { hidden: true }),
+  }));
 };
 
-const getIndexOfHighlightedOption = (options: OptionMap[]): number => {
-  return options.findIndex((item) => item.highlighted);
-};
-
-const getIndexOfHiddenOption = (options: OptionMap[]): number => {
-  return options.findIndex((item) => item.hidden);
-};
+const getIndexOfSelectedOption = (options: OptionMap[]): number => options.findIndex((item) => item.selected);
+const getIndexOfHighlightedOption = (options: OptionMap[]): number => options.findIndex((item) => item.highlighted);
+const getIndexOfHiddenOption = (options: OptionMap[]): number => options.findIndex((item) => item.hidden);
+const getVisibleOptionsAmount = (options: OptionMap[]): number => options.filter((item) => !item.hidden).length;
 
 describe('isCustomDropdown()', () => {
-  it.each`
-    filter   | native   | expected
-    ${true}  | ${false} | ${true}
-    ${true}  | ${true}  | ${true}
-    ${false} | ${true}  | ${false}
-    ${false} | ${false} | ${true}
-  `('should be called with ($filter, $native) and result to $expected', ({ filter, native, expected }) => {
+  it.each<[boolean, boolean, boolean]>([
+    [true, false, true],
+    [true, true, true],
+    [false, true, false],
+    [false, false, true],
+  ])('should be called with filter: $o, native: %o and return $o', (filter, native, expected) => {
     expect(isCustomDropdown(filter, native)).toBe(expected);
   });
 });
 
-describe('getOptionsElements()', () => {});
+describe('getOptionsElements()', () => {
+  xit('todo', () => {});
+});
 
-describe('getOptionMaps()', () => {});
+describe('getOptionMaps()', () => {
+  xit('todo', () => {});
+});
 
 describe('updateSelectedOptionMaps()', () => {
-  const getIndexOfSelectedOption = (options: OptionMap[]): number => {
-    return options.findIndex((item) => item.selected);
-  };
-
-  it('should have no selected and highlighted option initially', () => {
-    const options = getOptions();
-    expect(getIndexOfSelectedOption(options)).toBe(-1);
-    expect(getIndexOfHighlightedOption(options)).toBe(-1);
-  });
-
   it('should set selected and highlighted on correct option', () => {
-    const options = getOptions();
+    const options = generateOptionMaps();
     const result1 = updateSelectedOptionMaps(options, 1);
     expect(getIndexOfSelectedOption(result1)).toBe(1);
     expect(getIndexOfHighlightedOption(result1)).toBe(1);
@@ -99,8 +82,8 @@ describe('updateSelectedOptionMaps()', () => {
 });
 
 describe('updateHighlightedOptionMaps()', () => {
-  it('should update highlighted on second item', () => {
-    const options = getOptions();
+  it('should set highlighted on correct option', () => {
+    const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
     const result = updateHighlightedOptionMaps(options, 1);
@@ -109,8 +92,8 @@ describe('updateHighlightedOptionMaps()', () => {
 });
 
 describe('resetHighlightedIndex()', () => {
-  it('should reset highlighted index       ', () => {
-    const options = getOptions({ selectedIndex: 1 });
+  it('should reset highlighted index', () => {
+    const options = generateOptionMaps({ selectedIndex: 1 });
     expect(getIndexOfHighlightedOption(options)).toBe(1);
 
     const result = resetHighlightedIndex(options);
@@ -119,8 +102,8 @@ describe('resetHighlightedIndex()', () => {
 });
 
 describe('updateFirstHighlightedOptionMaps()', () => {
-  it('should set highlight on first item', () => {
-    const options = getOptions();
+  it('should set highlight on first option', () => {
+    const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
     const result = updateFirstHighlightedOptionMaps(options);
@@ -129,8 +112,8 @@ describe('updateFirstHighlightedOptionMaps()', () => {
 });
 
 describe('updateLastHighlightedOptionMaps()', () => {
-  it('should set highlight on last item', () => {
-    const options = getOptions();
+  it('should set highlighted on last option', () => {
+    const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
     const result = updateLastHighlightedOptionMaps(options);
@@ -139,8 +122,8 @@ describe('updateLastHighlightedOptionMaps()', () => {
 });
 
 describe('getHighlightedOptionMapIndex()', () => {
-  it('should return index of highlighted item', () => {
-    const options = getOptions();
+  it('should return index of highlighted opotion', () => {
+    const options = generateOptionMaps();
     expect(getHighlightedOptionMapIndex(options)).toBe(-1);
 
     options[1].highlighted = true;
@@ -149,8 +132,8 @@ describe('getHighlightedOptionMapIndex()', () => {
 });
 
 describe('getSelectedOptionMapIndex()', () => {
-  it('should return index of selected item', () => {
-    const options = getOptions();
+  it('should return index of selected option', () => {
+    const options = generateOptionMaps();
     expect(getSelectedOptionMapIndex(options)).toBe(-1);
 
     options[1].selected = true;
@@ -159,9 +142,8 @@ describe('getSelectedOptionMapIndex()', () => {
 });
 
 describe('getSelectedOptionMap()', () => {
-  it('should return selected option map', () => {
-    const options = getOptions({ selectedIndex: 1 });
-
+  it('should return selected option', () => {
+    const options = generateOptionMaps({ selectedIndex: 1 });
     expect(getSelectedOptionMap(options)).toEqual(options[1]);
 
     options[1].selected = false;
@@ -172,79 +154,80 @@ describe('getSelectedOptionMap()', () => {
 });
 
 describe('getValidOptions()', () => {
-  it('should return ', () => {
-    const options = getOptions();
-    expect(getValidOptions(options).length).toBe(4);
+  it('should return options that are not disabled, hidden or initiallyHidden', () => {
+    const options = generateOptionMaps();
+    const result1 = getValidOptions(options);
+    expect(result1.length).toBe(options.length);
 
     options[0].disabled = true;
     options[1].hidden = true;
     options[2].initiallyHidden = true;
 
-    expect(getValidOptions(options).length).toBe(1);
+    const result2 = getValidOptions(options);
+    expect(result2.length).toBe(1);
+    expect(result2[0]).toBe(options[3]);
   });
 });
 
-describe('getMatchingOptionMaps()', () => {});
+describe('getMatchingOptionMaps()', () => {
+  xit('todo', () => {});
+});
 
 describe('updateFilteredOptionMaps()', () => {
-  const options = getOptions();
-  const getVisibleOptionsAmount = (options: OptionMap[]): number => {
-    return options.filter((item) => !item.hidden).length;
-  };
-
-  it.each`
-    searchString     | expected
-    ${'First Value'} | ${1}
-    ${'Value'}       | ${4}
-    ${'value'}       | ${4}
-    ${'ir'}          | ${2}
-    ${'st Val'}      | ${1}
-  `("should be called with ('$searchString') and have '$expected' visible options", ({ searchString, expected }) => {
+  it.each<[string, number]>([
+    ['First Value', 1],
+    ['Value', 4],
+    ['value', 4],
+    ['ir', 2],
+    ['st Val', 1],
+  ])('should be called with searchString %s and have %s visible options', (searchString, expected) => {
+    const options = generateOptionMaps().map((item, idx) => ({
+      ...item,
+      value: `${['First', 'Second', 'Third', 'Fourth'][idx]} Value`,
+    }));
     const result = updateFilteredOptionMaps(options, searchString);
     expect(getVisibleOptionsAmount(result)).toBe(expected);
   });
 });
 
 describe('resetFilteredOptionMaps()', () => {
-  it('should reset hidden to false', () => {
-    const options = getOptions({ hiddenIndex: 1 });
+  it('should set hidden to false', () => {
+    const options = generateOptionMaps({ hiddenIndex: 1 });
     expect(getIndexOfHiddenOption(options)).toBe(1);
 
-    expect(getIndexOfHiddenOption(resetFilteredOptionMaps(options))).toBe(-1);
+    const result = resetFilteredOptionMaps(options);
+    expect(getIndexOfHiddenOption(result)).toBe(-1);
   });
 });
 
-describe('hasFilterResults()', () => {});
+describe('hasFilterResults()', () => {
+  xit('todo', () => {});
+});
 
 describe('getNewOptionMapIndex()', () => {
-  it('should return undefined if there are no valid option to navigate to', () => {
-    const options = getOptions();
-    const disabledOptionMap = options.map((item) => ({
+  it('should return undefined if there is no valid option', () => {
+    const options = generateOptionMaps().map((item) => ({
       ...item,
       disabled: true,
     }));
 
-    expect(getNewOptionMapIndex(disabledOptionMap, 'down')).toBeUndefined();
+    const result = getNewOptionMapIndex(options, 'down');
+    expect(result).toBeUndefined();
   });
 
-  it.each`
-    selectedIndex | direction  | expected
-    ${0}          | ${'down'}  | ${1}
-    ${0}          | ${'right'} | ${1}
-    ${3}          | ${'down'}  | ${0}
-    ${3}          | ${'right'} | ${0}
-    ${1}          | ${'up'}    | ${0}
-    ${1}          | ${'left'}  | ${0}
-    ${0}          | ${'up'}    | ${3}
-    ${0}          | ${'left'}  | ${3}
-  `(
-    "should be called with selectedIndex='$selectedIndex' and direction='$direction' and result to '$expected'",
-    ({ selectedIndex, direction, expected }) => {
-      const options = getOptions({ selectedIndex });
-
-      expect(getNewOptionMapIndex(options, direction)).toBe(expected);
-    }
-  );
+  it.each<[number, KeyboardDirectionInternal, number]>([
+    [0, 'down', 1],
+    [0, 'right', 1],
+    [3, 'down', 0],
+    [3, 'right', 0],
+    [1, 'up', 0],
+    [1, 'left', 0],
+    [0, 'up', 3],
+    [0, 'left', 3],
+  ])('should be called with selectedIndex: %o, direction %o and return %o', (selectedIndex, direction, expected) => {
+    const options = generateOptionMaps({ selectedIndex });
+    expect(getNewOptionMapIndex(options, direction)).toBe(expected);
+  });
 });
 
 describe('getDropdownVisibility()', () => {
