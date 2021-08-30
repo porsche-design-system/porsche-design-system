@@ -4,7 +4,7 @@ import {
   updateSelectedOptionMaps,
   isCustomDropdown,
   updateHighlightedOptionMaps,
-  resetHighlightedIndex,
+  resetHighlightedOptionMaps,
   updateFirstHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
   getHighlightedOptionMapIndex,
@@ -170,12 +170,12 @@ describe('updateHighlightedOptionMaps()', () => {
   });
 });
 
-describe('resetHighlightedIndex()', () => {
-  it('should reset highlighted index', () => {
-    const options = generateOptionMaps({ selectedIndex: 1 });
+describe('resetHighlightedOptionMaps()', () => {
+  it('should reset highlighted options', () => {
+    const options = generateOptionMaps({ highlightedIndex: 1 });
     expect(getIndexOfHighlightedOption(options)).toBe(1);
 
-    const result = resetHighlightedIndex(options);
+    const result = resetHighlightedOptionMaps(options);
     expect(getIndexOfHighlightedOption(result)).toBe(-1);
   });
 });

@@ -59,7 +59,7 @@ export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: numb
     highlighted: idx === newIndex,
   }));
 
-export const resetHighlightedIndex = (options: OptionMap[]): OptionMap[] =>
+export const resetHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
   options.map((item) => ({ ...item, highlighted: false }));
 
 export const updateFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
