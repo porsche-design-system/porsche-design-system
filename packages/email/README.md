@@ -1,4 +1,4 @@
-# Porsche Design System - Marque
+# Porsche Design System - Email
 
 ## Build
 
