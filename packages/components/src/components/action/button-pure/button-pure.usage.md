@@ -17,6 +17,16 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Icon only| When it's enough to indicate an action with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. |
 | Icon, Text and Subline | This should be the variant of your choice if the Button Pure must be supplemented by a subline. However, we recommend that you only use this variant in cases where the user requires additional information. The standard variant will be used on a monochrome background, whereas the highlight variant should be used on a polychrome background (e.g. on images) for better comprehensibility and accessibility. |
 
+# Icon alignment & stretch
+
+To enable a wider usage different orders of icon and label are possible. Please only use under recommended circumstances
+
+| Variant | Usage |
+|----|----|
+| Icon left | This is the default state and should be use when ever possible. |
+| Icon right | On special occasions (e.g. step navigation, group of pure buttons, alignment of labels with headline). | 
+| Stretch | It is recommended to use stretch only on  small viewports or areas, e.g. mobile views or sidebars. Please consider that the greater the distance between icon and label the less both will be perceived as a visual unit. |
+
 
 ## Usage
 
