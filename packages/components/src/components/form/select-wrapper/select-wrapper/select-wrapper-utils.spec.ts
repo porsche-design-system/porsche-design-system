@@ -16,6 +16,8 @@ import {
   DropdownInteractionType,
   getDropdownVisibility,
   KeyboardDirectionInternal,
+  getOptionsElements,
+  getOptionMaps,
 } from './select-wrapper-utils';
 
 const baseOptionMap: OptionMap = {
@@ -30,17 +32,23 @@ const baseOptionMap: OptionMap = {
 type GenerateOptionMapsOptions = {
   amount?: number;
   selectedIndex?: number;
+  disabledIndex?: number;
   hiddenIndex?: number;
+  initiallyHiddenIndex?: number;
+  title?: string;
 };
 
 export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
-  const { amount = 4, selectedIndex, hiddenIndex } = props || {};
+  const { amount = 4, selectedIndex, disabledIndex, hiddenIndex, initiallyHiddenIndex, title } = props || {};
 
   return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
     ...baseOptionMap,
     value: `Value ${idx + 1}`,
     ...(selectedIndex === idx && { selected: true, highlighted: true }),
+    ...(disabledIndex === idx && { disabled: true }),
     ...(hiddenIndex === idx && { hidden: true }),
+    ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
+    title,
   }));
 };
 
@@ -61,11 +69,64 @@ describe('isCustomDropdown()', () => {
 });
 
 describe('getOptionsElements()', () => {
-  xit('todo', () => {});
+  it("should return a select's option elements", () => {
+    const select = document.createElement('select');
+    const option1 = document.createElement('option');
+    option1.value = 'a';
+    const option2 = document.createElement('option');
+    option2.value = 'b';
+    select.appendChild(option1);
+    select.appendChild(option2);
+
+    const result = getOptionsElements(select);
+    expect(result.length).toBe(2);
+    expect(result[0]).toBe(option1);
+    expect(result[1]).toBe(option2);
+  });
 });
 
 describe('getOptionMaps()', () => {
-  xit('todo', () => {});
+  type GenerateHTMLOptionElementOptions = {
+    text?: string;
+    disabled?: boolean;
+    hidden?: boolean;
+    selected?: boolean;
+    isGrouped?: boolean;
+  };
+
+  const generateHTMLOptionElements = (opts?: GenerateHTMLOptionElementOptions): HTMLOptionElement[] => {
+    const { text, disabled = false, hidden = false, selected = false, isGrouped } = opts ?? {};
+    const option = document.createElement('option');
+
+    option.text = text;
+    option.selected = selected;
+    if (disabled) {
+      option.setAttribute('disabled', 'true');
+    }
+    if (hidden) {
+      option.setAttribute('hidden', 'true');
+    }
+
+    // we're not using a select element since it has impact on the selected property
+    const parent = document.createElement(isGrouped ? 'optgroup' : 'div');
+    (parent as HTMLOptGroupElement).label = 'Optgroup Label';
+    parent.appendChild(option);
+
+    return [option];
+  };
+
+  const text = 'Value 1';
+  const amount = 1;
+
+  it.each<[HTMLOptionElement[], OptionMap[]]>([
+    [generateHTMLOptionElements({ text }), generateOptionMaps({ amount })],
+    [generateHTMLOptionElements({ text, selected: true }), generateOptionMaps({ amount, selectedIndex: 0 })],
+    [generateHTMLOptionElements({ text, disabled: true }), generateOptionMaps({ amount, disabledIndex: 0 })],
+    [generateHTMLOptionElements({ text, hidden: true }), generateOptionMaps({ amount, initiallyHiddenIndex: 0 })],
+    [generateHTMLOptionElements({ text, isGrouped: true }), generateOptionMaps({ amount, title: 'Optgroup Label' })],
+  ])('should correctly transform HTMLOptionElements to OptionMaps', (optionElements, optionMaps) => {
+    expect(getOptionMaps(optionElements)).toEqual(optionMaps);
+  });
 });
 
 describe('updateSelectedOptionMaps()', () => {
