@@ -5,9 +5,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  isDark,
   isRequiredAndParentNotRequired,
-  mapBreakpointPropToClasses,
   observeAttributes,
   observeChildren,
   observeProperties,
@@ -39,12 +37,11 @@ import type {
   DropdownInteractionType,
   KeyboardDirectionInternal,
 } from './select-wrapper-utils';
-import { addSlottedCss } from './select-wrapper-styles';
+import { addComponentCss, addSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message';
 
 @Component({
   tag: 'p-select-wrapper',
-  styleUrl: 'select-wrapper.scss',
   shadow: true,
 })
 export class SelectWrapper {
@@ -116,6 +113,7 @@ export class SelectWrapper {
   }
 
   public componentDidRender(): void {
+    addComponentCss(this.host, this.hideLabel, this.state, this.theme);
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -139,13 +137,7 @@ export class SelectWrapper {
 
     const rootClasses = {
       ['root']: true,
-      [`root--${this.state}`]: this.state !== 'none',
       ['root--disabled']: disabled,
-      ['root--theme-dark']: isDark(this.theme),
-    };
-    const labelClasses = {
-      ['label']: true,
-      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
     const iconClasses = {
       ['icon']: true,
@@ -163,7 +155,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class={rootClasses}>
-          <label id={labelId} class={labelClasses}>
+          <label id={labelId} class="label">
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}

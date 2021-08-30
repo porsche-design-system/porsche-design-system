@@ -151,15 +151,31 @@ export const getBaseSlottedStyles = (): Styles => {
   };
 };
 
-export const getScreenReaderJssStyle = (): JssStyle => ({
-  position: 'absolute',
-  display: 'block',
-  width: 1,
-  height: 1,
-  margin: -1,
-  padding: 0,
-  overflow: 'hidden',
-  border: 0,
-  clip: 'rect(1px,1px,1px,1px)',
-  clipPath: 'inset(50%)',
+export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
+  isHidden
+    ? {
+        position: 'absolute',
+        width: 1,
+        height: 1,
+        margin: -1,
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        clip: 'rect(1px,1px,1px,1px)',
+        clipPath: 'inset(50%)',
+      }
+    : {
+        position: 'static',
+        width: 'auto',
+        height: 'auto',
+        margin: 0,
+        whiteSpace: 'normal',
+        overflow: 'visible',
+        clip: 'auto',
+        clipPath: 'none',
+      };
+
+export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({
+  ...getTextHiddenJssStyle(isHidden),
+  width: isCheckboxOrRadio ? 'auto' : 'fit-content',
+  padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });

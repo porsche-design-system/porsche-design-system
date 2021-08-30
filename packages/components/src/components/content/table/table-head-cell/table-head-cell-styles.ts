@@ -6,7 +6,7 @@ import {
   getCss,
   getFocusStyles,
   getHoverStyles,
-  getScreenReaderJssStyle,
+  getTextHiddenJssStyle,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
@@ -50,7 +50,11 @@ export const getComponentCss = (): string => {
         },
       },
     }),
-    hidden: getScreenReaderJssStyle(),
+    hidden: {
+      ...getTextHiddenJssStyle(true),
+      display: 'block',
+      border: 0,
+    },
     icon: {
       marginLeft: spacing['4'],
       opacity: 0,
