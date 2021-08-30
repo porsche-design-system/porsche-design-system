@@ -7,7 +7,7 @@ describe('observeAttributes()', () => {
 
   const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
-  it('should add callback and key to mutationMap', () => {
+  it('should add callback and key to attributeMutationMap', () => {
     const node = document.createElement('input');
     const callback = () => {};
 
@@ -19,7 +19,6 @@ describe('observeAttributes()', () => {
   describe('on attribute change', () => {
     it('should run callback once when observeAttributes is reapplied', async () => {
       const input = document.createElement('input');
-
       const cb = jest.fn();
 
       observeAttributes(input, ['disabled'], cb);
@@ -39,7 +38,6 @@ describe('observeAttributes()', () => {
 
     it('should run callback once when observeAttributes is called multiple times', async () => {
       const input = document.createElement('input');
-
       const cb = jest.fn();
 
       observeAttributes(input, ['disabled'], cb);
@@ -52,7 +50,7 @@ describe('observeAttributes()', () => {
       expect(cb).toBeCalledTimes(1);
     });
 
-    it('should run callback once when multiple inputs are observed', async () => {
+    it('should run callback once when multiple elements are observed', async () => {
       const input1 = document.createElement('input');
       const input2 = document.createElement('input');
 
@@ -91,7 +89,7 @@ describe('unobserveAttributes()', () => {
     attributeMutationMap.clear();
   });
 
-  it('should remove correct element from mutationMap', () => {
+  it('should remove correct element from attributeMutationMap', () => {
     const node1 = document.createElement('input');
     const node2 = document.createElement('select');
     const node3 = document.createElement('input');
