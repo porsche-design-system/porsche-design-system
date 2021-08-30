@@ -4,7 +4,7 @@ import {
   attachCss,
   buildHostStyles,
   getCss,
-  getScreenReaderJssStyle,
+  getTextHiddenJssStyle,
   isDark,
   pxToRemWithUnit,
   transitionDuration,
@@ -107,7 +107,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       '&[role="status"]': {
         cursor: 'not-allowed',
       },
-      '&__sr': getScreenReaderJssStyle(),
+      '&__sr': getTextHiddenJssStyle(true),
       '&:not([aria-disabled]):not([role="status"]):hover': {
         color: hoverColor,
         background: highlightedSelectedColor,
