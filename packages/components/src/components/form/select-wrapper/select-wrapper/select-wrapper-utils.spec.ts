@@ -19,6 +19,7 @@ import {
   getOptionsElements,
   getOptionMaps,
   getMatchingOptionMaps,
+  hasFilterResults,
 } from './select-wrapper-utils';
 
 const baseOptionMap: OptionMap = {
@@ -33,6 +34,7 @@ const baseOptionMap: OptionMap = {
 type GenerateOptionMapsOptions = {
   amount?: number;
   selectedIndex?: number;
+  highlightedIndex?: number;
   disabledIndex?: number;
   hiddenIndex?: number;
   initiallyHiddenIndex?: number;
@@ -40,12 +42,21 @@ type GenerateOptionMapsOptions = {
 };
 
 export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
-  const { amount = 4, selectedIndex, disabledIndex, hiddenIndex, initiallyHiddenIndex, title } = props || {};
+  const {
+    amount = 4,
+    selectedIndex,
+    highlightedIndex,
+    disabledIndex,
+    hiddenIndex,
+    initiallyHiddenIndex,
+    title,
+  } = props || {};
 
   return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
     ...baseOptionMap,
     value: `Value ${idx + 1}`,
     ...(selectedIndex === idx && { selected: true, highlighted: true }),
+    ...(highlightedIndex === idx && { highlighted: true }),
     ...(disabledIndex === idx && { disabled: true }),
     ...(hiddenIndex === idx && { hidden: true }),
     ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
@@ -276,7 +287,17 @@ describe('resetFilteredOptionMaps()', () => {
 });
 
 describe('hasFilterResults()', () => {
-  xit('todo', () => {});
+  const amount = 1;
+
+  it.each<[OptionMap[], boolean]>([
+    [generateOptionMaps({ amount }), true],
+    [generateOptionMaps({ amount, selectedIndex: 0 }), true],
+    [generateOptionMaps({ amount, highlightedIndex: 0 }), true],
+    [generateOptionMaps({ amount, hiddenIndex: 0 }), false],
+    [generateOptionMaps({ amount, initiallyHiddenIndex: 0 }), false],
+  ])('should for options %j return %s', (options, expected) => {
+    expect(hasFilterResults(options)).toBe(expected);
+  });
 });
 
 describe('getNewOptionMapIndex()', () => {
