@@ -18,6 +18,7 @@ import {
   KeyboardDirectionInternal,
   getOptionsElements,
   getOptionMaps,
+  getMatchingOptionMaps,
 } from './select-wrapper-utils';
 
 const baseOptionMap: OptionMap = {
@@ -51,6 +52,12 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     title,
   }));
 };
+
+export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
+  options.map((item, idx) => ({
+    ...item,
+    value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,
+  }));
 
 const getIndexOfSelectedOption = (options: OptionMap[]): number => options.findIndex((item) => item.selected);
 const getIndexOfHighlightedOption = (options: OptionMap[]): number => options.findIndex((item) => item.highlighted);
@@ -231,21 +238,28 @@ describe('getValidOptions()', () => {
 });
 
 describe('getMatchingOptionMaps()', () => {
-  xit('todo', () => {});
+  it.each<[string, number]>([
+    ['Invalid Value', 0],
+    ['First Value', 1],
+    ['Fourth Value', 1],
+    ['Value', 0],
+  ])('should vor searchString %s return %s options', (searchString, expected) => {
+    const options = mapValuesToBeBetterFilterable(generateOptionMaps());
+    const result = getMatchingOptionMaps(options, searchString);
+    expect(result.length).toBe(expected);
+  });
 });
 
 describe('updateFilteredOptionMaps()', () => {
   it.each<[string, number]>([
+    ['Invalid Value', 0],
     ['First Value', 1],
     ['Value', 4],
     ['value', 4],
     ['ir', 2],
     ['st Val', 1],
-  ])('should be called with searchString %s and have %s visible options', (searchString, expected) => {
-    const options = generateOptionMaps().map((item, idx) => ({
-      ...item,
-      value: `${['First', 'Second', 'Third', 'Fourth'][idx]} Value`,
-    }));
+  ])('should for searchString %s return %s visible options', (searchString, expected) => {
+    const options = mapValuesToBeBetterFilterable(generateOptionMaps());
     const result = updateFilteredOptionMaps(options, searchString);
     expect(getVisibleOptionsAmount(result)).toBe(expected);
   });
