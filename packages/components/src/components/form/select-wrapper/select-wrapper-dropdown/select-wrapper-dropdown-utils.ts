@@ -12,7 +12,7 @@ export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, hasF
   return hasFilter
     ? {}
     : {
-        ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${getHighlightedOptionMapIndex(optionMaps)}` }),
+        ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${highlightedIndex}` }),
         'aria-expanded': isOpen ? 'true' : 'false',
       };
 };
@@ -38,10 +38,10 @@ export const handleScroll = (host: HTMLElement, highlightedIndex: number): void 
   const { scrollHeight, scrollTop } = host;
 
   if (scrollHeight > hostElementHeightThreshold) {
-    const fakeOptionHighlightedNode = getHTMLElements(host.shadowRoot, 'div')[highlightedIndex];
+    const highlightedNode = getHTMLElements(host.shadowRoot, 'div')[highlightedIndex];
 
-    if (fakeOptionHighlightedNode) {
-      const { offsetTop, offsetHeight } = fakeOptionHighlightedNode;
+    if (highlightedNode) {
+      const { offsetTop, offsetHeight } = highlightedNode;
       const scrollBottom = hostElementHeightThreshold + scrollTop;
       const elementBottom = offsetTop + offsetHeight;
       if (elementBottom > scrollBottom) {
