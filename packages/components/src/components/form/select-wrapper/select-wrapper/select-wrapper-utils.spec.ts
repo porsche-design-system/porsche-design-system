@@ -81,7 +81,7 @@ describe('isCustomDropdown()', () => {
     [true, true, true],
     [false, true, false],
     [false, false, true],
-  ])('should be called with filter: $o, native: %o and return $o', (filter, native, expected) => {
+  ])('should for filter: %s and native: %s return %o', (filter, native, expected) => {
     expect(isCustomDropdown(filter, native)).toBe(expected);
   });
 });
@@ -254,7 +254,7 @@ describe('getMatchingOptionMaps()', () => {
     ['First Value', 1],
     ['Fourth Value', 1],
     ['Value', 0],
-  ])('should vor searchString %s return %s options', (searchString, expected) => {
+  ])('should for searchString %s return %s options', (searchString, expected) => {
     const options = mapValuesToBeBetterFilterable(generateOptionMaps());
     const result = getMatchingOptionMaps(options, searchString);
     expect(result.length).toBe(expected);
@@ -320,7 +320,7 @@ describe('getNewOptionMapIndex()', () => {
     [1, 'left', 0],
     [0, 'up', 3],
     [0, 'left', 3],
-  ])('should be called with selectedIndex: %o, direction %o and return %o', (selectedIndex, direction, expected) => {
+  ])('should for selectedIndex: %s, direction %s and return %s', (selectedIndex, direction, expected) => {
     const options = generateOptionMaps({ selectedIndex });
     expect(getNewOptionMapIndex(options, direction)).toBe(expected);
   });
