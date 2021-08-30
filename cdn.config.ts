@@ -14,4 +14,5 @@ export const CDN_BASE_PATH_FONTS = `${basePath}/fonts`;
 export const CDN_BASE_PATH_ICONS = `${basePath}/icons`;
 export const CDN_BASE_PATH_META_ICONS = `${basePath}/meta-icons`;
 export const CDN_BASE_PATH_MARQUE = `${basePath}/marque`;
+export const CDN_BASE_PATH_EMAIL = `${basePath}/email`;
 export const CDN_BASE_PATH_STYLES = `${basePath}/styles`;
