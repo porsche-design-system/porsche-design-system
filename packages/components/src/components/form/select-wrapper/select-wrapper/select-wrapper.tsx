@@ -28,7 +28,7 @@ import {
   isCustomDropdown,
   getSelectedOptionMap,
   getNewOptionMapIndex,
-  resetHighlightedIndex,
+  resetHighlightedOptionMaps,
   getMatchingOptionMaps,
   hasFilterResults,
   getDropdownVisibility,
@@ -373,7 +373,7 @@ export class SelectWrapper {
       this.select.selectedIndex = newIndex;
       this.select.dispatchEvent(new Event('change', { bubbles: true }));
     } else {
-      this.optionMaps = resetHighlightedIndex(this.optionMaps);
+      this.optionMaps = resetHighlightedOptionMaps(this.optionMaps);
     }
 
     this.resetFilter();
