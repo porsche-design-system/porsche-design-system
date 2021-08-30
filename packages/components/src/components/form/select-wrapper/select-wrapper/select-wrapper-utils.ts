@@ -27,7 +27,6 @@ export type OptionMap = {
   title?: string; // for optgroup
 };
 
-// only alias for function, unit?
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
 
 export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
