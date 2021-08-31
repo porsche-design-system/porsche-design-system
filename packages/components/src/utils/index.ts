@@ -5,6 +5,7 @@ export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';
 export * from './children-observer';
+export * from './colors';
 export * from './device-detection';
 export * from './dom';
 export * from './focus-handling';

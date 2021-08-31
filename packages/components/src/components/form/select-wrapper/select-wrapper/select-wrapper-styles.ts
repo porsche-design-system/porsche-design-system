@@ -6,10 +6,11 @@ import {
   buildHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
-  colorDarken,
   getBaseSlottedStyles,
   getCss,
   getFormTextHiddenJssStyle,
+  getThemedColors,
+  getThemedStateColors,
   insertSlottedStyles,
   isDark,
   mergeDeep,
@@ -34,16 +35,9 @@ const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
-  const {
-    default: textColor,
-    background: { default: backgroundColor },
-    neutralContrast: { medium: contrastMediumColor, high: contrastHighColor },
-    state: { disabled: disabledColor },
-    notification,
-  } = isDarkTheme ? color.darkTheme : color;
-
-  const stateColor = notification[state];
-  const stateHoverColor = (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state];
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor, errorColor } =
+    getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]
@@ -145,7 +139,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
     required: {
       '&::after': {
         content: '" *"',
-        color: notification.error,
+        color: errorColor,
       },
     },
     icon: {
