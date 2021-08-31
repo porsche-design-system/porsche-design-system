@@ -92,10 +92,10 @@ export const getComponentCss = (state: FormState, hideLabel: BreakpointCustomiza
           outlineColor: stateColor || contrastMediumColor,
         },
         '::slotted(select:disabled)': {
-          color: disabledColor,
           cursor: 'not-allowed',
-          background: backgroundColor,
-          boxShadow: `inset 0 0 0 1px ${disabledColor}`,
+          color: color.state.disabled, // 🤷
+          background: isDarkTheme ? color.default : backgroundColor, // 🤷
+          ...(state === 'none' && { boxShadow: `inset 0 0 0 1px ${disabledColor}` }),
         },
       })
     ),
