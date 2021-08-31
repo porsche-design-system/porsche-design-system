@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { srOnlyStyles } from '@porsche-design-system/utilities';
+import { srOnly } from '@porsche-design-system/utilities';
 
 const HiddenElement = styled.span`
-  ${srOnlyStyles()}
+  ${srOnly()}
 `;
 
 export const JsHelper = (): JSX.Element => {
