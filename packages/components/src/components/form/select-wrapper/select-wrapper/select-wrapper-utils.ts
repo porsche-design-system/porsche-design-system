@@ -73,6 +73,8 @@ export const getSelectedOptionMapIndex = (arr: OptionMap[]): number => arr.findI
 
 export const getSelectedOptionMap = (arr: OptionMap[]): OptionMap => arr.find((item) => item.selected);
 
+export const getHighlightedOptionMap = (arr: OptionMap[]): OptionMap => arr.find((item) => item.highlighted);
+
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
 

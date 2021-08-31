@@ -621,7 +621,9 @@ export namespace Components {
         "direction"?: DropdownDirection;
         "filter"?: boolean;
         "hasFilterResults"?: boolean;
+        "label"?: string;
         "onFocus": () => void;
+        "onMouseDown": () => void;
         "onSelect": (newIndex: number) => void;
         "open": boolean;
         "optionMaps": OptionMap[];
@@ -1768,7 +1770,9 @@ declare namespace LocalJSX {
         "direction"?: DropdownDirection;
         "filter"?: boolean;
         "hasFilterResults"?: boolean;
+        "label"?: string;
         "onFocus"?: () => void;
+        "onMouseDown"?: () => void;
         "onSelect"?: (newIndex: number) => void;
         "open"?: boolean;
         "optionMaps"?: OptionMap[];
