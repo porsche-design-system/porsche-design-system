@@ -31,7 +31,7 @@ export const getLabelTextStyles: GetStylesFunction = (hideLabel: boolean): JssSt
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
-export const getComponentCss = (state: FormState, hideLabel: BreakpointCustomizable<boolean>, theme: Theme): string => {
+export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
   const {
     default: textColor,
@@ -182,7 +182,7 @@ export const addComponentCss = (
   state: FormState,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(state, hideLabel, theme));
+  attachCss(host, getComponentCss(hideLabel, state, theme));
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
