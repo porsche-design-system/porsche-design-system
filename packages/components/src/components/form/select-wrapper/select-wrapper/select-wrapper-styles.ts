@@ -105,7 +105,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         },
       },
       '&__text': {
-        ...buildResponsiveStyles(hideLabel, (hideLabel: boolean): JssStyle => getFormTextHiddenJssStyle(hideLabel)),
+        ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
         display: 'block',
         width: 'fit-content',
         transition: getTransition('color'),
