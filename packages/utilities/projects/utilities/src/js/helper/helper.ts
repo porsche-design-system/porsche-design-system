@@ -79,7 +79,7 @@ export const calculateLineHeight = (fontSize: string): number => {
 };
 
 // Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
-export const srOnlyStyles = (): CSS.Properties => {
+export const srOnly = (): CSS.Properties => {
   return {
     position: 'absolute',
     height: '1px',
