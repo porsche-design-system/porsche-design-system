@@ -2,7 +2,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   attachCss,
-  BreakpointCustomizable,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -10,18 +9,20 @@ import {
   colorDarken,
   getBaseSlottedStyles,
   getCss,
-  GetStylesFunction,
   getFormTextHiddenJssStyle,
   insertSlottedStyles,
   isDark,
-  JssStyle,
   mergeDeep,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../../utils';
-import { FormState, Theme } from '../../../../types';
+import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../../utils';
+import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
+
+export const SELECT_HEIGHT = 48;
+export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
 
 export const getLabelTextStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
   // eslint-disable-next-line camelcase
@@ -58,7 +59,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
           position: 'static',
           display: 'block',
           width: '100%',
-          height: pxToRemWithUnit(48),
+          height: pxToRemWithUnit(SELECT_HEIGHT),
           padding: `${pxToRemWithUnit(12)} ${pxToRemWithUnit(48)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(12)}`,
           '&@-moz-document url-prefix()': {
             // fix for 3px text-indention in FF

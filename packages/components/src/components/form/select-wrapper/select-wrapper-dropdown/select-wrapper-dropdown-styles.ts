@@ -12,7 +12,8 @@ import {
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
-import { determineDirection, OPTION_HEIGHT } from './select-wrapper-dropdown-utils';
+import { determineDirection } from './select-wrapper-dropdown-utils';
+import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
