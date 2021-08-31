@@ -41,12 +41,14 @@ describe('determineDirection()', () => {
     const host = document.createElement('p-select-wrapper-dropdown');
     host.attachShadow({ mode: 'open' });
 
-    Array.from(Array(20)).forEach((_, idx) => {
+    const options = Array.from(Array(20)).map((_, idx) => {
       const option = document.createElement('div');
       option.textContent = `Value ${idx + 1}`;
       option.classList.add('option');
-      host.shadowRoot.appendChild(option);
+      return option;
     });
+
+    host.shadowRoot.append(...options);
 
     return host;
   };
@@ -56,25 +58,20 @@ describe('determineDirection()', () => {
     expect(determineDirection(host)).toBe('down');
   });
 
-  xit('should return up if there is not enough space at the bottom', () => {
+  it('should return up if there is not enough space at the bottom', () => {
     const host = getHost();
-    //
-    // const div = document.createElement('div');
-    // div.style.height = '1000px';
-    //
-    // document.body.prepend(div);
 
-    jest.spyOn(window, 'window', 'get').mockImplementation(
+    // we need to mock getBoundingClientRect since jsdom doesn't visually render it
+    jest.spyOn(host, 'getBoundingClientRect').mockImplementation(
       () =>
         ({
-          innerHeight: 10,
-        } as any)
+          top: window.innerHeight - 200, // somewhere at the bottom
+        } as DOMRect)
     );
 
     expect(determineDirection(host)).toBe('up');
   });
 });
 
-describe('handleScroll()', () => {
-  xit('todo', () => {});
-});
+// handleScroll is not tested on purpose
+// describe('handleScroll()', () => {});
