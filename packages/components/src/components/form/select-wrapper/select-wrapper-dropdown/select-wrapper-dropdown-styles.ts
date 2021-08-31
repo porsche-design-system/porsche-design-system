@@ -137,7 +137,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       padding: `${pxToRemWithUnit(8)} ${pxToRemWithUnit(12)}`,
       marginTop: pxToRemWithUnit(8),
       fontWeight: font.weight.bold,
-      '& ~ $option': {
+      '&~$option': {
         paddingLeft: pxToRemWithUnit(24),
       },
     },
