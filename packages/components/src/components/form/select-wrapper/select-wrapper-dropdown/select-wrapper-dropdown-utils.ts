@@ -2,9 +2,8 @@ import type { AriaAttributes } from 'react';
 import type { DropdownDirectionInternal, OptionMap } from '../select-wrapper/select-wrapper-utils';
 import { getHighlightedOptionMapIndex } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements } from '../../../../utils';
+import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
-export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
-export const SELECT_HEIGHT = 48; // TODO: should be used in select-wrapper with JSS at some point
 const MAX_CHILDREN = 10;
 
 export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, hasFilter: boolean): AriaAttributes => {

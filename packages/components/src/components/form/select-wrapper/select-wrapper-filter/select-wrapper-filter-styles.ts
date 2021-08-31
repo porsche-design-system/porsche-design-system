@@ -10,8 +10,8 @@ import {
   transitionDuration,
   transitionTimingFunction,
 } from '../../../../utils';
-import type { FormState, Theme } from '../../../../types';
 import type { JssStyle } from '../../../../utils';
+import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
