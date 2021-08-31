@@ -1,6 +1,6 @@
 import { getComponentCss } from './select-wrapper-dropdown-styles';
-import { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import { Theme } from '../../../../types';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
   it.each<[DropdownDirectionInternal, boolean, Theme]>([
