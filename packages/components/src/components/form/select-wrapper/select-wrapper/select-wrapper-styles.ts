@@ -112,8 +112,10 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         color: disabledColor,
       },
     },
-    label: {
-      // display: 'block',
+    'label:hover': {
+      '&+$filter': {
+        color: contrastHighColor,
+      },
     },
     dropdown: {
       marginTop: pxToRemWithUnit(-1),
@@ -124,15 +126,12 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         display: 'block',
         width: 'fit-content',
         transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-        '&+ $label__text--description': {
+        '&+$label__text--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
         },
         '&:hover': {
-          '& $filter': {
-            color: contrastHighColor,
-          },
-          '& ~ ::slotted(select:not(:disabled))': {
+          '&~::slotted(select:not(:disabled))': {
             boxShadow: addImportantToRule(`inset 0 0 0 1px ${contrastHighColor}`),
           },
         },
