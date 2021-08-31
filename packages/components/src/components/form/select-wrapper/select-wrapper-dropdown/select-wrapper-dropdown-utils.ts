@@ -6,13 +6,12 @@ import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-s
 
 const MAX_CHILDREN = 10;
 
-export const getAriaAttributes = (optionMaps: OptionMap[], isOpen: boolean, hasFilter: boolean): AriaAttributes => {
+export const getAriaAttributes = (optionMaps: OptionMap[], hasFilter: boolean): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return hasFilter
     ? {}
     : {
         ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${highlightedIndex}` }),
-        'aria-expanded': isOpen ? 'true' : 'false',
       };
 };
 

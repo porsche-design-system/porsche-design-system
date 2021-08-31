@@ -79,6 +79,9 @@ export class SelectWrapper {
   @State() private searchString = '';
 
   private select: HTMLSelectElement;
+  private comboButton: HTMLButtonElement;
+  private comboList: HTMLUListElement;
+  private dropdownElement: HTMLPSelectWrapperDropdownElement;
   private filterElement: HTMLPSelectWrapperFilterElement;
   private hasCustomDropdown: boolean;
 
@@ -102,10 +105,7 @@ export class SelectWrapper {
     if (this.hasCustomDropdown) {
       this.observePropertiesAndChildren();
 
-      this.select.addEventListener('keydown', this.onKeyboardEvents);
-
       if (!this.filter) {
-        this.select.addEventListener('mousedown', this.onMouseDown);
         this.select.addEventListener('change', this.syncSelectedIndex);
       }
       document.addEventListener('mousedown', this.onClickOutside, true);
@@ -114,6 +114,10 @@ export class SelectWrapper {
 
   public componentDidRender(): void {
     addComponentCss(this.host, this.hideLabel, this.state, this.theme);
+    this.comboButton = getHTMLElementAndThrowIfUndefined(this.dropdownElement.shadowRoot, 'button');
+    this.comboButton.addEventListener('keydown', this.onButtonKeyboardEvents);
+    this.comboList = getHTMLElementAndThrowIfUndefined(this.dropdownElement.shadowRoot, 'ul');
+    this.comboList.addEventListener('keydown', this.onListKeyboardEvents);
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -167,7 +171,7 @@ export class SelectWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" />
+            <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" aria-hidden="true" />
             <slot />
           </label>
           {this.filter && (
@@ -183,7 +187,7 @@ export class SelectWrapper {
               value={this.searchString}
               onChange={this.onFilterChange}
               onClick={() => this.setDropdownVisibility('toggle')}
-              onKeyDown={this.onKeyboardEvents}
+              onKeyDown={this.onButtonKeyboardEvents}
               ref={(el) => (this.filterElement = el)}
             />
           )}
@@ -199,7 +203,9 @@ export class SelectWrapper {
               theme={this.theme}
               onSelect={this.setOptionSelected}
               onFocus={this.onFocus}
-              aria-labelledby={labelId}
+              onMouseDown={this.onMouseDown}
+              label={this.label}
+              ref={(el) => (this.dropdownElement = el)}
             />
           )}
         </div>
@@ -220,10 +226,8 @@ export class SelectWrapper {
   private setSelect(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
 
-    if (this.filter) {
-      setAttribute(this.select, 'tabindex', '-1');
-      setAttribute(this.select, 'aria-hidden', 'true');
-    }
+    setAttribute(this.select, 'tabindex', '-1');
+    setAttribute(this.select, 'aria-hidden', 'true');
   }
 
   private observeSelect(): void {
@@ -262,44 +266,41 @@ export class SelectWrapper {
     }
   };
 
-  private onMouseDown = (e: MouseEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
+  private onMouseDown = (): void => {
+    // e.preventDefault();
+    // e.stopPropagation();
     this.onFocus();
     this.setDropdownVisibility('toggle');
   };
 
   private onFocus = (): void => {
-    (this.filter ? this.filterElement : this.select).focus();
+    if (!this.isOpen) {
+      return;
+    } else {
+      (this.filter ? this.filterElement : this.comboButton).focus();
+    }
   };
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.resetFilter);
+    if (this.isOpen) {
+      this.comboList.focus();
+    } else {
+      this.comboButton.focus();
+    }
   };
 
-  private onKeyboardEvents = (e: KeyboardEvent): void => {
+  private onButtonKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
         e.preventDefault();
         this.setDropdownVisibility('show');
-        this.cycleDropdown('up');
         break;
       case 'ArrowDown':
       case 'Down':
         e.preventDefault();
         this.setDropdownVisibility('show');
-        this.cycleDropdown('down');
-        break;
-      case 'ArrowLeft':
-      case 'Left':
-        e.preventDefault();
-        this.cycleDropdown('left');
-        break;
-      case 'ArrowRight':
-      case 'Right':
-        e.preventDefault();
-        this.cycleDropdown('right');
         break;
       case ' ':
       case 'Spacebar':
@@ -307,11 +308,65 @@ export class SelectWrapper {
         if (this.filter) {
           this.setDropdownVisibility('show');
         } else {
-          this.setDropdownVisibility('toggle');
+          this.setDropdownVisibility('show');
           if (!this.isOpen) {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
         }
+        break;
+      case 'Enter':
+        e.preventDefault();
+        this.setDropdownVisibility('show');
+        if (this.filter) {
+          const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
+          if (matchingOptions.length === 1) {
+            this.setOptionSelected(this.optionMaps.indexOf(matchingOptions[0]));
+          } else {
+            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+          }
+        } else {
+          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+        }
+        break;
+      case 'Escape':
+      case 'Esc':
+        if (this.filter) {
+          this.resetFilter();
+        }
+        this.setOptionSelected(this.selectedIndex);
+        break;
+      case 'PageUp':
+        e.preventDefault();
+        if (this.isOpen) {
+          this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
+        }
+        break;
+      case 'PageDown':
+        e.preventDefault();
+        if (this.isOpen) {
+          this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
+        }
+        break;
+    }
+  };
+
+  private onListKeyboardEvents = (e: KeyboardEvent): void => {
+    switch (e.key) {
+      case 'ArrowUp':
+      case 'Up':
+        e.preventDefault();
+        this.cycleDropdown('up');
+        break;
+      case 'ArrowDown':
+      case 'Down':
+        e.preventDefault();
+        this.cycleDropdown('down');
+        break;
+      case ' ':
+      case 'Spacebar':
+        e.preventDefault();
+        this.setDropdownVisibility('hide');
+        this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         break;
       case 'Enter':
         e.preventDefault();
@@ -334,15 +389,11 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (this.isOpen) {
-          this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
-        }
+        this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
         break;
       case 'PageDown':
         e.preventDefault();
-        if (this.isOpen) {
-          this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
-        }
+        this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
         break;
       case 'Tab':
         this.setDropdownVisibility('hide');
@@ -375,10 +426,6 @@ export class SelectWrapper {
   private cycleDropdown(direction: KeyboardDirectionInternal): void {
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
-
-    if (direction === 'left' || direction === 'right') {
-      this.setOptionSelected(newIndex);
-    }
   }
 
   /*
