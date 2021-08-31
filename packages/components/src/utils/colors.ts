@@ -34,8 +34,11 @@ export const getThemedColors = (
 ): {
   textColor: string;
   backgroundColor: string;
+  contrastLowColor: string;
   contrastMediumColor: string;
   contrastHighColor: string;
+  hoverColor: string;
+  activeColor: string;
   disabledColor: string;
   errorColor: string;
   successColor: string;
@@ -44,16 +47,19 @@ export const getThemedColors = (
   const {
     default: textColor,
     background: { default: backgroundColor },
-    neutralContrast: { medium: contrastMediumColor, high: contrastHighColor },
-    state: { disabled: disabledColor },
+    neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
+    state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
     notification: { error: errorColor, success: successColor },
   } = isDarkTheme ? color.darkTheme : color;
 
   return {
     textColor,
     backgroundColor,
+    contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
+    hoverColor,
+    activeColor,
     disabledColor,
     errorColor,
     successColor,
