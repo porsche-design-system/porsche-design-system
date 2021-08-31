@@ -13,22 +13,16 @@ import {
   getThemedStateColors,
   insertSlottedStyles,
   isDark,
-  mergeDeep,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../../utils';
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../../utils';
+import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
 export const SELECT_HEIGHT = 48;
 export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
-
-export const getLabelTextStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
-  // eslint-disable-next-line camelcase
-  label__text: getFormTextHiddenJssStyle(hideLabel),
-});
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
@@ -101,27 +95,24 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       '&:hover $dropdown': {
         borderColor: contrastHighColor,
       },
-    },
-    'root--disabled': {
-      '& $icon, & $label__text': {
-        color: disabledColor,
+      '&--disabled': {
+        '& $icon, & .label__text': {
+          color: disabledColor,
+        },
       },
     },
-    'label:hover': {
-      '&+$filter': {
-        color: contrastHighColor,
+    label: {
+      '&:hover': {
+        '&+.filter': {
+          color: contrastHighColor,
+        },
       },
-    },
-    dropdown: {
-      marginTop: pxToRemWithUnit(-1),
-    },
-    ...mergeDeep(buildResponsiveStyles(hideLabel, getLabelTextStyles), {
-      // eslint-disable-next-line camelcase
-      label__text: {
+      '&__text': {
+        ...buildResponsiveStyles(hideLabel, (hideLabel: boolean): JssStyle => getFormTextHiddenJssStyle(hideLabel)),
         display: 'block',
         width: 'fit-content',
         transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-        '&+$label__text--description': {
+        '&+&--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
         },
@@ -130,10 +121,10 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
             boxShadow: addImportantToRule(`inset 0 0 0 1px ${contrastHighColor}`),
           },
         },
+        '&--description': {
+          color: contrastMediumColor,
+        },
       },
-    }),
-    'label__text--description': {
-      color: contrastMediumColor,
     },
     // @mixin required() {
     required: {
@@ -150,9 +141,9 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       pointerEvents: 'none', // let events through to select which is visually underneath
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
       transition: `transform ${transitionDuration} ${transitionTimingFunction}`,
-    },
-    'icon--open': {
-      transform: 'rotate3d(0,0,1,180deg)',
+      '&--open': {
+        transform: 'rotate3d(0,0,1,180deg)',
+      },
     },
     // @mixin state-message() {
     message: {
@@ -160,13 +151,13 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       marginTop: pxToRemWithUnit(4),
       color: stateColor,
       transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+      '&__icon': {
+        marginRight: pxToRemWithUnit(4),
+      },
     },
-    // eslint-disable-next-line camelcase
-    message__icon: {
-      marginRight: pxToRemWithUnit(4),
+    dropdown: {
+      marginTop: pxToRemWithUnit(-1),
     },
-    // only for reference
-    filter: {},
   });
 };
 
