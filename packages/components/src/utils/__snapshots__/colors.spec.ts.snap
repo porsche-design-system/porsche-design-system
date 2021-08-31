@@ -27,11 +27,14 @@ Object {
 
 exports[`getThemedColors() should return correct colors for theme: 'dark' 1`] = `
 Object {
+  "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
   "contrastHighColor": "#e3e4e5",
+  "contrastLowColor": "#4a4e51",
   "contrastMediumColor": "#b0b1b2",
   "disabledColor": "#7c7f81",
   "errorColor": "#fc1717",
+  "hoverColor": "#ff0223",
   "successColor": "#01ba1d",
   "textColor": "#fff",
 }
@@ -39,11 +42,14 @@ Object {
 
 exports[`getThemedColors() should return correct colors for theme: 'light' 1`] = `
 Object {
+  "activeColor": "#d5001c",
   "backgroundColor": "#fff",
   "contrastHighColor": "#323639",
+  "contrastLowColor": "#e3e4e5",
   "contrastMediumColor": "#626669",
   "disabledColor": "#96989a",
   "errorColor": "#e00000",
+  "hoverColor": "#d5001c",
   "successColor": "#018a16",
   "textColor": "#000",
 }

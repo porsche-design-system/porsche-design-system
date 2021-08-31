@@ -5,6 +5,7 @@ import {
   buildHostStyles,
   getCss,
   getTextHiddenJssStyle,
+  getThemedColors,
   isDark,
   pxToRemWithUnit,
   transitionDuration,
@@ -21,11 +22,15 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
   const isDirectionDown = direction === 'down';
   const isDarkTheme = isDark(theme);
   const {
-    default: textColor,
-    background: { default: backgroundColor },
-    neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
-    state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
-  } = isDarkTheme ? color.darkTheme : color;
+    textColor,
+    backgroundColor,
+    contrastLowColor,
+    contrastMediumColor,
+    contrastHighColor,
+    hoverColor,
+    activeColor,
+    disabledColor,
+  } = getThemedColors(theme);
   const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
 
   return getCss({
