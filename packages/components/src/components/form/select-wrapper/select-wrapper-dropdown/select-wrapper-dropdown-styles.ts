@@ -6,10 +6,9 @@ import {
   getCss,
   getTextHiddenJssStyle,
   getThemedColors,
+  getTransition,
   isDark,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
@@ -59,7 +58,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         borderStyle: 'solid', // separate css property to allow color override via parent
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
-        transition: `border-color ${transitionDuration} ${transitionTimingFunction}`,
+        transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
         ...(isDirectionDown
@@ -107,9 +106,7 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
       cursor: 'pointer',
       textAlign: 'left',
       wordBreak: 'break-word',
-      transition:
-        `color ${transitionDuration} ${transitionTimingFunction},` +
-        `background-color ${transitionDuration} ${transitionTimingFunction}`,
+      transition: getTransition('color') + ',' + getTransition('background-color'),
       '&[role="status"]': {
         cursor: 'not-allowed',
       },

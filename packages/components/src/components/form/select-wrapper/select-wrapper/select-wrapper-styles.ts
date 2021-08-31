@@ -11,11 +11,10 @@ import {
   getFormTextHiddenJssStyle,
   getThemedColors,
   getThemedStateColors,
+  getTransition,
   insertSlottedStyles,
   isDark,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../../utils';
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
@@ -70,9 +69,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
           textIndent: 0,
           cursor: 'pointer',
           transition:
-            `box-shadow ${transitionDuration} ${transitionTimingFunction},` +
-            `background-color ${transitionDuration} ${transitionTimingFunction},` +
-            `color ${transitionDuration} ${transitionTimingFunction}`,
+            getTransition('box-shadow') + ',' + getTransition('background-color') + ',' + getTransition('color'),
         },
         '::slotted(select:hover:not(:disabled))': {
           boxShadow: boxShadowHover,
@@ -111,7 +108,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         ...buildResponsiveStyles(hideLabel, (hideLabel: boolean): JssStyle => getFormTextHiddenJssStyle(hideLabel)),
         display: 'block',
         width: 'fit-content',
-        transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+        transition: getTransition('color'),
         '&+&--description': {
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
@@ -140,7 +137,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       color: textColor,
       pointerEvents: 'none', // let events through to select which is visually underneath
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
-      transition: `transform ${transitionDuration} ${transitionTimingFunction}`,
+      transition: getTransition('transform'),
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
@@ -150,7 +147,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       display: 'flex',
       marginTop: pxToRemWithUnit(4),
       color: stateColor,
-      transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+      transition: getTransition('color'),
       '&__icon': {
         marginRight: pxToRemWithUnit(4),
       },

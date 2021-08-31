@@ -3,16 +3,15 @@ import {
   addImportantToEachRule,
   attachCss,
   buildHostStyles,
-  getCss,
-  getFocusStyles,
-  isDark,
-  pxToRemWithUnit,
-  mergeDeep,
-  transitionDuration,
-  transitionTimingFunction,
-  GetStylesFunction,
   buildResponsiveStyles,
   colorDarken,
+  getCss,
+  getFocusStyles,
+  GetStylesFunction,
+  getTransition,
+  isDark,
+  mergeDeep,
+  pxToRemWithUnit,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { LinkVariant, Theme } from '../../../types';
@@ -147,9 +146,7 @@ export const getComponentCss = (
           backgroundColor: isTertiary ? 'transparent' : 'currentColor',
           color: baseColor,
           transition:
-            `background-color ${transitionDuration} ${transitionTimingFunction},` +
-            `border-color ${transitionDuration} ${transitionTimingFunction},` +
-            `color ${transitionDuration} ${transitionTimingFunction}`,
+            getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
           '&:hover, &:active': {
             color: baseColorHover,
             ...(isTertiary && {

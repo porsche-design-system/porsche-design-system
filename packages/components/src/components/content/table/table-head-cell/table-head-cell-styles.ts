@@ -7,9 +7,8 @@ import {
   getFocusStyles,
   getHoverStyles,
   getTextHiddenJssStyle,
+  getTransition,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../../utils';
 import { color, font, spacing } from '@porsche-design-system/utilities';
 
@@ -58,7 +57,7 @@ export const getComponentCss = (): string => {
     icon: {
       marginLeft: spacing['4'],
       opacity: 0,
-      transition: `opacity ${transitionDuration} ${transitionTimingFunction}`,
+      transition: getTransition('opacity'),
       transform: 'rotate3d(0,0,1,0deg)',
       transformOrigin: '50% 50%', // for iOS
       '&--asc': {

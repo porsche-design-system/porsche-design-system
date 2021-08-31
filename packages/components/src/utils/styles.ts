@@ -3,9 +3,13 @@ import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
 import { isDark } from '.';
 import type { Theme } from '../types';
+import type { PropertiesHyphen } from 'csstype';
 
-export const transitionDuration = 'var(--p-transition-duration, .24s)';
-export const transitionTimingFunction = 'ease';
+const transitionDuration = 'var(--p-transition-duration, .24s)';
+const transitionTimingFunction = 'ease';
+
+export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
@@ -36,7 +40,7 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   };
 
   return {
-    transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+    transition: getTransition('color'),
     '&:hover': {
       color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
     },
