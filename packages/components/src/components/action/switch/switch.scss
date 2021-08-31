@@ -2,15 +2,6 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-// Standard approach to show/hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
-@mixin p-switch-label-visible() {
-  @include text-visible;
-}
-
-@mixin p-switch-label-hidden() {
-  @include text-hidden;
-}
-
 :host {
   display: flex !important;
 }
@@ -49,7 +40,7 @@ $root: '.root';
 }
 
 .text {
-  @include p-switch-label-visible;
+  @include text-visible;
   order: 1;
   min-width: 0; // prevents flex child to overflow max available parent size
   min-height: 0; // prevents flex child to overflow max available parent size
@@ -68,7 +59,7 @@ $root: '.root';
   }
 
   #{$root}--label-hidden & {
-    @include p-switch-label-hidden;
+    @include text-hidden;
   }
 
   @each $breakpoint in $breakpoints {
@@ -86,11 +77,11 @@ $root: '.root';
       }
 
       #{$root}--label-visible-#{$breakpoint} & {
-        @include p-switch-label-visible;
+        @include text-visible;
       }
 
       #{$root}--label-hidden-#{$breakpoint} & {
-        @include p-switch-label-hidden;
+        @include text-hidden;
       }
     }
   }

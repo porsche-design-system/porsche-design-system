@@ -10,14 +10,6 @@
   padding: 0;
 }
 
-@mixin label-with-label() {
-  @include text-visible;
-}
-
-@mixin label-without-label() {
-  @include text-hidden;
-}
-
 @mixin icon-with-label() {
   top: p-px-to-rem(11px);
   left: p-px-to-rem(11px);
@@ -59,7 +51,7 @@
   @include with-label;
 
   .label {
-    @include label-with-label;
+    @include text-visible;
   }
 
   .icon {
@@ -212,7 +204,7 @@
     @include without-label;
 
     .label {
-      @include label-without-label;
+      @include text-hidden;
     }
 
     .icon {
@@ -225,7 +217,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -237,7 +229,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -251,7 +243,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -263,7 +255,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -277,7 +269,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -289,7 +281,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -303,7 +295,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -315,7 +307,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -329,7 +321,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -341,7 +333,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
