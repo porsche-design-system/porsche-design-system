@@ -7,12 +7,11 @@ import {
   colorDarken,
   getCss,
   getFocusStyles,
+  getTransition,
   isDark,
   mergeDeep,
   pxToRemWithUnit,
   Styles,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { Theme } from '../../../types';
@@ -70,9 +69,7 @@ export const getComponentCss = (
           backgroundColor: 'currentColor',
           color: baseColor,
           transition:
-            `background-color ${transitionDuration} ${transitionTimingFunction},` +
-            `border-color ${transitionDuration} ${transitionTimingFunction},` +
-            `color ${transitionDuration} ${transitionTimingFunction}`,
+            getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
           '&:hover, &:active': {
             color: baseColorHover,
             '& $label, & $icon': {

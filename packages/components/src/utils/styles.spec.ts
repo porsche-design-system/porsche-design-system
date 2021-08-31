@@ -7,7 +7,18 @@ import {
   pxToRem,
   pxToRemWithUnit,
   getBaseSlottedStyles,
+  getTransition,
 } from './';
+import type { PropertiesHyphen } from 'csstype';
+
+describe('getTransition()', () => {
+  it.each<[keyof PropertiesHyphen, string]>([
+    ['color', 'color var(--p-transition-duration, .24s) ease'],
+    ['box-shadow', 'box-shadow var(--p-transition-duration, .24s) ease'],
+  ])('should for %o return %o', (cssProperty, expected) => {
+    expect(getTransition(cssProperty)).toBe(expected);
+  });
+});
 
 describe('pxToRem()', () => {
   it.each([

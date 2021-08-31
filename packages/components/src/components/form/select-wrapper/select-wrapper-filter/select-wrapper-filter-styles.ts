@@ -6,9 +6,8 @@ import {
   getCss,
   getThemedColors,
   getThemedStateColors,
+  getTransition,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
@@ -92,7 +91,7 @@ export const getComponentCss = (disabled: boolean, state: FormState, theme: Them
         inset: `${pxToRemWithUnit(-2)} ${pxToRemWithUnit(-42)} ${pxToRemWithUnit(-2)} ${pxToRemWithUnit(-2)}`,
         outline: '1px solid transparent',
         outlineOffset: 2,
-        transition: `box-shadow ${transitionDuration} ${transitionTimingFunction}`,
+        transition: getTransition('box-shadow'),
         pointerEvents: 'all',
         cursor: 'pointer',
         boxShadow,
