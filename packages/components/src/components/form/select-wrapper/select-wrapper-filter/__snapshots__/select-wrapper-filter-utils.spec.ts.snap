@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAriaAttributes() should return correct aria attributes for isOpen: false, dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
+Object {
+  "aria-activedescendant": "option-1",
+  "aria-autocomplete": "both",
+  "aria-controls": "dropdown-id",
+  "aria-expanded": "false",
+}
+`;
+
+exports[`getAriaAttributes() should return correct aria attributes for isOpen: true, dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
+Object {
+  "aria-activedescendant": "option-1",
+  "aria-autocomplete": "both",
+  "aria-controls": "dropdown-id",
+  "aria-expanded": "true",
+}
+`;
