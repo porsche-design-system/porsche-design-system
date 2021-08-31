@@ -3,32 +3,23 @@ import {
   attachCss,
   buildGlobalStyles,
   buildHostStyles,
-  colorDarken,
   getCss,
-  isDark,
+  getThemedColors,
+  getThemedStateColors,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
-import { color, font } from '@porsche-design-system/utilities';
+import { font } from '@porsche-design-system/utilities';
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
 export const getComponentCss = (disabled: boolean, state: FormState, theme: Theme): string => {
-  const isDarkTheme = isDark(theme);
-  const {
-    default: textColor,
-    background: { default: backgroundColor },
-    neutralContrast: { medium: contrastMediumColor, high: contrastHighColor },
-    state: { disabled: disabledColor },
-    notification,
-  } = isDarkTheme ? color.darkTheme : color;
-
-  const stateColor = notification[state];
-  const stateHoverColor = (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state];
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow('currentColor'), getStateBoxShadow(stateHoverColor)]
