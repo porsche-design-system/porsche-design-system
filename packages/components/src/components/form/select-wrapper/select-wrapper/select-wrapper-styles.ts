@@ -24,6 +24,7 @@ import { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
 export const getLabelTextStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => ({
+  // eslint-disable-next-line camelcase
   label__text: getFormTextHiddenJssStyle(hideLabel),
 });
 
@@ -71,7 +72,7 @@ export const getComponentCss = (state: FormState, hideLabel: BreakpointCustomiza
           border: 'none',
           borderRadius: 0, // for safari
           background: backgroundColor,
-          boxShadow: boxShadow,
+          boxShadow,
           opacity: 1, // chrome applies 0.7 via :disabled
           fontFamily: font.family,
           fontWeight: font.weight.regular,
@@ -118,6 +119,7 @@ export const getComponentCss = (state: FormState, hideLabel: BreakpointCustomiza
       marginTop: pxToRemWithUnit(-1),
     },
     ...mergeDeep(buildResponsiveStyles(hideLabel, getLabelTextStyles), {
+      // eslint-disable-next-line camelcase
       label__text: {
         display: 'block',
         width: 'fit-content',
@@ -164,9 +166,10 @@ export const getComponentCss = (state: FormState, hideLabel: BreakpointCustomiza
       marginTop: pxToRemWithUnit(4),
       color: stateColor,
       transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-      message__icon: {
-        marginRight: pxToRemWithUnit(4),
-      },
+    },
+    // eslint-disable-next-line camelcase
+    message__icon: {
+      marginRight: pxToRemWithUnit(4),
     },
     // only for reference
     filter: {},
