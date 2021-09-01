@@ -36,6 +36,7 @@ export class SelectWrapperDropdown {
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
 
+  @Prop() public onOpenChange: (isOpen: boolean) => void;
   // @Prop() public onSelect: (newIndex: number) => void;
   // @Prop() public onFocus: () => void;
   // @Prop() public onMouseDown: () => void;
@@ -213,6 +214,7 @@ export class SelectWrapperDropdown {
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.resetFilter);
+    this.onOpenChange(this.isOpen);
     if (this.isOpen) {
       this.listElement.focus();
     } else {
