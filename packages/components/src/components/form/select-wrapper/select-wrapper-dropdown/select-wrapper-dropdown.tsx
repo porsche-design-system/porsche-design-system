@@ -198,7 +198,7 @@ export class SelectWrapperDropdown {
   private onMouseDown = (): void => {
     // e.preventDefault();
     // e.stopPropagation();
-    this.onFocus();
+    // this.onFocus();
     this.setDropdownVisibility('toggle');
   };
 
@@ -225,52 +225,22 @@ export class SelectWrapperDropdown {
       case 'Up':
         e.preventDefault();
         this.setDropdownVisibility('show');
+        this.cycleDropdown('up');
         break;
       case 'ArrowDown':
       case 'Down':
         e.preventDefault();
         this.setDropdownVisibility('show');
+        this.cycleDropdown('down');
         break;
       case ' ':
       case 'Spacebar':
         e.preventDefault();
         this.setDropdownVisibility('show');
-        if (!this.filter && !this.isOpen) {
-          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
-        }
         break;
       case 'Enter':
         e.preventDefault();
         this.setDropdownVisibility('show');
-        if (this.filter) {
-          const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
-          if (matchingOptions.length === 1) {
-            this.setOptionSelected(this.optionMaps.indexOf(matchingOptions[0]));
-          } else {
-            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
-          }
-        } else {
-          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
-        }
-        break;
-      case 'Escape':
-      case 'Esc':
-        if (this.filter) {
-          this.resetFilter();
-        }
-        this.setOptionSelected(this.selectedIndex);
-        break;
-      case 'PageUp':
-        e.preventDefault();
-        if (this.isOpen) {
-          this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
-        }
-        break;
-      case 'PageDown':
-        e.preventDefault();
-        if (this.isOpen) {
-          this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
-        }
         break;
     }
   };
@@ -290,13 +260,11 @@ export class SelectWrapperDropdown {
       case ' ':
       case 'Spacebar':
         e.preventDefault();
-        this.setDropdownVisibility('hide');
         console.log('Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         break;
       case 'Enter':
         e.preventDefault();
-        this.setDropdownVisibility('hide');
         if (this.filter) {
           const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
           if (matchingOptions.length === 1) {
@@ -311,7 +279,8 @@ export class SelectWrapperDropdown {
       case 'Escape':
       case 'Esc':
         this.resetFilter();
-        this.setOptionSelected(this.selectedIndex);
+        this.setDropdownVisibility('hide');
+        // TODO: We need a function to optical reset the list if we first highlighted another option with down/up key
         break;
       case 'PageUp':
         e.preventDefault();
@@ -322,7 +291,9 @@ export class SelectWrapperDropdown {
         this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
         break;
       case 'Tab':
+        this.resetFilter();
         this.setDropdownVisibility('hide');
+        // TODO: We need a function to optical reset the list if we first highlighted another option with down/up key
         break;
     }
   };

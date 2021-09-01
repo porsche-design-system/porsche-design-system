@@ -3,7 +3,7 @@ import { getTagName, hasAttribute, isTouchDevice } from '../../../../utils';
 export type DropdownDirectionInternal = 'down' | 'up';
 export type DropdownDirection = DropdownDirectionInternal | 'auto';
 
-export type KeyboardDirectionInternal = DropdownDirectionInternal | 'left' | 'right';
+export type KeyboardDirectionInternal = DropdownDirectionInternal;
 
 export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
   // TODO: one liner?
@@ -109,9 +109,9 @@ export const getNewOptionMapIndex = (options: OptionMap[], direction: KeyboardDi
   }
 
   let i = getHighlightedOptionMapIndex(validItems);
-  if (direction === 'down' || direction === 'right') {
+  if (direction === 'down') {
     i = i < validMax ? i + 1 : 0;
-  } else if (direction === 'up' || direction === 'left') {
+  } else if (direction === 'up') {
     i = i > 0 ? i - 1 : validMax;
   }
 
