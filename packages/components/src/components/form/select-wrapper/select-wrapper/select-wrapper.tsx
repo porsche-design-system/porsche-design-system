@@ -53,6 +53,7 @@ export class SelectWrapper {
   // @State() private isOpen = false;
 
   private select: HTMLSelectElement;
+  private iconElement: HTMLElement;
   // private comboButton: HTMLButtonElement;
   // private comboList: HTMLUListElement;
   // private dropdownElement: HTMLPSelectWrapperDropdownElement;
@@ -127,7 +128,13 @@ export class SelectWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            <PrefixedTagNames.pIcon class={iconClasses} name="arrow-head-down" color="inherit" aria-hidden="true" />
+            <PrefixedTagNames.pIcon
+              ref={(el) => (this.iconElement = el)}
+              class={iconClasses}
+              name="arrow-head-down"
+              color="inherit"
+              aria-hidden="true"
+            />
             <slot />
           </label>
           {this.hasCustomDropdown && (
@@ -140,7 +147,7 @@ export class SelectWrapper {
               filter={this.filter}
               // hasFilterResults={hasFilterResults(this.optionMaps)}
               theme={this.theme}
-              // onOpenChange={(isOpen: boolean) => (this.isOpen = isOpen)}
+              onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
               // onSelect={this.setOptionSelected}
               // onFocus={this.onFocus}
               // onMouseDown={this.onMouseDown}
