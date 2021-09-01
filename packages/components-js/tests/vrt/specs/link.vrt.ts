@@ -30,19 +30,31 @@ describe('Link', () => {
       await vrt.test('link-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-link:not(:last-child) { margin-right: 0.5rem; }</style>`;
+        const head = `<style type="text/css">p-link:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link theme="${theme}" variant="primary" href="#">Primary</p-link>
           <p-link theme="${theme}" variant="primary">
             <a href="#">Slotted Primary</a>
           </p-link>
+          <p-link theme="${theme}" variant="primary" hide-label="true" href="#">Primary</p-link>
+          <p-link theme="${theme}" variant="primary" hide-label="true">
+            <a href="#">Slotted Primary</a>
+          </p-link>
           <p-link theme="${theme}" variant="secondary" href="#">Secondary</p-link>
           <p-link theme="${theme}" variant="secondary">
             <a href="#">Slotted Secondary</a>
           </p-link>
+          <p-link theme="${theme}" variant="secondary" hide-label="true" href="#">Secondary</p-link>
+          <p-link theme="${theme}" variant="secondary" hide-label="true">
+            <a href="#">Slotted Secondary</a>
+          </p-link>
           <p-link theme="${theme}" variant="tertiary" href="#">Tertiary</p-link>
           <p-link theme="${theme}" variant="tertiary">
+            <a href="#">Slotted Tertiary</a>
+          </p-link>
+          <p-link theme="${theme}" variant="tertiary" hide-label="true" href="#">Tertiary</p-link>
+          <p-link theme="${theme}" variant="tertiary" hide-label="true">
             <a href="#">Slotted Tertiary</a>
           </p-link>`;
 
