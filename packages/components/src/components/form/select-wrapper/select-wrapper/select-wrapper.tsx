@@ -70,13 +70,18 @@ export class SelectWrapper {
   }
 
   public connectedCallback(): void {
-    this.setSelect();
-    this.observeSelect();
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
     addSlottedCss(this.host);
   }
 
   public componentWillLoad(): void {
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
+
+    if (this.hasCustomDropdown) {
+      setAttribute(this.select, 'tabindex', '-1');
+      setAttribute(this.select, 'aria-hidden', 'true');
+    }
   }
 
   public componentDidRender(): void {
@@ -103,7 +108,11 @@ export class SelectWrapper {
     };
 
     const labelId = 'label'; // TODO: remove?
-    const labelProps = { tag: 'span', color: 'inherit', onClick: this.onLabelClick };
+    const labelProps = {
+      tag: 'span',
+      color: 'inherit',
+      onClick: () => (this.hasCustomDropdown ? this.dropdownElement : this.select).focus(),
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -151,20 +160,5 @@ export class SelectWrapper {
         )}
       </Host>
     );
-  }
-
-  private onLabelClick = (): void => {
-    (this.hasCustomDropdown ? this.dropdownElement : this.select).focus();
-  };
-
-  private setSelect(): void {
-    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
-
-    setAttribute(this.select, 'tabindex', '-1');
-    setAttribute(this.select, 'aria-hidden', 'true');
-  }
-
-  private observeSelect(): void {
-    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 }
