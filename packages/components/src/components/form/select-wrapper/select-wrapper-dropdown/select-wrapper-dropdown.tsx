@@ -36,12 +36,7 @@ export class SelectWrapperDropdown {
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
-
   @Prop() public onOpenChange: (isOpen: boolean) => void;
-  // @Prop() public onSelect: (newIndex: number) => void;
-  // @Prop() public onFocus: () => void;
-  // @Prop() public onMouseDown: () => void;
-  // @Prop() public open = false;
 
   @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
@@ -49,9 +44,9 @@ export class SelectWrapperDropdown {
   @State() private hasFilterResults?: boolean = false;
 
   @Listen('focus', { capture: false })
-  public onHostFocus(): void {
+  public onFocus(): void {
     // delegate focus from host to child
-    console.log('dropdown onHostFocus');
+    console.log('dropdown onFocus');
     (this.filter ? this.filterElement : this.buttonElement).focus();
   }
 
@@ -110,7 +105,7 @@ export class SelectWrapperDropdown {
           <button
             type="button"
             {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen)}
-            onClick={this.onMouseDown}
+            onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}
           />
@@ -147,7 +142,7 @@ export class SelectWrapperDropdown {
                     ['option--disabled']: disabled,
                     ['option--hidden']: hidden || initiallyHidden,
                   }}
-                  onClick={() => (!selected && !disabled ? this.setOptionSelected(index) : this.onFocus())}
+                  onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
                   {...getOptionAriaAttributes(option)}
                 >
                   {value}
@@ -199,21 +194,6 @@ export class SelectWrapperDropdown {
       this.isOpen = false;
       this.resetFilter();
     }
-  };
-
-  private onMouseDown = (): void => {
-    // e.preventDefault();
-    // e.stopPropagation();
-    // this.onFocus();
-    this.setDropdownVisibility('toggle');
-  };
-
-  private onFocus = (): void => {
-    // if (!this.isOpen) {
-    //   return;
-    // } else {
-    //   (this.filter ? this.filterElement : this.comboButton).focus();
-    // }
   };
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
@@ -331,7 +311,6 @@ export class SelectWrapperDropdown {
     }
 
     this.resetFilter();
-    this.onFocus();
   };
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
