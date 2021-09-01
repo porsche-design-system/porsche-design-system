@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
 import { getPrefixedTagNames, observeChildren, observeProperties, throwIfRootNodeIsNotOfKind } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -47,8 +47,16 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
   @State() private hasFilterResults?: boolean = false;
 
+  @Listen('focus', { capture: false })
+  public onHostFocus(): void {
+    // delegate focus from host to child
+    console.log('dropdown onHostFocus');
+    (this.filter ? this.filterElement : this.buttonElement).focus();
+  }
+
   private buttonElement: HTMLButtonElement;
   private listElement: HTMLUListElement;
+  private filterElement: HTMLPSelectWrapperFilterElement;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
@@ -95,7 +103,7 @@ export class SelectWrapperDropdown {
             // onChange={this.onFilterChange}
             // onClick={() => this.setDropdownVisibility('toggle')}
             // onKeyDown={this.onButtonKeyboardEvents}
-            // ref={(el) => (this.filterElement = el)}
+            ref={(el) => (this.filterElement = el)}
           />
         ) : (
           <button
@@ -192,8 +200,10 @@ export class SelectWrapperDropdown {
   }
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (!e.composedPath().includes(this.host)) {
-      this.setDropdownVisibility('hide');
+    if (this.isOpen && !e.composedPath().includes(this.host)) {
+      // this.setDropdownVisibility('hide');
+      this.isOpen = false;
+      this.resetFilter();
     }
   };
 
