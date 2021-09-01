@@ -8,15 +8,24 @@
 
 ## Types
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Link Pure as follows
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Button Pure as follows:
 
 | Variant | Usage |
 |----|----|
 | Icon and text | This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. |
-| Icon only| When it's enough to indicate an interaction with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. |
-| Icon, Text and Subline | This should be the variant of your choice if the Link Pure must be supplemented by a subline. However, we recommend that you only use this variant in cases where the user requires additional information. The standard variant will be used on a monochrome background, whereas the highlight variant should be used on a polychrome background (e.g. on images) for better comprehensibility and accessibility. |
+| Text only | The use of icons can be resigned, whenever it causes interference (e.g. in-text placement, no matching icon, complex lists or tables, alignment to elements). |
+| Icon only| When it's enough to indicate an action with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. It's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon. |
+| Icon, Text and Subline | This should be the variant of your choice if the Button Pure must be supplemented by a subline. However, we recommend that you only use this variant in cases where the user requires additional information. The standard variant will be used on a monochrome background, whereas the highlight variant should be used on a polychrome background (e.g. on images) for better comprehensibility and accessibility. |
 
+# Icon alignment & stretch
 
+To enable wider usage order and stretch are customizable. Please use under recommended circumstances:
+
+| Variant | Usage |
+|----|----|
+| Icon left | This is the default state and should be used whenever possible. |
+| Icon right | On special occasions, the icon can be placed on the right side of the label (e.g. step navigation, ). | 
+| Stretch | It's recommended to use stretch only on small viewports or areas (e.g. mobile views or sidebars). Please consider that the greater the distance between icon and label, the less they will be perceived as a visual group. |
 
 ## Usage
 
