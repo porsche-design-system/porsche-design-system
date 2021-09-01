@@ -2,7 +2,7 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import {
   determineDirection,
   DropdownInteractionType,
-  getAriaAttributes,
+  getListAriaAttributes,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
@@ -24,21 +24,21 @@ import {
   updateSelectedOptionMaps,
 } from './select-wrapper-dropdown-utils';
 
-describe('getAriaAttributes()', () => {
+describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;
 
-  it.each<[OptionMap[], boolean, boolean]>([
-    [generateOptionMaps({ amount }), false, false],
-    [generateOptionMaps({ amount }), false, true],
-    [generateOptionMaps({ amount }), true, false],
-    [generateOptionMaps({ amount }), false, true],
-    [generateOptionMaps({ amount, highlightedIndex }), false, false],
-    [generateOptionMaps({ amount, highlightedIndex }), true, false],
+  it.each<[string, OptionMap[], boolean]>([
+    ['Some label', generateOptionMaps({ amount }), false],
+    ['Some label', generateOptionMaps({ amount }), true],
+    ['Some label', generateOptionMaps({ amount }), false],
+    ['Some label', generateOptionMaps({ amount }), true],
+    ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
+    ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
   ])(
     'should return correct aria attributes for optionMaps: %j, isOpen: %s and hasFilter: %s',
-    (optionMaps, isOpen, hasFilter) => {
-      expect(getAriaAttributes(optionMaps, isOpen, hasFilter)).toMatchSnapshot();
+    (label, optionMaps, hasFilter) => {
+      expect(getListAriaAttributes(label, optionMaps, hasFilter)).toMatchSnapshot();
     }
   );
 });

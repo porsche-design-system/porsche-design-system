@@ -3,7 +3,7 @@ import { getPrefixedTagNames, observeChildren, observeProperties, throwIfRootNod
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
-  getAriaAttributes,
+  getListAriaAttributes,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
@@ -19,6 +19,7 @@ import {
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
   updateSelectedOptionMaps,
+  getButtonAriaAttributes,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
@@ -107,26 +108,19 @@ export class SelectWrapperDropdown {
           />
         ) : (
           <button
-            aria-haspopup="listbox"
-            aria-label={`${this.label}: ${getSelectedOptionMap(this.optionMaps)?.value}`}
-            aria-controls="list"
-            class="combo-button"
             type="button"
-            aria-live="polite"
+            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen)}
             onClick={this.onMouseDown}
-            aria-expanded={this.isOpen ? 'true' : 'false'}
-            onKeyDown={this.onButtonKeyboardEvents}
+            onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}
           />
         )}
         <ul
-          role="listbox"
-          class="listbox"
           id="list"
-          aria-label={this.label}
+          role="listbox"
           tabIndex={-1}
-          {...getAriaAttributes(this.optionMaps, this.filter)}
-          onKeyDown={this.onListKeyboardEvents}
+          {...getListAriaAttributes(this.label, this.optionMaps, this.filter)}
+          onKeyDown={this.onListKeyDown}
           ref={(el) => (this.listElement = el)}
         >
           {this.filter && !this.hasFilterResults ? (
@@ -234,7 +228,7 @@ export class SelectWrapperDropdown {
     }
   };
 
-  private onButtonKeyboardEvents = (e: KeyboardEvent): void => {
+  private onButtonKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
@@ -258,7 +252,7 @@ export class SelectWrapperDropdown {
     }
   };
 
-  private onListKeyboardEvents = (e: KeyboardEvent): void => {
+  private onListKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
