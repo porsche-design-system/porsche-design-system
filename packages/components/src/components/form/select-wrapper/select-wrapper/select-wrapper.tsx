@@ -56,7 +56,7 @@ export class SelectWrapper {
   private iconElement: HTMLElement;
   // private comboButton: HTMLButtonElement;
   // private comboList: HTMLUListElement;
-  // private dropdownElement: HTMLPSelectWrapperDropdownElement;
+  private dropdownElement: HTMLPSelectWrapperDropdownElement;
   // private filterElement: HTMLPSelectWrapperFilterElement;
   private hasCustomDropdown: boolean;
 
@@ -101,15 +101,9 @@ export class SelectWrapper {
       ['root']: true,
       ['root--disabled']: disabled,
     };
-    const iconClasses = {
-      ['icon']: true,
-      // ['icon--open']: this.isOpen,
-    };
 
-    const labelId = 'label';
-
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps /*onClick: this.onFocus*/ };
+    const labelId = 'label'; // TODO: remove?
+    const labelProps = { tag: 'span', color: 'inherit', onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -129,11 +123,11 @@ export class SelectWrapper {
               </PrefixedTagNames.pText>
             )}
             <PrefixedTagNames.pIcon
-              ref={(el) => (this.iconElement = el)}
-              class={iconClasses}
+              class="icon"
               name="arrow-head-down"
               color="inherit"
               aria-hidden="true"
+              ref={(el) => (this.iconElement = el)}
             />
             <slot />
           </label>
@@ -141,19 +135,14 @@ export class SelectWrapper {
             <PrefixedTagNames.pSelectWrapperDropdown
               // id={dropdownId}
               // class="dropdown"
-              // optionMaps={this.optionMaps}
               direction={this.dropdownDirection}
-              // open={this.isOpen}
               filter={this.filter}
-              // hasFilterResults={hasFilterResults(this.optionMaps)}
               theme={this.theme}
               onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
-              // onSelect={this.setOptionSelected}
-              // onFocus={this.onFocus}
-              // onMouseDown={this.onMouseDown}
               label={this.label}
-              // ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
+              tabindex={0}
+              ref={(el) => (this.dropdownElement = el)}
             />
           )}
         </div>
@@ -164,13 +153,10 @@ export class SelectWrapper {
     );
   }
 
-  // private get selectedIndex(): number {
-  //   return this.select.selectedIndex;
-  // }
+  private onLabelClick = (): void => {
+    (this.hasCustomDropdown ? this.dropdownElement : this.select).focus();
+  };
 
-  /*
-   * <START NATIVE SELECT>
-   */
   private setSelect(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
 
