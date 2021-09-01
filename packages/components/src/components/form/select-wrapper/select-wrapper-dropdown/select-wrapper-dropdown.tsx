@@ -1,25 +1,26 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getPrefixedTagNames, observeChildren, observeProperties, throwIfRootNodeIsNotOfKind } from '../../../../utils';
-import type { DropdownDirection, OptionMap } from '../select-wrapper/select-wrapper-utils';
-import type { Theme } from '../../../../types';
+import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
-  getSelectedOptionMap,
-  getHighlightedOptionMapIndex,
-  getOptionsElements,
-  DropdownInteractionType,
+  getAriaAttributes,
   getDropdownVisibility,
+  getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
+  getNewOptionMapIndex,
+  getOptionAriaAttributes,
+  getOptionMaps,
+  getOptionsElements,
+  getSelectedOptionMap,
+  handleScroll,
+  resetFilteredOptionMaps,
+  resetHighlightedOptionMaps,
   updateFirstHighlightedOptionMaps,
+  updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
   updateSelectedOptionMaps,
-  getOptionMaps,
-  resetHighlightedOptionMaps,
-  KeyboardDirectionInternal,
-  getNewOptionMapIndex,
-  updateHighlightedOptionMaps,
-  resetFilteredOptionMaps,
-} from '../select-wrapper/select-wrapper-utils';
-import { getOptionAriaAttributes, getAriaAttributes, handleScroll } from './select-wrapper-dropdown-utils';
+} from './select-wrapper-dropdown-utils';
+import type { Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -327,7 +328,7 @@ export class SelectWrapperDropdown {
     this.onFocus();
   };
 
-  private cycleDropdown(direction: KeyboardDirectionInternal): void {
+  private cycleDropdown(direction: DropdownDirectionInternal): void {
     console.log('cycleDropdown', direction);
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
