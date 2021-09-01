@@ -36,7 +36,7 @@ export class SelectWrapperDropdown {
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
 
-  // @Prop() public onOpenChange: (isOpen: boolean) => void;
+  @Prop() public onOpenChange: (isOpen: boolean) => void;
   // @Prop() public onSelect: (newIndex: number) => void;
   // @Prop() public onFocus: () => void;
   // @Prop() public onMouseDown: () => void;
@@ -213,10 +213,10 @@ export class SelectWrapperDropdown {
   };
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
+    console.log('setDropdownVisibility', type);
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
-    // if (this.onOpenChange) {
-    //   this.onOpenChange(this.isOpen);
-    // }
+    this.onOpenChange(this.isOpen);
+
     if (this.isOpen) {
       this.listElement.focus();
     } else {
@@ -281,6 +281,7 @@ export class SelectWrapperDropdown {
         break;
       case 'Escape':
       case 'Esc':
+      case 'Tab':
         this.resetFilter();
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();
@@ -292,11 +293,6 @@ export class SelectWrapperDropdown {
       case 'PageDown':
         e.preventDefault();
         this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
-        break;
-      case 'Tab':
-        this.resetFilter();
-        this.setDropdownVisibility('hide');
-        this.resetHighlightedToSelectedOptionMaps();
         break;
     }
   };
