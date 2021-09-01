@@ -23,7 +23,7 @@ const createManifestAndCopyMarque = (cdn: string, files: string[]): void => {
     const [name] = path.basename(sourcePath, ext).split(/[.]/g);
     const marque = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(marque);
-    const filename = `${paramCase(name)}.min.${hash}}.png`;
+    const filename = `${paramCase(name)}.min.${hash}.png`;
     const targetPath = path.normalize(`./dist/email/${filename}`);
 
     const nameKey = camelCase(name);
