@@ -89,7 +89,7 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     return option;
   });
 
-export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
+export const setSelectedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
   options.map((item, idx) => ({
     ...item,
     selected: idx === newIndex,
@@ -97,7 +97,7 @@ export const updateSelectedOptionMaps = (options: OptionMap[], newIndex: number)
     hidden: false,
   }));
 
-export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
+export const setHighlightedOptionMaps = (options: OptionMap[], newIndex: number): OptionMap[] =>
   options.map((item, idx) => ({
     ...item,
     highlighted: idx === newIndex,
@@ -106,11 +106,11 @@ export const updateHighlightedOptionMaps = (options: OptionMap[], newIndex: numb
 export const resetHighlightedToSelectedOptionMaps = (options: OptionMap[]): OptionMap[] =>
   options.map((item) => ({ ...item, highlighted: item.selected }));
 
-export const updateFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
-  updateHighlightedOptionMaps(options, 0);
+export const setFirstHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
+  setHighlightedOptionMaps(options, 0);
 
-export const updateLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
-  updateHighlightedOptionMaps(options, options.length - 1);
+export const setLastHighlightedOptionMaps = (options: OptionMap[]): OptionMap[] =>
+  setHighlightedOptionMaps(options, options.length - 1);
 
 export const getHighlightedOptionMapIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.highlighted);
 export const getSelectedOptionMapIndex = (arr: OptionMap[]): number => arr.findIndex((item) => item.selected);
@@ -127,7 +127,7 @@ export const getMatchingOptionMaps = (options: OptionMap[], searchString: string
   return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
 };
 
-export const updateFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
+export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
   return options.map((item) => ({
     ...item,
