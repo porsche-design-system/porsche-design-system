@@ -20,6 +20,8 @@ import {
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
   getButtonAriaAttributes,
+  setFirstMatchingOptionMaps,
+  getFirstMatchingOptionMapIndex,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
@@ -208,6 +210,7 @@ export class SelectWrapperDropdown {
     }
   };
 
+  // TODO: why key down?
   private onButtonKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
@@ -229,9 +232,17 @@ export class SelectWrapperDropdown {
         console.log('onButtonKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setDropdownVisibility('show');
         break;
+      default:
+        console.log('onButtonKeyDown search', e);
+        // TODO: seems to be difficult to combine multiple keys as native select does
+        const newIndex = getFirstMatchingOptionMapIndex(this.optionMaps, e.key);
+        if (newIndex) {
+          this.setOptionSelected(newIndex);
+        }
     }
   };
 
+  // TODO: why key down?
   private onListKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
@@ -279,7 +290,9 @@ export class SelectWrapperDropdown {
         this.optionMaps = setLastHighlightedOptionMaps(this.optionMaps);
         break;
       default:
-        console.log('keyboard search');
+        console.log('onListKeyDown search', e);
+        // TODO: seems to be difficult to combine multiple keys as native select does
+        this.optionMaps = setFirstMatchingOptionMaps(this.optionMaps, e.key);
     }
   };
 

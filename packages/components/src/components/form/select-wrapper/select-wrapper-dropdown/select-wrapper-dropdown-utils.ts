@@ -127,6 +127,21 @@ export const getMatchingOptionMaps = (options: OptionMap[], searchString: string
   return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
 };
 
+export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string): number => {
+  if ([...'abcdefghijklmnopqrstuvwxyzäöüß1234567890'].includes(key)) {
+    const lowerCaseSearchString = key.toLowerCase();
+    const firstMatchingIndex =
+      lowerCaseSearchString && options.findIndex((item) => item.value.toLowerCase().startsWith(lowerCaseSearchString));
+    // jump to last item if no match is found
+    return firstMatchingIndex >= 0 ? firstMatchingIndex : options.length - 1;
+  }
+};
+
+export const setFirstMatchingOptionMaps = (options: OptionMap[], key: string): OptionMap[] => {
+  const targetIndex = getFirstMatchingOptionMapIndex(options, key);
+  return targetIndex >= 0 ? options.map((item, idx) => ({ ...item, highlighted: idx === targetIndex })) : options;
+};
+
 export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
   return options.map((item) => ({
