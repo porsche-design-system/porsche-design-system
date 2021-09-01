@@ -5,11 +5,22 @@ import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-s
 
 const MAX_CHILDREN = 10;
 
-export const getAriaAttributes = (optionMaps: OptionMap[], hasFilter: boolean): AriaAttributes => {
+export const getButtonAriaAttributes = (label: string, optionMaps: OptionMap[], isOpen: boolean): AriaAttributes => {
+  return {
+    'aria-live': 'polite',
+    'aria-haspopup': 'listbox',
+    'aria-label': `${label}: ${getSelectedOptionMap(optionMaps)?.value}`,
+    'aria-controls': 'list',
+    'aria-expanded': isOpen ? 'true' : 'false',
+  };
+};
+
+export const getListAriaAttributes = (label: string, optionMaps: OptionMap[], hasFilter: boolean): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return hasFilter
     ? {}
     : {
+        'aria-label': label,
         ...(highlightedIndex >= 0 && { 'aria-activedescendant': `option-${highlightedIndex}` }),
       };
 };
