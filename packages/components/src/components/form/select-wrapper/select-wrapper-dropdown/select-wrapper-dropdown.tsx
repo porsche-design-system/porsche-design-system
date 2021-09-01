@@ -14,7 +14,7 @@ import {
   getSelectedOptionMap,
   handleScroll,
   resetFilteredOptionMaps,
-  resetHighlightedOptionMaps,
+  resetHighlightedToSelectedOptionMaps,
   updateFirstHighlightedOptionMaps,
   updateHighlightedOptionMaps,
   updateLastHighlightedOptionMaps,
@@ -283,7 +283,7 @@ export class SelectWrapperDropdown {
       case 'Esc':
         this.resetFilter();
         this.setDropdownVisibility('hide');
-        // TODO: We need a function to optical reset the list if we first highlighted another option with down/up key
+        this.resetHighlightedToSelectedOptionMaps();
         break;
       case 'PageUp':
         e.preventDefault();
@@ -296,7 +296,7 @@ export class SelectWrapperDropdown {
       case 'Tab':
         this.resetFilter();
         this.setDropdownVisibility('hide');
-        // TODO: We need a function to optical reset the list if we first highlighted another option with down/up key
+        this.resetHighlightedToSelectedOptionMaps();
         break;
     }
   };
@@ -315,6 +315,10 @@ export class SelectWrapperDropdown {
     this.optionMaps = updateSelectedOptionMaps(getOptionMaps(getOptionsElements(this.selectRef)), this.selectedIndex);
   };
 
+  private resetHighlightedToSelectedOptionMaps = (): void => {
+    this.optionMaps = resetHighlightedToSelectedOptionMaps(this.optionMaps);
+  };
+
   private setOptionSelected = (newIndex: number): void => {
     console.log('setOptionSelected', this.selectedIndex, '-->', newIndex);
     this.setDropdownVisibility('hide');
@@ -323,7 +327,7 @@ export class SelectWrapperDropdown {
       this.selectRef.selectedIndex = newIndex;
       this.selectRef.dispatchEvent(new Event('change', { bubbles: true }));
     } else {
-      this.optionMaps = resetHighlightedOptionMaps(this.optionMaps);
+      this.resetHighlightedToSelectedOptionMaps();
     }
 
     this.resetFilter();
