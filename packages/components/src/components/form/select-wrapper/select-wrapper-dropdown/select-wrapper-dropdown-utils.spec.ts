@@ -16,7 +16,7 @@ import {
   hasFilterResults,
   OptionMap,
   resetFilteredOptionMaps,
-  resetHighlightedOptionMaps,
+  resetHighlightedToSelectedOptionMaps,
   updateFilteredOptionMaps,
   updateFirstHighlightedOptionMaps,
   updateHighlightedOptionMaps,
@@ -235,13 +235,13 @@ describe('updateHighlightedOptionMaps()', () => {
   });
 });
 
-describe('resetHighlightedOptionMaps()', () => {
+describe('resetHighlightedToSelectedOptionMaps()', () => {
   it('should reset highlighted options', () => {
-    const options = generateOptionMaps({ highlightedIndex: 1 });
+    const options = generateOptionMaps({ selectedIndex: 2, highlightedIndex: 1 });
     expect(getIndexOfHighlightedOption(options)).toBe(1);
 
-    const result = resetHighlightedOptionMaps(options);
-    expect(getIndexOfHighlightedOption(result)).toBe(-1);
+    const result = resetHighlightedToSelectedOptionMaps(options);
+    expect(getIndexOfHighlightedOption(result)).toBe(2);
   });
 });
 
