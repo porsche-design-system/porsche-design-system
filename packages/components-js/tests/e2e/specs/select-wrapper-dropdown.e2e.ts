@@ -1109,32 +1109,36 @@ describe('select-wrapper dropdown', () => {
 
     it('should remove and re-attach events', async () => {
       await initSelect();
-      const select = await getSelect();
+      const dropdownButton = await getDropdownButton();
+      const dropdownList = await getDropdownList();
 
-      let mouseDownEventCounter = 0;
-      let keyDownEventCounter = 0;
-      await addEventListener(select, 'mousedown', () => mouseDownEventCounter++);
-      await addEventListener(select, 'keydown', () => keyDownEventCounter++);
+      let buttonMouseDownEventCounter = 0;
+      let buttonKeyDownEventCounter = 0;
+      let listKeyDownEventCounter = 0;
+      await addEventListener(dropdownButton, 'mousedown', () => buttonMouseDownEventCounter++);
+      await addEventListener(dropdownButton, 'keydown', () => buttonKeyDownEventCounter++);
+      await addEventListener(dropdownList, 'keydown', () => listKeyDownEventCounter++);
 
       // Remove and re-attach component to check if events are duplicated / fire at all
       await reattachElement(page, 'p-select-wrapper');
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
-      expect(mouseDownEventCounter).toBe(1);
+      expect(buttonMouseDownEventCounter).withContext('after 1st click').toBe(1);
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
-      expect(mouseDownEventCounter).toBe(2);
+      expect(buttonMouseDownEventCounter).withContext('after 2nd click').toBe(2);
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
-      expect(keyDownEventCounter).toBe(2);
+      expect(buttonKeyDownEventCounter).withContext('after key presses for button').toBe(1);
+      expect(listKeyDownEventCounter).withContext('after key presses for list').toBe(1);
     });
   });
 
