@@ -240,11 +240,9 @@ export class SelectWrapperDropdown {
         break;
       case ' ':
       case 'Spacebar':
-        e.preventDefault();
-        this.setDropdownVisibility('show');
-        break;
       case 'Enter':
         e.preventDefault();
+        console.log('onButtonKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setDropdownVisibility('show');
         break;
     }
@@ -265,7 +263,7 @@ export class SelectWrapperDropdown {
       case ' ':
       case 'Spacebar':
         e.preventDefault();
-        console.log('Space', getHighlightedOptionMapIndex(this.optionMaps));
+        console.log('onListKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         break;
       case 'Enter':
@@ -318,7 +316,7 @@ export class SelectWrapperDropdown {
   };
 
   private setOptionSelected = (newIndex: number): void => {
-    console.log('setOptionSelected', newIndex);
+    console.log('setOptionSelected', this.selectedIndex, '-->', newIndex);
     this.setDropdownVisibility('hide');
 
     if (this.selectedIndex !== newIndex) {
