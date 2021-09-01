@@ -17,11 +17,11 @@ import {
   OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
-  updateFilteredOptionMaps,
-  updateFirstHighlightedOptionMaps,
-  updateHighlightedOptionMaps,
-  updateLastHighlightedOptionMaps,
-  updateSelectedOptionMaps,
+  setFilteredOptionMaps,
+  setFirstHighlightedOptionMaps,
+  setHighlightedOptionMaps,
+  setLastHighlightedOptionMaps,
+  setSelectedOptionMaps,
 } from './select-wrapper-dropdown-utils';
 
 describe('getListAriaAttributes()', () => {
@@ -212,25 +212,25 @@ describe('getOptionMaps()', () => {
   });
 });
 
-describe('updateSelectedOptionMaps()', () => {
+describe('setSelectedOptionMaps()', () => {
   it('should set selected and highlighted on correct option', () => {
     const options = generateOptionMaps();
-    const result1 = updateSelectedOptionMaps(options, 1);
+    const result1 = setSelectedOptionMaps(options, 1);
     expect(getIndexOfSelectedOption(result1)).toBe(1);
     expect(getIndexOfHighlightedOption(result1)).toBe(1);
 
-    const result2 = updateSelectedOptionMaps(options, 2);
+    const result2 = setSelectedOptionMaps(options, 2);
     expect(getIndexOfSelectedOption(result2)).toBe(2);
     expect(getIndexOfHighlightedOption(result2)).toBe(2);
   });
 });
 
-describe('updateHighlightedOptionMaps()', () => {
+describe('setHighlightedOptionMaps()', () => {
   it('should set highlighted on correct option', () => {
     const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
-    const result = updateHighlightedOptionMaps(options, 1);
+    const result = setHighlightedOptionMaps(options, 1);
     expect(getIndexOfHighlightedOption(result)).toBe(1);
   });
 });
@@ -245,22 +245,22 @@ describe('resetHighlightedToSelectedOptionMaps()', () => {
   });
 });
 
-describe('updateFirstHighlightedOptionMaps()', () => {
+describe('setFirstHighlightedOptionMaps()', () => {
   it('should set highlight on first option', () => {
     const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
-    const result = updateFirstHighlightedOptionMaps(options);
+    const result = setFirstHighlightedOptionMaps(options);
     expect(getIndexOfHighlightedOption(result)).toBe(0);
   });
 });
 
-describe('updateLastHighlightedOptionMaps()', () => {
+describe('setLastHighlightedOptionMaps()', () => {
   it('should set highlighted on last option', () => {
     const options = generateOptionMaps();
     expect(getIndexOfHighlightedOption(options)).toBe(-1);
 
-    const result = updateLastHighlightedOptionMaps(options);
+    const result = setLastHighlightedOptionMaps(options);
     expect(getIndexOfHighlightedOption(result)).toBe(3);
   });
 });
@@ -326,7 +326,7 @@ describe('getMatchingOptionMaps()', () => {
   });
 });
 
-describe('updateFilteredOptionMaps()', () => {
+describe('setFilteredOptionMaps()', () => {
   it.each<[string, number]>([
     ['Invalid Value', 0],
     ['First Value', 1],
@@ -336,7 +336,7 @@ describe('updateFilteredOptionMaps()', () => {
     ['st Val', 1],
   ])('should for searchString %s return %s visible options', (searchString, expected) => {
     const options = mapValuesToBeBetterFilterable(generateOptionMaps());
-    const result = updateFilteredOptionMaps(options, searchString);
+    const result = setFilteredOptionMaps(options, searchString);
     expect(getVisibleOptionsAmount(result)).toBe(expected);
   });
 });
@@ -378,13 +378,9 @@ describe('getNewOptionMapIndex()', () => {
 
   it.each<[number, DropdownDirectionInternal, number]>([
     [0, 'down', 1],
-    [0, 'right', 1],
     [3, 'down', 0],
-    [3, 'right', 0],
     [1, 'up', 0],
-    [1, 'left', 0],
     [0, 'up', 3],
-    [0, 'left', 3],
   ])('should for selectedIndex: %s, direction %s and return %s', (selectedIndex, direction, expected) => {
     const options = generateOptionMaps({ selectedIndex });
     expect(getNewOptionMapIndex(options, direction)).toBe(expected);

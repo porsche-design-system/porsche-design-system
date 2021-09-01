@@ -15,10 +15,10 @@ import {
   handleScroll,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
-  updateFirstHighlightedOptionMaps,
-  updateHighlightedOptionMaps,
-  updateLastHighlightedOptionMaps,
-  updateSelectedOptionMaps,
+  setFirstHighlightedOptionMaps,
+  setHighlightedOptionMaps,
+  setLastHighlightedOptionMaps,
+  setSelectedOptionMaps,
   getButtonAriaAttributes,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../../types';
@@ -272,12 +272,14 @@ export class SelectWrapperDropdown {
         break;
       case 'PageUp':
         e.preventDefault();
-        this.optionMaps = updateFirstHighlightedOptionMaps(this.optionMaps);
+        this.optionMaps = setFirstHighlightedOptionMaps(this.optionMaps);
         break;
       case 'PageDown':
         e.preventDefault();
-        this.optionMaps = updateLastHighlightedOptionMaps(this.optionMaps);
+        this.optionMaps = setLastHighlightedOptionMaps(this.optionMaps);
         break;
+      default:
+        console.log('keyboard search');
     }
   };
 
@@ -287,12 +289,12 @@ export class SelectWrapperDropdown {
 
   private syncSelectedIndex = (): void => {
     console.log('syncSelectedIndex');
-    this.optionMaps = updateSelectedOptionMaps(this.optionMaps, this.selectedIndex);
+    this.optionMaps = setSelectedOptionMaps(this.optionMaps, this.selectedIndex);
   };
 
   private setOptionMaps = (): void => {
     console.log('setOptionMaps');
-    this.optionMaps = updateSelectedOptionMaps(getOptionMaps(getOptionsElements(this.selectRef)), this.selectedIndex);
+    this.optionMaps = setSelectedOptionMaps(getOptionMaps(getOptionsElements(this.selectRef)), this.selectedIndex);
   };
 
   private resetHighlightedToSelectedOptionMaps = (): void => {
@@ -316,7 +318,7 @@ export class SelectWrapperDropdown {
   private cycleDropdown(direction: DropdownDirectionInternal): void {
     console.log('cycleDropdown', direction);
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
-    this.optionMaps = updateHighlightedOptionMaps(this.optionMaps, newIndex);
+    this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
   }
 
   /*
