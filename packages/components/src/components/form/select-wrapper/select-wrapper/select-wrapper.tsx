@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -50,7 +50,7 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  @State() private isOpen = false;
+  // @State() private isOpen = false;
 
   private select: HTMLSelectElement;
   // private comboButton: HTMLButtonElement;
@@ -102,7 +102,7 @@ export class SelectWrapper {
     };
     const iconClasses = {
       ['icon']: true,
-      ['icon--open']: this.isOpen,
+      // ['icon--open']: this.isOpen,
     };
 
     const labelId = 'label';
@@ -140,7 +140,7 @@ export class SelectWrapper {
               filter={this.filter}
               // hasFilterResults={hasFilterResults(this.optionMaps)}
               theme={this.theme}
-              onOpenChange={(isOpen: boolean) => (this.isOpen = isOpen)}
+              // onOpenChange={(isOpen: boolean) => (this.isOpen = isOpen)}
               // onSelect={this.setOptionSelected}
               // onFocus={this.onFocus}
               // onMouseDown={this.onMouseDown}
