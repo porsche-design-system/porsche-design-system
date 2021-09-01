@@ -1,13 +1,21 @@
 import {
+  addImportantToRule,
   attachCss,
+  buildHostStyles,
   buildResponsiveHostStyles,
+  buildResponsiveStyles,
   buildSlottedStyles,
   getCss,
   getFocusPseudoStyles,
   hasSlottedSubline,
   insertSlottedStyles,
+  mergeDeep,
+  transitionDuration,
+  transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
+import { color } from '@porsche-design-system/utilities';
+import { Theme } from '../../../types';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusPseudoStyles({ offset: 1 })));
@@ -17,15 +25,92 @@ export const addSlottedCss = (host: HTMLElement): void => {
   insertSlottedStyles(host, getSlottedCss(host));
 };
 
-const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
+const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
   display: stretch ? 'block' : 'inline-block',
 });
 
-export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
-  return getCss(buildResponsiveHostStyles(stretch, getStretchStyles));
+const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
+  justifyContent: stretch ? 'space-between' : 'flex-start',
+});
+
+const getColor = (theme: Theme) => {
+  if (theme === 'dark') {
+    return {
+      baseColor: color.darkTheme.default,
+      activeColor: color.darkTheme.state.active,
+      activeColor2: color.darkTheme.brand,
+      hoverColor: color.darkTheme.state.hover,
+    };
+  }
+  return {
+    baseColor: color.default,
+    activeColor: color.state.active,
+    activeColor2: color.brand,
+    hoverColor: color.state.hover,
+  };
 };
 
-export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
+export const getComponentCss = (
+  host: HTMLElement,
+  active: boolean,
+  stretch: BreakpointCustomizable<boolean>,
+  theme: Theme
+): string => {
+  const hasSubline = hasSlottedSubline(host);
+  const { baseColor, activeColor, activeColor2, hoverColor } = getColor(theme);
+  return getCss(
+    mergeDeep({
+      ...buildHostStyles({
+        verticalAlign: 'top',
+        position: addImportantToRule('relative'),
+        cursor: 'pointer',
+      }),
+      ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
+      root: {
+        display: 'flex',
+        alignItems: 'flexStart',
+        width: '100%',
+        margin: '0',
+        padding: '0',
+        boxSizing: 'border-box',
+        outline: 'transparent none',
+        appearance: 'none',
+        border: 'none',
+        textDecoration: 'none',
+        textAlign: 'left',
+        background: 'transparent',
+        color: active ? activeColor2 : baseColor,
+        ...(hasSubline && {
+          '& + .subline': {
+            color: activeColor2,
+          },
+        }),
+        transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
+        ...getFocusPseudoStyles({ offset: 1 }),
+        '&:active': {
+          color: activeColor,
+          '& + .subline': {
+            color: activeColor,
+          },
+        },
+        '&:hover': {
+          color: hoverColor,
+          '& + .subline': {
+            color: hoverColor,
+          },
+        },
+        ...buildResponsiveStyles(stretch, getStretchStyles),
+      },
+    })
+  );
+};
+
+export const addComponentCss = (
+  host: HTMLElement,
+  active: boolean,
+  stretch: BreakpointCustomizable<boolean>,
+  theme: Theme
+): void => {
   // Subline does not support stretch, therefore it needs to be called with false if with subline
-  attachCss(host, getComponentCss(hasSlottedSubline(host) ? false : stretch));
+  attachCss(host, getComponentCss(host, active, stretch, theme));
 };
