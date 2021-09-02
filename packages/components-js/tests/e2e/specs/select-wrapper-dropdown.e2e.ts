@@ -50,22 +50,20 @@ describe('select-wrapper dropdown', () => {
   const getDropdownCheckmarkIcon = () => selectNode(page, `${dropdownSelector} >>> .icon`);
 
   const getDropdownAriaActiveDescendant = async () => getAttribute(await getDropdownList(), 'aria-activedescendant');
-  const getSelectedDropdownOptionId = async () => await getAttribute(await getSelectedDropdownOption(), 'id');
+  const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
-  const getDropdownOpacity = async () => await getElementStyle(await getDropdownList(), 'opacity');
+  const getDropdownOpacity = async () => getElementStyle(await getDropdownList(), 'opacity');
   const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
-  const getDisabledDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownList(), `.${disabledClass}`);
-  const getSelectedDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownList(), `.${selectedClass}`);
-  const getHiddenDropdownOptionIndex = async () => await getElementIndex(await getDropdownList(), `.${hiddenClass}`);
+  const getDisabledDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${disabledClass}`);
+  const getSelectedDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${selectedClass}`);
+  const getHiddenDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${hiddenClass}`);
   const getHighlightedDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownList(), `.${highlightedClass}`);
+    getElementIndex(await getDropdownList(), `.${highlightedClass}`);
   const getAriaSelectedTrueDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownList(), '[aria-selected=true]');
+    getElementIndex(await getDropdownList(), '[aria-selected=true]');
   const getAriaDisabledTrueDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownList(), '[aria-disabled=true]');
+    getElementIndex(await getDropdownList(), '[aria-disabled=true]');
 
   const getAmountOfOptions = async () => (await getSelect()).evaluate((el) => el.childElementCount);
   const getAmountOfDropdownOptions = async () => (await getDropdownList()).evaluate((el) => el.childElementCount);
@@ -711,7 +709,7 @@ describe('select-wrapper dropdown', () => {
     });
 
     describe('when dropdown is not open', () => {
-      it('should not select option on PageDown', async () => {
+      it('should not highlight and select option on PageDown', async () => {
         await initSelect();
 
         await page.keyboard.press('Tab');
@@ -729,8 +727,9 @@ describe('select-wrapper dropdown', () => {
           .toBe(0);
       });
 
-      it('should not select option on PageUp', async () => {
+      it('should not highlight and select option on PageUp', async () => {
         await initSelect();
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('PageUp');
         await waitForStencilLifecycle(page);
@@ -814,7 +813,7 @@ describe('select-wrapper dropdown', () => {
           .toBe(0);
       });
 
-      it('should not select option on Escape', async () => {
+      it('should not select option on Escape and close dropdown', async () => {
         await initSelect();
 
         await page.keyboard.press('Tab');

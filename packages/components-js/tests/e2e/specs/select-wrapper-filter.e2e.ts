@@ -47,15 +47,15 @@ describe('select-wrapper filter', () => {
 
   const getFilterPlaceholder = async () => getAttribute(await getFilterInput(), 'placeholder');
   const getFilterAriaActiveDescendant = async () => getAttribute(await getFilterInput(), 'aria-activedescendant');
-  const getSelectedDropdownOptionId = async () => await getAttribute(await getSelectedDropdownOption(), 'id');
+  const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
   const getDropdownOpacity = async () => getElementStyle(await getDropdown(), 'opacity');
   const getSelectedDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownShadowRoot(), `.${selectedClass}`);
+    getElementIndex(await getDropdownShadowRoot(), `.${selectedClass}`);
   const getHighlightedDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownShadowRoot(), `.${highlightedClass}`);
+    getElementIndex(await getDropdownShadowRoot(), `.${highlightedClass}`);
   const getAriaSelectedTrueDropdownOptionIndex = async () =>
-    await getElementIndex(await getDropdownShadowRoot(), '[aria-selected=true]');
+    getElementIndex(await getDropdownShadowRoot(), '[aria-selected=true]');
 
   const getSelectValue = async () => getProperty(await getSelect(), 'value');
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
