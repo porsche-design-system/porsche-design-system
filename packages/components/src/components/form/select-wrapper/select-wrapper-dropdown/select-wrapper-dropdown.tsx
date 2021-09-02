@@ -49,15 +49,15 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private buttonElement: HTMLButtonElement;
-  private listElement: HTMLUListElement;
   private filterInputElement: HTMLInputElement;
+  private listElement: HTMLUListElement;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.direction, this.isOpen, this.state, this.filter, this.theme);
+    addComponentCss(this.host, this.direction, this.isOpen, this.disabled, this.state, this.filter, this.theme);
   }
 
   public componentDidRender(): void {
@@ -94,11 +94,11 @@ export class SelectWrapperDropdown {
               disabled={this.disabled}
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               value={this.searchString}
+              {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
               onFocus={() => this.setDropdownVisibility('show')}
               onBlur={() => this.setDropdownVisibility('hide')}
               onKeyDown={this.onListKeyDown}
               onInput={this.onFilterChange}
-              {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
               ref={(el) => (this.filterInputElement = el)}
             />,
             <span
@@ -111,8 +111,8 @@ export class SelectWrapperDropdown {
         ) : (
           <button
             type="button"
+            disabled={this.disabled}
             {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen, dropdownId, this.state)}
-            {...(this.disabled && { disabled: true })}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}

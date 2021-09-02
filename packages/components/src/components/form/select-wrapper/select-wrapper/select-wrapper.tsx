@@ -146,7 +146,6 @@ export class SelectWrapper {
           </label>
           {this.hasCustomDropdown && (
             <PrefixedTagNames.pSelectWrapperDropdown
-              // id={dropdownId}
               // class="dropdown"
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
