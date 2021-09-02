@@ -31,7 +31,7 @@ export class SelectWrapperFilter {
   }
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
+    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapperDropdown');
   }
 
   public componentWillRender(): void {

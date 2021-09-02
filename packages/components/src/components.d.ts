@@ -619,6 +619,7 @@ export namespace Components {
     }
     interface PSelectWrapperDropdown {
         "direction"?: DropdownDirection;
+        "disabled"?: boolean;
         "filter"?: boolean;
         "label"?: string;
         "onOpenChange": (isOpen: boolean) => void;
@@ -1764,6 +1765,7 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapperDropdown {
         "direction"?: DropdownDirection;
+        "disabled"?: boolean;
         "filter"?: boolean;
         "label"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;

@@ -111,7 +111,13 @@ export class SelectWrapper {
     const labelProps = {
       tag: 'span',
       color: 'inherit',
-      onClick: () => (this.hasCustomDropdown ? this.dropdownElement : this.select).focus(),
+      onClick: disabled
+        ? undefined
+        : () =>
+            (this.hasCustomDropdown
+              ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement)
+              : this.select
+            ).focus(),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -144,14 +150,14 @@ export class SelectWrapper {
             <PrefixedTagNames.pSelectWrapperDropdown
               // id={dropdownId}
               // class="dropdown"
+              ref={(el) => (this.dropdownElement = el)}
+              selectRef={this.select}
               direction={this.dropdownDirection}
               filter={this.filter}
               theme={this.theme}
-              onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
               label={this.label}
-              selectRef={this.select}
-              tabindex={0}
-              ref={(el) => (this.dropdownElement = el)}
+              disabled={disabled}
+              onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
             />
           )}
         </div>
