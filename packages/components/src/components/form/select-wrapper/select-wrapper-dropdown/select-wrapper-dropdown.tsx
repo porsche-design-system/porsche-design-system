@@ -67,15 +67,17 @@ export class SelectWrapperDropdown {
   public componentWillLoad(): void {
     this.observePropertiesAndChildren();
 
-    // if (!this.filter) {
-    //   this.selectRef.addEventListener('change', this.syncSelectedIndex);
-    // }
-
-    document.addEventListener('mousedown', this.onClickOutside, true);
+    if (!this.filter) {
+      // input has onBlur event handler
+      document.addEventListener('mousedown', this.onClickOutside, true);
+    }
   }
 
   public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
+    if (!this.filter) {
+      // input has onBlur event handler
+      document.removeEventListener('mousedown', this.onClickOutside, true);
+    }
   }
 
   public render(): JSX.Element {
@@ -196,9 +198,10 @@ export class SelectWrapperDropdown {
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && !e.composedPath().includes(this.host)) {
-      // this.setDropdownVisibility('hide');
-      this.isOpen = false;
-      this.resetFilter();
+      console.log('onClickOutside');
+      this.setDropdownVisibility('hide');
+      // this.isOpen = false;
+      // this.resetFilter();
     }
   };
 
@@ -272,8 +275,8 @@ export class SelectWrapperDropdown {
           } else {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
-          this.setDropdownVisibility('hide');
-          console.log('this.searchString', this.searchString);
+          // this.setDropdownVisibility('hide');
+          // console.log('this.searchString', this.searchString);
         } else {
           this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         }
@@ -328,9 +331,8 @@ export class SelectWrapperDropdown {
       this.selectRef.dispatchEvent(new Event('change', { bubbles: true }));
     } else {
       this.resetHighlightedToSelectedOptionMaps();
+      this.resetFilter();
     }
-
-    this.resetFilter();
   };
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
