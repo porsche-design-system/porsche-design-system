@@ -261,24 +261,19 @@ export class SelectWrapperDropdown {
         break;
       case ' ':
       case 'Spacebar':
-        if (!this.filter) {
-          e.preventDefault();
-          console.log('onListKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
-          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
-          break;
-        }
       case 'Enter':
-        e.preventDefault();
         if (this.filter) {
-          const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
-          if (matchingOptions.length === 1) {
-            this.setOptionSelected(this.optionMaps.indexOf(matchingOptions[0]));
-          } else {
-            this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            const matchingOptions = getMatchingOptionMaps(this.optionMaps, this.searchString);
+            if (matchingOptions.length === 1) {
+              this.setOptionSelected(this.optionMaps.indexOf(matchingOptions[0]));
+            } else {
+              this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+            }
           }
-          // this.setDropdownVisibility('hide');
-          // console.log('this.searchString', this.searchString);
         } else {
+          e.preventDefault();
           this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         }
         break;
