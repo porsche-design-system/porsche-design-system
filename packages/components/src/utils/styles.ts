@@ -61,15 +61,43 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
 type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
+  pseudo?: '::after' | '::before';
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const options: GetFocusStylesOptions = {
     color: color.state.focus,
     offset: 2,
+    pseudo: undefined,
     ...opts,
   };
 
+  const { pseudo } = opts;
+
+  if (pseudo) {
+    return {
+      outline: 'transparent none',
+      '&::-moz-focus-inner': {
+        border: '0',
+      },
+      [`&${pseudo}`]: {
+        outline: 'transparent solid 1px',
+        outlineOffset: `${options.offset}px`,
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      },
+      [`&:focus${pseudo}`]: {
+        outlineColor: options.color,
+      },
+      [`&:focus:not(:focus-visible)${pseudo}`]: {
+        outlineColor: 'transparent',
+      },
+    };
+  }
   return {
     outline: 'transparent solid 1px',
     outlineOffset: `${options.offset}px`,
