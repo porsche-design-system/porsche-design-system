@@ -7,77 +7,125 @@ import {
   getCss,
   getTextHiddenJssStyle,
   getThemedColors,
+  getThemedStateColors,
   getTransition,
   isDark,
+  JssStyle,
+  Styles,
   pxToRemWithUnit,
+  mergeDeep,
 } from '../../../../utils';
-import type { Theme } from '../../../../types';
+import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 import { determineDirection } from './select-wrapper-dropdown-utils';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
-export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): string => {
+const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
+const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
+
+export const getFilterStyles = (/*disabled*/ _: boolean, state: FormState, theme: Theme): Styles => {
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+
+  const [boxShadow, boxShadowHover] = stateColor
+    ? [getStateBoxShadow('currentColor'), getStateBoxShadow(stateHoverColor)]
+    : [getBoxShadow('currentColor'), getBoxShadow(contrastHighColor)];
+
+  const placeHolderStyles: JssStyle = {
+    opacity: 1,
+    color: textColor,
+  };
+
+  return buildGlobalStyles({
+    input: {
+      display: 'block',
+      position: 'absolute',
+      zIndex: 1,
+      bottom: '2px',
+      left: '2px',
+      width: `calc(100% - ${pxToRemWithUnit(44)})`,
+      height: pxToRemWithUnit(44),
+      padding: pxToRemWithUnit(10),
+      outline: 'none',
+      appearance: 'none',
+      boxSizing: 'border-box',
+      border: 'none',
+      opacity: 0,
+      fontFamily: font.family,
+      ...font.size.small,
+      fontWeight: font.weight.regular,
+      textIndent: 0,
+      cursor: 'text',
+      color: textColor,
+      background: backgroundColor,
+      '&::placeholder': placeHolderStyles,
+      '&::-webkit-input-placeholder': placeHolderStyles,
+      '&::-moz-placeholder': placeHolderStyles,
+      '&:-ms-input-placeholder': placeHolderStyles,
+      '&:-moz-placeholder': placeHolderStyles,
+      '&:focus': {
+        opacity: 1, // to display value while typing
+        '&+span': {
+          outlineColor: stateColor || contrastMediumColor,
+        },
+      },
+      // ...(disabled
+      //   ? {
+      //       cursor: 'not-allowed',
+      //       '&+$span': {
+      //         cursor: 'not-allowed',
+      //         boxShadow: stateColor ? getStateBoxShadow(stateColor) : getBoxShadow(disabledColor),
+      //       },
+      //     }
+      //   : {
+      '&:hover+$span': {
+        boxShadow: boxShadowHover,
+      },
+      //     }),
+      '&+span': {
+        position: 'absolute',
+        inset: pxToRemWithUnit(-2),
+        outline: '1px solid transparent',
+        outlineOffset: 2,
+        transition: getTransition('box-shadow'),
+        pointerEvents: 'all',
+        cursor: 'pointer',
+        boxShadow,
+        // ...(!disabled && {
+        //   '&:hover': {
+        //     boxShadow: boxShadowHover,
+        //   },
+        // }),
+      },
+    },
+  });
+};
+
+export const getButtonStyles = (): Styles => {
+  return buildGlobalStyles({
+    button: {
+      width: '100%',
+      backgroundColor: 'transparent',
+      border: 'none',
+      position: 'absolute',
+      top: '0',
+      height: '48px',
+    },
+  });
+};
+
+export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const isDarkTheme = isDark(theme);
-  const {
-    textColor,
-    backgroundColor,
-    contrastLowColor,
-    contrastMediumColor,
-    contrastHighColor,
-    hoverColor,
-    activeColor,
-    disabledColor,
-  } = getThemedColors(theme);
+  const { textColor, backgroundColor, contrastLowColor, hoverColor, activeColor, disabledColor } =
+    getThemedColors(theme);
+
   const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
 
-  return getCss({
-    ...buildHostStyles({
-      [dropdownPositionVar]: 'absolute',
-      // borderColors are not set with !important to allow color override via parent
-      borderColor: contrastMediumColor,
-      '&:hover': {
-        borderColor: contrastHighColor,
-      },
-      ...addImportantToEachRule({
-        position: 'absolute',
-        marginTop: '-48px',
-        paddingTop: '48px',
-        left: 0,
-        right: 0,
-        // fontFamily: font.family,
-        // ...font.size.small,
-        // display: 'block',
-        // position: `var(${dropdownPositionVar})`,
-        // zIndex: 10,
-        // left: 0,
-        // right: 0,
-        // maxHeight: pxToRemWithUnit(308),
-        // overflowY: 'auto',
-        // WebkitOverflowScrolling: 'touch',
-        // scrollBehavior: 'smooth',
-        // color: textColor,
-        // background: backgroundColor,
-        // borderWidth: '1px', // separate css property to allow color override via parent
-        // borderStyle: 'solid', // separate css property to allow color override via parent
-        // scrollbarWidth: 'thin', // firefox
-        // scrollbarColor: 'auto', // firefox
-        // transition: getTransition('border-color'),
-        // transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-        // outline: 'none',
-      }),
-    }),
+  return {
     ...buildGlobalStyles({
-      button: {
-        width: '100%',
-        backgroundColor: 'transparent',
-        border: 'none',
-        position: 'absolute',
-        top: '0',
-        height: '48px',
-      },
       ul: {
         padding: 0,
         margin: 0,
@@ -184,6 +232,58 @@ export const getComponentCss = (direction: DropdownDirectionInternal, isOpen: bo
         paddingLeft: pxToRemWithUnit(24),
       },
     },
+  };
+};
+
+export const getComponentCss = (
+  direction: DropdownDirectionInternal,
+  isOpen: boolean,
+  state: FormState,
+  filter: boolean,
+  theme: Theme
+): string => {
+  const { contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+
+  return getCss({
+    ...buildHostStyles({
+      [dropdownPositionVar]: 'absolute',
+      // borderColors are not set with !important to allow color override via parent
+      borderColor: contrastMediumColor,
+      '&:hover': {
+        borderColor: contrastHighColor,
+      },
+      ...addImportantToEachRule({
+        position: 'absolute',
+        marginTop: '-48px',
+        paddingTop: '48px',
+        left: 0,
+        right: 0,
+        // fontFamily: font.family,
+        // ...font.size.small,
+        // display: 'block',
+        // position: `var(${dropdownPositionVar})`,
+        // zIndex: 10,
+        // left: 0,
+        // right: 0,
+        // maxHeight: pxToRemWithUnit(308),
+        // overflowY: 'auto',
+        // WebkitOverflowScrolling: 'touch',
+        // scrollBehavior: 'smooth',
+        // color: textColor,
+        // background: backgroundColor,
+        // borderWidth: '1px', // separate css property to allow color override via parent
+        // borderStyle: 'solid', // separate css property to allow color override via parent
+        // scrollbarWidth: 'thin', // firefox
+        // scrollbarColor: 'auto', // firefox
+        // transition: getTransition('border-color'),
+        // transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+        // outline: 'none',
+      }),
+    }),
+    ...mergeDeep(
+      filter ? getFilterStyles(/*disabled,*/ false, state, theme) : getButtonStyles(),
+      getListStyles(direction, isOpen, theme)
+    ),
   });
 };
 
@@ -191,7 +291,15 @@ export const addComponentCss = (
   host: HTMLElement,
   direction: DropdownDirection,
   isOpen: boolean,
+  state: FormState,
+  filter: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, theme));
+  console.log(
+    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, state, filter, theme)
+  );
+  attachCss(
+    host,
+    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, state, filter, theme)
+  );
 };

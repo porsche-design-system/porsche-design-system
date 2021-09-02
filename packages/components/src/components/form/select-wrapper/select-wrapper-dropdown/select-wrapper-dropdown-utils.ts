@@ -10,15 +10,30 @@ export const getButtonAriaAttributes = (
   label: string,
   optionMaps: OptionMap[],
   isOpen: boolean,
+  dropdownId: string,
   state: FormState
 ): AriaAttributes => {
   return {
-    'aria-live': 'polite',
+    'aria-controls': dropdownId,
     'aria-haspopup': 'listbox',
+    'aria-live': 'polite',
     'aria-label': `${label}: ${getSelectedOptionMap(optionMaps)?.value}`,
-    'aria-controls': 'list',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-invalid': state === 'error', // TODO: does this make sense on the button?
+  };
+};
+
+export const getFilterInputAriaAttributes = (
+  isOpen: boolean,
+  dropdownId: string,
+  activeDescendantId: number
+): AriaAttributes => {
+  return {
+    'aria-controls': dropdownId,
+    'aria-haspopup': 'listbox',
+    'aria-autocomplete': 'both',
+    'aria-expanded': isOpen ? 'true' : 'false',
+    'aria-activedescendant': `option-${activeDescendantId}`,
   };
 };
 
