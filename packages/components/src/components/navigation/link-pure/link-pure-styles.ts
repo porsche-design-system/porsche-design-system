@@ -14,8 +14,69 @@ import {
   transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
+import { calculateLineHeight, color, font, FontSize, generateTypeScale } from '@porsche-design-system/utilities';
 import { Theme } from '../../../types';
+
+const getPseudoAndSublineSize = (size: string) => {
+  const pseudoElement = {
+    '&::before': {
+      fontSize: size,
+      marginLeft: `${calculateLineHeight(size)}em`,
+    },
+  };
+  switch (size) {
+    case 'xSmall':
+      return {
+        ...generateTypeScale(size),
+        ...pseudoElement,
+      };
+    case 'small':
+      return {
+        ...generateTypeScale(size),
+        ...pseudoElement,
+      };
+    case 'medium':
+      return {
+        ...font.size['20'],
+        ...pseudoElement,
+      };
+    case 'large':
+      return {
+        ...font.size['30'],
+        ...pseudoElement,
+      };
+    case 'xLarge':
+      return {
+        ...font.size.large,
+        ...pseudoElement,
+      };
+  }
+};
+
+export const adjustToFontSize = (size: FontSize) => {
+  if (size === 'inherit') {
+    return {
+      fontSize: 'inherit',
+      lineHeight: 'inherit',
+      '& .icon': {
+        width: '1.5em',
+        height: '1.5em',
+      },
+    };
+  } else {
+    const sizeWithUnit = `${font.size[size].fontSize}px`;
+    return {
+      ...generateTypeScale(sizeWithUnit),
+      '& .icon': {
+        width: `${calculateLineHeight(sizeWithUnit)}em`,
+        height: `${calculateLineHeight(sizeWithUnit)}em`,
+      },
+      '& + .subline': {
+        ...getPseudoAndSublineSize(sizeWithUnit),
+      },
+    };
+  }
+};
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusPseudoStyles({ offset: 1 })));
