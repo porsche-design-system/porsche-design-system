@@ -26,7 +26,6 @@
   padding: 0;
 }
 
-// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
 @mixin text-visible() {
   position: static;
   width: auto;
@@ -38,15 +37,9 @@
   clip-path: none;
 }
 
+// Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
 @mixin text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  @include p-sr-only;
 }
 
 @function str-replace($string, $search, $replace: '') {
