@@ -42,7 +42,7 @@ export class SelectWrapperDropdown {
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
   @Prop() public disabled?: boolean = false;
-  @Prop() public onOpenChange: (isOpen: boolean) => void;
+  @Prop() public onOpenChange: (isOpen: boolean) => void; // to toggle icon--open class
 
   @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
@@ -207,17 +207,11 @@ export class SelectWrapperDropdown {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
 
-    // TODO: respect filter
     if (!this.filter) {
-      if (this.isOpen) {
-        this.listElement.focus();
-      } else {
-        this.buttonElement.focus();
-      }
+      (this.isOpen ? this.listElement : this.buttonElement).focus();
     }
   };
 
-  // TODO: why key down?
   private onButtonKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
@@ -249,7 +243,6 @@ export class SelectWrapperDropdown {
     }
   };
 
-  // TODO: why key down?
   private onListKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
@@ -288,7 +281,6 @@ export class SelectWrapperDropdown {
       case 'Escape':
       case 'Esc':
       case 'Tab':
-        this.resetFilter();
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();
         break;
