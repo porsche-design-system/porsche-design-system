@@ -67,17 +67,11 @@ export class SelectWrapperDropdown {
   public componentWillLoad(): void {
     this.observePropertiesAndChildren();
 
-    if (!this.filter) {
-      // input has onBlur event handler
-      document.addEventListener('mousedown', this.onClickOutside, true);
-    }
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
-    if (!this.filter) {
-      // input has onBlur event handler
-      document.removeEventListener('mousedown', this.onClickOutside, true);
-    }
+    document.removeEventListener('mousedown', this.onClickOutside, true);
   }
 
   public render(): JSX.Element {
@@ -96,15 +90,22 @@ export class SelectWrapperDropdown {
               value={this.searchString}
               {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
               onFocus={() => this.setDropdownVisibility('show')}
-              onBlur={() => this.setDropdownVisibility('hide')}
+              // onBlur={() => {
+              //   console.log('blur');
+              //   this.setDropdownVisibility('hide');
+              // }}
               onKeyDown={this.onListKeyDown}
               onInput={this.onFilterChange}
               ref={(el) => (this.filterInputElement = el)}
             />,
             <span
               onClick={() => {
-                this.setDropdownVisibility('toggle');
-                this.filterInputElement.focus();
+                console.log('span click');
+                if (this.isOpen) {
+                  this.setDropdownVisibility('hide');
+                } else {
+                  this.filterInputElement.focus();
+                }
               }}
             />,
           ]
