@@ -103,9 +103,7 @@ describe('select-wrapper dropdown', () => {
       ].join(' ');
 
       const val = x.toUpperCase();
-      const innerText = [...(beginUnique ? [val] : []), 'Option', ...(!beginUnique ? [val] : [])].join(' ');
-
-      return `<option value="${x}" ${attrs}>${innerText}</option>`;
+      return `<option value="${x}" ${attrs}>${beginUnique ? `${val} Option` : `Option ${val}`}</option>`;
     });
 
     const attrs = [
@@ -744,6 +742,24 @@ describe('select-wrapper dropdown', () => {
           .withContext('for selected index')
           .toBe(0);
       });
+
+      it('should select first matching option via keyboard search', async () => {
+        await initSelect({ beginUnique: true });
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('b');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted custom option')
+          .toBe(1);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected custom option')
+          .toBe(1);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(1);
+      });
     });
 
     describe('when dropdown is open', () => {
@@ -841,10 +857,13 @@ describe('select-wrapper dropdown', () => {
           .toBe('0');
       });
 
-      it('should select option through keyboard search', async () => {
+      it('should highlight first matching option via keyboard search', async () => {
         await initSelect({ beginUnique: true });
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown');
+        await waitForStencilLifecycle(page);
+
         await page.keyboard.press('c');
         await waitForStencilLifecycle(page);
 
@@ -853,10 +872,10 @@ describe('select-wrapper dropdown', () => {
           .toBe(2);
         expect(await getSelectedDropdownOptionIndex())
           .withContext('for selected custom option')
-          .toBe(2);
+          .toBe(0);
         expect(await getSelectedIndex())
           .withContext('for selected index')
-          .toBe(2);
+          .toBe(0);
       });
     });
 
