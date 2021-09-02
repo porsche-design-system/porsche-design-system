@@ -295,9 +295,6 @@ export const addComponentCss = (
   filter: boolean,
   theme: Theme
 ): void => {
-  console.log(
-    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, state, filter, theme)
-  );
   attachCss(
     host,
     getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, state, filter, theme)
