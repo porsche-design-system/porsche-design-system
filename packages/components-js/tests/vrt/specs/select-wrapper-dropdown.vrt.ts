@@ -4,7 +4,7 @@ import {
   getVisualRegressionStatesTester,
   setContentWithDesignSystem,
 } from '../helpers';
-import { OptionMap } from '@porsche-design-system/components/dist/types/components/form/select-wrapper/select-wrapper/select-wrapper-utils';
+import { OptionMap } from '@porsche-design-system/components/dist/types/components/form/select-wrapper/select-wrapper-dropdown/select-wrapper-dropdown-utils';
 import { waitForComponentsReady } from '../../e2e/helpers';
 
 describe('Select Wrapper Dropdown', () => {
