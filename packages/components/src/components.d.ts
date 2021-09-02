@@ -624,6 +624,7 @@ export namespace Components {
         "label"?: string;
         "onOpenChange": (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
         "theme"?: Theme;
     }
     interface PSelectWrapperFilter {
@@ -1770,6 +1771,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
         "theme"?: Theme;
     }
     interface PSelectWrapperFilter {

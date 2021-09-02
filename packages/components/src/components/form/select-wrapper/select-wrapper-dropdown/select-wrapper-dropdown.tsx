@@ -23,7 +23,7 @@ import {
   setHighlightedFirstMatchingOptionMaps,
   hasFilterResults,
 } from './select-wrapper-dropdown-utils';
-import type { Theme } from '../../../../types';
+import type { FormState, Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -34,7 +34,8 @@ export class SelectWrapperDropdown {
   @Element() public host!: HTMLElement;
 
   @Prop() public selectRef?: HTMLSelectElement;
-  @Prop() public label?: string = '';
+  @Prop() public label?: string;
+  @Prop() public state?: FormState;
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
@@ -99,7 +100,7 @@ export class SelectWrapperDropdown {
         ) : (
           <button
             type="button"
-            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen)}
+            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen, this.state)}
             {...(this.disabled && { disabled: true })}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
