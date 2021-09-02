@@ -22,6 +22,8 @@ import {
   getButtonAriaAttributes,
   setHighlightedFirstMatchingOptionMaps,
   hasFilterResults,
+  getFilterInputAriaAttributes,
+  setFilteredOptionMaps,
 } from './select-wrapper-dropdown-utils';
 import type { FormState, Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
@@ -48,14 +50,14 @@ export class SelectWrapperDropdown {
 
   private buttonElement: HTMLButtonElement;
   private listElement: HTMLUListElement;
-  // private filterElement: HTMLPSelectWrapperFilterElement;
+  private filterInputElement: HTMLInputElement;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.direction, this.isOpen, this.theme);
+    addComponentCss(this.host, this.direction, this.isOpen, this.state, this.filter, this.theme);
   }
 
   public componentDidRender(): void {
@@ -77,30 +79,37 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
+    const dropdownId = 'list';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         {this.filter ? (
-          <PrefixedTagNames.pSelectWrapperFilter
-            class="filter"
-            placeholder={getSelectedOptionMap(this.optionMaps)?.value}
-            highlightedIndex={getHighlightedOptionMapIndex(this.optionMaps)}
-            // dropdownId={dropdownId}
-            // disabled={disabled}
-            isOpen={this.isOpen}
-            // state={this.state}
-            theme={this.theme}
-            // value={this.searchString}
-            // onChange={this.onFilterChange}
-            onClick={() => this.setDropdownVisibility('toggle')}
-            onKeyDown={this.onListKeyDown}
-            // ref={(el) => (this.filterElement = el)}
-          />
+          [
+            <input
+              type="text"
+              role="combobox"
+              disabled={this.disabled}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              value={this.searchString}
+              onFocus={() => this.setDropdownVisibility('show')}
+              onBlur={() => this.setDropdownVisibility('hide')}
+              onKeyDown={this.onListKeyDown}
+              onInput={this.onFilterChange}
+              {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
+              ref={(el) => (this.filterInputElement = el)}
+            />,
+            <span
+              onClick={() => {
+                this.setDropdownVisibility('toggle');
+                this.filterInputElement.focus();
+              }}
+            />,
+          ]
         ) : (
           <button
             type="button"
-            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen, this.state)}
+            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen, dropdownId, this.state)}
             {...(this.disabled && { disabled: true })}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
@@ -108,7 +117,7 @@ export class SelectWrapperDropdown {
           />
         )}
         <ul
-          id="list"
+          id={dropdownId}
           role="listbox"
           tabIndex={-1}
           {...getListAriaAttributes(this.label, this.optionMaps, this.filter)}
@@ -199,10 +208,12 @@ export class SelectWrapperDropdown {
     this.onOpenChange(this.isOpen);
 
     // TODO: respect filter
-    if (this.isOpen) {
-      this.listElement.focus();
-    } else {
-      this.buttonElement.focus();
+    if (!this.filter) {
+      if (this.isOpen) {
+        this.listElement.focus();
+      } else {
+        this.buttonElement.focus();
+      }
     }
   };
 
@@ -253,10 +264,12 @@ export class SelectWrapperDropdown {
         break;
       case ' ':
       case 'Spacebar':
-        e.preventDefault();
-        console.log('onListKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
-        this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
-        break;
+        if (!this.filter) {
+          e.preventDefault();
+          console.log('onListKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
+          this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
+          break;
+        }
       case 'Enter':
         e.preventDefault();
         if (this.filter) {
@@ -266,6 +279,8 @@ export class SelectWrapperDropdown {
           } else {
             this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
           }
+          this.setDropdownVisibility('hide');
+          console.log('this.searchString', this.searchString);
         } else {
           this.setOptionSelected(getHighlightedOptionMapIndex(this.optionMaps));
         }
@@ -286,9 +301,11 @@ export class SelectWrapperDropdown {
         this.optionMaps = setLastHighlightedOptionMaps(this.optionMaps);
         break;
       default:
-        console.log('onListKeyDown search', e);
-        // TODO: seems to be difficult to combine multiple keys as native select does
-        this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
+        if (!this.filter) {
+          console.log('onListKeyDown search', e);
+          // TODO: seems to be difficult to combine multiple keys as native select does
+          this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
+        }
     }
   };
 
@@ -342,11 +359,11 @@ export class SelectWrapperDropdown {
     }
   };
 
-  // private onFilterChange = (e: InputEvent): void => {
-  //   this.searchString = (e.target as HTMLInputElement).value;
-  //   this.optionMaps = updateFilteredOptionMaps(this.optionMaps, this.searchString);
-  //
-  //   // in case input is focused via tab instead of click
-  //   this.setDropdownVisibility('show');
-  // };
+  private onFilterChange = (e: InputEvent): void => {
+    this.searchString = (e.target as HTMLInputElement).value;
+    this.optionMaps = setFilteredOptionMaps(this.optionMaps, this.searchString);
+
+    // in case input is focused via tab instead of click
+    this.setDropdownVisibility('show');
+  };
 }
