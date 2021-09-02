@@ -1,5 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
 @mixin with-label() {
   padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
@@ -7,30 +8,6 @@
 
 @mixin without-label() {
   padding: 0;
-}
-
-@mixin label-with-label() {
-  position: static;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
-  border: 0;
-  clip: auto;
-  clip-path: none;
-}
-
-@mixin label-without-label() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
 }
 
 @mixin icon-with-label() {
@@ -74,7 +51,7 @@
   @include with-label;
 
   .label {
-    @include label-with-label;
+    @include text-visible;
   }
 
   .icon {
@@ -227,7 +204,7 @@
     @include without-label;
 
     .label {
-      @include label-without-label;
+      @include text-hidden;
     }
 
     .icon {
@@ -240,7 +217,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -252,7 +229,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -266,7 +243,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -278,7 +255,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -292,7 +269,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -304,7 +281,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -318,7 +295,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -330,7 +307,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
@@ -344,7 +321,7 @@
       @include with-label;
 
       .label {
-        @include label-with-label;
+        @include text-visible;
       }
 
       .icon {
@@ -356,7 +333,7 @@
       @include without-label;
 
       .label {
-        @include label-without-label;
+        @include text-hidden;
       }
 
       .icon {
