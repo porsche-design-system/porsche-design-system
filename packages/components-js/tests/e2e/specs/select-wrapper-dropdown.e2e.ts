@@ -74,32 +74,60 @@ describe('select-wrapper dropdown', () => {
   const getAmountOfDropdownOptgroups = async () =>
     (await getDropdownList()).evaluate((el) => el.querySelectorAll('.optgroup').length);
 
-  const initSelect = (): Promise<void> => {
+  type InitOptions = {
+    amount?: 3 | 5;
+    isNative?: boolean;
+    dropdownDirection?: 'up' | 'down';
+    markupBefore?: string;
+    disabledIndex?: number;
+    selectedIndex?: number;
+    hiddenIndex?: number;
+    beginUnique?: boolean;
+  };
+
+  const initSelect = (opts?: InitOptions): Promise<void> => {
+    const {
+      amount = 3,
+      isNative = false,
+      dropdownDirection,
+      markupBefore = '',
+      disabledIndex,
+      selectedIndex,
+      hiddenIndex,
+      beginUnique,
+    } = opts ?? {};
+
+    const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
+      const attrs = [
+        disabledIndex === idx ? 'disabled' : '',
+        selectedIndex === idx ? 'selected' : '',
+        hiddenIndex === idx ? 'hidden' : '',
+      ].join(' ');
+
+      const val = x.toUpperCase();
+      const innerText = [...(beginUnique ? [val] : []), 'Option', ...(!beginUnique ? [val] : [])].join(' ');
+
+      return `<option value="${x}" ${attrs}>${innerText}</option>`;
+    });
+
+    const attrs = [
+      isNative !== undefined ? `native="${isNative}"` : '',
+      dropdownDirection ? `dropdown-direction="${dropdownDirection}"` : '',
+    ].join(' ');
+
     return setContentWithDesignSystem(
       page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
+      `${markupBefore}
+      <p-select-wrapper label="Some label" ${attrs}>
+        <select>
+          ${options}
         </select>
       </p-select-wrapper>`
     );
   };
 
   it('should render', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b" disabled>Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect({ disabledIndex: 1 });
 
     const disabledDropdownOption = await getDisabledDropdownOption();
 
@@ -114,7 +142,7 @@ describe('select-wrapper dropdown', () => {
       page,
       `
       <p-select-wrapper label="Some label">
-        <select name="some-name">
+        <select>
           <optgroup label="Some optgroup label 1">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -141,7 +169,7 @@ describe('select-wrapper dropdown', () => {
       page,
       `
       <p-select-wrapper label="Some label">
-        <select name="some-name">
+        <select>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <optgroup label="Some optgroup label 2">
@@ -161,39 +189,22 @@ describe('select-wrapper dropdown', () => {
   it('should not render dropdown if touch support is detected', async () => {
     await page.emulate(devices['iPhone X']);
     await initSelect();
+
     const dropdown = await getDropdown();
     expect(dropdown).toBeNull();
   });
 
   it('should not render dropdown if touch support is detected and native is set to false', async () => {
     await page.emulate(devices['iPhone X']);
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label" native="false">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect({ isNative: false });
+
     const dropdown = await getDropdown();
     expect(dropdown).toBeNull();
   });
 
   it('should not render if native prop is set to true', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label" native="true">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect({ isNative: true });
+
     const dropdown = await getDropdown();
     expect(dropdown).toBeNull();
   });
@@ -224,18 +235,8 @@ describe('select-wrapper dropdown', () => {
   });
 
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-text>Some text</p-text>
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
+
     const select = await getSelect();
     const text = await selectNode(page, 'p-text');
 
@@ -392,19 +393,9 @@ describe('select-wrapper dropdown', () => {
   });
 
   it('should not render initial hidden option fields', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value hidden></option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
-    const dropdownOption1 = await getDropdownOption1();
+    await initSelect({ hiddenIndex: 0 });
 
+    const dropdownOption1 = await getDropdownOption1();
     expect(await getCssClasses(dropdownOption1)).toContain(hiddenClass);
   });
 
@@ -456,17 +447,7 @@ describe('select-wrapper dropdown', () => {
   });
 
   it('should not set checkmark icon if option is both selected and disabled', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="" disabled selected>Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect({ disabledIndex: 0, selectedIndex: 0 });
 
     expect(await getDropdownCheckmarkIcon()).toBeNull();
   });
@@ -498,17 +479,7 @@ describe('select-wrapper dropdown', () => {
     const expectedDropdownStyle = '0px none rgb(0, 0, 0)';
 
     it('should set direction to up', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper label="Some label" dropdown-direction="up">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b" disabled>Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect({ dropdownDirection: 'up', disabledIndex: 1 });
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderBottom');
       expect(dropdownStyle).toBe(expectedDropdownStyle);
@@ -519,18 +490,11 @@ describe('select-wrapper dropdown', () => {
         width: 800,
         height: 600,
       });
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="height: 500px;"></div>
-        <p-select-wrapper label="Some label" dropdown-direction="down">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b" disabled>Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect({
+        dropdownDirection: 'down',
+        disabledIndex: 1,
+        markupBefore: '<div style="height: 500px;"></div>',
+      });
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderTop');
       expect(dropdownStyle).toBe(expectedDropdownStyle);
@@ -541,22 +505,7 @@ describe('select-wrapper dropdown', () => {
         width: 800,
         height: 600,
       });
-      await setContentWithDesignSystem(
-        page,
-        `<div style="height: 500px;"></div>
-          <p-select-wrapper label="Some label">
-            <select name="some-name">
-              <option value="a">Option A</option>
-              <option value="b" disabled>Option B</option>
-              <option value="c">Option C</option>
-              <option value="d">Option D</option>
-              <option value="e">Option E</option>
-              <option value="f">Option F</option>
-              <option value="g">Option G</option>
-              <option value="h">Option H</option>
-            </select>
-          </p-select-wrapper>`
-      );
+      await initSelect({ amount: 5, disabledIndex: 1, markupBefore: '<div style="height: 500px;"></div>' });
 
       const select = await getSelect();
       await select.click();
@@ -666,17 +615,7 @@ describe('select-wrapper dropdown', () => {
     });
 
     it('should skip disabled option on arrow down', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper label="Some label">
-          <select name="some-name">
-            <option value="a">A Option</option>
-            <option value="b" disabled>B Option</option>
-            <option value="c">C Option</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect({ disabledIndex: 1 });
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
@@ -686,17 +625,7 @@ describe('select-wrapper dropdown', () => {
     });
 
     it('should skip disabled option on arrow up', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper label="Some label">
-          <select name="some-name">
-            <option value="a">A Option</option>
-            <option value="b" disabled>B Option</option>
-            <option value="c" selected>C Option</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect({ disabledIndex: 1, selectedIndex: 2 });
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowUp'); //this just opens the dropdown
@@ -706,19 +635,8 @@ describe('select-wrapper dropdown', () => {
     });
 
     it('should highlight correct position on multiple key actions', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper label="Some label">
-          <select name="some-name">
-            <option value="a">A Option</option>
-            <option value="b" disabled>B Option</option>
-            <option value="c">C Option</option>
-            <option value="d">D Option</option>
-            <option value="e">E Option</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect({ amount: 5, disabledIndex: 1 });
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
@@ -740,7 +658,7 @@ describe('select-wrapper dropdown', () => {
         .toBe(2);
     });
 
-    it('should open select with spacebar', async () => {
+    it('should open select with space bar', async () => {
       await initSelect();
       const select = await getSelect();
 
@@ -760,7 +678,7 @@ describe('select-wrapper dropdown', () => {
       expect(calls).withContext('for calls').toBe(0);
     });
 
-    it('should select correct option with spacebar', async () => {
+    it('should select correct option with space bar', async () => {
       await initSelect();
       const select = await getSelect();
 
@@ -795,6 +713,7 @@ describe('select-wrapper dropdown', () => {
     describe('when dropdown is not open', () => {
       it('should not select option on PageDown', async () => {
         await initSelect();
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('PageDown');
         await waitForStencilLifecycle(page);
@@ -831,6 +750,7 @@ describe('select-wrapper dropdown', () => {
     describe('when dropdown is open', () => {
       it('should highlight and select last option on PageDown', async () => {
         await initSelect();
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
@@ -862,17 +782,8 @@ describe('select-wrapper dropdown', () => {
       });
 
       it('should highlight and select first option on PageUp', async () => {
-        await setContentWithDesignSystem(
-          page,
-          `
-          <p-select-wrapper label="Some label">
-            <select name="some-name">
-              <option value="a">A Option</option>
-              <option value="b">B Option</option>
-              <option value="c" selected>C Option</option>
-            </select>
-          </p-select-wrapper>`
-        );
+        await initSelect({ selectedIndex: 2 });
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
@@ -905,6 +816,7 @@ describe('select-wrapper dropdown', () => {
 
       it('should not select option on Escape', async () => {
         await initSelect();
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
@@ -931,17 +843,8 @@ describe('select-wrapper dropdown', () => {
       });
 
       it('should select option through keyboard search', async () => {
-        await setContentWithDesignSystem(
-          page,
-          `
-          <p-select-wrapper label="Some label">
-            <select name="some-name">
-              <option value="a">A Option</option>
-              <option value="b">B Option</option>
-              <option value="c">C Option</option>
-            </select>
-          </p-select-wrapper>`
-        );
+        await initSelect({ beginUnique: true });
+
         await page.keyboard.press('Tab');
         await page.keyboard.press('c');
         await waitForStencilLifecycle(page);
@@ -960,8 +863,8 @@ describe('select-wrapper dropdown', () => {
 
     it('should open/close select on mouseclick', async () => {
       await initSelect();
-      const select = await getSelect();
 
+      const select = await getSelect();
       await select.click();
       await waitForStencilLifecycle(page);
 
@@ -985,8 +888,8 @@ describe('select-wrapper dropdown', () => {
 
     it('should open/close select on icon click', async () => {
       await initSelect();
-      const icon = await getSelectIcon();
 
+      const icon = await getSelectIcon();
       const clickIcon = async () => {
         const { top, bottom, left, right } = await getElementPositions(page, icon);
         // click center of where icon is located
@@ -1015,6 +918,7 @@ describe('select-wrapper dropdown', () => {
 
     it('should select second option on mouseclick', async () => {
       await initSelect();
+
       const select = await getSelect();
       const dropdownOption2 = await getDropdownOption2();
 
@@ -1050,9 +954,9 @@ describe('select-wrapper dropdown', () => {
         this.shadowRoot.innerHTML = \`
 <p-select-wrapper>
   <select>
-    <option value='Option A'>Option A</option>
-    <option value='Option B'>Option B</option>
-    <option value='Option C'>Option C</option>
+    <option value="a">Option A</option>
+    <option value="b">Option B</option>
+    <option value="c">Option C</option>
   </select>
 </p-select-wrapper>
 \`; }});
@@ -1109,6 +1013,7 @@ describe('select-wrapper dropdown', () => {
 
     it('should remove and re-attach events', async () => {
       await initSelect();
+
       const dropdownButton = await getDropdownButton();
       const dropdownList = await getDropdownList();
 
