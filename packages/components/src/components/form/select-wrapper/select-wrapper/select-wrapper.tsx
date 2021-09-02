@@ -50,14 +50,9 @@ export class SelectWrapper {
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
 
-  // @State() private isOpen = false;
-
   private select: HTMLSelectElement;
   private iconElement: HTMLElement;
-  // private comboButton: HTMLButtonElement;
-  // private comboList: HTMLUListElement;
   private dropdownElement: HTMLPSelectWrapperDropdownElement;
-  // private filterElement: HTMLPSelectWrapperFilterElement;
   private hasCustomDropdown: boolean;
 
   // this stops click events when filter input is clicked
