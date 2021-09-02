@@ -45,16 +45,16 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
   @State() private hasFilterResults?: boolean = false;
 
+  private buttonElement: HTMLButtonElement;
+  private listElement: HTMLUListElement;
+  private filterElement: HTMLPSelectWrapperFilterElement;
+
   @Listen('focus', { capture: false })
   public onFocus(): void {
     // delegate focus from host to child
     console.log('dropdown onFocus');
     (this.filter ? this.filterElement : this.buttonElement).focus();
   }
-
-  private buttonElement: HTMLButtonElement;
-  private listElement: HTMLUListElement;
-  private filterElement: HTMLPSelectWrapperFilterElement;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
