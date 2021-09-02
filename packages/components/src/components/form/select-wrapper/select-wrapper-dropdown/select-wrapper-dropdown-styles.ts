@@ -38,8 +38,8 @@ export const getButtonStyles = (_disabled: boolean, _state: FormState, _theme: T
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
-export const getFilterStyles = (_disabled: boolean, state: FormState, theme: Theme): Styles => {
-  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+export const getFilterStyles = (disabled: boolean, state: FormState, theme: Theme): Styles => {
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
@@ -84,19 +84,19 @@ export const getFilterStyles = (_disabled: boolean, state: FormState, theme: The
           outlineColor: stateColor || contrastMediumColor,
         },
       },
-      // ...(disabled
-      //   ? {
-      //       cursor: 'not-allowed',
-      //       '&+$span': {
-      //         cursor: 'not-allowed',
-      //         boxShadow: stateColor ? getStateBoxShadow(stateColor) : getBoxShadow(disabledColor),
-      //       },
-      //     }
-      //   : {
-      '&:hover+$span': {
-        boxShadow: boxShadowHover,
-      },
-      //     }),
+      ...(disabled
+        ? {
+            cursor: 'not-allowed',
+            '&+$span': {
+              cursor: 'not-allowed',
+              boxShadow: stateColor ? getStateBoxShadow(stateColor) : getBoxShadow(disabledColor),
+            },
+          }
+        : {
+            '&:hover+$span': {
+              boxShadow: boxShadowHover,
+            },
+          }),
       '&+span': {
         position: 'absolute',
         inset: pxToRemWithUnit(-2),
@@ -106,11 +106,11 @@ export const getFilterStyles = (_disabled: boolean, state: FormState, theme: The
         pointerEvents: 'all',
         cursor: 'pointer',
         boxShadow,
-        // ...(!disabled && {
-        //   '&:hover': {
-        //     boxShadow: boxShadowHover,
-        //   },
-        // }),
+        ...(!disabled && {
+          '&:hover': {
+            boxShadow: boxShadowHover,
+          },
+        }),
       },
     },
   });
@@ -238,6 +238,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
 export const getComponentCss = (
   direction: DropdownDirectionInternal,
   isOpen: boolean,
+  disabled: boolean,
   state: FormState,
   filter: boolean,
   theme: Theme
@@ -281,7 +282,7 @@ export const getComponentCss = (
       }),
     }),
     ...mergeDeep(
-      filter ? getFilterStyles(/*disabled,*/ false, state, theme) : getButtonStyles(/*disabled,*/ false, state, theme),
+      filter ? getFilterStyles(disabled, state, theme) : getButtonStyles(disabled, state, theme),
       getListStyles(direction, isOpen, theme)
     ),
   });
@@ -291,12 +292,13 @@ export const addComponentCss = (
   host: HTMLElement,
   direction: DropdownDirection,
   isOpen: boolean,
+  disabled: boolean,
   state: FormState,
   filter: boolean,
   theme: Theme
 ): void => {
   attachCss(
     host,
-    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, state, filter, theme)
+    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, disabled, state, filter, theme)
   );
 };

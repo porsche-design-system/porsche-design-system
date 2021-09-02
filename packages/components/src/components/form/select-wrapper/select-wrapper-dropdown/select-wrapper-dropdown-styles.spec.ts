@@ -56,19 +56,27 @@ describe('getListStyles()', () => {
 });
 
 describe('getComponentCss()', () => {
-  it.each<[DropdownDirectionInternal, boolean, FormState, boolean, Theme]>([
-    ['down', true, 'none', false, 'light'],
-    ['down', false, 'none', false, 'light'],
-    ['down', true, 'none', true, 'light'],
-    ['down', false, 'none', true, 'light'],
-    ['up', true, 'none', false, 'light'],
-    ['up', false, 'none', false, 'light'],
-    ['up', true, 'none', true, 'light'],
-    ['up', false, 'none', true, 'light'],
+  it.each<[DropdownDirectionInternal, boolean, boolean, FormState, boolean, Theme]>([
+    ['down', true, false, 'none', false, 'light'],
+    ['down', false, false, 'none', false, 'light'],
+    ['down', true, false, 'none', true, 'light'],
+    ['down', false, false, 'none', true, 'light'],
+    ['up', true, false, 'none', false, 'light'],
+    ['up', false, false, 'none', false, 'light'],
+    ['up', true, false, 'none', true, 'light'],
+    ['up', false, false, 'none', true, 'light'],
+    ['down', true, true, 'none', false, 'light'],
+    ['down', false, true, 'none', false, 'light'],
+    ['down', true, true, 'none', true, 'light'],
+    ['down', false, true, 'none', true, 'light'],
+    ['up', true, true, 'none', false, 'light'],
+    ['up', false, true, 'none', false, 'light'],
+    ['up', true, true, 'none', true, 'light'],
+    ['up', false, true, 'none', true, 'light'],
   ])(
     'should return correct css for direction: %o, isOpen: %o and theme: %o',
-    (direction, isOpen, state, filter, theme) => {
-      expect(getComponentCss(direction, isOpen, state, filter, theme)).toMatchSnapshot();
+    (direction, isOpen, disabled, state, filter, theme) => {
+      expect(getComponentCss(direction, isOpen, disabled, state, filter, theme)).toMatchSnapshot();
     }
   );
 });
