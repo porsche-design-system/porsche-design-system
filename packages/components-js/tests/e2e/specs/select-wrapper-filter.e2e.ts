@@ -8,7 +8,6 @@ import {
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
-  getShadowRoot,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -31,31 +30,30 @@ describe('select-wrapper filter', () => {
   const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
-  const filterSelector = 'p-select-wrapper >>> p-select-wrapper-filter';
+  const filterInputSelector = `${dropdownSelector} >>> input`;
   const highlightedClass = 'option--highlighted';
   const selectedClass = 'option--selected';
   const hiddenClass = 'option--hidden';
 
   const getDropdown = () => selectNode(page, dropdownSelector);
-  const getDropdownShadowRoot = async () => getShadowRoot(await getDropdown());
+  const getDropdownList = () => selectNode(page, `${dropdownSelector} >>> [role="listbox"]`);
   const getDropdownOption1 = () => selectNode(page, `${dropdownSelector} >>> .option:nth-child(1)`);
   const getDropdownOption2 = () => selectNode(page, `${dropdownSelector} >>> .option:nth-child(2)`);
   const getSelectedDropdownOption = () => selectNode(page, `${dropdownSelector} >>> .${selectedClass}`);
-  const getFilterInput = () => selectNode(page, `${filterSelector} >>> input`);
+  const getFilterInput = () => selectNode(page, filterInputSelector);
   const getFilterInputValue = async () => getProperty(await getFilterInput(), 'value');
-  const getFilterInputOverlay = () => selectNode(page, `${filterSelector} >>> input + span`);
+  const getFilterInputOverlay = () => selectNode(page, `${filterInputSelector} + span`);
 
   const getFilterPlaceholder = async () => getAttribute(await getFilterInput(), 'placeholder');
   const getFilterAriaActiveDescendant = async () => getAttribute(await getFilterInput(), 'aria-activedescendant');
   const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
   const getDropdownOpacity = async () => getElementStyle(await getDropdown(), 'opacity');
-  const getSelectedDropdownOptionIndex = async () =>
-    getElementIndex(await getDropdownShadowRoot(), `.${selectedClass}`);
+  const getSelectedDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${selectedClass}`);
   const getHighlightedDropdownOptionIndex = async () =>
-    getElementIndex(await getDropdownShadowRoot(), `.${highlightedClass}`);
+    getElementIndex(await getDropdownList(), `.${highlightedClass}`);
   const getAriaSelectedTrueDropdownOptionIndex = async () =>
-    getElementIndex(await getDropdownShadowRoot(), '[aria-selected=true]');
+    getElementIndex(await getDropdownList(), '[aria-selected=true]');
 
   const getSelectValue = async () => getProperty(await getSelect(), 'value');
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
@@ -64,9 +62,9 @@ describe('select-wrapper filter', () => {
   const getFilterOverlayBoxShadow = async () =>
     getElementStyle(await getFilterInputOverlay(), 'boxShadow', { waitForTransition: true });
 
-  const getAmountOfDropdownOptions = async () => (await getDropdownShadowRoot()).evaluate((el) => el.childElementCount);
+  const getAmountOfDropdownOptions = async () => (await getDropdownList()).evaluate((el) => el.childElementCount);
   const getAmountOfHiddenDropdownOptions = async () =>
-    (await getDropdownShadowRoot()).evaluate(
+    (await getDropdownList()).evaluate(
       (el, hiddenClass: string) => el.querySelectorAll(`.${hiddenClass}`).length,
       hiddenClass
     );
@@ -808,13 +806,10 @@ describe('select-wrapper filter', () => {
       expect(status.componentDidLoad['p-select-wrapper-dropdown'])
         .withContext('componentDidLoad: p-select-wrapper-dropdown')
         .toBe(1);
-      expect(status.componentDidLoad['p-select-wrapper-filter'])
-        .withContext('componentDidLoad: p-select-wrapper-filter')
-        .toBe(1);
       expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1); // for label
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(6);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
@@ -827,30 +822,26 @@ describe('select-wrapper filter', () => {
 
       const statusAfterClick = await getLifecycleStatus(page);
       expect(statusAfterClick.componentDidUpdate['p-select-wrapper'])
-        .withContext('componentDidUpdate: p-select-wrapper')
-        .toBe(1);
+        .withContext('1st componentDidUpdate: p-select-wrapper')
+        .toBe(0);
       expect(statusAfterClick.componentDidUpdate['p-select-wrapper-dropdown'])
-        .withContext('componentDidUpdate: p-select-wrapper-dropdown')
+        .withContext('1st componentDidUpdate: p-select-wrapper-dropdown')
         .toBe(1);
-      expect(statusAfterClick.componentDidUpdate['p-select-wrapper-filter'])
-        .withContext('componentDidUpdate: p-select-wrapper-filter')
-        .toBe(1);
-      expect(statusAfterClick.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(3);
+      expect(statusAfterClick.componentDidUpdate.all).withContext('1st componentDidUpdate: all').toBe(1);
 
       await page.keyboard.press('c');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
-      expect(status.componentDidUpdate['p-select-wrapper']).withContext('componentDidUpdate: p-select-wrapper').toBe(2);
+      expect(status.componentDidUpdate['p-select-wrapper'])
+        .withContext('2nd componentDidUpdate: p-select-wrapper')
+        .toBe(0);
       expect(status.componentDidUpdate['p-select-wrapper-dropdown'])
-        .withContext('componentDidUpdate: p-select-wrapper-dropdown')
+        .withContext('2nd componentDidUpdate: p-select-wrapper-dropdown')
         .toBe(2);
-      expect(status.componentDidUpdate['p-select-wrapper-filter'])
-        .withContext('componentDidUpdate: p-select-wrapper-filter')
-        .toBe(2);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(6);
+      expect(status.componentDidUpdate.all).withContext('2nd componentDidUpdate: all').toBe(2);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(6);
+      expect(status.componentDidLoad.all).withContext('2nd componentDidLoad: all').toBe(5);
     });
   });
 });
