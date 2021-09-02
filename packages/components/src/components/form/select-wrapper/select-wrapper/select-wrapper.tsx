@@ -92,11 +92,13 @@ export class SelectWrapper {
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
      * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
      */
-    setAriaAttributes(this.select, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
+    if (!this.hasCustomDropdown) {
+      setAriaAttributes(this.select, {
+        label: this.label,
+        message: this.message || this.description,
+        state: this.state,
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -107,17 +109,13 @@ export class SelectWrapper {
       ['root--disabled']: disabled,
     };
 
-    const labelId = 'label'; // TODO: remove?
     const labelProps = {
       tag: 'span',
       color: 'inherit',
-      onClick: disabled
-        ? undefined
-        : () =>
-            (this.hasCustomDropdown
-              ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement)
-              : this.select
-            ).focus(),
+      ...(!disabled && {
+        onClick: () =>
+          (this.hasCustomDropdown ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement) : this.select).focus(),
+      }),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -125,7 +123,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class={rootClasses}>
-          <label id={labelId} class="label">
+          <label class="label">
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
@@ -152,15 +150,17 @@ export class SelectWrapper {
               // class="dropdown"
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
+              label={this.label}
+              state={this.state}
               direction={this.dropdownDirection}
               filter={this.filter}
               theme={this.theme}
-              label={this.label}
               disabled={disabled}
               onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
             />
           )}
         </div>
+        {/* TODO: check message with aria-live */}
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />
         )}

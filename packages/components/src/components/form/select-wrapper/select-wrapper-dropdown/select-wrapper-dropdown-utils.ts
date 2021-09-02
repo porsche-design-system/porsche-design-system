@@ -2,16 +2,23 @@ import type { AriaAttributes } from 'react';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../../utils';
 import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import type { FormState } from '../../../../types';
 
 const MAX_CHILDREN = 10;
 
-export const getButtonAriaAttributes = (label: string, optionMaps: OptionMap[], isOpen: boolean): AriaAttributes => {
+export const getButtonAriaAttributes = (
+  label: string,
+  optionMaps: OptionMap[],
+  isOpen: boolean,
+  state: FormState
+): AriaAttributes => {
   return {
     'aria-live': 'polite',
     'aria-haspopup': 'listbox',
     'aria-label': `${label}: ${getSelectedOptionMap(optionMaps)?.value}`,
     'aria-controls': 'list',
     'aria-expanded': isOpen ? 'true' : 'false',
+    'aria-invalid': state === 'error', // TODO: does this make sense on the button?
   };
 };
 
