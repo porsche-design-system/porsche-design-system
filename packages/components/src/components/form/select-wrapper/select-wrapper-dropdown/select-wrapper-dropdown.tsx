@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import { getPrefixedTagNames, observeChildren, observeProperties, throwIfRootNodeIsNotOfKind } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -20,8 +20,8 @@ import {
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
   getButtonAriaAttributes,
-  setFirstMatchingOptionMaps,
-  getFirstMatchingOptionMapIndex,
+  setHighlightedFirstMatchingOptionMaps,
+  hasFilterResults,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../../types';
 import { addComponentCss } from './select-wrapper-dropdown-styles';
@@ -38,23 +38,16 @@ export class SelectWrapperDropdown {
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
+  @Prop() public disabled?: boolean = false;
   @Prop() public onOpenChange: (isOpen: boolean) => void;
 
   @State() private isOpen = false;
   @State() private optionMaps: OptionMap[] = [];
   @State() private searchString = '';
-  @State() private hasFilterResults?: boolean = false;
 
   private buttonElement: HTMLButtonElement;
   private listElement: HTMLUListElement;
-  private filterElement: HTMLPSelectWrapperFilterElement;
-
-  @Listen('focus', { capture: false })
-  public onFocus(): void {
-    // delegate focus from host to child
-    console.log('dropdown onFocus');
-    (this.filter ? this.filterElement : this.buttonElement).focus();
-  }
+  // private filterElement: HTMLPSelectWrapperFilterElement;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
@@ -94,19 +87,20 @@ export class SelectWrapperDropdown {
             highlightedIndex={getHighlightedOptionMapIndex(this.optionMaps)}
             // dropdownId={dropdownId}
             // disabled={disabled}
-            // isOpen={this.isOpen}
+            isOpen={this.isOpen}
             // state={this.state}
-            // theme={this.theme}
+            theme={this.theme}
             // value={this.searchString}
             // onChange={this.onFilterChange}
-            // onClick={() => this.setDropdownVisibility('toggle')}
-            // onKeyDown={this.onButtonKeyboardEvents}
-            ref={(el) => (this.filterElement = el)}
+            onClick={() => this.setDropdownVisibility('toggle')}
+            onKeyDown={this.onListKeyDown}
+            // ref={(el) => (this.filterElement = el)}
           />
         ) : (
           <button
             type="button"
             {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen)}
+            {...(this.disabled && { disabled: true })}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}
@@ -120,7 +114,7 @@ export class SelectWrapperDropdown {
           onKeyDown={this.onListKeyDown}
           ref={(el) => (this.listElement = el)}
         >
-          {this.filter && !this.hasFilterResults ? (
+          {this.filter && !hasFilterResults(this.optionMaps) ? (
             <li class="option" aria-live="polite" role="status">
               <span aria-hidden="true">---</span>
               <span class="option__sr">No results found</span>
@@ -203,6 +197,7 @@ export class SelectWrapperDropdown {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
 
+    // TODO: respect filter
     if (this.isOpen) {
       this.listElement.focus();
     } else {
@@ -232,13 +227,13 @@ export class SelectWrapperDropdown {
         console.log('onButtonKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setDropdownVisibility('show');
         break;
-      default:
-        console.log('onButtonKeyDown search', e);
-        // TODO: seems to be difficult to combine multiple keys as native select does
-        const newIndex = getFirstMatchingOptionMapIndex(this.optionMaps, e.key);
-        if (newIndex) {
-          this.setOptionSelected(newIndex);
-        }
+      // default:
+      //   console.log('onButtonKeyDown search', e);
+      //   // TODO: seems to be difficult to combine multiple keys as native select does
+      //   const newIndex = getFirstMatchingOptionMapIndex(this.optionMaps, e.key);
+      //   if (newIndex) {
+      //     this.setOptionSelected(newIndex);
+      //   }
     }
   };
 
@@ -292,7 +287,7 @@ export class SelectWrapperDropdown {
       default:
         console.log('onListKeyDown search', e);
         // TODO: seems to be difficult to combine multiple keys as native select does
-        this.optionMaps = setFirstMatchingOptionMaps(this.optionMaps, e.key);
+        this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
     }
   };
 
