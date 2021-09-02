@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase } from 'change-case';
 
-const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-select-wrapper-filter'];
+const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown'];
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path

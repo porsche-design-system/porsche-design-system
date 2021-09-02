@@ -138,13 +138,16 @@ describe('Select Wrapper', () => {
 
         await forceHoveredState(page, '.hovered p-select-wrapper select');
         await forceHoveredState(page, '.hovered p-select-wrapper span a');
-        await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-filter >>> input');
+        await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
         await forceFocusedState(page, '.focused p-select-wrapper select');
         await forceFocusedState(page, '.focused p-select-wrapper span a');
-        await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-filter >>> input');
+        await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
         await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper select');
         await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper span a');
-        await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-filter >>> input');
+        await forceFocusedHoveredState(
+          page,
+          '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> input'
+        );
       })
     ).toBeFalsy();
   });

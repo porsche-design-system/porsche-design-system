@@ -24,6 +24,13 @@ import {
   setSelectedOptionMaps,
 } from './select-wrapper-dropdown-utils';
 
+describe('getButtonAriaAttributes()', () => {
+  xit('todo', () => {});
+});
+describe('getFilterInputAriaAttributes()', () => {
+  xit('todo', () => {});
+});
+
 describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;

@@ -22,10 +22,23 @@ import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
+export const getButtonStyles = (_disabled: boolean, _state: FormState, _theme: Theme): Styles => {
+  return buildGlobalStyles({
+    button: {
+      width: '100%',
+      backgroundColor: 'transparent',
+      border: 'none',
+      position: 'absolute',
+      top: '0',
+      height: '48px',
+    },
+  });
+};
+
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
-export const getFilterStyles = (/*disabled*/ _: boolean, state: FormState, theme: Theme): Styles => {
+export const getFilterStyles = (_disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
@@ -99,19 +112,6 @@ export const getFilterStyles = (/*disabled*/ _: boolean, state: FormState, theme
         //   },
         // }),
       },
-    },
-  });
-};
-
-export const getButtonStyles = (): Styles => {
-  return buildGlobalStyles({
-    button: {
-      width: '100%',
-      backgroundColor: 'transparent',
-      border: 'none',
-      position: 'absolute',
-      top: '0',
-      height: '48px',
     },
   });
 };
@@ -281,7 +281,7 @@ export const getComponentCss = (
       }),
     }),
     ...mergeDeep(
-      filter ? getFilterStyles(/*disabled,*/ false, state, theme) : getButtonStyles(),
+      filter ? getFilterStyles(/*disabled,*/ false, state, theme) : getButtonStyles(/*disabled,*/ false, state, theme),
       getListStyles(direction, isOpen, theme)
     ),
   });
