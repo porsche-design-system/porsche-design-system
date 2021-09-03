@@ -87,7 +87,7 @@ export class LinkPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    if (isSizeInherit(this.size)) {
+    if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.linkTag)}em`;
         this.iconTag.style.width = size;
@@ -97,14 +97,18 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <TagType
           class="root"
+          {
+            ...(TagType === 'a' &&
+              hasSubline && { 'aria-describedby': 'subline' }) /* TODO: make sure to e2e test functionality */
+          }
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
@@ -128,8 +132,8 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasSlottedSubline(this.host) && (
-          <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
+        {hasSubline && (
+          <PrefixedTagNames.pText id="subline" class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}

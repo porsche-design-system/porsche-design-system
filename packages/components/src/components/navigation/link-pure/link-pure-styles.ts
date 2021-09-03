@@ -11,9 +11,12 @@ import {
   hasSlottedSubline,
   hasVisibleIcon,
   insertSlottedStyles,
+  isDark,
+  mergeDeep,
   paramCaseToCamelCase,
   pxToRem,
   pxToRemWithUnit,
+  Styles,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../utils';
@@ -21,6 +24,14 @@ import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../
 import { calculateLineHeight, color, font, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
 import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
+
+const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: string; activeColor: string } => {
+  return {
+    baseColor: isDarkTheme ? color.darkTheme.default : color.default,
+    hoverColor: isDarkTheme ? color.darkTheme.state.hover : color.state.hover,
+    activeColor: isDarkTheme ? color.darkTheme.state.active : color.state.active,
+  };
+};
 
 const getPseudoAndSublineSize = (size: string) => {
   const sizeWithUnit = `${font.size[size].fontSize}`;
@@ -90,37 +101,16 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusPseudoStyles({ offset: 1 })));
 };
 
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
-};
-
 const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  verticalAlign: 'top',
   position: addImportantToRule('relative'),
   cursor: 'pointer',
-  display: stretch ? 'block' : 'inline-block',
+  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
+  ...(!stretch && { verticalAlign: 'top' }),
 });
 
 const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
   justifyContent: stretch ? 'space-between' : 'flex-start',
 });
-
-const getColor = (theme: Theme) => {
-  if (theme === 'dark') {
-    return {
-      baseColor: color.darkTheme.default,
-      activeColor: color.darkTheme.state.active,
-      activeColor2: color.darkTheme.state.active,
-      hoverColor: color.darkTheme.state.hover,
-    };
-  }
-  return {
-    baseColor: color.default,
-    activeColor: color.state.active,
-    activeColor2: color.brand,
-    hoverColor: color.state.hover,
-  };
-};
 
 const getLabelVisibility = (hideLabel: boolean) => {
   if (hideLabel) {
@@ -140,28 +130,14 @@ const getLabelVisibility = (hideLabel: boolean) => {
 };
 
 const getLabelAlignment = (alignLabel: AlignLabel) => {
-  if (alignLabel === 'left') {
-    return {
-      order: 1,
-      marginRight: '-0.125em',
-    };
-  }
   return {
-    order: 0,
-    marginRight: 0,
+    order: alignLabel === 'left' ? 1 : 0,
   };
 };
 
 const getLabelAlignment2 = (alignLabel: AlignLabel) => {
-  if (alignLabel === 'left') {
-    return {
-      paddingRight: 0,
-      margin: `0 ${pxToRem(4)}rem 0 0`,
-    };
-  }
   return {
-    paddingRight: '0.125em',
-    margin: `0 0 0 ${pxToRem(4)}rem`,
+    margin: alignLabel === 'left' ? `0 ${pxToRem(4)}rem 0 0` : `0 0 0 ${pxToRem(4)}rem`,
   };
 };
 
@@ -175,89 +151,106 @@ export const getComponentCss = (
   alignLabel: AlignLabel,
   theme: Theme
 ): string => {
+  const isDarkTheme = isDark(theme);
+  const { baseColor, hoverColor, activeColor } = getColors(isDarkTheme);
   const hasSubline = hasSlottedSubline(host);
-  const { baseColor, activeColor, activeColor2, hoverColor } = getColor(theme);
-  return getCss({
-    ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
-    root: {
-      display: 'flex',
-      alignItems: 'flexStart',
-      width: '100%',
-      margin: '0',
-      padding: '0',
-      boxSizing: 'border-box',
-      outline: 'transparent none',
-      appearance: 'none',
-      border: 'none',
-      textDecoration: 'none',
-      textAlign: 'left',
-      background: 'transparent',
-      color: active ? activeColor2 : baseColor,
-      transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
-      ...getFocusStyles({ offset: 1, pseudo: '::before' }),
-      '&:active': {
-        color: activeColor,
-        '& + .subline': {
-          color: activeColor,
-        },
-      },
-      '&:hover': {
-        color: hoverColor,
-        '& + .subline': {
-          color: hoverColor,
-        },
-      },
-      ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
-      ...buildResponsiveStyles(size, adjustToFontSize),
-    },
-    icon: {
-      flexShrink: '0',
-      width: '1.5em',
-      height: '1.5em',
-      ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
-    },
-    label: {
-      display: 'block',
-      boxSizing: 'border-box',
-      border: 0,
-      ...(hasVisibleIcon(icon) && buildResponsiveStyles(hideLabel, getLabelVisibility)),
-      ...(hasVisibleIcon(icon) && !hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment2)),
-      ...(hasVisibleIcon(icon) &&
-        (alignLabel === 'right' || hasSubline) && {
-          paddingRight: '0.125em',
-          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
-        }),
-    },
-    ...(hasSubline && {
-      subline: {
+
+  return getCss(
+    mergeDeep<Styles>({
+      ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
+      root: {
         display: 'flex',
-        transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-        marginTop: addImportantToRule('4px'),
-        color: active ? activeColor2 : baseColor,
-        ...(hasVisibleIcon(icon) && buildResponsiveStyles(hideLabel, getLabelVisibility)),
-        ...(hasVisibleIcon(icon) && {
-          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
-          paddingRight: '0.125em',
-          '&::before': {
-            content: '""',
-          },
-        }),
-      },
-    }),
-    ...addImportantToEachRule({
-      '::slotted(a)': {
-        display: 'block',
-        position: 'static',
-        textDecoration: 'none',
-        color: 'inherit',
-        lineHeight: 'inherit',
+        alignItems: 'flexStart',
+        flexWrap: 'wrap',
+        width: '100%',
+        margin: '0',
+        padding: '0',
+        boxSizing: 'border-box',
         outline: 'transparent none',
+        appearance: 'none',
+        border: 'none',
+        textDecoration: 'none',
+        textAlign: 'left',
+        background: 'transparent',
+        color: active ? activeColor : baseColor,
+        transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
+        ...getFocusStyles({ offset: 1, pseudo: '::before' }),
+        '&::before': {
+          outline: 'transparent solid 1px',
+          outlineOffset: 1,
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          transform: 'translate(.125rem, 0)' /* TODO: make breakpoint customizable */,
+        },
+        '&:hover': {
+          color: hoverColor,
+          '& + .subline': {
+            color: hoverColor,
+          },
+        },
+        '&:active': {
+          color: activeColor,
+          '& + .subline': {
+            color: activeColor,
+          },
+        },
+        ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
+        ...buildResponsiveStyles(size, adjustToFontSize),
       },
-    }),
-    '::slotted(p)': {
-      margin: 0,
-    },
-  });
+      ...(hasVisibleIcon(icon) && {
+        icon: {
+          flexShrink: '0',
+          width: '1.5em',
+          height: '1.5em',
+          ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
+        },
+        label: {
+          ...buildResponsiveStyles(hideLabel, getLabelVisibility),
+          ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment2)),
+          ...((alignLabel === 'right' || hasSubline) && {
+            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+          }),
+        },
+      }),
+      ...(hasSubline && {
+        subline: {
+          display: 'flex',
+          flexBasis: '100%',
+          transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+          marginTop: addImportantToRule('4px'),
+          color: active ? activeColor : baseColor,
+          ...(hasVisibleIcon(icon) && {
+            ...buildResponsiveStyles(hideLabel, getLabelVisibility),
+            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+            '&::before': {
+              content: '""',
+            },
+          }),
+        },
+      }),
+      ...addImportantToEachRule({
+        '::slotted(a)': {
+          display: 'block',
+          position: 'static',
+          textDecoration: 'none',
+          color: 'inherit',
+          lineHeight: 'inherit',
+          outline: 'transparent none',
+        },
+      }),
+      '::slotted(p)': {
+        margin: 0,
+      },
+    })
+  );
+};
+
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };
 
 export const addComponentCss = (
@@ -270,6 +263,5 @@ export const addComponentCss = (
   alignLabel: AlignLabel,
   theme: Theme
 ): void => {
-  // Subline does not support stretch, therefore it needs to be called with false if with subline
   attachCss(host, getComponentCss(host, icon, active, stretch, size, hideLabel, alignLabel, theme));
 };
