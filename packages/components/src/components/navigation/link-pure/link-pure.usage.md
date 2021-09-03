@@ -24,7 +24,7 @@ To enable wider usage order and stretch are customizable. Please use under recom
 | Variant | Usage |
 |----|----|
 | Icon left | This is the default state and should be used whenever possible. |
-| Icon right | On special occasions, the icon can be placed on the right side of the label (e.g. step navigation, ). | 
+| Icon right | On special occasions, the icon can be placed on the right side of the label (e.g. step navigation). | 
 | Stretch | It's recommended to use stretch only on small viewports or areas (e.g. mobile views or sidebars). Please consider that the greater the distance between icon and label, the less they will be perceived as a visual group. |
 
 ## Usage
