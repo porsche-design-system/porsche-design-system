@@ -21,7 +21,7 @@ import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
 export const SELECT_HEIGHT = 48;
-export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
+export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;

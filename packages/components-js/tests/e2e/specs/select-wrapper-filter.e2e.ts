@@ -48,7 +48,7 @@ describe('select-wrapper filter', () => {
   const getFilterAriaActiveDescendant = async () => getAttribute(await getFilterInput(), 'aria-activedescendant');
   const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
 
-  const getDropdownOpacity = async () => getElementStyle(await getDropdown(), 'opacity');
+  const getDropdownOpacity = async () => getElementStyle(await getDropdownList(), 'opacity');
   const getSelectedDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${selectedClass}`);
   const getHighlightedDropdownOptionIndex = async () =>
     getElementIndex(await getDropdownList(), `.${highlightedClass}`);
@@ -198,7 +198,7 @@ describe('select-wrapper filter', () => {
 
     expect(await getDropdownOpacity())
       .withContext('after 3rd input click')
-      .toBe('0');
+      .toBe('1'); // dropdown should stay open
   });
 
   it('should focus filter when tab key is pressed', async () => {
@@ -396,8 +396,6 @@ describe('select-wrapper filter', () => {
       await waitForStencilLifecycle(page);
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-
       await page.keyboard.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
@@ -409,8 +407,6 @@ describe('select-wrapper filter', () => {
     it('should highlight correct position on multiple key actions', async () => {
       await initSelect({ amount: 5, disabledIndex: 1 });
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
@@ -436,20 +432,21 @@ describe('select-wrapper filter', () => {
       await addEventListener(select, 'change', () => calls++);
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
+
       expect(await getDropdownOpacity())
-        .withContext('for opacity')
+        .withContext('initially')
         .toBe('0');
 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
+
       expect(await getDropdownOpacity())
-        .withContext('for opacity')
+        .withContext('after space')
         .toBe('1');
       expect(calls).withContext('for calls').toBe(0);
     });
 
-    it('should not select highlighted option with spacebar an option list should stay open', async () => {
+    it('should not select highlighted option with spacebar and option list should stay open', async () => {
       await initSelect();
 
       const select = await getSelect();
@@ -462,244 +459,143 @@ describe('select-wrapper filter', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
+
       expect(await getDropdownOpacity())
         .withContext('for opacity')
         .toBe('1');
       expect(calls).withContext('for calls').toBe(0);
     });
 
-    it('should change selected option on ArrowLeft while dropdown is hidden', async () => {
-      await initSelect();
-      const select = await getSelect();
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
+    describe('when dropdown is not open', () => {
+      it('should not select option on PageDown', async () => {
+        await initSelect();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('PageDown');
+        await waitForStencilLifecycle(page);
 
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('ArrowLeft');
-      await waitForStencilLifecycle(page);
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(0);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(0);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(0);
+      });
 
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(2);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(2);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(2);
-      expect(calls).withContext('for calls').toBe(1);
+      it('should not select option on PageUp', async () => {
+        await initSelect();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('PageUp');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(0);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(0);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(0);
+      });
     });
 
-    it('should change selected option on ArrowRight while dropdown is hidden', async () => {
-      await initSelect();
-      const select = await getSelect();
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
+    describe('when dropdown is open', () => {
+      it('should not select option on Escape', async () => {
+        await initSelect();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown');
+        await waitForStencilLifecycle(page);
 
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('ArrowRight');
-      await waitForStencilLifecycle(page);
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(1);
 
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(1);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(1);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(1);
-      expect(calls).withContext('for calls').toBe(1);
+        await page.keyboard.press('Escape');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(0);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(0);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(0);
+        expect(await getDropdownOpacity())
+          .withContext('for opacity')
+          .toBe('0');
+      });
+
+      it('should highlight and select last option on PageDown', async () => {
+        await initSelect();
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Space');
+        await waitForStencilLifecycle(page);
+        await page.keyboard.press('PageDown');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(2);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(0);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(0);
+
+        await page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(2);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(2);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(2);
+      });
+
+      it('should highlight and select first option on PageUp', async () => {
+        await initSelect({ selectedIndex: 2 });
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Space');
+        await waitForStencilLifecycle(page);
+        await page.keyboard.press('PageUp');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(0);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(2);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(2);
+
+        await page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getHighlightedDropdownOptionIndex())
+          .withContext('for highlighted option')
+          .toBe(0);
+        expect(await getSelectedDropdownOptionIndex())
+          .withContext('for selected option')
+          .toBe(0);
+        expect(await getSelectedIndex())
+          .withContext('for selected index')
+          .toBe(0);
+      });
     });
 
-    it('should change selected option on ArrowLeft while dropdown is open and should close dropdown', async () => {
-      await initSelect();
-      const select = await getSelect();
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('ArrowLeft');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(2);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(2);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(2);
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
-      expect(calls).withContext('for calls').toBe(1);
-    });
-
-    it('should change selected option on ArrowRight while dropdown is open and should close dropdown', async () => {
-      await initSelect();
-      const select = await getSelect();
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('ArrowRight');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(1);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(1);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(1);
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
-      expect(calls).withContext('for calls').toBe(1);
-    });
-
-    it('should not select option on Escape', async () => {
-      await initSelect();
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('ArrowDown');
-      await waitForStencilLifecycle(page);
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(1);
-
-      await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(0);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(0);
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
-    });
-
-    it('should not select option on PageDown while dropdown is hidden', async () => {
-      await initSelect();
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('PageDown');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(0);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(0);
-    });
-
-    it('should not select option on PageUp while dropdown is hidden', async () => {
-      await initSelect();
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('PageUp');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(0);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(0);
-    });
-
-    it('should highlight and select last option on PageDown while dropdown is visible', async () => {
-      await initSelect();
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('PageDown');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(2);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(0);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(0);
-
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(2);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(2);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(2);
-    });
-
-    it('should highlight and select first option on PageUp while dropdown is visible', async () => {
-      await initSelect({ selectedIndex: 2 });
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      await page.keyboard.press('PageUp');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(2);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(2);
-
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected option')
-        .toBe(0);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(0);
-    });
-
-    it('should open/close dropdown on mouseclick', async () => {
+    it('should open dropdown on mouseclick and stay open on 2nd click', async () => {
       await initSelect();
       const filterInput = await getFilterInput();
 
@@ -718,7 +614,7 @@ describe('select-wrapper filter', () => {
 
       expect(await getDropdownOpacity())
         .withContext('for opacity')
-        .toBe('0');
+        .toBe('1');
       expect(await getHighlightedDropdownOptionIndex())
         .withContext('for highlighted option')
         .toBe(0);
@@ -755,7 +651,6 @@ describe('select-wrapper filter', () => {
       await addEventListener(filterInput, 'blur', () => calls++);
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
