@@ -43,10 +43,14 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
       height: '48px',
       outline: '1px solid transparent',
       outlineOffset: 2,
+      cursor: 'pointer',
       transition: getTransition('box-shadow'),
       boxShadow,
       '&:hover:not(:disabled)': {
         boxShadow: boxShadowHover,
+      },
+      '&:hover:not(:disabled) + ul': {
+        borderColor: contrastHighColor,
       },
       '&:focus': {
         outlineColor: stateColor || contrastMediumColor,
@@ -56,6 +60,13 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
       },
       ...(isOpen && {
         boxShadow: stateColor ? getStateBoxShadow(stateColor) : boxShadow,
+        '&::before': {
+          content: '',
+          position: 'absolute',
+          inset: 0,
+          outline: '1px solid red',
+          outlineOffset: '2px',
+        },
       }),
     },
   });
@@ -142,8 +153,16 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
 export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const isDarkTheme = isDark(theme);
-  const { textColor, backgroundColor, contrastLowColor, hoverColor, activeColor, disabledColor } =
-    getThemedColors(theme);
+  const {
+    textColor,
+    backgroundColor,
+    contrastHighColor,
+    contrastMediumColor,
+    contrastLowColor,
+    hoverColor,
+    activeColor,
+    disabledColor,
+  } = getThemedColors(theme);
 
   const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
 
@@ -168,11 +187,15 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         scrollBehavior: 'smooth',
         borderWidth: '1px', // separate css property to allow color override via parent
         borderStyle: 'solid', // separate css property to allow color override via parent
+        borderColor: contrastMediumColor,
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
+        '&:hover': {
+          borderColor: contrastHighColor,
+        },
         ...(isDirectionDown
           ? {
               top: 'calc(100%-1px)',
