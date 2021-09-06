@@ -43,8 +43,9 @@ export class SelectWrapperDropdown {
   @Prop() public filter?: boolean = false;
   @Prop() public disabled?: boolean = false;
   @Prop() public onOpenChange: (isOpen: boolean) => void; // to toggle icon--open class
+  @Prop() public isOpenOverride?: boolean = false; // for vrt testing only
 
-  @State() private isOpen = false;
+  @State() private isOpen = this.isOpenOverride;
   @State() private optionMaps: OptionMap[] = [];
   @State() private searchString = '';
 
