@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -57,12 +57,12 @@ export class SelectWrapper {
 
   // this stops click events when filter input is clicked
   // TODO: still needed?
-  @Listen('click', { capture: false })
-  public onClick(e: MouseEvent): void {
-    if (this.filter) {
-      e.stopPropagation();
-    }
-  }
+  // @Listen('click', { capture: false })
+  // public onClick(e: MouseEvent): void {
+  //   if (this.filter) {
+  //     e.stopPropagation();
+  //   }
+  // }
 
   public connectedCallback(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
@@ -141,7 +141,6 @@ export class SelectWrapper {
           </label>
           {this.hasCustomDropdown && (
             <PrefixedTagNames.pSelectWrapperDropdown
-              // class="dropdown"
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
               label={this.label}

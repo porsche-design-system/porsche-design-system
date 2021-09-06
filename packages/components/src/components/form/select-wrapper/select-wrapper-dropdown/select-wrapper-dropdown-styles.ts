@@ -22,21 +22,44 @@ import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
-export const getButtonStyles = (_disabled: boolean, _state: FormState, _theme: Theme): Styles => {
+const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
+const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
+
+export const getButtonStyles = (_disabled: boolean, state: FormState, theme: Theme, isOpen: boolean): Styles => {
+  const { contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const [boxShadow, boxShadowHover] = stateColor
+    ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]
+    : [getBoxShadow(contrastMediumColor), getBoxShadow(contrastHighColor)];
+
   return buildGlobalStyles({
     button: {
+      position: 'absolute',
+      padding: '0',
       width: '100%',
       backgroundColor: 'transparent',
       border: 'none',
-      position: 'absolute',
       top: '0',
       height: '48px',
+      outline: '1px solid transparent',
+      outlineOffset: 2,
+      transition: getTransition('box-shadow'),
+      boxShadow,
+      '&:hover:not(:disabled)': {
+        boxShadow: boxShadowHover,
+      },
+      '&:focus': {
+        outlineColor: stateColor || contrastMediumColor,
+      },
+      '&:disabled': {
+        ...(state === 'none' && { boxShadow: `inset 0 0 0 1px ${disabledColor}` }),
+      },
+      ...(isOpen && {
+        boxShadow: stateColor ? getStateBoxShadow(stateColor) : boxShadow,
+      }),
     },
   });
 };
-
-const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
-const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
 export const getFilterStyles = (disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
@@ -99,7 +122,7 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
           }),
       '&+span': {
         position: 'absolute',
-        inset: pxToRemWithUnit(-2),
+        inset: 0,
         outline: '1px solid transparent',
         outlineOffset: 2,
         transition: getTransition('box-shadow'),
@@ -243,46 +266,19 @@ export const getComponentCss = (
   filter: boolean,
   theme: Theme
 ): string => {
-  const { contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-
   return getCss({
     ...buildHostStyles({
       [dropdownPositionVar]: 'absolute',
-      // borderColors are not set with !important to allow color override via parent
-      borderColor: contrastMediumColor,
-      '&:hover': {
-        borderColor: contrastHighColor,
-      },
       ...addImportantToEachRule({
-        position: 'absolute',
+        position: `var(${dropdownPositionVar})`,
         marginTop: '-48px',
         paddingTop: '48px',
         left: 0,
         right: 0,
-        // fontFamily: font.family,
-        // ...font.size.small,
-        // display: 'block',
-        // position: `var(${dropdownPositionVar})`,
-        // zIndex: 10,
-        // left: 0,
-        // right: 0,
-        // maxHeight: pxToRemWithUnit(308),
-        // overflowY: 'auto',
-        // WebkitOverflowScrolling: 'touch',
-        // scrollBehavior: 'smooth',
-        // color: textColor,
-        // background: backgroundColor,
-        // borderWidth: '1px', // separate css property to allow color override via parent
-        // borderStyle: 'solid', // separate css property to allow color override via parent
-        // scrollbarWidth: 'thin', // firefox
-        // scrollbarColor: 'auto', // firefox
-        // transition: getTransition('border-color'),
-        // transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-        // outline: 'none',
       }),
     }),
     ...mergeDeep(
-      filter ? getFilterStyles(disabled, state, theme) : getButtonStyles(disabled, state, theme),
+      filter ? getFilterStyles(disabled, state, theme) : getButtonStyles(disabled, state, theme, isOpen),
       getListStyles(direction, isOpen, theme)
     ),
   });
