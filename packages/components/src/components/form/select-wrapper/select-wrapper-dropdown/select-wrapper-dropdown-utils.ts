@@ -64,20 +64,20 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
 };
 
 export const handleScroll = (host: HTMLElement, highlightedIndex: number): void => {
-  const hostElementHeightThreshold = 200; // ??
+  const hostElementHeightThreshold = 276; // based on 10 * OPTION_HEIGHT with some buffer
   const { scrollHeight, scrollTop } = host;
 
   if (scrollHeight > hostElementHeightThreshold) {
-    const highlightedNode = getHTMLElements(host.shadowRoot, 'div')[highlightedIndex];
+    const highlightedNode = getHTMLElements(host, 'li')[highlightedIndex];
 
     if (highlightedNode) {
-      const { offsetTop, offsetHeight } = highlightedNode;
+      const { offsetTop, offsetHeight } = highlightedNode; // offsetHeight is usually 32px but can be more if multiline
       const scrollBottom = hostElementHeightThreshold + scrollTop;
       const elementBottom = offsetTop + offsetHeight;
       if (elementBottom > scrollBottom) {
         host.scrollTop = elementBottom - hostElementHeightThreshold;
-      } else if (offsetTop < scrollTop) {
-        host.scrollTop = offsetTop;
+      } else if (offsetTop - OPTION_HEIGHT < scrollTop) {
+        host.scrollTop = offsetTop - OPTION_HEIGHT;
       }
     }
   }
