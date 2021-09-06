@@ -60,13 +60,7 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
       },
       ...(isOpen && {
         boxShadow: stateColor ? getStateBoxShadow(stateColor) : boxShadow,
-        '&::before': {
-          content: '',
-          position: 'absolute',
-          inset: 0,
-          outline: '1px solid red',
-          outlineOffset: '2px',
-        },
+        outlineColor: stateColor || contrastMediumColor,
       }),
     },
   });
@@ -78,7 +72,7 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow('currentColor'), getStateBoxShadow(stateHoverColor)]
-    : [getBoxShadow('currentColor'), getBoxShadow(contrastHighColor)];
+    : [getBoxShadow(contrastMediumColor), getBoxShadow(contrastHighColor)];
 
   const placeHolderStyles: JssStyle = {
     opacity: 1,
@@ -117,6 +111,9 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
         '&+span': {
           outlineColor: stateColor || contrastMediumColor,
         },
+      },
+      '&:hover:not(:disabled) ~ ul': {
+        borderColor: stateHoverColor || contrastHighColor,
       },
       ...(disabled
         ? {
