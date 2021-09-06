@@ -166,10 +166,10 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
   return {
     ...buildGlobalStyles({
       ul: {
+        position: `var(${dropdownPositionVar})`, // for vrt tests
         padding: 0,
         margin: 0,
         marginTop: pxToRemWithUnit(-1),
-        position: 'absolute',
         color: textColor,
         background: backgroundColor,
         fontFamily: font.family,
@@ -291,7 +291,8 @@ export const getComponentCss = (
     ...buildHostStyles({
       [dropdownPositionVar]: 'absolute',
       ...addImportantToEachRule({
-        position: `var(${dropdownPositionVar})`,
+        display: 'block',
+        position: `var(${dropdownPositionVar})`, // for vrt tests
         marginTop: '-48px',
         paddingTop: '48px',
         left: 0,

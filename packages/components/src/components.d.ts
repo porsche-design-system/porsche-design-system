@@ -621,6 +621,7 @@ export namespace Components {
         "direction"?: DropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
+        "isOpenOverride"?: boolean;
         "label"?: string;
         "onOpenChange": (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
@@ -1749,6 +1750,7 @@ declare namespace LocalJSX {
         "direction"?: DropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
+        "isOpenOverride"?: boolean;
         "label"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
