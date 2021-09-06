@@ -284,12 +284,16 @@ export class SelectWrapperDropdown {
         this.resetHighlightedToSelectedOptionMaps();
         break;
       case 'PageUp':
-        e.preventDefault();
-        this.optionMaps = setFirstHighlightedOptionMaps(this.optionMaps);
+        if (this.isOpen) {
+          e.preventDefault();
+          this.optionMaps = setFirstHighlightedOptionMaps(this.optionMaps);
+        }
         break;
       case 'PageDown':
-        e.preventDefault();
-        this.optionMaps = setLastHighlightedOptionMaps(this.optionMaps);
+        if (this.isOpen) {
+          e.preventDefault();
+          this.optionMaps = setLastHighlightedOptionMaps(this.optionMaps);
+        }
         break;
       default:
         if (!this.filter) {
