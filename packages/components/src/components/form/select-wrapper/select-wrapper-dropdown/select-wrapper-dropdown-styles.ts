@@ -218,6 +218,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       cursor: 'pointer',
       textAlign: 'left',
       wordBreak: 'break-word',
+      boxSizing: 'border-box',
       transition: getTransition('color') + ',' + getTransition('background-color'),
       '&[role="status"]': {
         cursor: 'not-allowed',

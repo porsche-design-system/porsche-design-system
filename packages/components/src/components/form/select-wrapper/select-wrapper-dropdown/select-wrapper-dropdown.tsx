@@ -49,7 +49,7 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private buttonElement: HTMLButtonElement;
-  private filterInputElement: HTMLInputElement;
+  // private filterInputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
   public connectedCallback(): void {
@@ -61,7 +61,7 @@ export class SelectWrapperDropdown {
   }
 
   public componentDidRender(): void {
-    handleScroll(this.host, getHighlightedOptionMapIndex(this.optionMaps));
+    handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
   }
 
   public componentWillLoad(): void {
@@ -89,23 +89,25 @@ export class SelectWrapperDropdown {
               placeholder={getSelectedOptionMap(this.optionMaps)?.value}
               value={this.searchString}
               {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
-              onFocus={() => this.setDropdownVisibility('show')}
+              // onFocus={() => this.setDropdownVisibility('show')}
               // onBlur={() => {
               //   console.log('blur');
               //   this.setDropdownVisibility('hide');
               // }}
               onKeyDown={this.onListKeyDown}
               onInput={this.onFilterChange}
-              ref={(el) => (this.filterInputElement = el)}
+              onClick={() => this.setDropdownVisibility('show')}
+              // ref={(el) => (this.filterInputElement = el)}
             />,
             <span
               onClick={() => {
                 console.log('span click');
-                if (this.isOpen) {
-                  this.setDropdownVisibility('hide');
-                } else {
-                  this.filterInputElement.focus();
-                }
+                this.setDropdownVisibility('toggle');
+                // if (this.isOpen) {
+                //   this.setDropdownVisibility('hide');
+                // } else {
+                //   this.filterInputElement.focus();
+                // }
               }}
             />,
           ]
@@ -221,13 +223,11 @@ export class SelectWrapperDropdown {
       case 'ArrowUp':
       case 'Up':
         e.preventDefault();
-        this.setDropdownVisibility('show');
         this.cycleDropdown('up');
         break;
       case 'ArrowDown':
       case 'Down':
         e.preventDefault();
-        this.setDropdownVisibility('show');
         this.cycleDropdown('down');
         break;
       case ' ':
@@ -333,6 +333,7 @@ export class SelectWrapperDropdown {
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
     console.log('cycleDropdown', direction);
+    this.setDropdownVisibility('show');
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
   }
