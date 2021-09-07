@@ -106,9 +106,7 @@ export class LinkPure {
       <Host>
         <TagType
           class="root"
-          {
-            ...(TagType === 'a' && hasSubline && { 'aria-describedby': 'subline' }) // TODO: make sure to e2e test functionality
-          }
+          {...(TagType === 'a' && hasSubline && { 'aria-describedby': 'subline' })}
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
