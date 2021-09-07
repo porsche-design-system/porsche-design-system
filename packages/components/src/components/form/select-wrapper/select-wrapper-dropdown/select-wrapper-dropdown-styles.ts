@@ -280,7 +280,7 @@ export const getComponentCss = (
         paddingTop: pxToRemWithUnit(SELECT_HEIGHT),
         left: 0,
         right: 0,
-        color: disabled ? disabledColor : stateColor || contrastMediumColor,
+        color: stateColor || (disabled ? disabledColor : contrastMediumColor),
       }),
     }),
     ...(!disabled && {
