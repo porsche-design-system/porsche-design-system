@@ -61,7 +61,7 @@
   },
   {
     "chunkShortName": "link",
-    "size": 4916,
+    "size": 4918,
     "gzipSize": 1978
   },
   {
@@ -71,13 +71,13 @@
   },
   {
     "chunkShortName": "link-social",
-    "size": 6382,
-    "gzipSize": 2123
+    "size": 6384,
+    "gzipSize": 2126
   },
   {
     "chunkShortName": "main",
-    "size": 67382,
-    "gzipSize": 22778
+    "size": 67432,
+    "gzipSize": 22797
   },
   {
     "chunkShortName": "marque",
@@ -101,8 +101,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 19556,
-    "gzipSize": 6228
+    "size": 19765,
+    "gzipSize": 6273
   },
   {
     "chunkShortName": "spinner",
