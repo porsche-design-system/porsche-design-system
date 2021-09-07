@@ -23,13 +23,12 @@ import { SELECT_HEIGHT, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-s
 
 const dropdownPositionVar = '--p-dropdown-position';
 
-const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
-const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
+const getBoxShadow = (stateColor: string): string => `currentColor 0 0 0 ${stateColor ? 2 : 1}px inset`;
 
 export const getButtonStyles = (_disabled: boolean, state: FormState, theme: Theme, isOpen: boolean): Styles => {
   const { contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor } = getThemedStateColors(theme, state);
-  const boxShadow = stateColor ? getStateBoxShadow('currentColor') : getBoxShadow('currentColor');
+  const boxShadow = getBoxShadow(stateColor);
 
   return buildGlobalStyles({
     button: {
@@ -68,8 +67,7 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
 export const getFilterStyles = (disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor } = getThemedStateColors(theme, state);
-
-  const boxShadow = stateColor ? getStateBoxShadow('currentColor') : getBoxShadow('currentColor');
+  const boxShadow = getBoxShadow(stateColor);
 
   const placeHolderStyles: JssStyle = {
     opacity: 1,
@@ -146,6 +144,15 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
 
   const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
 
+  const baseDirectionPseudoStyle: JssStyle = {
+    content: '""',
+    display: 'block',
+    position: 'sticky',
+    width: '100%',
+    height: '1px',
+    background: contrastLowColor,
+  };
+
   return {
     ...buildGlobalStyles({
       ul: {
@@ -182,13 +189,8 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               borderTop: 'none',
               boxShadow: '0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)',
               '&::before': {
-                content: '""',
-                display: 'block',
-                position: 'sticky',
+                ...baseDirectionPseudoStyle,
                 top: 0,
-                width: '100%',
-                height: '1px',
-                background: contrastLowColor,
               },
             }
           : {
@@ -196,13 +198,8 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               borderBottom: 'none',
               boxShadow: '0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)',
               '&::after': {
-                content: '""',
-                display: 'block',
-                position: 'sticky',
+                ...baseDirectionPseudoStyle,
                 bottom: 0,
-                width: '100%',
-                height: '1px',
-                background: contrastLowColor,
               },
             }),
         ...(!isOpen && {
@@ -272,6 +269,7 @@ export const getComponentCss = (
 ): string => {
   const { contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+
   return getCss({
     ...buildHostStyles({
       [dropdownPositionVar]: 'absolute',

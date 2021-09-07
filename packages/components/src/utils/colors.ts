@@ -71,8 +71,9 @@ export const getThemedStateColors = (
   state: FormState
 ): { stateColor: string; stateHoverColor: string } => {
   const isDarkTheme = isDark(theme);
-  const stateColor = (isDarkTheme ? color.darkTheme : color).notification[state];
-  const stateHoverColor = (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state];
 
-  return { stateColor, stateHoverColor };
+  return {
+    stateColor: (isDarkTheme ? color.darkTheme : color).notification[state],
+    stateHoverColor: (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state],
+  };
 };
