@@ -144,6 +144,7 @@ export class SelectWrapper {
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
               label={this.label}
+              message={this.message}
               state={this.state}
               direction={this.dropdownDirection}
               filter={this.filter}
