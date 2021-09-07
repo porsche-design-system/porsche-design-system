@@ -18,7 +18,14 @@ import {
   transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import { calculateLineHeight, color, font, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
+import {
+  calculateLineHeight,
+  color,
+  font,
+  FontSizeLineHeight,
+  generateTypeScale,
+  srOnly,
+} from '@porsche-design-system/utilities';
 import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
@@ -30,25 +37,22 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
   };
 };
 
-// TODO: optimize before merge!
-const getPseudoAndSublineSize = (size: string) => {
-  const sizeWithUnit = `${font.size[size].fontSize}`;
-
+const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight: string) => {
   const pseudoElement = {
     '&::before': {
-      fontSize: sizeWithUnit,
-      marginLeft: `${calculateLineHeight(sizeWithUnit)}em`,
+      fontSize,
+      marginLeft: lineHeight,
     },
   };
-  switch (size) {
-    case 'xSmall':
+  switch (textSize) {
+    case 'x-small':
       return {
-        ...generateTypeScale(sizeWithUnit),
+        ...font.size.xSmall,
         ...pseudoElement,
       };
     case 'small':
       return {
-        ...generateTypeScale(sizeWithUnit),
+        ...font.size.small,
         ...pseudoElement,
       };
     case 'medium':
@@ -61,7 +65,7 @@ const getPseudoAndSublineSize = (size: string) => {
         ...font.size['30'],
         ...pseudoElement,
       };
-    case 'xLarge':
+    case 'x-large':
       return {
         ...font.size.large,
         ...pseudoElement,
@@ -69,9 +73,8 @@ const getPseudoAndSublineSize = (size: string) => {
   }
 };
 
-// TODO: optimize before merge!
-export const adjustToFontSize = (size: TextSize) => {
-  if (isSizeInherit(size)) {
+export const adjustToFontSize = (textSize: TextSize) => {
+  if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
@@ -81,16 +84,17 @@ export const adjustToFontSize = (size: TextSize) => {
       },
     };
   } else {
-    const camelCaseSize = paramCaseToCamelCase(size);
-    const sizeWithUnit = `${font.size[camelCaseSize].fontSize}`;
+    const fontSize = `${font.size[paramCaseToCamelCase(textSize)].fontSize}`;
+    const lineHeight = `${calculateLineHeight(fontSize)}em`;
+
     return {
-      ...generateTypeScale(sizeWithUnit),
+      ...generateTypeScale(fontSize),
       '& .icon': {
-        width: `${calculateLineHeight(sizeWithUnit)}em`,
-        height: `${calculateLineHeight(sizeWithUnit)}em`,
+        width: lineHeight,
+        height: lineHeight,
       },
       '& ~ .subline': {
-        ...getPseudoAndSublineSize(camelCaseSize),
+        ...getPseudoAndSublineSize(textSize, fontSize, lineHeight),
       },
     };
   }
@@ -200,10 +204,9 @@ export const getComponentCss = (
       label: {
         ...buildResponsiveStyles(hideLabel, getLabelVisibility),
         ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
-        ...(hasSubline &&
-          alignLabel === 'right' && {
-            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
-          }),
+        ...((hasSubline || alignLabel === 'right') && {
+          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+        }),
       },
     }),
     ...(hasSubline && {
