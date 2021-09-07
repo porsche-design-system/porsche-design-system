@@ -156,12 +156,12 @@ export const getComponentCss = (
   const hasSubline = hasSlottedSubline(host);
 
   return getCss(
+    // TODO: do we need the wrapping mergeDeep at all?
     mergeDeep<Styles>({
       ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
       root: {
         display: 'flex',
         alignItems: 'flexStart',
-        flexWrap: 'wrap',
         width: '100%',
         margin: '0',
         padding: '0',
@@ -175,17 +175,6 @@ export const getComponentCss = (
         color: active ? activeColor : baseColor,
         transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
         ...getFocusStyles({ offset: 1, pseudo: '::before' }),
-        '&::before': {
-          outline: 'transparent solid 1px',
-          outlineOffset: 1,
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          transform: 'translate(.125rem, 0)' /* TODO: make breakpoint customizable */,
-        },
         '&:hover': {
           color: hoverColor,
           '& + .subline': {

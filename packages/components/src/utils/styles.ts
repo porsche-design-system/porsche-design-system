@@ -74,6 +74,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
 
   const { pseudo } = opts;
 
+  // TODO: shouldn't this be extracted into an own function?
   if (pseudo) {
     return {
       outline: 'transparent none',
@@ -133,7 +134,10 @@ export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles
       content: '""',
       display: 'block',
       position: 'absolute',
-      inset: 0,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       outline: '1px solid transparent',
       outlineOffset: `${options.offset}px`,
     },
