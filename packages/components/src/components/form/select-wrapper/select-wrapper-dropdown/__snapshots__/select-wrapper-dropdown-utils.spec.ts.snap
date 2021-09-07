@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], isOpen: false and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: false 1`] = `
 Object {
-  "aria-expanded": "false",
+  "aria-label": "Some label",
 }
 `;
 
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], isOpen: false and hasFilter: true 1`] = `Object {}`;
-
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], isOpen: false and hasFilter: true 2`] = `Object {}`;
-
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}], isOpen: true and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: false 2`] = `
 Object {
-  "aria-expanded": "true",
+  "aria-label": "Some label",
 }
 `;
 
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}], isOpen: false and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: false 3`] = `
 Object {
   "aria-activedescendant": "option-1",
-  "aria-expanded": "false",
+  "aria-label": "Some label",
 }
 `;
 
-exports[`getAriaAttributes() should return correct aria attributes for optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}], isOpen: true and hasFilter: false 1`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: false 4`] = `
 Object {
   "aria-activedescendant": "option-1",
-  "aria-expanded": "true",
+  "aria-label": "Some label",
 }
 `;
+
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: true 1`] = `Object {}`;
+
+exports[`getListAriaAttributes() should return correct aria attributes for optionMaps: "Some label", isOpen: [ [Object], [Object] ] and hasFilter: true 2`] = `Object {}`;
 
 exports[`getOptionAriaAttributes() should return correct aria attributes for optionMap: {"disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false} 1`] = `
 Object {
