@@ -35,15 +35,14 @@ export class Icon {
   @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
-  private lazyIconResolve: () => void;
   private key = 0; // use unique random key to trick stencil cache
 
-  public componentWillLoad(): Promise<void> {
-    return this.initIntersectionObserver();
+  public componentWillLoad(): void {
+    this.initIntersectionObserver();
   }
 
-  public componentWillUpdate(): Promise<void> {
-    return this.initIntersectionObserver();
+  public componentWillUpdate(): void {
+    this.initIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
@@ -60,17 +59,13 @@ export class Icon {
 
     return (
       <Host>
-        <i key={this.key++} class={rootClasses} innerHTML={this.svgContent} />
+        <i key={this.key++} class={rootClasses} />
       </Host>
     );
   }
 
-  private initIntersectionObserver(): Promise<void> {
+  private initIntersectionObserver(): void {
     if (this.lazy && isBrowser()) {
-      // create a promise that is resolved after the lazy icon is loaded
-      const lazyIconPromise = new Promise<void>((resolve) => {
-        this.lazyIconResolve = resolve;
-      });
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
         this.intersectionObserver = new IntersectionObserver(
@@ -78,42 +73,40 @@ export class Icon {
             if (entries[0].isIntersecting) {
               // is in viewport
               observer.unobserve(this.host);
-              this.loadIcon().then(() => {
-                // icon is loaded, complete stencil lifecycle
-                this.lazyIconResolve();
-              });
-            } else {
-              // is not in viewport, resolve promise immediately
-              this.lazyIconResolve();
+              this.loadIcon();
             }
           },
           { rootMargin: '50px' }
         );
       }
       this.intersectionObserver.observe(this.host);
-      return lazyIconPromise;
     } else {
-      return this.loadIcon();
+      this.loadIcon();
     }
   }
 
-  private loadIcon = (): Promise<void> => {
+  private loadIcon(): void {
     if (this.svgContent) {
       // reset old icon if there is any
-      const el = getShadowRootHTMLElement(this.host, 'i');
-      if (el) {
-        // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
-        el.innerHTML = '';
-      }
+      this.setIconContent('');
     }
 
     const url = buildIconUrl(this.source ?? this.name);
 
-    return getSvgContent(url).then((iconContent) => {
+    getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
       if (url === buildIconUrl(this.source ?? this.name)) {
+        this.setIconContent(iconContent);
         this.svgContent = iconContent;
       }
     });
-  };
+  }
+
+  private setIconContent(content: string): void {
+    const el = getShadowRootHTMLElement(this.host, 'i');
+    // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
+    if (el) {
+      el.innerHTML = content;
+    }
+  }
 }
