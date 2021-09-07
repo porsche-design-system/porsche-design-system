@@ -14,6 +14,7 @@ import {
   Styles,
   pxToRemWithUnit,
   mergeDeep,
+  addImportantToRule,
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
@@ -33,11 +34,11 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
   return buildGlobalStyles({
     button: {
       position: 'absolute',
-      padding: '0',
+      padding: 0,
       width: '100%',
       backgroundColor: 'transparent',
       border: 'none',
-      top: '0',
+      top: 0,
       height: SELECT_HEIGHT,
       outline: '1px solid transparent',
       outlineOffset: 2,
@@ -80,8 +81,8 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
       display: 'block',
       position: 'absolute',
       zIndex: 1,
-      bottom: '2px',
-      left: '2px',
+      bottom: 2, // should be rem?
+      left: 2, // should be rem?
       width: `calc(100% - ${pxToRemWithUnit(44)})`,
       height: pxToRemWithUnit(44),
       padding: pxToRemWithUnit(10),
@@ -111,7 +112,7 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
       },
       ...(disabled && {
         cursor: 'not-allowed',
-        '&+$span': {
+        '&+span': {
           cursor: 'not-allowed',
         },
       }),
@@ -148,6 +149,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
   return {
     ...buildGlobalStyles({
       ul: {
+        display: 'block',
         position: `var(${dropdownPositionVar})`, // for vrt tests
         padding: 0,
         margin: 0,
@@ -156,7 +158,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         background: backgroundColor,
         fontFamily: font.family,
         ...font.size.small,
-        display: 'block',
         zIndex: 10,
         left: 0,
         right: 0,
@@ -191,7 +192,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               },
             }
           : {
-              bottom: pxToRemWithUnit(47),
+              bottom: pxToRemWithUnit(SELECT_HEIGHT - 1),
               borderBottom: 'none',
               boxShadow: '0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)',
               '&::after': {
@@ -272,22 +273,22 @@ export const getComponentCss = (
   const { contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
   return getCss({
-    ...(!disabled && {
-      ':host(:hover)': addImportantToEachRule({
-        color: stateHoverColor || contrastHighColor,
-      }),
-    }),
     ...buildHostStyles({
       [dropdownPositionVar]: 'absolute',
       ...addImportantToEachRule({
         display: 'block',
         position: `var(${dropdownPositionVar})`, // for vrt tests
-        marginTop: '-48px',
-        paddingTop: '48px',
+        marginTop: pxToRemWithUnit(-SELECT_HEIGHT),
+        paddingTop: pxToRemWithUnit(SELECT_HEIGHT),
         left: 0,
         right: 0,
         color: disabled ? disabledColor : stateColor || contrastMediumColor,
       }),
+    }),
+    ...(!disabled && {
+      ':host(:hover)': {
+        color: addImportantToRule(stateHoverColor || contrastHighColor),
+      },
     }),
     ...mergeDeep(
       filter ? getFilterStyles(disabled, state, theme) : getButtonStyles(disabled, state, theme, isOpen),

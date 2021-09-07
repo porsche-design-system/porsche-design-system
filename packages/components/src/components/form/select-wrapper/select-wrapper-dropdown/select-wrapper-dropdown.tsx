@@ -51,7 +51,6 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private buttonElement: HTMLButtonElement;
-  // private filterInputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
   public connectedCallback(): void {
@@ -68,7 +67,6 @@ export class SelectWrapperDropdown {
 
   public componentWillLoad(): void {
     this.observePropertiesAndChildren();
-
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
@@ -106,7 +104,6 @@ export class SelectWrapperDropdown {
                 onKeyDown={this.onListKeyDown}
                 onInput={this.onFilterChange}
                 onClick={() => this.setDropdownVisibility('show')}
-                // ref={(el) => (this.filterInputElement = el)}
               />,
               <span
                 onClick={() => {
