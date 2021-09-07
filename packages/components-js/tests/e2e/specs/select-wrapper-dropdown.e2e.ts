@@ -449,14 +449,16 @@ describe('select-wrapper dropdown', () => {
   });
 
   describe('hover state', () => {
-    it('should change box-shadow color when select is hovered', async () => {
+    it('should change box-shadow color when dropdown button is hovered', async () => {
       await initSelect();
 
-      const select = await getSelect();
-      const initialBoxShadow = await getElementStyle(select, 'boxShadow');
+      const dropdownButton = await getDropdownButton();
+      const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
 
-      await select.hover();
-      expect(await getElementStyle(select, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      await dropdownButton.hover();
+      expect(await getElementStyle(dropdownButton, 'boxShadow', { waitForTransition: true })).not.toBe(
+        initialBoxShadow
+      );
     });
 
     it('should change box-shadow color of select when label text is hovered', async () => {
@@ -472,25 +474,25 @@ describe('select-wrapper dropdown', () => {
   });
 
   describe('dropdown position', () => {
-    const expectedDropdownStyle = '0px none rgb(0, 0, 0)';
+    const expectedDropdownStyle = '0px none rgb(50, 54, 57)';
 
     it('should set direction to up', async () => {
-      await initSelect({ dropdownDirection: 'up', disabledIndex: 1 });
+      await initSelect({ dropdownDirection: 'up' });
+
+      const dropdownButton = await getDropdownButton();
+      await dropdownButton.click();
+      await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderBottom');
       expect(dropdownStyle).toBe(expectedDropdownStyle);
     });
 
     it('should set direction to down', async () => {
-      await page.setViewport({
-        width: 800,
-        height: 600,
-      });
-      await initSelect({
-        dropdownDirection: 'down',
-        disabledIndex: 1,
-        markupBefore: '<div style="height: 500px;"></div>',
-      });
+      await initSelect({ dropdownDirection: 'down' });
+
+      const dropdownButton = await getDropdownButton();
+      await dropdownButton.click();
+      await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderTop');
       expect(dropdownStyle).toBe(expectedDropdownStyle);
@@ -501,10 +503,10 @@ describe('select-wrapper dropdown', () => {
         width: 800,
         height: 600,
       });
-      await initSelect({ amount: 5, disabledIndex: 1, markupBefore: '<div style="height: 500px;"></div>' });
+      await initSelect({ amount: 5, markupBefore: '<div style="height: 550px;"></div>' });
 
-      const select = await getSelect();
-      await select.click();
+      const dropdownButton = await getDropdownButton();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
       const dropdownStyle = await getElementStyle(await getDropdownList(), 'borderBottom');

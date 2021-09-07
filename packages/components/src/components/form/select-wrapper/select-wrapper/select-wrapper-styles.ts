@@ -89,9 +89,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       display: 'block',
       position: 'relative',
       color: textColor,
-      '&:hover $dropdown': {
-        borderColor: contrastHighColor,
-      },
       '&--disabled': {
         '& $icon, & .label__text': {
           color: disabledColor,
@@ -99,11 +96,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
     label: {
-      '&:hover': {
-        '&+.filter': {
-          color: contrastHighColor,
-        },
-      },
       '&__text': {
         ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
         display: 'block',
@@ -151,9 +143,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       '&__icon': {
         marginRight: pxToRemWithUnit(4),
       },
-    },
-    dropdown: {
-      marginTop: pxToRemWithUnit(-1),
     },
   });
 };
