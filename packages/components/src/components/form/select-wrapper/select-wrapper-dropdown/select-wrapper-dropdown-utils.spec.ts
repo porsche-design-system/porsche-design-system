@@ -22,14 +22,9 @@ import {
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
+  getFilterInputAriaAttributes,
+  getButtonAriaAttributes,
 } from './select-wrapper-dropdown-utils';
-
-describe('getButtonAriaAttributes()', () => {
-  xit('todo', () => {});
-});
-describe('getFilterInputAriaAttributes()', () => {
-  xit('todo', () => {});
-});
 
 const baseOptionMap: OptionMap = {
   value: 'Some Value',
@@ -79,6 +74,31 @@ export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[]
     value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,
   }));
 
+describe('getButtonAriaAttributes()', () => {
+  it.each<[boolean, string, string, string, string]>([
+    [true, 'dropdown-id', 'label-id', 'button-id', 'message-id'],
+    [false, 'dropdown-id', 'label-id', 'button-id', 'message-id'],
+  ])(
+    'should return correct aria attributes for isOpen: %o, dropdownId: %o, labelId: %o, buttonId: %o and messageId: %o',
+    (isOpen, dropdownId, labelId, buttonId, messageId) => {
+      expect(getButtonAriaAttributes(isOpen, dropdownId, labelId, buttonId, messageId)).toMatchSnapshot();
+    }
+  );
+});
+
+describe('getFilterInputAriaAttributes()', () => {
+  it.each<[boolean, string, number]>([
+    [true, 'dropdown-id', 0],
+    [false, 'dropdown-id', 0],
+    [false, 'dropdown-id', 1],
+  ])(
+    'should return correct aria attributes for isOpen: %o, dropdownId: %o and activeDescendantId: %o',
+    (isOpen, dropdownId, activeDescendantId) => {
+      expect(getFilterInputAriaAttributes(isOpen, dropdownId, activeDescendantId)).toMatchSnapshot();
+    }
+  );
+});
+
 describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;
@@ -91,7 +111,7 @@ describe('getListAriaAttributes()', () => {
     ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
     ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
   ])(
-    'should return correct aria attributes for optionMaps: %j, isOpen: %s and hasFilter: %s',
+    'should return correct aria attributes for label: %o, optionMaps: %j and hasFilter: %o',
     (label, optionMaps, hasFilter) => {
       expect(getListAriaAttributes(label, optionMaps, hasFilter)).toMatchSnapshot();
     }
