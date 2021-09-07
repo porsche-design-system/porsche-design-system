@@ -172,9 +172,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
-        borderWidth: '1px', // separate css property to allow color override via parent
-        borderStyle: 'solid', // separate css property to allow color override via parent
-        borderColor: contrastMediumColor,
+        border: `1px solid ${contrastMediumColor}`,
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),

@@ -151,17 +151,6 @@ describe('select-wrapper filter', () => {
     expect(await getFilterOverlayBoxShadow()).not.toBe(initialBoxShadow);
   });
 
-  it('should change box-shadow color of filter input when label text is hovered', async () => {
-    await initSelect();
-
-    const filterInputOverlay = await getFilterInputOverlay();
-    const label = await getLabelText();
-    const initialBoxShadow = await getElementStyle(filterInputOverlay, 'boxShadow');
-    await label.hover();
-
-    expect(await getFilterOverlayBoxShadow()).not.toBe(initialBoxShadow);
-  });
-
   it('should make dropdown visible if filter input is clicked and hidden via outside click', async () => {
     await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
