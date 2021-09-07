@@ -56,12 +56,16 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
         outlineColor: stateColor || contrastMediumColor,
       },
       '&:disabled': {
+        cursor: 'not-allowed',
         ...(state === 'none' && { boxShadow: `inset 0 0 0 1px ${disabledColor}` }),
       },
       ...(isOpen && {
         boxShadow: stateColor ? getStateBoxShadow(stateColor) : boxShadow,
         outlineColor: stateColor || contrastMediumColor,
       }),
+    },
+    span: {
+      display: 'none',
     },
   });
 };
@@ -113,7 +117,7 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
         },
       },
       '&:hover:not(:disabled) ~ ul': {
-        borderColor: stateHoverColor || contrastHighColor,
+        borderColor: contrastHighColor,
       },
       ...(disabled
         ? {
