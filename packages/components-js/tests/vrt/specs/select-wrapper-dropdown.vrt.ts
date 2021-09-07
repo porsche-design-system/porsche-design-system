@@ -95,6 +95,16 @@ describe('Select Wrapper Dropdown', () => {
 
         await waitForComponentsReady(page);
 
+        // visually hide button since it produces some absolute borders
+        await page.evaluate(() => {
+          document.querySelectorAll('p-select-wrapper-dropdown').forEach((el) => {
+            const btn = el.shadowRoot.querySelector('button');
+            if (btn) {
+              btn.style.display = 'none';
+            }
+          });
+        });
+
         await forceHoveredState(page, '.hovered p-select-wrapper-dropdown >>> li');
       })
     ).toBeFalsy();
