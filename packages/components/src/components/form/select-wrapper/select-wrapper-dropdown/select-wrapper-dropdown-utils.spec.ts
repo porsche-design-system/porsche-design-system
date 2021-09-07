@@ -31,6 +31,54 @@ describe('getFilterInputAriaAttributes()', () => {
   xit('todo', () => {});
 });
 
+const baseOptionMap: OptionMap = {
+  value: 'Some Value',
+  disabled: false,
+  hidden: false,
+  initiallyHidden: false,
+  selected: false,
+  highlighted: false,
+};
+
+type GenerateOptionMapsOptions = {
+  amount?: number;
+  selectedIndex?: number;
+  highlightedIndex?: number;
+  disabledIndex?: number;
+  hiddenIndex?: number;
+  initiallyHiddenIndex?: number;
+  title?: string;
+};
+
+export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
+  const {
+    amount = 4,
+    selectedIndex,
+    highlightedIndex,
+    disabledIndex,
+    hiddenIndex,
+    initiallyHiddenIndex,
+    title,
+  } = props || {};
+
+  return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
+    ...baseOptionMap,
+    value: `Value ${idx + 1}`,
+    ...(selectedIndex === idx && { selected: true, highlighted: true }),
+    ...(highlightedIndex === idx && { highlighted: true }),
+    ...(disabledIndex === idx && { disabled: true }),
+    ...(hiddenIndex === idx && { hidden: true }),
+    ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
+    title,
+  }));
+};
+
+export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
+  options.map((item, idx) => ({
+    ...item,
+    value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,
+  }));
+
 describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;
@@ -104,54 +152,6 @@ describe('determineDirection()', () => {
 
 // handleScroll is not tested on purpose
 // describe('handleScroll()', () => {});
-
-const baseOptionMap: OptionMap = {
-  value: 'Some Value',
-  disabled: false,
-  hidden: false,
-  initiallyHidden: false,
-  selected: false,
-  highlighted: false,
-};
-
-type GenerateOptionMapsOptions = {
-  amount?: number;
-  selectedIndex?: number;
-  highlightedIndex?: number;
-  disabledIndex?: number;
-  hiddenIndex?: number;
-  initiallyHiddenIndex?: number;
-  title?: string;
-};
-
-export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
-  const {
-    amount = 4,
-    selectedIndex,
-    highlightedIndex,
-    disabledIndex,
-    hiddenIndex,
-    initiallyHiddenIndex,
-    title,
-  } = props || {};
-
-  return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
-    ...baseOptionMap,
-    value: `Value ${idx + 1}`,
-    ...(selectedIndex === idx && { selected: true, highlighted: true }),
-    ...(highlightedIndex === idx && { highlighted: true }),
-    ...(disabledIndex === idx && { disabled: true }),
-    ...(hiddenIndex === idx && { hidden: true }),
-    ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
-    title,
-  }));
-};
-
-export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
-  options.map((item, idx) => ({
-    ...item,
-    value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,
-  }));
 
 const getIndexOfSelectedOption = (options: OptionMap[]): number => options.findIndex((item) => item.selected);
 const getIndexOfHighlightedOption = (options: OptionMap[]): number => options.findIndex((item) => item.highlighted);
