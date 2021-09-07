@@ -37,6 +37,7 @@ export class SelectWrapperDropdown {
 
   @Prop() public selectRef?: HTMLSelectElement;
   @Prop() public label?: string;
+  @Prop() public message?: string;
   @Prop() public state?: FormState;
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
@@ -77,51 +78,64 @@ export class SelectWrapperDropdown {
 
   public render(): JSX.Element {
     const dropdownId = 'list';
+    const labelId = 'label';
+    const buttonId = 'value';
+    const messageId = 'message';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        {this.filter ? (
-          [
-            <input
-              type="text"
-              role="combobox"
-              disabled={this.disabled}
-              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
-              value={this.searchString}
-              {...getFilterInputAriaAttributes(this.isOpen, dropdownId, getHighlightedOptionMapIndex(this.optionMaps))}
-              // onFocus={() => this.setDropdownVisibility('show')}
-              // onBlur={() => {
-              //   console.log('blur');
-              //   this.setDropdownVisibility('hide');
-              // }}
-              onKeyDown={this.onListKeyDown}
-              onInput={this.onFilterChange}
-              onClick={() => this.setDropdownVisibility('show')}
-              // ref={(el) => (this.filterInputElement = el)}
-            />,
-            <span
-              onClick={() => {
-                console.log('span click');
-                this.setDropdownVisibility('toggle');
-                // if (this.isOpen) {
+        {this.filter
+          ? [
+              <input
+                type="text"
+                role="combobox"
+                disabled={this.disabled}
+                placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+                value={this.searchString}
+                {...getFilterInputAriaAttributes(
+                  this.isOpen,
+                  dropdownId,
+                  getHighlightedOptionMapIndex(this.optionMaps)
+                )}
+                // onFocus={() => this.setDropdownVisibility('show')}
+                // onBlur={() => {
+                //   console.log('blur');
                 //   this.setDropdownVisibility('hide');
-                // } else {
-                //   this.filterInputElement.focus();
-                // }
-              }}
-            />,
-          ]
-        ) : (
-          <button
-            type="button"
-            disabled={this.disabled}
-            {...getButtonAriaAttributes(this.label, this.optionMaps, this.isOpen, dropdownId, this.state)}
-            onClick={() => this.setDropdownVisibility('toggle')}
-            onKeyDown={this.onButtonKeyDown}
-            ref={(el) => (this.buttonElement = el)}
-          />
-        )}
+                // }}
+                onKeyDown={this.onListKeyDown}
+                onInput={this.onFilterChange}
+                onClick={() => this.setDropdownVisibility('show')}
+                // ref={(el) => (this.filterInputElement = el)}
+              />,
+              <span
+                onClick={() => {
+                  console.log('span click');
+                  this.setDropdownVisibility('toggle');
+                  // if (this.isOpen) {
+                  //   this.setDropdownVisibility('hide');
+                  // } else {
+                  //   this.filterInputElement.focus();
+                  // }
+                }}
+              />,
+            ]
+          : [
+              <button
+                type="button"
+                id={buttonId}
+                disabled={this.disabled}
+                title={getSelectedOptionMap(this.optionMaps)?.value}
+                {...getButtonAriaAttributes(this.isOpen, dropdownId, labelId, buttonId, messageId)}
+                onClick={() => this.setDropdownVisibility('toggle')}
+                onKeyDown={this.onButtonKeyDown}
+                ref={(el) => (this.buttonElement = el)}
+              >
+                <span>{getSelectedOptionMap(this.optionMaps)?.value}</span>
+              </button>,
+              <span id={labelId}>{this.label}</span>,
+              <span id={messageId}>{this.message}</span>,
+            ]}
         <ul
           id={dropdownId}
           role="listbox"

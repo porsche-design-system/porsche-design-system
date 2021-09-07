@@ -623,6 +623,7 @@ export namespace Components {
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
         "label"?: string;
+        "message"?: string;
         "onOpenChange": (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
@@ -1752,6 +1753,7 @@ declare namespace LocalJSX {
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
         "label"?: string;
+        "message"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
