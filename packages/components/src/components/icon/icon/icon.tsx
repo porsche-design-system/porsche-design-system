@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
 import { getShadowRootHTMLElement, isBrowser, isDark } from '../../../utils';
 import type { Theme, IconName, TextColor } from '../../../types';
@@ -31,8 +31,6 @@ export class Icon {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
-
-  @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
   private key = 0; // use unique random key to trick stencil cache
@@ -86,10 +84,8 @@ export class Icon {
   }
 
   private loadIcon(): void {
-    if (this.svgContent) {
-      // reset old icon if there is any
-      this.setIconContent('');
-    }
+    // reset old icon if there is any
+    this.setIconContent('');
 
     const url = buildIconUrl(this.source ?? this.name);
 
@@ -97,7 +93,6 @@ export class Icon {
       // check if response matches current icon source
       if (url === buildIconUrl(this.source ?? this.name)) {
         this.setIconContent(iconContent);
-        this.svgContent = iconContent;
       }
     });
   }
