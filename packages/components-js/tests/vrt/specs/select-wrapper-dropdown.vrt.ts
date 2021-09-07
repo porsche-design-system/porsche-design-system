@@ -2,7 +2,7 @@ import { forceHoveredState, getVisualRegressionStatesTester, setContentWithDesig
 import { waitForComponentsReady } from '../../e2e/helpers';
 import { Theme } from '@porsche-design-system/components/dist/types/types';
 
-fdescribe('Select Wrapper Dropdown', () => {
+describe('Select Wrapper Dropdown', () => {
   it('should have no visual regression for :hover', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
@@ -24,13 +24,12 @@ fdescribe('Select Wrapper Dropdown', () => {
         });
 
         await page.evaluate(() => {
-          const getDropdown = (theme: Theme): Node => {
+          const getDropdown = (label: string, theme: Theme): Node => {
             const select = document.createElement('select');
             select.append(
               ...Array.from(Array(4)).map((_, idx) => {
                 const option = document.createElement('option');
-                // option.value = idx + '1';
-                option.textContent = `Option ${idx + 1}`;
+                option.textContent = `Option ${label} ${idx + 1}`;
                 return option;
               })
             );
@@ -48,12 +47,12 @@ fdescribe('Select Wrapper Dropdown', () => {
           };
 
           const getMarkup = (theme: Theme): Node[] => {
-            const dropdownDefault = getDropdown(theme);
+            const dropdownDefault = getDropdown('default', theme);
 
-            const dropdownDisabled = getDropdown(theme);
+            const dropdownDisabled = getDropdown('disabled', theme);
             (dropdownDisabled as any).selectRef.children[0].disabled = true;
 
-            const dropdownOptGroup = getDropdown(theme);
+            const dropdownOptGroup = getDropdown('optgroup', theme);
             Array.from((dropdownOptGroup as any).selectRef.children).forEach((optionEl: HTMLOptionElement, idx) => {
               if (idx === 0 || idx === 2) {
                 const optGroup = document.createElement('optgroup');
@@ -64,21 +63,19 @@ fdescribe('Select Wrapper Dropdown', () => {
               }
             });
 
-            const dropdownScrollable = getDropdown(theme);
+            const dropdownScrollable = getDropdown('scrollable', theme);
             (dropdownScrollable as any).selectRef.append(
               ...Array.from(Array(8)).map((_, idx) => {
                 const option = document.createElement('option');
-                // option.value = idx + '1';
-                option.textContent = `Option ${idx + 4 + 1}`;
+                option.textContent = `Option scrollable ${idx + 4 + 1}`;
                 return option;
               })
             );
-            (dropdownScrollable as HTMLElement).style.height = '320px'; // TODO: adjust
 
-            const dropdownDirectionUp = getDropdown(theme);
+            const dropdownDirectionUp = getDropdown('directionUp ', theme);
             (dropdownDirectionUp as any).direction = 'up';
 
-            const dropdownFilter = getDropdown(theme);
+            const dropdownFilter = getDropdown('filter', theme);
             (dropdownFilter as any).filter = true;
             (dropdownFilter as any).selectRef = document.createElement('select'); // without options
 
