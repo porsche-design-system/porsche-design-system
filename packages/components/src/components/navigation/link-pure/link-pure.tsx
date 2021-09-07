@@ -81,6 +81,7 @@ export class LinkPure {
       this.size,
       this.hideLabel,
       this.alignLabel,
+      !!this.href,
       this.theme
     );
   }
@@ -106,8 +107,7 @@ export class LinkPure {
         <TagType
           class="root"
           {
-            ...(TagType === 'a' &&
-              hasSubline && { 'aria-describedby': 'subline' }) /* TODO: make sure to e2e test functionality */
+            ...(TagType === 'a' && hasSubline && { 'aria-describedby': 'subline' }) // TODO: make sure to e2e test functionality
           }
           {...(TagType === 'a' && {
             href: this.href,

@@ -1,22 +1,19 @@
 import {
-  addImportantToEachRule,
   addImportantToRule,
   attachCss,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
   getCss,
-  getFocusPseudoStyles,
+  getFocusSlottedPseudoStyles,
   getFocusStyles,
   hasSlottedSubline,
   hasVisibleIcon,
   insertSlottedStyles,
   isDark,
-  mergeDeep,
   paramCaseToCamelCase,
   pxToRem,
   pxToRemWithUnit,
-  Styles,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../utils';
@@ -33,6 +30,7 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
   };
 };
 
+// TODO: optimize before merge!
 const getPseudoAndSublineSize = (size: string) => {
   const sizeWithUnit = `${font.size[size].fontSize}`;
 
@@ -71,6 +69,7 @@ const getPseudoAndSublineSize = (size: string) => {
   }
 };
 
+// TODO: optimize before merge!
 export const adjustToFontSize = (size: TextSize) => {
   if (isSizeInherit(size)) {
     return {
@@ -98,7 +97,7 @@ export const adjustToFontSize = (size: TextSize) => {
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getFocusPseudoStyles({ offset: 1 })));
+  return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
 };
 
 const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
@@ -112,7 +111,7 @@ const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boo
   justifyContent: stretch ? 'space-between' : 'flex-start',
 });
 
-const getLabelVisibility = (hideLabel: boolean) => {
+const getLabelVisibility = (hideLabel: boolean): JssStyle => {
   if (hideLabel) {
     return srOnly();
   } else {
@@ -121,7 +120,7 @@ const getLabelVisibility = (hideLabel: boolean) => {
       width: 'auto',
       height: 'auto',
       margin: '0',
-      whiteSpace: 'normal',
+      whiteSpace: 'inherit',
       overflow: 'visible',
       clip: 'auto',
       clipPath: 'none',
@@ -129,15 +128,17 @@ const getLabelVisibility = (hideLabel: boolean) => {
   }
 };
 
-const getLabelAlignment = (alignLabel: AlignLabel) => {
-  return {
-    order: alignLabel === 'left' ? 1 : 0,
-  };
-};
+const getLabelAlignment = (alignLabel: AlignLabel): JssStyle => {
+  if (alignLabel === 'left') {
+    return {
+      margin: `0 ${pxToRem(4)}rem 0 0`,
+      order: -1,
+    };
+  }
 
-const getLabelAlignment2 = (alignLabel: AlignLabel) => {
   return {
-    margin: alignLabel === 'left' ? `0 ${pxToRem(4)}rem 0 0` : `0 0 0 ${pxToRem(4)}rem`,
+    margin: `0 0 0 ${pxToRem(4)}rem`,
+    order: 0,
   };
 };
 
@@ -149,93 +150,82 @@ export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
+  hasHref: boolean,
   theme: Theme
 ): string => {
   const isDarkTheme = isDark(theme);
   const { baseColor, hoverColor, activeColor } = getColors(isDarkTheme);
   const hasSubline = hasSlottedSubline(host);
+  const hasIcon = hasVisibleIcon(icon);
 
-  return getCss(
-    // TODO: do we need the wrapping mergeDeep at all?
-    mergeDeep<Styles>({
-      ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
-      root: {
-        display: 'flex',
-        alignItems: 'flexStart',
-        width: '100%',
-        margin: '0',
-        padding: '0',
-        boxSizing: 'border-box',
-        outline: 'transparent none',
-        appearance: 'none',
-        border: 'none',
-        textDecoration: 'none',
-        textAlign: 'left',
-        background: 'transparent',
-        color: active ? activeColor : baseColor,
-        transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
-        ...getFocusStyles({ offset: 1, pseudo: '::before' }),
-        '&:hover': {
+  return getCss({
+    ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
+    root: {
+      display: 'flex',
+      alignItems: 'flexStart',
+      width: '100%',
+      margin: '0',
+      padding: '0',
+      boxSizing: 'border-box',
+      outline: 'transparent none',
+      appearance: 'none',
+      border: 'none',
+      textDecoration: 'none',
+      textAlign: 'left',
+      background: 'transparent',
+      color: active ? activeColor : baseColor,
+      transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
+      ...(hasHref && getFocusStyles({ offset: 1, pseudo: '::before' })),
+      '&:hover': {
+        color: hoverColor,
+        '& + .subline': {
           color: hoverColor,
-          '& + .subline': {
-            color: hoverColor,
-          },
         },
-        '&:active': {
+      },
+      '&:active': {
+        color: activeColor,
+        '& + .subline': {
           color: activeColor,
-          '& + .subline': {
-            color: activeColor,
-          },
         },
-        ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
-        ...buildResponsiveStyles(size, adjustToFontSize),
       },
-      ...(hasVisibleIcon(icon) && {
-        icon: {
-          flexShrink: '0',
-          width: '1.5em',
-          height: '1.5em',
-          ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
-        },
-        label: {
+      ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
+      ...buildResponsiveStyles(size, adjustToFontSize),
+    },
+    ...(hasIcon && {
+      icon: {
+        flexShrink: '0',
+        width: '1.5em',
+        height: '1.5em',
+      },
+      label: {
+        ...buildResponsiveStyles(hideLabel, getLabelVisibility),
+        ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
+        ...(hasSubline &&
+          alignLabel === 'right' && {
+            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+          }),
+      },
+    }),
+    ...(hasSubline && {
+      subline: {
+        display: 'flex',
+        transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+        marginTop: addImportantToRule('4px'),
+        color: active ? activeColor : baseColor,
+        ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getLabelVisibility),
-          ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment2)),
-          ...((alignLabel === 'right' || hasSubline) && {
-            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
-          }),
-        },
-      }),
-      ...(hasSubline && {
-        subline: {
-          display: 'flex',
-          flexBasis: '100%',
-          transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-          marginTop: addImportantToRule('4px'),
-          color: active ? activeColor : baseColor,
-          ...(hasVisibleIcon(icon) && {
-            ...buildResponsiveStyles(hideLabel, getLabelVisibility),
-            marginLeft: addImportantToRule(pxToRemWithUnit(4)),
-            '&::before': {
-              content: '""',
-            },
-          }),
-        },
-      }),
-      ...addImportantToEachRule({
-        '::slotted(a)': {
-          display: 'block',
-          position: 'static',
-          textDecoration: 'none',
-          color: 'inherit',
-          lineHeight: 'inherit',
-          outline: 'transparent none',
-        },
-      }),
-      '::slotted(p)': {
-        margin: 0,
+          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+          '&::before': {
+            content: '""',
+          },
+        }),
       },
-    })
-  );
+    }),
+    // TODO: I guess it's defined because of CMS output. But as soon as we can use something like `::slotted(a)::before` it won't work anymore anyway. Maybe we should remove it and the integrating team needs to fix their output?
+    '::slotted(p)': {
+      margin: 0,
+    },
+  });
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
@@ -250,7 +240,8 @@ export const addComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
+  hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(host, icon, active, stretch, size, hideLabel, alignLabel, theme));
+  attachCss(host, getComponentCss(host, icon, active, stretch, size, hideLabel, alignLabel, hasHref, theme));
 };
