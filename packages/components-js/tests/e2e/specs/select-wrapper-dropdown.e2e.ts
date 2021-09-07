@@ -742,24 +742,6 @@ describe('select-wrapper dropdown', () => {
           .withContext('for selected index')
           .toBe(0);
       });
-
-      it('should select first matching option via keyboard search', async () => {
-        await initSelect({ beginUnique: true });
-
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('b');
-        await waitForStencilLifecycle(page);
-
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(1);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(1);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(1);
-      });
     });
 
     describe('when dropdown is open', () => {

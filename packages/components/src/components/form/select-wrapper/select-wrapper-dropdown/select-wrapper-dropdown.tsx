@@ -249,13 +249,6 @@ export class SelectWrapperDropdown {
         console.log('onButtonKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setDropdownVisibility('show');
         break;
-      // default:
-      //   console.log('onButtonKeyDown search', e);
-      //   // TODO: seems to be difficult to combine multiple keys as native select does
-      //   const newIndex = getFirstMatchingOptionMapIndex(this.optionMaps, e.key);
-      //   if (newIndex) {
-      //     this.setOptionSelected(newIndex);
-      //   }
     }
   };
 
