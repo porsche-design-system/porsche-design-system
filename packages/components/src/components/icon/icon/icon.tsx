@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
-import { getShadowRootHTMLElement, isBrowser, isDark } from '../../../utils';
+import { isBrowser, isDark } from '../../../utils';
 import type { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
@@ -34,6 +34,7 @@ export class Icon {
 
   private intersectionObserver?: IntersectionObserver;
   private key = 0; // use unique random key to trick stencil cache
+  private iconElement: HTMLElement;
 
   public componentWillLoad(): void {
     this.initIntersectionObserver();
@@ -57,7 +58,7 @@ export class Icon {
 
     return (
       <Host>
-        <i key={this.key++} class={rootClasses} />
+        <i key={this.key++} class={rootClasses} ref={(el) => (this.iconElement = el)} />
       </Host>
     );
   }
@@ -98,10 +99,9 @@ export class Icon {
   }
 
   private setIconContent(content: string): void {
-    const el = getShadowRootHTMLElement(this.host, 'i');
-    // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
-    if (el) {
-      el.innerHTML = content;
+    if (this.iconElement) {
+      // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
+      this.iconElement.innerHTML = content;
     }
   }
 }
