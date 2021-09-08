@@ -96,26 +96,11 @@ export class SelectWrapperDropdown {
                   dropdownId,
                   getHighlightedOptionMapIndex(this.optionMaps)
                 )}
-                // onFocus={() => this.setDropdownVisibility('show')}
-                // onBlur={() => {
-                //   console.log('blur');
-                //   this.setDropdownVisibility('hide');
-                // }}
                 onKeyDown={this.onListKeyDown}
                 onInput={this.onFilterChange}
                 onClick={() => this.setDropdownVisibility('show')}
               />,
-              <span
-                onClick={() => {
-                  console.log('span click');
-                  this.setDropdownVisibility('toggle');
-                  // if (this.isOpen) {
-                  //   this.setDropdownVisibility('hide');
-                  // } else {
-                  //   this.filterInputElement.focus();
-                  // }
-                }}
-              />,
+              <span onClick={() => this.setDropdownVisibility('toggle')} />,
             ]
           : [
               <button
@@ -185,14 +170,10 @@ export class SelectWrapperDropdown {
     this.setOptionMaps(); // initial
     this.observeOptions(); // initial
 
-    observeProperties(this.selectRef, ['value', 'selectedIndex'], () => {
-      console.log('observeProperties cb');
-      this.syncSelectedIndex();
-    });
+    observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
     observeChildren(
       this.selectRef,
       () => {
-        console.log('observeChildren cb');
         this.setOptionMaps();
         this.observeOptions(); // new option might have been added
       },
@@ -204,24 +185,17 @@ export class SelectWrapperDropdown {
 
   private observeOptions(): void {
     getOptionsElements(this.selectRef).forEach((el) =>
-      observeProperties(el, ['selected', 'disabled'], () => {
-        console.log('observeOptions -> observeProperties');
-        this.setOptionMaps();
-      })
+      observeProperties(el, ['selected', 'disabled'], this.setOptionMaps)
     );
   }
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && !e.composedPath().includes(this.host)) {
-      console.log('onClickOutside');
       this.setDropdownVisibility('hide');
-      // this.isOpen = false;
-      // this.resetFilter();
     }
   };
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
-    console.log('setDropdownVisibility', type);
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
 
@@ -246,7 +220,6 @@ export class SelectWrapperDropdown {
       case 'Spacebar':
       case 'Enter':
         e.preventDefault();
-        console.log('onButtonKeyboardEvents Space', getHighlightedOptionMapIndex(this.optionMaps));
         this.setDropdownVisibility('show');
         break;
     }
@@ -302,7 +275,6 @@ export class SelectWrapperDropdown {
         break;
       default:
         if (!this.filter) {
-          console.log('onListKeyDown search', e);
           // TODO: seems to be difficult to combine multiple keys as native select does
           this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
         }
@@ -314,12 +286,10 @@ export class SelectWrapperDropdown {
   }
 
   private syncSelectedIndex = (): void => {
-    console.log('syncSelectedIndex');
     this.optionMaps = setSelectedOptionMaps(this.optionMaps, this.selectedIndex);
   };
 
   private setOptionMaps = (): void => {
-    console.log('setOptionMaps');
     this.optionMaps = setSelectedOptionMaps(getOptionMaps(getOptionsElements(this.selectRef)), this.selectedIndex);
   };
 
@@ -328,7 +298,6 @@ export class SelectWrapperDropdown {
   };
 
   private setOptionSelected = (newIndex: number): void => {
-    console.log('setOptionSelected', this.selectedIndex, '-->', newIndex);
     this.setDropdownVisibility('hide');
 
     if (this.selectedIndex !== newIndex) {
@@ -341,19 +310,13 @@ export class SelectWrapperDropdown {
   };
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
-    console.log('cycleDropdown', direction);
     this.setDropdownVisibility('show');
     const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
     this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
   }
 
-  /*
-   * <START CUSTOM FILTER>
-   */
   private resetFilter = (): void => {
-    console.log('resetFilter');
     if (this.filter) {
-      console.log('inside?');
       this.searchString = '';
       this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
     }
