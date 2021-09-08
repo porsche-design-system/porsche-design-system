@@ -72,9 +72,8 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
     ...opts,
   };
 
-  const { pseudo } = opts;
+  const { pseudo, offset, color: optColor } = options;
 
-  // TODO: shouldn't this be extracted into an own function?
   if (pseudo) {
     return {
       outline: 'transparent none',
@@ -83,7 +82,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       },
       [`&${pseudo}`]: {
         outline: 'transparent solid 1px',
-        outlineOffset: `${options.offset}px`,
+        outlineOffset: `${offset}px`,
         content: '""',
         position: 'absolute',
         top: 0,
@@ -92,7 +91,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
         bottom: 0,
       },
       [`&:focus${pseudo}`]: {
-        outlineColor: options.color,
+        outlineColor: optColor,
       },
       [`&:focus:not(:focus-visible)${pseudo}`]: {
         outlineColor: 'transparent',
@@ -101,12 +100,12 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   }
   return {
     outline: 'transparent solid 1px',
-    outlineOffset: `${options.offset}px`,
+    outlineOffset: `${offset}px`,
     '&::-moz-focus-inner': {
       border: '0',
     },
     '&:focus': {
-      outlineColor: options.color,
+      outlineColor: optColor,
     },
     '&:focus:not(:focus-visible)': {
       outlineColor: 'transparent',

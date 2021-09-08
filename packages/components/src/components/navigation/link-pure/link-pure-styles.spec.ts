@@ -1,5 +1,6 @@
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
+import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
@@ -14,11 +15,24 @@ describe('getSlottedCss()', () => {
 });
 
 describe('getComponentCss()', () => {
-  it.each<BreakpointCustomizable<boolean>>([
-    false,
-    true,
-    { base: true, xs: false, s: true, m: false, l: true, xl: false },
-  ])('should return correct css for stretch: %o', (stretch) => {
-    expect(getComponentCss(stretch)).toMatchSnapshot();
-  });
+  it.each<
+    [
+      LinkButtonPureIconName,
+      boolean,
+      BreakpointCustomizable<boolean>,
+      BreakpointCustomizable<TextSize>,
+      BreakpointCustomizable<boolean>,
+      AlignLabel,
+      boolean,
+      boolean,
+      Theme
+    ]
+  >([['arrow-head-right', false, false, 'small', false, 'right', false, false, 'light']])(
+    'should return correct css',
+    (icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme) => {
+      expect(
+        getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)
+      ).toMatchSnapshot();
+    }
+  );
 });
