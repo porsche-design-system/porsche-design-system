@@ -81,6 +81,7 @@ export class LinkPure {
       this.size,
       this.hideLabel,
       this.alignLabel,
+      hasSlottedSubline(this.host),
       !!this.href,
       this.theme
     );

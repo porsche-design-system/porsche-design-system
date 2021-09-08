@@ -7,7 +7,6 @@ import {
   getCss,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
-  hasSlottedSubline,
   hasVisibleIcon,
   insertSlottedStyles,
   isDark,
@@ -29,7 +28,14 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
   };
 };
 
-const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight: string) => {
+const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
+  position: addImportantToRule('relative'),
+  cursor: 'pointer',
+  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
+  ...(!stretch && { verticalAlign: 'top' }),
+});
+
+const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight: string): JssStyle => {
   const pseudoElement = {
     '&::before': {
       fontSize,
@@ -65,7 +71,7 @@ const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight:
   }
 };
 
-const adjustToFontSize = (textSize: TextSize) => {
+const getSizeStyles = (textSize: TextSize) => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
@@ -92,22 +98,11 @@ const adjustToFontSize = (textSize: TextSize) => {
   }
 };
 
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
-};
-
-const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  position: addImportantToRule('relative'),
-  cursor: 'pointer',
-  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
-  ...(!stretch && { verticalAlign: 'top' }),
-});
-
 const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
   justifyContent: stretch ? 'space-between' : 'flex-start',
 });
 
-const getLabelVisibility = (hideLabel: boolean): JssStyle => {
+const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
   if (hideLabel) {
     return srOnly();
   } else {
@@ -124,7 +119,7 @@ const getLabelVisibility = (hideLabel: boolean): JssStyle => {
   }
 };
 
-const getLabelSlottedAnchorVisibility = (hideLabel: boolean): JssStyle => {
+const getSlottedAnchorVisibilityStyles = (hideLabel: boolean): JssStyle => {
   if (hideLabel) {
     return {
       position: 'absolute',
@@ -148,7 +143,7 @@ const getLabelSlottedAnchorVisibility = (hideLabel: boolean): JssStyle => {
   }
 };
 
-const getLabelAlignment = (alignLabel: AlignLabel): JssStyle => {
+const getLabelAlignmentStyles = (alignLabel: AlignLabel): JssStyle => {
   if (alignLabel === 'left') {
     return {
       padding: `0 ${pxToRemWithUnit(4)} 0 0`,
@@ -163,19 +158,18 @@ const getLabelAlignment = (alignLabel: AlignLabel): JssStyle => {
 };
 
 export const getComponentCss = (
-  host: HTMLElement,
   icon: LinkButtonPureIconName,
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
+  hasSubline: boolean,
   hasHref: boolean,
   theme: Theme
 ): string => {
   const isDarkTheme = isDark(theme);
   const { baseColor, hoverColor, activeColor } = getColors(isDarkTheme);
-  const hasSubline = hasSlottedSubline(host);
   const hasIcon = hasVisibleIcon(icon);
 
   return getCss({
@@ -209,7 +203,7 @@ export const getComponentCss = (
         },
       },
       ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
-      ...buildResponsiveStyles(size, adjustToFontSize),
+      ...buildResponsiveStyles(size, getSizeStyles),
     },
     ...(hasIcon && {
       icon: {
@@ -219,9 +213,9 @@ export const getComponentCss = (
       },
       label: {
         ...(hasHref
-          ? buildResponsiveStyles(hideLabel, getLabelVisibility)
-          : buildResponsiveStyles(hideLabel, getLabelSlottedAnchorVisibility)),
-        ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
+          ? buildResponsiveStyles(hideLabel, getVisibilityStyles)
+          : buildResponsiveStyles(hideLabel, getSlottedAnchorVisibilityStyles)),
+        ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)),
         ...((hasSubline || alignLabel === 'right') && {
           paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
         }),
@@ -234,7 +228,7 @@ export const getComponentCss = (
         marginTop: addImportantToRule('4px'),
         color: active ? activeColor : baseColor,
         ...(hasIcon && {
-          ...buildResponsiveStyles(hideLabel, getLabelVisibility),
+          ...buildResponsiveStyles(hideLabel, getVisibilityStyles),
           paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
           '&::before': {
             content: '""',
@@ -249,10 +243,6 @@ export const getComponentCss = (
   });
 };
 
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
-};
-
 export const addComponentCss = (
   host: HTMLElement,
   icon: LinkButtonPureIconName,
@@ -261,8 +251,17 @@ export const addComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
+  hasSubline: boolean,
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(host, icon, active, stretch, size, hideLabel, alignLabel, hasHref, theme));
+  attachCss(host, getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme));
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
+};
+
+export const addSlottedCss = (host: HTMLElement): void => {
+  insertSlottedStyles(host, getSlottedCss(host));
 };
