@@ -176,7 +176,7 @@ export const getComponentCss = (
     ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
     root: {
       display: 'flex',
-      alignItems: 'flexStart',
+      alignItems: 'flex-start',
       width: '100%',
       margin: '0',
       padding: '0',
