@@ -39,11 +39,11 @@ const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolea
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
-const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight: string): JssStyle => {
-  const pseudoElement = {
+const getPseudoAndSublineSize = (textSize: TextSize, fontSize: string, marginLeft: string): JssStyle => {
+  const pseudoElement: JssStyle = {
     '&::before': {
       fontSize,
-      marginLeft: lineHeight,
+      marginLeft,
     },
   };
   switch (textSize) {
@@ -75,7 +75,7 @@ const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight:
   }
 };
 
-const getSizeStyles = (textSize: TextSize) => {
+const getSizeStyles = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
@@ -86,7 +86,7 @@ const getSizeStyles = (textSize: TextSize) => {
       },
     };
   } else {
-    const fontSize = `${font.size[paramCaseToCamelCase(textSize)].fontSize}`;
+    const { fontSize } = font.size[paramCaseToCamelCase(textSize)];
     const lineHeight = `${calculateLineHeight(fontSize)}em`;
 
     return {
@@ -95,9 +95,7 @@ const getSizeStyles = (textSize: TextSize) => {
         width: lineHeight,
         height: lineHeight,
       },
-      '& ~ .subline': {
-        ...getPseudoAndSublineSize(textSize, fontSize, lineHeight),
-      },
+      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
     };
   }
 };
