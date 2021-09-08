@@ -21,10 +21,14 @@ import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../ty
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: string; activeColor: string } => {
+  const {
+    default: baseColor,
+    state: { hover, active },
+  } = isDarkTheme ? color.darkTheme : color;
   return {
-    baseColor: isDarkTheme ? color.darkTheme.default : color.default,
-    hoverColor: isDarkTheme ? color.darkTheme.state.hover : color.state.hover,
-    activeColor: isDarkTheme ? color.darkTheme.state.active : color.state.active,
+    baseColor,
+    hoverColor: hover,
+    activeColor: active,
   };
 };
 
