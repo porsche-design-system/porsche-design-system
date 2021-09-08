@@ -99,15 +99,18 @@ describe('select-wrapper filter', () => {
   it('should render', async () => {
     await initSelect();
 
-    const dropdown = await getDropdown();
-    const activeDescendant = await getFilterAriaActiveDescendant();
+    const filterInput = await getFilterInput();
     const selectedDescendantId = await getSelectedDropdownOptionId();
     const filterPlaceholder = await getFilterPlaceholder();
 
     expect(await getSelectedOptionText()).toEqual(filterPlaceholder);
-    expect(dropdown).not.toBeNull();
-    expect(await getFilterInput()).not.toBeNull();
-    expect(activeDescendant).toEqual(selectedDescendantId);
+    expect(await getDropdown()).not.toBeNull();
+    expect(filterInput).not.toBeNull();
+
+    await filterInput.click(); // open dropdown to retrieve aria-active-descendant
+    await waitForStencilLifecycle(page);
+
+    expect(await getFilterAriaActiveDescendant()).toEqual(selectedDescendantId);
   });
 
   it('should render dropdown if touch support is detected', async () => {
@@ -364,8 +367,13 @@ describe('select-wrapper filter', () => {
         .withContext('for selected index after enter')
         .toBe(1);
 
+      await page.keyboard.press('Space'); // open dropdown to retrieve aria-active-descendant
+      await waitForStencilLifecycle(page);
+
       expect(calls).withContext('for calls').toBe(1);
-      expect(await getFilterAriaActiveDescendant()).toEqual(`option-${await getSelectedDropdownOptionIndex()}`);
+      expect(await getFilterAriaActiveDescendant())
+        .withContext('for aria-active-descendant')
+        .toEqual(`option-${await getSelectedDropdownOptionIndex()}`);
     });
 
     it('should skip disabled option on arrow down', async () => {
