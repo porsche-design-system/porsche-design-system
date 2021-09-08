@@ -51,7 +51,7 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private buttonElement: HTMLButtonElement;
-  private filterInputElement: HTMLInputElement;
+  private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
   public connectedCallback(): void {
@@ -101,7 +101,7 @@ export class SelectWrapperDropdown {
                 onKeyDown={this.onListKeyDown}
                 onInput={this.onFilterChange}
                 onClick={() => this.setDropdownVisibility('show')}
-                ref={(el) => (this.filterInputElement = el)}
+                ref={(el) => (this.inputElement = el)}
               />,
               <span onClick={() => this.setDropdownVisibility('toggle')} />,
             ]
@@ -202,8 +202,9 @@ export class SelectWrapperDropdown {
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
-
-    if (!this.filter) {
+    if (this.filter) {
+      this.inputElement.focus();
+    } else {
       (this.isOpen ? this.listElement : this.buttonElement).focus();
     }
   };
@@ -323,7 +324,7 @@ export class SelectWrapperDropdown {
     if (this.filter) {
       this.searchString = '';
       this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
-      this.filterInputElement.value = '';
+      this.inputElement.value = '';
     }
   };
 
