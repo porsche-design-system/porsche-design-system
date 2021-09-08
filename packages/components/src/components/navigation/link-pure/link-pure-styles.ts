@@ -65,7 +65,7 @@ const getPseudoAndSublineSize = (textSize: string, fontSize: string, lineHeight:
   }
 };
 
-export const adjustToFontSize = (textSize: TextSize) => {
+const adjustToFontSize = (textSize: TextSize) => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
