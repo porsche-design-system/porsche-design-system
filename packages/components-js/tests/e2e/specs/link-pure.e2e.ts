@@ -207,16 +207,16 @@ describe('link-pure', () => {
 
     it('should not have aria-describedby with slotted anchor and without subline', async () => {
       await initLinkPure({ useSlottedAnchor: true });
-      const link = await getSpan();
+      const span = await getSpan();
 
-      expect(await getAttribute(link, 'aria-describedby')).toBeNull();
+      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
     });
 
     it('should not have aria-describedby with slotted anchor and subline', async () => {
       await initLinkPure({ useSlottedAnchor: true, withSubline: true });
-      const link = await getSpan();
+      const span = await getSpan();
 
-      expect(await getAttribute(link, 'aria-describedby')).toBeNull();
+      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
     });
   });
 

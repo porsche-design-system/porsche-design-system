@@ -72,45 +72,44 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
     ...opts,
   };
 
-  const { pseudo, offset, color: optColor } = options;
+  const { pseudo, offset: outlineOffset, color: outlineColor } = options;
 
-  if (pseudo) {
-    return {
-      outline: 'transparent none',
-      '&::-moz-focus-inner': {
-        border: '0',
-      },
-      [`&${pseudo}`]: {
+  return pseudo
+    ? {
+        outline: 'transparent none',
+        '&::-moz-focus-inner': {
+          border: 0,
+        },
+        [`&${pseudo}`]: {
+          outline: 'transparent solid 1px',
+          outlineOffset: `${outlineOffset}px`,
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        },
+        [`&:focus${pseudo}`]: {
+          outlineColor,
+        },
+        [`&:focus:not(:focus-visible)${pseudo}`]: {
+          outlineColor: 'transparent',
+        },
+      }
+    : {
         outline: 'transparent solid 1px',
-        outlineOffset: `${offset}px`,
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-      },
-      [`&:focus${pseudo}`]: {
-        outlineColor: optColor,
-      },
-      [`&:focus:not(:focus-visible)${pseudo}`]: {
-        outlineColor: 'transparent',
-      },
-    };
-  }
-  return {
-    outline: 'transparent solid 1px',
-    outlineOffset: `${offset}px`,
-    '&::-moz-focus-inner': {
-      border: '0',
-    },
-    '&:focus': {
-      outlineColor: optColor,
-    },
-    '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent',
-    },
-  };
+        outlineOffset: `${outlineOffset}px`,
+        '&::-moz-focus-inner': {
+          border: '0',
+        },
+        '&:focus': {
+          outlineColor,
+        },
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
+        },
+      };
 };
 
 type GetFocusSlottedPseudoStylesOptions = {
@@ -128,6 +127,8 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
     ...opts,
   };
 
+  const { offset: outlineOffset, color: outlineColor } = options;
+
   return {
     '& a': {
       display: 'block',
@@ -136,23 +137,23 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
       font: 'inherit',
       color: 'inherit',
       outline: 'transparent none',
-    },
-    '& a::before': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      outline: '1px solid transparent',
-      outlineOffset: `${options.offset}px`,
-    },
-    '& a:focus::before': {
-      outlineColor: options.color,
-    },
-    '& a:focus:not(:focus-visible)::before': {
-      outlineColor: 'transparent',
+      '&::before': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        outline: '1px solid transparent',
+        outlineOffset: `${outlineOffset}px`,
+      },
+      '&:focus::before': {
+        outlineColor,
+      },
+      '&:focus:not(:focus-visible)::before': {
+        outlineColor: 'transparent',
+      },
     },
   };
 };
