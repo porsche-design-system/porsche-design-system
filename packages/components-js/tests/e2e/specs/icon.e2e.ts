@@ -13,7 +13,7 @@ import {
 import { ElementHandle, Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
-describe('icon', () => {
+fdescribe('icon', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -187,6 +187,34 @@ describe('icon', () => {
 
           expect(await getContent(await getIcon())).toContain('light');
           expect(responseCounter).toEqual(2);
+        });
+
+        /**
+         *       request 1st icon
+         *         |‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ================================================>
+         *                        |__________⌃
+         *                      request 1st icon again for different icon component
+         */
+        it('should not resolve promise of second (cached) icon with same source before render() is finished', async () => {
+          await setSvgRequestInterceptor(page, []);
+          await initIcon({ ...opts, name: 'highway' });
+
+          expect(await getContent(await getIcon()))
+            .withContext('first icon')
+            .toContain('highway');
+
+          await page.evaluate(() => {
+            const el = document.createElement('p-icon');
+            el.id = 'iconTwo';
+            el.name = 'highway';
+            document.body.appendChild(el);
+          });
+          const iconTwo = await selectNode(page, '#iconTwo >>> i');
+
+          expect(await getContent(iconTwo))
+            .withContext('second icon')
+            .toContain('highway');
         });
 
         it('should unset previous icon if name prop is removed', async () => {
