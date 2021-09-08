@@ -51,6 +51,7 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private buttonElement: HTMLButtonElement;
+  private filterInputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
   public connectedCallback(): void {
@@ -78,7 +79,6 @@ export class SelectWrapperDropdown {
     const dropdownId = 'list';
     const labelId = 'label';
     const buttonId = 'value';
-    const messageId = 'message';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -90,8 +90,10 @@ export class SelectWrapperDropdown {
                 role="combobox"
                 disabled={this.disabled}
                 placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+                autoComplete="off"
                 value={this.searchString}
                 {...getFilterInputAriaAttributes(
+                  labelId,
                   this.isOpen,
                   dropdownId,
                   getHighlightedOptionMapIndex(this.optionMaps)
@@ -99,6 +101,7 @@ export class SelectWrapperDropdown {
                 onKeyDown={this.onListKeyDown}
                 onInput={this.onFilterChange}
                 onClick={() => this.setDropdownVisibility('show')}
+                ref={(el) => (this.filterInputElement = el)}
               />,
               <span onClick={() => this.setDropdownVisibility('toggle')} />,
             ]
@@ -107,61 +110,62 @@ export class SelectWrapperDropdown {
                 type="button"
                 id={buttonId}
                 disabled={this.disabled}
-                title={getSelectedOptionMap(this.optionMaps)?.value}
-                {...getButtonAriaAttributes(this.isOpen, dropdownId, labelId, buttonId, messageId)}
+                {...getButtonAriaAttributes(this.isOpen, dropdownId, labelId)}
                 onClick={() => this.setDropdownVisibility('toggle')}
                 onKeyDown={this.onButtonKeyDown}
                 ref={(el) => (this.buttonElement = el)}
-              >
-                <span>{getSelectedOptionMap(this.optionMaps)?.value}</span>
-              </button>,
-              <span id={labelId}>{this.label}</span>,
-              <span id={messageId}>{this.message}</span>,
+              />,
             ]}
-        <ul
-          id={dropdownId}
-          role="listbox"
-          tabIndex={-1}
-          {...getListAriaAttributes(this.label, this.optionMaps, this.filter)}
-          onKeyDown={this.onListKeyDown}
-          ref={(el) => (this.listElement = el)}
-        >
-          {this.filter && !hasFilterResults(this.optionMaps) ? (
-            <li class="option" aria-live="polite" role="status">
-              <span aria-hidden="true">---</span>
-              <span class="option__sr">No results found</span>
-            </li>
-          ) : (
-            this.optionMaps.map((option, index) => {
-              const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
-              return [
-                title && (
-                  <span class="optgroup" role="presentation">
-                    {title}
-                  </span>
-                ),
-                <li
-                  id={`option-${index}`}
-                  role="option"
-                  class={{
-                    ['option']: true,
-                    ['option--selected']: selected,
-                    ['option--highlighted']: highlighted,
-                    ['option--disabled']: disabled,
-                    ['option--hidden']: hidden || initiallyHidden,
-                  }}
-                  onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                  {...getOptionAriaAttributes(option)}
-                >
-                  {value}
-                  {selected && !disabled && (
-                    <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
-                  )}
-                </li>,
-              ];
-            })
-          )}
-        </ul>
+        {[
+          <div class="sr-text" id={labelId}>
+            {getSelectedOptionMap(this.optionMaps)?.value}, {this.label}
+            {!!this.message && `. ${this.message}`}
+          </div>,
+          <ul
+            id={dropdownId}
+            role="listbox"
+            tabIndex={-1}
+            {...getListAriaAttributes(this.label, this.optionMaps, this.filter)}
+            onKeyDown={this.onListKeyDown}
+            ref={(el) => (this.listElement = el)}
+          >
+            {this.filter && !hasFilterResults(this.optionMaps) ? (
+              <li class="option" aria-live="polite" role="status">
+                <span aria-hidden="true">---</span>
+                <span class="option__sr">No results found</span>
+              </li>
+            ) : (
+              this.optionMaps.map((option, index) => {
+                const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+                return [
+                  title && (
+                    <span class="optgroup" role="presentation">
+                      {title}
+                    </span>
+                  ),
+                  <li
+                    id={`option-${index}`}
+                    role="option"
+                    class={{
+                      ['option']: true,
+                      ['option--selected']: selected,
+                      ['option--highlighted']: highlighted,
+                      ['option--disabled']: disabled,
+                      ['option--hidden']: hidden || initiallyHidden,
+                    }}
+                    onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
+                    {...getOptionAriaAttributes(option)}
+                  >
+                    {value}
+                    {selected && !disabled && (
+                      <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
+                    )}
+                  </li>,
+                ];
+              })
+            )}
+          </ul>,
+        ]}
       </Host>
     );
   }
@@ -319,12 +323,17 @@ export class SelectWrapperDropdown {
     if (this.filter) {
       this.searchString = '';
       this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
+      this.filterInputElement.value = '';
     }
   };
 
   private onFilterChange = (e: InputEvent): void => {
     this.searchString = (e.target as HTMLInputElement).value;
-    this.optionMaps = setFilteredOptionMaps(this.optionMaps, this.searchString);
+    if (this.searchString.startsWith(' ')) {
+      this.resetFilter();
+    } else {
+      this.optionMaps = setFilteredOptionMaps(this.optionMaps, this.searchString);
+    }
 
     // in case input is focused via tab instead of click
     this.setDropdownVisibility('show');
