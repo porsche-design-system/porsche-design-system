@@ -12,20 +12,12 @@ import {
   insertSlottedStyles,
   isDark,
   paramCaseToCamelCase,
-  pxToRem,
   pxToRemWithUnit,
   transitionDuration,
   transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import {
-  calculateLineHeight,
-  color,
-  font,
-  FontSizeLineHeight,
-  generateTypeScale,
-  srOnly,
-} from '@porsche-design-system/utilities';
+import { calculateLineHeight, color, font, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
 import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
@@ -123,7 +115,7 @@ const getLabelVisibility = (hideLabel: boolean): JssStyle => {
       position: 'static',
       width: 'auto',
       height: 'auto',
-      margin: '0',
+      margin: 0,
       whiteSpace: 'inherit',
       overflow: 'visible',
       clip: 'auto',
@@ -132,16 +124,42 @@ const getLabelVisibility = (hideLabel: boolean): JssStyle => {
   }
 };
 
+const getLabelSlottedAnchorVisibility = (hideLabel: boolean): JssStyle => {
+  if (hideLabel) {
+    return {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textIndent: 999999,
+    };
+  } else {
+    return {
+      position: 'static',
+      top: 'auto',
+      left: 'auto',
+      right: 'auto',
+      bottom: 'auto',
+      overflow: 'visible',
+      textIndent: 0,
+      whiteSpace: 'inherit',
+    };
+  }
+};
+
 const getLabelAlignment = (alignLabel: AlignLabel): JssStyle => {
   if (alignLabel === 'left') {
     return {
-      margin: `0 ${pxToRem(4)}rem 0 0`,
+      padding: `0 ${pxToRemWithUnit(4)} 0 0`,
       order: -1,
     };
   }
 
   return {
-    margin: `0 0 0 ${pxToRem(4)}rem`,
+    padding: `0 0 0 ${pxToRemWithUnit(4)}`,
     order: 0,
   };
 };
@@ -202,10 +220,12 @@ export const getComponentCss = (
         height: '1.5em',
       },
       label: {
-        ...buildResponsiveStyles(hideLabel, getLabelVisibility),
+        ...(hasHref
+          ? buildResponsiveStyles(hideLabel, getLabelVisibility)
+          : buildResponsiveStyles(hideLabel, getLabelSlottedAnchorVisibility)),
         ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignment)),
         ...((hasSubline || alignLabel === 'right') && {
-          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+          paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
         }),
       },
     }),
@@ -217,7 +237,7 @@ export const getComponentCss = (
         color: active ? activeColor : baseColor,
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getLabelVisibility),
-          marginLeft: addImportantToRule(pxToRemWithUnit(4)),
+          paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
           '&::before': {
             content: '""',
           },
