@@ -107,12 +107,12 @@ export class LinkPure {
       <Host>
         <TagType
           class="root"
-          {...(TagType === 'a' && hasSubline && { 'aria-describedby': 'subline' })}
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
             download: this.download,
             rel: this.rel,
+            ...(hasSubline && { 'aria-describedby': 'subline' }),
           })}
           ref={(el) => (this.linkTag = el)}
         >
