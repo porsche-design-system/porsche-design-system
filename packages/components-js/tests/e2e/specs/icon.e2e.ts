@@ -13,7 +13,7 @@ import {
 import { ElementHandle, Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
-fdescribe('icon', () => {
+describe('icon', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
