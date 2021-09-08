@@ -100,63 +100,60 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
   }
 };
 
-const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  justifyContent: stretch ? 'space-between' : 'flex-start',
-});
-
-const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
-  if (hideLabel) {
-    return srOnly();
-  } else {
-    return {
-      position: 'static',
-      width: 'auto',
-      height: 'auto',
-      margin: 0,
-      whiteSpace: 'inherit',
-      overflow: 'visible',
-      clip: 'auto',
-      clipPath: 'none',
-    };
-  }
+const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => {
+  return {
+    justifyContent: stretch ? 'space-between' : 'flex-start',
+  };
 };
 
+const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? srOnly()
+    : {
+        position: 'static',
+        width: 'auto',
+        height: 'auto',
+        margin: 0,
+        whiteSpace: 'inherit',
+        overflow: 'visible',
+        clip: 'auto',
+        clipPath: 'none',
+      };
+};
+
+/* Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden. */
 const getSlottedAnchorVisibilityStyles = (hideLabel: boolean): JssStyle => {
-  if (hideLabel) {
-    return {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      whiteSpace: 'nowrap',
-      textIndent: -999999,
-    };
-  } else {
-    return {
-      position: 'static',
-      top: 'auto',
-      left: 'auto',
-      right: 'auto',
-      bottom: 'auto',
-      textIndent: 0,
-      whiteSpace: 'inherit',
-    };
-  }
+  return hideLabel
+    ? {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        whiteSpace: 'nowrap',
+        textIndent: -999999,
+      }
+    : {
+        position: 'static',
+        top: 'auto',
+        left: 'auto',
+        right: 'auto',
+        bottom: 'auto',
+        textIndent: 0,
+        whiteSpace: 'inherit',
+      };
 };
 
 const getLabelAlignmentStyles = (alignLabel: AlignLabel): JssStyle => {
-  if (alignLabel === 'left') {
-    return {
-      padding: `0 ${pxToRemWithUnit(4)} 0 0`,
-      order: -1,
-    };
-  }
-
-  return {
-    padding: `0 0 0 ${pxToRemWithUnit(4)}`,
-    order: 0,
-  };
+  return alignLabel === 'left'
+    ? {
+        padding: `0 ${pxToRemWithUnit(4)} 0 0`,
+        order: -1,
+      }
+    : {
+        padding: `0 0 0 ${pxToRemWithUnit(4)}`,
+        order: 0,
+      };
 };
 
 export const getComponentCss = (
@@ -214,9 +211,7 @@ export const getComponentCss = (
         height: '1.5em',
       },
       label: {
-        ...(hasHref
-          ? buildResponsiveStyles(hideLabel, getVisibilityStyles)
-          : buildResponsiveStyles(hideLabel, getSlottedAnchorVisibilityStyles)),
+        ...buildResponsiveStyles(hideLabel, hasHref ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
         ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)),
         ...((hasSubline || alignLabel === 'right') && {
           paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
