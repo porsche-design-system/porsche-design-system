@@ -132,7 +132,6 @@ const getLabelSlottedAnchorVisibility = (hideLabel: boolean): JssStyle => {
       left: 0,
       right: 0,
       bottom: 0,
-      overflow: 'hidden',
       whiteSpace: 'nowrap',
       textIndent: 999999,
     };
@@ -143,7 +142,6 @@ const getLabelSlottedAnchorVisibility = (hideLabel: boolean): JssStyle => {
       left: 'auto',
       right: 'auto',
       bottom: 'auto',
-      overflow: 'visible',
       textIndent: 0,
       whiteSpace: 'inherit',
     };
