@@ -5,35 +5,37 @@ import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-s
 
 const MAX_CHILDREN = 10;
 
-export const getButtonAriaAttributes = (isOpen: boolean, dropdownId: string, labelId: string): AriaAttributes => {
+export const getButtonAriaAttributes = (isOpen: boolean, labelId: string, dropdownId: string): AriaAttributes => {
   return {
-    'aria-controls': dropdownId,
-    'aria-haspopup': 'listbox',
     'aria-labelledby': labelId,
+    'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
+    'aria-controls': dropdownId,
   };
 };
 
 export const getFilterInputAriaAttributes = (
-  labelId: string,
   isOpen: boolean,
+  labelId: string,
   dropdownId: string,
   activeDescendantId: number
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
     'aria-haspopup': 'listbox',
-    'aria-autocomplete': 'list',
-    'aria-controls': isOpen ? dropdownId : null,
     'aria-expanded': isOpen ? 'true' : 'false',
-    'aria-activedescendant': isOpen ? `option-${activeDescendantId}` : null,
+    'aria-autocomplete': 'list',
+    ...(isOpen && {
+      'aria-controls': dropdownId,
+      'aria-activedescendant': `option-${activeDescendantId}`,
+    }),
   };
 };
 
 export const getListAriaAttributes = (label: string, optionMaps: OptionMap[], hasFilter: boolean): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return {
-    ...(highlightedIndex >= 0 && { 'aria-activedescendant': !hasFilter ? `option-${highlightedIndex}` : null }),
+    ...(highlightedIndex >= 0 && !hasFilter && { 'aria-activedescendant': `option-${highlightedIndex}` }),
     'aria-label': label,
   };
 };

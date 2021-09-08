@@ -4,44 +4,38 @@ import type { FormState, Theme } from '../../../../types';
 import { getCss } from '../../../../utils';
 
 describe('getButtonStyles()', () => {
-  it.each<[boolean, FormState, Theme, boolean]>([
-    [false, 'none', 'light', true],
-    [false, 'none', 'dark', false],
-    [false, 'success', 'light', true],
-    [false, 'success', 'dark', false],
-    [false, 'error', 'light', true],
-    [false, 'error', 'dark', false],
-    [true, 'none', 'light', true],
-    [true, 'none', 'dark', false],
-    [true, 'success', 'light', true],
-    [true, 'success', 'dark', false],
-    [true, 'error', 'light', true],
-    [true, 'error', 'dark', false],
-  ])(
-    'should return correct css for disabled: %o, state: %o, theme: %o and isOpen: %o',
-    (disabled, state, theme, isOpen) => {
-      expect(getCss(getButtonStyles(disabled, state, theme, isOpen))).toMatchSnapshot();
-    }
-  );
+  it.each<[boolean, FormState, Theme]>([
+    [true, 'none', 'light'],
+    [false, 'none', 'dark'],
+    [true, 'success', 'light'],
+    [false, 'success', 'dark'],
+    [true, 'error', 'light'],
+    [false, 'error', 'dark'],
+  ])('should return correct css for isOpen: %o, state: %o and theme: %o', (isOpen, state, theme) => {
+    expect(getCss(getButtonStyles(isOpen, state, theme))).toMatchSnapshot();
+  });
 });
 
 describe('getFilterStyles()', () => {
-  it.each<[boolean, FormState, Theme]>([
-    [false, 'none', 'light'],
-    [false, 'none', 'dark'],
-    [false, 'success', 'light'],
-    [false, 'success', 'dark'],
-    [false, 'error', 'light'],
-    [false, 'error', 'dark'],
-    [true, 'none', 'light'],
-    [true, 'none', 'dark'],
-    [true, 'success', 'light'],
-    [true, 'success', 'dark'],
-    [true, 'error', 'light'],
-    [true, 'error', 'dark'],
-  ])('should return correct css for disabled: %o, state: %o and theme: %o', (disabled, state, theme) => {
-    expect(getCss(getFilterStyles(disabled, state, theme))).toMatchSnapshot();
-  });
+  it.each<[boolean, boolean, FormState, Theme]>([
+    [true, false, 'none', 'light'],
+    [false, false, 'none', 'dark'],
+    [true, false, 'success', 'light'],
+    [false, false, 'success', 'dark'],
+    [true, false, 'error', 'light'],
+    [false, false, 'error', 'dark'],
+    [true, true, 'none', 'light'],
+    [false, true, 'none', 'dark'],
+    [true, true, 'success', 'light'],
+    [false, true, 'success', 'dark'],
+    [true, true, 'error', 'light'],
+    [false, true, 'error', 'dark'],
+  ])(
+    'should return correct css for isOpen: %o, disabled: %o, state: %o and theme: %o',
+    (isOpen, disabled, state, theme) => {
+      expect(getCss(getFilterStyles(isOpen, disabled, state, theme))).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getListStyles()', () => {

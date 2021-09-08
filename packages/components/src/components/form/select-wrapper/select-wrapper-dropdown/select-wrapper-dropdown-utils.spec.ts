@@ -75,26 +75,26 @@ export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[]
   }));
 
 describe('getButtonAriaAttributes()', () => {
-  it.each<[boolean, string, string, string, string]>([
-    [true, 'dropdown-id', 'label-id', 'button-id', 'message-id'],
-    [false, 'dropdown-id', 'label-id', 'button-id', 'message-id'],
+  it.each<[boolean, string, string]>([
+    [true, 'label-id', 'dropdown-id'],
+    [false, 'label-id', 'dropdown-id'],
   ])(
-    'should return correct aria attributes for isOpen: %o, dropdownId: %o, labelId: %o, buttonId: %o and messageId: %o',
-    (isOpen, dropdownId, labelId, buttonId, messageId) => {
-      expect(getButtonAriaAttributes(isOpen, dropdownId, labelId, buttonId, messageId)).toMatchSnapshot();
+    'should return correct aria attributes for isOpen: %o, labelId: %o and dropdownId: %o',
+    (isOpen, labelId, dropdownId) => {
+      expect(getButtonAriaAttributes(isOpen, labelId, dropdownId)).toMatchSnapshot();
     }
   );
 });
 
 describe('getFilterInputAriaAttributes()', () => {
-  it.each<[boolean, string, number]>([
-    [true, 'dropdown-id', 0],
-    [false, 'dropdown-id', 0],
-    [false, 'dropdown-id', 1],
+  it.each<[boolean, string, string, number]>([
+    [true, 'label-id', 'dropdown-id', 0],
+    [false, 'label-id', 'dropdown-id', 0],
+    [false, 'label-id', 'dropdown-id', 1],
   ])(
-    'should return correct aria attributes for isOpen: %o, dropdownId: %o and activeDescendantId: %o',
-    (isOpen, dropdownId, activeDescendantId) => {
-      expect(getFilterInputAriaAttributes(isOpen, dropdownId, activeDescendantId)).toMatchSnapshot();
+    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o and activeDescendantId: %o',
+    (isOpen, labelId, dropdownId, activeDescendantId) => {
+      expect(getFilterInputAriaAttributes(isOpen, labelId, dropdownId, activeDescendantId)).toMatchSnapshot();
     }
   );
 });
@@ -106,10 +106,8 @@ describe('getListAriaAttributes()', () => {
   it.each<[string, OptionMap[], boolean]>([
     ['Some label', generateOptionMaps({ amount }), false],
     ['Some label', generateOptionMaps({ amount }), true],
-    ['Some label', generateOptionMaps({ amount }), false],
-    ['Some label', generateOptionMaps({ amount }), true],
     ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
-    ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
+    ['Some label', generateOptionMaps({ amount, highlightedIndex }), true],
   ])(
     'should return correct aria attributes for label: %o, optionMaps: %j and hasFilter: %o',
     (label, optionMaps, hasFilter) => {
