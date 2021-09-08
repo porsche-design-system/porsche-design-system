@@ -25,7 +25,7 @@ const dropdownPositionVar = '--p-dropdown-position';
 
 const getBoxShadow = (stateColor: string): string => `currentColor 0 0 0 ${stateColor ? 2 : 1}px inset`;
 
-export const getButtonStyles = (_disabled: boolean, state: FormState, theme: Theme, isOpen: boolean): Styles => {
+export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor } = getThemedStateColors(theme, state);
   const boxShadow = getBoxShadow(stateColor);
@@ -61,7 +61,7 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
   });
 };
 
-export const getFilterStyles = (disabled: boolean, state: FormState, theme: Theme): Styles => {
+export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor } = getThemedStateColors(theme, state);
   const boxShadow = getBoxShadow(stateColor);
@@ -120,6 +120,9 @@ export const getFilterStyles = (disabled: boolean, state: FormState, theme: Them
         pointerEvents: 'all',
         cursor: 'pointer',
         boxShadow,
+        ...(isOpen && {
+          outlineColor: stateColor || contrastMediumColor,
+        }),
       },
     },
   });
@@ -287,7 +290,7 @@ export const getComponentCss = (
       },
     }),
     ...mergeDeep(
-      filter ? getFilterStyles(disabled, state, theme) : getButtonStyles(disabled, state, theme, isOpen),
+      filter ? getFilterStyles(isOpen, disabled, state, theme) : getButtonStyles(isOpen, state, theme),
       getListStyles(direction, isOpen, theme)
     ),
   });
