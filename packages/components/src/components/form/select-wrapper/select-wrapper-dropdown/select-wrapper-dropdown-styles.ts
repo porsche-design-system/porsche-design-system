@@ -58,9 +58,6 @@ export const getButtonStyles = (_disabled: boolean, state: FormState, theme: The
         outlineColor: stateColor || contrastMediumColor,
       }),
     },
-    span: {
-      display: 'none',
-    },
   });
 };
 
@@ -253,6 +250,9 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       '&~$option': {
         paddingLeft: pxToRemWithUnit(24),
       },
+    },
+    'sr-text': {
+      display: 'none',
     },
   };
 };
