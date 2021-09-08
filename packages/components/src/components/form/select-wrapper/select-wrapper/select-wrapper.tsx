@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getSlotTextContent,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -143,8 +144,8 @@ export class SelectWrapper {
             <PrefixedTagNames.pSelectWrapperDropdown
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
-              label={this.label}
-              message={this.message}
+              label={getSlotTextContent(this.host, 'label') || this.label}
+              message={getSlotTextContent(this.host, 'message') || this.message}
               state={this.state}
               direction={this.dropdownDirection}
               filter={this.filter}
@@ -154,7 +155,6 @@ export class SelectWrapper {
             />
           )}
         </div>
-        {/* TODO: check message with aria-live */}
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
