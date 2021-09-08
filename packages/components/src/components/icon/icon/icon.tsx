@@ -34,13 +34,23 @@ export class Icon {
 
   private intersectionObserver?: IntersectionObserver;
   private key = 0; // use unique random key to trick stencil cache
+  private svgContent = '';
 
   public componentWillLoad(): void {
     this.initIntersectionObserver();
   }
 
   public componentWillUpdate(): void {
+    // reset old icon if there is any
+    if (this.svgContent) {
+      this.setIconContent('');
+    }
     this.initIntersectionObserver();
+  }
+
+  public componentDidRender(): void {
+    // if icon was fetched before component was rendered
+    this.setIconContent(this.svgContent);
   }
 
   public disconnectedCallback(): void {
@@ -84,9 +94,6 @@ export class Icon {
   }
 
   private loadIcon(): void {
-    // reset old icon if there is any
-    this.setIconContent('');
-
     const url = buildIconUrl(this.source ?? this.name);
 
     getSvgContent(url).then((iconContent) => {
@@ -98,6 +105,7 @@ export class Icon {
   }
 
   private setIconContent(content: string): void {
+    this.svgContent = content;
     const el = getShadowRootHTMLElement(this.host, 'i');
     // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
     if (el) {
