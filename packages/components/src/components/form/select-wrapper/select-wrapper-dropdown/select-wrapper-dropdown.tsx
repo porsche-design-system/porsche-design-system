@@ -93,8 +93,8 @@ export class SelectWrapperDropdown {
                 autoComplete="off"
                 value={this.searchString}
                 {...getFilterInputAriaAttributes(
-                  labelId,
                   this.isOpen,
+                  labelId,
                   dropdownId,
                   getHighlightedOptionMapIndex(this.optionMaps)
                 )}
@@ -110,7 +110,7 @@ export class SelectWrapperDropdown {
                 type="button"
                 id={buttonId}
                 disabled={this.disabled}
-                {...getButtonAriaAttributes(this.isOpen, dropdownId, labelId)}
+                {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId)}
                 onClick={() => this.setDropdownVisibility('toggle')}
                 onKeyDown={this.onButtonKeyDown}
                 ref={(el) => (this.buttonElement = el)}

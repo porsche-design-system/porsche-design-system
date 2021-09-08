@@ -1,52 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: false, dropdownId: 'dropdown-id', labelId: 'label-id', buttonId: 'button-id' and messageId: 'message-id' 1`] = `
+exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id' and dropdownId: 'dropdown-id' 1`] = `
 Object {
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "message-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id button-id",
-}
-`;
-
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: true, dropdownId: 'dropdown-id', labelId: 'label-id', buttonId: 'button-id' and messageId: 'message-id' 1`] = `
-Object {
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "message-id",
-  "aria-expanded": "true",
-  "aria-haspopup": "listbox",
-  "aria-labelledby": "label-id button-id",
-}
-`;
-
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
-Object {
-  "aria-activedescendant": "option-0",
-  "aria-autocomplete": "both",
   "aria-controls": "dropdown-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
 }
 `;
 
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
+exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id' and dropdownId: 'dropdown-id' 1`] = `
 Object {
-  "aria-activedescendant": "option-1",
-  "aria-autocomplete": "both",
-  "aria-controls": "dropdown-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-}
-`;
-
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: true, dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
-Object {
-  "aria-activedescendant": "option-0",
-  "aria-autocomplete": "both",
   "aria-controls": "dropdown-id",
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+}
+`;
+
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
+Object {
+  "aria-autocomplete": "list",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+}
+`;
+
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
+Object {
+  "aria-autocomplete": "list",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+}
+`;
+
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
+Object {
+  "aria-activedescendant": "option-0",
+  "aria-autocomplete": "list",
+  "aria-controls": "dropdown-id",
+  "aria-expanded": "true",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
 }
 `;
 
@@ -56,15 +53,11 @@ Object {
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: false 2`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: true 1`] = `
 Object {
   "aria-label": "Some label",
 }
 `;
-
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: true 1`] = `Object {}`;
-
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false}] and hasFilter: true 2`] = `Object {}`;
 
 exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: false 1`] = `
 Object {
@@ -73,9 +66,8 @@ Object {
 }
 `;
 
-exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: false 2`] = `
+exports[`getListAriaAttributes() should return correct aria attributes for label: 'Some label', optionMaps: [{"value":"Value 1","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":false},{"value":"Value 2","disabled":false,"hidden":false,"initiallyHidden":false,"selected":false,"highlighted":true}] and hasFilter: true 1`] = `
 Object {
-  "aria-activedescendant": "option-1",
   "aria-label": "Some label",
 }
 `;
