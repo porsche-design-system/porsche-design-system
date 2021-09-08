@@ -101,8 +101,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 19636,
-    "gzipSize": 6240
+    "size": 19089,
+    "gzipSize": 6105
   },
   {
     "chunkShortName": "spinner",
