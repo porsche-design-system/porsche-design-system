@@ -10,6 +10,7 @@ import {
   hasVisibleIcon,
   insertSlottedStyles,
   isDark,
+  mergeDeep,
   paramCaseToCamelCase,
   pxToRemWithUnit,
   transitionDuration,
@@ -55,21 +56,11 @@ const getPseudoAndSublineSize = (textSize: TextSize, fontSize: string, marginLef
   };
 
   const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
-    'x-small': {
-      ...font.size.xSmall,
-    },
-    small: {
-      ...font.size.small,
-    },
-    medium: {
-      ...font.size['20'],
-    },
-    large: {
-      ...font.size['30'],
-    },
-    'x-large': {
-      ...font.size.large,
-    },
+    'x-small': font.size.xSmall,
+    small: font.size.small,
+    medium: font.size['20'],
+    large: font.size['30'],
+    'x-large': font.size.large,
   };
 
   return {
@@ -208,8 +199,10 @@ export const getComponentCss = (
           },
         }),
       },
-      ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
-      ...buildResponsiveStyles(size, getSizeStyles),
+      ...mergeDeep(
+        !hasSubline && buildResponsiveStyles(stretch, getStretchStyles),
+        buildResponsiveStyles(size, getSizeStyles)
+      ),
     },
     ...(hasIcon && {
       icon: {
@@ -218,8 +211,10 @@ export const getComponentCss = (
         height: '1.5em',
       },
       label: {
-        ...buildResponsiveStyles(hideLabel, hasHref ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
-        ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)),
+        ...mergeDeep(
+          buildResponsiveStyles(hideLabel, hasHref ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
+          !hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)
+        ),
         ...(hasSubline && {
           paddingLeft: pxToRemWithUnit(4),
         }),
@@ -229,7 +224,7 @@ export const getComponentCss = (
       subline: {
         display: 'flex',
         transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-        marginTop: addImportantToRule('4px'),
+        marginTop: addImportantToRule('4px'), // override due to reset of srOnly in getVisibilityStyles
         color: active ? activeColor : baseColor,
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityStyles),
