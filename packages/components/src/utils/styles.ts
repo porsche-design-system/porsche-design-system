@@ -1,5 +1,5 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
 import { isDark } from '.';
 import type { Theme } from '../types';
@@ -130,25 +130,16 @@ export const getBaseSlottedStyles = (): Styles => {
 
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
   isHidden
-    ? {
-        position: 'absolute',
-        width: 1,
-        height: 1,
-        margin: -1,
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        clip: 'rect(1px,1px,1px,1px)',
-        clipPath: 'inset(50%)',
-      }
+    ? srOnly()
     : {
         position: 'static',
         width: 'auto',
         height: 'auto',
         margin: 0,
-        whiteSpace: 'normal',
         overflow: 'visible',
         clip: 'auto',
         clipPath: 'none',
+        whiteSpace: 'normal',
       };
 
 export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({

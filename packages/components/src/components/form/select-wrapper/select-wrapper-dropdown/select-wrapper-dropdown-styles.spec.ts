@@ -72,7 +72,7 @@ describe('getComponentCss()', () => {
     ['up', true, true, 'none', true, 'light'],
     ['up', false, true, 'none', true, 'light'],
   ])(
-    'should return correct css for direction: %o, isOpen: %o and theme: %o',
+    'should return correct css for direction: %o, isOpen: %o, disabled: %o, state: %o, filter: %o and theme: %o',
     (direction, isOpen, disabled, state, filter, theme) => {
       expect(getComponentCss(direction, isOpen, disabled, state, filter, theme)).toMatchSnapshot();
     }

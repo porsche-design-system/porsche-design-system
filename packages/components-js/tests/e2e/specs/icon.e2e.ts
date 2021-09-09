@@ -189,8 +189,36 @@ describe('icon', () => {
           expect(responseCounter).toEqual(2);
         });
 
+        /**
+         *       request 1st icon
+         *         |‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ================================================>
+         *                        |__________⌃
+         *                      request 1st icon again for different icon component
+         */
+        it('should not resolve promise of second (cached) icon with same source before render() is finished', async () => {
+          await setSvgRequestInterceptor(page, []);
+          await initIcon({ ...opts, name: 'highway' });
+
+          expect(await getContent(await getIcon()))
+            .withContext('first icon')
+            .toContain('highway');
+
+          await page.evaluate(() => {
+            const el = document.createElement('p-icon');
+            el.id = 'iconTwo';
+            el.name = 'highway';
+            document.body.appendChild(el);
+          });
+          const iconTwo = await selectNode(page, '#iconTwo >>> i');
+
+          expect(await getContent(iconTwo))
+            .withContext('second icon')
+            .toContain('highway');
+        });
+
         it('should unset previous icon if name prop is removed', async () => {
-          await setSvgRequestInterceptor(page, [2000]);
+          await setSvgRequestInterceptor(page, []);
           await initIcon({ ...opts, name: 'highway' });
 
           const host = await getHost();

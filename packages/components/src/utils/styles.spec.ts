@@ -8,8 +8,14 @@ import {
   pxToRemWithUnit,
   getBaseSlottedStyles,
   getTransition,
+  getFocusPseudoStyles,
+  mediaQuery,
+  getTextHiddenJssStyle,
+  getFormTextHiddenJssStyle,
 } from './';
 import type { PropertiesHyphen } from 'csstype';
+import { Theme } from '../types';
+import { breakpoint } from '@porsche-design-system/utilities';
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([
@@ -75,31 +81,59 @@ describe('addImportantToEachRule()', () => {
 });
 
 describe('getHoverStyles()', () => {
-  it('should return correct default JssStyle', () => {
-    expect(getHoverStyles()).toMatchSnapshot();
-  });
-
-  it('should return correct default JssStyle for dark theme', () => {
-    expect(getHoverStyles({ theme: 'dark' })).toMatchSnapshot();
+  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
+    expect(getHoverStyles({ theme })).toMatchSnapshot();
   });
 });
 
+type FocusStylesParams = {
+  color?: string;
+  offset?: number;
+};
+
 describe('getFocusStyles()', () => {
-  it('should return correct default JssStyle', () => {
-    expect(getFocusStyles()).toMatchSnapshot();
-  });
+  it.each<FocusStylesParams>([{}, { color: 'red' }, { offset: 1 }])(
+    'should return correct JssStyle for params: %o',
+    (params) => {
+      expect(getFocusStyles(params)).toMatchSnapshot();
+    }
+  );
+});
 
-  it('should return correct JssStyle for custom color', () => {
-    expect(getFocusStyles({ color: 'red' })).toMatchSnapshot();
-  });
+describe('getFocusPseudoStyles()', () => {
+  it.each<FocusStylesParams>([{}, { color: 'red' }, { offset: 1 }])(
+    'should return correct JssStyle for params: %o',
+    (params) => {
+      expect(getFocusPseudoStyles()).toMatchSnapshot();
+    }
+  );
+});
 
-  it('should return correct JssStyle for custom offset', () => {
-    expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
+describe('mediaQuery()', () => {
+  it('should return correct media query', () => {
+    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
   });
 });
 
 describe('getBaseSlottedStyles()', () => {
   it('should return correct styles', () => {
     expect(getBaseSlottedStyles()).toMatchSnapshot();
+  });
+});
+
+describe('getTextHiddenJssStyle()', () => {
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %o', (isHidden) => {
+    expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+  });
+});
+
+describe('getFormTextHiddenJssStyle()', () => {
+  it.each<[boolean, boolean]>([
+    [true, true],
+    [true, false],
+    [false, true],
+    [false, false],
+  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden, isCheckboxOrRadio) => {
+    expect(getFormTextHiddenJssStyle(isHidden, isCheckboxOrRadio)).toMatchSnapshot();
   });
 });

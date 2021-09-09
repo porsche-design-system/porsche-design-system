@@ -1,13 +1,12 @@
-import { TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as globby from 'globby';
 
 it('should have one unit test per component', () => {
   const whitelistedComponents: TagName[] = [
+    ...INTERNAL_TAG_NAMES,
     'p-flex-item',
     'p-grid-item',
-    'p-select-wrapper-dropdown',
-    'p-select-wrapper-filter',
     'p-tabs-item',
     'p-text-list-item',
     'p-table-head',

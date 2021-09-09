@@ -84,8 +84,8 @@ export class SelectWrapperDropdown {
 
     return (
       <Host>
-        {this.filter
-          ? [
+        {this.filter ? (
+          [
               <input
                 type="text"
                 role="combobox"
@@ -106,18 +106,18 @@ export class SelectWrapperDropdown {
                 ref={(el) => (this.inputElement = el)}
               />,
               <span onClick={() => this.setDropdownVisibility('toggle')} />,
-            ]
-          : [
-              <button
-                type="button"
-                id={buttonId}
-                disabled={this.disabled}
-                {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId, this.description)}
-                onClick={() => this.setDropdownVisibility('toggle')}
-                onKeyDown={this.onButtonKeyDown}
-                ref={(el) => (this.buttonElement = el)}
-              />,
-            ]}
+          ]
+        ) : (
+          <button
+            type="button"
+            id={buttonId}
+            disabled={this.disabled}
+            {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId, this.description)}
+            onClick={() => this.setDropdownVisibility('toggle')}
+            onKeyDown={this.onButtonKeyDown}
+            ref={(el) => (this.buttonElement = el)}
+          />
+        )}
         {[
           <div class="sr-text" id={labelId}>
             {getSelectedOptionMap(this.optionMaps)?.value}, {this.label}
