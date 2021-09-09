@@ -46,7 +46,64 @@ Object {
 }
 `;
 
-exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
+exports[`getFocusPseudoStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
+Object {
+  "& a::before": Object {
+    "content": "\\"\\"",
+    "display": "block",
+    "inset": 0,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "absolute",
+  },
+  "& a:focus::before": Object {
+    "outlineColor": "currentColor",
+  },
+  "& a:focus:not(:focus-visible)::before": Object {
+    "outlineColor": "transparent",
+  },
+}
+`;
+
+exports[`getFocusPseudoStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
+Object {
+  "& a::before": Object {
+    "content": "\\"\\"",
+    "display": "block",
+    "inset": 0,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "absolute",
+  },
+  "& a:focus::before": Object {
+    "outlineColor": "currentColor",
+  },
+  "& a:focus:not(:focus-visible)::before": Object {
+    "outlineColor": "transparent",
+  },
+}
+`;
+
+exports[`getFocusPseudoStyles() should return correct JssStyle for params: {} 1`] = `
+Object {
+  "& a::before": Object {
+    "content": "\\"\\"",
+    "display": "block",
+    "inset": 0,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "absolute",
+  },
+  "& a:focus::before": Object {
+    "outlineColor": "currentColor",
+  },
+  "& a:focus:not(:focus-visible)::before": Object {
+    "outlineColor": "transparent",
+  },
+}
+`;
+
+exports[`getFocusStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
     "border": "0",
@@ -62,7 +119,7 @@ Object {
 }
 `;
 
-exports[`getFocusStyles() should return correct JssStyle for custom offset 1`] = `
+exports[`getFocusStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
     "border": "0",
@@ -78,7 +135,7 @@ Object {
 }
 `;
 
-exports[`getFocusStyles() should return correct default JssStyle 1`] = `
+exports[`getFocusStyles() should return correct JssStyle for params: {} 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
     "border": "0",
@@ -94,7 +151,74 @@ Object {
 }
 `;
 
-exports[`getHoverStyles() should return correct default JssStyle 1`] = `
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false and isCheckboxOrRadio: false 1`] = `
+Object {
+  "clip": "auto",
+  "clipPath": "none",
+  "height": "auto",
+  "margin": 0,
+  "overflow": "visible",
+  "padding": "0 0 0.25rem 0",
+  "position": "static",
+  "whiteSpace": "normal",
+  "width": "fit-content",
+}
+`;
+
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false and isCheckboxOrRadio: true 1`] = `
+Object {
+  "clip": "auto",
+  "clipPath": "none",
+  "height": "auto",
+  "margin": 0,
+  "overflow": "visible",
+  "padding": "0 0 0 0.5rem",
+  "position": "static",
+  "whiteSpace": "normal",
+  "width": "auto",
+}
+`;
+
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true and isCheckboxOrRadio: false 1`] = `
+Object {
+  "border": "0",
+  "clip": "rect(1px,1px,1px,1px)",
+  "clipPath": "inset(50%)",
+  "height": "1px",
+  "margin": "-1px",
+  "overflow": "hidden",
+  "padding": "0 0 0.25rem 0",
+  "position": "absolute",
+  "whiteSpace": "nowrap",
+  "width": "fit-content",
+}
+`;
+
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true and isCheckboxOrRadio: true 1`] = `
+Object {
+  "border": "0",
+  "clip": "rect(1px,1px,1px,1px)",
+  "clipPath": "inset(50%)",
+  "height": "1px",
+  "margin": "-1px",
+  "overflow": "hidden",
+  "padding": "0 0 0 0.5rem",
+  "position": "absolute",
+  "whiteSpace": "nowrap",
+  "width": "auto",
+}
+`;
+
+exports[`getHoverStyles() should return correct JssStyle for theme: 'dark' 1`] = `
+Object {
+  "&:hover": Object {
+    "color": "#ff0223",
+  },
+  "transition": "color var(--p-transition-duration, .24s) ease",
+}
+`;
+
+exports[`getHoverStyles() should return correct JssStyle for theme: 'light' 1`] = `
 Object {
   "&:hover": Object {
     "color": "#d5001c",
@@ -103,11 +227,29 @@ Object {
 }
 `;
 
-exports[`getHoverStyles() should return correct default JssStyle for dark theme 1`] = `
+exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
 Object {
-  "&:hover": Object {
-    "color": "#ff0223",
-  },
-  "transition": "color var(--p-transition-duration, .24s) ease",
+  "clip": "auto",
+  "clipPath": "none",
+  "height": "auto",
+  "margin": 0,
+  "overflow": "visible",
+  "position": "static",
+  "whiteSpace": "normal",
+  "width": "auto",
+}
+`;
+
+exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
+Object {
+  "border": "0",
+  "clip": "rect(1px,1px,1px,1px)",
+  "clipPath": "inset(50%)",
+  "height": "1px",
+  "margin": "-1px",
+  "overflow": "hidden",
+  "position": "absolute",
+  "whiteSpace": "nowrap",
+  "width": "1px",
 }
 `;
