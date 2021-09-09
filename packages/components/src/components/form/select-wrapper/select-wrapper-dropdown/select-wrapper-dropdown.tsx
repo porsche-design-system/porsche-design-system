@@ -79,6 +79,7 @@ export class SelectWrapperDropdown {
   public render(): JSX.Element {
     const dropdownId = 'list';
     const labelId = 'label';
+    const descriptionId = 'description';
     const buttonId = 'value';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -86,33 +87,33 @@ export class SelectWrapperDropdown {
       <Host>
         {this.filter ? (
           [
-              <input
-                type="text"
-                role="combobox"
-                disabled={this.disabled}
-                placeholder={getSelectedOptionMap(this.optionMaps)?.value}
-                autoComplete="off"
-                value={this.searchString}
-                {...getFilterInputAriaAttributes(
-                  this.isOpen,
-                  labelId,
-                  dropdownId,
-                  this.description,
-                  getHighlightedOptionMapIndex(this.optionMaps)
-                )}
-                onKeyDown={this.onListKeyDown}
-                onInput={this.onFilterChange}
-                onClick={() => this.setDropdownVisibility('show')}
-                ref={(el) => (this.inputElement = el)}
-              />,
-              <span onClick={() => this.setDropdownVisibility('toggle')} />,
+            <input
+              type="text"
+              role="combobox"
+              disabled={this.disabled}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              autoComplete="off"
+              value={this.searchString}
+              {...getFilterInputAriaAttributes(
+                this.isOpen,
+                labelId,
+                descriptionId,
+                dropdownId,
+                getHighlightedOptionMapIndex(this.optionMaps)
+              )}
+              onKeyDown={this.onListKeyDown}
+              onInput={this.onFilterChange}
+              onClick={() => this.setDropdownVisibility('show')}
+              ref={(el) => (this.inputElement = el)}
+            />,
+            <span onClick={() => this.setDropdownVisibility('toggle')} />,
           ]
         ) : (
           <button
             type="button"
             id={buttonId}
             disabled={this.disabled}
-            {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId, this.description)}
+            {...getButtonAriaAttributes(this.isOpen, labelId, descriptionId, dropdownId)}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onButtonKeyDown}
             ref={(el) => (this.buttonElement = el)}
@@ -123,6 +124,11 @@ export class SelectWrapperDropdown {
             {getSelectedOptionMap(this.optionMaps)?.value}, {this.label}
             {!!this.message && `. ${this.message}`}
           </div>,
+          this.description && (
+            <div class="sr-text" id={descriptionId}>
+              {this.description}
+            </div>
+          ),
           <ul
             id={dropdownId}
             role="listbox"

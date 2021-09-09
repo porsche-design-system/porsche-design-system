@@ -8,12 +8,12 @@ const MAX_CHILDREN = 10;
 export const getButtonAriaAttributes = (
   isOpen: boolean,
   labelId: string,
-  dropdownId: string,
-  description: string
+  descriptionId: string,
+  dropdownId: string
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
-    'aria-describedby': description ? description : null,
+    'aria-describedby': descriptionId,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-controls': dropdownId,
@@ -23,13 +23,13 @@ export const getButtonAriaAttributes = (
 export const getFilterInputAriaAttributes = (
   isOpen: boolean,
   labelId: string,
+  descriptionId: string,
   dropdownId: string,
-  description: string,
   activeDescendantId: number
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
-    'aria-describedby': description ? description : null,
+    'aria-describedby': descriptionId,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-autocomplete': 'list',
