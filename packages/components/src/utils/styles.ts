@@ -58,34 +58,61 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   };
 };
 
-type GetFocusStylesOptions = {
+export type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
+  pseudo?: '::after' | '::before';
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const options: GetFocusStylesOptions = {
     color: color.state.focus,
     offset: 2,
+    pseudo: undefined,
     ...opts,
   };
 
-  return {
-    outline: 'transparent solid 1px',
-    outlineOffset: `${options.offset}px`,
-    '&::-moz-focus-inner': {
-      border: '0',
-    },
-    '&:focus': {
-      outlineColor: options.color,
-    },
-    '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent',
-    },
-  };
+  const { pseudo, offset: outlineOffset, color: outlineColor } = options;
+
+  return pseudo
+    ? {
+        outline: 'transparent none',
+        '&::-moz-focus-inner': {
+          border: 0,
+        },
+        [`&${pseudo}`]: {
+          outline: 'transparent solid 1px',
+          outlineOffset: `${outlineOffset}px`,
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        },
+        [`&:focus${pseudo}`]: {
+          outlineColor,
+        },
+        [`&:focus:not(:focus-visible)${pseudo}`]: {
+          outlineColor: 'transparent',
+        },
+      }
+    : {
+        outline: 'transparent solid 1px',
+        outlineOffset: `${outlineOffset}px`,
+        '&::-moz-focus-inner': {
+          border: '0',
+        },
+        '&:focus': {
+          outlineColor,
+        },
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
+        },
+      };
 };
 
-type GetFocusPseudoStylesOptions = {
+export type GetFocusSlottedPseudoStylesOptions = {
   color?: string;
   offset?: number;
 };
@@ -93,27 +120,40 @@ type GetFocusPseudoStylesOptions = {
 /**
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
-export const getFocusPseudoStyles = (opts?: GetFocusPseudoStylesOptions): Styles => {
-  const options: GetFocusPseudoStylesOptions = {
-    color: 'currentColor',
+export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles => {
+  const options: GetFocusSlottedPseudoStylesOptions = {
+    color: color.state.focus,
     offset: 2,
     ...opts,
   };
 
+  const { offset: outlineOffset, color: outlineColor } = options;
+
   return {
-    '& a::before': {
-      content: '""',
+    '& a': {
       display: 'block',
-      position: 'absolute',
-      inset: 0,
-      outline: '1px solid transparent',
-      outlineOffset: `${options.offset}px`,
-    },
-    '& a:focus::before': {
-      outlineColor: options.color,
-    },
-    '& a:focus:not(:focus-visible)::before': {
-      outlineColor: 'transparent',
+      position: 'static',
+      textDecoration: 'none',
+      font: 'inherit',
+      color: 'inherit',
+      outline: 'transparent none',
+      '&::before': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        outline: '1px solid transparent',
+        outlineOffset: `${outlineOffset}px`,
+      },
+      '&:focus::before': {
+        outlineColor,
+      },
+      '&:focus:not(:focus-visible)::before': {
+        outlineColor: 'transparent',
+      },
     },
   };
 };
