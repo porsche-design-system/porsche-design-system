@@ -151,6 +151,7 @@ export class SelectWrapper {
               direction={this.dropdownDirection}
               filter={this.filter}
               theme={this.theme}
+              required={isRequiredAndParentNotRequired(this.host, this.select) && true}
               disabled={disabled}
               onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
             />

@@ -22,6 +22,7 @@ export const getButtonAriaAttributes = (
 
 export const getFilterInputAriaAttributes = (
   isOpen: boolean,
+  isRequired: boolean,
   labelId: string,
   descriptionId: string,
   dropdownId: string,
@@ -37,14 +38,25 @@ export const getFilterInputAriaAttributes = (
       'aria-controls': dropdownId,
       'aria-activedescendant': `option-${activeDescendantId}`,
     }),
+    ...(isRequired && {
+      'aria-required': 'true',
+    }),
   };
 };
 
-export const getListAriaAttributes = (label: string, optionMaps: OptionMap[], hasFilter: boolean): AriaAttributes => {
+export const getListAriaAttributes = (
+  label: string,
+  isRequired: boolean,
+  optionMaps: OptionMap[],
+  hasFilter: boolean
+): AriaAttributes => {
   const highlightedIndex = getHighlightedOptionMapIndex(optionMaps);
   return {
     ...(highlightedIndex >= 0 && !hasFilter && { 'aria-activedescendant': `option-${highlightedIndex}` }),
     'aria-label': label,
+    ...(isRequired && {
+      'aria-required': 'true',
+    }),
   };
 };
 

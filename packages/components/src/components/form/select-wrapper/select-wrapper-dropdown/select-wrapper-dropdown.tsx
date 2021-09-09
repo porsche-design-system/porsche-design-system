@@ -43,6 +43,7 @@ export class SelectWrapperDropdown {
   @Prop() public direction?: DropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
+  @Prop() public required?: boolean = false;
   @Prop() public disabled?: boolean = false;
   @Prop() public onOpenChange: (isOpen: boolean) => void; // to toggle icon--open class
   @Prop() public isOpenOverride?: boolean = false; // for vrt testing only
@@ -91,11 +92,12 @@ export class SelectWrapperDropdown {
               type="text"
               role="combobox"
               disabled={this.disabled}
-              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value || null}
               autoComplete="off"
               value={this.searchString}
               {...getFilterInputAriaAttributes(
                 this.isOpen,
+                this.required,
                 labelId,
                 descriptionId,
                 dropdownId,
@@ -133,7 +135,7 @@ export class SelectWrapperDropdown {
             id={dropdownId}
             role="listbox"
             tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.optionMaps, this.filter)}
+            {...getListAriaAttributes(this.label, this.required, this.optionMaps, this.filter)}
             onKeyDown={this.onListKeyDown}
             ref={(el) => (this.listElement = el)}
           >
