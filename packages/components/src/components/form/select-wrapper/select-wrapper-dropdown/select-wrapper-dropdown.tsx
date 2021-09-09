@@ -37,6 +37,7 @@ export class SelectWrapperDropdown {
 
   @Prop() public selectRef?: HTMLSelectElement;
   @Prop() public label?: string;
+  @Prop() public description?: string;
   @Prop() public message?: string;
   @Prop() public state?: FormState;
   @Prop() public direction?: DropdownDirection = 'auto';
@@ -96,6 +97,7 @@ export class SelectWrapperDropdown {
                   this.isOpen,
                   labelId,
                   dropdownId,
+                  this.description,
                   getHighlightedOptionMapIndex(this.optionMaps)
                 )}
                 onKeyDown={this.onListKeyDown}
@@ -110,7 +112,7 @@ export class SelectWrapperDropdown {
                 type="button"
                 id={buttonId}
                 disabled={this.disabled}
-                {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId)}
+                {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId, this.description)}
                 onClick={() => this.setDropdownVisibility('toggle')}
                 onKeyDown={this.onButtonKeyDown}
                 ref={(el) => (this.buttonElement = el)}
