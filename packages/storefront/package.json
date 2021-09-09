@@ -35,9 +35,9 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.8.2",
+    "@types/jasmine": "^3.9.0",
     "@types/jest": "^27.0.1",
-    "@types/node": "~16.4.13",
+    "@types/node": "~16.9.0",
     "@types/prismjs": "^1.16.6",
     "@types/yup": "^0.29.10",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
