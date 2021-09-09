@@ -4,14 +4,12 @@ import { waitForComponentsReady } from '../../e2e/helpers';
 type Options = WaitForOptions & {
   enableLogging?: boolean;
   injectIntoHead?: string;
-  injectBeforeClosingBody?: string;
 };
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = {
     waitUntil: 'networkidle0',
     injectIntoHead: '',
-    injectBeforeClosingBody: '',
     ...opts,
   };
 
@@ -28,7 +26,6 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
         ${content}
-        ${options.injectBeforeClosingBody}
       </body>
     </html>`,
     options

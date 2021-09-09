@@ -56,6 +56,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
           outline: '1px solid transparent',
           outlineOffset: '2px',
           appearance: 'none',
+          WebkitAppearance: 'none', // iOS safari
           boxSizing: 'border-box',
           border: 'none',
           borderRadius: 0, // for safari
