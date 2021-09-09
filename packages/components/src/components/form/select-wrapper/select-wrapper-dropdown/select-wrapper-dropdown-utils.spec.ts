@@ -87,15 +87,15 @@ describe('getButtonAriaAttributes()', () => {
 });
 
 describe('getFilterInputAriaAttributes()', () => {
-  it.each<[boolean, string, string, string, number]>([
-    [true, 'label-id', 'description-id', 'dropdown-id', 0],
-    [false, 'label-id', 'description-id', 'dropdown-id', 0],
-    [false, 'label-id', 'description-id', 'dropdown-id', 1],
+  it.each<[boolean, boolean, string, string, string, number]>([
+    [true, true, 'label-id', 'description-id', 'dropdown-id', 0],
+    [false, false, 'label-id', 'description-id', 'dropdown-id', 0],
+    [false, false, 'label-id', 'description-id', 'dropdown-id', 1],
   ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
-    (isOpen, labelId, descriptionId, dropdownId, activeDescendantId) => {
+    'should return correct aria attributes for isOpen: %o, isRequired: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
+    (isOpen, isRequired, labelId, descriptionId, dropdownId, activeDescendantId) => {
       expect(
-        getFilterInputAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId)
+        getFilterInputAriaAttributes(isOpen, isRequired, labelId, descriptionId, dropdownId, activeDescendantId)
       ).toMatchSnapshot();
     }
   );
@@ -105,15 +105,15 @@ describe('getListAriaAttributes()', () => {
   const amount = 2;
   const highlightedIndex = 1;
 
-  it.each<[string, OptionMap[], boolean]>([
-    ['Some label', generateOptionMaps({ amount }), false],
-    ['Some label', generateOptionMaps({ amount }), true],
-    ['Some label', generateOptionMaps({ amount, highlightedIndex }), false],
-    ['Some label', generateOptionMaps({ amount, highlightedIndex }), true],
+  it.each<[string, boolean, OptionMap[], boolean]>([
+    ['Some label', true, generateOptionMaps({ amount }), false],
+    ['Some label', false, generateOptionMaps({ amount }), true],
+    ['Some label', false, generateOptionMaps({ amount, highlightedIndex }), false],
+    ['Some label', true, generateOptionMaps({ amount, highlightedIndex }), true],
   ])(
-    'should return correct aria attributes for label: %o, optionMaps: %j and hasFilter: %o',
-    (label, optionMaps, hasFilter) => {
-      expect(getListAriaAttributes(label, optionMaps, hasFilter)).toMatchSnapshot();
+    'should return correct aria attributes for label: %o, isRequired: %o, optionMaps: %j and hasFilter: %o',
+    (label, isRequired, optionMaps, hasFilter) => {
+      expect(getListAriaAttributes(label, isRequired, optionMaps, hasFilter)).toMatchSnapshot();
     }
   );
 });
