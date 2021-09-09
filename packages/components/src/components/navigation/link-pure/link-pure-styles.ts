@@ -220,8 +220,8 @@ export const getComponentCss = (
       label: {
         ...buildResponsiveStyles(hideLabel, hasHref ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
         ...(!hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)),
-        ...((hasSubline || alignLabel === 'right') && {
-          paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
+        ...(hasSubline && {
+          paddingLeft: pxToRemWithUnit(4),
         }),
       },
     }),
@@ -233,7 +233,7 @@ export const getComponentCss = (
         color: active ? activeColor : baseColor,
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityStyles),
-          paddingLeft: addImportantToRule(pxToRemWithUnit(4)),
+          paddingLeft: pxToRemWithUnit(4),
           '&::before': {
             content: '""',
           },
