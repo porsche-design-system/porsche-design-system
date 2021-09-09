@@ -2,6 +2,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   attachCss,
+  buildGlobalStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -26,7 +27,7 @@ import {
   generateTypeScale,
   srOnly,
 } from '@porsche-design-system/utilities';
-import type { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: string; activeColor: string } => {
@@ -41,7 +42,7 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
   };
 };
 
-const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
+const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   ...addImportantToEachRule({
     position: 'relative',
     cursor: 'pointer',
@@ -72,7 +73,7 @@ const getPseudoAndSublineSize = (textSize: TextSize, fontSize: string, marginLef
   };
 };
 
-const getSizeStyles = (textSize: TextSize): JssStyle => {
+const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
@@ -83,6 +84,7 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
       },
     };
   } else {
+    // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
     const { fontSize } = font.size[paramCaseToCamelCase(textSize)];
     const lineHeight = `${calculateLineHeight(fontSize)}em`;
 
@@ -97,13 +99,13 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
   }
 };
 
-const getStretchStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => {
+const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
   return {
     justifyContent: stretch ? 'space-between' : 'flex-start',
   };
 };
 
-const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
+const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? srOnly()
     : {
@@ -120,7 +122,7 @@ const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
 };
 
 /* Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden. */
-const getSlottedAnchorVisibilityStyles = (hideLabel: boolean): JssStyle => {
+const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
@@ -142,7 +144,7 @@ const getSlottedAnchorVisibilityStyles = (hideLabel: boolean): JssStyle => {
       };
 };
 
-const getLabelAlignmentStyles = (alignLabel: AlignLabel): JssStyle => {
+const getLabelAlignmentStyles: GetStylesFunction = (alignLabel: AlignLabelType): JssStyle => {
   return alignLabel === 'left'
     ? {
         padding: `0 ${pxToRemWithUnit(4)} 0 0`,
