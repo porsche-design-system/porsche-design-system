@@ -58,7 +58,7 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   };
 };
 
-type GetFocusStylesOptions = {
+export type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
   pseudo?: '::after' | '::before';
@@ -112,7 +112,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
       };
 };
 
-type GetFocusSlottedPseudoStylesOptions = {
+export type GetFocusSlottedPseudoStylesOptions = {
   color?: string;
   offset?: number;
 };
