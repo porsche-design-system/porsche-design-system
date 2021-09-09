@@ -234,7 +234,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render with interplay of breakpoint-customizable depending on viewport"
     >
       <p-link-pure
-        [href]="https:  //www.porsche.com"
+        [href]="'https://www.porsche.com'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
         [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
         [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }"
@@ -246,7 +246,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
         [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }"
         [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
-        ><a [href]="https:  //www.porsche.com">Label slotted multiple breakpoint-customizable</a></p-link-pure
+        ><a href="https://www.porsche.com">Label slotted multiple breakpoint-customizable</a></p-link-pure
       >
     </div>
 
