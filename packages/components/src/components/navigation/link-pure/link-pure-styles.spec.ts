@@ -32,40 +32,130 @@ describe('getComponentCss()', () => {
     l: 'left',
     xl: 'right',
   };
-  it.each<
-    [
-      LinkButtonPureIconName,
-      boolean,
-      BreakpointCustomizable<boolean>,
-      BreakpointCustomizable<TextSize>,
-      BreakpointCustomizable<boolean>,
-      AlignLabel,
-      boolean,
-      boolean,
-      Theme
-    ]
-  >([
-    ['arrow-head-right', false, false, 'small', false, 'right', false, true, 'light'],
-    ['arrow-head-right', false, false, 'small', false, 'right', false, true, 'dark'],
-    ['arrow-head-right', true, true, 'x-large', false, 'left', false, true, 'light'],
-    ['arrow-head-right', true, true, 'x-large', false, 'left', false, true, 'dark'],
-    ['arrow-head-right', false, false, 'small', true, 'right', false, true, 'light'],
-    ['arrow-head-right', false, false, 'small', true, 'right', true, true, 'light'],
-    ['arrow-head-right', false, false, 'small', breakpointCustomizableBoolean, 'right', false, true, 'light'],
-    ['none', false, false, 'small', false, 'right', false, true, 'light'],
-    ['arrow-head-right', false, false, 'small', false, 'right', false, false, 'light'],
-    [
-      'arrow-head-right',
-      false,
-      breakpointCustomizableBoolean,
-      breakpointCustomizableSize,
-      false,
-      breakpointCustomizableAlignLabel,
-      false,
-      true,
-      'light',
-    ],
-  ])('should return correct css', (icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme) => {
+
+  it.each<{
+    icon: LinkButtonPureIconName;
+    active: boolean;
+    stretch: BreakpointCustomizable<boolean>;
+    size: BreakpointCustomizable<TextSize>;
+    hideLabel: BreakpointCustomizable<boolean>;
+    alignLabel: AlignLabel;
+    hasSubline: boolean;
+    hasHref: boolean;
+    theme: Theme;
+  }>([
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: false,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: false,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'dark',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: true,
+      stretch: true,
+      size: 'x-large',
+      hideLabel: false,
+      alignLabel: 'left',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: true,
+      stretch: true,
+      size: 'x-large',
+      hideLabel: false,
+      alignLabel: 'left',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'dark',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: true,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: true,
+      alignLabel: 'right',
+      hasSubline: true,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: breakpointCustomizableBoolean,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'none',
+      stretch: false,
+      active: false,
+      size: 'small',
+      hideLabel: false,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      stretch: false,
+      active: false,
+      size: 'small',
+      hideLabel: false,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasHref: false,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
+      stretch: breakpointCustomizableBoolean,
+      size: breakpointCustomizableSize,
+      hideLabel: false,
+      alignLabel: breakpointCustomizableAlignLabel,
+      hasSubline: false,
+      hasHref: true,
+      theme: 'light',
+    },
+  ])('should return correct css for %o', (props) => {
+    const { icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme } = props;
     expect(
       getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)
     ).toMatchSnapshot();
