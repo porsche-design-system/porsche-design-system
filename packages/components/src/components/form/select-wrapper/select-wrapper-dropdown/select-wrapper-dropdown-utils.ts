@@ -5,9 +5,15 @@ import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-s
 
 const MAX_CHILDREN = 10;
 
-export const getButtonAriaAttributes = (isOpen: boolean, labelId: string, dropdownId: string): AriaAttributes => {
+export const getButtonAriaAttributes = (
+  isOpen: boolean,
+  labelId: string,
+  dropdownId: string,
+  description: string
+): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
+    'aria-describedby': description ? description : null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-controls': dropdownId,
@@ -18,10 +24,12 @@ export const getFilterInputAriaAttributes = (
   isOpen: boolean,
   labelId: string,
   dropdownId: string,
+  description: string,
   activeDescendantId: number
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
+    'aria-describedby': description ? description : null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-autocomplete': 'list',

@@ -618,6 +618,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
+        "description"?: string;
         "direction"?: DropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
@@ -1748,6 +1749,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
+        "description"?: string;
         "direction"?: DropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
