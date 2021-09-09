@@ -21,7 +21,7 @@ import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
 
 export const SELECT_HEIGHT = 48;
-export const OPTION_HEIGHT = 24; // optgroups are higher and ignored
+export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
 const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
 const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
@@ -89,9 +89,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       display: 'block',
       position: 'relative',
       color: textColor,
-      '&:hover $dropdown': {
-        borderColor: contrastHighColor,
-      },
       '&--disabled': {
         '& $icon, & .label__text': {
           color: disabledColor,
@@ -99,11 +96,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
     label: {
-      '&:hover': {
-        '&+.filter': {
-          color: contrastHighColor,
-        },
-      },
       '&__text': {
         ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
         display: 'block',
@@ -151,9 +143,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       '&__icon': {
         marginRight: pxToRemWithUnit(4),
       },
-    },
-    dropdown: {
-      marginTop: pxToRemWithUnit(-1),
     },
   });
 };

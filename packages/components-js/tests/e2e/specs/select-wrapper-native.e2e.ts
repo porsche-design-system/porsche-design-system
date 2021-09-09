@@ -210,7 +210,9 @@ describe('select-wrapper native', () => {
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
       const visible = expectedStyleOnFocus({ color: 'neutral' });
 
-      expect(await getOutlineStyle(select)).toBe(hidden);
+      expect(await getOutlineStyle(select))
+        .withContext('initially')
+        .toBe(hidden);
 
       await page.keyboard.press('Tab');
 
