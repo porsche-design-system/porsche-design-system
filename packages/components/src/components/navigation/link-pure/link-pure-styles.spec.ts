@@ -148,7 +148,7 @@ describe('getComponentCss()', () => {
       active: false,
       stretch: breakpointCustomizableBoolean,
       size: breakpointCustomizableSize,
-      hideLabel: false,
+      hideLabel: breakpointCustomizableBoolean,
       alignLabel: breakpointCustomizableAlignLabel,
       hasSubline: false,
       hasHref: true,
