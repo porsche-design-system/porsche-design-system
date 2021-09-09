@@ -1,4 +1,5 @@
 import {
+  addImportantToEachRule,
   addImportantToRule,
   attachCss,
   buildResponsiveHostStyles,
@@ -41,9 +42,11 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
 };
 
 const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
-  position: addImportantToRule('relative'),
-  cursor: addImportantToRule('pointer'),
-  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
+  ...addImportantToEachRule({
+    position: 'relative',
+    cursor: 'pointer',
+    display: stretch ? 'block' : 'inline-block',
+  }),
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
@@ -107,6 +110,7 @@ const getVisibilityStyles = (hideLabel: boolean): JssStyle => {
         position: 'static',
         width: 'auto',
         height: 'auto',
+        border: 'medium none color',
         margin: 0,
         whiteSpace: 'inherit',
         overflow: 'visible',
