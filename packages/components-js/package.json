@@ -63,7 +63,7 @@
     "@types/node": "^16.9.0",
     "@types/terser-webpack-plugin": "^5.2.0",
     "concurrently": "^6.2.1",
-    "devtools-protocol": "^0.0.909734",
+    "devtools-protocol": "^0.0.919640",
     "globby": "^11.0.4",
     "http-server": "^13.0.0",
     "jasmine": "^3.8.0",
