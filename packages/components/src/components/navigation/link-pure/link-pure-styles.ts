@@ -2,7 +2,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   attachCss,
-  buildGlobalStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
