@@ -41,7 +41,7 @@ const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: strin
 
 const getHostStyles: GetStylesFunction = (stretch: BreakpointCustomizable<boolean>): JssStyle => ({
   position: addImportantToRule('relative'),
-  cursor: 'pointer',
+  cursor: addImportantToRule('pointer'),
   display: addImportantToRule(stretch ? 'block' : 'inline-block'),
   ...(!stretch && { verticalAlign: 'top' }),
 });
@@ -83,7 +83,7 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& $icon': {
+      '& .icon': {
         width: '1.5em',
         height: '1.5em',
       },
@@ -94,7 +94,7 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
 
     return {
       ...generateTypeScale(fontSize),
-      '& $icon': {
+      '& .icon': {
         width: lineHeight,
         height: lineHeight,
       },
@@ -194,15 +194,19 @@ export const getComponentCss = (
       ...(hasHref && getFocusStyles({ offset: 1, pseudo: '::before' })),
       '&:hover': {
         color: hoverColor,
-        '& + .subline': {
-          color: hoverColor,
-        },
+        ...(hasSubline && {
+          '& + $subline': {
+            color: hoverColor,
+          },
+        }),
       },
       '&:active': {
         color: activeColor,
-        '& + .subline': {
-          color: activeColor,
-        },
+        ...(hasSubline && {
+          '& + $subline': {
+            color: activeColor,
+          },
+        }),
       },
       ...(!hasSubline && buildResponsiveStyles(stretch, getStretchStyles)),
       ...buildResponsiveStyles(size, getSizeStyles),
