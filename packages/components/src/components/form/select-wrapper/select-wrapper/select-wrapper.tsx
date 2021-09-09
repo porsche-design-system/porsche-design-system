@@ -146,6 +146,7 @@ export class SelectWrapper {
               selectRef={this.select}
               label={getSlotTextContent(this.host, 'label') || this.label}
               message={getSlotTextContent(this.host, 'message') || this.message}
+              description={getSlotTextContent(this.host, 'description') || this.description}
               state={this.state}
               direction={this.dropdownDirection}
               filter={this.filter}
