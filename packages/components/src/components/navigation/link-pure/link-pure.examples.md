@@ -258,12 +258,12 @@ The size of the *subline* changes according to the size of the *label*. We do no
     clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
-<a href="https://www.porsche.com" class="example-link">
-  <p-link-pure style="padding: 1rem;">Some label</p-link-pure>
-</a>
-<a href="https://www.porsche.com" class="example-link">
-  <p-link-pure hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
-</a>`;
+<p-link-pure style="padding: 1rem;">
+  <a href="https://www.porsche.com">Some label</a>
+</p-link-pure>
+<p-link-pure hide-label="true" style="padding: 1rem;">
+  <a href="https://www.porsche.com">Some label</a>
+</p-link-pure>`;
 
     get alignmentMarkup() {
       return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;

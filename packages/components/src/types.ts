@@ -49,4 +49,5 @@ export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonPureIconName = IconName | 'none';
 
-export type AlignLabel = BreakpointCustomizable<'left' | 'right'>;
+export type AlignLabelType = 'left' | 'right';
+export type AlignLabel = BreakpointCustomizable<AlignLabelType>;

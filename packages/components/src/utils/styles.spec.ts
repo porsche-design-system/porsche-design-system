@@ -3,11 +3,12 @@ import {
   addImportantToRule,
   getFocusStyles,
   getHoverStyles,
-  JssStyle,
   pxToRem,
   pxToRemWithUnit,
   getBaseSlottedStyles,
+  getFocusSlottedPseudoStyles,
 } from './';
+import type { JssStyle, GetFocusStylesOptions } from './';
 
 describe('pxToRem()', () => {
   it.each([
@@ -85,10 +86,29 @@ describe('getFocusStyles()', () => {
   it('should return correct JssStyle for custom offset', () => {
     expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
   });
+
+  it.each<[GetFocusStylesOptions]>([
+    [{}],
+    [{ color: 'deeppink', offset: 1, pseudo: '::before' }],
+    [{ color: 'deeppink', offset: 2, pseudo: '::after' }],
+    [{ color: 'deeppink', offset: 3 }],
+  ])('should return correct styles for %o', (opts) => {
+    expect(getFocusSlottedPseudoStyles(opts)).toMatchSnapshot();
+  });
 });
 
 describe('getBaseSlottedStyles()', () => {
   it('should return correct styles', () => {
     expect(getBaseSlottedStyles()).toMatchSnapshot();
+  });
+});
+
+describe('getFocusSlottedPseudoStyles()', () => {
+  it('should return correct JssStyle for custom color', () => {
+    expect(getFocusSlottedPseudoStyles({ color: 'red' })).toMatchSnapshot();
+  });
+
+  it('should return correct JssStyle for custom offset', () => {
+    expect(getFocusSlottedPseudoStyles({ offset: 1 })).toMatchSnapshot();
   });
 });

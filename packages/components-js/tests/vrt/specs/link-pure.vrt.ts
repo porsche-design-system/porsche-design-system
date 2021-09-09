@@ -77,12 +77,13 @@ describe('Link Pure', () => {
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHoveredState(page, '.hovered p-link-pure >>> a');
-        await forceHoveredState(page, '.hovered p-link-pure >>> span');
-        await forceFocusedState(page, '.focused p-link-pure >>> a');
-        await forceFocusedState(page, '.focused p-link-pure >>> span');
-        await forceFocusedHoveredState(page, '.focused-hovered p-link-pure >>> a');
-        await forceFocusedHoveredState(page, '.focused-hovered p-link-pure >>> span');
+        await forceHoveredState(page, '.hovered p-link-pure[href] >>> a');
+        await forceHoveredState(page, '.hovered p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+        await forceFocusedState(page, '.focused p-link-pure[href] >>> a');
+        await forceFocusedState(page, '.focused:not([href]) p-link-pure a');
+        await forceFocusedHoveredState(page, '.focused-hovered p-link-pure[href] >>> a');
+        await forceFocusedState(page, '.focused-hovered p-link-pure:not([href]) a');
+        await forceHoveredState(page, '.focused-hovered p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
       })
     ).toBeFalsy();
   });
