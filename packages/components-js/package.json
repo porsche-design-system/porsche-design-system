@@ -68,7 +68,7 @@
     "http-server": "^13.0.0",
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "jest": "^27.0.6",
+    "jest": "^27.1.1",
     "jsdom": "^16.5.3",
     "puppeteer": "~10.1.0",
     "ts-jest": "^27.0.3",
