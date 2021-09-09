@@ -626,6 +626,7 @@ export namespace Components {
         "label"?: string;
         "message"?: string;
         "onOpenChange": (isOpen: boolean) => void;
+        "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
         "theme"?: Theme;
@@ -1757,6 +1758,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "message"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;
+        "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
         "theme"?: Theme;
