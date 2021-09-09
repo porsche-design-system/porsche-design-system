@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Changed
-- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load 
+- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
+- Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state
 
 ### [2.4.0-beta.1] - 2021-08-26
 
@@ -25,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
-- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state.
+- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state
 - `Modal` backdrop behavior to close modal on mouse-down
 
 #### Fixed
