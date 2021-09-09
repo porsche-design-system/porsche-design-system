@@ -3,19 +3,19 @@ import {
   addImportantToRule,
   getFocusStyles,
   getHoverStyles,
-  JssStyle,
   pxToRem,
   pxToRemWithUnit,
   getBaseSlottedStyles,
+  getFocusSlottedPseudoStyles,
   getTransition,
-  getFocusPseudoStyles,
   mediaQuery,
   getTextHiddenJssStyle,
   getFormTextHiddenJssStyle,
+  GetFocusSlottedPseudoStylesOptions,
 } from './';
 import type { PropertiesHyphen } from 'csstype';
-import { Theme } from '../types';
-import { breakpoint } from '@porsche-design-system/utilities';
+import type { JssStyle, GetFocusStylesOptions } from './';
+import type { Theme } from '../types';
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([
@@ -86,25 +86,24 @@ describe('getHoverStyles()', () => {
   });
 });
 
-type FocusStylesParams = {
-  color?: string;
-  offset?: number;
-};
-
 describe('getFocusStyles()', () => {
-  it.each<FocusStylesParams>([{}, { color: 'red' }, { offset: 1 }])(
-    'should return correct JssStyle for params: %o',
-    (params) => {
-      expect(getFocusStyles(params)).toMatchSnapshot();
-    }
-  );
+  it.each<GetFocusStylesOptions>([
+    {},
+    { color: 'red' },
+    { offset: 1 },
+    { color: 'deeppink', offset: 1, pseudo: '::before' },
+    { color: 'deeppink', offset: 2, pseudo: '::after' },
+    { color: 'deeppink', offset: 3 },
+  ])('should return correct JssStyle for params: %o', (params) => {
+    expect(getFocusStyles(params)).toMatchSnapshot();
+  });
 });
 
-describe('getFocusPseudoStyles()', () => {
-  it.each<FocusStylesParams>([{}, { color: 'red' }, { offset: 1 }])(
+describe('getFocusSlottedPseudoStyles()', () => {
+  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
     'should return correct JssStyle for params: %o',
     (params) => {
-      expect(getFocusPseudoStyles()).toMatchSnapshot();
+      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
     }
   );
 });
