@@ -54,9 +54,10 @@ export const getListAriaAttributes = (
   return {
     ...(highlightedIndex >= 0 && !hasFilter && { 'aria-activedescendant': `option-${highlightedIndex}` }),
     'aria-label': label,
-    ...(isRequired && {
-      'aria-required': 'true',
-    }),
+    ...(isRequired &&
+      !hasFilter && {
+        'aria-required': 'true',
+      }),
   };
 };
 
