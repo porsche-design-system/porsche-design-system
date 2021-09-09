@@ -75,26 +75,28 @@ export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[]
   }));
 
 describe('getButtonAriaAttributes()', () => {
-  it.each<[boolean, string, string]>([
-    [true, 'label-id', 'dropdown-id'],
-    [false, 'label-id', 'dropdown-id'],
+  it.each<[boolean, string, string, string]>([
+    [true, 'label-id', 'dropdown-id', 'description'],
+    [false, 'label-id', 'dropdown-id', 'description'],
   ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o and dropdownId: %o',
-    (isOpen, labelId, dropdownId) => {
-      expect(getButtonAriaAttributes(isOpen, labelId, dropdownId)).toMatchSnapshot();
+    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o and description: %o',
+    (isOpen, labelId, dropdownId, description) => {
+      expect(getButtonAriaAttributes(isOpen, labelId, dropdownId, description)).toMatchSnapshot();
     }
   );
 });
 
 describe('getFilterInputAriaAttributes()', () => {
-  it.each<[boolean, string, string, number]>([
-    [true, 'label-id', 'dropdown-id', 0],
-    [false, 'label-id', 'dropdown-id', 0],
-    [false, 'label-id', 'dropdown-id', 1],
+  it.each<[boolean, string, string, string, number]>([
+    [true, 'label-id', 'dropdown-id', 'description', 0],
+    [false, 'label-id', 'dropdown-id', 'description', 0],
+    [false, 'label-id', 'dropdown-id', 'description', 1],
   ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o and activeDescendantId: %o',
-    (isOpen, labelId, dropdownId, activeDescendantId) => {
-      expect(getFilterInputAriaAttributes(isOpen, labelId, dropdownId, activeDescendantId)).toMatchSnapshot();
+    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o, description: %o and activeDescendantId: %o',
+    (isOpen, labelId, dropdownId, description, activeDescendantId) => {
+      expect(
+        getFilterInputAriaAttributes(isOpen, labelId, dropdownId, description, activeDescendantId)
+      ).toMatchSnapshot();
     }
   );
 });
