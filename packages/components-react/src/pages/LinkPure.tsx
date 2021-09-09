@@ -304,6 +304,29 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
+      <div
+        className="playground light stretched-links"
+        title="should render with interplay of breakpoint-customizable depending on viewport"
+      >
+        <PLinkPure
+          href="https://www.porsche.com"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }}
+          alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
+        >
+          Label multiple breakpoint-customizable
+        </PLinkPure>
+        <PLinkPure
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }}
+          alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
+        >
+          <a href="https://www.porsche.com">Label slotted multiple breakpoint-customizable</a>
+        </PLinkPure>
+      </div>
+
       <div className="playground light" title="should not align label left or stretch if it has a subline">
         <PLinkPure href="https://www.porsche.com" alignLabel="left">
           Label align left
