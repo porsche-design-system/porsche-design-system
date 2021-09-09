@@ -1,51 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', dropdownId: 'dropdown-id' and description: 'description' 1`] = `
+exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
 Object {
   "aria-controls": "dropdown-id",
-  "aria-describedby": "description",
+  "aria-describedby": "description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
 }
 `;
 
-exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', dropdownId: 'dropdown-id' and description: 'description' 1`] = `
+exports[`getButtonAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id' and dropdownId: 'dropdown-id' 1`] = `
 Object {
   "aria-controls": "dropdown-id",
-  "aria-describedby": "description",
+  "aria-describedby": "description-id",
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
 }
 `;
 
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', dropdownId: 'dropdown-id', description: 'description' and activeDescendantId: 0 1`] = `
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 Object {
   "aria-autocomplete": "list",
-  "aria-describedby": "description",
+  "aria-describedby": "description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
 }
 `;
 
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', dropdownId: 'dropdown-id', description: 'description' and activeDescendantId: 1 1`] = `
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
 Object {
   "aria-autocomplete": "list",
-  "aria-describedby": "description",
+  "aria-describedby": "description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
 }
 `;
 
-exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', dropdownId: 'dropdown-id', description: 'description' and activeDescendantId: 0 1`] = `
+exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: true, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 Object {
   "aria-activedescendant": "option-0",
   "aria-autocomplete": "list",
   "aria-controls": "dropdown-id",
-  "aria-describedby": "description",
+  "aria-describedby": "description-id",
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",

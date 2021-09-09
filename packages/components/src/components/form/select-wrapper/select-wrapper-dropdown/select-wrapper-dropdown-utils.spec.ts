@@ -76,26 +76,26 @@ export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[]
 
 describe('getButtonAriaAttributes()', () => {
   it.each<[boolean, string, string, string]>([
-    [true, 'label-id', 'dropdown-id', 'description'],
-    [false, 'label-id', 'dropdown-id', 'description'],
+    [true, 'label-id', 'description-id', 'dropdown-id'],
+    [false, 'label-id', 'description-id', 'dropdown-id'],
   ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o and description: %o',
-    (isOpen, labelId, dropdownId, description) => {
-      expect(getButtonAriaAttributes(isOpen, labelId, dropdownId, description)).toMatchSnapshot();
+    'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o and dropdownId: %o',
+    (isOpen, labelId, descriptionId, dropdownId) => {
+      expect(getButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId)).toMatchSnapshot();
     }
   );
 });
 
 describe('getFilterInputAriaAttributes()', () => {
   it.each<[boolean, string, string, string, number]>([
-    [true, 'label-id', 'dropdown-id', 'description', 0],
-    [false, 'label-id', 'dropdown-id', 'description', 0],
-    [false, 'label-id', 'dropdown-id', 'description', 1],
+    [true, 'label-id', 'description-id', 'dropdown-id', 0],
+    [false, 'label-id', 'description-id', 'dropdown-id', 0],
+    [false, 'label-id', 'description-id', 'dropdown-id', 1],
   ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o, dropdownId: %o, description: %o and activeDescendantId: %o',
-    (isOpen, labelId, dropdownId, description, activeDescendantId) => {
+    'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
+    (isOpen, labelId, descriptionId, dropdownId, activeDescendantId) => {
       expect(
-        getFilterInputAriaAttributes(isOpen, labelId, dropdownId, description, activeDescendantId)
+        getFilterInputAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId)
       ).toMatchSnapshot();
     }
   );
