@@ -58,14 +58,25 @@ describe('Select Wrapper', () => {
         const disabledOptions: GetSelectMarkupOptions = { disabled: true };
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <div class="native">
+            <p-select-wrapper theme="${theme}" label="Some native label" native>
+              ${getSelectMarkup()}
+            </p-select-wrapper>
+            <p-select-wrapper theme="${theme}" label="Some native label" native state="error" message="Some error message.">
+              ${getSelectMarkup()}
+            </p-select-wrapper>
+            <p-select-wrapper theme="${theme}" label="Some native label" native state="success" message="Some success message.">
+              ${getSelectMarkup()}
+            </p-select-wrapper>
+          </div>
           <div>
-            <p-select-wrapper theme="${theme}" label="Some label">
+            <p-select-wrapper theme="${theme}" label="Some dropdown label">
               ${getSelectMarkup()}
             </p-select-wrapper>
-            <p-select-wrapper theme="${theme}" label="Some label" state="error" message="Some error message.">
+            <p-select-wrapper theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
               ${getSelectMarkup()}
             </p-select-wrapper>
-            <p-select-wrapper theme="${theme}" label="Some label" state="success" message="Some success message.">
+            <p-select-wrapper theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
               ${getSelectMarkup()}
             </p-select-wrapper>
           </div>
@@ -81,14 +92,25 @@ describe('Select Wrapper', () => {
             </p-select-wrapper>
           </div>
 
+          <div class="native">
+            <p-select-wrapper theme="${theme}" label="Some disabled native label" native>
+              ${getSelectMarkup(disabledOptions)}
+            </p-select-wrapper>
+            <p-select-wrapper theme="${theme}" label="Some disabled native label" native state="error" message="Some error message.">
+              ${getSelectMarkup(disabledOptions)}
+            </p-select-wrapper>
+            <p-select-wrapper theme="${theme}" label="Some disabled native label" native state="success" message="Some success message.">
+              ${getSelectMarkup(disabledOptions)}
+            </p-select-wrapper>
+          </div>
           <div>
-            <p-select-wrapper theme="${theme}" label="Some disabled label">
+            <p-select-wrapper theme="${theme}" label="Some disabled dropdown label">
               ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
-            <p-select-wrapper theme="${theme}" label="Some disabled label" state="error" message="Some error message.">
+            <p-select-wrapper theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message.">
               ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
-            <p-select-wrapper theme="${theme}" label="Some disabled label" state="success" message="Some success message.">
+            <p-select-wrapper theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message.">
               ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
           </div>
@@ -132,19 +154,23 @@ describe('Select Wrapper', () => {
               ${getSelectMarkup(disabledOptions)}
             </p-select-wrapper>
           </div>`;
-        // TODO add hover test on fake option after select refactoring
 
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-        await forceHoveredState(page, '.hovered p-select-wrapper select');
+        await forceHoveredState(page, '.hovered .native p-select-wrapper select');
         await forceHoveredState(page, '.hovered p-select-wrapper span a');
-        await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-filter >>> input');
-        await forceFocusedState(page, '.focused p-select-wrapper select');
+        await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-dropdown');
+        await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-dropdown');
+        await forceFocusedState(page, '.focused .native p-select-wrapper select');
         await forceFocusedState(page, '.focused p-select-wrapper span a');
-        await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-filter >>> input');
-        await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper select');
+        await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+        await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
+        await forceFocusedHoveredState(page, '.focused-hovered .native p-select-wrapper select');
         await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper span a');
-        await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-filter >>> input');
+        // actual user interaction happens on multiple nodes that's why forceFocusedHoveredState is wrong
+        await forceHoveredState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown');
+        await forceFocusedState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+        await forceFocusedState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
       })
     ).toBeFalsy();
   });

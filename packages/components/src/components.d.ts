@@ -15,7 +15,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
-import { DropdownDirection, OptionMap } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
+import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
@@ -619,25 +619,15 @@ export namespace Components {
     }
     interface PSelectWrapperDropdown {
         "direction"?: DropdownDirection;
-        "filter"?: boolean;
-        "hasFilterResults"?: boolean;
-        "onFocus": () => void;
-        "onSelect": (newIndex: number) => void;
-        "open": boolean;
-        "optionMaps": OptionMap[];
-        "theme"?: Theme;
-    }
-    interface PSelectWrapperFilter {
         "disabled"?: boolean;
-        "dropdownId"?: string;
-        "highlightedIndex"?: number;
-        "isOpen"?: boolean;
-        "onChange": (e: InputEvent) => void;
-        "onClick"?: () => void;
-        "placeholder"?: string;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange": (isOpen: boolean) => void;
+        "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
         "theme"?: Theme;
-        "value": string;
     }
     interface PSpinner {
         /**
@@ -999,12 +989,6 @@ declare global {
         prototype: HTMLPSelectWrapperDropdownElement;
         new (): HTMLPSelectWrapperDropdownElement;
     };
-    interface HTMLPSelectWrapperFilterElement extends Components.PSelectWrapperFilter, HTMLStencilElement {
-    }
-    var HTMLPSelectWrapperFilterElement: {
-        prototype: HTMLPSelectWrapperFilterElement;
-        new (): HTMLPSelectWrapperFilterElement;
-    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -1132,7 +1116,6 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
-        "p-select-wrapper-filter": HTMLPSelectWrapperFilterElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
@@ -1766,25 +1749,15 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapperDropdown {
         "direction"?: DropdownDirection;
-        "filter"?: boolean;
-        "hasFilterResults"?: boolean;
-        "onFocus"?: () => void;
-        "onSelect"?: (newIndex: number) => void;
-        "open"?: boolean;
-        "optionMaps"?: OptionMap[];
-        "theme"?: Theme;
-    }
-    interface PSelectWrapperFilter {
         "disabled"?: boolean;
-        "dropdownId"?: string;
-        "highlightedIndex"?: number;
-        "isOpen"?: boolean;
-        "onChange"?: (e: InputEvent) => void;
-        "onClick"?: () => void;
-        "placeholder"?: string;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange"?: (isOpen: boolean) => void;
+        "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
         "theme"?: Theme;
-        "value"?: string;
     }
     interface PSpinner {
         /**
@@ -2041,7 +2014,6 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
-        "p-select-wrapper-filter": PSelectWrapperFilter;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
@@ -2089,7 +2061,6 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
-            "p-select-wrapper-filter": LocalJSX.PSelectWrapperFilter & JSXBase.HTMLAttributes<HTMLPSelectWrapperFilterElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
