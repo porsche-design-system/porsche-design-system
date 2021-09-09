@@ -46,6 +46,66 @@ Object {
 }
 `;
 
+exports[`getFocusSlottedPseudoStyles() should return correct JssStyle for custom color 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "red",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
+}
+`;
+
+exports[`getFocusSlottedPseudoStyles() should return correct JssStyle for custom offset 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "1px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
+}
+`;
+
 exports[`getFocusStyles() should return correct JssStyle for custom color 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
@@ -91,6 +151,126 @@ Object {
   },
   "outline": "transparent solid 1px",
   "outlineOffset": "2px",
+}
+`;
+
+exports[`getFocusStyles() should return correct styles for { color: 'deeppink', offset: 1, pseudo: '::before' } 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "1px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "deeppink",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
+}
+`;
+
+exports[`getFocusStyles() should return correct styles for { color: 'deeppink', offset: 2, pseudo: '::after' } 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "deeppink",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
+}
+`;
+
+exports[`getFocusStyles() should return correct styles for { color: 'deeppink', offset: 3 } 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "3px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "deeppink",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
+}
+`;
+
+exports[`getFocusStyles() should return correct styles for {} 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "color": "inherit",
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+  },
 }
 `;
 
