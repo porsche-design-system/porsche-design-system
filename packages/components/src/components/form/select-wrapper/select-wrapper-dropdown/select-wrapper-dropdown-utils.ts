@@ -23,7 +23,7 @@ export const getFilterInputAriaAttributes = (
   return {
     'aria-labelledby': labelId,
     'aria-haspopup': 'listbox',
-    'aria-expanded': `${isOpen}`,
+    'aria-expanded': isOpen ? 'true' : 'false',
     'aria-autocomplete': 'list',
     ...(isOpen && {
       'aria-controls': dropdownId,
