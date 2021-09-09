@@ -52,7 +52,7 @@
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.3.4",
     "change-case": "^4.1.2",
     "concurrently": "^6.2.1",
     "construct-style-sheets-polyfill": "^2.4.16",
