@@ -13,7 +13,7 @@ export const getButtonAriaAttributes = (
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
-    'aria-describedby': descriptionId,
+    'aria-describedby': descriptionId || null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-controls': dropdownId,
@@ -30,12 +30,12 @@ export const getFilterInputAriaAttributes = (
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId,
-    'aria-describedby': descriptionId,
+    'aria-describedby': descriptionId || null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-autocomplete': 'list',
+    'aria-controls': dropdownId,
     ...(isOpen && {
-      'aria-controls': dropdownId,
       'aria-activedescendant': `option-${activeDescendantId}`,
     }),
     ...(isRequired && {

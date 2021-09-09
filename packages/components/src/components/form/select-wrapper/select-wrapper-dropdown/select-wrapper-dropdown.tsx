@@ -80,7 +80,7 @@ export class SelectWrapperDropdown {
   public render(): JSX.Element {
     const dropdownId = 'list';
     const labelId = 'label';
-    const descriptionId = 'description';
+    const descriptionId = this.description && 'description';
     const buttonId = 'value';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
