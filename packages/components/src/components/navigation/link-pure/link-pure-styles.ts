@@ -16,8 +16,15 @@ import {
   transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import { calculateLineHeight, color, font, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
-import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import {
+  calculateLineHeight,
+  color,
+  font,
+  FontSizeLineHeight,
+  generateTypeScale,
+  srOnly,
+} from '@porsche-design-system/utilities';
+import type { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: string; activeColor: string } => {
@@ -46,33 +53,29 @@ const getPseudoAndSublineSize = (textSize: TextSize, fontSize: string, marginLef
       marginLeft,
     },
   };
-  switch (textSize) {
-    case 'x-small':
-      return {
-        ...font.size.xSmall,
-        ...pseudoElement,
-      };
-    case 'small':
-      return {
-        ...font.size.small,
-        ...pseudoElement,
-      };
-    case 'medium':
-      return {
-        ...font.size['20'],
-        ...pseudoElement,
-      };
-    case 'large':
-      return {
-        ...font.size['30'],
-        ...pseudoElement,
-      };
-    case 'x-large':
-      return {
-        ...font.size.large,
-        ...pseudoElement,
-      };
-  }
+
+  const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
+    'x-small': {
+      ...font.size.xSmall,
+    },
+    small: {
+      ...font.size.small,
+    },
+    medium: {
+      ...font.size['20'],
+    },
+    large: {
+      ...font.size['30'],
+    },
+    'x-large': {
+      ...font.size.large,
+    },
+  };
+
+  return {
+    ...sublineSize[textSize],
+    ...pseudoElement,
+  };
 };
 
 const getSizeStyles = (textSize: TextSize): JssStyle => {
@@ -80,7 +83,7 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& .icon': {
+      '& $icon': {
         width: '1.5em',
         height: '1.5em',
       },
@@ -91,11 +94,11 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
 
     return {
       ...generateTypeScale(fontSize),
-      '& .icon': {
+      '& $icon': {
         width: lineHeight,
         height: lineHeight,
       },
-      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
+      '& ~ $subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
     };
   }
 };
@@ -139,8 +142,8 @@ const getSlottedAnchorVisibilityStyles = (hideLabel: boolean): JssStyle => {
         left: 'auto',
         right: 'auto',
         bottom: 'auto',
-        textIndent: 0,
         whiteSpace: 'inherit',
+        textIndent: 0,
       };
 };
 
@@ -191,13 +194,13 @@ export const getComponentCss = (
       ...(hasHref && getFocusStyles({ offset: 1, pseudo: '::before' })),
       '&:hover': {
         color: hoverColor,
-        '& + .subline': {
+        '& + $subline': {
           color: hoverColor,
         },
       },
       '&:active': {
         color: activeColor,
-        '& + .subline': {
+        '& + $subline': {
           color: activeColor,
         },
       },
