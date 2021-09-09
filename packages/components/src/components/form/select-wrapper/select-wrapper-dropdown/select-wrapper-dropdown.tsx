@@ -83,39 +83,39 @@ export class SelectWrapperDropdown {
 
     return (
       <Host>
-        {this.filter
-          ? [
-              <input
-                type="text"
-                role="combobox"
-                disabled={this.disabled}
-                placeholder={getSelectedOptionMap(this.optionMaps)?.value}
-                autoComplete="off"
-                value={this.searchString}
-                {...getFilterInputAriaAttributes(
-                  this.isOpen,
-                  labelId,
-                  dropdownId,
-                  getHighlightedOptionMapIndex(this.optionMaps)
-                )}
-                onKeyDown={this.onListKeyDown}
-                onInput={this.onFilterChange}
-                onClick={() => this.setDropdownVisibility('show')}
-                ref={(el) => (this.inputElement = el)}
-              />,
-              <span onClick={() => this.setDropdownVisibility('toggle')} />,
-            ]
-          : [
-              <button
-                type="button"
-                id={buttonId}
-                disabled={this.disabled}
-                {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId)}
-                onClick={() => this.setDropdownVisibility('toggle')}
-                onKeyDown={this.onButtonKeyDown}
-                ref={(el) => (this.buttonElement = el)}
-              />,
-            ]}
+        {this.filter ? (
+          [
+            <input
+              type="text"
+              role="combobox"
+              disabled={this.disabled}
+              placeholder={getSelectedOptionMap(this.optionMaps)?.value}
+              autoComplete="off"
+              value={this.searchString}
+              {...getFilterInputAriaAttributes(
+                this.isOpen,
+                labelId,
+                dropdownId,
+                getHighlightedOptionMapIndex(this.optionMaps)
+              )}
+              onKeyDown={this.onListKeyDown}
+              onInput={this.onFilterChange}
+              onClick={() => this.setDropdownVisibility('show')}
+              ref={(el) => (this.inputElement = el)}
+            />,
+            <span onClick={() => this.setDropdownVisibility('toggle')} />,
+          ]
+        ) : (
+          <button
+            type="button"
+            id={buttonId}
+            disabled={this.disabled}
+            {...getButtonAriaAttributes(this.isOpen, labelId, dropdownId)}
+            onClick={() => this.setDropdownVisibility('toggle')}
+            onKeyDown={this.onButtonKeyDown}
+            ref={(el) => (this.buttonElement = el)}
+          />
+        )}
         {[
           <div class="sr-text" id={labelId}>
             {getSelectedOptionMap(this.optionMaps)?.value}, {this.label}
