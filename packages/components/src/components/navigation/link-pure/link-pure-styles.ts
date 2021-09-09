@@ -98,7 +98,7 @@ const getSizeStyles = (textSize: TextSize): JssStyle => {
         width: lineHeight,
         height: lineHeight,
       },
-      '& ~ $subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
+      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
     };
   }
 };
@@ -194,13 +194,13 @@ export const getComponentCss = (
       ...(hasHref && getFocusStyles({ offset: 1, pseudo: '::before' })),
       '&:hover': {
         color: hoverColor,
-        '& + $subline': {
+        '& + .subline': {
           color: hoverColor,
         },
       },
       '&:active': {
         color: activeColor,
-        '& + $subline': {
+        '& + .subline': {
           color: activeColor,
         },
       },
