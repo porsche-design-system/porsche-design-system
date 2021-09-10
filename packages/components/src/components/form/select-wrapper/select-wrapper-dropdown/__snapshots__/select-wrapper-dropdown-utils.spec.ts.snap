@@ -23,6 +23,7 @@ Object {
 exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 Object {
   "aria-autocomplete": "list",
+  "aria-controls": "dropdown-id",
   "aria-describedby": "description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
@@ -33,6 +34,7 @@ Object {
 exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label-id', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
 Object {
   "aria-autocomplete": "list",
+  "aria-controls": "dropdown-id",
   "aria-describedby": "description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
