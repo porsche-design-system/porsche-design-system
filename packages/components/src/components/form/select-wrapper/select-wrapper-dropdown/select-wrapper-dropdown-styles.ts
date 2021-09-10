@@ -76,8 +76,8 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
       display: 'block',
       position: 'absolute',
       zIndex: 1,
-      bottom: 2, // should be rem?
-      left: 2, // should be rem?
+      bottom: pxToRemWithUnit(2),
+      left: pxToRemWithUnit(2),
       width: `calc(100% - ${pxToRemWithUnit(44)})`,
       height: pxToRemWithUnit(44),
       padding: pxToRemWithUnit(10),
