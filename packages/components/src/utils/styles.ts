@@ -1,26 +1,15 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
 import { isDark } from '.';
 import type { Theme } from '../types';
+import type { PropertiesHyphen } from 'csstype';
 
-export const transitionDuration = 'var(--p-transition-duration, .24s)';
-export const transitionTimingFunction = 'ease';
+const transitionDuration = 'var(--p-transition-duration, .24s)';
+const transitionTimingFunction = 'ease';
 
-export const colorDarken = {
-  neutralContrast: {
-    high: '#151718',
-  },
-  state: {
-    hover: '#980014',
-  },
-  darkTheme: {
-    default: '#e0e0e0',
-    state: {
-      hover: '#c4001a',
-    },
-  },
-};
+export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
@@ -51,7 +40,7 @@ export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
   };
 
   return {
-    transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+    transition: getTransition('color'),
     '&:hover': {
       color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
     },
@@ -178,3 +167,23 @@ export const getBaseSlottedStyles = (): Styles => {
     },
   };
 };
+
+export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
+  isHidden
+    ? srOnly()
+    : {
+        position: 'static',
+        width: 'auto',
+        height: 'auto',
+        margin: 0,
+        overflow: 'visible',
+        clip: 'auto',
+        clipPath: 'none',
+        whiteSpace: 'normal',
+      };
+
+export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({
+  ...getTextHiddenJssStyle(isHidden),
+  width: isCheckboxOrRadio ? 'auto' : 'fit-content',
+  padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
+});

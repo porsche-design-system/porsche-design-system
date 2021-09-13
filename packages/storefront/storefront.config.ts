@@ -361,15 +361,15 @@ export const config: StorefrontConfig = {
     Select: {
       Examples: [
         // @ts-ignore
-        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md'),
+        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper.examples.md'),
       ],
       Usage: [
         // @ts-ignore
-        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md'),
+        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper.usage.md'),
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper.props.md'),
+        () => import('@/../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper.props.md'),
       ],
     },
     Spacing: {
