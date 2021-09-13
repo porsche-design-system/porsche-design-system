@@ -45,5 +45,5 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
 };
 
 export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
-  return [elements[0], elements.slice(-1)[0]];
+  return [elements[0], elements[elements.length - 1]];
 };
