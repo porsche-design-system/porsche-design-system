@@ -1,10 +1,12 @@
+import { getHTMLElements } from './dom';
+
 /**
  * keep attention to delegatesFocus which might help to
  * reduce logic and improve the behaviour in near future
  * https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus
  */
 
-const getFocusableElement = (element: HTMLElement | ShadowRoot | Document = document): HTMLElement => {
+const getFocusableElement = (element: HTMLElement | ShadowRoot): HTMLElement => {
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
@@ -21,7 +23,7 @@ const getFocusableElement = (element: HTMLElement | ShadowRoot | Document = docu
     '[tabindex="0"]',
   ].join(':not([tabindex="-1"]),');
 
-  const focusableCandidatesList = Array.from<HTMLElement>(element.querySelectorAll(tabbableElementsSelector));
+  const focusableCandidatesList = getHTMLElements(element, tabbableElementsSelector) as HTMLElement[];
   return focusableCandidatesList.sort((a, b) => a.tabIndex - b.tabIndex)[0];
 };
 
