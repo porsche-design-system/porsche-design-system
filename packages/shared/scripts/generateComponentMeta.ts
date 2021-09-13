@@ -20,7 +20,10 @@ const generateComponentMeta = (): void => {
     isFocusable: boolean;
     isThemeable: boolean;
   };
-  type ComponentMeta = { [key in TagName]: Meta };
+
+  type ComponentMeta = {
+    [key in TagName]: Meta;
+  };
 
   const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
     const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
@@ -28,6 +31,7 @@ const generateComponentMeta = (): void => {
     return result;
   }, {} as { [key in TagName]: string });
 
+  // simple (mostly atomic) focusable components are identified here
   const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter(
     (tagName) =>
       componentSourceCode[tagName].includes('improveFocusHandlingForCustomElement(') ||
@@ -35,6 +39,8 @@ const generateComponentMeta = (): void => {
   );
 
   const meta: ComponentMeta = TAG_NAMES.reduce((result, tagName) => {
+    // a component is focusable if it was identified as an atomic focusable before
+    // or if it contains another atomic focusable prefixed component
     const isFocusable =
       atomicFocusableTagNames.includes(tagName) ||
       atomicFocusableTagNames.some((x) => componentSourceCode[tagName].includes(`PrefixedTagNames.${camelCase(x)}`));
