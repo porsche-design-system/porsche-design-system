@@ -12,8 +12,12 @@ Choose between a set of pre-defined social icons.
     <option value="logo-facebook">Facebook</option>
     <option value="logo-google">Google</option>
     <option value="logo-instagram">Instagram</option>
+    <option value="logo-kakaotalk">KakaoTalk</option>
     <option value="logo-linkedin">LinkedIn</option>
+    <option value="logo-naver">Naver</option>
     <option value="logo-pinterest">Pinterest</option>
+    <option value="logo-reddit">Reddit</option>
+    <option value="logo-tiktok">TikTok</option>
     <option value="logo-twitter">Twitter</option>
     <option value="logo-wechat">WeChat</option>
     <option value="logo-whatsapp">WhatsApp</option>
@@ -114,8 +118,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
 <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" target="_blank" rel="nofollow noopener">Google</p-link-social>
 <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" target="_blank" rel="nofollow noopener">Instagram</p-link-social>
+<p-link-social href="https://www.kakaocorp.com/" icon="logo-kakaotalk" hide-label="true" target="_blank" rel="nofollow noopener">KakaoTalk</p-link-social>
 <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" target="_blank" rel="nofollow noopener">LinkedIn</p-link-social>
+<p-link-social href="https://www.naver.com/" icon="logo-naver" hide-label="true" target="_blank" rel="nofollow noopener">Naver</p-link-social>
 <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" target="_blank" rel="nofollow noopener">Pinterest</p-link-social>
+<p-link-social href="https://www.reddit.com/" icon="logo-reddit" hide-label="true" target="_blank" rel="nofollow noopener">Reddit</p-link-social>
+<p-link-social href="https://www.tiktok.com/" icon="logo-tiktok" hide-label="true" target="_blank" rel="nofollow noopener">TikTok</p-link-social>
 <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" target="_blank" rel="nofollow noopener">Twitter</p-link-social>
 <p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true" target="_blank" rel="nofollow noopener">Wechat</p-link-social>
 <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true" target="_blank" rel="nofollow noopener">Whatsapp</p-link-social>
