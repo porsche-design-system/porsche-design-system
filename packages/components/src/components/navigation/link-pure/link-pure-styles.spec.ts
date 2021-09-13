@@ -154,7 +154,7 @@ describe('getComponentCss()', () => {
       hasHref: true,
       theme: 'light',
     },
-  ])('should return correct css for %o', (props) => {
+  ])('should return correct css for %j', (props) => {
     const { icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme } = props;
     expect(
       getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)

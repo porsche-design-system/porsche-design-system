@@ -15,6 +15,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
@@ -586,7 +587,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        "dropdownDirection"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -614,6 +615,20 @@ export namespace Components {
         /**
           * Adapts the select color depending on the theme.
          */
+        "theme"?: Theme;
+    }
+    interface PSelectWrapperDropdown {
+        "description"?: string;
+        "direction"?: DropdownDirection;
+        "disabled"?: boolean;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange": (isOpen: boolean) => void;
+        "required"?: boolean;
+        "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -970,6 +985,12 @@ declare global {
         prototype: HTMLPSelectWrapperElement;
         new (): HTMLPSelectWrapperElement;
     };
+    interface HTMLPSelectWrapperDropdownElement extends Components.PSelectWrapperDropdown, HTMLStencilElement {
+    }
+    var HTMLPSelectWrapperDropdownElement: {
+        prototype: HTMLPSelectWrapperDropdownElement;
+        new (): HTMLPSelectWrapperDropdownElement;
+    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -1096,6 +1117,7 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
+        "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
@@ -1697,7 +1719,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        "dropdownDirection"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -1725,6 +1747,20 @@ declare namespace LocalJSX {
         /**
           * Adapts the select color depending on the theme.
          */
+        "theme"?: Theme;
+    }
+    interface PSelectWrapperDropdown {
+        "description"?: string;
+        "direction"?: DropdownDirection;
+        "disabled"?: boolean;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange"?: (isOpen: boolean) => void;
+        "required"?: boolean;
+        "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -1981,6 +2017,7 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
+        "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
@@ -2027,6 +2064,7 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
+            "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
