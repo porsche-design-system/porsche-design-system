@@ -23,7 +23,7 @@ const getFocusableElement = (element: HTMLElement | ShadowRoot): HTMLElement => 
     '[tabindex="0"]',
   ].join(':not([tabindex="-1"]),');
 
-  const focusableCandidatesList = getHTMLElements(element, tabbableElementsSelector) as HTMLElement[];
+  const focusableCandidatesList: HTMLElement[] = getHTMLElements(element, tabbableElementsSelector);
   return focusableCandidatesList.sort((a, b) => a.tabIndex - b.tabIndex)[0];
 };
 

@@ -8,8 +8,8 @@ export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement
   const notDisabled = ':not([disabled])';
   const selector =
     Object.entries(PrefixedTagNames)
-      .filter(([key]) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(key as TagNameCamelCase))
-      .map(([_, value]) => value)
+      .filter((entry) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(entry[0] as TagNameCamelCase)) // key
+      .map((entry) => entry[1]) // value
       .join(',') +
     `,[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
 
