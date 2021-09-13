@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`colorDarken should contain darker colors 1`] = `
+Object {
+  "darkTheme": Object {
+    "default": "#e0e0e0",
+    "notification": Object {
+      "error": "#d30303",
+      "success": "#017d14",
+    },
+    "state": Object {
+      "hover": "#c4001a",
+    },
+  },
+  "neutralContrast": Object {
+    "high": "#151718",
+  },
+  "notification": Object {
+    "error": "#a30000",
+    "success": "#014d0c",
+  },
+  "state": Object {
+    "hover": "#980014",
+  },
+}
+`;
+
+exports[`getThemedColors() should return correct colors for theme: 'dark' 1`] = `
+Object {
+  "activeColor": "#ff0223",
+  "backgroundColor": "#0e1418",
+  "contrastHighColor": "#e3e4e5",
+  "contrastLowColor": "#4a4e51",
+  "contrastMediumColor": "#b0b1b2",
+  "disabledColor": "#7c7f81",
+  "errorColor": "#fc1717",
+  "hoverColor": "#ff0223",
+  "successColor": "#01ba1d",
+  "textColor": "#fff",
+}
+`;
+
+exports[`getThemedColors() should return correct colors for theme: 'light' 1`] = `
+Object {
+  "activeColor": "#d5001c",
+  "backgroundColor": "#fff",
+  "contrastHighColor": "#323639",
+  "contrastLowColor": "#e3e4e5",
+  "contrastMediumColor": "#626669",
+  "disabledColor": "#96989a",
+  "errorColor": "#e00000",
+  "hoverColor": "#d5001c",
+  "successColor": "#018a16",
+  "textColor": "#000",
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
+Object {
+  "stateColor": "#fc1717",
+  "stateHoverColor": "#d30303",
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
+Object {
+  "stateColor": undefined,
+  "stateHoverColor": undefined,
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
+Object {
+  "stateColor": "#01ba1d",
+  "stateHoverColor": "#017d14",
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
+Object {
+  "stateColor": "#e00000",
+  "stateHoverColor": "#a30000",
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
+Object {
+  "stateColor": undefined,
+  "stateHoverColor": undefined,
+}
+`;
+
+exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
+Object {
+  "stateColor": "#018a16",
+  "stateHoverColor": "#014d0c",
+}
+`;

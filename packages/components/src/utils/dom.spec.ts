@@ -10,6 +10,7 @@ import {
   hasLabel,
   hasMessage,
   hasNamedSlot,
+  getSlotTextContent,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
   isParentOfKind,
@@ -21,6 +22,7 @@ import {
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   throwIfParentIsNotOneOfKind,
+  throwIfRootNodeIsNotOfKind,
 } from '.';
 import type { FormState } from '../types';
 
@@ -78,6 +80,22 @@ describe('hasNamedSlot()', () => {
   });
 });
 
+describe('getSlotTextContent()', () => {
+  it('should return correct text content if element has slotted child with correct label', () => {
+    const el = document.createElement('div');
+    const slottedChild = document.createElement('span');
+    slottedChild.setAttribute('slot', 'label');
+    slottedChild.innerHTML = 'Some label with a <a href="https://designsystem.porsche.com">link</a>.';
+    el.appendChild(slottedChild);
+    expect(getSlotTextContent(el, 'label')).toBe('Some label with a link.');
+  });
+
+  it('should return false if element has no slotted child', () => {
+    const el = document.createElement('div');
+    expect(getSlotTextContent(el, 'label')).toBeUndefined();
+  });
+});
+
 describe('getHTMLElementAndThrowIfUndefined()', () => {
   const selector = 'someSelector';
 
@@ -99,6 +117,50 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     let error = undefined;
     try {
       getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
+describe('throwIfRootNodeIsNotOfKind()', () => {
+  it('should throw error if root node tag does not match', () => {
+    const child = document.createElement('p-select-wrapper-dropdown');
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if root node tag matches', () => {
+    const parent = document.createElement('p-select-wrapper');
+    const child = document.createElement('p-select-wrapper-dropdown');
+    parent.attachShadow({ mode: 'open' });
+    parent.shadowRoot.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+
+  it('should not throw error if prefixed root node tag matches', () => {
+    const parent = document.createElement('my-prefix-p-select-wrapper');
+    const child = document.createElement('my-prefix-p-select-wrapper-dropdown');
+    parent.attachShadow({ mode: 'open' });
+    parent.shadowRoot.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
     } catch (e) {
       error = e.message;
     }
@@ -139,7 +201,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     expect(error).not.toBe(undefined);
   });
 
-  it('should not throw error if parent tag does match', () => {
+  it('should not throw error if parent tag matches', () => {
     const parent = document.createElement('p-grid');
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
@@ -153,7 +215,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     expect(error).toBe(undefined);
   });
 
-  it('should not throw error if prefixed parent tag does match', () => {
+  it('should not throw error if prefixed parent tag matches', () => {
     const parent = document.createElement('my-prefix-p-grid');
     const child = document.createElement('my-prefix-p-grid-item');
     parent.appendChild(child);

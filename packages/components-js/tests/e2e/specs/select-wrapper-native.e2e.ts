@@ -2,10 +2,10 @@ import {
   expectedStyleOnFocus,
   getAttribute,
   getBrowser,
-  getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
+  hasFocus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -14,17 +14,16 @@ import {
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-describe('select-wrapper native-dropdown', () => {
+describe('select-wrapper native', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
-  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
-  const getMessage = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__message');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
+  const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
+  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
   const getLabelLink = () => selectNode(page, 'p-select-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-select-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-select-wrapper [slot="message"] a');
@@ -60,53 +59,18 @@ describe('select-wrapper native-dropdown', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper state="${state}" native="true" ${label} ${description} ${message}>
-          ${slottedLabel}
-          ${slottedDescription}
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-          ${slottedMessage}
-        </p-select-wrapper>`
-    );
-  };
-
-  it('should render', async () => {
-    await initSelect();
-    const el = await getFakeSelect();
-    expect(el).toBeDefined();
-  });
-
-  it('should add aria-label to support screen readers properly', async () => {
-    await initSelect();
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-  });
-
-  it('should add aria-label with description text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label" description="Some description" native="true">
-        <select name="some-name">
+      <p-select-wrapper state="${state}" native="true" ${label} ${description} ${message}>
+        ${slottedLabel}
+        ${slottedDescription}
+        <select>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
         </select>
-      </p-select-wrapper>
-    `
+        ${slottedMessage}
+      </p-select-wrapper>`
     );
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
-  });
-
-  it('should add aria-label with message text to support screen readers properly', async () => {
-    await initSelect({ state: 'error' });
-    const select = await getSelect();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-  });
+  };
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await setContentWithDesignSystem(
@@ -132,7 +96,6 @@ describe('select-wrapper native-dropdown', () => {
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     await initSelect();
-
     const host = await getHost();
     const select = await getSelect();
 
@@ -182,127 +145,43 @@ describe('select-wrapper native-dropdown', () => {
 
   it('should focus select when label text is clicked', async () => {
     await initSelect();
+    const select = await getSelect();
+    const hasSelectFocus = () => hasFocus(page, select);
 
     const labelText = await getLabel();
-    expect(labelText).toBeDefined();
-
-    async function hasSelectFocus() {
-      return await page.evaluate(() => {
-        const selectElement = document.querySelector('select');
-        return document.activeElement === selectElement;
-      });
-    }
-
     expect(await hasSelectFocus()).toBe(false);
 
     await labelText.click();
-
     expect(await hasSelectFocus()).toBe(true);
   });
 
-  it('should disable fake select when select is disabled programmatically', async () => {
-    await initSelect();
-
-    const fakeSelect = await getFakeSelect();
-    const select = await getSelect();
-    const disabledClass = 'p-select-wrapper__fake-select--disabled';
-
-    expect(await getCssClasses(fakeSelect))
-      .not.withContext('initially')
-      .toContain(disabledClass);
-
-    await setProperty(select, 'disabled', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeSelect))
-      .withContext('when disabled = true')
-      .toContain(disabledClass);
-
-    await setProperty(select, 'disabled', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeSelect))
-      .not.withContext('when disabled = false')
-      .toContain(disabledClass);
-  });
-
-  describe('focus state', () => {
-    it('should be shown on click for slotted <select>', async () => {
+  describe('accessibility', () => {
+    it('should add aria-label to select', async () => {
       await initSelect();
-
       const select = await getSelect();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
-
-      expect(await getOutlineStyle(select)).toBe(hidden);
-
-      await select.click();
-
-      expect(await getOutlineStyle(select))
-        .withContext('after click')
-        .toBe(visible);
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
     });
 
-    it('should be shown by keyboard navigation for slotted <select>', async () => {
-      await initSelect();
-
+    it('should add aria-label with description text to select', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper label="Some label" description="Some description" native="true">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
       const select = await getSelect();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
-
-      expect(await getOutlineStyle(select)).toBe(hidden);
-
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(select))
-        .withContext('after keyboard navigation')
-        .toBe(visible);
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
     });
 
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initSelect({ useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error' });
-
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
+    it('should add aria-label with message text to select', async () => {
+      await initSelect({ state: 'error' });
+      const select = await getSelect();
+      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
     });
   });
 
@@ -319,7 +198,7 @@ describe('select-wrapper native-dropdown', () => {
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
 
-    it('should work without unnecessary round trips on dropdown open', async () => {
+    it('should work without unnecessary round trips when opened', async () => {
       await initSelect();
       const select = await getSelect();
       const [, secondOption] = await select.$$('option');
@@ -336,7 +215,7 @@ describe('select-wrapper native-dropdown', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1); // Fake Dropdown gets updated
+      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
     });
   });
 });
