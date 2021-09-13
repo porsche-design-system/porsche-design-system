@@ -1,5 +1,9 @@
-import { componentsReady, PIcon } from '@porsche-design-system/components-react';
-import { render, screen } from '@testing-library/react';
+import {
+  componentsReady,
+  PIcon,
+  skipPorscheDesignSystemCDNRequestsDuringTests,
+} from '@porsche-design-system/components-react';
+import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return <PIcon data-testid="host" />;
@@ -8,23 +12,21 @@ const Sample = (): JSX.Element => {
 let counter: number;
 
 beforeEach(() => {
-  process.env.PDS_NO_CDN_REQUESTS = '1';
   counter = 0;
 
   global.fetch = jest.fn().mockImplementation((x) => {
-    console.log(x);
+    console.log('GLOBAL FETCH EXECUTED ON: ', x);
     counter++;
   });
+  skipPorscheDesignSystemCDNRequestsDuringTests();
 });
 
 afterEach(() => {
-  process.env.PDS_NO_CDN_REQUESTS = '0';
   jest.clearAllMocks();
 });
 
-describe('CDN requests', () => {
+fdescribe('CDN requests', () => {
   it('should not fetch tracking pixel', async () => {
-    /*    require('../../../projects/jsdom-polyfill/src/lib/loader.cjs').defineCustomElements(window);*/
     render(<Sample />);
     await componentsReady();
 

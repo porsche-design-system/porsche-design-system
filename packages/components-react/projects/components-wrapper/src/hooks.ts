@@ -2,6 +2,9 @@ import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
+import { interceptFetch } from '@mswjs/interceptors/lib/interceptors/fetch';
+import { createInterceptor } from '@mswjs/interceptors';
+import { CDN_BASE_URL, CDN_BASE_URL_CN } from './cdn.config';
 
 let skipCheck = false;
 
@@ -11,6 +14,27 @@ let skipCheck = false;
  */
 export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
   skipCheck = true;
+};
+
+export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
+  // intercept outgoing requests, filter for cdn url
+  const interceptor = createInterceptor({
+    modules: [interceptFetch],
+    resolver: (request, ref) => {
+      console.log('-> request', request);
+      console.log('-> ref', ref);
+      const requestURL = request.url.href;
+
+      if (requestURL.startsWith(CDN_BASE_URL) || requestURL.startsWith(CDN_BASE_URL_CN)) {
+        // interrupt request if it is going towards CDN
+        return { status: 200, statusText: 'success' };
+      }
+    },
+  });
+  interceptor.apply();
+  interceptor.on('request', (request) => {
+    console.log('[%s] %s', request.method, request.url.toString());
+  });
 };
 
 export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
