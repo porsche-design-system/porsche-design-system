@@ -1,20 +1,25 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { camelCase } from 'change-case';
+import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = [`import type { TagName } from './tagNames'`].join('\n');
+  const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
-  const types = [`type Meta = { isThemeable: boolean; };`, `type ComponentMeta = { [key in TagName]: Meta };`].join(
-    '\n'
-  );
+  const types = [
+    `type Meta = { isFocusable: boolean; isThemeable: boolean; };`,
+    `type ComponentMeta = { [key in TagName]: Meta };`,
+  ].join('\n');
 
-  type Meta = { isThemeable: boolean };
+  type Meta = {
+    isFocusable: boolean;
+    isThemeable: boolean;
+  };
   type ComponentMeta = { [key in TagName]: Meta };
 
   const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
@@ -23,17 +28,32 @@ const generateComponentMeta = (): void => {
     return result;
   }, {} as { [key in TagName]: string });
 
-  const meta: ComponentMeta = TAG_NAMES.reduce((result, tagName) => {
-    const isThemeable = !!componentSourceCode[tagName].match(/public theme\?: Theme/);
+  const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter(
+    (tagName) =>
+      componentSourceCode[tagName].includes('improveFocusHandlingForCustomElement(') ||
+      componentSourceCode[tagName].includes('<button')
+  );
 
-    result[tagName] = { isThemeable };
+  const meta: ComponentMeta = TAG_NAMES.reduce((result, tagName) => {
+    const isFocusable =
+      atomicFocusableTagNames.includes(tagName) ||
+      atomicFocusableTagNames.some((x) => componentSourceCode[tagName].includes(`PrefixedTagNames.${camelCase(x)}`));
+    const isThemeable = componentSourceCode[tagName].includes('public theme?: Theme');
+
+    result[tagName] = { isFocusable, isThemeable };
     return result;
   }, {} as ComponentMeta);
+
+  const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
+    .filter(([_, value]) => value.isFocusable)
+    .map(([key]) => camelCase(key) as TagNameCamelCase);
 
   const functions = `export const getComponentMeta = (component: TagName): Meta => {
   const componentMeta: ComponentMeta = ${JSON.stringify(meta)};
   return componentMeta[component];
-};`;
+};
+
+export const FOCUSABLE_TAG_NAMES_CAMEL_CASE: TagNameCamelCase[] = ${JSON.stringify(focusableTagNames)};`;
 
   const content = [imports, types, functions].join('\n\n');
 
