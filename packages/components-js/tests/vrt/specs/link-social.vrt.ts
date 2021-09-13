@@ -30,7 +30,7 @@ describe('Link Social', () => {
       await vrt.test('link-social-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-link-social { margin-right: 16px; margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>

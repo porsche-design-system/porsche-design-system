@@ -98,10 +98,8 @@ export class ${this.generateComponentName(component)}${genericType} {
   }
 
   public getAdditionalBarrelFileContent(): string {
-    const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
-
-    const componentNames = componentTagNames.map(this.generateComponentName);
-    const imports = componentTagNames
+    const componentNames = this.relevantComponentTagNames.map(this.generateComponentName);
+    const imports = this.relevantComponentTagNames
       .map((cmp, idx) => `import { ${componentNames[idx]} } from './${this.getComponentFileName(cmp, true)}';`)
       .join('\n');
 

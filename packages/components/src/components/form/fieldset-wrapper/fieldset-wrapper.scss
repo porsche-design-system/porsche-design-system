@@ -40,7 +40,8 @@ legend {
   color: $p-color-default;
 }
 
+@include state-message;
+
 .message {
   margin-top: $p-spacing-16;
-  color: $p-color-default;
 }

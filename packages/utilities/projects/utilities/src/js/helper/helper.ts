@@ -87,7 +87,7 @@ export const srOnly = (): CSS.Properties => {
     border: '0',
     margin: '-1px',
     overflow: 'hidden',
-    clip: 'rect(1px, 1px, 1px, 1px)',
+    clip: 'rect(1px,1px,1px,1px)',
     clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
   };
