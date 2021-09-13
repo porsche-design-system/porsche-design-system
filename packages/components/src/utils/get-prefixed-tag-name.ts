@@ -7,7 +7,7 @@ type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
-  const [, prefix = ''] = /^(.*)-p-(.*)$/.exec(getTagName(host)) || [];
+  const [, prefix = ''] = /^(.*)-p-.*$/.exec(getTagName(host)) || [];
 
   if (!PREFIXED_TAG_NAMES_CACHE.has(prefix)) {
     const tagNames: PrefixedTagNames = {} as PrefixedTagNames;

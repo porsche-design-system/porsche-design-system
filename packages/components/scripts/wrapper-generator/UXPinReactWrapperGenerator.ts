@@ -9,9 +9,13 @@ const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
-  protected ignoreComponents: TagName[] = ['p-content-wrapper', 'p-pagination'];
 
   private spacingProps: string[] = ['top', 'left', 'right', 'bottom'].map((x) => `spacing${pascalCase(x)}`);
+
+  constructor() {
+    super();
+    this.ignoreComponents = [...this.ignoreComponents, 'p-content-wrapper', 'p-pagination'];
+  }
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;

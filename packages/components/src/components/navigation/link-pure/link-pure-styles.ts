@@ -8,14 +8,13 @@ import {
   getCss,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
+  getTransition,
   hasVisibleIcon,
   insertSlottedStyles,
   isDark,
   mergeDeep,
   paramCaseToCamelCase,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
@@ -186,7 +185,7 @@ export const getComponentCss = (
       textAlign: 'left',
       background: 'transparent',
       color: active ? activeColor : baseColor,
-      transition: `color ${transitionDuration} ${transitionTimingFunction}, font-size 1ms linear`, // used for transitionend event listener
+      transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(hasHref && getFocusStyles({ offset: 1, pseudo: '::before' })),
       '&:hover': {
         color: hoverColor,
@@ -228,7 +227,7 @@ export const getComponentCss = (
     ...(hasSubline && {
       subline: {
         display: 'flex',
-        transition: `color ${transitionDuration} ${transitionTimingFunction}`,
+        transition: getTransition('color'),
         marginTop: addImportantToRule('4px'), // override due to reset of srOnly in getVisibilityStyles
         color: active ? activeColor : baseColor,
         ...(hasIcon && {
