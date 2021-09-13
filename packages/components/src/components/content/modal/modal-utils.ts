@@ -1,12 +1,17 @@
 import { getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
+import { FOCUSABLE_TAG_NAMES_CAMEL_CASE } from '@porsche-design-system/shared';
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
 
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
   const PrefixedTagNames = getPrefixedTagNames(host);
 
   const notDisabled = ':not([disabled])';
   const selector =
-    Object.values(PrefixedTagNames).join(',') +
-    `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
+    Object.entries(PrefixedTagNames)
+      .filter(([key]) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(key as TagNameCamelCase))
+      .map(([_, value]) => value)
+      .join(',') +
+    `,[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
 
   return [closeButton].concat(getHTMLElements(host, selector));
 };
