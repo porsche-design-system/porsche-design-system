@@ -13,7 +13,6 @@ let counter: number;
 
 beforeEach(() => {
   counter = 0;
-
   global.fetch = jest.fn().mockImplementation((x) => {
     console.log('GLOBAL FETCH EXECUTED ON: ', x);
     counter++;
@@ -44,5 +43,11 @@ fdescribe('CDN requests', () => {
     await componentsReady();
 
     expect(counter).toBe(0);
+  });
+});
+
+fdescribe('non CDN request', () => {
+  it('should fetch if non CDN request', async () => {
+    expect(true).toBe(false);
   });
 });
