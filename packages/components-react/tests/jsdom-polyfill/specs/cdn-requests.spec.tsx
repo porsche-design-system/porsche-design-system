@@ -1,13 +1,11 @@
 import {
   componentsReady,
   PIcon,
+  PMarque,
+  PText,
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
-
-const Sample = (): JSX.Element => {
-  return <PIcon data-testid="host" />;
-};
 
 let counter: number;
 
@@ -17,6 +15,7 @@ beforeEach(() => {
     console.log('GLOBAL FETCH EXECUTED ON: ', x);
     counter++;
   });
+
   skipPorscheDesignSystemCDNRequestsDuringTests();
 });
 
@@ -24,30 +23,39 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-fdescribe('CDN requests', () => {
+// CDN requests can only be tested on a prod build, since skipPorscheDesignSystemCDNRequestsDuringTests intercepts CDN requests
+
+describe('CDN requests', () => {
   it('should not fetch tracking pixel', async () => {
-    render(<Sample />);
+    render(<PIcon />);
     await componentsReady();
 
     expect(counter).toBe(0);
   });
 
-  it('should not load font-face definitions', async () => {
+  it('should not fetch font-face definitions', async () => {
+    render(<PText>ASD</PText>);
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
     console.log(link);
-    expect(link).toBeNull();
+    expect(counter).toBe(0);
+  });
+
+  it('should not fetch marque', () => {
+    render(<PMarque />);
+    expect(counter).toBe(0);
   });
 
   it('should not fetch icon', async () => {
-    render(<Sample />);
+    render(<PIcon />);
     await componentsReady();
 
     expect(counter).toBe(0);
   });
 });
 
-fdescribe('non CDN request', () => {
+describe('non CDN request', () => {
   it('should fetch if non CDN request', async () => {
-    expect(true).toBe(false);
+    render(<PIcon source="https://upload.wikimedia.org/wikipedia/commons/7/78/Multiple_icon_selection.png" />);
+    expect(counter).toBe(1);
   });
 });
