@@ -21,19 +21,21 @@ export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
   const interceptor = createInterceptor({
     modules: [interceptFetch],
     resolver: (request, ref) => {
-      console.log('-> request', request);
-      console.log('-> ref', ref);
       const requestURL = request.url.href;
-
-      if (requestURL.startsWith(CDN_BASE_URL) || requestURL.startsWith(CDN_BASE_URL_CN)) {
+      if (
+        requestURL.startsWith(CDN_BASE_URL) ||
+        requestURL.startsWith(CDN_BASE_URL_CN) ||
+        process.env.NODE_ENV === 'test'
+      ) {
+        console.log('[%s] %s', request.method, request.url.toString());
         // interrupt request if it is going towards CDN
         return { status: 200, statusText: 'success' };
       }
     },
   });
   interceptor.apply();
-  interceptor.on('request', (request) => {
-    console.log('[%s] %s', request.method, request.url.toString());
+  process.on('disconnect', () => {
+    interceptor.restore();
   });
 };
 
