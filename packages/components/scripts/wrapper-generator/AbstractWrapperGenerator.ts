@@ -1,4 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
 import { InputParser } from './InputParser';
 import * as path from 'path';
@@ -16,7 +17,7 @@ export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
   protected barrelFileName: string = 'index.ts';
-  protected ignoreComponents: TagName[] = [];
+  protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES;
   private libDir: string = '';
   private componentsDir: string = '';
 

@@ -7,8 +7,24 @@ import {
   pxToRemWithUnit,
   getBaseSlottedStyles,
   getFocusSlottedPseudoStyles,
+  getTransition,
+  mediaQuery,
+  getTextHiddenJssStyle,
+  getFormTextHiddenJssStyle,
+  GetFocusSlottedPseudoStylesOptions,
 } from './';
+import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle, GetFocusStylesOptions } from './';
+import type { Theme } from '../types';
+
+describe('getTransition()', () => {
+  it.each<[keyof PropertiesHyphen, string]>([
+    ['color', 'color var(--p-transition-duration, .24s) ease'],
+    ['box-shadow', 'box-shadow var(--p-transition-duration, .24s) ease'],
+  ])('should for %o return %o', (cssProperty, expected) => {
+    expect(getTransition(cssProperty)).toBe(expected);
+  });
+});
 
 describe('pxToRem()', () => {
   it.each([
@@ -65,35 +81,36 @@ describe('addImportantToEachRule()', () => {
 });
 
 describe('getHoverStyles()', () => {
-  it('should return correct default JssStyle', () => {
-    expect(getHoverStyles()).toMatchSnapshot();
-  });
-
-  it('should return correct default JssStyle for dark theme', () => {
-    expect(getHoverStyles({ theme: 'dark' })).toMatchSnapshot();
+  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
+    expect(getHoverStyles({ theme })).toMatchSnapshot();
   });
 });
 
 describe('getFocusStyles()', () => {
-  it('should return correct default JssStyle', () => {
-    expect(getFocusStyles()).toMatchSnapshot();
+  it.each<GetFocusStylesOptions>([
+    {},
+    { color: 'red' },
+    { offset: 1 },
+    { color: 'deeppink', offset: 1, pseudo: '::before' },
+    { color: 'deeppink', offset: 2, pseudo: '::after' },
+    { color: 'deeppink', offset: 3 },
+  ])('should return correct JssStyle for params: %o', (params) => {
+    expect(getFocusStyles(params)).toMatchSnapshot();
   });
+});
 
-  it('should return correct JssStyle for custom color', () => {
-    expect(getFocusStyles({ color: 'red' })).toMatchSnapshot();
-  });
+describe('getFocusSlottedPseudoStyles()', () => {
+  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
+    'should return correct JssStyle for params: %o',
+    (params) => {
+      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
+    }
+  );
+});
 
-  it('should return correct JssStyle for custom offset', () => {
-    expect(getFocusStyles({ offset: 1 })).toMatchSnapshot();
-  });
-
-  it.each<[GetFocusStylesOptions]>([
-    [{}],
-    [{ color: 'deeppink', offset: 1, pseudo: '::before' }],
-    [{ color: 'deeppink', offset: 2, pseudo: '::after' }],
-    [{ color: 'deeppink', offset: 3 }],
-  ])('should return correct styles for %o', (opts) => {
-    expect(getFocusSlottedPseudoStyles(opts)).toMatchSnapshot();
+describe('mediaQuery()', () => {
+  it('should return correct media query', () => {
+    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
   });
 });
 
@@ -103,12 +120,19 @@ describe('getBaseSlottedStyles()', () => {
   });
 });
 
-describe('getFocusSlottedPseudoStyles()', () => {
-  it('should return correct JssStyle for custom color', () => {
-    expect(getFocusSlottedPseudoStyles({ color: 'red' })).toMatchSnapshot();
+describe('getTextHiddenJssStyle()', () => {
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %o', (isHidden) => {
+    expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
   });
+});
 
-  it('should return correct JssStyle for custom offset', () => {
-    expect(getFocusSlottedPseudoStyles({ offset: 1 })).toMatchSnapshot();
+describe('getFormTextHiddenJssStyle()', () => {
+  it.each<[boolean, boolean]>([
+    [true, true],
+    [true, false],
+    [false, true],
+    [false, false],
+  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden, isCheckboxOrRadio) => {
+    expect(getFormTextHiddenJssStyle(isHidden, isCheckboxOrRadio)).toMatchSnapshot();
   });
 });

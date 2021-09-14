@@ -30,7 +30,7 @@ describe('Text Field Wrapper', () => {
       await vrt.test('text-field-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-text-field-wrapper:not(:last-child) { margin-bottom: 16px; }</style>`;
+        const head = `<style type="text/css">p-text-field-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
         const getElementsMarkup: GetMarkup = () => `
           <p-text-field-wrapper label="Some label">
