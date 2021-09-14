@@ -30,7 +30,10 @@ describe('Link Pure', () => {
       await vrt.test('link-pure-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-link-pure:not(:last-child) { margin-right: 0.5rem; } div div:not(:first-of-type) { margin-top: 0.5rem }</style>`;
+        const head = `<style type="text/css">
+          p-link-pure:not(:last-child) { margin-right: 0.5rem; }
+          div div:not(:first-of-type) { margin-top: 0.5rem; }
+        </style>`;
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <div>

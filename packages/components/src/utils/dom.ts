@@ -59,6 +59,9 @@ export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.req
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
+export const getSlotTextContent = (el: Host, slotName: string): string =>
+  getHTMLElement(el, `[slot="${slotName}"]`)?.textContent;
+
 export const hasLabel = (host: Host, label: string): boolean => {
   return !!label || hasNamedSlot(host, 'label');
 };
@@ -83,6 +86,16 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const throwIfRootNodeIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
+  const shadowHost = (host.getRootNode() as ShadowRoot)?.host as HTMLElement;
+  const actualTagName = shadowHost && getTagName(shadowHost);
+  const allowedTagName = getPrefixedTagNames(host)[tagName];
+
+  if (actualTagName !== allowedTagName) {
+    throw new Error(`${getTagName(host)} can't be used like this`);
+  }
+};
+
 export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
   return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
 };
@@ -92,7 +105,7 @@ export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCame
     const allowedTagName = getPrefixedTagNames(host)[tagName];
     const actualTagName = getTagName(host.parentElement);
     throw new Error(
-      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}.`
+      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}`
     );
   }
 };
@@ -104,14 +117,14 @@ export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagName
     const actualTagName = getTagName(host.parentElement);
 
     throw new Error(
-      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}.`
+      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}`
     );
   }
 };
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
   if (hasAttribute(el, name)) {
-    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property.`);
+    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property`);
   }
 };
 

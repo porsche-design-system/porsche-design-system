@@ -1,11 +1,18 @@
 import { Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from '../../e2e/helpers';
 
-type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
-const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
+type Options = WaitForOptions & {
+  enableLogging?: boolean;
+  injectIntoHead?: string;
+};
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
-  const options: Options = { ...defaultOptions, ...opts };
+  const options: Options = {
+    waitUntil: 'networkidle0',
+    injectIntoHead: '',
+    ...opts,
+  };
+
   await page.setContent(
     `<!DOCTYPE html>
     <html>
