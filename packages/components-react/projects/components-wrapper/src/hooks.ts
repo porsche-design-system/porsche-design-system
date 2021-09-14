@@ -5,6 +5,8 @@ import { getMergedClassName } from './utils';
 import { interceptFetch } from '@mswjs/interceptors/lib/interceptors/fetch';
 import { createInterceptor } from '@mswjs/interceptors';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from './cdn.config';
+import { interceptClientRequest } from '@mswjs/interceptors/lib/interceptors/ClientRequest';
+import { interceptXMLHttpRequest } from '@mswjs/interceptors/lib/interceptors/XMLHttpRequest';
 
 let skipCheck = false;
 
@@ -19,14 +21,10 @@ export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
 export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
   // intercept outgoing requests, filter for cdn url
   const interceptor = createInterceptor({
-    modules: [interceptFetch],
+    modules: [interceptFetch, interceptClientRequest, interceptXMLHttpRequest],
     resolver: (request, ref) => {
       const requestURL = request.url.href;
-      if (
-        requestURL.startsWith(CDN_BASE_URL) ||
-        requestURL.startsWith(CDN_BASE_URL_CN) ||
-        process.env.NODE_ENV === 'test'
-      ) {
+      if (requestURL.startsWith(CDN_BASE_URL) || requestURL.startsWith(CDN_BASE_URL_CN)) {
         console.log('[%s] %s', request.method, request.url.toString());
         // interrupt request if it is going towards CDN
         return { status: 200, statusText: 'success' };
