@@ -1,16 +1,8 @@
 import { getVisualRegressionTester, testOptions } from '../helpers';
+import { vrtTest } from '@porsche-design-system/shared';
 
 describe('Button Pure', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'button-pure',
-        async () => {
-          await vrt.goTo('/button-pure');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+  fit('should have no visual regression', async () => {
+    expect(await vrtTest(getVisualRegressionTester(), 'button-pure', '/button-pure', testOptions)).toBeFalsy();
   });
 });
