@@ -81,6 +81,7 @@
 
       porscheDesignSystem.load();
       porscheDesignSystem.load({ prefix: 'my-prefix' });
+      window.componentsReady = porscheDesignSystem.componentsReady; // for vrt
       window.addEventListener('hashchange', updateRoute);
       updateRoute();
     </script>

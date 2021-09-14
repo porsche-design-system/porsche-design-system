@@ -6,7 +6,7 @@ export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: st
     async () => {
       await vrt.goTo(url);
       await vrt.getPage().waitForSelector('html.hydrated');
-      await vrt.getPage().evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+      await vrt.getPage().evaluate(() => (window as any).componentsReady());
     },
     options
   );
