@@ -1,12 +1,17 @@
 import { getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
+import { FOCUSABLE_TAG_NAMES_CAMEL_CASE } from '@porsche-design-system/shared';
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
 
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
   const PrefixedTagNames = getPrefixedTagNames(host);
 
   const notDisabled = ':not([disabled])';
   const selector =
-    Object.values(PrefixedTagNames).join(',') +
-    `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
+    Object.entries(PrefixedTagNames)
+      .filter((entry) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(entry[0] as TagNameCamelCase)) // key
+      .map((entry) => entry[1]) // value
+      .join(',') +
+    `,[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
 
   return [closeButton].concat(getHTMLElements(host, selector));
 };
@@ -40,5 +45,5 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
 };
 
 export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
-  return [elements[0], elements.slice(-1)[0]];
+  return [elements[0], elements[elements.length - 1]];
 };
