@@ -33,6 +33,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
+    "@porsche-design-system/visual-regression-tester": "^4.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
