@@ -341,12 +341,12 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     });
 
     it('should expose correct accessibility tree properties in open state', async () => {
-      await initAccordion();
-      const host = await getHost();
+      await initAccordion({ otherMarkup: clickHandlerScript });
       const button = await getButton();
       const panel = await getCollapsible();
-      await setProperty(host, 'open', true);
-      await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForEventSerialization(page);
 
       const snapshotButton = await page.accessibility.snapshot({
         root: button,
