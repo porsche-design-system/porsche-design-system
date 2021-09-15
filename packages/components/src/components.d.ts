@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -340,7 +340,7 @@ export namespace Components {
          */
         "color"?: TextColor;
         /**
-          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, icon will be loaded lazily when it's visible in the viewport.
          */
         "lazy"?: boolean;
         /**
@@ -350,7 +350,7 @@ export namespace Components {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -359,7 +359,6 @@ export namespace Components {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
     }
     interface PLink {
         /**
@@ -1464,7 +1463,7 @@ declare namespace LocalJSX {
          */
         "color"?: TextColor;
         /**
-          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, icon will be loaded lazily when it's visible in the viewport.
          */
         "lazy"?: boolean;
         /**
@@ -1474,7 +1473,7 @@ declare namespace LocalJSX {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -1483,7 +1482,6 @@ declare namespace LocalJSX {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
     }
     interface PLink {
         /**
