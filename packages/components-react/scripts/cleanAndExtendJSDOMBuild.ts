@@ -11,7 +11,7 @@ const getFileContent = (fileToFind: string): { fileName: string; filePath: strin
   return { fileName, filePath, fileContent: fs.readFileSync(filePath, 'utf8') };
 };
 
-const cleanInjectGlobalStyles = (): void => {
+const cleanAndExtendJSDOMBuild = (): void => {
   const { fileName, filePath, fileContent } = getFileContent('app-globals-');
   const result = fileContent.replace(/console\.warn\((.|\s)*?\);/, '');
 
@@ -36,8 +36,8 @@ const addFetchConditionToIcon = () => {
   const { fileName, filePath, fileContent } = getFileContent('p-icon\\.cjs\\.entry');
 
   const replaceValue = `if(!window.PDS_SKIP_FETCH) {
-   $1
-  }`;
+    $1
+   }`;
 
   const result = fileContent.replace(/(getSvgContent\(url\).then\(\(iconContent\) => \{.*\}\);)/s, replaceValue);
 
@@ -64,5 +64,5 @@ const addFetchConditions = (): void => {
   addPictureConditionToMarque();
 };
 
-cleanInjectGlobalStyles();
+cleanAndExtendJSDOMBuild();
 addFetchConditions();
