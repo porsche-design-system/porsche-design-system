@@ -2,7 +2,10 @@ import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-de
 import { Browser, launch, Page } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
-export type { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
+export type {
+  VisualRegressionTester,
+  VisualRegressionTestOptions,
+} from '@porsche-design-system/visual-regression-tester';
 
 let browser: Browser;
 
@@ -12,7 +15,6 @@ jasmine.getEnv().clearReporters();
 jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 beforeAll(async () => {
-  console.log('hey');
   browser = await launch({
     args: [
       '--no-sandbox',
@@ -30,13 +32,19 @@ afterAll(async () => {
   }
 });
 
-const vrtTestOptions: VisualRegressionTestOptions = {
+const defaultOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:8575',
   timeout: 90000,
+};
+
+let customOptions: VisualRegressionTestOptions = {};
+
+export const setCustomOptions = (opts: VisualRegressionTestOptions): void => {
+  customOptions = opts;
 };
 
 let visualRegressionTester: VisualRegressionTester;
@@ -48,7 +56,10 @@ let visualRegressionStatesTester: VisualRegressionTester;
 
 export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
-    visualRegressionTester = new VisualRegressionTester(browser, vrtTestOptions);
+    visualRegressionTester = new VisualRegressionTester(browser, {
+      ...defaultOptions,
+      ...customOptions,
+    });
   }
 
   return visualRegressionTester;
@@ -57,7 +68,8 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
 export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
   if (!visualRegressionStatesTester) {
     visualRegressionStatesTester = new VisualRegressionTester(browser, {
-      ...vrtTestOptions,
+      ...defaultOptions,
+      ...customOptions,
       viewports: [1000],
     });
   }
@@ -68,7 +80,8 @@ export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
     visualRegressionOverviewTester = new VisualRegressionTester(browser, {
-      ...vrtTestOptions,
+      ...defaultOptions,
+      ...customOptions,
       viewports: [1920],
     });
   }
@@ -79,8 +92,9 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
 export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
   if (!visualRegressionGridTester) {
     visualRegressionGridTester = new VisualRegressionTester(browser, {
-      ...vrtTestOptions,
-      viewports: vrtTestOptions.viewports.concat([1920, 2560]),
+      ...defaultOptions,
+      ...customOptions,
+      viewports: defaultOptions.viewports.concat([1920, 2560]),
     });
   }
 
@@ -90,7 +104,8 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
 export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
   if (!visualRegressionMarque2xTester) {
     visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
-      ...vrtTestOptions,
+      ...defaultOptions,
+      ...customOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 2,
     });
@@ -102,7 +117,8 @@ export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
 export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
   if (!visualRegressionMarque3xTester) {
     visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
-      ...vrtTestOptions,
+      ...defaultOptions,
+      ...customOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 3,
     });

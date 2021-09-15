@@ -26,6 +26,7 @@ export default [
       format: 'cjs',
       exports: 'named',
     },
+    // fix typing issue
     plugins: [typescript()],
   },
 ];
