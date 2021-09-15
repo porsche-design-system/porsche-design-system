@@ -5,7 +5,6 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
-import '@fastly/performance-observer-polyfill/polyfill';
 
 let fetchCount: number;
 
@@ -22,13 +21,15 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-fdescribe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
+describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
   it('should not fetch tracking pixel', async () => {
-    try {
-      require('../../../projects/jsdom-polyfill/src/lib/loader.cjs').defineCustomElements();
-    } catch (e) {
-      // do nothing
-    }
+    jest.spyOn(console, 'error').mockImplementationOnce((error: string) => {
+      if (!error.includes('Could not parse CSS stylesheet')) {
+        console.error(error);
+      }
+    });
+
+    require('../../../dist/components-wrapper/jsdom-polyfill/lib/loader.cjs').defineCustomElements();
 
     expect(fetchCount).toBe(0);
   });
