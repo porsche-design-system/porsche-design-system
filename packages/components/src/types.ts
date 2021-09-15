@@ -9,6 +9,8 @@ export type BannerState = 'error' | 'warning' | 'neutral';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
+export type IconSize = 'small' | 'medium' | 'large' | 'inherit';
+
 export type TextColor =
   | 'brand'
   | 'default'
