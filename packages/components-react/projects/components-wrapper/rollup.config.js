@@ -38,7 +38,7 @@ export default [
     external,
     output: {
       dir: `${DIST_DIR}/esm`,
-      format: 'es',
+      format: 'esm',
       exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],

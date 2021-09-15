@@ -18,4 +18,14 @@ export default [
     output: { dir: 'dist/esm', format: 'esm' },
     plugins: [typescript()],
   },
+  {
+    input: 'src/testing.ts',
+    external: Object.keys(pkg.dependencies),
+    output: {
+      dir: 'dist',
+      format: 'cjs',
+      exports: 'named',
+    },
+    plugins: [typescript()],
+  },
 ];
