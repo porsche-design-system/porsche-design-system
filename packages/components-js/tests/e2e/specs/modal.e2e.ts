@@ -29,14 +29,14 @@ describe('modal', () => {
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
-  const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
-    const { isOpen = true } = opts ?? {};
+  const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
+    const { isOpen = true, content = 'Some Content' } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
       `
       <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
-        Some Content
+        ${content}
       </p-modal>`
     );
   };
@@ -246,6 +246,23 @@ describe('modal', () => {
       await openModal();
       const activeElementTagName = await getActiveElementTagName(page);
       expect(activeElementTagName).toBe('BODY');
+    });
+
+    it('should not allow focusing element behind of modal', async () => {
+      await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await page.evaluate(() => {
+        const button = document.createElement('btn-behind');
+        button.id = 'button';
+        document.body.append(button);
+      });
+      const host = await getHost();
+      await openModal();
+
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
   });
 
