@@ -1,41 +1,44 @@
 import type { Theme, TextColor as IconColor, IconSize } from '../../../types';
-import { attachCss, buildHostStyles, getCss, isDark, pxToRemWithUnit } from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
+import { attachCss, buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
 
-const getColor = (iconColor: IconColor, theme: Theme): string => {
+const getColor = (color: IconColor, theme: Theme): string => {
   const {
-    default: baseColor,
-    brand,
-    neutralContrast: { high, medium, low },
-    notification: { success, warning, error, neutral },
-  } = isDark(theme) ? color.darkTheme : color;
-
-  switch (iconColor) {
+    textColor,
+    brandColor,
+    contrastHighColor,
+    contrastMediumColor,
+    contrastLowColor,
+    successColor,
+    errorColor,
+    warningColor,
+    neutralColor,
+  } = getThemedColors(theme);
+  switch (color) {
     case 'brand':
-      return brand;
+      return brandColor;
     case 'neutral-contrast-high':
-      return high;
+      return contrastHighColor;
     case 'neutral-contrast-medium':
-      return medium;
+      return contrastMediumColor;
     case 'neutral-contrast-low':
-      return low;
+      return contrastLowColor;
     case 'notification-success':
-      return success;
+      return successColor;
     case 'notification-warning':
-      return warning;
+      return warningColor;
     case 'notification-error':
-      return error;
+      return errorColor;
     case 'notification-neutral':
-      return neutral;
+      return neutralColor;
     case 'inherit':
       return 'currentColor';
     default:
-      return baseColor;
+      return textColor;
   }
 };
 
-const getSize = (iconSize: IconSize): string => {
-  switch (iconSize) {
+const getSize = (size: IconSize): string => {
+  switch (size) {
     case 'large':
       return pxToRemWithUnit(48);
     case 'medium':
@@ -47,8 +50,8 @@ const getSize = (iconSize: IconSize): string => {
   }
 };
 
-export const getComponentCss = (iconColor: IconColor, iconSize: IconSize, theme: Theme): string => {
-  const size = getSize(iconSize);
+export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme): string => {
+  const dimension = getSize(size);
 
   return getCss({
     ...buildHostStyles({
@@ -61,13 +64,13 @@ export const getComponentCss = (iconColor: IconColor, iconSize: IconSize, theme:
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
-      width: size,
-      height: size,
-      fill: getColor(iconColor, theme),
+      width: dimension,
+      height: dimension,
+      fill: getColor(color, theme),
     },
   });
 };
 
-export const addComponentCss = (host: HTMLElement, iconColor: IconColor, iconSize: IconSize, theme: Theme): void => {
-  attachCss(host, getComponentCss(iconColor, iconSize, theme));
+export const addComponentCss = (host: HTMLElement, color: IconColor, size: IconSize, theme: Theme): void => {
+  attachCss(host, getComponentCss(color, size, theme));
 };
