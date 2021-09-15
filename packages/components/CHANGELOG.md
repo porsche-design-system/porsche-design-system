@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
+
+#### Changed
+- Alignment of `linkedin` icon
+
 #### Changed
 - Improved accessibility of `Select Wrapper`
 - `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
