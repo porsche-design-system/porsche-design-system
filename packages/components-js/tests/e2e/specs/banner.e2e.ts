@@ -237,4 +237,28 @@ describe('banner', () => {
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
     });
   });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initBanner('neutral');
+      const getCloseButton = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
+      const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');
+
+      const snapshotWrapper = await page.accessibility.snapshot({
+        root: await getWrapper(),
+        interestingOnly: false,
+      });
+
+      const snapshotButton = await page.accessibility.snapshot({
+        root: await getCloseButton(),
+      });
+
+      expect(snapshotWrapper.role).toBe('alertdialog');
+      expect(snapshotWrapper.name).toBe('Some notification title with an anchor.');
+      expect(snapshotWrapper.description).toBe('Some notification description with an anchor.');
+      expect(snapshotButton.role).toBe('button');
+      expect(snapshotButton.name).toBe('Close notification');
+      expect(snapshotButton.focused).toBe(true); // do we test this somewhere else?
+    });
+  });
 });
