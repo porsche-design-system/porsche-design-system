@@ -1,16 +1,7 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('Fieldset Wrapper', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'fieldset-wrapper',
-        async () => {
-          await vrt.goTo('/#fieldset-wrapper');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'fieldset-wrapper', '/#fieldset-wrapper')).toBeFalsy();
   });
 });

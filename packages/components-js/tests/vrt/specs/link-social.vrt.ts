@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Link Social', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'link-social',
-        async () => {
-          await vrt.goTo('/#link-social');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'link-social', '/#link-social')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('link-social-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
 
