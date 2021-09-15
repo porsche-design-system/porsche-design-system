@@ -2,60 +2,64 @@ import {
   componentsReady,
   PIcon,
   PMarque,
-  PText,
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
+import '@fastly/performance-observer-polyfill/polyfill';
 
-let counter: number;
+let fetchCount: number;
 
 beforeEach(() => {
-  counter = 0;
+  fetchCount = 0;
   global.fetch = jest.fn().mockImplementation((x) => {
-    console.log('GLOBAL FETCH EXECUTED ON: ', x);
-    counter++;
+    fetchCount++;
   });
-
   skipPorscheDesignSystemCDNRequestsDuringTests();
 });
 
 afterEach(() => {
+  (window as any).SKIP_FETCH = false;
   jest.clearAllMocks();
 });
 
-// CDN requests can only be tested on a prod build, since skipPorscheDesignSystemCDNRequestsDuringTests intercepts CDN requests
-
-describe('CDN requests', () => {
+fdescribe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
   it('should not fetch tracking pixel', async () => {
-    render(<PIcon />);
-    await componentsReady();
+    try {
+      require('../../../projects/jsdom-polyfill/src/lib/loader.cjs').defineCustomElements();
+    } catch (e) {
+      // do nothing
+    }
 
-    expect(counter).toBe(0);
+    expect(fetchCount).toBe(0);
   });
 
   it('should not fetch font-face definitions', async () => {
-    render(<PText>ASD</PText>);
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
-    console.log(link);
-    expect(counter).toBe(0);
+
+    expect(link).toBeNull();
   });
 
-  it('should not fetch marque', () => {
+  it('should not fetch marque', async () => {
     render(<PMarque />);
-    expect(counter).toBe(0);
+    await componentsReady();
+
+    const picture = document.querySelector('p-marque').shadowRoot.querySelector('picture');
+
+    expect(picture).toBeNull();
   });
 
   it('should not fetch icon', async () => {
     render(<PIcon />);
     await componentsReady();
 
-    expect(counter).toBe(0);
+    expect(fetchCount).toBe(0);
   });
-});
 
-describe('non CDN request', () => {
-  it('should fetch if non CDN request', async () => {
-    render(<PIcon source="https://upload.wikimedia.org/wikipedia/commons/7/78/Multiple_icon_selection.png" />);
-    expect(counter).toBe(1);
+  it('should fetch if window.SKIP_FETCH is set to false', async () => {
+    (window as any).SKIP_FETCH = false;
+    render(<PIcon name="highway" />);
+    await componentsReady();
+
+    expect(fetchCount).toBe(1);
   });
 });
