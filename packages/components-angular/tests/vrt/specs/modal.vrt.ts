@@ -18,14 +18,15 @@ describe('Modal', () => {
 
   it('should have no visual regression for scrollable modal', async () => {
     expect(
-      await vrtTest(vrt, 'modal-scrollable', '/modal-scrollable', (page) =>
-        page.evaluate(() => {
-          // screenshot triggers resize, so we need to scroll the modal after that
-          window.addEventListener('resize', () => {
-            document.querySelector('p-modal').scrollTo(0, 10000);
-          });
-        })
-      )
+      await vrtTest(vrt, 'modal-scrollable', '/modal-scrollable', {
+        scenario: (page) =>
+          page.evaluate(() => {
+            // screenshot triggers resize, so we need to scroll the modal after that
+            window.addEventListener('resize', () => {
+              document.querySelector('p-modal').scrollTo(0, 10000);
+            });
+          }),
+      })
     ).toBeFalsy();
   });
 
@@ -42,11 +43,12 @@ describe('Modal', () => {
     expect(await vrtTest(vrt, 'modal-fullscreen-breakpoint', '/modal-fullscreen-breakpoint')).toBeFalsy();
 
     expect(
-      await vrtTest(vrt, 'modal-fullscreen-breakpoint-m', '/modal-fullscreen-breakpoint', (page) =>
-        page.evaluate(() => {
-          (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
-        })
-      )
+      await vrtTest(vrt, 'modal-fullscreen-breakpoint-m', '/modal-fullscreen-breakpoint', {
+        scenario: (page) =>
+          page.evaluate(() => {
+            (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
+          }),
+      })
     ).toBeFalsy();
   });
 });
