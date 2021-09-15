@@ -144,13 +144,28 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
   }, {} as T);
 };
 
-type StyleCacheMap = Map<any[], string>;
+type Args = any[];
+type StyleCacheMap = Map<string, string>;
 const styleCache = new Map<string, StyleCacheMap>();
 
-export const getStyleCacheMap = (host: HTMLElement): StyleCacheMap => {
+const getStyleCacheMap = (host: HTMLElement): StyleCacheMap => {
   const { tagName } = host;
   if (!styleCache.has(tagName)) {
     styleCache.set(tagName, new Map());
   }
   return styleCache.get(tagName);
+};
+
+export const getStyleCache = (style: (...parameter: Args) => string, host: HTMLElement, ...args: Args): string => {
+  const id = args.join('_');
+  const hostCache = getStyleCacheMap(host);
+
+  if (!hostCache.has(id)) {
+    console.log('calculated style');
+    hostCache.set(id, style(...args));
+  } else {
+    console.log('cached style');
+  }
+
+  return hostCache.get(id);
 };
