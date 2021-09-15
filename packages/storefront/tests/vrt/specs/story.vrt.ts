@@ -1,4 +1,4 @@
-import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { CSS_TRANSITION_DURATION, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 import { routerViewSelector } from '../helpers/setup';
 
 describe('Story', () => {
@@ -6,7 +6,10 @@ describe('Story', () => {
     expect(
       await vrtTest(getVisualRegressionTester(), 'story', '/components/pagination/examples', {
         elementSelector: routerViewSelector,
-        scenario: (page) => page.click('.playground:nth-of-type(1) > p-tabs-bar > button:nth-of-type(2)'),
+        scenario: async (page) => {
+          await page.click('.playground:nth-of-type(1) > p-tabs-bar > button:nth-of-type(2)');
+          await page.waitForTimeout(CSS_TRANSITION_DURATION);
+        },
       })
     ).toBeFalsy();
   });
