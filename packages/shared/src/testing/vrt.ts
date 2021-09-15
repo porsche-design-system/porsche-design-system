@@ -155,7 +155,9 @@ export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: st
     async () => {
       await vrt.goTo(url);
       const page = vrt.getPage();
-      await page.evaluate(() => (window as any).componentsReady());
+
+      // componentsReady is undefined in utilities package
+      await page.evaluate(() => (window as any).componentsReady?.());
 
       if (scenario) {
         await scenario(page);
