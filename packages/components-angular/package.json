@@ -42,7 +42,7 @@
     "@angular/compiler-cli": "^12.2.0",
     "@angular/language-service": "^12.2.0",
     "@porsche-design-system/assets": "4.0.0",
-    "@porsche-design-system/visual-regression-tester": "^4.0.0",
+    "@porsche-design-system/shared": "0.0.0",
     "@types/jasmine": "~3.8.2",
     "@types/node": "^16.4.13",
     "concurrently": "^6.2.1",

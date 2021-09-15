@@ -16,4 +16,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-(window as any).componentsReady = componentsReady;
+(window as any).componentsReady = componentsReady; // for vrt
