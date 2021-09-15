@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- `Link Social` and `Icon` now supports `kakaotalk`, `naver`, `reddit` and `tiktok`
+- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
 
 #### Changed
 - Improved accessibility of `Select Wrapper`
