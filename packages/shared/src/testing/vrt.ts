@@ -3,21 +3,6 @@ import { Browser, launch } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
-let visualRegressionTester: VisualRegressionTester;
-let visualRegressionOverviewTester: VisualRegressionTester;
-let visualRegressionGridTester: VisualRegressionTester;
-let visualRegressionMarque2xTester: VisualRegressionTester;
-let visualRegressionMarque3xTester: VisualRegressionTester;
-let visualRegressionStatesTester: VisualRegressionTester;
-
-const vrtTestOptions: VisualRegressionTestOptions = {
-  viewports: [320, 480, 760, 1000, 1300, 1760],
-  fixturesDir: 'tests/vrt/fixtures',
-  resultsDir: 'tests/vrt/results',
-  tolerance: 0,
-  baseUrl: 'http://localhost:8575',
-  timeout: 90000,
-};
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
@@ -25,6 +10,7 @@ jasmine.getEnv().clearReporters();
 jasmine.getEnv().addReporter(new SpecReporter() as jasmine.CustomReporter);
 
 beforeAll(async () => {
+  console.log('hey');
   browser = await launch({
     args: [
       '--no-sandbox',
@@ -41,6 +27,22 @@ afterAll(async () => {
     await browser.close();
   }
 });
+
+const vrtTestOptions: VisualRegressionTestOptions = {
+  viewports: [320, 480, 760, 1000, 1300, 1760],
+  fixturesDir: 'tests/vrt/fixtures',
+  resultsDir: 'tests/vrt/results',
+  tolerance: 0,
+  baseUrl: 'http://localhost:8575',
+  timeout: 90000,
+};
+
+let visualRegressionTester: VisualRegressionTester;
+let visualRegressionOverviewTester: VisualRegressionTester;
+let visualRegressionGridTester: VisualRegressionTester;
+let visualRegressionMarque2xTester: VisualRegressionTester;
+let visualRegressionMarque3xTester: VisualRegressionTester;
+let visualRegressionStatesTester: VisualRegressionTester;
 
 export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
@@ -115,3 +117,15 @@ interface TestOptions {
 }
 
 export const testOptions: TestOptions = { elementSelector: '#app' };
+
+export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string) => {
+  return vrt.test(
+    snapshotId,
+    async () => {
+      await vrt.goTo(url);
+      await vrt.getPage().waitForSelector('html.hydrated');
+      await vrt.getPage().evaluate(() => (window as any).componentsReady());
+    },
+    testOptions
+  );
+};
