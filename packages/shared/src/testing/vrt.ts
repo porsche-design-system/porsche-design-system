@@ -49,10 +49,11 @@ export const setCustomOptions = (opts: VisualRegressionTestOptions): void => {
 
 let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
-let visualRegressionGridTester: VisualRegressionTester;
+let visualRegressionContentWrapperTester: VisualRegressionTester;
 let visualRegressionMarque2xTester: VisualRegressionTester;
 let visualRegressionMarque3xTester: VisualRegressionTester;
 let visualRegressionStatesTester: VisualRegressionTester;
+let visualRegressionTesterPropTable: VisualRegressionTester;
 
 export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
@@ -90,15 +91,15 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
 };
 
 export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
-  if (!visualRegressionGridTester) {
-    visualRegressionGridTester = new VisualRegressionTester(browser, {
+  if (!visualRegressionContentWrapperTester) {
+    visualRegressionContentWrapperTester = new VisualRegressionTester(browser, {
       ...defaultOptions,
       ...customOptions,
       viewports: defaultOptions.viewports.concat([1920, 2560]),
     });
   }
 
-  return visualRegressionGridTester;
+  return visualRegressionContentWrapperTester;
 };
 
 export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
@@ -127,33 +128,39 @@ export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
   return visualRegressionMarque3xTester;
 };
 
+export const getVisualRegressionTesterPropTable = (): VisualRegressionTester => {
+  if (!visualRegressionTesterPropTable) {
+    visualRegressionTesterPropTable = new VisualRegressionTester(browser, {
+      ...defaultOptions,
+      ...customOptions,
+      viewports: [1760],
+    });
+  }
+
+  return visualRegressionTesterPropTable;
+};
+
 // TODO: export this interface from @porsche-design-system/visual-regression-tester
 interface TestOptions {
   elementSelector?: string;
   maskSelectors?: string[];
   regressionSuffix?: string;
+  scenario?: (page: Page) => Promise<void>;
 }
 
-export const testOptions: TestOptions = { elementSelector: '#app' };
-
-export const vrtTest = (
-  vrt: VisualRegressionTester,
-  snapshotId: string,
-  url: string,
-  scenario?: (page: Page) => Promise<void>
-) => {
+export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: TestOptions) => {
+  const { scenario, ...otherOptions } = options || {};
   return vrt.test(
     snapshotId,
     async () => {
       await vrt.goTo(url);
       const page = vrt.getPage();
-      // await page.waitForSelector('html.hydrated');
       await page.evaluate(() => (window as any).componentsReady());
 
       if (scenario) {
         await scenario(page);
       }
     },
-    testOptions
+    { elementSelector: '#app', ...otherOptions }
   );
 };
