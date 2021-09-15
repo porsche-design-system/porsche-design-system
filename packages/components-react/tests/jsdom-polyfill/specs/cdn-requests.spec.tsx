@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  (window as any).SKIP_FETCH = false;
+  (window as any).PDS_SKIP_FETCH = false;
   jest.clearAllMocks();
 });
 
@@ -55,8 +55,8 @@ fdescribe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', (
     expect(fetchCount).toBe(0);
   });
 
-  it('should fetch if window.SKIP_FETCH is set to false', async () => {
-    (window as any).SKIP_FETCH = false;
+  it('should fetch if window.PDS_SKIP_FETCH is set to false', async () => {
+    (window as any).PDS_SKIP_FETCH = false;
     render(<PIcon name="highway" />);
     await componentsReady();
 
