@@ -11,8 +11,33 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-link-social
+      href="https://www.facebook.com/"
+      icon="logo-facebook"
+      hide-label="true"
+      target="_blank"
+      rel="nofollow noopener"
+      >Facebook</p-link-social
+    >
+    <p-link-social
+      href="https://www.facebook.com/"
+      icon="logo-facebook"
+      hide-label="true"
+      target="_blank"
+      rel="nofollow noopener"
+      >Facebook</p-link-social
+    >
+    <br />
+    <button onclick="onButtonClick()">WeChat</button>
+    <button onclick="onButtonClick2()">Facebook</button>
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
+      const onButtonClick = () => {
+        document.querySelector('p-link-social').icon = 'logo-wechat';
+      };
+      const onButtonClick2 = () => {
+        document.querySelector('p-link-social').icon = 'logo-facebook';
+      };
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');

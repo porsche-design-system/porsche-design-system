@@ -63,6 +63,7 @@
     "globby": "^11.0.4",
     "http-server": "^13.0.0",
     "jest": "^27.0.6",
+    "jss-plugin-cache": "^10.7.1",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",

@@ -4,6 +4,7 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginDefaultUnit from 'jss-plugin-default-unit';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
+import jssPluginCache from 'jss-plugin-cache';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
@@ -26,6 +27,7 @@ declare global {
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
   plugins: [
+    jssPluginCache(),
     jssPluginGlobal(),
     jssPluginNested(),
     jssPluginCamelCase(),
@@ -140,4 +142,15 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
 
     return prev;
   }, {} as T);
+};
+
+type StyleCacheMap = Map<any[], string>;
+const styleCache = new Map<string, StyleCacheMap>();
+
+export const getStyleCacheMap = (host: HTMLElement): StyleCacheMap => {
+  const { tagName } = host;
+  if (!styleCache.has(tagName)) {
+    styleCache.set(tagName, new Map());
+  }
+  return styleCache.get(tagName);
 };
