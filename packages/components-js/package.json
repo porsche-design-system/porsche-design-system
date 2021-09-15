@@ -65,7 +65,7 @@
     "concurrently": "^6.2.1",
     "devtools-protocol": "^0.0.909734",
     "globby": "^11.0.4",
-    "http-server": "^13.0.0",
+    "http-server": "^13.0.2",
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jest": "^27.0.6",
