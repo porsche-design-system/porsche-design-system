@@ -1,4 +1,4 @@
-import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { CSS_TRANSITION_DURATION, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('Select Wrapper', () => {
   it('should have no visual regression', async () => {
@@ -6,6 +6,7 @@ describe('Select Wrapper', () => {
       await vrtTest(getVisualRegressionTester(), 'select-wrapper', '/select-wrapper', async (page) => {
         await page.click('#open-options');
         await page.evaluate(() => (window as any).componentsReady());
+        await page.waitForTimeout(CSS_TRANSITION_DURATION);
       })
     ).toBeFalsy();
   });
