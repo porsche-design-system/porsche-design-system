@@ -14,7 +14,7 @@ export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
 };
 
 export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
-  (window as any).SKIP_FETCH = true;
+  (window as any).PDS_SKIP_FETCH = true;
 };
 
 export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
