@@ -325,4 +325,40 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(2);
     });
   });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree and aria properties', async () => {
+      await initAccordion();
+      const button = await getButton();
+      const snapshotButton = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshotButton.role).toBe('button');
+      expect(snapshotButton.name).toBe('Some Accordion');
+      expect(snapshotButton.expanded).toBe(undefined);
+      expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
+    });
+
+    it('should expose correct accessibility tree properties in open state', async () => {
+      await initAccordion();
+      const host = await getHost();
+      const button = await getButton();
+      const panel = await getCollapsible();
+      await setProperty(host, 'open', true);
+      await waitForStencilLifecycle(page);
+
+      const snapshotButton = await page.accessibility.snapshot({
+        root: button,
+      });
+      const snapshotPanel = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: panel,
+      });
+
+      expect(snapshotButton.expanded).toBe(true);
+      expect(snapshotPanel.role).toBe('region');
+      expect(snapshotPanel.name).toBe('Some Accordion');
+    });
+  });
 });
