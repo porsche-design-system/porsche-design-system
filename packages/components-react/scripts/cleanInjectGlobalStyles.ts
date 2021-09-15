@@ -47,24 +47,22 @@ const addFetchConditionToIcon = () => {
 };
 
 const addPictureConditionToMarque = () => {
-  // const picture = !window.SKIP_FETCH ? (resizeObserver.h("picture", null, this.size === 'responsive' ? ([
-  //   resizeObserver.h("source", {
-  //     srcSet: buildSrcSet(manifestPath, 'medium'),
-  //     media: `(min-width: ${resizeObserver.breakpoint.l}px)`
-  //   }),
-  //   resizeObserver.h("source", {srcSet: buildSrcSet(manifestPath, 'small')}),
-  // ]) : (resizeObserver.h("source", {srcSet: buildSrcSet(manifestPath, this.size)})), resizeObserver.h("img", {
-  //   src: `${cdnBaseUrl}/${manifestPath.medium['2x']}`,
-  //   alt: "Porsche"
-  // }))) : undefined;
+  const { fileName, filePath, fileContent } = getFileContent('p-marque\\.cjs\\.entry');
+
+  const replaceValue = `$1 !window.PDS_SKIP_FETCH ?$2 : undefined;`;
+
+  const result = fileContent.replace(/(const picture =)( \(resizeObserver.*}\)\)\));/s, replaceValue);
+
+  fs.writeFileSync(filePath, result);
+
+  console.log(`Added fetch condition to '${fileName}'`);
 };
 
 const addFetchConditions = (): void => {
   addFetchConditionToLoader();
   addFetchConditionToIcon();
+  addPictureConditionToMarque();
 };
 
-// Icon();
-// cleanFetchMarque();
 cleanInjectGlobalStyles();
 addFetchConditions();
