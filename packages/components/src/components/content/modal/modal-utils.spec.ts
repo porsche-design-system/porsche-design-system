@@ -1,5 +1,6 @@
 import { getFirstAndLastElement, getScrollTopOnTouch, getFocusableElements, setScrollLock } from './modal-utils';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
+import * as domUtils from '../../../utils/dom';
 
 describe('setScrollLock()', () => {
   const listener = () => {};
@@ -72,6 +73,32 @@ describe('getFocusableElements()', () => {
     host.appendChild(textarea);
 
     expect(getFocusableElements(host, closeButton)).toEqual([closeButton, anchor, input]);
+  });
+
+  it('should call getHTMLElements() with correct parameters', () => {
+    const host = document.createElement('p-modal');
+    const closeButton = document.createElement('button');
+
+    const spy = jest.spyOn(domUtils, 'getHTMLElements');
+    getFocusableElements(host, closeButton);
+
+    expect(spy).toHaveBeenCalledWith(
+      host,
+      'p-accordion,p-banner,p-button,p-button-pure,p-link,p-link-pure,p-link-social,p-marque,p-modal,p-pagination,p-select-wrapper,p-select-wrapper-dropdown,p-switch,p-table,p-table-head-cell,p-tabs,p-tabs-bar,p-text-field-wrapper,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
+    );
+  });
+
+  it('should call getHTMLElements() with correct parameters for prefixed modal', () => {
+    const host = document.createElement('prefixed-p-modal');
+    const closeButton = document.createElement('button');
+
+    const spy = jest.spyOn(domUtils, 'getHTMLElements');
+    getFocusableElements(host, closeButton);
+
+    expect(spy).toHaveBeenCalledWith(
+      host,
+      'prefixed-p-accordion,prefixed-p-banner,prefixed-p-button,prefixed-p-button-pure,prefixed-p-link,prefixed-p-link-pure,prefixed-p-link-social,prefixed-p-marque,prefixed-p-modal,prefixed-p-pagination,prefixed-p-select-wrapper,prefixed-p-select-wrapper-dropdown,prefixed-p-switch,prefixed-p-table,prefixed-p-table-head-cell,prefixed-p-tabs,prefixed-p-tabs-bar,prefixed-p-text-field-wrapper,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
+    );
   });
 });
 
