@@ -91,10 +91,6 @@ Providing visually differences if a link changes its state can be achieved by se
 
 <Playground :markup="activeHref" :config="config"></Playground>
 
-If the active state should not render a clickable anchor tag, just remove the `href` property. 
-
-<Playground :markup="activeWithoutHref" :config="config"></Playground>
-
 ---
 
 ## Examples how to use with Framework specific router and "active state" support
