@@ -146,11 +146,12 @@ export const vrtTest = (
     snapshotId,
     async () => {
       await vrt.goTo(url);
-      await vrt.getPage().waitForSelector('html.hydrated');
-      await vrt.getPage().evaluate(() => (window as any).componentsReady());
+      const page = vrt.getPage();
+      // await page.waitForSelector('html.hydrated');
+      await page.evaluate(() => (window as any).componentsReady());
 
       if (scenario) {
-        await scenario(vrt.getPage());
+        await scenario(page);
       }
     },
     testOptions
