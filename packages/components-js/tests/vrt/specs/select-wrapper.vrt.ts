@@ -4,11 +4,13 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
   testOptions,
-} from '../helpers';
+} from '@porsche-design-system/shared/testing';
 
 describe('Select Wrapper', () => {
   it('should have no visual regression', async () => {
@@ -29,7 +31,7 @@ describe('Select Wrapper', () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('select-wrapper-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">
           .playground div {

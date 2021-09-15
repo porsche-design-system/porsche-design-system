@@ -2,6 +2,8 @@ import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-de
 import { Browser, launch } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
+export type { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
+
 let browser: Browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
