@@ -19,8 +19,7 @@ describe('Select Wrapper', () => {
       await vrtTest(getVisualRegressionTester(), 'select-wrapper', '/#select-wrapper', {
         scenario: async (page) => {
           await page.click('#open-options');
-          const ready = await page.evaluate(() => (window as any).componentsReady());
-          console.log(ready);
+          await page.evaluate(() => (window as any).componentsReady());
           await page.waitForTimeout(CSS_TRANSITION_DURATION);
         },
       })
