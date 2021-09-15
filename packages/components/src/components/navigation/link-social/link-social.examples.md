@@ -7,22 +7,22 @@ The `p-link-social` component is a set of pre-defined social icons for various f
 Choose between a set of pre-defined social icons.
 
 <Playground :markup="variants" :config="config">
-  <select v-model="icon" @change="setLabel">
+  <select v-model="platform">
     <option disabled>Select a social platform</option>
-    <option value="logo-facebook">Facebook</option>
-    <option value="logo-google">Google</option>
-    <option value="logo-instagram">Instagram</option>
-    <option value="logo-kakaotalk">KakaoTalk</option>
-    <option value="logo-linkedin">LinkedIn</option>
-    <option value="logo-naver">Naver</option>
-    <option value="logo-pinterest">Pinterest</option>
-    <option value="logo-reddit">Reddit</option>
-    <option value="logo-tiktok">TikTok</option>
-    <option value="logo-twitter">Twitter</option>
-    <option value="logo-wechat">WeChat</option>
-    <option value="logo-whatsapp">WhatsApp</option>
-    <option value="logo-xing">XING</option>
-    <option value="logo-youtube">YouTube</option>
+    <option value="Facebook">Facebook</option>
+    <option value="Google">Google</option>
+    <option value="Instagram">Instagram</option>
+    <option value="KakaoTalk">KakaoTalk</option>
+    <option value="LinkedIn">LinkedIn</option>
+    <option value="Naver">Naver</option>
+    <option value="Pinterest">Pinterest</option>
+    <option value="Reddit">Reddit</option>
+    <option value="TikTok">TikTok</option>
+    <option value="Twitter">Twitter</option>
+    <option value="WeChat">WeChat</option>
+    <option value="WhatsApp">WhatsApp</option>
+    <option value="XING">XING</option>
+    <option value="YouTube">YouTube</option>
   </select>
 </Playground>
 
@@ -92,13 +92,15 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   @Component
   export default class Code extends Vue {
     config = { themeable: true, spacing: 'inline' };
-    
-    icon = 'logo-facebook';
-    label = 'Facebook';
+    platform = 'Facebook';
+
+    get icon() {
+      return `logo-${this.platform.toLowerCase()}`;
+    }
     
     get variants() {
-      return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>
-<p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.label}</p-link-social>`;
+      return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>
+<p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>`;
     }
     
     responsive =
@@ -143,10 +145,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   target="_blank" 
   rel="nofollow noopener"
 >Facebook</p-link-social>`;
-
-    setLabel(e: ChangeEvent) {
-      this.label = options[e.target.options.selectedIndex].textContent;
-    };
   }
 </script>
 
