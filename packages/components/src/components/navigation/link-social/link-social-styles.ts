@@ -7,6 +7,7 @@ import {
   colorDarken,
   getCss,
   getFocusStyles,
+  getStyleCacheMap,
   getTransition,
   isDark,
   mergeDeep,
@@ -128,5 +129,12 @@ export const addComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(icon, hideLabel, hasHref, theme));
+  const id = [icon, hideLabel, hasHref, theme];
+  const cache = getStyleCacheMap(host);
+
+  if (!cache.has(id)) {
+    cache.set(id, getComponentCss(icon, hideLabel, hasHref, theme));
+  }
+
+  attachCss(host, cache.get(id));
 };
