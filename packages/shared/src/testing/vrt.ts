@@ -1,5 +1,5 @@
 import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
-import { Browser, launch } from 'puppeteer';
+import { Browser, launch, Page } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
 export type { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
@@ -120,13 +120,22 @@ interface TestOptions {
 
 export const testOptions: TestOptions = { elementSelector: '#app' };
 
-export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string) => {
+export const vrtTest = (
+  vrt: VisualRegressionTester,
+  snapshotId: string,
+  url: string,
+  scenario?: (page: Page) => Promise<void>
+) => {
   return vrt.test(
     snapshotId,
     async () => {
       await vrt.goTo(url);
       await vrt.getPage().waitForSelector('html.hydrated');
       await vrt.getPage().evaluate(() => (window as any).componentsReady());
+
+      if (scenario) {
+        await scenario(vrt.getPage());
+      }
     },
     testOptions
   );
