@@ -1,8 +1,21 @@
 import type { GridGutter } from '../grid/grid-utils';
 import type { GridItemSize, GridItemOffset } from './grid-item-utils';
-import { getComponentCss } from './grid-item-styles';
+import { addComponentCss, getComponentCss } from './grid-item-styles';
 import { GRID_GUTTERS } from '../grid/grid-utils';
 import { GRID_ITEM_SIZES, GRID_ITEM_OFFSETS } from './grid-item-utils';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-grid-item');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 6, 0, 16);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 6, 0, 16);
+  });
+});
 
 describe('getComponentCss()', () => {
   const defaultGutter: GridGutter = { base: 16, s: 24, m: 36 };

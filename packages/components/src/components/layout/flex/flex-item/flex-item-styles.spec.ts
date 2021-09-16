@@ -1,4 +1,4 @@
-import { getComponentCss } from './flex-item-styles';
+import { addComponentCss, getComponentCss } from './flex-item-styles';
 import type {
   FlexItemAlignSelf,
   FlexItemFlex,
@@ -15,6 +15,19 @@ import {
   FLEX_ITEM_SHRINKS,
   FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-flex-item');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'auto', 'none', 'auto', 0, 1, 'initial');
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'auto', 'none', 'auto', 0, 1, 'initial');
+  });
+});
 
 describe('getComponentCss()', () => {
   const dataWidth: FlexItemWidth[] = [

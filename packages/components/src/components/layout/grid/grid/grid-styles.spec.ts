@@ -1,6 +1,19 @@
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
-import { getComponentCss } from './grid-styles';
+import { addComponentCss, getComponentCss } from './grid-styles';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-grid');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'column', 'wrap', 16);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'column', 'wrap', 16);
+  });
+});
 
 describe('getComponentCss()', () => {
   const dataDirections: GridDirection[] = [

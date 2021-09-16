@@ -1,7 +1,26 @@
-import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
+import {
+  addComponentCss,
+  getButtonStyles,
+  getComponentCss,
+  getFilterStyles,
+  getListStyles,
+} from './select-wrapper-dropdown-styles';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { FormState, Theme } from '../../../../types';
 import { getCss } from '../../../../utils';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-select-wrapper-dropdown');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'down', true, false, 'none', false, 'light');
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'down', true, false, 'none', false, 'light');
+  });
+});
 
 describe('getButtonStyles()', () => {
   it.each<[boolean, FormState, Theme]>([

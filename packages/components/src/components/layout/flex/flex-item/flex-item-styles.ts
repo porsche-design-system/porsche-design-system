@@ -4,6 +4,7 @@ import {
   attachCss,
   buildHostStyles,
   buildResponsiveHostStyles,
+  getCachedComponentCss,
   getCss,
   mergeDeep,
 } from '../../../../utils';
@@ -70,7 +71,10 @@ export const getComponentCss = (
         buildResponsiveHostStyles(alignSelf, getAlignSelfStyles),
         flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
           ? buildResponsiveHostStyles(flex, getFlexStyles)
-          : mergeDeep(buildResponsiveHostStyles(grow, getGrowStyles), buildResponsiveHostStyles(shrink, getShrinkStyles))
+          : mergeDeep(
+              buildResponsiveHostStyles(grow, getGrowStyles),
+              buildResponsiveHostStyles(shrink, getShrinkStyles)
+            )
       )
     )
   );
@@ -85,5 +89,5 @@ export const addComponentCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): void => {
-  attachCss(host, getComponentCss(width, offset, alignSelf, grow, shrink, flex));
+  attachCss(host, getCachedComponentCss(host, getComponentCss, width, offset, alignSelf, grow, shrink, flex));
 };

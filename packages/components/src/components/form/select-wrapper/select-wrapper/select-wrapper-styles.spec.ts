@@ -1,5 +1,18 @@
-import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
+import { addComponentCss, getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-select-wrapper');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, false, 'none', 'light');
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, 'none', 'light');
+  });
+});
 
 describe('getComponentCss()', () => {
   it.each<[BreakpointCustomizable<boolean>, FormState, Theme]>([

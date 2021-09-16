@@ -1,5 +1,18 @@
-import { getComponentCss } from './text-list-item-styles';
+import { addComponentCss, getComponentCss } from './text-list-item-styles';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-text-list-item');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'unordered', 'numbered', false);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'unordered', 'numbered', false);
+  });
+});
 
 describe('getComponentCss()', () => {
   it.each<[ListType, OrderType, boolean]>([

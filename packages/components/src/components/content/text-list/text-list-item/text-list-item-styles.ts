@@ -2,6 +2,7 @@ import {
   addImportantToEachRule,
   attachCss,
   buildHostStyles,
+  getCachedComponentCss,
   getCss,
   mergeDeep,
   pxToRemWithUnit,
@@ -103,5 +104,5 @@ export const addComponentCss = (
   orderType: OrderType,
   isNestedList: boolean
 ): void => {
-  attachCss(host, getComponentCss(listType, orderType, isNestedList));
+  attachCss(host, getCachedComponentCss(host, getComponentCss, listType, orderType, isNestedList));
 };
