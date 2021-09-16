@@ -18,7 +18,6 @@ beforeEach(() => {
 
 afterEach(() => {
   (window as any).PDS_SKIP_FETCH = false;
-  jest.clearAllMocks();
 });
 
 describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
