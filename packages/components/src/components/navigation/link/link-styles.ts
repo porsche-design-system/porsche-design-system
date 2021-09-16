@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, JssStyle, Styles } from '../../../utils';
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildHostStyles,
   buildResponsiveStyles,
   colorDarken,
@@ -208,5 +208,5 @@ export const addComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss, variant, hideLabel, hasHref, theme);
+  attachComponentCss(host, getComponentCss, variant, hideLabel, hasHref, theme);
 };

@@ -1,5 +1,5 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { addImportantToEachRule, attachCss, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, attachComponentCss, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -62,5 +62,5 @@ export const addComponentCss = (
   alignItems: FlexAlignItems,
   alignContent: FlexAlignContent
 ): void => {
-  attachCss(host, getComponentCss, inline, wrap, direction, justifyContent, alignItems, alignContent);
+  attachComponentCss(host, getComponentCss, inline, wrap, direction, justifyContent, alignItems, alignContent);
 };

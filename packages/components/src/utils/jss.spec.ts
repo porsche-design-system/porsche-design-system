@@ -1,5 +1,5 @@
 import {
-  attachCss,
+  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveHostStyles,
@@ -201,11 +201,11 @@ describe('attachCss()', () => {
     host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
 
-    attachCss(host, (x: boolean) => 'some css', true);
+    attachComponentCss(host, (x: boolean) => 'some css', true);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
 
-    attachCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
+    attachComponentCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
   });
@@ -217,7 +217,7 @@ describe('attachCss()', () => {
 
       expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
 
-      attachCss(div, () => ':host { display: "block" }');
+      attachComponentCss(div, () => ':host { display: "block" }');
       expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
     });
   });
@@ -231,7 +231,7 @@ describe('attachCss()', () => {
       expect(div.shadowRoot.querySelector('style')).toBeNull();
 
       const css = ':host { display: "block" }';
-      attachCss(div, () => css);
+      attachComponentCss(div, () => css);
       expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
 
       spy.mockRestore();

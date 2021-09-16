@@ -1,7 +1,7 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildHostStyles,
   buildResponsiveHostStyles,
   getCss,
@@ -88,5 +88,5 @@ export const addComponentCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): void => {
-  attachCss(host, getComponentCss, width, offset, alignSelf, grow, shrink, flex);
+  attachComponentCss(host, getComponentCss, width, offset, alignSelf, grow, shrink, flex);
 };

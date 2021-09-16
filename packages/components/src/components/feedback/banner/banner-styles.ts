@@ -1,11 +1,11 @@
 import {
   addImportantToRule,
-  attachCss,
+  attachComponentCss,
   breakpoint,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  insertSlottedStyles,
+  attachSlottedCss,
   mediaQuery,
 } from '../../../utils';
 
@@ -45,7 +45,7 @@ export const getComponentCss = (): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss);
+  attachComponentCss(host, getComponentCss);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
@@ -53,5 +53,5 @@ export const getSlottedCss = (host: HTMLElement): string => {
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
+  attachSlottedCss(host, getSlottedCss(host));
 };

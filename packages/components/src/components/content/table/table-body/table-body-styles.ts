@@ -1,4 +1,4 @@
-import { addImportantToEachRule, attachCss, buildHostStyles, getCss } from '../../../../utils';
+import { addImportantToEachRule, attachComponentCss, buildHostStyles, getCss } from '../../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss(
@@ -11,5 +11,5 @@ export const getComponentCss = (): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss);
+  attachComponentCss(host, getComponentCss);
 };

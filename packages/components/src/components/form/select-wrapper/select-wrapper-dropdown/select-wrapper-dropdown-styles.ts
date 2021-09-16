@@ -1,7 +1,7 @@
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
@@ -305,7 +305,7 @@ export const addComponentCss = (
   filter: boolean,
   theme: Theme
 ): void => {
-  attachCss(
+  attachComponentCss(
     host,
     getComponentCss,
     direction === 'auto' ? determineDirection(host) : direction,

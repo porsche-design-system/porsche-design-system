@@ -1,6 +1,6 @@
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildHostStyles,
   getCss,
   mergeDeep,
@@ -103,5 +103,5 @@ export const addComponentCss = (
   orderType: OrderType,
   isNestedList: boolean
 ): void => {
-  attachCss(host, getComponentCss, listType, orderType, isNestedList);
+  attachComponentCss(host, getComponentCss, listType, orderType, isNestedList);
 };
