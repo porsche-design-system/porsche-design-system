@@ -2705,13 +2705,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-2.0.0.tgz#4767d7d2bc1fedb226bc9766059947b0d8951151"
   integrity sha1-R2fX0rwf7bImvJdmBZlHsNiVEVE=
 
-"@porsche-design-system/components-react@2.4.0-beta.1":
-  version "2.4.0-beta.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-react/-/@porsche-design-system/components-react-2.4.0-beta.1.tgz#390cdc61f979117596ec2c9b11665cc66885a800"
-  integrity sha1-OQzcYfl5EXWW7CybEWZcxmiFqAA=
-  dependencies:
-    "@porsche-design-system/components-js" "2.4.0-beta.1"
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"

@@ -4,7 +4,6 @@ import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '../../../projects/components-wrapper/src/hooks';
-import { PIcon } from '@porsche-design-system/components-react';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
