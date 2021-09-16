@@ -4,6 +4,7 @@ import {
   attachCss,
   buildHostStyles,
   buildResponsiveHostStyles,
+  getCachedComponentCss,
   getCss,
   mergeDeep,
   pxToRemWithUnit,
@@ -53,5 +54,5 @@ export const addComponentCss = (
   offset: GridItemOffset,
   gutter: GridGutter
 ): void => {
-  attachCss(host, getComponentCss(size, offset, gutter));
+  attachCss(host, getCachedComponentCss(host, getComponentCss, size, offset, gutter));
 };

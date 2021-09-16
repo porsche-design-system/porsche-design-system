@@ -5,6 +5,7 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
+  getCachedComponentCss,
   getCss,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
@@ -258,7 +259,22 @@ export const addComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme));
+  attachCss(
+    host,
+    getCachedComponentCss(
+      host,
+      getComponentCss,
+      icon,
+      active,
+      stretch,
+      size,
+      hideLabel,
+      alignLabel,
+      hasSubline,
+      hasHref,
+      theme
+    )
+  );
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

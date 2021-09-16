@@ -1,4 +1,4 @@
-import { getComponentCss } from './flex-styles';
+import { addComponentCss, getComponentCss } from './flex-styles';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -8,6 +8,28 @@ import type {
   FlexWrap,
 } from './flex-utils';
 import { FLEX_ALIGN_CONTENTS, FLEX_ALIGN_ITEMS, FLEX_DIRECTION, FLEX_JUSTIFY_CONTENTS, FLEX_WRAPS } from './flex-utils';
+import * as jssUtils from './../../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-flex');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, false, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch');
+
+    expect(spy).toHaveBeenCalledWith(
+      host,
+      expect.anything(),
+      false,
+      'nowrap',
+      'row',
+      'flex-start',
+      'stretch',
+      'stretch'
+    );
+  });
+});
 
 describe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];

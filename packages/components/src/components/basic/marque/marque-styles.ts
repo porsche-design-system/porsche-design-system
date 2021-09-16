@@ -1,4 +1,12 @@
-import { attachCss, buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
+import {
+  attachCss,
+  buildGlobalStyles,
+  buildHostStyles,
+  getCachedComponentCss,
+  getCss,
+  getFocusStyles,
+  mediaQuery,
+} from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import { MarqueSize } from './marque-utils';
 
@@ -40,5 +48,5 @@ export const getComponentCss = (size: MarqueSize): string => {
 };
 
 export const addComponentCss = (host: HTMLElement, size: MarqueSize): void => {
-  attachCss(host, getComponentCss(size));
+  attachCss(host, getCachedComponentCss(host, getComponentCss, size));
 };

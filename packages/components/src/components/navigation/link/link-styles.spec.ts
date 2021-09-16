@@ -1,5 +1,18 @@
-import { getComponentCss } from './link-styles';
+import { addComponentCss, getComponentCss } from './link-styles';
 import { BreakpointCustomizable, LinkVariant, Theme } from '../../../types';
+import * as jssUtils from './../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-link');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'primary', false, false, 'light');
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'primary', false, false, 'light');
+  });
+});
 
 describe('getComponentCss()', () => {
   it.each<[LinkVariant, BreakpointCustomizable<boolean>, boolean, Theme]>([

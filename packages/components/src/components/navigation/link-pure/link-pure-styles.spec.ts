@@ -1,6 +1,31 @@
-import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import { addComponentCss, getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import * as jssUtils from './../../../utils/jss';
+
+describe('addComponentCss()', () => {
+  it('should call getCachedComponentCss() to retrieve cached css', () => {
+    const host = document.createElement('p-link-pure');
+    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    addComponentCss(host, 'arrow-head-right', false, false, 'small', false, 'right', false, true, 'light');
+
+    expect(spy).toHaveBeenCalledWith(
+      host,
+      expect.anything(),
+      'arrow-head-right',
+      false,
+      false,
+      'small',
+      false,
+      'right',
+      false,
+      true,
+      'light'
+    );
+  });
+});
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {

@@ -15,6 +15,7 @@ import {
   pxToRemWithUnit,
   mergeDeep,
   addImportantToRule,
+  getCachedComponentCss,
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
@@ -307,6 +308,15 @@ export const addComponentCss = (
 ): void => {
   attachCss(
     host,
-    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, disabled, state, filter, theme)
+    getCachedComponentCss(
+      host,
+      getComponentCss,
+      direction === 'auto' ? determineDirection(host) : direction,
+      isOpen,
+      disabled,
+      state,
+      filter,
+      theme
+    )
   );
 };
