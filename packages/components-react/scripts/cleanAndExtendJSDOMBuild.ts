@@ -11,7 +11,7 @@ const getFileContent = (fileToFind: string): { fileName: string; filePath: strin
   return { fileName, filePath, fileContent: fs.readFileSync(filePath, 'utf8') };
 };
 
-const cleanAndExtendJSDOMBuild = (): void => {
+const cleanConsoleWarnInInjectToGlobalStyles = (): void => {
   const { fileName, filePath, fileContent } = getFileContent('app-globals-');
   const result = fileContent.replace(/console\.warn\((.|\s)*?\);/, '');
 
@@ -20,12 +20,13 @@ const cleanAndExtendJSDOMBuild = (): void => {
   console.log(`Cleaned inject global styles warning in '${fileName}'`);
 };
 
+const conditionalFetch = `if(!window.PDS_SKIP_FETCH) {
+      $1
+    }`;
+
 const addFetchConditionToLoader = () => {
   const { fileName, filePath, fileContent } = getFileContent('loader\\.cjs');
-  const replaceValue = `if(!window.PDS_SKIP_FETCH) {
-      appGlobals.globalScripts();
-    }`;
-  const result = fileContent.replace('appGlobals.globalScripts();', replaceValue);
+  const result = fileContent.replace(/(appGlobals\.globalScripts\(\);)/, conditionalFetch);
 
   fs.writeFileSync(filePath, result);
 
@@ -35,11 +36,7 @@ const addFetchConditionToLoader = () => {
 const addFetchConditionToIcon = () => {
   const { fileName, filePath, fileContent } = getFileContent('p-icon\\.cjs\\.entry');
 
-  const replaceValue = `if(!window.PDS_SKIP_FETCH) {
-    $1
-   }`;
-
-  const result = fileContent.replace(/(getSvgContent\(url\).then\(\(iconContent\) => \{.*\}\);)/s, replaceValue);
+  const result = fileContent.replace(/(getSvgContent\(url\).then\(\(iconContent\) => \{.*\}\);)/s, conditionalFetch);
 
   fs.writeFileSync(filePath, result);
 
@@ -49,20 +46,20 @@ const addFetchConditionToIcon = () => {
 const addPictureConditionToMarque = () => {
   const { fileName, filePath, fileContent } = getFileContent('p-marque\\.cjs\\.entry');
 
-  const replaceValue = `$1 !window.PDS_SKIP_FETCH ?$2 : undefined;`;
+  const conditionalPicture = `$1 !window.PDS_SKIP_FETCH ?$2 : undefined;`;
 
-  const result = fileContent.replace(/(const picture =)( \(resizeObserver.*}\)\)\));/s, replaceValue);
+  const result = fileContent.replace(/(const picture =)( \(resizeObserver.*}\)\)\));/s, conditionalPicture);
 
   fs.writeFileSync(filePath, result);
 
   console.log(`Added fetch condition to '${fileName}'`);
 };
 
-const addFetchConditions = (): void => {
+const cleanAndExtendJSDOMBuild = (): void => {
+  cleanConsoleWarnInInjectToGlobalStyles();
   addFetchConditionToLoader();
   addFetchConditionToIcon();
   addPictureConditionToMarque();
 };
 
 cleanAndExtendJSDOMBuild();
-addFetchConditions();
