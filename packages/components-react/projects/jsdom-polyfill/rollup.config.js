@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import polyfill from 'rollup-plugin-polyfill';
 import pkg from '@porsche-design-system/js/package.json';
+import multi from '@rollup/plugin-multi-entry';
 
 const polyfills = [
   '@juggle/resize-observer',
@@ -11,18 +12,13 @@ const polyfills = [
 ];
 
 export default {
-  input: 'projects/jsdom-polyfill/src/index.js',
+  input: ['projects/jsdom-polyfill/src/**/*.js'],
   output: {
     esModule: false,
-    dir: 'dist/components-wrapper/jsdom-polyfill',
+    file: 'dist/components-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
     name: pkg.name,
     extend: true,
   },
-  plugins: [
-    polyfill(polyfills),
-    resolve({
-      resolveOnly: polyfills,
-    }),
-  ],
+  plugins: [polyfill(polyfills), multi({ exports: false }), resolve()],
 };
