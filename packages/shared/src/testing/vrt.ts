@@ -1,5 +1,7 @@
-import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
-import { Browser, launch, Page } from 'puppeteer';
+import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
+import type { TestOptions, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
+import { launch } from 'puppeteer';
+import type { Browser, Page } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
 export type {
@@ -140,15 +142,11 @@ export const getVisualRegressionTesterPropTable = (): VisualRegressionTester => 
   return visualRegressionTesterPropTable;
 };
 
-// TODO: export this interface from @porsche-design-system/visual-regression-tester
-interface TestOptions {
-  elementSelector?: string;
-  maskSelectors?: string[];
-  regressionSuffix?: string;
+type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
-}
+};
 
-export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: TestOptions) => {
+export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: VRTestOptions) => {
   const { scenario, ...otherOptions } = options || {};
   return vrt.test(
     snapshotId,
