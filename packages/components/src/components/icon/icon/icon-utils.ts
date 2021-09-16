@@ -4,7 +4,7 @@
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName } from '../../../types';
-import { paramCaseToCamelCase } from '../../../utils';
+import { paramCaseToCamelCase, pdsFetch } from '../../../utils';
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
@@ -18,7 +18,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
 
   let req = requestCache.get(url);
   if (req === undefined) {
-    req = fetch(url)?.then(
+    req = pdsFetch(url).then(
       (rsp) => (rsp.ok ? rsp.text() : ''),
       () => '' // reject callback
     );
