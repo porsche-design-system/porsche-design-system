@@ -7,7 +7,6 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import {
-  CSS_TRANSITION_DURATION,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
@@ -15,11 +14,7 @@ import {
 
 describe('Link Pure', () => {
   it('should have no visual regression', async () => {
-    expect(
-      await vrtTest(getVisualRegressionTester(), 'link-pure', '/#link-pure', {
-        scenario: (page) => page.waitForTimeout(CSS_TRANSITION_DURATION),
-      })
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'link-pure', '/#link-pure')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
