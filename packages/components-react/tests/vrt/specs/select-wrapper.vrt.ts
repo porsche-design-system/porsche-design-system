@@ -7,7 +7,6 @@ describe('Select Wrapper', () => {
         scenario: async (page) => {
           await page.click('#open-options');
           await page.evaluate(() => (window as any).componentsReady());
-          await page.waitForTimeout(CSS_TRANSITION_DURATION);
         },
       })
     ).toBeFalsy();
