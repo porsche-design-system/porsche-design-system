@@ -3,8 +3,6 @@ import {
   calcLineHeightForElement,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
-  isDark,
-  mapBreakpointPropToClasses,
   transitionListener,
   hasVisibleIcon,
   hasSlottedSubline,
@@ -23,7 +21,6 @@ import { addComponentCss, addSlottedCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
-  styleUrl: 'link-pure.scss',
   shadow: true,
 })
 export class LinkPure {
@@ -76,12 +73,23 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.stretch);
+    addComponentCss(
+      this.host,
+      this.icon,
+      this.active,
+      this.stretch,
+      this.size,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      !!this.href,
+      this.theme
+    );
   }
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    if (isSizeInherit(this.size)) {
+    if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.linkTag)}em`;
         this.iconTag.style.width = size;
@@ -91,38 +99,24 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
-    const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
-
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--active']: this.active,
-      ['root--with-icon']: hasIcon,
-      ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSubline && {
-        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
-      }),
-      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <TagType
-          class={rootClasses}
+          class="root"
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
             download: this.download,
             rel: this.rel,
+            ...(hasSubline && { 'aria-describedby': 'subline' }),
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          {hasIcon && (
+          {hasVisibleIcon(this.icon) && (
             <PrefixedTagNames.pIcon
               class="icon"
               color="inherit"
@@ -138,7 +132,7 @@ export class LinkPure {
           </PrefixedTagNames.pText>
         </TagType>
         {hasSubline && (
-          <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
+          <PrefixedTagNames.pText id="subline" class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}

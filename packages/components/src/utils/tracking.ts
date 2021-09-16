@@ -10,7 +10,8 @@ export const trackEvent = (component: string, event?: string): void => {
         t: new Date().getTime(), // to prevent caching
         c: component,
         ...(event && { e: event }),
-      })}`
+      })}`,
+      { mode: 'no-cors' }
     ).catch(console.warn);
   }
 };

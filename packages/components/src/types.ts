@@ -9,6 +9,8 @@ export type BannerState = 'error' | 'warning' | 'neutral';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
+export type IconSize = 'small' | 'medium' | 'large' | 'inherit';
+
 export type TextColor =
   | 'brand'
   | 'default'
@@ -49,4 +51,5 @@ export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonPureIconName = IconName | 'none';
 
-export type AlignLabel = BreakpointCustomizable<'left' | 'right'>;
+export type AlignLabelType = 'left' | 'right';
+export type AlignLabel = BreakpointCustomizable<AlignLabelType>;

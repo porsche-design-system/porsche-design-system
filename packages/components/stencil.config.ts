@@ -5,8 +5,6 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
-// @ts-ignore
-import CleanCSS from 'clean-css';
 import type { TagName } from '@porsche-design-system/shared';
 
 /**
@@ -22,8 +20,6 @@ import type { TagName } from '@porsche-design-system/shared';
 const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
 process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
-const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
-
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
 // specify chunking of components that can't be used standalone
@@ -32,6 +28,7 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-button', 'p-button-group'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   {
     components: [
       'p-table',
