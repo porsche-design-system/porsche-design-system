@@ -5,7 +5,6 @@ import {
   buildHostStyles,
   buildResponsiveStyles,
   colorDarken,
-  getCachedComponentCss,
   getCss,
   getFocusStyles,
   GetStylesFunction,
@@ -209,5 +208,5 @@ export const addComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss, variant, hideLabel, hasHref, theme));
+  attachCss(host, getComponentCss, variant, hideLabel, hasHref, theme);
 };

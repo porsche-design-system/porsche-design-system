@@ -4,7 +4,6 @@ import {
   attachCss,
   buildHostStyles,
   buildResponsiveHostStyles,
-  getCachedComponentCss,
   getCss,
   mergeDeep,
 } from '../../../../utils';
@@ -89,5 +88,5 @@ export const addComponentCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss, width, offset, alignSelf, grow, shrink, flex));
+  attachCss(host, getComponentCss, width, offset, alignSelf, grow, shrink, flex);
 };

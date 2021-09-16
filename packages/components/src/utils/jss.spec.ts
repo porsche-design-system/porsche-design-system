@@ -5,7 +5,7 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
-  componentCssMap,
+  componentsCssMap,
   getCachedComponentCss,
   getCss,
   isObject,
@@ -80,36 +80,6 @@ describe('supportsConstructableStylesheets()', () => {
     delete global.CSSStyleSheet;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
-  });
-});
-
-describe('attachCss()', () => {
-  describe('with CSSStyleSheet support', () => {
-    it('should create CSSStyleSheet and apply it to shadowRoot', () => {
-      const div = document.createElement('div');
-      div.attachShadow({ mode: 'open' });
-
-      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
-
-      attachCss(div, ':host { display: "block" }');
-      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
-    });
-  });
-
-  describe('without CSSStyleSheet support', () => {
-    it('should create style node and prepend it in shadowRoot', () => {
-      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
-
-      const div = document.createElement('div');
-      div.attachShadow({ mode: 'open' });
-      expect(div.shadowRoot.querySelector('style')).toBeNull();
-
-      const css = ':host { display: "block" }';
-      attachCss(div, css);
-      expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
-
-      spy.mockRestore();
-    });
   });
 });
 
@@ -221,9 +191,57 @@ describe('mergeDeep()', () => {
   });
 });
 
+describe('attachCss()', () => {
+  beforeEach(() => {
+    componentsCssMap.clear();
+  });
+
+  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
+    const host = document.createElement('p-some-component');
+    host.attachShadow({ mode: 'open' });
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    attachCss(host, (x: boolean) => 'some css', true);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
+
+    attachCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
+  });
+
+  describe('with CSSStyleSheet support', () => {
+    it('should create CSSStyleSheet and apply it to shadowRoot', () => {
+      const div = document.createElement('p-some-component');
+      div.attachShadow({ mode: 'open' });
+
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
+
+      attachCss(div, () => ':host { display: "block" }');
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
+    });
+  });
+
+  describe('without CSSStyleSheet support', () => {
+    it('should create style node and prepend it in shadowRoot', () => {
+      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
+
+      const div = document.createElement('p-some-component');
+      div.attachShadow({ mode: 'open' });
+      expect(div.shadowRoot.querySelector('style')).toBeNull();
+
+      const css = ':host { display: "block" }';
+      attachCss(div, () => css);
+      expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
+
+      spy.mockRestore();
+    });
+  });
+});
+
 describe('getCachedComponentCss()', () => {
   beforeEach(() => {
-    componentCssMap.clear();
+    componentsCssMap.clear();
   });
 
   it('should return css provided by css function', () => {

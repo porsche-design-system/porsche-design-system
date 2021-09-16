@@ -3,7 +3,6 @@ import {
   attachCss,
   buildGlobalStyles,
   buildHostStyles,
-  getCachedComponentCss,
   getCss,
   getFocusStyles,
   getHoverStyles,
@@ -72,5 +71,5 @@ export const getComponentCss = (): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss));
+  attachCss(host, getComponentCss);
 };
