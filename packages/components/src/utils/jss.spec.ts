@@ -5,6 +5,8 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
+  componentCssMap,
+  getCachedComponentCss,
   getCss,
   isObject,
   mergeDeep,
@@ -216,5 +218,60 @@ describe('mergeDeep()', () => {
     ])
   )(`should be called with '%s' and return '%s'`, (_, __, input: object[], result: object) => {
     expect(mergeDeep(...input)).toStrictEqual(result);
+  });
+});
+
+describe('getCachedComponentCss()', () => {
+  beforeEach(() => {
+    componentCssMap.clear();
+  });
+
+  it('should return css provided by css function', () => {
+    const host = document.createElement('p-some-element');
+    const getComponentCss = () => 'some css';
+
+    expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
+  });
+
+  it('should return css provided by css function depending on infinite arguments', () => {
+    const host = document.createElement('p-some-element');
+    const getComponentCss1 = (a: number, b: boolean) => `some css ${a} ${b}`;
+
+    expect(getCachedComponentCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
+
+    const getComponentCss2 = (c: string) => `some css ${c}`;
+
+    expect(getCachedComponentCss(host, getComponentCss2, 'some string')).toBe('some css some string');
+  });
+
+  it('should call provided css function only once when it was already called before', () => {
+    const host = document.createElement('p-some-element');
+    const getComponentCss = jest.fn();
+
+    getCachedComponentCss(host, getComponentCss, 'some-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(host, getComponentCss, 'some-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(host, getComponentCss, 'another-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call provided css function only once when it was already called before even with prefixed version of host', () => {
+    const host = document.createElement('p-some-element');
+    const hostPrefixed = document.createElement('my-prefix-p-some-element');
+    const getComponentCss = jest.fn();
+
+    getCachedComponentCss(host, getComponentCss);
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(hostPrefixed, getComponentCss);
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
   });
 });
