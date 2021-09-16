@@ -11,7 +11,7 @@ export default [
       name: pkg.name,
       exports: 'named',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist/types', rootDir: 'src' })],
+    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
   },
   {
     input: 'src/index.ts',
@@ -26,7 +26,6 @@ export default [
       format: 'cjs',
       exports: 'named',
     },
-    // fix typing issue
     plugins: [typescript()],
   },
 ];
