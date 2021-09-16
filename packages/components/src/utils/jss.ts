@@ -4,13 +4,13 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginDefaultUnit from 'jss-plugin-default-unit';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
-import jssPluginCache from 'jss-plugin-cache';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement, getTagName } from './dom';
 import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
+import { TagName } from '@porsche-design-system/shared';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -27,7 +27,6 @@ declare global {
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
   plugins: [
-    jssPluginCache(),
     jssPluginGlobal(),
     jssPluginNested(),
     jssPluginCamelCase(),
@@ -144,28 +143,30 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
   }, {} as T);
 };
 
-type Args = any[];
-type StyleCacheMap = Map<string, string>;
-const styleCache = new Map<string, StyleCacheMap>();
+type CssCacheMap = Map<string, string>;
+export const componentCssMap = new Map<TagName, CssCacheMap>();
 
-const getStyleCacheMap = (host: HTMLElement): StyleCacheMap => {
-  const { tagName } = host;
-  if (!styleCache.has(tagName)) {
-    styleCache.set(tagName, new Map());
+const getComponentCssCacheMap = (host: HTMLElement): CssCacheMap => {
+  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+
+  if (!componentCssMap.has(tagName)) {
+    componentCssMap.set(tagName, new Map());
   }
-  return styleCache.get(tagName);
+
+  return componentCssMap.get(tagName);
 };
 
-export const getStyleCache = (style: (...parameter: Args) => string, host: HTMLElement, ...args: Args): string => {
+export const getCachedComponentCss = <T extends (...p: any[]) => string>(
+  host: HTMLElement,
+  getComponentCss: T,
+  ...args: Parameters<T>
+): string => {
   const id = args.join('_');
-  const hostCache = getStyleCacheMap(host);
+  const cache = getComponentCssCacheMap(host);
 
-  if (!hostCache.has(id)) {
-    console.log('calculated style');
-    hostCache.set(id, style(...args));
-  } else {
-    console.log('cached style');
+  if (!cache.has(id)) {
+    cache.set(id, getComponentCss(...args));
   }
 
-  return hostCache.get(id);
+  return cache.get(id);
 };
