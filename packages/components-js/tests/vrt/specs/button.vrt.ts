@@ -14,7 +14,6 @@ import {
 
 describe('Button', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
     expect(await vrtTest(getVisualRegressionTester(), 'button', '/#button')).toBeFalsy();
   });
 
