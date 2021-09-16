@@ -1,7 +1,7 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildHostStyles,
   buildResponsiveHostStyles,
   getCss,
@@ -53,5 +53,5 @@ export const addComponentCss = (
   offset: GridItemOffset,
   gutter: GridGutter
 ): void => {
-  attachCss(host, getComponentCss, size, offset, gutter);
+  attachComponentCss(host, getComponentCss, size, offset, gutter);
 };

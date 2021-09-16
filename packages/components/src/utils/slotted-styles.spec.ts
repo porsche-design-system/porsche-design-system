@@ -1,4 +1,4 @@
-import { insertSlottedStyles } from '.';
+import { attachSlottedCss } from '.';
 
 /**
  * we need to use `node.innerHTML` or `node.textContent` instead of `node.innerText`
@@ -24,7 +24,7 @@ describe('insertSlottedStyles()', () => {
 
       const element = document.createElement('div');
       document.body.append(element);
-      insertSlottedStyles(element, 'div { color: #ff00ff; }');
+      attachSlottedCss(element, 'div { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
 
       expect(styleElements.length).toBe(1);
@@ -38,11 +38,11 @@ describe('insertSlottedStyles()', () => {
       const spanElement = document.createElement('span');
       document.body.append(pElement);
       document.body.append(spanElement);
-      insertSlottedStyles(pElement, 'p { position: relative; color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { position: relative; color: #ff00ff; }');
-      insertSlottedStyles(pElement, 'p { color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { color: #ff00ff; }');
+      attachSlottedCss(pElement, 'p { position: relative; color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { position: relative; color: #ff00ff; }');
+      attachSlottedCss(pElement, 'p { color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
 
       expect(styleElements.length).toBe(2);
@@ -67,7 +67,7 @@ describe('insertSlottedStyles()', () => {
       container.shadowRoot.appendChild(element);
 
       expect(container.shadowRoot.querySelectorAll('style').length).toBe(1);
-      insertSlottedStyles(element, 'div { position: relative; color: #ff00ff; }');
+      attachSlottedCss(element, 'div { position: relative; color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
 
       expect(styleElements.length).toBe(2);
@@ -82,11 +82,11 @@ describe('insertSlottedStyles()', () => {
       container.shadowRoot.appendChild(spanElement);
 
       expect(container.shadowRoot.querySelectorAll('style').length).toBe(1);
-      insertSlottedStyles(divElement, 'div { color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { position: relative; color: #ff00ff; }');
-      insertSlottedStyles(divElement, 'div { position: relative; color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { color: #ff00ff; }');
-      insertSlottedStyles(spanElement, 'span { color: #ff00ff; }');
+      attachSlottedCss(divElement, 'div { color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { position: relative; color: #ff00ff; }');
+      attachSlottedCss(divElement, 'div { position: relative; color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { color: #ff00ff; }');
+      attachSlottedCss(spanElement, 'span { color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
 
       expect(styleElements.length).toBe(3);
@@ -106,8 +106,8 @@ describe('insertSlottedStyles()', () => {
       expect(container2.shadowRoot.querySelectorAll('style').length).toBe(0);
       container.shadowRoot.appendChild(divElement);
       container2.shadowRoot.appendChild(divElement2);
-      insertSlottedStyles(divElement, 'div { color: #ff00ff; }');
-      insertSlottedStyles(divElement2, '.div2 { position: relative; color: #ff00ff; }');
+      attachSlottedCss(divElement, 'div { color: #ff00ff; }');
+      attachSlottedCss(divElement2, '.div2 { position: relative; color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
       const styleElements2 = container2.shadowRoot.querySelectorAll('style');
 

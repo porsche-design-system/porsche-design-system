@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachCss,
+  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -12,7 +12,7 @@ import {
   getThemedColors,
   getThemedStateColors,
   getTransition,
-  insertSlottedStyles,
+  attachSlottedCss,
   isDark,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -154,7 +154,7 @@ export const addComponentCss = (
   state: FormState,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss, hideLabel, state, theme);
+  attachComponentCss(host, getComponentCss, hideLabel, state, theme);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
@@ -162,5 +162,5 @@ export const getSlottedCss = (host: HTMLElement): string => {
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
+  attachSlottedCss(host, getSlottedCss(host));
 };

@@ -1,12 +1,12 @@
 import {
   addImportantToEachRule,
-  attachCss,
+  attachComponentCss,
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  insertSlottedStyles,
+  attachSlottedCss,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -90,9 +90,9 @@ export const getSlottedCss = (host: HTMLElement): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss);
+  attachComponentCss(host, getComponentCss);
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
+  attachSlottedCss(host, getSlottedCss(host));
 };

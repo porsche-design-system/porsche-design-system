@@ -77,7 +77,7 @@ export const getCachedComponentCss = <T extends (...p: any[]) => string>(
   return componentCssMap.get(id);
 };
 
-export const attachCss = <T extends (...p: any[]) => string>(
+export const attachComponentCss = <T extends (...p: any[]) => string>(
   host: HTMLElement,
   getComponentCss: T,
   ...args: Parameters<T>

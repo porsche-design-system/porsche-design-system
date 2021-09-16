@@ -1,4 +1,4 @@
-import { addImportantToEachRule, attachCss, buildHostStyles, getCss, getTransition } from '../../../../utils';
+import { addImportantToEachRule, attachComponentCss, buildHostStyles, getCss, getTransition } from '../../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
@@ -16,5 +16,5 @@ export const getComponentCss = (): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss);
+  attachComponentCss(host, getComponentCss);
 };

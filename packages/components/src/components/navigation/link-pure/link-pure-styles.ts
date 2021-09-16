@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachCss,
+  attachComponentCss,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -10,7 +10,7 @@ import {
   getFocusStyles,
   getTransition,
   hasVisibleIcon,
-  insertSlottedStyles,
+  attachSlottedCss,
   isDark,
   mergeDeep,
   paramCaseToCamelCase,
@@ -258,7 +258,19 @@ export const addComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): void => {
-  attachCss(host, getComponentCss, icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme);
+  attachComponentCss(
+    host,
+    getComponentCss,
+    icon,
+    active,
+    stretch,
+    size,
+    hideLabel,
+    alignLabel,
+    hasSubline,
+    hasHref,
+    theme
+  );
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
@@ -266,5 +278,5 @@ export const getSlottedCss = (host: HTMLElement): string => {
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
+  attachSlottedCss(host, getSlottedCss(host));
 };

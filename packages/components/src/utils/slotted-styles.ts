@@ -26,7 +26,7 @@ export const getNodeToPrependTo = (rootNode: HTMLElementOrDocument): HTMLElement
  * providing only `a {…}` would cause unscoped global styling.
  * @returns void
  */
-export const insertSlottedStyles = (element: HTMLElement, css: string): void => {
+export const attachSlottedCss = (element: HTMLElement, css: string): void => {
   const rootNode = element.getRootNode() as HTMLElementOrDocument;
   const elementMap = getElementMap(element);
   if (elementMap.get(rootNode) === undefined) {

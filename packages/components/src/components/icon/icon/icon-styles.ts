@@ -1,5 +1,5 @@
 import type { Theme, TextColor as IconColor, IconSize } from '../../../types';
-import { attachCss, buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
+import { attachComponentCss, buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
 
 const getColor = (color: IconColor, theme: Theme): string => {
   const {
@@ -72,5 +72,5 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme):
 };
 
 export const addComponentCss = (host: HTMLElement, color: IconColor, size: IconSize, theme: Theme): void => {
-  attachCss(host, getComponentCss, color, size, theme);
+  attachComponentCss(host, getComponentCss, color, size, theme);
 };
