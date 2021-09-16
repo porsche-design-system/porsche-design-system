@@ -229,6 +229,27 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       >
     </div>
 
+    <div
+      class="playground light stretched-links"
+      title="should render with interplay of breakpoint-customizable depending on viewport"
+    >
+      <p-link-pure
+        [href]="'https://www.porsche.com'"
+        [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }"
+        [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
+        >Label multiple breakpoint-customizable</p-link-pure
+      >
+      <p-link-pure
+        [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        [stretch]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'x-small' }"
+        [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
+        ><a href="https://www.porsche.com">Label slotted multiple breakpoint-customizable</a></p-link-pure
+      >
+    </div>
+
     <div class="playground light" title="should not align label left or stretch if it has a subline">
       <p-link-pure [href]="'https://www.porsche.com'" [alignLabel]="'left'">
         Label align left

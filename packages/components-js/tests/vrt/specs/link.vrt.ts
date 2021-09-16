@@ -61,7 +61,7 @@ describe('Link', () => {
         await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-link >>> a');
-        await forceHoveredState(page, '.hovered > p-link >>> span');
+        await forceHoveredState(page, '.hovered > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
         await forceFocusedState(page, '.focused > p-link >>> a');
         await forceFocusedState(page, '.focused > p-link a');
         await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> a');

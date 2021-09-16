@@ -31,7 +31,7 @@ describe('Radio Button Wrapper', () => {
       await vrt.test('radio-button-wrapper-states', async () => {
         const page = await vrt.getPage();
 
-        const head = `<style type="text/css">p-radio-button-wrapper { margin-top: 16px; }</style>`;
+        const head = `<style type="text/css">p-radio-button-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
         const getElementsMarkup: GetMarkup = () => `
           <p-radio-button-wrapper label="Some label">
