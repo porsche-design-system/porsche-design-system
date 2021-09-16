@@ -159,3 +159,5 @@ export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLEle
 export const getRole = (state: FormState): string => {
   return state === 'error' ? 'alert' : null;
 };
+
+export const pdsFetch = (input: RequestInfo, init?: RequestInit): Promise<Response> => fetch(input, init);
