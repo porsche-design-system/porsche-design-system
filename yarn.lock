@@ -2715,10 +2715,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/stencil-sass/-/@porsche-design-system/stencil-sass-0.0.1.tgz#0bcb2f38032af1fd01eddb4af471e4ee57fa2f48"
   integrity sha1-C8svOAMq8f0B7dtK9HHk7lf6L0g=
 
-"@porsche-design-system/visual-regression-tester@^4.0.0":
-  version "4.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-4.0.0.tgz#0b76a7a5737a30d1b91eeec32107b290941501ca"
-  integrity sha1-C3anpXN6MNG5Hu7DIQeykJQVAco=
+"@porsche-design-system/visual-regression-tester@^4.1.0":
+  version "4.1.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-4.1.0.tgz#58cbe36ca489676a420525882b2d01bc78966b5f"
+  integrity sha1-WMvjbKSJZ2pCBSWIKy0BvHiWa18=
   dependencies:
     del "^6.0.0"
     jimp "^0.16.1"
