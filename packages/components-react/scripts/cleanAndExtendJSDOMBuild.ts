@@ -1,50 +1,51 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const getFileContent = (fileToFind: string): { fileName: string; filePath: string; fileContent: string } => {
+const getFileContent = (): { filePath: string; fileContent: string } => {
   const rootDirectory = path.resolve(__dirname, '..');
-  const directory = path.resolve(rootDirectory, 'dist/components-wrapper/jsdom-polyfill/lib');
-  const fileNameRegEx = new RegExp(`^${fileToFind}[\\d\\w]*.js\$`);
-  const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(fileNameRegEx));
-  const filePath = path.resolve(directory, fileName);
+  const directory = path.resolve(rootDirectory, 'dist/components-wrapper/jsdom-polyfill');
+  const filePath = path.resolve(directory, 'index.js');
 
-  return { fileName, filePath, fileContent: fs.readFileSync(filePath, 'utf8') };
+  return { filePath, fileContent: fs.readFileSync(filePath, 'utf8') };
 };
 
 const cleanConsoleWarnInInjectToGlobalStyles = (): void => {
-  const { fileName, filePath, fileContent } = getFileContent('app-globals-');
-  const result = fileContent.replace(/console\.warn\((.|\s)*?\);/, '');
+  const { filePath, fileContent } = getFileContent();
+  const result = fileContent.replace(
+    /console\.warn\(`The Porsche Design System had to inject our font-face.css file into your head(.|\s)*?\);/,
+    ''
+  );
 
   fs.writeFileSync(filePath, result);
 
-  console.log(`Cleaned inject global styles warning in '${fileName}'`);
+  console.log(`Cleaned inject global styles warning`);
 };
 
 const conditionalFetch = `if(!window.PDS_SKIP_FETCH) {
       $1
     }`;
 
-const addFetchConditionToLoader = () => {
-  const { fileName, filePath, fileContent } = getFileContent('loader\\.cjs');
+const addFetchConditionToLoader = (): void => {
+  const { filePath, fileContent } = getFileContent();
   const result = fileContent.replace(/(appGlobals\.globalScripts\(\);)/, conditionalFetch);
 
   fs.writeFileSync(filePath, result);
 
-  console.log(`Added fetch condition to '${fileName}'`);
+  console.log(`Added fetch condition to loader`);
 };
 
-const addFetchConditionToIcon = () => {
-  const { fileName, filePath, fileContent } = getFileContent('p-icon\\.cjs\\.entry');
+const addFetchConditionToIcon = (): void => {
+  const { filePath, fileContent } = getFileContent();
 
   const result = fileContent.replace(/(getSvgContent\(url\).then\(\(iconContent\) => \{.*\}\);)/s, conditionalFetch);
 
   fs.writeFileSync(filePath, result);
 
-  console.log(`Added fetch condition to '${fileName}'`);
+  console.log(`Added fetch condition to icon`);
 };
 
-const addPictureConditionToMarque = () => {
-  const { fileName, filePath, fileContent } = getFileContent('p-marque\\.cjs\\.entry');
+const addPictureConditionToMarque = (): void => {
+  const { filePath, fileContent } = getFileContent();
 
   const conditionalPicture = `$1 !window.PDS_SKIP_FETCH ?$2 : undefined;`;
 
@@ -52,7 +53,7 @@ const addPictureConditionToMarque = () => {
 
   fs.writeFileSync(filePath, result);
 
-  console.log(`Added fetch condition to '${fileName}'`);
+  console.log(`Added fetch condition to marque`);
 };
 
 const cleanAndExtendJSDOMBuild = (): void => {
