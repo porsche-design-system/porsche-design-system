@@ -7,7 +7,6 @@ import {
   buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
-  getCachedComponentCss,
   getCss,
   getFormTextHiddenJssStyle,
   getThemedColors,
@@ -155,7 +154,7 @@ export const addComponentCss = (
   state: FormState,
   theme: Theme
 ): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss, hideLabel, state, theme));
+  attachCss(host, getComponentCss, hideLabel, state, theme);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

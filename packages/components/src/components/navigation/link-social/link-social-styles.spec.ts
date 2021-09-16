@@ -1,19 +1,7 @@
 import { BreakpointCustomizable, Theme } from '../../../types';
-import { addComponentCss, getComponentCss } from './link-social-styles';
+import { getComponentCss } from './link-social-styles';
 import { SocialIconName } from './link-social-utils';
 import * as jssUtils from './../../../utils/jss';
-
-describe('addComponentCss()', () => {
-  it('should call getCachedComponentCss() to retrieve cached css', () => {
-    const host = document.createElement('p-link-social');
-    jest.spyOn(jssUtils, 'attachCss').mockImplementation(() => {});
-    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
-
-    addComponentCss(host, 'logo-facebook', false, true, 'light');
-
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), 'logo-facebook', false, true, 'light');
-  });
-});
 
 describe('getComponentCss()', () => {
   it.each<[SocialIconName, BreakpointCustomizable<boolean>, boolean, Theme]>([

@@ -4,7 +4,6 @@ import {
   breakpoint,
   buildSlottedStyles,
   getBaseSlottedStyles,
-  getCachedComponentCss,
   getCss,
   insertSlottedStyles,
   mediaQuery,
@@ -46,7 +45,7 @@ export const getComponentCss = (): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss));
+  attachCss(host, getComponentCss);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

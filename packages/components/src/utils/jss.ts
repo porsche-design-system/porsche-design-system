@@ -53,7 +53,37 @@ export const supportsConstructableStylesheets = (): boolean => {
   }
 };
 
-export const attachCss = (host: HTMLElement, css: string): void => {
+type CssCacheMap = Map<string, string>;
+export const componentsCssMap = new Map<TagName, CssCacheMap>();
+
+export const getCachedComponentCss = <T extends (...p: any[]) => string>(
+  host: HTMLElement,
+  getComponentCss: T,
+  ...args: Parameters<T>
+): string => {
+  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+
+  if (!componentsCssMap.has(tagName)) {
+    componentsCssMap.set(tagName, new Map());
+  }
+
+  const id = args.join('_');
+  const componentCssMap = componentsCssMap.get(tagName);
+
+  if (!componentCssMap.has(id)) {
+    componentCssMap.set(id, getComponentCss(...args));
+  }
+
+  return componentCssMap.get(id);
+};
+
+export const attachCss = <T extends (...p: any[]) => string>(
+  host: HTMLElement,
+  getComponentCss: T,
+  ...args: Parameters<T>
+): void => {
+  const css = getCachedComponentCss(host, getComponentCss, ...args);
+
   if (supportsConstructableStylesheets()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
@@ -141,32 +171,4 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
 
     return prev;
   }, {} as T);
-};
-
-type CssCacheMap = Map<string, string>;
-export const componentCssMap = new Map<TagName, CssCacheMap>();
-
-const getComponentCssCacheMap = (host: HTMLElement): CssCacheMap => {
-  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
-
-  if (!componentCssMap.has(tagName)) {
-    componentCssMap.set(tagName, new Map());
-  }
-
-  return componentCssMap.get(tagName);
-};
-
-export const getCachedComponentCss = <T extends (...p: any[]) => string>(
-  host: HTMLElement,
-  getComponentCss: T,
-  ...args: Parameters<T>
-): string => {
-  const id = args.join('_');
-  const cache = getComponentCssCacheMap(host);
-
-  if (!cache.has(id)) {
-    cache.set(id, getComponentCss(...args));
-  }
-
-  return cache.get(id);
 };

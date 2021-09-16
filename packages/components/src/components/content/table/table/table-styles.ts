@@ -4,7 +4,6 @@ import {
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
-  getCachedComponentCss,
   getCss,
   getFocusStyles,
   insertSlottedStyles,
@@ -91,7 +90,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getCachedComponentCss(host, getComponentCss));
+  attachCss(host, getComponentCss);
 };
 
 export const addSlottedCss = (host: HTMLElement): void => {
