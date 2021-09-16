@@ -28,7 +28,7 @@ export default [
       typescript({
         ...typescriptOpts,
         declaration: true,
-        declarationDir: `${DIST_DIR}/types`,
+        declarationDir: DIST_DIR,
         rootDir: 'src',
       }),
     ],
