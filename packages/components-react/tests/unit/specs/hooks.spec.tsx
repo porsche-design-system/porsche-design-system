@@ -6,7 +6,7 @@ import {
 } from '../../../projects/components-wrapper/src/hooks';
 import { PIcon } from '@porsche-design-system/components-react';
 
-describe('skipCheckForPorscheDesignSystemProviderDuringTests', () => {
+describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
@@ -29,24 +29,16 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests', () => {
 
     spy.mockRestore();
   });
+});
 
-  it('should mock fetch', async () => {
-    jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    skipCheckForPorscheDesignSystemProviderDuringTests();
+describe('skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
+  it('should set window variable PDS_SKIP_FETCH true', () => {
+    const getPDS_SKIP_FETCH = () => (window as any).PDS_SKIP_FETCH;
 
-    let counter = 0;
-    global.fetch = jest.fn().mockImplementation((x) => {
-      counter++;
-    });
-    render(<PIcon />);
-
-    expect(counter).toHaveBeenCalledTimes(1);
+    expect(getPDS_SKIP_FETCH()).toBeUndefined();
 
     skipPorscheDesignSystemCDNRequestsDuringTests();
-    render(<PIcon />);
 
-    expect(counter).toHaveBeenCalledTimes(1);
-
-    jest.clearAllMocks();
+    expect(getPDS_SKIP_FETCH()).toBe(true);
   });
 });
