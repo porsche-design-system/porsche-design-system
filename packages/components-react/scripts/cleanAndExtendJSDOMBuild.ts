@@ -21,24 +21,25 @@ const cleanConsoleWarnInInjectToGlobalStyles = (): void => {
   console.log(`Cleaned inject global styles warning`);
 };
 
-const conditionalFetch = `if(!window.PDS_SKIP_FETCH) {
+const addFetchConditionToLoader = (): void => {
+  const { filePath, fileContent } = getFileContent();
+  const fetchCondition = `if(!window.PDS_SKIP_FETCH) {
       $1
     }`;
 
-const addFetchConditionToLoader = (): void => {
-  const { filePath, fileContent } = getFileContent();
-  const result = fileContent.replace(/(appGlobals\.globalScripts\(\);)/, conditionalFetch);
+  const result = fileContent.replace(/(appGlobals\.globalScripts\(\);)/, fetchCondition);
 
   fs.writeFileSync(filePath, result);
 
   console.log(`Added fetch condition to loader`);
 };
 
-const addFetchConditionToIcon = (): void => {
+const addFetchConditionToPdsFetch = (): void => {
   const { filePath, fileContent } = getFileContent();
 
-  const result = fileContent.replace(/(getSvgContent\(url\).then\(\(iconContent\) => \{.*\}\);)/s, conditionalFetch);
+  const fetchCondition = 'const pdsFetch = (input, init) => !window.PDS_SKIP_FETCH ? fetch(input, init) : undefined;';
 
+  const result = fileContent.replace('const pdsFetch = (input, init) => fetch(input, init);', fetchCondition);
   fs.writeFileSync(filePath, result);
 
   console.log(`Added fetch condition to icon`);
@@ -49,7 +50,7 @@ const addPictureConditionToMarque = (): void => {
 
   const conditionalPicture = `$1 !window.PDS_SKIP_FETCH ?$2 : undefined;`;
 
-  const result = fileContent.replace(/(const picture =)( \(resizeObserver.*}\)\)\));/s, conditionalPicture);
+  const result = fileContent.replace(/(const picture =)( \(resizeObserver.*? }\)\)\));/s, conditionalPicture);
 
   fs.writeFileSync(filePath, result);
 
@@ -59,7 +60,7 @@ const addPictureConditionToMarque = (): void => {
 const cleanAndExtendJSDOMBuild = (): void => {
   cleanConsoleWarnInInjectToGlobalStyles();
   addFetchConditionToLoader();
-  addFetchConditionToIcon();
+  addFetchConditionToPdsFetch();
   addPictureConditionToMarque();
 };
 
