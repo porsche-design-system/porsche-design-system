@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 
 export default [
@@ -11,7 +12,12 @@ export default [
       name: pkg.name,
       exports: 'named',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
+    plugins: [
+      copy({
+        targets: [{ src: 'src/css/*', dest: 'dist/css' }],
+      }),
+      typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }),
+    ],
   },
   {
     input: 'src/index.ts',
