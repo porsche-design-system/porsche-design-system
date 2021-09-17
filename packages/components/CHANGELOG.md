@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
+- JSS caching mechanism to improve style performance
 
 #### Changed
 - Alignment of `linkedin` icon
