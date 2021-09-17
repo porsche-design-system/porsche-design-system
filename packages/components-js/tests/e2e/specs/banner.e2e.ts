@@ -239,7 +239,7 @@ describe('banner', () => {
   });
 
   describe('accessibility', () => {
-    it('should expose correct initial accessibility tree', async () => {
+    it('should expose correct initial accessibility tree properties', async () => {
       await initBanner('neutral');
       const getCloseButton = () => selectNode(page, 'p-banner >>> p-button-pure >>> button');
       const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');

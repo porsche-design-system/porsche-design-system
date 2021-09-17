@@ -491,4 +491,48 @@ describe('button-pure', () => {
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initButtonPure();
+      const button = await getButton();
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot.role).toBe('button');
+      expect(snapshot.name).toBe('Some label');
+    });
+
+    it('should expose correct accessibility name if label is hidden', async () => {
+      await initButtonPure();
+      const host = await getHost();
+      const button = await getButton();
+      await setProperty(host, 'hide-label', 'true');
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot.name).toBe('Some label');
+    });
+
+    it('should add aria-busy attribute when loading and remove it if finished', async () => {
+      await initButtonPure();
+      const host = await getHost();
+      const button = await getButton();
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
+    });
+  });
 });
