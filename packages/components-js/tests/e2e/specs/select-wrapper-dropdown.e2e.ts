@@ -448,27 +448,14 @@ describe('select-wrapper dropdown', () => {
     expect(await getDropdownCheckmarkIcon()).toBeNull();
   });
 
-  describe('hover state', () => {
-    it('should change box-shadow color when dropdown button is hovered', async () => {
-      await initSelect();
+  it('should change box-shadow color when dropdown button is hovered', async () => {
+    await initSelect();
 
-      const dropdownButton = await getDropdownButton();
-      const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
+    const dropdownButton = await getDropdownButton();
+    const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
 
-      await dropdownButton.hover();
-      expect(await getElementStyle(dropdownButton, 'boxShadow')).not.toBe(initialBoxShadow);
-    });
-
-    it('should change box-shadow color of select when label text is hovered', async () => {
-      await initSelect();
-
-      const select = await getSelect();
-      const labelText = await getLabelText();
-      const initialBoxShadow = await getElementStyle(select, 'boxShadow');
-
-      await labelText.hover();
-      expect(await getElementStyle(select, 'boxShadow')).not.toBe(initialBoxShadow);
-    });
+    await dropdownButton.hover();
+    expect(await getElementStyle(dropdownButton, 'boxShadow')).not.toBe(initialBoxShadow);
   });
 
   describe('dropdown position', () => {
