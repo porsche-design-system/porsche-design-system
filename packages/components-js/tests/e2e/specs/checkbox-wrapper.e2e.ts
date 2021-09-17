@@ -1,7 +1,6 @@
 import {
   expectedStyleOnFocus,
   getActiveElementTagName,
-  getAttribute,
   getBrowser,
   getElementStyle,
   getLifecycleStatus,
