@@ -5,7 +5,6 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  attachSlottedCss,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -86,8 +85,4 @@ export const getSlottedCss = (host: HTMLElement): string => {
       },
     })
   );
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  attachSlottedCss(host, getSlottedCss(host));
 };

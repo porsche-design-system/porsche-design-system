@@ -11,7 +11,6 @@ import {
   getThemedColors,
   getThemedStateColors,
   getTransition,
-  attachSlottedCss,
   isDark,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -149,8 +148,4 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  attachSlottedCss(host, getSlottedCss(host));
 };

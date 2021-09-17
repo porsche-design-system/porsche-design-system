@@ -1,3 +1,6 @@
+import { TagName } from '@porsche-design-system/shared';
+import { getTagName } from './dom';
+
 type HTMLElementOrDocument = HTMLElement | Document;
 type ElementMap = Map<HTMLElementOrDocument, boolean>;
 
@@ -18,17 +21,31 @@ export const getNodeToPrependTo = (rootNode: HTMLElementOrDocument): HTMLElement
   return rootNode === document ? rootNode.head : (rootNode as HTMLElement);
 };
 
+export const slottedCssMap = new Map<TagName, string>();
+
+export const getCachedSlottedCss = (host: HTMLElement, getSlottedCss: (h: HTMLElement) => string): string => {
+  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+
+  if (!slottedCssMap.has(tagName)) {
+    slottedCssMap.set(tagName, getSlottedCss(host));
+  }
+
+  return slottedCssMap.get(tagName);
+};
+
 /**
  * Adds an inheritable style for slotted content.
- * @param element
- * @param css - Make sure that css selectors are always in context of element (make sure that
+ * @param host
+ * @param getSlottedCss - Make sure that css function are always in context of element (make sure that
  * it's created dynamically by e.g. `element.tagName.toLowerCase()`), e.g. `a:focus p-link-pure {…}`. Something like
  * providing only `a {…}` would cause unscoped global styling.
  * @returns void
  */
-export const attachSlottedCss = (element: HTMLElement, css: string): void => {
-  const rootNode = element.getRootNode() as HTMLElementOrDocument;
-  const elementMap = getElementMap(element);
+export const attachSlottedCss = (host: HTMLElement, getSlottedCss: (h: HTMLElement) => string): void => {
+  const css = getCachedSlottedCss(host, getSlottedCss);
+  const rootNode = host.getRootNode() as HTMLElementOrDocument;
+  const elementMap = getElementMap(host);
+
   if (elementMap.get(rootNode) === undefined) {
     elementMap.set(rootNode, true);
     const style = document.createElement('style');

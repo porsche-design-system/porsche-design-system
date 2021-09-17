@@ -9,7 +9,6 @@ import {
   getFocusStyles,
   getTransition,
   hasVisibleIcon,
-  attachSlottedCss,
   isDark,
   mergeDeep,
   paramCaseToCamelCase,
@@ -247,8 +246,4 @@ export const getComponentCss = (
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  attachSlottedCss(host, getSlottedCss(host));
 };

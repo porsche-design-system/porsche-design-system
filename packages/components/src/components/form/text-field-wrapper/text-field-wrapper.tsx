@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -13,7 +14,7 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './text-field-wrapper-styles';
+import { getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -45,7 +46,7 @@ export class TextFieldWrapper {
   private isPassword: boolean;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
