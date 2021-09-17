@@ -5,12 +5,12 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
-  slottedCssMap,
   getCachedConstructedCss,
   getCss,
   isObject,
   mergeDeep,
   supportsConstructableStylesheets,
+  constructedCssMap,
 } from '.';
 import * as jssUtils from './jss';
 import type { JssStyle, Styles } from 'jss';
@@ -191,12 +191,12 @@ describe('mergeDeep()', () => {
   });
 });
 
-describe('attachCss()', () => {
+describe('attachConstructedCss()', () => {
   beforeEach(() => {
-    slottedCssMap.clear();
+    constructedCssMap.clear();
   });
 
-  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
+  it('should call getCachedConstructedCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(jssUtils, 'getCachedConstructedCss').mockImplementation(() => '');
@@ -239,9 +239,9 @@ describe('attachCss()', () => {
   });
 });
 
-describe('getCachedComponentCss()', () => {
+describe('getCachedConstructedCss()', () => {
   beforeEach(() => {
-    slottedCssMap.clear();
+    constructedCssMap.clear();
   });
 
   it('should return css provided by css function', () => {
