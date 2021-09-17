@@ -260,6 +260,8 @@ describe('getCachedConstructedCss()', () => {
     const getComponentCss2 = (c: string) => `some css ${c}`;
 
     expect(getCachedConstructedCss(host, getComponentCss2, 'some string')).toBe('some css some string');
+
+    // TODO: test object case
   });
 
   it('should call provided css function only once when it was already called before', () => {
