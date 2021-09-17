@@ -2,7 +2,6 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getActiveElementId,
-  getAttribute,
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
@@ -197,29 +196,6 @@ describe('link-pure', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  describe('accessibility', () => {
-    it('should have aria-describedby when it has a subline', async () => {
-      await initLinkPure({ withSubline: true });
-      const link = await getLink();
-
-      expect(await getAttribute(link, 'aria-describedby')).toBe('subline');
-    });
-
-    it('should not have aria-describedby with slotted anchor and without subline', async () => {
-      await initLinkPure({ useSlottedAnchor: true });
-      const span = await getSpan();
-
-      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
-    });
-
-    it('should not have aria-describedby with slotted anchor and subline', async () => {
-      await initLinkPure({ useSlottedAnchor: true, withSubline: true });
-      const span = await getSpan();
-
-      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
-    });
-  });
-
   describe('focus state', () => {
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {
       await initLinkPure();
@@ -288,6 +264,54 @@ describe('link-pure', () => {
       expect(status.componentDidUpdate['p-link-pure']).withContext('componentDidUpdate: p-link-pure').toBe(1);
 
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initLinkPure();
+      const link = await getLink();
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot.role).toBe('link');
+      expect(snapshot.name).toBe('Some label');
+    });
+
+    it('should expose correct accessibility name if label is hidden', async () => {
+      await initLinkPure();
+      const host = await getHost();
+      const link = await getLink();
+      await setProperty(host, 'hide-label', 'true');
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot.name).toBe('Some label');
+      expect(snapshot.description).toBeUndefined();
+    });
+
+    it('should expose correct accessibility tree description if subline property is set', async () => {
+      await initLinkPure({ withSubline: true });
+      const link = await getLink();
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot.description).toBe('Some Subline');
+    });
+
+    it('should not expose accessibility tree description with slotted anchor and subline', async () => {
+      await initLinkPure({ useSlottedAnchor: true, withSubline: true });
+      const span = await getSpan();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: span,
+      });
+
+      expect(snapshot).toBeNull();
     });
   });
 });
