@@ -23,7 +23,7 @@ describe('fieldset-wrapper', () => {
   const getHost = () => selectNode(page, 'p-fieldset-wrapper');
   const getMessage = () => selectNode(page, 'p-fieldset-wrapper >>> .message');
 
-  fdescribe('accessibility', () => {
+  describe('accessibility', () => {
     it('should expose correct accessibility tree property in error state', async () => {
       await initFieldset({ state: 'error' });
       const message = await getMessage();
