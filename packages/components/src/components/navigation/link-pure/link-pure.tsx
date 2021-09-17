@@ -6,6 +6,7 @@ import {
   transitionListener,
   hasVisibleIcon,
   hasSlottedSubline,
+  attachConstructedCss,
 } from '../../../utils';
 import type {
   AlignLabel,
@@ -17,7 +18,7 @@ import type {
   Theme,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { addComponentCss, addSlottedCss } from './link-pure-styles';
+import { addSlottedCss, getComponentCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -73,8 +74,9 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
-    addComponentCss(
+    attachConstructedCss(
       this.host,
+      getComponentCss,
       this.icon,
       this.active,
       this.stretch,

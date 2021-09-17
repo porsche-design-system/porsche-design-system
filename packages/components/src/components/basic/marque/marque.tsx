@@ -1,9 +1,9 @@
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import { breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
+import { attachConstructedCss, breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { LinkTarget } from '../../../types';
 import { buildSrcSet, cdnBaseUrl, getManifestPath } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
-import { addComponentCss } from './marque-styles';
+import { getComponentCss } from './marque-styles';
 
 @Component({
   tag: 'p-marque',
@@ -29,7 +29,7 @@ export class Marque {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.size);
+    attachConstructedCss(this.host, getComponentCss, this.size);
   }
 
   public render(): JSX.Element {

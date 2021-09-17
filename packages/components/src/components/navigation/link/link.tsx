@@ -1,10 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-} from '../../../utils';
+import { attachConstructedCss, getPrefixedTagNames, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
-import { addComponentCss } from './link-styles';
+import { getComponentCss } from './link-styles';
 
 @Component({
   tag: 'p-link',
@@ -45,7 +42,7 @@ export class Link {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.variant, this.hideLabel, !!this.href, this.theme);
+    attachConstructedCss(this.host, getComponentCss, this.variant, this.hideLabel, !!this.href, this.theme);
   }
 
   public render(): JSX.Element {

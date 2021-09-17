@@ -10,6 +10,7 @@ import {
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
   transitionListener,
+  attachConstructedCss,
 } from '../../../utils';
 import type {
   AlignLabel,
@@ -22,7 +23,7 @@ import type {
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
-import { addComponentCss } from './button-pure-styles';
+import { getComponentCss } from './button-pure-styles';
 
 @Component({
   tag: 'p-button-pure',
@@ -83,7 +84,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.stretch);
+    attachConstructedCss(this.host, getComponentCss, hasSlottedSubline(this.host) ? false : this.stretch);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 

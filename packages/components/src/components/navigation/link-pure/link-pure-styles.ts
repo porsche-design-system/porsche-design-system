@@ -1,7 +1,6 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachComponentCss,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -244,33 +243,6 @@ export const getComponentCss = (
       margin: 0,
     },
   });
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  icon: LinkButtonPureIconName,
-  active: boolean,
-  stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
-  hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
-  hasSubline: boolean,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  attachComponentCss(
-    host,
-    getComponentCss,
-    icon,
-    active,
-    stretch,
-    size,
-    hideLabel,
-    alignLabel,
-    hasSubline,
-    hasHref,
-    theme
-  );
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

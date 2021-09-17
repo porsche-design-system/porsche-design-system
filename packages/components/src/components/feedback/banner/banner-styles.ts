@@ -1,6 +1,5 @@
 import {
   addImportantToRule,
-  attachComponentCss,
   breakpoint,
   buildSlottedStyles,
   getBaseSlottedStyles,
@@ -42,10 +41,6 @@ export const getComponentCss = (): string => {
       },
     },
   });
-};
-
-export const addComponentCss = (host: HTMLElement): void => {
-  attachComponentCss(host, getComponentCss);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

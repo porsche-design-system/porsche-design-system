@@ -1,5 +1,11 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import { getPrefixedTagNames, observeChildren, observeProperties, throwIfRootNodeIsNotOfKind } from '../../../../utils';
+import {
+  attachConstructedCss,
+  getPrefixedTagNames,
+  observeChildren,
+  observeProperties,
+  throwIfRootNodeIsNotOfKind,
+} from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
@@ -24,9 +30,10 @@ import {
   hasFilterResults,
   getFilterInputAriaAttributes,
   setFilteredOptionMaps,
+  determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { FormState, Theme } from '../../../../types';
-import { addComponentCss } from './select-wrapper-dropdown-styles';
+import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -61,7 +68,16 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.direction, this.isOpen, this.disabled, this.state, this.filter, this.theme);
+    attachConstructedCss(
+      this.host,
+      getComponentCss,
+      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
+      this.isOpen,
+      this.disabled,
+      this.state,
+      this.filter,
+      this.theme
+    );
   }
 
   public componentDidRender(): void {

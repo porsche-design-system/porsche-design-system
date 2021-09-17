@@ -1,7 +1,6 @@
 import type { BreakpointCustomizable, JssStyle, Styles } from '../../../utils';
 import {
   addImportantToEachRule,
-  attachComponentCss,
   buildHostStyles,
   buildResponsiveStyles,
   colorDarken,
@@ -199,14 +198,4 @@ export const getComponentCss = (
       hasHref ? buildResponsiveStyles(hideLabel, getRootStyles) : buildResponsiveStyles(hideLabel, getSlottedLinkStyles)
     )
   );
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  variant: LinkVariant,
-  hideLabel: BreakpointCustomizable<boolean>,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  attachComponentCss(host, getComponentCss, variant, hideLabel, hasHref, theme);
 };

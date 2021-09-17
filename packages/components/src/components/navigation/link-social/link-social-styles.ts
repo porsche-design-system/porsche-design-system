@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  attachComponentCss,
   BreakpointCustomizable,
   buildHostStyles,
   buildResponsiveStyles,
@@ -119,15 +118,4 @@ export const getComponentCss = (
       hasHref ? buildResponsiveStyles(hideLabel, getRootStyles) : buildResponsiveStyles(hideLabel, getSlottedLinkStyles)
     )
   );
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  icon: SocialIconName,
-  hideLabel: BreakpointCustomizable<boolean>,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  // TODO: no need for wrapping addComponentCss() function, instead call attachCss directly within component implementation?
-  attachComponentCss(host, getComponentCss, icon, hideLabel, hasHref, theme);
 };
