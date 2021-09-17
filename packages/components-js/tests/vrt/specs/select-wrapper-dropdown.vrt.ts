@@ -11,7 +11,6 @@ describe('Select Wrapper Dropdown', () => {
         const page = vrt.getPage();
 
         const head = `<style type="text/css">
-  :root { --p-transition-duration: 0s; }
   p-select-wrapper-dropdown { --p-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;
