@@ -59,8 +59,7 @@ describe('select-wrapper filter', () => {
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
   const getSelectedOptionText = async () =>
     (await getSelect()).evaluate((el: HTMLSelectElement) => el.options[el.selectedIndex].textContent);
-  const getFilterOverlayBoxShadow = async () =>
-    getElementStyle(await getFilterInputOverlay(), 'boxShadow', { waitForTransition: true });
+  const getFilterOverlayBoxShadow = async () => getElementStyle(await getFilterInputOverlay(), 'boxShadow');
 
   const getAmountOfDropdownOptions = async () => (await getDropdownList()).evaluate((el) => el.childElementCount);
   const getAmountOfHiddenDropdownOptions = async () =>

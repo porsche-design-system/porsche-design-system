@@ -456,9 +456,7 @@ describe('select-wrapper dropdown', () => {
       const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
 
       await dropdownButton.hover();
-      expect(await getElementStyle(dropdownButton, 'boxShadow', { waitForTransition: true })).not.toBe(
-        initialBoxShadow
-      );
+      expect(await getElementStyle(dropdownButton, 'boxShadow')).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of select when label text is hovered', async () => {
@@ -469,7 +467,7 @@ describe('select-wrapper dropdown', () => {
       const initialBoxShadow = await getElementStyle(select, 'boxShadow');
 
       await labelText.hover();
-      expect(await getElementStyle(select, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(select, 'boxShadow')).not.toBe(initialBoxShadow);
     });
   });
 
