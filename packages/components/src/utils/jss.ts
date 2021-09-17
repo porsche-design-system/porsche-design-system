@@ -67,7 +67,7 @@ export const getCachedConstructedCss = <T extends (...p: any[]) => string>(
     constructedCssMap.set(tagName, new Map());
   }
 
-  const id = args.join('_');
+  const id = JSON.stringify(args);
   const cache = constructedCssMap.get(tagName);
 
   if (!cache.has(id)) {
