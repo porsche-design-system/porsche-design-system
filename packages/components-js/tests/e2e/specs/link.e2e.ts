@@ -218,4 +218,31 @@ describe('link', () => {
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
     });
   });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initLink();
+      const link = await getLink();
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot.role).toBe('link');
+      expect(snapshot.name).toBe('Some label');
+    });
+
+    it('should expose correct accessibility name if label is hidden', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'hide-label', 'true');
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot.name).toBe('Some label');
+    });
+  });
 });
