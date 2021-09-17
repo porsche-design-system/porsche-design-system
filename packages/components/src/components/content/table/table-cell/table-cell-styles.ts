@@ -1,4 +1,4 @@
-import { addImportantToEachRule, attachComponentCss, buildHostStyles, getCss, pxToRemWithUnit } from '../../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss, pxToRemWithUnit } from '../../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (multiline: boolean): string => {
@@ -14,8 +14,4 @@ export const getComponentCss = (multiline: boolean): string => {
       })
     )
   );
-};
-
-export const addComponentCss = (host: HTMLElement, multiline: boolean): void => {
-  attachComponentCss(host, getComponentCss, multiline);
 };

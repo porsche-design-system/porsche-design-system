@@ -1,8 +1,8 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
-import { getShadowRootHTMLElement, isBrowser } from '../../../utils';
+import { attachConstructedCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
 import type { Theme, IconName, TextColor, IconSize } from '../../../types';
-import { addComponentCss } from './icon-styles';
+import { getComponentCss } from './icon-styles';
 
 @Component({
   tag: 'p-icon',
@@ -38,7 +38,7 @@ export class Icon {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.color, this.size, this.theme);
+    attachConstructedCss(this.host, getComponentCss, this.color, this.size, this.theme);
   }
 
   public componentWillUpdate(): void {

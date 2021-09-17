@@ -1,7 +1,6 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -146,15 +145,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
   });
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  hideLabel: BreakpointCustomizable<boolean>,
-  state: FormState,
-  theme: Theme
-): void => {
-  attachComponentCss(host, getComponentCss, hideLabel, state, theme);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
