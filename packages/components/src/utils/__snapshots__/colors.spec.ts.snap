@@ -29,14 +29,17 @@ exports[`getThemedColors() should return correct colors for theme: 'dark' 1`] = 
 Object {
   "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
+  "brandColor": "#d5001c",
   "contrastHighColor": "#e3e4e5",
   "contrastLowColor": "#4a4e51",
   "contrastMediumColor": "#b0b1b2",
   "disabledColor": "#7c7f81",
   "errorColor": "#fc1717",
   "hoverColor": "#ff0223",
+  "neutralColor": "#2193ff",
   "successColor": "#01ba1d",
   "textColor": "#fff",
+  "warningColor": "#ff9b00",
 }
 `;
 
@@ -44,14 +47,17 @@ exports[`getThemedColors() should return correct colors for theme: 'light' 1`] =
 Object {
   "activeColor": "#d5001c",
   "backgroundColor": "#fff",
+  "brandColor": "#d5001c",
   "contrastHighColor": "#323639",
   "contrastLowColor": "#e3e4e5",
   "contrastMediumColor": "#626669",
   "disabledColor": "#96989a",
   "errorColor": "#e00000",
   "hoverColor": "#d5001c",
+  "neutralColor": "#0061bd",
   "successColor": "#018a16",
   "textColor": "#000",
+  "warningColor": "#ff9b00",
 }
 `;
 

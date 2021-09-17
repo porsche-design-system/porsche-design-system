@@ -81,7 +81,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Active state
 
-The look of a 'pressed' button can be achieved by setting the `active` property.
+Providing visually differences if a button needs to be accentuated, e.g. in hierarchical mobile menus.
 
 <Playground :markup="markupActive" :config="config"></Playground>
 

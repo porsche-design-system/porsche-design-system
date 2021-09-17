@@ -75,18 +75,22 @@ A light (default) and dark theme is available depending on which background it's
 
 ### External brand colors
 
-|                                          |               |                            |
-| ---------------------------------------- | ------------- | -------------------------- |
-| <ColorBadge color="external-facebook"/>  | **Facebook**  | `color.external.facebook`  |
-| <ColorBadge color="external-google"/>    | **Google**    | `color.external.google`    |
-| <ColorBadge color="external-instagram"/> | **Instagram** | `color.external.instagram` |
-| <ColorBadge color="external-linkedin"/>  | **LinkedIn**  | `color.external.linkedin`  |
-| <ColorBadge color="external-pinterest"/> | **Pinterest** | `color.external.pinterest` |
-| <ColorBadge color="external-twitter"/>   | **Twitter**   | `color.external.twitter`   |
-| <ColorBadge color="external-wechat"/>    | **WeChat**    | `color.external.wechat`    |
-| <ColorBadge color="external-whatsapp"/>  | **WhatsApp**  | `color.external.whatsapp`  |
-| <ColorBadge color="external-xing"/>      | **XING**      | `color.external.xing`      |
-| <ColorBadge color="external-youtube"/>   | **YouTube**   | `color.external.youtube`   |
+|                                           |               |                            |
+| ----------------------------------------- | ------------- | -------------------------- |
+| <ColorBadge color="external-facebook"/>   | **Facebook**  | `color.external.facebook`  |
+| <ColorBadge color="external-google"/>     | **Google**    | `color.external.google`    |
+| <ColorBadge color="external-instagram"/>  | **Instagram** | `color.external.instagram` |
+| <ColorBadge color="external-kakaotalk"/> | **KakaoTalk** | `color.external.kakaotalk` |
+| <ColorBadge color="external-linkedin"/>   | **LinkedIn**  | `color.external.linkedin`  |
+| <ColorBadge color="external-naver"/>      | **Naver**     | `color.external.naver`     |
+| <ColorBadge color="external-pinterest"/>  | **Pinterest** | `color.external.pinterest` |
+| <ColorBadge color="external-reddit"/>     | **Reddit**    | `color.external.reddit`    |
+| <ColorBadge color="external-tiktok"/>     | **TikTok**    | `color.external.tiktok`    |
+| <ColorBadge color="external-twitter"/>    | **Twitter**   | `color.external.twitter`   |
+| <ColorBadge color="external-wechat"/>     | **WeChat**    | `color.external.wechat`    |
+| <ColorBadge color="external-whatsapp"/>   | **WhatsApp**  | `color.external.whatsapp`  |
+| <ColorBadge color="external-xing"/>       | **XING**      | `color.external.xing`      |
+| <ColorBadge color="external-youtube"/>    | **YouTube**   | `color.external.youtube`   |
 
 ---
 
