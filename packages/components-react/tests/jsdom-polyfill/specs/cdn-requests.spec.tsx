@@ -28,7 +28,7 @@ describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', ()
       }
     });
 
-    require('../../../dist/components-wrapper/jsdom-polyfill/index.js').defineCustomElements();
+    require('../../../dist/components-wrapper/jsdom-polyfill/lib/loader.cjs').defineCustomElements();
 
     expect(fetchCount).toBe(0);
   });

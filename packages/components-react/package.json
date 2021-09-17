@@ -10,7 +10,7 @@
     "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
     "build:wrappers": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",
     "build:jsdom-polyfill": "yarn build:jsdom-polyfill:bundle && yarn build:jsdom-polyfill:cleanAndExtendJSDOMBuild",
-    "build:jsdom-polyfill:bundle": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
+    "build:jsdom-polyfill:bundle": "rollup -c ./projects/jsdom-polyfill/rollup.config.js  && cp -r projects/jsdom-polyfill/src/lib/. dist/components-wrapper/jsdom-polyfill/lib",
     "build:jsdom-polyfill:cleanAndExtendJSDOMBuild": "ts-node --project './tsconfig.node.json' 'scripts/cleanAndExtendJSDOMBuild.ts'",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
