@@ -336,8 +336,9 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       expect(snapshotButton.role).toBe('button');
       expect(snapshotButton.name).toBe('Some Accordion');
-      expect(snapshotButton.expanded).toBe(undefined);
+      expect(snapshotButton.expanded).toBeUndefined();
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
+      console.log(snapshotButton);
     });
 
     it('should expose correct accessibility tree properties in open state', async () => {
@@ -347,6 +348,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await waitForEventSerialization(page);
+      await waitForStencilLifecycle(page);
 
       const snapshotButton = await page.accessibility.snapshot({
         root: button,

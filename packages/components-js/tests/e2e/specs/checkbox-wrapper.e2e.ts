@@ -483,7 +483,7 @@ describe('checkbox-wrapper', () => {
       });
 
       expect(snapshotInputSuccess.name).toBe('Some label. Some success message.');
-      expect(snapshotInputSuccess.invalid).toBe(undefined);
+      expect(snapshotInputSuccess.invalid).toBeUndefined();
       expect(snapshotMessageSuccess.role).withContext('when state = success').toBe('status');
 
       await setProperty(host, 'state', 'none');
@@ -497,7 +497,7 @@ describe('checkbox-wrapper', () => {
       });
 
       expect(snapshotInputNone.name).toBe('Some label');
-      expect(snapshotInputNone.invalid).toBe(undefined);
+      expect(snapshotInputNone.invalid).toBeUndefined();
     });
   });
 });
