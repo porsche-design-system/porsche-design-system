@@ -80,7 +80,6 @@ describe('grid', () => {
 
       await setProperty(grid, 'gutter', { base: 24 });
       await waitForStencilLifecycle(page);
-      await waitForStencilLifecycle(page); // wait a little bit longer
 
       expect(await getGridMargin(grid))
         .withContext('margin of grid for base 24')
@@ -91,7 +90,6 @@ describe('grid', () => {
 
       await setProperty(grid, 'gutter', { base: 36 });
       await waitForStencilLifecycle(page);
-      await waitForStencilLifecycle(page); // wait a little bit longer
 
       expect(await getGridMargin(grid))
         .withContext('margin of grid for base 36')
