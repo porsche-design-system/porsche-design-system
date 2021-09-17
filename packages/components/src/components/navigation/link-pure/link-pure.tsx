@@ -7,6 +7,7 @@ import {
   hasVisibleIcon,
   hasSlottedSubline,
   attachConstructedCss,
+  attachSlottedCss,
 } from '../../../utils';
 import type {
   AlignLabel,
@@ -18,7 +19,7 @@ import type {
   Theme,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { addSlottedCss, getComponentCss } from './link-pure-styles';
+import { getComponentCss, getSlottedCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -70,7 +71,7 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentWillRender(): void {

@@ -5,8 +5,8 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
-  componentsCssMap,
-  getCachedComponentCss,
+  slottedCssMap,
+  getCachedConstructedCss,
   getCss,
   isObject,
   mergeDeep,
@@ -193,13 +193,13 @@ describe('mergeDeep()', () => {
 
 describe('attachCss()', () => {
   beforeEach(() => {
-    componentsCssMap.clear();
+    slottedCssMap.clear();
   });
 
   it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+    const spy = jest.spyOn(jssUtils, 'getCachedConstructedCss').mockImplementation(() => '');
 
     attachConstructedCss(host, (x: boolean) => 'some css', true);
 
@@ -241,40 +241,40 @@ describe('attachCss()', () => {
 
 describe('getCachedComponentCss()', () => {
   beforeEach(() => {
-    componentsCssMap.clear();
+    slottedCssMap.clear();
   });
 
   it('should return css provided by css function', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss = () => 'some css';
 
-    expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
+    expect(getCachedConstructedCss(host, getComponentCss)).toBe('some css');
   });
 
   it('should return css provided by css function depending on infinite arguments', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss1 = (a: number, b: boolean) => `some css ${a} ${b}`;
 
-    expect(getCachedComponentCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
+    expect(getCachedConstructedCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
 
     const getComponentCss2 = (c: string) => `some css ${c}`;
 
-    expect(getCachedComponentCss(host, getComponentCss2, 'some string')).toBe('some css some string');
+    expect(getCachedConstructedCss(host, getComponentCss2, 'some string')).toBe('some css some string');
   });
 
   it('should call provided css function only once when it was already called before', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss = jest.fn();
 
-    getCachedComponentCss(host, getComponentCss, 'some-param');
+    getCachedConstructedCss(host, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedComponentCss(host, getComponentCss, 'some-param');
+    getCachedConstructedCss(host, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedComponentCss(host, getComponentCss, 'another-param');
+    getCachedConstructedCss(host, getComponentCss, 'another-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(2);
   });
@@ -284,11 +284,11 @@ describe('getCachedComponentCss()', () => {
     const hostPrefixed = document.createElement('my-prefix-p-some-element');
     const getComponentCss = jest.fn();
 
-    getCachedComponentCss(host, getComponentCss);
+    getCachedConstructedCss(host, getComponentCss);
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedComponentCss(hostPrefixed, getComponentCss);
+    getCachedConstructedCss(hostPrefixed, getComponentCss);
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
   });
