@@ -157,5 +157,5 @@ export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLEle
 };
 
 export const getRole = (state: FormState): string => {
-  return state === 'error' ? 'alert' : null;
+  return state === 'error' ? 'alert' : state === 'success' ? 'status' : null;
 };
