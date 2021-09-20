@@ -21,18 +21,6 @@ afterEach(() => {
 });
 
 describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
-  it('should not fetch tracking pixel', async () => {
-    jest.spyOn(console, 'error').mockImplementationOnce((error: string) => {
-      if (!error.includes('Could not parse CSS stylesheet')) {
-        console.error(error);
-      }
-    });
-
-    require('../../../dist/components-wrapper/jsdom-polyfill/lib/loader.cjs').defineCustomElements();
-
-    expect(fetchCount).toBe(0);
-  });
-
   it('should not fetch font-face definitions', async () => {
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
 
