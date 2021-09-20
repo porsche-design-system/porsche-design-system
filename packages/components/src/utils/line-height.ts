@@ -6,10 +6,7 @@ const STATIC_VALUES: [number, number][] = [[12,1.6666666667],[16,1.5],[18,1.5555
 // map is prefilled with static values from utilities package
 const lineHeightMap = new Map<number, number>(STATIC_VALUES);
 
-export const calculateLineHeight = (input: string): number => {
-  const [, fontSizeValue, fontSizeUnit] = /^(\d+\.?\d*)(rem|px)$/.exec(input);
-  const fontSize = fontSizeUnit === 'rem' ? parseFloat(fontSizeValue) * 16 : parseFloat(fontSizeValue);
-
+export const calculateLineHeight = (fontSize: number): number => {
   if (!lineHeightMap.has(fontSize)) {
     const exactLineHeightPx = fontSize * (0.911 / (2.97 + 0.005 * Math.pow(2.71828, 0.2 * fontSize)) + 1.2);
     let remainingPx = exactLineHeightPx % 4;
@@ -30,5 +27,5 @@ export const calculateLineHeight = (input: string): number => {
 export const calcLineHeightForElement = (tag: HTMLElement): number => {
   const { fontSize } = getComputedStyle(tag);
   // fontSize is "" when element does no longer exist and would throw an exception in calculateLineHeight
-  return fontSize && calculateLineHeight(fontSize);
+  return fontSize && calculateLineHeight(parseFloat(fontSize));
 };
