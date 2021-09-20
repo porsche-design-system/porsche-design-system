@@ -133,8 +133,8 @@ export class Modal {
     } else if (key === 'Tab') {
       // cycle focus within modal elements
       if (this.focusableElements.length <= 1) {
-        this.focusableElements[0]?.focus();
         e.preventDefault();
+        this.focusableElements[0]?.focus();
       } else {
         const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
 

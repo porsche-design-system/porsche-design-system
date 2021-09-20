@@ -33,7 +33,7 @@ const getColors = (
       ? colorDarken.darkTheme.default
       : colorDarken.neutralContrast.high,
     textColor: isDarkTheme ? color.default : darkTheme.default,
-    textColorHover: externalBrandColor ? darkTheme.default : undefined,
+    textColorHover: icon === 'logo-kakaotalk' ? color.default : externalBrandColor ? darkTheme.default : undefined,
   };
 };
 
