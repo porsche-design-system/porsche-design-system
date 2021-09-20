@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Table', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'table',
-        async () => {
-          await vrt.goTo('/#table');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'table', '/#table')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('table-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const getElementsMarkup: GetMarkup = () => `
 <p-table>

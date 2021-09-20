@@ -12,4 +12,4 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
 
-(window as any).componentsReady = componentsReady;
+(window as any).componentsReady = componentsReady; // for vrt
