@@ -7,11 +7,11 @@ import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
-import { getShadowRootHTMLElement, getTagName } from './dom';
+import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
 import { TagName } from '@porsche-design-system/shared';
-import { getTagNameWithoutPrefix } from './tag-name';
+import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 export type { Styles, JssStyle } from 'jss';
 

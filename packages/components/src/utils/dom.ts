@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { FormState } from '../types';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames } from './tag-name';
+import { getPrefixedTagNames, getTagName } from './tag-name';
 
 type Host = HTMLElement | ShadowRoot;
 
@@ -127,8 +127,6 @@ export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void 
     throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property`);
   }
 };
-
-export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
 export const addEventListener = (
   el: HTMLElement,
