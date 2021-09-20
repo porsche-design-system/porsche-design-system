@@ -152,6 +152,19 @@ describe('getCachedSlottedCss()', () => {
     expect(getCachedSlottedCss(host, getSlottedCss)).toBe('some css');
   });
 
+  it('should keep CSS Cache clean', () => {
+    const host1 = document.createElement('p-some-element');
+    const host2 = document.createElement('p-another-element');
+    const getSlottedCss = () => 'some css';
+
+    getCachedSlottedCss(host1, getSlottedCss);
+    getCachedSlottedCss(host1, getSlottedCss);
+    getCachedSlottedCss(host2, getSlottedCss);
+    getCachedSlottedCss(host2, getSlottedCss);
+
+    expect(slottedCssMap).toMatchSnapshot();
+  });
+
   it('should call provided css function only once when it was already called before for the same element type', () => {
     const host = document.createElement('p-some-element');
     const host2 = document.createElement('p-some-element');
