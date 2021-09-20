@@ -34,5 +34,5 @@
   },
   "main": "index.js",
   "module": "esm/index.js",
-  "typings": "types/index.d.ts"
+  "types": "index.d.ts"
 }

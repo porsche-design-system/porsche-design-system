@@ -1,9 +1,8 @@
 import {
-  expectedStyleOnFocus,
   getAttribute,
   getBrowser,
+  getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   hasFocus,
   selectNode,
@@ -23,10 +22,7 @@ describe('select-wrapper native', () => {
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
-  const getLabel = () => selectNode(page, 'p-select-wrapper >>> .label__text');
-  const getLabelLink = () => selectNode(page, 'p-select-wrapper [slot="label"] a');
-  const getDescriptionLink = () => selectNode(page, 'p-select-wrapper [slot="description"] a');
-  const getMessageLink = () => selectNode(page, 'p-select-wrapper [slot="message"] a');
+  const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -85,13 +81,13 @@ describe('select-wrapper native', () => {
       </p-select-wrapper>`
     );
 
-    expect(await getLabel()).toBeNull();
+    expect(await getLabelText()).toBeNull();
 
     const host = await getHost();
     await setProperty(host, 'label', 'Some label');
     await waitForStencilLifecycle(page);
 
-    expect(await getLabel()).not.toBeNull();
+    expect(await getLabelText()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -148,11 +144,23 @@ describe('select-wrapper native', () => {
     const select = await getSelect();
     const hasSelectFocus = () => hasFocus(page, select);
 
-    const labelText = await getLabel();
+    const labelText = await getLabelText();
     expect(await hasSelectFocus()).toBe(false);
 
     await labelText.click();
     expect(await hasSelectFocus()).toBe(true);
+  });
+
+  it('should change box-shadow color of select when label text is hovered', async () => {
+    await initSelect();
+
+    await page.mouse.move(0, 100); // mouse seems to be in top left corner initially causing hover state
+    const select = await getSelect();
+    const labelText = await getLabelText();
+    const initialBoxShadow = await getElementStyle(select, 'boxShadow');
+
+    await labelText.hover();
+    expect(await getElementStyle(select, 'boxShadow')).not.toBe(initialBoxShadow);
   });
 
   describe('accessibility', () => {

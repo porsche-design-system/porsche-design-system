@@ -1,17 +1,14 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('Select Wrapper', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
     expect(
-      await vrt.test(
-        'select-wrapper',
-        async () => {
-          await vrt.goTo('/select-wrapper');
-          await vrt.click('#open-options');
+      await vrtTest(getVisualRegressionTester(), 'select-wrapper', '/select-wrapper', {
+        scenario: async (page) => {
+          await page.click('#open-options');
+          await page.evaluate(() => (window as any).componentsReady());
         },
-        testOptions
-      )
+      })
     ).toBeFalsy();
   });
 });
