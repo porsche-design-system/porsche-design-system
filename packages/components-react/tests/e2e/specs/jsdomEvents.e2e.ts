@@ -36,8 +36,12 @@ describe('jsdomEvents()', () => {
       }
       request.continue();
     });
+    await page.evaluate(() => ((window as any).PDS_SKIP_FETCH = true));
   });
-  afterEach(async () => await page.close());
+  afterEach(async () => {
+    await page.evaluate(() => ((window as any).PDS_SKIP_FETCH = false));
+    await page.close();
+  });
 
   it('should have no cdn requests', async () => {
     await page.setContent(
