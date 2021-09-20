@@ -10,7 +10,7 @@ import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 export type { Styles, JssStyle } from 'jss';

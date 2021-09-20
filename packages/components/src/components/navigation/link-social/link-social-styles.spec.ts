@@ -1,7 +1,6 @@
 import { BreakpointCustomizable, Theme } from '../../../types';
 import { getComponentCss } from './link-social-styles';
 import { SocialIconName } from './link-social-utils';
-import * as jssUtils from './../../../utils/jss';
 
 describe('getComponentCss()', () => {
   it.each<[SocialIconName, BreakpointCustomizable<boolean>, boolean, Theme]>([
