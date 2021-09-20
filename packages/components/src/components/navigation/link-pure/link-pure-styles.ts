@@ -1,3 +1,4 @@
+import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -5,6 +6,7 @@ import {
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
+  calculateLineHeight,
   getCss,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
@@ -16,15 +18,7 @@ import {
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import {
-  calculateLineHeight,
-  color,
-  font,
-  FontSizeLineHeight,
-  generateTypeScale,
-  srOnly,
-} from '@porsche-design-system/utilities';
+import { color, font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
