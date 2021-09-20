@@ -1,5 +1,6 @@
-import { forceHoveredState, getVisualRegressionStatesTester, setContentWithDesignSystem } from '../helpers';
+import { forceHoveredState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../e2e/helpers';
+import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import { Theme } from '@porsche-design-system/components/dist/types/types';
 
 describe('Select Wrapper Dropdown', () => {
@@ -7,10 +8,9 @@ describe('Select Wrapper Dropdown', () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('select-wrapper-dropdown-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">
-  :root { --p-transition-duration: 0s; }
   p-select-wrapper-dropdown { --p-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;

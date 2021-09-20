@@ -58,15 +58,6 @@ export class SelectWrapper {
   private dropdownElement: HTMLPSelectWrapperDropdownElement;
   private hasCustomDropdown: boolean;
 
-  // this stops click events when filter input is clicked
-  // TODO: still needed?
-  // @Listen('click', { capture: false })
-  // public onClick(e: MouseEvent): void {
-  //   if (this.filter) {
-  //     e.stopPropagation();
-  //   }
-  // }
-
   public connectedCallback(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
     observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));

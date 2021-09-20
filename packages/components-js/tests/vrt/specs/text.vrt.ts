@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Text', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'text',
-        async () => {
-          await vrt.goTo('/#text');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'text', '/#text')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('text-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-text theme="${theme}">Lorem ipsum dolor sit amet <a href="#">linked text</a></p-text>`;
