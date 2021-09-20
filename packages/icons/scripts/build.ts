@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import * as yaml from 'js-yaml';
 import SVGO = require('svgo');
-import globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
@@ -78,7 +78,7 @@ export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join('
 
 const generate = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
-  const files = globby.sync('./src/**/*.svg').sort();
+  const files = globbySync('./src/**/*.svg').sort();
   const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), 'utf8')) as SVGO.Options;
 
   createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
