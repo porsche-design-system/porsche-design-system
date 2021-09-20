@@ -11,6 +11,7 @@ import { getShadowRootHTMLElement, getTagName } from './dom';
 import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
 import { TagName } from '@porsche-design-system/shared';
+import { getTagNameWithoutPrefix } from './tag-name';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -61,7 +62,7 @@ export const getCachedConstructedCss = <T extends (...p: any[]) => string>(
   getComponentCss: T,
   ...args: Parameters<T>
 ): string => {
-  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+  const tagName = getTagNameWithoutPrefix(host);
 
   if (!constructedCssMap.has(tagName)) {
     constructedCssMap.set(tagName, new Map());

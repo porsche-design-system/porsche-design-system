@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { FormState } from '../types';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames } from './get-prefixed-tag-name';
+import { getPrefixedTagNames } from './tag-name';
 
 type Host = HTMLElement | ShadowRoot;
 
