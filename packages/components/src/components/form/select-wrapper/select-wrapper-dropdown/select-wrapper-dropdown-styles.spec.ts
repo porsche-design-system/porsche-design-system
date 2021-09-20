@@ -8,7 +8,6 @@ import {
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { FormState, Theme } from '../../../../types';
 import { getCss } from '../../../../utils';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getButtonStyles()', () => {
   it.each<[boolean, FormState, Theme]>([
