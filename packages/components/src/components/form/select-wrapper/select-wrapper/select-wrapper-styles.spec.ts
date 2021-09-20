@@ -1,6 +1,5 @@
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   it.each<[BreakpointCustomizable<boolean>, FormState, Theme]>([

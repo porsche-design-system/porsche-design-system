@@ -8,7 +8,6 @@ import type {
   FlexWrap,
 } from './flex-utils';
 import { FLEX_ALIGN_CONTENTS, FLEX_ALIGN_ITEMS, FLEX_DIRECTION, FLEX_JUSTIFY_CONTENTS, FLEX_WRAPS } from './flex-utils';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];

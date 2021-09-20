@@ -1,7 +1,6 @@
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   const dataDirections: GridDirection[] = [

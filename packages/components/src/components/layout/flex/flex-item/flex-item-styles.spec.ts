@@ -15,7 +15,6 @@ import {
   FLEX_ITEM_SHRINKS,
   FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   const dataWidth: FlexItemWidth[] = [

@@ -1,6 +1,5 @@
 import { getComponentCss } from './text-list-item-styles';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   it.each<[ListType, OrderType, boolean]>([

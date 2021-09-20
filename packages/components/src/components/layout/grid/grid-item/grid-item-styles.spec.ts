@@ -3,7 +3,6 @@ import type { GridItemSize, GridItemOffset } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import { GRID_GUTTERS } from '../grid/grid-utils';
 import { GRID_ITEM_SIZES, GRID_ITEM_OFFSETS } from './grid-item-utils';
-import * as jssUtils from './../../../../utils/jss';
 
 describe('getComponentCss()', () => {
   const defaultGutter: GridGutter = { base: 16, s: 24, m: 36 };
