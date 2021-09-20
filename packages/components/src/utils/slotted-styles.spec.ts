@@ -154,24 +154,28 @@ describe('getCachedSlottedCss()', () => {
 
   it('should keep CSS Cache clean', () => {
     const host1 = document.createElement('p-some-element');
-    const host2 = document.createElement('p-another-element');
+    const host2 = document.createElement('my-prefix-p-some-element');
+    const host3 = document.createElement('p-another-element');
+
     const getSlottedCss = () => 'some css';
 
     getCachedSlottedCss(host1, getSlottedCss);
     getCachedSlottedCss(host1, getSlottedCss);
     getCachedSlottedCss(host2, getSlottedCss);
     getCachedSlottedCss(host2, getSlottedCss);
+    getCachedSlottedCss(host3, getSlottedCss);
+    getCachedSlottedCss(host3, getSlottedCss);
 
     expect(slottedCssMap).toMatchSnapshot();
   });
 
-  it('should call provided css function only once when it was already called before for the same element type', () => {
-    const host = document.createElement('p-some-element');
+  it('should call provided css function only once when it was already called before for the same host type', () => {
+    const host1 = document.createElement('p-some-element');
     const host2 = document.createElement('p-some-element');
     const host3 = document.createElement('p-another-element');
     const getSlottedCss = jest.fn();
 
-    getCachedSlottedCss(host, getSlottedCss);
+    getCachedSlottedCss(host1, getSlottedCss);
 
     expect(getSlottedCss).toHaveBeenCalledTimes(1);
 
@@ -184,7 +188,7 @@ describe('getCachedSlottedCss()', () => {
     expect(getSlottedCss).toHaveBeenCalledTimes(2);
   });
 
-  it('should call provided css function only once when it was already called before even with prefixed version of host', () => {
+  it('should call provided css function again for prefixed version of host type', () => {
     const host = document.createElement('p-some-element');
     const hostPrefixed = document.createElement('my-prefix-p-some-element');
     const getSlottedCss = jest.fn();
@@ -195,6 +199,6 @@ describe('getCachedSlottedCss()', () => {
 
     getCachedSlottedCss(hostPrefixed, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(1);
+    expect(getSlottedCss).toHaveBeenCalledTimes(2);
   });
 });
