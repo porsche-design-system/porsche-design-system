@@ -251,27 +251,24 @@ describe('getCachedComponentCss()', () => {
     expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
   });
 
-  it('should return css provided by css function depending on infinite arguments', () => {
+  it('should call passed css function with infinite passed arguments', () => {
     const host = document.createElement('p-some-element');
-    const getComponentCss1 = (a: number, b: boolean) => `some css ${a} ${b}`;
+    const getComponentCss1 = (a: number, b: boolean, c: string) => `some css ${a} ${b} ${c}`;
 
-    expect(getCachedComponentCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
+    expect(getCachedComponentCss(host, getComponentCss1, 1, true, 'some string')).toBe('some css 1 true some string');
 
-    const getComponentCss2 = (c: string) => `some css ${c}`;
+    const getComponentCss2 = (d: { someProp: string }) => `some css ${d.someProp}`;
 
-    expect(getCachedComponentCss(host, getComponentCss2, 'some string')).toBe('some css some string');
-
-    const getComponentCss3 = (d: { someProp: string }) => `some css ${d.someProp}`;
-
-    expect(getCachedComponentCss(host, getComponentCss3, { someProp: 'some-object-value' })).toBe(
+    expect(getCachedComponentCss(host, getComponentCss2, { someProp: 'some-object-value' })).toBe(
       'some css some-object-value'
     );
   });
 
-  it('should keep CSS Cache clean and handle multiple types of keys', () => {
+  it('should keep CSS Cache clean and handle multiple types of infinite passed parameters', () => {
     const host1 = document.createElement('p-some-element');
-    const host2 = document.createElement('p-another-element');
-    const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => `some css`;
+    const host2 = document.createElement('my-prefix-p-some-element');
+    const host3 = document.createElement('p-another-element');
+    const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => 'some css';
 
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
@@ -282,28 +279,35 @@ describe('getCachedComponentCss()', () => {
     getCachedComponentCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
     getCachedComponentCss(host2, getComponentCss1);
     getCachedComponentCss(host2, getComponentCss1);
+
+    getCachedComponentCss(host3, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host3, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host3, getComponentCss1);
+    getCachedComponentCss(host3, getComponentCss1);
 
     expect(componentCssMap).toMatchSnapshot();
   });
 
-  it('should call provided css function only once when it was already called before', () => {
-    const host = document.createElement('p-some-element');
+  it('should call provided css function only once when it was already called before for the same host type', () => {
+    const host1 = document.createElement('p-some-element');
+    const host2 = document.createElement('p-some-element');
+    const host3 = document.createElement('p-some-element');
     const getComponentCss = jest.fn();
 
-    getCachedComponentCss(host, getComponentCss, 'some-param');
+    getCachedComponentCss(host1, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedComponentCss(host, getComponentCss, 'some-param');
+    getCachedComponentCss(host2, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedComponentCss(host, getComponentCss, 'another-param');
+    getCachedComponentCss(host3, getComponentCss, 'another-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(2);
   });
 
-  it('should call provided css function only once when it was already called before even with prefixed version of host', () => {
+  it('should not call provided css function again for prefixed version of host type', () => {
     const host = document.createElement('p-some-element');
     const hostPrefixed = document.createElement('my-prefix-p-some-element');
     const getComponentCss = jest.fn();
