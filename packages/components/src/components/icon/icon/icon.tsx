@@ -1,11 +1,11 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
-import { getShadowRootHTMLElement, isBrowser, isDark } from '../../../utils';
-import type { Theme, IconName, TextColor } from '../../../types';
+import { getShadowRootHTMLElement, isBrowser } from '../../../utils';
+import type { Theme, IconName, TextColor, IconSize } from '../../../types';
+import { addComponentCss } from './icon-styles';
 
 @Component({
   tag: 'p-icon',
-  styleUrl: 'icon.scss',
   shadow: true,
 })
 export class Icon {
@@ -17,16 +17,13 @@ export class Icon {
   /** Specifies a whole icon path which can be used for custom icons. */
   @Prop() public source?: string;
 
-  /** @internal Specifies which icon variant to use. */
-  @Prop() public variant?: 'outline' | 'filled' = 'outline';
-
   /** Basic color variations depending on theme property. */
   @Prop() public color?: TextColor = 'default';
 
   /** The size of the icon. */
-  @Prop() public size?: 'small' | 'medium' | 'large' | 'inherit' = 'small';
+  @Prop() public size?: IconSize = 'small';
 
-  /** If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`. */
+  /** If enabled, icon will be loaded lazily when it's visible in the viewport. */
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
@@ -38,6 +35,10 @@ export class Icon {
 
   public componentWillLoad(): void {
     this.initIntersectionObserver();
+  }
+
+  public componentWillRender(): void {
+    addComponentCss(this.host, this.color, this.size, this.theme);
   }
 
   public componentWillUpdate(): void {
@@ -58,18 +59,7 @@ export class Icon {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--size-${this.size}`]: this.size !== 'small',
-      [`root--color-${this.color}`]: this.color !== 'default',
-      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
-    };
-
-    return (
-      <Host>
-        <i key={this.key++} class={rootClasses} />
-      </Host>
-    );
+    return <i key={this.key++} class="root" />;
   }
 
   private initIntersectionObserver(): void {
