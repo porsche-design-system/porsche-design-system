@@ -7,7 +7,6 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import {
-  CSS_TRANSITION_DURATION,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
