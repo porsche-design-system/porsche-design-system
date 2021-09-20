@@ -1,5 +1,16 @@
-import { getPrefixedTagNames, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from '.';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from '.';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+
+describe('getTagName()', () => {
+  it.each([
+    ['div', 'div'],
+    ['p-button', 'p-button'],
+    ['SPAN', 'span'],
+  ])('should be called with %s and return %s', (tag, result) => {
+    const el = document.createElement(tag);
+    expect(getTagName(el)).toBe(result);
+  });
+});
 
 describe('getPrefixedTagNames()', () => {
   beforeEach(() => {
