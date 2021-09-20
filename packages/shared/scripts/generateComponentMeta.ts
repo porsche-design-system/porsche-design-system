@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
 import { camelCase } from 'change-case';
 import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
+import { globbySync } from 'globby';
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
-  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+  const componentFiles = globbySync(`${sourceDirectory}/**/*.tsx`);
 
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
