@@ -8,7 +8,7 @@ import type {
   FlexWrap,
 } from './flex-utils';
 import { getComponentCss } from './flex-styles';
-import { attachConstructedCss } from '../../../../utils';
+import { attachComponentCss } from '../../../../utils';
 
 @Component({
   tag: 'p-flex',
@@ -36,7 +36,7 @@ export class Flex {
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
   public componentWillRender(): void {
-    attachConstructedCss(
+    attachComponentCss(
       this.host,
       getComponentCss,
       this.inline,

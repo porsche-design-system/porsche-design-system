@@ -6,7 +6,7 @@ import {
   transitionListener,
   hasVisibleIcon,
   hasSlottedSubline,
-  attachConstructedCss,
+  attachComponentCss,
   attachSlottedCss,
 } from '../../../utils';
 import type {
@@ -75,7 +75,7 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(
+    attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,

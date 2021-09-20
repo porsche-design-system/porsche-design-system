@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  attachConstructedCss,
+  attachComponentCss,
   getPrefixedTagNames,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
@@ -26,7 +26,7 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
     throwIfElementHasAttribute(this.host, 'sort');
-    attachConstructedCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public render(): JSX.Element {

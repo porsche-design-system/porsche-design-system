@@ -1,7 +1,6 @@
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
-import * as jssUtils from './../../../utils/jss';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {

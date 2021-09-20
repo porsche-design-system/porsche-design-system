@@ -55,21 +55,21 @@ export const supportsConstructableStylesheets = (): boolean => {
 };
 
 type CssCacheMap = Map<string, string>;
-export const constructedCssMap = new Map<TagName, CssCacheMap>();
+export const componentCssMap = new Map<TagName, CssCacheMap>();
 
-export const getCachedConstructedCss = <T extends (...p: any[]) => string>(
+export const getCachedComponentCss = <T extends (...p: any[]) => string>(
   host: HTMLElement,
   getComponentCss: T,
   ...args: Parameters<T>
 ): string => {
   const tagName = getTagNameWithoutPrefix(host);
 
-  if (!constructedCssMap.has(tagName)) {
-    constructedCssMap.set(tagName, new Map());
+  if (!componentCssMap.has(tagName)) {
+    componentCssMap.set(tagName, new Map());
   }
 
   const id = args.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg) : arg)).join('|');
-  const cache = constructedCssMap.get(tagName);
+  const cache = componentCssMap.get(tagName);
 
   if (!cache.has(id)) {
     cache.set(id, getComponentCss(...args));
@@ -78,12 +78,12 @@ export const getCachedConstructedCss = <T extends (...p: any[]) => string>(
   return cache.get(id);
 };
 
-export const attachConstructedCss = <T extends (...p: any[]) => string>(
+export const attachComponentCss = <T extends (...p: any[]) => string>(
   host: HTMLElement,
   getComponentCss: T,
   ...args: Parameters<T>
 ): void => {
-  const css = getCachedConstructedCss(host, getComponentCss, ...args);
+  const css = getCachedComponentCss(host, getComponentCss, ...args);
 
   if (supportsConstructableStylesheets()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;

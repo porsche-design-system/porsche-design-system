@@ -1,5 +1,5 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import { attachConstructedCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './text-list-item-styles';
 
 @Component({
@@ -17,7 +17,7 @@ export class TextListItem {
     const list = this.host.parentElement as HTMLPTextListElement;
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
-    attachConstructedCss(this.host, getComponentCss, listType, orderType, isNestedList);
+    attachComponentCss(this.host, getComponentCss, listType, orderType, isNestedList);
   }
 
   public render(): JSX.Element {

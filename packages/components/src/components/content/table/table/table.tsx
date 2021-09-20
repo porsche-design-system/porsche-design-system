@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  attachConstructedCss,
+  attachComponentCss,
   attachSlottedCss,
   getHTMLElement,
   getPrefixedTagNames,
@@ -35,7 +35,7 @@ export class Table {
   private tableElement: HTMLElement;
 
   public connectedCallback(): void {
-    attachConstructedCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss);
     attachSlottedCss(this.host, getSlottedCss);
   }
 

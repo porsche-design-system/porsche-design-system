@@ -10,7 +10,7 @@ import {
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
   transitionListener,
-  attachConstructedCss,
+  attachComponentCss,
 } from '../../../utils';
 import type {
   AlignLabel,
@@ -84,7 +84,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(this.host, getComponentCss, hasSlottedSubline(this.host) ? false : this.stretch);
+    attachComponentCss(this.host, getComponentCss, hasSlottedSubline(this.host) ? false : this.stretch);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
