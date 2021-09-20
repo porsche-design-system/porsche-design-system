@@ -338,7 +338,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       expect(snapshotButton.name).toBe('Some Accordion');
       expect(snapshotButton.expanded).toBeUndefined();
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
-      console.log(snapshotButton);
     });
 
     it('should expose correct accessibility tree properties in open state', async () => {

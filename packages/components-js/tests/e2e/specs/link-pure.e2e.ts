@@ -290,7 +290,6 @@ describe('link-pure', () => {
       });
 
       expect(snapshot.name).toBe('Some label');
-      expect(snapshot.description).toBeUndefined();
     });
 
     it('should expose correct accessibility tree description if subline property is set', async () => {
