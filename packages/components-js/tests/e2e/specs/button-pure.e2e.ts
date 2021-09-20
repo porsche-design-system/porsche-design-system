@@ -29,8 +29,8 @@ describe('button-pure', () => {
   const getHost = () => selectNode(page, 'p-button-pure');
   const getButton = () => selectNode(page, 'p-button-pure >>> button');
 
-  const initButtonPure = (opts?: { isLoading?: boolean }): Promise<void> => {
-    const { isLoading = false } = opts ?? {};
+  const initButtonPure = (opts?: { isLoading?: boolean; withSubline?: boolean }): Promise<void> => {
+    const { isLoading = false, withSubline = false } = opts ?? {};
     const loading = isLoading ? `loading="${isLoading}"` : '';
 
     return setContentWithDesignSystem(
@@ -38,6 +38,7 @@ describe('button-pure', () => {
       `
       <p-button-pure ${loading}>
         Some label
+        ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
       </p-button-pure>`
     );
   };
@@ -515,6 +516,16 @@ describe('button-pure', () => {
       });
 
       expect(snapshot.name).toBe('Some label');
+    });
+
+    it('should not expose accessibility tree description with slotted subline', async () => {
+      await initButtonPure({ withSubline: true });
+      const button = await getButton();
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot.description).toBe('Some Subline');
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
