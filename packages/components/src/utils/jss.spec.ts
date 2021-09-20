@@ -261,7 +261,29 @@ describe('getCachedConstructedCss()', () => {
 
     expect(getCachedConstructedCss(host, getComponentCss2, 'some string')).toBe('some css some string');
 
-    // TODO: test object case
+    const getComponentCss3 = (d: { someProp: string }) => `some css ${d.someProp}`;
+
+    expect(getCachedConstructedCss(host, getComponentCss3, { someProp: 'some-object-value' })).toBe(
+      'some css some-object-value'
+    );
+  });
+
+  it('should keep CSS Cache clean and handle multiple types of keys', () => {
+    const host1 = document.createElement('p-some-element');
+    const host2 = document.createElement('p-another-element');
+    const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => `some css`;
+
+    getCachedConstructedCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedConstructedCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedConstructedCss(host1, getComponentCss1);
+    getCachedConstructedCss(host1, getComponentCss1);
+
+    getCachedConstructedCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedConstructedCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedConstructedCss(host2, getComponentCss1);
+    getCachedConstructedCss(host2, getComponentCss1);
+
+    expect(constructedCssMap).toMatchSnapshot();
   });
 
   it('should call provided css function only once when it was already called before', () => {
