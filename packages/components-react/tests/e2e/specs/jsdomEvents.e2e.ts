@@ -19,7 +19,7 @@ const getJsdomPolyfillBuild = (): string => {
   return fs.readFileSync(filePath, 'utf8');
 };
 
-fdescribe('jsdomEvents()', () => {
+describe('jsdomEvents()', () => {
   let page: Page;
   let requests: string[] = [];
 
