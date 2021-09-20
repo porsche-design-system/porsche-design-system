@@ -1,5 +1,5 @@
 import { TagName } from '@porsche-design-system/shared';
-import { getTagName } from './dom';
+import { getTagNameWithoutPrefix } from './tag-name';
 
 type HTMLElementOrDocument = HTMLElement | Document;
 type ElementMap = Map<HTMLElementOrDocument, boolean>;
@@ -24,7 +24,7 @@ export const getNodeToPrependTo = (rootNode: HTMLElementOrDocument): HTMLElement
 export const slottedCssMap = new Map<TagName, string>();
 
 export const getCachedSlottedCss = (host: HTMLElement, getSlottedCss: (h: HTMLElement) => string): string => {
-  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+  const tagName = getTagNameWithoutPrefix(host);
 
   if (!slottedCssMap.has(tagName)) {
     slottedCssMap.set(tagName, getSlottedCss(host));

@@ -1,4 +1,4 @@
-import { getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from '.';
+import { getPrefixedTagNames, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from '.';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
 describe('getPrefixedTagNames()', () => {
@@ -44,5 +44,17 @@ describe('getPrefixedTagNames()', () => {
     getPrefixedTagNames(document.createElement('p-button'));
     expect(spy).toHaveBeenCalledTimes(1);
     spy.mockRestore();
+  });
+});
+
+describe('getTagNameWithoutPrefix()', () => {
+  it('should return tag name without prefix', () => {
+    expect(getTagNameWithoutPrefix(document.createElement('p-some-element'))).toBe('p-some-element');
+    expect(getTagNameWithoutPrefix(document.createElement('p-some-other-element'))).toBe('p-some-other-element');
+    expect(getTagNameWithoutPrefix(document.createElement('my-prefix-p-some-element'))).toBe('p-some-element');
+    expect(getTagNameWithoutPrefix(document.createElement('my-other-prefix-p-some-element'))).toBe('p-some-element');
+    expect(getTagNameWithoutPrefix(document.createElement('my-prefix-p-some-other-element'))).toBe(
+      'p-some-other-element'
+    );
   });
 });
