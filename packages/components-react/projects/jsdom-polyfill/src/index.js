@@ -1,5 +1,4 @@
-import { ResizeObserver } from '@juggle/resize-observer';
-global.ResizeObserver = ResizeObserver;
+global.ResizeObserver = require('@juggle/resize-observer').ResizeObserver;
 // workaround for WebComponentManager not working in JSDOM
 window.PDS_SKIP_FETCH = true;
 
