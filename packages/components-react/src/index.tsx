@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import './styles.css';
+import '@porsche-design-system/shared/css/styles.css';
 import { App } from './App';
 
 ReactDOM.render(
@@ -16,4 +16,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-(window as any).componentsReady = componentsReady;
+(window as any).componentsReady = componentsReady; // for vrt

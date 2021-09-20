@@ -2,35 +2,26 @@ import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
-  getBodyMarkup,
-  GetMarkup,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  getVisualRegressionContentWrapperTester,
-  getVisualRegressionStatesTester,
   setContentWithDesignSystem,
-  testOptions,
 } from '../helpers';
+import {
+  getVisualRegressionStatesTester,
+  getVisualRegressionContentWrapperTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionContentWrapperTester();
-    expect(
-      await vrt.test(
-        'banner',
-        async () => {
-          await vrt.goTo('/#banner');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionContentWrapperTester(), 'banner', '/#banner')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('banner-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `
           <style type="text/css">
