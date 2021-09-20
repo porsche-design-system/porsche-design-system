@@ -4,7 +4,7 @@ import {
   hasNamedSlot,
   isDark,
   getThemeDarkAttribute,
-  attachConstructedCss,
+  attachComponentCss,
   attachSlottedCss,
 } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
@@ -39,7 +39,7 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    attachConstructedCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss);
     attachSlottedCss(this.host, getSlottedCss);
   }
 

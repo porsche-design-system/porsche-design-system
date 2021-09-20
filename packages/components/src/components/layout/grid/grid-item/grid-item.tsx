@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
-import { attachConstructedCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
   tag: 'p-grid-item',
@@ -21,7 +21,7 @@ export class GridItem {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(
+    attachComponentCss(
       this.host,
       getComponentCss,
       this.size,

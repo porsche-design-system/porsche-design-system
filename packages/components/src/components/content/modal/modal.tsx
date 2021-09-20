@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { attachConstructedCss, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
 import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
@@ -56,7 +56,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(this.host, getComponentCss, this.open);
+    attachComponentCss(this.host, getComponentCss, this.open);
   }
 
   public componentDidUpdate(): void {

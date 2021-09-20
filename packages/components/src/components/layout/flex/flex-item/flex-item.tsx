@@ -8,7 +8,7 @@ import type {
   FlexItemWidth,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
-import { attachConstructedCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
   tag: 'p-flex-item',
@@ -40,7 +40,7 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(
+    attachComponentCss(
       this.host,
       getComponentCss,
       this.width,

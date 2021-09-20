@@ -1,16 +1,16 @@
 import {
-  attachConstructedCss,
+  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
-  getCachedConstructedCss,
+  getCachedComponentCss,
   getCss,
   isObject,
   mergeDeep,
   supportsConstructableStylesheets,
-  constructedCssMap,
+  componentCssMap,
 } from '.';
 import * as jssUtils from './jss';
 import type { JssStyle, Styles } from 'jss';
@@ -191,21 +191,21 @@ describe('mergeDeep()', () => {
   });
 });
 
-describe('attachConstructedCss()', () => {
+describe('attachComponentCss()', () => {
   beforeEach(() => {
-    constructedCssMap.clear();
+    componentCssMap.clear();
   });
 
-  it('should call getCachedConstructedCss() with infinite parameters to retrieve cached css', () => {
+  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = jest.spyOn(jssUtils, 'getCachedConstructedCss').mockImplementation(() => '');
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
 
-    attachConstructedCss(host, (x: boolean) => 'some css', true);
+    attachComponentCss(host, (x: boolean) => 'some css', true);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
 
-    attachConstructedCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
+    attachComponentCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
   });
@@ -217,7 +217,7 @@ describe('attachConstructedCss()', () => {
 
       expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
 
-      attachConstructedCss(div, () => ':host { display: "block" }');
+      attachComponentCss(div, () => ':host { display: "block" }');
       expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
     });
   });
@@ -231,7 +231,7 @@ describe('attachConstructedCss()', () => {
       expect(div.shadowRoot.querySelector('style')).toBeNull();
 
       const css = ':host { display: "block" }';
-      attachConstructedCss(div, () => css);
+      attachComponentCss(div, () => css);
       expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
 
       spy.mockRestore();
@@ -239,31 +239,31 @@ describe('attachConstructedCss()', () => {
   });
 });
 
-describe('getCachedConstructedCss()', () => {
+describe('getCachedComponentCss()', () => {
   beforeEach(() => {
-    constructedCssMap.clear();
+    componentCssMap.clear();
   });
 
   it('should return css provided by css function', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss = () => 'some css';
 
-    expect(getCachedConstructedCss(host, getComponentCss)).toBe('some css');
+    expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
   });
 
   it('should return css provided by css function depending on infinite arguments', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss1 = (a: number, b: boolean) => `some css ${a} ${b}`;
 
-    expect(getCachedConstructedCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
+    expect(getCachedComponentCss(host, getComponentCss1, 1, true)).toBe('some css 1 true');
 
     const getComponentCss2 = (c: string) => `some css ${c}`;
 
-    expect(getCachedConstructedCss(host, getComponentCss2, 'some string')).toBe('some css some string');
+    expect(getCachedComponentCss(host, getComponentCss2, 'some string')).toBe('some css some string');
 
     const getComponentCss3 = (d: { someProp: string }) => `some css ${d.someProp}`;
 
-    expect(getCachedConstructedCss(host, getComponentCss3, { someProp: 'some-object-value' })).toBe(
+    expect(getCachedComponentCss(host, getComponentCss3, { someProp: 'some-object-value' })).toBe(
       'some css some-object-value'
     );
   });
@@ -273,32 +273,32 @@ describe('getCachedConstructedCss()', () => {
     const host2 = document.createElement('p-another-element');
     const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => `some css`;
 
-    getCachedConstructedCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
-    getCachedConstructedCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
-    getCachedConstructedCss(host1, getComponentCss1);
-    getCachedConstructedCss(host1, getComponentCss1);
+    getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host1, getComponentCss1);
+    getCachedComponentCss(host1, getComponentCss1);
 
-    getCachedConstructedCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
-    getCachedConstructedCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
-    getCachedConstructedCss(host2, getComponentCss1);
-    getCachedConstructedCss(host2, getComponentCss1);
+    getCachedComponentCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host2, getComponentCss1);
+    getCachedComponentCss(host2, getComponentCss1);
 
-    expect(constructedCssMap).toMatchSnapshot();
+    expect(componentCssMap).toMatchSnapshot();
   });
 
   it('should call provided css function only once when it was already called before', () => {
     const host = document.createElement('p-some-element');
     const getComponentCss = jest.fn();
 
-    getCachedConstructedCss(host, getComponentCss, 'some-param');
+    getCachedComponentCss(host, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedConstructedCss(host, getComponentCss, 'some-param');
+    getCachedComponentCss(host, getComponentCss, 'some-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedConstructedCss(host, getComponentCss, 'another-param');
+    getCachedComponentCss(host, getComponentCss, 'another-param');
 
     expect(getComponentCss).toHaveBeenCalledTimes(2);
   });
@@ -308,11 +308,11 @@ describe('getCachedConstructedCss()', () => {
     const hostPrefixed = document.createElement('my-prefix-p-some-element');
     const getComponentCss = jest.fn();
 
-    getCachedConstructedCss(host, getComponentCss);
+    getCachedComponentCss(host, getComponentCss);
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
 
-    getCachedConstructedCss(hostPrefixed, getComponentCss);
+    getCachedComponentCss(hostPrefixed, getComponentCss);
 
     expect(getComponentCss).toHaveBeenCalledTimes(1);
   });

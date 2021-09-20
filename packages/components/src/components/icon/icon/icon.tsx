@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent } from './icon-utils';
-import { attachConstructedCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
+import { attachComponentCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
 import type { Theme, IconName, TextColor, IconSize } from '../../../types';
 import { getComponentCss } from './icon-styles';
 
@@ -38,7 +38,7 @@ export class Icon {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(this.host, getComponentCss, this.color, this.size, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
   }
 
   public componentWillUpdate(): void {

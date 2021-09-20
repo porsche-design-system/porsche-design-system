@@ -1,6 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  attachConstructedCss,
+  attachComponentCss,
   attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -83,7 +83,7 @@ export class SelectWrapper {
   }
 
   public componentDidRender(): void {
-    attachConstructedCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
 
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.

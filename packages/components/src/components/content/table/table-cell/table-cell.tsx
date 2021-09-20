@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { attachConstructedCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './table-cell-styles';
 
 @Component({
@@ -17,7 +17,7 @@ export class TableCell {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(this.host, getComponentCss, this.multiline);
+    attachComponentCss(this.host, getComponentCss, this.multiline);
   }
 
   public render(): JSX.Element {

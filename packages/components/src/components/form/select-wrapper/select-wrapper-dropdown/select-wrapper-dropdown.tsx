@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  attachConstructedCss,
+  attachComponentCss,
   getPrefixedTagNames,
   observeChildren,
   observeProperties,
@@ -68,7 +68,7 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillRender(): void {
-    attachConstructedCss(
+    attachComponentCss(
       this.host,
       getComponentCss,
       this.direction === 'auto' ? determineDirection(this.host) : this.direction,
