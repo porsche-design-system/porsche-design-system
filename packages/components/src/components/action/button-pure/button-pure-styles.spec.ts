@@ -1,6 +1,5 @@
 import { getComponentCss } from './button-pure-styles';
 import { BreakpointCustomizable } from '../../../utils';
-import * as jssUtils from './../../../utils/jss';
 
 describe('getComponentCss()', () => {
   it.each<BreakpointCustomizable<boolean>>([

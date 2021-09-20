@@ -1,6 +1,5 @@
 import type { IconSize, TextColor as IconColor, Theme } from '../../../types';
 import { getComponentCss } from './icon-styles';
-import * as jssUtils from './../../../utils/jss';
 
 describe('getComponentCss()', () => {
   it.each<[IconColor, IconSize, Theme]>([
