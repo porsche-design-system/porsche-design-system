@@ -219,6 +219,42 @@ describe('SomeComponent', () => {
 });
 ```
 
+#### Disabling CDN requests from Porsche Design System and components
+
+We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests 
+when you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup. 
+It will suppress all CDN request from our Components.
+
+You can apply it globally on every test by calling it once in your test setup:
+
+```tsx
+// setupTest.{js|ts}
+import { skipPorscheDesignSystemCDNRequestsDuringTests } from '@porsche-design-system/components-react';
+
+skipPorscheDesignSystemCDNRequestsDuringTests();
+```
+
+If you don't want to have multiple test setups or prefer a more local approach you can use it within your test:
+
+```tsx
+// SomeComponent.test.tsx
+import { skipPorscheDesignSystemCDNRequestsDuringTests } from '@porsche-design-system/components-react';
+
+describe('SomeComponent', () => {
+  beforeEach(() => {
+    // either like this
+    skipPorscheDesignSystemCDNRequestsDuringTests();
+  });
+
+  it('should work', () => {
+    // or like this
+    skipPorscheDesignSystemCDNRequestsDuringTests();
+
+    // ...
+  });
+});
+```
+
 ### Additional information when using react-testing-library
 
 If you try to submit a form via button click you will encounter issues with `react-testing-library` and `jsdom`. It is
