@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
-import { getBrowser } from '../../../../components-js/tests/e2e/helpers';
 import path from 'path';
 import * as fs from 'fs';
 import { selectNode } from '../helpers';
+import { browser } from '../config';
 
 const getOverviewContent = (): string => {
   const packagesDir = require.resolve('@porsche-design-system/components-js');
@@ -24,7 +24,8 @@ describe('jsdomEvents()', () => {
   let requests: string[] = [];
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
+
     await page.setRequestInterception(true);
 
     page.removeAllListeners('request');
@@ -36,10 +37,8 @@ describe('jsdomEvents()', () => {
       }
       request.continue();
     });
-    await page.evaluate(() => ((window as any).PDS_SKIP_FETCH = true));
   });
   afterEach(async () => {
-    await page.evaluate(() => ((window as any).PDS_SKIP_FETCH = false));
     await page.close();
   });
 
@@ -54,15 +53,23 @@ describe('jsdomEvents()', () => {
         </script>
       </head>
       <body>
-        ${getOverviewContent()}
       </body>
     </html>`,
       { waitUntil: 'networkidle0' }
     );
 
+    const markup = getOverviewContent();
+
+    await page.evaluate((overviewPage) => {
+      (window as any).PDS_SKIP_FETCH = true;
+      document.body.innerHTML = overviewPage;
+    }, markup);
+
     const button = await selectNode(page, 'p-button');
 
-    expect(await button.evaluate((x) => x.shadowRoot !== null)).toBeTrue();
+    expect(await button.evaluate((x) => x.shadowRoot !== null))
+      .withContext('Shadowroot is defined')
+      .toBeTrue();
 
     console.log('HTTP Requests:', requests);
     expect(requests.length).toBe(0);
