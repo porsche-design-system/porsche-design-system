@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { throwIfParentIsNotOfKind } from '../../../../utils';
-import { addComponentCss } from './table-cell-styles';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { getComponentCss } from './table-cell-styles';
 
 @Component({
   tag: 'p-table-cell',
@@ -17,7 +17,7 @@ export class TableCell {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.multiline);
+    attachComponentCss(this.host, getComponentCss, this.multiline);
   }
 
   public render(): JSX.Element {

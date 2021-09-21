@@ -4,24 +4,23 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Select Wrapper', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
     expect(
-      await vrt.test(
-        'select-wrapper',
-        async () => {
-          await vrt.goTo('/#select-wrapper');
-          await vrt.click('#open-options');
+      await vrtTest(getVisualRegressionTester(), 'select-wrapper', '/#select-wrapper', {
+        scenario: async (page) => {
+          await page.click('#open-options');
+          await page.evaluate(() => (window as any).componentsReady());
         },
-        testOptions
-      )
+      })
     ).toBeFalsy();
   });
 
@@ -29,7 +28,7 @@ describe('Select Wrapper', () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('select-wrapper-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">
           .playground div {

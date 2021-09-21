@@ -1,4 +1,4 @@
-import { addImportantToEachRule, attachCss, buildHostStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 const transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -36,8 +36,4 @@ export const getComponentCss = (open: boolean): string => {
       transform: 'scale3d(1,1,1)',
     }),
   });
-};
-
-export const addComponentCss = (host: HTMLElement, open: boolean): void => {
-  attachCss(host, getComponentCss(open));
 };

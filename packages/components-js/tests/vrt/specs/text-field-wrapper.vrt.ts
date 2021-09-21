@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Text Field Wrapper', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'text-field-wrapper',
-        async () => {
-          await vrt.goTo('/#text-field-wrapper');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'text-field-wrapper', '/#text-field-wrapper')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('text-field-wrapper-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">p-text-field-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 

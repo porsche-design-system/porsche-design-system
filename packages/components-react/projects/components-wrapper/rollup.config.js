@@ -28,7 +28,7 @@ export default [
       typescript({
         ...typescriptOpts,
         declaration: true,
-        declarationDir: `${DIST_DIR}/types`,
+        declarationDir: DIST_DIR,
         rootDir: 'src',
       }),
     ],
@@ -38,7 +38,7 @@ export default [
     external,
     output: {
       dir: `${DIST_DIR}/esm`,
-      format: 'es',
+      format: 'esm',
       exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
