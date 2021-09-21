@@ -1,7 +1,6 @@
-import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   addImportantToEachRule,
-  attachCss,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
@@ -18,7 +17,6 @@ import {
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
-import { determineDirection } from './select-wrapper-dropdown-utils';
 import { SELECT_HEIGHT, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
@@ -294,19 +292,4 @@ export const getComponentCss = (
       getListStyles(direction, isOpen, theme)
     ),
   });
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  direction: DropdownDirection,
-  isOpen: boolean,
-  disabled: boolean,
-  state: FormState,
-  filter: boolean,
-  theme: Theme
-): void => {
-  attachCss(
-    host,
-    getComponentCss(direction === 'auto' ? determineDirection(host) : direction, isOpen, disabled, state, filter, theme)
-  );
 };

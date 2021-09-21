@@ -1,11 +1,9 @@
 import {
   addImportantToRule,
-  attachCss,
   breakpoint,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  insertSlottedStyles,
   mediaQuery,
 } from '../../../utils';
 
@@ -44,14 +42,6 @@ export const getComponentCss = (): string => {
   });
 };
 
-export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss());
-};
-
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
 };

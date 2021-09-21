@@ -6,10 +6,11 @@ import {
   mapBreakpointPropToClasses,
   getThemeDarkAttribute,
   transitionListener,
+  attachSlottedCss,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { isSizeInherit } from './text-utils';
-import { addSlottedCss } from './text-styles';
+import { getSlottedCss } from './text-styles';
 
 @Component({
   tag: 'p-text',
@@ -44,7 +45,7 @@ export class Text {
   private textTag: HTMLElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentDidLoad(): void {

@@ -1,10 +1,12 @@
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import type { TagName, TagNameCamelCase } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { getTagName, paramCaseToCamelCase } from '.';
+import { paramCaseToCamelCase } from '.';
 
 type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
 export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
+
+export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = /^(.*)-p-.*$/.exec(getTagName(host)) || [];
@@ -18,4 +20,9 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   }
 
   return PREFIXED_TAG_NAMES_CACHE.get(prefix);
+};
+
+export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
+  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
+  return tagName;
 };

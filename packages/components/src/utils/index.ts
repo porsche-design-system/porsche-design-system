@@ -9,7 +9,7 @@ export * from './colors';
 export * from './device-detection';
 export * from './dom';
 export * from './focus-handling';
-export * from './get-prefixed-tag-name';
+export * from './tag-name';
 export * from './jss';
 export * from './line-height';
 export * from './property-observer';

@@ -10,9 +10,10 @@ import {
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
+  attachSlottedCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './radio-button-wrapper-styles';
+import { getSlottedCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -38,7 +39,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 

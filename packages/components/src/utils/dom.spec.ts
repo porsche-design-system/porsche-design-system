@@ -4,7 +4,6 @@ import {
   getAttribute,
   getHTMLElementAndThrowIfUndefined,
   getRole,
-  getTagName,
   hasAttribute,
   hasDescription,
   hasLabel,
@@ -299,17 +298,6 @@ describe('throwIfElementHasAttribute()', () => {
       error = e.message;
     }
     expect(error).toBe(undefined);
-  });
-});
-
-describe('getTagName()', () => {
-  it.each([
-    ['div', 'div'],
-    ['p-button', 'p-button'],
-    ['SPAN', 'span'],
-  ])('should be called with %s and return %s', (tag, result) => {
-    const el = document.createElement(tag);
-    expect(getTagName(el)).toBe(result);
   });
 });
 
