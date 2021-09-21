@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- External brand colors: `kakaotalk`, `naver`, `reddit` and `tiktok`
+- Global screen reader only styles to hide contents visually but grant access for screen readers.
+
+### [5.0.0] - 2021-08-12
+
+#### Changed
+- Introduce breaking change: Slash as Division. https://sass-lang.com/documentation/breaking-changes/slash-div
+
 ### [4.1.0] - 2021-07-01
 
 #### Added

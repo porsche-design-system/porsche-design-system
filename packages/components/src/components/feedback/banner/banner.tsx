@@ -1,8 +1,14 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
+import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
+import {
+  getPrefixedTagNames,
+  hasNamedSlot,
+  isDark,
+  getThemeDarkAttribute,
+  attachComponentCss,
+  attachSlottedCss,
+} from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
-import { addComponentCss } from './banner-styles';
+import { getComponentCss, getSlottedCss } from './banner-styles';
 
 @Component({
   tag: 'p-banner',
@@ -33,11 +39,8 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    this.addSlottedStyles();
-  }
-
-  public componentWillRender(): void {
-    addComponentCss(this.host);
+    attachComponentCss(this.host, getComponentCss);
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentDidLoad(): void {
@@ -64,43 +67,45 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pContentWrapper
-        width={this.width}
-        role="alertdialog"
-        aria-labelledby={bannerLabelId}
-        aria-describedby={bannerDescriptionId}
-      >
-        <div class={rootClasses}>
-          {this.state !== 'neutral' && (
-            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
-          )}
-          <div class="content">
-            {hasNamedSlot(this.host, 'title') && (
-              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
-                <slot name="title" />
-              </PrefixedTagNames.pHeadline>
+      <Host {...getThemeDarkAttribute(this.theme)}>
+        <PrefixedTagNames.pContentWrapper
+          width={this.width}
+          role="alertdialog"
+          aria-labelledby={bannerLabelId}
+          aria-describedby={bannerDescriptionId}
+        >
+          <div class={rootClasses}>
+            {this.state !== 'neutral' && (
+              <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
             )}
-            {hasNamedSlot(this.host, 'description') && (
-              <PrefixedTagNames.pText id={bannerDescriptionId}>
-                <slot name="description" />
-              </PrefixedTagNames.pText>
-            )}
-            {!this.persistent && (
-              <div class="close">
-                <PrefixedTagNames.pButtonPure
-                  type="button"
-                  icon="close"
-                  hideLabel={true}
-                  onClick={this.removeBanner}
-                  ref={(el) => (this.closeButton = el)}
-                >
-                  Close notification
-                </PrefixedTagNames.pButtonPure>
-              </div>
-            )}
+            <div class="content">
+              {hasNamedSlot(this.host, 'title') && (
+                <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
+                  <slot name="title" />
+                </PrefixedTagNames.pHeadline>
+              )}
+              {hasNamedSlot(this.host, 'description') && (
+                <PrefixedTagNames.pText id={bannerDescriptionId}>
+                  <slot name="description" />
+                </PrefixedTagNames.pText>
+              )}
+              {!this.persistent && (
+                <div class="close">
+                  <PrefixedTagNames.pButtonPure
+                    type="button"
+                    icon="close"
+                    hideLabel={true}
+                    onClick={this.removeBanner}
+                    ref={(el) => (this.closeButton = el)}
+                  >
+                    Close notification
+                  </PrefixedTagNames.pButtonPure>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </PrefixedTagNames.pContentWrapper>
+        </PrefixedTagNames.pContentWrapper>
+      </Host>
     );
   }
 
@@ -117,29 +122,4 @@ export class Banner {
       this.host.remove();
     }, 600); // duration of animation
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

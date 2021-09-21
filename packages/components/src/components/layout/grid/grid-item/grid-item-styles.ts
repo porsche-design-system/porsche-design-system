@@ -1,9 +1,8 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  attachCss,
   buildHostStyles,
-  buildResponsiveJss,
+  buildResponsiveHostStyles,
   getCss,
   mergeDeep,
   pxToRemWithUnit,
@@ -39,19 +38,10 @@ export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutt
         buildHostStyles({
           boxSizing: 'border-box',
         }),
-        buildResponsiveJss(size, getSizeStyles),
-        buildResponsiveJss(offset, getOffsetStyles),
-        buildResponsiveJss(gutter, getGutterStyles)
+        buildResponsiveHostStyles(size, getSizeStyles),
+        buildResponsiveHostStyles(offset, getOffsetStyles),
+        buildResponsiveHostStyles(gutter, getGutterStyles)
       )
     )
   );
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  size: GridItemSize,
-  offset: GridItemOffset,
-  gutter: GridGutter
-): void => {
-  attachCss(host, getComponentCss(size, offset, gutter));
 };

@@ -76,7 +76,7 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add a unique ID to the `slot="label"` element
 1. Add a unique ID to the `slot="message"` element (if they are created)
 1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
-1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `label` ID when the (error) message appears
+1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `message` ID when the (error/success) message appears
 
 <script lang="ts">
   import Vue from 'vue';

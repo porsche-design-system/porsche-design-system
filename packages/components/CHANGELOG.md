@@ -8,6 +8,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.4.0] - 2021-09-21
+
+### [2.4.0-beta.2] - 2021-09-21
+
+#### Added
+- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
+- JSS caching mechanism to improve style performance
+
+#### Changed
+- Alignment of `linkedin` icon
+- Improved accessibility of `Select Wrapper`
+- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
+- Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state
+
+#### Fixed
+- Box model of `Link Pure`
+- Focus of `Link Pure` with slotted anchor and hidden label
+– Focus cycling of `Modal` without focusable children
+- Suppress CORS error
+
+### [2.4.0-beta.1] - 2021-08-26
+
+#### Added
+- `active` property to `Button Pure`
+
+### [2.4.0-beta.0] - 2021-08-26
+
+#### Added
+- `icon` property of `Button Pure` and `Link Pure` was extended by `none` value
+- `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`
+
+#### Changed
+- Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
+- Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
+- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state
+- `Modal` backdrop behavior to close modal on mouse-down
+
+#### Fixed
+- Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`
+- Wrong background color of scrollable `Modal`'s backdrop in Safari
+
 ### [2.3.0] - 2021-07-28
 
 ### [2.3.0-beta.3] - 2021-07-28

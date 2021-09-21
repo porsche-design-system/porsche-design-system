@@ -1,4 +1,4 @@
-import { addImportantToEachRule, attachCss, buildHostStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 const transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -8,16 +8,12 @@ export const getComponentCss = (open: boolean): string => {
     ...buildHostStyles({
       ...addImportantToEachRule({
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: '99999',
+        inset: 0,
+        zIndex: 99999,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
         transition: `opacity 0.2s ${transitionTimingFunction}`,
         opacity: 0,
         visibility: 'hidden',
@@ -27,14 +23,17 @@ export const getComponentCss = (open: boolean): string => {
           visibility: 'inherit',
         }),
       }),
-      overflowY: 'auto',
+      overflowY: 'auto', // overrideable
+      // workaround via pseudo element to fix stacking (black) background in safari
+      '&::before': addImportantToEachRule({
+        content: '""',
+        position: 'fixed',
+        inset: 0,
+        background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
+      }),
     }),
     root: addImportantToEachRule({
-      transform: 'scale3d(1, 1, 1)',
+      transform: 'scale3d(1,1,1)',
     }),
   });
-};
-
-export const addComponentCss = (host: HTMLElement, open: boolean): void => {
-  attachCss(host, getComponentCss(open));
 };

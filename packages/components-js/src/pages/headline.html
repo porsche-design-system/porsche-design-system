@@ -44,9 +44,12 @@
   </p-headline>
 </div>
 
-<div class="playground" title="should show headline with a link">
+<div class="playground" title="should apply custom styles for dedicated slotted content">
   <p-headline>
-    <span>Lorem ipsum dolor sit amet <a href="#">linked text</a> et.</span>
+    <span
+      >Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+      <em>emphasized</em> and <i>italic</i> text</span
+    >
   </p-headline>
 </div>
 
@@ -102,9 +105,17 @@
   </div>
 </div>
 
-<div class="playground" title="should automatically break words/strings into new line being too long to fit inside their container">
-  <p-headline variant="headline-3" style="width: 240px; background: deeppink;">This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</p-headline>
-  <p-headline variant="headline-3" style="width: 240px; background: deepskyblue;">
-    <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: manual;">This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+<div
+  class="playground"
+  title="should automatically break words/strings into new line being too long to fit inside their container"
+>
+  <p-headline variant="headline-3" style="width: 240px; background: deeppink"
+    >This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long
+    one.</p-headline
+  >
+  <p-headline variant="headline-3" style="width: 240px; background: deepskyblue">
+    <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
+      This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+    </h3>
   </p-headline>
 </div>

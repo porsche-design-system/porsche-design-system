@@ -1,4 +1,4 @@
-import { isDark } from '.';
+import { isDark, getThemeDarkAttribute } from '.';
 
 describe('isDark()', () => {
   it('should return true for "dark"', () => {
@@ -11,5 +11,14 @@ describe('isDark()', () => {
 
   it('should return false for everything else', () => {
     expect(isDark('unknown' as any)).toBe(false);
+  });
+});
+
+describe('getThemeDarkAttribute()', () => {
+  it("should return { theme: 'dark' } for dark theme", () => {
+    expect(getThemeDarkAttribute('dark')).toEqual({ theme: 'dark' });
+  });
+  it('should return null for light theme', () => {
+    expect(getThemeDarkAttribute('light')).toBe(null);
   });
 });

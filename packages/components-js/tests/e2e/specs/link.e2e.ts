@@ -1,14 +1,12 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -194,50 +192,6 @@ describe('link', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
-      await initLink();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initLink({ useSlottedAnchor: true });
-
-      const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
-    });
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initLink();
@@ -255,7 +209,7 @@ describe('link', () => {
       await initLink();
       const host = await getHost();
 
-      await setAttribute(host, 'variant', 'tertiary');
+      await setProperty(host, 'variant', 'tertiary');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 

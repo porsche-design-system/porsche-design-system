@@ -1,9 +1,8 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  attachCss,
   buildHostStyles,
-  buildResponsiveJss,
+  buildResponsiveHostStyles,
   getCss,
   mergeDeep,
 } from '../../../../utils';
@@ -65,25 +64,16 @@ export const getComponentCss = (
         buildHostStyles({
           boxSizing: 'border-box',
         }),
-        buildResponsiveJss(width, getWidthStyles),
-        buildResponsiveJss(offset, getOffsetStyles),
-        buildResponsiveJss(alignSelf, getAlignSelfStyles),
+        buildResponsiveHostStyles(width, getWidthStyles),
+        buildResponsiveHostStyles(offset, getOffsetStyles),
+        buildResponsiveHostStyles(alignSelf, getAlignSelfStyles),
         flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-          ? buildResponsiveJss(flex, getFlexStyles)
-          : mergeDeep(buildResponsiveJss(grow, getGrowStyles), buildResponsiveJss(shrink, getShrinkStyles))
+          ? buildResponsiveHostStyles(flex, getFlexStyles)
+          : mergeDeep(
+              buildResponsiveHostStyles(grow, getGrowStyles),
+              buildResponsiveHostStyles(shrink, getShrinkStyles)
+            )
       )
     )
   );
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  width: FlexItemWidth,
-  offset: FlexItemOffset,
-  alignSelf: FlexItemAlignSelf,
-  grow: FlexItemGrow,
-  shrink: FlexItemShrink,
-  flex: FlexItemFlex
-): void => {
-  attachCss(host, getComponentCss(width, offset, alignSelf, grow, shrink, flex));
 };

@@ -26,6 +26,14 @@ In case you want the user to execute an action, you should select the [Button](c
 
 ---
 
+### Without Icon
+
+By choosing `icon="none"` the component is shown without icon.
+
+**Caution:** You can't combine  this with the prop `hideLabel`
+
+<Playground :markup="withoutIcon" :config="configInline"></Playground>
+
 ## Size
 
 There are predefined text sizes for the component which should cover most use cases. 
@@ -83,10 +91,6 @@ Providing visually differences if a link changes its state can be achieved by se
 
 <Playground :markup="activeHref" :config="config"></Playground>
 
-If the active state should not render a clickable anchor tag, just remove the `href` property. 
-
-<Playground :markup="activeWithoutHref" :config="config"></Playground>
-
 ---
 
 ## Examples how to use with Framework specific router and "active state" support
@@ -119,7 +123,38 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
-<Playground :markup="icon" :config="config"></Playground>
+<Playground :markup="icon" :config="configInline"></Playground>
+
+---
+
+## Alignment
+
+The `label` can be aligned to the `right` (default) or to the `left` of the icon.
+
+<Playground :markup="alignmentMarkup" :config="config">
+  <select v-model="alignLabel">
+    <option value="left">Left</option>
+    <option value="right">Right</option>
+    <option value="{ base: 'left', l: 'right' }">Responsive</option>
+  </select>
+</Playground>
+
+---
+
+## Stretch
+
+The `stretch` property extends the area between icon and label to the maximum available space.
+It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
+
+<Playground :markup="stretchMarkup" :config="configBlock">
+  <select v-model="stretch">
+    <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
+    <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
+    <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
+    <option value='stretch="false" align-label="right"'>stretch false, align-label right</option>
+    <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
+  </select>
+</Playground>
 
 ---
 
@@ -128,7 +163,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
 
-<Playground :markup="clickableArea" :config="config"></Playground>
+<Playground :markup="clickableArea" :config="configInline"></Playground>
 
 ---
 
@@ -143,11 +178,11 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 ## Link Pure with Subline
 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so far.
 
 **Note** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
 
-<Playground :markup="subline" :config="config">
+<Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize">
     <option disabled>Select a size</option>
     <option>small</option>
@@ -164,11 +199,14 @@ The size of the *subline* changes according to the size of the *label*. We do no
   
   @Component
   export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
+    config = { themeable: true };
+    configInline = { ...this.config, spacing: 'inline' };
     
     size = 'medium';
     sublineSize = 'small';
     weight = 'thin';
+    alignLabel = 'left';
+    stretch = 'stretch="true" align-label="left"';
     
     withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
@@ -178,6 +216,13 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
     responsive =
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
+
+    withoutIcon =
+`<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
+<p-link-pure icon="none" size="small" weight="semibold" href="https://www.porsche.com">
+  Some label
+  <p slot="subline">Some Subline</p>
+</p-link-pure>`;
 
     get sizeMarkup() {
       const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
@@ -209,12 +254,20 @@ The size of the *subline* changes according to the size of the *label*. We do no
     clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
-<a href="https://www.porsche.com" class="example-link">
-  <p-link-pure style="padding: 1rem;">Some label</p-link-pure>
-</a>
-<a href="https://www.porsche.com" class="example-link">
-  <p-link-pure hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
-</a>`;
+<p-link-pure style="padding: 1rem;">
+  <a href="https://www.porsche.com">Some label</a>
+</p-link-pure>
+<p-link-pure hide-label="true" style="padding: 1rem;">
+  <a href="https://www.porsche.com">Some label</a>
+</p-link-pure>`;
+
+    get alignmentMarkup() {
+      return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
+    };
+
+    get stretchMarkup() {
+      return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
+    };
 
     events =
 `<p-link-pure

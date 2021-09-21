@@ -9,7 +9,6 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -86,7 +85,7 @@ describe('text-field-wrapper', () => {
     const textFieldComponent = await getHost();
     expect(await getLabel()).toBeNull();
 
-    await setAttribute(textFieldComponent, 'label', 'Some label');
+    await setProperty(textFieldComponent, 'label', 'Some label');
     await waitForStencilLifecycle(page);
     expect(await getLabel()).not.toBeNull();
   });
@@ -131,12 +130,12 @@ describe('text-field-wrapper', () => {
         .withContext('initially')
         .toBeNull();
 
-      await setAttribute(textFieldComponent, 'state', 'error');
-      await setAttribute(textFieldComponent, 'message', 'Some error message');
+      await setProperty(textFieldComponent, 'state', 'error');
+      await setProperty(textFieldComponent, 'message', 'Some error message');
       await waitForStencilLifecycle(page);
 
       let message = await getMessage();
-      expect(message).toBeDefined('when state = error');
+      expect(message).withContext('when state = error').toBeDefined();
       expect(await getAttribute(message, 'role'))
         .withContext('when state = error')
         .toEqual('alert');
@@ -144,12 +143,14 @@ describe('text-field-wrapper', () => {
         .withContext('when state = error')
         .toEqual('Some label. Some error message');
 
-      await setAttribute(textFieldComponent, 'state', 'success');
-      await setAttribute(textFieldComponent, 'message', 'Some success message');
+      await setProperty(textFieldComponent, 'state', 'success');
+      await setProperty(textFieldComponent, 'message', 'Some success message');
       await waitForStencilLifecycle(page);
 
       message = await getMessage();
-      expect(await message).toBeDefined('when state = success');
+      expect(await message)
+        .withContext('when state = success')
+        .toBeDefined();
       expect(await getAttribute(message, 'role'))
         .withContext('when state = success')
         .toBeNull();
@@ -157,8 +158,8 @@ describe('text-field-wrapper', () => {
         .withContext('when state = success')
         .toEqual('Some label. Some success message');
 
-      await setAttribute(textFieldComponent, 'state', 'none');
-      await setAttribute(textFieldComponent, 'message', '');
+      await setProperty(textFieldComponent, 'state', 'none');
+      await setProperty(textFieldComponent, 'message', '');
       await waitForStencilLifecycle(page);
 
       message = await getMessage();
@@ -526,17 +527,17 @@ describe('text-field-wrapper', () => {
         .withContext('componentDidLoad: p-text-field-wrapper')
         .toBe(1);
       expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(3);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
 
       expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
+      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(6);
     });
 
     it('should work without unnecessary round trips after prop change', async () => {
       await initTextField();
       const host = await getHost();
 
-      await setAttribute(host, 'label', 'Some Label');
+      await setProperty(host, 'label', 'Some Label');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

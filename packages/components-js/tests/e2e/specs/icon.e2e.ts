@@ -5,7 +5,6 @@ import {
   getProperty,
   removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForEventSerialization,
@@ -155,7 +154,7 @@ describe('icon', () => {
           const host = await getHost();
 
           // change icon name to "question"
-          await setAttribute(host, 'name', 'question');
+          await setProperty(host, 'name', 'question');
 
           // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
           await page.waitForTimeout(delay);
@@ -178,7 +177,7 @@ describe('icon', () => {
           const host = await getHost();
           expect(await getContent(await getIcon())).toContain('highway');
 
-          await setAttribute(host, 'name', 'light');
+          await setProperty(host, 'name', 'light');
           await waitForEventSerialization(page);
           expect(await getContent(await getIcon())).toEqual('');
 
@@ -190,8 +189,36 @@ describe('icon', () => {
           expect(responseCounter).toEqual(2);
         });
 
+        /**
+         *       request 1st icon
+         *         |‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ================================================>
+         *                        |__________⌃
+         *                      request 1st icon again for different icon component
+         */
+        it('should not resolve promise of second (cached) icon with same source before render() is finished', async () => {
+          await setSvgRequestInterceptor(page, []);
+          await initIcon({ ...opts, name: 'highway' });
+
+          expect(await getContent(await getIcon()))
+            .withContext('first icon')
+            .toContain('highway');
+
+          await page.evaluate(() => {
+            const el = document.createElement('p-icon');
+            el.id = 'iconTwo';
+            el.name = 'highway';
+            document.body.appendChild(el);
+          });
+          const iconTwo = await selectNode(page, '#iconTwo >>> i');
+
+          expect(await getContent(iconTwo))
+            .withContext('second icon')
+            .toContain('highway');
+        });
+
         it('should unset previous icon if name prop is removed', async () => {
-          await setSvgRequestInterceptor(page, [2000]);
+          await setSvgRequestInterceptor(page, []);
           await initIcon({ ...opts, name: 'highway' });
 
           const host = await getHost();
@@ -228,7 +255,7 @@ describe('icon', () => {
           await initIcon({ ...opts, name: 'highway' });
           const host = await getHost();
 
-          await setAttribute(host, 'name', 'car');
+          await setProperty(host, 'name', 'car');
           await waitForStencilLifecycle(page);
 
           const status = await getLifecycleStatus(page);

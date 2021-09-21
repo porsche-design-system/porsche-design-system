@@ -4,34 +4,28 @@ import {
   forceHoveredState,
   getBodyMarkup,
   GetMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Textarea Wrapper', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'textarea-wrapper',
-        async () => {
-          await vrt.goTo('/#textarea-wrapper');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'textarea-wrapper', '/#textarea-wrapper')).toBeFalsy();
   });
+
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('textarea-wrapper-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `
           <style type="text/css">
-            p-textarea-wrapper:not(:last-child) { margin-bottom: 16px; }
+            p-textarea-wrapper:not(:last-child) { margin-bottom: 1rem; }
             textarea { min-height: initial; }
           </style>`;
 

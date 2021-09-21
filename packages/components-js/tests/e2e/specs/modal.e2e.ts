@@ -9,8 +9,9 @@ import {
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -28,14 +29,14 @@ describe('modal', () => {
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
-  const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
-    const { isOpen = true } = opts ?? {};
+  const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
+    const { isOpen = true, content = 'Some Content' } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
       `
       <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
-        Some Content
+        ${content}
       </p-modal>`
     );
   };
@@ -58,7 +59,7 @@ describe('modal', () => {
   };
 
   const openModal = async () => {
-    await (await getHost()).evaluate((el) => el.setAttribute('open', ''));
+    await setProperty(await getHost(), 'open', true);
     await waitForStencilLifecycle(page);
   };
 
@@ -108,7 +109,7 @@ describe('modal', () => {
 
     it('should not be closable via esc key when disableCloseButton is set', async () => {
       const host = await getHost();
-      await host.evaluate((el) => el.setAttribute('disable-close-button', ''));
+      await setProperty(host, 'disableCloseButton', true);
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
@@ -116,28 +117,50 @@ describe('modal', () => {
     });
 
     it('should be closable via backdrop', async () => {
-      // click in each corner based on 1920x800 screen
-      await page.mouse.click(5, 5);
-      await page.mouse.click(1915, 5);
-      await page.mouse.click(5, 795);
-      await page.mouse.click(1915, 795);
-      await waitForStencilLifecycle(page);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
-      expect(calls).toBe(4);
+      expect(calls).withContext('after mouse down').toBe(1);
 
-      // click in middle should not close modal
-      await page.mouse.click(960, 400);
-      await waitForStencilLifecycle(page);
+      await page.mouse.up();
 
-      expect(calls).toBe(4);
+      expect(calls).withContext('after mouse up').toBe(1);
+    });
+
+    it('should not be closed if mousedown inside modal', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
+
+      expect(calls).withContext('after mouse down').toBe(0);
+
+      await page.mouse.up();
+
+      expect(calls).withContext('after mouse up').toBe(0);
+    });
+
+    it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
+
+      expect(calls).withContext('after mouse down').toBe(0);
+
+      await page.mouse.move(5, 5);
+      await page.mouse.up();
+
+      expect(calls).withContext('after mouse up').toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       const host = await getHost();
-      await setAttribute(host, 'disable-backdrop-click', '');
-      await waitForStencilLifecycle(page);
-      await page.mouse.click(5, 5);
-      await waitForStencilLifecycle(page);
+      await setProperty(host, 'disableBackdropClick', true);
+      await waitForEventSerialization(page);
+
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(0);
     });
@@ -146,8 +169,9 @@ describe('modal', () => {
       const body = await selectNode(page, 'body');
       let bodyCalls = 0;
       await addEventListener(body, 'close', () => bodyCalls++);
-      await page.mouse.click(5, 5);
-      await waitForStencilLifecycle(page);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(1);
       expect(bodyCalls).toBe(0);
@@ -223,6 +247,23 @@ describe('modal', () => {
       const activeElementTagName = await getActiveElementTagName(page);
       expect(activeElementTagName).toBe('BODY');
     });
+
+    it('should not allow focusing element behind of modal', async () => {
+      await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await page.evaluate(() => {
+        const button = document.createElement('btn-behind');
+        button.id = 'button';
+        document.body.append(button);
+      });
+      const host = await getHost();
+      await openModal();
+
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+    });
   });
 
   it('should focus last focused element after modal is closed', async () => {
@@ -236,10 +277,10 @@ describe('modal', () => {
       <script>
         const modal = document.getElementById('modal');
         document.getElementById('btn-open').addEventListener('click', () => {
-          modal.setAttribute('open', '');
+          modal.open = true;
         });
         modal.addEventListener('close', () => {
-          modal.removeAttribute('open');
+          modal.open = false;
         });
       </script>`
     );
@@ -273,7 +314,7 @@ describe('modal', () => {
     await openModal();
     expect(await getBodyOverflow()).toBe('hidden');
 
-    await (await getHost()).evaluate((el) => el.removeAttribute('open'));
+    await setProperty(await getHost(), 'open', false);
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
   });
@@ -326,7 +367,7 @@ describe('modal', () => {
       await initBasicModal();
       const host = await getHost();
 
-      await setAttribute(host, 'open', 'false');
+      await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

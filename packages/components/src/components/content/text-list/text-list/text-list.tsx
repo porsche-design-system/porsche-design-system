@@ -1,7 +1,15 @@
 import { JSX, Component, Prop, h, Host, Element, Watch } from '@stencil/core';
-import { getClosestHTMLElement, getPrefixedTagNames, isDark, updateChildren } from '../../../../utils';
+import {
+  attachSlottedCss,
+  getClosestHTMLElement,
+  getPrefixedTagNames,
+  getThemeDarkAttribute,
+  isDark,
+  updateChildren,
+} from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
+import { getSlottedCss } from './text-list-styles';
 
 @Component({
   tag: 'p-text-list',
@@ -30,6 +38,10 @@ export class TextList {
     updateChildren(this.host);
   }
 
+  public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
+  }
+
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -41,7 +53,7 @@ export class TextList {
     };
 
     return (
-      <Host nested={isNestedList}>
+      <Host nested={isNestedList} {...getThemeDarkAttribute(this.theme)}>
         <TagType role="list" class={rootClasses}>
           <slot />
         </TagType>

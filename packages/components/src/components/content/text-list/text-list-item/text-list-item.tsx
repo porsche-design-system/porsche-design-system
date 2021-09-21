@@ -1,7 +1,6 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import { getAttribute, getTagName, insertSlottedStyles, throwIfParentIsNotOfKind } from '../../../../utils';
-import { P_ANIMATION_HOVER_DURATION } from '../../../../styles';
-import { addComponentCss } from './text-list-item-styles';
+import { attachComponentCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
+import { getComponentCss } from './text-list-item-styles';
 
 @Component({
   tag: 'p-text-list-item',
@@ -12,14 +11,13 @@ export class TextListItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTextList');
-    this.addSlottedStyles();
   }
 
   public componentWillRender(): void {
     const list = this.host.parentElement as HTMLPTextListElement;
     const { listType, orderType } = list;
     const isNestedList = getAttribute(list, 'nested') === '';
-    addComponentCss(this.host, listType, orderType, isNestedList);
+    attachComponentCss(this.host, getComponentCss, listType, orderType, isNestedList);
   }
 
   public render(): JSX.Element {
@@ -28,30 +26,5 @@ export class TextListItem {
         <slot />
       </Host>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }

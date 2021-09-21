@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -15,6 +15,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
@@ -111,6 +112,14 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -121,7 +130,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -134,6 +143,10 @@ export namespace Components {
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */
@@ -327,7 +340,7 @@ export namespace Components {
          */
         "color"?: TextColor;
         /**
-          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, icon will be loaded lazily when it's visible in the viewport.
          */
         "lazy"?: boolean;
         /**
@@ -337,7 +350,7 @@ export namespace Components {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -346,7 +359,6 @@ export namespace Components {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
     }
     interface PLink {
         /**
@@ -392,6 +404,10 @@ export namespace Components {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -404,9 +420,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -419,6 +435,10 @@ export namespace Components {
           * Size of the link.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -458,7 +478,7 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Adapts the icon color when used on dark background.
+          * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
     }
@@ -566,7 +586,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        "dropdownDirection"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -596,6 +616,20 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PSelectWrapperDropdown {
+        "description"?: string;
+        "direction"?: DropdownDirection;
+        "disabled"?: boolean;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange": (isOpen: boolean) => void;
+        "required"?: boolean;
+        "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
+        "theme"?: Theme;
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -610,7 +644,7 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */
@@ -950,6 +984,12 @@ declare global {
         prototype: HTMLPSelectWrapperElement;
         new (): HTMLPSelectWrapperElement;
     };
+    interface HTMLPSelectWrapperDropdownElement extends Components.PSelectWrapperDropdown, HTMLStencilElement {
+    }
+    var HTMLPSelectWrapperDropdownElement: {
+        prototype: HTMLPSelectWrapperDropdownElement;
+        new (): HTMLPSelectWrapperDropdownElement;
+    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -1076,6 +1116,7 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
+        "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
@@ -1194,6 +1235,14 @@ declare namespace LocalJSX {
     }
     interface PButtonPure {
         /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -1204,7 +1253,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1217,6 +1266,10 @@ declare namespace LocalJSX {
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */
@@ -1410,7 +1463,7 @@ declare namespace LocalJSX {
          */
         "color"?: TextColor;
         /**
-          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, icon will be loaded lazily when it's visible in the viewport.
          */
         "lazy"?: boolean;
         /**
@@ -1420,7 +1473,7 @@ declare namespace LocalJSX {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: IconSize;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -1429,7 +1482,6 @@ declare namespace LocalJSX {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
     }
     interface PLink {
         /**
@@ -1475,6 +1527,10 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: AlignLabel;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1487,9 +1543,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonPureIconName;
         /**
           * A custom URL path to a custom icon.
          */
@@ -1502,6 +1558,10 @@ declare namespace LocalJSX {
           * Size of the link.
          */
         "size"?: BreakpointCustomizable<TextSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -1541,7 +1601,7 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Adapts the icon color when used on dark background.
+          * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
     }
@@ -1657,7 +1717,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        "dropdownDirection"?: DropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -1687,6 +1747,20 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PSelectWrapperDropdown {
+        "description"?: string;
+        "direction"?: DropdownDirection;
+        "disabled"?: boolean;
+        "filter"?: boolean;
+        "isOpenOverride"?: boolean;
+        "label"?: string;
+        "message"?: string;
+        "onOpenChange"?: (isOpen: boolean) => void;
+        "required"?: boolean;
+        "selectRef"?: HTMLSelectElement;
+        "state"?: FormState;
+        "theme"?: Theme;
+    }
     interface PSpinner {
         /**
           * Size of the spinner.
@@ -1701,7 +1775,7 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        "alignLabel"?: AlignLabel;
         /**
           * Visualize the switch with on/off status.
          */
@@ -1941,6 +2015,7 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
+        "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
         "p-switch": PSwitch;
         "p-table": PTable;
@@ -1987,6 +2062,7 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
+            "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;

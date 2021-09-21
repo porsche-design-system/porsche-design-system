@@ -16,8 +16,8 @@ import {
   reattachElement,
   removeAttribute,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForComponentsReady,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
@@ -158,16 +158,16 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('correct initial position')
-        .toEqual(95);
+        .withContext('initial position')
+        .toEqual(87);
 
       await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('correct position after button name change')
-        .toEqual(265);
+        .withContext('final position')
+        .toEqual(257);
     });
 
     it('should adjust status bar style when new tab element is added and clicked', async () => {
@@ -185,15 +185,15 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after adding a new button')
-        .toEqual(8);
+        .withContext('initial position')
+        .toEqual(0);
 
       const [, secondButton] = await getAllButtons();
       await clickElement(secondButton);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after click')
-        .toEqual(115);
+        .withContext('final position')
+        .toEqual(107);
     });
 
     it('should stay selected and have same status bar style when tab after current active tab is removed', async () => {
@@ -201,8 +201,8 @@ describe('tabs-bar', () => {
       const statusBar = await getStatusBar();
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position before removing a button')
-        .toEqual(111);
+        .withContext('initial position')
+        .toEqual(103);
 
       await page.evaluate(() => {
         const tabsBar = document.querySelector('p-tabs-bar');
@@ -216,8 +216,8 @@ describe('tabs-bar', () => {
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after removing a button')
-        .toEqual(111);
+        .withContext('final position')
+        .toEqual(103);
     });
 
     it('should reset tabindex and status bar styles when active tab on last position is removed', async () => {
@@ -237,8 +237,8 @@ describe('tabs-bar', () => {
       expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after removing last active button')
-        .toEqual(8);
+        .withContext('final position')
+        .toEqual(0);
     });
 
     it('should reset tabindex when last tab is active and a tab is removed in the middle', async () => {
@@ -260,9 +260,11 @@ describe('tabs-bar', () => {
       expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after removing button in the middle')
-        .toEqual(8);
-      expect(await getStatusBarWidth(statusBar)).toBe('0px');
+        .withContext('final position')
+        .toEqual(0);
+      expect(await getStatusBarWidth(statusBar))
+        .withContext('final width')
+        .toBe('0px');
     });
 
     it('should set tabindex and aria-selected on next tab when active tab in the middle is removed', async () => {
@@ -281,9 +283,11 @@ describe('tabs-bar', () => {
 
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('correct position after removing active button in the middle')
-        .toEqual(111);
-      expect(await getStatusBarWidth(statusBar)).toBe('87px');
+        .withContext('final position')
+        .toEqual(103);
+      expect(await getStatusBarWidth(statusBar))
+        .withContext('final width')
+        .toBe('87px');
     });
   });
 
@@ -291,7 +295,7 @@ describe('tabs-bar', () => {
     it('should have transition and will-change css property applied on stats-bar', async () => {
       await initTabsBar({ activeTabIndex: 0 });
       const host = await getHost();
-      await setAttribute(host, 'active-tab-index', '1'); // class with transition property will applied on first change
+      await setProperty(host, 'activeTabIndex', 1); // class with transition property will applied on first change
       await waitForStencilLifecycle(page);
 
       const statusBar = await getStatusBar();
@@ -875,7 +879,7 @@ describe('tabs-bar', () => {
       await setContentWithDesignSystem(page, ''); // empty page
       await page.evaluate(() => {
         const el = document.createElement('p-tabs-bar');
-        el.setAttribute('active-tab-index', '-1');
+        el['activeTabIndex'] = -1;
 
         Array.from(Array(2)).forEach((_, i) => {
           const child = document.createElement('button');
@@ -967,7 +971,7 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3, tag: 'button', activeTabIndex: 0 });
       const host = await getHost();
 
-      await setAttribute(host, 'active-tab-index', '2');
+      await setProperty(host, 'activeTabIndex', 2);
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
