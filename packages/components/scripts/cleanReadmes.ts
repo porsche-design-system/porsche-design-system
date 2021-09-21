@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as globby from 'globby';
 import { capitalCase, pascalCase } from 'change-case';
-import { globbySync } from 'globby';
 
 const removeGenerator = (str: string): string =>
   str.replace(/\s+----------------------------------------------\s+\*Built with.*/g, '');
@@ -82,7 +82,7 @@ const cleanReadme = (fileContent: string): string => {
 };
 
 const cleanReadmes = (): void => {
-  const files = globbySync('./src/components/**/readme.md');
+  const files = globby.sync('./src/components/**/readme.md');
   for (const file of files) {
     const sourceFile = path.normalize(file);
     const sourceDirectory = path.dirname(sourceFile);
