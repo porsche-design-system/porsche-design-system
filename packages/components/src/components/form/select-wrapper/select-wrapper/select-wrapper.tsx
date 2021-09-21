@@ -1,5 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  attachComponentCss,
+  attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -14,7 +16,7 @@ import {
 import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
 import { isCustomDropdown } from './select-wrapper-utils';
-import { addComponentCss, addSlottedCss } from './select-wrapper-styles';
+import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message';
 
 @Component({
@@ -59,7 +61,7 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
     observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentWillLoad(): void {
@@ -72,7 +74,7 @@ export class SelectWrapper {
   }
 
   public componentDidRender(): void {
-    addComponentCss(this.host, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
 
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.

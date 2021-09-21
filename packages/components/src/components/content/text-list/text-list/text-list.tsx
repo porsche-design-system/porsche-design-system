@@ -1,14 +1,15 @@
 import { JSX, Component, Prop, h, Host, Element, Watch } from '@stencil/core';
 import {
+  attachSlottedCss,
   getClosestHTMLElement,
   getPrefixedTagNames,
   getThemeDarkAttribute,
   isDark,
-  updateChildren
+  updateChildren,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
-import { addSlottedCss } from './text-list-styles';
+import { getSlottedCss } from './text-list-styles';
 
 @Component({
   tag: 'p-text-list',
@@ -38,7 +39,7 @@ export class TextList {
   }
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public render(): JSX.Element {
@@ -52,7 +53,7 @@ export class TextList {
     };
 
     return (
-      <Host nested={isNestedList}  {...getThemeDarkAttribute(this.theme)}>
+      <Host nested={isNestedList} {...getThemeDarkAttribute(this.theme)}>
         <TagType role="list" class={rootClasses}>
           <slot />
         </TagType>
