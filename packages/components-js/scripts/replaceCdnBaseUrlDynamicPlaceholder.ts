@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as globby from 'globby';
 import { CDN_BASE_URL_DYNAMIC } from '../../../cdn.config';
 import { npmDistTmpSubPath } from '../projects/components-wrapper/environment';
-import { globbySync } from 'globby';
 
 const packageDir = path.resolve(__dirname, '..');
 
@@ -24,7 +24,7 @@ const replaceCdnBaseUrlDynamicPlaceholder = () => {
 
   readAndWriteFile(componentsJsFilePath); // core loader
   readAndWriteFile(tmpFilePath); // tmp core loader
-  readAndWriteFile(path.resolve(packageDir, globbySync('./dist/components/porsche-design-system.v*')[0])); // core on cdn
+  readAndWriteFile(path.resolve(packageDir, globby.sync('./dist/components/porsche-design-system.v*')[0])); // core on cdn
 
   console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "${CDN_BASE_URL_DYNAMIC}"`);
 };

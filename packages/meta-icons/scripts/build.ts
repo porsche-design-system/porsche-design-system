@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import {
   CDN_BASE_URL_DYNAMIC,
@@ -107,7 +107,7 @@ export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
 
 const generate = (): void => {
   const cdnMetaIconsUrl = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_META_ICONS}'`;
-  const icons = globbySync('./src/**/*').sort();
+  const icons = globby.sync('./src/**/*').sort();
   const metaIconsManifest = copyMetaIconsAndBuildIconManifest(cdnMetaIconsUrl, icons);
   const metaIconsManifestWithWebManifest = generateWebManifestAndExtendIconManifest(metaIconsManifest);
 

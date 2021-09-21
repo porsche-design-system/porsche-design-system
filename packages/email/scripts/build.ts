@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_KEY_TYPE_DEFINITION, CDN_BASE_PATH_EMAIL } from '../../../cdn.config';
 
@@ -47,6 +47,6 @@ export const EMAIL_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_EMAIL}'`;
-const files = globbySync('./src/**/*.png').sort();
+const files = globby.sync('./src/**/*.png').sort();
 
 createManifestAndCopyMarque(cdn, files);

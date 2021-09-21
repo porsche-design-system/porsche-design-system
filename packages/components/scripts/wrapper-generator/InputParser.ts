@@ -1,7 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -59,7 +59,7 @@ export class InputParser {
 
   private getComponentSourceCode(component: TagName): string {
     const fileName = `${component.replace('p-', '')}.tsx`;
-    const [filePath] = globbySync(`${SRC_DIR}/**/${fileName}`);
+    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
     return fs.readFileSync(filePath, 'utf8');
   }
 
