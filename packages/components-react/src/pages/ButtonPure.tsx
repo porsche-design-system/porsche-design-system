@@ -124,14 +124,14 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with specific icon">
         <PButtonPure icon="delete">Label with specific icon</PButtonPure>
-        <PButtonPure icon-source="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
       </div>
 
       <div className="playground dark" title="should render button with specific icon on dark background">
         <PButtonPure icon="delete" theme="dark">
           Label with specific icon
         </PButtonPure>
-        <PButtonPure icon-source="./assets/icon-custom-kaixin.svg" theme="dark">
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
           Label with local icon-source
         </PButtonPure>
       </div>
