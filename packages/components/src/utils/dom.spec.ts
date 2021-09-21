@@ -530,26 +530,3 @@ describe('isRequiredAndParentNotRequired()', () => {
     expect(isRequiredAndParentNotRequired(child, input)).toBe(result);
   });
 });
-
-describe('pdsFetch()', () => {
-  let fetchCount = 0;
-  const defaultFetch = global.fetch;
-
-  beforeEach(() => {
-    const defaultFetch = global.fetch;
-    global.fetch = jest.fn().mockImplementation((x) => {
-      fetchCount++;
-    });
-  });
-
-  afterEach(() => {
-    global.fetch = defaultFetch;
-  });
-
-  it('should return "alert" if state is error', async () => {
-    await pdsFetch(
-      'https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png'
-    );
-    expect(fetchCount).toBe(1);
-  });
-});

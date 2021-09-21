@@ -1,5 +1,5 @@
 import { version } from '../../package.json';
-import { pdsFetch } from './dom';
+import { pdsFetch } from './pds-fetch';
 
 const TRACKING_URL = 'https://aws.designsystem.porsche.com/porsche-design-system.png';
 
