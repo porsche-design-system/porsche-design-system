@@ -42,6 +42,7 @@
     "@angular/language-service": "^12.2.6",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
+    "@types/jasmine": "^3.9.1",
     "@types/node": "^16.9.4",
     "concurrently": "^6.2.1",
     "jasmine": "^3.8.0",
