@@ -37,7 +37,7 @@
     "@porsche-design-system/visual-regression-tester": "^4.1.0",
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "puppeteer": "~10.2.0"
+    "puppeteer": "~10.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",
