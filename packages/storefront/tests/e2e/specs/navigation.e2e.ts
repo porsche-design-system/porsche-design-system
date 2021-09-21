@@ -22,8 +22,8 @@ describe('navigation', () => {
     page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
   const injectCSSOverrides = async () => {
-    const pathToComponentsJs = require.resolve('@porsche-design-system/components-js');
-    const pathToOverrides = path.resolve(pathToComponentsJs, '../../../src/overrides.css');
+    const pathToShared = require.resolve('@porsche-design-system/shared');
+    const pathToOverrides = path.resolve(pathToShared, '../css/styles.css');
     const overrides = fs.readFileSync(pathToOverrides, 'utf8');
 
     await browserPage.evaluate((overrides) => {
