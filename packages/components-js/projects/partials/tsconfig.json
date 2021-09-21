@@ -6,5 +6,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    },
+    "include": ["./scripts"]
+  }
 }
