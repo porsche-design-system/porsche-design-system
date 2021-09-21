@@ -222,8 +222,8 @@ describe('SomeComponent', () => {
 #### Disabling CDN requests from Porsche Design System and components
 
 We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests 
-when you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup. 
-It will suppress all CDN request from our Components.
+when you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup.  
+It will suppress all CDN request of the Porsche Design System.
 
 You can apply it globally on every test by calling it once in your test setup:
 

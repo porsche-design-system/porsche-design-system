@@ -1,9 +1,6 @@
 import { render } from '@testing-library/react';
 import { PButton } from '../../../projects/components-wrapper/src';
-import {
-  skipCheckForPorscheDesignSystemProviderDuringTests,
-  skipPorscheDesignSystemCDNRequestsDuringTests,
-} from '../../../projects/components-wrapper/src/hooks';
+import { skipCheckForPorscheDesignSystemProviderDuringTests } from '../../../projects/components-wrapper/src/hooks';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
@@ -27,17 +24,5 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
     expect(error2).not.toBeDefined();
 
     spy.mockRestore();
-  });
-});
-
-describe('skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
-  it('should set window variable PDS_SKIP_FETCH true', () => {
-    const getPDS_SKIP_FETCH = () => (window as any).PDS_SKIP_FETCH;
-
-    expect(getPDS_SKIP_FETCH()).toBeUndefined();
-
-    skipPorscheDesignSystemCDNRequestsDuringTests();
-
-    expect(getPDS_SKIP_FETCH()).toBe(true);
   });
 });

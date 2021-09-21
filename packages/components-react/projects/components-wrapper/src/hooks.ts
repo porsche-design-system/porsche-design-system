@@ -13,10 +13,6 @@ export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
   skipCheck = true;
 };
 
-export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
-  (window as any).PDS_SKIP_FETCH = true;
-};
-
 export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return tagName;

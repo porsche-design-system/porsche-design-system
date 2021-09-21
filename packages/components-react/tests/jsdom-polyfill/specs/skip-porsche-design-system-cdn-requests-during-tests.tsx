@@ -6,15 +6,15 @@ import {
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
-beforeEach(() => {
-  skipPorscheDesignSystemCDNRequestsDuringTests();
-});
+describe('skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
+  beforeEach(() => {
+    skipPorscheDesignSystemCDNRequestsDuringTests();
+  });
 
-afterEach(() => {
-  (window as any).PDS_SKIP_FETCH = false;
-});
+  afterEach(() => {
+    (window as any).PDS_SKIP_FETCH = false;
+  });
 
-describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
   it('should not fetch font-face definitions', async () => {
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
 
