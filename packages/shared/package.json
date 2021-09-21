@@ -35,13 +35,13 @@
   },
   "dependencies": {
     "@porsche-design-system/visual-regression-tester": "^4.1.0",
+    "@types/jasmine": "^3.9.1",
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "puppeteer": "~10.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",
-    "@types/jasmine": "^3.8.2",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "rollup": "^2.56.1",
