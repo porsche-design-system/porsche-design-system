@@ -45,16 +45,13 @@ describe('jsdomEvents()', () => {
   it('should have no cdn requests', async () => {
     await page.setContent(
       `<!DOCTYPE html>
-    <html>
-      <head>
-        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-        <script>
-          ${getJsdomPolyfillBuild()}
-        </script>
-      </head>
-      <body>
-      </body>
-    </html>`,
+<html>
+  <head>
+    <base href="http://localhost:3000"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+    <script>${getJsdomPolyfillBuild()}</script>
+  </head>
+  <body></body>
+</html>`,
       { waitUntil: 'networkidle0' }
     );
 
@@ -71,7 +68,9 @@ describe('jsdomEvents()', () => {
       .withContext('Shadowroot is defined')
       .toBeTrue();
 
-    console.log('HTTP Requests:', requests);
-    expect(requests.length).toBe(0);
+    if (requests.length > 0) {
+      console.log('HTTP Requests:', requests);
+    }
+    expect(requests.length).withContext('Request count').toBe(0);
   });
 });
