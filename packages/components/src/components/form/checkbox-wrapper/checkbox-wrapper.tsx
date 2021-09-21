@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  attachSlottedCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -12,7 +13,7 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './checkbox-wrapper-styles';
+import { getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -38,7 +39,7 @@ export class CheckboxWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 

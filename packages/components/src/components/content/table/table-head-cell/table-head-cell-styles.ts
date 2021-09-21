@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  attachCss,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
@@ -68,8 +67,4 @@ export const getComponentCss = (): string => {
       },
     },
   });
-};
-
-export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss());
 };

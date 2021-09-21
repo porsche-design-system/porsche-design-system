@@ -7,8 +7,8 @@ import type {
   FlexItemShrink,
   FlexItemWidth,
 } from './flex-item-utils';
-import { addComponentCss } from './flex-item-styles';
-import { throwIfParentIsNotOfKind } from '../../../../utils';
+import { getComponentCss } from './flex-item-styles';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
   tag: 'p-flex-item',
@@ -40,7 +40,16 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.width,
+      this.offset,
+      this.alignSelf,
+      this.grow,
+      this.shrink,
+      this.flex
+    );
   }
 
   public render(): JSX.Element {

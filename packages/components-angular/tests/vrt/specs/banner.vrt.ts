@@ -1,16 +1,7 @@
-import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
+import { getVisualRegressionContentWrapperTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionContentWrapperTester();
-    expect(
-      await vrt.test(
-        'banner',
-        async () => {
-          await vrt.goTo('/banner');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionContentWrapperTester(), 'banner', '/banner')).toBeFalsy();
   });
 });

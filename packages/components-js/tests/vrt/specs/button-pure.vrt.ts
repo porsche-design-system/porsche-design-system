@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
   setContentWithDesignSystem,
-  testOptions,
 } from '../helpers';
+import {
+  getVisualRegressionTester,
+  getVisualRegressionStatesTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Button Pure', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'button-pure',
-        async () => {
-          await vrt.goTo('/#button-pure');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'button-pure', '/#button-pure')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('button-pure-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">p-button-pure:not(:last-child) { margin-right: 0.5rem; } div div:not(:first-of-type) { margin-top: 0.5rem }</style>`;
 

@@ -8,13 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.4.0-beta.2] - 2021-09-21
+
 #### Added
 - `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
+- JSS caching mechanism to improve style performance
 
 #### Changed
 - Alignment of `linkedin` icon
-
-#### Changed
 - Improved accessibility of `Select Wrapper`
 - `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
 - Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Box model of `Link Pure`
 - Focus of `Link Pure` with slotted anchor and hidden label
 – Focus cycling of `Modal` without focusable children
+- Suppress CORS error
 
 ### [2.4.0-beta.1] - 2021-08-26
 
