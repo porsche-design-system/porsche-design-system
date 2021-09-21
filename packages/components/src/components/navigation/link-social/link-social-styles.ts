@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  attachCss,
   BreakpointCustomizable,
   buildHostStyles,
   buildResponsiveStyles,
@@ -119,14 +118,4 @@ export const getComponentCss = (
       hasHref ? buildResponsiveStyles(hideLabel, getRootStyles) : buildResponsiveStyles(hideLabel, getSlottedLinkStyles)
     )
   );
-};
-
-export const addComponentCss = (
-  host: HTMLElement,
-  icon: SocialIconName,
-  hideLabel: BreakpointCustomizable<boolean>,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  attachCss(host, getComponentCss(icon, hideLabel, hasHref, theme));
 };

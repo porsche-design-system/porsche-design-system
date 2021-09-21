@@ -1,14 +1,16 @@
 import {
-  attachCss,
+  attachComponentCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
+  getCachedComponentCss,
   getCss,
   isObject,
   mergeDeep,
   supportsConstructableStylesheets,
+  componentCssMap,
 } from '.';
 import * as jssUtils from './jss';
 import type { JssStyle, Styles } from 'jss';
@@ -78,36 +80,6 @@ describe('supportsConstructableStylesheets()', () => {
     delete global.CSSStyleSheet;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
-  });
-});
-
-describe('attachCss()', () => {
-  describe('with CSSStyleSheet support', () => {
-    it('should create CSSStyleSheet and apply it to shadowRoot', () => {
-      const div = document.createElement('div');
-      div.attachShadow({ mode: 'open' });
-
-      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
-
-      attachCss(div, ':host { display: "block" }');
-      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
-    });
-  });
-
-  describe('without CSSStyleSheet support', () => {
-    it('should create style node and prepend it in shadowRoot', () => {
-      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
-
-      const div = document.createElement('div');
-      div.attachShadow({ mode: 'open' });
-      expect(div.shadowRoot.querySelector('style')).toBeNull();
-
-      const css = ':host { display: "block" }';
-      attachCss(div, css);
-      expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
-
-      spy.mockRestore();
-    });
   });
 });
 
@@ -216,5 +188,136 @@ describe('mergeDeep()', () => {
     ])
   )(`should be called with '%s' and return '%s'`, (_, __, input: object[], result: object) => {
     expect(mergeDeep(...input)).toStrictEqual(result);
+  });
+});
+
+describe('attachComponentCss()', () => {
+  beforeEach(() => {
+    componentCssMap.clear();
+  });
+
+  it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
+    const host = document.createElement('p-some-component');
+    host.attachShadow({ mode: 'open' });
+    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+
+    attachComponentCss(host, (x: boolean) => 'some css', true);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
+
+    attachComponentCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
+
+    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
+  });
+
+  describe('with CSSStyleSheet support', () => {
+    it('should create CSSStyleSheet and apply it to shadowRoot', () => {
+      const div = document.createElement('p-some-component');
+      div.attachShadow({ mode: 'open' });
+
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
+
+      attachComponentCss(div, () => ':host { display: "block" }');
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
+    });
+  });
+
+  describe('without CSSStyleSheet support', () => {
+    it('should create style node and prepend it in shadowRoot', () => {
+      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
+
+      const div = document.createElement('p-some-component');
+      div.attachShadow({ mode: 'open' });
+      expect(div.shadowRoot.querySelector('style')).toBeNull();
+
+      const css = ':host { display: "block" }';
+      attachComponentCss(div, () => css);
+      expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
+
+      spy.mockRestore();
+    });
+  });
+});
+
+describe('getCachedComponentCss()', () => {
+  beforeEach(() => {
+    componentCssMap.clear();
+  });
+
+  it('should return css provided by css function', () => {
+    const host = document.createElement('p-some-element');
+    const getComponentCss = () => 'some css';
+
+    expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
+  });
+
+  it('should call passed css function with infinite passed arguments', () => {
+    const host = document.createElement('p-some-element');
+    const getComponentCss1 = (a: number, b: boolean, c: string) => `some css ${a} ${b} ${c}`;
+
+    expect(getCachedComponentCss(host, getComponentCss1, 1, true, 'some string')).toBe('some css 1 true some string');
+
+    const getComponentCss2 = (d: { someProp: string }) => `some css ${d.someProp}`;
+
+    expect(getCachedComponentCss(host, getComponentCss2, { someProp: 'some-object-value' })).toBe(
+      'some css some-object-value'
+    );
+  });
+
+  it('should keep CSS Cache clean and handle multiple types of infinite passed parameters', () => {
+    const host1 = document.createElement('p-some-element');
+    const host2 = document.createElement('my-prefix-p-some-element');
+    const host3 = document.createElement('p-another-element');
+    const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => 'some css';
+
+    getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host1, getComponentCss1);
+    getCachedComponentCss(host1, getComponentCss1);
+
+    getCachedComponentCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host2, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host2, getComponentCss1);
+    getCachedComponentCss(host2, getComponentCss1);
+
+    getCachedComponentCss(host3, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host3, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
+    getCachedComponentCss(host3, getComponentCss1);
+    getCachedComponentCss(host3, getComponentCss1);
+
+    expect(componentCssMap).toMatchSnapshot();
+  });
+
+  it('should call provided css function only once when it was already called before for the same host type', () => {
+    const host1 = document.createElement('p-some-element');
+    const host2 = document.createElement('p-some-element');
+    const host3 = document.createElement('p-some-element');
+    const getComponentCss = jest.fn();
+
+    getCachedComponentCss(host1, getComponentCss, 'some-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(host2, getComponentCss, 'some-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(host3, getComponentCss, 'another-param');
+
+    expect(getComponentCss).toHaveBeenCalledTimes(2);
+  });
+
+  it('should not call provided css function again for prefixed version of host type', () => {
+    const host = document.createElement('p-some-element');
+    const hostPrefixed = document.createElement('my-prefix-p-some-element');
+    const getComponentCss = jest.fn();
+
+    getCachedComponentCss(host, getComponentCss);
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
+
+    getCachedComponentCss(hostPrefixed, getComponentCss);
+
+    expect(getComponentCss).toHaveBeenCalledTimes(1);
   });
 });
