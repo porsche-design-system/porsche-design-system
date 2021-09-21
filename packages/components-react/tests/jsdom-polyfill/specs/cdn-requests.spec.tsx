@@ -6,13 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
-let fetchCount: number;
-
 beforeEach(() => {
-  fetchCount = 0;
-  global.fetch = jest.fn().mockImplementation((x) => {
-    fetchCount++;
-  });
   skipPorscheDesignSystemCDNRequestsDuringTests();
 });
 
@@ -37,9 +31,11 @@ describe('CDN requests with skipPorscheDesignSystemCDNRequestsDuringTests()', ()
   });
 
   it('should not fetch icon', async () => {
+    const spy = jest.spyOn(global, 'fetch');
+
     render(<PIcon />);
     await componentsReady();
 
-    expect(fetchCount).toBe(0);
+    expect(spy).not.toHaveBeenCalled();
   });
 });
