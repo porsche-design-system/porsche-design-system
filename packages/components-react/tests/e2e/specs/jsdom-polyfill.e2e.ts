@@ -5,18 +5,22 @@ import { selectNode } from '../helpers';
 import { browser } from '../config';
 
 const getOverviewContent = (): string => {
-  const packagesDir = require.resolve('@porsche-design-system/components-js');
-  const directory = path.resolve(packagesDir, '../../../src/pages');
-  const filePath = path.resolve(directory, 'overview.html');
+  const componentsJsEntry = require.resolve('@porsche-design-system/components-js');
+  const pagesDirectory = path.resolve(componentsJsEntry, '../../../src/pages');
+  const filePath = path.resolve(pagesDirectory, 'overview.html');
 
   return fs.readFileSync(filePath, 'utf8');
 };
 
 const getJsdomPolyfillBuild = (): string => {
-  const directory = require.resolve('@porsche-design-system/components-react');
-  const filePath = path.resolve(directory, '../jsdom-polyfill/index.js');
+  const componentsReactEntry = require.resolve('@porsche-design-system/components-react');
+  const filePath = path.resolve(componentsReactEntry, '../jsdom-polyfill/index.js');
 
   return fs.readFileSync(filePath, 'utf8');
+};
+
+const getComponentsJsBuild = (): string => {
+  return fs.readFileSync(require.resolve('@porsche-design-system/components-js'), 'utf8');
 };
 
 const setContentWithJsdomPolyfillBuild = async (page: Page): Promise<void> => {
@@ -26,6 +30,7 @@ const setContentWithJsdomPolyfillBuild = async (page: Page): Promise<void> => {
   <head>
     <base href="http://localhost:3000"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
     <script>${getJsdomPolyfillBuild()}</script>
+    <script>${getComponentsJsBuild()}</script>
   </head>
   <body></body>
 </html>`,
@@ -39,7 +44,7 @@ describe('jsdom polyfill', () => {
 
   beforeEach(async () => {
     page = await browser.newPage();
-
+    requests = [];
     await page.setRequestInterception(true);
 
     page.removeAllListeners('request');
@@ -61,9 +66,10 @@ describe('jsdom polyfill', () => {
 
     const markup = getOverviewContent();
 
-    await page.evaluate((overviewPage) => {
+    await page.evaluate(async (overviewPage) => {
       (window as any).PDS_SKIP_FETCH = true;
       document.body.innerHTML = overviewPage;
+      await (window as any).porscheDesignSystem.componentsReady();
     }, markup);
 
     const button = await selectNode(page, 'p-button');
@@ -83,11 +89,12 @@ describe('jsdom polyfill', () => {
 
     const markup = getOverviewContent();
 
-    await page.evaluate((overviewPage) => {
+    await page.evaluate(async (overviewPage) => {
       (window as any).PDS_SKIP_FETCH = false;
       document.body.innerHTML = overviewPage;
+      await (window as any).porscheDesignSystem.componentsReady();
     }, markup);
 
-    expect(requests.length).withContext('Request count').not.toBe(0);
+    expect(requests.length).withContext('Request count').toBeGreaterThan(0);
   });
 });
