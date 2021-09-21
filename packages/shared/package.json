@@ -24,11 +24,11 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle && yarn build:preparePackage",
-    "build:generateTagNames": "ts-node --project './tsconfig.node.json' './scripts/generateTagNames.ts'",
-    "build:generateComponentMeta": "ts-node --project './tsconfig.node.json' './scripts/generateComponentMeta.ts'",
-    "build:generateCodeSamples": "ts-node --project './tsconfig.node.json' './scripts/generateCodeSamples.ts'",
+    "build:generateTagNames": "ts-node './scripts/generateTagNames.ts'",
+    "build:generateComponentMeta": "ts-node './scripts/generateComponentMeta.ts'",
+    "build:generateCodeSamples": "ts-node './scripts/generateCodeSamples.ts'",
     "build:bundle": "rollup -c rollup.config.js",
-    "build:preparePackage": "ts-node --project 'tsconfig.node.json' 'scripts/preparePackage.ts'",
+    "build:preparePackage": "ts-node 'scripts/preparePackage.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
