@@ -27,6 +27,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.9",
     "concurrently": "^6.2.1",
+    "jasmine": "^3.8.0",
     "jest": "^27.2.1",
     "react-scripts": "^4.0.2",
     "sass": "^1.42.0",
