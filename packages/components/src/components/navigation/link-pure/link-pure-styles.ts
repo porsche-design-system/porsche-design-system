@@ -98,7 +98,7 @@ const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
 
 const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
-    ? srOnly()
+    ? (srOnly() as JssStyle)
     : {
         position: 'static',
         width: 'auto',
