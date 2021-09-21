@@ -1,4 +1,4 @@
-import { attachCss, buildResponsiveHostStyles, getCss, hasSlottedSubline } from '../../../utils';
+import { buildResponsiveHostStyles, getCss } from '../../../utils';
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 
 const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
@@ -7,9 +7,4 @@ const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
 
 export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
   return getCss(buildResponsiveHostStyles(stretch, getStretchStyles));
-};
-
-export const addComponentCss = (host: HTMLElement, stretch: BreakpointCustomizable<boolean>): void => {
-  // Subline does not support stretch, therefore it needs to be called with false if with subline
-  attachCss(host, getComponentCss(hasSlottedSubline(host) ? false : stretch));
 };

@@ -2,7 +2,6 @@ import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachCss,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -11,7 +10,6 @@ import {
   getFocusStyles,
   getTransition,
   hasVisibleIcon,
-  insertSlottedStyles,
   isDark,
   mergeDeep,
   paramCaseToCamelCase,
@@ -239,25 +237,6 @@ export const getComponentCss = (
   });
 };
 
-export const addComponentCss = (
-  host: HTMLElement,
-  icon: LinkButtonPureIconName,
-  active: boolean,
-  stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
-  hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
-  hasSubline: boolean,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  attachCss(host, getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme));
-};
-
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
 };
