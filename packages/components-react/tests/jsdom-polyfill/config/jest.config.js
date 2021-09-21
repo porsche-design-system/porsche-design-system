@@ -11,4 +11,6 @@ module.exports = {
       isolatedModules: true, // this fixes typing issues with jasmine
     },
   },
+  clearMocks: true,
+  restoreMocks: true,
 };
