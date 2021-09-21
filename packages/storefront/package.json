@@ -35,6 +35,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.9.1",
     "@types/jest": "^27.0.2",
     "@types/node": "~16.9.4",
     "@types/prismjs": "^1.16.6",

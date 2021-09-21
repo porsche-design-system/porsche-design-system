@@ -43,6 +43,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@testing-library/user-event": "^13.1.8",
+    "@types/jasmine": "^3.9.1",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.9.4",
     "@types/react": "^17.0.22",
