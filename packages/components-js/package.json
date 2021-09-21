@@ -66,6 +66,7 @@
     "devtools-protocol": "^0.0.923255",
     "globby": "^11.0.4",
     "http-server": "^13.0.2",
+    "jasmine": "^3.8.0",
     "jest": "^27.2.1",
     "jsdom": "^16.5.3",
     "ts-jest": "^27.0.3",

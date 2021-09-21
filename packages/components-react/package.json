@@ -50,6 +50,7 @@
     "@types/react-router-dom": "^5.1.9",
     "concurrently": "^6.2.1",
     "globby": "^11.0.4",
+    "jasmine": "^3.8.0",
     "jest": "^27.2.1",
     "react-scripts": "^4.0.2",
     "rollup": "^2.56.1",
