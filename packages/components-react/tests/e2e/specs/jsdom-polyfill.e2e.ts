@@ -19,7 +19,21 @@ const getJsdomPolyfillBuild = (): string => {
   return fs.readFileSync(filePath, 'utf8');
 };
 
-describe('jsdomEvents()', () => {
+const setContentWithJsdomPolyfillBuild = async (page: Page): Promise<void> => {
+  await page.setContent(
+    `<!DOCTYPE html>
+<html>
+  <head>
+    <base href="http://localhost:3000"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+    <script>${getJsdomPolyfillBuild()}</script>
+  </head>
+  <body></body>
+</html>`,
+    { waitUntil: 'networkidle0' }
+  );
+};
+
+describe('jsdom polyfill', () => {
   let page: Page;
   let requests: string[] = [];
 
@@ -43,17 +57,7 @@ describe('jsdomEvents()', () => {
   });
 
   it('should have no cdn requests', async () => {
-    await page.setContent(
-      `<!DOCTYPE html>
-<html>
-  <head>
-    <base href="http://localhost:3000"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-    <script>${getJsdomPolyfillBuild()}</script>
-  </head>
-  <body></body>
-</html>`,
-      { waitUntil: 'networkidle0' }
-    );
+    await setContentWithJsdomPolyfillBuild(page);
 
     const markup = getOverviewContent();
 
@@ -72,5 +76,18 @@ describe('jsdomEvents()', () => {
       console.log('HTTP Requests:', requests);
     }
     expect(requests.length).withContext('Request count').toBe(0);
+  });
+
+  it('should have cdn requests', async () => {
+    await setContentWithJsdomPolyfillBuild(page);
+
+    const markup = getOverviewContent();
+
+    await page.evaluate((overviewPage) => {
+      (window as any).PDS_SKIP_FETCH = false;
+      document.body.innerHTML = overviewPage;
+    }, markup);
+
+    expect(requests.length).withContext('Request count').not.toBe(0);
   });
 });

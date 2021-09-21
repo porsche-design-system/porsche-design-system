@@ -33,3 +33,7 @@ export const syncRef = /*#__PURE__*/
       ref.current = el;
     }
   };
+
+export const skipPorscheDesignSystemCDNRequestsDuringTests = (): void => {
+  (window as any).PDS_SKIP_FETCH = true;
+};
