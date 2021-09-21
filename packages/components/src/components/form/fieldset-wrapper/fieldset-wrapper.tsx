@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { getPrefixedTagNames, hasLabel, hasMessage, getRole } from '../../../utils';
+import { hasLabel, hasMessage } from '../../../utils';
 import type { FormState, TextSize } from '../../../types';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -9,14 +10,19 @@ import type { FormState, TextSize } from '../../../types';
 })
 export class FieldsetWrapper {
   @Element() public host!: HTMLElement;
+
   /** The label text. */
   @Prop() public label?: string = '';
+
   /** The size of the label text. */
   @Prop() public labelSize?: Extract<TextSize, 'small' | 'medium'> = 'medium';
+
   /** Marks the Fieldset as required. */
   @Prop() public required?: boolean = false;
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
+
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
@@ -28,16 +34,12 @@ export class FieldsetWrapper {
       ['root--label-size-small']: this.labelSize === 'small',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <fieldset class={rootClasses}>
         {hasLabel(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
         <slot />
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </fieldset>
     );

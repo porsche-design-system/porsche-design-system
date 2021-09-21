@@ -1,10 +1,9 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
-  getTagName,
   handleButtonEvent,
-  insertSlottedStyles,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -12,11 +11,11 @@ import {
   mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
-  getRole,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { getSlottedCss } from './text-field-wrapper-styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -47,7 +46,7 @@ export class TextFieldWrapper {
   private isPassword: boolean;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
@@ -88,7 +87,7 @@ export class TextFieldWrapper {
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -130,9 +129,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" {...textProps} role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );
@@ -146,14 +143,14 @@ export class TextFieldWrapper {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     this.input.focus();
   };
 
   private togglePassword = (): void => {
     this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
-    this.labelClick();
+    this.onLabelClick();
   };
 
   private onSubmit = (event: MouseEvent): void => {
@@ -168,41 +165,4 @@ export class TextFieldWrapper {
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }
-
-    ${tagName} input::-webkit-outer-spin-button,
-    ${tagName} input::-webkit-inner-spin-button,
-    ${tagName} input[type="search"]::-webkit-search-decoration {
-      -webkit-appearance: none !important;
-      appearance: none !important;
-    }
-
-    ${tagName} input[type="text"]::-webkit-contacts-auto-fill-button,
-    ${tagName} input[type="text"]::-webkit-credentials-auto-fill-button {
-      margin-right: 2.4375rem !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

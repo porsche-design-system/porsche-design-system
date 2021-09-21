@@ -1,15 +1,11 @@
 import { Config } from '@stencil/core';
-import { sass } from '@stencil/sass';
+import { sass } from '@porsche-design-system/stencil-sass';
 import { postcss } from '@stencil/postcss';
 // @ts-ignore
 import autoprefixer from 'autoprefixer';
 import * as path from 'path';
-import modify from 'rollup-plugin-modify';
 import replace from '@rollup/plugin-replace';
-// @ts-ignore
-import CleanCSS from 'clean-css';
 import type { TagName } from '@porsche-design-system/shared';
-import { constantCase } from 'change-case';
 
 /**
  * TODO: Remove this workaround
@@ -24,8 +20,6 @@ import { constantCase } from 'change-case';
 const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
 process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
-const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
-
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
 // specify chunking of components that can't be used standalone
@@ -34,6 +28,7 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-button', 'p-button-group'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   {
     components: [
       'p-table',
@@ -77,24 +72,6 @@ export const config: Config = {
     after: [
       replace({
         ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
-      }),
-      modify({
-        // minify slotted styles
-        find: /const style = `((.|\s)*?)`/g,
-        replace: (_, $1) => {
-          const placeholder = /\${(tagName|P_ANIMATION_HOVER_DURATION)}/g;
-          const placeholderReverted = /(TAG_NAME|P_ANIMATION_HOVER_DURATION)/g;
-
-          const escapeForMinify = (match: string, p1: string) =>
-            p1 === 'P_ANIMATION_HOVER_DURATION' ? p1 : constantCase(p1);
-          const reAddInterpolation = (match: string, p1: string) =>
-            p1 === 'P_ANIMATION_HOVER_DURATION' ? '${P_ANIMATION_HOVER_DURATION}' : '${tagName}';
-
-          return `const style = \`${minifyCSS($1.replace(placeholder, escapeForMinify)).replace(
-            placeholderReverted,
-            reAddInterpolation
-          )}\``;
-        },
       }),
     ],
   },

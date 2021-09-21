@@ -4,13 +4,13 @@
   </main>
   <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <aside class="sidebar">
+    <div class="sidebar">
       <Header />
       <p-divider class="divider-spacing-small"></p-divider>
       <Sidebar />
       <p-divider class="divider-spacing-small"></p-divider>
       <Footer />
-    </aside>
+    </div>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
       <p-spinner v-if="isLoading" size="medium" aria-label="Loading page"></p-spinner>
@@ -260,6 +260,7 @@
 </style>
 
 <style scoped lang="scss">
+  @use 'sass:math';
   @import '~@porsche-design-system/utilities/scss';
 
   .content {
@@ -348,7 +349,7 @@
     z-index: 10;
 
     @include p-media-query('s') {
-      left: calc(50% + #{p-px-to-rem(280px) / 2});
+      left: calc(50% + #{math.div(p-px-to-rem(280px), 2)});
     }
   }
 

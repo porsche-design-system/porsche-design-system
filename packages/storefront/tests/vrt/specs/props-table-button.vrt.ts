@@ -1,16 +1,12 @@
-import { getVisualRegressionTesterPropTable } from '../helpers/setup';
+import { getVisualRegressionTesterPropTable, vrtTest } from '@porsche-design-system/shared/testing';
+import { routerViewSelector } from '../helpers/setup';
 
 describe('Props Table Button', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTesterPropTable();
     expect(
-      await vrt.test(
-        'props-table-button',
-        async () => {
-          await vrt.goTo('/components/button/props');
-        },
-        { elementSelector: '#app > .main > .router-view' }
-      )
+      await vrtTest(getVisualRegressionTesterPropTable(), 'props-table-button', '/components/button/props', {
+        elementSelector: routerViewSelector,
+      })
     ).toBeFalsy();
   });
 });

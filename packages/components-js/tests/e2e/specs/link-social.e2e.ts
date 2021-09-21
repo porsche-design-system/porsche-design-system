@@ -1,14 +1,12 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   getActiveElementId,
   getBrowser,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -39,6 +37,7 @@ describe('link-social', () => {
 
   const getHost = () => selectNode(page, 'p-link-social');
   const getLink = () => selectNode(page, 'p-link-social >>> a');
+  const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
@@ -192,29 +191,6 @@ describe('link-social', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
-      await initLinkSocial();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'default' }); // because of button click, :focus-visible & :hover
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link)).toBe(visible);
-    });
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initLinkSocial();
@@ -232,7 +208,7 @@ describe('link-social', () => {
       await initLinkSocial();
       const host = await getHost();
 
-      await setAttribute(host, 'icon', 'logo-xing');
+      await setProperty(host, 'icon', 'logo-xing');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 

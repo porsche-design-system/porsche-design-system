@@ -1,9 +1,15 @@
-import { breakpoint, color, font } from '@porsche-design-system/utilities';
 import type { Breakpoint } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
+import { isDark } from '.';
+import type { Theme } from '../types';
+import type { PropertiesHyphen } from 'csstype';
 
-export const transitionDuration = 'var(--p-transition-duration, .24s)';
-export const transitionTimingFunction = 'ease';
+const transitionDuration = 'var(--p-transition-duration, .24s)';
+const transitionTimingFunction = 'ease';
+
+export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
@@ -24,56 +30,121 @@ export const addImportantToEachRule = <T extends Record<string, unknown>>(style:
 };
 
 type GetHoverStylesOptions = {
-  important?: boolean;
-};
-
-const defaultHoverStylesOptions: GetHoverStylesOptions = {
-  important: false,
+  theme?: Theme;
 };
 
 export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = { ...defaultHoverStylesOptions, ...opts };
-
-  const style: JssStyle = {
-    transition: `color ${transitionDuration} ${transitionTimingFunction}`,
-    '&:hover': {
-      color: color.state.hover,
-    },
+  const options: GetHoverStylesOptions = {
+    theme: 'light',
+    ...opts,
   };
 
-  return options.important ? addImportantToEachRule(style) : style;
+  return {
+    transition: getTransition('color'),
+    '&:hover': {
+      color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
+    },
+  };
 };
 
-type GetFocusStylesOptions = {
+export type GetFocusStylesOptions = {
   color?: string;
   offset?: number;
-  important?: boolean;
-};
-
-const defaultFocusStylesOptions: GetFocusStylesOptions = {
-  color: color.state.focus,
-  offset: 2,
-  important: false,
+  pseudo?: '::after' | '::before';
 };
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = { ...defaultFocusStylesOptions, ...opts };
-
-  const style: JssStyle = {
-    outline: 'transparent solid 1px',
-    outlineOffset: `${options.offset}px`,
-    '&::-moz-focus-inner': {
-      border: '0',
-    },
-    '&:focus': {
-      outlineColor: options.color,
-    },
-    '&:focus:not(:focus-visible)': {
-      outlineColor: 'transparent',
-    },
+  const options: GetFocusStylesOptions = {
+    color: color.state.focus,
+    offset: 2,
+    pseudo: undefined,
+    ...opts,
   };
 
-  return options.important ? addImportantToEachRule(style) : style;
+  const { pseudo, offset: outlineOffset, color: outlineColor } = options;
+
+  return pseudo
+    ? {
+        outline: 'transparent none',
+        '&::-moz-focus-inner': {
+          border: 0,
+        },
+        [`&${pseudo}`]: {
+          outline: 'transparent solid 1px',
+          outlineOffset: `${outlineOffset}px`,
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        },
+        [`&:focus${pseudo}`]: {
+          outlineColor,
+        },
+        [`&:focus:not(:focus-visible)${pseudo}`]: {
+          outlineColor: 'transparent',
+        },
+      }
+    : {
+        outline: 'transparent solid 1px',
+        outlineOffset: `${outlineOffset}px`,
+        '&::-moz-focus-inner': {
+          border: '0',
+        },
+        '&:focus': {
+          outlineColor,
+        },
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
+        },
+      };
+};
+
+export type GetFocusSlottedPseudoStylesOptions = {
+  color?: string;
+  offset?: number;
+};
+
+/**
+ * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
+ */
+export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles => {
+  const options: GetFocusSlottedPseudoStylesOptions = {
+    color: color.state.focus,
+    offset: 2,
+    ...opts,
+  };
+
+  const { offset: outlineOffset, color: outlineColor } = options;
+
+  return {
+    '& a': {
+      display: 'block',
+      position: 'static',
+      textDecoration: 'none',
+      font: 'inherit',
+      color: 'inherit',
+      outline: 'transparent none',
+      '&::before': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        outline: '1px solid transparent',
+        outlineOffset: `${outlineOffset}px`,
+      },
+      '&:focus::before': {
+        outlineColor,
+      },
+      '&:focus:not(:focus-visible)::before': {
+        outlineColor: 'transparent',
+      },
+    },
+  };
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
@@ -87,6 +158,7 @@ export const getBaseSlottedStyles = (): Styles => {
       ...getHoverStyles(),
       ...getFocusStyles({ offset: 1 }),
     },
+    '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
     '& b, & strong': {
       fontWeight: font.weight.bold,
     },
@@ -95,3 +167,23 @@ export const getBaseSlottedStyles = (): Styles => {
     },
   };
 };
+
+export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
+  isHidden
+    ? srOnly()
+    : {
+        position: 'static',
+        width: 'auto',
+        height: 'auto',
+        margin: 0,
+        overflow: 'visible',
+        clip: 'auto',
+        clipPath: 'none',
+        whiteSpace: 'normal',
+      };
+
+export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({
+  ...getTextHiddenJssStyle(isHidden),
+  width: isCheckboxOrRadio ? 'auto' : 'fit-content',
+  padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
+});

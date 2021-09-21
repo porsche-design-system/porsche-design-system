@@ -2,24 +2,37 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  getTagName,
-  hasNamedSlot,
   improveFocusHandlingForCustomElement,
-  insertSlottedStyles,
-  isDark,
-  mapBreakpointPropToClasses,
   transitionListener,
+  hasVisibleIcon,
+  hasSlottedSubline,
+  attachComponentCss,
+  attachSlottedCss,
 } from '../../../utils';
-import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  LinkTarget,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
+import { getComponentCss, getSlottedCss } from './link-pure-styles';
 
 @Component({
   tag: 'p-link-pure',
-  styleUrl: 'link-pure.scss',
   shadow: true,
 })
 export class LinkPure {
   @Element() public host!: HTMLElement;
+
+  /** Aligns the label. */
+  @Prop() public alignLabel?: AlignLabel = 'right';
+
+  /** Stretches the area between icon and label to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -27,8 +40,8 @@ export class LinkPure {
   /** The weight of the text (only has effect with visible label). */
   @Prop() public weight?: TextWeight = 'regular';
 
-  /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  /** The icon shown. By choosing 'none', no icon is displayed */
+  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -58,12 +71,28 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    attachSlottedCss(this.host, getSlottedCss);
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.stretch,
+      this.size,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      !!this.href,
+      this.theme
+    );
   }
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    if (isSizeInherit(this.size)) {
+    if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.linkTag)}em`;
         this.iconTag.style.width = size;
@@ -73,76 +102,44 @@ export class LinkPure {
   }
 
   public render(): JSX.Element {
+    const hasSubline = hasSlottedSubline(this.host);
     const TagType = this.href === undefined ? 'span' : 'a';
-
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--active']: this.active,
-      ...mapBreakpointPropToClasses('root--size', this.size),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <TagType
-          class={rootClasses}
+          class="root"
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
             download: this.download,
             rel: this.rel,
+            ...(hasSubline && { 'aria-describedby': 'subline' }),
           })}
           ref={(el) => (this.linkTag = el)}
         >
-          <PrefixedTagNames.pIcon
-            class="icon"
-            color="inherit"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            ref={(el) => (this.iconTag = el)}
-            aria-hidden="true"
-          />
+          {hasVisibleIcon(this.icon) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              color="inherit"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              ref={(el) => (this.iconTag = el)}
+              aria-hidden="true"
+            />
+          )}
           <PrefixedTagNames.pText class="label" tag="span" color="inherit" size="inherit" weight={this.weight}>
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {hasNamedSlot(this.host, 'subline') && (
-          <PrefixedTagNames.pText class="subline" color="inherit" size="inherit" tag="div">
+        {hasSubline && (
+          <PrefixedTagNames.pText id="subline" class="subline" color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
-    ${tagName} a::before {
-      content: "" !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      display: block !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:focus::before {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible)::before {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
   }
 }

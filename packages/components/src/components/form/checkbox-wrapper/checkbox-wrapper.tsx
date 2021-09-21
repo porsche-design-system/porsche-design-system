@@ -1,11 +1,9 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  attachSlottedCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
-  getRole,
-  getTagName,
-  insertSlottedStyles,
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
@@ -15,7 +13,8 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { P_ANIMATION_HOVER_DURATION } from '../../../styles';
+import { getSlottedCss } from './checkbox-wrapper-styles';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -40,7 +39,7 @@ export class CheckboxWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    this.addSlottedStyles();
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
@@ -83,7 +82,7 @@ export class CheckboxWrapper {
       <Host>
         <label class={rootClasses}>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
@@ -91,15 +90,13 @@ export class CheckboxWrapper {
           <slot />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage state={this.state} message={this.message} host={this.host} />
         )}
       </Host>
     );
   }
 
-  private labelClick = (event: MouseEvent): void => {
+  private onLabelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
      * also we don't want to click to the input, if a link is clicked.
@@ -112,29 +109,4 @@ export class CheckboxWrapper {
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
-
-  private addSlottedStyles(): void {
-    const tagName = getTagName(this.host);
-    const style = `${tagName} a {
-      color: inherit !important;
-      text-decoration: underline !important;
-      transition: color ${P_ANIMATION_HOVER_DURATION} ease !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
-    }
-
-    ${tagName} a:hover {
-      color: #d5001c !important;
-    }
-
-    ${tagName} a:focus {
-      outline-color: currentColor !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible) {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.host, style);
-  }
 }

@@ -4,32 +4,25 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 import { Theme } from '@porsche-design-system/utilities';
 
 describe('Accordion', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'accordion',
-        async () => {
-          await vrt.goTo('/#accordion');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'accordion', '/#accordion')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('accordion-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const content = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`;

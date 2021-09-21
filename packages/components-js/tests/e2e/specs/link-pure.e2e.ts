@@ -2,13 +2,14 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getActiveElementId,
+  getAttribute,
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
   initAddEventListener,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -25,10 +26,11 @@ describe('link-pure', () => {
 
   const getHost = () => selectNode(page, 'p-link-pure');
   const getLink = () => selectNode(page, 'p-link-pure >>> a');
+  const getSpan = () => selectNode(page, 'p-link-pure >>> span');
   const getSlottedLink = () => selectNode(page, 'p-link-pure a');
 
-  const initLinkPure = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
-    const { useSlottedAnchor = false } = opts ?? {};
+  const initLinkPure = (opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
+    const { useSlottedAnchor = false, withSubline = false } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
@@ -37,6 +39,7 @@ describe('link-pure', () => {
         ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
         ${useSlottedAnchor ? '</a>' : ''}
+        ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
       </p-link-pure>`
     );
   };
@@ -194,6 +197,29 @@ describe('link-pure', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
+  describe('accessibility', () => {
+    it('should have aria-describedby when it has a subline', async () => {
+      await initLinkPure({ withSubline: true });
+      const link = await getLink();
+
+      expect(await getAttribute(link, 'aria-describedby')).toBe('subline');
+    });
+
+    it('should not have aria-describedby with slotted anchor and without subline', async () => {
+      await initLinkPure({ useSlottedAnchor: true });
+      const span = await getSpan();
+
+      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
+    });
+
+    it('should not have aria-describedby with slotted anchor and subline', async () => {
+      await initLinkPure({ useSlottedAnchor: true, withSubline: true });
+      const span = await getSpan();
+
+      expect(await getAttribute(span, 'aria-describedby')).toBeNull();
+    });
+  });
+
   describe('focus state', () => {
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {
       await initLinkPure();
@@ -255,7 +281,7 @@ describe('link-pure', () => {
       await initLinkPure();
       const host = await getHost();
 
-      await setAttribute(host, 'size', 'medium');
+      await setProperty(host, 'size', 'medium');
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 

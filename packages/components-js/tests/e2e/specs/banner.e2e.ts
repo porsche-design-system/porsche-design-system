@@ -9,8 +9,8 @@ import {
   initAddEventListener,
   reattachElement,
   selectNode,
-  setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -225,7 +225,7 @@ describe('banner', () => {
       await initBanner('error');
       const host = await getHost();
 
-      await setAttribute(host, 'state', 'warning');
+      await setProperty(host, 'state', 'warning');
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);

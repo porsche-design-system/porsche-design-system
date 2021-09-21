@@ -1,13 +1,10 @@
 import {
   addImportantToEachRule,
-  attachCss,
-  buildGlobalStyles,
   buildHostStyles,
+  buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getTagName,
-  insertSlottedStyles,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -81,21 +78,11 @@ export const getComponentCss = (): string => {
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
-    buildGlobalStyles({
-      [getTagName(host)]: addImportantToEachRule({
-        ...getBaseSlottedStyles(),
-        '& img': {
-          verticalAlign: 'middle',
-        },
-      }),
+    buildSlottedStyles(host, {
+      ...getBaseSlottedStyles(),
+      '& img': {
+        verticalAlign: 'middle',
+      },
     })
   );
-};
-
-export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss());
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
 };

@@ -2,33 +2,26 @@ import {
   forceFocusedHoveredState,
   forceFocusedState,
   forceHoveredState,
-  getBodyMarkup,
-  GetMarkup,
-  getVisualRegressionContentWrapperTester,
-  getVisualRegressionStatesTester,
+  getThemedBodyMarkup,
+  GetThemedMarkup,
   setContentWithDesignSystem,
-  testOptions,
 } from '../helpers';
+import {
+  getVisualRegressionStatesTester,
+  getVisualRegressionContentWrapperTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Banner', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionContentWrapperTester();
-    expect(
-      await vrt.test(
-        'banner',
-        async () => {
-          await vrt.goTo('/#banner');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionContentWrapperTester(), 'banner', '/#banner')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('banner-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `
           <style type="text/css">
@@ -36,13 +29,13 @@ describe('Banner', () => {
             .playground p-banner { --p-banner-position-type: static; }
           </style>`;
 
-        const getElementsMarkup: GetMarkup = () => `
-          <p-banner state="neutral">
+        const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-banner state="neutral" theme="${theme}">
             <span slot="title">Some banner title</span>
-            <span slot="description">Some banner description. You can also add inline <a>links</a> to route to another page.</span>
+            <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
           </p-banner>`;
 
-        await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+        await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
         await forceHoveredState(page, '.hovered > p-banner span a');
         await forceFocusedState(page, '.focused > p-banner span a');
