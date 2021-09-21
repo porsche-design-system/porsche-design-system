@@ -57,11 +57,11 @@ const addPictureConditionToMarque = () => {
   console.log(`Added fetch condition to marque`);
 };
 
-const cleanAndExtendJSDOMBuild = (): void => {
+const cleanJsdomBuild = (): void => {
   cleanConsoleWarnInInjectToGlobalStyles();
   addConditionToGlobalScripts();
   addConditionToPdsFetch();
   addPictureConditionToMarque();
 };
 
-cleanAndExtendJSDOMBuild();
+cleanJsdomBuild();
