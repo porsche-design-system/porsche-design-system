@@ -11,7 +11,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       isolatedModules: true, // this fixes typing issues with jasmine
-      tsConfig: {
+      tsconfig: {
         target: 'es2019',
         lib: ['es2019', 'dom'],
       },
