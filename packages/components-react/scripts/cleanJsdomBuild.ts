@@ -26,6 +26,7 @@ const addPictureConditionToMarque = (fileContent: string): string => {
   );
 };
 
+// TODO: Stencil adds comments with <script> tags which are not recognized as comments by our e2e test
 const cleanScriptTagsInComments = (fileContent: string): string => {
   return fileContent.replace(/\/\/.*(?:<\/|<)script>/g, '');
 };
