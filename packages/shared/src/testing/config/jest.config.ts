@@ -1,9 +1,9 @@
 module.exports = {
   preset: 'jest-puppeteer',
-  rootDir: '../../../',
+  rootDir: '..',
   verbose: true,
-  testMatch: ['**/tests/e2e-jest/specs/**/*.e2e.ts'],
-  modulePathIgnorePatterns: ['<rootDir>/dist'],
+  testMatch: ['**/specs/**/*.{e2e|vrt}.ts'],
+  // modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
   transform: {
     '^.+\\.ts?$': 'ts-jest',
