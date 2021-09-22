@@ -31,7 +31,7 @@
     "test": "yarn test:e2e && yarn test:vrt",
     "test:e2e": "CI=true concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 30000 http-get://localhost:8575 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
     "test:e2e-jest": "CI=true JEST_PUPPETEER_CONFIG=./tests/e2e-jest/config/jest-puppeteer.config.js concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 30000 http-get://localhost:8575 && jest --runInBand -c tests/e2e-jest/config/jest.config.js'",
-    "test:jest": "JEST_PUPPETEER_CONFIG=./tests/e2e-jest/config/jest-puppeteer.config.js jest --runInBand -c tests/e2e-jest/config/jest.config.ts",
+    "test:jest": "jest --runInBand -c tests/e2e-jest/config/jest.config.ts",
     "test:vrt": "CI=true concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 30000 http-get://localhost:8575 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:smoke": "ts-node --project tests/smoke/config/tsconfig.json node_modules/.bin/jasmine --config=tests/smoke/config/jasmine.config.json",
     "test:unit": "yarn test:unit:components-manager-core && yarn test:unit:components-js && yarn test:unit:partials",
