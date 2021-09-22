@@ -9,30 +9,34 @@ export type {
   VisualRegressionTestOptions,
 } from '@porsche-design-system/visual-regression-tester';
 
-let browser: Browser;
+declare global {
+  const browser: Browser;
+}
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+// let browser: Browser;
 
-jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new SpecReporter());
-
-beforeAll(async () => {
-  browser = await launch({
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--single-process',
-      '--disable-web-security',
-    ],
-  });
-});
-
-afterAll(async () => {
-  if (browser) {
-    await browser.close();
-  }
-});
+// jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+//
+// jasmine.getEnv().clearReporters();
+// jasmine.getEnv().addReporter(new SpecReporter());
+//
+// beforeAll(async () => {
+//   browser = await launch({
+//     args: [
+//       '--no-sandbox',
+//       '--disable-setuid-sandbox',
+//       '--disable-dev-shm-usage',
+//       '--single-process',
+//       '--disable-web-security',
+//     ],
+//   });
+// });
+//
+// afterAll(async () => {
+//   if (browser) {
+//     await browser.close();
+//   }
+// });
 
 const defaultOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
