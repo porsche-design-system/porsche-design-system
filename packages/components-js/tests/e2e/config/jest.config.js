@@ -2,7 +2,7 @@ module.exports = {
   preset: 'jest-puppeteer',
   rootDir: '../../../',
   verbose: true,
-  testMatch: ['**/tests/e2e-jest/specs/**/*.e2e.ts'],
+  testMatch: ['**/tests/e2e/specs/**/*.e2e.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
   // setupFilesAfterEnv: ['expect-puppeteer'],
