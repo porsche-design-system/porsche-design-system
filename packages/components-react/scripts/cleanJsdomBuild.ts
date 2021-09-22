@@ -26,11 +26,6 @@ const addPictureConditionToMarque = (fileContent: string): string => {
   );
 };
 
-// TODO: Stencil adds comments with <script> tags which are not recognized as comments by our e2e test
-const cleanScriptTagsInComments = (fileContent: string): string => {
-  return fileContent.replace(/\/\/.*(?:<\/|<)script>/g, '');
-};
-
 const cleanJsdomBuild = (): void => {
   const directory = require.resolve('@porsche-design-system/components-react');
   const filePath = path.resolve(directory, '../jsdom-polyfill/index.js');
@@ -41,7 +36,6 @@ const cleanJsdomBuild = (): void => {
     addConditionToGlobalScripts,
     addConditionToPdsFetch,
     addPictureConditionToMarque,
-    cleanScriptTagsInComments,
   ].reduce((previousResult, fn) => fn(previousResult), fileContent);
 
   fs.writeFileSync(filePath, content);

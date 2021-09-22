@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import polyfill from 'rollup-plugin-polyfill';
 import pkg from '@porsche-design-system/js/package.json';
 import commonjs from '@rollup/plugin-commonjs';
+import { terser } from 'rollup-plugin-terser';
 
 const polyfills = [
   '@juggle/resize-observer',
@@ -24,5 +25,10 @@ export default {
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
     polyfill(polyfills),
     resolve(),
+    terser({
+      output: {
+        comments: false,
+      },
+    }),
   ],
 };
