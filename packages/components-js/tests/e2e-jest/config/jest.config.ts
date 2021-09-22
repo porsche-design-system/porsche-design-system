@@ -5,7 +5,6 @@ module.exports = {
   testMatch: ['**/tests/e2e-jest/specs/**/*.e2e.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
-  // setupFilesAfterEnv: ['expect-puppeteer'],
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
