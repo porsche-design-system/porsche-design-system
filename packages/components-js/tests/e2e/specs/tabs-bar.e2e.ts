@@ -3,7 +3,6 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getAttribute,
-  getBrowser,
   getConsoleErrorsAmount,
   getElementPositions,
   getElementStyle,
@@ -30,7 +29,7 @@ const TABS_SCROLL_PERCENTAGE = 0.2;
 
 describe('tabs-bar', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type InitOptions = {
@@ -157,17 +156,13 @@ describe('tabs-bar', () => {
       const statusBar = await getStatusBar();
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('initial position')
-        .toEqual(87);
+      expect(Math.floor((await getElementPositions(page, statusBar)).right), 'initial position').toEqual(87);
 
       await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, statusBar)).right))
-        .withContext('final position')
-        .toEqual(257);
+      expect(Math.floor((await getElementPositions(page, statusBar)).right), 'final position').toEqual(257);
     });
 
     it('should adjust status bar style when new tab element is added and clicked', async () => {
@@ -184,25 +179,19 @@ describe('tabs-bar', () => {
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('initial position')
-        .toEqual(0);
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'initial position').toEqual(0);
 
       const [, secondButton] = await getAllButtons();
       await clickElement(secondButton);
 
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('final position')
-        .toEqual(107);
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'final position').toEqual(107);
     });
 
     it('should stay selected and have same status bar style when tab after current active tab is removed', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
       const statusBar = await getStatusBar();
 
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('initial position')
-        .toEqual(103);
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'initial position').toEqual(103);
 
       await page.evaluate(() => {
         const tabsBar = document.querySelector('p-tabs-bar');
@@ -215,9 +204,7 @@ describe('tabs-bar', () => {
 
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('final position')
-        .toEqual(103);
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'final position').toEqual(103);
     });
 
     it('should reset tabindex and status bar styles when active tab on last position is removed', async () => {
@@ -236,9 +223,7 @@ describe('tabs-bar', () => {
       expect(await getStatusBarWidth(statusBar)).toBe('0px');
       expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('final position')
-        .toEqual(0);
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'final position').toEqual(0);
     });
 
     it('should reset tabindex when last tab is active and a tab is removed in the middle', async () => {
@@ -259,12 +244,8 @@ describe('tabs-bar', () => {
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('final position')
-        .toEqual(0);
-      expect(await getStatusBarWidth(statusBar))
-        .withContext('final width')
-        .toBe('0px');
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'final position').toEqual(0);
+      expect(await getStatusBarWidth(statusBar), 'final width').toBe('0px');
     });
 
     it('should set tabindex and aria-selected on next tab when active tab in the middle is removed', async () => {
@@ -282,12 +263,8 @@ describe('tabs-bar', () => {
       const [, secondButton] = await getAllButtons();
 
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-      expect(Math.floor((await getElementPositions(page, statusBar)).left))
-        .withContext('final position')
-        .toEqual(103);
-      expect(await getStatusBarWidth(statusBar))
-        .withContext('final width')
-        .toBe('87px');
+      expect(Math.floor((await getElementPositions(page, statusBar)).left), 'final position').toEqual(103);
+      expect(await getStatusBarWidth(statusBar), 'final width').toBe('87px');
     });
   });
 
@@ -413,9 +390,9 @@ describe('tabs-bar', () => {
 
       await clickElement(firstButton);
 
-      expect((await getElementPositions(page, firstButton)).left)
-        .withContext('correct offsetLeft after click')
-        .toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
+      expect((await getElementPositions(page, firstButton)).left, 'correct offsetLeft after click').toEqual(
+        Math.floor((await getElementPositions(page, statusBar)).left)
+      );
     });
 
     it('should have offsetLeft on statusbar as the center of unset tab', async () => {
@@ -437,9 +414,10 @@ describe('tabs-bar', () => {
       await clickElement(thirdButton);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, thirdButton)).left))
-        .withContext('correct offset width after click on third button')
-        .toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
+      expect(
+        Math.floor((await getElementPositions(page, thirdButton)).left),
+        'correct offset width after click on third button'
+      ).toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
     });
 
     it('should have correct scroll position after tab click and arrow left', async () => {
@@ -458,19 +436,15 @@ describe('tabs-bar', () => {
       const button3offset = await getOffsetLeft(button3);
       const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
 
-      expect(await getScrollLeft(scrollArea))
-        .withContext('scroll left active button after click')
-        .toBe(scrollDistanceLeft);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceLeft);
 
       await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea))
-        .withContext('scroll left active button after first prev click')
-        .toBe(scrollDistanceLeft - scrollDistance);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after first prev click').toBe(
+        scrollDistanceLeft - scrollDistance
+      );
 
       await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea))
-        .withContext('scroll left active button after second prev click')
-        .toBe(0);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(0);
     });
 
     it('should have correct scroll position after tab click and arrow right', async () => {
@@ -492,14 +466,10 @@ describe('tabs-bar', () => {
       const buttonWidth = await getOffsetWidth(button7);
       const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
 
-      expect(await getScrollLeft(scrollArea))
-        .withContext('scroll left active button after click')
-        .toBe(scrollDistanceRight);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
       await clickElement(nextButton);
-      expect(await getScrollLeft(scrollArea))
-        .withContext('scroll left active button after prev click')
-        .toBe(maxScrollDistance);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(maxScrollDistance);
     });
 
     describe('when not wrapped', () => {
@@ -600,18 +570,18 @@ describe('tabs-bar', () => {
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
 
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
       expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
-      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTruthy();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
       expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
 
@@ -623,12 +593,12 @@ describe('tabs-bar', () => {
       await page.keyboard.press('End');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 2)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 2)).toBeTruthy();
 
       await page.keyboard.press('Home');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
       expect(await isElementAtIndexFocused(page, 2)).toBeFalsy();
     });
 
@@ -864,9 +834,7 @@ describe('tabs-bar', () => {
           );
           const { actionNext } = await getActionContainers();
 
-          expect(await getClassList(actionNext))
-            .withContext(`On size ${i}`)
-            .toContain(hiddenClass);
+          expect(await getClassList(actionNext), `On size ${i}`).toContain(hiddenClass);
         });
       }
     });
@@ -958,13 +926,13 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-tabs-bar']).withContext('componentDidLoad: p-tabs-bar').toBe(1);
-      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(2);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
+      expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(7);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -976,10 +944,10 @@ describe('tabs-bar', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs-bar']).withContext('componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(7);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 });

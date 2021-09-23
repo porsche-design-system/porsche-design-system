@@ -303,9 +303,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
         root: button,
       });
 
-      expect(snapshotButton.role).toBe('button');
-      expect(snapshotButton.name).toBe('Some Accordion');
-      expect(snapshotButton.expanded).toBeUndefined();
+      expect(snapshotButton).toMatchSnapshot('Of Button');
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
     });
 
@@ -326,9 +324,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
         root: panel,
       });
 
-      expect(snapshotButton.expanded).toBe(true);
-      expect(snapshotPanel.role).toBe('region');
-      expect(snapshotPanel.name).toBe('Some Accordion');
+      expect(snapshotButton).toMatchSnapshot('Of Button');
+      expect(snapshotPanel).toMatchSnapshot('Of Panel');
     });
   });
 });
