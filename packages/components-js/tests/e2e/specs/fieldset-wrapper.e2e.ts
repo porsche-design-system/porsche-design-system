@@ -1,10 +1,10 @@
 import { Page } from 'puppeteer';
-import { getBrowser, selectNode, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
+import { selectNode, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('fieldset-wrapper', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type InitOptions = {

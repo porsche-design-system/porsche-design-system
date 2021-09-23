@@ -2,7 +2,6 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getAttribute,
-  getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
@@ -19,7 +18,7 @@ describe('textarea-wrapper', () => {
   let page: Page;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
@@ -121,48 +120,30 @@ describe('textarea-wrapper', () => {
     const host = await getHost();
     const textarea = await getTextarea();
 
-    expect(await getMessage())
-      .withContext('initially')
-      .toBeNull();
+    expect(await getMessage(), 'initially').toBeNull();
 
     await setProperty(host, 'state', 'error');
     await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = error')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = error')
-      .toBe('alert');
-    expect(await getProperty(textarea, 'ariaLabel'))
-      .withContext('when state = error')
-      .toBe('Some label. Some error message');
+    expect(await getMessage(), 'when state = error').toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'), 'when state = error').toBe('alert');
+    expect(await getProperty(textarea, 'ariaLabel'), 'when state = error').toBe('Some label. Some error message');
 
     await setProperty(host, 'state', 'success');
     await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = success')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = success')
-      .toBeNull();
-    expect(await getProperty(textarea, 'ariaLabel'))
-      .withContext('when state = success')
-      .toBe('Some label. Some success message');
+    expect(await getMessage(), 'when state = success').toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'), 'when state = success').toBeNull();
+    expect(await getProperty(textarea, 'ariaLabel'), 'when state = success').toBe('Some label. Some success message');
 
     await setProperty(host, 'state', 'none');
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = none')
-      .toBeNull();
-    expect(await getProperty(textarea, 'ariaLabel'))
-      .withContext('when state = none')
-      .toBe('Some label');
+    expect(await getMessage(), 'when state = none').toBeNull();
+    expect(await getProperty(textarea, 'ariaLabel'), 'when state = none').toBe('Some label');
   });
 
   it('should focus textarea when label text is clicked', async () => {
@@ -265,12 +246,12 @@ describe('textarea-wrapper', () => {
       });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-textarea-wrapper']).withContext('componentDidLoad: p-textarea-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(3);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-textarea-wrapper'], 'componentDidLoad: p-textarea-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(3);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -286,12 +267,10 @@ describe('textarea-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-textarea-wrapper'])
-        .withContext('componentDidUpdate: p-textarea-wrapper')
-        .toBe(1);
+      expect(status.componentDidUpdate['p-textarea-wrapper'], 'componentDidUpdate: p-textarea-wrapper').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 });
