@@ -1,9 +1,9 @@
-import { getBrowser, options } from '../helpers';
+import { baseURL } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
 describe('license', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
@@ -13,7 +13,7 @@ describe('license', () => {
     Object.values((await (await element.getProperty('classList')).jsonValue()) as string).join(' ');
 
   it('should navigate to license', async () => {
-    await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
+    await page.goto(baseURL, { waitUntil: 'networkidle0' });
     await page.waitForSelector('html.hydrated');
 
     const [linkElement] = await page.$x(`//footer[@class='footer']//a[contains(., 'License')]`);
