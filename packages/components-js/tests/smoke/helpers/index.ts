@@ -1,7 +1,2 @@
-import type { Browser } from 'puppeteer';
-
+import '@porsche-design-system/shared/testing/typing';
 export * from './puppeteer-helper';
-
-declare global {
-  const browser: Browser;
-}
