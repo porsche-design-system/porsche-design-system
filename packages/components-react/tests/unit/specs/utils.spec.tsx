@@ -2,7 +2,10 @@ import { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PButton } from '../../../projects/components-wrapper/src';
-import { getMergedClassName } from '../../../projects/components-wrapper/src/utils';
+import {
+  getMergedClassName,
+  skipPorscheDesignSystemCDNRequestsDuringTests,
+} from '../../../projects/components-wrapper/src/utils';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
 
 describe('getMergedClassName', () => {
@@ -80,5 +83,17 @@ describe('syncRefs', () => {
     userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
+  });
+});
+
+describe('skipPorscheDesignSystemCDNRequestsDuringTests()', () => {
+  it('should set window variable PDS_SKIP_FETCH true', () => {
+    const getPDS_SKIP_FETCH = () => (window as any).PDS_SKIP_FETCH;
+
+    expect(getPDS_SKIP_FETCH()).toBeUndefined();
+
+    skipPorscheDesignSystemCDNRequestsDuringTests();
+
+    expect(getPDS_SKIP_FETCH()).toBe(true);
   });
 });
