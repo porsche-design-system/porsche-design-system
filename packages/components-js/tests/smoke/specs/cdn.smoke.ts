@@ -13,7 +13,6 @@ import { getFontFaceStylesheet } from '@porsche-design-system/components-js/part
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
 import { setContentWithDesignSystem } from '../helpers';
-import { browser } from '../config';
 
 describe('cdn', () => {
   let page: Page;
@@ -58,8 +57,14 @@ describe('cdn', () => {
 
   const isStatusNot200 = (item: Response): boolean => item.status !== 200;
   const isStatus400 = (item: Response): boolean => item.status === 400;
-  const urlIncludes = (str: string) => (item: Response): boolean => item.url.includes(str);
-  const urlStartsWith = (str: string) => (item: Response): boolean => item.url.startsWith(str);
+  const urlIncludes =
+    (str: string) =>
+    (item: Response): boolean =>
+      item.url.includes(str);
+  const urlStartsWith =
+    (str: string) =>
+    (item: Response): boolean =>
+      item.url.startsWith(str);
   const fetchUrl = (url: string): Promise<void> =>
     page.evaluate(async (url: string) => {
       await fetch(url);

@@ -15,11 +15,15 @@ const launch: PuppeteerNodeLaunchOptions = {
   ],
 };
 
+const hasServer = !!process.env.PORT;
+
 module.exports = {
   launch,
-  server: {
-    command: 'yarn start',
-    port: process.env.PORT,
-    debug: true,
-  },
+  ...(hasServer && {
+    server: {
+      command: 'yarn start',
+      port: process.env.PORT,
+      debug: true,
+    },
+  }),
 };

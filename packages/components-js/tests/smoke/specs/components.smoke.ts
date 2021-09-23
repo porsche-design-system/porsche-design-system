@@ -1,6 +1,5 @@
 import { Page } from 'puppeteer';
 import { setContentWithDesignSystem } from '../helpers';
-import { browser } from '../config';
 import { getComponentChunkLinks } from '@porsche-design-system/components-js/partials';
 
 describe('components', () => {
