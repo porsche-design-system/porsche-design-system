@@ -386,14 +386,14 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('accessibility', () => {
-    it('should expose correct initial accessibility name', async () => {
+    it('should expose correct initial accessibility tree', async () => {
       await initCheckbox();
       const input = await getInput();
-      const snapshotInput = await page.accessibility.snapshot({
+      const snapshot = await page.accessibility.snapshot({
         root: input,
       });
 
-      expect(snapshotInput.name).toBe('Some Label');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -417,9 +417,8 @@ describe('checkbox-wrapper', () => {
         root: message,
       });
 
-      expect(snapshotInput.name).toBe('Some label. Some error message.');
-      expect(snapshotInput.invalid).toBe('true');
-      expect(snapshotMessage.role).toBe('alert');
+      expect(snapshotInput).toMatchSnapshot('Of Input');
+      expect(snapshotMessage).toMatchSnapshot('Of Message');
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -448,9 +447,8 @@ describe('checkbox-wrapper', () => {
         root: messageError,
       });
 
-      expect(snapshotMessageError.role, 'when state = error').toBe('alert');
-      expect(snapshotInputError.name).toBe('Some label. Some error message.');
-      expect(snapshotInputError.invalid).toBe('true');
+      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
@@ -467,9 +465,8 @@ describe('checkbox-wrapper', () => {
         root: messageSuccess,
       });
 
-      expect(snapshotInputSuccess.name).toBe('Some label. Some success message.');
-      expect(snapshotInputSuccess.invalid).toBeUndefined();
-      expect(snapshotMessageSuccess.role, 'when state = success').toBe('status');
+      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
 
       await setProperty(host, 'state', 'none');
       await setProperty(host, 'message', '');
@@ -481,8 +478,7 @@ describe('checkbox-wrapper', () => {
         root: inputNone,
       });
 
-      expect(snapshotInputNone.name).toBe('Some label');
-      expect(snapshotInputNone.invalid).toBeUndefined();
+      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
     });
   });
 });

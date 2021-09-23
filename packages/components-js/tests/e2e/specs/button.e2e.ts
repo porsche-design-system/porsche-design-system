@@ -486,8 +486,7 @@ describe('button', () => {
         root: button,
       });
 
-      expect(snapshot.role).toBe('button');
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
@@ -500,7 +499,7 @@ describe('button', () => {
         root: button,
       });
 
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
