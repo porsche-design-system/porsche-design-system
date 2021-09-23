@@ -13,7 +13,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
-} from '../../e2e/helpers/helpers-without-setup';
+} from '../../e2e/helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
 
 describe('accordion', () => {

@@ -15,7 +15,7 @@ const launch: PuppeteerNodeLaunchOptions = {
   ],
 };
 
-module.exports = {
+export default {
   launch,
   // server: {
   //   command: 'node server.js',
