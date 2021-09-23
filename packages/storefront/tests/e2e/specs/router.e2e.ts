@@ -1,13 +1,13 @@
-import { getBrowser, options } from '../helpers';
+import { baseURL } from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('router', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getCurrentUrl = (): Promise<string> => page.evaluate(() => document.location.href);
-  const buildUrl = (path?: string): string => `${options.baseURL}${path}`;
+  const buildUrl = (path?: string): string => `${baseURL}${path}`;
 
   describe('home view', () => {
     it('should route to home', async () => {

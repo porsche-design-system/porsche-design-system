@@ -4,5 +4,3 @@ setCustomOptions({
   baseUrl: 'http://localhost:8080',
   mode: 'square-auto',
 });
-
-export const routerViewSelector = '#app > .main > .router-view';

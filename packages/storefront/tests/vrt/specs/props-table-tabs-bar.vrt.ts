@@ -1,5 +1,5 @@
 import { getVisualRegressionTesterPropTable, vrtTest } from '@porsche-design-system/shared/testing';
-import { routerViewSelector } from '../helpers/setup';
+import { routerViewSelector } from '../helpers';
 
 describe('Props Table Tabs-Bar', () => {
   it('should have no visual regression', async () => {
