@@ -15,10 +15,11 @@ const launch: PuppeteerNodeLaunchOptions = {
   ],
 };
 
-export default {
+module.exports = {
   launch,
-  // server: {
-  //   command: 'node server.js',
-  //   port: 4444,
-  // },
+  server: {
+    command: 'yarn start',
+    port: process.env.PORT,
+    debug: true,
+  },
 };
