@@ -482,8 +482,7 @@ describe('button-pure', () => {
         root: button,
       });
 
-      expect(snapshot.role).toBe('button');
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
@@ -496,17 +495,17 @@ describe('button-pure', () => {
         root: button,
       });
 
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
 
-    it('should not expose accessibility tree description with slotted subline', async () => {
+    it('should expose accessibility tree description with slotted subline', async () => {
       await initButtonPure({ withSubline: true });
       const button = await getButton();
       const snapshot = await page.accessibility.snapshot({
         root: button,
       });
 
-      expect(snapshot.description).toBe('Some Subline');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
