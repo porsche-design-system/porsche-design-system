@@ -1,7 +1,6 @@
-import { ConsoleMessage, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import {
   getAttribute,
-  getBrowser,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   initConsoleObserver,
@@ -14,7 +13,7 @@ import {
 describe('pagination', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-pagination');
@@ -129,11 +128,11 @@ describe('pagination', () => {
 
       console.log(status);
 
-      expect(status.componentDidLoad['p-pagination']).withContext('componentDidLoad: p-pagination').toBe(1);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
+      expect(status.componentDidLoad['p-pagination'], 'componentDidLoad: p-pagination').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
   });
 });
