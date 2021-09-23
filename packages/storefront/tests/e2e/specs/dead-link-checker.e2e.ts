@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { getBrowser, options } from '../helpers';
+import { baseURL } from '../helpers';
 
 describe('check for dead links', () => {
   let page: Page;
@@ -12,7 +12,7 @@ describe('check for dead links', () => {
 
   afterEach(() => (jasmine.DEFAULT_TIMEOUT_INTERVAL = originalJasminTimeout));
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHref = (el: Element): string => el.getAttribute('href');
@@ -105,7 +105,7 @@ describe('check for dead links', () => {
   };
 
   it('should check all a tags for correct response', async () => {
-    await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
+    await page.goto(baseURL, { waitUntil: 'networkidle0' });
     const invalidUrls = await linkCheckLoop();
     console.log('Whitelisted Urls', whitelistedUrls);
     console.log('Invalid Urls', invalidUrls);

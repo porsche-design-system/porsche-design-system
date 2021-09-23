@@ -1,4 +1,4 @@
-import { getBrowser, options } from '../helpers';
+import { baseURL } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
 const getStyleOnFocus = async (element: ElementHandle): Promise<string> => {
@@ -10,12 +10,12 @@ const getStyleOnFocus = async (element: ElementHandle): Promise<string> => {
 
 describe('accessibility', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   describe('focus', () => {
     it(`should style markdown links on focus`, async () => {
-      await page.goto(`${options.baseURL}/markdown`, { waitUntil: 'networkidle0' });
+      await page.goto(`${baseURL}/markdown`, { waitUntil: 'networkidle0' });
 
       const linkElement = await page.$(`.vmark a`);
 
