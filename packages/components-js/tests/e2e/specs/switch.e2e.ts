@@ -55,12 +55,12 @@ describe('switch', () => {
       const host = await getHost();
       const label = await getLabel();
 
-      expect(await getProperty(host, 'checked')).toBeFalse();
+      expect(await getProperty(host, 'checked')).toBeFalsy();
 
       await label.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(host, 'checked')).toBeTrue();
+      expect(await getProperty(host, 'checked')).toBeTruthy();
     });
   });
 

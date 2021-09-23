@@ -228,18 +228,18 @@ describe('tabs', () => {
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
 
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
       expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
-      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTruthy();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
       expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
   });
