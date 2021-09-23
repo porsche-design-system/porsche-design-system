@@ -1,8 +1,10 @@
-module.exports = {
+import type { Config } from '@jest/types';
+
+export const config: Config.InitialOptions = {
   preset: 'jest-puppeteer',
   rootDir: '..',
   verbose: true,
-  testMatch: ['**/specs/**/*.{e2e|vrt}.ts'],
+  testMatch: ['**/specs/**/*.{e2e,vrt}.ts'],
   // modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
   transform: {
@@ -19,6 +21,4 @@ module.exports = {
   },
 };
 
-process.env.JEST_PUPPETEER_CONFIG = require.resolve(
-  '@porsche-design-system/shared/testing/config/jest-puppeteer.config.js'
-);
+process.env.JEST_PUPPETEER_CONFIG = require.resolve('@porsche-design-system/shared/testing/jest-puppeteer.config.js');

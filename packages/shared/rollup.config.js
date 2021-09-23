@@ -35,18 +35,18 @@ export default [
     plugins: [typescript()],
   },
   {
-    input: 'src/testing/config/jest.config.ts',
+    input: 'src/testing/jest.config.ts',
     output: {
-      dir: 'dist/testing/config',
+      dir: 'dist/testing',
       format: 'cjs',
       exports: 'named',
     },
     plugins: [typescript()],
   },
   {
-    input: 'src/testing/config/jest-puppeteer.config.ts',
+    input: 'src/testing/jest-puppeteer.config.ts',
     output: {
-      dir: 'dist/testing/config',
+      dir: 'dist/testing',
       format: 'cjs',
       exports: 'named',
     },
