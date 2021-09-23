@@ -4,6 +4,7 @@ export const config: Config.InitialOptions = {
   preset: 'jest-puppeteer',
   rootDir: '..',
   verbose: true,
+  testTimeout: 120000,
   testMatch: ['**/specs/**/*.{e2e,vrt}.ts'],
   // modulePathIgnorePatterns: ['<rootDir>/dist'],
   setupFilesAfterEnv: ['@alex_neo/jest-expect-message'],
