@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.5.0-beta.0] - 2021-09-22
+
+#### Added
+- React: utility function `skipPorscheDesignSystemCDNRequestsDuringTests`
+
+### [2.4.0] - 2021-09-21
+
 ### [2.4.0-beta.2] - 2021-09-21
 
 #### Added
