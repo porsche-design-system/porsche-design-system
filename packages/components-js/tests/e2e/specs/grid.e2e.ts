@@ -6,7 +6,6 @@ import type {
   GridWrap,
 } from '@porsche-design-system/components/src/components/layout/grid/grid/grid-utils';
 import {
-  getBrowser,
   getElementStyle,
   selectNode,
   setContentWithDesignSystem,
@@ -18,7 +17,7 @@ const stringify = (x: any): string => JSON.stringify(x);
 
 describe('grid', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type InitOptions = {
@@ -71,32 +70,20 @@ describe('grid', () => {
       const grid = await getGrid();
       const gridItem = await getGridItem();
 
-      expect(await getGridMargin(grid))
-        .withContext('initial margin of grid')
-        .toBe('0px -8px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('initial padding of grid-item')
-        .toBe('0px 8px');
+      expect(await getGridMargin(grid), 'initial margin of grid').toBe('0px -8px');
+      expect(await getGridItemPadding(gridItem), 'initial padding of grid-item').toBe('0px 8px');
 
       await setProperty(grid, 'gutter', { base: 24 });
       await waitForStencilLifecycle(page);
 
-      expect(await getGridMargin(grid))
-        .withContext('margin of grid for base 24')
-        .toBe('0px -12px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('padding of grid-item for base 24')
-        .toBe('0px 12px');
+      expect(await getGridMargin(grid), 'margin of grid for base 24').toBe('0px -12px');
+      expect(await getGridItemPadding(gridItem), 'padding of grid-item for base 24').toBe('0px 12px');
 
       await setProperty(grid, 'gutter', { base: 36 });
       await waitForStencilLifecycle(page);
 
-      expect(await getGridMargin(grid))
-        .withContext('margin of grid for base 36')
-        .toBe('0px -18px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('padding of grid-item for base 36')
-        .toBe('0px 18px');
+      expect(await getGridMargin(grid), 'margin of grid for base 36').toBe('0px -18px');
+      expect(await getGridItemPadding(gridItem), 'padding of grid-item for base 36').toBe('0px 18px');
     });
 
     it('should correctly handle breakpoints', async () => {
@@ -108,36 +95,24 @@ describe('grid', () => {
       const grid = await getGrid();
       const gridItem = await getGridItem();
 
-      expect(await getGridMargin(grid))
-        .withContext('margin of grid with viewport < s')
-        .toBe('0px -8px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('padding of grid-item with viewport < s')
-        .toBe('0px 8px');
+      expect(await getGridMargin(grid), 'margin of grid with viewport < s').toBe('0px -8px');
+      expect(await getGridItemPadding(gridItem), 'padding of grid-item with viewport < s').toBe('0px 8px');
 
       await page.setViewport({
         width: 800,
         height: 600,
       });
 
-      expect(await getGridMargin(grid))
-        .withContext('margin of grid with viewport < m')
-        .toBe('0px -12px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('padding of grid-item with viewport < m')
-        .toBe('0px 12px');
+      expect(await getGridMargin(grid), 'margin of grid with viewport < m').toBe('0px -12px');
+      expect(await getGridItemPadding(gridItem), 'padding of grid-item with viewport < m').toBe('0px 12px');
 
       await page.setViewport({
         width: 1200,
         height: 600,
       });
 
-      expect(await getGridMargin(grid))
-        .withContext('margin of grid with viewport > m')
-        .toBe('0px -18px');
-      expect(await getGridItemPadding(gridItem))
-        .withContext('padding of grid-item with viewport > m')
-        .toBe('0px 18px');
+      expect(await getGridMargin(grid), 'margin of grid with viewport > m').toBe('0px -18px');
+      expect(await getGridItemPadding(gridItem), 'padding of grid-item with viewport > m').toBe('0px 18px');
     });
   });
 });

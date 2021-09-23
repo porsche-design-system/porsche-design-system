@@ -1,6 +1,5 @@
 import {
   getAttribute,
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
@@ -16,7 +15,7 @@ import { FormState } from '@porsche-design-system/components/src/types';
 describe('select-wrapper native', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
@@ -95,48 +94,30 @@ describe('select-wrapper native', () => {
     const host = await getHost();
     const select = await getSelect();
 
-    expect(await getMessage())
-      .withContext('initially')
-      .toBeNull();
+    expect(await getMessage(), 'initially').toBeNull();
 
     await setProperty(host, 'state', 'error');
     await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = error')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = error')
-      .toEqual('alert');
-    expect(await getProperty(select, 'ariaLabel'))
-      .withContext('when state = error')
-      .toEqual('Some label. Some error message');
+    expect(await getMessage(), 'when state = error').toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'), 'when state = error').toEqual('alert');
+    expect(await getProperty(select, 'ariaLabel'), 'when state = error').toEqual('Some label. Some error message');
 
     await setProperty(host, 'state', 'success');
     await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = success')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = success')
-      .toBeNull();
-    expect(await getProperty(select, 'ariaLabel'))
-      .withContext('when state = success')
-      .toEqual('Some label. Some success message');
+    expect(await getMessage(), 'when state = success').toBeDefined();
+    expect(await getAttribute(await getMessage(), 'role'), 'when state = success').toBeNull();
+    expect(await getProperty(select, 'ariaLabel'), 'when state = success').toEqual('Some label. Some success message');
 
     await setProperty(host, 'state', 'none');
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = none')
-      .toBeNull();
-    expect(await getProperty(select, 'ariaLabel'))
-      .withContext('when state = none')
-      .toEqual('Some label. Some description');
+    expect(await getMessage(), 'when state = none').toBeNull();
+    expect(await getProperty(select, 'ariaLabel'), 'when state = none').toEqual('Some label. Some description');
   });
 
   it('should focus select when label text is clicked', async () => {
@@ -198,12 +179,12 @@ describe('select-wrapper native', () => {
       await initSelect();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-select-wrapper']).withContext('componentDidLoad: p-select-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // label and message
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1); // arrow down
+      expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // label and message
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips when opened', async () => {
@@ -222,8 +203,8 @@ describe('select-wrapper native', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
   });
 });

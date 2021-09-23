@@ -1,10 +1,10 @@
-import { expectedStyleOnFocus, getBrowser, getOutlineStyle, selectNode, setContentWithDesignSystem } from '../helpers';
+import { expectedStyleOnFocus, getOutlineStyle, selectNode, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('text-list', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const initTextList = (): Promise<void> => {

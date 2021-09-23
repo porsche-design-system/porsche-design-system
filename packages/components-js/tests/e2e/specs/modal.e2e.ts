@@ -4,7 +4,6 @@ import {
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
@@ -20,7 +19,7 @@ describe('modal', () => {
   let page: Page;
   const CSS_TRANSITION_DURATION = 600;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-modal');
@@ -121,11 +120,11 @@ describe('modal', () => {
       await page.mouse.down();
       await waitForEventSerialization(page);
 
-      expect(calls).withContext('after mouse down').toBe(1);
+      expect(calls, 'after mouse down').toBe(1);
 
       await page.mouse.up();
 
-      expect(calls).withContext('after mouse up').toBe(1);
+      expect(calls, 'after mouse up').toBe(1);
     });
 
     it('should not be closed if mousedown inside modal', async () => {
@@ -133,11 +132,11 @@ describe('modal', () => {
       await page.mouse.down();
       await waitForEventSerialization(page);
 
-      expect(calls).withContext('after mouse down').toBe(0);
+      expect(calls, 'after mouse down').toBe(0);
 
       await page.mouse.up();
 
-      expect(calls).withContext('after mouse up').toBe(0);
+      expect(calls, 'after mouse up').toBe(0);
     });
 
     it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
@@ -145,12 +144,12 @@ describe('modal', () => {
       await page.mouse.down();
       await waitForEventSerialization(page);
 
-      expect(calls).withContext('after mouse down').toBe(0);
+      expect(calls, 'after mouse down').toBe(0);
 
       await page.mouse.move(5, 5);
       await page.mouse.up();
 
-      expect(calls).withContext('after mouse up').toBe(0);
+      expect(calls, 'after mouse up').toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
@@ -215,9 +214,7 @@ describe('modal', () => {
       await initAdvancedModal();
       const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(host))
-        .withContext('initially')
-        .toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'initially').toBe('P-BUTTON-PURE'); // close button
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
@@ -229,9 +226,7 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host))
-        .withContext('finally')
-        .toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'finally').toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.up('ShiftLeft');
     });
 
@@ -286,9 +281,7 @@ describe('modal', () => {
     );
     await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-    expect(await getModalVisibility())
-      .withContext('initial')
-      .toBe('hidden');
+    expect(await getModalVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
@@ -301,9 +294,7 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
 
-    expect(await getModalVisibility())
-      .withContext('after escape')
-      .toBe('hidden');
+    expect(await getModalVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
@@ -353,14 +344,15 @@ describe('modal', () => {
       await initBasicModal();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-modal']).withContext('componentDidLoad: p-modal').toBe(1);
-      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
+      expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+      expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
 
-      expect(status.componentDidLoad.all)
-        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
-        .toBe(6);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(
+        status.componentDidLoad.all,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      ).toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -372,14 +364,13 @@ describe('modal', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-modal']).withContext('componentDidUpdate: p-modal').toBe(1);
+      expect(status.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
 
-      expect(status.componentDidLoad.all)
-        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
-        .toBe(6);
-      expect(status.componentDidUpdate.all)
-        .withContext('componentDidUpdate: all | p-modal, (p-headline -> p-text)')
-        .toBe(3);
+      expect(
+        status.componentDidLoad.all,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      ).toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)').toBe(3);
     });
   });
 });
