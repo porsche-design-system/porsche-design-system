@@ -27,20 +27,20 @@ export default {
     polyfill(polyfills),
     resolve(),
     modify({
-      find: /console.warn(`The Porsche Design System had to inject our font-face.css file into your head.(.|s)*?);/,
+      find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.(?:.|\s)*?`\);/,
       replace: '',
     }),
     modify({
-      find: /(appGlobals\.globalScripts\(\);)/,
+      find: /appGlobals\.globalScripts\(\);/,
       replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
     }),
     modify({
       find: /(const pdsFetch = \(input, init\) =>) (fetch\(input, init\);)/,
-      replace: (match, capGrp1, capGrp2) => `${capGrp1} window.PDS_SKIP_FETCH ? undefined : ${capGrp2}`,
+      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),
     modify({
       find: /(const picture =)( \(resizeObserver(?:.|\s)*?;)/,
-      replace: (match, capGrp1, capGrp2) => `${capGrp1} window.PDS_SKIP_FETCH ? undefined : ${capGrp2}`,
+      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),
     terser({
       output: {
