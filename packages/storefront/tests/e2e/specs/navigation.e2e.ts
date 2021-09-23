@@ -1,4 +1,4 @@
-import { getBrowser, options } from '../helpers';
+import { baseURL } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
@@ -10,7 +10,7 @@ describe('navigation', () => {
   // const logPages: string[] = [];
   // const logTabs: string[] = [];
 
-  beforeEach(async () => (browserPage = await getBrowser().newPage()));
+  beforeEach(async () => (browserPage = await browser.newPage()));
   afterEach(async () => await browserPage.close());
 
   const isLinkActive = async (element: ElementHandle | null): Promise<boolean> =>
@@ -37,7 +37,7 @@ describe('navigation', () => {
     for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
       ((category: string, page: string) => {
         it(`should navigate to "${category} > ${page}"`, async () => {
-          await browserPage.goto(options.baseURL, { waitUntil: 'networkidle0' });
+          await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
           await injectCSSOverrides();
           await browserPage.waitForSelector('html.hydrated');
 

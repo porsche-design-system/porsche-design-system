@@ -1,5 +1,5 @@
 import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
-import { routerViewSelector } from '../helpers/setup';
+import { routerViewSelector } from '../helpers';
 
 describe('Markdown', () => {
   it('should have no visual regression', async () => {
