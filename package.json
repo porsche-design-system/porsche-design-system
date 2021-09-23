@@ -140,6 +140,6 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.1"
   }
 }

@@ -12,6 +12,7 @@ export * from './focus-handling';
 export * from './tag-name';
 export * from './jss';
 export * from './line-height';
+export * from './pds-fetch';
 export * from './property-observer';
 export * from './resize-observer';
 export * from './scrolling';
