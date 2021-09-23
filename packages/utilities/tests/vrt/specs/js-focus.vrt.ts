@@ -1,18 +1,8 @@
-import {
-  getVisualRegressionStatesTester,
-  VisualRegressionTester,
-  vrtTest,
-} from '@porsche-design-system/shared/testing';
+import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('js-focus', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionStatesTester();
-  });
-
   const runVrtTest = (id: string) =>
-    vrtTest(vrt, `focus-${id}`, '/#/js-focus', {
+    vrtTest(getVisualRegressionStatesTester(), `focus-${id}`, '/#/js-focus', {
       regressionSuffix: 'js',
       scenario: (page) => page.focus(`#focusable-element-${id}`),
     });
