@@ -141,5 +141,9 @@
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
     "prettier": "^2.4.1"
+  },
+  "resolutions": {
+    "**/@vue/cli-plugin-unit-jest/jest": "^27.2.1",
+    "**/@vue/cli-plugin-unit-jest/ts-jest": "^27.0.5"
   }
 }
