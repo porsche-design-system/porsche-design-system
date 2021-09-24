@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`link accessibility should expose correct accessibility tree if label is hidden 1`] = `
+Object {
+  "name": "Some label",
+  "role": "link",
+}
+`;
+
+exports[`link accessibility should expose correct initial accessibility tree properties 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": "Some label",
+      "role": "StaticText",
+    },
+  ],
+  "name": "Some label",
+  "role": "link",
+}
+`;

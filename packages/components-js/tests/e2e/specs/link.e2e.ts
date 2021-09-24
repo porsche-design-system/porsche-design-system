@@ -22,6 +22,7 @@ describe('link', () => {
 
   const getHost = () => selectNode(page, 'p-link');
   const getLink = () => selectNode(page, 'p-link >>> a');
+  const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
   const getSlottedLink = () => selectNode(page, 'p-link a');
 
   const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
@@ -210,15 +211,22 @@ describe('link', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initLink();
       const link = await getLink();
+      const icon = await getIcon();
       const snapshot = await page.accessibility.snapshot({
         root: link,
+        interestingOnly: false,
       });
 
-      expect(snapshot.role).toBe('link');
-      expect(snapshot.name).toBe('Some label');
+      const snapshotIcon = await page.accessibility.snapshot({
+        root: icon,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(snapshotIcon).toBeNull();
     });
 
-    it('should expose correct accessibility name if label is hidden', async () => {
+    it('should expose correct accessibility tree if label is hidden', async () => {
       await initLink();
       const host = await getHost();
       const link = await getLink();
@@ -229,7 +237,7 @@ describe('link', () => {
         root: link,
       });
 
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
