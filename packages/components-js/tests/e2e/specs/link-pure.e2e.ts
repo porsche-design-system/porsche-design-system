@@ -24,6 +24,7 @@ describe('link-pure', () => {
 
   const getHost = () => selectNode(page, 'p-link-pure');
   const getLink = () => selectNode(page, 'p-link-pure >>> a');
+  const getIcon = () => selectNode(page, 'p-link-pure >>> p-icon >>> svg');
   const getSpan = () => selectNode(page, 'p-link-pure >>> span');
   const getSlottedLink = () => selectNode(page, 'p-link-pure a');
 
@@ -258,15 +259,21 @@ describe('link-pure', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initLinkPure();
       const link = await getLink();
+      const icon = await getIcon();
       const snapshot = await page.accessibility.snapshot({
         root: link,
       });
 
-      expect(snapshot.role).toBe('link');
-      expect(snapshot.name).toBe('Some label');
+      const snapshotIcon = await page.accessibility.snapshot({
+        root: icon,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(snapshotIcon).toBeNull();
     });
 
-    it('should expose correct accessibility name if label is hidden', async () => {
+    it('should expose correct accessibility tree if label is hidden', async () => {
       await initLinkPure();
       const host = await getHost();
       const link = await getLink();
@@ -276,7 +283,7 @@ describe('link-pure', () => {
         root: link,
       });
 
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should expose correct accessibility tree description if subline property is set', async () => {
@@ -286,7 +293,7 @@ describe('link-pure', () => {
         root: link,
       });
 
-      expect(snapshot.description).toBe('Some Subline');
+      expect(snapshot).toMatchSnapshot();
     });
 
     it('should not expose accessibility tree description with slotted anchor and subline', async () => {
