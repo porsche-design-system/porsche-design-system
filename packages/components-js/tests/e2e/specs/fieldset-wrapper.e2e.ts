@@ -21,34 +21,46 @@ describe('fieldset-wrapper', () => {
   };
 
   const getHost = () => selectNode(page, 'p-fieldset-wrapper');
+  const getFieldset = () => selectNode(page, 'p-fieldset-wrapper >>> fieldset');
   const getMessage = () => selectNode(page, 'p-fieldset-wrapper >>> .message');
 
   describe('accessibility', () => {
-    it('should expose correct accessibility tree property in error state', async () => {
-      await initFieldset({ state: 'error' });
-      const message = await getMessage();
-      const snapshotMessage = await page.accessibility.snapshot({
+    it('should expose correct initial accessibility tree', async () => {
+      await initFieldset();
+      const fieldset = await getFieldset();
+      const snapshot = await page.accessibility.snapshot({
+        root: fieldset,
         interestingOnly: false,
-        root: message,
       });
 
-      expect(snapshotMessage.role).toBe('alert');
+      expect(snapshot).toMatchSnapshot();
     });
 
-    it('should change accessibility tree property if state added programmatically', async () => {
+    it('should expose correct accessibility tree property in error state', async () => {
+      await initFieldset({ state: 'error' });
+      const fieldset = await getFieldset();
+      const snapshot = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: fieldset,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree property if error state added programmatically', async () => {
       await initFieldset();
       const host = await getHost();
 
       await setProperty(host, 'state', 'error');
       await waitForStencilLifecycle(page);
 
-      const message = await getMessage();
-      const snapshotMessage = await page.accessibility.snapshot({
+      const fieldset = await getFieldset();
+      const snapshot = await page.accessibility.snapshot({
         interestingOnly: false,
-        root: message,
+        root: fieldset,
       });
 
-      expect(snapshotMessage.role).toBe('alert');
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });

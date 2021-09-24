@@ -1,15 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fieldset-wrapper accessibility should change accessibility tree property if state added programmatically 1`] = `
+exports[`fieldset-wrapper accessibility should expose correct accessibility tree property if error state added programmatically 1`] = `
 Object {
   "children": Array [
     Object {
-      "name": "Some Message",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "name": "Some Message",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "alert",
     },
   ],
+  "description": "Some Message",
   "name": "",
-  "role": "alert",
+  "role": "group",
 }
 `;
 
@@ -17,12 +24,19 @@ exports[`fieldset-wrapper accessibility should expose correct accessibility tree
 Object {
   "children": Array [
     Object {
-      "name": "Some Message",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "name": "Some Message",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "alert",
     },
   ],
+  "description": "Some Message",
   "name": "",
-  "role": "alert",
+  "role": "group",
 }
 `;
 
