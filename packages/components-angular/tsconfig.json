@@ -11,6 +11,7 @@
     "importHelpers": true,
     "target": "es5",
     "lib": ["es2018", "dom"],
+    "types": ["jest", "jest-environment-puppeteer"],
     "paths": {
       "@porsche-design-system/components-angular": ["dist/components-wrapper"]
     }
