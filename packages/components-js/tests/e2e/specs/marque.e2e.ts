@@ -49,6 +49,7 @@ describe('marque', () => {
   const getHost = () => selectNode(page, 'p-marque');
   const getSource = (): Promise<ElementHandle> => selectNode(page, 'p-marque >>> source');
   const getLink = () => selectNode(page, 'p-marque >>> a');
+  const getImage = () => selectNode(page, 'p-marque >>> img');
 
   const resolution1x = '@1x';
   const resolution2x = '@2x';
@@ -541,6 +542,18 @@ describe('marque', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await setContentWithTrademark();
+      const image = await getImage();
+      const snapshot = await page.accessibility.snapshot({
+        root: image,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
