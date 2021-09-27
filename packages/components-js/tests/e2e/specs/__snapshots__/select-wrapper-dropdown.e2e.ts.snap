@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: After click 1`] = `
+Object {
+  "expanded": true,
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: Initially 1`] = `
+Object {
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if rendered with optgroups 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "haspopup": "listbox",
+      "name": "Option A, Some label",
+      "role": "combobox",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some optgroup label 1",
+          "role": "StaticText",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Option A",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Option A",
+          "role": "option",
+          "selected": true,
+        },
+        Object {
+          "name": "Option B",
+          "role": "option",
+        },
+        Object {
+          "name": "Some optgroup label 1",
+          "role": "StaticText",
+        },
+        Object {
+          "name": "Option A",
+          "role": "option",
+        },
+        Object {
+          "name": "Option B",
+          "role": "option",
+        },
+      ],
+      "name": "Some label",
+      "role": "listbox",
+    },
+  ],
+  "name": "",
+  "role": "generic",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option A 1`] = `
+Object {
+  "name": "Option A",
+  "role": "option",
+  "selected": true,
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Initially option B 1`] = `
+Object {
+  "name": "Option B",
+  "role": "option",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option A after click 1`] = `
+Object {
+  "name": "Option A",
+  "role": "option",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree on selected custom option on click: Option B after click 1`] = `
+Object {
+  "name": "Option B",
+  "role": "option",
+  "selected": true,
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct initial accessibility tree and aria properties 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "haspopup": "listbox",
+      "name": "Option A, Some label",
+      "role": "combobox",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Option A",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Option A",
+          "role": "option",
+          "selected": true,
+        },
+        Object {
+          "disabled": true,
+          "name": "Option B",
+          "role": "option",
+        },
+        Object {
+          "name": "Option C",
+          "role": "option",
+        },
+      ],
+      "name": "Some label",
+      "role": "listbox",
+    },
+  ],
+  "name": "",
+  "role": "generic",
+}
+`;
