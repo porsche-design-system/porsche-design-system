@@ -404,15 +404,15 @@ describe('radio-button-wrapper', () => {
       await setProperty(host, 'message', 'Some error message.');
       await waitForStencilLifecycle(page);
 
-      const inputError = await getInput();
-      const messageError = await getMessage();
+      const input = await getInput();
+      const message = await getMessage();
 
       const snapshotInputError = await page.accessibility.snapshot({
-        root: inputError,
+        root: input,
       });
       const snapshotMessageError = await page.accessibility.snapshot({
         interestingOnly: false,
-        root: messageError,
+        root: message,
       });
 
       expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
@@ -422,15 +422,12 @@ describe('radio-button-wrapper', () => {
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      const inputSuccess = await getInput();
-      const messageSuccess = await getMessage();
-
       const snapshotInputSuccess = await page.accessibility.snapshot({
-        root: inputSuccess,
+        root: input,
       });
       const snapshotMessageSuccess = await page.accessibility.snapshot({
         interestingOnly: false,
-        root: messageSuccess,
+        root: message,
       });
 
       expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
@@ -440,10 +437,8 @@ describe('radio-button-wrapper', () => {
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      const inputNone = await getInput();
-
       const snapshotInputNone = await page.accessibility.snapshot({
-        root: inputNone,
+        root: input,
       });
 
       expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
