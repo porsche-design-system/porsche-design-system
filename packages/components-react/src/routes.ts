@@ -209,6 +209,11 @@ export const routes: RouteType[] = [
     component: fromPages.EventsPage,
   },
   {
+    name: 'Stencil Lifecycle',
+    path: '/stencil-lifecycle',
+    component: fromPages.StencilLifecyclesPage,
+  },
+  {
     name: '---',
     isDisabled: true,
   },
