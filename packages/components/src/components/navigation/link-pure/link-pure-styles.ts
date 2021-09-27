@@ -1,7 +1,7 @@
+import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachCss,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -10,21 +10,12 @@ import {
   getFocusStyles,
   getTransition,
   hasVisibleIcon,
-  insertSlottedStyles,
   isDark,
   mergeDeep,
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
-import {
-  calculateLineHeight,
-  color,
-  font,
-  FontSizeLineHeight,
-  generateTypeScale,
-  srOnly,
-} from '@porsche-design-system/utilities';
+import { color, font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
@@ -83,16 +74,16 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    const { fontSize } = font.size[paramCaseToCamelCase(textSize)];
-    const lineHeight = `${calculateLineHeight(fontSize)}em`;
+    const { fontSize, lineHeight } = font.size[paramCaseToCamelCase(textSize)];
+    const lineHeightWithUnit = `${lineHeight}em`;
 
     return {
       ...generateTypeScale(fontSize),
       '& .icon': {
-        width: lineHeight,
-        height: lineHeight,
+        width: lineHeightWithUnit,
+        height: lineHeightWithUnit,
       },
-      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeight),
+      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeightWithUnit),
     };
   }
 };
@@ -105,7 +96,7 @@ const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
 
 const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
-    ? srOnly()
+    ? (srOnly() as JssStyle)
     : {
         position: 'static',
         width: 'auto',
@@ -246,25 +237,6 @@ export const getComponentCss = (
   });
 };
 
-export const addComponentCss = (
-  host: HTMLElement,
-  icon: LinkButtonPureIconName,
-  active: boolean,
-  stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
-  hideLabel: BreakpointCustomizable<boolean>,
-  alignLabel: AlignLabel,
-  hasSubline: boolean,
-  hasHref: boolean,
-  theme: Theme
-): void => {
-  attachCss(host, getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme));
-};
-
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getFocusSlottedPseudoStyles({ offset: 1 })));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
 };

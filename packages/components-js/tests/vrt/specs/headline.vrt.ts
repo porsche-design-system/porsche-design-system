@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Headline', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'headline',
-        async () => {
-          await vrt.goTo('/#headline');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'headline', '/#headline')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('headline-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const getElementsMarkup: GetThemedMarkup = (theme) => `
           <p-headline variant="headline-3" theme="${theme}">Some Headline with <a href="#">link</a></p-headline>`;

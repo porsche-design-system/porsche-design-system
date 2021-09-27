@@ -1,7 +1,6 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  attachCss,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -12,7 +11,6 @@ import {
   getThemedColors,
   getThemedStateColors,
   getTransition,
-  insertSlottedStyles,
   isDark,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -148,19 +146,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
   });
 };
 
-export const addComponentCss = (
-  host: HTMLElement,
-  hideLabel: BreakpointCustomizable<boolean>,
-  state: FormState,
-  theme: Theme
-): void => {
-  attachCss(host, getComponentCss(hideLabel, state, theme));
-};
-
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
-};
-
-export const addSlottedCss = (host: HTMLElement): void => {
-  insertSlottedStyles(host, getSlottedCss(host));
 };
