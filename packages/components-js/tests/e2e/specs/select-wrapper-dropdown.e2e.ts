@@ -1003,5 +1003,34 @@ describe('select-wrapper dropdown', () => {
       expect(snapshotAfterClick1, 'Option A after click').toMatchSnapshot('Option A after click');
       expect(snapshotAfterClick2, 'Option B after click').toMatchSnapshot('Option B after click');
     });
+
+    it('should expose correct accessibility tree if description is set', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'description', 'Some description');
+      await waitForStencilLifecycle(page);
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree in error state', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message');
+      await waitForStencilLifecycle(page);
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
   });
 });

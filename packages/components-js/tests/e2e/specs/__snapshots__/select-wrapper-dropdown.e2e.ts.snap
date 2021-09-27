@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if description is set 1`] = `
+Object {
+  "description": "Some description",
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
 exports[`select-wrapper dropdown accessibility should expose correct accessibility tree if open/closed: After click 1`] = `
 Object {
   "expanded": true,
@@ -65,6 +74,14 @@ Object {
   ],
   "name": "",
   "role": "generic",
+}
+`;
+
+exports[`select-wrapper dropdown accessibility should expose correct accessibility tree in error state 1`] = `
+Object {
+  "haspopup": "listbox",
+  "name": "Option A, Some label. Some error message",
+  "role": "combobox",
 }
 `;
 
