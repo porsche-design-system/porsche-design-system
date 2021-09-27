@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-fdescribe('jsdomBuild', () => {
+describe('jsdomBuild', () => {
   it('should have no stylesheet injection warning', async () => {
     const componentsReactEntry = require.resolve('@porsche-design-system/components-react');
     const filePath = path.resolve(componentsReactEntry, '../jsdom-polyfill/index.js');
