@@ -92,7 +92,6 @@ describe('select-wrapper native', () => {
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     await initSelect();
     const host = await getHost();
-    const select = await getSelect();
 
     expect(await getMessage(), 'initially').toBeNull();
 
@@ -101,23 +100,18 @@ describe('select-wrapper native', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getMessage(), 'when state = error').toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'), 'when state = error').toEqual('alert');
-    expect(await getProperty(select, 'ariaLabel'), 'when state = error').toEqual('Some label. Some error message');
 
     await setProperty(host, 'state', 'success');
     await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage(), 'when state = success').toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'), 'when state = success').toBeNull();
-    expect(await getProperty(select, 'ariaLabel'), 'when state = success').toEqual('Some label. Some success message');
 
     await setProperty(host, 'state', 'none');
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage(), 'when state = none').toBeNull();
-    expect(await getProperty(select, 'ariaLabel'), 'when state = none').toEqual('Some label. Some description');
   });
 
   it('should focus select when label text is clicked', async () => {
@@ -142,36 +136,6 @@ describe('select-wrapper native', () => {
 
     await labelText.hover();
     expect(await getElementStyle(select, 'boxShadow')).not.toBe(initialBoxShadow);
-  });
-
-  describe('accessibility', () => {
-    it('should add aria-label to select', async () => {
-      await initSelect();
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-    });
-
-    it('should add aria-label with description text to select', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper label="Some label" description="Some description" native="true">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some description');
-    });
-
-    it('should add aria-label with message text to select', async () => {
-      await initSelect({ state: 'error' });
-      const select = await getSelect();
-      expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
-    });
   });
 
   describe('lifecycle', () => {
@@ -205,6 +169,66 @@ describe('select-wrapper native', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const snapshot = await page.accessibility.snapshot({
+        root: select,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should update accessibility tree with message text if state changes programmatically', async () => {
+      await initSelect();
+      const host = await getHost();
+
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message.');
+      await waitForStencilLifecycle(page);
+
+      const select = await getSelect();
+      const message = await getMessage();
+
+      const snapshotSelectError = await page.accessibility.snapshot({
+        root: select,
+      });
+      const snapshotMessageError = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotSelectError, 'when state = error').toMatchSnapshot('Of Select when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
+
+      await setProperty(host, 'state', 'success');
+      await setProperty(host, 'message', 'Some success message.');
+      await waitForStencilLifecycle(page);
+
+      const snapshotSelectSuccess = await page.accessibility.snapshot({
+        root: select,
+      });
+      const snapshotMessageSuccess = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotSelectSuccess, 'when state = success').toMatchSnapshot('Of Select when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
+
+      await setProperty(host, 'state', 'none');
+      await setProperty(host, 'message', '');
+      await waitForStencilLifecycle(page);
+
+      const snapshotSelectNone = await page.accessibility.snapshot({
+        root: select,
+      });
+
+      expect(snapshotSelectNone, 'when state = none').toMatchSnapshot('Of Select when state = none');
     });
   });
 });

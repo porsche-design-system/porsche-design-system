@@ -10,6 +10,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -618,6 +619,64 @@ describe('select-wrapper filter', () => {
       expect(status.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
 
       expect(status.componentDidLoad.all, '2nd componentDidLoad: all').toBe(5);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree and aria properties of filter', async () => {
+      await initSelect({ disabledIndex: 1 });
+      const filter = await getFilterInput();
+      const snapshot = await page.accessibility.snapshot({
+        root: filter,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree of option list if filter value has no match', async () => {
+      await initSelect();
+      const filterInput = await getFilterInput();
+      await filterInput.type('d');
+      await waitForStencilLifecycle(page);
+
+      const dropDown = await getDropdownList();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropDown,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree if description is set', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'description', 'Some description');
+      await waitForStencilLifecycle(page);
+      const filterInput = await getFilterInput();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: filterInput,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree in error state', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message');
+      await waitForStencilLifecycle(page);
+      const filterInput = await getFilterInput();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: filterInput,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
