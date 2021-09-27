@@ -50,39 +50,13 @@ describe('radio-button-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-radio-button-wrapper state="${state}">
+        <p-radio-button-wrapper state="${state}" ${!useSlottedLabel && ' label="Some label"'}>
           ${slottedLabel}
           <input type="radio" />
           ${slottedMessage}
         </p-radio-button-wrapper>`
     );
   };
-
-  it('should add aria-label to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-radio-button-wrapper label="Some label">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>
-    `
-    );
-    const input = await getInput();
-    expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
-  });
-
-  it('should add aria-label with message text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-radio-button-wrapper label="Some label" message="Some error message" state="error">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>
-    `
-    );
-    const input = await getInput();
-    expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
-  });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await setContentWithDesignSystem(
@@ -102,7 +76,7 @@ describe('radio-button-wrapper', () => {
     expect(await getLabelText()).not.toBeNull();
   });
 
-  it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
+  it('should add/remove message text if state changes programmatically', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -112,32 +86,27 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>`
     );
 
-    const radioComponent = await getHost();
-    const input = await selectNode(page, 'input');
+    const host = await getHost();
 
     expect(await getMessage(), 'initially').toBeNull();
-    await setProperty(radioComponent, 'state', 'error');
-    await setProperty(radioComponent, 'message', 'Some error message');
+
+    await setProperty(host, 'state', 'error');
+    await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage(), 'when state = error').toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel'), 'when state = error').toEqual('Some label. Some error message');
 
-    await setProperty(radioComponent, 'state', 'success');
-    await setProperty(radioComponent, 'message', 'Some success message');
+    await setProperty(host, 'state', 'success');
+    await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getMessage(), 'role'), 'when state = success').toBeNull();
-    expect(await getProperty(input, 'ariaLabel'), 'when state = success').toEqual('Some label. Some success message');
+    expect(await getMessage(), 'when state = success').toBeDefined();
 
-    await setProperty(radioComponent, 'state', 'none');
-    await setProperty(radioComponent, 'message', '');
+    await setProperty(host, 'state', 'none');
+    await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage(), 'when state = none').toBeNull();
-    expect(await getProperty(input, 'ariaLabel'), 'when state = none').toEqual('Some label');
   });
 
   it('should disable radio-button when disabled property is set programmatically', async () => {
@@ -387,6 +356,97 @@ describe('radio-button-wrapper', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initRadioButton();
+      const input = await getInput();
+      const snapshot = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree properties in error state', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+          <p-radio-button-wrapper label="Some label" message="Some error message." state="error">
+            <input type="radio" name="some-name"/>
+          </p-radio-button-wrapper>
+        `
+      );
+      const input = await getInput();
+      const message = await getMessage();
+
+      const snapshotInput = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      const snapshotMessage = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInput).toMatchSnapshot('Of Input');
+      expect(snapshotMessage).toMatchSnapshot('Of Message');
+    });
+
+    it('should add/remove accessibility tree properties if state changes programmatically', async () => {
+      await initRadioButton();
+
+      const host = await getHost();
+
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message.');
+      await waitForStencilLifecycle(page);
+
+      const inputError = await getInput();
+      const messageError = await getMessage();
+
+      const snapshotInputError = await page.accessibility.snapshot({
+        root: inputError,
+      });
+      const snapshotMessageError = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: messageError,
+      });
+
+      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
+
+      await setProperty(host, 'state', 'success');
+      await setProperty(host, 'message', 'Some success message.');
+      await waitForStencilLifecycle(page);
+
+      const inputSuccess = await getInput();
+      const messageSuccess = await getMessage();
+
+      const snapshotInputSuccess = await page.accessibility.snapshot({
+        root: inputSuccess,
+      });
+      const snapshotMessageSuccess = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: messageSuccess,
+      });
+
+      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
+
+      await setProperty(host, 'state', 'none');
+      await setProperty(host, 'message', '');
+      await waitForStencilLifecycle(page);
+
+      const inputNone = await getInput();
+
+      const snapshotInputNone = await page.accessibility.snapshot({
+        root: inputNone,
+      });
+
+      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
     });
   });
 });
