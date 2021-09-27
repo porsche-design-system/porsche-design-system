@@ -25,7 +25,6 @@ describe('modal', () => {
   const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .root');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .close p-button-pure');
-  const getModalAside = () => selectNode(page, 'p-modal >>> aside');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
   const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
@@ -327,18 +326,6 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
-  it('should have correct aria-hidden value', async () => {
-    await initBasicModal({ isOpen: false });
-    const aside = await getModalAside();
-
-    expect(await getAttribute(aside, 'aria-hidden')).toBe('true');
-
-    await openModal();
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(aside, 'aria-hidden')).toBe('false');
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initBasicModal();
@@ -371,6 +358,29 @@ describe('modal', () => {
         'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
       ).toBe(6);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)').toBe(3);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initBasicModal();
+      const modal = await getModal();
+      const snapshot = await page.accessibility.snapshot({
+        root: modal,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should not expose accessibility tree if modal is hidden', async () => {
+      await initBasicModal({ isOpen: false });
+      const modal = await getModal();
+      const snapshot = await page.accessibility.snapshot({
+        root: modal,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
