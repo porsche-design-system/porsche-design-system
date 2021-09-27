@@ -36,6 +36,7 @@ describe('link-social', () => {
 
   const getHost = () => selectNode(page, 'p-link-social');
   const getLink = () => selectNode(page, 'p-link-social >>> a');
+  const getIcon = () => selectNode(page, 'p-link-social >>> p-icon >>> svg');
   const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should dispatch correct click events', async () => {
@@ -210,12 +211,18 @@ describe('link-social', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initLinkSocial();
       const link = await getLink();
+      const icon = await getIcon();
       const snapshot = await page.accessibility.snapshot({
         root: link,
       });
 
-      expect(snapshot.role).toBe('link');
-      expect(snapshot.name).toBe('Some label');
+      const snapshotIcon = await page.accessibility.snapshot({
+        root: icon,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(snapshotIcon).toBeNull();
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
@@ -228,7 +235,7 @@ describe('link-social', () => {
         root: link,
       });
 
-      expect(snapshot.name).toBe('Some label');
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
