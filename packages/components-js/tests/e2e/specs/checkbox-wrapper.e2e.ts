@@ -92,7 +92,6 @@ describe('checkbox-wrapper', () => {
     );
 
     const host = await getHost();
-    const input = await getInput();
     expect(await getMessage(), 'initially').toBeNull();
 
     await setProperty(host, 'state', 'error');
