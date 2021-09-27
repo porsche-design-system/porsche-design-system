@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pagination accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If disabled 1`] = `
+Object {
+  "disabled": true,
+  "name": "Next page",
+  "role": "button",
+}
+`;
+
+exports[`pagination accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If not disabled 1`] = `
+Object {
+  "name": "Next page",
+  "role": "button",
+}
+`;
+
+exports[`pagination accessibility should expose correct initial accessibility tree 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "disabled": true,
+              "name": "Previous page",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "1",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 1",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 2",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 3",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "4",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 4",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "5",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 5",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "…",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "20",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Page 20",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Next page",
+              "role": "button",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
+        },
+      ],
+      "name": "",
+      "role": "list",
+    },
+  ],
+  "name": "Pagination",
+  "role": "navigation",
+}
+`;
