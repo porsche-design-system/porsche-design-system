@@ -28,6 +28,7 @@ export * from './Pagination';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
 export * from './Spinner';
+export * from './StencilLifecycle';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';
