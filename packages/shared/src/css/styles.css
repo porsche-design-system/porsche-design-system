@@ -1,3 +1,10 @@
+:root {
+  --p-transition-duration: 0s;
+  --p-animation-duration__spinner: 0s;
+  --p-animation-hover-duration: 0s;
+  --p-animation-duration__banner: 0s;
+}
+
 html,
 body {
   margin: 0;

@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
-import { addComponentCss } from './grid-styles';
-import { updateChildren } from '../../../../utils';
+import { getComponentCss } from './grid-styles';
+import { attachComponentCss, updateChildren } from '../../../../utils';
 
 @Component({
   tag: 'p-grid',
@@ -25,7 +25,7 @@ export class Grid {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.direction, this.wrap, this.gutter);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
   }
 
   public render(): JSX.Element {

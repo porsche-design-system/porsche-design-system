@@ -170,7 +170,7 @@ export const getBaseSlottedStyles = (): Styles => {
 
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
   isHidden
-    ? srOnly()
+    ? (srOnly() as JssStyle)
     : {
         position: 'static',
         width: 'auto',

@@ -4,31 +4,24 @@ import {
   forceHoveredState,
   getThemedBodyMarkup,
   GetThemedMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
+import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
-  setContentWithDesignSystem,
-  testOptions,
-} from '../helpers';
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
 
 describe('Link Pure', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'link-pure',
-        async () => {
-          await vrt.goTo('/#link-pure');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'link-pure', '/#link-pure')).toBeFalsy();
   });
 
   it('should have no visual regression for :hover + :focus-visible', async () => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test('link-pure-states', async () => {
-        const page = await vrt.getPage();
+        const page = vrt.getPage();
 
         const head = `<style type="text/css">
           p-link-pure:not(:last-child) { margin-right: 0.5rem; }

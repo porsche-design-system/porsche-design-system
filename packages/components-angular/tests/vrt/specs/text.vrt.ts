@@ -1,16 +1,7 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 describe('Text', () => {
   it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'text',
-        async () => {
-          await vrt.goTo('/text');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(), 'text', '/text')).toBeFalsy();
   });
 });
