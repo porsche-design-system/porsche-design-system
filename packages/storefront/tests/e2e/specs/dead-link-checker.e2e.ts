@@ -2,8 +2,9 @@ import { Page } from 'puppeteer';
 import { baseURL } from '../helpers';
 
 const console = require('console');
-let page: Page;
+jest.setTimeout(2147483647);
 
+let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
@@ -97,7 +98,6 @@ const linkCheckLoop = async () => {
 };
 
 it('should check all a tags for correct response', async () => {
-  jest.setTimeout(2147483647);
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
   const invalidUrls = await linkCheckLoop();
   console.log('Whitelisted Urls', whitelistedUrls);
