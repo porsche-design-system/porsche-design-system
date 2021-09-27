@@ -63,13 +63,13 @@ describe('generateFontDefinition()', () => {
     const fontDefinition1 = generateFontDefinition('16px', 'regular');
     const fontDefinition2 = generateFontDefinition('32px', 'bold');
     expect(fontDefinition1).toEqual({
-      fontFamily: '"Porsche Next", "Arial Narrow", Arial, SimHei, sans-serif',
+      fontFamily: "'Porsche Next','Arial Narrow',Arial,SimHei,sans-serif",
       fontSize: '1rem',
       fontWeight: 400,
       lineHeight: 1.5,
     });
     expect(fontDefinition2).toEqual({
-      fontFamily: '"Porsche Next", "Arial Narrow", Arial, SimHei, sans-serif',
+      fontFamily: "'Porsche Next','Arial Narrow',Arial,SimHei,sans-serif",
       fontSize: '2rem',
       fontWeight: 700,
       lineHeight: 1.375,
