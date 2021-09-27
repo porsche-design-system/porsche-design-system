@@ -29,7 +29,6 @@ describe('select-wrapper dropdown', () => {
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getSelectIcon = () => selectNode(page, 'p-select-wrapper >>> .icon');
-  const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
   const highlightedClass = 'option--highlighted';
@@ -129,7 +128,6 @@ describe('select-wrapper dropdown', () => {
     expect(disabledDropdownOption).not.toBeNull();
     expect(await getAriaSelectedTrueDropdownOptionIndex()).toBe(0);
     expect(await getAriaDisabledTrueDropdownOptionIndex()).toBe(1);
-    expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
   });
 
   it('should render with optgroups', async () => {
@@ -526,38 +524,6 @@ describe('select-wrapper dropdown', () => {
       );
     });
 
-    it('should have the correct aria-expanded value if open/closed', async () => {
-      await initSelect();
-
-      const host = await getHost();
-      const dropdownButton = await getDropdownButton();
-
-      expect(await getAttribute(dropdownButton, 'aria-expanded'), 'initially').toBe('false');
-
-      await host.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(dropdownButton, 'aria-expanded'), 'after click').toBe('true');
-    });
-
-    it('should have aria-selected attribute on selected custom option on click', async () => {
-      await initSelect();
-
-      const select = await getSelect();
-      const dropdownOption1 = await getDropdownOption1();
-      const dropdownOption2 = await getDropdownOption2();
-
-      expect(await getAttribute(dropdownOption1, 'aria-selected'), 'Option A initially').toBe('true');
-      expect(await getAttribute(dropdownOption2, 'aria-selected'), 'Option B initially').toBeNull();
-
-      await select.click();
-      await dropdownOption2.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(dropdownOption1, 'aria-selected'), 'Option A after click').toBeNull();
-      expect(await getAttribute(dropdownOption2, 'aria-selected'), 'Option B after click').toBe('true');
-    });
-
     it('should skip disabled option on arrow down', async () => {
       await initSelect({ disabledIndex: 1 });
 
@@ -939,6 +905,103 @@ describe('select-wrapper dropdown', () => {
 
       expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(6);
       expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree and aria properties', async () => {
+      await initSelect({ disabledIndex: 1 });
+      const dropdown = await getDropdown();
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdown,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
+    });
+
+    it('should expose correct accessibility tree if rendered with optgroups', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper label="Some label">
+          <select>
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const dropdown = await getDropdown();
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdown,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree if open/closed', async () => {
+      await initSelect();
+
+      const host = await getHost();
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot, 'initially').toMatchSnapshot('Initially');
+
+      await host.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotExpanded = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshotExpanded, 'after click').toMatchSnapshot('After click');
+    });
+
+    it('should expose correct accessibility tree on selected custom option on click', async () => {
+      await initSelect();
+
+      const select = await getSelect();
+      const dropdownOption1 = await getDropdownOption1();
+      const dropdownOption2 = await getDropdownOption2();
+
+      const snapshotInitially1 = await page.accessibility.snapshot({
+        root: dropdownOption1,
+      });
+
+      const snapshotInitially2 = await page.accessibility.snapshot({
+        root: dropdownOption2,
+      });
+
+      expect(snapshotInitially1, 'initially option A').toMatchSnapshot('Initially option A');
+      expect(snapshotInitially2, 'initially option B').toMatchSnapshot('Initially option B');
+
+      await select.click();
+      await dropdownOption2.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotAfterClick1 = await page.accessibility.snapshot({
+        root: dropdownOption1,
+      });
+
+      const snapshotAfterClick2 = await page.accessibility.snapshot({
+        root: dropdownOption2,
+      });
+
+      expect(snapshotAfterClick1, 'Option A after click').toMatchSnapshot('Option A after click');
+      expect(snapshotAfterClick2, 'Option B after click').toMatchSnapshot('Option B after click');
     });
   });
 });
