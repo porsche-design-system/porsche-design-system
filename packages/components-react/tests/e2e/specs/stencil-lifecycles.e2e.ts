@@ -2,7 +2,7 @@ import { Page } from 'puppeteer';
 import { browser } from '../config';
 import { getLifecycleStatus, goto, selectNode, waitForComponentsReady } from '../helpers';
 
-fdescribe('stencil-lifecycles', () => {
+describe('stencil-lifecycles', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
