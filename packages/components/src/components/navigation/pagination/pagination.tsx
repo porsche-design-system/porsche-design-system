@@ -120,7 +120,7 @@ export class Pagination {
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelPrev}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
+                      <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" aria-hidden="true" />
                     </span>
                   </li>
                 );
@@ -172,7 +172,7 @@ export class Pagination {
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelNext}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
+                      <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" aria-hidden="true" />
                     </span>
                   </li>
                 );
