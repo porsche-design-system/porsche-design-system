@@ -1,23 +1,28 @@
-import { PButton, PLinkPure } from '@porsche-design-system/components-react';
-
+import { PLinkPure } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const StencilLifecyclesPage = (): JSX.Element => {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState({
+    linkPure: 0,
+    headline: false,
+  });
 
+  console.log(key.linkPure);
   return (
     <>
-      <PButton
+      <button
         onClick={() => {
-          setKey(Math.random());
+          setKey(({ linkPure }) => ({ linkPure: linkPure + 1, headline: true }));
         }}
       >
-        Change key on click
-      </PButton>
+        Render Link and Change key on click
+      </button>
 
-      <PLinkPure key={key} size="small">
-        Some Link
-      </PLinkPure>
+      {key.headline && (
+        <PLinkPure key={key.linkPure} size="large" href="https://porsche.com">
+          Some Link with non default props
+        </PLinkPure>
+      )}
     </>
   );
 };
