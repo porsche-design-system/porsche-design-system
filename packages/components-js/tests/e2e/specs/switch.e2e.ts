@@ -64,78 +64,6 @@ describe('switch', () => {
     });
   });
 
-  describe('accessibility', () => {
-    it('should set correct aria-checked value', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-checked')).toBe('false');
-
-      await setProperty(host, 'checked', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-checked')).toBe('true');
-
-      await setProperty(host, 'checked', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-checked')).toBe('false');
-    });
-
-    it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-    });
-
-    it('should be removed from tab order for tabbable false', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<div id="wrapper">
- <a href="#" id="before">before</a>
- <p-switch tabbable="false">Some label</p-switch>
- <a href="#" id="after">after</a>
-</div>`
-      );
-
-      const host = await getHost();
-      const before = await selectNode(page, '#before');
-      const after = await selectNode(page, '#after');
-
-      await before.focus();
-
-      let hostFocusCalls = 0;
-      await addEventListener(host, 'focus', () => hostFocusCalls++);
-      let afterFocusCalls = 0;
-      await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after second tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
-    });
-  });
-
   describe('events', () => {
     it('should trigger event on click', async () => {
       await initSwitch();
@@ -337,6 +265,38 @@ describe('switch', () => {
 
       expect(await hasFocus(page, host), 'final focus style').toBe(true);
     });
+
+    it('should be removed from tab order for tabbable false', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<div id="wrapper">
+         <a href="#" id="before">before</a>
+         <p-switch tabbable="false">Some label</p-switch>
+         <a href="#" id="after">after</a>
+        </div>`
+      );
+
+      const host = await getHost();
+      const before = await selectNode(page, '#before');
+      const after = await selectNode(page, '#after');
+
+      await before.focus();
+
+      let hostFocusCalls = 0;
+      await addEventListener(host, 'focus', () => hostFocusCalls++);
+      let afterFocusCalls = 0;
+      await addEventListener(after, 'focus', () => afterFocusCalls++);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(hostFocusCalls, 'hostFocusCalls after second tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+    });
   });
 
   describe('lifecycle', () => {
@@ -376,6 +336,63 @@ describe('switch', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initSwitch();
+      const label = () => selectNode(page, 'p-switch >>> label');
+      const snapshot = await page.accessibility.snapshot({
+        root: await label(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree if checked value is set programmatically', async () => {
+      await initSwitch();
+
+      const host = await getHost();
+      const button = await getButton();
+
+      await setProperty(host, 'checked', true);
+      await waitForStencilLifecycle(page);
+
+      const snapshotChecked = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshotChecked, 'Checked').toMatchSnapshot('Checked');
+
+      await setProperty(host, 'checked', false);
+      await waitForStencilLifecycle(page);
+
+      const snapshotUnchecked = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshotUnchecked, 'Unchecked').toMatchSnapshot('Unchecked');
+    });
+
+    it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
+      await initSwitch();
+
+      const host = await getHost();
+      const button = await getButton();
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
   });
 });
