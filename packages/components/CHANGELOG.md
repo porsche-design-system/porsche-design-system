@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- `SimHei` as fallback for all components' `font-family`
+- `SimHei` and `黑体` as fallback for all components' `font-family`
 
 ### [2.5.0-beta.0] - 2021-09-22
 
