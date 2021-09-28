@@ -210,7 +210,7 @@ export const routes: RouteType[] = [
   },
   {
     name: 'Stencil Lifecycle',
-    path: '/stencil-lifecycle',
+    path: '/stencil-lifecycles',
     component: fromPages.StencilLifecyclesPage,
   },
   {
