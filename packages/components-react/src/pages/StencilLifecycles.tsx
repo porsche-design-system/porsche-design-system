@@ -1,6 +1,9 @@
 import { PLinkPure } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
+/* Page used to render a React Wrapper Component of the PDS on button click,
+ to track the initiated stencil lifecycles */
+
 export const StencilLifecyclesPage = (): JSX.Element => {
   const [key, setKey] = useState(0);
 
