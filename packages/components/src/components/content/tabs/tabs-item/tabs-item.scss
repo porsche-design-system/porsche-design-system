@@ -5,3 +5,8 @@
 :host([hidden]) {
   display: none;
 }
+
+:host(:focus),
+:host(:focus-visible) {
+  outline: none;
+}
