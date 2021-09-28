@@ -12,9 +12,8 @@ describe('stencil-lifecycles', () => {
     const client = await page.target().createCDPSession();
     await client.send('Emulation.setCPUThrottlingRate', { rate: 6 });
 
-    await goto(page, 'stencil-lifecycle');
+    await goto(page, 'stencil-lifecycles');
 
-    // Insert stencil lifecycle hooks onto window object
     await page.evaluate(() => {
       const script = document.createElement('script');
       script.text = `
