@@ -104,8 +104,10 @@ export class Tabs {
 
       if (+index === this.activeTabIndex) {
         removeAttribute(tab, 'hidden');
+        setAttribute(tab, 'tabindex', '0');
       } else {
         setAttribute(tab, 'hidden');
+        removeAttribute(tab, 'tabindex');
       }
     }
   };
