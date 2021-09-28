@@ -74,7 +74,7 @@ h1 {
 #### Result
 ```css
 p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-family: "Porsche Next", "Arial Narrow", Arial, SimHei, 黑体, sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
@@ -103,7 +103,7 @@ h1 {
 #### Result
 ```css
 h1 {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-family: "Porsche Next", "Arial Narrow", Arial, SimHei, 黑体, sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
   line-height: 1.4285714286;

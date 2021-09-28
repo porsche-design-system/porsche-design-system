@@ -91,7 +91,7 @@ Enter a font-size in px unit based on Porsche Type Scale.
 ### Fallback fonts
 
 If in some cases the Porsche Next webfont can't be rendered by the browser (e.g. due to download errors) yo have to provide fallback fonts which should be stacked like this: 
-`font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;` 
+`font-family: "Porsche Next", "Arial Narrow", Arial, SimHei, 黑体, sans-serif;` 
 
 ### Language versions
 
