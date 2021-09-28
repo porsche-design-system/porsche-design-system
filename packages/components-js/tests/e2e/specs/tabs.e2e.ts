@@ -16,12 +16,12 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
+  const CSS_ANIMATION_DURATION = 1000;
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
     const { amount = 3, activeTabIndex } = opts ?? {};
@@ -367,6 +367,19 @@ describe('tabs', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    });
+  });
+
+  fdescribe('accessibility', () => {
+    it('should expose correct initial accessibility tree of tabpanel', async () => {
+      await initTabs();
+      const tabpanel = () => selectNode(page, 'p-tabs > [role="tabpanel"]');
+      const snapshot = await page.accessibility.snapshot({
+        root: await tabpanel(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
