@@ -108,45 +108,6 @@ describe('tabs-bar', () => {
 
       expect(await getStatusBarWidth(await getStatusBar())).toBe('0px');
     });
-
-    it('should render no active tab if no activeTabIndex is set ', async () => {
-      await initTabsBar({ amount: 3 });
-      const allButtons = await getAllButtons();
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
-
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
-    });
-
-    it('should render correct active tab if activeTabIndex is set ', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 1 });
-      const allButtons = await getAllButtons();
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
-
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
-      expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
-    });
-
-    it('should render no active tab if activeTabIndex is removed ', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 1 });
-      const allButtons = await getAllButtons();
-      const host = await getHost();
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
-
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
-      expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
-
-      await removeAttribute(host, 'active-tab-index');
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
-
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
-    });
   });
 
   describe('slotted content changes', () => {
@@ -364,20 +325,6 @@ describe('tabs-bar', () => {
       const buttonWidth = await getOffsetWidth(button4);
       const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
-    });
-
-    it('should keep old selected tab on scrollArea click', async () => {
-      await initTabsBar({ amount: 4, activeTabIndex: 3 });
-      const allButtons = await getAllButtons();
-      const scrollArea = await getScrollArea();
-
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
-
-      await clickElement(scrollArea);
-      expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
-      expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
     });
 
     it('should have same offsetLeft on statusbar and active tab', async () => {
@@ -600,22 +547,6 @@ describe('tabs-bar', () => {
 
       expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
       expect(await isElementAtIndexFocused(page, 2)).toBeFalsy();
-    });
-
-    it('should render correct active tab on focus change and enter press', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
-      const [firstButton, secondButton] = await getAllButtons();
-
-      expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
-      expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
-      expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
     });
 
     it('should have correct scroll-position on keyboard arrow press when wrapped by p-tabs', async () => {
@@ -948,6 +879,91 @@ describe('tabs-bar', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree of tablist', async () => {
+      await initTabsBar({ amount: 3 });
+      const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
+      const snapshot = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should render correct accessibility tree if activeTabIndex is set ', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 1 });
+      const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
+      const snapshot = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should render correct accessibility tree if activeTabIndex is removed ', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 1 });
+      const host = await getHost();
+      const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
+
+      await removeAttribute(host, 'active-tab-index');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(40);
+
+      const snapshot = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should render correct accessibility tree on scrollArea click', async () => {
+      await initTabsBar({ amount: 4, activeTabIndex: 3 });
+      const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
+      const scrollArea = await getScrollArea();
+
+      await page.waitForTimeout(40);
+      const snapshotBeforeClick = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshotBeforeClick).toMatchSnapshot('Before click');
+
+      await clickElement(scrollArea);
+      const snapshotAfterClick = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshotAfterClick).toMatchSnapshot('After click');
+    });
+
+    it('should render correct accessibility tree on focus change and enter press', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
+      const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
+      const snapshotBeforeChange = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshotBeforeChange).toMatchSnapshot('Before change');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+      const snapshotAfterChange = await page.accessibility.snapshot({
+        root: await tablist(),
+        interestingOnly: false,
+      });
+
+      expect(snapshotAfterChange).toMatchSnapshot('After change');
     });
   });
 });
