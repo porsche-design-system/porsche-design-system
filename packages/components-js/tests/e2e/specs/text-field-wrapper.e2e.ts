@@ -89,74 +89,6 @@ describe('text-field-wrapper', () => {
     expect(await getLabel()).not.toBeNull();
   });
 
-  describe('accessibility', () => {
-    it('should add aria-label', async () => {
-      await initTextField({ hasLabel: true });
-      const input = await getInput();
-      expect(await getAttribute(input, 'aria-label')).toBe('Some label');
-    });
-
-    it('should add aria-label with description text', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label" description="Some description">
-          <input type="text">
-        </p-text-field-wrapper>`
-      );
-      const input = await getInput();
-      expect(await getAttribute(input, 'aria-label')).toBe('Some label. Some description');
-    });
-
-    it('should add aria-label with message text', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label" description="Some description" message="Some error message" state="error">
-          <input type="text">
-        </p-text-field-wrapper>`
-      );
-      const input = await getInput();
-      expect(await getAttribute(input, 'aria-label')).toBe('Some label. Some error message');
-    });
-
-    it('should add/remove message text and update aria-label attribute if state changes programmatically', async () => {
-      await initTextField({ hasLabel: true });
-      const textFieldComponent = await getHost();
-      const input = await getInput();
-
-      expect(await getMessage(), 'initially').toBeNull();
-
-      await setProperty(textFieldComponent, 'state', 'error');
-      await setProperty(textFieldComponent, 'message', 'Some error message');
-      await waitForStencilLifecycle(page);
-
-      let message = await getMessage();
-      expect(message, 'when state = error').toBeDefined();
-      expect(await getAttribute(message, 'role'), 'when state = error').toEqual('alert');
-      expect(await getAttribute(input, 'aria-label'), 'when state = error').toEqual('Some label. Some error message');
-
-      await setProperty(textFieldComponent, 'state', 'success');
-      await setProperty(textFieldComponent, 'message', 'Some success message');
-      await waitForStencilLifecycle(page);
-
-      message = await getMessage();
-      expect(await message, 'when state = success').toBeDefined();
-      expect(await getAttribute(message, 'role'), 'when state = success').toBeNull();
-      expect(await getAttribute(input, 'aria-label'), 'when state = success').toEqual(
-        'Some label. Some success message'
-      );
-
-      await setProperty(textFieldComponent, 'state', 'none');
-      await setProperty(textFieldComponent, 'message', '');
-      await waitForStencilLifecycle(page);
-
-      message = await getMessage();
-      expect(message, 'when state = none').toBeNull();
-      expect(await getAttribute(input, 'aria-label'), 'when state = none').toEqual('Some label');
-    });
-  });
-
   describe('input type password', () => {
     it('should disable input and toggle password button when input is disabled programmatically', async () => {
       await initTextField({ type: 'password', hasLabel: true });
@@ -196,24 +128,6 @@ describe('text-field-wrapper', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getIconName(icon)).toBe('view');
-    });
-
-    it('should toggle aria-pressed state when password visibility button is clicked', async () => {
-      await initTextField({ type: 'password', hasLabel: true });
-      const toggleButton = await getButton();
-
-      const ariaPressedState = async () => await toggleButton.evaluate((el) => el.getAttribute('aria-pressed'));
-      expect(await ariaPressedState()).toBe('false');
-
-      await toggleButton.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await ariaPressedState()).toBe('true');
-
-      await toggleButton.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await ariaPressedState()).toBe('false');
     });
 
     it('should have padding-right', async () => {
@@ -504,6 +418,136 @@ describe('text-field-wrapper', () => {
 
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initTextField({ hasLabel: true });
+      const input = await getInput();
+      const snapshot = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree with description text', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label" description="Some description">
+          <input type="text">
+        </p-text-field-wrapper>`
+      );
+      const input = await getInput();
+      const snapshot = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree properties in error state', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+          <input type="text">
+        </p-text-field-wrapper>`
+      );
+      const input = await getInput();
+      const message = await getMessage();
+
+      const snapshotInput = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      const snapshotMessage = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInput).toMatchSnapshot('Of Input');
+      expect(snapshotMessage).toMatchSnapshot('Of Message');
+    });
+
+    it('should add/remove accessibility tree properties if state changes programmatically', async () => {
+      await initTextField({ hasLabel: true });
+
+      const host = await getHost();
+
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message.');
+      await waitForStencilLifecycle(page);
+
+      const input = await getInput();
+      const message = await getMessage();
+
+      const snapshotInputError = await page.accessibility.snapshot({
+        root: input,
+      });
+      const snapshotMessageError = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
+
+      await setProperty(host, 'state', 'success');
+      await setProperty(host, 'message', 'Some success message.');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputSuccess = await page.accessibility.snapshot({
+        root: input,
+      });
+      const snapshotMessageSuccess = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
+
+      await setProperty(host, 'state', 'none');
+      await setProperty(host, 'message', '');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputNone = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
+    });
+
+    it('should expose correct accessibility tree when password visibility button is clicked', async () => {
+      await initTextField({ type: 'password', hasLabel: true });
+      const toggleButton = await getButton();
+
+      const snapshotInitially = await page.accessibility.snapshot({
+        root: toggleButton,
+      });
+
+      expect(snapshotInitially, 'initially').toMatchSnapshot('Initially');
+
+      await toggleButton.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotButtonPressed = await page.accessibility.snapshot({
+        root: toggleButton,
+      });
+
+      expect(snapshotButtonPressed, 'pressed').toMatchSnapshot('Pressed');
+
+      await toggleButton.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotButtonPressedAgain = await page.accessibility.snapshot({
+        root: toggleButton,
+      });
+
+      expect(snapshotButtonPressedAgain, 'pressed again').toMatchSnapshot('Pressed again');
     });
   });
 });
