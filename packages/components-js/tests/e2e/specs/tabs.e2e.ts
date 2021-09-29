@@ -370,7 +370,7 @@ describe('tabs', () => {
     });
   });
 
-  fdescribe('accessibility', () => {
+  describe('accessibility', () => {
     it('should expose correct initial accessibility tree of tabpanel', async () => {
       await initTabs();
       const tabpanel = () => selectNode(page, 'p-tabs > [role="tabpanel"]');
