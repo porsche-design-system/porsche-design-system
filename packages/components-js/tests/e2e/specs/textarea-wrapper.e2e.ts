@@ -71,38 +71,6 @@ describe('textarea-wrapper', () => {
     );
   };
 
-  it('should add aria-label to support screen readers properly', async () => {
-    await initTextarea({ hasLabel: true });
-    const textarea = await getTextarea();
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
-  });
-
-  it('should add aria-label with description text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label" description="Some description">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>
-    `
-    );
-    const textarea = await getTextarea();
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some description');
-  });
-
-  it('should add aria-label with message text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-textarea-wrapper label="Some label" description="Some description" message="Some error message" state="error">
-        <textarea name="some-name"></textarea>
-      </p-textarea-wrapper>
-    `
-    );
-    const textarea = await getTextarea();
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message');
-  });
-
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await initTextarea();
     const host = await getHost();
@@ -113,37 +81,6 @@ describe('textarea-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getLabel()).toBeDefined();
-  });
-
-  it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
-    await initTextarea({ hasLabel: true });
-    const host = await getHost();
-    const textarea = await getTextarea();
-
-    expect(await getMessage(), 'initially').toBeNull();
-
-    await setProperty(host, 'state', 'error');
-    await setProperty(host, 'message', 'Some error message');
-    await waitForStencilLifecycle(page);
-
-    expect(await getMessage(), 'when state = error').toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'), 'when state = error').toBe('alert');
-    expect(await getProperty(textarea, 'ariaLabel'), 'when state = error').toBe('Some label. Some error message');
-
-    await setProperty(host, 'state', 'success');
-    await setProperty(host, 'message', 'Some success message');
-    await waitForStencilLifecycle(page);
-
-    expect(await getMessage(), 'when state = success').toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'), 'when state = success').toBeNull();
-    expect(await getProperty(textarea, 'ariaLabel'), 'when state = success').toBe('Some label. Some success message');
-
-    await setProperty(host, 'state', 'none');
-    await setProperty(host, 'message', '');
-    await waitForStencilLifecycle(page);
-
-    expect(await getMessage(), 'when state = none').toBeNull();
-    expect(await getProperty(textarea, 'ariaLabel'), 'when state = none').toBe('Some label');
   });
 
   it('should focus textarea when label text is clicked', async () => {
@@ -271,6 +208,107 @@ describe('textarea-wrapper', () => {
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initTextarea({ hasLabel: true });
+      const textarea = await getTextarea();
+      const snapshot = await page.accessibility.snapshot({
+        root: textarea,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree with description text', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-textarea-wrapper label="Some label" description="Some description">
+          <textarea name="some-name"></textarea>
+        </p-textarea-wrapper>`
+      );
+      const textarea = await getTextarea();
+      const snapshot = await page.accessibility.snapshot({
+        root: textarea,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree properties in error state', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-textarea-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+          <textarea name="some-name"></textarea>
+        </p-textarea-wrapper>\``
+      );
+      const textarea = await getTextarea();
+      const message = await getMessage();
+
+      const snapshotInput = await page.accessibility.snapshot({
+        root: textarea,
+      });
+
+      const snapshotMessage = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInput).toMatchSnapshot('Of Textarea');
+      expect(snapshotMessage).toMatchSnapshot('Of Message');
+    });
+
+    it('should add/remove accessibility tree properties if state changes programmatically', async () => {
+      await initTextarea({ hasLabel: true });
+
+      const host = await getHost();
+
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message.');
+      await waitForStencilLifecycle(page);
+
+      const textarea = await getTextarea();
+      const message = await getMessage();
+
+      const snapshotInputError = await page.accessibility.snapshot({
+        root: textarea,
+      });
+      const snapshotMessageError = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Textarea when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
+
+      await setProperty(host, 'state', 'success');
+      await setProperty(host, 'message', 'Some success message.');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputSuccess = await page.accessibility.snapshot({
+        root: textarea,
+      });
+      const snapshotMessageSuccess = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Textarea when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
+
+      await setProperty(host, 'state', 'none');
+      await setProperty(host, 'message', '');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputNone = await page.accessibility.snapshot({
+        root: textarea,
+      });
+
+      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Textarea when state = none');
     });
   });
 });
