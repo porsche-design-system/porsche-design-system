@@ -88,7 +88,7 @@ describe('text', () => {
       </p-text>`
     );
     const paragraph = await getParagraph();
-    const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust');
+    const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust' as any);
 
     // when webkitTextSizeAdjust is set to "none", it defaults to 100%
     expect(webkitTextSizeAdjustStyle).toBe('100%');

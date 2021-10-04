@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { PButton } from '../../../projects/components-wrapper/src';
 import { skipCheckForPorscheDesignSystemProviderDuringTests } from '../../../projects/components-wrapper/src/hooks';
 
-describe('skipCheckForPorscheDesignSystemProviderDuringTests', () => {
+describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;

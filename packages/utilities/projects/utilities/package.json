@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "scope": "@porsche-design-system",
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",
@@ -45,10 +45,10 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
-    "build:buildTypography": "ts-node --project 'tsconfig.node.json' 'scripts/buildTypography.ts'",
+    "build:buildTypography": "ts-node 'scripts/buildTypography.ts'",
     "build:bundleLib": "rollup -c rollup.config.js",
     "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
-    "build:createGlobalCSS": "ts-node --project 'tsconfig.node.json' 'scripts/createGlobalCSS.ts'",
+    "build:createGlobalCSS": "ts-node 'scripts/createGlobalCSS.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
@@ -62,6 +62,6 @@
     "typescript": "~4.3.5"
   },
   "dependencies": {
-    "csstype": "^3.0.8"
+    "csstype": "^3.0.9"
   }
 }
