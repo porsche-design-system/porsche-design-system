@@ -12,7 +12,7 @@ import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return (
-    <PTable data-testid="host">
+    <PTable data-testid="host" caption="Some caption">
       <PTableHead data-testid="head">
         <PTableHeadRow data-testid="head-row">
           <PTableHeadCell data-testid="head-cell">Col 1</PTableHeadCell>
