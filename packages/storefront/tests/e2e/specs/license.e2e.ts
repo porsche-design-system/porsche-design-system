@@ -13,14 +13,14 @@ const getCssClasses = async (element: ElementHandle): Promise<string> =>
 
 it('should navigate to license', async () => {
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
-  await page.waitForSelector('html.hydrated');
+  await page.evaluate(() => (window as any).componentsReady());
 
   const [linkElement] = await page.$x(`//footer[@class='footer']//a[contains(., 'License')]`);
 
   expect(await isLinkActive(linkElement)).toBe(false);
 
   await linkElement.click();
-  await page.waitForTimeout(40);
+  await page.evaluate(() => (window as any).componentsReady());
 
   expect(await isLinkActive(linkElement)).toBe(true);
 
