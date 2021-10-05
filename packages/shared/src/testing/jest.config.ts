@@ -11,6 +11,7 @@ export const config: Config.InitialOptions = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
+  maxWorkers: 4,
   globals: {
     'ts-jest': {
       isolatedModules: true, // this fixes typing issues with jasmine
