@@ -88,11 +88,13 @@ type VRTestOptions = TestOptions & {
 
 export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: VRTestOptions) => {
   const { scenario, ...otherOptions } = options || {};
+  const { baseUrl } = customOptions ?? defaultOptions;
+
   return vrt.test(
     snapshotId,
     async () => {
       const page = vrt.getPage();
-      await page.goto(url);
+      await page.goto(baseUrl + url);
 
       // componentsReady is undefined in utilities package
       await page.evaluate(() => (window as any).componentsReady?.());
