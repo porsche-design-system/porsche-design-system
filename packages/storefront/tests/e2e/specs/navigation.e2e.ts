@@ -39,7 +39,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
       it(`should navigate to "${category} > ${page}"`, async () => {
         await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
         await injectCSSOverrides();
-        await browserPage.waitForSelector('html.hydrated');
+        await browserPage.evaluate(() => (window as any).componentsReady());
 
         const [accordionButton] = await browserPage.$x(
           `//div[@class='sidebar']/nav/p-accordion[@heading='${category}']`
