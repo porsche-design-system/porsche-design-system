@@ -14,7 +14,7 @@ export const config: Config.InitialOptions = {
   maxWorkers: 4,
   globals: {
     'ts-jest': {
-      isolatedModules: true, // this fixes typing issues with jasmine
+      isolatedModules: true, // disable type-checking and compile each file as an isolated module
       tsconfig: {
         target: 'es2019',
         lib: ['es2019', 'dom'],
