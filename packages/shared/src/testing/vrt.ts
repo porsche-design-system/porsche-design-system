@@ -24,7 +24,7 @@ const defaultOptions: VisualRegressionTestOptions = {
 };
 
 // is overridden for components-react, components-angular, storefront and utilities
-let customOptions: VisualRegressionTestOptions = {};
+let customOptions: VisualRegressionTestOptions;
 
 export const setCustomOptions = (opts: VisualRegressionTestOptions): void => {
   customOptions = opts;
