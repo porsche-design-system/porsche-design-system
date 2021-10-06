@@ -50,7 +50,7 @@ describe('radio-button-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-radio-button-wrapper state="${state}" ${!useSlottedLabel && ' label="Some label"'}>
+        <p-radio-button-wrapper state="${state}" ${useSlottedLabel ? '' : 'label="Some label"'}>
           ${slottedLabel}
           <input type="radio" />
           ${slottedMessage}
