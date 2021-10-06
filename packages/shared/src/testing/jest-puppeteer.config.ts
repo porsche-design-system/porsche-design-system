@@ -23,8 +23,13 @@ module.exports = {
     server: {
       command: 'yarn start',
       port: process.env.PORT,
-      launchTimeout: 30000,
+      launchTimeout: 180000,
       debug: true,
+    },
+    // https://github.com/jeffbski/wait-on/blob/master/README.md?plain=1#L149
+    waitOnScheme: {
+      timeout: 180000,
+      resources: ['http-get://localhost:' + process.env.PORT],
     },
   }),
 };
