@@ -5,7 +5,6 @@ import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
 
-// describe('navigation', () => {
 let browserPage: Page;
 // const logPages: string[] = [];
 // const logTabs: string[] = [];
@@ -95,4 +94,3 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     })(category, page);
   }
 }
-// });
