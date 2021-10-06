@@ -5,7 +5,7 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-fit('should not crash after disconnectedCallback', async () => {
+it('should not crash after disconnectedCallback', async () => {
   initConsoleObserver(page);
 
   await goto('lifecycle-after-disconnect');
