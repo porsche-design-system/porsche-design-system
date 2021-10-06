@@ -12,7 +12,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "yarn test:unit --watch",
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && jest --colors -c tests/e2e/config/jest.config.ts'",
-    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && jest --runInBand --colors -c tests/vrt/config/jest.config.ts'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && jest --maxWorkers=2 --colors -c tests/vrt/config/jest.config.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
