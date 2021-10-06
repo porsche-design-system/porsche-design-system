@@ -12,6 +12,7 @@ const launch: PuppeteerNodeLaunchOptions = {
     '--disable-dev-shm-usage',
     '--single-process',
     '--disable-web-security',
+    '--use-gl=desktop',
   ],
 };
 
