@@ -5,8 +5,7 @@
     "outDir": "./bin",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["node"]
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/serve-cdn.ts"]
 }
