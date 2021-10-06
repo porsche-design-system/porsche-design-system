@@ -1,0 +1,16 @@
+<div class="playground light">
+  <p-grid></p-grid>
+</div>
+
+<script>
+  setTimeout(() => {
+    const item = document.createElement('p-grid-item');
+    item.id = 'loading';
+    item.innerHTML = 'loading';
+
+    const parent = document.querySelector('p-grid');
+    parent.append(item);
+
+    parent.innerHTML = '<p-grid-item>done</p-grid-item>';
+  }, 1000);
+</script>
