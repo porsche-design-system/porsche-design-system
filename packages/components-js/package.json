@@ -29,7 +29,7 @@
     "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
     "test": "yarn test:e2e && yarn test:vrt",
     "test:e2e": "PORT=8575 jest --colors -c tests/e2e/config/jest.config.ts",
-    "test:vrt": "PORT=8575 jest --maxWorkers=2 --colors -c tests/vrt/config/jest.config.ts",
+    "test:vrt": "PORT=8575 jest --colors -c tests/vrt/config/jest.config.ts",
     "test:smoke": "jest --colors -c tests/smoke/config/jest.config.ts",
     "test:unit": "yarn test:unit:components-manager-core && yarn test:unit:components-js && yarn test:unit:partials",
     "test:unit:components-manager-core": "yarn --cwd ./projects/components-manager-core test:unit",
