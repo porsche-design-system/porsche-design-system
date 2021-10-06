@@ -912,7 +912,6 @@ describe('tabs-bar', () => {
 
       await removeAttribute(host, 'active-tab-index');
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(40);
 
       const snapshot = await page.accessibility.snapshot({
         root: await tablist(),
@@ -927,7 +926,6 @@ describe('tabs-bar', () => {
       const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
       const scrollArea = await getScrollArea();
 
-      await page.waitForTimeout(40);
       const snapshotBeforeClick = await page.accessibility.snapshot({
         root: await tablist(),
         interestingOnly: false,
