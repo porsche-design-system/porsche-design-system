@@ -313,7 +313,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       const panel = await getCollapsible();
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await waitForEventSerialization(page);
       await waitForStencilLifecycle(page);
 
       const snapshotButton = await page.accessibility.snapshot({
