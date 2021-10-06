@@ -18,7 +18,7 @@ const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
-  tolerance: 0.1,
+  tolerance: 0,
   baseUrl: 'http://localhost:8575',
   timeout: 90000,
 };
