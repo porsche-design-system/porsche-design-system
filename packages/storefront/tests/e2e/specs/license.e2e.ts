@@ -20,6 +20,7 @@ it('should navigate to license', async () => {
   expect(await isLinkActive(linkElement)).toBe(false);
 
   await linkElement.click();
+  await page.waitForSelector('.vmark');
   await page.evaluate(() => (window as any).componentsReady());
 
   expect(await isLinkActive(linkElement)).toBe(true);

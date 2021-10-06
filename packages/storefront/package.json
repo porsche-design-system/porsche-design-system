@@ -11,8 +11,8 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "yarn test:unit --watch",
-    "test:e2e": "PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
-    "test:vrt": "PORT=8080 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && jest --colors -c tests/e2e/config/jest.config.ts'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && jest --colors -c tests/vrt/config/jest.config.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
@@ -55,7 +55,8 @@
     "sass-loader": "^10.1.1",
     "ts-node": "^10.2.0",
     "typescript": "~4.3.5",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "wait-on": "^6.0.0"
   },
   "scope": "@porsche-design-system"
 }
