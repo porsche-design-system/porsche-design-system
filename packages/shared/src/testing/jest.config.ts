@@ -17,6 +17,7 @@ export const config: Config.InitialOptions = {
       isolatedModules: true, // disable type-checking and compile each file as an isolated module
       diagnostics: false,
       tsconfig: {
+        moduleResolution: 'node',
         target: 'es2019',
         lib: ['es2019', 'dom'],
       },
