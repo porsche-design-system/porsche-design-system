@@ -12,7 +12,7 @@ const launch: PuppeteerNodeLaunchOptions = {
     '--disable-dev-shm-usage',
     '--single-process',
     '--disable-web-security',
-    '--use-gl=egl',
+    '--use-gl=desktop',
   ],
 };
 
@@ -29,7 +29,6 @@ module.exports = {
     },
     // https://github.com/jeffbski/wait-on/blob/master/README.md?plain=1#L149
     waitOnScheme: {
-      timeout: 180000,
       resources: ['http-get://localhost:' + process.env.PORT],
     },
   }),
