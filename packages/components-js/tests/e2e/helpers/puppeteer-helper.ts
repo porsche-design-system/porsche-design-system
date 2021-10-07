@@ -293,7 +293,7 @@ export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type
 
 const BASE_URL = 'http://localhost:8575';
 
-export const goto = async (url: string) => {
+export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/#${url}`);
   await waitForComponentsReady(page);
 };

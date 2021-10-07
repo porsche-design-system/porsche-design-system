@@ -1,4 +1,4 @@
-import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
+import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 import { Page } from 'puppeteer';
 
 let page: Page;
@@ -7,10 +7,14 @@ afterEach(async () => await page.close());
 
 it('should not crash after disconnectedCallback', async () => {
   initConsoleObserver(page);
+  await goto(page, ''); // start page
 
-  await goto('lifecycle-after-disconnect');
-  await page.waitForTimeout(1500);
+  await page.evaluate(() => {
+    const item = '<p-grid-item>Loading</p-grid-item>';
+    document.getElementById('app').innerHTML = item;
+  });
 
+  await waitForComponentsReady(page);
   expect(getConsoleErrorsAmount()).toBe(0);
 
   await page.evaluate(() => console.error('test error'));
