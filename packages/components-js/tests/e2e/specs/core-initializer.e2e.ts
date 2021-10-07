@@ -1,11 +1,11 @@
-import { getBrowser, waitForComponentsReady } from '../helpers';
+import { waitForComponentsReady } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
 const BASE_URL = 'http://localhost:8575';
 
 describe('core-initializer', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const goto = async (url: string) => {

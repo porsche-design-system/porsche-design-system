@@ -91,7 +91,12 @@ export class Switch {
         >
           <span class="toggle">
             {this.loading && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.checked ? 'light' : 'dark'} />
+              <PrefixedTagNames.pSpinner
+                class="spinner"
+                size="inherit"
+                theme={this.checked ? 'light' : 'dark'}
+                aria-hidden="true"
+              />
             )}
           </span>
         </button>

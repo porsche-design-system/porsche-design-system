@@ -3,18 +3,18 @@ import {
   getVisualRegressionMarque2xTester,
   getVisualRegressionMarque3xTester,
   vrtTest,
+  defaultViewports,
+  marqueViewports,
 } from '@porsche-design-system/shared/testing';
 
-describe('Marque', () => {
-  it('should have no visual regression', async () => {
-    expect(await vrtTest(getVisualRegressionTester(), 'marque', '/marque')).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'marque', '/marque')).toBeFalsy();
+});
 
-  it('should have no visual regression on retina 2x display', async () => {
-    expect(await vrtTest(getVisualRegressionMarque2xTester(), 'marque-2x', '/marque')).toBeFalsy();
-  });
+it.each(marqueViewports)('should have no visual regression on retina 2x display for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionMarque2xTester(viewport), 'marque-2x', '/marque')).toBeFalsy();
+});
 
-  it('should have no visual regression on retina 3x display', async () => {
-    expect(await vrtTest(getVisualRegressionMarque3xTester(), 'marque-3x', '/marque')).toBeFalsy();
-  });
+it.each(marqueViewports)('should have no visual regression on retina 3x display for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionMarque3xTester(viewport), 'marque-3x', '/marque')).toBeFalsy();
 });

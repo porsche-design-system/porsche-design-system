@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`select-wrapper filter accessibility should expose correct accessibility tree if description is set 1`] = `
+Object {
+  "autocomplete": "list",
+  "description": "Some description",
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
+
+exports[`select-wrapper filter accessibility should expose correct accessibility tree in error state 1`] = `
+Object {
+  "autocomplete": "list",
+  "haspopup": "listbox",
+  "name": "Option A, Some label. Some error message",
+  "role": "combobox",
+}
+`;
+
+exports[`select-wrapper filter accessibility should expose correct accessibility tree of option list if filter value has no match 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "No results found",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "status",
+    },
+  ],
+  "name": "Some label",
+  "role": "listbox",
+}
+`;
+
+exports[`select-wrapper filter accessibility should expose correct initial accessibility tree and aria properties of filter 1`] = `
+Object {
+  "autocomplete": "list",
+  "children": Array [
+    Object {
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "haspopup": "listbox",
+  "name": "Option A, Some label",
+  "role": "combobox",
+}
+`;
