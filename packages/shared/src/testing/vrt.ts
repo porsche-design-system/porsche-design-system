@@ -34,7 +34,7 @@ export const getVisualRegressionTester = (viewport: Viewport): VisualRegressionT
   return new VisualRegressionTester(browser, {
     ...defaultOptions,
     ...customOptions,
-    ...(viewport && { viewports: [viewport] }),
+    viewports: [viewport],
   });
 };
 
