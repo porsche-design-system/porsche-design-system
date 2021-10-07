@@ -50,7 +50,7 @@ describe('tabs-bar', () => {
     expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
   });
 
-  it('should not throw error error when used with router', async () => {
+  it('should not throw error when used with router', async () => {
     initConsoleObserver(page);
     await goto(page, 'tabs-bar'); // to load component chunk
 

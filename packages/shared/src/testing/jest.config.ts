@@ -20,6 +20,7 @@ export const config: Config.InitialOptions = {
         moduleResolution: 'node',
         target: 'es2019',
         lib: ['es2019', 'dom'],
+        esModuleInterop: true,
       },
     },
   },
