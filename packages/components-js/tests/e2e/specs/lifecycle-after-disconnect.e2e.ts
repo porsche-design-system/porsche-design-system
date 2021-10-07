@@ -1,22 +1,55 @@
 import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 import { Page } from 'puppeteer';
+import { ComponentMeta, getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it('should not crash after disconnectedCallback', async () => {
-  initConsoleObserver(page);
-  await goto(page, ''); // start page
+it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
+  'should not throw error after disconnectedCallback for %s',
+  async (tagName) => {
+    initConsoleObserver(page);
+    await goto(page, ''); // start page
 
-  await page.evaluate(() => {
-    const item = '<p-grid-item>Loading</p-grid-item>';
-    document.getElementById('app').innerHTML = item;
-  });
+    const buildMarkup = (tagName: TagName, componentMeta: ComponentMeta) => {
+      const buildChildMarkup = (requiredChild: string): string => {
+        if (requiredChild) {
+          return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
+        } else {
+          return 'Some child';
+        }
+      };
 
-  await waitForComponentsReady(page);
-  expect(getConsoleErrorsAmount()).toBe(0);
+      const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
+        if (requiredParent) {
+          const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
+          return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
+        } else {
+          return markup;
+        }
+      };
 
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
-});
+      const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+
+      return buildParentMarkup(componentMarkup, componentMeta);
+    };
+
+    const markup = buildMarkup(tagName, getComponentMeta(tagName));
+
+    await page.evaluate(
+      (tag: TagName, markup: string) => {
+        document.getElementById('app').innerHTML = markup;
+        document.getElementById('app').querySelector(tag).remove(); // remove component immediately
+      },
+      tagName,
+      markup
+    );
+
+    await page.waitForTimeout(100);
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getConsoleErrorsAmount()).toBe(1);
+  }
+);
