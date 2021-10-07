@@ -7,7 +7,7 @@ describe('core-initializer', () => {
   afterEach(async () => await page.close());
 
   it('should initialize component deterministically', async () => {
-    await goto('core-initializer');
+    await goto(page, 'core-initializer');
     await page.waitForTimeout(1500);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
