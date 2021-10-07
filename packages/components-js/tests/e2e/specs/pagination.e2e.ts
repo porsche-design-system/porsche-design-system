@@ -1,7 +1,6 @@
-import { ConsoleMessage, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import {
   getAttribute,
-  getBrowser,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   initConsoleObserver,
@@ -14,11 +13,10 @@ import {
 describe('pagination', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-pagination');
-  const getPrevButton = () => selectNode(page, 'p-pagination >>> .prev');
   const getNextButton = () => selectNode(page, 'p-pagination >>> .next');
   const getNav = () => selectNode(page, 'p-pagination >>> nav');
   const getPaginationItems = async () => (await getNav()).$$('.goto');
@@ -31,76 +29,6 @@ describe('pagination', () => {
       `<p-pagination total-items-count="500" items-per-page="25" active-page="${activePage}"></p-pagination>`
     );
   };
-
-  it('should have correct aria disabled attribute on button prev', async () => {
-    await initPagination();
-
-    const host = await getHost();
-    const prevButton = await getPrevButton();
-
-    expect(await getAttribute(prevButton, 'aria-disabled')).toBe('true');
-
-    await setProperty(host, 'activePage', 5);
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(prevButton, 'aria-disabled')).toBeNull();
-  });
-
-  it('should have correct aria disabled attribute on button next', async () => {
-    await initPagination({ activePage: 20 });
-
-    const host = await getHost();
-    const nextButton = await getNextButton();
-
-    expect(await getAttribute(nextButton, 'aria-disabled')).toBe('true');
-
-    await setProperty(host, 'activePage', 15);
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(nextButton, 'aria-disabled')).toBeNull();
-  });
-
-  describe('page-item', () => {
-    it('should have aria-current = page if selected', async () => {
-      await initPagination();
-
-      const host = await getHost();
-      const paginationItems = await getPaginationItems();
-      const firstPageItem = paginationItems[0];
-
-      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
-
-      await setProperty(host, 'activePage', 2);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstPageItem, 'aria-current')).toBeNull();
-
-      await setProperty(host, 'activePage', 1);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
-    });
-
-    it('should have aria-disabled if selected', async () => {
-      await initPagination();
-
-      const host = await getHost();
-      const paginationItems = await getPaginationItems();
-      const firstPageItem = paginationItems[0];
-
-      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
-
-      await setProperty(host, 'activePage', 2);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBeNull();
-
-      await setProperty(host, 'activePage', 1);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
-    });
-  });
 
   it('should have no errors if disconnected before fully loaded', async () => {
     initConsoleObserver(page);
@@ -129,11 +57,68 @@ describe('pagination', () => {
 
       console.log(status);
 
-      expect(status.componentDidLoad['p-pagination']).withContext('componentDidLoad: p-pagination').toBe(1);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2);
+      expect(status.componentDidLoad['p-pagination'], 'componentDidLoad: p-pagination').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initPagination();
+      const navigation = await getNav();
+      const snapshot = await page.accessibility.snapshot({
+        root: navigation,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree if disabled attribute on button next is toggled', async () => {
+      await initPagination({ activePage: 20 });
+
+      const host = await getHost();
+      const nextButtonDisabled = await getNextButton();
+
+      const snapshotButtonDisabled = await page.accessibility.snapshot({
+        root: nextButtonDisabled,
+      });
+
+      expect(snapshotButtonDisabled).toMatchSnapshot('If disabled');
+
+      await setProperty(host, 'activePage', 15);
+      await waitForStencilLifecycle(page);
+
+      const nextButtonEnabled = await getNextButton();
+
+      const snapshotButtonEnabled = await page.accessibility.snapshot({
+        root: nextButtonEnabled,
+      });
+
+      expect(snapshotButtonEnabled).toMatchSnapshot('If not disabled');
+    });
+
+    it('should have aria-current = page if selected', async () => {
+      await initPagination();
+
+      const host = await getHost();
+      const paginationItems = await getPaginationItems();
+      const firstPageItem = paginationItems[0];
+
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
+
+      await setProperty(host, 'activePage', 2);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBeNull();
+
+      await setProperty(host, 'activePage', 1);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
     });
   });
 });

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modal accessibility should expose correct initial accessibility tree 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Some Heading",
+              "role": "StaticText",
+            },
+          ],
+          "level": 1,
+          "name": "Some Heading",
+          "role": "heading",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "name": "Close",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                  ],
+                  "name": "Close",
+                  "role": "button",
+                },
+              ],
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
+      "name": "",
+      "role": "HeaderAsNonLandmark",
+    },
+    Object {
+      "name": "Some Content",
+      "role": "StaticText",
+    },
+  ],
+  "modal": true,
+  "name": "Some Heading",
+  "role": "dialog",
+}
+`;
+
+exports[`modal accessibility should not expose accessibility tree if modal is hidden 1`] = `null`;

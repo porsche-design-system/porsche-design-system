@@ -35,11 +35,14 @@ export class FieldsetWrapper {
     };
 
     return (
-      <fieldset class={rootClasses}>
+      <fieldset
+        class={rootClasses}
+        aria-describedby={hasMessage(this.host, this.message, this.state) ? 'message' : null}
+      >
         {hasLabel(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
         <slot />
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} host={this.host} />
+          <StateMessage id="message" state={this.state} message={this.message} host={this.host} />
         )}
       </fieldset>
     );
