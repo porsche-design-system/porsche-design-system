@@ -21,7 +21,7 @@ module.exports = {
   launch,
   ...(hasServer && {
     server: {
-      command: 'yarn start',
+      command: 'yarn start-app',
       port: process.env.PORT,
       launchTimeout: 180000,
       debug: true,
