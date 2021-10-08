@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^16.9.6",
+    "@types/node": "^16.10.3",
     "@types/terser-webpack-plugin": "^5.2.0",
     "concurrently": "^6.2.1",
     "devtools-protocol": "^0.0.923255",
