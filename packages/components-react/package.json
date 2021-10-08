@@ -26,7 +26,7 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
     "@porsche-design-system/components-react": "2.5.0",
-    "construct-style-sheets-polyfill": "^2.4.16",
+    "construct-style-sheets-polyfill": "^3.0.3",
     "intersection-observer": "^0.12.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
     "@testing-library/jest-dom": "^5.14.1",
