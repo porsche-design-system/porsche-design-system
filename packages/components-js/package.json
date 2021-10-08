@@ -61,7 +61,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^16.10.3",
     "@types/terser-webpack-plugin": "^5.2.0",
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.3.0",
     "devtools-protocol": "^0.0.923255",
     "globby": "^11.0.4",
     "jsdom": "^16.5.3",
