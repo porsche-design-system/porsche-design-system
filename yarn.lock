@@ -6242,10 +6242,10 @@ constants-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
-construct-style-sheets-polyfill@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/construct-style-sheets-polyfill/-/construct-style-sheets-polyfill-3.0.3.tgz#0e486a0fdeef4a0e1aa676a714e20fef7fbe2aa4"
-  integrity sha512-z5sn55s4Avgpfj5uEKXP50DIawJoQ9iYtojSXrbxYL8W1njzZqW3/Yzsgmqgb2sV0NVvhn1cH5wk313DeQLzbA==
+construct-style-sheets-polyfill@^2.4.16:
+  version "2.4.17"
+  resolved "https://registry.yarnpkg.com/construct-style-sheets-polyfill/-/construct-style-sheets-polyfill-2.4.17.tgz#9fb53f9f3ff889159f6c3abec764e89d84e561be"
+  integrity sha512-rKtZGWWAVFE6HgdBuuui1emic/t8aAKQbePQ7Je6ird8nZYSd3mqqBX9IvFn2CMtnbh7mQTk/vxc9mfaLl7cGQ==
 
 content-disposition@0.5.3, content-disposition@~0.5.2:
   version "0.5.3"
