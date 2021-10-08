@@ -67,7 +67,7 @@
     "jsdom": "^16.5.3",
     "local-web-server": "^5.1.1",
     "ts-node": "^10.2.0",
-    "typescript": "~4.3.5",
+    "typescript": "~4.4.3",
     "webpack": "^5.53.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.7.2"
