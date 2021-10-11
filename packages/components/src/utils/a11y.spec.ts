@@ -1,5 +1,6 @@
-import { setAriaAttributes, SetAriaAttributesOptions } from '.';
+import { parseAndGetAccessibilityAttributes, setAriaAttributes, SetAriaAttributesOptions } from '.';
 import * as domUtils from './dom';
+import type { AriaAttributes } from '../types';
 
 describe('setAriaAttributes()', () => {
   const node = document.createElement('div');
@@ -32,5 +33,39 @@ describe('setAriaAttributes()', () => {
     } else if (options.state) {
       expect(removeAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid');
     }
+  });
+});
+
+describe('parseAndGetAccessibilityAttributes()', () => {
+  it.each<AriaAttributes | string>([
+    {
+      'aria-label': 'Some label',
+    },
+    "{'aria-label': 'Some label'}",
+    "{'aria-label':'Some label'}",
+    '{"aria-label": "Some label"}',
+    '{"aria-label":"Some label"}',
+  ])('should return correct accessibility attributes for %o', (input) => {
+    expect(parseAndGetAccessibilityAttributes(input)).toEqual({
+      'aria-label': 'Some label',
+    });
+  });
+
+  it.each<AriaAttributes | string>([
+    {
+      'aria-label': 'Some label',
+      'aria-pressed': true,
+    },
+    {
+      'aria-label': 'Some label',
+      'aria-pressed': 'true',
+    },
+    "{'aria-label': 'Some label','aria-pressed':true}",
+    "{'aria-label': 'Some label','aria-pressed':'true'}",
+  ])('should return correct accessibility attributes with boolean for %o', (input) => {
+    expect(parseAndGetAccessibilityAttributes(input)).toEqual({
+      'aria-label': 'Some label',
+      'aria-pressed': 'true',
+    });
   });
 });
