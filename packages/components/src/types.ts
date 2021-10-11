@@ -53,3 +53,5 @@ export type LinkButtonPureIconName = IconName | 'none';
 
 export type AlignLabelType = 'left' | 'right';
 export type AlignLabel = BreakpointCustomizable<AlignLabelType>;
+
+export { AriaAttributes } from './accessibility-types';
