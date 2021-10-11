@@ -21,10 +21,10 @@ const scanForLinks = async (): Promise<string[]> => {
   const markdownHrefs: string[] = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
 
   const markdownHrefsStartingWithSlash = markdownHrefs.filter((url: string) => url.startsWith('/'));
-  expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
   if (markdownHrefsStartingWithSlash.length) {
     console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
   }
+  expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
 
   return bodyHrefs
     .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown

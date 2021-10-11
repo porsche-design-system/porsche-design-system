@@ -26,4 +26,4 @@ depending on the exact product and version you choose.
 
 This software may or may not contain the following specific Open Source Components:
 
-<p-link-pure icon="download" href="/assets/porsche-design-system-open-source-asset.txt" download>Porsche Design System Open Source Components</p-link-pure>
+<p-link-pure icon="download" href="assets/porsche-design-system-open-source-asset.txt" download>Porsche Design System Open Source Components</p-link-pure>
