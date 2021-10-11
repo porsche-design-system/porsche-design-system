@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, AriaAttributes, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
@@ -67,7 +67,7 @@ export namespace Components {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
-        "accessibility"?: Pick<AriaAttributes, 'aria-label' | 'aria-describedby' | 'aria-pressed'> | string;
+        "accessibility"?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1191,7 +1191,7 @@ declare namespace LocalJSX {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
-        "accessibility"?: Pick<AriaAttributes, 'aria-label' | 'aria-describedby' | 'aria-pressed'> | string;
+        "accessibility"?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
