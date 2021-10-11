@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.5.1-beta.0] - 2021-10-07
+### [2.5.1-beta.0] - 2021-10-11
 
 #### Fixed
 - Possible exceptions when components get unmounted directly
