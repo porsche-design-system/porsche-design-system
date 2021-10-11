@@ -33,6 +33,7 @@ export const parseAndGetAccessibilityAttributes = (input: AriaAttributes | strin
         input;
 
   // convert booleans to strings so that values are property set and not just empty attributes for true
+  // eslint-disable-next-line guard-for-in
   for (const attr in attributes) {
     const value = attributes[attr];
     if (typeof value === 'boolean') {
