@@ -54,7 +54,7 @@ const whitelistedUrls: string[] = [
   'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
   'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml',
   'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml',
-  ' /assets/open-source-dependency-overview.txt',
+  '/assets/open-source-dependency-overview.txt',
 ];
 
 const linkCheckLoop = async () => {
