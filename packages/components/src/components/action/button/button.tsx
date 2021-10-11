@@ -6,6 +6,7 @@ import {
   isDark,
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
+  parseAndGetAccessibilityAttributes,
 } from '../../../utils';
 import type {
   AriaAttributes,
@@ -92,6 +93,7 @@ export class Button {
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
+        {...parseAndGetAccessibilityAttributes(this.accessibility)}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
