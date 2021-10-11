@@ -7,7 +7,14 @@ import {
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
+import type {
+  AriaAttributes,
+  BreakpointCustomizable,
+  ButtonType,
+  ButtonVariant,
+  IconName,
+  Theme,
+} from '../../../types';
 
 @Component({
   tag: 'p-button',
@@ -43,6 +50,8 @@ export class Button {
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  @Prop() public accessibility?: Pick<AriaAttributes, 'aria-label' | 'aria-describedby' | 'aria-pressed'> | string;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
