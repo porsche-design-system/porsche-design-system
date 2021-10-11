@@ -17,7 +17,9 @@
         return;
       }
       const href = (target as HTMLElement).getAttribute('href');
-      if (href && !href.startsWith('http') && !href.startsWith('sketch://')) {
+      const isDownload = (target as HTMLElement).getAttribute('download');
+
+      if (href && !href.startsWith('http') && !href.startsWith('sketch://') && isDownload) {
         event.preventDefault();
         this.$router.push('/' + href);
       }
