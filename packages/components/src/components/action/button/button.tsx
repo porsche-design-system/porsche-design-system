@@ -9,7 +9,7 @@ import {
   parseAndGetAccessibilityAttributes,
 } from '../../../utils';
 import type {
-  AriaAttributes,
+  SelectedAriaAttributes,
   BreakpointCustomizable,
   ButtonType,
   ButtonVariant,
@@ -52,7 +52,7 @@ export class Button {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @Prop() public accessibility?: Pick<AriaAttributes, 'aria-label' | 'aria-describedby' | 'aria-pressed'> | string;
+  @Prop() public accessibility?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
