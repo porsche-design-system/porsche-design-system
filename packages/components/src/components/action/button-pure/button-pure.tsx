@@ -11,8 +11,10 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
   attachComponentCss,
+  parseAndGetAccessibilityAttributes,
 } from '../../../utils';
 import type {
+  SelectedAriaAttributes,
   AlignLabel,
   BreakpointCustomizable,
   ButtonType,
@@ -71,6 +73,11 @@ export class ButtonPure {
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public accessibility?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
@@ -142,6 +149,7 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
           aria-describedby={hasSubline ? 'subline' : null}
+          {...parseAndGetAccessibilityAttributes(this.accessibility)}
         >
           {hasIcon &&
             (this.loading ? (

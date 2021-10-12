@@ -118,6 +118,12 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
+        /**
           * Display button in active state.
          */
         "active"?: boolean;
@@ -1246,6 +1252,12 @@ declare namespace LocalJSX {
         "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
         /**
           * Display button in active state.
          */
