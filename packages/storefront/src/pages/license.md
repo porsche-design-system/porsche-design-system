@@ -18,13 +18,13 @@ Porsche AG provides the Porsche Design System (and all contributors provide thei
 
 Further information regarding license terms and – where required by license – source codes are available at <p-link-pure icon="none" target="_blank" href="https://www.porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure> free of charge. 
 Some licenses, however, require the provision of physical copies of source or object code. In this case, you may obtain a copy of the source codes by contacting us at <p-link-pure icon="none" target="_blank" href="https://www.porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure>. 
-Furthermore please contact us at the foregoing URL in case you need assistance regarding the exercise of rights guaranteed by an Open Source License. 
+Furthermore, please contact us at the foregoing URL in case you need assistance regarding the exercise of rights guaranteed by an Open Source License. 
 A nominal fee (i.e., the cost of physically performing the distribution) will be charged for these services.  
 
 **Note:** your copy of this product may not contain code covered by one or more of the licenses listed here, depending on the exact product and version you choose.
 
-## Dependencies
+## Compulsory statement
 
 This software may or may not contain the following specific Open Source Components:
 
-<p-link-pure icon="download" href="assets/open-source-dependency-overview.txt" download>Download dependency overview</p-link-pure>
+<p-link-pure icon="download" href="assets/open-source-compulsory-statement.txt" download>Download compulsory statement</p-link-pure>
