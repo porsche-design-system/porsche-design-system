@@ -20,24 +20,33 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
   }
 };
 
-export const parseAndGetAccessibilityAttributes = (input: AriaAttributes | string): AriaAttributes => {
+export const parseAndGetAccessibilityAttributes = (
+  rawAttributes: AriaAttributes | string,
+  allowedAttributes?: readonly (keyof AriaAttributes)[]
+): AriaAttributes => {
   const attributes =
-    typeof input === 'string'
+    typeof rawAttributes === 'string'
       ? // input is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
         JSON.parse(
-          input
+          rawAttributes
             .replace(/'/g, '"') // convert single quotes to double quotes
             .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes
         )
       : // input is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
-        input;
+        rawAttributes;
+
+  const attributeKeys = Object.keys(attributes) as (keyof AriaAttributes)[];
+  const invalidAttributes = allowedAttributes && attributeKeys.filter((x) => !allowedAttributes.includes(x));
+  if (invalidAttributes?.length) {
+    throw new TypeError(
+      `${invalidAttributes[0]} is not a valid accessibility attribute. Valid ones are: ${allowedAttributes.join(', ')}`
+    );
+  }
 
   // convert booleans to strings so that values are property set and not just empty attributes for true
-  // eslint-disable-next-line guard-for-in
-  for (const attr in attributes) {
-    const value = attributes[attr];
-    if (typeof value === 'boolean') {
-      attributes[attr] = `${value}`;
+  for (const key of attributeKeys) {
+    if (typeof attributes[key] === 'boolean') {
+      attributes[key] = `${attributes[key]}`;
     }
   }
 

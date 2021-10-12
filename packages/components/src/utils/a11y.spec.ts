@@ -60,12 +60,24 @@ describe('parseAndGetAccessibilityAttributes()', () => {
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     },
-    "{'aria-label': 'Some label','aria-pressed':true}",
-    "{'aria-label': 'Some label','aria-pressed':'true'}",
+    "{'aria-label': 'Some label', 'aria-pressed': true}",
+    "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
   ])('should return correct accessibility attributes with boolean for %o', (input) => {
     expect(parseAndGetAccessibilityAttributes(input)).toEqual({
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     });
+  });
+
+  it('should throw error for unsupported attribute', () => {
+    const testFunc = () =>
+      parseAndGetAccessibilityAttributes(
+        {
+          'aria-asd': 'Some label',
+        } as any,
+        ['aria-label']
+      );
+
+    expect(testFunc).toThrowErrorMatchingSnapshot();
   });
 });
