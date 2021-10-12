@@ -97,11 +97,11 @@ export const throwIfRootNodeIsNotOfKind = (host: HTMLElement, tagName: TagNameCa
 };
 
 export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
-  return host.parentElement && getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
+  return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
 };
 
 export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
-  if (host.parentElement && !isParentOfKind(host, tagName)) {
+  if (!isParentOfKind(host, tagName)) {
     const allowedTagName = getPrefixedTagNames(host)[tagName];
     const actualTagName = getTagName(host.parentElement);
     throw new Error(
@@ -147,11 +147,7 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  return (
-    host.parentElement &&
-    isRequired(host.parentElement as HTMLElementWithRequiredProp) &&
-    isParentOfKind(host, 'pFieldsetWrapper')
-  );
+  return isRequired(host.parentElement as HTMLElementWithRequiredProp) && isParentOfKind(host, 'pFieldsetWrapper');
 };
 
 export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {

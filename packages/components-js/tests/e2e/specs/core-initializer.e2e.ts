@@ -1,13 +1,20 @@
-import { goto } from '../helpers';
+import { waitForComponentsReady } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
+
+const BASE_URL = 'http://localhost:8575';
 
 describe('core-initializer', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
+  const goto = async (url: string) => {
+    await page.goto(`${BASE_URL}/#${url}`);
+    await waitForComponentsReady(page);
+  };
+
   it('should initialize component deterministically', async () => {
-    await goto(page, 'core-initializer');
+    await goto('core-initializer');
     await page.waitForTimeout(1500);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
