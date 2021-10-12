@@ -508,6 +508,33 @@ describe('button-pure', () => {
       expect(snapshot).toMatchSnapshot();
     });
 
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initButtonPure();
+      const host = await getHost();
+      const button = await getButton();
+      await setProperty(host, 'accessibility', {
+        'aria-label': 'Some more detailed label',
+        'aria-expanded': true,
+        'aria-haspopup': true,
+      });
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      await setProperty(host, 'accessibility', {
+        'aria-pressed': true,
+      });
+      await waitForStencilLifecycle(page);
+
+      const snapshotPressed = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot, 'initial aria attributes').toMatchSnapshot('Initial');
+      expect(snapshotPressed, 'aria-pressed attribute').toMatchSnapshot('Pressed'); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
+    });
+
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
       await initButtonPure();
       const host = await getHost();
