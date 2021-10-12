@@ -16,6 +16,8 @@ import type {
   IconName,
   Theme,
 } from '../../../types';
+import type { ButtonAriaAttributes } from './button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
 
 @Component({
   tag: 'p-button',
@@ -53,9 +55,7 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<
-    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
-  >;
+  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -96,7 +96,7 @@ export class Button {
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
-        {...parseAndGetAccessibilityAttributes(this.accessibility)}
+        {...parseAndGetAccessibilityAttributes(this.accessibility, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
