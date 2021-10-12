@@ -119,9 +119,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<
-    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
-  >;
+        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Display button in active state.
          */
@@ -1252,9 +1250,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<
-    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
-  >;
+        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Display button in active state.
          */
