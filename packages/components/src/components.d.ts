@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
@@ -70,9 +71,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<
-    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
-  >;
+        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1199,9 +1198,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<
-    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
-  >;
+        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
