@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseAndGetAccessibilityAttributes() should throw error for unsupported attribute 1`] = `"aria-asd is not a valid accessibility attribute. Valid ones are: aria-label"`;
