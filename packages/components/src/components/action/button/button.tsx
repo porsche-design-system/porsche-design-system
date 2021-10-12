@@ -52,7 +52,10 @@ export class Button {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @Prop() public accessibility?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
+  /** Add ARIA attributes. */
+  @Prop() public accessibility?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {

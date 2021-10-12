@@ -67,7 +67,12 @@ export namespace Components {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
-        "accessibility"?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1191,7 +1196,12 @@ declare namespace LocalJSX {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
-        "accessibility"?: SelectedAriaAttributes<'aria-label' | 'aria-describedby' | 'aria-pressed'>;
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<
+    'aria-label' | 'aria-expanded' | 'aria-pressed' | 'aria-haspopup'
+  >;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
