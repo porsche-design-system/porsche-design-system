@@ -9,15 +9,21 @@ declare var global: Global;
 
 describe('components-wrapper', () => {
   describe('in jsdom environment', () => {
+    let globalDocument: Document;
+    let globalWindow: DOMWindow;
+
     beforeAll(() => {
+      globalDocument = global.document;
+      globalWindow = global.window;
+
       const dom = new JSDOM('<html><body></body></html>');
       global.document = dom.window.document;
       global.window = dom.window;
     });
 
     afterAll(() => {
-      delete global.document;
-      delete global.window;
+      global.document = globalDocument;
+      global.window = globalWindow;
     });
 
     it('should expose componentsReady() and load()', () => {
