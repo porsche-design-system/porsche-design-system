@@ -511,13 +511,13 @@ describe('button', () => {
         'aria-haspopup': true,
       });
       await waitForStencilLifecycle(page);
-      await expectToMatchSnapshot(page, button, 'initial aria attributes');
+      await expectToMatchSnapshot(page, button, { message: 'initial aria attributes' });
 
       await setProperty(host, 'accessibility', {
         'aria-pressed': true,
       });
       await waitForStencilLifecycle(page);
-      await expectToMatchSnapshot(page, button, 'aria-pressed attribute');
+      await expectToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {

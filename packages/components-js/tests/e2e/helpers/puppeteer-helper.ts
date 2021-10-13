@@ -291,16 +291,24 @@ export const initConsoleObserver = (page: Page): void => {
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
+type expectToMatchSnapshotOptions = {
+  message?: string;
+  interestingOnly?: boolean;
+};
 export const expectToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
-  message?: string,
-  interestingOnly?: boolean
+  opts?: expectToMatchSnapshotOptions
 ): Promise<void> => {
+  const options: expectToMatchSnapshotOptions = {
+    ...opts,
+  };
   const snapshot = await page.accessibility.snapshot({
     root: elementHandle,
-    interestingOnly,
+    interestingOnly: options.interestingOnly,
   });
 
-  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+  options.message
+    ? expect(snapshot, options.message).toMatchSnapshot(options.message)
+    : expect(snapshot).toMatchSnapshot();
 };
