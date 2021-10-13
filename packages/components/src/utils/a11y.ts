@@ -35,9 +35,9 @@ export const parseAndGetAccessibilityAttributes = (
       : // input is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
         rawAttributes;
 
-  const attributeKeys = Object.keys(attributes) as (keyof AriaAttributes)[];
-  const invalidAttributes = allowedAttributes && attributeKeys.filter((x) => !allowedAttributes.includes(x));
-  if (invalidAttributes?.length) {
+  const attributeKeys = attributes ? (Object.keys(attributes) as (keyof AriaAttributes)[]) : [];
+  const invalidAttributes = allowedAttributes ? attributeKeys.filter((x) => !allowedAttributes.includes(x)) : [];
+  if (invalidAttributes.length) {
     throw new TypeError(
       `${invalidAttributes[0]} is not a valid accessibility attribute. Valid ones are: ${allowedAttributes.join(', ')}`
     );

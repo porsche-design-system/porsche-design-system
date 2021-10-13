@@ -77,7 +77,7 @@ export class ButtonPure {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes> = {};
+  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
