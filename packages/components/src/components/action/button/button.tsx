@@ -55,7 +55,7 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes> = {};
+  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
