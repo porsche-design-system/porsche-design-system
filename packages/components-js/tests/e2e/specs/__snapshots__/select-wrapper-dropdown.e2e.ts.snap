@@ -52,6 +52,12 @@ Object {
           "selected": true,
         },
         Object {
+          "children": Array [
+            Object {
+              "name": "Option B",
+              "role": "StaticText",
+            },
+          ],
           "name": "Option B",
           "role": "option",
         },
@@ -60,10 +66,22 @@ Object {
           "role": "StaticText",
         },
         Object {
+          "children": Array [
+            Object {
+              "name": "Option A",
+              "role": "StaticText",
+            },
+          ],
           "name": "Option A",
           "role": "option",
         },
         Object {
+          "children": Array [
+            Object {
+              "name": "Option B",
+              "role": "StaticText",
+            },
+          ],
           "name": "Option B",
           "role": "option",
         },
@@ -137,11 +155,23 @@ Object {
           "selected": true,
         },
         Object {
+          "children": Array [
+            Object {
+              "name": "Option B",
+              "role": "StaticText",
+            },
+          ],
           "disabled": true,
           "name": "Option B",
           "role": "option",
         },
         Object {
+          "children": Array [
+            Object {
+              "name": "Option C",
+              "role": "StaticText",
+            },
+          ],
           "name": "Option C",
           "role": "option",
         },

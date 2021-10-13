@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { camelCase, paramCase } from 'change-case';
+import { camelCase } from 'change-case';
 import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
 const generateComponentMeta = (): void => {
@@ -12,19 +12,17 @@ const generateComponentMeta = (): void => {
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
   const types = [
-    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
-    `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
+    `type Meta = { isFocusable: boolean; isThemeable: boolean; };`,
+    `type ComponentMeta = { [key in TagName]: Meta };`,
   ].join('\n');
 
-  type ComponentMeta = {
+  type Meta = {
     isFocusable: boolean;
     isThemeable: boolean;
-    requiredParent?: TagName;
-    requiredChild?: string;
   };
 
-  type ComponentsMeta = {
-    [key in TagName]: ComponentMeta;
+  type ComponentMeta = {
+    [key in TagName]: Meta;
   };
 
   const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
@@ -40,48 +38,24 @@ const generateComponentMeta = (): void => {
       componentSourceCode[tagName].includes('<button')
   );
 
-  const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
-    const source = componentSourceCode[tagName];
+  const meta: ComponentMeta = TAG_NAMES.reduce((result, tagName) => {
     // a component is focusable if it was identified as an atomic focusable before
     // or if it contains another atomic focusable prefixed component
     const isFocusable =
       atomicFocusableTagNames.includes(tagName) ||
-      atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
-    const isThemeable = source.includes('public theme?: Theme');
+      atomicFocusableTagNames.some((x) => componentSourceCode[tagName].includes(`PrefixedTagNames.${camelCase(x)}`));
+    const isThemeable = componentSourceCode[tagName].includes('public theme?: Theme');
 
-    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
-    const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
-
-    const [, requiredChildRaw] = /getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
-
-    let requiredChild = undefined;
-    if (requiredChildRaw) {
-      requiredChild = requiredChildRaw.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-      requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
-
-      if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
-        requiredChild = requiredChild.slice(1, -1);
-      } else {
-        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
-        if (valueRaw) {
-          const value = eval(`${valueRaw}`);
-          requiredChild = value.split(',')[0];
-          requiredChild = requiredChild.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-          requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
-        }
-      }
-    }
-
-    result[tagName] = { isFocusable, isThemeable, requiredParent, requiredChild };
+    result[tagName] = { isFocusable, isThemeable };
     return result;
-  }, {} as ComponentsMeta);
+  }, {} as ComponentMeta);
 
   const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
     .filter(([_, value]) => value.isFocusable)
     .map(([key]) => camelCase(key) as TagNameCamelCase);
 
-  const functions = `export const getComponentMeta = (component: TagName): ComponentMeta => {
-  const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+  const functions = `export const getComponentMeta = (component: TagName): Meta => {
+  const componentMeta: ComponentMeta = ${JSON.stringify(meta)};
   return componentMeta[component];
 };
 
