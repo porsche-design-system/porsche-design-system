@@ -2,6 +2,7 @@ import {
   addEventListener,
   ClickableTests,
   expectedStyleOnFocus,
+  expectToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -484,51 +485,39 @@ describe('button', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initButton();
       const button = await getButton();
-      const snapshot = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
+
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
+
       await setProperty(host, 'accessibility', {
         'aria-label': 'Some more detailed label',
         'aria-expanded': true,
         'aria-haspopup': true,
       });
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: button,
-      });
+      await expectToMatchSnapshot(page, button, 'initial aria attributes');
 
       await setProperty(host, 'accessibility', {
         'aria-pressed': true,
       });
       await waitForStencilLifecycle(page);
-
-      const snapshotPressed = await page.accessibility.snapshot({
-        root: button,
-      });
-
-      expect(snapshot, 'initial aria attributes').toMatchSnapshot('Initial');
-      expect(snapshotPressed, 'aria-pressed attribute').toMatchSnapshot('Pressed'); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
+      await expectToMatchSnapshot(page, button, 'aria-pressed attribute');
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
