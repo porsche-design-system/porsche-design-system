@@ -290,3 +290,17 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+
+export const expectToMatchSnapshot = async (
+  page: Page,
+  elementHandle: ElementHandle,
+  message?: string,
+  interestingOnly?: boolean
+): Promise<void> => {
+  const snapshot = await page.accessibility.snapshot({
+    root: elementHandle,
+    interestingOnly,
+  });
+
+  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+};
