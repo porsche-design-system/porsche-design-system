@@ -27,8 +27,13 @@ Choose between predefined styling variants.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
+### ARIA attributes and states
+
+Through the `accessibility` property you have the possibility to provide additional **ARIA** attributes and states to the component.
+<Playground :markup="accessibility" :config="config"></Playground>
+
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Porsche Taycan model page"`
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `accessibility` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
 * If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"` 
 
@@ -70,6 +75,9 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 `<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }">Some label</p-link>
 <p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }">Some label</p-link>
 <p-link variant="tertiary" href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link>`;
+
+    accessibility = 
+`<p-link href="https://www.porsche.com" accessibility="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;
 
     routing =
 `<p-link>

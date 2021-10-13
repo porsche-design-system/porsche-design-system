@@ -14,6 +14,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -370,6 +371,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PLink {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1501,6 +1506,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PLink {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
