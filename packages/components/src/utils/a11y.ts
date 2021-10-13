@@ -43,7 +43,7 @@ export const parseAndGetAccessibilityAttributes = (
     );
   }
 
-  // convert booleans to strings so that values are property set and not just empty attributes for true
+  // convert booleans to strings so that values are properly set and not just result in attributes without a value when true
   for (const key of attributeKeys) {
     if (typeof attributes[key] === 'boolean') {
       attributes[key] = `${attributes[key]}`;
