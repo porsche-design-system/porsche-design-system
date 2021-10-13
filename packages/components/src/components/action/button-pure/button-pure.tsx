@@ -24,9 +24,10 @@ import type {
   Theme,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-import { warnIfIsLoadingAndIconIsNone, BUTTON_ARIA_ATTRIBUTES } from './button-pure-utils';
+import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import { ButtonAriaAttributes } from '../button/button-utils';
+import type { ButtonAriaAttributes } from '../button/button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 @Component({
   tag: 'p-button-pure',
