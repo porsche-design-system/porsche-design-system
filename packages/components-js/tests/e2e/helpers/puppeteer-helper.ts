@@ -1,4 +1,4 @@
-import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
 type Options = WaitForOptions & {
@@ -291,24 +291,19 @@ export const initConsoleObserver = (page: Page): void => {
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
-type expectToMatchSnapshotOptions = {
+type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
-  interestingOnly?: boolean;
 };
 export const expectToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
-  opts?: expectToMatchSnapshotOptions
+  opts?: ExpectToMatchSnapshotOptions
 ): Promise<void> => {
-  const options: expectToMatchSnapshotOptions = {
-    ...opts,
-  };
+  const { message, ...options } = opts || {};
   const snapshot = await page.accessibility.snapshot({
     root: elementHandle,
-    interestingOnly: options.interestingOnly,
+    ...options,
   });
 
-  options.message
-    ? expect(snapshot, options.message).toMatchSnapshot(options.message)
-    : expect(snapshot).toMatchSnapshot();
+  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
