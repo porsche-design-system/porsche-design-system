@@ -18,7 +18,7 @@ import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
-import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
@@ -653,6 +653,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
@@ -1804,6 +1808,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */

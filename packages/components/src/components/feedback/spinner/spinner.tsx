@@ -1,8 +1,8 @@
 import { JSX, Component, Prop, h, Watch } from '@stencil/core';
-import type { Theme } from '../../../types';
-import type { SpinnerSize } from './spinner-utils';
-import { verifySpinnerSize } from './spinner-utils';
-import { isDark, mapBreakpointPropToClasses } from '../../../utils';
+import type { Theme, SelectedAriaAttributes } from '../../../types';
+import type { SpinnerSize, SpinnerAriaAttributes } from './spinner-utils';
+import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES } from './spinner-utils';
+import { isDark, mapBreakpointPropToClasses, parseAndGetAccessibilityAttributes } from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
@@ -15,6 +15,9 @@ export class Spinner {
 
   /** Adapts the spinner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public accessibility?: SelectedAriaAttributes<SpinnerAriaAttributes>;
 
   @Watch('size')
   public watchSizeHandler(newValue: SpinnerSize): void {
@@ -33,8 +36,14 @@ export class Spinner {
     };
 
     return (
-      <span class={rootClasses} aria-busy="true" aria-live="polite">
-        <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false">
+      <span
+        class={rootClasses}
+        role="alert"
+        aria-busy="true"
+        aria-live="assertive"
+        {...parseAndGetAccessibilityAttributes(this.accessibility, SPINNER_ARIA_ATTRIBUTES)}
+      >
+        <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false" aria-hidden="true">
           <circle r="9" />
           <circle r="9" />
         </svg>
