@@ -43,7 +43,7 @@ describe('buildSrcSet()', () => {
         'https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.ac2042736af5512cf547c89fa7924c4f@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.22f1e9dc90399d9a5287eda689b60dba@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.49209245f04eadef8817b9bbae80d3e1@3x.png 3x',
       ],
     ])(
-      'should return correct buildSrcSet for manifestPath: %p, size: %s and format: %s',
+      'should return correct srcSet for innerManifest: %p, size: %s and format: %s',
       (innerManifest, size, format, result) => {
         expect(buildSrcSet(innerManifest, size, format)).toBe(result);
       }
@@ -77,7 +77,7 @@ describe('buildSrcSet()', () => {
         'https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.9ab63325b76ee4621cbfb6ce4a2bb264@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.d03bf68a12f8526eb999af62d61d40c2@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.b7d7a0825d39e9bbc921512d0ecf63fa@3x.webp 3x',
       ],
     ])(
-      'should return correct buildSrcSet for manifestPath: %p, size: %s and format: %s',
+      'should return correct srcSet for innerManifest: %p, size: %s and format: %s',
       (innerManifest, size, format, result) => {
         expect(buildSrcSet(innerManifest, size, format)).toBe(result);
       }
