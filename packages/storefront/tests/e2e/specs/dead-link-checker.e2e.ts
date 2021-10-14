@@ -42,6 +42,11 @@ const getPatternHeadline = async () => {
   return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
 };
 
+const getCompulsoryStatementContent = async () => {
+  await page.waitForSelector('pre', { visible: true });
+  return page.$eval('pre', (x) => x.innerHTML);
+};
+
 // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
 const whitelistedUrls: string[] = [
   'https://github.com/porscheui/porsche-design-system',
@@ -54,7 +59,6 @@ const whitelistedUrls: string[] = [
   'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
   'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml',
   'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml',
-  '/assets/open-source-compulsory-statement.txt',
 ];
 
 const linkCheckLoop = async () => {
@@ -74,9 +78,11 @@ const linkCheckLoop = async () => {
           ? 'first page'
           : href.includes('patterns/forms/')
           ? await getPatternHeadline()
+          : href.endsWith('.txt')
+          ? await getCompulsoryStatementContent()
           : await getHeadline();
 
-      if (headline === '404 - Page not found') {
+      if (headline === '404 - Page not found' || headline === 'Not Found') {
         invalidUrls.push(href);
       } else {
         const newLinks = await scanForLinks();
