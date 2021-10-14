@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `SimHei` and `黑体` as fallback for all components' `font-family`
+- `Marque` uses `webp` images for browsers that support it
 
 ### [2.5.0-beta.1] - 2021-09-28
 
