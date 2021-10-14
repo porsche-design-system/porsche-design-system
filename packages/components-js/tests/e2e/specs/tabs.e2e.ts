@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getLifecycleStatus,
@@ -374,12 +375,8 @@ describe('tabs', () => {
     it('should expose correct initial accessibility tree of tabpanel', async () => {
       await initTabs();
       const tabpanel = () => selectNode(page, 'p-tabs > [role="tabpanel"]');
-      const snapshot = await page.accessibility.snapshot({
-        root: await tabpanel(),
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, await tabpanel(), { interestingOnly: false });
     });
   });
 });
