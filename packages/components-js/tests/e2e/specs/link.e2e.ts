@@ -246,5 +246,17 @@ describe('link', () => {
 
       await expectToMatchSnapshot(page, link);
     });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'accessibility', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectToMatchSnapshot(page, link);
+    });
   });
 });

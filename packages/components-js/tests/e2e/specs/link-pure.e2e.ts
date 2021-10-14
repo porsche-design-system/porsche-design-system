@@ -298,5 +298,17 @@ describe('link-pure', () => {
 
       expect(snapshot).toBeNull();
     });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLinkPure();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'accessibility', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectToMatchSnapshot(page, link);
+    });
   });
 });
