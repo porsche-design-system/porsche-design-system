@@ -414,6 +414,10 @@ export namespace Components {
     }
     interface PLinkPure {
         /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
           * Display link in active state.
          */
         "active"?: boolean;
@@ -1548,6 +1552,10 @@ declare namespace LocalJSX {
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Display link in active state.
          */
