@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
   getOutlineStyle,
@@ -260,16 +261,13 @@ describe('link-pure', () => {
       await initLinkPure();
       const link = await getLink();
       const icon = await getIcon();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
       const snapshotIcon = await page.accessibility.snapshot({
         root: icon,
         interestingOnly: false,
       });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, link);
       expect(snapshotIcon).toBeNull();
     });
 
@@ -279,21 +277,15 @@ describe('link-pure', () => {
       const link = await getLink();
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree description if subline property is set', async () => {
       await initLinkPure({ withSubline: true });
       const link = await getLink();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, link);
     });
 
     it('should not expose accessibility tree description with slotted anchor and subline', async () => {

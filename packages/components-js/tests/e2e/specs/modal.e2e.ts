@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
@@ -365,22 +366,15 @@ describe('modal', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initBasicModal();
       const modal = await getModal();
-      const snapshot = await page.accessibility.snapshot({
-        root: modal,
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, modal, { interestingOnly: false });
     });
 
     it('should not expose accessibility tree if modal is hidden', async () => {
       await initBasicModal({ isOpen: false });
       const modal = await getModal();
-      const snapshot = await page.accessibility.snapshot({
-        root: modal,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, modal);
     });
   });
 });

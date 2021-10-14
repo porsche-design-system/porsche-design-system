@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -549,11 +550,8 @@ describe('marque', () => {
     it('should expose correct initial accessibility tree', async () => {
       await setContentWithTrademark();
       const image = await getImage();
-      const snapshot = await page.accessibility.snapshot({
-        root: image,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectToMatchSnapshot(page, image);
     });
   });
 });
