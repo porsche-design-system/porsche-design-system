@@ -21,10 +21,10 @@ const scanForLinks = async (): Promise<string[]> => {
   const markdownHrefs: string[] = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
 
   const markdownHrefsStartingWithSlash = markdownHrefs.filter((url: string) => url.startsWith('/'));
-  expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
   if (markdownHrefsStartingWithSlash.length) {
     console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
   }
+  expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
 
   return bodyHrefs
     .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x)) // add leading slash for anchor links within markdown
@@ -66,20 +66,27 @@ const linkCheckLoop = async () => {
 
     // Go to internal Url
     if (href.startsWith('/')) {
-      await page.goto(`${baseURL}${href}`, { waitUntil: 'domcontentloaded' });
+      const response = await page.goto(`${baseURL}${href}`, { waitUntil: 'domcontentloaded' });
 
-      const headline =
-        href === '/'
-          ? 'first page'
-          : href.includes('patterns/forms/')
-          ? await getPatternHeadline()
-          : await getHeadline();
-
-      if (headline === '404 - Page not found') {
-        invalidUrls.push(href);
+      // match files in public/assets directory
+      if (href.match(/^\/assets\/.*\.\w{3,4}$/)) {
+        if (response.status() !== 200) {
+          invalidUrls.push(href);
+        }
       } else {
-        const newLinks = await scanForLinks();
-        links = links.concat(newLinks).filter((v, i, a) => a.indexOf(v) === i);
+        const headline =
+          href === '/'
+            ? 'first page'
+            : href.startsWith('/patterns/forms/')
+            ? await getPatternHeadline()
+            : await getHeadline();
+
+        if (headline === '404 - Page not found') {
+          invalidUrls.push(href);
+        } else {
+          const newLinks = await scanForLinks();
+          links = links.concat(newLinks).filter((v, i, a) => a.indexOf(v) === i);
+        }
       }
     } else if (href.startsWith('http') && !href.startsWith(`${baseURL}/#`)) {
       // Go to external Url
