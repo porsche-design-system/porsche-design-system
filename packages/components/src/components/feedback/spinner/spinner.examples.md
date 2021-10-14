@@ -50,11 +50,11 @@ For automated visual regression tests the spinner animation can be disabled by s
     
     get sizeMarkup() {
       const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-spinner size="${this.size}"${style} aria-label="Loading" />`;
+      return `<p-spinner size="${this.size}"${style} accessibility="{ 'aria-label': 'Loading page content' }" />`;
     }
     
     responsive =
-`<p-spinner size="{ base: 'small', l: 'medium' }" aria-label="Loading" />`;
+`<p-spinner size="{ base: 'small', l: 'medium' }" accessibility="{ 'aria-label': 'Loading page content' }" />`;
 
   }
 </script>
