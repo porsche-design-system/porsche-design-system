@@ -16,7 +16,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
-import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -501,6 +501,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -1640,6 +1644,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "accessibility"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
