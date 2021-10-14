@@ -20,11 +20,6 @@ With the use of SVG icons, there are options to enhance accessibility to users u
 ```html
 <p-icon name="arrow" aria-hidden="true" />
 ```
-
-**If icons stand alone and transport meaning, adding descriptive text with an `aria-label` attribute is mandatory:**
-```html
-<p-icon name="warning" aria-label="Icon for a warning message" />
-```
     
 ---
 
