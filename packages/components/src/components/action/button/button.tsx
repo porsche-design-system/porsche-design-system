@@ -99,7 +99,11 @@ export class Button {
         {...parseAndGetAccessibilityAttributes(this.accessibility, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
-          <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
+          <PrefixedTagNames.pSpinner
+            {...iconProps}
+            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
+            accessibility={{ 'aria-label': 'Loading state' }}
+          />
         ) : (
           <PrefixedTagNames.pIcon
             {...iconProps}
