@@ -42,7 +42,7 @@ describe('spinner', () => {
       });
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, spinner);
+      await expectToMatchSnapshot(page, spinner, { interestingOnly: false });
     });
   });
 });
