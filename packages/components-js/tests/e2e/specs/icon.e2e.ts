@@ -207,6 +207,7 @@ describe('icon', () => {
             el.name = 'highway';
             document.body.appendChild(el);
           });
+          await waitForStencilLifecycle(page);
           const iconTwo = await selectNode(page, '#iconTwo >>> i');
 
           expect(await getContent(iconTwo), 'second icon').toContain('highway');
