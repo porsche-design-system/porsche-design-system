@@ -25,6 +25,7 @@
     "@porsche-design-system/utilities": "5.1.0",
     "@porsche-design-system/vmark": "~1.2.0",
     "@porsche-design-system/vmark-loader": "^1.0.0",
+    "@sentry/vue": "^6.13.3",
     "change-case": "^4.1.2",
     "core-js": "^3.18.2",
     "prismjs": "^1.25.0",

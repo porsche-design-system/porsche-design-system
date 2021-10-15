@@ -5,6 +5,7 @@ import store from './store';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
+import './Sentry';
 
 (window as any).componentsReady = componentsReady; // for vrt
 
