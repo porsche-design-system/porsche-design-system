@@ -39,10 +39,11 @@ export class Spinner {
       <span
         class={rootClasses}
         role="alert"
-        aria-busy="true"
         aria-live="assertive"
         {...parseAndGetAccessibilityAttributes(this.accessibility, SPINNER_ARIA_ATTRIBUTES)}
       >
+        {/* empty element needed to announce aria-label in screen readers */}
+        <span class="sr-text">&nbsp;</span>
         <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false" aria-hidden="true">
           <circle r="9" />
           <circle r="9" />

@@ -153,7 +153,7 @@ export class ButtonPure {
         >
           {hasIcon &&
             (this.loading ? (
-              <PrefixedTagNames.pSpinner {...iconProps} />
+              <PrefixedTagNames.pSpinner accessibility={{ 'aria-label': 'Loading state' }} {...iconProps} />
             ) : (
               <PrefixedTagNames.pIcon
                 {...iconProps}
