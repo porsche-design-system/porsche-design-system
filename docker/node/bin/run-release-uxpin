@@ -14,6 +14,7 @@ publish() {
     branchParam=''
     if [[ "${P_CURRENT_BRANCH}" != "master" ]]; then
       branchParam=" --branch ${P_CURRENT_BRANCH}"
+      echo "Adding param:${branchParam}"
     fi
     result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}"${branchParam})
     echo $result
