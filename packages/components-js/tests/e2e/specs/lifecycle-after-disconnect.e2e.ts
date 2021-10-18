@@ -1,6 +1,6 @@
-import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
+import { buildDefaultComponentMarkup, getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
 import { Page } from 'puppeteer';
-import { ComponentMeta, getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -17,30 +17,7 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
     initConsoleObserver(page);
     await goto(page, ''); // start page
 
-    const buildMarkup = (tagName: TagName, componentMeta: ComponentMeta) => {
-      const buildChildMarkup = (requiredChild: string): string => {
-        if (requiredChild) {
-          return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-        } else {
-          return 'Some child';
-        }
-      };
-
-      const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
-        if (requiredParent) {
-          const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-          return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
-        } else {
-          return markup;
-        }
-      };
-
-      const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
-
-      return buildParentMarkup(componentMarkup, componentMeta);
-    };
-
-    const markup = buildMarkup(tagName, getComponentMeta(tagName));
+    const markup = buildDefaultComponentMarkup(tagName);
 
     await page.evaluate(
       (tag: TagName, markup: string) => {
