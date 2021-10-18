@@ -97,6 +97,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinignoreprop annotations
     if (component === 'p-modal') {
       props = addUxPinIgnorePropAnnotation(props, 'open');
+    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
+      props = addUxPinIgnorePropAnnotation(props, 'href');
     }
 
     // add uxpinbind annotations
