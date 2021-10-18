@@ -695,7 +695,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # important for uxpin since it uses the commit history
       - name: 'Cache node_modules'
         uses: actions/cache@v2
         id: cache
