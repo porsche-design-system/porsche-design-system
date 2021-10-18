@@ -1,6 +1,5 @@
 import {
   expectedStyleOnFocus,
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
@@ -14,7 +13,7 @@ import { Page } from 'puppeteer';
 describe('text', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const initText = (): Promise<void> => {
@@ -59,10 +58,10 @@ describe('text', () => {
       await initText();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
-      expect(status.componentDidLoad.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidUpdate: all').toBe(1);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -74,8 +73,8 @@ describe('text', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-text']).withContext('componentDidUpdate: p-text').toBe(1);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 
