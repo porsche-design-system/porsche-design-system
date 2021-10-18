@@ -27,6 +27,11 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
     );
     await waitForComponentsReady(page);
 
+    if (tagName === 'p-icon') {
+      // some buffer for the svg to load
+      await page.waitForTimeout(50);
+    }
+
     const host = await selectNode(page, tagName);
     await expectShadowDomToMatchSnapshot(host);
   }
