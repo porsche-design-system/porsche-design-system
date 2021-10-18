@@ -31,8 +31,6 @@ jobs:
       - name: 'Pull Docker Image'
         run: |
           docker pull ${{ env.PDS_DOCKER_IMAGE }}
-          echo $GITHUB_REF
-          echo $GITHUB_HEAD_REF
         shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
@@ -691,7 +689,7 @@ jobs:
           args: --components-js
   release-components-uxpin:
     name: 'Release Components UXPin'
-    needs: [smoke-test, storefront-deployment]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
