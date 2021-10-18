@@ -14,7 +14,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   constructor() {
     super();
-    this.ignoreComponents = [...this.ignoreComponents, 'p-content-wrapper', 'p-pagination'];
+    this.ignoreComponents = [
+      ...this.ignoreComponents,
+      'p-content-wrapper',
+      'p-flex',
+      'p-flex-item',
+      'p-grid',
+      'p-grid-item',
+      'p-pagination',
+    ];
   }
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
