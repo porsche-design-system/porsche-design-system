@@ -75,16 +75,13 @@ The overlay is placed above the page, covers it completely and can't be closed o
 
 Integration through `includeOverlay()` partial.
 
-| Feature Detection                 | Initialized |
-| --------------------------------- | ----------- |
-| **Custom elements != true**       | ✓           |
-| **Custom elements == true**       | ✗           |
-| **ResizeObserver != true**        | ✓           |
-| **ResizeObserver == true**        | ✗           |
-| **IntersectionObserver != true**  | ✓           |
-| **IntersectionObserver == true**  | ✗           |
-| **MutationObserver != true**      | ✓           |
-| **MutationObserver == true**      | ✗           |
+| Feature Detection                                                                               | Initialized |
+| ------------------------------------------------------------------------------------------------| ----------- |
+| **Custom elements != true**                                                                     | ✓           |
+| **ResizeObserver != true**                                                                      | ✓           |
+| **IntersectionObserver != true**                                                                | ✓           |
+| **MutationObserver != true**                                                                    | ✓           |
+| **Custom elements && ResizeObserver && IntersectionObserver && MutationObserver == true**       | ✗           |
 
 ##### React / Vue JS
 
