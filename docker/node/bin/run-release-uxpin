@@ -11,7 +11,11 @@ fi
 publish() {
   echo "task: [$(date)] \"publish\""
   pushd "./packages/components-react/projects/uxpin-wrapper"
-    result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}")
+    branchParam=''
+    if [[ "${P_CURRENT_BRANCH}" != "master" ]]; then
+      branchParam=" --branch ${P_CURRENT_BRANCH}"
+    fi
+    result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}"${branchParam})
     echo $result
   popd
 
@@ -21,6 +25,8 @@ publish() {
     return 1 # false
   fi
 }
+
+P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters from "refs/heads/issue/1405"
 
 if publish; then
   echo "New version of components-uxpin published 🎉"
