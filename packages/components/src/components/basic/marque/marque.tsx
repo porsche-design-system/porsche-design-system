@@ -49,7 +49,7 @@ export class Marque {
               <source srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
               <source srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
             ]}
-        <img src={`${cdnBaseUrl}/${innerManifest.medium['2x']}`} alt="Porsche" />
+        <img src={`${cdnBaseUrl}/${innerManifest.medium['2x'].png}`} alt="Porsche" />
       </picture>
     );
 
