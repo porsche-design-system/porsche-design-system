@@ -690,7 +690,6 @@ jobs:
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
-    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
