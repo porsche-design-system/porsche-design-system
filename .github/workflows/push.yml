@@ -31,6 +31,8 @@ jobs:
       - name: 'Pull Docker Image'
         run: |
           docker pull ${{ env.PDS_DOCKER_IMAGE }}
+          echo $GITHUB_REF
+          echo $GITHUB_HEAD_REF
         shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
