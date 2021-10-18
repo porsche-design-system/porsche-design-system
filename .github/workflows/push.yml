@@ -709,11 +709,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        env:
-          UXPIN_TOKEN: ${{ secrets.UXPIN_TOKEN }}
         run: |
           docker pull ${{ env.PDS_DOCKER_IMAGE }}
-          echo $UXPIN_TOKEN
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
