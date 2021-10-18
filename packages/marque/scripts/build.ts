@@ -58,7 +58,7 @@ const createManifestAndCopyMarque = (): void => {
 
   const manifest: Manifest = {};
 
-  for (let file of files) {
+  for (const file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
     const marque = fs.readFileSync(sourcePath, { encoding: 'binary' });
