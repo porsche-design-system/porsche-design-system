@@ -3,20 +3,33 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${UXPIN_TOKEN}" ]]; then
-  echo "Please provide the \$UXPIN_TOKEN environment variable."
+if [[ -z "${UXPIN_TOKEN_DEV}" ]]; then
+  echo "Please provide the \UXPIN_TOKEN_DEV environment variable."
+  exit 1
+fi
+
+if [[ -z "${UXPIN_TOKEN_LATEST}" ]]; then
+  echo "Please provide the \UXPIN_TOKEN_LATEST environment variable."
   exit 1
 fi
 
 publish() {
   echo "task: [$(date)] \"publish\""
   pushd "./packages/components-react/projects/uxpin-wrapper"
-    branchParam=''
+    token=$UXPIN_TOKEN_LATEST
+    branchParam=""
+
     if [[ "${P_CURRENT_BRANCH}" != "master" ]]; then
-      branchParam=" --branch ${P_CURRENT_BRANCH}"
+      token=$UXPIN_TOKEN_DEV
+      echo "Using UXPIN_TOKEN_DEV"
+
+      branchParam="--branch ${P_CURRENT_BRANCH}"
       echo "Adding param:${branchParam}"
+    else
+      echo "Using UXPIN_TOKEN_LATEST"
     fi
-    result=$(./node_modules/.bin/uxpin-merge push --token "${UXPIN_TOKEN}"${branchParam})
+
+    result=$(./node_modules/.bin/uxpin-merge push --token ${token} ${branchParam})
     echo $result
   popd
 

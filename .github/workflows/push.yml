@@ -731,7 +731,8 @@ jobs:
       - name: 'Publish UXPin Library'
         uses: ./.github/actions/docker-run
         env:
-          UXPIN_TOKEN: ${{ secrets.UXPIN_TOKEN }}
+          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
+          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
         with:
           entrypoint: run-release-uxpin
   release-components-js:
