@@ -1,8 +1,6 @@
 import {
   expectedStyleOnFocus,
   getActiveElementTagName,
-  getAttribute,
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
@@ -19,7 +17,7 @@ import { FormState } from '@porsche-design-system/components/src/types';
 describe('checkbox-wrapper', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-checkbox-wrapper');
@@ -67,32 +65,6 @@ describe('checkbox-wrapper', () => {
     );
   };
 
-  it('should add aria-label to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>
-    `
-    );
-    const input = await getInput();
-    expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
-  });
-
-  it('should add aria-label with message text to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-checkbox-wrapper label="Some label" message="Some error message" state="error">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>
-    `
-    );
-    const input = await getInput();
-    expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
-  });
-
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     await setContentWithDesignSystem(
       page,
@@ -110,7 +82,7 @@ describe('checkbox-wrapper', () => {
     expect(await getLabelText()).not.toBeNull();
   });
 
-  it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
+  it('should add/remove message text with message if state changes programmatically', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -120,49 +92,25 @@ describe('checkbox-wrapper', () => {
     );
 
     const host = await getHost();
-    const input = await getInput();
-    expect(await getMessage())
-      .withContext('initially')
-      .toBeNull();
+    expect(await getMessage(), 'initially').toBeNull();
 
     await setProperty(host, 'state', 'error');
     await setProperty(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = error')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = error')
-      .toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel'))
-      .withContext('when state = error')
-      .toEqual('Some label. Some error message');
+    expect(await getMessage(), 'when state = error').toBeDefined();
 
     await setProperty(host, 'state', 'success');
     await setProperty(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = success')
-      .toBeDefined();
-    expect(await getAttribute(await getMessage(), 'role'))
-      .withContext('when state = success')
-      .toBeNull();
-    expect(await getProperty(input, 'ariaLabel'))
-      .withContext('when state = success')
-      .toEqual('Some label. Some success message');
+    expect(await getMessage(), 'when state = success').toBeDefined();
 
     await setProperty(host, 'state', 'none');
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
-    expect(await getMessage())
-      .withContext('when state = none')
-      .toBeNull();
-    expect(await getProperty(input, 'ariaLabel'))
-      .withContext('when state = none')
-      .toEqual('Some label');
+    expect(await getMessage(), 'when state = none').toBeNull();
   });
 
   it('should toggle checkbox when input is clicked', async () => {
@@ -312,23 +260,19 @@ describe('checkbox-wrapper', () => {
 
       await setIndeterminate(input, true);
       const indeterminateImage = await getBackgroundImage(input);
-      expect(indeterminateImage).withContext('first indeterminate set').toContain(backgroundURL);
+      expect(indeterminateImage, 'first indeterminate set').toContain(backgroundURL);
 
       // checked Image is set
       await input.click();
       const checkedImage = await getBackgroundImage(input);
-      expect(checkedImage).withContext('first click').toContain(backgroundURL);
+      expect(checkedImage, 'first click').toContain(backgroundURL);
       expect(indeterminateImage).not.toBe(checkedImage);
 
       await setIndeterminate(input, true);
-      expect(await getBackgroundImage(input))
-        .withContext('second indeterminate set')
-        .toContain(backgroundURL);
+      expect(await getBackgroundImage(input), 'second indeterminate set').toContain(backgroundURL);
 
       await input.click();
-      expect(await getBackgroundImage(input))
-        .withContext('second click')
-        .toBe('none');
+      expect(await getBackgroundImage(input), 'second click').toBe('none');
     });
 
     it('should keep indeterminate state when checkbox value is changed programmatically', async () => {
@@ -416,12 +360,12 @@ describe('checkbox-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-checkbox-wrapper']).withContext('componentDidLoad: p-checkbox-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -433,12 +377,102 @@ describe('checkbox-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-checkbox-wrapper'])
-        .withContext('componentDidUpdate: p-checkbox-wrapper')
-        .toBe(0);
+      expect(status.componentDidUpdate['p-checkbox-wrapper'], 'componentDidUpdate: p-checkbox-wrapper').toBe(0);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(4);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initCheckbox();
+      const input = await getInput();
+      const snapshot = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree properties in error state', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+          <p-checkbox-wrapper label="Some label" message="Some error message." state="error">
+            <input type="checkbox" name="some-name"/>
+          </p-checkbox-wrapper>
+        `
+      );
+      const input = await getInput();
+      const message = await getMessage();
+
+      const snapshotInput = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      const snapshotMessage = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInput).toMatchSnapshot('Of Input');
+      expect(snapshotMessage).toMatchSnapshot('Of Message');
+    });
+
+    it('should add/remove accessibility tree properties if state changes programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`
+      );
+
+      const host = await getHost();
+
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message.');
+      await waitForStencilLifecycle(page);
+
+      const input = await getInput();
+      const message = await getMessage();
+
+      const snapshotInputError = await page.accessibility.snapshot({
+        root: input,
+      });
+      const snapshotMessageError = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
+      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
+
+      await setProperty(host, 'state', 'success');
+      await setProperty(host, 'message', 'Some success message.');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputSuccess = await page.accessibility.snapshot({
+        root: input,
+      });
+      const snapshotMessageSuccess = await page.accessibility.snapshot({
+        interestingOnly: false,
+        root: message,
+      });
+
+      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
+      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
+
+      await setProperty(host, 'state', 'none');
+      await setProperty(host, 'message', '');
+      await waitForStencilLifecycle(page);
+
+      const snapshotInputNone = await page.accessibility.snapshot({
+        root: input,
+      });
+
+      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
     });
   });
 });

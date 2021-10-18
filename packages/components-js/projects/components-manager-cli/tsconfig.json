@@ -11,8 +11,7 @@
     "strictNullChecks": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "lib": ["dom"],
-    "types": []
+    "lib": ["dom"]
   },
   "include": ["bin/cm.ts"]
 }

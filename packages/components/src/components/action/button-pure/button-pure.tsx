@@ -141,6 +141,7 @@ export class ButtonPure {
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
+          aria-describedby={hasSubline ? 'subline' : null}
         >
           {hasIcon &&
             (this.loading ? (
@@ -159,7 +160,7 @@ export class ButtonPure {
           </PrefixedTagNames.pText>
         </button>
         {hasSubline && (
-          <PrefixedTagNames.pText class="subline" tag="div" color="inherit" size="inherit">
+          <PrefixedTagNames.pText id="subline" class="subline" tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
