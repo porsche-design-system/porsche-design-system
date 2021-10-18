@@ -89,7 +89,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // override props
     if (component === 'p-text') {
       const sizeValues = Object.keys(font.size)
-        .filter((x) => !x.match(/[a-z]/)) // only keep numeric fvalues
+        .filter((x) => !x.match(/[a-z]/)) // only keep numeric values
         .join(' | ');
       props = props.replace(/(size\?: )TextSize/, `$1${sizeValues}`);
     }
@@ -159,12 +159,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
 
-      // another special treatment that needs default children
+      // other special treatments that need default props
       if (component === 'p-text') {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
           .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
           .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
+      } else if (component === 'p-link' || component === 'p-link-social') {
+        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
       }
     }
 
