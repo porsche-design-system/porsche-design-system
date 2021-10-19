@@ -1,5 +1,8 @@
 import { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
+import type { TagName } from '@porsche-design-system/shared';
+import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
+import * as beautify from 'js-beautify';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;
@@ -290,6 +293,50 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+
+const BASE_URL = 'http://localhost:8575';
+
+export const goto = async (page: Page, url: string) => {
+  await page.goto(`${BASE_URL}/#${url}`);
+  await waitForComponentsReady(page);
+};
+
+export const buildDefaultComponentMarkup = (tagName: TagName): string => {
+  const componentMeta = getComponentMeta(tagName);
+
+  const buildChildMarkup = (requiredChild: string): string => {
+    if (requiredChild) {
+      return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
+    } else {
+      return 'Some child';
+    }
+  };
+
+  const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
+    if (requiredParent) {
+      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
+    } else {
+      return markup;
+    }
+  };
+
+  const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+
+  return buildParentMarkup(componentMarkup, componentMeta);
+};
+
+export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promise<void> => {
+  const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
+  const prettyHtml = beautify.html(html.replace(/>/g, '>\n'), {
+    indent_inner_html: true,
+    indent_size: 2,
+  });
+
+  expect(prettyHtml).not.toContain('[object Object]');
+  expect(prettyHtml).toMatchSnapshot();
+};
+
 
 type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
