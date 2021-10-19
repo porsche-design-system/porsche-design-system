@@ -677,7 +677,7 @@ jobs:
           args: --components-js
   release-components-uxpin:
     name: 'Release Components UXPin'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react]
+    needs: [smoke-test]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -725,7 +725,7 @@ jobs:
           entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
-    needs: [smoke-test, storefront-deployment]
+    needs: [smoke-test, storefront-deployment, release-components-uxpin]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
