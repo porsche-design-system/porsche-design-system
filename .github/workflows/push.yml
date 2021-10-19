@@ -718,6 +718,7 @@ jobs:
       - name: 'Publish UXPin Library'
         uses: ./.github/actions/docker-run
         env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
           UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
         with:
