@@ -125,6 +125,8 @@ describe('banner', () => {
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await button.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
+
       expect(calls).toBe(1);
     });
 
@@ -237,7 +239,7 @@ describe('banner', () => {
     });
   });
 
-  describe.only('accessibility', () => {
+  describe('accessibility', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initBanner('neutral');
       const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');
