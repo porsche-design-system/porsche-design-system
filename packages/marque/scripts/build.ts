@@ -8,14 +8,17 @@ import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_MARQUE, CDN_KEY_TYPE_DEFINITION } f
 type Manifest = {
   [name: string]: {
     [size: string]: {
-      [resolution: string]: string;
+      [resolution: string]: {
+        png: string;
+        webp: string;
+      };
     };
   };
 };
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const checkIntegrity = async (manifest: Manifest): Promise<void> => {
+const checkIntegrity = (manifest: Manifest): void => {
   for (const [name, size] of Object.entries(manifest)) {
     if (!size.small) {
       throw new Error(`Marque size declaration "small" is missing in manifest for "${name}".`);
@@ -33,45 +36,59 @@ const checkIntegrity = async (manifest: Manifest): Promise<void> => {
       if (!resolution['3x']) {
         throw new Error(`Marque resolution declaration "3x" is missing in manifest for "${name}".`);
       }
+
+      for (const format of Object.values(resolution)) {
+        if (!format.png) {
+          throw new Error(`Marque format "png" for declaration "1x" is missing in manifest for "${name}".`);
+        }
+        if (!format.webp) {
+          throw new Error(`Marque format "webp" for declaration "1x" is missing in manifest for "${name}".`);
+        }
+      }
     }
   }
 };
 
-const createManifestAndCopyMarque = async (cdn: string, files: string[]): Promise<void> => {
+const createManifestAndCopyMarque = (): void => {
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_MARQUE}'`;
+  const files = globby.sync('./src/**/*.{png,webp}').sort();
+
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
   fs.mkdirSync(path.normalize('./dist/marque'), { recursive: true });
 
   const manifest: Manifest = {};
 
-  for (let file of files) {
+  for (const file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
-    const info = path.basename(sourcePath, ext).split(/[.@]/g);
-    const name = info[0];
-    const size = info[1];
-    const resolution = info[2];
     const marque = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(marque);
-    const filename = `${paramCase(name)}.${paramCase(size)}.min.${hash}@${paramCase(resolution)}.png`;
+    const [name, size, resolution] = path.basename(sourcePath, ext).split(/[.@]/g);
+    const extension = ext.slice(1);
+    const filename = `${paramCase(name)}.${paramCase(size)}.min.${hash}@${paramCase(resolution)}.${extension}`;
     const targetPath = path.normalize(`./dist/marque/${filename}`);
 
     const nameKey = camelCase(name);
     const sizeKey = camelCase(size);
     const resolutionKey = camelCase(resolution);
+
     manifest[nameKey] = {
       ...manifest[nameKey],
       [sizeKey]: {
         ...manifest[nameKey]?.[sizeKey],
-        [resolutionKey]: filename,
+        [resolutionKey]: {
+          ...manifest[nameKey]?.[sizeKey]?.[resolutionKey],
+          [extension]: filename,
+        },
       },
     };
 
     fs.writeFileSync(targetPath, marque, { encoding: 'binary' });
 
-    console.log(`Marque "${name}" copied as "${size}" variant in ${resolution} resolution.`);
+    console.log(`Marque "${name}" copied as ${ext} in "${size}" variant and ${resolution} resolution.`);
   }
 
-  await checkIntegrity(manifest);
+  checkIntegrity(manifest);
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
@@ -84,12 +101,4 @@ export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
   console.log('Created marque manifest.');
 };
 
-(async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_MARQUE}'`;
-  const files = (await globby('./src/**/*.png')).sort();
-
-  await createManifestAndCopyMarque(cdn, files).catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-})();
+createManifestAndCopyMarque();
