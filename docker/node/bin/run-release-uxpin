@@ -24,7 +24,7 @@ publish() {
       echo "Using UXPIN_TOKEN_DEV"
 
       pushParam="--branch ${P_CURRENT_BRANCH}"
-      echo "Adding param:${pushParam}"
+      echo "Adding param: ${pushParam}"
     else
       echo "Using UXPIN_TOKEN_LATEST"
     fi
