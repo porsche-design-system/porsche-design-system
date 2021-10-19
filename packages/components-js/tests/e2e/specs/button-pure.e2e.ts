@@ -2,7 +2,7 @@ import {
   addEventListener,
   ClickableTests,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -480,7 +480,7 @@ describe('button-pure', () => {
       await initButtonPure();
       const button = await getButton();
 
-      await expectToMatchSnapshot(page, button);
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
@@ -490,14 +490,14 @@ describe('button-pure', () => {
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button);
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose accessibility tree description with slotted subline', async () => {
       await initButtonPure({ withSubline: true });
       const button = await getButton();
 
-      await expectToMatchSnapshot(page, button);
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
@@ -511,14 +511,14 @@ describe('button-pure', () => {
       });
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button, { message: 'Initial' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'Initial' });
 
       await setProperty(host, 'accessibility', {
         'aria-pressed': true,
       });
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
+      await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {

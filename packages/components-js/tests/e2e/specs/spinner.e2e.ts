@@ -1,5 +1,5 @@
 import {
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -29,7 +29,7 @@ describe('spinner', () => {
       await initSpinner();
       const spinner = await getSpinner();
 
-      await expectToMatchSnapshot(page, spinner, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, spinner, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
@@ -42,7 +42,7 @@ describe('spinner', () => {
       });
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, spinner, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, spinner, { interestingOnly: false });
     });
   });
 });

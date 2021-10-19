@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
   initAddEventListener,
@@ -219,7 +219,7 @@ describe('link', () => {
         interestingOnly: false,
       });
 
-      await expectToMatchSnapshot(page, link, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, link, { interestingOnly: false });
       expect(snapshotIcon).toBeNull();
     });
 
@@ -233,7 +233,7 @@ describe('link', () => {
       });
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, link);
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree if label is hidden', async () => {
@@ -244,7 +244,7 @@ describe('link', () => {
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, link);
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
@@ -256,7 +256,7 @@ describe('link', () => {
         'aria-label': 'Some more detailed label',
       });
       await waitForStencilLifecycle(page);
-      await expectToMatchSnapshot(page, link);
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });

@@ -1,5 +1,5 @@
 import {
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -178,7 +178,7 @@ describe('select-wrapper native', () => {
       await initSelect();
       const select = await getSelect();
 
-      await expectToMatchSnapshot(page, select);
+      await expectA11yToMatchSnapshot(page, select);
     });
 
     it('should update accessibility tree with message text if state changes programmatically', async () => {
@@ -192,15 +192,18 @@ describe('select-wrapper native', () => {
       const select = await getSelect();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, select, { message: 'Of Select when state = error' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message when state = error', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
+        interestingOnly: false,
+      });
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, select, { message: 'Of Select when state = success' });
-      await expectToMatchSnapshot(page, message, {
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
         message: 'Of Message when state = success',
         interestingOnly: false,
       });
@@ -209,7 +212,7 @@ describe('select-wrapper native', () => {
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, select, { message: 'Of Select when state = none' });
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = none' });
     });
   });
 });

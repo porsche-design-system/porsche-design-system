@@ -1,7 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -428,7 +428,7 @@ describe('text-field-wrapper', () => {
       await initTextField({ hasLabel: true });
       const input = await getInput();
 
-      await expectToMatchSnapshot(page, input);
+      await expectA11yToMatchSnapshot(page, input);
     });
 
     it('should expose correct accessibility tree with description text', async () => {
@@ -441,7 +441,7 @@ describe('text-field-wrapper', () => {
       );
       const input = await getInput();
 
-      await expectToMatchSnapshot(page, input);
+      await expectA11yToMatchSnapshot(page, input);
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -455,8 +455,8 @@ describe('text-field-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
+      await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -471,15 +471,18 @@ describe('text-field-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message when state = error', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
+        interestingOnly: false,
+      });
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
-      await expectToMatchSnapshot(page, message, {
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
         message: 'Of Message when state = success',
         interestingOnly: false,
       });
@@ -488,24 +491,24 @@ describe('text-field-wrapper', () => {
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
     });
 
     it('should expose correct accessibility tree when password visibility button is clicked', async () => {
       await initTextField({ type: 'password', hasLabel: true });
       const toggleButton = await getButton();
 
-      await expectToMatchSnapshot(page, toggleButton, { message: 'Initially' });
+      await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Initially' });
 
       await toggleButton.click();
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, toggleButton, { message: 'Pressed' });
+      await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Pressed' });
 
       await toggleButton.click();
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, toggleButton, { message: 'Pressed again' });
+      await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Pressed again' });
     });
   });
 });

@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getCssClasses,
   getElementIndex,
@@ -914,7 +914,7 @@ describe('select-wrapper dropdown', () => {
       await initSelect({ disabledIndex: 1 });
       const dropdown = await getDropdown();
 
-      await expectToMatchSnapshot(page, dropdown, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
       expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
     });
 
@@ -938,7 +938,7 @@ describe('select-wrapper dropdown', () => {
 
       const dropdown = await getDropdown();
 
-      await expectToMatchSnapshot(page, dropdown, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropdown, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if open/closed', async () => {
@@ -951,12 +951,12 @@ describe('select-wrapper dropdown', () => {
         root: dropdownButton,
       });
 
-      await expectToMatchSnapshot(page, dropdownButton, { message: 'Initially' });
+      await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'Initially' });
 
       await host.click();
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, dropdownButton, { message: 'After click' });
+      await expectA11yToMatchSnapshot(page, dropdownButton, { message: 'After click' });
     });
 
     it('should expose correct accessibility tree on selected custom option on click', async () => {
@@ -966,15 +966,15 @@ describe('select-wrapper dropdown', () => {
       const dropdownOption1 = await getDropdownOption1();
       const dropdownOption2 = await getDropdownOption2();
 
-      await expectToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
-      await expectToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
+      await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
+      await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
 
       await select.click();
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
-      await expectToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
+      await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
+      await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
     });
 
     it('should expose correct accessibility tree if description is set', async () => {
@@ -984,7 +984,7 @@ describe('select-wrapper dropdown', () => {
       await waitForStencilLifecycle(page);
       const dropdownButton = await getDropdownButton();
 
-      await expectToMatchSnapshot(page, dropdownButton);
+      await expectA11yToMatchSnapshot(page, dropdownButton);
     });
 
     it('should expose correct accessibility tree in error state', async () => {
@@ -995,7 +995,7 @@ describe('select-wrapper dropdown', () => {
       await waitForStencilLifecycle(page);
       const dropdownButton = await getDropdownButton();
 
-      await expectToMatchSnapshot(page, dropdownButton);
+      await expectA11yToMatchSnapshot(page, dropdownButton);
     });
   });
 });

@@ -1,7 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getCssClasses,
   getLifecycleStatus,
@@ -245,7 +245,7 @@ describe('banner', () => {
       await initBanner('neutral');
       const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');
 
-      await expectToMatchSnapshot(page, await getWrapper(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await getWrapper(), { interestingOnly: false });
     });
   });
 });

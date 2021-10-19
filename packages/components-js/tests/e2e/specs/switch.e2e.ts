@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -345,7 +345,7 @@ describe('switch', () => {
       await initSwitch();
       const label = () => selectNode(page, 'p-switch >>> label');
 
-      await expectToMatchSnapshot(page, await label(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if checked value is set programmatically', async () => {
@@ -357,12 +357,12 @@ describe('switch', () => {
       await setProperty(host, 'checked', true);
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button, { message: 'Checked' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'Checked' });
 
       await setProperty(host, 'checked', false);
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button, { message: 'Unchecked' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'Unchecked' });
     });
 
     it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {

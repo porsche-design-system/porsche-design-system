@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getLifecycleStatus,
@@ -376,7 +376,7 @@ describe('tabs', () => {
       await initTabs();
       const tabpanel = () => selectNode(page, 'p-tabs > [role="tabpanel"]');
 
-      await expectToMatchSnapshot(page, await tabpanel(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tabpanel(), { interestingOnly: false });
     });
   });
 });

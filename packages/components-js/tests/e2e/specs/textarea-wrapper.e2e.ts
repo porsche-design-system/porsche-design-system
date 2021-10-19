@@ -1,7 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getLifecycleStatus,
   getOutlineStyle,
@@ -217,7 +217,7 @@ describe('textarea-wrapper', () => {
       await initTextarea({ hasLabel: true });
       const textarea = await getTextarea();
 
-      await expectToMatchSnapshot(page, textarea);
+      await expectA11yToMatchSnapshot(page, textarea);
     });
 
     it('should expose correct accessibility tree with description text', async () => {
@@ -230,7 +230,7 @@ describe('textarea-wrapper', () => {
       );
       const textarea = await getTextarea();
 
-      await expectToMatchSnapshot(page, textarea);
+      await expectA11yToMatchSnapshot(page, textarea);
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -244,8 +244,8 @@ describe('textarea-wrapper', () => {
       const textarea = await getTextarea();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, textarea, { message: 'Of Textarea' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea' });
+      await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -260,15 +260,18 @@ describe('textarea-wrapper', () => {
       const textarea = await getTextarea();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = error' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message when state = error', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
+        interestingOnly: false,
+      });
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = success' });
-      await expectToMatchSnapshot(page, message, {
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
         message: 'Of Message when state = success',
         interestingOnly: false,
       });
@@ -277,7 +280,7 @@ describe('textarea-wrapper', () => {
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = none' });
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = none' });
     });
   });
 });

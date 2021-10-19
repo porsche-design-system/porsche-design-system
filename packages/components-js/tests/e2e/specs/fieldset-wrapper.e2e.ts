@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer';
 import {
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -35,14 +35,14 @@ describe('fieldset-wrapper', () => {
       await initFieldset();
       const fieldset = await getFieldset();
 
-      await expectToMatchSnapshot(page, fieldset, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree property in error state', async () => {
       await initFieldset({ state: 'error' });
       const fieldset = await getFieldset();
 
-      await expectToMatchSnapshot(page, fieldset, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree property if error state added programmatically', async () => {
@@ -54,7 +54,7 @@ describe('fieldset-wrapper', () => {
 
       const fieldset = await getFieldset();
 
-      await expectToMatchSnapshot(page, fieldset, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
   });
 });
