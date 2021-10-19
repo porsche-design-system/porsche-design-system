@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### Added
+#### Added
 - `EMAIL_CDN_BASE_URL` and `EMAIL_MANIFEST`
+
+#### Changed
+- Structure of `MARQUES_MANIFEST` because of newly added `webp` images
 
 ### [4.0.0] - 2021-06-11
 
