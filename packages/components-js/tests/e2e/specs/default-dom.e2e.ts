@@ -18,13 +18,9 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
     await goto(page, ''); // start page
 
     const markup = buildDefaultComponentMarkup(tagName);
-    await page.evaluate(
-      (tag: TagName, markup: string) => {
-        document.getElementById('app').innerHTML = markup;
-      },
-      tagName,
-      markup
-    );
+    await page.evaluate((markup: string) => {
+      document.getElementById('app').innerHTML = markup;
+    }, markup);
     await waitForComponentsReady(page);
 
     if (tagName === 'p-icon') {
