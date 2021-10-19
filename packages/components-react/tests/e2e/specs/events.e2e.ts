@@ -113,6 +113,7 @@ describe('modal', () => {
 
     await clickElement(modalOpenBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(50); // give react and a potential transition some time
     await clickElement(modalCloseBtn);
     await waitForComponentsReady(page);
     expect(await getCounterValue(modalCloseEventCounter)).toBe('1 <button>Open Modal</button>');
