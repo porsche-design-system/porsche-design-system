@@ -25,7 +25,8 @@ services:
       - AWS_SECRET_ACCESS_KEY
       - CDN_USER
       - CDN_SSH_KEY
-      - UXPIN_TOKEN
+      - UXPIN_TOKEN_DEV
+      - UXPIN_TOKEN_LATEST
       - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached

@@ -3332,7 +3332,7 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uxpin/merge-cli@^2.7.7":
+"@uxpin/merge-cli@^2.7.8":
   version "2.7.8"
   resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-2.7.8.tgz#bfe9342bc47391f688e3c87b34c155b1542dd134"
   integrity sha512-RpSl6oosg+jk8DRYzCdJMa4scfqzUeZSEW5fa3irJ8TGVQckiVLvTX8NpCzonXMa+kpWLrYD0U+2esL7UFMmJA==
