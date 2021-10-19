@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
@@ -367,14 +367,14 @@ describe('modal', () => {
       await initBasicModal();
       const modal = await getModal();
 
-      await expectToMatchSnapshot(page, modal, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, modal, { interestingOnly: false });
     });
 
     it('should not expose accessibility tree if modal is hidden', async () => {
       await initBasicModal({ isOpen: false });
       const modal = await getModal();
 
-      await expectToMatchSnapshot(page, modal);
+      await expectA11yToMatchSnapshot(page, modal);
     });
   });
 });

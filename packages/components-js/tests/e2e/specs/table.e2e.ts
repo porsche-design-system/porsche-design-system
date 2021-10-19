@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getLifecycleStatus,
   getProperty,
@@ -231,7 +231,7 @@ ${script}`
       const table = await getTable();
       const firstTableHeadCell = await getFirstTableHeadCell();
 
-      await expectToMatchSnapshot(page, table, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, table, { interestingOnly: false });
       expect(await getAttribute(firstTableHeadCell, 'scope'), 'firstTableHeadCell scope').toBe('col'); // scope can't be detected by the accessibility tree
     });
 
@@ -278,14 +278,14 @@ ${script}`
 
       await makeTableOverflow();
 
-      await expectToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as property' });
+      await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as property' });
       expect(await getAttribute(scrollArea, 'tabindex'), 'after overflow: tabindex').toBe('0');
       expect(await getAttribute(scrollArea, 'aria-label'), 'after overflow: aria-label').toBeNull();
 
       await setProperty(host, 'caption', 'Some caption');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as slot' });
+      await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as slot' });
       expect(await getAttribute(scrollArea, 'aria-labelledby'), 'after caption: aria-labelledby').toBeNull();
     });
 

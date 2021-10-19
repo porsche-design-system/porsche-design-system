@@ -1,6 +1,6 @@
 import {
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
   getAttribute,
@@ -365,7 +365,7 @@ describe('radio-button-wrapper', () => {
       await initRadioButton();
       const input = await getInput();
 
-      await expectToMatchSnapshot(page, input);
+      await expectA11yToMatchSnapshot(page, input);
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -380,8 +380,8 @@ describe('radio-button-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
+      await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -396,15 +396,18 @@ describe('radio-button-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
-      await expectToMatchSnapshot(page, message, { message: 'Of Message when state = error', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
+        interestingOnly: false,
+      });
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
-      await expectToMatchSnapshot(page, message, {
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
         message: 'Of Message when state = success',
         interestingOnly: false,
       });
@@ -413,7 +416,7 @@ describe('radio-button-wrapper', () => {
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
     });
   });
 });

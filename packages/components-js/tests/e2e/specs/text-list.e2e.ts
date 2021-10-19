@@ -1,6 +1,6 @@
 import {
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getOutlineStyle,
   selectNode,
   setContentWithDesignSystem,
@@ -62,7 +62,7 @@ describe('text-list', () => {
       await initTextList();
       const getList = () => selectNode(page, 'p-text-list >>> [role="list"]');
 
-      await expectToMatchSnapshot(page, await getList(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await getList(), { interestingOnly: false });
     });
   });
 });

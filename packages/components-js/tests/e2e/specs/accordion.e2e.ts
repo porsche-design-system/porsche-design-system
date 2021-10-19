@@ -2,7 +2,7 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -301,7 +301,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await initAccordion();
       const button = await getButton();
 
-      await expectToMatchSnapshot(page, button, { message: 'Of Button' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
     });
 
@@ -313,8 +313,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button, { message: 'Of Button' });
-      await expectToMatchSnapshot(page, panel, { message: 'Of Panel', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
+      await expectA11yToMatchSnapshot(page, panel, { message: 'Of Panel', interestingOnly: false });
     });
   });
 });

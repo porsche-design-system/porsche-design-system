@@ -1,7 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementIndex,
   getElementStyle,
@@ -628,7 +628,7 @@ describe('select-wrapper filter', () => {
       await initSelect({ disabledIndex: 1 });
       const filter = await getFilterInput();
 
-      await expectToMatchSnapshot(page, filter, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, filter, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree of option list if filter value has no match', async () => {
@@ -639,7 +639,7 @@ describe('select-wrapper filter', () => {
 
       const dropDown = await getDropdownList();
 
-      await expectToMatchSnapshot(page, dropDown, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if description is set', async () => {
@@ -649,7 +649,7 @@ describe('select-wrapper filter', () => {
       await waitForStencilLifecycle(page);
       const filterInput = await getFilterInput();
 
-      await expectToMatchSnapshot(page, filterInput);
+      await expectA11yToMatchSnapshot(page, filterInput);
     });
 
     it('should expose correct accessibility tree in error state', async () => {
@@ -660,7 +660,7 @@ describe('select-wrapper filter', () => {
       await waitForStencilLifecycle(page);
       const filterInput = await getFilterInput();
 
-      await expectToMatchSnapshot(page, filterInput);
+      await expectA11yToMatchSnapshot(page, filterInput);
     });
   });
 });

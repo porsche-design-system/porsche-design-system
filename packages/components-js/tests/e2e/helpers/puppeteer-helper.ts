@@ -337,11 +337,10 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
   expect(prettyHtml).toMatchSnapshot();
 };
 
-
 type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
 };
-export const expectToMatchSnapshot = async (
+export const expectA11yToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
   opts?: ExpectToMatchSnapshotOptions

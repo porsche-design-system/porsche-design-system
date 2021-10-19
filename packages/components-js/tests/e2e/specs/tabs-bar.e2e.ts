@@ -2,7 +2,7 @@ import { ConsoleMessage, ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
@@ -888,14 +888,14 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3 });
       const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
 
-      await expectToMatchSnapshot(page, await tablist(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), { interestingOnly: false });
     });
 
     it('should render correct accessibility tree if activeTabIndex is set ', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
       const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
 
-      await expectToMatchSnapshot(page, await tablist(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), { interestingOnly: false });
     });
 
     it('should render correct accessibility tree if activeTabIndex is removed ', async () => {
@@ -906,7 +906,7 @@ describe('tabs-bar', () => {
       await removeAttribute(host, 'active-tab-index');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, await tablist(), { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), { interestingOnly: false });
     });
 
     it('should render correct accessibility tree on scrollArea click', async () => {
@@ -914,25 +914,37 @@ describe('tabs-bar', () => {
       const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
       const scrollArea = await getScrollArea();
 
-      await expectToMatchSnapshot(page, await tablist(), { message: 'Before click', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), {
+        message: 'Before click',
+        interestingOnly: false,
+      });
 
       await clickElement(scrollArea);
 
-      await expectToMatchSnapshot(page, await tablist(), { message: 'After click', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), {
+        message: 'After click',
+        interestingOnly: false,
+      });
     });
 
     it('should render correct accessibility tree on focus change and enter press', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const tablist = () => selectNode(page, 'p-tabs-bar >>> [role="tablist"]');
 
-      await expectToMatchSnapshot(page, await tablist(), { message: 'Before change', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), {
+        message: 'Before change',
+        interestingOnly: false,
+      });
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, await tablist(), { message: 'After change', interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, await tablist(), {
+        message: 'After change',
+        interestingOnly: false,
+      });
     });
   });
 });

@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer';
 import {
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getLifecycleStatus,
@@ -71,7 +71,7 @@ describe('pagination', () => {
       await initPagination();
       const navigation = await getNav();
 
-      await expectToMatchSnapshot(page, navigation, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, navigation, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if disabled attribute on button next is toggled', async () => {
@@ -80,14 +80,14 @@ describe('pagination', () => {
       const host = await getHost();
       const nextButtonDisabled = await getNextButton();
 
-      await expectToMatchSnapshot(page, nextButtonDisabled, { message: 'If disabled' });
+      await expectA11yToMatchSnapshot(page, nextButtonDisabled, { message: 'If disabled' });
 
       await setProperty(host, 'activePage', 15);
       await waitForStencilLifecycle(page);
 
       const nextButtonEnabled = await getNextButton();
 
-      await expectToMatchSnapshot(page, nextButtonEnabled, { message: 'If not disabled' });
+      await expectA11yToMatchSnapshot(page, nextButtonEnabled, { message: 'If not disabled' });
     });
 
     it('should have aria-current = page if selected', async () => {

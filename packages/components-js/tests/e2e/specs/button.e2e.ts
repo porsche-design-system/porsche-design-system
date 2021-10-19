@@ -2,7 +2,7 @@ import {
   addEventListener,
   ClickableTests,
   expectedStyleOnFocus,
-  expectToMatchSnapshot,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -486,7 +486,7 @@ describe('button', () => {
       await initButton();
       const button = await getButton();
 
-      await expectToMatchSnapshot(page, button);
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
@@ -497,7 +497,7 @@ describe('button', () => {
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
 
-      await expectToMatchSnapshot(page, button);
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
@@ -511,13 +511,13 @@ describe('button', () => {
         'aria-haspopup': true,
       });
       await waitForStencilLifecycle(page);
-      await expectToMatchSnapshot(page, button, { message: 'initial aria attributes' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'initial aria attributes' });
 
       await setProperty(host, 'accessibility', {
         'aria-pressed': true,
       });
       await waitForStencilLifecycle(page);
-      await expectToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
+      await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {
