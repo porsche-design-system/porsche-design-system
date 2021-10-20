@@ -23,3 +23,4 @@ export * from './sync';
 export * from './theme';
 export * from './tracking';
 export * from './transition-listener';
+export * from './validation';
