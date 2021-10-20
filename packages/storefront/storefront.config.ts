@@ -106,6 +106,16 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],
     },
+    'Banner Inline': {
+      Examples: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner-inline.examples.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner-inline.props.md'),
+      ],
+    },
     Button: {
       Examples: [
         // @ts-ignore
