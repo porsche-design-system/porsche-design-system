@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  isDark,
   getThemeDarkAttribute,
   attachComponentCss,
   attachSlottedCss,
@@ -26,6 +25,9 @@ export class BannerInline {
   /** State of the banner. */
   @Prop() public state?: BannerState = 'neutral';
 
+  /** Defines if the banner can be closed/removed by the user. */
+  @Prop() public persistent?: boolean = false;
+
   /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
@@ -41,47 +43,34 @@ export class BannerInline {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.state}`]: this.state !== 'neutral',
-      ['root--theme-dark']: isDark(this.theme),
-    };
-
     const bannerLabelId = 'banner-label';
     const bannerDescriptionId = 'banner-description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
-        <PrefixedTagNames.pContentWrapper
-          width={this.width}
-          role="alertdialog"
-          aria-labelledby={bannerLabelId}
-          aria-describedby={bannerDescriptionId}
-        >
-          <div class={rootClasses}>
-            {this.state !== 'neutral' && (
-              <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
-            )}
-            <div class="content">
-              {hasHeading(this.host, this.heading) && (
-                <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
-                  {this.heading || <slot name="heading" />}
-                </PrefixedTagNames.pHeadline>
-              )}
-              {/* {hasNamedSlot(this.host, 'description') && (*/}
-              <PrefixedTagNames.pText id={bannerDescriptionId}>
-                <slot />
-              </PrefixedTagNames.pText>
-              {/* )}*/}
-              <div class="close">
-                <PrefixedTagNames.pButtonPure type="button" icon="close" hideLabel={true} onClick={this.dismiss.emit}>
-                  Close notification
-                </PrefixedTagNames.pButtonPure>
-              </div>
+        {this.state !== 'neutral' && (
+          <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
+        )}
+        <div class="content">
+          {hasHeading(this.host, this.heading) && (
+            <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
+              {this.heading || <slot name="heading" />}
+            </PrefixedTagNames.pHeadline>
+          )}
+          {/* {hasNamedSlot(this.host, 'description') && (*/}
+          <PrefixedTagNames.pText id={bannerDescriptionId}>
+            <slot />
+          </PrefixedTagNames.pText>
+          {/* )}*/}
+          {!this.persistent && (
+            <div class="close">
+              <PrefixedTagNames.pButtonPure type="button" icon="close" hideLabel={true} onClick={this.dismiss.emit}>
+                Close notification
+              </PrefixedTagNames.pButtonPure>
             </div>
-          </div>
-        </PrefixedTagNames.pContentWrapper>
+          )}
+        </div>
       </Host>
     );
   }
