@@ -36,7 +36,7 @@ export class Banner {
 
   public componentDidLoad(): void {
     if (!this.persistent) {
-      getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close *')?.focus();
+      getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close').focus();
     }
   }
 
