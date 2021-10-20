@@ -1,8 +1,15 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
-import { getPrefixedTagNames, hasNamedSlot, attachComponentCss, getShadowRootHTMLElement } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  hasNamedSlot,
+  attachComponentCss,
+  getShadowRootHTMLElement,
+  throwIfValueIsInvalid,
+} from '../../../utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './banner-styles';
 import type { BannerState } from './banner-utils';
+import { BANNER_STATES } from './banner-utils';
 
 @Component({
   tag: 'p-banner',
@@ -39,6 +46,10 @@ export class Banner {
     if (!this.persistent) {
       getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close').focus();
     }
+  }
+
+  public componentWillRender(): void {
+    throwIfValueIsInvalid(this.state, BANNER_STATES, 'state');
   }
 
   public disconnectedCallback(): void {

@@ -5,10 +5,11 @@ import {
   attachComponentCss,
   attachSlottedCss,
   hasHeading,
+  throwIfValueIsInvalid,
 } from '../../../utils';
 import type { Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
-import { getIconName } from './banner-inline-utils';
+import { BANNER_INLINE_STATES, getIconName } from './banner-inline-utils';
 import type { BannerInlineState } from './banner-inline-utils';
 
 @Component({
@@ -41,6 +42,7 @@ export class BannerInline {
   }
 
   public componentWillRender(): void {
+    throwIfValueIsInvalid(this.state, BANNER_INLINE_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
 
