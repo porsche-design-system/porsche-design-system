@@ -109,11 +109,11 @@ export const config: StorefrontConfig = {
     'Banner Inline': {
       Examples: [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner-inline.examples.md'),
+        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.examples.md'),
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner-inline.props.md'),
+        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.props.md'),
       ],
     },
     Button: {
