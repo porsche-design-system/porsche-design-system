@@ -20,23 +20,18 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
     ...buildHostStyles(
       addImportantToEachRule({
         display: 'flex',
+        alignItems: 'flex-start',
         position: 'relative',
         padding: pxToRemWithUnit(16),
         background: backgroundColor, // not themed
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: pxToRemWithUnit(4),
-          background: borderAndIconColor, // not themed
-        },
+        borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
       })
     ),
     content: {
-      maxWidth: pxToRemWithUnit(800),
-      paddingRight: pxToRemWithUnit(40),
+      width: '100%',
+      '& *': {
+        maxWidth: pxToRemWithUnit(800),
+      },
       // p-text for description
       '& *:nth-child(2):not(.close)': {
         marginTop: pxToRemWithUnit(4),
@@ -51,9 +46,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
       },
     },
     close: {
-      position: 'absolute',
-      top: pxToRemWithUnit(16),
-      right: pxToRemWithUnit(16),
+      marginLeft: pxToRemWithUnit(8),
     },
   });
 };
