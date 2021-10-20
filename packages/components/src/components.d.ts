@@ -87,10 +87,6 @@ export namespace Components {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: Theme;
-        /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
-         */
-        "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
         /**
@@ -1247,10 +1243,6 @@ declare namespace LocalJSX {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: Theme;
-        /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
-         */
-        "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
         /**

@@ -11,17 +11,25 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <p-banner>
-      <span slot="title">Title</span>
-      <span slot="description">Description</span>
-    </p-banner>
-    <p-banner-inline>hi</p-banner-inline>
+    <style type="text/css">
+      p-banner-inline:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    </style>
+    <!--    <p-banner>-->
+    <!--      <span slot="title">Title</span>-->
+    <!--      <span slot="description">Description</span>-->
+    <!--    </p-banner>-->
+    <p-banner-inline heading="Some banner heading" state="neutral">Some banner content</p-banner-inline>
+    <p-banner-inline heading="Some banner heading" state="warning">Some banner content</p-banner-inline>
+    <p-banner-inline heading="Some banner heading" state="success">Some banner content</p-banner-inline>
+    <p-banner-inline heading="Some banner heading" state="error">Some banner content</p-banner-inline>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      document.querySelector('p-banner').addEventListener('dismiss', (e) => {
-        console.log(e);
-      });
+      // document.querySelector('p-banner').addEventListener('dismiss', (e) => {
+      //   console.log(e);
+      // });
       document.querySelector('p-banner-inline').addEventListener('dismiss', (e) => {
         console.log(e);
       });

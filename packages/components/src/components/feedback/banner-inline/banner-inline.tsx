@@ -28,9 +28,6 @@ export class BannerInline {
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
 
-  /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
-  @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
-
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
