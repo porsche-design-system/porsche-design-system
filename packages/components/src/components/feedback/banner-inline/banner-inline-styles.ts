@@ -12,9 +12,9 @@ import type { Theme } from '../../../types';
 import type { BannerInlineState } from './banner-inline-utils';
 
 export const getComponentCss = (state: BannerInlineState, theme: Theme): string => {
-  const { neutralSoftColor, ...otherColors } = getThemedColors(theme);
-  const backgroundColor = state === 'neutral' ? neutralSoftColor : otherColors[state + 'SoftColor'];
-  const borderAndIconColor = otherColors[state + 'Color'];
+  const themedColors = getThemedColors(theme);
+  const backgroundColor = themedColors[state + 'SoftColor'];
+  const borderAndIconColor = themedColors[state + 'Color'];
 
   return getCss({
     ...buildHostStyles(
@@ -23,7 +23,7 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
         alignItems: 'flex-start',
         position: 'relative',
         padding: pxToRemWithUnit(16),
-        background: backgroundColor, // not themed
+        background: backgroundColor,
         borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
       })
     ),
