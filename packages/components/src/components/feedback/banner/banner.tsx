@@ -12,7 +12,6 @@ import { getComponentCss, getSlottedCss } from './banner-styles';
 
 @Component({
   tag: 'p-banner',
-  styleUrl: 'banner.scss',
   shadow: true,
 })
 export class Banner {
@@ -39,7 +38,7 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
     attachSlottedCss(this.host, getSlottedCss);
   }
 

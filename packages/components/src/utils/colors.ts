@@ -45,6 +45,7 @@ export const getThemedColors = (
   successColor: string;
   warningColor: string;
   neutralColor: string;
+  neutralSoftColor: string;
 } => {
   const isDarkTheme = isDark(theme);
   const {
@@ -53,7 +54,13 @@ export const getThemedColors = (
     background: { default: backgroundColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
-    notification: { error: errorColor, success: successColor, warning: warningColor, neutral: neutralColor },
+    notification: {
+      error: errorColor,
+      success: successColor,
+      warning: warningColor,
+      neutral: neutralColor,
+      neutralSoft: neutralSoftColor,
+    },
   } = isDarkTheme ? color.darkTheme : color;
 
   return {
@@ -70,6 +77,7 @@ export const getThemedColors = (
     successColor,
     warningColor,
     neutralColor,
+    neutralSoftColor,
   };
 };
 

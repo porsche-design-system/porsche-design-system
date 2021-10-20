@@ -5,6 +5,7 @@ import type { BreakpointCustomizable } from './utils';
 export type { TextSize } from './components/basic/typography/text/text-utils';
 export type { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
 
+// TODO: move into banner folder?
 export type BannerState = 'success' | 'error' | 'warning' | 'neutral';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
