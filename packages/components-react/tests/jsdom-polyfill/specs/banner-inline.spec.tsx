@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { componentsReady, PBanner } from '@porsche-design-system/components-react';
+import { componentsReady, PBannerInline } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -9,16 +9,14 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PBanner
-        data-testid="host"
-        onDismiss={(e) => {
+      <PBannerInline data-testid="host" heading="Some banner title">
+        onDismiss=
+        {(e) => {
           setEventCounter(eventCounter + 1);
           setStatus('hidden');
         }}
-      >
-        <span slot="title">Some banner title</span>
-        <span slot="description">Some banner description.</span>
-      </PBanner>
+        Some banner description.
+      </PBannerInline>
       <div data-testid="debug">
         {`Status: ${status};`} {`Event Counter: ${eventCounter};`}
       </div>
@@ -26,7 +24,7 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PBanner', () => {
+describe('PBannerInline', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
     await componentsReady();
@@ -39,9 +37,7 @@ describe('PBanner', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const button = getByTestId('host')
-      .shadowRoot.querySelector('p-content-wrapper p-banner-inline')
-      .shadowRoot.querySelector('p-button-pure');
+    const button = getByTestId('host').shadowRoot.querySelector('p-button-pure');
 
     expect(debug.innerHTML).toBe('Status: visible; Event Counter: 0;');
 
