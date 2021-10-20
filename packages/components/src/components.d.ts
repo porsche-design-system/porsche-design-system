@@ -70,23 +70,31 @@ export namespace Components {
     }
     interface PBannerInline {
         /**
-          * Description of the banner.
+          * Action icon of the banner-inline.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the banner-inline.
+         */
+        "actionLabel"?: string;
+        /**
+          * Description of the banner-inline.
          */
         "description"?: string;
         /**
-          * Heading of the banner.
+          * Heading of the banner-inline.
          */
         "heading"?: string;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * Defines if the banner-inline can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
-          * State of the banner.
+          * State of the banner-inline.
          */
         "state"?: BannerInlineState;
         /**
-          * Adapts the banner color depending on the theme.
+          * Adapts the banner-inline color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -1222,27 +1230,39 @@ declare namespace LocalJSX {
     }
     interface PBannerInline {
         /**
-          * Description of the banner.
+          * Action icon of the banner-inline.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the banner-inline.
+         */
+        "actionLabel"?: string;
+        /**
+          * Description of the banner-inline.
          */
         "description"?: string;
         /**
-          * Heading of the banner.
+          * Heading of the banner-inline.
          */
         "heading"?: string;
+        /**
+          * Emitted when the action button is clicked.
+         */
+        "onAction"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: CustomEvent<void>) => void;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * Defines if the banner-inline can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
-          * State of the banner.
+          * State of the banner-inline.
          */
         "state"?: BannerInlineState;
         /**
-          * Adapts the banner color depending on the theme.
+          * Adapts the banner-inline color depending on the theme.
          */
         "theme"?: Theme;
     }

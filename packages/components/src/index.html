@@ -17,16 +17,16 @@
       }
     </style>
 
-    <p-banner-inline state="neutral">Some banner content</p-banner-inline>
+    <p-banner-inline state="neutral" action-label="Retry">Some banner content</p-banner-inline>
     <p-banner-inline state="warning">Some banner content</p-banner-inline>
     <p-banner-inline state="success">Some banner content</p-banner-inline>
-    <p-banner-inline state="error"
+    <p-banner-inline state="error" action-label="Retry"
       >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
       handled correctly.</p-banner-inline
     >
-    <p-banner-inline state="error" persistent
+    <p-banner-inline state="error" persistent action-label="Retry"
       >Some persistent banner content that is quite long and eventually goes across multiple lines. Let's see if line
-      breaks are handled correctly.</p-banner-inline
+      breaks are handled and <a href="#">linked</a> correctly.</p-banner-inline
     >
 
     <p-banner-inline heading="Some banner heading" state="neutral">Some banner content</p-banner-inline>
@@ -56,6 +56,9 @@
       // document.querySelector('p-banner').addEventListener('dismiss', (e) => {
       //   console.log(e);
       // });
+      document.querySelector('p-banner-inline').addEventListener('action', (e) => {
+        console.log(e);
+      });
       document.querySelector('p-banner-inline').addEventListener('dismiss', (e) => {
         console.log(e);
       });

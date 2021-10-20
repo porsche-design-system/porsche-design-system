@@ -7,7 +7,7 @@ import {
   hasHeading,
   throwIfValueIsInvalid,
 } from '../../../utils';
-import type { Theme } from '../../../types';
+import type { IconName, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
 import { BANNER_INLINE_STATES, getIconName } from './banner-inline-utils';
 import type { BannerInlineState } from './banner-inline-utils';
@@ -19,23 +19,32 @@ import type { BannerInlineState } from './banner-inline-utils';
 export class BannerInline {
   @Element() public host!: HTMLElement;
 
-  /** Heading of the banner. */
+  /** Heading of the banner-inline. */
   @Prop() public heading?: string = '';
 
-  /** Description of the banner. */
+  /** Description of the banner-inline. */
   @Prop() public description?: string = '';
 
-  /** State of the banner. */
+  /** State of the banner-inline. */
   @Prop() public state?: BannerInlineState = 'neutral';
 
-  /** Defines if the banner can be closed/removed by the user. */
+  /** Defines if the banner-inline can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
 
-  /** Adapts the banner color depending on the theme. */
+  /** Action label of the banner-inline. */
+  @Prop() public actionLabel?: string;
+
+  /** Action icon of the banner-inline. */
+  @Prop() public actionIcon?: IconName = 'refresh';
+
+  /** Adapts the banner-inline color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  /** Emitted when the action button is clicked. */
+  @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -64,6 +73,11 @@ export class BannerInline {
           <PrefixedTagNames.pText id={bannerDescriptionId}>{this.description || <slot />}</PrefixedTagNames.pText>
           {/* )}*/}
         </div>
+        {this.actionLabel && (
+          <PrefixedTagNames.pButtonPure class="action" icon={this.actionIcon} onClick={this.action.emit}>
+            {this.actionLabel}
+          </PrefixedTagNames.pButtonPure>
+        )}
         {!this.persistent && (
           <PrefixedTagNames.pButtonPure
             class="close"

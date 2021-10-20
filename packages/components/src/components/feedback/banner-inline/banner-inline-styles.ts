@@ -45,8 +45,11 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
         color: borderAndIconColor,
       },
     },
+    action: {
+      marginLeft: pxToRemWithUnit(16),
+    },
     close: {
-      marginLeft: pxToRemWithUnit(8),
+      marginLeft: pxToRemWithUnit(16),
     },
   });
 };
