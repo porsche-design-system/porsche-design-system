@@ -11,8 +11,21 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-banner>
+      <span slot="title">Title</span>
+      <span slot="description">Description</span>
+    </p-banner>
+    <p-banner-inline>hi</p-banner-inline>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
+      document.querySelector('p-banner').addEventListener('dismiss', (e) => {
+        console.log(e);
+      });
+      document.querySelector('p-banner-inline').addEventListener('dismiss', (e) => {
+        console.log(e);
+      });
+
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
