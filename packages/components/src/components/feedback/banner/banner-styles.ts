@@ -100,7 +100,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
       maxWidth: pxToRemWithUnit(800),
       paddingRight: pxToRemWithUnit(48),
       // p-text for description
-      '*:nth-child(2):not(.close)': {
+      '& *:nth-child(2):not(.close)': {
         marginTop: pxToRemWithUnit(8),
       },
     },
