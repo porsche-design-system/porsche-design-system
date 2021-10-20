@@ -1,13 +1,7 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  hasNamedSlot,
-  attachComponentCss,
-  attachSlottedCss,
-  getShadowRootHTMLElement,
-} from '../../../utils';
+import { getPrefixedTagNames, hasNamedSlot, attachComponentCss, getShadowRootHTMLElement } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
-import { getComponentCss, getSlottedCss } from './banner-styles';
+import { getComponentCss } from './banner-styles';
 
 @Component({
   tag: 'p-banner',
@@ -35,7 +29,6 @@ export class Banner {
 
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
-    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
