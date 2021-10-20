@@ -8,7 +8,7 @@ export const getIconName = (state: BannerInlineState): IconName => {
   const stateToIconMap: { [key in BannerInlineState]: IconName } = {
     neutral: 'information',
     warning: 'warning',
-    success: 'check',
+    success: 'success',
     error: 'exclamation',
   };
   return stateToIconMap[state];
