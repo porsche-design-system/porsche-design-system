@@ -6,9 +6,10 @@ import {
   attachSlottedCss,
   hasHeading,
 } from '../../../utils';
-import type { BannerState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
 import { getIconName } from './banner-inline-utils';
+import type { BannerInlineState } from './banner-inline-utils';
 
 @Component({
   tag: 'p-banner-inline',
@@ -24,7 +25,7 @@ export class BannerInline {
   @Prop() public description?: string = '';
 
   /** State of the banner. */
-  @Prop() public state?: BannerState = 'neutral';
+  @Prop() public state?: BannerInlineState = 'neutral';
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
