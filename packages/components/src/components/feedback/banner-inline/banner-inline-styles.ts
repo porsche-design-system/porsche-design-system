@@ -8,9 +8,10 @@ import {
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { BannerState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
+import type { BannerInlineState } from './banner-inline-utils';
 
-export const getComponentCss = (state: BannerState, theme: Theme): string => {
+export const getComponentCss = (state: BannerInlineState, theme: Theme): string => {
   const { neutralSoftColor, ...otherColors } = getThemedColors(theme);
   const backgroundColor = state === 'neutral' ? neutralSoftColor : otherColors[state + 'SoftColor'];
   const borderAndIconColor = otherColors[state + 'Color'];
