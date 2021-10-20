@@ -36,8 +36,11 @@ export class BannerInline {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
     attachSlottedCss(this.host, getSlottedCss);
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
 
   public render(): JSX.Element {

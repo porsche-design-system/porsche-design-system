@@ -140,7 +140,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     disabledColor,
   } = getThemedColors(theme);
 
-  const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
+  const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // TODO: strange that surfaceColor isn't used for dark theme
 
   const baseDirectionPseudoStyle: JssStyle = {
     content: '""',

@@ -8,13 +8,12 @@ import {
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
 import type { BannerState, Theme } from '../../../types';
 
 export const getComponentCss = (state: BannerState, theme: Theme): string => {
-  const { neutralSoftColor } = getThemedColors(theme);
-  const backgroundColor = state === 'neutral' ? neutralSoftColor : color.notification[state + 'Soft']; // not themed
-  const borderAndIconColor = color.notification[state]; // not themed
+  const { neutralSoftColor, ...otherColors } = getThemedColors(theme);
+  const backgroundColor = state === 'neutral' ? neutralSoftColor : otherColors[state + 'SoftColor'];
+  const borderAndIconColor = otherColors[state + 'Color'];
 
   return getCss({
     ...buildHostStyles(
