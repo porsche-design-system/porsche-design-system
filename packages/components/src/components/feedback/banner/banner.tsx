@@ -62,7 +62,9 @@ export class Banner {
           <PrefixedTagNames.pBannerInline
             ref={(el) => (this.bannerInlineElement = el)}
             class="root"
+            state={this.state}
             persistent={this.persistent}
+            theme={this.theme}
             onDismiss={this.removeBanner}
           >
             {hasNamedSlot(this.host, 'title') && (
