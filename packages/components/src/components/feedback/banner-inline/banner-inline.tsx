@@ -26,9 +26,6 @@ export class BannerInline {
   /** State of the banner. */
   @Prop() public state?: BannerState = 'neutral';
 
-  /** Defines if the banner can be closed/removed by the user. */
-  @Prop() public persistent?: boolean = false;
-
   /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
@@ -38,26 +35,9 @@ export class BannerInline {
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private closeButton: HTMLButtonElement;
-
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
     attachSlottedCss(this.host, getSlottedCss);
-    if (!this.persistent) {
-      document.addEventListener('keydown', this.onKeyboardEvent);
-    }
-  }
-
-  public componentDidLoad(): void {
-    if (!this.persistent) {
-      this.closeButton.focus();
-    }
-  }
-
-  public disconnectedCallback(): void {
-    if (!this.persistent) {
-      document.removeEventListener('keydown', this.onKeyboardEvent);
-    }
   }
 
   public render(): JSX.Element {
@@ -94,33 +74,15 @@ export class BannerInline {
                 <slot />
               </PrefixedTagNames.pText>
               {/* )}*/}
-              {!this.persistent && (
-                <div class="close">
-                  <PrefixedTagNames.pButtonPure
-                    type="button"
-                    icon="close"
-                    hideLabel={true}
-                    onClick={this.removeBanner}
-                    ref={(el) => (this.closeButton = el)}
-                  >
-                    Close notification
-                  </PrefixedTagNames.pButtonPure>
-                </div>
-              )}
+              <div class="close">
+                <PrefixedTagNames.pButtonPure type="button" icon="close" hideLabel={true} onClick={this.dismiss.emit}>
+                  Close notification
+                </PrefixedTagNames.pButtonPure>
+              </div>
             </div>
           </div>
         </PrefixedTagNames.pContentWrapper>
       </Host>
     );
   }
-
-  private onKeyboardEvent = ({ key }: KeyboardEvent): void => {
-    if (key === 'Esc' || key === 'Escape') {
-      this.dismiss.emit();
-    }
-  };
-
-  private removeBanner = (): void => {
-    this.dismiss.emit();
-  };
 }

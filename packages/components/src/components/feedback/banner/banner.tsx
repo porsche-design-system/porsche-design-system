@@ -35,11 +35,11 @@ export class Banner {
   private closeButton: HTMLButtonElement;
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
+    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
-    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentDidLoad(): void {

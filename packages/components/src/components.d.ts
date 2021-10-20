@@ -76,10 +76,6 @@ export namespace Components {
          */
         "heading"?: string;
         /**
-          * Defines if the banner can be closed/removed by the user.
-         */
-        "persistent"?: boolean;
-        /**
           * State of the banner.
          */
         "state"?: BannerState;
@@ -1235,10 +1231,6 @@ declare namespace LocalJSX {
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines if the banner can be closed/removed by the user.
-         */
-        "persistent"?: boolean;
         /**
           * State of the banner.
          */
