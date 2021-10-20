@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getIconName() should return correct icon for state: error 1`] = `"exclamation"`;
+
+exports[`getIconName() should return correct icon for state: neutral 1`] = `"information"`;
+
+exports[`getIconName() should return correct icon for state: success 1`] = `"success"`;
+
+exports[`getIconName() should return correct icon for state: warning 1`] = `"warning"`;
