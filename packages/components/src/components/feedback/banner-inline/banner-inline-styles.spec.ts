@@ -1,8 +1,9 @@
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
-import type { BannerState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
+import type { BannerInlineState } from './banner-inline-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[BannerState, Theme]>([
+  it.each<[BannerInlineState, Theme]>([
     ['neutral', 'light'],
     ['warning', 'light'],
     ['success', 'light'],
