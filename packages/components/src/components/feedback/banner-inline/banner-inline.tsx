@@ -59,14 +59,18 @@ export class BannerInline {
             <slot />
           </PrefixedTagNames.pText>
           {/* )}*/}
-          {!this.persistent && (
-            <div class="close">
-              <PrefixedTagNames.pButtonPure type="button" icon="close" hideLabel={true} onClick={this.dismiss.emit}>
-                Close notification
-              </PrefixedTagNames.pButtonPure>
-            </div>
-          )}
         </div>
+        {!this.persistent && (
+          <PrefixedTagNames.pButtonPure
+            class="close"
+            type="button"
+            icon="close"
+            hideLabel={true}
+            onClick={this.dismiss.emit}
+          >
+            Close notification
+          </PrefixedTagNames.pButtonPure>
+        )}
       </Host>
     );
   }
