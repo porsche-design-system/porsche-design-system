@@ -17,10 +17,34 @@
       }
     </style>
 
+    <p-banner-inline state="neutral">Some banner content</p-banner-inline>
+    <p-banner-inline state="warning">Some banner content</p-banner-inline>
+    <p-banner-inline state="success">Some banner content</p-banner-inline>
+    <p-banner-inline state="error"
+      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
+      handled correctly.</p-banner-inline
+    >
+    <p-banner-inline state="error" persistent
+      >Some persistent banner content that is quite long and eventually goes across multiple lines. Let's see if line
+      breaks are handled correctly.</p-banner-inline
+    >
+
     <p-banner-inline heading="Some banner heading" state="neutral">Some banner content</p-banner-inline>
     <p-banner-inline heading="Some banner heading" state="warning">Some banner content</p-banner-inline>
     <p-banner-inline heading="Some banner heading" state="success">Some banner content</p-banner-inline>
-    <p-banner-inline heading="Some banner heading" state="error">Some banner content</p-banner-inline>
+    <p-banner-inline
+      heading="Some banner heading that can also be quite long and potentially go across multiple lines if we don't pay attention"
+      state="error"
+      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
+      handled correctly.</p-banner-inline
+    >
+    <p-banner-inline
+      heading="Some banner heading that can also be quite long and potentially go across multiple lines if we don't pay attention"
+      state="error"
+      persistent
+      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
+      handled correctly.</p-banner-inline
+    >
 
     <!--    <p-banner>-->
     <!--      <span slot="title">Title</span>-->
