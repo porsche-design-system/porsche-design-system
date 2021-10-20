@@ -9,12 +9,14 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PBannerInline data-testid="host" heading="Some banner title">
-        onDismiss=
-        {(e) => {
+      <PBannerInline
+        data-testid="host"
+        heading="Some banner title"
+        onDismiss={(e) => {
           setEventCounter(eventCounter + 1);
           setStatus('hidden');
         }}
+      >
         Some banner description.
       </PBannerInline>
       <div data-testid="debug">

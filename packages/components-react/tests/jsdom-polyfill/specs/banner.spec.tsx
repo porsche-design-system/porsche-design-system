@@ -40,7 +40,7 @@ describe('PBanner', () => {
 
     const debug = getByTestId('debug');
     const button = getByTestId('host')
-      .shadowRoot.querySelector('p-content-wrapper p-banner-inline')
+      .shadowRoot.querySelector('p-banner-inline')
       .shadowRoot.querySelector('p-button-pure');
 
     expect(debug.innerHTML).toBe('Status: visible; Event Counter: 0;');
