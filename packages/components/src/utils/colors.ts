@@ -42,8 +42,11 @@ export const getThemedColors = (
   activeColor: string;
   disabledColor: string;
   errorColor: string;
+  errorSoftColor: string;
   successColor: string;
+  successSoftColor: string;
   warningColor: string;
+  warningSoftColor: string;
   neutralColor: string;
   neutralSoftColor: string;
 } => {
@@ -56,8 +59,11 @@ export const getThemedColors = (
     state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
     notification: {
       error: errorColor,
+      errorSoft: errorSoftColor,
       success: successColor,
+      successSoft: successSoftColor,
       warning: warningColor,
+      warningSoft: warningSoftColor,
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
@@ -74,8 +80,11 @@ export const getThemedColors = (
     activeColor,
     disabledColor,
     errorColor,
+    errorSoftColor,
     successColor,
+    successSoftColor,
     warningColor,
+    warningSoftColor,
     neutralColor,
     neutralSoftColor,
   };
