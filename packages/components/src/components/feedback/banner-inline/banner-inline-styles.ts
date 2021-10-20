@@ -21,7 +21,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
       addImportantToEachRule({
         display: 'flex',
         position: 'relative',
-        padding: `${pxToRemWithUnit(16)} ${pxToRemWithUnit(16)} ${pxToRemWithUnit(16)} ${pxToRemWithUnit(20)}`,
+        padding: pxToRemWithUnit(16),
         background: backgroundColor, // not themed
         '&::before': {
           content: '""',
@@ -36,17 +36,17 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
     ),
     content: {
       maxWidth: pxToRemWithUnit(800),
-      paddingRight: pxToRemWithUnit(48),
+      paddingRight: pxToRemWithUnit(40),
       // p-text for description
       '& *:nth-child(2):not(.close)': {
-        marginTop: pxToRemWithUnit(8),
+        marginTop: pxToRemWithUnit(4),
       },
     },
     icon: {
       display: 'none',
       [mediaQuery('s')]: {
         display: 'block',
-        paddingRight: pxToRemWithUnit(12),
+        paddingRight: pxToRemWithUnit(8),
         color: borderAndIconColor,
       },
     },
