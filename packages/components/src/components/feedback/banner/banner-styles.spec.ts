@@ -1,8 +1,18 @@
 import { getComponentCss, getSlottedCss } from './banner-styles';
+import type { BannerState, Theme } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it('should return correct css', () => {
-    expect(getComponentCss()).toMatchSnapshot();
+  it.each<[BannerState, Theme]>([
+    ['neutral', 'light'],
+    ['warning', 'light'],
+    ['success', 'light'],
+    ['error', 'light'],
+    ['neutral', 'dark'],
+    ['warning', 'dark'],
+    ['success', 'dark'],
+    ['error', 'dark'],
+  ])('should return correct css for state: %s and theme: %s', (state, theme) => {
+    expect(getComponentCss(state, theme)).toMatchSnapshot();
   });
 });
 
