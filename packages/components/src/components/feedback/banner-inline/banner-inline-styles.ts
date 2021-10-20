@@ -13,18 +13,8 @@ import type { BannerState, Theme } from '../../../types';
 
 export const getComponentCss = (state: BannerState, theme: Theme): string => {
   const { neutralSoftColor } = getThemedColors(theme);
-  const rootBackgroundColor = // not themed
-    state === 'warning'
-      ? color.notification.warningSoft
-      : state === 'error'
-      ? color.notification.errorSoft
-      : neutralSoftColor;
-  const rootBeforeBackgroundColor = // not themed
-    state === 'warning'
-      ? color.notification.warning
-      : state === 'error'
-      ? color.notification.error
-      : color.notification.neutral;
+  const backgroundColor = state === 'neutral' ? neutralSoftColor : color.notification[state + 'Soft']; // not themed
+  const borderAndIconColor = color.notification[state]; // not themed
 
   return getCss({
     ...buildHostStyles(
@@ -32,7 +22,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
         display: 'flex',
         position: 'relative',
         padding: `${pxToRemWithUnit(16)} ${pxToRemWithUnit(16)} ${pxToRemWithUnit(16)} ${pxToRemWithUnit(20)}`,
-        background: rootBackgroundColor, // not themed
+        background: backgroundColor, // not themed
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -40,7 +30,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
           top: 0,
           bottom: 0,
           width: pxToRemWithUnit(4),
-          background: rootBeforeBackgroundColor, // not themed
+          background: borderAndIconColor, // not themed
         },
       })
     ),
@@ -57,6 +47,7 @@ export const getComponentCss = (state: BannerState, theme: Theme): string => {
       [mediaQuery('s')]: {
         display: 'block',
         paddingRight: pxToRemWithUnit(12),
+        color: borderAndIconColor,
       },
     },
     close: {

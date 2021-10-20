@@ -8,6 +8,7 @@ import {
 } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
+import { getIconName } from './banner-inline-utils';
 
 @Component({
   tag: 'p-banner-inline',
@@ -46,9 +47,7 @@ export class BannerInline {
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
-        {this.state !== 'neutral' && (
-          <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
-        )}
+        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" />
         <div class="content">
           {hasHeading(this.host, this.heading) && (
             <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
