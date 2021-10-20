@@ -66,6 +66,32 @@ export namespace Components {
          */
         "width"?: 'basic' | 'extended' | 'fluid';
     }
+    interface PBannerInline {
+        /**
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
+        /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the banner.
+         */
+        "state"?: BannerState;
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
+    }
     interface PButton {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -858,6 +884,12 @@ declare global {
         prototype: HTMLPBannerElement;
         new (): HTMLPBannerElement;
     };
+    interface HTMLPBannerInlineElement extends Components.PBannerInline, HTMLStencilElement {
+    }
+    var HTMLPBannerInlineElement: {
+        prototype: HTMLPBannerInlineElement;
+        new (): HTMLPBannerInlineElement;
+    };
     interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {
     }
     var HTMLPButtonElement: {
@@ -1095,6 +1127,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
+        "p-banner-inline": HTMLPBannerInlineElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
@@ -1168,6 +1201,36 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PBanner {
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the banner.
+         */
+        "state"?: BannerState;
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
+    }
+    interface PBannerInline {
+        /**
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
         /**
           * Emitted when the close button is clicked.
          */
@@ -1994,6 +2057,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
+        "p-banner-inline": PBannerInline;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
@@ -2041,6 +2105,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
+            "p-banner-inline": LocalJSX.PBannerInline & JSXBase.HTMLAttributes<HTMLPBannerInlineElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
