@@ -16,6 +16,7 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
+import { UnitPositionType } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -27,6 +28,12 @@ export class TextFieldWrapper {
 
   /** The label text. */
   @Prop() public label?: string = '';
+
+  /** The unit text. */
+  @Prop() public unit?: string = '';
+
+  /** The unit text. */
+  @Prop() public unitPosition?: UnitPositionType = 'prefix';
 
   /** The description text. */
   @Prop() public description?: string = '';
@@ -79,11 +86,19 @@ export class TextFieldWrapper {
       ['root']: true,
       [`root--${this.state}`]: this.state !== 'none',
       ['root--password']: this.isPassword,
+      ['root--unit']: !!this.unit,
+      ['root--unit-suffix']: this.unitPosition !== 'prefix',
     };
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
       ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
+    };
+
+    const unitClasses = {
+      ['unit']: true,
+      ['unit--suffix']: this.unitPosition !== 'prefix',
+      ['unit--disabled']: disabled,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
@@ -122,12 +137,17 @@ export class TextFieldWrapper {
                 aria-hidden="true"
               />
             </button>
+          ) : this.input.type === 'search' ? (
+            <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
+              <span class="sr-only">Search</span>
+              <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
+            </button>
           ) : (
-            this.input.type === 'search' && (
-              <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
-                <span class="sr-only">Search</span>
-                <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
-              </button>
+            this.input.type === 'number' &&
+            !!this.unit && (
+              <PrefixedTagNames.pText class={unitClasses} color="inherit">
+                {this.unit.substr(0, 5)}
+              </PrefixedTagNames.pText>
             )
           )}
         </div>

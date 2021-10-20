@@ -134,6 +134,16 @@
     ::slotted(input[type='search']) {
     padding-right: 3rem !important;
   }
+
+  @at-root &--unit ::slotted(input) {
+    padding-left: 3rem !important;
+    padding-right: p-px-to-rem(10px) !important;
+  }
+
+  @at-root &--unit-suffix ::slotted(input) {
+    padding-right: 3rem !important;
+    padding-left: p-px-to-rem(10px) !important;
+  }
 }
 
 .label {
@@ -231,6 +241,25 @@
 
 .sr-only {
   @include form-text-hidden;
+}
+
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: p-px-to-rem(12px);
+  box-sizing: border-box;
+  color: $p-color-neutral-contrast-medium;
+
+  &--suffix {
+    left: auto;
+    right: 0;
+  }
+
+  &--disabled {
+    color: $p-color-state-disabled;
+    cursor: not-allowed;
+  }
 }
 
 button {
