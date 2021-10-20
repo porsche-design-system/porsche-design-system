@@ -76,6 +76,16 @@ const generateComponentMeta = (): void => {
     return result;
   }, {} as ComponentsMeta);
 
+  // loop again to check if focusable components are used inside other components
+  const entries = Object.entries(meta);
+  for (const [tagName] of entries) {
+    const source = componentSourceCode[tagName];
+
+    if (entries.some(([tag, data]) => data.isFocusable && source.includes(`PrefixedTagNames.${camelCase(tag)}`))) {
+      meta[tagName].isFocusable = true;
+    }
+  }
+
   const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
     .filter(([_, value]) => value.isFocusable)
     .map(([key]) => camelCase(key) as TagNameCamelCase)
