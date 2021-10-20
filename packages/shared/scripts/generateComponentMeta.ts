@@ -78,7 +78,8 @@ const generateComponentMeta = (): void => {
 
   const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
     .filter(([_, value]) => value.isFocusable)
-    .map(([key]) => camelCase(key) as TagNameCamelCase);
+    .map(([key]) => camelCase(key) as TagNameCamelCase)
+    .sort();
 
   const functions = `export const getComponentMeta = (component: TagName): ComponentMeta => {
   const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
