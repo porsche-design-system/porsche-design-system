@@ -1,7 +1,9 @@
-import type { BannerState, IconName } from '../../../types';
+import type { IconName } from '../../../types';
 
-export const getIconName = (state: BannerState): IconName => {
-  const stateToIconMap: { [key in BannerState]: IconName } = {
+export type BannerInlineState = 'success' | 'error' | 'warning' | 'neutral';
+
+export const getIconName = (state: BannerInlineState): IconName => {
+  const stateToIconMap: { [key in BannerInlineState]: IconName } = {
     neutral: 'information',
     warning: 'warning',
     success: 'check',

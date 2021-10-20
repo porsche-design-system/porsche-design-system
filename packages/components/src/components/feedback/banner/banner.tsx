@@ -1,7 +1,8 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
 import { getPrefixedTagNames, hasNamedSlot, attachComponentCss, getShadowRootHTMLElement } from '../../../utils';
-import type { BannerState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
 import { getComponentCss } from './banner-styles';
+import type { BannerState } from './banner-utils';
 
 @Component({
   tag: 'p-banner',
