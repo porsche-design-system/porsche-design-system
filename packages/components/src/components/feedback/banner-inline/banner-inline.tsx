@@ -89,11 +89,11 @@ export class BannerInline {
                   {this.heading || <slot name="heading" />}
                 </PrefixedTagNames.pHeadline>
               )}
-              {/*{hasNamedSlot(this.host, 'description') && (*/}
+              {/* {hasNamedSlot(this.host, 'description') && (*/}
               <PrefixedTagNames.pText id={bannerDescriptionId}>
                 <slot />
               </PrefixedTagNames.pText>
-              {/*)}*/}
+              {/* )}*/}
               {!this.persistent && (
                 <div class="close">
                   <PrefixedTagNames.pButtonPure
