@@ -20,6 +20,11 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPage,
   },
   {
+    name: 'Banner Inline',
+    path: '/banner-inline',
+    component: fromPages.BannerInlinePage,
+  },
+  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage,
