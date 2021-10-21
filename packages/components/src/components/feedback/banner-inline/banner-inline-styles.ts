@@ -73,5 +73,5 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };

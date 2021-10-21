@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
 import {
   getPrefixedTagNames,
-  getThemeDarkAttribute,
   attachComponentCss,
   attachSlottedCss,
   hasHeading,
@@ -64,7 +63,7 @@ export class BannerInline {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" />
         <div class="content">
           {hasHeading(this.host, this.heading) && (

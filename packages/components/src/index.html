@@ -29,10 +29,12 @@
       >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
       handled correctly.</p-banner-inline
     >
-    <p-banner-inline state="error" persistent action-label="Retry"
-      >Some persistent banner content that is quite long and eventually goes across multiple lines. Let's see if line
-      breaks are handled and <a href="#">linked</a> correctly.</p-banner-inline
-    >
+    <div style="background: black; padding: 10px">
+      <p-banner-inline state="error" persistent action-label="Retry" theme="dark"
+        >Some persistent banner content that is quite long and eventually goes across multiple lines. Let's see if line
+        breaks are handled and <a href="#">linked</a> correctly.</p-banner-inline
+      >
+    </div>
 
     <p-banner-inline heading="Some banner heading" state="neutral">Some banner content</p-banner-inline>
     <p-banner-inline heading="Some banner heading" state="warning">Some banner content</p-banner-inline>
