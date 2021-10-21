@@ -8,10 +8,9 @@ import {
   attachSlottedCss,
 } from '../../../utils';
 import type { Theme } from '../../../types';
-import { getComponentCss } from './banner-styles';
+import { getComponentCss, getSlottedCss } from './banner-styles';
 import type { BannerState } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
-import { getSlottedCss } from '../banner-inline/banner-inline-styles';
 
 @Component({
   tag: 'p-banner',

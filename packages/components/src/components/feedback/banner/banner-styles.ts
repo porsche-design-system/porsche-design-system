@@ -1,4 +1,13 @@
-import { addImportantToRule, breakpoint, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../utils';
+import {
+  addImportantToRule,
+  breakpoint,
+  buildHostStyles,
+  buildSlottedStyles,
+  getBaseSlottedStyles,
+  getCss,
+  mediaQuery,
+  pxToRemWithUnit,
+} from '../../../utils';
 import type { JssStyle } from '../../../utils';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
@@ -86,4 +95,8 @@ export const getComponentCss = (): string => {
       },
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
