@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`text-list accessibility should expose correct initial accessibility tree 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "The quick brown fox jumps over the lazy dog",
+          "role": "StaticText",
+        },
+      ],
+      "level": 1,
+      "name": "",
+      "role": "listitem",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "The quick",
+          "role": "StaticText",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "brown fox",
+              "role": "StaticText",
+            },
+          ],
+          "name": "brown fox",
+          "role": "link",
+        },
+        Object {
+          "name": "jumps over the lazy dog",
+          "role": "StaticText",
+        },
+      ],
+      "level": 1,
+      "name": "",
+      "role": "listitem",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "The quick brown fox jumps over the lazy dog",
+          "role": "StaticText",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "The quick brown fox jumps over the lazy dog",
+                  "role": "StaticText",
+                },
+              ],
+              "level": 2,
+              "name": "",
+              "role": "listitem",
+            },
+          ],
+          "name": "",
+          "role": "list",
+        },
+      ],
+      "level": 1,
+      "name": "",
+      "role": "listitem",
+    },
+  ],
+  "name": "",
+  "role": "list",
+}
+`;

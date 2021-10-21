@@ -500,8 +500,8 @@ describe('getRole()', () => {
     expect(getRole('error')).toBe('alert');
   });
 
-  it('should return null if state is success', () => {
-    expect(getRole('success')).toBeNull();
+  it('should return "status" if state is success', () => {
+    expect(getRole('success')).toBe('status');
   });
 
   it('should return null if state is none', () => {

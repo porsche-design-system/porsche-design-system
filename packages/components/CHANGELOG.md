@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
+- `Marque` uses `webp` images for browsers that support it
+
+### [2.5.1-beta.0] - 2021-10-11
+
+#### Fixed
+- Possible exceptions when components get unmounted directly
+
+### [2.5.0] - 2021-10-04
+
+#### Added
 - `SimHei` and `黑体` as fallback for all components' `font-family`
 
 ### [2.5.0-beta.1] - 2021-09-28

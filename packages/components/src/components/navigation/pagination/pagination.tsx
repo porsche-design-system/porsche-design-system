@@ -100,7 +100,6 @@ export class Pagination {
             const { type, isActive, value } = pageModel;
             const spanProps = {
               role: 'button',
-              tabIndex: isActive ? 0 : null,
               onClick: () => this.onClick(value),
               onKeyDown: (e) => this.onKeyDown(e, value),
             };
@@ -117,10 +116,11 @@ export class Pagination {
                     <span
                       class={paginationPrevClasses}
                       {...spanProps}
+                      tabIndex={isActive ? 0 : null}
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelPrev}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
+                      <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" aria-hidden="true" />
                     </span>
                   </li>
                 );
@@ -148,8 +148,7 @@ export class Pagination {
                     <span
                       class={paginationGoToClasses}
                       {...spanProps}
-                      tabIndex={isActive ? null : 0}
-                      aria-disabled={isActive ? 'true' : null}
+                      tabIndex={0}
                       aria-label={`${this.allyLabelPage} ${value}`}
                       aria-current={isActive ? 'page' : null}
                     >
@@ -169,10 +168,11 @@ export class Pagination {
                     <span
                       class={paginationNextClasses}
                       {...spanProps}
+                      tabIndex={isActive ? 0 : null}
                       aria-disabled={!isActive ? 'true' : null}
                       aria-label={this.allyLabelNext}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
+                      <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" aria-hidden="true" />
                     </span>
                   </li>
                 );

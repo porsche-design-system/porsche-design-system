@@ -1,5 +1,4 @@
 import { Page } from 'puppeteer';
-import { browser } from '../config';
 import { getLifecycleStatus, goto, selectNode, waitForComponentsReady } from '../helpers';
 
 describe('stencil-lifecycles', () => {
@@ -51,8 +50,8 @@ describe('stencil-lifecycles', () => {
     const button = await selectNode(page, 'button');
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate.all).withContext('initial componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all).withContext('initial componentDidLoad: all').toBe(0);
+    expect(status.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
+    expect(status.componentDidLoad.all, 'initial componentDidLoad: all').toBe(0);
 
     // Renders PLinkPure on site
     await button.click();
@@ -60,11 +59,11 @@ describe('stencil-lifecycles', () => {
 
     const status1 = await getLifecycleStatus(page);
 
-    expect(status1.componentDidUpdate['p-link-pure'])
-      .withContext('status after first render componentDidUpdate: p-link-pure')
-      .toBe(0);
-    expect(status1.componentDidUpdate.all).withContext('status after first render componentDidUpdate: all').toBe(0);
-    expect(status1.componentDidLoad.all).withContext('status after first render componentDidLoad: all').toBe(3);
+    expect(status1.componentDidUpdate['p-link-pure'], 'status after first render componentDidUpdate: p-link-pure').toBe(
+      0
+    );
+    expect(status1.componentDidUpdate.all, 'status after first render componentDidUpdate: all').toBe(0);
+    expect(status1.componentDidLoad.all, 'status after first render componentDidLoad: all').toBe(3);
 
     // Changes key attribute on PLinkPure
     await button.click();
@@ -72,10 +71,10 @@ describe('stencil-lifecycles', () => {
 
     const status2 = await getLifecycleStatus(page);
 
-    expect(status2.componentDidUpdate['p-link-pure'])
-      .withContext('status after key change componentDidUpdate: p-link-pure')
-      .toBe(0);
-    expect(status2.componentDidUpdate.all).withContext('status after key change componentDidUpdate: all').toBe(0);
-    expect(status2.componentDidLoad.all).withContext('status after key change componentDidLoad: all').toBe(6);
+    expect(status2.componentDidUpdate['p-link-pure'], 'status after key change componentDidUpdate: p-link-pure').toBe(
+      0
+    );
+    expect(status2.componentDidUpdate.all, 'status after key change componentDidUpdate: all').toBe(0);
+    expect(status2.componentDidLoad.all, 'status after key change componentDidLoad: all').toBe(6);
   });
 });

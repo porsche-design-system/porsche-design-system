@@ -2,7 +2,6 @@ import {
   addEventListener,
   expectedStyleOnFocus,
   getAttribute,
-  getBrowser,
   getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
@@ -24,7 +23,7 @@ describe('banner', () => {
   let page: Page;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
@@ -126,6 +125,8 @@ describe('banner', () => {
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
       await button.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
+
       expect(calls).toBe(1);
     });
 
@@ -210,15 +211,15 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-banner']).withContext('componentDidLoad: p-banner').toBe(1);
-      expect(status.componentDidLoad['p-content-wrapper']).withContext('componentDidLoad: p-content-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(2); // one included in button-pure
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // one included in button-pure
-      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1);
+      expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
+      expect(status.componentDidLoad['p-content-wrapper'], 'componentDidLoad: p-content-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -230,11 +231,25 @@ describe('banner', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-banner']).withContext('componentDidUpdate: p-banner').toBe(1);
-      expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
+      expect(status.componentDidUpdate['p-banner'], 'componentDidUpdate: p-banner').toBe(1);
+      expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(8);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initBanner('neutral');
+      const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');
+
+      const snapshotWrapper = await page.accessibility.snapshot({
+        root: await getWrapper(),
+        interestingOnly: false,
+      });
+
+      expect(snapshotWrapper).toMatchSnapshot();
     });
   });
 });
