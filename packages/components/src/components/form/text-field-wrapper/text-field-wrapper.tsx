@@ -9,7 +9,6 @@ import {
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
-  mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
@@ -69,7 +68,16 @@ export class TextFieldWrapper {
   public componentDidRender(): void {
     // needs to happen after render in order to have unitElement defined
     this.setUnitElementWidth();
-    attachComponentCss(this.host, getComponentCss, this.unit, this.unitPosition, this.unitElementWidth);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.isPassword,
+      this.unit,
+      this.unitPosition,
+      this.unitElementWidth
+    );
 
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -99,7 +107,7 @@ export class TextFieldWrapper {
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
+      // ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const unitClasses = {
