@@ -29,10 +29,6 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     outline-offset: 1px !important
   }
 
-  p-banner-inline[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
-  }
-
   p-banner-inline b,
   p-banner-inline strong {
     font-weight: 700 !important
