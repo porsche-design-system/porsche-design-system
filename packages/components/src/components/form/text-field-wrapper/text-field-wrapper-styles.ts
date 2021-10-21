@@ -1,4 +1,13 @@
-import { buildSlottedStyles, getBaseSlottedStyles, getCss } from '../../../utils';
+import {
+  addImportantToEachRule,
+  buildGlobalStyles,
+  buildSlottedStyles,
+  getBaseSlottedStyles,
+  getCss,
+  pxToRemWithUnit,
+} from '../../../utils';
+import { UnitPositionType } from './text-field-wrapper-utils';
+import { JssStyle } from 'jss';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -16,4 +25,28 @@ export const getSlottedCss = (host: HTMLElement): string => {
       },
     })
   );
+};
+const getUnitStyles = (unitPosition: UnitPositionType, unitElementWidth?: number): JssStyle => {
+  return {
+    '::slotted(input[type="number"])': {
+      ...(unitPosition === 'prefix'
+        ? {
+            paddingLeft: pxToRemWithUnit(unitElementWidth),
+          }
+        : { paddingRight: pxToRemWithUnit(unitElementWidth) }),
+    },
+  };
+};
+
+export const getComponentCss = (unit: string, unitPosition: UnitPositionType, unitElementWidth?: number) => {
+  return getCss({
+    ...buildGlobalStyles(
+      addImportantToEachRule({
+        '::slotted(input)': {
+          padding: pxToRemWithUnit(11),
+        },
+        ...(unit && getUnitStyles(unitPosition, unitElementWidth)),
+      })
+    ),
+  });
 };

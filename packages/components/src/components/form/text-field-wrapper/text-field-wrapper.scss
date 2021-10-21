@@ -15,7 +15,6 @@
   width: 100% !important;
   height: p-px-to-rem(48px) !important;
   display: block !important;
-  padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
@@ -133,16 +132,6 @@
   @at-root &--password ::slotted(input),
     ::slotted(input[type='search']) {
     padding-right: 3rem !important;
-  }
-
-  @at-root &--unit ::slotted(input) {
-    padding-left: 3rem !important;
-    padding-right: p-px-to-rem(10px) !important;
-  }
-
-  @at-root &--unit-suffix ::slotted(input) {
-    padding-right: 3rem !important;
-    padding-left: p-px-to-rem(10px) !important;
   }
 }
 
