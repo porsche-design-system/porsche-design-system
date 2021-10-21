@@ -4,16 +4,20 @@ export const BannerInlinePage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should show banner-inline neutral on light background">
-        <PBannerInline heading="Some banner-inline title" description="Some banner-inline description." />
+        <PBannerInline heading="Some banner-inline heading" description="Some banner-inline description." />
       </div>
 
       <div className="playground dark" title="should show banner-inline neutral on dark background">
-        <PBannerInline heading="Some banner-inline title" description="Some banner-inline description." theme="dark" />
+        <PBannerInline
+          heading="Some banner-inline heading"
+          description="Some banner-inline description."
+          theme="dark"
+        />
       </div>
 
       <div className="playground light" title="should show banner-inline warning on light background">
         <PBannerInline
-          heading="Some warning banner-inline title"
+          heading="Some warning banner-inline heading"
           description="Some banner-inline description."
           state="warning"
         />
@@ -21,7 +25,7 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground dark" title="should show banner-inline warning on dark background">
         <PBannerInline
-          heading="Some warning banner-inline title"
+          heading="Some warning banner-inline heading"
           description="Some banner-inline description."
           state="warning"
           theme="dark"
@@ -30,7 +34,7 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground light" title="should show banner-inline success on light background">
         <PBannerInline
-          heading="Some success banner-inline title"
+          heading="Some success banner-inline heading"
           description="Some banner-inline description."
           state="success"
         />
@@ -38,7 +42,7 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground dark" title="should show banner-inline success on dark background">
         <PBannerInline
-          heading="Some success banner-inline title"
+          heading="Some success banner-inline heading"
           description="Some banner-inline description."
           state="success"
           theme="dark"
@@ -47,7 +51,7 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground light" title="should show banner-inline error on light background">
         <PBannerInline
-          heading="Some error banner-inline title"
+          heading="Some error banner-inline heading"
           description="Some banner-inline description."
           state="error"
         />
@@ -55,7 +59,7 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground dark" title="should show banner-inline error on dark background">
         <PBannerInline
-          heading="Some error banner-inline title"
+          heading="Some error banner-inline heading"
           description="Some banner-inline description."
           state="error"
           theme="dark"
@@ -64,21 +68,21 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground light" title="should show banner-inline with slotted content on light background">
         <PBannerInline>
-          <span slot="heading">Some slotted banner-inline title</span>
+          <span slot="heading">Some slotted banner-inline heading</span>
           Some slotted banner-inline description. And some <a href="https://www.porsche.com/">LINK</a> element.
         </PBannerInline>
       </div>
 
       <div className="playground dark" title="should show banner-inline with slotted content on dark background">
         <PBannerInline theme="dark">
-          <span slot="heading">Some slotted banner-inline title</span>
+          <span slot="heading">Some slotted banner-inline heading</span>
           Some slotted banner-inline description. And some <a href="https://www.porsche.com/">LINK</a> element.
         </PBannerInline>
       </div>
 
       <div className="playground light" title="should show banner-inline with action button">
         <PBannerInline
-          heading="Some action button banner-inline title"
+          heading="Some action button banner-inline heading"
           description="Some banner-inline description."
           actionLabel="Some action"
           actionIcon="arrow-double-right"
@@ -87,9 +91,18 @@ export const BannerInlinePage = (): JSX.Element => {
 
       <div className="playground light" title="should show banner-inline in persistent mode">
         <PBannerInline
-          heading="Some persistent banner-inline title"
+          heading="Some persistent banner-inline heading"
           description="Some banner-inline description."
           persistent
+        />
+      </div>
+
+      <div className="playground light" title="should show banner-inline in persistent mode with action button">
+        <PBannerInline
+          heading="Some persistent banner-inline heading"
+          description="Some banner-inline description."
+          persistent
+          actionLabel="Some action"
         />
       </div>
     </>

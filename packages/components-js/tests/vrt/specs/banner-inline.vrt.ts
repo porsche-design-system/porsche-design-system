@@ -7,13 +7,13 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import {
-  extendedViewports,
+  defaultViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'banner-inline', '/#banner-inline')).toBeFalsy();
 });
 
