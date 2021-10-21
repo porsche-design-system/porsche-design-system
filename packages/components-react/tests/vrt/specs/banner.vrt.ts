@@ -1,7 +1,5 @@
-import { getVisualRegressionContentWrapperTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { extendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Banner', () => {
-  it('should have no visual regression', async () => {
-    expect(await vrtTest(getVisualRegressionContentWrapperTester(), 'banner', '/banner')).toBeFalsy();
-  });
+it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'banner', '/banner')).toBeFalsy();
 });

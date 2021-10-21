@@ -21,8 +21,8 @@ const BASE_URL = 'http://localhost:3000';
 
 export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/${url}`);
-  await waitForComponentsReady(page);
   await page.waitForSelector('html.hydrated');
+  await waitForComponentsReady(page);
 };
 
 let consoleMessages: ConsoleMessage[] = [];

@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tabs-bar accessibility should expose correct initial accessibility tree of tablist 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree if activeTabIndex is removed  1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree if activeTabIndex is set  1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+          "selected": true,
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "focused": true,
+          "name": "Tab Button 2",
+          "role": "tab",
+          "selected": true,
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+          "selected": true,
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 4",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 4",
+          "role": "tab",
+          "selected": true,
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;
+
+exports[`tabs-bar accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 1",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 1",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 2",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 2",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 3",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 3",
+          "role": "tab",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "Tab Button 4",
+              "role": "StaticText",
+            },
+          ],
+          "name": "Tab Button 4",
+          "role": "tab",
+          "selected": true,
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "level": 1,
+  "name": "",
+  "role": "tablist",
+}
+`;

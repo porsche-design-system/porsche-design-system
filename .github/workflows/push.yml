@@ -29,8 +29,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
         shell: bash
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
@@ -73,8 +72,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -137,8 +135,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -185,8 +182,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -239,8 +235,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -303,8 +298,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -377,8 +371,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -446,8 +439,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -554,8 +546,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -598,8 +589,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -626,8 +616,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -660,8 +649,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -689,14 +677,13 @@ jobs:
           args: --components-js
   release-components-uxpin:
     name: 'Release Components UXPin'
-    needs: [smoke-test, storefront-deployment]
-    if: github.ref == 'refs/heads/master'
+    needs: [smoke-test]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # important for uxpin since it uses the commit history
       - name: 'Cache node_modules'
         uses: actions/cache@v2
         id: cache
@@ -710,8 +697,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -732,12 +718,14 @@ jobs:
       - name: 'Publish UXPin Library'
         uses: ./.github/actions/docker-run
         env:
-          UXPIN_TOKEN: ${{ secrets.UXPIN_TOKEN }}
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
+          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
         with:
           entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
-    needs: [smoke-test, storefront-deployment]
+    needs: [smoke-test, storefront-deployment, release-components-uxpin]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -750,8 +738,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -780,8 +767,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -810,8 +796,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -840,8 +825,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -870,8 +854,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -900,8 +883,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run
         env:
