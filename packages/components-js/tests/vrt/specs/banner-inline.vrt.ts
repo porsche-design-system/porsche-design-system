@@ -23,21 +23,20 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('banner-inline-states', async () => {
       const page = vrt.getPage();
 
-      const head = `
-        <style type="text/css">
-          .playground { padding: 50px 0; }
-        </style>`;
-
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner-inline heading="Some banner title" state="neutral" theme="${theme}">
-          Some banner description. You can also add inline <a href="#">links</a> to route to another page.
+        <p-banner-inline theme="${theme}" action-label="Retry">
+          <span slot="heading">Some slotted banner-inline title with a <a href="#">link</a>.</span>
+          Some slotted banner-inline description with a <a href="#">link</a>.
         </p-banner-inline>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
       await forceHoveredState(page, '.hovered > p-banner-inline a');
+      await forceHoveredState(page, '.hovered > p-banner-inline >>> p-button-pure >>> button');
       await forceFocusedState(page, '.focused > p-banner-inline a');
+      await forceFocusedState(page, '.focused > p-banner-inline >>> p-button-pure >>> button');
       await forceFocusedHoveredState(page, '.focused-hovered > p-banner-inline a');
+      await forceFocusedHoveredState(page, '.focused-hovered > p-banner-inline >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });
