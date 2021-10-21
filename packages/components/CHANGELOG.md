@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Removed
+- `SimHei` as fallback font in favor of `黑体`
+
 #### Added
 - `Marque` uses `webp` images for browsers that support it
 
