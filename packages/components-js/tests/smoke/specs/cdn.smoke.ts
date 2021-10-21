@@ -139,7 +139,7 @@ describe('cdn', () => {
     const objectToFlatArray = (object: Object): string[] =>
       unpackObject(object)
         // @ts-ignore
-        .flat(2);
+        .flat(3);
 
     const bulkRequestItems = (items: string[], baseUrl: string) => {
       for (const item of items) {
