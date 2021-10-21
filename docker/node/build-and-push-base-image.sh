@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REGISTRY=docker.pkg.github.com/porscheui/porsche-design-system
+REGISTRY=ghcr.io/porscheui/porsche-design-system
 IMAGE=node
 TAG=14.16.1-stretch-slim
 
