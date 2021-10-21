@@ -20,16 +20,101 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<p-content-wrapper role=\\"alertdialog\\" aria-labelledby=\\"banner-label\\" aria-describedby=\\"banner-description\\" class=\\"hydrated\\">
-  <div class=\\"root\\">
-    <div class=\\"content\\">
-      <div class=\\"close\\">
-        <p-button-pure class=\\"hydrated\\">
-          Close notification</p-button-pure>
-      </div>
-    </div>
-  </div>
+"<style>
+  p-banner-inline a {
+    color: inherit !important;
+    text-decoration: underline !important;
+    transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: transparent solid 1px !important;
+    outline-offset: 1px !important
+  }
+
+  p-banner-inline[theme=\\"dark\\"] a:hover {
+    color: #ff0223 !important
+  }
+
+  p-banner-inline b,
+  p-banner-inline strong {
+    font-weight: 700 !important
+  }
+
+  p-banner-inline em,
+  p-banner-inline i {
+    font-style: normal !important
+  }
+
+  p-banner-inline a:hover {
+    color: #d5001c !important
+  }
+
+  p-banner-inline a::-moz-focus-inner {
+    border: 0 !important
+  }
+
+  p-banner-inline a:focus {
+    outline-color: currentColor !important
+  }
+
+  p-banner-inline a:focus:not(:focus-visible) {
+    outline-color: transparent !important
+  }
+</style>
+<p-content-wrapper role=\\"alertdialog\\" aria-labelledby=\\"banner-label\\" aria-describedby=\\"banner-description\\" class=\\"hydrated\\">
+  <p-banner-inline class=\\"root hydrated\\">
+  </p-banner-inline>
 </p-content-wrapper>"
+`;
+
+exports[`should have no basic DOM regression for p-banner-inline 1`] = `
+"<style>
+  p-text a {
+    color: inherit !important;
+    text-decoration: underline !important;
+    transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: transparent solid 1px !important;
+    outline-offset: 1px !important
+  }
+
+  p-text[theme=\\"dark\\"] a:hover {
+    color: #ff0223 !important
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important
+  }
+
+  p-text a:hover {
+    color: #d5001c !important
+  }
+
+  p-text a::-moz-focus-inner {
+    border: 0 !important
+  }
+
+  p-text a:focus {
+    outline-color: currentColor !important
+  }
+
+  p-text a:focus:not(:focus-visible) {
+    outline-color: transparent !important
+  }
+</style>
+<p-icon class=\\"icon hydrated\\">
+</p-icon>
+<div class=\\"content\\">
+  <p-text id=\\"banner-description\\" class=\\"hydrated\\">
+    <slot>
+    </slot>
+  </p-text>
+</div>
+<p-button-pure class=\\"close hydrated\\">
+  Close notification</p-button-pure>"
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
