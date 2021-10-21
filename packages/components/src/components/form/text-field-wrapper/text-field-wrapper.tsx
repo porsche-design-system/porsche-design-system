@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  attachComponentCss,
   attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -14,7 +15,7 @@ import {
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { getSlottedCss } from './text-field-wrapper-styles';
+import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 import { UnitPositionType } from './text-field-wrapper-utils';
 
@@ -50,7 +51,9 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
+  private unitElement: HTMLElement;
   private isPassword: boolean;
+  private unitElementWidth: number;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -64,6 +67,10 @@ export class TextFieldWrapper {
   }
 
   public componentDidRender(): void {
+    // needs to happen after render in order to have unitElement defined
+    this.setUnitElementWidth();
+    attachComponentCss(this.host, getComponentCss, this.unit, this.unitPosition, this.unitElementWidth);
+
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -145,7 +152,13 @@ export class TextFieldWrapper {
           ) : (
             this.input.type === 'number' &&
             !!this.unit && (
-              <PrefixedTagNames.pText class={unitClasses} color="inherit">
+              <PrefixedTagNames.pText
+                class={unitClasses}
+                color="inherit"
+                ref={(el) => {
+                  this.unitElement = el;
+                }}
+              >
                 {this.unit.substr(0, 5)}
               </PrefixedTagNames.pText>
             )
@@ -187,5 +200,9 @@ export class TextFieldWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+  };
+
+  private setUnitElementWidth = (): void => {
+    this.unitElementWidth = this.unitElement?.getBoundingClientRect().width;
   };
 }
