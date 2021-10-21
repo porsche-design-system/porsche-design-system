@@ -1,58 +1,93 @@
-<style type="text/css">
-  p-banner-inline {
-  }
-</style>
-
 <div class="playground light" title="should show banner-inline neutral on light background">
-  <p-banner-inline heading="Some neutral notification title">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline heading="Some banner-inline title" description="Some banner-inline description."></p-banner-inline>
 </div>
 
 <div class="playground dark" title="should show banner-inline neutral on dark background">
-  <p-banner-inline heading="Some neutral notification title" theme="dark">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some banner-inline title"
+    description="Some banner-inline description."
+    theme="dark"
+  ></p-banner-inline>
 </div>
 
 <div class="playground light" title="should show banner-inline warning on light background">
-  <p-banner-inline heading="Some warning notification title" state="warning">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some warning banner-inline title"
+    description="Some banner-inline description."
+    state="warning"
+  ></p-banner-inline>
 </div>
 
 <div class="playground dark" title="should show banner-inline warning on dark background">
-  <p-banner-inline heading="Some warning notification title" state="warning" theme="dark">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some warning banner-inline title"
+    description="Some banner-inline description."
+    state="warning"
+    theme="dark"
+  ></p-banner-inline>
 </div>
 
 <div class="playground light" title="should show banner-inline success on light background">
-  <p-banner-inline heading="Some success notification title" state="success">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some success banner-inline title"
+    description="Some banner-inline description."
+    state="success"
+  ></p-banner-inline>
 </div>
 
 <div class="playground dark" title="should show banner-inline success on dark background">
-  <p-banner-inline heading="Some success notification title" state="success" theme="dark">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some success banner-inline title"
+    description="Some banner-inline description."
+    state="success"
+    theme="dark"
+  ></p-banner-inline>
 </div>
 
 <div class="playground light" title="should show banner-inline error on light background">
-  <p-banner-inline heading="Some error notification title" state="error">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-  </p-banner-inline>
+  <p-banner-inline
+    heading="Some error banner-inline title"
+    description="Some banner-inline description."
+    state="error"
+  ></p-banner-inline>
 </div>
 
 <div class="playground dark" title="should show banner-inline error on dark background">
-  <p-banner-inline heading="Some error notification title" state="error" theme="dark">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+  <p-banner-inline
+    heading="Some error banner-inline title"
+    description="Some banner-inline description."
+    state="error"
+    theme="dark"
+  ></p-banner-inline>
+</div>
+
+<div class="playground light" title="should show banner-inline with slotted content on light background">
+  <p-banner-inline>
+    <span slot="heading">Some slotted banner-inline title</span>
+    Some slotted banner-inline description. And some <a href="https://www.porsche.com/">LINK</a> element.
   </p-banner-inline>
 </div>
 
-<div class="playground light" title="should show banner-inline in persistent mode">
-  <p-banner-inline heading="Some persistent notification title" persistent="true">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+<div class="playground dark" title="should show banner-inline with slotted content on dark background">
+  <p-banner-inline theme="dark">
+    <span slot="heading">Some slotted banner-inline title</span>
+    Some slotted banner-inline description. And some <a href="https://www.porsche.com/">LINK</a> element.
   </p-banner-inline>
+</div>
+
+<div class="playground light" title="should show banner-inline with action button">
+  <p-banner-inline
+    heading="Some action button banner-inline title"
+    description="Some banner-inline description."
+    action-label="Some action"
+    action-icon="arrow-double-right"
+  ></p-banner-inline>
+</div>
+
+<div class="playground light" title="should show banner-inline in persistent mode">
+  <p-banner-inline
+    heading="Some persistent banner-inline title"
+    description="Some banner-inline description."
+    persistent="true"
+  ></p-banner-inline>
 </div>
