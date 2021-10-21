@@ -1,13 +1,27 @@
 import {
   addImportantToEachRule,
+  addImportantToRule,
+  BreakpointCustomizable,
   buildGlobalStyles,
+  buildHostStyles,
+  buildResponsiveStyles,
   buildSlottedStyles,
+  colorDarken,
   getBaseSlottedStyles,
   getCss,
+  getFocusStyles,
+  getFormTextHiddenJssStyle,
+  GetStylesFunction,
+  getThemedColors,
+  getThemedStateColors,
+  getTransition,
+  mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import { UnitPositionType } from './text-field-wrapper-utils';
 import { JssStyle } from 'jss';
+import { srOnly, font, color } from '@porsche-design-system/utilities';
+import { FormState, Theme } from '../../../types';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -26,6 +40,25 @@ export const getSlottedCss = (host: HTMLElement): string => {
     })
   );
 };
+
+const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+  return hideLabel
+    ? {
+        ...srOnly(),
+        padding: 0,
+      }
+    : {
+        position: 'static',
+        height: 'auto',
+        margin: 0,
+        whiteSpace: 'normal',
+        overflow: 'visible',
+        clip: 'auto',
+        clipPath: 'none',
+        width: 'fit-content',
+        padding: `0 0 ${pxToRemWithUnit(4)} 0`,
+      };
+};
 const getUnitStyles = (unitPosition: UnitPositionType, unitElementWidth?: number): JssStyle => {
   return {
     '::slotted(input[type="number"])': {
@@ -38,15 +71,224 @@ const getUnitStyles = (unitPosition: UnitPositionType, unitElementWidth?: number
   };
 };
 
-export const getComponentCss = (unit: string, unitPosition: UnitPositionType, unitElementWidth?: number) => {
+export const getComponentCss = (
+  hideLabel: BreakpointCustomizable<boolean>,
+  state: FormState,
+  isPassword: boolean,
+  unit: string,
+  unitPosition: UnitPositionType,
+  unitElementWidth?: number
+) => {
+  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor } =
+    getThemedColors('light');
+  const { stateColor, stateHoverColor } = getThemedStateColors('light', state);
   return getCss({
+    ...buildHostStyles({
+      display: 'block',
+    }),
     ...buildGlobalStyles(
       addImportantToEachRule({
         '::slotted(input)': {
-          padding: pxToRemWithUnit(11),
+          position: 'relative',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: pxToRemWithUnit(48),
+          display: 'block',
+          margin: 0,
+          outline: 'transparent solid 1px',
+          outlineOffset: '2px',
+          appearance: 'none',
+          boxSizing: 'border-box',
+          border: `1px solid ${contrastMediumColor}`,
+          borderRadius: 0,
+          backgroundColor,
+          opacity: 1,
+          fontFamily: font.family,
+          fontWeight: font.weight.regular,
+          ...font.size.small,
+          textIndent: 0,
+          color: textColor,
+          transition:
+            getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
         },
+
+        '::slotted(input:hover)': {
+          borderColor: textColor,
+        },
+
+        '::slotted(input:focus)': {
+          outlineColor: contrastMediumColor,
+        },
+
+        '::slotted(input[readonly]:focus)': {
+          outlineColor: 'transparent',
+        },
+
+        '::slotted(input:disabled)': {
+          cursor: 'not-allowed',
+          color: color.state.disabled, // 🤷
+          borderColor: color.state.disabled,
+          WebkitTextFillColor: color.state.disabled, // fix placeholder color bug in Safari
+        },
+
+        '::slotted(input[readonly])': {
+          borderColor: '#ebebeb', // 🤷
+          backgroundColor: '#ebebeb', // 🤷
+        },
+
+        '::slotted(input[readonly]:not(:disabled))': {
+          color: contrastMediumColor,
+        },
+
+        '::slotted(input[type="number"])': {
+          MozAppearance: 'textfield', // hides up/down spin button for Firefox
+        },
+
+        // Reset webkit autofill styles
+        '::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus)':
+          {
+            WebkitBackgroundClip: 'padding-box',
+          },
         ...(unit && getUnitStyles(unitPosition, unitElementWidth)),
       })
     ),
+    root: {
+      display: 'block',
+      position: 'relative',
+      ...(state !== 'none' && {
+        'button:focus': {
+          outlineOffset: '-5px',
+        },
+        '::slotted(input)': addImportantToEachRule({
+          borderWidth: '2px',
+          padding: pxToRemWithUnit(10),
+        }),
+        '::slotted(input[readonly]:focus)': {
+          outlineColor: addImportantToRule('transparent'),
+        },
+      }),
+      ...((state === 'success' || state === 'error') && {
+        '::slotted(input)': {
+          borderColor: addImportantToRule(stateColor),
+        },
+        '::slotted(input:focus)': {
+          outlineColor: addImportantToRule(stateColor),
+        },
+        // '&+ .message': {
+        //   color: stateColor,
+        // },
+      }),
+      ...(isPassword && {
+        '::slotted(input), ::slotted(input[type="search"])': {
+          padding: addImportantToRule('3rem'),
+        },
+      }),
+    },
+    label: {
+      display: 'block',
+      '&--disabled': {
+        '& .label__text': {
+          color: disabledColor,
+        },
+      },
+      '&__text': {
+        ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
+        display: 'block',
+        width: 'fit-content',
+        transition: getTransition('color'),
+        '&+&--description': {
+          marginTop: pxToRemWithUnit(-4),
+          paddingBottom: pxToRemWithUnit(8),
+        },
+        '&:hover': {
+          '&~::slotted(input:not(:disabled):not([readonly]))': {
+            borderColor: addImportantToRule(textColor),
+          },
+          ...((state === 'success' || state === 'error') && {
+            '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))':
+              {
+                borderColor: addImportantToRule(
+                  state === 'success' ? colorDarken.notification.success : colorDarken.notification.error
+                ),
+              },
+          }),
+        },
+        '&--description': {
+          color: contrastMediumColor,
+        },
+      },
+    },
+    // @mixin required() {
+    required: {
+      '&::after': {
+        content: '" *"',
+        color: errorColor,
+      },
+    },
+    // @mixin state-message() {
+    message: {
+      display: 'flex',
+      marginTop: pxToRemWithUnit(4),
+      color: stateColor,
+      transition: getTransition('color'),
+      '&__icon': {
+        marginRight: pxToRemWithUnit(4),
+      },
+    },
+    'sr-only': {
+      ...srOnly(),
+      padding: 0,
+    },
+    unit: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      padding: pxToRemWithUnit(12),
+      boxSizing: 'border-box',
+      color: contrastMediumColor,
+      ...(unitPosition === 'suffix' && {
+        left: 'auto',
+        right: 0,
+      }),
+      '&--disabled': {
+        color: disabledColor,
+        cursor: 'not-allowed',
+      },
+    },
+    button: {
+      ...getFocusStyles({ color: color.state.focus, offset: -4 }),
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      margin: 0,
+      width: pxToRemWithUnit(48),
+      height: pxToRemWithUnit(48),
+      padding: pxToRemWithUnit(12),
+      boxSizing: 'border-box',
+      outline: 'transparent none',
+      appearance: 'none',
+      border: 'none',
+      textDecoration: 'none',
+      background: 'transparent',
+      cursor: 'pointer',
+      color: textColor,
+      transition: getTransition('color'),
+
+      '&:hover': {
+        color: stateHoverColor,
+      },
+
+      '&:active': {
+        color: activeColor,
+      },
+
+      '&:disabled': {
+        color: disabledColor,
+        cursor: 'not-allowed',
+      },
+    },
   });
 };
