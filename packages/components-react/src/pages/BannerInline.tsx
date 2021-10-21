@@ -89,6 +89,15 @@ export const BannerInlinePage = (): JSX.Element => {
         />
       </div>
 
+      <div className="playground light" title="should show banner-inline with loading action button">
+        <PBannerInline
+          heading="Some action button banner-inline heading"
+          description="Some banner-inline description."
+          actionLabel="Some loading action"
+          actionLoading
+        />
+      </div>
+
       <div className="playground light" title="should show banner-inline in persistent mode">
         <PBannerInline
           heading="Some persistent banner-inline heading"
