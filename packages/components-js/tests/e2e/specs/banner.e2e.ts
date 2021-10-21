@@ -42,13 +42,13 @@ describe('banner', () => {
   };
 
   const getHost = () => selectNode(page, 'p-banner');
-  const getButton = () => selectNode(page, 'p-banner >>> p-button-pure');
+  const getButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure');
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
   it('should render close button with type of "button"', async () => {
     await initBanner();
-    const closeBtnReal = await selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    const closeBtnReal = await selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure >>> button');
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
@@ -134,36 +134,36 @@ describe('banner', () => {
       await setContentWithDesignSystem(
         page,
         `
-      <p-banner id="bannerOne" style="--p-banner-position-type: static">
-        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
-        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
-      </p-banner>
-      <p-banner id="bannerTwo" style="--p-banner-position-type: static">
-        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
-        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
-      </p-banner>`
+        <p-banner id="banner1" style="--p-banner-position-type: static">
+          <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+          <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+        </p-banner>
+        <p-banner id="banner2" style="--p-banner-position-type: static">
+          <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+          <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+        </p-banner>`
       );
 
-      const bannerOne = await selectNode(page, '#bannerOne');
-      const bannerTwo = await selectNode(page, '#bannerTwo');
-      const closeButtonBannerTwo = await selectNode(page, '#bannerTwo >>> p-button-pure');
+      const banner1 = await selectNode(page, '#banner1');
+      const banner2 = await selectNode(page, '#banner2');
+      const closeButtonBanner2 = await selectNode(page, '#banner2 >>> p-banner-inline >>> p-button-pure');
 
-      const classListBannerOne = await getCssClasses(bannerOne);
-      const classListBannerTwo = await getCssClasses(bannerTwo);
-      const bannerOneStyles = await getComputedElementHandleStyles(bannerOne);
-      const bannerTwoStyles = await getComputedElementHandleStyles(bannerTwo);
+      const classListBanner1 = await getCssClasses(banner1);
+      const classListBanner2 = await getCssClasses(banner2);
+      const banner1Styles = await getComputedElementHandleStyles(banner1);
+      const banner2Styles = await getComputedElementHandleStyles(banner2);
 
-      expect(classListBannerOne).toEqual(classListBannerTwo);
-      expect(bannerOneStyles).toEqual(bannerTwoStyles);
+      expect(classListBanner1).toEqual(classListBanner2);
+      expect(banner1Styles).toEqual(banner2Styles);
 
-      await closeButtonBannerTwo.click();
+      await closeButtonBanner2.click();
       await waitForEventSerialization(page);
 
-      const classListBannerOneAfterClick = await getCssClasses(bannerOne);
-      const bannerOneStylesAfterClick = await getComputedElementHandleStyles(bannerOne);
+      const classListBanner1AfterClick = await getCssClasses(banner1);
+      const banner1StylesAfterClick = await getComputedElementHandleStyles(banner1);
 
-      expect(classListBannerOne).toEqual(classListBannerOneAfterClick);
-      expect(bannerOneStyles).toEqual(bannerOneStylesAfterClick);
+      expect(classListBanner1).toEqual(classListBanner1AfterClick);
+      expect(banner1Styles).toEqual(banner1StylesAfterClick);
     });
   });
 
@@ -212,13 +212,14 @@ describe('banner', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
+      expect(status.componentDidLoad['p-banner-inline'], 'componentDidLoad: p-banner-inline').toBe(1);
       expect(status.componentDidLoad['p-content-wrapper'], 'componentDidLoad: p-content-wrapper').toBe(1);
       expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
       expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
       expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -232,10 +233,11 @@ describe('banner', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-banner'], 'componentDidUpdate: p-banner').toBe(1);
+      expect(status.componentDidUpdate['p-banner-inline'], 'componentDidUpdate: p-banner-inline').toBe(1);
       expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
   });
 
