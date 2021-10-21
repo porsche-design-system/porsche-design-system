@@ -2265,10 +2265,23 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@porsche-design-system/browser-notification@2.0.0":
-  version "2.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-2.0.0.tgz#4767d7d2bc1fedb226bc9766059947b0d8951151"
-  integrity sha1-R2fX0rwf7bImvJdmBZlHsNiVEVE=
+"@porsche-design-system/browser-notification@3.0.0":
+  version "3.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-3.0.0.tgz#57684e3d1d2c1f6e0b0929bde982bc29edd99e1f"
+  integrity sha1-V2hOPR0sH24LCSm96YK8Ke3Znh8=
+
+"@porsche-design-system/components-angular@2.5.0":
+  version "2.5.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-angular/-/@porsche-design-system/components-angular-2.5.0.tgz#0418879cb78dd070ba83c547fb7b2ccd132ff94b"
+  integrity sha1-BBiHnLeN0HC6g8VH+3sszRMv+Us=
+  dependencies:
+    "@porsche-design-system/components-js" "2.5.0"
+    tslib "^2.0.1"
+
+"@porsche-design-system/components-js@2.5.0":
+  version "2.5.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-2.5.0.tgz#f081daaa2a1387c93c27660771bd944fde4fe381"
+  integrity sha1-8IHaqioTh8k8J2YHcb2UT95P44E=
 
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
