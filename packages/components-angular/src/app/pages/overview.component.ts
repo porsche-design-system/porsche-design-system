@@ -51,9 +51,16 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default banner">
           <p-banner>
-            <span slot="title">Some banner title</span>
-            <span slot="description">Some banner description.</span>
+            <span slot="title">Some slotted banner title</span>
+            <span slot="description">Some slotted banner description.</span>
           </p-banner>
+        </div>
+
+        <div class="playground light" title="should render default banner-inline">
+          <p-banner-inline
+            [heading]="'Some banner-inline heading'"
+            [description]="'Some banner-inline description.'"
+          ></p-banner-inline>
         </div>
 
         <div class="playground light" title="should render default divider">
@@ -76,19 +83,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default checkbox-wrapper">
-          <p-checkbox-wrapper label="Some label">
+          <p-checkbox-wrapper [label]="'Some label'">
             <input type="checkbox" />
           </p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper">
-          <p-radio-button-wrapper label="Some label">
+          <p-radio-button-wrapper [label]="'Some label'">
             <input type="radio" />
           </p-radio-button-wrapper>
         </div>
 
         <div class="playground light" title="should render default select-wrapper">
-          <p-select-wrapper label="Some label">
+          <p-select-wrapper [label]="'Some label'">
             <select>
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -98,19 +105,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper">
-          <p-text-field-wrapper label="Some label">
+          <p-text-field-wrapper [label]="'Some label'">
             <input type="text" />
           </p-text-field-wrapper>
         </div>
 
         <div class="playground light" title="should render default textarea-wrapper">
-          <p-textarea-wrapper label="Some label">
+          <p-textarea-wrapper [label]="'Some label'">
             <textarea></textarea>
           </p-textarea-wrapper>
         </div>
 
         <div class="playground light" title="should render default fieldset-wrapper">
-          <p-fieldset-wrapper label="Some label"></p-fieldset-wrapper>
+          <p-fieldset-wrapper [label]="'Some label'"></p-fieldset-wrapper>
         </div>
 
         <div class="playground light" title="should render default content-wrapper">
@@ -134,15 +141,15 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default link">
-          <p-link href="https://www.porsche.com">Some label</p-link>
+          <p-link [href]="'https://www.porsche.com'">Some label</p-link>
         </div>
 
         <div class="playground light" title="should render default link-pure">
-          <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+          <p-link-pure [href]="'https://www.porsche.com'">Some label</p-link-pure>
         </div>
 
         <div class="playground light" title="should render default link-social">
-          <p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>
+          <p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'">Some label</p-link-social>
         </div>
 
         <div class="playground light" title="should render default marque">
@@ -150,7 +157,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default pagination">
-          <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+          <p-pagination [total-items-count]="500" [items-per-page]="25" [active-page]="1"></p-pagination>
         </div>
 
         <div class="playground light" title="should render default table">
@@ -172,9 +179,9 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default tabs">
           <p-tabs>
-            <p-tabs-item label="Tab1">Content 1</p-tabs-item>
-            <p-tabs-item label="Tab2">Content 2</p-tabs-item>
-            <p-tabs-item label="Tab3">Content 3</p-tabs-item>
+            <p-tabs-item [label]="'Tab1'">Content 1</p-tabs-item>
+            <p-tabs-item [label]="'Tab2'">Content 2</p-tabs-item>
+            <p-tabs-item [label]="'Tab3'">Content 3</p-tabs-item>
           </p-tabs>
         </div>
 
@@ -225,9 +232,17 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default banner with custom prefix">
           <my-prefix-p-banner p-banner *ngIf="allReady">
-            <span slot="title">Some banner title</span>
-            <span slot="description">Some banner description.</span>
+            <span slot="title">Some slotted banner title</span>
+            <span slot="description">Some slotted banner description.</span>
           </my-prefix-p-banner>
+        </div>
+
+        <div class="playground light" title="should render default banner-inline with custom prefix">
+          <my-prefix-p-banner-inline
+            p-banner-inline
+            [heading]="'Some banner-inline heading'"
+            [description]="'Some banner-inline description.'"
+          ></my-prefix-p-banner-inline>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
@@ -250,19 +265,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
-          <my-prefix-p-checkbox-wrapper p-checkbox-wrapper label="Some label">
+          <my-prefix-p-checkbox-wrapper p-checkbox-wrapper [label]="'Some label'">
             <input type="checkbox" />
           </my-prefix-p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
-          <my-prefix-p-radio-button-wrapper p-radio-button-wrapper label="Some label">
+          <my-prefix-p-radio-button-wrapper p-radio-button-wrapper [label]="'Some label'">
             <input type="radio" />
           </my-prefix-p-radio-button-wrapper>
         </div>
 
         <div class="playground light" title="should render default select-wrapper with custom prefix">
-          <my-prefix-p-select-wrapper p-select-wrapper label="Some label">
+          <my-prefix-p-select-wrapper p-select-wrapper [label]="'Some label'">
             <select>
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -272,19 +287,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper with custom prefix">
-          <my-prefix-p-text-field-wrapper p-text-field-wrapper label="Some label">
+          <my-prefix-p-text-field-wrapper p-text-field-wrapper [label]="'Some label'">
             <input type="text" />
           </my-prefix-p-text-field-wrapper>
         </div>
 
         <div class="playground light" title="should render default textarea-wrapper with custom prefix">
-          <my-prefix-p-textarea-wrapper p-textarea-wrapper label="Some label">
+          <my-prefix-p-textarea-wrapper p-textarea-wrapper [label]="'Some label'">
             <textarea></textarea>
           </my-prefix-p-textarea-wrapper>
         </div>
 
         <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper label="Some label"></my-prefix-p-fieldset-wrapper>
+          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper [label]="'Some label'"></my-prefix-p-fieldset-wrapper>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
@@ -308,15 +323,15 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default link with custom prefix">
-          <my-prefix-p-link p-link href="https://www.porsche.com">Some label</my-prefix-p-link>
+          <my-prefix-p-link p-link [href]="'https://www.porsche.com'">Some label</my-prefix-p-link>
         </div>
 
         <div class="playground light" title="should render default link-pure with custom prefix">
-          <my-prefix-p-link-pure p-link-pure href="https://www.porsche.com">Some label</my-prefix-p-link-pure>
+          <my-prefix-p-link-pure p-link-pure [href]="'https://www.porsche.com'">Some label</my-prefix-p-link-pure>
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook"
+          <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'"
             >Some label
           </my-prefix-p-link-social>
         </div>
@@ -328,9 +343,9 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         <div class="playground light" title="should render default pagination with custom prefix">
           <my-prefix-p-pagination
             p-pagination
-            total-items-count="500"
-            items-per-page="25"
-            active-page="1"
+            [total-items-count]="500"
+            [items-per-page]="25"
+            [active-page]="1"
           ></my-prefix-p-pagination>
         </div>
 
@@ -353,9 +368,9 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default tabs with custom prefix">
           <my-prefix-p-tabs p-tabs>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item [label]="'Tab1'">Content 1</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item [label]="'Tab2'">Content 2</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item [label]="'Tab3'">Content 3</my-prefix-p-tabs-item>
           </my-prefix-p-tabs>
         </div>
 

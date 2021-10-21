@@ -44,9 +44,16 @@
 
     <div class="playground light" title="should render default banner">
       <p-banner>
-        <span slot="title">Some banner title</span>
-        <span slot="description">Some banner description.</span>
+        <span slot="title">Some slotted banner title</span>
+        <span slot="description">Some slotted banner description.</span>
       </p-banner>
+    </div>
+
+    <div class="playground light" title="should render default banner-inline">
+      <p-banner-inline
+        heading="Some banner-inline heading"
+        description="Some banner-inline description."
+      ></p-banner-inline>
     </div>
 
     <div class="playground light" title="should render default divider">
@@ -216,9 +223,16 @@
 
     <div class="playground light" title="should render default banner with custom prefix">
       <my-prefix-p-banner>
-        <span slot="title">Some banner title</span>
-        <span slot="description">Some banner description.</span>
+        <span slot="title">Some slotted banner title</span>
+        <span slot="description">Some slotted banner description.</span>
       </my-prefix-p-banner>
+    </div>
+
+    <div class="playground light" title="should render default banner-inline with custom prefix">
+      <my-prefix-p-banner-inline
+        heading="Some banner-inline heading"
+        description="Some banner-inline description."
+      ></my-prefix-p-banner-inline>
     </div>
 
     <div class="playground light" title="should render default divider with custom prefix">
