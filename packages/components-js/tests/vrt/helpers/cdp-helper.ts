@@ -95,10 +95,10 @@ export const resolveSelector = (
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
   const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
 
-  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+$/)) {
+  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
     throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
   }
-  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+$/)) {
+  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
     throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
   }
 
