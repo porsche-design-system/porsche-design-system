@@ -25,6 +25,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Banner',
   },
   {
+    path: 'banner-inline',
+    component: fromPages.BannerInlineComponent,
+    name: 'Banner Inline',
+  },
+  {
     path: 'button',
     component: fromPages.ButtonComponent,
     name: 'Button',
