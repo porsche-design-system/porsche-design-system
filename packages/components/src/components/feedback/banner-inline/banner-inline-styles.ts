@@ -19,34 +19,40 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
   return getCss({
     ...buildHostStyles(
       addImportantToEachRule({
-        display: 'flex',
-        alignItems: 'flex-start',
-        position: 'relative',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
+        gridTemplateRows: 'auto',
+        gridRowGap: pxToRemWithUnit(4),
+        alignItems: 'start',
         padding: pxToRemWithUnit(16),
         background: backgroundColor,
         borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
+        [mediaQuery('s')]: {
+          gridTemplateColumns: 'auto 1fr auto auto',
+        },
       })
     ),
     content: {
-      width: '100%',
-      '& *': {
-        maxWidth: pxToRemWithUnit(800),
-      },
-      // p-text for description
-      '& *:nth-child(2):not(.close)': {
-        marginTop: pxToRemWithUnit(4),
-      },
+      maxWidth: pxToRemWithUnit(800),
+      display: 'grid',
+      gridGap: pxToRemWithUnit(4),
     },
     icon: {
       display: 'none',
       [mediaQuery('s')]: {
-        display: 'block',
-        paddingRight: pxToRemWithUnit(8),
+        display: 'inline-flex',
+        marginRight: pxToRemWithUnit(8),
         color: borderAndIconColor,
       },
     },
     action: {
-      marginLeft: pxToRemWithUnit(16),
+      gridColumnStart: 1,
+      gridRowStart: 2,
+      [mediaQuery('s')]: {
+        gridColumnStart: 3,
+        gridRowStart: 1,
+        marginLeft: pxToRemWithUnit(16),
+      },
     },
     close: {
       marginLeft: pxToRemWithUnit(16),
