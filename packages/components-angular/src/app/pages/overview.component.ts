@@ -157,7 +157,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default pagination">
-          <p-pagination [total-items-count]="500" [items-per-page]="25" [active-page]="1"></p-pagination>
+          <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
         </div>
 
         <div class="playground light" title="should render default table">
@@ -343,9 +343,9 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         <div class="playground light" title="should render default pagination with custom prefix">
           <my-prefix-p-pagination
             p-pagination
-            [total-items-count]="500"
-            [items-per-page]="25"
-            [active-page]="1"
+            [totalItemsCount]="500"
+            [itemsPerPage]="25"
+            [activePage]="1"
           ></my-prefix-p-pagination>
         </div>
 
