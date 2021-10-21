@@ -150,7 +150,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
-export const getBaseSlottedStyles = (): Styles => {
+export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
   return {
     '& a': {
       color: 'inherit',
@@ -158,7 +158,9 @@ export const getBaseSlottedStyles = (): Styles => {
       ...getHoverStyles(),
       ...getFocusStyles({ offset: 1 }),
     },
-    '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+    ...(opts.withDarkTheme && {
+      '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+    }),
     '& b, & strong': {
       fontWeight: font.weight.bold,
     },
