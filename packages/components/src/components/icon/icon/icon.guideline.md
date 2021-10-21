@@ -6,7 +6,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 
 
 
-**Icon Quality Standarts**
+**Icon Quality Standards**
 
 1. Metaphor and Appearance matches the Porsche icon environment
 
