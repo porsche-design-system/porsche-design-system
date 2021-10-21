@@ -1,6 +1,6 @@
 # Icon
 
-We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#//) for an appropriate icon you are looking for. If there is no match, we encourage you to build,  test, and use the icons you need. To help you meet the quality standards of Porsche, you will find the guideline below.
+We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#//) for an appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need. To help you meet the quality standards of Porsche, you will find the guideline below.
 
 Do you have an icon that is mandatory for several teams and purposes? We are happy to include it in the Porsche Design System. Feel free to get in touch on our [Porsche Design System](https://porschedev.slack.com/archives/CT7AVHTTQ)
 
