@@ -92,6 +92,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-banner-inline>
     </div>
 
+    <div class="playground light" title="should show banner-inline with loading action button">
+      <p-banner-inline
+        [heading]="'Some action button banner-inline heading'"
+        [description]="'Some banner-inline description.'"
+        [actionLabel]="'Some loading action'"
+        [actionLoading]="'true'"
+      ></p-banner-inline>
+    </div>
+
     <div class="playground light" title="should show banner-inline in persistent mode">
       <p-banner-inline
         [heading]="'Some persistent banner-inline heading'"
