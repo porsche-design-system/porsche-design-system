@@ -36,7 +36,7 @@ type FontType = {
 };
 
 export const font: FontType = {
-  family: "'Porsche Next','Arial Narrow',Arial,SimHei,黑体,sans-serif",
+  family: "'Porsche Next','Arial Narrow',Arial,黑体,sans-serif",
   weight: {
     thin: 100,
     regular: 400,
