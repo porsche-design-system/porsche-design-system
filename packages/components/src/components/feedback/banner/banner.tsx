@@ -5,11 +5,13 @@ import {
   attachComponentCss,
   getShadowRootHTMLElement,
   throwIfValueIsInvalid,
+  attachSlottedCss,
 } from '../../../utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './banner-styles';
 import type { BannerState } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
+import { getSlottedCss } from '../banner-inline/banner-inline-styles';
 
 @Component({
   tag: 'p-banner',
@@ -37,6 +39,7 @@ export class Banner {
 
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
+    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
