@@ -81,7 +81,7 @@ Integration through `includeOverlay()` partial.
 | **ResizeObserver != true**                                                                      | ✓           |
 | **IntersectionObserver != true**                                                                | ✓           |
 | **MutationObserver != true**                                                                    | ✓           |
-| **Custom elements && ResizeObserver && IntersectionObserver && MutationObserver == true**       | ✗           |
+| **Custom elements && ResizeObserver && IntersectionObserver && MutationObserver**               | ✗           |
 
 ##### React / Vue JS
 
