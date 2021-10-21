@@ -11,6 +11,8 @@ import {
 import type { Theme } from '../../../types';
 import type { BannerInlineState } from './banner-inline-utils';
 
+const mediaQueryS = mediaQuery('s');
+
 export const getComponentCss = (
   state: BannerInlineState,
   hasAction: boolean,
@@ -33,29 +35,29 @@ export const getComponentCss = (
         padding: pxToRemWithUnit(16),
         background: backgroundColor,
         borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
-        [mediaQuery('s')]: {
+        [mediaQueryS]: {
           gridTemplateColumns: 'auto 1fr auto auto',
         },
       })
     ),
     icon: {
       display: 'none',
-      [mediaQuery('s')]: {
+      [mediaQueryS]: {
         display: 'inline-flex',
         marginRight: pxToRemWithUnit(8),
         color: borderAndIconColor,
       },
     },
     content: {
-      maxWidth: pxToRemWithUnit(800),
       display: 'grid',
       gridGap: pxToRemWithUnit(4),
+      maxWidth: pxToRemWithUnit(800),
     },
     ...(hasAction && {
       action: {
         gridColumnStart: 1,
         gridRowStart: 2,
-        [mediaQuery('s')]: {
+        [mediaQueryS]: {
           gridColumnStart: 3,
           gridRowStart: 1,
           marginLeft: pxToRemWithUnit(16),
