@@ -34,6 +34,9 @@ export class BannerInline {
   /** Action label of the banner-inline. */
   @Prop() public actionLabel?: string;
 
+  /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
+  @Prop() public actionLoading?: string;
+
   /** Action icon of the banner-inline. */
   @Prop() public actionIcon?: IconName = 'refresh';
 
@@ -69,12 +72,15 @@ export class BannerInline {
               {this.heading || <slot name="heading" />}
             </PrefixedTagNames.pHeadline>
           )}
-          {/* {hasNamedSlot(this.host, 'description') && (*/}
           <PrefixedTagNames.pText id={descriptionId}>{this.description || <slot />}</PrefixedTagNames.pText>
-          {/* )}*/}
         </div>
         {this.actionLabel && (
-          <PrefixedTagNames.pButtonPure class="action" icon={this.actionIcon} onClick={this.action.emit}>
+          <PrefixedTagNames.pButtonPure
+            class="action"
+            icon={this.actionIcon}
+            loading={this.actionLoading}
+            onClick={this.action.emit}
+          >
             {this.actionLabel}
           </PrefixedTagNames.pButtonPure>
         )}
