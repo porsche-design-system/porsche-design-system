@@ -52,12 +52,12 @@ export class BannerInline {
 
   public componentWillRender(): void {
     throwIfValueIsInvalid(this.state, BANNER_INLINE_STATES, 'state');
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
   }
 
   public render(): JSX.Element {
-    const bannerLabelId = 'banner-label';
-    const bannerDescriptionId = 'banner-description';
+    const labelId = 'banner-label'; // TODO: no banner prefix needed
+    const descriptionId = 'banner-description'; // TODO: no banner prefix needed
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -65,12 +65,12 @@ export class BannerInline {
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" />
         <div class="content">
           {hasHeading(this.host, this.heading) && (
-            <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
+            <PrefixedTagNames.pHeadline variant="headline-5" id={labelId}>
               {this.heading || <slot name="heading" />}
             </PrefixedTagNames.pHeadline>
           )}
           {/* {hasNamedSlot(this.host, 'description') && (*/}
-          <PrefixedTagNames.pText id={bannerDescriptionId}>{this.description || <slot />}</PrefixedTagNames.pText>
+          <PrefixedTagNames.pText id={descriptionId}>{this.description || <slot />}</PrefixedTagNames.pText>
           {/* )}*/}
         </div>
         {this.actionLabel && (

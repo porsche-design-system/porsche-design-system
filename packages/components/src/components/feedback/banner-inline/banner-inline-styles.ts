@@ -11,10 +11,15 @@ import {
 import type { Theme } from '../../../types';
 import type { BannerInlineState } from './banner-inline-utils';
 
-export const getComponentCss = (state: BannerInlineState, theme: Theme): string => {
+export const getComponentCss = (
+  state: BannerInlineState,
+  hasAction: boolean,
+  hasClose: boolean,
+  theme: Theme
+): string => {
   const themedColors = getThemedColors(theme);
-  const backgroundColor = themedColors[state + 'SoftColor'];
-  const borderAndIconColor = themedColors[state + 'Color'];
+  const backgroundColor = themedColors[`${state}SoftColor`];
+  const borderAndIconColor = themedColors[`${state}Color`];
 
   return getCss({
     ...buildHostStyles(
@@ -24,6 +29,7 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
         gridTemplateRows: 'auto',
         gridRowGap: pxToRemWithUnit(4),
         alignItems: 'start',
+        justifyItems: 'start',
         padding: pxToRemWithUnit(16),
         background: backgroundColor,
         borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
@@ -32,11 +38,6 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
         },
       })
     ),
-    content: {
-      maxWidth: pxToRemWithUnit(800),
-      display: 'grid',
-      gridGap: pxToRemWithUnit(4),
-    },
     icon: {
       display: 'none',
       [mediaQuery('s')]: {
@@ -45,18 +46,27 @@ export const getComponentCss = (state: BannerInlineState, theme: Theme): string 
         color: borderAndIconColor,
       },
     },
-    action: {
-      gridColumnStart: 1,
-      gridRowStart: 2,
-      [mediaQuery('s')]: {
-        gridColumnStart: 3,
-        gridRowStart: 1,
+    content: {
+      maxWidth: pxToRemWithUnit(800),
+      display: 'grid',
+      gridGap: pxToRemWithUnit(4),
+    },
+    ...(hasAction && {
+      action: {
+        gridColumnStart: 1,
+        gridRowStart: 2,
+        [mediaQuery('s')]: {
+          gridColumnStart: 3,
+          gridRowStart: 1,
+          marginLeft: pxToRemWithUnit(16),
+        },
+      },
+    }),
+    ...(hasClose && {
+      close: {
         marginLeft: pxToRemWithUnit(16),
       },
-    },
-    close: {
-      marginLeft: pxToRemWithUnit(16),
-    },
+    }),
   });
 };
 
