@@ -87,8 +87,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-banner-inline
         [heading]="'Some action button banner-inline heading'"
         [description]="'Some banner-inline description.'"
-        action-label="Some action"
-        action-icon="arrow-double-right"
+        [actionLabel]="'Some action'"
+        [actionIcon]="'arrow-double-right'"
       ></p-banner-inline>
     </div>
 
@@ -105,7 +105,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [heading]="'Some persistent banner-inline heading'"
         [description]="'Some banner-inline description.'"
         [persistent]="true"
-        [action-label]="'Some action'"
+        [actionLabel]="'Some action'"
       ></p-banner-inline>
     </div>
   `,
