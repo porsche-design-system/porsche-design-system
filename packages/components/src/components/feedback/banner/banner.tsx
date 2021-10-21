@@ -47,7 +47,8 @@ export class Banner {
 
   public componentDidLoad(): void {
     if (!this.persistent) {
-      getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close').focus();
+      // messy.. optional chaining is needed in case child component is unmounted to early
+      getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close')?.focus();
     }
   }
 
