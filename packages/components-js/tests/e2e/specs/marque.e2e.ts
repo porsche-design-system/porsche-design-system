@@ -27,7 +27,7 @@ describe('marque', () => {
     await page.setRequestInterception(true);
     page.on('request', (req) => {
       const url = req.url();
-      if (url.endsWith('.png')) {
+      if (url.endsWith('.png') || url.endsWith('.webp')) {
         requestedImagePath = url;
       }
       req.continue();
