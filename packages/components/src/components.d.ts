@@ -78,6 +78,10 @@ export namespace Components {
          */
         "actionLabel"?: string;
         /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: string;
+        /**
           * Description of the banner-inline.
          */
         "description"?: string;
@@ -1237,6 +1241,10 @@ declare namespace LocalJSX {
           * Action label of the banner-inline.
          */
         "actionLabel"?: string;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: string;
         /**
           * Description of the banner-inline.
          */
