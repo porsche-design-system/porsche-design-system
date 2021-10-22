@@ -180,9 +180,24 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
-    name: 'Typography',
-    path: '/typography',
-    component: fromPages.TypographyPage,
+    name: 'Typography Fallback Strategy',
+    path: '/typography-fallback-strategy',
+    component: fromPages.TypographyFallbackStrategyPage,
+  },
+  {
+    name: 'Typography Porsche Next Latin',
+    component: fromPages.TypographyPorscheNextLatinPage,
+    path: '/typography-porsche-next-latin',
+  },
+  {
+    name: 'Typography Porsche Next Greek & Coptic',
+    component: fromPages.TypographyPorscheNextGreekdAndCopticPage,
+    path: '/typography-porsche-next-greek-and-coptic',
+  },
+  {
+    name: 'Typography Porsche Next Cyril',
+    component: fromPages.TypographyPorscheNextCyrilPage,
+    path: '/typography-porsche-next-cyril',
   },
   {
     name: '---',

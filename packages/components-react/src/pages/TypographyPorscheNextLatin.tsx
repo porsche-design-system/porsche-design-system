@@ -1,14 +1,14 @@
-import { PText, PHeadline } from '@porsche-design-system/components-react';
+import { PText } from '@porsche-design-system/components-react';
 import type { TextAlign, TextSize } from '@porsche-design-system/components-react';
 
-export const TypographyPage = (): JSX.Element => {
+export const TypographyPorscheNextLatinPage = (): JSX.Element => {
   const style = `
     h2,
     h4 {
       color: deeppink;
     }
 
-    .playground:not(:nth-child(-n + 7)) p-text {
+    p-text {
       display: inline-block;
       text-align: center;
       vertical-align: top;
@@ -25,63 +25,9 @@ export const TypographyPage = (): JSX.Element => {
     <>
       <style children={style} />
 
-      <div className="playground" title="should show typography in supported font-weights for latin charset">
-        <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
-        <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
-        <PHeadline variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PText weight="bold">The quick brown fox jumps over the lazy dog</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for greek and coptic charset">
-        <PText weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-        <PText weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-        <PHeadline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PHeadline>
-        <PText weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for cyril charset">
-        <PText weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
-        <PText weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
-        <PHeadline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PHeadline>
-        <PText weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for chinese charset">
-        <PText weight="thin">保时捷驾驶体验活动在线销售通用条款与条件</PText>
-        <PText weight="regular">保时捷驾驶体验活动在线销售通用条款与条件</PText>
-        <PHeadline variant="headline-5">保时捷驾驶体验活动在线销售通用条款与条件</PHeadline>
-        <PText weight="bold">保时捷驾驶体验活动在线销售通用条款与条件</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for cyril charset">
-        <PText weight="thin">
-          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
-        </PText>
-        <PText weight="regular">
-          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
-        </PText>
-        <PHeadline variant="headline-5">
-          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
-        </PHeadline>
-        <PText weight="bold">
-          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
-        </PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for cyril charset">
-        <PText weight="thin">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
-        <PText weight="regular">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
-        <PHeadline variant="headline-5">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PHeadline>
-        <PText weight="bold">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
-      </div>
-
       <div className="playground" title="should show typography in basic latin charset">
-        <h2>Latin</h2>
-        <h4>Range: U+0020-007F (Porsche Next "Basic Latin")</h4>
+        <h2>Porsche Next Latin</h2>
+        <h4>Range: U+0020-007F ("Basic Latin")</h4>
         <PText {...props} title="U++0020 | Dec: 32" />
         <PText {...props} title="U++0021 | Dec: 33" children="!" />
         <PText {...props} title="U++0022 | Dec: 34" children='"' />
@@ -179,7 +125,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U++007E | Dec: 126" children="~" />
         <PText {...props} title="U++007F | Dec: 127" children="␡" />
 
-        <h4>Range: U+0080-00FF (Porsche Next "Latin-1 Supplement")</h4>
+        <h4>Range: U+0080-00FF ("Latin-1 Supplement")</h4>
         <PText {...props} title="U+0080 | Dec: 128" children="" />
         <PText {...props} title="U+0081 | Dec: 129" children="" />
         <PText {...props} title="U+0082 | Dec: 130" children="" />
@@ -309,7 +255,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+00FE | Dec: 254" children="þ" />
         <PText {...props} title="U+00FF | Dec: 255" children="ÿ" />
 
-        <h4>Range: U+0100-017F (Porsche Next "Latin Extended-A")</h4>
+        <h4>Range: U+0100-017F ("Latin Extended-A")</h4>
         <PText {...props} title="U+0100 | Dec: 256" children="Ā" />
         <PText {...props} title="U+0101 | Dec: 257" children="ā" />
         <PText {...props} title="U+0102 | Dec: 258" children="Ă" />
@@ -439,7 +385,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+017E | Dec: 382" children="ž" />
         <PText {...props} title="U+017F | Dec: 383" children="ſ" />
 
-        <h4>Range: U+0180-024F (Porsche Next "Latin Extended-B")</h4>
+        <h4>Range: U+0180-024F ("Latin Extended-B")</h4>
         <PText {...props} title="U+0180 | Dec: 384" children="ƀ" />
         <PText {...props} title="U+0181 | Dec: 385" children="Ɓ" />
         <PText {...props} title="U+0182 | Dec: 386" children="Ƃ" />
@@ -569,7 +515,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+01FE | Dec: 510" children="Ǿ" />
         <PText {...props} title="U+01FF | Dec: 511" children="ǿ" />
 
-        <h4>Range: U+0250-02AF (Porsche Next "IPA Extensions")</h4>
+        <h4>Range: U+0250-02AF ("IPA Extensions")</h4>
         <PText {...props} title="U+0250 | Dec:592" children="ɐ" />
         <PText {...props} title="U+0251 | Dec:593" children="ɑ" />
         <PText {...props} title="U+0252 | Dec:594" children="ɒ" />
@@ -667,7 +613,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+02AE | Dec:686" children="ʮ" />
         <PText {...props} title="U+02AF | Dec:687" children="ʯ" />
 
-        <h4>Range: U+02B0-02FF (Porsche Next "Spacing Modifier Letters")</h4>
+        <h4>Range: U+02B0-02FF ("Spacing Modifier Letters")</h4>
         <PText {...props} title="U+02B0 | Dec:688" children="ʰ" />
         <PText {...props} title="U+02B1 | Dec:689" children="ʱ" />
         <PText {...props} title="U+02B2 | Dec:690" children="ʲ" />
@@ -749,7 +695,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+02FE | Dec:766" children="˾" />
         <PText {...props} title="U+02FF | Dec:767" children="˿" />
 
-        <h4>Range: U+0300-036F (Porsche Next "Combining Diacritical Marks")</h4>
+        <h4>Range: U+0300-036F ("Combining Diacritical Marks")</h4>
         <PText {...props} title="U+0300 | Dec:768" children="̀" />
         <PText {...props} title="U+0301 | Dec:769" children="́" />
         <PText {...props} title="U+0302 | Dec:770" children="̂" />
@@ -863,7 +809,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+036E | Dec:878" children="ͮ" />
         <PText {...props} title="U+036F | Dec:879" children="ͯ" />
 
-        <h4>Range: U+0E00-0E7F (Porsche Next "Thai")</h4>
+        <h4>Range: U+0E00-0E7F ("Thai")</h4>
         <PText {...props} title="U+0E00 | Dec:3584" children="฀" />
         <PText {...props} title="U+0E01 | Dec:3585" children="ก" />
         <PText {...props} title="U+0E02 | Dec:3586" children="ข" />
@@ -993,7 +939,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+0E7E | Dec:3710" children="๾" />
         <PText {...props} title="U+0E7F | Dec:3711" children="๿" />
 
-        <h4>Range: U+1E00-1EFF (Porsche Next "Latin Extended Additional")</h4>
+        <h4>Range: U+1E00-1EFF ("Latin Extended Additional")</h4>
         <PText {...props} title="U+1E00 | Dec:7680" children="Ḁ" />
         <PText {...props} title="U+1E01 | Dec:7681" children="ḁ" />
         <PText {...props} title="U+1E02 | Dec:7682" children="Ḃ" />
@@ -1251,7 +1197,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+1EFE | Dec:7934" children="Ỿ" />
         <PText {...props} title="U+1EFF | Dec:7935" children="ỿ" />
 
-        <h4>Range: U+2000-206F (Porsche Next "General Punctuation")</h4>
+        <h4>Range: U+2000-206F ("General Punctuation")</h4>
         <PText {...props} title="U+2000 | Dec:8192" />
         <PText {...props} title="U+2001 | Dec:8193" />
         <PText {...props} title="U+2002 | Dec:8194" children="&ensp;" />
@@ -1365,7 +1311,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+206E | Dec:8302" children="⁮" />
         <PText {...props} title="U+206F | Dec:8303" children="⁯" />
 
-        <h4>Range: U+2070-209F (Porsche Next "Superscripts and Subscripts")</h4>
+        <h4>Range: U+2070-209F ("Superscripts and Subscripts")</h4>
         <PText {...props} title="U+2070 | Dec:8304" children="⁰" />
         <PText {...props} title="U+2071 | Dec:8305" children="ⁱ" />
         <PText {...props} title="U+2072 | Dec:8306" children="⁲" />
@@ -1415,7 +1361,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+209E | Dec:8350" children="₞" />
         <PText {...props} title="U+209F | Dec:8351" children="₟" />
 
-        <h4>Range: U+20A0-20CF (Porsche Next "Currency Symbols")</h4>
+        <h4>Range: U+20A0-20CF ("Currency Symbols")</h4>
         <PText {...props} title="U+20A0 | Dec:8352" children="₠" />
         <PText {...props} title="U+20A1 | Dec:8353" children="₡" />
         <PText {...props} title="U+20A2 | Dec:8354" children="₢" />
@@ -1465,7 +1411,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+20CE | Dec:8398" children="⃎" />
         <PText {...props} title="U+20CF | Dec:8399" children="⃏" />
 
-        <h4>Range: U+2100-214F (Porsche Next "Letterlike Symbols")</h4>
+        <h4>Range: U+2100-214F ("Letterlike Symbols")</h4>
         <PText {...props} title="U+2100 | Dec:8448" children="℀" />
         <PText {...props} title="U+2101 | Dec:8449" children="℁" />
         <PText {...props} title="U+2102 | Dec:8450" children="ℂ" />
@@ -1547,7 +1493,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+214E | Dec:8526" children="ⅎ" />
         <PText {...props} title="U+214F | Dec:8527" children="⅏" />
 
-        <h4>Range: U+2150-218F (Porsche Next "Number Forms")</h4>
+        <h4>Range: U+2150-218F ("Number Forms")</h4>
         <PText {...props} title="U+2150 | Dec:8528" children="⅐" />
         <PText {...props} title="U+2151 | Dec:8529" children="⅑" />
         <PText {...props} title="U+2152 | Dec:8530" children="⅒" />
@@ -1613,7 +1559,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+218E | Dec:8590" children="↎" />
         <PText {...props} title="U+218F | Dec:8591" children="↏" />
 
-        <h4>Range: U+2190-21FF (Porsche Next "Arrows")</h4>
+        <h4>Range: U+2190-21FF ("Arrows")</h4>
         <PText {...props} title="U+2190 | Dec:8592" children="←" />
         <PText {...props} title="U+2191 | Dec:8593" children="↑" />
         <PText {...props} title="U+2192 | Dec:8594" children="→" />
@@ -1727,7 +1673,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+21FE | Dec:8702" children="⇾" />
         <PText {...props} title="U+21FF | Dec:8703" children="⇿" />
 
-        <h4>Range: U+2200-22FF (Porsche Next "Mathematical Operators")</h4>
+        <h4>Range: U+2200-22FF ("Mathematical Operators")</h4>
         <PText {...props} title="U+2200 | Dec:8704" children="∀" />
         <PText {...props} title="U+2201 | Dec:8705" children="∁" />
         <PText {...props} title="U+2202 | Dec:8706" children="∂" />
@@ -1985,7 +1931,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+22FE | Dec:8958" children="⋾" />
         <PText {...props} title="U+22FF | Dec:8959" children="⋿" />
 
-        <h4>Range: U+25A0-25FF (Porsche Next "Geometric Shapes")</h4>
+        <h4>Range: U+25A0-25FF ("Geometric Shapes")</h4>
         <PText {...props} title="U+25A0 | Dec:9632" children="■" />
         <PText {...props} title="U+25A1 | Dec:9633" children="□" />
         <PText {...props} title="U+25A2 | Dec:9634" children="▢" />
@@ -2083,7 +2029,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+25FE | Dec:9726" children="◾" />
         <PText {...props} title="U+25FF | Dec:9727" children="◿" />
 
-        <h4>Range: U+2600-26FF (Porsche Next "Miscellaneous Symbols")</h4>
+        <h4>Range: U+2600-26FF ("Miscellaneous Symbols")</h4>
         <PText {...props} title="U+2600 | Dec:9728" children="☀" />
         <PText {...props} title="U+2601 | Dec:9729" children="☁" />
         <PText {...props} title="U+2602 | Dec:9730" children="☂" />
@@ -2341,7 +2287,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+26FE | Dec:9982" children="⛾" />
         <PText {...props} title="U+26FF | Dec:9983" children="⛿" />
 
-        <h4>Range: U+FB00-FB4F (Porsche Next "Alphabetic Presentation Forms")</h4>
+        <h4>Range: U+FB00-FB4F ("Alphabetic Presentation Forms")</h4>
         <PText {...props} title="U+FB00 | Dec:64256" children="ﬀ" />
         <PText {...props} title="U+FB01 | Dec:64257" children="ﬁ" />
         <PText {...props} title="U+FB02 | Dec:64258" children="ﬂ" />
@@ -2423,7 +2369,7 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+FB4E | Dec:64334" children="פֿ" />
         <PText {...props} title="U+FB4F | Dec:64335" children="ﭏ" />
 
-        <h4>Range: U+FE70-FEFF (Porsche Next "Arabic Presentation Forms-B")</h4>
+        <h4>Range: U+FE70-FEFF ("Arabic Presentation Forms-B")</h4>
         <PText {...props} title="U+FE70 | Dec:65136" children="ﹰ" />
         <PText {...props} title="U+FE71 | Dec:65137" children="ﹱ" />
         <PText {...props} title="U+FE72 | Dec:65138" children="ﹲ" />
@@ -2568,416 +2514,6 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+FEFD | Dec:65277" children="﻽" />
         <PText {...props} title="U+FEFE | Dec:65278" children="﻾" />
         <PText {...props} title="U+FEFF | Dec:65279" children="&#65279;" />
-      </div>
-
-      <div className="playground" title="should show typography in greek and coptic charset">
-        <h2>Greek and Coptic</h2>
-        <h4>Range: U+0370-03FF (Porsche Next)</h4>
-        <PText {...props} title="U+0370 | Dec:880" children="Ͱ" />
-        <PText {...props} title="U+0371 | Dec:881" children="ͱ" />
-        <PText {...props} title="U+0372 | Dec:882" children="Ͳ" />
-        <PText {...props} title="U+0373 | Dec:883" children="ͳ" />
-        <PText {...props} title="U+0374 | Dec:884" children="ʹ" />
-        <PText {...props} title="U+0375 | Dec:885" children="͵" />
-        <PText {...props} title="U+0376 | Dec:886" children="Ͷ" />
-        <PText {...props} title="U+0377 | Dec:887" children="ͷ" />
-        <PText {...props} title="U+0378 | Dec:888" children="&#888;" />
-        <PText {...props} title="U+0379 | Dec:889" children="&#889;" />
-        <PText {...props} title="U+037A | Dec:890" children="ͺ" />
-        <PText {...props} title="U+037B | Dec:891" children="ͻ" />
-        <PText {...props} title="U+037C | Dec:892" children="ͼ" />
-        <PText {...props} title="U+037D | Dec:893" children="ͽ" />
-        <PText {...props} title="U+037E | Dec:894" children=";" />
-        <PText {...props} title="U+037F | Dec:895" children="Ϳ" />
-        <PText {...props} title="U+0380 | Dec:896" children="&#896;" />
-        <PText {...props} title="U+0381 | Dec:897" children="&#897;" />
-        <PText {...props} title="U+0382 | Dec:898" children="&#898;" />
-        <PText {...props} title="U+0383 | Dec:899" children="&#899;" />
-        <PText {...props} title="U+0384 | Dec:900" children="΄" />
-        <PText {...props} title="U+0385 | Dec:901" children="΅" />
-        <PText {...props} title="U+0386 | Dec:902" children="Ά" />
-        <PText {...props} title="U+0387 | Dec:903" children="·" />
-        <PText {...props} title="U+0388 | Dec:904" children="Έ" />
-        <PText {...props} title="U+0389 | Dec:905" children="Ή" />
-        <PText {...props} title="U+038A | Dec:906" children="Ί" />
-        <PText {...props} title="U+038B | Dec:907" children="΋" />
-        <PText {...props} title="U+038C | Dec:908" children="Ό" />
-        <PText {...props} title="U+038D | Dec:909" children="΍" />
-        <PText {...props} title="U+038E | Dec:910" children="Ύ" />
-        <PText {...props} title="U+038F | Dec:911" children="Ώ" />
-        <PText {...props} title="U+0390 | Dec:912" children="ΐ" />
-        <PText {...props} title="U+0391 | Dec:913" children="Α" />
-        <PText {...props} title="U+0392 | Dec:914" children="Β" />
-        <PText {...props} title="U+0393 | Dec:915" children="Γ" />
-        <PText {...props} title="U+0394 | Dec:916" children="Δ" />
-        <PText {...props} title="U+0395 | Dec:917" children="Ε" />
-        <PText {...props} title="U+0396 | Dec:918" children="Ζ" />
-        <PText {...props} title="U+0397 | Dec:919" children="Η" />
-        <PText {...props} title="U+0398 | Dec:920" children="Θ" />
-        <PText {...props} title="U+0399 | Dec:921" children="Ι" />
-        <PText {...props} title="U+039A | Dec:922" children="Κ" />
-        <PText {...props} title="U+039B | Dec:923" children="Λ" />
-        <PText {...props} title="U+039C | Dec:924" children="Μ" />
-        <PText {...props} title="U+039D | Dec:925" children="Ν" />
-        <PText {...props} title="U+039E | Dec:926" children="Ξ" />
-        <PText {...props} title="U+039F | Dec:927" children="Ο" />
-        <PText {...props} title="U+03A0 | Dec:928" children="Π" />
-        <PText {...props} title="U+03A1 | Dec:929" children="Ρ" />
-        <PText {...props} title="U+03A2 | Dec:930" children="΢" />
-        <PText {...props} title="U+03A3 | Dec:931" children="Σ" />
-        <PText {...props} title="U+03A4 | Dec:932" children="Τ" />
-        <PText {...props} title="U+03A5 | Dec:933" children="Υ" />
-        <PText {...props} title="U+03A6 | Dec:934" children="Φ" />
-        <PText {...props} title="U+03A7 | Dec:935" children="Χ" />
-        <PText {...props} title="U+03A8 | Dec:936" children="Ψ" />
-        <PText {...props} title="U+03A9 | Dec:937" children="Ω" />
-        <PText {...props} title="U+03AA | Dec:938" children="Ϊ" />
-        <PText {...props} title="U+03AB | Dec:939" children="Ϋ" />
-        <PText {...props} title="U+03AC | Dec:940" children="ά" />
-        <PText {...props} title="U+03AD | Dec:941" children="έ" />
-        <PText {...props} title="U+03AE | Dec:942" children="ή" />
-        <PText {...props} title="U+03AF | Dec:943" children="ί" />
-        <PText {...props} title="U+03B0 | Dec:944" children="ΰ" />
-        <PText {...props} title="U+03B1 | Dec:945" children="α" />
-        <PText {...props} title="U+03B2 | Dec:946" children="β" />
-        <PText {...props} title="U+03B3 | Dec:947" children="γ" />
-        <PText {...props} title="U+03B4 | Dec:948" children="δ" />
-        <PText {...props} title="U+03B5 | Dec:949" children="ε" />
-        <PText {...props} title="U+03B6 | Dec:950" children="ζ" />
-        <PText {...props} title="U+03B7 | Dec:951" children="η" />
-        <PText {...props} title="U+03B8 | Dec:952" children="θ" />
-        <PText {...props} title="U+03B9 | Dec:953" children="ι" />
-        <PText {...props} title="U+03BA | Dec:954" children="κ" />
-        <PText {...props} title="U+03BB | Dec:955" children="λ" />
-        <PText {...props} title="U+03BC | Dec:956" children="μ" />
-        <PText {...props} title="U+03BD | Dec:957" children="ν" />
-        <PText {...props} title="U+03BE | Dec:958" children="ξ" />
-        <PText {...props} title="U+03BF | Dec:959" children="ο" />
-        <PText {...props} title="U+03C0 | Dec:960" children="π" />
-        <PText {...props} title="U+03C1 | Dec:961" children="ρ" />
-        <PText {...props} title="U+03C2 | Dec:962" children="ς" />
-        <PText {...props} title="U+03C3 | Dec:963" children="σ" />
-        <PText {...props} title="U+03C4 | Dec:964" children="τ" />
-        <PText {...props} title="U+03C5 | Dec:965" children="υ" />
-        <PText {...props} title="U+03C6 | Dec:966" children="φ" />
-        <PText {...props} title="U+03C7 | Dec:967" children="χ" />
-        <PText {...props} title="U+03C8 | Dec:968" children="ψ" />
-        <PText {...props} title="U+03C9 | Dec:969" children="ω" />
-        <PText {...props} title="U+03CA | Dec:970" children="ϊ" />
-        <PText {...props} title="U+03CB | Dec:971" children="ϋ" />
-        <PText {...props} title="U+03CC | Dec:972" children="ό" />
-        <PText {...props} title="U+03CD | Dec:973" children="ύ" />
-        <PText {...props} title="U+03CE | Dec:974" children="ώ" />
-        <PText {...props} title="U+03CF | Dec:975" children="Ϗ" />
-        <PText {...props} title="U+03D0 | Dec:976" children="ϐ" />
-        <PText {...props} title="U+03D1 | Dec:977" children="ϑ" />
-        <PText {...props} title="U+03D2 | Dec:978" children="ϒ" />
-        <PText {...props} title="U+03D3 | Dec:979" children="ϓ" />
-        <PText {...props} title="U+03D4 | Dec:980" children="ϔ" />
-        <PText {...props} title="U+03D5 | Dec:981" children="ϕ" />
-        <PText {...props} title="U+03D6 | Dec:982" children="ϖ" />
-        <PText {...props} title="U+03D7 | Dec:983" children="ϗ" />
-        <PText {...props} title="U+03D8 | Dec:984" children="Ϙ" />
-        <PText {...props} title="U+03D9 | Dec:985" children="ϙ" />
-        <PText {...props} title="U+03DA | Dec:986" children="Ϛ" />
-        <PText {...props} title="U+03DB | Dec:987" children="ϛ" />
-        <PText {...props} title="U+03DC | Dec:988" children="Ϝ" />
-        <PText {...props} title="U+03DD | Dec:989" children="ϝ" />
-        <PText {...props} title="U+03DE | Dec:990" children="Ϟ" />
-        <PText {...props} title="U+03DF | Dec:991" children="ϟ" />
-        <PText {...props} title="U+03E0 | Dec:992" children="Ϡ" />
-        <PText {...props} title="U+03E1 | Dec:993" children="ϡ" />
-        <PText {...props} title="U+03E2 | Dec:994" children="Ϣ" />
-        <PText {...props} title="U+03E3 | Dec:995" children="ϣ" />
-        <PText {...props} title="U+03E4 | Dec:996" children="Ϥ" />
-        <PText {...props} title="U+03E5 | Dec:997" children="ϥ" />
-        <PText {...props} title="U+03E6 | Dec:998" children="Ϧ" />
-        <PText {...props} title="U+03E7 | Dec:999" children="ϧ" />
-        <PText {...props} title="U+03E8 | Dec:1000" children="Ϩ" />
-        <PText {...props} title="U+03E9 | Dec:1001" children="ϩ" />
-        <PText {...props} title="U+03EA | Dec:1002" children="Ϫ" />
-        <PText {...props} title="U+03EB | Dec:1003" children="ϫ" />
-        <PText {...props} title="U+03EC | Dec:1004" children="Ϭ" />
-        <PText {...props} title="U+03ED | Dec:1005" children="ϭ" />
-        <PText {...props} title="U+03EE | Dec:1006" children="Ϯ" />
-        <PText {...props} title="U+03EF | Dec:1007" children="ϯ" />
-        <PText {...props} title="U+03F0 | Dec:1008" children="ϰ" />
-        <PText {...props} title="U+03F1 | Dec:1009" children="ϱ" />
-        <PText {...props} title="U+03F2 | Dec:1010" children="ϲ" />
-        <PText {...props} title="U+03F3 | Dec:1011" children="ϳ" />
-        <PText {...props} title="U+03F4 | Dec:1012" children="ϴ" />
-        <PText {...props} title="U+03F5 | Dec:1013" children="ϵ" />
-        <PText {...props} title="U+03F6 | Dec:1014" children="϶" />
-        <PText {...props} title="U+03F7 | Dec:1015" children="Ϸ" />
-        <PText {...props} title="U+03F8 | Dec:1016" children="ϸ" />
-        <PText {...props} title="U+03F9 | Dec:1017" children="Ϲ" />
-        <PText {...props} title="U+03FA | Dec:1018" children="Ϻ" />
-        <PText {...props} title="U+03FB | Dec:1019" children="ϻ" />
-        <PText {...props} title="U+03FC | Dec:1020" children="ϼ" />
-        <PText {...props} title="U+03FD | Dec:1021" children="Ͻ" />
-        <PText {...props} title="U+03FE | Dec:1022" children="Ͼ" />
-        <PText {...props} title="U+03FF | Dec:1023" children="Ͽ" />
-      </div>
-
-      <div className="playground" title="should show typography in cyril charset">
-        <h2>Cyril</h2>
-        <h4>Range: U+0400-04FF (Porsche Next)</h4>
-        <PText {...props} title="U+0400 | Dec:1024" children="Ѐ" />
-        <PText {...props} title="U+0401 | Dec:1025" children="Ё" />
-        <PText {...props} title="U+0402 | Dec:1026" children="Ђ" />
-        <PText {...props} title="U+0403 | Dec:1027" children="Ѓ" />
-        <PText {...props} title="U+0404 | Dec:1028" children="Є" />
-        <PText {...props} title="U+0405 | Dec:1029" children="Ѕ" />
-        <PText {...props} title="U+0406 | Dec:1030" children="І" />
-        <PText {...props} title="U+0407 | Dec:1031" children="Ї" />
-        <PText {...props} title="U+0408 | Dec:1032" children="Ј" />
-        <PText {...props} title="U+0409 | Dec:1033" children="Љ" />
-        <PText {...props} title="U+040A | Dec:1034" children="Њ" />
-        <PText {...props} title="U+040B | Dec:1035" children="Ћ" />
-        <PText {...props} title="U+040C | Dec:1036" children="Ќ" />
-        <PText {...props} title="U+040D | Dec:1037" children="Ѝ" />
-        <PText {...props} title="U+040E | Dec:1038" children="Ў" />
-        <PText {...props} title="U+040F | Dec:1039" children="Џ" />
-        <PText {...props} title="U+0410 | Dec:1040" children="А" />
-        <PText {...props} title="U+0411 | Dec:1041" children="Б" />
-        <PText {...props} title="U+0412 | Dec:1042" children="В" />
-        <PText {...props} title="U+0413 | Dec:1043" children="Г" />
-        <PText {...props} title="U+0414 | Dec:1044" children="Д" />
-        <PText {...props} title="U+0415 | Dec:1045" children="Е" />
-        <PText {...props} title="U+0416 | Dec:1046" children="Ж" />
-        <PText {...props} title="U+0417 | Dec:1047" children="З" />
-        <PText {...props} title="U+0418 | Dec:1048" children="И" />
-        <PText {...props} title="U+0419 | Dec:1049" children="Й" />
-        <PText {...props} title="U+041A | Dec:1050" children="К" />
-        <PText {...props} title="U+041B | Dec:1051" children="Л" />
-        <PText {...props} title="U+041C | Dec:1052" children="М" />
-        <PText {...props} title="U+041D | Dec:1053" children="Н" />
-        <PText {...props} title="U+041E | Dec:1054" children="О" />
-        <PText {...props} title="U+041F | Dec:1055" children="П" />
-        <PText {...props} title="U+0420 | Dec:1056" children="Р" />
-        <PText {...props} title="U+0421 | Dec:1057" children="С" />
-        <PText {...props} title="U+0422 | Dec:1058" children="Т" />
-        <PText {...props} title="U+0423 | Dec:1059" children="У" />
-        <PText {...props} title="U+0424 | Dec:1060" children="Ф" />
-        <PText {...props} title="U+0425 | Dec:1061" children="Х" />
-        <PText {...props} title="U+0426 | Dec:1062" children="Ц" />
-        <PText {...props} title="U+0427 | Dec:1063" children="Ч" />
-        <PText {...props} title="U+0428 | Dec:1064" children="Ш" />
-        <PText {...props} title="U+0429 | Dec:1065" children="Щ" />
-        <PText {...props} title="U+042A | Dec:1066" children="Ъ" />
-        <PText {...props} title="U+042B | Dec:1067" children="Ы" />
-        <PText {...props} title="U+042C | Dec:1068" children="Ь" />
-        <PText {...props} title="U+042D | Dec:1069" children="Э" />
-        <PText {...props} title="U+042E | Dec:1070" children="Ю" />
-        <PText {...props} title="U+042F | Dec:1071" children="Я" />
-        <PText {...props} title="U+0430 | Dec:1072" children="а" />
-        <PText {...props} title="U+0431 | Dec:1073" children="б" />
-        <PText {...props} title="U+0432 | Dec:1074" children="в" />
-        <PText {...props} title="U+0433 | Dec:1075" children="г" />
-        <PText {...props} title="U+0434 | Dec:1076" children="д" />
-        <PText {...props} title="U+0435 | Dec:1077" children="е" />
-        <PText {...props} title="U+0436 | Dec:1078" children="ж" />
-        <PText {...props} title="U+0437 | Dec:1079" children="з" />
-        <PText {...props} title="U+0438 | Dec:1080" children="и" />
-        <PText {...props} title="U+0439 | Dec:1081" children="й" />
-        <PText {...props} title="U+043A | Dec:1082" children="к" />
-        <PText {...props} title="U+043B | Dec:1083" children="л" />
-        <PText {...props} title="U+043C | Dec:1084" children="м" />
-        <PText {...props} title="U+043D | Dec:1085" children="н" />
-        <PText {...props} title="U+043E | Dec:1086" children="о" />
-        <PText {...props} title="U+043F | Dec:1087" children="п" />
-        <PText {...props} title="U+0440 | Dec:1088" children="р" />
-        <PText {...props} title="U+0441 | Dec:1089" children="с" />
-        <PText {...props} title="U+0442 | Dec:1090" children="т" />
-        <PText {...props} title="U+0443 | Dec:1091" children="у" />
-        <PText {...props} title="U+0444 | Dec:1092" children="ф" />
-        <PText {...props} title="U+0445 | Dec:1093" children="х" />
-        <PText {...props} title="U+0446 | Dec:1094" children="ц" />
-        <PText {...props} title="U+0447 | Dec:1095" children="ч" />
-        <PText {...props} title="U+0448 | Dec:1096" children="ш" />
-        <PText {...props} title="U+0449 | Dec:1097" children="щ" />
-        <PText {...props} title="U+044A | Dec:1098" children="ъ" />
-        <PText {...props} title="U+044B | Dec:1099" children="ы" />
-        <PText {...props} title="U+044C | Dec:1100" children="ь" />
-        <PText {...props} title="U+044D | Dec:1101" children="э" />
-        <PText {...props} title="U+044E | Dec:1102" children="ю" />
-        <PText {...props} title="U+044F | Dec:1103" children="я" />
-        <PText {...props} title="U+0450 | Dec:1104" children="ѐ" />
-        <PText {...props} title="U+0451 | Dec:1105" children="ё" />
-        <PText {...props} title="U+0452 | Dec:1106" children="ђ" />
-        <PText {...props} title="U+0453 | Dec:1107" children="ѓ" />
-        <PText {...props} title="U+0454 | Dec:1108" children="є" />
-        <PText {...props} title="U+0455 | Dec:1109" children="ѕ" />
-        <PText {...props} title="U+0456 | Dec:1110" children="і" />
-        <PText {...props} title="U+0457 | Dec:1111" children="ї" />
-        <PText {...props} title="U+0458 | Dec:1112" children="ј" />
-        <PText {...props} title="U+0459 | Dec:1113" children="љ" />
-        <PText {...props} title="U+045A | Dec:1114" children="њ" />
-        <PText {...props} title="U+045B | Dec:1115" children="ћ" />
-        <PText {...props} title="U+045C | Dec:1116" children="ќ" />
-        <PText {...props} title="U+045D | Dec:1117" children="ѝ" />
-        <PText {...props} title="U+045E | Dec:1118" children="ў" />
-        <PText {...props} title="U+045F | Dec:1119" children="џ" />
-        <PText {...props} title="U+0460 | Dec:1120" children="Ѡ" />
-        <PText {...props} title="U+0461 | Dec:1121" children="ѡ" />
-        <PText {...props} title="U+0462 | Dec:1122" children="Ѣ" />
-        <PText {...props} title="U+0463 | Dec:1123" children="ѣ" />
-        <PText {...props} title="U+0464 | Dec:1124" children="Ѥ" />
-        <PText {...props} title="U+0465 | Dec:1125" children="ѥ" />
-        <PText {...props} title="U+0466 | Dec:1126" children="Ѧ" />
-        <PText {...props} title="U+0467 | Dec:1127" children="ѧ" />
-        <PText {...props} title="U+0468 | Dec:1128" children="Ѩ" />
-        <PText {...props} title="U+0469 | Dec:1129" children="ѩ" />
-        <PText {...props} title="U+046A | Dec:1130" children="Ѫ" />
-        <PText {...props} title="U+046B | Dec:1131" children="ѫ" />
-        <PText {...props} title="U+046C | Dec:1132" children="Ѭ" />
-        <PText {...props} title="U+046D | Dec:1133" children="ѭ" />
-        <PText {...props} title="U+046E | Dec:1134" children="Ѯ" />
-        <PText {...props} title="U+046F | Dec:1135" children="ѯ" />
-        <PText {...props} title="U+0470 | Dec:1136" children="Ѱ" />
-        <PText {...props} title="U+0471 | Dec:1137" children="ѱ" />
-        <PText {...props} title="U+0472 | Dec:1138" children="Ѳ" />
-        <PText {...props} title="U+0473 | Dec:1139" children="ѳ" />
-        <PText {...props} title="U+0474 | Dec:1140" children="Ѵ" />
-        <PText {...props} title="U+0475 | Dec:1141" children="ѵ" />
-        <PText {...props} title="U+0476 | Dec:1142" children="Ѷ" />
-        <PText {...props} title="U+0477 | Dec:1143" children="ѷ" />
-        <PText {...props} title="U+0478 | Dec:1144" children="Ѹ" />
-        <PText {...props} title="U+0479 | Dec:1145" children="ѹ" />
-        <PText {...props} title="U+047A | Dec:1146" children="Ѻ" />
-        <PText {...props} title="U+047B | Dec:1147" children="ѻ" />
-        <PText {...props} title="U+047C | Dec:1148" children="Ѽ" />
-        <PText {...props} title="U+047D | Dec:1149" children="ѽ" />
-        <PText {...props} title="U+047E | Dec:1150" children="Ѿ" />
-        <PText {...props} title="U+047F | Dec:1151" children="ѿ" />
-        <PText {...props} title="U+0480 | Dec:1152" children="Ҁ" />
-        <PText {...props} title="U+0481 | Dec:1153" children="ҁ" />
-        <PText {...props} title="U+0482 | Dec:1154" children="҂" />
-        <PText {...props} title="U+0483 | Dec:1155" children="҃" />
-        <PText {...props} title="U+0484 | Dec:1156" children="҄" />
-        <PText {...props} title="U+0485 | Dec:1157" children="҅" />
-        <PText {...props} title="U+0486 | Dec:1158" children="҆" />
-        <PText {...props} title="U+0487 | Dec:1159" children="҇" />
-        <PText {...props} title="U+0488 | Dec:1160" children="҈" />
-        <PText {...props} title="U+0489 | Dec:1161" children="҉" />
-        <PText {...props} title="U+048A | Dec:1162" children="Ҋ" />
-        <PText {...props} title="U+048B | Dec:1163" children="ҋ" />
-        <PText {...props} title="U+048C | Dec:1164" children="Ҍ" />
-        <PText {...props} title="U+048D | Dec:1165" children="ҍ" />
-        <PText {...props} title="U+048E | Dec:1166" children="Ҏ" />
-        <PText {...props} title="U+048F | Dec:1167" children="ҏ" />
-        <PText {...props} title="U+0490 | Dec:1168" children="Ґ" />
-        <PText {...props} title="U+0491 | Dec:1169" children="ґ" />
-        <PText {...props} title="U+0492 | Dec:1170" children="Ғ" />
-        <PText {...props} title="U+0493 | Dec:1171" children="ғ" />
-        <PText {...props} title="U+0494 | Dec:1172" children="Ҕ" />
-        <PText {...props} title="U+0495 | Dec:1173" children="ҕ" />
-        <PText {...props} title="U+0496 | Dec:1174" children="Җ" />
-        <PText {...props} title="U+0497 | Dec:1175" children="җ" />
-        <PText {...props} title="U+0498 | Dec:1176" children="Ҙ" />
-        <PText {...props} title="U+0499 | Dec:1177" children="ҙ" />
-        <PText {...props} title="U+049A | Dec:1178" children="Қ" />
-        <PText {...props} title="U+049B | Dec:1179" children="қ" />
-        <PText {...props} title="U+049C | Dec:1180" children="Ҝ" />
-        <PText {...props} title="U+049D | Dec:1181" children="ҝ" />
-        <PText {...props} title="U+049E | Dec:1182" children="Ҟ" />
-        <PText {...props} title="U+049F | Dec:1183" children="ҟ" />
-        <PText {...props} title="U+04A0 | Dec:1184" children="Ҡ" />
-        <PText {...props} title="U+04A1 | Dec:1185" children="ҡ" />
-        <PText {...props} title="U+04A2 | Dec:1186" children="Ң" />
-        <PText {...props} title="U+04A3 | Dec:1187" children="ң" />
-        <PText {...props} title="U+04A4 | Dec:1188" children="Ҥ" />
-        <PText {...props} title="U+04A5 | Dec:1189" children="ҥ" />
-        <PText {...props} title="U+04A6 | Dec:1190" children="Ҧ" />
-        <PText {...props} title="U+04A7 | Dec:1191" children="ҧ" />
-        <PText {...props} title="U+04A8 | Dec:1192" children="Ҩ" />
-        <PText {...props} title="U+04A9 | Dec:1193" children="ҩ" />
-        <PText {...props} title="U+04AA | Dec:1194" children="Ҫ" />
-        <PText {...props} title="U+04AB | Dec:1195" children="ҫ" />
-        <PText {...props} title="U+04AC | Dec:1196" children="Ҭ" />
-        <PText {...props} title="U+04AD | Dec:1197" children="ҭ" />
-        <PText {...props} title="U+04AE | Dec:1198" children="Ү" />
-        <PText {...props} title="U+04AF | Dec:1199" children="ү" />
-        <PText {...props} title="U+04B0 | Dec:1200" children="Ұ" />
-        <PText {...props} title="U+04B1 | Dec:1201" children="ұ" />
-        <PText {...props} title="U+04B2 | Dec:1202" children="Ҳ" />
-        <PText {...props} title="U+04B3 | Dec:1203" children="ҳ" />
-        <PText {...props} title="U+04B4 | Dec:1204" children="Ҵ" />
-        <PText {...props} title="U+04B5 | Dec:1205" children="ҵ" />
-        <PText {...props} title="U+04B6 | Dec:1206" children="Ҷ" />
-        <PText {...props} title="U+04B7 | Dec:1207" children="ҷ" />
-        <PText {...props} title="U+04B8 | Dec:1208" children="Ҹ" />
-        <PText {...props} title="U+04B9 | Dec:1209" children="ҹ" />
-        <PText {...props} title="U+04BA | Dec:1210" children="Һ" />
-        <PText {...props} title="U+04BB | Dec:1211" children="һ" />
-        <PText {...props} title="U+04BC | Dec:1212" children="Ҽ" />
-        <PText {...props} title="U+04BD | Dec:1213" children="ҽ" />
-        <PText {...props} title="U+04BE | Dec:1214" children="Ҿ" />
-        <PText {...props} title="U+04BF | Dec:1215" children="ҿ" />
-        <PText {...props} title="U+04C0 | Dec:1216" children="Ӏ" />
-        <PText {...props} title="U+04C1 | Dec:1217" children="Ӂ" />
-        <PText {...props} title="U+04C2 | Dec:1218" children="ӂ" />
-        <PText {...props} title="U+04C3 | Dec:1219" children="Ӄ" />
-        <PText {...props} title="U+04C4 | Dec:1220" children="ӄ" />
-        <PText {...props} title="U+04C5 | Dec:1221" children="Ӆ" />
-        <PText {...props} title="U+04C6 | Dec:1222" children="ӆ" />
-        <PText {...props} title="U+04C7 | Dec:1223" children="Ӈ" />
-        <PText {...props} title="U+04C8 | Dec:1224" children="ӈ" />
-        <PText {...props} title="U+04C9 | Dec:1225" children="Ӊ" />
-        <PText {...props} title="U+04CA | Dec:1226" children="ӊ" />
-        <PText {...props} title="U+04CB | Dec:1227" children="Ӌ" />
-        <PText {...props} title="U+04CC | Dec:1228" children="ӌ" />
-        <PText {...props} title="U+04CD | Dec:1229" children="Ӎ" />
-        <PText {...props} title="U+04CE | Dec:1230" children="ӎ" />
-        <PText {...props} title="U+04CF | Dec:1231" children="ӏ" />
-        <PText {...props} title="U+04D0 | Dec:1232" children="Ӑ" />
-        <PText {...props} title="U+04D1 | Dec:1233" children="ӑ" />
-        <PText {...props} title="U+04D2 | Dec:1234" children="Ӓ" />
-        <PText {...props} title="U+04D3 | Dec:1235" children="ӓ" />
-        <PText {...props} title="U+04D4 | Dec:1236" children="Ӕ" />
-        <PText {...props} title="U+04D5 | Dec:1237" children="ӕ" />
-        <PText {...props} title="U+04D6 | Dec:1238" children="Ӗ" />
-        <PText {...props} title="U+04D7 | Dec:1239" children="ӗ" />
-        <PText {...props} title="U+04D8 | Dec:1240" children="Ә" />
-        <PText {...props} title="U+04D9 | Dec:1241" children="ә" />
-        <PText {...props} title="U+04DA | Dec:1242" children="Ӛ" />
-        <PText {...props} title="U+04DB | Dec:1243" children="ӛ" />
-        <PText {...props} title="U+04DC | Dec:1244" children="Ӝ" />
-        <PText {...props} title="U+04DD | Dec:1245" children="ӝ" />
-        <PText {...props} title="U+04DE | Dec:1246" children="Ӟ" />
-        <PText {...props} title="U+04DF | Dec:1247" children="ӟ" />
-        <PText {...props} title="U+04E0 | Dec:1248" children="Ӡ" />
-        <PText {...props} title="U+04E1 | Dec:1249" children="ӡ" />
-        <PText {...props} title="U+04E2 | Dec:1250" children="Ӣ" />
-        <PText {...props} title="U+04E3 | Dec:1251" children="ӣ" />
-        <PText {...props} title="U+04E4 | Dec:1252" children="Ӥ" />
-        <PText {...props} title="U+04E5 | Dec:1253" children="ӥ" />
-        <PText {...props} title="U+04E6 | Dec:1254" children="Ӧ" />
-        <PText {...props} title="U+04E7 | Dec:1255" children="ӧ" />
-        <PText {...props} title="U+04E8 | Dec:1256" children="Ө" />
-        <PText {...props} title="U+04E9 | Dec:1257" children="ө" />
-        <PText {...props} title="U+04EA | Dec:1258" children="Ӫ" />
-        <PText {...props} title="U+04EB | Dec:1259" children="ӫ" />
-        <PText {...props} title="U+04EC | Dec:1260" children="Ӭ" />
-        <PText {...props} title="U+04ED | Dec:1261" children="ӭ" />
-        <PText {...props} title="U+04EE | Dec:1262" children="Ӯ" />
-        <PText {...props} title="U+04EF | Dec:1263" children="ӯ" />
-        <PText {...props} title="U+04F0 | Dec:1264" children="Ӱ" />
-        <PText {...props} title="U+04F1 | Dec:1265" children="ӱ" />
-        <PText {...props} title="U+04F2 | Dec:1266" children="Ӳ" />
-        <PText {...props} title="U+04F3 | Dec:1267" children="ӳ" />
-        <PText {...props} title="U+04F4 | Dec:1268" children="Ӵ" />
-        <PText {...props} title="U+04F5 | Dec:1269" children="ӵ" />
-        <PText {...props} title="U+04F6 | Dec:1270" children="Ӷ" />
-        <PText {...props} title="U+04F7 | Dec:1271" children="ӷ" />
-        <PText {...props} title="U+04F8 | Dec:1272" children="Ӹ" />
-        <PText {...props} title="U+04F9 | Dec:1273" children="ӹ" />
-        <PText {...props} title="U+04FA | Dec:1274" children="Ӻ" />
-        <PText {...props} title="U+04FB | Dec:1275" children="ӻ" />
-        <PText {...props} title="U+04FC | Dec:1276" children="Ӽ" />
-        <PText {...props} title="U+04FD | Dec:1277" children="ӽ" />
-        <PText {...props} title="U+04FE | Dec:1278" children="Ӿ" />
-        <PText {...props} title="U+04FF | Dec:1279" children="ӿ" />
       </div>
     </>
   );
