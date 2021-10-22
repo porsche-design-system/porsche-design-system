@@ -185,9 +185,24 @@ export const routes: ExtendedRoute[] = [
     name: 'Textarea',
   },
   {
-    path: 'typography',
-    component: fromPages.TypographyComponent,
-    name: 'Typography',
+    path: 'typography-fallback-strategy',
+    component: fromPages.TypographyFallbackStrategyComponent,
+    name: 'Typography Fallback Strategy',
+  },
+  {
+    path: 'typography-porsche-next-latin',
+    component: fromPages.TypographyPorscheNextLatinComponent,
+    name: 'Typography Porsche Next Latin',
+  },
+  {
+    path: 'typography-porsche-next-greek-and-coptic',
+    component: fromPages.TypographyPorscheNextGreekAndCopticComponent,
+    name: 'Typography Porsche Next Greek & Coptic',
+  },
+  {
+    path: 'typography-porsche-next-cyril',
+    component: fromPages.TypographyPorscheNextCyrilComponent,
+    name: 'Typography Porsche Next Cyril',
   },
   {
     path: '---',
