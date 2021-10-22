@@ -158,7 +158,6 @@ export const getComponentCss = (
       position: 'relative',
 
       '& button': {
-        ...getFocusStyles({ color: color.state.focus, offset: -4 }),
         position: 'absolute',
         bottom: 0,
         right: 0,
@@ -176,12 +175,9 @@ export const getComponentCss = (
         color: textColor,
         transition: getTransition('color'),
 
-        ...(hasState && {
-          '&:focus': {
-            outlineOffset: '-5px',
-          },
-        }),
-
+        '&:focus': {
+          ...getFocusStyles({ color: color.state.focus, offset: hasState ? -5 : -4 }),
+        },
         '&:hover': {
           color: stateHoverColor,
         },
