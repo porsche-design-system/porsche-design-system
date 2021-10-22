@@ -60,6 +60,7 @@ export const getComponentCss = (
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor } =
     getThemedColors('light');
   const { stateColor, stateHoverColor } = getThemedStateColors('light', state);
+  const hasState = state !== 'none';
   return getCss({
     ...buildHostStyles({
       display: 'block',
@@ -75,13 +76,13 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          padding: pxToRemWithUnit(11),
+          padding: hasState ? pxToRemWithUnit(11) : pxToRemWithUnit(10),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
           appearance: 'none',
           boxSizing: 'border-box',
-          border: `1px solid ${contrastMediumColor}`,
+          border: `${hasState ? '2px' : '1px'} solid ${hasState ? stateColor : contrastMediumColor}`,
           borderRadius: 0,
           backgroundColor,
           opacity: 1,
@@ -94,12 +95,24 @@ export const getComponentCss = (
             getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
         },
 
-        '::slotted(input:hover)': {
-          borderColor: textColor,
-        },
+        ...(state === 'success' || state === 'error'
+          ? {
+              '::slotted(input:focus)': {
+                outlineColor: stateColor,
+              },
 
-        '::slotted(input:focus)': {
-          outlineColor: contrastMediumColor,
+              '::slotted(input[readonly]:focus)': {
+                outlineColor: 'transparent',
+              },
+            }
+          : {
+              '::slotted(input:focus)': {
+                outlineColor: contrastMediumColor,
+              },
+            }),
+
+        '::slotted(input:hover)': {
+          borderColor: stateHoverColor,
         },
 
         '::slotted(input[readonly]:focus)': {
@@ -132,39 +145,18 @@ export const getComponentCss = (
           {
             WebkitBackgroundClip: 'padding-box',
           },
+
+        ...(isPassword && {
+          '::slotted(input), ::slotted(input[type="search"])': {
+            padding: addImportantToRule('3rem'),
+          },
+        }),
       })
     ),
     root: {
       display: 'block',
       position: 'relative',
-      ...(state !== 'none' && {
-        'button:focus': {
-          outlineOffset: '-5px',
-        },
-        '::slotted(input)': addImportantToEachRule({
-          borderWidth: '2px',
-          padding: pxToRemWithUnit(10),
-        }),
-        '::slotted(input[readonly]:focus)': {
-          outlineColor: addImportantToRule('transparent'),
-        },
-      }),
-      ...((state === 'success' || state === 'error') && {
-        '::slotted(input)': {
-          borderColor: addImportantToRule(stateColor),
-        },
-        '::slotted(input:focus)': {
-          outlineColor: addImportantToRule(stateColor),
-        },
-        // '&+ .message': {
-        //   color: stateColor,
-        // },
-      }),
-      ...(isPassword && {
-        '::slotted(input), ::slotted(input[type="search"])': {
-          padding: addImportantToRule('3rem'),
-        },
-      }),
+
       '& button': {
         ...getFocusStyles({ color: color.state.focus, offset: -4 }),
         position: 'absolute',
@@ -183,6 +175,12 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: textColor,
         transition: getTransition('color'),
+
+        ...(hasState && {
+          '&:focus': {
+            outlineOffset: '-5px',
+          },
+        }),
 
         '&:hover': {
           color: stateHoverColor,
