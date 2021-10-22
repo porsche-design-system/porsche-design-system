@@ -11,17 +11,15 @@ import {
   getCss,
   getFocusStyles,
   getFormTextHiddenJssStyle,
-  GetStylesFunction,
   getThemedColors,
   getThemedStateColors,
   getTransition,
-  mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import { UnitPositionType } from './text-field-wrapper-utils';
 import { JssStyle } from 'jss';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
-import { FormState, Theme } from '../../../types';
+import { FormState } from '../../../types';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -41,33 +39,13 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
-const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel
-    ? {
-        ...srOnly(),
-        padding: 0,
-      }
-    : {
-        position: 'static',
-        height: 'auto',
-        margin: 0,
-        whiteSpace: 'normal',
-        overflow: 'visible',
-        clip: 'auto',
-        clipPath: 'none',
-        width: 'fit-content',
-        padding: `0 0 ${pxToRemWithUnit(4)} 0`,
-      };
-};
 const getUnitStyles = (unitPosition: UnitPositionType, unitElementWidth?: number): JssStyle => {
   return {
-    '::slotted(input[type="number"])': {
-      ...(unitPosition === 'prefix'
-        ? {
-            paddingLeft: pxToRemWithUnit(unitElementWidth),
-          }
-        : { paddingRight: pxToRemWithUnit(unitElementWidth) }),
-    },
+    ...(unitPosition === 'prefix'
+      ? {
+          paddingLeft: pxToRemWithUnit(unitElementWidth),
+        }
+      : { paddingRight: pxToRemWithUnit(unitElementWidth) }),
   };
 };
 
@@ -97,6 +75,7 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
+          padding: pxToRemWithUnit(11),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
@@ -145,6 +124,7 @@ export const getComponentCss = (
 
         '::slotted(input[type="number"])': {
           MozAppearance: 'textfield', // hides up/down spin button for Firefox
+          ...(unit && getUnitStyles(unitPosition, unitElementWidth)),
         },
 
         // Reset webkit autofill styles
@@ -152,7 +132,6 @@ export const getComponentCss = (
           {
             WebkitBackgroundClip: 'padding-box',
           },
-        ...(unit && getUnitStyles(unitPosition, unitElementWidth)),
       })
     ),
     root: {
@@ -186,6 +165,38 @@ export const getComponentCss = (
           padding: addImportantToRule('3rem'),
         },
       }),
+      '& button': {
+        ...getFocusStyles({ color: color.state.focus, offset: -4 }),
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        margin: 0,
+        width: pxToRemWithUnit(48),
+        height: pxToRemWithUnit(48),
+        padding: pxToRemWithUnit(12),
+        boxSizing: 'border-box',
+        outline: 'transparent none',
+        appearance: 'none',
+        border: 'none',
+        textDecoration: 'none',
+        background: 'transparent',
+        cursor: 'pointer',
+        color: textColor,
+        transition: getTransition('color'),
+
+        '&:hover': {
+          color: stateHoverColor,
+        },
+
+        '&:active': {
+          color: activeColor,
+        },
+
+        '&:disabled': {
+          color: disabledColor,
+          cursor: 'not-allowed',
+        },
+      },
     },
     label: {
       display: 'block',
@@ -254,38 +265,6 @@ export const getComponentCss = (
         right: 0,
       }),
       '&--disabled': {
-        color: disabledColor,
-        cursor: 'not-allowed',
-      },
-    },
-    button: {
-      ...getFocusStyles({ color: color.state.focus, offset: -4 }),
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      margin: 0,
-      width: pxToRemWithUnit(48),
-      height: pxToRemWithUnit(48),
-      padding: pxToRemWithUnit(12),
-      boxSizing: 'border-box',
-      outline: 'transparent none',
-      appearance: 'none',
-      border: 'none',
-      textDecoration: 'none',
-      background: 'transparent',
-      cursor: 'pointer',
-      color: textColor,
-      transition: getTransition('color'),
-
-      '&:hover': {
-        color: stateHoverColor,
-      },
-
-      '&:active': {
-        color: activeColor,
-      },
-
-      '&:disabled': {
         color: disabledColor,
         cursor: 'not-allowed',
       },
