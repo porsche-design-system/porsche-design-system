@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Box model of `Link Pure`
 - Focus of `Link Pure` with slotted anchor and hidden label
-– Focus cycling of `Modal` without focusable children
+- Focus cycling of `Modal` without focusable children
 - Suppress CORS error
 
 ### [2.4.0-beta.1] - 2021-08-26
