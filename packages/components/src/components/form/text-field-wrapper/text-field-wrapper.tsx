@@ -78,7 +78,6 @@ export class TextFieldWrapper {
       this.unitPosition,
       this.unitElementWidth
     );
-
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -97,22 +96,13 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.state}`]: this.state !== 'none',
-      ['root--password']: this.isPassword,
-      ['root--unit']: !!this.unit,
-      ['root--unit-suffix']: this.unitPosition !== 'prefix',
-    };
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-      // ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const unitClasses = {
       ['unit']: true,
-      ['unit--suffix']: this.unitPosition !== 'prefix',
       ['unit--disabled']: disabled,
     };
 
@@ -123,7 +113,7 @@ export class TextFieldWrapper {
 
     return (
       <Host>
-        <div class={rootClasses}>
+        <div class="root">
           <label class={labelClasses}>
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
