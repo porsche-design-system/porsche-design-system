@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Removed
-- `SimHei` as fallback for `font-family`
+- `SimHei` as fallback for font-family in favor of `'Heiti SC', 黑体`
 
 ### [5.1.0] - 2021-10-04
 
