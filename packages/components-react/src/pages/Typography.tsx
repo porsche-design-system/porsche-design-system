@@ -3,23 +3,19 @@ import type { TextAlign, TextSize } from '@porsche-design-system/components-reac
 
 export const TypographyPage = (): JSX.Element => {
   const style = `
-    .playground {
-      overflow: hidden;
+    h2,
+    h4 {
+      color: deeppink;
     }
 
-    .playground:nth-child(-n+4) p-text {
-      display: block;
+    .playground:not(:nth-child(-n + 7)) p-text {
+      display: inline-block;
       vertical-align: top;
       margin: 4px;
       padding: 4px;
       background: #f1f1f1;
       width: 36px;
       height: 36px;
-      float: left;
-    }
-
-    div, br {
-      clear: both;
     }
   `;
   const props: { size: TextSize; align: TextAlign } = { size: 'medium', align: 'center' };
@@ -28,10 +24,55 @@ export const TypographyPage = (): JSX.Element => {
     <>
       <style children={style} />
 
+      <div className="playground" title="should show typography in supported font-weights for latin charset">
+        <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
+        <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
+        <PHeadline variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PText weight="bold">The quick brown fox jumps over the lazy dog</PText>
+      </div>
+
+      <div className="playground" title="should show typography in supported font-weights for greek and coptic charset">
+        <PText weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
+        <PText weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
+        <PHeadline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PHeadline>
+        <PText weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
+      </div>
+
+      <div className="playground" title="should show typography in supported font-weights for cyril charset">
+        <PText weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
+        <PText weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
+        <PHeadline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PHeadline>
+        <PText weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
+      </div>
+
+      <div className="playground" title="should show typography in supported font-weights for chinese charset">
+        <PText weight="thin">保时捷驾驶体验活动在线销售通用条款与条件</PText>
+        <PText weight="regular">保时捷驾驶体验活动在线销售通用条款与条件</PText>
+        <PHeadline variant="headline-5">保时捷驾驶体验活动在线销售通用条款与条件</PHeadline>
+        <PText weight="bold">保时捷驾驶体验活动在线销售通用条款与条件</PText>
+      </div>
+
+      <div className="playground" title="should show typography in supported font-weights for cyril charset">
+        <PText weight="thin">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
+        <PText weight="regular">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
+        <PHeadline variant="headline-5">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PHeadline>
+        <PText weight="bold">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
+      </div>
+
+      <div className="playground" title="should show typography in supported font-weights for cyril charset">
+        <PText weight="thin">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
+        <PText weight="regular">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
+        <PHeadline variant="headline-5">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PHeadline>
+        <PText weight="bold">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</PText>
+      </div>
+
       <div className="playground" title="should show typography in basic latin charset">
-        <PHeadline>Latin</PHeadline>
-        <br />
-        <PHeadline variant="headline-4">Range: U+0020-007F (Porsche Next "Basic Latin")</PHeadline>
+        <h2>Latin</h2>
+        <h4>Range: U+0020-007F (Porsche Next "Basic Latin")</h4>
         <PText {...props} title="U++0020 | Dec: 32" />
         <PText {...props} title="U++0021 | Dec: 33" children="!" />
         <PText {...props} title="U++0022 | Dec: 34" children='"' />
@@ -128,9 +169,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U++007D | Dec: 125" children="&#125;" />
         <PText {...props} title="U++007E | Dec: 126" children="~" />
         <PText {...props} title="U++007F | Dec: 127" children="␡" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0080-00FF (Porsche Next "Latin-1 Supplement")</PHeadline>
+
+        <h4>Range: U+0080-00FF (Porsche Next "Latin-1 Supplement")</h4>
         <PText {...props} title="U+0080 | Dec: 128" children="" />
         <PText {...props} title="U+0081 | Dec: 129" children="" />
         <PText {...props} title="U+0082 | Dec: 130" children="" />
@@ -259,9 +299,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+00FD | Dec: 253" children="ý" />
         <PText {...props} title="U+00FE | Dec: 254" children="þ" />
         <PText {...props} title="U+00FF | Dec: 255" children="ÿ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0100-017F (Porsche Next "Latin Extended-A")</PHeadline>
+
+        <h4>Range: U+0100-017F (Porsche Next "Latin Extended-A")</h4>
         <PText {...props} title="U+0100 | Dec: 256" children="Ā" />
         <PText {...props} title="U+0101 | Dec: 257" children="ā" />
         <PText {...props} title="U+0102 | Dec: 258" children="Ă" />
@@ -390,9 +429,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+017D | Dec: 381" children="Ž" />
         <PText {...props} title="U+017E | Dec: 382" children="ž" />
         <PText {...props} title="U+017F | Dec: 383" children="ſ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0180-024F (Porsche Next "Latin Extended-B")</PHeadline>
+
+        <h4>Range: U+0180-024F (Porsche Next "Latin Extended-B")</h4>
         <PText {...props} title="U+0180 | Dec: 384" children="ƀ" />
         <PText {...props} title="U+0181 | Dec: 385" children="Ɓ" />
         <PText {...props} title="U+0182 | Dec: 386" children="Ƃ" />
@@ -521,9 +559,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+01FD | Dec: 509" children="ǽ" />
         <PText {...props} title="U+01FE | Dec: 510" children="Ǿ" />
         <PText {...props} title="U+01FF | Dec: 511" children="ǿ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0250-02AF (Porsche Next "IPA Extensions")</PHeadline>
+
+        <h4>Range: U+0250-02AF (Porsche Next "IPA Extensions")</h4>
         <PText {...props} title="U+0250 | Dec:592" children="ɐ" />
         <PText {...props} title="U+0251 | Dec:593" children="ɑ" />
         <PText {...props} title="U+0252 | Dec:594" children="ɒ" />
@@ -620,9 +657,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+02AD | Dec:685" children="ʭ" />
         <PText {...props} title="U+02AE | Dec:686" children="ʮ" />
         <PText {...props} title="U+02AF | Dec:687" children="ʯ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+02B0-02FF (Porsche Next "Spacing Modifier Letters")</PHeadline>
+
+        <h4>Range: U+02B0-02FF (Porsche Next "Spacing Modifier Letters")</h4>
         <PText {...props} title="U+02B0 | Dec:688" children="ʰ" />
         <PText {...props} title="U+02B1 | Dec:689" children="ʱ" />
         <PText {...props} title="U+02B2 | Dec:690" children="ʲ" />
@@ -703,9 +739,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+02FD | Dec:765" children="˽" />
         <PText {...props} title="U+02FE | Dec:766" children="˾" />
         <PText {...props} title="U+02FF | Dec:767" children="˿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0300-036F (Porsche Next "Combining Diacritical Marks")</PHeadline>
+
+        <h4>Range: U+0300-036F (Porsche Next "Combining Diacritical Marks")</h4>
         <PText {...props} title="U+0300 | Dec:768" children="̀" />
         <PText {...props} title="U+0301 | Dec:769" children="́" />
         <PText {...props} title="U+0302 | Dec:770" children="̂" />
@@ -818,9 +853,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+036D | Dec:877" children="ͭ" />
         <PText {...props} title="U+036E | Dec:878" children="ͮ" />
         <PText {...props} title="U+036F | Dec:879" children="ͯ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+0E00-0E7F (Porsche Next "Thai")</PHeadline>
+
+        <h4>Range: U+0E00-0E7F (Porsche Next "Thai")</h4>
         <PText {...props} title="U+0E00 | Dec:3584" children="฀" />
         <PText {...props} title="U+0E01 | Dec:3585" children="ก" />
         <PText {...props} title="U+0E02 | Dec:3586" children="ข" />
@@ -949,9 +983,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+0E7D | Dec:3709" children="๽" />
         <PText {...props} title="U+0E7E | Dec:3710" children="๾" />
         <PText {...props} title="U+0E7F | Dec:3711" children="๿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+1E00-1EFF (Porsche Next "Latin Extended Additional")</PHeadline>
+
+        <h4>Range: U+1E00-1EFF (Porsche Next "Latin Extended Additional")</h4>
         <PText {...props} title="U+1E00 | Dec:7680" children="Ḁ" />
         <PText {...props} title="U+1E01 | Dec:7681" children="ḁ" />
         <PText {...props} title="U+1E02 | Dec:7682" children="Ḃ" />
@@ -1208,9 +1241,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+1EFD | Dec:7933" children="ỽ" />
         <PText {...props} title="U+1EFE | Dec:7934" children="Ỿ" />
         <PText {...props} title="U+1EFF | Dec:7935" children="ỿ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2000-206F (Porsche Next "General Punctuation")</PHeadline>
+
+        <h4>Range: U+2000-206F (Porsche Next "General Punctuation")</h4>
         <PText {...props} title="U+2000 | Dec:8192" />
         <PText {...props} title="U+2001 | Dec:8193" />
         <PText {...props} title="U+2002 | Dec:8194" children="&ensp;" />
@@ -1323,9 +1355,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+206D | Dec:8301" children="⁭" />
         <PText {...props} title="U+206E | Dec:8302" children="⁮" />
         <PText {...props} title="U+206F | Dec:8303" children="⁯" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2070-209F (Porsche Next "Superscripts and Subscripts")</PHeadline>
+
+        <h4>Range: U+2070-209F (Porsche Next "Superscripts and Subscripts")</h4>
         <PText {...props} title="U+2070 | Dec:8304" children="⁰" />
         <PText {...props} title="U+2071 | Dec:8305" children="ⁱ" />
         <PText {...props} title="U+2072 | Dec:8306" children="⁲" />
@@ -1374,9 +1405,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+209D | Dec:8349" children="₝" />
         <PText {...props} title="U+209E | Dec:8350" children="₞" />
         <PText {...props} title="U+209F | Dec:8351" children="₟" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+20A0-20CF (Porsche Next "Currency Symbols")</PHeadline>
+
+        <h4>Range: U+20A0-20CF (Porsche Next "Currency Symbols")</h4>
         <PText {...props} title="U+20A0 | Dec:8352" children="₠" />
         <PText {...props} title="U+20A1 | Dec:8353" children="₡" />
         <PText {...props} title="U+20A2 | Dec:8354" children="₢" />
@@ -1425,9 +1455,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+20CD | Dec:8397" children="⃍" />
         <PText {...props} title="U+20CE | Dec:8398" children="⃎" />
         <PText {...props} title="U+20CF | Dec:8399" children="⃏" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2100-214F (Porsche Next "Letterlike Symbols")</PHeadline>
+
+        <h4>Range: U+2100-214F (Porsche Next "Letterlike Symbols")</h4>
         <PText {...props} title="U+2100 | Dec:8448" children="℀" />
         <PText {...props} title="U+2101 | Dec:8449" children="℁" />
         <PText {...props} title="U+2102 | Dec:8450" children="ℂ" />
@@ -1508,9 +1537,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+214D | Dec:8525" children="⅍" />
         <PText {...props} title="U+214E | Dec:8526" children="ⅎ" />
         <PText {...props} title="U+214F | Dec:8527" children="⅏" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2150-218F (Porsche Next "Number Forms")</PHeadline>
+
+        <h4>Range: U+2150-218F (Porsche Next "Number Forms")</h4>
         <PText {...props} title="U+2150 | Dec:8528" children="⅐" />
         <PText {...props} title="U+2151 | Dec:8529" children="⅑" />
         <PText {...props} title="U+2152 | Dec:8530" children="⅒" />
@@ -1575,9 +1603,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+218D | Dec:8589" children="↍" />
         <PText {...props} title="U+218E | Dec:8590" children="↎" />
         <PText {...props} title="U+218F | Dec:8591" children="↏" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2190-21FF (Porsche Next "Arrows")</PHeadline>
+
+        <h4>Range: U+2190-21FF (Porsche Next "Arrows")</h4>
         <PText {...props} title="U+2190 | Dec:8592" children="←" />
         <PText {...props} title="U+2191 | Dec:8593" children="↑" />
         <PText {...props} title="U+2192 | Dec:8594" children="→" />
@@ -1690,9 +1717,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+21FD | Dec:8701" children="⇽" />
         <PText {...props} title="U+21FE | Dec:8702" children="⇾" />
         <PText {...props} title="U+21FF | Dec:8703" children="⇿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2200-22FF (Porsche Next "Mathematical Operators")</PHeadline>
+
+        <h4>Range: U+2200-22FF (Porsche Next "Mathematical Operators")</h4>
         <PText {...props} title="U+2200 | Dec:8704" children="∀" />
         <PText {...props} title="U+2201 | Dec:8705" children="∁" />
         <PText {...props} title="U+2202 | Dec:8706" children="∂" />
@@ -1949,9 +1975,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+22FD | Dec:8957" children="⋽" />
         <PText {...props} title="U+22FE | Dec:8958" children="⋾" />
         <PText {...props} title="U+22FF | Dec:8959" children="⋿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+25A0-25FF (Porsche Next "Geometric Shapes")</PHeadline>
+
+        <h4>Range: U+25A0-25FF (Porsche Next "Geometric Shapes")</h4>
         <PText {...props} title="U+25A0 | Dec:9632" children="■" />
         <PText {...props} title="U+25A1 | Dec:9633" children="□" />
         <PText {...props} title="U+25A2 | Dec:9634" children="▢" />
@@ -2048,9 +2073,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+25FD | Dec:9725" children="◽" />
         <PText {...props} title="U+25FE | Dec:9726" children="◾" />
         <PText {...props} title="U+25FF | Dec:9727" children="◿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+2600-26FF (Porsche Next "Miscellaneous Symbols")</PHeadline>
+
+        <h4>Range: U+2600-26FF (Porsche Next "Miscellaneous Symbols")</h4>
         <PText {...props} title="U+2600 | Dec:9728" children="☀" />
         <PText {...props} title="U+2601 | Dec:9729" children="☁" />
         <PText {...props} title="U+2602 | Dec:9730" children="☂" />
@@ -2307,9 +2331,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+26FD | Dec:9981" children="⛽" />
         <PText {...props} title="U+26FE | Dec:9982" children="⛾" />
         <PText {...props} title="U+26FF | Dec:9983" children="⛿" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+FB00-FB4F (Porsche Next "Alphabetic Presentation Forms")</PHeadline>
+
+        <h4>Range: U+FB00-FB4F (Porsche Next "Alphabetic Presentation Forms")</h4>
         <PText {...props} title="U+FB00 | Dec:64256" children="ﬀ" />
         <PText {...props} title="U+FB01 | Dec:64257" children="ﬁ" />
         <PText {...props} title="U+FB02 | Dec:64258" children="ﬂ" />
@@ -2390,9 +2413,8 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+FB4D | Dec:64333" children="כֿ" />
         <PText {...props} title="U+FB4E | Dec:64334" children="פֿ" />
         <PText {...props} title="U+FB4F | Dec:64335" children="ﭏ" />
-        <br />
-        <br />
-        <PHeadline variant="headline-4">Range: U+FE70-FEFF (Porsche Next "Arabic Presentation Forms-B")</PHeadline>
+
+        <h4>Range: U+FE70-FEFF (Porsche Next "Arabic Presentation Forms-B")</h4>
         <PText {...props} title="U+FE70 | Dec:65136" children="ﹰ" />
         <PText {...props} title="U+FE71 | Dec:65137" children="ﹱ" />
         <PText {...props} title="U+FE72 | Dec:65138" children="ﹲ" />
@@ -2540,9 +2562,8 @@ export const TypographyPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show typography in greek and coptic charset">
-        <PHeadline>Greek and Coptic</PHeadline>
-        <br />
-        <PHeadline variant="headline-4">Range: U+0370-03FF (Porsche Next)</PHeadline>
+        <h2>Greek and Coptic</h2>
+        <h4>Range: U+0370-03FF (Porsche Next)</h4>
         <PText {...props} title="U+0370 | Dec:880" children="Ͱ" />
         <PText {...props} title="U+0371 | Dec:881" children="ͱ" />
         <PText {...props} title="U+0372 | Dec:882" children="Ͳ" />
@@ -2690,9 +2711,8 @@ export const TypographyPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show typography in cyril charset">
-        <PHeadline>Cyril</PHeadline>
-        <br />
-        <PHeadline variant="headline-4">Range: U+0400-04FF (Porsche Next)</PHeadline>
+        <h2>Cyril</h2>
+        <h4>Range: U+0400-04FF (Porsche Next)</h4>
         <PText {...props} title="U+0400 | Dec:1024" children="Ѐ" />
         <PText {...props} title="U+0401 | Dec:1025" children="Ё" />
         <PText {...props} title="U+0402 | Dec:1026" children="Ђ" />
@@ -2949,27 +2969,6 @@ export const TypographyPage = (): JSX.Element => {
         <PText {...props} title="U+04FD | Dec:1277" children="ӽ" />
         <PText {...props} title="U+04FE | Dec:1278" children="Ӿ" />
         <PText {...props} title="U+04FF | Dec:1279" children="ӿ" />
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for latin charset">
-        <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
-        <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
-        <PHeadline variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PText weight="bold">The quick brown fox jumps over the lazy dog</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for greek and coptic charset">
-        <PText weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-        <PText weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-        <PHeadline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PHeadline>
-        <PText weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</PText>
-      </div>
-
-      <div className="playground" title="should show typography in supported font-weights for cyril charset">
-        <PText weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
-        <PText weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
-        <PHeadline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PHeadline>
-        <PText weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</PText>
       </div>
     </>
   );
