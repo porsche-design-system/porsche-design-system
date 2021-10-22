@@ -4,7 +4,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-typography',
   styles: [
     `
-      .playground:nth-child(-n + 3) p-text {
+      h2,
+      h4 {
+        color: deeppink;
+      }
+
+      .playground:not(:nth-child(-n + 7)) p-text {
         display: inline-block;
         vertical-align: top;
         margin: 4px;
@@ -16,10 +21,63 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
+    <div class="playground" title="should show typography in supported font-weights for latin charset">
+      <p-text weight="thin">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text weight="regular">The quick brown fox jumps over the lazy dog</p-text>
+      <p-headline variant="headline-5">The quick brown fox jumps over the lazy dog</p-headline>
+      <p-text weight="bold">The quick brown fox jumps over the lazy dog</p-text>
+    </div>
+
+    <div class="playground" title="should show typography in supported font-weights for greek and coptic charset">
+      <p-text weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+      <p-text weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+      <p-headline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-headline>
+      <p-text weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+    </div>
+
+    <div class="playground" title="should show typography in supported font-weights for cyril charset">
+      <p-text weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
+      <p-text weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
+      <p-headline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-headline>
+      <p-text weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
+    </div>
+
+    <div class="playground" title="should show typography in supported font-weights for chinese charset">
+      <p-text weight="thin">保时捷驾驶体验活动在线销售通用条款与条件</p-text>
+      <p-text weight="regular">保时捷驾驶体验活动在线销售通用条款与条件</p-text>
+      <p-text weight="semibold">保时捷驾驶体验活动在线销售通用条款与条件</p-text>
+      <p-text weight="bold">保时捷驾驶体验活动在线销售通用条款与条件</p-text>
+    </div>
+
+    <div class="playground" title="should show typography in supported font-weights for japanese charset">
+      <p-text weight="thin"
+        >いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+        色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</p-text
+      >
+      <p-text weight="regular"
+        >いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+        色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</p-text
+      >
+      <p-text weight="semibold"
+        >いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+        色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</p-text
+      >
+      <p-text weight="bold"
+        >いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+        色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</p-text
+      >
+    </div>
+
+    <div class="playground" title="should show typography in supported font-weights for korean charset">
+      <p-text weight="thin">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text>
+      <p-text weight="regular">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text>
+      <p-text weight="semibold">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text>
+      <p-text weight="bold">키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text>
+    </div>
+
     <div class="playground" title="should show typography in basic latin charset">
-      <p-headline>Latin</p-headline>
-      <br />
-      <p-headline variant="headline-4">Range: U+0020-007F (Porsche Next "Basic Latin")</p-headline>
+      <h2>Latin</h2>
+      <h4>Range: U+0020-007F (Porsche Next "Basic Latin")</h4>
       <p-text size="medium" align="center" title="U++0020 | Dec: 32"></p-text>
       <p-text size="medium" align="center" title="U++0021 | Dec: 33">!</p-text>
       <p-text size="medium" align="center" title="U++0022 | Dec: 34">"</p-text>
@@ -116,9 +174,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U++007D | Dec: 125">&#125;</p-text>
       <p-text size="medium" align="center" title="U++007E | Dec: 126">~</p-text>
       <p-text size="medium" align="center" title="U++007F | Dec: 127">␡</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0080-00FF (Porsche Next "Latin-1 Supplement")</p-headline>
+
+      <h4>Range: U+0080-00FF (Porsche Next "Latin-1 Supplement")</h4>
       <p-text size="medium" align="center" title="U+0080 | Dec: 128"></p-text>
       <p-text size="medium" align="center" title="U+0081 | Dec: 129"></p-text>
       <p-text size="medium" align="center" title="U+0082 | Dec: 130"></p-text>
@@ -247,9 +304,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+00FD | Dec: 253">ý</p-text>
       <p-text size="medium" align="center" title="U+00FE | Dec: 254">þ</p-text>
       <p-text size="medium" align="center" title="U+00FF | Dec: 255">ÿ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0100-017F (Porsche Next "Latin Extended-A")</p-headline>
+
+      <h4>Range: U+0100-017F (Porsche Next "Latin Extended-A")</h4>
       <p-text size="medium" align="center" title="U+0100 | Dec: 256">Ā</p-text>
       <p-text size="medium" align="center" title="U+0101 | Dec: 257">ā</p-text>
       <p-text size="medium" align="center" title="U+0102 | Dec: 258">Ă</p-text>
@@ -378,9 +434,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+017D | Dec: 381">Ž</p-text>
       <p-text size="medium" align="center" title="U+017E | Dec: 382">ž</p-text>
       <p-text size="medium" align="center" title="U+017F | Dec: 383">ſ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0180-024F (Porsche Next "Latin Extended-B")</p-headline>
+
+      <h4>Range: U+0180-024F (Porsche Next "Latin Extended-B")</h4>
       <p-text size="medium" align="center" title="U+0180 | Dec: 384">ƀ</p-text>
       <p-text size="medium" align="center" title="U+0181 | Dec: 385">Ɓ</p-text>
       <p-text size="medium" align="center" title="U+0182 | Dec: 386">Ƃ</p-text>
@@ -509,9 +564,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+01FD | Dec: 509">ǽ</p-text>
       <p-text size="medium" align="center" title="U+01FE | Dec: 510">Ǿ</p-text>
       <p-text size="medium" align="center" title="U+01FF | Dec: 511">ǿ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0250-02AF (Porsche Next "IPA Extensions")</p-headline>
+
+      <h4>Range: U+0250-02AF (Porsche Next "IPA Extensions")</h4>
       <p-text size="medium" align="center" title="U+0250 | Dec:592">ɐ</p-text>
       <p-text size="medium" align="center" title="U+0251 | Dec:593">ɑ</p-text>
       <p-text size="medium" align="center" title="U+0252 | Dec:594">ɒ</p-text>
@@ -608,9 +662,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+02AD | Dec:685">ʭ</p-text>
       <p-text size="medium" align="center" title="U+02AE | Dec:686">ʮ</p-text>
       <p-text size="medium" align="center" title="U+02AF | Dec:687">ʯ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+02B0-02FF (Porsche Next "Spacing Modifier Letters")</p-headline>
+
+      <h4>Range: U+02B0-02FF (Porsche Next "Spacing Modifier Letters")</h4>
       <p-text size="medium" align="center" title="U+02B0 | Dec:688">ʰ</p-text>
       <p-text size="medium" align="center" title="U+02B1 | Dec:689">ʱ</p-text>
       <p-text size="medium" align="center" title="U+02B2 | Dec:690">ʲ</p-text>
@@ -691,9 +744,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+02FD | Dec:765">˽</p-text>
       <p-text size="medium" align="center" title="U+02FE | Dec:766">˾</p-text>
       <p-text size="medium" align="center" title="U+02FF | Dec:767">˿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0300-036F (Porsche Next "Combining Diacritical Marks")</p-headline>
+
+      <h4>Range: U+0300-036F (Porsche Next "Combining Diacritical Marks")</h4>
       <p-text size="medium" align="center" title="U+0300 | Dec:768">̀</p-text>
       <p-text size="medium" align="center" title="U+0301 | Dec:769">́</p-text>
       <p-text size="medium" align="center" title="U+0302 | Dec:770">̂</p-text>
@@ -806,9 +858,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+036D | Dec:877">ͭ</p-text>
       <p-text size="medium" align="center" title="U+036E | Dec:878">ͮ</p-text>
       <p-text size="medium" align="center" title="U+036F | Dec:879">ͯ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+0E00-0E7F (Porsche Next "Thai")</p-headline>
+
+      <h4>Range: U+0E00-0E7F (Porsche Next "Thai")</h4>
       <p-text size="medium" align="center" title="U+0E00 | Dec:3584">฀</p-text>
       <p-text size="medium" align="center" title="U+0E01 | Dec:3585">ก</p-text>
       <p-text size="medium" align="center" title="U+0E02 | Dec:3586">ข</p-text>
@@ -937,9 +988,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+0E7D | Dec:3709">๽</p-text>
       <p-text size="medium" align="center" title="U+0E7E | Dec:3710">๾</p-text>
       <p-text size="medium" align="center" title="U+0E7F | Dec:3711">๿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+1E00-1EFF (Porsche Next "Latin Extended Additional")</p-headline>
+
+      <h4>Range: U+1E00-1EFF (Porsche Next "Latin Extended Additional")</h4>
       <p-text size="medium" align="center" title="U+1E00 | Dec:7680">Ḁ</p-text>
       <p-text size="medium" align="center" title="U+1E01 | Dec:7681">ḁ</p-text>
       <p-text size="medium" align="center" title="U+1E02 | Dec:7682">Ḃ</p-text>
@@ -1196,9 +1246,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+1EFD | Dec:7933">ỽ</p-text>
       <p-text size="medium" align="center" title="U+1EFE | Dec:7934">Ỿ</p-text>
       <p-text size="medium" align="center" title="U+1EFF | Dec:7935">ỿ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2000-206F (Porsche Next "General Punctuation")</p-headline>
+
+      <h4>Range: U+2000-206F (Porsche Next "General Punctuation")</h4>
       <p-text size="medium" align="center" title="U+2000 | Dec:8192"> </p-text>
       <p-text size="medium" align="center" title="U+2001 | Dec:8193"> </p-text>
       <p-text size="medium" align="center" title="U+2002 | Dec:8194">&ensp;</p-text>
@@ -1311,9 +1360,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+206D | Dec:8301">⁭</p-text>
       <p-text size="medium" align="center" title="U+206E | Dec:8302">⁮</p-text>
       <p-text size="medium" align="center" title="U+206F | Dec:8303">⁯</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2070-209F (Porsche Next "Superscripts and Subscripts")</p-headline>
+
+      <h4>Range: U+2070-209F (Porsche Next "Superscripts and Subscripts")</h4>
       <p-text size="medium" align="center" title="U+2070 | Dec:8304">⁰</p-text>
       <p-text size="medium" align="center" title="U+2071 | Dec:8305">ⁱ</p-text>
       <p-text size="medium" align="center" title="U+2072 | Dec:8306">⁲</p-text>
@@ -1362,9 +1410,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+209D | Dec:8349">₝</p-text>
       <p-text size="medium" align="center" title="U+209E | Dec:8350">₞</p-text>
       <p-text size="medium" align="center" title="U+209F | Dec:8351">₟</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+20A0-20CF (Porsche Next "Currency Symbols")</p-headline>
+
+      <h4>Range: U+20A0-20CF (Porsche Next "Currency Symbols")</h4>
       <p-text size="medium" align="center" title="U+20A0 | Dec:8352">₠</p-text>
       <p-text size="medium" align="center" title="U+20A1 | Dec:8353">₡</p-text>
       <p-text size="medium" align="center" title="U+20A2 | Dec:8354">₢</p-text>
@@ -1413,9 +1460,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+20CD | Dec:8397">⃍</p-text>
       <p-text size="medium" align="center" title="U+20CE | Dec:8398">⃎</p-text>
       <p-text size="medium" align="center" title="U+20CF | Dec:8399">⃏</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2100-214F (Porsche Next "Letterlike Symbols")</p-headline>
+
+      <h4>Range: U+2100-214F (Porsche Next "Letterlike Symbols")</h4>
       <p-text size="medium" align="center" title="U+2100 | Dec:8448">℀</p-text>
       <p-text size="medium" align="center" title="U+2101 | Dec:8449">℁</p-text>
       <p-text size="medium" align="center" title="U+2102 | Dec:8450">ℂ</p-text>
@@ -1496,9 +1542,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+214D | Dec:8525">⅍</p-text>
       <p-text size="medium" align="center" title="U+214E | Dec:8526">ⅎ</p-text>
       <p-text size="medium" align="center" title="U+214F | Dec:8527">⅏</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2150-218F (Porsche Next "Number Forms")</p-headline>
+
+      <h4>Range: U+2150-218F (Porsche Next "Number Forms")</h4>
       <p-text size="medium" align="center" title="U+2150 | Dec:8528">⅐</p-text>
       <p-text size="medium" align="center" title="U+2151 | Dec:8529">⅑</p-text>
       <p-text size="medium" align="center" title="U+2152 | Dec:8530">⅒</p-text>
@@ -1563,9 +1608,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+218D | Dec:8589">↍</p-text>
       <p-text size="medium" align="center" title="U+218E | Dec:8590">↎</p-text>
       <p-text size="medium" align="center" title="U+218F | Dec:8591">↏</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2190-21FF (Porsche Next "Arrows")</p-headline>
+
+      <h4>Range: U+2190-21FF (Porsche Next "Arrows")</h4>
       <p-text size="medium" align="center" title="U+2190 | Dec:8592">←</p-text>
       <p-text size="medium" align="center" title="U+2191 | Dec:8593">↑</p-text>
       <p-text size="medium" align="center" title="U+2192 | Dec:8594">→</p-text>
@@ -1678,9 +1722,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+21FD | Dec:8701">⇽</p-text>
       <p-text size="medium" align="center" title="U+21FE | Dec:8702">⇾</p-text>
       <p-text size="medium" align="center" title="U+21FF | Dec:8703">⇿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2200-22FF (Porsche Next "Mathematical Operators")</p-headline>
+
+      <h4>Range: U+2200-22FF (Porsche Next "Mathematical Operators")</h4>
       <p-text size="medium" align="center" title="U+2200 | Dec:8704">∀</p-text>
       <p-text size="medium" align="center" title="U+2201 | Dec:8705">∁</p-text>
       <p-text size="medium" align="center" title="U+2202 | Dec:8706">∂</p-text>
@@ -1937,9 +1980,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+22FD | Dec:8957">⋽</p-text>
       <p-text size="medium" align="center" title="U+22FE | Dec:8958">⋾</p-text>
       <p-text size="medium" align="center" title="U+22FF | Dec:8959">⋿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+25A0-25FF (Porsche Next "Geometric Shapes")</p-headline>
+
+      <h4>Range: U+25A0-25FF (Porsche Next "Geometric Shapes")</h4>
       <p-text size="medium" align="center" title="U+25A0 | Dec:9632">■</p-text>
       <p-text size="medium" align="center" title="U+25A1 | Dec:9633">□</p-text>
       <p-text size="medium" align="center" title="U+25A2 | Dec:9634">▢</p-text>
@@ -2036,9 +2078,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+25FD | Dec:9725">◽</p-text>
       <p-text size="medium" align="center" title="U+25FE | Dec:9726">◾</p-text>
       <p-text size="medium" align="center" title="U+25FF | Dec:9727">◿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+2600-26FF (Porsche Next "Miscellaneous Symbols")</p-headline>
+
+      <h4>Range: U+2600-26FF (Porsche Next "Miscellaneous Symbols")</h4>
       <p-text size="medium" align="center" title="U+2600 | Dec:9728">☀</p-text>
       <p-text size="medium" align="center" title="U+2601 | Dec:9729">☁</p-text>
       <p-text size="medium" align="center" title="U+2602 | Dec:9730">☂</p-text>
@@ -2295,9 +2336,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+26FD | Dec:9981">⛽</p-text>
       <p-text size="medium" align="center" title="U+26FE | Dec:9982">⛾</p-text>
       <p-text size="medium" align="center" title="U+26FF | Dec:9983">⛿</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+FB00-FB4F (Porsche Next "Alphabetic Presentation Forms")</p-headline>
+
+      <h4>Range: U+FB00-FB4F (Porsche Next "Alphabetic Presentation Forms")</h4>
       <p-text size="medium" align="center" title="U+FB00 | Dec:64256">ﬀ</p-text>
       <p-text size="medium" align="center" title="U+FB01 | Dec:64257">ﬁ</p-text>
       <p-text size="medium" align="center" title="U+FB02 | Dec:64258">ﬂ</p-text>
@@ -2378,9 +2418,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+FB4D | Dec:64333">כֿ</p-text>
       <p-text size="medium" align="center" title="U+FB4E | Dec:64334">פֿ</p-text>
       <p-text size="medium" align="center" title="U+FB4F | Dec:64335">ﭏ</p-text>
-      <br />
-      <br />
-      <p-headline variant="headline-4">Range: U+FE70-FEFF (Porsche Next "Arabic Presentation Forms-B")</p-headline>
+
+      <h4>Range: U+FE70-FEFF (Porsche Next "Arabic Presentation Forms-B")</h4>
       <p-text size="medium" align="center" title="U+FE70 | Dec:65136">ﹰ</p-text>
       <p-text size="medium" align="center" title="U+FE71 | Dec:65137">ﹱ</p-text>
       <p-text size="medium" align="center" title="U+FE72 | Dec:65138">ﹲ</p-text>
@@ -2528,9 +2567,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show typography in greek and coptic charset">
-      <p-headline>Greek and Coptic</p-headline>
-      <br />
-      <p-headline variant="headline-4">Range: U+0370-03FF (Porsche Next)</p-headline>
+      <h2>Greek and Coptic</h2>
+      <h4>Range: U+0370-03FF (Porsche Next)</h4>
       <p-text size="medium" align="center" title="U+0370 | Dec:880">Ͱ</p-text>
       <p-text size="medium" align="center" title="U+0371 | Dec:881">ͱ</p-text>
       <p-text size="medium" align="center" title="U+0372 | Dec:882">Ͳ</p-text>
@@ -2678,9 +2716,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show typography in cyril charset">
-      <p-headline>Cyril</p-headline>
-      <br />
-      <p-headline variant="headline-4">Range: U+0400-04FF (Porsche Next)</p-headline>
+      <h2>Cyril</h2>
+      <h4>Range: U+0400-04FF (Porsche Next)</h4>
       <p-text size="medium" align="center" title="U+0400 | Dec:1024">Ѐ</p-text>
       <p-text size="medium" align="center" title="U+0401 | Dec:1025">Ё</p-text>
       <p-text size="medium" align="center" title="U+0402 | Dec:1026">Ђ</p-text>
@@ -2937,27 +2974,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text size="medium" align="center" title="U+04FD | Dec:1277">ӽ</p-text>
       <p-text size="medium" align="center" title="U+04FE | Dec:1278">Ӿ</p-text>
       <p-text size="medium" align="center" title="U+04FF | Dec:1279">ӿ</p-text>
-    </div>
-
-    <div class="playground" title="should show typography in supported font-weights for latin charset">
-      <p-text weight="thin">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text weight="regular">The quick brown fox jumps over the lazy dog</p-text>
-      <p-headline variant="headline-5">The quick brown fox jumps over the lazy dog</p-headline>
-      <p-text weight="bold">The quick brown fox jumps over the lazy dog</p-text>
-    </div>
-
-    <div class="playground" title="should show typography in supported font-weights for greek and coptic charset">
-      <p-text weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
-      <p-text weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
-      <p-headline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-headline>
-      <p-text weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
-    </div>
-
-    <div class="playground" title="should show typography in supported font-weights for cyril charset">
-      <p-text weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
-      <p-text weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
-      <p-headline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-headline>
-      <p-text weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
