@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
       .playground:not(:nth-child(-n + 7)) p-text {
         display: inline-block;
+        text-align: center;
         vertical-align: top;
         margin: 4px;
         padding: 4px;

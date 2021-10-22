@@ -10,6 +10,7 @@ export const TypographyPage = (): JSX.Element => {
 
     .playground:not(:nth-child(-n + 7)) p-text {
       display: inline-block;
+      text-align: center;
       vertical-align: top;
       margin: 4px;
       padding: 4px;
@@ -53,14 +54,22 @@ export const TypographyPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show typography in supported font-weights for cyril charset">
-        <PText weight="thin">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
-        <PText weight="regular">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
-        <PHeadline variant="headline-5">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PHeadline>
-        <PText weight="bold">いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
-    色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん</PText>
+        <PText weight="thin">
+          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
+        </PText>
+        <PText weight="regular">
+          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
+        </PText>
+        <PHeadline variant="headline-5">
+          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
+        </PHeadline>
+        <PText weight="bold">
+          いろはにほへと　ちりぬるを　わかよたれそ　つねならむ　うゐのおくやま　けふこえて　あさきゆめみし　ゑひもせす
+          色は匂へど　散りぬるを　我が世誰ぞ　常ならむ　有為の奥山　今日越えて　浅き夢見じ　酔ひもせず（ん
+        </PText>
       </div>
 
       <div className="playground" title="should show typography in supported font-weights for cyril charset">
