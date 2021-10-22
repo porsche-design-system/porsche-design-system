@@ -57,7 +57,7 @@ export const getComponentCss = (
   unitPosition: UnitPositionType,
   unitElementWidth?: number
 ) => {
-  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor } =
+  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor, hoverColor } =
     getThemedColors('light');
   const { stateColor, stateHoverColor } = getThemedStateColors('light', state);
   const hasState = state !== 'none';
@@ -179,7 +179,7 @@ export const getComponentCss = (
           ...getFocusStyles({ color: color.state.focus, offset: hasState ? -5 : -4 }),
         },
         '&:hover': {
-          color: stateHoverColor,
+          color: hoverColor,
         },
 
         '&:active': {
