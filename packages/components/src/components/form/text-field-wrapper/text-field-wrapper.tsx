@@ -10,7 +10,10 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   observeAttributes,
+  pxToRemWithUnit,
+  removeAttribute,
   setAriaAttributes,
+  setAttribute,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -56,15 +59,6 @@ export class TextFieldWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.hideLabel,
-      this.state,
-      this.isPassword,
-      this.unit,
-      this.unitPosition
-    );
     this.observeAttributes();
   }
 
@@ -74,9 +68,7 @@ export class TextFieldWrapper {
     this.isPassword = this.input.type === 'password';
   }
 
-  public componentDidRender(): void {
-    // needs to happen after render in order to have unitElement defined
-    this.setUnitElementWidth();
+  public componentWillRender(): void {
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -84,9 +76,14 @@ export class TextFieldWrapper {
       this.state,
       this.isPassword,
       this.unit,
-      this.unitPosition,
-      this.unitElementWidth
+      this.unitPosition
     );
+  }
+
+  public componentDidRender(): void {
+    // needs to happen after render in order to have unitElement defined
+    this.setUnitElementWidth();
+
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -211,5 +208,21 @@ export class TextFieldWrapper {
 
   private setUnitElementWidth = (): void => {
     this.unitElementWidth = this.unitElement?.offsetWidth;
+    if (!this.unit) {
+      removeAttribute(this.input, 'style');
+    } else {
+      const padding = this.state !== 'none' ? 11 : 10;
+      setAttribute(
+        this.input,
+        'style',
+        this.unitPosition === 'prefix'
+          ? `padding: ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${
+              this.unitElementWidth
+            }px !important`
+          : `padding: ${pxToRemWithUnit(padding)} ${this.unitElementWidth}px ${pxToRemWithUnit(
+              padding
+            )} ${pxToRemWithUnit(padding)} !important`
+      );
+    }
   };
 }
