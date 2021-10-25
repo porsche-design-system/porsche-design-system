@@ -62,18 +62,11 @@ export class Banner {
   }
 
   public render(): JSX.Element {
-    const bannerLabelId = 'banner-label';
-    const bannerDescriptionId = 'banner-description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <PrefixedTagNames.pContentWrapper
-          width={this.width}
-          role="alertdialog"
-          aria-labelledby={bannerLabelId}
-          aria-describedby={bannerDescriptionId}
-        >
+        <PrefixedTagNames.pContentWrapper width={this.width}>
           <PrefixedTagNames.pBannerInline
             ref={(el) => (this.bannerInlineElement = el)}
             class="root"
@@ -82,16 +75,8 @@ export class Banner {
             theme={this.theme}
             onDismiss={this.removeBanner}
           >
-            {hasNamedSlot(this.host, 'title') && (
-              // <span id={bannerLabelId} slot="heading">
-              <slot name="title" slot="heading" />
-              // </span>
-            )}
-            {hasNamedSlot(this.host, 'description') && (
-              // <span id={bannerDescriptionId}>
-              <slot name="description" />
-              // </span>
-            )}
+            {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
+            {hasNamedSlot(this.host, 'description') && <slot name="description" />}
           </PrefixedTagNames.pBannerInline>
         </PrefixedTagNames.pContentWrapper>
       </Host>

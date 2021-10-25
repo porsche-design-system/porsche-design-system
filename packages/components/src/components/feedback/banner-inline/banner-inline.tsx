@@ -58,16 +58,16 @@ export class BannerInline {
   }
 
   public render(): JSX.Element {
-    const labelId = 'banner-label'; // TODO: no banner prefix needed
-    const descriptionId = 'banner-description'; // TODO: no banner prefix needed
+    const labelId = 'label';
+    const descriptionId = 'description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" />
-        <div class="content">
+        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
+        <div class="content" role="alert" aria-labelledby={labelId} aria-describedby={descriptionId}>
           {hasHeading(this.host, this.heading) && (
-            <PrefixedTagNames.pHeadline variant="headline-5" id={labelId}>
+            <PrefixedTagNames.pHeadline id={labelId} variant="headline-5">
               {this.heading || <slot name="heading" />}
             </PrefixedTagNames.pHeadline>
           )}
