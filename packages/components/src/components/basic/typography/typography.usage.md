@@ -91,20 +91,25 @@ Enter a font-size in px unit based on Porsche Type Scale.
 ### Fallback fonts
 
 If in some cases the `Porsche Next` web font can't be rendered by the browser (e.g. due to download errors or not containing needed unicode character) you have to provide fallback fonts which must be stacked like this: 
-`font-family: "Porsche Next", "Arial Narrow", Arial, 'Heiti SC', SimHei, sans-serif;` 
+1. Porsche Next
+2. Arial Narrow
+3. Arial
+4. Heiti SC
+5. SimHei
+6. sans-serif
 
 ### Latin, Greek & Coptic, Cyril
 
 The `Porsche Next` web font contains all typeface characters required for Latin, Greek and Cyrillic languages.
 Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as separate typeface packages on request.
 
-#### Chinese
+#### Chinese / Japanese
 
-For Chinese charset the `Heiti SC` (iOS/macOS) and `SimHei` (Windows) pre-installed OS font must be used, sticking to the default Porsche font scaling system.
+For Chinese and Japanese charset the `Heiti SC` (iOS/macOS) and `SimHei` (Windows) pre-installed OS font must be used, sticking to the default Porsche font scaling system.
 
-#### Japanese / Korean
+#### Korean
 
-For Japanese and Korean charset some pre-installed OS font shall be used, sticking to the default Porsche font scaling system.
+For Korean charset some pre-installed OS font shall be used, sticking to the default Porsche font scaling system.
 
 ---
 
