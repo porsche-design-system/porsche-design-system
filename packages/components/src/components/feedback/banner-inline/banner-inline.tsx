@@ -34,7 +34,7 @@ export class BannerInline {
   @Prop() public actionLabel?: string;
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
-  @Prop() public actionLoading?: string;
+  @Prop() public actionLoading?: boolean = false;
 
   /** Action icon of the banner-inline. */
   @Prop() public actionIcon?: IconName = 'refresh';

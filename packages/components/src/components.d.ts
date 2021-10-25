@@ -80,7 +80,7 @@ export namespace Components {
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
          */
-        "actionLoading"?: string;
+        "actionLoading"?: boolean;
         /**
           * Description of the banner-inline.
          */
@@ -1244,7 +1244,7 @@ declare namespace LocalJSX {
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
          */
-        "actionLoading"?: string;
+        "actionLoading"?: boolean;
         /**
           * Description of the banner-inline.
          */
