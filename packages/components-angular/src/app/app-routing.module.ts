@@ -190,9 +190,24 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.TextareaWrapperComponent,
   },
   {
-    name: 'Typography',
-    path: 'typography',
-    component: fromPages.TypographyComponent,
+    name: 'Typography Fallback Strategy',
+    path: 'typography-fallback-strategy',
+    component: fromPages.TypographyFallbackStrategyComponent,
+  },
+  {
+    name: 'Typography Latin',
+    path: 'typography-latin',
+    component: fromPages.TypographyLatinComponent,
+  },
+  {
+    name: 'Typography Greek & Coptic',
+    path: 'typography-greek-and-coptic',
+    component: fromPages.TypographyGreekAndCopticComponent,
+  },
+  {
+    name: 'Typography Cyril',
+    path: 'typography-cyril',
+    component: fromPages.TypographyCyrilComponent,
   },
   {
     name: '---',
