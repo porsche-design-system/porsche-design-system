@@ -39,23 +39,12 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
-const getUnitStyles = (unitPosition: UnitPositionType, unitElementWidth?: number): JssStyle => {
-  return {
-    ...(unitPosition === 'prefix'
-      ? {
-          paddingLeft: pxToRemWithUnit(unitElementWidth),
-        }
-      : { paddingRight: pxToRemWithUnit(unitElementWidth) }),
-  };
-};
-
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isPassword: boolean,
   unit: string,
-  unitPosition: UnitPositionType,
-  unitElementWidth?: number
+  unitPosition: UnitPositionType
 ) => {
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor, hoverColor } =
     getThemedColors('light');
@@ -76,7 +65,7 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          padding: hasState ? pxToRemWithUnit(11) : pxToRemWithUnit(10),
+          ...(!unit && { padding: hasState ? pxToRemWithUnit(11) : pxToRemWithUnit(10) }),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
@@ -137,7 +126,6 @@ export const getComponentCss = (
 
         '::slotted(input[type="number"])': {
           MozAppearance: 'textfield', // hides up/down spin button for Firefox
-          ...(unit && getUnitStyles(unitPosition, unitElementWidth)),
         },
 
         // Reset webkit autofill styles
