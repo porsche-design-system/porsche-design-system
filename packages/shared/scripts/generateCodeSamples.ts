@@ -13,6 +13,31 @@ type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
     {
+      component: 'p-accordion',
+      samples: [
+        [
+          '../components-js/src/examples/accordion-example.html',
+          '../components-angular/src/app/examples/accordion-example.component.ts',
+          '../components-react/src/examples/AccordionExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-banner-inline',
+      samples: [
+        [
+          '../components-js/src/examples/banner-inline-example-events.html',
+          '../components-angular/src/app/examples/banner-inline-example-events.component.ts',
+          '../components-react/src/examples/BannerInlineExampleEvents.tsx',
+        ],
+        [
+          '../components-js/src/examples/banner-inline-example-action-button.html',
+          '../components-angular/src/app/examples/banner-inline-example-action-button.component.ts',
+          '../components-react/src/examples/BannerInlineExampleActionButton.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-table',
       samples: [
         [
@@ -35,16 +60,6 @@ const generateCodeSamples = (): void => {
         ],
       ],
     },
-    {
-      component: 'p-accordion',
-      samples: [
-        [
-          '../components-js/src/examples/accordion-example.html',
-          '../components-angular/src/app/examples/accordion-example.component.ts',
-          '../components-react/src/examples/AccordionExample.tsx',
-        ],
-      ],
-    },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');
@@ -62,7 +77,7 @@ const generateCodeSamples = (): void => {
         sample.samples.map((sample, idx) => {
           // generate sampleName from first file of array
           const firstFileName = path.basename(sample[0]);
-          const [, sampleName] = firstFileName.match(/-([a-z-\d]+)/) || [];
+          const [, sampleName] = firstFileName.match(/-(example-[a-z-\d]+)/) || [];
           console.log(`– Sample #${idx + 1}: ${sampleName}`);
 
           const sampleContents: { [key in Framework]?: string }[] = sample.map((fileName) => {
