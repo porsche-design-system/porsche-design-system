@@ -228,6 +228,16 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExamplePage,
   },
   {
+    name: 'Banner Inline Example Events',
+    path: '/banner-inline-example-events',
+    component: fromExamples.BannerInlineExampleEventsPage,
+  },
+  {
+    name: 'Banner Inline Example Action Button',
+    path: '/banner-inline-example-action-button',
+    component: fromExamples.BannerInlineExampleActionButtonPage,
+  },
+  {
     name: 'Table Example Basic',
     path: '/table-example-basic',
     component: fromExamples.TableExampleBasicPage,
