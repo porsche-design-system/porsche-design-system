@@ -69,15 +69,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.hideLabel,
-      this.state,
-      this.isPassword,
-      this.unit,
-      this.unitPosition
-    );
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.unit, this.unitPosition);
   }
 
   public componentDidRender(): void {
