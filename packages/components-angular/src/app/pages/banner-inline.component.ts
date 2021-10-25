@@ -97,7 +97,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [heading]="'Some action button banner-inline heading'"
         [description]="'Some banner-inline description.'"
         [actionLabel]="'Some loading action'"
-        [actionLoading]="'true'"
+        [actionLoading]="true"
       ></p-banner-inline>
     </div>
 
