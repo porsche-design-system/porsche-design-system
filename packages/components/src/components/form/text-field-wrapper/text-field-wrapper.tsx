@@ -56,6 +56,15 @@ export class TextFieldWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.isPassword,
+      this.unit,
+      this.unitPosition
+    );
     this.observeAttributes();
   }
 
@@ -201,6 +210,6 @@ export class TextFieldWrapper {
   };
 
   private setUnitElementWidth = (): void => {
-    this.unitElementWidth = this.unitElement?.getBoundingClientRect().width;
+    this.unitElementWidth = this.unitElement?.offsetWidth;
   };
 }
