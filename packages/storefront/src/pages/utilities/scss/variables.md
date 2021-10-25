@@ -100,7 +100,7 @@ Given values are:
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 Possible variable for usage with SCSS (where {v} is the spacing value):
-```
+```scss
 $p-spacing-{v};
 ```
 
@@ -110,7 +110,7 @@ Given values are:
 `x-small | small | medium | large | x-large | xx-large`
 
 Possible variable for usage with SCSS (where {v} is the spacing value):
-```
+```scss
 $p-layout-{v};
 ```
 
@@ -122,7 +122,7 @@ For font styling it's recommended to use the [`<p-headline>`](components/typogra
 ### Family
 Contains Porsche Next and predefined fallback fonts:
 
-```
+```scss
 $p-font-family
 ```
 
@@ -132,7 +132,7 @@ Given values are:
 
 Possible variable for usage with SCSS (where {v} is the font weight value):
 
-```
+```scss
 $p-font-weight-{v};
 ```
 
@@ -144,7 +144,7 @@ Given values are:
 `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
-```
+```scss
 $p-font-size-{v};
 ```
 
@@ -154,7 +154,7 @@ Given values are:
 `x-small | small | medium | large | x-large`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
-```
+```scss
 $p-font-size-{v};
 ```
 
