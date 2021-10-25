@@ -1,0 +1,15 @@
+<p-banner-inline
+  heading="Some banner-inline heading"
+  description="Some banner-inline description."
+  action-label="Retry"
+  action-icon="reset"
+></p-banner-inline>
+<p-button>Reset</p-button>
+
+<script>
+  const button = document.querySelector('p-button');
+  const bannerInline = document.querySelector('p-banner-inline');
+
+  button.addEventListener('click', () => (bannerInline.actionLoading = false));
+  bannerInline.addEventListener('action', () => (bannerInline.actionLoading = true));
+</script>
