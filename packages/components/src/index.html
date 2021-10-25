@@ -11,65 +11,8 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <style type="text/css">
-      p-banner-inline:not(:last-child) {
-        margin-bottom: 1rem;
-      }
-    </style>
-
-    <p-banner-inline
-      state="neutral"
-      action-label="Retry"
-      action-loading="true"
-      description="Some banner content"
-    ></p-banner-inline>
-    <p-banner-inline state="warning">Some banner content</p-banner-inline>
-    <p-banner-inline state="success">Some banner content</p-banner-inline>
-    <p-banner-inline state="error" action-label="Retry"
-      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
-      handled correctly.</p-banner-inline
-    >
-    <div style="background: black; padding: 10px">
-      <p-banner-inline state="error" persistent action-label="Retry" theme="dark"
-        >Some persistent banner content that is quite long and eventually goes across multiple lines. Let's see if line
-        breaks are handled and <a href="#">linked</a> correctly.</p-banner-inline
-      >
-    </div>
-
-    <p-banner-inline heading="Some banner heading" state="neutral">Some banner content</p-banner-inline>
-    <p-banner-inline heading="Some banner heading" state="warning">Some banner content</p-banner-inline>
-    <p-banner-inline heading="Some banner heading" state="success">Some banner content</p-banner-inline>
-    <p-banner-inline
-      heading="Some banner heading that can also be quite long and potentially go across multiple lines if we don't pay attention"
-      state="error"
-      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
-      handled correctly.</p-banner-inline
-    >
-    <p-banner-inline
-      heading="Some banner heading that can also be quite long and potentially go across multiple lines if we don't pay attention"
-      state="error"
-      persistent
-      >Some banner content that is quite long and eventually goes across multiple lines. Let's see if line breaks are
-      handled correctly.</p-banner-inline
-    >
-
-    <!--    <p-banner>-->
-    <!--      <span slot="title">Title</span>-->
-    <!--      <span slot="description">Description</span>-->
-    <!--    </p-banner>-->
-
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      // document.querySelector('p-banner').addEventListener('dismiss', (e) => {
-      //   console.log(e);
-      // });
-      document.querySelector('p-banner-inline').addEventListener('action', (e) => {
-        console.log(e);
-      });
-      document.querySelector('p-banner-inline').addEventListener('dismiss', (e) => {
-        console.log(e);
-      });
-
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
