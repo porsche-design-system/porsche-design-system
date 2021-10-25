@@ -100,7 +100,7 @@ export const getComponentCss = (
             }),
 
         '::slotted(input:hover)': {
-          borderColor: state ? stateHoverColor : hoverColor,
+          borderColor: hasState ? stateHoverColor : textColor,
         },
 
         '::slotted(input[readonly]:focus)': {
