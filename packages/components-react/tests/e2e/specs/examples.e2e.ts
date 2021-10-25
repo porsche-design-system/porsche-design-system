@@ -1,5 +1,7 @@
 import { Page } from 'puppeteer';
 import { goto, initConsoleObserver, getConsoleErrorsAmount } from '../helpers';
+import * as fs from 'fs';
+import * as path from 'path';
 
 let page: Page;
 
@@ -9,12 +11,21 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-for (const example of ['accordion-example', 'table-example-basic', 'table-example-sorting', 'table-example-advanced']) {
-  it(`should work without error for ${example}`, async () => {
-    await goto(page, example);
-    expect(getConsoleErrorsAmount()).toBe(0);
+const filePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src/routes.ts');
+const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
-  });
-}
+const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
+const routes: { name: string; path: string; component: string }[] = eval(
+  rawRoutes.replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
+);
+
+const exampleRoutes = routes.filter((item) => item.component?.startsWith('fromExamples.'));
+const exampleUrls = exampleRoutes.map((item) => item.path.substr(1));
+
+it.each(exampleUrls)('should work without error for %s', async (exampleUrl) => {
+  await goto(page, exampleUrl);
+  expect(getConsoleErrorsAmount()).toBe(0);
+
+  await page.evaluate(() => console.error('test error'));
+  expect(getConsoleErrorsAmount()).toBe(1);
+});
