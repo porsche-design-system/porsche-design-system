@@ -82,7 +82,7 @@ export const getComponentCss = (
           outlineOffset: '2px',
           appearance: 'none',
           boxSizing: 'border-box',
-          border: `${hasState ? '2px' : '1px'} solid ${hasState ? stateColor : contrastMediumColor}`,
+          border: `${hasState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`}`,
           borderRadius: 0,
           backgroundColor,
           opacity: 1,
