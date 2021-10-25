@@ -42,7 +42,6 @@ export const getSlottedCss = (host: HTMLElement): string => {
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  isPassword: boolean,
   unit: string,
   unitPosition: UnitPositionType
 ) => {
@@ -134,11 +133,9 @@ export const getComponentCss = (
             WebkitBackgroundClip: 'padding-box',
           },
 
-        ...(isPassword && {
-          '::slotted(input), ::slotted(input[type="search"])': {
-            padding: addImportantToRule('3rem'),
-          },
-        }),
+        '::slotted(input[type="password"]), ::slotted(input[type="search"])': {
+          paddingRight: '3rem',
+        },
       })
     ),
     root: {
