@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-typography-porsche-next-greek-and-coptic',
+  selector: 'page-typography-greek-and-coptic',
   styles: [
     `
       h2,
@@ -173,4 +173,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TypographyPorscheNextGreekAndCopticComponent {}
+export class TypographyGreekAndCopticComponent {}

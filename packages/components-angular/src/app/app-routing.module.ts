@@ -190,19 +190,19 @@ export const routes: ExtendedRoute[] = [
     name: 'Typography Fallback Strategy',
   },
   {
-    path: 'typography-porsche-next-latin',
-    component: fromPages.TypographyPorscheNextLatinComponent,
-    name: 'Typography Porsche Next Latin',
+    path: 'typography-latin',
+    component: fromPages.TypographyLatinComponent,
+    name: 'Typography Latin',
   },
   {
-    path: 'typography-porsche-next-greek-and-coptic',
-    component: fromPages.TypographyPorscheNextGreekAndCopticComponent,
-    name: 'Typography Porsche Next Greek & Coptic',
+    path: 'typography-greek-and-coptic',
+    component: fromPages.TypographyGreekAndCopticComponent,
+    name: 'Typography Greek & Coptic',
   },
   {
-    path: 'typography-porsche-next-cyril',
-    component: fromPages.TypographyPorscheNextCyrilComponent,
-    name: 'Typography Porsche Next Cyril',
+    path: 'typography-cyril',
+    component: fromPages.TypographyCyrilComponent,
+    name: 'Typography Cyril',
   },
   {
     path: '---',
