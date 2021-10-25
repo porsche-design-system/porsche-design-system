@@ -1,7 +1,7 @@
 import { PText } from '@porsche-design-system/components-react';
 import type { TextAlign, TextSize } from '@porsche-design-system/components-react';
 
-export const TypographyPorscheNextCyrilPage = (): JSX.Element => {
+export const TypographyCyrilPage = (): JSX.Element => {
   const style = `
     h2,
     h4 {

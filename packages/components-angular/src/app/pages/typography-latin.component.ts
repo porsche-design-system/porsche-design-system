@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-typography-porsche-next-latin',
+  selector: 'page-typography-latin',
   styles: [
     `
       h2,
@@ -2515,4 +2515,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TypographyPorscheNextLatinComponent {}
+export class TypographyLatinComponent {}

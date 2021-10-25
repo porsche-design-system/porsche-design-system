@@ -1,7 +1,7 @@
 import { PText } from '@porsche-design-system/components-react';
 import type { TextAlign, TextSize } from '@porsche-design-system/components-react';
 
-export const TypographyPorscheNextLatinPage = (): JSX.Element => {
+export const TypographyLatinPage = (): JSX.Element => {
   const style = `
     h2,
     h4 {

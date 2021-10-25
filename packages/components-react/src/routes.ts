@@ -185,19 +185,19 @@ export const routes: RouteType[] = [
     component: fromPages.TypographyFallbackStrategyPage,
   },
   {
-    name: 'Typography Porsche Next Latin',
-    component: fromPages.TypographyPorscheNextLatinPage,
-    path: '/typography-porsche-next-latin',
+    name: 'Typography Latin',
+    component: fromPages.TypographyLatinPage,
+    path: '/typography-latin',
   },
   {
-    name: 'Typography Porsche Next Greek & Coptic',
-    component: fromPages.TypographyPorscheNextGreekdAndCopticPage,
-    path: '/typography-porsche-next-greek-and-coptic',
+    name: 'Typography Greek & Coptic',
+    component: fromPages.TypographyGreekAndCopticPage,
+    path: '/typography-greek-and-coptic',
   },
   {
-    name: 'Typography Porsche Next Cyril',
-    component: fromPages.TypographyPorscheNextCyrilPage,
-    path: '/typography-porsche-next-cyril',
+    name: 'Typography Cyril',
+    component: fromPages.TypographyCyrilPage,
+    path: '/typography-cyril',
   },
   {
     name: '---',

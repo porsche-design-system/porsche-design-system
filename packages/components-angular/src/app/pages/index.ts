@@ -38,9 +38,9 @@ import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { SwitchComponent } from './switch.component';
 import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
-import { TypographyPorscheNextLatinComponent } from './typography-porsche-next-latin.component';
-import { TypographyPorscheNextGreekAndCopticComponent } from './typography-porsche-next-greek-and-coptic.component';
-import { TypographyPorscheNextCyrilComponent } from './typography-porsche-next-cyril.component';
+import { TypographyLatinComponent } from './typography-latin.component';
+import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
+import { TypographyCyrilComponent } from './typography-cyril.component';
 
 export const pages = [
   AccordionComponent,
@@ -83,9 +83,9 @@ export const pages = [
   TextListComponent,
   TextareaWrapperComponent,
   TypographyFallbackStrategyComponent,
-  TypographyPorscheNextLatinComponent,
-  TypographyPorscheNextGreekAndCopticComponent,
-  TypographyPorscheNextCyrilComponent,
+  TypographyLatinComponent,
+  TypographyGreekAndCopticComponent,
+  TypographyCyrilComponent,
 ];
 
 export * from './accordion.component';
@@ -128,6 +128,6 @@ export * from './text-field-wrapper.component';
 export * from './text-list.component';
 export * from './textarea-wrapper.component';
 export * from './typography-fallback-strategy.component';
-export * from './typography-porsche-next-latin.component';
-export * from './typography-porsche-next-greek-and-coptic.component';
-export * from './typography-porsche-next-cyril.component';
+export * from './typography-latin.component';
+export * from './typography-greek-and-coptic.component';
+export * from './typography-cyril.component';

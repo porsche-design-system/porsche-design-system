@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-typography-porsche-next-cyril',
+  selector: 'page-typography-cyril',
   styles: [
     `
       h2,
@@ -285,4 +285,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TypographyPorscheNextCyrilComponent {}
+export class TypographyCyrilComponent {}
