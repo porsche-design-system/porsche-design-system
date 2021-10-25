@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Removed
-- `SimHei` as fallback for font-family in favor of `'Heiti SC', 黑体`
+#### Changed
+- Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback for `font-family`
 
 ### [5.1.0] - 2021-10-04
 
