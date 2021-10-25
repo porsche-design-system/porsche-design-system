@@ -37,4 +37,7 @@ export * from './Text';
 export * from './TextFieldWrapper';
 export * from './TextList';
 export * from './TextareaWrapper';
-export * from './Typography';
+export * from './TypographyFallbackStrategy';
+export * from './TypographyLatin';
+export * from './TypographyGreekAndCoptic';
+export * from './TypographyCyril';
