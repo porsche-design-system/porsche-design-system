@@ -64,7 +64,7 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          ...(!unit && { padding: hasState ? pxToRemWithUnit(11) : pxToRemWithUnit(10) }),
+          ...(!unit && { padding: hasState ? pxToRemWithUnit(10) : pxToRemWithUnit(11) }),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
@@ -100,7 +100,7 @@ export const getComponentCss = (
             }),
 
         '::slotted(input:hover)': {
-          borderColor: stateHoverColor,
+          borderColor: state ? stateHoverColor : hoverColor,
         },
 
         '::slotted(input[readonly]:focus)': {

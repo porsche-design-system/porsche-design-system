@@ -203,7 +203,7 @@ export class TextFieldWrapper {
     if (!this.unit) {
       removeAttribute(this.input, 'style');
     } else {
-      const padding = this.state !== 'none' ? 11 : 10;
+      const padding = this.state !== 'none' ? 10 : 11;
       setAttribute(
         this.input,
         'style',
