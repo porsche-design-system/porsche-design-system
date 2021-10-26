@@ -21,13 +21,18 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const initBanner = (opts?: { state?: BannerInlineState; persistent?: boolean }): Promise<void> => {
-  const { state, persistent } = opts ?? {};
+const initBanner = (opts?: {
+  state?: BannerInlineState;
+  persistent?: boolean;
+  actionLabel?: string;
+}): Promise<void> => {
+  const { state, persistent, actionLabel } = opts ?? {};
   const attributes = [
     'heading="Some banner-inline heading."',
     'description="Some banner-inline description."',
     state && `state="${state}"`,
     persistent && 'persistent',
+    actionLabel && `action-label="${actionLabel}"`,
   ]
     .filter((x) => x)
     .join(' ');
@@ -42,8 +47,8 @@ const initBanner = (opts?: { state?: BannerInlineState; persistent?: boolean }):
 };
 
 const getHost = () => selectNode(page, 'p-banner-inline');
-const getButton = () => selectNode(page, 'p-banner-inline >>> p-button-pure');
-const getDescriptionLink = () => selectNode(page, 'p-banner-inline a');
+const getCloseButton = () => selectNode(page, 'p-banner-inline >>> p-button-pure.close');
+const getActionButton = () => selectNode(page, 'p-banner-inline >>> p-button-pure.action');
 
 it('should render close button with type of "button"', async () => {
   await initBanner();
@@ -53,20 +58,20 @@ it('should render close button with type of "button"', async () => {
 
 it('should render without button', async () => {
   await initBanner({ persistent: true });
-  const el = await getButton();
+  const el = await getCloseButton();
   expect(el).toBeNull();
 });
 
-describe('close', () => {
+describe('close button', () => {
   it('should emit custom event by click on close button', async () => {
     await initBanner();
 
     const host = await getHost();
-    const button = await getButton();
+    const closeButton = await getCloseButton();
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
-    await button.click();
+    await closeButton.click();
     await waitForEventSerialization(page);
     expect(calls).toBe(1);
   });
@@ -75,17 +80,32 @@ describe('close', () => {
     await initBanner();
 
     const host = await getHost();
-    const button = await getButton();
+    const closeButton = await getCloseButton();
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-banner-inline');
 
-    await button.click();
+    await closeButton.click();
     await waitForEventSerialization(page);
     await waitForEventSerialization(page); // 🙈
 
+    expect(calls).toBe(1);
+  });
+});
+
+describe('action button', () => {
+  it('should emit custom event by click on action button', async () => {
+    await initBanner({ actionLabel: 'Retry' });
+
+    const host = await getHost();
+    const actionButton = await getActionButton();
+    let calls = 0;
+    await addEventListener(host, 'action', () => calls++);
+
+    await actionButton.click();
+    await waitForEventSerialization(page);
     expect(calls).toBe(1);
   });
 });

@@ -1,10 +1,7 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
-  getAttribute,
   getCssClasses,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   reattachElement,
@@ -36,8 +33,8 @@ describe('banner', () => {
       page,
       `
       <p-banner ${attributes}>
-        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
-        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
       </p-banner>`
     );
   };
@@ -45,8 +42,6 @@ describe('banner', () => {
   const getHost = () => selectNode(page, 'p-banner');
   const getBannerInline = () => selectNode(page, 'p-banner >>> p-banner-inline');
   const getButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure');
-  const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
-  const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
   it('should forward props correctly to p-banner-inline', async () => {
     await setContentWithDesignSystem(
