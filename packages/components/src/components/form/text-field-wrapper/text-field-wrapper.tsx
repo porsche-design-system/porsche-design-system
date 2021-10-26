@@ -23,7 +23,6 @@ import { UnitPositionType } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
-  styleUrl: 'text-field-wrapper.scss',
   shadow: true,
 })
 export class TextFieldWrapper {
