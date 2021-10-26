@@ -1,4 +1,4 @@
-import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss, getInset } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 const transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -8,7 +8,7 @@ export const getComponentCss = (open: boolean): string => {
     ...buildHostStyles({
       ...addImportantToEachRule({
         position: 'fixed',
-        inset: 0,
+        ...getInset(),
         zIndex: 99999,
         display: 'flex',
         alignItems: 'center',
@@ -28,7 +28,7 @@ export const getComponentCss = (open: boolean): string => {
       '&::before': addImportantToEachRule({
         content: '""',
         position: 'fixed',
-        inset: 0,
+        ...getInset(),
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
     }),
