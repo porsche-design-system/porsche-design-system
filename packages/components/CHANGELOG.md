@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `Marque` uses `webp` images for browsers that support it
+- `Text Field Wrapper` `unit` and `unitPosition` properties
 
 ### [2.5.1-beta.0] - 2021-10-11
 
