@@ -157,10 +157,12 @@ export class TextFieldWrapper {
             !!this.unit && (
               <PrefixedTagNames.pText
                 class={unitClasses}
+                tag="span"
                 color="inherit"
                 ref={(el) => {
                   this.unitElement = el;
                 }}
+                aria-hidden="true"
               >
                 {this.unit.substr(0, 5)}
               </PrefixedTagNames.pText>
