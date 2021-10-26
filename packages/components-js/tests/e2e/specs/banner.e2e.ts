@@ -5,6 +5,7 @@ import {
   getCssClasses,
   getLifecycleStatus,
   getOutlineStyle,
+  getProperty,
   initAddEventListener,
   reattachElement,
   selectNode,
@@ -42,28 +43,26 @@ describe('banner', () => {
   };
 
   const getHost = () => selectNode(page, 'p-banner');
+  const getBannerInline = () => selectNode(page, 'p-banner >>> p-banner-inline');
   const getButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure');
   const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
   const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
-  it('should render close button with type of "button"', async () => {
-    await initBanner();
-    const closeBtnReal = await selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure >>> button');
-    expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
-  });
-
-  it('should render without button', async () => {
+  it('should forward props correctly to p-banner-inline', async () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-banner persistent="true">
+      <p-banner state="error" persistent="true" theme="dark">
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
     `
     );
-    const el = await getButton();
-    expect(el).toBeNull();
+
+    const bannerInline = await getBannerInline();
+    expect(await getProperty(bannerInline, 'state')).toBe('error');
+    expect(await getProperty(bannerInline, 'persistent')).toBe(true);
+    expect(await getProperty(bannerInline, 'theme')).toBe('dark');
   });
 
   describe('close', () => {
@@ -164,44 +163,6 @@ describe('banner', () => {
 
       expect(classListBanner1).toEqual(classListBanner1AfterClick);
       expect(banner1Styles).toEqual(banner1StylesAfterClick);
-    });
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initBanner();
-
-      const titleLink = await getTitleLink();
-      const descriptionLink = await getDescriptionLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      await page.waitForTimeout(CSS_FADE_IN_DURATION);
-
-      expect(await getOutlineStyle(titleLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await titleLink.click();
-
-      expect(await getOutlineStyle(titleLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(titleLink)).toBe(visible);
-
-      await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
     });
   });
 
