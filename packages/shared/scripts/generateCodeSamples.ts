@@ -10,15 +10,19 @@ type CodeSample = {
 
 type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
 
+const componentsJsPath = '../components-js/src/examples';
+const componentsAngularPath = '../components-angular/src/app/examples';
+const componentsReactPath = '../components-react/src/examples';
+
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
     {
       component: 'p-accordion',
       samples: [
         [
-          '../components-js/src/examples/accordion-example.html',
-          '../components-angular/src/app/examples/accordion-example.component.ts',
-          '../components-react/src/examples/AccordionExample.tsx',
+          componentsJsPath + '/accordion-example.html',
+          componentsAngularPath + '/accordion-example.component.ts',
+          componentsReactPath + '/AccordionExample.tsx',
         ],
       ],
     },
@@ -26,14 +30,14 @@ const generateCodeSamples = (): void => {
       component: 'p-banner-inline',
       samples: [
         [
-          '../components-js/src/examples/banner-inline-example-events.html',
-          '../components-angular/src/app/examples/banner-inline-example-events.component.ts',
-          '../components-react/src/examples/BannerInlineExampleEvents.tsx',
+          componentsJsPath + '/banner-inline-example-events.html',
+          componentsAngularPath + '/banner-inline-example-events.component.ts',
+          componentsReactPath + '/BannerInlineExampleEvents.tsx',
         ],
         [
-          '../components-js/src/examples/banner-inline-example-action-button.html',
-          '../components-angular/src/app/examples/banner-inline-example-action-button.component.ts',
-          '../components-react/src/examples/BannerInlineExampleActionButton.tsx',
+          componentsJsPath + '/banner-inline-example-action-button.html',
+          componentsAngularPath + '/banner-inline-example-action-button.component.ts',
+          componentsReactPath + '/BannerInlineExampleActionButton.tsx',
         ],
       ],
     },
@@ -41,21 +45,21 @@ const generateCodeSamples = (): void => {
       component: 'p-table',
       samples: [
         [
-          '../components-js/src/examples/table-example-basic.html',
-          '../components-angular/src/app/examples/table-example-basic.component.ts',
-          '../components-react/src/examples/TableExampleBasic.tsx',
+          componentsJsPath + '/table-example-basic.html',
+          componentsAngularPath + '/table-example-basic.component.ts',
+          componentsReactPath + '/TableExampleBasic.tsx',
           'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
         ],
         [
-          '../components-js/src/examples/table-example-sorting.html',
-          '../components-angular/src/app/examples/table-example-sorting.component.ts',
-          '../components-react/src/examples/TableExampleSorting.tsx',
+          componentsJsPath + '/table-example-sorting.html',
+          componentsAngularPath + '/table-example-sorting.component.ts',
+          componentsReactPath + '/TableExampleSorting.tsx',
           'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
         ],
         [
-          '../components-js/src/examples/table-example-advanced.html',
-          '../components-angular/src/app/examples/table-example-advanced.component.ts',
-          '../components-react/src/examples/TableExampleAdvanced.tsx',
+          componentsJsPath + '/table-example-advanced.html',
+          componentsAngularPath + '/table-example-advanced.component.ts',
+          componentsReactPath + '/TableExampleAdvanced.tsx',
           'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],
