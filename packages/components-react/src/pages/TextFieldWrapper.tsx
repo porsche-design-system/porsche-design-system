@@ -236,7 +236,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with unit position suffix">
-        <PTextFieldWrapper label="With unit position suffix" unit="kWh" unit-position="suffix">
+        <PTextFieldWrapper label="With unit position suffix" unit="kWh" unitPosition="suffix">
           <input type="number" name="some-name" value="400" />
         </PTextFieldWrapper>
       </div>
