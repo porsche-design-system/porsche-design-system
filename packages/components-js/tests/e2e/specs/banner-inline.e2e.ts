@@ -36,7 +36,7 @@ const initBanner = (opts?: { state?: BannerInlineState; persistent?: boolean }):
   return setContentWithDesignSystem(
     page,
     `
-    <p-banner-inline  ${attributes}>
+    <p-banner-inline ${attributes}>
     </p-banner-inline>`
   );
 };
