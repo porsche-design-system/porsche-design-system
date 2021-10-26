@@ -1,6 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
+exports[`accessibility should expose correct accessibility tree properties for state: error 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline heading.",
+          "role": "StaticText",
+        },
+      ],
+      "level": 5,
+      "name": "Some banner-inline heading.",
+      "role": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline description.",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "paragraph",
+    },
+  ],
+  "description": "Some banner-inline description.",
+  "name": "Some banner-inline heading.",
+  "role": "alert",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree properties for state: neutral 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline heading.",
+          "role": "StaticText",
+        },
+      ],
+      "level": 5,
+      "name": "Some banner-inline heading.",
+      "role": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline description.",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "paragraph",
+    },
+  ],
+  "description": "Some banner-inline description.",
+  "name": "Some banner-inline heading.",
+  "role": "status",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree properties for state: success 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline heading.",
+          "role": "StaticText",
+        },
+      ],
+      "level": 5,
+      "name": "Some banner-inline heading.",
+      "role": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some banner-inline description.",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "paragraph",
+    },
+  ],
+  "description": "Some banner-inline description.",
+  "name": "Some banner-inline heading.",
+  "role": "status",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree properties for state: warning 1`] = `
 Object {
   "children": Array [
     Object {

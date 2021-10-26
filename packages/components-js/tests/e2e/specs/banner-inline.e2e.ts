@@ -12,6 +12,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { BannerInlineState } from '@porsche-design-system/components/dist/types/bundle';
+import { BANNER_INLINE_STATES } from '@porsche-design-system/components/src/components/feedback/banner-inline/banner-inline-utils';
 
 let page: Page;
 
@@ -144,15 +145,19 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  it('should expose correct initial accessibility tree properties', async () => {
-    await initBanner({ state: 'neutral' });
-    const getWrapper = () => selectNode(page, 'p-banner-inline >>> .content');
+  it.each<BannerInlineState>(BANNER_INLINE_STATES)(
+    'should expose correct accessibility tree properties for state: %s',
+    async (state) => {
+      await initBanner({ state });
+      const wrapper = await selectNode(page, 'p-banner-inline >>> .content');
 
-    const snapshotWrapper = await page.accessibility.snapshot({
-      root: await getWrapper(),
-      interestingOnly: false,
-    });
+      const snapshotWrapper = await page.accessibility.snapshot({
+        root: wrapper,
+        interestingOnly: false,
+      });
 
-    expect(snapshotWrapper).toMatchSnapshot();
-  });
+      expect(snapshotWrapper).toMatchSnapshot();
+      expect(await getAttribute(wrapper, 'aria-live')).toBe('polite');
+    }
+  );
 });
