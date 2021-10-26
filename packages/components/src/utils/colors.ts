@@ -29,9 +29,7 @@ export const colorDarken: DeepPartial<typeof color> = {
   },
 };
 
-export const getThemedColors = (
-  theme: Theme
-): {
+type ThemedColors = {
   textColor: string;
   brandColor: string;
   backgroundColor: string;
@@ -49,8 +47,9 @@ export const getThemedColors = (
   warningSoftColor: string;
   neutralColor: string;
   neutralSoftColor: string;
-} => {
-  const isDarkTheme = isDark(theme);
+};
+
+const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
     default: textColor,
     brand: brandColor,
@@ -67,7 +66,7 @@ export const getThemedColors = (
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDarkTheme ? color.darkTheme : color;
+  } = isDark(theme) ? color.darkTheme : color;
 
   return {
     textColor,
@@ -88,6 +87,13 @@ export const getThemedColors = (
     neutralColor,
     neutralSoftColor,
   };
+};
+
+const themedColorsLight = getStaticThemedColors('light');
+const themedColorsDark = getStaticThemedColors('dark');
+
+export const getThemedColors = (theme: Theme): ThemedColors => {
+  return isDark(theme) ? themedColorsDark : themedColorsLight;
 };
 
 export const getThemedStateColors = (
