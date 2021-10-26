@@ -53,6 +53,13 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
+export const getInset = (value: 'auto' | number = 0): JssStyle => ({
+  top: value,
+  left: value,
+  right: value,
+  bottom: value,
+});
+
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const options: GetFocusStylesOptions = {
     color: color.state.focus,
@@ -74,10 +81,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
           outlineOffset: `${outlineOffset}px`,
           content: '""',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          ...getInset(),
         },
         [`&:focus${pseudo}`]: {
           outlineColor,
@@ -130,10 +134,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
         content: '""',
         display: 'block',
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        ...getInset(),
         outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
       },
