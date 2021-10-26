@@ -216,6 +216,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <input type="text" name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
       </p-text-field-wrapper>
     </div>
+
+    <div class="playground light" title="should render with unit">
+      <p-text-field-wrapper [label]="'With unit'" [unit]="'km/h'">
+        <input type="number" name="some-name" value="300" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground light" title="should render with unit position suffix">
+      <p-text-field-wrapper [label]="'With unit position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
+        <input type="number" name="some-name" value="400" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground light" title="should render a maximum of five characters per unit">
+      <p-text-field-wrapper [label]="'With long unit cut to 5 chars'" [unit]="'kg/m³55555'">
+        <input type="number" name="some-name" value="7777" />
+      </p-text-field-wrapper>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
