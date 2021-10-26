@@ -76,9 +76,9 @@ For better accessibility it's recommended to **not** reset these browser default
 ### Number
 
 Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters.
+A description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typesNumber" :config="config">
-  <input v-model="unit" placeholder="Unit" style="margin-right: 0.5rem"> 
   <select v-model="unitPosition">
     <option disabled>Select a unit position</option>
     <option value="prefix">Prefix</option>
@@ -136,7 +136,6 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     label = 'show';
     type = 'text';
     state = 'error';
-    unit = '€';
     unitPosition = 'prefix';
 
     get basic() {      
@@ -176,8 +175,7 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     }
 
     get typesNumber() {
-      const unitAttr = `${this.unit? ` unit="${this.unit}" unit-position="${this.unitPosition}"`: ''}`;
-      return `<p-text-field-wrapper label="Some label"${unitAttr}>
+      return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
     }
