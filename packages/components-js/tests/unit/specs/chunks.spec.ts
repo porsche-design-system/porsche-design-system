@@ -217,20 +217,23 @@ describe('chunks', () => {
       expect(content).not.toContain('localhost');
     });
 
-    chunkFileNames.forEach((chunkFileName) => {
-      it(`should not contain localhost in ${chunkFileName}`, () => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).not.toContain('localhost');
-      });
-
-      // TODO: enable this test once chunking is under control
-      // it(`should not contain all TAG_NAMES in ${chunkFileName}`, () => {
-      //   const content = getChunkContent(chunkFileName);
-      //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
-      //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
-      //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
-      //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
-      // });
+    it.each(chunkFileNames)('should not contain localhost in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect(content).not.toContain('localhost');
     });
+
+    it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect(content).not.toContain('inset:');
+    });
+
+    // TODO: enable this test once chunking is under control
+    // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {
+    //   const content = getChunkContent(chunkFileName);
+    //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
+    //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
+    //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
+    //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
+    // });
   });
 });
