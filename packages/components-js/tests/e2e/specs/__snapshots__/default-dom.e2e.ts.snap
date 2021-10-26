@@ -55,7 +55,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     outline-color: transparent !important
   }
 </style>
-<p-content-wrapper role=\\"alertdialog\\" aria-labelledby=\\"banner-label\\" aria-describedby=\\"banner-description\\" class=\\"hydrated\\">
+<p-content-wrapper class=\\"hydrated\\">
   <p-banner-inline class=\\"root hydrated\\">
   </p-banner-inline>
 </p-content-wrapper>"
@@ -101,10 +101,10 @@ exports[`should have no basic DOM regression for p-banner-inline 1`] = `
     outline-color: transparent !important
   }
 </style>
-<p-icon class=\\"icon hydrated\\">
+<p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
 </p-icon>
-<div class=\\"content\\">
-  <p-text id=\\"banner-description\\" class=\\"hydrated\\">
+<div class=\\"content\\" role=\\"alert\\" aria-labelledby=\\"label\\" aria-describedby=\\"description\\">
+  <p-text id=\\"description\\" class=\\"hydrated\\">
     <slot>
     </slot>
   </p-text>

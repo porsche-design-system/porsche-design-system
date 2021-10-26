@@ -240,18 +240,4 @@ describe('banner', () => {
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
   });
-
-  describe('accessibility', () => {
-    it('should expose correct initial accessibility tree properties', async () => {
-      await initBanner('neutral');
-      const getWrapper = () => selectNode(page, 'p-banner >>> p-content-wrapper');
-
-      const snapshotWrapper = await page.accessibility.snapshot({
-        root: await getWrapper(),
-        interestingOnly: false,
-      });
-
-      expect(snapshotWrapper).toMatchSnapshot();
-    });
-  });
 });
