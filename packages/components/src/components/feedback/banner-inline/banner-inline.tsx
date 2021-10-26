@@ -65,7 +65,13 @@ export class BannerInline {
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <div class="content" role="alert" aria-labelledby={labelId} aria-describedby={descriptionId}>
+        <div
+          class="content"
+          role={this.state === 'warning' || this.state === 'error' ? 'alert' : 'status'}
+          aria-live="polite"
+          aria-labelledby={labelId}
+          aria-describedby={descriptionId}
+        >
           {hasHeading(this.host, this.heading) && (
             <PrefixedTagNames.pHeadline id={labelId} variant="headline-5">
               {this.heading || <slot name="heading" />}
