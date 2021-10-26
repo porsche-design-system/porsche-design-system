@@ -14,7 +14,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
-  </select>  
+  </select> 
 </Playground>
 
 ---
@@ -138,7 +138,7 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     state = 'error';
     unitPosition = 'prefix';
 
-    get basic() {      
+    get basic() {
       const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
       return `<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" name="some-name" />
