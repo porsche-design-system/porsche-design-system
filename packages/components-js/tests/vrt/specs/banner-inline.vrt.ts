@@ -25,8 +25,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-banner-inline theme="${theme}" action-label="Retry">
-          <span slot="heading">Some slotted banner-inline title with a <a href="#">link</a>.</span>
-          Some slotted banner-inline description with a <a href="#">link</a>.
+          <span slot="heading">Some heading with a <a href="#">link</a>.</span>
+          Some description with a <a href="#">link</a>.
         </p-banner-inline>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
