@@ -228,6 +228,24 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           <input type="text" name="some-name" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </PTextFieldWrapper>
       </div>
+
+      <div className="playground light" title="should render with unit">
+        <PTextFieldWrapper label="With unit" unit="km/h">
+          <input type="number" name="some-name" value="300" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render with unit position suffix">
+        <PTextFieldWrapper label="With unit position suffix" unit="kWh" unit-position="suffix">
+          <input type="number" name="some-name" value="400" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render a maximum of five characters per unit">
+        <PTextFieldWrapper label="With long unit cut to 5 chars" unit="kg/m³55555">
+          <input type="number" name="some-name" value="7777" />
+        </PTextFieldWrapper>
+      </div>
     </>
   );
 };
