@@ -574,7 +574,7 @@ exports[`should have no basic DOM regression for p-text 1`] = `
 
 exports[`should have no basic DOM regression for p-text-field-wrapper 1`] = `
 "<div class=\\"root\\">
-  <label class=\\"label label--visible\\">
+  <label class=\\"label\\">
     <slot>
     </slot>
   </label>
