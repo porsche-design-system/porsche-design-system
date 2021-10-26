@@ -43,7 +43,8 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   unit: string,
-  unitPosition: UnitPositionType
+  unitPosition: UnitPositionType,
+  isPassword: boolean
 ) => {
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor, hoverColor } =
     getThemedColors('light');
@@ -133,7 +134,13 @@ export const getComponentCss = (
             WebkitBackgroundClip: 'padding-box',
           },
 
-        '::slotted(input[type="password"]), ::slotted(input[type="search"])': {
+        ...(isPassword && {
+          '::slotted(input[type="password"]), ::slotted(input[type="text"])': {
+            paddingRight: '3rem',
+          },
+        }),
+
+        '::slotted(input[type="search"])': {
           paddingRight: '3rem',
         },
       })
