@@ -14,13 +14,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
-  </select>
-  <input v-model="unit" placeholder="unit"> 
-  <select v-model="unitPosition">
-    <option disabled>Select a unit position</option>
-    <option value="prefix">Prefix</option>
-    <option value="suffix">Suffix</option>    
-  </select>
+  </select>  
 </Playground>
 
 ---
@@ -79,6 +73,19 @@ For better accessibility it's recommended to **not** reset these browser default
   </select>
 </Playground>
 
+### Number
+
+Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters.
+
+<Playground :markup="typesNumber" :config="config">
+  <input v-model="unit" placeholder="Unit" style="margin-right: 0.5rem"> 
+  <select v-model="unitPosition">
+    <option disabled>Select a unit position</option>
+    <option value="prefix">Prefix</option>
+    <option value="suffix">Suffix</option>    
+  </select>
+</Playground>
+
 ### Password
 
 <Playground :markup="typesPassword" :config="config"></Playground>
@@ -129,13 +136,12 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     label = 'show';
     type = 'text';
     state = 'error';
-    unit = '';
+    unit = '€';
     unitPosition = 'prefix';
 
-    get basic() {
-      const unitAttr = `${unit? ` unit=${unit} unit-position=${unitPosition}`: ''}`;
+    get basic() {      
       const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-text-field-wrapper label="Some label"${labelAttr}${unitAttr}>
+      return `<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
 <p-text-field-wrapper label="Some label"${labelAttr}>
@@ -166,6 +172,13 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     get typesBasic() {
       return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
+</p-text-field-wrapper>`;
+    }
+
+    get typesNumber() {
+      const unitAttr = `${this.unit? ` unit="${this.unit}" unit-position="${this.unitPosition}"`: ''}`;
+      return `<p-text-field-wrapper label="Some label"${unitAttr}>
+  <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
     }
     
