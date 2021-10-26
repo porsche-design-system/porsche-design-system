@@ -41,7 +41,7 @@ describe('banner', () => {
 
   const getHost = () => selectNode(page, 'p-banner');
   const getBannerInline = () => selectNode(page, 'p-banner >>> p-banner-inline');
-  const getButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure');
+  const getCloseButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure.close');
 
   it('should forward props correctly to p-banner-inline', async () => {
     await setContentWithDesignSystem(
@@ -70,10 +70,10 @@ describe('banner', () => {
     it('should remove banner from DOM by click on close button', async () => {
       await initBanner();
 
-      const button = await getButton();
+      const closeButton = await getCloseButton();
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
-      await button.click();
+      await closeButton.click();
       await waitForEventSerialization(page);
       // we have to wait for the animation to end before the dom is cleared
       await page.waitForTimeout(CSS_FADE_OUT_DURATION);
@@ -95,12 +95,12 @@ describe('banner', () => {
       await initBanner();
 
       const host = await getHost();
-      const button = await getButton();
+      const closeButton = await getCloseButton();
       let calls = 0;
       await addEventListener(host, 'dismiss', () => calls++);
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
-      await button.click();
+      await closeButton.click();
       await waitForEventSerialization(page);
       expect(calls).toBe(1);
     });
@@ -109,7 +109,7 @@ describe('banner', () => {
       await initBanner();
 
       const host = await getHost();
-      const button = await getButton();
+      const closeButton = await getCloseButton();
       let calls = 0;
       await addEventListener(host, 'dismiss', () => calls++);
 
@@ -117,7 +117,7 @@ describe('banner', () => {
       await reattachElement(page, 'p-banner');
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
-      await button.click();
+      await closeButton.click();
       await waitForEventSerialization(page);
       await waitForEventSerialization(page); // 🙈
 
