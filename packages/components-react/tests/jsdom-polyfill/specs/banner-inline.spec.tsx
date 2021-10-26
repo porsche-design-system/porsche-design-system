@@ -4,23 +4,22 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const Sample = (): JSX.Element => {
-  const [eventCounter, setEventCounter] = useState(0);
-  const [status, setStatus] = useState('visible');
+  const [closeEventCounter, setCloseEventCounter] = useState(0);
+  const [actionEventCounter, setActionEventCounter] = useState(0);
 
   return (
     <>
       <PBannerInline
         data-testid="host"
         heading="Some banner title"
-        onDismiss={(e) => {
-          setEventCounter(eventCounter + 1);
-          setStatus('hidden');
-        }}
+        actionLabel="Retry"
+        onAction={() => setActionEventCounter((prev) => prev + 1)}
+        onDismiss={() => setCloseEventCounter((prev) => prev + 1)}
       >
         Some banner description.
       </PBannerInline>
       <div data-testid="debug">
-        {`Status: ${status};`} {`Event Counter: ${eventCounter};`}
+        {`Action Event Counter: ${actionEventCounter}; Close Event Counter: ${closeEventCounter};`}
       </div>
     </>
   );
@@ -39,11 +38,15 @@ describe('PBannerInline', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const button = getByTestId('host').shadowRoot.querySelector('p-button-pure');
+    const actionButton = getByTestId('host').shadowRoot.querySelector('p-button-pure.action');
+    const closeButton = getByTestId('host').shadowRoot.querySelector('p-button-pure.close');
 
-    expect(debug.innerHTML).toBe('Status: visible; Event Counter: 0;');
+    expect(debug.innerHTML).toBe('Action Event Counter: 0; Close Event Counter: 0;');
 
-    userEvent.click(button);
-    expect(debug.innerHTML).toBe('Status: hidden; Event Counter: 1;');
+    userEvent.click(actionButton);
+    expect(debug.innerHTML).toBe('Action Event Counter: 1; Close Event Counter: 0;');
+
+    userEvent.click(closeButton);
+    expect(debug.innerHTML).toBe('Action Event Counter: 1; Close Event Counter: 1;');
   });
 });
