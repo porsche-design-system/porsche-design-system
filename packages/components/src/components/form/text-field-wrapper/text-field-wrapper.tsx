@@ -34,7 +34,7 @@ export class TextFieldWrapper {
   /** The unit text. */
   @Prop() public unit?: string = '';
 
-  /** The unit text. */
+  /** The unit position. */
   @Prop() public unitPosition?: UnitPositionType = 'prefix';
 
   /** The description text. */
