@@ -65,6 +65,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillRender(): void {
+    throwIfUnitLengthExceeded(this.unit);
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -74,7 +75,6 @@ export class TextFieldWrapper {
       this.unitPosition,
       this.isPassword
     );
-    throwIfUnitLengthExceeded(this.unit);
   }
 
   public componentDidRender(): void {
