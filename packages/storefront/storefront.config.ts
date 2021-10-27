@@ -335,7 +335,7 @@ export const config: StorefrontConfig = {
       ],
       Usage: [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.usage.md'),
+        () => import('@/../../components/src/components/feedback/notifications.usage.md'),
       ],
       Props: [
         // @ts-ignore
