@@ -1,4 +1,9 @@
-import { getInputUnitPadding, setInputUnitStyles, UnitPositionType } from './text-field-wrapper-utils';
+import {
+  getInputUnitPadding,
+  setInputUnitStyles,
+  throwIfUnitLengthExceeded,
+  UnitPositionType,
+} from './text-field-wrapper-utils';
 import { FormState } from '../../../types';
 
 describe('getInputUnitPadding()', () => {
@@ -46,5 +51,17 @@ describe('setInputUnitStyles()', () => {
     setInputUnitStyles('km/h', input, 60, 'prefix', 'none');
 
     expect(input.style.padding).toBe('');
+  });
+});
+
+describe('throwIfUnitLengthExceeded()', () => {
+  it('should throw error if unit length > 5', () => {
+    let error = undefined;
+    try {
+      throwIfUnitLengthExceeded('123456');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
   });
 });

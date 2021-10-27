@@ -17,7 +17,7 @@ import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 import type { UnitPositionType } from './text-field-wrapper-utils';
-import { setInputUnitStyles } from './text-field-wrapper-utils';
+import { setInputUnitStyles, throwIfUnitLengthExceeded } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -54,6 +54,7 @@ export class TextFieldWrapper {
   private isPassword: boolean;
 
   public connectedCallback(): void {
+    throwIfUnitLengthExceeded(this.unit);
     attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }

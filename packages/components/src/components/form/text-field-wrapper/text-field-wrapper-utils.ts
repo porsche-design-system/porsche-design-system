@@ -33,3 +33,9 @@ export const setInputUnitStyles = (
     input.style.setProperty('padding', getInputUnitPadding(unitElementWidth, unitPosition, state), 'important');
   }
 };
+
+export const throwIfUnitLengthExceeded = (unit: string): void => {
+  if (unit.length > 5) {
+    throw new Error(`Unit: ${unit} passed to 'PTextFieldWrapper' exceeds the maximum length of 5`);
+  }
+};
