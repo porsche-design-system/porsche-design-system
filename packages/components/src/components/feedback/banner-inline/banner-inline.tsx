@@ -8,7 +8,7 @@ import {
 } from '../../../utils';
 import type { IconName, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-inline-styles';
-import { BANNER_INLINE_STATES, getIconName } from './banner-inline-utils';
+import { BANNER_INLINE_STATES, getContentAriaAttributes, getIconName } from './banner-inline-utils';
 import type { BannerInlineState } from './banner-inline-utils';
 
 @Component({
@@ -58,6 +58,7 @@ export class BannerInline {
   }
 
   public render(): JSX.Element {
+    const bannerId = 'banner';
     const labelId = 'label';
     const descriptionId = 'description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -65,13 +66,7 @@ export class BannerInline {
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <div
-          class="content"
-          role={this.state === 'warning' || this.state === 'error' ? 'alert' : 'status'}
-          aria-live="polite"
-          aria-labelledby={labelId}
-          aria-describedby={descriptionId}
-        >
+        <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && (
             <PrefixedTagNames.pHeadline id={labelId} variant="headline-5">
               {this.heading || <slot name="heading" />}
@@ -95,6 +90,7 @@ export class BannerInline {
             type="button"
             icon="close"
             hideLabel={true}
+            aria-controls={bannerId}
             onClick={this.dismiss.emit}
           >
             Close notification
