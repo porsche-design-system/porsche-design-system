@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render without label and without description">
       <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'" [hideLabel]="true">
-        <input type="text" />
+        <input type="text" placeholder="Without label and without description" />
       </p-text-field-wrapper>
     </div>
 
@@ -33,7 +33,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Some description'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input type="text" />
+        <input type="text" placeholder="Responsive label and description" />
       </p-text-field-wrapper>
     </div>
 

@@ -23,7 +23,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render without label and without description">
         <PTextFieldWrapper label="Some label" description="Some description" hideLabel={true}>
-          <input type="text" />
+          <input type="text" placeholder="Without label and without description" />
         </PTextFieldWrapper>
       </div>
 
@@ -33,7 +33,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Some description"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <input type="text" />
+          <input type="text" placeholder="Responsive label and description" />
         </PTextFieldWrapper>
       </div>
 
