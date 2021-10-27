@@ -3,7 +3,8 @@
 ## Inline Notification
 
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.  
-Whenever you want to provide brief, temporary notifications stick to the **Toast component** (work in progress) instead. They are noticeable but do not disrupt the user experience and do not require an action to be taken.
+
+Review the [notification decision tree](components/notifications/usage) to determine which notification component is best for a particular scenario.
 
 ## Basic
 
@@ -12,7 +13,7 @@ Whenever you want to provide brief, temporary notifications stick to the **Toast
 
 ## State
 
-Both, background-color and icon can be controlled via the `state` property.
+Coloring can be controlled via the `state` property.
 
 <Playground :markup="stateDemo" :config="config">
   <select v-model="state">
@@ -32,30 +33,35 @@ To make the `p-inline-notification` non-closable by the user, use the `persisten
 
 ## Event Handling
 
+### Close Button
+
+The custom event that is emitted on close button click is called `dismiss`.  
+It can be used to remove the component.
+
 <Playground :frameworkMarkup="events" :config="config">
-  <p-button id="bannerEventsButton">Show InlineNotification</p-button>
+  <button id="bannerEventsButton">Show Inline Notification</button>
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
-    <p-inline-notification heading="Some inline-notification heading" description="Some inline-notification description."></p-inline-notification>
+    <p-inline-notification :heading="defaultHeading" :description="defaultDescription"></p-inline-notification>
   </div>
 </Playground>
 
-## Action Button
+### Action Button
 
 A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional `actionLabel`, `actionIcon` and `actionLoading` properties.  
-The event that is emitted on click is called `action`.
+The custom event that is emitted on action button click is called `action`.
 
 <Playground :frameworkMarkup="actionButton" :config="config">
   <p-inline-notification
     id="bannerAction"
-    heading="Some inline-notification heading"
-    description="Some inline-notification description."
+    :heading="defaultHeading"
+    :description="defaultDescription"
     action-label="Retry"
     action-icon="reset"
   ></p-inline-notification>
   <br>
-  <p-button id="bannerActionButton">Reset</p-button>
+  <button id="bannerActionButton">Reset `actionLoading`</button>
 </Playground>
 
 ## Slotted Content
@@ -77,10 +83,10 @@ Rich markup for the `description` can be used by the unnamed default slot.
     state = 'neutral';
     width = 'basic';
 
-    defaultHeading = 'Some inline-notification heading';
-    defaultDescription = 'Some inline-notification description.';
-    slottedHeading = 'Some slotted inline-notification heading';
-    slottedDescription = 'Some slotted inline-notification description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.';
+    defaultHeading = 'Some heading';
+    defaultDescription = 'Some description.';
+    slottedHeading = 'Some slotted heading';
+    slottedDescription = 'Some slotted description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.';
 
     basic =
 `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}">
@@ -123,3 +129,9 @@ Rich markup for the `description` can be used by the unnamed default slot.
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  button {
+    padding: .5rem 1rem;
+  }
+</style>
