@@ -21,7 +21,7 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
 "<style>
-  p-banner-inline a {
+  p-inline-notification a {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
@@ -29,39 +29,39 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     outline-offset: 1px !important
   }
 
-  p-banner-inline b,
-  p-banner-inline strong {
+  p-inline-notification b,
+  p-inline-notification strong {
     font-weight: 700 !important
   }
 
-  p-banner-inline em,
-  p-banner-inline i {
+  p-inline-notification em,
+  p-inline-notification i {
     font-style: normal !important
   }
 
-  p-banner-inline a:hover {
+  p-inline-notification a:hover {
     color: #d5001c !important
   }
 
-  p-banner-inline a::-moz-focus-inner {
+  p-inline-notification a::-moz-focus-inner {
     border: 0 !important
   }
 
-  p-banner-inline a:focus {
+  p-inline-notification a:focus {
     outline-color: currentColor !important
   }
 
-  p-banner-inline a:focus:not(:focus-visible) {
+  p-inline-notification a:focus:not(:focus-visible) {
     outline-color: transparent !important
   }
 </style>
 <p-content-wrapper class=\\"hydrated\\">
-  <p-banner-inline class=\\"root hydrated\\">
-  </p-banner-inline>
+  <p-inline-notification class=\\"root hydrated\\">
+  </p-inline-notification>
 </p-content-wrapper>"
 `;
 
-exports[`should have no basic DOM regression for p-banner-inline 1`] = `
+exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<style>
   p-text a {
     color: inherit !important;

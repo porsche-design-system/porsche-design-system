@@ -56,11 +56,11 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </p-banner>
         </div>
 
-        <div class="playground light" title="should render default banner-inline">
-          <p-banner-inline
-            [heading]="'Some banner-inline heading'"
-            [description]="'Some banner-inline description.'"
-          ></p-banner-inline>
+        <div class="playground light" title="should render default inline-notification">
+          <p-inline-notification
+            [heading]="'Some inline-notification heading'"
+            [description]="'Some inline-notification description.'"
+          ></p-inline-notification>
         </div>
 
         <div class="playground light" title="should render default divider">
@@ -237,12 +237,12 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           </my-prefix-p-banner>
         </div>
 
-        <div class="playground light" title="should render default banner-inline with custom prefix">
-          <my-prefix-p-banner-inline
-            p-banner-inline
-            [heading]="'Some banner-inline heading'"
-            [description]="'Some banner-inline description.'"
-          ></my-prefix-p-banner-inline>
+        <div class="playground light" title="should render default inline-notification with custom prefix">
+          <my-prefix-p-inline-notification
+            p-inline-notification
+            [heading]="'Some inline-notification heading'"
+            [description]="'Some inline-notification description.'"
+          ></my-prefix-p-inline-notification>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">

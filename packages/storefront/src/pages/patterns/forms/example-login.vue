@@ -11,8 +11,8 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate @submit.prevent="onSubmit">
-          <p-banner-inline v-if="showGlobalError" state="error" persistent style="margin-bottom: 20px"
-            >Your username and/or password do not match.</p-banner-inline
+          <p-inline-notification v-if="showGlobalError" state="error" persistent style="margin-bottom: 20px"
+            >Your username and/or password do not match.</p-inline-notification
           >
           <p-flex class="form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-grid-item">

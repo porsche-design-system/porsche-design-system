@@ -1,6 +1,6 @@
 export * from './Accordion';
 export * from './Banner';
-export * from './BannerInline';
+export * from './InlineNotification';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './ButtonPure';

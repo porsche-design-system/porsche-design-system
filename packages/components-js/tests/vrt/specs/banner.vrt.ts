@@ -39,11 +39,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoveredState(page, '.hovered > p-banner span a');
       // TODO: support for 3rd level of shadow DOM is missing
-      // await forceHoveredState(page, '.hovered > p-banner >>> p-banner-inline >>> p-button-pure >>> button');
+      // await forceHoveredState(page, '.hovered > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
       await forceFocusedState(page, '.focused > p-banner span a');
-      // await forceFocusedState(page, '.focused > p-banner >>> p-banner-inline >>> p-button-pure >>> button');
+      // await forceFocusedState(page, '.focused > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
       await forceFocusedHoveredState(page, '.focused-hovered > p-banner span a');
-      // await forceFocusedHoveredState(page, '.focused-hovered > p-banner >>> p-banner-inline >>> p-button-pure >>> button');
+      // await forceFocusedHoveredState(page, '.focused-hovered > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

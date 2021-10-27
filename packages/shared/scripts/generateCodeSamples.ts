@@ -27,17 +27,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
-      component: 'p-banner-inline',
+      component: 'p-inline-notification',
       samples: [
         [
-          componentsJsPath + '/banner-inline-example-events.html',
-          componentsAngularPath + '/banner-inline-example-events.component.ts',
-          componentsReactPath + '/BannerInlineExampleEvents.tsx',
+          componentsJsPath + '/inline-notification-example-events.html',
+          componentsAngularPath + '/inline-notification-example-events.component.ts',
+          componentsReactPath + '/InlineNotificationExampleEvents.tsx',
         ],
         [
-          componentsJsPath + '/banner-inline-example-action-button.html',
-          componentsAngularPath + '/banner-inline-example-action-button.component.ts',
-          componentsReactPath + '/BannerInlineExampleActionButton.tsx',
+          componentsJsPath + '/inline-notification-example-action-button.html',
+          componentsAngularPath + '/inline-notification-example-action-button.component.ts',
+          componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
         ],
       ],
     },

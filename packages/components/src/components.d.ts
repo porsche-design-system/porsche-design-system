@@ -9,12 +9,12 @@ import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormStat
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
-import { BannerInlineState } from "./components/feedback/banner-inline/banner-inline-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -67,40 +67,6 @@ export namespace Components {
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
         "width"?: 'basic' | 'extended' | 'fluid';
-    }
-    interface PBannerInline {
-        /**
-          * Action icon of the banner-inline.
-         */
-        "actionIcon"?: IconName;
-        /**
-          * Action label of the banner-inline.
-         */
-        "actionLabel"?: string;
-        /**
-          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
-         */
-        "actionLoading"?: boolean;
-        /**
-          * Description of the banner-inline.
-         */
-        "description"?: string;
-        /**
-          * Heading of the banner-inline.
-         */
-        "heading"?: string;
-        /**
-          * Defines if the banner-inline can be closed/removed by the user.
-         */
-        "persistent"?: boolean;
-        /**
-          * State of the banner-inline.
-         */
-        "state"?: BannerInlineState;
-        /**
-          * Adapts the banner-inline color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PButton {
         /**
@@ -393,6 +359,40 @@ export namespace Components {
         "source"?: string;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PInlineNotification {
+        /**
+          * Action icon of the inline-notification.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the inline-notification.
+         */
+        "actionLabel"?: string;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
+        /**
+          * Description of the inline-notification.
+         */
+        "description"?: string;
+        /**
+          * Heading of the inline-notification.
+         */
+        "heading"?: string;
+        /**
+          * Defines if the inline-notification can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the inline-notification.
+         */
+        "state"?: InlineNotificationState;
+        /**
+          * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -894,12 +894,6 @@ declare global {
         prototype: HTMLPBannerElement;
         new (): HTMLPBannerElement;
     };
-    interface HTMLPBannerInlineElement extends Components.PBannerInline, HTMLStencilElement {
-    }
-    var HTMLPBannerInlineElement: {
-        prototype: HTMLPBannerInlineElement;
-        new (): HTMLPBannerInlineElement;
-    };
     interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {
     }
     var HTMLPButtonElement: {
@@ -977,6 +971,12 @@ declare global {
     var HTMLPIconElement: {
         prototype: HTMLPIconElement;
         new (): HTMLPIconElement;
+    };
+    interface HTMLPInlineNotificationElement extends Components.PInlineNotification, HTMLStencilElement {
+    }
+    var HTMLPInlineNotificationElement: {
+        prototype: HTMLPInlineNotificationElement;
+        new (): HTMLPInlineNotificationElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -1137,7 +1137,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
-        "p-banner-inline": HTMLPBannerInlineElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
@@ -1151,6 +1150,7 @@ declare global {
         "p-grid-item": HTMLPGridItemElement;
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
+        "p-inline-notification": HTMLPInlineNotificationElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -1231,48 +1231,6 @@ declare namespace LocalJSX {
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
         "width"?: 'basic' | 'extended' | 'fluid';
-    }
-    interface PBannerInline {
-        /**
-          * Action icon of the banner-inline.
-         */
-        "actionIcon"?: IconName;
-        /**
-          * Action label of the banner-inline.
-         */
-        "actionLabel"?: string;
-        /**
-          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
-         */
-        "actionLoading"?: boolean;
-        /**
-          * Description of the banner-inline.
-         */
-        "description"?: string;
-        /**
-          * Heading of the banner-inline.
-         */
-        "heading"?: string;
-        /**
-          * Emitted when the action button is clicked.
-         */
-        "onAction"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the close button is clicked.
-         */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines if the banner-inline can be closed/removed by the user.
-         */
-        "persistent"?: boolean;
-        /**
-          * State of the banner-inline.
-         */
-        "state"?: BannerInlineState;
-        /**
-          * Adapts the banner-inline color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PButton {
         /**
@@ -1565,6 +1523,48 @@ declare namespace LocalJSX {
         "source"?: string;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PInlineNotification {
+        /**
+          * Action icon of the inline-notification.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the inline-notification.
+         */
+        "actionLabel"?: string;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
+        /**
+          * Description of the inline-notification.
+         */
+        "description"?: string;
+        /**
+          * Heading of the inline-notification.
+         */
+        "heading"?: string;
+        /**
+          * Emitted when the action button is clicked.
+         */
+        "onAction"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines if the inline-notification can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the inline-notification.
+         */
+        "state"?: InlineNotificationState;
+        /**
+          * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2079,7 +2079,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
-        "p-banner-inline": PBannerInline;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
@@ -2093,6 +2092,7 @@ declare namespace LocalJSX {
         "p-grid-item": PGridItem;
         "p-headline": PHeadline;
         "p-icon": PIcon;
+        "p-inline-notification": PInlineNotification;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -2127,7 +2127,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
-            "p-banner-inline": LocalJSX.PBannerInline & JSXBase.HTMLAttributes<HTMLPBannerInlineElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
@@ -2141,6 +2140,7 @@ declare module "@stencil/core" {
             "p-grid-item": LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
+            "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;

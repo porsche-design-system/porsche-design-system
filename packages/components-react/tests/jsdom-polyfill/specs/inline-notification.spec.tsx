@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { componentsReady, PBannerInline } from '@porsche-design-system/components-react';
+import { componentsReady, PInlineNotification } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -9,7 +9,7 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PBannerInline
+      <PInlineNotification
         data-testid="host"
         heading="Some banner title"
         actionLabel="Retry"
@@ -17,7 +17,7 @@ const Sample = (): JSX.Element => {
         onDismiss={() => setCloseEventCounter((prev) => prev + 1)}
       >
         Some banner description.
-      </PBannerInline>
+      </PInlineNotification>
       <div data-testid="debug">
         {`Action Event Counter: ${actionEventCounter}; Close Event Counter: ${closeEventCounter};`}
       </div>
@@ -25,7 +25,7 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PBannerInline', () => {
+describe('PInlineNotification', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
     await componentsReady();
