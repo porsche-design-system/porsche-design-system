@@ -36,6 +36,7 @@ describe('setAriaAttributes()', () => {
   });
 });
 
+// TODO: change test to match each function scope (parseAriaAttributes, throwIfAccessibilityAttributesAreInvalid)
 describe('parseAndGetAccessibilityAttributes()', () => {
   it.each<AriaAttributes | string>([
     {
