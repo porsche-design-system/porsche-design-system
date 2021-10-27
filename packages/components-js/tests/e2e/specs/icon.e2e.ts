@@ -1,4 +1,5 @@
 import {
+  expectA11yToMatchSnapshot,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
@@ -34,13 +35,16 @@ describe('icon', () => {
     const attributes = `${nameAttribute} ${lazyAttribute}`;
 
     const scrollContainer = `<div style="height:1000px"></div>`;
-    const content = `${isScrollable ? scrollContainer : ''}<p-icon ${attributes} />`;
+    const content = `${
+      isScrollable ? scrollContainer : ''
+    }<p-icon ${attributes} accessibility="{ 'aria-label': 'Some label' }" />`;
 
     await setContentWithDesignSystem(page, content);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
   const getIcon = async () => selectNode(page, 'p-icon >>> i');
+  const getIconSVG = async () => selectNode(page, 'p-icon >>> i > svg');
   const getContent = (el: ElementHandle): Promise<string> => getProperty(el, 'innerHTML') as Promise<string>;
 
   describe('loading behavior', () => {
@@ -279,6 +283,15 @@ describe('icon', () => {
 
       expect(await getContent(await getIcon())).toBe(iconContent);
       expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(224, 0, 0)');
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initIcon();
+      const icon = await getIconSVG();
+
+      await expectA11yToMatchSnapshot(page, icon);
     });
   });
 });
