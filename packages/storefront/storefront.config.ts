@@ -67,6 +67,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../assets/CHANGELOG.md'),
       ],
+      'Browser Notification': [
+        // @ts-ignore
+        () => import('@/../../../node_modules/@porsche-design-system/browser-notification/CHANGELOG.md'),
+      ],
     },
     Versioning: [
       // @ts-ignore
