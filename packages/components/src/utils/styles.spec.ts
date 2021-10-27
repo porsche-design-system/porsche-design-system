@@ -7,8 +7,8 @@ import {
   getFocusStyles,
   getFormTextHiddenJssStyle,
   getHoverStyles,
-  getRequiredStyle,
-  getStateMessageStyle,
+  getRequiredStyles,
+  getStateMessageStyles,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
@@ -138,19 +138,19 @@ describe('getFormTextHiddenJssStyle()', () => {
   });
 });
 
-describe('getRequiredStyle()', () => {
+describe('getRequiredStyles()', () => {
   it('should return correct styles', () => {
-    expect(getRequiredStyle('red')).toMatchSnapshot();
+    expect(getRequiredStyles('red')).toMatchSnapshot();
   });
 });
 
-describe('getStateMessageStyle()', () => {
+describe('getStateMessageStyles()', () => {
   it.each<GetStateMessageOptions>([
     { stateColor: 'red' },
     { stateColor: 'red', margin: 8 },
     { stateColor: 'red', transitionProperty: 'display' },
     { stateColor: 'red', margin: 8, transitionProperty: 'display' },
   ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getStateMessageStyle(params)).toMatchSnapshot();
+    expect(getStateMessageStyles(params)).toMatchSnapshot();
   });
 });
