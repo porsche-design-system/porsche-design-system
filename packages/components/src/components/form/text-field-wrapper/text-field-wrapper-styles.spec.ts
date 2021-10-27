@@ -4,30 +4,36 @@ import { FormState } from '../../../types';
 import { UnitPositionType } from './text-field-wrapper-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState, string, UnitPositionType]>([
-    [false, 'none', '', 'prefix'],
-    [false, 'none', 'km/h', 'prefix'],
-    [false, 'none', 'kg/m3', 'suffix'],
-    [false, 'success', '', 'prefix'],
-    [false, 'success', 'km/h', 'prefix'],
-    [false, 'success', 'kg/m3', 'suffix'],
-    [false, 'error', '', 'prefix'],
-    [false, 'error', 'km/h', 'prefix'],
-    [false, 'error', 'kg/m3', 'suffix'],
-    [true, 'none', '', 'prefix'],
-    [true, 'none', 'km/h', 'prefix'],
-    [true, 'none', 'kg/m3', 'prefix'],
-    [true, 'success', '', 'prefix'],
-    [true, 'success', 'km/h', 'prefix'],
-    [true, 'success', 'kg/m3', 'prefix'],
-    [true, 'error', '', 'prefix'],
-    [true, 'error', 'km/h', 'prefix'],
-    [true, 'error', 'kg/m3', 'prefix'],
-    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', '', 'prefix'],
+  it.each<[BreakpointCustomizable<boolean>, FormState, string, UnitPositionType, boolean]>([
+    [false, 'none', '', 'prefix', false],
+    [false, 'none', 'km/h', 'prefix', false],
+    [false, 'none', 'kg/m3', 'suffix', false],
+    [false, 'success', '', 'prefix', false],
+    [false, 'success', 'km/h', 'prefix', false],
+    [false, 'success', 'kg/m3', 'suffix', false],
+    [false, 'error', '', 'prefix', false],
+    [false, 'error', 'km/h', 'prefix', false],
+    [false, 'error', 'kg/m3', 'suffix', false],
+    [true, 'none', '', 'prefix', false],
+    [true, 'none', 'km/h', 'prefix', false],
+    [true, 'none', 'kg/m3', 'prefix', false],
+    [true, 'success', '', 'prefix', false],
+    [true, 'success', 'km/h', 'prefix', false],
+    [true, 'success', 'kg/m3', 'prefix', false],
+    [true, 'error', '', 'prefix', false],
+    [true, 'error', 'km/h', 'prefix', false],
+    [true, 'error', 'kg/m3', 'prefix', false],
+    [false, 'none', '', 'prefix', true],
+    [false, 'success', '', 'prefix', true],
+    [false, 'error', '', 'prefix', true],
+    [true, 'none', '', 'prefix', true],
+    [true, 'success', '', 'prefix', true],
+    [true, 'error', '', 'prefix', true],
+    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', '', 'prefix', false],
   ])(
     'should return correct css for hideLabel: %o, state: %s, unit: %s and unitPosition: %s',
-    (hideLabel, state, unit, unitPosition) => {
-      expect(getComponentCss(hideLabel, state, unit, unitPosition)).toMatchSnapshot();
+    (hideLabel, state, unit, unitPosition, isPassword) => {
+      expect(getComponentCss(hideLabel, state, unit, unitPosition, isPassword)).toMatchSnapshot();
     }
   );
 });
