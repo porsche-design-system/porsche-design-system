@@ -16,7 +16,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with label, description and placeholder">
-        <PTextFieldWrapper label="Label with description" description="Some description">
+        <PTextFieldWrapper label="Label with description and placeholder" description="Some description">
           <input type="text" placeholder="Some placeholder" />
         </PTextFieldWrapper>
       </div>

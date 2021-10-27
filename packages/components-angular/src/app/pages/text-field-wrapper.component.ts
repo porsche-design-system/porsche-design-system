@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with label, description and placeholder">
-      <p-text-field-wrapper [label]="'Label with description'" [description]="'Some description'">
+      <p-text-field-wrapper [label]="'Label with description and placeholder'" [description]="'Some description'">
         <input type="text" placeholder="Some placeholder" />
       </p-text-field-wrapper>
     </div>
