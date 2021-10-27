@@ -5,12 +5,12 @@ import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper'
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
-  const distDir = path.resolve(indexJsFile, '../..');
-  const chunksDir = path.resolve(distDir, 'components');
+  const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
+    version: string;
+  };
+  const chunkDir = path.resolve(indexJsFile, '../../components');
   const chunkFileNames: string[] = Object.values(COMPONENT_CHUNKS_MANIFEST);
-  const chunkFiles = [indexJsFile].concat(
-    chunkFileNames.map((chunkFileName) => path.resolve(chunksDir, chunkFileName))
-  );
+  const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName)));
 
   const getChunkContent = (chunkName: string): string => {
     const [chunkFile] = chunkFiles.filter((x) => x.includes(chunkName));
@@ -224,7 +224,15 @@ describe('chunks', () => {
 
     it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('inset:');
+
+      // core chunk is identified by version in name
+      if (chunkFileName.includes(version)) {
+        // including inset: exactly once is okay because of JSS default units
+        // https://github.com/cssinjs/jss/blob/dbef5de51eaa7e59a05ff7eeb099e9c6fcc94fa5/packages/jss-plugin-default-unit/src/defaultUnits.js#L98
+        expect(content.match(/inset:/).length).toBe(1);
+      } else {
+        expect(content).not.toContain('inset:');
+      }
     });
 
     // TODO: enable this test once chunking is under control
