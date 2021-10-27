@@ -131,7 +131,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
 
-    ...getStateMessageStyles({ errorColor }),
+    ...getStateMessageStyles({ stateColor }),
   });
 };
 
