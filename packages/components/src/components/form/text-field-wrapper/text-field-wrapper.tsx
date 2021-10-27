@@ -54,7 +54,6 @@ export class TextFieldWrapper {
   private isPassword: boolean;
 
   public connectedCallback(): void {
-    throwIfUnitLengthExceeded(this.unit);
     attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
@@ -75,6 +74,7 @@ export class TextFieldWrapper {
       this.unitPosition,
       this.isPassword
     );
+    throwIfUnitLengthExceeded(this.unit);
   }
 
   public componentDidRender(): void {

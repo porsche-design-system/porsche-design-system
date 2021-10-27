@@ -15,17 +15,6 @@ describe('text-field-wrapper', () => {
 
       expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
     });
-
-    it('should call throwIfUnitLengthExceeded()', () => {
-      const component = new TextFieldWrapper();
-      const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
-
-      try {
-        component.connectedCallback();
-      } catch (e) {}
-
-      expect(spy).toBeCalledWith('');
-    });
   });
 
   describe('componentWillLoad', () => {
@@ -51,6 +40,19 @@ describe('text-field-wrapper', () => {
       } catch (e) {}
 
       expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
+    });
+  });
+
+  describe('componentWillRender', () => {
+    it('should call throwIfUnitLengthExceeded()', () => {
+      const component = new TextFieldWrapper();
+      const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+
+      try {
+        component.componentWillRender();
+      } catch (e) {}
+
+      expect(spy).toBeCalledWith('');
     });
   });
 
