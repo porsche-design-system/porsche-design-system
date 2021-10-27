@@ -21,7 +21,8 @@ export const getComponentCss = (
 ): string => {
   const themedColors = getThemedColors(theme);
   const backgroundColor = themedColors[`${state}SoftColor`];
-  const borderAndIconColor = themedColors[`${state}Color`];
+  const borderColor = themedColors[`${state}Color`];
+  const iconColor = getThemedColors('light')[`${state}Color`];
 
   return getCss({
     ...buildHostStyles(
@@ -29,12 +30,12 @@ export const getComponentCss = (
         display: 'grid',
         gridTemplateColumns: '1fr auto',
         gridTemplateRows: 'auto',
-        gridRowGap: pxToRemWithUnit(4),
+        gridRowGap: pxToRemWithUnit(16),
         alignItems: 'start',
         justifyItems: 'start',
         padding: pxToRemWithUnit(16),
         background: backgroundColor,
-        borderLeft: `${pxToRemWithUnit(4)} solid ${borderAndIconColor}`,
+        borderLeft: `${pxToRemWithUnit(4)} solid ${borderColor}`,
         [mediaQueryS]: {
           gridTemplateColumns: 'auto 1fr auto auto',
         },
@@ -45,7 +46,7 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'inline-flex',
         marginRight: pxToRemWithUnit(8),
-        color: borderAndIconColor,
+        color: iconColor,
       },
     },
     content: {

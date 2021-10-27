@@ -19,7 +19,9 @@ const replaceHeadline = (str: string): string => {
   const headline =
     cleanedTagName === 'headline'
       ? `# Typography\n\n## ${componentHeadline}`
-      : cleanedTagName === 'text'
+      : cleanedTagName === 'inline-notification'
+      ? `# Notifications\n\n## ${componentHeadline}`
+      : cleanedTagName === 'text' || cleanedTagName === 'banner'
       ? `## ${componentHeadline}`
       : `# ${componentHeadline}`;
 
