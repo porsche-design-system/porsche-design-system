@@ -15,8 +15,8 @@ To reference an icon just use the `name` property with a predefined icon id.
 
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
 With the use of SVG icons, there are options to enhance accessibility to users using screen readers. Here are some good practices:
-
-**If icons are purely decorative or are used in combination with text, hide the icon for screen readers:**
+* Always provide a textual description through **ARIA** with the `accessibility` property to expose a more descriptive experience to screen reader users.
+* If icons are purely decorative or are used in combination with text, hide the icon for screen readers:
 ```html
 <p-icon name="arrow" aria-hidden="true" />
 ```
@@ -88,23 +88,23 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
     color = 'brand';
     
     get name() {
-      return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria-label="${capitalCase(x)} icon"></p-icon>`).join('\n');
+      return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" accessibility="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
     }
     
     get sizeMarkup() {
       const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-icon size="${this.size}" name="highway" aria-label="Highway icon"${style}></p-icon>`
+      return `<p-icon size="${this.size}" name="highway" accessibility="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
     }
     
     get colorMarkup() {
       const style = this.color === 'inherit' ? ' style="color: deeppink"' : '';
-      return `<p-icon name="highway" color="${this.color}" aria-label="Highway icon"${style}></p-icon>`
+      return `<p-icon name="highway" color="${this.color}" accessibility="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
     }
     
     custom =
-`<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" aria-label="Icon for social media platform Kaixin"></p-icon>`;
+`<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" accessibility="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
 
     lazy =
-`<p-icon name="information" lazy="true" aria-label="Information icon" />`;
+`<p-icon name="information" lazy="true" accessibility="{ 'aria-label': 'Information icon' }" />`;
   }
 </script>

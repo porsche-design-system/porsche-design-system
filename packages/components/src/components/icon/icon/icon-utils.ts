@@ -4,7 +4,16 @@
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName } from '../../../types';
-import { paramCaseToCamelCase, pdsFetch } from '../../../utils';
+import {
+  paramCaseToCamelCase,
+  parseAriaAttributes,
+  pdsFetch,
+  throwIfAccessibilityAttributesAreInvalid,
+} from '../../../utils';
+import { AriaAttributes, SelectedAriaAttributes } from '../../../types';
+
+export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type IconAriaAttributes = typeof ICON_ARIA_ATTRIBUTES[number];
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
@@ -43,4 +52,17 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
   // Only occurs if consumer is not using typescript -> necessary?
   console.warn('Please provide either an name property or a source property!');
   return buildIconUrl(DEFAULT_ICON_NAME);
+};
+
+export const patchAccessibilityToSVG = (
+  content: string,
+  rawAccessibility: SelectedAriaAttributes<IconAriaAttributes>
+): string => {
+  const accessibility = parseAriaAttributes(rawAccessibility);
+  const attributeKeys = accessibility ? (Object.keys(accessibility) as (keyof AriaAttributes)[]) : [];
+  throwIfAccessibilityAttributesAreInvalid(attributeKeys, ICON_ARIA_ATTRIBUTES);
+
+  return attributeKeys.length
+    ? content.replace('<svg', `<svg role="img" aria-label="${accessibility['aria-label']}"`)
+    : content;
 };
