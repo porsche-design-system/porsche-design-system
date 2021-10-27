@@ -98,33 +98,33 @@ describe('text-field-wrapper', () => {
       await initTextField({ type: 'number' });
       const input = await getInput();
 
-      expect(await getAttribute(input, 'style')).toBe('');
+      expect(await getAttribute(input, 'style')).toBeNull();
 
       await setProperty(input, 'unit', 'km/h');
 
-      expect(await getAttribute(input, 'style')).toBe('asd');
+      expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
     });
 
     it('should remove inline style on input when unit is removed', async () => {
       await initTextField({ type: 'number', hasUnit: true });
       const input = await getInput();
 
-      expect(await getAttribute(input, 'style')).toBe('asd');
+      expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
 
       await removeAttribute(input, 'unit');
 
-      expect(await getAttribute(input, 'style')).toBe('');
+      expect(await getAttribute(input, 'style')).toBeNull();
     });
 
     it('should remove inline style on input when input type is changed', async () => {
       await initTextField({ type: 'number', hasUnit: true });
       const input = await getInput();
 
-      expect(await getAttribute(input, 'style')).toBe('asd');
+      expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
 
       await setProperty(input, 'type', 'text');
 
-      expect(await getAttribute(input, 'style')).toBe('');
+      expect(await getAttribute(input, 'style')).toBeNull();
     });
   });
 
