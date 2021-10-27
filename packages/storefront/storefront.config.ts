@@ -92,8 +92,16 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/content/accordion/accordion.props.md`),
       ],
     },
-    Banner: {
-      Examples: [
+    Banner: [
+      // @ts-ignore
+      () => import('@/../../components/src/components/feedback/banner/banner.redirect.md'),
+    ],
+    Notifications: {
+      'Inline Notification': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.examples.md'),
+      ],
+      Banner: [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
       ],
@@ -103,17 +111,9 @@ export const config: StorefrontConfig = {
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
-      ],
-    },
-    'Banner Inline': {
-      Examples: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.examples.md'),
-      ],
-      Props: [
-        // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],
     },
     Button: {
