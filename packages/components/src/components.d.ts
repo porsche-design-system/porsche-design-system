@@ -811,7 +811,7 @@ export namespace Components {
          */
         "unit"?: string;
         /**
-          * The unit text.
+          * The unit position.
          */
         "unitPosition"?: UnitPositionType;
     }
@@ -1966,7 +1966,7 @@ declare namespace LocalJSX {
          */
         "unit"?: string;
         /**
-          * The unit text.
+          * The unit position.
          */
         "unitPosition"?: UnitPositionType;
     }

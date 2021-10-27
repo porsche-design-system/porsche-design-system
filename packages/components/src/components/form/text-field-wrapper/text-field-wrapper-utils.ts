@@ -14,8 +14,22 @@ export const getInputUnitPadding = (
   return unitPosition === 'prefix'
     ? `${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
         unitElementWidth
-      )} !important`
+      )}`
     : `${pxToRemWithUnit(padding)} ${pxToRemWithUnit(unitElementWidth)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
         padding
-      )} !important`;
+      )}`;
+};
+
+export const setInputUnitStyles = (
+  unit: string,
+  input: HTMLInputElement,
+  unitElementWidth: number,
+  unitPosition: UnitPositionType,
+  state: FormState
+): void => {
+  if (!unit || input.type !== 'number') {
+    input.style.cssText = '';
+  } else if (unit && input.type === 'number') {
+    input.style.setProperty('padding', getInputUnitPadding(unitElementWidth, unitPosition, state), 'important');
+  }
 };

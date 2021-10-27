@@ -10,17 +10,14 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   observeAttributes,
-  pxToRemWithUnit,
-  removeAttribute,
   setAriaAttributes,
-  setAttribute,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 import type { UnitPositionType } from './text-field-wrapper-utils';
-import { getInputUnitPadding } from './text-field-wrapper-utils';
+import { setInputUnitStyles } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -81,7 +78,7 @@ export class TextFieldWrapper {
 
   public componentDidRender(): void {
     // needs to happen after render in order to have unitElement defined
-    this.setInputUnitStyles();
+    setInputUnitStyles(this.unit, this.input, this.unitElement?.offsetWidth, this.unitPosition, this.state);
 
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -203,13 +200,5 @@ export class TextFieldWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
-  };
-
-  private setInputUnitStyles = (): void => {
-    if (!this.unit || this.input.type !== 'number') {
-      this.input.style.cssText = '';
-    } else if (this.unit && this.input.type === 'number') {
-      this.input.style.padding = getInputUnitPadding(this.unitElement?.offsetWidth, this.unitPosition, this.state);
-    }
   };
 }

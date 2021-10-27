@@ -93,44 +93,6 @@ describe('text-field-wrapper', () => {
     expect(await getLabel()).not.toBeNull();
   });
 
-  describe('input type number', () => {
-    it('should set inline style on input when unit is added', async () => {
-      await initTextField({ type: 'number' });
-      const input = await getInput();
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px');
-
-      await setProperty(input, 'unit', 'km/h');
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px 11px 11px 61px');
-    });
-
-    it('should remove inline style on input when unit is removed', async () => {
-      await initTextField({ type: 'number', hasUnit: true });
-      const input = await getInput();
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px 11px 11px 61px');
-
-      await removeAttribute(input, 'unit');
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px');
-    });
-
-    it('should remove inline style on input when input type is changed', async () => {
-      await initTextField({ type: 'number', hasUnit: true });
-      const input = await getInput();
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px 11px 11px 61px');
-
-      await setProperty(input, 'type', 'text');
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(input, 'padding')).toBe('11px');
-    });
-  });
-
   describe('input type password', () => {
     it('should disable input and toggle password button when input is disabled programmatically', async () => {
       await initTextField({ type: 'password', hasLabel: true });
