@@ -8,6 +8,8 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFormTextHiddenJssStyle,
+  getRequiredStyle,
+  getStateMessageStyle,
   getThemedColors,
   getThemedStateColors,
   getTransition,
@@ -114,13 +116,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         },
       },
     },
-    // @mixin required() {
-    required: {
-      '&::after': {
-        content: '" *"',
-        color: errorColor,
-      },
-    },
+    ...getRequiredStyle(errorColor),
+
     icon: {
       position: 'absolute',
       bottom: pxToRemWithUnit(12),
@@ -133,16 +130,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         transform: 'rotate3d(0,0,1,180deg)',
       },
     },
-    // @mixin state-message() {
-    message: {
-      display: 'flex',
-      marginTop: pxToRemWithUnit(4),
-      color: stateColor,
-      transition: getTransition('color'),
-      '&__icon': {
-        marginRight: pxToRemWithUnit(4),
-      },
-    },
+
+    ...getStateMessageStyle({ errorColor }),
   });
 };
 

@@ -326,6 +326,73 @@ Object {
 }
 `;
 
+exports[`getRequiredStyle() should return correct styles 1`] = `
+Object {
+  "required": Object {
+    "&::after": Object {
+      "color": "red",
+      "content": "\\" *\\"",
+    },
+  },
+}
+`;
+
+exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red' } 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "red",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', margin: 8 } 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.5rem",
+    },
+    "color": "red",
+    "display": "flex",
+    "marginTop": "0.5rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', margin: 8, transitionProperty: 'display' } 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.5rem",
+    },
+    "color": "red",
+    "display": "flex",
+    "marginTop": "0.5rem",
+    "transition": "display var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', transitionProperty: 'display' } 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "red",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "display var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
 exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
 Object {
   "clip": "auto",

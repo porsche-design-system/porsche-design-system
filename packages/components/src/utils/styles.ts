@@ -187,3 +187,40 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
   width: isCheckboxOrRadio ? 'auto' : 'fit-content',
   padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });
+
+export const getRequiredStyle = (errorColor: string): JssStyle => ({
+  required: {
+    '&::after': {
+      content: '" *"',
+      color: errorColor,
+    },
+  },
+});
+
+export type GetStateMessageOptions = {
+  stateColor: string;
+  margin?: number;
+  transitionProperty?: keyof PropertiesHyphen;
+};
+
+export const getStateMessageStyle = (opts?: GetStateMessageOptions): JssStyle => {
+  const options: GetStateMessageOptions = {
+    margin: 4,
+    transitionProperty: 'color',
+    ...opts,
+  };
+
+  const { stateColor, margin, transitionProperty } = options;
+
+  return {
+    message: {
+      display: 'flex',
+      marginTop: pxToRemWithUnit(margin),
+      color: stateColor,
+      transition: getTransition(transitionProperty),
+      '&__icon': {
+        marginRight: pxToRemWithUnit(margin),
+      },
+    },
+  };
+};
