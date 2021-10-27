@@ -11,8 +11,8 @@ import {
   getCss,
   getFocusStyles,
   getFormTextHiddenJssStyle,
-  getRequiredStyle,
-  getStateMessageStyle,
+  getRequiredStyles,
+  getStateMessageStyles,
   getThemedColors,
   getThemedStateColors,
   getTransition,
@@ -217,8 +217,8 @@ export const getComponentCss = (
       },
     },
 
-    ...getRequiredStyle(errorColor),
-    ...getStateMessageStyle({ stateColor }),
+    ...getRequiredStyles(errorColor),
+    ...getStateMessageStyles({ stateColor }),
 
     'sr-only': {
       ...srOnly(),

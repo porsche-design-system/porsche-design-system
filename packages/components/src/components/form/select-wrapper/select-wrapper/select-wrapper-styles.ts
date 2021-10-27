@@ -8,8 +8,8 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFormTextHiddenJssStyle,
-  getRequiredStyle,
-  getStateMessageStyle,
+  getRequiredStyles,
+  getStateMessageStyles,
   getThemedColors,
   getThemedStateColors,
   getTransition,
@@ -116,7 +116,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         },
       },
     },
-    ...getRequiredStyle(errorColor),
+    ...getRequiredStyles(errorColor),
 
     icon: {
       position: 'absolute',
@@ -131,7 +131,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
 
-    ...getStateMessageStyle({ errorColor }),
+    ...getStateMessageStyles({ errorColor }),
   });
 };
 

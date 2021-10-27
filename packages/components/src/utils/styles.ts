@@ -188,7 +188,7 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
   padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });
 
-export const getRequiredStyle = (errorColor: string): JssStyle => ({
+export const getRequiredStyles = (errorColor: string): Styles => ({
   required: {
     '&::after': {
       content: '" *"',
@@ -203,7 +203,7 @@ export type GetStateMessageOptions = {
   transitionProperty?: keyof PropertiesHyphen;
 };
 
-export const getStateMessageStyle = (opts?: GetStateMessageOptions): JssStyle => {
+export const getStateMessageStyles = (opts?: GetStateMessageOptions): Styles => {
   const options: GetStateMessageOptions = {
     margin: 4,
     transitionProperty: 'color',
