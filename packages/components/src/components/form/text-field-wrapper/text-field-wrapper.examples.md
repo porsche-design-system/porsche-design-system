@@ -14,7 +14,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
-  </select> 
+  </select>
 </Playground>
 
 ---
