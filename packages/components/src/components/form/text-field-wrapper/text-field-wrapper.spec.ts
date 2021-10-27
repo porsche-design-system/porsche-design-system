@@ -1,4 +1,5 @@
 import * as domUtils from '../../../utils/dom';
+import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as attributeObserverUtils from '../../../utils/attribute-observer';
 
@@ -13,6 +14,17 @@ describe('text-field-wrapper', () => {
       component.connectedCallback();
 
       expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
+    });
+
+    it('should call throwIfUnitLengthExceeded()', () => {
+      const component = new TextFieldWrapper();
+      const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+
+      try {
+        component.connectedCallback();
+      } catch (e) {}
+
+      expect(spy).toBeCalledWith('');
     });
   });
 

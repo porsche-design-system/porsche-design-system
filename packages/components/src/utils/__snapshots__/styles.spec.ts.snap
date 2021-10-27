@@ -326,7 +326,7 @@ Object {
 }
 `;
 
-exports[`getRequiredStyle() should return correct styles 1`] = `
+exports[`getRequiredStyles() should return correct styles 1`] = `
 Object {
   "required": Object {
     "&::after": Object {
@@ -337,7 +337,7 @@ Object {
 }
 `;
 
-exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red' } 1`] = `
+exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red' } 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
@@ -351,7 +351,7 @@ Object {
 }
 `;
 
-exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', margin: 8 } 1`] = `
+exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', margin: 8 } 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
@@ -365,7 +365,7 @@ Object {
 }
 `;
 
-exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', margin: 8, transitionProperty: 'display' } 1`] = `
+exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', margin: 8, transitionProperty: 'display' } 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
@@ -379,7 +379,7 @@ Object {
 }
 `;
 
-exports[`getStateMessageStyle() should return correct JssStyle for params: { stateColor: 'red', transitionProperty: 'display' } 1`] = `
+exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', transitionProperty: 'display' } 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
