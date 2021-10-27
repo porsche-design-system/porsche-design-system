@@ -8,7 +8,7 @@ import {
 } from '../../../utils';
 import type { IconName, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
-import { INLINE_NOTIFICATION_STATES, getIconName } from './inline-notification-utils';
+import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 @Component({
@@ -37,7 +37,7 @@ export class InlineNotification {
   @Prop() public actionLoading?: boolean = false;
 
   /** Action icon of the inline-notification. */
-  @Prop() public actionIcon?: IconName = 'refresh';
+  @Prop() public actionIcon?: IconName = 'arrow-head-right';
 
   /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -58,6 +58,7 @@ export class InlineNotification {
   }
 
   public render(): JSX.Element {
+    const bannerId = 'banner';
     const labelId = 'label';
     const descriptionId = 'description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -65,13 +66,7 @@ export class InlineNotification {
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <div
-          class="content"
-          role={this.state === 'warning' || this.state === 'error' ? 'alert' : 'status'}
-          aria-live="polite"
-          aria-labelledby={labelId}
-          aria-describedby={descriptionId}
-        >
+        <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
           {hasHeading(this.host, this.heading) && (
             <PrefixedTagNames.pHeadline id={labelId} variant="headline-5">
               {this.heading || <slot name="heading" />}
@@ -95,6 +90,7 @@ export class InlineNotification {
             type="button"
             icon="close"
             hideLabel={true}
+            aria-controls={bannerId}
             onClick={this.dismiss.emit}
           >
             Close notification
