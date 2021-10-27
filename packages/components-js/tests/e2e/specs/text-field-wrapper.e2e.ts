@@ -7,7 +7,6 @@ import {
   getOutlineStyle,
   getProperty,
   initAddEventListener,
-  removeAttribute,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -43,7 +42,7 @@ describe('text-field-wrapper', () => {
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
     state?: FormState;
-    type?: 'number' | 'text' | 'password' | 'search';
+    type?: 'text' | 'password' | 'search';
     hasLabel?: boolean;
     hasUnit?: boolean;
   };
@@ -56,7 +55,6 @@ describe('text-field-wrapper', () => {
       state = 'none',
       type = 'text',
       hasLabel = false,
-      hasUnit = false,
     } = opts ?? {};
 
     const slottedLabel = useSlottedLabel
@@ -69,12 +67,11 @@ describe('text-field-wrapper', () => {
       ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
     const label = hasLabel ? ' label="Some label"' : '';
-    const unit = hasUnit ? ' unit="km/h"' : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper state="${state}"${label}${unit}>
+      <p-text-field-wrapper state="${state}"${label}>
         ${slottedLabel}
         ${slottedDescription}
         <input type="${type}" />
