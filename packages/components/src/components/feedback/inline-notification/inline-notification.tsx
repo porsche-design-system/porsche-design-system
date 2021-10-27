@@ -8,7 +8,7 @@ import {
 } from '../../../utils';
 import type { IconName, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
-import { BANNER_INLINE_STATES, getIconName } from './inline-notification-utils';
+import { INLINE_NOTIFICATION_STATES, getIconName } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 @Component({
@@ -53,7 +53,7 @@ export class InlineNotification {
   }
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.state, BANNER_INLINE_STATES, 'state');
+    throwIfValueIsInvalid(this.state, INLINE_NOTIFICATION_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
   }
 

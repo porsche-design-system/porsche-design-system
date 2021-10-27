@@ -12,7 +12,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
-import { BANNER_INLINE_STATES } from '@porsche-design-system/components/src/components/feedback/inline-notification/inline-notification-utils';
+import { INLINE_NOTIFICATION_STATES } from '@porsche-design-system/components/src/components/feedback/inline-notification/inline-notification-utils';
 
 let page: Page;
 
@@ -145,7 +145,7 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  it.each<InlineNotificationState>(BANNER_INLINE_STATES)(
+  it.each<InlineNotificationState>(INLINE_NOTIFICATION_STATES)(
     'should expose correct accessibility tree properties for state: %s',
     async (state) => {
       await initBanner({ state });
