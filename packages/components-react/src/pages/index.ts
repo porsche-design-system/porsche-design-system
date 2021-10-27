@@ -1,6 +1,5 @@
 export * from './Accordion';
 export * from './Banner';
-export * from './InlineNotification';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './ButtonPure';
@@ -15,6 +14,7 @@ export * from './Flex';
 export * from './Grid';
 export * from './Headline';
 export * from './Icon';
+export * from './InlineNotification';
 export * from './Link';
 export * from './LinkPure';
 export * from './LinkSocial';

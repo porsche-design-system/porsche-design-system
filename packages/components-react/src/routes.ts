@@ -20,11 +20,6 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPage,
   },
   {
-    name: 'Inline Notification',
-    path: '/inline-notification',
-    component: fromPages.InlineNotificationPage,
-  },
-  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage,
@@ -78,6 +73,11 @@ export const routes: RouteType[] = [
     name: 'Icon',
     path: '/icon',
     component: fromPages.IconPage,
+  },
+  {
+    name: 'Inline Notification',
+    path: '/inline-notification',
+    component: fromPages.InlineNotificationPage,
   },
   {
     name: 'Link',

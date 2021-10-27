@@ -1,6 +1,5 @@
 import { AccordionComponent } from './accordion.component';
 import { BannerComponent } from './banner.component';
-import { InlineNotificationComponent } from './inline-notification.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
@@ -16,6 +15,7 @@ import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
+import { InlineNotificationComponent } from './inline-notification.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
@@ -46,7 +46,6 @@ import { TypographyCyrilComponent } from './typography-cyril.component';
 export const pages = [
   AccordionComponent,
   BannerComponent,
-  InlineNotificationComponent,
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
@@ -62,6 +61,7 @@ export const pages = [
   GridComponent,
   HeadlineComponent,
   IconComponent,
+  InlineNotificationComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -92,7 +92,6 @@ export const pages = [
 
 export * from './accordion.component';
 export * from './banner.component';
-export * from './inline-notification.component';
 export * from './button.component';
 export * from './button-group.component';
 export * from './button-pure.component';
@@ -108,6 +107,7 @@ export * from './form-wrapper-binding.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
+export * from './inline-notification.component';
 export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';

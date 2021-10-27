@@ -25,11 +25,6 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.BannerComponent,
   },
   {
-    name: 'Inline Notification',
-    path: 'inline-notification',
-    component: fromPages.InlineNotificationComponent,
-  },
-  {
     name: 'Button',
     path: 'button',
     component: fromPages.ButtonComponent,
@@ -83,6 +78,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Icon',
     path: 'icon',
     component: fromPages.IconComponent,
+  },
+  {
+    name: 'Inline Notification',
+    path: 'inline-notification',
+    component: fromPages.InlineNotificationComponent,
   },
   {
     name: 'Link',

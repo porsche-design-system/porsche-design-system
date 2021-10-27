@@ -1,5 +1,7 @@
 # Notifications
 
+## Banner
+
 ## When to use
 
   • When you need to inform user about important changes or conditions in the interface.  
