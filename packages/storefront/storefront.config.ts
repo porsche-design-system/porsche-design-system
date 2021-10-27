@@ -100,26 +100,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/../../components/src/components/feedback/banner/banner.redirect.md'),
     ],
-    Notifications: {
-      'Inline Notification': [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
-      ],
-      Banner: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.usage.md'),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
-      ],
-    },
     Button: {
       Examples: [
         // @ts-ignore
@@ -342,6 +322,26 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/content/modal/modal.props.md'),
+      ],
+    },
+    Notifications: {
+      'Inline Notification': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
+      ],
+      Banner: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.usage.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],
     },
     Pagination: {

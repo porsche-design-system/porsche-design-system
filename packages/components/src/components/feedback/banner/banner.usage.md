@@ -1,4 +1,4 @@
-# Banner
+# Notifications
 
 ## When to use
 
