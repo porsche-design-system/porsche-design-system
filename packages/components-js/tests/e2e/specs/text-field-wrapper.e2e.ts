@@ -7,6 +7,7 @@ import {
   getOutlineStyle,
   getProperty,
   initAddEventListener,
+  removeAttribute,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -42,8 +43,9 @@ describe('text-field-wrapper', () => {
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
     state?: FormState;
-    type?: 'text' | 'password' | 'search';
+    type?: 'number' | 'text' | 'password' | 'search';
     hasLabel?: boolean;
+    hasUnit?: boolean;
   };
 
   const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -54,6 +56,7 @@ describe('text-field-wrapper', () => {
       state = 'none',
       type = 'text',
       hasLabel = false,
+      hasUnit = false,
     } = opts ?? {};
 
     const slottedLabel = useSlottedLabel
@@ -66,11 +69,12 @@ describe('text-field-wrapper', () => {
       ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
     const label = hasLabel ? ' label="Some label"' : '';
+    const unit = hasUnit ? ' unit="km/h"' : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper state="${state}"${label}>
+      <p-text-field-wrapper state="${state}"${label}${unit}>
         ${slottedLabel}
         ${slottedDescription}
         <input type="${type}" />
@@ -87,6 +91,41 @@ describe('text-field-wrapper', () => {
     await setProperty(textFieldComponent, 'label', 'Some label');
     await waitForStencilLifecycle(page);
     expect(await getLabel()).not.toBeNull();
+  });
+
+  describe('input type number', () => {
+    it('should set inline style on input when unit is added', async () => {
+      await initTextField({ type: 'number' });
+      const input = await getInput();
+
+      expect(await getAttribute(input, 'style')).toBe('');
+
+      await setProperty(input, 'unit', 'km/h');
+
+      expect(await getAttribute(input, 'style')).toBe('asd');
+    });
+
+    it('should remove inline style on input when unit is removed', async () => {
+      await initTextField({ type: 'number', hasUnit: true });
+      const input = await getInput();
+
+      expect(await getAttribute(input, 'style')).toBe('asd');
+
+      await removeAttribute(input, 'unit');
+
+      expect(await getAttribute(input, 'style')).toBe('');
+    });
+
+    it('should remove inline style on input when input type is changed', async () => {
+      await initTextField({ type: 'number', hasUnit: true });
+      const input = await getInput();
+
+      expect(await getAttribute(input, 'style')).toBe('asd');
+
+      await setProperty(input, 'type', 'text');
+
+      expect(await getAttribute(input, 'style')).toBe('');
+    });
   });
 
   describe('input type password', () => {
