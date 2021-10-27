@@ -61,58 +61,6 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 </p-content-wrapper>"
 `;
 
-exports[`should have no basic DOM regression for p-inline-notification 1`] = `
-"<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
-    outline-offset: 1px !important
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
-  }
-
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important
-  }
-
-  p-text a:hover {
-    color: #d5001c !important
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important
-  }
-
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
-  }
-</style>
-<p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
-</p-icon>
-<div class=\\"content\\" role=\\"alert\\" aria-labelledby=\\"label\\" aria-describedby=\\"description\\">
-  <p-text id=\\"description\\" class=\\"hydrated\\">
-    <slot>
-    </slot>
-  </p-text>
-</div>
-<p-button-pure class=\\"close hydrated\\">
-  Close notification</p-button-pure>"
-`;
-
 exports[`should have no basic DOM regression for p-button 1`] = `
 "<style>
   p-text a {
@@ -277,6 +225,58 @@ exports[`should have no basic DOM regression for p-icon 1`] = `
     </path>
   </svg>
 </i>"
+`;
+
+exports[`should have no basic DOM regression for p-inline-notification 1`] = `
+"<style>
+  p-text a {
+    color: inherit !important;
+    text-decoration: underline !important;
+    transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: transparent solid 1px !important;
+    outline-offset: 1px !important
+  }
+
+  p-text[theme=\\"dark\\"] a:hover {
+    color: #ff0223 !important
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important
+  }
+
+  p-text a:hover {
+    color: #d5001c !important
+  }
+
+  p-text a::-moz-focus-inner {
+    border: 0 !important
+  }
+
+  p-text a:focus {
+    outline-color: currentColor !important
+  }
+
+  p-text a:focus:not(:focus-visible) {
+    outline-color: transparent !important
+  }
+</style>
+<p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
+</p-icon>
+<div id=\\"banner\\" class=\\"content\\" role=\\"status\\" aria-live=\\"polite\\" aria-labelledby=\\"label\\" aria-describedby=\\"description\\">
+  <p-text id=\\"description\\" class=\\"hydrated\\">
+    <slot>
+    </slot>
+  </p-text>
+</div>
+<p-button-pure class=\\"close hydrated\\" aria-controls=\\"banner\\">
+  Close notification</p-button-pure>"
 `;
 
 exports[`should have no basic DOM regression for p-link 1`] = `
