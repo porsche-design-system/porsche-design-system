@@ -207,20 +207,17 @@ export class TextFieldWrapper {
   private setUnitElementWidth = (): void => {
     const unitElementWidth = this.unitElement?.offsetWidth;
     if (!this.unit || this.input.type !== 'number') {
-      removeAttribute(this.input, 'style');
+      this.input.style.cssText = '';
     } else if (this.unit && this.input.type === 'number') {
       const padding = this.state !== 'none' ? 10 : 11;
-      setAttribute(
-        this.input,
-        'style',
+      this.input.style.padding =
         this.unitPosition === 'prefix'
-          ? `padding: ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
-              padding
-            )} ${unitElementWidth}px !important`
-          : `padding: ${pxToRemWithUnit(padding)} ${unitElementWidth}px ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
-              padding
+          ? `${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
+              unitElementWidth
             )} !important`
-      );
+          : `${pxToRemWithUnit(padding)} ${pxToRemWithUnit(unitElementWidth)} ${pxToRemWithUnit(
+              padding
+            )} ${pxToRemWithUnit(padding)} !important`;
     }
   };
 }
