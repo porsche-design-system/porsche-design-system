@@ -101,6 +101,7 @@ describe('text-field-wrapper', () => {
       expect(await getAttribute(input, 'style')).toBeNull();
 
       await setProperty(input, 'unit', 'km/h');
+      await waitForStencilLifecycle(page);
 
       expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
     });
@@ -112,6 +113,7 @@ describe('text-field-wrapper', () => {
       expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
 
       await removeAttribute(input, 'unit');
+      await waitForStencilLifecycle(page);
 
       expect(await getAttribute(input, 'style')).toBeNull();
     });
@@ -123,6 +125,7 @@ describe('text-field-wrapper', () => {
       expect(await getAttribute(input, 'style')).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 61px !important');
 
       await setProperty(input, 'type', 'text');
+      await waitForStencilLifecycle(page);
 
       expect(await getAttribute(input, 'style')).toBeNull();
     });
