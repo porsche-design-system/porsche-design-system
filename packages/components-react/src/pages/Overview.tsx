@@ -105,15 +105,12 @@ export const OverviewPage = (): JSX.Element => {
           <div className="playground light" title="should render default banner">
             <PBanner>
               <span slot="title">Some slotted banner title</span>
-              <span slot="description">Some slotted banner description.</span>
+              <span slot="description">Some slotted banner description</span>
             </PBanner>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
-            <PInlineNotification
-              heading="Some inline-notification heading"
-              description="Some inline-notification description."
-            />
+            <PInlineNotification heading="Some heading" description="Some description" />
           </div>
 
           <div className="playground light" title="should render default divider">
@@ -296,16 +293,13 @@ export const OverviewPage = (): JSX.Element => {
               {allReady && (
                 <PBanner>
                   <span slot="title">Some slotted banner title</span>
-                  <span slot="description">Some slotted banner description.</span>
+                  <span slot="description">Some slotted banner description</span>
                 </PBanner>
               )}
             </div>
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
-              <PInlineNotification
-                heading="Some inline-notification heading"
-                description="Some inline-notification description."
-              />
+              <PInlineNotification heading="Some heading" description="Some description" />
             </div>
 
             <div className="playground light" title="should render default divider with custom prefix">
