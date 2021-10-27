@@ -11,6 +11,8 @@ import {
   getCss,
   getFocusStyles,
   getFormTextHiddenJssStyle,
+  getRequiredStyle,
+  getStateMessageStyle,
   getThemedColors,
   getThemedStateColors,
   getTransition,
@@ -214,23 +216,10 @@ export const getComponentCss = (
         },
       },
     },
-    // @mixin required() {
-    required: {
-      '&::after': {
-        content: '" *"',
-        color: errorColor,
-      },
-    },
-    // @mixin state-message() {
-    message: {
-      display: 'flex',
-      marginTop: pxToRemWithUnit(4),
-      color: stateColor,
-      transition: getTransition('color'),
-      '&__icon': {
-        marginRight: pxToRemWithUnit(4),
-      },
-    },
+
+    ...getRequiredStyle(errorColor),
+    ...getStateMessageStyle({ stateColor }),
+
     'sr-only': {
       ...srOnly(),
       padding: 0,
