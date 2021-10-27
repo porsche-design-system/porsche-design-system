@@ -17,7 +17,6 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import { UnitPositionType } from './text-field-wrapper-utils';
-import { JssStyle } from 'jss';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
 import { FormState } from '../../../types';
 
@@ -65,7 +64,7 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          ...(!unit && { padding: hasState ? pxToRemWithUnit(10) : pxToRemWithUnit(11) }),
+          ...(!unit && { padding: pxToRemWithUnit(hasState ? 10 : 11) }),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
@@ -136,12 +135,12 @@ export const getComponentCss = (
 
         ...(isPassword && {
           '::slotted(input[type="password"]), ::slotted(input[type="text"])': {
-            paddingRight: '3rem',
+            paddingRight: pxToRemWithUnit(48),
           },
         }),
 
         '::slotted(input[type="search"])': {
-          paddingRight: '3rem',
+          paddingRight: pxToRemWithUnit(48),
         },
       })
     ),
@@ -167,9 +166,8 @@ export const getComponentCss = (
         color: textColor,
         transition: getTransition('color'),
 
-        '&:focus': {
-          ...getFocusStyles({ color: color.state.focus, offset: hasState ? -5 : -4 }),
-        },
+        ...getFocusStyles({ color: color.state.focus, offset: hasState ? -5 : -4 }),
+
         '&:hover': {
           color: hoverColor,
         },
@@ -192,7 +190,7 @@ export const getComponentCss = (
         },
       },
       '&__text': {
-        ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
+        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         display: 'block',
         width: 'fit-content',
         transition: getTransition('color'),
@@ -207,9 +205,7 @@ export const getComponentCss = (
           ...((state === 'success' || state === 'error') && {
             '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))':
               {
-                borderColor: addImportantToRule(
-                  state === 'success' ? colorDarken.notification.success : colorDarken.notification.error
-                ),
+                borderColor: addImportantToRule(colorDarken.notification[state]),
               },
           }),
         },

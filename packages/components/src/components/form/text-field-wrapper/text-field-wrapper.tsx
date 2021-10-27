@@ -19,7 +19,7 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
-import { UnitPositionType } from './text-field-wrapper-utils';
+import type { UnitPositionType } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -54,7 +54,6 @@ export class TextFieldWrapper {
   private input: HTMLInputElement;
   private unitElement: HTMLElement;
   private isPassword: boolean;
-  private unitElementWidth: number;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -100,7 +99,7 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const { readOnly, disabled } = this.input;
+    const { readOnly, disabled, type } = this.input;
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
@@ -147,21 +146,19 @@ export class TextFieldWrapper {
                 aria-hidden="true"
               />
             </button>
-          ) : this.input.type === 'search' ? (
+          ) : type === 'search' ? (
             <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
               <span class="sr-only">Search</span>
               <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
             </button>
           ) : (
-            this.input.type === 'number' &&
+            type === 'number' &&
             !!this.unit && (
               <PrefixedTagNames.pText
                 class={unitClasses}
                 tag="span"
                 color="inherit"
-                ref={(el) => {
-                  this.unitElement = el;
-                }}
+                ref={(el) => (this.unitElement = el)}
                 aria-hidden="true"
               >
                 {this.unit.substr(0, 5)}
@@ -208,21 +205,21 @@ export class TextFieldWrapper {
   };
 
   private setUnitElementWidth = (): void => {
-    this.unitElementWidth = this.unitElement?.offsetWidth;
-    if (!this.unit) {
+    const unitElementWidth = this.unitElement?.offsetWidth;
+    if (!this.unit || this.input.type !== 'number') {
       removeAttribute(this.input, 'style');
-    } else {
+    } else if (this.unit && this.input.type === 'number') {
       const padding = this.state !== 'none' ? 10 : 11;
       setAttribute(
         this.input,
         'style',
         this.unitPosition === 'prefix'
-          ? `padding: ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${
-              this.unitElementWidth
-            }px !important`
-          : `padding: ${pxToRemWithUnit(padding)} ${this.unitElementWidth}px ${pxToRemWithUnit(
+          ? `padding: ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
               padding
-            )} ${pxToRemWithUnit(padding)} !important`
+            )} ${unitElementWidth}px !important`
+          : `padding: ${pxToRemWithUnit(padding)} ${unitElementWidth}px ${pxToRemWithUnit(padding)} ${pxToRemWithUnit(
+              padding
+            )} !important`
       );
     }
   };
