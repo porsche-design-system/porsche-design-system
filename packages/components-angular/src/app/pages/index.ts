@@ -1,6 +1,6 @@
 import { AccordionComponent } from './accordion.component';
 import { BannerComponent } from './banner.component';
-import { BannerInlineComponent } from './banner-inline.component';
+import { InlineNotificationComponent } from './inline-notification.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
@@ -46,7 +46,7 @@ import { TypographyCyrilComponent } from './typography-cyril.component';
 export const pages = [
   AccordionComponent,
   BannerComponent,
-  BannerInlineComponent,
+  InlineNotificationComponent,
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
@@ -92,7 +92,7 @@ export const pages = [
 
 export * from './accordion.component';
 export * from './banner.component';
-export * from './banner-inline.component';
+export * from './inline-notification.component';
 export * from './button.component';
 export * from './button-group.component';
 export * from './button-pure.component';

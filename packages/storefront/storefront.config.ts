@@ -99,7 +99,7 @@ export const config: StorefrontConfig = {
     Notifications: {
       'Inline Notification': [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.examples.md'),
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
       ],
       Banner: [
         // @ts-ignore
@@ -111,7 +111,7 @@ export const config: StorefrontConfig = {
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner-inline/banner-inline.props.md'),
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],

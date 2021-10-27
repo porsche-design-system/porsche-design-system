@@ -1,0 +1,15 @@
+<p-inline-notification
+  heading="Some inline-notification heading"
+  description="Some inline-notification description."
+  action-label="Retry"
+  action-icon="reset"
+></p-inline-notification>
+<p-button>Reset</p-button>
+
+<script>
+  const button = document.querySelector('p-button');
+  const inlineNotification = document.querySelector('p-inline-notification');
+
+  button.addEventListener('click', () => (inlineNotification.actionLoading = false));
+  inlineNotification.addEventListener('action', () => (inlineNotification.actionLoading = true));
+</script>

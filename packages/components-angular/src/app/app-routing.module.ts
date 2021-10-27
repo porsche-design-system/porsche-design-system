@@ -25,9 +25,9 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.BannerComponent,
   },
   {
-    name: 'Banner Inline',
-    path: 'banner-inline',
-    component: fromPages.BannerInlineComponent,
+    name: 'Inline Notification',
+    path: 'inline-notification',
+    component: fromPages.InlineNotificationComponent,
   },
   {
     name: 'Button',
@@ -252,14 +252,14 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
-    name: 'Banner Inline Example Events',
-    path: 'banner-inline-example-events',
-    component: fromExamples.BannerInlineExampleEventsComponent,
+    name: 'Inline Notification Example Events',
+    path: 'inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
-    name: 'Banner Inline Example Action Button',
-    path: 'banner-inline-example-action-button',
-    component: fromExamples.BannerInlineExampleActionButtonComponent,
+    name: 'Inline Notification Example Action Button',
+    path: 'inline-notification-example-action-button',
+    component: fromExamples.InlineNotificationExampleActionButtonComponent,
   },
   {
     name: 'Table Example Basic',

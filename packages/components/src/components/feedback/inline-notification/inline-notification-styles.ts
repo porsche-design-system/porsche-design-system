@@ -9,12 +9,12 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import type { Theme } from '../../../types';
-import type { BannerInlineState } from './banner-inline-utils';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryS = mediaQuery('s');
 
 export const getComponentCss = (
-  state: BannerInlineState,
+  state: InlineNotificationState,
   hasAction: boolean,
   hasClose: boolean,
   theme: Theme

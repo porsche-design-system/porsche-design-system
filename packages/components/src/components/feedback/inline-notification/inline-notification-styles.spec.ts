@@ -1,9 +1,9 @@
-import { getComponentCss, getSlottedCss } from './banner-inline-styles';
+import { getComponentCss, getSlottedCss } from './inline-notification-styles';
 import type { Theme } from '../../../types';
-import type { BannerInlineState } from './banner-inline-utils';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[BannerInlineState, boolean, boolean, Theme]>([
+  it.each<[InlineNotificationState, boolean, boolean, Theme]>([
     ['neutral', false, false, 'light'],
     ['warning', false, false, 'light'],
     ['success', false, false, 'light'],
@@ -28,12 +28,12 @@ describe('getComponentCss()', () => {
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
-    const host = document.createElement('p-banner-inline');
+    const host = document.createElement('p-inline-notification');
     expect(getSlottedCss(host)).toMatchSnapshot();
   });
 
   it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-banner-inline');
+    const host = document.createElement('prefixed-p-inline-notification');
     expect(getSlottedCss(host)).toMatchSnapshot();
   });
 });

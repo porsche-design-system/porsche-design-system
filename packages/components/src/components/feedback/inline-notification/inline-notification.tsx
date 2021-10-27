@@ -7,39 +7,39 @@ import {
   throwIfValueIsInvalid,
 } from '../../../utils';
 import type { IconName, Theme } from '../../../types';
-import { getComponentCss, getSlottedCss } from './banner-inline-styles';
-import { BANNER_INLINE_STATES, getIconName } from './banner-inline-utils';
-import type { BannerInlineState } from './banner-inline-utils';
+import { getComponentCss, getSlottedCss } from './inline-notification-styles';
+import { BANNER_INLINE_STATES, getIconName } from './inline-notification-utils';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 @Component({
-  tag: 'p-banner-inline',
+  tag: 'p-inline-notification',
   shadow: true,
 })
-export class BannerInline {
+export class InlineNotification {
   @Element() public host!: HTMLElement;
 
-  /** Heading of the banner-inline. */
+  /** Heading of the inline-notification. */
   @Prop() public heading?: string = '';
 
-  /** Description of the banner-inline. */
+  /** Description of the inline-notification. */
   @Prop() public description?: string = '';
 
-  /** State of the banner-inline. */
-  @Prop() public state?: BannerInlineState = 'neutral';
+  /** State of the inline-notification. */
+  @Prop() public state?: InlineNotificationState = 'neutral';
 
-  /** Defines if the banner-inline can be closed/removed by the user. */
+  /** Defines if the inline-notification can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
 
-  /** Action label of the banner-inline. */
+  /** Action label of the inline-notification. */
   @Prop() public actionLabel?: string;
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
 
-  /** Action icon of the banner-inline. */
+  /** Action icon of the inline-notification. */
   @Prop() public actionIcon?: IconName = 'refresh';
 
-  /** Adapts the banner-inline color depending on the theme. */
+  /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */

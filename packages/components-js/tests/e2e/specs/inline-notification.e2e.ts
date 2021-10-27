@@ -11,8 +11,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { BannerInlineState } from '@porsche-design-system/components/dist/types/bundle';
-import { BANNER_INLINE_STATES } from '@porsche-design-system/components/src/components/feedback/banner-inline/banner-inline-utils';
+import { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
+import { BANNER_INLINE_STATES } from '@porsche-design-system/components/src/components/feedback/inline-notification/inline-notification-utils';
 
 let page: Page;
 
@@ -23,14 +23,14 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const initBanner = (opts?: {
-  state?: BannerInlineState;
+  state?: InlineNotificationState;
   persistent?: boolean;
   actionLabel?: string;
 }): Promise<void> => {
   const { state, persistent, actionLabel } = opts ?? {};
   const attributes = [
-    'heading="Some banner-inline heading."',
-    'description="Some banner-inline description."',
+    'heading="Some inline-notification heading."',
+    'description="Some inline-notification description."',
     state && `state="${state}"`,
     persistent && 'persistent',
     actionLabel && `action-label="${actionLabel}"`,
@@ -42,18 +42,18 @@ const initBanner = (opts?: {
   return setContentWithDesignSystem(
     page,
     `
-    <p-banner-inline ${attributes}>
-    </p-banner-inline>`
+    <p-inline-notification ${attributes}>
+    </p-inline-notification>`
   );
 };
 
-const getHost = () => selectNode(page, 'p-banner-inline');
-const getCloseButton = () => selectNode(page, 'p-banner-inline >>> p-button-pure.close');
-const getActionButton = () => selectNode(page, 'p-banner-inline >>> p-button-pure.action');
+const getHost = () => selectNode(page, 'p-inline-notification');
+const getCloseButton = () => selectNode(page, 'p-inline-notification >>> p-button-pure.close');
+const getActionButton = () => selectNode(page, 'p-inline-notification >>> p-button-pure.action');
 
 it('should render close button with type of "button"', async () => {
   await initBanner();
-  const closeBtnReal = await selectNode(page, 'p-banner-inline >>> p-button-pure >>> button');
+  const closeBtnReal = await selectNode(page, 'p-inline-notification >>> p-button-pure >>> button');
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
@@ -86,7 +86,7 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-banner-inline');
+    await reattachElement(page, 'p-inline-notification');
 
     await closeButton.click();
     await waitForEventSerialization(page);
@@ -117,7 +117,7 @@ describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-banner-inline'], 'componentDidLoad: p-banner-inline').toBe(1);
+    expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
     expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
     expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
@@ -136,7 +136,7 @@ describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-banner-inline'], 'componentDidUpdate: p-banner-inline').toBe(1);
+    expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
@@ -145,11 +145,11 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  it.each<BannerInlineState>(BANNER_INLINE_STATES)(
+  it.each<InlineNotificationState>(BANNER_INLINE_STATES)(
     'should expose correct accessibility tree properties for state: %s',
     async (state) => {
       await initBanner({ state });
-      const wrapper = await selectNode(page, 'p-banner-inline >>> .content');
+      const wrapper = await selectNode(page, 'p-inline-notification >>> .content');
 
       const snapshotWrapper = await page.accessibility.snapshot({
         root: wrapper,

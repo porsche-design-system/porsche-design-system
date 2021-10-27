@@ -20,9 +20,9 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPage,
   },
   {
-    name: 'Banner Inline',
-    path: '/banner-inline',
-    component: fromPages.BannerInlinePage,
+    name: 'Inline Notification',
+    path: '/inline-notification',
+    component: fromPages.InlineNotificationPage,
   },
   {
     name: 'Button',
@@ -243,14 +243,14 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExamplePage,
   },
   {
-    name: 'Banner Inline Example Events',
-    path: '/banner-inline-example-events',
-    component: fromExamples.BannerInlineExampleEventsPage,
+    name: 'Inline Notification Example Events',
+    path: '/inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsPage,
   },
   {
-    name: 'Banner Inline Example Action Button',
-    path: '/banner-inline-example-action-button',
-    component: fromExamples.BannerInlineExampleActionButtonPage,
+    name: 'Inline Notification Example Action Button',
+    path: '/inline-notification-example-action-button',
+    component: fromExamples.InlineNotificationExampleActionButtonPage,
   },
   {
     name: 'Table Example Basic',

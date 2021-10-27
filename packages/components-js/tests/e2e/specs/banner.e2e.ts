@@ -40,10 +40,10 @@ describe('banner', () => {
   };
 
   const getHost = () => selectNode(page, 'p-banner');
-  const getBannerInline = () => selectNode(page, 'p-banner >>> p-banner-inline');
-  const getCloseButton = () => selectNode(page, 'p-banner >>> p-banner-inline >>> p-button-pure.close');
+  const getInlineNotification = () => selectNode(page, 'p-banner >>> p-inline-notification');
+  const getCloseButton = () => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
 
-  it('should forward props correctly to p-banner-inline', async () => {
+  it('should forward props correctly to p-inline-notification', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -54,10 +54,10 @@ describe('banner', () => {
     `
     );
 
-    const bannerInline = await getBannerInline();
-    expect(await getProperty(bannerInline, 'state')).toBe('error');
-    expect(await getProperty(bannerInline, 'persistent')).toBe(true);
-    expect(await getProperty(bannerInline, 'theme')).toBe('dark');
+    const inlineNotification = await getInlineNotification();
+    expect(await getProperty(inlineNotification, 'state')).toBe('error');
+    expect(await getProperty(inlineNotification, 'persistent')).toBe(true);
+    expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
   });
 
   describe('close', () => {
@@ -140,7 +140,7 @@ describe('banner', () => {
 
       const banner1 = await selectNode(page, '#banner1');
       const banner2 = await selectNode(page, '#banner2');
-      const closeButtonBanner2 = await selectNode(page, '#banner2 >>> p-banner-inline >>> p-button-pure');
+      const closeButtonBanner2 = await selectNode(page, '#banner2 >>> p-inline-notification >>> p-button-pure');
 
       const classListBanner1 = await getCssClasses(banner1);
       const classListBanner2 = await getCssClasses(banner2);
@@ -168,7 +168,7 @@ describe('banner', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
-      expect(status.componentDidLoad['p-banner-inline'], 'componentDidLoad: p-banner-inline').toBe(1);
+      expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
       expect(status.componentDidLoad['p-content-wrapper'], 'componentDidLoad: p-content-wrapper').toBe(1);
       expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
       expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2); // one included in button-pure
@@ -189,7 +189,7 @@ describe('banner', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-banner'], 'componentDidUpdate: p-banner').toBe(1);
-      expect(status.componentDidUpdate['p-banner-inline'], 'componentDidUpdate: p-banner-inline').toBe(1);
+      expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
       expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);

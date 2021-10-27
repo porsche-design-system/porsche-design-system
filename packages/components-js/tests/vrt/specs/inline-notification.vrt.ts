@@ -14,29 +14,31 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'banner-inline', '/#banner-inline')).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'inline-notification', '/#inline-notification')
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
-    await vrt.test('banner-inline-states', async () => {
+    await vrt.test('inline-notification-states', async () => {
       const page = vrt.getPage();
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner-inline theme="${theme}" action-label="Retry">
+        <p-inline-notification theme="${theme}" action-label="Retry">
           <span slot="heading">Some heading with a <a href="#">link</a>.</span>
           Some description with a <a href="#">link</a>.
-        </p-banner-inline>`;
+        </p-inline-notification>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoveredState(page, '.hovered > p-banner-inline a');
-      await forceHoveredState(page, '.hovered > p-banner-inline >>> p-button-pure >>> button');
-      await forceFocusedState(page, '.focused > p-banner-inline a');
-      await forceFocusedState(page, '.focused > p-banner-inline >>> p-button-pure >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-banner-inline a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-banner-inline >>> p-button-pure >>> button');
+      await forceHoveredState(page, '.hovered > p-inline-notification a');
+      await forceHoveredState(page, '.hovered > p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusedState(page, '.focused > p-inline-notification a');
+      await forceFocusedState(page, '.focused > p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusedHoveredState(page, '.focused-hovered > p-inline-notification a');
+      await forceFocusedHoveredState(page, '.focused-hovered > p-inline-notification >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

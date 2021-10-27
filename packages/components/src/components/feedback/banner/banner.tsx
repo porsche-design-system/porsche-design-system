@@ -34,7 +34,7 @@ export class Banner {
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private bannerInlineElement: HTMLPBannerInlineElement;
+  private inlineNotificationElement: HTMLPInlineNotificationElement;
 
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
@@ -47,7 +47,7 @@ export class Banner {
   public componentDidLoad(): void {
     if (!this.persistent) {
       // messy.. optional chaining is needed in case child component is unmounted to early
-      getShadowRootHTMLElement<HTMLElement>(this.bannerInlineElement, '.close')?.focus();
+      getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close')?.focus();
     }
   }
 
@@ -67,8 +67,8 @@ export class Banner {
     return (
       <Host>
         <PrefixedTagNames.pContentWrapper width={this.width}>
-          <PrefixedTagNames.pBannerInline
-            ref={(el) => (this.bannerInlineElement = el)}
+          <PrefixedTagNames.pInlineNotification
+            ref={(el) => (this.inlineNotificationElement = el)}
             class="root"
             state={this.state}
             persistent={this.persistent}
@@ -77,7 +77,7 @@ export class Banner {
           >
             {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
             {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-          </PrefixedTagNames.pBannerInline>
+          </PrefixedTagNames.pInlineNotification>
         </PrefixedTagNames.pContentWrapper>
       </Host>
     );
