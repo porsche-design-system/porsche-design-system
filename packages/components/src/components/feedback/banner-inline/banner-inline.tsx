@@ -37,7 +37,7 @@ export class BannerInline {
   @Prop() public actionLoading?: boolean = false;
 
   /** Action icon of the banner-inline. */
-  @Prop() public actionIcon?: IconName = 'refresh';
+  @Prop() public actionIcon?: IconName = 'arrow-head-right';
 
   /** Adapts the banner-inline color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
