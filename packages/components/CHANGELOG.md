@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Colors of `Banner` for dark theme
 - Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility 
+- Opening and closing transition of `Modal`
 
 ### [2.5.1-beta.0] - 2021-10-11
 
