@@ -71,13 +71,10 @@ describe('PorscheDesignSystemProvider', () => {
     let error = '';
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
-    try {
-      render(<PButton>Some Button</PButton>);
-    } catch (e) {
-      error = e.message;
-    }
+    expect(() => render(<PButton>Some Button</PButton>)).toThrowErrorMatchingInlineSnapshot(
+      'It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.'
+    );
 
-    expect(error).toBe('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
     spy.mockRestore();
   });
 });

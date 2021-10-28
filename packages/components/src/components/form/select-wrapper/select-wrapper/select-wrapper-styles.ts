@@ -28,8 +28,7 @@ const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
-  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor, errorColor } =
-    getThemedColors(theme);
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
@@ -116,7 +115,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         },
       },
     },
-    ...getRequiredStyles(errorColor),
+    ...getRequiredStyles(theme),
 
     icon: {
       position: 'absolute',
@@ -131,7 +130,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       },
     },
 
-    ...getStateMessageStyles({ stateColor }),
+    ...getStateMessageStyles(theme, state),
   });
 };
 

@@ -1,4 +1,4 @@
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions, GetStateMessageOptions, JssStyle } from './';
+import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions, JssStyle } from './';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -16,7 +16,7 @@ import {
   pxToRemWithUnit,
 } from './';
 import type { PropertiesHyphen } from 'csstype';
-import type { Theme } from '../types';
+import type { FormState, Theme } from '../types';
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([
@@ -139,18 +139,20 @@ describe('getFormTextHiddenJssStyle()', () => {
 });
 
 describe('getRequiredStyles()', () => {
-  it('should return correct styles', () => {
-    expect(getRequiredStyles('red')).toMatchSnapshot();
+  it.each<Theme>(['light', 'dark'])('should return correct styles for theme: %s', (theme) => {
+    expect(getRequiredStyles(theme)).toMatchSnapshot();
   });
 });
 
 describe('getStateMessageStyles()', () => {
-  it.each<GetStateMessageOptions>([
-    { stateColor: 'red' },
-    { stateColor: 'red', margin: 8 },
-    { stateColor: 'red', transitionProperty: 'display' },
-    { stateColor: 'red', margin: 8, transitionProperty: 'display' },
-  ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getStateMessageStyles(params)).toMatchSnapshot();
+  it.each<[Theme, FormState]>([
+    ['light', 'none'],
+    ['light', 'success'],
+    ['light', 'error'],
+    ['dark', 'none'],
+    ['dark', 'success'],
+    ['dark', 'error'],
+  ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
+    expect(getStateMessageStyles(theme, state)).toMatchSnapshot();
   });
 });

@@ -1,8 +1,8 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { isDark } from '.';
-import type { Theme } from '../types';
+import { getThemedColors, getThemedStateColors, isDark } from '.';
+import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
 const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -188,38 +188,28 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
   padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });
 
-export const getRequiredStyles = (errorColor: string): Styles => ({
-  required: {
-    '&::after': {
-      content: '" *"',
-      color: errorColor,
+export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
+  const { errorColor } = getThemedColors(theme);
+  return {
+    required: {
+      '&::after': {
+        content: '" *"',
+        color: errorColor,
+      },
     },
-  },
-});
-
-export type GetStateMessageOptions = {
-  stateColor: string;
-  margin?: number;
-  transitionProperty?: keyof PropertiesHyphen;
+  };
 };
 
-export const getStateMessageStyles = (opts?: GetStateMessageOptions): Styles => {
-  const options: GetStateMessageOptions = {
-    margin: 4,
-    transitionProperty: 'color',
-    ...opts,
-  };
-
-  const { stateColor, margin, transitionProperty } = options;
-
+export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
+  const { stateColor } = getThemedStateColors(theme, state);
   return {
     message: {
       display: 'flex',
-      marginTop: pxToRemWithUnit(margin),
+      marginTop: spacing['4'],
       color: stateColor,
-      transition: getTransition(transitionProperty),
+      transition: getTransition('color'),
       '&__icon': {
-        marginRight: pxToRemWithUnit(margin),
+        marginRight: spacing['4'],
       },
     },
   };

@@ -326,24 +326,35 @@ Object {
 }
 `;
 
-exports[`getRequiredStyles() should return correct styles 1`] = `
+exports[`getRequiredStyles() should return correct styles for theme: dark 1`] = `
 Object {
   "required": Object {
     "&::after": Object {
-      "color": "red",
+      "color": "#fc1717",
       "content": "\\" *\\"",
     },
   },
 }
 `;
 
-exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red' } 1`] = `
+exports[`getRequiredStyles() should return correct styles for theme: light 1`] = `
+Object {
+  "required": Object {
+    "&::after": Object {
+      "color": "#e00000",
+      "content": "\\" *\\"",
+    },
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
       "marginRight": "0.25rem",
     },
-    "color": "red",
+    "color": "#fc1717",
     "display": "flex",
     "marginTop": "0.25rem",
     "transition": "color var(--p-transition-duration, .24s) ease",
@@ -351,44 +362,72 @@ Object {
 }
 `;
 
-exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', margin: 8 } 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
-      "marginRight": "0.5rem",
-    },
-    "color": "red",
-    "display": "flex",
-    "marginTop": "0.5rem",
-    "transition": "color var(--p-transition-duration, .24s) ease",
-  },
-}
-`;
-
-exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', margin: 8, transitionProperty: 'display' } 1`] = `
-Object {
-  "message": Object {
-    "&__icon": Object {
-      "marginRight": "0.5rem",
-    },
-    "color": "red",
-    "display": "flex",
-    "marginTop": "0.5rem",
-    "transition": "display var(--p-transition-duration, .24s) ease",
-  },
-}
-`;
-
-exports[`getStateMessageStyles() should return correct JssStyle for params: { stateColor: 'red', transitionProperty: 'display' } 1`] = `
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
 Object {
   "message": Object {
     "&__icon": Object {
       "marginRight": "0.25rem",
     },
-    "color": "red",
+    "color": undefined,
     "display": "flex",
     "marginTop": "0.25rem",
-    "transition": "display var(--p-transition-duration, .24s) ease",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#01ba1d",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#e00000",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": undefined,
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#018a16",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
 `;
