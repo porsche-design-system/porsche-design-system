@@ -1,4 +1,4 @@
-import { observeResize, unobserveResize, resizeMap } from '.';
+import { observeResize, unobserveResize, resizeMap } from './resize-observer';
 
 describe('observeResize()', () => {
   beforeEach(() => {
