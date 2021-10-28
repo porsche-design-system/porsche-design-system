@@ -129,9 +129,21 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
+            {type === 'number' && this.unit && (
+              <PrefixedTagNames.pText
+                class={unitClasses}
+                tag="span"
+                color="inherit"
+                ref={(el) => (this.unitElement = el)}
+                aria-hidden="true"
+                onClick={this.onLabelClick}
+              >
+                {this.unit}
+              </PrefixedTagNames.pText>
+            )}
             <slot />
           </label>
-          {this.isPassword ? (
+          {this.isPassword && (
             <button
               type="button"
               onClick={this.togglePassword}
@@ -145,24 +157,12 @@ export class TextFieldWrapper {
                 aria-hidden="true"
               />
             </button>
-          ) : type === 'search' ? (
+          )}
+          {type === 'search' && (
             <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
               <span class="sr-only">Search</span>
               <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
             </button>
-          ) : (
-            type === 'number' &&
-            this.unit && (
-              <PrefixedTagNames.pText
-                class={unitClasses}
-                tag="span"
-                color="inherit"
-                ref={(el) => (this.unitElement = el)}
-                aria-hidden="true"
-              >
-                {this.unit}
-              </PrefixedTagNames.pText>
-            )
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
