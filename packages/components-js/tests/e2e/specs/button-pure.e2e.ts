@@ -115,9 +115,11 @@ describe('button-pure', () => {
 
     for (const triggerElement of [host, button]) {
       await triggerElement.click();
+      await waitForEventSerialization(page);
     }
-    await waitForEventSerialization(page);
     await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(page); // 🙈
+
     expect(calls).toBe(2);
   });
 
