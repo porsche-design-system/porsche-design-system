@@ -14,11 +14,11 @@ export const getComponentCss = (open: boolean): string => {
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        transition: `opacity 0.2s ${transitionTimingFunction}`,
+        transition: `opacity 0.2s ${transitionTimingFunction}, visibility 0s linear 0.2s`,
         opacity: 0,
         visibility: 'hidden',
         ...(open && {
-          transition: `opacity 0.6s ${transitionTimingFunction}, visibility 0s linear`,
+          transition: `opacity 0.6s ${transitionTimingFunction}`,
           opacity: 1,
           visibility: 'inherit',
         }),
@@ -32,8 +32,9 @@ export const getComponentCss = (open: boolean): string => {
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
     }),
-    root: addImportantToEachRule({
-      transform: 'scale3d(1,1,1)',
-    }),
+    root: {
+      transition: `transform 0.6s ${transitionTimingFunction}`,
+      transform: open ? 'scale3d(1,1,1)' : 'scale3d(0.9,0.9,1)',
+    },
   });
 };
