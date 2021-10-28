@@ -7,7 +7,7 @@ describe('getMetaTagsAndIconLinks()', () => {
 
   describe('validation', () => {
     it('should throw error on unprovided appTitle', () => {
-      expect(() => getMetaTagsAndIconLinks()).toMatchInlineSnapshot(
+      expect(() => getMetaTagsAndIconLinks()).toThrowErrorMatchingInlineSnapshot(
         'Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />'
       );
     });
