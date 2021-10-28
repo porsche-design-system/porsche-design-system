@@ -152,7 +152,7 @@ export class TextFieldWrapper {
             </button>
           ) : (
             type === 'number' &&
-            !!this.unit && (
+            this.unit && (
               <PrefixedTagNames.pText
                 class={unitClasses}
                 tag="span"
@@ -160,7 +160,7 @@ export class TextFieldWrapper {
                 ref={(el) => (this.unitElement = el)}
                 aria-hidden="true"
               >
-                {this.unit.substr(0, 5)}
+                {this.unit}
               </PrefixedTagNames.pText>
             )
           )}
