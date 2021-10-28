@@ -34,7 +34,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 - Try to balance the icons width and height for uniformed appearance in icon groups.
 - Respect the safe area around the icon (approximatly 2 px, can alter depending on ratio of icon).
 - Check your design in reference with other icons from the Porsche Design System.
-- Make sure corresponding icons have the same position e.g. example, the "add" and "remove" icon.
+- Make sure corresponding icons have the same position e.g. the "add" and "remove" icon.
 - Design with only one color.
 
 **SVG Export Guideline**
