@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { buildIconUrl, getSvgContent, patchAccessibilityToSVG, IconAriaAttributes } from './icon-utils';
+import { buildIconUrl, getSvgContent, patchAccessibilityIntoSVG, IconAriaAttributes } from './icon-utils';
 import { attachComponentCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
 import type { Theme, IconName, TextColor, IconSize, SelectedAriaAttributes } from '../../../types';
 import { getComponentCss } from './icon-styles';
@@ -102,7 +102,7 @@ export class Icon {
     const el = getShadowRootHTMLElement(this.host, 'i');
     // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
     if (el) {
-      el.innerHTML = patchAccessibilityToSVG(content, this.accessibility);
+      el.innerHTML = patchAccessibilityIntoSVG(content, this.accessibility);
     }
   }
 }
