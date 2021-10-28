@@ -20,7 +20,8 @@ import {
 } from '../../../utils';
 import { UnitPositionType } from './text-field-wrapper-utils';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
-import { FormState } from '../../../types';
+import { FormState, Theme } from '../../../types';
+import type { Styles } from 'jss';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -40,6 +41,19 @@ export const getSlottedCss = (host: HTMLElement): string => {
   );
 };
 
+const getHoverStyles = (textColor: string, state: FormState): Styles<'&:hover'> => ({
+  '&:hover': {
+    '&~::slotted(input:not(:disabled):not([readonly]))': {
+      borderColor: addImportantToRule(textColor),
+    },
+    ...((state === 'success' || state === 'error') && {
+      '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
+        borderColor: addImportantToRule(colorDarken.notification[state]),
+      },
+    }),
+  },
+});
+
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
@@ -47,9 +61,10 @@ export const getComponentCss = (
   unitPosition: UnitPositionType,
   isPassword: boolean
 ) => {
-  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, errorColor, hoverColor } =
-    getThemedColors('light');
-  const { stateColor, stateHoverColor } = getThemedStateColors('light', state);
+  const theme: Theme = 'light';
+  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
+    getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
   const hasState = state !== 'none';
   return getCss({
     ...buildHostStyles({
@@ -200,25 +215,15 @@ export const getComponentCss = (
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
         },
-        '&:hover': {
-          '&~::slotted(input:not(:disabled):not([readonly]))': {
-            borderColor: addImportantToRule(textColor),
-          },
-          ...((state === 'success' || state === 'error') && {
-            '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))':
-              {
-                borderColor: addImportantToRule(colorDarken.notification[state]),
-              },
-          }),
-        },
+        ...getHoverStyles(textColor, state),
         '&--description': {
           color: contrastMediumColor,
         },
       },
     },
 
-    ...getRequiredStyles(errorColor),
-    ...getStateMessageStyles({ stateColor }),
+    ...getRequiredStyles(theme),
+    ...getStateMessageStyles(theme, state),
 
     'sr-only': {
       ...srOnly(),
@@ -229,12 +234,14 @@ export const getComponentCss = (
       bottom: 0,
       left: 0,
       padding: pxToRemWithUnit(12),
+      zIndex: 1,
       boxSizing: 'border-box',
       color: contrastMediumColor,
       ...(unitPosition === 'suffix' && {
         left: 'auto',
         right: 0,
       }),
+      ...getHoverStyles(textColor, state),
       '&--disabled': {
         color: disabledColor,
         cursor: 'not-allowed',

@@ -44,7 +44,6 @@ describe('text-field-wrapper', () => {
     state?: FormState;
     type?: 'text' | 'password' | 'search';
     hasLabel?: boolean;
-    hasUnit?: boolean;
   };
 
   const initTextField = (opts?: InitOptions): Promise<void> => {

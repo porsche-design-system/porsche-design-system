@@ -30,38 +30,10 @@ describe('setInputUnitStyles()', () => {
 
     expect(input.style.padding).toBe('0.6875rem 0.6875rem 0.6875rem 3.75rem');
   });
-
-  it('should remove inline style on input when no unit is passed', async () => {
-    setInputUnitStyles('km/h', input, 60, 'prefix', 'none');
-
-    expect(input.style.padding).toBe('0.6875rem 0.6875rem 0.6875rem 3.75rem');
-
-    setInputUnitStyles('', input, 60, 'prefix', 'none');
-
-    expect(input.style.padding).toBe('');
-  });
-
-  it('should remove inline style on input when input type is changed', async () => {
-    setInputUnitStyles('km/h', input, 60, 'prefix', 'none');
-
-    expect(input.style.padding).toBe('0.6875rem 0.6875rem 0.6875rem 3.75rem');
-
-    input.type = 'text';
-
-    setInputUnitStyles('km/h', input, 60, 'prefix', 'none');
-
-    expect(input.style.padding).toBe('');
-  });
 });
 
 describe('throwIfUnitLengthExceeded()', () => {
   it('should throw error if unit length > 5', () => {
-    let error = undefined;
-    try {
-      throwIfUnitLengthExceeded('123456');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfUnitLengthExceeded('123456')).toThrow();
   });
 });
