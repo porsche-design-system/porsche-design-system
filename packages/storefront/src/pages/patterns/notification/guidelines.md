@@ -12,7 +12,7 @@ Highly frequented or disruptive Notifications can have a **negative impact** on 
 ## When to use
 
 In order to find the right notification type for your use case, we have defined some decision-making rules for you:
-- [Go to the Decision Tree](components/notifications/decision-tree) 
+- [Go to the Decision Tree](http://localhost:8080/patterns/notifications/decision-tree)
 
 ---
 
@@ -21,12 +21,12 @@ In order to find the right notification type for your use case, we have defined 
 |  Components  | Placement             | Follow-up Action           | Hide      | Criticality  | States        
 | ----------- | -------------------- | -------------------------- |------------------- | ----- | ----- |
 | **Inline Validation**   | Below input         | Yes            | Resolved      | Low       | Success, Error      
-| **Toast**              | Bottom, Left          | No            | Automatically (6s)  | Low/Medium | Neutral, Success
-| **Inline Notification**      | Before/After Content  | Yes           | Resolved/Dismiss    | Medium     | Neutral, Success, Warning, Error
+| **Toast**              | Bottom, Left          | No            | Automatically (6s)  | Low/Medium | Success, Neutral  
+| **Inline Banner**      | Before/After Content  | Yes           | Resolved/Dismiss    | Medium     | Success, Neutral, Warning, Error
 | **Banner**              | Top, Center           | Yes           | Resolved/Dismiss | Medium/High  | Neutral, Warning, Error
-| **Modal (Dialog)**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
+| **Dialog**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
 
-
+---
 
 ## References
 * Duncan P. Brumby, Christian P. Janssen, and Gloria Mark, [How Do Interruptions Affect Productivity?](https://link.springer.com/chapter/10.1007/978-1-4842-4221-6_9)
@@ -36,3 +36,12 @@ In order to find the right notification type for your use case, we have defined 
  (Nielsen Norman Group, 2018)
 * Jakob Nielsen, [10 Usability Heuristics for User Interface Design](https://www.nngroup.com/articles/ten-usability-heuristics/) (Nielsen Norman Group, 1994)
 * [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+---
+
+## Related Components
+- [Inline Validation](https://designsystem.porsche.com/v2/components/color/usage)
+- [Toast](https://designsystem.porsche.com/v2/components/color/usage)
+- [Inline Banner](https://designsystem.porsche.com/v2/components/color/usage)
+- [Banner](https://designsystem.porsche.com/v2/components/color/usage)
+- [Dialog](https://designsystem.porsche.com/v2/components/color/usage)
