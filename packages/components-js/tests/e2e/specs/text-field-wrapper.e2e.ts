@@ -382,7 +382,7 @@ describe('text-field-wrapper', () => {
 
       expect(inputFocusSpyCalls).toBe(0);
       await labelText.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
       expect(inputFocusSpyCalls).toBe(1);
     });
