@@ -8,8 +8,7 @@ $p-modal-min-width: p-px-to-rem(272px);
 $p-modal-max-width: $p-content-wrapper-max-width;
 
 .root {
-  display: flex;
-  flex-direction: column;
+  display: block;
   background-color: $p-color-background-default;
   box-sizing: border-box;
   padding: p-px-to-rem(32px);
