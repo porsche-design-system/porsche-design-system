@@ -4,8 +4,6 @@
 
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.  
 
-Review the [notification decision tree](components/notifications/usage) to determine which notification component is best for a particular scenario.
-
 ## Basic
 
 <Playground :markup="basic" :config="config"></Playground>

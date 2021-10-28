@@ -325,6 +325,10 @@ export const config: StorefrontConfig = {
       ],
     },
     Notifications: {
+      Introduction: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/notifications.usage.md'),
+      ],
       'Inline Notification': [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
@@ -333,10 +337,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
       ],
-      Usage: [
+      'Decision Tree': [
         // @ts-ignore
-        () => import('@/../../components/src/components/feedback/notifications.usage.md'),
-      ],
+        () => import('@/pages/patterns/notification/decision-tree.md'),
+      ], 
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
