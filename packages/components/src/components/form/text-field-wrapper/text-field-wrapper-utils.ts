@@ -27,9 +27,7 @@ export const setInputUnitStyles = (
   unitPosition: UnitPositionType,
   state: FormState
 ): void => {
-  if (!unit || input.type !== 'number') {
-    input.style.cssText = '';
-  } else if (unit && input.type === 'number') {
+  if (input.type === 'number' && unit) {
     input.style.setProperty('padding', getInputUnitPadding(unitElementWidth, unitPosition, state), 'important');
   }
 };
