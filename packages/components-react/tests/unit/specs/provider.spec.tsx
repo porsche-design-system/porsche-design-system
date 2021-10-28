@@ -72,7 +72,7 @@ describe('PorscheDesignSystemProvider', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
     expect(() => render(<PButton>Some Button</PButton>)).toThrowErrorMatchingInlineSnapshot(
-      'It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.'
+      '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
     );
 
     spy.mockRestore();
