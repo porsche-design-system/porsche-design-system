@@ -143,7 +143,7 @@ export class TextFieldWrapper {
             )}
             <slot />
           </label>
-          {this.isPassword && (
+          {this.isPassword ? (
             <button
               type="button"
               onClick={this.togglePassword}
@@ -157,12 +157,13 @@ export class TextFieldWrapper {
                 aria-hidden="true"
               />
             </button>
-          )}
-          {type === 'search' && (
-            <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
-              <span class="sr-only">Search</span>
-              <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
-            </button>
+          ) : (
+            type === 'search' && (
+              <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
+                <span class="sr-only">Search</span>
+                <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
+              </button>
+            )
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
