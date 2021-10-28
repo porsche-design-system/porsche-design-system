@@ -692,10 +692,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/general/components-ready.md'),
     ],
-    'Slotted Content': [
-      // @ts-ignore
-      () => import('@/pages/general/slotted-content.md'),
-    ],
     Testing: [
       // @ts-ignore
       () => import('@/pages/general/testing.md'),
