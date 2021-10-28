@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 7408,
-    "gzipSize": 2776
+    "size": 7441,
+    "gzipSize": 2784
   },
   {
     "chunkShortName": "button",
@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 69132,
-    "gzipSize": 23525
+    "gzipSize": 23526
   },
   {
     "chunkShortName": "marque",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7091,
-    "gzipSize": 2210
+    "size": 7076,
+    "gzipSize": 2194
   },
   {
     "chunkShortName": "pagination",
