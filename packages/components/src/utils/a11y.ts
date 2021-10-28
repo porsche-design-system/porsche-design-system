@@ -52,7 +52,7 @@ export const parseAndGetAccessibilityAttributes = (
 ): AriaAttributes => {
   if (rawAttributes) {
     const attributes = parseAriaAttributes(rawAttributes);
-    const attributeKeys = Object.keys(attributes || []);
+    const attributeKeys = Object.keys(attributes);
 
     throwIfAccessibilityAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
 
