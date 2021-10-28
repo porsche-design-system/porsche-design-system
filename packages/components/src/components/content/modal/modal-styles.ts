@@ -1,7 +1,7 @@
 import { addImportantToEachRule, buildHostStyles, getCss, getInset } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
-const transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
 export const getComponentCss = (open: boolean): string => {
   return getCss({
@@ -14,11 +14,11 @@ export const getComponentCss = (open: boolean): string => {
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        transition: `opacity 0.2s ${transitionTimingFunction}, visibility 0s linear 0.2s`,
+        transition: `opacity .2s ${transitionTimingFunction}, visibility 0s linear .2s`,
         opacity: 0,
         visibility: 'hidden',
         ...(open && {
-          transition: `opacity 0.6s ${transitionTimingFunction}`,
+          transition: `opacity .6s ${transitionTimingFunction}`,
           opacity: 1,
           visibility: 'inherit',
         }),
@@ -34,7 +34,7 @@ export const getComponentCss = (open: boolean): string => {
     }),
     root: {
       transition: `transform 0.6s ${transitionTimingFunction}`,
-      transform: open ? 'scale3d(1,1,1)' : 'scale3d(0.9,0.9,1)',
+      transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
     },
   });
 };
