@@ -180,9 +180,24 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
-    name: 'Typography',
-    path: '/typography',
-    component: fromPages.TypographyPage,
+    name: 'Typography Fallback Strategy',
+    path: '/typography-fallback-strategy',
+    component: fromPages.TypographyFallbackStrategyPage,
+  },
+  {
+    name: 'Typography Latin',
+    component: fromPages.TypographyLatinPage,
+    path: '/typography-latin',
+  },
+  {
+    name: 'Typography Greek & Coptic',
+    component: fromPages.TypographyGreekAndCopticPage,
+    path: '/typography-greek-and-coptic',
+  },
+  {
+    name: 'Typography Cyril',
+    component: fromPages.TypographyCyrilPage,
+    path: '/typography-cyril',
   },
   {
     name: '---',
