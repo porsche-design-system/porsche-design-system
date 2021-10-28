@@ -239,12 +239,6 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           <input type="number" value="400" />
         </PTextFieldWrapper>
       </div>
-
-      <div className="playground light" title="should render a maximum of five characters per unit">
-        <PTextFieldWrapper label="Label with long unit" unit="kg/m³55555">
-          <input type="number" value="7777" />
-        </PTextFieldWrapper>
-      </div>
     </>
   );
 };
