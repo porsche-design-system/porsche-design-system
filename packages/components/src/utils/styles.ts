@@ -109,7 +109,7 @@ export type GetFocusSlottedPseudoStylesOptions = {
 /**
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
-export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles => {
+export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
   const options: GetFocusSlottedPseudoStylesOptions = {
     color: color.state.focus,
     offset: 2,

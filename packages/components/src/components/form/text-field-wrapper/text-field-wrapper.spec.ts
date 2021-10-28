@@ -47,12 +47,13 @@ describe('text-field-wrapper', () => {
     it('should call throwIfUnitLengthExceeded()', () => {
       const component = new TextFieldWrapper();
       const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+      component.unit = '123456';
 
       try {
         component.componentWillRender();
       } catch (e) {}
 
-      expect(spy).toBeCalledWith('');
+      expect(spy).toBeCalledWith('123456');
     });
   });
 

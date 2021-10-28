@@ -18,7 +18,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
-import { UnitPositionType } from './text-field-wrapper-utils';
+import { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
 import { FormState, Theme } from '../../../types';
 import type { Styles } from 'jss';
@@ -58,7 +58,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   unit: string,
-  unitPosition: UnitPositionType,
+  unitPosition: TextFieldWrapperUnitPosition,
   isPassword: boolean
 ) => {
   const theme: Theme = 'light';
