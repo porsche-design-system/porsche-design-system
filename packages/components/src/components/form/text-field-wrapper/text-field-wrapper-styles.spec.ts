@@ -1,10 +1,10 @@
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { BreakpointCustomizable } from '../../../utils';
 import { FormState } from '../../../types';
-import { UnitPositionType } from './text-field-wrapper-utils';
+import { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState, string, UnitPositionType, boolean]>([
+  it.each<[BreakpointCustomizable<boolean>, FormState, string, TextFieldWrapperUnitPosition, boolean]>([
     [false, 'none', '', 'prefix', false],
     [false, 'none', 'km/h', 'prefix', false],
     [false, 'none', 'kg/m3', 'suffix', false],

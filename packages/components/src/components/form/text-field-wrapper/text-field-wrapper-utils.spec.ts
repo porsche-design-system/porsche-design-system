@@ -2,12 +2,12 @@ import {
   getInputUnitPadding,
   setInputUnitStyles,
   throwIfUnitLengthExceeded,
-  UnitPositionType,
+  TextFieldWrapperUnitPosition,
 } from './text-field-wrapper-utils';
 import { FormState } from '../../../types';
 
 describe('getInputUnitPadding()', () => {
-  it.each<[UnitPositionType, FormState, string]>([
+  it.each<[TextFieldWrapperUnitPosition, FormState, string]>([
     ['prefix', 'none', '0.6875rem 0.6875rem 0.6875rem 3.75rem'],
     ['prefix', 'success', '0.625rem 0.625rem 0.625rem 3.75rem'],
     ['suffix', 'none', '0.6875rem 3.75rem 0.6875rem 0.6875rem'],
@@ -26,7 +26,7 @@ describe('setInputUnitStyles()', () => {
   });
 
   it('should set inline style on input type number', async () => {
-    setInputUnitStyles('km/h', input, 60, 'prefix', 'none');
+    setInputUnitStyles(input, 'km/h', 60, 'prefix', 'none');
 
     expect(input.style.padding).toBe('0.6875rem 0.6875rem 0.6875rem 3.75rem');
   });
