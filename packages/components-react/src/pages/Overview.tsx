@@ -2,6 +2,7 @@ import {
   componentsReady,
   PAccordion,
   PBanner,
+  PInlineNotification,
   PButton,
   PButtonGroup,
   PButtonPure,
@@ -103,9 +104,13 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default banner">
             <PBanner>
-              <span slot="title">Some banner title</span>
-              <span slot="description">Some banner description.</span>
+              <span slot="title">Some slotted banner title</span>
+              <span slot="description">Some slotted banner description</span>
             </PBanner>
+          </div>
+
+          <div className="playground light" title="should render default inline-notification">
+            <PInlineNotification heading="Some heading" description="Some description" />
           </div>
 
           <div className="playground light" title="should render default divider">
@@ -287,10 +292,14 @@ export const OverviewPage = (): JSX.Element => {
             <div className="playground light" title="should render default banner with custom prefix">
               {allReady && (
                 <PBanner>
-                  <span slot="title">Some banner title</span>
-                  <span slot="description">Some banner description.</span>
+                  <span slot="title">Some slotted banner title</span>
+                  <span slot="description">Some slotted banner description</span>
                 </PBanner>
               )}
+            </div>
+
+            <div className="playground light" title="should render default inline-notification with custom prefix">
+              <PInlineNotification heading="Some heading" description="Some description" />
             </div>
 
             <div className="playground light" title="should render default divider with custom prefix">

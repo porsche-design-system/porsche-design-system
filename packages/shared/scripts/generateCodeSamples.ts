@@ -10,38 +10,57 @@ type CodeSample = {
 
 type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
 
+const componentsJsPath = '../components-js/src/examples';
+const componentsAngularPath = '../components-angular/src/app/examples';
+const componentsReactPath = '../components-react/src/examples';
+
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
-    {
-      component: 'p-table',
-      samples: [
-        [
-          '../components-js/src/examples/table-example-basic.html',
-          '../components-angular/src/app/examples/table-example-basic.component.ts',
-          '../components-react/src/examples/TableExampleBasic.tsx',
-          'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
-        ],
-        [
-          '../components-js/src/examples/table-example-sorting.html',
-          '../components-angular/src/app/examples/table-example-sorting.component.ts',
-          '../components-react/src/examples/TableExampleSorting.tsx',
-          'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
-        ],
-        [
-          '../components-js/src/examples/table-example-advanced.html',
-          '../components-angular/src/app/examples/table-example-advanced.component.ts',
-          '../components-react/src/examples/TableExampleAdvanced.tsx',
-          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
-        ],
-      ],
-    },
     {
       component: 'p-accordion',
       samples: [
         [
-          '../components-js/src/examples/accordion-example.html',
-          '../components-angular/src/app/examples/accordion-example.component.ts',
-          '../components-react/src/examples/AccordionExample.tsx',
+          componentsJsPath + '/accordion-example.html',
+          componentsAngularPath + '/accordion-example.component.ts',
+          componentsReactPath + '/AccordionExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-inline-notification',
+      samples: [
+        [
+          componentsJsPath + '/inline-notification-example-events.html',
+          componentsAngularPath + '/inline-notification-example-events.component.ts',
+          componentsReactPath + '/InlineNotificationExampleEvents.tsx',
+        ],
+        [
+          componentsJsPath + '/inline-notification-example-action-button.html',
+          componentsAngularPath + '/inline-notification-example-action-button.component.ts',
+          componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-table',
+      samples: [
+        [
+          componentsJsPath + '/table-example-basic.html',
+          componentsAngularPath + '/table-example-basic.component.ts',
+          componentsReactPath + '/TableExampleBasic.tsx',
+          'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
+        ],
+        [
+          componentsJsPath + '/table-example-sorting.html',
+          componentsAngularPath + '/table-example-sorting.component.ts',
+          componentsReactPath + '/TableExampleSorting.tsx',
+          'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
+        ],
+        [
+          componentsJsPath + '/table-example-advanced.html',
+          componentsAngularPath + '/table-example-advanced.component.ts',
+          componentsReactPath + '/TableExampleAdvanced.tsx',
+          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],
     },
@@ -62,7 +81,7 @@ const generateCodeSamples = (): void => {
         sample.samples.map((sample, idx) => {
           // generate sampleName from first file of array
           const firstFileName = path.basename(sample[0]);
-          const [, sampleName] = firstFileName.match(/-([a-z-\d]+)/) || [];
+          const [, sampleName] = firstFileName.match(/-(example-[a-z-\d]+)/) || [];
           console.log(`– Sample #${idx + 1}: ${sampleName}`);
 
           const sampleContents: { [key in Framework]?: string }[] = sample.map((fileName) => {

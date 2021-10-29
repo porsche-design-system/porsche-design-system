@@ -75,6 +75,11 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage,
   },
   {
+    name: 'Inline Notification',
+    path: '/inline-notification',
+    component: fromPages.InlineNotificationPage,
+  },
+  {
     name: 'Link',
     path: '/link',
     component: fromPages.LinkPage,
@@ -236,6 +241,16 @@ export const routes: RouteType[] = [
     name: 'Accordion Example',
     path: '/accordion-example',
     component: fromExamples.AccordionExamplePage,
+  },
+  {
+    name: 'Inline Notification Example Events',
+    path: '/inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsPage,
+  },
+  {
+    name: 'Inline Notification Example Action Button',
+    path: '/inline-notification-example-action-button',
+    component: fromExamples.InlineNotificationExampleActionButtonPage,
   },
   {
     name: 'Table Example Basic',
