@@ -113,21 +113,26 @@ describe('modal', () => {
 
     await clickElement(modalOpenBtn);
     await waitForComponentsReady(page);
-    await page.waitForTimeout(50); // give react and a potential transition some time
+    await page.waitForTimeout(600); // fade-in transition
     await clickElement(modalCloseBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(200); // fade-out transition
     expect(await getCounterValue(modalCloseEventCounter)).toBe('1 <button>Open Modal</button>');
 
     await clickElement(modalOpenBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(600); // fade-in transition
     await clickElement(modalCloseBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(200); // fade-out transition
     expect(await getCounterValue(modalCloseEventCounter)).toBe('2 <button>Open Modal</button>');
 
     await clickElement(modalOpenBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(600); // fade-in transition
     await clickElement(modalCloseBtn);
     await waitForComponentsReady(page);
+    await page.waitForTimeout(200); // fade-out transition
     expect(await getCounterValue(modalCloseEventCounter)).toBe('3 <button>Open Modal</button>');
   });
 });
