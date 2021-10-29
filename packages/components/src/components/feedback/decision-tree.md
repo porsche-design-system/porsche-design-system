@@ -1,19 +1,10 @@
-# Decision Tree
+# Notifications
 
-The decision tree can guide you when to use which notification component. First, walk through the four cases and pick the one that represents your case the best. From there, a few simple questions will lead you to the recommended component for your notification.
+## Decision Tree
 
----
-
-## Select your case:
-
-
-  - [Provide additional information for a task, a status or their current action](#provide-additional-information-for-a-task-a-status-ortheir-current-action)
-  - [Confirm a task was completed as expected](#confirm-a-task-was-completed-as-expected)
-  - [Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects](#confirm-a-task-was-completed-as-expected)
-  - [Inform of an error or critical failure](#confirm-a-task-was-completed-as-expected)
-
-
-<a href="components/notifications/decision-tree#target">target</a>
+The decision tree can guide you when to use which notification component.
+First, walk through the four cases and pick the one that represents your case the best.
+From there, a few simple questions will lead you to the recommended component for your notification.
 
 ---
 
@@ -27,11 +18,11 @@ Status: Neutral
 * Validation code was send to phone
 * Mail was send to inbox
 
- ![The five basic elements of Porsche forms](../../../assets/notification-neutral.png)
+![The five basic elements of Porsche forms](./assets/notification-neutral.png)
 
- Related Components;
+#### Related Components:
 
-* [Modal (Dialog)](components/modal) 
+* [Modal](components/modal) 
 * [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
 
@@ -48,14 +39,13 @@ Status: Success
 * An Upload was successful
 * A request was submitted successfully
   
- ![The five basic elements of Porsche forms](../../../assets/notification-success.png)
+![The five basic elements of Porsche forms](./assets/notification-success.png)
 
- Related Components;
+#### Related Components:
 
-* [Inline Validation](components/text-field)
+* Inline Validation (supported by all form elements)
 * Toast - Coming soon 
 * [Inline Notification](components/notifications/inline-notification)
-
 
 ---
 
@@ -69,19 +59,15 @@ Status: Warning
 * About to leave the system
 * About to delete a vehicle or user data
   
- ![The five basic elements of Porsche forms](../../../assets/notification-warning.png)
+![The five basic elements of Porsche forms](./assets/notification-warning.png)
 
- Related Components;
+#### Related Components:
 
 * [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
-* [Modal (Dialog)](components/modal) 
-
+* [Modal](components/modal) 
 
 ---
-
-
-<h2 id="target">target</h2>
 
 ## Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects.
 
@@ -95,13 +81,11 @@ Status: Error
 * Feedback Page (Success / Error)
 * There is a problem uploading a file
   
- ![The five basic elements of Porsche forms](../../../assets/notification-error.png)
+![The five basic elements of Porsche forms](./assets/notification-error.png)
 
- Related Components;
+#### Related Components:
 
-* [Inline Validation](components/text-field)
+* Inline Validation (supported by all form elements)
 * [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
-* [Modal (Dialog)](components/modal) 
-
-
+* [Modal](components/modal) 

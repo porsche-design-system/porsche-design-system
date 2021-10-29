@@ -339,8 +339,8 @@ export const config: StorefrontConfig = {
       ],
       'Decision Tree': [
         // @ts-ignore
-        () => import('@/pages/patterns/notification/decision-tree.md'),
-      ], 
+        () => import('@/../../components/src/components/feedback/decision-tree.md'),
+      ],
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),

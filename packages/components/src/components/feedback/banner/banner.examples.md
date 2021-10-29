@@ -3,7 +3,7 @@
 ## Banner
 The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics. 
 
-Review the [notification decision tree](components/notifications/usage) to determine which notification component is best for a particular scenario.
+Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
 
 ## Basic implementation
 The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
