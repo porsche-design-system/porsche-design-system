@@ -118,6 +118,10 @@ describe('getBaseSlottedStyles()', () => {
   it('should return correct styles', () => {
     expect(getBaseSlottedStyles()).toMatchSnapshot();
   });
+
+  it('should return correct styles without dark theme', () => {
+    expect(getBaseSlottedStyles({ withDarkTheme: false })).toMatchSnapshot();
+  });
 });
 
 describe('getTextHiddenJssStyle()', () => {

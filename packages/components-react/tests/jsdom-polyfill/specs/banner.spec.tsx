@@ -39,7 +39,9 @@ describe('PBanner', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const button = getByTestId('host').shadowRoot.querySelector('p-content-wrapper p-button-pure');
+    const button = getByTestId('host')
+      .shadowRoot.querySelector('p-inline-notification')
+      .shadowRoot.querySelector('p-button-pure');
 
     expect(debug.innerHTML).toBe('Status: visible; Event Counter: 0;');
 

@@ -6,6 +6,7 @@ import {
   colorDarken,
   getCss,
   getFocusStyles,
+  getInset,
   GetStylesFunction,
   getTransition,
   isDark,
@@ -95,7 +96,7 @@ export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): Jss
     '::slotted(a)': hideLabel
       ? {
           position: 'absolute',
-          inset: 0,
+          ...getInset(),
           padding: 0,
           overflow: 'hidden',
           whiteSpace: 'nowrap',
@@ -103,7 +104,7 @@ export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): Jss
         }
       : {
           position: 'static',
-          inset: 'auto',
+          ...getInset('auto'),
           padding: linkPadding,
           overflow: 'visible',
           whiteSpace: 'normal',
