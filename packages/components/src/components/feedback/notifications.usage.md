@@ -12,7 +12,8 @@ Highly frequented or disruptive Notifications can have a **negative impact** on 
 ## When to use
 
 In order to find the right notification type for your use case, we have defined some decision-making rules for you:
-- [Go to the Decision Tree](components/notifications/decision-tree) 
+
+<p-link href="components/notifications/decision-tree" variant="primary">Go to the Decision Tree</p-link>
 
 ---
 
@@ -20,11 +21,11 @@ In order to find the right notification type for your use case, we have defined 
 
 |  Components  | Placement             | Follow-up Action           | Hide      | Criticality  | States        
 | ----------- | -------------------- | -------------------------- |------------------- | ----- | ----- |
-| **Inline Validation**   | Below input         | Yes            | Resolved      | Low       | Success, Error      
+| **Form elements (Inline Validation)**   | Below form element         | Yes            | Resolved      | Low       | Success, Error      
 | **Toast**              | Bottom, Left          | No            | Automatically (6s)  | Low/Medium | Neutral, Success
 | **Inline Notification**      | Before/After Content  | Yes           | Resolved/Dismiss    | Medium     | Neutral, Success, Warning, Error
 | **Banner**              | Top, Center           | Yes           | Resolved/Dismiss | Medium/High  | Neutral, Warning, Error
-| **Modal (Dialog)**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
+| **Modal**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
 
 
 

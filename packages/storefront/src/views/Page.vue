@@ -37,6 +37,7 @@
     }
 
     public get tabs(): string[] {
+      console.log('tabs');
       const page = STOREFRONT_CONFIG?.[this.category]?.[this.page];
 
       if (!page || Array.isArray(page)) {
@@ -83,6 +84,7 @@
     }
 
     private async loadComponents(): Promise<void> {
+      console.log('loadComponents');
       this.components = [];
       await this.$store.dispatch('toggleLoadingAsync', true);
       if (this.pages?.length) {
