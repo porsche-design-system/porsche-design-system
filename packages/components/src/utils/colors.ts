@@ -29,9 +29,7 @@ export const colorDarken: DeepPartial<typeof color> = {
   },
 };
 
-export const getThemedColors = (
-  theme: Theme
-): {
+type ThemedColors = {
   textColor: string;
   brandColor: string;
   backgroundColor: string;
@@ -42,19 +40,33 @@ export const getThemedColors = (
   activeColor: string;
   disabledColor: string;
   errorColor: string;
+  errorSoftColor: string;
   successColor: string;
+  successSoftColor: string;
   warningColor: string;
+  warningSoftColor: string;
   neutralColor: string;
-} => {
-  const isDarkTheme = isDark(theme);
+  neutralSoftColor: string;
+};
+
+const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
     default: textColor,
     brand: brandColor,
     background: { default: backgroundColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
-    notification: { error: errorColor, success: successColor, warning: warningColor, neutral: neutralColor },
-  } = isDarkTheme ? color.darkTheme : color;
+    notification: {
+      error: errorColor,
+      errorSoft: errorSoftColor,
+      success: successColor,
+      successSoft: successSoftColor,
+      warning: warningColor,
+      warningSoft: warningSoftColor,
+      neutral: neutralColor,
+      neutralSoft: neutralSoftColor,
+    },
+  } = isDark(theme) ? color.darkTheme : color;
 
   return {
     textColor,
@@ -67,10 +79,21 @@ export const getThemedColors = (
     activeColor,
     disabledColor,
     errorColor,
+    errorSoftColor,
     successColor,
+    successSoftColor,
     warningColor,
+    warningSoftColor,
     neutralColor,
+    neutralSoftColor,
   };
+};
+
+const themedColorsLight = getStaticThemedColors('light');
+const themedColorsDark = getStaticThemedColors('dark');
+
+export const getThemedColors = (theme: Theme): ThemedColors => {
+  return isDark(theme) ? themedColorsDark : themedColorsLight;
 };
 
 export const getThemedStateColors = (

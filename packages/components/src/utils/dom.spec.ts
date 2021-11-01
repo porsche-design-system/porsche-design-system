@@ -4,12 +4,13 @@ import {
   getAttribute,
   getHTMLElementAndThrowIfUndefined,
   getRole,
+  getSlotTextContent,
   hasAttribute,
   hasDescription,
+  hasHeading,
   hasLabel,
   hasMessage,
   hasNamedSlot,
-  getSlotTextContent,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
   isParentOfKind,
@@ -314,26 +315,6 @@ describe('hasLabel()', () => {
   });
 });
 
-describe('hasDescription()', () => {
-  const description = 'Some description';
-  it.each<[{ description: string; slotted: boolean }, boolean]>([
-    [{ description, slotted: false }, true],
-    [{ description: '', slotted: true }, true],
-    [{ description: '', slotted: false }, false],
-    [{ description, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { description, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'description';
-      el.appendChild(slot);
-    }
-
-    expect(hasDescription(el, description)).toBe(result);
-  });
-});
-
 describe('hasMessage()', () => {
   const message = 'Some message';
   it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
@@ -356,6 +337,46 @@ describe('hasMessage()', () => {
     }
 
     expect(hasMessage(el, message, formState)).toBe(result);
+  });
+});
+
+describe('hasDescription()', () => {
+  const description = 'Some description';
+  it.each<[{ description: string; slotted: boolean }, boolean]>([
+    [{ description, slotted: false }, true],
+    [{ description: '', slotted: true }, true],
+    [{ description: '', slotted: false }, false],
+    [{ description, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { description, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(hasDescription(el, description)).toBe(result);
+  });
+});
+
+describe('hasHeading()', () => {
+  const heading = 'Some heading';
+  it.each<[{ heading: string; slotted: boolean }, boolean]>([
+    [{ heading, slotted: false }, true],
+    [{ heading: '', slotted: true }, true],
+    [{ heading: '', slotted: false }, false],
+    [{ heading, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { heading, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'heading';
+      el.appendChild(slot);
+    }
+
+    expect(hasHeading(el, heading)).toBe(result);
   });
 });
 

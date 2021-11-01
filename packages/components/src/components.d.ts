@@ -5,14 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { BannerState } from "./components/feedback/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -358,6 +360,40 @@ export namespace Components {
         "source"?: string;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PInlineNotification {
+        /**
+          * Action icon of the inline-notification.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the inline-notification.
+         */
+        "actionLabel"?: string;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
+        /**
+          * Description of the inline-notification.
+         */
+        "description"?: string;
+        /**
+          * Heading of the inline-notification.
+         */
+        "heading"?: string;
+        /**
+          * Defines if the inline-notification can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the inline-notification.
+         */
+        "state"?: InlineNotificationState;
+        /**
+          * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -945,6 +981,12 @@ declare global {
         prototype: HTMLPIconElement;
         new (): HTMLPIconElement;
     };
+    interface HTMLPInlineNotificationElement extends Components.PInlineNotification, HTMLStencilElement {
+    }
+    var HTMLPInlineNotificationElement: {
+        prototype: HTMLPInlineNotificationElement;
+        new (): HTMLPInlineNotificationElement;
+    };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
     var HTMLPLinkElement: {
@@ -1117,6 +1159,7 @@ declare global {
         "p-grid-item": HTMLPGridItemElement;
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
+        "p-inline-notification": HTMLPInlineNotificationElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -1489,6 +1532,48 @@ declare namespace LocalJSX {
         "source"?: string;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PInlineNotification {
+        /**
+          * Action icon of the inline-notification.
+         */
+        "actionIcon"?: IconName;
+        /**
+          * Action label of the inline-notification.
+         */
+        "actionLabel"?: string;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
+        /**
+          * Description of the inline-notification.
+         */
+        "description"?: string;
+        /**
+          * Heading of the inline-notification.
+         */
+        "heading"?: string;
+        /**
+          * Emitted when the action button is clicked.
+         */
+        "onAction"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines if the inline-notification can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the inline-notification.
+         */
+        "state"?: InlineNotificationState;
+        /**
+          * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2024,6 +2109,7 @@ declare namespace LocalJSX {
         "p-grid-item": PGridItem;
         "p-headline": PHeadline;
         "p-icon": PIcon;
+        "p-inline-notification": PInlineNotification;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -2071,6 +2157,7 @@ declare module "@stencil/core" {
             "p-grid-item": LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
+            "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
