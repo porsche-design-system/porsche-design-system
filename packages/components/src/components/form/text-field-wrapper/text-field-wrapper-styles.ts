@@ -21,7 +21,6 @@ import {
 import { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
 import { FormState, Theme } from '../../../types';
-import type { Styles } from 'jss';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -40,19 +39,6 @@ export const getSlottedCss = (host: HTMLElement): string => {
     })
   );
 };
-
-const getHoverStyles = (textColor: string, state: FormState): Styles<'&:hover'> => ({
-  '&:hover': {
-    '&~::slotted(input:not(:disabled):not([readonly]))': {
-      borderColor: addImportantToRule(textColor),
-    },
-    ...((state === 'success' || state === 'error') && {
-      '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
-        borderColor: addImportantToRule(colorDarken.notification[state]),
-      },
-    }),
-  },
-});
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -215,7 +201,6 @@ export const getComponentCss = (
           marginTop: pxToRemWithUnit(-4),
           paddingBottom: pxToRemWithUnit(8),
         },
-        ...getHoverStyles(textColor, state),
         '&--description': {
           color: contrastMediumColor,
         },
@@ -241,10 +226,21 @@ export const getComponentCss = (
         left: 'auto',
         right: 0,
       }),
-      ...getHoverStyles(textColor, state),
       '&--disabled': {
         color: disabledColor,
         cursor: 'not-allowed',
+      },
+    },
+    'label__text, unit': {
+      '&:hover': {
+        '&~::slotted(input:not(:disabled):not([readonly]))': {
+          borderColor: addImportantToRule(textColor),
+        },
+        ...((state === 'success' || state === 'error') && {
+          '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
+            borderColor: addImportantToRule(colorDarken.notification[state]),
+          },
+        }),
       },
     },
   });
