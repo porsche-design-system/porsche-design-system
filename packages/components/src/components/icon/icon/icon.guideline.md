@@ -49,7 +49,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 
 ## User Testing
 
-We want to ensure that icons are perceived in the intended way. To test icons for recognition and information scent we provide a simple Usabulityhub-Template. This is also required when moving icons to the Porsche Design System. Further, we highly recommend testing the icons in the specific use case.
+We want to ensure that icons are perceived in the intended way. To test icons for recognition and information scent we provide a simple Usabilityhub-Template. This is also required when moving icons to the Porsche Design System. Further, we highly recommend testing the icons in the specific use case.
 
 Read more on  
 [Nielsen Norman Group](https://www.nngroup.com/articles/icon-testing/)
