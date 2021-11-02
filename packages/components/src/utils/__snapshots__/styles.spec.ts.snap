@@ -356,6 +356,112 @@ Object {
 }
 `;
 
+exports[`getRequiredStyles() should return correct styles for theme: dark 1`] = `
+Object {
+  "required": Object {
+    "&::after": Object {
+      "color": "#fc1717",
+      "content": "\\" *\\"",
+    },
+  },
+}
+`;
+
+exports[`getRequiredStyles() should return correct styles for theme: light 1`] = `
+Object {
+  "required": Object {
+    "&::after": Object {
+      "color": "#e00000",
+      "content": "\\" *\\"",
+    },
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#fc1717",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": undefined,
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#01ba1d",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#e00000",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": undefined,
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#018a16",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
 exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
 Object {
   "clip": "auto",
