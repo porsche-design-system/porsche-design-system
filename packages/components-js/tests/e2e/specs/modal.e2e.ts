@@ -62,6 +62,11 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
   };
 
+  const closeModal = async () => {
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+  };
+
   const getModalVisibility = async () => await getElementStyle(await getModal(), 'visibility');
 
   it('should render and be visible when open', async () => {
@@ -74,6 +79,23 @@ describe('modal', () => {
     await initBasicModal({ isOpen: false });
     await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
     expect(await getModalVisibility()).toBe('hidden');
+  });
+
+  it('should have correct transform when closed and opened', async () => {
+    await initBasicModal({ isOpen: false });
+    const getModalTransform = async () => getElementStyle(await getModal(), 'transform', { waitForTransition: true });
+
+    const initialModalTransform = await getModalTransform();
+    expect(initialModalTransform).toBe('matrix(0.9, 0, 0, 0.9, 0, 0)');
+
+    await openModal();
+    const openModalTransform = await getModalTransform();
+    expect(openModalTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
+    expect(initialModalTransform).not.toBe(openModalTransform);
+
+    await closeModal();
+    const finalModalTransform = await getModalTransform();
+    expect(finalModalTransform).toBe(initialModalTransform);
   });
 
   describe('can be closed', () => {
