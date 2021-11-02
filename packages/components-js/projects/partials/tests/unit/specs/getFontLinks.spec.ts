@@ -34,14 +34,9 @@ describe('getFontLinks()', () => {
     });
 
     it('should throw error on invalid weight options', () => {
-      let error;
-      try {
-        getFontLinks({ weight: ['latin'] } as any);
-      } catch (e) {
-        error = e.message;
-      }
-
-      expect(error).toBe('Option "weight" is not supported, please use "weights" instead');
+      expect(() => getFontLinks({ weight: ['latin'] } as any)).toThrowErrorMatchingInlineSnapshot(
+        '"Option \\"weight\\" is not supported, please use \\"weights\\" instead"'
+      );
     });
   });
 

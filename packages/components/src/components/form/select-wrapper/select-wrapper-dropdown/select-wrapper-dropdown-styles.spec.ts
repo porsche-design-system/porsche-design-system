@@ -54,7 +54,7 @@ describe('getListStyles()', () => {
     ['up', false, 'light'],
     ['up', true, 'dark'],
     ['up', false, 'dark'],
-  ])('should return correct css for direction: %o, isOpen: %o and theme: %o', (direction, isOpen, theme) => {
+  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, isOpen, theme) => {
     expect(getCss(getListStyles(direction, isOpen, theme))).toMatchSnapshot();
   });
 });
@@ -78,7 +78,7 @@ describe('getComponentCss()', () => {
     ['up', true, true, 'none', true, 'light'],
     ['up', false, true, 'none', true, 'light'],
   ])(
-    'should return correct css for direction: %o, isOpen: %o, disabled: %o, state: %o, filter: %o and theme: %o',
+    'should return correct css for direction: %s, isOpen: %s, disabled: %s, state: %s, filter: %s and theme: %s',
     (direction, isOpen, disabled, state, filter, theme) => {
       expect(getComponentCss(direction, isOpen, disabled, state, filter, theme)).toMatchSnapshot();
     }

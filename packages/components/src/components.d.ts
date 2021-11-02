@@ -22,6 +22,7 @@ import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 export namespace Components {
     interface PAccordion {
@@ -841,6 +842,14 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * The unit text.
+         */
+        "unit"?: string;
+        /**
+          * The unit position.
+         */
+        "unitPosition"?: TextFieldWrapperUnitPosition;
     }
     interface PTextList {
         /**
@@ -2037,6 +2046,14 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * The unit text.
+         */
+        "unit"?: string;
+        /**
+          * The unit position.
+         */
+        "unitPosition"?: TextFieldWrapperUnitPosition;
     }
     interface PTextList {
         /**
