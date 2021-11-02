@@ -73,6 +73,19 @@ For better accessibility it's recommended to **not** reset these browser default
   </select>
 </Playground>
 
+### Number
+
+Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters.
+A description of the used unit should be provided to ensure accessibility.
+
+<Playground :markup="typesNumber" :config="config">
+  <select v-model="unitPosition">
+    <option disabled>Select a unit position</option>
+    <option value="prefix">Prefix</option>
+    <option value="suffix">Suffix</option>    
+  </select>
+</Playground>
+
 ### Password
 
 <Playground :markup="typesPassword" :config="config"></Playground>
@@ -123,13 +136,14 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     label = 'show';
     type = 'text';
     state = 'error';
+    unitPosition = 'prefix';
 
     get basic() {
-      const attr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-text-field-wrapper label="Some label" ${attr}>
+      const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+      return `<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
-<p-text-field-wrapper label="Some label" ${attr}>
+<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" placeholder="Some placeholder text" name="some-name" />
 </p-text-field-wrapper>`;
     }
@@ -157,6 +171,12 @@ If using **slotted contents** to serve form elements, make sure to provide the r
     get typesBasic() {
       return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
+</p-text-field-wrapper>`;
+    }
+
+    get typesNumber() {
+      return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
+  <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
     }
     
