@@ -154,10 +154,12 @@ describe('getComponentCss()', () => {
       hasHref: true,
       theme: 'light',
     },
-  ])('should return correct css for %j', (props) => {
-    const { icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme } = props;
-    expect(
-      getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)
-    ).toMatchSnapshot();
-  });
+  ])(
+    'should return correct css for %j',
+    ({ icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme }) => {
+      expect(
+        getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)
+      ).toMatchSnapshot();
+    }
+  );
 });
