@@ -6,6 +6,7 @@ import {
   getCss,
   mergeDeep,
   pxToRemWithUnit,
+  throwIfValueIsInvalid,
 } from '../../../../utils';
 import type {
   GridDirection,
@@ -22,9 +23,7 @@ const getDirectionStyles: GetStylesFunction = (flexDirection: GridDirectionType)
 const getWrapStyles: GetStylesFunction = (flexWrap: GridWrapType): JssStyle => ({ flexWrap });
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
-  if (!GRID_GUTTERS.includes(gutter)) {
-    throw new Error(`Gutter 'size="${gutter}"' has to be a value of: ${GRID_GUTTERS.join(', ')}`);
-  }
+  throwIfValueIsInvalid(gutter, GRID_GUTTERS, 'gutter');
   const gutterRem = `-${pxToRemWithUnit(gutter / 2)}`;
 
   return {
