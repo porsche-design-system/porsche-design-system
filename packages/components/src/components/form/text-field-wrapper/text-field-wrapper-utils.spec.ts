@@ -18,17 +18,12 @@ describe('getInputUnitPadding()', () => {
 });
 
 describe('setInputUnitStyles()', () => {
-  let input: HTMLInputElement;
-
-  beforeEach(() => {
-    input = document.createElement('input');
-    input.type = 'number';
-  });
-
   it('should set inline style on input type number', async () => {
+    const input = document.createElement('input');
+    input.type = 'number';
     setInputUnitStyles(input, 'km/h', 60, 'prefix', 'none');
 
-    expect(input.style.padding).toBe('0.6875rem 0.6875rem 0.6875rem 3.75rem');
+    expect(input.style.cssText).toBe('padding: 0.6875rem 0.6875rem 0.6875rem 3.75rem !important;');
   });
 });
 
