@@ -39,7 +39,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 
 **SVG Export Guideline**
 
-- Transform vector forms in a full, coherent vector shape. (convert strokes to shapes and merch objects)
+- Transform vector forms in a full, coherent vector shape. (convert strokes to shapes and merge objects)
 - Delete everything that is not necessary (layers, strokes, variants, etc.).
 - Export your icon as svg.
 - Name svg according to the icons (e.g. "delete.svg" or "edit.svg"). Name social icons "logo-companyname.svg".
