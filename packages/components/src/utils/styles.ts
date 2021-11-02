@@ -1,8 +1,8 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { isDark } from '.';
-import type { Theme } from '../types';
+import { getThemedColors, getThemedStateColors, isDark } from '.';
+import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
 const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -113,7 +113,7 @@ export type GetFocusSlottedPseudoStylesOptions = {
 /**
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
-export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles => {
+export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
   const options: GetFocusSlottedPseudoStylesOptions = {
     color: color.state.focus,
     offset: 2,
@@ -190,3 +190,30 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
   width: isCheckboxOrRadio ? 'auto' : 'fit-content',
   padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });
+
+export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
+  const { errorColor } = getThemedColors(theme);
+  return {
+    required: {
+      '&::after': {
+        content: '" *"',
+        color: errorColor,
+      },
+    },
+  };
+};
+
+export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
+  const { stateColor } = getThemedStateColors(theme, state);
+  return {
+    message: {
+      display: 'flex',
+      marginTop: spacing['4'],
+      color: stateColor,
+      transition: getTransition('color'),
+      '&__icon': {
+        marginRight: spacing['4'],
+      },
+    },
+  };
+};

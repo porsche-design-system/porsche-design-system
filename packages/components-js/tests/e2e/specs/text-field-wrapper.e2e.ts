@@ -32,6 +32,7 @@ describe('text-field-wrapper', () => {
   const getDescriptionLink = () => selectNode(page, 'p-text-field-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-text-field-wrapper [slot="message"] a');
   const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
+  const getUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
   const getButton = () => selectNode(page, 'p-text-field-wrapper >>> button');
   const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
   const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
@@ -42,8 +43,9 @@ describe('text-field-wrapper', () => {
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
     state?: FormState;
-    type?: 'text' | 'password' | 'search';
+    type?: 'number' | 'text' | 'password' | 'search';
     hasLabel?: boolean;
+    hasUnit?: boolean;
   };
 
   const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -54,6 +56,7 @@ describe('text-field-wrapper', () => {
       state = 'none',
       type = 'text',
       hasLabel = false,
+      hasUnit = false,
     } = opts ?? {};
 
     const slottedLabel = useSlottedLabel
@@ -66,11 +69,12 @@ describe('text-field-wrapper', () => {
       ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
     const label = hasLabel ? ' label="Some label"' : '';
+    const unit = hasUnit ? ' unit="km/h"' : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper state="${state}"${label}>
+      <p-text-field-wrapper state="${state}"${label}${unit}>
         ${slottedLabel}
         ${slottedDescription}
         <input type="${type}" />
@@ -378,7 +382,22 @@ describe('text-field-wrapper', () => {
 
       expect(inputFocusSpyCalls).toBe(0);
       await labelText.click();
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
+
+      expect(inputFocusSpyCalls).toBe(1);
+    });
+
+    it('should focus input when unit element is clicked', async () => {
+      await initTextField({ type: 'number', hasUnit: true });
+      const unitElement = await getUnit();
+      const input = await getInput();
+
+      let inputFocusSpyCalls = 0;
+      await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
+
+      expect(inputFocusSpyCalls).toBe(0);
+      await unitElement.click();
+      await waitForEventSerialization(page);
 
       expect(inputFocusSpyCalls).toBe(1);
     });
