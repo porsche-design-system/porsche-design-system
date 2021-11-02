@@ -15,6 +15,7 @@ import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
+import { InlineNotificationComponent } from './inline-notification.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
@@ -60,6 +61,7 @@ export const pages = [
   GridComponent,
   HeadlineComponent,
   IconComponent,
+  InlineNotificationComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -105,6 +107,7 @@ export * from './form-wrapper-binding.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
+export * from './inline-notification.component';
 export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';

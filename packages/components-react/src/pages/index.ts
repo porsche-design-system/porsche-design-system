@@ -14,6 +14,7 @@ export * from './Flex';
 export * from './Grid';
 export * from './Headline';
 export * from './Icon';
+export * from './InlineNotification';
 export * from './Link';
 export * from './LinkPure';
 export * from './LinkSocial';

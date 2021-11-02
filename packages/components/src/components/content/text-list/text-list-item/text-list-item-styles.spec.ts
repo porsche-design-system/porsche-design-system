@@ -13,7 +13,7 @@ describe('getComponentCss()', () => {
     ['ordered', 'alphabetically', true],
   ])(
     'should return correct css for listType %s, orderType %s, isNestedList %s',
-    (listType: ListType, orderType: OrderType, isNestedList: boolean) => {
+    (listType, orderType, isNestedList) => {
       expect(getComponentCss(listType, orderType, isNestedList)).toMatchSnapshot();
     }
   );
