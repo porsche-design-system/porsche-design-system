@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `unit` and `unitPosition` properties to `Text Field Wrapper`
+
 ### [2.6.0-beta.0] - 2021-10-29
 
 #### Changed
