@@ -22,7 +22,7 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const initBanner = (opts?: {
+const initInlineNotification = (opts?: {
   state?: InlineNotificationState;
   persistent?: boolean;
   actionLabel?: string;
@@ -52,20 +52,20 @@ const getCloseButton = () => selectNode(page, 'p-inline-notification >>> p-butto
 const getActionButton = () => selectNode(page, 'p-inline-notification >>> p-button-pure.action');
 
 it('should render close button with type of "button"', async () => {
-  await initBanner();
+  await initInlineNotification();
   const closeBtnReal = await selectNode(page, 'p-inline-notification >>> p-button-pure >>> button');
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
 it('should render without button', async () => {
-  await initBanner({ persistent: true });
+  await initInlineNotification({ persistent: true });
   const el = await getCloseButton();
   expect(el).toBeNull();
 });
 
 describe('close button', () => {
   it('should emit custom event by click on close button', async () => {
-    await initBanner();
+    await initInlineNotification();
 
     const host = await getHost();
     const closeButton = await getCloseButton();
@@ -78,7 +78,7 @@ describe('close button', () => {
   });
 
   it('should remove and re-attach event', async () => {
-    await initBanner();
+    await initInlineNotification();
 
     const host = await getHost();
     const closeButton = await getCloseButton();
@@ -98,7 +98,7 @@ describe('close button', () => {
 
 describe('action button', () => {
   it('should emit custom event by click on action button', async () => {
-    await initBanner({ actionLabel: 'Retry' });
+    await initInlineNotification({ actionLabel: 'Retry' });
 
     const host = await getHost();
     const actionButton = await getActionButton();
@@ -113,7 +113,7 @@ describe('action button', () => {
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
-    await initBanner({ state: 'error' });
+    await initInlineNotification({ state: 'error' });
 
     const status = await getLifecycleStatus(page);
 
@@ -128,7 +128,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after state change', async () => {
-    await initBanner({ state: 'error' });
+    await initInlineNotification({ state: 'error' });
     const host = await getHost();
 
     await setProperty(host, 'state', 'warning');
@@ -148,7 +148,7 @@ describe('accessibility', () => {
   it.each<InlineNotificationState>(INLINE_NOTIFICATION_STATES)(
     'should expose correct accessibility tree properties for state: %s',
     async (state) => {
-      await initBanner({ state });
+      await initInlineNotification({ state });
       const wrapper = await selectNode(page, 'p-inline-notification >>> .content');
 
       const snapshotWrapper = await page.accessibility.snapshot({

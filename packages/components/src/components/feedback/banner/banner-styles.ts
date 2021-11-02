@@ -20,7 +20,7 @@ const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 
 const mediaQueryS = mediaQuery('s');
-const mediaQueryXxsS = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
+const mediaQueryXxs = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
 
 export const getComponentCss = (): string => {
   const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
@@ -38,7 +38,7 @@ export const getComponentCss = (): string => {
       left: 0,
       right: 0,
       willChange: 'opacity,transform',
-      [mediaQueryXxsS]: {
+      [mediaQueryXxs]: {
         bottom: `var(${bannerPositionBottomVar})`,
       },
       [mediaQueryS]: {
@@ -46,7 +46,7 @@ export const getComponentCss = (): string => {
       },
     }),
     ':host(.hydrated)': {
-      [mediaQueryXxsS]: {
+      [mediaQueryXxs]: {
         animation: `var(${bannerAnimationDurationVar},600ms) $animateMobileIn ${easeInQuad} forwards`,
       },
       [mediaQueryS]: {
@@ -54,7 +54,7 @@ export const getComponentCss = (): string => {
       },
     },
     ':host(.banner--close)': {
-      [mediaQueryXxsS]: {
+      [mediaQueryXxs]: {
         animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
       },
       [mediaQueryS]: {
