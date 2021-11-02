@@ -8,11 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.6.0-beta.0] - 2021-10-29
+
 #### Changed
 - Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback font
 
 #### Added
 - `Marque` uses `webp` images for browsers that support it
+- `Inline Notification`
+- `Icon` now supports `success` for `name` property
+
+#### Fixed
+- Colors of `Banner` for dark theme
+- Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility 
+- Opening and closing transition of `Modal`
 
 ### [2.5.1-beta.0] - 2021-10-11
 
@@ -51,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Box model of `Link Pure`
 - Focus of `Link Pure` with slotted anchor and hidden label
-– Focus cycling of `Modal` without focusable children
+- Focus cycling of `Modal` without focusable children
 - Suppress CORS error
 
 ### [2.4.0-beta.1] - 2021-08-26

@@ -1,23 +1,24 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
+  getInset,
   getTextHiddenJssStyle,
   getThemedColors,
   getThemedStateColors,
   getTransition,
   isDark,
   JssStyle,
-  Styles,
-  pxToRemWithUnit,
   mergeDeep,
-  addImportantToRule,
+  pxToRemWithUnit,
+  Styles,
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color, font } from '@porsche-design-system/utilities';
-import { SELECT_HEIGHT, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 
@@ -111,7 +112,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
       }),
       '&+span': {
         position: 'absolute',
-        inset: 0,
+        ...getInset(),
         outline: '1px solid transparent',
         outlineOffset: 2,
         transition: getTransition('color'),
@@ -140,7 +141,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     disabledColor,
   } = getThemedColors(theme);
 
-  const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // strange that surfaceColor isn't used for dark theme
+  const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // TODO: strange that surfaceColor isn't used for dark theme
 
   const baseDirectionPseudoStyle: JssStyle = {
     content: '""',

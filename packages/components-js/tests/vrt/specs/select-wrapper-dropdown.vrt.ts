@@ -104,7 +104,7 @@ it('should have no visual regression for :hover', async () => {
         });
       });
 
-      await forceHoveredState(page, '.hovered p-select-wrapper-dropdown >>> li');
+      await forceHoveredState(page, '.hovered p-select-wrapper-dropdown >>> li:first-child');
     })
   ).toBeFalsy();
 });
