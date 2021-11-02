@@ -35,11 +35,15 @@ Object {
   "contrastMediumColor": "#b0b1b2",
   "disabledColor": "#7c7f81",
   "errorColor": "#fc1717",
+  "errorSoftColor": "#fec5c5",
   "hoverColor": "#ff0223",
   "neutralColor": "#2193ff",
+  "neutralSoftColor": "#c7e4ff",
   "successColor": "#01ba1d",
+  "successSoftColor": "#bfeec6",
   "textColor": "#fff",
   "warningColor": "#ff9b00",
+  "warningSoftColor": "#ffe6bf",
 }
 `;
 
@@ -53,11 +57,15 @@ Object {
   "contrastMediumColor": "#626669",
   "disabledColor": "#96989a",
   "errorColor": "#e00000",
+  "errorSoftColor": "#fae6e6",
   "hoverColor": "#d5001c",
   "neutralColor": "#0061bd",
+  "neutralSoftColor": "#e5eff8",
   "successColor": "#018a16",
+  "successSoftColor": "#e5f3e7",
   "textColor": "#000",
   "warningColor": "#ff9b00",
+  "warningSoftColor": "#fff5e5",
 }
 `;
 

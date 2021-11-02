@@ -67,6 +67,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../assets/CHANGELOG.md'),
       ],
+      'Browser Notification': [
+        // @ts-ignore
+        () => import('@/../../../node_modules/@porsche-design-system/browser-notification/CHANGELOG.md'),
+      ],
     },
     Versioning: [
       // @ts-ignore
@@ -92,20 +96,10 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/content/accordion/accordion.props.md`),
       ],
     },
-    Banner: {
-      Examples: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
-      ],
-      Usage: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.usage.md'),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
-      ],
-    },
+    Banner: [
+      // @ts-ignore
+      () => import('@/../../components/src/components/feedback/banner/banner.redirect.md'),
+    ],
     Button: {
       Examples: [
         // @ts-ignore
@@ -328,6 +322,30 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/content/modal/modal.props.md'),
+      ],
+    },
+    Notifications: {
+      Introduction: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/notifications.usage.md'),
+      ],
+      'Inline Notification': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
+      ],
+      Banner: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
+      ],
+      'Decision Tree': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/decision-tree.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],
     },
     Pagination: {
@@ -677,10 +695,6 @@ export const config: StorefrontConfig = {
     'Components Ready': [
       // @ts-ignore
       () => import('@/pages/general/components-ready.md'),
-    ],
-    'Slotted Content': [
-      // @ts-ignore
-      () => import('@/pages/general/slotted-content.md'),
     ],
     Testing: [
       // @ts-ignore
