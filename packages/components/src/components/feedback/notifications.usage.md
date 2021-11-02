@@ -5,7 +5,7 @@ Notifications are an important method of communicating with users and providing 
 Their main aim should be to help users perform a task and not necessarily interfere or get in the way of users while using your product. Ensure your **notifications are relevant, timely, and informative.** 
 
 **Keep in Mind:**
-Highly frequented or disruptive Notifications can have a **negative impact** on the users’ experience. 
+Highly frequented or disruptive Notifications can have a **negative impact** on the user's experience. 
 
 ---
 
