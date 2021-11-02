@@ -444,7 +444,7 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
   <header>
     <div class=\\"close\\">
       <p-button-pure class=\\"hydrated\\">
-        Close</p-button-pure>
+        Close modal</p-button-pure>
     </div>
   </header>
   <slot>
