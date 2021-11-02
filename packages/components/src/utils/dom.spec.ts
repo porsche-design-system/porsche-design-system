@@ -100,13 +100,9 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
   const selector = 'someSelector';
 
   it('should throw error if selector is not found', () => {
-    let error;
-    try {
-      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(`Child HTMLElement .${selector} is missing.`);
+    expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).toThrowErrorMatchingInlineSnapshot(
+      `"Child HTMLElement .someSelector is missing."`
+    );
   });
 
   it('should not throw error if HMTLElement is defined', () => {
@@ -114,13 +110,7 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     el.classList.add(selector);
     document.body.append(el);
 
-    let error = undefined;
-    try {
-      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).not.toThrow();
   });
 });
 
@@ -128,13 +118,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
   it('should throw error if root node tag does not match', () => {
     const child = document.createElement('p-select-wrapper-dropdown');
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).toThrow();
   });
 
   it('should not throw error if root node tag matches', () => {
@@ -143,13 +127,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
     parent.attachShadow({ mode: 'open' });
     parent.shadowRoot.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
   });
 
   it('should not throw error if prefixed root node tag matches', () => {
@@ -158,13 +136,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
     parent.attachShadow({ mode: 'open' });
     parent.shadowRoot.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
   });
 });
 
@@ -192,13 +164,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).toThrow();
   });
 
   it('should not throw error if parent tag matches', () => {
@@ -206,13 +172,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
   });
 
   it('should not throw error if prefixed parent tag matches', () => {
@@ -220,13 +180,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('my-prefix-p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
   });
 });
 
@@ -236,13 +190,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pGrid']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pGrid'])).toThrow();
   });
 
   it('should not throw error if parent tag matches 1st element', () => {
@@ -250,13 +198,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex'])).not.toThrow();
   });
 
   it('should not throw error if parent tag matches 2nd element', () => {
@@ -264,13 +206,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid'])).not.toThrow();
   });
 });
 
@@ -279,25 +215,13 @@ describe('throwIfElementHasAttribute()', () => {
     const element = document.createElement('div');
     element.setAttribute('title', 'some title');
 
-    let error = undefined;
-    try {
-      throwIfElementHasAttribute(element, 'title');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfElementHasAttribute(element, 'title')).toThrow();
   });
 
   it('should not throw error if attribute does not exist', () => {
     const element = document.createElement('div');
 
-    let error = undefined;
-    try {
-      throwIfElementHasAttribute(element, 'title');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfElementHasAttribute(element, 'title')).not.toThrow();
   });
 });
 
