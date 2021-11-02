@@ -21,14 +21,8 @@ describe('setCollapsibleElementHeight()', () => {
     expect(collapsible.style.height).toBe('0px');
   });
 
-  it('should throw error when no element is present', () => {
-    let error;
-    try {
-      setCollapsibleElementHeight(undefined, false, '200px');
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toBe(undefined);
+  it('should not throw error when no element is present', () => {
+    expect(() => setCollapsibleElementHeight(undefined, false, '200px')).not.toThrow();
   });
 });
 
