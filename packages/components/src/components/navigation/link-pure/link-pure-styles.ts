@@ -8,6 +8,7 @@ import {
   getCss,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
+  getInset,
   getTransition,
   hasVisibleIcon,
   isDark,
@@ -115,10 +116,7 @@ const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean)
   return hideLabel
     ? {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        ...getInset(),
         whiteSpace: 'nowrap',
         textIndent: -999999,
       }

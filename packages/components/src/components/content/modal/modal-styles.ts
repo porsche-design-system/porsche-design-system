@@ -1,24 +1,24 @@
-import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss, getInset } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
-const transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
 export const getComponentCss = (open: boolean): string => {
   return getCss({
     ...buildHostStyles({
       ...addImportantToEachRule({
         position: 'fixed',
-        inset: 0,
+        ...getInset(),
         zIndex: 99999,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        transition: `opacity 0.2s ${transitionTimingFunction}`,
+        transition: `opacity .2s ${transitionTimingFunction}, visibility 0s linear .2s`,
         opacity: 0,
         visibility: 'hidden',
         ...(open && {
-          transition: `opacity 0.6s ${transitionTimingFunction}, visibility 0s linear`,
+          transition: `opacity .6s ${transitionTimingFunction}`,
           opacity: 1,
           visibility: 'inherit',
         }),
@@ -28,12 +28,14 @@ export const getComponentCss = (open: boolean): string => {
       '&::before': addImportantToEachRule({
         content: '""',
         position: 'fixed',
-        inset: 0,
+        ...getInset(),
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
     }),
-    root: addImportantToEachRule({
-      transform: 'scale3d(1,1,1)',
-    }),
+    root: {
+      position: 'relative',
+      transition: `transform 0.6s ${transitionTimingFunction}`,
+      transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+    },
   });
 };

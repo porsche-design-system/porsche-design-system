@@ -15,6 +15,7 @@ import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
+import { InlineNotificationComponent } from './inline-notification.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
@@ -36,8 +37,11 @@ import { TextComponent } from './text.component';
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
-import { TypographyComponent } from './typography.component';
 import { SwitchComponent } from './switch.component';
+import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
+import { TypographyLatinComponent } from './typography-latin.component';
+import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
+import { TypographyCyrilComponent } from './typography-cyril.component';
 
 export const pages = [
   AccordionComponent,
@@ -57,6 +61,7 @@ export const pages = [
   GridComponent,
   HeadlineComponent,
   IconComponent,
+  InlineNotificationComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -79,7 +84,10 @@ export const pages = [
   TextFieldWrapperComponent,
   TextListComponent,
   TextareaWrapperComponent,
-  TypographyComponent,
+  TypographyFallbackStrategyComponent,
+  TypographyLatinComponent,
+  TypographyGreekAndCopticComponent,
+  TypographyCyrilComponent,
 ];
 
 export * from './accordion.component';
@@ -99,6 +107,7 @@ export * from './form-wrapper-binding.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
+export * from './inline-notification.component';
 export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';
@@ -121,4 +130,7 @@ export * from './text.component';
 export * from './text-field-wrapper.component';
 export * from './text-list.component';
 export * from './textarea-wrapper.component';
-export * from './typography.component';
+export * from './typography-fallback-strategy.component';
+export * from './typography-latin.component';
+export * from './typography-greek-and-coptic.component';
+export * from './typography-cyril.component';
