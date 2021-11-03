@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Crash of Design System on iOS when `ResizeObserver` is toggled off 
+
 #### Added
 - `unit` and `unitPosition` properties to `Text Field Wrapper`
 
