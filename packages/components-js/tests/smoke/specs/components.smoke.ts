@@ -1,6 +1,7 @@
 import { Page } from 'puppeteer';
 import { setContentWithDesignSystem } from '../helpers';
 import { getComponentChunkLinks } from '@porsche-design-system/components-js/partials';
+import { getConsoleErrorsAmount, initConsoleObserver } from '../../e2e/helpers';
 
 describe('components', () => {
   let page: Page;
@@ -38,6 +39,25 @@ describe('components', () => {
     });
 
     expect(await getCountedEvents()).toBe(1);
+  });
+});
+
+describe('initialization', () => {
+  let page: Page;
+  beforeEach(async () => (page = await browser.newPage()));
+  afterEach(async () => await page.close());
+
+  it('should not crash if ResizeObserver is undefined', async () => {
+    initConsoleObserver(page);
+    await page.evaluate(() => {
+      window.ResizeObserver = undefined;
+    });
+    await setContentWithDesignSystem(page, '');
+
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });
 
