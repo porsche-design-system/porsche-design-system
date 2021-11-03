@@ -212,7 +212,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     }
 
     accessibility = 
-`<p-button-pure accessibility="{ 'aria-label': 'Some more descriptive label', 'aria-haspopup': true }">Some label</p-button-pure>`;
+`<p-button-pure accessibility="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button-pure>`;
     
     markupResponsive = 
 `<p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>`;

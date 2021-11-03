@@ -98,7 +98,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <p-button variant="tertiary" hide-label="{ base: true, l: false }">Some label</p-button>`;
 
     accessibility = 
-`<p-button accessibility="{ 'aria-label': 'Some more descriptive label', 'aria-haspopup': true }">Some label</p-button>`;
+`<p-button accessibility="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
 
     icon =
 `<p-button icon="delete">Some label</p-button>
