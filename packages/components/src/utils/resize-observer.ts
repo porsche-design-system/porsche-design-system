@@ -1,8 +1,14 @@
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 
-const resizeObserver = new ResizeObserver((entries) => {
-  entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
-});
+let resizeObserver: ResizeObserver;
+if (window.ResizeObserver) {
+  resizeObserver = new ResizeObserver((entries) => {
+    entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
+  });
+} else {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  resizeObserver = { observe: () => {}, unobserve: () => {}, disconnect: () => {} } as ResizeObserver;
+}
 
 export const observeResize = <T extends HTMLElement>(
   node: T,
