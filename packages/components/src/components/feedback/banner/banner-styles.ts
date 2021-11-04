@@ -1,47 +1,102 @@
 import {
   addImportantToRule,
   breakpoint,
+  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   mediaQuery,
+  pxToRemWithUnit,
 } from '../../../utils';
+import type { JssStyle } from '../../../utils';
 
-const easeOutQuad = 'cubic-bezier(0.5, 1, 0.89, 1)';
+const bannerPositionTypeVar = '--p-banner-position-type';
+const bannerPositionTopVar = '--p-banner-position-top';
+const bannerPositionBottomVar = '--p-banner-position-bottom';
+const bannerZIndexVar = '--p-banner-z-index';
+const bannerAnimationDurationVar = '--p-animation-duration__banner';
+
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
+
+const mediaQueryS = mediaQuery('s');
+const mediaQueryXxs = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
 
 export const getComponentCss = (): string => {
+  const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+
   return getCss({
-    '@keyframes animateMobileOut': {
-      from: {
-        opacity: 1,
-        transform: 'translate3d(0,0,0)',
+    ...buildHostStyles({
+      [bannerPositionTypeVar]: 'fixed',
+      [bannerPositionTopVar]: pxToRemWithUnit(56),
+      [bannerPositionBottomVar]: pxToRemWithUnit(56),
+      [bannerZIndexVar]: '99',
+      display: 'block',
+      position: `var(${bannerPositionTypeVar})`,
+      zIndex: `var(${bannerZIndexVar})`,
+      opacity: 0,
+      left: 0,
+      right: 0,
+      willChange: 'opacity,transform',
+      [mediaQueryXxs]: {
+        bottom: `var(${bannerPositionBottomVar})`,
       },
-      to: {
-        opacity: 0,
-        transform: 'translate3d(0, calc(var(--p-banner-position-bottom) + 100%), 0)',
+      [mediaQueryS]: {
+        top: `var(${bannerPositionTopVar})`,
       },
-    },
-    '@keyframes animateDesktopOut': {
-      from: {
-        opacity: 1,
-        transform: 'translate3d(0,0,0)',
+    }),
+    ':host(.hydrated)': {
+      [mediaQueryXxs]: {
+        animation: `var(${bannerAnimationDurationVar},600ms) $animateMobileIn ${easeInQuad} forwards`,
       },
-      to: {
-        opacity: 0,
-        transform: 'translate3d(0, calc(-100% - var(--p-banner-position-bottom)), 0)',
+      [mediaQueryS]: {
+        animation: `var(${bannerAnimationDurationVar},600ms) $animateDesktopIn ${easeInQuad} forwards`,
       },
     },
     ':host(.banner--close)': {
-      [`${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`]: {
+      [mediaQueryXxs]: {
         animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
       },
-      [mediaQuery('s')]: {
+      [mediaQueryS]: {
         animation: addImportantToRule(`600ms $animateDesktopOut ${easeOutQuad} forwards`),
+      },
+    },
+    root: {
+      boxShadow:
+        `0 ${pxToRemWithUnit(2)} ${pxToRemWithUnit(4)} 0 rgba(0,0,0,0.05),` +
+        `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
+    },
+    '@keyframes animateMobileIn': {
+      from: {
+        opacity: 0,
+        transform: `translate3d(0,calc(var(${bannerPositionBottomVar})+100%),0)`,
+      },
+      to: animationVisible,
+    },
+    '@keyframes animateDesktopIn': {
+      from: {
+        opacity: 0,
+        transform: `translate3d(0,calc(-100% - var(${bannerPositionBottomVar})),0)`,
+      },
+      to: animationVisible,
+    },
+    '@keyframes animateMobileOut': {
+      from: animationVisible,
+      to: {
+        opacity: 0,
+        transform: `translate3d(0,calc(var(${bannerPositionBottomVar})+100%),0)`,
+      },
+    },
+    '@keyframes animateDesktopOut': {
+      from: animationVisible,
+      to: {
+        opacity: 0,
+        transform: `translate3d(0,calc(-100% - var(${bannerPositionBottomVar})),0)`,
       },
     },
   });
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };

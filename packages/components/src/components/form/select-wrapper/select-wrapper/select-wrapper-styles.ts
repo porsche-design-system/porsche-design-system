@@ -8,6 +8,8 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFormTextHiddenJssStyle,
+  getRequiredStyles,
+  getStateMessageStyles,
   getThemedColors,
   getThemedStateColors,
   getTransition,
@@ -26,8 +28,7 @@ const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
-  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor, errorColor } =
-    getThemedColors(theme);
+  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
@@ -114,13 +115,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         },
       },
     },
-    // @mixin required() {
-    required: {
-      '&::after': {
-        content: '" *"',
-        color: errorColor,
-      },
-    },
+    ...getRequiredStyles(theme),
+
     icon: {
       position: 'absolute',
       bottom: pxToRemWithUnit(12),
@@ -133,16 +129,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         transform: 'rotate3d(0,0,1,180deg)',
       },
     },
-    // @mixin state-message() {
-    message: {
-      display: 'flex',
-      marginTop: pxToRemWithUnit(4),
-      color: stateColor,
-      transition: getTransition('color'),
-      '&__icon': {
-        marginRight: pxToRemWithUnit(4),
-      },
-    },
+
+    ...getStateMessageStyles(theme, state),
   });
 };
 

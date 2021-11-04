@@ -4,7 +4,6 @@ import {
   expectedStyleOnFocus,
   getActiveElementId,
   getAttribute,
-  getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
@@ -22,7 +21,7 @@ describe('button', () => {
   let page: Page;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
@@ -117,7 +116,9 @@ describe('button', () => {
       await triggerElement.click();
       await waitForEventSerialization(page);
     }
-    await waitForEventSerialization(page);
+    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(page); // 🙈
+
     expect(calls).toBe(2);
   });
 
@@ -203,77 +204,65 @@ describe('button', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls initially').toBe(0);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls initially').toBe(0);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls initially').toBe(0);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls initially').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId initially')
-      .toBe('');
+    expect(beforeFocusCalls, 'beforeFocusCalls initially').toBe(0);
+    expect(buttonFocusCalls, 'buttonFocusCalls initially').toBe(0);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls initially').toBe(0);
+    expect(buttonBlurCalls, 'buttonBlurCalls initially').toBe(0);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls initially').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls initially').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after 1st tab').toBe(0);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls after 1st tab').toBe(0);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls after 1st tab').toBe(0);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls after 1st tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 1st tab')
-      .toBe('before');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab').toBe(0);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab').toBe(0);
+    expect(buttonBlurCalls, 'buttonBlurCalls after 1st tab').toBe(0);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 1st tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after 1st tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after 2nd tab').toBe(1);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls after 2nd tab').toBe(1);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls after 2nd tab').toBe(0);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls after 2nd tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 2nd tab')
-      .toBe('my-button');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab').toBe(1);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab').toBe(1);
+    expect(buttonBlurCalls, 'buttonBlurCalls after 2nd tab').toBe(0);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 2nd tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after 2nd tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-button');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after 3rd tab').toBe(1);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls after 3rd tab').toBe(1);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls after 3rd tab').toBe(1);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls after 3rd tab').toBe(1);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 3rd tab')
-      .toBe('after');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after 3rd tab').toBe(1);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls after 3rd tab').toBe(1);
+    expect(buttonBlurCalls, 'buttonBlurCalls after 3rd tab').toBe(1);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 3rd tab').toBe(1);
+    expect(afterFocusCalls, 'afterFocusCalls after 3rd tab').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after 1st tab back').toBe(2);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls after 1st tab back').toBe(2);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls after 1st tab back').toBe(1);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls after 1st tab back').toBe(1);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 1st tab back')
-      .toBe('my-button');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab back').toBe(2);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab back').toBe(2);
+    expect(buttonBlurCalls, 'buttonBlurCalls after 1st tab back').toBe(1);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 1st tab back').toBe(1);
+    expect(afterFocusCalls, 'afterFocusCalls after 1st tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-button');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after 2nd tab back').toBe(2);
-    expect(buttonFocusInCalls).withContext('buttonFocusInCalls after 2nd tab back').toBe(2);
-    expect(buttonBlurCalls).withContext('buttonBlurCalls after 2nd tab back').toBe(2);
-    expect(buttonFocusOutCalls).withContext('buttonFocusOutCalls after 2nd tab back').toBe(2);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 2nd tab back')
-      .toBe('before');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
+    expect(buttonFocusCalls, 'buttonFocusCalls after 2nd tab back').toBe(2);
+    expect(buttonFocusInCalls, 'buttonFocusInCalls after 2nd tab back').toBe(2);
+    expect(buttonBlurCalls, 'buttonBlurCalls after 2nd tab back').toBe(2);
+    expect(buttonFocusOutCalls, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
+    expect(afterFocusCalls, 'afterFocusCalls after 2nd tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
     await page.keyboard.up('ShiftLeft');
   });
@@ -329,13 +318,13 @@ describe('button', () => {
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after tab').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(buttonFocusCalls).withContext('buttonFocusCalls after second tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after second tab').toBe(1);
+    expect(buttonFocusCalls, 'buttonFocusCalls after second tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
   });
 
   it('should submit form via enter key when type is submit', async () => {
@@ -390,24 +379,6 @@ describe('button', () => {
     expect(submitCalls).toBe(3);
   });
 
-  it('should add aria-busy when loading and remove if finished', async () => {
-    await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
-    const host = await getHost();
-    const button = await getButton();
-
-    expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-    await setProperty(host, 'loading', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(button, 'aria-busy')).toBeNull();
-  });
-
   it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
     await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
     const host = await getHost();
@@ -456,23 +427,17 @@ describe('button', () => {
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host))
-        .withContext('after Tab')
-        .toBe(true);
+      expect(await hasFocus(page, host), 'after Tab').toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host))
-        .withContext('focus style on loading')
-        .toBe(true);
+      expect(await hasFocus(page, host), 'focus style on loading').toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host))
-        .withContext('final focus style')
-        .toBe(true);
+      expect(await hasFocus(page, host), 'final focus style').toBe(true);
     });
   });
 
@@ -481,24 +446,24 @@ describe('button', () => {
       await initButton();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-button']).withContext('componentDidLoad: p-button').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips with spinner', async () => {
       await initButton({ isLoading: true });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-button']).withContext('componentDidLoad: p-button').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
-      expect(status.componentDidLoad['p-spinner']).withContext('componentDidLoad: p-spinner').toBe(1);
+      expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-spinner'], 'componentDidLoad: p-spinner').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -509,9 +474,52 @@ describe('button', () => {
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-button']).withContext('componentDidUpdate: p-button').toBe(1);
+      expect(status.componentDidUpdate['p-button'], 'componentDidUpdate: p-button').toBe(1);
 
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initButton();
+      const button = await getButton();
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility name if label is hidden', async () => {
+      await initButton();
+      const host = await getHost();
+      const button = await getButton();
+      await setProperty(host, 'hide-label', 'true');
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: button,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should add aria-busy attribute when loading and remove it if finished', async () => {
+      await initButton();
+      const host = await getHost();
+      const button = await getButton();
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+      await setProperty(host, 'loading', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+      await setProperty(host, 'loading', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
   });
 });

@@ -2,7 +2,6 @@ import { Page } from 'puppeteer';
 import path from 'path';
 import * as fs from 'fs';
 import { selectNode } from '../helpers';
-import { browser } from '../config';
 
 const getOverviewContent = (): string => {
   const componentsJsEntry = require.resolve('@porsche-design-system/components-js');
@@ -38,63 +37,54 @@ const setContentWithJsdomPolyfillBuild = async (page: Page): Promise<void> => {
   );
 };
 
-describe('jsdom polyfill', () => {
-  let page: Page;
-  let requests: string[] = [];
+let page: Page;
+let requests: string[] = [];
 
-  beforeEach(async () => {
-    page = await browser.newPage();
-    requests = [];
-    await page.setRequestInterception(true);
+beforeEach(async () => {
+  page = await browser.newPage();
+  await page.setRequestInterception(true);
+  requests = [];
 
-    page.removeAllListeners('request');
-    page.on('request', (request) => {
-      const url = request.url();
-
-      if (url.startsWith('http')) {
-        requests.push(url);
-      }
-      request.continue();
-    });
-  });
-  afterEach(async () => {
-    await page.close();
-  });
-
-  it('should have no cdn requests', async () => {
-    await setContentWithJsdomPolyfillBuild(page);
-
-    const markup = getOverviewContent();
-
-    await page.evaluate(async (overviewPage) => {
-      (window as any).PDS_SKIP_FETCH = true;
-      document.body.innerHTML = overviewPage;
-      await (window as any).porscheDesignSystem.componentsReady();
-    }, markup);
-
-    const button = await selectNode(page, 'p-button');
-
-    expect(await button.evaluate((x) => x.shadowRoot !== null))
-      .withContext('Shadowroot is defined')
-      .toBeTrue();
-
-    if (requests.length > 0) {
-      console.log('HTTP Requests:', requests);
+  page.removeAllListeners('request');
+  page.on('request', (request) => {
+    const url = request.url();
+    if (url.startsWith('http')) {
+      requests.push(url);
     }
-    expect(requests.length).withContext('Request count').toBe(0);
+    request.continue();
   });
+});
+afterEach(async () => await page.close());
 
-  it('should have cdn requests', async () => {
-    await setContentWithJsdomPolyfillBuild(page);
+it('should have no cdn requests', async () => {
+  await setContentWithJsdomPolyfillBuild(page);
+  const markup = getOverviewContent();
 
-    const markup = getOverviewContent();
+  await page.evaluate(async (overviewPage) => {
+    (window as any).PDS_SKIP_FETCH = true;
+    document.body.innerHTML = overviewPage;
+    await (window as any).porscheDesignSystem.componentsReady();
+  }, markup);
 
-    await page.evaluate(async (overviewPage) => {
-      (window as any).PDS_SKIP_FETCH = false;
-      document.body.innerHTML = overviewPage;
-      await (window as any).porscheDesignSystem.componentsReady();
-    }, markup);
+  const button = await selectNode(page, 'p-button');
 
-    expect(requests.length).withContext('Request count').toBeGreaterThan(0);
-  });
+  expect(await button.evaluate((x) => x.shadowRoot !== null), 'shadowRoot is defined').toBeTruthy();
+
+  if (requests.length > 0) {
+    console.log('HTTP Requests:', requests);
+  }
+  expect(requests.length, 'request count').toBe(0);
+});
+
+it('should have cdn requests', async () => {
+  await setContentWithJsdomPolyfillBuild(page);
+  const markup = getOverviewContent();
+
+  await page.evaluate(async (overviewPage) => {
+    (window as any).PDS_SKIP_FETCH = false;
+    document.body.innerHTML = overviewPage;
+    await (window as any).porscheDesignSystem.componentsReady();
+  }, markup);
+
+  expect(requests.length, 'request count').toBeGreaterThan(0);
 });

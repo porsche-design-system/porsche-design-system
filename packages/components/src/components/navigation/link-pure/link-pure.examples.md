@@ -180,7 +180,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so far.
 
-**Note** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
+**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the correct accessibility tree.
 
 <Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize">
@@ -285,8 +285,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <p slot="subline">Some Subline</p>
 </p-link-pure>
 <p-link-pure size="${this.sublineSize}" weight="semibold">
-  <a href="https://www.porsche.com">Some label</a>
-  <p slot="subline">Some Subline</p>
+  <a href="https://www.porsche.com" aria-describedby="subline">Some label</a>
+  <p slot="subline" id="subline">Some Subline</p>
 </p-link-pure>`;
     }
   }
