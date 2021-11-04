@@ -75,6 +75,11 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage,
   },
   {
+    name: 'Inline Notification',
+    path: '/inline-notification',
+    component: fromPages.InlineNotificationPage,
+  },
+  {
     name: 'Link',
     path: '/link',
     component: fromPages.LinkPage,
@@ -180,9 +185,24 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
-    name: 'Typography',
-    path: '/typography',
-    component: fromPages.TypographyPage,
+    name: 'Typography Fallback Strategy',
+    path: '/typography-fallback-strategy',
+    component: fromPages.TypographyFallbackStrategyPage,
+  },
+  {
+    name: 'Typography Latin',
+    component: fromPages.TypographyLatinPage,
+    path: '/typography-latin',
+  },
+  {
+    name: 'Typography Greek & Coptic',
+    component: fromPages.TypographyGreekAndCopticPage,
+    path: '/typography-greek-and-coptic',
+  },
+  {
+    name: 'Typography Cyril',
+    component: fromPages.TypographyCyrilPage,
+    path: '/typography-cyril',
   },
   {
     name: '---',
@@ -221,6 +241,16 @@ export const routes: RouteType[] = [
     name: 'Accordion Example',
     path: '/accordion-example',
     component: fromExamples.AccordionExamplePage,
+  },
+  {
+    name: 'Inline Notification Example Events',
+    path: '/inline-notification-example-events',
+    component: fromExamples.InlineNotificationExampleEventsPage,
+  },
+  {
+    name: 'Inline Notification Example Action Button',
+    path: '/inline-notification-example-action-button',
+    component: fromExamples.InlineNotificationExampleActionButtonPage,
   },
   {
     name: 'Table Example Basic',

@@ -8,69 +8,66 @@ import {
   selectNode,
   waitForComponentsReady,
 } from '../helpers';
-import { browser } from '../config';
 
-describe('components', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
+let page: Page;
+beforeEach(async () => (page = await browser.newPage()));
+afterEach(async () => await page.close());
 
-  it('overview should work without errors', async () => {
+it('overview should work without errors', async () => {
+  initConsoleObserver(page);
+  await goto(page, 'overview');
+
+  expect(getConsoleErrorsAmount()).toBe(0);
+
+  await page.evaluate(() => console.error('test error'));
+  expect(getConsoleErrorsAmount()).toBe(1);
+});
+
+describe('without prefix', () => {
+  it('should initialize component deterministically', async () => {
+    await goto(page, 'core-initializer');
+    await page.waitForTimeout(1000);
+
+    const [component1, component2] = await page.$$('p-text-field-wrapper');
+
+    const component1HTML = await getOuterHTML(component1);
+    const component2HTML = await getOuterHTML(component2);
+
+    expect(component1HTML).toBe(component2HTML);
+
+    if (component1HTML !== component2HTML) {
+      console.log('component1HTML', component1HTML);
+      console.log('component2HTML', component2HTML);
+    }
+  });
+});
+
+describe('with prefix', () => {
+  const regularSelector = 'p-text-field-wrapper';
+  const prefixedSelector = `my-prefix-${regularSelector}`;
+
+  it('should initialize angular component', async () => {
+    await goto(page, 'core-initializer-prefixed');
+
+    const prefixedComponent = await selectNode(page, prefixedSelector);
+
+    expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
+    expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
+  });
+});
+
+describe('Form Wrapper with slotted input', () => {
+  it('should have no console error if input type is bound', async () => {
     initConsoleObserver(page);
-    await goto(page, 'overview');
+    await goto(page, 'form-wrapper-binding');
+
+    await page.select('select', 'overview');
+    await waitForComponentsReady(page);
+    await page.select('select', 'form-wrapper-binding');
 
     expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
     expect(getConsoleErrorsAmount()).toBe(1);
-  });
-
-  describe('without prefix', () => {
-    it('should initialize component deterministically', async () => {
-      await goto(page, 'core-initializer');
-      await page.waitForTimeout(1000);
-
-      const [component1, component2] = await page.$$('p-text-field-wrapper');
-
-      const component1HTML = await getOuterHTML(component1);
-      const component2HTML = await getOuterHTML(component2);
-
-      expect(component1HTML).toBe(component2HTML);
-
-      if (component1HTML !== component2HTML) {
-        console.log('component1HTML', component1HTML);
-        console.log('component2HTML', component2HTML);
-      }
-    });
-  });
-
-  describe('with prefix', () => {
-    const regularSelector = 'p-text-field-wrapper';
-    const prefixedSelector = `my-prefix-${regularSelector}`;
-
-    it('should initialize angular component', async () => {
-      await goto(page, 'core-initializer-prefixed');
-
-      const prefixedComponent = await selectNode(page, prefixedSelector);
-
-      expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
-      expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
-    });
-  });
-
-  describe('Form Wrapper with slotted input', () => {
-    it('should have no console error if input type is bound', async () => {
-      initConsoleObserver(page);
-      await goto(page, 'form-wrapper-binding');
-
-      await page.select('select', 'overview');
-      await waitForComponentsReady(page);
-      await page.select('select', 'form-wrapper-binding');
-
-      expect(getConsoleErrorsAmount()).toBe(0);
-
-      await page.evaluate(() => console.error('test error'));
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
   });
 });

@@ -1,7 +1,6 @@
 import {
   addEventListener,
   getAttribute,
-  getBrowser,
   getCssClasses,
   getElementIndex,
   getElementPositions,
@@ -22,7 +21,7 @@ describe('select-wrapper dropdown', () => {
   let page: Page;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
@@ -30,7 +29,6 @@ describe('select-wrapper dropdown', () => {
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getSelectIcon = () => selectNode(page, 'p-select-wrapper >>> .icon');
-  const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
 
   const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
   const highlightedClass = 'option--highlighted';
@@ -130,7 +128,6 @@ describe('select-wrapper dropdown', () => {
     expect(disabledDropdownOption).not.toBeNull();
     expect(await getAriaSelectedTrueDropdownOptionIndex()).toBe(0);
     expect(await getAriaDisabledTrueDropdownOptionIndex()).toBe(1);
-    expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
   });
 
   it('should render with optgroups', async () => {
@@ -211,23 +208,17 @@ describe('select-wrapper dropdown', () => {
 
     const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
-    expect(await getSelectCursorStyle())
-      .withContext('initially')
-      .toBe('pointer');
+    expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
 
     await setProperty(select, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectCursorStyle())
-      .withContext('when disabled = true')
-      .toBe('not-allowed');
+    expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
 
     await setProperty(select, 'disabled', false);
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectCursorStyle())
-      .withContext('when disabled = false')
-      .toBe('pointer');
+    expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
   });
 
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
@@ -431,7 +422,7 @@ describe('select-wrapper dropdown', () => {
     await select.click();
     await waitForStencilLifecycle(page);
 
-    expect(consoleErrors.length).withContext('get errorsAmount after click').toBe(0);
+    expect(consoleErrors.length, 'get errorsAmount after click').toBe(0);
 
     await page.evaluate(() => {
       const script = document.createElement('script');
@@ -439,7 +430,7 @@ describe('select-wrapper dropdown', () => {
       document.body.appendChild(script);
     });
 
-    expect(consoleErrors.length).withContext('get errorsAmount after custom error').toBe(1);
+    expect(consoleErrors.length, 'get errorsAmount after custom error').toBe(1);
   });
 
   it('should not set checkmark icon if option is both selected and disabled', async () => {
@@ -507,94 +498,30 @@ describe('select-wrapper dropdown', () => {
       let calls = 0;
       await addEventListener(select, 'change', () => calls++);
 
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(0);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected custom option')
-        .toBe(0);
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('1');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(1);
-      expect(await getSelectedIndex())
-        .withContext('for selected custom option')
-        .toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
+      expect(await getSelectedIndex(), 'for selected custom option').toBe(0);
 
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(1);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected custom option')
-        .toBe(1);
-      expect(await getAriaSelectedTrueDropdownOptionIndex())
-        .withContext('for aria selected index')
-        .toBe(1);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(1);
+      expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
+      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(1);
+      expect(await getAriaSelectedTrueDropdownOptionIndex(), 'for aria selected index').toBe(1);
+      expect(await getSelectedIndex(), 'for selected index').toBe(1);
 
-      expect(calls).withContext('for calls').toBe(1);
-      expect(await getDropdownAriaActiveDescendant())
-        .withContext('for active descendant')
-        .toEqual(`option-${await getSelectedDropdownOptionIndex()}`);
-    });
-
-    it('should have the correct aria-expanded value if open/closed', async () => {
-      await initSelect();
-
-      const host = await getHost();
-      const dropdownButton = await getDropdownButton();
-
-      expect(await getAttribute(dropdownButton, 'aria-expanded'))
-        .withContext('initially')
-        .toBe('false');
-
-      await host.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(dropdownButton, 'aria-expanded'))
-        .withContext('after click')
-        .toBe('true');
-    });
-
-    it('should have aria-selected attribute on selected custom option on click', async () => {
-      await initSelect();
-
-      const select = await getSelect();
-      const dropdownOption1 = await getDropdownOption1();
-      const dropdownOption2 = await getDropdownOption2();
-
-      expect(await getAttribute(dropdownOption1, 'aria-selected'))
-        .withContext('Option A initially')
-        .toBe('true');
-      expect(await getAttribute(dropdownOption2, 'aria-selected'))
-        .withContext('Option B initially')
-        .toBeNull();
-
-      await select.click();
-      await dropdownOption2.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(dropdownOption1, 'aria-selected'))
-        .withContext('Option A after click')
-        .toBeNull();
-      expect(await getAttribute(dropdownOption2, 'aria-selected'))
-        .withContext('Option B after click')
-        .toBe('true');
+      expect(calls, 'for calls').toBe(1);
+      expect(await getDropdownAriaActiveDescendant(), 'for active descendant').toEqual(
+        `option-${await getSelectedDropdownOptionIndex()}`
+      );
     });
 
     it('should skip disabled option on arrow down', async () => {
@@ -626,19 +553,13 @@ describe('select-wrapper dropdown', () => {
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('1');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(3);
+      expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(3);
 
       await page.keyboard.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(2);
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
     });
 
     it('should open select with space bar', async () => {
@@ -649,16 +570,12 @@ describe('select-wrapper dropdown', () => {
       await addEventListener(select, 'change', () => calls++);
 
       await page.keyboard.press('Tab');
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after tab')
-        .toBe('0');
+      expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after space')
-        .toBe('1');
-      expect(calls).withContext('for calls').toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity after space').toBe('1');
+      expect(calls, 'for calls').toBe(0);
     });
 
     it('should select correct option with space bar', async () => {
@@ -669,28 +586,20 @@ describe('select-wrapper dropdown', () => {
       await addEventListener(select, 'change', () => calls++);
 
       await page.keyboard.press('Tab');
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after tab')
-        .toBe('0');
+      expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
-      expect(await getDropdownOpacity())
-        .withContext('for opacity afer space')
-        .toBe('1');
+      expect(await getDropdownOpacity(), 'for opacity afer space').toBe('1');
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(1);
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(1);
-      expect(calls).withContext('for calls').toBe(1);
+      expect(await getSelectedIndex(), 'for selected index').toBe(1);
+      expect(calls, 'for calls').toBe(1);
     });
 
     describe('when dropdown is not open', () => {
@@ -701,15 +610,9 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('PageDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(0);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
       });
 
       it('should not highlight and select option on PageUp', async () => {
@@ -719,15 +622,9 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('PageUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(0);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
       });
     });
 
@@ -741,28 +638,16 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('PageDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(2);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(2);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(2);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(2);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(2);
+        expect(await getSelectedIndex(), 'for selected index').toBe(2);
       });
 
       it('should highlight and select first option on PageUp', async () => {
@@ -774,28 +659,16 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('PageUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(0);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(2);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(2);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(2);
+        expect(await getSelectedIndex(), 'for selected index').toBe(2);
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(0);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
       });
 
       it('should not select option on Escape and close dropdown', async () => {
@@ -805,25 +678,15 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(1);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
 
         await page.keyboard.press('Escape');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(0);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
-        expect(await getDropdownOpacity())
-          .withContext('for opacity')
-          .toBe('0');
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
+        expect(await getDropdownOpacity(), 'for opacity').toBe('0');
       });
 
       it('should highlight first matching option via keyboard search', async () => {
@@ -836,15 +699,9 @@ describe('select-wrapper dropdown', () => {
         await page.keyboard.press('c');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedDropdownOptionIndex())
-          .withContext('for highlighted custom option')
-          .toBe(2);
-        expect(await getSelectedDropdownOptionIndex())
-          .withContext('for selected custom option')
-          .toBe(0);
-        expect(await getSelectedIndex())
-          .withContext('for selected index')
-          .toBe(0);
+        expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
+        expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+        expect(await getSelectedIndex(), 'for selected index').toBe(0);
       });
     });
 
@@ -855,22 +712,14 @@ describe('select-wrapper dropdown', () => {
       await select.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after 1st click')
-        .toBe('1');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option  after 1st click')
-        .toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option  after 1st click').toBe(0);
 
       await select.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after 2nd click')
-        .toBe('0');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option after 2nd click')
-        .toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 2nd click').toBe(0);
     });
 
     it('should open/close select on icon click', async () => {
@@ -886,21 +735,13 @@ describe('select-wrapper dropdown', () => {
 
       await clickIcon();
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after 1st click')
-        .toBe('1');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option after 1st click')
-        .toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 1st click').toBe(0);
 
       await clickIcon();
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity after 2nd click')
-        .toBe('0');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option after 2nd click')
-        .toBe(0);
+      expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 2nd click').toBe(0);
     });
 
     it('should select second option on mouseclick', async () => {
@@ -913,18 +754,10 @@ describe('select-wrapper dropdown', () => {
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
-      expect(await getHighlightedDropdownOptionIndex())
-        .withContext('for highlighted custom option')
-        .toBe(1);
-      expect(await getSelectedDropdownOptionIndex())
-        .withContext('for selected custom option')
-        .toBe(1);
-      expect(await getSelectedIndex())
-        .withContext('for selected index')
-        .toBe(1);
+      expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
+      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(1);
+      expect(await getSelectedIndex(), 'for selected index').toBe(1);
     });
 
     it('should select second option on mouseclick when used in custom element', async () => {
@@ -964,18 +797,14 @@ describe('select-wrapper dropdown', () => {
       const dropdownInCustomElement = await getShadowRoot(await selectNode(page, nestedDropdownSelector));
       const getSelectedOptionInCustomElement = () => getElementIndex(dropdownInCustomElement, `.${selectedClass}`);
 
-      expect(await getSelectedOptionInCustomElement())
-        .withContext('initially')
-        .toBe(0);
+      expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
 
       await select.click();
       await waitForStencilLifecycle(page);
       await page.mouse.click(dropdownOption2BoundingBox.x + 2, dropdownOption2BoundingBox.y + 2);
       await waitForStencilLifecycle(page);
 
-      expect(await getSelectedOptionInCustomElement())
-        .withContext('after click')
-        .toBe(1);
+      expect(await getSelectedOptionInCustomElement(), 'after click').toBe(1);
     });
 
     it('should close select on tab', async () => {
@@ -985,16 +814,12 @@ describe('select-wrapper dropdown', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('1');
+      expect(await getDropdownOpacity(), 'for opacity').toBe('1');
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownOpacity())
-        .withContext('for opacity')
-        .toBe('0');
+      expect(await getDropdownOpacity(), 'for opacity').toBe('0');
       expect(await selectHasFocus()).toBe(false);
     });
 
@@ -1017,20 +842,20 @@ describe('select-wrapper dropdown', () => {
       await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
-      expect(buttonMouseDownEventCounter).withContext('after 1st click').toBe(1);
+      expect(buttonMouseDownEventCounter, 'after 1st click').toBe(1);
 
       await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
-      expect(buttonMouseDownEventCounter).withContext('after 2nd click').toBe(2);
+      expect(buttonMouseDownEventCounter, 'after 2nd click').toBe(2);
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
-      expect(buttonKeyDownEventCounter).withContext('after key presses for button').toBe(1);
-      expect(listKeyDownEventCounter).withContext('after key presses for list').toBe(1);
+      expect(buttonKeyDownEventCounter, 'after key presses for button').toBe(1);
+      expect(listKeyDownEventCounter, 'after key presses for list').toBe(1);
     });
   });
 
@@ -1039,15 +864,15 @@ describe('select-wrapper dropdown', () => {
       await initSelect();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-select-wrapper']).withContext('componentDidLoad: p-select-wrapper').toBe(1);
-      expect(status.componentDidLoad['p-select-wrapper-dropdown'])
-        .withContext('componentDidLoad: p-select-wrapper-dropdown')
-        .toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1); // label
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
+      expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
+      expect(status.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(
+        1
+      );
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1); // label
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(5);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips if second option is clicked', async () => {
@@ -1059,25 +884,153 @@ describe('select-wrapper dropdown', () => {
       await waitForStencilLifecycle(page);
       const status1 = await getLifecycleStatus(page);
 
-      expect(status1.componentDidLoad['p-icon']).withContext('1st componentDidLoad: p-icon').toBe(2);
-      expect(status1.componentDidLoad.all).withContext('1st componentDidLoad: all').toBe(5);
+      expect(status1.componentDidLoad['p-icon'], '1st componentDidLoad: p-icon').toBe(2);
+      expect(status1.componentDidLoad.all, '1st componentDidLoad: all').toBe(5);
 
-      expect(status1.componentDidUpdate['p-select-wrapper-dropdown'])
-        .withContext('1st componentDidUpdate: p-select-wrapper-dropdown')
-        .toBe(1);
-      expect(status1.componentDidUpdate.all).withContext('1st componentDidUpdate: all').toBe(1);
+      expect(
+        status1.componentDidUpdate['p-select-wrapper-dropdown'],
+        '1st componentDidUpdate: p-select-wrapper-dropdown'
+      ).toBe(1);
+      expect(status1.componentDidUpdate.all, '1st componentDidUpdate: all').toBe(1);
 
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
       const status2 = await getLifecycleStatus(page);
 
-      expect(status2.componentDidLoad['p-icon']).withContext('2nd componentDidLoad: p-icon').toBe(3); // new icon on selected option
-      expect(status2.componentDidUpdate['p-select-wrapper-dropdown'])
-        .withContext('2nd componentDidUpdate: p-select-wrapper-dropdown')
-        .toBe(2);
+      expect(status2.componentDidLoad['p-icon'], '2nd componentDidLoad: p-icon').toBe(3); // new icon on selected option
+      expect(
+        status2.componentDidUpdate['p-select-wrapper-dropdown'],
+        '2nd componentDidUpdate: p-select-wrapper-dropdown'
+      ).toBe(2);
 
-      expect(status2.componentDidLoad.all).withContext('2nd componentDidLoad: all').toBe(6);
-      expect(status2.componentDidUpdate.all).withContext('2nd componentDidUpdate: all').toBe(2);
+      expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(6);
+      expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree and aria properties', async () => {
+      await initSelect({ disabledIndex: 1 });
+      const dropdown = await getDropdown();
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdown,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(await getDropdownAriaActiveDescendant()).toEqual(await getSelectedDropdownOptionId());
+    });
+
+    it('should expose correct accessibility tree if rendered with optgroups', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper label="Some label">
+          <select>
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const dropdown = await getDropdown();
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdown,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree if open/closed', async () => {
+      await initSelect();
+
+      const host = await getHost();
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot, 'initially').toMatchSnapshot('Initially');
+
+      await host.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotExpanded = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshotExpanded, 'after click').toMatchSnapshot('After click');
+    });
+
+    it('should expose correct accessibility tree on selected custom option on click', async () => {
+      await initSelect();
+
+      const select = await getSelect();
+      const dropdownOption1 = await getDropdownOption1();
+      const dropdownOption2 = await getDropdownOption2();
+
+      const snapshotInitially1 = await page.accessibility.snapshot({
+        root: dropdownOption1,
+      });
+
+      const snapshotInitially2 = await page.accessibility.snapshot({
+        root: dropdownOption2,
+      });
+
+      expect(snapshotInitially1, 'initially option A').toMatchSnapshot('Initially option A');
+      expect(snapshotInitially2, 'initially option B').toMatchSnapshot('Initially option B');
+
+      await select.click();
+      await dropdownOption2.click();
+      await waitForStencilLifecycle(page);
+
+      const snapshotAfterClick1 = await page.accessibility.snapshot({
+        root: dropdownOption1,
+      });
+
+      const snapshotAfterClick2 = await page.accessibility.snapshot({
+        root: dropdownOption2,
+      });
+
+      expect(snapshotAfterClick1, 'Option A after click').toMatchSnapshot('Option A after click');
+      expect(snapshotAfterClick2, 'Option B after click').toMatchSnapshot('Option B after click');
+    });
+
+    it('should expose correct accessibility tree if description is set', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'description', 'Some description');
+      await waitForStencilLifecycle(page);
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should expose correct accessibility tree in error state', async () => {
+      await initSelect();
+      const host = await getHost();
+      await setProperty(host, 'state', 'error');
+      await setProperty(host, 'message', 'Some error message');
+      await waitForStencilLifecycle(page);
+      const dropdownButton = await getDropdownButton();
+
+      const snapshot = await page.accessibility.snapshot({
+        root: dropdownButton,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });

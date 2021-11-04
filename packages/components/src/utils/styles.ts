@@ -1,8 +1,8 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font, srOnly } from '@porsche-design-system/utilities';
+import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { isDark } from '.';
-import type { Theme } from '../types';
+import { getThemedColors, getThemedStateColors, isDark } from '.';
+import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
 const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -53,6 +53,13 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
+export const getInset = (value: 'auto' | number = 0): JssStyle => ({
+  top: value,
+  left: value,
+  right: value,
+  bottom: value,
+});
+
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const options: GetFocusStylesOptions = {
     color: color.state.focus,
@@ -74,10 +81,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
           outlineOffset: `${outlineOffset}px`,
           content: '""',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          ...getInset(),
         },
         [`&:focus${pseudo}`]: {
           outlineColor,
@@ -109,7 +113,7 @@ export type GetFocusSlottedPseudoStylesOptions = {
 /**
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
-export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles => {
+export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
   const options: GetFocusSlottedPseudoStylesOptions = {
     color: color.state.focus,
     offset: 2,
@@ -130,10 +134,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
         content: '""',
         display: 'block',
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        ...getInset(),
         outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
       },
@@ -150,7 +151,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
-export const getBaseSlottedStyles = (): Styles => {
+export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
   return {
     '& a': {
       color: 'inherit',
@@ -158,7 +159,9 @@ export const getBaseSlottedStyles = (): Styles => {
       ...getHoverStyles(),
       ...getFocusStyles({ offset: 1 }),
     },
-    '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+    ...(opts.withDarkTheme && {
+      '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+    }),
     '& b, & strong': {
       fontWeight: font.weight.bold,
     },
@@ -187,3 +190,30 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
   width: isCheckboxOrRadio ? 'auto' : 'fit-content',
   padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
 });
+
+export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
+  const { errorColor } = getThemedColors(theme);
+  return {
+    required: {
+      '&::after': {
+        content: '" *"',
+        color: errorColor,
+      },
+    },
+  };
+};
+
+export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
+  const { stateColor } = getThemedStateColors(theme, state);
+  return {
+    message: {
+      display: 'flex',
+      marginTop: spacing['4'],
+      color: stateColor,
+      transition: getTransition('color'),
+      '&__icon': {
+        marginRight: spacing['4'],
+      },
+    },
+  };
+};

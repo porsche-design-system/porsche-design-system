@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`text-field-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = error 1`] = `
+Object {
+  "invalid": "true",
+  "name": "Some label. Some error message.",
+  "role": "textbox",
+}
+`;
+
+exports[`text-field-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = none 1`] = `
+Object {
+  "name": "Some label",
+  "role": "textbox",
+}
+`;
+
+exports[`text-field-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = success 1`] = `
+Object {
+  "name": "Some label. Some success message.",
+  "role": "textbox",
+}
+`;
+
+exports[`text-field-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = error 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": "Some error message.",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "alert",
+}
+`;
+
+exports[`text-field-wrapper accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = success 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": "Some success message.",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree properties in error state: Of Input 1`] = `
+Object {
+  "invalid": "true",
+  "name": "Some label. Some error message",
+  "role": "textbox",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree properties in error state: Of Message 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": "Some error message",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "alert",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree when password visibility button is clicked: Initially 1`] = `
+Object {
+  "name": "Toggle password visibility",
+  "pressed": false,
+  "role": "button",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed 1`] = `
+Object {
+  "name": "Toggle password visibility",
+  "pressed": true,
+  "role": "button",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree when password visibility button is clicked: Pressed again 1`] = `
+Object {
+  "name": "Toggle password visibility",
+  "pressed": false,
+  "role": "button",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct accessibility tree with description text 1`] = `
+Object {
+  "name": "Some label. Some description",
+  "role": "textbox",
+}
+`;
+
+exports[`text-field-wrapper accessibility should expose correct initial accessibility tree 1`] = `
+Object {
+  "name": "Some label",
+  "role": "textbox",
+}
+`;

@@ -1,10 +1,10 @@
 import { Page } from 'puppeteer';
 import type { TagName } from '@porsche-design-system/shared';
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem } from '../helpers';
 
 describe('componentsReady', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getReadyAmount = (selector?: string): Promise<number> =>

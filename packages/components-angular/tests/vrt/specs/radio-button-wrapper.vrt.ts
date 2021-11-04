@@ -1,7 +1,7 @@
-import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Radio Button Wrapper', () => {
-  it('should have no visual regression', async () => {
-    expect(await vrtTest(getVisualRegressionTester(), 'radio-button-wrapper', '/radio-button-wrapper')).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'radio-button-wrapper', '/radio-button-wrapper')
+  ).toBeFalsy();
 });

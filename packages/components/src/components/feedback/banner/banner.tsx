@@ -2,17 +2,18 @@ import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@st
 import {
   getPrefixedTagNames,
   hasNamedSlot,
-  isDark,
-  getThemeDarkAttribute,
   attachComponentCss,
+  getShadowRootHTMLElement,
+  throwIfValueIsInvalid,
   attachSlottedCss,
 } from '../../../utils';
-import type { BannerState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-styles';
+import type { BannerState } from './banner-utils';
+import { BANNER_STATES } from './banner-utils';
 
 @Component({
   tag: 'p-banner',
-  styleUrl: 'banner.scss',
   shadow: true,
 })
 export class Banner {
@@ -33,20 +34,25 @@ export class Banner {
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private closeButton: HTMLButtonElement;
+  private inlineNotificationElement: HTMLPInlineNotificationElement;
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss);
+    attachSlottedCss(this.host, getSlottedCss);
     if (!this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
-    attachComponentCss(this.host, getComponentCss);
-    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentDidLoad(): void {
     if (!this.persistent) {
-      this.closeButton.focus();
+      // messy.. optional chaining is needed in case child component is unmounted to early
+      getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close')?.focus();
     }
+  }
+
+  public componentWillRender(): void {
+    throwIfValueIsInvalid(this.state, BANNER_STATES, 'state');
   }
 
   public disconnectedCallback(): void {
@@ -56,54 +62,22 @@ export class Banner {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.state}`]: this.state !== 'neutral',
-      ['root--theme-dark']: isDark(this.theme),
-    };
-
-    const bannerLabelId = 'banner-label';
-    const bannerDescriptionId = 'banner-description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
-        <PrefixedTagNames.pContentWrapper
-          width={this.width}
-          role="alertdialog"
-          aria-labelledby={bannerLabelId}
-          aria-describedby={bannerDescriptionId}
-        >
-          <div class={rootClasses}>
-            {this.state !== 'neutral' && (
-              <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class="icon" />
-            )}
-            <div class="content">
-              {hasNamedSlot(this.host, 'title') && (
-                <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId}>
-                  <slot name="title" />
-                </PrefixedTagNames.pHeadline>
-              )}
-              {hasNamedSlot(this.host, 'description') && (
-                <PrefixedTagNames.pText id={bannerDescriptionId}>
-                  <slot name="description" />
-                </PrefixedTagNames.pText>
-              )}
-              {!this.persistent && (
-                <div class="close">
-                  <PrefixedTagNames.pButtonPure
-                    type="button"
-                    icon="close"
-                    hideLabel={true}
-                    onClick={this.removeBanner}
-                    ref={(el) => (this.closeButton = el)}
-                  >
-                    Close notification
-                  </PrefixedTagNames.pButtonPure>
-                </div>
-              )}
-            </div>
-          </div>
+      <Host>
+        <PrefixedTagNames.pContentWrapper width={this.width}>
+          <PrefixedTagNames.pInlineNotification
+            ref={(el) => (this.inlineNotificationElement = el)}
+            class="root"
+            state={this.state}
+            persistent={this.persistent}
+            theme={this.theme}
+            onDismiss={this.removeBanner}
+          >
+            {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
+            {hasNamedSlot(this.host, 'description') && <slot name="description" />}
+          </PrefixedTagNames.pInlineNotification>
         </PrefixedTagNames.pContentWrapper>
       </Host>
     );
@@ -115,7 +89,8 @@ export class Banner {
     }
   };
 
-  private removeBanner = (): void => {
+  private removeBanner = (e?: CustomEvent): void => {
+    e?.stopPropagation(); // prevent double event emission because of identical name
     this.dismiss.emit();
     this.host.classList.add('banner--close');
     setTimeout(() => {

@@ -4,12 +4,13 @@ import {
   getAttribute,
   getHTMLElementAndThrowIfUndefined,
   getRole,
+  getSlotTextContent,
   hasAttribute,
   hasDescription,
+  hasHeading,
   hasLabel,
   hasMessage,
   hasNamedSlot,
-  getSlotTextContent,
   isDisabledOrLoading,
   isParentFieldsetWrapperRequired,
   isParentOfKind,
@@ -99,13 +100,9 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
   const selector = 'someSelector';
 
   it('should throw error if selector is not found', () => {
-    let error;
-    try {
-      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(`Child HTMLElement .${selector} is missing.`);
+    expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).toThrowErrorMatchingInlineSnapshot(
+      `"Child HTMLElement .someSelector is missing."`
+    );
   });
 
   it('should not throw error if HMTLElement is defined', () => {
@@ -113,13 +110,7 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     el.classList.add(selector);
     document.body.append(el);
 
-    let error = undefined;
-    try {
-      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).not.toThrow();
   });
 });
 
@@ -127,13 +118,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
   it('should throw error if root node tag does not match', () => {
     const child = document.createElement('p-select-wrapper-dropdown');
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).toThrow();
   });
 
   it('should not throw error if root node tag matches', () => {
@@ -142,13 +127,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
     parent.attachShadow({ mode: 'open' });
     parent.shadowRoot.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
   });
 
   it('should not throw error if prefixed root node tag matches', () => {
@@ -157,13 +136,7 @@ describe('throwIfRootNodeIsNotOfKind()', () => {
     parent.attachShadow({ mode: 'open' });
     parent.shadowRoot.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
   });
 });
 
@@ -191,13 +164,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).toThrow();
   });
 
   it('should not throw error if parent tag matches', () => {
@@ -205,13 +172,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
   });
 
   it('should not throw error if prefixed parent tag matches', () => {
@@ -219,13 +180,7 @@ describe('throwIfParentIsNotOfKind()', () => {
     const child = document.createElement('my-prefix-p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOfKind(child, 'pGrid');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOfKind(child, 'pGrid')).not.toThrow();
   });
 });
 
@@ -235,13 +190,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pGrid']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pGrid'])).toThrow();
   });
 
   it('should not throw error if parent tag matches 1st element', () => {
@@ -249,13 +198,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pGrid', 'pFlex'])).not.toThrow();
   });
 
   it('should not throw error if parent tag matches 2nd element', () => {
@@ -263,13 +206,7 @@ describe('throwIfParentIsNotOneOfKind()', () => {
     const child = document.createElement('p-grid-item');
     parent.appendChild(child);
 
-    let error = undefined;
-    try {
-      throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid']);
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfParentIsNotOneOfKind(child, ['pFlex', 'pGrid'])).not.toThrow();
   });
 });
 
@@ -278,25 +215,13 @@ describe('throwIfElementHasAttribute()', () => {
     const element = document.createElement('div');
     element.setAttribute('title', 'some title');
 
-    let error = undefined;
-    try {
-      throwIfElementHasAttribute(element, 'title');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).not.toBe(undefined);
+    expect(() => throwIfElementHasAttribute(element, 'title')).toThrow();
   });
 
   it('should not throw error if attribute does not exist', () => {
     const element = document.createElement('div');
 
-    let error = undefined;
-    try {
-      throwIfElementHasAttribute(element, 'title');
-    } catch (e) {
-      error = e.message;
-    }
-    expect(error).toBe(undefined);
+    expect(() => throwIfElementHasAttribute(element, 'title')).not.toThrow();
   });
 });
 
@@ -390,26 +315,6 @@ describe('hasLabel()', () => {
   });
 });
 
-describe('hasDescription()', () => {
-  const description = 'Some description';
-  it.each<[{ description: string; slotted: boolean }, boolean]>([
-    [{ description, slotted: false }, true],
-    [{ description: '', slotted: true }, true],
-    [{ description: '', slotted: false }, false],
-    [{ description, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { description, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'description';
-      el.appendChild(slot);
-    }
-
-    expect(hasDescription(el, description)).toBe(result);
-  });
-});
-
 describe('hasMessage()', () => {
   const message = 'Some message';
   it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
@@ -432,6 +337,46 @@ describe('hasMessage()', () => {
     }
 
     expect(hasMessage(el, message, formState)).toBe(result);
+  });
+});
+
+describe('hasDescription()', () => {
+  const description = 'Some description';
+  it.each<[{ description: string; slotted: boolean }, boolean]>([
+    [{ description, slotted: false }, true],
+    [{ description: '', slotted: true }, true],
+    [{ description: '', slotted: false }, false],
+    [{ description, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { description, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(hasDescription(el, description)).toBe(result);
+  });
+});
+
+describe('hasHeading()', () => {
+  const heading = 'Some heading';
+  it.each<[{ heading: string; slotted: boolean }, boolean]>([
+    [{ heading, slotted: false }, true],
+    [{ heading: '', slotted: true }, true],
+    [{ heading: '', slotted: false }, false],
+    [{ heading, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { heading, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'heading';
+      el.appendChild(slot);
+    }
+
+    expect(hasHeading(el, heading)).toBe(result);
   });
 });
 
@@ -500,8 +445,8 @@ describe('getRole()', () => {
     expect(getRole('error')).toBe('alert');
   });
 
-  it('should return null if state is success', () => {
-    expect(getRole('success')).toBeNull();
+  it('should return "status" if state is success', () => {
+    expect(getRole('success')).toBe('status');
   });
 
   it('should return null if state is none', () => {

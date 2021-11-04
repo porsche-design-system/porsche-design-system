@@ -1,6 +1,6 @@
 import Protocol from 'devtools-protocol';
 import {
-  findBackendNodeId,
+  findBackendNodeIds,
   generateGUID,
   getBodyMarkup,
   GetMarkup,
@@ -14,17 +14,17 @@ type NodeWithChildren = Node & { children?: NodeWithChildren[] };
 type TestCase = {
   node: NodeWithChildren;
   selector: string;
-  expect: number;
+  expect: number[];
 };
 
 describe('cdp-helper', () => {
-  describe('findBackendNodeId()', () => {
+  describe('findBackendNodeIds()', () => {
     const testCases: TestCase[] = [
-      { node: { localName: 'test', backendNodeId: 1 }, selector: 'test', expect: 1 },
+      { node: { localName: 'test', backendNodeId: 1 }, selector: 'test', expect: [1] },
       {
         node: { localName: 'test1', backendNodeId: 1, children: [{ localName: 'test', backendNodeId: 2 }] },
         selector: 'test',
-        expect: 2,
+        expect: [2],
       },
       {
         node: {
@@ -33,7 +33,7 @@ describe('cdp-helper', () => {
           children: [{ localName: 'test2', backendNodeId: 2, children: [{ localName: 'test', backendNodeId: 3 }] }],
         },
         selector: 'test',
-        expect: 3,
+        expect: [3],
       },
       {
         node: {
@@ -50,13 +50,13 @@ describe('cdp-helper', () => {
           children: [{ localName: 'test2', backendNodeId: 2, children: [{ localName: 'test3', backendNodeId: 3 }] }],
         },
         selector: 'test',
-        expect: undefined,
+        expect: [],
       },
     ];
 
     testCases.forEach((test) => {
       it(`should for ${JSON.stringify(test.node)} and selector "${test.selector}" return "${test.expect}"`, () => {
-        expect(findBackendNodeId(test.node as Protocol.DOM.Node, test.selector)).toBe(test.expect);
+        expect(findBackendNodeIds(test.node as Protocol.DOM.Node, test.selector)).toEqual(test.expect);
       });
     });
   });
@@ -136,13 +136,9 @@ describe('cdp-helper', () => {
     });
 
     it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
-      let error;
-      try {
-        resolveSelector('.hovered > p-checkbox-wrapper >>> .tabs-bar');
-      } catch (e) {
-        error = e.message;
-      }
-      expect(error).toEqual('">>> .tabs-bar" selector has to be an "Element.localName" in shadow-root');
+      expect(() => resolveSelector('.hovered > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
+        '"\\">>> .tabs-bar\\" selector has to be an \\"Element.localName\\" in shadow-root"'
+      );
     });
   });
 });
