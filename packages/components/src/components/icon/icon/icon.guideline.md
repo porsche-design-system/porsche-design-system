@@ -29,7 +29,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 ## Quality assurance
 
 - Build your icons based on the default grid (24x24px). 
-- Snap pixels to the grid to ensure a sharp visual appearance (prevents blurred due because of anti-aliasing of low-resolution displays).
+- Snap pixels to the grid to ensure a sharp visual appearance (prevents blurred lines because of anti-aliasing on low-resolution displays).
 - Icons with a centered vertical or horizontal 1px stroke must be placed 1px off to the left and/or top.
 - Try to balance the icons width and height for uniformed appearance in icon groups.
 - Respect the safe area around the icon (approximately 2px, can vary depending on ratio of icon).
