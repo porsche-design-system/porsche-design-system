@@ -112,6 +112,10 @@
           margin-top: $p-spacing-24;
         }
 
+        p-inline-notification {
+          margin-top: $p-spacing-24;
+        }
+
         // Horizontal Rules
         hr {
           margin: {
