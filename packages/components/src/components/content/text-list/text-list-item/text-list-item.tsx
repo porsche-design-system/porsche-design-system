@@ -15,9 +15,11 @@ export class TextListItem {
 
   public componentWillRender(): void {
     const list = this.host.parentElement as HTMLPTextListElement;
-    const { listType, orderType } = list;
-    const isNestedList = getAttribute(list, 'nested') === '';
-    attachComponentCss(this.host, getComponentCss, listType, orderType, isNestedList);
+    if (list) {
+      const { listType, orderType } = list;
+      const isNestedList = getAttribute(list, 'nested') === '';
+      attachComponentCss(this.host, getComponentCss, listType, orderType, isNestedList);
+    }
   }
 
   public render(): JSX.Element {

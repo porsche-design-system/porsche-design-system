@@ -2,7 +2,6 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   getAttribute,
-  getBrowser,
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
@@ -18,7 +17,7 @@ const SCROLL_DURATION = 205; // with 20 steps and an interval of 10, we get 200m
 describe('table', () => {
   let page: Page;
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
@@ -101,32 +100,24 @@ ${script}`
     it("should be visible when table's content is overflowing", async () => {
       await initTable();
 
-      expect(await getScrollIndicator())
-        .withContext('initially')
-        .toBeNull();
+      expect(await getScrollIndicator(), 'initially').toBeNull();
 
       await makeTableOverflow();
 
-      expect(await getScrollIndicator())
-        .withContext('finally')
-        .not.toBeNull();
+      expect(await getScrollIndicator(), 'finally').not.toBeNull();
     });
 
     it('should disappear when scrolled to the very right', async () => {
       await initTable();
       await makeTableOverflow();
 
-      expect(await getScrollIndicator())
-        .withContext('initially')
-        .not.toBeNull();
+      expect(await getScrollIndicator(), 'initially').not.toBeNull();
 
       const scrollArea = await getScrollArea();
       await scrollArea.evaluate((el) => (el.scrollLeft = 2000));
       await waitForStencilLifecycle(page);
 
-      expect(await getScrollIndicator())
-        .withContext('finally')
-        .toBeNull();
+      expect(await getScrollIndicator(), 'finally').toBeNull();
     });
 
     it('should scroll table on click', async () => {
@@ -137,238 +128,30 @@ ${script}`
       const getScrollLeft = () => scrollArea.evaluate((el) => el.scrollLeft);
 
       const initialScrollLeft = await getScrollLeft();
-      expect(initialScrollLeft).withContext('initially').toBe(0);
+      expect(initialScrollLeft, 'initially').toBe(0);
 
       const scrollButton = await getScrollButton();
       await scrollButton.click();
       await page.waitForTimeout(SCROLL_DURATION);
 
       const scrollLeftAfterClick = await getScrollLeft();
-      expect(scrollLeftAfterClick).withContext('after click').toBeGreaterThan(0);
+      expect(scrollLeftAfterClick, 'after click').toBeGreaterThan(0);
     });
   });
 
-  describe('accessibility', () => {
-    it('should set correct role and scope on table components', async () => {
-      await initTable();
-
-      const table = await getTable();
-      const tableHead = await getTableHead();
-      const tableHeadRow = await getTableHeadRow();
+  describe('sorting', () => {
+    it('should not render sorting button if invalid sort options are provided', async () => {
+      await initTable({ isSortable: true });
       const firstTableHeadCell = await getFirstTableHeadCell();
-      const tableBody = await getTableBody();
-      const firstTableRow = await getFirstTableRow();
-      const firstTableRowCell = await getFirstTableRowCell();
 
-      expect(await getAttribute(table, 'role'))
-        .withContext('table')
-        .toBe('table');
-      expect(await getAttribute(tableHead, 'role'))
-        .withContext('tableHead')
-        .toBe('rowgroup');
-      expect(await getAttribute(tableHeadRow, 'role'))
-        .withContext('tableHeadRow')
-        .toBe('row');
-      expect(await getAttribute(firstTableHeadCell, 'role'))
-        .withContext('firstTableHeadCell role')
-        .toBe('columnheader');
-      expect(await getAttribute(firstTableHeadCell, 'scope'))
-        .withContext('firstTableHeadCell scope')
-        .toBe('col');
-      expect(await getAttribute(tableBody, 'role'))
-        .withContext('tableBody')
-        .toBe('rowgroup');
-      expect(await getAttribute(firstTableRow, 'role'))
-        .withContext('firstTableRow')
-        .toBe('row');
-      expect(await getAttribute(firstTableRowCell, 'role'))
-        .withContext('firstTableRowCell')
-        .toBe('cell');
-    });
+      expect(await getFirstTableHeadCellButton()).not.toBeNull();
 
-    describe('caption', () => {
-      it('should set correct aria-label for caption property', async () => {
-        await initTable();
-
-        const host = await getHost();
-        const table = await getTable();
-        expect(await getAttribute(table, 'aria-label'))
-          .withContext('initial aria-label')
-          .toBeNull();
-        expect(await getAttribute(table, 'aria-labelledby'))
-          .withContext('initial aria-labelledby')
-          .toBeNull();
-
-        await setProperty(host, 'caption', 'Some caption');
-        await waitForStencilLifecycle(page);
-
-        expect(await getAttribute(table, 'aria-label'))
-          .withContext('final aria-label')
-          .toBe('Some caption');
-        expect(await getAttribute(table, 'aria-labelledby'))
-          .withContext('final aria-labelledby')
-          .toBeNull();
-
-        const caption = await getCaption();
-        expect(caption).withContext('slotted caption').toBeNull();
+      await firstTableHeadCell.evaluate((el) => {
+        (el as any).sort = { some: 'object' };
       });
+      await waitForStencilLifecycle(page);
 
-      it('should set correct aria-labelledby for slotted caption', async () => {
-        await initTable({ hasSlottedCaption: true });
-        const table = await getTable();
-
-        expect(await getAttribute(table, 'aria-label'))
-          .withContext('initial aria-label')
-          .toBeNull();
-        expect(await getAttribute(table, 'aria-labelledby'))
-          .withContext('initial aria-labelledby')
-          .toBe('caption');
-
-        const caption = await getCaption();
-        expect(await getAttribute(caption, 'id'))
-          .withContext('caption id')
-          .toBe('caption');
-      });
-    });
-
-    describe('scroll area', () => {
-      it('should be tabbable if scrollable', async () => {
-        await initTable({ hasSlottedCaption: true });
-
-        const host = await getHost();
-        const scrollArea = await getScrollArea();
-
-        expect(await getAttribute(scrollArea, 'tabindex'))
-          .withContext('initial: tabindex')
-          .toBeNull();
-        expect(await getAttribute(scrollArea, 'role'))
-          .withContext('initial: role')
-          .toBeNull();
-        expect(await getAttribute(scrollArea, 'aria-label'))
-          .withContext('initial: aria-label')
-          .toBeNull();
-        expect(await getAttribute(scrollArea, 'aria-labelledby'))
-          .withContext('initial: aria-labelledby')
-          .toBeNull();
-
-        await makeTableOverflow();
-
-        expect(await getAttribute(scrollArea, 'tabindex'))
-          .withContext('after overflow: tabindex')
-          .toBe('0');
-        expect(await getAttribute(scrollArea, 'role'))
-          .withContext('after overflow: role')
-          .toBe('region');
-        expect(await getAttribute(scrollArea, 'aria-label'))
-          .withContext('after overflow: aria-label')
-          .toBeNull();
-        expect(await getAttribute(scrollArea, 'aria-labelledby'))
-          .withContext('after overflow: aria-labelledby')
-          .toBe('caption');
-
-        await setProperty(host, 'caption', 'Some caption');
-        await waitForStencilLifecycle(page);
-
-        expect(await getAttribute(scrollArea, 'tabindex'))
-          .withContext('after caption: tabindex')
-          .toBe('0');
-        expect(await getAttribute(scrollArea, 'role'))
-          .withContext('after caption: role')
-          .toBe('region');
-        expect(await getAttribute(scrollArea, 'aria-label'))
-          .withContext('after caption: aria-label')
-          .toBe('Some caption');
-        expect(await getAttribute(scrollArea, 'aria-labelledby'))
-          .withContext('after caption: aria-labelledby')
-          .toBeNull();
-      });
-    });
-
-    describe('sorting', () => {
-      it('should not render sorting button if invalid sort options are provided', async () => {
-        await initTable({ isSortable: true });
-        const firstTableHeadCell = await getFirstTableHeadCell();
-
-        expect(await getFirstTableHeadCellButton()).not.toBeNull();
-
-        await firstTableHeadCell.evaluate((el) => {
-          (el as any).sort = { some: 'object' };
-        });
-        await waitForStencilLifecycle(page);
-
-        expect(await getFirstTableHeadCellButton()).toBeNull();
-      });
-
-      it('should set correct aria-sort value when sortable', async () => {
-        await initTable({ isSortable: true });
-
-        const host = await getHost();
-        const firstTableHeadCell = await getFirstTableHeadCell();
-        const secondTableHeadCell = await getSecondTableHeadCell();
-        const thirdTableHeadCell = await getThirdTableHeadCell();
-
-        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-          .withContext('1st cell initially')
-          .toBe('ascending');
-        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-          .withContext('2nd cell initially')
-          .toBeNull();
-        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-          .withContext('3rd cell initially')
-          .toBeNull();
-
-        await host.evaluate((host) => {
-          host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-            (el as any).sort = { id: i, active: i === 0, direction: 'desc' };
-          });
-        });
-        await waitForStencilLifecycle(page);
-
-        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-          .withContext('1st cell after change')
-          .toBe('descending');
-        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-          .withContext('2nd cell after change')
-          .toBeNull();
-        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-          .withContext('3rd cell after change')
-          .toBeNull();
-
-        await host.evaluate((host) => {
-          host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-            (el as any).sort = { id: i, active: i === 1, direction: 'asc' };
-          });
-        });
-        await waitForStencilLifecycle(page);
-
-        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-          .withContext('1st cell finally')
-          .toBeNull();
-        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-          .withContext('2nd cell finally')
-          .toBe('ascending');
-        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-          .withContext('3rd cell finally')
-          .toBeNull();
-      });
-
-      it('should set correct aria-sort value when not sortable', async () => {
-        await initTable({ isSortable: false });
-
-        const firstTableHeadCell = await getFirstTableHeadCell();
-        const secondTableHeadCell = await getSecondTableHeadCell();
-        const thirdTableHeadCell = await getThirdTableHeadCell();
-
-        expect(await getAttribute(firstTableHeadCell, 'aria-sort'))
-          .withContext('1st cell')
-          .toBeNull();
-        expect(await getAttribute(secondTableHeadCell, 'aria-sort'))
-          .withContext('2nd cell')
-          .toBeNull();
-        expect(await getAttribute(thirdTableHeadCell, 'aria-sort'))
-          .withContext('3rd cell')
-          .toBeNull();
-      });
+      expect(await getFirstTableHeadCellButton()).toBeNull();
     });
   });
 
@@ -405,24 +188,24 @@ ${script}`
       await initTable();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-table']).withContext('componentDidLoad: p-table').toBe(1);
-      expect(status.componentDidLoad['p-table-head']).withContext('componentDidLoad: p-table-head').toBe(1);
-      expect(status.componentDidLoad['p-table-head-row']).withContext('componentDidLoad: p-table-head-row').toBe(1);
-      expect(status.componentDidLoad['p-table-head-cell']).withContext('componentDidLoad: p-table-head-cell').toBe(5);
-      expect(status.componentDidLoad['p-table-body']).withContext('componentDidLoad: p-table-body').toBe(1);
-      expect(status.componentDidLoad['p-table-row']).withContext('componentDidLoad: p-table-row').toBe(3);
-      expect(status.componentDidLoad['p-table-cell']).withContext('componentDidLoad: p-table-cell').toBe(15);
+      expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
+      expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
+      expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
+      expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
+      expect(status.componentDidLoad['p-table-body'], 'componentDidLoad: p-table-body').toBe(1);
+      expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
+      expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(27);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(27);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on p-table-head-cell prop change', async () => {
       await initTable();
       const initialStatus = await getLifecycleStatus(page);
 
-      expect(initialStatus.componentDidLoad.all).withContext('initial componentDidLoad: all').toBe(27);
-      expect(initialStatus.componentDidUpdate.all).withContext('initial componentDidUpdate: all').toBe(0);
+      expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(27);
+      expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
       const host = await getHost();
       await host.evaluate((host) => {
@@ -434,12 +217,136 @@ ${script}`
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad.all).withContext('final componentDidLoad: all').toBe(32);
-      expect(status.componentDidLoad['p-icon']).withContext('final componentDidLoad: p-icon').toBe(5);
-      expect(status.componentDidUpdate.all).withContext('final componentDidUpdate: all').toBe(5);
-      expect(status.componentDidUpdate['p-table-head-cell'])
-        .withContext('final componentDidUpdate: p-table-head-cell')
-        .toBe(5);
+      expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(32);
+      expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(5);
+      expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5);
+      expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initTable();
+      const table = await getTable();
+      const firstTableHeadCell = await getFirstTableHeadCell();
+      const snapshot = await page.accessibility.snapshot({
+        root: table,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(await getAttribute(firstTableHeadCell, 'scope'), 'firstTableHeadCell scope').toBe('col'); // scope can't be detected by the accessibility tree
+    });
+
+    it('should set correct accessibility tree and aria-attribute for caption property', async () => {
+      // hint: accessibility tree snapshot not useful due to lack of support of table-role in interestingOnly mode.
+      await initTable();
+
+      const host = await getHost();
+      const table = await getTable();
+      expect(await getAttribute(table, 'aria-label'), 'initial aria-label').toBeNull();
+      expect(await getAttribute(table, 'aria-labelledby'), 'initial aria-labelledby').toBeNull();
+
+      await setProperty(host, 'caption', 'Some caption');
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(table, 'aria-label'), 'final aria-label').toBe('Some caption');
+      expect(await getAttribute(table, 'aria-labelledby'), 'final aria-labelledby').toBeNull();
+
+      const caption = await getCaption();
+      expect(caption, 'slotted caption').toBeNull();
+    });
+
+    it('should set correct accessibility tree and aria-attribute for slotted caption', async () => {
+      // hint: accessibility tree snapshot not useful due to lack of support of table-role in interestingOnly mode.
+      await initTable({ hasSlottedCaption: true });
+      const table = await getTable();
+
+      expect(await getAttribute(table, 'aria-label'), 'initial aria-label').toBeNull();
+      expect(await getAttribute(table, 'aria-labelledby'), 'initial aria-labelledby').toBe('caption');
+
+      const caption = await getCaption();
+      expect(await getAttribute(caption, 'id'), 'caption id').toBe('caption');
+    });
+
+    it('should expose correct accessibility tree of scroll area', async () => {
+      await initTable({ hasSlottedCaption: true });
+      const host = await getHost();
+      const scrollArea = await getScrollArea();
+
+      expect(await getAttribute(scrollArea, 'tabindex'), 'initial: tabindex').toBeNull();
+      expect(await getAttribute(scrollArea, 'role'), 'initial: role').toBeNull();
+      expect(await getAttribute(scrollArea, 'aria-label'), 'initial: aria-label').toBeNull();
+      expect(await getAttribute(scrollArea, 'aria-labelledby'), 'initial: aria-labelledby').toBeNull();
+
+      await makeTableOverflow();
+
+      const snapshotOverflow = await page.accessibility.snapshot({
+        root: scrollArea,
+      });
+
+      expect(snapshotOverflow, 'Overflow with caption as property').toMatchSnapshot(
+        'Overflow with caption as property'
+      );
+      expect(await getAttribute(scrollArea, 'tabindex'), 'after overflow: tabindex').toBe('0');
+      expect(await getAttribute(scrollArea, 'aria-label'), 'after overflow: aria-label').toBeNull();
+
+      await setProperty(host, 'caption', 'Some caption');
+      await waitForStencilLifecycle(page);
+
+      const snapshotOverflowCaption = await page.accessibility.snapshot({
+        root: scrollArea,
+      });
+
+      expect(snapshotOverflowCaption, 'Overflow with caption as slot').toMatchSnapshot('Overflow with caption as slot');
+      expect(await getAttribute(scrollArea, 'aria-labelledby'), 'after caption: aria-labelledby').toBeNull();
+    });
+
+    it('should set correct aria-sort value when sortable', async () => {
+      await initTable({ isSortable: true });
+
+      const host = await getHost();
+      const firstTableHeadCell = await getFirstTableHeadCell();
+      const secondTableHeadCell = await getSecondTableHeadCell();
+      const thirdTableHeadCell = await getThirdTableHeadCell();
+
+      expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell initially').toBe('ascending');
+      expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell initially').toBeNull();
+      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'), '3rd cell initially').toBeNull();
+
+      await host.evaluate((host) => {
+        host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
+          (el as any).sort = { id: i, active: i === 0, direction: 'desc' };
+        });
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell after change').toBe('descending');
+      expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell after change').toBeNull();
+      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'), '3rd cell after change').toBeNull();
+
+      await host.evaluate((host) => {
+        host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
+          (el as any).sort = { id: i, active: i === 1, direction: 'asc' };
+        });
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell finally').toBeNull();
+      expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell finally').toBe('ascending');
+      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'), '3rd cell finally').toBeNull();
+    });
+
+    it('should set correct aria-sort value when not sortable', async () => {
+      await initTable({ isSortable: false });
+
+      const firstTableHeadCell = await getFirstTableHeadCell();
+      const secondTableHeadCell = await getSecondTableHeadCell();
+      const thirdTableHeadCell = await getThirdTableHeadCell();
+
+      expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell').toBeNull();
+      expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell').toBeNull();
+      expect(await getAttribute(thirdTableHeadCell, 'aria-sort'), '3rd cell').toBeNull();
     });
   });
 });

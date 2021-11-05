@@ -1,24 +1,19 @@
 import {
-  getVisualRegressionContentWrapperTester,
+  extendedViewports,
   getVisualRegressionStatesTester,
+  getVisualRegressionTester,
   vrtTest,
-  VisualRegressionTester,
 } from '@porsche-design-system/shared/testing';
 
-describe('Modal', () => {
-  let vrt: VisualRegressionTester;
+it.each(extendedViewports)('should have no visual regression for basic modal for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-basic', '/#modal-basic')).toBeFalsy();
+});
 
-  beforeAll(() => {
-    vrt = getVisualRegressionContentWrapperTester();
-  });
-
-  it('should have no visual regression for basic modal', async () => {
-    expect(await vrtTest(vrt, 'modal-basic', '/#modal-basic')).toBeFalsy();
-  });
-
-  it('should have no visual regression for scrollable modal', async () => {
+it.each(extendedViewports)(
+  'should have no visual regression for scrollable modal for viewport %s',
+  async (viewport) => {
     expect(
-      await vrtTest(vrt, 'modal-scrollable', '/#modal-scrollable', {
+      await vrtTest(getVisualRegressionTester(viewport), 'modal-scrollable', '/#modal-scrollable', {
         scenario: (page) =>
           page.evaluate(() => {
             // screenshot triggers resize, so we need to scroll the modal after that
@@ -28,18 +23,26 @@ describe('Modal', () => {
           }),
       })
     ).toBeFalsy();
-  });
+  }
+);
 
-  it('should have no visual regression for prefixed modal', async () => {
-    // single resolution
-    expect(await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/#modal-prefixed')).toBeFalsy();
-  });
+it('should have no visual regression for prefixed modal', async () => {
+  // single resolution
+  expect(await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/#modal-prefixed')).toBeFalsy();
+});
 
-  it('should have no visual regression for fullscreen modal', async () => {
-    expect(await vrtTest(vrt, 'modal-fullscreen', '/#modal-fullscreen')).toBeFalsy();
-  });
+it.each(extendedViewports)(
+  'should have no visual regression for fullscreen modal for viewport %s',
+  async (viewport) => {
+    expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-fullscreen', '/#modal-fullscreen')).toBeFalsy();
+  }
+);
 
-  it('should have no visual regression for fullscreen breakpoint modal', async () => {
+it.each(extendedViewports)(
+  'should have no visual regression for fullscreen breakpoint modal for viewport %s',
+  async (viewport) => {
+    const vrt = getVisualRegressionTester(viewport);
+
     expect(await vrtTest(vrt, 'modal-fullscreen-breakpoint', '/#modal-fullscreen-breakpoint')).toBeFalsy();
 
     expect(
@@ -50,5 +53,5 @@ describe('Modal', () => {
           }),
       })
     ).toBeFalsy();
-  });
-});
+  }
+);

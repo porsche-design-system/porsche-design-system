@@ -1,7 +1,6 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
@@ -16,13 +15,14 @@ describe('link', () => {
   let page: Page;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage();
+    page = await browser.newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-link');
   const getLink = () => selectNode(page, 'p-link >>> a');
+  const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
   const getSlottedLink = () => selectNode(page, 'p-link a');
 
   const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
@@ -91,77 +91,65 @@ describe('link', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(beforeFocusCalls).withContext('beforeFocusCalls initially').toBe(0);
-    expect(linkFocusCalls).withContext('linkFocusCalls initially').toBe(0);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls initially').toBe(0);
-    expect(linkBlurCalls).withContext('linkBlurCalls initially').toBe(0);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls initially').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls initially').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId initially')
-      .toBe('');
+    expect(beforeFocusCalls, 'beforeFocusCalls initially').toBe(0);
+    expect(linkFocusCalls, 'linkFocusCalls initially').toBe(0);
+    expect(linkFocusInCalls, 'linkFocusInCalls initially').toBe(0);
+    expect(linkBlurCalls, 'linkBlurCalls initially').toBe(0);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls initially').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls initially').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab').toBe(1);
-    expect(linkFocusCalls).withContext('linkFocusCalls after 1st tab').toBe(0);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls after 1st tab').toBe(0);
-    expect(linkBlurCalls).withContext('linkBlurCalls after 1st tab').toBe(0);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 1st tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 1st tab')
-      .toBe('before');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
+    expect(linkFocusCalls, 'linkFocusCalls after 1st tab').toBe(0);
+    expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab').toBe(0);
+    expect(linkBlurCalls, 'linkBlurCalls after 1st tab').toBe(0);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls after 1st tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after 1st tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab').toBe(1);
-    expect(linkFocusCalls).withContext('linkFocusCalls after 2nd tab').toBe(1);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls after 2nd tab').toBe(1);
-    expect(linkBlurCalls).withContext('linkBlurCalls after 2nd tab').toBe(0);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 2nd tab').toBe(0);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab').toBe(0);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 2nd tab')
-      .toBe('my-link');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab').toBe(1);
+    expect(linkFocusCalls, 'linkFocusCalls after 2nd tab').toBe(1);
+    expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab').toBe(1);
+    expect(linkBlurCalls, 'linkBlurCalls after 2nd tab').toBe(0);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls after 2nd tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after 2nd tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-link');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 3rd tab').toBe(1);
-    expect(linkFocusCalls).withContext('linkFocusCalls after 3rd tab').toBe(1);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls after 3rd tab').toBe(1);
-    expect(linkBlurCalls).withContext('linkBlurCalls after 3rd tab').toBe(1);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 3rd tab').toBe(1);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 3rd tab').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 3rd tab')
-      .toBe('after');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 3rd tab').toBe(1);
+    expect(linkFocusCalls, 'linkFocusCalls after 3rd tab').toBe(1);
+    expect(linkFocusInCalls, 'linkFocusInCalls after 3rd tab').toBe(1);
+    expect(linkBlurCalls, 'linkBlurCalls after 3rd tab').toBe(1);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls after 3rd tab').toBe(1);
+    expect(afterFocusCalls, 'afterFocusCalls after 3rd tab').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 1st tab back').toBe(1);
-    expect(linkFocusCalls).withContext('linkFocusCalls after 1st tab back').toBe(2);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls after 1st tab back').toBe(2);
-    expect(linkBlurCalls).withContext('linkBlurCalls after 1st tab back').toBe(1);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 1st tab back').toBe(1);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 1st tab back').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 1st tab back')
-      .toBe('my-link');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab back').toBe(1);
+    expect(linkFocusCalls, 'linkFocusCalls after 1st tab back').toBe(2);
+    expect(linkFocusInCalls, 'linkFocusInCalls after 1st tab back').toBe(2);
+    expect(linkBlurCalls, 'linkBlurCalls after 1st tab back').toBe(1);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls after 1st tab back').toBe(1);
+    expect(afterFocusCalls, 'afterFocusCalls after 1st tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-link');
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
-    expect(beforeFocusCalls).withContext('beforeFocusCalls after 2nd tab back').toBe(2);
-    expect(linkFocusCalls).withContext('linkFocusCalls after 2nd tab back').toBe(2);
-    expect(linkFocusInCalls).withContext('linkFocusInCalls after 2nd tab back').toBe(2);
-    expect(linkBlurCalls).withContext('linkBlurCalls after 2nd tab back').toBe(2);
-    expect(linkFocusOutCalls).withContext('linkFocusOutCalls after 2nd tab back').toBe(2);
-    expect(afterFocusCalls).withContext('afterFocusCalls after 2nd tab back').toBe(1);
-    expect(await getActiveElementId(page))
-      .withContext('activeElementId after 2nd tab back')
-      .toBe('before');
+    expect(beforeFocusCalls, 'beforeFocusCalls after 2nd tab back').toBe(2);
+    expect(linkFocusCalls, 'linkFocusCalls after 2nd tab back').toBe(2);
+    expect(linkFocusInCalls, 'linkFocusInCalls after 2nd tab back').toBe(2);
+    expect(linkBlurCalls, 'linkBlurCalls after 2nd tab back').toBe(2);
+    expect(linkFocusOutCalls, 'linkFocusOutCalls after 2nd tab back').toBe(2);
+    expect(afterFocusCalls, 'afterFocusCalls after 2nd tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
     await page.keyboard.up('ShiftLeft');
   });
@@ -197,12 +185,12 @@ describe('link', () => {
       await initLink();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-link']).withContext('componentDidLoad: p-link').toBe(1);
-      expect(status.componentDidLoad['p-text']).withContext('componentDidLoad: p-text').toBe(1);
-      expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(3);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -213,9 +201,43 @@ describe('link', () => {
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-link']).withContext('componentDidUpdate: p-link').toBe(1);
+      expect(status.componentDidUpdate['p-link'], 'componentDidUpdate: p-link').toBe(1);
 
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initLink();
+      const link = await getLink();
+      const icon = await getIcon();
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+        interestingOnly: false,
+      });
+
+      const snapshotIcon = await page.accessibility.snapshot({
+        root: icon,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+      expect(snapshotIcon).toBeNull();
+    });
+
+    it('should expose correct accessibility tree if label is hidden', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'hide-label', 'true');
+      await waitForStencilLifecycle(page);
+      const snapshot = await page.accessibility.snapshot({
+        root: link,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });

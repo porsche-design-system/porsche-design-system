@@ -1,7 +1,5 @@
-import { getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Button', () => {
-  it('should have no visual regression', async () => {
-    expect(await vrtTest(getVisualRegressionTester(), 'button', '/button')).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'button', '/button')).toBeFalsy();
 });
