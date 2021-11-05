@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordionn` still requires it 
+
 ### [2.6.0] - 2021-11-04
 
 #### Added
