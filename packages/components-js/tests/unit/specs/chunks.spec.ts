@@ -235,6 +235,22 @@ describe('chunks', () => {
       }
     });
 
+    it.each(chunkFileNames.filter((x) => !x.includes('accordion')))(
+      'should not contain ResizeObserver in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).not.toContain('ResizeObserver');
+      }
+    );
+
+    it.each(chunkFileNames.filter((x) => x.includes('accordion')))(
+      'should contain ResizeObserver in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).toContain('ResizeObserver');
+      }
+    );
+
     // TODO: enable this test once chunking is under control
     // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {
     //   const content = getChunkContent(chunkFileName);
