@@ -1,4 +1,3 @@
-import * as resizeObserverUtils from '../../../utils/resize-observer';
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
 
@@ -19,7 +18,7 @@ describe('accordion', () => {
 
   describe('componentDidLoad', () => {
     it('should call observeResize()', () => {
-      const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+      const spy = jest.spyOn(accordionUtils, 'observeResize');
       const component = new Accordion();
       component.componentDidLoad();
 
@@ -29,7 +28,7 @@ describe('accordion', () => {
 
   describe('disconnectedCallback', () => {
     it('should call unobserveResize()', () => {
-      const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
+      const spy = jest.spyOn(accordionUtils, 'unobserveResize');
       const component = new Accordion();
       component.disconnectedCallback();
 
