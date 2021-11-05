@@ -8,8 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### Added
-- New `accessibility` property for `ARIA` attribute handling for: `Button`, `Button-Pure`, `Icon`, `Link`, `Link-Pure`, `Marque`, `Spinner`
+#### Added
+- New `accessibility` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`
+
+### [2.6.1] - 2021-11-05
+
+#### Fixed
+- Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordion` still requires it 
+
+### [2.6.0] - 2021-11-04
 
 #### Added
 - `unit` and `unitPosition` properties to `Text Field Wrapper`

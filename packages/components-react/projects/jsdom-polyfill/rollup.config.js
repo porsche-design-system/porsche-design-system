@@ -30,16 +30,20 @@ export default {
       find: /console.warn\(`The Porsche Design System had to inject our font-face\.css file into your head\.(?:.|\s)*?`\);/,
       replace: '',
     }),
+    // patch conditions into build to allow opt out of CDN requests
     modify({
+      // tracking pixel and font-face css
       find: /appGlobals\.globalScripts\(\);/,
       replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
     }),
     modify({
+      // icon svgs
       find: /(const pdsFetch = \(input, init\) =>) (fetch\(input, init\);)/,
       replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),
     modify({
-      find: /(const picture =)( \(resizeObserver(?:.|\s)*?;)/,
+      // marque
+      find: /(const picture =)( (?:.|\s)*?;)/,
       replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),
     terser({
