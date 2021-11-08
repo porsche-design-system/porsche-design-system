@@ -86,7 +86,6 @@ export class InputParser {
     const rawInterface = this.getRawComponentInterface(component);
     const cleanedInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',"); // convert to valid js object
 
-    console.log('cleanedInterface', cleanedInterface);
     const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
     return parsedInterface;
   }
