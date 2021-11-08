@@ -13,8 +13,7 @@
     "jsx": "react",
     "jsxFactory": "h",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "types": ["node"]
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["**/*.spec.ts"]
