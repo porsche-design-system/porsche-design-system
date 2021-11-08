@@ -1,7 +1,7 @@
 import { addImportantToEachRule, attachComponentCss, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { ToastState } from './toast-manager';
-import { timeout } from './toast-manager';
+import { TOAST_DEFAULT_TIMEOUT } from './toast-manager';
 
 const getStateColor = (state: ToastState): { baseColor: string; softColor: string } => {
   const { success, successSoft, neutral, neutralSoft } = color.notification;
@@ -42,7 +42,7 @@ export const getComponentCss = (state: ToastState): string => {
     },
     progress: {
       animationName: '$progress',
-      animationDuration: `${timeout}ms`,
+      animationDuration: `${TOAST_DEFAULT_TIMEOUT}ms`,
       animationTimingFunction: 'linear',
       animationFillMode: 'forwards',
       display: 'block',
