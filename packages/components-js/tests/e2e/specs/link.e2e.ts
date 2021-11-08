@@ -228,7 +228,7 @@ describe('link', () => {
       const host = await getHost();
       const link = await getLink();
 
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-label': 'Some more detailed label',
       });
       await waitForStencilLifecycle(page);
@@ -252,7 +252,7 @@ describe('link', () => {
       const host = await getHost();
       const link = await getLink();
 
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-label': 'Some more detailed label',
       });
       await waitForStencilLifecycle(page);

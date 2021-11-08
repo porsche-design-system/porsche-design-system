@@ -37,7 +37,7 @@ describe('spinner', () => {
       const host = await getHost();
       const spinner = await getSpinner();
 
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-label': 'Loading page content',
       });
       await waitForStencilLifecycle(page);
