@@ -17,6 +17,7 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { Position } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -597,6 +598,20 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    interface PPopover {
+        /**
+          * Define the position of the popover from which it anchors to the button.
+         */
+        "anchorFlyout"?: Position;
+        /**
+          * Define the position on the clickable element from which the popover flys out.
+         */
+        "anchorOrigin"?: Position;
+        /**
+          * Theme.
+         */
+        "theme"?: Theme;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -1023,6 +1038,12 @@ declare global {
         prototype: HTMLPPaginationElement;
         new (): HTMLPPaginationElement;
     };
+    interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
+    }
+    var HTMLPPopoverElement: {
+        prototype: HTMLPPopoverElement;
+        new (): HTMLPPopoverElement;
+    };
     interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {
     }
     var HTMLPRadioButtonWrapperElement: {
@@ -1166,6 +1187,7 @@ declare global {
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
+        "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
@@ -1785,6 +1807,20 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    interface PPopover {
+        /**
+          * Define the position of the popover from which it anchors to the button.
+         */
+        "anchorFlyout"?: Position;
+        /**
+          * Define the position on the clickable element from which the popover flys out.
+         */
+        "anchorOrigin"?: Position;
+        /**
+          * Theme.
+         */
+        "theme"?: Theme;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -2116,6 +2152,7 @@ declare namespace LocalJSX {
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-pagination": PPagination;
+        "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
@@ -2164,6 +2201,7 @@ declare module "@stencil/core" {
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
