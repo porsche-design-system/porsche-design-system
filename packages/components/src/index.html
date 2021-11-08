@@ -24,139 +24,18 @@
       );
     </script>
     <!-- /END -->
-    <p-toast-a></p-toast-a>
-    <p-toast-b></p-toast-b>
-    <p-toast-c></p-toast-c>
+    <!--    <p-toast-a></p-toast-a>-->
+    <!--    <p-toast-b></p-toast-b>-->
+    <!--    <p-toast-c></p-toast-c>-->
 
     <p-toast-d></p-toast-d>
 
-    <div></div>
-
     <script>
-      document.querySelector('#button-a').addEventListener('click', () => {
-        ToastController.addMessage({ message: 'Some neutral message' });
-        ToastController.addMessage({ message: 'Some success message', state: 'success' });
-        ToastController.addMessage({ message: 'Some warning message', state: 'warning' });
-        ToastController.addMessage({ message: 'Some error message', state: 'error' });
-        ToastController.addMessage({
-          message: 'Some neutral message',
-          action: {
-            label: 'Retry',
-            callback: () => alert('Some custom action callback.'),
-          },
-        });
-      });
-
-      const toastB = document.querySelector('p-toast-b');
-      document.querySelector('#button-b').addEventListener('click', async () => {
-        // TODO: probably componentsReady(toastB) is more convenient?
-        await customElements.whenDefined('p-toast-b');
-        await toastB.addMessage({ message: 'hallo', state: 'success' });
-      });
-
-      const toastManagerC = document.querySelector('p-toast-c');
-      // <p-toast-c-item id="1" message="asd"></p-toast-c-item>;
-      const toast1 = document.createElement('p-toast-c-item');
-      toast1.id = '1';
-      toast1.message = 'asd';
-      const toast2 = document.createElement('p-toast-c-item');
-      toast1.id = '2';
-      toast1.message = 'asd2';
-
-      const toast3 = document.createElement('p-toast-c-item');
-      toast1.id = '3';
-      toast1.message = 'asd3';
-
-      toastManagerC.appendChild(toast1);
-      toastManagerC.appendChild(toast2);
-
-      setTimeout(() => {
-        toastManagerC.appendChild(toast3);
-      }, 10000);
-
       const toastD = document.querySelector('p-toast-d');
-      toastD.manager.addMessage({ message: 'message by public member', state: 'success' });
+      setTimeout(() => {
+        toastD.manager.addMessage({ message: 'message by public member 1', state: 'success' });
+        toastD.manager.addMessage({ message: 'message by public member 2', state: 'neutral' });
+      }, 1000);
     </script>
-    <!DOCTYPE html>
-    <html dir="ltr" lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <title>Porsche Design System - Playground</title>
-        <base href="/" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-        <script nomodule src="build/porsche-design-system.js"></script>
-        <script type="module" src="build/porsche-design-system.esm.js"></script>
-      </head>
-      <body>
-        <button id="button-a" type="button">Add Toast "A"</button>
-        <button id="button-b" type="button">Add Toast "B"</button>
-
-        <!-- START: keep this snippet to log component lifecycle events -->
-        <script>
-          ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-            window.addEventListener(`stencil_${x}`, (e) => {
-              const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-              console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-            })
-          );
-        </script>
-        <!-- /END -->
-        <p-toast-a></p-toast-a>
-        <p-toast-b></p-toast-b>
-        <p-toast-c></p-toast-c>
-
-        <p-toast-d></p-toast-d>
-
-        <div></div>
-
-        <script>
-          document.querySelector('#button-a').addEventListener('click', () => {
-            ToastController.addMessage({ message: 'Some neutral message' });
-            ToastController.addMessage({ message: 'Some success message', state: 'success' });
-            ToastController.addMessage({ message: 'Some warning message', state: 'warning' });
-            ToastController.addMessage({ message: 'Some error message', state: 'error' });
-            ToastController.addMessage({
-              message: 'Some neutral message',
-              action: {
-                label: 'Retry',
-                callback: () => alert('Some custom action callback.'),
-              },
-            });
-          });
-
-          const toastB = document.querySelector('p-toast-b');
-          document.querySelector('#button-b').addEventListener('click', async () => {
-            // TODO: probably componentsReady(toastB) is more convenient?
-            await customElements.whenDefined('p-toast-b');
-            await toastB.addMessage({ message: 'hallo', state: 'success' });
-          });
-
-          const toastManagerC = document.querySelector('p-toast-c');
-          // <p-toast-c-item id="1" message="asd"></p-toast-c-item>;
-          const toast1 = document.createElement('p-toast-c-item');
-          toast1.id = '1';
-          toast1.message = 'asd';
-          const toast2 = document.createElement('p-toast-c-item');
-          toast1.id = '2';
-          toast1.message = 'asd2';
-
-          const toast3 = document.createElement('p-toast-c-item');
-          toast1.id = '3';
-          toast1.message = 'asd3';
-
-          toastManagerC.appendChild(toast1);
-          toastManagerC.appendChild(toast2);
-
-          setTimeout(() => {
-            toastManagerC.appendChild(toast3);
-          }, 10000);
-
-          const toastD = document.querySelector('p-toast-d');
-          // toastD.manager.addMessage({ message: 'message by public member', state: 'success' });
-        </script>
-      </body>
-    </html>
   </body>
 </html>

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from './toast-item-c-styles';
-import type { ToastState } from './toast-c-types';
+import { addComponentCss } from '../toast-a/toast-item-a-styles';
+import type { ToastState } from '../toast-a/toast-a-types';
 
 @Component({
   tag: 'p-toast-item-c',
@@ -9,16 +9,13 @@ import type { ToastState } from './toast-c-types';
 export class ToastItemC {
   @Element() public host!: HTMLElement;
 
+  /** Defines a message. */
+  @Prop() public message?: string;
+
   /** Defines visual appearance. */
   @Prop() public state?: ToastState = 'neutral';
 
-  /** Defines the toastId of the toast */
-  @Prop() public toastId: string;
-
-  /** Defines a message.. */
-  @Prop() public message?: string;
-
-  @Event() public close?: EventEmitter<string>;
+  @Event() public close?: EventEmitter<void>;
 
   public connectedCallback(): void {
     addComponentCss(this.host, this.state);
@@ -30,7 +27,8 @@ export class ToastItemC {
         <slot />
         <span>{this.message}</span>
         <span class="progress" />
-        <button onClick={() => this.close.emit(this.toastId)}>X</button>
+        {/*// @ts-ignore*/}
+        <button onClick={this.close.emit}>X</button>
       </div>
     );
   }

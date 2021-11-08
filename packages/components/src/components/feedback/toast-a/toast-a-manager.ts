@@ -1,12 +1,12 @@
 import { forceUpdate } from '@stencil/core';
-import type { CallToAction2, ToastState2 } from './toast-a-types';
+import type { CallToAction, ToastState } from './toast-a-types';
 
 export const timeout = 6000;
 
 type MessageOptions = {
   message: string;
-  state?: ToastState2;
-  action?: CallToAction2;
+  state?: ToastState;
+  action?: CallToAction;
 };
 type Message = MessageOptions & { timeout: any };
 

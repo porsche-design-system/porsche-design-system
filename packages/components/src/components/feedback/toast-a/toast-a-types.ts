@@ -1,8 +1,6 @@
-import { BannerState } from '../../../types';
+export type ToastState = 'neutral' | 'success';
 
-export type ToastState2 = BannerState | 'success';
-
-export type CallToAction2 = {
+export type CallToAction = {
   label: string;
   callback: () => void;
 };
