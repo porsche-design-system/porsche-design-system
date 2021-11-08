@@ -37,7 +37,7 @@ describe('icon', () => {
     const scrollContainer = `<div style="height:1000px"></div>`;
     const content = `${
       isScrollable ? scrollContainer : ''
-    }<p-icon ${attributes} accessibility="{ 'aria-label': 'Some label' }" />`;
+    }<p-icon ${attributes} aria="{ 'aria-label': 'Some label' }" />`;
 
     await setContentWithDesignSystem(page, content);
   };
