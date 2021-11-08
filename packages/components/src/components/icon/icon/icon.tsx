@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { buildIconUrl, getSvgContent, patchAccessibilityIntoSVG, IconAriaAttributes } from './icon-utils';
+import { buildIconUrl, getSvgContent, patchAriaIntoSVG, IconAriaAttributes } from './icon-utils';
 import { attachComponentCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
 import type { Theme, IconName, TextColor, IconSize, SelectedAriaAttributes } from '../../../types';
 import { getComponentCss } from './icon-styles';
@@ -30,7 +30,7 @@ export class Icon {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<IconAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<IconAriaAttributes>;
 
   private intersectionObserver?: IntersectionObserver;
   private key = 0; // use unique random key to trick stencil cache
@@ -102,7 +102,7 @@ export class Icon {
     const el = getShadowRootHTMLElement(this.host, 'i');
     // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
     if (el) {
-      el.innerHTML = patchAccessibilityIntoSVG(content, this.accessibility);
+      el.innerHTML = patchAriaIntoSVG(content, this.aria);
     }
   }
 }
