@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
-import { ToastManager, ToastManagerType } from './toast-manager';
+import { ToastManager } from './toast-manager';
 
 @Component({
   tag: 'p-toast',
@@ -10,7 +10,7 @@ export class Toast {
   @Element() public host!: HTMLElement;
 
   @Prop()
-  public readonly manager: ToastManagerType = ToastManager.registerToastElement(this.host);
+  public readonly manager = new ToastManager(this.host);
 
   public connectedCallback(): void {
     addComponentCss(this.host);

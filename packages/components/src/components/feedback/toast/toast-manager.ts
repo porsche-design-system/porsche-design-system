@@ -8,45 +8,44 @@ type Message = {
   state?: ToastState;
 };
 
-class ToastManagerClass {
-  private toast: HTMLElement;
+let isInitialized = false;
+
+export class ToastManager {
   private messages: Message[] = [];
   private timeout: NodeJS.Timeout;
 
-  public registerToastElement(toast: HTMLElement): typeof ToastManager {
-    if (this.toast) {
-      throw new Error('<p-toast/> was rendered multiple times.');
+  constructor(private toastEl: HTMLElement) {
+    if (isInitialized) {
+      throw new Error('<p-toast> was rendered multiple times.');
     }
-    this.toast = toast;
-
-    return this;
+    isInitialized = true;
   }
 
   public addMessage(message: Message): void {
-    if (!this.toast) {
-      throw new Error('Missing <p-toast/> element.');
+    if (!this.toastEl) {
+      throw new Error('Missing <p-toast> element.');
     }
 
+    const { length } = this.messages;
     this.messages.push(message);
-    forceUpdate(this.toast);
+
+    if (!length) {
+      forceUpdate(this.toastEl);
+    }
   }
 
   public dismissMessage = (): void => {
     clearTimeout(this.timeout);
     this.messages.shift();
-    forceUpdate(this.toast);
+    forceUpdate(this.toastEl);
   };
 
   public getMessage(): Message {
     const [message] = this.messages;
 
     if (message) {
-      clearTimeout(this.timeout);
       this.timeout = setTimeout(this.dismissMessage, TOAST_DEFAULT_TIMEOUT);
     }
     return message;
   }
 }
-
-export const ToastManager = new ToastManagerClass();
-export type ToastManagerType = typeof ToastManager;
