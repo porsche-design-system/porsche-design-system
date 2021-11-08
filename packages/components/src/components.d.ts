@@ -24,7 +24,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastManagerType, ToastState } from "./components/feedback/toast/toast-manager";
+import { ToastManagerInstance, ToastState } from "./components/feedback/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
         /**
@@ -891,7 +891,7 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PToast {
-        "manager": ToastManagerType;
+        "manager": ToastManagerInstance;
     }
     interface PToastItem {
         /**
@@ -2122,7 +2122,7 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PToast {
-        "manager"?: ToastManagerType;
+        "manager"?: ToastManagerInstance;
     }
     interface PToastItem {
         /**

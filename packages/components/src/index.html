@@ -17,10 +17,10 @@
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const toast = document.querySelector('p-toast');
+      const { manager } = document.querySelector('p-toast');
       setTimeout(() => {
-        toast.manager.addMessage({ message: 'message by public member 1', state: 'success' });
-        toast.manager.addMessage({ message: 'message by public member 2', state: 'neutral' });
+        manager.addToast({ message: 'message by public member 1', state: 'success' });
+        manager.addToast({ message: 'message by public member 2', state: 'neutral' });
       }, 1000);
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>

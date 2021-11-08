@@ -21,7 +21,7 @@ export class ToastManager {
     isInitialized = true;
   }
 
-  public addMessage(message: Message): void {
+  public addToast(message: Message): void {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }
@@ -34,18 +34,20 @@ export class ToastManager {
     }
   }
 
-  public dismissMessage = (): void => {
+  public dismissToast = (): void => {
     clearTimeout(this.timeout);
     this.messages.shift();
     forceUpdate(this.toastEl);
   };
 
-  public getMessage(): Message {
+  public getToast(): Message {
     const [message] = this.messages;
 
     if (message) {
-      this.timeout = setTimeout(this.dismissMessage, TOAST_DEFAULT_TIMEOUT);
+      this.timeout = setTimeout(this.dismissToast, TOAST_DEFAULT_TIMEOUT);
     }
     return message;
   }
 }
+
+export type ToastManagerInstance = Omit<ToastManager, 'prototype'>;
