@@ -88,23 +88,23 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
     color = 'brand';
     
     get name() {
-      return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" accessibility="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
+      return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
     }
     
     get sizeMarkup() {
       const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-icon size="${this.size}" name="highway" accessibility="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
+      return `<p-icon size="${this.size}" name="highway" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
     }
     
     get colorMarkup() {
       const style = this.color === 'inherit' ? ' style="color: deeppink"' : '';
-      return `<p-icon name="highway" color="${this.color}" accessibility="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
+      return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
     }
     
     custom =
-`<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" accessibility="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
+`<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
 
     lazy =
-`<p-icon name="information" lazy="true" accessibility="{ 'aria-label': 'Information icon' }" />`;
+`<p-icon name="information" lazy="true" aria="{ 'aria-label': 'Information icon' }" />`;
   }
 </script>

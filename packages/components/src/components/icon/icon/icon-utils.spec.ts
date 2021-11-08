@@ -1,5 +1,5 @@
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, isUrl, patchAccessibilityIntoSVG } from './icon-utils';
+import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, isUrl, patchAriaIntoSVG } from './icon-utils';
 import { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 import * as a11yUtils from '../../../utils/a11y';
@@ -77,15 +77,15 @@ describe('patchAccessibilityIntoSVG()', () => {
   it('should call parseAndGetAccessibilityAttributes()', () => {
     const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
 
-    patchAccessibilityIntoSVG('', rawAttributes);
+    patchAriaIntoSVG('', rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes, ICON_ARIA_ATTRIBUTES);
   });
 
   it.each(ICON_ARIA_ATTRIBUTES)('should return patched content for %s', (ariaAttribute) => {
-    expect(patchAccessibilityIntoSVG(svgContent, { [ariaAttribute]: 'Some value' })).toMatchSnapshot();
+    expect(patchAriaIntoSVG(svgContent, { [ariaAttribute]: 'Some value' })).toMatchSnapshot();
   });
 
   it.each<string>([undefined, ''])('should return unmodified content for %o', (rawAttributes) => {
-    expect(patchAccessibilityIntoSVG(svgContent, rawAttributes)).toEqual(svgContent);
+    expect(patchAriaIntoSVG(svgContent, rawAttributes)).toEqual(svgContent);
   });
 });

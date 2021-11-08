@@ -352,7 +352,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
         /**
           * Basic color variations depending on theme property.
          */
@@ -1552,7 +1552,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<IconAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
         /**
           * Basic color variations depending on theme property.
          */

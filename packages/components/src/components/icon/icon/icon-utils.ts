@@ -49,7 +49,7 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
   return buildIconUrl(DEFAULT_ICON_NAME);
 };
 
-export const patchAccessibilityIntoSVG = (
+export const patchAriaIntoSVG = (
   content: string,
   rawAccessibility: SelectedAriaAttributes<IconAriaAttributes>
 ): string => {
