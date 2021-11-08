@@ -76,7 +76,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -122,10 +122,6 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
-          * Add ARIA attributes.
-         */
-        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
-        /**
           * Display button in active state.
          */
         "active"?: boolean;
@@ -133,6 +129,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -416,7 +416,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -456,10 +456,6 @@ export namespace Components {
     }
     interface PLinkPure {
         /**
-          * Add ARIA attributes.
-         */
-        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
-        /**
           * Display link in active state.
          */
         "active"?: boolean;
@@ -467,6 +463,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -546,7 +546,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -698,7 +698,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
@@ -1276,7 +1276,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1322,10 +1322,6 @@ declare namespace LocalJSX {
     }
     interface PButtonPure {
         /**
-          * Add ARIA attributes.
-         */
-        "accessibility"?: SelectedAriaAttributes<ButtonAriaAttributes>;
-        /**
           * Display button in active state.
          */
         "active"?: boolean;
@@ -1333,6 +1329,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1624,7 +1624,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1664,10 +1664,6 @@ declare namespace LocalJSX {
     }
     interface PLinkPure {
         /**
-          * Add ARIA attributes.
-         */
-        "accessibility"?: SelectedAriaAttributes<LinkAriaAttributes>;
-        /**
           * Display link in active state.
          */
         "active"?: boolean;
@@ -1675,6 +1671,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1754,7 +1754,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<MarqueAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -1914,7 +1914,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "accessibility"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
