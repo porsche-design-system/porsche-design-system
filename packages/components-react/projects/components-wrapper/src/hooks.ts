@@ -61,7 +61,7 @@ export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>,
 
 export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-export const useToastManager = () => {
+export const useToastManager = (): { addMessage: (msg: { message: string; state: any }) => void } => {
   const tagName = usePrefix('p-toast');
   return {
     addMessage: (msg: { message: string; state: any }) => {
