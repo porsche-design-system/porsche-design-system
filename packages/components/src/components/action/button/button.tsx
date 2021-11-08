@@ -6,7 +6,7 @@ import {
   isDark,
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -55,7 +55,7 @@ export class Button {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -96,13 +96,13 @@ export class Button {
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
-        {...parseAndGetAccessibilityAttributes(this.accessibility, BUTTON_ARIA_ATTRIBUTES)}
+        {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner
             {...iconProps}
             theme={this.variant === 'tertiary' ? this.theme : 'dark'}
-            accessibility={{ 'aria-label': 'Loading state' }}
+            aria={{ 'aria-label': 'Loading state' }}
           />
         ) : (
           <PrefixedTagNames.pIcon

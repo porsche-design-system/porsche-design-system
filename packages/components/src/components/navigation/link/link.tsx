@@ -3,7 +3,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -52,7 +52,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
   public connectedCallback(): void {
     improveFocusHandlingForCustomElement(this.host);
@@ -74,7 +74,7 @@ export class Link {
           target: this.target,
           download: this.download,
           rel: this.rel,
-          ...parseAndGetAccessibilityAttributes(this.accessibility, LINK_ARIA_ATTRIBUTES),
+          ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
         })}
       >
         <PrefixedTagNames.pIcon

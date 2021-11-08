@@ -11,7 +11,7 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
   attachComponentCss,
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -77,7 +77,7 @@ export class ButtonPure {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<ButtonAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
@@ -149,11 +149,11 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
           aria-describedby={hasSubline ? 'subline' : null}
-          {...parseAndGetAccessibilityAttributes(this.accessibility, BUTTON_ARIA_ATTRIBUTES)}
+          {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
         >
           {hasIcon &&
             (this.loading ? (
-              <PrefixedTagNames.pSpinner accessibility={{ 'aria-label': 'Loading state' }} {...iconProps} />
+              <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
             ) : (
               <PrefixedTagNames.pIcon
                 {...iconProps}
