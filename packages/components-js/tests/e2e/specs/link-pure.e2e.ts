@@ -304,7 +304,7 @@ describe('link-pure', () => {
       const host = await getHost();
       const link = await getLink();
 
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-label': 'Some more detailed label',
       });
       await waitForStencilLifecycle(page);

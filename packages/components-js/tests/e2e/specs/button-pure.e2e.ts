@@ -506,7 +506,7 @@ describe('button-pure', () => {
       await initButtonPure();
       const host = await getHost();
       const button = await getButton();
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-label': 'Some more detailed label',
         'aria-expanded': true,
         'aria-haspopup': true,
@@ -515,7 +515,7 @@ describe('button-pure', () => {
 
       await expectA11yToMatchSnapshot(page, button, { message: 'Initial' });
 
-      await setProperty(host, 'accessibility', {
+      await setProperty(host, 'aria', {
         'aria-pressed': true,
       });
       await waitForStencilLifecycle(page);
