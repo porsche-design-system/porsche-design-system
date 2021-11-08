@@ -37,10 +37,10 @@ class ToastManagerClass {
     forceUpdate(this.toast);
   }
 
-  public dismissMessage(): void {
+  public dismissMessage = (): void => {
     this.messages.shift();
     forceUpdate(this.toast);
-  }
+  };
 
   public getMessage(): Message {
     const message = this.messages[0];

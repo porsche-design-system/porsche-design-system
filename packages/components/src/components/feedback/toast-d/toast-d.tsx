@@ -10,17 +10,14 @@ export class ToastD {
   @Element() public host!: HTMLElement;
 
   @Prop()
-  public manager: ToastManagerType = ToastManager.registerToastElement(this.host);
+  public readonly manager: ToastManagerType = ToastManager.registerToastElement(this.host);
 
   public connectedCallback(): void {
-    console.log(this.manager);
     addComponentCss(this.host);
   }
 
   public componentDidLoad(): void {
-    this.host.shadowRoot.addEventListener('close', () => {
-      this.manager.dismissMessage();
-    });
+    this.host.shadowRoot.addEventListener('close', this.manager.dismissMessage);
   }
 
   public render(): JSX.Element {
