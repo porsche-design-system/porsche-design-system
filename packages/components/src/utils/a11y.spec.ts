@@ -59,7 +59,7 @@ describe('parseAriaAttributes()', () => {
   });
 });
 
-describe('throwIfAccessibilityAttributesAreInvalid()', () => {
+describe('throwIfAriaAttributesAreInvalid()', () => {
   it('should throw error for unsupported attribute', () => {
     const testFunc = () => {
       throwIfAriaAttributesAreInvalid(['aria-asd' as any], ['aria-label']);
@@ -77,7 +77,7 @@ describe('throwIfAccessibilityAttributesAreInvalid()', () => {
   });
 });
 
-describe('parseAndGetAccessibilityAttributes()', () => {
+describe('parseAndGetAriaAttributes()', () => {
   const rawAttributes = "{ aria-label: 'Some label' }";
 
   it('should call parseAriaAttributes()', () => {
@@ -87,7 +87,7 @@ describe('parseAndGetAccessibilityAttributes()', () => {
     expect(spy).toHaveBeenCalledWith(rawAttributes);
   });
 
-  it('should call throwIfAccessibilityAttributesAreInvalid()', () => {
+  it('should call throwIfAriaAttributesAreInvalid()', () => {
     const spy = jest.spyOn(a11yUtils, 'throwIfAriaAttributesAreInvalid');
 
     parseAndGetAriaAttributes(rawAttributes, ['aria-label']);
@@ -105,7 +105,7 @@ describe('parseAndGetAccessibilityAttributes()', () => {
     },
     "{'aria-label': 'Some label', 'aria-pressed': true}",
     "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
-  ])('should return correct accessibility attributes with boolean for %o', (rawAttributes) => {
+  ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',
       'aria-pressed': 'true',
