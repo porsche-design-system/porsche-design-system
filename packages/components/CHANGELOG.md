@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`
 
+#### Fixed
+- React: warnings about `useLayoutEffect` in SSR context
+
 ### [2.6.1] - 2021-11-05
 
 #### Fixed
