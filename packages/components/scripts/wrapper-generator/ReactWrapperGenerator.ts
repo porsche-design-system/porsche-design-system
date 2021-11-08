@@ -19,12 +19,16 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       'forwardRef',
       'HTMLAttributes',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
-      ...(extendedProps.some(({ isEvent }) => !isEvent) ? ['useLayoutEffect'] : []),
       'useRef',
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
-    const hooksImports = [...(hasEventProps ? ['useEventCallback'] : []), 'useMergedClass', 'usePrefix'];
+    const hooksImports = [
+      ...(extendedProps.some(({ isEvent }) => !isEvent) ? ['useBrowserLayoutEffect'] : []),
+      ...(hasEventProps ? ['useEventCallback'] : []),
+      'useMergedClass',
+      'usePrefix',
+    ];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
     const utilsImports = ['syncRef'];
@@ -81,13 +85,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const componentEffectsArr: string[] =
       propsToSync.length === 1
         ? [
-            `useLayoutEffect(() => {
+            `useBrowserLayoutEffect(() => {
       (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key};
     }, [${firstPropToSync.key}]);`,
           ]
         : [
             `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
-            `useLayoutEffect(() => {
+            `useBrowserLayoutEffect(() => {
       const { current } = elementRef;
       [${propsToSync.map(({ key }) => `'${key}'`).join(', ')}].forEach(
         (propName, i) => ((current as any)[propName] = propsToSync[i])

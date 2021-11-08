@@ -1,6 +1,10 @@
 import { render } from '@testing-library/react';
 import { PButton } from '../../../projects/components-wrapper/src';
-import { skipCheckForPorscheDesignSystemProviderDuringTests } from '../../../projects/components-wrapper/src/hooks';
+import {
+  skipCheckForPorscheDesignSystemProviderDuringTests,
+  useBrowserLayoutEffect,
+} from '../../../projects/components-wrapper/src/hooks';
+import { useLayoutEffect } from 'react';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
@@ -24,5 +28,13 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
     expect(error2).not.toBeDefined();
 
     spy.mockRestore();
+  });
+});
+
+describe('useBrowserLayoutEffect()', () => {
+  it('should be an alias for useLayoutEffect in browser', () => {
+    expect(typeof global.window).toBe('object');
+    expect(typeof global.document).toBe('object');
+    expect(useBrowserLayoutEffect).toEqual(useLayoutEffect);
   });
 });
