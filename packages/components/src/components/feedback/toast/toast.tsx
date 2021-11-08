@@ -1,12 +1,12 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from '../toast-a/toast-a-styles';
+import { addComponentCss } from './toast-styles';
 import { ToastManager, ToastManagerType } from './toast-manager';
 
 @Component({
-  tag: 'p-toast-d',
+  tag: 'p-toast',
   shadow: true,
 })
-export class ToastD {
+export class Toast {
   @Element() public host!: HTMLElement;
 
   @Prop()
@@ -26,9 +26,9 @@ export class ToastD {
     return (
       <Host>
         {msg && (
-          <p-toast-item-c key={msg.message} state={msg.state}>
+          <p-toast-item key={msg.message} state={msg.state}>
             <p-text>{msg.message}</p-text>
-          </p-toast-item-c>
+          </p-toast-item>
         )}
       </Host>
     );
