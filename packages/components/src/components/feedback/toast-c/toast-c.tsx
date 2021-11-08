@@ -16,8 +16,7 @@ export type Message = MessageOptions & { timeout: any };
 export class ToastC {
   @Element() public host!: HTMLElement;
 
-  // For docs typing, child bubbles
-  @Event() public dismiss?: EventEmitter<string>;
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<string>;
 
   public connectedCallback(): void {
     addComponentCss(this.host);
