@@ -28,11 +28,11 @@ Choose between predefined styling variants.
 
 ### ARIA attributes and states 
 
-Through the `accessibility` property you have the possibility to provide additional **ARIA** attributes and states to the component. 
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component. 
 <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `accessibility` property to expose a more descriptive experience to screen reader users.
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria` property to expose a more descriptive experience to screen reader users.
 * If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 
@@ -98,7 +98,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <p-button variant="tertiary" hide-label="{ base: true, l: false }">Some label</p-button>`;
 
     accessibility = 
-`<p-button accessibility="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
+`<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
 
     icon =
 `<p-button icon="delete">Some label</p-button>

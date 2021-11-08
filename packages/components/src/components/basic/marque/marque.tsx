@@ -3,7 +3,7 @@ import {
   attachComponentCss,
   breakpoint,
   improveFocusHandlingForCustomElement,
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
@@ -32,7 +32,7 @@ export class Marque {
   @Prop() public target?: LinkTarget = '_self';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<MarqueAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
   public connectedCallback(): void {
     improveFocusHandlingForCustomElement(this.host);
@@ -68,11 +68,7 @@ export class Marque {
         {this.href === undefined ? (
           picture
         ) : (
-          <a
-            href={this.href}
-            target={this.target}
-            {...parseAndGetAccessibilityAttributes(this.accessibility, MARQUE_ARIA_ATTRIBUTES)}
-          >
+          <a href={this.href} target={this.target} {...parseAndGetAriaAttributes(this.aria, MARQUE_ARIA_ATTRIBUTES)}>
             {picture}
           </a>
         )}

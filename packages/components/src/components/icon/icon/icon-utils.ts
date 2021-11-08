@@ -4,7 +4,7 @@
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName } from '../../../types';
-import { paramCaseToCamelCase, parseAndGetAccessibilityAttributes, pdsFetch } from '../../../utils';
+import { paramCaseToCamelCase, parseAndGetAriaAttributes, pdsFetch } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
@@ -54,7 +54,7 @@ export const patchAccessibilityIntoSVG = (
   rawAccessibility: SelectedAriaAttributes<IconAriaAttributes>
 ): string => {
   if (rawAccessibility) {
-    const accessibility = parseAndGetAccessibilityAttributes(rawAccessibility, ICON_ARIA_ATTRIBUTES);
+    const accessibility = parseAndGetAriaAttributes(rawAccessibility, ICON_ARIA_ATTRIBUTES);
     const attributes = ['role="img"']
       .concat(Object.entries(accessibility).map(([key, val]) => `${key}="${val}"`))
       .join(' ');

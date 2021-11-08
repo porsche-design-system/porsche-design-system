@@ -2,7 +2,7 @@ import { JSX, Component, Prop, h, Watch } from '@stencil/core';
 import type { Theme, SelectedAriaAttributes } from '../../../types';
 import type { SpinnerSize, SpinnerAriaAttributes } from './spinner-utils';
 import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES } from './spinner-utils';
-import { isDark, mapBreakpointPropToClasses, parseAndGetAccessibilityAttributes } from '../../../utils';
+import { isDark, mapBreakpointPropToClasses, parseAndGetAriaAttributes } from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
@@ -17,7 +17,7 @@ export class Spinner {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<SpinnerAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttributes>;
 
   @Watch('size')
   public watchSizeHandler(newValue: SpinnerSize): void {
@@ -40,7 +40,7 @@ export class Spinner {
         class={rootClasses}
         role="alert"
         aria-live="assertive"
-        {...parseAndGetAccessibilityAttributes(this.accessibility, SPINNER_ARIA_ATTRIBUTES)}
+        {...parseAndGetAriaAttributes(this.aria, SPINNER_ARIA_ATTRIBUTES)}
       >
         {/* empty element needed to announce aria-label in screen readers */}
         <span class="sr-text">&nbsp;</span>

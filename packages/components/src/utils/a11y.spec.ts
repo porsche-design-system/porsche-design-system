@@ -1,9 +1,9 @@
 import {
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
   parseAriaAttributes,
   setAriaAttributes,
   SetAriaAttributesOptions,
-  throwIfAccessibilityAttributesAreInvalid,
+  throwIfAriaAttributesAreInvalid,
 } from './a11y';
 import * as a11yUtils from './a11y';
 import * as domUtils from './dom';
@@ -62,7 +62,7 @@ describe('parseAriaAttributes()', () => {
 describe('throwIfAccessibilityAttributesAreInvalid()', () => {
   it('should throw error for unsupported attribute', () => {
     const testFunc = () => {
-      throwIfAccessibilityAttributesAreInvalid(['aria-asd' as any], ['aria-label']);
+      throwIfAriaAttributesAreInvalid(['aria-asd' as any], ['aria-label']);
     };
 
     expect(testFunc).toThrowErrorMatchingSnapshot();
@@ -70,7 +70,7 @@ describe('throwIfAccessibilityAttributesAreInvalid()', () => {
 
   it('should not throw error for supported attribute', () => {
     const testFunc = () => {
-      throwIfAccessibilityAttributesAreInvalid(['aria-label'], ['aria-label']);
+      throwIfAriaAttributesAreInvalid(['aria-label'], ['aria-label']);
     };
 
     expect(testFunc).not.toThrow();
@@ -83,14 +83,14 @@ describe('parseAndGetAccessibilityAttributes()', () => {
   it('should call parseAriaAttributes()', () => {
     const spy = jest.spyOn(a11yUtils, 'parseAriaAttributes');
 
-    parseAndGetAccessibilityAttributes(rawAttributes);
+    parseAndGetAriaAttributes(rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes);
   });
 
   it('should call throwIfAccessibilityAttributesAreInvalid()', () => {
-    const spy = jest.spyOn(a11yUtils, 'throwIfAccessibilityAttributesAreInvalid');
+    const spy = jest.spyOn(a11yUtils, 'throwIfAriaAttributesAreInvalid');
 
-    parseAndGetAccessibilityAttributes(rawAttributes, ['aria-label']);
+    parseAndGetAriaAttributes(rawAttributes, ['aria-label']);
     expect(spy).toHaveBeenCalledWith(['aria-label'], ['aria-label']);
   });
 
@@ -106,13 +106,13 @@ describe('parseAndGetAccessibilityAttributes()', () => {
     "{'aria-label': 'Some label', 'aria-pressed': true}",
     "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
   ])('should return correct accessibility attributes with boolean for %o', (rawAttributes) => {
-    expect(parseAndGetAccessibilityAttributes(rawAttributes)).toEqual({
+    expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     });
   });
 
   it.each<string>([undefined, ''])('should return undefined for %o', (rawAttributes) => {
-    expect(parseAndGetAccessibilityAttributes(rawAttributes)).toEqual(undefined);
+    expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
   });
 });

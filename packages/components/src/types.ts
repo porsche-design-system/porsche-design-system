@@ -52,7 +52,7 @@ export type LinkButtonPureIconName = IconName | 'none';
 export type AlignLabelType = 'left' | 'right';
 export type AlignLabel = BreakpointCustomizable<AlignLabelType>;
 
-import type { AriaAttributes } from './accessibility-types';
-export type { AriaAttributes } from './accessibility-types';
+import type { AriaAttributes } from './aria-types';
+export type { AriaAttributes } from './aria-types';
 
 export type SelectedAriaAttributes<T extends keyof AriaAttributes> = Pick<AriaAttributes, T> | string;

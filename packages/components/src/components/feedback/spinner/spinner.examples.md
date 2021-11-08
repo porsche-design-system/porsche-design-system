@@ -27,7 +27,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 <Playground :markup="responsive" :config="config"></Playground>
 
 ### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
-To announce the correct loading state for **screen reader** users, it is mandatory to provide a meaningful state description through **ARIA** with the `accessibility` property.
+To announce the correct loading state for **screen reader** users, it is mandatory to provide a meaningful state description through **ARIA** with the `aria` property.
 
 ---
 
@@ -53,11 +53,11 @@ For automated visual regression tests the spinner animation can be disabled by s
     
     get sizeMarkup() {
       const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-spinner size="${this.size}"${style} accessibility="{ 'aria-label': 'Loading page content' }" />`;
+      return `<p-spinner size="${this.size}"${style} aria="{ 'aria-label': 'Loading page content' }" />`;
     }
     
     responsive =
-`<p-spinner size="{ base: 'small', l: 'medium' }" accessibility="{ 'aria-label': 'Loading page content' }" />`;
+`<p-spinner size="{ base: 'small', l: 'medium' }" aria="{ 'aria-label': 'Loading page content' }" />`;
 
   }
 </script>

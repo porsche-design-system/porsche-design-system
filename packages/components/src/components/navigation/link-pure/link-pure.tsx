@@ -8,7 +8,7 @@ import {
   hasSlottedSubline,
   attachComponentCss,
   attachSlottedCss,
-  parseAndGetAccessibilityAttributes,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -72,7 +72,7 @@ export class LinkPure {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public accessibility?: SelectedAriaAttributes<LinkAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
@@ -123,7 +123,7 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),
-            ...parseAndGetAccessibilityAttributes(this.accessibility, LINK_ARIA_ATTRIBUTES),
+            ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
           })}
           ref={(el) => (this.linkTag = el)}
         >

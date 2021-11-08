@@ -32,7 +32,7 @@ export const parseAriaAttributes = (rawAttributes: AriaAttributes | string): Ari
       rawAttributes;
 };
 
-export const throwIfAccessibilityAttributesAreInvalid = (
+export const throwIfAriaAttributesAreInvalid = (
   attributeKeys: (keyof AriaAttributes)[],
   allowedAttributes: readonly (keyof AriaAttributes)[]
 ): void => {
@@ -46,7 +46,7 @@ export const throwIfAccessibilityAttributesAreInvalid = (
   }
 };
 
-export const parseAndGetAccessibilityAttributes = (
+export const parseAndGetAriaAttributes = (
   rawAttributes: AriaAttributes | string,
   allowedAttributes?: readonly (keyof AriaAttributes)[]
 ): AriaAttributes => {
@@ -54,7 +54,7 @@ export const parseAndGetAccessibilityAttributes = (
     const attributes = parseAriaAttributes(rawAttributes);
     const attributeKeys = Object.keys(attributes);
 
-    throwIfAccessibilityAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
+    throwIfAriaAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
 
     // convert booleans to strings so that values are properly set and not just result in attributes without a value when true in jsx
     for (const key of attributeKeys) {

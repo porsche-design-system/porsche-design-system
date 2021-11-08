@@ -3,7 +3,7 @@ import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, isUrl, patchAccessib
 import { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 import * as a11yUtils from '../../../utils/a11y';
-import { parseAndGetAccessibilityAttributes } from '../../../utils/a11y';
+import { parseAndGetAriaAttributes } from '../../../utils/a11y';
 
 const DEFAULT_ICON_URL =
   'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.e628b114aa820496721ee35a21a0683b.svg';
@@ -75,7 +75,7 @@ describe('patchAccessibilityIntoSVG()', () => {
   const rawAttributes = "{ aria-label: 'Some label' }";
 
   it('should call parseAndGetAccessibilityAttributes()', () => {
-    const spy = jest.spyOn(a11yUtils, 'parseAndGetAccessibilityAttributes');
+    const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
 
     patchAccessibilityIntoSVG('', rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes, ICON_ARIA_ATTRIBUTES);
