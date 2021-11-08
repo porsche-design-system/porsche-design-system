@@ -95,7 +95,7 @@ export class Switch {
                 class="spinner"
                 size="inherit"
                 theme={this.checked ? 'light' : 'dark'}
-                accessibility={{ 'aria-label': 'Loading state' }}
+                aria={{ 'aria-label': 'Loading state' }}
               />
             )}
           </span>

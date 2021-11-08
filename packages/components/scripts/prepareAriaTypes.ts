@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-const prepareAccessibilityTypes = (): void => {
+const prepareAriaTypes = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const reactTypesFile = path.resolve(rootDirectory, '../../node_modules/@types/react/index.d.ts');
   const reactTypes = fs.readFileSync(reactTypesFile, 'utf-8');
@@ -12,11 +12,11 @@ const prepareAccessibilityTypes = (): void => {
     '\n\n'
   );
 
-  const fileName = 'src/accessibility-types.ts';
+  const fileName = 'src/aria-types.ts';
   const filePath = path.resolve(rootDirectory, fileName);
 
   fs.writeFileSync(filePath, content);
-  console.log(`Generated accessibility types into '${fileName}'`);
+  console.log(`Generated aria types into '${fileName}'`);
 };
 
-prepareAccessibilityTypes();
+prepareAriaTypes();

@@ -39,9 +39,7 @@ export const throwIfAriaAttributesAreInvalid = (
   const invalidAttributes = allowedAttributes ? attributeKeys.filter((x) => !allowedAttributes.includes(x)) : [];
   if (invalidAttributes.length) {
     throw new TypeError(
-      `${invalidAttributes.join(', ')} is not a valid accessibility attribute. Valid ones are: ${allowedAttributes.join(
-        ', '
-      )}`
+      `${invalidAttributes.join(', ')} is not a valid aria attribute. Valid ones are: ${allowedAttributes.join(', ')}`
     );
   }
 };
