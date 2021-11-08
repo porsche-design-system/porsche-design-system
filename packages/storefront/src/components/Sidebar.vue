@@ -11,7 +11,9 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
-            <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
+            <p-link-pure class="link" icon="none" :href="href" :active="isActive" @click="navigate">{{
+              page
+            }}</p-link-pure>
           </router-link>
         </li>
       </ul>

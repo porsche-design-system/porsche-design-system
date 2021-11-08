@@ -1,16 +1,5 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Checkbox Wrapper', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'checkbox-wrapper',
-        async () => {
-          await vrt.goTo('/checkbox-wrapper');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'checkbox-wrapper', '/checkbox-wrapper')).toBeFalsy();
 });

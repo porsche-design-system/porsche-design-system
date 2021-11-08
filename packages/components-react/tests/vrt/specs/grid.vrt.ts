@@ -1,16 +1,5 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Grid', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'grid',
-        async () => {
-          await vrt.goTo('/grid');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'grid', '/grid')).toBeFalsy();
 });

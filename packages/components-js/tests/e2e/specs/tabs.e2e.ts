@@ -1,7 +1,6 @@
 import {
   addEventListener,
   getAttribute,
-  getBrowser,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
@@ -17,12 +16,12 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
+  const CSS_ANIMATION_DURATION = 1000;
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
     const { amount = 3, activeTabIndex } = opts ?? {};
@@ -229,18 +228,18 @@ describe('tabs', () => {
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
 
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
       expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
-      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTruthy();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
       expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
   });
@@ -346,12 +345,12 @@ describe('tabs', () => {
       await initTabs({ amount: 3 });
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-tabs']).withContext('componentDidLoad: p-tabs').toBe(1);
-      expect(status.componentDidLoad['p-tabs-bar']).withContext('componentDidLoad: p-tabs-bar').toBe(1); // Includes 7 didLoad calls
-      expect(status.componentDidLoad['p-tabs-item']).withContext('componentDidLoad: p-tabs-item').toBe(3);
+      expect(status.componentDidLoad['p-tabs'], 'componentDidLoad: p-tabs').toBe(1);
+      expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // Includes 7 didLoad calls
+      expect(status.componentDidLoad['p-tabs-item'], 'componentDidLoad: p-tabs-item').toBe(3);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(11);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -363,11 +362,24 @@ describe('tabs', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs']).withContext('componentDidUpdate: p-tabs').toBe(1);
-      expect(status.componentDidUpdate['p-tabs-bar']).withContext('componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
 
-      expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(11);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree of tabpanel', async () => {
+      await initTabs();
+      const tabpanel = () => selectNode(page, 'p-tabs > [role="tabpanel"]');
+      const snapshot = await page.accessibility.snapshot({
+        root: await tabpanel(),
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });

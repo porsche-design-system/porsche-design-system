@@ -1,14 +1,27 @@
 import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
+import type { TagName } from '@porsche-design-system/shared';
+import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
+import * as beautify from 'js-beautify';
 
-type Options = WaitForOptions & { enableLogging?: boolean; injectIntoHead?: string };
-export type ClickableTests = { state: string; setContent: () => Promise<void> }[];
-const defaultOptions: Options = { waitUntil: 'networkidle0', injectIntoHead: '' };
+type Options = WaitForOptions & {
+  enableLogging?: boolean;
+  injectIntoHead?: string;
+};
+
+export type ClickableTests = {
+  state: string;
+  setContent: () => Promise<void>;
+}[];
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
-  const options: Options = { ...defaultOptions, ...opts };
+  const options: Options = {
+    waitUntil: 'networkidle0',
+    injectIntoHead: '',
+    ...opts,
+  };
 
   let lifeCycleLogger = '';
   if (options.enableLogging) {
@@ -22,7 +35,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="overrides.css" >
+        <link rel="stylesheet" href="assets/styles.css" >
         ${options.injectIntoHead}
       </head>
       <body>
@@ -117,6 +130,9 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
+export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle> =>
+  (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
 export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
@@ -171,12 +187,12 @@ type GetElementStyleOptions = {
   pseudo?: Pseudo;
 };
 
-export const getElementStyle = async (
+export const getElementStyle = (
   element: ElementHandle,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
 ): Promise<string> => {
-  return await element.evaluate(
+  return element.evaluate(
     async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> => {
       const options: GetElementStyleOptions = {
         waitForTransition: false,
@@ -208,37 +224,39 @@ export const getOutlineStyle = async (element: ElementHandle, opts?: GetStyleOnF
   return `${outline} ${outlineOffset}`;
 };
 
-export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
+export const getBoxShadowStyle = (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
   const options: GetStyleOnFocusOptions = {
     pseudo: null,
     ...opts,
   };
   const { pseudo } = options;
-  return await getElementStyle(element, 'boxShadow', { pseudo });
+  return getElementStyle(element, 'boxShadow', { pseudo });
 };
 
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
   await page.waitForTimeout(500);
 };
 
-export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>
-  element.evaluate(async (el: Element, selector: string): Promise<number> => {
+export const getElementIndex = (element: ElementHandle, selector: string): Promise<number> => {
+  return element.evaluate(async (el, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);
     let pos = 0;
-    while ((option = option.previousSibling) !== null) {
+    while (option && (option = option.previousSibling) !== null) {
       pos++;
     }
     return pos;
   }, selector);
+};
 
 export const getElementPositions = (
   page: Page,
   element: ElementHandle
-): Promise<{ top: number; left: number; bottom: number; right: number }> =>
-  page.evaluate((element) => {
+): Promise<{ top: number; left: number; bottom: number; right: number }> => {
+  return page.evaluate((element) => {
     const { top, left, bottom, right } = element.getBoundingClientRect();
     return { top, left, bottom, right };
   }, element);
+};
 
 export const reattachElement = async (page: Page, selector: string): Promise<void> => {
   await page.evaluate((selector: string) => {
@@ -248,13 +266,13 @@ export const reattachElement = async (page: Page, selector: string): Promise<voi
   }, selector);
 };
 
-export const enableBrowserLogging = (page: Page) => {
+export const enableBrowserLogging = (page: Page): void => {
   page.on('console', (msg) => {
     console.log(msg.type() + ':', msg.text());
   });
 };
 
-export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
+export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
 
 export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
   page.evaluate((el) => document.activeElement === el, element);
@@ -275,3 +293,46 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+
+const BASE_URL = 'http://localhost:8575';
+
+export const goto = async (page: Page, url: string) => {
+  await page.goto(`${BASE_URL}/#${url}`);
+  await waitForComponentsReady(page);
+};
+
+export const buildDefaultComponentMarkup = (tagName: TagName): string => {
+  const componentMeta = getComponentMeta(tagName);
+
+  const buildChildMarkup = (requiredChild: string): string => {
+    if (requiredChild) {
+      return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
+    } else {
+      return 'Some child';
+    }
+  };
+
+  const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
+    if (requiredParent) {
+      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
+    } else {
+      return markup;
+    }
+  };
+
+  const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+
+  return buildParentMarkup(componentMarkup, componentMeta);
+};
+
+export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promise<void> => {
+  const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
+  const prettyHtml = beautify.html(html.replace(/>/g, '>\n'), {
+    indent_inner_html: true,
+    indent_size: 2,
+  });
+
+  expect(prettyHtml).not.toContain('[object Object]');
+  expect(prettyHtml).toMatchSnapshot();
+};

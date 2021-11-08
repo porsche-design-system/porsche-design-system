@@ -11,7 +11,7 @@ import { FLEX_ALIGN_CONTENTS, FLEX_ALIGN_ITEMS, FLEX_DIRECTION, FLEX_JUSTIFY_CON
 
 describe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];
-  it.each(dataInline)('should return correct css for inline: %o', (inline: FlexInline) => {
+  it.each<FlexInline>(dataInline)('should return correct css for inline: %j', (inline) => {
     expect(getComponentCss(inline, 'nowrap', 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
@@ -19,7 +19,7 @@ describe('getComponentCss()', () => {
     ...FLEX_WRAPS,
     { base: 'nowrap', xs: 'wrap', s: 'nowrap', m: 'wrap', l: 'nowrap', xl: 'wrap' },
   ];
-  it.each(dataWrap)('should return correct css for wrap: %o', (wrap: FlexWrap) => {
+  it.each<FlexWrap>(dataWrap)('should return correct css for wrap: %j', (wrap) => {
     expect(getComponentCss(false, wrap, 'row', 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
@@ -27,7 +27,7 @@ describe('getComponentCss()', () => {
     ...FLEX_DIRECTION,
     { base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' },
   ];
-  it.each(dataDirection)('should return correct css for direction: %o', (direction: FlexDirection) => {
+  it.each<FlexDirection>(dataDirection)('should return correct css for direction: %j', (direction) => {
     expect(getComponentCss(false, 'nowrap', direction, 'flex-start', 'stretch', 'stretch')).toMatchSnapshot();
   });
 
@@ -35,9 +35,9 @@ describe('getComponentCss()', () => {
     ...FLEX_JUSTIFY_CONTENTS,
     { base: 'flex-start', xs: 'center', s: 'flex-start', m: 'center', l: 'flex-start', xl: 'center' },
   ];
-  it.each(dataJustifyContent)(
-    'should return correct css for justifyContent: %o',
-    (justifyContent: FlexJustifyContent) => {
+  it.each<FlexJustifyContent>(dataJustifyContent)(
+    'should return correct css for justifyContent: %j',
+    (justifyContent) => {
       expect(getComponentCss(false, 'nowrap', 'row', justifyContent, 'stretch', 'stretch')).toMatchSnapshot();
     }
   );
@@ -46,7 +46,7 @@ describe('getComponentCss()', () => {
     ...FLEX_ALIGN_ITEMS,
     { base: 'stretch', xs: 'center', s: 'stretch', m: 'center', l: 'stretch', xl: 'center' },
   ];
-  it.each(dataAlignItems)('should return correct css for alignItems: %o', (alignItems: FlexAlignItems) => {
+  it.each<FlexAlignItems>(dataAlignItems)('should return correct css for alignItems: %j', (alignItems) => {
     expect(getComponentCss(false, 'nowrap', 'row', 'flex-start', alignItems, 'stretch')).toMatchSnapshot();
   });
 
@@ -54,7 +54,7 @@ describe('getComponentCss()', () => {
     ...FLEX_ALIGN_CONTENTS,
     { base: 'stretch', xs: 'center', s: 'stretch', m: 'center', l: 'stretch', xl: 'center' },
   ];
-  it.each(dataAlignContent)('should return correct css for alignContent: %o', (alignContent: FlexAlignContent) => {
+  it.each<FlexAlignContent>(dataAlignContent)('should return correct css for alignContent: %j', (alignContent) => {
     expect(getComponentCss(false, 'nowrap', 'row', 'flex-start', 'stretch', alignContent)).toMatchSnapshot();
   });
 

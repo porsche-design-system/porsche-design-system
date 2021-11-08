@@ -5,12 +5,12 @@ import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper'
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
-  const distDir = path.resolve(indexJsFile, '../..');
-  const chunksDir = path.resolve(distDir, 'components');
+  const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
+    version: string;
+  };
+  const chunkDir = path.resolve(indexJsFile, '../../components');
   const chunkFileNames: string[] = Object.values(COMPONENT_CHUNKS_MANIFEST);
-  const chunkFiles = [indexJsFile].concat(
-    chunkFileNames.map((chunkFileName) => path.resolve(chunksDir, chunkFileName))
-  );
+  const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName)));
 
   const getChunkContent = (chunkName: string): string => {
     const [chunkFile] = chunkFiles.filter((x) => x.includes(chunkName));
@@ -217,20 +217,47 @@ describe('chunks', () => {
       expect(content).not.toContain('localhost');
     });
 
-    chunkFileNames.forEach((chunkFileName) => {
-      it(`should not contain localhost in ${chunkFileName}`, () => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).not.toContain('localhost');
-      });
-
-      // TODO: enable this test once chunking is under control
-      // it(`should not contain all TAG_NAMES in ${chunkFileName}`, () => {
-      //   const content = getChunkContent(chunkFileName);
-      //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
-      //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
-      //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
-      //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
-      // });
+    it.each(chunkFileNames)('should not contain localhost in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect(content).not.toContain('localhost');
     });
+
+    it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+
+      // core chunk is identified by version in name
+      if (chunkFileName.includes(version)) {
+        // including inset: exactly once is okay because of JSS default units
+        // https://github.com/cssinjs/jss/blob/dbef5de51eaa7e59a05ff7eeb099e9c6fcc94fa5/packages/jss-plugin-default-unit/src/defaultUnits.js#L98
+        expect(content.match(/inset:/).length).toBe(1);
+      } else {
+        expect(content).not.toContain('inset:');
+      }
+    });
+
+    it.each(chunkFileNames.filter((x) => !x.includes('accordion')))(
+      'should not contain ResizeObserver in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).not.toContain('ResizeObserver');
+      }
+    );
+
+    it.each(chunkFileNames.filter((x) => x.includes('accordion')))(
+      'should contain ResizeObserver in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).toContain('ResizeObserver');
+      }
+    );
+
+    // TODO: enable this test once chunking is under control
+    // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {
+    //   const content = getChunkContent(chunkFileName);
+    //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
+    //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
+    //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
+    //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
+    // });
   });
 });

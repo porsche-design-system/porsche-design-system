@@ -1,16 +1,10 @@
-import { getVisualRegressionTester } from '../helpers/setup';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { routerViewSelector } from '../helpers';
 
-describe('Markdown', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'markdown',
-        async () => {
-          await vrt.goTo('/markdown');
-        },
-        { elementSelector: '#app > .main > .router-view' }
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'markdown', '/markdown', {
+      elementSelector: routerViewSelector,
+    })
+  ).toBeFalsy();
 });

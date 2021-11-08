@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": [],
     "resolveJsonModule": false
   },
   "include": ["index.ts"]

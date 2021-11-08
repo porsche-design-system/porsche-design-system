@@ -1,5 +1,3 @@
-import { prefix } from './prefix';
-
 // TODO: resolve overlap with Breakpoint type from utilities package
 export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
 export type BreakpointKey = typeof BREAKPOINTS[number];
@@ -44,49 +42,6 @@ const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): str
   typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : `${value}`;
 
 const getBreakpointSuffix = (breakpoint: BreakpointKey): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
-
-/**
- * @deprecated
- */
-const createClass = (
-  classPrefix: string,
-  value: BreakpointValue,
-  breakpoint: BreakpointKey,
-  classSuffixes: ClassSuffixes
-): JSXClasses => {
-  if (value !== null && value !== undefined) {
-    const className = `${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`;
-    return {
-      [prefix(className)]: true,
-    };
-  }
-};
-
-/**
- * @deprecated
- * @param classPrefix
- * @param prop
- * @param classSuffixes
- *  First value in array is used for true boolean values, second for false.
- *  It's only used when prop is a boolean or prop is a object/JSON5 that contains a boolean.
- */
-export const mapBreakpointPropToPrefixedClasses = (
-  classPrefix: string,
-  prop: BreakpointCustomizable<BreakpointValue>,
-  classSuffixes?: ClassSuffixes
-): JSXClasses => {
-  const parsedProp = parseJSON(prop);
-
-  return typeof parsedProp === 'object'
-    ? Object.entries(parsedProp).reduce(
-        (classes, [breakpoint, value]: [BreakpointKey, BreakpointValue]) => ({
-          ...classes,
-          ...createClass(classPrefix, value, breakpoint, classSuffixes),
-        }),
-        {} as JSXClasses
-      )
-    : createClass(classPrefix, parsedProp, 'base', classSuffixes);
-};
 
 const createJSXClass = (
   classPrefix: string,

@@ -1,5 +1,5 @@
 import type { MutableRefObject } from 'react';
-import { useContext, useEffect, useMemo, useRef } from 'react';
+import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 
@@ -56,3 +56,5 @@ export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>,
     return newClassName;
   }, [className]); // eslint-disable-line react-hooks/exhaustive-deps
 };
+
+export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;

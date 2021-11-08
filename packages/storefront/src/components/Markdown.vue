@@ -17,7 +17,9 @@
         return;
       }
       const href = (target as HTMLElement).getAttribute('href');
-      if (href && !href.startsWith('http') && !href.startsWith('sketch://')) {
+      const isDownload = (target as HTMLElement).hasAttribute('download');
+
+      if (href && !href.startsWith('http') && !href.startsWith('sketch://') && !isDownload) {
         event.preventDefault();
         this.$router.push('/' + href);
       }
@@ -107,6 +109,10 @@
 
         p {
           @include p-text-small;
+          margin-top: $p-spacing-24;
+        }
+
+        p-inline-notification {
           margin-top: $p-spacing-24;
         }
 

@@ -45,49 +45,64 @@ export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup): string 
     ${getThemedElements('dark')}
   </div>`;
 
+const s4 = (): string =>
+  Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 export const generateGUID = (): string => {
-  const s4 = (): string =>
-    Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-
   // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
-export const forceHoveredState = async (page: Page, selector: string): Promise<void> => {
-  await forceStateOnElements(page, selector, HOVERED_STATE);
+export const forceHoveredState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, HOVERED_STATE);
 };
-export const forceFocusedState = async (page: Page, selector: string): Promise<void> => {
-  await forceStateOnElements(page, selector, FOCUSED_STATE);
+export const forceFocusedState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUSED_STATE);
 };
-export const forceFocusedHoveredState = async (page: Page, selector: string): Promise<void> => {
-  await forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
+export const forceFocusedHoveredState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
 };
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
   const cdp = await page.target().createCDPSession(); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
-  const { hostElementSelector, shadowRootNodeName } = resolveSelector(selector);
+  const { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName } = resolveSelector(selector);
   const hostNodeIds: NodeId[] = await getHostElementNodeIds(cdp, hostElementSelector);
 
   for (const hostNodeId of hostNodeIds) {
-    const nodeId = shadowRootNodeName
-      ? await getElementNodeIdInShadowRoot(cdp, hostNodeId, shadowRootNodeName)
-      : hostNodeId;
+    let nodeIds: NodeId[] = shadowRootNodeName
+      ? await getElementNodeIdsInShadowRoot(cdp, hostNodeId, shadowRootNodeName)
+      : [hostNodeId];
+
+    if (nodeIds && deepShadowRootNodeName) {
+      nodeIds = (
+        await Promise.all(
+          nodeIds.map(async (nodeId) => await getElementNodeIdsInShadowRoot(cdp, nodeId, deepShadowRootNodeName))
+        )
+      ).flat();
+    }
+
     // only execute if a valid nodeId was found
-    if (nodeId) {
-      await forceStateOnNodeId(cdp, nodeId, states);
+    if (nodeIds) {
+      for (const nodeId of nodeIds) {
+        await forceStateOnNodeId(cdp, nodeId, states);
+      }
     }
   }
 };
-export const resolveSelector = (selector: string): { hostElementSelector: string; shadowRootNodeName: string } => {
-  const [hostElementSelector, shadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
+export const resolveSelector = (
+  selector: string
+): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
+  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
 
-  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+$/)) {
+  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
     throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
   }
+  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
+    throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
+  }
 
-  return { hostElementSelector, shadowRootNodeName };
+  return { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName };
 };
 
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {
@@ -104,22 +119,18 @@ const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise
   ).nodeIds;
 };
 
-export const findBackendNodeId = (currentNode: Protocol.DOM.Node, localNodeName: string): BackendNodeId => {
+export const findBackendNodeIds = (currentNode: Protocol.DOM.Node, localNodeName: string): BackendNodeId[] => {
   if (currentNode.localName === localNodeName) {
-    return currentNode.backendNodeId;
+    return [currentNode.backendNodeId];
   } else {
-    for (let i = 0; i < currentNode.children?.length; i++) {
-      const currentChild = currentNode.children[i];
-      const result = findBackendNodeId(currentChild, localNodeName);
-      if (result) {
-        return result;
-      }
-    }
-    return undefined;
+    return currentNode.children
+      ?.map((child) => findBackendNodeIds(child, localNodeName))
+      .flat()
+      .filter((x) => x);
   }
 };
 
-const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, selector: string): Promise<NodeId> => {
+const getElementNodeIdsInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, selector: string): Promise<NodeId[]> => {
   const hostNode: Protocol.DOM.Node = (
     (await cdp.send('DOM.describeNode', {
       nodeId,
@@ -128,14 +139,14 @@ const getElementNodeIdInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, sel
     })) as Protocol.DOM.DescribeNodeResponse
   ).node;
 
-  const backendNodeId = findBackendNodeId(hostNode.shadowRoots[0], selector);
+  const backendNodeIds = hostNode.shadowRoots && findBackendNodeIds(hostNode.shadowRoots[0], selector);
 
-  return backendNodeId
+  return backendNodeIds
     ? (
         (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
-          backendNodeIds: [backendNodeId],
+          backendNodeIds,
         })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse
-      ).nodeIds[0]
+      ).nodeIds
     : undefined;
 };
 

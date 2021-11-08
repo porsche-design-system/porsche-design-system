@@ -10,9 +10,10 @@ import {
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
+  attachSlottedCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './radio-button-wrapper-styles';
+import { getSlottedCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -38,7 +39,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
@@ -81,7 +82,7 @@ export class RadioButtonWrapper {
       <Host>
         <label class={rootClasses}>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
@@ -95,7 +96,7 @@ export class RadioButtonWrapper {
     );
   }
 
-  private labelClick = (event: MouseEvent): void => {
+  private onLabelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
      */

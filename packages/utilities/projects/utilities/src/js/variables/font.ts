@@ -36,7 +36,7 @@ type FontType = {
 };
 
 export const font: FontType = {
-  family: '"Porsche Next", "Arial Narrow", Arial, sans-serif',
+  family: "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   weight: {
     thin: 100,
     regular: 400,
@@ -63,10 +63,10 @@ export const font: FontType = {
     '62': { fontSize: '3.875rem', lineHeight: 1.2258064516 },
     '72': { fontSize: '4.5rem', lineHeight: 1.2222222222 },
     '84': { fontSize: '5.25rem', lineHeight: 1.1904761905 },
-    'xSmall': { fontSize: '0.75rem', lineHeight: 1.6666666667 },
-    'small': { fontSize: '1rem', lineHeight: 1.5 },
-    'medium': { fontSize: '1.5rem', lineHeight: 1.5 },
-    'large': { fontSize: '2.25rem', lineHeight: 1.3333333333 },
-    'xLarge': { fontSize: '3.25rem', lineHeight: 1.2307692308 },
+    xSmall: { fontSize: '0.75rem', lineHeight: 1.6666666667 },
+    small: { fontSize: '1rem', lineHeight: 1.5 },
+    medium: { fontSize: '1.5rem', lineHeight: 1.5 },
+    large: { fontSize: '2.25rem', lineHeight: 1.3333333333 },
+    xLarge: { fontSize: '3.25rem', lineHeight: 1.2307692308 },
   },
 };

@@ -1,16 +1,5 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Text Field Wrapper', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'text-field-wrapper',
-        async () => {
-          await vrt.goTo('/text-field-wrapper');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'text-field-wrapper', '/text-field-wrapper')).toBeFalsy();
 });

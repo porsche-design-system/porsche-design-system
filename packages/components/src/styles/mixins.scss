@@ -9,8 +9,9 @@
   }
 }
 
-// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
-@mixin text-visible($isCheckboxOrRadio: false) {
+@mixin form-text-visible($isCheckboxOrRadio: false) {
+  @include text-visible();
+
   @if $isCheckboxOrRadio {
     width: auto;
     padding: 0 0 0 $p-spacing-8;
@@ -18,7 +19,16 @@
     width: fit-content;
     padding: 0 0 $p-spacing-4 0;
   }
+}
+
+@mixin form-text-hidden() {
+  @include text-hidden();
+  padding: 0;
+}
+
+@mixin text-visible() {
   position: static;
+  width: auto;
   height: auto;
   margin: 0;
   white-space: normal;
@@ -27,16 +37,9 @@
   clip-path: none;
 }
 
+// Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
 @mixin text-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  @include p-sr-only;
 }
 
 @function str-replace($string, $search, $replace: '') {
@@ -107,10 +110,10 @@
   .message {
     display: flex;
     margin-top: $p-spacing-4;
-    color: $p-color-default;
     transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  }
-  .icon {
-    margin-right: $p-spacing-4;
+
+    &__icon {
+      margin-right: $p-spacing-4;
+    }
   }
 }

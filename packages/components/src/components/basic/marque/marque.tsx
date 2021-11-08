@@ -1,9 +1,9 @@
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import { breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
+import { attachComponentCss, breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { LinkTarget } from '../../../types';
-import { buildSrcSet, cdnBaseUrl, getManifestPath } from './marque-utils';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
-import { addComponentCss } from './marque-styles';
+import { getComponentCss } from './marque-styles';
 
 @Component({
   tag: 'p-marque',
@@ -29,22 +29,27 @@ export class Marque {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.size);
+    attachComponentCss(this.host, getComponentCss, this.size);
   }
 
   public render(): JSX.Element {
-    const manifestPath = getManifestPath(this.trademark);
+    const innerManifest = getInnerManifest(this.trademark);
+    const mediumMedia = `(min-width: ${breakpoint.l}px)`;
+
     const picture = (
       <picture>
-        {this.size === 'responsive' ? (
-          [
-            <source srcSet={buildSrcSet(manifestPath, 'medium')} media={`(min-width: ${breakpoint.l}px)`} />,
-            <source srcSet={buildSrcSet(manifestPath, 'small')} />,
-          ]
-        ) : (
-          <source srcSet={buildSrcSet(manifestPath, this.size)} />
-        )}
-        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
+        {this.size === 'responsive'
+          ? [
+              <source srcSet={buildSrcSet(innerManifest, 'medium', 'webp')} media={mediumMedia} type="image/webp" />,
+              <source srcSet={buildSrcSet(innerManifest, 'medium', 'png')} media={mediumMedia} type="image/png" />,
+              <source srcSet={buildSrcSet(innerManifest, 'small', 'webp')} type="image/webp" />,
+              <source srcSet={buildSrcSet(innerManifest, 'small', 'png')} type="image/png" />,
+            ]
+          : [
+              <source srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
+              <source srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
+            ]}
+        <img src={`${cdnBaseUrl}/${innerManifest.medium['2x'].png}`} alt="Porsche" />
       </picture>
     );
 

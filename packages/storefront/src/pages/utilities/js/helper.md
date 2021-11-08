@@ -25,7 +25,7 @@ const StyledText = styled.p`
 
 ```
 p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-family: "Porsche Next", "Arial Narrow", Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 100;
   font-size: 2.25rem;
   line-height: 1.33333;

@@ -1,0 +1,52 @@
+:root {
+  --p-transition-duration: 0s;
+  --p-animation-duration__spinner: 0s;
+  --p-animation-hover-duration: 0s;
+  --p-animation-duration__banner: 0s;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body > select {
+  position: relative;
+  z-index: 999999;
+}
+
+.playground {
+  padding: 1rem;
+}
+
+.playground.light {
+  background: #fff;
+}
+
+.playground.dark {
+  background: #1a2023;
+}
+
+.playground.hovered::before,
+.playground.focused::before,
+.playground.focused-hovered::before {
+  display: block;
+  background: deeppink;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.playground.hovered::before {
+  content: ':hover';
+}
+
+.playground.focused::before {
+  content: ':focus-visible';
+}
+
+.playground.focused-hovered::before {
+  content: ':focus-visible:hover';
+}

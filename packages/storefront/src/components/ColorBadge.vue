@@ -32,8 +32,12 @@
     | 'external-facebook'
     | 'external-google'
     | 'external-instagram'
+    | 'external-kakaotalk'
     | 'external-linkedin'
+    | 'external-naver'
     | 'external-pinterest'
+    | 'external-reddit'
+    | 'external-tiktok'
     | 'external-twitter'
     | 'external-wechat'
     | 'external-whatsapp'
@@ -236,12 +240,28 @@
       background: $p-color-external-instagram;
     }
 
+    &.external-kakaotalk {
+      background: $p-color-external-kakaotalk;
+    }
+
     &.external-linkedin {
       background: $p-color-external-linkedin;
     }
 
+    &.external-naver {
+      background: $p-color-external-naver;
+    }
+
     &.external-pinterest {
       background: $p-color-external-pinterest;
+    }
+
+    &.external-reddit {
+      background: $p-color-external-reddit;
+    }
+
+    &.external-tiktok {
+      background: $p-color-external-tiktok;
     }
 
     &.external-twitter {

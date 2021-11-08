@@ -16,7 +16,6 @@ describe('isTouchDevice()', () => {
   });
 
   it('should return false for non touch device', () => {
-    console.log(window.navigator.maxTouchPoints);
     jest.spyOn(window, 'navigator', 'get').mockImplementation(
       () =>
         ({

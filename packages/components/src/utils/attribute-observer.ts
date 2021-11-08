@@ -1,12 +1,12 @@
-export const mutationMap: Map<Node, () => void> = new Map();
+export const attributeMutationMap: Map<Node, () => void> = new Map();
 
-const mutationObserver = new MutationObserver((mutations) => {
+const attributeObserver = new MutationObserver((mutations) => {
   mutations
     // reduce array to only entries that have really a changed value
     .filter((mutation) => mutation.oldValue !== (mutation.target as HTMLElement).getAttribute(mutation.attributeName))
-    // remove duplicates so we call forceUpdate only once per node
+    // remove duplicates so we execute callback only once per node
     .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
-    .forEach((mutation) => mutationMap.get(mutation.target)?.());
+    .forEach((mutation) => attributeMutationMap.get(mutation.target)?.());
 });
 
 export const observeAttributes = <T extends HTMLElement, K = keyof T>(
@@ -16,11 +16,11 @@ export const observeAttributes = <T extends HTMLElement, K = keyof T>(
 ): void => {
   // node might not be defined in connectedCallback
   if (node) {
-    mutationMap.set(node, callback);
-    mutationObserver.observe(node, { attributeFilter: attributes as string[], attributeOldValue: true });
+    attributeMutationMap.set(node, callback);
+    attributeObserver.observe(node, { attributeFilter: attributes as string[], attributeOldValue: true });
   }
 };
 
 export const unobserveAttributes = <T extends HTMLElement>(node: T): void => {
-  mutationMap.delete(node);
+  attributeMutationMap.delete(node);
 };

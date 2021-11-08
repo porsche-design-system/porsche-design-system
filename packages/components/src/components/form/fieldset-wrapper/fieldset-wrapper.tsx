@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { getPrefixedTagNames, hasLabel, hasMessage, getRole } from '../../../utils';
+import { hasLabel, hasMessage } from '../../../utils';
 import type { FormState, TextSize } from '../../../types';
+import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -33,16 +34,15 @@ export class FieldsetWrapper {
       ['root--label-size-small']: this.labelSize === 'small',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
-      <fieldset class={rootClasses}>
+      <fieldset
+        class={rootClasses}
+        aria-describedby={hasMessage(this.host, this.message, this.state) ? 'message' : null}
+      >
         {hasLabel(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
         <slot />
         {hasMessage(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={getRole(this.state)}>
-            {this.message || <slot name="message" />}
-          </PrefixedTagNames.pText>
+          <StateMessage id="message" state={this.state} message={this.message} host={this.host} />
         )}
       </fieldset>
     );

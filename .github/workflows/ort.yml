@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
-      PDS_DOCKER_IMAGE: docker.pkg.github.com/porscheui/porsche-design-system/node:14.16.1-stretch-slim
+      PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v1
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'

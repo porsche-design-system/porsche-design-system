@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { FormState } from '../types';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { getPrefixedTagNames } from './get-prefixed-tag-name';
+import { getPrefixedTagNames, getTagName } from './tag-name';
 
 type Host = HTMLElement | ShadowRoot;
 
@@ -59,6 +59,9 @@ export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.req
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
+export const getSlotTextContent = (el: Host, slotName: string): string =>
+  getHTMLElement(el, `[slot="${slotName}"]`)?.textContent;
+
 export const hasLabel = (host: Host, label: string): boolean => {
   return !!label || hasNamedSlot(host, 'label');
 };
@@ -69,6 +72,10 @@ export const hasMessage = (host: Host, message: string, state: FormState): boole
 
 export const hasDescription = (host: Host, description: string): boolean => {
   return !!description || hasNamedSlot(host, 'description');
+};
+
+export const hasHeading = (host: Host, heading: string): boolean => {
+  return !!heading || hasNamedSlot(host, 'heading');
 };
 
 // prettier-ignore
@@ -83,16 +90,26 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const throwIfRootNodeIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
+  const shadowHost = (host.getRootNode() as ShadowRoot)?.host as HTMLElement;
+  const actualTagName = shadowHost && getTagName(shadowHost);
+  const allowedTagName = getPrefixedTagNames(host)[tagName];
+
+  if (actualTagName !== allowedTagName) {
+    throw new Error(`${getTagName(host)} can't be used like this`);
+  }
+};
+
 export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
-  return getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
+  return host.parentElement && getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
 };
 
 export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
-  if (!isParentOfKind(host, tagName)) {
+  if (host.parentElement && !isParentOfKind(host, tagName)) {
     const allowedTagName = getPrefixedTagNames(host)[tagName];
     const actualTagName = getTagName(host.parentElement);
     throw new Error(
-      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}.`
+      `Parent HTMLElement of ${getTagName(host)} should be of kind ${allowedTagName} but got ${actualTagName}`
     );
   }
 };
@@ -104,18 +121,16 @@ export const throwIfParentIsNotOneOfKind = (host: HTMLElement, tagNames: TagName
     const actualTagName = getTagName(host.parentElement);
 
     throw new Error(
-      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}.`
+      `Parent HTMLElement of ${getTagName(host)} should be one of kind ${allowedTagNames} but got ${actualTagName}`
     );
   }
 };
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
   if (hasAttribute(el, name)) {
-    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property.`);
+    throw new Error(`Attribute '${name}' with the value '${getAttribute(el, name)}' needs to be set as property`);
   }
 };
-
-export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
 export const addEventListener = (
   el: HTMLElement,
@@ -136,7 +151,11 @@ export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolea
 };
 
 export const isParentFieldsetWrapperRequired = (host: HTMLElement): boolean => {
-  return isRequired(host.parentElement as HTMLElementWithRequiredProp) && isParentOfKind(host, 'pFieldsetWrapper');
+  return (
+    host.parentElement &&
+    isRequired(host.parentElement as HTMLElementWithRequiredProp) &&
+    isParentOfKind(host, 'pFieldsetWrapper')
+  );
 };
 
 export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
@@ -144,5 +163,5 @@ export const isRequiredAndParentNotRequired = (host: HTMLElement, child: HTMLEle
 };
 
 export const getRole = (state: FormState): string => {
-  return state === 'error' ? 'alert' : null;
+  return state === 'error' ? 'alert' : state === 'success' ? 'status' : null;
 };

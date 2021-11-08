@@ -10,9 +10,10 @@ import {
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
+  attachSlottedCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './textarea-wrapper-styles';
+import { getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
@@ -41,7 +42,7 @@ export class TextareaWrapper {
   private textarea: HTMLTextAreaElement;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
@@ -76,7 +77,7 @@ export class TextareaWrapper {
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
     };
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -103,7 +104,7 @@ export class TextareaWrapper {
     );
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     this.textarea.focus();
   };
 

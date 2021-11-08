@@ -1,22 +1,7 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionTester } from '../helpers/setup';
+import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('js-variables', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
-  it('should have no visual regression', async () => {
-    expect(
-      await vrt.test(
-        'overview',
-        async () => {
-          await vrt.goTo('/#/js-variables');
-        },
-        { regressionSuffix: 'js' }
-      )
-    ).toBeFalsy();
-  });
+it('should have no visual regression', async () => {
+  expect(
+    await vrtTest(getVisualRegressionStatesTester(), 'variables', '/#/js-variables', { regressionSuffix: 'js' })
+  ).toBeFalsy();
 });
