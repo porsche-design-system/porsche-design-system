@@ -1,5 +1,4 @@
 import {
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
@@ -16,7 +15,7 @@ import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 describe('icon', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type InitOptions = {
@@ -189,8 +188,34 @@ describe('icon', () => {
           expect(responseCounter).toEqual(2);
         });
 
+        /**
+         *       request 1st icon
+         *         |‾‾‾‾‾‾‾‾‾‾⌄
+         * TIME ================================================>
+         *                        |__________⌃
+         *                      request 1st icon again for different icon component
+         */
+        it('should not resolve promise of second (cached) icon with same source before render() is finished', async () => {
+          await setSvgRequestInterceptor(page, []);
+          await initIcon({ ...opts, name: 'highway' });
+
+          expect(await getContent(await getIcon()), 'first icon').toContain('highway');
+
+          await page.evaluate(() => {
+            const el = document.createElement('p-icon');
+            el.id = 'iconTwo';
+            el.name = 'highway';
+            document.body.appendChild(el);
+          });
+
+          await waitForStencilLifecycle(page);
+          const iconTwo = await selectNode(page, '#iconTwo >>> i');
+
+          expect(await getContent(iconTwo), 'second icon').toContain('highway');
+        });
+
         it('should unset previous icon if name prop is removed', async () => {
-          await setSvgRequestInterceptor(page, [2000]);
+          await setSvgRequestInterceptor(page, []);
           await initIcon({ ...opts, name: 'highway' });
 
           const host = await getHost();
@@ -217,10 +242,10 @@ describe('icon', () => {
           await initIcon(opts);
           const status = await getLifecycleStatus(page);
 
-          expect(status.componentDidLoad['p-icon']).withContext('componentDidLoad: p-icon').toBe(1);
+          expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-          expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
-          expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+          expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+          expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
         });
 
         it('should work without unnecessary round trips after state change', async () => {
@@ -232,10 +257,10 @@ describe('icon', () => {
 
           const status = await getLifecycleStatus(page);
 
-          expect(status.componentDidUpdate['p-icon']).withContext('componentDidUpdate: p-icon').toBe(1);
+          expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-          expect(status.componentDidLoad.all).withContext('componentDidLoad: all').toBe(1);
-          expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(1);
+          expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+          expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
         });
       });
     });

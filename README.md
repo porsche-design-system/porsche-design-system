@@ -27,7 +27,7 @@
 1. Make sure that Docker app is running
 1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at <https://github.com/settings/tokens>
 1. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
-1. Login to the GitHub docker registry via `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://docker.pkg.github.com -u YOUR_USERNAME --password-stdin`
+1. Login to the GitHub docker registry via `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://ghcr.io -u YOUR_USERNAME --password-stdin`
 1. Run `./docker.sh run-install` (to have npm dependencies installed within Docker container) - this may take up to several minutes at first start depending on your internet connection
 1. Run `yarn` (to have npm dependencies installed on your machine for better IDE support) - this may take up to several minutes at first start depending on your internet connection
 
@@ -64,6 +64,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
    - `./docker.sh run-build --components-angular` (builds angular components)
    - `./docker.sh run-build --components-react` (builds react components)
    - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
+   - `./docker.sh run-build --email` (builds the email marque)
    - `./docker.sh run-build --fonts` (builds the font set)
    - `./docker.sh run-build --icons` (builds the optimized icon set)
    - `./docker.sh run-build --marque` (builds the marque)

@@ -7,9 +7,11 @@ import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
-import { getShadowRootHTMLElement, getTagName } from './dom';
+import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule, mediaQuery } from './styles';
 import type { Breakpoint } from './styles';
+import type { TagName } from '@porsche-design-system/shared';
+import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -52,7 +54,37 @@ export const supportsConstructableStylesheets = (): boolean => {
   }
 };
 
-export const attachCss = (host: HTMLElement, css: string): void => {
+type CssCacheMap = Map<string, string>;
+export const componentCssMap = new Map<TagName, CssCacheMap>();
+
+export const getCachedComponentCss = <T extends (...p: any[]) => string>(
+  host: HTMLElement,
+  getComponentCss: T,
+  ...args: Parameters<T>
+): string => {
+  const tagName = getTagNameWithoutPrefix(host);
+
+  if (!componentCssMap.has(tagName)) {
+    componentCssMap.set(tagName, new Map());
+  }
+
+  const id = args.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg) : arg)).join('|');
+  const cache = componentCssMap.get(tagName);
+
+  if (!cache.has(id)) {
+    cache.set(id, getComponentCss(...args));
+  }
+
+  return cache.get(id);
+};
+
+export const attachComponentCss = <T extends (...p: any[]) => string>(
+  host: HTMLElement,
+  getComponentCss: T,
+  ...args: Parameters<T>
+): void => {
+  const css = getCachedComponentCss(host, getComponentCss, ...args);
+
   if (supportsConstructableStylesheets()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {

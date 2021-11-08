@@ -2,42 +2,14 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-@mixin label-visible() {
-  .label,
-  + .subline {
-    position: static;
-    width: 100%;
-    height: auto;
-    margin-left: p-px-to-rem(4px);
-    padding: 0 0.125em 0 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-  }
-}
-
-@mixin label-hidden() {
-  .label,
-  + .subline {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin-left: -1px;
-    margin-top: 0;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-  }
-}
-
 :host {
-  display: inline-block;
   vertical-align: top;
   position: relative !important;
 }
 
-.root {
+$root: '.root';
+
+#{$root} {
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -54,22 +26,29 @@
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
   @include p-focus($p-color-state-focus, 1px, '::before');
 
-  + * {
+  + .subline {
     color: $p-color-default;
   }
 
   &:not(:disabled):not(&--loading) {
     &:hover {
       color: $p-color-state-hover;
-      + * {
+      + .subline {
         color: $p-color-state-hover;
       }
     }
 
     &:active {
       color: $p-color-state-active;
-      + * {
+      + .subline {
         color: $p-color-state-active;
+      }
+    }
+
+    &#{$bem-block}--active {
+      color: $p-color-brand;
+      + .subline {
+        color: $p-color-brand;
       }
     }
   }
@@ -78,7 +57,7 @@
   &--loading {
     cursor: not-allowed;
     color: $p-color-state-disabled;
-    + * {
+    + .subline {
       color: $p-color-state-disabled;
     }
   }
@@ -87,21 +66,28 @@
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
     color: $p-color-theme-dark-default;
 
-    + * {
+    + .subline {
       color: $p-color-theme-dark-default;
     }
 
     &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
-        + * {
+        + .subline {
           color: $p-color-theme-dark-state-hover;
         }
       }
 
       &:active {
         color: $p-color-theme-dark-state-active;
-        + * {
+        + .subline {
+          color: $p-color-theme-dark-state-active;
+        }
+      }
+
+      &#{$bem-block}--active {
+        color: $p-color-theme-dark-state-active;
+        + .subline {
           color: $p-color-theme-dark-state-active;
         }
       }
@@ -110,8 +96,24 @@
     &:disabled,
     &#{$bem-block}--loading {
       color: $p-color-theme-dark-state-disabled;
-      + * {
+      + .subline {
         color: $p-color-theme-dark-state-disabled;
+      }
+    }
+  }
+
+  &--stretch-on {
+    justify-content: space-between;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--stretch-on-#{$breakpoint} {
+        justify-content: space-between;
+      }
+
+      &--stretch-off-#{$breakpoint} {
+        justify-content: flex-start;
       }
     }
   }
@@ -136,149 +138,51 @@
   }
 
   &--with-label {
-    @include label-visible;
+    .label,
+    + .subline {
+      @include text-visible;
+    }
   }
   &--without-label {
-    @include label-hidden;
-  }
-
-  @include p-media-query('xs') {
-    &--size-x-small-xs {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-xs {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-xs {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-xs {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-xs {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-xs {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-xs {
-      @include label-visible;
-    }
-    &--without-label-xs {
-      @include label-hidden;
+    .label,
+    + .subline {
+      @include text-hidden;
     }
   }
 
-  @include p-media-query('s') {
-    &--size-x-small-s {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-s {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-s {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-s {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-s {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-s {
-      @include adjust-to-font-size('inherit');
-    }
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &--size-x-small-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-x-small);
+      }
 
-    &--with-label-s {
-      @include label-visible;
-    }
-    &--without-label-s {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('m') {
-    &--size-x-small-m {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-m {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-m {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-m {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-m {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-m {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-m {
-      @include label-visible;
-    }
-    &--without-label-m {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('l') {
-    &--size-x-small-l {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-l {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-l {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-l {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-l {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-l {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-l {
-      @include label-visible;
-    }
-    &--without-label-l {
-      @include label-hidden;
-    }
-  }
-
-  @include p-media-query('xl') {
-    &--size-x-small-xl {
-      @include adjust-to-font-size($p-font-size-x-small);
-    }
-    &--size-small-xl {
-      @include adjust-to-font-size($p-font-size-small);
-    }
-    &--size-medium-xl {
-      @include adjust-to-font-size($p-font-size-medium);
-    }
-    &--size-large-xl {
-      @include adjust-to-font-size($p-font-size-large);
-    }
-    &--size-x-large-xl {
-      @include adjust-to-font-size($p-font-size-x-large);
-    }
-    &--size-inherit-xl {
-      @include adjust-to-font-size('inherit');
-    }
-
-    &--with-label-xl {
-      @include label-visible;
-    }
-    &--without-label-xl {
-      @include label-hidden;
+      &--size-small-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-small);
+      }
+      &--size-medium-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-medium);
+      }
+      &--size-large-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-large);
+      }
+      &--size-x-large-#{$breakpoint} {
+        @include adjust-to-font-size($p-font-size-x-large);
+      }
+      &--size-inherit-#{$breakpoint} {
+        @include adjust-to-font-size('inherit');
+      }
+      &--with-label-#{$breakpoint} {
+        .label,
+        + .subline {
+          @include text-visible;
+        }
+      }
+      &--without-label-#{$breakpoint} {
+        .label,
+        + .subline {
+          @include text-hidden;
+        }
+      }
     }
   }
 }
@@ -287,20 +191,68 @@
   flex-shrink: 0;
   width: 1.5em;
   height: 1.5em;
+
+  #{$root}--label-align-left & {
+    order: 1;
+    margin-right: -0.125em;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--label-align-left-#{$breakpoint} & {
+        order: 1;
+        margin-right: -0.125em;
+      }
+
+      #{$root}--label-align-right-#{$breakpoint} & {
+        order: 0;
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 .label {
   display: block;
   box-sizing: border-box;
   border: 0;
+
+  #{$root}--with-icon & {
+    padding-right: 0.125em;
+    margin: 0 0 0 p-px-to-rem(4px);
+  }
+
+  #{$root}--label-align-left & {
+    padding: 0;
+    margin: 0 p-px-to-rem(4px) 0 0;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      #{$root}--label-align-left-#{$breakpoint} & {
+        padding: 0;
+        margin: 0 p-px-to-rem(4px) 0 0;
+      }
+
+      #{$root}--label-align-right-#{$breakpoint} & {
+        padding-right: 0.125em;
+        margin: 0 0 0 p-px-to-rem(4px);
+      }
+    }
+  }
 }
 
-.subline {
+.subline.hydrated {
   display: flex;
   transition: color $p-animation-hover-duration-var $p-animation-hover-bezier;
-  margin-top: p-px-to-rem(4px);
+  margin-top: 4px;
 
-  &::before {
+  #{$root}--with-icon + & {
+    margin-left: p-px-to-rem(4px);
+    padding-right: 0.125em;
+  }
+
+  #{$root}--with-icon + &::before {
     // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
     content: '';
   }

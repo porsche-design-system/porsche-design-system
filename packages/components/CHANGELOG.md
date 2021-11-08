@@ -8,13 +8,94 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- React: warnings about `useLayoutEffect` in SSR context
+
+### [2.6.1] - 2021-11-05
+
+#### Fixed
+- Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordion` still requires it 
+
+### [2.6.0] - 2021-11-04
+
+#### Added
+- `unit` and `unitPosition` properties to `Text Field Wrapper`
+
+### [2.6.0-beta.0] - 2021-10-29
+
+#### Changed
+- Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback font
+
+#### Added
+- `Marque` uses `webp` images for browsers that support it
+- `Inline Notification`
+- `Icon` now supports `success` for `name` property
+
+#### Fixed
+- Colors of `Banner` for dark theme
+- Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility 
+- Opening and closing transition of `Modal`
+
+### [2.5.1-beta.0] - 2021-10-11
+
+#### Fixed
+- Possible exceptions when components get unmounted directly
+
+### [2.5.0] - 2021-10-04
+
+#### Added
+- `SimHei` and `黑体` as fallback for all components' `font-family`
+
+### [2.5.0-beta.1] - 2021-09-28
+
+#### Changed
+- React: improved render behavior of components
+
+### [2.5.0-beta.0] - 2021-09-22
+
+#### Added
+- React: utility function `skipPorscheDesignSystemCDNRequestsDuringTests`
+
+### [2.4.0] - 2021-09-21
+
+### [2.4.0-beta.2] - 2021-09-21
+
+#### Added
+- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
+- JSS caching mechanism to improve style performance
+
+#### Changed
+- Alignment of `linkedin` icon
+- Improved accessibility of `Select Wrapper`
+- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
+- Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state
+
+#### Fixed
+- Box model of `Link Pure`
+- Focus of `Link Pure` with slotted anchor and hidden label
+- Focus cycling of `Modal` without focusable children
+- Suppress CORS error
+
+### [2.4.0-beta.1] - 2021-08-26
+
+#### Added
+- `active` property to `Button Pure`
+
+### [2.4.0-beta.0] - 2021-08-26
+
+#### Added
+- `icon` property of `Button Pure` and `Link Pure` was extended by `none` value
+- `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`
+
 #### Changed
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
-- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state.
+- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state
+- `Modal` backdrop behavior to close modal on mouse-down
 
 #### Fixed
 - Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`
+- Wrong background color of scrollable `Modal`'s backdrop in Safari
 
 ### [2.3.0] - 2021-07-28
 

@@ -6,6 +6,11 @@ Accordions are flexible in the context and can include other components of the P
 It is a controlled component.
 This means it does not contain any internal state, and you got full control over its behavior.
 
+<p-inline-notification heading="Important note" state="warning">
+  This component uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank">ResizeObserver</a> API internally which isn't available in all browsers.<br>
+  See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details.
+</p-inline-notification>
+
 ## Basic example
 
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
@@ -105,10 +110,10 @@ export default class Code extends Vue {
   get compactMarkup() {      
     return `<div style="max-width: 400px">
   <p-accordion heading="Some Heading" tag="h3" compact="true">
-    <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
   <p-accordion heading="Some Heading" tag="h3" compact="true">
-    <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
 </div>`;
     }

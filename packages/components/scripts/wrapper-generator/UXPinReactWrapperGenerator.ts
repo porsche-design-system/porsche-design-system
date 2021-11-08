@@ -9,9 +9,21 @@ const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
-  protected ignoreComponents: TagName[] = ['p-content-wrapper', 'p-pagination'];
 
   private spacingProps: string[] = ['top', 'left', 'right', 'bottom'].map((x) => `spacing${pascalCase(x)}`);
+
+  constructor() {
+    super();
+    this.ignoreComponents = [
+      ...this.ignoreComponents,
+      'p-content-wrapper',
+      'p-flex',
+      'p-flex-item',
+      'p-grid',
+      'p-grid-item',
+      'p-pagination',
+    ];
+  }
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
@@ -77,7 +89,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // override props
     if (component === 'p-text') {
       const sizeValues = Object.keys(font.size)
-        .filter((x) => !x.match(/[a-z]/)) // only keep numeric fvalues
+        .filter((x) => !x.match(/[a-z]/)) // only keep numeric values
         .join(' | ');
       props = props.replace(/(size\?: )TextSize/, `$1${sizeValues}`);
     }
@@ -85,6 +97,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinignoreprop annotations
     if (component === 'p-modal') {
       props = addUxPinIgnorePropAnnotation(props, 'open');
+    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
+      props = addUxPinIgnorePropAnnotation(props, 'href');
     }
 
     // add uxpinbind annotations
@@ -147,12 +161,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
       }
 
-      // another special treatment that needs default children
+      // other special treatments that need default props
       if (component === 'p-text') {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
           .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
           .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
+      } else if (component === 'p-link' || component === 'p-link-social') {
+        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
       }
     }
 

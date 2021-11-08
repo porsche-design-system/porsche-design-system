@@ -1,14 +1,13 @@
 import {
   addImportantToEachRule,
-  attachCss,
   buildGlobalStyles,
   buildHostStyles,
   getCss,
   getFocusStyles,
   getHoverStyles,
+  getTextHiddenJssStyle,
+  getTransition,
   pxToRemWithUnit,
-  transitionDuration,
-  transitionTimingFunction,
 } from '../../../../utils';
 import { color, font, spacing } from '@porsche-design-system/utilities';
 
@@ -50,33 +49,22 @@ export const getComponentCss = (): string => {
       },
     }),
     hidden: {
-      position: 'absolute',
-      width: 1,
-      height: 1,
+      ...getTextHiddenJssStyle(true),
       display: 'block',
-      margin: -1,
-      padding: 0,
-      overflow: 'hidden',
       border: 0,
-      clip: 'rect(1px, 1px, 1px, 1px)',
-      clipPath: 'inset(50%)',
     },
     icon: {
       marginLeft: spacing['4'],
       opacity: 0,
-      transition: `opacity ${transitionDuration} ${transitionTimingFunction}`,
-      transform: 'rotate3d(0, 0, 1, 0deg)',
+      transition: getTransition('opacity'),
+      transform: 'rotate3d(0,0,1,0deg)',
       transformOrigin: '50% 50%', // for iOS
       '&--asc': {
-        transform: 'rotate3d(0, 0, 1, 180deg)',
+        transform: 'rotate3d(0,0,1,180deg)',
       },
       '&--active': {
         opacity: 1,
       },
     },
   });
-};
-
-export const addComponentCss = (host: HTMLElement): void => {
-  attachCss(host, getComponentCss());
 };

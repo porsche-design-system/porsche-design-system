@@ -1,17 +1,5 @@
-import { getVisualRegressionTester, testOptions } from '../helpers';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Tabs Bar', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'tabs-bar',
-        async () => {
-          await vrt.goTo('/text'); // to ensure fonts are already loaded before js is initialized
-          await vrt.goTo('/tabs-bar');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'tabs-bar', '/tabs-bar')).toBeFalsy();
 });

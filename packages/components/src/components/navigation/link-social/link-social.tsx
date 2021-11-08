@@ -1,8 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, improveFocusHandlingForCustomElement } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { addComponentCss } from './link-social-styles';
+import { getComponentCss } from './link-social-styles';
 
 @Component({
   tag: 'p-link-social',
@@ -37,7 +37,7 @@ export class LinkSocial {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.icon, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
   }
 
   public render(): JSX.Element {

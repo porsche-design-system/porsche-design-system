@@ -1,10 +1,13 @@
 // common type definitions
-export { TextSize } from './components/basic/typography/text/text-utils';
-export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
+import type { IconName } from '@porsche-design-system/icons';
+import type { BreakpointCustomizable } from './utils';
 
-export type BannerState = 'error' | 'warning' | 'neutral';
+export type { TextSize } from './components/basic/typography/text/text-utils';
+export type { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
+
+export type IconSize = 'small' | 'medium' | 'large' | 'inherit';
 
 export type TextColor =
   | 'brand'
@@ -43,3 +46,8 @@ declare global {
 }
 
 export type { IconName } from '@porsche-design-system/icons';
+
+export type LinkButtonPureIconName = IconName | 'none';
+
+export type AlignLabelType = 'left' | 'right';
+export type AlignLabel = BreakpointCustomizable<AlignLabelType>;

@@ -1,21 +1,31 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { camelCase, paramCase } from 'change-case';
+import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = [`import type { TagName } from './tagNames'`].join('\n');
+  const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
-  const types = [`type Meta = { isThemeable: boolean; };`, `type ComponentMeta = { [key in TagName]: Meta };`].join(
-    '\n'
-  );
+  const types = [
+    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
+    `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
+  ].join('\n');
 
-  type Meta = { isThemeable: boolean };
-  type ComponentMeta = { [key in TagName]: Meta };
+  type ComponentMeta = {
+    isFocusable: boolean;
+    isThemeable: boolean;
+    requiredParent?: TagName;
+    requiredChild?: string;
+  };
+
+  type ComponentsMeta = {
+    [key in TagName]: ComponentMeta;
+  };
 
   const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
     const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
@@ -23,17 +33,70 @@ const generateComponentMeta = (): void => {
     return result;
   }, {} as { [key in TagName]: string });
 
-  const meta: ComponentMeta = TAG_NAMES.reduce((result, tagName) => {
-    const isThemeable = !!componentSourceCode[tagName].match(/public theme\?: Theme/);
+  // simple (mostly atomic) focusable components are identified here
+  const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter(
+    (tagName) =>
+      componentSourceCode[tagName].includes('improveFocusHandlingForCustomElement(') ||
+      componentSourceCode[tagName].includes('<button')
+  );
 
-    result[tagName] = { isThemeable };
+  const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
+    const source = componentSourceCode[tagName];
+    // a component is focusable if it was identified as an atomic focusable before
+    // or if it contains another atomic focusable prefixed component
+    const isFocusable =
+      atomicFocusableTagNames.includes(tagName) ||
+      atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
+    const isThemeable = source.includes('public theme?: Theme');
+
+    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
+    const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
+
+    const [, requiredChildRaw] = /getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
+
+    let requiredChild = undefined;
+    if (requiredChildRaw) {
+      requiredChild = requiredChildRaw.replace(/\[/g, ' '); // replace opening bracket of attribute selector
+      requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
+
+      if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
+        requiredChild = requiredChild.slice(1, -1);
+      } else {
+        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
+        if (valueRaw) {
+          const value = eval(`${valueRaw}`);
+          requiredChild = value.split(',')[0];
+          requiredChild = requiredChild.replace(/\[/g, ' '); // replace opening bracket of attribute selector
+          requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
+        }
+      }
+    }
+
+    result[tagName] = { isFocusable, isThemeable, requiredParent, requiredChild };
     return result;
-  }, {} as ComponentMeta);
+  }, {} as ComponentsMeta);
 
-  const functions = `export const getComponentMeta = (component: TagName): Meta => {
-  const componentMeta: ComponentMeta = ${JSON.stringify(meta)};
+  // loop again to check if focusable components are used inside other components
+  const entries = Object.entries(meta);
+  for (const [tagName] of entries) {
+    const source = componentSourceCode[tagName];
+
+    if (entries.some(([tag, data]) => data.isFocusable && source.includes(`PrefixedTagNames.${camelCase(tag)}`))) {
+      meta[tagName].isFocusable = true;
+    }
+  }
+
+  const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
+    .filter(([_, value]) => value.isFocusable)
+    .map(([key]) => camelCase(key) as TagNameCamelCase)
+    .sort();
+
+  const functions = `export const getComponentMeta = (component: TagName): ComponentMeta => {
+  const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
   return componentMeta[component];
-};`;
+};
+
+export const FOCUSABLE_TAG_NAMES_CAMEL_CASE: TagNameCamelCase[] = ${JSON.stringify(focusableTagNames)};`;
 
   const content = [imports, types, functions].join('\n\n');
 

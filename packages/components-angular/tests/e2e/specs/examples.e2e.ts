@@ -1,28 +1,34 @@
 import { Page } from 'puppeteer';
 import { goto, getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
-import { browser } from '../config';
+import * as path from 'path';
+import * as fs from 'fs';
 
-describe('examples', () => {
-  let page: Page;
+let page: Page;
 
-  beforeEach(async () => {
-    page = await browser.newPage();
-    initConsoleObserver(page);
-  });
-  afterEach(async () => await page.close());
+beforeEach(async () => {
+  page = await browser.newPage();
+  initConsoleObserver(page);
+});
+afterEach(async () => await page.close());
 
-  for (const example of [
-    'accordion-example',
-    'table-example-basic',
-    'table-example-sorting',
-    'table-example-advanced',
-  ]) {
-    it(`should work without error for ${example}`, async () => {
-      await goto(page, example);
-      expect(getConsoleErrorsAmount()).toBe(0);
+const filePath = path.resolve(
+  require.resolve('@porsche-design-system/components-angular'),
+  '../../../../src/app/app-routing.module.ts'
+);
+const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-      await page.evaluate(() => console.error('test error'));
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-  }
+const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
+const routes: { name: string; path: string; component: string }[] = eval(
+  rawRoutes.replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
+);
+
+const exampleRoutes = routes.filter((item) => item.component?.startsWith('fromExamples.'));
+const exampleUrls = exampleRoutes.map((item) => item.path);
+
+it.each(exampleUrls)('should work without error for %s', async (exampleUrl) => {
+  await goto(page, exampleUrl);
+  expect(getConsoleErrorsAmount()).toBe(0);
+
+  await page.evaluate(() => console.error('test error'));
+  expect(getConsoleErrorsAmount()).toBe(1);
 });

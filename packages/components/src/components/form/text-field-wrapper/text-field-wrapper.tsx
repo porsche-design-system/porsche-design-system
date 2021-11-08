@@ -1,5 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  attachComponentCss,
+  attachSlottedCss,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -7,18 +9,18 @@ import {
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
-  mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { addSlottedCss } from './text-field-wrapper-styles';
+import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
+import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import { setInputUnitStyles, throwIfUnitLengthExceeded } from './text-field-wrapper-utils';
 
 @Component({
   tag: 'p-text-field-wrapper',
-  styleUrl: 'text-field-wrapper.scss',
   shadow: true,
 })
 export class TextFieldWrapper {
@@ -26,6 +28,12 @@ export class TextFieldWrapper {
 
   /** The label text. */
   @Prop() public label?: string = '';
+
+  /** The unit text. */
+  @Prop() public unit?: string = '';
+
+  /** The unit position. */
+  @Prop() public unitPosition?: TextFieldWrapperUnitPosition = 'prefix';
 
   /** The description text. */
   @Prop() public description?: string = '';
@@ -42,10 +50,11 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
+  private unitElement: HTMLElement;
   private isPassword: boolean;
 
   public connectedCallback(): void {
-    addSlottedCss(this.host);
+    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes();
   }
 
@@ -55,7 +64,23 @@ export class TextFieldWrapper {
     this.isPassword = this.input.type === 'password';
   }
 
+  public componentWillRender(): void {
+    throwIfUnitLengthExceeded(this.unit);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.unit,
+      this.unitPosition,
+      this.isPassword
+    );
+  }
+
   public componentDidRender(): void {
+    // needs to happen after render in order to have unitElement defined
+    setInputUnitStyles(this.input, this.unit, this.unitElement?.offsetWidth, this.unitPosition, this.state);
+
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -73,26 +98,25 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const { readOnly, disabled } = this.input;
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.state}`]: this.state !== 'none',
-      ['root--password']: this.isPassword,
-    };
+    const { readOnly, disabled, type } = this.input;
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-      ...mapBreakpointPropToClasses('label-', this.hideLabel, ['hidden', 'visible']),
+    };
+
+    const unitClasses = {
+      ['unit']: true,
+      ['unit--disabled']: disabled,
     };
 
     const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.labelClick };
+    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <div class={rootClasses}>
+        <div class="root">
           <label class={labelClasses}>
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
@@ -105,6 +129,18 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
+            {type === 'number' && this.unit && (
+              <PrefixedTagNames.pText
+                class={unitClasses}
+                tag="span"
+                color="inherit"
+                ref={(el) => (this.unitElement = el)}
+                aria-hidden="true"
+                onClick={this.onLabelClick}
+              >
+                {this.unit}
+              </PrefixedTagNames.pText>
+            )}
             <slot />
           </label>
           {this.isPassword ? (
@@ -112,17 +148,20 @@ export class TextFieldWrapper {
               type="button"
               onClick={this.togglePassword}
               disabled={disabled}
-              role="switch"
               aria-pressed={this.showPassword ? 'true' : 'false'}
             >
               <span class="sr-only">Toggle password visibility</span>
-              <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
+              <PrefixedTagNames.pIcon
+                name={this.showPassword ? 'view-off' : 'view'}
+                color="inherit"
+                aria-hidden="true"
+              />
             </button>
           ) : (
-            this.input.type === 'search' && (
+            type === 'search' && (
               <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
                 <span class="sr-only">Search</span>
-                <PrefixedTagNames.pIcon name="search" color="inherit" />
+                <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
               </button>
             )
           )}
@@ -142,14 +181,14 @@ export class TextFieldWrapper {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
 
-  private labelClick = (): void => {
+  private onLabelClick = (): void => {
     this.input.focus();
   };
 
   private togglePassword = (): void => {
     this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
-    this.labelClick();
+    this.onLabelClick();
   };
 
   private onSubmit = (event: MouseEvent): void => {

@@ -1,8 +1,8 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
 import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
-import { addComponentCss } from './modal-styles';
+import { getComponentCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -56,7 +56,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    addComponentCss(this.host, this.open);
+    attachComponentCss(this.host, getComponentCss, this.open);
   }
 
   public componentDidUpdate(): void {
@@ -81,7 +81,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.disableBackdropClick && this.onHostClick}>
+      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
         <aside
           class={rootClasses}
           role="dialog"
@@ -133,8 +133,8 @@ export class Modal {
     } else if (key === 'Tab') {
       // cycle focus within modal elements
       if (this.focusableElements.length <= 1) {
-        this.focusableElements[0]?.focus();
         e.preventDefault();
+        this.focusableElements[0]?.focus();
       } else {
         const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
 
@@ -160,7 +160,7 @@ export class Modal {
     this.close.emit();
   };
 
-  private onHostClick = (e: MouseEvent): void => {
+  private onMouseDown = (e: MouseEvent): void => {
     const [firstEl] = e.composedPath() as HTMLElement[];
     if (firstEl === this.host) {
       this.closeModal();

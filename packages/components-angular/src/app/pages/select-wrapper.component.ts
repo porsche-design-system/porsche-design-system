@@ -88,8 +88,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render with custom filter">
-      <p-select-wrapper [label]="'Some label'" [filter]="true">
+    <div class="playground light" title="should render with filter">
+      <p-select-wrapper [label]="'Some label with filter'" [filter]="true">
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -97,8 +97,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div class="playground dark" title="should render with custom filter on dark theme">
-      <p-select-wrapper [label]="'Some label'" [filter]="true" [theme]="'dark'">
+    <div class="playground dark" title="should render with filter on dark theme">
+      <p-select-wrapper [label]="'Some label with filter'" [filter]="true" [theme]="'dark'">
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -107,8 +107,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render in disabled state with custom filter">
-      <p-select-wrapper [label]="'Some label'" [filter]="true">
+    <div class="playground light" title="should render in disabled state with filter">
+      <p-select-wrapper [label]="'Some label disabled with filter'" [filter]="true">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -116,8 +116,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div class="playground dark" title="should render in disabled state with custom filter on dark theme">
-      <p-select-wrapper [label]="'Some label'" [filter]="true" [theme]="'dark'">
+    <div class="playground dark" title="should render in disabled state with filter on dark theme">
+      <p-select-wrapper [label]="'Some label disabled with filter'" [filter]="true" [theme]="'dark'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -161,7 +161,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render in disabled state">
-      <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
+      <p-select-wrapper [label]="'Some label disabled'" [description]="'Some description'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -170,7 +170,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
     <div class="playground dark" title="should render in disabled state on dark theme">
-      <p-select-wrapper [label]="'Some label'" [description]="'Some description'" [theme]="'dark'">
+      <p-select-wrapper [label]="'Some label disabled'" [description]="'Some description'" [theme]="'dark'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -198,8 +198,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render with error state and error message with custom filter">
-      <p-select-wrapper [label]="'Some label'" [filter]="true" [state]="'error'" [message]="'Some error message.'">
+    <div class="playground light" title="should render with error state and error message with filter">
+      <p-select-wrapper
+        [label]="'Some label with filter'"
+        [filter]="true"
+        [state]="'error'"
+        [message]="'Some error message.'"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -207,12 +212,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div
-      class="playground dark"
-      title="should render with error state and error message with custom filter on dark theme"
-    >
+    <div class="playground dark" title="should render with error state and error message with filter on dark theme">
       <p-select-wrapper
-        [label]="'Some label'"
+        [label]="'Some label with filter'"
         [filter]="true"
         [state]="'error'"
         [message]="'Some error message.'"
@@ -264,8 +266,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render with success state and success message with custom filter">
-      <p-select-wrapper [label]="'Some label'" [filter]="true" [state]="'success'" [message]="'Some success message.'">
+    <div class="playground light" title="should render with success state and success message with filter">
+      <p-select-wrapper
+        [label]="'Some label with filter'"
+        [filter]="true"
+        [state]="'success'"
+        [message]="'Some success message.'"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -273,12 +280,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div
-      class="playground dark"
-      title="should render with success state and success message with custom filter on dark theme"
-    >
+    <div class="playground dark" title="should render with success state and success message with filter on dark theme">
       <p-select-wrapper
-        [label]="'Some label'"
+        [label]="'Some label with filter'"
         [filter]="true"
         [state]="'success'"
         [message]="'Some success message.'"

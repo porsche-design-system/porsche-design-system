@@ -1,16 +1,18 @@
 import { version } from '../../package.json';
+import { pdsFetch } from './pds-fetch';
 
 const TRACKING_URL = 'https://aws.designsystem.porsche.com/porsche-design-system.png';
 
 export const trackEvent = (component: string, event?: string): void => {
   if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
-    fetch(
+    pdsFetch(
       `${TRACKING_URL}?${queryString({
         v: version,
         t: new Date().getTime(), // to prevent caching
         c: component,
         ...(event && { e: event }),
-      })}`
+      })}`,
+      { mode: 'no-cors' }
     ).catch(console.warn);
   }
 };

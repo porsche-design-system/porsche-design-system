@@ -1,16 +1,5 @@
-import { getVisualRegressionOverviewTester, testOptions } from '../helpers';
+import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-describe('Switch', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionOverviewTester();
-    expect(
-      await vrt.test(
-        'switch',
-        async () => {
-          await vrt.goTo('/switch');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
-  });
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'switch', '/switch')).toBeFalsy();
 });

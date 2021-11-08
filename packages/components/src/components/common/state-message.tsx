@@ -1,19 +1,20 @@
 import { FunctionalComponent, h } from '@stencil/core';
 import { getRole, getPrefixedTagNames } from '../../utils';
-import { FormState } from '../../types';
+import type { FormState } from '../../types';
 
 type StateMessageProps = {
+  id?: string;
   state: FormState;
   message: string;
   host: HTMLElement;
 };
 
-export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, message, host }) => {
+export const StateMessage: FunctionalComponent<StateMessageProps> = ({ id, state, message, host }) => {
   const PrefixedTagNames = getPrefixedTagNames(host);
   return (
-    <PrefixedTagNames.pText class="message" tag="span" color="inherit" role={getRole(state)}>
+    <PrefixedTagNames.pText id={id} class="message" tag="span" color="inherit" role={getRole(state)}>
       <PrefixedTagNames.pIcon
-        class="icon"
+        class="message__icon"
         name={state === 'error' ? 'exclamation' : 'check'}
         color="inherit"
         aria-hidden="true"

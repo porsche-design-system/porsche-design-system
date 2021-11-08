@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accordion accessibility should expose correct accessibility tree properties in open state: Of Button 1`] = `
+Object {
+  "expanded": true,
+  "focused": true,
+  "name": "Some Accordion",
+  "role": "button",
+}
+`;
+
+exports[`accordion accessibility should expose correct accessibility tree properties in open state: Of Panel 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "Some Accordion",
+  "role": "region",
+}
+`;
+
+exports[`accordion accessibility should expose correct initial accessibility tree and aria properties: Of Button 1`] = `
+Object {
+  "name": "Some Accordion",
+  "role": "button",
+}
+`;

@@ -1,8 +1,13 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, throwIfElementHasAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  throwIfElementHasAttribute,
+  throwIfParentIsNotOfKind,
+} from '../../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc } from './table-head-cell-utils';
 import type { TableHeadCellSort, SortingChangeEvent } from '../table/table-utils';
-import { addComponentCss } from './table-head-cell-styles';
+import { getComponentCss } from './table-head-cell-styles';
 import { SORT_EVENT_NAME } from '../table/table-utils';
 
 @Component({
@@ -21,7 +26,7 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
     throwIfElementHasAttribute(this.host, 'sort');
-    addComponentCss(this.host);
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public render(): JSX.Element {
@@ -31,7 +36,7 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {active !== undefined && direction !== undefined ? (
-          <button onClick={this.onButtonClick}>
+          <button type="button" onClick={this.onButtonClick}>
             <slot />
             <PrefixedTagNames.pIcon
               class={{
@@ -41,6 +46,7 @@ export class TableHeadCell {
               }}
               color="inherit"
               name="arrow-up"
+              aria-hidden="true"
             />
           </button>
         ) : (

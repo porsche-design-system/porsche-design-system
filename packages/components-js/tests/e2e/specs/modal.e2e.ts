@@ -4,14 +4,13 @@ import {
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getBrowser,
   getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
-  removeAttribute,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -20,23 +19,22 @@ describe('modal', () => {
   let page: Page;
   const CSS_TRANSITION_DURATION = 600;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .root');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .close p-button-pure');
-  const getModalAside = () => selectNode(page, 'p-modal >>> aside');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
-  const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
-    const { isOpen = true } = opts ?? {};
+  const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
+    const { isOpen = true, content = 'Some Content' } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
       `
       <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
-        Some Content
+        ${content}
       </p-modal>`
     );
   };
@@ -63,6 +61,11 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
   };
 
+  const closeModal = async () => {
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+  };
+
   const getModalVisibility = async () => await getElementStyle(await getModal(), 'visibility');
 
   it('should render and be visible when open', async () => {
@@ -75,6 +78,23 @@ describe('modal', () => {
     await initBasicModal({ isOpen: false });
     await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
     expect(await getModalVisibility()).toBe('hidden');
+  });
+
+  it('should have correct transform when closed and opened', async () => {
+    await initBasicModal({ isOpen: false });
+    const getModalTransform = async () => getElementStyle(await getModal(), 'transform', { waitForTransition: true });
+
+    const initialModalTransform = await getModalTransform();
+    expect(initialModalTransform).toBe('matrix(0.9, 0, 0, 0.9, 0, 0)');
+
+    await openModal();
+    const openModalTransform = await getModalTransform();
+    expect(openModalTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
+    expect(initialModalTransform).not.toBe(openModalTransform);
+
+    await closeModal();
+    const finalModalTransform = await getModalTransform();
+    expect(finalModalTransform).toBe(initialModalTransform);
   });
 
   describe('can be closed', () => {
@@ -117,29 +137,50 @@ describe('modal', () => {
     });
 
     it('should be closable via backdrop', async () => {
-      // click in each corner based on 1920x800 screen
-      await page.mouse.click(5, 5);
-      await page.mouse.click(1915, 5);
-      await page.mouse.click(5, 795);
-      await page.mouse.click(1915, 795);
-      await waitForStencilLifecycle(page);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
-      expect(calls).toBe(4);
+      expect(calls, 'after mouse down').toBe(1);
 
-      // click in middle should not close modal
-      await page.mouse.click(960, 400);
-      await waitForStencilLifecycle(page);
+      await page.mouse.up();
 
-      expect(calls).toBe(4);
+      expect(calls, 'after mouse up').toBe(1);
+    });
+
+    it('should not be closed if mousedown inside modal', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
+
+      expect(calls, 'after mouse down').toBe(0);
+
+      await page.mouse.up();
+
+      expect(calls, 'after mouse up').toBe(0);
+    });
+
+    it('should not be closed if mousedown inside modal and mouseup inside backdrop', async () => {
+      await page.mouse.move(960, 400);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
+
+      expect(calls, 'after mouse down').toBe(0);
+
+      await page.mouse.move(5, 5);
+      await page.mouse.up();
+
+      expect(calls, 'after mouse up').toBe(0);
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       const host = await getHost();
       await setProperty(host, 'disableBackdropClick', true);
-      await waitForStencilLifecycle(page);
+      await waitForEventSerialization(page);
 
-      await page.mouse.click(5, 5);
-      await waitForStencilLifecycle(page);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(0);
     });
@@ -148,8 +189,9 @@ describe('modal', () => {
       const body = await selectNode(page, 'body');
       let bodyCalls = 0;
       await addEventListener(body, 'close', () => bodyCalls++);
-      await page.mouse.click(5, 5);
-      await waitForStencilLifecycle(page);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+      await waitForEventSerialization(page);
 
       expect(calls).toBe(1);
       expect(bodyCalls).toBe(0);
@@ -175,7 +217,7 @@ describe('modal', () => {
       await initAdvancedModal();
       const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'initially'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'initially').toBe('P-BUTTON-PURE'); // close button
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
@@ -186,16 +228,14 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE', 'finally'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'finally').toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should reverse cycle tab events within modal', async () => {
       await initAdvancedModal();
       const host = await getHost();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(host))
-        .withContext('initially')
-        .toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'initially').toBe('P-BUTTON-PURE'); // close button
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
@@ -207,9 +247,7 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host))
-        .withContext('finally')
-        .toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(host), 'finally').toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.up('ShiftLeft');
     });
 
@@ -224,6 +262,23 @@ describe('modal', () => {
       await openModal();
       const activeElementTagName = await getActiveElementTagName(page);
       expect(activeElementTagName).toBe('BODY');
+    });
+
+    it('should not allow focusing element behind of modal', async () => {
+      await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await page.evaluate(() => {
+        const button = document.createElement('btn-behind');
+        button.id = 'button';
+        document.body.append(button);
+      });
+      const host = await getHost();
+      await openModal();
+
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
   });
 
@@ -247,9 +302,7 @@ describe('modal', () => {
     );
     await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-    expect(await getModalVisibility())
-      .withContext('initial')
-      .toBe('hidden');
+    expect(await getModalVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
@@ -262,9 +315,7 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
 
-    expect(await getModalVisibility())
-      .withContext('after escape')
-      .toBe('hidden');
+    expect(await getModalVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
@@ -297,31 +348,20 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
-  it('should have correct aria-hidden value', async () => {
-    await initBasicModal({ isOpen: false });
-    const aside = await getModalAside();
-
-    expect(await getAttribute(aside, 'aria-hidden')).toBe('true');
-
-    await openModal();
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(aside, 'aria-hidden')).toBe('false');
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initBasicModal();
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidLoad['p-modal']).withContext('componentDidLoad: p-modal').toBe(1);
-      expect(status.componentDidLoad['p-headline']).withContext('componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-button-pure']).withContext('componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
+      expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+      expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // has p-icon and p-text
 
-      expect(status.componentDidLoad.all)
-        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
-        .toBe(6);
-      expect(status.componentDidUpdate.all).withContext('componentDidUpdate: all').toBe(0);
+      expect(
+        status.componentDidLoad.all,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      ).toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -333,14 +373,36 @@ describe('modal', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-modal']).withContext('componentDidUpdate: p-modal').toBe(1);
+      expect(status.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
 
-      expect(status.componentDidLoad.all)
-        .withContext('componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal')
-        .toBe(6);
-      expect(status.componentDidUpdate.all)
-        .withContext('componentDidUpdate: all | p-modal, (p-headline -> p-text)')
-        .toBe(3);
+      expect(
+        status.componentDidLoad.all,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      ).toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)').toBe(3);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initBasicModal();
+      const modal = await getModal();
+      const snapshot = await page.accessibility.snapshot({
+        root: modal,
+        interestingOnly: false,
+      });
+
+      expect(snapshot).toMatchSnapshot();
+    });
+
+    it('should not expose accessibility tree if modal is hidden', async () => {
+      await initBasicModal({ isOpen: false });
+      const modal = await getModal();
+      const snapshot = await page.accessibility.snapshot({
+        root: modal,
+      });
+
+      expect(snapshot).toMatchSnapshot();
     });
   });
 });
