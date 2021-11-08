@@ -13,9 +13,16 @@
   <body>
     <button id="button-a" type="button">Add Toast "A"</button>
     <button id="button-b" type="button">Add Toast "B"</button>
+    <p-toast></p-toast>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
+      const toast = document.querySelector('p-toast');
+      setTimeout(() => {
+        toast.manager.addMessage({ message: 'message by public member 1', state: 'success' });
+        toast.manager.addMessage({ message: 'message by public member 2', state: 'neutral' });
+      }, 1000);
+
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
@@ -24,18 +31,5 @@
       );
     </script>
     <!-- /END -->
-    <!--    <p-toast-a></p-toast-a>-->
-    <!--    <p-toast-b></p-toast-b>-->
-    <!--    <p-toast-c></p-toast-c>-->
-
-    <p-toast-d></p-toast-d>
-
-    <script>
-      const toastD = document.querySelector('p-toast-d');
-      setTimeout(() => {
-        toastD.manager.addMessage({ message: 'message by public member 1', state: 'success' });
-        toastD.manager.addMessage({ message: 'message by public member 2', state: 'neutral' });
-      }, 1000);
-    </script>
   </body>
 </html>

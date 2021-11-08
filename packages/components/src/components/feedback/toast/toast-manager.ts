@@ -1,5 +1,6 @@
 import { forceUpdate } from '@stencil/core';
 
+export const timeout = 6000;
 export type ToastState = 'neutral' | 'success';
 
 type MessageOptions = {
@@ -27,12 +28,9 @@ class ToastManagerClass {
       throw new Error('No toast ref provided. <p-toast/> needs to be bootstrapped before the closing <body/> tag.');
     }
 
-    const { message, state } = options;
-
     this.messages.push({
-      message,
-      state,
-      timeout: 6000,
+      ...options,
+      timeout,
     });
     forceUpdate(this.toast);
   }

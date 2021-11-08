@@ -1,12 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from '../toast-a/toast-item-a-styles';
-import type { ToastState } from '../toast-a/toast-a-types';
+import { addComponentCss } from './toast-item-styles';
+import type { ToastState } from './toast-manager';
 
 @Component({
-  tag: 'p-toast-item-c',
+  tag: 'p-toast-item',
   shadow: true,
 })
-export class ToastItemC {
+export class ToastItem {
   @Element() public host!: HTMLElement;
 
   /** Defines a message. */

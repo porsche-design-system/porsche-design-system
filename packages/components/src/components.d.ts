@@ -24,9 +24,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { MessageOptions } from "./components/feedback/toast-b/toast-b";
-import { ToastManagerType } from "./components/feedback/toast-d/toast-manager";
-import { CallToAction, ToastState } from "./components/feedback/toast-a/toast-a-types";
+import { ToastManagerType, ToastState } from "./components/feedback/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
         /**
@@ -892,37 +890,10 @@ export namespace Components {
          */
         "state"?: FormState;
     }
-    interface PToastA {
-    }
-    interface PToastB {
-        "addMessage": (options: MessageOptions) => Promise<void>;
-    }
-    interface PToastC {
-    }
-    interface PToastD {
+    interface PToast {
         "manager": ToastManagerType;
     }
-    interface PToastItemA {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
-    interface PToastItemB {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
-    interface PToastItemC {
+    interface PToastItem {
         /**
           * Defines a message.
          */
@@ -1186,47 +1157,17 @@ declare global {
         prototype: HTMLPTextareaWrapperElement;
         new (): HTMLPTextareaWrapperElement;
     };
-    interface HTMLPToastAElement extends Components.PToastA, HTMLStencilElement {
+    interface HTMLPToastElement extends Components.PToast, HTMLStencilElement {
     }
-    var HTMLPToastAElement: {
-        prototype: HTMLPToastAElement;
-        new (): HTMLPToastAElement;
+    var HTMLPToastElement: {
+        prototype: HTMLPToastElement;
+        new (): HTMLPToastElement;
     };
-    interface HTMLPToastBElement extends Components.PToastB, HTMLStencilElement {
+    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
     }
-    var HTMLPToastBElement: {
-        prototype: HTMLPToastBElement;
-        new (): HTMLPToastBElement;
-    };
-    interface HTMLPToastCElement extends Components.PToastC, HTMLStencilElement {
-    }
-    var HTMLPToastCElement: {
-        prototype: HTMLPToastCElement;
-        new (): HTMLPToastCElement;
-    };
-    interface HTMLPToastDElement extends Components.PToastD, HTMLStencilElement {
-    }
-    var HTMLPToastDElement: {
-        prototype: HTMLPToastDElement;
-        new (): HTMLPToastDElement;
-    };
-    interface HTMLPToastItemAElement extends Components.PToastItemA, HTMLStencilElement {
-    }
-    var HTMLPToastItemAElement: {
-        prototype: HTMLPToastItemAElement;
-        new (): HTMLPToastItemAElement;
-    };
-    interface HTMLPToastItemBElement extends Components.PToastItemB, HTMLStencilElement {
-    }
-    var HTMLPToastItemBElement: {
-        prototype: HTMLPToastItemBElement;
-        new (): HTMLPToastItemBElement;
-    };
-    interface HTMLPToastItemCElement extends Components.PToastItemC, HTMLStencilElement {
-    }
-    var HTMLPToastItemCElement: {
-        prototype: HTMLPToastItemCElement;
-        new (): HTMLPToastItemCElement;
+    var HTMLPToastItemElement: {
+        prototype: HTMLPToastItemElement;
+        new (): HTMLPToastItemElement;
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
@@ -1271,13 +1212,8 @@ declare global {
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
-        "p-toast-a": HTMLPToastAElement;
-        "p-toast-b": HTMLPToastBElement;
-        "p-toast-c": HTMLPToastCElement;
-        "p-toast-d": HTMLPToastDElement;
-        "p-toast-item-a": HTMLPToastItemAElement;
-        "p-toast-item-b": HTMLPToastItemBElement;
-        "p-toast-item-c": HTMLPToastItemCElement;
+        "p-toast": HTMLPToastElement;
+        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -2185,37 +2121,10 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
-    interface PToastA {
-    }
-    interface PToastB {
-    }
-    interface PToastC {
-        "onDismiss"?: (event: CustomEvent<string>) => void;
-    }
-    interface PToastD {
+    interface PToast {
         "manager"?: ToastManagerType;
     }
-    interface PToastItemA {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
-    interface PToastItemB {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
-    interface PToastItemC {
+    interface PToastItem {
         /**
           * Defines a message.
          */
@@ -2269,13 +2178,8 @@ declare namespace LocalJSX {
         "p-text-list": PTextList;
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
-        "p-toast-a": PToastA;
-        "p-toast-b": PToastB;
-        "p-toast-c": PToastC;
-        "p-toast-d": PToastD;
-        "p-toast-item-a": PToastItemA;
-        "p-toast-item-b": PToastItemB;
-        "p-toast-item-c": PToastItemC;
+        "p-toast": PToast;
+        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
@@ -2324,13 +2228,8 @@ declare module "@stencil/core" {
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
-            "p-toast-a": LocalJSX.PToastA & JSXBase.HTMLAttributes<HTMLPToastAElement>;
-            "p-toast-b": LocalJSX.PToastB & JSXBase.HTMLAttributes<HTMLPToastBElement>;
-            "p-toast-c": LocalJSX.PToastC & JSXBase.HTMLAttributes<HTMLPToastCElement>;
-            "p-toast-d": LocalJSX.PToastD & JSXBase.HTMLAttributes<HTMLPToastDElement>;
-            "p-toast-item-a": LocalJSX.PToastItemA & JSXBase.HTMLAttributes<HTMLPToastItemAElement>;
-            "p-toast-item-b": LocalJSX.PToastItemB & JSXBase.HTMLAttributes<HTMLPToastItemBElement>;
-            "p-toast-item-c": LocalJSX.PToastItemC & JSXBase.HTMLAttributes<HTMLPToastItemCElement>;
+            "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
+            "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
     }
 }
