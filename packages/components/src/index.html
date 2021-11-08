@@ -26,6 +26,7 @@
     <!-- /END -->
     <p-toast-a></p-toast-a>
     <p-toast-b></p-toast-b>
+    <p-toast-c></p-toast-c>
 
     <div></div>
 
@@ -50,6 +51,26 @@
         await customElements.whenDefined('p-toast-b');
         await toastB.addMessage({ message: 'hallo', state: 'success' });
       });
+
+      const toastManagerC = document.querySelector('p-toast-c');
+      // <p-toast-c-item id="1" message="asd"></p-toast-c-item>;
+      const toast1 = document.createElement('p-toast-c-item');
+      toast1.id = '1';
+      toast1.message = 'asd';
+      const toast2 = document.createElement('p-toast-c-item');
+      toast1.id = '2';
+      toast1.message = 'asd2';
+
+      const toast3 = document.createElement('p-toast-c-item');
+      toast1.id = '3';
+      toast1.message = 'asd3';
+
+      toastManagerC.appendChild(toast1);
+      toastManagerC.appendChild(toast2);
+
+      setTimeout(() => {
+        toastManagerC.appendChild(toast3);
+      }, 10000);
     </script>
   </body>
 </html>
