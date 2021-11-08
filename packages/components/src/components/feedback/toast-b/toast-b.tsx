@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Method, State } from '@stencil/core';
-import { addComponentCss } from './toast-b-styles';
-import { CallToAction, ToastState } from './toast-b-types';
-import { timeout } from './toast-item-b-styles';
+import { addComponentCss } from '../toast-a/toast-a-styles';
+import { CallToAction, ToastState } from '../toast-a/toast-a-types';
+import { timeout } from '../toast-a/toast-a-manager';
 
 export type MessageOptions = {
   message: string;

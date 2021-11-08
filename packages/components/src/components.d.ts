@@ -25,10 +25,8 @@ import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./com
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { MessageOptions } from "./components/feedback/toast-b/toast-b";
-import { CallToAction2, ToastState2 } from "./components/feedback/toast-a/toast-a-types";
-import { CallToAction, ToastState } from "./components/feedback/toast-b/toast-b-types";
-import { ToastState as ToastState1 } from "./components/feedback/toast-c/toast-c-types";
-import { CallToAction2 as CallToAction21, ToastState2 as ToastState21 } from "./components/feedback/toast-d/toast-d-types";
+import { ToastManagerType } from "./components/feedback/toast-d/toast-manager";
+import { CallToAction, ToastState } from "./components/feedback/toast-a/toast-a-types";
 export namespace Components {
     interface PAccordion {
         /**
@@ -902,16 +900,17 @@ export namespace Components {
     interface PToastC {
     }
     interface PToastD {
+        "manager": ToastManagerType;
     }
     interface PToastItemA {
         /**
           * Defines a call to action button.
          */
-        "action"?: CallToAction2;
+        "action"?: CallToAction;
         /**
           * Defines visual appearance.
          */
-        "state"?: ToastState2;
+        "state"?: ToastState;
     }
     interface PToastItemB {
         /**
@@ -925,27 +924,13 @@ export namespace Components {
     }
     interface PToastItemC {
         /**
-          * Defines a message..
+          * Defines a message.
          */
         "message"?: string;
         /**
           * Defines visual appearance.
          */
         "state"?: ToastState;
-        /**
-          * Defines the toastId of the toast
-         */
-        "toastId": string;
-    }
-    interface PToastItemD {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction2;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState2;
     }
 }
 declare global {
@@ -1243,12 +1228,6 @@ declare global {
         prototype: HTMLPToastItemCElement;
         new (): HTMLPToastItemCElement;
     };
-    interface HTMLPToastItemDElement extends Components.PToastItemD, HTMLStencilElement {
-    }
-    var HTMLPToastItemDElement: {
-        prototype: HTMLPToastItemDElement;
-        new (): HTMLPToastItemDElement;
-    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1299,7 +1278,6 @@ declare global {
         "p-toast-item-a": HTMLPToastItemAElement;
         "p-toast-item-b": HTMLPToastItemBElement;
         "p-toast-item-c": HTMLPToastItemCElement;
-        "p-toast-item-d": HTMLPToastItemDElement;
     }
 }
 declare namespace LocalJSX {
@@ -2215,16 +2193,17 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: CustomEvent<string>) => void;
     }
     interface PToastD {
+        "manager"?: ToastManagerType;
     }
     interface PToastItemA {
         /**
           * Defines a call to action button.
          */
-        "action"?: CallToAction2;
+        "action"?: CallToAction;
         /**
           * Defines visual appearance.
          */
-        "state"?: ToastState2;
+        "state"?: ToastState;
     }
     interface PToastItemB {
         /**
@@ -2238,28 +2217,14 @@ declare namespace LocalJSX {
     }
     interface PToastItemC {
         /**
-          * Defines a message..
+          * Defines a message.
          */
         "message"?: string;
-        "onClose"?: (event: CustomEvent<string>) => void;
+        "onClose"?: (event: CustomEvent<void>) => void;
         /**
           * Defines visual appearance.
          */
         "state"?: ToastState;
-        /**
-          * Defines the toastId of the toast
-         */
-        "toastId"?: string;
-    }
-    interface PToastItemD {
-        /**
-          * Defines a call to action button.
-         */
-        "action"?: CallToAction2;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState2;
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
@@ -2311,7 +2276,6 @@ declare namespace LocalJSX {
         "p-toast-item-a": PToastItemA;
         "p-toast-item-b": PToastItemB;
         "p-toast-item-c": PToastItemC;
-        "p-toast-item-d": PToastItemD;
     }
 }
 export { LocalJSX as JSX };
@@ -2367,7 +2331,6 @@ declare module "@stencil/core" {
             "p-toast-item-a": LocalJSX.PToastItemA & JSXBase.HTMLAttributes<HTMLPToastItemAElement>;
             "p-toast-item-b": LocalJSX.PToastItemB & JSXBase.HTMLAttributes<HTMLPToastItemBElement>;
             "p-toast-item-c": LocalJSX.PToastItemC & JSXBase.HTMLAttributes<HTMLPToastItemCElement>;
-            "p-toast-item-d": LocalJSX.PToastItemD & JSXBase.HTMLAttributes<HTMLPToastItemDElement>;
         }
     }
 }

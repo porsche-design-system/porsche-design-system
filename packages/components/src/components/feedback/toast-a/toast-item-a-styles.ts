@@ -1,24 +1,24 @@
-import { addImportantToEachRule, attachCss, getCss } from '../../../utils';
+import { addImportantToEachRule, attachComponentCss, getCss } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
+import type { ToastState } from './toast-a-types';
 import { timeout } from './toast-a-manager';
-import type { ToastState2 } from './toast-a-types';
 
-const getStateColor = (state: ToastState2): { baseColor: string; softColor: string } => {
-  const { success, successSoft, warning, warningSoft, error, errorSoft, neutral, neutralSoft } = color.notification;
+const getStateColor = (state: ToastState): { baseColor: string; softColor: string } => {
+  const { success, successSoft, neutral, neutralSoft } = color.notification;
 
   switch (state) {
     case 'success':
       return { baseColor: success, softColor: successSoft };
-    case 'warning':
-      return { baseColor: warning, softColor: warningSoft };
-    case 'error':
-      return { baseColor: error, softColor: errorSoft };
+    // case 'warning':
+    //   return { baseColor: warning, softColor: warningSoft };
+    // case 'error':
+    //   return { baseColor: error, softColor: errorSoft };
     default:
       return { baseColor: neutral, softColor: neutralSoft };
   }
 };
 
-export const getComponentCss = (state: ToastState2): string => {
+export const getComponentCss = (state: ToastState): string => {
   const { baseColor, softColor } = getStateColor(state);
 
   return getCss({
@@ -52,6 +52,6 @@ export const getComponentCss = (state: ToastState2): string => {
   });
 };
 
-export const addComponentCss = (host: HTMLElement, state: ToastState2): void => {
-  attachCss(host, getComponentCss(state));
+export const addComponentCss = (host: HTMLElement, state: ToastState): void => {
+  attachComponentCss(host, getComponentCss, state);
 };

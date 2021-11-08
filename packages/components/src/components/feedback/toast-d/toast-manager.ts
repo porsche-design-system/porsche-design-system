@@ -13,7 +13,7 @@ class ToastManagerClass {
   private toast: HTMLElement;
   private messages: Message[] = [];
 
-  public registerToastElement(toast: HTMLElement): ToastManagerClass {
+  public registerToastElement(toast: HTMLElement): typeof ToastManager {
     if (this.toast) {
       throw new Error('<p-toast/> was bootstrapped multiple times but its ref can only be registered once.');
     }
@@ -37,6 +37,11 @@ class ToastManagerClass {
     forceUpdate(this.toast);
   }
 
+  public dismissMessage(): void {
+    this.messages.shift();
+    forceUpdate(this.toast);
+  }
+
   public getMessage(): Message {
     const message = this.messages[0];
 
@@ -44,12 +49,12 @@ class ToastManagerClass {
       setTimeout(() => {
         this.messages.shift();
         forceUpdate(this.toast);
-      }, this.messages[0].timeout);
+      }, message.timeout);
     }
 
     return message;
-    // return this.messages;
   }
 }
 
 export const ToastManager = new ToastManagerClass();
+export type ToastManagerType = typeof ToastManager;

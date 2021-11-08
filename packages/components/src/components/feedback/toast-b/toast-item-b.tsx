@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from './toast-item-b-styles';
-import type { CallToAction, ToastState } from './toast-b-types';
+import { addComponentCss } from '../toast-a/toast-item-a-styles';
+import type { CallToAction, ToastState } from '../toast-a/toast-a-types';
 
 @Component({
   tag: 'p-toast-item-b',

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, JSX, h } from '@stencil/core';
-import { addComponentCss } from './toast-c-styles';
-import { CallToAction, ToastState } from './toast-c-types';
+import { addComponentCss } from '../toast-a/toast-a-styles';
+import { CallToAction, ToastState } from '../toast-a/toast-a-types';
 
 export type MessageOptions = {
   message: string;
