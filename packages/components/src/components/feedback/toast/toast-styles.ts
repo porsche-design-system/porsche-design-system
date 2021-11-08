@@ -1,13 +1,15 @@
-import { addImportantToEachRule, attachComponentCss, getCss } from '../../../utils';
+import { addImportantToEachRule, attachComponentCss, buildHostStyles, getCss, pxToRemWithUnit } from '../../../utils';
 
 export const getComponentCss = (): string => {
-  return getCss({
-    ':host': addImportantToEachRule({
-      position: 'fixed',
-      right: '1rem',
-      bottom: '1rem',
-    }),
-  });
+  return getCss(
+    buildHostStyles(
+      addImportantToEachRule({
+        position: 'fixed',
+        bottom: pxToRemWithUnit(8),
+        left: pxToRemWithUnit(8),
+      })
+    )
+  );
 };
 
 export const addComponentCss = (host: HTMLElement): void => {
