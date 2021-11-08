@@ -68,6 +68,7 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
     };
 
     cmData[version] = newLibraryHandlerData;
+    // cmData['toastManager'] = ToastManager;
   }
 
   return cmData[version];

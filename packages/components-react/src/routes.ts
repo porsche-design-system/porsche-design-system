@@ -238,4 +238,9 @@ export const routes: RouteType[] = [
     path: '/toast-example',
     component: fromExamples.ToastExamplePage,
   },
+  {
+    name: 'Toast Example Managed',
+    path: '/toast-example-managed',
+    component: fromExamples.ToastExampleManagedPage,
+  },
 ];
