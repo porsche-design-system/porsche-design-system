@@ -36,11 +36,6 @@ export class Toast {
     console.log('connectedCallback', this.manager);
   }
 
-  public componentDidLoad(): void {
-    console.log('componentDidLoad', this.manager);
-    this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
-  }
-
   public componentWillRender(): void {
     const { state } = this.manager.getToast() || {};
 

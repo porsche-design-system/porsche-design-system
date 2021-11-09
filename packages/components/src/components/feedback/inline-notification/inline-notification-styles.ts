@@ -3,6 +3,7 @@ import {
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
+  getCloseIconStyles,
   getCss,
   getNotificationHostStyles,
   getNotificationIconAndContentStyles,
@@ -40,11 +41,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(hasClose && {
-      close: {
-        marginLeft: pxToRemWithUnit(16),
-      },
-    }),
+    ...(hasClose && getCloseIconStyles()),
   });
 };
 

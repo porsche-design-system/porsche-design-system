@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
+  getCloseIconStyles,
   getFocusSlottedPseudoStyles,
   getFocusStyles,
   getFormTextHiddenJssStyle,
@@ -179,4 +180,10 @@ describe('getNotificationIconAndContentStyles()', () => {
       expect(getNotificationIconAndContentStyles(mediaQueryS, iconColor)).toMatchSnapshot();
     }
   );
+});
+
+describe('getCloseIconStyles()', () => {
+  it('should return correct styles for close icon', () => {
+    expect(getCloseIconStyles()).toMatchSnapshot();
+  });
 });
