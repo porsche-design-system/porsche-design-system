@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ToastManagerService } from '../../../projects/components-wrapper/src/ToastManager.service';
+import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-toast-example',
@@ -10,7 +10,7 @@ import { ToastManagerService } from '../../../projects/components-wrapper/src/To
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastExampleComponent implements OnInit {
-  constructor(private toastManager: ToastManagerService) {}
+  constructor(private toastManager: ToastManager) {}
 
   ngOnInit() {
     this.toastManager.addToast({ message: 'asd', state: 'success' });

@@ -11,15 +11,25 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <button id="button-a">Add Toast "A"</button>
+    <button id="button-b">Add Toast "B"</button>
     <p-toast></p-toast>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      const { manager } = document.querySelector('p-toast');
       setTimeout(() => {
-        manager.addToast({ message: 'message by public member 1', state: 'success' });
-        manager.addToast({ message: 'message by public member 2', state: 'neutral' });
-      }, 1000);
+        document
+          .querySelector('p-toast')
+          .getManager()
+          .then((manager) => {
+            document.querySelector('#button-a').addEventListener('click', () => {
+              manager.addToast({ message: 'message by public member 1', state: 'success' });
+            });
+            document.querySelector('#button-b').addEventListener('click', () => {
+              manager.addToast({ message: 'message by public member 2', state: 'neutral' });
+            });
+          });
+      }, 500);
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {

@@ -1177,12 +1177,6 @@ declare global {
         prototype: HTMLPToastElement;
         new (): HTMLPToastElement;
     };
-    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
-    }
-    var HTMLPToastItemElement: {
-        prototype: HTMLPToastItemElement;
-        new (): HTMLPToastItemElement;
-    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1227,7 +1221,6 @@ declare global {
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
-        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -2207,7 +2200,6 @@ declare namespace LocalJSX {
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
-        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
