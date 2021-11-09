@@ -67,7 +67,7 @@ export const useToastManager = (): { addToast: ToastManagerInstance['addToast'] 
     addToast: (msg: ToastMessage): void => {
       // TODO: useRef?
       const toast: HTMLElement & { getManager(): Promise<ToastManagerInstance> } = document.querySelector(tagName);
-      componentsReady(toast.parentElement).then((amount) => {
+      componentsReady(toast.parentElement).then(() => {
         toast.getManager().then((manager) => manager.addToast(msg));
       });
     },
