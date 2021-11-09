@@ -21,6 +21,7 @@ export class Toast {
   @Element() public host!: HTMLElement;
 
   private manager: ToastManagerInstance;
+  private key = 0;
 
   /* eslint-disable @typescript-eslint/require-await */
   @Method()
@@ -38,6 +39,7 @@ export class Toast {
 
   public componentWillRender(): void {
     const { state } = this.manager.getToast() || {};
+    this.key++;
 
     addComponentCss(this.host, state, this.theme, parseJSON(this.offset));
   }
@@ -61,19 +63,19 @@ export class Toast {
     return (
       <Host>
         {toast && (
-          <div key={toast.message} class="root">
+          <div key={this.key} class="root">
+            <span class="progress" />
             <PrefixedTagNames.pIcon class="icon" name={getIconName(toast.state)} color="inherit" aria-hidden="true" />
             <div id={toastId} class="content" {...getContentAriaAttributes(labelId, messageId)}>
-              <PrefixedTagNames.pText id={messageId}>{toast.message || <slot />}</PrefixedTagNames.pText>
+              <PrefixedTagNames.pText id={messageId}>{toast.message}</PrefixedTagNames.pText>
             </div>
-
             <PrefixedTagNames.pButtonPure
               class="close"
               type="button"
               icon="close"
               hideLabel={true}
               aria-controls={toastId}
-              onClick={this.manager.dismissToast()}
+              onClick={this.manager.dismissToast}
             >
               Close notification
             </PrefixedTagNames.pButtonPure>
