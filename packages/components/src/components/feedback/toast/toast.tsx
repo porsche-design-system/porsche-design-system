@@ -2,10 +2,10 @@ import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
 import { toastManager, ToastManagerInstance } from './toast-manager';
 import { Theme } from '../../../types';
-import { TOAST_STATES, ToastOffsetValue } from './toast-utils';
+import { ToastOffsetValue } from './toast-utils';
 import { parseJSON } from './toast-utils';
 import { getContentAriaAttributes, getIconName } from './toast-utils';
-import { getPrefixedTagNames, throwIfValueIsInvalid } from '../../../utils';
+import { getPrefixedTagNames } from '../../../utils';
 
 @Component({
   tag: 'p-toast',
@@ -44,7 +44,6 @@ export class Toast {
   public componentWillRender(): void {
     const { state } = this.manager.getToast() || {};
 
-    throwIfValueIsInvalid(state, TOAST_STATES, 'state');
     addComponentCss(this.host, state, this.theme, parseJSON(this.offset));
   }
 

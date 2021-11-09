@@ -1,7 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { buildHostStyles, getThemedColors, getThemedStateColors, isDark } from '.';
+import { getThemedColors, getThemedStateColors, isDark } from '.';
 import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
