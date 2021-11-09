@@ -15,9 +15,6 @@ export class ToastExampleComponent implements OnInit {
   ngOnInit() {
     this.toastManager.addToast({ message: 'asd', state: 'success' });
     this.toastManager.addToast({ message: 'asd2', state: 'success' });
-    setTimeout(() => {
-      this.toastManager.addToast({ message: 'asd3', state: 'success' });
-    }, 10000);
   }
 
   onButtonClick() {
