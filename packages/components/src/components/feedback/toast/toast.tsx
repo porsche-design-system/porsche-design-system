@@ -10,30 +10,36 @@ import { getPrefixedTagNames } from '../../../utils';
 export class Toast {
   @Element() public host!: HTMLElement;
 
+  private manager: ToastManagerInstance;
+
+  /* eslint-disable @typescript-eslint/require-await */
   @Method()
-  async getManager(): Promise<ToastManagerInstance> {
+  public async getManager(): Promise<ToastManagerInstance> {
     return this.manager;
   }
-
-  private manager: ToastManagerInstance;
+  /* eslint-enable @typescript-eslint/require-await */
 
   public connectedCallback(): void {
     addComponentCss(this.host);
     this.manager = toastManager.register(this.host);
+    // eslint-disable-next-line no-console
     console.log('connectedCallback', this.manager);
   }
 
   public componentDidLoad(): void {
+    // eslint-disable-next-line no-console
     console.log('componentDidLoad', this.manager);
     this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
   }
 
   public disconnectedCallback(): void {
     toastManager.unregister();
+    // eslint-disable-next-line no-console
     console.log('disconnectedCallback', this.manager);
   }
 
   public render(): JSX.Element {
+    // eslint-disable-next-line no-console
     console.log('render', this.manager);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const toast = this.manager.getToast();
