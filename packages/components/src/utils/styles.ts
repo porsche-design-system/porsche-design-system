@@ -1,7 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { getThemedColors, getThemedStateColors, isDark } from '.';
+import { buildHostStyles, getThemedColors, getThemedStateColors, isDark } from '.';
 import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
@@ -217,3 +217,37 @@ export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'m
     },
   };
 };
+
+export const getNotificationHostStyles = (backgroundColor: string, borderColor: string, mediaQueryS: string) =>
+  buildHostStyles(
+    addImportantToEachRule({
+      display: 'grid',
+      gridTemplateColumns: '1fr auto',
+      gridTemplateRows: 'auto',
+      gridRowGap: pxToRemWithUnit(16),
+      alignItems: 'start',
+      justifyItems: 'start',
+      padding: pxToRemWithUnit(16),
+      background: backgroundColor,
+      borderLeft: `${pxToRemWithUnit(4)} solid ${borderColor}`,
+      [mediaQueryS]: {
+        gridTemplateColumns: 'auto 1fr auto auto',
+      },
+    })
+  );
+
+export const getNotificationIconAndContentStyles = (mediaQueryS: string, iconColor: string) => ({
+  icon: {
+    display: 'none',
+    [mediaQueryS]: {
+      display: 'inline-flex',
+      marginRight: pxToRemWithUnit(8),
+      color: iconColor,
+    },
+  },
+  content: {
+    display: 'grid',
+    gridGap: pxToRemWithUnit(4),
+    maxWidth: pxToRemWithUnit(800),
+  },
+});
