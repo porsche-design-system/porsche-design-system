@@ -3,25 +3,33 @@ import { forceUpdate } from '@stencil/core';
 export const TOAST_DEFAULT_TIMEOUT = 6000;
 export type ToastState = 'neutral' | 'success';
 
-type Message = {
+type ToastMessage = {
   message: string;
   state?: ToastState;
 };
 
-let isInitialized = false;
-
-export class ToastManager {
-  private messages: Message[] = [];
+class ToastManager {
+  private messages: ToastMessage[] = [];
+  private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
 
-  constructor(private toastEl: HTMLElement) {
-    if (isInitialized) {
+  public register(toastElement: HTMLElement): ToastManagerInstance {
+    console.log('ToastManager.register()');
+    if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
     }
-    isInitialized = true;
+
+    this.toastEl = toastElement;
+    return this;
   }
 
-  public addToast(message: Message): void {
+  public unregister(): void {
+    console.log('ToastManager.unregister()');
+    this.toastEl = null;
+    clearTimeout(this.timeout);
+  }
+
+  public addToast(message: ToastMessage): void {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }
@@ -40,7 +48,7 @@ export class ToastManager {
     forceUpdate(this.toastEl);
   };
 
-  public getToast(): Message {
+  public getToast(): ToastMessage {
     const [message] = this.messages;
 
     if (message) {
@@ -50,4 +58,5 @@ export class ToastManager {
   }
 }
 
-export type ToastManagerInstance = Omit<ToastManager, 'prototype'>;
+export const toastManager = new ToastManager();
+export type ToastManagerInstance = typeof toastManager;

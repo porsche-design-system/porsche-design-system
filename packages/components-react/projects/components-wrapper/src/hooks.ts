@@ -4,7 +4,7 @@ import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 import { componentsReady } from '@porsche-design-system/components-js';
 import type { PToastProps } from './lib/components';
-import type { ToastManagerInstance } from './lib/types';
+import type { ToastManagerInstance, ToastMessage } from './lib/types';
 
 let skipCheck = false;
 
@@ -65,10 +65,11 @@ export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutE
 export const useToastManager = (): { addToast: ToastManagerInstance['addToast'] } => {
   const tagName = usePrefix('p-toast');
   return {
-    addToast: (msg: { message: string; state: any }) => {
+    addToast: (msg: ToastMessage): void => {
       // useRef
       const toast: HTMLElement & { manager: PToastProps['manager'] } = document.querySelector(tagName);
       componentsReady(toast.parentElement).then((amount) => {
+        console.log(amount);
         toast.manager.addToast(msg);
       });
     },

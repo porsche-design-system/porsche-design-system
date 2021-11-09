@@ -10,7 +10,7 @@ export const ToastExamplePage = (): JSX.Element => {
     setTimeout(() => {
       addToast({ message: 'asd3', state: 'success' });
     }, 10000);
-  }, []);
+  }, [addToast]);
 
   return (
     <>
