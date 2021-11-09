@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -9,8 +9,13 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToastExampleComponent {
+export class ToastExampleComponent implements OnInit {
   constructor(private toastManager: ToastManager) {}
+
+  ngOnInit() {
+    this.toastManager.addToast({ message: 'asd', state: 'success' });
+    this.toastManager.addToast({ message: 'asd2', state: 'success' });
+  }
 
   onButtonClick() {
     this.toastManager.addToast({ message: 'some message ' + new Date().toISOString(), state: 'success' });
