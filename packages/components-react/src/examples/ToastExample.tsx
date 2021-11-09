@@ -7,9 +7,6 @@ export const ToastExamplePage = (): JSX.Element => {
   useEffect(() => {
     addToast({ message: 'asd', state: 'success' });
     addToast({ message: 'asd2', state: 'success' });
-    setTimeout(() => {
-      addToast({ message: 'asd3', state: 'success' });
-    }, 10000);
   }, [addToast]);
 
   return (
