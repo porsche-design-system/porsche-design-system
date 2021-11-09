@@ -1,4 +1,6 @@
 import { forceUpdate } from '@stencil/core';
+import { throwIfValueIsInvalid } from '../../../utils';
+import { TOAST_STATES } from './toast-utils';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
 export type ToastState = 'neutral' | 'success';
@@ -35,6 +37,10 @@ class ToastManager {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }
+    if (!message.state) {
+      message.state = 'neutral';
+    }
+    throwIfValueIsInvalid(message.state, TOAST_STATES, 'state');
 
     const { length } = this.messages;
     this.messages.push(message);
