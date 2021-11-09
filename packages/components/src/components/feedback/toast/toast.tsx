@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
-import { ToastManager, ToastManagerInstance } from './toast-manager';
+import { toastManager, ToastManagerInstance } from './toast-manager';
 
 @Component({
   tag: 'p-toast',
@@ -10,14 +10,21 @@ export class Toast {
   @Element() public host!: HTMLElement;
 
   @Prop()
-  public readonly manager: ToastManagerInstance = new ToastManager(this.host);
+  public manager: ToastManagerInstance;
 
   public connectedCallback(): void {
+    console.log('connectedCallback');
     addComponentCss(this.host);
+    this.manager = toastManager.register(this.host);
   }
 
   public componentDidLoad(): void {
     this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
+  }
+
+  public disconnectedCallback(): void {
+    console.log('disconnectedCallback');
+    toastManager.unregister();
   }
 
   public render(): JSX.Element {

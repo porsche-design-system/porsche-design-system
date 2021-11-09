@@ -1,7 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
-import { ToastExamplePage } from './examples';
 
 export type RouteType = RouteProps & {
   name: string;
