@@ -14,6 +14,7 @@ import {
 } from '../../../utils';
 import type { ToastOffset, ToastState } from './toast-utils';
 import type { Theme } from '../../../types';
+import { TOAST_DEFAULT_TIMEOUT } from './toast-manager';
 
 const mediaQueryS = mediaQuery('s');
 
@@ -34,6 +35,19 @@ export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOf
     root: getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
     ...getNotificationIconAndContentStyles(mediaQueryS, iconColor),
     ...getCloseIconStyles(),
+    progress: {
+      animationName: '$progress',
+      animationDuration: `${TOAST_DEFAULT_TIMEOUT}ms`,
+      animationTimingFunction: 'linear',
+      animationFillMode: 'forwards',
+      display: 'block',
+      background: themedColors[state + 'Color'],
+      height: '.5rem',
+    },
+    '@keyframes progress': {
+      from: { width: '100%' },
+      to: { width: 0 },
+    },
   });
 };
 

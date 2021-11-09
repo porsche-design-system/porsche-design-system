@@ -15,11 +15,10 @@ export const getIconName = (state: ToastState): IconName => {
   return stateToIconMap[state];
 };
 
-export const getContentAriaAttributes = (labelId: string, descriptionId: string): AriaAttributes & { role: string } => {
+export const getContentAriaAttributes = (descriptionId: string): AriaAttributes & { role: string } => {
   return {
     role: 'status',
     'aria-live': 'polite',
-    'aria-labelledby': labelId,
     'aria-describedby': descriptionId,
   };
 };
