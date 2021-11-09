@@ -1,7 +1,30 @@
-export type ToastItemOffset = { bottom: number };
-export type ToastItemOffsetValue = ToastItemOffset | string;
+import { AriaAttributes } from 'react';
+import type { IconName } from '../../../types';
 
-export const parseJSON = (prop: ToastItemOffsetValue): ToastItemOffset => {
+export const TOAST_STATES = ['neutral', 'success'] as const;
+export type ToastState = typeof TOAST_STATES[number];
+
+export type ToastOffset = { bottom: number };
+export type ToastOffsetValue = ToastOffset | string;
+
+export const getIconName = (state: ToastState): IconName => {
+  const stateToIconMap: { [key in ToastState]: IconName } = {
+    neutral: 'information',
+    success: 'success',
+  };
+  return stateToIconMap[state];
+};
+
+export const getContentAriaAttributes = (labelId: string, descriptionId: string): AriaAttributes & { role: string } => {
+  return {
+    role: 'status',
+    'aria-live': 'polite',
+    'aria-labelledby': labelId,
+    'aria-describedby': descriptionId,
+  };
+};
+
+export const parseJSON = (prop: ToastOffsetValue): ToastOffset => {
   if (typeof prop === 'string') {
     // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
     return JSON.parse(
