@@ -1,9 +1,9 @@
 import {
-  addImportantToEachRule,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
+  getNotificationHostStyles,
+  getNotificationIconAndContentStyles,
   getThemedColors,
   mediaQuery,
   pxToRemWithUnit,
@@ -25,35 +25,8 @@ export const getComponentCss = (
   const iconColor = getThemedColors('light')[`${state}Color`];
 
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'grid',
-        gridTemplateColumns: '1fr auto',
-        gridTemplateRows: 'auto',
-        gridRowGap: pxToRemWithUnit(16),
-        alignItems: 'start',
-        justifyItems: 'start',
-        padding: pxToRemWithUnit(16),
-        background: backgroundColor,
-        borderLeft: `${pxToRemWithUnit(4)} solid ${borderColor}`,
-        [mediaQueryS]: {
-          gridTemplateColumns: 'auto 1fr auto auto',
-        },
-      })
-    ),
-    icon: {
-      display: 'none',
-      [mediaQueryS]: {
-        display: 'inline-flex',
-        marginRight: pxToRemWithUnit(8),
-        color: iconColor,
-      },
-    },
-    content: {
-      display: 'grid',
-      gridGap: pxToRemWithUnit(4),
-      maxWidth: pxToRemWithUnit(800),
-    },
+    ...getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
+    ...getNotificationIconAndContentStyles(mediaQueryS, iconColor),
     ...(hasAction && {
       action: {
         gridColumnStart: 1,

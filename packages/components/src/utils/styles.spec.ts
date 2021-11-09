@@ -7,6 +7,8 @@ import {
   getFocusStyles,
   getFormTextHiddenJssStyle,
   getHoverStyles,
+  getNotificationHostStyles,
+  getNotificationIconAndContentStyles,
   getRequiredStyles,
   getStateMessageStyles,
   getTextHiddenJssStyle,
@@ -159,4 +161,22 @@ describe('getStateMessageStyles()', () => {
   ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
     expect(getStateMessageStyles(theme, state)).toMatchSnapshot();
   });
+});
+
+describe('getNotificationHostStyles()', () => {
+  it.each<[string, string, string]>([['red', 'blue', '@media (min-width: 760px)']])(
+    'should return correct JssStyle for backgroundColor: %s, borderColor and mediaQueryS: %s',
+    (backgroundColor, borderColor, mediaQueryS) => {
+      expect(getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS)).toMatchSnapshot();
+    }
+  );
+});
+
+describe('getNotificationIconAndContentStyles()', () => {
+  it.each<[string, string]>([['@media (min-width: 760px)', 'blue']])(
+    'should return correct JssStyle for mediaQuery S and iconColor: %s',
+    (mediaQueryS, iconColor) => {
+      expect(getNotificationIconAndContentStyles(mediaQueryS, iconColor)).toMatchSnapshot();
+    }
+  );
 });
