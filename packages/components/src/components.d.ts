@@ -891,7 +891,7 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PToast {
-        "manager": ToastManagerInstance;
+        "getManager": () => Promise<ToastManagerInstance>;
     }
     interface PToastItem {
         /**
@@ -2122,7 +2122,6 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PToast {
-        "manager"?: ToastManagerInstance;
     }
     interface PToastItem {
         /**
