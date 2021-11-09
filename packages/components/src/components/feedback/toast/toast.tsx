@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Method } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
 import { toastManager, ToastManagerInstance } from './toast-manager';
+import { getPrefixedTagNames } from '../../../utils';
 
 @Component({
   tag: 'p-toast',
@@ -34,14 +35,15 @@ export class Toast {
 
   public render(): JSX.Element {
     console.log('render', this.manager);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const toast = this.manager.getToast();
 
     return (
       <Host>
         {toast && (
-          <p-toast-item key={toast.message} state={toast.state}>
-            <p-text>{toast.message}</p-text>
-          </p-toast-item>
+          <PrefixedTagNames.pToastItem key={toast.message} state={toast.state}>
+            <PrefixedTagNames.pText>{toast.message}</PrefixedTagNames.pText>
+          </PrefixedTagNames.pToastItem>
         )}
       </Host>
     );
