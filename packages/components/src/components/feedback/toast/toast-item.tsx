@@ -1,6 +1,9 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
-import { addComponentCss } from './toast-item-styles';
-import type { ToastState } from './toast-manager';
+import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
+import type { ToastItemState } from './toast-item-utils';
+import type { Theme } from '../../../types';
+import { getContentAriaAttributes, getIconName, TOAST_ITEM_STATES } from './toast-item-utils';
+import { attachComponentCss, getPrefixedTagNames, throwIfValueIsInvalid } from '../../../utils';
+import { getComponentCss } from './toast-item-styles';
 
 @Component({
   tag: 'p-toast-item',
@@ -9,27 +12,47 @@ import type { ToastState } from './toast-manager';
 export class ToastItem {
   @Element() public host!: HTMLElement;
 
-  /** Defines a message. */
-  @Prop() public message?: string;
+  /** Message of the toast-item. */
+  @Prop() public message?: string = '';
 
-  /** Defines visual appearance. */
-  @Prop() public state?: ToastState = 'neutral';
+  /** State of the toast-item. */
+  @Prop() public state?: ToastItemState = 'neutral';
 
-  @Event() public close?: EventEmitter<void>;
+  /** Adapts the toast-item color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
-  public connectedCallback(): void {
-    addComponentCss(this.host, this.state);
+  /** Emitted when the close button is clicked. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  public componentWillRender(): void {
+    throwIfValueIsInvalid(this.state, TOAST_ITEM_STATES, 'state');
+    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
 
   public render(): JSX.Element {
+    const toastId = 'toast';
+    const labelId = 'label';
+    const messageId = 'message';
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
-      <div class="root">
-        <slot />
-        <span>{this.message}</span>
-        <span class="progress" />
-        {/*// @ts-ignore*/}
-        <button onClick={this.close.emit}>X</button>
-      </div>
+      <Host>
+        <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
+        <div id={toastId} class="content" {...getContentAriaAttributes(labelId, messageId)}>
+          <PrefixedTagNames.pText id={messageId}>{this.message || <slot />}</PrefixedTagNames.pText>
+        </div>
+
+        <PrefixedTagNames.pButtonPure
+          class="close"
+          type="button"
+          icon="close"
+          hideLabel={true}
+          aria-controls={toastId}
+          onClick={this.dismiss.emit}
+        >
+          Close notification
+        </PrefixedTagNames.pButtonPure>
+      </Host>
     );
   }
 }

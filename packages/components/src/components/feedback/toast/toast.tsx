@@ -1,12 +1,21 @@
-import { Component, Element, h, Host, JSX, Method } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
 import { toastManager, ToastManagerInstance } from './toast-manager';
+import { Theme } from '../../../types';
+import { ToastItemOffsetValue } from './toast-utils';
+import { parseJSON } from './toast-utils';
 
 @Component({
   tag: 'p-toast',
   shadow: true,
 })
 export class Toast {
+  /** Adapts the toast-item color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
+
+  /** The offset of the toast-item. */
+  @Prop() public offset?: ToastItemOffsetValue = { bottom: 55 };
+
   @Element() public host!: HTMLElement;
 
   @Method()
@@ -17,7 +26,7 @@ export class Toast {
   private manager: ToastManagerInstance;
 
   public connectedCallback(): void {
-    addComponentCss(this.host);
+    addComponentCss(this.host, parseJSON(this.offset));
     this.manager = toastManager.register(this.host);
     console.log('connectedCallback', this.manager);
   }
@@ -38,11 +47,7 @@ export class Toast {
 
     return (
       <Host>
-        {toast && (
-          <p-toast-item key={toast.message} state={toast.state}>
-            <p-text>{toast.message}</p-text>
-          </p-toast-item>
-        )}
+        {toast && <p-toast-item key={toast.message} message={toast.message} state={toast.state} theme={this.theme} />}
       </Host>
     );
   }

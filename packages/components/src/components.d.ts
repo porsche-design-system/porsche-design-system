@@ -24,7 +24,9 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastManagerInstance, ToastState } from "./components/feedback/toast/toast-manager";
+import { ToastItemOffsetValue } from "./components/feedback/toast/toast-utils";
+import { ToastManagerInstance } from "./components/feedback/toast/toast-manager";
+import { ToastItemState } from "./components/feedback/toast/toast-item-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -892,16 +894,28 @@ export namespace Components {
     }
     interface PToast {
         "getManager": () => Promise<ToastManagerInstance>;
+        /**
+          * The offset of the toast-item.
+         */
+        "offset"?: ToastItemOffsetValue;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToastItem {
         /**
-          * Defines a message.
+          * Message of the toast-item.
          */
         "message"?: string;
         /**
-          * Defines visual appearance.
+          * State of the toast-item.
          */
-        "state"?: ToastState;
+        "state"?: ToastItemState;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
     }
 }
 declare global {
@@ -2122,17 +2136,32 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PToast {
+        /**
+          * The offset of the toast-item.
+         */
+        "offset"?: ToastItemOffsetValue;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToastItem {
         /**
-          * Defines a message.
+          * Message of the toast-item.
          */
         "message"?: string;
-        "onClose"?: (event: CustomEvent<void>) => void;
         /**
-          * Defines visual appearance.
+          * Emitted when the close button is clicked.
          */
-        "state"?: ToastState;
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * State of the toast-item.
+         */
+        "state"?: ToastItemState;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
