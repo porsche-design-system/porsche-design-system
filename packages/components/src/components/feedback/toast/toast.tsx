@@ -20,16 +20,14 @@ export class Toast {
   /* eslint-enable @typescript-eslint/require-await */
 
   public connectedCallback(): void {
-    addComponentCss(this.host);
     this.manager = toastManager.register(this.host);
     // eslint-disable-next-line no-console
     console.log('connectedCallback', this.manager);
   }
 
-  public componentDidLoad(): void {
-    // eslint-disable-next-line no-console
-    console.log('componentDidLoad', this.manager);
-    this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
+  public componentWillRender(): void {
+    const { state } = this.manager.getToast() || {};
+    addComponentCss(this.host, state);
   }
 
   public disconnectedCallback(): void {
@@ -47,9 +45,19 @@ export class Toast {
     return (
       <Host>
         {toast && (
-          <PrefixedTagNames.pToastItem key={toast.message} state={toast.state}>
+          <div key={toast.message} class="root">
             <PrefixedTagNames.pText>{toast.message}</PrefixedTagNames.pText>
-          </PrefixedTagNames.pToastItem>
+            <span class="progress" />
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              type="button"
+              icon="close"
+              hideLabel={true}
+              onClick={this.manager.dismissToast}
+            >
+              Close toast
+            </PrefixedTagNames.pButtonPure>
+          </div>
         )}
       </Host>
     );
