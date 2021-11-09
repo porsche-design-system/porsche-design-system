@@ -3,7 +3,6 @@ import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 import { componentsReady } from '@porsche-design-system/components-js';
-import type { PToastProps } from './lib/components';
 import type { ToastManagerInstance, ToastMessage } from './lib/types';
 
 let skipCheck = false;
@@ -66,11 +65,10 @@ export const useToastManager = (): { addToast: ToastManagerInstance['addToast'] 
   const tagName = usePrefix('p-toast');
   return {
     addToast: (msg: ToastMessage): void => {
-      // useRef
-      const toast: HTMLElement & { manager: PToastProps['manager'] } = document.querySelector(tagName);
+      // TODO: useRef?
+      const toast: HTMLElement & { getManager(): Promise<ToastManagerInstance> } = document.querySelector(tagName);
       componentsReady(toast.parentElement).then((amount) => {
-        console.log(amount);
-        toast.manager.addToast(msg);
+        toast.getManager().then((manager) => manager.addToast(msg));
       });
     },
   };

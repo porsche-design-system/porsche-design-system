@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
 import { toastManager, ToastManagerInstance } from './toast-manager';
 
@@ -9,25 +9,31 @@ import { toastManager, ToastManagerInstance } from './toast-manager';
 export class Toast {
   @Element() public host!: HTMLElement;
 
-  @Prop()
-  public manager: ToastManagerInstance;
+  @Method()
+  async getManager(): Promise<ToastManagerInstance> {
+    return this.manager;
+  }
+
+  private manager: ToastManagerInstance;
 
   public connectedCallback(): void {
-    console.log('connectedCallback');
     addComponentCss(this.host);
     this.manager = toastManager.register(this.host);
+    console.log('connectedCallback', this.manager);
   }
 
   public componentDidLoad(): void {
+    console.log('componentDidLoad', this.manager);
     this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
   }
 
   public disconnectedCallback(): void {
-    console.log('disconnectedCallback');
     toastManager.unregister();
+    console.log('disconnectedCallback', this.manager);
   }
 
   public render(): JSX.Element {
+    console.log('render', this.manager);
     const toast = this.manager.getToast();
 
     return (
