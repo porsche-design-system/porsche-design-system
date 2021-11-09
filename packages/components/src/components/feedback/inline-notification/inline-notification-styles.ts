@@ -1,4 +1,6 @@
 import {
+  addImportantToEachRule,
+  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -25,7 +27,7 @@ export const getComponentCss = (
   const iconColor = getThemedColors('light')[`${state}Color`];
 
   return getCss({
-    ...getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
+    ...buildHostStyles(addImportantToEachRule(getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS))),
     ...getNotificationIconAndContentStyles(mediaQueryS, iconColor),
     ...(hasAction && {
       action: {
