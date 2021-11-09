@@ -27,8 +27,7 @@ export class ToastItem {
         <slot />
         <span>{this.message}</span>
         <span class="progress" />
-        {/*// @ts-ignore*/}
-        <button onClick={this.close.emit}>X</button>
+        <button onClick={this.close.emit as any}>X</button>
       </div>
     );
   }
