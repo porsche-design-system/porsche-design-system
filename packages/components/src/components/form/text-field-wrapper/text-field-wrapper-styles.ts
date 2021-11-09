@@ -18,9 +18,9 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
-import { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
-import { FormState, Theme } from '../../../types';
+import type { FormState, Theme } from '../../../types';
 
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
@@ -46,12 +46,13 @@ export const getComponentCss = (
   unit: string,
   unitPosition: TextFieldWrapperUnitPosition,
   isPassword: boolean
-) => {
+): string => {
   const theme: Theme = 'light';
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
     getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
   const hasState = state !== 'none';
+
   return getCss({
     ...buildHostStyles({
       display: 'block',

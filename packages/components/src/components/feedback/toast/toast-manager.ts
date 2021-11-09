@@ -14,6 +14,7 @@ class ToastManager {
   private timeout: NodeJS.Timeout;
 
   public register(toastElement: HTMLElement): ToastManagerInstance {
+    // eslint-disable-next-line no-console
     console.log('ToastManager.register()');
     if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
@@ -24,6 +25,7 @@ class ToastManager {
   }
 
   public unregister(): void {
+    // eslint-disable-next-line no-console
     console.log('ToastManager.unregister()');
     this.toastEl = null;
     clearTimeout(this.timeout);
