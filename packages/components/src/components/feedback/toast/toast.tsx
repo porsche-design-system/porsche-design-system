@@ -44,6 +44,10 @@ export class Toast {
     addComponentCss(this.host, state, this.theme, parseJSON(this.offset));
   }
 
+  public componentDidRender(): void {
+    this.manager.startToast();
+  }
+
   public disconnectedCallback(): void {
     toastManager.unregister();
     // eslint-disable-next-line no-console

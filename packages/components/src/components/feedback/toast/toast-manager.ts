@@ -57,12 +57,13 @@ class ToastManager {
   };
 
   public getToast(): ToastMessage {
-    const [message] = this.messages;
+    return this.messages[0];
+  }
 
-    if (message) {
+  public startToast(): void {
+    if (this.messages.length) {
       this.timeout = setTimeout(this.dismissToast, TOAST_DEFAULT_TIMEOUT);
     }
-    return message;
   }
 }
 
