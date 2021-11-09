@@ -24,7 +24,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastManagerInstance, ToastState } from "./components/feedback/toast/toast-manager";
+import { ToastManagerInstance } from "./components/feedback/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
         /**
@@ -893,16 +893,6 @@ export namespace Components {
     interface PToast {
         "getManager": () => Promise<ToastManagerInstance>;
     }
-    interface PToastItem {
-        /**
-          * Defines a message.
-         */
-        "message"?: string;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
 }
 declare global {
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
@@ -1163,12 +1153,6 @@ declare global {
         prototype: HTMLPToastElement;
         new (): HTMLPToastElement;
     };
-    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
-    }
-    var HTMLPToastItemElement: {
-        prototype: HTMLPToastItemElement;
-        new (): HTMLPToastItemElement;
-    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1213,7 +1197,6 @@ declare global {
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
-        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -2123,17 +2106,6 @@ declare namespace LocalJSX {
     }
     interface PToast {
     }
-    interface PToastItem {
-        /**
-          * Defines a message.
-         */
-        "message"?: string;
-        "onClose"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines visual appearance.
-         */
-        "state"?: ToastState;
-    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -2178,7 +2150,6 @@ declare namespace LocalJSX {
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
-        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
@@ -2228,7 +2199,6 @@ declare module "@stencil/core" {
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
-            "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
     }
 }
