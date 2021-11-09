@@ -4,6 +4,7 @@ import {
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
+  getCloseIconStyles,
   getCss,
   getNotificationHostStyles,
   getNotificationIconAndContentStyles,
@@ -25,13 +26,14 @@ export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOf
   return getCss({
     ...buildHostStyles(
       addImportantToEachRule({
-        ...getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
         position: 'fixed',
         bottom: pxToRemWithUnit(offset.bottom),
         left: pxToRemWithUnit(8),
       })
     ),
-    root: getNotificationIconAndContentStyles(mediaQueryS, iconColor),
+    root: getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
+    ...getNotificationIconAndContentStyles(mediaQueryS, iconColor),
+    ...getCloseIconStyles(),
   });
 };
 

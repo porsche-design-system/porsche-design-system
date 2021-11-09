@@ -252,3 +252,9 @@ export const getNotificationIconAndContentStyles = (mediaQueryS: string, iconCol
     maxWidth: pxToRemWithUnit(800),
   },
 });
+
+export const getCloseIconStyles = (): Styles<'close'> => ({
+  close: {
+    marginLeft: pxToRemWithUnit(16),
+  },
+});
