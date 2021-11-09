@@ -64,6 +64,16 @@ const generateCodeSamples = (): void => {
         ],
       ],
     },
+    {
+      component: 'p-toast',
+      samples: [
+        [
+          componentsJsPath + '/toast-example.html',
+          componentsAngularPath + '/toast-example.component.ts',
+          componentsReactPath + '/ToastExample.tsx',
+        ],
+      ],
+    },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');
