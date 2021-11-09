@@ -1,17 +1,18 @@
 import { addImportantToEachRule, attachComponentCss, buildHostStyles, getCss, pxToRemWithUnit } from '../../../utils';
+import { ToastItemOffset } from './toast-utils';
 
-export const getComponentCss = (): string => {
+export const getComponentCss = (offset: ToastItemOffset): string => {
   return getCss(
     buildHostStyles(
       addImportantToEachRule({
         position: 'fixed',
-        bottom: pxToRemWithUnit(8),
+        bottom: pxToRemWithUnit(offset.bottom),
         left: pxToRemWithUnit(8),
       })
     )
   );
 };
 
-export const addComponentCss = (host: HTMLElement): void => {
-  attachComponentCss(host, getComponentCss);
+export const addComponentCss = (host: HTMLElement, offset: ToastItemOffset): void => {
+  attachComponentCss(host, getComponentCss, offset);
 };
