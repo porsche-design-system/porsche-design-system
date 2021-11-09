@@ -276,6 +276,11 @@ export const routes: ExtendedRoute[] = [
     path: 'table-example-advanced',
     component: fromExamples.TableExampleAdvancedComponent,
   },
+  {
+    name: 'Toast Example',
+    path: 'toast-example',
+    component: fromExamples.ToastExampleComponent,
+  },
 ];
 
 @NgModule({
