@@ -52,7 +52,6 @@ export class Toast {
 
   public render(): JSX.Element {
     const toastId = 'toast';
-    const labelId = 'label';
     const messageId = 'message';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -64,11 +63,10 @@ export class Toast {
       <Host>
         {toast && (
           <div key={this.key} class="root">
-            <span class="progress" />
             <PrefixedTagNames.pIcon class="icon" name={getIconName(toast.state)} color="inherit" aria-hidden="true" />
-            <div id={toastId} class="content" {...getContentAriaAttributes(labelId, messageId)}>
-              <PrefixedTagNames.pText id={messageId}>{toast.message}</PrefixedTagNames.pText>
-            </div>
+            <PrefixedTagNames.pText id={messageId} class="content" {...getContentAriaAttributes(messageId)}>
+              {toast.message}
+            </PrefixedTagNames.pText>
             <PrefixedTagNames.pButtonPure
               class="close"
               type="button"
@@ -77,10 +75,11 @@ export class Toast {
               aria-controls={toastId}
               onClick={this.manager.dismissToast}
             >
-              Close notification
+              Close toast
             </PrefixedTagNames.pButtonPure>
           </div>
         )}
+        <span key={this.key} class="progress" />
       </Host>
     );
   }
