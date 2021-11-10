@@ -5,6 +5,7 @@
 Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
 
 ## Basic
+// TODO: Hint about using it outside of routing if possible
 
 <Playground :frameworkMarkup="basic" :config="config"></Playground>
 

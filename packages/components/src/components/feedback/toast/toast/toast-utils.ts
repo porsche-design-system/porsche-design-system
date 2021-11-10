@@ -1,27 +1,8 @@
-import { AriaAttributes } from 'react';
-import type { IconName } from '../../../types';
-
 export const TOAST_STATES = ['neutral', 'success'] as const;
 export type ToastState = typeof TOAST_STATES[number];
 
 export type ToastOffset = { bottom: number };
 export type ToastOffsetValue = ToastOffset | string;
-
-export const getIconName = (state: ToastState): IconName => {
-  const stateToIconMap: { [key in ToastState]: IconName } = {
-    neutral: 'information',
-    success: 'success',
-  };
-  return stateToIconMap[state];
-};
-
-export const getContentAriaAttributes = (descriptionId: string): AriaAttributes & { role: string } => {
-  return {
-    role: 'status',
-    'aria-live': 'polite',
-    'aria-describedby': descriptionId,
-  };
-};
 
 export const parseJSON = (prop: ToastOffsetValue): ToastOffset => {
   if (typeof prop === 'string') {
