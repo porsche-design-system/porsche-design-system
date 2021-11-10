@@ -1,33 +1,24 @@
 import {
   addImportantToEachRule,
-  attachComponentCss,
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getThemedColors,
-  pxToRemWithUnit,
-} from '../../../utils';
-import type { ToastOffset, ToastState } from './toast-utils';
-import type { Theme } from '../../../types';
-import { TOAST_DEFAULT_TIMEOUT } from './toast-manager';
+} from '../../../../utils';
 import {
   getCloseIconStyles,
   getNotificationContentStyles,
   getNotificationIconStyles,
   getNotificationRootStyles,
-} from '../inline-notification/inline-notification-styles';
+} from '../../inline-notification/inline-notification-styles';
+import { TOAST_DEFAULT_TIMEOUT } from '../toast/toast-manager';
+import { Theme } from '../../../../types';
+import { ToastState } from '../toast/toast-utils';
 
-export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOffset): string => {
+export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        position: 'fixed',
-        bottom: pxToRemWithUnit(offset.bottom),
-        left: pxToRemWithUnit(8),
-      })
-    ),
-    root: getNotificationRootStyles(state, theme),
+    ...buildHostStyles(addImportantToEachRule(getNotificationRootStyles(state, theme))),
     icon: getNotificationIconStyles(state),
     content: getNotificationContentStyles(),
     close: getCloseIconStyles(),
@@ -45,10 +36,6 @@ export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOf
       to: { width: 0 },
     },
   });
-};
-
-export const addComponentCss = (host: HTMLElement, state: ToastState, theme: Theme, offset: ToastOffset): void => {
-  attachComponentCss(host, getComponentCss, state, theme, offset);
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {

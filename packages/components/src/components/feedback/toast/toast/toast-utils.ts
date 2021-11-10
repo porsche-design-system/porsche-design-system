@@ -1,18 +1,8 @@
-import { AriaAttributes } from 'react';
-
 export const TOAST_STATES = ['neutral', 'success'] as const;
 export type ToastState = typeof TOAST_STATES[number];
 
 export type ToastOffset = { bottom: number };
 export type ToastOffsetValue = ToastOffset | string;
-
-export const getContentAriaAttributes = (descriptionId: string): AriaAttributes & { role: string } => {
-  return {
-    role: 'status',
-    'aria-live': 'polite',
-    'aria-describedby': descriptionId,
-  };
-};
 
 export const parseJSON = (prop: ToastOffsetValue): ToastOffset => {
   if (typeof prop === 'string') {

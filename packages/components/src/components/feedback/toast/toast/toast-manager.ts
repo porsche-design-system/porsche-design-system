@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { throwIfValueIsInvalid } from '../../../utils';
+import { throwIfValueIsInvalid } from '../../../../utils';
 import { TOAST_STATES } from './toast-utils';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
