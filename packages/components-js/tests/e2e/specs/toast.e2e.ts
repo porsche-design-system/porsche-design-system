@@ -1,13 +1,14 @@
 import { Page } from 'puppeteer';
 import {
-  getElementStyle,
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ToastMessage } from '../../../../components-angular/dist/components-wrapper';
+import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
+import { TOAST_STATES } from '@porsche-design-system/components/dist/types/components/feedback/toast/toast/toast-utils';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -34,23 +35,15 @@ const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
 };
 
 const getHost = () => selectNode(page, 'p-toast');
-const getRoot = () => selectNode(page, 'p-toast >>> .root');
+const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
 const getCloseButton = () => selectNode(page, 'p-toast >>> p-button-pure');
 
-it('should show neutral toast message', async () => {
+it.each<ToastState>(TOAST_STATES)('should forward state: %s to p-toast-item', async (state) => {
   await initToast();
-  await addToast({ state: 'neutral' });
+  await addToast({ state });
 
-  const root = await getRoot();
-  expect(await getElementStyle(root, 'backgroundColor')).toBe('rgb(229, 239, 248)');
-});
-
-it('should show success toast message', async () => {
-  await initToast();
-  await addToast({ state: 'success' });
-
-  const root = await getRoot();
-  expect(await getElementStyle(root, 'backgroundColor')).toBe('rgb(229, 243, 231)');
+  const toastItem = await getToastItem();
+  expect(await getProperty(toastItem, 'state')).toBe(state);
 });
 
 xit('should automatically close toast after 6 seconds', async () => {});
@@ -76,12 +69,13 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
+    expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
     expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
   });
 
   it('should work without unnecessary round trips on prop change', async () => {
