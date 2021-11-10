@@ -3,7 +3,6 @@ import {
   attachComponentCss,
   buildHostStyles,
   getCss,
-  getThemedColors,
   pxToRemWithUnit,
 } from '../../../../utils';
 import type { ToastOffset } from './toast-utils';
