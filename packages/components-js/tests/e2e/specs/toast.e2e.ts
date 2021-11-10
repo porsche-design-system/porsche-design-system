@@ -1,21 +1,31 @@
 import { Page } from 'puppeteer';
 import {
+  addEventListener,
+  getAttribute,
   getLifecycleStatus,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
 import { TOAST_STATES } from '@porsche-design-system/components/dist/types/components/feedback/toast/toast/toast-utils';
 
+const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
+
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initToast = (): Promise<void> => {
-  return setContentWithDesignSystem(page, `<p-toast></p-toast>`);
+const initToast = async (): Promise<void> => {
+  await setContentWithDesignSystem(page, `<p-toast></p-toast>`);
+  await page.evaluate(async () => {
+    const toast = document.querySelector('p-toast');
+    const manager = await (toast as any).getManager();
+    manager.timeoutDuration = TOAST_TIMEOUT_DURATION_OVERRIDE;
+  });
 };
 
 const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
@@ -34,23 +44,52 @@ const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
   await waitForStencilLifecycle(page);
 };
 
+const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
+  await initToast();
+  await addToast(message);
+};
+
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
-const getCloseButton = () => selectNode(page, 'p-toast >>> p-button-pure');
+const getCloseButton = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
 
 it.each<ToastState>(TOAST_STATES)('should forward state: %s to p-toast-item', async (state) => {
-  await initToast();
-  await addToast({ state });
+  await initToastWithToastItem({ state });
 
   const toastItem = await getToastItem();
   expect(await getProperty(toastItem, 'state')).toBe(state);
 });
 
-xit('should automatically close toast after 6 seconds', async () => {});
+it('should close toast-item via close button click', async () => {
+  await initToastWithToastItem();
 
-xit('should close toast via close button click', async () => {});
+  expect(await getToastItem()).toBeDefined();
 
-xit('should queue multiple toasts and show them in correct order', async () => {});
+  const closeButton = await getCloseButton();
+  await closeButton.click();
+  await waitForStencilLifecycle(page);
+
+  expect(await getToastItem()).not.toBeDefined();
+});
+
+it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds`, async () => {
+  await initToastWithToastItem();
+
+  expect(await getToastItem()).toBeDefined();
+
+  await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+  await waitForStencilLifecycle(page);
+
+  expect(await getToastItem()).not.toBeDefined();
+});
+
+it('should queue multiple toast-items and show them in correct order', async () => {
+  await initToastWithToastItem({ message: '1' });
+  await addToast({ message: '2' });
+  await addToast({ message: '3' });
+});
+
+xit('should queue two toast-items, close the first, queue a third, display the second one, after 6 seconds display the third and finally after 12 seconds display none', async () => {});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
@@ -64,8 +103,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips with message', async () => {
-    await initToast();
-    await addToast();
+    await initToastWithToastItem();
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
@@ -92,9 +130,38 @@ describe('lifecycle', () => {
   });
 });
 
-describe('accessibility', () => {
-  xit('should expose correct initial accessibility tree and aria properties', async () => {
-    await initToast();
+describe('toast-item', () => {
+  it('should render close button with type of "button"', async () => {
+    await initToastWithToastItem();
+    const closeBtnReal = await selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure >>> button');
+    expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
+  });
+
+  it('should emit custom event by click on close button', async () => {
+    await initToastWithToastItem();
+
+    const toastItem = await getToastItem();
     const closeButton = await getCloseButton();
+    let calls = 0;
+    await addEventListener(toastItem, 'dismiss', () => calls++);
+
+    await closeButton.click();
+    await waitForEventSerialization(page);
+    expect(calls).toBe(1);
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct accessibility tree properties', async () => {
+      await initToastWithToastItem();
+      const toastItem = await getToastItem();
+
+      const snapshotWrapper = await page.accessibility.snapshot({
+        root: toastItem,
+        interestingOnly: false,
+      });
+
+      expect(snapshotWrapper).toMatchSnapshot();
+      expect(await getAttribute(toastItem, 'aria-live')).toBeDefined();
+    });
   });
 });
