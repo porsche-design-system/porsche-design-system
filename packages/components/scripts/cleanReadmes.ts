@@ -70,14 +70,10 @@ const fixBreakpointCustomizable = (str: string): string => {
   return content;
 };
 
-const fixToastOffsetTypes = (str: string): string => fixRowStringType(str, 'offset');
-
-const fixRowStringType = (str: string, row: string): string => {
-  const rowRegEx = new RegExp(`(?:\|\s\`${row}\`\s*?){2}\|.*?\|\s\`(.*?)\|\s\``);
-  return str.replace(rowRegEx, (match): string => {
+const fixToastOffsetTypes = (str: string): string =>
+  str.replace(/(?:\|\s`offset`\s*?){2}\|.*?\|\s`(.*?)\|\s`/, (match): string => {
     return match.replace('`string \\| {', '`{');
   });
-};
 
 const replacePipesWithNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>` ');
 
