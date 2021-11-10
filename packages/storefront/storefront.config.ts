@@ -349,6 +349,8 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
         // @ts-ignore
+        () => import('@/../../components/src/components/feedback/toast/toast.props.md'),
+        // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],
     },
