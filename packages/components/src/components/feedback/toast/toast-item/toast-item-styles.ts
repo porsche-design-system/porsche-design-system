@@ -1,11 +1,4 @@
-import {
-  addImportantToEachRule,
-  buildHostStyles,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-} from '../../../../utils';
+import { buildHostStyles, buildSlottedStyles, getBaseSlottedStyles, getCss, getThemedColors } from '../../../../utils';
 import {
   getCloseIconStyles,
   getNotificationContentStyles,
@@ -18,7 +11,7 @@ import { ToastState } from '../toast/toast-utils';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
-    ...buildHostStyles(addImportantToEachRule(getNotificationRootStyles(state, theme))),
+    ...buildHostStyles(getNotificationRootStyles(state, theme)),
     icon: getNotificationIconStyles(state),
     content: getNotificationContentStyles(),
     close: getCloseIconStyles(),
