@@ -8,15 +8,15 @@ import {
 import type { ToastOffset } from './toast-utils';
 
 export const getComponentCss = (offset: ToastOffset): string => {
-  return getCss({
-    ...buildHostStyles(
+  return getCss(
+    buildHostStyles(
       addImportantToEachRule({
         position: 'fixed',
         bottom: pxToRemWithUnit(offset.bottom),
         left: pxToRemWithUnit(8),
       })
-    ),
-  });
+    )
+  );
 };
 
 export const addComponentCss = (host: HTMLElement, offset: ToastOffset): void => {
