@@ -33,7 +33,7 @@ export class Toast {
     this.manager = toastManager.register(this.host);
     // eslint-disable-next-line no-console
     console.log('connectedCallback', this.manager);
-    this.host.shadowRoot.addEventListener('close', this.manager.dismissToast);
+    this.host.shadowRoot.addEventListener('dismiss', this.manager.dismissToast);
   }
 
   public componentWillRender(): void {
