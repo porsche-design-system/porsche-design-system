@@ -43,6 +43,7 @@ const bundles: { components: TagName[] }[] = [
   },
   { components: ['p-tabs', 'p-tabs-item'] },
   { components: ['p-text-list', 'p-text-list-item'] },
+  { components: ['p-toast', 'p-toast-item'] },
 ];
 
 export const config: Config = {
