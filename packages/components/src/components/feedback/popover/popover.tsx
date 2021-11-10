@@ -1,7 +1,9 @@
 import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import { Theme } from '../../../types';
-import { Position } from './popover-utils';
+import { getFlyoutDirection, Position } from './popover-utils';
 import { State } from '../../../../tests/unit/mocks/stencil-decorator.mocks';
+import { attachComponentCss } from '../../../utils';
+import { getComponentCss } from './popover-styles';
 
 @Component({
   tag: 'p-popover',
@@ -25,21 +27,36 @@ export class Popover {
     horizontal: 'left',
   };
 
-  @State() open: boolean = false;
+  @State() open: boolean = true;
+
+  private direction: { x: string; y: string };
+
+  public componentWillRender(): void {
+    this.setDirection();
+    attachComponentCss(this.host, getComponentCss, this.direction.x, this.direction.y);
+  }
 
   public render(): JSX.Element {
-    console.log(this.open);
     return (
       <Host>
-        <p-button-pure icon="information" hideLabel="true" onClick={() => (this.open = !this.open)}>
+        <p-button-pure
+          icon="information"
+          hideLabel="true"
+          // onFocus={() => (this.open = true)}
+          // onBlur={() => (this.open = false)}
+        >
           Open Popover
         </p-button-pure>
         {this.open && (
-          <span>
+          <div class="flyout">
             <slot />
-          </span>
+          </div>
         )}
       </Host>
     );
   }
+
+  private setDirection = () => {
+    this.direction = getFlyoutDirection(this.host);
+  };
 }

@@ -9,17 +9,37 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
+    <style>
+      .grid {
+        display: block;
+        position: absolute;
+        background: deeppink;
+      }
+    </style>
   </head>
   <body>
     <!-- START: keep this snippet to log component lifecycle events -->
-    <script>
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-        window.addEventListener(`stencil_${x}`, (e) => {
-          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-        })
-      );
-    </script>
+    <!--    <script>-->
+    <!--      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>-->
+    <!--        window.addEventListener(`stencil_${x}`, (e) => {-->
+    <!--          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');-->
+    <!--          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());-->
+    <!--        })-->
+    <!--      );-->
+    <!--    </script>-->
     <!-- /END -->
+    <p-popover><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 50vh; left: 0"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 80vh; left: 0"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 0; left: 50vw"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 50vh; left: 40vw"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 80vh; left: 50vw"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 0; left: 80vw"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 50vh; left: 80vw"><p-text>Some Popover Content</p-text></p-popover>
+    <p-popover style="position: absolute; top: 80vh; left: 80vw"><p-text>Some Popover Content</p-text></p-popover>
+    <span class="grid" style="top: 0; left: 33vw; bottom: 0; width: 1px"></span>
+    <span class="grid" style="top: 0; left: 66vw; bottom: 0; width: 1px"></span>
+    <span class="grid" style="top: 33vh; right: 0; left: 0; height: 1px"></span>
+    <span class="grid" style="top: 66vh; right: 0; left: 0; height: 1px"></span>
   </body>
 </html>
