@@ -1,11 +1,12 @@
 import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
-import { toastManager, ToastManagerInstance } from './toast-manager';
+import { ToastManager, toastManager, ToastManagerInternal } from './toast-manager';
 import { Theme } from '../../../types';
 import { ToastOffsetValue } from './toast-utils';
 import { parseJSON } from './toast-utils';
-import { getContentAriaAttributes, getIconName } from './toast-utils';
+import { getContentAriaAttributes } from './toast-utils';
 import { getPrefixedTagNames } from '../../../utils';
+import { getIconName } from '../inline-notification/inline-notification-utils';
 
 @Component({
   tag: 'p-toast',
@@ -20,12 +21,12 @@ export class Toast {
 
   @Element() public host!: HTMLElement;
 
-  private manager: ToastManagerInstance;
+  private manager: ToastManagerInternal;
   private key = 0;
 
   /* eslint-disable @typescript-eslint/require-await */
   @Method()
-  public async getManager(): Promise<ToastManagerInstance> {
+  public async getManager(): Promise<ToastManager> {
     return this.manager;
   }
   /* eslint-enable @typescript-eslint/require-await */

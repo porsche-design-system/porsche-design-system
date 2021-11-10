@@ -9,15 +9,18 @@ type ToastMessage = {
   message: string;
   state?: ToastState;
 };
+export type ToastManager = {
+  addToast: (message: ToastMessage) => void;
+};
 
-class ToastManager {
+class ToastManagerClass implements ToastManager {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
 
-  public register(toastElement: HTMLElement): ToastManagerInstance {
+  public register(toastElement: HTMLElement): ToastManagerInternal {
     // eslint-disable-next-line no-console
-    console.log('ToastManager.register()');
+    console.log('ToastManagerClass.register()');
     if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
     }
@@ -28,7 +31,7 @@ class ToastManager {
 
   public unregister(): void {
     // eslint-disable-next-line no-console
-    console.log('ToastManager.unregister()');
+    console.log('ToastManagerClass.unregister()');
     this.toastEl = null;
     clearTimeout(this.timeout);
   }
@@ -67,5 +70,5 @@ class ToastManager {
   }
 }
 
-export const toastManager = new ToastManager();
-export type ToastManagerInstance = typeof toastManager;
+export const toastManager = new ToastManagerClass();
+export type ToastManagerInternal = typeof toastManager;
