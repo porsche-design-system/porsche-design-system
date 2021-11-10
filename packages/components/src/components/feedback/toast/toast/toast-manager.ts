@@ -17,6 +17,8 @@ class ToastManagerClass implements ToastManager {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
+  // To be overridable by e2e test
+  private timeoutDuration: number = TOAST_DEFAULT_TIMEOUT;
 
   public register(toastElement: HTMLElement): ToastManagerInternal {
     // eslint-disable-next-line no-console
@@ -33,6 +35,7 @@ class ToastManagerClass implements ToastManager {
     // eslint-disable-next-line no-console
     console.log('ToastManagerClass.unregister()');
     this.toastEl = null;
+    this.messages = [];
     clearTimeout(this.timeout);
   }
 
@@ -65,7 +68,7 @@ class ToastManagerClass implements ToastManager {
 
   public startToast(): void {
     if (this.messages.length) {
-      this.timeout = setTimeout(this.dismissToast, TOAST_DEFAULT_TIMEOUT);
+      this.timeout = setTimeout(this.dismissToast, this.timeoutDuration);
     }
   }
 }
