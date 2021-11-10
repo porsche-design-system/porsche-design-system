@@ -5,11 +5,11 @@
   const toast = document.querySelector('p-toast');
   const button = document.querySelector('button');
 
-  componentsReady().then(
+  porscheDesignSystem.componentsReady().then(() => {
     toast.getManager().then((manager) => {
       button.addEventListener('click', () =>
         manager.addToast({ message: 'some message ' + new Date().toISOString(), state: 'success' })
       );
-    })
-  );
+    });
+  });
 </script>
