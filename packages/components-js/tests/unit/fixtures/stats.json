@@ -1,162 +1,157 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 6078,
-    "gzipSize": 1908
+    "size": 6075,
+    "gzipSize": 1904
   },
   {
     "chunkShortName": "banner",
-    "size": 6358,
-    "gzipSize": 2424
+    "size": 5952,
+    "gzipSize": 2268
   },
   {
     "chunkShortName": "button",
-    "size": 15054,
-    "gzipSize": 2570
+    "size": 15044,
+    "gzipSize": 2567
   },
   {
     "chunkShortName": "button-pure",
-    "size": 21034,
-    "gzipSize": 3904
+    "size": 21019,
+    "gzipSize": 3897
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 8742,
-    "gzipSize": 2328
+    "size": 8727,
+    "gzipSize": 2323
   },
   {
     "chunkShortName": "content-wrapper",
-    "size": 1064,
-    "gzipSize": 536
+    "size": 1061,
+    "gzipSize": 534
   },
   {
     "chunkShortName": "divider",
-    "size": 1765,
-    "gzipSize": 587
+    "size": 1760,
+    "gzipSize": 584
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 2377,
-    "gzipSize": 1014
+    "size": 2370,
+    "gzipSize": 1012
   },
   {
     "chunkShortName": "flex",
-    "size": 1750,
-    "gzipSize": 758
+    "size": 1747,
+    "gzipSize": 756
   },
   {
     "chunkShortName": "grid",
-    "size": 1875,
-    "gzipSize": 861
+    "size": 1867,
+    "gzipSize": 856
   },
   {
     "chunkShortName": "headline",
-    "size": 6210,
-    "gzipSize": 1663
+    "size": 6203,
+    "gzipSize": 1660
   },
   {
     "chunkShortName": "icon",
-    "size": 13761,
-    "gzipSize": 6886
+    "size": 13755,
+    "gzipSize": 6885
   },
   {
     "chunkShortName": "link",
-    "size": 4086,
-    "gzipSize": 1682
+    "size": 4075,
+    "gzipSize": 1673
   },
   {
     "chunkShortName": "link-pure",
-    "size": 6660,
-    "gzipSize": 2903
+    "size": 6644,
+    "gzipSize": 2895
   },
   {
     "chunkShortName": "link-social",
-    "size": 5553,
-    "gzipSize": 1825
+    "size": 5542,
+    "gzipSize": 1815
   },
   {
     "chunkShortName": "main",
-    "size": 70736,
-    "gzipSize": 24041
+    "size": 71049,
+    "gzipSize": 24125
   },
   {
     "chunkShortName": "marque",
-    "size": 4374,
-    "gzipSize": 1864
+    "size": 4367,
+    "gzipSize": 1861
   },
   {
     "chunkShortName": "modal",
-    "size": 7068,
-    "gzipSize": 2193
+    "size": 7063,
+    "gzipSize": 2186
   },
   {
     "chunkShortName": "pagination",
-    "size": 7921,
-    "gzipSize": 2947
+    "size": 7914,
+    "gzipSize": 2943
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 19095,
-    "gzipSize": 2674
+    "size": 19079,
+    "gzipSize": 2667
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 18914,
-    "gzipSize": 5993
+    "size": 18898,
+    "gzipSize": 5985
   },
   {
     "chunkShortName": "spinner",
-    "size": 3526,
-    "gzipSize": 1165
+    "size": 3523,
+    "gzipSize": 1163
   },
   {
     "chunkShortName": "switch",
-    "size": 9665,
-    "gzipSize": 2204
+    "size": 9656,
+    "gzipSize": 2199
   },
   {
     "chunkShortName": "table",
-    "size": 8629,
-    "gzipSize": 2910
+    "size": 8618,
+    "gzipSize": 2902
   },
   {
     "chunkShortName": "tabs",
-    "size": 2846,
-    "gzipSize": 1158
+    "size": 2843,
+    "gzipSize": 1155
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 12172,
-    "gzipSize": 3648
+    "size": 12165,
+    "gzipSize": 3643
   },
   {
     "chunkShortName": "text",
-    "size": 7449,
-    "gzipSize": 2420
+    "size": 7440,
+    "gzipSize": 2416
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 8862,
-    "gzipSize": 3138
+    "size": 8844,
+    "gzipSize": 3130
   },
   {
     "chunkShortName": "text-list",
-    "size": 3193,
-    "gzipSize": 1459
+    "size": 3183,
+    "gzipSize": 1456
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 9099,
-    "gzipSize": 2272
+    "size": 9084,
+    "gzipSize": 2268
   },
   {
     "chunkShortName": "toast",
-    "size": 1736,
-    "gzipSize": 749
-  },
-  {
-    "chunkShortName": "toast-item",
-    "size": 1985,
-    "gzipSize": 944
+    "size": 3036,
+    "gzipSize": 1391
   }
 ]
