@@ -24,8 +24,8 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastOffsetValue } from "./components/feedback/toast/toast-utils";
-import { ToastManagerInstance } from "./components/feedback/toast/toast-manager";
+import { ToastOffsetValue, ToastState } from "./components/feedback/toast/toast/toast-utils";
+import { ToastManager } from "./components/feedback/toast/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
         /**
@@ -892,11 +892,25 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PToast {
-        "getManager": () => Promise<ToastManagerInstance>;
+        "getManager": () => Promise<ToastManager>;
         /**
           * The offset of the toast-item.
          */
         "offset"?: ToastOffsetValue;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PToastItem {
+        /**
+          * Message of the toast-item.
+         */
+        "message"?: string;
+        /**
+          * State of the toast-item.
+         */
+        "state"?: ToastState;
         /**
           * Adapts the toast-item color depending on the theme.
          */
@@ -1162,6 +1176,12 @@ declare global {
         prototype: HTMLPToastElement;
         new (): HTMLPToastElement;
     };
+    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
+    }
+    var HTMLPToastItemElement: {
+        prototype: HTMLPToastItemElement;
+        new (): HTMLPToastItemElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1206,6 +1226,7 @@ declare global {
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
+        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -2123,6 +2144,24 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PToastItem {
+        /**
+          * Message of the toast-item.
+         */
+        "message"?: string;
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * State of the toast-item.
+         */
+        "state"?: ToastState;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -2167,6 +2206,7 @@ declare namespace LocalJSX {
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
+        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
@@ -2216,6 +2256,7 @@ declare module "@stencil/core" {
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
+            "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
     }
 }
