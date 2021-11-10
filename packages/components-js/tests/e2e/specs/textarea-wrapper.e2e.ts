@@ -1,10 +1,8 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  getAttribute,
   getLifecycleStatus,
   getOutlineStyle,
-  getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
