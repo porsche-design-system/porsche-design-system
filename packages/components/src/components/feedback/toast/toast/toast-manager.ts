@@ -1,9 +1,9 @@
 import { forceUpdate } from '@stencil/core';
 import { throwIfValueIsInvalid } from '../../../../utils';
 import { TOAST_STATES } from './toast-utils';
+import type { ToastState } from './toast-utils';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
-export type ToastState = 'neutral' | 'success';
 
 type ToastMessage = {
   message: string;
