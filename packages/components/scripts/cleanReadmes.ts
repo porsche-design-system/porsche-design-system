@@ -21,7 +21,7 @@ const replaceHeadline = (str: string): string => {
       ? `# Typography\n\n## ${componentHeadline}`
       : cleanedTagName === 'inline-notification'
       ? `# Notifications\n\n## ${componentHeadline}`
-      : cleanedTagName === 'text' || cleanedTagName === 'banner'
+      : cleanedTagName === 'text' || cleanedTagName === 'banner' || cleanedTagName === 'toast'
       ? `## ${componentHeadline}`
       : `# ${componentHeadline}`;
 
