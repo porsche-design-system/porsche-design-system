@@ -4,26 +4,21 @@ import {
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
-  getCloseIconStyles,
   getCss,
-  getNotificationHostStyles,
-  getNotificationIconAndContentStyles,
   getThemedColors,
-  mediaQuery,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { ToastOffset, ToastState } from './toast-utils';
 import type { Theme } from '../../../types';
 import { TOAST_DEFAULT_TIMEOUT } from './toast-manager';
-
-const mediaQueryS = mediaQuery('s');
+import {
+  getCloseIconStyles,
+  getNotificationContentStyles,
+  getNotificationIconStyles,
+  getNotificationRootStyles,
+} from '../inline-notification/inline-notification-styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOffset): string => {
-  const themedColors = getThemedColors(theme);
-  const backgroundColor = themedColors[`${state}SoftColor`];
-  const borderColor = themedColors[`${state}Color`];
-  const iconColor = getThemedColors('light')[`${state}Color`];
-
   return getCss({
     ...buildHostStyles(
       addImportantToEachRule({
@@ -32,16 +27,17 @@ export const getComponentCss = (state: ToastState, theme: Theme, offset: ToastOf
         left: pxToRemWithUnit(8),
       })
     ),
-    root: getNotificationHostStyles(backgroundColor, borderColor, mediaQueryS),
-    ...getNotificationIconAndContentStyles(mediaQueryS, iconColor),
-    ...getCloseIconStyles(),
+    root: getNotificationRootStyles(state, theme),
+    icon: getNotificationIconStyles(state),
+    content: getNotificationContentStyles(),
+    close: getCloseIconStyles(),
     progress: {
       animationName: '$progress',
       animationDuration: `${TOAST_DEFAULT_TIMEOUT}ms`,
       animationTimingFunction: 'linear',
       animationFillMode: 'forwards',
       display: 'block',
-      background: themedColors[state + 'Color'],
+      background: getThemedColors(theme)[state + 'Color'],
       height: '.5rem',
     },
     '@keyframes progress': {
