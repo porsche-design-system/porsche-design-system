@@ -1,9 +1,12 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  enableBrowserLogging,
   getAttribute,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -11,7 +14,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
-import { TOAST_STATES } from '@porsche-design-system/components/dist/types/components/feedback/toast/toast/toast-utils';
+import { TOAST_STATES } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 
@@ -21,11 +24,11 @@ afterEach(async () => await page.close());
 
 const initToast = async (): Promise<void> => {
   await setContentWithDesignSystem(page, `<p-toast></p-toast>`);
-  await page.evaluate(async () => {
+  await page.evaluate(async (toastTimeoutDuration: number) => {
     const toast = document.querySelector('p-toast');
     const manager = await (toast as any).getManager();
-    manager.timeoutDuration = TOAST_TIMEOUT_DURATION_OVERRIDE;
-  });
+    manager.timeoutDuration = toastTimeoutDuration;
+  }, TOAST_TIMEOUT_DURATION_OVERRIDE);
 };
 
 const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
@@ -49,6 +52,11 @@ const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
   await addToast(message);
 };
 
+const waitForToastTimeout = async (): Promise<void> => {
+  await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+  await waitForStencilLifecycle(page);
+};
+
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
 const getCloseButton = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
@@ -67,9 +75,10 @@ it('should close toast-item via close button click', async () => {
 
   const closeButton = await getCloseButton();
   await closeButton.click();
+
   await waitForStencilLifecycle(page);
 
-  expect(await getToastItem()).not.toBeDefined();
+  expect(await getToastItem()).toBeNull();
 });
 
 it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds`, async () => {
@@ -77,19 +86,51 @@ it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRID
 
   expect(await getToastItem()).toBeDefined();
 
-  await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
-  await waitForStencilLifecycle(page);
+  await waitForToastTimeout();
 
-  expect(await getToastItem()).not.toBeDefined();
+  expect(await getToastItem()).toBeNull();
 });
 
 it('should queue multiple toast-items and show them in correct order', async () => {
   await initToastWithToastItem({ message: '1' });
   await addToast({ message: '2' });
   await addToast({ message: '3' });
+
+  expect(await getProperty(await getToastItem(), 'message')).toBe('1');
+
+  await waitForToastTimeout();
+
+  expect(await getProperty(await getToastItem(), 'message')).toBe('2');
+
+  await waitForToastTimeout();
+
+  expect(await getProperty(await getToastItem(), 'message')).toBe('3');
 });
 
-xit('should queue two toast-items, close the first, queue a third, display the second one, after 6 seconds display the third and finally after 12 seconds display none', async () => {});
+it(`should queue two toast-items, close the first, queue a third, display the second one,
+after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally after ${
+  TOAST_TIMEOUT_DURATION_OVERRIDE * 2
+} seconds display none`, async () => {
+  enableBrowserLogging(page);
+  await initToastWithToastItem({ message: '1' });
+  await addToast({ message: '2' });
+
+  const closeButton = await getCloseButton();
+  await closeButton.click();
+
+  await waitForStencilLifecycle(page);
+  await addToast({ message: '3' });
+
+  expect(await getProperty(await getToastItem(), 'message')).toBe('2');
+
+  await waitForToastTimeout();
+
+  expect(await getProperty(await getToastItem(), 'message')).toBe('3');
+
+  await waitForToastTimeout();
+
+  expect(await getToastItem()).not.toBeDefined();
+});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
