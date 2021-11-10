@@ -63,7 +63,9 @@ export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutE
 
 export const useToastManager = (): { addToast: ToastManager['addToast'] } => {
   const tagName = usePrefix('p-toast');
+  // TODO: maybe wrap in useEffect for ref of query selector
   return {
+    // TODO: maybe wrap in useCallback
     addToast: (msg: ToastMessage): void => {
       // TODO: useRef?
       const toast: HTMLElement & { getManager(): Promise<ToastManager> } = document.querySelector(tagName);
