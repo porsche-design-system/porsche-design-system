@@ -1,4 +1,4 @@
-import { buildHostStyles, buildSlottedStyles, getBaseSlottedStyles, getCss, getThemedColors } from '../../../../utils';
+import { buildHostStyles, buildSlottedStyles, getBaseSlottedStyles, getCss } from '../../../../utils';
 import {
   getCloseIconStyles,
   getNotificationContentStyles,
