@@ -16,7 +16,7 @@ export type ToastManager = {
 class ToastManagerClass implements ToastManager {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
-  private timeout: number;
+  private timeout: NodeJS.Timeout;
   // To be overridable by e2e test
   private timeoutDuration: number = TOAST_DEFAULT_TIMEOUT;
 
@@ -56,9 +56,8 @@ class ToastManagerClass implements ToastManager {
     }
   }
 
-  public dismissToast = (e: CustomEvent): void => {
-    console.log('-> dismissing toast');
-    e.stopPropagation();
+  public dismissToast = (): void => {
+    console.log('-> dismissing toast', new Date().toISOString());
     clearTimeout(this.timeout);
     this.messages.shift();
     forceUpdate(this.toastEl);
@@ -71,7 +70,7 @@ class ToastManagerClass implements ToastManager {
   public startToast(): void {
     if (this.messages.length) {
       this.timeout = setTimeout(this.dismissToast, this.timeoutDuration);
-      console.log('-> starting toast with timeout', this.timeoutDuration);
+      console.log('-> starting toast with timeout', this.timeoutDuration, new Date().toISOString());
     }
   }
 }

@@ -1,10 +1,11 @@
-import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
+import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
-import { ToastManager, toastManager, ToastManagerInternal } from './toast-manager';
-import { Theme } from '../../../../types';
-import { ToastOffsetValue } from './toast-utils';
-import { parseJSON } from './toast-utils';
+import type { ToastManager, ToastManagerInternal } from './toast-manager';
+import { toastManager } from './toast-manager';
+import type { Theme } from '../../../../types';
+import type { ToastOffsetValue } from './toast-utils';
 import { getPrefixedTagNames } from '../../../../utils';
+import { parseJSONAttribute } from '../../../../utils/json';
 
 @Component({
   tag: 'p-toast',
@@ -33,12 +34,18 @@ export class Toast {
     this.manager = toastManager.register(this.host);
     // eslint-disable-next-line no-console
     console.log('connectedCallback', this.manager);
-    this.host.shadowRoot.addEventListener('dismiss', this.manager.dismissToast);
+  }
+
+  public componentDidLoad(): void {
+    this.host.addEventListener('dismiss', (e) => {
+      e.stopPropagation();
+      this.manager.dismissToast();
+    });
   }
 
   public componentWillRender(): void {
     this.key++;
-    addComponentCss(this.host, parseJSON(this.offset));
+    addComponentCss(this.host, parseJSONAttribute(this.offset));
   }
 
   public componentDidRender(): void {
