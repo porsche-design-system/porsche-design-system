@@ -15,3 +15,6 @@ export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, form
   Object.entries(innerManifest[size])
     .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName[format]} ${resolution}`)
     .join(',');
+
+export const MARQUE_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type MarqueAriaAttributes = typeof MARQUE_ARIA_ATTRIBUTES[number];

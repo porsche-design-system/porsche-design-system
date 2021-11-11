@@ -24,3 +24,6 @@ export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
     console.warn(errorMessage);
   }
 };
+
+export const SPINNER_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type SpinnerAriaAttributes = typeof SPINNER_ARIA_ATTRIBUTES[number];

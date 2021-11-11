@@ -46,7 +46,9 @@ export class InputParser {
       .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
       // fix consumer typing by removing string which is only necessary for stencil
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
-      // fix consumer typing by removing string which is only necessary for stencil
+      // fix consumer typing for accessibility props with string type
+      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
+      // fix consumer typing for toast offset prop with string type
       .replace(/(export declare type ToastOffsetValue = ToastOffset) \| string;/, '$1;');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];

@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
-    "@types/react": "^17.0.28",
+    "@types/react": "^17.0.29",
     "@uxpin/merge-cli": "^2.7.8",
     "babel-loader": "^8.2.2",
     "eslint-loader": "^4.0.2",
