@@ -1,6 +1,7 @@
 import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
+import { HorizontalDirection, VerticalDirection } from './popover-utils';
 
-const getFlyoutPosition = (x: string, y: string) => {
+const getFlyoutPosition = (x: HorizontalDirection, y: VerticalDirection) => {
   const direction = x + y;
 
   switch (direction) {
@@ -53,7 +54,6 @@ const getFlyoutPosition = (x: string, y: string) => {
 };
 
 export const getComponentCss = (directionX, directionY): string => {
-  console.log(directionX, directionY);
   return getCss({
     ...buildHostStyles(
       addImportantToEachRule({

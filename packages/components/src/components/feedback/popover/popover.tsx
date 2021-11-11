@@ -1,9 +1,9 @@
-import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
-import { Theme } from '../../../types';
-import { getFlyoutDirection, Position } from './popover-utils';
-import { State } from '../../../../tests/unit/mocks/stencil-decorator.mocks';
+import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
+import { getPopoverDirection } from './popover-utils';
 import { attachComponentCss } from '../../../utils';
 import { getComponentCss } from './popover-styles';
+import type { Theme } from '../../../types';
+import type { PopoverDirection } from './popover-utils';
 
 @Component({
   tag: 'p-popover',
@@ -15,21 +15,9 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Define the position on the clickable element from which the popover flys out. */
-  @Prop() public anchorOrigin?: Position = {
-    vertical: 'center',
-    horizontal: 'right',
-  };
+  @State() open: boolean = false;
 
-  /** Define the position of the popover from which it anchors to the button. */
-  @Prop() public anchorFlyout?: Position = {
-    vertical: 'center',
-    horizontal: 'left',
-  };
-
-  @State() open: boolean = true;
-
-  private direction: { x: string; y: string };
+  private direction: PopoverDirection;
 
   public componentWillRender(): void {
     this.setDirection();
@@ -42,8 +30,8 @@ export class Popover {
         <p-button-pure
           icon="information"
           hideLabel="true"
-          // onFocus={() => (this.open = true)}
-          // onBlur={() => (this.open = false)}
+          onFocus={() => (this.open = true)}
+          onBlur={() => (this.open = false)}
         >
           Open Popover
         </p-button-pure>
@@ -57,6 +45,6 @@ export class Popover {
   }
 
   private setDirection = () => {
-    this.direction = getFlyoutDirection(this.host);
+    this.direction = getPopoverDirection(this.host);
   };
 }

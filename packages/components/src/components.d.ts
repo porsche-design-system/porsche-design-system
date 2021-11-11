@@ -17,7 +17,6 @@ import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item
 import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueSize } from "./components/basic/marque/marque-utils";
-import { Position } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -599,14 +598,6 @@ export namespace Components {
         "totalItemsCount": number;
     }
     interface PPopover {
-        /**
-          * Define the position of the popover from which it anchors to the button.
-         */
-        "anchorFlyout"?: Position;
-        /**
-          * Define the position on the clickable element from which the popover flys out.
-         */
-        "anchorOrigin"?: Position;
         /**
           * Theme.
          */
@@ -1808,14 +1799,6 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     interface PPopover {
-        /**
-          * Define the position of the popover from which it anchors to the button.
-         */
-        "anchorFlyout"?: Position;
-        /**
-          * Define the position on the clickable element from which the popover flys out.
-         */
-        "anchorOrigin"?: Position;
         /**
           * Theme.
          */
