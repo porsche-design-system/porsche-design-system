@@ -185,6 +185,11 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
+    name: 'Toast Item',
+    path: '/toast-item',
+    component: fromPages.ToastItemPage,
+  },
+  {
     name: 'Typography Fallback Strategy',
     path: '/typography-fallback-strategy',
     component: fromPages.TypographyFallbackStrategyPage,
