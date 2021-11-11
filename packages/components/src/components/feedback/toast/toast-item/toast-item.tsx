@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, Host, JSX, Prop, h } from '@st
 import type { Theme } from '../../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
-import { getContentAriaAttributes } from './toast-item-utils';
 import {
   attachComponentCss,
   getPrefixedTagNames,
@@ -48,7 +47,13 @@ export class ToastItem {
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <PrefixedTagNames.pText id={messageId} class="content" {...getContentAriaAttributes(messageId)}>
+        <PrefixedTagNames.pText
+          id={messageId}
+          class="content"
+          role="status"
+          aria-live="polite"
+          aria-describedby={messageId}
+        >
           {this.message}
         </PrefixedTagNames.pText>
         <PrefixedTagNames.pButtonPure
