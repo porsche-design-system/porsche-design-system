@@ -142,7 +142,7 @@ const ModalPage = (): JSX.Element => {
   get basic() {
     const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
     
-    return `<p-button type="button">Open Modal</p-button>
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
   <p-button-group class="footer">
@@ -152,7 +152,7 @@ const ModalPage = (): JSX.Element => {
 </p-modal>`;}
   
   scrollable =
-`<p-button type="button">Open Modal</p-button>
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
   <div style="height: 40vh;"></div>
@@ -166,19 +166,19 @@ const ModalPage = (): JSX.Element => {
 </p-modal>`;
 
   withoutHeading =
-`<p-button type="button">Open Modal</p-button>
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   withoutCloseButton =
-`<p-button type="button">Open Modal</p-button>
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   fullscreen =
-`<p-button type="button">Open Modal</p-button>
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">

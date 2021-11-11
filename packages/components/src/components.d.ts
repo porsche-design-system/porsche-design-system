@@ -5,20 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
+import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { IconAriaAttributes } from "./components/icon/icon/icon-utils";
 import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
+import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
-import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
-import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
@@ -73,6 +76,10 @@ export namespace Components {
     }
     interface PButton {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -124,6 +131,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -341,6 +352,10 @@ export namespace Components {
     }
     interface PIcon {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        /**
           * Basic color variations depending on theme property.
          */
         "color"?: TextColor;
@@ -401,6 +416,10 @@ export namespace Components {
     }
     interface PLink {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -446,6 +465,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -522,6 +545,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -670,6 +697,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
@@ -1284,6 +1315,10 @@ declare namespace LocalJSX {
     }
     interface PButton {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -1335,6 +1370,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1552,6 +1591,10 @@ declare namespace LocalJSX {
     }
     interface PIcon {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        /**
           * Basic color variations depending on theme property.
          */
         "color"?: TextColor;
@@ -1620,6 +1663,10 @@ declare namespace LocalJSX {
     }
     interface PLink {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1665,6 +1712,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1741,6 +1792,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -1897,6 +1952,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
