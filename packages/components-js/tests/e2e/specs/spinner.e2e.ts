@@ -14,11 +14,7 @@ describe('spinner', () => {
   afterEach(async () => await page.close());
 
   const initSpinner = (): Promise<void> => {
-    return setContentWithDesignSystem(
-      page,
-      `
-        <p-spinner></p-spinner>`
-    );
+    return setContentWithDesignSystem(page, `<p-spinner></p-spinner>`);
   };
 
   const getHost = () => selectNode(page, 'p-spinner');
