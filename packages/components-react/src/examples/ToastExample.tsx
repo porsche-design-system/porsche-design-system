@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 export const ToastExamplePage = (): JSX.Element => {
   const { addToast } = useToastManager();
 
-  const onButtonClick = useCallback(() => addToast({ message: 'Some message', state: 'success' }), []);
+  const onButtonClick = useCallback(() => addToast({ message: 'Some message', state: 'success' }), [addToast]);
 
   return (
     <>
