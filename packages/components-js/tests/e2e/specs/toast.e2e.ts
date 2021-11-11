@@ -1,16 +1,13 @@
 import { Page } from 'puppeteer';
 import {
-  addEventListener,
   enableBrowserLogging,
+  expectA11yToMatchSnapshot,
   getAttribute,
-  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
@@ -23,7 +20,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initToast = async (): Promise<void> => {
-  await setContentWithDesignSystem(page, `<p-toast></p-toast>`);
+  await setContentWithDesignSystem(page, `<p-toast></p-toast>`, { enableLogging: true });
   await page.evaluate(async (toastTimeoutDuration: number) => {
     const toast = document.querySelector('p-toast');
     const manager = await (toast as any).getManager();
@@ -59,6 +56,7 @@ const waitForToastTimeout = async (): Promise<void> => {
 
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
+const getToastItemMessage = () => selectNode(page, 'p-toast >>> p-toast-item >>> #message');
 const getCloseButton = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
 
 it.each<ToastState>(TOAST_STATES)('should forward state: %s to p-toast-item', async (state) => {
@@ -178,31 +176,15 @@ describe('toast-item', () => {
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
-  it('should emit custom event by click on close button', async () => {
-    await initToastWithToastItem();
-
-    const toastItem = await getToastItem();
-    const closeButton = await getCloseButton();
-    let calls = 0;
-    await addEventListener(toastItem, 'dismiss', () => calls++);
-
-    await closeButton.click();
-    await waitForEventSerialization(page);
-    expect(calls).toBe(1);
-  });
-
   describe('accessibility', () => {
     it('should expose correct accessibility tree properties', async () => {
       await initToastWithToastItem();
-      const toastItem = await getToastItem();
+      const toastItemMessage = await getToastItemMessage();
 
-      const snapshotWrapper = await page.accessibility.snapshot({
-        root: toastItem,
+      await expectA11yToMatchSnapshot(page, toastItemMessage, {
         interestingOnly: false,
       });
-
-      expect(snapshotWrapper).toMatchSnapshot();
-      expect(await getAttribute(toastItem, 'aria-live')).toBeDefined();
+      expect(await getAttribute(toastItemMessage, 'aria-live')).toBeDefined();
     });
   });
 });
