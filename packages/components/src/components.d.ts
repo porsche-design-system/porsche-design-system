@@ -925,11 +925,11 @@ export namespace Components {
     interface PToast {
         "getManager": () => Promise<ToastManager>;
         /**
-          * The offset of the toast-item.
+          * The offset of the toast.
          */
         "offset"?: ToastOffsetValue;
         /**
-          * Adapts the toast-item color depending on the theme.
+          * Adapts the toast color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2195,11 +2195,11 @@ declare namespace LocalJSX {
     }
     interface PToast {
         /**
-          * The offset of the toast-item.
+          * The offset of the toast.
          */
         "offset"?: ToastOffsetValue;
         /**
-          * Adapts the toast-item color depending on the theme.
+          * Adapts the toast color depending on the theme.
          */
         "theme"?: Theme;
     }
