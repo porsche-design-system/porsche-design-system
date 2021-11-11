@@ -1,5 +1,5 @@
 import * as stencilCore from '@stencil/core';
-import { updateChildren } from '.';
+import { updateChildren } from './sync';
 
 describe('updateChildren()', () => {
   it('should call forceUpdate() on every child', () => {

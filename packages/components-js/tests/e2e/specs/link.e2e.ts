@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
   initAddEventListener,
@@ -212,18 +213,27 @@ describe('link', () => {
       await initLink();
       const link = await getLink();
       const icon = await getIcon();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-        interestingOnly: false,
-      });
 
       const snapshotIcon = await page.accessibility.snapshot({
         root: icon,
         interestingOnly: false,
       });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link, { interestingOnly: false });
       expect(snapshotIcon).toBeNull();
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree if label is hidden', async () => {
@@ -233,11 +243,20 @@ describe('link', () => {
 
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });

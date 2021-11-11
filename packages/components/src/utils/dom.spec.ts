@@ -1,4 +1,4 @@
-import type { HTMLElementWithRequiredProp } from '.';
+import type { HTMLElementWithRequiredProp } from './dom';
 import {
   addEventListener,
   getAttribute,
@@ -23,7 +23,7 @@ import {
   throwIfParentIsNotOfKind,
   throwIfParentIsNotOneOfKind,
   throwIfRootNodeIsNotOfKind,
-} from '.';
+} from './dom';
 import type { FormState } from '../types';
 
 describe('isRequired', () => {

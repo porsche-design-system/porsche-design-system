@@ -105,7 +105,7 @@ export class Modal {
                     icon="close"
                     onClick={this.closeModal}
                   >
-                    Close
+                    Close modal
                   </PrefixedTagNames.pButtonPure>
                 </div>
               )}
