@@ -6,8 +6,8 @@ import { componentsReady, ToastManager as ToastManagerType, ToastMessage } from 
 })
 export class ToastManager {
   public addToast(msg: ToastMessage): void {
-    // TODO: use prefix
-    const toast: HTMLElement & { getManager(): Promise<ToastManagerType> } = document.querySelector('p-toast');
+    const toast: HTMLElement & { getManager(): Promise<ToastManagerType> } =
+      document.querySelector('p-toast,[p-toast]');
     componentsReady(toast.parentElement).then(() => {
       toast.getManager().then((manager) => manager.addToast(msg));
     });
