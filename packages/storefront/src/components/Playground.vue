@@ -95,6 +95,7 @@
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
+      this.$emit('onThemeChange', this.theme);
     }
 
     public get cleanedEditorMarkup(): string {
