@@ -36,7 +36,7 @@ export class Popover {
           Open Popover
         </p-button-pure>
         {this.open && (
-          <div class="flyout">
+          <div class="popover">
             <slot />
           </div>
         )}
