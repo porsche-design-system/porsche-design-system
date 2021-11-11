@@ -8,20 +8,23 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 
 ## Basic
 
-<Playground :frameworkMarkup="basic" :config="config">
+<Playground :frameworkMarkup="basic" :config="config" @onThemeChange="onThemeChange">
   <select v-model="state">
     <option disabled>Select a state</option>
     <option value="neutral">Neutral</option>
     <option value="success">Success</option>
   </select><br><br>
   <button id="addToastButton" type="button">Add Toast</button>
-  <p-toast></p-toast>
 </Playground>
+
+<!-- shared across playgrounds -->
+<p-toast ref="toast"></p-toast>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
+  import type { Theme } from '@/models';
   
   @Component
   export default class Code extends Vue {
@@ -37,10 +40,13 @@ Review the [notification decision tree](components/notifications/decision-tree) 
     }
 
     mounted(): void {
-      document.querySelector('#addToastButton').addEventListener('click', (e) => {
-        const toast = e.target.nextElementSibling;
-        toast.getManager().then((manager) => manager.addToast({ message: 'Some message', state: this.state }));
+      document.getElementById('addToastButton').addEventListener('click', (e) => {
+        this.$refs.toast.getManager().then((manager) => manager.addToast({ message: 'Some message', state: this.state }));
       });
+    }
+
+    onThemeChange(theme: Theme): void {
+      this.$refs.toast.theme = theme;
     }
   }
 </script>
