@@ -67,7 +67,7 @@ export class Toast {
 
     return (
       <Host>
-        {toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme}></PrefixedTagNames.pToastItem>}
+        {toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme} />}
         <span key={this.key} class="progress" />
       </Host>
     );
