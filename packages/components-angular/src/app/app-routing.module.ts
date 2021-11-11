@@ -190,6 +190,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.TextareaWrapperComponent,
   },
   {
+    name: 'Toast Item',
+    path: 'toast-item',
+    component: fromPages.ToastItemComponent,
+  },
+  {
     name: 'Typography Fallback Strategy',
     path: 'typography-fallback-strategy',
     component: fromPages.TypographyFallbackStrategyComponent,
