@@ -1,6 +1,7 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -343,12 +344,8 @@ describe('switch', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initSwitch();
       const label = () => selectNode(page, 'p-switch >>> label');
-      const snapshot = await page.accessibility.snapshot({
-        root: await label(),
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if checked value is set programmatically', async () => {
@@ -360,20 +357,12 @@ describe('switch', () => {
       await setProperty(host, 'checked', true);
       await waitForStencilLifecycle(page);
 
-      const snapshotChecked = await page.accessibility.snapshot({
-        root: button,
-      });
-
-      expect(snapshotChecked, 'Checked').toMatchSnapshot('Checked');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Checked' });
 
       await setProperty(host, 'checked', false);
       await waitForStencilLifecycle(page);
 
-      const snapshotUnchecked = await page.accessibility.snapshot({
-        root: button,
-      });
-
-      expect(snapshotUnchecked, 'Unchecked').toMatchSnapshot('Unchecked');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Unchecked' });
     });
 
     it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {

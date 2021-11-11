@@ -25,7 +25,7 @@ Object {
                     Object {
                       "children": Array [
                         Object {
-                          "name": "Close",
+                          "name": "Close modal",
                           "role": "StaticText",
                         },
                       ],
@@ -33,7 +33,7 @@ Object {
                       "role": "generic",
                     },
                   ],
-                  "name": "Close",
+                  "name": "Close modal",
                   "role": "button",
                 },
               ],

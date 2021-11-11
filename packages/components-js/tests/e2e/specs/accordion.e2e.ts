@@ -2,6 +2,7 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -299,11 +300,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     it('should expose correct initial accessibility tree and aria properties', async () => {
       await initAccordion();
       const button = await getButton();
-      const snapshotButton = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshotButton).toMatchSnapshot('Of Button');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
     });
 
@@ -315,16 +313,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      const snapshotButton = await page.accessibility.snapshot({
-        root: button,
-      });
-      const snapshotPanel = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: panel,
-      });
-
-      expect(snapshotButton).toMatchSnapshot('Of Button');
-      expect(snapshotPanel).toMatchSnapshot('Of Panel');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
+      await expectA11yToMatchSnapshot(page, panel, { message: 'Of Panel', interestingOnly: false });
     });
   });
 });
