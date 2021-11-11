@@ -55,7 +55,7 @@ export const getNotificationRootStyles = (state: InlineNotificationState, theme:
     padding: pxToRemWithUnit(16),
     background: themedColors[`${state}SoftColor`],
     borderLeft: `${pxToRemWithUnit(4)} solid ${themedColors[`${state}Color`]}`,
-    [mediaQuery('s')]: {
+    [mediaQueryS]: {
       gridTemplateColumns: 'auto 1fr auto auto',
     },
   };
@@ -63,7 +63,7 @@ export const getNotificationRootStyles = (state: InlineNotificationState, theme:
 
 export const getNotificationIconStyles = (state: InlineNotificationState): JssStyle => ({
   display: 'none',
-  [mediaQuery('s')]: {
+  [mediaQueryS]: {
     display: 'inline-flex',
     marginRight: pxToRemWithUnit(8),
     color: getThemedColors('light')[`${state}Color`],
