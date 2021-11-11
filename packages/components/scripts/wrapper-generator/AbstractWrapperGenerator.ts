@@ -89,7 +89,7 @@ export abstract class AbstractWrapperGenerator {
 
   private generateComponentWrappers(): void {
     this.relevantComponentTagNames
-      // .filter((_, index) => index === 11) // temporary filter for easier development
+      // .filter((tagName) => tagName === 'p-toast') // temporary filter for easier development
       .forEach((component) => {
         this.generateComponentWrapper(component);
       });
