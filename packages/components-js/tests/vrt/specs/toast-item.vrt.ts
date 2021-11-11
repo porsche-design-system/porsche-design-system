@@ -17,25 +17,22 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-item', '/#toast-item')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
-    await vrt.test('switch-states', async () => {
+    await vrt.test('toast-item-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-switch ~ p-switch { margin-top: 0.5rem; }</style>`;
+      const head = `<style type="text/css">p-toast-item ~ p-toast-item { margin-top: 0.5rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-switch theme="${theme}">Some label</p-switch>
-        <p-switch theme="${theme}" checked="true">Some label</p-switch>
-        <p-switch theme="${theme}" loading="true">Loading</p-switch>
-        <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
+        <p-toast-item theme="${theme}" message="Some message"></p-toast-item>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-switch >>> button');
-      await forceFocusedState(page, '.focused > p-switch >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-switch >>> button');
+      await forceHoveredState(page, '.hovered > p-toast-item >>> p-button-pure >>> button');
+      await forceFocusedState(page, '.focused > p-toast-item >>> p-button-pure >>> button');
+      await forceFocusedHoveredState(page, '.focused-hovered > p-toast-item >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });
