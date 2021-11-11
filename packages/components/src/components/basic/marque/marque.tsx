@@ -1,9 +1,16 @@
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import { attachComponentCss, breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
-import type { LinkTarget } from '../../../types';
+import {
+  attachComponentCss,
+  breakpoint,
+  improveFocusHandlingForCustomElement,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
+import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
 import { getComponentCss } from './marque-styles';
+import type { MarqueAriaAttributes } from './marque-utils';
+import { MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 
 @Component({
   tag: 'p-marque',
@@ -23,6 +30,9 @@ export class Marque {
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
   public connectedCallback(): void {
     improveFocusHandlingForCustomElement(this.host);
@@ -58,7 +68,7 @@ export class Marque {
         {this.href === undefined ? (
           picture
         ) : (
-          <a href={this.href} target={this.target}>
+          <a href={this.href} target={this.target} {...parseAndGetAriaAttributes(this.aria, MARQUE_ARIA_ATTRIBUTES)}>
             {picture}
           </a>
         )}

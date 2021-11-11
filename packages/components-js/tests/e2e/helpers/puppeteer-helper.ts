@@ -1,4 +1,4 @@
-import { ConsoleMessage, ElementHandle, Page, WaitForOptions } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
@@ -335,4 +335,21 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
 
   expect(prettyHtml).not.toContain('[object Object]');
   expect(prettyHtml).toMatchSnapshot();
+};
+
+type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
+  message?: string;
+};
+export const expectA11yToMatchSnapshot = async (
+  page: Page,
+  elementHandle: ElementHandle,
+  opts?: ExpectToMatchSnapshotOptions
+): Promise<void> => {
+  const { message, ...options } = opts || {};
+  const snapshot = await page.accessibility.snapshot({
+    root: elementHandle,
+    ...options,
+  });
+
+  message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
