@@ -57,6 +57,7 @@ class ToastManagerClass implements ToastManager {
   }
 
   public dismissToast = (): void => {
+    // eslint-disable-next-line no-console
     console.log('-> dismissing toast', new Date().toISOString());
     clearTimeout(this.timeout);
     this.messages.shift();
@@ -70,6 +71,7 @@ class ToastManagerClass implements ToastManager {
   public startToast(): void {
     if (this.messages.length) {
       this.timeout = setTimeout(this.dismissToast, this.timeoutDuration);
+      // eslint-disable-next-line no-console
       console.log('-> starting toast with timeout', this.timeoutDuration, new Date().toISOString());
     }
   }
