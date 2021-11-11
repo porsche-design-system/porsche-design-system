@@ -6,6 +6,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prestart": "yarn replace",
+    "prebuild:app": "yarn replace",
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8575 -d ./www'",
     "start-app": "yarn start",
     "build": "yarn clean:build && yarn build:components-manager-core && yarn build:components-manager-cli && yarn build:components-wrapper && yarn build:partials && yarn build:app && yarn build:cleanEnvironment",
