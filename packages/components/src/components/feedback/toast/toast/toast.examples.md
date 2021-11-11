@@ -31,17 +31,23 @@ Review the [notification decision tree](components/notifications/decision-tree) 
     config = { themeable: true };
 
     state = 'neutral';
+    toastCounter = 1;
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
         ...result,
-        [key]: markup.replace(/(state:) 'success'/, `$1 '${this.state}'`)
+        [key]: markup
+          .replace(/(state:) 'success'/, `$1 '${this.state}'`)
+          .replace(/(Some) (message)/, `$1 ${this.state} $2`)
       }), {});
     }
 
     mounted(): void {
       document.getElementById('addToastButton').addEventListener('click', (e) => {
-        this.$refs.toast.getManager().then((manager) => manager.addToast({ message: 'Some message', state: this.state }));
+        this.$refs.toast.getManager().then((manager) => {
+          manager.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+          this.toastCounter++;
+        });
       });
     }
 
