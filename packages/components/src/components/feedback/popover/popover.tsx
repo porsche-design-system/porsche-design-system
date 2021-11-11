@@ -1,9 +1,8 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getPopoverDirection } from './popover-utils';
+import { getPopoverPosition } from './popover-utils';
 import { attachComponentCss } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../../types';
-import type { PopoverDirection } from './popover-utils';
 
 @Component({
   tag: 'p-popover',
@@ -15,13 +14,20 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() open: boolean = false;
+  @State() open: boolean = true;
 
-  private direction: PopoverDirection;
+  private popover: HTMLDivElement;
 
   public componentWillRender(): void {
-    this.setDirection();
-    attachComponentCss(this.host, getComponentCss, this.direction.x, this.direction.y);
+    attachComponentCss(this.host, getComponentCss);
+  }
+
+  public componentDidRender(): void {
+    if (this.open) {
+      const position: number = getPopoverPosition(this.popover);
+      this.popover.style.left = `${position}px`;
+      console.log(position);
+    }
   }
 
   public render(): JSX.Element {
@@ -36,15 +42,11 @@ export class Popover {
           Open Popover
         </p-button-pure>
         {this.open && (
-          <div class="popover">
+          <div class="popover" ref={(el) => (this.popover = el)}>
             <slot />
           </div>
         )}
       </Host>
     );
   }
-
-  private setDirection = () => {
-    this.direction = getPopoverDirection(this.host);
-  };
 }

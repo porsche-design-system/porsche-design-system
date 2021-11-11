@@ -1,43 +1,63 @@
 export type HorizontalDirection = 'left' | 'center' | 'right';
 export type VerticalDirection = 'bottom' | 'center' | 'top';
-export type PopoverDirection = { x: HorizontalDirection; y: VerticalDirection };
+export type PopoverPosition = { x: number; y: number };
 
 export const getElementOffsetCenter = (element: HTMLElement) => {
   const { top, left, width, height } = element.getBoundingClientRect();
+  console.log('element', top, left, width, height);
 
   return { x: left + width / 2, y: top + height / 2 };
 };
 
-export const getPopoverDirection = (element: HTMLElement): PopoverDirection => {
-  const { x, y } = getElementOffsetCenter(element);
-  const { innerWidth, innerHeight } = window;
+export const getPopoverPosition = (popover: HTMLDivElement): number => {
+  const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
+  const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
+  const safeZone = 16;
 
-  const xRelative = (x * 100) / innerWidth;
-  const yRelative = (y * 100) / innerHeight - element.scrollTop;
+  console.log('left', popover.offsetLeft);
+  console.log('document', viewportWidth, viewportHeight);
+  console.log('popover', popoverOffsetLeft, popoverWidth);
 
-  const oneThird = 10;
-  const twoThirds = 80;
+  // const diffX = popoverOffsetLeft + popoverWidth - viewportWidth + safeZone;
 
-  const direction: PopoverDirection = {
-    x: 'center',
-    y: 'bottom',
-  };
+  let popoverPositionLeft = popover.offsetLeft;
 
-  if (xRelative < oneThird) {
-    direction.x = 'right';
-  } else if (xRelative >= oneThird && xRelative <= twoThirds) {
-    direction.x = 'center';
-  } else if (xRelative > twoThirds) {
-    direction.x = 'left';
+  console.log('position left', popoverPositionLeft);
+
+  if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
+    popoverPositionLeft = popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
+  } else if (popoverOffsetLeft < safeZone) {
+    popoverPositionLeft = popoverPositionLeft - popoverOffsetLeft + safeZone;
   }
 
-  if (yRelative < oneThird) {
-    direction.y = 'bottom';
-  } else if (yRelative >= oneThird && yRelative <= twoThirds) {
-    direction.y = 'center';
-  } else if (yRelative > twoThirds) {
-    direction.y = 'top';
-  }
+  return popoverPositionLeft;
 
-  return direction;
+  // const xRelative = ((x + popover.scrollLeft) / innerWidth) * 100;
+  // const yRelative = ((y + popover.scrollTop) / innerHeight) * 100;
+  //
+  // // const oneThird = 20;
+  // // const twoThirds = 80;
+  // //
+  // const direction: PopoverPosition = {
+  //   x: xRelative,
+  //   y: yRelative,
+  // };
+  // //
+  // // if (xRelative < oneThird) {
+  // //   direction.x = 'right';
+  // // } else if (xRelative >= oneThird && xRelative <= twoThirds) {
+  // //   direction.x = 'center';
+  // // } else if (xRelative > twoThirds) {
+  // //   direction.x = 'left';
+  // // }
+  // //
+  // // if (yRelative < oneThird) {
+  // //   direction.y = 'bottom';
+  // // } else if (yRelative >= oneThird && yRelative <= twoThirds) {
+  // //   direction.y = 'center';
+  // // } else if (yRelative > twoThirds) {
+  // //   direction.y = 'top';
+  // // }
+  //
+  // return direction;
 };
