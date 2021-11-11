@@ -14,7 +14,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
     <option value="neutral">Neutral</option>
     <option value="success">Success</option>
   </select><br><br>
-  <button id="addToastButton">Add Toast</button>
+  <button id="addToastButton" type="button">Add Toast</button>
   <p-toast></p-toast>
 </Playground>
 

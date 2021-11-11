@@ -39,7 +39,7 @@ The custom event that is emitted on close button click is called `dismiss`.
 It can be used to remove the component.
 
 <Playground :frameworkMarkup="events" :config="config">
-  <button id="bannerEventsButton">Show Inline Notification</button>
+  <button id="bannerEventsButton" type="button">Show Inline Notification</button>
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
@@ -61,7 +61,7 @@ The custom event that is emitted on action button click is called `action`.
     action-icon="reset"
   ></p-inline-notification>
   <br>
-  <button id="bannerActionButton">Reset `actionLoading`</button>
+  <button id="bannerActionButton" type="button">Reset `actionLoading`</button>
 </Playground>
 
 ## Slotted Content

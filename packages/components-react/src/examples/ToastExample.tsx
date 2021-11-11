@@ -8,7 +8,9 @@ export const ToastExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <button onClick={onButtonClick}>Add Toast</button>
+      <button type="button" onClick={onButtonClick}>
+        Add Toast
+      </button>
       <PToast />
     </>
   );
