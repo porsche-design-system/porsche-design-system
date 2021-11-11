@@ -1,11 +1,11 @@
+import * as a11yUtils from './a11y';
 import {
   parseAndGetAriaAttributes,
-  parseAriaAttributes,
   setAriaAttributes,
   SetAriaAttributesOptions,
   throwIfAriaAttributesAreInvalid,
 } from './a11y';
-import * as a11yUtils from './a11y';
+import * as jsonUtils from './json';
 import * as domUtils from './dom';
 import type { AriaAttributes } from '../types';
 
@@ -43,22 +43,6 @@ describe('setAriaAttributes()', () => {
   });
 });
 
-describe('parseAriaAttributes()', () => {
-  it.each<AriaAttributes | string>([
-    {
-      'aria-label': 'Some label',
-    },
-    "{'aria-label': 'Some label'}",
-    "{'aria-label':'Some label'}",
-    '{"aria-label": "Some label"}',
-    '{"aria-label":"Some label"}',
-  ])('should return parsed object for %o', (input) => {
-    expect(parseAriaAttributes(input)).toEqual({
-      'aria-label': 'Some label',
-    });
-  });
-});
-
 describe('throwIfAriaAttributesAreInvalid()', () => {
   it('should throw error for unsupported attribute', () => {
     const testFunc = () => {
@@ -80,8 +64,8 @@ describe('throwIfAriaAttributesAreInvalid()', () => {
 describe('parseAndGetAriaAttributes()', () => {
   const rawAttributes = "{ aria-label: 'Some label' }";
 
-  it('should call parseAriaAttributes()', () => {
-    const spy = jest.spyOn(a11yUtils, 'parseAriaAttributes');
+  it('should call parseJSONAttribute()', () => {
+    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
 
     parseAndGetAriaAttributes(rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes);
