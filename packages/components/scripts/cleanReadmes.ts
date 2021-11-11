@@ -73,11 +73,10 @@ const fixBreakpointCustomizable = (str: string): string => {
   return content;
 };
 
-const fixAriaTypes = (str: string): string => {
-  return str.replace(/(?:\|\s`aria`\s*?){2}\|.*?\|\s`(.*?)\|\s`/, (match, type: string): string => {
+const fixAriaTypes = (str: string): string =>
+  str.replace(/(?:\|\s`aria`\s*?){2}\|.*?\|\s`(.*?)\|\s`/, (match): string => {
     return match.replace('`string \\| {', '`{');
   });
-};
 
 const replacePipesWithNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>` ');
 
