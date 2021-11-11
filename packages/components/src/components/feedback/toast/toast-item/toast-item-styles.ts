@@ -1,4 +1,4 @@
-import { buildHostStyles, buildSlottedStyles, getBaseSlottedStyles, getCss } from '../../../../utils';
+import { buildHostStyles, getCss } from '../../../../utils';
 import {
   getCloseIconStyles,
   getNotificationContentStyles,
@@ -15,8 +15,4 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
     content: getNotificationContentStyles(),
     close: getCloseIconStyles(),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };
