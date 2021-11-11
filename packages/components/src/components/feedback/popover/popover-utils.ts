@@ -1,10 +1,6 @@
-export type VerticalPosition = 'top' | 'center' | 'bottom';
-export type HorizontalPosition = 'left' | 'center' | 'right';
-
-export type Position = {
-  vertical: VerticalPosition;
-  horizontal: HorizontalPosition;
-};
+export type HorizontalDirection = 'left' | 'center' | 'right';
+export type VerticalDirection = 'bottom' | 'center' | 'top';
+export type PopoverDirection = { x: HorizontalDirection; y: VerticalDirection };
 
 export const getElementOffsetCenter = (element: HTMLElement) => {
   const { top, left, width, height } = element.getBoundingClientRect();
@@ -12,17 +8,17 @@ export const getElementOffsetCenter = (element: HTMLElement) => {
   return { x: left + width / 2, y: top + height / 2 };
 };
 
-export const getFlyoutDirection = (element: HTMLElement): { x: string; y: string } => {
+export const getPopoverDirection = (element: HTMLElement): PopoverDirection => {
   const { x, y } = getElementOffsetCenter(element);
   const { innerWidth, innerHeight } = window;
 
   const xRelative = (x * 100) / innerWidth;
-  const yRelative = (y * 100) / innerHeight;
+  const yRelative = (y * 100) / innerHeight - element.scrollTop;
 
-  const oneThird = 33.33333;
-  const twoThirds = 66.66666;
+  const oneThird = 10;
+  const twoThirds = 80;
 
-  const direction = {
+  const direction: PopoverDirection = {
     x: 'center',
     y: 'bottom',
   };
