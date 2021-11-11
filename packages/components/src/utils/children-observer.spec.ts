@@ -1,4 +1,4 @@
-import { observeChildren, unobserveChildren, childrenMutationMap } from '.';
+import { observeChildren, unobserveChildren, childrenMutationMap } from './children-observer';
 
 describe('observeChildren()', () => {
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementIndex,
   getElementStyle,
@@ -626,12 +627,8 @@ describe('select-wrapper filter', () => {
     it('should expose correct initial accessibility tree and aria properties of filter', async () => {
       await initSelect({ disabledIndex: 1 });
       const filter = await getFilterInput();
-      const snapshot = await page.accessibility.snapshot({
-        root: filter,
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, filter, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree of option list if filter value has no match', async () => {
@@ -642,12 +639,7 @@ describe('select-wrapper filter', () => {
 
       const dropDown = await getDropdownList();
 
-      const snapshot = await page.accessibility.snapshot({
-        root: dropDown,
-        interestingOnly: false,
-      });
-
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if description is set', async () => {
@@ -657,11 +649,7 @@ describe('select-wrapper filter', () => {
       await waitForStencilLifecycle(page);
       const filterInput = await getFilterInput();
 
-      const snapshot = await page.accessibility.snapshot({
-        root: filterInput,
-      });
-
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, filterInput);
     });
 
     it('should expose correct accessibility tree in error state', async () => {
@@ -672,11 +660,7 @@ describe('select-wrapper filter', () => {
       await waitForStencilLifecycle(page);
       const filterInput = await getFilterInput();
 
-      const snapshot = await page.accessibility.snapshot({
-        root: filterInput,
-      });
-
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, filterInput);
     });
   });
 });

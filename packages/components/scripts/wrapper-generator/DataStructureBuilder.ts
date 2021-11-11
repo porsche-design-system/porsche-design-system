@@ -31,7 +31,7 @@ export class DataStructureBuilder {
   }
 
   public extractNonPrimitiveTypes(input: string, isNonPrimitiveType: boolean = false): string[] {
-    const whitelistedTypes = ['CustomEvent', 'Extract', 'InputEvent', 'T', 'T[]'];
+    const whitelistedTypes = ['CustomEvent', 'InputEvent', 'Pick', 'Omit', 'Exclude', 'Extract', 'T', 'T[]'];
     const nonPrimitiveTypes: string[] = [];
 
     const handleCustomGenericTypes = (nonPrimitiveType: string) => {
