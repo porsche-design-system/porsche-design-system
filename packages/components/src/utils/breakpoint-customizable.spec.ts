@@ -1,4 +1,4 @@
-import { mapBreakpointPropToClasses } from '.';
+import { mapBreakpointPropToClasses } from './breakpoint-customizable';
 
 describe('mapBreakpointPropToClasses()', () => {
   it('should create class by passing a "string" prop', () => {

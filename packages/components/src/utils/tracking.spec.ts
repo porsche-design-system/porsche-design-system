@@ -1,4 +1,4 @@
-import { trackEvent } from '.';
+import { trackEvent } from './tracking';
 import { version } from '../../package.json';
 
 describe('trackEvent()', () => {
