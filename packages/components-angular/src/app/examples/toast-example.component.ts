@@ -10,9 +10,12 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastExampleComponent {
+  counter = 1;
+
   constructor(private toastManager: ToastManager) {}
 
   onButtonClick() {
-    this.toastManager.addToast({ message: 'Some message', state: 'success' });
+    this.toastManager.addToast({ message: `Some message ${this.counter}`, state: 'success' });
+    this.counter++;
   }
 }
