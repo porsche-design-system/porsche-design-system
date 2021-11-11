@@ -127,7 +127,7 @@ after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally a
 
   await waitForToastTimeout();
 
-  expect(await getToastItem()).not.toBeDefined();
+  expect(await getToastItem()).toBeNull();
 });
 
 describe('lifecycle', () => {
