@@ -1,4 +1,4 @@
-import { isDark, getThemeDarkAttribute } from '.';
+import { isDark, getThemeDarkAttribute } from './theme';
 
 describe('isDark()', () => {
   it('should return true for "dark"', () => {
