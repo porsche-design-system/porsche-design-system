@@ -62,7 +62,7 @@ export const getComponentCss = (directionX, directionY): string => {
         background: 'deepskyblue',
       })
     ),
-    flyout: {
+    popover: {
       position: 'absolute',
       padding: '.5rem 1rem',
       boxShadow: '0 0 10px 0 rgba(0,0,0,1)',
