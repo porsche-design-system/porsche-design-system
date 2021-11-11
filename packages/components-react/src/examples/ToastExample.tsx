@@ -1,19 +1,14 @@
-import { useEffect } from 'react';
 import { useToastManager, PToast } from '@porsche-design-system/components-react';
+import { useCallback } from 'react';
 
 export const ToastExamplePage = (): JSX.Element => {
   const { addToast } = useToastManager();
 
-  useEffect(() => {
-    addToast({ message: 'asd', state: 'success' });
-    addToast({ message: 'asd2', state: 'success' });
-  }, [addToast]);
+  const onButtonClick = useCallback(() => addToast({ message: 'Some message', state: 'success' }), [addToast]);
 
   return (
     <>
-      <button onClick={() => addToast({ message: 'some message ' + new Date().toISOString(), state: 'success' })}>
-        Add Toast
-      </button>
+      <button onClick={onButtonClick}>Add Toast</button>
       <PToast />
     </>
   );
