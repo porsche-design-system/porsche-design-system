@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
   getOutlineStyle,
@@ -260,16 +261,13 @@ describe('link-pure', () => {
       await initLinkPure();
       const link = await getLink();
       const icon = await getIcon();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
       const snapshotIcon = await page.accessibility.snapshot({
         root: icon,
         interestingOnly: false,
       });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
       expect(snapshotIcon).toBeNull();
     });
 
@@ -279,21 +277,15 @@ describe('link-pure', () => {
       const link = await getLink();
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree description if subline property is set', async () => {
       await initLinkPure({ withSubline: true });
       const link = await getLink();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should not expose accessibility tree description with slotted anchor and subline', async () => {
@@ -305,6 +297,18 @@ describe('link-pure', () => {
       });
 
       expect(snapshot).toBeNull();
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLinkPure();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });

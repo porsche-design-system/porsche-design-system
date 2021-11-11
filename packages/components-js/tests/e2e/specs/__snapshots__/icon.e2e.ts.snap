@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`icon accessibility should expose correct initial accessibility tree properties 1`] = `
+Object {
+  "name": "Some label",
+  "role": "img",
+}
+`;

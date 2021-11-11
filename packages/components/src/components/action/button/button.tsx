@@ -6,8 +6,18 @@ import {
   isDark,
   isDisabledOrLoading,
   mapBreakpointPropToClasses,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
+import type {
+  SelectedAriaAttributes,
+  BreakpointCustomizable,
+  ButtonType,
+  ButtonVariant,
+  IconName,
+  Theme,
+} from '../../../types';
+import type { ButtonAriaAttributes } from './button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
 
 @Component({
   tag: 'p-button',
@@ -43,6 +53,9 @@ export class Button {
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -83,9 +96,14 @@ export class Button {
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
+        {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
-          <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
+          <PrefixedTagNames.pSpinner
+            {...iconProps}
+            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
+            aria={{ 'aria-label': 'Loading state' }}
+          />
         ) : (
           <PrefixedTagNames.pIcon
             {...iconProps}

@@ -13,7 +13,7 @@
     </div>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-      <p-spinner v-if="isLoading" size="medium" aria-label="Loading page"></p-spinner>
+      <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
     </main>
     <Menu class="menu"></Menu>
   </div>
