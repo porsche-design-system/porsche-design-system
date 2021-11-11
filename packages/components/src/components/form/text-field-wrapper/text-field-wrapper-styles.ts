@@ -51,7 +51,8 @@ export const getComponentCss = (
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
     getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
-  const hasState = state !== 'none';
+  const hasVisibleState = ['success', 'error'].includes(state);
+
   return getCss({
     ...buildHostStyles({
       display: 'block',
@@ -67,13 +68,13 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          ...(!unit && { padding: pxToRemWithUnit(hasState ? 10 : 11) }),
+          ...(!unit && { padding: pxToRemWithUnit(hasVisibleState ? 10 : 11) }),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
           appearance: 'none',
           boxSizing: 'border-box',
-          border: `${hasState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`}`,
+          border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
           borderRadius: 0,
           backgroundColor,
           opacity: 1,
@@ -103,7 +104,7 @@ export const getComponentCss = (
             }),
 
         '::slotted(input:hover)': {
-          borderColor: hasState ? stateHoverColor : textColor,
+          borderColor: hasVisibleState ? stateHoverColor : textColor,
         },
 
         '::slotted(input[readonly]:focus)': {
@@ -169,7 +170,7 @@ export const getComponentCss = (
         color: textColor,
         transition: getTransition('color'),
 
-        ...getFocusStyles({ color: color.state.focus, offset: hasState ? -5 : -4 }),
+        ...getFocusStyles({ color: color.state.focus, offset: hasVisibleState ? -5 : -4 }),
 
         '&:hover': {
           color: hoverColor,
