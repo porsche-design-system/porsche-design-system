@@ -6,22 +6,22 @@ import type { Theme } from '../../../../types';
 import type { ToastOffsetValue } from './toast-utils';
 import { getPrefixedTagNames } from '../../../../utils';
 import { parseJSONAttribute } from '../../../../utils/json';
+import { defaultToastOffset } from './toast-utils';
 
 @Component({
   tag: 'p-toast',
   shadow: true,
 })
 export class Toast {
-  /** Adapts the toast-item color depending on the theme. */
+  /** Adapts the toast color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The offset of the toast-item. */
-  @Prop() public offset?: ToastOffsetValue = { bottom: 55 };
+  /** The offset of the toast. */
+  @Prop() public offset?: ToastOffsetValue = defaultToastOffset;
 
   @Element() public host!: HTMLElement;
 
   private manager: ToastManagerInternal;
-  private key = 0;
 
   /* eslint-disable @typescript-eslint/require-await */
   @Method()
@@ -30,7 +30,6 @@ export class Toast {
   }
 
   public connectedCallback(): void {
-    // addComponentCss(this.host, parseJSON(this.offset));
     this.manager = toastManager.register(this.host);
     // eslint-disable-next-line no-console
     console.log('connectedCallback', this.manager);
@@ -44,7 +43,6 @@ export class Toast {
   }
 
   public componentWillRender(): void {
-    this.key++;
     addComponentCss(this.host, parseJSONAttribute(this.offset));
   }
 
@@ -65,11 +63,6 @@ export class Toast {
     console.log('render', this.manager);
     const toast = this.manager.getToast();
 
-    return (
-      <Host>
-        {toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme} />}
-        <span key={this.key} class="progress" />
-      </Host>
-    );
+    return <Host>{toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme} />}</Host>;
   }
 }
