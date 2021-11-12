@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import { getPopoverPosition } from './popover-utils';
-import { attachComponentCss } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../../types';
 
@@ -14,7 +14,7 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() open: boolean = true;
+  @State() private open = false;
 
   private popover: HTMLDivElement;
 
@@ -24,23 +24,28 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.open) {
-      const position: number = getPopoverPosition(this.popover);
-      this.popover.style.left = `${position}px`;
-      console.log(position);
+      const { verticalDirection, popoverPositionLeft } = getPopoverPosition(this.popover);
+      this.popover.style.left = `${popoverPositionLeft}px`;
+      if (verticalDirection === 'top') {
+        this.popover.style.setProperty('top', 'initial');
+        this.popover.style.bottom = '2rem';
+      }
     }
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
-        <p-button-pure
+        <PrefixedTagNames.pButtonPure
           icon="information"
           hideLabel="true"
           onFocus={() => (this.open = true)}
           onBlur={() => (this.open = false)}
         >
           Open Popover
-        </p-button-pure>
+        </PrefixedTagNames.pButtonPure>
         {this.open && (
           <div class="popover" ref={(el) => (this.popover = el)}>
             <slot />
