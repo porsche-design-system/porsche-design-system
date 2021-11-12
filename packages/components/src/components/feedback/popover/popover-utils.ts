@@ -1,36 +1,41 @@
 export type HorizontalDirection = 'left' | 'center' | 'right';
-export type VerticalDirection = 'bottom' | 'center' | 'top';
-export type PopoverPosition = { x: number; y: number };
 
 export const getElementOffsetCenter = (element: HTMLElement) => {
   const { top, left, width, height } = element.getBoundingClientRect();
-  console.log('element', top, left, width, height);
+  // console.log('element', top, left, width, height);
 
   return { x: left + width / 2, y: top + height / 2 };
 };
 
-export const getPopoverPosition = (popover: HTMLDivElement): number => {
+export const getPopoverPosition = (
+  popover: HTMLDivElement
+): { verticalDirection: string; popoverPositionLeft: number } => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-  const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
+  const { left: popoverOffsetLeft, width: popoverWidth, bottom: popoverBottom } = popover.getBoundingClientRect();
   const safeZone = 16;
 
-  console.log('left', popover.offsetLeft);
-  console.log('document', viewportWidth, viewportHeight);
-  console.log('popover', popoverOffsetLeft, popoverWidth);
+  // console.log('left', popover.offsetLeft);
+  // console.log('document', viewportWidth, viewportHeight);
+  // console.log('popover', popoverOffsetLeft, popoverWidth);
 
   // const diffX = popoverOffsetLeft + popoverWidth - viewportWidth + safeZone;
 
   let popoverPositionLeft = popover.offsetLeft;
 
-  console.log('position left', popoverPositionLeft);
+  // console.log('position left', popoverPositionLeft);
 
   if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
     popoverPositionLeft = popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
   } else if (popoverOffsetLeft < safeZone) {
     popoverPositionLeft = popoverPositionLeft - popoverOffsetLeft + safeZone;
   }
+  let verticalDirection = 'bottom';
 
-  return popoverPositionLeft;
+  if (popoverBottom + popover.scrollTop > viewportHeight - safeZone) {
+    verticalDirection = 'top';
+  }
+
+  return { verticalDirection, popoverPositionLeft };
 
   // const xRelative = ((x + popover.scrollLeft) / innerWidth) * 100;
   // const yRelative = ((y + popover.scrollTop) / innerHeight) * 100;
