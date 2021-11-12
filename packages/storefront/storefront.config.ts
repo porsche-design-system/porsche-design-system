@@ -337,6 +337,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
       ],
+      Popover: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.examples.md'),
+      ],
       'Decision Tree': [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/decision-tree.md'),
