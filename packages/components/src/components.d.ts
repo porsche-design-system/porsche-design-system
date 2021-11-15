@@ -20,6 +20,7 @@ import { InlineNotificationState } from "./components/feedback/inline-notificati
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
+import { Direction } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -625,6 +626,7 @@ export namespace Components {
         "totalItemsCount": number;
     }
     interface PPopover {
+        "preferredDirection": Direction;
         /**
           * Theme.
          */
@@ -1854,6 +1856,7 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     interface PPopover {
+        "preferredDirection"?: Direction;
         /**
           * Theme.
          */
