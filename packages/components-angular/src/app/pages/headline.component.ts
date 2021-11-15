@@ -40,6 +40,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-headline [align]="'left'">Left</p-headline>
       <p-headline [align]="'center'">Center</p-headline>
       <p-headline [align]="'right'">Right</p-headline>
+
       <p-headline [align]="'left'" [variant]="'inherit'">Left</p-headline>
       <p-headline [align]="'center'" [variant]="'inherit'">Center</p-headline>
       <p-headline [align]="'right'" [variant]="'inherit'">Right</p-headline>
