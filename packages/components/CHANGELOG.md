@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [2.7.0-beta.1] - 2021-11-15
 
-### Fixed
+#### Fixed
 - `Headline` applies `align` and `ellipsis` prop correctly
 
 ### [2.7.0-beta.0] - 2021-11-11
