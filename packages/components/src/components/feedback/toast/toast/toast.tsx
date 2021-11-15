@@ -38,7 +38,7 @@ export class Toast {
   public componentDidLoad(): void {
     this.host.addEventListener('dismiss', (e) => {
       e.stopPropagation();
-      this.manager.dismissToast();
+      this.manager.dismissToastItem();
     });
   }
 
@@ -47,7 +47,7 @@ export class Toast {
   }
 
   public componentDidRender(): void {
-    this.manager.startToast();
+    this.manager.startTimeout();
   }
 
   public disconnectedCallback(): void {

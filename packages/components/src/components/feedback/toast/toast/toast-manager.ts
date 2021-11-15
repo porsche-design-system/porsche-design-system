@@ -52,7 +52,7 @@ class ToastManagerClass {
     }
   }
 
-  public dismissToast = (): void => {
+  public dismissToastItem = (): void => {
     // eslint-disable-next-line no-console
     console.log('-> dismissing toast', new Date().toISOString());
     clearTimeout(this.timeout);
@@ -64,12 +64,15 @@ class ToastManagerClass {
     return this.messages[0];
   }
 
-  public startToast(): void {
-    if (this.messages.length && !getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)) {
-      this.timeout = setTimeout(this.dismissToast, TOAST_DEFAULT_TIMEOUT);
-
-      // eslint-disable-next-line no-console
-      console.log('-> starting toast with timeout', TOAST_DEFAULT_TIMEOUT, new Date().toISOString());
+  public startTimeout(): void {
+    if (this.messages.length) {
+      if (ROLLUP_REPLACE_IS_STAGING === 'production') {
+        this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
+      } else {
+        if (!getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)) {
+          this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
+        }
+      }
     }
   }
 }
