@@ -21,8 +21,17 @@ Review the [notification decision tree](components/notifications/decision-tree) 
     <option disabled>Select a state</option>
     <option value="neutral">Neutral</option>
     <option value="success">Success</option>
-  </select><br><br>
-  <button id="addToastButton" type="button">Add Toast</button>
+  </select>
+  <br><br>
+  <button type="button" v-on:click="addToast()">Add Toast</button>
+</Playground>
+
+## Offset
+
+The position of the `p-toast` can be adjusted via the `offset` property.
+
+<Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
+  <input type="number" min="0" max="200" step="5" v-model="offset" @change="onOffsetChange">
 </Playground>
 
 <!-- shared across playgrounds -->
@@ -32,15 +41,19 @@ Review the [notification decision tree](components/notifications/decision-tree) 
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
+  import { componentsReady } from '@porsche-design-system/components-js';
   import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
+  import { defaultToastOffset } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
   import type { Theme } from '@/models';
   
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
 
+    private manager;
     state = 'neutral';
     toastCounter = 1;
+    offset = defaultToastOffset.bottom;
 
     zIndexes = {
       banner: BANNER_Z_INDEX,
@@ -57,17 +70,26 @@ Review the [notification decision tree](components/notifications/decision-tree) 
       }), {});
     }
 
-    mounted(): void {
-      document.getElementById('addToastButton').addEventListener('click', (e) => {
-        this.$refs.toast.getManager().then((manager) => {
-          manager.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
-          this.toastCounter++;
-        });
-      });
+    get offsetMarkup() {
+      return `<p-toast offset="{ bottom: ${this.offset} }"></p-toast>`;
+    }
+
+    async mounted(): void {
+      await componentsReady(this.$refs.toast.parentElement);
+      this.manager = await this.$refs.toast.getManager();
+    }
+
+    addToast(): void {
+      this.manager.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+      this.toastCounter++;
     }
 
     onThemeChange(theme: Theme): void {
       this.$refs.toast.theme = theme;
+    }
+
+    onOffsetChange(): void {
+      this.$refs.toast.offset = { bottom: this.offset };
     }
   }
 </script>
