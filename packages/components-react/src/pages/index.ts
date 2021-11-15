@@ -39,6 +39,8 @@ export * from './TextFieldWrapper';
 export * from './TextList';
 export * from './TextareaWrapper';
 export * from './ToastItem';
+export * from './Toast';
+export * from './Toasts';
 export * from './TypographyFallbackStrategy';
 export * from './TypographyLatin';
 export * from './TypographyGreekAndCoptic';

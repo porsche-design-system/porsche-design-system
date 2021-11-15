@@ -190,6 +190,16 @@ export const routes: RouteType[] = [
     component: fromPages.ToastItemPage,
   },
   {
+    name: 'Toast',
+    path: '/toast/:state/:theme',
+    component: fromPages.ToastPage,
+  },
+  {
+    name: 'Toast',
+    path: '/toasts',
+    component: fromPages.ToastsPage,
+  },
+  {
     name: 'Typography Fallback Strategy',
     path: '/typography-fallback-strategy',
     component: fromPages.TypographyFallbackStrategyPage,
