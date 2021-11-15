@@ -28,6 +28,7 @@ export const getComponentCss = (): string => {
 
   return getCss({
     ...buildHostStyles({
+      // TODO: Why is nothing set as important here?
       [bannerPositionTypeVar]: 'fixed',
       [bannerPositionTopVar]: pxToRemWithUnit(56),
       [bannerPositionBottomVar]: pxToRemWithUnit(56),

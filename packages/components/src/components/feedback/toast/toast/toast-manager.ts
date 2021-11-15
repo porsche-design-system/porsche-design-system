@@ -4,23 +4,19 @@ import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
+const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-toast-skip-timeout';
 
-type ToastMessage = {
+export type ToastMessage = {
   message: string;
   state?: ToastState;
 };
-export type ToastManager = {
-  addToast: (message: ToastMessage) => void;
-};
 
-class ToastManagerClass implements ToastManager {
+class ToastManagerClass {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
-  // To be overridable by e2e test
-  private timeoutDuration: number = TOAST_DEFAULT_TIMEOUT;
 
-  public register(toastElement: HTMLElement): ToastManagerInternal {
+  public register(toastElement: HTMLElement): ToastManager {
     // eslint-disable-next-line no-console
     console.log('ToastManagerClass.register()');
     if (this.toastEl) {
@@ -69,13 +65,14 @@ class ToastManagerClass implements ToastManager {
   }
 
   public startToast(): void {
-    if (this.messages.length) {
-      this.timeout = setTimeout(this.dismissToast, this.timeoutDuration);
+    if (this.messages.length && !getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)) {
+      this.timeout = setTimeout(this.dismissToast, TOAST_DEFAULT_TIMEOUT);
+
       // eslint-disable-next-line no-console
-      console.log('-> starting toast with timeout', this.timeoutDuration, new Date().toISOString());
+      console.log('-> starting toast with timeout', TOAST_DEFAULT_TIMEOUT, new Date().toISOString());
     }
   }
 }
 
 export const toastManager = new ToastManagerClass();
-export type ToastManagerInternal = typeof toastManager;
+export type ToastManager = typeof toastManager;

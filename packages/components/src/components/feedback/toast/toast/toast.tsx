@@ -1,6 +1,6 @@
 import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
 import { addComponentCss } from './toast-styles';
-import type { ToastManager, ToastManagerInternal } from './toast-manager';
+import type { ToastMessage, ToastManager } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
 import type { ToastOffsetValue } from './toast-utils';
@@ -21,12 +21,12 @@ export class Toast {
 
   @Element() public host!: HTMLElement;
 
-  private manager: ToastManagerInternal;
+  private manager: ToastManager;
 
   /* eslint-disable @typescript-eslint/require-await */
   @Method()
-  public async getManager(): Promise<ToastManager> {
-    return this.manager;
+  public async addToast(message: ToastMessage): Promise<void> {
+    this.manager.addToast(message);
   }
 
   public connectedCallback(): void {
