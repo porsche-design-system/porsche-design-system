@@ -38,7 +38,11 @@ import { TextComponent } from './text.component';
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
-import { ToastItemComponent } from './toast-item.component';
+import { ToastBasicComponent } from './toast-basic.component';
+import { ToastBasicDarkComponent } from './toast-basic-dark.component';
+import { ToastBasicLongTextComponent } from './toast-basic-long-text.component';
+import { ToastOffsetComponent } from './toast-offset.component';
+import { ToastPrefixedComponent } from './toast-prefixed.component';
 import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
 import { TypographyLatinComponent } from './typography-latin.component';
 import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
@@ -85,7 +89,11 @@ export const pages = [
   TextFieldWrapperComponent,
   TextListComponent,
   TextareaWrapperComponent,
-  ToastItemComponent,
+  ToastBasicComponent,
+  ToastBasicDarkComponent,
+  ToastBasicLongTextComponent,
+  ToastOffsetComponent,
+  ToastPrefixedComponent,
   TypographyFallbackStrategyComponent,
   TypographyLatinComponent,
   TypographyGreekAndCopticComponent,
@@ -132,7 +140,11 @@ export * from './text.component';
 export * from './text-field-wrapper.component';
 export * from './text-list.component';
 export * from './textarea-wrapper.component';
-export * from './toast-item.component';
+export * from './toast-basic.component';
+export * from './toast-basic-dark.component';
+export * from './toast-basic-long-text.component';
+export * from './toast-offset.component';
+export * from './toast-prefixed.component';
 export * from './typography-fallback-strategy.component';
 export * from './typography-latin.component';
 export * from './typography-greek-and-coptic.component';
