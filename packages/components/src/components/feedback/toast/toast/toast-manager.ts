@@ -7,7 +7,7 @@ export const TOAST_DEFAULT_TIMEOUT = 6000;
 
 // css variable names for overriding behaviour in tests
 const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-toast-skip-timeout';
-export const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-toast-timeout-override';
+const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-toast-timeout-override';
 
 export type ToastMessage = {
   message: string;
