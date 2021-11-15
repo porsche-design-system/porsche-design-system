@@ -77,7 +77,7 @@ class ToastManagerClass {
           this.timeout = setTimeout(
             this.dismissToastItem,
             // override timeout if --p-toast-timeout-override css variable is set
-            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_TIMEOUT_OVERRIDE_VAR), 10) ??
+            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_TIMEOUT_OVERRIDE_VAR), 10) ||
               TOAST_DEFAULT_TIMEOUT
           );
         }
