@@ -7,6 +7,7 @@ import {
 } from '../../../../utils';
 import type { ToastOffset } from './toast-utils';
 import { defaultToastOffset } from './toast-utils';
+import { TOAST_Z_INDEX } from '../../../../constants';
 
 export const getComponentCss = (offset: ToastOffset = defaultToastOffset): string => {
   return getCss(
@@ -15,6 +16,7 @@ export const getComponentCss = (offset: ToastOffset = defaultToastOffset): strin
         position: 'fixed',
         bottom: pxToRemWithUnit(offset.bottom),
         left: pxToRemWithUnit(8),
+        zIndex: TOAST_Z_INDEX,
       })
     )
   );
