@@ -5,8 +5,8 @@ import {
   getNotificationIconStyles,
   getNotificationRootStyles,
 } from '../../inline-notification/inline-notification-styles';
-import { Theme } from '../../../../types';
-import { ToastState } from '../toast/toast-utils';
+import type { Theme } from '../../../../types';
+import type { ToastState } from '../toast/toast-utils';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
