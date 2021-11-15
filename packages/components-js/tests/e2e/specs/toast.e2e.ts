@@ -12,6 +12,7 @@ import {
 } from '../helpers';
 import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
 import { TOAST_STATES } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
+import { TOAST_CSS_TIMEOUT_OVERRIDE_VAR } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-manager';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 
@@ -20,12 +21,10 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initToast = async (): Promise<void> => {
-  await setContentWithDesignSystem(page, `<p-toast></p-toast>`, { enableLogging: true });
-  await page.evaluate(async (toastTimeoutDuration: number) => {
-    const toast = document.querySelector('p-toast');
-    const manager = await (toast as any).getManager();
-    manager.timeoutDuration = toastTimeoutDuration;
-  }, TOAST_TIMEOUT_DURATION_OVERRIDE);
+  const toastTimeoutStyleOverrides = `<style>${TOAST_CSS_TIMEOUT_OVERRIDE_VAR}: ${TOAST_TIMEOUT_DURATION_OVERRIDE}</style>`;
+  await setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
+    injectIntoHead: toastTimeoutStyleOverrides,
+  });
 };
 
 const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {

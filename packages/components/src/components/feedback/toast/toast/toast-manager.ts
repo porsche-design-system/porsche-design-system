@@ -4,7 +4,10 @@ import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
+
+// css variable names for overriding behaviour in tests
 const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-toast-skip-timeout';
+export const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-toast-timeout-override';
 
 export type ToastMessage = {
   message: string;
@@ -69,8 +72,14 @@ class ToastManagerClass {
       if (ROLLUP_REPLACE_IS_STAGING === 'production') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
+        // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
         if (!getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)) {
-          this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
+          this.timeout = setTimeout(
+            this.dismissToastItem,
+            // override timeout if --p-toast-timeout-override css variable is set
+            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_TIMEOUT_OVERRIDE_VAR), 10) ??
+              TOAST_DEFAULT_TIMEOUT
+          );
         }
       }
     }
