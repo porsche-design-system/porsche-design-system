@@ -35,7 +35,7 @@ export const getComponentCss = (open: boolean): string => {
     }),
     root: {
       position: 'relative',
-      transition: `transform 0.6s ${transitionTimingFunction}`,
+      transition: `transform .6s ${transitionTimingFunction}`,
       transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
     },
   });
