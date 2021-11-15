@@ -25,8 +25,8 @@ export class Toast {
 
   /* eslint-disable @typescript-eslint/require-await */
   @Method()
-  public async addToast(message: ToastMessage): Promise<void> {
-    this.manager.addToast(message);
+  public async addMessage(message: ToastMessage): Promise<void> {
+    this.manager.addMessage(message);
   }
 
   public connectedCallback(): void {

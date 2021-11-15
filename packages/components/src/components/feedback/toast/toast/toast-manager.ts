@@ -35,7 +35,7 @@ class ToastManagerClass {
     clearTimeout(this.timeout);
   }
 
-  public addToast(message: ToastMessage): void {
+  public addMessage(message: ToastMessage): void {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }

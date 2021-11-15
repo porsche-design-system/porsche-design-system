@@ -61,15 +61,15 @@ export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>,
 
 export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-export const useToastManager = (): { addToast: (msg: ToastMessage) => void } => {
+export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } => {
   const tagName = usePrefix('p-toast');
   // TODO: maybe wrap in useEffect for ref of query selector
   return {
     // TODO: maybe wrap in useCallback
-    addToast: (msg: ToastMessage): void => {
+    addMessage: (msg: ToastMessage): void => {
       // TODO: useRef?
-      const toast: HTMLElement & { addToast(msg: ToastMessage): Promise<void> } = document.querySelector(tagName);
-      componentsReady(toast.parentElement).then(() => toast.addToast(msg));
+      const toast: HTMLElement & { addMessage(msg: ToastMessage): Promise<void> } = document.querySelector(tagName);
+      componentsReady(toast.parentElement).then(() => toast.addMessage(msg));
     },
   };
 };

@@ -11,10 +11,10 @@ export const ToastPage = ({
     params: { state, theme = 'light' },
   },
 }: Props): JSX.Element => {
-  const { addToast } = useToastManager();
+  const { addMessage } = useToastManager();
 
   useEffect(() => {
-    addToast({ message: `Some ${state} message`, state });
+    addMessage({ message: `Some ${state} message`, state });
   }, [state]);
 
   return <PToast theme={theme} />;

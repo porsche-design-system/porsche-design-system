@@ -2,11 +2,11 @@ import { useToastManager, PToast } from '@porsche-design-system/components-react
 import { useState } from 'react';
 
 export const ToastExamplePage = (): JSX.Element => {
-  const { addToast } = useToastManager();
+  const { addMessage } = useToastManager();
   const [counter, setCounter] = useState(1);
 
   const onButtonClick = () => {
-    addToast({ message: `Some message ${counter}`, state: 'success' });
+    addMessage({ message: `Some message ${counter}`, state: 'success' });
     setCounter((prev) => prev + 1);
   };
 

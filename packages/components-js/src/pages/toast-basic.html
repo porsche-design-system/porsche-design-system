@@ -10,11 +10,7 @@
 </div>
 
 <script>
-  const toast = document.querySelector('p-toast');
-
   porscheDesignSystem.componentsReady().then(() => {
-    toast.getManager().then((manager) => {
-      manager.addToast({ message: `Some message` });
-    });
+    document.querySelector('p-toast').addMessage({ message: `Some message` });
   });
 </script>
