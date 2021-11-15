@@ -61,6 +61,7 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline align="left">Left</PHeadline>
         <PHeadline align="center">Center</PHeadline>
         <PHeadline align="right">Right</PHeadline>
+
         <PHeadline align="left" variant="inherit">
           Left
         </PHeadline>
