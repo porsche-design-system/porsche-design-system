@@ -682,3 +682,5 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
   </slot>
 </label>"
 `;
+
+exports[`should have no basic DOM regression for p-toast 1`] = `""`;
