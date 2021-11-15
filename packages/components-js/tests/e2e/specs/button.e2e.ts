@@ -119,6 +119,7 @@ describe('button', () => {
     }
     await waitForEventSerialization(page); // 🙈
     await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(page); // 🙈
 
     expect(calls).toBe(2);
   });
