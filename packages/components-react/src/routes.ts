@@ -185,19 +185,29 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
-    name: 'Toast Item',
-    path: '/toast-item',
-    component: fromPages.ToastItemPage,
+    name: 'Toast Basic',
+    path: '/toast-basic',
+    component: fromPages.ToastBasicPage,
   },
   {
-    name: 'Toast',
-    path: '/toast/:state/:theme',
-    component: fromPages.ToastPage,
+    name: 'Toast Basic Dark',
+    path: '/toast-basic-dark',
+    component: fromPages.ToastBasicDarkPage,
   },
   {
-    name: 'Toast',
-    path: '/toasts',
-    component: fromPages.ToastsPage,
+    name: 'Toast Basic Long Text',
+    path: '/toast-basic-long-text',
+    component: fromPages.ToastBasicLongTextPage,
+  },
+  {
+    name: 'Toast Offset',
+    path: '/toast-offset',
+    component: fromPages.ToastOffsetPage,
+  },
+  {
+    name: 'Toast Prefixed',
+    path: '/toast-prefixed',
+    component: fromPages.ToastPrefixedPage,
   },
   {
     name: 'Typography Fallback Strategy',
