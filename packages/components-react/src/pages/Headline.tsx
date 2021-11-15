@@ -61,6 +61,15 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline align="left">Left</PHeadline>
         <PHeadline align="center">Center</PHeadline>
         <PHeadline align="right">Right</PHeadline>
+        <PHeadline align="left" variant="medium">
+          Left
+        </PHeadline>
+        <PHeadline align="center" variant="medium">
+          Center
+        </PHeadline>
+        <PHeadline align="right" variant="medium">
+          Right
+        </PHeadline>
       </div>
 
       <div className="playground light" title="should cut off too long text">
