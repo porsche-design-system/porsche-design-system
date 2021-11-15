@@ -11,7 +11,7 @@
       contentWindow.document.open();
       const scriptNode = 'script';
       const theme = index % 2 === 0 ? 'light' : 'dark';
-      const state = index > 2 ? 'success' : 'neutral';
+      const state = index > 1 ? 'success' : 'neutral';
       contentWindow.document.write(`<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
 <link rel="stylesheet" href="assets/styles.css" />
 <div class="playground ${theme}" style="height: 100vh; box-sizing: border-box" title="should render toast ${state} on ${theme} background">
