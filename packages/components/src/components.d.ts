@@ -923,7 +923,7 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PToast {
-        "addToast": (message: ToastMessage) => Promise<void>;
+        "addMessage": (message: ToastMessage) => Promise<void>;
         /**
           * The offset of the toast.
          */
