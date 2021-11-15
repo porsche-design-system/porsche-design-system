@@ -50,7 +50,6 @@ The position of the `p-toast` can be adjusted via the `offset` property.
   export default class Code extends Vue {
     config = { themeable: true };
 
-    private manager;
     state = 'neutral';
     toastCounter = 1;
     offset = defaultToastOffset.bottom;
@@ -74,13 +73,8 @@ The position of the `p-toast` can be adjusted via the `offset` property.
       return `<p-toast offset="{ bottom: ${this.offset} }"></p-toast>`;
     }
 
-    async mounted(): void {
-      await componentsReady(this.$refs.toast.parentElement);
-      this.manager = await this.$refs.toast.getManager();
-    }
-
     addToast(): void {
-      this.manager.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+      this.$refs.toast.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
       this.toastCounter++;
     }
 
