@@ -28,7 +28,7 @@ import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./com
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastOffsetValue, ToastState } from "./components/feedback/toast/toast/toast-utils";
-import { ToastManager } from "./components/feedback/toast/toast/toast-manager";
+import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
         /**
@@ -923,7 +923,7 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PToast {
-        "getManager": () => Promise<ToastManager>;
+        "addToast": (message: ToastMessage) => Promise<void>;
         /**
           * The offset of the toast.
          */

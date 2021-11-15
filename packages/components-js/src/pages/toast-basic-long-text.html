@@ -1,0 +1,20 @@
+<style>
+  p-toast {
+    --p-toast-position: static;
+    --p-toast-skip-timeout: true;
+  }
+</style>
+
+<div class="playground light" title="should render toast multiline message on light background" style="width: 240px">
+  <p-toast></p-toast>
+</div>
+
+<script>
+  const toast = document.querySelector('p-toast');
+
+  porscheDesignSystem.componentsReady().then(() => {
+    toast.getManager().then((manager) => {
+      manager.addToast({ message: 'Some message with a very long text across multiple lines' });
+    });
+  });
+</script>
