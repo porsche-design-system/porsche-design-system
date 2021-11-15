@@ -3,13 +3,7 @@ import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../.
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
-import {
-  getContentHeight,
-  observeResize,
-  setCollapsibleElementHeight,
-  unobserveResize,
-  warnIfCompactAndSizeIsSet,
-} from './accordion-utils';
+import { getContentHeight, setCollapsibleElementHeight, warnIfCompactAndSizeIsSet } from './accordion-utils';
 
 @Component({
   tag: 'p-accordion',
@@ -40,6 +34,7 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
 
+  private contentObserver: MutationObserver;
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
   private contentHeight: string;
@@ -49,23 +44,22 @@ export class Accordion {
     this.setCollapsibleElementHeight();
   }
 
+  public connectedCallback(): void {
+    window.addEventListener('resize', this.setContentHeight);
+    this.initMutationObserver();
+  }
+
   public componentWillLoad(): void {
     warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
 
   public componentDidLoad(): void {
-    observeResize(
-      this.content,
-      ({ contentRect }) => {
-        this.contentHeight = getContentHeight(contentRect, this.compact);
-        this.setCollapsibleElementHeight();
-      },
-      { box: 'border-box' }
-    );
+    this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
   }
 
   public disconnectedCallback(): void {
-    unobserveResize(this.content);
+    window.removeEventListener('resize', this.setContentHeight);
+    this.contentObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -126,4 +120,21 @@ export class Accordion {
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
+
+  private initMutationObserver = (): void => {
+    this.contentObserver = new MutationObserver((): void => {
+      this.setContentHeight();
+    });
+    this.contentObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+    });
+  };
+
+  private setContentHeight = (): void => {
+    if (this.content) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.setCollapsibleElementHeight();
+    }
+  };
 }
