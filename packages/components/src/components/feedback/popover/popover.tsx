@@ -1,7 +1,8 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getPopoverPosition } from './popover-utils';
+import { getAutoPosition, getOffsetX, getOffsetY, isPopoverWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
+import type { Direction } from './popover-utils';
 import type { Theme } from '../../../types';
 
 @Component({
@@ -11,6 +12,8 @@ import type { Theme } from '../../../types';
 export class Popover {
   @Element() public host!: HTMLElement;
 
+  @Prop() public preferredDirection: Direction = 'bottom';
+
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -19,16 +22,25 @@ export class Popover {
   private popover: HTMLDivElement;
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.preferredDirection);
   }
 
   public componentDidRender(): void {
     if (this.open) {
-      const { verticalDirection, popoverPositionLeft } = getPopoverPosition(this.popover);
-      this.popover.style.left = `${popoverPositionLeft}px`;
-      if (verticalDirection === 'top') {
-        this.popover.style.setProperty('top', 'initial');
-        this.popover.style.bottom = '2rem';
+      let direction = this.preferredDirection;
+      if (!isPopoverWithinViewport(this.popover, this.preferredDirection)) {
+        direction = getAutoPosition(this.host, this.popover);
+        attachComponentCss(this.host, getComponentCss, direction);
+      }
+
+      switch (direction) {
+        case 'top':
+        case 'bottom':
+          this.popover.style.margin = `0 0 0 ${getOffsetX(this.popover)}px`;
+          break;
+        case 'left':
+        case 'right':
+          this.popover.style.margin = `${getOffsetY(this.popover)}px 0 0 0`;
       }
     }
   }
