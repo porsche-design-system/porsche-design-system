@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 70782,
-    "gzipSize": 24040
+    "gzipSize": 24034
   },
   {
     "chunkShortName": "marque",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7221,
-    "gzipSize": 2233
+    "size": 7220,
+    "gzipSize": 2232
   },
   {
     "chunkShortName": "pagination",
@@ -151,7 +151,7 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 4931,
-    "gzipSize": 1931
+    "size": 4823,
+    "gzipSize": 1905
   }
 ]
