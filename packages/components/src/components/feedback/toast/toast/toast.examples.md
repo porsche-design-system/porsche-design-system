@@ -6,6 +6,14 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 
 // TODO: Hint about using it outside of routing if possible
 
+## z-index Concept
+
+| Component | z-index             |
+| --------- | ------------------- |
+| Banner    | {{zIndexes.banner}} |
+| Toast     | {{zIndexes.toast}}  |
+| Modal     | {{zIndexes.modal}}  |
+
 ## Basic
 
 <Playground :frameworkMarkup="basic" :config="config" @onThemeChange="onThemeChange">
@@ -24,6 +32,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
+  import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
   import type { Theme } from '@/models';
   
   @Component
@@ -32,6 +41,12 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 
     state = 'neutral';
     toastCounter = 1;
+
+    zIndexes = {
+      banner: BANNER_Z_INDEX,
+      toast: TOAST_Z_INDEX,
+      modal: MODAL_Z_INDEX,
+    };
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
