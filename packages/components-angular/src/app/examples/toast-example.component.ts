@@ -10,7 +10,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastExampleComponent {
-  counter = 1;
+  private counter = 1;
 
   constructor(private toastManager: ToastManager) {}
 
