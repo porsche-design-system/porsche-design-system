@@ -1,0 +1,20 @@
+<style>
+  p-toast {
+    --p-toast-position: static;
+    --p-toast-skip-timeout: true;
+  }
+</style>
+
+<div class="playground dark" title="should render toast neutral on dark background">
+  <p-toast theme="dark"></p-toast>
+</div>
+
+<script>
+  const toast = document.querySelector('p-toast');
+
+  porscheDesignSystem.componentsReady().then(() => {
+    toast.getManager().then((manager) => {
+      manager.addToast({ message: `Some message` });
+    });
+  });
+</script>
