@@ -7,11 +7,9 @@
   let counter = 1;
 
   porscheDesignSystem.componentsReady().then(() => {
-    toast.getManager().then((manager) => {
-      button.addEventListener('click', () => {
-        manager.addToast({ message: `Some message ${counter}`, state: 'success' });
-        counter++;
-      });
+    button.addEventListener('click', () => {
+      toast.addToast({ message: `Some message ${counter}`, state: 'success' });
+      counter++;
     });
   });
 </script>
