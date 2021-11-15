@@ -8,10 +8,6 @@ import {
 } from '../helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 
-// it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-//   expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-item', '/#toast-item')).toBeFalsy();
-// });
-
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
