@@ -18,17 +18,14 @@
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       setTimeout(() => {
-        document
-          .querySelector('p-toast')
-          .getManager()
-          .then((manager) => {
-            document.querySelector('#button-a').addEventListener('click', () => {
-              manager.addToast({ message: 'message by public member 1', state: 'success' });
-            });
-            document.querySelector('#button-b').addEventListener('click', () => {
-              manager.addToast({ message: 'message by public member 2', state: 'neutral' });
-            });
-          });
+        const toast = document.querySelector('p-toast');
+
+        document.querySelector('#button-a').addEventListener('click', () => {
+          toast.addToast({ message: 'message by public member 1', state: 'success' });
+        });
+        document.querySelector('#button-b').addEventListener('click', () => {
+          toast.addToast({ message: 'message by public member 2', state: 'neutral' });
+        });
       }, 500);
 
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
