@@ -5,9 +5,9 @@ import { componentsReady, ToastMessage } from './public-api';
   providedIn: 'root',
 })
 export class ToastManager {
-  public addToast(msg: ToastMessage): void {
-    const toast: HTMLElement & { addToast(msg: ToastMessage): Promise<void> } =
+  public addMessage(msg: ToastMessage): void {
+    const toast: HTMLElement & { addMessage(msg: ToastMessage): Promise<void> } =
       document.querySelector('p-toast,[p-toast]');
-    componentsReady(toast.parentElement).then(() => toast.addToast(msg));
+    componentsReady(toast.parentElement).then(() => toast.addMessage(msg));
   }
 }

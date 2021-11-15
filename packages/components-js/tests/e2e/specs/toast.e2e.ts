@@ -28,7 +28,7 @@ const initToast = async (): Promise<void> => {
   }, TOAST_TIMEOUT_DURATION_OVERRIDE);
 };
 
-const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
+const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
   const msg: ToastMessage = {
     message: 'Some message',
     state: 'neutral',
@@ -36,9 +36,7 @@ const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
   };
 
   await page.evaluate(async (msg: ToastMessage) => {
-    const toast = document.querySelector('p-toast');
-    const manager = await (toast as any).getManager();
-    manager.addToast(msg);
+    document.querySelector('p-toast').addMessage(msg);
   }, msg);
 
   await waitForStencilLifecycle(page);
@@ -46,7 +44,7 @@ const addToast = async (message?: Partial<ToastMessage>): Promise<void> => {
 
 const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
   await initToast();
-  await addToast(message);
+  await addMessage(message);
 };
 
 const waitForToastTimeout = async (): Promise<void> => {
@@ -91,8 +89,8 @@ it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRID
 
 it('should queue multiple toast-items and show them in correct order', async () => {
   await initToastWithToastItem({ message: '1' });
-  await addToast({ message: '2' });
-  await addToast({ message: '3' });
+  await addMessage({ message: '2' });
+  await addMessage({ message: '3' });
 
   expect(await getProperty(await getToastItem(), 'message')).toBe('1');
 
@@ -111,13 +109,13 @@ after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally a
 } seconds display none`, async () => {
   enableBrowserLogging(page);
   await initToastWithToastItem({ message: '1' });
-  await addToast({ message: '2' });
+  await addMessage({ message: '2' });
 
   const closeButton = await getCloseButton();
   await closeButton.click();
 
   await waitForStencilLifecycle(page);
-  await addToast({ message: '3' });
+  await addMessage({ message: '3' });
 
   expect(await getProperty(await getToastItem(), 'message')).toBe('2');
 

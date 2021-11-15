@@ -2,13 +2,12 @@
 <p-toast></p-toast>
 
 <script>
-  const toast = document.querySelector('p-toast');
   const button = document.querySelector('button');
   let counter = 1;
 
   porscheDesignSystem.componentsReady().then(() => {
     button.addEventListener('click', () => {
-      toast.addToast({ message: `Some message ${counter}`, state: 'success' });
+      toast.addMessage({ message: `Some message ${counter}`, state: 'success' });
       counter++;
     });
   });

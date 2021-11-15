@@ -23,7 +23,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
     <option value="success">Success</option>
   </select>
   <br><br>
-  <button type="button" v-on:click="addToast()">Add Toast</button>
+  <button type="button" v-on:click="queueToast()">Queue Toast</button>
 </Playground>
 
 ## Offset
@@ -73,8 +73,8 @@ The position of the `p-toast` can be adjusted via the `offset` property.
       return `<p-toast offset="{ bottom: ${this.offset} }"></p-toast>`;
     }
 
-    addToast(): void {
-      this.$refs.toast.addToast({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+    queueToast(): void {
+      this.$refs.toast.addMessage({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
       this.toastCounter++;
     }
 

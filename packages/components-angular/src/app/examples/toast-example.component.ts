@@ -15,7 +15,7 @@ export class ToastExampleComponent {
   constructor(private toastManager: ToastManager) {}
 
   onButtonClick() {
-    this.toastManager.addToast({ message: `Some message ${this.counter}`, state: 'success' });
+    this.toastManager.addMessage({ message: `Some message ${this.counter}`, state: 'success' });
     this.counter++;
   }
 }

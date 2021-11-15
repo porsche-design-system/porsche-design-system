@@ -10,11 +10,7 @@
 </div>
 
 <script>
-  const toast = document.querySelector('my-prefix-p-toast');
-
   porscheDesignSystem.componentsReady().then(() => {
-    toast.getManager().then((manager) => {
-      manager.addToast({ message: `Some message` });
-    });
+    document.querySelector('my-prefix-p-toast').addMessage({ message: `Some message` });
   });
 </script>

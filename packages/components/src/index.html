@@ -21,10 +21,10 @@
         const toast = document.querySelector('p-toast');
 
         document.querySelector('#button-a').addEventListener('click', () => {
-          toast.addToast({ message: 'message by public member 1', state: 'success' });
+          toast.addMessage({ message: 'message by public member 1', state: 'success' });
         });
         document.querySelector('#button-b').addEventListener('click', () => {
-          toast.addToast({ message: 'message by public member 2', state: 'neutral' });
+          toast.addMessage({ message: 'message by public member 2', state: 'neutral' });
         });
       }, 500);
 
