@@ -9,6 +9,7 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import type { JssStyle } from '../../../utils';
+import { BANNER_Z_INDEX } from '../../../constants';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';
@@ -30,7 +31,7 @@ export const getComponentCss = (): string => {
       [bannerPositionTypeVar]: 'fixed',
       [bannerPositionTopVar]: pxToRemWithUnit(56),
       [bannerPositionBottomVar]: pxToRemWithUnit(56),
-      [bannerZIndexVar]: '99',
+      [bannerZIndexVar]: BANNER_Z_INDEX,
       display: 'block',
       position: `var(${bannerPositionTypeVar})`,
       zIndex: `var(${bannerZIndexVar})`,
