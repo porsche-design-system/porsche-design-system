@@ -4,21 +4,24 @@ import { useEffect } from 'react';
 export const ToastOffsetPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
-  const toastStyle = {
-    '--p-toast-position': 'static',
-    '--p-toast-skip-timeout': 'true',
-    display: 'block',
-    marginLeft: '-0.5rem',
-    marginRight: '0.5rem',
-  };
+  const style = `p-toast {
+    --p-toast-position: relative;
+    --p-toast-skip-timeout: true;
+    display: block;
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+  }`;
 
   useEffect(() => {
     addMessage({ message: `Some message` });
-  }, []);
+  }, [addMessage]);
 
   return (
-    <div className="playground light" title="should render toast neutral on light background with offset {bottom: 0}">
-      <PToast style={toastStyle as any} offset={{ bottom: 0 }} />
-    </div>
+    <>
+      <style children={style} />
+      <div className="playground light" title="should render toast neutral on light background with offset {bottom: 0}">
+        <PToast offset={{ bottom: 0 }} />
+      </div>
+    </>
   );
 };

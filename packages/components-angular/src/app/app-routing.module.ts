@@ -190,9 +190,29 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.TextareaWrapperComponent,
   },
   {
-    name: 'Toast Item',
-    path: 'toast-item',
-    component: fromPages.ToastItemComponent,
+    name: 'Toast Basic',
+    path: 'toast-basic',
+    component: fromPages.ToastBasicComponent,
+  },
+  {
+    name: 'Toast Basic Dark',
+    path: 'toast-basic-dark',
+    component: fromPages.ToastBasicDarkComponent,
+  },
+  {
+    name: 'Toast Basic Long Text',
+    path: 'toast-basic-long-text',
+    component: fromPages.ToastBasicLongTextComponent,
+  },
+  {
+    name: 'Toast Offset',
+    path: 'toast-offset',
+    component: fromPages.ToastOffsetComponent,
+  },
+  {
+    name: 'Toast Prefixed',
+    path: 'toast-prefixed',
+    component: fromPages.ToastPrefixedComponent,
   },
   {
     name: 'Typography Fallback Strategy',
