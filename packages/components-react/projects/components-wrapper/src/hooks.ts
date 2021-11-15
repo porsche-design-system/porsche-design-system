@@ -2,7 +2,6 @@ import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
-import { componentsReady } from '@porsche-design-system/components-js';
 import type { ToastMessage } from './lib/types';
 
 let skipCheck = false;
@@ -68,8 +67,11 @@ export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } =
     // TODO: maybe wrap in useCallback
     addMessage: (msg: ToastMessage): void => {
       // TODO: useRef?
-      const toast: HTMLElement & { addMessage(msg: ToastMessage): Promise<void> } = document.querySelector(tagName);
-      componentsReady(toast.parentElement).then(() => toast.addMessage(msg));
+      const toast: HTMLElement & {
+        componentOnReady: () => Promise<void>;
+        addMessage(msg: ToastMessage): Promise<void>;
+      } = document.querySelector(tagName);
+      toast.componentOnReady().then(() => toast.addMessage(msg));
     },
   };
 };
