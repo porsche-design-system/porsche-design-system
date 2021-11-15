@@ -1,5 +1,6 @@
 import {
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -29,9 +30,28 @@ describe('headline', () => {
   };
 
   const getHost = () => selectNode(page, 'p-headline');
+  const getText = () => selectNode(page, 'p-headline >>> p-text');
 
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
+
+  it('should forward props correctly to p-text', async () => {
+    await initHeadline({ variant: 'inherit' });
+    const host = await getHost();
+    const initialText = await getText();
+
+    expect(await getProperty(initialText, 'size')).toBe('inherit');
+    expect(await getProperty(initialText, 'align')).toBe('left');
+    expect(await getProperty(initialText, 'ellipsis')).toBe(false);
+
+    await setProperty(host, 'align', 'center');
+    await setProperty(host, 'ellipsis', 'true');
+    await waitForStencilLifecycle(page);
+
+    const changedText = await getText();
+    expect(await getProperty(changedText, 'align')).toBe('center');
+    expect(await getProperty(changedText, 'ellipsis')).toBe(true);
+  });
 
   describe('tag', () => {
     it('should render according to variant', async () => {
