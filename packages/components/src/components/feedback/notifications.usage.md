@@ -27,6 +27,13 @@ In order to find the right notification type for your use case, we have defined 
 | **Banner**              | Top, Center           | Yes           | Resolved/Dismiss | Medium/High  | Neutral, Warning, Error
 | **Modal**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
 
+## z-index Concept in descending order
+
+| Component | z-index             |
+| --------- | ------------------- |
+| Toast     | {{zIndexes.toast}}  |
+| Banner    | {{zIndexes.banner}} |
+| Modal     | {{zIndexes.modal}}  |
 
 
 ## References
@@ -37,3 +44,19 @@ In order to find the right notification type for your use case, we have defined 
  (Nielsen Norman Group, 2018)
 * Jakob Nielsen, [10 Usability Heuristics for User Interface Design](https://www.nngroup.com/articles/ten-usability-heuristics/) (Nielsen Norman Group, 1994)
 * [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
+  
+  @Component
+  export default class Code extends Vue {
+    zIndexes = {
+      toast: TOAST_Z_INDEX,
+      banner: BANNER_Z_INDEX,
+      modal: MODAL_Z_INDEX,
+    };  
+  }
+</script>
