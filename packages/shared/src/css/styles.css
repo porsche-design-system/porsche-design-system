@@ -3,6 +3,8 @@
   --p-animation-duration__spinner: 0s;
   --p-animation-hover-duration: 0s;
   --p-animation-duration__banner: 0s;
+  --p-toast-position: static;
+  --p-toast-skip-timeout: true;
 }
 
 html,

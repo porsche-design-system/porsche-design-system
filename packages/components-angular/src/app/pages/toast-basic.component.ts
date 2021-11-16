@@ -3,14 +3,6 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'toast-basic',
-  styles: [
-    `
-      p-toast {
-        --p-toast-position: static;
-        --p-toast-skip-timeout: true;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render toast neutral on light background">
       <p-toast></p-toast>

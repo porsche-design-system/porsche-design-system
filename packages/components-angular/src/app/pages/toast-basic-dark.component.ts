@@ -3,14 +3,6 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'toast-basic-dark',
-  styles: [
-    `
-      p-toast {
-        --p-toast-position: static;
-        --p-toast-skip-timeout: true;
-      }
-    `,
-  ],
   template: `
     <div class="playground dark" title="should render toast neutral on dark background">
       <p-toast [theme]="'dark'"></p-toast>

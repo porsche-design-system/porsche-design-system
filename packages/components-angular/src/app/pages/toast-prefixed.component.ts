@@ -3,14 +3,6 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'toast-prefixed',
-  styles: [
-    `
-      my-prefix-p-toast {
-        --p-toast-position: static;
-        --p-toast-skip-timeout: true;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render prefixed toast neutral on light background">
       <my-prefix-p-toast p-toast></my-prefix-p-toast>
