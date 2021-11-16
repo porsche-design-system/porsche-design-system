@@ -1,10 +1,10 @@
-import * as inlineNotificationUtils from '../../../utils/validation';
+import * as validationUtils from '../../../utils/validation';
 import { InlineNotification } from './inline-notification';
 import { INLINE_NOTIFICATION_STATES } from './inline-notification-utils';
 
 describe('componentWillRender', () => {
   it('should call throwIfValueIsInvalid()', () => {
-    const spy = jest.spyOn(inlineNotificationUtils, 'throwIfValueIsInvalid');
+    const spy = jest.spyOn(validationUtils, 'throwIfValueIsInvalid');
     const component = new InlineNotification();
     component.host = document.createElement('p-inline-notification');
     component.host.attachShadow({ mode: 'open' });
