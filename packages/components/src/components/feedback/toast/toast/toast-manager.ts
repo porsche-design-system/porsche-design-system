@@ -14,7 +14,7 @@ export type ToastMessage = {
   state?: ToastState;
 };
 
-class ToastManagerClass {
+export class ToastManagerClass {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
@@ -69,7 +69,7 @@ class ToastManagerClass {
 
   public startTimeout(): void {
     if (this.messages.length) {
-      if (ROLLUP_REPLACE_IS_STAGING === 'production') {
+      if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
         // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
