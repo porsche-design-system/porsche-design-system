@@ -31,8 +31,6 @@ export class Toast {
 
   public connectedCallback(): void {
     this.manager = toastManager.register(this.host);
-    // eslint-disable-next-line no-console
-    console.log('connectedCallback', this.manager);
   }
 
   public componentDidLoad(): void {
@@ -56,15 +54,10 @@ export class Toast {
 
   public disconnectedCallback(): void {
     toastManager.unregister();
-    // eslint-disable-next-line no-console
-    console.log('disconnectedCallback', this.manager);
   }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    // eslint-disable-next-line no-console
-    console.log('render', this.manager);
     const toast = this.manager.getToast();
 
     return <Host>{toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme} />}</Host>;
