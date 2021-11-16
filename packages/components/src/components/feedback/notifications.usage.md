@@ -32,8 +32,18 @@ In order to find the right notification type for your use case, we have defined 
 | Component | z-index             |
 | --------- | ------------------- |
 | Toast     | {{zIndexes.toast}}  |
-| Banner    | {{zIndexes.banner}} |
 | Modal     | {{zIndexes.modal}}  |
+| Banner    | {{zIndexes.banner}} |
+
+<p-button v-on:click="startDemo()">Start Live Demo</p-button>
+
+<!-- shared across playgrounds -->
+<p-toast ref="toast"></p-toast>
+<div>  
+  <p-modal ref="modal" heading="Some Heading" :open="isModalOpen">
+    <p-text>Some Content</p-text>
+  </p-modal>
+</div>
 
 
 ## References
@@ -53,10 +63,41 @@ In order to find the right notification type for your use case, we have defined 
   
   @Component
   export default class Code extends Vue {
+    isModalOpen = false;
+    isBannerOpen = false;
+    toastCounter = 1;
     zIndexes = {
       toast: TOAST_Z_INDEX,
       banner: BANNER_Z_INDEX,
       modal: MODAL_Z_INDEX,
-    };  
+    }; 
+
+  
+    mounted() {
+      this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
+    }
+
+    startDemo() {
+      this.$refs.toast.addMessage({ message: `Some message ${this.toastCounter}`});
+      this.toastCounter++;
+      this.isModalOpen = true;
+      if(!this.isBannerOpen){    
+        this.openBanner();
+      }
+    };
+
+    openBanner() {
+      const el = document.createElement('p-banner');
+      el.innerHTML = `
+        <span slot="title">Some banner title</span>
+        <span slot="description">Some banner description.</span>
+      `;
+      document.getElementById('app').append(el);
+
+      this.isBannerOpen = true;
+      el.addEventListener('dismiss', () => {
+        this.isBannerOpen = false;
+      });
+    };
   }
 </script>

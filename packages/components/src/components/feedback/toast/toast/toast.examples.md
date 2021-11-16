@@ -34,7 +34,6 @@ The position of the `p-toast` can be adjusted via the `offset` property.
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
-  import { componentsReady } from '@porsche-design-system/components-js';
   import { defaultToastOffset } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
   import type { Theme } from '@/models';
   
