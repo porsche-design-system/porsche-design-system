@@ -1,10 +1,10 @@
 import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
-import { addComponentCss } from './toast-styles';
+import { getComponentCss } from './toast-styles';
 import type { ToastMessage, ToastManager } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
 import type { ToastOffsetValue } from './toast-utils';
-import { getPrefixedTagNames } from '../../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
 import { parseJSONAttribute } from '../../../../utils/json';
 import { defaultToastOffset } from './toast-utils';
 
@@ -42,8 +42,12 @@ export class Toast {
     });
   }
 
+  public componentShouldUpdate(_, __, propertyName: string): boolean {
+    return propertyName !== 'offset';
+  }
+
   public componentWillRender(): void {
-    addComponentCss(this.host, parseJSONAttribute(this.offset));
+    attachComponentCss(this.host, getComponentCss, parseJSONAttribute(this.offset));
   }
 
   public componentDidRender(): void {
