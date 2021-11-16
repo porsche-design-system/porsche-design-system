@@ -61,10 +61,26 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline align="left">Left</PHeadline>
         <PHeadline align="center">Center</PHeadline>
         <PHeadline align="right">Right</PHeadline>
+
+        <PHeadline align="left" variant="inherit">
+          Left
+        </PHeadline>
+        <PHeadline align="center" variant="inherit">
+          Center
+        </PHeadline>
+        <PHeadline align="right" variant="inherit">
+          Right
+        </PHeadline>
       </div>
 
       <div className="playground light" title="should cut off too long text">
         <PHeadline ellipsis>
+          Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+          dolores et ea rebum.
+        </PHeadline>
+
+        <PHeadline ellipsis variant="inherit">
           Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
           invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
           dolores et ea rebum.
