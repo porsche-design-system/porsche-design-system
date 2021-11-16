@@ -40,8 +40,8 @@ export class ToastItem {
   }
 
   public render(): JSX.Element {
-    const toastId = 'toast';
-    const messageId = 'message';
+    const toastId = 'toast'; // TODO: a11y
+    const messageId = 'message'; // TODO: a11y
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
