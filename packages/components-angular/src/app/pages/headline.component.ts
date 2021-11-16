@@ -40,10 +40,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-headline [align]="'left'">Left</p-headline>
       <p-headline [align]="'center'">Center</p-headline>
       <p-headline [align]="'right'">Right</p-headline>
+
+      <p-headline [align]="'left'" [variant]="'inherit'">Left</p-headline>
+      <p-headline [align]="'center'" [variant]="'inherit'">Center</p-headline>
+      <p-headline [align]="'right'" [variant]="'inherit'">Right</p-headline>
     </div>
 
     <div class="playground light" title="should cut off too long text">
       <p-headline [ellipsis]="true">
+        Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+        et ea rebum.
+      </p-headline>
+
+      <p-headline [ellipsis]="true" [variant]="'inherit'">
         Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
         invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
         et ea rebum.
