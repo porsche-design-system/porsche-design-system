@@ -12,7 +12,8 @@ import type { Theme } from '../../../types';
 export class Popover {
   @Element() public host!: HTMLElement;
 
-  @Prop() public preferredDirection: Direction = 'bottom';
+  /** Preferred direction in which popover should open, given there is enough space in viewport. */
+  @Prop() public direction: Direction = 'bottom';
 
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
@@ -22,13 +23,13 @@ export class Popover {
   private popover: HTMLDivElement;
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.preferredDirection);
+    attachComponentCss(this.host, getComponentCss, this.direction);
   }
 
   public componentDidRender(): void {
     if (this.open) {
-      let direction = this.preferredDirection;
-      if (!isPopoverWithinViewport(this.popover, this.preferredDirection)) {
+      let direction = this.direction;
+      if (!isPopoverWithinViewport(this.popover, this.direction)) {
         direction = getAutoPosition(this.host, this.popover);
         attachComponentCss(this.host, getComponentCss, direction);
       }

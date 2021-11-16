@@ -626,7 +626,10 @@ export namespace Components {
         "totalItemsCount": number;
     }
     interface PPopover {
-        "preferredDirection": Direction;
+        /**
+          * Preferred direction in which popover should open, given there is enough space in viewport.
+         */
+        "direction": Direction;
         /**
           * Theme.
          */
@@ -1856,7 +1859,10 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     interface PPopover {
-        "preferredDirection"?: Direction;
+        /**
+          * Preferred direction in which popover should open, given there is enough space in viewport.
+         */
+        "direction"?: Direction;
         /**
           * Theme.
          */
