@@ -35,22 +35,21 @@ describe('headline', () => {
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
 
-  it('should forward props correctly to p-text', async () => {
+  fit('should forward props correctly to p-text', async () => {
     await initHeadline({ variant: 'inherit' });
     const host = await getHost();
-    const initialText = await getText();
+    const text = await getText();
 
-    expect(await getProperty(initialText, 'size')).toBe('inherit');
-    expect(await getProperty(initialText, 'align')).toBe('left');
-    expect(await getProperty(initialText, 'ellipsis')).toBe(false);
+    expect(await getProperty(text, 'size')).toBe('inherit');
+    expect(await getProperty(text, 'align')).toBe('left');
+    expect(await getProperty(text, 'ellipsis')).toBe(false);
 
     await setProperty(host, 'align', 'center');
-    await setProperty(host, 'ellipsis', 'true');
+    await setProperty(host, 'ellipsis', true);
     await waitForStencilLifecycle(page);
 
-    const changedText = await getText();
-    expect(await getProperty(changedText, 'align')).toBe('center');
-    expect(await getProperty(changedText, 'ellipsis')).toBe(true);
+    expect(await getProperty(text, 'align')).toBe('center');
+    expect(await getProperty(text, 'ellipsis')).toBe(true);
   });
 
   describe('tag', () => {
