@@ -42,15 +42,18 @@ export const getAutoPosition = (host: HTMLElement, popover: HTMLDivElement): Dir
 // TODO: clean up + readability
 export const getOffsetX = (popover: HTMLDivElement): number => {
   const { clientWidth: viewportWidth } = document.documentElement;
+  // offset relative to viewport
   const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
 
-  let popoverPositionLeft = popoverOffsetLeft;
+  // offset relative to parent
+  let popoverPositionLeft = popover.offsetLeft;
 
   // check if popover exceeds right side of viewport
   if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
     popoverPositionLeft = popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
-    // check if popover exceeds left side of viewport
-  } else if (popoverOffsetLeft < safeZone) {
+  }
+  // check if popover exceeds left side of viewport
+  else if (popoverOffsetLeft < safeZone) {
     popoverPositionLeft = popoverPositionLeft - popoverOffsetLeft + safeZone;
   }
 
@@ -61,15 +64,18 @@ export const getOffsetX = (popover: HTMLDivElement): number => {
 // TODO: clean up + readability
 export const getOffsetY = (popover: HTMLDivElement): number => {
   const { clientHeight: viewportHeight } = document.documentElement;
+  // offset relative to viewport
   const { top: popoverOffsetTop, height: popoverHeight } = popover.getBoundingClientRect();
 
+  // offset relative to parent
   let popoverPositionTop = popover.offsetTop;
 
   // check if popover exceeds bottom of viewport
   if (popoverOffsetTop + popoverHeight > viewportHeight - safeZone) {
     popoverPositionTop = popoverPositionTop - (popoverOffsetTop + popoverHeight - viewportHeight + safeZone);
-    // check if popover exceeds top of viewport
-  } else if (popoverOffsetTop < safeZone) {
+  }
+  // check if popover exceeds top of viewport
+  else if (popoverOffsetTop < safeZone) {
     popoverPositionTop = popoverPositionTop - popoverOffsetTop + safeZone;
   }
 
