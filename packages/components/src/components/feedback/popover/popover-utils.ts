@@ -44,10 +44,12 @@ export const getOffsetX = (popover: HTMLDivElement): number => {
   const { clientWidth: viewportWidth } = document.documentElement;
   const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
 
-  let popoverPositionLeft = popover.offsetLeft;
+  let popoverPositionLeft = popoverOffsetLeft;
 
+  // check if popover exceeds right side of viewport
   if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
     popoverPositionLeft = popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
+    // check if popover exceeds left side of viewport
   } else if (popoverOffsetLeft < safeZone) {
     popoverPositionLeft = popoverPositionLeft - popoverOffsetLeft + safeZone;
   }
@@ -63,8 +65,10 @@ export const getOffsetY = (popover: HTMLDivElement): number => {
 
   let popoverPositionTop = popover.offsetTop;
 
+  // check if popover exceeds bottom of viewport
   if (popoverOffsetTop + popoverHeight > viewportHeight - safeZone) {
     popoverPositionTop = popoverPositionTop - (popoverOffsetTop + popoverHeight - viewportHeight + safeZone);
+    // check if popover exceeds top of viewport
   } else if (popoverOffsetTop < safeZone) {
     popoverPositionTop = popoverPositionTop - popoverOffsetTop + safeZone;
   }
