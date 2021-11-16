@@ -64,25 +64,25 @@ describe('calcOffsetX()', () => {
     const { popoverPositionLeft, popoverOffsetLeft, popoverWidth, viewportWidth } = parameters;
     expect(calcOffsetX(popoverPositionLeft, popoverOffsetLeft, popoverWidth, viewportWidth)).toBe(expected);
   });
+});
 
-  describe('getOffsetX()', () => {
-    it('should use getBoundingClientRect on popover element', () => {
-      const host = document.createElement('div');
-      const boundingClientSpy = jest.spyOn(host, 'getBoundingClientRect');
+describe('getOffsetX()', () => {
+  it('should use getBoundingClientRect on popover element', () => {
+    const host = document.createElement('div');
+    const boundingClientSpy = jest.spyOn(host, 'getBoundingClientRect');
 
-      getOffsetX(host);
+    getOffsetX(host);
 
-      expect(boundingClientSpy).toBeCalledTimes(1);
-    });
+    expect(boundingClientSpy).toBeCalledTimes(1);
+  });
 
-    it('should call calcOffsetX with viewportWidth', () => {
-      Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000 });
-      const boundingClientSpy = jest.spyOn(popoverutils, 'calcOffsetX');
-      const host = document.createElement('div');
+  it('should call calcOffsetX with viewportWidth', () => {
+    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000 });
+    const boundingClientSpy = jest.spyOn(popoverutils, 'calcOffsetX');
+    const host = document.createElement('div');
 
-      getOffsetX(host);
+    getOffsetX(host);
 
-      expect(boundingClientSpy).toBeCalledWith(0, 0, 0, 1000);
-    });
+    expect(boundingClientSpy).toBeCalledWith(0, 0, 0, 1000);
   });
 });
