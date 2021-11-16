@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getAutoPosition, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
+import { getAutoDirection, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Direction } from './popover-utils';
@@ -30,7 +30,7 @@ export class Popover {
     if (this.open) {
       let direction = this.direction;
       if (!isWithinViewport(this.popover, this.direction)) {
-        direction = getAutoPosition(this.host, this.popover);
+        direction = getAutoDirection(this.host, this.popover);
         attachComponentCss(this.host, getComponentCss, direction);
       }
 
