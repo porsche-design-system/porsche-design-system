@@ -33,10 +33,12 @@ export const getAutoPosition = (host: HTMLElement, popover: HTMLDivElement): Dir
   const { top: hostTop, left: hostLeft, width: hostWidth, height: hostHeight } = host.getBoundingClientRect();
   const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
 
+  // TODO: 2rem spacing is missing in calculation for all directions
+  // determine the **theoretically** maximum available space in all directions within viewport
   const direction = {
     top: hostTop - popoverHeight,
-    right: viewportWidth - (hostLeft + hostWidth) - popoverWidth,
-    bottom: viewportHeight - (hostTop + hostHeight) - popoverHeight,
+    right: viewportWidth - (hostLeft + hostWidth + popoverWidth),
+    bottom: viewportHeight - (hostTop + hostHeight + popoverHeight),
     left: hostLeft - popoverWidth,
   };
 
