@@ -5,6 +5,7 @@ export const ToastOffsetPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   const style = `p-toast {
+    --p-toast-position: relative;
     display: block;
     margin-left: -0.5rem;
     margin-right: 0.5rem;

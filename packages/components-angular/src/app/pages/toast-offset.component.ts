@@ -6,6 +6,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   styles: [
     `
       p-toast {
+        --p-toast-position: relative;
         display: block;
         margin-left: -0.5rem;
         margin-right: 0.5rem;
