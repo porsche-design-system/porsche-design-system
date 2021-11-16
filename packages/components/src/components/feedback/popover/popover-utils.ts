@@ -46,25 +46,31 @@ export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): Di
 };
 
 // TODO: clean up + readability
+export const calcOffsetX = (
+  popoverPositionLeft: number,
+  popoverOffsetLeft: number,
+  popoverWidth: number,
+  viewportWidth: number
+): number => {
+  // check if popover exceeds right side of viewport
+  if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
+    return popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
+  }
+  // check if popover exceeds left side of viewport
+  else if (popoverOffsetLeft < safeZone) {
+    return popoverPositionLeft - popoverOffsetLeft + safeZone;
+  }
+  return popoverPositionLeft;
+};
+
+// TODO: clean up + readability
 export const getOffsetX = (popover: HTMLDivElement): number => {
   const { clientWidth: viewportWidth } = document.documentElement;
   // offset relative to viewport
   const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
 
-  // offset relative to parent
-  let popoverPositionLeft = popover.offsetLeft;
-
-  // check if popover exceeds right side of viewport
-  if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
-    popoverPositionLeft = popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
-  }
-  // check if popover exceeds left side of viewport
-  else if (popoverOffsetLeft < safeZone) {
-    popoverPositionLeft = popoverPositionLeft - popoverOffsetLeft + safeZone;
-  }
-
   const hostWidth = 12;
-  return popoverPositionLeft - hostWidth;
+  return calcOffsetX(popover.offsetLeft, popoverOffsetLeft, popoverWidth, viewportWidth) - hostWidth;
 };
 
 // TODO: clean up + readability
