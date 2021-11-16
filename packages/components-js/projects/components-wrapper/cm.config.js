@@ -1,7 +1,7 @@
 const { cdnDistPath, deployUrl, npmDistPath, npmDistTmpPath, version } = require('./environment');
 
-const isTpmBuild = process.env.TMP_BUILD === '1';
-const targetDirectory = isTpmBuild ? npmDistTmpPath : npmDistPath;
+const isTmpBuild = process.env.TMP_BUILD === '1';
+const targetDirectory = isTmpBuild ? npmDistTmpPath : npmDistPath;
 
 const isDev = process.env.PORSCHE_DESIGN_SYSTEM_DEV === '1';
 console.log('Environment:', isDev ? 'dev' : 'prod');
@@ -26,7 +26,7 @@ module.exports = {
   targetDirectory,
   deployUrl: deployUrl,
   script: `${cdnDistPath}/porsche-design-system.v*.js`,
-  ...(isTpmBuild
+  ...(isTmpBuild
     ? { iife: true }
     : {
         copyFiles: [
