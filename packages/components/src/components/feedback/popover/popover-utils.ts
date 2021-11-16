@@ -28,7 +28,7 @@ export const isWithinViewport = (popover: HTMLDivElement, direction: Direction):
   }
 };
 
-export const getAutoPosition = (host: HTMLElement, popover: HTMLDivElement): Direction => {
+export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): Direction => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const { top: hostTop, left: hostLeft, width: hostWidth, height: hostHeight } = host.getBoundingClientRect();
   const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
