@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host, State, Fragment } from '@stencil/core';
 import { getAutoDirection, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
@@ -18,9 +18,10 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private open = false;
+  @State() private open = true;
 
   private popover: HTMLDivElement;
+  private arrow: HTMLSpanElement;
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.direction);
@@ -37,11 +38,16 @@ export class Popover {
       switch (direction) {
         case 'top':
         case 'bottom':
-          this.popover.style.margin = `0 0 0 ${getOffsetX(this.popover)}px`;
+          const offsetX = getOffsetX(this.popover);
+          this.popover.style.margin = `0 0 0 ${offsetX}px`;
+          this.arrow.style.margin = `0 0 0 ${-offsetX}px`;
           break;
         case 'left':
         case 'right':
-          this.popover.style.margin = `${getOffsetY(this.popover)}px 0 0 0`;
+          const offsetY = getOffsetY(this.popover);
+          this.popover.style.margin = `${offsetY}px 0 0 0`;
+          this.arrow.style.margin = `${-offsetY}px 0 0 0`;
+          break;
       }
     }
   }
@@ -60,9 +66,14 @@ export class Popover {
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
-          <div class="popover" ref={(el) => (this.popover = el)}>
-            <slot />
-          </div>
+          <Fragment>
+            <div class="popover" ref={(el) => (this.popover = el)}>
+              <span class="arrow" ref={(el) => (this.arrow = el)}></span>
+              <div class="content">
+                <slot />
+              </div>
+            </div>
+          </Fragment>
         )}
       </Host>
     );
