@@ -20,7 +20,9 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const initToast = async (): Promise<void> => {
-  const toastTimeoutStyleOverrides = `<style>p-toast {--p-toast-timeout-override: ${TOAST_TIMEOUT_DURATION_OVERRIDE}
+  const toastTimeoutStyleOverrides = `<style>p-toast {
+--p-toast-timeout-override: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
+--p-toast-skip-timeout: false;
 }</style>`;
   await setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
     injectIntoHead: toastTimeoutStyleOverrides,

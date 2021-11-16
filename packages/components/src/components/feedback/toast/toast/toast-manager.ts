@@ -73,7 +73,7 @@ class ToastManagerClass {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
         // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
-        if (!getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)) {
+        if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
           this.timeout = setTimeout(
             this.dismissToastItem,
             // override timeout if --p-toast-timeout-override css variable is set
