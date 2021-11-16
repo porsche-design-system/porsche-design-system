@@ -6,10 +6,12 @@ import type { ToastMessage } from './public-api';
 })
 export class ToastManager {
   public addMessage(msg: ToastMessage): void {
-    const toast: HTMLElement & {
-      componentOnReady: () => Promise<void>;
-      addMessage(msg: ToastMessage): Promise<void>;
-    } = document.querySelector('p-toast,[p-toast]');
-    toast.componentOnReady().then(() => toast.addMessage(msg));
+    customElements.whenDefined('p-toast').then(() => {
+      const toast: HTMLElement & {
+        componentOnReady: () => Promise<void>;
+        addMessage(msg: ToastMessage): Promise<void>;
+      } = document.querySelector('p-toast,[p-toast]');
+      toast.componentOnReady().then(() => toast.addMessage(msg));
+    });
   }
 }

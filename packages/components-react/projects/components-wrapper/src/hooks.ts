@@ -67,11 +67,13 @@ export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } =
     // TODO: maybe wrap in useCallback
     addMessage: (msg: ToastMessage): void => {
       // TODO: useRef?
-      const toast: HTMLElement & {
-        componentOnReady: () => Promise<void>;
-        addMessage(msg: ToastMessage): Promise<void>;
-      } = document.querySelector(tagName);
-      toast.componentOnReady().then(() => toast.addMessage(msg));
+      customElements.whenDefined(tagName).then(() => {
+        const toast: HTMLElement & {
+          componentOnReady: () => Promise<void>;
+          addMessage(msg: ToastMessage): Promise<void>;
+        } = document.querySelector(tagName);
+        toast.componentOnReady().then(() => toast.addMessage(msg));
+      });
     },
   };
 };
