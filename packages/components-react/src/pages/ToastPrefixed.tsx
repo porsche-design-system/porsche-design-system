@@ -2,17 +2,22 @@ import { PorscheDesignSystemProvider, PToast, useToastManager } from '@porsche-d
 import { useEffect } from 'react';
 
 export const ToastPrefixedPage = (): JSX.Element => {
+  return (
+    <PorscheDesignSystemProvider prefix="my-prefix">
+      <ToastPrefixed />
+    </PorscheDesignSystemProvider>
+  );
+};
+
+const ToastPrefixed = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   useEffect(() => {
     addMessage({ message: `Some message` });
   }, [addMessage]);
-
   return (
     <div className="playground light" title="should render prefixed toast neutral on light background">
-      <PorscheDesignSystemProvider prefix="my-prefix">
-        <PToast />
-      </PorscheDesignSystemProvider>
+      <PToast />
     </div>
   );
 };
