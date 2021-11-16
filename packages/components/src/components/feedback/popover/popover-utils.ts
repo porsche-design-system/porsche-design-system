@@ -2,7 +2,7 @@ export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
 const safeZone = 16;
 
-export const isPopoverWithinViewport = (popover: HTMLDivElement, direction: Direction): boolean => {
+export const isWithinViewport = (popover: HTMLDivElement, direction: Direction): boolean => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const {
     left: popoverLeft,
