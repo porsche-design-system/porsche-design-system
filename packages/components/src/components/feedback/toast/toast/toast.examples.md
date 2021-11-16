@@ -6,13 +6,6 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 
 // TODO: Hint about using it outside of routing if possible
 
-## z-index Concept
-
-| Component | z-index             |
-| --------- | ------------------- |
-| Banner    | {{zIndexes.banner}} |
-| Toast     | {{zIndexes.toast}}  |
-| Modal     | {{zIndexes.modal}}  |
 
 ## Basic
 
@@ -42,7 +35,6 @@ The position of the `p-toast` can be adjusted via the `offset` property.
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
   import { componentsReady } from '@porsche-design-system/components-js';
-  import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
   import { defaultToastOffset } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
   import type { Theme } from '@/models';
   
@@ -53,12 +45,6 @@ The position of the `p-toast` can be adjusted via the `offset` property.
     state = 'neutral';
     toastCounter = 1;
     offset = defaultToastOffset.bottom;
-
-    zIndexes = {
-      banner: BANNER_Z_INDEX,
-      toast: TOAST_Z_INDEX,
-      modal: MODAL_Z_INDEX,
-    };
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
