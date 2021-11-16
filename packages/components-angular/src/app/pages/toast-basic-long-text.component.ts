@@ -3,19 +3,12 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'toast-basic-long-text',
-  styles: [
-    `
-      .playground {
-        width: 240px;
-      }
-      p-toast {
-        --p-toast-position: static;
-        --p-toast-skip-timeout: true;
-      }
-    `,
-  ],
   template: `
-    <div class="playground light" title="should render toast multiline message on light background">
+    <div
+      class="playground light"
+      style="width: 240px;"
+      title="should render toast multiline message on light background"
+    >
       <p-toast></p-toast>
     </div>
   `,
