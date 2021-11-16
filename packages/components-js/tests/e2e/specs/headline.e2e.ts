@@ -35,7 +35,7 @@ describe('headline', () => {
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
 
-  fit('should forward props correctly to p-text', async () => {
+  it('should forward props correctly to p-text', async () => {
     await initHeadline({ variant: 'inherit' });
     const host = await getHost();
     const text = await getText();
