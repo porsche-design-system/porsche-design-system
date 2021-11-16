@@ -29,13 +29,11 @@ export const getComponentCss = (): string => {
   return getCss({
     ...buildHostStyles({
       // TODO: Why is nothing set as important here?
-      [bannerPositionTypeVar]: 'fixed',
       [bannerPositionTopVar]: pxToRemWithUnit(56),
       [bannerPositionBottomVar]: pxToRemWithUnit(56),
-      [bannerZIndexVar]: BANNER_Z_INDEX,
       display: 'block',
-      position: `var(${bannerPositionTypeVar})`,
-      zIndex: `var(${bannerZIndexVar})`,
+      position: `var(${bannerPositionTypeVar},fixed)`,
+      zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
       opacity: 0,
       left: 0,
       right: 0,
