@@ -24,7 +24,12 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 The position of the `p-toast` can be adjusted via the `offset` property.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
-  <input type="number" min="0" max="200" step="5" v-model="offset" @change="onOffsetChange">
+  <label>
+  Offset Bottom
+    <input type="number" min="0" max="200" step="5" v-model="offset" @change="onOffsetChange">
+  </label>
+  <br><br>
+  <button type="button" v-on:click="queueToast()">Queue Toast</button>
 </Playground>
 
 <!-- shared across playgrounds -->
