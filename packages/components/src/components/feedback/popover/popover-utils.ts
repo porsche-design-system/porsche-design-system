@@ -11,16 +11,20 @@ export const isPopoverWithinViewport = (popover: HTMLDivElement, direction: Dire
     height: popoverHeight,
   } = popover.getBoundingClientRect();
 
-  // TODO: also check cross-axis
+  const isWithinTopArea = (): boolean => popoverTop >= safeZone;
+  const isWithinRightArea = (): boolean => popoverLeft + popoverWidth + safeZone <= viewportWidth;
+  const isWithinBottomArea = (): boolean => popoverTop + popoverHeight + safeZone <= viewportHeight;
+  const isWithinLeftArea = (): boolean => popoverLeft >= safeZone;
+
   switch (direction) {
     case 'top':
-      return popoverTop > safeZone;
+      return isWithinTopArea() && isWithinRightArea() && isWithinLeftArea();
     case 'right':
-      return popoverLeft + popoverWidth + safeZone < viewportWidth;
+      return isWithinRightArea() && isWithinTopArea() && isWithinBottomArea();
     case 'bottom':
-      return popoverTop + popoverHeight + safeZone < viewportHeight;
+      return isWithinBottomArea() && isWithinRightArea() && isWithinLeftArea();
     case 'left':
-      return popoverLeft > safeZone;
+      return isWithinLeftArea() && isWithinTopArea() && isWithinBottomArea();
   }
 };
 
