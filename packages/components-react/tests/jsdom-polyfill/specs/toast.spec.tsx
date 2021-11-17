@@ -1,5 +1,5 @@
 import { componentsReady, PToast, useToastManager } from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
@@ -41,9 +41,7 @@ describe('PToast', () => {
 
     const button = getByRole('button');
     userEvent.click(button);
-    expect(debug.innerHTML).toBe('Event Counter: 1;');
-    await new Promise((resolve) => setTimeout(resolve)); // 😿
-    await componentsReady();
+    await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
 
     expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull();
   });
