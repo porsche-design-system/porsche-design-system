@@ -66,12 +66,12 @@ In order to find the right notification type for your use case, we have defined 
     isModalOpen = false;
     isBannerOpen = false;
     toastCounter = 1;
+
     zIndexes = {
       toast: TOAST_Z_INDEX,
       banner: BANNER_Z_INDEX,
       modal: MODAL_Z_INDEX,
-    }; 
-
+    };
   
     mounted() {
       this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
