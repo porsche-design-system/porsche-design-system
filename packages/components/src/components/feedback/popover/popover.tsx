@@ -2,7 +2,7 @@ import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import { getAutoDirection, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
-import type { Direction } from './popover-utils';
+import type { PopoverDirection } from './popover-utils';
 import type { Theme } from '../../../types';
 
 @Component({
@@ -13,12 +13,12 @@ export class Popover {
   @Element() public host!: HTMLElement;
 
   /** Preferred direction in which popover should open, given there is enough space in viewport. */
-  @Prop() public direction: Direction = 'bottom';
+  @Prop() public direction: PopoverDirection = 'bottom';
 
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private open = true;
+  @State() private open = false;
 
   private popover: HTMLDivElement;
   private arrow: HTMLSpanElement;
@@ -52,17 +52,20 @@ export class Popover {
     }
   }
 
+  public componentDidLoad(): void {
+    document.addEventListener('click', this.onClick);
+  }
+
+  public disconnectedCallback(): void {
+    document.removeEventListener('click', this.onClick);
+  }
+
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <PrefixedTagNames.pButtonPure
-          icon="information"
-          hideLabel="true"
-          onFocus={() => (this.open = true)}
-          onBlur={() => (this.open = false)}
-        >
+        <PrefixedTagNames.pButtonPure icon="information" hideLabel="true" onClick={() => (this.open = !this.open)}>
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
@@ -76,4 +79,10 @@ export class Popover {
       </Host>
     );
   }
+  private onClick = (e: MouseEvent): void => {
+    const [, , , , hostElement] = e.composedPath() as HTMLElement[];
+    if (hostElement !== this.host) {
+      this.open = false;
+    }
+  };
 }
