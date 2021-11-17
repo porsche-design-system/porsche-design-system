@@ -19,7 +19,7 @@ export const ToastOffsetPage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should render toast neutral on light background with offset {bottom: 0}">
-        <PToast offset={{ bottom: 0 }} />
+        <PToast offsetBottom={0} />
       </div>
     </>
   );
