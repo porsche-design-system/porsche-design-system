@@ -15,7 +15,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   ],
   template: `
     <div class="playground light" title="should render toast neutral on light background with offset {bottom: 0}">
-      <p-toast [offsetBottom]="0"></p-toast>
+      <p-toast [offsetBottom]="{ base: 0, xs: 10, s: 0, m: 10, l: 0, xl: 0 }"></p-toast>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
