@@ -20,8 +20,6 @@ export class ToastManagerClass {
   private timeout: NodeJS.Timeout;
 
   public register(toastElement: HTMLElement): ToastManager {
-    // eslint-disable-next-line no-console
-    console.log('ToastManagerClass.register()');
     if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
     }
@@ -31,11 +29,9 @@ export class ToastManagerClass {
   }
 
   public unregister(): void {
-    // eslint-disable-next-line no-console
-    console.log('ToastManagerClass.unregister()');
     this.toastEl = null;
     this.messages = [];
-    clearTimeout(this.timeout);
+    this.removeTimeout();
   }
 
   public addMessage(message: ToastMessage): void {
@@ -54,9 +50,7 @@ export class ToastManagerClass {
   }
 
   public dismissToastItem = (): void => {
-    // eslint-disable-next-line no-console
-    console.log('-> dismissing toast', new Date().toISOString());
-    clearTimeout(this.timeout);
+    this.removeTimeout();
     this.messages.shift();
     forceUpdate(this.toastEl);
   };
@@ -81,6 +75,11 @@ export class ToastManagerClass {
         }
       }
     }
+  }
+
+  private removeTimeout(): void {
+    clearTimeout(this.timeout);
+    this.timeout = null;
   }
 }
 
