@@ -7,8 +7,8 @@ export const ToastOffsetPage = (): JSX.Element => {
   const style = `p-toast {
     --p-toast-position: relative;
     display: block;
-    margin-left: -0.5rem;
-    margin-right: 0.5rem;
+    margin-left: -7vw;
+    margin-right: 7vw;
   }`;
 
   useEffect(() => {
