@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Host, State, Fragment } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import { getAutoDirection, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
@@ -66,14 +66,12 @@ export class Popover {
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
-          <Fragment>
-            <div class="popover" ref={(el) => (this.popover = el)}>
-              <span class="arrow" ref={(el) => (this.arrow = el)}></span>
-              <div class="content">
-                <slot />
-              </div>
+          <div class="popover" ref={(el) => (this.popover = el)}>
+            <span class="arrow" ref={(el) => (this.arrow = el)} />
+            <div class="content">
+              <slot />
             </div>
-          </Fragment>
+          </div>
         )}
       </Host>
     );
