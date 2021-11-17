@@ -10,12 +10,12 @@ describe('calcOffsetX()', () => {
     expect(calcOffsetX(popoverPositionLeft, 20, popoverWidth, viewportWidth)).toBe(popoverPositionLeft);
   });
 
-  it('should return number < 12 (center of icon) when viewport is exceeded on the right', () => {
+  it('should return number < 1/2 width of host when viewport is exceeded on the right', () => {
     expect(calcOffsetX(popoverPositionLeft, 900, popoverWidth, viewportWidth)).toBe(-4);
     expect(calcOffsetX(popoverPositionLeft, 885, popoverWidth, viewportWidth)).toBe(11);
   });
 
-  it('should return number > 12 (center of icon) when viewport is exceeded on the left', () => {
+  it('should return number > 1/2 width of host when viewport is exceeded on the left', () => {
     expect(calcOffsetX(popoverPositionLeft, 10, popoverWidth, viewportWidth)).toBe(18);
     expect(calcOffsetX(popoverPositionLeft, 5, popoverWidth, viewportWidth)).toBe(23);
   });
