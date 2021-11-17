@@ -1,8 +1,8 @@
-export type Direction = 'top' | 'right' | 'bottom' | 'left';
+export type PopoverDirection = 'top' | 'right' | 'bottom' | 'left';
 
 const safeZone = 16;
 
-export const isWithinViewport = (popover: HTMLDivElement, direction: Direction): boolean => {
+export const isWithinViewport = (popover: HTMLDivElement, direction: PopoverDirection): boolean => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const {
     left: popoverLeft,
@@ -28,7 +28,7 @@ export const isWithinViewport = (popover: HTMLDivElement, direction: Direction):
   }
 };
 
-export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): Direction => {
+export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): PopoverDirection => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const { top: hostTop, left: hostLeft, width: hostWidth, height: hostHeight } = host.getBoundingClientRect();
   const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
@@ -42,7 +42,7 @@ export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): Di
     left: hostLeft - popoverWidth,
   };
 
-  return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as Direction;
+  return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as PopoverDirection;
 };
 
 // TODO: clean up + readability

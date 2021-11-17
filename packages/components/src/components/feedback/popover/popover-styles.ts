@@ -1,11 +1,11 @@
 import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../utils';
-import type { Direction } from './popover-utils';
+import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 
 const arrowSize = 1;
 const boxShadow = '0 0 1rem 0 rgba(0,0,0,.2)';
 
-const getPopoverPosition = (direction: Direction): JssStyle => {
+const getPopoverPosition = (direction: PopoverDirection): JssStyle => {
   switch (direction) {
     case 'top':
       return {
@@ -34,7 +34,7 @@ const getPopoverPosition = (direction: Direction): JssStyle => {
   }
 };
 
-const getArrowPosition = (direction: Direction): JssStyle => {
+const getArrowPosition = (direction: PopoverDirection): JssStyle => {
   const mainAxis = `-${arrowSize / 2}rem`;
   const crossAxis = `calc(50% - ${arrowSize / 2}rem)`;
 
@@ -62,7 +62,7 @@ const getArrowPosition = (direction: Direction): JssStyle => {
   }
 };
 const mediaQueryXS = mediaQuery('xs');
-export const getComponentCss = (direction: Direction): string => {
+export const getComponentCss = (direction: PopoverDirection): string => {
   return getCss({
     ...buildHostStyles({
       verticalAlign: 'top',
