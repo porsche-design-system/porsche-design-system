@@ -26,7 +26,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
   <label>
   Offset Bottom
-    <input type="number" min="0" max="200" step="5" v-model="offset" @change="onOffsetChange">
+    <input type="number" min="0" max="200" step="5" v-model="offsetBottom" @change="onOffsetChange">
   </label>
   <br><br>
   <button type="button" v-on:click="queueToast()">Queue Toast</button>
@@ -48,7 +48,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
 
     state = 'neutral';
     toastCounter = 1;
-    offset = defaultToastOffset.bottom;
+    offsetBottom = defaultToastOffset;
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
@@ -60,7 +60,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
     }
 
     get offsetMarkup() {
-      return `<p-toast offset="{ bottom: ${this.offset} }"></p-toast>`;
+      return `<p-toast offset-bottom="${this.offsetBottom}"></p-toast>`;
     }
 
     queueToast(): void {
@@ -73,7 +73,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
     }
 
     onOffsetChange(): void {
-      this.$refs.toast.offset = { bottom: this.offset };
+      this.$refs.toast.offsetBottom = this.offsetBottom;
     }
   }
 </script>
