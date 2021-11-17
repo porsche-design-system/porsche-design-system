@@ -21,7 +21,6 @@ export class Popover {
   @State() private open = true;
 
   private popover: HTMLDivElement;
-  private arrow: HTMLSpanElement;
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.direction);
@@ -38,15 +37,11 @@ export class Popover {
       switch (direction) {
         case 'top':
         case 'bottom':
-          const offsetX = getOffsetX(this.popover);
-          this.popover.style.margin = `0 0 0 ${offsetX}px`;
-          this.arrow.style.margin = `0 0 0 ${-offsetX}px`;
+          this.popover.style.margin = `0 0 0 ${getOffsetX(this.popover)}px`;
           break;
         case 'left':
         case 'right':
-          const offsetY = getOffsetY(this.popover);
-          this.popover.style.margin = `${offsetY}px 0 0 0`;
-          this.arrow.style.margin = `${-offsetY}px 0 0 0`;
+          this.popover.style.margin = `${getOffsetY(this.popover)}px 0 0 0`;
           break;
       }
     }
@@ -66,9 +61,8 @@ export class Popover {
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
-          <div class="popover" ref={(el) => (this.popover = el)}>
-            <span class="arrow" ref={(el) => (this.arrow = el)} />
-            <div class="content">
+          <div class="popover">
+            <div class="content" ref={(el) => (this.popover = el)}>
               <slot />
             </div>
           </div>
