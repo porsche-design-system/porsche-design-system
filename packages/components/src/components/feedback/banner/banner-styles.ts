@@ -23,6 +23,12 @@ const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 const mediaQueryS = mediaQuery('s');
 const mediaQueryXxs = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
 
+export const getBoxShadow = (): JssStyle => ({
+  boxShadow:
+    `0 ${pxToRemWithUnit(2)} ${pxToRemWithUnit(4)} 0 rgba(0,0,0,0.05),` +
+    `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
+});
+
 export const getComponentCss = (): string => {
   const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
 
@@ -61,11 +67,7 @@ export const getComponentCss = (): string => {
         animation: addImportantToRule(`600ms $animateDesktopOut ${easeOutQuad} forwards`),
       },
     },
-    root: {
-      boxShadow:
-        `0 ${pxToRemWithUnit(2)} ${pxToRemWithUnit(4)} 0 rgba(0,0,0,0.05),` +
-        `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
-    },
+    root: getBoxShadow(),
     '@keyframes animateMobileIn': {
       from: {
         opacity: 0,
