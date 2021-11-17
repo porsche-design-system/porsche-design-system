@@ -12,7 +12,7 @@
 </div>
 
 <script>
-  porscheDesignSystem.componentsReady().then(() => {
+  customElements.whenDefined('p-toast').then(() => {
     document.querySelector('p-toast').addMessage({ message: `Some message` });
   });
 </script>
