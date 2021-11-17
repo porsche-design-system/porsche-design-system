@@ -5,13 +5,10 @@ import type { ToastMessage } from './public-api';
   providedIn: 'root',
 })
 export class ToastManager {
-  public addMessage(msg: ToastMessage): void {
-    const toast: HTMLElement & {
-      componentOnReady: () => Promise<void>;
-      addMessage(msg: ToastMessage): Promise<void>;
-    } = document.querySelector('p-toast,[p-toast]');
-    customElements.whenDefined(toast.tagName.toLowerCase()).then(() => {
-      toast.componentOnReady().then(() => toast.addMessage(msg));
-    });
+  public addMessage(message: ToastMessage): void {
+    const toast = document.querySelector('p-toast,[p-toast]') as HTMLElement & {
+      addMessage(message: ToastMessage): void;
+    };
+    customElements.whenDefined(toast.tagName.toLowerCase()).then(() => toast.addMessage(message));
   }
 }
