@@ -11,10 +11,18 @@ import type { ToastOffset } from './toast-utils';
 import { defaultToastOffset } from './toast-utils';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import type { JssStyle } from 'jss';
+import {
+  easeInQuad,
+  getAnimationMobileOut,
+  getKeyframesMobileIn,
+  getKeyframesMobileOut,
+} from '../../banner/banner-styles';
+
+const toastBottomPositionVar = '--p-toast-bottom-position';
 
 export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset): string => {
-  return getCss(
-    addImportantToEachRule(
+  return getCss({
+    ...addImportantToEachRule(
       mergeDeep(
         buildHostStyles({
           // use override for tests in prod build
@@ -30,8 +38,20 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
             right: 'auto',
           },
         }),
-        buildResponsiveHostStyles(offsetBottom, (bottom: number): JssStyle => ({ bottom: pxToRemWithUnit(bottom) }))
+        buildResponsiveHostStyles(
+          offsetBottom,
+          (bottom: number): JssStyle => ({
+            [toastBottomPositionVar]: pxToRemWithUnit(bottom),
+            bottom: pxToRemWithUnit(bottom),
+          })
+        )
       )
-    )
-  );
+    ),
+    '.toast-item.visible': {
+      animation: `600ms $animateMobileIn ${easeInQuad} forwards`,
+    },
+    '.toast-item.close': getAnimationMobileOut(),
+    '@keyframes animateMobileIn': getKeyframesMobileIn(toastBottomPositionVar),
+    '@keyframes animateMobileOut': getKeyframesMobileOut(toastBottomPositionVar),
+  });
 };
