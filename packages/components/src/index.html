@@ -24,12 +24,14 @@
     <script>
       setTimeout(() => {
         const toast = document.querySelector('p-toast');
-
+        let count = 0;
         document.querySelector('#button-a').addEventListener('click', () => {
-          toast.addMessage({ message: 'message by public member 1', state: 'success' });
+          toast.addMessage({ message: 'message by public member 1 count: ' + count, state: 'success' });
+          count++;
         });
         document.querySelector('#button-b').addEventListener('click', () => {
-          toast.addMessage({ message: 'message by public member 2', state: 'neutral' });
+          toast.addMessage({ message: 'message by public member 2 count: ' + count, state: 'neutral' });
+          count++;
         });
       }, 500);
 
