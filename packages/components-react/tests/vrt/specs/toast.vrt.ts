@@ -27,11 +27,7 @@ describe('toast-basic-long-text', () => {
 
 describe('toast-offset', () => {
   it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-    expect(
-      await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast-offset', {
-        regressionSuffix: 'toast-offset',
-      })
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-offset', '/toast-offset')).toBeFalsy();
   });
 });
 
