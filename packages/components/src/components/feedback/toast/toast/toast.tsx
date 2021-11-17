@@ -23,9 +23,8 @@ export class Toast {
 
   private manager: ToastManager;
 
-  /* eslint-disable @typescript-eslint/require-await */
   @Method()
-  public async addMessage(message: ToastMessage): Promise<void> {
+  public addMessage(message: ToastMessage): void {
     this.manager.addMessage(message);
   }
 
