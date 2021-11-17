@@ -1,4 +1,4 @@
-import { addImportantToEachRule, buildHostStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../utils';
 import type { Direction } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 
@@ -61,14 +61,14 @@ const getArrowPosition = (direction: Direction): JssStyle => {
       };
   }
 };
-
+const mediaQueryXS = mediaQuery('xs');
 export const getComponentCss = (direction: Direction): string => {
   return getCss({
     ...buildHostStyles({
       verticalAlign: 'top',
       ...addImportantToEachRule({
         position: 'relative',
-        display: 'inline-flex',
+        display: 'inline-block',
       }),
     }),
     popover: {
@@ -76,7 +76,11 @@ export const getComponentCss = (direction: Direction): string => {
       zIndex: 99999,
       boxShadow,
       maxWidth: '90vw',
+      width: 'max-content',
       ...getPopoverPosition(direction),
+      [mediaQueryXS]: {
+        maxWidth: pxToRemWithUnit(432),
+      },
     },
     arrow: {
       content: '""',
