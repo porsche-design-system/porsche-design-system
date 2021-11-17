@@ -44,7 +44,7 @@ Status: Success
 #### Related Components:
 
 * Inline Validation (supported by all form elements)
-* Toast - Coming soon 
+* [Toast](components/notifications/toast)
 * [Inline Notification](components/notifications/inline-notification)
 
 ---
