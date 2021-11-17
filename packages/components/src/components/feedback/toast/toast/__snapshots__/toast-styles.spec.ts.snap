@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for offset: { bottom: 10 } 1`] = `":host{position:fixed !important;bottom:0.625rem !important;left:0.5rem !important;z-index:999999 !important}"`;
+exports[`getComponentCss() should return correct css for offset: { base: 10 } 1`] = `":host{position:fixed !important;left:7vw !important;right:7vw !important;z-index:999999 !important;bottom:0.625rem !important}@media(min-width:760px){:host{left:4rem !important;right:auto !important}}"`;
 
-exports[`getComponentCss() should return correct css for offset: { bottom: 100 } 1`] = `":host{position:fixed !important;bottom:6.25rem !important;left:0.5rem !important;z-index:999999 !important}"`;
+exports[`getComponentCss() should return correct css for offset: { base: 10, xs: 20, s: 10, m: 20, l: 10, xl: 20 } 1`] = `":host{position:fixed !important;left:7vw !important;right:7vw !important;z-index:999999 !important;bottom:0.625rem !important}@media(min-width:480px){:host{bottom:1.25rem !important}}@media(min-width:760px){:host{left:4rem !important;right:auto !important}:host{bottom:0.625rem !important}}@media(min-width:1000px){:host{bottom:1.25rem !important}}@media(min-width:1300px){:host{bottom:0.625rem !important}}@media(min-width:1760px){:host{bottom:1.25rem !important}}"`;
 
-exports[`getComponentCss() should return correct css for offset: undefined 1`] = `":host{position:fixed !important;bottom:3.4375rem !important;left:0.5rem !important;z-index:999999 !important}"`;
+exports[`getComponentCss() should return correct css for offset: undefined 1`] = `":host{position:fixed !important;left:7vw !important;right:7vw !important;z-index:999999 !important;bottom:3.5rem !important}@media(min-width:760px){:host{left:4rem !important;right:auto !important}:host{bottom:4rem !important}}"`;
