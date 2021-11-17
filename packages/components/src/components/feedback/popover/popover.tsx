@@ -74,8 +74,9 @@ export class Popover {
     );
   }
   private onClick = (e: MouseEvent): void => {
-    const [, , , , hostElement] = e.composedPath() as HTMLElement[];
-    if (hostElement !== this.host) {
+    const clickPath = e.composedPath() as HTMLElement[];
+
+    if (!clickPath.includes(this.host)) {
       this.open = false;
     }
   };
