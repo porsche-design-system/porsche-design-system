@@ -42,13 +42,11 @@ export class ToastManagerClass {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }
-    if (!message.state) {
-      message.state = 'neutral';
-    }
-    throwIfValueIsInvalid(message.state, TOAST_STATES, 'state');
+    const msg: ToastMessage = { state: 'neutral', ...message }; // neutral is our default state
+    throwIfValueIsInvalid(msg.state, TOAST_STATES, 'state');
 
     const { length } = this.messages;
-    this.messages.push(message);
+    this.messages.push(msg);
 
     if (!length) {
       forceUpdate(this.toastEl);
