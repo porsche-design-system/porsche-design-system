@@ -36,7 +36,7 @@ describe('popover', () => {
     );
   };
 
-  fdescribe('onClick behavior', () => {
+  describe('onClick behavior', () => {
     it('should open popover on click', async () => {
       await initPopover();
       await waitForStencilLifecycle(page);
@@ -79,6 +79,7 @@ describe('popover', () => {
 
       expect(await getPopover()).toBeNull();
     });
+
     it('should not close popover if content is clicked', async () => {
       await initPopover({ withLink: true });
       const button = await getButton();
