@@ -86,7 +86,6 @@ export const getComponentCss = (): string => {
     },
     root: getBoxShadow(),
     '@keyframes animateMobileIn': getKeyframesMobileIn(bannerPositionBottomVar),
-    '@keyframes animateMobileOut': getKeyframesMobileOut(bannerPositionBottomVar),
     '@keyframes animateDesktopIn': {
       from: {
         opacity: 0,
@@ -94,6 +93,7 @@ export const getComponentCss = (): string => {
       },
       to: animationVisible,
     },
+    '@keyframes animateMobileOut': getKeyframesMobileOut(bannerPositionBottomVar),
     '@keyframes animateDesktopOut': {
       from: animationVisible,
       to: {
