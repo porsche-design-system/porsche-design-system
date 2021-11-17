@@ -48,7 +48,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
 
     state = 'neutral';
     toastCounter = 1;
-    offsetBottom = defaultToastOffset;
+    offsetBottom = defaultToastOffset.s;
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({

@@ -38,8 +38,8 @@ export class Toast {
     });
   }
 
-  public componentShouldUpdate(_, __, propertyName: string): boolean {
-    return propertyName !== 'offset';
+  public componentShouldUpdate(_, __, propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom'>): boolean {
+    return propertyName !== 'offsetBottom';
   }
 
   public componentWillRender(): void {
