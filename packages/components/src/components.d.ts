@@ -27,7 +27,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastOffsetValue, ToastState } from "./components/feedback/toast/toast/toast-utils";
+import { ToastOffset, ToastState } from "./components/feedback/toast/toast/toast-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
 export namespace Components {
     interface PAccordion {
@@ -925,9 +925,9 @@ export namespace Components {
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
         /**
-          * The offset of the toast.
+          * The bottom offset of the toast.
          */
-        "offset"?: ToastOffsetValue;
+        "offsetBottom"?: ToastOffset;
         /**
           * Adapts the toast color depending on the theme.
          */
@@ -2195,9 +2195,9 @@ declare namespace LocalJSX {
     }
     interface PToast {
         /**
-          * The offset of the toast.
+          * The bottom offset of the toast.
          */
-        "offset"?: ToastOffsetValue;
+        "offsetBottom"?: ToastOffset;
         /**
           * Adapts the toast color depending on the theme.
          */

@@ -3,9 +3,8 @@ import { getComponentCss } from './toast-styles';
 import type { ToastMessage, ToastManager } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
-import type { ToastOffsetValue } from './toast-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
-import { parseJSONAttribute } from '../../../../utils/json';
+import type { ToastOffset } from './toast-utils';
 import { defaultToastOffset } from './toast-utils';
 
 @Component({
@@ -16,8 +15,8 @@ export class Toast {
   /** Adapts the toast color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The offset of the toast. */
-  @Prop() public offset?: ToastOffsetValue = defaultToastOffset;
+  /** The bottom offset of the toast. */
+  @Prop() public offsetBottom?: ToastOffset = defaultToastOffset;
 
   @Element() public host!: HTMLElement;
 
@@ -44,7 +43,7 @@ export class Toast {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, parseJSONAttribute(this.offset));
+    attachComponentCss(this.host, getComponentCss, this.offsetBottom);
   }
 
   public componentDidRender(): void {
