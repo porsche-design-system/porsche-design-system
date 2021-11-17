@@ -17,7 +17,7 @@ const bannerPositionBottomVar = '--p-banner-position-bottom';
 const bannerZIndexVar = '--p-banner-z-index';
 const bannerAnimationDurationVar = '--p-animation-duration__banner';
 
-const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+export const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 
 const mediaQueryS = mediaQuery('s');
@@ -29,9 +29,28 @@ export const getBoxShadow = (): JssStyle => ({
     `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
 });
 
-export const getComponentCss = (): string => {
-  const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+export const getAnimationMobileOut = (): JssStyle => ({
+  animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
+});
 
+export const getKeyframesMobileIn = (bottomVar: string): JssStyle => ({
+  from: {
+    opacity: 0,
+    transform: `translate3d(0,calc(var(${bottomVar})+100%),0)`,
+  },
+  to: animationVisible,
+});
+
+export const getKeyframesMobileOut = (bottomVar: string): JssStyle => ({
+  from: animationVisible,
+  to: {
+    opacity: 0,
+    transform: `translate3d(0,calc(var(${bottomVar})+100%),0)`,
+  },
+});
+
+const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+export const getComponentCss = (): string => {
   return getCss({
     ...buildHostStyles({
       // TODO: Why is nothing set as important here?
@@ -60,34 +79,20 @@ export const getComponentCss = (): string => {
       },
     },
     ':host(.banner--close)': {
-      [mediaQueryXxs]: {
-        animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
-      },
+      [mediaQueryXxs]: getAnimationMobileOut(),
       [mediaQueryS]: {
         animation: addImportantToRule(`600ms $animateDesktopOut ${easeOutQuad} forwards`),
       },
     },
     root: getBoxShadow(),
-    '@keyframes animateMobileIn': {
-      from: {
-        opacity: 0,
-        transform: `translate3d(0,calc(var(${bannerPositionBottomVar})+100%),0)`,
-      },
-      to: animationVisible,
-    },
+    '@keyframes animateMobileIn': getKeyframesMobileIn(bannerPositionBottomVar),
+    '@keyframes animateMobileOut': getKeyframesMobileOut(bannerPositionBottomVar),
     '@keyframes animateDesktopIn': {
       from: {
         opacity: 0,
         transform: `translate3d(0,calc(-100% - var(${bannerPositionBottomVar})),0)`,
       },
       to: animationVisible,
-    },
-    '@keyframes animateMobileOut': {
-      from: animationVisible,
-      to: {
-        opacity: 0,
-        transform: `translate3d(0,calc(var(${bannerPositionBottomVar})+100%),0)`,
-      },
     },
     '@keyframes animateDesktopOut': {
       from: animationVisible,
