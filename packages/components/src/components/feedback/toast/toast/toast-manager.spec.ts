@@ -1,6 +1,7 @@
 import { ToastManager, ToastManagerClass } from './toast-manager';
 import { ToastState } from './toast-utils';
 import * as stencilCore from '@stencil/core';
+import { toastCloseClassName, toastVisibleClassName } from './toast-styles';
 let toastManager: ToastManager;
 
 beforeEach(() => {
@@ -82,6 +83,16 @@ describe('dismissToastItem()', () => {
     expect(toastManager['timeout']).toBeNull();
   });
 
+  it('should remove visible className, add close className on toastEl and remove it after 600ms', async () => {
+    toastManager.addMessage({ message: 'Some Message One' });
+    toastManager.dismissToastItem();
+
+    expect(toastManager['toastEl'].className).toEqual(toastCloseClassName);
+    await new Promise((r) => setTimeout(r, 600));
+
+    expect(toastManager['toastEl'].className).toEqual('');
+  });
+
   it('should remove first element in array', () => {
     toastManager.addMessage({ message: 'Some Message One' });
     toastManager.addMessage({ message: 'Some Message Two' });
@@ -127,10 +138,11 @@ describe('startTimeout()', () => {
     toastManager.register(toastElement);
   });
 
-  it('should set a timeout if message is available', () => {
+  it('should set a timeout and visible className if message is available', () => {
     toastManager.addMessage({ message: 'Some Message One' });
     toastManager.startTimeout();
     expect(toastManager['timeout']).toBeDefined();
+    expect(toastManager['toastEl'].className).toEqual(toastVisibleClassName);
   });
 
   it('should not set a timeout if no messages are available', () => {

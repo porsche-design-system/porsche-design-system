@@ -32,7 +32,6 @@ export class ToastManagerClass {
   public unregister(): void {
     this.toastEl = null;
     this.messages = [];
-    this.toastEl.classList.remove(toastVisibleClassName);
     this.removeTimeout();
   }
 
