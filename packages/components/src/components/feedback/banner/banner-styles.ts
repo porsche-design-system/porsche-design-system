@@ -18,6 +18,7 @@ const bannerZIndexVar = '--p-banner-z-index';
 const bannerAnimationDurationVar = '--p-animation-duration__banner';
 
 export const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+export const ANIMATION_DURATION = 600;
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 
 const mediaQueryS = mediaQuery('s');
@@ -72,16 +73,16 @@ export const getComponentCss = (): string => {
     }),
     ':host(.hydrated)': {
       [mediaQueryXxs]: {
-        animation: `var(${bannerAnimationDurationVar},600ms) $animateMobileIn ${easeInQuad} forwards`,
+        animation: `var(${bannerAnimationDurationVar},${ANIMATION_DURATION}ms) $animateMobileIn ${easeInQuad} forwards`,
       },
       [mediaQueryS]: {
-        animation: `var(${bannerAnimationDurationVar},600ms) $animateDesktopIn ${easeInQuad} forwards`,
+        animation: `var(${bannerAnimationDurationVar},${ANIMATION_DURATION}ms) $animateDesktopIn ${easeInQuad} forwards`,
       },
     },
     ':host(.banner--close)': {
       [mediaQueryXxs]: getAnimationMobileOut(),
       [mediaQueryS]: {
-        animation: addImportantToRule(`600ms $animateDesktopOut ${easeOutQuad} forwards`),
+        animation: addImportantToRule(`${ANIMATION_DURATION}ms $animateDesktopOut ${easeOutQuad} forwards`),
       },
     },
     root: getBoxShadow(),

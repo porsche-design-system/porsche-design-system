@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
 import {
-  enableBrowserLogging,
   expectA11yToMatchSnapshot,
   getAttribute,
+  getElementStyle,
   getLifecycleStatus,
   getProperty,
   selectNode,
@@ -14,6 +14,7 @@ import type { ToastMessage, ToastState } from '@porsche-design-system/components
 import { TOAST_STATES } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
+const ANIMATION_DURATION = 600;
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -50,8 +51,10 @@ const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
 
 const waitForToastTimeout = async (): Promise<void> => {
   await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+  await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 };
+const waitForAnimationFinish = () => page.waitForTimeout(ANIMATION_DURATION);
 
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
@@ -72,7 +75,7 @@ it('should close toast-item via close button click', async () => {
 
   const closeButton = await getCloseButton();
   await closeButton.click();
-
+  await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 
   expect(await getToastItem()).toBeNull();
@@ -108,12 +111,12 @@ it(`should queue two toast-items, close the first, queue a third, display the se
 after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally after ${
   TOAST_TIMEOUT_DURATION_OVERRIDE * 2
 } seconds display none`, async () => {
-  enableBrowserLogging(page);
   await initToastWithToastItem({ message: '1' });
   await addMessage({ message: '2' });
 
   const closeButton = await getCloseButton();
   await closeButton.click();
+  await waitForAnimationFinish();
 
   await waitForStencilLifecycle(page);
   await addMessage({ message: '3' });
@@ -198,5 +201,27 @@ describe('toast-item', () => {
       });
       expect(await getAttribute(toastItemMessage, 'aria-live')).toBeDefined();
     });
+  });
+
+  it('should have animation', async () => {
+    await initToastWithToastItem();
+    const toastItem = await getToastItem();
+    const animationIn = await getElementStyle(toastItem, 'animation');
+
+    expect(animationIn).toMatchInlineSnapshot(
+      '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-animateMobileIn"'
+    );
+
+    await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+    const animationOut = await getElementStyle(toastItem, 'animation');
+
+    expect(animationOut).toMatchInlineSnapshot(
+      '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-animateMobileOut"'
+    );
+
+    await page.waitForTimeout(ANIMATION_DURATION);
+    const animationClear = await getElementStyle(toastItem, 'animation');
+
+    expect(animationClear).toMatchInlineSnapshot('""');
   });
 });

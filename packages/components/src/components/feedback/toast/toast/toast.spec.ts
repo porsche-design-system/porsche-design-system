@@ -10,7 +10,7 @@ describe('connectedCallback', () => {
     expect(component['manager']).toBeUndefined();
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toBeCalledWith(component.host, expect.anything());
     expect(component['manager']).toEqual(toastManager);
   });
 });
