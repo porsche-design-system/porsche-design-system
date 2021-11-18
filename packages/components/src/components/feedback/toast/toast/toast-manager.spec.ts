@@ -1,8 +1,9 @@
 import { ToastManager, ToastManagerClass } from './toast-manager';
 import { ToastState } from './toast-utils';
 import * as stencilCore from '@stencil/core';
-import { toastCloseClassName, toastVisibleClassName } from './toast-styles';
+
 let toastManager: ToastManager;
+const dismissCallbackFunction = jest.fn();
 
 beforeEach(() => {
   toastManager = new ToastManagerClass();
@@ -13,24 +14,25 @@ describe('register()', () => {
 
   it('should throw if toastEl is already defined', () => {
     expect(() => {
-      toastManager.register(toastElement);
+      toastManager.register(toastElement, dismissCallbackFunction);
     }).not.toThrow();
 
     expect(() => {
-      toastManager.register(toastElement);
+      toastManager.register(toastElement, dismissCallbackFunction);
     }).toThrowErrorMatchingInlineSnapshot('"<p-toast> was rendered multiple times."');
   });
 
   it('should return toast manager instance', () => {
-    expect(toastManager.register(toastElement)).toEqual(toastManager);
+    expect(toastManager.register(toastElement, dismissCallbackFunction)).toEqual(toastManager);
     expect(toastManager['toastEl']).toBeDefined();
+    expect(toastManager['onDismissCallback']).toBe(dismissCallbackFunction);
   });
 });
 
 describe('addMessage()', () => {
   const toastElement = document.createElement('p-toast');
   beforeEach(() => {
-    toastManager.register(toastElement);
+    toastManager.register(toastElement, dismissCallbackFunction);
   });
 
   it('should throw if no toastEl reference is set', () => {
@@ -73,8 +75,10 @@ describe('addMessage()', () => {
 
 describe('dismissToastItem()', () => {
   const toastElement = document.createElement('p-toast');
+  const dismissCallbackFunction = jest.fn();
+
   beforeEach(() => {
-    toastManager.register(toastElement);
+    toastManager.register(toastElement, dismissCallbackFunction);
   });
 
   it('should remove timeout', () => {
@@ -83,22 +87,17 @@ describe('dismissToastItem()', () => {
     expect(toastManager['timeout']).toBeNull();
   });
 
-  it('should remove visible className, add close className on toastEl and remove it after 600ms', async () => {
-    toastManager.addMessage({ message: 'Some Message One' });
-    toastManager.dismissToastItem();
-
-    expect(toastManager['toastEl'].className).toEqual(toastCloseClassName);
-    await new Promise((r) => setTimeout(r, 600));
-
-    expect(toastManager['toastEl'].className).toEqual('');
-  });
-
   it('should remove first element in array', () => {
     toastManager.addMessage({ message: 'Some Message One' });
     toastManager.addMessage({ message: 'Some Message Two' });
     toastManager.dismissToastItem();
 
     expect(toastManager['messages']).toEqual([{ message: 'Some Message Two', state: 'neutral' }]);
+  });
+
+  it('should call dismissCallbackFunction', () => {
+    toastManager.dismissToastItem();
+    expect(dismissCallbackFunction).toHaveBeenCalledTimes(1);
   });
 
   it('should trigger force update', () => {
@@ -117,7 +116,7 @@ describe('dismissToastItem()', () => {
 describe('getToast()', () => {
   beforeEach(() => {
     const toastElement = document.createElement('p-toast');
-    toastManager.register(toastElement);
+    toastManager.register(toastElement, dismissCallbackFunction);
   });
 
   it('should return first element in array', () => {
@@ -135,14 +134,13 @@ describe('getToast()', () => {
 describe('startTimeout()', () => {
   const toastElement = document.createElement('p-toast');
   beforeEach(() => {
-    toastManager.register(toastElement);
+    toastManager.register(toastElement, dismissCallbackFunction);
   });
 
   it('should set a timeout and visible className if message is available', () => {
     toastManager.addMessage({ message: 'Some Message One' });
     toastManager.startTimeout();
     expect(toastManager['timeout']).toBeDefined();
-    expect(toastManager['toastEl'].className).toEqual(toastVisibleClassName);
   });
 
   it('should not set a timeout if no messages are available', () => {
@@ -154,7 +152,7 @@ describe('startTimeout()', () => {
 describe('unregister()', () => {
   it('should remove toastEl reference, remove messages and clear timeout', () => {
     const toastElement = document.createElement('p-toast');
-    toastManager.register(toastElement);
+    toastManager.register(toastElement, dismissCallbackFunction);
     toastManager.addMessage({ message: 'Some Message' });
     toastManager.unregister();
 

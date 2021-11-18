@@ -1,5 +1,5 @@
 import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
-import { getComponentCss } from './toast-styles';
+import { getComponentCss, toastCloseClassName } from './toast-styles';
 import type { ToastMessage, ToastManager } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
@@ -21,6 +21,7 @@ export class Toast {
   @Element() public host!: HTMLElement;
 
   private manager: ToastManager;
+  private toastItemElement: HTMLPToastItemElement;
 
   @Method()
   public addMessage(message: ToastMessage): void {
@@ -28,7 +29,7 @@ export class Toast {
   }
 
   public connectedCallback(): void {
-    this.manager = toastManager.register(this.host);
+    this.manager = toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
   }
 
   public componentDidLoad(): void {
@@ -43,6 +44,7 @@ export class Toast {
   }
 
   public componentWillRender(): void {
+    this.toastItemElement?.classList.remove(toastCloseClassName);
     attachComponentCss(this.host, getComponentCss, this.offsetBottom);
   }
 
@@ -58,6 +60,12 @@ export class Toast {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const toast = this.manager.getToast();
 
-    return <Host>{toast && <PrefixedTagNames.pToastItem {...toast} theme={this.theme} />}</Host>;
+    return (
+      <Host>
+        {toast && (
+          <PrefixedTagNames.pToastItem {...toast} theme={this.theme} ref={(el) => (this.toastItemElement = el)} />
+        )}
+      </Host>
+    );
   }
 }

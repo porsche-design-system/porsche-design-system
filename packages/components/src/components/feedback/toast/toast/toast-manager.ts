@@ -2,7 +2,7 @@ import { forceUpdate } from '@stencil/core';
 import { throwIfValueIsInvalid } from '../../../../utils';
 import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
-import { toastCloseClassName, toastVisibleClassName } from './toast-styles';
+import { ANIMATION_DURATION } from '../../banner/banner-styles';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
 
@@ -19,13 +19,14 @@ export class ToastManagerClass {
   private messages: ToastMessage[] = [];
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
+  private onDismissCallback: () => void;
 
-  public register(toastElement: HTMLElement): ToastManager {
+  public register(toastElement: HTMLElement, onDismiss: () => void): ToastManager {
     if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
     }
-
     this.toastEl = toastElement;
+    this.onDismissCallback = onDismiss;
     return this;
   }
 
@@ -53,13 +54,10 @@ export class ToastManagerClass {
   public dismissToastItem = (): void => {
     this.removeTimeout();
     this.messages.shift();
-    this.toastEl.classList.remove(toastVisibleClassName);
-
-    this.toastEl.classList.add(toastCloseClassName);
+    this.onDismissCallback();
     setTimeout(() => {
-      this.toastEl.classList.remove(toastCloseClassName);
       forceUpdate(this.toastEl);
-    }, 600);
+    }, ANIMATION_DURATION);
   };
 
   public getToast(): ToastMessage {
@@ -69,12 +67,10 @@ export class ToastManagerClass {
   public startTimeout(): void {
     if (this.messages.length) {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
-        this.toastEl.classList.add(toastVisibleClassName);
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
         // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
         if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
-          this.toastEl.classList.add(toastVisibleClassName);
           this.timeout = setTimeout(
             this.dismissToastItem,
             // override timeout if --p-toast-timeout-override css variable is set

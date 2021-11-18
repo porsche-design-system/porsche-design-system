@@ -12,6 +12,7 @@ import { defaultToastOffset } from './toast-utils';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import type { JssStyle } from 'jss';
 import {
+  ANIMATION_DURATION,
   easeInQuad,
   getAnimationMobileOut,
   getKeyframesMobileIn,
@@ -19,8 +20,7 @@ import {
 } from '../../banner/banner-styles';
 
 const toastBottomPositionVar = '--p-toast-bottom-position';
-export const toastVisibleClassName = 'toast--visible';
-export const toastCloseClassName = 'toast--close';
+export const toastCloseClassName = 'animate--close';
 
 export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset): string => {
   return getCss({
@@ -49,10 +49,10 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
         )
       )
     ),
-    [`:host(.${toastVisibleClassName})`]: {
-      animation: `600ms $animateMobileIn ${easeInQuad} forwards`,
+    hydrated: {
+      animation: `${ANIMATION_DURATION}ms $animateMobileIn ${easeInQuad} forwards`,
     },
-    [`:host(.${toastCloseClassName})`]: getAnimationMobileOut(),
+    [toastCloseClassName]: getAnimationMobileOut(),
     '@keyframes animateMobileIn': getKeyframesMobileIn(toastBottomPositionVar),
     '@keyframes animateMobileOut': getKeyframesMobileOut(toastBottomPositionVar),
   });

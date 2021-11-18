@@ -12,7 +12,6 @@ const Sample = (): JSX.Element => {
       <PToast data-testid="host" />
       <button
         onClick={() => {
-          console.log('click');
           addMessage({ message: 'Some message' });
           setEventCounter((prev) => prev + 1);
         }}
