@@ -10,11 +10,19 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 ## Basic
 
 <Playground :frameworkMarkup="basic" :config="config" @onThemeChange="onThemeChange">
-  <select v-model="state">
-    <option disabled>Select a state</option>
-    <option value="neutral">Neutral</option>
-    <option value="success">Success</option>
-  </select>
+  <label>
+    State:
+    <select v-model="toastState">
+      <option disabled>Select a state</option>
+      <option value="neutral">Neutral</option>
+      <option value="success">Success</option>
+    </select>
+  </label>
+  <br><br>
+  <label>
+    Text:&nbsp;
+    <input type="text" v-model="toastText">
+  </label>
   <br><br>
   <button type="button" v-on:click="queueToast()">Queue Toast</button>
 </Playground>
@@ -25,7 +33,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
   <label>
-  Offset Bottom
+    Offset Bottom
     <input type="number" min="0" max="200" step="5" v-model="offsetBottom" @change="onOffsetChange">
   </label>
   <br><br>
@@ -46,7 +54,8 @@ The position of the `p-toast` can be adjusted via the `offset` property.
   export default class Code extends Vue {
     config = { themeable: true };
 
-    state = 'neutral';
+    toastState = 'neutral';
+    toastText = 'Some message';
     toastCounter = 1;
     offsetBottom = defaultToastOffset.s;
     
@@ -54,8 +63,8 @@ The position of the `p-toast` can be adjusted via the `offset` property.
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
         ...result,
         [key]: markup
-          .replace(/(state:) 'success'/, `$1 '${this.state}'`)
-          .replace(/(Some) (message)/, `$1 ${this.state} $2`)
+          .replace(/(state:) 'success'/, `$1 '${this.toastState}'`)
+          .replace(/(Some message)/, this.toastText)
       }), {});
     }
 
@@ -64,7 +73,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
     }
 
     queueToast(): void {
-      this.$refs.toast.addMessage({ text: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+      this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.toastState });
       this.toastCounter++;
     }
 
