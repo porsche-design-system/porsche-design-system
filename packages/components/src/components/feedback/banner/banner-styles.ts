@@ -31,7 +31,7 @@ export const getBoxShadow = (): JssStyle => ({
 });
 
 export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
-  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : ANIMATION_DURATION + 'ms';
+  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : `${ANIMATION_DURATION}ms`;
   return {
     animation: `${duration} $${keyframesName} ${easeInQuad} forwards`,
   };
