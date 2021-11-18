@@ -12,7 +12,8 @@ import type { Theme } from '../../../types';
 export class Popover {
   @Element() public host!: HTMLElement;
 
-  /** Preferred direction in which popover should open, given there is enough space in viewport. */
+  /** Preferred direction in which popover should open, given there is enough space in viewport.
+   * Otherwise it will be opened in the direction with most available space. */
   @Prop() public direction: PopoverDirection = 'bottom';
 
   /** Theme. */
@@ -24,7 +25,7 @@ export class Popover {
   private popover: HTMLDivElement;
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.direction);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.theme);
   }
 
   public componentDidRender(): void {
@@ -35,7 +36,7 @@ export class Popover {
       if (!isWithinViewport(this.popover, this.direction)) {
         direction = getAutoDirection(this.spacer, this.popover);
         if (direction !== this.direction) {
-          attachComponentCss(this.host, getComponentCss, direction);
+          attachComponentCss(this.host, getComponentCss, direction, this.theme);
         }
       }
 
@@ -56,7 +57,12 @@ export class Popover {
 
     return (
       <Host>
-        <PrefixedTagNames.pButtonPure icon="information" hideLabel="true" onClick={() => (this.open = !this.open)}>
+        <PrefixedTagNames.pButtonPure
+          icon="information"
+          hideLabel="true"
+          theme={this.theme}
+          onClick={() => (this.open = !this.open)}
+        >
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
