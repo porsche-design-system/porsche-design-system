@@ -1,4 +1,13 @@
-import { addImportantToEachRule, buildHostStyles, getCss, isDark, mediaQuery, pxToRemWithUnit } from '../../../utils';
+import {
+  addImportantToEachRule,
+  buildHostStyles,
+  buildSlottedStyles,
+  getBaseSlottedStyles,
+  getCss,
+  isDark,
+  mediaQuery,
+  pxToRemWithUnit,
+} from '../../../utils';
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 import { Theme } from '../../../types';
@@ -145,4 +154,8 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       },
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
