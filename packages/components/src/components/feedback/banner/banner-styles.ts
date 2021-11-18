@@ -34,6 +34,8 @@ export const getAnimationMobileOut = (): JssStyle => ({
   animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
 });
 
+const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+
 export const getKeyframesMobileIn = (bottomVar: string): JssStyle => ({
   from: {
     opacity: 0,
@@ -50,7 +52,6 @@ export const getKeyframesMobileOut = (bottomVar: string): JssStyle => ({
   },
 });
 
-const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
 export const getComponentCss = (): string => {
   return getCss({
     ...buildHostStyles({

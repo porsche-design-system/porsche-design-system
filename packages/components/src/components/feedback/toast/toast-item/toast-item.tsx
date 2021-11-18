@@ -19,7 +19,7 @@ export class ToastItem {
   @Element() public host!: HTMLElement;
 
   /** Message of the toast-item. */
-  @Prop() public message?: string = '';
+  @Prop() public text?: string = '';
 
   /** State of the toast-item. */
   @Prop() public state?: ToastState = 'neutral';
@@ -54,7 +54,7 @@ export class ToastItem {
           aria-live="polite"
           aria-describedby={messageId}
         >
-          {this.message}
+          {this.text}
         </PrefixedTagNames.pText>
         <PrefixedTagNames.pButtonPure
           class="close"
