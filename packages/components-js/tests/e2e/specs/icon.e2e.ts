@@ -276,13 +276,13 @@ describe('icon', () => {
       const iconContent = await getContent(await getIcon());
 
       expect(await getContent(await getIcon())).not.toBe('');
-      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(0, 0, 0)');
+      expect(await getElementStyle(await getIcon(), 'color')).toBe('rgb(0, 0, 0)');
 
       await setProperty(host, 'color', 'notification-error');
       await waitForStencilLifecycle(page);
 
       expect(await getContent(await getIcon())).toBe(iconContent);
-      expect(await getElementStyle(await getIcon(), 'fill')).toBe('rgb(224, 0, 0)');
+      expect(await getElementStyle(await getIcon(), 'color')).toBe('rgb(224, 0, 0)');
     });
   });
 
