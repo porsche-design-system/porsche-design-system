@@ -9,6 +9,12 @@ export const ToastOffsetPage = (): JSX.Element => {
     display: block;
     margin-left: -7vw;
     margin-right: 7vw;
+  }
+  @media (min-width: 760px) {
+    p-toast {
+      margin-left: -4rem;
+      margin-right: 4rem;
+    }
   }`;
 
   useEffect(() => {

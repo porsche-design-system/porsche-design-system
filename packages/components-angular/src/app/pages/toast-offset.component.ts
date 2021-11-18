@@ -11,6 +11,12 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         margin-left: -7vw;
         margin-right: 7vw;
       }
+      @media (min-width: 760px) {
+        p-toast {
+          margin-left: -4rem;
+          margin-right: 4rem;
+        }
+      }
     `,
   ],
   template: `
