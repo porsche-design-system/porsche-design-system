@@ -78,7 +78,7 @@ In order to find the right notification type for your use case, we have defined 
     }
 
     startDemo() {
-      this.$refs.toast.addMessage({ message: `Some message ${this.toastCounter}`});
+      this.$refs.toast.addMessage({ text: `Some message ${this.toastCounter}`});
       this.toastCounter++;
       this.isModalOpen = true;
       if(!this.isBannerOpen){    
