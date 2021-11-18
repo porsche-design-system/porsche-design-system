@@ -69,9 +69,6 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme):
       color: getColor(color, theme),
       '& > svg': {
         fill: 'currentcolor',
-        '@media screen and (-ms-high-contrast: active)': {
-          forcedColorAdjust: 'preserve-parent-color !important',
-        },
       },
     },
   });
