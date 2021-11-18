@@ -17,9 +17,9 @@ const bannerPositionBottomVar = '--p-banner-position-bottom';
 const bannerZIndexVar = '--p-banner-z-index';
 const bannerAnimationDurationVar = '--p-animation-duration__banner';
 
-export const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
-export const ANIMATION_DURATION = 600;
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
+export const ANIMATION_DURATION = 600;
 
 const mediaQueryS = mediaQuery('s');
 const mediaQueryXxs = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
@@ -30,27 +30,42 @@ export const getBoxShadow = (): JssStyle => ({
     `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
 });
 
-export const getAnimationMobileOut = (): JssStyle => ({
-  animation: addImportantToRule(`600ms $animateMobileOut ${easeOutQuad} forwards`),
+export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
+  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : ANIMATION_DURATION + 'ms';
+  return {
+    animation: `${duration} $${keyframesName} ${easeInQuad} forwards`,
+  };
+};
+
+export const getAnimationOut = (keyframesName: string): JssStyle => ({
+  animation: addImportantToRule(`${ANIMATION_DURATION}ms $${keyframesName} ${easeOutQuad} forwards`),
 });
 
-const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+type KeyframesDirection = 'in' | 'out';
+const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
+  const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+  return direction === 'in'
+    ? {
+        from: outsideStyle,
+        to: insideStyle,
+      }
+    : {
+        from: insideStyle,
+        to: outsideStyle,
+      };
+};
 
-export const getKeyframesMobileIn = (bottomVar: string): JssStyle => ({
-  from: {
+export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
+  getKeyframes(direction, {
     opacity: 0,
-    transform: `translate3d(0,calc(var(${bottomVar})+ 100%),0)`,
-  },
-  to: animationVisible,
-});
+    transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
+  });
 
-export const getKeyframesMobileOut = (bottomVar: string): JssStyle => ({
-  from: animationVisible,
-  to: {
+const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
+  getKeyframes(direction, {
     opacity: 0,
-    transform: `translate3d(0,calc(var(${bottomVar})+ 100%),0)`,
-  },
-});
+    transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
+  });
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -73,36 +88,18 @@ export const getComponentCss = (): string => {
       },
     }),
     ':host(.hydrated)': {
-      [mediaQueryXxs]: {
-        animation: `var(${bannerAnimationDurationVar},${ANIMATION_DURATION}ms) $animateMobileIn ${easeInQuad} forwards`,
-      },
-      [mediaQueryS]: {
-        animation: `var(${bannerAnimationDurationVar},${ANIMATION_DURATION}ms) $animateDesktopIn ${easeInQuad} forwards`,
-      },
+      [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
+      [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
     },
     ':host(.banner--close)': {
-      [mediaQueryXxs]: getAnimationMobileOut(),
-      [mediaQueryS]: {
-        animation: addImportantToRule(`${ANIMATION_DURATION}ms $animateDesktopOut ${easeOutQuad} forwards`),
-      },
+      [mediaQueryXxs]: getAnimationOut('mobileOut'),
+      [mediaQueryS]: getAnimationOut('desktopOut'),
     },
     root: getBoxShadow(),
-    '@keyframes animateMobileIn': getKeyframesMobileIn(bannerPositionBottomVar),
-    '@keyframes animateDesktopIn': {
-      from: {
-        opacity: 0,
-        transform: `translate3d(0,calc(-100% - var(${bannerPositionBottomVar})),0)`,
-      },
-      to: animationVisible,
-    },
-    '@keyframes animateMobileOut': getKeyframesMobileOut(bannerPositionBottomVar),
-    '@keyframes animateDesktopOut': {
-      from: animationVisible,
-      to: {
-        opacity: 0,
-        transform: `translate3d(0,calc(-100% - var(${bannerPositionBottomVar})),0)`,
-      },
-    },
+    '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
+    '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
+    '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
+    '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
   });
 };
 
