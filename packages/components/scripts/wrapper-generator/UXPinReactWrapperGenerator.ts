@@ -187,7 +187,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         `const { addMessage } = useToastManager();
     const messageObject = { text, state };
     useBrowserLayoutEffect(() => {
-      messageObject.message && addMessage(messageObject);
+      messageObject.text && addMessage(messageObject);
     }, [messageObject]);
 
     $1`
