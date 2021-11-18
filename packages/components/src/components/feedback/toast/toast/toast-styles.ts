@@ -40,7 +40,7 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
           offsetBottom,
           (bottom: number): JssStyle => ({
             [toastBottomPositionVar]: pxToRemWithUnit(bottom),
-            bottom: pxToRemWithUnit(bottom),
+            bottom: `var(${toastBottomPositionVar})`,
           })
         )
       )
