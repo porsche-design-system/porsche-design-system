@@ -1,8 +1,8 @@
 import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../utils';
-import type { Direction } from './popover-utils';
+import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 
-const getPopoverPosition = (direction: Direction): JssStyle => {
+const getPopoverPosition = (direction: PopoverDirection): JssStyle => {
   switch (direction) {
     case 'top':
       return {
@@ -31,7 +31,7 @@ const getPopoverPosition = (direction: Direction): JssStyle => {
   }
 };
 
-const getArrowPosition = (direction: Direction): JssStyle => {
+const getArrowPosition = (direction: PopoverDirection): JssStyle => {
   switch (direction) {
     case 'top':
       return {
@@ -73,7 +73,7 @@ const getArrowPosition = (direction: Direction): JssStyle => {
 };
 
 const mediaQueryXS = mediaQuery('xs');
-export const getComponentCss = (direction: Direction): string => {
+export const getComponentCss = (direction: PopoverDirection): string => {
   return getCss({
     ...buildHostStyles({
       verticalAlign: 'top',
@@ -82,13 +82,14 @@ export const getComponentCss = (direction: Direction): string => {
         display: 'inline-block',
       }),
     }),
-    popover: {
+    spacer: {
       position: 'absolute',
       top: '-1rem',
       left: '-1rem',
       right: '-1rem',
       bottom: '-1rem',
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
+      background: 'rgba(255,0,0,0.2)',
       pointerEvents: 'none',
       '&::before': {
         content: '""',
@@ -98,11 +99,12 @@ export const getComponentCss = (direction: Direction): string => {
         ...getArrowPosition(direction),
       },
     },
-    content: {
+    popover: {
       position: 'absolute',
       zIndex: 99999,
       maxWidth: '90vw',
       width: 'max-content',
+      boxSizing: 'border-box',
       background: 'white',
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
