@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [2.7.0-beta.0] - 2021-11-11
 
-### Added
+#### Added
 - New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`
 
 #### Fixed
