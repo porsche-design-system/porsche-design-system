@@ -90,3 +90,7 @@ export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direc
 
   return offset;
 };
+
+export const isClickInsideHost = (host: HTMLElement, open: boolean, clickEvent: MouseEvent): boolean => {
+  return open && (clickEvent.composedPath() as HTMLElement[]).includes(host);
+};
