@@ -3,13 +3,19 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'toast-basic-long-text',
+  styles: [
+    `
+      .inner {
+        transform: translateX(0);
+        height: 150px;
+      }
+    `,
+  ],
   template: `
-    <div
-      class="playground light"
-      style="width: 240px;"
-      title="should render toast multiline message on light background"
-    >
-      <p-toast></p-toast>
+    <div class="playground light" title="should render toast multiline message on light background">
+      <div class="inner">
+        <p-toast [offsetBottom]="0"></p-toast>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

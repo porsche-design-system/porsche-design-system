@@ -8,9 +8,6 @@ export const ToastOffsetPage = (): JSX.Element => {
   .inner {
     transform: translateX(0);
     height: 56px;
-  }
-  p-toast {
-    --p-toast-position: fixed;
   }`;
 
   useEffect(() => {
@@ -20,7 +17,7 @@ export const ToastOffsetPage = (): JSX.Element => {
   return (
     <>
       <style children={style} />
-      <div className="playground light" title="should render toast neutral on light background with offset {bottom: 0}">
+      <div className="playground light" title="should render toast neutral on light background with offsetBottom">
         <div className="inner">
           <PToast offsetBottom={{ base: 0, xs: 10, s: 0, m: 10, l: 0, xl: 0 }} />
         </div>

@@ -33,10 +33,6 @@ describe('toast-offset', () => {
 
 describe('toast-prefixed', () => {
   it('should have no visual regression for viewport 1000', async () => {
-    expect(
-      await vrtTest(getVisualRegressionStatesTester(), 'toast-basic', '/#toast-prefixed', {
-        regressionSuffix: 'toast-prefixed',
-      })
-    ).toBeFalsy();
+    expect(await vrtTest(getVisualRegressionStatesTester(), 'toast-prefixed', '/#toast-prefixed')).toBeFalsy();
   });
 });

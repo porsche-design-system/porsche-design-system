@@ -27,11 +27,7 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
     ...addImportantToEachRule(
       mergeDeep(
         buildHostStyles({
-          // use override for tests in prod build
-          position:
-            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-              ? 'fixed'
-              : 'var(--p-toast-position, fixed)',
+          position: 'fixed',
           left: '7vw', // aligned with banner's content-wrapper
           right: '7vw', // aligned with banner's content-wrapper
           zIndex: TOAST_Z_INDEX,

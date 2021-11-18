@@ -12,12 +12,24 @@ export const ToastPrefixedPage = (): JSX.Element => {
 const ToastPrefixed = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
+  const style = `
+  .inner {
+    transform: translateX(0);
+    height: 56px;
+  }`;
+
   useEffect(() => {
     addMessage({ text: `Some message` });
   }, [addMessage]);
+
   return (
-    <div className="playground light" title="should render prefixed toast neutral on light background">
-      <PToast />
-    </div>
+    <>
+      <style children={style} />
+      <div className="playground light" title="should render prefixed toast neutral on light background">
+        <div className="inner">
+          <PToast offsetBottom={0} />
+        </div>
+      </div>
+    </>
   );
 };

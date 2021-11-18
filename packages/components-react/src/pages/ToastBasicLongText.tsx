@@ -4,17 +4,24 @@ import { useEffect } from 'react';
 export const ToastBasicLongTextPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
+  const style = `
+  .inner {
+    transform: translateX(0);
+    height: 150px;
+  }`;
+
   useEffect(() => {
     addMessage({ text: 'Some message with a very long text across multiple lines' });
   }, [addMessage]);
 
   return (
-    <div
-      className="playground light"
-      style={{ width: 240 }}
-      title="should render toast multiline message on light background"
-    >
-      <PToast />
-    </div>
+    <>
+      <style children={style} />
+      <div className="playground light" title="should render toast multiline message on light background">
+        <div className="inner">
+          <PToast offsetBottom={0} />
+        </div>
+      </div>
+    </>
   );
 };
