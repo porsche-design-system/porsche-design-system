@@ -3,6 +3,7 @@
   --p-animation-duration__spinner: 0s;
   --p-animation-hover-duration: 0s;
   --p-animation-duration__banner: 0s;
+  --p-animation-duration__popover: 0s;
 }
 
 html,
