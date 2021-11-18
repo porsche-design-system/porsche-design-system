@@ -1,96 +1,92 @@
-export type Direction = 'top' | 'right' | 'bottom' | 'left';
+export type PopoverDirection = 'top' | 'right' | 'bottom' | 'left';
 
 const safeZone = 16;
 
-export const isWithinViewport = (popover: HTMLDivElement, direction: Direction): boolean => {
+export const isWithinViewport = (popover: HTMLDivElement, direction: PopoverDirection): boolean => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const {
-    left: popoverLeft,
-    width: popoverWidth,
     top: popoverTop,
-    height: popoverHeight,
+    right: popoverRight,
+    bottom: popoverBottom,
+    left: popoverLeft,
   } = popover.getBoundingClientRect();
 
-  const isWithinTopArea = (): boolean => popoverTop >= safeZone;
-  const isWithinRightArea = (): boolean => popoverLeft + popoverWidth + safeZone <= viewportWidth;
-  const isWithinBottomArea = (): boolean => popoverTop + popoverHeight + safeZone <= viewportHeight;
-  const isWithinLeftArea = (): boolean => popoverLeft >= safeZone;
+  const isWithinTopArea = popoverTop >= safeZone;
+  const isWithinRightArea = popoverRight + safeZone <= viewportWidth;
+  const isWithinBottomArea = popoverBottom + safeZone <= viewportHeight;
+  const isWithinLeftArea = popoverLeft >= safeZone;
 
   switch (direction) {
     case 'top':
-      return isWithinTopArea() && isWithinRightArea() && isWithinLeftArea();
+      return isWithinTopArea && isWithinRightArea && isWithinLeftArea;
     case 'right':
-      return isWithinRightArea() && isWithinTopArea() && isWithinBottomArea();
+      return isWithinRightArea && isWithinTopArea && isWithinBottomArea;
     case 'bottom':
-      return isWithinBottomArea() && isWithinRightArea() && isWithinLeftArea();
+      return isWithinBottomArea && isWithinRightArea && isWithinLeftArea;
     case 'left':
-      return isWithinLeftArea() && isWithinTopArea() && isWithinBottomArea();
+      return isWithinLeftArea && isWithinTopArea && isWithinBottomArea;
   }
 };
 
-export const getAutoDirection = (host: HTMLElement, popover: HTMLDivElement): Direction => {
+export const getAutoDirection = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverDirection => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-  const { top: hostTop, left: hostLeft, width: hostWidth, height: hostHeight } = host.getBoundingClientRect();
+  const { top: spacerTop, left: spacerLeft, bottom: spacerBottom, right: spacerRight } = spacer.getBoundingClientRect();
   const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
 
-  // TODO: 2rem spacing is missing in calculation for all directions
   // determine the **theoretically** maximum available space in all directions within viewport
   const direction = {
-    top: hostTop - popoverHeight,
-    right: viewportWidth - (hostLeft + hostWidth + popoverWidth),
-    bottom: viewportHeight - (hostTop + hostHeight + popoverHeight),
-    left: hostLeft - popoverWidth,
+    top: spacerTop - popoverHeight,
+    right: viewportWidth - (spacerRight + popoverWidth),
+    bottom: viewportHeight - (spacerBottom + popoverHeight),
+    left: spacerLeft - popoverWidth,
   };
 
-  return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as Direction;
+  return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as PopoverDirection;
 };
 
-// TODO: clean up + readability
-export const calcOffsetX = (
-  popoverPositionLeft: number,
-  popoverOffsetLeft: number,
-  popoverWidth: number,
-  viewportWidth: number
-): number => {
-  // check if popover exceeds right side of viewport
-  if (popoverOffsetLeft + popoverWidth > viewportWidth - safeZone) {
-    return popoverPositionLeft - (popoverOffsetLeft + popoverWidth - viewportWidth + safeZone);
+export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direction: PopoverDirection): string => {
+  const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
+  const {
+    top: spacerTop,
+    right: spacerRight,
+    bottom: spacerBottom,
+    left: spacerLeft,
+    width: spacerWidth,
+    height: spacerHeight,
+  } = spacer.getBoundingClientRect();
+  const {
+    top: popoverTop,
+    right: popoverRight,
+    bottom: popoverBottom,
+    left: popoverLeft,
+    width: popoverWidth,
+    height: popoverHeight,
+  } = popover.getBoundingClientRect();
+
+  let offset = '0';
+
+  // check x-axis offset is relevant for popover
+  if (['top', 'bottom'].includes(direction) && popoverWidth > spacerWidth) {
+    // check if popover exceeds left side of viewport
+    if (popoverLeft < safeZone) {
+      offset = `0 0 0 ${Math.min(safeZone - popoverLeft, spacerLeft - popoverLeft)}px`;
+    }
+    // check if popover exceeds right side of viewport
+    else if (popoverRight > viewportWidth - safeZone) {
+      offset = `0 0 0 ${Math.max(viewportWidth - safeZone - popoverRight, spacerRight - popoverRight)}px`;
+    }
   }
-  // check if popover exceeds left side of viewport
-  else if (popoverOffsetLeft < safeZone) {
-    return popoverPositionLeft - popoverOffsetLeft + safeZone;
-  }
-  return popoverPositionLeft;
-};
-
-// TODO: clean up + readability
-export const getOffsetX = (popover: HTMLDivElement): number => {
-  const { clientWidth: viewportWidth } = document.documentElement;
-  // offset relative to viewport
-  const { left: popoverOffsetLeft, width: popoverWidth } = popover.getBoundingClientRect();
-
-  const hostWidth = 12;
-  return calcOffsetX(popover.offsetLeft, popoverOffsetLeft, popoverWidth, viewportWidth) - hostWidth;
-};
-
-// TODO: clean up + readability
-export const getOffsetY = (popover: HTMLDivElement): number => {
-  const { clientHeight: viewportHeight } = document.documentElement;
-  // offset relative to viewport
-  const { top: popoverOffsetTop, height: popoverHeight } = popover.getBoundingClientRect();
-
-  // offset relative to parent
-  let popoverPositionTop = popover.offsetTop;
-
-  // check if popover exceeds bottom of viewport
-  if (popoverOffsetTop + popoverHeight > viewportHeight - safeZone) {
-    popoverPositionTop = popoverPositionTop - (popoverOffsetTop + popoverHeight - viewportHeight + safeZone);
-  }
-  // check if popover exceeds top of viewport
-  else if (popoverOffsetTop < safeZone) {
-    popoverPositionTop = popoverPositionTop - popoverOffsetTop + safeZone;
+  // check y-axis offset is relevant for popover
+  else if (['left', 'right'].includes(direction) && popoverHeight > spacerHeight) {
+    // check if popover exceeds top side of viewport
+    if (popoverTop < safeZone) {
+      offset = `${Math.min(safeZone - popoverTop, spacerTop - popoverTop)}px 0 0 0`;
+    }
+    // check if popover exceeds bottom side of viewport
+    else if (popoverBottom > viewportHeight - safeZone) {
+      offset = `${Math.max(viewportHeight - safeZone - popoverBottom, spacerBottom - popoverBottom)}px 0 0 0`;
+    }
   }
 
-  const hostHeight = 12;
-  return popoverPositionTop - hostHeight;
+  return offset;
 };

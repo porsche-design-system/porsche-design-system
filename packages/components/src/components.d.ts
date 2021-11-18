@@ -20,7 +20,7 @@ import { InlineNotificationState } from "./components/feedback/inline-notificati
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
-import { Direction } from "./components/feedback/popover/popover-utils";
+import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -629,7 +629,7 @@ export namespace Components {
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport.
          */
-        "direction": Direction;
+        "direction": PopoverDirection;
         /**
           * Theme.
          */
@@ -1862,7 +1862,7 @@ declare namespace LocalJSX {
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport.
          */
-        "direction"?: Direction;
+        "direction"?: PopoverDirection;
         /**
           * Theme.
          */
