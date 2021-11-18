@@ -39,7 +39,11 @@ export class Toast {
     });
   }
 
-  public componentShouldUpdate(_, __, propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom'>): boolean {
+  public componentShouldUpdate(
+    _: unknown,
+    __: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom'>
+  ): boolean {
     return propertyName !== 'offsetBottom';
   }
 
