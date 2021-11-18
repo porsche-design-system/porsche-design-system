@@ -209,14 +209,14 @@ describe('toast-item', () => {
     const animationIn = await getElementStyle(toastItem, 'animation');
 
     expect(animationIn).toMatchInlineSnapshot(
-      '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-animateMobileIn"'
+      '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-in"'
     );
 
     await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
     const animationOut = await getElementStyle(toastItem, 'animation');
 
     expect(animationOut).toMatchInlineSnapshot(
-      '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-animateMobileOut"'
+      '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-out"'
     );
 
     await page.waitForTimeout(ANIMATION_DURATION);
