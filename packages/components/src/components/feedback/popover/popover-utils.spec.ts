@@ -56,16 +56,18 @@ describe('isClickInsideHost()', () => {
     expect(isClickInsideHost(component, true, clickEvent)).toBe(true);
   });
 
+  it('should be false when closed', () => {
+    const component = document.createElement('div');
+    const clickEvent = new MouseEvent('click');
+    jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [component]);
+
+    expect(isClickInsideHost(component, false, clickEvent)).toBe(true);
+  });
+
   it('should be false when composedPath does not include host', () => {
     const component = document.createElement('div');
 
     expect(isClickInsideHost(component, true, new MouseEvent('click'))).toBe(false);
-  });
-
-  it('should be false when closed', () => {
-    const component = document.createElement('div');
-
-    expect(isClickInsideHost(component, false, new MouseEvent('click'))).toBe(false);
   });
 
   it('should call composedPath when open', () => {
