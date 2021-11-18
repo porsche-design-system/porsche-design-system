@@ -76,7 +76,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addProp(props, 'title?: string;');
       props = addProp(props, 'description?: string;');
     } else if (component === 'p-toast') {
-      props = addProp(props, 'message: string;');
+      props = addProp(props, 'text: string;');
       props = addProp(props, 'state: ToastState;');
     }
 
@@ -181,11 +181,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
       }
     } else if (component === 'p-toast') {
-      cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, "message, state = 'neutral', $1");
+      cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, "text, state = 'neutral', $1");
       cleanedComponent = cleanedComponent.replace(
         /(const propsToSync =)/,
         `const { addMessage } = useToastManager();
-    const messageObject = { message, state };
+    const messageObject = { text, state };
     useBrowserLayoutEffect(() => {
       messageObject.message && addMessage(messageObject);
     }, [messageObject]);
