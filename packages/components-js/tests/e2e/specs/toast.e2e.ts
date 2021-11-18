@@ -32,7 +32,7 @@ const initToast = async (): Promise<void> => {
 
 const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
   const msg: ToastMessage = {
-    message: 'Some message',
+    text: 'Some message',
     state: 'neutral',
     ...message,
   };
@@ -92,9 +92,9 @@ it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRID
 });
 
 it('should queue multiple toast-items and show them in correct order', async () => {
-  await initToastWithToastItem({ message: '1' });
-  await addMessage({ message: '2' });
-  await addMessage({ message: '3' });
+  await initToastWithToastItem({ text: '1' });
+  await addMessage({ text: '2' });
+  await addMessage({ text: '3' });
 
   expect(await getProperty(await getToastItem(), 'message')).toBe('1');
 
@@ -111,15 +111,15 @@ it(`should queue two toast-items, close the first, queue a third, display the se
 after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally after ${
   TOAST_TIMEOUT_DURATION_OVERRIDE * 2
 } seconds display none`, async () => {
-  await initToastWithToastItem({ message: '1' });
-  await addMessage({ message: '2' });
+  await initToastWithToastItem({ text: '1' });
+  await addMessage({ text: '2' });
 
   const closeButton = await getCloseButton();
   await closeButton.click();
   await waitForAnimationFinish();
 
   await waitForStencilLifecycle(page);
-  await addMessage({ message: '3' });
+  await addMessage({ text: '3' });
 
   expect(await getProperty(await getToastItem(), 'message')).toBe('2');
 

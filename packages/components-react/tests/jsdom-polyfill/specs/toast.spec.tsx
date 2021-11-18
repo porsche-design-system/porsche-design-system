@@ -12,7 +12,7 @@ const Sample = (): JSX.Element => {
       <PToast data-testid="host" />
       <button
         onClick={() => {
-          addMessage({ message: 'Some message' });
+          addMessage({ text: 'Some message' });
           setEventCounter((prev) => prev + 1);
         }}
       >

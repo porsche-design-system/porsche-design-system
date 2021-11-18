@@ -6,7 +6,7 @@ export const ToastExamplePage = (): JSX.Element => {
   const [counter, setCounter] = useState(1);
 
   const onButtonClick = () => {
-    addMessage({ message: `Some message ${counter}`, state: 'success' });
+    addMessage({ text: `Some message ${counter}`, state: 'success' });
     setCounter((prev) => prev + 1);
   };
 

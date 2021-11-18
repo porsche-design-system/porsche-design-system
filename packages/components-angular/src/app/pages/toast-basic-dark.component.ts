@@ -14,6 +14,6 @@ export class ToastBasicDarkComponent implements OnInit {
   constructor(private toastManager: ToastManager) {}
 
   ngOnInit() {
-    this.toastManager.addMessage({ message: 'Some message' });
+    this.toastManager.addMessage({ text: 'Some message' });
   }
 }

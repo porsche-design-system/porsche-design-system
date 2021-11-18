@@ -11,7 +11,7 @@ const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-toast-skip-timeout';
 const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-toast-timeout-override';
 
 export type ToastMessage = {
-  message: string;
+  text: string;
   state?: ToastState;
 };
 

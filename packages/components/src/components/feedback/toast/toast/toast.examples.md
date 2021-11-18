@@ -64,7 +64,7 @@ The position of the `p-toast` can be adjusted via the `offset` property.
     }
 
     queueToast(): void {
-      this.$refs.toast.addMessage({ message: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
+      this.$refs.toast.addMessage({ text: `Some ${this.state.toLowerCase()} message ${this.toastCounter}`, state: this.state });
       this.toastCounter++;
     }
 
