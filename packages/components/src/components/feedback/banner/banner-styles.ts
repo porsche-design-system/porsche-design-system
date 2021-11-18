@@ -39,7 +39,7 @@ const animationVisible: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)'
 export const getKeyframesMobileIn = (bottomVar: string): JssStyle => ({
   from: {
     opacity: 0,
-    transform: `translate3d(0,calc(var(${bottomVar})+100%),0)`,
+    transform: `translate3d(0,calc(var(${bottomVar})+ 100%),0)`,
   },
   to: animationVisible,
 });
@@ -48,7 +48,7 @@ export const getKeyframesMobileOut = (bottomVar: string): JssStyle => ({
   from: animationVisible,
   to: {
     opacity: 0,
-    transform: `translate3d(0,calc(var(${bottomVar})+100%),0)`,
+    transform: `translate3d(0,calc(var(${bottomVar})+ 100%),0)`,
   },
 });
 

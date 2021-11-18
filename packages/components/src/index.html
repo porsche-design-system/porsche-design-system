@@ -26,11 +26,11 @@
         const toast = document.querySelector('p-toast');
         let count = 0;
         document.querySelector('#button-a').addEventListener('click', () => {
-          toast.addMessage({ message: 'message by public member 1 count: ' + count, state: 'success' });
+          toast.addMessage({ text: 'message by public member 1 count: ' + count, state: 'success' });
           count++;
         });
         document.querySelector('#button-b').addEventListener('click', () => {
-          toast.addMessage({ message: 'message by public member 2 count: ' + count, state: 'neutral' });
+          toast.addMessage({ text: 'message by public member 2 count: ' + count, state: 'neutral' });
           count++;
         });
       }, 500);
