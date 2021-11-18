@@ -20,7 +20,7 @@ import {
 } from '../../banner/banner-styles';
 
 const toastBottomPositionVar = '--p-toast-bottom-position';
-export const toastCloseClassName = 'animate--close';
+export const toastCloseClassName = 'close';
 
 export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset): string => {
   return getCss({
