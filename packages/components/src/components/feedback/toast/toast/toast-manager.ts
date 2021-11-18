@@ -2,6 +2,7 @@ import { forceUpdate } from '@stencil/core';
 import { throwIfValueIsInvalid } from '../../../../utils';
 import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
+import { toastCloseClassName, toastVisibleClassName } from './toast-styles';
 
 export const TOAST_DEFAULT_TIMEOUT = 6000;
 
@@ -52,7 +53,13 @@ export class ToastManagerClass {
   public dismissToastItem = (): void => {
     this.removeTimeout();
     this.messages.shift();
-    forceUpdate(this.toastEl);
+    this.toastEl.classList.remove(toastVisibleClassName);
+
+    this.toastEl.classList.add(toastCloseClassName);
+    setTimeout(() => {
+      this.toastEl.classList.remove(toastCloseClassName);
+      forceUpdate(this.toastEl);
+    }, 600);
   };
 
   public getToast(): ToastMessage {
@@ -62,10 +69,12 @@ export class ToastManagerClass {
   public startTimeout(): void {
     if (this.messages.length) {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
+        this.toastEl.classList.add(toastVisibleClassName);
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
         // skip setting timeout if --p-toast-skip-timeout css variable is set in dev build
         if (getComputedStyle(this.toastEl).getPropertyValue(TOAST_CSS_SKIP_TIMEOUT_VAR)?.trim() !== 'true') {
+          this.toastEl.classList.add(toastVisibleClassName);
           this.timeout = setTimeout(
             this.dismissToastItem,
             // override timeout if --p-toast-timeout-override css variable is set

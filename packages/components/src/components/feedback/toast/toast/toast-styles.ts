@@ -19,6 +19,8 @@ import {
 } from '../../banner/banner-styles';
 
 const toastBottomPositionVar = '--p-toast-bottom-position';
+export const toastVisibleClassName = 'toast--visible';
+export const toastCloseClassName = 'toast--close';
 
 export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset): string => {
   return getCss({
@@ -47,10 +49,10 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
         )
       )
     ),
-    '.toast-item.visible': {
+    [`:host(.${toastVisibleClassName})`]: {
       animation: `600ms $animateMobileIn ${easeInQuad} forwards`,
     },
-    '.toast-item.close': getAnimationMobileOut(),
+    [`:host(.${toastCloseClassName})`]: getAnimationMobileOut(),
     '@keyframes animateMobileIn': getKeyframesMobileIn(toastBottomPositionVar),
     '@keyframes animateMobileOut': getKeyframesMobileOut(toastBottomPositionVar),
   });
