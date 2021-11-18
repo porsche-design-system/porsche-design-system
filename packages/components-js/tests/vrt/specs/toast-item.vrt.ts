@@ -17,7 +17,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const head = `<style type="text/css">p-toast-item ~ p-toast-item { margin-top: 0.5rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-toast-item theme="${theme}" message="Some message"></p-toast-item>`;
+        <p-toast-item theme="${theme}" text="Some message"></p-toast-item>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 

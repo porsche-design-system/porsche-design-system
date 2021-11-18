@@ -4,11 +4,12 @@ import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
 import { ANIMATION_DURATION } from '../../banner/banner-styles';
 
-export const TOAST_DEFAULT_TIMEOUT = 6000;
+const TOAST_DEFAULT_TIMEOUT = 6000;
 
 // css variable names for overriding behaviour in tests
 const TOAST_CSS_SKIP_TIMEOUT_VAR = '--p-toast-skip-timeout';
 const TOAST_CSS_TIMEOUT_OVERRIDE_VAR = '--p-toast-timeout-override';
+export const TOAST_ANIMATION_DURATION_VAR = '--p-toast-animation-duration';
 
 export type ToastMessage = {
   text: string;
@@ -60,9 +61,16 @@ export class ToastManagerClass {
     this.removeTimeout();
     this.messages.shift();
     this.onDismissCallback();
-    setTimeout(() => {
-      forceUpdate(this.toastEl);
-    }, ANIMATION_DURATION);
+    setTimeout(
+      () => {
+        forceUpdate(this.toastEl);
+      },
+      // respect css variable to override timeout during e2e and vrt tests
+      ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+        ? ANIMATION_DURATION
+        : parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_ANIMATION_DURATION_VAR), 10) ||
+            ANIMATION_DURATION
+    );
   };
 
   public getToast(): ToastMessage {
