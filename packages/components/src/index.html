@@ -43,12 +43,9 @@
     </div>
     <script>
       document.querySelector('button').addEventListener('click', () => {
-        document.querySelector('p-popover').theme =
-          document.querySelector('p-popover').theme === 'light' ? 'dark' : 'light';
-        document.querySelector('body').style.backgroundColor =
-          document.querySelector('body').style.backgroundColor === 'rgb(38, 43, 46)'
-            ? 'rgb(242, 242, 242)'
-            : 'rgb(38, 43, 46)';
+        const isThemeLight = document.querySelector('p-popover').theme === 'light';
+        document.querySelector('p-popover').theme = isThemeLight ? 'dark' : 'light';
+        document.querySelector('body').style.backgroundColor = isThemeLight ? 'rgb(38, 43, 46)' : 'rgb(242, 242, 242)';
       });
     </script>
   </body>
