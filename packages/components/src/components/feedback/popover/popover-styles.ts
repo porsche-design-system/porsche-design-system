@@ -89,8 +89,8 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       right: '-1rem',
       bottom: '-1rem',
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
-      background: 'rgba(255,0,0,0.2)',
       pointerEvents: 'none',
+      animation: 'var(--p-animation-duration__popover, 240ms) $fadeIn ease forwards',
       '&::before': {
         content: '""',
         width: 0,
@@ -111,6 +111,14 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       ...getPopoverPosition(direction),
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),
+      },
+    },
+    '@keyframes fadeIn': {
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
       },
     },
   });

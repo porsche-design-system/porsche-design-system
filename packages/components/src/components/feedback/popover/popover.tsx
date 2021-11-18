@@ -29,6 +29,8 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.open) {
+      this.popover.style.margin = '0';
+
       let direction = this.direction;
       if (!isWithinViewport(this.popover, this.direction)) {
         direction = getAutoDirection(this.spacer, this.popover);
@@ -36,7 +38,7 @@ export class Popover {
           attachComponentCss(this.host, getComponentCss, direction);
         }
       }
-      this.popover.style.margin = '0';
+
       this.popover.style.margin = getOffset(this.spacer, this.popover, direction);
     }
   }
