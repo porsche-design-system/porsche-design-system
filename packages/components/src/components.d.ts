@@ -935,13 +935,13 @@ export namespace Components {
     }
     interface PToastItem {
         /**
-          * Message of the toast-item.
-         */
-        "message"?: string;
-        /**
           * State of the toast-item.
          */
         "state"?: ToastState;
+        /**
+          * Message of the toast-item.
+         */
+        "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
          */
@@ -2205,10 +2205,6 @@ declare namespace LocalJSX {
     }
     interface PToastItem {
         /**
-          * Message of the toast-item.
-         */
-        "message"?: string;
-        /**
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: CustomEvent<void>) => void;
@@ -2216,6 +2212,10 @@ declare namespace LocalJSX {
           * State of the toast-item.
          */
         "state"?: ToastState;
+        /**
+          * Message of the toast-item.
+         */
+        "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
          */
