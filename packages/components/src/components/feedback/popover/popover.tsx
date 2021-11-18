@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getAutoDirection, getOffset, isWithinViewport } from './popover-utils';
+import { getAutoDirection, getOffset, isClickInsideHost, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
@@ -18,7 +18,7 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private open = true;
+  @State() private open = false;
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
@@ -41,6 +41,14 @@ export class Popover {
     }
   }
 
+  public componentDidLoad(): void {
+    document.addEventListener('click', this.onClick);
+  }
+
+  public disconnectedCallback(): void {
+    document.removeEventListener('click', this.onClick);
+  }
+
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -59,4 +67,11 @@ export class Popover {
       </Host>
     );
   }
+
+  // TODO: test for composedPath or onClick to ensure its only called when open
+  private onClick = (e: MouseEvent): void => {
+    if (!isClickInsideHost(this.host, this.open, e)) {
+      this.open = false;
+    }
+  };
 }

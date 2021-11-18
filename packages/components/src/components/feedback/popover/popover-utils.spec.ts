@@ -1,5 +1,6 @@
-import { getOffsetX, getOffsetY, calcOffsetX } from './popover-utils';
+import { getOffsetX, getOffsetY, calcOffsetX, isClickInsideHost } from './popover-utils';
 import * as popoverutils from './popover-utils';
+import { Popover } from './popover';
 
 describe('calcOffsetX()', () => {
   const popoverPositionLeft = 12;
@@ -43,5 +44,45 @@ describe('getOffsetX()', () => {
     expect(calcOffsetXSpy).toBeCalledWith(100, 100, 100, 1000);
     // ensure hostWidth is subtracted
     expect(result).toBe(88);
+  });
+});
+
+describe('isClickInsideHost()', () => {
+  it('should be true when composedPath contains host', () => {
+    const component = document.createElement('div');
+    const clickEvent = new MouseEvent('click');
+    jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [component]);
+
+    expect(isClickInsideHost(component, true, clickEvent)).toBe(true);
+  });
+
+  it('should be false when composedPath does not include host', () => {
+    const component = document.createElement('div');
+
+    expect(isClickInsideHost(component, true, new MouseEvent('click'))).toBe(false);
+  });
+
+  it('should be false when closed', () => {
+    const component = document.createElement('div');
+
+    expect(isClickInsideHost(component, false, new MouseEvent('click'))).toBe(false);
+  });
+
+  it('should call composedPath when open', () => {
+    const component = document.createElement('div');
+    const clickEvent = new MouseEvent('click');
+    const eventSpy = jest.spyOn(clickEvent, 'composedPath');
+
+    isClickInsideHost(component, true, clickEvent);
+    expect(eventSpy).toBeCalledTimes(1);
+  });
+
+  it('should not call composedPath when closed', () => {
+    const component = document.createElement('div');
+    const clickEvent = new MouseEvent('click');
+    const eventSpy = jest.spyOn(clickEvent, 'composedPath');
+
+    isClickInsideHost(component, false, clickEvent);
+    expect(eventSpy).toBeCalledTimes(0);
   });
 });
