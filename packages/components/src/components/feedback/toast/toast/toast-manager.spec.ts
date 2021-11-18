@@ -38,7 +38,7 @@ describe('addMessage()', () => {
   it('should throw if no toastEl reference is set', () => {
     toastManager.unregister();
     expect(() => {
-      toastManager.addMessage({ message: 'Some Message' });
+      toastManager.addMessage({ text: 'Some Message' });
     }).toThrowErrorMatchingInlineSnapshot('"Missing <p-toast> element."');
   });
 
@@ -49,31 +49,31 @@ describe('addMessage()', () => {
   });
 
   it('should set message state to neutral if none was provided', () => {
-    toastManager.addMessage({ message: 'Some Message' });
-    expect(toastManager['messages'][0]).toEqual({ message: 'Some Message', state: 'neutral' });
+    toastManager.addMessage({ text: 'Some Message' });
+    expect(toastManager['messages'][0]).toEqual({ text: 'Some Message', state: 'neutral' });
   });
 
   it('should throw if an invalid message state was provided', () => {
     expect(() => {
-      toastManager.addMessage({ message: 'Some Message', state: 'wonky' as ToastState });
+      toastManager.addMessage({ text: 'Some Message', state: 'wonky' as ToastState });
     }).toThrowErrorMatchingSnapshot();
   });
 
   it('should add messages to messages array', () => {
-    toastManager.addMessage({ message: 'Some Message One' });
-    toastManager.addMessage({ message: 'Some Message Two', state: 'success' });
+    toastManager.addMessage({ text: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message Two', state: 'success' });
     expect(toastManager['messages']).toEqual([
-      { message: 'Some Message One', state: 'neutral' },
-      { message: 'Some Message Two', state: 'success' },
+      { text: 'Some Message One', state: 'neutral' },
+      { text: 'Some Message Two', state: 'success' },
     ]);
   });
 
   it('should force update if first element was added to messages array', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
-    toastManager.addMessage({ message: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message One' });
     expect(spy).toHaveBeenCalledWith(toastElement);
 
-    toastManager.addMessage({ message: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message One' });
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).not.toHaveBeenCalledTimes(2);
   });
@@ -88,17 +88,17 @@ describe('dismissToastItem()', () => {
   });
 
   it('should remove timeout', () => {
-    toastManager.addMessage({ message: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message One' });
     toastManager.dismissToastItem();
     expect(toastManager['timeout']).toBeNull();
   });
 
   it('should remove first element in array', () => {
-    toastManager.addMessage({ message: 'Some Message One' });
-    toastManager.addMessage({ message: 'Some Message Two' });
+    toastManager.addMessage({ text: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message Two' });
     toastManager.dismissToastItem();
 
-    expect(toastManager['messages']).toEqual([{ message: 'Some Message Two', state: 'neutral' }]);
+    expect(toastManager['messages']).toEqual([{ text: 'Some Message Two', state: 'neutral' }]);
   });
 
   it('should call dismissCallbackFunction', () => {
@@ -107,7 +107,7 @@ describe('dismissToastItem()', () => {
   });
 
   it('should trigger force update', () => {
-    toastManager.addMessage({ message: 'Some Message' });
+    toastManager.addMessage({ text: 'Some Message' });
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
     toastManager.dismissToastItem();
 
@@ -126,10 +126,10 @@ describe('getToast()', () => {
   });
 
   it('should return first element in array', () => {
-    toastManager.addMessage({ message: 'Some Message One' });
-    toastManager.addMessage({ message: 'Some Message Two' });
+    toastManager.addMessage({ text: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message Two' });
 
-    expect(toastManager.getToast()).toEqual({ message: 'Some Message One', state: 'neutral' });
+    expect(toastManager.getToast()).toEqual({ text: 'Some Message One', state: 'neutral' });
   });
 
   it('should return undefined if array is empty', () => {
@@ -144,7 +144,7 @@ describe('startTimeout()', () => {
   });
 
   it('should set a timeout and visible className if message is available', () => {
-    toastManager.addMessage({ message: 'Some Message One' });
+    toastManager.addMessage({ text: 'Some Message One' });
     toastManager.startTimeout();
     expect(toastManager['timeout']).toBeDefined();
   });
@@ -159,7 +159,7 @@ describe('unregister()', () => {
   it('should remove toastEl reference, remove messages and clear timeout', () => {
     const toastElement = document.createElement('p-toast');
     toastManager.register(toastElement, dismissCallbackFunction);
-    toastManager.addMessage({ message: 'Some Message' });
+    toastManager.addMessage({ text: 'Some Message' });
     toastManager.unregister();
 
     expect(toastManager['toastEl']).toBeNull();

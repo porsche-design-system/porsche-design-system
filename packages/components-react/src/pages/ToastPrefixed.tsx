@@ -13,7 +13,7 @@ const ToastPrefixed = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   useEffect(() => {
-    addMessage({ message: `Some message` });
+    addMessage({ text: `Some message` });
   }, [addMessage]);
   return (
     <div className="playground light" title="should render prefixed toast neutral on light background">

@@ -7,7 +7,7 @@
 
   customElements.whenDefined('p-toast').then(() => {
     document.querySelector('button').addEventListener('click', () => {
-      toast.addMessage({ message: `Some message ${counter}`, state: 'success' });
+      toast.addMessage({ text: `Some message ${counter}`, state: 'success' });
       counter++;
     });
   });

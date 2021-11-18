@@ -5,7 +5,7 @@ export const ToastBasicDarkPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   useEffect(() => {
-    addMessage({ message: `Some message` });
+    addMessage({ text: `Some message` });
   }, [addMessage]);
 
   return (

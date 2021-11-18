@@ -14,7 +14,7 @@ export const ToastOffsetPage = (): JSX.Element => {
   }`;
 
   useEffect(() => {
-    addMessage({ message: `Some message` });
+    addMessage({ text: `Some message` });
   }, [addMessage]);
 
   return (

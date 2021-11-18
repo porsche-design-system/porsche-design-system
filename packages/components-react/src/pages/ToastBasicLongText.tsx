@@ -5,7 +5,7 @@ export const ToastBasicLongTextPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   useEffect(() => {
-    addMessage({ message: 'Some message with a very long text across multiple lines' });
+    addMessage({ text: 'Some message with a very long text across multiple lines' });
   }, [addMessage]);
 
   return (
