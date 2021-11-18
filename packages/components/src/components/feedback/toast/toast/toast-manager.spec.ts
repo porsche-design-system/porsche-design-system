@@ -42,6 +42,12 @@ describe('addMessage()', () => {
     }).toThrowErrorMatchingInlineSnapshot('"Missing <p-toast> element."');
   });
 
+  it('should throw if no text was provided', () => {
+    expect(() => {
+      toastManager.addMessage({ text: '' });
+    }).toThrowErrorMatchingInlineSnapshot('"Empty text provided to addMessage."');
+  });
+
   it('should set message state to neutral if none was provided', () => {
     toastManager.addMessage({ message: 'Some Message' });
     expect(toastManager['messages'][0]).toEqual({ message: 'Some Message', state: 'neutral' });

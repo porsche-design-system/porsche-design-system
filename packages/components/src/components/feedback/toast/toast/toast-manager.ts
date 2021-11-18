@@ -40,6 +40,11 @@ export class ToastManagerClass {
     if (!this.toastEl) {
       throw new Error('Missing <p-toast> element.');
     }
+
+    if (!message.text) {
+      throw new Error('Empty text provided to addMessage.');
+    }
+
     const msg: ToastMessage = { state: 'neutral', ...message }; // neutral is our default state
     throwIfValueIsInvalid(msg.state, TOAST_STATES, 'state');
 
