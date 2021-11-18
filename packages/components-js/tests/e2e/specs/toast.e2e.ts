@@ -20,14 +20,29 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initToast = async (): Promise<void> => {
-  const toastTimeoutStyleOverrides = `<style>p-toast {
---p-toast-timeout-override: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
---p-toast-skip-timeout: false;
+type InitToastOptions = {
+  withAnimation?: boolean;
+};
+const initToast = async (opts?: InitToastOptions): Promise<void> => {
+  const { withAnimation } = {
+    withAnimation: false,
+    ...opts,
+  };
+
+  const style = `<style>p-toast {
+  --p-toast-timeout-override: ${TOAST_TIMEOUT_DURATION_OVERRIDE};
+  --p-toast-skip-timeout: false;
+  ${withAnimation ? `--p-toast-animation-duration: ${ANIMATION_DURATION / 1000}s` : ''}
 }</style>`;
+
   await setContentWithDesignSystem(page, `<p-toast></p-toast>`, {
-    injectIntoHead: toastTimeoutStyleOverrides,
+    injectIntoHead: style,
   });
+};
+
+const initToastWithToastItem = async (message: Partial<ToastMessage> = {}, opts?: InitToastOptions) => {
+  await initToast(opts);
+  await addMessage(message);
 };
 
 const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
@@ -44,17 +59,12 @@ const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
   await waitForStencilLifecycle(page);
 };
 
-const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
-  await initToast();
-  await addMessage(message);
-  await waitForAnimationFinish();
-};
-
 const waitForToastTimeout = async (): Promise<void> => {
   await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
   await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 };
+
 const waitForAnimationFinish = () => page.waitForTimeout(ANIMATION_DURATION);
 
 const getHost = () => selectNode(page, 'p-toast');
@@ -205,7 +215,8 @@ describe('toast-item', () => {
   });
 
   it('should have animation', async () => {
-    await initToastWithToastItem();
+    await initToastWithToastItem({}, { withAnimation: true });
+    await waitForAnimationFinish(); // 600ms
     const toastItem = await getToastItem();
     const animationIn = await getElementStyle(toastItem, 'animation');
 
@@ -213,14 +224,15 @@ describe('toast-item', () => {
       '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-in"'
     );
 
-    await waitForAnimationFinish(); // need to hit the middle of closing animation
+    // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
+    await waitForAnimationFinish();
     const animationOut = await getElementStyle(toastItem, 'animation');
 
     expect(animationOut, 'for animationOut').toMatchInlineSnapshot(
       '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-out"'
     );
 
-    await page.waitForTimeout(ANIMATION_DURATION);
+    await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
     const animationClear = await getElementStyle(toastItem, 'animation');
 
     expect(animationClear, 'for animationClear').toMatchInlineSnapshot('""');
