@@ -94,3 +94,7 @@ export const getOffsetY = (popover: HTMLDivElement): number => {
   const hostHeight = 12;
   return popoverPositionTop - hostHeight;
 };
+
+export const isClickInsideHost = (host: HTMLElement, open: boolean, clickEvent: MouseEvent): boolean => {
+  return open && (clickEvent.composedPath() as HTMLElement[]).includes(host);
+};

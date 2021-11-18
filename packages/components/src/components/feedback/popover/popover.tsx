@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getAutoDirection, getOffsetX, getOffsetY, isWithinViewport } from './popover-utils';
+import { getAutoDirection, getOffsetX, getOffsetY, isClickInsideHost, isWithinViewport } from './popover-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
@@ -76,12 +76,8 @@ export class Popover {
 
   //todo: test for composedPath or onClick to ensure its only called when open
   private onClick = (e: MouseEvent): void => {
-    if (this.open) {
-      const clickPath = e.composedPath() as HTMLElement[];
-
-      if (!clickPath.includes(this.host)) {
-        this.open = false;
-      }
+    if (!isClickInsideHost(this.host, this.open, e)) {
+      this.open = false;
     }
   };
 }
