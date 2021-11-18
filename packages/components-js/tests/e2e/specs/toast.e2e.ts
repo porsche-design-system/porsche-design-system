@@ -47,6 +47,7 @@ const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
 const initToastWithToastItem = async (message?: Partial<ToastMessage>) => {
   await initToast();
   await addMessage(message);
+  await waitForAnimationFinish();
 };
 
 const waitForToastTimeout = async (): Promise<void> => {
@@ -58,7 +59,7 @@ const waitForAnimationFinish = () => page.waitForTimeout(ANIMATION_DURATION);
 
 const getHost = () => selectNode(page, 'p-toast');
 const getToastItem = () => selectNode(page, 'p-toast >>> p-toast-item');
-const getToastItemMessage = () => selectNode(page, 'p-toast >>> p-toast-item >>> #message');
+const getToastItemMessage = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-text');
 const getCloseButton = () => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
 
 it.each<ToastState>(TOAST_STATES)('should forward state: %s to p-toast-item', async (state) => {
@@ -96,15 +97,15 @@ it('should queue multiple toast-items and show them in correct order', async () 
   await addMessage({ text: '2' });
   await addMessage({ text: '3' });
 
-  expect(await getProperty(await getToastItem(), 'message')).toBe('1');
+  expect(await getProperty(await getToastItem(), 'text')).toBe('1');
 
   await waitForToastTimeout();
 
-  expect(await getProperty(await getToastItem(), 'message')).toBe('2');
+  expect(await getProperty(await getToastItem(), 'text')).toBe('2');
 
   await waitForToastTimeout();
 
-  expect(await getProperty(await getToastItem(), 'message')).toBe('3');
+  expect(await getProperty(await getToastItem(), 'text')).toBe('3');
 });
 
 it(`should queue two toast-items, close the first, queue a third, display the second one,
@@ -121,11 +122,11 @@ after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally a
   await waitForStencilLifecycle(page);
   await addMessage({ text: '3' });
 
-  expect(await getProperty(await getToastItem(), 'message')).toBe('2');
+  expect(await getProperty(await getToastItem(), 'text')).toBe('2');
 
   await waitForToastTimeout();
 
-  expect(await getProperty(await getToastItem(), 'message')).toBe('3');
+  expect(await getProperty(await getToastItem(), 'text')).toBe('3');
 
   await waitForToastTimeout();
 
@@ -208,20 +209,20 @@ describe('toast-item', () => {
     const toastItem = await getToastItem();
     const animationIn = await getElementStyle(toastItem, 'animation');
 
-    expect(animationIn).toMatchInlineSnapshot(
+    expect(animationIn, 'for animationIn').toMatchInlineSnapshot(
       '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-in"'
     );
 
-    await page.waitForTimeout(TOAST_TIMEOUT_DURATION_OVERRIDE);
+    await waitForAnimationFinish(); // need to hit the middle of closing animation
     const animationOut = await getElementStyle(toastItem, 'animation');
 
-    expect(animationOut).toMatchInlineSnapshot(
+    expect(animationOut, 'for animationOut').toMatchInlineSnapshot(
       '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-out"'
     );
 
     await page.waitForTimeout(ANIMATION_DURATION);
     const animationClear = await getElementStyle(toastItem, 'animation');
 
-    expect(animationClear).toMatchInlineSnapshot('""');
+    expect(animationClear, 'for animationClear').toMatchInlineSnapshot('""');
   });
 });
