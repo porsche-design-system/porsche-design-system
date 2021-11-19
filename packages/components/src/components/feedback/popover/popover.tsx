@@ -42,11 +42,11 @@ export class Popover {
   }
 
   public componentDidLoad(): void {
-    document.addEventListener('click', this.onClick);
+    document.addEventListener('mousedown', this.onClick);
   }
 
   public disconnectedCallback(): void {
-    document.removeEventListener('click', this.onClick);
+    document.removeEventListener('mousedown', this.onClick);
   }
 
   public render(): JSX.Element {
