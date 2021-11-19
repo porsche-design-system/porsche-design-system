@@ -2,8 +2,13 @@ export type PopoverDirection = 'top' | 'right' | 'bottom' | 'left';
 
 const safeZone = 16;
 
-export const isWithinViewport = (popover: HTMLDivElement, direction: PopoverDirection): boolean => {
+export const isWithinViewport = (
+  spacer: HTMLDivElement,
+  popover: HTMLDivElement,
+  direction: PopoverDirection
+): boolean => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
+  const { top: spacerTop, right: spacerRight, bottom: spacerBottom, left: spacerLeft } = spacer.getBoundingClientRect();
   const {
     top: popoverTop,
     right: popoverRight,
@@ -11,20 +16,18 @@ export const isWithinViewport = (popover: HTMLDivElement, direction: PopoverDire
     left: popoverLeft,
   } = popover.getBoundingClientRect();
 
-  const isWithinTopArea = popoverTop >= safeZone;
-  const isWithinRightArea = popoverRight + safeZone <= viewportWidth;
-  const isWithinBottomArea = popoverBottom + safeZone <= viewportHeight;
-  const isWithinLeftArea = popoverLeft >= safeZone;
+  const isWithinXAxis = spacerLeft >= safeZone && spacerRight <= viewportWidth - safeZone;
+  const isWithinYAxis = spacerTop >= safeZone && spacerBottom <= viewportHeight - safeZone;
 
   switch (direction) {
     case 'top':
-      return isWithinTopArea && isWithinRightArea && isWithinLeftArea;
+      return popoverTop >= safeZone && isWithinXAxis;
     case 'right':
-      return isWithinRightArea && isWithinTopArea && isWithinBottomArea;
+      return popoverRight <= viewportWidth - safeZone && isWithinYAxis;
     case 'bottom':
-      return isWithinBottomArea && isWithinRightArea && isWithinLeftArea;
+      return popoverBottom <= viewportHeight - safeZone && isWithinXAxis;
     case 'left':
-      return isWithinLeftArea && isWithinTopArea && isWithinBottomArea;
+      return popoverLeft >= safeZone && isWithinYAxis;
   }
 };
 
