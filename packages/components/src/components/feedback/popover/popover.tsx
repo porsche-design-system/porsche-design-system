@@ -1,9 +1,10 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import { getAutoDirection, getOffset, isClickInsideHost, isWithinViewport } from './popover-utils';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, getThemeDarkAttribute } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { Theme } from '../../../types';
+import { getSlottedCss } from '../../basic/typography/text/text-styles';
 
 @Component({
   tag: 'p-popover',
@@ -12,7 +13,8 @@ import type { Theme } from '../../../types';
 export class Popover {
   @Element() public host!: HTMLElement;
 
-  /** Preferred direction in which popover should open, given there is enough space in viewport. */
+  /** Preferred direction in which popover should open, given there is enough space in viewport.
+   * Otherwise it will be opened in the direction with most available space. */
   @Prop() public direction: PopoverDirection = 'bottom';
 
   /** Theme. */
@@ -23,20 +25,26 @@ export class Popover {
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
 
+  public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
+  }
+
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.direction);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.theme);
   }
 
   public componentDidRender(): void {
     if (this.open) {
+      this.popover.style.margin = '0';
+
       let direction = this.direction;
       if (!isWithinViewport(this.popover, this.direction)) {
         direction = getAutoDirection(this.spacer, this.popover);
         if (direction !== this.direction) {
-          attachComponentCss(this.host, getComponentCss, direction);
+          attachComponentCss(this.host, getComponentCss, direction, this.theme);
         }
       }
-      this.popover.style.margin = '0';
+
       this.popover.style.margin = getOffset(this.spacer, this.popover, direction);
     }
   }
@@ -53,8 +61,13 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <PrefixedTagNames.pButtonPure icon="information" hideLabel="true" onClick={() => (this.open = !this.open)}>
+      <Host {...getThemeDarkAttribute(this.theme)}>
+        <PrefixedTagNames.pButtonPure
+          icon="information"
+          hideLabel="true"
+          theme={this.theme}
+          onClick={() => (this.open = !this.open)}
+        >
           Open Popover
         </PrefixedTagNames.pButtonPure>
         {this.open && (
