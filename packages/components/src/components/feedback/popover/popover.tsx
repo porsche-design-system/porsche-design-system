@@ -1,5 +1,11 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { getAutoDirection, getOffset, isClickInsideHost, isWithinViewport } from './popover-utils';
+import {
+  getAutoDirection,
+  getOffset,
+  isWithinViewport,
+  observeClickOutside,
+  unobserveClickOutside,
+} from './popover-utils';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, getThemeDarkAttribute } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
@@ -27,6 +33,7 @@ export class Popover {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
+    observeClickOutside(this);
   }
 
   public componentWillRender(): void {
@@ -49,12 +56,8 @@ export class Popover {
     }
   }
 
-  public componentDidLoad(): void {
-    document.addEventListener('mousedown', this.onClick);
-  }
-
   public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClick);
+    unobserveClickOutside(this);
   }
 
   public render(): JSX.Element {
@@ -80,11 +83,4 @@ export class Popover {
       </Host>
     );
   }
-
-  // TODO: test for composedPath or onClick to ensure its only called when open
-  private onClick = (e: MouseEvent): void => {
-    if (!isClickInsideHost(this.host, this.open, e)) {
-      this.open = false;
-    }
-  };
 }
