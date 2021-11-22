@@ -12,13 +12,13 @@ import { defaultToastOffset } from './toast-utils';
   shadow: true,
 })
 export class Toast {
+  @Element() public host!: HTMLElement;
+
   /** Adapts the toast color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** The bottom offset of the toast. */
   @Prop() public offsetBottom?: ToastOffset = defaultToastOffset;
-
-  @Element() public host!: HTMLElement;
 
   private manager: ToastManager;
   private toastItemElement: HTMLPToastItemElement;
@@ -42,9 +42,9 @@ export class Toast {
   public componentShouldUpdate(
     _: unknown,
     __: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom'>
+    propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom' | 'theme'>
   ): boolean {
-    return propertyName !== 'offsetBottom';
+    return propertyName !== 'offsetBottom' && propertyName !== 'theme';
   }
 
   public componentWillRender(): void {

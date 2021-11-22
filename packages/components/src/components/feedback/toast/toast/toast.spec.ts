@@ -27,14 +27,15 @@ describe('componentDidLoad', () => {
 });
 
 describe('componentShouldUpdate', () => {
-  it('should return true if not offsetBottom', () => {
+  it('should return true if not offsetBottom or theme', () => {
     const component = new Toast();
-    expect(component.componentShouldUpdate(null, null, 'theme' as any)).toBe(true);
+    expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
   });
 
-  it('should return false for offsetBottom', () => {
+  it('should return false for offsetBottom or theme', () => {
     const component = new Toast();
     expect(component.componentShouldUpdate(null, null, 'offsetBottom')).toBe(false);
+    expect(component.componentShouldUpdate(null, null, 'theme')).toBe(false);
   });
 });
 
