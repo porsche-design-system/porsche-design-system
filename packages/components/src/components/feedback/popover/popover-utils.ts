@@ -96,14 +96,13 @@ export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direc
   return offset;
 };
 
-//TO-DO type checking for this
-export const registeredPopovers = [];
+//TODO improve type checking?
+export const registeredPopovers: Popover[] = [];
 
-// unit test
 export const onClickOutside = (clickEvent: MouseEvent): void => {
-  registeredPopovers.forEach((x) => {
-    if (x.open && !(clickEvent.composedPath() as HTMLElement[]).includes(x.host)) {
-      x.open = false;
+  registeredPopovers.forEach((popover) => {
+    if (popover.open && !clickEvent.composedPath().includes(popover.host)) {
+      popover.open = false;
     }
   });
 };
