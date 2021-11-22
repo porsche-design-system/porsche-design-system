@@ -29,11 +29,11 @@ const adjustHeadline = (str: string): string => {
     'p-toast',
   ];
 
-  let headline;
-
   if (multiPropReplacements.includes(pTagName)) {
     str = str.replace(/(#+)\s/g, '$1# ');
   }
+
+  let headline: string;
 
   if (h1Replacements[pTagName]) {
     headline = `# ${h1Replacements[pTagName]}\n\n## ${componentHeadline}`;
