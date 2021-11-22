@@ -47,50 +47,62 @@ import { Popover } from './popover';
 //   });
 // });
 
-describe('isClickInsideHost()', () => {
-  it('should set open to true when composedPath contains host', () => {
+describe('onClickOutside()', () => {
+  beforeEach(() => {
+    registeredPopovers.length = 0;
+  });
+
+  it('should keep popover open when composedPath contains host', () => {
     const popover = new Popover();
+    popover.open = true;
     registeredPopovers.push(popover);
+
     const clickEvent = new MouseEvent('mousedown');
     jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [popover.host]);
     onClickOutside(clickEvent);
-    //@ts-ignore
-    console.log(popover.host);
-    expect((popover as unknown as Popover).open).toBe(true);
+
+    expect(popover.open).toBe(true);
   });
 
-  // it('should be false when closed', () => {
-  //   const component = document.createElement('div');
-  //   const clickEvent = new MouseEvent('click');
-  //   jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [component]);
-  //
-  //   expect(onClickOutside(component, false, clickEvent)).toBe(true);
-  // });
-  //
-  // it('should be false when composedPath does not include host', () => {
-  //   const component = document.createElement('div');
-  //
-  //   expect(onClickOutside(component, true, new MouseEvent('click'))).toBe(false);
-  // });
-  //
-  // it('should call composedPath when open', () => {
-  //   const component = document.createElement('div');
-  //   const clickEvent = new MouseEvent('click');
-  //   const eventSpy = jest.spyOn(clickEvent, 'composedPath');
-  //
-  //   onClickOutside(component, true, clickEvent);
-  //   expect(eventSpy).toBeCalledTimes(1);
-  // });
-  //
-  // it('should not call composedPath when closed', () => {
-  //   const component = document.createElement('div');
-  //   const clickEvent = new MouseEvent('click');
-  //   const eventSpy = jest.spyOn(clickEvent, 'composedPath');
-  //
-  //   onClickOutside(component, false, clickEvent);
-  //   expect(eventSpy).toBeCalledTimes(0);
-  // });
+  it('should close popover when composedPath does not include host', () => {
+    const popover = new Popover();
+    popover.open = true;
+    registeredPopovers.push(popover);
+
+    onClickOutside(new MouseEvent('mousedown'));
+
+    expect(popover.open).toBe(false);
+  });
+
+  it('should check composedPath only when open', () => {
+    const popover = new Popover();
+    registeredPopovers.push(popover);
+
+    const clickEvent = new MouseEvent('mousedown');
+    const spy = jest.spyOn(clickEvent, 'composedPath');
+    onClickOutside(clickEvent);
+    expect(spy).toBeCalledTimes(0);
+
+    popover.open = true;
+    onClickOutside(clickEvent);
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it('should check every popover in registeredPopovers', () => {
+    const popover1 = new Popover();
+    const popover2 = new Popover();
+    registeredPopovers.push(popover1);
+    registeredPopovers.push(popover2);
+
+    registeredPopovers.forEach((x) => (x.open = true));
+
+    const clickEvent = new MouseEvent('mousedown');
+    const spy = jest.spyOn(clickEvent, 'composedPath');
+    onClickOutside(clickEvent);
+    expect(spy).toBeCalledTimes(2);
+  });
 });
+
 describe('observeClickOutside()', () => {
   beforeEach(() => {
     registeredPopovers.length = 0;
