@@ -181,17 +181,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
       }
     } else if (component === 'p-toast') {
-      cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, "text, state = 'neutral', $1");
-      cleanedComponent = cleanedComponent.replace(
-        /(const propsToSync =)/,
-        `const { addMessage } = useToastManager();
+      cleanedComponent = cleanedComponent
+        .replace(/(\.\.\.rest)/, "text, state = 'neutral', $1") // destructure custom props
+        .replace(
+          // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
+          /(const propsToSync =)/,
+          `const { addMessage } = useToastManager();
     const messageObject = { text, state };
     useBrowserLayoutEffect(() => {
       messageObject.text && addMessage(messageObject);
     }, [messageObject]);
 
     $1`
-      );
+        )
+        .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
     }
 
     return cleanedComponent;
