@@ -36,8 +36,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     if (component === 'p-toast') {
       imports = imports
-        .replace(/(} from '\.\.\/\.\.\/hooks';)/, ', useToastManager$1')
-        .replace(/(} from '\.\.\/types';)/, ', ToastState$1');
+        .replace(/( } from '\.\.\/\.\.\/hooks';)/, ', useToastManager$1')
+        .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
     }
 
     // when component is nested we need to fix relative imports
