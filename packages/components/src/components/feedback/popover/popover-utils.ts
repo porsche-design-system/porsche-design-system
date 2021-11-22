@@ -1,6 +1,7 @@
 import { Popover } from './popover';
 
-export type PopoverDirection = 'top' | 'right' | 'bottom' | 'left';
+export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
+export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
 
 const safeZone = 16;
 
