@@ -1,51 +1,139 @@
-import { observeClickOutside, onClickOutside, registeredPopovers, unobserveClickOutside } from './popover-utils';
-import * as popoverutils from './popover-utils';
+import {
+  isWithinViewport,
+  observeClickOutside,
+  onClickOutside,
+  POPOVER_DIRECTIONS,
+  PopoverDirection,
+  registeredPopovers,
+  unobserveClickOutside,
+} from './popover-utils';
 import { Popover } from './popover';
 
-// describe('calcOffsetX()', () => {
-//   const popoverPositionLeft = 12;
-//   const viewportWidth = 1000;
-//   const popoverWidth = 100;
-//
-//   it('should return popoverPositionLeft when there is enough space', () => {
-//     expect(calcOffsetX(popoverPositionLeft, 20, popoverWidth, viewportWidth)).toBe(popoverPositionLeft);
-//   });
-//
-//   it('should return number < 1/2 width of host when viewport is exceeded on the right', () => {
-//     expect(calcOffsetX(popoverPositionLeft, 900, popoverWidth, viewportWidth)).toBe(-4);
-//     expect(calcOffsetX(popoverPositionLeft, 885, popoverWidth, viewportWidth)).toBe(11);
-//   });
-//
-//   it('should return number > 1/2 width of host when viewport is exceeded on the left', () => {
-//     expect(calcOffsetX(popoverPositionLeft, 10, popoverWidth, viewportWidth)).toBe(18);
-//     expect(calcOffsetX(popoverPositionLeft, 5, popoverWidth, viewportWidth)).toBe(23);
-//   });
-// });
+type BoundingClientRectOpts = {
+  element: HTMLDivElement;
+  width?: number;
+  height?: number;
+  top?: number;
+  left?: number;
+  bottom?: number;
+  right?: number;
+};
 
-// describe('getOffsetX()', () => {
-//   it('should call calcOffsetX', () => {
-//     // clientWidth is always 0 in JSDOM so we mock it
-//     Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000 });
-//     const calcOffsetXSpy = jest.spyOn(popoverutils, 'calcOffsetX');
-//
-//     const host = document.createElement('div');
-//     // we need to mock getBoundingClientRect and offsetLeft since jsdom doesn't visually render it
-//     Object.defineProperty(host, 'offsetLeft', { value: 100 });
-//     jest.spyOn(host, 'getBoundingClientRect').mockImplementation(
-//       () =>
-//         ({
-//           left: 100,
-//           width: 100,
-//         } as DOMRect)
-//     );
-//
-//     const result = getOffsetX(host);
-//
-//     expect(calcOffsetXSpy).toBeCalledWith(100, 100, 100, 1000);
-//     // ensure hostWidth is subtracted
-//     expect(result).toBe(88);
-//   });
-// });
+const mockBoundingClientRect = (opts?: BoundingClientRectOpts): void => {
+  // defaults to center of viewport
+  const { element, width = 100, height = 100, top = 450, left = 450, bottom = 450, right = 450 } = opts;
+
+  jest.spyOn(element, 'getBoundingClientRect').mockImplementation(
+    () =>
+      ({
+        width,
+        height,
+        top,
+        left,
+        bottom,
+        right,
+      } as DOMRect)
+  );
+};
+
+const setViewport = () => {
+  // clientWidth/Height is always 0 in JSDOM so we mock it
+  Object.defineProperties(document.documentElement, {
+    clientWidth: {
+      value: 1000,
+    },
+    clientHeight: {
+      value: 1000,
+    },
+  });
+};
+
+describe('isWithinViewport', () => {
+  setViewport();
+
+  const spacer = document.createElement('div');
+  const popover = document.createElement('div');
+
+  describe('centered', () => {
+    it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+      'should be true when inside viewport for direction %s',
+      (direction) => {
+        mockBoundingClientRect({ element: spacer });
+        mockBoundingClientRect({ element: popover });
+
+        expect(isWithinViewport(spacer, popover, direction)).toBe(true);
+      }
+    );
+  });
+
+  describe('isWithinXAxis', () => {
+    mockBoundingClientRect({ element: popover });
+
+    it.each<PopoverDirection>(['top', 'bottom'])(
+      'should be false when spacer exceeds xAxis for direction %s',
+      (direction) => {
+        // left
+        mockBoundingClientRect({ element: spacer, left: 15 });
+        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        // right
+        mockBoundingClientRect({ element: spacer, right: 985 });
+        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+      }
+    );
+  });
+
+  describe('isWithinYAxis', () => {
+    mockBoundingClientRect({ element: popover });
+
+    it.each<PopoverDirection>(['left', 'right'])(
+      'should be false when spacer exceeds yAxis for direction %s',
+      (direction) => {
+        // top
+        mockBoundingClientRect({ element: spacer, top: 15 });
+        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        // bottom
+        mockBoundingClientRect({ element: spacer, bottom: 985 });
+        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+      }
+    );
+  });
+
+  describe('top', () => {
+    it('should be false when popover exceeds top', () => {
+      mockBoundingClientRect({ element: spacer });
+      mockBoundingClientRect({ element: popover, top: 15 });
+
+      expect(isWithinViewport(spacer, popover, 'top')).toBe(false);
+    });
+  });
+
+  describe('bottom', () => {
+    it('should be false when popover exceeds bottom', () => {
+      mockBoundingClientRect({ element: spacer });
+      mockBoundingClientRect({ element: popover, bottom: 985 });
+
+      expect(isWithinViewport(spacer, popover, 'bottom')).toBe(false);
+    });
+  });
+
+  describe('right', () => {
+    it('should be false  when popover exceeds left', () => {
+      mockBoundingClientRect({ element: spacer });
+      mockBoundingClientRect({ element: popover, left: 15 });
+
+      expect(isWithinViewport(spacer, popover, 'left')).toBe(false);
+    });
+  });
+
+  describe('left', () => {
+    it('should be false when popover exceeds right', () => {
+      mockBoundingClientRect({ element: spacer });
+      mockBoundingClientRect({ element: popover, right: 985 });
+
+      expect(isWithinViewport(spacer, popover, 'right')).toBe(false);
+    });
+  });
+});
 
 describe('onClickOutside()', () => {
   beforeEach(() => {
