@@ -25,6 +25,7 @@ export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset):
           position: 'fixed',
           left: '7vw', // aligned with banner's content-wrapper
           right: '7vw', // aligned with banner's content-wrapper
+          maxWidth: '42rem',
           zIndex: TOAST_Z_INDEX,
           [mediaQuery('s')]: {
             left: pxToRemWithUnit(64), // aligned with banner's content-wrapper
