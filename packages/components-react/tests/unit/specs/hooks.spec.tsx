@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import type { ToastMessage } from '../../../projects/components-wrapper/src';
 import { PButton, useToastManager } from '../../../projects/components-wrapper/src';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
 import {
@@ -6,7 +7,6 @@ import {
   useBrowserLayoutEffect,
 } from '../../../projects/components-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
-import type { ToastMessage } from '@porsche-design-system/components-react';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix to throw exception', () => {
@@ -51,6 +51,7 @@ describe('useToastManager()', () => {
   it('should provide addMessage method', () => {
     expect(useToastManager()).toEqual({ addMessage: expect.anything() });
   });
+
   describe('addMessage', () => {
     it('should call addMessage on toast element', async () => {
       const toastElement = document.createElement('p-toast') as HTMLElement & {
