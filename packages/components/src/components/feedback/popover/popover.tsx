@@ -26,7 +26,7 @@ export class Popover {
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private open = false;
+  @State() open = false;
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
