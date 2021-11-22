@@ -168,11 +168,24 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
   });
 
-  it('should not update on offset prop change', async () => {
+  it('should not update on offsetBottom prop change', async () => {
     await initToast();
 
     const host = await getHost();
-    await setProperty(host, 'offset', { bottom: 20 });
+    await setProperty(host, 'offsetBottom', { bottom: 20 });
+    await waitForStencilLifecycle(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-toast'], 'componentDidUpdate: p-toast').toBe(0);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+  });
+
+  it('should not update on theme prop change', async () => {
+    await initToast();
+
+    const host = await getHost();
+    await setProperty(host, 'theme', 'dark');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
@@ -185,7 +198,7 @@ describe('lifecycle', () => {
     await initToast();
 
     const host = await getHost();
-    await setProperty(host, 'theme', 'dark');
+    await setProperty(host, 'foo', 'bar');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
