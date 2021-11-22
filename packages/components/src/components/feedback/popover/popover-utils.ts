@@ -108,7 +108,6 @@ export const onClickOutside = (clickEvent: MouseEvent): void => {
   });
 };
 
-// unit test
 export function observeClickOutside(popover: Popover) {
   if (!registeredPopovers.includes(popover)) {
     registeredPopovers.push(popover);
