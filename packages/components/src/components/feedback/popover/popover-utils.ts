@@ -1,3 +1,5 @@
+import { Popover } from './popover';
+
 export type PopoverDirection = 'top' | 'right' | 'bottom' | 'left';
 
 const safeZone = 16;
@@ -94,6 +96,30 @@ export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direc
   return offset;
 };
 
-export const isClickInsideHost = (host: HTMLElement, open: boolean, clickEvent: MouseEvent): boolean => {
-  return open && (clickEvent.composedPath() as HTMLElement[]).includes(host);
+//TO-DO type checking for this
+export const registeredPopovers = [];
+
+// unit test
+export const onClickOutside = (clickEvent: MouseEvent): void => {
+  registeredPopovers.forEach((x) => {
+    if (x.open && !(clickEvent.composedPath() as HTMLElement[]).includes(x.host)) {
+      x.open = false;
+    }
+  });
 };
+
+// unit test
+export function observeClickOutside(popover: Popover) {
+  if (popover) {
+    registeredPopovers.push(popover);
+    document.addEventListener('mousedown', onClickOutside);
+  }
+}
+
+// unit test
+export function unobserveClickOutside(node): void {
+  const index = registeredPopovers.indexOf(node);
+  if (index > -1) {
+    registeredPopovers.splice(index, 1);
+  }
+}
