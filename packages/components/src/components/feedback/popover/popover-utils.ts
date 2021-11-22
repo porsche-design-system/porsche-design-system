@@ -110,16 +110,18 @@ export const onClickOutside = (clickEvent: MouseEvent): void => {
 
 // unit test
 export function observeClickOutside(popover: Popover) {
-  if (popover) {
+  if (!registeredPopovers.includes(popover)) {
     registeredPopovers.push(popover);
-    document.addEventListener('mousedown', onClickOutside);
   }
+  document.addEventListener('mousedown', onClickOutside);
 }
 
-// unit test
 export function unobserveClickOutside(node): void {
   const index = registeredPopovers.indexOf(node);
   if (index > -1) {
     registeredPopovers.splice(index, 1);
+  }
+  if (registeredPopovers.length === 0) {
+    document.removeEventListener('mousedown', onClickOutside);
   }
 }
