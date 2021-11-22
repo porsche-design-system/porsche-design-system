@@ -11,7 +11,9 @@ export const ToastBasicLongTextPage = (): JSX.Element => {
   }`;
 
   useEffect(() => {
-    addMessage({ text: 'Some message with a very long text across multiple lines' });
+    addMessage({
+      text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.',
+    });
   }, [addMessage]);
 
   return (

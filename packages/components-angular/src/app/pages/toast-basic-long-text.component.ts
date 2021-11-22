@@ -24,6 +24,8 @@ export class ToastBasicLongTextComponent implements OnInit {
   constructor(private toastManager: ToastManager) {}
 
   ngOnInit() {
-    this.toastManager.addMessage({ text: 'Some message with a very long text across multiple lines' });
+    this.toastManager.addMessage({
+      text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.',
+    });
   }
 }
