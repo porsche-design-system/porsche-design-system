@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### Added
+#### Added
 - `Toast`
+
+#### Fixed
+- `Banner` animations respect offset correctly
 
 ### [2.7.0-beta.1] - 2021-11-16
 
