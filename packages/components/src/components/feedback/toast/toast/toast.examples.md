@@ -102,4 +102,7 @@ The bottom position of the `p-toast` can be adjusted via the `offsetBottom` prop
   button {
     padding: .5rem 1rem;
   }
+  .example--dark label {
+    color: white
+  }
 </style>
