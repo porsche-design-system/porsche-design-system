@@ -16,7 +16,7 @@ const Sample = (): JSX.Element => {
           setEventCounter((prev) => prev + 1);
         }}
       >
-        Add Toast
+        Queue Toast
       </button>
       <div data-testid="debug">{`Event Counter: ${eventCounter};`}</div>
     </>

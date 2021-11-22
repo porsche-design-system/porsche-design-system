@@ -13,7 +13,7 @@ export const ToastExamplePage = (): JSX.Element => {
   return (
     <>
       <button type="button" onClick={onButtonClick}>
-        Add Toast
+        Queue Toast
       </button>
       <PToast />
     </>
