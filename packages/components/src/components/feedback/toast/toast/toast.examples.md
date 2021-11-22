@@ -2,12 +2,23 @@
 
 ## Toast
 
+The `p-toast` component manages both the queue and display of toast messages.  
+Therefore, you can only have a single instance of this component within in your application. We recommend rendering it close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with its z-index and fixed positioning.  
+
 Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
 
-// TODO: Hint about using it outside of routing if possible
-
-
 ## Basic
+
+Queuing messages on `p-toast` component happens via its `addMessage()` method.  
+For Angular users, we offer the injectable `ToastManager` service, for React, there is the `useToastManager()` hook.  
+Both expose the `addMessage()` method, which needs to be called with a parameter that has the following structure:
+
+```ts
+type ToastMessage = {
+  text: string;
+  state?: 'neutral' | 'success';
+};
+```
 
 <Playground :frameworkMarkup="basic" :config="config" @onThemeChange="onThemeChange">
   <label>
@@ -29,7 +40,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 
 ## Offset
 
-The position of the `p-toast` can be adjusted via the `offset` property.
+The bottom position of the `p-toast` can be adjusted via the `offsetBottom` property.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
   <label>
