@@ -939,7 +939,7 @@ export namespace Components {
          */
         "state"?: ToastState;
         /**
-          * Message of the toast-item.
+          * Text of the toast-item.
          */
         "text"?: string;
         /**
@@ -2213,7 +2213,7 @@ declare namespace LocalJSX {
          */
         "state"?: ToastState;
         /**
-          * Message of the toast-item.
+          * Text of the toast-item.
          */
         "text"?: string;
         /**
