@@ -54,7 +54,14 @@ export class Headline {
       <Host {...getThemeDarkAttribute(this.theme)}>
         <TagName class={rootClasses}>
           {!isHeadlineVariantType ? (
-            <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
+            <PrefixedTagNames.pText
+              size={this.variant}
+              align={this.align}
+              ellipsis={this.ellipsis}
+              weight="semibold"
+              color="inherit"
+              tag="span"
+            >
               <slot />
             </PrefixedTagNames.pText>
           ) : (
