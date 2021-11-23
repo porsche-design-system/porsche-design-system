@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.3.0] - 2021-11-23
+
+#### Added
+
+Type | Web Library |
+|---|---|
+Component | Popover |
+Component | Toast |
+Component | Inline-Notification |
+
+#### Changed
+
+Type | Web Library |
+|---|---|
+Radio Button | Adjust Wrapper |
+Checkbox | Adjust Wrapper |
+Pure Link | Adjust Wrapper |
+Banner | Changed Naming |
+
 ### [2.2.1] - 2021-08-03
 
 Type | Web Library |
