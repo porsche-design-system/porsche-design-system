@@ -22,8 +22,8 @@ describe('register()', () => {
     }).toThrowErrorMatchingInlineSnapshot('"<p-toast> was rendered multiple times."');
   });
 
-  it('should return toast manager instance', () => {
-    expect(toastManager.register(toastElement, dismissCallbackFunction)).toEqual(toastManager);
+  it('should set private members', () => {
+    toastManager.register(toastElement, dismissCallbackFunction);
     expect(toastManager['toastEl']).toBeDefined();
     expect(toastManager['onDismissCallback']).toBe(dismissCallbackFunction);
   });
@@ -134,6 +134,13 @@ describe('getToast()', () => {
 
   it('should return undefined if array is empty', () => {
     expect(toastManager.getToast()).toBeUndefined();
+  });
+
+  it('should call startTimeout()', () => {
+    const spy = jest.spyOn(toastManager, 'startTimeout');
+    toastManager.getToast();
+
+    expect(spy).toBeCalledTimes(1);
   });
 });
 

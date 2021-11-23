@@ -71,6 +71,7 @@ export class ToastManagerClass {
   };
 
   public getToast(): ToastMessage {
+    this.startTimeout();
     return this.messages[0];
   }
 

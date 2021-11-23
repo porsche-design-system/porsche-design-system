@@ -51,10 +51,6 @@ export class Toast {
     attachComponentCss(this.host, getComponentCss, this.offsetBottom);
   }
 
-  public componentDidRender(): void {
-    toastManager.startTimeout();
-  }
-
   public disconnectedCallback(): void {
     toastManager.unregister();
   }
