@@ -12,7 +12,6 @@ import {
 } from './popover-utils';
 import * as popoverUtils from './popover-utils';
 import { Popover } from './popover';
-import * as console from 'console';
 
 type BoundingClientRectOpts = {
   element: HTMLDivElement;
@@ -276,7 +275,6 @@ describe('getOffset', () => {
           mockBoundingClientRect({ element: spacer, [position]: exceedSpaceBottomRight });
           mockBoundingClientRect({ element: popover, width: 150, height: 150, [position]: 986 });
 
-          console.log(spacer.getBoundingClientRect(), popover.getBoundingClientRect());
           const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
 
           expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
