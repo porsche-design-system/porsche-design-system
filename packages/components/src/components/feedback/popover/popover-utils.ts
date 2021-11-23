@@ -34,18 +34,29 @@ export const isWithinViewport = (
   }
 };
 
-export const getAutoDirection = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverDirection => {
+type PopoverBoundingBox = {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+};
+
+export const calcSpaceForDirections = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverBoundingBox => {
   const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
   const { top: spacerTop, left: spacerLeft, bottom: spacerBottom, right: spacerRight } = spacer.getBoundingClientRect();
   const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
 
   // determine the **theoretically** maximum available space in all directions within viewport
-  const direction = {
+  return {
     top: spacerTop - popoverHeight,
     right: viewportWidth - (spacerRight + popoverWidth),
     bottom: viewportHeight - (spacerBottom + popoverHeight),
     left: spacerLeft - popoverWidth,
   };
+};
+
+export const getAutoDirection = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverDirection => {
+  const direction = calcSpaceForDirections(spacer, popover);
 
   return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as PopoverDirection;
 };
@@ -97,7 +108,6 @@ export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direc
   return offset;
 };
 
-//TODO improve type checking?
 export const registeredPopovers: Popover[] = [];
 
 export const onClickOutside = (clickEvent: MouseEvent): void => {
