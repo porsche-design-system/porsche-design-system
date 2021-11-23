@@ -8,15 +8,15 @@ From there, a few simple questions will lead you to the recommended component fo
 
 ---
 
-## Provide additional information for a task, a status or their current action.
+## Provide additional information for a task, a status, or their current action.
 
 Status: Neutral
 
 #### Example use Cases:
 * Ask for User data
 * Request feedback
-* Validation code was send to phone
-* Mail was send to inbox
+* Validation code was sent to phone
+* We sent you an email
 
 ![The five basic elements of Porsche forms](./assets/notification-neutral.png)
 
