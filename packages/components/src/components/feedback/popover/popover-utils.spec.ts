@@ -48,6 +48,12 @@ const setViewport = () => {
   });
 };
 
+const exceedSpaceTopLeft = 15;
+const exceedSpaceBottomRight = 985;
+const placeElementOutside = (direction): number => {
+  return direction === 'top' || direction === 'left' ? exceedSpaceTopLeft : exceedSpaceBottomRight;
+};
+
 describe('isWithinViewport', () => {
   setViewport();
 
@@ -66,6 +72,17 @@ describe('isWithinViewport', () => {
     );
   });
 
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should be false when popover exceeds %s', (popoverDirection) => {
+    const popoverPosition = {
+      [popoverDirection]: placeElementOutside(popoverDirection),
+    };
+
+    mockBoundingClientRect({ element: spacer });
+    mockBoundingClientRect({ element: popover, ...popoverPosition });
+
+    expect(isWithinViewport(spacer, popover, popoverDirection)).toBe(false);
+  });
+
   describe('isWithinXAxis', () => {
     mockBoundingClientRect({ element: popover });
 
@@ -73,10 +90,10 @@ describe('isWithinViewport', () => {
       'should be false when spacer exceeds xAxis for direction %s',
       (direction) => {
         // left
-        mockBoundingClientRect({ element: spacer, left: 15 });
+        mockBoundingClientRect({ element: spacer, left: exceedSpaceTopLeft });
         expect(isWithinViewport(spacer, popover, direction)).toBe(false);
         // right
-        mockBoundingClientRect({ element: spacer, right: 985 });
+        mockBoundingClientRect({ element: spacer, right: exceedSpaceBottomRight });
         expect(isWithinViewport(spacer, popover, direction)).toBe(false);
       }
     );
@@ -89,49 +106,13 @@ describe('isWithinViewport', () => {
       'should be false when spacer exceeds yAxis for direction %s',
       (direction) => {
         // top
-        mockBoundingClientRect({ element: spacer, top: 15 });
+        mockBoundingClientRect({ element: spacer, top: exceedSpaceTopLeft });
         expect(isWithinViewport(spacer, popover, direction)).toBe(false);
         // bottom
-        mockBoundingClientRect({ element: spacer, bottom: 985 });
+        mockBoundingClientRect({ element: spacer, bottom: exceedSpaceBottomRight });
         expect(isWithinViewport(spacer, popover, direction)).toBe(false);
       }
     );
-  });
-
-  describe('top', () => {
-    it('should be false when popover exceeds top', () => {
-      mockBoundingClientRect({ element: spacer });
-      mockBoundingClientRect({ element: popover, top: 15 });
-
-      expect(isWithinViewport(spacer, popover, 'top')).toBe(false);
-    });
-  });
-
-  describe('bottom', () => {
-    it('should be false when popover exceeds bottom', () => {
-      mockBoundingClientRect({ element: spacer });
-      mockBoundingClientRect({ element: popover, bottom: 985 });
-
-      expect(isWithinViewport(spacer, popover, 'bottom')).toBe(false);
-    });
-  });
-
-  describe('right', () => {
-    it('should be false  when popover exceeds left', () => {
-      mockBoundingClientRect({ element: spacer });
-      mockBoundingClientRect({ element: popover, left: 15 });
-
-      expect(isWithinViewport(spacer, popover, 'left')).toBe(false);
-    });
-  });
-
-  describe('left', () => {
-    it('should be false when popover exceeds right', () => {
-      mockBoundingClientRect({ element: spacer });
-      mockBoundingClientRect({ element: popover, right: 985 });
-
-      expect(isWithinViewport(spacer, popover, 'right')).toBe(false);
-    });
   });
 });
 
