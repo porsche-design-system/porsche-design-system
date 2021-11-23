@@ -1,6 +1,7 @@
 import {
   calcSpaceForDirections,
   getAutoDirection,
+  getOffset,
   isWithinViewport,
   observeClickOutside,
   onClickOutside,
@@ -11,6 +12,7 @@ import {
 } from './popover-utils';
 import * as popoverUtils from './popover-utils';
 import { Popover } from './popover';
+import * as console from 'console';
 
 type BoundingClientRectOpts = {
   element: HTMLDivElement;
@@ -118,46 +120,6 @@ describe('placeElementOutside()', () => {
   });
 });
 
-describe('calcSpaceForDirections()', () => {
-  it('should return correct space for all directions', () => {
-    setViewport();
-    mockBoundingClientRect({ element: spacer });
-    mockBoundingClientRect({ element: popover });
-
-    expect(calcSpaceForDirections(spacer, popover)).toEqual({
-      bottom: 450,
-      left: 350,
-      right: 450,
-      top: 350,
-    });
-  });
-});
-
-describe('getAutoDirection()', () => {
-  it('should call calcSpaceForDirections', () => {
-    const spy = jest.spyOn(popoverUtils, 'calcSpaceForDirections');
-
-    getAutoDirection(spacer, popover);
-    expect(spy).toBeCalledTimes(1);
-  });
-
-  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return %s as direction with most space', (popoverDirection) => {
-    jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => {
-      const directions = {
-        top: 1,
-        right: 1,
-        bottom: 1,
-        left: 1,
-      };
-      directions[popoverDirection] = 2;
-
-      return directions;
-    });
-
-    expect(getAutoDirection(spacer, popover)).toBe(popoverDirection);
-  });
-});
-
 describe('isWithinViewport()', () => {
   setViewport();
 
@@ -214,6 +176,113 @@ describe('isWithinViewport()', () => {
         expect(isWithinViewport(spacer, popover, direction)).toBe(false);
       }
     );
+  });
+});
+
+describe('calcSpaceForDirections()', () => {
+  it('should return correct space for all directions', () => {
+    setViewport();
+    mockBoundingClientRect({ element: spacer });
+    mockBoundingClientRect({ element: popover });
+
+    expect(calcSpaceForDirections(spacer, popover)).toEqual({
+      bottom: 450,
+      left: 350,
+      right: 450,
+      top: 350,
+    });
+  });
+});
+
+describe('getAutoDirection()', () => {
+  it('should call calcSpaceForDirections', () => {
+    const spy = jest.spyOn(popoverUtils, 'calcSpaceForDirections');
+
+    getAutoDirection(spacer, popover);
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return %s as direction with most space', (popoverDirection) => {
+    jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => {
+      const directions = {
+        top: 1,
+        right: 1,
+        bottom: 1,
+        left: 1,
+      };
+      directions[popoverDirection] = 2;
+
+      return directions;
+    });
+
+    expect(getAutoDirection(spacer, popover)).toBe(popoverDirection);
+  });
+});
+
+describe('getOffset', () => {
+  setViewport();
+
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return 0 if within viewport', (popoverDirection) => {
+    mockBoundingClientRect({ element: spacer });
+    mockBoundingClientRect({ element: popover });
+    expect(getOffset(spacer, popover, popoverDirection)).toBe('0');
+  });
+
+  describe('axis offset', () => {
+    describe('left or top side exceeded', () => {
+      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+        'should move popover out of safeZone for direction %s',
+        (popoverDirection) => {
+          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'left' : 'top';
+          mockBoundingClientRect({ element: popover, [position]: exceedSpaceTopLeft });
+
+          const expected = position === 'left' ? '0 0 0 -15px' : '-15px 0 0 0';
+
+          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+        }
+      );
+
+      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+        'should move popover to edge of spacer for direction %s',
+        (popoverDirection) => {
+          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'left' : 'top';
+          mockBoundingClientRect({ element: spacer, [position]: exceedSpaceTopLeft });
+          mockBoundingClientRect({ element: popover, width: 150, height: 150, [position]: 14 });
+
+          const expected = position === 'left' ? '0 0 0 1px' : '1px 0 0 0';
+
+          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+        }
+      );
+    });
+
+    describe('right or bottom side exceeded', () => {
+      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+        'should move popover out of safeZone for direction %s',
+        (popoverDirection) => {
+          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'right' : 'bottom';
+          mockBoundingClientRect({ element: popover, [position]: placeElementOutside(position) });
+
+          const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
+
+          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+        }
+      );
+
+      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+        'should move popover to edge of spacer for direction %s',
+        (popoverDirection) => {
+          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'right' : 'bottom';
+          mockBoundingClientRect({ element: spacer, [position]: exceedSpaceBottomRight });
+          mockBoundingClientRect({ element: popover, width: 150, height: 150, [position]: 986 });
+
+          console.log(spacer.getBoundingClientRect(), popover.getBoundingClientRect());
+          const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
+
+          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+        }
+      );
+    });
   });
 });
 
