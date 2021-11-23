@@ -59,7 +59,10 @@ export class Popover {
   public disconnectedCallback(): void {
     unobserveClickOutside(this);
   }
-
+  //TODO: test aria expanded in e2e
+  //TODO: Set focus inside popover when opened
+  //TODO: Behavior on ESC click?
+  //TODO: Focus trap inside?
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -70,6 +73,7 @@ export class Popover {
           hideLabel="true"
           theme={this.theme}
           onClick={() => (this.open = !this.open)}
+          aria-expanded={this.open === true ? 'true' : 'false'}
         >
           Open Popover
         </PrefixedTagNames.pButtonPure>
