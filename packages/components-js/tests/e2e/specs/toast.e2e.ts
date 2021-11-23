@@ -193,19 +193,6 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
   });
-
-  it('should work without unnecessary round trips on prop change', async () => {
-    await initToast();
-
-    const host = await getHost();
-    await setProperty(host, 'foo', 'bar');
-    await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidUpdate['p-toast'], 'componentDidUpdate: p-toast').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
-  });
 });
 
 describe('toast-item', () => {
