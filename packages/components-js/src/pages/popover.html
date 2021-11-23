@@ -136,6 +136,9 @@
       document.querySelectorAll('p-popover').forEach((x) => {
         const button = x.shadowRoot.querySelector('p-button-pure').shadowRoot.querySelector('button');
         button.click();
+        setTimeout(() => {
+          x.shadowRoot.querySelector('.spacer').style.background = 'rgba(255, 0, 0, 0.4)';
+        }, 100);
       }),
     1000
   );
