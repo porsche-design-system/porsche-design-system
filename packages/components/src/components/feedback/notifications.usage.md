@@ -27,7 +27,7 @@ In order to find the right notification type for your use case, we have defined 
 | **Banner**              | Top, Center           | Yes           | Resolved/Dismiss | Medium/High  | Neutral, Warning, Error
 | **Modal**              | Center                | Yes           | Resolved/Dismiss | High   | Neutral, Warning, Error
 
-## z-index Concept in descending order
+## z-index in descending order
 
 | Component | z-index             |
 | --------- | ------------------- |
@@ -69,8 +69,8 @@ In order to find the right notification type for your use case, we have defined 
 
     zIndexes = {
       toast: TOAST_Z_INDEX,
-      banner: BANNER_Z_INDEX,
       modal: MODAL_Z_INDEX,
+      banner: BANNER_Z_INDEX,
     };
   
     mounted() {

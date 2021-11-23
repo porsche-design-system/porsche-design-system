@@ -18,7 +18,7 @@ import { getIconName } from '../../inline-notification/inline-notification-utils
 export class ToastItem {
   @Element() public host!: HTMLElement;
 
-  /** Message of the toast-item. */
+  /** Text of the toast-item. */
   @Prop() public text?: string = '';
 
   /** State of the toast-item. */
