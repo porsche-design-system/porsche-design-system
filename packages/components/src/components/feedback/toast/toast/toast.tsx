@@ -1,6 +1,6 @@
 import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import type { ToastMessage, ToastManager } from './toast-manager';
+import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
 import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
@@ -20,22 +20,21 @@ export class Toast {
   /** The bottom offset of the toast. */
   @Prop() public offsetBottom?: ToastOffset = defaultToastOffset;
 
-  private manager: ToastManager;
   private toastItemElement: HTMLPToastItemElement;
 
   @Method()
   public addMessage(message: ToastMessage): void {
-    this.manager.addMessage(message);
+    toastManager.addMessage(message);
   }
 
   public connectedCallback(): void {
-    this.manager = toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
+    toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
   }
 
   public componentDidLoad(): void {
     this.host.addEventListener('dismiss', (e) => {
       e.stopPropagation();
-      this.manager.dismissToastItem();
+      toastManager.dismissToastItem();
     });
   }
 
@@ -53,7 +52,7 @@ export class Toast {
   }
 
   public componentDidRender(): void {
-    this.manager.startTimeout();
+    toastManager.startTimeout();
   }
 
   public disconnectedCallback(): void {
@@ -62,7 +61,7 @@ export class Toast {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const toast = this.manager.getToast();
+    const toast = toastManager.getToast();
 
     return (
       <Host>

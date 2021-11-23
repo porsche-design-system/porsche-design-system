@@ -22,13 +22,12 @@ export class ToastManagerClass {
   private timeout: NodeJS.Timeout;
   private onDismissCallback: () => void;
 
-  public register(toastElement: HTMLElement, onDismiss: () => void): ToastManager {
+  public register(toastElement: HTMLElement, onDismiss: () => void): void {
     if (this.toastEl) {
       throw new Error('<p-toast> was rendered multiple times.');
     }
     this.toastEl = toastElement;
     this.onDismissCallback = onDismiss;
-    return this;
   }
 
   public unregister(): void {
@@ -62,10 +61,8 @@ export class ToastManagerClass {
     this.messages.shift();
     this.onDismissCallback();
     setTimeout(
-      () => {
-        forceUpdate(this.toastEl);
-      },
-      // respect css variable to override timeout during e2e and vrt tests
+      () => forceUpdate(this.toastEl),
+      // respect --p-toast-animation-duration css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? ANIMATION_DURATION
         : parseInt(getComputedStyle(this.toastEl).getPropertyValue(TOAST_ANIMATION_DURATION_VAR), 10) ||
