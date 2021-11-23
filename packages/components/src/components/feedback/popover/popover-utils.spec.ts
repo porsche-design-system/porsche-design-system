@@ -1,4 +1,6 @@
 import {
+  calcSpaceForDirections,
+  getAutoDirection,
   isWithinViewport,
   observeClickOutside,
   onClickOutside,
@@ -7,6 +9,7 @@ import {
   registeredPopovers,
   unobserveClickOutside,
 } from './popover-utils';
+import * as popoverUtils from './popover-utils';
 import { Popover } from './popover';
 
 type BoundingClientRectOpts = {
@@ -54,11 +57,51 @@ const placeElementOutside = (direction): number => {
   return direction === 'top' || direction === 'left' ? exceedSpaceTopLeft : exceedSpaceBottomRight;
 };
 
-describe('isWithinViewport', () => {
-  setViewport();
+const spacer = document.createElement('div');
+const popover = document.createElement('div');
 
-  const spacer = document.createElement('div');
-  const popover = document.createElement('div');
+describe('calcSpaceForDirections()', () => {
+  it('should return correct space for all directions', () => {
+    setViewport();
+    mockBoundingClientRect({ element: spacer });
+    mockBoundingClientRect({ element: popover });
+
+    expect(calcSpaceForDirections(spacer, popover)).toEqual({
+      bottom: 450,
+      left: 350,
+      right: 450,
+      top: 350,
+    });
+  });
+});
+
+describe('getAutoDirection()', () => {
+  it('should call calcSpaceForDirections', () => {
+    const spy = jest.spyOn(popoverUtils, 'calcSpaceForDirections');
+
+    getAutoDirection(spacer, popover);
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return %s as direction with most space', (popoverDirection) => {
+    jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => {
+      const directions = {
+        top: 1,
+        right: 1,
+        bottom: 1,
+        left: 1,
+      };
+      directions[popoverDirection] = 2;
+
+      return directions;
+    });
+
+    expect(getAutoDirection(spacer, popover)).toBe(popoverDirection);
+  });
+});
+
+describe('isWithinViewport()', () => {
+  setViewport();
 
   describe('centered', () => {
     it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
