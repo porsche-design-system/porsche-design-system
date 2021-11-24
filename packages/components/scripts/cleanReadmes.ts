@@ -18,10 +18,13 @@ const adjustHeadline = (str: string): string => {
     : tagName.replace(/^#\sp-|-wrapper/g, '');
   const componentHeadline = capitalCase(cleanedTagName);
 
+  // replacements for multi prop pages where the h1 is not the component but rather the whole multi prop category
   const h1Replacements: { [key in TagName]?: string } = {
     'p-headline': 'Typography',
     'p-inline-notification': 'Notifications',
   };
+
+  // all component names on multi prop pages
   const multiPropReplacements: TagName[] = [
     ...(Object.keys(h1Replacements) as TagName[]),
     'p-text',
@@ -29,12 +32,14 @@ const adjustHeadline = (str: string): string => {
     'p-toast',
   ];
 
+  // append # to component names on multi prop pages to restore hierarchy
   if (multiPropReplacements.includes(pTagName)) {
     str = str.replace(/(#+)\s/g, '$1# ');
   }
 
   let headline: string;
-
+  // depends on the order of components passed in the storefront.config.js
+  // extend the multi prop page by the multi prop category
   if (h1Replacements[pTagName]) {
     headline = `# ${h1Replacements[pTagName]}\n\n## ${componentHeadline}`;
     tagName = '#' + tagName;
