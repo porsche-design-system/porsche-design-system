@@ -626,6 +626,7 @@ export namespace Components {
         "totalItemsCount": number;
     }
     interface PPopover {
+        "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
          */
@@ -1859,6 +1860,7 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     interface PPopover {
+        "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
          */

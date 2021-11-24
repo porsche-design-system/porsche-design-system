@@ -6,10 +6,16 @@ import {
   observeClickOutside,
   unobserveClickOutside,
 } from './popover-utils';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, getThemeDarkAttribute } from '../../../utils';
+import {
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  getThemeDarkAttribute,
+  parseAriaAttributes,
+} from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
-import type { Theme } from '../../../types';
+import type { SelectedAriaAttributes, Theme } from '../../../types';
 import { getSlottedCss } from '../../basic/typography/text/text-styles';
 
 @Component({
@@ -25,6 +31,8 @@ export class Popover {
 
   /** Theme. */
   @Prop() public theme?: Theme = 'light';
+
+  @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
   @State() open = false;
 
@@ -60,22 +68,31 @@ export class Popover {
     unobserveClickOutside(this);
   }
   //TODO: test aria expanded in e2e
-  //TODO: Set focus inside popover when opened
-  //TODO: Behavior on ESC click?
-  //TODO: Focus trap inside?
+  //TODO: test aria prop with accessibility tree
+  //TODO: test keyboard navigation
+
+  //TODO: Behavior on ESC click -> implement
+  //TODO: Close other Popovers on Enter press
+
+  //TODO: Do we need close button since popover only opens when clicked?
+  //TODO: Solution if Popover overlapps next focusable element
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
         <PrefixedTagNames.pButtonPure
+          type="button"
           icon="information"
           hideLabel="true"
           theme={this.theme}
           onClick={() => (this.open = !this.open)}
-          aria-expanded={this.open === true ? 'true' : 'false'}
+          aria={{
+            'aria-expanded': this.open === true ? 'true' : 'false',
+            ...parseAriaAttributes(this.aria),
+          }}
         >
-          Open Popover
+          {!this.aria && 'More information'}
         </PrefixedTagNames.pButtonPure>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
