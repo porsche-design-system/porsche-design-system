@@ -1,4 +1,14 @@
-import { selectNode, setContentWithDesignSystem, waitForStencilLifecycle } from '../helpers';
+import {
+  expectA11yToMatchSnapshot,
+  expectedStyleOnFocus,
+  getLifecycleStatus,
+  getOutlineStyle,
+  hasFocus,
+  selectNode,
+  setContentWithDesignSystem,
+  setProperty,
+  waitForStencilLifecycle,
+} from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
 import { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 import { ElementHandle, Page } from 'puppeteer';
@@ -12,7 +22,7 @@ describe('popover', () => {
   const getHost = () => selectNode(page, 'p-popover');
   const getPopover = () => selectNode(page, 'p-popover >>> .popover');
   const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
-  const getLink = () => selectNode(page, 'p-popover a');
+  const getTextContent = () => selectNode(page, 'p-popover p');
   const getExtendedMarkup = () => selectNode(page, 'p');
 
   type InitOptions = {
@@ -23,7 +33,7 @@ describe('popover', () => {
   const initPopover = (opts?: InitOptions): Promise<void> => {
     const { direction = 'bottom', withLink, withExtendedMarkup } = opts ?? {};
 
-    const linkMarkup = '<a>Some Link</a>';
+    const linkMarkup = '<a href="#">Some Link</a>';
     const extendedMarkup = '<p>Some Markup</p>';
 
     return setContentWithDesignSystem(
@@ -31,12 +41,13 @@ describe('popover', () => {
       `
         ${withExtendedMarkup ? extendedMarkup : ''}
         <p-popover direction="${direction}">
-            Some Popover Content${withLink ? linkMarkup : ''}
+           ${withLink ? linkMarkup : ''}
+           <p>Some Popover Content</p>
         </p-popover>`
     );
   };
 
-  describe('onClick behavior', () => {
+  describe('mouse behavior', () => {
     it('should open popover on click', async () => {
       await initPopover();
       await waitForStencilLifecycle(page);
@@ -44,7 +55,7 @@ describe('popover', () => {
       expect(await getPopover()).toBeNull();
 
       const button = await getButton();
-      button.click();
+      await button.click();
       await waitForStencilLifecycle(page);
 
       expect(await getPopover()).not.toBeNull();
@@ -56,9 +67,9 @@ describe('popover', () => {
 
       const button = await getButton();
 
-      button.click();
+      await button.click();
       await waitForStencilLifecycle(page);
-      button.click();
+      await button.click();
       await waitForStencilLifecycle(page);
       expect(await getPopover()).toBeNull();
     });
@@ -70,7 +81,7 @@ describe('popover', () => {
       const button = await getButton();
       const extendedMarkup = await getExtendedMarkup();
 
-      button.click();
+      await button.click();
       await waitForStencilLifecycle(page);
       expect(await getPopover()).not.toBeNull();
 
@@ -83,14 +94,114 @@ describe('popover', () => {
     it('should not close popover if content is clicked', async () => {
       await initPopover({ withLink: true });
       const button = await getButton();
-      button.click();
+      await button.click();
       await waitForStencilLifecycle(page);
       expect(await getPopover()).not.toBeNull();
 
-      const link = await getLink();
-      link.click();
+      const textContent = await getTextContent();
+      textContent.click();
       await waitForStencilLifecycle(page);
       expect(await getPopover()).not.toBeNull();
+    });
+  });
+
+  describe('keyboard behavior', () => {
+    describe('escape', () => {
+      it('should close popover on escape when button is focused', async () => {
+        await initPopover();
+        const button = await getButton();
+        await button.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).not.toBeNull();
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus after open click').toBe(true);
+
+        await page.keyboard.press('Escape');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).toBeNull();
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus after escape').toBe(true);
+      });
+
+      it('should close popover on escape when content is focused', async () => {
+        await initPopover({ withLink: true });
+        const button = await getButton();
+        await button.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).not.toBeNull();
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after open').toBe(true);
+
+        await page.keyboard.press('Tab');
+        await waitForStencilLifecycle(page);
+
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after tab').toBe(undefined);
+        expect((await page.accessibility.snapshot()).children[1].focused, 'focus on link after tab').toBe(true);
+
+        await page.keyboard.press('Escape');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).toBeNull();
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after escape').toBe(true);
+      });
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree properties', async () => {
+      await initPopover();
+      const button = await getButton();
+
+      await expectA11yToMatchSnapshot(page, button);
+    });
+
+    it('should expose correct accessibility tree when label property is changed', async () => {
+      await initPopover();
+      const host = await getHost();
+      const button = await getButton();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+
+      await expectA11yToMatchSnapshot(page, button);
+    });
+
+    it('should expose correct accessibility tree when popover is opened', async () => {
+      await initPopover();
+      const button = await getButton();
+      await button.click();
+      await waitForStencilLifecycle(page);
+
+      await expectA11yToMatchSnapshot(page, button);
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initPopover();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initPopover();
+      const host = await getHost();
+
+      await setProperty(host, 'direction', 'right');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 });
