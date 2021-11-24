@@ -4,13 +4,11 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  isDark,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
-import { Theme } from '../../../types';
 import { color, text } from '@porsche-design-system/utilities';
 
 const getPopoverPosition = (direction: PopoverDirection): JssStyle => {
@@ -86,16 +84,7 @@ const getArrow = (direction: PopoverDirection, backgroundColor: string): JssStyl
   }
 };
 
-const getColors = (isDarkTheme: boolean): { baseColor: string; backgroundColor: string } => {
-  return {
-    baseColor: isDarkTheme ? color.darkTheme.default : color.default,
-    backgroundColor: isDarkTheme ? color.darkTheme.background.surface : color.background.default,
-  };
-};
-
-export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
-  const isDarkTheme = isDark(theme);
-  const { baseColor, backgroundColor } = getColors(isDarkTheme);
+export const getComponentCss = (direction: PopoverDirection): string => {
   const mediaQueryXS = mediaQuery('xs');
 
   return getCss({
@@ -120,7 +109,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         width: 0,
         height: 0,
         position: 'absolute',
-        ...getArrow(direction, backgroundColor),
+        ...getArrow(direction, color.background.default),
       },
     },
     popover: {
@@ -129,7 +118,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       maxWidth: '90vw',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColor,
+      background: color.background.default,
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...getPopoverPosition(direction),
@@ -139,7 +128,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       wordWrap: 'break-word',
       hyphens: 'auto',
       listStyleType: 'none',
-      color: baseColor,
+      color: color.default,
       whiteSpace: 'inherit',
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),
