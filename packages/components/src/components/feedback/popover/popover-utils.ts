@@ -126,11 +126,6 @@ export const onKeyboardPress = (clickEvent: KeyboardEvent): void => {
         !clickEvent.composedPath().includes(popover.host)
       ) {
         popover.open = false;
-      } else if (
-        (clickEvent.key === 'Escape' || clickEvent.key === 'Esc') &&
-        clickEvent.composedPath().includes(popover.host)
-      ) {
-        popover.open = false;
       }
     }
   });

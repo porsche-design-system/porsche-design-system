@@ -38,6 +38,7 @@ export class Popover {
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
+  private button: HTMLButtonElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -87,16 +88,18 @@ export class Popover {
           hideLabel="true"
           theme={this.theme}
           onClick={() => (this.open = !this.open)}
+          onKeyDown={this.handleEscapeClick}
           aria={{
             'aria-expanded': this.open === true ? 'true' : 'false',
             ...parseAriaAttributes(this.aria),
           }}
+          ref={(el) => (this.button = el)}
         >
           {!this.aria && 'More information'}
         </PrefixedTagNames.pButtonPure>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
-            <div class="popover" ref={(el) => (this.popover = el)}>
+            <div class="popover" onKeyDown={this.handleEscapeClick} ref={(el) => (this.popover = el)}>
               <slot />
             </div>
           </div>
@@ -104,4 +107,11 @@ export class Popover {
       </Host>
     );
   }
+  // Add e2e test when focus stays on button & when focus is inside content
+  private handleEscapeClick = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      this.button.focus();
+      this.open = false;
+    }
+  };
 }
