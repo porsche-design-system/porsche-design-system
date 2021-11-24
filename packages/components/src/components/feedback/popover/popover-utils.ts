@@ -131,16 +131,16 @@ export const onKeyboardPress = (clickEvent: KeyboardEvent): void => {
   });
 };
 
-export function observeClickOutside(popover: Popover) {
+export const observeClickOutside = (popover: Popover): void => {
   if (!registeredPopovers.includes(popover)) {
     registeredPopovers.push(popover);
   }
   document.addEventListener('mousedown', onClickOutside);
   document.addEventListener('keydown', onKeyboardPress);
-}
+};
 
-export function unobserveClickOutside(node): void {
-  const index = registeredPopovers.indexOf(node);
+export const unobserveClickOutside = (popover: Popover): void => {
+  const index = registeredPopovers.indexOf(popover);
   if (index > -1) {
     registeredPopovers.splice(index, 1);
   }
@@ -148,4 +148,4 @@ export function unobserveClickOutside(node): void {
     document.removeEventListener('mousedown', onClickOutside);
     document.removeEventListener('keydown', onKeyboardPress);
   }
-}
+};
