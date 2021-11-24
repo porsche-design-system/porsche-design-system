@@ -40,20 +40,13 @@ export class ToastItem {
   }
 
   public render(): JSX.Element {
-    const toastId = 'toast'; // TODO: a11y
-    const messageId = 'message'; // TODO: a11y
+    const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <PrefixedTagNames.pIcon class="icon" name={getIconName(this.state)} color="inherit" aria-hidden="true" />
-        <PrefixedTagNames.pText
-          id={messageId}
-          class="content"
-          role="status"
-          aria-live="polite"
-          aria-describedby={messageId}
-        >
+        <PrefixedTagNames.pText id={toastId} class="content" role="status" aria-live="polite">
           {this.text}
         </PrefixedTagNames.pText>
         <PrefixedTagNames.pButtonPure
