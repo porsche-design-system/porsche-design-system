@@ -25,7 +25,7 @@ export class Popover {
 
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
-  @State() open = false;
+  @State() public open = false;
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
@@ -59,15 +59,12 @@ export class Popover {
   public disconnectedCallback(): void {
     unobserveClickOutside(this);
   }
-  //TODO: test aria expanded in e2e
-  //TODO: test aria prop with accessibility tree
-  //TODO: test keyboard navigation
 
-  //TODO: Behavior on ESC click -> implement
-  //TODO: Close other Popovers on Enter press
+  // TODO: Behavior on enter click -> Close other Popovers on Enter press
 
-  //TODO: Do we need close button since popover only opens when clicked?
-  //TODO: Solution if Popover overlapps next focusable element
+  // TODO: Talk about aria check in button-pure
+  // TODO: Do we need close button since popover only opens when clicked?
+  // TODO: Solution if Popover overlapps next focusable element
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
