@@ -29,7 +29,7 @@
     "lint:ts": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}'",
     "lint:ts:fix": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}' --fix",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "jest --colors --coverage -c tests/unit/config/jest.config.js",
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
