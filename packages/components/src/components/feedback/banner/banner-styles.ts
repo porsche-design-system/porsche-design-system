@@ -41,7 +41,7 @@ export const getAnimationOut = (keyframesName: string): JssStyle => ({
   animation: addImportantToRule(`${ANIMATION_DURATION}ms $${keyframesName} ${easeOutQuad} forwards`),
 });
 
-type KeyframesDirection = 'in' | 'out';
+export type KeyframesDirection = 'in' | 'out';
 const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
   const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
   return direction === 'in'
