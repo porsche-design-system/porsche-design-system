@@ -71,14 +71,14 @@ export const convertToReact = (markup: string): string =>
     })
     // transform boolean and number
     .replace(/\s(\S+)="(true|false|\d)"/g, ' $1={$2}')
-    // // transform all keys to camel case which have digits as a value
-    // .replace(/\s(\S+)={"(\d.*?)"}/g, ' $1={$2}')
     // transform custom element tags to pascal case
     .replace(/<(\/?)(p-[\w-]+)(.*?)>/g, (m, $slash, $tag, $attributes) => {
       return `<${$slash}${pascalCase($tag)}${$attributes}>`;
     })
     // add closing slash to inputs for valid jsx
     .replace(/(<input(?:.[^/]*?))>/g, '$1 />')
+    // transform to self closing tags
+    .replace(/(<([A-Za-z]+).*?)(><\/\2)>/g, '$1 />')
     // transform style attributes
     .replace(/style="(.*?)"/g, (m, $style: string) => {
       $style = $style

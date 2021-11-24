@@ -75,6 +75,8 @@ describe('close button', () => {
 
     await closeButton.click();
     await waitForEventSerialization(page);
+    await waitForEventSerialization(page); // 🙈
+
     expect(calls).toBe(1);
   });
 

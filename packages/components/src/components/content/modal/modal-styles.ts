@@ -1,5 +1,6 @@
 import { addImportantToEachRule, buildHostStyles, getCss, getInset } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
+import { MODAL_Z_INDEX } from '../../../constants';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
@@ -9,7 +10,7 @@ export const getComponentCss = (open: boolean): string => {
       ...addImportantToEachRule({
         position: 'fixed',
         ...getInset(),
-        zIndex: 99999,
+        zIndex: MODAL_Z_INDEX,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -34,7 +35,7 @@ export const getComponentCss = (open: boolean): string => {
     }),
     root: {
       position: 'relative',
-      transition: `transform 0.6s ${transitionTimingFunction}`,
+      transition: `transform .6s ${transitionTimingFunction}`,
       transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
     },
   });
