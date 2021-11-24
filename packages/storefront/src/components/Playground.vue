@@ -65,6 +65,7 @@
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
+    withoutDemo: boolean;
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -73,6 +74,7 @@
     height: 'auto',
     spacing: 'none',
     overflowX: 'auto',
+    withoutDemo: false,
   };
 
   @Component({
@@ -95,6 +97,7 @@
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
+      this.$emit('onThemeChange', this.theme);
     }
 
     public get cleanedEditorMarkup(): string {
@@ -110,7 +113,7 @@
     }
 
     public get cleanedDemoMarkup(): string {
-      return patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
+      return this.config.withoutDemo ? '' : patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
     }
 
     public get frameworks(): Framework[] {

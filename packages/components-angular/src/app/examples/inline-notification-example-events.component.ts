@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-inline-notification-example-events',
   template: `
-    <button (click)="onShow()">Show Inline Notification</button>
+    <button type="button" (click)="onShow()">Show Inline Notification</button>
     <p-inline-notification
       *ngIf="isActive"
       [heading]="'Some heading'"
