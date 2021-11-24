@@ -5,6 +5,7 @@ import {
   isWithinViewport,
   observeClickOutside,
   onClickOutside,
+  onKeyboardPress,
   POPOVER_DIRECTIONS,
   PopoverDirection,
   registeredPopovers,
@@ -340,18 +341,131 @@ describe('onClickOutside()', () => {
   });
 });
 
+describe('onKeyboardPress()', () => {
+  beforeEach(() => {
+    registeredPopovers.length = 0;
+  });
+
+  it.each(['SpaceBar', 'Enter', ' '])(
+    'should close popover when composedPath does not include host for key %s',
+    (key) => {
+      const popover = new Popover();
+      popover.open = true;
+      registeredPopovers.push(popover);
+
+      onKeyboardPress(new KeyboardEvent('keydown', { key }));
+
+      expect(popover.open).toBe(false);
+    }
+  );
+
+  it.each(['SpaceBar', 'Enter', ' '])(
+    'should not close popover when composedPath does include host for key %s',
+    (key) => {
+      const popover = new Popover();
+      popover.open = true;
+      registeredPopovers.push(popover);
+      const keyboardEvent = new KeyboardEvent('keydown', { key });
+      jest.spyOn(keyboardEvent, 'composedPath').mockImplementation(() => [popover.host]);
+
+      onKeyboardPress(keyboardEvent);
+
+      expect(popover.open).toBe(true);
+    }
+  );
+
+  it.each(['Escape', 'Esc'])('should not close popover when composedPath does not include host for key %s', (key) => {
+    const popover = new Popover();
+    popover.open = true;
+    registeredPopovers.push(popover);
+
+    onKeyboardPress(new KeyboardEvent('keydown', { key }));
+
+    expect(popover.open).toBe(true);
+  });
+
+  it.each(['Escape', 'Esc'])('should close popover when composedPath does include host for key %s', (key) => {
+    const popover = new Popover();
+    popover.open = true;
+    registeredPopovers.push(popover);
+    const keyboardEvent = new KeyboardEvent('keydown', { key });
+    jest.spyOn(keyboardEvent, 'composedPath').mockImplementation(() => [popover.host]);
+
+    onKeyboardPress(keyboardEvent);
+
+    expect(popover.open).toBe(false);
+  });
+
+  it.each(['SpaceBar', 'Enter', ' ', 'Escape', 'Esc'])('should check composedPath for key: %s when open', (key) => {
+    const popover = new Popover();
+    registeredPopovers.push(popover);
+
+    const keyboardEvent = new KeyboardEvent('keydown', { key });
+    const spy = jest.spyOn(keyboardEvent, 'composedPath');
+    onKeyboardPress(keyboardEvent);
+    expect(spy).toBeCalledTimes(0);
+
+    popover.open = true;
+    onKeyboardPress(keyboardEvent);
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it('should not check composedPath when closed or invalid key', () => {
+    const popover = new Popover();
+    registeredPopovers.push(popover);
+
+    const validClickEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    const spy = jest.spyOn(validClickEvent, 'composedPath');
+    onKeyboardPress(validClickEvent);
+
+    expect(spy).toBeCalledTimes(0);
+
+    popover.open = true;
+    const inValidClickEvent = new KeyboardEvent('keydown', { key: 'Tab' });
+    const spy2 = jest.spyOn(validClickEvent, 'composedPath');
+    onKeyboardPress(inValidClickEvent);
+
+    expect(spy2).toBeCalledTimes(0);
+  });
+
+  it('should close popover when composedPath does not include host', () => {
+    const popover = new Popover();
+    popover.open = true;
+    registeredPopovers.push(popover);
+
+    onClickOutside(new MouseEvent('mousedown'));
+
+    expect(popover.open).toBe(false);
+  });
+
+  it('should check every popover in registeredPopovers', () => {
+    const popover1 = new Popover();
+    const popover2 = new Popover();
+    registeredPopovers.push(popover1);
+    registeredPopovers.push(popover2);
+
+    registeredPopovers.forEach((x) => (x.open = true));
+
+    const clickEvent = new MouseEvent('keydown');
+    const spy = jest.spyOn(clickEvent, 'composedPath');
+    onClickOutside(clickEvent);
+    expect(spy).toBeCalledTimes(2);
+  });
+});
+
 describe('observeClickOutside()', () => {
   beforeEach(() => {
     registeredPopovers.length = 0;
   });
 
-  it('should register eventListener', () => {
+  it('should register eventListeners', () => {
     const popover = new Popover();
 
     const spy = jest.spyOn(document, 'addEventListener');
     observeClickOutside(popover);
 
     expect(spy).toBeCalledWith('mousedown', expect.anything());
+    expect(spy).toBeCalledWith('keydown', expect.anything());
   });
 
   it('should push popover into registeredPopovers array', () => {
@@ -406,5 +520,6 @@ describe('unobserveClickOutside()', () => {
     unobserveClickOutside(popover1);
     expect(registeredPopovers.length).toBe(0);
     expect(spy).toBeCalledWith('mousedown', expect.anything());
+    expect(spy).toBeCalledWith('keydown', expect.anything());
   });
 });
