@@ -8,7 +8,6 @@ Object {
       "role": "StaticText",
     },
   ],
-  "description": "Some message",
   "name": "",
   "role": "status",
 }
