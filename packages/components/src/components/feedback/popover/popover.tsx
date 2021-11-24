@@ -6,16 +6,10 @@ import {
   observeClickOutside,
   unobserveClickOutside,
 } from './popover-utils';
-import {
-  attachComponentCss,
-  attachSlottedCss,
-  getPrefixedTagNames,
-  getThemeDarkAttribute,
-  parseAriaAttributes,
-} from '../../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAriaAttributes } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
-import type { SelectedAriaAttributes, Theme } from '../../../types';
+import type { SelectedAriaAttributes } from '../../../types';
 import { getSlottedCss } from '../../basic/typography/text/text-styles';
 
 @Component({
@@ -28,9 +22,6 @@ export class Popover {
   /** Preferred direction in which popover should open, given there is enough space in viewport.
    * Otherwise it will be opened in the direction with most available space. */
   @Prop() public direction: PopoverDirection = 'bottom';
-
-  /** Theme. */
-  @Prop() public theme?: Theme = 'light';
 
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
@@ -46,7 +37,7 @@ export class Popover {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.direction, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.direction);
   }
 
   public componentDidRender(): void {
@@ -57,7 +48,7 @@ export class Popover {
       if (!isWithinViewport(this.spacer, this.popover, this.direction)) {
         direction = getAutoDirection(this.spacer, this.popover);
         if (direction !== this.direction) {
-          attachComponentCss(this.host, getComponentCss, direction, this.theme);
+          attachComponentCss(this.host, getComponentCss, direction);
         }
       }
 
@@ -81,12 +72,11 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host>
         <PrefixedTagNames.pButtonPure
           type="button"
           icon="information"
           hideLabel="true"
-          theme={this.theme}
           onClick={() => (this.open = !this.open)}
           onKeyDown={this.handleEscapeClick}
           aria={{
