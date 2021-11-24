@@ -118,11 +118,30 @@ export const onClickOutside = (clickEvent: MouseEvent): void => {
   });
 };
 
+export const onKeyboardPress = (clickEvent: KeyboardEvent): void => {
+  registeredPopovers.forEach((popover) => {
+    if (popover.open) {
+      if (
+        (clickEvent.key === 'SpaceBar' || clickEvent.key === 'Enter' || clickEvent.key === ' ') &&
+        !clickEvent.composedPath().includes(popover.host)
+      ) {
+        popover.open = false;
+      } else if (
+        (clickEvent.key === 'Escape' || clickEvent.key === 'Esc') &&
+        clickEvent.composedPath().includes(popover.host)
+      ) {
+        popover.open = false;
+      }
+    }
+  });
+};
+
 export function observeClickOutside(popover: Popover) {
   if (!registeredPopovers.includes(popover)) {
     registeredPopovers.push(popover);
   }
   document.addEventListener('mousedown', onClickOutside);
+  document.addEventListener('keydown', onKeyboardPress);
 }
 
 export function unobserveClickOutside(node): void {
@@ -132,5 +151,6 @@ export function unobserveClickOutside(node): void {
   }
   if (registeredPopovers.length === 0) {
     document.removeEventListener('mousedown', onClickOutside);
+    document.removeEventListener('keydown', onKeyboardPress);
   }
 }
