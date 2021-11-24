@@ -38,6 +38,13 @@ type ToastMessage = {
   <button type="button" v-on:click="queueToast()">Queue Toast</button>
 </Playground>
 
+### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+
+By their very nature, toast components are **not fully accessibility compliant** and do not meet success criterion 2.2.1 ("Timing Adjustable") because of the default timing of 6 seconds until it automatically disappears.
+This behavior cannot be adjusted and could result in users not being able to interact with Web content in a reasonable amount of time.
+So be careful **not to use toast messages for relevant information**.
+Content and user interactions should always be understandable and usable without a toast message.
+
 ## Offset
 
 The bottom position of the `p-toast` can be adjusted via the `offsetBottom` property.
