@@ -346,6 +346,16 @@ describe('onKeyboardPress()', () => {
     registeredPopovers.length = 0;
   });
 
+  it.each(['Escape', 'Esc'])('should close popover for key %s', (key) => {
+    const popover = new Popover();
+    popover.open = true;
+    registeredPopovers.push(popover);
+
+    onKeyboardPress(new KeyboardEvent('keydown', { key }));
+
+    expect(popover.open).toBe(false);
+  });
+
   it.each(['SpaceBar', 'Enter', ' '])(
     'should close popover when composedPath does not include host for key %s',
     (key) => {
@@ -399,7 +409,7 @@ describe('onKeyboardPress()', () => {
     expect(spy).toBeCalledTimes(0);
 
     popover.open = true;
-    const inValidClickEvent = new KeyboardEvent('keydown', { key: 'Tab' });
+    const inValidClickEvent = new KeyboardEvent('keydown', { key: 'Escape' });
     const spy2 = jest.spyOn(validClickEvent, 'composedPath');
     onKeyboardPress(inValidClickEvent);
 
