@@ -6,7 +6,7 @@ import {
   observeClickOutside,
   unobserveClickOutside,
 } from './popover-utils';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAriaAttributes } from '../../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { SelectedAriaAttributes } from '../../../types';
@@ -67,16 +67,15 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
+      <Host onKeydown={this.handleEscapeClick}>
         <PrefixedTagNames.pButtonPure
           type="button"
           icon="information"
           hideLabel="true"
           onClick={() => (this.open = !this.open)}
-          onKeyDown={this.handleEscapeClick}
           aria={{
             'aria-expanded': this.open === true ? 'true' : 'false',
-            ...parseAriaAttributes(this.aria),
+            ...parseAndGetAriaAttributes(this.aria),
           }}
           ref={(el) => (this.button = el)}
         >
@@ -84,7 +83,7 @@ export class Popover {
         </PrefixedTagNames.pButtonPure>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
-            <div class="popover" onKeyDown={this.handleEscapeClick} ref={(el) => (this.popover = el)}>
+            <div class="popover" ref={(el) => (this.popover = el)}>
               <slot />
             </div>
           </div>
@@ -92,11 +91,10 @@ export class Popover {
       </Host>
     );
   }
-  // Add e2e test when focus stays on button & when focus is inside content
+
   private handleEscapeClick = (e: KeyboardEvent): void => {
     if (e.key === 'Escape' || e.key === 'Esc') {
       this.button.focus();
-      this.open = false;
     }
   };
 }
