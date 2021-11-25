@@ -22,9 +22,9 @@ Status: Neutral
 
 #### Related Components:
 
-* [Modal](components/modal) 
-* [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
+* [Modal](components/modal) 
+* [Toast](components/notifications/toast) 
 
 ---
 
@@ -43,9 +43,9 @@ Status: Success
 
 #### Related Components:
 
-* Inline Validation (supported by all form elements)
-* Toast - Coming soon 
 * [Inline Notification](components/notifications/inline-notification)
+* Inline Validation (supported by all form elements)
+* [Toast](components/notifications/toast)
 
 ---
 
@@ -85,7 +85,7 @@ Status: Error
 
 #### Related Components:
 
-* Inline Validation (supported by all form elements)
 * [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
+* Inline Validation (supported by all form elements)
 * [Modal](components/modal) 

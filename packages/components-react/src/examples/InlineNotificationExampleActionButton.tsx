@@ -15,7 +15,9 @@ export const InlineNotificationExampleActionButtonPage = (): JSX.Element => {
         actionLoading={isLoading}
         onAction={onAction}
       />
-      <button onClick={onAction}>Reset `actionLoading`</button>
+      <button type="button" onClick={onAction}>
+        Reset `actionLoading`
+      </button>
     </>
   );
 };

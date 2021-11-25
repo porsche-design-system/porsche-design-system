@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getCloseIconStyles() should return correct JssStyle 1`] = `
+Object {
+  "marginLeft": "1rem",
+}
+`;
+
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: dark 1`] = `":host{display:grid !important;grid-template-columns:1fr auto !important;grid-template-rows:auto !important;grid-row-gap:1rem !important;align-items:start !important;justify-items:start !important;padding:1rem !important;background:#fec5c5 !important;border-left:0.25rem solid #fc1717 !important}.icon{display:none}.content{display:grid;grid-gap:0.25rem;max-width:50rem}@media(min-width:760px){:host{grid-template-columns:auto 1fr auto auto !important}.icon{display:inline-flex;margin-right:0.5rem;color:#e00000}}"`;
 
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: light 1`] = `":host{display:grid !important;grid-template-columns:1fr auto !important;grid-template-rows:auto !important;grid-row-gap:1rem !important;align-items:start !important;justify-items:start !important;padding:1rem !important;background:#fae6e6 !important;border-left:0.25rem solid #e00000 !important}.icon{display:none}.content{display:grid;grid-gap:0.25rem;max-width:50rem}@media(min-width:760px){:host{grid-template-columns:auto 1fr auto auto !important}.icon{display:inline-flex;margin-right:0.5rem;color:#e00000}}"`;
@@ -27,6 +33,194 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: dark 1`] = `":host{display:grid !important;grid-template-columns:1fr auto !important;grid-template-rows:auto !important;grid-row-gap:1rem !important;align-items:start !important;justify-items:start !important;padding:1rem !important;background:#ffe6bf !important;border-left:0.25rem solid #ff9b00 !important}.icon{display:none}.content{display:grid;grid-gap:0.25rem;max-width:50rem}@media(min-width:760px){:host{grid-template-columns:auto 1fr auto auto !important}.icon{display:inline-flex;margin-right:0.5rem;color:#ff9b00}}"`;
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: light 1`] = `":host{display:grid !important;grid-template-columns:1fr auto !important;grid-template-rows:auto !important;grid-row-gap:1rem !important;align-items:start !important;justify-items:start !important;padding:1rem !important;background:#fff5e5 !important;border-left:0.25rem solid #ff9b00 !important}.icon{display:none}.content{display:grid;grid-gap:0.25rem;max-width:50rem}@media(min-width:760px){:host{grid-template-columns:auto 1fr auto auto !important}.icon{display:inline-flex;margin-right:0.5rem;color:#ff9b00}}"`;
+
+exports[`getNotificationContentStyles() should return correct JssStyle 1`] = `
+Object {
+  "display": "grid",
+  "gridGap": "0.25rem",
+  "maxWidth": "50rem",
+}
+`;
+
+exports[`getNotificationIconStyles() should return correct JssStyle for state: error  1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "color": "#e00000",
+    "display": "inline-flex",
+    "marginRight": "0.5rem",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconStyles() should return correct JssStyle for state: neutral  1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "color": "#0061bd",
+    "display": "inline-flex",
+    "marginRight": "0.5rem",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconStyles() should return correct JssStyle for state: success  1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "color": "#018a16",
+    "display": "inline-flex",
+    "marginRight": "0.5rem",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationIconStyles() should return correct JssStyle for state: warning  1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "color": "#ff9b00",
+    "display": "inline-flex",
+    "marginRight": "0.5rem",
+  },
+  "display": "none",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#fec5c5",
+  "borderLeft": "0.25rem solid #fc1717",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: light 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#fae6e6",
+  "borderLeft": "0.25rem solid #e00000",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#c7e4ff",
+  "borderLeft": "0.25rem solid #2193ff",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#e5eff8",
+  "borderLeft": "0.25rem solid #0061bd",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#bfeec6",
+  "borderLeft": "0.25rem solid #01ba1d",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: light 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#e5f3e7",
+  "borderLeft": "0.25rem solid #018a16",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#ffe6bf",
+  "borderLeft": "0.25rem solid #ff9b00",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
+
+exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
+Object {
+  "@media (min-width: 760px)": Object {
+    "gridTemplateColumns": "auto 1fr auto auto",
+  },
+  "alignItems": "start",
+  "background": "#fff5e5",
+  "borderLeft": "0.25rem solid #ff9b00",
+  "display": "grid",
+  "gridRowGap": "1rem",
+  "gridTemplateColumns": "1fr auto",
+  "gridTemplateRows": "auto",
+  "justifyItems": "start",
+  "padding": "1rem",
+}
+`;
 
 exports[`getSlottedCss() should return correct css 1`] = `"p-inline-notification a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:transparent solid 1px !important;outline-offset:1px !important}p-inline-notification b, p-inline-notification strong{font-weight:700 !important}p-inline-notification em, p-inline-notification i{font-style:normal !important}p-inline-notification a:hover{color:#d5001c !important}p-inline-notification a::-moz-focus-inner{border:0 !important}p-inline-notification a:focus{outline-color:currentColor !important}p-inline-notification a:focus:not(:focus-visible){outline-color:transparent !important}"`;
 
