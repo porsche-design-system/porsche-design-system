@@ -31,12 +31,13 @@ describe('popover', () => {
     direction?: PopoverDirection;
     withLink?: boolean;
     withExtendedMarkup?: boolean;
+    withLinkOutside?: boolean;
   };
   const initPopover = (opts?: InitOptions): Promise<void> => {
-    const { direction = 'bottom', withLink, withExtendedMarkup } = opts ?? {};
+    const { direction = 'bottom', withLink, withExtendedMarkup, withLinkOutside } = opts ?? {};
 
     const linkMarkup = '<a href="#">Some Link</a>';
-    const extendedMarkup = '<p>Some Markup</p>';
+    const extendedMarkup = `<p>Some Markup${withLinkOutside ? '<a href="#">Some Link</a>' : ''}</p>`;
 
     return setContentWithDesignSystem(
       page,
@@ -166,6 +167,26 @@ describe('popover', () => {
 
         expect(await getPopover()).toBeNull();
         expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after escape').toBe(true);
+      });
+
+      it('should close popover on escape when content outside is focused', async () => {
+        await initPopover({ withExtendedMarkup: true, withLinkOutside: true });
+        const button = await getButton();
+        await button.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).not.toBeNull();
+        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on link initial').toBe(undefined);
+
+        await page.keyboard.down('Shift');
+        await page.keyboard.press('Tab');
+        await page.keyboard.up('Shift');
+
+        await page.keyboard.press('Escape');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover()).toBeNull();
+        expect((await page.accessibility.snapshot()).children[1].focused, 'focus on link after escape').toBe(true);
       });
     });
 
