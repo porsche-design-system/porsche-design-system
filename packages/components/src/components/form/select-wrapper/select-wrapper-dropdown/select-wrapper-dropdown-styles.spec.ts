@@ -1,10 +1,4 @@
-import {
-  addComponentCss,
-  getButtonStyles,
-  getComponentCss,
-  getFilterStyles,
-  getListStyles,
-} from './select-wrapper-dropdown-styles';
+import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { FormState, Theme } from '../../../../types';
 import { getCss } from '../../../../utils';

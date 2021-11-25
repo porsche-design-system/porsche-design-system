@@ -333,6 +333,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
       ],
+      Toast: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/toast/toast/toast.examples.md'),
+      ],
       Banner: [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
@@ -348,6 +352,8 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/toast/toast/toast.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.props.md'),
       ],

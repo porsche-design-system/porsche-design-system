@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addMessage() should throw if an invalid message state was provided 1`] = `"The value 'wonky' for 'state' is not supported. Supported values are: neutral, success"`;
