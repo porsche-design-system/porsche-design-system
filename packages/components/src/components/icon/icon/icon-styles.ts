@@ -66,7 +66,10 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme):
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      fill: getColor(color, theme),
+      color: getColor(color, theme),
+      '& > svg': {
+        fill: 'currentcolor',
+      },
     },
   });
 };
