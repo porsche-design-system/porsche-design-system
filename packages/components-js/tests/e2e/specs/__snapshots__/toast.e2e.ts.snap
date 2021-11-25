@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toast-item accessibility should expose correct accessibility tree properties 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": "Some message",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "status",
+}
+`;

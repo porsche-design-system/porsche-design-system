@@ -13,7 +13,7 @@ describe('chunks', () => {
   const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName)));
 
   const getChunkContent = (chunkName: string): string => {
-    const [chunkFile] = chunkFiles.filter((x) => x.includes(chunkName));
+    const chunkFile = chunkFiles.find((x) => x.includes(chunkName));
     return fs.readFileSync(chunkFile, 'utf8');
   };
 
@@ -248,6 +248,24 @@ describe('chunks', () => {
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
         expect(content).toContain('ResizeObserver');
+      }
+    );
+
+    // TODO: enable this test once css variables are gone in prod build
+    // it.each(chunkFileNames)(
+    //   'should not contain "--p-override" css variables in %s',
+    //   (chunkFileName) => {
+    //     const content = getChunkContent(chunkFileName);
+    //     expect(content).not.toContain('--p-');
+    //   }
+    // );
+
+    // TODO: remove this test once css variables are gone in prod build
+    it.each(chunkFileNames.filter((x) => x.includes('toast')))(
+      'should not contain "--p-override" css variables in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).not.toContain('--p-override');
       }
     );
 

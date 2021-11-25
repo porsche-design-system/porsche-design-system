@@ -2,6 +2,7 @@ import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
+import type { ToastMessage } from './lib/types';
 
 let skipCheck = false;
 
@@ -58,3 +59,14 @@ export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>,
 };
 
 export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } => {
+  const tagName = usePrefix('p-toast');
+
+  return {
+    addMessage: (message: ToastMessage): void => {
+      const toast = document.querySelector(tagName) as HTMLElement & { addMessage(message: ToastMessage): void };
+      customElements.whenDefined(tagName).then(() => toast.addMessage(message));
+    },
+  };
+};
