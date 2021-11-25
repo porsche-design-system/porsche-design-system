@@ -185,6 +185,31 @@ export const routes: RouteType[] = [
     component: fromPages.TextareaWrapperPage,
   },
   {
+    name: 'Toast Basic',
+    path: '/toast-basic',
+    component: fromPages.ToastBasicPage,
+  },
+  {
+    name: 'Toast Basic Dark',
+    path: '/toast-basic-dark',
+    component: fromPages.ToastBasicDarkPage,
+  },
+  {
+    name: 'Toast Basic Long Text',
+    path: '/toast-basic-long-text',
+    component: fromPages.ToastBasicLongTextPage,
+  },
+  {
+    name: 'Toast Offset',
+    path: '/toast-offset',
+    component: fromPages.ToastOffsetPage,
+  },
+  {
+    name: 'Toast Prefixed',
+    path: '/toast-prefixed',
+    component: fromPages.ToastPrefixedPage,
+  },
+  {
     name: 'Typography Fallback Strategy',
     path: '/typography-fallback-strategy',
     component: fromPages.TypographyFallbackStrategyPage,
@@ -266,5 +291,10 @@ export const routes: RouteType[] = [
     name: 'Table Example Advanced',
     path: '/table-example-advanced',
     component: fromExamples.TableExampleAdvancedPage,
+  },
+  {
+    name: 'Toast Example',
+    path: '/toast-example',
+    component: fromExamples.ToastExamplePage,
   },
 ];

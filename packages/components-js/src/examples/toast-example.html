@@ -1,0 +1,14 @@
+<button type="button">Queue Toast</button>
+<p-toast></p-toast>
+
+<script>
+  const toast = document.querySelector('p-toast');
+  let counter = 1;
+
+  customElements.whenDefined('p-toast').then(() => {
+    document.querySelector('button').addEventListener('click', () => {
+      toast.addMessage({ text: `Some message ${counter}`, state: 'success' });
+      counter++;
+    });
+  });
+</script>

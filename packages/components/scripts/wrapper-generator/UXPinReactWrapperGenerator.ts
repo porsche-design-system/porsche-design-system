@@ -34,6 +34,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .generateImports(component, extendedProps, nonPrimitiveTypes)
       .replace(/(?:useMergedClass|BreakpointCustomizable)(?:, )?/g, ''); // remove unused imports
 
+    if (component === 'p-toast') {
+      imports = imports
+        .replace(/( } from '\.\.\/\.\.\/hooks';)/, ', useToastManager$1')
+        .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
+    }
+
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
       imports = imports.replace(/'(\.\.\/)/g, "'$1$1");
@@ -69,7 +75,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     if (component === 'p-banner') {
       props = addProp(props, 'title?: string;');
       props = addProp(props, 'description?: string;');
+    } else if (component === 'p-toast') {
+      props = addProp(props, 'text: string;');
+      props = addProp(props, 'state: ToastState;');
     }
+
     // add onClick prop for marque, buttons and links, but not button-group
     else if (!!component.match(/(button|link|marque)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
@@ -170,6 +180,21 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       } else if (component === 'p-link' || component === 'p-link-social') {
         cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
       }
+    } else if (component === 'p-toast') {
+      cleanedComponent = cleanedComponent
+        .replace(/(\.\.\.rest)/, "text, state = 'neutral', $1") // destructure custom props
+        .replace(
+          // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
+          /(const propsToSync =)/,
+          `const { addMessage } = useToastManager();
+    const messageObject = { text, state };
+    useBrowserLayoutEffect(() => {
+      messageObject.text && addMessage(messageObject);
+    }, [messageObject]);
+
+    $1`
+        )
+        .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
     }
 
     return cleanedComponent;
