@@ -60,8 +60,6 @@ export class Popover {
     unobserveClickOutside(this);
   }
 
-  // TODO: Behavior on enter click -> Close other Popovers on Enter press
-
   // TODO: Talk about aria check in button-pure
   // TODO: Do we need close button since popover only opens when clicked?
   // TODO: Solution if Popover overlapps next focusable element

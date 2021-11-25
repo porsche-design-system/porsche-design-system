@@ -24,6 +24,8 @@ describe('popover', () => {
   const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
   const getTextContent = () => selectNode(page, 'p-popover p');
   const getExtendedMarkup = () => selectNode(page, 'p');
+  const getSecondPopover = () => selectNode(page, '.second >>> .popover');
+  const getSecondButton = () => selectNode(page, '.second >>> p-button-pure >>> button');
 
   type InitOptions = {
     direction?: PopoverDirection;
@@ -91,6 +93,27 @@ describe('popover', () => {
       expect(await getPopover()).toBeNull();
     });
 
+    it('should close popover if another popover is clicked', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover>Some Content</p-popover>
+        <p-popover class="second">Some Content</p-popover>`
+      );
+
+      const firstButton = await getButton();
+      const secondButton = await getSecondButton();
+
+      await firstButton.click();
+      await waitForStencilLifecycle(page);
+      expect(await getPopover(), 'first popover, first click').not.toBeNull();
+      expect(await getSecondPopover(), 'second popover, first click').toBeNull();
+
+      await secondButton.click();
+      await waitForStencilLifecycle(page);
+      expect(await getSecondPopover(), 'first popover, second click').not.toBeNull();
+      expect(await getPopover(), 'second popover, second click').toBeNull();
+    });
+
     it('should not close popover if content is clicked', async () => {
       await initPopover({ withLink: true });
       const button = await getButton();
@@ -143,6 +166,44 @@ describe('popover', () => {
 
         expect(await getPopover()).toBeNull();
         expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after escape').toBe(true);
+      });
+    });
+
+    describe('enter', () => {
+      it('should open / close popover on enter press', async () => {
+        await initPopover();
+
+        page.keyboard.press('Tab');
+        page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover(), 'first enter').not.toBeNull();
+
+        page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover(), 'second enter').toBeNull();
+      });
+
+      it('should close other popovers that are open on enter click', async () => {
+        await setContentWithDesignSystem(
+          page,
+          `<p-popover>Some Content</p-popover>
+        <p-popover class="second">Some Content</p-popover>`
+        );
+        page.keyboard.press('Tab');
+        page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover(), 'first popover, first enter').not.toBeNull();
+        expect(await getSecondPopover(), 'second popover, first enter').toBeNull();
+
+        page.keyboard.press('Tab');
+        page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
+
+        expect(await getPopover(), 'first popover, second enter').toBeNull();
+        expect(await getSecondPopover(), 'second popover, second enter').not.toBeNull();
       });
     });
   });
