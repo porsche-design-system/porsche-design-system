@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
-import { PButton } from '../../../projects/components-wrapper/src';
+import type { ToastMessage } from '../../../projects/components-wrapper/src';
+import { PButton, useToastManager } from '../../../projects/components-wrapper/src';
+import * as hooks from '../../../projects/components-wrapper/src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
@@ -36,5 +38,38 @@ describe('useBrowserLayoutEffect()', () => {
     expect(typeof global.window).toBe('object');
     expect(typeof global.document).toBe('object');
     expect(useBrowserLayoutEffect).toEqual(useLayoutEffect);
+  });
+});
+
+describe('useToastManager()', () => {
+  it('should call usePrefix', () => {
+    const spy = jest.spyOn(hooks, 'usePrefix');
+    useToastManager();
+    expect(spy).toHaveBeenCalledWith('p-toast');
+  });
+
+  it('should provide addMessage method', () => {
+    expect(useToastManager()).toEqual({ addMessage: expect.anything() });
+  });
+
+  describe('addMessage', () => {
+    it('should call addMessage on toast element', async () => {
+      const toastElement = document.createElement('p-toast') as HTMLElement & {
+        addMessage(message: ToastMessage): void;
+      };
+      const addMessageMock = jest.fn();
+      toastElement.addMessage = addMessageMock;
+      document.body.appendChild(toastElement);
+      customElements.define('p-toast', class PToast extends HTMLElement {});
+
+      const { addMessage } = useToastManager();
+      const message: ToastMessage = { text: 'Test', state: 'success' };
+      addMessage(message);
+
+      // wait for customElements.whenDefined to be resolved
+      await new Promise((resolve) => setTimeout(resolve));
+
+      expect(addMessageMock).toHaveBeenCalledWith(message);
+    });
   });
 });

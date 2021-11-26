@@ -1,5 +1,6 @@
 import { removeAttribute, setAttribute } from './dom';
 import type { FormState, AriaAttributes } from '../types';
+import { parseJSONAttribute } from './json';
 
 export type SetAriaAttributesOptions = {
   label?: string;
@@ -20,18 +21,6 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
   }
 };
 
-export const parseAriaAttributes = (rawAttributes: AriaAttributes | string): AriaAttributes => {
-  return typeof rawAttributes === 'string'
-    ? // input is potentially JSON parsable string, e.g. "{ aria-label: 'Some label' }"
-      JSON.parse(
-        rawAttributes
-          .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes
-      )
-    : // input is object, e.g. { aria-label: 'Some label' }
-      rawAttributes;
-};
-
 export const throwIfAriaAttributesAreInvalid = (
   attributeKeys: (keyof AriaAttributes)[],
   allowedAttributes: readonly (keyof AriaAttributes)[]
@@ -49,7 +38,7 @@ export const parseAndGetAriaAttributes = (
   allowedAttributes?: readonly (keyof AriaAttributes)[]
 ): AriaAttributes => {
   if (rawAttributes) {
-    const attributes = parseAriaAttributes(rawAttributes);
+    const attributes = parseJSONAttribute(rawAttributes);
     const attributeKeys = Object.keys(attributes);
 
     throwIfAriaAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
