@@ -31,9 +31,13 @@ export const warnIfCompactAndSizeIsSet = (
 
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 
-const resizeObserver = new ResizeObserver((entries) => {
-  entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
-});
+export const isResizeObserverDefined = (): boolean => !!('ResizeObserver' in window);
+
+const resizeObserver =
+  isResizeObserverDefined() &&
+  new ResizeObserver((entries) => {
+    entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
+  });
 
 export const observeResize = <T extends HTMLElement>(
   node: T,
