@@ -1,4 +1,11 @@
-import { getComponentCss, getSlottedCss } from './inline-notification-styles';
+import {
+  getCloseIconStyles,
+  getComponentCss,
+  getNotificationContentStyles,
+  getNotificationIconStyles,
+  getNotificationRootStyles,
+  getSlottedCss,
+} from './inline-notification-styles';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 
@@ -35,5 +42,41 @@ describe('getSlottedCss()', () => {
   it('should return correct css with prefix', () => {
     const host = document.createElement('prefixed-p-inline-notification');
     expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+});
+
+describe('getNotificationRootStyles()', () => {
+  it.each<[InlineNotificationState, Theme]>([
+    ['neutral', 'light'],
+    ['success', 'light'],
+    ['error', 'light'],
+    ['warning', 'light'],
+    ['neutral', 'dark'],
+    ['success', 'dark'],
+    ['error', 'dark'],
+    ['warning', 'dark'],
+  ])('should return correct JssStyle for state: %s and theme: %s', (state, theme) => {
+    expect(getNotificationRootStyles(state, theme)).toMatchSnapshot();
+  });
+});
+
+describe('getNotificationIconStyles()', () => {
+  it.each<InlineNotificationState>(['neutral', 'success', 'error', 'warning'])(
+    'should return correct JssStyle for state: %s ',
+    (state) => {
+      expect(getNotificationIconStyles(state)).toMatchSnapshot();
+    }
+  );
+});
+
+describe('getNotificationContentStyles()', () => {
+  it('should return correct JssStyle', () => {
+    expect(getNotificationContentStyles()).toMatchSnapshot();
+  });
+});
+
+describe('getCloseIconStyles()', () => {
+  it('should return correct JssStyle', () => {
+    expect(getCloseIconStyles()).toMatchSnapshot();
   });
 });

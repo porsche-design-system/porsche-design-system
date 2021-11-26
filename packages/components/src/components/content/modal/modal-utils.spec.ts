@@ -84,7 +84,7 @@ describe('getFocusableElements()', () => {
 
     expect(spy).toHaveBeenCalledWith(
       host,
-      'p-accordion,p-banner,p-button,p-button-pure,p-inline-notification,p-link,p-link-pure,p-link-social,p-marque,p-modal,p-pagination,p-select-wrapper,p-select-wrapper-dropdown,p-switch,p-table,p-table-head-cell,p-tabs,p-tabs-bar,p-text-field-wrapper,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
+      'p-accordion,p-banner,p-button,p-button-pure,p-inline-notification,p-link,p-link-pure,p-link-social,p-marque,p-modal,p-pagination,p-select-wrapper,p-select-wrapper-dropdown,p-switch,p-table,p-table-head-cell,p-tabs,p-tabs-bar,p-text-field-wrapper,p-toast,p-toast-item,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
     );
   });
 
@@ -97,7 +97,7 @@ describe('getFocusableElements()', () => {
 
     expect(spy).toHaveBeenCalledWith(
       host,
-      'prefixed-p-accordion,prefixed-p-banner,prefixed-p-button,prefixed-p-button-pure,prefixed-p-inline-notification,prefixed-p-link,prefixed-p-link-pure,prefixed-p-link-social,prefixed-p-marque,prefixed-p-modal,prefixed-p-pagination,prefixed-p-select-wrapper,prefixed-p-select-wrapper-dropdown,prefixed-p-switch,prefixed-p-table,prefixed-p-table-head-cell,prefixed-p-tabs,prefixed-p-tabs-bar,prefixed-p-text-field-wrapper,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
+      'prefixed-p-accordion,prefixed-p-banner,prefixed-p-button,prefixed-p-button-pure,prefixed-p-inline-notification,prefixed-p-link,prefixed-p-link-pure,prefixed-p-link-social,prefixed-p-marque,prefixed-p-modal,prefixed-p-pagination,prefixed-p-select-wrapper,prefixed-p-select-wrapper-dropdown,prefixed-p-switch,prefixed-p-table,prefixed-p-table-head-cell,prefixed-p-tabs,prefixed-p-tabs-bar,prefixed-p-text-field-wrapper,prefixed-p-toast,prefixed-p-toast-item,[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]:not([tabindex="-1"]'
     );
   });
 });

@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       [actionLoading]="isLoading"
       (action)="onAction()"
     ></p-inline-notification>
-    <button (click)="onAction()">Reset \`actionLoading\`</button>
+    <button type="button" (click)="onAction()">Reset \`actionLoading\`</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
