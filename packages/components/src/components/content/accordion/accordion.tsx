@@ -5,6 +5,7 @@ import type { HeadlineTag } from '../../basic/typography/headline/headline-utils
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   getContentHeight,
+  isResizeObserverDefined,
   observeResize,
   setCollapsibleElementHeight,
   unobserveResize,
@@ -52,7 +53,7 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    this.useMutationObserverFallback = !('ResizeObserver' in window);
+    this.useMutationObserverFallback = !isResizeObserverDefined();
     if (this.useMutationObserverFallback) {
       window.addEventListener('resize', this.setContentHeight);
       this.initMutationObserver();
