@@ -1,5 +1,5 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
-import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import { getPrefixedTagNames, isDark, listenResize, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
@@ -11,7 +11,6 @@ import {
   unobserveResize,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
-import { listenResize } from '../../../utils/window-resize-listener';
 
 @Component({
   tag: 'p-accordion',

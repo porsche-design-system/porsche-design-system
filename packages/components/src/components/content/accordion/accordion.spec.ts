@@ -1,6 +1,6 @@
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
-import { resetResizeListeners } from '../../../utils/window-resize-listener';
+import { resetResizeListeners } from '../../../utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
