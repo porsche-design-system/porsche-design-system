@@ -54,6 +54,16 @@ describe('accordion', () => {
   });
 
   describe('componentDidLoad', () => {
+    it('should call observeResize() if ResizeObserver is available', () => {
+      const spy = jest.spyOn(accordionUtils, 'observeResize');
+      const component = new Accordion();
+      component.componentDidLoad();
+
+      expect(spy).toBeCalledWith(undefined, expect.anything(), { box: 'border-box' });
+    });
+  });
+
+  describe('componentDidRender', () => {
     it('should set contentHeight if ResizeObserver is unavailable', () => {
       const spy = jest.spyOn(accordionUtils, 'getContentHeight');
 
@@ -84,14 +94,6 @@ describe('accordion', () => {
         undefined
       );
       expect(component['contentHeight']).toEqual('0.5rem');
-    });
-
-    it('should call observeResize() if ResizeObserver is available', () => {
-      const spy = jest.spyOn(accordionUtils, 'observeResize');
-      const component = new Accordion();
-      component.componentDidLoad();
-
-      expect(spy).toBeCalledWith(undefined, expect.anything(), { box: 'border-box' });
     });
   });
 
