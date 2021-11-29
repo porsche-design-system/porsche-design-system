@@ -78,7 +78,7 @@ describe('accordion', () => {
       component['content'] = content;
       component.connectedCallback();
 
-      component.componentDidLoad();
+      component.componentDidRender();
 
       expect(spy).toHaveBeenCalledWith(
         {
