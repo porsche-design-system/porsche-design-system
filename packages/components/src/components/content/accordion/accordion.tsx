@@ -11,6 +11,7 @@ import {
   unobserveResize,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
+import { listenResize } from '../../../utils/window-resize-listener';
 
 @Component({
   tag: 'p-accordion',
@@ -55,7 +56,7 @@ export class Accordion {
   public connectedCallback(): void {
     this.useMutationObserverFallback = !isResizeObserverDefined();
     if (this.useMutationObserverFallback) {
-      window.addEventListener('resize', this.setContentHeight);
+      this.unlistenResize = listenResize(this.setContentHeight);
       this.initMutationObserver();
     }
   }
@@ -85,7 +86,7 @@ export class Accordion {
 
   public disconnectedCallback(): void {
     if (this.useMutationObserverFallback) {
-      window.removeEventListener('resize', this.setContentHeight);
+      this.unlistenResize();
       this.contentObserver.disconnect();
     } else {
       unobserveResize(this.content);
@@ -142,6 +143,9 @@ export class Accordion {
       </div>
     );
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private unlistenResize: () => void = () => {};
 
   private onButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });

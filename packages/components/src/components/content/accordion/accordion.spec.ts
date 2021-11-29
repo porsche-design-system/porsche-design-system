@@ -1,5 +1,6 @@
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
+import { resetResizeListeners } from '../../../utils/window-resize-listener';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -49,7 +50,7 @@ describe('accordion', () => {
       component.connectedCallback();
 
       expect(component['contentObserver']).toBeDefined();
-      expect(windowSpy).toBeCalledWith('resize', component['setContentHeight']);
+      expect(windowSpy).toBeCalledWith('resize', expect.anything());
     });
   });
 
@@ -100,6 +101,7 @@ describe('accordion', () => {
   describe('disconnectedCallback', () => {
     it('should remove resize event listener if ResizeObserver is available', () => {
       removeResizeObserver();
+      resetResizeListeners();
       const windowSpy = jest.spyOn(window, 'removeEventListener');
 
       const component = new Accordion();
@@ -107,7 +109,7 @@ describe('accordion', () => {
       component.connectedCallback();
       component.disconnectedCallback();
 
-      expect(windowSpy).toHaveBeenCalledWith('resize', component['setContentHeight']);
+      expect(windowSpy).toHaveBeenCalledWith('resize', expect.anything());
     });
 
     it('should call unobserveResize() if ResizeObserver is available', () => {
