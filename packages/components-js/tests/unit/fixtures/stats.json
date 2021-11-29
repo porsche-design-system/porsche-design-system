@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 6891,
-    "gzipSize": 2088
+    "size": 7701,
+    "gzipSize": 2460
   },
   {
     "chunkShortName": "banner",
@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 70876,
-    "gzipSize": 24084
+    "gzipSize": 24083
   },
   {
     "chunkShortName": "marque",
@@ -91,8 +91,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 7935,
-    "gzipSize": 2950
+    "size": 8019,
+    "gzipSize": 2979
   },
   {
     "chunkShortName": "radio-button-wrapper",
