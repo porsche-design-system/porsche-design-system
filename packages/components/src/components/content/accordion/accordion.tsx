@@ -65,9 +65,7 @@ export class Accordion {
   }
 
   public componentDidLoad(): void {
-    if (this.useMutationObserverFallback) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
-    } else {
+    if (!this.useMutationObserverFallback) {
       observeResize(
         this.content,
         ({ contentRect }) => {
@@ -76,6 +74,12 @@ export class Accordion {
         },
         { box: 'border-box' }
       );
+    }
+  }
+
+  public componentDidRender(): void {
+    if (this.useMutationObserverFallback) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
     }
   }
 
