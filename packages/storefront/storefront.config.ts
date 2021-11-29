@@ -341,10 +341,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/banner/banner.examples.md'),
       ],
-      Popover: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/feedback/popover/popover.examples.md'),
-      ],
       'Decision Tree': [
         // @ts-ignore
         () => import('@/../../components/src/components/feedback/decision-tree.md'),
@@ -370,6 +366,20 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/navigation/pagination/pagination.props.md'),
+      ],
+    },
+    Popover: {
+      Examples: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.examples.md'),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.usage.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.props.md'),
       ],
     },
     'Radio Button': {
