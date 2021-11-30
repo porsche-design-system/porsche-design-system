@@ -30,7 +30,7 @@ describe('popover', () => {
     withLinkOutside?: boolean;
   };
   const initPopover = (opts?: InitOptions): Promise<void> => {
-    const { direction = 'bottom', withLink, withExtendedMarkup, withLinkOutside } = opts ?? {};
+    const { direction = 'bottom', withLink = false, withExtendedMarkup = false, withLinkOutside = false } = opts ?? {};
 
     const linkMarkup = '<a href="#">Some Link</a>';
     const extendedMarkup = `<p>Some Markup${withLinkOutside ? '<a href="#">Some Link</a>' : ''}</p>`;
