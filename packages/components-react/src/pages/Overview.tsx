@@ -22,6 +22,7 @@ import {
   PMarque,
   PorscheDesignSystemProvider,
   PPagination,
+  PPopover,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
@@ -51,6 +52,14 @@ export const OverviewPage = (): JSX.Element => {
     componentsReady().then(() => {
       setAllReady(true);
     });
+    // Enable multiple open popovers
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        e.stopPropagation();
+      },
+      true
+    );
   }, []);
 
   const prefix = 'my-prefix';
@@ -111,6 +120,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default inline-notification">
             <PInlineNotification heading="Some heading" description="Some description" />
+          </div>
+
+          <div className="playground light" title="should render default popover">
+            <PPopover direction="right">Some popover content</PPopover>
           </div>
 
           <div className="playground light" title="should render default divider">
@@ -300,6 +313,10 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
               <PInlineNotification heading="Some heading" description="Some description" />
+            </div>
+
+            <div className="playground light" title="should render default popover with custom prefix">
+              <PPopover direction="right">Some popover content</PPopover>
             </div>
 
             <div className="playground light" title="should render default divider with custom prefix">
