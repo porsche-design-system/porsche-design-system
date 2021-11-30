@@ -48,7 +48,7 @@ const getVariantColors = (
 export const getVisibilityStyle = (visible: boolean): JssStyle => {
   return visible
     ? {
-        width: 'auto',
+        width: '100%',
         height: 'auto',
         margin: 0,
         overflow: 'visible',
