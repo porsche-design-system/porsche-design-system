@@ -16,6 +16,14 @@
         padding: 0;
       }
     </style>
+    <script>
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+        window.addEventListener(`stencil_${x}`, (e) => {
+          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+        })
+      );
+    </script>
   </head>
   <body>
     <span style="position: fixed; top: 0; left: 0; right: 0; height: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
