@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, isDark, listenResize, mapBreakpointPropToClasses } from '../../../utils';
+import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
@@ -7,8 +7,10 @@ import {
   getContentHeight,
   isResizeObserverDefined,
   observeResize,
+  observeWindowResize,
   setCollapsibleElementHeight,
   unobserveResize,
+  unobserveWindowResize,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 
@@ -55,7 +57,7 @@ export class Accordion {
   public connectedCallback(): void {
     this.useMutationObserverFallback = !isResizeObserverDefined();
     if (this.useMutationObserverFallback) {
-      this.unlistenResize = listenResize(this.setContentHeight);
+      observeWindowResize(this);
       this.initMutationObserver();
     }
   }
@@ -85,12 +87,19 @@ export class Accordion {
 
   public disconnectedCallback(): void {
     if (this.useMutationObserverFallback) {
-      this.unlistenResize();
+      unobserveWindowResize(this);
       this.contentObserver.disconnect();
     } else {
       unobserveResize(this.content);
     }
   }
+
+  public setContentHeight = (): void => {
+    if (this.content) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.setCollapsibleElementHeight();
+    }
+  };
 
   public render(): JSX.Element {
     const buttonId = 'accordion-control';
@@ -143,9 +152,6 @@ export class Accordion {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  private unlistenResize: () => void = () => {};
-
   private onButtonClick = (): void => {
     this.accordionChange.emit({ open: !this.open });
   };
@@ -162,12 +168,5 @@ export class Accordion {
       childList: true,
       subtree: true,
     });
-  };
-
-  private setContentHeight = (): void => {
-    if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
-      this.setCollapsibleElementHeight();
-    }
   };
 }

@@ -23,4 +23,3 @@ export * from './theme';
 export * from './tracking';
 export * from './transition-listener';
 export * from './validation';
-export * from './window-resize-listener';

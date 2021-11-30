@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- `Accordion` `MutationObserver` fallback when no `ResizeObserver` is available in older browsers
+- `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers
 
 ### [2.7.0-beta.2] - 2021-11-24
 

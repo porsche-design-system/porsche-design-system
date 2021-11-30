@@ -1,10 +1,6 @@
 import { throttle } from 'throttle-debounce';
 
-let listeners = new Map();
-
-export const resetResizeListeners = (): void => {
-  listeners = new Map();
-};
+const listeners = new Map();
 
 const onResize = throttle(500, () => {
   listeners.forEach((callback) => {

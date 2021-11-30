@@ -1,6 +1,5 @@
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
-import { resetResizeListeners } from '../../../utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -29,18 +28,18 @@ describe('accordion', () => {
   describe('connectedCallback()', () => {
     it('should not add resize event listener to window if ResizeObserver is available', () => {
       const component = new Accordion();
-      const windowSpy = jest.spyOn(window, 'addEventListener');
+      const utilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
 
       expect(window.ResizeObserver).toBeDefined();
 
       component.connectedCallback();
 
       expect(component['contentObserver']).toBeUndefined();
-      expect(windowSpy).not.toBeCalledWith('resize', expect.anything());
+      expect(utilsSpy).not.toHaveBeenCalled();
     });
 
-    it('should add resize event listener to window if ResizeObserver is not available', () => {
-      const windowSpy = jest.spyOn(window, 'addEventListener');
+    it('should add resize event listener to window if ResizeObserver is unavailable', () => {
+      const utilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
       removeResizeObserver();
 
       expect(window.ResizeObserver).toBeUndefined();
@@ -50,7 +49,7 @@ describe('accordion', () => {
       component.connectedCallback();
 
       expect(component['contentObserver']).toBeDefined();
-      expect(windowSpy).toBeCalledWith('resize', expect.anything());
+      expect(utilsSpy).toHaveBeenCalledWith(component);
     });
   });
 
@@ -94,22 +93,22 @@ describe('accordion', () => {
         },
         undefined
       );
-      expect(component['contentHeight']).toEqual('0.5rem');
+      expect(component['contentHeight']).toBe('0.5rem');
     });
   });
 
   describe('disconnectedCallback', () => {
-    it('should remove resize event listener if ResizeObserver is available', () => {
+    it('should remove resize event listener if ResizeObserver is unavailable', () => {
       removeResizeObserver();
-      resetResizeListeners();
-      const windowSpy = jest.spyOn(window, 'removeEventListener');
+
+      const utilsSpy = jest.spyOn(accordionUtils, 'unobserveWindowResize');
 
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
       component.connectedCallback();
       component.disconnectedCallback();
 
-      expect(windowSpy).toHaveBeenCalledWith('resize', expect.anything());
+      expect(utilsSpy).toHaveBeenCalledWith(component);
     });
 
     it('should call unobserveResize() if ResizeObserver is available', () => {
