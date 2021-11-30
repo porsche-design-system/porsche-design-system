@@ -1,4 +1,5 @@
 import { BreakpointCustomizable, getTagName, pxToRemWithUnit } from '../../../utils';
+import { Accordion } from './accordion';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZE[number];
@@ -56,5 +57,34 @@ export const unobserveResize = <T extends HTMLElement>(node: T): void => {
   if (node) {
     resizeMap.delete(node);
     resizeObserver.unobserve(node);
+  }
+};
+
+export let registeredAccordions: Accordion[] = [];
+
+export const resetRegisteredAccordions = () => {
+  registeredAccordions = [];
+};
+
+export const onWindowResize = (): void => {
+  registeredAccordions.forEach((accordion) => {
+    accordion.setContentHeight();
+  });
+};
+
+export const observeWindowResize = (accordion: Accordion): void => {
+  if (!registeredAccordions.includes(accordion)) {
+    registeredAccordions.push(accordion);
+  }
+  window.addEventListener('resize', onWindowResize);
+};
+
+export const unobserveWindowResize = (accordion: Accordion): void => {
+  const index = registeredAccordions.indexOf(accordion);
+  if (index > -1) {
+    registeredAccordions.splice(index, 1);
+  }
+  if (registeredAccordions.length === 0) {
+    window.removeEventListener('resize', onWindowResize);
   }
 };

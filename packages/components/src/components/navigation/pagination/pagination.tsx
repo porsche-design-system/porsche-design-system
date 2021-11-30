@@ -3,7 +3,6 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   isDark,
-  listenResize,
   mapBreakpointPropToClasses,
 } from '../../../utils';
 import {
@@ -14,6 +13,7 @@ import {
   itemTypes,
 } from './pagination-utils';
 import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
+import { listenResize } from '../../../utils/window-resize-listener';
 
 @Component({
   tag: 'p-pagination',
