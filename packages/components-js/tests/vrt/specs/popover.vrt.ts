@@ -23,6 +23,16 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   ).toBeFalsy();
 });
 
+it('should have no visual regression on popover-overview for viewport 1760', async () => {
+  expect(
+    await vrtTest(getVisualRegressionTester(1760), 'popover-overview', '/#popover-overview', {
+      scenario: (page) => openPopoverAndSetBackground(page, true),
+      initialViewportHeight: 800,
+      elementSelector: '',
+    })
+  ).toBeFalsy();
+});
+
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
