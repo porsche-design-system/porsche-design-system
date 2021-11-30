@@ -107,11 +107,11 @@ describe('popover', () => {
 
       await secondButton.click();
       await waitForStencilLifecycle(page);
-      expect(await getSecondPopover(), 'first popover, second click').not.toBeNull();
-      expect(await getPopover(), 'second popover, second click').toBeNull();
+      expect(await getSecondPopover(), 'second popover, second click').not.toBeNull();
+      expect(await getPopover(), 'first popover, second click').toBeNull();
     });
 
-    it('should not close popover if content is clicked', async () => {
+    it('should not close popover when its content is clicked', async () => {
       await initPopover({ withLink: true });
       const button = await getButton();
       await button.click();
