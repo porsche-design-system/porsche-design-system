@@ -9,10 +9,10 @@ import {
   forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
-  GetMarkup,
   openPopoverAndSetBackground,
   setContentWithDesignSystem,
 } from '../helpers';
+import type { GetMarkup } from '../helpers';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
