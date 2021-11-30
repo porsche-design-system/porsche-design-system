@@ -60,6 +60,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           <p-inline-notification [heading]="'Some heading'" [description]="'Some description'"></p-inline-notification>
         </div>
 
+        <div class="playground light" title="should render default popover">
+          <p-popover [direction]="'right'">Some popover content</p-popover>
+        </div>
+
         <div class="playground light" title="should render default divider">
           <p-divider></p-divider>
         </div>
@@ -242,6 +246,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           ></my-prefix-p-inline-notification>
         </div>
 
+        <div class="playground light" title="should render default popover with custom prefix">
+          <my-prefix-p-popover [direction]="'right'">Some popover content</my-prefix-p-popover>
+        </div>
+
         <div class="playground light" title="should render default divider with custom prefix">
           <my-prefix-p-divider p-divider></my-prefix-p-divider>
         </div>
@@ -415,6 +423,13 @@ export class OverviewComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        e.stopPropagation();
+      },
+      true
+    );
     componentsReady().then(() => {
       this.allReady = true;
       this.cdr.markForCheck();
