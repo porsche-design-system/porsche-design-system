@@ -12,12 +12,12 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import type { GetMarkup } from '../helpers';
-import { openPopoverAndSetBackground } from '@porsche-design-system/shared-src/src/testing/puppeteer-vrt-helper';
+import { openPopoversAndSetBackground } from '@porsche-design-system/shared-src/src/testing/puppeteer-vrt-helper';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'popover', '/#popover', {
-      scenario: openPopoverAndSetBackground,
+      scenario: openPopoversAndSetBackground,
       initialViewportHeight: 800,
     })
   ).toBeFalsy();
@@ -26,7 +26,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
 it('should have no visual regression on popover-overview for viewport 1760', async () => {
   expect(
     await vrtTest(getVisualRegressionTester(1760), 'popover-overview', '/#popover-overview', {
-      scenario: (page) => openPopoverAndSetBackground(page, true),
+      scenario: (page) => openPopoversAndSetBackground(page, true),
       initialViewportHeight: 800,
       elementSelector: '',
     })
@@ -43,7 +43,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-popover>Some Content with <a>Link</a></p-popover>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
-      await openPopoverAndSetBackground(page);
+      await openPopoversAndSetBackground(page);
 
       await forceHoveredState(page, '.hovered > p-popover >>> p-button-pure >>> button');
       await forceHoveredState(page, '.hovered > p-popover > a');
