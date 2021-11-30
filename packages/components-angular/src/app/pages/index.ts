@@ -27,6 +27,8 @@ import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
+import { PopoverComponent } from './popover.component';
+import { PopoverOverviewComponent } from './popover-overview.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
@@ -78,6 +80,8 @@ export const pages = [
   ModalScrollableComponent,
   OverviewComponent,
   PaginationComponent,
+  PopoverComponent,
+  PopoverOverviewComponent,
   RadioButtonWrapperComponent,
   SelectWrapperComponent,
   SpinnerComponent,
@@ -129,6 +133,8 @@ export * from './modal-prefixed.component';
 export * from './modal-scrollable.component';
 export * from './overview.component';
 export * from './pagination.component';
+export * from './popover.component';
+export * from './popover-overview.component';
 export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
