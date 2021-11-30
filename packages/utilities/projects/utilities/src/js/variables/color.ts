@@ -1,6 +1,60 @@
-export type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'light-electric';
 
-export const color = {
+type ColorTheme = {
+  brand: string;
+  default: string;
+  background: {
+    default: string;
+    surface: string;
+    shading: string;
+  };
+  neutralContrast: {
+    high: string;
+    medium: string;
+    low: string;
+  };
+  notification: {
+    success: string;
+    successSoft: string;
+    warning: string;
+    warningSoft: string;
+    error: string;
+    errorSoft: string;
+    neutral: string;
+    neutralSoft: string;
+  };
+  state: {
+    hover: string;
+    active: string;
+    focus: string;
+    disabled: string;
+  };
+};
+
+type ColorExternal = {
+  facebook: string;
+  google: string;
+  instagram: string;
+  kakaotalk: string;
+  linkedin: string;
+  naver: string;
+  pinterest: string;
+  reddit: string;
+  tiktok: string;
+  twitter: string;
+  wechat: string;
+  whatsapp: string;
+  xing: string;
+  youtube: string;
+};
+
+type Color = ColorTheme & {
+  darkTheme: ColorTheme;
+  lightElectricTheme: ColorTheme;
+  external: ColorExternal;
+};
+
+export const color: Color = {
   /**
    * Theme light as default theme
    */
@@ -63,6 +117,39 @@ export const color = {
       active: '#ff0223',
       focus: 'currentColor',
       disabled: '#7c7f81',
+    },
+    /**
+     * Theme light electric as optional
+     */
+  },
+  lightElectricTheme: {
+    brand: '#00b0f4',
+    default: '#000',
+    background: {
+      default: '#fff',
+      surface: '#f2f2f2',
+      shading: 'rgba(14, 20, 24, 0.9)',
+    },
+    neutralContrast: {
+      high: '#323639',
+      medium: '#626669',
+      low: '#e3e4e5',
+    },
+    notification: {
+      success: '#018a16',
+      successSoft: '#e5f3e7',
+      warning: '#ff9b00',
+      warningSoft: '#fff5e5',
+      error: '#e00000',
+      errorSoft: '#fae6e6',
+      neutral: '#0061bd',
+      neutralSoft: '#e5eff8',
+    },
+    state: {
+      hover: '#00b0f4',
+      active: '#00b0f4',
+      focus: 'currentColor',
+      disabled: '#96989a',
     },
   },
   /**
