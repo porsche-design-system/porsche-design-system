@@ -1,14 +1,12 @@
 import { getVisualRegressionOverviewTester, vrtTest } from '@porsche-design-system/shared/testing';
-import { openPopoverAndSetBackground } from '../helpers';
+import {
+  openPrefixedPopover,
+  openPopoverAndSetBackground,
+} from '@porsche-design-system/shared-src/src/testing/puppeteer-vrt-helper';
 
 const openPopovers = async (page): Promise<void> => {
   await openPopoverAndSetBackground(page);
-  return page.evaluate(() => {
-    document.querySelectorAll('my-prefix-p-popover').forEach((x) => {
-      const button = x.shadowRoot.querySelector('my-prefix-p-button-pure').shadowRoot.querySelector('button');
-      button.click();
-    });
-  });
+  return openPrefixedPopover(page);
 };
 
 it('should have no visual regression', async () => {
