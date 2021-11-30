@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
+import type { Theme } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
@@ -23,17 +24,18 @@ const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Comp
 const Text = styled.div(text.small);
 
 export const JsVariables = (): JSX.Element => {
-  const { darkTheme, ...other } = color;
+  const { darkTheme, lightElectricTheme, ...other } = color;
   const colorArray = objectToFlatArray(other);
   const colorDarkArray = objectToFlatArray(darkTheme);
+  const colorLightElectricArray = objectToFlatArray(lightElectricTheme);
 
-  const renderSquares = (colors: string[], theme: 'light' | 'dark' = 'light') => (
+  const renderSquares = (colors: string[], theme: Theme = 'light') => (
     <div>
       {colors.map((x, idx) => {
         const style =
           x === 'currentColor'
             ? {
-                color: theme === 'light' ? 'black' : 'white',
+                color: theme === 'dark' ? 'white' : 'black',
                 outline: `${x} solid 1px`,
                 outlineOffset: '-5px',
               }
@@ -63,6 +65,11 @@ export const JsVariables = (): JSX.Element => {
       <div className="playground">
         <h2>Dark Theme Colors</h2>
         {renderSquares(colorDarkArray, 'dark')}
+      </div>
+
+      <div className="playground">
+        <h2>Light-Electric Theme Colors</h2>
+        {renderSquares(colorLightElectricArray, 'light-electric')}
       </div>
 
       <div className="playground">
