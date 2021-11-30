@@ -1,4 +1,4 @@
-import { PPopover, componentsReady } from '../../../projects/components-wrapper/src';
+import { PPopover, componentsReady } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
