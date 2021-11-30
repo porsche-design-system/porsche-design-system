@@ -112,16 +112,6 @@ export class ButtonPure {
     }
   }
 
-  // If the aria prop is passed through another component stencil will rerender even if the value is the same
-  public componentShouldUpdate(newValue, oldValue, prop): boolean {
-    let result = true;
-
-    if (prop === 'aria' && JSON.stringify(newValue) === JSON.stringify(oldValue)) {
-      result = false;
-    }
-    return result;
-  }
-
   public render(): JSX.Element {
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
