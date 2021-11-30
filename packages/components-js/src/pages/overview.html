@@ -53,6 +53,10 @@
       <p-inline-notification heading="Some heading" description="Some description"></p-inline-notification>
     </div>
 
+    <div class="playground light" title="should render default popover">
+      <p-popover direction="right">Some popover content</p-popover>
+    </div>
+
     <div class="playground light" title="should render default divider">
       <p-divider></p-divider>
     </div>
@@ -232,6 +236,10 @@
       ></my-prefix-p-inline-notification>
     </div>
 
+    <div class="playground light" title="should render default popover">
+      <my-prefix-p-popover direction="right">Some popover content</my-prefix-p-popover>
+    </div>
+
     <div class="playground light" title="should render default divider with custom prefix">
       <my-prefix-p-divider></my-prefix-p-divider>
     </div>
@@ -388,3 +396,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener(
+    'mousedown',
+    (e) => {
+      e.stopPropagation();
+    },
+    true
+  );
+</script>
