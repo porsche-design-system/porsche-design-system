@@ -9,10 +9,10 @@ import {
   forceFocusedState,
   forceHoveredState,
   getBodyMarkup,
-  openPopoverAndSetBackground,
   setContentWithDesignSystem,
 } from '../helpers';
 import type { GetMarkup } from '../helpers';
+import { openPopoverAndSetBackground } from '@porsche-design-system/shared-src/src/testing/puppeteer-vrt-helper';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(

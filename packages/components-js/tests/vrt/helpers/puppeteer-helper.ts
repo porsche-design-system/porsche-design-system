@@ -32,15 +32,3 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
   await waitForComponentsReady(page);
 };
-
-export const openPopoverAndSetBackground = (page: Page, withBackground: boolean = false): Promise<void> =>
-  page.evaluate((withBackground) => {
-    document.querySelectorAll('p-popover').forEach((x) => {
-      const button = x.shadowRoot.querySelector('p-button-pure').shadowRoot.querySelector('button');
-      button.click();
-      withBackground &&
-        setTimeout(
-          () => ((x.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)')
-        );
-    });
-  }, withBackground);
