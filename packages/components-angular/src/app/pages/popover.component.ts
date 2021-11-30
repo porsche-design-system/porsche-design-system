@@ -32,6 +32,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class PopoverComponent implements OnInit {
   ngOnInit() {
+    // Enable multiple open popovers
     document.addEventListener(
       'mousedown',
       (e) => {
