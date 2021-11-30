@@ -90,6 +90,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
   return getCss({
     ...buildHostStyles({
       verticalAlign: 'top',
+      zIndex: 99999,
       ...addImportantToEachRule({
         position: 'relative',
         display: 'inline-block',
@@ -114,7 +115,6 @@ export const getComponentCss = (direction: PopoverDirection): string => {
     },
     popover: {
       position: 'absolute',
-      zIndex: 99999,
       maxWidth: '90vw',
       width: 'max-content',
       boxSizing: 'border-box',
