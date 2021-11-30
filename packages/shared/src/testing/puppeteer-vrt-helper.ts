@@ -1,21 +1,28 @@
 import { Page } from 'puppeteer';
 
-export const openPopoverAndSetBackground = (page: Page, withBackground: boolean = false): Promise<void> =>
-  page.evaluate((withBackground) => {
-    document.querySelectorAll('p-popover').forEach((x) => {
-      const button = x.shadowRoot.querySelector('p-button-pure').shadowRoot.querySelector('button');
+export const openPopoversAndSetBackground = async (
+  page: Page,
+  withBackground: boolean = false,
+  prefixed: boolean = false
+): Promise<void> => {
+  if (prefixed) {
+    await page.evaluate(() => {
+      document.querySelectorAll('my-prefix-p-popover').forEach((popover) => {
+        const button = popover.shadowRoot.querySelector('my-prefix-p-button-pure').shadowRoot.querySelector('button');
+        button.click();
+      });
+    });
+  }
+
+  return page.evaluate((withBackground) => {
+    document.querySelectorAll('p-popover').forEach((popover) => {
+      const button = popover.shadowRoot.querySelector('p-button-pure').shadowRoot.querySelector('button');
       button.click();
       withBackground &&
+        // we need a tick to set the background
         setTimeout(
-          () => ((x.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)')
+          () => ((popover.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)')
         );
     });
   }, withBackground);
-
-export const openPrefixedPopover = (page: Page): Promise<void> =>
-  page.evaluate(() => {
-    document.querySelectorAll('my-prefix-p-popover').forEach((x) => {
-      const button = x.shadowRoot.querySelector('my-prefix-p-button-pure').shadowRoot.querySelector('button');
-      button.click();
-    });
-  });
+};
