@@ -423,6 +423,7 @@ export class OverviewComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
+    // Enable multiple open popovers
     document.addEventListener(
       'mousedown',
       (e) => {
