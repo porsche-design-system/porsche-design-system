@@ -60,9 +60,6 @@ export class Popover {
     unobserveClickOutside(this);
   }
 
-  // TODO: Talk about aria check in button-pure
-  // TODO: Do we need close button since popover only opens when clicked?
-  // TODO: Solution if Popover overlapps next focusable element
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
