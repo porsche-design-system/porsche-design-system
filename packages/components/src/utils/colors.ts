@@ -1,6 +1,6 @@
 import { color } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../types';
-import { isDark } from './theme';
+import { isDark, isLightElectric } from './theme';
 
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
@@ -25,6 +25,14 @@ export const colorDarken: DeepPartial<typeof color> = {
     },
     state: {
       hover: '#c4001a',
+    },
+  },
+  lightElectricTheme: {
+    neutralContrast: {
+      high: '#151718',
+    },
+    state: {
+      hover: '#0083b7',
     },
   },
 };
@@ -66,7 +74,7 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDark(theme) ? color.darkTheme : color;
+  } = isDark(theme) ? color.darkTheme : isLightElectric(theme) ? color.lightElectricTheme : color;
 
   return {
     textColor,
@@ -91,9 +99,10 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
 
 const themedColorsLight = getStaticThemedColors('light');
 const themedColorsDark = getStaticThemedColors('dark');
+const themedColorsLightElectric = getStaticThemedColors('light-electric');
 
 export const getThemedColors = (theme: Theme): ThemedColors => {
-  return isDark(theme) ? themedColorsDark : themedColorsLight;
+  return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
 };
 
 export const getThemedStateColors = (
