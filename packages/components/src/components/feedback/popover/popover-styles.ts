@@ -10,6 +10,7 @@ import {
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 import { color, text } from '@porsche-design-system/utilities';
+import { POPOVER_Z_INDEX } from '../../../constants';
 
 const getPopoverPosition = (direction: PopoverDirection): JssStyle => {
   switch (direction) {
@@ -90,7 +91,6 @@ export const getComponentCss = (direction: PopoverDirection): string => {
   return getCss({
     ...buildHostStyles({
       verticalAlign: 'top',
-      zIndex: 99999,
       ...addImportantToEachRule({
         position: 'relative',
         display: 'inline-block',
@@ -98,6 +98,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
     }),
     spacer: {
       position: 'absolute',
+      zIndex: POPOVER_Z_INDEX,
       top: '-1rem',
       left: '-1rem',
       right: '-1rem',
