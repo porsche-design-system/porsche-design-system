@@ -135,11 +135,6 @@ export const routes: RouteType[] = [
     component: fromPages.PopoverPage,
   },
   {
-    name: 'Popover Overview',
-    path: '/popover-overview',
-    component: fromPages.PopoverOverviewPage,
-  },
-  {
     name: 'Radio Button',
     path: '/radio-button-wrapper',
     component: fromPages.RadioButtonWrapperPage,
