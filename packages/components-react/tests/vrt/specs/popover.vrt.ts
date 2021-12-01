@@ -5,7 +5,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'popover', '/popover', {
       scenario: openPopoversAndSetBackground,
-      initialViewportHeight: 800,
+      initialViewportHeight: 500,
     })
   ).toBeFalsy();
 });
