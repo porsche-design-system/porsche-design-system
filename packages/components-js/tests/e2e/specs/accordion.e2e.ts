@@ -14,6 +14,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
+  enableBrowserLogging,
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
 
@@ -159,6 +160,36 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
+  });
+
+  const CONTENT_HEIGHT = '26px';
+  fit('should set correct content height using ResizeObserver', async () => {
+    await initAccordion({ isOpen: true });
+    // // const button = await getButton();
+    // // await button.click();
+    // await waitForStencilLifecycle(page);
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
+  });
+
+  fit('should set correct content height using MutationObserver and window resize listener', async () => {
+    enableBrowserLogging(page);
+    await page.evaluate(() => {
+      delete window.ResizeObserver;
+    });
+
+    await initAccordion({ isOpen: true });
+
+    // const collapsible = await getCollapsible();
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
   });
 
   describe('events', () => {
