@@ -247,7 +247,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default popover with custom prefix">
-          <my-prefix-p-popover [direction]="'right'">Some popover content</my-prefix-p-popover>
+          <my-prefix-p-popover p-popover [direction]="'right'">Some popover content</my-prefix-p-popover>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
@@ -388,7 +388,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default accordion with custom prefix">
-          <my-prefix-p-accordion [heading]="'Some accordion heading'">
+          <my-prefix-p-accordion p-accordion [heading]="'Some accordion heading'">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           </my-prefix-p-accordion>
