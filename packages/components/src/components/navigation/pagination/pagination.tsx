@@ -12,8 +12,8 @@ import {
   getTotalPages,
   itemTypes,
 } from './pagination-utils';
-import { listenResize } from '../../../utils/window-resize-listener';
 import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
+import { listenResize } from '../../../utils/window-resize-listener';
 
 @Component({
   tag: 'p-pagination',
