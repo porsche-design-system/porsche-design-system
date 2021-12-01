@@ -9,9 +9,12 @@ import {
   setCollapsibleElementHeight,
   unobserveResize,
   unobserveWindowResize,
+  useMutationObserverFallbackOverride,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { Accordion } from './accordion';
+import * as childrenObserverUtils from '../../../utils/children-observer';
+import * as accordionUtils from './accordion-utils';
 
 describe('setCollapsibleElementHeight()', () => {
   it('should set style.height on element to "200px" if isOpen = true', () => {
@@ -264,5 +267,38 @@ describe('unobserveWindowResize()', () => {
     unobserveWindowResize(undefined);
 
     expect(windowSpy).toBeCalledWith('resize', expect.anything());
+  });
+});
+
+describe('mutationObserverFallback', () => {
+  it('should call observeWindowResize() and observeChildren()', () => {
+    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
+    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+
+    useMutationObserverFallbackOverride(true);
+
+    const component = new Accordion();
+    component.host = document.createElement('p-accordion');
+
+    component.connectedCallback();
+
+    expect(accordionUtilsSpy).toBeCalledWith(component);
+    expect(observeChildrenSpy).toBeCalledWith(component.host, expect.anything());
+  });
+});
+
+describe('removeMutationObserverFallback()', () => {
+  it('should call unobserveWindowResize() and unobserveChildren()', () => {
+    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'unobserveWindowResize');
+    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+
+    useMutationObserverFallbackOverride(true);
+
+    const component = new Accordion();
+    component.host = document.createElement('p-accordion');
+    component.disconnectedCallback();
+
+    expect(accordionUtilsSpy).toBeCalledWith(component);
+    expect(observeChildrenSpy).toBeCalledWith(component.host);
   });
 });
