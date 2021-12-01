@@ -1,5 +1,7 @@
 import {
   expectA11yToMatchSnapshot,
+  getActiveElementTagName,
+  getActiveElementTagNameInShadowRoot,
   getLifecycleStatus,
   selectNode,
   setContentWithDesignSystem,
@@ -27,13 +29,18 @@ describe('popover', () => {
     direction?: PopoverDirection;
     withLink?: boolean;
     withExtendedMarkup?: boolean;
-    withLinkOutside?: boolean;
+    withButtonOutside?: boolean;
   };
   const initPopover = (opts?: InitOptions): Promise<void> => {
-    const { direction = 'bottom', withLink = false, withExtendedMarkup = false, withLinkOutside = false } = opts ?? {};
+    const {
+      direction = 'bottom',
+      withLink = false,
+      withExtendedMarkup = false,
+      withButtonOutside = false,
+    } = opts ?? {};
 
     const linkMarkup = '<a href="#">Some Link</a>';
-    const extendedMarkup = `<p>Some Markup${withLinkOutside ? '<a href="#">Some Link</a>' : ''}</p>`;
+    const extendedMarkup = '<p>Some Markup</p>';
 
     return setContentWithDesignSystem(
       page,
@@ -42,7 +49,8 @@ describe('popover', () => {
         <p-popover direction="${direction}">
            ${withLink ? linkMarkup : ''}
            <p>Some Popover Content</p>
-        </p-popover>`
+        </p-popover>
+        ${withButtonOutside ? '<button>Some Button</button>' : ''}`
     );
   };
 
@@ -127,62 +135,64 @@ describe('popover', () => {
 
   describe('keyboard behavior', () => {
     describe('escape', () => {
+      const focusedElement = 'P-BUTTON-PURE';
       it('should close popover on escape when button is focused', async () => {
         await initPopover();
+        const host = await getHost();
         const button = await getButton();
         await button.click();
         await waitForStencilLifecycle(page);
 
         expect(await getPopover()).not.toBeNull();
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus after open click').toBe(true);
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
 
         await page.keyboard.press('Escape');
         await waitForStencilLifecycle(page);
 
         expect(await getPopover()).toBeNull();
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus after escape').toBe(true);
+        expect(await getActiveElementTagNameInShadowRoot(host), 'focus on button after escape').toBe(focusedElement);
       });
 
       it('should close popover on escape when content is focused', async () => {
         await initPopover({ withLink: true });
+        const host = await getHost();
         const button = await getButton();
         await button.click();
         await waitForStencilLifecycle(page);
 
         expect(await getPopover()).not.toBeNull();
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after open').toBe(true);
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
 
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
 
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after tab').toBe(undefined);
-        expect((await page.accessibility.snapshot()).children[1].focused, 'focus on link after tab').toBe(true);
+        expect(await getActiveElementTagName(page)).toBe('A');
 
         await page.keyboard.press('Escape');
         await waitForStencilLifecycle(page);
 
         expect(await getPopover()).toBeNull();
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on button after escape').toBe(true);
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
       });
 
       it('should close popover on escape when content outside is focused', async () => {
-        await initPopover({ withExtendedMarkup: true, withLinkOutside: true });
+        await initPopover({ withButtonOutside: true });
+        const host = await getHost();
         const button = await getButton();
         await button.click();
         await waitForStencilLifecycle(page);
 
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
         expect(await getPopover()).not.toBeNull();
-        expect((await page.accessibility.snapshot()).children[0].focused, 'focus on link initial').toBe(undefined);
 
-        await page.keyboard.down('Shift');
         await page.keyboard.press('Tab');
-        await page.keyboard.up('Shift');
+        expect(await getActiveElementTagName(page)).toBe('BUTTON');
 
         await page.keyboard.press('Escape');
         await waitForStencilLifecycle(page);
 
+        expect(await getActiveElementTagName(page)).toBe('BUTTON');
         expect(await getPopover()).toBeNull();
-        expect((await page.accessibility.snapshot()).children[1].focused, 'focus on link after escape').toBe(true);
       });
     });
 
