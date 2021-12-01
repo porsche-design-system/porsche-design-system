@@ -5,6 +5,17 @@ export const openPopoversAndSetBackground = async (
   withBackground: boolean = false,
   prefixed: boolean = false
 ): Promise<void> => {
+  // Enable mutliple open popovers
+  await page.evaluate(() => {
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        e.stopPropagation();
+      },
+      true
+    );
+  });
+
   if (prefixed) {
     await page.evaluate(() => {
       document.querySelectorAll('my-prefix-p-popover').forEach((popover) => {
