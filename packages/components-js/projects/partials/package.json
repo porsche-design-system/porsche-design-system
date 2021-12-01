@@ -46,7 +46,7 @@
   "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.1.0"
+    "@porsche-design-system/utilities": "5.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",

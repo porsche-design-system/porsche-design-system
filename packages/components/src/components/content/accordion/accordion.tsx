@@ -1,13 +1,16 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   getContentHeight,
+  isResizeObserverDefined,
   observeResize,
+  observeWindowResize,
   setCollapsibleElementHeight,
   unobserveResize,
+  unobserveWindowResize,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 
@@ -43,10 +46,20 @@ export class Accordion {
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
   private contentHeight: string;
+  private contentObserver: MutationObserver;
+  private useMutationObserverFallback = false;
 
   @Watch('open')
   public openChangeHandler(): void {
     this.setCollapsibleElementHeight();
+  }
+
+  public connectedCallback(): void {
+    this.useMutationObserverFallback = !isResizeObserverDefined();
+    if (this.useMutationObserverFallback) {
+      observeWindowResize(this);
+      this.initMutationObserver();
+    }
   }
 
   public componentWillLoad(): void {
@@ -54,19 +67,39 @@ export class Accordion {
   }
 
   public componentDidLoad(): void {
-    observeResize(
-      this.content,
-      ({ contentRect }) => {
-        this.contentHeight = getContentHeight(contentRect, this.compact);
-        this.setCollapsibleElementHeight();
-      },
-      { box: 'border-box' }
-    );
+    if (!this.useMutationObserverFallback) {
+      observeResize(
+        this.content,
+        ({ contentRect }) => {
+          this.contentHeight = getContentHeight(contentRect, this.compact);
+          this.setCollapsibleElementHeight();
+        },
+        { box: 'border-box' }
+      );
+    }
+  }
+
+  public componentDidRender(): void {
+    if (this.useMutationObserverFallback) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+    }
   }
 
   public disconnectedCallback(): void {
-    unobserveResize(this.content);
+    if (this.useMutationObserverFallback) {
+      unobserveWindowResize(this);
+      this.contentObserver.disconnect();
+    } else {
+      unobserveResize(this.content);
+    }
   }
+
+  public setContentHeight = (): void => {
+    if (this.content) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.setCollapsibleElementHeight();
+    }
+  };
 
   public render(): JSX.Element {
     const buttonId = 'accordion-control';
@@ -126,4 +159,14 @@ export class Accordion {
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
+
+  private initMutationObserver = (): void => {
+    this.contentObserver = new MutationObserver((): void => {
+      this.setContentHeight();
+    });
+    this.contentObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+    });
+  };
 }

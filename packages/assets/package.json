@@ -49,7 +49,7 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/meta-icons": "0.0.0",
-    "@porsche-design-system/utilities": "5.1.0"
+    "@porsche-design-system/utilities": "5.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",

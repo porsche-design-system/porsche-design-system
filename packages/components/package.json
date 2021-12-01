@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "2.7.0-beta.2",
+  "version": "2.7.0-beta.3",
   "private": true,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -39,7 +39,7 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.1.0",
+    "@porsche-design-system/utilities": "5.2.0",
     "@stencil/core": "~2.9.0",
     "jss": "^10.8.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
