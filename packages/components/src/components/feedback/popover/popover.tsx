@@ -23,6 +23,9 @@ export class Popover {
    * Otherwise it will be opened in the direction with most available space. */
   @Prop() public direction: PopoverDirection = 'bottom';
 
+  /** Descriptive text to show additional information when popover is open  */
+  @Prop() public description?: string;
+
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
   @State() public open = false;
@@ -81,14 +84,16 @@ export class Popover {
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
             <div class="popover" ref={(el) => (this.popover = el)}>
-              <slot />
+              {this.description || <slot />}
             </div>
           </div>
         )}
       </Host>
     );
   }
-
+  // TODO: wrap description with p tag?
+  // TODO: Z-Index into docu
+  // TODO: document p tag if needed
   private handleEscapeClick = (e: KeyboardEvent): void => {
     if (e.key === 'Escape' || e.key === 'Esc') {
       this.button.focus();
