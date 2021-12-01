@@ -1,39 +1,35 @@
 import { Page } from 'puppeteer';
 
-export const openPopoversAndSetBackground = async (
-  page: Page,
-  withBackground: boolean = false,
-  prefixed: boolean = false
-): Promise<void> => {
-  // Enable mutliple open popovers
-  await page.evaluate(() => {
-    document.addEventListener(
-      'mousedown',
-      (e) => {
-        e.stopPropagation();
-      },
-      true
-    );
+export const openPopoversAndHighlightSpacer = async (page: Page, withBackground: boolean = false): Promise<void> => {
+  const bodyHeightWidth = await page.evaluate(() => {
+    return {
+      height: document.body.clientHeight,
+      width: document.body.clientWidth,
+    };
   });
 
-  if (prefixed) {
-    await page.evaluate(() => {
-      document.querySelectorAll('my-prefix-p-popover').forEach((popover) => {
-        const button = popover.shadowRoot.querySelector('my-prefix-p-button-pure').shadowRoot.querySelector('button');
-        button.click();
-      });
-    });
-  }
+  await page.setViewport(bodyHeightWidth);
 
-  return page.evaluate((withBackground) => {
-    document.querySelectorAll('p-popover').forEach((popover) => {
-      const button = popover.shadowRoot.querySelector('p-button-pure').shadowRoot.querySelector('button');
-      button.click();
-      withBackground &&
-        // we need a tick to set the background
-        setTimeout(
-          () => ((popover.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)')
-        );
+  await page.evaluate(async (withBackground) => {
+    // Enable multiple open popovers
+    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
+
+    const popoverEls = document.querySelectorAll('p-popover, my-prefix-p-popover');
+
+    popoverEls.forEach((popover) => {
+      const button = popover.shadowRoot.querySelector('p-button-pure, my-prefix-p-button-pure');
+      (button as HTMLElement).click();
     });
+    // Workaround to have a delay due to waitForStencilLifecycle is not available
+    const newPopover = document.createElement('p-popover');
+    newPopover.style.margin = '-10rem';
+    document.body.appendChild(newPopover);
+    await (window as any).porscheDesignSystem.componentsReady();
+
+    if (withBackground) {
+      popoverEls.forEach((popover) => {
+        (popover.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)';
+      });
+    }
   }, withBackground);
 };
