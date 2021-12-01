@@ -18,25 +18,10 @@ export const PopoverOverviewPage = (): JSX.Element => {
   return (
     <>
       <div title="should render multiple popovers on edge" style={{ height: '800px', width: '100%' }}>
-        <span
-          style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '1rem', background: 'rgba(0, 0, 255, 0.1)' }}
-        ></span>
-        <span
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '1rem',
-            background: 'rgba(0, 0, 255, 0.1)',
-          }}
-        ></span>
-        <span
-          style={{ position: 'fixed', top: 0, left: 0, bottom: 0, width: '1rem', background: 'rgba(0, 0, 255, 0.1)' }}
-        ></span>
-        <span
-          style={{ position: 'fixed', top: 0, right: 0, bottom: 0, width: '1rem', background: 'rgba(0, 0, 255, 0.1)' }}
-        ></span>
+        <span className="viewportFrame viewportFrame--top" />
+        <span className="viewportFrame viewportFrame--bottom" />
+        <span className="viewportFrame viewportFrame--left" />
+        <span className="viewportFrame viewportFrame--right" />
         {/*Top Left to right  */}
         <span style={{ position: 'absolute', top: '1.5rem', left: '1rem' }}>
           <PPopover direction="right">

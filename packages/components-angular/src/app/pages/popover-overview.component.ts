@@ -2,14 +2,44 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-popover-overview',
+  styles: [
+    `
+      .viewportFrame {
+        position: fixed;
+        background: rgba(0, 0, 255, 0.1);
+      }
+      .viewportFrame--top {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1rem;
+      }
+      .viewportFrame--bottom {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1rem;
+      }
+      .viewportFrame--left {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 1rem;
+      }
+      .viewportFrame--right {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 1rem;
+      }
+    `,
+  ],
   template: `
     <div title="should render multiple popovers on edge" style="height: 800px; width: 100%">
-      <span style="position: fixed; top: 0; left: 0; right: 0; height: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-      <span
-        style="position: fixed; bottom: 0; left: 0; right: 0; height: 1rem; background: rgba(0, 0, 255, 0.1)"
-      ></span>
-      <span style="position: fixed; top: 0; left: 0; bottom: 0; width: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-      <span style="position: fixed; top: 0; right: 0; bottom: 0; width: 1rem; background: rgba(0, 0, 255, 0.1)"> </span>
+      <span class="viewportFrame viewportFrame--top"></span>
+      <span class="viewportFrame viewportFrame--bottom"></span>
+      <span class="viewportFrame viewportFrame--left"></span>
+      <span class="viewportFrame viewportFrame--right"></span>
       <!--   Top Left to right   -->
       <span style="position: absolute; top: 1.5rem; left: 1rem">
         <p-popover [direction]="'right'">
