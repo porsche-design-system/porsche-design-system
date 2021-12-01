@@ -38,47 +38,49 @@ const getPopoverPositionStyle = (direction: PopoverDirection): JssStyle => {
   return directionPositionMap[direction];
 };
 
-const getArrowStyle = (direction: PopoverDirection, backgroundColor: string): JssStyle => {
-  const borderWidth = '.75rem';
-  const transparentColor = 'transparent';
-  const glue = ' ';
+const borderWidth = '.75rem';
+const transparentColor = 'transparent';
+const backgroundColor = color.background.default;
+const glue = ' ';
 
-  const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
-    top: {
-      top: 0,
-      left: '50%',
-      transform: 'translateX(-50%)',
-      borderWidth: [borderWidth, borderWidth, 0].join(glue),
-      borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
-    },
-    right: {
-      right: 0,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
-      borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
-    },
-    bottom: {
-      bottom: 0,
-      left: '50%',
-      transform: 'translateX(-50%)',
-      borderWidth: [0, borderWidth, borderWidth].join(glue),
-      borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
-    },
-    left: {
-      left: 0,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
-      borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
-    },
-  };
+const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
+  top: {
+    top: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderWidth: [borderWidth, borderWidth, 0].join(glue),
+    borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
+  },
+  right: {
+    right: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
+    borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
+  },
+  bottom: {
+    bottom: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderWidth: [0, borderWidth, borderWidth].join(glue),
+    borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
+  },
+  left: {
+    left: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
+    borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
+  },
+};
 
+const getArrowStyle = (direction: PopoverDirection): JssStyle => {
   return directionArrowMap[direction];
 };
 
 export const getComponentCss = (direction: PopoverDirection): string => {
   const mediaQueryXS = mediaQuery('xs');
+  const spacerBox = '-1rem';
 
   return getCss({
     ...buildHostStyles({
@@ -91,10 +93,10 @@ export const getComponentCss = (direction: PopoverDirection): string => {
     }),
     spacer: {
       position: 'absolute',
-      top: '-1rem',
-      left: '-1rem',
-      right: '-1rem',
-      bottom: '-1rem',
+      top: spacerBox,
+      left: spacerBox,
+      right: spacerBox,
+      bottom: spacerBox,
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
       pointerEvents: 'none',
       animation: 'var(--p-animation-duration__popover, 240ms) $fadeIn ease forwards',
@@ -104,7 +106,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         width: 0,
         height: 0,
         borderStyle: 'solid',
-        ...getArrowStyle(direction, color.background.default),
+        ...getArrowStyle(direction),
       },
     },
     popover: {
