@@ -84,11 +84,10 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
-  elementSelector?: string;
 };
 
 export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: VRTestOptions) => {
-  const { scenario, elementSelector = '#app', ...otherOptions } = options || {};
+  const { scenario, ...otherOptions } = options || {};
   const { baseUrl } = customOptions ?? defaultOptions;
 
   return vrt.test(
@@ -104,6 +103,6 @@ export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: st
         await scenario(page);
       }
     },
-    { elementSelector, ...otherOptions }
+    { elementSelector: '#app', ...otherOptions }
   );
 };
