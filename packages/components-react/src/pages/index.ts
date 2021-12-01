@@ -27,7 +27,6 @@ export * from './ModalScrollable';
 export * from './Overview';
 export * from './Pagination';
 export * from './Popover';
-export * from './PopoverOverview';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
 export * from './Spinner';
