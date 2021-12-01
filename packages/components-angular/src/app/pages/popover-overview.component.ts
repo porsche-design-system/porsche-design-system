@@ -164,13 +164,5 @@ export class PopoverOverviewComponent implements OnInit {
   ngOnInit() {
     // remove selection from screenshot
     document.querySelector('select').remove();
-    // Enable multiple open popovers
-    document.addEventListener(
-      'mousedown',
-      (e) => {
-        e.stopPropagation();
-      },
-      true
-    );
   }
 }
