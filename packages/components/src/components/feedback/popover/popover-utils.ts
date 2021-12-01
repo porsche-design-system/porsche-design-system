@@ -24,13 +24,13 @@ export const isWithinViewport = (
 
   switch (direction) {
     case 'top':
-      return popoverTop >= safeZone && isWithinXAxis;
+      return isWithinXAxis && popoverTop >= safeZone;
     case 'right':
-      return popoverRight <= viewportWidth - safeZone && isWithinYAxis;
+      return isWithinYAxis && popoverRight <= viewportWidth - safeZone;
     case 'bottom':
-      return popoverBottom <= viewportHeight - safeZone && isWithinXAxis;
+      return isWithinXAxis && popoverBottom <= viewportHeight - safeZone;
     case 'left':
-      return popoverLeft >= safeZone && isWithinYAxis;
+      return isWithinYAxis && popoverLeft >= safeZone;
   }
 };
 
