@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.7.0-beta.3] - 2021-11-30
+
+#### Added
+- `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers
+
 #### Fixed
 - `Link` and `Link Social` not adapting slotted anchor to the width of the element 
 
