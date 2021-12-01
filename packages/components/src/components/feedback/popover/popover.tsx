@@ -94,8 +94,8 @@ export class Popover {
   // TODO: wrap description with p tag?
   // TODO: Z-Index into docu
   // TODO: document p tag if needed
-  private handleEscapeClick = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' || e.key === 'Esc') {
+  private handleEscapeClick = ({ key }: KeyboardEvent): void => {
+    if (key === 'Escape' || key === 'Esc') {
       this.button.focus();
     }
   };
