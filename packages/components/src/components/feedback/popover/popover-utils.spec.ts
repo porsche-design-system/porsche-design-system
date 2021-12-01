@@ -7,10 +7,10 @@ import {
   onClickOutside,
   onKeyboardPress,
   POPOVER_DIRECTIONS,
-  PopoverDirection,
   registeredPopovers,
   unobserveClickOutside,
 } from './popover-utils';
+import type { PopoverDirection } from './popover-utils';
 import * as popoverUtils from './popover-utils';
 import { Popover } from './popover';
 
@@ -64,61 +64,6 @@ const placeElementOutside = (direction): number => {
 
 const spacer = document.createElement('div');
 const popover = document.createElement('div');
-
-describe('mockBoundingClientRect()', () => {
-  it('should mock boundingClient of element', () => {
-    expect(popover.getBoundingClientRect()).toEqual({
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0,
-      x: 0,
-      y: 0,
-    });
-    mockBoundingClientRect({ element: popover });
-
-    expect(popover.getBoundingClientRect()).toEqual({
-      bottom: 450,
-      height: 100,
-      left: 450,
-      right: 450,
-      top: 450,
-      width: 100,
-    });
-  });
-});
-
-describe('setViewport()', () => {
-  it('should set viewport to 1000 x 1000', () => {
-    Object.defineProperties(document.documentElement, {
-      clientWidth: {
-        value: 0,
-        configurable: true,
-      },
-      clientHeight: {
-        value: 0,
-        configurable: true,
-      },
-    });
-    expect(document.documentElement.clientWidth).toBe(0);
-    expect(document.documentElement.clientHeight).toBe(0);
-
-    setViewport();
-    expect(document.documentElement.clientWidth).toBe(1000);
-    expect(document.documentElement.clientHeight).toBe(1000);
-  });
-});
-
-describe('placeElementOutside()', () => {
-  it.each<PopoverDirection>(['top', 'left'])('should be 15 on %s', (popoverDirection) => {
-    expect(placeElementOutside(popoverDirection)).toBe(exceedSpaceTopLeft);
-  });
-  it.each<PopoverDirection>(['bottom', 'right'])('should be 985 on %s', (popoverDirection) => {
-    expect(placeElementOutside(popoverDirection)).toBe(exceedSpaceBottomRight);
-  });
-});
 
 describe('isWithinViewport()', () => {
   setViewport();
