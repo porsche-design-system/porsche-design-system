@@ -8,8 +8,10 @@ import {
   getFocusStyles,
   getInset,
   GetStylesFunction,
+  getThemedColors,
   getTransition,
   isDark,
+  isLightElectric,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -20,25 +22,41 @@ const { darkTheme } = color;
 
 const getVariantColors = (
   variant: LinkVariant,
-  isDarkTheme: boolean
+  theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string } => {
+  const isDarkTheme = isDark(theme);
+  const isLightElectricTheme = isLightElectric(theme);
+  const { brandColor, textColor, contrastHighColor } = getThemedColors(theme);
+
   switch (variant) {
     case 'primary':
       return {
-        baseColor: isDarkTheme ? darkTheme.brand : color.brand,
-        baseColorHover: isDarkTheme ? colorDarken.darkTheme.state.hover : colorDarken.state.hover,
+        baseColor: brandColor,
+        baseColorHover: isDarkTheme
+          ? colorDarken.darkTheme.state.hover
+          : isLightElectricTheme
+          ? colorDarken.lightElectricTheme.state.hover
+          : colorDarken.state.hover,
         textColor: darkTheme.default,
       };
     case 'tertiary':
       return {
-        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? darkTheme.default : colorDarken.neutralContrast.high,
-        textColor: isDarkTheme ? darkTheme.default : color.default,
+        baseColor: isDarkTheme ? darkTheme.default : contrastHighColor,
+        baseColorHover: isDarkTheme
+          ? darkTheme.default
+          : isLightElectricTheme
+          ? colorDarken.neutralContrast.high
+          : colorDarken.neutralContrast.high,
+        textColor,
       };
     default:
       return {
-        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? colorDarken.darkTheme.default : colorDarken.neutralContrast.high,
+        baseColor: isDarkTheme ? darkTheme.default : contrastHighColor,
+        baseColorHover: isDarkTheme
+          ? colorDarken.darkTheme.default
+          : isLightElectricTheme
+          ? colorDarken.lightElectricTheme.neutralContrast.high
+          : colorDarken.neutralContrast.high,
         textColor: isDarkTheme ? color.default : darkTheme.default,
       };
   }
@@ -121,7 +139,7 @@ export const getComponentCss = (
 ): string => {
   const isDarkTheme = isDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { baseColor, baseColorHover, textColor } = getVariantColors(variant, isDarkTheme);
+  const { baseColor, baseColorHover, textColor } = getVariantColors(variant, theme);
 
   return getCss(
     mergeDeep<Styles>(

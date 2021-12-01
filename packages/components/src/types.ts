@@ -23,7 +23,7 @@ export type TextColor =
 
 export type TextAlign = 'left' | 'center' | 'right';
 
-export type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'light-electric';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
