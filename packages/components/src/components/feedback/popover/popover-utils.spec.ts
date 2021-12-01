@@ -2,7 +2,7 @@ import {
   calcSpaceForDirections,
   getAutoDirection,
   getOffset,
-  isWithinViewport,
+  isElementWithinViewport,
   observeClickOutside,
   onClickOutside,
   onKeyboardPress,
@@ -65,7 +65,7 @@ const placeElementOutside = (direction): number => {
 const spacer = document.createElement('div');
 const popover = document.createElement('div');
 
-describe('isWithinViewport()', () => {
+describe('isElementWithinViewport()', () => {
   setViewport();
 
   describe('centered', () => {
@@ -75,7 +75,7 @@ describe('isWithinViewport()', () => {
         mockBoundingClientRect({ element: spacer });
         mockBoundingClientRect({ element: popover });
 
-        expect(isWithinViewport(spacer, popover, direction)).toBe(true);
+        expect(isElementWithinViewport(spacer, popover, direction)).toBe(true);
       }
     );
   });
@@ -88,7 +88,7 @@ describe('isWithinViewport()', () => {
     mockBoundingClientRect({ element: spacer });
     mockBoundingClientRect({ element: popover, ...popoverPosition });
 
-    expect(isWithinViewport(spacer, popover, popoverDirection)).toBe(false);
+    expect(isElementWithinViewport(spacer, popover, popoverDirection)).toBe(false);
   });
 
   describe('isWithinXAxis', () => {
@@ -99,10 +99,10 @@ describe('isWithinViewport()', () => {
       (direction) => {
         // left
         mockBoundingClientRect({ element: spacer, left: exceedSpaceTopLeft });
-        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
         // right
         mockBoundingClientRect({ element: spacer, right: exceedSpaceBottomRight });
-        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
       }
     );
   });
@@ -115,10 +115,10 @@ describe('isWithinViewport()', () => {
       (direction) => {
         // top
         mockBoundingClientRect({ element: spacer, top: exceedSpaceTopLeft });
-        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
         // bottom
         mockBoundingClientRect({ element: spacer, bottom: exceedSpaceBottomRight });
-        expect(isWithinViewport(spacer, popover, direction)).toBe(false);
+        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
       }
     );
   });
