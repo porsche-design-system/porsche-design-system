@@ -3,105 +3,92 @@ import { Popover } from './popover';
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
 
-const safeZone = 16;
+const safeZonePx = 16;
 
-export const isWithinViewport = (
+export const isElementWithinViewport = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection
 ): boolean => {
-  const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-  const { top: spacerTop, right: spacerRight, bottom: spacerBottom, left: spacerLeft } = spacer.getBoundingClientRect();
-  const {
-    top: popoverTop,
-    right: popoverRight,
-    bottom: popoverBottom,
-    left: popoverLeft,
-  } = popover.getBoundingClientRect();
+  const { clientWidth, clientHeight } = document.documentElement;
+  const spacerRect = spacer.getBoundingClientRect();
+  const popoverRect = popover.getBoundingClientRect();
 
-  const isWithinXAxis = spacerLeft >= safeZone && spacerRight <= viewportWidth - safeZone;
-  const isWithinYAxis = spacerTop >= safeZone && spacerBottom <= viewportHeight - safeZone;
+  const isWithinXAxis = spacerRect.left >= safeZonePx && spacerRect.right <= clientWidth - safeZonePx;
+  const isWithinYAxis = spacerRect.top >= safeZonePx && spacerRect.bottom <= clientHeight - safeZonePx;
 
   switch (direction) {
     case 'top':
-      return isWithinXAxis && popoverTop >= safeZone;
+      return isWithinXAxis && popoverRect.top >= safeZonePx;
     case 'right':
-      return isWithinYAxis && popoverRight <= viewportWidth - safeZone;
+      return isWithinYAxis && popoverRect.right <= clientWidth - safeZonePx;
     case 'bottom':
-      return isWithinXAxis && popoverBottom <= viewportHeight - safeZone;
+      return isWithinXAxis && popoverRect.bottom <= clientHeight - safeZonePx;
     case 'left':
-      return isWithinYAxis && popoverLeft >= safeZone;
+      return isWithinYAxis && popoverRect.left >= safeZonePx;
   }
 };
 
-type PopoverBoundingBox = {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-};
-
-export const calcSpaceForDirections = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverBoundingBox => {
-  const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-  const { top: spacerTop, left: spacerLeft, bottom: spacerBottom, right: spacerRight } = spacer.getBoundingClientRect();
-  const { width: popoverWidth, height: popoverHeight } = popover.getBoundingClientRect();
+export const calcSpaceForDirections = (
+  spacer: HTMLDivElement,
+  popover: HTMLDivElement
+): { [key in PopoverDirection]: number } => {
+  const { clientWidth, clientHeight } = document.documentElement;
+  const spacerRect = spacer.getBoundingClientRect();
+  const popoverRect = popover.getBoundingClientRect();
 
   // determine the **theoretically** maximum available space in all directions within viewport
   return {
-    top: spacerTop - popoverHeight,
-    right: viewportWidth - (spacerRight + popoverWidth),
-    bottom: viewportHeight - (spacerBottom + popoverHeight),
-    left: spacerLeft - popoverWidth,
+    top: spacerRect.top - popoverRect.height,
+    right: clientWidth - (spacerRect.right + popoverRect.width),
+    bottom: clientHeight - (spacerRect.bottom + popoverRect.height),
+    left: spacerRect.left - popoverRect.width,
   };
 };
 
 export const getAutoDirection = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverDirection => {
-  const direction = calcSpaceForDirections(spacer, popover);
+  const directionSpaces = calcSpaceForDirections(spacer, popover);
 
-  return Object.keys(direction).reduce((a, b) => (direction[a] > direction[b] ? a : b)) as PopoverDirection;
+  return (Object.keys(directionSpaces) as PopoverDirection[]).reduce(
+    (resultDirection, currentDirection) =>
+      directionSpaces[resultDirection] > directionSpaces[currentDirection] ? resultDirection : currentDirection,
+    'bottom'
+  );
 };
 
 export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direction: PopoverDirection): string => {
-  const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-  const {
-    top: spacerTop,
-    right: spacerRight,
-    bottom: spacerBottom,
-    left: spacerLeft,
-    width: spacerWidth,
-    height: spacerHeight,
-  } = spacer.getBoundingClientRect();
-  const {
-    top: popoverTop,
-    right: popoverRight,
-    bottom: popoverBottom,
-    left: popoverLeft,
-    width: popoverWidth,
-    height: popoverHeight,
-  } = popover.getBoundingClientRect();
+  const { clientWidth, clientHeight } = document.documentElement;
+  const spacerRect = spacer.getBoundingClientRect();
+  const popoverRect = popover.getBoundingClientRect();
 
   let offset = '0';
 
   // check x-axis offset is relevant for popover
-  if (['top', 'bottom'].includes(direction) && popoverWidth > spacerWidth) {
+  if (['top', 'bottom'].includes(direction) && popoverRect.width > spacerRect.width) {
     // check if popover exceeds left side of viewport
-    if (popoverLeft < safeZone) {
-      offset = `0 0 0 ${Math.min(safeZone - popoverLeft, spacerLeft - popoverLeft)}px`;
+    if (popoverRect.left < safeZonePx) {
+      offset = `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
     }
     // check if popover exceeds right side of viewport
-    else if (popoverRight > viewportWidth - safeZone) {
-      offset = `0 0 0 ${Math.max(viewportWidth - safeZone - popoverRight, spacerRight - popoverRight)}px`;
+    else if (popoverRect.right > clientWidth - safeZonePx) {
+      offset = `0 0 0 ${Math.max(
+        clientWidth - safeZonePx - popoverRect.right,
+        spacerRect.right - popoverRect.right
+      )}px`;
     }
   }
   // check y-axis offset is relevant for popover
-  else if (['left', 'right'].includes(direction) && popoverHeight > spacerHeight) {
+  else if (['left', 'right'].includes(direction) && popoverRect.height > spacerRect.height) {
     // check if popover exceeds top side of viewport
-    if (popoverTop < safeZone) {
-      offset = `${Math.min(safeZone - popoverTop, spacerTop - popoverTop)}px 0 0 0`;
+    if (popoverRect.top < safeZonePx) {
+      offset = `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
     }
     // check if popover exceeds bottom side of viewport
-    else if (popoverBottom > viewportHeight - safeZone) {
-      offset = `${Math.max(viewportHeight - safeZone - popoverBottom, spacerBottom - popoverBottom)}px 0 0 0`;
+    else if (popoverRect.bottom > clientHeight - safeZonePx) {
+      offset = `${Math.max(
+        clientHeight - safeZonePx - popoverRect.bottom,
+        spacerRect.bottom - popoverRect.bottom
+      )}px 0 0 0`;
     }
   }
 
