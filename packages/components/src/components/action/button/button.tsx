@@ -52,7 +52,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;

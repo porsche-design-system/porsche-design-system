@@ -15,7 +15,7 @@ export class ContentWrapper {
   @Prop() public backgroundColor?: 'transparent' | 'default' = 'transparent';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   public render(): JSX.Element {
     const rootClasses = {

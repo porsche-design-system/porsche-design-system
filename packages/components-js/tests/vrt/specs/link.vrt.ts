@@ -51,7 +51,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <a href="#">Slotted Tertiary</a>
         </p-link>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] }),
+        {
+          injectIntoHead: head,
+        }
+      );
 
       await forceHoveredState(page, '.hovered > p-link >>> a');
       await forceHoveredState(page, '.hovered > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling

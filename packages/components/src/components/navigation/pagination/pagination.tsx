@@ -51,7 +51,7 @@ export class Pagination {
   @Prop() public allyLabelNext?: string = 'Next page';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;

@@ -29,7 +29,7 @@ export class Headline {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
