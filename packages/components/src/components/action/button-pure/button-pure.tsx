@@ -12,6 +12,7 @@ import {
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
+  isLightElectric,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -74,7 +75,7 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
@@ -120,6 +121,7 @@ export class ButtonPure {
       ['root']: true,
       ['root--loading']: this.loading && hasIcon,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ['root--active']: this.active,
       ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
