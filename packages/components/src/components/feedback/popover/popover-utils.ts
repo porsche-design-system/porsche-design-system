@@ -97,27 +97,24 @@ export const getOffset = (spacer: HTMLDivElement, popover: HTMLDivElement, direc
 
 export const registeredPopovers: Popover[] = [];
 
-export const onClickOutside = (clickEvent: MouseEvent): void => {
-  registeredPopovers.forEach((popover) => {
-    if (popover.open && !clickEvent.composedPath().includes(popover.host)) {
-      popover.open = false;
-    }
-  });
+export const onDocumentMousedown = (e: MouseEvent): void => {
+  const popover = registeredPopovers.find((popover) => popover.open && !e.composedPath().includes(popover.host));
+  if (popover) {
+    popover.open = false;
+  }
 };
 
-export const onKeyboardPress = (clickEvent: KeyboardEvent): void => {
-  registeredPopovers.forEach((popover) => {
-    if (popover.open) {
-      if (
-        ((clickEvent.key === 'SpaceBar' || clickEvent.key === 'Enter' || clickEvent.key === ' ') &&
-          !clickEvent.composedPath().includes(popover.host)) ||
-        clickEvent.key === 'Escape' ||
-        clickEvent.key === 'Esc'
-      ) {
-        popover.open = false;
-      }
+export const onDocumentKeydown = (e: KeyboardEvent): void => {
+  const { key } = e;
+  const isEscape = ['Escape', 'Esc'].includes(key);
+  if (isEscape || ['SpaceBar', 'Enter', ' '].includes(key)) {
+    const popover = registeredPopovers.find(
+      (popover) => popover.open && (isEscape || !e.composedPath().includes(popover.host))
+    );
+    if (popover) {
+      popover.open = false;
     }
-  });
+  }
 };
 
 export const observeClickOutside = (popover: Popover): void => {
