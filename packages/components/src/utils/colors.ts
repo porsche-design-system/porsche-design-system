@@ -32,7 +32,7 @@ export const colorDarken: DeepPartial<typeof color> = {
       high: '#151718',
     },
     state: {
-      hover: '#0083b7',
+      hover: '#0084b7',
     },
   },
 };
