@@ -51,6 +51,9 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateX(-50%)',
     borderWidth: [borderWidth, borderWidth, 0].join(glue),
     borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
+    '@media (forced-colors: active)': {
+      borderColor: ['CanvasText', 'Canvas', 'Canvas'].join(glue),
+    },
   },
   right: {
     right: 0,
@@ -58,6 +61,9 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
     borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
+    '@media (forced-colors: active)': {
+      borderColor: ['Canvas', 'CanvasText', 'Canvas', 'Canvas'].join(glue),
+    },
   },
   bottom: {
     bottom: 0,
@@ -65,6 +71,9 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateX(-50%)',
     borderWidth: [0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
+    '@media (forced-colors: active)': {
+      borderColor: ['Canvas', 'Canvas', 'CanvasText'].join(glue),
+    },
   },
   left: {
     left: 0,
@@ -72,6 +81,9 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
+    '@media (forced-colors: active)': {
+      borderColor: ['Canvas', 'Canvas', 'Canvas', 'CanvasText'].join(glue),
+    },
   },
 };
 
@@ -129,6 +141,9 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       whiteSpace: 'inherit',
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),
+      },
+      '@media (forced-colors: active)': {
+        outline: '1px solid CanvasText',
       },
     },
     '@keyframes fadeIn': {
