@@ -5,6 +5,7 @@ import {
   improveFocusHandlingForCustomElement,
   isDark,
   isDisabledOrLoading,
+  isLightElectric,
   mapBreakpointPropToClasses,
   parseAndGetAriaAttributes,
 } from '../../../utils';
@@ -52,7 +53,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
@@ -79,6 +80,7 @@ export class Button {
       ['root--loading']: this.loading,
       [`root--${this.variant}`]: this.variant !== 'secondary',
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
