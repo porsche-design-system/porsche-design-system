@@ -179,10 +179,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   });
 
   it('should set correct inline content height using MutationObserver and window resize listener', async () => {
-    const resizeObserver = await page.evaluate(() => {
-      const resizeObserver = { ...window.ResizeObserver };
+    await page.evaluate(() => {
       delete window.ResizeObserver;
-      return resizeObserver;
     });
 
     await initAccordion({ otherMarkup: clickHandlerScript });
@@ -198,11 +196,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     });
 
     expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
-
-    await page.evaluate((resizeObserver) => {
-      // @ts-ignore
-      window.ResizeObserver = resizeObserver;
-    }, resizeObserver as any);
   });
 
   describe('events', () => {
