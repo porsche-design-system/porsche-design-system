@@ -52,7 +52,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, borderWidth, 0].join(glue),
     borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
     '@media (forced-colors: active)': {
-      borderColor: ['CanvasText', 'Canvas', 'Canvas'].join(glue),
+      borderColor: ['canvastext', 'canvas', 'canvas'].join(glue),
     },
   },
   right: {
@@ -62,7 +62,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
     borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
     '@media (forced-colors: active)': {
-      borderColor: ['Canvas', 'CanvasText', 'Canvas', 'Canvas'].join(glue),
+      borderColor: ['canvas', 'canvastext', 'canvas', 'canvas'].join(glue),
     },
   },
   bottom: {
@@ -72,7 +72,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
     '@media (forced-colors: active)': {
-      borderColor: ['Canvas', 'Canvas', 'CanvasText'].join(glue),
+      borderColor: ['canvas', 'canvas', 'canvastext'].join(glue),
     },
   },
   left: {
@@ -82,7 +82,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
     '@media (forced-colors: active)': {
-      borderColor: ['Canvas', 'Canvas', 'Canvas', 'CanvasText'].join(glue),
+      borderColor: ['canvas', 'canvas', 'canvas', 'canvastext'].join(glue),
     },
   },
 };
@@ -143,7 +143,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         maxWidth: pxToRemWithUnit(432),
       },
       '@media (forced-colors: active)': {
-        outline: '1px solid CanvasText',
+        outline: '1px solid canvastext',
       },
     },
     '@keyframes fadeIn': {
