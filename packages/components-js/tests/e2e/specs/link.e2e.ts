@@ -189,7 +189,7 @@ describe('link', () => {
 
       const host = await getHost();
       const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
-      const rootBorderWidth = parseInt(rootBorderWidthInPx.slice(0, -2), 10) * 2;
+      const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
 
       const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
 
