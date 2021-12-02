@@ -2,6 +2,7 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
+  getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
@@ -22,6 +23,7 @@ describe('link', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-link');
+  const getRoot = () => selectNode(page, 'p-link >>> .root');
   const getLink = () => selectNode(page, 'p-link >>> a');
   const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
   const getSlottedLink = () => selectNode(page, 'p-link a');
@@ -32,7 +34,7 @@ describe('link', () => {
     return setContentWithDesignSystem(
       page,
       `
-      <p-link onclick="return false;" ${!useSlottedAnchor ? 'href="#" ' : ''}>
+      <p-link onclick="return false;" ${!useSlottedAnchor ? 'href="#" ' : 'style="width: 500px;"'}>
         ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
         ${useSlottedAnchor ? '</a>' : ''}
@@ -179,6 +181,20 @@ describe('link', () => {
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
+  });
+
+  describe('slotted anchor', () => {
+    it('should have the same width as host', async () => {
+      await initLink({ useSlottedAnchor: true });
+
+      const host = await getHost();
+      const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
+      const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
+
+      const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
+
+      expect(`${anchorWidth + rootBorderWidth}px`).toBe(await getElementStyle(host, 'width'));
+    });
   });
 
   describe('lifecycle', () => {
