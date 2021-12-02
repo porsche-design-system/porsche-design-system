@@ -170,7 +170,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -812,7 +812,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -1409,7 +1409,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -2083,7 +2083,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The text weight.
          */

@@ -17,6 +17,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   isDark,
+  isLightElectric,
   mapBreakpointPropToClasses,
   scrollElementTo,
   setAttribute,
@@ -37,7 +38,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -105,6 +106,7 @@ export class TabsBar {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ['root--weight-semibold']: this.weight === 'semibold',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
