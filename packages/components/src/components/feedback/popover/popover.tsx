@@ -1,10 +1,10 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import {
   getAutoDirection,
-  getOffset,
+  getPopoverMargin,
   isElementWithinViewport,
-  observeClickOutside,
-  unobserveClickOutside,
+  addDocumentEventListener,
+  removeDocumentEventListener,
 } from './popover-utils';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
 import { getComponentCss } from './popover-styles';
@@ -36,7 +36,7 @@ export class Popover {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    observeClickOutside(this);
+    addDocumentEventListener(this);
   }
 
   public componentWillRender(): void {
@@ -55,12 +55,12 @@ export class Popover {
         }
       }
 
-      this.popover.style.margin = getOffset(this.spacer, this.popover, direction);
+      this.popover.style.margin = getPopoverMargin(this.spacer, this.popover, direction);
     }
   }
 
   public disconnectedCallback(): void {
-    unobserveClickOutside(this);
+    removeDocumentEventListener(this);
   }
 
   public render(): JSX.Element {
