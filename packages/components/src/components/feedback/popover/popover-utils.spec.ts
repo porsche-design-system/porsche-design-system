@@ -1,14 +1,14 @@
 import {
   calcSpaceForDirections,
   getAutoDirection,
-  getOffset,
+  getPopoverMargin,
   isElementWithinViewport,
-  observeClickOutside,
-  onClickOutside,
-  onKeyboardPress,
+  addDocumentEventListener,
+  onDocumentMousedown,
+  onDocumentKeydown,
   POPOVER_DIRECTIONS,
   registeredPopovers,
-  unobserveClickOutside,
+  removeDocumentEventListener,
 } from './popover-utils';
 import type { PopoverDirection } from './popover-utils';
 import * as popoverUtils from './popover-utils';
@@ -164,13 +164,13 @@ describe('getAutoDirection()', () => {
   });
 });
 
-describe('getOffset', () => {
+describe('getPopoverMargin()', () => {
   setViewport();
 
   it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return 0 if within viewport', (popoverDirection) => {
     mockBoundingClientRect({ element: spacer });
     mockBoundingClientRect({ element: popover });
-    expect(getOffset(spacer, popover, popoverDirection)).toBe('0');
+    expect(getPopoverMargin(spacer, popover, popoverDirection)).toBe('0');
   });
 
   describe('axis offset', () => {
@@ -183,7 +183,7 @@ describe('getOffset', () => {
 
           const expected = position === 'left' ? '0 0 0 -15px' : '-15px 0 0 0';
 
-          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
         }
       );
 
@@ -196,7 +196,7 @@ describe('getOffset', () => {
 
           const expected = position === 'left' ? '0 0 0 1px' : '1px 0 0 0';
 
-          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
         }
       );
     });
@@ -210,7 +210,7 @@ describe('getOffset', () => {
 
           const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
 
-          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
         }
       );
 
@@ -223,7 +223,7 @@ describe('getOffset', () => {
 
           const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
 
-          expect(getOffset(spacer, popover, popoverDirection)).toEqual(expected);
+          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
         }
       );
     });
@@ -242,7 +242,7 @@ describe('onClickOutside()', () => {
 
     const clickEvent = new MouseEvent('mousedown');
     jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [popover.host]);
-    onClickOutside(clickEvent);
+    onDocumentMousedown(clickEvent);
 
     expect(popover.open).toBe(true);
   });
@@ -252,7 +252,7 @@ describe('onClickOutside()', () => {
     popover.open = true;
     registeredPopovers.push(popover);
 
-    onClickOutside(new MouseEvent('mousedown'));
+    onDocumentMousedown(new MouseEvent('mousedown'));
 
     expect(popover.open).toBe(false);
   });
@@ -263,11 +263,11 @@ describe('onClickOutside()', () => {
 
     const clickEvent = new MouseEvent('mousedown');
     const spy = jest.spyOn(clickEvent, 'composedPath');
-    onClickOutside(clickEvent);
+    onDocumentMousedown(clickEvent);
     expect(spy).toBeCalledTimes(0);
 
     popover.open = true;
-    onClickOutside(clickEvent);
+    onDocumentMousedown(clickEvent);
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -281,12 +281,12 @@ describe('onClickOutside()', () => {
 
     const clickEvent = new MouseEvent('mousedown');
     const spy = jest.spyOn(clickEvent, 'composedPath');
-    onClickOutside(clickEvent);
+    onDocumentMousedown(clickEvent);
     expect(spy).toBeCalledTimes(2);
   });
 });
 
-describe('onKeyboardPress()', () => {
+describe('onDocumentKeydown()', () => {
   beforeEach(() => {
     registeredPopovers.length = 0;
   });
@@ -296,7 +296,7 @@ describe('onKeyboardPress()', () => {
     popover.open = true;
     registeredPopovers.push(popover);
 
-    onKeyboardPress(new KeyboardEvent('keydown', { key }));
+    onDocumentKeydown(new KeyboardEvent('keydown', { key }));
 
     expect(popover.open).toBe(false);
   });
@@ -308,7 +308,7 @@ describe('onKeyboardPress()', () => {
       popover.open = true;
       registeredPopovers.push(popover);
 
-      onKeyboardPress(new KeyboardEvent('keydown', { key }));
+      onDocumentKeydown(new KeyboardEvent('keydown', { key }));
 
       expect(popover.open).toBe(false);
     }
@@ -323,7 +323,7 @@ describe('onKeyboardPress()', () => {
       const keyboardEvent = new KeyboardEvent('keydown', { key });
       jest.spyOn(keyboardEvent, 'composedPath').mockImplementation(() => [popover.host]);
 
-      onKeyboardPress(keyboardEvent);
+      onDocumentKeydown(keyboardEvent);
 
       expect(popover.open).toBe(true);
     }
@@ -335,11 +335,11 @@ describe('onKeyboardPress()', () => {
 
     const keyboardEvent = new KeyboardEvent('keydown', { key });
     const spy = jest.spyOn(keyboardEvent, 'composedPath');
-    onKeyboardPress(keyboardEvent);
+    onDocumentKeydown(keyboardEvent);
     expect(spy).toBeCalledTimes(0);
 
     popover.open = true;
-    onKeyboardPress(keyboardEvent);
+    onDocumentKeydown(keyboardEvent);
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -349,14 +349,14 @@ describe('onKeyboardPress()', () => {
 
     const validClickEvent = new KeyboardEvent('keydown', { key: 'Enter' });
     const spy = jest.spyOn(validClickEvent, 'composedPath');
-    onKeyboardPress(validClickEvent);
+    onDocumentKeydown(validClickEvent);
 
     expect(spy).toBeCalledTimes(0);
 
     popover.open = true;
     const inValidClickEvent = new KeyboardEvent('keydown', { key: 'Escape' });
     const spy2 = jest.spyOn(validClickEvent, 'composedPath');
-    onKeyboardPress(inValidClickEvent);
+    onDocumentKeydown(inValidClickEvent);
 
     expect(spy2).toBeCalledTimes(0);
   });
@@ -371,12 +371,12 @@ describe('onKeyboardPress()', () => {
 
     const clickEvent = new MouseEvent('keydown');
     const spy = jest.spyOn(clickEvent, 'composedPath');
-    onClickOutside(clickEvent);
+    onDocumentMousedown(clickEvent);
     expect(spy).toBeCalledTimes(2);
   });
 });
 
-describe('observeClickOutside()', () => {
+describe('addDocumentEventListener()', () => {
   beforeEach(() => {
     registeredPopovers.length = 0;
   });
@@ -385,7 +385,7 @@ describe('observeClickOutside()', () => {
     const popover = new Popover();
 
     const spy = jest.spyOn(document, 'addEventListener');
-    observeClickOutside(popover);
+    addDocumentEventListener(popover);
 
     expect(spy).toBeCalledWith('mousedown', expect.anything());
     expect(spy).toBeCalledWith('keydown', expect.anything());
@@ -393,7 +393,7 @@ describe('observeClickOutside()', () => {
 
   it('should push popover into registeredPopovers array', () => {
     const popover = new Popover();
-    observeClickOutside(popover);
+    addDocumentEventListener(popover);
 
     expect(registeredPopovers.length).toBe(1);
     expect(registeredPopovers[0]).toBe(popover);
@@ -402,7 +402,7 @@ describe('observeClickOutside()', () => {
   it('should not push popover into registeredPopovers array when already exists', () => {
     const popover = new Popover();
     registeredPopovers.push(popover);
-    observeClickOutside(popover);
+    addDocumentEventListener(popover);
 
     expect(registeredPopovers.length).toBe(1);
   });
@@ -418,17 +418,17 @@ describe('unobserveClickOutside()', () => {
     const popover2 = new Popover();
     const popover3 = new Popover();
 
-    observeClickOutside(popover1);
-    observeClickOutside(popover2);
-    observeClickOutside(popover3);
+    addDocumentEventListener(popover1);
+    addDocumentEventListener(popover2);
+    addDocumentEventListener(popover3);
     expect(registeredPopovers.length).toBe(3);
 
-    unobserveClickOutside(popover1);
+    removeDocumentEventListener(popover1);
     expect(registeredPopovers.length).toBe(2);
     expect(registeredPopovers[0]).toEqual(popover2);
     expect(registeredPopovers[1]).toEqual(popover3);
 
-    unobserveClickOutside(popover3);
+    removeDocumentEventListener(popover3);
     expect(registeredPopovers.length).toBe(1);
     expect(registeredPopovers[0]).toEqual(popover2);
   });
@@ -440,7 +440,7 @@ describe('unobserveClickOutside()', () => {
     registeredPopovers.push(popover1);
     expect(registeredPopovers.length).toBe(1);
 
-    unobserveClickOutside(popover1);
+    removeDocumentEventListener(popover1);
     expect(registeredPopovers.length).toBe(0);
     expect(spy).toBeCalledWith('mousedown', expect.anything());
     expect(spy).toBeCalledWith('keydown', expect.anything());
