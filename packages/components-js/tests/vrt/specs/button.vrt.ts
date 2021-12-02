@@ -33,7 +33,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-button theme="${theme}" variant="secondary" loading>Loading Secondary</p-button>
         <p-button theme="${theme}" variant="tertiary" loading>Loading Tertiary</p-button>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] }),
+        { injectIntoHead: head }
+      );
 
       await forceHoveredState(page, '.hovered > p-button >>> button');
       await forceFocusedState(page, '.focused > p-button >>> button');
