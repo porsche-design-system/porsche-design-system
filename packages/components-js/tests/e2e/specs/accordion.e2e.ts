@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
+  expectedStyleOnFocus,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -14,7 +14,6 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
-  enableBrowserLogging,
 } from '../helpers';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headline-utils';
 
@@ -162,12 +161,15 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
   });
 
-  const CONTENT_HEIGHT = '26px';
-  fit('should set correct content height using ResizeObserver', async () => {
-    await initAccordion({ isOpen: true });
-    // // const button = await getButton();
-    // // await button.click();
-    // await waitForStencilLifecycle(page);
+  const CONTENT_HEIGHT = '"height: 1.625rem;"';
+  it('should set correct inline content height using ResizeObserver', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
     const inlineStyle = await page.evaluate(() => {
       const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
       return content.style.cssText;
@@ -176,20 +178,31 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
   });
 
-  fit('should set correct content height using MutationObserver and window resize listener', async () => {
-    enableBrowserLogging(page);
-    await page.evaluate(() => {
+  it('should set correct inline content height using MutationObserver and window resize listener', async () => {
+    const resizeObserver = await page.evaluate(() => {
+      const resizeObserver = { ...window.ResizeObserver };
       delete window.ResizeObserver;
+      return resizeObserver;
     });
 
-    await initAccordion({ isOpen: true });
+    await initAccordion({ otherMarkup: clickHandlerScript });
 
-    // const collapsible = await getCollapsible();
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
     const inlineStyle = await page.evaluate(() => {
       const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
       return content.style.cssText;
     });
+
     expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
+
+    await page.evaluate((resizeObserver) => {
+      // @ts-ignore
+      window.ResizeObserver = resizeObserver;
+    }, resizeObserver as any);
   });
 
   describe('events', () => {
