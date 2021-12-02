@@ -790,7 +790,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2057,7 +2057,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
