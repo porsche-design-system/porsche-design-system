@@ -48,7 +48,7 @@ export class SelectWrapperDropdown {
   @Prop() public message?: string;
   @Prop() public state?: FormState;
   @Prop() public direction?: DropdownDirection = 'auto';
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
   @Prop() public filter?: boolean = false;
   @Prop() public required?: boolean = false;
   @Prop() public disabled?: boolean = false;

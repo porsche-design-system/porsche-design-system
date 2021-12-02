@@ -29,7 +29,7 @@ export class Banner {
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Adapts the banner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;

@@ -23,7 +23,7 @@ export class Tabs {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';

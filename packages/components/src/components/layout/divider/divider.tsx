@@ -16,7 +16,7 @@ export class Divider {
   @Prop() public orientation?: BreakpointCustomizable<'vertical' | 'horizontal'> = 'horizontal';
 
   /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   public render(): JSX.Element {
     const rootClasses = {

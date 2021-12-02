@@ -21,7 +21,7 @@ export class LinkSocial {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

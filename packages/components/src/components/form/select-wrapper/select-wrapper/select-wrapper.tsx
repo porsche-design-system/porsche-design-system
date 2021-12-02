@@ -45,7 +45,7 @@ export class SelectWrapper {
   @Prop() public filter?: boolean = false;
 
   /** Adapts the select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: DropdownDirection = 'auto';

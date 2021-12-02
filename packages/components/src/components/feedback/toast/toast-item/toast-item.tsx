@@ -25,7 +25,7 @@ export class ToastItem {
   @Prop() public state?: ToastState = 'neutral';
 
   /** Adapts the toast-item color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Emitted when the close button is clicked. */
   @Event() public dismiss?: EventEmitter<void>;

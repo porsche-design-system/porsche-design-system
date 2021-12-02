@@ -25,25 +25,73 @@ export const getBodyMarkup = (getElements: GetMarkup) => `
     ${getElements()}
   </div>`;
 
-export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup): string => `
-  <div class="playground light hovered">
+export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup, opts?: { theme?: Theme[] }): string => {
+  const { theme = ['light', 'dark'] } = opts ?? {};
+  return `
+  ${
+    theme.includes('light')
+      ? `<div class="playground light hovered">
     ${getThemedElements('light')}
-  </div>
-  <div class="playground dark hovered">
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('dark')
+      ? `<div class="playground dark hovered">
     ${getThemedElements('dark')}
-  </div>
-  <div class="playground light focused">
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('light-electric')
+      ? `<div class="playground light-electric hovered">
+    ${getThemedElements('light-electric')}
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('light')
+      ? `<div class="playground light focused">
+      ${getThemedElements('light')}
+      </div>`
+      : ''
+  }
+  ${
+    theme.includes('dark')
+      ? `<div class="playground dark focused">
+    ${getThemedElements('dark')}
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('light-electric')
+      ? `<div class="playground light-electric focused">
+    ${getThemedElements('light-electric')}
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('light')
+      ? `<div class="playground light focused-hovered">
     ${getThemedElements('light')}
-  </div>
-  <div class="playground dark focused">
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('dark')
+      ? `<div class="playground dark focused-hovered">
     ${getThemedElements('dark')}
-  </div>
-  <div class="playground light focused-hovered">
-    ${getThemedElements('light')}
-  </div>
-  <div class="playground dark focused-hovered">
-    ${getThemedElements('dark')}
-  </div>`;
+    </div>`
+      : ''
+  }
+  ${
+    theme.includes('light-electric')
+      ? `<div class="playground light-electric focused-hovered">
+    ${getThemedElements('light-electric')}
+    </div>`
+      : ''
+  }`;
+};
 
 const s4 = (): string =>
   Math.floor((1 + Math.random()) * 0x10000)

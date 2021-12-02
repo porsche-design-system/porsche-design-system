@@ -14,7 +14,7 @@ export class Spinner {
   @Prop() public size?: SpinnerSize = 'small';
 
   /** Adapts the spinner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttributes>;

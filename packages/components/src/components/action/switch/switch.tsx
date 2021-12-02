@@ -40,7 +40,7 @@ export class Switch {
   @Prop() public tabbable?: boolean = true;
 
   /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
 
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
