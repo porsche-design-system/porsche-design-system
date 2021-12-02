@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+**Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in v3 again.
+- `light-electric` theme for `Link`, `Button`
+
 #### Fixed
 - `Link` and `Link Social` not adapting slotted anchor to the width of the element 
 
