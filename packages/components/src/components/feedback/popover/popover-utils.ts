@@ -65,38 +65,33 @@ export const getPopoverMargin = (
   const spacerRect = spacer.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
 
-  let offset = '0';
-
   // check x-axis offset is relevant for popover
   if (['top', 'bottom'].includes(direction) && popoverRect.width > spacerRect.width) {
     // check if popover exceeds left side of viewport
     if (popoverRect.left < safeZonePx) {
-      offset = `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
+      return `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
     }
     // check if popover exceeds right side of viewport
     else if (popoverRect.right > clientWidth - safeZonePx) {
-      offset = `0 0 0 ${Math.max(
-        clientWidth - safeZonePx - popoverRect.right,
-        spacerRect.right - popoverRect.right
-      )}px`;
+      return `0 0 0 ${Math.max(clientWidth - safeZonePx - popoverRect.right, spacerRect.right - popoverRect.right)}px`;
     }
   }
   // check y-axis offset is relevant for popover
   else if (['left', 'right'].includes(direction) && popoverRect.height > spacerRect.height) {
     // check if popover exceeds top side of viewport
     if (popoverRect.top < safeZonePx) {
-      offset = `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
+      return `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
     }
     // check if popover exceeds bottom side of viewport
     else if (popoverRect.bottom > clientHeight - safeZonePx) {
-      offset = `${Math.max(
+      return `${Math.max(
         clientHeight - safeZonePx - popoverRect.bottom,
         spacerRect.bottom - popoverRect.bottom
       )}px 0 0 0`;
     }
+  } else {
+    return '0';
   }
-
-  return offset;
 };
 
 export const registeredPopovers: Popover[] = [];
