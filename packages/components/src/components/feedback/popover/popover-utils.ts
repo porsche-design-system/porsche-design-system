@@ -48,10 +48,10 @@ export const calcSpaceForDirections = (
 
 export const getAutoDirection = (spacer: HTMLDivElement, popover: HTMLDivElement): PopoverDirection => {
   const directionSpaces = calcSpaceForDirections(spacer, popover);
-
+  // Find direction with the most space
   return (Object.keys(directionSpaces) as PopoverDirection[]).reduce(
     (resultDirection, currentDirection) =>
-      directionSpaces[resultDirection] > directionSpaces[currentDirection] ? resultDirection : currentDirection,
+      directionSpaces[resultDirection] >= directionSpaces[currentDirection] ? resultDirection : currentDirection,
     'bottom'
   );
 };
