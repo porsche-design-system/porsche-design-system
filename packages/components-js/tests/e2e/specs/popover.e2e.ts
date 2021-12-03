@@ -18,7 +18,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-popover');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
-const getButton = () => selectNode(page, 'p-popover >>> p-button-pure');
+const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
 const getTextContent = () => selectNode(page, 'p-popover p');
 const getExtendedMarkup = () => selectNode(page, 'p');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
