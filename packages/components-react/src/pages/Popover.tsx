@@ -7,7 +7,7 @@ export const PopoverPage = (): JSX.Element => {
         <span style={{ position: 'absolute', top: '20%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover>
             <span>
-              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
+              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}
               <em>emphasized</em> and <i>italic</i> text
             </span>
           </PPopover>

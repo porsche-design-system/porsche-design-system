@@ -24,7 +24,7 @@ export const openPopoversAndHighlightSpacer = async (page: Page, withBackground:
     const newPopover = document.createElement('p-popover');
     newPopover.style.margin = '-10rem';
     document.body.appendChild(newPopover);
-    await (window as any).porscheDesignSystem.componentsReady();
+    await (window as any).componentsReady();
 
     if (withBackground) {
       popoverEls.forEach((popover) => {
