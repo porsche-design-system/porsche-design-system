@@ -14,38 +14,49 @@ import type { PopoverDirection } from './popover-utils';
 import * as popoverUtils from './popover-utils';
 import { Popover } from './popover';
 
-type BoundingClientRectOpts = {
-  element: HTMLDivElement;
-  width?: number;
-  height?: number;
-  top?: number;
-  left?: number;
-  bottom?: number;
-  right?: number;
+type Rect = Pick<DOMRect, 'width' | 'height' | 'top' | 'left' | 'bottom' | 'right'>;
+
+const size: Pick<Rect, 'width' | 'height'> = {
+  width: 100,
+  height: 100,
 };
 
-const exceedSpaceTopLeft = 15;
-const exceedSpaceBottomRight = 985;
+const rectCentered: Rect = { ...size, top: 450, left: 450, bottom: 450, right: 450 };
+const rectExceededLeft: Rect = {
+  ...size,
+  top: 450,
+  left: 15,
+  bottom: 450,
+  right: 115,
+};
+const rectExceededRight: Rect = {
+  ...size,
+  top: 450,
+  left: 885,
+  bottom: 450,
+  right: 985,
+};
+const rectExceededTop: Rect = {
+  ...size,
+  top: 15,
+  left: 450,
+  bottom: 115,
+  right: 450,
+};
+const rectExceededBottom: Rect = {
+  ...size,
+  top: 885,
+  left: 450,
+  bottom: 985,
+  right: 450,
+};
 
-const mockBoundingClientRect = (opts?: BoundingClientRectOpts): void => {
-  // defaults to center of viewport
-  const { element, width = 100, height = 100, top = 450, left = 450, bottom = 450, right = 450 } = opts;
-
-  jest.spyOn(element, 'getBoundingClientRect').mockImplementation(
-    () =>
-      ({
-        width,
-        height,
-        top,
-        left,
-        bottom,
-        right,
-      } as DOMRect)
-  );
+const mockBoundingClientRect = (element: HTMLDivElement, opts: Rect): void => {
+  jest.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
 };
 
 const setViewport = () => {
-  // clientWidth/Height is always 0 in JSDOM so we mock it
+  // clientWidth/Height mockBoundingClientRect is always 0 in JSDOM so we mock it
   Object.defineProperties(document.documentElement, {
     clientWidth: {
       value: 1000,
@@ -58,83 +69,61 @@ const setViewport = () => {
   });
 };
 
-const placeElementOutside = (direction): number => {
-  return direction === 'top' || direction === 'left' ? exceedSpaceTopLeft : exceedSpaceBottomRight;
+const mapDirectionToRect: { [key in PopoverDirection]: Rect } = {
+  top: rectExceededTop,
+  right: rectExceededRight,
+  bottom: rectExceededBottom,
+  left: rectExceededLeft,
 };
 
 const spacer = document.createElement('div');
 const popover = document.createElement('div');
 
 describe('isElementWithinViewport()', () => {
-  setViewport();
+  beforeAll(() => {
+    setViewport();
+  });
 
-  describe('centered', () => {
+  beforeEach(() => {
+    mockBoundingClientRect(spacer, rectCentered);
+    mockBoundingClientRect(popover, rectCentered);
+  });
+
+  describe('spacer & popover centered', () => {
     it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
-      'should be true when inside viewport for direction %s',
+      'should return true when inside viewport for direction %s',
       (direction) => {
-        mockBoundingClientRect({ element: spacer });
-        mockBoundingClientRect({ element: popover });
-
         expect(isElementWithinViewport(spacer, popover, direction)).toBe(true);
       }
     );
   });
 
-  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should be false when popover exceeds %s', (popoverDirection) => {
-    const popoverPosition = {
-      [popoverDirection]: placeElementOutside(popoverDirection),
-    };
-
-    mockBoundingClientRect({ element: spacer });
-    mockBoundingClientRect({ element: popover, ...popoverPosition });
-
-    expect(isElementWithinViewport(spacer, popover, popoverDirection)).toBe(false);
+  describe('popover exceeded', () => {
+    it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return false when exceeds %s', (direction) => {
+      mockBoundingClientRect(popover, mapDirectionToRect[direction]);
+      expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
+    });
   });
 
-  describe('isWithinXAxis', () => {
-    mockBoundingClientRect({ element: popover });
-
-    it.each<PopoverDirection>(['top', 'bottom'])(
-      'should be false when spacer exceeds xAxis for direction %s',
-      (direction) => {
-        // left
-        mockBoundingClientRect({ element: spacer, left: exceedSpaceTopLeft });
-        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
-        // right
-        mockBoundingClientRect({ element: spacer, right: exceedSpaceBottomRight });
-        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
-      }
-    );
-  });
-
-  describe('isWithinYAxis', () => {
-    mockBoundingClientRect({ element: popover });
-
-    it.each<PopoverDirection>(['left', 'right'])(
-      'should be false when spacer exceeds yAxis for direction %s',
-      (direction) => {
-        // top
-        mockBoundingClientRect({ element: spacer, top: exceedSpaceTopLeft });
-        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
-        // bottom
-        mockBoundingClientRect({ element: spacer, bottom: exceedSpaceBottomRight });
-        expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
-      }
-    );
+  describe('spacer exceeded', () => {
+    it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return false when exceeds %s', (direction) => {
+      mockBoundingClientRect(spacer, mapDirectionToRect[direction]);
+      expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
+    });
   });
 });
 
 describe('calcSpaceForDirections()', () => {
   it('should return correct space for all directions', () => {
     setViewport();
-    mockBoundingClientRect({ element: spacer });
-    mockBoundingClientRect({ element: popover });
+    mockBoundingClientRect(spacer, rectCentered);
+    mockBoundingClientRect(popover, rectCentered);
 
     expect(calcSpaceForDirections(spacer, popover)).toEqual({
-      bottom: 450,
-      left: 350,
-      right: 450,
       top: 350,
+      right: 450,
+      bottom: 350,
+      left: 450,
     });
   });
 });
@@ -144,145 +133,310 @@ describe('getAutoDirection()', () => {
     const spy = jest.spyOn(popoverUtils, 'calcSpaceForDirections');
 
     getAutoDirection(spacer, popover);
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(spacer, popover);
   });
 
-  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return %s as direction with most space', (popoverDirection) => {
-    jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => {
-      const directions = {
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
+    'should return bottom for direction %s when space is even on all directions',
+    (direction) => {
+      jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => ({
         top: 1,
         right: 1,
         bottom: 1,
         left: 1,
-      };
-      directions[popoverDirection] = 2;
+      }));
 
-      return directions;
-    });
+      expect(getAutoDirection(spacer, popover)).toBe('bottom');
+    }
+  );
 
-    expect(getAutoDirection(spacer, popover)).toBe(popoverDirection);
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return %s as direction with most space', (direction) => {
+    jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => ({
+      top: 1,
+      right: 1,
+      left: 1,
+      bottom: 1,
+      // function returns direction with highest value
+      [direction]: 2,
+    }));
+
+    expect(getAutoDirection(spacer, popover)).toBe(direction);
   });
 });
 
 describe('getPopoverMargin()', () => {
-  setViewport();
-
-  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return 0 if within viewport', (popoverDirection) => {
-    mockBoundingClientRect({ element: spacer });
-    mockBoundingClientRect({ element: popover });
-    expect(getPopoverMargin(spacer, popover, popoverDirection)).toBe('0');
+  beforeAll(() => {
+    setViewport();
   });
 
-  describe('axis offset', () => {
-    describe('left or top side exceeded', () => {
-      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
-        'should move popover out of safeZone for direction %s',
-        (popoverDirection) => {
-          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'left' : 'top';
-          mockBoundingClientRect({ element: popover, [position]: exceedSpaceTopLeft });
+  it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return 0 if within viewport for direction %s', (direction) => {
+    mockBoundingClientRect(spacer, rectCentered);
+    mockBoundingClientRect(popover, rectCentered);
+    expect(getPopoverMargin(spacer, popover, direction)).toBe('0');
+  });
 
-          const expected = position === 'left' ? '0 0 0 -15px' : '-15px 0 0 0';
+  describe('for x-axis', () => {
+    const scenarios: { spacer: Rect; popover: Rect; expected: string }[] = [
+      {
+        spacer: { ...rectCentered, width: 50 },
+        popover: rectExceededLeft,
+        expected: '0 0 0 1px',
+      },
+      {
+        spacer: { ...rectExceededRight, width: 50, left: 14 },
+        popover: rectExceededLeft,
+        expected: '0 0 0 -1px',
+      },
+      {
+        spacer: { ...rectCentered, width: 50 },
+        popover: rectExceededRight,
+        expected: '0 0 0 -1px',
+      },
+      {
+        spacer: { ...rectCentered, width: 50, right: 986 },
+        popover: rectExceededRight,
+        expected: '0 0 0 1px',
+      },
+      {
+        spacer: { ...rectCentered, width: 50 },
+        popover: { ...rectExceededLeft, left: 12 },
+        expected: '0 0 0 4px',
+      },
+      {
+        spacer: { ...rectExceededLeft, width: 50, left: 13 },
+        popover: rectExceededLeft,
+        expected: '0 0 0 -2px',
+      },
+      {
+        spacer: { ...rectCentered, width: 50 },
+        popover: { ...rectExceededRight, right: 987 },
+        expected: '0 0 0 -3px',
+      },
+      {
+        spacer: { ...rectCentered, width: 50, right: 987 },
+        popover: rectExceededRight,
+        expected: '0 0 0 2px',
+      },
+    ];
+    scenarios.forEach((scenario) => {
+      it.each<PopoverDirection>(['top', 'bottom'])('should return correct margin for direction %s', (direction) => {
+        mockBoundingClientRect(spacer, scenario.spacer);
+        mockBoundingClientRect(popover, scenario.popover);
 
-          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
-        }
-      );
-
-      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
-        'should move popover to edge of spacer for direction %s',
-        (popoverDirection) => {
-          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'left' : 'top';
-          mockBoundingClientRect({ element: spacer, [position]: exceedSpaceTopLeft });
-          mockBoundingClientRect({ element: popover, width: 150, height: 150, [position]: 14 });
-
-          const expected = position === 'left' ? '0 0 0 1px' : '1px 0 0 0';
-
-          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
-        }
-      );
+        expect(getPopoverMargin(spacer, popover, direction)).toEqual(scenario.expected);
+      });
     });
+  });
 
-    describe('right or bottom side exceeded', () => {
-      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
-        'should move popover out of safeZone for direction %s',
-        (popoverDirection) => {
-          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'right' : 'bottom';
-          mockBoundingClientRect({ element: popover, [position]: placeElementOutside(position) });
+  describe('for y-axis', () => {
+    const scenarios: { spacer: Rect; popover: Rect; expected: string }[] = [
+      {
+        spacer: { ...rectCentered, height: 50 },
+        popover: rectExceededTop,
+        expected: '1px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50, top: 14 },
+        popover: rectExceededTop,
+        expected: '-1px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50 },
+        popover: rectExceededBottom,
+        expected: '-1px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50, bottom: 986 },
+        popover: rectExceededBottom,
+        expected: '1px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50 },
+        popover: { ...rectExceededTop, top: 12 },
+        expected: '4px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50, top: 13 },
+        popover: rectExceededTop,
+        expected: '-2px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50 },
+        popover: { ...rectExceededBottom, bottom: 987 },
+        expected: '-3px 0 0 0',
+      },
+      {
+        spacer: { ...rectCentered, height: 50, bottom: 987 },
+        popover: rectExceededBottom,
+        expected: '2px 0 0 0',
+      },
+    ];
 
-          const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
+    scenarios.forEach((scenario) => {
+      it.each<PopoverDirection>(['left', 'right'])('should return correct margin for direction %s', (direction) => {
+        mockBoundingClientRect(spacer, scenario.spacer);
+        mockBoundingClientRect(popover, scenario.popover);
 
-          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
-        }
-      );
-
-      it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
-        'should move popover to edge of spacer for direction %s',
-        (popoverDirection) => {
-          const position = popoverDirection === 'top' || popoverDirection === 'bottom' ? 'right' : 'bottom';
-          mockBoundingClientRect({ element: spacer, [position]: exceedSpaceBottomRight });
-          mockBoundingClientRect({ element: popover, width: 150, height: 150, [position]: 986 });
-
-          const expected = position === 'right' ? '0 0 0 -1px' : '-1px 0 0 0';
-
-          expect(getPopoverMargin(spacer, popover, popoverDirection)).toEqual(expected);
-        }
-      );
+        expect(getPopoverMargin(spacer, popover, direction)).toEqual(scenario.expected);
+      });
     });
   });
 });
 
-describe('onClickOutside()', () => {
+describe('addDocumentEventListener()', () => {
+  const popover = new Popover();
   beforeEach(() => {
     registeredPopovers.length = 0;
   });
 
-  it('should keep popover open when composedPath contains host', () => {
+  it('should register eventListeners', () => {
+    const spy = jest.spyOn(document, 'addEventListener');
+    addDocumentEventListener(popover);
+
+    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
+    expect(spy).toBeCalledTimes(2);
+  });
+
+  it('should not register eventListeners twice', () => {
+    const spy = jest.spyOn(document, 'addEventListener');
+    addDocumentEventListener(popover);
+    addDocumentEventListener(popover);
+
+    expect(spy).toBeCalledTimes(2);
+  });
+
+  it('should push popover into registeredPopovers array', () => {
+    addDocumentEventListener(popover);
+
+    expect(registeredPopovers.length).toBe(1);
+    expect(registeredPopovers[0]).toBe(popover);
+  });
+
+  it('should not push popover into registeredPopovers array twice', () => {
+    addDocumentEventListener(popover);
+    addDocumentEventListener(popover);
+
+    expect(registeredPopovers.length).toBe(1);
+  });
+});
+
+describe('removeDocumentEventListener()', () => {
+  beforeEach(() => {
+    registeredPopovers.length = 0;
+  });
+
+  it('should not remove other element from registeredPopovers when already removed', () => {
+    const popover1 = new Popover();
+    const popover2 = new Popover();
+
+    addDocumentEventListener(popover1);
+    addDocumentEventListener(popover2);
+    expect(registeredPopovers.length).toBe(2);
+
+    removeDocumentEventListener(popover1);
+    expect(registeredPopovers.length).toBe(1);
+    expect(registeredPopovers[0]).toEqual(popover2);
+
+    removeDocumentEventListener(popover1);
+    expect(registeredPopovers.length).toBe(1);
+    expect(registeredPopovers[0]).toEqual(popover2);
+  });
+
+  it('should remove correct element from registeredPopovers array', () => {
+    const popover1 = new Popover();
+    const popover2 = new Popover();
+    const popover3 = new Popover();
+
+    addDocumentEventListener(popover1);
+    addDocumentEventListener(popover2);
+    addDocumentEventListener(popover3);
+    expect(registeredPopovers.length).toBe(3);
+
+    removeDocumentEventListener(popover1);
+    expect(registeredPopovers.length).toBe(2);
+    expect(registeredPopovers[0]).toEqual(popover2);
+    expect(registeredPopovers[1]).toEqual(popover3);
+
+    removeDocumentEventListener(popover3);
+    expect(registeredPopovers.length).toBe(1);
+    expect(registeredPopovers[0]).toEqual(popover2);
+  });
+
+  it('should unregister eventListener if registeredPopovers array is empty', () => {
     const popover = new Popover();
-    popover.open = true;
+    const spy = jest.spyOn(document, 'removeEventListener');
+
     registeredPopovers.push(popover);
+    expect(registeredPopovers.length).toBe(1);
 
-    const clickEvent = new MouseEvent('mousedown');
-    jest.spyOn(clickEvent, 'composedPath').mockImplementation(() => [popover.host]);
-    onDocumentMousedown(clickEvent);
+    removeDocumentEventListener(popover);
+    expect(registeredPopovers.length).toBe(0);
+    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
+  });
+});
 
+fdescribe('onDocumentMousedown()', () => {
+  const popover = new Popover();
+  popover.host = document.createElement('p-popover');
+  document.body.appendChild(popover.host);
+  let spy: jest.SpyInstance;
+
+  beforeEach(() => {
+    registeredPopovers.length = 0;
+    registeredPopovers.push(popover);
+    spy = jest.spyOn(popoverUtils, 'onDocumentMousedown');
+    document.addEventListener('mousedown', onDocumentMousedown);
+  });
+  afterEach(() => {
+    popover.open = false;
+    document.removeEventListener('mousedown', onDocumentMousedown);
+  });
+
+  it('should do nothing when composedPath contains host', () => {
+    popover.open = true;
+    popover.host.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+
+    expect(spy).toBeCalledTimes(1);
     expect(popover.open).toBe(true);
   });
 
-  it('should close popover when composedPath does not include host', () => {
-    const popover = new Popover();
+  it('should change open to false when composedPath does not include host', () => {
     popover.open = true;
-    registeredPopovers.push(popover);
+    document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
-    onDocumentMousedown(new MouseEvent('mousedown'));
-
+    expect(spy).toBeCalledTimes(1);
     expect(popover.open).toBe(false);
   });
 
   it('should check composedPath only when open', () => {
-    const popover = new Popover();
-    registeredPopovers.push(popover);
-
     const clickEvent = new MouseEvent('mousedown');
-    const spy = jest.spyOn(clickEvent, 'composedPath');
+    const spy1 = jest.spyOn(clickEvent, 'composedPath');
     onDocumentMousedown(clickEvent);
-    expect(spy).toBeCalledTimes(0);
+    expect(spy1).toBeCalledTimes(0);
 
     popover.open = true;
     onDocumentMousedown(clickEvent);
-    expect(spy).toBeCalledTimes(1);
+    expect(spy1).toBeCalledTimes(1);
   });
 
-  it('should check every popover in registeredPopovers', () => {
+  it('should close correct popover', () => {
     const popover1 = new Popover();
+    popover1.open = true;
+    popover1.host = document.createElement('p-popover');
+    document.body.appendChild(popover1.host);
+
     const popover2 = new Popover();
     registeredPopovers.push(popover1);
     registeredPopovers.push(popover2);
 
-    registeredPopovers.forEach((x) => (x.open = true));
+    document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
-    const clickEvent = new MouseEvent('mousedown');
-    const spy = jest.spyOn(clickEvent, 'composedPath');
-    onDocumentMousedown(clickEvent);
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
+    expect(popover.open).toBe(false);
+    expect(popover1.open).toBe(false);
+    expect(popover2.open).toBe(false);
   });
 });
 
@@ -373,76 +527,5 @@ describe('onDocumentKeydown()', () => {
     const spy = jest.spyOn(clickEvent, 'composedPath');
     onDocumentMousedown(clickEvent);
     expect(spy).toBeCalledTimes(2);
-  });
-});
-
-describe('addDocumentEventListener()', () => {
-  beforeEach(() => {
-    registeredPopovers.length = 0;
-  });
-
-  it('should register eventListeners', () => {
-    const popover = new Popover();
-
-    const spy = jest.spyOn(document, 'addEventListener');
-    addDocumentEventListener(popover);
-
-    expect(spy).toBeCalledWith('mousedown', expect.anything());
-    expect(spy).toBeCalledWith('keydown', expect.anything());
-  });
-
-  it('should push popover into registeredPopovers array', () => {
-    const popover = new Popover();
-    addDocumentEventListener(popover);
-
-    expect(registeredPopovers.length).toBe(1);
-    expect(registeredPopovers[0]).toBe(popover);
-  });
-
-  it('should not push popover into registeredPopovers array when already exists', () => {
-    const popover = new Popover();
-    registeredPopovers.push(popover);
-    addDocumentEventListener(popover);
-
-    expect(registeredPopovers.length).toBe(1);
-  });
-});
-
-describe('unobserveClickOutside()', () => {
-  beforeEach(() => {
-    registeredPopovers.length = 0;
-  });
-
-  it('should remove correct element from registeredPopovers', () => {
-    const popover1 = new Popover();
-    const popover2 = new Popover();
-    const popover3 = new Popover();
-
-    addDocumentEventListener(popover1);
-    addDocumentEventListener(popover2);
-    addDocumentEventListener(popover3);
-    expect(registeredPopovers.length).toBe(3);
-
-    removeDocumentEventListener(popover1);
-    expect(registeredPopovers.length).toBe(2);
-    expect(registeredPopovers[0]).toEqual(popover2);
-    expect(registeredPopovers[1]).toEqual(popover3);
-
-    removeDocumentEventListener(popover3);
-    expect(registeredPopovers.length).toBe(1);
-    expect(registeredPopovers[0]).toEqual(popover2);
-  });
-
-  it('should removeEventListener if registeredPopovers gets empty', () => {
-    const popover1 = new Popover();
-    const spy = jest.spyOn(document, 'removeEventListener');
-
-    registeredPopovers.push(popover1);
-    expect(registeredPopovers.length).toBe(1);
-
-    removeDocumentEventListener(popover1);
-    expect(registeredPopovers.length).toBe(0);
-    expect(spy).toBeCalledWith('mousedown', expect.anything());
-    expect(spy).toBeCalledWith('keydown', expect.anything());
   });
 });
