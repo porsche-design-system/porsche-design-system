@@ -62,7 +62,7 @@ export const unobserveResize = <T extends HTMLElement>(node: T): void => {
 
 export let registeredAccordions: Accordion[] = [];
 
-export const resetRegisteredAccordions = () => {
+export const resetRegisteredAccordions = (): void => {
   registeredAccordions = [];
 };
 
