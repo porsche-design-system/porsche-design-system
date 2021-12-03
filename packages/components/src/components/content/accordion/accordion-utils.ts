@@ -42,7 +42,7 @@ export const isResizeObserverDefined = (): boolean => 'ResizeObserver' in window
 
 export let useMutationObserverFallback = !isResizeObserverDefined();
 
-export const useMutationObserverFallbackOverride = (overrideValue: boolean) =>
+export const useMutationObserverFallbackOverride = (overrideValue: boolean): boolean =>
   (useMutationObserverFallback = overrideValue);
 
 const resizeObserver =
