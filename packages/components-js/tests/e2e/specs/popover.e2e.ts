@@ -18,10 +18,10 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-popover');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
-const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
+const getButton = () => selectNode(page, 'p-popover >>> p-button-pure');
 const getTextContent = () => selectNode(page, 'p-popover p');
 const getExtendedMarkup = () => selectNode(page, 'p');
-const getSecondPopover = () => selectNode(page, '.second >>> .popover');
+const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
 
 type InitOptions = {
   direction?: PopoverDirection;
@@ -100,17 +100,18 @@ describe('mouse behavior', () => {
     );
 
     const firstButton = await getButton();
-    const secondButton = await selectNode(page, '.second >>> p-button-pure >>> button');
+    const secondButton = await selectNode(page, 'p-popover.second >>> p-button-pure');
+
+    // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
+    await secondButton.click();
+    await waitForStencilLifecycle(page);
+    expect(await getSecondPopover(), 'second popover, second click').not.toBeNull();
+    expect(await getPopover(), 'first popover, second click').toBeNull();
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
     expect(await getPopover(), 'first popover, first click').not.toBeNull();
     expect(await getSecondPopover(), 'second popover, first click').toBeNull();
-
-    await secondButton.click();
-    await waitForStencilLifecycle(page);
-    expect(await getSecondPopover(), 'second popover, second click').not.toBeNull();
-    expect(await getPopover(), 'first popover, second click').toBeNull();
   });
 
   it('should not close popover when its content is clicked', async () => {
