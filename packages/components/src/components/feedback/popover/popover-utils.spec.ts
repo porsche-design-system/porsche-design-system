@@ -106,9 +106,21 @@ describe('isElementWithinViewport()', () => {
   });
 
   describe('spacer exceeded', () => {
-    it.each<PopoverDirection>(POPOVER_DIRECTIONS)('should return false when exceeds %s', (direction) => {
+    it.each<PopoverDirection>(['top', 'bottom'])('should return false when exceeds %s', (direction) => {
       mockBoundingClientRect(spacer, mapDirectionToRect[direction]);
-      expect(isElementWithinViewport(spacer, popover, direction)).toBe(false);
+      expect(isElementWithinViewport(spacer, popover, 'left')).toBe(false);
+    });
+    it.each<PopoverDirection>(['top', 'bottom'])('should return false when exceeds %s', (direction) => {
+      mockBoundingClientRect(spacer, mapDirectionToRect[direction]);
+      expect(isElementWithinViewport(spacer, popover, 'right')).toBe(false);
+    });
+    it.each<PopoverDirection>(['left', 'right'])('should return false when exceeds %s', (direction) => {
+      mockBoundingClientRect(spacer, mapDirectionToRect[direction]);
+      expect(isElementWithinViewport(spacer, popover, 'top')).toBe(false);
+    });
+    it.each<PopoverDirection>(['left', 'right'])('should return false when exceeds %s', (direction) => {
+      mockBoundingClientRect(spacer, mapDirectionToRect[direction]);
+      expect(isElementWithinViewport(spacer, popover, 'bottom')).toBe(false);
     });
   });
 });
@@ -122,8 +134,8 @@ describe('calcSpaceForDirections()', () => {
     expect(calcSpaceForDirections(spacer, popover)).toEqual({
       top: 350,
       right: 450,
-      bottom: 350,
-      left: 450,
+      bottom: 450,
+      left: 350,
     });
   });
 });
@@ -377,7 +389,7 @@ describe('removeDocumentEventListener()', () => {
   });
 });
 
-fdescribe('onDocumentMousedown()', () => {
+describe('onDocumentMousedown()', () => {
   const popover = new Popover();
   popover.host = document.createElement('p-popover');
   document.body.appendChild(popover.host);
@@ -441,91 +453,82 @@ fdescribe('onDocumentMousedown()', () => {
 });
 
 describe('onDocumentKeydown()', () => {
+  const popover = new Popover();
+  popover.host = document.createElement('p-popover');
+  document.body.appendChild(popover.host);
+  let spy: jest.SpyInstance;
+
   beforeEach(() => {
     registeredPopovers.length = 0;
+    registeredPopovers.push(popover);
+    spy = jest.spyOn(popoverUtils, 'onDocumentKeydown');
+    document.addEventListener('keydown', onDocumentKeydown);
+  });
+  afterEach(() => {
+    popover.open = false;
+    document.removeEventListener('keydown', onDocumentKeydown);
   });
 
-  it.each(['Escape', 'Esc'])('should close popover for key %s', (key) => {
-    const popover = new Popover();
+  ['SpaceBar', 'Enter', ' '].forEach((key) => {
+    it(`should change open to false when composedPath does not include host for key ${key}`, () => {
+      popover.open = true;
+      document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+
+      expect(spy).toBeCalledTimes(1);
+      expect(popover.open).toBe(false);
+    });
+
+    it(`should do nothing when composedPath contains host for key ${key}`, () => {
+      popover.open = true;
+      popover.host.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+
+      expect(spy).toBeCalledTimes(1);
+      expect(popover.open).toBe(true);
+    });
+
+    it(`should check composedPath only when open for key ${key}`, () => {
+      const keyboardEvent = new KeyboardEvent('keydown', { key });
+      const spy1 = jest.spyOn(keyboardEvent, 'composedPath');
+      onDocumentKeydown(keyboardEvent);
+      expect(spy1).toBeCalledTimes(0);
+
+      popover.open = true;
+      onDocumentKeydown(keyboardEvent);
+      expect(spy1).toBeCalledTimes(1);
+    });
+  });
+
+  it.each(['Escape', 'Esc'])('should change open to false for key %s', (key) => {
     popover.open = true;
-    registeredPopovers.push(popover);
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-    onDocumentKeydown(new KeyboardEvent('keydown', { key }));
-
+    expect(spy).toBeCalledTimes(1);
     expect(popover.open).toBe(false);
   });
 
-  it.each(['SpaceBar', 'Enter', ' '])(
-    'should close popover when composedPath does not include host for key %s',
-    (key) => {
-      const popover = new Popover();
-      popover.open = true;
-      registeredPopovers.push(popover);
-
-      onDocumentKeydown(new KeyboardEvent('keydown', { key }));
-
-      expect(popover.open).toBe(false);
-    }
-  );
-
-  it.each(['SpaceBar', 'Enter', ' '])(
-    'should not close popover when composedPath does include host for key %s',
-    (key) => {
-      const popover = new Popover();
-      popover.open = true;
-      registeredPopovers.push(popover);
-      const keyboardEvent = new KeyboardEvent('keydown', { key });
-      jest.spyOn(keyboardEvent, 'composedPath').mockImplementation(() => [popover.host]);
-
-      onDocumentKeydown(keyboardEvent);
-
-      expect(popover.open).toBe(true);
-    }
-  );
-
-  it.each(['SpaceBar', 'Enter', ' '])('should check composedPath for key: %s when open', (key) => {
-    const popover = new Popover();
-    registeredPopovers.push(popover);
-
+  it.each(['Escape', 'Esc', ''])('should not check composedPath for key %s', (key) => {
     const keyboardEvent = new KeyboardEvent('keydown', { key });
     const spy = jest.spyOn(keyboardEvent, 'composedPath');
     onDocumentKeydown(keyboardEvent);
-    expect(spy).toBeCalledTimes(0);
-
-    popover.open = true;
-    onDocumentKeydown(keyboardEvent);
-    expect(spy).toBeCalledTimes(1);
-  });
-
-  it('should not check composedPath when closed or invalid key', () => {
-    const popover = new Popover();
-    registeredPopovers.push(popover);
-
-    const validClickEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-    const spy = jest.spyOn(validClickEvent, 'composedPath');
-    onDocumentKeydown(validClickEvent);
 
     expect(spy).toBeCalledTimes(0);
-
-    popover.open = true;
-    const inValidClickEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-    const spy2 = jest.spyOn(validClickEvent, 'composedPath');
-    onDocumentKeydown(inValidClickEvent);
-
-    expect(spy2).toBeCalledTimes(0);
   });
 
-  it('should check every popover in registeredPopovers', () => {
+  it('should close correct popover', () => {
     const popover1 = new Popover();
+    popover1.open = true;
+    popover1.host = document.createElement('p-popover');
+    document.body.appendChild(popover1.host);
+
     const popover2 = new Popover();
     registeredPopovers.push(popover1);
     registeredPopovers.push(popover2);
 
-    registeredPopovers.forEach((x) => (x.open = true));
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
-    const clickEvent = new MouseEvent('keydown');
-    const spy = jest.spyOn(clickEvent, 'composedPath');
-    onDocumentMousedown(clickEvent);
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
+    expect(popover.open).toBe(false);
+    expect(popover1.open).toBe(false);
+    expect(popover2.open).toBe(false);
   });
 });
