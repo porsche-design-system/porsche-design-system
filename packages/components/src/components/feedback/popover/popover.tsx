@@ -84,7 +84,7 @@ export class Popover {
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
             <div class="popover" ref={(el) => (this.popover = el)}>
-              {this.description || <slot />}
+              {(this.description && `<PrefixedTagNames.pText>${this.description}</PrefixedTagNames.pText>`) || <slot />}
             </div>
           </div>
         )}
@@ -94,6 +94,7 @@ export class Popover {
   // TODO: wrap description with p tag?
   // TODO: Z-Index into docu
   // TODO: document p tag if needed
+  // TODO: remove styling when description is set
   private handleEscapeClick = ({ key }: KeyboardEvent): void => {
     if (key === 'Escape' || key === 'Esc') {
       this.button.focus();
