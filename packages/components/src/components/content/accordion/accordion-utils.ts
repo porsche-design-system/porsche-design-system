@@ -1,4 +1,10 @@
-import { BreakpointCustomizable, getTagName, pxToRemWithUnit } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  getTagName,
+  observeChildren,
+  pxToRemWithUnit,
+  unobserveChildren,
+} from '../../../utils';
 import { Accordion } from './accordion';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;
@@ -32,7 +38,12 @@ export const warnIfCompactAndSizeIsSet = (
 
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 
-export const isResizeObserverDefined = (): boolean => !!('ResizeObserver' in window);
+export const isResizeObserverDefined = (): boolean => 'ResizeObserver' in window;
+
+export let useMutationObserverFallback = !isResizeObserverDefined();
+
+export const useMutationObserverFallbackOverride = (overrideValue: boolean) =>
+  (useMutationObserverFallback = overrideValue);
 
 const resizeObserver =
   isResizeObserverDefined() &&
@@ -87,4 +98,14 @@ export const unobserveWindowResize = (accordion: Accordion): void => {
   if (registeredAccordions.length === 0) {
     window.removeEventListener('resize', onWindowResize);
   }
+};
+
+export const mutationObserverFallback = (accordion: Accordion): void => {
+  observeWindowResize(accordion);
+  observeChildren(accordion.host, accordion.setContentHeight);
+};
+
+export const removeMutationObserverFallback = (accordion: Accordion): void => {
+  unobserveWindowResize(accordion);
+  unobserveChildren(accordion.host);
 };
