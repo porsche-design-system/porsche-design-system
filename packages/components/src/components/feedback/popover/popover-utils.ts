@@ -96,6 +96,25 @@ export const getPopoverMargin = (
 
 export const registeredPopovers: Popover[] = [];
 
+export const addDocumentEventListener = (popover: Popover): void => {
+  if (!registeredPopovers.includes(popover)) {
+    registeredPopovers.push(popover);
+    document.addEventListener('mousedown', onDocumentMousedown);
+    document.addEventListener('keydown', onDocumentKeydown);
+  }
+};
+
+export const removeDocumentEventListener = (popover: Popover): void => {
+  const index = registeredPopovers.indexOf(popover);
+  if (index > -1) {
+    registeredPopovers.splice(index, 1);
+  }
+  if (registeredPopovers.length === 0) {
+    document.removeEventListener('mousedown', onDocumentMousedown);
+    document.removeEventListener('keydown', onDocumentKeydown);
+  }
+};
+
 export const onDocumentMousedown = (e: MouseEvent): void => {
   const popover = registeredPopovers.find((popover) => popover.open && !e.composedPath().includes(popover.host));
   if (popover) {
@@ -113,24 +132,5 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
     if (popover) {
       popover.open = false;
     }
-  }
-};
-
-export const addDocumentEventListener = (popover: Popover): void => {
-  if (!registeredPopovers.includes(popover)) {
-    registeredPopovers.push(popover);
-  }
-  document.addEventListener('mousedown', onDocumentMousedown);
-  document.addEventListener('keydown', onDocumentKeydown);
-};
-
-export const removeDocumentEventListener = (popover: Popover): void => {
-  const index = registeredPopovers.indexOf(popover);
-  if (index > -1) {
-    registeredPopovers.splice(index, 1);
-  }
-  if (registeredPopovers.length === 0) {
-    document.removeEventListener('mousedown', onDocumentMousedown);
-    document.removeEventListener('keydown', onDocumentKeydown);
   }
 };
