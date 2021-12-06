@@ -33,10 +33,6 @@ describe('getThemeDarkAttribute()', () => {
     expect(getThemeDarkAttribute('dark')).toEqual({ theme: 'dark' });
   });
 
-  it("should return { theme: 'light-electric' } for light-electric theme", () => {
-    expect(getThemeDarkAttribute('light-electric')).toEqual({ theme: 'light-electric' });
-  });
-
   it('should return null for light theme', () => {
     expect(getThemeDarkAttribute('light')).toBe(null);
   });

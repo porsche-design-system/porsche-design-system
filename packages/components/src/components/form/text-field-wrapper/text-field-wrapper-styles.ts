@@ -14,7 +14,7 @@ import {
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedStateColors,
+  getThemedFormStateColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -50,7 +50,7 @@ export const getComponentCss = (
   const theme: Theme = 'light';
   const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
     getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = ['success', 'error'].includes(state);
 
   return getCss({

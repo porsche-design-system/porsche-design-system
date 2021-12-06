@@ -11,7 +11,7 @@ import type {
   IconName,
   LinkTarget,
   LinkVariant,
-  Theme,
+  ThemeExtendedElectric,
 } from '../../../types';
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
@@ -37,7 +37,7 @@ export class Link {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

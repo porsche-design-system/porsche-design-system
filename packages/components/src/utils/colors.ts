@@ -1,5 +1,5 @@
 import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme } from '../types';
+import type { FormState, Theme, ThemeExtendedElectric } from '../types';
 import { isDark, isLightElectric } from './theme';
 
 type DeepPartial<T> = {
@@ -31,6 +31,10 @@ export const colorDarken: DeepPartial<typeof color> = {
     neutralContrast: {
       high: '#151718',
     },
+    notification: {
+      success: '#014d0c',
+      error: '#a30000',
+    },
     state: {
       hover: '#0084b7',
     },
@@ -38,7 +42,7 @@ export const colorDarken: DeepPartial<typeof color> = {
 };
 
 type ThemedColors = {
-  textColor: string;
+  textColor: string; // TODO: rename into baseColor
   brandColor: string;
   backgroundColor: string;
   contrastLowColor: string;
@@ -57,7 +61,7 @@ type ThemedColors = {
   neutralSoftColor: string;
 };
 
-const getStaticThemedColors = (theme: Theme): ThemedColors => {
+const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   const {
     default: textColor,
     brand: brandColor,
@@ -101,12 +105,11 @@ const themedColorsLight = getStaticThemedColors('light');
 const themedColorsDark = getStaticThemedColors('dark');
 const themedColorsLightElectric = getStaticThemedColors('light-electric');
 
-export const getThemedColors = (theme: Theme): ThemedColors => {
+export const getThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
 };
 
-// TODO: light-electric theme not handled yet. In addition this helper is specific for form elements but not that generic as it is right now.
-export const getThemedStateColors = (
+export const getThemedFormStateColors = (
   theme: Theme,
   state: FormState
 ): { stateColor: string; stateHoverColor: string } => {

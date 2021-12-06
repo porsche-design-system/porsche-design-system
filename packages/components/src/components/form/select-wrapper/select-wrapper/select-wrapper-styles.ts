@@ -11,7 +11,7 @@ import {
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedStateColors,
+  getThemedFormStateColors,
   getTransition,
   isDark,
   pxToRemWithUnit,
@@ -29,7 +29,7 @@ const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]

@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
@@ -54,7 +54,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PBanner {
         /**
@@ -68,7 +68,7 @@ export namespace Components {
         /**
           * Adapts the banner color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
@@ -106,7 +106,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -170,7 +170,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -206,7 +206,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
@@ -224,7 +224,7 @@ export namespace Components {
         /**
           * Adapts color depending on theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PFieldsetWrapper {
         /**
@@ -344,7 +344,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Predefined style of the headline.
          */
@@ -378,7 +378,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -412,7 +412,7 @@ export namespace Components {
         /**
           * Adapts the inline-notification color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PLink {
         /**
@@ -450,7 +450,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The style variant of the link.
          */
@@ -508,7 +508,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -542,7 +542,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PMarque {
         /**
@@ -620,7 +620,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -680,7 +680,7 @@ export namespace Components {
         /**
           * Adapts the select color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
@@ -694,7 +694,7 @@ export namespace Components {
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -708,7 +708,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSwitch {
         /**
@@ -742,7 +742,7 @@ export namespace Components {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -790,7 +790,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -812,7 +812,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -848,7 +848,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The weight of the text.
          */
@@ -896,7 +896,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PTextListItem {
     }
@@ -931,7 +931,7 @@ export namespace Components {
         /**
           * Adapts the toast color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PToastItem {
         /**
@@ -945,7 +945,7 @@ export namespace Components {
         /**
           * Adapts the toast-item color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
 }
 declare global {
@@ -1289,7 +1289,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PBanner {
         /**
@@ -1307,7 +1307,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the banner color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
@@ -1345,7 +1345,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -1409,7 +1409,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -1445,7 +1445,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
@@ -1463,7 +1463,7 @@ declare namespace LocalJSX {
         /**
           * Adapts color depending on theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PFieldsetWrapper {
         /**
@@ -1583,7 +1583,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * Predefined style of the headline.
          */
@@ -1617,7 +1617,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -1659,7 +1659,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the inline-notification color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PLink {
         /**
@@ -1697,7 +1697,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The style variant of the link.
          */
@@ -1755,7 +1755,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -1789,7 +1789,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PMarque {
         /**
@@ -1875,7 +1875,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -1935,7 +1935,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the select color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
@@ -1949,7 +1949,7 @@ declare namespace LocalJSX {
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: FormState;
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -1963,7 +1963,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PSwitch {
         /**
@@ -2001,7 +2001,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -2057,7 +2057,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -2083,7 +2083,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -2119,7 +2119,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
         /**
           * The weight of the text.
          */
@@ -2167,7 +2167,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PTextListItem {
     }
@@ -2201,7 +2201,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the toast color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PToastItem {
         /**
@@ -2219,7 +2219,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the toast-item color depending on the theme.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;

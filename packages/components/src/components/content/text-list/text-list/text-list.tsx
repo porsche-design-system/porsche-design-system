@@ -26,7 +26,7 @@ export class TextList {
   @Prop() public orderType?: OrderType = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   @Watch('listType')
   public handleListTypeChange(): void {
