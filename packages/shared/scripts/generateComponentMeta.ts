@@ -47,7 +47,7 @@ const generateComponentMeta = (): void => {
     const isFocusable =
       atomicFocusableTagNames.includes(tagName) ||
       atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
-    const isThemeable = source.includes('public theme?: Theme');
+    const isThemeable = source.includes('public theme?: Theme') || source.includes('public theme?: Exclude<Theme');
 
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
