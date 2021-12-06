@@ -112,7 +112,10 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       bottom: spacerBox,
       filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
       pointerEvents: 'none',
-      animation: 'var(--p-animation-duration__popover, 240ms) $fadeIn ease forwards',
+      animation:
+        ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+          ? '240ms $fadeIn ease forwards'
+          : 'var(--p-animation-duration__popover, 240ms) $fadeIn ease forwards',
       '&::before': {
         content: '""',
         position: 'absolute',
