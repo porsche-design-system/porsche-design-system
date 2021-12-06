@@ -17,7 +17,7 @@ export const PopoverPage = (): JSX.Element => {
           </PPopover>
         </span>
         <span style={{ position: 'absolute', top: '55%', left: '50vw', transform: 'translate(-50%)' }}>
-          <PPopover direction="top">Top Direction</PPopover>
+          <PPopover direction="top">Top direction</PPopover>
         </span>
         <span style={{ position: 'absolute', top: '60%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover description="Some description via prop"></PPopover>

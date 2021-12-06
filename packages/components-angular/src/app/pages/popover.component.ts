@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
         </p-popover>
       </span>
       <span style="position: absolute; top: 55%; left: 50vw; transform: translate(-50%)">
-        <p-popover [direction]="'top'">Top Direction</p-popover>
+        <p-popover [direction]="'top'">Top direction</p-popover>
       </span>
       <span style="position: absolute; top: 60%; left: 50vw; transform: translate(-50%)">
         <p-popover [description]="'Some description via prop'"></p-popover>
