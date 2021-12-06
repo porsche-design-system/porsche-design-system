@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
+  expectedStyleOnFocus,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -159,6 +159,43 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
+  });
+
+  const CONTENT_HEIGHT = '"height: 1.625rem;"';
+  it('should set correct inline content height using ResizeObserver', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
+  });
+
+  it('should set correct inline content height using MutationObserver and window resize listener', async () => {
+    await page.evaluate(() => {
+      delete window.ResizeObserver;
+    });
+
+    await initAccordion({ otherMarkup: clickHandlerScript });
+
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
   });
 
   describe('events', () => {
