@@ -19,29 +19,30 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-popover');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
 const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
-const getTextContent = () => selectNode(page, 'p-popover p');
-const getExtendedMarkup = () => selectNode(page, 'p');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
+
+const togglePopover = async (): Promise<void> => {
+  const button = await getButton();
+  await button.click();
+  await waitForStencilLifecycle(page);
+};
 
 type InitOptions = {
   direction?: PopoverDirection;
   withLink?: boolean;
-  withExtendedMarkup?: boolean;
   withButtonOutside?: boolean;
 };
 const initPopover = (opts?: InitOptions): Promise<void> => {
-  const { direction = 'bottom', withLink = false, withExtendedMarkup = false, withButtonOutside = false } = opts ?? {};
+  const { direction = 'bottom', withLink = false, withButtonOutside = false } = opts ?? {};
 
   const linkMarkup = '<a href="#">Some Link</a>';
-  const extendedMarkup = '<p>Some Markup</p>';
 
   return setContentWithDesignSystem(
     page,
     `
-        ${withExtendedMarkup ? extendedMarkup : ''}
         <p-popover direction="${direction}">
            ${withLink ? linkMarkup : ''}
-           <p>Some Popover Content</p>
+           Some Popover Content
         </p-popover>
         ${withButtonOutside ? '<button>Some Button</button>' : ''}`
   );
@@ -50,43 +51,30 @@ const initPopover = (opts?: InitOptions): Promise<void> => {
 describe('mouse behavior', () => {
   it('should open popover on click', async () => {
     await initPopover();
-    await waitForStencilLifecycle(page);
 
     expect(await getPopover()).toBeNull();
 
-    const button = await getButton();
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await togglePopover();
 
     expect(await getPopover()).not.toBeNull();
   });
 
   it('should close popover on second click', async () => {
     await initPopover();
-    await waitForStencilLifecycle(page);
 
-    const button = await getButton();
-
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await togglePopover();
     expect(await getPopover()).not.toBeNull();
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await togglePopover();
     expect(await getPopover()).toBeNull();
   });
 
   it('should close popover if clicked outside host element', async () => {
-    await initPopover({ withExtendedMarkup: true });
-    await waitForStencilLifecycle(page);
+    await initPopover();
 
-    const button = await getButton();
-    const extendedMarkup = await getExtendedMarkup();
-
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await togglePopover();
     expect(await getPopover()).not.toBeNull();
 
-    extendedMarkup.click();
+    (await selectNode(page, 'body')).click();
     await waitForStencilLifecycle(page);
 
     expect(await getPopover()).toBeNull();
@@ -115,15 +103,12 @@ describe('mouse behavior', () => {
   });
 
   it('should not close popover when its content is clicked', async () => {
-    await initPopover({ withLink: true });
-    const button = await getButton();
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await initPopover();
+    await togglePopover();
     expect(await getPopover()).not.toBeNull();
 
-    const textContent = await getTextContent();
-    textContent.click();
-    await waitForStencilLifecycle(page);
+    await (await getPopover()).click();
+
     expect(await getPopover()).not.toBeNull();
   });
 });
@@ -131,12 +116,11 @@ describe('mouse behavior', () => {
 describe('keyboard behavior', () => {
   describe('escape', () => {
     const focusedElement = 'P-BUTTON-PURE';
+
     it('should close popover when button is focused', async () => {
       await initPopover();
       const host = await getHost();
-      const button = await getButton();
-      await button.click();
-      await waitForStencilLifecycle(page);
+      await togglePopover();
 
       expect(await getPopover()).not.toBeNull();
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
@@ -151,9 +135,7 @@ describe('keyboard behavior', () => {
     it('should close popover when content is focused', async () => {
       await initPopover({ withLink: true });
       const host = await getHost();
-      const button = await getButton();
-      await button.click();
-      await waitForStencilLifecycle(page);
+      await togglePopover();
 
       expect(await getPopover()).not.toBeNull();
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
@@ -173,9 +155,7 @@ describe('keyboard behavior', () => {
     it('should close popover when content outside is focused', async () => {
       await initPopover({ withButtonOutside: true });
       const host = await getHost();
-      const button = await getButton();
-      await button.click();
-      await waitForStencilLifecycle(page);
+      await togglePopover();
 
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
       expect(await getPopover()).not.toBeNull();
@@ -192,7 +172,7 @@ describe('keyboard behavior', () => {
   });
 
   describe('enter', () => {
-    it('should open / close popover on enter press', async () => {
+    it('should open / close popover', async () => {
       await initPopover();
 
       page.keyboard.press('Tab');
@@ -207,7 +187,7 @@ describe('keyboard behavior', () => {
       expect(await getPopover(), 'second enter').toBeNull();
     });
 
-    it('should close other popovers that are open on enter click', async () => {
+    it('should close other popovers that are open', async () => {
       await setContentWithDesignSystem(
         page,
         `<p-popover>Some Content</p-popover>
@@ -238,7 +218,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, button);
   });
 
-  it('should expose correct accessibility tree when label property is changed', async () => {
+  it('should expose correct accessibility tree when aria-label property is changed', async () => {
     await initPopover();
     const host = await getHost();
     const button = await getButton();
@@ -253,11 +233,9 @@ describe('accessibility', () => {
 
   it('should expose correct accessibility tree when popover is opened', async () => {
     await initPopover();
-    const button = await getButton();
-    await button.click();
-    await waitForStencilLifecycle(page);
+    await togglePopover();
 
-    await expectA11yToMatchSnapshot(page, button);
+    await expectA11yToMatchSnapshot(page, await getButton());
   });
 });
 
