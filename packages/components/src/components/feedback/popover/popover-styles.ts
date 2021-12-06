@@ -12,6 +12,9 @@ import type { JssStyle } from '../../../utils';
 import { color, text } from '@porsche-design-system/utilities';
 import { POPOVER_Z_INDEX } from '../../../constants';
 
+const mediaQueryXS = mediaQuery('xs');
+const mediaQueryForcedColors = '@media (forced-colors: active)';
+
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
     bottom: '100%',
@@ -51,7 +54,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateX(-50%)',
     borderWidth: [borderWidth, borderWidth, 0].join(glue),
     borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
-    '@media (forced-colors: active)': {
+    [mediaQueryForcedColors]: {
       borderColor: ['canvastext', 'canvas', 'canvas'].join(glue),
     },
   },
@@ -61,7 +64,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
     borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
-    '@media (forced-colors: active)': {
+    [mediaQueryForcedColors]: {
       borderColor: ['canvas', 'canvastext', 'canvas', 'canvas'].join(glue),
     },
   },
@@ -71,7 +74,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateX(-50%)',
     borderWidth: [0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
-    '@media (forced-colors: active)': {
+    [mediaQueryForcedColors]: {
       borderColor: ['canvas', 'canvas', 'canvastext'].join(glue),
     },
   },
@@ -81,7 +84,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
-    '@media (forced-colors: active)': {
+    [mediaQueryForcedColors]: {
       borderColor: ['canvas', 'canvas', 'canvas', 'canvastext'].join(glue),
     },
   },
@@ -92,7 +95,6 @@ const getArrowStyle = (direction: PopoverDirection): JssStyle => {
 };
 
 export const getComponentCss = (direction: PopoverDirection): string => {
-  const mediaQueryXS = mediaQuery('xs');
   const spacerBox = '-1rem';
 
   return getCss({
@@ -115,7 +117,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
           ? '240ms $fadeIn ease forwards'
-          : 'var(--p-animation-duration__popover, 240ms) $fadeIn ease forwards',
+          : 'var(--p-override-popover-animation-duration, 240ms) $fadeIn ease forwards',
       '&::before': {
         content: '""',
         position: 'absolute',
@@ -145,7 +147,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),
       },
-      '@media (forced-colors: active)': {
+      [mediaQueryForcedColors]: {
         outline: '1px solid canvastext',
       },
     },
