@@ -81,7 +81,7 @@ Additionally, the input controls which also reflect their validation state color
 | <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
 
 
-### Text / icon color
+### Base color
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
 |-----------------------------------------------------------------------------	|---------------------------|----------	|----------------	|------------------------------------------ |
@@ -157,7 +157,7 @@ When using notification colors …
 | <ColorBadge theme="dark" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #C7E4FF 	| 199/228/255 	| Neutral Soft (only to be used for notification background)	  | 
 
 
-### Text / icon color
+### Base color
 
 |                                                                         	|                    	    | HEX     	| RGB           	| Usage                                   |
 |-------------------------------------------------------------------------	|-------------------------|----------	|----------------	|---------------------------------------- |
