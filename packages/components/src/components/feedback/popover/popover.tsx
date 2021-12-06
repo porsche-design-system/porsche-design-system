@@ -76,7 +76,7 @@ export class Popover {
       </Host>
     );
   }
-  // TODO: Z-Index into docu
+
   private onKeydown = ({ key }: KeyboardEvent): void => {
     if (key === 'Escape' || key === 'Esc') {
       this.button.focus();
