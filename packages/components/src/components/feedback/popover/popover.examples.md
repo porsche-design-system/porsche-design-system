@@ -1,7 +1,7 @@
 # Popover
 
 The `p-popover` component can be used to display some additional content on top of another in conjunction with 
-the info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
+the info <p-popover description="Hello World"></p-popover>-button.
 
 ## Basic
 
