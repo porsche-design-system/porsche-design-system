@@ -53,32 +53,3 @@ body > select {
 .playground.focused-hovered::before {
   content: ':focus-visible:hover';
 }
-
-.viewportFrame {
-  position: fixed;
-  background: rgba(0, 0, 255, 0.1);
-}
-.viewportFrame--top {
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1rem;
-}
-.viewportFrame--bottom {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1rem;
-}
-.viewportFrame--left {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 1rem;
-}
-.viewportFrame--right {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 1rem;
-}
