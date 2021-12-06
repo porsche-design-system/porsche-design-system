@@ -18,7 +18,8 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-popover');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
-const getButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
+const getButton = () => selectNode(page, 'p-popover >>> p-button-pure');
+const getRealButton = () => selectNode(page, 'p-popover >>> p-button-pure >>> button');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
 
 const togglePopover = async (): Promise<void> => {
@@ -35,16 +36,17 @@ type InitOptions = {
 const initPopover = (opts?: InitOptions): Promise<void> => {
   const { direction = 'bottom', withLink = false, withButtonOutside = false } = opts ?? {};
 
-  const linkMarkup = '<a href="#">Some Link</a>';
+  const linkMarkup = withLink ? '<a href="#">Some Link</a>' : '';
+  const buttonMarkup = withButtonOutside ? '<button>Some Button</button>' : '';
 
   return setContentWithDesignSystem(
     page,
     `
-        <p-popover direction="${direction}">
-           ${withLink ? linkMarkup : ''}
-           Some Popover Content
-        </p-popover>
-        ${withButtonOutside ? '<button>Some Button</button>' : ''}`
+<p-popover direction="${direction}">
+  ${linkMarkup}
+  Some Popover Content
+</p-popover>
+${buttonMarkup}`
   );
 };
 
@@ -213,29 +215,27 @@ describe('keyboard behavior', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initPopover();
-    const button = await getButton();
 
-    await expectA11yToMatchSnapshot(page, button);
+    await expectA11yToMatchSnapshot(page, await getRealButton());
   });
 
   it('should expose correct accessibility tree when aria property is changed', async () => {
     await initPopover();
     const host = await getHost();
-    const button = await getButton();
 
     await setProperty(host, 'aria', {
       'aria-label': 'Some more detailed label',
     });
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, button);
+    await expectA11yToMatchSnapshot(page, await getRealButton());
   });
 
   it('should expose correct accessibility tree when popover is opened', async () => {
     await initPopover();
     await togglePopover();
 
-    await expectA11yToMatchSnapshot(page, await getButton());
+    await expectA11yToMatchSnapshot(page, await getRealButton());
   });
 });
 
