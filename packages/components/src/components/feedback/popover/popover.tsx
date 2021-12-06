@@ -20,6 +20,7 @@ export class Popover {
   /** Descriptive text to show additional information when popover is open  */
   @Prop() public description?: string;
 
+  /** Add descriptive aria-label attribute. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
   @State() public open = false;
@@ -63,7 +64,7 @@ export class Popover {
           }}
           ref={(el) => (this.button = el)}
         >
-          {!this.aria && 'More information'}
+          More information
         </PrefixedTagNames.pButtonPure>
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
@@ -76,7 +77,6 @@ export class Popover {
     );
   }
   // TODO: Z-Index into docu
-  // TODO: document p tag if needed
   private onKeydown = ({ key }: KeyboardEvent): void => {
     if (key === 'Escape' || key === 'Esc') {
       this.button.focus();
