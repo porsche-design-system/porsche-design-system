@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
-import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
+import { getPrefixedTagNames, isDark, isLightElectric, mapBreakpointPropToClasses } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
@@ -23,7 +23,7 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
@@ -75,6 +75,7 @@ export class Accordion {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ['root--open']: this.open,
       ...(!this.compact && mapBreakpointPropToClasses('root--size', this.size)),
       ['root--compact']: this.compact,

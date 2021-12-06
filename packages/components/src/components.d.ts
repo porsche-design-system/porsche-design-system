@@ -54,7 +54,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
@@ -1289,7 +1289,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Exclude<Theme, 'light-electric'>;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**

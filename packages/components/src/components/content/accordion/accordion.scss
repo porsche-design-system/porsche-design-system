@@ -17,6 +17,10 @@ $root: '.root';
     &--theme-dark:not(&--compact) {
       border-color: $p-color-theme-dark-neutral-contrast-low;
     }
+
+    &--theme-light-electric:not(&--compact) {
+      border-color: $p-color-theme-light-electric-neutral-contrast-low;
+    }
   }
 }
 
@@ -29,6 +33,10 @@ $root: '.root';
 
   &--theme-dark:not(&--compact) {
     border-color: $p-color-theme-dark-neutral-contrast-low;
+  }
+
+  &--theme-light-electric:not(&--compact) {
+    border-color: $p-color-theme-light-electric-neutral-contrast-low;
   }
 }
 
@@ -59,6 +67,12 @@ button {
 
   #{$root}--theme-dark & {
     color: $p-color-theme-dark-default;
+    @include p-focus($p-color-theme-dark-state-focus);
+  }
+
+  #{$root}--theme-light-electric & {
+    color: $p-color-theme-light-electric-default;
+    @include p-focus($p-color-theme-light-electric-state-focus);
   }
 
   #{$root}--size-medium & {
@@ -89,6 +103,10 @@ button {
 
     #{$root}--theme-dark & {
       color: $p-color-theme-dark-state-hover;
+    }
+
+    #{$root}--theme-light-electric & {
+      color: $p-color-theme-light-electric-state-hover;
     }
   }
 }
