@@ -629,7 +629,7 @@ export namespace Components {
     }
     interface PPopover {
         /**
-          * Add descriptive aria-label attribute.
+          * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**
@@ -1905,7 +1905,7 @@ declare namespace LocalJSX {
     }
     interface PPopover {
         /**
-          * Add descriptive aria-label attribute.
+          * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**

@@ -20,7 +20,7 @@ export class Popover {
   /** Descriptive text to show additional information when popover is open  */
   @Prop() public description?: string;
 
-  /** Add descriptive aria-label attribute. */
+  /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
   @State() public open = false;
@@ -40,6 +40,7 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.open) {
+      // calculate / update position only possible after render
       updatePopoverStyles(this.host, this.spacer, this.popover, this.direction);
     }
   }
