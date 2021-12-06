@@ -262,7 +262,6 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
-    // TODO: button pure gets update due aria bug
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
