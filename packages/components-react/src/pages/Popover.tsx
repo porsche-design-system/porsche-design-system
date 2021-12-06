@@ -3,8 +3,12 @@ import { PPopover } from '@porsche-design-system/components-react';
 export const PopoverPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should render multiple popovers" style={{ height: 500 }}>
-        <span style={{ position: 'absolute', top: '20%', left: '50vw', transform: 'translate(-50%)' }}>
+      <div
+        className="playground light"
+        title="should render multiple popovers"
+        style={{ position: 'relative', height: 500 }}
+      >
+        <span style={{ position: 'absolute', top: '15%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover>
             <span>
               Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,{' '}

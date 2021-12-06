@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 @Component({
   selector: 'page-popover',
   template: `
-    <div class="playground light" title="should render multiple popovers" style="height: 500px">
-      <span style="position: absolute; top: 20%; left: 50vw; transform: translate(-50%)">
+    <div class="playground light" title="should render multiple popovers" style="position: relative; height: 500px">
+      <span style="position: absolute; top: 15%; left: 50vw; transform: translate(-50%)">
         <p-popover>
           <span
             >Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,

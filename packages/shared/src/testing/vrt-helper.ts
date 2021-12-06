@@ -23,13 +23,6 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
       button.click();
     });
 
-    // Workaround to have a delay due to waitForStencilLifecycle is not available
-    // const newPopover = document.createElement('p-popover');
-    // newPopover.style.margin = '-10rem';
-    // document.body.appendChild(newPopover);
-    // await (window as any).porscheDesignSystem.componentsReady();
-    // await (window as any).componentsReady();
-
     await new Promise((resolve) => setTimeout(resolve, 10));
 
     if (options?.withBackground) {
