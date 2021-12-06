@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 **Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
-- `light-electric` theme for `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`
+- `light-electric` theme for `Accordion`, `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`
 
 #### Fixed
 - `Link` and `Link Social` not adapting slotted anchor to the width of the element 
