@@ -7,7 +7,7 @@ import {
 it('should have no visual regression', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'overview', '/overview', {
-      scenario: openPopoversAndHighlightSpacer,
+      scenario: (page) => openPopoversAndHighlightSpacer(page),
     })
   ).toBeFalsy();
 });
