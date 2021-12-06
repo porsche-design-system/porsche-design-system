@@ -52,14 +52,6 @@ export const OverviewPage = (): JSX.Element => {
     componentsReady().then(() => {
       setAllReady(true);
     });
-    // Enable multiple open popovers
-    document.addEventListener(
-      'mousedown',
-      (e) => {
-        e.stopPropagation();
-      },
-      true
-    );
   }, []);
 
   const prefix = 'my-prefix';
