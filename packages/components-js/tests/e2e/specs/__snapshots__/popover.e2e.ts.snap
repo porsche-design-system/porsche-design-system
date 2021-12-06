@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should expose correct accessibility tree when label property is changed 1`] = `
+exports[`accessibility should expose correct accessibility tree when aria-label property is changed 1`] = `
 Object {
   "name": "Some more detailed label",
   "role": "button",
