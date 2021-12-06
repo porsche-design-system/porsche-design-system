@@ -12,6 +12,14 @@ Object {
       "hover": "#c4001a",
     },
   },
+  "lightElectricTheme": Object {
+    "neutralContrast": Object {
+      "high": "#151718",
+    },
+    "state": Object {
+      "hover": "#0084b7",
+    },
+  },
   "neutralContrast": Object {
     "high": "#151718",
   },
@@ -59,6 +67,28 @@ Object {
   "errorColor": "#e00000",
   "errorSoftColor": "#fae6e6",
   "hoverColor": "#d5001c",
+  "neutralColor": "#0061bd",
+  "neutralSoftColor": "#e5eff8",
+  "successColor": "#018a16",
+  "successSoftColor": "#e5f3e7",
+  "textColor": "#000",
+  "warningColor": "#ff9b00",
+  "warningSoftColor": "#fff5e5",
+}
+`;
+
+exports[`getThemedColors() should return correct colors for theme: 'light-electric' 1`] = `
+Object {
+  "activeColor": "#00b0f4",
+  "backgroundColor": "#fff",
+  "brandColor": "#00b0f4",
+  "contrastHighColor": "#323639",
+  "contrastLowColor": "#e3e4e5",
+  "contrastMediumColor": "#626669",
+  "disabledColor": "#96989a",
+  "errorColor": "#e00000",
+  "errorSoftColor": "#fae6e6",
+  "hoverColor": "#00b0f4",
   "neutralColor": "#0061bd",
   "neutralSoftColor": "#e5eff8",
   "successColor": "#018a16",
