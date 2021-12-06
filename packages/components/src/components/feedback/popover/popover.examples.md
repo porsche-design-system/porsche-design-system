@@ -13,6 +13,10 @@ Only one Popover can be opened at the time, by clicking another Popover the open
 
 You can use the `description` or the slot of the Popover to provide content which will be displayed in the open popover.
 
+**Hint:** The Popover uses a z-index of `9999` to be displayed in front of all Elements. This only works if the 
+[stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context) is not broken and following Elements
+have a lower z-index.
+
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
 ### ARIA attributes and states
