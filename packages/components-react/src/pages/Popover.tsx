@@ -3,7 +3,7 @@ import { PPopover } from '@porsche-design-system/components-react';
 export const PopoverPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should render multiple popovers" style={{ height: '500px' }}>
+      <div className="playground light" title="should render multiple popovers" style={{ height: 500 }}>
         <span style={{ position: 'absolute', top: '20%', left: '50vw', transform: 'translate(-50%)' }}>
           <PPopover>
             <span>
