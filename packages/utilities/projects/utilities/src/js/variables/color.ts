@@ -1,4 +1,5 @@
-export type Theme = 'light' | 'dark' | 'light-electric';
+export type Theme = 'light' | 'dark';
+export type ThemeExtendedElectric = Theme | 'light-electric';
 
 type ColorTheme = {
   brand: string;
@@ -118,10 +119,10 @@ export const color: Color = {
       focus: 'currentColor',
       disabled: '#7c7f81',
     },
-    /**
-     * Theme light electric as optional
-     */
   },
+  /**
+   * Theme light electric as optional
+   */
   lightElectricTheme: {
     brand: '#00b0f4',
     default: '#000',

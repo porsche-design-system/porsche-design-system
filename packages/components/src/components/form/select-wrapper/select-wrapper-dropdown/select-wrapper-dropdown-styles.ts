@@ -8,7 +8,7 @@ import {
   getInset,
   getTextHiddenJssStyle,
   getThemedColors,
-  getThemedStateColors,
+  getThemedFormStateColors,
   getTransition,
   isDark,
   JssStyle,
@@ -26,7 +26,7 @@ const getBoxShadow = (stateColor: string): string => `currentColor 0 0 0 ${state
 
 export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const { stateColor } = getThemedStateColors(theme, state);
+  const { stateColor } = getThemedFormStateColors(theme, state);
   const boxShadow = getBoxShadow(stateColor);
 
   return buildGlobalStyles({
@@ -62,7 +62,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
 
 export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const { stateColor } = getThemedStateColors(theme, state);
+  const { stateColor } = getThemedFormStateColors(theme, state);
   const boxShadow = getBoxShadow(stateColor);
 
   const placeHolderStyles: JssStyle = {
@@ -268,7 +268,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
     ...buildHostStyles({

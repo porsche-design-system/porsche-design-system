@@ -15,7 +15,7 @@ import type {
   ButtonType,
   ButtonVariant,
   IconName,
-  Theme,
+  ThemeExtendedElectric,
 } from '../../../types';
 import type { ButtonAriaAttributes } from './button-utils';
 import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
@@ -53,7 +53,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;

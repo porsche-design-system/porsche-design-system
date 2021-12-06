@@ -17,10 +17,16 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import { font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
-import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import type {
+  AlignLabel,
+  AlignLabelType,
+  LinkButtonPureIconName,
+  TextSize,
+  ThemeExtendedElectric,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
-const getColors = (theme: Theme): { baseColor: string; hoverColor: string; activeColor: string } => {
+const getColors = (theme: ThemeExtendedElectric): { baseColor: string; hoverColor: string; activeColor: string } => {
   const { textColor: baseColor, hoverColor, activeColor } = getThemedColors(theme);
   return {
     baseColor,
@@ -149,7 +155,7 @@ export const getComponentCss = (
   alignLabel: AlignLabel,
   hasSubline: boolean,
   hasHref: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): string => {
   const { baseColor, hoverColor, activeColor } = getColors(theme);
   const hasIcon = hasVisibleIcon(icon);

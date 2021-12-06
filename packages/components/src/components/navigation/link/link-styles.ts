@@ -16,13 +16,13 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import type { LinkVariant, Theme } from '../../../types';
+import type { LinkVariant, ThemeExtendedElectric } from '../../../types';
 
 const { darkTheme } = color;
 
 const getVariantColors = (
   variant: LinkVariant,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): { baseColor: string; baseColorHover: string; textColor: string } => {
   const isDarkTheme = isDark(theme);
   const isLightElectricTheme = isLightElectric(theme);
@@ -45,7 +45,7 @@ const getVariantColors = (
         baseColorHover: isDarkTheme
           ? darkTheme.default
           : isLightElectricTheme
-          ? colorDarken.neutralContrast.high
+          ? colorDarken.lightElectricTheme.neutralContrast.high
           : colorDarken.neutralContrast.high,
         textColor,
       };
@@ -135,7 +135,7 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasHref: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): string => {
   const isDarkTheme = isDark(theme);
   const isTertiary = variant === 'tertiary';

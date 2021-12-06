@@ -15,7 +15,7 @@ export class Toast {
   @Element() public host!: HTMLElement;
 
   /** Adapts the toast color depending on the theme. */
-  @Prop() public theme?: Exclude<Theme, 'light-electric'> = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** The bottom offset of the toast. */
   @Prop() public offsetBottom?: ToastOffset = defaultToastOffset;

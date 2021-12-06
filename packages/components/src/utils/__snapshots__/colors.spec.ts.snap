@@ -16,6 +16,10 @@ Object {
     "neutralContrast": Object {
       "high": "#151718",
     },
+    "notification": Object {
+      "error": "#a30000",
+      "success": "#014d0c",
+    },
     "state": Object {
       "hover": "#0084b7",
     },
@@ -99,42 +103,42 @@ Object {
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
 Object {
   "stateColor": "#fc1717",
   "stateHoverColor": "#d30303",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
 Object {
   "stateColor": undefined,
   "stateHoverColor": undefined,
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
 Object {
   "stateColor": "#01ba1d",
   "stateHoverColor": "#017d14",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
 Object {
   "stateColor": "#e00000",
   "stateHoverColor": "#a30000",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
 Object {
   "stateColor": undefined,
   "stateHoverColor": undefined,
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
 Object {
   "stateColor": "#018a16",
   "stateHoverColor": "#014d0c",
