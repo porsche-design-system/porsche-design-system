@@ -75,7 +75,7 @@ export class Popover {
           onClick={() => (this.open = !this.open)}
           aria={{
             'aria-expanded': this.open === true ? 'true' : 'false',
-            ...parseAndGetAriaAttributes(this.aria),
+            ...parseAndGetAriaAttributes(this.aria, ['aria-label']),
           }}
           ref={(el) => (this.button = el)}
         >
