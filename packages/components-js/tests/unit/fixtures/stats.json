@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 71099,
-    "gzipSize": 24159
+    "gzipSize": 24165
   },
   {
     "chunkShortName": "marque",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6798,
-    "gzipSize": 2676
+    "size": 6665,
+    "gzipSize": 2652
   },
   {
     "chunkShortName": "radio-button-wrapper",
