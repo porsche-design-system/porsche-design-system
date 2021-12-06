@@ -12,14 +12,13 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import type { GetMarkup } from '../helpers';
-
-import { PopoverDirection } from '../../../../components-angular/dist/components-wrapper';
 import { openPopoversAndHighlightSpacer } from '@porsche-design-system/shared/testing';
+import { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'popover', '/#popover', {
-      scenario: (page) => openPopoversAndHighlightSpacer(page, false, true),
+      scenario: (page) => openPopoversAndHighlightSpacer(page),
     })
   ).toBeFalsy();
 });
@@ -145,7 +144,7 @@ it('should have no visual regression on popover-overview for viewport 1760', asy
 </div>
       `
       );
-      await openPopoversAndHighlightSpacer(page, true, true);
+      await openPopoversAndHighlightSpacer(page, { withBackground: true });
     })
   ).toBeFalsy();
 });
@@ -160,7 +159,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-popover>Some Content with <a>Link</a></p-popover>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
-      await openPopoversAndHighlightSpacer(page, false, true);
+      await openPopoversAndHighlightSpacer(page);
 
       await forceHoveredState(page, '.hovered > p-popover >>> p-button-pure >>> button');
       await forceHoveredState(page, '.hovered > p-popover > a');
