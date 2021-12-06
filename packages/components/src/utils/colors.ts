@@ -105,8 +105,9 @@ export const getThemedColors = (theme: Theme): ThemedColors => {
   return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
 };
 
+// TODO: light-electric theme not handled yet. In addition this helper is specific for form elements but not that generic as it is right now.
 export const getThemedStateColors = (
-  theme: Exclude<Theme, 'light-electric'>,
+  theme: Theme,
   state: FormState
 ): { stateColor: string; stateHoverColor: string } => {
   const isDarkTheme = isDark(theme);
