@@ -16,7 +16,7 @@ describe('isDark()', () => {
 
 describe('isLightElectric()', () => {
   it('should return true for "light-electric"', () => {
-    expect(isLightElectric('dark')).toBe(true);
+    expect(isLightElectric('light-electric')).toBe(true);
   });
 
   it('should return false for "light"', () => {
@@ -32,6 +32,11 @@ describe('getThemeDarkAttribute()', () => {
   it("should return { theme: 'dark' } for dark theme", () => {
     expect(getThemeDarkAttribute('dark')).toEqual({ theme: 'dark' });
   });
+
+  it("should return { theme: 'light-electric' } for light-electric theme", () => {
+    expect(getThemeDarkAttribute('light-electric')).toEqual({ theme: 'light-electric' });
+  });
+
   it('should return null for light theme', () => {
     expect(getThemeDarkAttribute('light')).toBe(null);
   });

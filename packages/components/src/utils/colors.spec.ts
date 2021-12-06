@@ -8,13 +8,13 @@ describe('colorDarken', () => {
 });
 
 describe('getThemedColors()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct colors for theme: %o', (theme) => {
+  it.each<Theme>(['light', 'dark', 'light-electric'])('should return correct colors for theme: %o', (theme) => {
     expect(getThemedColors(theme)).toMatchSnapshot();
   });
 });
 
 describe('getThemedStateColors()', () => {
-  it.each<[Theme, FormState]>([
+  it.each<[Exclude<Theme, 'light-electric'>, FormState]>([
     ['light', 'none'],
     ['light', 'success'],
     ['light', 'error'],

@@ -106,7 +106,7 @@ export const getThemedColors = (theme: Theme): ThemedColors => {
 };
 
 export const getThemedStateColors = (
-  theme: Theme,
+  theme: Exclude<Theme, 'light-electric'>,
   state: FormState
 ): { stateColor: string; stateHoverColor: string } => {
   const isDarkTheme = isDark(theme);
