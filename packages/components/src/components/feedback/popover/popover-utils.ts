@@ -1,9 +1,25 @@
 import { Popover } from './popover';
+import { attachComponentCss } from '../../../utils';
+import { getComponentCss } from './popover-styles';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
 
 const safeZonePx = 16;
+
+export const updatePopoverStyles = (
+  host: HTMLElement,
+  spacer: HTMLDivElement,
+  popover: HTMLDivElement,
+  direction: PopoverDirection
+): void => {
+  if (!isElementWithinViewport(spacer, popover, direction)) {
+    direction = getAutoDirection(spacer, popover);
+    attachComponentCss(host, getComponentCss, direction);
+  }
+  // Set margin via inline style to make attachComponentCss cacheable
+  popover.style.margin = getPopoverMargin(spacer, popover, direction);
+};
 
 export const isElementWithinViewport = (
   spacer: HTMLDivElement,
