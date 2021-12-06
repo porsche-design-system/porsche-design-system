@@ -71,11 +71,7 @@ export const unobserveResize = <T extends HTMLElement>(node: T): void => {
   }
 };
 
-export let registeredAccordions: Accordion[] = [];
-
-export const resetRegisteredAccordions = (): void => {
-  registeredAccordions = [];
-};
+export const registeredAccordions: Accordion[] = [];
 
 export const onWindowResize = (): void => {
   registeredAccordions.forEach((accordion) => {
@@ -86,8 +82,8 @@ export const onWindowResize = (): void => {
 export const observeWindowResize = (accordion: Accordion): void => {
   if (!registeredAccordions.includes(accordion)) {
     registeredAccordions.push(accordion);
+    window.addEventListener('resize', onWindowResize);
   }
-  window.addEventListener('resize', onWindowResize);
 };
 
 export const unobserveWindowResize = (accordion: Accordion): void => {
