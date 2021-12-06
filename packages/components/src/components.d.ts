@@ -628,6 +628,9 @@ export namespace Components {
         "totalItemsCount": number;
     }
     interface PPopover {
+        /**
+          * Add descriptive aria-label attribute.
+         */
         "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**
           * Descriptive text to show additional information when popover is open
@@ -1901,6 +1904,9 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     interface PPopover {
+        /**
+          * Add descriptive aria-label attribute.
+         */
         "aria"?: SelectedAriaAttributes<'aria-label'>;
         /**
           * Descriptive text to show additional information when popover is open
