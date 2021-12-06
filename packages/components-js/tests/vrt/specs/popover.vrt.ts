@@ -156,7 +156,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const getElementsMarkup: GetMarkup = () => `
-        <p-popover>Some Content with <a>Link</a></p-popover>`;
+        <p-popover>Some content with a <a>link</a></p-popover>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
       await openPopoversAndHighlightSpacer(page);
