@@ -48,7 +48,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
         </p-accordion>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] })
+      );
 
       await forceHoveredState(page, '.hovered > p-accordion >>> button');
       await forceHoveredState(page, '.hovered > p-accordion > p-link-pure >>> a');
