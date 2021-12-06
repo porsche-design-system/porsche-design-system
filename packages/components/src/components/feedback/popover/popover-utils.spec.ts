@@ -363,11 +363,13 @@ describe('addDocumentEventListener()', () => {
     expect(spy).toBeCalledTimes(2);
   });
 
-  it('should not register eventListeners twice', () => {
+  it('should register eventListeners only once', () => {
     const spy = jest.spyOn(document, 'addEventListener');
     addDocumentEventListener(popover);
     addDocumentEventListener(popover);
 
+    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
     expect(spy).toBeCalledTimes(2);
   });
 
@@ -378,7 +380,7 @@ describe('addDocumentEventListener()', () => {
     expect(registeredPopovers[0]).toBe(popover);
   });
 
-  it('should not push popover into registeredPopovers array twice', () => {
+  it('should push popover into registeredPopovers array only once', () => {
     addDocumentEventListener(popover);
     addDocumentEventListener(popover);
 
@@ -449,13 +451,13 @@ describe('onDocumentMousedown()', () => {
   let spy: jest.SpyInstance;
 
   beforeEach(() => {
+    popover.open = false;
     registeredPopovers.length = 0;
     registeredPopovers.push(popover);
     spy = jest.spyOn(popoverUtils, 'onDocumentMousedown');
     document.addEventListener('mousedown', onDocumentMousedown);
   });
   afterEach(() => {
-    popover.open = false;
     document.removeEventListener('mousedown', onDocumentMousedown);
   });
 
@@ -512,13 +514,13 @@ describe('onDocumentKeydown()', () => {
   let spy: jest.SpyInstance;
 
   beforeEach(() => {
+    popover.open = false;
     registeredPopovers.length = 0;
     registeredPopovers.push(popover);
     spy = jest.spyOn(popoverUtils, 'onDocumentKeydown');
     document.addEventListener('keydown', onDocumentKeydown);
   });
   afterEach(() => {
-    popover.open = false;
     document.removeEventListener('keydown', onDocumentKeydown);
   });
 
