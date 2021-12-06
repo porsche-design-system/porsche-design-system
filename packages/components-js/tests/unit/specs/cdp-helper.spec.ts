@@ -92,18 +92,20 @@ describe('cdp-helper', () => {
   });
 
   describe('getThemedBodyMarkup()', () => {
-    it('should put elements in themed playground divs', () => {
+    it('should put elements in default themed playground divs', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
       expect(getThemedBodyMarkup(getThemedElementsMarkup)).toMatchSnapshot();
     });
 
-    it('should put elements in themed playground divs', () => {
+    it('should put elements in individual themed playground divs', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
-      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toMatchSnapshot();
+      expect(
+        getThemedBodyMarkup(getThemedElementsMarkup, { theme: ['light', 'dark', 'light-electric'] })
+      ).toMatchSnapshot();
     });
   });
 
