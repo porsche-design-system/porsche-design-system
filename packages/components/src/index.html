@@ -9,13 +9,9 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+  </head>
+  <body>
+    <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
@@ -24,37 +20,6 @@
         })
       );
     </script>
-  </head>
-  <body>
-    <span style="position: fixed; top: 0; left: 0; right: 0; height: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-    <span style="position: fixed; bottom: 0; left: 0; right: 0; height: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-    <span style="position: fixed; top: 0; left: 0; bottom: 0; width: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-    <span style="position: fixed; top: 0; right: 0; bottom: 0; width: 1rem; background: rgba(0, 0, 255, 0.1)"></span>
-    <div
-      style="
-        border-top: 50vh solid white;
-        border-right: 50vw solid white;
-        border-bottom: 50vh solid white;
-        border-left: 50vw solid white;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <button>Toggle theme</button>
-      <p-popover
-        >Lorem ipsum Lorem ipsum Lorem <a href="#">Some link</a> ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsum Lorem orem orem ipsum Lorem ipsum Lore ipsum Lorem ipsum Lore ipsumvLorem ipsum
-      </p-popover>
-    </div>
-    <script>
-      document.querySelector('button').addEventListener('click', () => {
-        const isThemeLight = document.querySelector('p-popover').theme === 'light';
-        document.querySelector('p-popover').theme = isThemeLight ? 'dark' : 'light';
-        document.querySelector('body').style.backgroundColor = isThemeLight ? 'rgb(38, 43, 46)' : 'rgb(242, 242, 242)';
-      });
-    </script>
+    <!-- /END -->
   </body>
 </html>
