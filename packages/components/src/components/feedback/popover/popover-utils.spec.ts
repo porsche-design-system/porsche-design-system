@@ -9,10 +9,13 @@ import {
   POPOVER_DIRECTIONS,
   registeredPopovers,
   removeDocumentEventListener,
+  updatePopoverStyles,
 } from './popover-utils';
 import type { PopoverDirection } from './popover-utils';
 import * as popoverUtils from './popover-utils';
+import * as utils from '../../../utils/jss';
 import { Popover } from './popover';
+import { getComponentCss } from './popover-styles';
 
 type Rect = Pick<DOMRect, 'width' | 'height' | 'top' | 'left' | 'bottom' | 'right'>;
 
@@ -78,6 +81,56 @@ const mapDirectionToRect: { [key in PopoverDirection]: Rect } = {
 
 const spacer = document.createElement('div');
 const popover = document.createElement('div');
+
+describe('updatePopoverStyles()', () => {
+  const host = document.createElement('p-popover');
+  host.attachShadow({ mode: 'open' });
+
+  beforeAll(() => {
+    setViewport();
+  });
+
+  beforeEach(() => {
+    mockBoundingClientRect(spacer, rectCentered);
+    mockBoundingClientRect(popover, rectCentered);
+  });
+
+  it('should call isElementWithinViewport()', () => {
+    const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
+    updatePopoverStyles(host, spacer, popover, 'top');
+    expect(spy).toBeCalledWith(spacer, popover, 'top');
+  });
+
+  it('should call getAutoDirection() and attachComponentCss()', () => {
+    const getAutoDirectionSpy = jest.spyOn(popoverUtils, 'getAutoDirection');
+    const attachComponentCssSpy = jest.spyOn(utils, 'attachComponentCss');
+
+    jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
+    updatePopoverStyles(host, spacer, popover, 'top');
+    expect(getAutoDirectionSpy).not.toBeCalled();
+    expect(attachComponentCssSpy).not.toBeCalled();
+
+    jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
+    updatePopoverStyles(host, spacer, popover, 'top');
+
+    expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
+    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom');
+  });
+
+  it('should call getPopoverMargin()', () => {
+    const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
+    updatePopoverStyles(host, spacer, popover, 'top');
+    expect(spy).toBeCalledWith(spacer, popover, 'top');
+  });
+
+  it('should set margin to popover', () => {
+    jest.spyOn(popoverUtils, 'getPopoverMargin').mockImplementationOnce(() => '1px');
+    expect(popover.style.margin).toBe('0px');
+
+    updatePopoverStyles(host, spacer, popover, 'top');
+    expect(popover.style.margin).toBe('1px');
+  });
+});
 
 describe('isElementWithinViewport()', () => {
   beforeAll(() => {
