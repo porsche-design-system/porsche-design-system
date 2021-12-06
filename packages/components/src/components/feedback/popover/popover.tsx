@@ -67,7 +67,7 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onKeydown={this.handleEscapeClick}>
+      <Host onKeydown={this.handleEscapePress}>
         <PrefixedTagNames.pButtonPure
           type="button"
           icon="information"
@@ -95,7 +95,7 @@ export class Popover {
   // TODO: Z-Index into docu
   // TODO: document p tag if needed
   // TODO: remove styling when description is set
-  private handleEscapeClick = ({ key }: KeyboardEvent): void => {
+  private handleEscapePress = ({ key }: KeyboardEvent): void => {
     if (key === 'Escape' || key === 'Esc') {
       this.button.focus();
     }
