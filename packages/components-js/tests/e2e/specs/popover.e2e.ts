@@ -218,7 +218,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, button);
   });
 
-  it('should expose correct accessibility tree when aria-label property is changed', async () => {
+  it('should expose correct accessibility tree when aria property is changed', async () => {
     await initPopover();
     const host = await getHost();
     const button = await getButton();
