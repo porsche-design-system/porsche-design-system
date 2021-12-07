@@ -3,7 +3,7 @@ import { buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../..
 
 const getColor = (color: IconColor, theme: Theme): string => {
   const {
-    textColor,
+    baseColor,
     brandColor,
     contrastHighColor,
     contrastMediumColor,
@@ -33,7 +33,7 @@ const getColor = (color: IconColor, theme: Theme): string => {
     case 'inherit':
       return 'currentColor';
     default:
-      return textColor;
+      return baseColor;
   }
 };
 

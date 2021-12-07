@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('button-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-button:not(:last-child) { margin-right: 0.5rem; }</style>`;
+      const head = `<style>p-button:not(:last-child) { margin-right: 0.5rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-button theme="${theme}" variant="primary">Primary</p-button>
@@ -33,7 +33,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-button theme="${theme}" variant="secondary" loading>Loading Secondary</p-button>
         <p-button theme="${theme}" variant="tertiary" loading>Loading Tertiary</p-button>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] }),
+        { injectIntoHead: head }
+      );
 
       await forceHoveredState(page, '.hovered > p-button >>> button');
       await forceFocusedState(page, '.focused > p-button >>> button');

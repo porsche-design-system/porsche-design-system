@@ -9,28 +9,22 @@ import {
   getFocusSlottedPseudoStyles,
   getFocusStyles,
   getInset,
+  getThemedColors,
   getTransition,
   hasVisibleIcon,
-  isDark,
   mergeDeep,
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../../../utils';
-import { color, font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
-import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import { font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
+import type {
+  AlignLabel,
+  AlignLabelType,
+  LinkButtonPureIconName,
+  TextSize,
+  ThemeExtendedElectric,
+} from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
-
-const getColors = (isDarkTheme: boolean): { baseColor: string; hoverColor: string; activeColor: string } => {
-  const {
-    default: baseColor,
-    state: { hover, active },
-  } = isDarkTheme ? color.darkTheme : color;
-  return {
-    baseColor,
-    hoverColor: hover,
-    activeColor: active,
-  };
-};
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   ...addImportantToEachRule({
@@ -152,10 +146,9 @@ export const getComponentCss = (
   alignLabel: AlignLabel,
   hasSubline: boolean,
   hasHref: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): string => {
-  const isDarkTheme = isDark(theme);
-  const { baseColor, hoverColor, activeColor } = getColors(isDarkTheme);
+  const { baseColor, hoverColor, activeColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return getCss({

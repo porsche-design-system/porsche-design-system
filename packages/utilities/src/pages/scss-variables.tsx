@@ -61,6 +61,29 @@ const darkThemeColors = {
   'theme-dark-state-disabled': '#7c7f81',
 };
 
+const lightElectricThemeColors = {
+  'theme-light-electric-brand': '#00b0f4',
+  'theme-light-electric-default': '#000',
+  'theme-light-electric-background-default': '#fff',
+  'theme-light-electric-background-surface': '#f2f2f2',
+  'theme-light-electric-background-shading': 'rgba(14, 20, 24, 0.9)',
+  'theme-light-electric-neutral-contrast-high': '#323639',
+  'theme-light-electric-neutral-contrast-medium': '#626669',
+  'theme-light-electric-neutral-contrast-low': '#e3e4e5',
+  'theme-light-electric-notification-success': '#018a16',
+  'theme-light-electric-notification-success-soft': '#e5f3e7',
+  'theme-light-electric-notification-warning': '#ff9b00',
+  'theme-light-electric-notification-warning-soft': '#fff5e5',
+  'theme-light-electric-notification-error': '#e00000',
+  'theme-light-electric-notification-error-soft': '#fae6e6',
+  'theme-light-electric-notification-neutral': '#0061bd',
+  'theme-light-electric-notification-neutral-soft': '#e5eff8',
+  'theme-light-electric-state-hover': '#00b0f4',
+  'theme-light-electric-state-active': '#00b0f4',
+  'theme-light-electric-state-focus': 'currentColor',
+  'theme-light-electric-state-disabled': '#96989a',
+};
+
 const fontWeights = ['thin', 'regular', 'semibold', 'bold'];
 const fontSizes = [
   '12',
@@ -104,6 +127,13 @@ export const ScssVariables = (): JSX.Element => (
     <div className="playground">
       <h2>Dark Theme Colors</h2>
       {Object.entries(darkThemeColors).map(([key, value]) => (
+        <div key={key} className={cx('square', `square--color-${key}`)} children={value} />
+      ))}
+    </div>
+
+    <div className="playground">
+      <h2>Light-Electric Theme Colors</h2>
+      {Object.entries(lightElectricThemeColors).map(([key, value]) => (
         <div key={key} className={cx('square', `square--color-${key}`)} children={value} />
       ))}
     </div>

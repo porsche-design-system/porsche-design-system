@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { Direction, TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
@@ -17,6 +17,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   isDark,
+  isLightElectric,
   mapBreakpointPropToClasses,
   scrollElementTo,
   setAttribute,
@@ -37,7 +38,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -105,6 +106,7 @@ export class TabsBar {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ['root--weight-semibold']: this.weight === 'semibold',
       ...mapBreakpointPropToClasses('root--size', this.size),
     };

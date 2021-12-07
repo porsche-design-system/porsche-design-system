@@ -137,6 +137,72 @@
   &--color-theme-dark-state-disabled {
     background: $p-color-theme-dark-state-disabled;
   }
+
+  // light-electric
+  &--color-theme-light-electric-brand {
+    background: $p-color-theme-light-electric-brand;
+  }
+  &--color-theme-light-electric-default {
+    background: $p-color-theme-light-electric-default;
+  }
+  &--color-theme-light-electric-background-default {
+    background: $p-color-theme-light-electric-background-default;
+  }
+  &--color-theme-light-electric-background-surface {
+    background: $p-color-theme-light-electric-background-surface;
+  }
+  &--color-theme-light-electric-background-shading {
+    background: $p-color-theme-light-electric-background-shading;
+  }
+  &--color-theme-light-electric-neutral-contrast-high {
+    background: $p-color-theme-light-electric-neutral-contrast-high;
+  }
+  &--color-theme-light-electric-neutral-contrast-medium {
+    background: $p-color-theme-light-electric-neutral-contrast-medium;
+  }
+  &--color-theme-light-electric-neutral-contrast-low {
+    background: $p-color-theme-light-electric-neutral-contrast-low;
+  }
+  &--color-theme-light-electric-notification-success {
+    background: $p-color-theme-light-electric-notification-success;
+  }
+  &--color-theme-light-electric-notification-success-soft {
+    background: $p-color-theme-light-electric-notification-success-soft;
+  }
+  &--color-theme-light-electric-notification-warning {
+    background: $p-color-theme-light-electric-notification-warning;
+  }
+  &--color-theme-light-electric-notification-warning-soft {
+    background: $p-color-theme-light-electric-notification-warning-soft;
+  }
+  &--color-theme-light-electric-notification-error {
+    background: $p-color-theme-light-electric-notification-error;
+  }
+  &--color-theme-light-electric-notification-error-soft {
+    background: $p-color-theme-light-electric-notification-error-soft;
+  }
+  &--color-theme-light-electric-notification-neutral {
+    background: $p-color-theme-light-electric-notification-neutral;
+  }
+  &--color-theme-light-electric-notification-neutral-soft {
+    background: $p-color-theme-light-electric-notification-neutral-soft;
+  }
+  &--color-theme-light-electric-state-hover {
+    background: $p-color-theme-light-electric-state-hover;
+  }
+  &--color-theme-light-electric-state-active {
+    background: $p-color-theme-light-electric-state-active;
+  }
+  &--color-theme-light-electric-state-focus {
+    color: black;
+    outline: $p-color-theme-light-electric-state-focus solid 1px;
+    outline-offset: -5px;
+  }
+  &--color-theme-light-electric-state-disabled {
+    background: $p-color-theme-light-electric-state-disabled;
+  }
+
+  // external
   &--color-external-facebook {
     background: $p-color-external-facebook;
   }

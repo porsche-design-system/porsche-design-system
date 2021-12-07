@@ -65,6 +65,13 @@
     @include p-focus($p-color-theme-dark-default);
   }
 
+  &--light-electric {
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-theme-light-electric-neutral-contrast-high;
+    border-color: $p-color-theme-light-electric-neutral-contrast-high;
+    @include p-focus($p-color-theme-light-electric-neutral-contrast-high);
+  }
+
   &:not(:disabled):not(&--loading) {
     &:hover,
     &:active {
@@ -76,6 +83,12 @@
         color: $p-color-default;
         background-color: darken($p-color-theme-dark-default, 12%);
         border-color: darken($p-color-theme-dark-default, 12%);
+      }
+
+      &#{$bem-block}--light-electric {
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-theme-light-electric-neutral-contrast-high, 12%);
+        border-color: darken($p-color-theme-light-electric-neutral-contrast-high, 12%);
       }
     }
   }
@@ -93,6 +106,13 @@
       background-color: $p-color-theme-dark-state-disabled;
       border-color: $p-color-theme-dark-state-disabled;
       @include p-focus($p-color-theme-dark-state-disabled);
+    }
+
+    &#{$bem-block}--theme-light-electric {
+      color: rgba($p-color-theme-dark-default, 0.55);
+      background-color: $p-color-theme-light-electric-state-disabled;
+      border-color: $p-color-theme-light-electric-state-disabled;
+      @include p-focus($p-color-theme-light-electric-state-disabled);
     }
   }
 
@@ -119,6 +139,18 @@
       }
     }
 
+    &#{$bem-block}--theme-light-electric {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-theme-light-electric-brand;
+      border-color: $p-color-theme-light-electric-brand;
+      &:focus {
+        outline-color: $p-color-theme-light-electric-brand;
+      }
+      &:focus:not(:focus-visible) {
+        outline-color: transparent;
+      }
+    }
+
     &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
@@ -130,6 +162,12 @@
           color: $p-color-theme-dark-default;
           background-color: darken($p-color-theme-dark-state-hover, 12%);
           border-color: darken($p-color-theme-dark-state-hover, 12%);
+        }
+
+        &#{$bem-block}--theme-light-electric {
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-light-electric-state-hover, 12%);
+          border-color: darken($p-color-theme-light-electric-state-hover, 12%);
         }
       }
     }
@@ -157,6 +195,18 @@
           outline-color: transparent;
         }
       }
+
+      &#{$bem-block}--theme-light-electric {
+        color: rgba($p-color-theme-dark-default, 0.55);
+        background-color: $p-color-theme-light-electric-state-disabled;
+        border-color: $p-color-theme-light-electric-state-disabled;
+        &:focus {
+          outline-color: $p-color-theme-light-electric-state-disabled;
+        }
+        &:focus:not(:focus-visible) {
+          outline-color: transparent;
+        }
+      }
     }
   }
 
@@ -171,6 +221,12 @@
       border-color: $p-color-theme-dark-default;
     }
 
+    &#{$bem-block}--theme-light-electric {
+      color: $p-color-theme-light-electric-default;
+      background-color: transparent;
+      border-color: $p-color-theme-light-electric-neutral-contrast-high;
+    }
+
     &:not(:disabled):not(&#{$bem-block}--loading) {
       &:hover,
       &:active {
@@ -182,6 +238,12 @@
           color: $p-color-default;
           background-color: $p-color-theme-dark-default;
           border-color: $p-color-theme-dark-default;
+        }
+
+        &#{$bem-block}--theme-light-electric {
+          color: $p-color-theme-dark-default;
+          background-color: darken($p-color-theme-light-electric-neutral-contrast-high, 12%);
+          border-color: darken($p-color-theme-light-electric-neutral-contrast-high, 12%);
         }
       }
     }
@@ -196,6 +258,12 @@
         color: $p-color-theme-dark-state-disabled;
         background-color: transparent;
         border-color: $p-color-theme-dark-state-disabled;
+      }
+
+      &#{$bem-block}--theme-light-electric {
+        color: $p-color-theme-light-electric-state-disabled;
+        background-color: transparent;
+        border-color: $p-color-theme-light-electric-state-disabled;
       }
     }
   }

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getPrefixedTagNames, observeProperties, removeAttribute, setAttribute } from '../../../../utils';
-import type { BreakpointCustomizable, Theme } from '../../../../types';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
   TabGradientColorTheme,
@@ -23,7 +23,7 @@ export class Tabs {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
