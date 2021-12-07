@@ -37,7 +37,7 @@ Object {
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: 'dark' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 Object {
   "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
@@ -59,7 +59,7 @@ Object {
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: 'light' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 Object {
   "activeColor": "#d5001c",
   "backgroundColor": "#fff",
@@ -81,7 +81,7 @@ Object {
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: 'light-electric' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: light-electric 1`] = `
 Object {
   "activeColor": "#00b0f4",
   "backgroundColor": "#fff",
