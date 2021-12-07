@@ -1,7 +1,7 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 6747,
+    "size": 6739,
     "gzipSize": 2135
   },
   {
@@ -12,7 +12,7 @@
   {
     "chunkShortName": "button",
     "size": 15934,
-    "gzipSize": 2981
+    "gzipSize": 2982
   },
   {
     "chunkShortName": "button-pure",
@@ -47,7 +47,7 @@
   {
     "chunkShortName": "grid",
     "size": 1889,
-    "gzipSize": 864
+    "gzipSize": 865
   },
   {
     "chunkShortName": "headline",
@@ -77,12 +77,12 @@
   {
     "chunkShortName": "main",
     "size": 71099,
-    "gzipSize": 24165
+    "gzipSize": 24166
   },
   {
     "chunkShortName": "marque",
     "size": 5099,
-    "gzipSize": 2225
+    "gzipSize": 2224
   },
   {
     "chunkShortName": "modal",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6665,
-    "gzipSize": 2652
+    "size": 6543,
+    "gzipSize": 2653
   },
   {
     "chunkShortName": "radio-button-wrapper",
