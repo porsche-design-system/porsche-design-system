@@ -11,7 +11,6 @@ import {
   getThemedColors,
   getTransition,
   isDark,
-  isLightElectric,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -24,42 +23,67 @@ const getVariantColors = (
   variant: LinkVariant,
   theme: ThemeExtendedElectric
 ): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
-  const isDarkTheme = isDark(theme);
-  const isLightElectricTheme = isLightElectric(theme);
   const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
 
-  switch (variant) {
-    case 'primary':
-      return {
+  const colors: {
+    [t in ThemeExtendedElectric]: {
+      [v in LinkVariant]: { primaryColor: string; primaryColorHover: string; baseColor: string };
+    };
+  } = {
+    light: {
+      primary: {
         primaryColor: brandColor,
-        primaryColorHover: isDarkTheme
-          ? colorDarken.darkTheme.state.hover
-          : isLightElectricTheme
-          ? colorDarken.lightElectricTheme.state.hover
-          : colorDarken.state.hover,
+        primaryColorHover: colorDarken.state.hover,
         baseColor: darkTheme.default,
-      };
-    case 'tertiary':
-      return {
-        primaryColor: isDarkTheme ? darkTheme.default : contrastHighColor,
-        primaryColorHover: isDarkTheme
-          ? darkTheme.default
-          : isLightElectricTheme
-          ? colorDarken.lightElectricTheme.neutralContrast.high
-          : colorDarken.neutralContrast.high,
+      },
+      secondary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.neutralContrast.high,
+        baseColor: darkTheme.default,
+      },
+      tertiary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.neutralContrast.high,
         baseColor,
-      };
-    default:
-      return {
-        primaryColor: isDarkTheme ? darkTheme.default : contrastHighColor,
-        primaryColorHover: isDarkTheme
-          ? colorDarken.darkTheme.default
-          : isLightElectricTheme
-          ? colorDarken.lightElectricTheme.neutralContrast.high
-          : colorDarken.neutralContrast.high,
-        baseColor: isDarkTheme ? color.default : darkTheme.default,
-      };
-  }
+      },
+    },
+    dark: {
+      primary: {
+        primaryColor: brandColor,
+        primaryColorHover: colorDarken.darkTheme.state.hover,
+        baseColor: darkTheme.default,
+      },
+      secondary: {
+        primaryColor: darkTheme.default,
+        primaryColorHover: colorDarken.darkTheme.default,
+        baseColor: color.default,
+      },
+      tertiary: {
+        primaryColor: darkTheme.default,
+        primaryColorHover: darkTheme.default,
+        baseColor,
+      },
+    },
+    'light-electric': {
+      primary: {
+        primaryColor: brandColor,
+        primaryColorHover: colorDarken.lightElectricTheme.state.hover,
+        baseColor: darkTheme.default,
+      },
+      secondary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        baseColor: darkTheme.default,
+      },
+      tertiary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        baseColor,
+      },
+    },
+  };
+
+  return colors[theme][variant];
 };
 
 // TODO: can be optimized by reducing getVisibilityStyle + getSlottedLinkStyles depending on hasHref prop
