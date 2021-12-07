@@ -9,7 +9,7 @@ describe('colorDarken', () => {
 
 describe('getThemedColors()', () => {
   it.each<ThemeExtendedElectric>(['light', 'dark', 'light-electric'])(
-    'should return correct colors for theme: %o',
+    'should return correct colors for theme: %s',
     (theme) => {
       expect(getThemedColors(theme)).toMatchSnapshot();
     }
