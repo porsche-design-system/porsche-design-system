@@ -148,7 +148,7 @@ export const getComponentCss = (
   hasHref: boolean,
   theme: ThemeExtendedElectric
 ): string => {
-  const { textColor: baseColor, hoverColor, activeColor } = getThemedColors(theme);
+  const { baseColor, hoverColor, activeColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return getCss({

@@ -61,13 +61,13 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
 };
 
 export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
-  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { stateColor } = getThemedFormStateColors(theme, state);
   const boxShadow = getBoxShadow(stateColor);
 
   const placeHolderStyles: JssStyle = {
     opacity: 1,
-    color: textColor,
+    color: baseColor,
   };
 
   return buildGlobalStyles({
@@ -90,7 +90,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
       fontWeight: font.weight.regular,
       textIndent: 0,
       cursor: 'text',
-      color: textColor,
+      color: baseColor,
       background: backgroundColor,
       '&::placeholder': placeHolderStyles,
       '&::-webkit-input-placeholder': placeHolderStyles,
@@ -131,7 +131,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
   const isDirectionDown = direction === 'down';
   const isDarkTheme = isDark(theme);
   const {
-    textColor,
+    baseColor,
     backgroundColor,
     contrastHighColor,
     contrastMediumColor,
@@ -160,7 +160,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         padding: 0,
         margin: 0,
         marginTop: pxToRemWithUnit(-1),
-        color: textColor,
+        color: baseColor,
         background: backgroundColor,
         fontFamily: font.family,
         ...font.size.small,

@@ -23,41 +23,41 @@ const { darkTheme } = color;
 const getVariantColors = (
   variant: LinkVariant,
   theme: ThemeExtendedElectric
-): { baseColor: string; baseColorHover: string; textColor: string } => {
+): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
   const isDarkTheme = isDark(theme);
   const isLightElectricTheme = isLightElectric(theme);
-  const { brandColor, textColor, contrastHighColor } = getThemedColors(theme);
+  const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
 
   switch (variant) {
     case 'primary':
       return {
-        baseColor: brandColor,
-        baseColorHover: isDarkTheme
+        primaryColor: brandColor,
+        primaryColorHover: isDarkTheme
           ? colorDarken.darkTheme.state.hover
           : isLightElectricTheme
           ? colorDarken.lightElectricTheme.state.hover
           : colorDarken.state.hover,
-        textColor: darkTheme.default,
+        baseColor: darkTheme.default,
       };
     case 'tertiary':
       return {
-        baseColor: isDarkTheme ? darkTheme.default : contrastHighColor,
-        baseColorHover: isDarkTheme
+        primaryColor: isDarkTheme ? darkTheme.default : contrastHighColor,
+        primaryColorHover: isDarkTheme
           ? darkTheme.default
           : isLightElectricTheme
           ? colorDarken.lightElectricTheme.neutralContrast.high
           : colorDarken.neutralContrast.high,
-        textColor,
+        baseColor,
       };
     default:
       return {
-        baseColor: isDarkTheme ? darkTheme.default : contrastHighColor,
-        baseColorHover: isDarkTheme
+        primaryColor: isDarkTheme ? darkTheme.default : contrastHighColor,
+        primaryColorHover: isDarkTheme
           ? colorDarken.darkTheme.default
           : isLightElectricTheme
           ? colorDarken.lightElectricTheme.neutralContrast.high
           : colorDarken.neutralContrast.high,
-        textColor: isDarkTheme ? color.default : darkTheme.default,
+        baseColor: isDarkTheme ? color.default : darkTheme.default,
       };
   }
 };
@@ -139,7 +139,7 @@ export const getComponentCss = (
 ): string => {
   const isDarkTheme = isDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { baseColor, baseColorHover, textColor } = getVariantColors(variant, theme);
+  const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
 
   return getCss(
     mergeDeep<Styles>(
@@ -162,11 +162,11 @@ export const getComponentCss = (
           textDecoration: 'none',
           border: '1px solid currentColor',
           backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-          color: baseColor,
+          color: primaryColor,
           transition:
             getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
           '&:hover, &:active': {
-            color: baseColorHover,
+            color: primaryColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
               '& $label, & $icon': {
@@ -180,13 +180,13 @@ export const getComponentCss = (
           position: 'absolute',
           width: pxToRemWithUnit(24),
           height: pxToRemWithUnit(24),
-          color: textColor,
+          color: baseColor,
           pointerEvents: 'none',
         },
         label: {
           display: 'block',
           boxSizing: 'border-box',
-          color: textColor,
+          color: baseColor,
         },
         ...(!hasHref &&
           addImportantToEachRule({
@@ -202,10 +202,10 @@ export const getComponentCss = (
               border: 0,
             },
             '::slotted(a:focus)': {
-              outlineColor: baseColor,
+              outlineColor: primaryColor,
             },
             '::slotted(a:hover:focus)': {
-              outlineColor: baseColorHover,
+              outlineColor: primaryColorHover,
             },
             '::slotted(a:focus:not(:focus-visible))': {
               outlineColor: 'transparent',

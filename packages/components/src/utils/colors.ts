@@ -42,7 +42,7 @@ export const colorDarken: DeepPartial<typeof color> = {
 };
 
 type ThemedColors = {
-  textColor: string; // TODO: rename into baseColor
+  baseColor: string;
   brandColor: string;
   backgroundColor: string;
   contrastLowColor: string;
@@ -63,7 +63,7 @@ type ThemedColors = {
 
 const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   const {
-    default: textColor,
+    default: baseColor,
     brand: brandColor,
     background: { default: backgroundColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
@@ -81,7 +81,7 @@ const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   } = isDark(theme) ? color.darkTheme : isLightElectric(theme) ? color.lightElectricTheme : color;
 
   return {
-    textColor,
+    baseColor,
     brandColor,
     backgroundColor,
     contrastLowColor,
