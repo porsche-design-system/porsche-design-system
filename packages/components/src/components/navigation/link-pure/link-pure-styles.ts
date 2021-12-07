@@ -26,15 +26,6 @@ import type {
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
-const getColors = (theme: ThemeExtendedElectric): { baseColor: string; hoverColor: string; activeColor: string } => {
-  const { textColor: baseColor, hoverColor, activeColor } = getThemedColors(theme);
-  return {
-    baseColor,
-    hoverColor,
-    activeColor,
-  };
-};
-
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   ...addImportantToEachRule({
     position: 'relative',
@@ -157,7 +148,7 @@ export const getComponentCss = (
   hasHref: boolean,
   theme: ThemeExtendedElectric
 ): string => {
-  const { baseColor, hoverColor, activeColor } = getColors(theme);
+  const { textColor: baseColor, hoverColor, activeColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return getCss({
