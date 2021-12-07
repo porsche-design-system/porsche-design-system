@@ -1,7 +1,7 @@
 export type Theme = 'light' | 'dark';
 export type ThemeExtendedElectric = Theme | 'light-electric';
 
-type ColorTheme = {
+export type ColorTheme = {
   brand: string;
   default: string;
   background: {
@@ -32,7 +32,7 @@ type ColorTheme = {
   };
 };
 
-type ColorExternal = {
+export type ColorExternal = {
   facebook: string;
   google: string;
   instagram: string;
@@ -49,16 +49,13 @@ type ColorExternal = {
   youtube: string;
 };
 
-type Color = ColorTheme & {
+export type Color = ColorTheme & {
   darkTheme: ColorTheme;
   lightElectricTheme: ColorTheme;
   external: ColorExternal;
 };
 
-export const color: Color = {
-  /**
-   * Theme light as default theme
-   */
+const lightTheme: ColorTheme = {
   brand: '#d5001c',
   default: '#000',
   background: {
@@ -87,72 +84,83 @@ export const color: Color = {
     focus: 'currentColor',
     disabled: '#96989a',
   },
+};
+
+const darkTheme: ColorTheme = {
+  brand: '#d5001c',
+  default: '#fff',
+  background: {
+    default: '#0e1418',
+    surface: '#262b2e',
+    shading: 'rgba(14, 20, 24, 0.9)',
+  },
+  neutralContrast: {
+    high: '#e3e4e5',
+    medium: '#b0b1b2',
+    low: '#4a4e51',
+  },
+  notification: {
+    success: '#01ba1d',
+    successSoft: '#bfeec6',
+    warning: '#ff9b00',
+    warningSoft: '#ffe6bf',
+    error: '#fc1717',
+    errorSoft: '#fec5c5',
+    neutral: '#2193ff',
+    neutralSoft: '#c7e4ff',
+  },
+  state: {
+    hover: '#ff0223',
+    active: '#ff0223',
+    focus: 'currentColor',
+    disabled: '#7c7f81',
+  },
+};
+
+const lightElectricTheme: ColorTheme = {
+  brand: '#00b0f4',
+  default: lightTheme.default,
+  background: {
+    default: lightTheme.background.default,
+    surface: lightTheme.background.surface,
+    shading: lightTheme.background.shading,
+  },
+  neutralContrast: {
+    high: lightTheme.neutralContrast.high,
+    medium: lightTheme.neutralContrast.medium,
+    low: lightTheme.neutralContrast.low,
+  },
+  notification: {
+    success: lightTheme.notification.success,
+    successSoft: lightTheme.notification.successSoft,
+    warning: lightTheme.notification.warning,
+    warningSoft: lightTheme.notification.warningSoft,
+    error: lightTheme.notification.error,
+    errorSoft: lightTheme.notification.errorSoft,
+    neutral: lightTheme.notification.neutral,
+    neutralSoft: lightTheme.notification.neutralSoft,
+  },
+  state: {
+    hover: '#00b0f4',
+    active: '#00b0f4',
+    focus: 'currentColor',
+    disabled: lightTheme.state.disabled,
+  },
+};
+
+export const color: Color = {
+  /**
+   * Theme light as default theme
+   */
+  ...lightTheme,
   /**
    * Theme dark as optional
    */
-  darkTheme: {
-    brand: '#d5001c',
-    default: '#fff',
-    background: {
-      default: '#0e1418',
-      surface: '#262b2e',
-      shading: 'rgba(14, 20, 24, 0.9)',
-    },
-    neutralContrast: {
-      high: '#e3e4e5',
-      medium: '#b0b1b2',
-      low: '#4a4e51',
-    },
-    notification: {
-      success: '#01ba1d',
-      successSoft: '#bfeec6',
-      warning: '#ff9b00',
-      warningSoft: '#ffe6bf',
-      error: '#fc1717',
-      errorSoft: '#fec5c5',
-      neutral: '#2193ff',
-      neutralSoft: '#c7e4ff',
-    },
-    state: {
-      hover: '#ff0223',
-      active: '#ff0223',
-      focus: 'currentColor',
-      disabled: '#7c7f81',
-    },
-  },
+  darkTheme,
   /**
    * Theme light electric as optional
    */
-  lightElectricTheme: {
-    brand: '#00b0f4',
-    default: '#000',
-    background: {
-      default: '#fff',
-      surface: '#f2f2f2',
-      shading: 'rgba(14, 20, 24, 0.9)',
-    },
-    neutralContrast: {
-      high: '#323639',
-      medium: '#626669',
-      low: '#e3e4e5',
-    },
-    notification: {
-      success: '#018a16',
-      successSoft: '#e5f3e7',
-      warning: '#ff9b00',
-      warningSoft: '#fff5e5',
-      error: '#e00000',
-      errorSoft: '#fae6e6',
-      neutral: '#0061bd',
-      neutralSoft: '#e5eff8',
-    },
-    state: {
-      hover: '#00b0f4',
-      active: '#00b0f4',
-      focus: 'currentColor',
-      disabled: '#96989a',
-    },
-  },
+  lightElectricTheme,
   /**
    * External brand colors
    */
