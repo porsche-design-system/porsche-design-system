@@ -62,8 +62,7 @@ import {POPOVER_Z_INDEX} from "../../../constants";
     zIndex = POPOVER_Z_INDEX;
     
     basicMarkup = `<p-text>
-  Some content <p-popover>${this.popoverContent}</p-popover> which is longer. <br />
-  Some more content <p-popover description="${this.popoverContent}"></p-popover>.
+  Some content <p-popover>${this.popoverContent}</p-popover> which is longer.<br>  Some more content <p-popover description="${this.popoverContent}"></p-popover>.
 </p-text>`;
 
     descriptionMarkup = `<p-popover description="${this.popoverContent}"></p-popover>`;
