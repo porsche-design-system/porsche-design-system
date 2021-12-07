@@ -8,40 +8,82 @@ import {
   getFocusStyles,
   getInset,
   GetStylesFunction,
+  getThemedColors,
   getTransition,
   isDark,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import type { LinkVariant, Theme } from '../../../types';
+import type { LinkVariant, ThemeExtendedElectric } from '../../../types';
 
 const { darkTheme } = color;
 
 const getVariantColors = (
   variant: LinkVariant,
-  isDarkTheme: boolean
-): { baseColor: string; baseColorHover: string; textColor: string } => {
-  switch (variant) {
-    case 'primary':
-      return {
-        baseColor: isDarkTheme ? darkTheme.brand : color.brand,
-        baseColorHover: isDarkTheme ? colorDarken.darkTheme.state.hover : colorDarken.state.hover,
-        textColor: darkTheme.default,
-      };
-    case 'tertiary':
-      return {
-        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? darkTheme.default : colorDarken.neutralContrast.high,
-        textColor: isDarkTheme ? darkTheme.default : color.default,
-      };
-    default:
-      return {
-        baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-        baseColorHover: isDarkTheme ? colorDarken.darkTheme.default : colorDarken.neutralContrast.high,
-        textColor: isDarkTheme ? color.default : darkTheme.default,
-      };
-  }
+  theme: ThemeExtendedElectric
+): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
+  const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
+
+  const colors: {
+    [t in ThemeExtendedElectric]: {
+      [v in LinkVariant]: { primaryColor: string; primaryColorHover: string; baseColor: string };
+    };
+  } = {
+    light: {
+      primary: {
+        primaryColor: brandColor,
+        primaryColorHover: colorDarken.state.hover,
+        baseColor: darkTheme.default,
+      },
+      secondary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.neutralContrast.high,
+        baseColor: darkTheme.default,
+      },
+      tertiary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.neutralContrast.high,
+        baseColor,
+      },
+    },
+    dark: {
+      primary: {
+        primaryColor: brandColor,
+        primaryColorHover: colorDarken.darkTheme.state.hover,
+        baseColor: darkTheme.default,
+      },
+      secondary: {
+        primaryColor: darkTheme.default,
+        primaryColorHover: colorDarken.darkTheme.default,
+        baseColor: color.default,
+      },
+      tertiary: {
+        primaryColor: darkTheme.default,
+        primaryColorHover: darkTheme.default,
+        baseColor,
+      },
+    },
+    'light-electric': {
+      primary: {
+        primaryColor: brandColor,
+        primaryColorHover: colorDarken.lightElectricTheme.state.hover,
+        baseColor: darkTheme.default,
+      },
+      secondary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        baseColor: darkTheme.default,
+      },
+      tertiary: {
+        primaryColor: contrastHighColor,
+        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        baseColor,
+      },
+    },
+  };
+
+  return colors[theme][variant];
 };
 
 // TODO: can be optimized by reducing getVisibilityStyle + getSlottedLinkStyles depending on hasHref prop
@@ -117,11 +159,11 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasHref: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): string => {
   const isDarkTheme = isDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { baseColor, baseColorHover, textColor } = getVariantColors(variant, isDarkTheme);
+  const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
 
   return getCss(
     mergeDeep<Styles>(
@@ -144,11 +186,11 @@ export const getComponentCss = (
           textDecoration: 'none',
           border: '1px solid currentColor',
           backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-          color: baseColor,
+          color: primaryColor,
           transition:
             getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
           '&:hover, &:active': {
-            color: baseColorHover,
+            color: primaryColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
               '& $label, & $icon': {
@@ -162,13 +204,13 @@ export const getComponentCss = (
           position: 'absolute',
           width: pxToRemWithUnit(24),
           height: pxToRemWithUnit(24),
-          color: textColor,
+          color: baseColor,
           pointerEvents: 'none',
         },
         label: {
           display: 'block',
           boxSizing: 'border-box',
-          color: textColor,
+          color: baseColor,
         },
         ...(!hasHref &&
           addImportantToEachRule({
@@ -184,10 +226,10 @@ export const getComponentCss = (
               border: 0,
             },
             '::slotted(a:focus)': {
-              outlineColor: baseColor,
+              outlineColor: primaryColor,
             },
             '::slotted(a:hover:focus)': {
-              outlineColor: baseColorHover,
+              outlineColor: primaryColorHover,
             },
             '::slotted(a:focus:not(:focus-visible))': {
               outlineColor: 'transparent',

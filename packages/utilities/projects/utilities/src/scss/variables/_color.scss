@@ -79,6 +79,36 @@ $p-color-theme-dark-state-focus: currentColor;
 $p-color-theme-dark-state-disabled: #7c7f81;
 
 /**
+ * Theme light-electric as optional
+ */
+
+$p-color-theme-light-electric-brand: #00b0f4;
+
+$p-color-theme-light-electric-default: $p-color-default;
+
+$p-color-theme-light-electric-background-default: $p-color-background-default;
+$p-color-theme-light-electric-background-surface: $p-color-background-surface;
+$p-color-theme-light-electric-background-shading: $p-color-background-shading;
+
+$p-color-theme-light-electric-neutral-contrast-high: $p-color-neutral-contrast-high;
+$p-color-theme-light-electric-neutral-contrast-medium: $p-color-neutral-contrast-medium;
+$p-color-theme-light-electric-neutral-contrast-low: $p-color-neutral-contrast-low;
+
+$p-color-theme-light-electric-notification-success: $p-color-notification-success;
+$p-color-theme-light-electric-notification-success-soft: $p-color-notification-success-soft;
+$p-color-theme-light-electric-notification-warning: $p-color-notification-warning;
+$p-color-theme-light-electric-notification-warning-soft: $p-color-notification-warning-soft;
+$p-color-theme-light-electric-notification-error: $p-color-notification-error;
+$p-color-theme-light-electric-notification-error-soft: $p-color-notification-error-soft;
+$p-color-theme-light-electric-notification-neutral: $p-color-notification-neutral;
+$p-color-theme-light-electric-notification-neutral-soft: $p-color-notification-neutral-soft;
+
+$p-color-theme-light-electric-state-hover: #00b0f4;
+$p-color-theme-light-electric-state-active: #00b0f4;
+$p-color-theme-light-electric-state-focus: $p-color-state-focus;
+$p-color-theme-light-electric-state-disabled: $p-color-state-disabled;
+
+/**
  * External brand colors
  */
 $p-color-external-facebook: #1877f2;

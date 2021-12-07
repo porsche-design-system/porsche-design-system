@@ -12,6 +12,18 @@ Object {
       "hover": "#c4001a",
     },
   },
+  "lightElectricTheme": Object {
+    "neutralContrast": Object {
+      "high": "#151718",
+    },
+    "notification": Object {
+      "error": "#a30000",
+      "success": "#014d0c",
+    },
+    "state": Object {
+      "hover": "#0084b7",
+    },
+  },
   "neutralContrast": Object {
     "high": "#151718",
   },
@@ -25,10 +37,11 @@ Object {
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: 'dark' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 Object {
   "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
+  "baseColor": "#fff",
   "brandColor": "#d5001c",
   "contrastHighColor": "#e3e4e5",
   "contrastLowColor": "#4a4e51",
@@ -41,16 +54,16 @@ Object {
   "neutralSoftColor": "#c7e4ff",
   "successColor": "#01ba1d",
   "successSoftColor": "#bfeec6",
-  "textColor": "#fff",
   "warningColor": "#ff9b00",
   "warningSoftColor": "#ffe6bf",
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: 'light' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 Object {
   "activeColor": "#d5001c",
   "backgroundColor": "#fff",
+  "baseColor": "#000",
   "brandColor": "#d5001c",
   "contrastHighColor": "#323639",
   "contrastLowColor": "#e3e4e5",
@@ -63,48 +76,69 @@ Object {
   "neutralSoftColor": "#e5eff8",
   "successColor": "#018a16",
   "successSoftColor": "#e5f3e7",
-  "textColor": "#000",
   "warningColor": "#ff9b00",
   "warningSoftColor": "#fff5e5",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
+exports[`getThemedColors() should return correct colors for theme: light-electric 1`] = `
+Object {
+  "activeColor": "#00b0f4",
+  "backgroundColor": "#fff",
+  "baseColor": "#000",
+  "brandColor": "#00b0f4",
+  "contrastHighColor": "#323639",
+  "contrastLowColor": "#e3e4e5",
+  "contrastMediumColor": "#626669",
+  "disabledColor": "#96989a",
+  "errorColor": "#e00000",
+  "errorSoftColor": "#fae6e6",
+  "hoverColor": "#00b0f4",
+  "neutralColor": "#0061bd",
+  "neutralSoftColor": "#e5eff8",
+  "successColor": "#018a16",
+  "successSoftColor": "#e5f3e7",
+  "warningColor": "#ff9b00",
+  "warningSoftColor": "#fff5e5",
+}
+`;
+
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
 Object {
   "stateColor": "#fc1717",
   "stateHoverColor": "#d30303",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
 Object {
   "stateColor": undefined,
   "stateHoverColor": undefined,
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
 Object {
   "stateColor": "#01ba1d",
   "stateHoverColor": "#017d14",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
 Object {
   "stateColor": "#e00000",
   "stateHoverColor": "#a30000",
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
 Object {
   "stateColor": undefined,
   "stateHoverColor": undefined,
 }
 `;
 
-exports[`getThemedStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
+exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
 Object {
   "stateColor": "#018a16",
   "stateHoverColor": "#014d0c",

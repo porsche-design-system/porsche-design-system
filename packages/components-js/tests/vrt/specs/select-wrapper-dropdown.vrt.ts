@@ -9,7 +9,7 @@ it('should have no visual regression for :hover', async () => {
     await vrt.test('select-wrapper-dropdown-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">
+      const head = `<style>
   p-select-wrapper-dropdown { --p-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;

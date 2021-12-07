@@ -22,7 +22,8 @@ body > select {
   padding: 1rem;
 }
 
-.playground.light {
+.playground.light,
+.playground.light-electric {
   background: #fff;
 }
 
@@ -41,14 +42,41 @@ body > select {
   margin-bottom: 0.5rem;
 }
 
-.playground.hovered::before {
-  content: ':hover';
+/*light*/
+.playground.light.hovered::before {
+  content: ':hover (theme=light)';
 }
 
-.playground.focused::before {
-  content: ':focus-visible';
+.playground.light.focused::before {
+  content: ':focus-visible (theme=light)';
 }
 
-.playground.focused-hovered::before {
-  content: ':focus-visible:hover';
+.playground.light.focused-hovered::before {
+  content: ':focus-visible:hover (theme=light)';
+}
+
+/*dark*/
+.playground.dark.hovered::before {
+  content: ':hover (theme=dark)';
+}
+
+.playground.dark.focused::before {
+  content: ':focus-visible (theme=dark)';
+}
+
+.playground.dark.focused-hovered::before {
+  content: ':focus-visible:hover (theme=dark)';
+}
+
+/*light-electric*/
+.playground.light-electric.hovered::before {
+  content: ':hover (theme=light-electric)';
+}
+
+.playground.light-electric.focused::before {
+  content: ':focus-visible (theme=light-electric)';
+}
+
+.playground.light-electric.focused-hovered::before {
+  content: ':focus-visible:hover (theme=light-electric)';
 }

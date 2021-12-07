@@ -1,6 +1,6 @@
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
-import { Theme } from '@porsche-design-system/utilities';
+import { Theme, ThemeExtendedElectric } from '@porsche-design-system/utilities';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 
@@ -25,25 +25,29 @@ export const getBodyMarkup = (getElements: GetMarkup) => `
     ${getElements()}
   </div>`;
 
-export const getThemedBodyMarkup = (getThemedElements: GetThemedMarkup): string => `
-  <div class="playground light hovered">
-    ${getThemedElements('light')}
-  </div>
-  <div class="playground dark hovered">
-    ${getThemedElements('dark')}
-  </div>
-  <div class="playground light focused">
-    ${getThemedElements('light')}
-  </div>
-  <div class="playground dark focused">
-    ${getThemedElements('dark')}
-  </div>
-  <div class="playground light focused-hovered">
-    ${getThemedElements('light')}
-  </div>
-  <div class="playground dark focused-hovered">
-    ${getThemedElements('dark')}
-  </div>`;
+export const getThemedBodyMarkup = (
+  getThemedElements: GetThemedMarkup,
+  opts?: { theme?: ThemeExtendedElectric[] }
+): string => {
+  const { theme = ['light', 'dark'] } = opts ?? {};
+
+  return [
+    theme.includes('light') && `<div class="playground light hovered">${getThemedElements('light')}</div>`,
+    theme.includes('dark') && `<div class="playground dark hovered">${getThemedElements('dark')}</div>`,
+    theme.includes('light-electric') &&
+      `<div class="playground light-electric hovered">${getThemedElements('light-electric')}</div>`,
+    theme.includes('light') && `<div class="playground light focused">${getThemedElements('light')}</div>`,
+    theme.includes('dark') && `<div class="playground dark focused">${getThemedElements('dark')}</div>`,
+    theme.includes('light-electric') &&
+      `<div class="playground light-electric focused">${getThemedElements('light-electric')}</div>`,
+    theme.includes('light') && `<div class="playground light focused-hovered">${getThemedElements('light')}</div>`,
+    theme.includes('dark') && `<div class="playground dark focused-hovered">${getThemedElements('dark')}</div>`,
+    theme.includes('light-electric') &&
+      `<div class="playground light-electric focused-hovered">${getThemedElements('light-electric')}</div>`,
+  ]
+    .filter((x) => typeof x === 'string')
+    .join('\n');
+};
 
 const s4 = (): string =>
   Math.floor((1 + Math.random()) * 0x10000)
