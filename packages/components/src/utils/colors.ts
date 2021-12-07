@@ -1,4 +1,5 @@
 import { color } from '@porsche-design-system/utilities';
+import type { Color } from '@porsche-design-system/utilities';
 import type { FormState, Theme, ThemeExtendedElectric } from '../types';
 import { isDark, isLightElectric } from './theme';
 
@@ -6,7 +7,7 @@ type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-export const colorDarken: DeepPartial<typeof color> = {
+export const colorDarken: DeepPartial<Color> = {
   neutralContrast: {
     high: '#151718',
   },
