@@ -21,25 +21,30 @@ export const updatePopoverStyles = (
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
 };
 
+const getDocumentHeightWidthWithoutSafeZone = (): { clientWidth: number; clientHeight: number } => {
+  const { clientWidth, clientHeight } = document.documentElement;
+  return { clientWidth: clientWidth - safeZonePx, clientHeight: clientHeight - safeZonePx };
+};
+
 export const isElementWithinViewport = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection
 ): boolean => {
-  const { clientWidth, clientHeight } = document.documentElement;
+  const { clientWidth, clientHeight } = getDocumentHeightWidthWithoutSafeZone();
   const spacerRect = spacer.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
 
-  const isWithinXAxis = spacerRect.left >= safeZonePx && spacerRect.right <= clientWidth - safeZonePx;
-  const isWithinYAxis = spacerRect.top >= safeZonePx && spacerRect.bottom <= clientHeight - safeZonePx;
+  const isWithinXAxis = spacerRect.left >= safeZonePx && spacerRect.right <= clientWidth;
+  const isWithinYAxis = spacerRect.top >= safeZonePx && spacerRect.bottom <= clientHeight;
 
   switch (direction) {
     case 'top':
       return isWithinXAxis && popoverRect.top >= safeZonePx;
     case 'right':
-      return isWithinYAxis && popoverRect.right <= clientWidth - safeZonePx;
+      return isWithinYAxis && popoverRect.right <= clientWidth;
     case 'bottom':
-      return isWithinXAxis && popoverRect.bottom <= clientHeight - safeZonePx;
+      return isWithinXAxis && popoverRect.bottom <= clientHeight;
     case 'left':
       return isWithinYAxis && popoverRect.left >= safeZonePx;
   }
@@ -77,7 +82,7 @@ export const getPopoverMargin = (
   popover: HTMLDivElement,
   direction: PopoverDirection
 ): string => {
-  const { clientWidth, clientHeight } = document.documentElement;
+  const { clientWidth, clientHeight } = getDocumentHeightWidthWithoutSafeZone();
   const spacerRect = spacer.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
 
@@ -88,8 +93,8 @@ export const getPopoverMargin = (
       return `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
     }
     // check if popover exceeds right side of viewport
-    else if (popoverRect.right > clientWidth - safeZonePx) {
-      return `0 0 0 ${Math.max(clientWidth - safeZonePx - popoverRect.right, spacerRect.right - popoverRect.right)}px`;
+    else if (popoverRect.right > clientWidth) {
+      return `0 0 0 ${Math.max(clientWidth - popoverRect.right, spacerRect.right - popoverRect.right)}px`;
     }
   }
   // check y-axis offset is relevant for popover
@@ -99,11 +104,8 @@ export const getPopoverMargin = (
       return `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
     }
     // check if popover exceeds bottom side of viewport
-    else if (popoverRect.bottom > clientHeight - safeZonePx) {
-      return `${Math.max(
-        clientHeight - safeZonePx - popoverRect.bottom,
-        spacerRect.bottom - popoverRect.bottom
-      )}px 0 0 0`;
+    else if (popoverRect.bottom > clientHeight) {
+      return `${Math.max(clientHeight - popoverRect.bottom, spacerRect.bottom - popoverRect.bottom)}px 0 0 0`;
     }
   } else {
     return '0';
