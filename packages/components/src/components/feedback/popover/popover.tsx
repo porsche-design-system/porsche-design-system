@@ -60,7 +60,7 @@ export class Popover {
           hideLabel="true"
           onClick={() => (this.open = !this.open)}
           aria={{
-            'aria-expanded': this.open === true ? 'true' : 'false',
+            'aria-expanded': this.open,
             ...parseAndGetAriaAttributes(this.aria, ['aria-label']),
           }}
           ref={(el) => (this.button = el)}
@@ -70,7 +70,7 @@ export class Popover {
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
             <div class="popover" ref={(el) => (this.popover = el)}>
-              {(this.description && <PrefixedTagNames.pText>{this.description}</PrefixedTagNames.pText>) || <slot />}
+              {(this.description && <p>{this.description}</p>) || <slot />}
             </div>
           </div>
         )}

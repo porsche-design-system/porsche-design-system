@@ -41,7 +41,6 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
 const borderWidth = '.75rem';
 const transparentColor = 'transparent';
 const { default: backgroundColor } = color.background;
-const canvas = 'canvas';
 const canvasText = 'canvastext';
 const glue = ' ';
 
@@ -53,7 +52,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, borderWidth, 0].join(glue),
     borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: [canvasText, canvas, canvas].join(glue),
+      borderColor: 'canvasText canvas canvas',
     },
   },
   right: {
@@ -63,7 +62,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
     borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: [canvas, canvasText, canvas, canvas].join(glue),
+      borderColor: 'canvas canvasText canvas canvas',
     },
   },
   bottom: {
@@ -73,7 +72,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: [canvas, canvas, canvasText].join(glue),
+      borderColor: 'canvas canvas canvasText',
     },
   },
   left: {
@@ -83,7 +82,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: [canvas, canvas, canvas, canvasText].join(glue),
+      borderColor: 'canvas canvas canvas canvasText',
     },
   },
 };
@@ -115,8 +114,6 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       '&::before': {
         content: '""',
         position: 'absolute',
-        width: 0,
-        height: 0,
         borderStyle: 'solid',
         ...directionArrowMap[direction],
       },
@@ -136,6 +133,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       wordWrap: 'break-word',
       hyphens: 'auto',
       listStyleType: 'none',
+      // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
       color: color.default,
       whiteSpace: 'inherit',
       [mediaQueryXS]: {
