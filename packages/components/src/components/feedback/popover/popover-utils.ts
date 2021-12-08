@@ -13,6 +13,8 @@ export const updatePopoverStyles = (
   popover: HTMLDivElement,
   direction: PopoverDirection
 ): void => {
+  // Reset margin so that it can be recalculated correctly
+  popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
     attachComponentCss(host, getComponentCss, direction);
