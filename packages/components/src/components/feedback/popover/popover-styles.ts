@@ -38,13 +38,11 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   },
 };
 
-const getPopoverPositionStyle = (direction: PopoverDirection): JssStyle => {
-  return directionPositionMap[direction];
-};
-
 const borderWidth = '.75rem';
 const transparentColor = 'transparent';
-const backgroundColor = color.background.default;
+const { default: backgroundColor } = color.background;
+const canvas = 'canvas';
+const canvasText = 'canvastext';
 const glue = ' ';
 
 const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
@@ -55,17 +53,17 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [borderWidth, borderWidth, 0].join(glue),
     borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: ['canvastext', 'canvas', 'canvas'].join(glue),
+      borderColor: [canvasText, canvas, canvas].join(glue),
     },
   },
   right: {
-    right: 0,
     top: '50%',
+    right: 0,
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
     borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: ['canvas', 'canvastext', 'canvas', 'canvas'].join(glue),
+      borderColor: [canvas, canvasText, canvas, canvas].join(glue),
     },
   },
   bottom: {
@@ -75,23 +73,19 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     borderWidth: [0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: ['canvas', 'canvas', 'canvastext'].join(glue),
+      borderColor: [canvas, canvas, canvasText].join(glue),
     },
   },
   left: {
-    left: 0,
     top: '50%',
+    left: 0,
     transform: 'translateY(-50%)',
     borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
     borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
     [mediaQueryForcedColors]: {
-      borderColor: ['canvas', 'canvas', 'canvas', 'canvastext'].join(glue),
+      borderColor: [canvas, canvas, canvas, canvasText].join(glue),
     },
   },
-};
-
-const getArrowStyle = (direction: PopoverDirection): JssStyle => {
-  return directionArrowMap[direction];
 };
 
 export const getComponentCss = (direction: PopoverDirection): string => {
@@ -124,7 +118,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         width: 0,
         height: 0,
         borderStyle: 'solid',
-        ...getArrowStyle(direction),
+        ...directionArrowMap[direction],
       },
     },
     popover: {
@@ -135,7 +129,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       background: color.background.default,
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
-      ...getPopoverPositionStyle(direction),
+      ...directionPositionMap[direction],
       ...text.small,
       '-webkit-text-size-adjust': 'none',
       overflowWrap: 'break-word',
@@ -148,7 +142,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         maxWidth: pxToRemWithUnit(432),
       },
       [mediaQueryForcedColors]: {
-        outline: '1px solid canvastext',
+        outline: `1px solid ${canvasText}`,
       },
     },
     '@keyframes fadeIn': {
