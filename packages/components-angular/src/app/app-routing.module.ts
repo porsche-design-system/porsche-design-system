@@ -135,6 +135,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.PaginationComponent,
   },
   {
+    name: 'Popover',
+    path: 'popover',
+    component: fromPages.PopoverComponent,
+  },
+  {
     name: 'Radio Button',
     path: 'radio-button-wrapper',
     component: fromPages.RadioButtonWrapperComponent,

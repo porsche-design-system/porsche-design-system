@@ -260,14 +260,10 @@ describe('chunks', () => {
     //   }
     // );
 
-    // TODO: remove this test once css variables are gone in prod build
-    it.each(chunkFileNames.filter((x) => x.includes('toast')))(
-      'should not contain "--p-override" css variables in %s',
-      (chunkFileName) => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).not.toContain('--p-override');
-      }
-    );
+    it.each(chunkFileNames)('should not contain "--p-override" css variables in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect(content).not.toContain('--p-override');
+    });
 
     // TODO: enable this test once chunking is under control
     // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {

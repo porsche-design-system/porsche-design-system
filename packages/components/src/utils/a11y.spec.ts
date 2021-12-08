@@ -67,7 +67,7 @@ describe('parseAndGetAriaAttributes()', () => {
   it('should call parseJSONAttribute()', () => {
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
 
-    parseAndGetAriaAttributes(rawAttributes);
+    parseAndGetAriaAttributes(rawAttributes, undefined);
     expect(spy).toHaveBeenCalledWith(rawAttributes);
   });
 
@@ -90,13 +90,13 @@ describe('parseAndGetAriaAttributes()', () => {
     "{'aria-label': 'Some label', 'aria-pressed': true}",
     "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
   ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
-    expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
+    expect(parseAndGetAriaAttributes(rawAttributes, undefined)).toEqual({
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     });
   });
 
   it.each<string>([undefined, ''])('should return undefined for %o', (rawAttributes) => {
-    expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
+    expect(parseAndGetAriaAttributes(rawAttributes, [])).toEqual(undefined);
   });
 });
