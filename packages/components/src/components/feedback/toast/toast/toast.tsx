@@ -4,8 +4,6 @@ import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
 import type { Theme } from '../../../../types';
 import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
-import type { ToastOffset } from './toast-utils';
-import { defaultToastOffset } from './toast-utils';
 
 @Component({
   tag: 'p-toast',
@@ -16,9 +14,6 @@ export class Toast {
 
   /** Adapts the toast color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  /** The bottom offset of the toast. */
-  @Prop() public offsetBottom?: ToastOffset = defaultToastOffset;
 
   private toastItemElement: HTMLPToastItemElement;
 
@@ -41,14 +36,14 @@ export class Toast {
   public componentShouldUpdate(
     _: unknown,
     __: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Toast>, 'offsetBottom' | 'theme'>
+    propertyName: keyof Pick<InstanceType<typeof Toast>, 'theme'>
   ): boolean {
-    return propertyName !== 'offsetBottom' && propertyName !== 'theme';
+    return propertyName !== 'theme';
   }
 
   public componentWillRender(): void {
     this.toastItemElement?.classList.remove(toastCloseClassName);
-    attachComponentCss(this.host, getComponentCss, this.offsetBottom);
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public disconnectedCallback(): void {
