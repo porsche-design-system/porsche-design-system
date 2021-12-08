@@ -91,32 +91,21 @@ describe('cdp-helper', () => {
     });
   });
 
-  describe('getThemedBody()', () => {
-    it('should put elements in themed playground divs', () => {
+  describe('getThemedBodyMarkup()', () => {
+    it('should put elements in default themed playground divs', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
-      const result = `
-  <div class="playground light hovered">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark hovered">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>
-  <div class="playground light focused">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark focused">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>
-  <div class="playground light focused-hovered">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark focused-hovered">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>`;
+      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toMatchSnapshot();
+    });
 
-      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toBe(result);
+    it('should put elements in individual themed playground divs', () => {
+      const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
+        `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
+
+      expect(
+        getThemedBodyMarkup(getThemedElementsMarkup, { theme: ['light', 'dark', 'light-electric'] })
+      ).toMatchSnapshot();
     });
   });
 

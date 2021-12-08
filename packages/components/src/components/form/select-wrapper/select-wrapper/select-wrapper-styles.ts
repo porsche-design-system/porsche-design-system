@@ -11,7 +11,7 @@ import {
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedStateColors,
+  getThemedFormStateColors,
   getTransition,
   isDark,
   pxToRemWithUnit,
@@ -28,8 +28,8 @@ const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
-  const { textColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
 
   const [boxShadow, boxShadowHover] = stateColor
     ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]
@@ -88,7 +88,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
     root: {
       display: 'block',
       position: 'relative',
-      color: textColor,
+      color: baseColor,
       '&--disabled': {
         '& $icon, & .label__text': {
           color: disabledColor,
@@ -121,7 +121,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       position: 'absolute',
       bottom: pxToRemWithUnit(12),
       right: pxToRemWithUnit(12),
-      color: textColor,
+      color: baseColor,
       pointerEvents: 'none', // let events through to select which is visually underneath
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
       transition: getTransition('transform'),

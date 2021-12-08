@@ -143,6 +143,87 @@
     }
   }
 
+  &--theme-light-electric {
+    .status-bar {
+      background-color: $p-color-theme-light-electric-state-active;
+    }
+
+    .gradient--prev {
+      background: -webkit-linear-gradient(
+        rgba($p-color-theme-light-electric-background-default, 1) 50%,
+        rgba($p-color-theme-light-electric-background-default, 0) 100%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-theme-light-electric-background-default, 1) 50%,
+        rgba($p-color-theme-light-electric-background-default, 0) 100%
+      );
+
+      &.gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(
+          rgba($p-color-theme-light-electric-background-surface, 1) 50%,
+          rgba($p-color-theme-light-electric-background-surface, 0) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-theme-light-electric-background-surface, 1) 50%,
+          rgba($p-color-theme-light-electric-background-surface, 0) 100%
+        );
+      }
+    }
+
+    .gradient--next {
+      background: -webkit-linear-gradient(
+        rgba($p-color-theme-light-electric-background-default, 0) 0%,
+        rgba($p-color-theme-light-electric-background-default, 1) 50%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba($p-color-theme-light-electric-background-default, 0) 0%,
+        rgba($p-color-theme-light-electric-background-default, 1) 50%
+      );
+
+      &.gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(
+          rgba($p-color-theme-light-electric-background-surface, 0) 0%,
+          rgba($p-color-theme-light-electric-background-surface, 1) 50%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-theme-light-electric-background-surface, 0) 0%,
+          rgba($p-color-theme-light-electric-background-surface, 1) 50%
+        );
+      }
+    }
+
+    ::slotted(a),
+    ::slotted(button) {
+      color: $p-color-theme-light-electric-default !important;
+    }
+
+    ::slotted(a:hover),
+    ::slotted(button:hover) {
+      color: $p-color-theme-light-electric-state-hover !important;
+    }
+
+    ::slotted(a:active),
+    ::slotted(a[aria-selected='true']),
+    ::slotted(button:active),
+    ::slotted(button[aria-selected='true']) {
+      color: $p-color-theme-light-electric-state-active !important;
+    }
+
+    ::slotted(a:focus),
+    ::slotted(button:focus) {
+      outline-color: $p-color-theme-light-electric-state-focus !important;
+    }
+
+    ::slotted(a:focus:not(:focus-visible)),
+    ::slotted(button:focus:not(:focus-visible)) {
+      outline-color: transparent !important;
+    }
+  }
+
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
 

@@ -1,9 +1,13 @@
-import type { Theme } from '../types';
+import type { Theme, ThemeExtendedElectric } from '../types';
 
-export const isDark = (theme: Theme): boolean => {
+export const isDark = (theme: ThemeExtendedElectric): boolean => {
   return theme === 'dark';
 };
 
-export const getThemeDarkAttribute = (theme: Theme): { theme: Theme } => {
+export const isLightElectric = (theme: ThemeExtendedElectric): boolean => {
+  return theme === 'light-electric';
+};
+
+export const getThemeDarkAttribute = (theme: Theme): { theme: Extract<Theme, 'dark'> } | null => {
   return isDark(theme) ? { theme: 'dark' } : null;
 };

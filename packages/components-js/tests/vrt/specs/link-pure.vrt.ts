@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('link-pure-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">
+      const head = `<style>
         p-link-pure:not(:last-child) { margin-right: 0.5rem; }
         div div:not(:first-of-type) { margin-top: 0.5rem; }
       </style>`;
@@ -71,7 +71,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-link-pure theme="${theme}" align-label="left" stretch="true"><a href="#">Label slotted stretch align left</a></p-link-pure>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] }),
+        { injectIntoHead: head }
+      );
 
       await forceHoveredState(page, '.hovered p-link-pure[href] >>> a');
       await forceHoveredState(page, '.hovered p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling

@@ -14,7 +14,7 @@ import {
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedStateColors,
+  getThemedFormStateColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -48,9 +48,9 @@ export const getComponentCss = (
   isPassword: boolean
 ): string => {
   const theme: Theme = 'light';
-  const { textColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
+  const { baseColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
     getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedStateColors(theme, state);
+  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = ['success', 'error'].includes(state);
 
   return getCss({
@@ -82,7 +82,7 @@ export const getComponentCss = (
           fontWeight: font.weight.regular,
           ...font.size.small,
           textIndent: 0,
-          color: textColor,
+          color: baseColor,
           transition:
             getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
         },
@@ -104,7 +104,7 @@ export const getComponentCss = (
             }),
 
         '::slotted(input:hover)': {
-          borderColor: hasVisibleState ? stateHoverColor : textColor,
+          borderColor: hasVisibleState ? stateHoverColor : baseColor,
         },
 
         '::slotted(input[readonly]:focus)': {
@@ -167,7 +167,7 @@ export const getComponentCss = (
         textDecoration: 'none',
         background: 'transparent',
         cursor: 'pointer',
-        color: textColor,
+        color: baseColor,
         transition: getTransition('color'),
 
         ...getFocusStyles({ color: color.state.focus, offset: hasVisibleState ? -5 : -4 }),
@@ -235,7 +235,7 @@ export const getComponentCss = (
     'label__text, unit': {
       '&:hover': {
         '&~::slotted(input:not(:disabled):not([readonly]))': {
-          borderColor: addImportantToRule(textColor),
+          borderColor: addImportantToRule(baseColor),
         },
         ...((state === 'success' || state === 'error') && {
           '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {

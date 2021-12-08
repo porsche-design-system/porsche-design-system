@@ -102,6 +102,46 @@ $root: '.root';
     }
   }
 
+  &--theme-light-electric {
+    @include p-focus($p-color-theme-light-electric-state-focus, 1px, '::before');
+    color: $p-color-theme-light-electric-default;
+
+    + .subline {
+      color: $p-color-theme-light-electric-default;
+    }
+
+    &:not(:disabled):not(&#{$bem-block}--loading) {
+      &:hover {
+        color: $p-color-theme-light-electric-state-hover;
+        + .subline {
+          color: $p-color-theme-light-electric-state-hover;
+        }
+      }
+
+      &:active {
+        color: $p-color-theme-light-electric-state-active;
+        + .subline {
+          color: $p-color-theme-light-electric-state-active;
+        }
+      }
+
+      &#{$bem-block}--active {
+        color: $p-color-theme-light-electric-state-active;
+        + .subline {
+          color: $p-color-theme-light-electric-state-active;
+        }
+      }
+    }
+
+    &:disabled,
+    &#{$bem-block}--loading {
+      color: $p-color-theme-light-electric-state-disabled;
+      + .subline {
+        color: $p-color-theme-light-electric-state-disabled;
+      }
+    }
+  }
+
   &--stretch-on {
     justify-content: space-between;
   }

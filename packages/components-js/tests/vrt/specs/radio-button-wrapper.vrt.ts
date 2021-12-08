@@ -26,7 +26,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('radio-button-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-radio-button-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
+      const head = `<style>p-radio-button-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetMarkup = () => `
         <p-radio-button-wrapper label="Some label">
