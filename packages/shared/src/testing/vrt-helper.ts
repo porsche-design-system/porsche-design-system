@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { Page, JSHandle } from 'puppeteer';
 
 type Options = { withBackground: boolean };
 
@@ -12,23 +12,30 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
 
   await page.setViewport(bodyHeightWidth);
 
-  await page.evaluate(async (options: Options) => {
+  await page.evaluate(() => {
     // Enable multiple open popovers
     document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
 
-    const popoverEls = document.querySelectorAll('p-popover, my-prefix-p-popover');
-
-    popoverEls.forEach((popover) => {
+    document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
       const button = popover.shadowRoot.querySelector('p-button-pure, my-prefix-p-button-pure') as HTMLElement;
       button.click();
     });
+  });
 
-    await new Promise((resolve) => setTimeout(resolve, 40));
-
-    if (options?.withBackground) {
-      popoverEls.forEach((popover) => {
-        (popover.shadowRoot.querySelector('.spacer') as HTMLElement).style.background = 'rgba(255, 0, 0, 0.4)';
-      });
-    }
-  }, opts);
+  if (opts?.withBackground) {
+    const popoverHandles = await page.$$('p-popover');
+    await Promise.all(
+      popoverHandles.map(async (popoverHandle) => {
+        const popover = await popoverHandle.evaluateHandle<JSHandle<HTMLElement>>((x: HTMLElement) => x);
+        // Wait until popover is opened and selector is rendered
+        const spacer: JSHandle<HTMLElement> = await page.waitForFunction(
+          (popoverEl: HTMLElement) => popoverEl.shadowRoot.querySelector('.spacer'),
+          {},
+          popover
+        );
+        // Set background color of .spacer
+        await spacer.evaluateHandle((spacerEl: HTMLElement) => (spacerEl.style.background = 'rgba(255, 0, 0, 0.4)'));
+      })
+    );
+  }
 };
