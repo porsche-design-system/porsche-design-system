@@ -47,12 +47,12 @@ Content and user interactions should always be understandable and usable without
 
 ## Offset
 
-The bottom position of the `p-toast` can be adjusted via the `offsetBottom` property.
+The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
   <label>
     Offset Bottom
-    <input type="number" min="0" max="200" step="5" v-model="offsetBottom" @change="onOffsetChange">
+    <input type="number" min="0" max="200" step="5" v-model="positionBottom" @change="onOffsetChange">
   </label>
   <br><br>
   <button type="button" v-on:click="queueToast()">Queue Toast</button>
@@ -75,7 +75,7 @@ The bottom position of the `p-toast` can be adjusted via the `offsetBottom` prop
     toastState = 'neutral';
     toastText = 'Some message';
     toastCounter = 1;
-    offsetBottom = defaultToastOffset.s;
+    positionBottom = defaultToastOffset.s;
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
@@ -87,7 +87,7 @@ The bottom position of the `p-toast` can be adjusted via the `offsetBottom` prop
     }
 
     get offsetMarkup() {
-      return `<p-toast offset-bottom="${this.offsetBottom}"></p-toast>`;
+      return `<p-toast style="--p-toast-position-bottom: ${this.positionBottom}px"></p-toast>`;
     }
 
     queueToast(): void {
@@ -100,7 +100,7 @@ The bottom position of the `p-toast` can be adjusted via the `offsetBottom` prop
     }
 
     onOffsetChange(): void {
-      this.$refs.toast.offsetBottom = this.offsetBottom;
+      // this.$refs.toast.positionBottom = this.positionBottom;
     }
   }
 </script>
