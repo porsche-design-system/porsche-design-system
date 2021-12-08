@@ -27,19 +27,16 @@ A light (default) and dark theme is available depending on which background it's
 | <ColorBadge :theme="theme" color="background-surface"/>    | **Surface**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.surface`    |
 | <ColorBadge :theme="theme" color="background-shading"/>    | **Shading**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.shading`    |
 
-<template v-if="theme === 'light'">
+#### Background notification colors
 
-#### Background notification colors (only on light theme)
 |                                                   |                |      	             |
 |---------------------------------------------------|----------------|--------------------| 
-| <ColorBadge :theme="theme" color="notification-error-soft"/>   | **Error Soft**   | `color.notification.errorSoft`   |
-| <ColorBadge :theme="theme" color="notification-success-soft"/>   | **Success Soft**   | `color.notification.successSoft`   |
-| <ColorBadge :theme="theme" color="notification-warning-soft"/>   | **Warning Soft**   | `color.notification.warningSoft`   |
-| <ColorBadge :theme="theme" color="notification-neutral-soft"/>   | **Neutral Soft**   | `color.notification.neutralSoft`   |
+| <ColorBadge :theme="theme" color="notification-error-soft"/>   | **Error Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.errorSoft`   |
+| <ColorBadge :theme="theme" color="notification-success-soft"/>   | **Success Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.successSoft`   |
+| <ColorBadge :theme="theme" color="notification-warning-soft"/>   | **Warning Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warningSoft`   |
+| <ColorBadge :theme="theme" color="notification-neutral-soft"/>   | **Neutral Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutralSoft`   |
 
-</template>
-
-#### Text / icon color
+#### Base color
 
 |                                              |             |                                                          |
 | -------------------------------------------- | ----------- | -------------------------------------------------------- |
