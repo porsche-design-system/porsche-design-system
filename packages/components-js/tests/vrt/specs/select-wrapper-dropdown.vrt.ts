@@ -1,4 +1,4 @@
-import { forceHoveredState, setContentWithDesignSystem } from '../helpers';
+import { forceHoverState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../e2e/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import { Theme } from '@porsche-design-system/components/dist/types/types';
@@ -104,7 +104,7 @@ it('should have no visual regression for :hover', async () => {
         });
       });
 
-      await forceHoveredState(page, '.hovered p-select-wrapper-dropdown >>> li:first-child');
+      await forceHoverState(page, '.hover p-select-wrapper-dropdown >>> li:first-child');
     })
   ).toBeFalsy();
 });
