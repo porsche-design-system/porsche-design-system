@@ -1,52 +1,39 @@
-import {
-  addImportantToEachRule,
-  buildHostStyles,
-  buildResponsiveHostStyles,
-  getCss,
-  mediaQuery,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../../utils';
-import type { ToastOffset } from './toast-utils';
-import { defaultToastOffset } from './toast-utils';
+import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../../utils';
 import { TOAST_Z_INDEX } from '../../../../constants';
-import type { JssStyle } from 'jss';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
 
-const toastBottomPositionVar = '--p-toast-bottom-position';
+const toastPositionBottomVar = '--p-toast-position-bottom';
+const toastPositionBottomVarInternal = '--p-toast-position-bottom-internal';
 export const toastCloseClassName = 'close';
 
-export const getComponentCss = (offsetBottom: ToastOffset = defaultToastOffset): string => {
+export const getComponentCss = (): string => {
   return getCss({
-    ...addImportantToEachRule(
-      mergeDeep(
-        buildHostStyles({
-          position: 'fixed',
-          left: '7vw', // aligned with banner's content-wrapper
-          right: '7vw', // aligned with banner's content-wrapper
-          maxWidth: '42rem',
-          zIndex: TOAST_Z_INDEX,
-          [mediaQuery('s')]: {
-            left: pxToRemWithUnit(64), // aligned with banner's content-wrapper
-            right: 'auto',
-          },
-        }),
-        buildResponsiveHostStyles(
-          offsetBottom,
-          (bottom: number): JssStyle => ({
-            [toastBottomPositionVar]: pxToRemWithUnit(bottom),
-            bottom: `var(${toastBottomPositionVar})`,
-          })
-        )
-      )
+    ...buildHostStyles(
+      addImportantToEachRule({
+        position: 'fixed',
+        left: '7vw', // aligned with banner's content-wrapper
+        right: '7vw', // aligned with banner's content-wrapper
+        // Needs a not overwritable internal css variable to cover default position depending on viewport size and to handle animation properly.
+        // In addition, a public css variable can be passed to overwrite the default position.
+        [toastPositionBottomVarInternal]: `var(${toastPositionBottomVar}, ${pxToRemWithUnit(56)})`,
+        bottom: `var(${toastPositionBottomVarInternal})`,
+        maxWidth: '42rem',
+        zIndex: TOAST_Z_INDEX,
+        [mediaQuery('s')]: {
+          left: pxToRemWithUnit(64), // aligned with banner's content-wrapper
+          right: 'auto',
+          [toastPositionBottomVarInternal]: `var(${toastPositionBottomVar}, ${pxToRemWithUnit(64)})`,
+          bottom: `var(${toastPositionBottomVarInternal})`,
+        },
+      })
     ),
     hydrated: getAnimationIn(
       'in',
       ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && TOAST_ANIMATION_DURATION_VAR
     ),
     [toastCloseClassName]: getAnimationOut('out'),
-    '@keyframes in': getKeyframesMobile('in', toastBottomPositionVar),
-    '@keyframes out': getKeyframesMobile('out', toastBottomPositionVar),
+    '@keyframes in': getKeyframesMobile('in', toastPositionBottomVarInternal),
+    '@keyframes out': getKeyframesMobile('out', toastPositionBottomVarInternal),
   });
 };
