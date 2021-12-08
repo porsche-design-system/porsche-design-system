@@ -35,7 +35,7 @@ export const throwIfAriaAttributesAreInvalid = (
 
 export const parseAndGetAriaAttributes = (
   rawAttributes: AriaAttributes | string,
-  allowedAttributes?: readonly (keyof AriaAttributes)[]
+  allowedAttributes: readonly (keyof AriaAttributes)[]
 ): AriaAttributes => {
   if (rawAttributes) {
     const attributes = parseJSONAttribute(rawAttributes);

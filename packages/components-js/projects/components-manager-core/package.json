@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn clean:build && tsc --build tsconfig.json",
     "test": "yarn test:unit",
-    "test:unit": "jest",
+    "test:unit": "jest --coverage",
     "test:unit:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",

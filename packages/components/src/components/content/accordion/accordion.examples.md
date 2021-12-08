@@ -6,9 +6,10 @@ Accordions are flexible in the context and can include other components of the P
 It is a controlled component.
 This means it does not contain any internal state, and you got full control over its behavior.
 
-<p-inline-notification heading="Important note" state="warning">
+<p-inline-notification heading="Important note" state="warning" persistent="true">
   This component uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank">ResizeObserver</a> API internally which isn't available in all browsers.<br>
-  See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details.
+  If your browser does not support the ResizeObserver, a fallback is used, which might be not as performant.  
+  See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details on browser support.  
 </p-inline-notification>
 
 ## Basic example

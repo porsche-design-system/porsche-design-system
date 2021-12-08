@@ -26,6 +26,7 @@ export * from './ModalPrefixed';
 export * from './ModalScrollable';
 export * from './Overview';
 export * from './Pagination';
+export * from './Popover';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
 export * from './Spinner';

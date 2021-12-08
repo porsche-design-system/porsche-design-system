@@ -283,6 +283,7 @@ describe('text-field-wrapper', () => {
       await waitForEventSerialization(page); // 🙈
       await waitForEventSerialization(page); // 🙈
       await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
 
       expect(formFocusCalls).toBe(1);
     });
