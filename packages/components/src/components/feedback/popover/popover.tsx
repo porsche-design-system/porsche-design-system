@@ -70,7 +70,7 @@ export class Popover {
         {this.open && (
           <div class="spacer" ref={(el) => (this.spacer = el)}>
             <div class="popover" ref={(el) => (this.popover = el)}>
-              {(this.description && <p>{this.description}</p>) || <slot />}
+              {this.description ? <PrefixedTagNames.pText>{this.description}</PrefixedTagNames.pText> : <slot />}
             </div>
           </div>
         )}
