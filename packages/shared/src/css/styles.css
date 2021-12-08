@@ -32,9 +32,9 @@ body > select {
   background: #1a2023;
 }
 
-.playground.hovered::before,
-.playground.focused::before,
-.playground.focused-hovered::before {
+.playground.hover::before,
+.playground.focus::before,
+.playground.focus-hover::before {
   display: block;
   background: deeppink;
   color: white;
@@ -44,40 +44,40 @@ body > select {
 }
 
 /*light*/
-.playground.light.hovered::before {
+.playground.light.hover::before {
   content: ':hover (theme=light)';
 }
 
-.playground.light.focused::before {
+.playground.light.focus::before {
   content: ':focus-visible (theme=light)';
 }
 
-.playground.light.focused-hovered::before {
+.playground.light.focus-hover::before {
   content: ':focus-visible:hover (theme=light)';
 }
 
 /*dark*/
-.playground.dark.hovered::before {
+.playground.dark.hover::before {
   content: ':hover (theme=dark)';
 }
 
-.playground.dark.focused::before {
+.playground.dark.focus::before {
   content: ':focus-visible (theme=dark)';
 }
 
-.playground.dark.focused-hovered::before {
+.playground.dark.focus-hover::before {
   content: ':focus-visible:hover (theme=dark)';
 }
 
 /*light-electric*/
-.playground.light-electric.hovered::before {
+.playground.light-electric.hover::before {
   content: ':hover (theme=light-electric)';
 }
 
-.playground.light-electric.focused::before {
+.playground.light-electric.focus::before {
   content: ':focus-visible (theme=light-electric)';
 }
 
-.playground.light-electric.focused-hovered::before {
+.playground.light-electric.focus-hover::before {
   content: ':focus-visible:hover (theme=light-electric)';
 }

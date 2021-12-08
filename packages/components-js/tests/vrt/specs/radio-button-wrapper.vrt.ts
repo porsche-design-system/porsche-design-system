@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   generateGUID,
   getBodyMarkup,
   GetMarkup,
@@ -62,12 +62,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-radio-button-wrapper input[type="radio"]');
-      await forceHoveredState(page, '.hovered > p-radio-button-wrapper span a');
-      await forceFocusedState(page, '.focused > p-radio-button-wrapper input[type="radio"]');
-      await forceFocusedState(page, '.focused > p-radio-button-wrapper span a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-radio-button-wrapper input[type="radio"]');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-radio-button-wrapper span a');
+      await forceHoverState(page, '.hover > p-radio-button-wrapper input[type="radio"]');
+      await forceHoverState(page, '.hover > p-radio-button-wrapper span a');
+      await forceFocusState(page, '.focus > p-radio-button-wrapper input[type="radio"]');
+      await forceFocusState(page, '.focus > p-radio-button-wrapper span a');
+      await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper input[type="radio"]');
+      await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper span a');
     })
   ).toBeFalsy();
 });
