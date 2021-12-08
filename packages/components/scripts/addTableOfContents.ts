@@ -40,7 +40,7 @@ const addTableOfContents = (): void => {
       const content = addToC(sourceFileContent);
 
       // Use this for easy debugging
-      fs.writeFileSync(sourceFile.replace(/(\.md)/, '.tmp$1'), content);
+      // fs.writeFileSync(sourceFile.replace(/(\.md)/, '.tmp$1'), content);
 
       fs.writeFileSync(sourceFile, content);
     });

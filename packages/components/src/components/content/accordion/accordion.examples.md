@@ -12,7 +12,15 @@ This means it does not contain any internal state, and you got full control over
   See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details on browser support.  
 </p-inline-notification>
 
-## Basic example
+<p-headline variant="headline-5">Table of Contents</p-headline>
+<ul class="toc">
+  <li><p-link-pure href='#basic-example'>Basic example</p-link-pure></li>
+  <li><p-link-pure href='#size'>Size</p-link-pure></li>
+  <li><p-link-pure href='#slotted-heading'>Slotted heading</p-link-pure></li>
+  <li><p-link-pure href='#compact'>Compact</p-link-pure></li>
+</ul>
+
+## Basic example <span id="basic-example"></span>
 
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
 
@@ -27,7 +35,7 @@ For instance our example accordions use heading level 3 because they are contain
 
 ---
 
-## Size
+## Size <span id="size"></span>
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size">
@@ -40,7 +48,7 @@ For instance our example accordions use heading level 3 because they are contain
 
 ---
 
-## Slotted heading
+## Slotted heading <span id="slotted-heading"></span>
 Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not** to define
 the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 
@@ -50,7 +58,7 @@ Please **refrain** from using any other than text content as slotted markup.
 
 ---
 
-## Compact
+## Compact <span id="compact"></span>
 
 By setting `compact` to `true` you can have a more compact accordion.
 It removes the borders and reduces the spacings.
