@@ -41,48 +41,49 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
 const borderWidth = '.75rem';
 const transparentColor = 'transparent';
 const { default: backgroundColor } = color.background;
+const canvas = 'canvas';
 const canvasText = 'canvastext';
-const glue = ' ';
+const join = (...arr: (string | number)[]): string => arr.join(' ');
 
 const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
     top: 0,
     left: '50%',
     transform: 'translateX(-50%)',
-    borderWidth: [borderWidth, borderWidth, 0].join(glue),
-    borderColor: [backgroundColor, transparentColor, transparentColor].join(glue),
+    borderWidth: join(borderWidth, borderWidth, 0),
+    borderColor: join(backgroundColor, transparentColor, transparentColor),
     [mediaQueryForcedColors]: {
-      borderColor: 'canvasText canvas canvas',
+      borderColor: join(canvasText, canvas, canvas),
     },
   },
   right: {
     top: '50%',
     right: 0,
     transform: 'translateY(-50%)',
-    borderWidth: [borderWidth, borderWidth, borderWidth, 0].join(glue),
-    borderColor: [transparentColor, backgroundColor, transparentColor, transparentColor].join(glue),
+    borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
+    borderColor: join(transparentColor, backgroundColor, transparentColor, transparentColor),
     [mediaQueryForcedColors]: {
-      borderColor: 'canvas canvasText canvas canvas',
+      borderColor: join(canvas, canvasText, canvas, canvas),
     },
   },
   bottom: {
     bottom: 0,
     left: '50%',
     transform: 'translateX(-50%)',
-    borderWidth: [0, borderWidth, borderWidth].join(glue),
-    borderColor: [transparentColor, transparentColor, backgroundColor].join(glue),
+    borderWidth: join(0, borderWidth, borderWidth),
+    borderColor: join(transparentColor, transparentColor, backgroundColor),
     [mediaQueryForcedColors]: {
-      borderColor: 'canvas canvas canvasText',
+      borderColor: join(canvas, canvas, canvasText),
     },
   },
   left: {
     top: '50%',
     left: 0,
     transform: 'translateY(-50%)',
-    borderWidth: [borderWidth, 0, borderWidth, borderWidth].join(glue),
-    borderColor: [transparentColor, transparentColor, transparentColor, backgroundColor].join(glue),
+    borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
+    borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColor),
     [mediaQueryForcedColors]: {
-      borderColor: 'canvas canvas canvas canvasText',
+      borderColor: join(canvas, canvas, canvas, canvasText),
     },
   },
 };

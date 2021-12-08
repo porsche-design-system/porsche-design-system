@@ -59,10 +59,10 @@ export class Popover {
           icon="information"
           hideLabel="true"
           onClick={() => (this.open = !this.open)}
-          aria={{
+          aria={JSON.stringify({
             'aria-expanded': this.open,
             ...parseAndGetAriaAttributes(this.aria, ['aria-label']),
-          }}
+          })}
           ref={(el) => (this.button = el)}
         >
           More information

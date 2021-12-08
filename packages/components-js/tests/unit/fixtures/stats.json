@@ -7,7 +7,7 @@
   {
     "chunkShortName": "banner",
     "size": 6762,
-    "gzipSize": 2618
+    "gzipSize": 2619
   },
   {
     "chunkShortName": "button",
@@ -52,7 +52,7 @@
   {
     "chunkShortName": "headline",
     "size": 6264,
-    "gzipSize": 1679
+    "gzipSize": 1681
   },
   {
     "chunkShortName": "icon",
@@ -72,12 +72,12 @@
   {
     "chunkShortName": "link-social",
     "size": 6045,
-    "gzipSize": 1905
+    "gzipSize": 1906
   },
   {
     "chunkShortName": "main",
     "size": 72006,
-    "gzipSize": 24375
+    "gzipSize": 24372
   },
   {
     "chunkShortName": "marque",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6483,
-    "gzipSize": 2661
+    "size": 6401,
+    "gzipSize": 2644
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -127,12 +127,12 @@
   {
     "chunkShortName": "tabs",
     "size": 2858,
-    "gzipSize": 1162
+    "gzipSize": 1163
   },
   {
     "chunkShortName": "tabs-bar",
     "size": 13633,
-    "gzipSize": 3772
+    "gzipSize": 3771
   },
   {
     "chunkShortName": "text",
