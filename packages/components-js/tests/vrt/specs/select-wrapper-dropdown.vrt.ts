@@ -15,8 +15,8 @@ it('should have no visual regression for :hover', async () => {
 </style>`;
 
       const markup = `
-<div class="playground light hovered"></div>
-<div class="playground dark hovered"></div>`;
+<div class="playground light hover"></div>
+<div class="playground dark hover"></div>`;
 
       await setContentWithDesignSystem(page, markup, {
         injectIntoHead: head,
