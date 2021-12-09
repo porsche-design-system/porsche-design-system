@@ -25,14 +25,27 @@
     returnIcon = require('../assets/icon-return.svg');
 
     mounted(): void {
-      const href = document.location.href.replace(/#.*/, '');
+      const currentUrl = document.location.href.replace(/#.*/, '');
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
+        const href = currentUrl + '#' + id;
+
+        // add anchor link to headline
+        const link = document.createElement('p-link-pure');
+        (link as any).size = 'inherit';
+        (link as any).innerText = '#';
+        (link as any).icon = 'none';
+        (link as any).href = href;
+        link.addEventListener('click', (e) => {
+          this.onLinkClick({ title: '', href }, e);
+        });
+
+        h2.append(link);
         h2.id = id;
 
         return {
-          href: href + '#' + id,
+          href,
           title: innerText,
         };
       });
