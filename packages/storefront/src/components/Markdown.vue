@@ -16,7 +16,7 @@
       if (metaKey || altKey || ctrlKey || shiftKey) {
         return;
       }
-      const href = (target as HTMLElement).getAttribute('href') || '';
+      const href = (target as HTMLElement).getAttribute('href');
       const isDownload = (target as HTMLElement).hasAttribute('download');
 
       if (href && !href.startsWith('http') && !href.startsWith('sketch://') && !isDownload) {

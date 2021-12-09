@@ -32,7 +32,7 @@
         h2.id = id;
 
         return {
-          href: pathname + '#' + id,
+          href: pathname.slice(1) + '#' + id,
           title: innerText,
         };
       });
