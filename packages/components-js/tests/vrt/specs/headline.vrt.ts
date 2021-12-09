@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -28,9 +28,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoveredState(page, '.hovered > p-headline a');
-      await forceFocusedState(page, '.focused > p-headline a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-headline a');
+      await forceHoverState(page, '.hover > p-headline a');
+      await forceFocusState(page, '.focus > p-headline a');
+      await forceFocusHoverState(page, '.focus-hover > p-headline a');
     })
   ).toBeFalsy();
 });
