@@ -1,5 +1,7 @@
 # Vanilla Js
 
+<TableOfContents></TableOfContents>
+
 ## Quick start
 To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System, follow these steps:
 

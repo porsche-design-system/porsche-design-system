@@ -1,5 +1,7 @@
 # Fonts
 
+<TableOfContents></TableOfContents>
+
 ## Introduction
 If a team can't use the Design System components, we provide a manifest file to easily reference to the different webfont files.
 

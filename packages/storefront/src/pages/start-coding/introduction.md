@@ -1,4 +1,7 @@
 # Introduction
+
+<TableOfContents></TableOfContents>
+
 ## Start Coding
 
 Porsche Design System provides developers with versioned packages of **Web components**, **Angular components** and **React components** to build clean and high-quality frontends that innately come with the latest design definitions.
