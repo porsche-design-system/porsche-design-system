@@ -7,6 +7,8 @@ A `label` is a caption which informs the user what information a particular form
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 <Playground :markup="basic" :config="config">

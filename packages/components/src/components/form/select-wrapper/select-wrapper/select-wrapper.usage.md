@@ -1,5 +1,7 @@
 # Select
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Select to trigger an action based on the selected option.  
   • Use a Select to choose and search one option from a list of items.  

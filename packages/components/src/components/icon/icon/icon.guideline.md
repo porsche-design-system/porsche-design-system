@@ -4,8 +4,6 @@ We want to enable you to use the icons you need. Check the [Porsche Design Syste
 
 Do you have an icon that is mandatory for several teams and purposes? We are happy to include it in the Porsche Design System. Feel free to get in touch with us on our [Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)
 
-
-
 **Icon Quality Standards**
 
 1. Metaphor and Appearance matches the Porsche icon environment
@@ -14,7 +12,7 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 
 3. User Testing (Recognition, Information scent)
 
----
+<TableOfContents></TableOfContents>
 
 ## Metaphor and Appearance
 

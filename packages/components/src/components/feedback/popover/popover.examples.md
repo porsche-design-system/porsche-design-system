@@ -3,6 +3,8 @@
 The `p-popover` component can be used to display some additional content on top of another in conjunction with 
 the info <p-popover description="Hello World"></p-popover>-button.
 
+<TableOfContents></TableOfContents>
+
 ## Basic
 
 It's important, that the Popover isn't used within a parent node having e.g. `overflow: hidden` as style defined. 

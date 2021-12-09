@@ -26,7 +26,7 @@
 
     mounted(): void {
       const href = document.location.href.replace(/#.*/, '');
-      this.links = Array.from(this.$el.parentElement.parentElement.querySelectorAll('h2')).map((h2) => {
+      this.links = Array.from(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
         h2.id = id;
@@ -44,7 +44,7 @@
       const { hash } = window.location;
 
       if (hash) {
-        const { offsetTop } = (this.$el.parentElement.parentElement.querySelector(hash) as HTMLElement) || {};
+        const { offsetTop } = (this.$el.parentElement!.parentElement!.querySelector(hash) as HTMLElement) || {};
         window.scrollTo({ top: offsetTop });
       }
     }

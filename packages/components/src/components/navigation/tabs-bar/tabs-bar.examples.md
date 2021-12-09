@@ -17,7 +17,7 @@ in your application! Therefore, we avoid messing with the window location.
 It is a controlled component.
 This means it does not contain any internal state, and you got full control over its behavior.
 
----
+<TableOfContents></TableOfContents>
 
 ## Basic example
 

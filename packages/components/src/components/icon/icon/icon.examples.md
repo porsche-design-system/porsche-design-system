@@ -5,6 +5,7 @@ The clear graphic symbols allow quick orientation and are internationally recogn
 The Porsche Design System is using a **SVG icon system** to visually present an icon object. 
 Each icon is hosted on the Porsche Design System CDN to be served and cached as fast as possible.
 
+<TableOfContents></TableOfContents>
 
 ## Name
 
