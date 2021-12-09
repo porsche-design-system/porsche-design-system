@@ -1,6 +1,6 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
+  forceFocusHoverState,
+  forceFocusState,
   getBodyMarkup,
   GetMarkup,
   setContentWithDesignSystem,
@@ -35,8 +35,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const getElementsMarkup: GetMarkup = () => `<p-marque href="https://www.porsche.com"></p-marque>`;
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
 
-      await forceFocusedState(page, '.focused > p-marque >>> a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-marque >>> a');
+      await forceFocusState(page, '.focus > p-marque >>> a');
+      await forceFocusHoverState(page, '.focus-hover > p-marque >>> a');
     })
   ).toBeFalsy();
 });

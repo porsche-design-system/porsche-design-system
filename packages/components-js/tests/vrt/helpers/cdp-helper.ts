@@ -1,51 +1,44 @@
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
-import { Theme, ThemeExtendedElectric } from '@porsche-design-system/utilities';
+import { ThemeExtendedElectric } from '@porsche-design-system/utilities';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
 
-const HOVERED_STATE: ForcedPseudoClasses[] = ['hover'];
-const FOCUSED_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-const FOCUSED_HOVERED_STATE = HOVERED_STATE.concat(FOCUSED_STATE);
+const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
+const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
+const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
+
+const allThemes: ThemeExtendedElectric[] = ['light', 'dark', 'light-electric'];
+const allStates = ['hover', 'focus', 'focus-hover'];
 
 export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme: Theme) => string;
+export type GetThemedMarkup = (theme: ThemeExtendedElectric) => string;
 
-export const getBodyMarkup = (getElements: GetMarkup) => `
-  <div class="playground light hovered">
-    ${getElements()}
-  </div>
-  <div class="playground light focused">
-    ${getElements()}
-  </div>
-  <div class="playground light focused-hovered">
-    ${getElements()}
-  </div>`;
+export const getBodyMarkup = (getElements: GetMarkup) =>
+  allStates
+    .map(
+      (state) => `<div class="playground light ${state}">
+  ${getElements()}
+</div>`
+    )
+    .join('\n');
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { theme?: ThemeExtendedElectric[] }
+  opts?: { themes?: ThemeExtendedElectric[] }
 ): string => {
-  const { theme = ['light', 'dark'] } = opts ?? {};
+  const { themes = ['light', 'dark'] } = opts ?? {};
 
-  return [
-    theme.includes('light') && `<div class="playground light hovered">${getThemedElements('light')}</div>`,
-    theme.includes('dark') && `<div class="playground dark hovered">${getThemedElements('dark')}</div>`,
-    theme.includes('light-electric') &&
-      `<div class="playground light-electric hovered">${getThemedElements('light-electric')}</div>`,
-    theme.includes('light') && `<div class="playground light focused">${getThemedElements('light')}</div>`,
-    theme.includes('dark') && `<div class="playground dark focused">${getThemedElements('dark')}</div>`,
-    theme.includes('light-electric') &&
-      `<div class="playground light-electric focused">${getThemedElements('light-electric')}</div>`,
-    theme.includes('light') && `<div class="playground light focused-hovered">${getThemedElements('light')}</div>`,
-    theme.includes('dark') && `<div class="playground dark focused-hovered">${getThemedElements('dark')}</div>`,
-    theme.includes('light-electric') &&
-      `<div class="playground light-electric focused-hovered">${getThemedElements('light-electric')}</div>`,
-  ]
-    .filter((x) => typeof x === 'string')
+  return allStates
+    .map((state) =>
+      allThemes
+        .filter((theme) => themes.includes(theme))
+        .map((theme) => `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>`)
+    )
+    .flat()
     .join('\n');
 };
 
@@ -58,14 +51,14 @@ export const generateGUID = (): string => {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
-export const forceHoveredState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, HOVERED_STATE);
+export const forceHoverState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, HOVER_STATE);
 };
-export const forceFocusedState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, FOCUSED_STATE);
+export const forceFocusState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUS_STATE);
 };
-export const forceFocusedHoveredState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, FOCUSED_HOVERED_STATE);
+export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {

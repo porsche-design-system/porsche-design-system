@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -53,19 +53,19 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] }),
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
         {
           injectIntoHead: head,
         }
       );
 
-      await forceHoveredState(page, '.hovered > p-link >>> a');
-      await forceHoveredState(page, '.hovered > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusedState(page, '.focused > p-link >>> a');
-      await forceFocusedState(page, '.focused > p-link a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link >>> a');
-      await forceHoveredState(page, '.focused-hovered > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link a');
+      await forceHoverState(page, '.hover > p-link >>> a');
+      await forceHoverState(page, '.hover > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusState(page, '.focus > p-link >>> a');
+      await forceFocusState(page, '.focus > p-link a');
+      await forceFocusHoverState(page, '.focus-hover > p-link >>> a');
+      await forceHoverState(page, '.focus-hover > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover > p-link a');
     })
   ).toBeFalsy();
 });

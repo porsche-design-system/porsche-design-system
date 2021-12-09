@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -61,13 +61,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-link-social >>> a');
-      await forceHoveredState(page, '.hovered > p-link-social >>> span');
-      await forceFocusedState(page, '.focused > p-link-social >>> a');
-      await forceFocusedState(page, '.focused > p-link-social a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link-social >>> a');
-      await forceHoveredState(page, '.focused-hovered > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link-social a');
+      await forceHoverState(page, '.hover > p-link-social >>> a');
+      await forceHoverState(page, '.hover > p-link-social >>> span');
+      await forceFocusState(page, '.focus > p-link-social >>> a');
+      await forceFocusState(page, '.focus > p-link-social a');
+      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> a');
+      await forceHoverState(page, '.focus-hover > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover > p-link-social a');
     })
   ).toBeFalsy();
 });
