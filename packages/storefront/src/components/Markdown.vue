@@ -89,6 +89,20 @@
         h2 {
           @include p-headline-3;
           margin-top: $p-spacing-64;
+
+          // for anchor links with table of contents
+          &[id] {
+            p-link-pure {
+              visibility: hidden;
+              margin-left: $p-spacing-8;
+            }
+
+            &:hover {
+              p-link-pure {
+                visibility: visible;
+              }
+            }
+          }
         }
 
         h3 {
