@@ -29,9 +29,8 @@ describe('componentShouldUpdate', () => {
     expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
   });
 
-  it('should return false for offsetBottom or theme', () => {
+  it('should return false for theme', () => {
     const component = new Toast();
-    expect(component.componentShouldUpdate(null, null, 'offsetBottom')).toBe(false);
     expect(component.componentShouldUpdate(null, null, 'theme')).toBe(false);
   });
 });
