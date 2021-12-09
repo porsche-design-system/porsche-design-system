@@ -5,9 +5,9 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared-src/src/testing/vrt';
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -161,12 +161,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
       await openPopoversAndHighlightSpacer(page);
 
-      await forceHoveredState(page, '.hovered > p-popover >>> p-button-pure >>> button');
-      await forceHoveredState(page, '.hovered > p-popover > a');
-      await forceFocusedState(page, '.focused > p-popover >>> p-button-pure >>> button');
-      await forceFocusedState(page, '.focused > p-popover > a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-popover >>> p-button-pure >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-popover > a');
+      await forceHoverState(page, '.hover > p-popover >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover > p-popover > a');
+      await forceFocusState(page, '.focus > p-popover >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus > p-popover > a');
+      await forceFocusHoverState(page, '.focus-hover > p-popover >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover > p-popover > a');
     })
   ).toBeFalsy();
 });

@@ -1,4 +1,4 @@
-import { forceHoveredState, setContentWithDesignSystem } from '../helpers';
+import { forceHoverState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../e2e/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import { Theme } from '@porsche-design-system/components/dist/types/types';
@@ -15,8 +15,8 @@ it('should have no visual regression for :hover', async () => {
 </style>`;
 
       const markup = `
-<div class="playground light hovered"></div>
-<div class="playground dark hovered"></div>`;
+<div class="playground light hover"></div>
+<div class="playground dark hover"></div>`;
 
       await setContentWithDesignSystem(page, markup, {
         injectIntoHead: head,
@@ -104,7 +104,7 @@ it('should have no visual regression for :hover', async () => {
         });
       });
 
-      await forceHoveredState(page, '.hovered p-select-wrapper-dropdown >>> li:first-child');
+      await forceHoverState(page, '.hover p-select-wrapper-dropdown >>> li:first-child');
     })
   ).toBeFalsy();
 });
