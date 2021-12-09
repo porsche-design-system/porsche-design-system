@@ -26,7 +26,7 @@
 
     mounted(): void {
       const href = document.location.href.replace(/#.*/, '');
-      this.links = Array.from(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
+      this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
         h2.id = id;
