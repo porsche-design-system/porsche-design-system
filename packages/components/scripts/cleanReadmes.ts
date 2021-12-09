@@ -20,16 +20,24 @@ const adjustHeadline = (str: string): string => {
 
   // replacements for multi prop pages where the h1 is not the component but rather the whole multi prop category
   const h1Replacements: { [key in TagName]?: string } = {
+    'p-flex': 'Flex',
+    'p-grid': 'Grid',
     'p-headline': 'Typography',
     'p-inline-notification': 'Notifications',
+    'p-table': 'Table',
+    'p-tabs': 'Tabs',
   };
 
   // all component names on multi prop pages
   const multiPropReplacements: TagName[] = [
     ...(Object.keys(h1Replacements) as TagName[]),
+    'p-flex-item',
+    'p-grid-item',
     'p-text',
     'p-banner',
     'p-toast',
+    'p-table-head-cell',
+    'p-tabs-item',
   ];
 
   // append # to component names on multi prop pages to restore hierarchy
@@ -50,11 +58,14 @@ const adjustHeadline = (str: string): string => {
   return str.replace(tagName, headline);
 };
 
+const addTableOfContents = (str: string): string =>
+  str.replace(/\s(##\s.*\s)/, '\n<TableOfContents></TableOfContents>\n\n$1');
+
 const fixBreakpointCustomizable = (str: string): string => {
   const breakpointCustomizableTypes: string[] = [];
 
   // Matches all rows and columns of the props table to capture the attribute name and type of the property
-  let content = str.replace(
+  str = str.replace(
     /(?:\|\s`(.*?)`\s*?){2}\|.*?\|\s`(.*?)`/g,
     (match, attribute: string, attributeType: string): string => {
       // Check if the type of the row contains breakpointCustomizable
@@ -86,13 +97,13 @@ const fixBreakpointCustomizable = (str: string): string => {
     breakpointCustomizableTypes.push(
       'type BreakpointCustomizable<T> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }'
     );
-    content = content.replace(
+    str = str.replace(
       /## Properties/,
       `$&\n\n<p style="max-width: 100%">\n\n${breakpointCustomizableTypes.map((x) => `\`${x}\``).join('  \n')}\n\n</p>`
     );
   }
 
-  return content;
+  return str;
 };
 const fixMethods = (str: string): string => {
   // remove headline hashes before code
@@ -117,6 +128,7 @@ const cleanReadmes = (): void => {
 
     const content = [
       adjustHeadline,
+      addTableOfContents, // needs to be after headline manipulation
       removeGenerator,
       transformDoubleToSingleQuotes,
       fixBreakpointCustomizable,
