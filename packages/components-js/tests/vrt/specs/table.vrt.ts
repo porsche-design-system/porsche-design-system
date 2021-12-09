@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getBodyMarkup,
   GetMarkup,
   setContentWithDesignSystem,
@@ -52,17 +52,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       });
 
       // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
-      // TODO: `await forceFocusedState(page, '.focused p-table >>> .scroll-area');`, no class is selectable after piercing selector
-      await forceHoveredState(page, '.hovered p-table-head-cell >>> button');
-      await forceHoveredState(page, '.hovered p-table-cell a');
-      await forceHoveredState(page, '.hovered [slot="caption"] a');
-      await forceHoveredState(page, '.hovered p-table-row:nth-child(3)');
-      await forceFocusedState(page, '.focused p-table-head-cell >>> button');
-      await forceFocusedState(page, '.focused p-table-cell a');
-      await forceFocusedState(page, '.focused [slot="caption"] a');
-      await forceFocusedHoveredState(page, '.focused-hovered p-table-head-cell >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered p-table-cell a');
-      await forceFocusedHoveredState(page, '.focused-hovered [slot="caption"] a');
+      // TODO: `await forceFocusedState(page, '.focus p-table >>> .scroll-area');`, no class is selectable after piercing selector
+      await forceHoverState(page, '.hover p-table-head-cell >>> button');
+      await forceHoverState(page, '.hover p-table-cell a');
+      await forceHoverState(page, '.hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
+      await forceFocusState(page, '.focus p-table-head-cell >>> button');
+      await forceFocusState(page, '.focus p-table-cell a');
+      await forceFocusState(page, '.focus [slot="caption"] a');
+      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-table-cell a');
+      await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
     })
   ).toBeFalsy();
 });

@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -37,15 +37,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { theme: ['light', 'dark', 'light-electric'] })
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
       );
 
-      await forceHoveredState(page, '.hovered > p-tabs-bar button');
-      await forceHoveredState(page, '.hovered > p-tabs-bar a');
-      await forceFocusedState(page, '.focused > p-tabs-bar button');
-      await forceFocusedState(page, '.focused > p-tabs-bar a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-tabs-bar a');
+      await forceHoverState(page, '.hover > p-tabs-bar button');
+      await forceHoverState(page, '.hover > p-tabs-bar a');
+      await forceFocusState(page, '.focus > p-tabs-bar button');
+      await forceFocusState(page, '.focus > p-tabs-bar a');
+      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar button');
+      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar a');
     })
   ).toBeFalsy();
 });
