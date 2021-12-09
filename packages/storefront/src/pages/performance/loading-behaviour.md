@@ -6,8 +6,6 @@ To prevent this, the Porsche Design System offers various **partials** as part o
 Read further on how to prevent **Flash of Unstyled Content** (FOUC) and **Flash of Unstyled Text** (FOUT) to
 boost your application.
 
-<TableOfContents></TableOfContents>
-
 ## Prevent Flash of Unstyled Content (FOUC)
 
 - [Initialize Porsche Design System early](partials/loader-script)
