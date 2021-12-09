@@ -23,8 +23,6 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Icon and text | This should be the variant of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the Button always adapts to the length of the text label. |
 | Icon only| This variant contains an icon only with no further text information. It is highly recommended to use it only in cases where the user is fully aware of the button function. This can be ensured e.g. by using an expressive icon or by logical composition with other components. |
 
-
-
 ## Usage
 
 ### Standard icons
@@ -39,6 +37,7 @@ The default icon is an arrow right that should serve in most cases. It should be
 | Add | <p-icon name="add" aria-label="Add"></p-icon> | Add content, e.g. a new item in a list. | 
 
 ### Text label
+
 The text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
 
 

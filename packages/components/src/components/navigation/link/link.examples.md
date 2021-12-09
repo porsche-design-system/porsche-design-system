@@ -33,7 +33,7 @@ Choose between predefined styling variants.
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
 <Playground :markup="accessibility" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
 * If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"` 

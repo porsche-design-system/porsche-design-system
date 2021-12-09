@@ -27,7 +27,7 @@ Through the `aria` property you have the possibility to provide an additional **
 
 <Playground :markup="accessibilityMarkup" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 
 - Make sure to provide a **descriptive**, self explaining **label** which could be understood without context to expose a more descriptive experience to screen reader users, 
 telling them what they can expect to read after clicking the info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
