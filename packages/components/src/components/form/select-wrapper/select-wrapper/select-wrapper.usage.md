@@ -26,8 +26,6 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | With preselection (mandatory field) | Use this, if you have a reason to believe one of the options is most likely (this can be based on most popular / probable option, or on data you know about the user) or you know the default or current option. |
 | Without preselection (optional field) | Use this, to make it possible to go back to empty default (e.g. in case of an incorrect selection). |
 
-
-
 ## Behavior
 
 ### Label
