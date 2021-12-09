@@ -118,7 +118,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="markupStretch" :config="configBlock">
+<Playground :markup="markupStretch" :config="config">
   <select v-model="stretch">
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
