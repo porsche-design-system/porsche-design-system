@@ -1,5 +1,7 @@
 # Forms
 
+<TableOfContents></TableOfContents>
+
 The digital world cannot be imagined without forms. **Whenever we need information from the user that is to be processed by the application or when we want to enable the user to configure options**, forms are best to be used.
 
 **Well-designed forms are a crucial part of a good UX** and also a flagship for the brand experience in general: Users perceive well-designed forms as evidence for helpfulness, professionality, technical expertise and simply enjoy working with it. However, designing forms well is always a question of the perfect combination of structure, sequence, form elements, labels, help and feedback. If this fits perfectly together (and makes users happy), chances are high to increase conversions.
@@ -19,8 +21,6 @@ In order to make designing forms as easy as possible we provide you with a Sketc
 <p-link-pure href="https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch" icon="download" download>Download Sketch form templates</p-link-pure>
 
 ---
-
-<TableOfContents></TableOfContents>
 
 ## Form DNA
 
