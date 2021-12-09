@@ -25,14 +25,14 @@
     returnIcon = require('../assets/icon-return.svg');
 
     mounted(): void {
-      const { pathname } = document.location;
+      const href = document.location.href.replace(/#.*/, '');
       this.links = Array.from(this.$el.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
         h2.id = id;
 
         return {
-          href: pathname.slice(1) + '#' + id,
+          href: href + '#' + id,
           title: innerText,
         };
       });
