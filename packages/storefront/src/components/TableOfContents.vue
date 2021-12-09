@@ -1,5 +1,5 @@
 <template>
-  <div v-if="links.length > 1" class="toc">
+  <div v-if="links.length > 1" class="toc" aria-label="Table of Contents">
     <p-headline variant="headline-5">Table of Contents</p-headline>
     <ul>
       <li v-for="(link, index) in links" :key="index">
