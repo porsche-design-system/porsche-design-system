@@ -6,9 +6,10 @@ export const ToastBasicPage = (): JSX.Element => {
 
   const style = `
   .playground {
-    transform: translateX(0);
-    height: 150px;
+    height: 300px;
     padding: 0;
+    transform: translateX(0);
+    border: 1px solid deeppink;
   }`;
 
   useEffect(() => {

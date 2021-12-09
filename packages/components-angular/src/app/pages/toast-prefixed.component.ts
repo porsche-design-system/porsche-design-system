@@ -5,17 +5,17 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   selector: 'toast-prefixed',
   styles: [
     `
-      .inner {
+      .playground {
+        height: 300px;
+        padding: 0;
         transform: translateX(0);
-        height: 56px;
+        border: 1px solid deeppink;
       }
     `,
   ],
   template: `
     <div class="playground light" title="should render prefixed toast neutral on light background">
-      <div class="inner">
-        <my-prefix-p-toast p-toast [offsetBottom]="0"></my-prefix-p-toast>
-      </div>
+      <my-prefix-p-toast p-toast></my-prefix-p-toast>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
