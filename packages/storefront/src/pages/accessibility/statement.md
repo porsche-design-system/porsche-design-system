@@ -1,5 +1,7 @@
 # Accessibility Statement
 
+<TableOfContents></TableOfContents>
+
 ## Definition
 
 ### An accessibility statement has two basic functions:  

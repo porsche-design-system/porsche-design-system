@@ -10,6 +10,8 @@ The `componentsReady` function is provided as part of the following components p
 * @porsche-design-system/components-angular
 * @porsche-design-system/components-react
 
+<TableOfContents></TableOfContents>
+
 ## Basic Example
 
 `componentsReady` is quite flexible. You can call it wherever and as often as you like.  

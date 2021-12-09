@@ -1,5 +1,7 @@
 # Scss
 
+<TableOfContents></TableOfContents>
+
 ## p-generate-font-definition($fontSize, $fontWeight)
 
 With this mixin, it's possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
