@@ -45,21 +45,21 @@ This behavior cannot be adjusted and could result in users not being able to int
 So be careful **not to use toast messages for relevant information**.
 Content and user interactions should always be understandable and usable without a toast message.
 
-## Offset
+## Position
 
 The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
   <label>
-    Offset Bottom
-    <input type="number" min="0" max="200" step="5" v-model="positionBottom" @change="onOffsetChange">
+    Position Bottom
+    <input type="number" min="0" max="200" step="5" v-model="positionBottom">
   </label>
   <br><br>
   <button type="button" v-on:click="queueToast()">Queue Toast</button>
 </Playground>
 
 <!-- shared across playgrounds -->
-<p-toast ref="toast"></p-toast>
+<p-toast ref="toast" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 
 <script lang="ts">
   import Vue from 'vue';
@@ -97,10 +97,6 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
 
     onThemeChange(theme: Theme): void {
       this.$refs.toast.theme = theme;
-    }
-
-    onOffsetChange(): void {
-      // this.$refs.toast.positionBottom = this.positionBottom;
     }
   }
 </script>
