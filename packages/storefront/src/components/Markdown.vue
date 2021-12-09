@@ -1,5 +1,5 @@
 <template>
-  <div ref="markdown" class="markdown" @click="onContentClick">
+  <div class="markdown" @click="onContentClick">
     <slot />
   </div>
 </template>
@@ -7,7 +7,6 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { componentsReady } from '@porsche-design-system/components-js';
 
   @Component
   export default class Markdown extends Vue {
@@ -19,42 +18,11 @@
       }
       const href = (target as HTMLElement).getAttribute('href') || '';
       const isDownload = (target as HTMLElement).hasAttribute('download');
-      const isAnchorLink = href.includes('#');
-      console.log(href, 'isAnchorLink', isAnchorLink);
 
       if (href && !href.startsWith('http') && !href.startsWith('sketch://') && !isDownload) {
         event.preventDefault();
-        if (isAnchorLink) {
-          window.history.pushState('', '', href);
-          this.scrollToAnchorLink();
-        } else {
-          this.$router.push('/' + href);
-        }
+        this.$router.push('/' + href);
       }
-    }
-
-    mounted(): void {
-      this.adjustTocLinks();
-      componentsReady().then(this.scrollToAnchorLink);
-    }
-
-    updated(): void {
-      this.adjustTocLinks();
-    }
-
-    private scrollToAnchorLink(): void {
-      const { offsetTop } = (document.querySelector(window.location.hash) as HTMLElement) || {};
-      window.scrollTo({ top: offsetTop });
-    }
-
-    private adjustTocLinks(): void {
-      const tocLinks = Array.from(
-        (this.$refs.markdown as HTMLElement).querySelectorAll('.toc p-link-pure')
-      ) as HTMLAnchorElement[];
-      const { pathname } = document.location;
-      tocLinks
-        .filter((link) => !link.href.startsWith(pathname))
-        .forEach((link) => link.setAttribute('href', pathname + link.href));
     }
   }
 </script>
