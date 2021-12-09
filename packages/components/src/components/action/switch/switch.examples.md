@@ -23,7 +23,7 @@ When used with hidden label, it's best practice to provide a descriptive label t
   </select>
 </Playground>
 
-### Framework Implementations
+## Framework Implementations
 
 <Playground :frameworkMarkup="frameworks"></Playground>
 
