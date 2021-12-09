@@ -6,6 +6,7 @@ A Link can be used with or without a label, but it's recommended to keep the **l
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 In case you want the user to execute an action, you should select the [Button](components/button) component instead.
 
+<TableOfContents></TableOfContents>
 
 ## Variants
 

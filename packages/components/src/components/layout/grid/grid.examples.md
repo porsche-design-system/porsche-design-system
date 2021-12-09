@@ -8,14 +8,15 @@ For this, the [Flex](components/flex) component is the right choice.
 
 In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](components/content-wrapper).
 
+<TableOfContents></TableOfContents>
 
-### Grid size
+## Grid size
 
 Following example shows a standard grid implementation.  
 
 <Playground :markup="size" :config="config"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -23,13 +24,13 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Grid offset
+## Grid offset
 
 In some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings.
 
 <Playground :markup="offset" :config="config"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -37,27 +38,27 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Grid direction
+## Grid direction
 
 In some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.
 
-#### Row (default)
+### Row (default)
 
 <Playground :markup="direction('row')" :config="config"></Playground>
 
-#### Row reverse
+### Row reverse
 
 <Playground :markup="direction('row-reverse')" :config="config"></Playground>
 
-#### Column
+### Column
 
 <Playground :markup="direction('column')" :config="config"></Playground>
 
-#### Column-reverse
+### Column-reverse
 
 <Playground :markup="direction('column-reverse')" :config="config"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -65,15 +66,15 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Grid gutter
+## Grid gutter
 
 The grid gutter can have the sizes `16`, `24` and `36`.
 
-#### Gutter
+### Gutter
 
 <Playground :markup="gutter()" :config="config"></Playground>
 
-#### Gutter with breakpoint
+### Gutter with breakpoint
 
 The gutter sizes can be set on different breakpoints.
 
@@ -81,25 +82,25 @@ The gutter sizes can be set on different breakpoints.
 
 ---
 
-### Grid wrap
+## Grid wrap
 
-#### Wrap (default)
+### Wrap (default)
 
 <Playground :markup="wrap('wrap')" :config="config"></Playground>
 
-#### Nowrap
+### Nowrap
 
 <Playground :markup="wrap('nowrap')" :config="config"></Playground>
 
 ---
 
-### Grid nesting
+## Grid nesting
 
 Basic nesting of grids is supported. "Basic" because of percentage value of width and gutter which couldn't be calculated for each column width. Here are some examples of "do's" and "don'ts":
 
 <Playground :markup="nesting" :config="config"></Playground>
 
-#### Possible nesting by keeping columns in "the grid"
+### Possible nesting by keeping columns in "the grid"
 
 Only columns with the following widths could be nested:
 
@@ -107,7 +108,7 @@ Only columns with the following widths could be nested:
 * total width of 6
 * total width of 4
 
-#### Forbidden nesting
+### Forbidden nesting
 
 Nesting inside columns with the following widths should be prevented, because all item widths won't be in "the grid" anymore:
 

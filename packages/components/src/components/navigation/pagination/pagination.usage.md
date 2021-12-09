@@ -1,5 +1,7 @@
 # Pagination
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Pagination whenever a content (text, images, videos) is split into several pages. 
   • Use a Pagination to provide information on the existing amount of pages. 

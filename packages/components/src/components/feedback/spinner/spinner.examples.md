@@ -5,6 +5,8 @@ These moments should be bridged with a good user feedback in order to not leave 
 
 For ongoing operations between 2-10 seconds, where the loading progress cannot be determined, use a **Spinner** (looped indicator) to inform the user about an ongoing operation. Use it either stand-alone (for example as page loader) or within components, such as in Buttons to indicate progress after clicking "save".
 
+<TableOfContents></TableOfContents>
+
 ## Size
 
 There are predefined sizes for the component available which should cover most use cases. 

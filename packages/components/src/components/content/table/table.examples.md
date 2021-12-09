@@ -6,6 +6,8 @@ Therefore, it can be used for plain text but also rich content like images, form
 
 It is a controlled component. This means it does not contain any internal state, and you got full control over its behavior.
 
+<TableOfContents></TableOfContents>
+
 ## Basic Table
 
 <Playground :frameworkMarkup="basic">

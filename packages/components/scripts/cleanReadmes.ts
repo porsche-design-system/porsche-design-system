@@ -58,9 +58,6 @@ const adjustHeadline = (str: string): string => {
   return str.replace(tagName, headline);
 };
 
-const addTableOfContents = (str: string): string =>
-  str.replace(/\s(##\s.*\s)/, '\n<TableOfContents></TableOfContents>\n\n$1');
-
 const fixBreakpointCustomizable = (str: string): string => {
   const breakpointCustomizableTypes: string[] = [];
 
@@ -128,7 +125,6 @@ const cleanReadmes = (): void => {
 
     const content = [
       adjustHeadline,
-      addTableOfContents, // needs to be after headline manipulation
       removeGenerator,
       transformDoubleToSingleQuotes,
       fixBreakpointCustomizable,

@@ -5,6 +5,8 @@ The singular property of a Radio Button makes it distinct from a checkbox, which
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-radio-button-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
+<TableOfContents></TableOfContents>
+
 ## Basic examples
 
 <Playground :markup="basic" :config="config">

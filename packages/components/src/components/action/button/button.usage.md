@@ -1,5 +1,7 @@
 # Button
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Button to enable to execute an action (like "submit", "delete", "add" or "edit").   
   • Use a Button to change the state of an application, which almost always happens on the same page. 

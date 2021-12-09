@@ -5,6 +5,8 @@ A Button can be used with or without a label, but it's recommended to keep the *
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 ### With label

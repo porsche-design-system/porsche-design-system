@@ -1,5 +1,7 @@
 # Typography
 
+<TableOfContents></TableOfContents>
+
 ## Headline
 
 **Headline component** to specify headline styling and hierarchy in documents.

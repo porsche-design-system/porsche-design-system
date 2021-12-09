@@ -7,7 +7,7 @@ Their main aim should be to help users perform a task and not necessarily interf
 **Keep in Mind:**
 Highly frequented or disruptive Notifications can have a **negative impact** on the user's experience. 
 
----
+<TableOfContents></TableOfContents>
 
 ## When to use
 

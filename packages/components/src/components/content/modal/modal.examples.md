@@ -7,6 +7,8 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component.
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+<TableOfContents></TableOfContents>
+
 ## Basic
 
 It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 

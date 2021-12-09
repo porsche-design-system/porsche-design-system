@@ -4,6 +4,8 @@ The `p-checkbox-wrapper` component is a styling wrapper for the native HTML inpu
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-checkbox-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 <Playground :markup="basic" :config="config">

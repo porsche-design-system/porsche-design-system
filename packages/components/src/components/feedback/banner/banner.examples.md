@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Banner
 The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics. 
 

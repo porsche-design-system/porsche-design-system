@@ -7,6 +7,8 @@ Commonly it is used for “on/off” state.
 It is a controlled component.
 This means it does not contain any internal state, and you got full control over its behavior.
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.

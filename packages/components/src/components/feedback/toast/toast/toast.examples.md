@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Toast
 
 The `p-toast` component manages both the queue and display of toast messages.  

@@ -1,5 +1,7 @@
 # Button Pure
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Button Pure as a more subtle call to action (in addition to Button Primary, Secondary or Tertiary).   
   • Use a Button Pure to enable to execute an action (like "submit", "delete", "add" or "edit").   
