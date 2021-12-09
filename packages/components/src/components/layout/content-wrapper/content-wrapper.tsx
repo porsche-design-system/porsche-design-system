@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, isDark } from '../../../utils';
+import { attachComponentCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { BackgroundColor, Width } from './content-wrapper-utils';
 import { getComponentCss } from './content-wrapper-styles';
@@ -25,15 +25,8 @@ export class ContentWrapper {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.width}`]: this.width !== 'fluid',
-      ['root--background-default']: this.backgroundColor === 'default',
-      ['root--theme-dark']: isDark(this.theme),
-    };
-
     return (
-      <div class={rootClasses}>
+      <div class="root">
         <slot />
       </div>
     );
