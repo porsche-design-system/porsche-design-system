@@ -44,6 +44,7 @@
 
         h2.append(link);
         h2.id = id;
+        // enable programmatic focusing, so that keyboard users don't break flow when using TOC
         h2.tabIndex = -1;
 
         return {
