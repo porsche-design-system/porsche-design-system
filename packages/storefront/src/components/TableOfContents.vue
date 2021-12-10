@@ -1,6 +1,6 @@
 <template>
   <div v-if="links.length > 1" class="toc" aria-label="Table of Contents">
-    <p-headline variant="headline-5">Table of Contents</p-headline>
+    <p-headline variant="headline-4">Table of Contents</p-headline>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <p-link-pure :href="link.href" :icon="returnIcon" v-on:click="onLinkClick(link, $event)">{{
@@ -35,6 +35,7 @@
         const link = document.createElement('p-link-pure');
         (link as any).size = 'inherit';
         (link as any).innerText = '#';
+        (link as any).title = 'Link to this heading';
         (link as any).icon = 'none';
         (link as any).href = href;
         link.addEventListener('click', (e) => {
@@ -43,6 +44,7 @@
 
         h2.append(link);
         h2.id = id;
+        h2.tabIndex = -1;
 
         return {
           href,
@@ -58,7 +60,13 @@
 
       if (hash) {
         const { offsetTop } = (this.$el.parentElement!.parentElement!.querySelector(hash) as HTMLElement) || {};
-        window.scrollTo({ top: offsetTop });
+        window.scrollTo({
+          top: offsetTop,
+          behavior: window.matchMedia('(prefers-reduced-motion)') ? 'auto' : 'smooth',
+        });
+
+        const target = document.querySelector(hash) as HTMLHeadingElement;
+        target.focus();
       }
     }
 
@@ -67,7 +75,6 @@
       if (metaKey || altKey || ctrlKey || shiftKey) {
         return;
       }
-
       e.preventDefault();
       e.stopPropagation();
       window.history.pushState(null, '', link.href);
@@ -79,6 +86,10 @@
 <style scoped lang="scss">
   .toc {
     margin-top: 4rem;
+  }
+
+  p-headline {
+    margin-bottom: 1rem;
   }
 
   li {

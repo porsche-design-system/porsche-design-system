@@ -102,6 +102,9 @@
                 visibility: visible;
               }
             }
+            &:focus {
+              outline: none;
+            }
           }
         }
 
