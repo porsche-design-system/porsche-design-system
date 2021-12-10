@@ -11,7 +11,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { BannerState } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
-import { BackgroundColor } from "./components/layout/content-wrapper/content-wrapper-utils";
+import { BackgroundColor, Width } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
@@ -211,7 +211,7 @@ export namespace Components {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: Width;
     }
     interface PDivider {
         /**
@@ -1446,7 +1446,7 @@ declare namespace LocalJSX {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: Width;
     }
     interface PDivider {
         /**
