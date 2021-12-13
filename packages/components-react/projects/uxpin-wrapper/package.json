@@ -14,7 +14,7 @@
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.7.0-beta.5",
+    "@porsche-design-system/components-js": "2.7.0-beta.6",
     "react": "^17.0.2"
   },
   "devDependencies": {

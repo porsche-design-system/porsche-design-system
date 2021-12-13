@@ -4,7 +4,6 @@ import {
   observeWindowResize,
   onWindowResize,
   registeredAccordions,
-  resetRegisteredAccordions,
   resizeMap,
   setCollapsibleElementHeight,
   unobserveResize,
@@ -220,7 +219,7 @@ describe('onWindowResize()', () => {
 
 describe('observeWindowResize()', () => {
   beforeEach(() => {
-    resetRegisteredAccordions();
+    registeredAccordions.length = 0;
   });
 
   it('should push accordion to registeredAccordions', () => {
@@ -248,7 +247,7 @@ describe('observeWindowResize()', () => {
 
 describe('unobserveWindowResize()', () => {
   beforeEach(() => {
-    resetRegisteredAccordions();
+    registeredAccordions.length = 0;
   });
 
   it('should remove accordion from registeredAccordions', () => {
