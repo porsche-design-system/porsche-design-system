@@ -60,14 +60,13 @@
       const { hash } = window.location;
 
       if (hash) {
-        const { offsetTop } = (this.$el.parentElement!.parentElement!.querySelector(hash) as HTMLElement) || {};
+        const headline = this.$el.parentElement!.parentElement!.querySelector(hash) as HTMLElement;
+
         window.scrollTo({
-          top: offsetTop,
+          top: headline.offsetTop,
           behavior: window.matchMedia('(prefers-reduced-motion)') ? 'auto' : 'smooth',
         });
-
-        const target = document.querySelector(hash) as HTMLHeadingElement;
-        target.focus();
+        headline.focus();
       }
     }
 
