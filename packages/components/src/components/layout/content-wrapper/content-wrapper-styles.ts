@@ -1,13 +1,17 @@
-import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../utils';
+import {
+  addImportantToEachRule,
+  buildHostStyles,
+  contentWrapperMargin,
+  contentWrapperMarginXl,
+  contentWrapperMarginXxl,
+  contentWrapperMaxWidth,
+  contentWrapperMaxWidthExtended,
+  getCss,
+  mediaQuery,
+} from '../../../utils';
 import type { Theme } from '../../../types';
 import { getThemedColors, JssStyle } from '../../../utils';
 import type { BackgroundColor, Width } from './content-wrapper-utils';
-
-export const contentWrapperMaxWidth = pxToRemWithUnit(1536);
-export const contentWrapperMaxWidthExtended = pxToRemWithUnit(1920);
-export const contentWrapperMargin = '7vw';
-export const contentWrapperMarginXl = '10vw';
-export const contentWrapperMarginXxl = pxToRemWithUnit(192);
 
 const widthMap: { [key in Width]: JssStyle } = {
   basic: {

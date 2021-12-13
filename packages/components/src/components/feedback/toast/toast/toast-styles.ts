@@ -1,8 +1,14 @@
-import { addImportantToEachRule, buildHostStyles, getCss, mediaQuery, pxToRemWithUnit } from '../../../../utils';
+import {
+  addImportantToEachRule,
+  buildHostStyles,
+  contentWrapperMargin,
+  getCss,
+  mediaQuery,
+  pxToRemWithUnit,
+} from '../../../../utils';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
-import { contentWrapperMargin } from '../../../layout/content-wrapper/content-wrapper-styles';
 
 const toastPositionBottomVar = '--p-toast-position-bottom';
 const toastPositionBottomVarInternal = '--p-toast-position-bottom-internal';
