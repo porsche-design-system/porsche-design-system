@@ -66,7 +66,7 @@
           top: headline.offsetTop,
           behavior: window.matchMedia('(prefers-reduced-motion)').matches ? 'auto' : 'smooth',
         });
-        headline.focus();
+        headline.focus({ preventScroll: true });
       }
     }
 
