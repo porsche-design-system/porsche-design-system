@@ -17,7 +17,7 @@ in your application! Therefore, we avoid messing with the window location.
 It is a controlled component.
 This means it does not contain any internal state, and you got full control over its behavior.
 
----
+<TableOfContents></TableOfContents>
 
 ## Basic example
 
@@ -38,7 +38,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 <Playground :markup="basicAnchor" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 
 The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 

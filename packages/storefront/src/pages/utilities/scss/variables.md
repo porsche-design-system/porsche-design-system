@@ -1,5 +1,7 @@
 # Scss
 
+<TableOfContents></TableOfContents>
+
 ## Color
 
 A light and dark theme is available depending on which background it's used.   
