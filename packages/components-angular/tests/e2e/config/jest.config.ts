@@ -1,2 +1,2 @@
-import { config } from '@porsche-design-system/shared/testing/jest.config';
+import { config } from '@porsche-design-system/shared/testing/jest-angular.config';
 export default config;
