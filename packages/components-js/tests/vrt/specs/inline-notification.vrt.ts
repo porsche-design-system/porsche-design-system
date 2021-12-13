@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -33,12 +33,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoveredState(page, '.hovered > p-inline-notification a');
-      await forceHoveredState(page, '.hovered > p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusedState(page, '.focused > p-inline-notification a');
-      await forceFocusedState(page, '.focused > p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-inline-notification a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-inline-notification >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover > p-inline-notification a');
+      await forceHoverState(page, '.hover > p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus > p-inline-notification a');
+      await forceFocusState(page, '.focus > p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover > p-inline-notification a');
+      await forceFocusHoverState(page, '.focus-hover > p-inline-notification >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

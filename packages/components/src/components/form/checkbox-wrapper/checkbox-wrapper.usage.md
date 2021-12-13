@@ -1,5 +1,7 @@
 # Checkbox
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Checkbox for a list of options when you want to enable the user to select no, one or more options.  
   • Use a Checkbox when an explicit action is required to apply settings. 

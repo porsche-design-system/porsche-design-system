@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -37,13 +37,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-banner span a');
+      await forceHoverState(page, '.hover > p-banner span a');
       // TODO: support for 3rd level of shadow DOM is missing
-      // await forceHoveredState(page, '.hovered > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusedState(page, '.focused > p-banner span a');
-      // await forceFocusedState(page, '.focused > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-banner span a');
-      // await forceFocusedHoveredState(page, '.focused-hovered > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      // await forceHoveredState(page, '.hover > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus > p-banner span a');
+      // await forceFocusedState(page, '.focus > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover > p-banner span a');
+      // await forceFocusedHoveredState(page, '.focus-hover > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

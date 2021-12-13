@@ -1,5 +1,7 @@
 # Introduction
 
+<TableOfContents></TableOfContents>
+
 ## Porsche Design System - Utilities
 
 This package contains helpful SCSS & JS variables, functions and helpers.

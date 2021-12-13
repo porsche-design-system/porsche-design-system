@@ -6,6 +6,8 @@ This impacts the loading behavior of Porsche Design System components because th
 
 To achieve this bootstrapping **earlier** we provide a partial called `getLoaderScript()` in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be imported into the `<body>` of your `index.html`.
 
+<TableOfContents></TableOfContents>
+
 ## Supported options:
 - **prefix**: string | string[] = undefined
 - **withoutTags**: boolean = false

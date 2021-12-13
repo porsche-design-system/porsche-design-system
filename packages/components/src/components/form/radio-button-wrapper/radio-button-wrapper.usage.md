@@ -1,5 +1,7 @@
 # Radio Button
 
+<TableOfContents></TableOfContents>
+
 ## When to use
   • Use a Radio Button to enable a user to select one value from a predefined list.  
   • Use a Radio Button as soon as two options are mutually exclusive.  
