@@ -50,6 +50,7 @@
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "1.2.2",
+    "algoliasearch": "^4.11.0",
     "concurrently": "^6.3.0",
     "eslint": "^7.30.0",
     "eslint-plugin-vue": "^7.19.1",
