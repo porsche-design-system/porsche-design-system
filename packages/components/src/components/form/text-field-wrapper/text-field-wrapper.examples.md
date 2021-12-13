@@ -6,6 +6,8 @@ A `label` is a caption which informs the user what information a particular form
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 <Playground :markup="basic" :config="config">
@@ -37,7 +39,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground :markup="disabled" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. 
 They can be confusing for sighted users as well by not pointing out why these elements are disabled. 
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
@@ -118,7 +120,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
 
 <Playground :markup="slots" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
 1. Add a unique ID to the `slot="label"` element
 1. Add a unique ID to the `slot="message"` element (if they are created)

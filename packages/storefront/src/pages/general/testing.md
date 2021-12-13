@@ -8,6 +8,8 @@ You can solve that by using the [componentsReady-function](helpers/components-re
  
 Detailed information about tests in frameworks like [React](start-coding/react), Angular etc. can be found in the respective test projects
 
+<TableOfContents></TableOfContents>
+
 ## Unit Tests
 
 A simple Jasmine example could look like this:

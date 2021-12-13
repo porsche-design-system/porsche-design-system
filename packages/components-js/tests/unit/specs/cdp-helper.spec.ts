@@ -76,16 +76,15 @@ describe('cdp-helper', () => {
     it('should put elements in playground divs', () => {
       const getElementsMarkup: GetMarkup = () => '<div>SomeDiv</div><div>SomeDiv</div>';
 
-      const result = `
-  <div class="playground light hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>
-  <div class="playground light focused">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>
-  <div class="playground light focused-hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>`;
+      const result = `<div class="playground light hover">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>
+<div class="playground light focus">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>
+<div class="playground light focus-hover">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>`;
 
       expect(getBodyMarkup(getElementsMarkup)).toBe(result);
     });
@@ -104,28 +103,28 @@ describe('cdp-helper', () => {
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
       expect(
-        getThemedBodyMarkup(getThemedElementsMarkup, { theme: ['light', 'dark', 'light-electric'] })
+        getThemedBodyMarkup(getThemedElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
       ).toMatchSnapshot();
     });
   });
 
   describe('resolveSelector()', () => {
     it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
-      expect(resolveSelector('.hovered > p-button-pure >>> button')).toEqual({
-        hostElementSelector: '.hovered > p-button-pure',
+      expect(resolveSelector('.hover > p-button-pure >>> button')).toEqual({
+        hostElementSelector: '.hover > p-button-pure',
         shadowRootNodeName: 'button',
       });
     });
 
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
-      expect(resolveSelector('.hovered > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
-        hostElementSelector: '.hovered > p-checkbox-wrapper input[type="checkbox"]',
+      expect(resolveSelector('.hover > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
+        hostElementSelector: '.hover > p-checkbox-wrapper input[type="checkbox"]',
         shadowRootNodeName: undefined,
       });
     });
 
     it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
-      expect(() => resolveSelector('.hovered > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
+      expect(() => resolveSelector('.hover > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
         '"\\">>> .tabs-bar\\" selector has to be an \\"Element.localName\\" in shadow-root"'
       );
     });

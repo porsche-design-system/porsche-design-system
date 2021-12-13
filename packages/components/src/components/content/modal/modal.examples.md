@@ -7,6 +7,8 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component.
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+<TableOfContents></TableOfContents>
+
 ## Basic
 
 It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
@@ -29,7 +31,7 @@ The size of `p-modal` adjusts itself to the content with a predefined min/max wi
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
 The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
 You can test it out by navigation this example with the keyboard only.

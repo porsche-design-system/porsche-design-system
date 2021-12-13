@@ -1,5 +1,7 @@
 # Switch
 
+<TableOfContents></TableOfContents>
+
 ## When to use
 
 • If an instant response of applied settings is required without an explicit action.  

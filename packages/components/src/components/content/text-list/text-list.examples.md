@@ -4,6 +4,8 @@ The `p-text-list` component is used to display listed data in form of an unorder
 A list wrapper which defines the type of the list (unordered or ordered) and the list items. 
 Nesting is also provided and follows the same nesting rules like native HTML lists. For more complex data you should consider the use of a data table.
 
+<TableOfContents></TableOfContents>
+
 ## Unordered list
 
 <Playground :markup="list()" :config="config"></Playground>

@@ -1,5 +1,7 @@
 # Icon
 
+<TableOfContents></TableOfContents>
+
 ## Overview
 A complete overview of all available Porsche icons, head over to [Porsche Icons](https://icons.porsche.com).
 
