@@ -44,6 +44,15 @@ export default [
     plugins: [typescript()],
   },
   {
+    input: 'src/testing/jest-angular.config.ts',
+    output: {
+      dir: 'dist/testing',
+      format: 'cjs',
+      exports: 'named',
+    },
+    plugins: [typescript()],
+  },
+  {
     input: 'src/testing/jest-puppeteer.config.ts',
     output: {
       dir: 'dist/testing',
