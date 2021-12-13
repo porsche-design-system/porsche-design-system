@@ -64,7 +64,7 @@
 
         window.scrollTo({
           top: headline.offsetTop,
-          behavior: window.matchMedia('(prefers-reduced-motion)') ? 'auto' : 'smooth',
+          behavior: window.matchMedia('(prefers-reduced-motion)').matches ? 'auto' : 'smooth',
         });
         headline.focus();
       }
