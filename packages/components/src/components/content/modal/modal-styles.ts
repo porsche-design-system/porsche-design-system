@@ -4,6 +4,7 @@ import {
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
+  contentWrapperMaxWidth,
   getCss,
   getInset,
   mediaQuery,
@@ -12,7 +13,6 @@ import {
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import { MODAL_Z_INDEX } from '../../../constants';
-import { contentWrapperMaxWidth } from '../../layout/content-wrapper/content-wrapper-styles';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
