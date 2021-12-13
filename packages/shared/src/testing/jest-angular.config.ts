@@ -14,6 +14,7 @@ export const config: Config.InitialOptions = {
     '^.+\\.mjs?$': 'jest-preset-angular',
     '^.+\\.ts?$': 'ts-jest',
   },
+  maxWorkers: process.env.CI === 'true' ? 2 : 4,
   globals: {
     'ts-jest': {
       isolatedModules: true, // disable type-checking and compile each file as an isolated module
