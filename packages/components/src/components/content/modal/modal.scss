@@ -8,9 +8,6 @@ $p-modal-min-width: p-px-to-rem(272px);
 $p-modal-max-width: $p-content-wrapper-max-width;
 
 .root {
-  background-color: $p-color-background-default;
-  box-sizing: border-box;
-
   @include p-media-query('xl') {
     margin: $p-modal-margin-xl;
 
@@ -53,22 +50,7 @@ $p-modal-max-width: $p-content-wrapper-max-width;
   }
 }
 
-header {
-  display: flex;
-  padding: 0 0 p-px-to-rem(16px);
-
-  @include p-media-query('m') {
-    padding: 0 0 p-px-to-rem(24px);
-  }
-  @include p-media-query('xxl') {
-    padding: 0 0 p-px-to-rem(32px);
-  }
-}
-
 .close {
-  margin-left: auto;
-  padding: 0 0 0 p-px-to-rem(16px);
-
   > * {
     margin: p-px-to-rem(-8px) p-px-to-rem(-8px) 0 0;
     padding: p-px-to-rem(8px);
