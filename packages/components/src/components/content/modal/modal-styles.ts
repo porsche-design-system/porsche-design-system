@@ -16,17 +16,21 @@ import { MODAL_Z_INDEX } from '../../../constants';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
+const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
+
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
         maxWidth: 'none',
         minHeight: '100%',
+        margin: 0,
       }
     : {
         minWidth: pxToRemWithUnit(272),
-        maxWidth: contentWrapperVars.maxWidth,
+        maxWidth,
         minHeight: 'auto',
+        margin: `7vh ${margin}`,
       };
 };
 
@@ -59,23 +63,28 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
     }),
-    root: mergeDeep(
-      {
-        position: 'relative',
-        boxSizing: 'border-box',
-        transition: `transform .6s ${transitionTimingFunction}`,
-        transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-        padding: pxToRemWithUnit(32),
-        backgroundColor: color.background.default,
-        [mediaQuery('m')]: {
-          padding: pxToRemWithUnit(40),
-        },
-        [mediaQuery('xxl')]: {
-          padding: pxToRemWithUnit(64),
-        },
+    root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
+      position: 'relative',
+      boxSizing: 'border-box',
+      transition: `transform .6s ${transitionTimingFunction}`,
+      transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+      padding: pxToRemWithUnit(32),
+      backgroundColor: color.background.default,
+      [mediaQuery('m')]: {
+        padding: pxToRemWithUnit(40),
       },
-      buildResponsiveStyles(fullscreen, getFullscreenStyles)
-    ),
+      [mediaQuery('xl')]: {
+        margin: `10vh ${marginXl}`,
+        '&--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs), &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s), &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m), &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l), &--fullscreen-on-l:not(&--fullscreen-off-xl)':
+          { margin: 0 },
+      },
+      [mediaQuery('xxl')]: {
+        padding: pxToRemWithUnit(64),
+        margin: `10vh ${marginXxl}`,
+        '&--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs), &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s), &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m), &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l), &--fullscreen-on-l:not(&--fullscreen-off-xl), &--fullscreen-on-xl':
+          { margin: 0 },
+      },
+    }),
     ...buildGlobalStyles({
       header: {
         display: 'flex',
