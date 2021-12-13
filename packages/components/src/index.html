@@ -11,26 +11,6 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <button type="button">Open Modal</button>
-    <p-modal heading="Some Heading" open="false" fullscreen="{base: true, s: false, m: true}">
-      <p-text>Some Content</p-text>
-      <p-button-group class="footer">
-        <p-button>Save</p-button>
-        <p-button type="button" variant="tertiary">Close</p-button>
-      </p-button-group>
-    </p-modal>
-
-    <script>
-      const button = document.querySelector('button');
-      const modal = document.querySelector('p-modal');
-      button.addEventListener('click', (e) => {
-        modal.open = true;
-      });
-      modal.addEventListener('close', () => {
-        modal.open = false;
-      });
-    </script>
-
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
