@@ -3,6 +3,8 @@ import { StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
 import * as path from 'path';
 import * as fs from 'fs';
 
+import algoliasearch from 'algoliasearch';
+
 import { paramCase } from 'change-case';
 
 export type StorefrontContentTabPage = { [tab: string]: string };
@@ -126,6 +128,22 @@ const toAlgoliaRecords = (keys: string[], content: string): AlgoliaRecord[] => {
   });
 };
 
+const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'category', 'page', 'tab', 'content'];
+
+const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
+  const client = algoliasearch('H4KMYOI855', 'bb3db0efeeb2b6f662ee1eb6f46a475c');
+  const index = client.initIndex('some_index');
+  index.setSettings({ searchableAttributes });
+  index
+    .saveObjects(records, { autoGenerateObjectIDIfNotExist: false })
+    .then(() => {
+      console.log('-> successfully updated index');
+    })
+    .catch((error) => {
+      console.log('-> error, algolia fed up: ', error);
+    });
+};
+
 const updateAlgoliaIndex = (): void => {
   const index = generateIndex();
   const records = transformToAlgoliaRecords(index);
@@ -133,6 +151,7 @@ const updateAlgoliaIndex = (): void => {
   fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
     encoding: 'utf-8',
   });
+  uploadAndOverrideRecords(records);
 };
 
 updateAlgoliaIndex();
