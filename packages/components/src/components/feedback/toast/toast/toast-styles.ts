@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
   buildHostStyles,
-x^  contentWrapperVars,
+  contentWrapperVars,
   getCss,
   mediaQuery,
   pxToRemWithUnit,

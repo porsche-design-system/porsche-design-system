@@ -65,7 +65,6 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { getToastCodeSamples } from '@porsche-design-system/shared';
-  import { defaultToastOffset } from '@porsche-design-system/components/src/components/feedback/toast/toast/toast-utils';
   import type { Theme } from '@/models';
   
   @Component
@@ -75,7 +74,7 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
     toastState = 'neutral';
     toastText = 'Some message';
     toastCounter = 1;
-    positionBottom = defaultToastOffset.s;
+    positionBottom = 64;
     
     get basic() { 
       return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({

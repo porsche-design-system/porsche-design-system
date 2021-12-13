@@ -1,9 +1,9 @@
 import { getComponentCss } from './content-wrapper-styles';
-import type { BackgroundColor, Width } from './content-wrapper-utils';
+import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
 import type { Theme } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[Width, BackgroundColor, Theme]>([
+  it.each<[ContentWrapperWidth, ContentWrapperBackgroundColor, Theme]>([
     ['basic', 'transparent', 'light'],
     ['extended', 'transparent', 'light'],
     ['fluid', 'transparent', 'light'],
