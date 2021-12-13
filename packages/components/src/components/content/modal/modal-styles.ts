@@ -16,12 +16,6 @@ import { MODAL_Z_INDEX } from '../../../constants';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 
-const modalMinWidth = pxToRemWithUnit(272);
-const modalMaxWidth = contentWrapperMaxWidth;
-const modalHeaderPadding = `0 0 ${pxToRemWithUnit(16)}`;
-const modalHeaderPaddingM = `0 0 ${pxToRemWithUnit(24)}`;
-const modalHeaderPaddingXxl = `0 0 ${pxToRemWithUnit(32)}`;
-
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
@@ -30,8 +24,8 @@ export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): Jss
         minHeight: '100%',
       }
     : {
-        minWidth: modalMinWidth,
-        maxWidth: modalMaxWidth,
+        minWidth: pxToRemWithUnit(272),
+        maxWidth: contentWrapperMaxWidth,
         minHeight: 'auto',
       };
 };
@@ -87,19 +81,18 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
-        padding: modalHeaderPadding,
-        [mediaQuery('xxl')]: {
-          padding: modalHeaderPaddingXxl,
-        },
+        padding: `0 0 ${pxToRemWithUnit(16)}`,
         [mediaQuery('m')]: {
-          padding: modalHeaderPaddingM,
+          padding: `0 0 ${pxToRemWithUnit(24)}`,
+        },
+        [mediaQuery('xxl')]: {
+          padding: `0 0 ${pxToRemWithUnit(32)}`,
         },
       },
     }),
     close: {
-      marginLeft: pxToRemWithUnit(16),
+      margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
       padding: pxToRemWithUnit(8),
-      transform: `translate(${pxToRemWithUnit(8)}, ${pxToRemWithUnit(-8)})`,
     },
   });
 };
