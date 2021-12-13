@@ -6,7 +6,6 @@ import { getComponentCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
-  styleUrl: 'modal.scss',
   shadow: true,
 })
 export class Modal {
@@ -14,14 +13,19 @@ export class Modal {
 
   /** If true, the modal is open. */
   @Prop() public open = false;
+
   /** If true, the modal will not have a close button. */
   @Prop() public disableCloseButton?: boolean = false;
+
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
   /** The title of the modal */
   @Prop() public heading?: string;
+
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
+
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
