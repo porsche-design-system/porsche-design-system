@@ -21,9 +21,9 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
 
       return fs
         .readFileSync(path.resolve(__dirname, '../src', importPath), 'utf-8')
-        .replace(/<([\w-]+).*?>(?:.|\s)*?<\/\1>/, '') // remove all <tags> and their content
-        .replace(/<!--(?:.|\s)*?-->/, '') // remove comments
-        .replace(/```(?:.|\s)*?```/, ''); // remove code blocks
+        .replace(/```(?:.|\s)*?```/g, '') // remove code blocks
+        .replace(/<!--(?:.|\s)*?-->/g, ''); // remove comments
+      //.replace(/<([\w-]+).*?>(?:.|\s)*?<\/\1>/g, ''); // remove all <tags> and their content
     })
     .join('\n');
 };
