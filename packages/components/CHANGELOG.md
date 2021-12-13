@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Removed
 - `offset-bottom` prop of `Toast`
 
+### [2.7.0-beta.6] - 2021-12-08
+
+#### Added
+- `Popover`
+
 ### [2.7.0-beta.5] - 2021-12-07
 
 #### Added

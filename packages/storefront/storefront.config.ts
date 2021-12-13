@@ -368,6 +368,20 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/navigation/pagination/pagination.props.md'),
       ],
     },
+    Popover: {
+      Examples: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.examples.md'),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.usage.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/feedback/popover/popover.props.md'),
+      ],
+    },
     'Radio Button': {
       Examples: [
         // @ts-ignore
