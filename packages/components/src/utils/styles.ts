@@ -14,11 +14,13 @@ export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
-export const contentWrapperMaxWidth = pxToRemWithUnit(1536);
-export const contentWrapperMaxWidthExtended = pxToRemWithUnit(1920);
-export const contentWrapperMargin = '7vw';
-export const contentWrapperMarginXl = '10vw';
-export const contentWrapperMarginXxl = pxToRemWithUnit(192);
+export const contentWrapperVars = {
+  maxWidth: pxToRemWithUnit(1536),
+  maxWidthExtended: pxToRemWithUnit(1920),
+  margin: '7vw',
+  marginXl: '10vw',
+  marginXxl: pxToRemWithUnit(192),
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;

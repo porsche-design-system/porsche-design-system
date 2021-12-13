@@ -24,6 +24,7 @@ export class Toast {
 
   public connectedCallback(): void {
     toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public componentDidLoad(): void {
@@ -43,7 +44,6 @@ export class Toast {
 
   public componentWillRender(): void {
     this.toastItemElement?.classList.remove(toastCloseClassName);
-    attachComponentCss(this.host, getComponentCss);
   }
 
   public disconnectedCallback(): void {

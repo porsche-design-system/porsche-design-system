@@ -4,6 +4,7 @@ import type { BreakpointCustomizable } from '../../../types';
 describe('getComponentCss()', () => {
   it.each<[boolean, BreakpointCustomizable<boolean>]>([
     [false, false],
+    [false, true],
     [true, false],
     [true, true],
     [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }],

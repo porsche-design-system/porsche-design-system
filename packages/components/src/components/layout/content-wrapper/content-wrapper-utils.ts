@@ -1,2 +1,2 @@
-export type BackgroundColor = 'transparent' | 'default';
-export type Width = 'basic' | 'extended' | 'fluid';
+export type ContentWrapperBackgroundColor = 'transparent' | 'default';
+export type ContentWrapperWidth = 'basic' | 'extended' | 'fluid';

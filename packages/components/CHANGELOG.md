@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Removed
-- `offset-bottom` prop of `Toast`
+- `offset-bottom` prop of `Toast` (use `--p-toast-position-bottom` CSS variable instead)
 
 ### [2.7.0-beta.6] - 2021-12-08
 
