@@ -4,7 +4,7 @@ import {
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
-  contentWrapperMaxWidth,
+  contentWrapperVars,
   getCss,
   getInset,
   mediaQuery,
@@ -25,7 +25,7 @@ export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): Jss
       }
     : {
         minWidth: pxToRemWithUnit(272),
-        maxWidth: contentWrapperMaxWidth,
+        maxWidth: contentWrapperVars.maxWidth,
         minHeight: 'auto',
       };
 };

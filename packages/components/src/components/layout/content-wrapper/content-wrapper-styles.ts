@@ -1,38 +1,38 @@
 import {
   addImportantToEachRule,
   buildHostStyles,
-  contentWrapperMargin,
-  contentWrapperMarginXl,
-  contentWrapperMarginXxl,
-  contentWrapperMaxWidth,
-  contentWrapperMaxWidthExtended,
+  contentWrapperVars,
   getCss,
+  getThemedColors,
+  JssStyle,
   mediaQuery,
 } from '../../../utils';
 import type { Theme } from '../../../types';
-import { getThemedColors, JssStyle } from '../../../utils';
-import type { BackgroundColor, Width } from './content-wrapper-utils';
+import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 
-const widthMap: { [key in Width]: JssStyle } = {
+const { margin, marginXl, marginXxl, maxWidth, maxWidthExtended } = contentWrapperVars;
+
+const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
-    maxWidth: contentWrapperMaxWidth,
-    padding: `0 ${contentWrapperMargin}`,
+    maxWidth,
+    padding: `0 ${margin}`,
     [mediaQuery('xl')]: {
-      padding: `0 ${contentWrapperMarginXl}`,
+      padding: `0 ${marginXl}`,
     },
     [mediaQuery('xxl')]: {
-      padding: `0 ${contentWrapperMarginXxl}`,
+      padding: `0 ${marginXxl}`,
     },
   },
   extended: {
-    maxWidth: contentWrapperMaxWidthExtended,
+    maxWidth: maxWidthExtended,
   },
-  fluid: {},
 };
 
-export const getComponentCss = (width: Width, backgroundColor: BackgroundColor, theme: Theme): string => {
-  const { backgroundColor: themedBackgroundColor } = getThemedColors(theme);
-
+export const getComponentCss = (
+  width: ContentWrapperWidth,
+  backgroundColor: ContentWrapperBackgroundColor,
+  theme: Theme
+): string => {
   return getCss({
     ...buildHostStyles(
       addImportantToEachRule({
@@ -41,7 +41,7 @@ export const getComponentCss = (width: Width, backgroundColor: BackgroundColor, 
     ),
     root: {
       margin: '0 auto',
-      backgroundColor: backgroundColor === 'default' ? themedBackgroundColor : 'transparent',
+      backgroundColor: backgroundColor === 'default' ? getThemedColors(theme).backgroundColor : 'transparent',
       width: '100%',
       minWidth: 0,
       ...widthMap[width],
