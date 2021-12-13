@@ -4,6 +4,8 @@ The `p-fieldset-wrapper` is a grouping component for wrapping contextual associa
 Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block.
 You can see some usage examples on our [form patterns section](patterns/forms/resources).
 
+<TableOfContents></TableOfContents>
+
 ## Basic example with label
 
 <Playground :markup="withLabelMarkup"></Playground>

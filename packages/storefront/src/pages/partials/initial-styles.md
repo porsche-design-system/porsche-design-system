@@ -6,6 +6,8 @@ However, it takes a moment until our core is fully loaded and only then we can t
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getInitialStyles()` which needs to be imported into the `<head>` of your `index.html`.
 
+<TableOfContents></TableOfContents>
+
 ## Supported options:
 - **prefix:** string = ''
 - **withoutTags**: boolean = false

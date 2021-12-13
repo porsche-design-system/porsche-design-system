@@ -4,6 +4,8 @@ At Porsche we want the best performance, security and modern feature opportuniti
 
 To ensure visual and functional compatibility, we do automatic and manual testing for the defined set of browsers and versions. If a browser is not listed on this page we don’t test it, provide assistance or fix bugs for it.
 
+<TableOfContents></TableOfContents>
+
 ## Supported Browsers & Platforms
 
 We support the **following Browsers in the latest stable and deprecated predecessor version**:

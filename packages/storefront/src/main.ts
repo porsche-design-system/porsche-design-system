@@ -4,7 +4,9 @@ import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
+import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
+import A11yIcon from '@/components/A11yIcon.vue';
 
 (window as any).componentsReady = componentsReady; // for vrt
 
@@ -21,8 +23,10 @@ Vue.config.ignoredElements = [/p-\w*/];
 
 Vue.use({
   install(vue: VueConstructor) {
-    vue.component('Playground', Playground);
+    vue.component('A11yIcon', A11yIcon);
     vue.component('ColorBadge', ColorBadge);
+    vue.component('Playground', Playground);
+    vue.component('TableOfContents', TableOfContents);
   },
 });
 

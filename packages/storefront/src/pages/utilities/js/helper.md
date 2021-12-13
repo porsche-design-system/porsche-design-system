@@ -1,5 +1,7 @@
 # Js
 
+<TableOfContents></TableOfContents>
+
 ## generateFontDefinition(fontSize, fontWeight)
 
 With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by passing two parameters as variables for `fontSize` and `fontWeight`.

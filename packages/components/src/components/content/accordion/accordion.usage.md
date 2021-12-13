@@ -1,5 +1,7 @@
 # Accordion
- 
+
+<TableOfContents></TableOfContents> 
+
 ## When to use
  
 - When you want to show additional information that isn't crucial for the user to proceed their journey.
