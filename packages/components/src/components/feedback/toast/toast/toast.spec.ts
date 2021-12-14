@@ -6,6 +6,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(toastManager, 'register');
     const component = new Toast();
     component.host = document.createElement('p-toast');
+    component.host.attachShadow({ mode: 'open' });
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, expect.anything());
