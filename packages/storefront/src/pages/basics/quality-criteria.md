@@ -2,6 +2,8 @@
 
 All work done on components is subject to strict guidelines in order to meet our high quality standards.
 
+<TableOfContents></TableOfContents>
+
 ## General
 - Meeting of UI decisions based on specific research and testing
 - Definition of hierarchy structures and naming all related states and variants in design and code

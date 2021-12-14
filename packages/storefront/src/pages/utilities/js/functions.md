@@ -1,5 +1,7 @@
 # Js
 
+<TableOfContents></TableOfContents>
+
 ## Breakpoints
 
 We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl` 

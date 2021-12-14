@@ -2,6 +2,8 @@
 
 We value stability and transparency. Thus we strive to ensure that our reusable components, Sketch Libraries and familiar practices don't become obsolete often and unexpectedly.
 
+<TableOfContents></TableOfContents>
+
 ## General information
 The Porsche Design System components and Sketch Libraries are released separately following [semantic versioning](http://semver.org/) whereby the numbers indicate the level of changes that are introduced. It should help you understand and plan the potential impact of updating.
 

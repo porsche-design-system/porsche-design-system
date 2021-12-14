@@ -1,6 +1,8 @@
 # Sketch Plugins
 Below you can find a curated list of recommended plugins that are very useful for layouts, but not obligatory for use with the Porsche Design System.
   
+<TableOfContents></TableOfContents>
+
 ## Automate Sketch  
 [GitHub - Ashung/Automate-Sketch](https://github.com/Ashung/Automate-Sketch)  
 A lot of useful tools make your workflow more efficient.  

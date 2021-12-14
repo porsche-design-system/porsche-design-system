@@ -5,6 +5,8 @@ These moments should be bridged with a good user feedback in order to not leave 
 
 For ongoing operations between 2-10 seconds, where the loading progress cannot be determined, use a **Spinner** (looped indicator) to inform the user about an ongoing operation. Use it either stand-alone (for example as page loader) or within components, such as in Buttons to indicate progress after clicking "save".
 
+<TableOfContents></TableOfContents>
+
 ## Size
 
 There are predefined sizes for the component available which should cover most use cases. 
@@ -26,7 +28,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 To announce the correct loading state for **screen reader** users, it is mandatory to provide a meaningful state description through **ARIA** with the `aria` property.
 
 ---

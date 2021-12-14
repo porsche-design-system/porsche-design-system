@@ -8,6 +8,8 @@ Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, 
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getIconLinks()` which needs to be imported into the `<head>` of your `index.html`.
 
+<TableOfContents></TableOfContents>
+
 ## Supported options:
 - **icons**: ({{this.iconNames}})[] = []
 - **cdn:** 'auto' | 'cn' = 'auto'

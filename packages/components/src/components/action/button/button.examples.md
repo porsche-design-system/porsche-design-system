@@ -6,6 +6,8 @@ A Button can be used with or without a label but it's recommended to keep the **
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. 
 Whenever you want to provide navigational elements, stick to the [Link](components/link) component instead.
 
+<TableOfContents></TableOfContents>
+
 ## Variants
 
 Choose between predefined styling variants.
@@ -31,7 +33,7 @@ Choose between predefined styling variants.
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component. 
 <Playground :markup="accessibility" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria` property to expose a more descriptive experience to screen reader users.
 * If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
