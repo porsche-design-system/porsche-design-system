@@ -6,6 +6,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(toastManager, 'register');
     const component = new Toast();
     component.host = document.createElement('p-toast');
+    component.host.attachShadow({ mode: 'open' });
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, expect.anything());
@@ -29,9 +30,8 @@ describe('componentShouldUpdate', () => {
     expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
   });
 
-  it('should return false for offsetBottom or theme', () => {
+  it('should return false for theme', () => {
     const component = new Toast();
-    expect(component.componentShouldUpdate(null, null, 'offsetBottom')).toBe(false);
     expect(component.componentShouldUpdate(null, null, 'theme')).toBe(false);
   });
 });
