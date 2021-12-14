@@ -207,7 +207,6 @@ The size of the *subline* changes according to the size of the *label*. We do no
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
-    configBlock = { ...this.config, spacing: 'block' };
     configInline = { ...this.config, spacing: 'inline' };
     
     size = 'medium';
