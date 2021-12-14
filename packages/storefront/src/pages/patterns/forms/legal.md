@@ -1,5 +1,7 @@
 # Forms
 
+<TableOfContents></TableOfContents>
+
 ## Privacy and EU data protection guidelines
 
 We also have the responsibility to sign the consent form (Declaration of consent) in accordance with the EU data protection basic regulation (DSGVO) by using design guidelines and implement measures in such a way that consent is given by the user voluntarily. Studies show that especially when the user does not feel that they have control over their data or that the disclosure would have (or may cause) negative consequences they won’t share their data. Therefore, not only the benefits of data disclosure should be transparent to the user (for example the sending of an advertising brochure), but also the exclusion of possible risks (for example, that data will not be passed on to third parties for undefined purposes) and give a feeling of control.

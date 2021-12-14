@@ -1,5 +1,7 @@
 # Next Js
 
+<TableOfContents></TableOfContents>
+
 ## Quick start
 To build your own **NextJS** application with the **React** components of the Porsche Design System, follow these steps:
 

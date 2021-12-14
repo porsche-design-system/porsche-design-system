@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Inline Notification
 
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.  

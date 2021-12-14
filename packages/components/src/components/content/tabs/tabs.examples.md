@@ -7,7 +7,7 @@ according to the active tab and all accessibility attributes on your tab and tab
 This variant does not support `a` tags and should not be used for navigation. 
 If you need to update your window location have a look at [Tabs Bar](components/tabs-bar) component.
 
----
+<TableOfContents></TableOfContents>
 
 ## Basic example
 

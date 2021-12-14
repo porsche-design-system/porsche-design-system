@@ -2,6 +2,8 @@
 
 To help you better understand how to use our form guidelines we provide you with basic form patterns as pre-designed Sketch templates as well as the corresponding coded examples:
 
+<TableOfContents></TableOfContents>
+
 ## Sketch form templates
 
 <p-link-pure href="https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch" icon="download" download>Download Sketch form templates</p-link-pure>

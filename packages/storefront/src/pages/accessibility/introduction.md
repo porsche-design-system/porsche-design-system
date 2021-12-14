@@ -1,5 +1,7 @@
 # Introduction
 
+<TableOfContents></TableOfContents>
+
 ## The "What"
 When we say a site is accessible we mean that the site's content is available to, and its functionality can be operated by, literally anyone (this includes non-human visitors to your site, e.g. search engine robots too).
 For developers/designers, it's easy for them to assume that all users can see and use a keyboard, mouse or touch screen, and can interact with the page content the same way they do. 

@@ -1,5 +1,7 @@
 # React
 
+<TableOfContents></TableOfContents>
+
 ## Quick start
 
 To build your own application with the **React** components of Porsche Design System, follow these steps:

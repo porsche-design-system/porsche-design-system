@@ -41,7 +41,6 @@ describe('PToast', () => {
     const button = getByRole('button');
     userEvent.click(button);
     await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
-
-    expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull();
+    await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull());
   });
 });
