@@ -43,7 +43,8 @@
         clearTimeout(this.timerId);
       }
       this.timerId = setTimeout(() => {
-        this.state.refine(this.localQuery);
+        // when query is empty send a space
+        this.state.refine(this.localQuery ? this.localQuery : ' ');
       }, this.delay);
     }
   }
