@@ -44,7 +44,7 @@ export default [
     plugins: [typescript()],
   },
   {
-    input: 'src/testing/jest-angular.config.ts',
+    input: 'src/testing/jest-angular-e2e.config.ts',
     output: {
       dir: 'dist/testing',
       format: 'cjs',
