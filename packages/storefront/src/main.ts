@@ -6,6 +6,12 @@ import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
+
 (window as any).componentsReady = componentsReady; // for vrt
 
 /**
