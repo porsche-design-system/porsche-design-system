@@ -176,7 +176,7 @@ exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
-"<div class=\\"root root--basic\\">
+"<div class=\\"root\\">
   <slot>
   </slot>
 </div>"
@@ -442,10 +442,8 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 exports[`should have no basic DOM regression for p-modal 1`] = `
 "<aside class=\\"root root--fullscreen-off\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
   <header>
-    <div class=\\"close\\">
-      <p-button-pure class=\\"hydrated\\">
-        Close modal</p-button-pure>
-    </div>
+    <p-button-pure class=\\"close hydrated\\">
+      Close modal</p-button-pure>
   </header>
   <slot>
   </slot>

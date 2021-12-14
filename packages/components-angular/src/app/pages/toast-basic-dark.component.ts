@@ -5,17 +5,17 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   selector: 'toast-basic-dark',
   styles: [
     `
-      .inner {
+      .playground {
+        height: 300px;
+        padding: 0;
         transform: translateX(0);
-        height: 56px;
+        border: 1px solid deeppink;
       }
     `,
   ],
   template: `
     <div class="playground dark" title="should render toast neutral on dark background">
-      <div class="inner">
-        <p-toast [theme]="'dark'" [offsetBottom]="0"></p-toast>
-      </div>
+      <p-toast [theme]="'dark'"></p-toast>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
