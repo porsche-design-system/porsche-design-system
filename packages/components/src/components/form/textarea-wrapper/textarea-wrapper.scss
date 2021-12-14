@@ -68,6 +68,7 @@
 .root {
   $bem-block: &;
   display: block;
+  position: relative;
 
   &--success,
   &--error {
@@ -204,3 +205,10 @@
 }
 
 @include state-message;
+
+.counter {
+  position: absolute;
+  bottom: p-px-to-rem(6px);
+  right: p-px-to-rem(12px);
+  pointer-events: none;
+}
