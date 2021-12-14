@@ -40,7 +40,6 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/jest-expect-message": "^1.0.3",
     "jest": "^27.4.4",
-    "jest-preset-angular": "^11.0.1",
     "jest-puppeteer": "^6.0.0",
     "puppeteer": "~10.4.0",
     "ts-jest": "^27.1.1"
