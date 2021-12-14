@@ -4,6 +4,8 @@ The roadmap for the Porsche Design System represents the chronological prioritiz
 More details about the actual backlog and work in progress can be found in our project board:  
 [Open Design System Board on GitHub (permission required)](https://github.com/porscheui/porsche-design-system/projects)
 
+<TableOfContents></TableOfContents>
+
 ## Milestones in Progress
 Legend: ✅ Completed
 
@@ -18,9 +20,9 @@ Legend: ✅ Completed
 * Switch ✅
 * Data Table ✅
 * Accordion ✅
-* Toast
+* Toast ✅
 * Progress Indicator
-* Tooltip
+* Popover ✅
 
 ### Loading Behavior
 * Improve Loading of layout components

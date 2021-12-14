@@ -1,5 +1,7 @@
 # Icons
 
+<TableOfContents></TableOfContents>
+
 ## Introduction
 If a team can't use the "Icon Component" or needs the Porsche icon SVG images to build something new, we provide a manifest file to easily reference to the different icon images.
 

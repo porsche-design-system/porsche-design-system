@@ -3,6 +3,8 @@
 The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line.
 The component is self-closing. Slotted content between the component tags won't be displayed. 
 
+<TableOfContents></TableOfContents>
+
 ## Horizontal
 
 <Playground :markup="horizontal" :config="config"></Playground>

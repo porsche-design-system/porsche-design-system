@@ -7,6 +7,8 @@ To improve rendering we recommend that you load the stylesheet on your own.
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontFaceStylesheet()` which needs to be imported into the `<head>` of your `index.html`.
 
+<TableOfContents></TableOfContents>
+
 ## Supported options:
 - **cdn:** 'auto' | 'cn' = 'auto'
 - **withoutTags**: boolean = false

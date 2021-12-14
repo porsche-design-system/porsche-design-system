@@ -1,5 +1,7 @@
 # Popover
 
+<TableOfContents></TableOfContents>
+
 ## When to use
 
 * To display additional information that is not necessary for the task completion (User Flow).

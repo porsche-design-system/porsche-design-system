@@ -2,6 +2,8 @@
 
 To answer the most frequently asked questions the following list is constantly updated. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](help/support)**
 
+<TableOfContents></TableOfContents>
+
 ## Who develops the Porsche Design System?
 The Porsche Design System is developed and maintained centrally by a designated team from Porsche AG in Germany. In an open community, everyone is encouraged to participate and contribute to the Porsche Design System and give feedback at any time.
 

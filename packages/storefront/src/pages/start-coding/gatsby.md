@@ -1,5 +1,7 @@
 # Gatsby
 
+<TableOfContents></TableOfContents>
+
 ## Quick start
 To build your own **Gatsby** application with the **React** components of the Porsche Design System, follow these steps:
 

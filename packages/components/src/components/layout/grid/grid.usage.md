@@ -1,5 +1,7 @@
 # Grid
 
+<TableOfContents></TableOfContents>
+
 ## Architecture
 
 - **The 12 grid columns** offer a high layout flexibility by

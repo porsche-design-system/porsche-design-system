@@ -5,6 +5,8 @@ A Link can be used with or without a label, but it's recommended to keep the **l
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 ### With label
@@ -24,7 +26,7 @@ In case you want the user to execute an action, you should select the [Button](c
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
 <Playground :markup="accessibility" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
 * If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
@@ -205,6 +207,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
+    configBlock = { ...this.config, spacing: 'block' };
     configInline = { ...this.config, spacing: 'inline' };
     
     size = 'medium';

@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Decision Tree
 
 The decision tree can guide you when to use which notification component.

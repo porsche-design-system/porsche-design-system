@@ -2,6 +2,8 @@
 
 The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
 
+<TableOfContents></TableOfContents>
+
 ## Variants
 
 ### Marque with registered trademark (®)
@@ -19,7 +21,7 @@ The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provide
 
 <Playground :markup="marqueWithTMAndLink"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 If the Marque is used with a link, make sure to add a descriptive label to inform screen reader users what the link stands for. This can be done through **ARIA** with the `aria` property.
 
 ## Bind events to the link

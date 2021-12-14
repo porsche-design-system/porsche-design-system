@@ -1,5 +1,7 @@
 # Introduction
 
+<TableOfContents></TableOfContents>
+
 ## Porsche Design System - Assets
 Porsche Design System stores some files like icons, fonts, marque, etc. as versioned static assets on a CDN for fast delivery and improved caching. 
 Most of these assets are used within our components (e.g. `<p-marque>`) but can also be used as standalone assets in projects which either can't use the Porsche Design System or it does not exist a corresponding component for the asset (e.g. favicons).

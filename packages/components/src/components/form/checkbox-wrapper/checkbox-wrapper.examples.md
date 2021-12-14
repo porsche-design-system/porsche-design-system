@@ -4,6 +4,8 @@ The `p-checkbox-wrapper` component is a styling wrapper for the native HTML inpu
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-checkbox-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
+<TableOfContents></TableOfContents>
+
 ## Basic example
 
 <Playground :markup="basic" :config="config">
@@ -42,7 +44,7 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
 
 <Playground :markup="disabled" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users.
 They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
@@ -71,7 +73,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
 
 <Playground :markup="slots" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
+### <A11yIcon></A11yIcon> Accessibility hints
 If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information: 
 1. Add a unique ID to the `slot="label"` element
 1. Add a unique ID to the `slot="message"` element (if they are created)

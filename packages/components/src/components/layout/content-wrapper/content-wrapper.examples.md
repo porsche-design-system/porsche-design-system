@@ -5,7 +5,9 @@ The `p-content-wrapper` defines the outer spacings between the content area and 
 
 Can be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.
 
-### Width
+<TableOfContents></TableOfContents>
+
+## Width
 
 * **Basic**: max width 1920px including 7-10% safe zone
 * **Extended**: max width 1920px
@@ -20,7 +22,7 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
   </select>
 </Playground>
 
-### Background color
+## Background color
 
 * **transparent**: does not set any background color
 * **default**: uses surface color depending on theming

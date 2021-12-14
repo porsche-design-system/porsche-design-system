@@ -5,6 +5,8 @@
 - … center the content area within the screen.
 - … set a maximum width for the content area.
 
+<TableOfContents></TableOfContents>
+
 ## Types
 
 Depending on your layout requirements you can choose between the following options for the content area, whereas each of them can be applied module-based to give you a maximum of flexibility for your page layouts:

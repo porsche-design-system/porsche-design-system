@@ -1,5 +1,7 @@
 # Modal
 
+<TableOfContents></TableOfContents>
+
 ## When to use
 
   • Use a Modal when you want to show additional information to the user without losing context of the parent page.  

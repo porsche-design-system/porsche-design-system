@@ -10,7 +10,7 @@ guidance and information.
 The Porsche Design System color system provides two color themes that are based on the Porsche color palette and can be
 used for different visual environments. Both themings are to be found in the Porsche Design System Sketch library.
 
----
+<TableOfContents></TableOfContents>
 
 ## Porsche Design System color themes
 
