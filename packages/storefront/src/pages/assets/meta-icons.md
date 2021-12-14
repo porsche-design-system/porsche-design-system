@@ -1,5 +1,7 @@
 # Meta Icons
 
+<TableOfContents></TableOfContents>
+
 ## Introduction
 
 Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons** and **Microsoft Windows Tiles**.

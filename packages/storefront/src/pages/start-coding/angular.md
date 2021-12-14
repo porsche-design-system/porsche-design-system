@@ -1,5 +1,7 @@
 # Angular
 
+<TableOfContents></TableOfContents>
+
 ## Quick start
 
 To build your own application with the **Angular** components of the Porsche Design System, follow these steps:

@@ -4,44 +4,46 @@ The Porsche Design System flex layout system is based on standard CSS Flexbox br
 It can be used to quickly layout standard content blocks or components. 
 It does not replace the [Grid](components/grid) component which should be used to define basic page structures.
 
-### Flex
+<TableOfContents></TableOfContents>
+
+## Flex
 Initialize standard Flexbox container to define Flex context.
 
 <Playground :markup="flexInline()"></Playground>
 
-### Inline
+## Inline
 Flex inline displays Flex containers in a row.
 
 <Playground :markup="flexInline('true')"></Playground>
 
-### Responsive
+## Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="flexInline('{ base: false, l: true }')"></Playground>
 
 ---
 
-### Flex direction
+## Flex direction
 
 Define or change direction of the Flex items to rows or columns and set order.
 
-#### Row
+### Row
 
 <Playground :markup="direction('row')"></Playground>
 
-#### Row-reverse
+### Row-reverse
 
 <Playground :markup="direction('row-reverse')"></Playground>
 
-#### Column
+### Column
 
 <Playground :markup="direction('column')"></Playground>
 
-#### Column-reverse
+### Column-reverse
 
 <Playground :markup="direction('column-reverse')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -49,23 +51,23 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex wrap
+## Flex wrap
 
 The flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow in multiple lines forced by the Flex container width.
 
-#### Nowrap
+### Nowrap
 
 <Playground :markup="wrap()"></Playground>
 
-#### Wrap
+### Wrap
 
 <Playground :markup="wrap('wrap')"></Playground>
 
-#### Wrap-reverse
+### Wrap-reverse
 
 <Playground :markup="wrap('wrap-reverse')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -73,35 +75,35 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex justify-content
+## Flex justify-content
 
 This property defines the alignment of Flex items on the main axis in conjunction to their siblings.
 
-#### Flex-start
+### Flex-start
 
 <Playground :markup="justifyContent()"></Playground>
 
-#### Flex-end
+### Flex-end
 
 <Playground :markup="justifyContent('flex-end')"></Playground>
 
-#### Center
+### Center
 
 <Playground :markup="justifyContent('center')"></Playground>
 
-#### Space-between
+### Space-between
 
 <Playground :markup="justifyContent('space-between')"></Playground>
 
-#### Space-around
+### Space-around
 
 <Playground :markup="justifyContent('space-around')"></Playground>
 
-#### Space-evenly
+### Space-evenly
 
 <Playground :markup="justifyContent('space-evenly')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -109,31 +111,31 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex align-items
+## Flex align-items
 
 This property defines the alignment of Flex items on the cross axis in conjunction to their siblings.
 
-#### Stretch
+### Stretch
 
 <Playground :markup="alignItems()" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-start
+### Flex-start
 
 <Playground :markup="alignItems('flex-start')" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-end
+### Flex-end
 
 <Playground :markup="alignItems('flex-end')" :config="{height: 'fixed'}"></Playground>
 
-#### Center
+### Center
 
 <Playground :markup="alignItems('center')" :config="{height: 'fixed'}"></Playground>
 
-#### Baseline
+### Baseline
 
 <Playground :markup="alignItems('baseline')" :config="{height: 'fixed'}"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -141,40 +143,40 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex align-content
+## Flex align-content
 
 This aligns Flex items on the cross axis of the Flex container when there is extra space available.
 This property has only effect when there is more than one line of Flex items.
 
-#### Stretch
+### Stretch
 
 <Playground :markup="alignContent()" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-start
+### Flex-start
 
 <Playground :markup="alignContent('flex-start')" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-end
+### Flex-end
 
 <Playground :markup="alignContent('flex-end')" :config="{height: 'fixed'}"></Playground>
 
-#### Center
+### Center
 
 <Playground :markup="alignContent('center')" :config="{height: 'fixed'}"></Playground>
 
-#### Space-between
+### Space-between
 
 <Playground :markup="alignContent('space-between')" :config="{height: 'fixed'}"></Playground>
 
-#### Space-around
+### Space-around
 
 <Playground :markup="alignContent('space-around')" :config="{height: 'fixed'}"></Playground>
 
-#### Space-evenly
+### Space-evenly
 
 <Playground :markup="alignContent('space-evenly')" :config="{height: 'fixed'}"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -189,11 +191,11 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 The widths of Flex items is normally defined through its contents by default.
 But it is also possible to define specific predefined widths.
 
-#### Specific
+### Specific
 
 <Playground :markup="widthSpecific" :config="{spacing: 'block-small'}"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -201,50 +203,50 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex-item offset
+## Flex-item offset
 
 Items can have different offsets that work similar like column widths.
 
-#### Widths
+### Widths
 
 <Playground :markup="offsetWidths" :config="{spacing: 'block-small'}"></Playground>
 
-#### Responsive
+### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="offsetReponsive" :config="{spacing: 'block-small'}"></Playground>
 
 ---
 
-### Flex-item align-self
+## Flex-item align-self
 
 You can override the align-items properties of the Flex container for individual Flex items.
 
-#### Auto
+### Auto
 
 <Playground :markup="alignSelf()" :config="{height: 'fixed'}"></Playground>
 
-#### Stretch
+### Stretch
 
 <Playground :markup="alignSelf('stretch', 'flex-start')" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-start
+### Flex-start
 
 <Playground :markup="alignSelf('flex-start')" :config="{height: 'fixed'}"></Playground>
 
-#### Flex-end
+### Flex-end
 
 <Playground :markup="alignSelf('flex-end')" :config="{height: 'fixed'}"></Playground>
 
-#### Center
+### Center
 
 <Playground :markup="alignSelf('center')" :config="{height: 'fixed'}"></Playground>
 
-#### Baseline
+### Baseline
 
 <Playground :markup="alignSelf('baseline')" :config="{height: 'fixed'}"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -252,21 +254,21 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex-item grow
+## Flex-item grow
 
 Flexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class names.
 
 It handles how to grow an item based on the space that is left to fulfill the parent's width.
 
-#### Grow - 0
+### Grow - 0
 
 <Playground :markup="grow()"></Playground>
 
-#### Grow - 1
+### Grow - 1
 
 <Playground :markup="grow('1')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
@@ -274,21 +276,21 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex-item shrink
+## Flex-item shrink
 
 Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.
 
 It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
 
-#### Shrink - 1
+### Shrink - 1
 
 <Playground :markup="shrink()"></Playground>
 
-#### Shrink - 0
+### Shrink - 0
 
 <Playground :markup="shrink('0')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
@@ -296,27 +298,27 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
-### Flex-item shorthand
+## Flex-item shorthand
 
 Setting shorthand properties for Flex grow, shrink and base:
 
-#### Initial (grow:0, shrink:1 and base:auto)
+### Initial (grow:0, shrink:1 and base:auto)
 
 <Playground :markup="flexShorthand('initial')"></Playground>
 
-#### Auto (grow:1, shrink:1 and base:auto)
+### Auto (grow:1, shrink:1 and base:auto)
 
 <Playground :markup="flexShorthand('auto')"></Playground>
 
-#### Equal (grow:1, shrink:1 and base:0)
+### Equal (grow:1, shrink:1 and base:0)
 
 <Playground :markup="flexShorthand('equal')"></Playground>
 
-#### None (grow:0, shrink:0 and base:auto)
+### None (grow:0, shrink:0 and base:auto)
 
 <Playground :markup="flexShorthand('none')"></Playground>
 
-#### Responsiveness
+### Responsiveness
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="flexShorthand('{base: \'initial\', l: \'equal\'}')"></Playground>

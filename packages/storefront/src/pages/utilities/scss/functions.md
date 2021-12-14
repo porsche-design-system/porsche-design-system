@@ -1,5 +1,7 @@
 # Scss
 
+<TableOfContents></TableOfContents>
+
 ## Media Query
 Predefined breakpoints can easily be used as in the following examples.
 

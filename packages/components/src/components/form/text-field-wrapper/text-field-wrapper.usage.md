@@ -1,5 +1,7 @@
 # Text Field
 
+<TableOfContents></TableOfContents>
+
 ## When to use
 
   • Use the Text Field in forms to help users enter text.

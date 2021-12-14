@@ -1,5 +1,7 @@
 # Table
 
+<TableOfContents></TableOfContents>
+
 ## When to use
 
 - Use table to display and compare a collection of structured data in rows and columns.

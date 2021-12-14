@@ -5,9 +5,11 @@ export const ToastBasicLongTextPage = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   const style = `
-  .inner {
+  .playground {
+    height: 300px;
+    padding: 0;
     transform: translateX(0);
-    height: 150px;
+    border: 1px solid deeppink;
   }`;
 
   useEffect(() => {
@@ -20,9 +22,7 @@ export const ToastBasicLongTextPage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should render toast multiline message on light background">
-        <div className="inner">
-          <PToast offsetBottom={0} />
-        </div>
+        <PToast />
       </div>
     </>
   );

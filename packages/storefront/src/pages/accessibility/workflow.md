@@ -1,5 +1,7 @@
 # Workflow
 
+<TableOfContents></TableOfContents>
+
 ## The 5 principles for developing accessible digital products
 
 <p-tabs size="medium">

@@ -7,6 +7,8 @@ The Porsche spacing system is based on multiples of eight. The unit of 8px refer
 
 ![The Porsche spacing formula](./assets/spacings-formula.png)
 
+<TableOfContents></TableOfContents>
+
 ## Spacing system and layout spacings
 
 For layouting we recommend to use the layout spacings that are available for developers as variables from x-small to xx-large.

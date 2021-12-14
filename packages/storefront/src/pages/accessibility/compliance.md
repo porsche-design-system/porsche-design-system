@@ -1,5 +1,7 @@
 # Compliance
 
+<TableOfContents></TableOfContents>
+
 ## Accessibility and the law
 In most countries there are certain laws to protect the civil rights of persons with disabilities. 
 Due to the fact that the internet provides global access to information, stores, education, financial institutions, etc., these laws often include the support of Web Accessibility in web applications.

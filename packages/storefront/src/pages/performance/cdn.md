@@ -3,6 +3,8 @@
 The Porsche Design System **components**, **marque**, **icons**, **fonts** and **styles** are delivered by CDN (cdn.ui.porsche.com). 
 This way all digital Porsche products share and use the cached and versioned assets independently. 
 
+<TableOfContents></TableOfContents>
+
 ## Explanation
 Let's have a look at following applications and assume that all of these applications have integrated a Porsche Design System Button:
 * [Porsche.com](https://www.porsche.com) created with Vanilla JS
