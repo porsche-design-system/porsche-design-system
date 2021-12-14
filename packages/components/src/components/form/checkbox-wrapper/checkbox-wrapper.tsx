@@ -40,12 +40,12 @@ export class CheckboxWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    this.observeAttributes();
+    this.observeAttributes(); // once initially
   }
 
   public componentDidRender(): void {
