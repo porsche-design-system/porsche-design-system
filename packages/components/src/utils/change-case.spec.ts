@@ -1,4 +1,4 @@
-import { paramCaseToCamelCase } from '.';
+import { paramCaseToCamelCase } from './change-case';
 
 describe('paramCaseToCamelCase()', () => {
   it.each([

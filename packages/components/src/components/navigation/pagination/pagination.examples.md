@@ -1,5 +1,7 @@
 # Pagination
 
+<TableOfContents></TableOfContents>
+
 ## Basic usage
 
 To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7` (desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.

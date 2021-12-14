@@ -1,7 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { getThemedColors, getThemedStateColors, isDark } from '.';
+import { getThemedColors, getThemedFormStateColors, isDark } from '.';
 import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
@@ -13,6 +13,14 @@ export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
 
 export const pxToRem = (px: number): number => px / 16;
 export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
+
+export const contentWrapperVars = {
+  maxWidth: pxToRemWithUnit(1536),
+  maxWidthExtended: pxToRemWithUnit(1920),
+  margin: '7vw',
+  marginXl: '10vw',
+  marginXxl: pxToRemWithUnit(192),
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;
@@ -204,7 +212,7 @@ export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
 };
 
 export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
-  const { stateColor } = getThemedStateColors(theme, state);
+  const { stateColor } = getThemedFormStateColors(theme, state);
   return {
     message: {
       display: 'flex',

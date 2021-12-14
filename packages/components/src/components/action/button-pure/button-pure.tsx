@@ -11,19 +11,24 @@ import {
   mapBreakpointPropToClasses,
   transitionListener,
   attachComponentCss,
+  parseAndGetAriaAttributes,
+  isLightElectric,
 } from '../../../utils';
 import type {
+  SelectedAriaAttributes,
   AlignLabel,
   BreakpointCustomizable,
   ButtonType,
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  Theme,
+  ThemeExtendedElectric,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
+import type { ButtonAriaAttributes } from '../button/button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -70,7 +75,10 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
@@ -113,6 +121,7 @@ export class ButtonPure {
       ['root']: true,
       ['root--loading']: this.loading && hasIcon,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ['root--active']: this.active,
       ['root--with-icon']: hasIcon,
       ...mapBreakpointPropToClasses('root--size', this.size),
@@ -142,10 +151,11 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
           aria-describedby={hasSubline ? 'subline' : null}
+          {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
         >
           {hasIcon &&
             (this.loading ? (
-              <PrefixedTagNames.pSpinner {...iconProps} />
+              <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
             ) : (
               <PrefixedTagNames.pIcon
                 {...iconProps}

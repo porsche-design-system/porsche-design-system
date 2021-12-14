@@ -8,6 +8,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.7.0] - 2021-12-14
+
+### [2.7.0-rc.0] - 2021-12-14
+
+#### Removed
+- `offset-bottom` prop of `Toast` (use `--p-toast-position-bottom` CSS variable instead)
+
+### [2.7.0-beta.6] - 2021-12-08
+
+#### Added
+- `Popover`
+
+### [2.7.0-beta.5] - 2021-12-07
+
+#### Added
+**Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
+- `light-electric` theme for `Accordion`, `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`
+
+### [2.7.0-beta.4] - 2021-12-02
+
+### [2.7.0-beta.3] - 2021-11-30
+
+#### Added
+- `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers
+
+#### Fixed
+- `Link` and `Link Social` not adapting slotted anchor to the width of the element 
+
+### [2.7.0-beta.2] - 2021-11-24
+
+#### Added
+- `Toast`
+
+#### Fixed
+- `Banner` animations respect offset correctly
+
+### [2.7.0-beta.1] - 2021-11-16
+
+#### Fixed
+- `Headline` applies `align` and `ellipsis` prop correctly
+
+### [2.7.0-beta.0] - 2021-11-11
+
+#### Added
+- New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`
+
+#### Fixed
+- React: warnings about `useLayoutEffect` in SSR context
+
 ### [2.6.1] - 2021-11-05
 
 #### Fixed

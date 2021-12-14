@@ -23,22 +23,16 @@ Object {
                 Object {
                   "children": Array [
                     Object {
-                      "children": Array [
-                        Object {
-                          "name": "Close",
-                          "role": "StaticText",
-                        },
-                      ],
-                      "name": "",
-                      "role": "generic",
+                      "name": "Close modal",
+                      "role": "StaticText",
                     },
                   ],
-                  "name": "Close",
-                  "role": "button",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "",
-              "role": "generic",
+              "name": "Close modal",
+              "role": "button",
             },
           ],
           "name": "",

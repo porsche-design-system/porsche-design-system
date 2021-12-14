@@ -1,11 +1,19 @@
 import {
   getContentHeight,
   observeResize,
+  observeWindowResize,
+  onWindowResize,
+  registeredAccordions,
   resizeMap,
   setCollapsibleElementHeight,
   unobserveResize,
+  unobserveWindowResize,
+  useMutationObserverFallbackOverride,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
+import { Accordion } from './accordion';
+import * as childrenObserverUtils from '../../../utils/children-observer';
+import * as accordionUtils from './accordion-utils';
 
 describe('setCollapsibleElementHeight()', () => {
   it('should set style.height on element to "200px" if isOpen = true', () => {
@@ -188,5 +196,108 @@ describe('unobserveResize()', () => {
     expect(resizeMap.get(node1)).toEqual(undefined);
     expect(resizeMap.get(node2)).toEqual(callback2);
     expect(resizeMap.get(node3)).toEqual(undefined);
+  });
+});
+
+describe('onWindowResize()', () => {
+  it('should call setContentHeight() for each accordion', () => {
+    const component1 = new Accordion();
+    const component2 = new Accordion();
+
+    const spy1 = jest.spyOn(component1, 'setContentHeight');
+    const spy2 = jest.spyOn(component2, 'setContentHeight');
+
+    observeWindowResize(component1);
+    observeWindowResize(component2);
+
+    onWindowResize();
+
+    expect(spy1).toHaveBeenCalledTimes(1);
+    expect(spy2).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('observeWindowResize()', () => {
+  beforeEach(() => {
+    registeredAccordions.length = 0;
+  });
+
+  it('should push accordion to registeredAccordions', () => {
+    const component = new Accordion();
+    observeWindowResize(component);
+
+    expect(registeredAccordions).toHaveLength(1);
+  });
+
+  it('should not push accordion to registeredAccordions if it is a duplicate', () => {
+    const component = new Accordion();
+    observeWindowResize(component);
+    observeWindowResize(component);
+
+    expect(registeredAccordions).toHaveLength(1);
+  });
+
+  it('should add event listener', () => {
+    const windowSpy = jest.spyOn(window, 'addEventListener');
+    observeWindowResize(undefined);
+
+    expect(windowSpy).toBeCalledWith('resize', expect.anything());
+  });
+});
+
+describe('unobserveWindowResize()', () => {
+  beforeEach(() => {
+    registeredAccordions.length = 0;
+  });
+
+  it('should remove accordion from registeredAccordions', () => {
+    const component = new Accordion();
+    observeWindowResize(component);
+
+    expect(registeredAccordions).toHaveLength(1);
+
+    unobserveWindowResize(component);
+
+    expect(registeredAccordions).toHaveLength(0);
+  });
+
+  it('should remove event listener if no registeredAccordions are defined', () => {
+    const windowSpy = jest.spyOn(window, 'removeEventListener');
+    unobserveWindowResize(undefined);
+
+    expect(windowSpy).toBeCalledWith('resize', expect.anything());
+  });
+});
+
+describe('mutationObserverFallback', () => {
+  it('should call observeWindowResize() and observeChildren()', () => {
+    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
+    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+
+    useMutationObserverFallbackOverride(true);
+
+    const component = new Accordion();
+    component.host = document.createElement('p-accordion');
+
+    component.connectedCallback();
+
+    expect(accordionUtilsSpy).toBeCalledWith(component);
+    expect(observeChildrenSpy).toBeCalledWith(component.host, expect.anything());
+  });
+});
+
+describe('removeMutationObserverFallback()', () => {
+  it('should call unobserveWindowResize() and unobserveChildren()', () => {
+    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'unobserveWindowResize');
+    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+
+    useMutationObserverFallbackOverride(true);
+
+    const component = new Accordion();
+    component.host = document.createElement('p-accordion');
+    component.disconnectedCallback();
+
+    expect(accordionUtilsSpy).toBeCalledWith(component);
+    expect(observeChildrenSpy).toBeCalledWith(component.host);
   });
 });

@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`marque accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
+Object {
+  "name": "Some more detailed label",
+  "role": "link",
+}
+`;
+
 exports[`marque accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "name": "Porsche",

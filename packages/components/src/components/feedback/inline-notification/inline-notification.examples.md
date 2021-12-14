@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Inline Notification
 
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.  
@@ -39,7 +41,7 @@ The custom event that is emitted on close button click is called `dismiss`.
 It can be used to remove the component.
 
 <Playground :frameworkMarkup="events" :config="config">
-  <button id="bannerEventsButton">Show Inline Notification</button>
+  <button id="bannerEventsButton" type="button">Show Inline Notification</button>
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
@@ -61,7 +63,7 @@ The custom event that is emitted on action button click is called `action`.
     action-icon="reset"
   ></p-inline-notification>
   <br>
-  <button id="bannerActionButton">Reset `actionLoading`</button>
+  <button id="bannerActionButton" type="button">Reset `actionLoading`</button>
 </Playground>
 
 ## Slotted Content

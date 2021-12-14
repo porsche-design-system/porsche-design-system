@@ -1,4 +1,4 @@
-import { isIos, isTouchDevice } from '.';
+import { isIos, isTouchDevice } from './device-detection';
 
 describe('isTouchDevice()', () => {
   it('should return true for touch device', () => {

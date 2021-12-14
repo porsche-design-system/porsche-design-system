@@ -1,5 +1,7 @@
 # Scss
 
+<TableOfContents></TableOfContents>
+
 ## Color
 
 A light and dark theme is available depending on which background it's used.   
@@ -27,19 +29,16 @@ A light and dark theme is available depending on which background it's used.
 | <ColorBadge :theme="theme" color="background-surface"/>      | **Surface**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-surface` |
 | <ColorBadge :theme="theme" color="background-shading"/>      | **Shading**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-shading` |
 
-<template v-if="theme === 'light'">
+#### Background notification colors
 
-#### Background notification colors (only on light theme)
 |                                                   |                |      	             |
 |---------------------------------------------------|----------------|--------------------| 
-| <ColorBadge :theme="theme" color="notification-error-soft"/>  	| **Error Soft** | `$p-color-notification-error-soft`     |
-| <ColorBadge :theme="theme" color="notification-success-soft"/>  	| **Success Soft** | `$p-color-notification-success-soft`     |
-| <ColorBadge :theme="theme" color="notification-warning-soft"/>  	| **Warning Soft** | `$p-color-notification-warning-soft`     |
-| <ColorBadge :theme="theme" color="notification-neutral-soft"/>  	| **Neutral Soft** | `$p-color-notification-neutral-soft`     |
+| <ColorBadge :theme="theme" color="notification-error-soft"/>  	| **Error Soft** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-error-soft`     |
+| <ColorBadge :theme="theme" color="notification-success-soft"/>  	| **Success Soft** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-success-soft`     |
+| <ColorBadge :theme="theme" color="notification-warning-soft"/>  	| **Warning Soft** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-warning-soft`     |
+| <ColorBadge :theme="theme" color="notification-neutral-soft"/>  	| **Neutral Soft** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-neutral-soft`     |
 
-</template>
-
-#### Text / icon color
+#### Base color
 
 |                                                   |             |         	             |
 |---------------------------------------------------|-------------|-----------------------|

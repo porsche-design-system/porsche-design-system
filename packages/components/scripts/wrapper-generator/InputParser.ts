@@ -45,7 +45,9 @@ export class InputParser {
       // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
       .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
       // fix consumer typing by removing string which is only necessary for stencil
-      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
+      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
+      // fix consumer typing for accessibility props with string type
+      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
     this.rawLocalJSX = rawLocalJSX;
@@ -56,11 +58,19 @@ export class InputParser {
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }
+  private getComponentFilePath(component: TagName): string {
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    return globby.sync(`${SRC_DIR}/**/${fileName}`)[0];
+  }
 
   private getComponentSourceCode(component: TagName): string {
-    const fileName = `${component.replace('p-', '')}.tsx`;
-    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
+    const filePath = this.getComponentFilePath(component);
     return fs.readFileSync(filePath, 'utf8');
+  }
+
+  private getUtilsFileContentOfComponent(component: TagName, importPath: string): string {
+    const utilsFilePath = path.resolve(this.getComponentFilePath(component), '..', importPath + '.ts');
+    return fs.readFileSync(utilsFilePath, 'utf8');
   }
 
   public getSharedTypes(): string {
@@ -103,8 +113,22 @@ export class InputParser {
   public getDefaultValueForProp(component: TagName, prop: string): string {
     const fileContent = this.getComponentSourceCode(component);
     // extract values in same line, next line or multi line, but also respect not default
-    const [, defaultValue] =
+    let [, defaultValue] =
       fileContent.match(new RegExp(`@Prop\\(.*?\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+
+    // detect if the provided value is a variable
+    if (defaultValue?.match(/^(?!true|false)[a-zA-Z]+$/)) {
+      // find the import path of said variable
+      const [, importPath] =
+        fileContent.match(new RegExp(`import \\{(?:.|\\s)*?${defaultValue}(?:.|\\s)*?} from '(.*?)';`)) || [];
+      const utilsFileContent = this.getUtilsFileContentOfComponent(component, importPath);
+
+      // get value of variable from discovered import path
+      const [, resolvedDefaultValue] =
+        utilsFileContent.match(new RegExp(`export const ${defaultValue} = ((?:.|\\s)*?);`)) || [];
+
+      defaultValue = resolvedDefaultValue;
+    }
     return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }

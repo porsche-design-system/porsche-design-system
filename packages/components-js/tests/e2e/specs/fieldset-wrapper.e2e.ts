@@ -1,5 +1,11 @@
 import { Page } from 'puppeteer';
-import { selectNode, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
+import {
+  expectA11yToMatchSnapshot,
+  selectNode,
+  setContentWithDesignSystem,
+  setProperty,
+  waitForStencilLifecycle,
+} from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('fieldset-wrapper', () => {
@@ -28,23 +34,15 @@ describe('fieldset-wrapper', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initFieldset();
       const fieldset = await getFieldset();
-      const snapshot = await page.accessibility.snapshot({
-        root: fieldset,
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree property in error state', async () => {
       await initFieldset({ state: 'error' });
       const fieldset = await getFieldset();
-      const snapshot = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: fieldset,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree property if error state added programmatically', async () => {
@@ -55,12 +53,8 @@ describe('fieldset-wrapper', () => {
       await waitForStencilLifecycle(page);
 
       const fieldset = await getFieldset();
-      const snapshot = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: fieldset,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
     });
   });
 });

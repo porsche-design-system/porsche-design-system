@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('button-pure-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-button-pure:not(:last-child) { margin-right: 0.5rem; } div div:not(:first-of-type) { margin-top: 0.5rem }</style>`;
+      const head = `<style>p-button-pure:not(:last-child) { margin-right: 0.5rem; } div div:not(:first-of-type) { margin-top: 0.5rem }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <div>
@@ -58,11 +58,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-button-pure theme="${theme}" align-label="left" stretch="true">Label stretch align left</p-button-pure>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        { injectIntoHead: head }
+      );
 
-      await forceHoveredState(page, '.hovered p-button-pure >>> button');
-      await forceFocusedState(page, '.focused p-button-pure >>> button');
-      await forceFocusedHoveredState(page, '.focused-hovered p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

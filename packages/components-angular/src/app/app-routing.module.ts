@@ -135,6 +135,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.PaginationComponent,
   },
   {
+    name: 'Popover',
+    path: 'popover',
+    component: fromPages.PopoverComponent,
+  },
+  {
     name: 'Radio Button',
     path: 'radio-button-wrapper',
     component: fromPages.RadioButtonWrapperComponent,
@@ -188,6 +193,31 @@ export const routes: ExtendedRoute[] = [
     name: 'Textarea',
     path: 'textarea-wrapper',
     component: fromPages.TextareaWrapperComponent,
+  },
+  {
+    name: 'Toast Basic',
+    path: 'toast-basic',
+    component: fromPages.ToastBasicComponent,
+  },
+  {
+    name: 'Toast Basic Dark',
+    path: 'toast-basic-dark',
+    component: fromPages.ToastBasicDarkComponent,
+  },
+  {
+    name: 'Toast Basic Long Text',
+    path: 'toast-basic-long-text',
+    component: fromPages.ToastBasicLongTextComponent,
+  },
+  {
+    name: 'Toast Offset',
+    path: 'toast-offset',
+    component: fromPages.ToastOffsetComponent,
+  },
+  {
+    name: 'Toast Prefixed',
+    path: 'toast-prefixed',
+    component: fromPages.ToastPrefixedComponent,
   },
   {
     name: 'Typography Fallback Strategy',
@@ -275,6 +305,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Table Example Advanced',
     path: 'table-example-advanced',
     component: fromExamples.TableExampleAdvancedComponent,
+  },
+  {
+    name: 'Toast Example',
+    path: 'toast-example',
+    component: fromExamples.ToastExampleComponent,
   },
 ];
 

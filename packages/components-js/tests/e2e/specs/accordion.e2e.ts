@@ -1,6 +1,7 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   expectedStyleOnFocus,
   getAttribute,
   getElementStyle,
@@ -160,6 +161,43 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
   });
 
+  const CONTENT_HEIGHT = '"height: 1.625rem;"';
+  it('should set correct inline content height using ResizeObserver', async () => {
+    await initAccordion({ otherMarkup: clickHandlerScript });
+
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
+  });
+
+  it('should set correct inline content height using MutationObserver and window resize listener', async () => {
+    await page.evaluate(() => {
+      delete window.ResizeObserver;
+    });
+
+    await initAccordion({ otherMarkup: clickHandlerScript });
+
+    const button = await getButton();
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    const inlineStyle = await page.evaluate(() => {
+      const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
+      return content.style.cssText;
+    });
+
+    expect(inlineStyle).toMatchInlineSnapshot(CONTENT_HEIGHT);
+  });
+
   describe('events', () => {
     beforeEach(async () => await initAddEventListener(page));
 
@@ -299,11 +337,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
     it('should expose correct initial accessibility tree and aria properties', async () => {
       await initAccordion();
       const button = await getButton();
-      const snapshotButton = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshotButton).toMatchSnapshot('Of Button');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
       expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
     });
 
@@ -315,16 +350,8 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      const snapshotButton = await page.accessibility.snapshot({
-        root: button,
-      });
-      const snapshotPanel = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: panel,
-      });
-
-      expect(snapshotButton).toMatchSnapshot('Of Button');
-      expect(snapshotPanel).toMatchSnapshot('Of Panel');
+      await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
+      await expectA11yToMatchSnapshot(page, panel, { message: 'Of Panel', interestingOnly: false });
     });
   });
 });

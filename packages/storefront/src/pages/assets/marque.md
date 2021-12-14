@@ -1,5 +1,7 @@
 # Marque
 
+<TableOfContents></TableOfContents>
+
 ## Introduction
 If a team can't use the "Marque" component or needs the Porsche marque images to build something new, we provide a manifest file to easily reference to the different marque images.
 

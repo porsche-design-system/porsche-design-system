@@ -179,6 +179,10 @@ svg {
   }
 }
 
+.sr-text {
+  @include p-sr-only;
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);

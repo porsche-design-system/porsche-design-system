@@ -1,0 +1,22 @@
+<style>
+  .playground {
+    height: 300px;
+    padding: 0;
+    transform: translateX(0);
+    border: 1px solid deeppink;
+  }
+
+  p-toast {
+    --p-toast-position-bottom: 200px;
+  }
+</style>
+
+<div class="playground light" title="should render toast neutral on light background with custom bottom position">
+  <p-toast></p-toast>
+</div>
+
+<script>
+  customElements.whenDefined('p-toast').then(() => {
+    document.querySelector('p-toast').addMessage({ text: `Some message` });
+  });
+</script>

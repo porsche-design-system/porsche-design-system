@@ -1,7 +1,9 @@
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { buildIconUrl, getSvgContent, isUrl } from './icon-utils';
+import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, isUrl, patchAriaIntoSVG } from './icon-utils';
 import { IconName } from '../../../types';
 import { camelCase } from 'change-case';
+import * as a11yUtils from '../../../utils/a11y';
+import { parseAndGetAriaAttributes } from '../../../utils/a11y';
 
 const DEFAULT_ICON_URL =
   'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.e628b114aa820496721ee35a21a0683b.svg';
@@ -65,5 +67,25 @@ describe('isUrl()', () => {
 
   it('should return false if url is invalid', () => {
     expect(isUrl('some_icon.svg')).toBe(false);
+  });
+});
+
+describe('patchAccessibilityIntoSVG()', () => {
+  const svgContent = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%"></svg>';
+  const rawAttributes = "{ aria-label: 'Some label' }";
+
+  it('should call parseAndGetAccessibilityAttributes()', () => {
+    const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
+
+    patchAriaIntoSVG('', rawAttributes);
+    expect(spy).toHaveBeenCalledWith(rawAttributes, ICON_ARIA_ATTRIBUTES);
+  });
+
+  it.each(ICON_ARIA_ATTRIBUTES)('should return patched content for %s', (ariaAttribute) => {
+    expect(patchAriaIntoSVG(svgContent, { [ariaAttribute]: 'Some value' })).toMatchSnapshot();
+  });
+
+  it.each<string>([undefined, ''])('should return unmodified content for %o', (rawAttributes) => {
+    expect(patchAriaIntoSVG(svgContent, rawAttributes)).toEqual(svgContent);
   });
 });

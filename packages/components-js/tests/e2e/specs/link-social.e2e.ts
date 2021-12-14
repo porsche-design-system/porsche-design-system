@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
   initAddEventListener,
@@ -212,16 +213,13 @@ describe('link-social', () => {
       await initLinkSocial();
       const link = await getLink();
       const icon = await getIcon();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
       const snapshotIcon = await page.accessibility.snapshot({
         root: icon,
         interestingOnly: false,
       });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
       expect(snapshotIcon).toBeNull();
     });
 
@@ -231,11 +229,8 @@ describe('link-social', () => {
       const link = await getLink();
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });

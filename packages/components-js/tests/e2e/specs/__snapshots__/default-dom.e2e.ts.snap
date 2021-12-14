@@ -176,7 +176,7 @@ exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
-"<div class=\\"root root--basic\\">
+"<div class=\\"root\\">
   <slot>
   </slot>
 </div>"
@@ -442,10 +442,8 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 exports[`should have no basic DOM regression for p-modal 1`] = `
 "<aside class=\\"root root--fullscreen-off\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
   <header>
-    <div class=\\"close\\">
-      <p-button-pure class=\\"hydrated\\">
-        Close</p-button-pure>
-    </div>
+    <p-button-pure class=\\"close hydrated\\">
+      Close modal</p-button-pure>
   </header>
   <slot>
   </slot>
@@ -496,8 +494,10 @@ exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-spinner 1`] = `
-"<span class=\\"root root--size-small\\" aria-busy=\\"true\\" aria-live=\\"polite\\">
-  <svg viewBox=\\"-16 -16 32 32\\" width=\\"100%\\" height=\\"100%\\" focusable=\\"false\\">
+"<span class=\\"root root--size-small\\" role=\\"alert\\" aria-live=\\"assertive\\">
+  <span class=\\"sr-text\\">
+    &nbsp;</span>
+  <svg viewBox=\\"-16 -16 32 32\\" width=\\"100%\\" height=\\"100%\\" focusable=\\"false\\" aria-hidden=\\"true\\">
     <circle r=\\"9\\">
     </circle>
     <circle r=\\"9\\">
@@ -680,3 +680,5 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
   </slot>
 </label>"
 `;
+
+exports[`should have no basic DOM regression for p-toast 1`] = `""`;

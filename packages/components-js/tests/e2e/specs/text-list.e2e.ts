@@ -1,4 +1,10 @@
-import { expectedStyleOnFocus, getOutlineStyle, selectNode, setContentWithDesignSystem } from '../helpers';
+import {
+  expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
+  getOutlineStyle,
+  selectNode,
+  setContentWithDesignSystem,
+} from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('text-list', () => {
@@ -55,12 +61,8 @@ describe('text-list', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initTextList();
       const getList = () => selectNode(page, 'p-text-list >>> [role="list"]');
-      const snapshot = await page.accessibility.snapshot({
-        root: await getList(),
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, await getList(), { interestingOnly: false });
     });
   });
 });

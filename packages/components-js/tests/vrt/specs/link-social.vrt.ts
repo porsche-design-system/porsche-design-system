@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('link-social-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
+      const head = `<style>p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>
@@ -61,13 +61,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-link-social >>> a');
-      await forceHoveredState(page, '.hovered > p-link-social >>> span');
-      await forceFocusedState(page, '.focused > p-link-social >>> a');
-      await forceFocusedState(page, '.focused > p-link-social a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link-social >>> a');
-      await forceHoveredState(page, '.focused-hovered > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusedHoveredState(page, '.focused-hovered > p-link-social a');
+      await forceHoverState(page, '.hover > p-link-social >>> a');
+      await forceHoverState(page, '.hover > p-link-social >>> span');
+      await forceFocusState(page, '.focus > p-link-social >>> a');
+      await forceFocusState(page, '.focus > p-link-social a');
+      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> a');
+      await forceHoverState(page, '.focus-hover > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover > p-link-social a');
     })
   ).toBeFalsy();
 });

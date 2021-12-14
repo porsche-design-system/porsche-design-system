@@ -4,6 +4,8 @@ At Porsche we want the best performance, security and modern feature opportuniti
 
 To ensure visual and functional compatibility, we do automatic and manual testing for the defined set of browsers and versions. If a browser is not listed on this page we don’t test it, provide assistance or fix bugs for it.
 
+<TableOfContents></TableOfContents>
+
 ## Supported Browsers & Platforms
 
 We support the **following Browsers in the latest stable and deprecated predecessor version**:
@@ -70,7 +72,7 @@ Integration through `includeBanner()` partial.
 ##### Overlay notification
 
 The **Overlay** variant is meant to inform the user when they access the application if their browser doesn't support **custom elements** 
-or browser technologies like [**ResizeObserver**](https://caniuse.com/?search=resizeobserver), [**IntersectionObserver**](https://caniuse.com/?search=intersectionobserver) and [**MutationObserver**](https://caniuse.com/?search=mutationobserver) which are required to render the Porsche Design System components. 
+or browser technologies like [**IntersectionObserver**](https://caniuse.com/?search=intersectionobserver) and [**MutationObserver**](https://caniuse.com/?search=mutationobserver) which are required to render the Porsche Design System components. 
 The overlay is placed above the page, covers it completely and can't be closed or removed by the user.
 
 Integration through `includeOverlay()` partial.
@@ -78,10 +80,9 @@ Integration through `includeOverlay()` partial.
 | Feature Detection                                                                               | Initialized |
 | ------------------------------------------------------------------------------------------------| ----------- |
 | **Custom elements != true**                                                                     | ✓           |
-| **ResizeObserver != true**                                                                      | ✓           |
 | **IntersectionObserver != true**                                                                | ✓           |
 | **MutationObserver != true**                                                                    | ✓           |
-| **Custom elements && ResizeObserver && IntersectionObserver && MutationObserver**               | ✗           |
+| **Custom elements && IntersectionObserver && MutationObserver**                                 | ✗           |
 
 ##### React / Vue JS
 

@@ -1,4 +1,4 @@
-import { getScrollByX } from '.';
+import { getScrollByX } from './scrolling';
 
 describe('getScrollByX()', () => {
   const data: [HTMLElement, number][] = [

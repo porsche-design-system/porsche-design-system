@@ -19,10 +19,10 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification": "3.0.0",
-    "@porsche-design-system/components-js": "2.6.1",
+    "@porsche-design-system/browser-notification": "4.0.0",
+    "@porsche-design-system/components-js": "2.7.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.1.0",
+    "@porsche-design-system/utilities": "5.3.0-beta.0",
     "@porsche-design-system/vmark": "~1.2.0",
     "@porsche-design-system/vmark-loader": "^1.0.0",
     "change-case": "^4.1.2",

@@ -3,6 +3,9 @@
   --p-animation-duration__spinner: 0s;
   --p-animation-hover-duration: 0s;
   --p-animation-duration__banner: 0s;
+  --p-override-popover-animation-duration: 0s;
+  --p-override-toast-skip-timeout: true;
+  --p-override-toast-animation-duration: 0s;
 }
 
 html,
@@ -20,7 +23,8 @@ body > select {
   padding: 1rem;
 }
 
-.playground.light {
+.playground.light,
+.playground.light-electric {
   background: #fff;
 }
 
@@ -28,9 +32,9 @@ body > select {
   background: #1a2023;
 }
 
-.playground.hovered::before,
-.playground.focused::before,
-.playground.focused-hovered::before {
+.playground.hover::before,
+.playground.focus::before,
+.playground.focus-hover::before {
   display: block;
   background: deeppink;
   color: white;
@@ -39,14 +43,41 @@ body > select {
   margin-bottom: 0.5rem;
 }
 
-.playground.hovered::before {
-  content: ':hover';
+/*light*/
+.playground.light.hover::before {
+  content: ':hover (theme=light)';
 }
 
-.playground.focused::before {
-  content: ':focus-visible';
+.playground.light.focus::before {
+  content: ':focus-visible (theme=light)';
 }
 
-.playground.focused-hovered::before {
-  content: ':focus-visible:hover';
+.playground.light.focus-hover::before {
+  content: ':focus-visible:hover (theme=light)';
+}
+
+/*dark*/
+.playground.dark.hover::before {
+  content: ':hover (theme=dark)';
+}
+
+.playground.dark.focus::before {
+  content: ':focus-visible (theme=dark)';
+}
+
+.playground.dark.focus-hover::before {
+  content: ':focus-visible:hover (theme=dark)';
+}
+
+/*light-electric*/
+.playground.light-electric.hover::before {
+  content: ':hover (theme=light-electric)';
+}
+
+.playground.light-electric.focus::before {
+  content: ':focus-visible (theme=light-electric)';
+}
+
+.playground.light-electric.focus-hover::before {
+  content: ':focus-visible:hover (theme=light-electric)';
 }

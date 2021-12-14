@@ -1,0 +1,20 @@
+<style>
+  .playground {
+    height: 300px;
+    padding: 0;
+    transform: translateX(0);
+    border: 1px solid deeppink;
+  }
+</style>
+
+<div class="playground light" title="should render toast multiline message on light background">
+  <p-toast></p-toast>
+</div>
+
+<script>
+  customElements.whenDefined('p-toast').then(() => {
+    document.querySelector('p-toast').addMessage({
+      text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.',
+    });
+  });
+</script>

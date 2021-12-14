@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
@@ -24,7 +25,7 @@ describe('modal', () => {
 
   const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .root');
-  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .close p-button-pure');
+  const getModalCloseButton = () => selectNode(page, 'p-modal >>> p-button-pure.close');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
   const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
@@ -111,7 +112,7 @@ describe('modal', () => {
       const closeBtn = await getModalCloseButton();
       expect(closeBtn).not.toBeNull();
 
-      const closeBtnReal = await selectNode(page, 'p-modal >>> .close p-button-pure >>> button');
+      const closeBtnReal = await selectNode(page, 'p-modal >>> p-button-pure.close >>> button');
       expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 
       await closeBtn.click();
@@ -387,22 +388,15 @@ describe('modal', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initBasicModal();
       const modal = await getModal();
-      const snapshot = await page.accessibility.snapshot({
-        root: modal,
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, modal, { interestingOnly: false });
     });
 
     it('should not expose accessibility tree if modal is hidden', async () => {
       await initBasicModal({ isOpen: false });
       const modal = await getModal();
-      const snapshot = await page.accessibility.snapshot({
-        root: modal,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, modal);
     });
   });
 });

@@ -1,4 +1,4 @@
-import { observeAttributes, unobserveAttributes, attributeMutationMap } from '.';
+import { observeAttributes, unobserveAttributes, attributeMutationMap } from './attribute-observer';
 
 describe('observeAttributes()', () => {
   beforeEach(() => {

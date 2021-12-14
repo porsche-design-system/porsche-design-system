@@ -15,6 +15,23 @@ Object {
 }
 `;
 
+exports[`button-pure accessibility should expose correct accessibility tree if accessibility properties are set: Initial 1`] = `
+Object {
+  "expanded": true,
+  "haspopup": "menu",
+  "name": "Some more detailed label",
+  "role": "combobox",
+}
+`;
+
+exports[`button-pure accessibility should expose correct accessibility tree if accessibility properties are set: Pressed 1`] = `
+Object {
+  "name": "",
+  "pressed": true,
+  "role": "button",
+}
+`;
+
 exports[`button-pure accessibility should expose correct initial accessibility tree properties 1`] = `
 Object {
   "name": "Some label",

@@ -8,18 +8,22 @@ import {
   hasSlottedSubline,
   attachComponentCss,
   attachSlottedCss,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
+  SelectedAriaAttributes,
   AlignLabel,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
   TextSize,
   TextWeight,
-  Theme,
+  ThemeExtendedElectric,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
+import type { LinkAriaAttributes } from '../link/link-utils';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 @Component({
   tag: 'p-link-pure',
@@ -56,7 +60,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -66,6 +70,9 @@ export class LinkPure {
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
@@ -116,6 +123,7 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),
+            ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
           })}
           ref={(el) => (this.linkTag = el)}
         >

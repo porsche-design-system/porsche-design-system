@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`spinner accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": " ",
+      "role": "StaticText",
+    },
+  ],
+  "name": "Loading page content",
+  "role": "alert",
+}
+`;
+
+exports[`spinner accessibility should expose correct initial accessibility tree 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "name": " ",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "alert",
+}
+`;

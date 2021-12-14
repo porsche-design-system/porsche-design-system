@@ -37,7 +37,7 @@
     "build:partials": "ts-node './scripts/buildPartials.ts'",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -46,7 +46,7 @@
   "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.1.0"
+    "@porsche-design-system/utilities": "5.3.0-beta.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",

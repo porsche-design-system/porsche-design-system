@@ -1,10 +1,9 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
-  getAttribute,
+  expectA11yToMatchSnapshot,
   getLifecycleStatus,
   getOutlineStyle,
-  getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -215,11 +214,8 @@ describe('textarea-wrapper', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initTextarea({ hasLabel: true });
       const textarea = await getTextarea();
-      const snapshot = await page.accessibility.snapshot({
-        root: textarea,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, textarea);
     });
 
     it('should expose correct accessibility tree with description text', async () => {
@@ -231,11 +227,8 @@ describe('textarea-wrapper', () => {
         </p-textarea-wrapper>`
       );
       const textarea = await getTextarea();
-      const snapshot = await page.accessibility.snapshot({
-        root: textarea,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, textarea);
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -249,17 +242,8 @@ describe('textarea-wrapper', () => {
       const textarea = await getTextarea();
       const message = await getMessage();
 
-      const snapshotInput = await page.accessibility.snapshot({
-        root: textarea,
-      });
-
-      const snapshotMessage = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: message,
-      });
-
-      expect(snapshotInput).toMatchSnapshot('Of Textarea');
-      expect(snapshotMessage).toMatchSnapshot('Of Message');
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea' });
+      await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -274,41 +258,27 @@ describe('textarea-wrapper', () => {
       const textarea = await getTextarea();
       const message = await getMessage();
 
-      const snapshotInputError = await page.accessibility.snapshot({
-        root: textarea,
-      });
-      const snapshotMessageError = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Textarea when state = error');
-      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      const snapshotInputSuccess = await page.accessibility.snapshot({
-        root: textarea,
-      });
-      const snapshotMessageSuccess = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = success',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Textarea when state = success');
-      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
 
       await setProperty(host, 'state', 'none');
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      const snapshotInputNone = await page.accessibility.snapshot({
-        root: textarea,
-      });
-
-      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Textarea when state = none');
+      await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = none' });
     });
   });
 });

@@ -1,7 +1,21 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, improveFocusHandlingForCustomElement } from '../../../utils';
-import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  improveFocusHandlingForCustomElement,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
+import type {
+  SelectedAriaAttributes,
+  BreakpointCustomizable,
+  IconName,
+  LinkTarget,
+  LinkVariant,
+  ThemeExtendedElectric,
+} from '../../../types';
 import { getComponentCss } from './link-styles';
+import type { LinkAriaAttributes } from './link-utils';
+import { LINK_ARIA_ATTRIBUTES } from './link-utils';
 
 @Component({
   tag: 'p-link',
@@ -23,7 +37,7 @@ export class Link {
   @Prop() public href?: string;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -36,6 +50,9 @@ export class Link {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
   public connectedCallback(): void {
     improveFocusHandlingForCustomElement(this.host);
@@ -57,6 +74,7 @@ export class Link {
           target: this.target,
           download: this.download,
           rel: this.rel,
+          ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
         })}
       >
         <PrefixedTagNames.pIcon

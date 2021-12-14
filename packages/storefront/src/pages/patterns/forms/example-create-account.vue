@@ -120,7 +120,7 @@
           >
             <span slot="label">
               I have read the
-              <a href="https://porsche.com/some-url">general terms ans conditions</a> and I accept them.
+              <a href="https://porsche.com/some-url">general terms and conditions</a> and I accept them.
             </span>
             <input
               type="checkbox"

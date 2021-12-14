@@ -1,4 +1,4 @@
-import type { AriaAttributes } from 'react';
+import type { AriaAttributes } from '../../../../types';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../../utils';
 import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-styles';

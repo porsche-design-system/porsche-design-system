@@ -1,5 +1,8 @@
 import {
   addEventListener,
+  expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
+  getAttribute,
   getCssClasses,
   getLifecycleStatus,
   getProperty,

@@ -1,4 +1,5 @@
 import {
+  expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
@@ -176,11 +177,8 @@ describe('select-wrapper native', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initSelect();
       const select = await getSelect();
-      const snapshot = await page.accessibility.snapshot({
-        root: select,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, select);
     });
 
     it('should update accessibility tree with message text if state changes programmatically', async () => {
@@ -194,41 +192,27 @@ describe('select-wrapper native', () => {
       const select = await getSelect();
       const message = await getMessage();
 
-      const snapshotSelectError = await page.accessibility.snapshot({
-        root: select,
-      });
-      const snapshotMessageError = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotSelectError, 'when state = error').toMatchSnapshot('Of Select when state = error');
-      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      const snapshotSelectSuccess = await page.accessibility.snapshot({
-        root: select,
-      });
-      const snapshotMessageSuccess = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = success',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotSelectSuccess, 'when state = success').toMatchSnapshot('Of Select when state = success');
-      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
 
       await setProperty(host, 'state', 'none');
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      const snapshotSelectNone = await page.accessibility.snapshot({
-        root: select,
-      });
-
-      expect(snapshotSelectNone, 'when state = none').toMatchSnapshot('Of Select when state = none');
+      await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = none' });
     });
   });
 });

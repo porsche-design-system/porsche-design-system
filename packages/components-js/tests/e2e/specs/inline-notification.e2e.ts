@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getLifecycleStatus,
   initAddEventListener,
@@ -74,6 +75,9 @@ describe('close button', () => {
 
     await closeButton.click();
     await waitForEventSerialization(page);
+    await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(page); // 🙈
+
     expect(calls).toBe(1);
   });
 
@@ -151,12 +155,7 @@ describe('accessibility', () => {
       await initInlineNotification({ state });
       const wrapper = await selectNode(page, 'p-inline-notification >>> .content');
 
-      const snapshotWrapper = await page.accessibility.snapshot({
-        root: wrapper,
-        interestingOnly: false,
-      });
-
-      expect(snapshotWrapper).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, wrapper, { interestingOnly: false });
       expect(await getAttribute(wrapper, 'aria-live')).toBeDefined();
     }
   );

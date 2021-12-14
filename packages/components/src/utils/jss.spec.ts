@@ -11,7 +11,7 @@ import {
   mergeDeep,
   supportsConstructableStylesheets,
   componentCssMap,
-} from '.';
+} from './jss';
 import * as jssUtils from './jss';
 import type { JssStyle, Styles } from 'jss';
 

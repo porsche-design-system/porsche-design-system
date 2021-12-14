@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getThemedBodyMarkup,
   GetThemedMarkup,
   setContentWithDesignSystem,
@@ -30,7 +30,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('select-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">
+      const head = `<style>
         .playground div {
           display: flex;
         }
@@ -156,20 +156,20 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered .native p-select-wrapper select');
-      await forceHoveredState(page, '.hovered p-select-wrapper span a');
-      await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-dropdown');
-      await forceHoveredState(page, '.hovered p-select-wrapper >>> p-select-wrapper-dropdown');
-      await forceFocusedState(page, '.focused .native p-select-wrapper select');
-      await forceFocusedState(page, '.focused p-select-wrapper span a');
-      await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
-      await forceFocusedState(page, '.focused p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
-      await forceFocusedHoveredState(page, '.focused-hovered .native p-select-wrapper select');
-      await forceFocusedHoveredState(page, '.focused-hovered p-select-wrapper span a');
+      await forceHoverState(page, '.hover .native p-select-wrapper select');
+      await forceHoverState(page, '.hover p-select-wrapper span a');
+      await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
+      await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
+      await forceFocusState(page, '.focus .native p-select-wrapper select');
+      await forceFocusState(page, '.focus p-select-wrapper span a');
+      await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+      await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
+      await forceFocusHoverState(page, '.focus-hover .native p-select-wrapper select');
+      await forceFocusHoverState(page, '.focus-hover p-select-wrapper span a');
       // actual user interaction happens on multiple nodes that's why forceFocusedHoveredState is wrong
-      await forceHoveredState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown');
-      await forceFocusedState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
-      await forceFocusedState(page, '.focused-hovered p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
+      await forceHoverState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown');
+      await forceFocusState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+      await forceFocusState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
     })
   ).toBeFalsy();
 });

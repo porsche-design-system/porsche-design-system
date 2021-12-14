@@ -1,5 +1,6 @@
 import { Page } from 'puppeteer';
 import {
+  expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getLifecycleStatus,
@@ -69,12 +70,8 @@ describe('pagination', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initPagination();
       const navigation = await getNav();
-      const snapshot = await page.accessibility.snapshot({
-        root: navigation,
-        interestingOnly: false,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, navigation, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if disabled attribute on button next is toggled', async () => {
@@ -83,22 +80,14 @@ describe('pagination', () => {
       const host = await getHost();
       const nextButtonDisabled = await getNextButton();
 
-      const snapshotButtonDisabled = await page.accessibility.snapshot({
-        root: nextButtonDisabled,
-      });
-
-      expect(snapshotButtonDisabled).toMatchSnapshot('If disabled');
+      await expectA11yToMatchSnapshot(page, nextButtonDisabled, { message: 'If disabled' });
 
       await setProperty(host, 'activePage', 15);
       await waitForStencilLifecycle(page);
 
       const nextButtonEnabled = await getNextButton();
 
-      const snapshotButtonEnabled = await page.accessibility.snapshot({
-        root: nextButtonEnabled,
-      });
-
-      expect(snapshotButtonEnabled).toMatchSnapshot('If not disabled');
+      await expectA11yToMatchSnapshot(page, nextButtonEnabled, { message: 'If not disabled' });
     });
 
     it('should have aria-current = page if selected', async () => {

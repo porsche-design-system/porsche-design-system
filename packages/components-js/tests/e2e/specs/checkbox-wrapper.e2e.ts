@@ -1,5 +1,6 @@
 import {
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getActiveElementTagName,
   getElementStyle,
   getLifecycleStatus,
@@ -388,11 +389,8 @@ describe('checkbox-wrapper', () => {
     it('should expose correct initial accessibility tree', async () => {
       await initCheckbox();
       const input = await getInput();
-      const snapshot = await page.accessibility.snapshot({
-        root: input,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, input);
     });
 
     it('should expose correct accessibility tree properties in error state', async () => {
@@ -407,17 +405,8 @@ describe('checkbox-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      const snapshotInput = await page.accessibility.snapshot({
-        root: input,
-      });
-
-      const snapshotMessage = await page.accessibility.snapshot({
-        interestingOnly: false,
-        root: message,
-      });
-
-      expect(snapshotInput).toMatchSnapshot('Of Input');
-      expect(snapshotMessage).toMatchSnapshot('Of Message');
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
+      await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
     });
 
     it('should add/remove accessibility tree properties if state changes programmatically', async () => {
@@ -438,41 +427,27 @@ describe('checkbox-wrapper', () => {
       const input = await getInput();
       const message = await getMessage();
 
-      const snapshotInputError = await page.accessibility.snapshot({
-        root: input,
-      });
-      const snapshotMessageError = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = error',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotInputError, 'when state = error').toMatchSnapshot('Of Input when state = error');
-      expect(snapshotMessageError, 'when state = error').toMatchSnapshot('Of Message when state = error');
 
       await setProperty(host, 'state', 'success');
       await setProperty(host, 'message', 'Some success message.');
       await waitForStencilLifecycle(page);
 
-      const snapshotInputSuccess = await page.accessibility.snapshot({
-        root: input,
-      });
-      const snapshotMessageSuccess = await page.accessibility.snapshot({
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
+      await expectA11yToMatchSnapshot(page, message, {
+        message: 'Of Message when state = success',
         interestingOnly: false,
-        root: message,
       });
-
-      expect(snapshotInputSuccess, 'when state = success').toMatchSnapshot('Of Input when state = success');
-      expect(snapshotMessageSuccess, 'when state = success').toMatchSnapshot('Of Message when state = success');
 
       await setProperty(host, 'state', 'none');
       await setProperty(host, 'message', '');
       await waitForStencilLifecycle(page);
 
-      const snapshotInputNone = await page.accessibility.snapshot({
-        root: input,
-      });
-
-      expect(snapshotInputNone, 'when state = none').toMatchSnapshot('Of Input when state = none');
+      await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
     });
   });
 });

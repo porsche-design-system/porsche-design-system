@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "5.1.0",
+  "version": "5.3.0-beta.0",
   "scope": "@porsche-design-system",
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",

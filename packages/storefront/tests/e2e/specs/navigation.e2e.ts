@@ -54,6 +54,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         await linkElement.click();
         await browserPage.waitForSelector('.vmark');
+        await browserPage.evaluate(() => (window as any).componentsReady());
 
         expect(await isLinkActive(linkElement), 'link should be active after click').toBe(true);
         expect(await getMainTitle(browserPage), 'should show correct main title for page view').toBe(page);
@@ -78,6 +79,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
             await tabElement.click();
             await browserPage.waitForSelector('.vmark');
+            await browserPage.evaluate(() => (window as any).componentsReady());
 
             expect(await getClassNames(tabElement), 'should have tab active after click').toContain(
               'router-link-active'

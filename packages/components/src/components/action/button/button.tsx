@@ -5,9 +5,20 @@ import {
   improveFocusHandlingForCustomElement,
   isDark,
   isDisabledOrLoading,
+  isLightElectric,
   mapBreakpointPropToClasses,
+  parseAndGetAriaAttributes,
 } from '../../../utils';
-import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
+import type {
+  SelectedAriaAttributes,
+  BreakpointCustomizable,
+  ButtonType,
+  ButtonVariant,
+  IconName,
+  ThemeExtendedElectric,
+} from '../../../types';
+import type { ButtonAriaAttributes } from './button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
 
 @Component({
   tag: 'p-button',
@@ -42,7 +53,10 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -66,6 +80,7 @@ export class Button {
       ['root--loading']: this.loading,
       [`root--${this.variant}`]: this.variant !== 'secondary',
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
       ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
     };
 
@@ -83,9 +98,14 @@ export class Button {
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
+        {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
-          <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
+          <PrefixedTagNames.pSpinner
+            {...iconProps}
+            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
+            aria={{ 'aria-label': 'Loading state' }}
+          />
         ) : (
           <PrefixedTagNames.pIcon
             {...iconProps}

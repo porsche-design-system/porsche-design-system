@@ -76,67 +76,55 @@ describe('cdp-helper', () => {
     it('should put elements in playground divs', () => {
       const getElementsMarkup: GetMarkup = () => '<div>SomeDiv</div><div>SomeDiv</div>';
 
-      const result = `
-  <div class="playground light hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>
-  <div class="playground light focused">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>
-  <div class="playground light focused-hovered">
-    <div>SomeDiv</div><div>SomeDiv</div>
-  </div>`;
+      const result = `<div class="playground light hover">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>
+<div class="playground light focus">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>
+<div class="playground light focus-hover">
+  <div>SomeDiv</div><div>SomeDiv</div>
+</div>`;
 
       expect(getBodyMarkup(getElementsMarkup)).toBe(result);
     });
   });
 
-  describe('getThemedBody()', () => {
-    it('should put elements in themed playground divs', () => {
+  describe('getThemedBodyMarkup()', () => {
+    it('should put elements in default themed playground divs', () => {
       const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
 
-      const result = `
-  <div class="playground light hovered">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark hovered">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>
-  <div class="playground light focused">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark focused">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>
-  <div class="playground light focused-hovered">
-    <p-button theme="light">Some Button</p-button><p-button theme="light">Some Button</p-button>
-  </div>
-  <div class="playground dark focused-hovered">
-    <p-button theme="dark">Some Button</p-button><p-button theme="dark">Some Button</p-button>
-  </div>`;
+      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toMatchSnapshot();
+    });
 
-      expect(getThemedBodyMarkup(getThemedElementsMarkup)).toBe(result);
+    it('should put elements in individual themed playground divs', () => {
+      const getThemedElementsMarkup: GetThemedMarkup = (theme) =>
+        `<p-button theme="${theme}">Some Button</p-button><p-button theme="${theme}">Some Button</p-button>`;
+
+      expect(
+        getThemedBodyMarkup(getThemedElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
+      ).toMatchSnapshot();
     });
   });
 
   describe('resolveSelector()', () => {
     it('should split string to object with hostElementSelector and shadowRootNodeName', () => {
-      expect(resolveSelector('.hovered > p-button-pure >>> button')).toEqual({
-        hostElementSelector: '.hovered > p-button-pure',
+      expect(resolveSelector('.hover > p-button-pure >>> button')).toEqual({
+        hostElementSelector: '.hover > p-button-pure',
         shadowRootNodeName: 'button',
       });
     });
 
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
-      expect(resolveSelector('.hovered > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
-        hostElementSelector: '.hovered > p-checkbox-wrapper input[type="checkbox"]',
+      expect(resolveSelector('.hover > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
+        hostElementSelector: '.hover > p-checkbox-wrapper input[type="checkbox"]',
         shadowRootNodeName: undefined,
       });
     });
 
     it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
-      expect(() => resolveSelector('.hovered > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
+      expect(() => resolveSelector('.hover > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
         '"\\">>> .tabs-bar\\" selector has to be an \\"Element.localName\\" in shadow-root"'
       );
     });

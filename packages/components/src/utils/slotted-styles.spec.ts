@@ -1,4 +1,4 @@
-import { attachSlottedCss, getCachedSlottedCss, slottedCssMap } from '.';
+import { attachSlottedCss, getCachedSlottedCss, slottedCssMap } from './slotted-styles';
 import * as slottedStyles from './slotted-styles';
 
 /**

@@ -24,6 +24,7 @@ export type TextColor =
 export type TextAlign = 'left' | 'center' | 'right';
 
 export type Theme = 'light' | 'dark';
+export type ThemeExtendedElectric = Theme | 'light-electric';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
@@ -51,3 +52,8 @@ export type LinkButtonPureIconName = IconName | 'none';
 
 export type AlignLabelType = 'left' | 'right';
 export type AlignLabel = BreakpointCustomizable<AlignLabelType>;
+
+import type { AriaAttributes } from './aria-types';
+export type { AriaAttributes } from './aria-types';
+
+export type SelectedAriaAttributes<T extends keyof AriaAttributes> = Pick<AriaAttributes, T> | string;

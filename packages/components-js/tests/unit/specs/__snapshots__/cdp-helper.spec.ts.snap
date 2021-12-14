@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cdp-helper getThemedBodyMarkup() should put elements in default themed playground divs 1`] = `
+"<div class=\\"playground light hover\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark hover\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>
+<div class=\\"playground light focus\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark focus\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>
+<div class=\\"playground light focus-hover\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark focus-hover\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>"
+`;
+
+exports[`cdp-helper getThemedBodyMarkup() should put elements in individual themed playground divs 1`] = `
+"<div class=\\"playground light hover\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark hover\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>
+<div class=\\"playground light-electric hover\\"><p-button theme=\\"light-electric\\">Some Button</p-button><p-button theme=\\"light-electric\\">Some Button</p-button></div>
+<div class=\\"playground light focus\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark focus\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>
+<div class=\\"playground light-electric focus\\"><p-button theme=\\"light-electric\\">Some Button</p-button><p-button theme=\\"light-electric\\">Some Button</p-button></div>
+<div class=\\"playground light focus-hover\\"><p-button theme=\\"light\\">Some Button</p-button><p-button theme=\\"light\\">Some Button</p-button></div>
+<div class=\\"playground dark focus-hover\\"><p-button theme=\\"dark\\">Some Button</p-button><p-button theme=\\"dark\\">Some Button</p-button></div>
+<div class=\\"playground light-electric focus-hover\\"><p-button theme=\\"light-electric\\">Some Button</p-button><p-button theme=\\"light-electric\\">Some Button</p-button></div>"
+`;

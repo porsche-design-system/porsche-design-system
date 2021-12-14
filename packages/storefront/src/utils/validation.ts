@@ -15,8 +15,8 @@ export const getInitialErrors = <T>(data: T): { [key in keyof T]: string } => {
 
 export const validateName = <T>(key: keyof T): keyof T => key;
 
-export const getState = <T extends object>(field: keyof T, bag: ValidationBag<T>): string =>
-  bag.errors[field] && 'error';
+export const getState = <T extends object>(field: keyof T, bag: ValidationBag<T>): 'error' | 'none' =>
+  bag.errors[field] ? 'error' : 'none';
 
 export const validateField = async <T extends object>(field: keyof T, bag: ValidationBag<T>): Promise<boolean> => {
   bag.errors[field] = await bag.schema

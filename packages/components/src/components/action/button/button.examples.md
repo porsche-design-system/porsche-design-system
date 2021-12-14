@@ -6,6 +6,8 @@ A Button can be used with or without a label but it's recommended to keep the **
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. 
 Whenever you want to provide navigational elements, stick to the [Link](components/link) component instead.
 
+<TableOfContents></TableOfContents>
+
 ## Variants
 
 Choose between predefined styling variants.
@@ -26,8 +28,13 @@ Choose between predefined styling variants.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### <p-icon name="accessibility" size="medium" color="notification-neutral" aria-hidden="true"></p-icon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If using short labels like **"OK"** make sure to provide additional contents with ARIA labels, e.g.: `aria-label="Submit contact form"`
+### ARIA attributes and states 
+
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component. 
+<Playground :markup="accessibility" :config="config"></Playground>
+
+### <A11yIcon></A11yIcon> Accessibility hints
+* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria` property to expose a more descriptive experience to screen reader users.
 * If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 
@@ -61,7 +68,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
     config = { themeable: true, spacing: 'inline' };
     
     primary = 
-`<p-button variant="primary" aria-label="Some descriptive label">Some label</p-button>
+`<p-button variant="primary">Some label</p-button>
 <p-button variant="primary" disabled>Some label</p-button>
 <p-button variant="primary" loading>Some label</p-button>
 <br>
@@ -91,6 +98,9 @@ With setting the `tabbable` property to `false` you can remove the button from t
 `<p-button variant="primary" hide-label="{ base: true, s: false }">Some label</p-button>
 <p-button variant="secondary" hide-label="{ base: true, m: false }">Some label</p-button>
 <p-button variant="tertiary" hide-label="{ base: true, l: false }">Some label</p-button>`;
+
+    accessibility = 
+`<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
 
     icon =
 `<p-button icon="delete">Some label</p-button>

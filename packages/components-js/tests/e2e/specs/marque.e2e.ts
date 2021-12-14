@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -549,11 +550,20 @@ describe('marque', () => {
     it('should expose correct initial accessibility tree', async () => {
       await setContentWithTrademark();
       const image = await getImage();
-      const snapshot = await page.accessibility.snapshot({
-        root: image,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, image);
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await setContentWithLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });

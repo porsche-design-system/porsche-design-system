@@ -2,6 +2,7 @@ import {
   addEventListener,
   ClickableTests,
   expectedStyleOnFocus,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -116,6 +117,7 @@ describe('button', () => {
       await triggerElement.click();
       await waitForEventSerialization(page);
     }
+    await waitForEventSerialization(page); // 🙈
     await waitForEventSerialization(page); // 🙈
     await waitForEventSerialization(page); // 🙈
 
@@ -484,24 +486,39 @@ describe('button', () => {
     it('should expose correct initial accessibility tree properties', async () => {
       await initButton();
       const button = await getButton();
-      const snapshot = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, button);
     });
 
     it('should expose correct accessibility name if label is hidden', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
+
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: button,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, button);
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initButton();
+      const host = await getHost();
+      const button = await getButton();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+        'aria-expanded': true,
+        'aria-haspopup': true,
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, button, { message: 'initial aria attributes' });
+
+      await setProperty(host, 'aria', {
+        'aria-pressed': true,
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
     });
 
     it('should add aria-busy attribute when loading and remove it if finished', async () => {

@@ -14,12 +14,12 @@
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.6.1",
+    "@porsche-design-system/components-js": "2.7.0",
     "react": "^17.0.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
-    "@types/react": "^17.0.28",
+    "@types/react": "^17.0.29",
     "@uxpin/merge-cli": "^2.7.8",
     "babel-loader": "^8.2.2",
     "eslint-loader": "^4.0.2",

@@ -1,5 +1,7 @@
 # Notifications
 
+<TableOfContents></TableOfContents>
+
 ## Decision Tree
 
 The decision tree can guide you when to use which notification component.
@@ -8,23 +10,23 @@ From there, a few simple questions will lead you to the recommended component fo
 
 ---
 
-## Provide additional information for a task, a status or their current action.
+## Provide additional information for a task, a status, or their current action.
 
 Status: Neutral
 
 #### Example use Cases:
 * Ask for User data
 * Request feedback
-* Validation code was send to phone
-* Mail was send to inbox
+* Validation code was sent to phone
+* We sent you an email
 
 ![The five basic elements of Porsche forms](./assets/notification-neutral.png)
 
 #### Related Components:
 
-* [Modal](components/modal) 
-* [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
+* [Modal](components/modal) 
+* [Toast](components/notifications/toast) 
 
 ---
 
@@ -43,9 +45,9 @@ Status: Success
 
 #### Related Components:
 
-* Inline Validation (supported by all form elements)
-* Toast - Coming soon 
 * [Inline Notification](components/notifications/inline-notification)
+* Inline Validation (supported by all form elements)
+* [Toast](components/notifications/toast)
 
 ---
 
@@ -85,7 +87,7 @@ Status: Error
 
 #### Related Components:
 
-* Inline Validation (supported by all form elements)
 * [Banner](components/notifications/banner) 
 * [Inline Notification](components/notifications/inline-notification)
+* Inline Validation (supported by all form elements)
 * [Modal](components/modal) 

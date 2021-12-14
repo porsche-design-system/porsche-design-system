@@ -1,7 +1,7 @@
 import {
-  forceFocusedHoveredState,
-  forceFocusedState,
-  forceHoveredState,
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
   getBodyMarkup,
   GetMarkup,
   setContentWithDesignSystem,
@@ -23,7 +23,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('checkbox-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style type="text/css">p-checkbox-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
+      const head = `<style>p-checkbox-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetMarkup = () => `
         <p-checkbox-wrapper label="Some label">
@@ -59,12 +59,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoveredState(page, '.hovered > p-checkbox-wrapper input[type="checkbox"]');
-      await forceHoveredState(page, '.hovered > p-checkbox-wrapper span a');
-      await forceFocusedState(page, '.focused > p-checkbox-wrapper input[type="checkbox"]');
-      await forceFocusedState(page, '.focused > p-checkbox-wrapper span a');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-checkbox-wrapper input[type="checkbox"]');
-      await forceFocusedHoveredState(page, '.focused-hovered > p-checkbox-wrapper span a');
+      await forceHoverState(page, '.hover > p-checkbox-wrapper input[type="checkbox"]');
+      await forceHoverState(page, '.hover > p-checkbox-wrapper span a');
+      await forceFocusState(page, '.focus > p-checkbox-wrapper input[type="checkbox"]');
+      await forceFocusState(page, '.focus > p-checkbox-wrapper span a');
+      await forceFocusHoverState(page, '.focus-hover > p-checkbox-wrapper input[type="checkbox"]');
+      await forceFocusHoverState(page, '.focus-hover > p-checkbox-wrapper span a');
     })
   ).toBeFalsy();
 });

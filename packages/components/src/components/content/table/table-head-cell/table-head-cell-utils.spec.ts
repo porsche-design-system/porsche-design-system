@@ -1,11 +1,6 @@
-import {
-  createSortedEventInitDictDetail,
-  getAriaSort,
-  isDirectionAsc,
-  toggleDirection,
-} from './table-head-cell-utils';
+import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc, toggleDirection } from './table-head-cell-utils';
 import * as tableUtils from './table-head-cell-utils';
-import { AriaAttributes } from 'react';
+import type { AriaAttributes } from '../../../../types';
 import { TableHeadCellSort } from '../table/table-utils';
 
 describe('isDirectionAsc()', () => {

@@ -1,12 +1,13 @@
 import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme } from '../types';
-import { isDark } from './theme';
+import type { Color } from '@porsche-design-system/utilities';
+import type { FormState, Theme, ThemeExtendedElectric } from '../types';
+import { isDark, isLightElectric } from './theme';
 
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-export const colorDarken: DeepPartial<typeof color> = {
+export const colorDarken: DeepPartial<Color> = {
   neutralContrast: {
     high: '#151718',
   },
@@ -27,10 +28,22 @@ export const colorDarken: DeepPartial<typeof color> = {
       hover: '#c4001a',
     },
   },
+  lightElectricTheme: {
+    neutralContrast: {
+      high: '#151718',
+    },
+    notification: {
+      success: '#014d0c',
+      error: '#a30000',
+    },
+    state: {
+      hover: '#0084b7',
+    },
+  },
 };
 
 type ThemedColors = {
-  textColor: string;
+  baseColor: string;
   brandColor: string;
   backgroundColor: string;
   contrastLowColor: string;
@@ -49,9 +62,9 @@ type ThemedColors = {
   neutralSoftColor: string;
 };
 
-const getStaticThemedColors = (theme: Theme): ThemedColors => {
+const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   const {
-    default: textColor,
+    default: baseColor,
     brand: brandColor,
     background: { default: backgroundColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
@@ -66,10 +79,10 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDark(theme) ? color.darkTheme : color;
+  } = isDark(theme) ? color.darkTheme : isLightElectric(theme) ? color.lightElectricTheme : color;
 
   return {
-    textColor,
+    baseColor,
     brandColor,
     backgroundColor,
     contrastLowColor,
@@ -91,12 +104,13 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
 
 const themedColorsLight = getStaticThemedColors('light');
 const themedColorsDark = getStaticThemedColors('dark');
+const themedColorsLightElectric = getStaticThemedColors('light-electric');
 
-export const getThemedColors = (theme: Theme): ThemedColors => {
-  return isDark(theme) ? themedColorsDark : themedColorsLight;
+export const getThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
+  return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
 };
 
-export const getThemedStateColors = (
+export const getThemedFormStateColors = (
   theme: Theme,
   state: FormState
 ): { stateColor: string; stateHoverColor: string } => {

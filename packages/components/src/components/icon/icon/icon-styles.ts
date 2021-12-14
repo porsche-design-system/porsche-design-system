@@ -3,7 +3,7 @@ import { buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../..
 
 const getColor = (color: IconColor, theme: Theme): string => {
   const {
-    textColor,
+    baseColor,
     brandColor,
     contrastHighColor,
     contrastMediumColor,
@@ -33,7 +33,7 @@ const getColor = (color: IconColor, theme: Theme): string => {
     case 'inherit':
       return 'currentColor';
     default:
-      return textColor;
+      return baseColor;
   }
 };
 
@@ -66,7 +66,10 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme):
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      fill: getColor(color, theme),
+      color: getColor(color, theme),
+      '& > svg': {
+        fill: 'currentcolor',
+      },
     },
   });
 };

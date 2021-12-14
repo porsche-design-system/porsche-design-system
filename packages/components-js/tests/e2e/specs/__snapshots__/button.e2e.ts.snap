@@ -7,6 +7,23 @@ Object {
 }
 `;
 
+exports[`button accessibility should expose correct accessibility tree if accessibility properties are set: aria-pressed attribute 1`] = `
+Object {
+  "name": "",
+  "pressed": true,
+  "role": "button",
+}
+`;
+
+exports[`button accessibility should expose correct accessibility tree if accessibility properties are set: initial aria attributes 1`] = `
+Object {
+  "expanded": true,
+  "haspopup": "menu",
+  "name": "Some more detailed label",
+  "role": "combobox",
+}
+`;
+
 exports[`button accessibility should expose correct initial accessibility tree properties 1`] = `
 Object {
   "name": "Some label",

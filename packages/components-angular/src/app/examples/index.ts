@@ -4,6 +4,7 @@ import { InlineNotificationExampleEventsComponent } from './inline-notification-
 import { TableExampleAdvancedComponent } from './table-example-advanced.component';
 import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
+import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
@@ -12,6 +13,7 @@ export const examples = [
   TableExampleAdvancedComponent,
   TableExampleBasicComponent,
   TableExampleSortingComponent,
+  ToastExampleComponent,
 ];
 
 export * from './accordion-example.component';
@@ -20,3 +22,4 @@ export * from './inline-notification-example-action-button.component';
 export * from './table-example-advanced.component';
 export * from './table-example-basic.component';
 export * from './table-example-sorting.component';
+export * from './toast-example.component';

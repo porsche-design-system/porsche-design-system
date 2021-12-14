@@ -5,25 +5,32 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
+import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { IconAriaAttributes } from "./components/icon/icon/icon-utils";
 import { InlineNotificationState } from "./components/feedback/inline-notification/inline-notification-utils";
+import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
-import { MarqueSize } from "./components/basic/marque/marque-utils";
+import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
+import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
-import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
+import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
+import { ToastState } from "./components/feedback/toast/toast/toast-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -49,7 +56,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PBanner {
         /**
@@ -70,6 +77,10 @@ export namespace Components {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -97,7 +108,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -122,6 +133,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -157,7 +172,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -189,7 +204,7 @@ export namespace Components {
         /**
           * Defines the background color.
          */
-        "backgroundColor"?: 'transparent' | 'default';
+        "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Adapts the color when used on dark background.
          */
@@ -197,7 +212,7 @@ export namespace Components {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: ContentWrapperWidth;
     }
     interface PDivider {
         /**
@@ -339,6 +354,10 @@ export namespace Components {
     }
     interface PIcon {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        /**
           * Basic color variations depending on theme property.
          */
         "color"?: TextColor;
@@ -399,6 +418,10 @@ export namespace Components {
     }
     interface PLink {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -429,7 +452,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The style variant of the link.
          */
@@ -444,6 +467,10 @@ export namespace Components {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -483,7 +510,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -520,6 +547,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -597,6 +628,20 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    interface PPopover {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<'aria-label'>;
+        /**
+          * Descriptive text to show additional information when popover is open
+         */
+        "description"?: string;
+        /**
+          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
+         */
+        "direction": PopoverDirection;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -668,6 +713,10 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
@@ -757,7 +806,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -779,7 +828,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -888,6 +937,27 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+    }
+    interface PToast {
+        "addMessage": (message: ToastMessage) => Promise<void>;
+        /**
+          * Adapts the toast color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PToastItem {
+        /**
+          * State of the toast-item.
+         */
+        "state"?: ToastState;
+        /**
+          * Text of the toast-item.
+         */
+        "text"?: string;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
     }
 }
 declare global {
@@ -1023,6 +1093,12 @@ declare global {
         prototype: HTMLPPaginationElement;
         new (): HTMLPPaginationElement;
     };
+    interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
+    }
+    var HTMLPPopoverElement: {
+        prototype: HTMLPPopoverElement;
+        new (): HTMLPPopoverElement;
+    };
     interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {
     }
     var HTMLPRadioButtonWrapperElement: {
@@ -1143,6 +1219,18 @@ declare global {
         prototype: HTMLPTextareaWrapperElement;
         new (): HTMLPTextareaWrapperElement;
     };
+    interface HTMLPToastElement extends Components.PToast, HTMLStencilElement {
+    }
+    var HTMLPToastElement: {
+        prototype: HTMLPToastElement;
+        new (): HTMLPToastElement;
+    };
+    interface HTMLPToastItemElement extends Components.PToastItem, HTMLStencilElement {
+    }
+    var HTMLPToastItemElement: {
+        prototype: HTMLPToastItemElement;
+        new (): HTMLPToastItemElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1166,6 +1254,7 @@ declare global {
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
+        "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
@@ -1186,6 +1275,8 @@ declare global {
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
+        "p-toast": HTMLPToastElement;
+        "p-toast-item": HTMLPToastItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -1217,7 +1308,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PBanner {
         /**
@@ -1242,6 +1333,10 @@ declare namespace LocalJSX {
         "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1269,7 +1364,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -1294,6 +1389,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1329,7 +1428,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * Specifies the type of the button.
          */
@@ -1361,7 +1460,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color.
          */
-        "backgroundColor"?: 'transparent' | 'default';
+        "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1369,7 +1468,7 @@ declare namespace LocalJSX {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: ContentWrapperWidth;
     }
     interface PDivider {
         /**
@@ -1511,6 +1610,10 @@ declare namespace LocalJSX {
     }
     interface PIcon {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<IconAriaAttributes>;
+        /**
           * Basic color variations depending on theme property.
          */
         "color"?: TextColor;
@@ -1579,6 +1682,10 @@ declare namespace LocalJSX {
     }
     interface PLink {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1609,7 +1716,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The style variant of the link.
          */
@@ -1624,6 +1731,10 @@ declare namespace LocalJSX {
           * Aligns the label.
          */
         "alignLabel"?: AlignLabel;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttributes>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1663,7 +1774,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -1700,6 +1811,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<MarqueAriaAttributes>;
         /**
           * When providing an url then the component will be rendered as `<a>`.
          */
@@ -1785,6 +1900,20 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    interface PPopover {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<'aria-label'>;
+        /**
+          * Descriptive text to show additional information when popover is open
+         */
+        "description"?: string;
+        /**
+          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
+         */
+        "direction"?: PopoverDirection;
+    }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -1856,6 +1985,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PSpinner {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SpinnerAriaAttributes>;
         /**
           * Size of the spinner.
          */
@@ -1957,7 +2090,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -1983,7 +2116,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
         /**
           * The text weight.
          */
@@ -2093,6 +2226,30 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PToast {
+        /**
+          * Adapts the toast color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PToastItem {
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * State of the toast-item.
+         */
+        "state"?: ToastState;
+        /**
+          * Text of the toast-item.
+         */
+        "text"?: string;
+        /**
+          * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -2116,6 +2273,7 @@ declare namespace LocalJSX {
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-pagination": PPagination;
+        "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
@@ -2136,6 +2294,8 @@ declare namespace LocalJSX {
         "p-text-list": PTextList;
         "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
+        "p-toast": PToast;
+        "p-toast-item": PToastItem;
     }
 }
 export { LocalJSX as JSX };
@@ -2164,6 +2324,7 @@ declare module "@stencil/core" {
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
@@ -2184,6 +2345,8 @@ declare module "@stencil/core" {
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
+            "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
+            "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
         }
     }
 }

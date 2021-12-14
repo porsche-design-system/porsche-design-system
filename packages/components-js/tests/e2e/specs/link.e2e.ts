@@ -1,6 +1,8 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementId,
+  getElementStyle,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
@@ -21,6 +23,7 @@ describe('link', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-link');
+  const getRoot = () => selectNode(page, 'p-link >>> .root');
   const getLink = () => selectNode(page, 'p-link >>> a');
   const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
   const getSlottedLink = () => selectNode(page, 'p-link a');
@@ -31,7 +34,7 @@ describe('link', () => {
     return setContentWithDesignSystem(
       page,
       `
-      <p-link onclick="return false;" ${!useSlottedAnchor ? 'href="#" ' : ''}>
+      <p-link onclick="return false;" ${!useSlottedAnchor ? 'href="#" ' : 'style="width: 500px;"'}>
         ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
         ${useSlottedAnchor ? '</a>' : ''}
@@ -180,6 +183,20 @@ describe('link', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
+  describe('slotted anchor', () => {
+    it('should have the same width as host', async () => {
+      await initLink({ useSlottedAnchor: true });
+
+      const host = await getHost();
+      const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
+      const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
+
+      const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
+
+      expect(`${anchorWidth + rootBorderWidth}px`).toBe(await getElementStyle(host, 'width'));
+    });
+  });
+
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initLink();
@@ -212,18 +229,27 @@ describe('link', () => {
       await initLink();
       const link = await getLink();
       const icon = await getIcon();
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-        interestingOnly: false,
-      });
 
       const snapshotIcon = await page.accessibility.snapshot({
         root: icon,
         interestingOnly: false,
       });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link, { interestingOnly: false });
       expect(snapshotIcon).toBeNull();
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+
+      await expectA11yToMatchSnapshot(page, link);
     });
 
     it('should expose correct accessibility tree if label is hidden', async () => {
@@ -233,11 +259,20 @@ describe('link', () => {
 
       await setProperty(host, 'hide-label', 'true');
       await waitForStencilLifecycle(page);
-      const snapshot = await page.accessibility.snapshot({
-        root: link,
-      });
 
-      expect(snapshot).toMatchSnapshot();
+      await expectA11yToMatchSnapshot(page, link);
+    });
+
+    it('should expose correct accessibility tree if accessibility properties are set', async () => {
+      await initLink();
+      const host = await getHost();
+      const link = await getLink();
+
+      await setProperty(host, 'aria', {
+        'aria-label': 'Some more detailed label',
+      });
+      await waitForStencilLifecycle(page);
+      await expectA11yToMatchSnapshot(page, link);
     });
   });
 });
