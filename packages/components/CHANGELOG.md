@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Changed
-- Angular: Increased peer dependency to `>=10.0.0 <14.0.0`
+- Angular: Increased peer dependency to `>=13.0.0 <14.0.0`
 
 ### [2.7.0-beta.6] - 2021-12-08
 
