@@ -5,16 +5,21 @@
         <debounced-search-box />
       </ais-search-box>
 
-      <ais-hits :transform-items="transformItems">
+      <ais-hits
+        :transform-items="transformItems"
+        :class-names="{
+          'ais-Hits': 'hits',
+          'ais-Hits-item': 'hits-item',
+        }"
+      >
         <template v-slot:item="{ item }">
           <section>
-            <div>{{ item.category }}</div>
+            <p-text :weight="'bold'" :tag="'div'" :size="'small'" class="category">{{ item.category }}</p-text>
             <ul role="listbox">
-              <li v-for="(hit, index) in item.hits" :key="index" class="ais-hits-item">
+              <li v-for="(hit, index) in item.hits" :key="index">
                 <p-link-pure class="link" icon="none">
                   <router-link :to="hit.url">
-                    {{ hit.page }} {{ hit.tab ? ' > ' + hit.tab : '' }}
-                    <!--                    > {{ hit.name }}-->
+                    {{ hit.page }} {{ hit.tab ? ' > ' + hit.tab : '' }} > {{ hit.name }}
                   </router-link>
                 </p-link-pure>
               </li>
@@ -34,7 +39,7 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <p-link-pure class="link" icon="none" :active="isActive(category, page)">
-            <router-link :to="getRoute(category, page)" :active="isActive">
+            <router-link :to="getRoute(category, page)">
               {{ page }}
             </router-link>
           </p-link-pure>
@@ -89,8 +94,7 @@
       ...this.algoliaClient,
       algoliaClient: this.algoliaClient,
       search(requests) {
-        console.log('-> requests', requests);
-        // remove initial search
+        // remove initial search and handle empty searches
         if (requests.every(({ params }) => !params?.query.trim())) {
           return Promise.resolve({
             results: requests.map(() => ({
@@ -148,7 +152,7 @@
       return items.reduce((results, current) => {
         const categoryIndex = results.findIndex((result) => result.category === current.category);
         if (categoryIndex >= 0) {
-          //reduce amount of displayed hits per category to 5 when using distinct on PAGE instead of CATEGORY
+          // reduce amount of displayed hits per category to 5 when using distinct on PAGE instead of CATEGORY
           results[categoryIndex].hits.length < 5 && results[categoryIndex].hits.push(current);
         } else {
           results.push({ category: current.category, hits: [current] });
@@ -172,13 +176,21 @@
     display: inline-block;
     text-decoration: none;
   }
-  .ais-Hits {
+  .hits {
     position: absolute;
     width: p-px-to-rem(280px);
     background: $p-color-background-default;
     z-index: 1;
+    left: 0;
   }
-  .ais-hits-item {
-    padding: 11px;
+  .ais-SearchBox {
+    margin-bottom: p-px-to-rem(24px);
+  }
+</style>
+
+<style lang="scss">
+  @import '~@porsche-design-system/utilities/scss';
+  .hits-item {
+    padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
   }
 </style>
