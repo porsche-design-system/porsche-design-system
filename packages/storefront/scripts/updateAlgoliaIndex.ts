@@ -123,17 +123,22 @@ const toAlgoliaRecords = (keys: string[], content: string): AlgoliaRecord[] => {
       category: keys[0],
       page: keys[1],
       tab: keys[2],
-      url: keys.map((key) => paramCase(key)).join('/') + (index > 0 ? '#' + paramCase(heading) : ''),
+      url: '/' + keys.map((key) => paramCase(key)).join('/') + (index > 0 ? '#' + paramCase(heading) : ''),
     };
   });
 };
 
 const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'category', 'page', 'tab', 'content'];
 
+// category gives nice overview over different categories together with distinct:5 and hitsPerPage: 5
+// page gives nice overview over different components, but the hits for components are too big
+// set distinct: true and hitsPerPage:20 there
+const attributeForDistinct: keyof AlgoliaRecord = 'page';
+
 const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
   const client = algoliasearch('H4KMYOI855', 'bb3db0efeeb2b6f662ee1eb6f46a475c');
   const index = client.initIndex('some_index');
-  index.setSettings({ searchableAttributes });
+  index.setSettings({ searchableAttributes, distinct: true, attributeForDistinct, hitsPerPage: 20 });
   index
     .saveObjects(records, { autoGenerateObjectIDIfNotExist: false })
     .then(() => {
