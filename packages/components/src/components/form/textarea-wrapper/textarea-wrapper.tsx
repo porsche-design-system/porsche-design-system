@@ -40,6 +40,7 @@ export class TextareaWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   private textarea: HTMLTextAreaElement;
+  private valueElement: HTMLSpanElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -49,6 +50,12 @@ export class TextareaWrapper {
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
     this.observeAttributes();
+    if (this.textarea.maxLength >= 0) {
+      this.textarea.addEventListener('input', (e) => {
+        const { value } = e.target as HTMLTextAreaElement;
+        this.valueElement.innerText = value.length.toString();
+      });
+    }
   }
 
   public componentDidRender(): void {
@@ -69,7 +76,7 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled } = this.textarea;
+    const { disabled, maxLength } = this.textarea;
     const rootClasses = {
       ['root']: true,
       ['root--disabled']: disabled,
@@ -96,6 +103,11 @@ export class TextareaWrapper {
             </PrefixedTagNames.pText>
           )}
           <slot />
+          {maxLength >= 0 && (
+            <PrefixedTagNames.pText class="counter" color="neutral-contrast-medium">
+              <span ref={(el) => (this.valueElement = el)}>0</span>/{maxLength}
+            </PrefixedTagNames.pText>
+          )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />
