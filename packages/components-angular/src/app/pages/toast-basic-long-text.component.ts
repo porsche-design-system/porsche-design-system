@@ -5,17 +5,17 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   selector: 'toast-basic-long-text',
   styles: [
     `
-      .inner {
+      .playground {
+        height: 300px;
+        padding: 0;
         transform: translateX(0);
-        height: 150px;
+        border: 1px solid deeppink;
       }
     `,
   ],
   template: `
     <div class="playground light" title="should render toast multiline message on light background">
-      <div class="inner">
-        <p-toast [offsetBottom]="0"></p-toast>
-      </div>
+      <p-toast></p-toast>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

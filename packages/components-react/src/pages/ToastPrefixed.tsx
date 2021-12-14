@@ -13,9 +13,11 @@ const ToastPrefixed = (): JSX.Element => {
   const { addMessage } = useToastManager();
 
   const style = `
-  .inner {
+  .playground {
+    height: 300px;
+    padding: 0;
     transform: translateX(0);
-    height: 56px;
+    border: 1px solid deeppink;
   }`;
 
   useEffect(() => {
@@ -26,9 +28,7 @@ const ToastPrefixed = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should render prefixed toast neutral on light background">
-        <div className="inner">
-          <PToast offsetBottom={0} />
-        </div>
+        <PToast />
       </div>
     </>
   );
