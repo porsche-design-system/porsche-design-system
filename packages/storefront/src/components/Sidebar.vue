@@ -1,5 +1,28 @@
 <template>
   <nav>
+    <ais-instant-search index-name="some_index" :search-client="searchClient">
+      <ais-search-box>
+        <debounced-search-box />
+      </ais-search-box>
+
+      <ais-hits :transform-items="transformItems">
+        <template v-slot:item="{ item }">
+          <section>
+            <div>{{ item.category }}</div>
+            <ul role="listbox">
+              <li v-for="(hit, index) in item.hits" :key="index" class="ais-hits-item">
+                <p-link-pure class="link" icon="none">
+                  <router-link :to="hit.url">
+                    {{ hit.page }} {{ hit.tab ? ' > ' + hit.tab : '' }}
+                    <!--                    > {{ hit.name }}-->
+                  </router-link>
+                </p-link-pure>
+              </li>
+            </ul>
+          </section>
+        </template>
+      </ais-hits>
+    </ais-instant-search>
     <p-accordion
       v-for="(pages, category, index) in config"
       :key="index"
@@ -10,11 +33,11 @@
     >
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
-          <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
-            <p-link-pure class="link" icon="none" :href="href" :active="isActive" @click="navigate">{{
-              page
-            }}</p-link-pure>
-          </router-link>
+          <p-link-pure class="link" icon="none" :active="isActive(category, page)">
+            <router-link :to="getRoute(category, page)" :active="isActive">
+              {{ page }}
+            </router-link>
+          </p-link-pure>
         </li>
       </ul>
     </p-accordion>
@@ -24,18 +47,73 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import algoliasearch from 'algoliasearch/lite';
   import { Watch } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/models';
   import { config as storefrontConfig } from '@/../storefront.config';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
 
-  @Component
+  import 'instantsearch.css/themes/satellite-min.css';
+  import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
+
+  type AlgoliaRecord = {
+    objectID: string;
+    name: string;
+    content: string;
+    category: string;
+    page: string;
+    tab?: string;
+    url: string;
+  };
+
+  type AlgoliaResult = {
+    category: string;
+    hits: AlgoliaRecord[];
+  };
+
+  @Component({
+    components: {
+      DebouncedSearchBox,
+    },
+  })
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public paramCase = paramCase;
     public accordion: { [id: string]: boolean } = {};
+    public algoliaClient = algoliasearch('H4KMYOI855', '8201068bd25dcc4d4b33062150d5b4f5', {
+      _useRequestCache: true,
+    });
 
+    public searchClient = {
+      ...this.algoliaClient,
+      algoliaClient: this.algoliaClient,
+      search(requests) {
+        console.log('-> requests', requests);
+        // remove initial search
+        if (requests.every(({ params }) => !params?.query.trim())) {
+          return Promise.resolve({
+            results: requests.map(() => ({
+              hits: [],
+              nbHits: 0,
+              nbPages: 0,
+              page: 0,
+              processingTimeMS: 0,
+            })),
+          });
+        }
+        return this.algoliaClient.search(requests);
+      },
+    };
+
+    public getRoute(category: string, page: string): string {
+      return `/${paramCase(category)}/${paramCase(page)}`;
+    }
+
+    public isActive(category: string, page: string): boolean {
+      const route = this.getRoute(category, page);
+      return this.$route.path.startsWith(route);
+    }
     private created(): void {
       Object.keys(this.config).map((category) => {
         this.accordion[category] = false;
@@ -65,6 +143,19 @@
       const { category } = route.params;
       return category ? capitalCase(category) : '';
     }
+
+    transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
+      return items.reduce((results, current) => {
+        const categoryIndex = results.findIndex((result) => result.category === current.category);
+        if (categoryIndex >= 0) {
+          //reduce amount of displayed hits per category to 5 when using distinct on PAGE instead of CATEGORY
+          results[categoryIndex].hits.length < 5 && results[categoryIndex].hits.push(current);
+        } else {
+          results.push({ category: current.category, hits: [current] });
+        }
+        return results;
+      }, [] as AlgoliaResult[]);
+    }
   }
 </script>
 
@@ -80,5 +171,14 @@
     margin: $p-spacing-4 0;
     display: inline-block;
     text-decoration: none;
+  }
+  .ais-Hits {
+    position: absolute;
+    width: p-px-to-rem(280px);
+    background: $p-color-background-default;
+    z-index: 1;
+  }
+  .ais-hits-item {
+    padding: 11px;
   }
 </style>
