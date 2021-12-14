@@ -6,7 +6,6 @@ import { getComponentCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
-  styleUrl: 'modal.scss',
   shadow: true,
 })
 export class Modal {
@@ -14,14 +13,19 @@ export class Modal {
 
   /** If true, the modal is open. */
   @Prop() public open = false;
+
   /** If true, the modal will not have a close button. */
   @Prop() public disableCloseButton?: boolean = false;
+
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
   /** The title of the modal */
   @Prop() public heading?: string;
+
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
+
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
@@ -56,7 +60,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.open);
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen);
   }
 
   public componentDidUpdate(): void {
@@ -97,21 +101,19 @@ export class Modal {
                 </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
-                <div class="close">
-                  <PrefixedTagNames.pButtonPure
-                    type="button"
-                    ref={(el) => (this.closeBtn = el)}
-                    hideLabel
-                    icon="close"
-                    onClick={this.closeModal}
-                  >
-                    Close modal
-                  </PrefixedTagNames.pButtonPure>
-                </div>
+                <PrefixedTagNames.pButtonPure
+                  class="close"
+                  type="button"
+                  ref={(el) => (this.closeBtn = el)}
+                  hideLabel
+                  icon="close"
+                  onClick={this.closeModal}
+                >
+                  Close modal
+                </PrefixedTagNames.pButtonPure>
               )}
             </header>
           )}
-
           <slot />
         </aside>
       </Host>

@@ -11,6 +11,7 @@ import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/head
 import { BannerState } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
@@ -28,8 +29,8 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
-import { ToastOffset, ToastState } from "./components/feedback/toast/toast/toast-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
+import { ToastState } from "./components/feedback/toast/toast/toast-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -203,7 +204,7 @@ export namespace Components {
         /**
           * Defines the background color.
          */
-        "backgroundColor"?: 'transparent' | 'default';
+        "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Adapts the color when used on dark background.
          */
@@ -211,7 +212,7 @@ export namespace Components {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: ContentWrapperWidth;
     }
     interface PDivider {
         /**
@@ -940,10 +941,6 @@ export namespace Components {
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
         /**
-          * The bottom offset of the toast.
-         */
-        "offsetBottom"?: ToastOffset;
-        /**
           * Adapts the toast color depending on the theme.
          */
         "theme"?: Theme;
@@ -1463,7 +1460,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color.
          */
-        "backgroundColor"?: 'transparent' | 'default';
+        "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1471,7 +1468,7 @@ declare namespace LocalJSX {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: ContentWrapperWidth;
     }
     interface PDivider {
         /**
@@ -2230,10 +2227,6 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PToast {
-        /**
-          * The bottom offset of the toast.
-         */
-        "offsetBottom"?: ToastOffset;
         /**
           * Adapts the toast color depending on the theme.
          */
