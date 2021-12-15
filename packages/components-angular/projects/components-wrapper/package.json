@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "2.7.0",
+  "version": "2.8.0-beta.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -26,11 +26,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.7.0",
+    "@porsche-design-system/components-js": "2.8.0-beta.0",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
-    "@angular/common": ">=10.0.0 <13.0.0",
-    "@angular/core": ">=10.0.0 <13.0.0"
+    "@angular/common": ">=12.0.0 <14.0.0",
+    "@angular/core": ">=12.0.0 <14.0.0"
   }
 }

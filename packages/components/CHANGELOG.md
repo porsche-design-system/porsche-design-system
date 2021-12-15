@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.8.0-beta.0] - 2021-12-15
+
+#### Changed
+- Angular: Increased peer dependency to `>=12.0.0 <14.0.0`
+
 ### [2.7.0] - 2021-12-14
 
 ### [2.7.0-rc.0] - 2021-12-14
