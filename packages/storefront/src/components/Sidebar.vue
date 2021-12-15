@@ -70,7 +70,6 @@
 
   import 'instantsearch.css/themes/satellite-min.css';
   import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
-  import { SearchOptions } from '@algolia/client-search';
 
   type AlgoliaRecord = {
     objectID: string;
@@ -89,7 +88,15 @@
 
   type AlgoliaRequest = {
     indexName: string;
-    params: SearchOptions;
+    params: AlgoliaRequestParams;
+  };
+
+  type AlgoliaRequestParams = {
+    facets: string[];
+    query: string;
+    tagFilters: string;
+    highlightPreTag?: string;
+    highlightPostTag?: string;
   };
 
   @Component({
