@@ -109,8 +109,11 @@ export class TextFieldWrapper {
       ['unit--disabled']: disabled,
     };
 
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.onLabelClick };
+    const labelProps = {
+      tag: 'span',
+      color: 'inherit',
+      onClick: this.onLabelClick,
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

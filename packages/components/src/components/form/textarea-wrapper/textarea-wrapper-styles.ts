@@ -40,7 +40,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
             position: 'relative',
             ...getInset(),
             width: '100%',
-            padding: pxToRemWithUnit(11),
             margin: 0,
             outline: '1px solid transparent',
             outlineOffset: '2px',
@@ -57,6 +56,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
             color: baseColor,
             transition:
               getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
+            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
             resize: 'vertical',
           },
           ...(state === 'success' || state === 'error'
