@@ -2,50 +2,58 @@
   <nav>
     <ais-instant-search index-name="some_index" :search-client="searchClient">
       <ais-search-box>
-        <debounced-search-box />
+        <debounced-search-box :on-focus="() => (this.displayHits = true)" />
       </ais-search-box>
 
-      <ais-hits
-        :transform-items="transformItems"
-        :class-names="{
-          'ais-Hits': 'hits',
-          'ais-Hits-item': 'hits-item',
-        }"
-      >
-        <template v-slot:item="{ item }">
-          <section>
-            <p-text :weight="'bold'" :tag="'div'" :size="'small'" class="category">{{ item.category }}</p-text>
-            <ul role="listbox">
-              <li v-for="(hit, index) in item.hits" :key="index">
-                <p-link-pure class="link" icon="none">
-                  <router-link :to="hit.url">
-                    {{ hit.page }} {{ hit.tab ? ' > ' + hit.tab : '' }} > {{ hit.name }}
-                  </router-link>
-                </p-link-pure>
-              </li>
-            </ul>
-          </section>
+      <ais-state-results>
+        <template v-slot="{ results: { hits } }">
+          {{ shouldHideNavigation(hits) }}
+          <ais-hits
+            v-show="displayHits"
+            :transform-items="transformItems"
+            :class-names="{
+              'ais-Hits': 'hits',
+              'ais-Hits-item': 'hits-item',
+            }"
+          >
+            <template v-slot:item="{ item }">
+              <section>
+                <p-text :weight="'bold'" :tag="'div'" :size="'small'" class="category">{{ item.category }}</p-text>
+                <ul>
+                  <li v-for="(hit, index) in item.hits" :key="index">
+                    <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
+                      <router-link :to="hit.url">
+                        {{ hit.page }} {{ hit.tab ? ' > ' + hit.tab : '' }} > {{ hit.name }}
+                      </router-link>
+                    </p-link-pure>
+                  </li>
+                </ul>
+              </section>
+            </template>
+          </ais-hits>
         </template>
-      </ais-hits>
+      </ais-state-results>
     </ais-instant-search>
-    <p-accordion
-      v-for="(pages, category, index) in config"
-      :key="index"
-      :heading="category"
-      v-bind:open="accordion[category]"
-      v-on:accordionChange="toggleActive(category)"
-      compact="true"
-    >
-      <ul>
-        <li v-for="(tabs, page, index) in pages" :key="index">
-          <p-link-pure class="link" icon="none" :active="isActive(category, page)">
-            <router-link :to="getRoute(category, page)">
-              {{ page }}
-            </router-link>
-          </p-link-pure>
-        </li>
-      </ul>
-    </p-accordion>
+    <template v-if="!this.hideNavigation">
+      <p-accordion
+        v-for="(pages, category, index) in config"
+        :key="index"
+        :heading="category"
+        v-bind:open="accordion[category]"
+        v-on:accordionChange="toggleActive(category)"
+        compact="true"
+      >
+        <ul>
+          <li v-for="(tabs, page, index) in pages" :key="index">
+            <p-link-pure class="link" icon="none" :active="isActive(category, page)">
+              <router-link :to="getRoute(category, page)">
+                {{ page }}
+              </router-link>
+            </p-link-pure>
+          </li>
+        </ul>
+      </p-accordion>
+    </template>
   </nav>
 </template>
 
@@ -86,6 +94,9 @@
     public config: StorefrontConfig = storefrontConfig;
     public paramCase = paramCase;
     public accordion: { [id: string]: boolean } = {};
+    public hideNavigation = false;
+    public displayHits = false;
+
     public algoliaClient = algoliasearch('H4KMYOI855', '8201068bd25dcc4d4b33062150d5b4f5', {
       _useRequestCache: true,
     });
@@ -141,6 +152,10 @@
 
     toggleActive(category: string): void {
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
+    }
+
+    shouldHideNavigation(hits: AlgoliaResult[]): void {
+      this.hideNavigation = this.displayHits && hits.length > 0;
     }
 
     private static category(route: Route): string {
