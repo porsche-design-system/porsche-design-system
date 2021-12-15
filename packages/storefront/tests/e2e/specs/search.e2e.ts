@@ -18,10 +18,11 @@ const getAlgoliaHits = async () =>
 
 const getNavigation = () => selectNode(page, 'p-accordion');
 const searchInputSelector = 'input[type="search"]';
+const searchTerm = 'button';
 
 const sendAlgoliaRequest = async () =>
   Promise.all([
-    page.type(searchInputSelector, 'button'),
+    page.type(searchInputSelector, searchTerm),
     page.waitForResponse((response) => response.status() === 200),
   ]);
 
@@ -63,28 +64,32 @@ describe('search', () => {
     expect(await getNavigation()).not.toBeNull();
   });
 
-  xit('should hide hits and show navigation after clearing the search', async () => {
+  it('should hide hits and show navigation after clearing the search', async () => {
     await sendAlgoliaRequest();
-    await page.evaluate((searchInputSelector) => {
-      // no query fired by algolia internals when done like this
-      (document.querySelector(searchInputSelector) as HTMLInputElement).value = '';
-    }, searchInputSelector);
+
+    await page.focus(searchInputSelector);
+    for (let i = 0; i < searchTerm.length; i++) {
+      await page.keyboard.press('Backspace');
+    }
 
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const algoliaHitsList = await getAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(algoliaHitsList.length).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
 
-  xit('should hide hits after pressing ESC', async () => {
+  it('should hide hits after pressing ESC', async () => {
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
-    // not doing what chrome / safari do
-    // firefox escape on input field does not clear it
     await page.keyboard.press('Escape');
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const algoliaHitsList = await getAlgoliaHits();
+
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(algoliaHitsList.length).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
 });
