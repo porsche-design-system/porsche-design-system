@@ -46,9 +46,7 @@
         <ul>
           <li v-for="(tabs, page, index) in pages" :key="index">
             <p-link-pure class="link" icon="none" :active="isActive(category, page)">
-              <router-link :to="getRoute(category, page)">
-                {{ page }}
-              </router-link>
+              <router-link :to="getRoute(category, page)">{{ page }}</router-link>
             </p-link-pure>
           </li>
         </ul>
