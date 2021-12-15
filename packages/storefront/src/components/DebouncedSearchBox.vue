@@ -20,7 +20,7 @@
     @Prop({ default: 300 }) public delay!: number;
 
     public localQuery = '';
-    public timerId: number;
+    public timerId: ReturnType<typeof setTimeout>;
 
     data() {
       return {
