@@ -80,15 +80,16 @@ export const getComponentCss = (
         padding: 0,
         appearance: 'none',
         boxSizing: 'border-box',
-        border: `1px solid ${isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor}`,
+        color: isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor,
+        border: '1px solid currentColor',
         borderRadius: pxToRemWithUnit(12),
         backgroundColor: isDisabledOrLoading && checked ? disabledColor : checked ? successColor : 'transparent',
         outline: 'none',
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-        transition: `${getTransition('background-color')},${getTransition('border-color')}`,
+        transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
         ...(!isDisabledOrLoading && {
           '&:hover': {
-            borderColor:
+            color:
               checked && isDark(theme)
                 ? colorDarken.darkTheme.notification.success
                 : checked
@@ -106,9 +107,7 @@ export const getComponentCss = (
           },
         }),
         '&:focus': {
-          boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px ${
-            isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor
-          }`,
+          boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px currentColor`,
         },
         '&:not(:focus-visible)': {
           boxShadow: 'none',
