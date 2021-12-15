@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Bug where `Select Wrapper` threw wrong validation errors.
+
 ### [2.8.0-beta.0] - 2021-12-15
 
 #### Changed
