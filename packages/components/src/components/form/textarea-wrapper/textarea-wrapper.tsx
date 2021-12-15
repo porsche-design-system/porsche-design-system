@@ -15,6 +15,7 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
+import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -40,7 +41,7 @@ export class TextareaWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   private textarea: HTMLTextAreaElement;
-  private valueElement: HTMLSpanElement;
+  private counterElement: HTMLSpanElement;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -50,11 +51,12 @@ export class TextareaWrapper {
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
     this.observeAttributes();
-    if (this.textarea.maxLength >= 0) {
-      this.textarea.addEventListener('input', (e) => {
-        const { value } = e.target as HTMLTextAreaElement;
-        this.valueElement.innerText = value.length.toString();
-      });
+  }
+
+  public componentDidLoad(): void {
+    if (hasCounter(this.textarea)) {
+      addInputEventListener(this.textarea, this.counterElement);
+      setCounterInnerHtml(this.textarea, this.counterElement);
     }
   }
 
@@ -76,7 +78,7 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled, maxLength } = this.textarea;
+    const { disabled } = this.textarea;
     const rootClasses = {
       ['root']: true,
       ['root--disabled']: disabled,
@@ -103,10 +105,14 @@ export class TextareaWrapper {
             </PrefixedTagNames.pText>
           )}
           <slot />
-          {maxLength >= 0 && (
-            <PrefixedTagNames.pText class="counter" color="neutral-contrast-medium">
-              <span ref={(el) => (this.valueElement = el)}>0</span>/{maxLength}
-            </PrefixedTagNames.pText>
+          {hasCounter(this.textarea) && (
+            <PrefixedTagNames.pText
+              class="counter"
+              tag="span"
+              color="inherit"
+              aria-hidden="true"
+              ref={(el) => (this.counterElement = el)}
+            />
           )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
