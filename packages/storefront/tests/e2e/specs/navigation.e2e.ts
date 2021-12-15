@@ -45,7 +45,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         );
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkElement] = await browserPage.$x(
-          `//div[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
+          `//div[@class='sidebar']/nav//p-link-pure//a[contains(., '${page}')][@href='${href}']`
         );
 
         await accordionButton.click();
