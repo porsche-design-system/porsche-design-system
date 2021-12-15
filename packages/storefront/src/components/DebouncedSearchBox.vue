@@ -20,7 +20,7 @@
     @Prop({ default: 300 }) public delay!: number;
 
     public localQuery = '';
-    public timerId: ReturnType<typeof setTimeout>;
+    public timerId!: ReturnType<typeof setTimeout>;
 
     data() {
       return {
@@ -46,6 +46,8 @@
       }
       this.timerId = setTimeout(() => {
         // when query is empty send a space
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         this.state.refine(this.localQuery ? this.localQuery : ' ');
       }, this.delay);
     }

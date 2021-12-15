@@ -61,6 +61,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import algoliasearch from 'algoliasearch/lite';
+  import { createInMemoryCache } from '@algolia/cache-in-memory';
   import { Watch } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/models';
   import { config as storefrontConfig } from '@/../storefront.config';
@@ -85,6 +86,19 @@
     hits: AlgoliaRecord[];
   };
 
+  type AlgoliaRequest = {
+    indexName: string;
+    params: AlgoliaRequestParams;
+  };
+
+  type AlgoliaRequestParams = {
+    facets: string[];
+    query: string;
+    tagFilters: string;
+    highlightPreTag?: string;
+    highlightPostTag?: string;
+  };
+
   @Component({
     components: {
       DebouncedSearchBox,
@@ -98,15 +112,16 @@
     public displayHits = false;
 
     public algoliaClient = algoliasearch('H4KMYOI855', '8201068bd25dcc4d4b33062150d5b4f5', {
-      _useRequestCache: true,
+      responsesCache: createInMemoryCache(),
+      requestsCache: createInMemoryCache({ serializable: false }),
     });
 
     public searchClient = {
       ...this.algoliaClient,
       algoliaClient: this.algoliaClient,
-      search(requests) {
+      search(requests: AlgoliaRequest[]) {
         // remove initial search and handle empty searches
-        if (requests.every(({ params }) => !params?.query.trim())) {
+        if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
           return Promise.resolve({
             results: requests.map(() => ({
               hits: [],
