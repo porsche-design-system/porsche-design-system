@@ -43,7 +43,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  unit: string,
+  hasUnitOrCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
   isPassword: boolean
 ): string => {
@@ -68,7 +68,7 @@ export const getComponentCss = (
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
-          ...(!unit && { padding: pxToRemWithUnit(hasVisibleState ? 10 : 11) }),
+          ...(!hasUnitOrCounter && { padding: pxToRemWithUnit(hasVisibleState ? 10 : 11) }),
           margin: 0,
           outline: 'transparent solid 1px',
           outlineOffset: '2px',
@@ -243,6 +243,15 @@ export const getComponentCss = (
           },
         }),
       },
+    },
+    counter: {
+      position: 'absolute',
+      bottom: 0,
+      boxSizing: 'border-box',
+      right: 0,
+      pointerEvents: 'none',
+      color: contrastMediumColor,
+      padding: pxToRemWithUnit(12),
     },
   });
 };
