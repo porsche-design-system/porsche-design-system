@@ -13,7 +13,7 @@ beforeEach(async () => (browserPage = await browser.newPage()));
 afterEach(async () => await browserPage.close());
 
 const isLinkActive = async (element: ElementHandle | null): Promise<boolean> =>
-  element ? ((await (await element.getProperty('active')).jsonValue()) as boolean) : false;
+  element ? (await getClassNames(element)).includes('router-link-active') : false;
 const getClassNames = async (element: ElementHandle | null): Promise<string> =>
   element ? ((await (await element.getProperty('className')).jsonValue()) as string) : '';
 const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
