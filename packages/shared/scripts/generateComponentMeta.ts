@@ -12,15 +12,17 @@ const generateComponentMeta = (): void => {
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
   const types = [
-    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
+    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; hasHTMLElementValidation: boolean; requiredParent?: TagName; requiredChild?: string; validationLifecycle?: string };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
   ].join('\n');
 
   type ComponentMeta = {
     isFocusable: boolean;
     isThemeable: boolean;
+    hasHTMLElementValidation: boolean;
     requiredParent?: TagName;
     requiredChild?: string;
+    validationLifecycle?: string;
   };
 
   type ComponentsMeta = {
@@ -54,6 +56,10 @@ const generateComponentMeta = (): void => {
 
     const [, requiredChildRaw] = /getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
 
+    const hasHTMLElementValidation = !!requiredChildRaw;
+    const [, validationLifecycle] =
+      /public (.*\(\)): void {\n.*getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
+
     let requiredChild = undefined;
     if (requiredChildRaw) {
       requiredChild = requiredChildRaw.replace(/\[/g, ' '); // replace opening bracket of attribute selector
@@ -72,7 +78,14 @@ const generateComponentMeta = (): void => {
       }
     }
 
-    result[tagName] = { isFocusable, isThemeable, requiredParent, requiredChild };
+    result[tagName] = {
+      isFocusable,
+      isThemeable,
+      hasHTMLElementValidation,
+      requiredParent,
+      requiredChild,
+      validationLifecycle,
+    };
     return result;
   }, {} as ComponentsMeta);
 
