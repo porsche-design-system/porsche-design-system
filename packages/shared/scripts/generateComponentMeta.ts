@@ -12,17 +12,15 @@ const generateComponentMeta = (): void => {
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
   const types = [
-    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; hasHTMLElementValidation: boolean; requiredParent?: TagName; requiredChild?: string; validationLifecycle?: string };`,
+    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
   ].join('\n');
 
   type ComponentMeta = {
     isFocusable: boolean;
     isThemeable: boolean;
-    hasHTMLElementValidation: boolean;
     requiredParent?: TagName;
     requiredChild?: string;
-    validationLifecycle?: string;
   };
 
   type ComponentsMeta = {
@@ -54,37 +52,31 @@ const generateComponentMeta = (): void => {
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
 
-    const [, requiredChildRaw] = /getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
+    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) ?? [];
+    requiredChild = requiredChild?.trim();
 
-    const hasHTMLElementValidation = !!requiredChildRaw;
-    const [, validationLifecycle] =
-      /public (.*\(\)): void {\n.*getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
-
-    let requiredChild = undefined;
-    if (requiredChildRaw) {
-      requiredChild = requiredChildRaw.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-      requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
+    if (requiredChild) {
+      const cleanSelector = (markup: string): string =>
+        markup
+          .replace(/\[/g, ' ') // replace opening bracket of attribute selector
+          .replace(/]/g, ''); // replace closing bracket of attribute selector
 
       if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
+        requiredChild = cleanSelector(requiredChild);
         requiredChild = requiredChild.slice(1, -1);
       } else {
         const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
-        if (valueRaw) {
-          const value = eval(`${valueRaw}`);
-          requiredChild = value.split(',')[0];
-          requiredChild = requiredChild.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-          requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
-        }
+        const value = eval(`${valueRaw || requiredChild}`);
+        requiredChild = value.split(',')[0];
+        requiredChild = cleanSelector(requiredChild);
       }
     }
 
     result[tagName] = {
       isFocusable,
       isThemeable,
-      hasHTMLElementValidation,
       requiredParent,
       requiredChild,
-      validationLifecycle,
     };
     return result;
   }, {} as ComponentsMeta);
