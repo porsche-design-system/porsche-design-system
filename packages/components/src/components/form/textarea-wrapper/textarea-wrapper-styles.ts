@@ -9,24 +9,21 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFormTextHiddenJssStyle,
-  getInset,
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { Styles } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
-import { color, font } from '@porsche-design-system/utilities';
+import { getBaseChildStyles, isVisibleState } from '../form-styles';
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState): string => {
   const theme: Theme = 'light';
-  const { baseColor, backgroundColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
-  const hasVisibleState = ['success', 'error'].includes(state);
+  const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const hasVisibleState = isVisibleState(state);
 
   return getCss({
     ...buildHostStyles({
@@ -34,63 +31,14 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
     }),
     ...buildGlobalStyles(
       mergeDeep(
-        addImportantToEachRule({
-          '::slotted(textarea)': {
-            display: 'block',
-            position: 'relative',
-            ...getInset(),
-            width: '100%',
-            margin: 0,
-            outline: '1px solid transparent',
-            outlineOffset: '2px',
-            appearance: 'none',
-            boxSizing: 'border-box',
-            border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
-            borderRadius: 0,
-            backgroundColor,
-            opacity: 1,
-            fontFamily: font.family,
-            fontWeight: font.weight.regular,
-            ...font.size.small,
-            textIndent: 0,
-            color: baseColor,
-            transition:
-              getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
-            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
-            resize: 'vertical',
-          },
-          ...(state === 'success' || state === 'error'
-            ? {
-                '::slotted(textarea:focus)': {
-                  outlineColor: stateColor,
-                },
-
-                '::slotted(textarea[readonly]:focus)': {
-                  outlineColor: 'transparent',
-                },
-              }
-            : {
-                '::slotted(textarea:focus)': {
-                  outlineColor: contrastMediumColor,
-                },
-              }),
-          '::slotted(textarea:hover)': {
-            borderColor: hasVisibleState ? stateHoverColor : baseColor,
-          },
-          '::slotted(textarea:disabled)': {
-            cursor: 'not-allowed',
-            color: color.state.disabled, // 🤷 ,
-            borderColor: color.state.disabled,
-            WebkitTextFillColor: color.state.disabled, // fix placeholder color bug in Safari
-          },
-          '::slotted(textarea[readonly])': {
-            borderColor: '#ebebeb', // 🤷
-            backgroundColor: '#ebebeb', // 🤷
-          },
-          '::slotted(textarea[readonly]:not(:disabled))': {
-            color: contrastMediumColor,
-          },
-        }),
+        addImportantToEachRule(
+          mergeDeep(getBaseChildStyles('textarea', state), {
+            '::slotted(textarea)': {
+              padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+              resize: 'vertical',
+            },
+          })
+        ),
         {
           '::slotted(textarea)': {
             minHeight: pxToRemWithUnit(192), // min-height should be overridable

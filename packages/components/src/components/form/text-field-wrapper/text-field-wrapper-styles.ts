@@ -10,16 +10,16 @@ import {
   getCss,
   getFocusStyles,
   getFormTextHiddenJssStyle,
-  getInset,
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
-  getThemedFormStateColors,
   getTransition,
+  mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { srOnly, font, color } from '@porsche-design-system/utilities';
+import { getBaseChildStyles, isVisibleState } from '../form-styles';
+import { srOnly, color } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 
 export const getComponentCss = (
@@ -30,10 +30,8 @@ export const getComponentCss = (
   isPassword: boolean
 ): string => {
   const theme: Theme = 'light';
-  const { baseColor, backgroundColor, contrastMediumColor, activeColor, disabledColor, hoverColor } =
-    getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
-  const hasVisibleState = ['success', 'error'].includes(state);
+  const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const hasVisibleState = isVisibleState(state);
 
   return getCss({
     ...buildHostStyles({
@@ -41,64 +39,14 @@ export const getComponentCss = (
     }),
     ...buildGlobalStyles(
       addImportantToEachRule({
-        '::slotted(input)': {
-          position: 'relative',
-          ...getInset(),
-          width: '100%',
-          height: pxToRemWithUnit(48),
-          display: 'block',
-          ...(!unit && { padding: pxToRemWithUnit(hasVisibleState ? 10 : 11) }),
-          margin: 0,
-          outline: '1px solid transparent',
-          outlineOffset: '2px',
-          appearance: 'none',
-          boxSizing: 'border-box',
-          border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
-          borderRadius: 0,
-          backgroundColor,
-          opacity: 1,
-          fontFamily: font.family,
-          fontWeight: font.weight.regular,
-          ...font.size.small,
-          textIndent: 0,
-          color: baseColor,
-          transition:
-            getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
-        },
-        ...(state === 'success' || state === 'error'
-          ? {
-              '::slotted(input:focus)': {
-                outlineColor: stateColor,
-              },
-
-              '::slotted(input[readonly]:focus)': {
-                outlineColor: 'transparent',
-              },
-            }
-          : {
-              '::slotted(input:focus)': {
-                outlineColor: contrastMediumColor,
-              },
-            }),
-        '::slotted(input:hover)': {
-          borderColor: hasVisibleState ? stateHoverColor : baseColor,
-        },
-        '::slotted(input[readonly]:focus)': {
-          outlineColor: 'transparent',
-        },
-        '::slotted(input:disabled)': {
-          cursor: 'not-allowed',
-          color: color.state.disabled, // 🤷
-          borderColor: color.state.disabled,
-          WebkitTextFillColor: color.state.disabled, // fix placeholder color bug in Safari
-        },
-        '::slotted(input[readonly])': {
-          borderColor: '#ebebeb', // 🤷
-          backgroundColor: '#ebebeb', // 🤷
-        },
-        '::slotted(input[readonly]:not(:disabled))': {
-          color: contrastMediumColor,
-        },
+        ...mergeDeep(
+          getBaseChildStyles('input', state),
+          !unit && {
+            '::slotted(input)': {
+              padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+            },
+          }
+        ),
         '::slotted(input[type="number"])': {
           MozAppearance: 'textfield', // hides up/down spin button for Firefox
         },
@@ -141,11 +89,9 @@ export const getComponentCss = (
         '&:hover': {
           color: hoverColor,
         },
-
         '&:active': {
           color: activeColor,
         },
-
         '&:disabled': {
           color: disabledColor,
           cursor: 'not-allowed',
@@ -182,15 +128,11 @@ export const getComponentCss = (
     unit: {
       position: 'absolute',
       bottom: 0,
-      left: 0,
+      ...(unitPosition === 'suffix' ? { right: 0 } : { left: 0 }),
       padding: pxToRemWithUnit(12),
       zIndex: 1,
       boxSizing: 'border-box',
       color: contrastMediumColor,
-      ...(unitPosition === 'suffix' && {
-        left: 'auto',
-        right: 0,
-      }),
       '&--disabled': {
         color: disabledColor,
         cursor: 'not-allowed',
@@ -201,7 +143,7 @@ export const getComponentCss = (
         '&~::slotted(input:not(:disabled):not([readonly]))': {
           borderColor: baseColor,
         },
-        ...((state === 'success' || state === 'error') && {
+        ...(hasVisibleState && {
           '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
             borderColor: colorDarken.notification[state],
           },
