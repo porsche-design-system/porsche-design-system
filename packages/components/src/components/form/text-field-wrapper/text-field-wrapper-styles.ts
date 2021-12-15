@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  addImportantToRule,
   BreakpointCustomizable,
   buildGlobalStyles,
   buildHostStyles,
@@ -11,6 +10,7 @@ import {
   getCss,
   getFocusStyles,
   getFormTextHiddenJssStyle,
+  getInset,
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
@@ -21,24 +21,6 @@ import {
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { srOnly, font, color } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
-      '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
-        {
-          WebkitAppearance: 'none',
-          appearance: 'none',
-        },
-      '& input[type="text"]': {
-        '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
-          marginRight: '2.4375rem',
-        },
-      },
-    })
-  );
-};
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -61,16 +43,13 @@ export const getComponentCss = (
       addImportantToEachRule({
         '::slotted(input)': {
           position: 'relative',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
+          ...getInset(),
           width: '100%',
           height: pxToRemWithUnit(48),
           display: 'block',
           ...(!unit && { padding: pxToRemWithUnit(hasVisibleState ? 10 : 11) }),
           margin: 0,
-          outline: 'transparent solid 1px',
+          outline: '1px solid transparent',
           outlineOffset: '2px',
           appearance: 'none',
           boxSizing: 'border-box',
@@ -86,7 +65,6 @@ export const getComponentCss = (
           transition:
             getTransition('color') + ',' + getTransition('border-color') + ',' + getTransition('background-color'),
         },
-
         ...(state === 'success' || state === 'error'
           ? {
               '::slotted(input:focus)': {
@@ -102,47 +80,38 @@ export const getComponentCss = (
                 outlineColor: contrastMediumColor,
               },
             }),
-
         '::slotted(input:hover)': {
           borderColor: hasVisibleState ? stateHoverColor : baseColor,
         },
-
         '::slotted(input[readonly]:focus)': {
           outlineColor: 'transparent',
         },
-
         '::slotted(input:disabled)': {
           cursor: 'not-allowed',
           color: color.state.disabled, // 🤷
           borderColor: color.state.disabled,
           WebkitTextFillColor: color.state.disabled, // fix placeholder color bug in Safari
         },
-
         '::slotted(input[readonly])': {
           borderColor: '#ebebeb', // 🤷
           backgroundColor: '#ebebeb', // 🤷
         },
-
         '::slotted(input[readonly]:not(:disabled))': {
           color: contrastMediumColor,
         },
-
         '::slotted(input[type="number"])': {
           MozAppearance: 'textfield', // hides up/down spin button for Firefox
         },
-
         // Reset webkit autofill styles
         '::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus)':
           {
             WebkitBackgroundClip: 'padding-box',
           },
-
         ...(isPassword && {
           '::slotted(input[type="password"]), ::slotted(input[type="text"])': {
             paddingRight: pxToRemWithUnit(48),
           },
         }),
-
         '::slotted(input[type="search"])': {
           paddingRight: pxToRemWithUnit(48),
         },
@@ -151,7 +120,6 @@ export const getComponentCss = (
     root: {
       display: 'block',
       position: 'relative',
-
       '& button': {
         position: 'absolute',
         bottom: 0,
@@ -169,9 +137,7 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         transition: getTransition('color'),
-
         ...getFocusStyles({ color: color.state.focus, offset: hasVisibleState ? -5 : -4 }),
-
         '&:hover': {
           color: hoverColor,
         },
@@ -207,10 +173,8 @@ export const getComponentCss = (
         },
       },
     },
-
     ...getRequiredStyles(theme),
     ...getStateMessageStyles(theme, state),
-
     'sr-only': {
       ...srOnly(),
       padding: 0,
@@ -232,17 +196,35 @@ export const getComponentCss = (
         cursor: 'not-allowed',
       },
     },
-    'label__text, unit': {
+    'label__text, unit': addImportantToEachRule({
       '&:hover': {
         '&~::slotted(input:not(:disabled):not([readonly]))': {
-          borderColor: addImportantToRule(baseColor),
+          borderColor: baseColor,
         },
         ...((state === 'success' || state === 'error') && {
           '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
-            borderColor: addImportantToRule(colorDarken.notification[state]),
+            borderColor: colorDarken.notification[state],
           },
         }),
       },
-    },
+    }),
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildSlottedStyles(host, {
+      ...getBaseSlottedStyles(),
+      '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
+        {
+          WebkitAppearance: 'none',
+          appearance: 'none',
+        },
+      '& input[type="text"]': {
+        '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
+          marginRight: '2.4375rem',
+        },
+      },
+    })
+  );
 };

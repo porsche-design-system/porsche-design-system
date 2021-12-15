@@ -5,20 +5,19 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
   attachSlottedCss,
+  attachComponentCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { getSlottedCss } from './textarea-wrapper-styles';
+import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
 
 @Component({
   tag: 'p-textarea-wrapper',
-  styleUrl: 'textarea-wrapper.scss',
   shadow: true,
 })
 export class TextareaWrapper {
@@ -51,6 +50,10 @@ export class TextareaWrapper {
     this.observeAttributes();
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
@@ -69,13 +72,11 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled } = this.textarea;
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: disabled,
-      [`root--${this.state}`]: this.state !== 'none',
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: this.textarea.disabled,
     };
+
     const textProps = { tag: 'span', color: 'inherit' };
     const labelProps = { ...textProps, onClick: this.onLabelClick };
 
@@ -83,15 +84,15 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={rootClasses}>
+        <label class={labelClasses}>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class="root__text" {...labelProps}>
+            <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           {hasDescription(this.host, this.description) && (
-            <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
+            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
