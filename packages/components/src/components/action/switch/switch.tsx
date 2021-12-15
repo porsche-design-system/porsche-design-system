@@ -1,18 +1,18 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../../types';
 import {
+  attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
-  mapBreakpointPropToClasses,
 } from '../../../utils';
+import { getComponentCss } from './switch-styles';
 
 export type SwitchChangeEvent = { checked: boolean };
 
 @Component({
   tag: 'p-switch',
-  styleUrl: 'switch.scss',
   shadow: true,
 })
 export class Switch {
@@ -61,22 +61,24 @@ export class Switch {
     );
   }
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--checked']: this.checked,
-      ['root--disabled-loading']: this.isDisabledOrLoading,
-      ['root--loading']: this.loading,
-      ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-      ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
-      ...mapBreakpointPropToClasses('root--label', this.hideLabel, ['hidden', 'visible']),
-      ['root--theme-dark']: this.theme === 'dark',
-    };
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.alignLabel,
+      this.hideLabel,
+      this.stretch,
+      this.checked,
+      this.isDisabledOrLoading,
+      this.theme
+    );
+  }
 
+  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <label class={rootClasses}>
+      <label class="root">
         <PrefixedTagNames.pText tag="span" color="inherit" class="text">
           <slot />
         </PrefixedTagNames.pText>
