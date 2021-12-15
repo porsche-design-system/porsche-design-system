@@ -189,7 +189,7 @@ export const getComponentCss = (
     label: {
       display: 'block',
       '&--disabled': {
-        '& .label__text': {
+        '& .label__text, & .counter': {
           color: disabledColor,
         },
       },
