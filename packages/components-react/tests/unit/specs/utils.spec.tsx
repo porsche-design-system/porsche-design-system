@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PButton } from '../../../projects/components-wrapper/src';
+import { PButton } from '../../../projects/components-wrapper/src/public-api';
 import {
   getMergedClassName,
   skipPorscheDesignSystemCDNRequestsDuringTests,
