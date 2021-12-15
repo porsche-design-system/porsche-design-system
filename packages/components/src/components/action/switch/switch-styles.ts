@@ -16,6 +16,45 @@ import type { Theme } from '../../../types';
 import { AlignLabel, AlignLabelType } from '../../../types';
 import { color, spacing } from '@porsche-design-system/utilities';
 
+const getColors = (
+  checked: boolean,
+  isDisabledOrLoading: boolean,
+  theme: Theme
+): {
+  backgroundColor: string;
+  buttonBorderColor: string;
+  buttonBorderColorHover: string;
+  buttonBackgroundColor: string;
+  buttonBackgroundColorHover: string;
+  toggleBackgroundColor: string;
+  toggleBackgroundColorHover: string;
+  textColor: string;
+} => {
+  const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor } = getThemedColors(theme);
+
+  return {
+    backgroundColor,
+    buttonBorderColor: isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor,
+    buttonBorderColorHover:
+      checked && isDark(theme)
+        ? colorDarken.darkTheme.notification.success
+        : checked
+        ? colorDarken.notification.success
+        : baseColor,
+    buttonBackgroundColor: isDisabledOrLoading && checked ? disabledColor : checked ? successColor : 'transparent',
+    buttonBackgroundColorHover:
+      checked && isDark(theme)
+        ? colorDarken.darkTheme.notification.success
+        : checked
+        ? colorDarken.notification.success
+        : 'transparent',
+    toggleBackgroundColor:
+      isDisabledOrLoading && !checked ? disabledColor : checked ? color.background.default : contrastHighColor,
+    toggleBackgroundColorHover: checked ? color.background.default : baseColor,
+    textColor: isDisabledOrLoading ? disabledColor : baseColor,
+  };
+};
+
 const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): JssStyle => {
   const styles: { [key in AlignLabelType]: JssStyle } = {
     left: {
@@ -53,10 +92,20 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   stretch: BreakpointCustomizable<boolean>,
   checked: boolean,
+  loading: boolean,
   isDisabledOrLoading: boolean,
   theme: Theme
 ): string => {
-  const { baseColor, contrastHighColor, successColor, disabledColor, backgroundColor } = getThemedColors(theme);
+  const {
+    backgroundColor,
+    buttonBorderColor,
+    buttonBorderColorHover,
+    buttonBackgroundColor,
+    buttonBackgroundColorHover,
+    toggleBackgroundColor,
+    toggleBackgroundColorHover,
+    textColor,
+  } = getColors(checked, isDisabledOrLoading, theme);
 
   return getCss({
     ':host': addImportantToEachRule({
@@ -80,29 +129,19 @@ export const getComponentCss = (
         padding: 0,
         appearance: 'none',
         boxSizing: 'border-box',
-        color: isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor,
+        color: buttonBorderColor,
         border: '1px solid currentColor',
         borderRadius: pxToRemWithUnit(12),
-        backgroundColor: isDisabledOrLoading && checked ? disabledColor : checked ? successColor : 'transparent',
+        backgroundColor: buttonBackgroundColor,
         outline: 'none',
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
         ...(!isDisabledOrLoading && {
           '&:hover': {
-            color:
-              checked && isDark(theme)
-                ? colorDarken.darkTheme.notification.success
-                : checked
-                ? colorDarken.notification.success
-                : baseColor,
-            backgroundColor:
-              checked && isDark(theme)
-                ? colorDarken.darkTheme.notification.success
-                : checked
-                ? colorDarken.notification.success
-                : 'transparent',
-            '& > .toggle': {
-              backgroundColor: checked ? color.background.default : baseColor,
+            color: buttonBorderColorHover,
+            backgroundColor: buttonBackgroundColorHover,
+            '& .toggle': {
+              backgroundColor: toggleBackgroundColorHover,
             },
           },
         }),
@@ -117,7 +156,7 @@ export const getComponentCss = (
     text: {
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
-      color: isDisabledOrLoading ? disabledColor : baseColor,
+      color: textColor,
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, getAlignLabelStyles),
         buildResponsiveStyles(hideLabel, getHideLabelStyles)
@@ -131,17 +170,18 @@ export const getComponentCss = (
       height: pxToRemWithUnit(18),
       display: 'block',
       borderRadius: '50%',
-      backgroundColor:
-        isDisabledOrLoading && !checked ? disabledColor : checked ? color.background.default : contrastHighColor,
+      backgroundColor: toggleBackgroundColor,
       transform: `translate3d(${checked ? pxToRemWithUnit(24) : '0'}, 0, 0)`,
       transition: `${getTransition('background-color')},${getTransition('transform')}`,
     },
-    spinner: {
-      position: 'absolute',
-      top: pxToRemWithUnit(-3),
-      left: pxToRemWithUnit(-3),
-      width: pxToRemWithUnit(24),
-      height: pxToRemWithUnit(24),
-    },
+    ...(loading && {
+      spinner: {
+        position: 'absolute',
+        top: pxToRemWithUnit(-3),
+        left: pxToRemWithUnit(-3),
+        width: pxToRemWithUnit(24),
+        height: pxToRemWithUnit(24),
+      },
+    }),
   });
 };

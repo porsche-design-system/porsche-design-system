@@ -69,6 +69,7 @@ export class Switch {
       this.hideLabel,
       this.stretch,
       this.checked,
+      this.loading,
       this.isDisabledOrLoading,
       this.theme
     );
