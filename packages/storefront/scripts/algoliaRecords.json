@@ -379,7 +379,7 @@
   {
     "objectID": "news-changelog-components-1",
     "name": "Porsche Design System - Components",
-    "content": "All notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n### [Unreleased]\n\n### [2.7.0-beta.6] - 2021-12-08\n\n#### Added\n- `Popover`\n\n### [2.7.0-beta.5] - 2021-12-07\n\n#### Added\n**Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.\n- `light-electric` theme for `Accordion`, `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`\n\n### [2.7.0-beta.4] - 2021-12-02\n\n### [2.7.0-beta.3] - 2021-11-30\n\n#### Added\n- `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers\n\n#### Fixed\n- `Link` and `Link Social` not adapting slotted anchor to the width of the element \n\n### [2.7.0-beta.2] - 2021-11-24\n\n#### Added\n- `Toast`\n\n#### Fixed\n- `Banner` animations respect offset correctly\n\n### [2.7.0-beta.1] - 2021-11-16\n\n#### Fixed\n- `Headline` applies `align` and `ellipsis` prop correctly\n\n### [2.7.0-beta.0] - 2021-11-11\n\n#### Added\n- New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`\n\n#### Fixed\n- React: warnings about `useLayoutEffect` in SSR context\n\n### [2.6.1] - 2021-11-05\n\n#### Fixed\n- Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordion` still requires it \n\n### [2.6.0] - 2021-11-04\n\n#### Added\n- `unit` and `unitPosition` properties to `Text Field Wrapper`\n\n### [2.6.0-beta.0] - 2021-10-29\n\n#### Changed\n- Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback font\n\n#### Added\n- `Marque` uses `webp` images for browsers that support it\n- `Inline Notification`\n- `Icon` now supports `success` for `name` property\n\n#### Fixed\n- Colors of `Banner` for dark theme\n- Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility \n- Opening and closing transition of `Modal`\n\n### [2.5.1-beta.0] - 2021-10-11\n\n#### Fixed\n- Possible exceptions when components get unmounted directly\n\n### [2.5.0] - 2021-10-04\n\n#### Added\n- `SimHei` and `黑体` as fallback for all components' `font-family`\n\n### [2.5.0-beta.1] - 2021-09-28\n\n#### Changed\n- React: improved render behavior of components\n\n### [2.5.0-beta.0] - 2021-09-22\n\n#### Added\n- React: utility function `skipPorscheDesignSystemCDNRequestsDuringTests`\n\n### [2.4.0] - 2021-09-21\n\n### [2.4.0-beta.2] - 2021-09-21\n\n#### Added\n- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`\n- JSS caching mechanism to improve style performance\n\n#### Changed\n- Alignment of `linkedin` icon\n- Improved accessibility of `Select Wrapper`\n- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load\n- Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state\n\n#### Fixed\n- Box model of `Link Pure`\n- Focus of `Link Pure` with slotted anchor and hidden label\n- Focus cycling of `Modal` without focusable children\n- Suppress CORS error\n\n### [2.4.0-beta.1] - 2021-08-26\n\n#### Added\n- `active` property to `Button Pure`\n\n### [2.4.0-beta.0] - 2021-08-26\n\n#### Added\n- `icon` property of `Button Pure` and `Link Pure` was extended by `none` value\n- `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`\n\n#### Changed\n- Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`\n- Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`\n- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state\n- `Modal` backdrop behavior to close modal on mouse-down\n\n#### Fixed\n- Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`\n- Wrong background color of scrollable `Modal`'s backdrop in Safari\n\n### [2.3.0] - 2021-07-28\n\n### [2.3.0-beta.3] - 2021-07-28\n\n#### Changed\n- `Accordion` reduce paddings, vertically align carets to the first heading row, adjust border color and hover styles\n\n#### Fixed\n- `Text Field Wrapper` accessibility of type password and search\n\n### [2.3.0-beta.2] - 2021-07-15\n\n#### Added\n- `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` now reflect changes of the `required` attribute on their child component\n- `multiline` property to `Table Cell`\n- Partial function `getLoaderScript()` to initialize Porsche Design System as early as possible\n\n#### Fixed\n- `Table Head Cell` uses semi bold instead of bold as font weight\n- Transition of `Modal`\n\n### [2.3.0-beta.1] - 2021-07-08\n\n#### Added\n- `Accordion`\n\n#### Changed\n- Removed initial delay of `Banner`\n\n### [2.3.0-beta.0] - 2021-07-01\n\n#### Added\n- `Table`\n- Angular: export types from package root\n- Accessibility icon\n\n#### Changed\n- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state\n- `Text` and `Headline` inherits white-space CSS property\n- React: sync component props via property instead of attribute \n\n#### Fixed\n- Angular: support `\"strictTemplates\": true` option in `tsconfig.json`\n- Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components\n\n### [2.2.1] - 2021-06-08\n\n#### Changed\n- Optimize vertical alignment of `Modal`\n\n#### Fixed\n- URL in inject global style warning\n\n### [2.2.1-beta.1] - 2021-06-02\n\n#### Fixed\n- Margin of `Tabs Bar` within `Tabs` for Firefox and Safari\n- SVG of `Icon` is not removed after prop change, e.g. on color change\n- Fullscreen behavior of `Modal` on screens larger than 1760px\n\n### [2.2.0] - 2021-05-19\n\n#### Fixed\n- `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode\n- `Banner` can now be re-opened after closing\n- Closing one `Banner` will not close other `Banners` on the site\n\n### [2.2.0-beta.2] - 2021-05-12\n\n#### Fixed\n- `Select Wrapper` value changes are now reflected correctly\n- `Select Wrapper` dark theme background color if used with `filter` prop\n\n### [2.2.0-beta.1] - 2021-05-05\n\n#### Added\n- Partial function `getIconLinks()` to preload Porsche Design System Icons\n\n#### Fixed\n- `Text Field Wrapper` spacing in Safari\n\n### [2.2.0-beta.0] - 2021-05-05\n\n#### Added\n- Partial function `getMetaTagsAndIconLinks()` to simplify cross device fav and meta icons\n\n### [2.1.0] - 2021-05-03\n\n### [2.1.0-beta.0] - 2021-05-03\n\n#### Added\n- `Switch`\n\n#### Changed\n- `Text` automatically breaks words/strings into new line being too long to fit inside their container\n- `Headline` automatically breaks words/strings into new line being too long to fit inside their container\n- Extended `Fieldset Wrapper` with `labelSize`, `required`, `state` and `message` properties. If the `Fieldset Wrapper` is set to required \n  only the label of the **Fieldset Wrapper** gets an asterisk. It is removed from all wrapped child components, as long as they are Porsche Design System form elements.\n\n### [2.0.3] - 2021-04-28\n\n### [2.0.3-beta] - 2021-04-28\n\n#### Fixed\n- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component\n\n### [2.0.2] - 2021-04-21\n\n### [2.0.2-beta.0] - 2021-04-20\n\n#### Fixed\n- TypeScript build errors due to duplicate declarations in `types.d.ts`\n\n### [2.0.1] - 2021-04-16\n\n#### Fixed\n- Visual appearance of `Checkbox Wrapper` in iOS Safari\n- A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly\n- Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`\n- Angular: Streamline component styles in dark theme \n\n#### Changed\n- Aligned focus states of `Checkbox Wrapper` and `Radio Button Wrapper` across browsers\n\n### [2.0.0] - 2021-04-13\n\nIn keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.\nWith our new major version `v2.0.0` there are some important changes that you should watch out for.\nTo make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few guidelines.",
+    "content": "All notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n### [Unreleased]\n\n### [2.8.0-beta.0] - 2021-12-15\n\n#### Changed\n- Angular: Increased peer dependency to `>=12.0.0 <14.0.0`\n\n### [2.7.0] - 2021-12-14\n\n### [2.7.0-rc.0] - 2021-12-14\n\n#### Removed\n- `offset-bottom` prop of `Toast` (use `--p-toast-position-bottom` CSS variable instead)\n\n### [2.7.0-beta.6] - 2021-12-08\n\n#### Added\n- `Popover`\n\n### [2.7.0-beta.5] - 2021-12-07\n\n#### Added\n**Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.\n- `light-electric` theme for `Accordion`, `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`\n\n### [2.7.0-beta.4] - 2021-12-02\n\n### [2.7.0-beta.3] - 2021-11-30\n\n#### Added\n- `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers\n\n#### Fixed\n- `Link` and `Link Social` not adapting slotted anchor to the width of the element \n\n### [2.7.0-beta.2] - 2021-11-24\n\n#### Added\n- `Toast`\n\n#### Fixed\n- `Banner` animations respect offset correctly\n\n### [2.7.0-beta.1] - 2021-11-16\n\n#### Fixed\n- `Headline` applies `align` and `ellipsis` prop correctly\n\n### [2.7.0-beta.0] - 2021-11-11\n\n#### Added\n- New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`, `Spinner`\n\n#### Fixed\n- React: warnings about `useLayoutEffect` in SSR context\n\n### [2.6.1] - 2021-11-05\n\n#### Fixed\n- Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordion` still requires it \n\n### [2.6.0] - 2021-11-04\n\n#### Added\n- `unit` and `unitPosition` properties to `Text Field Wrapper`\n\n### [2.6.0-beta.0] - 2021-10-29\n\n#### Changed\n- Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback font\n\n#### Added\n- `Marque` uses `webp` images for browsers that support it\n- `Inline Notification`\n- `Icon` now supports `success` for `name` property\n\n#### Fixed\n- Colors of `Banner` for dark theme\n- Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility \n- Opening and closing transition of `Modal`\n\n### [2.5.1-beta.0] - 2021-10-11\n\n#### Fixed\n- Possible exceptions when components get unmounted directly\n\n### [2.5.0] - 2021-10-04\n\n#### Added\n- `SimHei` and `黑体` as fallback for all components' `font-family`\n\n### [2.5.0-beta.1] - 2021-09-28\n\n#### Changed\n- React: improved render behavior of components\n\n### [2.5.0-beta.0] - 2021-09-22\n\n#### Added\n- React: utility function `skipPorscheDesignSystemCDNRequestsDuringTests`\n\n### [2.4.0] - 2021-09-21\n\n### [2.4.0-beta.2] - 2021-09-21\n\n#### Added\n- `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`\n- JSS caching mechanism to improve style performance\n\n#### Changed\n- Alignment of `linkedin` icon\n- Improved accessibility of `Select Wrapper`\n- `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load\n- Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state\n\n#### Fixed\n- Box model of `Link Pure`\n- Focus of `Link Pure` with slotted anchor and hidden label\n- Focus cycling of `Modal` without focusable children\n- Suppress CORS error\n\n### [2.4.0-beta.1] - 2021-08-26\n\n#### Added\n- `active` property to `Button Pure`\n\n### [2.4.0-beta.0] - 2021-08-26\n\n#### Added\n- `icon` property of `Button Pure` and `Link Pure` was extended by `none` value\n- `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`\n\n#### Changed\n- Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`\n- Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`\n- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` have now an additional icon representing the validation state\n- `Modal` backdrop behavior to close modal on mouse-down\n\n#### Fixed\n- Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`\n- Wrong background color of scrollable `Modal`'s backdrop in Safari\n\n### [2.3.0] - 2021-07-28\n\n### [2.3.0-beta.3] - 2021-07-28\n\n#### Changed\n- `Accordion` reduce paddings, vertically align carets to the first heading row, adjust border color and hover styles\n\n#### Fixed\n- `Text Field Wrapper` accessibility of type password and search\n\n### [2.3.0-beta.2] - 2021-07-15\n\n#### Added\n- `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` now reflect changes of the `required` attribute on their child component\n- `multiline` property to `Table Cell`\n- Partial function `getLoaderScript()` to initialize Porsche Design System as early as possible\n\n#### Fixed\n- `Table Head Cell` uses semi bold instead of bold as font weight\n- Transition of `Modal`\n\n### [2.3.0-beta.1] - 2021-07-08\n\n#### Added\n- `Accordion`\n\n#### Changed\n- Removed initial delay of `Banner`\n\n### [2.3.0-beta.0] - 2021-07-01\n\n#### Added\n- `Table`\n- Angular: export types from package root\n- Accessibility icon\n\n#### Changed\n- `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state\n- `Text` and `Headline` inherits white-space CSS property\n- React: sync component props via property instead of attribute \n\n#### Fixed\n- Angular: support `\"strictTemplates\": true` option in `tsconfig.json`\n- Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components\n\n### [2.2.1] - 2021-06-08\n\n#### Changed\n- Optimize vertical alignment of `Modal`\n\n#### Fixed\n- URL in inject global style warning\n\n### [2.2.1-beta.1] - 2021-06-02\n\n#### Fixed\n- Margin of `Tabs Bar` within `Tabs` for Firefox and Safari\n- SVG of `Icon` is not removed after prop change, e.g. on color change\n- Fullscreen behavior of `Modal` on screens larger than 1760px\n\n### [2.2.0] - 2021-05-19\n\n#### Fixed\n- `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode\n- `Banner` can now be re-opened after closing\n- Closing one `Banner` will not close other `Banners` on the site\n\n### [2.2.0-beta.2] - 2021-05-12\n\n#### Fixed\n- `Select Wrapper` value changes are now reflected correctly\n- `Select Wrapper` dark theme background color if used with `filter` prop\n\n### [2.2.0-beta.1] - 2021-05-05\n\n#### Added\n- Partial function `getIconLinks()` to preload Porsche Design System Icons\n\n#### Fixed\n- `Text Field Wrapper` spacing in Safari\n\n### [2.2.0-beta.0] - 2021-05-05\n\n#### Added\n- Partial function `getMetaTagsAndIconLinks()` to simplify cross device fav and meta icons\n\n### [2.1.0] - 2021-05-03\n\n### [2.1.0-beta.0] - 2021-05-03\n\n#### Added\n- `Switch`\n\n#### Changed\n- `Text` automatically breaks words/strings into new line being too long to fit inside their container\n- `Headline` automatically breaks words/strings into new line being too long to fit inside their container\n- Extended `Fieldset Wrapper` with `labelSize`, `required`, `state` and `message` properties. If the `Fieldset Wrapper` is set to required \n  only the label of the **Fieldset Wrapper** gets an asterisk. It is removed from all wrapped child components, as long as they are Porsche Design System form elements.\n\n### [2.0.3] - 2021-04-28\n\n### [2.0.3-beta] - 2021-04-28\n\n#### Fixed\n- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component\n\n### [2.0.2] - 2021-04-21\n\n### [2.0.2-beta.0] - 2021-04-20\n\n#### Fixed\n- TypeScript build errors due to duplicate declarations in `types.d.ts`\n\n### [2.0.1] - 2021-04-16\n\n#### Fixed\n- Visual appearance of `Checkbox Wrapper` in iOS Safari\n- A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly\n- Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`\n- Angular: Streamline component styles in dark theme \n\n#### Changed\n- Aligned focus states of `Checkbox Wrapper` and `Radio Button Wrapper` across browsers\n\n### [2.0.0] - 2021-04-13\n\nIn keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.\nWith our new major version `v2.0.0` there are some important changes that you should watch out for.\nTo make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few guidelines.",
     "category": "News",
     "page": "Changelog",
     "tab": "Components",
@@ -590,7 +590,7 @@
   {
     "objectID": "news-roadmap-1",
     "name": "Milestones in Progress",
-    "content": "Legend: ✅ Completed\n\n### Platforms\n* Finalize UX platform\n* Migrate generic content from Design System- to UX platform\n* Optimize icon workflow\n* Consolidate published npm packages\n* Enable search feature for Design System- and UX platform\n\n### Generic components\n* Switch ✅\n* Data Table ✅\n* Accordion ✅\n* Toast\n* Progress Indicator\n* Tooltip\n\n### Loading Behavior\n* Improve Loading of layout components\n* Skeleton Loading\n* Re-enable SSR support ✅\n\n### UXPin\n* Optimize Components for UXPin ✅\n* Enable Design System for UXPin ✅\n\n---",
+    "content": "Legend: ✅ Completed\n\n### Platforms\n* Finalize UX platform\n* Migrate generic content from Design System- to UX platform\n* Optimize icon workflow\n* Consolidate published npm packages\n* Enable search feature for Design System- and UX platform\n\n### Generic components\n* Switch ✅\n* Data Table ✅\n* Accordion ✅\n* Toast ✅\n* Progress Indicator\n* Popover ✅\n\n### Loading Behavior\n* Improve Loading of layout components\n* Skeleton Loading\n* Re-enable SSR support ✅\n\n### UXPin\n* Optimize Components for UXPin ✅\n* Enable Design System for UXPin ✅\n\n---",
     "category": "News",
     "page": "Roadmap",
     "url": "/news/roadmap#milestones-in-progress"
@@ -606,7 +606,7 @@
   {
     "objectID": "components-accordion-examples-0",
     "name": "Accordion",
-    "content": "The `p-accordion` is a component that reveals or hides associated sections of content.  \nAccordions are flexible in the context and can include other components of the Porsche Design System.\n\nIt is a controlled component.\nThis means it does not contain any internal state, and you got full control over its behavior.\n\n<p-inline-notification heading=\"Important note\" state=\"warning\" persistent=\"true\">\n  This component uses the  API internally which isn't available in all browsers.<br>\n  If your browser does not support the ResizeObserver, a fallback is used, which might be not as performant.  \n  See  for more details on browser support.  \n</p-inline-notification>",
+    "content": "The `p-accordion` is a component that reveals or hides associated sections of content.  \nAccordions are flexible in the context and can include other components of the Porsche Design System.\n\nIt is a controlled component.\nThis means it does not contain any internal state, and you got full control over its behavior.\n\n<p-inline-notification heading=\"Important note\" state=\"warning\" persistent=\"true\">\n  This component uses the  API internally which isn't available in all browsers.<br>\n  If your browser does not support the ResizeObserver, a fallback is used, which might be not as performant.<br>\n  See  for more details on browser support.  \n</p-inline-notification>",
     "category": "Components",
     "page": "Accordion",
     "tab": "Examples",
@@ -776,7 +776,7 @@
   {
     "objectID": "components-button-usage-3",
     "name": "Usage",
-    "content": "Standard icons\nThe default icon is an arrow right that should serve in most cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. For example:\n\n| Interaction | Icon | Example |\n|----|----|----|\n| Close |  | Close a current page or window. |\n| Cancel |  | Abandoning a process. |\n| Delete |  | Delete/erase content, e.g. a list item. | \n| Edit |  | Edit content, e.g. in lists or shop checkout. | \t\n| Add |  | Add content, e.g. a new item in a list. | \n\n### Text label\nThe text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as \"add\", \"edit\" or \"delete\". \n\n\n### Alignment\n\n#### **1. Left alignment (F-shaped reading pattern)**\n\nButtons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  \n  \nThis is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007). \n  \n![F-shaped reading pattern](./assets/patterns-buttons-alignment-left-form.png)\n\n#### **2. Centered alignment**\n\n**In exceptional cases** it's even possible to place Buttons **centered** to their related content: \n\nIf the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:\n  \n  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-aesthetic.png)\nIf the Button relates to a larger part or even the whole page, e.g. a \"Load more\" Button:\n  \n  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)\n\n\n#### **3. Smaller viewports**\n\nOn smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. \"Icon only\" Buttons keep their fix size on all viewports.\n\n![Mobile view for Buttons](./assets/patterns-buttons-alignment-viewport-xs.png)\n\n\n### Multi-line Buttons\n\nThough it's technically possible to use multiline text in Porsche Buttons, it's recommended to keep the Button label short and, therefore, avoid multiline Buttons. \n\n\n<div style=\"background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;\">\n    \n    <img src=\"./assets/button-examples.png\" alt=\"Examples for button usage\"/>\n</div>",
+    "content": "Standard icons\nThe default icon is an arrow right that should serve in most cases. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly. For example:\n\n| Interaction | Icon | Example |\n|----|----|----|\n| Close |  | Close a current page or window. |\n| Cancel |  | Abandoning a process. |\n| Delete |  | Delete/erase content, e.g. a list item. | \n| Edit |  | Edit content, e.g. in lists or shop checkout. | \t\n| Add |  | Add content, e.g. a new item in a list. | \n\n### Text label\n\nThe text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as \"add\", \"edit\" or \"delete\". \n\n\n### Alignment\n\n#### **1. Left alignment (F-shaped reading pattern)**\n\nButtons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  \n  \nThis is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007). \n  \n![F-shaped reading pattern](./assets/patterns-buttons-alignment-left-form.png)\n\n#### **2. Centered alignment**\n\n**In exceptional cases** it's even possible to place Buttons **centered** to their related content: \n\nIf the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:\n  \n  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-aesthetic.png)\nIf the Button relates to a larger part or even the whole page, e.g. a \"Load more\" Button:\n  \n  ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)\n\n\n#### **3. Smaller viewports**\n\nOn smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. \"Icon only\" Buttons keep their fix size on all viewports.\n\n![Mobile view for Buttons](./assets/patterns-buttons-alignment-viewport-xs.png)\n\n\n### Multi-line Buttons\n\nThough it's technically possible to use multiline text in Porsche Buttons, it's recommended to keep the Button label short and, therefore, avoid multiline Buttons. \n\n\n<div style=\"background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;\">\n    \n    <img src=\"./assets/button-examples.png\" alt=\"Examples for button usage\"/>\n</div>",
     "category": "Components",
     "page": "Button",
     "tab": "Usage",
@@ -911,7 +911,7 @@
   {
     "objectID": "components-button-pure-examples-7",
     "name": "Stretch",
-    "content": "The `stretch` property extends the area between icon and label to the maximum available space.\nIt is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.\n\n<Playground :markup=\"markupStretch\" :config=\"configBlock\">\n  <select v-model=\"stretch\">\n    \n    \n    \n    \n    \n  </select>\n</Playground>\n\n---",
+    "content": "The `stretch` property extends the area between icon and label to the maximum available space.\nIt is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.\n\n<Playground :markup=\"markupStretch\" :config=\"config\">\n  <select v-model=\"stretch\">\n    \n    \n    \n    \n    \n  </select>\n</Playground>\n\n---",
     "category": "Components",
     "page": "Button Pure",
     "tab": "Examples",
@@ -1118,7 +1118,7 @@
   {
     "objectID": "components-color-usage-0",
     "name": "Color",
-    "content": "Together with other basic elements like typography, iconography or imagery, the\nright use of colors gives every UI the specific Porsche feeling and is\ntherefore one of the most important tools to create a consistent visual\nbranding. Even more so when it comes to UX, color is to be used intentionally to create\npatterns, set emphasis on important elements and, by doing so, provide visual\nguidance and information.\n\nThe Porsche Design System color system provides two color themes that are based on the Porsche color palette and can be\nused for different visual environments. Both themings are to be found in the Porsche Design System Sketch library.\n\n---",
+    "content": "Together with other basic elements like typography, iconography or imagery, the\nright use of colors gives every UI the specific Porsche feeling and is\ntherefore one of the most important tools to create a consistent visual\nbranding. Even more so when it comes to UX, color is to be used intentionally to create\npatterns, set emphasis on important elements and, by doing so, provide visual\nguidance and information.\n\nThe Porsche Design System color system provides two color themes that are based on the Porsche color palette and can be\nused for different visual environments. Both themings are to be found in the Porsche Design System Sketch library.",
     "category": "Components",
     "page": "Color",
     "tab": "Usage",
@@ -1181,11 +1181,29 @@
   {
     "objectID": "components-content-wrapper-examples-0",
     "name": "Content Wrapper",
-    "content": "When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width with spacings to the left and right of the viewport (\"basic\" version), stretched to the largest viewport without any spacing (\"extended\") or even to the largest total screen width (\"fluid\").\nThe `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.\n\nCan be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.\n\n### Width\n\n* **Basic**: max width 1920px including 7-10% safe zone\n* **Extended**: max width 1920px\n* **Fluid**: full width\n\n<Playground :markup=\"basic\" :config=\"config\">\n  <select v-model=\"width\">\n    \n    \n    \n    \n  </select>\n</Playground>\n\n### Background color\n\n* **transparent**: does not set any background color\n* **default**: uses surface color depending on theming\n\n<Playground :markup=\"transparent\" class=\"playground-content-wrapper-background-color\" :config=\"config\">\n  <select v-model=\"backgroundColor\">\n    \n    \n        \n  </select>\n</Playground>\n\n\n\n",
+    "content": "When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width with spacings to the left and right of the viewport (\"basic\" version), stretched to the largest viewport without any spacing (\"extended\") or even to the largest total screen width (\"fluid\").\nThe `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.\n\nCan be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.",
     "category": "Components",
     "page": "Content Wrapper",
     "tab": "Examples",
     "url": "/components/content-wrapper/examples"
+  },
+  {
+    "objectID": "components-content-wrapper-examples-1",
+    "name": "Width",
+    "content": "* **Basic**: max width 1920px including 7-10% safe zone\n* **Extended**: max width 1920px\n* **Fluid**: full width\n\n<Playground :markup=\"basic\" :config=\"config\">\n  <select v-model=\"width\">\n    \n    \n    \n    \n  </select>\n</Playground>",
+    "category": "Components",
+    "page": "Content Wrapper",
+    "tab": "Examples",
+    "url": "/components/content-wrapper/examples#width"
+  },
+  {
+    "objectID": "components-content-wrapper-examples-2",
+    "name": "Background color",
+    "content": "* **transparent**: does not set any background color\n* **default**: uses surface color depending on theming\n\n<Playground :markup=\"transparent\" class=\"playground-content-wrapper-background-color\" :config=\"config\">\n  <select v-model=\"backgroundColor\">\n    \n    \n        \n  </select>\n</Playground>\n\n\n\n",
+    "category": "Components",
+    "page": "Content Wrapper",
+    "tab": "Examples",
+    "url": "/components/content-wrapper/examples#background-color"
   },
   {
     "objectID": "components-content-wrapper-usage-0",
@@ -1415,7 +1433,7 @@
   {
     "objectID": "components-flex-examples-0",
     "name": "Flex",
-    "content": "The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the `p-flex` container and `p-flex-item`.\nIt can be used to quickly layout standard content blocks or components. \nIt does not replace the [Grid](components/grid) component which should be used to define basic page structures.\n\n### Flex\nInitialize standard Flexbox container to define Flex context.\n\n\n\n### Inline\nFlex inline displays Flex containers in a row.\n\n\n\n### Responsive\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex direction\n\nDefine or change direction of the Flex items to rows or columns and set order.\n\n#### Row\n\n\n\n#### Row-reverse\n\n\n\n#### Column\n\n\n\n#### Column-reverse\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex wrap\n\nThe flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow in multiple lines forced by the Flex container width.\n\n#### Nowrap\n\n\n\n#### Wrap\n\n\n\n#### Wrap-reverse\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex justify-content\n\nThis property defines the alignment of Flex items on the main axis in conjunction to their siblings.\n\n#### Flex-start\n\n\n\n#### Flex-end\n\n\n\n#### Center\n\n\n\n#### Space-between\n\n\n\n#### Space-around\n\n\n\n#### Space-evenly\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex align-items\n\nThis property defines the alignment of Flex items on the cross axis in conjunction to their siblings.\n\n#### Stretch\n\n\n\n#### Flex-start\n\n\n\n#### Flex-end\n\n\n\n#### Center\n\n\n\n#### Baseline\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex align-content\n\nThis aligns Flex items on the cross axis of the Flex container when there is extra space available.\nThis property has only effect when there is more than one line of Flex items.\n\n#### Stretch\n\n\n\n#### Flex-start\n\n\n\n#### Flex-end\n\n\n\n#### Center\n\n\n\n#### Space-between\n\n\n\n#### Space-around\n\n\n\n#### Space-evenly\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "content": "The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the `p-flex` container and `p-flex-item`.\nIt can be used to quickly layout standard content blocks or components. \nIt does not replace the [Grid](components/grid) component which should be used to define basic page structures.",
     "category": "Components",
     "page": "Flex",
     "tab": "Examples",
@@ -1423,21 +1441,192 @@
   },
   {
     "objectID": "components-flex-examples-1",
+    "name": "Flex",
+    "content": "Initialize standard Flexbox container to define Flex context.",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex"
+  },
+  {
+    "objectID": "components-flex-examples-2",
+    "name": "Inline",
+    "content": "Flex inline displays Flex containers in a row.",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#inline"
+  },
+  {
+    "objectID": "components-flex-examples-3",
+    "name": "Responsive",
+    "content": "The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#responsive"
+  },
+  {
+    "objectID": "components-flex-examples-4",
+    "name": "Flex direction",
+    "content": "Define or change direction of the Flex items to rows or columns and set order.\n\n### Row\n\n\n\n### Row-reverse\n\n\n\n### Column\n\n\n\n### Column-reverse\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-direction"
+  },
+  {
+    "objectID": "components-flex-examples-5",
+    "name": "Flex wrap",
+    "content": "The flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow in multiple lines forced by the Flex container width.\n\n### Nowrap\n\n\n\n### Wrap\n\n\n\n### Wrap-reverse\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-wrap"
+  },
+  {
+    "objectID": "components-flex-examples-6",
+    "name": "Flex justify-content",
+    "content": "This property defines the alignment of Flex items on the main axis in conjunction to their siblings.\n\n### Flex-start\n\n\n\n### Flex-end\n\n\n\n### Center\n\n\n\n### Space-between\n\n\n\n### Space-around\n\n\n\n### Space-evenly\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-justify-content"
+  },
+  {
+    "objectID": "components-flex-examples-7",
+    "name": "Flex align-items",
+    "content": "This property defines the alignment of Flex items on the cross axis in conjunction to their siblings.\n\n### Stretch\n\n\n\n### Flex-start\n\n\n\n### Flex-end\n\n\n\n### Center\n\n\n\n### Baseline\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-align-items"
+  },
+  {
+    "objectID": "components-flex-examples-8",
+    "name": "Flex align-content",
+    "content": "This aligns Flex items on the cross axis of the Flex container when there is extra space available.\nThis property has only effect when there is more than one line of Flex items.\n\n### Stretch\n\n\n\n### Flex-start\n\n\n\n### Flex-end\n\n\n\n### Center\n\n\n\n### Space-between\n\n\n\n### Space-around\n\n\n\n### Space-evenly\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-align-content"
+  },
+  {
+    "objectID": "components-flex-examples-9",
     "name": "Modifier for Flex items (children)",
-    "content": "Flex-item width\n\nThe widths of Flex items is normally defined through its contents by default.\nBut it is also possible to define specific predefined widths.\n\n#### Specific\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex-item offset\n\nItems can have different offsets that work similar like column widths.\n\n#### Widths\n\n\n\n#### Responsive\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex-item align-self\n\nYou can override the align-items properties of the Flex container for individual Flex items.\n\n#### Auto\n\n\n\n#### Stretch\n\n\n\n#### Flex-start\n\n\n\n#### Flex-end\n\n\n\n#### Center\n\n\n\n#### Baseline\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex-item grow\n\nFlexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class names.\n\nIt handles how to grow an item based on the space that is left to fulfill the parent's width.\n\n#### Grow - 0\n\n\n\n#### Grow - 1\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.\n\n\n\n---\n\n### Flex-item shrink\n\nFlexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.\n\nIt handles how to shrink an item based on the space that exceeds the parents width to fulfill it.\n\n#### Shrink - 1\n\n\n\n#### Shrink - 0\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Flex-item shorthand\n\nSetting shorthand properties for Flex grow, shrink and base:\n\n#### Initial (grow:0, shrink:1 and base:auto)\n\n\n\n#### Auto (grow:1, shrink:1 and base:auto)\n\n\n\n#### Equal (grow:1, shrink:1 and base:0)\n\n\n\n#### None (grow:0, shrink:0 and base:auto)\n\n\n\n#### Responsiveness\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n\n\n",
+    "content": "Flex-item width\n\nThe widths of Flex items is normally defined through its contents by default.\nBut it is also possible to define specific predefined widths.\n\n### Specific\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
     "category": "Components",
     "page": "Flex",
     "tab": "Examples",
     "url": "/components/flex/examples#modifier-for-flex-items-children"
   },
   {
+    "objectID": "components-flex-examples-10",
+    "name": "Flex-item offset",
+    "content": "Items can have different offsets that work similar like column widths.\n\n### Widths\n\n\n\n### Responsive\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-item-offset"
+  },
+  {
+    "objectID": "components-flex-examples-11",
+    "name": "Flex-item align-self",
+    "content": "You can override the align-items properties of the Flex container for individual Flex items.\n\n### Auto\n\n\n\n### Stretch\n\n\n\n### Flex-start\n\n\n\n### Flex-end\n\n\n\n### Center\n\n\n\n### Baseline\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-item-align-self"
+  },
+  {
+    "objectID": "components-flex-examples-12",
+    "name": "Flex-item grow",
+    "content": "Flexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class names.\n\nIt handles how to grow an item based on the space that is left to fulfill the parent's width.\n\n### Grow - 0\n\n\n\n### Grow - 1\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-item-grow"
+  },
+  {
+    "objectID": "components-flex-examples-13",
+    "name": "Flex-item shrink",
+    "content": "Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.\n\nIt handles how to shrink an item based on the space that exceeds the parents width to fulfill it.\n\n### Shrink - 1\n\n\n\n### Shrink - 0\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-item-shrink"
+  },
+  {
+    "objectID": "components-flex-examples-14",
+    "name": "Flex-item shorthand",
+    "content": "Setting shorthand properties for Flex grow, shrink and base:\n\n### Initial (grow:0, shrink:1 and base:auto)\n\n\n\n### Auto (grow:1, shrink:1 and base:auto)\n\n\n\n### Equal (grow:1, shrink:1 and base:0)\n\n\n\n### None (grow:0, shrink:0 and base:auto)\n\n\n\n### Responsiveness\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n\n\n",
+    "category": "Components",
+    "page": "Flex",
+    "tab": "Examples",
+    "url": "/components/flex/examples#flex-item-shorthand"
+  },
+  {
     "objectID": "components-grid-examples-0",
     "name": "Grid",
-    "content": "The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche web experiences and screen sizes. \nThe Porsche Design System grid system is based upon a standard 12 column responsive grid.\nIts main purpose is to provide a solid and flexible grid system for defining layout areas and page structures.\nIt is not meant to function as a toolkit for layouting content blocks or components.\nFor this, the [Flex](components/flex) component is the right choice.\n\nIn order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](components/content-wrapper).\n\n\n### Grid size\n\nFollowing example shows a standard grid implementation.  \n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Grid offset\n\nIn some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings.\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Grid direction\n\nIn some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.\n\n#### Row (default)\n\n\n\n#### Row reverse\n\n\n\n#### Column\n\n\n\n#### Column-reverse\n\n\n\n#### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---\n\n### Grid gutter\n\nThe grid gutter can have the sizes `16`, `24` and `36`.\n\n#### Gutter\n\n\n\n#### Gutter with breakpoint\n\nThe gutter sizes can be set on different breakpoints.\n\n\n\n---\n\n### Grid wrap\n\n#### Wrap (default)\n\n\n\n#### Nowrap\n\n\n\n---\n\n### Grid nesting\n\nBasic nesting of grids is supported. \"Basic\" because of percentage value of width and gutter which couldn't be calculated for each column width. Here are some examples of \"do's\" and \"don'ts\":\n\n\n\n#### Possible nesting by keeping columns in \"the grid\"\n\nOnly columns with the following widths could be nested:\n\n* total width of 8\n* total width of 6\n* total width of 4\n\n#### Forbidden nesting\n\nNesting inside columns with the following widths should be prevented, because all item widths won't be in \"the grid\" anymore:\n\n* total width of 11\n* total width of 10\n* total width of 9\n* total width of 7\n* total width of 5\n* total width of 3\n\n\n\n",
+    "content": "The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche web experiences and screen sizes. \nThe Porsche Design System grid system is based upon a standard 12 column responsive grid.\nIts main purpose is to provide a solid and flexible grid system for defining layout areas and page structures.\nIt is not meant to function as a toolkit for layouting content blocks or components.\nFor this, the [Flex](components/flex) component is the right choice.\n\nIn order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](components/content-wrapper).",
     "category": "Components",
     "page": "Grid",
     "tab": "Examples",
     "url": "/components/grid/examples"
+  },
+  {
+    "objectID": "components-grid-examples-1",
+    "name": "Grid size",
+    "content": "Following example shows a standard grid implementation.  \n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-size"
+  },
+  {
+    "objectID": "components-grid-examples-2",
+    "name": "Grid offset",
+    "content": "In some cases it can be necessary to indent columns. The grid gives basic indentions based on grid sizings.\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-offset"
+  },
+  {
+    "objectID": "components-grid-examples-3",
+    "name": "Grid direction",
+    "content": "In some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`. But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be achieved by setting `reverse`.\n\n### Row (default)\n\n\n\n### Row reverse\n\n\n\n### Column\n\n\n\n### Column-reverse\n\n\n\n### Responsiveness\n\nThe settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.\n\n\n\n---",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-direction"
+  },
+  {
+    "objectID": "components-grid-examples-4",
+    "name": "Grid gutter",
+    "content": "The grid gutter can have the sizes `16`, `24` and `36`.\n\n### Gutter\n\n\n\n### Gutter with breakpoint\n\nThe gutter sizes can be set on different breakpoints.\n\n\n\n---",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-gutter"
+  },
+  {
+    "objectID": "components-grid-examples-5",
+    "name": "Grid wrap",
+    "content": "Wrap (default)\n\n\n\n### Nowrap\n\n\n\n---",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-wrap"
+  },
+  {
+    "objectID": "components-grid-examples-6",
+    "name": "Grid nesting",
+    "content": "Basic nesting of grids is supported. \"Basic\" because of percentage value of width and gutter which couldn't be calculated for each column width. Here are some examples of \"do's\" and \"don'ts\":\n\n\n\n### Possible nesting by keeping columns in \"the grid\"\n\nOnly columns with the following widths could be nested:\n\n* total width of 8\n* total width of 6\n* total width of 4\n\n### Forbidden nesting\n\nNesting inside columns with the following widths should be prevented, because all item widths won't be in \"the grid\" anymore:\n\n* total width of 11\n* total width of 10\n* total width of 9\n* total width of 7\n* total width of 5\n* total width of 3\n\n\n\n",
+    "category": "Components",
+    "page": "Grid",
+    "tab": "Examples",
+    "url": "/components/grid/examples#grid-nesting"
   },
   {
     "objectID": "components-grid-usage-0",
@@ -1568,7 +1757,7 @@
   {
     "objectID": "components-icon-guideline-0",
     "name": "Icon",
-    "content": "We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#/) for an appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need. To help you meet the quality standards of Porsche, you will find the guidelines below.\n\nDo you have an icon that is mandatory for several teams and purposes? We are happy to include it in the Porsche Design System. Feel free to get in touch with us on our [Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)\n\n\n\n**Icon Quality Standards**\n\n1. Metaphor and Appearance matches the Porsche icon environment\n\n2. Quality assurance (grid, color, pixel, naming, metatags, export criteria)\n\n3. User Testing (Recognition, Information scent)\n\n---",
+    "content": "We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#/) for an appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need. To help you meet the quality standards of Porsche, you will find the guidelines below.\n\nDo you have an icon that is mandatory for several teams and purposes? We are happy to include it in the Porsche Design System. Feel free to get in touch with us on our [Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)\n\n**Icon Quality Standards**\n\n1. Metaphor and Appearance matches the Porsche icon environment\n\n2. Quality assurance (grid, color, pixel, naming, metatags, export criteria)\n\n3. User Testing (Recognition, Information scent)",
     "category": "Components",
     "page": "Icon",
     "tab": "Guideline",
@@ -1766,7 +1955,7 @@
   {
     "objectID": "components-link-pure-examples-9",
     "name": "Stretch",
-    "content": "The `stretch` property extends the area between icon and label to the maximum available space.\nIt is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.\n\n<Playground :markup=\"stretchMarkup\" :config=\"configBlock\">\n  <select v-model=\"stretch\">\n    \n    \n    \n    \n    \n  </select>\n</Playground>\n\n---",
+    "content": "The `stretch` property extends the area between icon and label to the maximum available space.\nIt is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.\n\n<Playground :markup=\"stretchMarkup\" :config=\"config\">\n  <select v-model=\"stretch\">\n    \n    \n    \n    \n    \n  </select>\n</Playground>\n\n---",
     "category": "Components",
     "page": "Link Pure",
     "tab": "Examples",
@@ -2126,7 +2315,7 @@
   {
     "objectID": "components-notifications-introduction-0",
     "name": "Notifications",
-    "content": "Notifications are an important method of communicating with users and providing feedback. \n\nTheir main aim should be to help users perform a task and not necessarily interfere or get in the way of users while using your product. Ensure your **notifications are relevant, timely, and informative.** \n\n**Keep in Mind:**\nHighly frequented or disruptive Notifications can have a **negative impact** on the user's experience. \n\n---",
+    "content": "Notifications are an important method of communicating with users and providing feedback. \n\nTheir main aim should be to help users perform a task and not necessarily interfere or get in the way of users while using your product. Ensure your **notifications are relevant, timely, and informative.** \n\n**Keep in Mind:**\nHighly frequented or disruptive Notifications can have a **negative impact** on the user's experience.",
     "category": "Components",
     "page": "Notifications",
     "tab": "Introduction",
@@ -2260,12 +2449,12 @@
   },
   {
     "objectID": "components-notifications-toast-3",
-    "name": "Offset",
-    "content": "The bottom position of the `p-toast` can be adjusted via the `offsetBottom` property.\n\n<Playground :markup=\"offsetMarkup\" :config=\"{...config, withoutDemo: true}\" @onThemeChange=\"onThemeChange\">\n  <label>\n    Offset Bottom\n    <input type=\"number\" min=\"0\" max=\"200\" step=\"5\" v-model=\"offsetBottom\" @change=\"onOffsetChange\">\n  </label>\n  <br><br>\n  \n</Playground>\n\n\n\n\n\n\n",
+    "name": "Position",
+    "content": "The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.\n\n<Playground :markup=\"offsetMarkup\" :config=\"{...config, withoutDemo: true}\" @onThemeChange=\"onThemeChange\">\n  <label>\n    Position Bottom\n    <input type=\"number\" min=\"0\" max=\"200\" step=\"5\" v-model=\"positionBottom\">\n  </label>\n  <br><br>\n  \n</Playground>\n\n\n\n\n\n\n",
     "category": "Components",
     "page": "Notifications",
     "tab": "Toast",
-    "url": "/components/notifications/toast#offset"
+    "url": "/components/notifications/toast#position"
   },
   {
     "objectID": "components-notifications-banner-0",
@@ -2945,7 +3134,7 @@
   {
     "objectID": "components-switch-examples-1",
     "name": "Basic example",
-    "content": "The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.\nA `label` is a caption which informs the user which action is followed by interaction.\nWhen used with hidden label, it's best practice to provide a descriptive label text for screen readers.\n\n<Playground :markup=\"basic\" :config=\"config\">\n  <select v-model=\"label\">\n    \n    \n    \n  </select>\n</Playground>\n\n### Framework Implementations\n\n\n\n---",
+    "content": "The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.\nA `label` is a caption which informs the user which action is followed by interaction.\nWhen used with hidden label, it's best practice to provide a descriptive label text for screen readers.\n\n<Playground :markup=\"basic\" :config=\"config\">\n  <select v-model=\"label\">\n    \n    \n    \n  </select>\n</Playground>",
     "category": "Components",
     "page": "Switch",
     "tab": "Examples",
@@ -2953,6 +3142,15 @@
   },
   {
     "objectID": "components-switch-examples-2",
+    "name": "Framework Implementations",
+    "content": "---",
+    "category": "Components",
+    "page": "Switch",
+    "tab": "Examples",
+    "url": "/components/switch/examples#framework-implementations"
+  },
+  {
+    "objectID": "components-switch-examples-3",
     "name": "Disabled",
     "content": "---",
     "category": "Components",
@@ -2961,7 +3159,7 @@
     "url": "/components/switch/examples#disabled"
   },
   {
-    "objectID": "components-switch-examples-3",
+    "objectID": "components-switch-examples-4",
     "name": "Loading",
     "content": "---",
     "category": "Components",
@@ -2970,7 +3168,7 @@
     "url": "/components/switch/examples#loading"
   },
   {
-    "objectID": "components-switch-examples-4",
+    "objectID": "components-switch-examples-5",
     "name": "Alignment + Stretch",
     "content": "The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.\n\n<Playground :markup=\"alignment\" :config=\"config\">\n  <select v-model=\"alignLabel\">\n    \n    \n    \n  </select>\n</Playground>\n\n---",
     "category": "Components",
@@ -2979,7 +3177,7 @@
     "url": "/components/switch/examples#alignment-stretch"
   },
   {
-    "objectID": "components-switch-examples-5",
+    "objectID": "components-switch-examples-6",
     "name": "Bind events",
     "content": "You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the **Switch**.\n\n\n\n---",
     "category": "Components",
@@ -2988,7 +3186,7 @@
     "url": "/components/switch/examples#bind-events"
   },
   {
-    "objectID": "components-switch-examples-6",
+    "objectID": "components-switch-examples-7",
     "name": "Remove from tab order",
     "content": "With setting the `tabbable` property to `false` you can remove the **Switch** from the tab order.\nFor technical restrictions it's currently not possible to set an individual `tabindex` attribute.\n\n\n\n\n",
     "category": "Components",
@@ -3125,7 +3323,7 @@
   {
     "objectID": "components-tabs-examples-0",
     "name": "Tabs",
-    "content": "The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow navigation\nbetween groups of content that are related and at the same level of hierarchy. The component handles the display of content\naccording to the active tab and all accessibility attributes on your tab and tab content.\n\nThis variant does not support `a` tags and should not be used for navigation. \nIf you need to update your window location have a look at [Tabs Bar](components/tabs-bar) component.\n\n---",
+    "content": "The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow navigation\nbetween groups of content that are related and at the same level of hierarchy. The component handles the display of content\naccording to the active tab and all accessibility attributes on your tab and tab content.\n\nThis variant does not support `a` tags and should not be used for navigation. \nIf you need to update your window location have a look at [Tabs Bar](components/tabs-bar) component.",
     "category": "Components",
     "page": "Tabs",
     "tab": "Examples",
@@ -3233,7 +3431,7 @@
   {
     "objectID": "components-tabs-bar-examples-0",
     "name": "Tabs Bar",
-    "content": "The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure\nyour window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element\nand therefore change the appearance of your content or as skip navigation to move on a longer page.\n\nThe component does not handle the display of your content. If you use the component you have to manually care for the\ncontent to be rendered beneath. To help with this task the component triggers an event called `tabChange` with the index\nof the active tab.\n\nIf you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also\nhandles the correct display of content according to the active tab. Have a look at the [Tabs](components/tabs) component.\n\n**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`\nin your application! Therefore, we avoid messing with the window location.\n\nIt is a controlled component.\nThis means it does not contain any internal state, and you got full control over its behavior.\n\n---",
+    "content": "The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure\nyour window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element\nand therefore change the appearance of your content or as skip navigation to move on a longer page.\n\nThe component does not handle the display of your content. If you use the component you have to manually care for the\ncontent to be rendered beneath. To help with this task the component triggers an event called `tabChange` with the index\nof the active tab.\n\nIf you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also\nhandles the correct display of content according to the active tab. Have a look at the [Tabs](components/tabs) component.\n\n**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`\nin your application! Therefore, we avoid messing with the window location.\n\nIt is a controlled component.\nThis means it does not contain any internal state, and you got full control over its behavior.",
     "category": "Components",
     "page": "Tabs Bar",
     "tab": "Examples",
@@ -3683,7 +3881,7 @@
   {
     "objectID": "components-typography-text-0",
     "name": "Typography",
-    "content": "Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.\n\n---",
+    "content": "Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.",
     "category": "Components",
     "page": "Typography",
     "tab": "Text",
