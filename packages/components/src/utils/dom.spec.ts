@@ -25,7 +25,6 @@ import {
   throwIfRootNodeIsNotOfKind,
 } from './dom';
 import type { FormState } from '../types';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared-src/src';
 
 describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
@@ -112,15 +111,6 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     document.body.append(el);
 
     expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).not.toThrow();
-  });
-
-  TAG_NAMES.forEach((tagName) => {
-    const componentMeta = getComponentMeta(tagName);
-    if (componentMeta.hasHTMLElementValidation) {
-      it(`should be called in componentWillLoad() lifecycle in ${tagName}`, () => {
-        expect(componentMeta.validationLifecycle).toBe('componentWillLoad()');
-      });
-    }
   });
 });
 
