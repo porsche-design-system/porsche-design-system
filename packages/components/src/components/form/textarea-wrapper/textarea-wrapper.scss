@@ -175,7 +175,8 @@
     }
   }
 
-  &--disabled #{$bem-block}__text {
+  &--disabled #{$bem-block}__text,
+  &--disabled .counter {
     color: $p-color-state-disabled;
   }
 
