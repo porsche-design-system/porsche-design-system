@@ -99,6 +99,12 @@ export const getLabelStyles = (
         '& .label__text': {
           color: disabledColor,
         },
+        ...(additionalRefForInputHover && {
+          [`& ${additionalRefForInputHover}`]: {
+            color: disabledColor,
+            cursor: 'not-allowed',
+          },
+        }),
       },
       '&__text': {
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
