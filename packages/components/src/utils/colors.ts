@@ -70,6 +70,7 @@ export const colorDarken: ColorDarken = {
 };
 
 type ThemedColorsDarken = {
+  baseColorDarken: string;
   contrastHighColorDarken: string;
   successColorDarken: string;
   errorColorDarken: string;
@@ -78,12 +79,14 @@ type ThemedColorsDarken = {
 
 const getStaticThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
   const {
+    default: baseColorDarken,
     neutralContrast: { high: contrastHighColorDarken },
     state: { hover: hoverColorDarken },
     notification: { error: errorColorDarken, success: successColorDarken },
   } = isDark(theme) ? colorDarken.darkTheme : isLightElectric(theme) ? colorDarken.lightElectricTheme : colorDarken;
 
   return {
+    baseColorDarken,
     contrastHighColorDarken,
     successColorDarken,
     errorColorDarken,
