@@ -115,7 +115,7 @@ type ThemedFormStateColors = {
   stateHoverColor: string;
 };
 
-export const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
+const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   const isDarkTheme = isDark(theme);
 
   return {
