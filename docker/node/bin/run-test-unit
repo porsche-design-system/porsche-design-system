@@ -12,7 +12,7 @@ if
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
-  [[ "--utilities" == "${1}" ]]
+  [[ "--utilities" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]]
 then
   yarn test:unit:${1:2}
