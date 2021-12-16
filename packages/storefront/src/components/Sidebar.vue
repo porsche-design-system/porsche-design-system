@@ -68,7 +68,6 @@
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
 
-  import 'instantsearch.css/themes/satellite-min.css';
   import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
 
   type AlgoliaRecord = {
@@ -220,11 +219,19 @@
   .ais-SearchBox {
     margin-bottom: p-px-to-rem(24px);
   }
+
+  .category {
+    padding-bottom: $p-spacing-8;
+  }
+
+  p-link-pure {
+    width: 100%;
+  }
 </style>
 
 <style lang="scss">
   @import '~@porsche-design-system/utilities/scss';
   .hits-item {
-    padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
+    padding: $p-spacing-8 $p-spacing-32 $p-spacing-8;
   }
 </style>
