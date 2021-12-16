@@ -16,12 +16,7 @@ type ColorDarkenTheme = {
   };
 };
 
-type ColorDarken = ColorDarkenTheme & {
-  darkTheme: ColorDarkenTheme;
-  lightElectricTheme: ColorDarkenTheme;
-};
-
-export const colorDarken: ColorDarken = {
+const lightThemeDarken: ColorDarkenTheme = {
   default: '#000',
   neutralContrast: {
     high: '#151718',
@@ -33,32 +28,45 @@ export const colorDarken: ColorDarken = {
   state: {
     hover: '#980014',
   },
-  darkTheme: {
-    default: '#e0e0e0',
-    neutralContrast: {
-      high: '#c3c5c8',
-    },
-    notification: {
-      success: '#017d14',
-      error: '#d30303',
-    },
-    state: {
-      hover: '#c4001a',
-    },
+};
+
+const darkThemeDarken: ColorDarkenTheme = {
+  default: '#e0e0e0',
+  neutralContrast: {
+    high: '#c3c5c8',
   },
-  lightElectricTheme: {
-    default: '#000',
-    neutralContrast: {
-      high: '#151718',
-    },
-    notification: {
-      success: '#014d0c',
-      error: '#a30000',
-    },
-    state: {
-      hover: '#0084b7',
-    },
+  notification: {
+    success: '#017d14',
+    error: '#d30303',
   },
+  state: {
+    hover: '#c4001a',
+  },
+};
+
+const lightElectricThemeDarken: ColorDarkenTheme = {
+  default: lightThemeDarken.default,
+  neutralContrast: {
+    high: lightThemeDarken.neutralContrast.high,
+  },
+  notification: {
+    success: lightThemeDarken.notification.success,
+    error: lightThemeDarken.notification.error,
+  },
+  state: {
+    hover: '#0084b7',
+  },
+};
+
+type ColorDarken = ColorDarkenTheme & {
+  darkTheme: ColorDarkenTheme;
+  lightElectricTheme: ColorDarkenTheme;
+};
+
+export const colorDarken: ColorDarken = {
+  ...lightThemeDarken,
+  darkTheme: darkThemeDarken,
+  lightElectricTheme: lightElectricThemeDarken,
 };
 
 type ThemedColorsDarken = {
