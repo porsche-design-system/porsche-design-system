@@ -6,9 +6,8 @@ import {
   getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
+} from '../../../projects/components-wrapper/src/partials';
 
-// TODO: why e2e?
 describe('getFontFaceStylesheet()', () => {
   it('should be a function', () => {
     expect(typeof getFontFaceStylesheet).toBe('function');

@@ -32,7 +32,7 @@
     "react": ">=17.0.0 <18.0.0",
     "react-dom": ">=17.0.0 <18.0.0"
   },
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts"
+  "main": "public-api.js",
+  "module": "esm/public-api.js",
+  "types": "public-api.d.ts"
 }
