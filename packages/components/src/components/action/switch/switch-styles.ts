@@ -1,25 +1,23 @@
 import {
   addImportantToEachRule,
   buildResponsiveStyles,
-  colorDarken,
   getCss,
-  GetStylesFunction,
   getTextHiddenJssStyle,
   getThemedColors,
+  getThemedColorsDarken,
   getTransition,
-  isDark,
+  isLightElectric,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { BreakpointCustomizable, JssStyle } from '../../../utils';
-import type { Theme } from '../../../types';
-import { AlignLabel, AlignLabelType } from '../../../types';
+import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
+import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { color, spacing } from '@porsche-design-system/utilities';
 
 const getColors = (
   checked: boolean,
   isDisabledOrLoading: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): {
   backgroundColor: string;
   buttonBorderColor: string;
@@ -30,24 +28,31 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor } = getThemedColors(theme);
+  const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
+    getThemedColors(theme);
+  const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
 
   return {
     backgroundColor,
-    buttonBorderColor: isDisabledOrLoading ? disabledColor : checked ? successColor : contrastHighColor,
+    buttonBorderColor: isDisabledOrLoading
+      ? disabledColor
+      : checked && isLightElectric(theme)
+      ? brandColor
+      : checked
+      ? successColor
+      : contrastHighColor,
     buttonBorderColorHover:
-      checked && isDark(theme)
-        ? colorDarken.darkTheme.notification.success
+      checked && isLightElectric(theme) ? hoverColorDarken : checked ? successColorDarken : baseColor,
+    buttonBackgroundColor:
+      isDisabledOrLoading && checked
+        ? disabledColor
+        : checked && isLightElectric(theme)
+        ? brandColor
         : checked
-        ? colorDarken.notification.success
-        : baseColor,
-    buttonBackgroundColor: isDisabledOrLoading && checked ? disabledColor : checked ? successColor : 'transparent',
-    buttonBackgroundColorHover:
-      checked && isDark(theme)
-        ? colorDarken.darkTheme.notification.success
-        : checked
-        ? colorDarken.notification.success
+        ? successColor
         : 'transparent',
+    buttonBackgroundColorHover:
+      checked && isLightElectric(theme) ? hoverColorDarken : checked ? successColorDarken : 'transparent',
     toggleBackgroundColor:
       isDisabledOrLoading && !checked ? disabledColor : checked ? color.background.default : contrastHighColor,
     toggleBackgroundColorHover: checked ? color.background.default : baseColor,
@@ -94,7 +99,7 @@ export const getComponentCss = (
   checked: boolean,
   loading: boolean,
   isDisabledOrLoading: boolean,
-  theme: Theme
+  theme: ThemeExtendedElectric
 ): string => {
   const {
     backgroundColor,

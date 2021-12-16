@@ -758,7 +758,7 @@ export namespace Components {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PTable {
         /**
@@ -2034,7 +2034,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PTable {
         /**
