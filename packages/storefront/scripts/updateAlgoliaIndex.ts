@@ -135,17 +135,32 @@ const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'cat
 // set distinct: true and hitsPerPage:20 there
 const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
+const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(content)'];
+
 const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
   const client = algoliasearch('H4KMYOI855', 'bb3db0efeeb2b6f662ee1eb6f46a475c');
   const index = client.initIndex('some_index');
-  index.setSettings({ searchableAttributes, distinct: true, attributeForDistinct, hitsPerPage: 20 });
+  index
+    .setSettings({
+      searchableAttributes,
+      distinct: true,
+      attributeForDistinct,
+      hitsPerPage: 20,
+      customRanking,
+    })
+    .then(() => {
+      console.log('-> successfully set algolia settings');
+    })
+    .catch((error) => {
+      console.log('-> algolia saving settings failed: ', error);
+    });
   index
     .saveObjects(records, { autoGenerateObjectIDIfNotExist: false })
     .then(() => {
       console.log('-> successfully updated index');
     })
     .catch((error) => {
-      console.log('-> error, algolia fed up: ', error);
+      console.log('-> algolia saving objects failed: ', error);
     });
 };
 
