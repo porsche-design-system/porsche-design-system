@@ -1,13 +1,28 @@
 import { color } from '@porsche-design-system/utilities';
-import type { Color } from '@porsche-design-system/utilities';
 import type { FormState, Theme, ThemeExtendedElectric } from '../types';
 import { isDark, isLightElectric } from './theme';
 
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
+type ColorDarkenTheme = {
+  default: string;
+  neutralContrast: {
+    high: string;
+  };
+  notification: {
+    success: string;
+    error: string;
+  };
+  state: {
+    hover: string;
+  };
 };
 
-export const colorDarken: DeepPartial<Color> = {
+type ColorDarken = ColorDarkenTheme & {
+  darkTheme: ColorDarkenTheme;
+  lightElectricTheme: ColorDarkenTheme;
+};
+
+export const colorDarken: ColorDarken = {
+  default: 'deeppink', // not yet defined
   neutralContrast: {
     high: '#151718',
   },
@@ -20,6 +35,9 @@ export const colorDarken: DeepPartial<Color> = {
   },
   darkTheme: {
     default: '#e0e0e0',
+    neutralContrast: {
+      high: 'deeppink', // not yet defined
+    },
     notification: {
       success: '#017d14',
       error: '#d30303',
@@ -29,6 +47,7 @@ export const colorDarken: DeepPartial<Color> = {
     },
   },
   lightElectricTheme: {
+    default: 'deeppink', // not yet defined
     neutralContrast: {
       high: '#151718',
     },
@@ -40,6 +59,40 @@ export const colorDarken: DeepPartial<Color> = {
       hover: '#0084b7',
     },
   },
+};
+
+type ThemedColorsDarken = {
+  contrastHighColorDarken: string;
+  successColorDarken: string;
+  errorColorDarken: string;
+  hoverColorDarken: string;
+};
+
+const getStaticThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
+  const {
+    neutralContrast: { high: contrastHighColorDarken },
+    state: { hover: hoverColorDarken },
+    notification: { error: errorColorDarken, success: successColorDarken },
+  } = isDark(theme) ? colorDarken.darkTheme : isLightElectric(theme) ? colorDarken.lightElectricTheme : colorDarken;
+
+  return {
+    contrastHighColorDarken,
+    successColorDarken,
+    errorColorDarken,
+    hoverColorDarken,
+  };
+};
+
+const themedColorsDarkenLight = getStaticThemedColorsDarken('light');
+const themedColorsDarkenDark = getStaticThemedColorsDarken('dark');
+const themedColorsDarkenLightElectric = getStaticThemedColorsDarken('light-electric');
+
+export const getThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
+  return isDark(theme)
+    ? themedColorsDarkenDark
+    : isLightElectric(theme)
+    ? themedColorsDarkenLightElectric
+    : themedColorsDarkenLight;
 };
 
 type ThemedColors = {
