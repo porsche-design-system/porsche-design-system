@@ -106,4 +106,19 @@ describe('search', () => {
     expect(algoliaHitsList.length).toBe(4);
     expect(await getNavigation()).not.toBeNull();
   });
+
+  it('should keep hits hidden after clearing input and focusing search', async () => {
+    await sendAlgoliaRequest();
+    await page.focus(searchInputSelector);
+    await page.keyboard.press('Escape');
+
+    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const algoliaHitsList = await getAlgoliaHits();
+
+    await page.focus(searchInputSelector);
+
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(algoliaHitsList.length).toBe(4);
+    expect(await getNavigation()).not.toBeNull();
+  });
 });
