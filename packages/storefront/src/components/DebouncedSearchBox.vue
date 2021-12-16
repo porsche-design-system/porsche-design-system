@@ -40,15 +40,15 @@
     }
 
     set query(val: string) {
+      this.$emit('query-change', val);
       this.localQuery = val;
       if (this.timerId) {
         clearTimeout(this.timerId);
       }
       this.timerId = setTimeout(() => {
-        // when query is empty send a space
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        this.state.refine(this.localQuery ? this.localQuery : ' ');
+        this.state.refine(this.localQuery);
       }, this.delay);
     }
   }

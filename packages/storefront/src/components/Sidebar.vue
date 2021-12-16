@@ -2,7 +2,7 @@
   <nav>
     <ais-instant-search index-name="some_index" :search-client="searchClient">
       <ais-search-box>
-        <debounced-search-box :on-focus="() => (this.displayHits = true)" />
+        <debounced-search-box :on-focus="() => (this.displayHits = true)" v-on:query-change="shouldDisplayHits" />
       </ais-search-box>
 
       <ais-state-results>
@@ -118,8 +118,8 @@
       ...this.algoliaClient,
       algoliaClient: this.algoliaClient,
       search(requests: AlgoliaRequest[]) {
-        // remove initial search and handle empty searches
-        if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
+        // remove initial search
+        if (requests.every(({ params }: AlgoliaRequest) => !params?.query)) {
           return Promise.resolve({
             results: requests.map(() => ({
               hits: [],
@@ -169,6 +169,10 @@
 
     shouldHideNavigation(hits: AlgoliaResult[]): void {
       this.hideNavigation = this.displayHits && hits.length > 0;
+    }
+
+    shouldDisplayHits(query: string): void {
+      this.displayHits = !!query;
     }
 
     private static category(route: Route): string {
