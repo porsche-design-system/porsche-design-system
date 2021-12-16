@@ -44,7 +44,8 @@
     "Christoph Stickel <net.christoph.stickel@mhp.com>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Melanie Kolar <melanie.kolar@udg.de>",
-    "Bernd Hacker <bernd.hacker@mhp.com"
+    "Bernd Hacker <bernd.hacker@mhp.com>",
+    "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
   "scripts": {
     "preinstall": "yarn preinstall:assets && yarn preinstall:components-manager-cli && yarn preinstall:components-js && yarn preinstall:components-angular && yarn preinstall:components-react && yarn preinstall:shared",
@@ -84,7 +85,7 @@
     "lint:components": "yarn --cwd ./packages/components lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
     "test": "yarn test:unit && yarn test:jsdom-polyfill && yarn test:e2e && yarn test:vrt",
-    "test:unit": "concurrently --kill-others-on-fail -n 'components,components-js,components-angular,components-react,storefront,utilities,shared' 'yarn test:unit:components' 'yarn test:unit:components-js' 'yarn test:unit:components-angular' 'yarn test:unit:components-react' 'yarn test:unit:storefront' 'yarn test:unit:utilities' 'yarn test:unit:shared'",
+    "test:unit": "concurrently --kill-others-on-fail -n 'components,components-js,components-angular,components-react,shared,storefront,utilities' 'yarn test:unit:components' 'yarn test:unit:components-js' 'yarn test:unit:components-angular' 'yarn test:unit:components-react' 'yarn test:unit:shared' 'yarn test:unit:storefront' 'yarn test:unit:utilities'",
     "test:unit:components": "yarn --cwd ./packages/components test:unit",
     "test:unit:components-js": "yarn --cwd ./packages/components-js test:unit",
     "test:unit:components-js:components-manager-core": "yarn --cwd ./packages/components-js test:unit:components-manager-core",
@@ -92,9 +93,9 @@
     "test:unit:components-js:partials": "yarn --cwd ./packages/components-js test:unit:partials",
     "test:unit:components-angular": "yarn --cwd ./packages/components-angular test:unit",
     "test:unit:components-react": "yarn --cwd ./packages/components-react test:unit",
+    "test:unit:shared": "yarn --cwd ./packages/shared test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
     "test:unit:utilities": "yarn --cwd ./packages/utilities test:unit",
-    "test:unit:shared": "yarn --cwd ./packages/shared test:unit",
     "test:jsdom-polyfill": "concurrently --kill-others-on-fail -n 'components-react' 'yarn test:jsdom-polyfill:components-react'",
     "test:jsdom-polyfill:components-react": "yarn --cwd ./packages/components-react test:jsdom-polyfill",
     "test:e2e": "concurrently --kill-others-on-fail -n 'components-js,components-angular,components-react,storefront' 'yarn test:e2e:components-js' 'yarn test:e2e:components-angular'  'yarn test:e2e:components-react' 'yarn test:e2e:storefront'",
