@@ -3,13 +3,10 @@ import {
   BreakpointCustomizable,
   buildGlobalStyles,
   buildHostStyles,
-  buildResponsiveStyles,
   buildSlottedStyles,
-  colorDarken,
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getFormTextHiddenJssStyle,
   getRequiredStyles,
   getStateMessageStyles,
   getThemedColors,
@@ -18,7 +15,7 @@ import {
   pxToRemWithUnit,
 } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { getBaseChildStyles, isVisibleState } from '../form-styles';
+import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
 import { srOnly, color } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 
@@ -40,7 +37,7 @@ export const getComponentCss = (
     ...buildGlobalStyles(
       addImportantToEachRule({
         ...mergeDeep(
-          getBaseChildStyles('input', state),
+          getBaseChildStyles('input', state, theme),
           !unit && {
             '::slotted(input)': {
               padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
@@ -98,27 +95,7 @@ export const getComponentCss = (
         },
       },
     },
-    label: {
-      display: 'block',
-      '&--disabled': {
-        '& .label__text': {
-          color: disabledColor,
-        },
-      },
-      '&__text': {
-        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
-        display: 'block',
-        width: 'fit-content',
-        transition: getTransition('color'),
-        '&+&--description': {
-          marginTop: pxToRemWithUnit(-4),
-          paddingBottom: pxToRemWithUnit(8),
-        },
-        '&--description': {
-          color: contrastMediumColor,
-        },
-      },
-    },
+    ...getLabelStyles('input', hideLabel, state, theme, '$unit'),
     ...getRequiredStyles(theme),
     ...getStateMessageStyles(theme, state),
     'sr-only': {
@@ -128,7 +105,7 @@ export const getComponentCss = (
     unit: {
       position: 'absolute',
       bottom: 0,
-      ...(unitPosition === 'suffix' ? { right: 0 } : { left: 0 }),
+      [unitPosition === 'suffix' ? 'right' : 'left']: 0,
       padding: pxToRemWithUnit(12),
       zIndex: 1,
       boxSizing: 'border-box',
@@ -138,18 +115,6 @@ export const getComponentCss = (
         cursor: 'not-allowed',
       },
     },
-    'label__text, unit': addImportantToEachRule({
-      '&:hover': {
-        '&~::slotted(input:not(:disabled):not([readonly]))': {
-          borderColor: baseColor,
-        },
-        ...(hasVisibleState && {
-          '&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))': {
-            borderColor: colorDarken.notification[state],
-          },
-        }),
-      },
-    }),
   });
 };
 
