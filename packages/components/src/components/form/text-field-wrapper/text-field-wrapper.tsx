@@ -55,12 +55,17 @@ export class TextFieldWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
-    this.setInput();
-    this.observeAttributes();
+    this.input = getHTMLElementAndThrowIfUndefined(
+      this.host,
+      ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
+        .map((type) => `input[type=${type}]`)
+        .join(',')
+    );
+    this.observeAttributes(); // once initially
     this.isPassword = this.input.type === 'password';
   }
 
@@ -171,14 +176,6 @@ export class TextFieldWrapper {
         )}
       </Host>
     );
-  }
-
-  private setInput(): void {
-    const selector = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-      .map((type) => `input[type=${type}]`)
-      .join(',');
-
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
 
   private onLabelClick = (): void => {
