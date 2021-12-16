@@ -32,5 +32,10 @@
   "peerDependencies": {
     "@angular/common": ">=12.0.0 <14.0.0",
     "@angular/core": ">=12.0.0 <14.0.0"
+  },
+  "exports": {
+    "./partials": {
+      "default": "./partials.js"
+    }
   }
 }
