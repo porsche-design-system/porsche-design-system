@@ -120,7 +120,7 @@ export const getComponentCss = (
       bottom: 0,
       boxSizing: 'border-box',
       right: 0,
-      pointerEvents: 'none',
+      zIndex: 1,
       color: contrastMediumColor,
       padding: pxToRemWithUnit(12),
     },

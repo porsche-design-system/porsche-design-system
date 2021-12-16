@@ -60,7 +60,7 @@ export class TextareaWrapper {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, hasCounter(this.textarea));
   }
 
   public componentDidRender(): void {
@@ -108,7 +108,6 @@ export class TextareaWrapper {
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
-          <slot />
           {hasCounter(this.textarea) && (
             <PrefixedTagNames.pText
               class="counter"
@@ -118,6 +117,7 @@ export class TextareaWrapper {
               ref={(el) => (this.counterElement = el)}
             />
           )}
+          <slot />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />

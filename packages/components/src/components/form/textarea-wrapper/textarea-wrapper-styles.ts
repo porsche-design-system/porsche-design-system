@@ -16,10 +16,15 @@ import type { Styles } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
 
-export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState): string => {
+export const getComponentCss = (
+  hideLabel: BreakpointCustomizable<boolean>,
+  state: FormState,
+  hasCounter: boolean
+): string => {
   const theme: Theme = 'light';
   const hasVisibleState = isVisibleState(state);
   const { contrastMediumColor } = getThemedColors(theme);
+  const defaultPadding = pxToRemWithUnit(hasVisibleState ? 10 : 11);
 
   return getCss({
     ...buildHostStyles({
@@ -29,7 +34,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       mergeDeep(
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
-            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+            // comment for 48
+            padding: hasCounter ? `${defaultPadding} ${defaultPadding} ${pxToRemWithUnit(36)}` : defaultPadding,
             resize: 'vertical',
           })
         ),
@@ -40,16 +46,18 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         } as Styles
       )
     ),
-    ...getLabelStyles('textarea', hideLabel, state, theme),
+    ...getLabelStyles('textarea', hideLabel, state, theme, '$counter'),
     ...getRequiredStyles(theme),
     ...getStateMessageStyles(theme, state),
-    counter: {
-      position: 'absolute',
-      bottom: pxToRemWithUnit(6),
-      right: pxToRemWithUnit(12),
-      pointerEvents: 'none',
-      color: contrastMediumColor,
-    },
+    ...(hasCounter && {
+      counter: {
+        position: 'absolute',
+        bottom: pxToRemWithUnit(6),
+        right: pxToRemWithUnit(12),
+        zIndex: 1,
+        color: contrastMediumColor,
+      },
+    }),
   });
 };
 
