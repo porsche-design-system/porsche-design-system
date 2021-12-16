@@ -619,7 +619,7 @@ jobs:
           args: --shared
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, shared]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -646,7 +646,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, shared]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
