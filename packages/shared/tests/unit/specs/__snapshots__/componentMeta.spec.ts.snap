@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FOCUSABLE_TAG_NAMES_CAMEL_CASE should match snapshot for %s 1`] = `
+Array [
+  "pAccordion",
+  "pBanner",
+  "pButton",
+  "pButtonPure",
+  "pInlineNotification",
+  "pLink",
+  "pLinkPure",
+  "pLinkSocial",
+  "pMarque",
+  "pModal",
+  "pPagination",
+  "pPopover",
+  "pSelectWrapper",
+  "pSelectWrapperDropdown",
+  "pSwitch",
+  "pTable",
+  "pTableHeadCell",
+  "pTabs",
+  "pTabsBar",
+  "pTextFieldWrapper",
+  "pToast",
+  "pToastItem",
+]
+`;
+
+exports[`getComponentMeta() should match snapshot for p-accordion 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-banner 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-button 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-button-group 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-button-pure 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-checkbox-wrapper 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredChild": "input type=\\"checkbox\\"",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-content-wrapper 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-divider 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-fieldset-wrapper 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-flex 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-flex-item 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-flex",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-grid 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-grid-item 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-grid",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-headline 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-icon 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-inline-notification 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-link 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-link-pure 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-link-social 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-marque 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-modal 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-pagination 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-popover 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-radio-button-wrapper 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredChild": "input type=\\"radio\\"",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-select-wrapper 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+  "requiredChild": "select",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-select-wrapper-dropdown 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-spinner 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-switch 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-body 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-table",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-cell 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-table-row",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-head 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-table",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-head-cell 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+  "requiredParent": "p-table-head-row",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-head-row 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-table-head",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-table-row 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-table-body",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-tabs 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-tabs-bar 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-tabs-item 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-tabs",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-text 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-text-field-wrapper 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": false,
+  "requiredChild": "input type=text",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-text-list 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-text-list-item 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredParent": "p-text-list",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-textarea-wrapper 1`] = `
+Object {
+  "isFocusable": false,
+  "isThemeable": false,
+  "requiredChild": "textarea",
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-toast 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
+
+exports[`getComponentMeta() should match snapshot for p-toast-item 1`] = `
+Object {
+  "isFocusable": true,
+  "isThemeable": true,
+}
+`;
