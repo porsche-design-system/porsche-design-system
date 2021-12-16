@@ -15,13 +15,13 @@ const tagNameToClassMap: { [key in TagName]?: new () => { componentWillLoad: () 
   'p-text-field-wrapper': TextFieldWrapper,
 };
 
+const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
+
 it('should match count of filtered tagNames with key count from tagNameToClassMap', () => {
-  expect(TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild).length).toBe(
-    Object.keys(tagNameToClassMap).length
-  );
+  expect(tagNamesWithRequiredChild.length).toBe(Object.keys(tagNameToClassMap).length);
 });
 
-it.each<TagName>(TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild))(
+it.each<TagName>(tagNamesWithRequiredChild)(
   'should call getHTMLElementAndThrowIfUndefined via componentWillLoad() for %s',
   (tagName) => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
