@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FOCUSABLE_TAG_NAMES_CAMEL_CASE should match snapshot 1`] = `
+Array [
+  "pAccordion",
+  "pBanner",
+  "pButton",
+  "pButtonPure",
+  "pInlineNotification",
+  "pLink",
+  "pLinkPure",
+  "pLinkSocial",
+  "pMarque",
+  "pModal",
+  "pPagination",
+  "pPopover",
+  "pSelectWrapper",
+  "pSelectWrapperDropdown",
+  "pSwitch",
+  "pTable",
+  "pTableHeadCell",
+  "pTabs",
+  "pTabsBar",
+  "pTextFieldWrapper",
+  "pToast",
+  "pToastItem",
+]
+`;
+
+exports[`componentMeta should match snapshot 1`] = `
+Object {
+  "p-accordion": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-banner": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-button": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-button-group": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+  },
+  "p-button-pure": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-checkbox-wrapper": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredChild": "input type=\\"checkbox\\"",
+  },
+  "p-content-wrapper": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-divider": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-fieldset-wrapper": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+  },
+  "p-flex": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+  },
+  "p-flex-item": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-flex",
+  },
+  "p-grid": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+  },
+  "p-grid-item": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-grid",
+  },
+  "p-headline": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-icon": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-inline-notification": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-link": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-link-pure": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-link-social": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-marque": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+  },
+  "p-modal": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+  },
+  "p-pagination": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-popover": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+  },
+  "p-radio-button-wrapper": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredChild": "input type=\\"radio\\"",
+  },
+  "p-select-wrapper": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+    "requiredChild": "select",
+  },
+  "p-select-wrapper-dropdown": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-spinner": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-switch": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-table": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+  },
+  "p-table-body": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-table",
+  },
+  "p-table-cell": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-table-row",
+  },
+  "p-table-head": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-table",
+  },
+  "p-table-head-cell": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+    "requiredParent": "p-table-head-row",
+  },
+  "p-table-head-row": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-table-head",
+  },
+  "p-table-row": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-table-body",
+  },
+  "p-tabs": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-tabs-bar": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-tabs-item": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-tabs",
+  },
+  "p-text": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-text-field-wrapper": Object {
+    "isFocusable": true,
+    "isThemeable": false,
+    "requiredChild": "input type=text",
+  },
+  "p-text-list": Object {
+    "isFocusable": false,
+    "isThemeable": true,
+  },
+  "p-text-list-item": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredParent": "p-text-list",
+  },
+  "p-textarea-wrapper": Object {
+    "isFocusable": false,
+    "isThemeable": false,
+    "requiredChild": "textarea",
+  },
+  "p-toast": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+  "p-toast-item": Object {
+    "isFocusable": true,
+    "isThemeable": true,
+  },
+}
+`;

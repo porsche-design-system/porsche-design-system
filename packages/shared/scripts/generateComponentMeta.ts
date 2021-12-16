@@ -52,27 +52,32 @@ const generateComponentMeta = (): void => {
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
 
-    const [, requiredChildRaw] = /getHTMLElementAndThrowIfUndefined\(.+, (.+?)\)/.exec(source) ?? [];
+    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) ?? [];
+    requiredChild = requiredChild?.trim();
 
-    let requiredChild = undefined;
-    if (requiredChildRaw) {
-      requiredChild = requiredChildRaw.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-      requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
+    if (requiredChild) {
+      const cleanSelector = (markup: string): string =>
+        markup
+          .replace(/\[/g, ' ') // replace opening bracket of attribute selector
+          .replace(/]/g, ''); // replace closing bracket of attribute selector
 
       if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
+        requiredChild = cleanSelector(requiredChild);
         requiredChild = requiredChild.slice(1, -1);
       } else {
         const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
-        if (valueRaw) {
-          const value = eval(`${valueRaw}`);
-          requiredChild = value.split(',')[0];
-          requiredChild = requiredChild.replace(/\[/g, ' '); // replace opening bracket of attribute selector
-          requiredChild = requiredChild.replace(/]/g, ''); // replace closing bracket of attribute selector
-        }
+        const value = eval(`${valueRaw || requiredChild}`);
+        requiredChild = value.split(',')[0];
+        requiredChild = cleanSelector(requiredChild);
       }
     }
 
-    result[tagName] = { isFocusable, isThemeable, requiredParent, requiredChild };
+    result[tagName] = {
+      isFocusable,
+      isThemeable,
+      requiredParent,
+      requiredChild,
+    };
     return result;
   }, {} as ComponentsMeta);
 
@@ -91,8 +96,9 @@ const generateComponentMeta = (): void => {
     .map(([key]) => camelCase(key) as TagNameCamelCase)
     .sort();
 
-  const functions = `export const getComponentMeta = (component: TagName): ComponentMeta => {
-  const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+  const functions = `export const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+
+export const getComponentMeta = (component: TagName): ComponentMeta => {
   return componentMeta[component];
 };
 
