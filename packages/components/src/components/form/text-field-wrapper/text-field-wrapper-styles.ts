@@ -11,7 +11,6 @@ import {
   getStateMessageStyles,
   getThemedColors,
   getTransition,
-  mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
@@ -36,12 +35,12 @@ export const getComponentCss = (
     }),
     ...buildGlobalStyles(
       addImportantToEachRule({
-        ...mergeDeep(
-          getBaseChildStyles('input', state, theme),
+        ...getBaseChildStyles(
+          'input',
+          state,
+          theme,
           !unit && {
-            '::slotted(input)': {
-              padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
-            },
+            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
           }
         ),
         '::slotted(input[type="number"])': {
