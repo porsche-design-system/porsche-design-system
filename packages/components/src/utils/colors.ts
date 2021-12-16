@@ -22,7 +22,7 @@ type ColorDarken = ColorDarkenTheme & {
 };
 
 export const colorDarken: ColorDarken = {
-  default: 'deeppink', // not yet defined
+  default: '#000',
   neutralContrast: {
     high: '#151718',
   },
@@ -36,7 +36,7 @@ export const colorDarken: ColorDarken = {
   darkTheme: {
     default: '#e0e0e0',
     neutralContrast: {
-      high: 'deeppink', // not yet defined
+      high: '#c3c5c8',
     },
     notification: {
       success: '#017d14',
@@ -47,7 +47,7 @@ export const colorDarken: ColorDarken = {
     },
   },
   lightElectricTheme: {
-    default: 'deeppink', // not yet defined
+    default: '#000',
     neutralContrast: {
       high: '#151718',
     },
