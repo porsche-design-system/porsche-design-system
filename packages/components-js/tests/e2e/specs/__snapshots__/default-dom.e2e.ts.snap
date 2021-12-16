@@ -473,6 +473,11 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 </nav>"
 `;
 
+exports[`should have no basic DOM regression for p-popover 1`] = `
+"<p-button-pure class=\\"hydrated\\">
+  More information</p-button-pure>"
+`;
+
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
 "<label class=\\"root\\">
   <slot>
@@ -546,7 +551,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     outline-color: transparent !important
   }
 </style>
-<label class=\\"root root--stretch-off root--label-align-right root--label-visible\\">
+<label class=\\"root\\">
   <p-text class=\\"text hydrated\\">
     <slot>
     </slot>
