@@ -15,7 +15,7 @@ const tagNameToClassMap: { [key in TagName]?: new () => { componentWillLoad: () 
   'p-text-field-wrapper': TextFieldWrapper,
 };
 
-it('should match length of tagNames with required child with object key count from tagNameToClassMap', () => {
+it('should match count of filtered tagNames with key count from tagNameToClassMap', () => {
   expect(TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild).length).toBe(
     Object.keys(tagNameToClassMap).length
   );
