@@ -119,7 +119,7 @@
       algoliaClient: this.algoliaClient,
       search(requests: AlgoliaRequest[]) {
         // remove initial search
-        if (requests.every(({ params }: AlgoliaRequest) => !params?.query)) {
+        if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
           return Promise.resolve({
             results: requests.map(() => ({
               hits: [],
