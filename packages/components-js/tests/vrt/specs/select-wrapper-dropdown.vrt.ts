@@ -37,6 +37,7 @@ it('should have no visual regression for :hover', async () => {
           (dropdown as any).selectRef = select;
           (dropdown as any).isOpenOverride = true;
           (dropdown as any).direction = 'down';
+          (dropdown as any).state = 'none';
 
           if (theme === 'dark') {
             (dropdown as any).theme = 'dark';
