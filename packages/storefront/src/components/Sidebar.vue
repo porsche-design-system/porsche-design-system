@@ -2,7 +2,7 @@
   <nav>
     <ais-instant-search index-name="some_index" :search-client="searchClient">
       <ais-search-box>
-        <debounced-search-box :on-focus="() => (this.displayHits = true)" v-on:query-change="shouldDisplayHits" />
+        <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
       </ais-search-box>
 
       <ais-state-results>
@@ -18,7 +18,7 @@
           >
             <template v-slot:item="{ item }">
               <section>
-                <p-text :weight="'bold'" :tag="'div'" :size="'small'" class="category">{{ item.category }}</p-text>
+                <p-text :weight="'semibold'" :tag="'div'" :size="'small'" class="category">{{ item.category }}</p-text>
                 <ul>
                   <li v-for="(hit, index) in item.hits" :key="index">
                     <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">

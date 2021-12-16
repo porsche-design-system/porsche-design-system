@@ -1,6 +1,13 @@
 <template>
   <p-text-field-wrapper>
-    <input type="search" name="search" placeholder="Search" v-model="query" autocomplete="off" @focus="onFocus" />
+    <input
+      type="search"
+      name="search"
+      placeholder="Search"
+      v-model="query"
+      autocomplete="off"
+      @focus="onFocus(localQuery)"
+    />
   </p-text-field-wrapper>
 </template>
 
@@ -15,7 +22,7 @@
 
   @Component
   export default class DebouncedSearchBox extends mixins(createWidgetMixin({ connector: connectSearchBox })) {
-    @Prop({ default: () => ({}) }) public onFocus!: () => void;
+    @Prop({ default: () => ({}) }) public onFocus!: (query: string) => void;
 
     @Prop({ default: 300 }) public delay!: number;
 
