@@ -1,12 +1,24 @@
 import type { Styles } from '../../utils';
-import { getInset, getThemedColors, getThemedFormStateColors, getTransition, pxToRemWithUnit } from '../../utils';
+import {
+  addImportantToRule,
+  BreakpointCustomizable,
+  buildResponsiveStyles,
+  colorDarken,
+  getFormTextHiddenJssStyle,
+  getInset,
+  getThemedColors,
+  getThemedFormStateColors,
+  getTransition,
+  pxToRemWithUnit,
+} from '../../utils';
 import { color, font } from '@porsche-design-system/utilities';
 import { FormState, Theme } from '../../types';
 
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
 
-export const getBaseChildStyles = (child: 'input' | 'textarea', state: FormState): Styles => {
-  const theme: Theme = 'light';
+type ChildSelector = 'input' | 'textarea';
+
+export const getBaseChildStyles = (child: ChildSelector, state: FormState, theme: Theme): Styles => {
   const { baseColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleState(state);
@@ -58,6 +70,48 @@ export const getBaseChildStyles = (child: 'input' | 'textarea', state: FormState
     },
     [`::slotted(${child}[readonly]:not(:disabled))`]: {
       color: contrastMediumColor,
+    },
+  };
+};
+
+export const getLabelStyles = (
+  child: ChildSelector,
+  hideLabel: BreakpointCustomizable<boolean>,
+  state: FormState,
+  theme: Theme,
+  additionalRefForInputHover?: string
+): Styles => {
+  const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const hasVisibleState = isVisibleState(state);
+
+  return {
+    label: {
+      display: 'block',
+      position: 'relative', // for unit and counter
+      '&--disabled': {
+        '& .label__text': {
+          color: disabledColor,
+        },
+      },
+      '&__text': {
+        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
+        display: 'block',
+        width: 'fit-content',
+        transition: getTransition('color'),
+        '&+&--description': {
+          marginTop: pxToRemWithUnit(-4),
+          paddingBottom: pxToRemWithUnit(8),
+        },
+        '&--description': {
+          color: contrastMediumColor,
+        },
+      },
+    },
+    ['label__text:hover' + (additionalRefForInputHover ? `,${additionalRefForInputHover}` : '')]: {
+      [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
+      (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+        borderColor: addImportantToRule(hasVisibleState ? colorDarken.notification[state] : baseColor),
+      },
     },
   };
 };
