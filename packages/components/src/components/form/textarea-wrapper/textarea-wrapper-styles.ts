@@ -26,11 +26,9 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
     ...buildGlobalStyles(
       mergeDeep(
         addImportantToEachRule(
-          mergeDeep(getBaseChildStyles('textarea', state, theme), {
-            '::slotted(textarea)': {
-              padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
-              resize: 'vertical',
-            },
+          getBaseChildStyles('textarea', state, theme, {
+            padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
+            resize: 'vertical',
           })
         ),
         {

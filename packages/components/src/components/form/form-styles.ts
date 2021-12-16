@@ -13,12 +13,18 @@ import {
 } from '../../utils';
 import { color, font } from '@porsche-design-system/utilities';
 import { FormState, Theme } from '../../types';
+import { JssStyle } from 'jss';
 
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
 
 type ChildSelector = 'input' | 'textarea';
 
-export const getBaseChildStyles = (child: ChildSelector, state: FormState, theme: Theme): Styles => {
+export const getBaseChildStyles = (
+  child: ChildSelector,
+  state: FormState,
+  theme: Theme,
+  additionalDefaultJssStyle?: JssStyle
+): Styles => {
   const { baseColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleState(state);
@@ -48,6 +54,7 @@ export const getBaseChildStyles = (child: ChildSelector, state: FormState, theme
       textIndent: 0,
       color: baseColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
+      ...additionalDefaultJssStyle,
     },
     [`::slotted(${child}:hover)`]: {
       borderColor: hasVisibleState ? stateHoverColor : baseColor,
