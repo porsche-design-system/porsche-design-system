@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import type { ToastMessage } from '../../../projects/components-wrapper/src';
-import { PButton, useToastManager } from '../../../projects/components-wrapper/src';
+import type { ToastMessage } from '../../../projects/components-wrapper/src/public-api';
+import { PButton, useToastManager } from '../../../projects/components-wrapper/src/public-api';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,

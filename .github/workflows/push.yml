@@ -258,6 +258,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-angular
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -321,6 +326,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-react
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -330,11 +340,6 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-jsdom-polyfill
-          args: --components-react
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
           args: --components-react
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
