@@ -13,17 +13,6 @@ describe('select-wrapper', () => {
   };
 
   describe('connectedCallback', () => {
-    it('should call getHTMLElementAndThrowIfUndefined()', () => {
-      const component = initComponent();
-      const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-
-      try {
-        component.connectedCallback();
-      } catch (e) {}
-
-      expect(spy).toBeCalledWith(component.host, 'select');
-    });
-
     it('should call observeAttributes()', () => {
       const component = initComponent();
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
@@ -34,6 +23,17 @@ describe('select-wrapper', () => {
   });
 
   describe('componentWillLoad', () => {
+    it('should call getHTMLElementAndThrowIfUndefined()', () => {
+      const component = initComponent();
+      const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
+
+      try {
+        component.componentWillLoad();
+      } catch (e) {}
+
+      expect(spy).toBeCalledWith(component.host, 'select');
+    });
+
     it('should call isCustomDropdown()', () => {
       const component = initComponent();
       component.native = true;

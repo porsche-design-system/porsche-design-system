@@ -43,12 +43,12 @@ export class TextareaWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-    this.observeAttributes();
+    this.observeAttributes(); // once initially
   }
 
   public componentDidRender(): void {
