@@ -90,6 +90,7 @@
     "test:unit:components-js:components-manager-core": "yarn --cwd ./packages/components-js test:unit:components-manager-core",
     "test:unit:components-js:components-wrapper": "yarn --cwd ./packages/components-js test:unit:components-js",
     "test:unit:components-js:partials": "yarn --cwd ./packages/components-js test:unit:partials",
+    "test:unit:components-angular": "yarn --cwd ./packages/components-angular test:unit",
     "test:unit:components-react": "yarn --cwd ./packages/components-react test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
     "test:unit:utilities": "yarn --cwd ./packages/utilities test:unit",

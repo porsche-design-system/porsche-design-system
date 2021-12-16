@@ -263,6 +263,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-angular
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-angular
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
