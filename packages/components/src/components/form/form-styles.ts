@@ -107,10 +107,12 @@ export const getLabelStyles = (
         },
       },
     },
-    ['label__text:hover' + (additionalRefForInputHover ? `,${additionalRefForInputHover}` : '')]: {
-      [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-      (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
-        borderColor: addImportantToRule(hasVisibleState ? colorDarken.notification[state] : baseColor),
+    ['label__text' + (additionalRefForInputHover ? `,${additionalRefForInputHover}` : '')]: {
+      '&:hover': {
+        [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
+        (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+          borderColor: addImportantToRule(hasVisibleState ? colorDarken.notification[state] : baseColor),
+        },
       },
     },
   };
