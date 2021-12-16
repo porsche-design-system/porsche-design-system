@@ -4,6 +4,7 @@ module.exports = {
   verbose: true,
   testMatch: ['**/tests/unit/specs/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
+  collectCoverageFrom: ['!<rootDir>/node_modules/', 'projects/components-wrapper/src/!(lib)**'],
   globals: {
     'ts-jest': {
       isolatedModules: true, // this fixes typing issues with jasmine
