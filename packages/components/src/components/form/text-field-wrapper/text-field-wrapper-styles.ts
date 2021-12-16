@@ -95,35 +95,24 @@ export const getComponentCss = (
         },
       },
     },
-    ...getLabelStyles('input', hideLabel, state, theme, '$unit'),
+    ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
     ...getRequiredStyles(theme),
     ...getStateMessageStyles(theme, state),
     'sr-only': {
       ...srOnly(),
       padding: 0,
     },
-    unit: {
-      position: 'absolute',
-      bottom: 0,
-      [unitPosition === 'suffix' ? 'right' : 'left']: 0,
-      padding: pxToRemWithUnit(12),
-      zIndex: 1,
-      boxSizing: 'border-box',
-      color: contrastMediumColor,
-      '&--disabled': {
-        color: disabledColor,
-        cursor: 'not-allowed',
+    ...(hasUnitOrCounter && {
+      unit: {
+        position: 'absolute',
+        bottom: 0,
+        [unitPosition === 'suffix' ? 'right' : 'left']: 0,
+        padding: pxToRemWithUnit(12),
+        zIndex: 1,
+        boxSizing: 'border-box',
+        color: contrastMediumColor,
       },
-    },
-    counter: {
-      position: 'absolute',
-      bottom: 0,
-      boxSizing: 'border-box',
-      right: 0,
-      zIndex: 1,
-      color: contrastMediumColor,
-      padding: pxToRemWithUnit(12),
-    },
+    }),
   });
 };
 

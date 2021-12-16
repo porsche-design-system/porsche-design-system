@@ -20,6 +20,7 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addInputEventListener,
   hasCounterAndIsTypeText,
+  hasUnitAndIsTypeNumber,
   setCounterInnerHtml,
   setInputStyles,
   throwIfUnitLengthExceeded,
@@ -58,6 +59,8 @@ export class TextFieldWrapper {
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
   private isPassword: boolean;
+  private hasCounter: boolean;
+  private hasUnit: boolean;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -68,10 +71,12 @@ export class TextFieldWrapper {
     this.setInput();
     this.observeAttributes();
     this.isPassword = this.input.type === 'password';
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.hasUnit = hasUnitAndIsTypeNumber(this.input, this.unit);
   }
 
   public componentDidLoad(): void {
-    if (hasCounterAndIsTypeText(this.input)) {
+    if (this.hasCounter) {
       addInputEventListener(this.input, this.unitOrCounterElement, () => this.state);
     }
   }
@@ -83,18 +88,18 @@ export class TextFieldWrapper {
       getComponentCss,
       this.hideLabel,
       this.state,
-      !!this.unit || hasCounterAndIsTypeText(this.input),
-      this.unitPosition,
+      this.hasUnit || this.hasCounter,
+      this.hasCounter ? 'suffix' : this.unitPosition,
       this.isPassword
     );
   }
 
   public componentDidRender(): void {
-    if (hasCounterAndIsTypeText(this.input)) {
+    if (this.hasCounter) {
       setCounterInnerHtml(this.input, this.unitOrCounterElement);
     }
     // needs to happen after render in order to have unitElement defined
-    setInputStyles(this.input, this.unitOrCounterElement, this.unitPosition, this.state);
+    setInputStyles(this.input, this.unitOrCounterElement, this.hasCounter ? 'suffix' : this.unitPosition, this.state);
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -116,11 +121,6 @@ export class TextFieldWrapper {
     const labelClasses = {
       ['label']: true,
       ['label--disabled']: disabled,
-    };
-
-    const unitClasses = {
-      ['unit']: true,
-      ['unit--disabled']: disabled,
     };
 
     const labelProps = {
@@ -146,9 +146,9 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            {type === 'number' && this.unit && (
+            {(this.hasUnit || this.hasCounter) && (
               <PrefixedTagNames.pText
-                class={unitClasses}
+                class="unit"
                 tag="span"
                 color="inherit"
                 ref={(el) => (this.unitOrCounterElement = el)}
@@ -159,15 +159,6 @@ export class TextFieldWrapper {
               </PrefixedTagNames.pText>
             )}
             <slot />
-            {hasCounterAndIsTypeText(this.input) && (
-              <PrefixedTagNames.pText
-                class="counter"
-                tag="span"
-                color="inherit"
-                aria-hidden="true"
-                ref={(el) => (this.unitOrCounterElement = el)}
-              />
-            )}
           </label>
           {this.isPassword ? (
             <button
