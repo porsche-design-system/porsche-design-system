@@ -40,6 +40,7 @@ export const getComponentCss = (
           state,
           theme,
           !unit && {
+            // padding is set via inline style if unit is present
             padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
           }
         ),
