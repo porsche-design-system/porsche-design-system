@@ -5,7 +5,7 @@ Object {
   "darkTheme": Object {
     "default": "#e0e0e0",
     "neutralContrast": Object {
-      "high": "deeppink",
+      "high": "#c3c5c8",
     },
     "notification": Object {
       "error": "#d30303",
@@ -15,9 +15,9 @@ Object {
       "hover": "#c4001a",
     },
   },
-  "default": "deeppink",
+  "default": "#000",
   "lightElectricTheme": Object {
-    "default": "deeppink",
+    "default": "#000",
     "neutralContrast": Object {
       "high": "#151718",
     },
@@ -110,7 +110,7 @@ Object {
 
 exports[`getThemedColorsDarken() should return correct colors for theme: dark 1`] = `
 Object {
-  "contrastHighColorDarken": "deeppink",
+  "contrastHighColorDarken": "#c3c5c8",
   "errorColorDarken": "#d30303",
   "hoverColorDarken": "#c4001a",
   "successColorDarken": "#017d14",
