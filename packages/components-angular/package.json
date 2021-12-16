@@ -21,7 +21,7 @@
     "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && rm src/index.html && mv src/index.tmp.html src/index.html",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out",
+    "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
   },
   "dependencies": {
     "@angular/animations": "^13.0.3",
