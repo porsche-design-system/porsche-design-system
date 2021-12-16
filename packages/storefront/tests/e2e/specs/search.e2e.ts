@@ -75,7 +75,7 @@ describe('search', () => {
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
     const algoliaHitsList = await getAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
     expect(algoliaHitsList.length).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
@@ -88,7 +88,7 @@ describe('search', () => {
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
     const algoliaHitsList = await getAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
     expect(algoliaHitsList.length).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
