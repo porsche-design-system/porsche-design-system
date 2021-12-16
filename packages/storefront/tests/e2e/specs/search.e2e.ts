@@ -64,6 +64,20 @@ describe('search', () => {
     expect(await getNavigation()).not.toBeNull();
   });
 
+  it('should show hits after navigation and click on search input focus', async () => {
+    await sendAlgoliaRequest();
+
+    const [linkElement] = await page.$x(`//div[@class='sidebar']//nav//a[contains(., 'Button')]`);
+    await linkElement.click();
+
+    await page.focus(searchInputSelector);
+
+    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+
+    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(await getNavigation()).toBeNull();
+  });
+
   it('should hide hits and show navigation after clearing the search', async () => {
     await sendAlgoliaRequest();
 
@@ -76,7 +90,7 @@ describe('search', () => {
     const algoliaHitsList = await getAlgoliaHits();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(0);
+    expect(algoliaHitsList.length).toBe(4);
     expect(await getNavigation()).not.toBeNull();
   });
 
@@ -89,7 +103,7 @@ describe('search', () => {
     const algoliaHitsList = await getAlgoliaHits();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(0);
+    expect(algoliaHitsList.length).toBe(4);
     expect(await getNavigation()).not.toBeNull();
   });
 });
