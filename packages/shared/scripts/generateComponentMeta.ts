@@ -96,8 +96,9 @@ export const generateComponentMeta = (): void => {
     .map(([key]) => camelCase(key) as TagNameCamelCase)
     .sort();
 
-  const functions = `export const getComponentMeta = (component: TagName): ComponentMeta => {
-  const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+  const functions = `export const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+
+export const getComponentMeta = (component: TagName): ComponentMeta => {
   return componentMeta[component];
 };
 
