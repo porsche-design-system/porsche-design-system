@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FOCUSABLE_TAG_NAMES_CAMEL_CASE should match snapshot for FOCUSABLE_TAG_NAMES_CAMEL_CASE 1`] = `
+exports[`FOCUSABLE_TAG_NAMES_CAMEL_CASE should match snapshot 1`] = `
 Array [
   "pAccordion",
   "pBanner",
@@ -27,7 +27,7 @@ Array [
 ]
 `;
 
-exports[`getComponentMeta() should match snapshot for getComponentMeta() dictionary 1`] = `
+exports[`componentMeta should match snapshot 1`] = `
 Object {
   "p-accordion": Object {
     "isFocusable": true,
