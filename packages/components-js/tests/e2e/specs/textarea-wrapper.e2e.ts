@@ -25,7 +25,7 @@ describe('textarea-wrapper', () => {
   const getHost = () => selectNode(page, 'p-textarea-wrapper');
   const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
   const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
-  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .root__text');
+  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
   const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
