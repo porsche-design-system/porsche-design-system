@@ -11,7 +11,7 @@ export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, 
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
 
-export const getInputUnitPadding = (
+export const getInputPadding = (
   unitElementWidth: number,
   unitPosition: TextFieldWrapperUnitPosition,
   state: FormState
@@ -29,7 +29,7 @@ export const setInputStyles = (
   state: FormState
 ): void => {
   if (element) {
-    input.style.setProperty('padding', getInputUnitPadding(element.offsetWidth, unitPosition, state), 'important');
+    input.style.setProperty('padding', getInputPadding(element.offsetWidth, unitPosition, state), 'important');
   }
 };
 
