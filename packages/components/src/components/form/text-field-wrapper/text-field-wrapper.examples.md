@@ -19,21 +19,15 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   </select>
 </Playground>
 
----
-
 ## With description text
 
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
----
-
 ## Required
 
 <Playground :markup="required" :config="config"></Playground>
-
----
 
 ## Disabled
 
@@ -44,13 +38,15 @@ In general, you should **prevent** using the `disabled="true"` state. Disabled e
 They can be confusing for sighted users as well by not pointing out why these elements are disabled. 
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
 
----
-
 ## Read only
 
 <Playground :markup="readonly" :config="config"></Playground>
 
---- 
+## Counter
+
+If the `maxLength` attribute is present onn the `input type="text"` element, a counter will be displayed.
+
+<Playground :markup="counter" :config="config"></Playground>
 
 ## Types
 
@@ -96,8 +92,6 @@ A description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typesSearch" :config="config"></Playground>
 
----
-
 ## Validation states
 
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
@@ -110,8 +104,6 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
     <option value="none">None</option>
   </select>
 </Playground>
-
----
 
 ## Slots
 
@@ -168,6 +160,11 @@ export default class Code extends Vue {
   readonly =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" readonly />
+</p-text-field-wrapper>`;
+
+  counter =
+`<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" value="Some value" maxLength="20" />
 </p-text-field-wrapper>`;
 
   get typesBasic() {
