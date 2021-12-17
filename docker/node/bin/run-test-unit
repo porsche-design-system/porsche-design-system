@@ -11,6 +11,7 @@ if
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
+  [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then
