@@ -33,8 +33,8 @@ export const getComponentCss = (
     ...buildHostStyles({
       display: 'block',
     }),
-    ...buildGlobalStyles(
-      addImportantToEachRule({
+    ...buildGlobalStyles({
+      ...addImportantToEachRule({
         ...getBaseChildStyles(
           'input',
           state,
@@ -60,12 +60,8 @@ export const getComponentCss = (
         '::slotted(input[type="search"])': {
           paddingRight: pxToRemWithUnit(48),
         },
-      })
-    ),
-    root: {
-      display: 'block',
-      position: 'relative',
-      '& button': {
+      }),
+      button: {
         position: 'absolute',
         bottom: 0,
         right: 0,
@@ -94,6 +90,10 @@ export const getComponentCss = (
           cursor: 'not-allowed',
         },
       },
+    }),
+    root: {
+      display: 'block',
+      position: 'relative',
     },
     ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
     ...getRequiredStyles(theme),

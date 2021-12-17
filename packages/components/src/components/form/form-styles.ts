@@ -57,10 +57,10 @@ export const getBaseChildStyles = (
       ...additionalDefaultJssStyle,
     },
     [`::slotted(${child}:hover)`]: {
-      borderColor: hasVisibleState ? stateHoverColor : baseColor,
+      borderColor: stateHoverColor || baseColor,
     },
     [`::slotted(${child}:focus)`]: {
-      outlineColor: hasVisibleState ? stateColor : contrastMediumColor,
+      outlineColor: stateColor || contrastMediumColor,
     },
     [`::slotted(${child}[readonly]:focus)`]: {
       outlineColor: 'transparent',
