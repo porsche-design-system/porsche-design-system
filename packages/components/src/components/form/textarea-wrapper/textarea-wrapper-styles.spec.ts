@@ -3,16 +3,22 @@ import { BreakpointCustomizable } from '../../../utils';
 import { FormState } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState]>([
-    [false, 'none'],
-    [true, 'none'],
-    [false, 'success'],
-    [true, 'success'],
-    [false, 'error'],
-    [true, 'error'],
-    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none'],
-  ])('should return correct css for hideLabel: %o and state: %s', (hideLabel, state) => {
-    expect(getComponentCss(hideLabel, state)).toMatchSnapshot();
+  it.each<[BreakpointCustomizable<boolean>, FormState, boolean]>([
+    [false, 'none', true],
+    [false, 'none', false],
+    [true, 'none', true],
+    [true, 'none', false],
+    [false, 'success', true],
+    [false, 'success', false],
+    [true, 'success', true],
+    [true, 'success', false],
+    [false, 'error', true],
+    [false, 'error', false],
+    [true, 'error', true],
+    [true, 'error', false],
+    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true],
+  ])('should return correct css for hideLabel: %o, state: %s and %s', (hideLabel, state, hasCounter) => {
+    expect(getComponentCss(hideLabel, state, hasCounter)).toMatchSnapshot();
   });
 });
 
