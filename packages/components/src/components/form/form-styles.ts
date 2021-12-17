@@ -17,7 +17,7 @@ import { JssStyle } from 'jss';
 
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
 
-type ChildSelector = 'input' | 'textarea';
+export type ChildSelector = 'input' | 'textarea';
 
 export const getBaseChildStyles = (
   child: ChildSelector,
