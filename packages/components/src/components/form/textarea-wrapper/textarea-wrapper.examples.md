@@ -20,21 +20,15 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   </select>
 </Playground>
 
---- 
-
 ## With description text
 
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
----
-
 ## Required
 
 <Playground :markup="required" :config="config"></Playground>
-
----
 
 ## Disabled
 
@@ -45,13 +39,15 @@ In general, you should **prevent** using the `disabled="true"` state. Disabled e
 They can be confusing for sighted users as well by not pointing out why these elements are disabled.
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
 
----
-
 ## Read only
 
 <Playground :markup="readonly" :config="config"></Playground>
 
----
+## Counter
+
+If the `maxLength` attribute is present onn the `textarea` element, a counter will be displayed in the corner. 
+
+<Playground :markup="counter" :config="config"></Playground>
 
 ## Validation states
 
@@ -65,8 +61,6 @@ The `p-textarea-wrapper` component supports the visualisation of inline validati
     <option value="none">None</option>
   </select>
 </Playground>
-
----
 
 ## Slots
 
@@ -83,7 +77,7 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `textarea` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue';  
 import Component from 'vue-class-component';
 
 @Component
@@ -121,6 +115,11 @@ export default class Code extends Vue {
   readonly =
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" readonly>Some value</textarea>
+</p-textarea-wrapper>`;
+
+  counter =
+`<p-textarea-wrapper label="Some label">
+  <textarea name="some-name" maxLength="200">Some value</textarea>
 </p-textarea-wrapper>`;
 
   get validationStates() {
