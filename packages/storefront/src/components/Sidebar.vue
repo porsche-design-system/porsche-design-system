@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ais-instant-search index-name="some_index" :search-client="searchClient">
+    <ais-instant-search :index-name="getAlgoliaIndexName()" :search-client="searchClient">
       <ais-search-box>
         <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
       </ais-search-box>
@@ -175,6 +175,12 @@
     private static category(route: Route): string {
       const { category } = route.params;
       return category ? capitalCase(category) : '';
+    }
+
+    getAlgoliaIndexName(): string {
+      const baseHref = (document.querySelector('base') as HTMLBaseElement).getAttribute('href') as string;
+      // on localhost baseHref is '/'
+      return baseHref.length > 1 ? baseHref.slice(1, -1).replace('/', '_') : 'localhost';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {

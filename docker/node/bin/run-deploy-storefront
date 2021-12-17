@@ -28,6 +28,16 @@ if [[ -z "$(ls -A ./packages/storefront/dist)" ]]; then
   exit 1
 fi
 
+#if [[ -z "${ALGOLIA_APP_ID}" ]]; then
+#  echo "Please provide the \$ALGOLIA_APP_ID environment variable."
+#  exit 1
+#fi
+#
+#if [[ -z "${ALGOLIA_API_KEY}" ]]; then
+#  echo "Please provide the \$ALGOLIA_API_KEY environment variable."
+#  exit 1
+#fi
+
 setup() {
   echo "task: [$(date)] \"setup\""
   export AWS_DEFAULT_REGION=eu-central-1
@@ -41,6 +51,11 @@ prepare_deployment() {
 add_deployment_version() {
   echo "task: [$(date)] \"add_deployment_version\" (${1})"
   echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
+}
+
+update_algolia_index(){
+  echo "task: [$(date)] \"update_algolia_index\" (${1})"
+  yarn update:algolia ALGOLIA_INDEX_NAME=${1}
 }
 
 update_base_tag(){
@@ -115,6 +130,7 @@ else
   setup
   prepare_deployment "${P_CURRENT_BRANCH}"
   add_deployment_version "${P_CURRENT_BRANCH}"
+  update_algolia_index "${P_CURRENT_BRANCH}"
   update_base_tag "${P_CURRENT_BRANCH}"
   upload_s3 "${P_CURRENT_BRANCH}"
   purge_cloudfront "${P_CURRENT_BRANCH}"
