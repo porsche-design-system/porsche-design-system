@@ -552,11 +552,11 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
   }
 </style>
 <label class=\\"root root--stretch-off root--label-align-right root--label-visible\\">
-  <p-text class=\\"text hydrated\\">
+  <p-text class=\\"text hydrated\\" id=\\"label\\">
     <slot>
     </slot>
   </p-text>
-  <button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" tabindex=\\"0\\">
+  <button type=\\"button\\" role=\\"switch\\" aria-labelledby=\\"label\\" aria-checked=\\"false\\" tabindex=\\"0\\">
     <span class=\\"toggle\\">
     </span>
   </button>
