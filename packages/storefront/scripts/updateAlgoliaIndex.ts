@@ -136,10 +136,10 @@ const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'cat
 const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(content)'];
-
+export const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME ?? 'localhost';
 const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
   const client = algoliasearch('H4KMYOI855', '***REMOVED***');
-  const index = client.initIndex('some_index');
+  const index = client.initIndex(ALGOLIA_INDEX_NAME);
   index
     .setSettings({
       searchableAttributes,
@@ -152,15 +152,15 @@ const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
       console.log('-> successfully set algolia settings');
     })
     .catch((error) => {
-      console.log('-> algolia saving settings failed: ', error);
+      console.log('-> algolia saving settings failed:', error);
     });
   index
     .saveObjects(records, { autoGenerateObjectIDIfNotExist: false })
     .then(() => {
-      console.log('-> successfully updated index');
+      console.log('-> successfully updated index:', ALGOLIA_INDEX_NAME);
     })
     .catch((error) => {
-      console.log('-> algolia saving objects failed: ', error);
+      console.log('-> algolia saving objects failed:', error);
     });
 };
 
