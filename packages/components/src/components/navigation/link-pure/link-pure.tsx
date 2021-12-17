@@ -92,7 +92,7 @@ export class LinkPure {
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
-      !!this.href,
+      !this.href,
       this.theme
     );
   }
