@@ -25,6 +25,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `<style>p-text-field-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
 
+      // TODO: disabled state
       const getElementsMarkup: GetMarkup = () => `
         <p-text-field-wrapper label="Some label">
           <input type="password" name="some-name" />
@@ -61,13 +62,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover > p-text-field-wrapper input[type="text"]');
-      await forceHoverState(page, '.hover > p-text-field-wrapper span a');
+      await forceHoverState(page, '.hover > p-text-field-wrapper a');
       await forceHoverState(page, '.hover > p-text-field-wrapper >>> button');
       await forceFocusState(page, '.focus > p-text-field-wrapper input[type="text"]');
-      await forceFocusState(page, '.focus > p-text-field-wrapper span a');
+      await forceFocusState(page, '.focus > p-text-field-wrapper a');
       await forceFocusState(page, '.focus > p-text-field-wrapper >>> button');
       await forceFocusHoverState(page, '.focus-hover > p-text-field-wrapper input[type="text"]');
-      await forceFocusHoverState(page, '.focus-hover > p-text-field-wrapper span a');
+      await forceFocusHoverState(page, '.focus-hover > p-text-field-wrapper a');
       await forceFocusHoverState(page, '.focus-hover > p-text-field-wrapper >>> button');
     })
   ).toBeFalsy();

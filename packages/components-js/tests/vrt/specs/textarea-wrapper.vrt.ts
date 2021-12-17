@@ -29,8 +29,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           textarea { min-height: initial; }
         </style>`;
 
+      // TODO: disabled state
       const getElementsMarkup: GetMarkup = () => `
-        <p-textarea-wrapper label="Some label" message="Some error validation message.">
+        <p-textarea-wrapper label="Some label">
           <textarea name="some-name"></textarea>
         </p-textarea-wrapper>
         <p-textarea-wrapper label="Readonly">
@@ -59,11 +60,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover > p-textarea-wrapper textarea');
-      await forceHoverState(page, '.hover > p-textarea-wrapper span a');
+      await forceHoverState(page, '.hover > p-textarea-wrapper a');
       await forceFocusState(page, '.focus > p-textarea-wrapper textarea');
-      await forceFocusState(page, '.focus > p-textarea-wrapper span a');
+      await forceFocusState(page, '.focus > p-textarea-wrapper a');
       await forceFocusHoverState(page, '.focus-hover > p-textarea-wrapper textarea');
-      await forceFocusHoverState(page, '.focus-hover > p-textarea-wrapper span a');
+      await forceFocusHoverState(page, '.focus-hover > p-textarea-wrapper a');
     })
   ).toBeFalsy();
 });
