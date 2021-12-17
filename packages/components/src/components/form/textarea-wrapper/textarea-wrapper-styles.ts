@@ -46,7 +46,7 @@ export const getComponentCss = (
         } as Styles
       )
     ),
-    ...getLabelStyles('textarea', hideLabel, state, theme, '$counter'),
+    ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
     ...getRequiredStyles(theme),
     ...getStateMessageStyles(theme, state),
     ...(hasCounter && {
