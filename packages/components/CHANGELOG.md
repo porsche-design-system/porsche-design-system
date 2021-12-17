@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - `:focus-visible` style matches outline color of `Switch` while hovered
 
+#### Fixed
+- Box model of `Button Pure`
+
 ### [2.8.0-beta.0] - 2021-12-15
 
 #### Changed
