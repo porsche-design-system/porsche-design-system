@@ -28,7 +28,8 @@ body > select {
   background: #fff;
 }
 
-.playground.dark {
+.playground.dark,
+.playground.dark-electric {
   background: #1a2023;
 }
 
@@ -80,4 +81,17 @@ body > select {
 
 .playground.light-electric.focus-hover::before {
   content: ':focus-visible:hover (theme=light-electric)';
+}
+
+/*dark-electric*/
+.playground.dark-electric.hover::before {
+  content: ':hover (theme=dark-electric)';
+}
+
+.playground.dark-electric.focus::before {
+  content: ':focus-visible (theme=dark-electric)';
+}
+
+.playground.dark-electric.focus-hover::before {
+  content: ':focus-visible:hover (theme=dark-electric)';
 }
