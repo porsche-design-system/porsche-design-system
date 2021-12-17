@@ -29,9 +29,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const tagNameToChildMap: { [key in TagName]?: string } = {
         'p-checkbox-wrapper': '<input type="checkbox" />',
         'p-radio-button-wrapper': '<input type="radio" />',
-        'p-select-wrapper': '<select></select>',
-        'p-text-field-wrapper': '<input type="text" />',
-        'p-textarea-wrapper': '<textarea></textarea>',
+        'p-select-wrapper': '<select><option>Some value</option></select>',
+        'p-text-field-wrapper': '<input type="text" value="Some value" />',
+        'p-textarea-wrapper': '<textarea>Some value</textarea>',
       };
 
       const getElementsMarkup: GetMarkup = () =>
