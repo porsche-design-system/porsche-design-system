@@ -9,7 +9,9 @@ if
   [[ "--components-js:components-manager-core" == "${1}" ]] ||
   [[ "--components-js:components-wrapper" == "${1}" ]] ||
   [[ "--components-js:partials" == "${1}" ]] ||
+  [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
+  [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then
