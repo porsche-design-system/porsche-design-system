@@ -111,8 +111,7 @@ export class TextareaWrapper {
           {hasCounter(this.textarea) && (
             <PrefixedTagNames.pText
               class="counter"
-              tag="span"
-              color="inherit"
+              {...labelProps}
               aria-hidden="true"
               ref={(el) => (this.counterElement = el)}
             />
