@@ -1,0 +1,969 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBaseChildStyles() should return correct css for child: input, state: error, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(input)": Object {
+    "appearance": "none",
+    "backgroundColor": "#fff",
+    "border": "2px solid #e00000",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#000",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(input:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(input:focus)": Object {
+    "outlineColor": "#e00000",
+  },
+  "::slotted(input:hover)": Object {
+    "borderColor": "#a30000",
+  },
+  "::slotted(input[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(input[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(input[readonly]:not(:disabled))": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: input, state: none, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(input)": Object {
+    "appearance": "none",
+    "backgroundColor": "#fff",
+    "border": "1px solid #626669",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#000",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(input:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(input:focus)": Object {
+    "outlineColor": "#626669",
+  },
+  "::slotted(input:hover)": Object {
+    "borderColor": "#000",
+  },
+  "::slotted(input[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(input[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(input[readonly]:not(:disabled))": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: input, state: success, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(input)": Object {
+    "appearance": "none",
+    "backgroundColor": "#fff",
+    "border": "2px solid #018a16",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#000",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(input:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(input:focus)": Object {
+    "outlineColor": "#018a16",
+  },
+  "::slotted(input:hover)": Object {
+    "borderColor": "#014d0c",
+  },
+  "::slotted(input[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(input[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(input[readonly]:not(:disabled))": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
+Object {
+  "::slotted(textarea)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "2px solid #fc1717",
+    "borderRadius": 0,
+    "bottom": 5,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(textarea:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(textarea:focus)": Object {
+    "outlineColor": "#fc1717",
+  },
+  "::slotted(textarea:hover)": Object {
+    "borderColor": "#d30303",
+  },
+  "::slotted(textarea[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(textarea[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(textarea[readonly]:not(:disabled))": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(textarea)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "2px solid #fc1717",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(textarea:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(textarea:focus)": Object {
+    "outlineColor": "#fc1717",
+  },
+  "::slotted(textarea:hover)": Object {
+    "borderColor": "#d30303",
+  },
+  "::slotted(textarea[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(textarea[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(textarea[readonly]:not(:disabled))": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: textarea, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(textarea)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "1px solid #b0b1b2",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(textarea:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(textarea:focus)": Object {
+    "outlineColor": "#b0b1b2",
+  },
+  "::slotted(textarea:hover)": Object {
+    "borderColor": "#fff",
+  },
+  "::slotted(textarea[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(textarea[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(textarea[readonly]:not(:disabled))": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: textarea, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(textarea)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "2px solid #01ba1d",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(textarea:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(textarea:focus)": Object {
+    "outlineColor": "#01ba1d",
+  },
+  "::slotted(textarea:hover)": Object {
+    "borderColor": "#017d14",
+  },
+  "::slotted(textarea[readonly])": Object {
+    "backgroundColor": "#ebebeb",
+    "borderColor": "#ebebeb",
+  },
+  "::slotted(textarea[readonly]:focus)": Object {
+    "outlineColor": "transparent",
+  },
+  "::slotted(textarea[readonly]:not(:disabled))": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: error, theme: dark and additionalRefForInputHover: $unit 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& $unit": Object {
+        "color": "#7c7f81",
+        "cursor": "not-allowed",
+      },
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "@media (min-width: 1000px)": Object {
+        "clip": "auto",
+        "clipPath": "none",
+        "height": "auto",
+        "margin": 0,
+        "overflow": "visible",
+        "padding": "0 0 0.25rem 0",
+        "position": "static",
+        "whiteSpace": "normal",
+        "width": "fit-content",
+      },
+      "@media (min-width: 1300px)": Object {
+        "border": "0",
+        "clip": "rect(1px,1px,1px,1px)",
+        "clipPath": "inset(50%)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": "0 0 0.25rem 0",
+        "position": "absolute",
+        "whiteSpace": "nowrap",
+        "width": "fit-content",
+      },
+      "@media (min-width: 1760px)": Object {
+        "clip": "auto",
+        "clipPath": "none",
+        "height": "auto",
+        "margin": 0,
+        "overflow": "visible",
+        "padding": "0 0 0.25rem 0",
+        "position": "static",
+        "whiteSpace": "normal",
+        "width": "fit-content",
+      },
+      "@media (min-width: 480px)": Object {
+        "clip": "auto",
+        "clipPath": "none",
+        "height": "auto",
+        "margin": 0,
+        "overflow": "visible",
+        "padding": "0 0 0.25rem 0",
+        "position": "static",
+        "whiteSpace": "normal",
+        "width": "fit-content",
+      },
+      "@media (min-width: 760px)": Object {
+        "border": "0",
+        "clip": "rect(1px,1px,1px,1px)",
+        "clipPath": "inset(50%)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": "0 0 0.25rem 0",
+        "position": "absolute",
+        "whiteSpace": "nowrap",
+        "width": "fit-content",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text,$unit": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#a30000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: error, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#a30000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: none, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: success, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#014d0c !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: error, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#a30000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: none, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: success, theme: light and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#96989a",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#626669",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#014d0c !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: error, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#a30000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: none, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#fff !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: success, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "clip": "auto",
+      "clipPath": "none",
+      "display": "block",
+      "height": "auto",
+      "margin": 0,
+      "overflow": "visible",
+      "padding": "0 0 0.25rem 0",
+      "position": "static",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "normal",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#014d0c !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: error, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#a30000 !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: none, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#fff !important",
+      },
+    },
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: success, theme: dark and additionalRefForInputHover: undefined 1`] = `
+Object {
+  "label": Object {
+    "&--disabled": Object {
+      "& .label__text": Object {
+        "color": "#7c7f81",
+      },
+    },
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#b0b1b2",
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem 0",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+  "label__text": Object {
+    "&:hover": Object {
+      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+        "borderColor": "#014d0c !important",
+      },
+    },
+  },
+}
+`;
