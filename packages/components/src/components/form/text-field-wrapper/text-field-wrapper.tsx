@@ -154,11 +154,9 @@ export class TextFieldWrapper {
             {(this.hasUnit || this.hasCounter) && (
               <PrefixedTagNames.pText
                 class="unit"
-                tag="span"
-                color="inherit"
+                {...labelProps}
                 ref={(el) => (this.unitOrCounterElement = el)}
                 aria-hidden="true"
-                onClick={this.onLabelClick}
               >
                 {this.unit}
               </PrefixedTagNames.pText>
