@@ -115,7 +115,7 @@ isCurrentBranchMasterBranch() {
 }
 
 P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)" 
 BUCKET_URL="s3://porsche-design-system-storefront"
 
 if isCurrentBranchMasterBranch; then
