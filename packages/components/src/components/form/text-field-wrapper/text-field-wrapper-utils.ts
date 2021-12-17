@@ -4,9 +4,9 @@ import { FormState } from '../../../types';
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
-export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement) => el.maxLength >= 0;
-export const hasCounterAndIsTypeText = (el: HTMLInputElement) => el.type === 'text' && hasCounter(el);
-export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string) => unit && el.type === 'number';
+export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
+export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
+export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string): boolean => !!unit && el.type === 'number';
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
