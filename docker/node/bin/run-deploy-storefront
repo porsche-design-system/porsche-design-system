@@ -122,6 +122,7 @@ if isCurrentBranchMasterBranch; then
   setup
   prepare_deployment "latest"
   add_deployment_version "latest"
+  update_algolia_index "latest"
   update_base_tag "latest"
   upload_s3 "latest"
   purge_cloudfront "latest"
