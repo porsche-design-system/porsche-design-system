@@ -80,12 +80,13 @@ export class Switch {
 
     return (
       <label class="root">
-        <PrefixedTagNames.pText tag="span" color="inherit" class="text">
+        <PrefixedTagNames.pText tag="span" color="inherit" class="text" id="label">
           <slot />
         </PrefixedTagNames.pText>
         <button
           type="button"
           role="switch"
+          aria-labelledby="label"
           aria-checked={this.checked ? 'true' : 'false'}
           aria-busy={this.loading ? 'true' : null}
           disabled={this.disabled}
