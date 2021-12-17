@@ -41,7 +41,7 @@ describe('getComponentCss()', () => {
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: AlignLabel;
     hasSubline: boolean;
-    hasHref: boolean;
+    hasSlottedAnchor: boolean;
     theme: Theme;
   }>([
     {
@@ -52,7 +52,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -63,7 +63,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'dark',
     },
     {
@@ -74,7 +74,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'left',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -85,7 +85,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'left',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'dark',
     },
     {
@@ -96,7 +96,7 @@ describe('getComponentCss()', () => {
       hideLabel: true,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -107,7 +107,7 @@ describe('getComponentCss()', () => {
       hideLabel: true,
       alignLabel: 'right',
       hasSubline: true,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -118,7 +118,7 @@ describe('getComponentCss()', () => {
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -129,7 +129,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
     {
@@ -140,7 +140,7 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       alignLabel: 'right',
       hasSubline: false,
-      hasHref: false,
+      hasSlottedAnchor: true,
       theme: 'light',
     },
     {
@@ -151,14 +151,14 @@ describe('getComponentCss()', () => {
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: breakpointCustomizableAlignLabel,
       hasSubline: false,
-      hasHref: true,
+      hasSlottedAnchor: false,
       theme: 'light',
     },
   ])(
     'should return correct css for %j',
-    ({ icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme }) => {
+    ({ icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasSlottedAnchor, theme }) => {
       expect(
-        getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasHref, theme)
+        getComponentCss(icon, active, stretch, size, hideLabel, alignLabel, hasSubline, hasSlottedAnchor, theme)
       ).toMatchSnapshot();
     }
   );
