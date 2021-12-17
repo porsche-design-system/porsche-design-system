@@ -158,7 +158,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     outline-color: transparent !important
   }
 </style>
-<button class=\\"root root--with-icon root--size-small root--stretch-off root--label-align-right root--with-label\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
