@@ -6,13 +6,10 @@ import {
   hasSlottedSubline,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
-  isDark,
   isDisabledOrLoading,
-  mapBreakpointPropToClasses,
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
-  isLightElectric,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -32,7 +29,6 @@ import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 @Component({
   tag: 'p-button-pure',
-  styleUrl: 'button-pure.scss',
   shadow: true,
 })
 export class ButtonPure {
@@ -92,7 +88,19 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, hasSlottedSubline(this.host) ? false : this.stretch);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.isDisabledOrLoading,
+      this.stretch,
+      this.size,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      this.theme
+    );
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
@@ -117,21 +125,6 @@ export class ButtonPure {
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--loading']: this.loading && hasIcon,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--theme-light-electric']: isLightElectric(this.theme),
-      ['root--active']: this.active,
-      ['root--with-icon']: hasIcon,
-      ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSubline && {
-        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
-      }),
-      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
-    };
-
     const iconProps = {
       class: 'icon',
       size: 'inherit',
@@ -144,7 +137,7 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          class={rootClasses}
+          class="root"
           type={this.type}
           disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
