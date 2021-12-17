@@ -40,12 +40,12 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    this.observeAttributes();
+    this.observeAttributes(); // once initially
   }
 
   public componentDidRender(): void {

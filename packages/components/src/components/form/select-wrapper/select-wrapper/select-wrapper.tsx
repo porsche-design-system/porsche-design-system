@@ -59,14 +59,15 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
-    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
-    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
     attachSlottedCss(this.host, getSlottedCss);
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
-    this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+    this.observeAttributes(); // once initially
 
+    this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
     if (this.hasCustomDropdown) {
       setAttribute(this.select, 'tabindex', '-1');
       setAttribute(this.select, 'aria-hidden', 'true');
@@ -155,5 +156,9 @@ export class SelectWrapper {
         )}
       </Host>
     );
+  }
+
+  private observeAttributes() {
+    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 }
