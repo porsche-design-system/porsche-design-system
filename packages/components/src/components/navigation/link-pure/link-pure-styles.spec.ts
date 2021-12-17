@@ -1,6 +1,6 @@
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
-import { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import { AlignLabel, LinkButtonPureIconName, TextSize, Theme, ThemeExtendedElectric } from '../../../types';
 
 describe('getSlottedCss()', () => {
   it('should return correct css', () => {
@@ -42,7 +42,7 @@ describe('getComponentCss()', () => {
     alignLabel: AlignLabel;
     hasSubline: boolean;
     hasSlottedAnchor: boolean;
-    theme: Theme;
+    theme: ThemeExtendedElectric;
   }>([
     {
       icon: 'arrow-head-right',
@@ -123,8 +123,8 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'none',
-      stretch: false,
       active: false,
+      stretch: false,
       size: 'small',
       hideLabel: false,
       alignLabel: 'right',
@@ -134,8 +134,8 @@ describe('getComponentCss()', () => {
     },
     {
       icon: 'arrow-head-right',
-      stretch: false,
       active: false,
+      stretch: false,
       size: 'small',
       hideLabel: false,
       alignLabel: 'right',
