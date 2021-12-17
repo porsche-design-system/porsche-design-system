@@ -128,85 +128,85 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { spacing: 'block' };
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    label = 'show';
-    type = 'text';
-    state = 'error';
-    unitPosition = 'prefix';
+@Component
+export default class Code extends Vue {
+  config = { spacing: 'block' };
 
-    get basic() {
-      const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-text-field-wrapper label="Some label"${labelAttr}>
+  label = 'show';
+  type = 'text';
+  state = 'error';
+  unitPosition = 'prefix';
+
+  get basic() {
+    const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+    return `<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
 <p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" placeholder="Some placeholder text" name="some-name" />
 </p-text-field-wrapper>`;
-    }
-    
-    withDescriptionText =
+  }
+  
+  withDescriptionText =
 `<p-text-field-wrapper label="Some label" description="Some description">
   <input type="text" name="some-name" />
 </p-text-field-wrapper>`;
 
-    required =
+  required =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" required />
 </p-text-field-wrapper>`;
 
-    disabled =
+  disabled =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" disabled />
 </p-text-field-wrapper>`;
 
-    readonly =
+  readonly =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" readonly />
 </p-text-field-wrapper>`;
 
-    get typesBasic() {
-      return `<p-text-field-wrapper label="Some label">
+  get typesBasic() {
+    return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
 </p-text-field-wrapper>`;
-    }
+  }
 
-    get typesNumber() {
-      return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
+  get typesNumber() {
+    return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
-    }
-    
-    typesPassword =
+  }
+  
+  typesPassword =
 `<p-text-field-wrapper label="Some label">
   <input type="password" name="some-name" value="some password" />
 </p-text-field-wrapper>`;
 
-    typesSearch =
+  typesSearch =
 `<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
 
-    get validationStates() {
-      const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-      return `<p-text-field-wrapper label="Some label" state="${this.state}" ${attr}>
+  get validationStates() {
+    const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
+    return `<p-text-field-wrapper label="Some label" state="${this.state}" ${attr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>`;
     }
     
-    slots =
+  slots =
 `<p-text-field-wrapper state="error">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <input type="text" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
-  }
+}
 </script>

@@ -158,12 +158,12 @@ $p-font-size-{v};
 ```
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Theme } from '@/models';
-  
-  @Component
-  export default class Variables extends Vue {
-    public theme: Theme = 'light';
-  }
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Theme } from '@/models';
+
+@Component
+export default class Variables extends Vue {
+  public theme: Theme = 'light';
+}
 </script>

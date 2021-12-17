@@ -25,14 +25,14 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
 <Playground :markup="statement" class="p-accessibility-statement"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
   
-  @Component
-  export default class Code extends Vue {
-    
-    get statement() {
-      return `
+  get statement() {
+    return `
 <p-headline variant="headline-3"><h1>Accessibility Statement</h1></p-headline>
   <p-text>
     We are committed to ensuring digital accessibility for people with disabilities.<br>
@@ -75,8 +75,8 @@ We continually assess and work to ensure that our Web presence is in conformance
     </p-text-list-item>
   </p-text-list>
 `
-    }
   }
+}
 </script>
 
 <style lang="scss">

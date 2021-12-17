@@ -59,49 +59,49 @@ Make sure to update the `activeTabIndex` when adding or removing elements.
 <Playground :markup="activeTab" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  const buildTabsItem = (name: string, index: number) => 
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+const buildTabsItem = (name: string, index: number) => 
 `  <p-tabs-item label="Tab ${name}">
     <p-text>Tab Content ${name}</p-text>
   </p-tabs-item>`;
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
 
-    weight = 'semibold';
-    size = 'medium';
-    gradientColorScheme = 'surface';
+  weight = 'semibold';
+  size = 'medium';
+  gradientColorScheme = 'surface';
 
-    basic =
+  basic =
 `<p-tabs>
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
 
-    get sizeMarkup() {
-      return `<p-tabs size="${this.size}">
-${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
-</p-tabs>`;
-    }
-
-    get weightMarkup() {
-      return `<p-tabs weight="${this.weight}">
-${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
-</p-tabs>`;
-    }
-
-    get gradientMarkup() {
-      return `<p-tabs gradient-color-scheme="${this.gradientColorScheme}">
-${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
-  .map(buildTabsItem).join('\n')}
-</p-tabs>`;
-    }
-    
-    activeTab =
-`<p-tabs active-tab-index="1">
+  get sizeMarkup() {
+    return `<p-tabs size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
+
+  get weightMarkup() {
+    return `<p-tabs weight="${this.weight}">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
+  }
+
+  get gradientMarkup() {
+    return `<p-tabs gradient-color-scheme="${this.gradientColorScheme}">
+${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
+  .map(buildTabsItem).join('\n')}
+</p-tabs>`;
+  }
+    
+  activeTab =
+`<p-tabs active-tab-index="1">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
+}
 </script>

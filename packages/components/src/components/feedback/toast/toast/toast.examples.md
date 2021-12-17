@@ -64,42 +64,42 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
 <p-toast ref="toast" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getToastCodeSamples } from '@porsche-design-system/shared';
-  import type { Theme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { getToastCodeSamples } from '@porsche-design-system/shared';
+import type { Theme } from '@/models';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+
+  toastState = 'neutral';
+  toastText = 'Some message';
+  toastCounter = 1;
+  positionBottom = 64;
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-
-    toastState = 'neutral';
-    toastText = 'Some message';
-    toastCounter = 1;
-    positionBottom = 64;
-    
-    get basic() { 
-      return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
-        ...result,
-        [key]: markup
-          .replace(/(state:) 'success'/, `$1 '${this.toastState}'`)
-          .replace(/(Some message)/, this.toastText)
-      }), {});
-    }
-
-    get offsetMarkup() {
-      return `<p-toast style="--p-toast-position-bottom: ${this.positionBottom}px"></p-toast>`;
-    }
-
-    queueToast(): void {
-      this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.toastState });
-      this.toastCounter++;
-    }
-
-    onThemeChange(theme: Theme): void {
-      this.$refs.toast.theme = theme;
-    }
+  get basic() { 
+    return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
+      ...result,
+      [key]: markup
+        .replace(/(state:) 'success'/, `$1 '${this.toastState}'`)
+        .replace(/(Some message)/, this.toastText)
+    }), {});
   }
+
+  get offsetMarkup() {
+    return `<p-toast style="--p-toast-position-bottom: ${this.positionBottom}px"></p-toast>`;
+  }
+
+  queueToast(): void {
+    this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.toastState });
+    this.toastCounter++;
+  }
+
+  onThemeChange(theme: Theme): void {
+    this.$refs.toast.theme = theme;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
