@@ -46,22 +46,22 @@ By default, the sizing is responsive, but can be changed to a static size when n
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    size = 'small';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    marqueWithTM = `<p-marque></p-marque>`;
-    marqueWithTMAndLink = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
-    marqueWithoutTM = `<p-marque trademark="false"></p-marque>`;
+@Component
+export default class Code extends Vue {
+  size = 'small';
 
-    get sizeMarkup() {
-      return `<p-marque size="${this.size}"></p-marque>`;
-    }
+  marqueWithTM = `<p-marque></p-marque>`;
+  marqueWithTMAndLink = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
+  marqueWithoutTM = `<p-marque trademark="false"></p-marque>`;
 
-    eventsMarkup =
+  get sizeMarkup() {
+    return `<p-marque size="${this.size}"></p-marque>`;
+  }
+
+  eventsMarkup =
 `<p-marque
   href="https://www.porsche.com"
   onclick="alert('click'); return false;"
@@ -70,5 +70,5 @@ By default, the sizing is responsive, but can be changed to a static size when n
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
 ></p-marque>`;
-  }
+}
 </script>

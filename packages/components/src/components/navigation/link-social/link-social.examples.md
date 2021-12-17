@@ -88,36 +88,36 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <Playground :markup="events" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
-    platform = 'Facebook';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    get icon() {
-      return `logo-${this.platform.toLowerCase()}`;
-    }
-    
-    get variants() {
-      return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>
+@Component
+export default class Code extends Vue {
+  config = { themeable: true, spacing: 'inline' };
+  platform = 'Facebook';
+
+  get icon() {
+    return `logo-${this.platform.toLowerCase()}`;
+  }
+  
+  get variants() {
+    return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>
 <p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>`;
-    }
-    
-    responsive =
+  }
+  
+  responsive =
 `<p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, l: false }" target="_blank" rel="nofollow noopener">Facebook</p-link-social>`;
     
-    routing =
+  routing =
 `<p-link-social icon="logo-facebook">
   <a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a>
 </p-link-social>`;
 
-    iconMarkup =
+  iconMarkup =
 `<p-link-social href="https://example.com" icon="logo-tumblr" target="_blank" rel="nofollow noopener">Tumblr</p-link-social>
 <p-link-social href="https://example.com" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>`;
 
-    grouped =
+  grouped =
 `<div class="example-grouped">
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
 <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" target="_blank" rel="nofollow noopener">Google</p-link-social>
@@ -135,7 +135,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true" target="_blank" rel="nofollow noopener">Youtube</p-link-social>
 </div>`;
 
-    events =
+  events =
 `<p-link-social
   href="https://www.facebook.com/"
   icon="logo-facebook"
@@ -147,7 +147,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   target="_blank" 
   rel="nofollow noopener"
 >Facebook</p-link-social>`;
-  }
+}
 </script>
 
 <style scoped lang="scss">

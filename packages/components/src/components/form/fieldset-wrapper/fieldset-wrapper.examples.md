@@ -63,24 +63,23 @@ You should still set required on the input of the wrapped form elements to ensur
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
- 
-    size = 'small';
-    state = 'error';
-    slottedMessage = 'error';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    withLabelMarkup =
+@Component
+export default class Code extends Vue {
+  size = 'small';
+  state = 'error';
+  slottedMessage = 'error';
+
+  withLabelMarkup =
 `<p-fieldset-wrapper label="Some legend label">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-    slottedLabelMarkup =
+  slottedLabelMarkup =
 `<p-fieldset-wrapper>
   <span slot="label">Some legend label</span>
   <p-text-field-wrapper label="Some label">
@@ -88,7 +87,7 @@ You should still set required on the input of the wrapped form elements to ensur
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-   get sizeMarkup() {
+  get sizeMarkup() {
     return `<p-fieldset-wrapper label="Some legend label" label-size=${this.size}>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
@@ -96,14 +95,14 @@ You should still set required on the input of the wrapped form elements to ensur
 </p-fieldset-wrapper>`;
    }
 
-    requiredMarkup =
+  requiredMarkup =
 `<p-fieldset-wrapper label="Some legend label" required="true">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" required />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-   get stateMarkup() {
+  get stateMarkup() {
     const attr = ` state=${this.state} message="${this.state === 'error' ? 'Some error message' : 'Some success message'}" `;
     return `<p-fieldset-wrapper label="Some legend label"${attr} class="state-markup">
   <p-text-field-wrapper label="Some label" state=${this.state}>
@@ -116,9 +115,9 @@ You should still set required on the input of the wrapped form elements to ensur
     <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
 </p-fieldset-wrapper>`;
-   }
+  }
 
-   get slottedMessageMarkup() {
+  get slottedMessageMarkup() {
     const attr = `${this.slottedMessage === 'error' ? 'Some error message' : 'Some success message'}`;
     return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>
   <p-text-field-wrapper label="Some label" state=${this.slottedMessage}>
@@ -126,8 +125,8 @@ You should still set required on the input of the wrapped form elements to ensur
   </p-text-field-wrapper>
   <span slot="message">${attr}</span>
 </p-fieldset-wrapper>`;
-   }
   }
+}
 </script>
 
 <style>

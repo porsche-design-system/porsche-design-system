@@ -83,58 +83,58 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `textarea` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { spacing: 'block' };
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    label = 'show';
-    state = 'error';
+@Component
+export default class Code extends Vue {
+  config = { spacing: 'block' };
 
-    get basic() {
-      const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-textarea-wrapper label="Some label" ${attr}>
+  label = 'show';
+  state = 'error';
+
+  get basic() {
+    const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+    return `<p-textarea-wrapper label="Some label" ${attr}>
   <textarea name="some-name"></textarea>
 </p-textarea-wrapper>
 <p-textarea-wrapper label="Some label" ${attr}>
   <textarea name="some-name" placeholder="Some placeholder text"></textarea>
 </p-textarea-wrapper>`;
-    }
+  }
 
-    withDescriptionText =
+  withDescriptionText =
 `<p-textarea-wrapper label="Some label" description="Some description">
   <textarea name="some-name"></textarea>
 </p-textarea-wrapper>`;
 
-    required =
+  required =
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" required>Some value</textarea>
 </p-textarea-wrapper>`;
 
-    disabled =
+  disabled =
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" disabled>Some value</textarea>
 </p-textarea-wrapper>`;
 
-    readonly =
+  readonly =
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" readonly>Some value</textarea>
 </p-textarea-wrapper>`;
 
-    get validationStates() {
-      const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-      return `<p-textarea-wrapper label="Some label" state="${this.state}" ${attr}>
+  get validationStates() {
+    const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
+    return `<p-textarea-wrapper label="Some label" state="${this.state}" ${attr}>
   <textarea aria-invalid="${this.state === 'error'}" name="some-name">Some value</textarea>
 </p-textarea-wrapper>`;
     }
     
-    slots = `<p-textarea-wrapper state="error">
+  slots = `<p-textarea-wrapper state="error">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id"></textarea>
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-textarea-wrapper>`;
-  }
+}
 </script>

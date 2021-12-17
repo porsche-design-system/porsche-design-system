@@ -120,52 +120,52 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 3
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { spacing: 'block-small' };
   
-  @Component
-  export default class Code extends Vue {
-    config = { spacing: 'block-small' };
-    
-    get size() {
-      return `<p-grid class="example-grid">
+  get size() {
+    return `<p-grid class="example-grid">
   <p-grid-item size="12">12</p-grid-item>
 </p-grid>
 ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   <p-grid-item size="${i+1}">${i+1}</p-grid-item>
   <p-grid-item size="${11-i}">${11-i}</p-grid-item>
 </p-grid>`).join('\n')}`;
-    }
+  }
 
-    sizeResponsiveness =
+  sizeResponsiveness =
 `<p-grid class="example-grid">
   <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
   <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
 </p-grid>`;
 
-    get offset() {
-      return `${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
+  get offset() {
+    return `${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
 </p-grid>`).join('\n')}`;
     }
     
-    offsetResponsiveness =
+  offsetResponsiveness =
 `<p-grid class="example-grid">
   <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
 </p-grid>`;
 
-    direction(value: string, size: string = '4') {
-      const attr = value ? ` direction="${value}"` : '';
-      const sizeAttr = value ? ` size="${size}"` : '';
-      return `<p-grid${attr} class="example-grid">
+  direction(value: string, size: string = '4') {
+    const attr = value ? ` direction="${value}"` : '';
+    const sizeAttr = value ? ` size="${size}"` : '';
+    return `<p-grid${attr} class="example-grid">
   <p-grid-item${sizeAttr}>A</p-grid-item>
   <p-grid-item${sizeAttr}>B</p-grid-item>
   <p-grid-item${sizeAttr}>C</p-grid-item>
 </p-grid>`;
-    }
+  }
 
-    gutter() {
-      return `<p-grid gutter="16" class="example-grid">
+  gutter() {
+    return `<p-grid gutter="16" class="example-grid">
   <p-grid-item size="4">A</p-grid-item>
   <p-grid-item size="4">B</p-grid-item>
   <p-grid-item size="4">C</p-grid-item>
@@ -180,18 +180,18 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   <p-grid-item size="4">H</p-grid-item>
   <p-grid-item size="4">I</p-grid-item>
 </p-grid>`; 
-    }
+  }
 
-    gutterBreakpoint(){
-      return `<p-grid gutter="{base: 36, m: 16}" class="example-grid">
+  gutterBreakpoint(){
+    return `<p-grid gutter="{base: 36, m: 16}" class="example-grid">
     <p-grid-item size="4">A</p-grid-item>
     <p-grid-item size="4">B</p-grid-item>
     <p-grid-item size="4">C</p-grid-item>
   </p-grid>`;
-    }
+  }
 
-    wrap(value: string) {
-      return `<p-grid wrap="${value}" class="example-grid">
+  wrap(value: string) {
+    return `<p-grid wrap="${value}" class="example-grid">
   <p-grid-item size="6">A</p-grid-item>
   <p-grid-item size="6">B</p-grid-item>
   <p-grid-item size="6">C</p-grid-item>
@@ -199,7 +199,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
 </p-grid>`; 
     }
     
-    nesting =
+  nesting =
 `<p-grid>
   <p-grid-item size="6">
     <p-grid class="example-grid">
@@ -214,9 +214,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
     </p-grid>
   </p-grid-item>
 </p-grid>`;
-
-
-  }
+}
 </script>
 
 <style scoped lang="scss">

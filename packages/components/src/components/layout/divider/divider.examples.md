@@ -35,31 +35,32 @@ Predefined colors associated with its theme are available.
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };    
-    color = 'neutral-contrast-low';
-    
-    horizontal = `<p-divider></p-divider>`;
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    vertical = 
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };    
+  color = 'neutral-contrast-low';
+  
+  horizontal = `<p-divider></p-divider>`;
+
+  vertical = 
 `<div class="divider-vertical-container-example">
   <p-divider orientation="vertical"></p-divider>
 </div>`;
 
-    responsive =
+  responsive =
 `<div class="divider-vertical-responsive-container-example">
   <p-divider orientation="{base: 'horizontal', l: 'vertical'}"></p-divider>
 </div>`;
 
-    get colors(){
-      return `<p-divider color="${this.color}"></p-divider>`;
-    }
+  get colors(){
+    return `<p-divider color="${this.color}"></p-divider>`;
   }
+}
 </script>
+
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
