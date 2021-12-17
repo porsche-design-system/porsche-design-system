@@ -158,7 +158,7 @@ export class SelectWrapper {
     );
   }
 
-  private observeAttributes() {
+  private observeAttributes(): void {
     observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 }
