@@ -34,8 +34,8 @@ export const getComponentCss = (
       mergeDeep(
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
-            // comment for 48
-            padding: hasCounter ? `${defaultPadding} ${defaultPadding} ${pxToRemWithUnit(36)}` : defaultPadding,
+            // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
+            padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
             resize: 'vertical',
           })
         ),
