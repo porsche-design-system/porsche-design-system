@@ -3,7 +3,7 @@ import { attachComponentCss, getPrefixedTagNames, improveFocusHandlingForCustomE
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
-import { validateLinkUsage } from '../../../utils/link-validation';
+import { throwIfInvalidLinkUsage } from '../../../utils/link-validation';
 
 @Component({
   tag: 'p-link-social',
@@ -39,7 +39,7 @@ export class LinkSocial {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
-    validateLinkUsage(this.host, this.href);
+    throwIfInvalidLinkUsage(this.host, this.href);
   }
 
   public render(): JSX.Element {

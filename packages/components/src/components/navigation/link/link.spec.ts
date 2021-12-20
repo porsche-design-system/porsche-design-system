@@ -19,7 +19,9 @@ describe('componentWillRender()', () => {
   let jssUtilsSpy;
 
   beforeEach(() => {
-    linkValidationUtilsSpy = jest.spyOn(linkValidationUtils, 'validateLinkUsage').mockImplementationOnce(() => {});
+    linkValidationUtilsSpy = jest
+      .spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage')
+      .mockImplementationOnce(() => {});
     jssUtilsSpy = jest.spyOn(jssUtils, 'attachComponentCss').mockImplementationOnce(() => {});
   });
 
