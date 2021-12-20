@@ -375,7 +375,7 @@ describe('text-field-wrapper', () => {
       expect(await getOutlineStyle(messageLink)).toBe(visible);
     });
 
-    it('should focus input when label text is clicked', async () => {
+    fit('should focus input when label text is clicked', async () => {
       await initTextField({ hasLabel: true });
       const labelText = await getLabel();
       const input = await getInput();
@@ -386,6 +386,7 @@ describe('text-field-wrapper', () => {
       expect(inputFocusSpyCalls).toBe(0);
       await labelText.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
 
       expect(inputFocusSpyCalls).toBe(1);
     });
