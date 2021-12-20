@@ -1,12 +1,4 @@
-import {
-  addImportantToEachRule,
-  buildHostStyles,
-  contentWrapperVars,
-  getCss,
-  getThemedColors,
-  JssStyle,
-  mediaQuery,
-} from '../../../utils';
+import { buildHostStyles, contentWrapperVars, getCss, getThemedColors, JssStyle, mediaQuery } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 
@@ -34,11 +26,9 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'flex',
-      })
-    ),
+    ...buildHostStyles({
+      display: 'flex',
+    }),
     root: {
       margin: '0 auto',
       backgroundColor: backgroundColor === 'default' ? getThemedColors(theme).backgroundColor : 'transparent',

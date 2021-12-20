@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: dark 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:#0e1418;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
+exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: dark 1`] = `":host{display:flex}.root{margin:0 auto;background-color:#0e1418;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: light 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:#fff;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
+exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: light 1`] = `":host{display:flex}.root{margin:0 auto;background-color:#fff;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: transparent, theme: light 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
+exports[`getComponentCss() should return correct css for width: basic, background-color: transparent, theme: light 1`] = `":host{display:flex}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0;max-width:96rem;padding:0 7vw}@media(min-width:1760px){.root{padding:0 10vw}}@media(min-width:1920px){.root{padding:0 12rem}}"`;
 
-exports[`getComponentCss() should return correct css for width: extended, background-color: transparent, theme: light 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0;max-width:120rem}"`;
+exports[`getComponentCss() should return correct css for width: extended, background-color: transparent, theme: light 1`] = `":host{display:flex}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0;max-width:120rem}"`;
 
-exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: dark 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0}"`;
+exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: dark 1`] = `":host{display:flex}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0}"`;
 
-exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: light 1`] = `":host{display:flex !important}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0}"`;
+exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: light 1`] = `":host{display:flex}.root{margin:0 auto;background-color:transparent;width:100%;min-width:0}"`;
