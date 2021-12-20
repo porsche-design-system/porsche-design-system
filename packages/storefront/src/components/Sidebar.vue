@@ -60,7 +60,7 @@
   import { createInMemoryCache } from '@algolia/cache-in-memory';
   import { Watch } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/models';
-  import { config as storefrontConfig } from '@/../storefront.config';
+  import { ALGOLIA_APP_ID, ALGOLIA_READONLY_KEY, config as storefrontConfig } from '@/../storefront.config';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
 
@@ -106,7 +106,7 @@
     public hideNavigation = false;
     public displayHits = false;
 
-    public algoliaClient = algoliasearch('H4KMYOI855', '8201068bd25dcc4d4b33062150d5b4f5', {
+    public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_READONLY_KEY, {
       responsesCache: createInMemoryCache(),
       requestsCache: createInMemoryCache({ serializable: false }),
     });
