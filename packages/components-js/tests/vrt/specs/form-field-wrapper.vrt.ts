@@ -47,11 +47,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
   <${tag} label="Disabled">
     ${child.replace(/((?: \/)?>)/, ' disabled$1')}
   </${tag}>
-  <${tag} label="Error state" state="error" message="Error message">
+  <${tag} label="Error" state="error" message="Error">
     ${child}
   </${tag}>
-  <${tag} label="Success state" state="success" message="Success message">
+  <${tag} label="Disabled" state="error" message="Error">
+    ${child.replace(/((?: \/)?>)/, ' disabled$1')}
+  </${tag}>
+  <${tag} label="Success" state="success" message="Success">
     ${child}
+  </${tag}>
+  <${tag} label="Disabled" state="success" message="Success">
+    ${child.replace(/((?: \/)?>)/, ' disabled$1')}
   </${tag}>
 </div>`
           )
