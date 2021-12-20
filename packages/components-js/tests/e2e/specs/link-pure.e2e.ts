@@ -69,16 +69,6 @@ describe('link-pure', () => {
     }
   });
 
-  it('should throw error when used without href', async () => {
-    initConsoleObserver(page);
-    await setContentWithDesignSystem(
-      page,
-      `<p-link-pure>Some label</p-link-pure><p-link-pure href="#">Some label</p-link-pure><p-link-pure><a href="#">Some label</a></p-link-pure>`
-    );
-
-    expect(getConsoleErrorsAmount()).toBe(1);
-  });
-
   it('should trigger focus & blur events at the correct time', async () => {
     await setContentWithDesignSystem(
       page,
