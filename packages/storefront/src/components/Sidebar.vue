@@ -48,7 +48,7 @@
       return `/${paramCase(category)}/${paramCase(page)}`;
     }
 
-    public isActive(category: string, page: string, tab: string): boolean {
+    public isActive(category: string, page: string): boolean {
       const currentPath = this.$route.path;
       const route = this.getRoute(category, page);
       let pathWithoutTab = '';
