@@ -138,7 +138,7 @@ export default class Code extends Vue {
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
 <p-text-field-wrapper label="Some label"${labelAttr}>
-  <input type="text" placeholder="Some placeholder text" name="some-name" />
+  <input type="text" placeholder="Some placeholder" name="some-name" />
 </p-text-field-wrapper>`;
   }
   

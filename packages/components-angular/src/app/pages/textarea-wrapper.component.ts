@@ -11,13 +11,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with label and placeholder">
       <p-textarea-wrapper [label]="'Label with placeholder'">
-        <textarea placeholder="Some placeholder text"></textarea>
+        <textarea placeholder="Some placeholder"></textarea>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render with label, description and placeholder">
       <p-textarea-wrapper [label]="'Label with description and placeholder'" [description]="'Some description'">
-        <textarea placeholder="Some placeholder text"></textarea>
+        <textarea placeholder="Some placeholder"></textarea>
       </p-textarea-wrapper>
     </div>
 
@@ -128,10 +128,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-textarea-wrapper>
     </div>
 
-    <div
-      class="playground light"
-      title="should render with multiline label, description and message and cut off too long option text"
-    >
+    <div class="playground light" title="should render with multiline label, description, message and text">
       <p-textarea-wrapper
         [label]="'Multiline label lorem ipsum dolor sit amet, consetetur sadipscing'"
         [description]="

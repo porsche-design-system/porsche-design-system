@@ -93,7 +93,7 @@ export default class Code extends Vue {
   <textarea name="some-name"></textarea>
 </p-textarea-wrapper>
 <p-textarea-wrapper label="Some label" ${attr}>
-  <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+  <textarea name="some-name" placeholder="Some placeholder"></textarea>
 </p-textarea-wrapper>`;
   }
 
