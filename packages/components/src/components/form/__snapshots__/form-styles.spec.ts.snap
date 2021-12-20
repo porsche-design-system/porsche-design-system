@@ -159,6 +159,135 @@ Object {
 }
 `;
 
+exports[`getBaseChildStyles() should return correct css for child: select, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(select)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "2px solid #fc1717",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(select:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(select:focus)": Object {
+    "outlineColor": "#fc1717",
+  },
+  "::slotted(select:hover)": Object {
+    "borderColor": "#d30303",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: select, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(select)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "1px solid #b0b1b2",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(select:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(select:focus)": Object {
+    "outlineColor": "#b0b1b2",
+  },
+  "::slotted(select:hover)": Object {
+    "borderColor": "#e3e4e5",
+  },
+}
+`;
+
+exports[`getBaseChildStyles() should return correct css for child: select, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+Object {
+  "::slotted(select)": Object {
+    "appearance": "none",
+    "backgroundColor": "#0e1418",
+    "border": "2px solid #01ba1d",
+    "borderRadius": 0,
+    "bottom": 0,
+    "boxSizing": "border-box",
+    "color": "#fff",
+    "display": "block",
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "1rem",
+    "fontWeight": 400,
+    "height": "3rem",
+    "left": 0,
+    "lineHeight": 1.5,
+    "margin": 0,
+    "opacity": 1,
+    "outline": "1px solid transparent",
+    "outlineOffset": "2px",
+    "position": "relative",
+    "right": 0,
+    "textIndent": 0,
+    "top": 0,
+    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "width": "100%",
+  },
+  "::slotted(select:disabled)": Object {
+    "WebkitTextFillColor": "#96989a",
+    "borderColor": "#96989a",
+    "color": "#96989a",
+    "cursor": "not-allowed",
+  },
+  "::slotted(select:focus)": Object {
+    "outlineColor": "#01ba1d",
+  },
+  "::slotted(select:hover)": Object {
+    "borderColor": "#017d14",
+  },
+}
+`;
+
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
 Object {
   "::slotted(textarea)": Object {
@@ -300,7 +429,7 @@ Object {
     "outlineColor": "#b0b1b2",
   },
   "::slotted(textarea:hover)": Object {
-    "borderColor": "#fff",
+    "borderColor": "#e3e4e5",
   },
   "::slotted(textarea[readonly])": Object {
     "backgroundColor": "#ebebeb",

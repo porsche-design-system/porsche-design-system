@@ -94,9 +94,9 @@ export class SelectWrapper {
   public render(): JSX.Element {
     const { disabled } = this.select;
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: disabled,
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: disabled,
     };
 
     const labelProps = {
@@ -112,8 +112,8 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <div class={rootClasses}>
-          <label class="label">
+        <div class="root">
+          <label class={labelClasses}>
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
