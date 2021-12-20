@@ -65,16 +65,6 @@ describe('link-social', () => {
     }
   });
 
-  it('should throw error when used without href', async () => {
-    initConsoleObserver(page);
-    await setContentWithDesignSystem(
-      page,
-      `<p-link-social>Some label</p-link-social><p-link-social href="#">Some label</p-link-social><p-link-social><a href="#">Some label</a></p-link-social>`
-    );
-
-    expect(getConsoleErrorsAmount()).toBe(1);
-  });
-
   it('should trigger focus & blur events at the correct time', async () => {
     await setContentWithDesignSystem(
       page,
