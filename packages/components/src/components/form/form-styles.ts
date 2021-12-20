@@ -9,15 +9,17 @@ import {
   getThemedColors,
   getThemedFormStateColors,
   getTransition,
+  isDark,
   pxToRemWithUnit,
 } from '../../utils';
 import { color, font } from '@porsche-design-system/utilities';
 import { FormState, Theme } from '../../types';
 import { JssStyle } from 'jss';
 
+export const INPUT_HEIGHT = 48;
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
 
-export type ChildSelector = 'input' | 'textarea';
+export type ChildSelector = 'input' | 'select' | 'textarea';
 
 export const getBaseChildStyles = (
   child: ChildSelector,
@@ -25,7 +27,7 @@ export const getBaseChildStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { baseColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
+  const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleState(state);
 
@@ -38,7 +40,7 @@ export const getBaseChildStyles = (
       position: 'relative',
       ...getInset(),
       width: '100%',
-      ...(child === 'input' && { height: pxToRemWithUnit(48) }),
+      ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
       margin: 0,
       outline: '1px solid transparent',
       outlineOffset: '2px',
@@ -57,13 +59,10 @@ export const getBaseChildStyles = (
       ...additionalDefaultJssStyle,
     },
     [`::slotted(${child}:hover)`]: {
-      borderColor: stateHoverColor || baseColor,
+      borderColor: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
     },
     [`::slotted(${child}:focus)`]: {
       outlineColor: stateColor || contrastMediumColor,
-    },
-    [`::slotted(${child}[readonly]:focus)`]: {
-      outlineColor: 'transparent',
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
@@ -71,13 +70,18 @@ export const getBaseChildStyles = (
       borderColor: disabled,
       WebkitTextFillColor: disabled, // fix placeholder color bug in Safari
     },
-    [`::slotted(${child}[readonly])`]: {
-      borderColor: readonly,
-      backgroundColor: readonly,
-    },
-    [`::slotted(${child}[readonly]:not(:disabled))`]: {
-      color: contrastMediumColor,
-    },
+    ...(child !== 'select' && {
+      [`::slotted(${child}[readonly])`]: {
+        borderColor: readonly,
+        backgroundColor: readonly,
+      },
+      [`::slotted(${child}[readonly]:focus)`]: {
+        outlineColor: 'transparent',
+      },
+      [`::slotted(${child}[readonly]:not(:disabled))`]: {
+        color: contrastMediumColor,
+      },
+    }),
   };
 };
 
