@@ -24,7 +24,7 @@ import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { validateLinkUsage } from '../../../utils/link-validation';
+import { throwIfInvalidLinkUsage } from '../../../utils/link-validation';
 
 @Component({
   tag: 'p-link-pure',
@@ -96,7 +96,7 @@ export class LinkPure {
       !!this.href,
       this.theme
     );
-    validateLinkUsage(this.host, this.href);
+    throwIfInvalidLinkUsage(this.host, this.href);
   }
 
   public componentDidLoad(): void {
