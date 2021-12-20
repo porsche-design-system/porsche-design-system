@@ -71,7 +71,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with error state and error message">
-      <p-textarea-wrapper [label]="'Error with message'" [state]="'error'" [message]="'error message'">
+      <p-textarea-wrapper [label]="'Error with message'" [state]="'error'" [message]="'Error message'">
         <textarea>Some value</textarea>
       </p-textarea-wrapper>
     </div>
@@ -83,7 +83,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with success state and success message">
-      <p-textarea-wrapper [label]="'Success with message'" [state]="'success'" [message]="'success message'">
+      <p-textarea-wrapper [label]="'Success with message'" [state]="'success'" [message]="'Success message'">
         <textarea>Some value</textarea>
       </p-textarea-wrapper>
     </div>
@@ -121,7 +121,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state"
     >
       <p-textarea-wrapper [state]="'success'">
-        <span slot="label">Slotted success with a <a href="#">link</a></span>
+        <span slot="label">Slotted success label with a <a href="#">link</a></span>
         <span slot="description">Slotted description with a <a href="#">link</a></span>
         <textarea>Some value</textarea>
         <span slot="message">Slotted message with a <a href="#">link</a></span>

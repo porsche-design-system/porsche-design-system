@@ -83,7 +83,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with success state and success message">
-        <PTextareaWrapper label="Success with message" state="success" message="success message">
+        <PTextareaWrapper label="Success with message" state="success" message="Success message">
           <textarea defaultValue="Some value" />
         </PTextareaWrapper>
       </div>
