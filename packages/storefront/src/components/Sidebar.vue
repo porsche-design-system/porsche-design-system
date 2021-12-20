@@ -48,9 +48,15 @@
       return `/${paramCase(category)}/${paramCase(page)}`;
     }
 
-    public isActive(category: string, page: string): boolean {
+    public isActive(category: string, page: string, tab: string): boolean {
+      const currentPath = this.$route.path;
       const route = this.getRoute(category, page);
-      return this.$route.path.startsWith(route);
+      let pathWithoutTab = '';
+
+      if (currentPath.split('/').length > 2) {
+        pathWithoutTab = currentPath.substr(0, currentPath.lastIndexOf('/'));
+      }
+      return pathWithoutTab ? pathWithoutTab === route : currentPath.includes(route);
     }
 
     private created(): void {
