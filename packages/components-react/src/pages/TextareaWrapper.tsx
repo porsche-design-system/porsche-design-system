@@ -11,13 +11,13 @@ export const TextareaWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with label and placeholder">
         <PTextareaWrapper label="Label with placeholder">
-          <textarea placeholder="Some placeholder text" />
+          <textarea placeholder="Some placeholder" />
         </PTextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with label, description and placeholder">
         <PTextareaWrapper label="Label with description and placeholder" description="Some description">
-          <textarea placeholder="Some placeholder text" />
+          <textarea placeholder="Some placeholder" />
         </PTextareaWrapper>
       </div>
 
@@ -136,7 +136,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
         </PTextareaWrapper>
       </div>
 
-      <div className="playground light" title="should render with multiline label, description and message and text">
+      <div className="playground light" title="should render with multiline label, description, message and text">
         <PTextareaWrapper
           label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
           description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
