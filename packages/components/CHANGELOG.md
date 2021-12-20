@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Usage validation for `Link`, `Link-Pure`, `Link-Social`
+- Usage validation for `Link`, `Link Pure` and `Link Social`
 
 ### [2.8.0-beta.1] - 2021-12-16
 
