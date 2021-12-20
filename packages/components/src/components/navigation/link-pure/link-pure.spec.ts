@@ -1,28 +1,76 @@
-import * as transitionListenerUtils from '../../../utils/transition-listener';
 import { LinkPure } from './link-pure';
+import * as transitionListenerUtils from '../../../utils/transition-listener';
+import * as linkValidationUtils from '../../../utils/link-validation';
+import * as jssUtils from '../../../utils/jss';
+import * as focusHandling from '../../../utils/focus-handling';
 
 jest.mock('../../../utils/focus-handling');
 
-describe('link-pure', () => {
-  describe('componentDidLoad', () => {
-    let spy: jest.SpyInstance;
-    beforeEach(() => {
-      spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
-    });
+describe('connectedCallback()', () => {
+  it('should call improveFocusHandlingForCustomElement() ', () => {
+    const spy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.connectedCallback();
 
-    it('should not call transitionListener for default size', () => {
-      const component = new LinkPure();
-      component.componentDidLoad();
+    expect(spy).toBeCalledWith(component.host);
+  });
+});
 
-      expect(spy).toBeCalledTimes(0);
-    });
+describe('componentDidLoad()', () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
+  });
 
-    it('should call transitionListener when size="inherit"', () => {
-      const component = new LinkPure();
-      component.size = 'inherit';
-      component.componentDidLoad();
+  it('should not call transitionListener for default size', () => {
+    const component = new LinkPure();
+    component.componentDidLoad();
 
-      expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
-    });
+    expect(spy).toBeCalledTimes(0);
+  });
+
+  it('should call transitionListener when size="inherit"', () => {
+    const component = new LinkPure();
+    component.size = 'inherit';
+    component.componentDidLoad();
+
+    expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
+  });
+
+  it('should call improveFocusHandlingForCustomElement() ', () => {
+    const spy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.host);
+  });
+});
+
+describe('componentWillRender()', () => {
+  let linkValidationUtilsSpy;
+  let jssUtilsSpy;
+
+  beforeEach(() => {
+    linkValidationUtilsSpy = jest.spyOn(linkValidationUtils, 'validateLinkUsage').mockImplementationOnce(() => {});
+    jssUtilsSpy = jest.spyOn(jssUtils, 'attachComponentCss').mockImplementationOnce(() => {});
+  });
+
+  it('should call attachComponentsCss() ', () => {
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.componentWillRender();
+
+    expect(jssUtilsSpy).toBeCalledTimes(1);
+  });
+
+  it('should call validateLinkUsage() ', () => {
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.href = '#';
+    component.componentWillRender();
+
+    expect(linkValidationUtilsSpy).toBeCalledWith(component.host, component.href);
   });
 });
