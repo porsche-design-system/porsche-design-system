@@ -24,7 +24,7 @@ import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { throwIfInvalidLinkUsage } from '../../../utils/link-validation';
+import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link-pure',
@@ -82,6 +82,11 @@ export class LinkPure {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
+    improveFocusHandlingForCustomElement(this.host);
+  }
+
   public componentWillRender(): void {
     attachComponentCss(
       this.host,
@@ -96,12 +101,9 @@ export class LinkPure {
       !!this.href,
       this.theme
     );
-    throwIfInvalidLinkUsage(this.host, this.href);
   }
 
   public componentDidLoad(): void {
-    // Reason that this function is not called ini componentDidLoad like in link and link-social?
-    improveFocusHandlingForCustomElement(this.host);
     if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.linkTag)}em`;
