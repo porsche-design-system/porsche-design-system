@@ -28,15 +28,15 @@ if [[ -z "$(ls -A ./packages/storefront/dist)" ]]; then
   exit 1
 fi
 
-#if [[ -z "${ALGOLIA_APP_ID}" ]]; then
-#  echo "Please provide the \$ALGOLIA_APP_ID environment variable."
-#  exit 1
-#fi
-#
-#if [[ -z "${ALGOLIA_API_KEY}" ]]; then
-#  echo "Please provide the \$ALGOLIA_API_KEY environment variable."
-#  exit 1
-#fi
+if [[ -z "${ALGOLIA_APP_ID}" ]]; then
+  echo "Please provide the \$ALGOLIA_APP_ID environment variable."
+  exit 1
+fi
+
+if [[ -z "${ALGOLIA_API_KEY}" ]]; then
+  echo "Please provide the \$ALGOLIA_API_KEY environment variable."
+  exit 1
+fi
 
 setup() {
   echo "task: [$(date)] \"setup\""
@@ -55,7 +55,7 @@ add_deployment_version() {
 
 update_algolia_index(){
   echo "task: [$(date)] \"update_algolia_index\" (${1})"
-  yarn update:algolia ALGOLIA_INDEX_NAME=${1}
+  ALGOLIA_INDEX_NAME=${1} yarn update:algolia
 }
 
 update_base_tag(){

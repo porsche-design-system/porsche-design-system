@@ -136,9 +136,9 @@ const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'cat
 const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(content)'];
-export const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME.replace('/', '_') ?? 'localhost';
+export const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME?.replace('/', '_') ?? 'localhost';
 const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
-  const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+  const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
   const index = client.initIndex(ALGOLIA_INDEX_NAME);
   index
     .setSettings({
