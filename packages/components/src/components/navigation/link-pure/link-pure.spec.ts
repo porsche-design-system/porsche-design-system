@@ -1,10 +1,9 @@
 import { LinkPure } from './link-pure';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
-import * as linkValidationUtils from '../../../utils/link-validation';
+import * as linkValidationUtils from '../link-validation';
 import * as jssUtils from '../../../utils/jss';
 import * as focusHandling from '../../../utils/focus-handling';
 import * as slottedStylesUtils from '../../../utils/slotted-styles';
-import { attachSlottedCss } from '../../../utils/slotted-styles';
 
 jest.mock('../../../utils/focus-handling');
 

@@ -1,5 +1,5 @@
 import { LinkSocial } from './link-social';
-import * as linkValidationUtils from '../../../utils/link-validation';
+import * as linkValidationUtils from '../link-validation';
 import * as jssUtils from '../../../utils/jss';
 import * as focusHandling from '../../../utils/focus-handling';
 

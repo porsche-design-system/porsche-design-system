@@ -1,5 +1,4 @@
-import { getHTMLElement } from './dom';
-import { getTagName } from './tag-name';
+import { getHTMLElement, getTagName } from '../../utils';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, href: string): void => {
   if (!href && !getHTMLElement(host, 'a')) {
