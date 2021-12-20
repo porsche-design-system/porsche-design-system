@@ -1,9 +1,8 @@
 import { getHTMLElement } from './dom';
+import { getTagName } from './tag-name';
 
-export const validateLinkUsage = (host: HTMLElement, href: string | undefined) => {
+export const throwIfInvalidLinkUsage = (host: HTMLElement, href: string): void => {
   if (!href && !getHTMLElement(host, 'a')) {
-    throw new Error(
-      `Usage of ${host.tagName} is not valid. Please provide a href property. For further information see https://designsystem.porsche.com`
-    );
+    throw new Error(`Usage of ${getTagName(host)} is not valid. Please provide a href property or a slotted anchor.`);
   }
 };
