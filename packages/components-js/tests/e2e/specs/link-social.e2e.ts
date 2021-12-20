@@ -2,8 +2,10 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   initAddEventListener,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -61,6 +63,16 @@ describe('link-social', () => {
     for (const event of events) {
       expect(event.target.id).toBe('hostElement');
     }
+  });
+
+  it('should throw error when used without href', async () => {
+    initConsoleObserver(page);
+    await setContentWithDesignSystem(
+      page,
+      `<p-link-social>Some label</p-link-social><p-link-social href="#">Some label</p-link-social><p-link-social><a href="#">Some label</a></p-link-social>`
+    );
+
+    expect(getConsoleErrorsAmount()).toBe(1);
   });
 
   it('should trigger focus & blur events at the correct time', async () => {
