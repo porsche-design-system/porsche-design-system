@@ -321,7 +321,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+  const buildProperties = (tagName: TagName) => (tagName.includes('link') ? ' href="#"' : '');
+
+  const componentMarkup = `<${tagName}${buildProperties(tagName)}>${buildChildMarkup(
+    componentMeta.requiredChild
+  )}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };
