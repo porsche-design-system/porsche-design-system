@@ -16,6 +16,7 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
+import { validateLinkUsage } from '../../../utils/link-validation';
 
 @Component({
   tag: 'p-link',
@@ -60,6 +61,7 @@ export class Link {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !!this.href, this.theme);
+    validateLinkUsage(this.host, this.href);
   }
 
   public render(): JSX.Element {
