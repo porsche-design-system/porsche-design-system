@@ -3,17 +3,19 @@ import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as linkValidationUtils from '../../../utils/link-validation';
 import * as jssUtils from '../../../utils/jss';
 import * as focusHandling from '../../../utils/focus-handling';
+import * as slottedStylesUtils from '../../../utils/slotted-styles';
+import { attachSlottedCss } from '../../../utils/slotted-styles';
 
 jest.mock('../../../utils/focus-handling');
 
 describe('connectedCallback()', () => {
-  it('should call improveFocusHandlingForCustomElement() ', () => {
-    const spy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
+  it('should call attachSlottedCss() ', () => {
+    const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
     const component = new LinkPure();
     component.host = document.createElement('p-link-pure');
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toBeCalledWith(component.host, expect.anything());
   });
 });
 
@@ -39,12 +41,12 @@ describe('componentDidLoad()', () => {
   });
 
   it('should call improveFocusHandlingForCustomElement() ', () => {
-    const spy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
+    const focusHandlingSpy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
     const component = new LinkPure();
     component.host = document.createElement('p-link-pure');
-    component.connectedCallback();
+    component.componentDidLoad();
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(focusHandlingSpy).toBeCalledWith(component.host);
   });
 });
 
