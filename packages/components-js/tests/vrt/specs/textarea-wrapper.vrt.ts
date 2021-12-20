@@ -74,17 +74,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </div>
         <div>
           <p-textarea-wrapper>
-            <span slot="label">Slotted <a href="#">label</a></span>
-            <span slot="description">Slotted <a href="#">description</a></span>
+            <span slot="label">Slotted label with <a href="#">link</a></span>
+            <span slot="description">Slotted description with <a href="#">link</a></span>
             ${child}
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Error" description="Some description" state="error">
             ${child}
-            <span slot="message">Slotted <a href="#">error</a></span>
+            <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Success" description="Some description" state="success">
             ${child}
-            <span slot="message">Slotted <a href="#">success</a></span>
+            <span slot="message">Slotted message with <a href="#">link</a></span>
           </p-textarea-wrapper>
         </div>`;
 
