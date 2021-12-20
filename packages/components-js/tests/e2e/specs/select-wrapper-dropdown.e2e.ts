@@ -440,14 +440,14 @@ describe('select-wrapper dropdown', () => {
     expect(await getDropdownCheckmarkIcon()).toBeNull();
   });
 
-  it('should change box-shadow color when dropdown button is hovered', async () => {
+  it('should change border-color when dropdown button is hovered', async () => {
     await initSelect();
 
     const dropdownButton = await getDropdownButton();
-    const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
+    const initialBorderColor = await getElementStyle(dropdownButton, 'borderColor');
 
     await dropdownButton.hover();
-    expect(await getElementStyle(dropdownButton, 'boxShadow')).not.toBe(initialBoxShadow);
+    expect(await getElementStyle(dropdownButton, 'borderColor')).not.toBe(initialBorderColor);
   });
 
   describe('dropdown position', () => {
