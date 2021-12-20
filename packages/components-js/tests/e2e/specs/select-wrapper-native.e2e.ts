@@ -127,16 +127,16 @@ describe('select-wrapper native', () => {
     expect(await hasSelectFocus()).toBe(true);
   });
 
-  it('should change box-shadow color of select when label text is hovered', async () => {
+  it('should change border-color of select when label text is hovered', async () => {
     await initSelect();
 
     await page.mouse.move(0, 100); // mouse seems to be in top left corner initially causing hover state
     const select = await getSelect();
     const labelText = await getLabelText();
-    const initialBoxShadow = await getElementStyle(select, 'boxShadow');
+    const initialBorderColor = await getElementStyle(select, 'borderColor');
 
     await labelText.hover();
-    expect(await getElementStyle(select, 'boxShadow')).not.toBe(initialBoxShadow);
+    expect(await getElementStyle(select, 'borderColor')).not.toBe(initialBorderColor);
   });
 
   describe('lifecycle', () => {

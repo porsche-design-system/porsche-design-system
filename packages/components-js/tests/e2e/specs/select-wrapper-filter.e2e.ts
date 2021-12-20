@@ -60,7 +60,6 @@ describe('select-wrapper filter', () => {
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
   const getSelectedOptionText = async () =>
     (await getSelect()).evaluate((el: HTMLSelectElement) => el.options[el.selectedIndex].textContent);
-  const getFilterOverlayBoxShadow = async () => getElementStyle(await getFilterInputOverlay(), 'boxShadow');
 
   const getAmountOfDropdownOptions = async () => (await getDropdownList()).evaluate((el) => el.childElementCount);
   const getAmountOfHiddenDropdownOptions = async () =>
@@ -144,14 +143,14 @@ describe('select-wrapper filter', () => {
     expect(focusCalls).toBe(1);
   });
 
-  it('should change box-shadow color when filter input is hovered', async () => {
+  it('should change border-color when filter input is hovered', async () => {
     await initSelect();
 
     const filterInputOverlay = await getFilterInputOverlay();
-    const initialBoxShadow = await getElementStyle(filterInputOverlay, 'boxShadow');
+    const initialBorderColor = await getElementStyle(filterInputOverlay, 'borderColor');
     await filterInputOverlay.hover();
 
-    expect(await getFilterOverlayBoxShadow()).not.toBe(initialBoxShadow);
+    expect(await getElementStyle(await getFilterInputOverlay(), 'borderColor')).not.toBe(initialBorderColor);
   });
 
   it('should make dropdown visible if filter input is clicked and hidden via outside click', async () => {
