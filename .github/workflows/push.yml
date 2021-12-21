@@ -430,12 +430,12 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components-prod
+          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components-js-prod
+          args: --components-js
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
