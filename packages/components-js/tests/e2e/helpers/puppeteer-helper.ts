@@ -321,11 +321,13 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const buildProperties = (tagName: TagName) => (tagName.includes('link') ? ' href="#"' : '');
+  const attributes = componentMeta.requiredProps
+    ? componentMeta.requiredProps
+        .map((requiredProp) => Object.entries(requiredProp).map(([prop, value]) => ` ${prop}="${value}"`))
+        .join()
+    : '';
 
-  const componentMarkup = `<${tagName}${buildProperties(tagName)}>${buildChildMarkup(
-    componentMeta.requiredChild
-  )}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };
