@@ -319,7 +319,7 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     outline-color: transparent !important
   }
 </style>
-<a class=\\"root\\" href=\\"#\\" target=\\"_self\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -369,7 +369,7 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     outline-color: transparent !important
   }
 </style>
-<a class=\\"root\\" href=\\"#\\" target=\\"_self\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -419,7 +419,7 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     outline-color: transparent !important
   }
 </style>
-<a class=\\"root\\" href=\\"#\\" target=\\"_self\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
