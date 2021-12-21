@@ -50,6 +50,8 @@ export const addInputEventListener = (
 ): void => {
   input.addEventListener('input', (e) => {
     setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
-    inputChangeCallback && inputChangeCallback();
+    if (inputChangeCallback) {
+      inputChangeCallback();
+    }
   });
 };
