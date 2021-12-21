@@ -41,6 +41,7 @@ export class TextareaWrapper {
 
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
+  private hasCounter: boolean;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -49,18 +50,19 @@ export class TextareaWrapper {
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
+    this.hasCounter = hasCounter(this.textarea);
     this.observeAttributes(); // once initially
   }
 
   public componentDidLoad(): void {
-    if (hasCounter(this.textarea)) {
+    if (this.hasCounter) {
       addInputEventListener(this.textarea, this.counterElement);
-      setCounterInnerHtml(this.textarea, this.counterElement);
+      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
     }
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, hasCounter(this.textarea));
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.hasCounter);
   }
 
   public componentDidRender(): void {
@@ -108,7 +110,7 @@ export class TextareaWrapper {
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
-          {hasCounter(this.textarea) && (
+          {this.hasCounter && (
             <PrefixedTagNames.pText
               class="counter"
               {...labelProps}

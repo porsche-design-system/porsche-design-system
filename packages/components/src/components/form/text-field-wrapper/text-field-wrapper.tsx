@@ -82,7 +82,8 @@ export class TextFieldWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.input, this.unitOrCounterElement, () => this.state);
+      addInputEventListener(this.input, this.unitOrCounterElement, this.setInputStyles);
+      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
     }
   }
 
@@ -100,11 +101,9 @@ export class TextFieldWrapper {
   }
 
   public componentDidRender(): void {
-    if (this.hasCounter) {
-      setCounterInnerHtml(this.input, this.unitOrCounterElement);
-    }
-    // needs to happen after render in order to have unitElement defined
-    setInputStyles(this.input, this.unitOrCounterElement, this.hasCounter ? 'suffix' : this.unitPosition, this.state);
+    // needs to happen after render in order to have unitOrCounterElement defined
+    this.setInputStyles();
+
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -214,5 +213,9 @@ export class TextFieldWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+  };
+
+  private setInputStyles = (): void => {
+    setInputStyles(this.input, this.unitOrCounterElement, this.hasCounter ? 'suffix' : this.unitPosition, this.state);
   };
 }
