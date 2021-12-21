@@ -50,8 +50,8 @@ export class TextareaWrapper {
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-    this.hasCounter = hasCounter(this.textarea);
     this.observeAttributes(); // once initially
+    this.hasCounter = hasCounter(this.textarea);
   }
 
   public componentDidLoad(): void {
