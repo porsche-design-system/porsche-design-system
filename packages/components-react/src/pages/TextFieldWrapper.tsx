@@ -47,7 +47,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render in disabled state">
-        <PTextFieldWrapper label="disabled" description="Some description">
+        <PTextFieldWrapper label="Disabled" description="Some description">
           <input type="text" disabled />
         </PTextFieldWrapper>
       </div>
@@ -154,7 +154,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with error state and error message">
-        <PTextFieldWrapper label="Error with message" state="error" message="error message">
+        <PTextFieldWrapper label="Error with message" state="error" message="Error message">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
@@ -166,7 +166,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with success state and success message">
-        <PTextFieldWrapper label="Success with message" state="success" message="success message">
+        <PTextFieldWrapper label="Success with message" state="success" message="Success message">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
