@@ -106,9 +106,11 @@ describe('select-wrapper dropdown', () => {
     });
 
     const attrs = [
-      isNative !== undefined ? `native="${isNative}"` : '',
-      dropdownDirection ? `dropdown-direction="${dropdownDirection}"` : '',
-    ].join(' ');
+      isNative !== undefined && `native="${isNative}"`,
+      dropdownDirection && `dropdown-direction="${dropdownDirection}"`,
+    ]
+      .filter((x) => x)
+      .join(' ');
 
     return setContentWithDesignSystem(
       page,
@@ -201,25 +203,6 @@ describe('select-wrapper dropdown', () => {
 
     const dropdown = await getDropdown();
     expect(dropdown).toBeNull();
-  });
-
-  it('should disable select when select is disabled programmatically', async () => {
-    await initSelect();
-    const select = await getSelect();
-
-    const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
-
-    expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
-
-    await setProperty(select, 'disabled', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
-
-    await setProperty(select, 'disabled', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
   });
 
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {

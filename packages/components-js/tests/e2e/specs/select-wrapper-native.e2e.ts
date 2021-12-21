@@ -115,28 +115,51 @@ describe('select-wrapper native', () => {
     expect(await getMessage(), 'when state = none').toBeNull();
   });
 
-  it('should focus select when label text is clicked', async () => {
+  it('should disable select when select is disabled programmatically', async () => {
     await initSelect();
     const select = await getSelect();
-    const hasSelectFocus = () => hasFocus(page, select);
 
-    const labelText = await getLabelText();
-    expect(await hasSelectFocus()).toBe(false);
+    const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
-    await labelText.click();
-    expect(await hasSelectFocus()).toBe(true);
+    expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
+
+    await setProperty(select, 'disabled', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
+
+    await setProperty(select, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
   });
 
-  it('should change border-color of select when label text is hovered', async () => {
-    await initSelect();
+  describe('focus state', () => {
+    it('should focus select when label text is clicked', async () => {
+      await initSelect();
+      const select = await getSelect();
+      const hasSelectFocus = () => hasFocus(page, select);
 
-    await page.mouse.move(0, 100); // mouse seems to be in top left corner initially causing hover state
-    const select = await getSelect();
-    const labelText = await getLabelText();
-    const initialBorderColor = await getElementStyle(select, 'borderColor');
+      const labelText = await getLabelText();
+      expect(await hasSelectFocus()).toBe(false);
 
-    await labelText.hover();
-    expect(await getElementStyle(select, 'borderColor')).not.toBe(initialBorderColor);
+      await labelText.click();
+      expect(await hasSelectFocus()).toBe(true);
+    });
+  });
+
+  describe('hover state', () => {
+    it('should change border-color of select when label text is hovered', async () => {
+      await initSelect();
+
+      await page.mouse.move(0, 100); // mouse seems to be in top left corner initially causing hover state
+      const select = await getSelect();
+      const labelText = await getLabelText();
+      const initialBorderColor = await getElementStyle(select, 'borderColor');
+
+      await labelText.hover();
+      expect(await getElementStyle(select, 'borderColor')).not.toBe(initialBorderColor);
+    });
   });
 
   describe('lifecycle', () => {
