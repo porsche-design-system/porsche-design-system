@@ -63,10 +63,6 @@ describe('text-field-wrapper', () => {
       maxLength,
     } = opts ?? {};
 
-    const attributes = [`state="${state}"`, hasLabel && 'label="Some label"', hasUnit && 'unit="km/h"']
-      .filter((x) => x)
-      .join(' ');
-
     const link = '<a href="#" onclick="return false;">link</a>';
     const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
     const slottedDescription = useSlottedDescription
@@ -74,10 +70,14 @@ describe('text-field-wrapper', () => {
       : '';
     const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
+    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"', hasUnit && 'unit="km/h"']
+      .filter((x) => x)
+      .join(' ');
+
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper ${attributes}>
+      <p-text-field-wrapper ${attrs}>
         ${slottedLabel}
         ${slottedDescription}
         <input type="${type}"${maxLength ? ` maxlength="${maxLength}"` : ''} />
@@ -422,6 +422,46 @@ describe('text-field-wrapper', () => {
       await waitForStencilLifecycle(page);
 
       expect(inputFocusSpyCalls).toBe(1);
+    });
+  });
+
+  describe('hover state', () => {
+    it('should show hover state on input when label is hovered', async () => {
+      await initTextField({ hasLabel: true });
+      const label = await getLabel();
+      const input = await getInput();
+
+      const getInputBorderColor = () => getElementStyle(input, 'borderColor');
+
+      const initialStyle = await getInputBorderColor();
+      await input.hover();
+      const inputHoverStyle = await getInputBorderColor();
+      expect(initialStyle).not.toBe(inputHoverStyle);
+
+      await page.mouse.move(0, 100); // undo hover
+      expect(await getInputBorderColor()).toBe(initialStyle);
+
+      await label.hover();
+      expect(await getInputBorderColor()).toBe(inputHoverStyle);
+    });
+
+    it('should show hover state on input when unit/counter is hovered', async () => {
+      await initTextField({ maxLength: 20 });
+      const counter = await getCounterOrUnit();
+      const input = await getInput();
+
+      const getInputBorderColor = () => getElementStyle(input, 'borderColor');
+
+      const initialStyle = await getInputBorderColor();
+      await input.hover();
+      const inputHoverStyle = await getInputBorderColor();
+      expect(initialStyle).not.toBe(inputHoverStyle);
+
+      await page.mouse.move(0, 100); // undo hover
+      expect(await getInputBorderColor()).toBe(initialStyle);
+
+      await counter.hover();
+      expect(await getInputBorderColor()).toBe(inputHoverStyle);
     });
   });
 

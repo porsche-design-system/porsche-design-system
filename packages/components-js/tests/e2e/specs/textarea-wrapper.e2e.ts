@@ -10,6 +10,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
   getElementInnerText,
+  getElementStyle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -51,8 +52,6 @@ describe('textarea-wrapper', () => {
       maxLength,
     } = opts ?? {};
 
-    const attributes = [`state="${state}"`, hasLabel && 'label="Some label"'].filter((x) => x).join(' ');
-
     const link = '<a href="#" onclick="return false;">link</a>';
     const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
     const slottedDescription = useSlottedDescription
@@ -60,10 +59,12 @@ describe('textarea-wrapper', () => {
       : '';
     const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
+    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"'].filter((x) => x).join(' ');
+
     return setContentWithDesignSystem(
       page,
       `
-        <p-textarea-wrapper ${attributes}>
+        <p-textarea-wrapper ${attrs}>
           ${slottedLabel}
           ${slottedDescription}
           <textarea${maxLength ? ` maxlength="${maxLength}"` : ''}></textarea>
@@ -206,6 +207,46 @@ describe('textarea-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+  });
+
+  describe('hover state', () => {
+    it('should show hover state on input when label is hovered', async () => {
+      await initTextarea({ hasLabel: true });
+      const label = await getLabel();
+      const textarea = await getTextarea();
+
+      const getTextareaBorderColor = () => getElementStyle(textarea, 'borderColor');
+
+      const initialStyle = await getTextareaBorderColor();
+      await textarea.hover();
+      const textareaHoverStyle = await getTextareaBorderColor();
+      expect(initialStyle).not.toBe(textareaHoverStyle);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getTextareaBorderColor()).toBe(initialStyle);
+
+      await label.hover();
+      expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
+    });
+
+    it('should show hover state on textarea when unit/counter is hovered', async () => {
+      await initTextarea({ maxLength: 160 });
+      const counter = await getCounter();
+      const textarea = await getTextarea();
+
+      const getTextareaBorderColor = () => getElementStyle(textarea, 'borderColor');
+
+      const initialStyle = await getTextareaBorderColor();
+      await textarea.hover();
+      const textareaHoverStyle = await getTextareaBorderColor();
+      expect(initialStyle).not.toBe(textareaHoverStyle);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getTextareaBorderColor()).toBe(initialStyle);
+
+      await counter.hover();
+      expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
     });
   });
 
