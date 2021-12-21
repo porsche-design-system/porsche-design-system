@@ -11,8 +11,6 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
-  initConsoleObserver,
-  getConsoleErrorsAmount,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
