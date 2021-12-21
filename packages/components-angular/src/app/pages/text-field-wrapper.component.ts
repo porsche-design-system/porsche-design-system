@@ -192,7 +192,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with error state"
     >
       <p-text-field-wrapper [state]="'error'">
-        <span slot="label">Slotted success label with a <a href="#">link</a></span>
+        <span slot="label">Slotted error label with a <a href="#">link</a></span>
         <span slot="description">Slotted description with a <a href="#">link</a></span>
         <input type="text" placeholder="Some placeholder" />
         <span slot="message">Slotted message with a <a href="#">link</a></span>
