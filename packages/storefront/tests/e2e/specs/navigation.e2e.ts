@@ -62,7 +62,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         expect(await isLinkActive(linkElement), 'link should be active after click').toBe(true);
         expect(await getMainTitle(browserPage), 'should show correct main title for page view').toBe(page);
-        expect(getConsoleErrorsAmount()).toBe(0);
+        expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
         if (!Array.isArray(tabs)) {
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
@@ -91,7 +91,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             );
             expect(await getMainTitle(browserPage), 'should show correct main title for tab view').toBe(page);
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object]').toBe(false);
-            expect(getConsoleErrorsAmount()).toBe(0);
+            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tag ${tab}`).toBe(0);
 
             // logTabs.push(`${category} > ${page} > ${tab}`);
           }
