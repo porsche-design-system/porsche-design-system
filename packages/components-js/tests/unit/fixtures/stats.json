@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 10205,
-    "gzipSize": 3697
+    "size": 10225,
+    "gzipSize": 3706
   },
   {
     "chunkShortName": "text-list",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 7031,
-    "gzipSize": 2792
+    "size": 7033,
+    "gzipSize": 2790
   },
   {
     "chunkShortName": "toast",
