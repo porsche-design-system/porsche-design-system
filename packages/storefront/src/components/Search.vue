@@ -106,7 +106,7 @@
     };
 
     onHitsChange(hits: AlgoliaResult[]): void {
-      this.$emit('hide-navigation-change', this.displayHits && hits.length > 0);
+      this.$emit('onSearchActiveChange', this.displayHits && hits.length > 0);
     }
 
     shouldDisplayHits(query: string): void {

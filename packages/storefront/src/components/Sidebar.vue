@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <Search :hideNavigation="this.hideNavigation" v-on:hide-navigation-change="shouldHideNavigation" />
+    <Search :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
     <template v-if="!this.hideNavigation">
       <p-accordion
         v-for="(pages, category, index) in config"
@@ -49,14 +49,8 @@
     }
 
     public isActive(category: string, page: string): boolean {
-      const currentPath = this.$route.path;
-      const route = this.getRoute(category, page);
-      let pathWithoutTab = '';
-
-      if (currentPath.split('/').length > 2) {
-        pathWithoutTab = currentPath.substr(0, currentPath.lastIndexOf('/'));
-      }
-      return pathWithoutTab ? pathWithoutTab === route : currentPath.includes(route);
+      const routeParams = this.$router.currentRoute.params;
+      return routeParams.category === paramCase(category) && routeParams.page === paramCase(page);
     }
 
     private created(): void {
