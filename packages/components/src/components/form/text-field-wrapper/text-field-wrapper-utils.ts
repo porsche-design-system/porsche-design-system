@@ -24,12 +24,16 @@ export const getInputPadding = (
 
 export const setInputStyles = (
   input: HTMLInputElement,
-  element: HTMLElement,
+  unitOrCounterElement: HTMLElement,
   unitPosition: TextFieldWrapperUnitPosition,
   state: FormState
 ): void => {
-  if (element) {
-    input.style.setProperty('padding', getInputPadding(element.offsetWidth, unitPosition, state), 'important');
+  if (unitOrCounterElement) {
+    input.style.setProperty(
+      'padding',
+      getInputPadding(unitOrCounterElement.offsetWidth, unitPosition, state),
+      'important'
+    );
   }
 };
 
@@ -42,12 +46,10 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 export const addInputEventListener = (
   input: HTMLTextAreaElement | HTMLInputElement,
   counterElement: HTMLElement,
-  cb?: () => FormState
+  inputChangeCallback?: () => void
 ): void => {
   input.addEventListener('input', (e) => {
     setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
-    if (cb) {
-      setInputStyles(input as HTMLInputElement, counterElement, 'suffix', cb());
-    }
+    inputChangeCallback && inputChangeCallback();
   });
 };
