@@ -1,6 +1,6 @@
 import { throwIfInvalidLinkUsage } from './link-validation';
 
-const errorMessage = 'Usage of span is not valid. Please provide a href property or a slotted anchor.';
+const errorMessage = '"Usage of span is not valid. Please provide a href property or a slotted anchor."';
 
 it('should throw error when used without href and anchor', () => {
   const spanElement = document.createElement('span');
