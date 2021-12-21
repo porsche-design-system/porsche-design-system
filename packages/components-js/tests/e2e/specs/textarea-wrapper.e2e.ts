@@ -11,6 +11,7 @@ import {
   waitForStencilLifecycle,
   getElementInnerText,
   getElementStyle,
+  waitForEventSerialization,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -220,17 +221,19 @@ describe('textarea-wrapper', () => {
 
       const initialStyle = await getTextareaBorderColor();
       await textarea.hover();
+      await waitForEventSerialization(page);
       const textareaHoverStyle = await getTextareaBorderColor();
       expect(initialStyle).not.toBe(textareaHoverStyle);
 
       await page.mouse.move(0, 300); // undo hover
+      await waitForEventSerialization(page);
       expect(await getTextareaBorderColor()).toBe(initialStyle);
 
       await label.hover();
       expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
     });
 
-    it('should show hover state on textarea when unit/counter is hovered', async () => {
+    it('should show hover state on textarea when counter is hovered', async () => {
       await initTextarea({ maxLength: 160 });
       const counter = await getCounter();
       const textarea = await getTextarea();
@@ -239,13 +242,16 @@ describe('textarea-wrapper', () => {
 
       const initialStyle = await getTextareaBorderColor();
       await textarea.hover();
+      await waitForEventSerialization(page);
       const textareaHoverStyle = await getTextareaBorderColor();
       expect(initialStyle).not.toBe(textareaHoverStyle);
 
       await page.mouse.move(0, 300); // undo hover
+      await waitForEventSerialization(page);
       expect(await getTextareaBorderColor()).toBe(initialStyle);
 
       await counter.hover();
+      await waitForEventSerialization(page);
       expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
     });
   });

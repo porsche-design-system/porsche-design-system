@@ -435,13 +435,16 @@ describe('text-field-wrapper', () => {
 
       const initialStyle = await getInputBorderColor();
       await input.hover();
+      await waitForEventSerialization(page);
       const inputHoverStyle = await getInputBorderColor();
       expect(initialStyle).not.toBe(inputHoverStyle);
 
       await page.mouse.move(0, 100); // undo hover
+      await waitForEventSerialization(page);
       expect(await getInputBorderColor()).toBe(initialStyle);
 
       await label.hover();
+      await waitForEventSerialization(page);
       expect(await getInputBorderColor()).toBe(inputHoverStyle);
     });
 
