@@ -1,33 +1,32 @@
 import { throwIfInvalidLinkUsage } from './link-validation';
 
-let span: HTMLElement;
-let anchor: HTMLAnchorElement;
+const errorMessage = 'Usage of span is not valid. Please provide a href property or a slotted anchor.';
 
-beforeEach(() => {
-  span = document.createElement('span');
-  anchor = document.createElement('a');
+it('should throw error when used without href and anchor', () => {
+  const spanElement = document.createElement('span');
+  expect(() => throwIfInvalidLinkUsage(spanElement, undefined)).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
-it('should throw error when used without href and slottedAnchor', () => {
-  expect(() => throwIfInvalidLinkUsage(document.createElement('p-link'), undefined)).toThrowErrorMatchingInlineSnapshot(
-    `"Usage of p-link is not valid. Please provide a href property or a slotted anchor."`
-  );
+it('should throw error when used with href and anchor', () => {
+  const spanElement = document.createElement('span');
+  const anchorElement = document.createElement('a');
+  anchorElement.href = '#';
+
+  spanElement.appendChild(anchorElement);
+
+  expect(() => throwIfInvalidLinkUsage(spanElement, '#')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
-it('should throw error when used with href on host and anchor', () => {
-  span.appendChild(anchor);
-  anchor.href = '#';
+it('should not throw error if used without href and with anchor', () => {
+  const spanElement = document.createElement('span');
+  const anchorElement = document.createElement('a');
 
-  expect(() => throwIfInvalidLinkUsage(span, '#')).toThrowErrorMatchingInlineSnapshot(
-    `"Usage of span is not valid. Please use with href property OR slotted anchor."`
-  );
+  spanElement.appendChild(anchorElement);
+  expect(() => throwIfInvalidLinkUsage(spanElement, undefined)).not.toThrow();
 });
 
-it('should not throw error if used with slottedAnchor', () => {
-  span.appendChild(anchor);
-  expect(() => throwIfInvalidLinkUsage(span, undefined)).not.toThrow();
-});
+it('should not throw error when href is defined without anchor', () => {
+  const spanElement = document.createElement('span');
 
-it('should not throw error when href is defined', () => {
-  expect(() => throwIfInvalidLinkUsage(span, '#')).not.toThrow();
+  expect(() => throwIfInvalidLinkUsage(spanElement, '#')).not.toThrow();
 });
