@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- `Content Wrapper` regression for `!important` style
+
 #### Added
 - Usage validation for `Link`, `Link Pure` and `Link Social`
 
