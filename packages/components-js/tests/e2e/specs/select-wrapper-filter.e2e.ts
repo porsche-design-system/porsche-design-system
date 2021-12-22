@@ -170,12 +170,15 @@ describe('select-wrapper filter', () => {
   describe('hover state', () => {
     it('should change border-color when filter input is hovered', async () => {
       await initSelect();
+      await page.mouse.move(0, 300); // avoid potential hover initially
 
       const filterInputOverlay = await getFilterInputOverlay();
-      const initialBorderColor = await getElementStyle(filterInputOverlay, 'borderColor');
-      await filterInputOverlay.hover();
+      const initialStyle = await getElementStyle(filterInputOverlay, 'borderColor');
+      expect(initialStyle).toBe('rgb(98, 102, 105)');
 
-      expect(await getElementStyle(await getFilterInputOverlay(), 'borderColor')).not.toBe(initialBorderColor);
+      await filterInputOverlay.hover();
+      const hoverColor = await getElementStyle(filterInputOverlay, 'borderColor');
+      expect(hoverColor).toBe('rgb(0, 0, 0)');
     });
   });
 
