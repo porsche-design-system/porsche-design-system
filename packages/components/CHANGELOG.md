@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and `textarea`
+- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and `textarea`
 
 ### [2.8.0-beta.2] - 2021-12-22
 
