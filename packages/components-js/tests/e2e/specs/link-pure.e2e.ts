@@ -186,6 +186,40 @@ describe('link-pure', () => {
   });
 
   describe('focus state', () => {
+    it('should be removed from tab order for tabbable false', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link-pure href="#" tabbable="false">Some label</p-link-pure>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+      );
+
+      const link = await getHost();
+      const before = await selectNode(page, '#before');
+      const after = await selectNode(page, '#after');
+
+      await before.focus();
+
+      let linkFocusCalls = 0;
+      await addEventListener(link, 'focus', () => linkFocusCalls++);
+      let afterFocusCalls = 0;
+      await addEventListener(after, 'focus', () => afterFocusCalls++);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(linkFocusCalls, 'linkFocusCalls after tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(linkFocusCalls, 'linkFocusCalls after second tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+    });
+
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {
       await initLinkPure();
 
