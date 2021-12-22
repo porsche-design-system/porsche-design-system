@@ -69,7 +69,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
       display: 'block',
       position: 'absolute',
       zIndex: 1,
-      bottom: pxToRemWithUnit(2),
+      bottom: pxToRemWithUnit(2), // input is inset to not overlap with 1px or 2px border of state
       left: pxToRemWithUnit(2),
       width: `calc(100% - ${pxToRemWithUnit(INPUT_HEIGHT - 4)})`,
       height: pxToRemWithUnit(INPUT_HEIGHT - 4),
@@ -99,6 +99,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         borderColor: contrastHighColor,
       },
       '&+span': {
+        // for focus outline and click event on arrow
         position: 'absolute',
         ...getInset(),
         outline: '1px solid transparent',
