@@ -25,28 +25,6 @@ const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
-const getPseudoAndSublineSize = (textSize: TextSize, fontSize: string, marginLeft: string): JssStyle => {
-  const pseudoElement: JssStyle = {
-    '&::before': {
-      fontSize,
-      marginLeft,
-    },
-  };
-
-  const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
-    'x-small': font.size.xSmall,
-    small: font.size.small,
-    medium: font.size['20'],
-    large: font.size['30'],
-    'x-large': font.size.large,
-  };
-
-  return {
-    ...sublineSize[textSize],
-    ...pseudoElement,
-  };
-};
-
 const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
@@ -61,6 +39,13 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
     const { fontSize, lineHeight } = font.size[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
+    const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
+      'x-small': font.size.xSmall,
+      small: font.size.small,
+      medium: font.size['20'],
+      large: font.size['30'],
+      'x-large': font.size.large,
+    };
 
     return {
       ...generateTypeScale(fontSize),
@@ -68,15 +53,15 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
         width: lineHeightWithUnit,
         height: lineHeightWithUnit,
       },
-      '& ~ .subline': getPseudoAndSublineSize(textSize, fontSize, lineHeightWithUnit),
+      '& ~ .subline': {
+        ...sublineSize[textSize],
+        '&::before': {
+          fontSize,
+          lineHeightWithUnit,
+        },
+      },
     };
   }
-};
-
-const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
-  return {
-    justifyContent: stretch ? 'space-between' : 'flex-start',
-  };
 };
 
 const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
@@ -118,10 +103,7 @@ const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean)
       }
     : {
         position: 'static',
-        top: 'auto',
-        left: 'auto',
-        right: 'auto',
-        bottom: 'auto',
+        ...getInset('auto'),
         whiteSpace: 'inherit',
         textIndent: 0,
       };
@@ -180,7 +162,13 @@ export const getLinkButtonPureStyles = (
         },
       }),
       ...mergeDeep(
-        !hasSubline && buildResponsiveStyles(stretch, getStretchStyles),
+        !hasSubline &&
+          buildResponsiveStyles(
+            stretch,
+            (stretched: boolean): JssStyle => ({
+              justifyContent: stretched ? 'space-between' : 'flex-start',
+            })
+          ),
         buildResponsiveStyles(size, getSizeStyles)
       ),
     },

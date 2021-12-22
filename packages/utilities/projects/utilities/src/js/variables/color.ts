@@ -120,28 +120,8 @@ const darkTheme: ColorTheme = {
 };
 
 const lightElectricTheme: ColorTheme = {
+  ...lightTheme,
   brand: '#00b0f4',
-  default: lightTheme.default,
-  background: {
-    default: lightTheme.background.default,
-    surface: lightTheme.background.surface,
-    shading: lightTheme.background.shading,
-  },
-  neutralContrast: {
-    high: lightTheme.neutralContrast.high,
-    medium: lightTheme.neutralContrast.medium,
-    low: lightTheme.neutralContrast.low,
-  },
-  notification: {
-    success: lightTheme.notification.success,
-    successSoft: lightTheme.notification.successSoft,
-    warning: lightTheme.notification.warning,
-    warningSoft: lightTheme.notification.warningSoft,
-    error: lightTheme.notification.error,
-    errorSoft: lightTheme.notification.errorSoft,
-    neutral: lightTheme.notification.neutral,
-    neutralSoft: lightTheme.notification.neutralSoft,
-  },
   state: {
     hover: '#00b0f4',
     active: '#00b0f4',
@@ -151,28 +131,8 @@ const lightElectricTheme: ColorTheme = {
 };
 
 const darkElectricTheme: ColorTheme = {
+  ...darkTheme,
   brand: '#00b0f4',
-  default: darkTheme.default,
-  background: {
-    default: darkTheme.background.default,
-    surface: darkTheme.background.surface,
-    shading: darkTheme.background.shading,
-  },
-  neutralContrast: {
-    high: darkTheme.neutralContrast.high,
-    medium: darkTheme.neutralContrast.medium,
-    low: darkTheme.neutralContrast.low,
-  },
-  notification: {
-    success: darkTheme.notification.success,
-    successSoft: darkTheme.notification.successSoft,
-    warning: darkTheme.notification.warning,
-    warningSoft: darkTheme.notification.warningSoft,
-    error: darkTheme.notification.error,
-    errorSoft: darkTheme.notification.errorSoft,
-    neutral: darkTheme.notification.neutral,
-    neutralSoft: darkTheme.notification.neutralSoft,
-  },
   state: {
     hover: '#00b0f4',
     active: '#00b0f4',

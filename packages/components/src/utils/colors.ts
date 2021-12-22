@@ -45,14 +45,7 @@ const darkThemeDarken: ColorDarkenTheme = {
 };
 
 const lightElectricThemeDarken: ColorDarkenTheme = {
-  default: lightThemeDarken.default,
-  neutralContrast: {
-    high: lightThemeDarken.neutralContrast.high,
-  },
-  notification: {
-    success: lightThemeDarken.notification.success,
-    error: lightThemeDarken.notification.error,
-  },
+  ...lightThemeDarken,
   state: {
     hover: '#0084b7',
   },
