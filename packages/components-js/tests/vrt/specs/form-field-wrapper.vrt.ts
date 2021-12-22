@@ -36,43 +36,47 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetMarkup = () =>
         Object.entries(tagNameToChildMap)
-          .map(
-            ([tag, child]) => `<div>
+          .map(([tag, child]) => {
+            const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
+            const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
+
+            return `
+<div>
   <${tag} label="Default">
     ${child}
   </${tag}>
   <${tag} label="Readonly">
-    ${child.replace(/((?: \/)?>)/, ' readonly$1')}
+    ${childReadonly}
   </${tag}>
   <${tag} label="Disabled">
-    ${child.replace(/((?: \/)?>)/, ' disabled$1')}
+    ${childDisabled}
   </${tag}>
   <${tag} label="Error" state="error" message="Error">
     ${child}
   </${tag}>
   <${tag} label="Disabled" state="error" message="Error">
-    ${child.replace(/((?: \/)?>)/, ' disabled$1')}
+    ${childDisabled}
   </${tag}>
   <${tag} label="Success" state="success" message="Success">
     ${child}
   </${tag}>
   <${tag} label="Disabled" state="success" message="Success">
-    ${child.replace(/((?: \/)?>)/, ' disabled$1')}
+    ${childDisabled}
   </${tag}>
-</div>`
-          )
+</div>`;
+          })
           .join('\n');
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover input');
-      await forceHoverState(page, '.hover select');
+      await forceHoverState(page, '.hover p-select-wrapper >>> button'); // custom dropdown
       await forceHoverState(page, '.hover textarea');
       await forceFocusState(page, '.focus input');
-      await forceFocusState(page, '.focus select');
+      await forceFocusState(page, '.focus p-select-wrapper >>> button'); // custom dropdown
       await forceFocusState(page, '.focus textarea');
       await forceFocusHoverState(page, '.focus-hover input');
-      await forceFocusHoverState(page, '.focus-hover select');
+      await forceFocusHoverState(page, '.focus-hover p-select-wrapper >>> button'); // custom dropdown
       await forceFocusHoverState(page, '.focus-hover textarea');
     })
   ).toBeFalsy();
