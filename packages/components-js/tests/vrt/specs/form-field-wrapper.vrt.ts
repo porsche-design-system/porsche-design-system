@@ -63,20 +63,20 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
   <${tag} label="Disabled" state="success" message="Success">
     ${childDisabled}
   </${tag}>
-</div>`;
+</div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on
           })
           .join('\n');
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover input');
-      await forceHoverState(page, '.hover p-select-wrapper >>> button'); // custom dropdown
+      await forceHoverState(page, '.hover select');
       await forceHoverState(page, '.hover textarea');
       await forceFocusState(page, '.focus input');
-      await forceFocusState(page, '.focus p-select-wrapper >>> button'); // custom dropdown
+      await forceFocusState(page, '.focus select');
       await forceFocusState(page, '.focus textarea');
       await forceFocusHoverState(page, '.focus-hover input');
-      await forceFocusHoverState(page, '.focus-hover p-select-wrapper >>> button'); // custom dropdown
+      await forceFocusHoverState(page, '.focus-hover select');
       await forceFocusHoverState(page, '.focus-hover textarea');
     })
   ).toBeFalsy();
