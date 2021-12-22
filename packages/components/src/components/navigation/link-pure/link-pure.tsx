@@ -127,8 +127,8 @@ export class LinkPure {
           class="root"
           {...(TagType === 'a' && {
             href: this.href,
-            target: this.target,
             tabindex: this.tabbable ? 0 : -1,
+            target: this.target,
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),
