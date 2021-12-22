@@ -12,8 +12,8 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "yarn test:unit --watch",
-    "test:e2e": "NODE_ENV=test yarn build && PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
-    "test:vrt": "if [ \"$CI\" != true ]; then NODE_ENV=test yarn build; fi && PORT=8080 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:e2e": "NODE_ENV=dev yarn build && PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:vrt": "if [ \"$CI\" != true ]; then NODE_ENV=dev yarn build; fi && PORT=8080 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
