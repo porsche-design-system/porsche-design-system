@@ -32,6 +32,7 @@ export const getBaseChildStyles = (
   const hasVisibleState = isVisibleState(state);
 
   const { disabled } = color.state; // 🤷 no theming here
+// TODO: Add readonly color to utilities package
   const readonly = '#ebebeb'; // 🤷
 
   return {
