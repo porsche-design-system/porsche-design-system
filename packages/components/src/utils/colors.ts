@@ -87,16 +87,14 @@ const getStaticThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColors
   };
 };
 
-const themedColorsDarkenLight = getStaticThemedColorsDarken('light');
-const themedColorsDarkenDark = getStaticThemedColorsDarken('dark');
-const themedColorsDarkenLightElectric = getStaticThemedColorsDarken('light-electric');
+const themedColorsDarken: { [key in ThemeExtendedElectric]: ThemedColorsDarken } = {
+  light: getStaticThemedColorsDarken('light'),
+  dark: getStaticThemedColorsDarken('dark'),
+  'light-electric': getStaticThemedColorsDarken('light-electric'),
+};
 
 export const getThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
-  return isDark(theme)
-    ? themedColorsDarkenDark
-    : isLightElectric(theme)
-    ? themedColorsDarkenLightElectric
-    : themedColorsDarkenLight;
+  return themedColorsDarken[theme];
 };
 
 type ThemedColors = {
@@ -165,19 +163,15 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
   };
 };
 
-const themedColorsLight = getStaticThemedColors('light');
-const themedColorsDark = getStaticThemedColors('dark');
-const themedColorsLightElectric = getStaticThemedColors('light-electric');
-const themedColorsDarkElectric = getStaticThemedColors('dark-electric');
+const themedColors: { [key in ThemeExtendedElectricDark]: ThemedColors } = {
+  light: getStaticThemedColors('light'),
+  dark: getStaticThemedColors('dark'),
+  'light-electric': getStaticThemedColors('light-electric'),
+  'dark-electric': getStaticThemedColors('dark-electric'),
+};
 
 export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
-  return isDark(theme)
-    ? themedColorsDark
-    : isLightElectric(theme)
-    ? themedColorsLightElectric
-    : isDarkElectric(theme)
-    ? themedColorsDarkElectric
-    : themedColorsLight;
+  return themedColors[theme];
 };
 
 export const getThemedFormStateColors = (
