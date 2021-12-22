@@ -76,10 +76,6 @@ const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): Jss
   return styles[alignLabel];
 };
 
-const getHideLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
-  return hideLabel ? getTextHiddenJssStyle(true) : getTextHiddenJssStyle(false);
-};
-
 const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
   return stretch
     ? {
@@ -164,7 +160,7 @@ export const getComponentCss = (
       color: textColor,
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, getAlignLabelStyles),
-        buildResponsiveStyles(hideLabel, getHideLabelStyles)
+        buildResponsiveStyles(hideLabel, (hidden: boolean): JssStyle => getTextHiddenJssStyle(hidden))
       ),
     },
     toggle: {

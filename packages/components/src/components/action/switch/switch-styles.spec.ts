@@ -12,8 +12,22 @@ describe('getComponentCss()', () => {
     l: 'left',
     xl: 'right',
   };
-  const breakpointCustomizableStretch = { base: false, xs: true, s: false, m: true, l: false, xl: true };
-  const breakpointCustomizableHideLabel = { base: true, xs: false, s: true, m: false, l: true, xl: false };
+  const breakpointCustomizableStretch: BreakpointCustomizable<boolean> = {
+    base: false,
+    xs: true,
+    s: false,
+    m: true,
+    l: false,
+    xl: true,
+  };
+  const breakpointCustomizableHideLabel: BreakpointCustomizable<boolean> = {
+    base: true,
+    xs: false,
+    s: true,
+    m: false,
+    l: true,
+    xl: false,
+  };
 
   it.each<{
     alignLabel: AlignLabel;
