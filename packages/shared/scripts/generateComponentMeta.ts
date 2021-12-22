@@ -12,7 +12,7 @@ const generateComponentMeta = (): void => {
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
   const types = [
-    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
+    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; requiredProps?: {[propName: string]: string;}[];};`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
   ].join('\n');
 
@@ -21,6 +21,9 @@ const generateComponentMeta = (): void => {
     isThemeable: boolean;
     requiredParent?: TagName;
     requiredChild?: string;
+    requiredProps?: {
+      [propName: string]: string;
+    }[];
   };
 
   type ComponentsMeta = {
@@ -72,11 +75,20 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) ?? [];
+
+    let requiredProps: ComponentMeta['requiredProps'];
+    if (requiredProp) {
+      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) ?? [];
+      requiredProps = [{ [requiredProp]: propType }];
+    }
+
     result[tagName] = {
       isFocusable,
       isThemeable,
       requiredParent,
       requiredChild,
+      requiredProps,
     };
     return result;
   }, {} as ComponentsMeta);
