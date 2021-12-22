@@ -45,6 +45,7 @@ export const getBaseChildStyles = (
       outline: '1px solid transparent',
       outlineOffset: '2px',
       appearance: 'none',
+      WebkitAppearance: 'none', // iOS safari
       boxSizing: 'border-box',
       border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
       borderRadius: 0,
