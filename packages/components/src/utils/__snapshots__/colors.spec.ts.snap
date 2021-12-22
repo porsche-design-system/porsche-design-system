@@ -4,6 +4,9 @@ exports[`colorDarken should contain darker colors 1`] = `
 Object {
   "darkTheme": Object {
     "default": "#e0e0e0",
+    "neutralContrast": Object {
+      "high": "#c3c5c8",
+    },
     "notification": Object {
       "error": "#d30303",
       "success": "#017d14",
@@ -12,7 +15,9 @@ Object {
       "hover": "#c4001a",
     },
   },
+  "default": "#000",
   "lightElectricTheme": Object {
+    "default": "#000",
     "neutralContrast": Object {
       "high": "#151718",
     },
@@ -50,6 +55,28 @@ Object {
   "errorColor": "#fc1717",
   "errorSoftColor": "#fec5c5",
   "hoverColor": "#ff0223",
+  "neutralColor": "#2193ff",
+  "neutralSoftColor": "#c7e4ff",
+  "successColor": "#01ba1d",
+  "successSoftColor": "#bfeec6",
+  "warningColor": "#ff9b00",
+  "warningSoftColor": "#ffe6bf",
+}
+`;
+
+exports[`getThemedColors() should return correct colors for theme: dark-electric 1`] = `
+Object {
+  "activeColor": "#00b0f4",
+  "backgroundColor": "#0e1418",
+  "baseColor": "#fff",
+  "brandColor": "#00b0f4",
+  "contrastHighColor": "#e3e4e5",
+  "contrastLowColor": "#4a4e51",
+  "contrastMediumColor": "#b0b1b2",
+  "disabledColor": "#7c7f81",
+  "errorColor": "#fc1717",
+  "errorSoftColor": "#fec5c5",
+  "hoverColor": "#00b0f4",
   "neutralColor": "#2193ff",
   "neutralSoftColor": "#c7e4ff",
   "successColor": "#01ba1d",
@@ -100,6 +127,36 @@ Object {
   "successSoftColor": "#e5f3e7",
   "warningColor": "#ff9b00",
   "warningSoftColor": "#fff5e5",
+}
+`;
+
+exports[`getThemedColorsDarken() should return correct colors for theme: dark 1`] = `
+Object {
+  "baseColorDarken": "#e0e0e0",
+  "contrastHighColorDarken": "#c3c5c8",
+  "errorColorDarken": "#d30303",
+  "hoverColorDarken": "#c4001a",
+  "successColorDarken": "#017d14",
+}
+`;
+
+exports[`getThemedColorsDarken() should return correct colors for theme: light 1`] = `
+Object {
+  "baseColorDarken": "#000",
+  "contrastHighColorDarken": "#151718",
+  "errorColorDarken": "#a30000",
+  "hoverColorDarken": "#980014",
+  "successColorDarken": "#014d0c",
+}
+`;
+
+exports[`getThemedColorsDarken() should return correct colors for theme: light-electric 1`] = `
+Object {
+  "baseColorDarken": "#000",
+  "contrastHighColorDarken": "#151718",
+  "errorColorDarken": "#a30000",
+  "hoverColorDarken": "#0084b7",
+  "successColorDarken": "#014d0c",
 }
 `;
 
