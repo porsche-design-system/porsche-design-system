@@ -64,6 +64,28 @@ Object {
 }
 `;
 
+exports[`getThemedColors() should return correct colors for theme: dark-electric 1`] = `
+Object {
+  "activeColor": "#00b0f4",
+  "backgroundColor": "#0e1418",
+  "baseColor": "#fff",
+  "brandColor": "#00b0f4",
+  "contrastHighColor": "#e3e4e5",
+  "contrastLowColor": "#4a4e51",
+  "contrastMediumColor": "#b0b1b2",
+  "disabledColor": "#7c7f81",
+  "errorColor": "#fc1717",
+  "errorSoftColor": "#fec5c5",
+  "hoverColor": "#00b0f4",
+  "neutralColor": "#2193ff",
+  "neutralSoftColor": "#c7e4ff",
+  "successColor": "#01ba1d",
+  "successSoftColor": "#bfeec6",
+  "warningColor": "#ff9b00",
+  "warningSoftColor": "#ffe6bf",
+}
+`;
+
 exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 Object {
   "activeColor": "#d5001c",
