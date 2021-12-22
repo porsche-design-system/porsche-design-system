@@ -57,7 +57,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
         ...sublineSize[textSize],
         '&::before': {
           fontSize,
-          lineHeightWithUnit,
+          marginLeft: lineHeightWithUnit,
         },
       },
     };
