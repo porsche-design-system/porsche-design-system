@@ -182,7 +182,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Link Pure with Subline
+## Remove Link from tab order
+With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+
+<Playground :markup="taborder" :config="config"></Playground>
+
+---
+
+## Link with Subline
 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so far.
@@ -288,6 +295,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
 >Some label</p-link-pure>`;
+
+    taborder =
+`<p-link-pure href="https://www.porsche.com" tabbable="true">Some label</p-link-pure>
+<p-link-pure href="https://www.porsche.com" tabbable="false">Some label</p-link-pure>
+<p-link-pure href="https://www.porsche.com" tabbable="true">Some label</p-link-pure>`;
 
     get subline() {
       return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
