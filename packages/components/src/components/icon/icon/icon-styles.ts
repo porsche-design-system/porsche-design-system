@@ -1,7 +1,7 @@
-import type { Theme, TextColor as IconColor, IconSize } from '../../../types';
+import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
 import { buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
 
-const getColor = (color: IconColor, theme: Theme): string => {
+const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string => {
   const {
     baseColor,
     brandColor,
@@ -50,7 +50,7 @@ const getSize = (size: IconSize): string => {
   }
 };
 
-export const getComponentCss = (color: IconColor, size: IconSize, theme: Theme): string => {
+export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
   const dimension = getSize(size);
 
   return getCss({

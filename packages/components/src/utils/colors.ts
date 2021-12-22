@@ -1,6 +1,6 @@
 import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme, ThemeExtendedElectric } from '../types';
-import { isDark, isLightElectric } from './theme';
+import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
+import { isDark, isDarkElectric, isLightElectric } from './theme';
 
 type ColorDarkenTheme = {
   default: string;
@@ -126,7 +126,7 @@ type ThemedColors = {
   neutralSoftColor: string;
 };
 
-const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
+const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
   const {
     default: baseColor,
     brand: brandColor,
@@ -143,7 +143,13 @@ const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDark(theme) ? color.darkTheme : isLightElectric(theme) ? color.lightElectricTheme : color;
+  } = isDark(theme)
+    ? color.darkTheme
+    : isLightElectric(theme)
+    ? color.lightElectricTheme
+    : isDarkElectric(theme)
+    ? color.darkElectricTheme
+    : color;
 
   return {
     baseColor,
@@ -169,9 +175,16 @@ const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
 const themedColorsLight = getStaticThemedColors('light');
 const themedColorsDark = getStaticThemedColors('dark');
 const themedColorsLightElectric = getStaticThemedColors('light-electric');
+const themedColorsDarkElectric = getStaticThemedColors('dark-electric');
 
-export const getThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
-  return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
+export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
+  return isDark(theme)
+    ? themedColorsDark
+    : isLightElectric(theme)
+    ? themedColorsLightElectric
+    : isDarkElectric(theme)
+    ? themedColorsDarkElectric
+    : themedColorsLight;
 };
 
 export const getThemedFormStateColors = (

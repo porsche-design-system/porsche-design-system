@@ -25,6 +25,7 @@ export type TextAlign = 'left' | 'center' | 'right';
 
 export type Theme = 'light' | 'dark';
 export type ThemeExtendedElectric = Theme | 'light-electric';
+export type ThemeExtendedElectricDark = ThemeExtendedElectric | 'dark-electric';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';

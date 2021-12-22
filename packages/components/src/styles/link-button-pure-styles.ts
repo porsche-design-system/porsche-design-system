@@ -14,7 +14,7 @@ import {
   pxToRemWithUnit,
 } from '../utils';
 import { font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
-import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectric } from '../types';
+import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
@@ -137,7 +137,7 @@ export const getLinkButtonPureStyles = (
   alignLabel: AlignLabel,
   hasSubline: boolean,
   hasSlottedAnchor: boolean,
-  theme: ThemeExtendedElectric
+  theme: ThemeExtendedElectricDark
 ): Styles => {
   const { baseColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);

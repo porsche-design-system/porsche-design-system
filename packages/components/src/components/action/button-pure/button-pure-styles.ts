@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import { getCss } from '../../../utils';
-import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectric } from '../../../types';
+import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -12,7 +12,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: AlignLabel,
   hasSubline: boolean,
-  theme: ThemeExtendedElectric
+  theme: ThemeExtendedElectricDark
 ): string => {
   return getCss(
     getLinkButtonPureStyles(
