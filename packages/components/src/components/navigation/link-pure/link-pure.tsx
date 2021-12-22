@@ -60,6 +60,9 @@ export class LinkPure {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** To remove the element from tab order. */
+  @Prop() public tabbable?: boolean = true;
+
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: ThemeExtendedElectric = 'light';
 
@@ -125,6 +128,7 @@ export class LinkPure {
           {...(TagType === 'a' && {
             href: this.href,
             target: this.target,
+            tabindex: this.tabbable ? 0 : -1,
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),

@@ -446,7 +446,7 @@ export namespace Components {
          */
         "rel"?: string;
         /**
-          * Removes the element from tab order.
+          * To remove the element from tab order.
          */
         "tabbable"?: boolean;
         /**
@@ -508,6 +508,10 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
@@ -541,6 +545,10 @@ export namespace Components {
           * Specifies the relationship of the target object to the link object.
          */
         "rel"?: string;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
         /**
           * Target attribute where the link should be opened.
          */
@@ -1714,7 +1722,7 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
-          * Removes the element from tab order.
+          * To remove the element from tab order.
          */
         "tabbable"?: boolean;
         /**
@@ -1776,6 +1784,10 @@ declare namespace LocalJSX {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
@@ -1809,6 +1821,10 @@ declare namespace LocalJSX {
           * Specifies the relationship of the target object to the link object.
          */
         "rel"?: string;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
         /**
           * Target attribute where the link should be opened.
          */

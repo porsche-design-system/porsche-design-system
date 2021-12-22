@@ -25,9 +25,6 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 export class Link {
   @Element() public host!: HTMLElement;
 
-  /** Removes the element from tab order. */
-  @Prop() public tabbable?: boolean = true;
-
   /** The style variant of the link. */
   @Prop() public variant?: LinkVariant = 'secondary';
 
@@ -39,6 +36,9 @@ export class Link {
 
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
+
+  /** To remove the element from tab order. */
+  @Prop() public tabbable?: boolean = true;
 
   /** Adapts the link color when used on dark background. */
   @Prop() public theme?: ThemeExtendedElectric = 'light';
@@ -75,8 +75,8 @@ export class Link {
       <TagType
         class="root"
         {...(TagType === 'a' && {
-          tabindex: this.tabbable ? 0 : -1,
           href: this.href,
+          tabindex: this.tabbable ? 0 : -1,
           target: this.target,
           download: this.download,
           rel: this.rel,
