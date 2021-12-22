@@ -28,7 +28,7 @@ const getColors = (
 
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-    baseColorHover: externalBrandColor ? externalBrandColor : isDarkTheme ? baseColorDarken : contrastHighColorDarken,
+    baseColorHover: externalBrandColor || (isDarkTheme ? baseColorDarken : contrastHighColorDarken),
     textColor: isDarkTheme ? color.default : darkTheme.default,
     textColorHover: icon === 'logo-kakaotalk' ? color.default : externalBrandColor ? darkTheme.default : undefined,
   };
