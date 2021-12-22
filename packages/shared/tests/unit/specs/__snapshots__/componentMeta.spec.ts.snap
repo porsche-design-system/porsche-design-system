@@ -57,7 +57,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "hybrid",
+    "styling": "jss",
   },
   "p-checkbox-wrapper": Object {
     "hasSlottedCss": true,
@@ -215,7 +215,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-table": Object {
     "hasSlottedCss": true,
