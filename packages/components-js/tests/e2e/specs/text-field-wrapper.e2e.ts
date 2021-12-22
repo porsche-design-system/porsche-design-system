@@ -427,40 +427,45 @@ describe('text-field-wrapper', () => {
 
   describe('hover state', () => {
     const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
+    const defaultColor = 'rgb(98, 102, 105)';
+    const hoverColor = 'rgb(0, 0, 0)';
 
     it('should show hover state on input when label is hovered', async () => {
       await initTextField({ hasLabel: true });
+      await page.mouse.move(0, 300); // avoid potential hover initially
       const label = await getLabel();
       const input = await getInput();
 
       const initialStyle = await getBorderColor(input);
+      expect(initialStyle).toBe(defaultColor);
       await input.hover();
       const hoverStyle = await getBorderColor(input);
-      console.log('initialStyle', initialStyle, 'hoverStyle', hoverStyle);
-      expect(initialStyle).not.toBe(hoverStyle);
+      expect(hoverStyle).toBe(hoverColor);
 
       await page.mouse.move(0, 300); // undo hover
-      expect(await getBorderColor(input)).toBe(initialStyle);
+      expect(await getBorderColor(input)).toBe(defaultColor);
 
       await label.hover();
-      expect(await getBorderColor(input)).toBe(hoverStyle);
+      expect(await getBorderColor(input)).toBe(hoverColor);
     });
 
     it('should show hover state on input when unit/counter is hovered', async () => {
       await initTextField({ maxLength: 20 });
+      await page.mouse.move(0, 300); // avoid potential hover initially
       const counter = await getCounterOrUnit();
       const input = await getInput();
 
       const initialStyle = await getBorderColor(input);
+      expect(initialStyle).toBe(defaultColor);
       await input.hover();
       const hoverStyle = await getBorderColor(input);
-      expect(initialStyle).not.toBe(hoverStyle);
+      expect(hoverStyle).toBe(hoverColor);
 
       await page.mouse.move(0, 300); // undo hover
-      expect(await getBorderColor(input)).toBe(initialStyle);
+      expect(await getBorderColor(input)).toBe(defaultColor);
 
       await counter.hover();
-      expect(await getBorderColor(input)).toBe(hoverStyle);
+      expect(await getBorderColor(input)).toBe(hoverColor);
     });
   });
 
