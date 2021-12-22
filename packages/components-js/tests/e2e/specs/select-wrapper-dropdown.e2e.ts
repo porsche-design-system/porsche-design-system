@@ -205,6 +205,26 @@ describe('select-wrapper dropdown', () => {
     expect(dropdown).toBeNull();
   });
 
+  it('should disable button when select is disabled programmatically', async () => {
+    await initSelect();
+    const select = await getSelect();
+    const button = await getDropdownButton();
+
+    const getButtonCursorStyle = () => getElementStyle(button, 'cursor');
+
+    expect(await getButtonCursorStyle(), 'initially').toBe('pointer');
+
+    await setProperty(select, 'disabled', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getButtonCursorStyle(), 'when disabled = true').toBe('not-allowed');
+
+    await setProperty(select, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getButtonCursorStyle(), 'when disabled = false').toBe('pointer');
+  });
+
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
     await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
