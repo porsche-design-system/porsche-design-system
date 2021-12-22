@@ -87,6 +87,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 <Playground :markup="events" :config="config"></Playground>
 
+---
+
+## Remove Link from tab order
+With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+
+<Playground :markup="taborder" :config="config"></Playground>
+
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
@@ -147,6 +155,11 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   target="_blank" 
   rel="nofollow noopener"
 >Facebook</p-link-social>`;
+
+    taborder =
+`<p-link-social href="https://www.porsche.com" tabbable="true">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" tabbable="false">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" tabbable="true">Some label</p-link-social>`;
   }
 </script>
 
