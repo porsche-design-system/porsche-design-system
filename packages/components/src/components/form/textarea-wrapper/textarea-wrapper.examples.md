@@ -119,7 +119,7 @@ export default class Code extends Vue {
 
   counter =
 `<p-textarea-wrapper label="Some label">
-  <textarea name="some-name" maxLength="200">Some value</textarea>
+  <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>`;
 
   get validationStates() {
