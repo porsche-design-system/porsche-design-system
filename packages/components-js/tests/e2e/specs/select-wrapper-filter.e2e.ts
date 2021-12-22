@@ -580,6 +580,7 @@ describe('select-wrapper filter', () => {
         await initSelect();
         const select = await getSelect();
         await setProperty(select, 'disabled', true);
+        await waitForStencilLifecycle(page);
       });
 
       it('should have not-allowed cursor on overlay', async () => {
