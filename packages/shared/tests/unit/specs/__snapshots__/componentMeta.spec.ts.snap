@@ -132,18 +132,33 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
     "styling": "jss",
   },
   "p-link-pure": Object {
     "hasSlottedCss": true,
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
     "styling": "jss",
   },
   "p-link-social": Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
     "styling": "jss",
   },
   "p-marque": Object {

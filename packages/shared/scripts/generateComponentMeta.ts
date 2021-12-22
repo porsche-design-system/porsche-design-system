@@ -17,6 +17,9 @@ const generateComponentMeta = (): void => {
   isThemeable: boolean;
   requiredParent?: TagName;
   requiredChild?: string;
+  requiredProps?: {
+    [propName: string]: string;
+  }[];
   hasSlottedCss: boolean;
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
@@ -28,6 +31,9 @@ const generateComponentMeta = (): void => {
     isThemeable: boolean;
     requiredParent?: TagName;
     requiredChild?: string;
+    requiredProps?: {
+      [propName: string]: string;
+    }[];
     hasSlottedCss: boolean;
     styling: 'jss' | 'scss' | 'hybrid';
   };
@@ -85,11 +91,20 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) ?? [];
+
+    let requiredProps: ComponentMeta['requiredProps'];
+    if (requiredProp) {
+      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) ?? [];
+      requiredProps = [{ [requiredProp]: propType }];
+    }
+
     result[tagName] = {
       isFocusable,
       isThemeable,
       requiredParent,
       requiredChild,
+      requiredProps,
       hasSlottedCss,
       styling,
     };

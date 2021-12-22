@@ -68,6 +68,7 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
+  config = { spacing: 'block' }; 
   size = 'small';
   state = 'error';
   slottedMessage = 'error';
