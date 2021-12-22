@@ -26,7 +26,6 @@ describe('link', () => {
   const getRoot = () => selectNode(page, 'p-link >>> .root');
   const getLink = () => selectNode(page, 'p-link >>> a');
   const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
-  const getSlottedLink = () => selectNode(page, 'p-link a');
 
   const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
     const { useSlottedAnchor = false } = opts ?? {};
@@ -181,6 +180,40 @@ describe('link', () => {
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
+  });
+
+  it('should be removed from tab order for tabbable false', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link href="#" tabbable="false">Some label</p-link>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+    );
+
+    const link = await getHost();
+    const before = await selectNode(page, '#before');
+    const after = await selectNode(page, '#after');
+
+    await before.focus();
+
+    let linkFocusCalls = 0;
+    await addEventListener(link, 'focus', () => linkFocusCalls++);
+    let afterFocusCalls = 0;
+    await addEventListener(after, 'focus', () => afterFocusCalls++);
+
+    await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
+    expect(linkFocusCalls, 'linkFocusCalls after tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
+
+    await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
+    expect(linkFocusCalls, 'linkFocusCalls after second tab').toBe(0);
+    expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
   });
 
   describe('slotted anchor', () => {
