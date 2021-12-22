@@ -3,6 +3,7 @@
 exports[`getBaseChildStyles() should return correct css for child: input, state: error, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(input)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#fff",
     "border": "2px solid #e00000",
@@ -56,6 +57,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: input, state: none, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(input)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#fff",
     "border": "1px solid #626669",
@@ -109,6 +111,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: input, state: success, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(input)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#fff",
     "border": "2px solid #018a16",
@@ -162,6 +165,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: select, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(select)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "2px solid #fc1717",
@@ -205,6 +209,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: select, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(select)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "1px solid #b0b1b2",
@@ -248,6 +253,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: select, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(select)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "2px solid #01ba1d",
@@ -291,6 +297,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
 Object {
   "::slotted(textarea)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "2px solid #fc1717",
@@ -343,6 +350,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: error, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(textarea)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "2px solid #fc1717",
@@ -395,6 +403,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: none, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(textarea)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "1px solid #b0b1b2",
@@ -447,6 +456,7 @@ Object {
 exports[`getBaseChildStyles() should return correct css for child: textarea, state: success, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 Object {
   "::slotted(textarea)": Object {
+    "WebkitAppearance": "none",
     "appearance": "none",
     "backgroundColor": "#0e1418",
     "border": "2px solid #01ba1d",
