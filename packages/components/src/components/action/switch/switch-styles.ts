@@ -160,7 +160,7 @@ export const getComponentCss = (
       color: textColor,
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, getAlignLabelStyles),
-        buildResponsiveStyles(hideLabel, (hidden: boolean): JssStyle => getTextHiddenJssStyle(hidden))
+        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
       ),
     },
     toggle: {
