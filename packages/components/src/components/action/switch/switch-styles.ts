@@ -31,32 +31,24 @@ const getColors = (
   const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
     getThemedColors(theme);
   const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
+  const isLightElectricTheme = isLightElectric(theme);
+  const checkedColor = isLightElectricTheme ? brandColor : successColor;
+  const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
 
   return {
     backgroundColor,
-    buttonBorderColor: isDisabledOrLoading
-      ? disabledColor
-      : checked && isLightElectric(theme)
-      ? brandColor
-      : checked
-      ? successColor
-      : contrastHighColor,
-    buttonBorderColorHover:
-      checked && isLightElectric(theme) ? hoverColorDarken : checked ? successColorDarken : baseColor,
-    buttonBackgroundColor:
-      isDisabledOrLoading && checked
-        ? disabledColor
-        : checked && isLightElectric(theme)
-        ? brandColor
-        : checked
-        ? successColor
-        : 'transparent',
-    buttonBackgroundColorHover:
-      checked && isLightElectric(theme) ? hoverColorDarken : checked ? successColorDarken : 'transparent',
+    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
+    buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
+    buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
+    buttonBackgroundColorHover: checked
+      ? isLightElectricTheme
+        ? hoverColorDarken
+        : successColorDarken
+      : 'transparent',
     toggleBackgroundColor:
-      isDisabledOrLoading && !checked ? disabledColor : checked ? color.background.default : contrastHighColor,
+      (!checked && disabledOrLoadingColor) || (checked ? color.background.default : contrastHighColor),
     toggleBackgroundColorHover: checked ? color.background.default : baseColor,
-    textColor: isDisabledOrLoading ? disabledColor : baseColor,
+    textColor: disabledOrLoadingColor || baseColor,
   };
 };
 
