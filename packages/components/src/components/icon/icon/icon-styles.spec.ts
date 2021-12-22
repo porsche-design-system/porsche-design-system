@@ -1,8 +1,8 @@
-import type { IconSize, TextColor as IconColor, Theme } from '../../../types';
+import type { IconSize, TextColor as IconColor, ThemeExtendedElectricDark } from '../../../types';
 import { getComponentCss } from './icon-styles';
 
 describe('getComponentCss()', () => {
-  it.each<[IconColor, IconSize, Theme]>([
+  it.each<[IconColor, IconSize, ThemeExtendedElectricDark]>([
     ['default', 'small', 'light'],
     ['default', 'small', 'dark'],
     ['brand', 'small', 'light'],

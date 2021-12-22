@@ -109,6 +109,36 @@ $p-color-theme-light-electric-state-focus: $p-color-state-focus;
 $p-color-theme-light-electric-state-disabled: $p-color-state-disabled;
 
 /**
+ * Theme dark-electric as optional
+ */
+
+$p-color-theme-dark-electric-brand: #00b0f4;
+
+$p-color-theme-dark-electric-default: $p-color-theme-dark-default;
+
+$p-color-theme-dark-electric-background-default: $p-color-theme-dark-background-default;
+$p-color-theme-dark-electric-background-surface: $p-color-theme-dark-background-surface;
+$p-color-theme-dark-electric-background-shading: $p-color-theme-dark-background-shading;
+
+$p-color-theme-dark-electric-neutral-contrast-high: $p-color-theme-dark-neutral-contrast-high;
+$p-color-theme-dark-electric-neutral-contrast-medium: $p-color-theme-dark-neutral-contrast-medium;
+$p-color-theme-dark-electric-neutral-contrast-low: $p-color-theme-dark-neutral-contrast-low;
+
+$p-color-theme-dark-electric-notification-success: $p-color-theme-dark-notification-success;
+$p-color-theme-dark-electric-notification-success-soft: $p-color-theme-dark-notification-success-soft;
+$p-color-theme-dark-electric-notification-warning: $p-color-theme-dark-notification-warning;
+$p-color-theme-dark-electric-notification-warning-soft: $p-color-theme-dark-notification-warning-soft;
+$p-color-theme-dark-electric-notification-error: $p-color-theme-dark-notification-error;
+$p-color-theme-dark-electric-notification-error-soft: $p-color-theme-dark-notification-error-soft;
+$p-color-theme-dark-electric-notification-neutral: $p-color-theme-dark-notification-neutral;
+$p-color-theme-dark-electric-notification-neutral-soft: $p-color-theme-dark-notification-neutral-soft;
+
+$p-color-theme-dark-electric-state-hover: #00b0f4;
+$p-color-theme-dark-electric-state-active: #00b0f4;
+$p-color-theme-dark-electric-state-focus: $p-color-theme-dark-state-focus;
+$p-color-theme-dark-electric-state-disabled: $p-color-theme-dark-state-disabled;
+
+/**
  * External brand colors
  */
 $p-color-external-facebook: #1877f2;

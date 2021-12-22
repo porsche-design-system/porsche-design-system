@@ -84,6 +84,29 @@ const lightElectricThemeColors = {
   'theme-light-electric-state-disabled': '#96989a',
 };
 
+const darkElectricThemeColors = {
+  'theme-dark-electric-brand': '#00b0f4',
+  'theme-dark-electric-default': '#fff',
+  'theme-dark-electric-background-default': '#0e1418',
+  'theme-dark-electric-background-surface': '#262b2e',
+  'theme-dark-electric-background-shading': 'rgba(14, 20, 24, 0.9)',
+  'theme-dark-electric-neutral-contrast-high': '#e3e4e5',
+  'theme-dark-electric-neutral-contrast-medium': '#b0b1b2',
+  'theme-dark-electric-neutral-contrast-low': '#4a4e51',
+  'theme-dark-electric-notification-success': '#01ba1d',
+  'theme-dark-electric-notification-success-soft': '#bfeec6',
+  'theme-dark-electric-notification-warning': '#ff9b00',
+  'theme-dark-electric-notification-warning-soft': '#ffe6bf',
+  'theme-dark-electric-notification-error': '#fc1717',
+  'theme-dark-electric-notification-error-soft': '#fec5c5',
+  'theme-dark-electric-notification-neutral': '#2193ff',
+  'theme-dark-electric-notification-neutral-soft': '#c7e4ff',
+  'theme-dark-electric-state-hover': '#00b0f4',
+  'theme-dark-electric-state-active': '#00b0f4',
+  'theme-dark-electric-state-focus': 'currentColor',
+  'theme-dark-electric-state-disabled': '#7c7f81',
+};
+
 const fontWeights = ['thin', 'regular', 'semibold', 'bold'];
 const fontSizes = [
   '12',
@@ -134,6 +157,13 @@ export const ScssVariables = (): JSX.Element => (
     <div className="playground">
       <h2>Light-Electric Theme Colors</h2>
       {Object.entries(lightElectricThemeColors).map(([key, value]) => (
+        <div key={key} className={cx('square', `square--color-${key}`)} children={value} />
+      ))}
+    </div>
+
+    <div className="playground">
+      <h2>Dark-Electric Theme Colors</h2>
+      {Object.entries(darkElectricThemeColors).map(([key, value]) => (
         <div key={key} className={cx('square', `square--color-${key}`)} children={value} />
       ))}
     </div>

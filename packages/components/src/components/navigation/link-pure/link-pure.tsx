@@ -18,7 +18,7 @@ import type {
   LinkTarget,
   TextSize,
   TextWeight,
-  ThemeExtendedElectric,
+  ThemeExtendedElectricDark,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
@@ -61,7 +61,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -98,7 +98,7 @@ export class LinkPure {
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
-      !!this.href,
+      !this.href,
       this.theme
     );
   }

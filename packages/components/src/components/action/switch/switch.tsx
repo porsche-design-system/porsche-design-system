@@ -1,18 +1,18 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, Theme } from '../../../types';
+import type { AlignLabel, BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import {
+  attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
-  mapBreakpointPropToClasses,
 } from '../../../utils';
+import { getComponentCss } from './switch-styles';
 
 export type SwitchChangeEvent = { checked: boolean };
 
 @Component({
   tag: 'p-switch',
-  styleUrl: 'switch.scss',
   shadow: true,
 })
 export class Switch {
@@ -40,7 +40,7 @@ export class Switch {
   @Prop() public tabbable?: boolean = true;
 
   /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
@@ -61,22 +61,25 @@ export class Switch {
     );
   }
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--checked']: this.checked,
-      ['root--disabled-loading']: this.isDisabledOrLoading,
-      ['root--loading']: this.loading,
-      ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-      ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
-      ...mapBreakpointPropToClasses('root--label', this.hideLabel, ['hidden', 'visible']),
-      ['root--theme-dark']: this.theme === 'dark',
-    };
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.alignLabel,
+      this.hideLabel,
+      this.stretch,
+      this.checked,
+      this.loading,
+      this.isDisabledOrLoading,
+      this.theme
+    );
+  }
 
+  public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <label class={rootClasses}>
+      <label class="root">
         <PrefixedTagNames.pText tag="span" color="inherit" class="text" id="label">
           <slot />
         </PrefixedTagNames.pText>
