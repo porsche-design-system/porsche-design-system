@@ -1,7 +1,7 @@
 import { getComponentCss } from './button-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
-import { ThemeExtendedElectric } from '../../../types';
+import { ThemeExtendedElectricDark } from '../../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
@@ -31,7 +31,7 @@ describe('getComponentCss()', () => {
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: AlignLabel;
     hasSubline: boolean;
-    theme: ThemeExtendedElectric;
+    theme: ThemeExtendedElectricDark;
   }>([
     {
       icon: 'arrow-head-right',
