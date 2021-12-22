@@ -68,7 +68,8 @@ You should still set required on the input of the wrapped form elements to ensur
   
   @Component
   export default class Code extends Vue {
- 
+    config = { spacing: 'block' }; 
+
     size = 'small';
     state = 'error';
     slottedMessage = 'error';
