@@ -164,7 +164,7 @@ export default class Code extends Vue {
 
   counter =
 `<p-text-field-wrapper label="Some label">
-  <input type="text" name="some-name" value="Some value" maxLength="20" />
+  <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 
   get typesBasic() {
