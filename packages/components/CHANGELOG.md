@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-**Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
+**Disclaimer:** The provided themes `light-electric` and `dark-electric` are just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
 - `light-electric` theme for `Switch`
+- `dark-electric` theme for `Button Pure` and `Link Pure`
 
 #### Changed
 - `:focus-visible` style matches outline color of `Switch` while hovered
