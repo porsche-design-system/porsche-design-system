@@ -319,14 +319,14 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-link-pure 1`] = `
@@ -369,14 +369,14 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
@@ -419,14 +419,14 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-marque 1`] = `

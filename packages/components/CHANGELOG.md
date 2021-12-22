@@ -19,6 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Box model of `Button Pure`
 
+### [2.8.0-beta.2] - 2021-12-22
+
+#### Fixed
+- `Content Wrapper` regression for `!important` style
+
+#### Added
+- Usage validation for `Link`, `Link Pure` and `Link Social`
+
 ### [2.8.0-beta.1] - 2021-12-16
 
 #### Fixed
