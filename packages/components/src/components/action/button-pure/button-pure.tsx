@@ -19,7 +19,7 @@ import type {
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  ThemeExtendedElectric,
+  ThemeExtendedElectricDark,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
@@ -71,7 +71,7 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
