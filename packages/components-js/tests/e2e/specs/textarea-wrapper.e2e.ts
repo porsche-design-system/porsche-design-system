@@ -13,7 +13,7 @@ import {
   getElementStyle,
   waitForEventSerialization,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('textarea-wrapper', () => {
@@ -212,25 +212,24 @@ describe('textarea-wrapper', () => {
   });
 
   describe('hover state', () => {
+    const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
+
     it('should show hover state on input when label is hovered', async () => {
       await initTextarea({ hasLabel: true });
       const label = await getLabel();
       const textarea = await getTextarea();
 
-      const getTextareaBorderColor = () => getElementStyle(textarea, 'borderColor');
-
-      const initialStyle = await getTextareaBorderColor();
+      const initialStyle = await getBorderColor(textarea);
       await textarea.hover();
-      await waitForEventSerialization(page);
-      const textareaHoverStyle = await getTextareaBorderColor();
-      expect(initialStyle).not.toBe(textareaHoverStyle);
+      const hoverStyle = await getBorderColor(textarea);
+      console.log('initialStyle', initialStyle, 'hoverStyle', hoverStyle);
+      expect(initialStyle).not.toBe(hoverStyle);
 
       await page.mouse.move(0, 300); // undo hover
-      await waitForEventSerialization(page);
-      expect(await getTextareaBorderColor()).toBe(initialStyle);
+      expect(await getBorderColor(textarea)).toBe(initialStyle);
 
       await label.hover();
-      expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
+      expect(await getBorderColor(textarea)).toBe(hoverStyle);
     });
 
     it('should show hover state on textarea when counter is hovered', async () => {
@@ -238,21 +237,16 @@ describe('textarea-wrapper', () => {
       const counter = await getCounter();
       const textarea = await getTextarea();
 
-      const getTextareaBorderColor = () => getElementStyle(textarea, 'borderColor');
-
-      const initialStyle = await getTextareaBorderColor();
+      const initialStyle = await getBorderColor(textarea);
       await textarea.hover();
-      await waitForEventSerialization(page);
-      const textareaHoverStyle = await getTextareaBorderColor();
-      expect(initialStyle).not.toBe(textareaHoverStyle);
+      const hoverStyle = await getBorderColor(textarea);
+      expect(initialStyle).not.toBe(hoverStyle);
 
       await page.mouse.move(0, 300); // undo hover
-      await waitForEventSerialization(page);
-      expect(await getTextareaBorderColor()).toBe(initialStyle);
+      expect(await getBorderColor(textarea)).toBe(initialStyle);
 
       await counter.hover();
-      await waitForEventSerialization(page);
-      expect(await getTextareaBorderColor()).toBe(textareaHoverStyle);
+      expect(await getBorderColor(textarea)).toBe(hoverStyle);
     });
   });
 
