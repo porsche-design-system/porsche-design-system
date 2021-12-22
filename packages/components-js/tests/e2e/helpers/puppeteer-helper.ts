@@ -248,6 +248,9 @@ export const getElementIndex = (element: ElementHandle, selector: string): Promi
   }, selector);
 };
 
+export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+  element.evaluate((el) => (el as HTMLElement).innerText);
+
 export const getElementPositions = (
   page: Page,
   element: ElementHandle

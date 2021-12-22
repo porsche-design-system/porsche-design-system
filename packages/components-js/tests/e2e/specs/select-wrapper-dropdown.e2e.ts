@@ -106,9 +106,11 @@ describe('select-wrapper dropdown', () => {
     });
 
     const attrs = [
-      isNative !== undefined ? `native="${isNative}"` : '',
-      dropdownDirection ? `dropdown-direction="${dropdownDirection}"` : '',
-    ].join(' ');
+      isNative !== undefined && `native="${isNative}"`,
+      dropdownDirection && `dropdown-direction="${dropdownDirection}"`,
+    ]
+      .filter((x) => x)
+      .join(' ');
 
     return setContentWithDesignSystem(
       page,
@@ -203,23 +205,24 @@ describe('select-wrapper dropdown', () => {
     expect(dropdown).toBeNull();
   });
 
-  it('should disable select when select is disabled programmatically', async () => {
+  it('should disable button when select is disabled programmatically', async () => {
     await initSelect();
     const select = await getSelect();
+    const button = await getDropdownButton();
 
-    const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
+    const getButtonCursorStyle = () => getElementStyle(button, 'cursor');
 
-    expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
+    expect(await getButtonCursorStyle(), 'initially').toBe('pointer');
 
     await setProperty(select, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
+    expect(await getButtonCursorStyle(), 'when disabled = true').toBe('not-allowed');
 
     await setProperty(select, 'disabled', false);
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
+    expect(await getButtonCursorStyle(), 'when disabled = false').toBe('pointer');
   });
 
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
@@ -440,14 +443,19 @@ describe('select-wrapper dropdown', () => {
     expect(await getDropdownCheckmarkIcon()).toBeNull();
   });
 
-  it('should change box-shadow color when dropdown button is hovered', async () => {
-    await initSelect();
+  describe('hover state', () => {
+    it('should change border-color when dropdown button is hovered', async () => {
+      await initSelect();
+      await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const dropdownButton = await getDropdownButton();
-    const initialBoxShadow = await getElementStyle(dropdownButton, 'boxShadow');
+      const dropdownButton = await getDropdownButton();
+      const initialStyle = await getElementStyle(dropdownButton, 'borderColor');
+      expect(initialStyle).toBe('rgb(98, 102, 105)');
 
-    await dropdownButton.hover();
-    expect(await getElementStyle(dropdownButton, 'boxShadow')).not.toBe(initialBoxShadow);
+      await dropdownButton.hover();
+      const hoverStyle = await getElementStyle(dropdownButton, 'borderColor');
+      expect(hoverStyle).toBe('rgb(0, 0, 0)');
+    });
   });
 
   describe('dropdown position', () => {

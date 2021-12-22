@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Disclaimer:** The provided themes `light-electric` and `dark-electric` are just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
 - `light-electric` theme for `Switch`
 - `dark-electric` theme for `Button Pure` and `Link Pure`
+- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and `textarea`
 
 #### Changed
 - `:focus-visible` style matches outline color of `Switch` while hovered

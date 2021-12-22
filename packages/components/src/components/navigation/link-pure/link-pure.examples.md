@@ -201,67 +201,67 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+  configInline = { ...this.config, spacing: 'inline' };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    configInline = { ...this.config, spacing: 'inline' };
-    
-    size = 'medium';
-    sublineSize = 'small';
-    weight = 'thin';
-    alignLabel = 'left';
-    stretch = 'stretch="true" align-label="left"';
-    
-    withLabel =
+  size = 'medium';
+  sublineSize = 'small';
+  weight = 'thin';
+  alignLabel = 'left';
+  stretch = 'stretch="true" align-label="left"';
+  
+  withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    withoutLabel =
+  withoutLabel =
 `<p-link-pure href="https://www.porsche.com" hide-label="true">Some label</p-link-pure>`;
 
-    responsive =
+  responsive =
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
 
-    accessibility = 
+  accessibility = 
 `<p-link-pure href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link-pure>`;
 
-    withoutIcon =
+  withoutIcon =
 `<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure icon="none" size="small" weight="semibold" href="https://www.porsche.com">
   Some label
   <p slot="subline">Some Subline</p>
 </p-link-pure>`;
 
-    get sizeMarkup() {
-      const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
-    }
+  get sizeMarkup() {
+    const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
+  }
     
-    sizeResponsive =
+  sizeResponsive =
 `<p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
 
-    get weightMarkup() {
-      return `<p-link-pure href="https://www.porsche.com" size="medium" weight="${this.weight}">Some label</p-link-pure>`;
-    }
+  get weightMarkup() {
+    return `<p-link-pure href="https://www.porsche.com" size="medium" weight="${this.weight}">Some label</p-link-pure>`;
+  }
 
-    routing =
+  routing =
 `<p-link-pure>
   <a href="https://www.porsche.com">Some label</a>
 </p-link-pure>`;
 
-    activeHref =
+  activeHref =
 `<p-link-pure active="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    activeWithoutHref =
+  activeWithoutHref =
 `<p-link-pure active="true">Some label</p-link-pure>`;
 
-    icon =
+  icon =
 `<p-link-pure href="https://www.porsche.com" icon="phone">Some label</p-link-pure>
 <p-link-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    clickableArea =
+  clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure style="padding: 1rem;">
@@ -271,15 +271,15 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <a href="https://www.porsche.com">Some label</a>
 </p-link-pure>`;
 
-    get alignmentMarkup() {
-      return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
-    };
+  get alignmentMarkup() {
+    return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
+  };
 
-    get stretchMarkup() {
-      return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
-    };
+  get stretchMarkup() {
+    return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
+  };
 
-    events =
+  events =
 `<p-link-pure
   href="https://www.porsche.com"
   onclick="alert('click'); return false;"
@@ -289,8 +289,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
   onfocusout="console.log('focusout')"
 >Some label</p-link-pure>`;
 
-    get subline() {
-      return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
+  get subline() {
+    return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
   Some label
   <p slot="subline">Some Subline</p>
 </p-link-pure>
@@ -298,8 +298,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <a href="https://www.porsche.com" aria-describedby="subline">Some label</a>
   <p slot="subline" id="subline">Some Subline</p>
 </p-link-pure>`;
-    }
   }
+}
 </script>
 
 <style scoped lang="scss">

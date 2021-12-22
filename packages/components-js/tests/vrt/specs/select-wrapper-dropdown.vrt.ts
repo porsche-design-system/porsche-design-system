@@ -37,6 +37,7 @@ it('should have no visual regression for :hover', async () => {
           (dropdown as any).selectRef = select;
           (dropdown as any).isOpenOverride = true;
           (dropdown as any).direction = 'down';
+          (dropdown as any).state = 'none';
 
           if (theme === 'dark') {
             (dropdown as any).theme = 'dark';
@@ -94,10 +95,10 @@ it('should have no visual regression for :hover', async () => {
 
       await waitForComponentsReady(page);
 
-      // visually hide button since it produces some absolute borders
+      // visually hide button and span since it produces some absolute borders
       await page.evaluate(() => {
         document.querySelectorAll('p-select-wrapper-dropdown').forEach((el) => {
-          const btn = el.shadowRoot.querySelector('button');
+          const btn = el.shadowRoot.querySelector('button,span');
           if (btn) {
             btn.style.display = 'none';
           }

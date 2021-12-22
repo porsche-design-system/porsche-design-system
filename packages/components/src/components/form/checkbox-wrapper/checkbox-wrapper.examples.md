@@ -81,35 +81,35 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `message` ID when the (error/success) message appears
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { spacing: 'inline' };
-    
-    state = 'error';
-    label = 'show';
-    
-    get basic() {
-      const hideLabel = this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false';
-      return `<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { spacing: 'inline' };
+
+  state = 'error';
+  label = 'show';
+
+  get basic() {
+    const hideLabel = this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false';
+    return `<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
   <input type="checkbox" name="some-name" />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
   <input type="checkbox" name="some-name" checked />
 </p-checkbox-wrapper>`;
-    }
-    
-    indeterminate =
+  }
+
+  indeterminate =
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked />
 </p-checkbox-wrapper>`;
-    
-    required =
+
+  required =
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" required />
 </p-checkbox-wrapper>
@@ -117,35 +117,35 @@ If using **slotted contents** to serve form elements, make sure to provide the r
   <input type="checkbox" name="some-name" required checked />
 </p-checkbox-wrapper>`;
 
-    disabled =
+  disabled =
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" disabled />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" disabled checked />
 </p-checkbox-wrapper>`;
-    
-    get validation() {
-      const message = this.state !== 'none' ? `Some ${this.state} validation message.` : ''; 
-      return `<p-checkbox-wrapper label="Some label" state="${this.state}" message="${message}">
+
+  get validation() {
+    const message = this.state !== 'none' ? `Some ${this.state} validation message.` : ''; 
+    return `<p-checkbox-wrapper label="Some label" state="${this.state}" message="${message}">
   <input type="checkbox" name="some-name" />
 </p-checkbox-wrapper>`;
-    }
-    
-    slots =
+  }
+
+  slots =
 `<p-checkbox-wrapper state="error">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <input type="checkbox" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-checkbox-wrapper>`;
-    
-    mounted() {
-      this.$nextTick(function () {
-        const inputs = document.querySelectorAll('.example-set-to-indeterminate');
-        inputs.forEach(input => {
-          input.indeterminate = true;
-        });
+
+  mounted() {
+    this.$nextTick(function () {
+      const inputs = document.querySelectorAll('.example-set-to-indeterminate');
+      inputs.forEach(input => {
+        input.indeterminate = true;
       });
-    }
+    });
   }
+}
 </script>
