@@ -446,6 +446,10 @@ export namespace Components {
          */
         "rel"?: string;
         /**
+          * Removes the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
@@ -1709,6 +1713,10 @@ declare namespace LocalJSX {
           * Specifies the relationship of the target object to the link object.
          */
         "rel"?: string;
+        /**
+          * Removes the element from tab order.
+         */
+        "tabbable"?: boolean;
         /**
           * Target attribute where the link should be opened.
          */
