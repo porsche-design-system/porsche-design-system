@@ -3,12 +3,12 @@ import {
   addImportantToEachRule,
   buildHostStyles,
   buildResponsiveStyles,
-  colorDarken,
   getCss,
   getFocusStyles,
   getInset,
   GetStylesFunction,
   getThemedColors,
+  getThemedColorsDarken,
   getTransition,
   isDark,
   mergeDeep,
@@ -24,6 +24,7 @@ const getVariantColors = (
   theme: ThemeExtendedElectric
 ): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
   const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
+  const { hoverColorDarken, contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
 
   const colors: {
     [t in ThemeExtendedElectric]: {
@@ -33,29 +34,29 @@ const getVariantColors = (
     light: {
       primary: {
         primaryColor: brandColor,
-        primaryColorHover: colorDarken.state.hover,
+        primaryColorHover: hoverColorDarken,
         baseColor: darkTheme.default,
       },
       secondary: {
         primaryColor: contrastHighColor,
-        primaryColorHover: colorDarken.neutralContrast.high,
+        primaryColorHover: contrastHighColorDarken,
         baseColor: darkTheme.default,
       },
       tertiary: {
         primaryColor: contrastHighColor,
-        primaryColorHover: colorDarken.neutralContrast.high,
+        primaryColorHover: contrastHighColorDarken,
         baseColor,
       },
     },
     dark: {
       primary: {
         primaryColor: brandColor,
-        primaryColorHover: colorDarken.darkTheme.state.hover,
+        primaryColorHover: hoverColorDarken,
         baseColor: darkTheme.default,
       },
       secondary: {
         primaryColor: darkTheme.default,
-        primaryColorHover: colorDarken.darkTheme.default,
+        primaryColorHover: baseColorDarken,
         baseColor: color.default,
       },
       tertiary: {
@@ -67,17 +68,17 @@ const getVariantColors = (
     'light-electric': {
       primary: {
         primaryColor: brandColor,
-        primaryColorHover: colorDarken.lightElectricTheme.state.hover,
+        primaryColorHover: hoverColorDarken,
         baseColor: darkTheme.default,
       },
       secondary: {
         primaryColor: contrastHighColor,
-        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        primaryColorHover: contrastHighColorDarken,
         baseColor: darkTheme.default,
       },
       tertiary: {
         primaryColor: contrastHighColor,
-        primaryColorHover: colorDarken.lightElectricTheme.neutralContrast.high,
+        primaryColorHover: contrastHighColorDarken,
         baseColor,
       },
     },
