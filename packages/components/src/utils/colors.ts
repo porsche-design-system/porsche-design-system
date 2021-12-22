@@ -174,14 +174,31 @@ export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors 
   return themedColors[theme];
 };
 
-export const getThemedFormStateColors = (
-  theme: Theme,
-  state: FormState
-): { stateColor: string; stateHoverColor: string } => {
+type ThemedFormStateColors = {
+  stateColor: string;
+  stateHoverColor: string;
+};
+
+const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   const isDarkTheme = isDark(theme);
 
   return {
     stateColor: (isDarkTheme ? color.darkTheme : color).notification[state],
     stateHoverColor: (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state],
   };
+};
+
+const themedFormStateColorsLight: { [key in FormState]: ThemedFormStateColors } = {
+  success: getStaticThemedFormStateColors('light', 'success'),
+  error: getStaticThemedFormStateColors('light', 'error'),
+  none: getStaticThemedFormStateColors('light', 'none'),
+};
+const themedFormStateColorsDark: { [key in FormState]: ThemedFormStateColors } = {
+  success: getStaticThemedFormStateColors('dark', 'success'),
+  error: getStaticThemedFormStateColors('dark', 'error'),
+  none: getStaticThemedFormStateColors('dark', 'none'),
+};
+
+export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
+  return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
 };

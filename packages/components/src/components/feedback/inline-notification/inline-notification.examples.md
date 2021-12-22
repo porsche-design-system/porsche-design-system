@@ -74,23 +74,23 @@ Rich markup for the `description` can be used by the unnamed default slot.
 <Playground :markup="slottedContent" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getInlineNotificationCodeSamples } from '@porsche-design-system/shared';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { getInlineNotificationCodeSamples } from '@porsche-design-system/shared';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    
-    state = 'neutral';
-    width = 'basic';
+  state = 'neutral';
+  width = 'basic';
 
-    defaultHeading = 'Some heading';
-    defaultDescription = 'Some description.';
-    slottedHeading = 'Some slotted heading';
-    slottedDescription = 'Some slotted description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.';
+  defaultHeading = 'Some heading';
+  defaultDescription = 'Some description.';
+  slottedHeading = 'Some slotted heading';
+  slottedDescription = 'Some slotted description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.';
 
-    basic =
+  basic =
 `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}">
 </p-inline-notification>
 <br>
@@ -99,37 +99,37 @@ Rich markup for the `description` can be used by the unnamed default slot.
   ${this.defaultDescription}
 </p-inline-notification>`;
     
-    get stateDemo() {
-      return `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" state="${this.state}">
+  get stateDemo() {
+    return `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" state="${this.state}">
 </p-inline-notification>`;
-    }
+  }
     
-    persistent =
+  persistent =
 `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" persistent="true">
 </p-inline-notification>`;
 
-    slottedContent =
+  slottedContent =
 `<p-inline-notification>
   <span slot="heading">${this.slottedHeading}</span>
   ${this.slottedDescription}
 </p-inline-notification>`;
 
-    events = getInlineNotificationCodeSamples('example-events');
-    actionButton = getInlineNotificationCodeSamples('example-action-button');
-  
-    mounted(): void {
-      const buttonEvents = document.querySelector('#bannerEventsButton');
-      const bannerEvents = document.querySelector('#bannerEventsWrapper p-inline-notification');
-      const { parentElement } = bannerEvents;
-      buttonEvents.addEventListener('click', () => (parentElement.hidden = false));
-      bannerEvents.addEventListener('dismiss', () => (parentElement.hidden = true));
+  events = getInlineNotificationCodeSamples('example-events');
+  actionButton = getInlineNotificationCodeSamples('example-action-button');
 
-      const buttonAction = document.querySelector('#bannerActionButton');
-      const bannerAction = document.querySelector('#bannerAction');
-      buttonAction.addEventListener('click', () => (bannerAction.actionLoading = false));
-      bannerAction.addEventListener('action', () => (bannerAction.actionLoading = true));
-    }
+  mounted(): void {
+    const buttonEvents = document.querySelector('#bannerEventsButton');
+    const bannerEvents = document.querySelector('#bannerEventsWrapper p-inline-notification');
+    const { parentElement } = bannerEvents;
+    buttonEvents.addEventListener('click', () => (parentElement.hidden = false));
+    bannerEvents.addEventListener('dismiss', () => (parentElement.hidden = true));
+
+    const buttonAction = document.querySelector('#bannerActionButton');
+    const bannerAction = document.querySelector('#bannerAction');
+    buttonAction.addEventListener('click', () => (bannerAction.actionLoading = false));
+    bannerAction.addEventListener('action', () => (bannerAction.actionLoading = true));
   }
+}
 </script>
 
 <style lang="scss" scoped>

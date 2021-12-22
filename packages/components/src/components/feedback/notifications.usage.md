@@ -57,47 +57,47 @@ In order to find the right notification type for your use case, we have defined 
 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
-  
-  @Component
-  export default class Code extends Vue {
-    isModalOpen = false;
-    isBannerOpen = false;
-    toastCounter = 1;
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
 
-    zIndexes = {
-      toast: TOAST_Z_INDEX,
-      modal: MODAL_Z_INDEX,
-      banner: BANNER_Z_INDEX,
-    };
-  
-    mounted() {
-      this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
-    }
+@Component
+export default class Code extends Vue {
+  isModalOpen = false;
+  isBannerOpen = false;
+  toastCounter = 1;
 
-    startDemo() {
-      this.$refs.toast.addMessage({ text: `Some message ${this.toastCounter}`});
-      this.toastCounter++;
-      this.isModalOpen = true;
-      if(!this.isBannerOpen){    
-        this.openBanner();
-      }
-    };
+  zIndexes = {
+    toast: TOAST_Z_INDEX,
+    modal: MODAL_Z_INDEX,
+    banner: BANNER_Z_INDEX,
+  };
 
-    openBanner() {
-      const el = document.createElement('p-banner');
-      el.innerHTML = `
-        <span slot="title">Some banner title</span>
-        <span slot="description">Some banner description.</span>
-      `;
-      document.getElementById('app').append(el);
-
-      this.isBannerOpen = true;
-      el.addEventListener('dismiss', () => {
-        this.isBannerOpen = false;
-      });
-    };
+  mounted() {
+    this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
   }
+
+  startDemo() {
+    this.$refs.toast.addMessage({ text: `Some message ${this.toastCounter}`});
+    this.toastCounter++;
+    this.isModalOpen = true;
+    if(!this.isBannerOpen){    
+      this.openBanner();
+    }
+  };
+
+  openBanner() {
+    const el = document.createElement('p-banner');
+    el.innerHTML = `
+      <span slot="title">Some banner title</span>
+      <span slot="description">Some banner description.</span>
+    `;
+    document.getElementById('app').append(el);
+
+    this.isBannerOpen = true;
+    el.addEventListener('dismiss', () => {
+      this.isBannerOpen = false;
+    });
+  };
+}
 </script>

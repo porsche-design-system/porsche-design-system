@@ -4,7 +4,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should render with label">
-        <PTextFieldWrapper label="Label default">
+        <PTextFieldWrapper label="Label">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
@@ -22,8 +22,8 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <PTextFieldWrapper label="Some label" description="Some description" hideLabel={true}>
-          <input type="text" placeholder="Without label and without description" />
+        <PTextFieldWrapper label="Some label" description="Some description" hideLabel>
+          <input type="text" defaultValue="Without label and description" />
         </PTextFieldWrapper>
       </div>
 
@@ -33,146 +33,152 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Some description"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <input type="text" placeholder="Responsive label and description" />
+          <input type="text" defaultValue="Responsive label and description" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render in required state">
-        <PTextFieldWrapper label="Label required">
+        <PTextFieldWrapper label="Required">
           <input type="text" required />
         </PTextFieldWrapper>
-        <PTextFieldWrapper label="This is a very insanely super long required label across multiple lines">
+        <PTextFieldWrapper label="Required and insanely super long label across multiple lines">
           <input type="text" required />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">
-        <PTextFieldWrapper label="Label disabled" description="Some description">
+        <PTextFieldWrapper label="Disabled" description="Some description">
           <input type="text" disabled />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with placeholder in disabled state">
-        <PTextFieldWrapper label="Label disabled with placeholder">
-          <input type="text" placeholder="Some placeholder" disabled />
+        <PTextFieldWrapper label="Disabled placeholder">
+          <input type="text" disabled placeholder="Some placeholder" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with readonly state">
-        <PTextFieldWrapper label="Label readonly with description" description="Some description">
-          <input type="text" value="Some value" readOnly />
+        <PTextFieldWrapper label="Readonly" description="Some description">
+          <input type="text" defaultValue="Some value" readOnly />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render with counter">
+        <PTextFieldWrapper label="Counter">
+          <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type number">
-        <PTextFieldWrapper label="Label type number">
+        <PTextFieldWrapper label="Type number">
           <input type="number" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type email">
-        <PTextFieldWrapper label="Label type email">
+        <PTextFieldWrapper label="Type email">
           <input type="email" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type tel">
-        <PTextFieldWrapper label="Label type tel">
+        <PTextFieldWrapper label="Type tel">
           <input type="tel" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type url">
-        <PTextFieldWrapper label="Label type url">
+        <PTextFieldWrapper label="Type url">
           <input type="url" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type date">
-        <PTextFieldWrapper label="Label type date">
+        <PTextFieldWrapper label="Type date">
           <input type="date" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type time">
-        <PTextFieldWrapper label="Label type time">
+        <PTextFieldWrapper label="Type time">
           <input type="time" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type month">
-        <PTextFieldWrapper label="Label type month">
+        <PTextFieldWrapper label="Type month">
           <input type="month" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type week">
-        <PTextFieldWrapper label="Label type week">
+        <PTextFieldWrapper label="Type week">
           <input type="week" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type password in different states">
-        <PTextFieldWrapper label="Label type password">
-          <input type="password" value="some password" />
+        <PTextFieldWrapper label="Type password">
+          <input type="password" defaultValue="some password" />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Label type password disabled">
-          <input type="password" value="some password" disabled />
+        <PTextFieldWrapper label="Type password disabled">
+          <input type="password" defaultValue="some password" disabled />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Label type password readonly">
-          <input type="password" value="some password" readOnly />
+        <PTextFieldWrapper label="Type password readonly">
+          <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Label type password" style={{ width: 240 }}>
+        <PTextFieldWrapper label="Type password long text" style={{ width: 240 }}>
           <input
             type="password"
-            value="some really long password with many words and amazing special characters, letters big and small, numbers"
+            defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
           />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type search in different states">
-        <PTextFieldWrapper label="Label type search">
+        <PTextFieldWrapper label="Type search">
           <input type="search" />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Label type search disabled">
+        <PTextFieldWrapper label="Type search disabled">
           <input type="search" disabled />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Label type search readonly">
+        <PTextFieldWrapper label="Type search readonly">
           <input type="search" readOnly />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and error message">
-        <PTextFieldWrapper label="Label state error with message" state="error" message="error message">
+        <PTextFieldWrapper label="Error with message" state="error" message="Error message">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and no error message">
-        <PTextFieldWrapper label="Label state error without message" state="error">
+        <PTextFieldWrapper label="Error without message" state="error">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and success message">
-        <PTextFieldWrapper label="Label state success with message" state="success" message="success message">
+        <PTextFieldWrapper label="Success with message" state="success" message="Success message">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and no success message">
-        <PTextFieldWrapper label="Label state success without message" state="success">
+        <PTextFieldWrapper label="Success without message" state="success">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with default state and no message">
-        <PTextFieldWrapper label="Label default state no message" state="none" message="this message should be hidden">
+        <PTextFieldWrapper label="Default without message" state="none" message="this message should be hidden">
           <input type="text" />
         </PTextFieldWrapper>
       </div>
@@ -183,14 +189,14 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       >
         <PTextFieldWrapper state="error">
           <span slot="label">
-            Label slotted with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted error label with a <a href="#">link</a>
           </span>
           <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted description with a <a href="#">link</a>
           </span>
           <input type="text" placeholder="Some placeholder" />
           <span slot="message">
-            Some error message with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted message with a <a href="#">link</a>
           </span>
         </PTextFieldWrapper>
       </div>
@@ -201,42 +207,39 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       >
         <PTextFieldWrapper state="success">
           <span slot="label">
-            Label slotted with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted success label with a <a href="#">link</a>
           </span>
           <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted description with a <a href="#">link</a>
           </span>
           <input type="text" placeholder="Some placeholder" />
           <span slot="message">
-            Some success message with a <a href="https://designsystem.porsche.com">link</a>.
+            Slotted message with a <a href="#">link</a>
           </span>
         </PTextFieldWrapper>
       </div>
 
-      <div
-        className="playground light"
-        title="should render with multiline label, description and message and cut off too long option text"
-      >
+      <div className="playground light" title="should render with multiline label, description, message and text">
         <PTextFieldWrapper
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
+          label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
+          description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
-          message="At vero eos et accusam et justo duo dolores et ea rebum."
+          message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
           style={{ width: 240 }}
         >
-          <input type="text" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
+          <input type="text" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with unit">
         <PTextFieldWrapper label="Label with unit" unit="km/h">
-          <input type="number" value="300" />
+          <input type="number" defaultValue="300" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with unit position suffix">
         <PTextFieldWrapper label="Label with unit position suffix" unit="kWh" unitPosition="suffix">
-          <input type="number" value="400" />
+          <input type="number" defaultValue="400" />
         </PTextFieldWrapper>
       </div>
     </>

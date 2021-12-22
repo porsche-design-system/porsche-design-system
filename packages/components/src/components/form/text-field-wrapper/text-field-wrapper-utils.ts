@@ -4,7 +4,14 @@ import { FormState } from '../../../types';
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
-export const getInputUnitPadding = (
+export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
+export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
+export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string): boolean => !!unit && el.type === 'number';
+export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
+  counterElement.innerText = `${el.value.length}/${el.maxLength}`;
+};
+
+export const getInputPadding = (
   unitElementWidth: number,
   unitPosition: TextFieldWrapperUnitPosition,
   state: FormState
@@ -15,15 +22,18 @@ export const getInputUnitPadding = (
     : `${padding} ${pxToRemWithUnit(unitElementWidth)} ${padding} ${padding}`;
 };
 
-export const setInputUnitStyles = (
+export const setInputStyles = (
   input: HTMLInputElement,
-  unit: string,
-  unitElementWidth: number,
+  unitOrCounterElement: HTMLElement,
   unitPosition: TextFieldWrapperUnitPosition,
   state: FormState
 ): void => {
-  if (input.type === 'number' && unit) {
-    input.style.setProperty('padding', getInputUnitPadding(unitElementWidth, unitPosition, state), 'important');
+  if (unitOrCounterElement) {
+    input.style.setProperty(
+      'padding',
+      getInputPadding(unitOrCounterElement.offsetWidth, unitPosition, state),
+      'important'
+    );
   }
 };
 
@@ -31,4 +41,17 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
   if (unit.length > 5) {
     throw new RangeError(`Unit: ${unit} passed to 'PTextFieldWrapper' exceeds the maximum length of 5`);
   }
+};
+
+export const addInputEventListener = (
+  input: HTMLTextAreaElement | HTMLInputElement,
+  counterElement: HTMLElement,
+  inputChangeCallback?: () => void
+): void => {
+  input.addEventListener('input', (e) => {
+    setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    if (inputChangeCallback) {
+      inputChangeCallback();
+    }
+  });
 };

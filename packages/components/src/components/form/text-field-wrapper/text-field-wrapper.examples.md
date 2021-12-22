@@ -19,21 +19,15 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   </select>
 </Playground>
 
----
-
 ## With description text
 
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
----
-
 ## Required
 
 <Playground :markup="required" :config="config"></Playground>
-
----
 
 ## Disabled
 
@@ -44,13 +38,15 @@ In general, you should **prevent** using the `disabled="true"` state. Disabled e
 They can be confusing for sighted users as well by not pointing out why these elements are disabled. 
 A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
 
----
-
 ## Read only
 
 <Playground :markup="readonly" :config="config"></Playground>
 
---- 
+## Counter
+
+If the `maxLength` attribute is present onn the `input type="text"` element, a counter will be displayed.
+
+<Playground :markup="counter" :config="config"></Playground>
 
 ## Types
 
@@ -96,8 +92,6 @@ A description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typesSearch" :config="config"></Playground>
 
----
-
 ## Validation states
 
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
@@ -110,8 +104,6 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
     <option value="none">None</option>
   </select>
 </Playground>
-
----
 
 ## Slots
 
@@ -128,85 +120,90 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { spacing: 'block' };
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    label = 'show';
-    type = 'text';
-    state = 'error';
-    unitPosition = 'prefix';
+@Component
+export default class Code extends Vue {
+  config = { spacing: 'block' };
 
-    get basic() {
-      const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-text-field-wrapper label="Some label"${labelAttr}>
+  label = 'show';
+  type = 'text';
+  state = 'error';
+  unitPosition = 'prefix';
+
+  get basic() {
+    const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+    return `<p-text-field-wrapper label="Some label"${labelAttr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
 <p-text-field-wrapper label="Some label"${labelAttr}>
-  <input type="text" placeholder="Some placeholder text" name="some-name" />
+  <input type="text" placeholder="Some placeholder" name="some-name" />
 </p-text-field-wrapper>`;
-    }
-    
-    withDescriptionText =
+  }
+  
+  withDescriptionText =
 `<p-text-field-wrapper label="Some label" description="Some description">
   <input type="text" name="some-name" />
 </p-text-field-wrapper>`;
 
-    required =
+  required =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" required />
 </p-text-field-wrapper>`;
 
-    disabled =
+  disabled =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" disabled />
 </p-text-field-wrapper>`;
 
-    readonly =
+  readonly =
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" readonly />
 </p-text-field-wrapper>`;
 
-    get typesBasic() {
-      return `<p-text-field-wrapper label="Some label">
+  counter =
+`<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" value="Some value" maxlength="20" />
+</p-text-field-wrapper>`;
+
+  get typesBasic() {
+    return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
 </p-text-field-wrapper>`;
-    }
+  }
 
-    get typesNumber() {
-      return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
+  get typesNumber() {
+    return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
-    }
-    
-    typesPassword =
+  }
+  
+  typesPassword =
 `<p-text-field-wrapper label="Some label">
   <input type="password" name="some-name" value="some password" />
 </p-text-field-wrapper>`;
 
-    typesSearch =
+  typesSearch =
 `<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
 
-    get validationStates() {
-      const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-      return `<p-text-field-wrapper label="Some label" state="${this.state}" ${attr}>
+  get validationStates() {
+    const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
+    return `<p-text-field-wrapper label="Some label" state="${this.state}" ${attr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>`;
     }
     
-    slots =
+  slots =
 `<p-text-field-wrapper state="error">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <input type="text" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
-  }
+}
 </script>

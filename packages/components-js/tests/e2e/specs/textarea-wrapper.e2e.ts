@@ -9,8 +9,11 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
+  getElementInnerText,
+  getElementStyle,
+  waitForEventSerialization,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('textarea-wrapper', () => {
@@ -25,7 +28,8 @@ describe('textarea-wrapper', () => {
   const getHost = () => selectNode(page, 'p-textarea-wrapper');
   const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
   const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
-  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .root__text');
+  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
+  const getCounter = () => selectNode(page, 'p-textarea-wrapper >>> .counter');
   const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
@@ -36,6 +40,7 @@ describe('textarea-wrapper', () => {
     useSlottedMessage?: boolean;
     state?: FormState;
     hasLabel?: boolean;
+    maxLength?: number;
   };
 
   const initTextarea = (opts?: InitOptions): Promise<void> => {
@@ -45,26 +50,25 @@ describe('textarea-wrapper', () => {
       useSlottedMessage = false,
       state = 'none',
       hasLabel = false,
+      maxLength,
     } = opts ?? {};
 
-    const slottedLabel = useSlottedLabel
-      ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
+    const link = '<a href="#" onclick="return false;">link</a>';
+    const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
     const slottedDescription = useSlottedDescription
-      ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+      ? `<span slot="description">Description with a ${link}</span>`
       : '';
-    const slottedMessage = useSlottedMessage
-      ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
-    const label = hasLabel ? ' label="Some label"' : '';
+    const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
+
+    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"'].filter((x) => x).join(' ');
 
     return setContentWithDesignSystem(
       page,
       `
-        <p-textarea-wrapper state="${state}"${label}>
+        <p-textarea-wrapper ${attrs}>
           ${slottedLabel}
           ${slottedDescription}
-          <textarea></textarea>
+          <textarea${maxLength ? ` maxlength="${maxLength}"` : ''}></textarea>
           ${slottedMessage}
         </p-textarea-wrapper>`
     );
@@ -82,9 +86,9 @@ describe('textarea-wrapper', () => {
     expect(await getLabel()).toBeDefined();
   });
 
-  it('should focus textarea when label text is clicked', async () => {
+  it('should focus textarea when label is clicked', async () => {
     await initTextarea({ hasLabel: true });
-    const labelText = await getLabel();
+    const label = await getLabel();
     const textarea = await getTextarea();
 
     let textareaFocusSpyCalls = 0;
@@ -92,10 +96,45 @@ describe('textarea-wrapper', () => {
 
     expect(textareaFocusSpyCalls).toBe(0);
 
-    await labelText.click();
+    await label.click();
     await waitForStencilLifecycle(page);
 
     expect(textareaFocusSpyCalls).toBe(1);
+  });
+
+  it('should focus textarea when counter text is clicked', async () => {
+    await initTextarea({ maxLength: 160 });
+    const counter = await getCounter();
+    const textarea = await getTextarea();
+
+    let textareaFocusSpyCalls = 0;
+    await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
+
+    expect(textareaFocusSpyCalls).toBe(0);
+
+    await counter.click();
+    await waitForStencilLifecycle(page);
+
+    expect(textareaFocusSpyCalls).toBe(1);
+  });
+
+  it('should display correct counter when typing', async () => {
+    await initTextarea({ maxLength: 160 });
+    const counter = await getCounter();
+    const textarea = await getTextarea();
+
+    expect(await getElementInnerText(counter)).toBe('0/160');
+    await textarea.type('h');
+    expect(await getElementInnerText(counter)).toBe('1/160');
+    await textarea.type('ello');
+    expect(await getElementInnerText(counter)).toBe('5/160');
+    await textarea.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('4/160');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('0/160');
   });
 
   describe('focus state', () => {
@@ -169,6 +208,50 @@ describe('textarea-wrapper', () => {
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+  });
+
+  describe('hover state', () => {
+    const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
+    const defaultColor = 'rgb(98, 102, 105)';
+    const hoverColor = 'rgb(0, 0, 0)';
+
+    it('should show hover state on input when label is hovered', async () => {
+      await initTextarea({ hasLabel: true });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const label = await getLabel();
+      const textarea = await getTextarea();
+
+      const initialStyle = await getBorderColor(textarea);
+      expect(initialStyle).toBe(defaultColor);
+      await textarea.hover();
+      const hoverStyle = await getBorderColor(textarea);
+      expect(hoverStyle).toBe(hoverColor);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(textarea)).toBe(defaultColor);
+
+      await label.hover();
+      expect(await getBorderColor(textarea)).toBe(hoverColor);
+    });
+
+    it('should show hover state on textarea when counter is hovered', async () => {
+      await initTextarea({ maxLength: 160 });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const counter = await getCounter();
+      const textarea = await getTextarea();
+
+      const initialStyle = await getBorderColor(textarea);
+      expect(initialStyle).toBe(defaultColor);
+      await textarea.hover();
+      const hoverStyle = await getBorderColor(textarea);
+      expect(hoverStyle).toBe(hoverColor);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(textarea)).toBe(defaultColor);
+
+      await counter.hover();
+      expect(await getBorderColor(textarea)).toBe(hoverColor);
     });
   });
 

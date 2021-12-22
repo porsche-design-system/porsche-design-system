@@ -36,27 +36,27 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    width = 'basic';
-    backgroundColor = 'transparent';
-    config = { themeable: true };    
-    
-    get basic(){
-      return `<p-content-wrapper width="${this.width}">
-  <div class="example-content">Some content</div>
-</p-content-wrapper>`;
-    }
-    get transparent(){
-      return `<p-content-wrapper background-color="${this.backgroundColor}">
-  <div class="example-content">Some content</div>
-</p-content-wrapper>`;
-    }
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
+@Component
+export default class Code extends Vue {
+  width = 'basic';
+  backgroundColor = 'transparent';
+  config = { themeable: true };    
+  
+  get basic(){
+    return `<p-content-wrapper width="${this.width}">
+  <div class="example-content">Some content</div>
+</p-content-wrapper>`;
   }
+
+  get transparent(){
+    return `<p-content-wrapper background-color="${this.backgroundColor}">
+  <div class="example-content">Some content</div>
+</p-content-wrapper>`;
+  }
+}
 </script>
 
 <style scoped lang="scss">

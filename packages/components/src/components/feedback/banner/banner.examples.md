@@ -61,60 +61,60 @@ p-banner {
 ``` 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { componentsReady } from '@porsche-design-system/components-js';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { componentsReady } from '@porsche-design-system/components-js';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    
-    state = 'neutral';
-    width = 'basic';
-    
-    get basic() {
-      return `<p-banner state="${this.state}">
+  state = 'neutral';
+  width = 'basic';
+  
+  get basic() {
+    return `<p-banner state="${this.state}">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
 </p-banner>`
-    }
+  }
     
-    persistent =
+  persistent =
 `<p-banner persistent="true">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>`;
 
-    get markupWidth() {
-      return `<p-banner width="${this.width}">
+  get markupWidth() {
+    return `<p-banner width="${this.width}">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>`;
-    }
-    
-    openBanner = (event) => {
-      const el = document.createElement('p-banner');
-      const currentTarget = event.currentTarget;
-      el.innerHTML = `
-        <span slot="title">Some banner title</span>
-        <span slot="description">Some banner description.</span>
-      `;
-      document.getElementById('app').append(el);
-      el.addEventListener('dismiss', () => {
-        currentTarget.focus();
-      });
-    };
-  
-    mounted(): void {
-      const banners = document.querySelectorAll('p-banner');
-      banners.forEach((el) => el.addEventListener("dismiss", () => console.log("dismissed")));
-
-      // scroll to top since banners have autofocus on close button via componentDidLoad
-      componentsReady(this.$el).then(() => {
-        document.querySelector('html').scrollTop = 0;
-      });
-    }
   }
+  
+  openBanner = (event) => {
+    const el = document.createElement('p-banner');
+    const currentTarget = event.currentTarget;
+    el.innerHTML = `
+      <span slot="title">Some banner title</span>
+      <span slot="description">Some banner description.</span>
+    `;
+    document.getElementById('app').append(el);
+    el.addEventListener('dismiss', () => {
+      currentTarget.focus();
+    });
+  };
+
+  mounted(): void {
+    const banners = document.querySelectorAll('p-banner');
+    banners.forEach((el) => el.addEventListener("dismiss", () => console.log("dismissed")));
+
+    // scroll to top since banners have autofocus on close button via componentDidLoad
+    componentsReady(this.$el).then(() => {
+      document.querySelector('html').scrollTop = 0;
+    });
+  }
+}
 </script>
 
 <style scoped lang="scss">
