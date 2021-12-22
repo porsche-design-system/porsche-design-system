@@ -44,22 +44,22 @@ For automated visual regression tests the spinner animation can be disabled by s
 ```
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    
-    size = 'small';
-    
-    get sizeMarkup() {
-      const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-spinner size="${this.size}"${style} aria="{ 'aria-label': 'Loading page content' }" />`;
-    }
-    
-    responsive =
+  size = 'small';
+  
+  get sizeMarkup() {
+    const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
+    return `<p-spinner size="${this.size}"${style} aria="{ 'aria-label': 'Loading page content' }" />`;
+  }
+  
+  responsive =
 `<p-spinner size="{ base: 'small', l: 'medium' }" aria="{ 'aria-label': 'Loading page content' }" />`;
 
-  }
+}
 </script>

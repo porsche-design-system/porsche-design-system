@@ -114,52 +114,52 @@ This will force any text to never wrap into a new line and in case it's to long 
 <Playground :markup="textWithLink" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+const sentence = 'The quick brown fox jumps over the lazy dog';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+
+  size = 'medium';
+  weight = 'thin';
+  color = 'default';
+  align = 'center';
   
-  const sentence = 'The quick brown fox jumps over the lazy dog';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-  
-    size = 'medium';
-    weight = 'thin';
-    color = 'default';
-    align = 'center';
-    
-    basic =
+  basic =
 `<p-text>${sentence}</p-text>`;
     
-    get sizeMarkup() {
-      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-text size="${this.size}"${style}>${sentence}</p-text>`;
-    }
-    
-    responsive =
+  get sizeMarkup() {
+    const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    return `<p-text size="${this.size}"${style}>${sentence}</p-text>`;
+  }
+  
+  responsive =
 `<p-text size="{ base: 'small', l: 'medium' }">${sentence}</p-text>`;
 
-    semantics =
+  semantics =
 `<p-text tag="blockquote">${sentence}</p-text>
 <p-text><blockquote>${sentence}</blockquote></p-text>`;
 
-    get colorMarkup() {
-      const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
-      return `<p-text color="${this.color}"${style}>${sentence}</p-text>`;
-    }
-    
-    get weightMarkup() {
-      return `<p-text size="medium" weight="${this.weight}">${sentence}</p-text>`;
-    }
-    
-    get alignment() {
-      return `<p-text align="${this.align}">${sentence}</p-text>`;
-    }
+  get colorMarkup() {
+    const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
+    return `<p-text color="${this.color}"${style}>${sentence}</p-text>`;
+  }
+  
+  get weightMarkup() {
+    return `<p-text size="medium" weight="${this.weight}">${sentence}</p-text>`;
+  }
+  
+  get alignment() {
+    return `<p-text align="${this.align}">${sentence}</p-text>`;
+  }
 
-    ellipsis =
+  ellipsis =
 `<p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>`;
 
-    textWithLink =
+  textWithLink =
 `<p-text>Lorem ipsum dolor sit amet <a href="https://porsche.com">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>`;
-  }
+}
 </script>
