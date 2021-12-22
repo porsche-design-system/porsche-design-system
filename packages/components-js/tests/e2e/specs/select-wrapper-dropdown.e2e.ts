@@ -423,17 +423,19 @@ describe('select-wrapper dropdown', () => {
     expect(await getDropdownCheckmarkIcon()).toBeNull();
   });
 
-  it('should change border-color when dropdown button is hovered', async () => {
-    await initSelect();
-    await page.mouse.move(0, 300); // avoid potential hover initially
+  describe('hover state', () => {
+    it('should change border-color when dropdown button is hovered', async () => {
+      await initSelect();
+      await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const dropdownButton = await getDropdownButton();
-    const initialStyle = await getElementStyle(dropdownButton, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+      const dropdownButton = await getDropdownButton();
+      const initialStyle = await getElementStyle(dropdownButton, 'borderColor');
+      expect(initialStyle).toBe('rgb(98, 102, 105)');
 
-    await dropdownButton.hover();
-    const hoverStyle = await getElementStyle(dropdownButton, 'borderColor');
-    expect(hoverStyle).toBe('rgb(0, 0, 0)');
+      await dropdownButton.hover();
+      const hoverStyle = await getElementStyle(dropdownButton, 'borderColor');
+      expect(hoverStyle).toBe('rgb(0, 0, 0)');
+    });
   });
 
   describe('dropdown position', () => {
