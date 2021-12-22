@@ -99,14 +99,29 @@ Object {
   "p-link": Object {
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
   },
   "p-link-pure": Object {
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
   },
   "p-link-social": Object {
     "isFocusable": true,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "href": "string",
+      },
+    ],
   },
   "p-marque": Object {
     "isFocusable": true,

@@ -3,6 +3,7 @@ import { attachComponentCss, getPrefixedTagNames, improveFocusHandlingForCustomE
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
+import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link-social',
@@ -32,7 +33,8 @@ export class LinkSocial {
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public connectedCallback(): void {
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
     improveFocusHandlingForCustomElement(this.host);
   }
 

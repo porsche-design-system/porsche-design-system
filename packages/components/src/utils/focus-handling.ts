@@ -28,12 +28,11 @@ const getFocusableElement = (element: HTMLElement | ShadowRoot): HTMLElement => 
 };
 
 export const improveFocusHandlingForCustomElement = (element: HTMLElement): void => {
-  const { shadowRoot } = element;
   element.focus = (): void => {
-    getFocusableElement(shadowRoot)?.focus();
+    getFocusableElement(element.shadowRoot)?.focus();
   };
 
   element.blur = (): void => {
-    (shadowRoot.activeElement as HTMLElement)?.blur();
+    (element.shadowRoot.activeElement as HTMLElement)?.blur();
   };
 };

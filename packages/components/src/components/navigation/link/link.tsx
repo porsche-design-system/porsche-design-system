@@ -16,6 +16,7 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
+import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link',
@@ -54,7 +55,8 @@ export class Link {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  public connectedCallback(): void {
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
     improveFocusHandlingForCustomElement(this.host);
   }
 
