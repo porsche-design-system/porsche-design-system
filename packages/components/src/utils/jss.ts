@@ -113,27 +113,13 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
     [getTagName(host)]: addImportantToEachRule(jssStyle),
   });
 
-// TODO: use generic
 export type GetStylesFunction = (value?: any) => JssStyle;
+
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
 ): Styles<':host'> => {
-  const value: any = parseJSON(rawValue as any);
-
-  return typeof value === 'object'
-    ? Object.keys(value)
-        // base styles are applied on root object, responsive styles are nested within
-        // hence it is used as the initial object within reduce function
-        .filter((key) => key !== 'base')
-        .reduce(
-          (result, breakpointValue: Breakpoint) => ({
-            ...result,
-            [mediaQuery(breakpointValue)]: buildHostStyles(getStyles(value[breakpointValue])),
-          }),
-          buildHostStyles(getStyles(value.base))
-        )
-    : buildHostStyles(getStyles(value));
+  return buildHostStyles(buildResponsiveStyles(rawValue, getStyles));
 };
 
 export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
