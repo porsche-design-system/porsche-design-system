@@ -1,5 +1,5 @@
 import {
-  addImportantToEachRule,
+  addImportantToRule,
   buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
@@ -13,9 +13,7 @@ export const getComponentCss = (theme: Theme): string => {
   const { baseColor } = getThemedColors(theme);
   return getCss({
     ...buildHostStyles({
-      ...addImportantToEachRule({
-        counterReset: 'section',
-      }),
+      counterReset: addImportantToRule('section'),
       display: 'block',
     }),
     root: {
@@ -23,8 +21,8 @@ export const getComponentCss = (theme: Theme): string => {
       padding: 0,
       margin: 0,
       color: baseColor,
-      fontFamily: font.family,
       ...font.size.small,
+      fontFamily: font.family,
       fontWeight: font.weight.regular,
     },
   });

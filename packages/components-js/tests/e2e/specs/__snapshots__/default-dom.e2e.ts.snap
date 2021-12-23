@@ -499,8 +499,8 @@ exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-spinner 1`] = `
-"<span class=\\"root root--size-small\\" role=\\"alert\\" aria-live=\\"assertive\\">
-  <span class=\\"sr-text\\">
+"<span class=\\"root\\" role=\\"alert\\" aria-live=\\"assertive\\">
+  <span class=\\"sr-only\\">
     &nbsp;</span>
   <svg viewBox=\\"-16 -16 32 32\\" width=\\"100%\\" height=\\"100%\\" focusable=\\"false\\" aria-hidden=\\"true\\">
     <circle r=\\"9\\">
@@ -609,7 +609,7 @@ exports[`should have no basic DOM regression for p-table-row 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs 1`] = `
-"<p-tabs-bar class=\\"tabs-bar hydrated\\">
+"<p-tabs-bar class=\\"root hydrated\\">
 </p-tabs-bar>
 <slot>
 </slot>"
