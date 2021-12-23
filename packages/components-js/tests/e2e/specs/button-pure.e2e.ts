@@ -292,13 +292,13 @@ describe('button-pure', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order for tabbable false', async () => {
+  it.each(['tabbable="false"', 'tabindex="-1"'])('should be removed from tab order for %s', async (attribute) => {
     await setContentWithDesignSystem(
       page,
       `
       <div id="wrapper">
         <a href="#" id="before">before</a>
-        <p-button-pure tabbable="false">Some label</p-button-pure>
+        <p-button-pure ${attribute}>Some label</p-button-pure>
         <a href="#" id="after">after</a>
       </div>
     `
