@@ -63,8 +63,10 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 ---
 
 ## Remove from tab order
+
+**NOTICE:** This property is deprecated since v2.8.0 and will be removed in v3.0.0. Please use the `tabindex` attribute (e.g. `tabindex="-1"`).
+
 With setting the `tabbable` property to `false` you can remove the **Switch** from the tab order.
-For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
 
 <Playground :markup="taborder" :config="config"></Playground>
 
@@ -138,7 +140,9 @@ const SomeSwitchPage = (): JSX.Element => {
 >Some label</p-switch>`;
 
   taborder = `<p-switch tabbable="false">Some label</p-switch>
-<p-switch tabbable="true">Some label</p-switch>`;
+<p-switch tabbable="true">Some label</p-switch>
+<p-switch tabindex="-1">Some label</p-switch>
+<p-switch tabindex="0">Some label</p-switch>`;
 
   mounted() {
     /* initially update switch with checked attribute in playground */

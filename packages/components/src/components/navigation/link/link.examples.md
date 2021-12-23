@@ -61,7 +61,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 ---
 
 ## Remove Link from tab order
-With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+By setting the `tabindex` attribute to `-1` you can remove the **Link** from the tab order. 
 
 <Playground :markup="taborder" :config="config"></Playground>
 
@@ -107,9 +107,9 @@ export default class Code extends Vue {
 >Some label</p-link>`;
 
   taborder =
-`<p-link href="https://www.porsche.com" tabbable="true">Some label</p-link>
-<p-link href="https://www.porsche.com" tabbable="false">Some label</p-link>
-<p-link href="https://www.porsche.com" tabbable="true">Some label</p-link>`;
+`<p-link href="https://www.porsche.com" tabindex="0">Some label</p-link>
+<p-link href="https://www.porsche.com" tabindex="-1">Some label</p-link>
+<p-link href="https://www.porsche.com" tabindex="0">Some label</p-link>`;
 }
 </script>
 

@@ -151,7 +151,9 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Remove button from tab order
 
-With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+**NOTICE:** This property is deprecated since v2.8.0 and will be removed in v3.0.0. Please use the `tabindex` attribute (e.g. `tabindex="-1"`).
+
+With setting the `tabbable` property to `false` you can remove the **Button Pure** from the tab order.
 
 <Playground :markup="taborder" :config="configInline"></Playground>
 
@@ -253,7 +255,9 @@ export default class Code extends Vue {
 
   taborder =
 `<p-button-pure tabbable="true">Some label</p-button-pure>
-<p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>`;
+<p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>
+<p-button-pure tabindex="-1" hide-label="true">Some label</p-button-pure>
+<p-button-pure tabindex="0">Some label</p-button-pure>`;
 
   get subline() {
     return `<p-button-pure size="${this.sublineSize}">
