@@ -113,6 +113,7 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
     [getTagName(host)]: addImportantToEachRule(jssStyle),
   });
 
+// TODO: use generic
 export type GetStylesFunction = (value?: any) => JssStyle;
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
@@ -136,7 +137,7 @@ export const buildResponsiveHostStyles = <T>(
 };
 
 export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
-  const value: any = parseJSON(rawValue as any);
+  const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
     ? Object.keys(value)
