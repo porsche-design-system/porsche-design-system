@@ -179,13 +179,13 @@ describe('link-social', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order for tabbable false', async () => {
+  it('should be removed from tab order for tabindex -1', async () => {
     await setContentWithDesignSystem(
       page,
       `
       <div id="wrapper">
         <a href="#" id="before">before</a>
-        <p-link-social href="#" tabbable="false">Some label</p-link-social>
+        <p-link-social href="#" tabindex="-1">Some label</p-link-social>
         <a href="#" id="after">after</a>
       </div>
     `
