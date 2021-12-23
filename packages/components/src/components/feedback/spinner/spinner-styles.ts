@@ -44,7 +44,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
       strokeWidth: 1,
       animationDuration,
     },
-    'sr-oonly': srOnly(),
+    'sr-only': srOnly(),
     ...buildGlobalStyles({
       circle: {
         stroke: isDark(theme) || isDarkElectric(theme) ? baseColor : contrastHighColor,
