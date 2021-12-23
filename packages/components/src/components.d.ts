@@ -12,6 +12,7 @@ import { BannerState } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
+import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
@@ -218,11 +219,11 @@ export namespace Components {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: DividerColor;
         /**
           * Defines orientation.
          */
-        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
+        "orientation"?: DividerOrientation;
         /**
           * Adapts color depending on theme.
          */
@@ -1474,11 +1475,11 @@ declare namespace LocalJSX {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: DividerColor;
         /**
           * Defines orientation.
          */
-        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
+        "orientation"?: DividerOrientation;
         /**
           * Adapts color depending on theme.
          */

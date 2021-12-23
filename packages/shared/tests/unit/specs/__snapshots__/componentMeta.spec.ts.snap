@@ -76,7 +76,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-fieldset-wrapper": Object {
     "hasSlottedCss": false,
