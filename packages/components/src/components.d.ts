@@ -103,7 +103,7 @@ export namespace Components {
         "loading"?: boolean;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
@@ -168,7 +168,7 @@ export namespace Components {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
@@ -755,7 +755,7 @@ export namespace Components {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
@@ -1362,7 +1362,7 @@ declare namespace LocalJSX {
         "loading"?: boolean;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
@@ -1427,7 +1427,7 @@ declare namespace LocalJSX {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
@@ -2034,7 +2034,7 @@ declare namespace LocalJSX {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated in version 2.8.0, will be removed in v3
+          * @deprecated since v2.8.0, use tabindex="-1" instead
          */
         "tabbable"?: boolean;
         /**
