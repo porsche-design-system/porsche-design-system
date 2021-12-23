@@ -186,13 +186,13 @@ describe('link-pure', () => {
   });
 
   describe('focus state', () => {
-    it('should be removed from tab order for tabbable false', async () => {
+    it('should be removed from tab order with tabindex -1', async () => {
       await setContentWithDesignSystem(
         page,
         `
       <div id="wrapper">
         <a href="#" id="before">before</a>
-        <p-link-pure href="#" tabbable="false">Some label</p-link-pure>
+        <p-link-pure href="#" tabindex="-1">Some label</p-link-pure>
         <a href="#" id="after">after</a>
       </div>
     `
