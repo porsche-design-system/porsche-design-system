@@ -83,7 +83,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
-## Bind events to the Link
+## Bind events to the link
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
 
@@ -91,7 +91,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Remove Link from tab order
+## Remove Link Social from tab order
 
 By setting the `tabindex` attribute to `-1` you can remove the **Link Social** from the tab order.
 

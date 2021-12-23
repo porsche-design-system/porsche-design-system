@@ -1,7 +1,7 @@
 # Link Pure
 
 The `p-link-pure` component is essential for performing changes in **page routes**.
-A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
+A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
 
@@ -28,7 +28,7 @@ Through the `aria` property you have the possibility to provide additional **ARI
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
-* If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
+* If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
 ---
@@ -165,7 +165,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 ---
 
-## Link with custom clickable/focusable area
+## Link Pure with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
@@ -182,7 +182,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Remove Link from tab order
+## Remove Link Pure from tab order
 
 By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** from the tab order.
 
