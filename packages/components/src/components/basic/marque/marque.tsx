@@ -14,7 +14,7 @@ import { MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 
 @Component({
   tag: 'p-marque',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Marque {
   @Element() public host!: HTMLElement;

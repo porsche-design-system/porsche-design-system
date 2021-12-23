@@ -18,7 +18,7 @@ import { listenResize } from '../../../utils/window-resize-listener';
 @Component({
   tag: 'p-pagination',
   styleUrl: 'pagination.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Pagination {
   @Element() public host!: HTMLElement;
