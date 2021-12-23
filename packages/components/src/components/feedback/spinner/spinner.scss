@@ -31,6 +31,18 @@ $p-spinner-size-large: p-px-to-rem(104px);
     }
   }
 
+  &--theme-light-electric {
+    circle {
+      stroke: $p-color-theme-light-electric-neutral-contrast-high;
+    }
+  }
+
+  &--theme-dark-electric {
+    circle {
+      stroke: $p-color-theme-dark-electric-default;
+    }
+  }
+
   &--size {
     &-medium {
       width: $p-spinner-size-medium;

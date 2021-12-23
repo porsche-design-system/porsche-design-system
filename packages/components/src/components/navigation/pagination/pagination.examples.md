@@ -45,39 +45,39 @@ By changing values for total amount of items, items to display per page and numb
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    
-    totalItemsCount = 500;
-    itemsPerPage = 25;
-    activePage = 1;
-    
-    basic(max: string) {
-      const attr = max ? ` max-number-of-page-links="${max}"` : '';
-      return `<p-pagination total-items-count="500" items-per-page="25" active-page="1"${attr}></p-pagination>`;
-    }
-
-    get behaviour() {
-      return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`
-    }
-
-    mounted(){
-      this.registerEvents();
-    }
-    
-    updated(){
-      this.registerEvents();
-    }
-    
-    registerEvents() {
-      const playground = this.$el.querySelector('.playground-pagination p-pagination');
-      playground.addEventListener('pageChange', (e) => {
-        this.activePage = e.detail.page;
-      });
-    }
+  totalItemsCount = 500;
+  itemsPerPage = 25;
+  activePage = 1;
+  
+  basic(max: string) {
+    const attr = max ? ` max-number-of-page-links="${max}"` : '';
+    return `<p-pagination total-items-count="500" items-per-page="25" active-page="1"${attr}></p-pagination>`;
   }
+
+  get behaviour() {
+    return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`
+  }
+
+  mounted(){
+    this.registerEvents();
+  }
+  
+  updated(){
+    this.registerEvents();
+  }
+  
+  registerEvents() {
+    const playground = this.$el.querySelector('.playground-pagination p-pagination');
+    playground.addEventListener('pageChange', (e) => {
+      this.activePage = e.detail.page;
+    });
+  }
+}
 </script>

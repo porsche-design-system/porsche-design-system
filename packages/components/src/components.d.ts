@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
@@ -172,7 +172,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: ThemeExtendedElectricDark;
         /**
           * Specifies the type of the button.
          */
@@ -380,7 +380,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectricDark;
     }
     interface PInlineNotification {
         /**
@@ -518,7 +518,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: ThemeExtendedElectricDark;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -736,7 +736,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectricDark;
     }
     interface PSwitch {
         /**
@@ -770,7 +770,7 @@ export namespace Components {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PTable {
         /**
@@ -1440,7 +1440,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: ThemeExtendedElectricDark;
         /**
           * Specifies the type of the button.
          */
@@ -1648,7 +1648,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectricDark;
     }
     interface PInlineNotification {
         /**
@@ -1794,7 +1794,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: ThemeExtendedElectricDark;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -2020,7 +2020,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectricDark;
     }
     interface PSwitch {
         /**
@@ -2058,7 +2058,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ThemeExtendedElectric;
     }
     interface PTable {
         /**
