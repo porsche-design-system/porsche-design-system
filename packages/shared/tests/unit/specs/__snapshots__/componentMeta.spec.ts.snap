@@ -301,7 +301,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-list-item": Object {
     "hasSlottedCss": false,

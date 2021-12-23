@@ -1,5 +1,6 @@
 import { JSX, Component, Prop, h, Host, Element, Watch } from '@stencil/core';
 import {
+  attachComponentCss,
   attachSlottedCss,
   getClosestHTMLElement,
   getPrefixedTagNames,
@@ -9,11 +10,10 @@ import {
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
-import { getSlottedCss } from './text-list-styles';
+import { getComponentCss, getSlottedCss } from './text-list-styles';
 
 @Component({
   tag: 'p-text-list',
-  styleUrl: 'text-list.scss',
   shadow: true,
 })
 export class TextList {
@@ -39,6 +39,7 @@ export class TextList {
   }
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss, this.theme);
     attachSlottedCss(this.host, getSlottedCss);
   }
 
