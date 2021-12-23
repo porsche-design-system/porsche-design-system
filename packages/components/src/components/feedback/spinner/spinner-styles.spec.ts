@@ -14,7 +14,7 @@ describe('getComponentCss()', () => {
     ['large', 'dark'],
     ['inherit', 'dark'],
     [{ base: 'medium', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }, 'dark'],
-  ])('should return correct css for size: %o and theme %s', (size, theme) => {
+  ])('should return correct css for size: %j and theme %s', (size, theme) => {
     expect(getComponentCss(size, theme)).toMatchSnapshot();
   });
 });
