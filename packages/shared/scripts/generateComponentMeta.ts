@@ -49,8 +49,9 @@ const generateComponentMeta = (): void => {
   }, {} as { [key in TagName]: string });
 
   // simple (mostly atomic) focusable components are identified here
-  const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter((tagName) =>
-    componentSourceCode[tagName].includes('delegatesFocus: true')
+  const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter(
+    (tagName) =>
+      componentSourceCode[tagName].includes('delegatesFocus: true') || componentSourceCode[tagName].includes('<button')
   );
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
