@@ -1,8 +1,14 @@
 import { JSX, Component, Prop, h, Watch } from '@stencil/core';
-import type { Theme, SelectedAriaAttributes } from '../../../types';
+import type { SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
 import type { SpinnerSize, SpinnerAriaAttributes } from './spinner-utils';
 import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES } from './spinner-utils';
-import { isDark, mapBreakpointPropToClasses, parseAndGetAriaAttributes } from '../../../utils';
+import {
+  isDark,
+  isDarkElectric,
+  isLightElectric,
+  mapBreakpointPropToClasses,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
 
 @Component({
   tag: 'p-spinner',
@@ -14,7 +20,7 @@ export class Spinner {
   @Prop() public size?: SpinnerSize = 'small';
 
   /** Adapts the spinner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttributes>;
@@ -32,6 +38,8 @@ export class Spinner {
     const rootClasses = {
       ['root']: true,
       ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-light-electric']: isLightElectric(this.theme),
+      ['root--theme-dark-electric']: isDarkElectric(this.theme),
       ...mapBreakpointPropToClasses('root--size', this.size),
     };
 

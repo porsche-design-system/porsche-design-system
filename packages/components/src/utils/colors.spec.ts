@@ -1,5 +1,5 @@
-import { colorDarken, getThemedColors, getThemedFormStateColors } from './colors';
-import type { Theme, FormState, ThemeExtendedElectric } from '../types';
+import { colorDarken, getThemedColors, getThemedColorsDarken, getThemedFormStateColors } from './colors';
+import type { Theme, FormState, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
 
 describe('colorDarken', () => {
   it('should contain darker colors', () => {
@@ -7,8 +7,17 @@ describe('colorDarken', () => {
   });
 });
 
-describe('getThemedColors()', () => {
+describe('getThemedColorsDarken()', () => {
   it.each<ThemeExtendedElectric>(['light', 'dark', 'light-electric'])(
+    'should return correct colors for theme: %s',
+    (theme) => {
+      expect(getThemedColorsDarken(theme)).toMatchSnapshot();
+    }
+  );
+});
+
+describe('getThemedColors()', () => {
+  it.each<ThemeExtendedElectricDark>(['light', 'dark', 'light-electric', 'dark-electric'])(
     'should return correct colors for theme: %s',
     (theme) => {
       expect(getThemedColors(theme)).toMatchSnapshot();

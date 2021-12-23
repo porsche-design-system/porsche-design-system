@@ -62,12 +62,12 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { ICON_NAMES } from '@porsche-design-system/icons';
-  
-  @Component
-  export default class Code extends Vue {
-    public iconNames: string = ICON_NAMES.map(x => `'${x}'`).join(' | ');
-  }
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { ICON_NAMES } from '@porsche-design-system/icons';
+
+@Component
+export default class Code extends Vue {
+  public iconNames: string = ICON_NAMES.map(x => `'${x}'`).join(' | ');
+}
 </script>

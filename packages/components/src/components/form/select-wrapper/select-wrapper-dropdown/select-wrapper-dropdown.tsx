@@ -124,7 +124,7 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span onClick={() => this.setDropdownVisibility('toggle')} />,
+            <span onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
           ]
         ) : (
           <button

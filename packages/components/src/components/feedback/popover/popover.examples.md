@@ -50,32 +50,30 @@ it will be opened in the direction with most available space automatically.
 </Playground>
 
 <script lang="ts">
-import {POPOVER_Z_INDEX} from "../../../constants"; 
+import {POPOVER_Z_INDEX} from "../../../constants";
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+@Component
+export default class Code extends Vue {
+  config = { overflowX: 'visible' };
+
+  direction = 'left';
+  popoverContent = 'Some additional content.';
+  zIndex = POPOVER_Z_INDEX;
   
-  @Component
-  export default class Code extends Vue {
-    config = { overflowX: 'visible' };
-
-    direction = 'left';
-    popoverContent = 'Some additional content.';
-    zIndex = POPOVER_Z_INDEX;
-    
-    basicMarkup = `<p-text>
+  basicMarkup = `<p-text>
   Some content <p-popover>${this.popoverContent}</p-popover> which is longer.<br>  Some more content <p-popover description="${this.popoverContent}"></p-popover>.
 </p-text>`;
 
-    descriptionMarkup = `<p-popover description="${this.popoverContent}"></p-popover>`;
+  descriptionMarkup = `<p-popover description="${this.popoverContent}"></p-popover>`;
 
-    get directionMarkup() {
-      return `<p-popover direction="${this.direction}">${this.popoverContent}</p-popover>`;
-    }
+  get directionMarkup() {
+    return `<p-popover direction="${this.direction}">${this.popoverContent}</p-popover>`;
+  }
 
-    accessibilityMarkup = `<p-text>
+  accessibilityMarkup = `<p-text>
   Some content <p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover>
 </p-text>`;
-    
-  }
+}
 </script>

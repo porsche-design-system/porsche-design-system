@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+**Disclaimer:** The provided theme `dark-electric` is just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
+- Theme `dark-electric`
+
 ### [5.3.0-beta.0] - 2021-12-07
 
 #### Added
