@@ -40,7 +40,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       );
 
       await forceHoverState(page, '.hover > p-button >>> button');
-      await forceFocusState(page, '.focus > p-button'); // if focused via tab (delegate focus), native outline should be surpressed
+      await forceFocusState(page, '.focus > p-button'); // native outline should not be visible
       await forceFocusState(page, '.focus > p-button >>> button');
       await forceFocusHoverState(page, '.focus-hover > p-button >>> button');
     })
