@@ -58,7 +58,7 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
 };
 
 export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizable<boolean>): string => {
-  const isFullscreenForXlAndXll = isFullscreenForXl(fullscreen);
+  const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
   return getCss({
     ...buildHostStyles({
@@ -99,11 +99,11 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         padding: pxToRemWithUnit(40),
       },
       [mediaQuery('xl')]: {
-        margin: isFullscreenForXlAndXll ? 0 : `10vh ${marginXl}`,
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
       },
       [mediaQuery('xxl')]: {
         padding: pxToRemWithUnit(64),
-        margin: isFullscreenForXlAndXll ? 0 : `10vh ${marginXxl}`,
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
     ...buildGlobalStyles({
