@@ -524,25 +524,25 @@ describe('marque', () => {
     `
       );
 
-      const host = await getHost();
+      const marque = await getHost();
       const before = await selectNode(page, '#before');
       const after = await selectNode(page, '#after');
 
       await before.focus();
 
-      let hostFocusCalls = 0;
-      await addEventListener(host, 'focus', () => hostFocusCalls++);
+      let marqueFocusCalls = 0;
+      await addEventListener(marque, 'focus', () => marqueFocusCalls++);
       let afterFocusCalls = 0;
       await addEventListener(after, 'focus', () => afterFocusCalls++);
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
+      expect(marqueFocusCalls, 'marqueFocusCalls after tab').toBe(0);
       expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
 
       await page.keyboard.press('Tab');
       await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'marqueFocusCalls after second tab').toBe(0);
+      expect(marqueFocusCalls, 'marqueFocusCalls after second tab').toBe(0);
       expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
     });
 
