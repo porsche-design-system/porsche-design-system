@@ -209,7 +209,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-switch": Object {
     "hasSlottedCss": false,
@@ -269,7 +269,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-bar": Object {
     "hasSlottedCss": false,
@@ -282,7 +282,7 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredParent": "p-tabs",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text": Object {
     "hasSlottedCss": true,
