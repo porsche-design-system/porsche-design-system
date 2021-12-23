@@ -11,6 +11,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
+  expectToSkipFocusOnComponent,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -202,22 +203,7 @@ describe('link-pure', () => {
       const before = await selectNode(page, '#before');
       const after = await selectNode(page, '#after');
 
-      await before.focus();
-
-      let linkFocusCalls = 0;
-      await addEventListener(link, 'focus', () => linkFocusCalls++);
-      let afterFocusCalls = 0;
-      await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(linkFocusCalls, 'linkFocusCalls after tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(linkFocusCalls, 'linkFocusCalls after second tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+      await expectToSkipFocusOnComponent(page, link, before, after);
     });
 
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {

@@ -2,6 +2,7 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  expectToSkipFocusOnComponent,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -281,22 +282,7 @@ describe('switch', () => {
       const before = await selectNode(page, '#before');
       const after = await selectNode(page, '#after');
 
-      await before.focus();
-
-      let hostFocusCalls = 0;
-      await addEventListener(host, 'focus', () => hostFocusCalls++);
-      let afterFocusCalls = 0;
-      await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after second tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+      await expectToSkipFocusOnComponent(page, host, before, after);
     });
   });
 

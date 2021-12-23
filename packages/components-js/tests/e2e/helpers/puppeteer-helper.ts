@@ -3,6 +3,7 @@ import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
 import * as beautify from 'js-beautify';
+import { addEventListener, waitForEventSerialization } from './events';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;
@@ -361,4 +362,28 @@ export const expectA11yToMatchSnapshot = async (
   });
 
   message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
+};
+
+export const expectToSkipFocusOnComponent = async (
+  page: Page,
+  component: ElementHandle,
+  before: ElementHandle,
+  after: ElementHandle
+) => {
+  await before.focus();
+
+  let componentFocusCalls = 0;
+  await addEventListener(component, 'focus', () => componentFocusCalls++);
+  let afterFocusCalls = 0;
+  await addEventListener(after, 'focus', () => afterFocusCalls++);
+
+  await page.keyboard.press('Tab');
+  await waitForEventSerialization(page);
+  expect(componentFocusCalls, 'componentFocusCalls after tab').toBe(0);
+  expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
+
+  await page.keyboard.press('Tab');
+  await waitForEventSerialization(page);
+  expect(componentFocusCalls, 'componentFocusCalls after second tab').toBe(0);
+  expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
 };
