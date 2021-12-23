@@ -267,12 +267,12 @@ describe('switch', () => {
       expect(await hasFocus(page, host), 'final focus style').toBe(true);
     });
 
-    it('should be removed from tab order for tabbable false', async () => {
+    it.each(['tabbable="false"', 'tabindex="-1"'])('should be removed from tab order for %s', async (attribute) => {
       await setContentWithDesignSystem(
         page,
         `<div id="wrapper">
          <a href="#" id="before">before</a>
-         <p-switch tabbable="false">Some label</p-switch>
+         <p-switch ${attribute}>Some label</p-switch>
          <a href="#" id="after">after</a>
         </div>`
       );
