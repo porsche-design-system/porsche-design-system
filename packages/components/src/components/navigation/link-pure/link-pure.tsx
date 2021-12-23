@@ -28,7 +28,7 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link-pure',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class LinkPure {
   @Element() public host!: HTMLElement;
@@ -59,9 +59,6 @@ export class LinkPure {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** To remove the element from tab order. */
-  @Prop() public tabbable?: boolean = true;
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: ThemeExtendedElectricDark = 'light';
@@ -127,7 +124,6 @@ export class LinkPure {
           class="root"
           {...(TagType === 'a' && {
             href: this.href,
-            tabindex: this.tabbable ? 0 : -1,
             target: this.target,
             download: this.download,
             rel: this.rel,
