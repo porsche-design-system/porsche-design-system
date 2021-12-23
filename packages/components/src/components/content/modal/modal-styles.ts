@@ -45,22 +45,14 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   } else {
     const entries = Object.entries(fullscreenParsed);
     const lastTrueBreakpoint = entries
-      .filter(([_, val]) => val)
+      .filter(([, val]) => val)
       .map(([key]) => key)
       .pop() as BreakpointKey;
     const lastFalseBreakpoint = entries
-      .filter(([_, val]) => !val)
+      .filter(([, val]) => !val)
       .map(([key]) => key)
       .pop() as BreakpointKey;
 
-    // console.log(
-    //   'lastTrueBreakpoint =',
-    //   lastTrueBreakpoint,
-    //   lastTrueIndex,
-    //   ', lastFalseBreakpoint =',
-    //   lastFalseBreakpoint,
-    //   lastFalseIndex
-    // );
     return BREAKPOINTS.indexOf(lastTrueBreakpoint) > BREAKPOINTS.indexOf(lastFalseBreakpoint);
   }
 };
