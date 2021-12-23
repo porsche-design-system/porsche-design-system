@@ -14,6 +14,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
+  expectToSkipFocusOnComponent,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -308,22 +309,7 @@ describe('button-pure', () => {
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
-    await before.focus();
-
-    let buttonFocusCalls = 0;
-    await addEventListener(button, 'focus', () => buttonFocusCalls++);
-    let afterFocusCalls = 0;
-    await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-    await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
-    expect(buttonFocusCalls, 'buttonFocusCalls after tab').toBe(0);
-    expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-    await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
-    expect(buttonFocusCalls, 'buttonFocusCalls after second tab').toBe(0);
-    expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+    await expectToSkipFocusOnComponent(page, button, before, after);
   });
 
   it('should submit form via enter key when type is submit', async () => {
