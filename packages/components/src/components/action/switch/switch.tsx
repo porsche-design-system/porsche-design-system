@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
 } from '../../../utils';
 import { getComponentCss } from './switch-styles';
@@ -55,7 +54,6 @@ export class Switch {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
