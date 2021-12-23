@@ -512,6 +512,40 @@ describe('marque', () => {
   });
 
   describe('focus state', () => {
+    it('should be removed from tab order for tabindex -1', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-marque href="#" tabindex="-1">Some label</p-marque>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+      );
+
+      const host = await getHost();
+      const before = await selectNode(page, '#before');
+      const after = await selectNode(page, '#after');
+
+      await before.focus();
+
+      let hostFocusCalls = 0;
+      await addEventListener(host, 'focus', () => hostFocusCalls++);
+      let afterFocusCalls = 0;
+      await addEventListener(after, 'focus', () => afterFocusCalls++);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
+
+      await page.keyboard.press('Tab');
+      await waitForEventSerialization(page);
+      expect(hostFocusCalls, 'marqueFocusCalls after second tab').toBe(0);
+      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+    });
+
     it('should show outline by keyboard navigation only for shadowed <a> when it is focused', async () => {
       await setContentWithLink();
 
