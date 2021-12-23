@@ -23,12 +23,14 @@ import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
 @Component({
   tag: 'p-button',
   styleUrl: 'button.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Button {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated in version 2.8.0, will be removed in v3
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */

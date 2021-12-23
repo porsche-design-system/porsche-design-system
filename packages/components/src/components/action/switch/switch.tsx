@@ -13,7 +13,7 @@ export type SwitchChangeEvent = { checked: boolean };
 
 @Component({
   tag: 'p-switch',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Switch {
   @Element() public host!: HTMLElement;
@@ -36,7 +36,9 @@ export class Switch {
   /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated in version 2.8.0, will be removed in v3
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Adapts the switch color depending on the theme. */

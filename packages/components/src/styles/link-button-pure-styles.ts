@@ -23,6 +23,7 @@ const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
     display: stretch ? 'block' : 'inline-block',
   }),
   ...(!stretch && { verticalAlign: 'top' }),
+  outline: 'none',
 });
 
 const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
