@@ -2,7 +2,6 @@ import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
   isDark,
   isDisabledOrLoading,
   isLightElectric,
@@ -68,7 +67,6 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,

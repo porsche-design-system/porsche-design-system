@@ -5,7 +5,6 @@ import {
   hasVisibleIcon,
   hasSlottedSubline,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
   transitionListener,
   attachComponentCss,
@@ -107,7 +106,6 @@ export class ButtonPure {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,

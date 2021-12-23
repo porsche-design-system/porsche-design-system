@@ -1,10 +1,5 @@
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import {
-  attachComponentCss,
-  breakpoint,
-  improveFocusHandlingForCustomElement,
-  parseAndGetAriaAttributes,
-} from '../../../utils';
+import { attachComponentCss, breakpoint, parseAndGetAriaAttributes } from '../../../utils';
 import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
@@ -33,10 +28,6 @@ export class Marque {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
-
-  public connectedCallback(): void {
-    improveFocusHandlingForCustomElement(this.host);
-  }
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.size);
