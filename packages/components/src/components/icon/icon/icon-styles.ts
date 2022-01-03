@@ -1,5 +1,5 @@
 import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
-import { buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
+import { getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
 
 const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string => {
   const {
@@ -54,10 +54,10 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
   const dimension = getSize(size);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'inline-flex',
       verticalAlign: 'top',
-    }),
+    },
     root: {
       display: 'flex',
       flexShrink: 0,

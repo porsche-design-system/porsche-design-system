@@ -1,10 +1,10 @@
-import { buildHostStyles, getCss, pxToRemWithUnit } from '../../../../utils';
+import { getCss, pxToRemWithUnit } from '../../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
+    },
     root: {
       marginBottom: pxToRemWithUnit(8),
     },

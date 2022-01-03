@@ -1,7 +1,6 @@
 import {
   addImportantToEachRule,
   BreakpointCustomizable,
-  buildHostStyles,
   buildResponsiveStyles,
   getCss,
   getFocusStyles,
@@ -45,11 +44,11 @@ export const getComponentCss = (
   return getCss(
     mergeDeep<Styles>(
       {
-        ...buildHostStyles({
+        ':host': {
           display: 'inline-flex',
           verticalAlign: 'top',
           cursor: 'pointer',
-        }),
+        },
         root: {
           display: 'flex',
           width: '100%',

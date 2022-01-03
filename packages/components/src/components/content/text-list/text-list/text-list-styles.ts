@@ -1,6 +1,5 @@
 import {
   addImportantToRule,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -12,10 +11,10 @@ import { font } from '@porsche-design-system/utilities';
 export const getComponentCss = (theme: Theme): string => {
   const { baseColor } = getThemedColors(theme);
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       counterReset: addImportantToRule('section'),
       display: 'block',
-    }),
+    },
     root: {
       display: 'block',
       padding: 0,

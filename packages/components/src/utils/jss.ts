@@ -106,8 +106,8 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   }
 };
 
-export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
-export const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
+const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
+const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
 export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
   buildGlobalStyles({
     [getTagName(host)]: addImportantToEachRule(jssStyle),

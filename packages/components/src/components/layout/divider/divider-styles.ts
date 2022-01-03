@@ -1,4 +1,4 @@
-import { buildGlobalStyles, buildHostStyles, buildResponsiveStyles, getCss, getThemedColors } from '../../../utils';
+import { buildResponsiveStyles, getCss, getThemedColors } from '../../../utils';
 import type { DividerColor, DividerOrientation } from './divider-utils';
 import type { Theme } from '../../../types';
 
@@ -11,10 +11,10 @@ export const getComponentCss = (color: DividerColor, orientation: DividerOrienta
   };
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles({
+    },
+    '@global': {
       hr: {
         margin: 0,
         padding: 0,
@@ -25,6 +25,6 @@ export const getComponentCss = (color: DividerColor, orientation: DividerOrienta
           o === 'horizontal' ? { height: 1, width: '100%' } : { height: '100%', width: 1 }
         ),
       },
-    }),
+    },
   });
 };

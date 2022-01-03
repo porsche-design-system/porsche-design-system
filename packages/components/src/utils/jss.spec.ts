@@ -1,7 +1,5 @@
 import {
   attachComponentCss,
-  buildGlobalStyles,
-  buildHostStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -80,18 +78,6 @@ describe('supportsConstructableStylesheets()', () => {
     delete global.CSSStyleSheet;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
-  });
-});
-
-describe('buildHostStyles()', () => {
-  it('should return :host styles object', () => {
-    expect(buildHostStyles({ marginLeft: 5 })).toStrictEqual({ ':host': { marginLeft: 5 } });
-  });
-});
-
-describe('buildGlobalStyles()', () => {
-  it('should return @global styles object', () => {
-    expect(buildGlobalStyles({ div: { marginLeft: 5 } })).toStrictEqual({ '@global': { div: { marginLeft: 5 } } });
   });
 });
 
