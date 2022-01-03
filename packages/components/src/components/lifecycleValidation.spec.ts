@@ -51,8 +51,10 @@ import { Grid } from './layout/grid/grid/grid';
 import { GridItem } from './layout/grid/grid-item/grid-item';
 
 type ClassType = {
+  host: HTMLElement;
   connectedCallback?: () => void;
   componentWillLoad?: () => void;
+  componentWillRender?: () => void;
   render: () => void;
 };
 
@@ -117,19 +119,44 @@ it.each<TagName>(tagNamesWithRequiredChild)(
       component.componentWillLoad();
     } catch (e) {}
 
-    expect(spy).toBeCalled();
+    expect(spy).toBeCalledTimes(1);
   }
 );
 
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 
-xit.each<TagName>(tagNamesWithJss)('should call attachComponentCss via connectedCallback() for %s', (tagName) => {
+it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+  component.host = document.createElement(tagName);
+  component.host.attachShadow({ mode: 'open' });
 
   try {
     component.connectedCallback();
   } catch (e) {}
 
-  expect(spy).toBeCalled();
+  if (spy.mock.calls.length) {
+    // connectedCallback()
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
+  } else {
+    // componentWillRender()
+    try {
+      component.componentWillRender();
+    } catch (e) {}
+
+    if (spy.mock.calls.length) {
+      expect(spy).toBeCalledTimes(1);
+      expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
+    } else {
+      // some components like grid-item and text-list-item require a parent to apply styles
+      const parent = document.createElement('div');
+      parent.append(component.host);
+
+      component.componentWillRender(); // call it again
+
+      expect(spy).toBeCalledTimes(1);
+      expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
+    }
+  }
 });
