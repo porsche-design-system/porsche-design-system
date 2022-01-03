@@ -51,7 +51,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-pure": Object {
     "hasSlottedCss": false,
