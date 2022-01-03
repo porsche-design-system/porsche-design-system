@@ -271,12 +271,12 @@ export const getComponentCss = (
       left: 0,
       right: 0,
       color: disabled ? disabledColor : stateColor || contrastMediumColor,
+      ...(!disabled && {
+        '&(:hover)': {
+          color: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
+        },
+      }),
     },
-    ...(!disabled && {
-      ':host(:hover)': {
-        color: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
-      },
-    }),
     ...mergeDeep(
       // merge because of global styles
       filter ? getFilterStyles(isOpen, disabled, state, theme) : getButtonStyles(isOpen, state, theme),

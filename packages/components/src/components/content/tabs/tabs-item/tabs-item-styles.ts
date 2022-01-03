@@ -4,12 +4,12 @@ export const getComponentCss = (): string => {
   return getCss({
     ':host': {
       display: 'block',
-    },
-    ':host([hidden])': {
-      display: 'none',
-    },
-    ':host(:focus),:host(:focus-visible)': {
-      outline: 'none',
+      '&([hidden])': {
+        display: 'none',
+      },
+      '&(:focus),&(:focus-visible)': {
+        outline: 'none',
+      },
     },
   });
 };
