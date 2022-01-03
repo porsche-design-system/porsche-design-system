@@ -85,14 +85,14 @@ export const getComponentCss = (): string => {
       [mediaQueryS]: {
         top: `var(${bannerPositionTopVar})`,
       },
-    },
-    ':host(.hydrated)': {
-      [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-      [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
-    },
-    ':host(.banner--close)': {
-      [mediaQueryXxs]: getAnimationOut('mobileOut'),
-      [mediaQueryS]: getAnimationOut('desktopOut'),
+      '&(.hydrated)': {
+        [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
+        [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
+      },
+      '&(.banner--close)': {
+        [mediaQueryXxs]: getAnimationOut('mobileOut'),
+        [mediaQueryS]: getAnimationOut('desktopOut'),
+      },
     },
     root: getBoxShadow(),
     '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
