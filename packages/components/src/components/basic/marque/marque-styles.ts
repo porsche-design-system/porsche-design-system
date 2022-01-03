@@ -3,7 +3,7 @@ import { color } from '@porsche-design-system/utilities';
 import type { MarqueSize } from './marque-utils';
 import type { JssStyle } from '../../../utils';
 
-const baseSizes: { [key in MarqueSize]?: JssStyle } = {
+const baseSizes: { [key in MarqueSize]?: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
     width: 100,
     height: 60,
