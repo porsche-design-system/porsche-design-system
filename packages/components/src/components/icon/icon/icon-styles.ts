@@ -16,6 +16,7 @@ const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string =>
 
   const colorMap: { [key in IconColor]: string } = {
     brand: brandColor,
+    default: baseColor,
     'neutral-contrast-high': contrastHighColor,
     'neutral-contrast-medium': contrastMediumColor,
     'neutral-contrast-low': contrastLowColor,
@@ -24,7 +25,6 @@ const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string =>
     'notification-error': errorColor,
     'notification-neutral': neutralColor,
     inherit: 'currentColor',
-    default: baseColor,
   };
   return colorMap[color];
 };
