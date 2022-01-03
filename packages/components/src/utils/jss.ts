@@ -106,21 +106,18 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   }
 };
 
-const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
-const buildGlobalStyles = (jssStyle: JssStyle): Styles<'@global'> => ({ '@global': jssStyle });
-export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> =>
-  buildGlobalStyles({
+export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> => ({
+  '@global': {
     [getTagName(host)]: addImportantToEachRule(jssStyle),
-  });
+  },
+});
 
 export type GetStylesFunction = (value?: any) => JssStyle;
 
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
-): Styles<':host'> => {
-  return buildHostStyles(buildResponsiveStyles(rawValue, getStyles));
-};
+): Styles<':host'> => ({ ':host': buildResponsiveStyles(rawValue, getStyles) });
 
 export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
   const value = parseJSON(rawValue as any);
