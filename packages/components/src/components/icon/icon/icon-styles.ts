@@ -13,45 +13,31 @@ const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string =>
     warningColor,
     neutralColor,
   } = getThemedColors(theme);
-  switch (color) {
-    case 'brand':
-      return brandColor;
-    case 'neutral-contrast-high':
-      return contrastHighColor;
-    case 'neutral-contrast-medium':
-      return contrastMediumColor;
-    case 'neutral-contrast-low':
-      return contrastLowColor;
-    case 'notification-success':
-      return successColor;
-    case 'notification-warning':
-      return warningColor;
-    case 'notification-error':
-      return errorColor;
-    case 'notification-neutral':
-      return neutralColor;
-    case 'inherit':
-      return 'currentColor';
-    default:
-      return baseColor;
-  }
+
+  const colorMap: { [key in IconColor]: string } = {
+    brand: brandColor,
+    'neutral-contrast-high': contrastHighColor,
+    'neutral-contrast-medium': contrastMediumColor,
+    'neutral-contrast-low': contrastLowColor,
+    'notification-success': successColor,
+    'notification-warning': warningColor,
+    'notification-error': errorColor,
+    'notification-neutral': neutralColor,
+    inherit: 'currentColor',
+    default: baseColor,
+  };
+  return colorMap[color];
 };
 
-const getSize = (size: IconSize): string => {
-  switch (size) {
-    case 'large':
-      return pxToRemWithUnit(48);
-    case 'medium':
-      return pxToRemWithUnit(36);
-    case 'inherit':
-      return 'inherit';
-    default:
-      return pxToRemWithUnit(24);
-  }
+const sizeMap: { [key in IconSize]: string } = {
+  small: pxToRemWithUnit(24),
+  medium: pxToRemWithUnit(36),
+  large: pxToRemWithUnit(48),
+  inherit: 'inherit',
 };
 
 export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
-  const dimension = getSize(size);
+  const dimension = sizeMap[size];
 
   return getCss({
     ':host': {
