@@ -112,7 +112,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button-group 1`] = `
-"<div class=\\"root root--direction-column root--direction-row-xs\\" role=\\"group\\">
+"<div role=\\"group\\">
   <slot>
   </slot>
 </div>"
