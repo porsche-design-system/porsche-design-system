@@ -40,7 +40,6 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
       padding: 0,
       boxSizing: 'border-box',
       strokeWidth: 1,
-      animationDuration,
     },
     'sr-only': srOnly(),
     '@global': {
