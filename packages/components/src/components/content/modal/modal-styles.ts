@@ -3,8 +3,6 @@ import {
   addImportantToEachRule,
   BreakpointKey,
   BREAKPOINTS,
-  buildGlobalStyles,
-  buildHostStyles,
   buildResponsiveStyles,
   contentWrapperVars,
   getCss,
@@ -61,7 +59,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       ...addImportantToEachRule({
         position: 'fixed',
         ...getInset(),
@@ -87,7 +85,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         ...getInset(),
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
-    }),
+    },
     root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
       position: 'relative',
       boxSizing: 'border-box',
@@ -106,7 +104,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
-    ...buildGlobalStyles({
+    '@global': {
       header: {
         display: 'flex',
         alignItems: 'flex-start',
@@ -119,7 +117,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
           padding: `0 0 ${pxToRemWithUnit(32)}`,
         },
       },
-    }),
+    },
     close: {
       margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
       padding: pxToRemWithUnit(8),

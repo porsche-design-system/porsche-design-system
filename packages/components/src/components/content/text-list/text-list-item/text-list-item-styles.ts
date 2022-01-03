@@ -1,4 +1,4 @@
-import { addImportantToEachRule, buildHostStyles, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
+import { addImportantToEachRule, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
 import { text } from '@porsche-design-system/utilities';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
@@ -77,15 +77,13 @@ export const getComponentCss = (listType: ListType, orderType: OrderType, isNest
     },
   };
 
-  return getCss(
-    buildHostStyles(
-      addImportantToEachRule(
-        mergeDeep(
-          baseComponentStyle,
-          getTypeStyles(listType, orderType, isNestedList),
-          getNestedListStyles(isNestedList, listType)
-        )
+  return getCss({
+    ':host': addImportantToEachRule(
+      mergeDeep(
+        baseComponentStyle,
+        getTypeStyles(listType, orderType, isNestedList),
+        getNestedListStyles(isNestedList, listType)
       )
-    )
-  );
+    ),
+  });
 };

@@ -1,6 +1,4 @@
 import {
-  buildGlobalStyles,
-  buildHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
@@ -31,10 +29,10 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'inline-flex',
       verticalAlign: 'top',
-    }),
+    },
     root: {
       display: 'block',
       ...buildResponsiveStyles(size, (s: SpinnerSizeType) => sizeMap[s]),
@@ -45,25 +43,25 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
       animationDuration,
     },
     'sr-only': srOnly(),
-    ...buildGlobalStyles({
-      circle: {
-        stroke: isDark(theme) || isDarkElectric(theme) ? baseColor : contrastHighColor,
-      },
+    '@global': {
       svg: {
         display: 'block',
         position: 'relative',
         fill: 'none',
         transform: 'translate3d(0,0,0)',
       },
-      'circle:first-child': {
-        opacity: 0.4,
-      },
-      'circle:last-child': {
-        transformOrigin: '0 0',
-        animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
-        strokeDasharray: '40, 200',
-        strokeDashoffset: 0,
-        strokeLinecap: 'round',
+      circle: {
+        stroke: isDark(theme) || isDarkElectric(theme) ? baseColor : contrastHighColor,
+        '&:first-child': {
+          opacity: 0.4,
+        },
+        '&:last-child': {
+          transformOrigin: '0 0',
+          animation: `$rotate ${animationDuration} linear infinite,$dash ${animationDuration} ease-in-out infinite`,
+          strokeDasharray: '40, 200',
+          strokeDashoffset: 0,
+          strokeLinecap: 'round',
+        },
       },
       '@keyframes rotate': {
         '100%': {
@@ -82,7 +80,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
           strokeDashoffset: '-52',
         },
       },
-    }),
+    },
   });
 };
 

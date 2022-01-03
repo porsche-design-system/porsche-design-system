@@ -1,8 +1,9 @@
-import { buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
+import { getCss, getFocusStyles, mediaQuery } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import { MarqueSize } from './marque-utils';
+import type { MarqueSize } from './marque-utils';
+import type { JssStyle } from '../../../utils';
 
-const baseSizes = {
+const baseSizes: { [key in MarqueSize]?: JssStyle } = {
   small: {
     width: 100,
     height: 60,
@@ -15,11 +16,11 @@ const baseSizes = {
 
 export const getComponentCss = (size: MarqueSize): string => {
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'inline-flex',
       verticalAlign: 'top',
-    }),
-    ...buildGlobalStyles({
+    },
+    '@global': {
       a: {
         display: 'block',
         textDecoration: 'none',
@@ -35,6 +36,6 @@ export const getComponentCss = (size: MarqueSize): string => {
         width: '100%',
         height: 'auto',
       },
-    }),
+    },
   });
 };

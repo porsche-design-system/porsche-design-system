@@ -1,7 +1,5 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
-  buildGlobalStyles,
-  buildHostStyles,
   getCss,
   getInset,
   getTextHiddenJssStyle,
@@ -25,34 +23,36 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
   const { contrastHighColor, contrastMediumColor } = getThemedColors(theme);
   const { stateColor } = getThemedFormStateColors(theme, state);
 
-  return buildGlobalStyles({
-    button: {
-      position: 'absolute',
-      top: 0,
-      height: INPUT_HEIGHT,
-      width: '100%',
-      padding: 0,
-      background: 'transparent',
-      border: `${stateColor ? 2 : 1}px solid currentColor`,
-      outline: '1px solid transparent',
-      outlineOffset: 2,
-      cursor: 'pointer',
-      color: 'currentColor',
-      transition: getTransition('color'),
-      ...(isOpen && {
-        outlineColor: stateColor || contrastMediumColor,
-      }),
-      '&:focus': {
-        outlineColor: stateColor || contrastMediumColor,
-      },
-      '&:hover:not(:disabled) ~ ul': {
-        borderColor: contrastHighColor,
-      },
-      '&:disabled': {
-        cursor: 'not-allowed',
+  return {
+    '@global': {
+      button: {
+        position: 'absolute',
+        top: 0,
+        height: INPUT_HEIGHT,
+        width: '100%',
+        padding: 0,
+        background: 'transparent',
+        border: `${stateColor ? 2 : 1}px solid currentColor`,
+        outline: '1px solid transparent',
+        outlineOffset: 2,
+        cursor: 'pointer',
+        color: 'currentColor',
+        transition: getTransition('color'),
+        ...(isOpen && {
+          outlineColor: stateColor || contrastMediumColor,
+        }),
+        '&:focus': {
+          outlineColor: stateColor || contrastMediumColor,
+        },
+        '&:hover:not(:disabled) ~ ul': {
+          borderColor: contrastHighColor,
+        },
+        '&:disabled': {
+          cursor: 'not-allowed',
+        },
       },
     },
-  });
+  };
 };
 
 export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
@@ -64,56 +64,58 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
     color: disabled ? disabledColor : baseColor,
   };
 
-  return buildGlobalStyles({
-    input: {
-      display: 'block',
-      position: 'absolute',
-      zIndex: 1,
-      bottom: pxToRemWithUnit(2), // input is inset to not overlap with 1px or 2px border of state
-      left: pxToRemWithUnit(2),
-      width: `calc(100% - ${pxToRemWithUnit(INPUT_HEIGHT - 4)})`,
-      height: pxToRemWithUnit(INPUT_HEIGHT - 4),
-      padding: pxToRemWithUnit(10),
-      outline: 'none',
-      appearance: 'none',
-      boxSizing: 'border-box',
-      border: 'none',
-      opacity: 0,
-      fontFamily: font.family,
-      ...font.size.small,
-      fontWeight: font.weight.regular,
-      textIndent: 0,
-      cursor: disabled ? 'not-allowed' : 'text',
-      color: baseColor,
-      background: backgroundColor,
-      '&::placeholder': placeHolderStyles,
-      '&::-webkit-input-placeholder': placeHolderStyles,
-      '&::-moz-placeholder': placeHolderStyles,
-      '&:focus': {
-        opacity: disabled ? 0 : 1, // to display value while typing
+  return {
+    '@global': {
+      input: {
+        display: 'block',
+        position: 'absolute',
+        zIndex: 1,
+        bottom: pxToRemWithUnit(2), // input is inset to not overlap with 1px or 2px border of state
+        left: pxToRemWithUnit(2),
+        width: `calc(100% - ${pxToRemWithUnit(INPUT_HEIGHT - 4)})`,
+        height: pxToRemWithUnit(INPUT_HEIGHT - 4),
+        padding: pxToRemWithUnit(10),
+        outline: 'none',
+        appearance: 'none',
+        boxSizing: 'border-box',
+        border: 'none',
+        opacity: 0,
+        fontFamily: font.family,
+        ...font.size.small,
+        fontWeight: font.weight.regular,
+        textIndent: 0,
+        cursor: disabled ? 'not-allowed' : 'text',
+        color: baseColor,
+        background: backgroundColor,
+        '&::placeholder': placeHolderStyles,
+        '&::-webkit-input-placeholder': placeHolderStyles,
+        '&::-moz-placeholder': placeHolderStyles,
+        '&:focus': {
+          opacity: disabled ? 0 : 1, // to display value while typing
+          '&+span': {
+            outlineColor: stateColor || contrastMediumColor,
+          },
+        },
+        '&:hover:not(:disabled) ~ ul': {
+          borderColor: contrastHighColor,
+        },
         '&+span': {
-          outlineColor: stateColor || contrastMediumColor,
+          // for focus outline and click event on arrow
+          position: 'absolute',
+          ...getInset(),
+          outline: '1px solid transparent',
+          outlineOffset: 2,
+          transition: getTransition('color'),
+          pointerEvents: 'all',
+          cursor: disabled ? 'not-allowed' : 'pointer',
+          border: `${stateColor ? 2 : 1}px solid currentColor`,
+          ...(isOpen && {
+            outlineColor: stateColor || contrastMediumColor,
+          }),
         },
       },
-      '&:hover:not(:disabled) ~ ul': {
-        borderColor: contrastHighColor,
-      },
-      '&+span': {
-        // for focus outline and click event on arrow
-        position: 'absolute',
-        ...getInset(),
-        outline: '1px solid transparent',
-        outlineOffset: 2,
-        transition: getTransition('color'),
-        pointerEvents: 'all',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        border: `${stateColor ? 2 : 1}px solid currentColor`,
-        ...(isOpen && {
-          outlineColor: stateColor || contrastMediumColor,
-        }),
-      },
     },
-  });
+  };
 };
 
 export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
@@ -142,7 +144,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
   };
 
   return {
-    ...buildGlobalStyles({
+    '@global': {
       ul: {
         display: 'block',
         position: `var(${dropdownPositionVar})`, // for vrt tests
@@ -196,7 +198,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
           pointerEvents: 'none',
         }),
       },
-    }),
+    },
     option: {
       display: 'flex',
       padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(11)}`,
@@ -260,7 +262,7 @@ export const getComponentCss = (
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
       display: 'block',
       position: `var(${dropdownPositionVar})`, // for vrt tests
@@ -269,7 +271,7 @@ export const getComponentCss = (
       left: 0,
       right: 0,
       color: disabled ? disabledColor : stateColor || contrastMediumColor,
-    }),
+    },
     ...(!disabled && {
       ':host(:hover)': {
         color: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
