@@ -35,10 +35,6 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
-// Pagination Types
-export type NumberOfPageLinks = 5 | 7;
-export type PageChangeEvent = { page: number; previousPage: number };
-
 // BreakpointCustomizable Types
 export type { BreakpointKey, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
