@@ -39,8 +39,11 @@ export class TextList {
   }
 
   public connectedCallback(): void {
-    attachComponentCss(this.host, getComponentCss, this.theme);
     attachSlottedCss(this.host, getSlottedCss);
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.theme);
   }
 
   public render(): JSX.Element {
