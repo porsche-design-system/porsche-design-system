@@ -13,6 +13,7 @@ import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
+import { FieldsetWrapperLabelSize } from "./components/form/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
@@ -238,7 +239,7 @@ export namespace Components {
         /**
           * The size of the label text.
          */
-        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
          */
@@ -1494,7 +1495,7 @@ declare namespace LocalJSX {
         /**
           * The size of the label text.
          */
-        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
          */
