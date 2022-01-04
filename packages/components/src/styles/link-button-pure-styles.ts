@@ -2,7 +2,6 @@ import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from
 import {
   addImportantToEachRule,
   addImportantToRule,
-  buildResponsiveHostStyles,
   buildResponsiveStyles,
   getFocusStyles,
   getInset,
@@ -125,7 +124,7 @@ export const getLinkButtonPureStyles = (
   const hasIcon = hasVisibleIcon(icon);
 
   return {
-    ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
+    ':host': buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
     root: {
       display: 'flex',
       alignItems: 'flex-start',
