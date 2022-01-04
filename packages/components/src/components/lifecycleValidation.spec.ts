@@ -108,9 +108,14 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
 /* Auto Generated End */
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
+const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+
+it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
+  expect(Object.keys(TAG_NAMES_CONSTRUCTOR_MAP).length).toBe(TAG_NAMES.length);
+});
 
 it.each<TagName>(tagNamesWithRequiredChild)(
-  'should call getHTMLElementAndThrowIfUndefined via componentWillLoad() for %s',
+  'should call getHTMLElementAndThrowIfUndefined() via componentWillLoad for %s',
   (tagName) => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
@@ -122,8 +127,6 @@ it.each<TagName>(tagNamesWithRequiredChild)(
     expect(spy).toBeCalledTimes(1);
   }
 );
-
-const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 
 it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
