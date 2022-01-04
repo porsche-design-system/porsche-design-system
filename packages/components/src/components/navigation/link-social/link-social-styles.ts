@@ -14,7 +14,7 @@ import {
 import { color } from '@porsche-design-system/utilities';
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
-import { getIconLabelStyles, getRootStyles, getSlottedLinkStyles } from '../link/link-styles';
+import { getIconLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
 
 const getColors = (
   icon: SocialIconName,

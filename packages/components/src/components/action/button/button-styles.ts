@@ -1,13 +1,13 @@
 import { getCss } from '../../../utils';
 import { getLinkButtonStyles } from '../../../styles/link-button-styles';
 import type { BreakpointCustomizable } from '../../../utils';
-import type { LinkVariant, ThemeExtendedElectric } from '../../../types';
+import type { ButtonVariant, ThemeExtendedElectric } from '../../../types';
 
 export const getComponentCss = (
-  variant: LinkVariant,
+  variant: ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
-  hasSlottedAnchor: boolean,
+  isDisabledOrLoading: boolean,
   theme: ThemeExtendedElectric
 ): string => {
-  return getCss(getLinkButtonStyles(variant, hideLabel, false, hasSlottedAnchor, theme));
+  return getCss(getLinkButtonStyles(variant, hideLabel, isDisabledOrLoading, false, theme));
 };
