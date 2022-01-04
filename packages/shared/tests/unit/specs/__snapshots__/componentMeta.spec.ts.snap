@@ -45,7 +45,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-group": Object {
     "hasSlottedCss": false,
