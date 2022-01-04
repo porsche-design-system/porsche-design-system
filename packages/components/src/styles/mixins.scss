@@ -51,61 +51,6 @@
   @return $string;
 }
 
-@mixin adjust-to-font-size($size) {
-  @if $size == 'inherit' {
-    font-size: inherit;
-    line-height: inherit;
-
-    .icon {
-      width: 1.5em;
-      height: 1.5em;
-    }
-  } @else {
-    @include p-generate-type-scale($size);
-
-    .icon {
-      width: #{p-calculate-line-height($size)}em;
-      height: #{p-calculate-line-height($size)}em;
-    }
-
-    + * {
-      @if $size == $p-font-size-x-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-small {
-        @include p-generate-type-scale($size);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-medium {
-        @include p-generate-type-scale($p-font-size-20);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-large {
-        @include p-generate-type-scale($p-font-size-30);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else if $size == $p-font-size-x-large {
-        @include p-generate-type-scale($p-font-size-large);
-        &::before {
-          font-size: $size;
-          margin-left: #{p-calculate-line-height($size)}em;
-        }
-      } @else {
-        @error "Unknown size #{$size}.";
-      }
-    }
-  }
-}
-
 @mixin state-message() {
   .message {
     display: flex;
