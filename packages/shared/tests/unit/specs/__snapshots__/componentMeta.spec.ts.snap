@@ -82,7 +82,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-flex": Object {
     "hasSlottedCss": false,
