@@ -28,6 +28,7 @@
     "lint:ts": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}'",
     "lint:ts:fix": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}' --fix",
     "test": "yarn test:unit",
+    "pretest:unit": "ts-node --project './tsconfig.node.json' './scripts/generateConstructorMap.ts'",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
