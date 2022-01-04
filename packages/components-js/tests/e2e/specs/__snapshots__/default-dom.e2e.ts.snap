@@ -451,20 +451,20 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-pagination 1`] = `
-"<nav class=\\"root root--size-5 root--size-7-xs\\" role=\\"navigation\\" aria-label=\\"Pagination\\">
-  <ul class=\\"items\\">
-    <li class=\\"item\\">
-      <span class=\\"prev prev--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
+"<nav role=\\"navigation\\" aria-label=\\"Pagination\\">
+  <ul>
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"goto goto--current\\" role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
+    <li>
+      <span role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
         1</span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"next next--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
