@@ -1,13 +1,12 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, isDark, getThemeDarkAttribute, attachSlottedCss } from '../../../../utils';
+import { getPrefixedTagNames, getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
-import { getSlottedCss } from './headline-styles';
+import { getComponentCss, getSlottedCss } from './headline-styles';
 
 @Component({
   tag: 'p-headline',
-  styleUrl: 'headline.scss',
   shadow: true,
 })
 export class Headline {
@@ -35,24 +34,19 @@ export class Headline {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.variant, this.ellipsis, this.align, this.color, this.theme);
+  }
+
   public render(): JSX.Element {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
     const isHeadlineVariantType = isVariantType(this.variant);
-
-    const rootClasses = {
-      ['root']: true,
-      [`root--variant-${this.variant}`]: isHeadlineVariantType || this.variant === 'inherit',
-      [`root--align-${this.align}`]: this.align !== 'left',
-      [`root--color-${this.color}`]: this.color !== 'default',
-      ['root--ellipsis']: this.ellipsis,
-      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
-    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
-        <TagName class={rootClasses}>
+        <TagName class="root">
           {!isHeadlineVariantType ? (
             <PrefixedTagNames.pText
               size={this.variant}
