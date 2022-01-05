@@ -13,19 +13,17 @@ import {
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
 import {
+  attachComponentCss,
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
-  isDark,
-  isLightElectric,
-  mapBreakpointPropToClasses,
   scrollElementTo,
   setAttribute,
 } from '../../../utils';
+import { getComponentCss } from './tabs-bar-styles';
 
 @Component({
   tag: 'p-tabs-bar',
-  styleUrl: 'tabs-bar.scss',
   shadow: true,
 })
 export class TabsBar {
@@ -56,7 +54,7 @@ export class TabsBar {
   private intersectionObserver: IntersectionObserver;
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
-  private statusBarElement: HTMLElement;
+  private barElement: HTMLElement;
   private firstGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
@@ -86,14 +84,18 @@ export class TabsBar {
 
     // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setStatusBarStyle();
+    this.setBarStyle();
     this.addEventListeners();
     this.initIntersectionObserver();
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.gradientColorScheme, this.theme);
+  }
+
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
-    this.setStatusBarStyle();
+    this.setBarStyle();
     this.setAccessibilityAttributes();
   }
 
@@ -103,65 +105,50 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--theme-light-electric']: isLightElectric(this.theme),
-      ['root--weight-semibold']: this.weight === 'semibold',
-      ...mapBreakpointPropToClasses('root--size', this.size),
+    const renderPrevNextButton = (direction: Direction): JSX.Element => {
+      const isDirectionNext = direction === 'next';
+      const actionClasses = {
+        ['action']: true,
+        [`action--${direction}`]: true,
+        ['action--hidden']: isDirectionNext ? this.isNextHidden : this.isPrevHidden,
+      };
+
+      const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+      return (
+        <div class={actionClasses}>
+          <span class="gradient" />
+          <PrefixedTagNames.pButtonPure
+            type="button"
+            tabbable={false}
+            hide-label="true"
+            size="inherit"
+            icon={isDirectionNext ? 'arrow-head-right' : 'arrow-head-left'}
+            onClick={() => this.scrollOnPrevNextClick(direction)}
+            theme={this.theme}
+            aria-hidden="true"
+          >
+            {direction}
+          </PrefixedTagNames.pButtonPure>
+        </div>
+      );
     };
 
-    const scrollWrapperTriggerClasses = 'scroll-wrapper__trigger';
-
     return (
-      <div class={rootClasses}>
+      <div class="root">
         <div class="scroll-area" role="tablist">
           <div class="scroll-wrapper">
             <slot />
-            <span class="status-bar" />
-            <div class={scrollWrapperTriggerClasses} />
-            <div class={scrollWrapperTriggerClasses} />
+            <span class="bar" />
+            <div class="trigger" />
+            <div class="trigger" />
           </div>
         </div>
-        {this.renderPrevNextButton('prev')}
-        {this.renderPrevNextButton('next')}
+        {renderPrevNextButton('prev')}
+        {renderPrevNextButton('next')}
       </div>
     );
   }
-
-  private renderPrevNextButton = (direction: Direction): JSX.Element => {
-    const actionClasses = {
-      ['action']: true,
-      [`action--${direction}`]: true,
-      ['action--hidden']: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
-    };
-
-    const gradientClasses = {
-      ['gradient']: true,
-      ['gradient--color-scheme-surface']: this.gradientColorScheme === 'surface',
-      [`gradient--${direction}`]: true,
-    };
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    return (
-      <div class={actionClasses}>
-        <span class={gradientClasses} />
-        <PrefixedTagNames.pButtonPure
-          aria-hidden="true"
-          type="button"
-          tabbable={false}
-          theme={this.theme}
-          hide-label="true"
-          size="inherit"
-          icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-          onClick={() => this.scrollOnPrevNextClick(direction)}
-        >
-          {direction}
-        </PrefixedTagNames.pButtonPure>
-      </div>
-    );
-  };
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabElements)) {
@@ -179,34 +166,34 @@ export class TabsBar {
     }
   };
 
-  private setStatusBarStyle = (): void => {
+  private setBarStyle = (): void => {
     // TODO: move entire function into utilities and refactor to single setAttribute call
     // statusBarElement is undefined on first render
-    if (!this.statusBarElement) {
+    if (!this.barElement) {
       return;
     }
 
     if (this.activeTabIndex === undefined && this.prevActiveTabIndex !== undefined) {
       // handle initial inactive + active to inactive cases
-      addEnableTransitionClass(this.statusBarElement);
+      addEnableTransitionClass(this.barElement);
       const transformationToInactive = getTransformationToInactive(this.tabElements[this.prevActiveTabIndex]);
-      setAttribute(this.statusBarElement, 'style', transformationToInactive);
+      setAttribute(this.barElement, 'style', transformationToInactive);
     } else if (this.activeTabIndex === undefined && this.prevActiveTabIndex === undefined) {
       // handle active to removed
-      removeEnableTransitionClass(this.statusBarElement);
+      removeEnableTransitionClass(this.barElement);
       const transformationToInactive = getTransformationToInactive();
-      setAttribute(this.statusBarElement, 'style', transformationToInactive);
+      setAttribute(this.barElement, 'style', transformationToInactive);
     } else {
       // handle initial active + active to active + inactive to active cases
-      determineEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.statusBarElement);
+      determineEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.barElement);
       const transformationToActive = getTransformationToActive(this.tabElements[this.activeTabIndex]);
-      setAttribute(this.statusBarElement, 'style', transformationToActive);
+      setAttribute(this.barElement, 'style', transformationToActive);
     }
   };
 
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
-    this.statusBarElement = getHTMLElement(shadowRoot, '.status-bar');
+    this.barElement = getHTMLElement(shadowRoot, '.bar');
     this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
     this.firstGradientElement = getHTMLElement(shadowRoot, '.gradient:first-child');
   };
@@ -230,7 +217,7 @@ export class TabsBar {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.prevActiveTabIndex = this.activeTabIndex;
-      this.setStatusBarStyle();
+      this.setBarStyle();
       this.setAccessibilityAttributes();
     });
     this.hostObserver.observe(this.host, {
@@ -241,7 +228,7 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.scroll-wrapper__trigger');
+    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
