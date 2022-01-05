@@ -85,6 +85,7 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)': {
+          // export for text-style => helper in styles folder
           margin: 'inherit',
           padding: 'inherit',
           fontFamily: 'inherit',
@@ -108,7 +109,9 @@ export const getComponentCss = (
         wordWrap: 'break-word',
         hyphens: 'auto',
         whiteSpace: 'inherit',
+        // use typ.ts definitions for title & headline
         ...getVariantStyle(variant),
+        // condition for color & align
         ...(align && { textAlign: align }),
         ...(color && { color: 'inherit' }),
         ...(ellipsis && {
@@ -122,7 +125,6 @@ export const getComponentCss = (
   );
 };
 
-// do we still need those slotted styles?
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     mergeDeep(

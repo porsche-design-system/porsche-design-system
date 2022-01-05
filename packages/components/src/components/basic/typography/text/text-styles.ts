@@ -53,6 +53,7 @@ export const getComponentCss = (
     neutralColor,
   } = getThemedColors(theme);
 
+  // use icon styles and move to helper
   const getThemedTextColor = {
     default: baseColor,
     brand: brandColor,
@@ -85,9 +86,7 @@ export const getComponentCss = (
           },
       }),
       root: {
-        // what is that for?
-        // $bem-block: &;
-        '-webkit-text-size-adjust': 'none', // correct key?
+        '-webkit-text-size-adjust': 'none', // check for camel case & add to headline // stop iOS safari from adjusting font size when screen rotation is changing
         fontFamily: font.family, // nowhere in scss defined!?
         textAlign: 'left',
         padding: 0,
@@ -100,8 +99,10 @@ export const getComponentCss = (
         color: baseColor,
         whiteSpace: 'inherit',
         transition: 'font-size 1ms linear',
+        // align and weight without condition
         ...(align && { textAlign: align }), // export for headline?
         ...(weight && { fontWeight: weight }),
+        // use helper for responisvestyles && check conditions for weight / align
         ...(size && getSizeStyle(size)),
         ...(color && { color: getThemedTextColor[color] }),
         ...(ellipsis && {
