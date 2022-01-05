@@ -1,33 +1,5 @@
 import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
-import { getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
-
-const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string => {
-  const {
-    baseColor,
-    brandColor,
-    contrastHighColor,
-    contrastMediumColor,
-    contrastLowColor,
-    successColor,
-    errorColor,
-    warningColor,
-    neutralColor,
-  } = getThemedColors(theme);
-
-  const colorMap: { [key in IconColor]: string } = {
-    brand: brandColor,
-    default: baseColor,
-    'neutral-contrast-high': contrastHighColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-low': contrastLowColor,
-    'notification-success': successColor,
-    'notification-warning': warningColor,
-    'notification-error': errorColor,
-    'notification-neutral': neutralColor,
-    inherit: 'currentColor',
-  };
-  return colorMap[color];
-};
+import { getCss, pxToRemWithUnit, getColor } from '../../../utils';
 
 const sizeMap: { [key in IconSize]: string } = {
   small: pxToRemWithUnit(24),
@@ -54,7 +26,7 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       height: dimension,
       color: getColor(color, theme),
       '& > svg': {
-        fill: 'currentcolor',
+        fill: 'currentColor',
       },
     },
   });
