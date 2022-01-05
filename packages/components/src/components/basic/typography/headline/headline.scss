@@ -1,4 +1,3 @@
-/*
 @import '../../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../../styles/internal.variables';
 
@@ -27,7 +26,7 @@
 }
 
 .root {
-   $bem-block: &;
+  $bem-block: &;
   padding: 0;
   margin: 0;
   text-align: left;
@@ -72,7 +71,7 @@
     }
   }
 
-    &--align {
+  &--align {
     &-center {
       text-align: center;
     }
@@ -95,4 +94,3 @@
     white-space: nowrap;
   }
 }
-*/
