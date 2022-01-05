@@ -58,7 +58,7 @@ export class TabsBar {
   private firstGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
-  private hasPTabsParent: boolean = hasPTabsParent(this.host);
+  private hasPTabsParent: boolean;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
@@ -69,6 +69,7 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
+    this.hasPTabsParent = hasPTabsParent(this.host);
     this.setTabElements();
     this.initMutationObserver();
   }
