@@ -1,31 +1,30 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
-import { isDark, mapBreakpointPropToClasses } from '../../../utils';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { attachComponentCss } from '../../../utils';
+import type { Theme } from '../../../types';
+import type { DividerColor, DividerOrientation } from './divider-utils';
+import { getComponentCss } from './divider-styles';
 
 @Component({
   tag: 'p-divider',
-  styleUrl: 'divider.scss',
   shadow: true,
 })
 export class Divider {
+  @Element() public host!: HTMLElement;
+
   /** Defines color depending on theme. */
-  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' =
-    'neutral-contrast-low';
+  @Prop() public color?: DividerColor = 'neutral-contrast-low';
 
   /** Defines orientation. */
-  @Prop() public orientation?: BreakpointCustomizable<'vertical' | 'horizontal'> = 'horizontal';
+  @Prop() public orientation?: DividerOrientation = 'horizontal';
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--color-${this.color}`]: this.color !== 'neutral-contrast-low',
-      ['root--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('root--orientation', this.orientation),
-    };
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.color, this.orientation, this.theme);
+  }
 
-    return <hr class={rootClasses} />;
+  public render(): JSX.Element {
+    return <hr />;
   }
 }

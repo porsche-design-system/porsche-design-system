@@ -1,7 +1,5 @@
 import {
   addImportantToEachRule,
-  buildGlobalStyles,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -26,27 +24,25 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
   const defaultPadding = pxToRemWithUnit(isVisibleState(state) ? 10 : 11);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles(
-      addImportantToEachRule(
-        mergeDeep(
-          getBaseChildStyles('select', state, theme, {
-            position: 'static',
-            cursor: 'pointer',
-            padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
-            '&@-moz-document url-prefix()': {
-              // fix for 3px text-indention in FF
-              paddingLeft: pxToRemWithUnit(8),
-            },
-          }),
-          {
-            '::slotted(select:disabled)': {
-              background: isDarkTheme ? color.default : backgroundColor, // 🤷
-            },
-          }
-        )
+    },
+    '@global': addImportantToEachRule(
+      mergeDeep(
+        getBaseChildStyles('select', state, theme, {
+          position: 'static',
+          cursor: 'pointer',
+          padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
+          '&@-moz-document url-prefix()': {
+            // fix for 3px text-indention in FF
+            paddingLeft: pxToRemWithUnit(8),
+          },
+        }),
+        {
+          '::slotted(select:disabled)': {
+            background: isDarkTheme ? color.default : backgroundColor, // 🤷
+          },
+        }
       )
     ),
     root: {

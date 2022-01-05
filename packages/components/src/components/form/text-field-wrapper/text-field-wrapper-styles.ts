@@ -1,8 +1,6 @@
 import {
   addImportantToEachRule,
   BreakpointCustomizable,
-  buildGlobalStyles,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -30,10 +28,10 @@ export const getComponentCss = (
   const hasVisibleState = isVisibleState(state);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles({
+    },
+    '@global': {
       ...addImportantToEachRule({
         ...getBaseChildStyles(
           'input',
@@ -90,7 +88,7 @@ export const getComponentCss = (
           cursor: 'not-allowed',
         },
       },
-    }),
+    },
     root: {
       display: 'block',
       position: 'relative',

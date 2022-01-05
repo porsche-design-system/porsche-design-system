@@ -1,3 +1,4 @@
 import type { BreakpointCustomizable } from '../../../types';
 
-export type ButtonGroupDirection = BreakpointCustomizable<'row' | 'column'>;
+export type ButtonGroupDirectionType = 'row' | 'column';
+export type ButtonGroupDirection = BreakpointCustomizable<ButtonGroupDirectionType>;

@@ -1,7 +1,5 @@
 import {
   addImportantToEachRule,
-  buildGlobalStyles,
-  buildHostStyles,
   getCss,
   getFocusStyles,
   getHoverStyles,
@@ -13,17 +11,15 @@ import { color, font, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'table-cell',
-        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-        borderBottom: `1px solid ${color.neutralContrast.medium}`,
-        verticalAlign: 'bottom',
-        fontWeight: font.weight.semibold,
-        whiteSpace: 'nowrap',
-      })
-    ),
-    ...buildGlobalStyles({
+    ':host': addImportantToEachRule({
+      display: 'table-cell',
+      padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+      borderBottom: `1px solid ${color.neutralContrast.medium}`,
+      verticalAlign: 'bottom',
+      fontWeight: font.weight.semibold,
+      whiteSpace: 'nowrap',
+    }),
+    '@global': {
       button: {
         display: 'flex',
         alignItems: 'flex-end',
@@ -47,7 +43,7 @@ export const getComponentCss = (): string => {
           },
         },
       },
-    }),
+    },
     hidden: {
       ...getTextHiddenJssStyle(true),
       display: 'block',

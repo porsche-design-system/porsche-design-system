@@ -1,4 +1,4 @@
-import { buildHostStyles, contentWrapperVars, getCss, getThemedColors, JssStyle, mediaQuery } from '../../../utils';
+import { contentWrapperVars, getCss, getThemedColors, JssStyle, mediaQuery } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 
@@ -26,9 +26,9 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'flex',
-    }),
+    },
     root: {
       margin: '0 auto',
       backgroundColor: backgroundColor === 'default' ? getThemedColors(theme).backgroundColor : 'transparent',

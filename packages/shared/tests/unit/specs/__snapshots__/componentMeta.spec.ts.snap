@@ -45,13 +45,13 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-group": Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-pure": Object {
     "hasSlottedCss": false,
@@ -76,13 +76,13 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-fieldset-wrapper": Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-flex": Object {
     "hasSlottedCss": false,
@@ -177,7 +177,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-popover": Object {
     "hasSlottedCss": true,
@@ -209,7 +209,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-switch": Object {
     "hasSlottedCss": false,
@@ -269,20 +269,20 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-bar": Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-item": Object {
     "hasSlottedCss": false,
     "isFocusable": false,
     "isThemeable": false,
     "requiredParent": "p-tabs",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text": Object {
     "hasSlottedCss": true,
@@ -301,7 +301,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-list-item": Object {
     "hasSlottedCss": false,

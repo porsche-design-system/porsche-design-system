@@ -9,7 +9,7 @@ import {
   determineEnableTransitionClass,
 } from './tabs-bar-utils';
 
-const enableTransitionClass = 'status-bar--enable-transition';
+const enableTransitionClass = 'bar--enable-transition';
 
 describe('sanitizeActiveTabIndex()', () => {
   it.each([
@@ -52,7 +52,7 @@ describe('getTransformationToActive()', () => {
 });
 
 describe('addEnableTransitionClass()', () => {
-  it('should add "status-bar--enable-transition" class', () => {
+  it('should add "bar--enable-transition" class', () => {
     const div = document.createElement('div');
     expect(div.classList.contains(enableTransitionClass)).toBe(false);
 
@@ -60,7 +60,7 @@ describe('addEnableTransitionClass()', () => {
     expect(div.classList.contains(enableTransitionClass)).toBe(true);
   });
 
-  it('should add only one "status-bar--enable-transition" class', () => {
+  it('should add only one "bar--enable-transition" class', () => {
     const div = document.createElement('div');
     expect(div.className).toBe('');
     addEnableTransitionClass(div);
@@ -71,7 +71,7 @@ describe('addEnableTransitionClass()', () => {
 });
 
 describe('removeEnableTransitionClass()', () => {
-  it('should remove "status-bar--enable-transition" class', () => {
+  it('should remove "bar--enable-transition" class', () => {
     const div = document.createElement('div');
     addEnableTransitionClass(div);
     expect(div.classList.contains(enableTransitionClass)).toBe(true);
@@ -82,7 +82,7 @@ describe('removeEnableTransitionClass()', () => {
 });
 
 describe('determineEnableTransitionClass()', () => {
-  it('should remove "status-bar--enable-transition" class if activeTabIndex is defined and prevActiveTabIndex is undefined', () => {
+  it('should remove "bar--enable-transition" class if activeTabIndex is defined and prevActiveTabIndex is undefined', () => {
     const div = document.createElement('div');
     addEnableTransitionClass(div);
     expect(div.classList.contains(enableTransitionClass)).toBe(true);
@@ -91,7 +91,7 @@ describe('determineEnableTransitionClass()', () => {
     expect(div.classList.contains(enableTransitionClass)).toBe(false);
   });
 
-  it('should add "status-bar--enable-transition" class if activeTabIndex is undefined', () => {
+  it('should add "bar--enable-transition" class if activeTabIndex is undefined', () => {
     const div = document.createElement('div');
     expect(div.classList.contains(enableTransitionClass)).toBe(false);
 
