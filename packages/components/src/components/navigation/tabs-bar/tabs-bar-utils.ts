@@ -127,7 +127,7 @@ export const getScrollPositionAfterPrevNextClick = (
   return scrollPosition;
 };
 
-export const getHasPTabsParent = (hostEl: HTMLElement): boolean => {
+export const hasPTabsParent = (hostEl: HTMLElement): boolean => {
   const { host } = hostEl.getRootNode() as ShadowRoot;
   const parentTagName = host && getTagName(host as HTMLElement);
   return parentTagName === getPrefixedTagNames(hostEl).pTabs;

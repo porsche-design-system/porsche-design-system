@@ -4,7 +4,7 @@ import type { Direction, TabChangeEvent, TabGradientColorTheme, TabWeight, TabSi
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
-  getHasPTabsParent,
+  hasPTabsParent,
   getScrollActivePosition,
   getScrollPositionAfterPrevNextClick,
   getTransformationToActive,
@@ -58,7 +58,7 @@ export class TabsBar {
   private firstGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
-  private hasPTabsParent: boolean = getHasPTabsParent(this.host);
+  private hasPTabsParent: boolean = hasPTabsParent(this.host);
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
