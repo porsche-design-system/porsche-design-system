@@ -5,13 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./components/action/button/button-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
+import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
+import { FieldsetWrapperLabelSize } from "./components/form/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
@@ -21,6 +23,7 @@ import { InlineNotificationState } from "./components/feedback/inline-notificati
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
+import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -218,11 +221,11 @@ export namespace Components {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: DividerColor;
         /**
           * Defines orientation.
          */
-        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
+        "orientation"?: DividerOrientation;
         /**
           * Adapts color depending on theme.
          */
@@ -236,7 +239,7 @@ export namespace Components {
         /**
           * The size of the label text.
          */
-        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
          */
@@ -1474,11 +1477,11 @@ declare namespace LocalJSX {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: DividerColor;
         /**
           * Defines orientation.
          */
-        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
+        "orientation"?: DividerOrientation;
         /**
           * Adapts color depending on theme.
          */
@@ -1492,7 +1495,7 @@ declare namespace LocalJSX {
         /**
           * The size of the label text.
          */
-        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
          */

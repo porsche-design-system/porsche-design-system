@@ -101,7 +101,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     outline-color: transparent !important
   }
 </style>
-<button class=\\"root root--with-label\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -112,7 +112,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button-group 1`] = `
-"<div class=\\"root root--direction-column root--direction-row-xs\\" role=\\"group\\">
+"<div role=\\"group\\">
   <slot>
   </slot>
 </div>"
@@ -182,7 +182,7 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 </div>"
 `;
 
-exports[`should have no basic DOM regression for p-divider 1`] = `"<hr class=\\"root root--orientation-horizontal\\">"`;
+exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
 "<fieldset class=\\"root\\">
@@ -440,7 +440,7 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<aside class=\\"root root--fullscreen-off\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
+"<aside class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
   <header>
     <p-button-pure class=\\"close hydrated\\">
       Close modal</p-button-pure>
@@ -451,20 +451,20 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-pagination 1`] = `
-"<nav class=\\"root root--size-5 root--size-7-xs\\" role=\\"navigation\\" aria-label=\\"Pagination\\">
-  <ul class=\\"items\\">
-    <li class=\\"item\\">
-      <span class=\\"prev prev--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
+"<nav role=\\"navigation\\" aria-label=\\"Pagination\\">
+  <ul>
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"goto goto--current\\" role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
+    <li>
+      <span role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
         1</span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"next next--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
@@ -499,8 +499,8 @@ exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-spinner 1`] = `
-"<span class=\\"root root--size-small\\" role=\\"alert\\" aria-live=\\"assertive\\">
-  <span class=\\"sr-text\\">
+"<span class=\\"root\\" role=\\"alert\\" aria-live=\\"assertive\\">
+  <span class=\\"sr-only\\">
     &nbsp;</span>
   <svg viewBox=\\"-16 -16 32 32\\" width=\\"100%\\" height=\\"100%\\" focusable=\\"false\\" aria-hidden=\\"true\\">
     <circle r=\\"9\\">
@@ -609,7 +609,7 @@ exports[`should have no basic DOM regression for p-table-row 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs 1`] = `
-"<p-tabs-bar class=\\"tabs-bar hydrated\\">
+"<p-tabs-bar class=\\"root hydrated\\">
 </p-tabs-bar>
 <slot>
 </slot>"

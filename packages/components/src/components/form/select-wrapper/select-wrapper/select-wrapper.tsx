@@ -74,9 +74,11 @@ export class SelectWrapper {
     }
   }
 
-  public componentDidRender(): void {
+  public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
+  }
 
+  public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.

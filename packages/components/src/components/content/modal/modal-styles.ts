@@ -1,14 +1,15 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
-  buildGlobalStyles,
-  buildHostStyles,
+  BreakpointKey,
+  BREAKPOINTS,
   buildResponsiveStyles,
   contentWrapperVars,
   getCss,
   getInset,
   mediaQuery,
   mergeDeep,
+  parseJSON,
   pxToRemWithUnit,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
@@ -34,9 +35,31 @@ export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): Jss
       };
 };
 
+export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): boolean => {
+  const fullscreenParsed = parseJSON(fullscreen);
+
+  if (typeof fullscreenParsed === 'boolean') {
+    return fullscreenParsed;
+  } else {
+    const entries = Object.entries(fullscreenParsed);
+    const lastTrueBreakpoint = entries
+      .filter(([, val]) => val)
+      .map(([key]) => key)
+      .pop() as BreakpointKey;
+    const lastFalseBreakpoint = entries
+      .filter(([, val]) => !val)
+      .map(([key]) => key)
+      .pop() as BreakpointKey;
+
+    return BREAKPOINTS.indexOf(lastTrueBreakpoint) > BREAKPOINTS.indexOf(lastFalseBreakpoint);
+  }
+};
+
 export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizable<boolean>): string => {
+  const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
+
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       ...addImportantToEachRule({
         position: 'fixed',
         ...getInset(),
@@ -62,7 +85,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         ...getInset(),
         background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
       }),
-    }),
+    },
     root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
       position: 'relative',
       boxSizing: 'border-box',
@@ -74,18 +97,14 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         padding: pxToRemWithUnit(40),
       },
       [mediaQuery('xl')]: {
-        margin: `10vh ${marginXl}`,
-        '&--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs), &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s), &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m), &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l), &--fullscreen-on-l:not(&--fullscreen-off-xl)':
-          { margin: 0 },
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
       },
       [mediaQuery('xxl')]: {
         padding: pxToRemWithUnit(64),
-        margin: `10vh ${marginXxl}`,
-        '&--fullscreen-on:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s):not(&--fullscreen-off-xs), &--fullscreen-on-xs:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m):not(&--fullscreen-off-s), &--fullscreen-on-s:not(&--fullscreen-off-xl):not(&--fullscreen-off-l):not(&--fullscreen-off-m), &--fullscreen-on-m:not(&--fullscreen-off-xl):not(&--fullscreen-off-l), &--fullscreen-on-l:not(&--fullscreen-off-xl), &--fullscreen-on-xl':
-          { margin: 0 },
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
-    ...buildGlobalStyles({
+    '@global': {
       header: {
         display: 'flex',
         alignItems: 'flex-start',
@@ -98,7 +117,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
           padding: `0 0 ${pxToRemWithUnit(32)}`,
         },
       },
-    }),
+    },
     close: {
       margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
       padding: pxToRemWithUnit(8),

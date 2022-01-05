@@ -1,11 +1,12 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { hasLabel, hasMessage } from '../../../utils';
-import type { FormState, TextSize } from '../../../types';
+import { attachComponentCss, hasLabel, hasMessage } from '../../../utils';
 import { StateMessage } from '../../common/state-message';
+import type { FormState } from '../../../types';
+import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import { getComponentCss } from './fieldset-wrapper-styles';
 
 @Component({
   tag: 'p-fieldset-wrapper',
-  styleUrl: 'fieldset-wrapper.scss',
   shadow: true,
 })
 export class FieldsetWrapper {
@@ -15,7 +16,7 @@ export class FieldsetWrapper {
   @Prop() public label?: string = '';
 
   /** The size of the label text. */
-  @Prop() public labelSize?: Extract<TextSize, 'small' | 'medium'> = 'medium';
+  @Prop() public labelSize?: FieldsetWrapperLabelSize = 'medium';
 
   /** Marks the Fieldset as required. */
   @Prop() public required?: boolean = false;
@@ -26,25 +27,33 @@ export class FieldsetWrapper {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      [`root--${this.state}`]: this.state !== 'none',
-      ['root--required']: this.required,
-      ['root--label-size-small']: this.labelSize === 'small',
-    };
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.state,
+      this.required,
+      this.labelSize,
+      this.hasLabel,
+      this.hasMessage
+    );
+  }
 
+  public render(): JSX.Element {
     return (
-      <fieldset
-        class={rootClasses}
-        aria-describedby={hasMessage(this.host, this.message, this.state) ? 'message' : null}
-      >
-        {hasLabel(this.host, this.label) && <legend>{this.label || <slot name="label" />}</legend>}
+      <fieldset class="root" aria-describedby={this.hasMessage ? 'message' : null}>
+        {this.hasLabel && <legend class={this.required && 'required'}>{this.label || <slot name="label" />}</legend>}
         <slot />
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage id="message" state={this.state} message={this.message} host={this.host} />
-        )}
+        {this.hasMessage && <StateMessage id="message" state={this.state} message={this.message} host={this.host} />}
       </fieldset>
     );
+  }
+
+  private get hasLabel(): boolean {
+    return hasLabel(this.host, this.label);
+  }
+
+  private get hasMessage(): boolean {
+    return hasMessage(this.host, this.message, this.state);
   }
 }

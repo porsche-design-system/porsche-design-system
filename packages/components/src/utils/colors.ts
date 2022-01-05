@@ -101,11 +101,13 @@ type ThemedColors = {
   baseColor: string;
   brandColor: string;
   backgroundColor: string;
+  backgroundSurfaceColor: string;
   contrastLowColor: string;
   contrastMediumColor: string;
   contrastHighColor: string;
   hoverColor: string;
   activeColor: string;
+  focusColor: string;
   disabledColor: string;
   errorColor: string;
   errorSoftColor: string;
@@ -121,9 +123,9 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
   const {
     default: baseColor,
     brand: brandColor,
-    background: { default: backgroundColor },
+    background: { default: backgroundColor, surface: backgroundSurfaceColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
-    state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
+    state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
       error: errorColor,
       errorSoft: errorSoftColor,
@@ -146,11 +148,13 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
     baseColor,
     brandColor,
     backgroundColor,
+    backgroundSurfaceColor,
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
     hoverColor,
     activeColor,
+    focusColor,
     disabledColor,
     errorColor,
     errorSoftColor,

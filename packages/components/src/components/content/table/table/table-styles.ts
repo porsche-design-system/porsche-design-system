@@ -1,6 +1,5 @@
 import {
-  addImportantToEachRule,
-  buildHostStyles,
+  addImportantToRule,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -12,11 +11,9 @@ import { color, font, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'block',
-      })
-    ),
+    ':host': {
+      display: addImportantToRule('block'),
+    },
     caption: {
       marginBottom: spacing['8'],
       [mediaQuery('m')]: {

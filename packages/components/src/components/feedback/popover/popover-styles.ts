@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -92,13 +91,13 @@ export const getComponentCss = (direction: PopoverDirection): string => {
   const spacerBox = '-1rem';
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       verticalAlign: 'top',
       ...addImportantToEachRule({
         position: 'relative',
         display: 'inline-block',
       }),
-    }),
+    },
     spacer: {
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,

@@ -1,7 +1,6 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  buildHostStyles,
   buildResponsiveHostStyles,
   getCss,
   mergeDeep,
@@ -36,11 +35,13 @@ export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter
   return getCss(
     addImportantToEachRule(
       mergeDeep(
-        buildHostStyles({
-          display: 'flex',
-          flex: 'auto',
-          width: 'auto',
-        }),
+        {
+          ':host': {
+            display: 'flex',
+            flex: 'auto',
+            width: 'auto',
+          },
+        },
         buildResponsiveHostStyles(direction, getDirectionStyles),
         buildResponsiveHostStyles(wrap, getWrapStyles),
         buildResponsiveHostStyles(gutter, getGutterStyles)

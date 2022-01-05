@@ -1,7 +1,5 @@
 import {
   attachComponentCss,
-  buildGlobalStyles,
-  buildHostStyles,
   buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
@@ -83,18 +81,6 @@ describe('supportsConstructableStylesheets()', () => {
   });
 });
 
-describe('buildHostStyles()', () => {
-  it('should return :host styles object', () => {
-    expect(buildHostStyles({ marginLeft: 5 })).toStrictEqual({ ':host': { marginLeft: 5 } });
-  });
-});
-
-describe('buildGlobalStyles()', () => {
-  it('should return @global styles object', () => {
-    expect(buildGlobalStyles({ div: { marginLeft: 5 } })).toStrictEqual({ '@global': { div: { marginLeft: 5 } } });
-  });
-});
-
 describe('buildSlottedStyles()', () => {
   it('should return @global styles object with node selector and important styles', () => {
     const el = document.createElement('p-button');
@@ -105,39 +91,87 @@ describe('buildSlottedStyles()', () => {
 });
 
 describe('buildResponsiveHostStyles()', () => {
-  const getStyles = (val: number): JssStyle => ({ width: 100 * val });
+  describe('for simple getStyles', () => {
+    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
 
-  it('should return flat jss for simple type', () => {
-    expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+    it('should return flat jss for simple type', () => {
+      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+        ':host': {
+          width: 600,
+          '@media (min-width: 480px)': { width: 300 },
+          '@media (min-width: 760px)': { width: 400 },
+          '@media (min-width: 1000px)': { width: 500 },
+          '@media (min-width: 1300px)': { width: 600 },
+          '@media (min-width: 1760px)': { width: 700 },
+        },
+      });
+    });
   });
 
-  it('should return nested jss for responsive type', () => {
-    expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-      ':host': { width: 600 },
-      '@media (min-width: 480px)': { ':host': { width: 300 } },
-      '@media (min-width: 760px)': { ':host': { width: 400 } },
-      '@media (min-width: 1000px)': { ':host': { width: 500 } },
-      '@media (min-width: 1300px)': { ':host': { width: 600 } },
-      '@media (min-width: 1760px)': { ':host': { width: 700 } },
+  describe('for complex getStyles', () => {
+    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
+
+    it('should return flat jss for simple type', () => {
+      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600, display: 'block' } });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+        ':host': {
+          width: 600,
+          display: 'block',
+          '@media (min-width: 480px)': { width: 300, display: 'block' },
+          '@media (min-width: 760px)': { width: 400, display: 'block' },
+          '@media (min-width: 1000px)': { width: 500, display: 'block' },
+          '@media (min-width: 1300px)': { width: 600, display: 'block' },
+          '@media (min-width: 1760px)': { width: 700, display: 'block' },
+        },
+      });
     });
   });
 });
 
 describe('buildResponsiveStyles()', () => {
-  const getStyles = (val: number): JssStyle => ({ root: { width: 100 * val } });
+  describe('for simple getStyles', () => {
+    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
 
-  it('should return flat jss for simple type', () => {
-    expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ root: { width: 600 } });
+    it('should return flat jss for simple type', () => {
+      expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ width: 600 });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+        width: 600,
+        '@media (min-width: 480px)': { width: 300 },
+        '@media (min-width: 760px)': { width: 400 },
+        '@media (min-width: 1000px)': { width: 500 },
+        '@media (min-width: 1300px)': { width: 600 },
+        '@media (min-width: 1760px)': { width: 700 },
+      });
+    });
   });
 
-  it('should return nested jss for responsive type', () => {
-    expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-      root: { width: 600 },
-      '@media (min-width: 480px)': { root: { width: 300 } },
-      '@media (min-width: 760px)': { root: { width: 400 } },
-      '@media (min-width: 1000px)': { root: { width: 500 } },
-      '@media (min-width: 1300px)': { root: { width: 600 } },
-      '@media (min-width: 1760px)': { root: { width: 700 } },
+  describe('for complex getStyles', () => {
+    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
+
+    it('should return flat jss for simple type', () => {
+      expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ width: 600, display: 'block' });
+    });
+
+    it('should return nested jss for responsive type', () => {
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+        width: 600,
+        display: 'block',
+        '@media (min-width: 480px)': { width: 300, display: 'block' },
+        '@media (min-width: 760px)': { width: 400, display: 'block' },
+        '@media (min-width: 1000px)': { width: 500, display: 'block' },
+        '@media (min-width: 1300px)': { width: 600, display: 'block' },
+        '@media (min-width: 1760px)': { width: 700, display: 'block' },
+      });
     });
   });
 });

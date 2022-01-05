@@ -1,10 +1,10 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { mapBreakpointPropToClasses } from '../../../utils';
+import { attachComponentCss } from '../../../utils';
+import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
 
 @Component({
   tag: 'p-button-group',
-  styleUrl: 'button-group.scss',
   shadow: true,
 })
 export class ButtonGroup {
@@ -16,14 +16,13 @@ export class ButtonGroup {
     xs: 'row',
   };
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ...mapBreakpointPropToClasses('root--direction', this.direction),
-    };
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.direction);
+  }
 
+  public render(): JSX.Element {
     return (
-      <div class={rootClasses} role="group">
+      <div role="group">
         <slot />
       </div>
     );
