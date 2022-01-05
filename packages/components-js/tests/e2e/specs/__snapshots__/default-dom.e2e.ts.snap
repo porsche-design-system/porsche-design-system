@@ -212,7 +212,7 @@ exports[`should have no basic DOM regression for p-grid-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-headline 1`] = `
-"<h1 class=\\"root root--variant-headline-1\\">
+"<h1 class=\\"root\\">
   <slot>
   </slot>
 </h1>"
@@ -616,29 +616,29 @@ exports[`should have no basic DOM regression for p-tabs 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
-"<div class=\\"root root--size-small\\">
+"<div class=\\"root\\">
   <div class=\\"scroll-area\\" role=\\"tablist\\">
     <div class=\\"scroll-wrapper\\">
       <slot>
       </slot>
-      <span class=\\"status-bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
+      <span class=\\"bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
       </span>
-      <div class=\\"scroll-wrapper__trigger\\">
+      <div class=\\"trigger\\">
       </div>
-      <div class=\\"scroll-wrapper__trigger\\">
+      <div class=\\"trigger\\">
       </div>
     </div>
   </div>
   <div class=\\"action action--prev action--hidden\\">
-    <span class=\\"gradient gradient--prev\\">
+    <span class=\\"gradient\\">
     </span>
-    <p-button-pure aria-hidden=\\"true\\" hide-label=\\"true\\" class=\\"hydrated\\">
+    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
       prev</p-button-pure>
   </div>
   <div class=\\"action action--next action--hidden\\">
-    <span class=\\"gradient gradient--next\\">
+    <span class=\\"gradient\\">
     </span>
-    <p-button-pure aria-hidden=\\"true\\" hide-label=\\"true\\" class=\\"hydrated\\">
+    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
       next</p-button-pure>
   </div>
 </div>"
@@ -652,7 +652,7 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-text 1`] = `
-"<p class=\\"root root--size-small\\">
+"<p class=\\"root\\">
   <slot>
   </slot>
 </p>"
