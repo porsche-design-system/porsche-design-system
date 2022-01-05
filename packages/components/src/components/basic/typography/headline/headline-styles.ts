@@ -10,6 +10,7 @@ import {
 } from '../../../../utils';
 import { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 import { title, headline } from '@porsche-design-system/utilities';
+import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
   if (variant === 'inherit') {
@@ -37,21 +38,8 @@ export const getComponentCss = (
         display: 'block',
       },
       ...addImportantToEachRule({
-        '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)': {
-          // export for text-style => helper in styles folder
-          margin: 'inherit',
-          padding: 'inherit',
-          fontFamily: 'inherit',
-          fontWeight: 'inherit',
-          fontSize: 'inherit',
-          lineHeight: 'inherit',
-          color: 'inherit',
-          textAlign: 'inherit',
-          overflowWrap: 'inherit',
-          wordWrap: 'inherit',
-          hyphens: 'inherit',
-          whiteSpace: 'inherit',
-        },
+        '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)':
+          getDefaultSlottedTypoStyles,
       }),
       root: {
         padding: 0,
@@ -65,12 +53,7 @@ export const getComponentCss = (
         whiteSpace: 'inherit',
         ...getVariantStyle(variant),
         ...(color !== 'default' && { color: 'inherit' }),
-        ...(ellipsis && {
-          maxWidth: '100%',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        }),
+        ...(ellipsis && getDefaultEllipsisStyles),
       },
     })
   );
