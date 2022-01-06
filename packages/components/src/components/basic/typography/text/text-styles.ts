@@ -5,7 +5,6 @@ import {
   getBaseSlottedStyles,
   getCss,
   getColor,
-  mergeDeep,
   buildResponsiveStyles,
 } from '../../../../utils';
 import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
@@ -42,15 +41,13 @@ export const getComponentCss = (
     },
     ...addImportantToEachRule({
       '::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend)':
-        getDefaultSlottedTypoStyles,
+        getDefaultSlottedTypoStyles(),
     }),
-    root: mergeDeep(buildResponsiveStyles(size, getSizeStyles), {
+    root: {
       webkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-      textAlign: 'left',
-      padding: '0',
-      margin: '0',
-      align,
-      fontWeight: font.weight[weight].toString(),
+      padding: 0,
+      margin: 0,
+      textAlign: align,
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
@@ -59,8 +56,10 @@ export const getComponentCss = (
       color: getColor(color, theme),
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
-      ...(ellipsis && getDefaultEllipsisStyles),
-    }),
+      ...(ellipsis && getDefaultEllipsisStyles()),
+      ...buildResponsiveStyles(size, getSizeStyles),
+      fontWeight: font.weight[weight],
+    },
   });
 };
 
