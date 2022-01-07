@@ -40,6 +40,7 @@ export const getComponentCss = (
         fontSize: 'inherit',
         lineHeight: 'inherit',
         boxSizing: 'border-box',
+        WebkitAppearance: 'none',
         appearance: 'none',
         outline: '1px solid transparent',
         outlineOffset: '1px',
@@ -91,14 +92,14 @@ export const getComponentCss = (
     'scroll-wrapper': {
       position: 'relative',
       display: 'inline-block',
-      padding: '0 0 0.5em',
+      padding: '0 0 .5em',
       minWidth: '100%',
     },
     bar: {
       display: 'block',
+      position: 'absolute',
       width: 0,
       height: weight === 'semibold' ? '.125em' : '.09375em',
-      position: 'absolute',
       left: 0,
       bottom: 0,
       background: activeColor,
@@ -147,7 +148,7 @@ export const getComponentCss = (
     gradient: {
       position: 'absolute',
       top: -4,
-      bottom: '-0.5em',
+      bottom: '-.5em',
       width: '2em',
       pointerEvents: 'none',
     },
