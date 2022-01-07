@@ -28,12 +28,12 @@ const getSizeStyles = (size: TextSize): JssStyle => {
 };
 
 export const getComponentCss = (
+  size: BreakpointCustomizable<TextSize>,
+  weight: TextWeight,
   align: TextAlign,
+  color: TextColor,
   ellipsis: boolean,
   theme: Theme,
-  weight: TextWeight,
-  color: TextColor,
-  size: BreakpointCustomizable<TextSize>
 ): string => {
   return getCss({
     ':host': {

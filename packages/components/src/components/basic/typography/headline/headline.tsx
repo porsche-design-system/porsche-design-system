@@ -35,7 +35,7 @@ export class Headline {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.variant, this.ellipsis, this.theme, this.align, this.color);
+    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
   }
 
   public render(): JSX.Element {
