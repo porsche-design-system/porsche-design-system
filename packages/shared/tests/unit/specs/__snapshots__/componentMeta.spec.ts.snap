@@ -114,7 +114,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-icon": Object {
     "hasSlottedCss": false,
@@ -288,7 +288,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-field-wrapper": Object {
     "hasSlottedCss": true,
