@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -10,7 +9,7 @@ import {
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { Styles } from '../../../utils';
+import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
 
