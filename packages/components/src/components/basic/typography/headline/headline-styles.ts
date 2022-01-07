@@ -18,10 +18,10 @@ const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
 
 export const getComponentCss = (
   variant: HeadlineVariant,
+  align: TextAlign,
+  color: Extract<TextColor, 'default' | 'inherit'>,
   ellipsis: boolean,
   theme: Theme,
-  align: TextAlign,
-  color: Extract<TextColor, 'default' | 'inherit'>
 ): string => {
   const { baseColor } = getThemedColors(theme);
 

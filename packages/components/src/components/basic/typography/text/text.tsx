@@ -50,12 +50,12 @@ export class Text {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.size,
+      this.weight,
       this.align,
+      this.color,
       this.ellipsis,
       this.theme,
-      this.weight,
-      this.color,
-      this.size
     );
   }
 
