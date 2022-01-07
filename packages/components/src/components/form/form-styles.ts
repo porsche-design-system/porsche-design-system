@@ -32,7 +32,7 @@ export const getBaseChildStyles = (
   const hasVisibleState = isVisibleState(state);
 
   const { disabled } = color.state; // 🤷 no theming here
-// TODO: Add readonly color to utilities package
+  // TODO: Add readonly color to utilities package
   const readonly = '#ebebeb'; // 🤷
 
   return {
@@ -45,8 +45,8 @@ export const getBaseChildStyles = (
       margin: 0,
       outline: '1px solid transparent',
       outlineOffset: '2px',
-      appearance: 'none',
       WebkitAppearance: 'none', // iOS safari
+      appearance: 'none',
       boxSizing: 'border-box',
       border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
       borderRadius: 0,
