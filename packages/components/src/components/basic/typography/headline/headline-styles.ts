@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -8,22 +7,13 @@ import {
   mergeDeep,
 } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
-import { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../../types';
-import { title, headline, text } from '@porsche-design-system/utilities';
+import { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
+import { title, headline } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
-import { textSizeMapper } from '../text/text-styles';
+import { isVariantType } from './headline-utils';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
-  if (variant === 'inherit') {
-    return { fontSize: 'inherit' };
-  }
-  if (variant === 'large-title') {
-    return title.large;
-  }
-  if (textSizeMapper[variant as TextSize]) {
-    return text[textSizeMapper[variant as TextSize]];
-  }
-  return headline[(variant as VariantType).slice(-1)];
+  return variant === 'large-title' ? title.large : headline[(variant as VariantType).slice(-1)];
 };
 
 export const getComponentCss = (
@@ -46,15 +36,14 @@ export const getComponentCss = (
     root: {
       padding: 0,
       margin: 0,
-      webkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       textAlign: align,
-      color: baseColor,
+      color: color !== 'default' ? 'inherit' : baseColor,
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
       whiteSpace: 'inherit',
-      ...buildResponsiveStyles(variant, getVariantStyle),
-      ...(color !== 'default' && { color: 'inherit' }),
+      ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
       ...(ellipsis && getDefaultEllipsisStyles()),
     },
   });

@@ -26,7 +26,7 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       height: dimension,
       color: getColor(color, theme),
       '& > svg': {
-        fill: 'currentColor',
+        fill: 'currentcolor',
       },
     },
   });
