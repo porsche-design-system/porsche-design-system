@@ -1,17 +1,17 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getColor,
   buildResponsiveStyles,
 } from '../../../../utils';
+import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { font, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
-const textSizeMapper = {
+export const textSizeMapper = {
   'x-small': 'xSmall',
   small: 'small',
   medium: 'medium',
@@ -19,7 +19,7 @@ const textSizeMapper = {
   'x-large': 'xLarge',
 };
 
-const getSizeStyles = (size: TextSize) => {
+const getSizeStyles = (size: TextSize): JssStyle => {
   if (size === 'inherit') {
     return { fontSize: 'inherit', lineHeight: 'inherit', fontFamily: font.family };
   }
