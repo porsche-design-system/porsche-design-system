@@ -4,10 +4,19 @@ import type { HeadlineVariant, TextAlign, TextColor, Theme } from '../../../../t
 describe('getComponentCss()', () => {
   it.each<[HeadlineVariant, boolean, Theme, TextAlign, Extract<TextColor, 'default' | 'inherit'>]>([
     ['headline-1', false, 'light', 'left', 'default'],
+    ['inherit', false, 'light', 'left', 'default'],
     ['large-title', true, 'dark', 'center', 'inherit'],
-    [{ base: 'small' }, true, 'dark', 'right', 'default'],
-    [{ base: 'small', xs: 'large', m: 'x-large' }, true, 'dark', 'right', 'default'],
-    [{ base: 'small', xs: 'large', s: 'inherit', m: 'small' }, false, 'dark', 'right', 'brand'],
+    ['headline-2', true, 'dark', 'center', 'inherit'],
+    ['headline-3', true, 'dark', 'center', 'inherit'],
+    ['headline-4', true, 'dark', 'center', 'inherit'],
+    ['headline-5', true, 'dark', 'center', 'inherit'],
+    [
+      { base: 'small', xs: 'large', s: 'small', m: 'large', l: 'small', xl: 'large' },
+      false,
+      'dark',
+      'right',
+      'inherit',
+    ],
   ])(
     'should return correct css for variant: %s, ellipsis: %o, theme: %s, align: %s and color: %s',
     (variant, ellipsis, theme, align, color) => {

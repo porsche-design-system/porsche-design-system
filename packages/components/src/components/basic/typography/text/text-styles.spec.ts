@@ -5,17 +5,6 @@ describe('getComponentCss()', () => {
   it.each<[TextAlign, boolean, Theme, TextWeight, TextColor, BreakpointCustomizable<TextSize>]>([
     ['left', false, 'light', 'regular', 'default', 'small'],
     ['right', true, 'dark', 'thin', 'brand', 'x-large'],
-    ['center', true, 'dark', 'bold', 'notification-error', { base: 'small', xs: 'medium' }],
-    ['left', true, 'light', 'semibold', 'notification-error', { base: 'large', xs: 'x-small', s: 'medium' }],
-    ['center', true, 'dark', 'bold', 'notification-error', { base: 'small', xs: 'large', s: 'medium', m: 'inherit' }],
-    [
-      'center',
-      true,
-      'dark',
-      'bold',
-      'notification-error',
-      { base: 'small', xs: 'large', s: 'medium', m: 'inherit', l: 'x-small' },
-    ],
     [
       'center',
       true,

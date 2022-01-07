@@ -23,8 +23,8 @@ const getSizeStyles = (size: TextSize): JssStyle => {
   if (size === 'inherit') {
     return { fontSize: 'inherit', lineHeight: 'inherit', fontFamily: font.family };
   }
-
-  return text[textSizeMapper[size]];
+  const { lineHeight, fontSize } = text[textSizeMapper[size]];
+  return { lineHeight, fontSize };
 };
 
 export const getComponentCss = (
@@ -44,10 +44,12 @@ export const getComponentCss = (
         getDefaultSlottedTypoStyles(),
     }),
     root: {
-      webkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       padding: 0,
       margin: 0,
       textAlign: align,
+      fontFamily: font.family,
+      fontWeight: font.weight[weight],
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
@@ -58,7 +60,6 @@ export const getComponentCss = (
       transition: 'font-size 1ms linear',
       ...(ellipsis && getDefaultEllipsisStyles()),
       ...buildResponsiveStyles(size, getSizeStyles),
-      fontWeight: font.weight[weight],
     },
   });
 };
