@@ -1,16 +1,17 @@
 import {
   addImportantToEachRule,
+  buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getThemedColors,
   mergeDeep,
-  JssStyle,
-  Styles,
 } from '../../../../utils';
-import { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
-import { title, headline } from '@porsche-design-system/utilities';
+import type { JssStyle } from '../../../../utils';
+import { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../../types';
+import { title, headline, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
+import { textSizeMapper } from '../text/text-styles';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
   if (variant === 'inherit') {
@@ -19,8 +20,10 @@ const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
   if (variant === 'large-title') {
     return title.large;
   }
-  const headlineVariant = variant as VariantType;
-  return headline[headlineVariant.slice(-1)];
+  if (textSizeMapper[variant as TextSize]) {
+    return text[textSizeMapper[variant as TextSize]];
+  }
+  return headline[(variant as VariantType).slice(-1)];
 };
 
 export const getComponentCss = (
@@ -32,31 +35,29 @@ export const getComponentCss = (
 ): string => {
   const { baseColor } = getThemedColors(theme);
 
-  return getCss(
-    mergeDeep<Styles>({
-      ':host': {
-        display: 'block',
-      },
-      ...addImportantToEachRule({
-        '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)':
-          getDefaultSlottedTypoStyles,
-      }),
-      root: {
-        padding: 0,
-        margin: 0,
-        webkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-        align,
-        color: baseColor,
-        overflowWrap: 'break-word',
-        wordWrap: 'break-word',
-        hyphens: 'auto',
-        whiteSpace: 'inherit',
-        ...getVariantStyle(variant),
-        ...(color !== 'default' && { color: 'inherit' }),
-        ...(ellipsis && getDefaultEllipsisStyles),
-      },
-    })
-  );
+  return getCss({
+    ':host': {
+      display: 'block',
+    },
+    ...addImportantToEachRule({
+      '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)':
+        getDefaultSlottedTypoStyles(),
+    }),
+    root: {
+      padding: 0,
+      margin: 0,
+      webkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+      textAlign: align,
+      color: baseColor,
+      overflowWrap: 'break-word',
+      wordWrap: 'break-word',
+      hyphens: 'auto',
+      whiteSpace: 'inherit',
+      ...buildResponsiveStyles(variant, getVariantStyle),
+      ...(color !== 'default' && { color: 'inherit' }),
+      ...(ellipsis && getDefaultEllipsisStyles()),
+    },
+  });
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
