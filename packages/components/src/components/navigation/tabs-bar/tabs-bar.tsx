@@ -55,7 +55,7 @@ export class TabsBar {
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private barElement: HTMLElement;
-  private firstGradientElement: HTMLElement;
+  private prevGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
@@ -196,7 +196,7 @@ export class TabsBar {
     const { shadowRoot } = this.host;
     this.barElement = getHTMLElement(shadowRoot, '.bar');
     this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
-    this.firstGradientElement = getHTMLElement(shadowRoot, '.gradient:first-child');
+    this.prevGradientElement = getHTMLElement(shadowRoot, '.gradient');
   };
 
   private setTabElements = (): void => {
@@ -307,7 +307,7 @@ export class TabsBar {
       this.direction,
       this.activeTabIndex,
       this.scrollAreaElement.offsetWidth,
-      this.firstGradientElement.offsetWidth
+      this.prevGradientElement.offsetWidth
     );
 
     if (skipAnimation) {
