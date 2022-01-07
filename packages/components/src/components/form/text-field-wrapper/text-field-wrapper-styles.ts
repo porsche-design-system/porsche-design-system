@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -11,6 +10,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
+import type { BreakpointCustomizable} from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
 import { srOnly, color } from '@porsche-design-system/utilities';
