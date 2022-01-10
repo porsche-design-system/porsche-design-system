@@ -170,25 +170,26 @@ export class TabsBar {
   private setBarStyle = (): void => {
     // TODO: move entire function into utilities and refactor to single setAttribute call
     // statusBarElement is undefined on first render
-    if (!this.barElement) {
+    const { activeTabIndex, barElement, prevActiveTabIndex } = this;
+    if (!barElement) {
       return;
     }
 
-    if (this.activeTabIndex === undefined && this.prevActiveTabIndex !== undefined) {
+    if (activeTabIndex === undefined && prevActiveTabIndex !== undefined) {
       // handle initial inactive + active to inactive cases
-      addEnableTransitionClass(this.barElement);
-      const transformationToInactive = getTransformationToInactive(this.tabElements[this.prevActiveTabIndex]);
-      setAttribute(this.barElement, 'style', transformationToInactive);
-    } else if (this.activeTabIndex === undefined && this.prevActiveTabIndex === undefined) {
+      addEnableTransitionClass(barElement);
+      const transformationToInactive = getTransformationToInactive(this.tabElements[prevActiveTabIndex]);
+      setAttribute(barElement, 'style', transformationToInactive);
+    } else if (activeTabIndex === undefined && prevActiveTabIndex === undefined) {
       // handle active to removed
-      removeEnableTransitionClass(this.barElement);
+      removeEnableTransitionClass(barElement);
       const transformationToInactive = getTransformationToInactive();
-      setAttribute(this.barElement, 'style', transformationToInactive);
+      setAttribute(barElement, 'style', transformationToInactive);
     } else {
       // handle initial active + active to active + inactive to active cases
-      determineEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.barElement);
-      const transformationToActive = getTransformationToActive(this.tabElements[this.activeTabIndex]);
-      setAttribute(this.barElement, 'style', transformationToActive);
+      determineEnableTransitionClass(activeTabIndex, prevActiveTabIndex, barElement);
+      const transformationToActive = getTransformationToActive(this.tabElements[activeTabIndex]);
+      setAttribute(barElement, 'style', transformationToActive);
     }
   };
 

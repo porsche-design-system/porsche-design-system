@@ -30,7 +30,9 @@ export const getComponentCss = (
       position: addImportantToRule('relative'),
     },
     ...addImportantToEachRule({
-      '::slotted([role])': {
+      // would be nice to use shared selector like '::slotted([role])'
+      // but this doesn't work reliably when rendering in browser
+      '::slotted(a),::slotted(button)': {
         display: 'inline-block',
         margin: 0,
         padding: 0,
@@ -52,19 +54,20 @@ export const getComponentCss = (
         cursor: 'pointer',
         transition: getTransition('color'),
       },
-      '::slotted([role]:hover)': {
+      '::slotted(a:hover),::slotted(button:hover)': {
         color: hoverColor,
       },
-      '::slotted([role]:active),::slotted([role][aria-selected="true"])': {
-        color: activeColor,
-      },
-      '::slotted([role]:focus)': {
+      '::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"])':
+        {
+          color: activeColor,
+        },
+      '::slotted(a:focus),::slotted(button:focus)': {
         outlineColor: focusColor,
       },
-      '::slotted([role]:focus:not(:focus-visible))': {
+      '::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible))': {
         outlineColor: 'transparent',
       },
-      '::slotted([role]:not(:last-child))': {
+      '::slotted(a:not(:last-child)),::slotted(button:not(:last-child))': {
         marginRight: '1em',
       },
     }),
