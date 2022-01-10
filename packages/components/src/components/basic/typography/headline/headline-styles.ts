@@ -29,10 +29,9 @@ export const getComponentCss = (
     ':host': {
       display: 'block',
     },
-    ...addImportantToEachRule({
-      '::slotted(h1),::slotted(h2),::slotted(h3),::slotted(h4),::slotted(h5),::slotted(h6)':
-        getDefaultSlottedTypoStyles(),
-    }),
+    '::slotted(h1),::slotted(h2),::slotted(h3),::slotted(h4),::slotted(h5),::slotted(h6)': addImportantToEachRule(
+      getDefaultSlottedTypoStyles()
+    ),
     root: {
       padding: 0,
       margin: 0,
