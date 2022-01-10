@@ -3,7 +3,7 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getColor,
+  getThemedColor,
   buildResponsiveStyles,
 } from '../../../../utils';
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
@@ -11,7 +11,7 @@ import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../t
 import { font, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
-export const textSizeMapper = {
+export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: string } = {
   'x-small': 'xSmall',
   small: 'small',
   medium: 'medium',
@@ -21,10 +21,11 @@ export const textSizeMapper = {
 
 const getSizeStyles = (size: TextSize): JssStyle => {
   if (size === 'inherit') {
-    return { fontSize: 'inherit', lineHeight: 'inherit', fontFamily: font.family };
+    return { fontSize: 'inherit', lineHeight: 'inherit' };
+  } else {
+    const { lineHeight, fontSize } = text[textSizeMapper[size]];
+    return { lineHeight, fontSize };
   }
-  const { lineHeight, fontSize } = text[textSizeMapper[size]];
-  return { lineHeight, fontSize };
 };
 
 export const getComponentCss = (
@@ -33,31 +34,31 @@ export const getComponentCss = (
   align: TextAlign,
   color: TextColor,
   ellipsis: boolean,
-  theme: Theme,
+  theme: Theme
 ): string => {
   return getCss({
     ':host': {
       display: 'block',
     },
     ...addImportantToEachRule({
-      '::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend)':
+      '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)':
         getDefaultSlottedTypoStyles(),
     }),
     root: {
-      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+      display: 'inherit',
       padding: 0,
       margin: 0,
       textAlign: align,
       fontFamily: font.family,
       fontWeight: font.weight[weight],
+      color: getThemedColor(color, theme),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
       listStyleType: 'none',
-      display: 'inherit',
-      color: getColor(color, theme),
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
+      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       ...(ellipsis && getDefaultEllipsisStyles()),
       ...buildResponsiveStyles(size, getSizeStyles),
     },

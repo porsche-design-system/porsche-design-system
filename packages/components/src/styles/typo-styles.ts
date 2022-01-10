@@ -1,4 +1,4 @@
-import { JssStyle } from '../utils';
+import type { JssStyle } from '../utils';
 
 export const getDefaultSlottedTypoStyles = (): JssStyle => {
   return {

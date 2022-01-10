@@ -1,5 +1,5 @@
 import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
-import { getCss, pxToRemWithUnit, getColor } from '../../../utils';
+import { getCss, pxToRemWithUnit, getThemedColor } from '../../../utils';
 
 const sizeMap: { [key in IconSize]: string } = {
   small: pxToRemWithUnit(24),
@@ -24,7 +24,7 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      color: getColor(color, theme),
+      color: getThemedColor(color, theme),
       '& > svg': {
         fill: 'currentcolor',
       },
