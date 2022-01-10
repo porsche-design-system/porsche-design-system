@@ -173,21 +173,21 @@ The size of the *subline* changes according to the size of the *label*. We do no
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    configInline = { ...this.config, spacing: 'inline' };
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    size = 'medium';
-    sublineSize = 'small'; 
-    weight = 'thin';
-    alignLabel = 'left';
-    stretch = 'stretch="true" align-label="left"';
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+  configInline = { ...this.config, spacing: 'inline' };
 
-    withoutIcon =
+  size = 'medium';
+  sublineSize = 'small'; 
+  weight = 'thin';
+  alignLabel = 'left';
+  stretch = 'stretch="true" align-label="left"';
+
+  withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
 <p-button-pure icon="none" disabled="true">Some label</p-button-pure>
 <p-button-pure icon="none" size="small" weight="semibold">
@@ -195,55 +195,54 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <p slot="subline">Some Subline</p>
 </p-button-pure>`;
     
-    withLabel =
+  withLabel =
 `<p-button-pure>Some label</p-button-pure>
 <p-button-pure disabled="true">Some label</p-button-pure>
 <p-button-pure loading="true">Some label</p-button-pure>`;
 
-    withoutLabel =
+  withoutLabel =
 `<p-button-pure hide-label="true">Some label</p-button-pure>
 <p-button-pure hide-label="true" disabled="true">Some label</p-button-pure>
 <p-button-pure hide-label="true" loading="true">Some label</p-button-pure>`;
     
-    responsive =
+  responsive =
 `<p-button-pure hide-label="{ base: true, l: false }">Some label</p-button-pure>`;
 
-    get markupSize() {
-      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
-    }
+  get markupSize() {
+    const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
+  }
 
-    accessibility = 
+  accessibility = 
 `<p-button-pure aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button-pure>`;
     
-    markupResponsive = 
+  markupResponsive = 
 `<p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>`;
 
-    get markupWeight() {
-      return `<p-button-pure size="medium" weight="${this.weight}">Some label</p-button-pure>`;
-    }
+  get markupWeight() {
+    return `<p-button-pure size="medium" weight="${this.weight}">Some label</p-button-pure>`;
+  }
 
-    markupActive =
+  markupActive =
 `<p-button-pure active="true">Some label</p-link-pure>`;
 
-    icon =
+  icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
- 
 
-    get markupAlignment() {
-      return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
-    };
+  get markupAlignment() {
+    return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
+  };
 
-    get markupStretch() {
-      return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
-    };
+  get markupStretch() {
+    return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
+  };
 
-    clickableArea =
+  clickableArea =
 `<p-button-pure style="padding: 1rem;">Some label</p-button-pure>
 <p-button-pure hide-label="true" style="padding: 1rem;">Some label</p-button-pure>`;
 
-    events =
+  events =
 `<p-button-pure
   onclick="alert('click')"
   onfocus="console.log('focus')"
@@ -252,12 +251,12 @@ The size of the *subline* changes according to the size of the *label*. We do no
   onfocusout="console.log('focusout')"
 >Some label</p-button-pure>`;
 
-    taborder =
+  taborder =
 `<p-button-pure tabbable="true">Some label</p-button-pure>
 <p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>`;
 
-    get subline() {
-      return `<p-button-pure size="${this.sublineSize}">
+  get subline() {
+    return `<p-button-pure size="${this.sublineSize}">
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>
@@ -265,6 +264,6 @@ The size of the *subline* changes according to the size of the *label*. We do no
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>`;
-    }
   }
+}
 </script>

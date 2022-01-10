@@ -13,6 +13,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
+  getElementInnerText,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -33,7 +34,7 @@ describe('text-field-wrapper', () => {
   const getDescriptionLink = () => selectNode(page, 'p-text-field-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-text-field-wrapper [slot="message"] a');
   const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
-  const getUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
+  const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
   const getButton = () => selectNode(page, 'p-text-field-wrapper >>> button');
   const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
   const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
@@ -47,6 +48,7 @@ describe('text-field-wrapper', () => {
     type?: 'number' | 'text' | 'password' | 'search';
     hasLabel?: boolean;
     hasUnit?: boolean;
+    maxLength?: number;
   };
 
   const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -58,27 +60,27 @@ describe('text-field-wrapper', () => {
       type = 'text',
       hasLabel = false,
       hasUnit = false,
+      maxLength,
     } = opts ?? {};
 
-    const slottedLabel = useSlottedLabel
-      ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
+    const link = '<a href="#" onclick="return false;">link</a>';
+    const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
     const slottedDescription = useSlottedDescription
-      ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+      ? `<span slot="description">Description with a ${link}</span>`
       : '';
-    const slottedMessage = useSlottedMessage
-      ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
-    const label = hasLabel ? ' label="Some label"' : '';
-    const unit = hasUnit ? ' unit="km/h"' : '';
+    const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
+
+    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"', hasUnit && 'unit="km/h"']
+      .filter((x) => x)
+      .join(' ');
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-text-field-wrapper state="${state}"${label}${unit}>
+      <p-text-field-wrapper ${attrs}>
         ${slottedLabel}
         ${slottedDescription}
-        <input type="${type}" />
+        <input type="${type}"${maxLength ? ` maxlength="${maxLength}"` : ''} />
         ${slottedMessage}
       </p-text-field-wrapper>`
     );
@@ -377,22 +379,23 @@ describe('text-field-wrapper', () => {
 
     it('should focus input when label text is clicked', async () => {
       await initTextField({ hasLabel: true });
-      const labelText = await getLabel();
+      const label = await getLabel();
       const input = await getInput();
 
       let inputFocusSpyCalls = 0;
       await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
 
       expect(inputFocusSpyCalls).toBe(0);
-      await labelText.click();
+      await label.click();
       await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
 
       expect(inputFocusSpyCalls).toBe(1);
     });
 
     it('should focus input when unit element is clicked', async () => {
       await initTextField({ type: 'number', hasUnit: true });
-      const unitElement = await getUnit();
+      const unitElement = await getCounterOrUnit();
       const input = await getInput();
 
       let inputFocusSpyCalls = 0;
@@ -404,6 +407,85 @@ describe('text-field-wrapper', () => {
 
       expect(inputFocusSpyCalls).toBe(1);
     });
+
+    it('should focus input when counter text is clicked', async () => {
+      await initTextField({ maxLength: 20 });
+      const counter = await getCounterOrUnit();
+      const input = await getInput();
+
+      let inputFocusSpyCalls = 0;
+      await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
+
+      expect(inputFocusSpyCalls).toBe(0);
+
+      await counter.click();
+      await waitForStencilLifecycle(page);
+
+      expect(inputFocusSpyCalls).toBe(1);
+    });
+  });
+
+  describe('hover state', () => {
+    const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
+    const defaultColor = 'rgb(98, 102, 105)';
+    const hoverColor = 'rgb(0, 0, 0)';
+
+    it('should show hover state on input when label is hovered', async () => {
+      await initTextField({ hasLabel: true });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const label = await getLabel();
+      const input = await getInput();
+
+      const initialStyle = await getBorderColor(input);
+      expect(initialStyle).toBe(defaultColor);
+      await input.hover();
+      const hoverStyle = await getBorderColor(input);
+      expect(hoverStyle).toBe(hoverColor);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(input)).toBe(defaultColor);
+
+      await label.hover();
+      expect(await getBorderColor(input)).toBe(hoverColor);
+    });
+
+    it('should show hover state on input when unit/counter is hovered', async () => {
+      await initTextField({ maxLength: 20 });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const counter = await getCounterOrUnit();
+      const input = await getInput();
+
+      const initialStyle = await getBorderColor(input);
+      expect(initialStyle).toBe(defaultColor);
+      await input.hover();
+      const hoverStyle = await getBorderColor(input);
+      expect(hoverStyle).toBe(hoverColor);
+
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(input)).toBe(defaultColor);
+
+      await counter.hover();
+      expect(await getBorderColor(input)).toBe(hoverColor);
+    });
+  });
+
+  it('should display correct counter when typing', async () => {
+    await initTextField({ maxLength: 20 });
+    const counter = await getCounterOrUnit();
+    const input = await getInput();
+
+    expect(await getElementInnerText(counter)).toBe('0/20');
+    await input.type('h');
+    expect(await getElementInnerText(counter)).toBe('1/20');
+    await input.type('ello');
+    expect(await getElementInnerText(counter)).toBe('5/20');
+    await input.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('4/20');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('0/20');
   });
 
   describe('lifecycle', () => {

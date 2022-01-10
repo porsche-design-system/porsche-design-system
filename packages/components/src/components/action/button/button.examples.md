@@ -60,14 +60,14 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <Playground :markup="taborder" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true, spacing: 'inline' };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
-    
-    primary = 
+  primary = 
 `<p-button variant="primary">Some label</p-button>
 <p-button variant="primary" disabled>Some label</p-button>
 <p-button variant="primary" loading>Some label</p-button>
@@ -76,7 +76,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <p-button variant="primary" hide-label="true" disabled>Some label</p-button>
 <p-button variant="primary" hide-label="true" loading>Some label</p-button>`;
   
-    secondary = 
+  secondary = 
 `<p-button>Some label</p-button>
 <p-button disabled="true">Some label</p-button>
 <p-button loading="true">Some label</p-button>
@@ -85,7 +85,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <p-button hide-label="true" disabled>Some label</p-button>
 <p-button hide-label="true" loading>Some label</p-button>`;
 
-    tertiary = 
+  tertiary = 
 `<p-button variant="tertiary">Some label</p-button>
 <p-button variant="tertiary" disabled="true">Some label</p-button>
 <p-button variant="tertiary" loading="true">Some label</p-button>
@@ -94,19 +94,19 @@ With setting the `tabbable` property to `false` you can remove the button from t
 <p-button variant="tertiary" hide-label="true" disabled>Some label</p-button>
 <p-button variant="tertiary" hide-label="true" loading>Some label</p-button>`;
 
-    responsive =
+  responsive =
 `<p-button variant="primary" hide-label="{ base: true, s: false }">Some label</p-button>
 <p-button variant="secondary" hide-label="{ base: true, m: false }">Some label</p-button>
 <p-button variant="tertiary" hide-label="{ base: true, l: false }">Some label</p-button>`;
 
-    accessibility = 
+  accessibility = 
 `<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
 
-    icon =
+  icon =
 `<p-button icon="delete">Some label</p-button>
 <p-button icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button>`;
 
-    events =
+  events =
 `<p-button
   onclick="alert('click')"
   onfocus="console.log('focus')"
@@ -115,8 +115,8 @@ With setting the `tabbable` property to `false` you can remove the button from t
   onfocusout="console.log('focusout')"
 >Some label</p-button>`;
     
-    taborder =
+  taborder =
 `<p-button tabbable="true">Some label</p-button>
 <p-button tabbable="false" hide-label="true">Some label</p-button>`;
-  }
+}
 </script>

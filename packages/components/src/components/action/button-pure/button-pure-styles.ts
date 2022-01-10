@@ -1,10 +1,31 @@
-import { buildResponsiveHostStyles, getCss } from '../../../utils';
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils';
+import { getCss } from '../../../utils';
+import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
+import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
-const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
-  display: stretch ? 'block' : 'inline-block',
-});
-
-export const getComponentCss = (stretch: BreakpointCustomizable<boolean>): string => {
-  return getCss(buildResponsiveHostStyles(stretch, getStretchStyles));
+export const getComponentCss = (
+  icon: LinkButtonPureIconName,
+  active: boolean,
+  isDisabledOrLoading: boolean,
+  stretch: BreakpointCustomizable<boolean>,
+  size: BreakpointCustomizable<TextSize>,
+  hideLabel: BreakpointCustomizable<boolean>,
+  alignLabel: AlignLabel,
+  hasSubline: boolean,
+  theme: ThemeExtendedElectricDark
+): string => {
+  return getCss(
+    getLinkButtonPureStyles(
+      icon,
+      active,
+      isDisabledOrLoading,
+      stretch,
+      size,
+      hideLabel,
+      alignLabel,
+      hasSubline,
+      false,
+      theme
+    )
+  );
 };

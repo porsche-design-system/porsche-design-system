@@ -1,13 +1,23 @@
 import { color } from '@porsche-design-system/utilities';
-import type { Color } from '@porsche-design-system/utilities';
-import type { FormState, Theme, ThemeExtendedElectric } from '../types';
-import { isDark, isLightElectric } from './theme';
+import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
+import { isDark, isDarkElectric, isLightElectric } from './theme';
 
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
+type ColorDarkenTheme = {
+  default: string;
+  neutralContrast: {
+    high: string;
+  };
+  notification: {
+    success: string;
+    error: string;
+  };
+  state: {
+    hover: string;
+  };
 };
 
-export const colorDarken: DeepPartial<Color> = {
+const lightThemeDarken: ColorDarkenTheme = {
+  default: '#000',
   neutralContrast: {
     high: '#151718',
   },
@@ -18,28 +28,73 @@ export const colorDarken: DeepPartial<Color> = {
   state: {
     hover: '#980014',
   },
-  darkTheme: {
-    default: '#e0e0e0',
-    notification: {
-      success: '#017d14',
-      error: '#d30303',
-    },
-    state: {
-      hover: '#c4001a',
-    },
+};
+
+const darkThemeDarken: ColorDarkenTheme = {
+  default: '#e0e0e0',
+  neutralContrast: {
+    high: '#c3c5c8',
   },
-  lightElectricTheme: {
-    neutralContrast: {
-      high: '#151718',
-    },
-    notification: {
-      success: '#014d0c',
-      error: '#a30000',
-    },
-    state: {
-      hover: '#0084b7',
-    },
+  notification: {
+    success: '#017d14',
+    error: '#d30303',
   },
+  state: {
+    hover: '#c4001a',
+  },
+};
+
+const lightElectricThemeDarken: ColorDarkenTheme = {
+  ...lightThemeDarken,
+  state: {
+    hover: '#0084b7',
+  },
+};
+
+type ColorDarken = ColorDarkenTheme & {
+  darkTheme: ColorDarkenTheme;
+  lightElectricTheme: ColorDarkenTheme;
+};
+
+export const colorDarken: ColorDarken = {
+  ...lightThemeDarken,
+  darkTheme: darkThemeDarken,
+  lightElectricTheme: lightElectricThemeDarken,
+};
+
+type ThemedColorsDarken = {
+  baseColorDarken: string;
+  contrastHighColorDarken: string;
+  successColorDarken: string;
+  errorColorDarken: string;
+  hoverColorDarken: string;
+};
+
+const getStaticThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
+  const {
+    default: baseColorDarken,
+    neutralContrast: { high: contrastHighColorDarken },
+    state: { hover: hoverColorDarken },
+    notification: { error: errorColorDarken, success: successColorDarken },
+  } = isDark(theme) ? colorDarken.darkTheme : isLightElectric(theme) ? colorDarken.lightElectricTheme : colorDarken;
+
+  return {
+    baseColorDarken,
+    contrastHighColorDarken,
+    successColorDarken,
+    errorColorDarken,
+    hoverColorDarken,
+  };
+};
+
+const themedColorsDarken: { [key in ThemeExtendedElectric]: ThemedColorsDarken } = {
+  light: getStaticThemedColorsDarken('light'),
+  dark: getStaticThemedColorsDarken('dark'),
+  'light-electric': getStaticThemedColorsDarken('light-electric'),
+};
+
+export const getThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
+  return themedColorsDarken[theme];
 };
 
 type ThemedColors = {
@@ -62,7 +117,7 @@ type ThemedColors = {
   neutralSoftColor: string;
 };
 
-const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
+const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
   const {
     default: baseColor,
     brand: brandColor,
@@ -79,7 +134,13 @@ const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDark(theme) ? color.darkTheme : isLightElectric(theme) ? color.lightElectricTheme : color;
+  } = isDark(theme)
+    ? color.darkTheme
+    : isLightElectric(theme)
+    ? color.lightElectricTheme
+    : isDarkElectric(theme)
+    ? color.darkElectricTheme
+    : color;
 
   return {
     baseColor,
@@ -102,22 +163,42 @@ const getStaticThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
   };
 };
 
-const themedColorsLight = getStaticThemedColors('light');
-const themedColorsDark = getStaticThemedColors('dark');
-const themedColorsLightElectric = getStaticThemedColors('light-electric');
-
-export const getThemedColors = (theme: ThemeExtendedElectric): ThemedColors => {
-  return isDark(theme) ? themedColorsDark : isLightElectric(theme) ? themedColorsLightElectric : themedColorsLight;
+const themedColors: { [key in ThemeExtendedElectricDark]: ThemedColors } = {
+  light: getStaticThemedColors('light'),
+  dark: getStaticThemedColors('dark'),
+  'light-electric': getStaticThemedColors('light-electric'),
+  'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
-export const getThemedFormStateColors = (
-  theme: Theme,
-  state: FormState
-): { stateColor: string; stateHoverColor: string } => {
+export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
+  return themedColors[theme];
+};
+
+type ThemedFormStateColors = {
+  stateColor: string;
+  stateHoverColor: string;
+};
+
+const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   const isDarkTheme = isDark(theme);
 
   return {
     stateColor: (isDarkTheme ? color.darkTheme : color).notification[state],
     stateHoverColor: (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state],
   };
+};
+
+const themedFormStateColorsLight: { [key in FormState]: ThemedFormStateColors } = {
+  success: getStaticThemedFormStateColors('light', 'success'),
+  error: getStaticThemedFormStateColors('light', 'error'),
+  none: getStaticThemedFormStateColors('light', 'none'),
+};
+const themedFormStateColorsDark: { [key in FormState]: ThemedFormStateColors } = {
+  success: getStaticThemedFormStateColors('dark', 'success'),
+  error: getStaticThemedFormStateColors('dark', 'error'),
+  none: getStaticThemedFormStateColors('dark', 'none'),
+};
+
+export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
+  return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
 };

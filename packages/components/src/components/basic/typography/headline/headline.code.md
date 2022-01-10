@@ -83,28 +83,28 @@ This will force any text to never wrap into a new line and in case it's too long
 <Playground :markup="ellipsisMode" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import {HEADLINE_VARIANTS} from './headline-utils';
-  
-  const sentence = 'The quick brown fox jumps over the lazy dog';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import {HEADLINE_VARIANTS} from './headline-utils';
 
-    customVariant = "{ base: 'small', l: 'medium' }";
-    color = 'default';
-    align = 'center';
+const sentence = 'The quick brown fox jumps over the lazy dog';
 
-    variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
 
-    get customVariantMarkup() {
-      const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
-      return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
-    }
+  customVariant = "{ base: 'small', l: 'medium' }";
+  color = 'default';
+  align = 'center';
 
-    customTagHierarchy =
+  variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+
+  get customVariantMarkup() {
+    const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
+    return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
+  }
+
+  customTagHierarchy =
 `<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
 <p-headline variant="headline-3" tag="h1">${sentence}</p-headline>
 <p-headline variant="headline-1">
@@ -114,16 +114,16 @@ This will force any text to never wrap into a new line and in case it's too long
   <h1>${sentence}</h1>
 </p-headline>`;
 
-    get colorMarkup() {
-      const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
-      return `<p-headline variant="headline-3" color="${this.color}"${style}>${sentence}</p-headline>`
-    }
- 
-    get alignment() {
-      return `<p-headline variant="headline-3" align="${this.align}">${sentence}</p-headline>`;
-    }
-    
-    ellipsisMode =
-`<p-headline variant="headline-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>`;
+  get colorMarkup() {
+    const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
+    return `<p-headline variant="headline-3" color="${this.color}"${style}>${sentence}</p-headline>`
   }
+
+  get alignment() {
+    return `<p-headline variant="headline-3" align="${this.align}">${sentence}</p-headline>`;
+  }
+  
+  ellipsisMode =
+`<p-headline variant="headline-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>`;
+}
 </script>

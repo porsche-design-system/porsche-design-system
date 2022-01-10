@@ -324,14 +324,14 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 <Playground :markup="flexShorthand('{base: \'initial\', l: \'equal\'}')"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    flexInline(value: string) {
-      const attr = value ? ` inline="${value}"` : '';
-      return `<p-flex${attr} class="example-flex">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  flexInline(value: string) {
+    const attr = value ? ` inline="${value}"` : '';
+    return `<p-flex${attr} class="example-flex">
   <p-flex-item>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
 </p-flex>
@@ -339,86 +339,86 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex-item>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
 </p-flex>`;
-    }
+  }
 
-    direction(value: string) {
-      const attr = value ? ` direction="${value}"` : '';
-      return `<p-flex${attr} class="example-flex">
+  direction(value: string) {
+    const attr = value ? ` direction="${value}"` : '';
+    return `<p-flex${attr} class="example-flex">
   <p-flex-item>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
   <p-flex-item>3</p-flex-item>
 </p-flex>`;
-    }
+  }
 
-    wrap(value: string) {
-      const attr = value ? ` wrap="${value}"` : '';
-      return `<p-flex${attr} class="example-flex">
+  wrap(value: string) {
+    const attr = value ? ` wrap="${value}"` : '';
+    return `<p-flex${attr} class="example-flex">
   ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
-    }
-    
-    justifyContent(value: string) {
-      const attr = value ? ` justify-content="${value}"` : '';
-      return `<p-flex${attr} class="example-flex">
+  }
+  
+  justifyContent(value: string) {
+    const attr = value ? ` justify-content="${value}"` : '';
+    return `<p-flex${attr} class="example-flex">
   <p-flex-item>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
   <p-flex-item>3</p-flex-item>
 </p-flex>`;
-    }
+  }
 
-    alignItems(value: string) {
-      const attr = value ? ` align-items="${value}"` : '';
-      return `<p-flex${attr} class="example-flex">
+  alignItems(value: string) {
+    const attr = value ? ` align-items="${value}"` : '';
+    return `<p-flex${attr} class="example-flex">
   <p-flex-item>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
   <p-flex-item>3</p-flex-item>
 </p-flex>`;
-    }
+  }
 
-    alignContent(value: string) {
-      const attr = value ? ` align-content="${value}"` : '';
-      return `<p-flex wrap="wrap"${attr} class="example-flex">
+  alignContent(value: string) {
+    const attr = value ? ` align-content="${value}"` : '';
+    return `<p-flex wrap="wrap"${attr} class="example-flex">
   ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
-    }
-    
-    alignSelf(value: string, valueParent?: string) {
-      const attr = value ? ` align-self="${value}"` : '';
-      const parentAttr = valueParent ? ` align-items="${valueParent}"` : '';
-      return `<p-flex${parentAttr} class="example-flex">
+  }
+  
+  alignSelf(value: string, valueParent?: string) {
+    const attr = value ? ` align-self="${value}"` : '';
+    const parentAttr = valueParent ? ` align-items="${valueParent}"` : '';
+    return `<p-flex${parentAttr} class="example-flex">
   <p-flex-item${value === 'baseline' ? attr : ''}>1</p-flex-item>
   <p-flex-item>2</p-flex-item>
   <p-flex-item${attr}>3</p-flex-item>
   <p-flex-item>4</p-flex-item>
 </p-flex>`;
-    }
-    
-    grow(value: string) {
-      const attr = value ? ` grow="${value}"` : '';
-      return `<p-flex class="example-flex">
+  }
+  
+  grow(value: string) {
+    const attr = value ? ` grow="${value}"` : '';
+    return `<p-flex class="example-flex">
   <p-flex-item>1</p-flex-item>
   <p-flex-item${attr}>2</p-flex-item>
 </p-flex>`;
-    }
-    
-    shrink(value: string) {
-      const attr = value ? ` shrink="${value}"` : '';
-      return `<p-flex class="example-flex">
+  }
+  
+  shrink(value: string) {
+    const attr = value ? ` shrink="${value}"` : '';
+    return `<p-flex class="example-flex">
   <p-flex-item${attr} style="width: 80%">1</p-flex-item>
   <p-flex-item style="width: 80%">2</p-flex-item>
 </p-flex>`;
-    }
-    
-    flexShorthand(value: string) {
-      const attr = value ? ` flex="${value}"` : '';
-      return `<p-flex class="example-flex">
+  }
+  
+  flexShorthand(value: string) {
+    const attr = value ? ` flex="${value}"` : '';
+    return `<p-flex class="example-flex">
   <p-flex-item${attr}>1 - short content</p-flex-item>
   <p-flex-item${attr}>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
   <p-flex-item${attr}>3 - short content</p-flex-item>
 </p-flex>`;
-    }
-    
-    widthSpecific =
+  }
+  
+  widthSpecific =
 `<p-flex class="example-flex">
   <p-flex-item width="one-quarter">one-quarter</p-flex-item>
   <p-flex-item width="one-quarter">one-quarter</p-flex-item>
@@ -446,7 +446,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex-item width="full">full</p-flex-item>
 </p-flex>`;
 
-    widthWrap =
+  widthWrap =
 `<p-flex wrap="wrap" class="example-flex">
   <p-flex-item width="{ base: 'half', l: 'one-quarter' }">1</p-flex-item>
   <p-flex-item width="{ base: 'half', l: 'one-quarter' }">2</p-flex-item>
@@ -454,7 +454,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex-item width="{ base: 'half', l: 'one-quarter' }">4</p-flex-item>
 </p-flex>`;
 
-    offsetWidths =
+  offsetWidths =
 `<p-flex class="example-flex">
   <p-flex-item offset="one-quarter" width="three-quarters">Offset: quarter</p-flex-item>
 </p-flex>
@@ -471,11 +471,11 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-flex-item offset="three-quarters" width="one-quarter">Offset: 3 quarters</p-flex-item>
 </p-flex>`;
 
-    offsetReponsive =
+  offsetReponsive =
 `<p-flex class="example-flex">
   <p-flex-item offset="{ base: 'none', l: 'one-third' }">Responsive offset</p-flex-item>
 </p-flex>`;
-  }
+}
 </script>
 
 <style scoped lang="scss">

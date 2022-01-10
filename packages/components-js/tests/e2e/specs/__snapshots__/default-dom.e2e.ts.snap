@@ -158,7 +158,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     outline-color: transparent !important
   }
 </style>
-<button class=\\"root root--with-icon root--size-small root--stretch-off root--label-align-right root--with-label\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -319,14 +319,14 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-link-pure 1`] = `
@@ -369,14 +369,14 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
@@ -419,14 +419,14 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     outline-color: transparent !important
   }
 </style>
-<span class=\\"root\\">
+<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
     <slot>
     </slot>
   </p-text>
-</span>"
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-marque 1`] = `
@@ -551,7 +551,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     outline-color: transparent !important
   }
 </style>
-<label class=\\"root root--stretch-off root--label-align-right root--label-visible\\">
+<label class=\\"root\\">
   <p-text class=\\"text hydrated\\" id=\\"label\\">
     <slot>
     </slot>
@@ -680,7 +680,7 @@ exports[`should have no basic DOM regression for p-text-list-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
-"<label class=\\"root root--visible\\">
+"<label class=\\"label\\">
   <slot>
   </slot>
 </label>"

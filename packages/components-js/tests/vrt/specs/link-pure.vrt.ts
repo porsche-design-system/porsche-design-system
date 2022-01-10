@@ -73,7 +73,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric', 'dark-electric'] }),
         { injectIntoHead: head }
       );
 

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-text-field-wrapper',
   template: `
     <div class="playground light" title="should render with label">
-      <p-text-field-wrapper [label]="'Label default'">
+      <p-text-field-wrapper [label]="'Label'">
         <input type="text" />
       </p-text-field-wrapper>
     </div>
@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render without label and without description">
       <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'" [hideLabel]="true">
-        <input type="text" placeholder="Without label and without description" />
+        <input type="text" value="Without label and description" />
       </p-text-field-wrapper>
     </div>
 
@@ -33,99 +33,105 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [description]="'Some description'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input type="text" placeholder="Responsive label and description" />
+        <input type="text" value="Responsive label and description" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render in required state">
-      <p-text-field-wrapper [label]="'Label required'">
+      <p-text-field-wrapper [label]="'Required'">
         <input type="text" required />
       </p-text-field-wrapper>
-      <p-text-field-wrapper [label]="'This is a very insanely super long required label across multiple lines'">
+      <p-text-field-wrapper [label]="'Required and insanely super long label across multiple lines'">
         <input type="text" required />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">
-      <p-text-field-wrapper [label]="'Label disabled'" [description]="'Some description'">
+      <p-text-field-wrapper [label]="'Disabled'" [description]="'Some description'">
         <input type="text" disabled />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with placeholder in disabled state">
-      <p-text-field-wrapper [label]="'Label disabled with placeholder'">
+      <p-text-field-wrapper [label]="'Disabled placeholder'">
         <input type="text" placeholder="Some placeholder" disabled />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with readonly state">
-      <p-text-field-wrapper [label]="'Label readonly with description'" [description]="'Some description'">
+      <p-text-field-wrapper [label]="'Readonly'" [description]="'Some description'">
         <input type="text" value="Some value" readonly />
       </p-text-field-wrapper>
     </div>
 
+    <div class="playground light" title="should render with counter">
+      <p-text-field-wrapper [label]="'Counter'">
+        <input type="text" maxlength="20" value="Some value" />
+      </p-text-field-wrapper>
+    </div>
+
     <div class="playground light" title="should render with type number">
-      <p-text-field-wrapper [label]="'Label type number'">
+      <p-text-field-wrapper [label]="'Type number'">
         <input type="number" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type email">
-      <p-text-field-wrapper [label]="'Label type email'">
+      <p-text-field-wrapper [label]="'Type email'">
         <input type="email" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type tel">
-      <p-text-field-wrapper [label]="'Label type tel'">
+      <p-text-field-wrapper [label]="'Type tel'">
         <input type="tel" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type url">
-      <p-text-field-wrapper [label]="'Label type url'">
+      <p-text-field-wrapper [label]="'Type url'">
         <input type="url" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type date">
-      <p-text-field-wrapper [label]="'Label type date'">
+      <p-text-field-wrapper [label]="'Type date'">
         <input type="date" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type time">
-      <p-text-field-wrapper [label]="'Label type time'">
+      <p-text-field-wrapper [label]="'Type time'">
         <input type="time" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type month">
-      <p-text-field-wrapper [label]="'Label type month'">
+      <p-text-field-wrapper [label]="'Type month'">
         <input type="month" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type week">
-      <p-text-field-wrapper [label]="'Label type week'">
+      <p-text-field-wrapper [label]="'Type week'">
         <input type="week" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with type password in different states">
-      <p-text-field-wrapper [label]="'Label type password'">
+      <p-text-field-wrapper [label]="'Type password'">
         <input type="password" value="some password" />
       </p-text-field-wrapper>
       <br />
-      <p-text-field-wrapper [label]="'Label type password disabled'">
+      <p-text-field-wrapper [label]="'Type password disabled'">
         <input type="password" value="some password" disabled />
       </p-text-field-wrapper>
       <br />
-      <p-text-field-wrapper [label]="'Label type password readonly'">
+      <p-text-field-wrapper [label]="'Type password readonly'">
         <input type="password" value="some password" readonly />
       </p-text-field-wrapper>
       <br />
-      <p-text-field-wrapper [label]="'Label type password'" style="width: 240px;">
+      <p-text-field-wrapper [label]="'Type password long text'" style="width: 240px;">
         <input
           type="password"
           value="some really long password with many words and amazing special characters, letters big and small, numbers"
@@ -134,50 +140,46 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with type search in different states">
-      <p-text-field-wrapper [label]="'Label type search'">
+      <p-text-field-wrapper [label]="'Type search'">
         <input type="search" />
       </p-text-field-wrapper>
       <br />
-      <p-text-field-wrapper [label]="'Label type search disabled'">
+      <p-text-field-wrapper [label]="'Type search disabled'">
         <input type="search" disabled />
       </p-text-field-wrapper>
       <br />
-      <p-text-field-wrapper [label]="'Label type search readonly'">
+      <p-text-field-wrapper [label]="'Type search readonly'">
         <input type="search" readonly />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with error state and error message">
-      <p-text-field-wrapper [label]="'Label state error with message'" [state]="'error'" [message]="'error message'">
+      <p-text-field-wrapper [label]="'Error with message'" [state]="'error'" [message]="'Error message'">
         <input type="text" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with error state and no error message">
-      <p-text-field-wrapper [label]="'Label state error without message'" [state]="'error'">
+      <p-text-field-wrapper [label]="'Error without message'" [state]="'error'">
         <input type="text" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with success state and success message">
-      <p-text-field-wrapper
-        [label]="'Label state success with message'"
-        [state]="'success'"
-        [message]="'success message'"
-      >
+      <p-text-field-wrapper [label]="'Success with message'" [state]="'success'" [message]="'Success message'">
         <input type="text" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with success state and no success message">
-      <p-text-field-wrapper [label]="'Label state success without message'" [state]="'success'">
+      <p-text-field-wrapper [label]="'Success without message'" [state]="'success'">
         <input type="text" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with default state and no message">
       <p-text-field-wrapper
-        [label]="'Label default state no message'"
+        [label]="'Default without message'"
         [state]="'none'"
         [message]="'this message should be hidden'"
       >
@@ -190,10 +192,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with error state"
     >
       <p-text-field-wrapper [state]="'error'">
-        <span slot="label">Label slotted with a <a href="https://designsystem.porsche.com">link</a>.</span>
-        <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <span slot="label">Slotted error label with a <a href="#">link</a></span>
+        <span slot="description">Slotted description with a <a href="#">link</a></span>
         <input type="text" placeholder="Some placeholder" />
-        <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <span slot="message">Slotted message with a <a href="#">link</a></span>
       </p-text-field-wrapper>
     </div>
 
@@ -202,22 +204,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state"
     >
       <p-text-field-wrapper [state]="'success'">
-        <span slot="label">Label slotted with a <a href="https://designsystem.porsche.com">link</a>.</span>
-        <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <span slot="label">Slotted success label with a <a href="#">link</a></span>
+        <span slot="description">Slotted description with a <a href="#">link</a></span>
         <input type="text" placeholder="Some placeholder" />
-        <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+        <span slot="message">Slotted message with a <a href="#">link</a></span>
       </p-text-field-wrapper>
     </div>
 
-    <div
-      class="playground light"
-      title="should render with multiline label, description and message and cut off too long option text"
-    >
+    <div class="playground light" title="should render with multiline label, description, message and text">
       <p-text-field-wrapper
-        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
-        [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
+        [label]="'Multiline label lorem ipsum dolor sit amet, consetetur sadipscing'"
+        [description]="
+          'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'
+        "
         [state]="'error'"
-        [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
+        [message]="'Multiline message at vero eos et accusam et justo duo dolores et ea rebum.'"
         style="width: 240px;"
       >
         <input type="text" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
