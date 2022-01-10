@@ -21,7 +21,7 @@ export const getComponentCss = (
   align: TextAlign,
   color: Extract<TextColor, 'default' | 'inherit'>,
   ellipsis: boolean,
-  theme: Theme,
+  theme: Theme
 ): string => {
   const { baseColor } = getThemedColors(theme);
 
@@ -30,7 +30,7 @@ export const getComponentCss = (
       display: 'block',
     },
     ...addImportantToEachRule({
-      '::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6)':
+      '::slotted(h1),::slotted(h2),::slotted(h3),::slotted(h4),::slotted(h5),::slotted(h6)':
         getDefaultSlottedTypoStyles(),
     }),
     root: {

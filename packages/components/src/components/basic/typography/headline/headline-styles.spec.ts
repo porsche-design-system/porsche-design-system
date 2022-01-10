@@ -18,7 +18,7 @@ describe('getComponentCss()', () => {
       'dark',
     ],
   ])(
-    'should return correct css for variant: %s, align: %s, color: %s, ellipsis: %s and theme: %o',
+    'should return correct css for variant: %s, align: %s, color: %s, ellipsis: %s and theme: %s',
     (variant, align, color, ellipsis, theme) => {
       expect(getComponentCss(variant, align, color, ellipsis, theme)).toMatchSnapshot();
     }

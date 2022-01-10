@@ -1,7 +1,6 @@
 import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
+import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark, TextColor } from '../types';
 import { isDark, isDarkElectric, isLightElectric } from './theme';
-import { TextColor as IconColor } from '../types';
 
 type ColorDarkenTheme = {
   default: string;
@@ -208,7 +207,7 @@ export const getThemedFormStateColors = (theme: Theme, state: FormState): Themed
   return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
 };
 
-export const getColor = (iconColor: IconColor, theme: ThemeExtendedElectricDark): string => {
+export const getThemedColor = (stateColor: TextColor, theme: ThemeExtendedElectricDark): string => {
   const {
     baseColor,
     brandColor,
@@ -221,7 +220,7 @@ export const getColor = (iconColor: IconColor, theme: ThemeExtendedElectricDark)
     neutralColor,
   } = getThemedColors(theme);
 
-  const colorMap: { [key in IconColor]: string } = {
+  const colorMap: { [key in TextColor]: string } = {
     brand: brandColor,
     default: baseColor,
     'neutral-contrast-high': contrastHighColor,
@@ -233,5 +232,5 @@ export const getColor = (iconColor: IconColor, theme: ThemeExtendedElectricDark)
     'notification-neutral': neutralColor,
     inherit: 'currentColor',
   };
-  return colorMap[iconColor];
+  return colorMap[stateColor];
 };
