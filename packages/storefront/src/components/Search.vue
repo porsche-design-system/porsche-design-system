@@ -38,7 +38,7 @@
   import Component from 'vue-class-component';
   import algoliasearch from 'algoliasearch/lite';
   import { createInMemoryCache } from '@algolia/cache-in-memory';
-  import { ALGOLIA_APP_ID, ALGOLIA_READONLY_KEY } from '@/../storefront.config';
+  import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY } from '@/../storefront.config';
   import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
   import { Prop } from 'vue-property-decorator';
 
@@ -78,7 +78,7 @@
   export default class Search extends Vue {
     @Prop({ default: false }) public hideNavigation!: boolean;
 
-    public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_READONLY_KEY, {
+    public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY, {
       responsesCache: createInMemoryCache(),
       requestsCache: createInMemoryCache({ serializable: false }),
     });
