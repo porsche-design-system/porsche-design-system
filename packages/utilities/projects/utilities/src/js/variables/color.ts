@@ -1,5 +1,6 @@
 export type Theme = 'light' | 'dark';
 export type ThemeExtendedElectric = Theme | 'light-electric';
+export type ThemeExtendedElectricDark = ThemeExtendedElectric | 'dark-electric';
 
 export type ColorTheme = {
   brand: string;
@@ -52,6 +53,7 @@ export type ColorExternal = {
 export type Color = ColorTheme & {
   darkTheme: ColorTheme;
   lightElectricTheme: ColorTheme;
+  darkElectricTheme: ColorTheme;
   external: ColorExternal;
 };
 
@@ -118,33 +120,24 @@ const darkTheme: ColorTheme = {
 };
 
 const lightElectricTheme: ColorTheme = {
+  ...lightTheme,
   brand: '#00b0f4',
-  default: lightTheme.default,
-  background: {
-    default: lightTheme.background.default,
-    surface: lightTheme.background.surface,
-    shading: lightTheme.background.shading,
-  },
-  neutralContrast: {
-    high: lightTheme.neutralContrast.high,
-    medium: lightTheme.neutralContrast.medium,
-    low: lightTheme.neutralContrast.low,
-  },
-  notification: {
-    success: lightTheme.notification.success,
-    successSoft: lightTheme.notification.successSoft,
-    warning: lightTheme.notification.warning,
-    warningSoft: lightTheme.notification.warningSoft,
-    error: lightTheme.notification.error,
-    errorSoft: lightTheme.notification.errorSoft,
-    neutral: lightTheme.notification.neutral,
-    neutralSoft: lightTheme.notification.neutralSoft,
-  },
   state: {
     hover: '#00b0f4',
     active: '#00b0f4',
-    focus: 'currentColor',
+    focus: lightTheme.state.focus,
     disabled: lightTheme.state.disabled,
+  },
+};
+
+const darkElectricTheme: ColorTheme = {
+  ...darkTheme,
+  brand: '#00b0f4',
+  state: {
+    hover: '#00b0f4',
+    active: '#00b0f4',
+    focus: darkTheme.state.focus,
+    disabled: darkTheme.state.disabled,
   },
 };
 
@@ -161,6 +154,10 @@ export const color: Color = {
    * Theme light electric as optional
    */
   lightElectricTheme,
+  /**
+   * Theme dark electric as optional
+   */
+  darkElectricTheme,
   /**
    * External brand colors
    */

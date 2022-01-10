@@ -18,12 +18,13 @@ import type {
   LinkTarget,
   TextSize,
   TextWeight,
-  ThemeExtendedElectric,
+  ThemeExtendedElectricDark,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link-pure',
@@ -60,7 +61,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
@@ -81,6 +82,11 @@ export class LinkPure {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
+    improveFocusHandlingForCustomElement(this.host);
+  }
+
   public componentWillRender(): void {
     attachComponentCss(
       this.host,
@@ -92,13 +98,12 @@ export class LinkPure {
       this.hideLabel,
       this.alignLabel,
       hasSlottedSubline(this.host),
-      !!this.href,
+      !this.href,
       this.theme
     );
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     if (hasVisibleIcon(this.icon) && isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
         const size = `${calcLineHeightForElement(this.linkTag)}em`;

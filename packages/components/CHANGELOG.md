@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.8.0-beta.3] - 2021-12-22
+
+#### Added
+**Disclaimer:** The provided themes `light-electric` and `dark-electric` are just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
+- `light-electric` theme for `Switch`
+- `dark-electric` theme for `Button Pure` and `Link Pure`
+- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and `textarea`
+
+#### Changed
+- `:focus-visible` style matches outline color of `Switch` while hovered
+
+#### Fixed
+- Box model of `Button Pure`
+
+### [2.8.0-beta.2] - 2021-12-22
+
+#### Fixed
+- `Content Wrapper` regression for `!important` style
+
+#### Added
+- Usage validation for `Link`, `Link Pure` and `Link Social`
+
 ### [2.8.0-beta.1] - 2021-12-16
 
 #### Fixed

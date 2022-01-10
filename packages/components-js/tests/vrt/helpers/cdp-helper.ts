@@ -1,6 +1,6 @@
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
-import { ThemeExtendedElectric } from '@porsche-design-system/utilities';
+import { ThemeExtendedElectric, ThemeExtendedElectricDark } from '@porsche-design-system/utilities';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 
@@ -11,11 +11,11 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: ThemeExtendedElectric[] = ['light', 'dark', 'light-electric'];
+const allThemes: ThemeExtendedElectricDark[] = ['light', 'dark', 'light-electric', 'dark-electric'];
 const allStates = ['hover', 'focus', 'focus-hover'];
 
 export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme: ThemeExtendedElectric) => string;
+export type GetThemedMarkup = (theme: ThemeExtendedElectricDark) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
   allStates
@@ -28,7 +28,7 @@ export const getBodyMarkup = (getElements: GetMarkup) =>
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: ThemeExtendedElectric[] }
+  opts?: { themes?: ThemeExtendedElectricDark[] }
 ): string => {
   const { themes = ['light', 'dark'] } = opts ?? {};
 

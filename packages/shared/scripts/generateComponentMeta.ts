@@ -12,7 +12,17 @@ const generateComponentMeta = (): void => {
   const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
 
   const types = [
-    `export type ComponentMeta = { isFocusable: boolean; isThemeable: boolean; requiredParent?: TagName; requiredChild?: string; };`,
+    `export type ComponentMeta = {
+  isFocusable: boolean;
+  isThemeable: boolean;
+  requiredParent?: TagName;
+  requiredChild?: string;
+  requiredProps?: {
+    [propName: string]: string;
+  }[];
+  hasSlottedCss: boolean;
+  styling: 'jss' | 'scss' | 'hybrid';
+};`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
   ].join('\n');
 
@@ -21,6 +31,11 @@ const generateComponentMeta = (): void => {
     isThemeable: boolean;
     requiredParent?: TagName;
     requiredChild?: string;
+    requiredProps?: {
+      [propName: string]: string;
+    }[];
+    hasSlottedCss: boolean;
+    styling: 'jss' | 'scss' | 'hybrid';
   };
 
   type ComponentsMeta = {
@@ -48,6 +63,10 @@ const generateComponentMeta = (): void => {
       atomicFocusableTagNames.includes(tagName) ||
       atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
     const isThemeable = source.includes('public theme?: Theme');
+    const hasSlottedCss = source.includes('attachSlottedCss');
+    const usesScss = source.includes('styleUrl:');
+    const usesJss = source.includes('attachComponentCss');
+    const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
@@ -72,11 +91,22 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) ?? [];
+
+    let requiredProps: ComponentMeta['requiredProps'];
+    if (requiredProp) {
+      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) ?? [];
+      requiredProps = [{ [requiredProp]: propType }];
+    }
+
     result[tagName] = {
       isFocusable,
       isThemeable,
       requiredParent,
       requiredChild,
+      requiredProps,
+      hasSlottedCss,
+      styling,
     };
     return result;
   }, {} as ComponentsMeta);

@@ -248,6 +248,9 @@ export const getElementIndex = (element: ElementHandle, selector: string): Promi
   }, selector);
 };
 
+export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+  element.evaluate((el) => (el as HTMLElement).innerText);
+
 export const getElementPositions = (
   page: Page,
   element: ElementHandle
@@ -321,7 +324,13 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const componentMarkup = `<${tagName}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+  const attributes = componentMeta.requiredProps
+    ? componentMeta.requiredProps
+        .map((requiredProp) => Object.entries(requiredProp).map(([prop, value]) => ` ${prop}="${value}"`))
+        .join()
+    : '';
+
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };

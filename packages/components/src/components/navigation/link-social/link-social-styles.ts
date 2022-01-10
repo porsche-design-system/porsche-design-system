@@ -3,9 +3,9 @@ import {
   BreakpointCustomizable,
   buildHostStyles,
   buildResponsiveStyles,
-  colorDarken,
   getCss,
   getFocusStyles,
+  getThemedColorsDarken,
   getTransition,
   isDark,
   mergeDeep,
@@ -18,19 +18,17 @@ import type { SocialIconName } from './link-social-utils';
 import { getIconLabelStyles, getRootStyles, getSlottedLinkStyles } from '../link/link-styles';
 
 const getColors = (
-  isDarkTheme: boolean,
-  icon: SocialIconName
+  icon: SocialIconName,
+  theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
+  const isDarkTheme = isDark(theme);
   const { darkTheme } = color;
+  const { contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
   const externalBrandColor = color.external[icon?.split('-')[1]];
 
   return {
     baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
-    baseColorHover: externalBrandColor
-      ? externalBrandColor
-      : isDarkTheme
-      ? colorDarken.darkTheme.default
-      : colorDarken.neutralContrast.high,
+    baseColorHover: externalBrandColor || (isDarkTheme ? baseColorDarken : contrastHighColorDarken),
     textColor: isDarkTheme ? color.default : darkTheme.default,
     textColorHover: icon === 'logo-kakaotalk' ? color.default : externalBrandColor ? darkTheme.default : undefined,
   };
@@ -42,8 +40,7 @@ export const getComponentCss = (
   hasHref: boolean,
   theme: Theme
 ): string => {
-  const isDarkTheme = isDark(theme);
-  const { baseColor, baseColorHover, textColor, textColorHover } = getColors(isDarkTheme, icon);
+  const { baseColor, baseColorHover, textColor, textColorHover } = getColors(icon, theme);
 
   return getCss(
     mergeDeep<Styles>(
