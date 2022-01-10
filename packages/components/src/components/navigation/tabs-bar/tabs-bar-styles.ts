@@ -13,6 +13,9 @@ import type { ThemeExtendedElectric } from '../../../types';
 
 const tabsTransitionDuration = '.4s';
 
+const transformSelector = (selector: string): string =>
+  ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join(',');
+
 export const getComponentCss = (
   size: BreakpointCustomizable<TabSize>,
   weight: TabWeight,
@@ -32,7 +35,7 @@ export const getComponentCss = (
     ...addImportantToEachRule({
       // would be nice to use shared selector like '::slotted([role])'
       // but this doesn't work reliably when rendering in browser
-      '::slotted(a),::slotted(button)': {
+      [transformSelector('::slotted([role])')]: {
         display: 'inline-block',
         margin: 0,
         padding: 0,
@@ -54,20 +57,19 @@ export const getComponentCss = (
         cursor: 'pointer',
         transition: getTransition('color'),
       },
-      '::slotted(a:hover),::slotted(button:hover)': {
+      [transformSelector('::slotted([role]:hover)')]: {
         color: hoverColor,
       },
-      '::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"])':
-        {
-          color: activeColor,
-        },
-      '::slotted(a:focus),::slotted(button:focus)': {
+      [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
+        color: activeColor,
+      },
+      [transformSelector('::slotted([role]:focus)')]: {
         outlineColor: focusColor,
       },
-      '::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible))': {
+      [transformSelector('::slotted([role]:focus:not(:focus-visible))')]: {
         outlineColor: 'transparent',
       },
-      '::slotted(a:not(:last-child)),::slotted(button:not(:last-child))': {
+      [transformSelector('::slotted([role]:not(:last-child))')]: {
         marginRight: '1em',
       },
     }),
