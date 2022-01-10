@@ -21,7 +21,7 @@ export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: string } =
 
 const getSizeStyles = (size: TextSize): JssStyle => {
   if (size === 'inherit') {
-    return { fontSize: 'inherit', lineHeight: 'inherit' };
+    return { lineHeight: 'inherit', fontSize: 'inherit' };
   } else {
     const { lineHeight, fontSize } = text[textSizeMapper[size]];
     return { lineHeight, fontSize };
@@ -40,10 +40,7 @@ export const getComponentCss = (
     ':host': {
       display: 'block',
     },
-    ...addImportantToEachRule({
-      '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)':
-        getDefaultSlottedTypoStyles(),
-    }),
+    '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)': addImportantToEachRule(getDefaultSlottedTypoStyles()),
     root: {
       display: 'inherit',
       padding: 0,
