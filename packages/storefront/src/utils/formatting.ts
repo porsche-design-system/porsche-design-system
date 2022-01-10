@@ -31,7 +31,7 @@ export const convertToAngular = (markup: string): string =>
       return ` [${camelCase($key)}]="{${$value}}"`;
     })
     // transform all other keys to camel case, surround them in brackets and surround all values with single quotes
-    .replace(/\s([a-z-]+)="(\D.*?)"/g, (m, $key, $value) => {
+    .replace(/\s([a-z-]+)="([^-]\D.*?)"/g, (m, $key, $value) => {
       if ($key.startsWith('aria-')) {
         // handle aria attributes
         return ` ${$key}="${$value}"`;
@@ -40,7 +40,7 @@ export const convertToAngular = (markup: string): string =>
       }
     })
     // transform all keys to camel case which have digits as a value
-    .replace(/\s([a-z-]+)="(\d*)"/g, (m, $key, $value) => {
+    .replace(/\s([a-z-]+)="(-?\d*)"/g, (m, $key, $value) => {
       if ($key === 'name') {
         // surround numeric "name" attribute values with single quotes
         return ` [${$key}]="'${$value}'"`;
@@ -70,7 +70,7 @@ export const convertToReact = (markup: string): string =>
       return ` on${pascalCase($key)}={() => { ${$value} }}`;
     })
     // transform boolean and number
-    .replace(/\s(\S+)="(true|false|\d)"/g, ' $1={$2}')
+    .replace(/\s(\S+)="(true|false|-?\d*)"/g, ' $1={$2}')
     // transform custom element tags to pascal case
     .replace(/<(\/?)(p-[\w-]+)(.*?)>/g, (m, $slash, $tag, $attributes) => {
       return `<${$slash}${pascalCase($tag)}${$attributes}>`;
