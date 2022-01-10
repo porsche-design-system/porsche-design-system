@@ -1,4 +1,16 @@
-import { cleanMarkup, convertToAngular, convertToReact, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+import {
+  cleanBooleanValues,
+  cleanClassAndSlotAttributes,
+  cleanMarkup,
+  convertToAngular,
+  convertToReact,
+  escapeHtml,
+  patchThemeIntoMarkup,
+  transformAttributesWithDigitValue,
+  transformAttributesWithNotDigitValue,
+  transformAttributesWithObjectValues,
+  transformEvents,
+} from '../../src/utils';
 
 describe('cleanMarkup()', () => {
   it('should replace multiple br tags with new line', () => {
@@ -62,22 +74,6 @@ describe('patchThemeIntoMarkup()', () => {
       const markup = '<PButton some-attribute="some value"></PButton>';
       expect(patchThemeIntoMarkup(markup, 'dark')).toBe('<PButton theme="dark" some-attribute="some value"></PButton>');
     });
-  });
-});
-
-describe('convertToAngular()', () => {
-  it('should convert markup to Angular syntax', () => {
-    const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
-  <span>some text</span>
-  <span slot="some-slot">some slot text</span>
-</p-some-tag>`;
-
-    expect(convertToAngular(markup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
-  <span>some text</span>
-  <span slot="some-slot">some slot text</span>
-</p-some-tag>`
-    );
   });
 });
 
