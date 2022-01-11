@@ -7,7 +7,7 @@ import {
   mergeDeep,
 } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
-import { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
+import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 import { titleLarge, headline } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 import { isVariantType } from './headline-utils';

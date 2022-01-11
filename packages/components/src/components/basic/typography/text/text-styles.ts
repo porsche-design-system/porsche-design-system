@@ -7,7 +7,7 @@ import {
   buildResponsiveStyles,
 } from '../../../../utils';
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
-import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
+import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
