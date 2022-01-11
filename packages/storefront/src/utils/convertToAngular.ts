@@ -1,6 +1,6 @@
 import { camelCase } from 'change-case';
 
-export const transformEvents = (markup: string): string =>
+export const transformEventsToAngularSyntax = (markup: string): string =>
   markup.replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
     return ` (${$key})="${$value}"`;
   });
@@ -43,7 +43,7 @@ export const cleanClassAndSlotAttributes = (markup: string): string => {
 
 export const convertToAngular = (markup: string): string => {
   return [
-    transformEvents,
+    transformEventsToAngularSyntax,
     transformAttributesWithObjectValues,
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
