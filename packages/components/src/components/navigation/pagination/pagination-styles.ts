@@ -10,7 +10,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
-import { color, font } from '@porsche-design-system/utilities';
+import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
@@ -52,9 +52,8 @@ export const getComponentCss = (
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
         textDecoration: 'none',
-        fontFamily: font.family,
-        fontWeight: font.weight.regular,
-        ...font.size.small,
+        ...defaultFontFamilyAndWeight,
+        ...fontSize.small,
         cursor: 'pointer',
         color: baseColor,
         ...getFocusStyles({ color: isDark(theme) ? 'currentColor' : color.state.focus, offset: 1 }),

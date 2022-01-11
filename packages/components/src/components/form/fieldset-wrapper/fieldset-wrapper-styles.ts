@@ -1,5 +1,5 @@
 import { addImportantToRule, getCss, getRequiredStyles, getStateMessageStyles, mergeDeep } from '../../../utils';
-import { color, headline, spacing } from '@porsche-design-system/utilities';
+import { color, headline4, headline5, spacing } from '@porsche-design-system/utilities';
 import type { FormState } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 
@@ -21,7 +21,7 @@ export const getComponentCss = (
         margin: `0 0 ${spacing[16]}`,
         padding: 0,
         color: baseColor,
-        ...headline[labelSize === 'small' ? 5 : 4],
+        ...(labelSize === 'small' ? headline5 : headline4),
       },
     },
     root: {

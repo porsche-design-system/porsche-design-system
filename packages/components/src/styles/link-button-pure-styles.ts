@@ -12,7 +12,7 @@ import {
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../utils';
-import { font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
+import { fontSize, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
@@ -36,18 +36,18 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    const { fontSize, lineHeight } = font.size[paramCaseToCamelCase(textSize)];
+    const { fontSize: size, lineHeight } = fontSize[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
-      'x-small': font.size.xSmall,
-      small: font.size.small,
-      medium: font.size['20'],
-      large: font.size['30'],
-      'x-large': font.size.large,
+      'x-small': fontSize.xSmall,
+      small: fontSize.small,
+      medium: fontSize['20'],
+      large: fontSize['30'],
+      'x-large': fontSize.large,
     };
 
     return {
-      ...generateTypeScale(fontSize),
+      ...generateTypeScale(size),
       '& .icon': {
         // TODO: should be referenced
         width: lineHeightWithUnit,
@@ -57,7 +57,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
         // TODO: should be referenced
         ...sublineSize[textSize],
         '&::before': {
-          fontSize,
+          fontSize: size,
           marginLeft: lineHeightWithUnit,
         },
       },

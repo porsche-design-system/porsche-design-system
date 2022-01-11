@@ -1,5 +1,5 @@
 import { addImportantToEachRule, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
-import { text } from '@porsche-design-system/utilities';
+import { textSmall } from '@porsche-design-system/utilities';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
@@ -25,7 +25,7 @@ const getOrderedStyles: GetStylesFunction = (): JssStyle => ({
     counterIncrement: 'section',
     textAlign: 'right',
     backgroundColor: 'transparent',
-    ...text.small,
+    ...textSmall,
   },
 });
 

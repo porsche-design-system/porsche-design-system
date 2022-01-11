@@ -6,7 +6,7 @@ import {
   getThemedColors,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
-import { font } from '@porsche-design-system/utilities';
+import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (theme: Theme): string => {
   const { baseColor } = getThemedColors(theme);
@@ -20,9 +20,8 @@ export const getComponentCss = (theme: Theme): string => {
       padding: 0,
       margin: 0,
       color: baseColor,
-      ...font.size.small,
-      fontFamily: font.family,
-      fontWeight: font.weight.regular,
+      ...defaultFontFamilyAndWeight,
+      ...fontSize.small,
     },
   });
 };

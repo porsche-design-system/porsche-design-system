@@ -7,7 +7,7 @@ import {
   getTransition,
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../types';
-import { font } from '@porsche-design-system/utilities';
+import { fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
 import type { TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
@@ -40,7 +40,7 @@ export const getComponentCss = (
         margin: 0,
         padding: 0,
         verticalAlign: 'top',
-        fontFamily: font.family,
+        fontFamily,
         fontWeight: 'inherit',
         fontSize: 'inherit',
         lineHeight: 'inherit',
@@ -75,10 +75,10 @@ export const getComponentCss = (
     }),
     root: {
       position: 'relative',
-      ...font.size.small,
-      fontWeight: font.weight[weight],
+      ...fontSize.small,
+      fontWeight: fontWeight[weight],
       margin: '0 -4px',
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ ...font.size[s] })),
+      ...buildResponsiveStyles(size, (s: TabSize) => ({ ...fontSize[s] })),
     },
     'scroll-area': {
       position: 'relative',

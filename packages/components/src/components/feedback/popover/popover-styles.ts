@@ -8,7 +8,7 @@ import {
 } from '../../../utils';
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
-import { color, text } from '@porsche-design-system/utilities';
+import { color, textSmall } from '@porsche-design-system/utilities';
 import { POPOVER_Z_INDEX } from '../../../constants';
 
 const mediaQueryXS = mediaQuery('xs');
@@ -127,8 +127,8 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
-      ...text.small,
-      '-webkit-text-size-adjust': 'none',
+      ...textSmall,
+      WebkitTextSizeAdjust: 'none',
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
