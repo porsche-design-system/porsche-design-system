@@ -7,7 +7,7 @@ import {
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../../utils';
-import { color, font, spacing } from '@porsche-design-system/utilities';
+import { color, defaultFontFamilyAndWeight, fontSize, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -31,9 +31,8 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      fontFamily: font.family,
-      fontWeight: font.weight.regular,
-      ...font.size.small,
+      ...defaultFontFamilyAndWeight,
+      ...fontSize.small,
       textAlign: 'left',
       color: color.default,
       whiteSpace: 'nowrap',

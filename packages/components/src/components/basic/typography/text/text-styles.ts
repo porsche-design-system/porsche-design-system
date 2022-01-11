@@ -8,7 +8,7 @@ import {
 } from '../../../../utils';
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { font, text } from '@porsche-design-system/utilities';
+import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
 export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: keyof typeof text } = {
@@ -47,8 +47,8 @@ export const getComponentCss = (
       padding: 0,
       margin: 0,
       textAlign: align,
-      fontFamily: font.family,
-      fontWeight: font.weight[weight],
+      fontFamily,
+      fontWeight: fontWeight[weight],
       color: getThemedColor(color, theme),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',

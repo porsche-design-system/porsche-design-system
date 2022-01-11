@@ -8,12 +8,12 @@ import {
 } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
 import { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
-import { title, headline } from '@porsche-design-system/utilities';
+import { titleLarge, headline } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 import { isVariantType } from './headline-utils';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
-  return variant === 'large-title' ? title.large : headline[(variant as VariantType).slice(-1)];
+  return variant === 'large-title' ? titleLarge : headline[(variant as VariantType).slice(-1)];
 };
 
 export const getComponentCss = (
