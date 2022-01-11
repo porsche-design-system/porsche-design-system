@@ -11,7 +11,7 @@ import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../t
 import { font, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
-export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: keyof typeof text } = {
   'x-small': 'xSmall',
   small: 'small',
   medium: 'medium',
@@ -40,7 +40,8 @@ export const getComponentCss = (
     ':host': {
       display: 'block',
     },
-    '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)': addImportantToEachRule(getDefaultSlottedTypoStyles()),
+    '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)':
+      addImportantToEachRule(getDefaultSlottedTypoStyles()),
     root: {
       display: 'inherit',
       padding: 0,
