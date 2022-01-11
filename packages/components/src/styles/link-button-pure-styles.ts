@@ -29,7 +29,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& .icon': {
+      '& $icon': {
         width: '1.5em',
         height: '1.5em',
       },
@@ -49,10 +49,12 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     return {
       ...generateTypeScale(fontSize),
       '& .icon': {
+        // TODO: should be referenced
         width: lineHeightWithUnit,
         height: lineHeightWithUnit,
       },
       '& ~ .subline': {
+        // TODO: should be referenced
         ...sublineSize[textSize],
         '&::before': {
           fontSize,
