@@ -1,4 +1,4 @@
-import { camelCase, paramCase, pascalCase } from 'change-case';
+import { paramCase } from 'change-case';
 import { Theme } from '@/models';
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 
@@ -19,46 +19,6 @@ export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
             : $tag;
         })
     : markup;
-
-export const convertToReact = (markup: string): string =>
-  markup
-    // remove quotes from object values but add double brackets and camelCase
-    .replace(/\s(\S+)="({.*?})"/g, (m, $key, $value) => {
-      return ` ${camelCase($key)}={${$value}}`;
-    })
-    // transform all standard attributes to camel case
-    .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
-      return ` ${camelCase($key)}="${$value}"`;
-    })
-    // transform class attribute to JSX compatible one
-    .replace(/\sclass="(.*?)"/g, ' className="$1"')
-    // transform to camelCase event binding syntax
-    .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
-      return ` on${pascalCase($key)}={() => { ${$value} }}`;
-    })
-    // transform boolean and number
-    .replace(/\s(\S+)="(true|false|-?\d*)"/g, ' $1={$2}')
-    // transform custom element tags to pascal case
-    .replace(/<(\/?)(p-[\w-]+)(.*?)>/g, (m, $slash, $tag, $attributes) => {
-      return `<${$slash}${pascalCase($tag)}${$attributes}>`;
-    })
-    // add closing slash to inputs for valid jsx
-    .replace(/(<input(?:.[^/]*?))>/g, '$1 />')
-    // transform to self closing tags
-    .replace(/(<([A-Za-z]+).*?)(><\/\2)>/g, '$1 />')
-    // transform style attributes
-    .replace(/style="(.*?)"/g, (m, $style: string) => {
-      $style = $style
-        .replace(/;/g, ',') // transform semi colons to comma
-        .replace(/,$/g, ''); // remove last comma
-
-      const pairs = $style.split(',').map((p) => {
-        const [prop, val] = p.split(':');
-        return `${camelCase(prop)}: '${val.trim()}'`;
-      });
-
-      return `style={{ ${pairs.join(', ')} }}`;
-    });
 
 export const escapeHtml = (input: string): string =>
   input
