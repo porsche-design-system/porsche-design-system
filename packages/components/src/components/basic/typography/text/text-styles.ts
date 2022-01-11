@@ -33,8 +33,11 @@ export const getComponentCss = (
     ':host': {
       display: 'block',
     },
-    '::slotted(p),::slotted(address),::slotted(blockquote),::slotted(figcaption),::slotted(cite),::slotted(time),::slotted(legend)':
-      addImportantToEachRule(getDefaultSlottedTypoStyles()),
+    '::slotted': {
+      '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
+        getDefaultSlottedTypoStyles()
+      ),
+    },
     root: {
       display: 'inherit',
       padding: 0,
