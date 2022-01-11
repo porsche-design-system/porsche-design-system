@@ -516,13 +516,11 @@ describe('marque', () => {
     it('should be removed from tab order for tabindex -1', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-marque href="#" tabindex="-1">Some label</p-marque>
-        <a href="#" id="after">after</a>
-      </div>
-    `
+        `<div id="wrapper">
+  <a href="#" id="before">before</a>
+  <p-marque href="#" tabindex="-1">Some label</p-marque>
+  <a href="#" id="after">after</a>
+</div>`
       );
 
       const marque = await getHost();
