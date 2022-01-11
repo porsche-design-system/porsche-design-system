@@ -16,14 +16,16 @@ export const getComponentCss = (
     ':host': {
       display: addImportantToRule('block'),
     },
-    '@global': hasLabel && {
-      legend: {
-        margin: `0 0 ${spacing[16]}`,
-        padding: 0,
-        color: baseColor,
-        ...(labelSize === 'small' ? headline5 : headline4),
+    ...(hasLabel && {
+      '@global': {
+        legend: {
+          margin: `0 0 ${spacing[16]}`,
+          padding: 0,
+          color: baseColor,
+          ...(labelSize === 'small' ? headline5 : headline4),
+        },
       },
-    },
+    }),
     root: {
       margin: 0,
       padding: 0,
