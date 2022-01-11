@@ -185,7 +185,7 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
-"<fieldset class=\\"root\\">
+"<fieldset>
   <slot>
   </slot>
 </fieldset>"
