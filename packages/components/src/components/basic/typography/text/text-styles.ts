@@ -5,25 +5,18 @@ import {
   getCss,
   getThemedColor,
   buildResponsiveStyles,
+  paramCaseToCamelCase,
 } from '../../../../utils';
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
-export const textSizeMapper: { [key in Exclude<TextSize, 'inherit'>]: keyof typeof text } = {
-  'x-small': 'xSmall',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
-  'x-large': 'xLarge',
-};
-
 const getSizeStyles = (size: TextSize): JssStyle => {
   if (size === 'inherit') {
     return { lineHeight: 'inherit', fontSize: 'inherit' };
   } else {
-    const { lineHeight, fontSize } = text[textSizeMapper[size]];
+    const { lineHeight, fontSize } = text[paramCaseToCamelCase(size)];
     return { lineHeight, fontSize };
   }
 };
