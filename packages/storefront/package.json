@@ -54,7 +54,6 @@
     "concurrently": "^6.3.0",
     "eslint": "^7.30.0",
     "eslint-plugin-vue": "^7.19.1",
-    "instantsearch.css": "^7.4.5",
     "local-web-server": "^5.1.1",
     "sass": "^1.42.0",
     "sass-loader": "^10.1.1",
