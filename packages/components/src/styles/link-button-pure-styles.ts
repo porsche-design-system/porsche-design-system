@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   buildResponsiveStyles,
+  generateTypeScale,
   getFocusStyles,
   getInset,
   getThemedColors,
@@ -12,7 +13,7 @@ import {
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../utils';
-import { fontSize, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
+import { fontSize, FontSizeLineHeight, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
