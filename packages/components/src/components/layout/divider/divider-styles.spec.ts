@@ -1,9 +1,7 @@
 import { getComponentCss } from './divider-styles';
-import type { Theme } from '../../../types';
-import type { DividerColor, DividerOrientation } from './divider-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[DividerColor, DividerOrientation, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['neutral-contrast-low', 'horizontal', 'light'],
     ['neutral-contrast-low', 'vertical', 'light'],
     ['neutral-contrast-low', 'horizontal', 'dark'],
@@ -21,7 +19,7 @@ describe('getComponentCss()', () => {
       { base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' },
       'light',
     ],
-  ])('should return correct css for color: %s, orientation: %j and theme %s', (color, orientation, theme) => {
-    expect(getComponentCss(color, orientation, theme)).toMatchSnapshot();
+  ])('should return correct css for color: %s, orientation: %j and theme %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

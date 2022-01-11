@@ -1,14 +1,12 @@
 import { getComponentCss } from './toast-item-styles';
-import type { ToastState } from '../toast/toast-utils';
-import type { Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[ToastState, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['success', 'light'],
     ['neutral', 'light'],
     ['success', 'dark'],
     ['neutral', 'dark'],
-  ])('should return correct css for state: %s and theme: %s', (state, theme) => {
-    expect(getComponentCss(state, theme)).toMatchSnapshot();
+  ])('should return correct css for state: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

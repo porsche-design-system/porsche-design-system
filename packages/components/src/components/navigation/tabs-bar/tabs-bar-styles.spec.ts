@@ -1,10 +1,7 @@
-import type { BreakpointCustomizable } from '../../../types';
 import { getComponentCss } from './tabs-bar-styles';
-import type { TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
-import type { ThemeExtendedElectric } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<TabSize>, TabWeight, TabGradientColorTheme, ThemeExtendedElectric]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['small', 'regular', 'default', 'light'],
     ['small', 'regular', 'default', 'dark'],
     ['small', 'regular', 'default', 'light-electric'],

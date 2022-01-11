@@ -1,9 +1,7 @@
 import { getComponentCss } from './fieldset-wrapper-styles';
-import type { FormState } from '../../../types';
-import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[FormState, FieldsetWrapperLabelSize, boolean]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['none', 'medium', true],
     ['none', 'medium', false],
     ['none', 'small', true],

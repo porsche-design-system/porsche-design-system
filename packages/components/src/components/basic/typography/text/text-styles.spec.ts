@@ -19,9 +19,9 @@ describe('getComponentCss()', () => {
       'dark',
     ],
   ])(
-    'should return correct css for size: %s, weight: %s, align: %s, color: %s, ellipsis: %o and theme: %s',
-    (size, weight, align, color, ellipsis, theme) => {
-      expect(getComponentCss(size, weight, align, color, ellipsis, theme)).toMatchSnapshot();
+    'should return correct css for size: %j, weight: %s, align: %s, color: %s, ellipsis: %o and theme: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
 });
