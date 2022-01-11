@@ -29,7 +29,6 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
         .replace(/(?<!`)<(script|style)(?:.|\s)*?<\/\1>(?!`)/g, '') // remove script and style tags
         .replace(/<!--(?:.|\s)*?-->/g, '') // remove comments
         .replace(/(?<!`)<([\w-]+).*?>.*?<\/\1>(?!`)/g, ''); // remove vue code
-      //.replace(/<([\w-]+).*?>(?:.|\s)*?<\/\1>/g, ''); // remove all <tags> and their content
     })
     .join('\n');
 };
@@ -37,9 +36,7 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
 const generateIndex = (): StorefrontContent => {
   let storefrontContent: StorefrontContent = {};
   for (const category in config) {
-    // console.log('-> category', category);
     for (const page in config[category]) {
-      // console.log('-> page', page);
       if (Array.isArray(config[category][page])) {
         storefrontContent = {
           ...storefrontContent,
@@ -51,7 +48,6 @@ const generateIndex = (): StorefrontContent => {
       } else {
         for (const tab in config[category][page]) {
           if (tab !== 'Props') {
-            // console.log('-> tab', tab);
             storefrontContent = {
               ...storefrontContent,
               [category]: {
@@ -88,12 +84,9 @@ type AlgoliaRecord = {
 const transformToAlgoliaRecords = (index: StorefrontContent): AlgoliaRecord[] => {
   let records: AlgoliaRecord[] = [];
   for (const category in index) {
-    // console.log('-> category', category);
     for (const page in index[category]) {
-      // console.log('-> page', page);
       if (index[category][page] instanceof Object) {
         for (const tab in index[category][page] as StorefrontContentTabPage) {
-          // console.log('-> tab', tab);
           records = records.concat(
             toAlgoliaRecords([category, page, tab], (index[category][page] as StorefrontContentTabPage)[tab])
           );
@@ -130,9 +123,11 @@ const toAlgoliaRecords = (keys: string[], content: string): AlgoliaRecord[] => {
 
 const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'category', 'page', 'tab', 'content'];
 
-// category gives nice overview over different categories together with distinct:5 and hitsPerPage: 5
-// page gives nice overview over different components, but the hits for components are too big
-// set distinct: true and hitsPerPage:20 there
+/**
+ * 'category' gives nice overview over different categories together with distinct: 5 and hitsPerPage: 5
+ * 'page' gives nice overview over different components but the hits for components are too big set distinct: true and
+ *  hitsPerPage: 20 there
+  **/
 const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(content)'];
@@ -149,18 +144,18 @@ const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
       customRanking,
     })
     .then(() => {
-      console.log('-> successfully set algolia settings');
+      console.log('Algolia - Successfully set settings.');
     })
     .catch((error) => {
-      console.log('-> algolia saving settings failed:', error);
+      console.log('Algolia - Saving settings failed:', error);
     });
   index
     .saveObjects(records, { autoGenerateObjectIDIfNotExist: false })
     .then(() => {
-      console.log('-> successfully updated index:', ALGOLIA_INDEX_NAME);
+      console.log('Algolia - Successfully updated index:', ALGOLIA_INDEX_NAME);
     })
     .catch((error) => {
-      console.log('-> algolia saving objects failed:', error);
+      console.log('Algolia - Saving objects failed:', error);
     });
 };
 
