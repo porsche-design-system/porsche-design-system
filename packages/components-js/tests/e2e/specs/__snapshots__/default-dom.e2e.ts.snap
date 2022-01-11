@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should have no basic DOM regression for p-accordion 1`] = `
-"<div class=\\"root root--size-small\\">
+"<div class=\\"root\\">
   <h2 class=\\"heading\\">
     <button id=\\"accordion-control\\" type=\\"button\\" aria-expanded=\\"false\\" aria-controls=\\"accordion-panel\\">
       <slot name=\\"heading\\">
