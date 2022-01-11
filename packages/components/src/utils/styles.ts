@@ -5,7 +5,7 @@ import { getThemedColors, getThemedFormStateColors, isDark } from '.';
 import type { FormState, Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
-const transitionDuration = 'var(--p-transition-duration, .24s)';
+export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
 
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
