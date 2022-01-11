@@ -41,7 +41,7 @@ export class FieldsetWrapper {
 
   public render(): JSX.Element {
     return (
-      <fieldset class="root" aria-describedby={this.hasMessage ? 'message' : null}>
+      <fieldset aria-describedby={this.hasMessage ? 'message' : null}>
         {this.hasLabel && <legend class={this.required && 'required'}>{this.label || <slot name="label" />}</legend>}
         <slot />
         {this.hasMessage && <StateMessage id="message" state={this.state} message={this.message} host={this.host} />}
