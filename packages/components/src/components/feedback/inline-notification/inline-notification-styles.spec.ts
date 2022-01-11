@@ -10,7 +10,7 @@ import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[InlineNotificationState, boolean, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['neutral', false, false, 'light'],
     ['warning', false, false, 'light'],
     ['success', false, false, 'light'],
@@ -25,12 +25,9 @@ describe('getComponentCss()', () => {
     ['neutral', true, false, 'dark'],
     ['neutral', false, true, 'dark'],
     ['neutral', true, true, 'dark'],
-  ])(
-    'should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s',
-    (state, hasAction, hasClose, theme) => {
-      expect(getComponentCss(state, hasAction, hasClose, theme)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
+  });
 });
 
 describe('getSlottedCss()', () => {

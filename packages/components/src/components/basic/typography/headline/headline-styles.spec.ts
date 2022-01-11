@@ -1,8 +1,7 @@
 import { getComponentCss, getSlottedCss } from './headline-styles';
-import type { HeadlineVariant, TextAlign, TextColor, Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[HeadlineVariant, TextAlign, Extract<TextColor, 'default' | 'inherit'>, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['headline-1', 'left', 'default', false, 'light'],
     ['inherit', 'left', 'default', false, 'light'],
     ['large-title', 'center', 'inherit', true, 'dark'],
@@ -17,12 +16,9 @@ describe('getComponentCss()', () => {
       false,
       'dark',
     ],
-  ])(
-    'should return correct css for variant: %s, align: %s, color: %s, ellipsis: %s and theme: %s',
-    (variant, align, color, ellipsis, theme) => {
-      expect(getComponentCss(variant, align, color, ellipsis, theme)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for variant: %j, align: %s, color: %s, ellipsis: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
+  });
 });
 
 describe('getSlottedCss()', () => {

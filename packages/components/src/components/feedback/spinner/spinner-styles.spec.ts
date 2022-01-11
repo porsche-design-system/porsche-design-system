@@ -1,9 +1,7 @@
 import { getComponentCss } from './spinner-styles';
-import type { ThemeExtendedElectricDark } from '../../../types';
-import type { SpinnerSize } from './spinner-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[SpinnerSize, ThemeExtendedElectricDark]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['small', 'light'],
     ['medium', 'light'],
     ['large', 'light'],
@@ -14,7 +12,7 @@ describe('getComponentCss()', () => {
     ['large', 'dark'],
     ['inherit', 'dark'],
     [{ base: 'medium', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }, 'dark'],
-  ])('should return correct css for size: %j and theme %s', (size, theme) => {
-    expect(getComponentCss(size, theme)).toMatchSnapshot();
+  ])('should return correct css for size: %j and theme %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
