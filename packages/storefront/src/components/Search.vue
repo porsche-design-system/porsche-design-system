@@ -1,6 +1,6 @@
 <template>
   <ais-instant-search :index-name="getAlgoliaIndexName()" :search-client="searchClient">
-    <ais-search-box>
+    <ais-search-box   :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
 
@@ -12,7 +12,7 @@
           :transform-items="transformItems"
           :class-names="{
             'ais-Hits': 'hits',
-            'ais-Hits-item': 'hits-item',
+            'ais-Hits-item': 'hits__item',
           }"
         >
           <template v-slot:item="{ item }">
@@ -123,7 +123,7 @@
       return items.reduce((results, current) => {
         const categoryIndex = results.findIndex((result) => result.category === current.category);
         if (categoryIndex >= 0) {
-          // reduce amount of displayed hits per category to 5 when using distinct on PAGE instead of CATEGORY
+          // reduce amount of displayed hits per category to 5 when using distinct on 'page' instead of 'category''
           results[categoryIndex].hits.length < 5 && results[categoryIndex].hits.push(current);
         } else {
           results.push({ category: current.category, hits: [current] });
@@ -148,6 +148,7 @@
     display: inline-block;
     text-decoration: none;
   }
+
   .hits {
     position: absolute;
     width: p-px-to-rem(280px);
@@ -155,7 +156,8 @@
     z-index: 1;
     left: 0;
   }
-  .ais-SearchBox {
+
+  .search {
     margin-bottom: p-px-to-rem(24px);
   }
 
@@ -166,7 +168,8 @@
 
 <style lang="scss">
   @import '~@porsche-design-system/utilities/scss';
-  .hits-item {
+
+  .hits__item {
     padding: $p-spacing-8 $p-spacing-32 $p-spacing-8;
   }
 </style>
