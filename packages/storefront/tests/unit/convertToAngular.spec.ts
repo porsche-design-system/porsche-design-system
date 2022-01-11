@@ -7,6 +7,7 @@ import {
   transformAttributesWithObjectValues,
   transformEvents,
 } from '../../src/utils';
+import * as angularUtils from '../../src/utils/convertToAngular';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('click'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
@@ -84,7 +85,24 @@ describe('cleanClassAndSlotAttributes()', () => {
 });
 
 describe('convertToAngular()', () => {
-  // check that every function is called
+  it('should call all transform functions', () => {
+    const transformEvents = jest.spyOn(angularUtils, 'transformEvents');
+    const transformAttributesWithObjectValues = jest.spyOn(angularUtils, 'transformAttributesWithObjectValues');
+    const transformAttributesWithNotDigitValue = jest.spyOn(angularUtils, 'transformAttributesWithNotDigitValue');
+    const transformAttributesWithDigitValue = jest.spyOn(angularUtils, 'transformAttributesWithDigitValue');
+    const cleanBooleanValues = jest.spyOn(angularUtils, 'cleanBooleanValues');
+    const cleanClassAndSlotAttributes = jest.spyOn(angularUtils, 'cleanClassAndSlotAttributes');
+
+    convertToAngular(markup);
+
+    expect(transformEvents).toBeCalledTimes(1);
+    expect(transformAttributesWithObjectValues).toBeCalledTimes(1);
+    expect(transformAttributesWithNotDigitValue).toBeCalledTimes(1);
+    expect(transformAttributesWithDigitValue).toBeCalledTimes(1);
+    expect(cleanBooleanValues).toBeCalledTimes(1);
+    expect(cleanClassAndSlotAttributes).toBeCalledTimes(1);
+  });
+
   it('should convert markup to Angular syntax', () => {
     expect(convertToAngular(markup)).toBe(
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
