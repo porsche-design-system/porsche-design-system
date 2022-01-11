@@ -22,7 +22,6 @@ export const transformEventsToReactSyntax = (markup: string): string =>
   });
 
 export const transformBooleanAndDigitValues = (markup: string): string =>
-  // transform to camelCase event binding syntax
   markup.replace(/\s(\S+)="(true|false|-?\d*)"/g, ' $1={$2}');
 
 export const transformCustomElementTagName = (markup: string): string =>
