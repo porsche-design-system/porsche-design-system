@@ -211,14 +211,18 @@ export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
   };
 };
 
-export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
-  const { stateColor } = getThemedFormStateColors(theme, state);
+export const getStateMessageStyles = (
+  theme: Theme,
+  state: FormState,
+  additionalMessageJssStyle?: JssStyle
+): Styles<'message'> => {
   return {
     message: {
       display: 'flex',
       marginTop: spacing[4],
-      color: stateColor,
+      color: getThemedFormStateColors(theme, state).stateColor,
       transition: getTransition('color'),
+      ...additionalMessageJssStyle,
       '&__icon': {
         marginRight: spacing[4],
       },

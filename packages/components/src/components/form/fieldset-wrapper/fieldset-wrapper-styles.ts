@@ -1,16 +1,10 @@
-import { addImportantToRule, getCss, getRequiredStyles, getStateMessageStyles, mergeDeep } from '../../../utils';
-import { color, headline4, headline5, spacing } from '@porsche-design-system/utilities';
-import type { FormState } from '../../../types';
+import { addImportantToRule, getCss, getRequiredStyles, getStateMessageStyles, getThemedColors } from '../../../utils';
+import { headline4, headline5, spacing } from '@porsche-design-system/utilities';
+import type { FormState, Theme } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 
-export const getComponentCss = (
-  state: FormState,
-  required: boolean,
-  labelSize: FieldsetWrapperLabelSize,
-  hasLabel: boolean,
-  hasMessage: boolean
-): string => {
-  const { default: baseColor } = color;
+export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabelSize, hasLabel: boolean): string => {
+  const theme: Theme = 'light';
 
   return getCss({
     ':host': {
@@ -26,12 +20,12 @@ export const getComponentCss = (
         legend: {
           margin: `0 0 ${spacing[16]}`,
           padding: 0,
-          color: baseColor,
+          color: getThemedColors(theme).baseColor,
           ...(labelSize === 'small' ? headline5 : headline4),
         },
       }),
     },
-    ...(required && getRequiredStyles('light')),
-    ...(hasMessage && mergeDeep(getStateMessageStyles('light', state), { message: { marginTop: spacing[16] } })),
+    ...getRequiredStyles(theme),
+    ...getStateMessageStyles(theme, state, { marginTop: spacing[16] }),
   });
 };
