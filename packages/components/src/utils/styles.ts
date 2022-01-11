@@ -41,16 +41,11 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const options: GetHoverStylesOptions = {
-    theme: 'light',
-    ...opts,
-  };
-
+export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
     '&:hover': {
-      color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
+      color: (isDark(theme) ? color.darkTheme.state : color.state).hover,
     },
   };
 };
@@ -69,14 +64,16 @@ export const getInset = (value: 'auto' | number = 0): JssStyle => ({
 });
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = {
+  const {
+    pseudo,
+    offset: outlineOffset,
+    color: outlineColor,
+  }: GetFocusStylesOptions = {
     color: color.state.focus,
     offset: 2,
     pseudo: undefined,
     ...opts,
   };
-
-  const { pseudo, offset: outlineOffset, color: outlineColor } = options;
 
   return pseudo
     ? {
@@ -122,13 +119,11 @@ export type GetFocusSlottedPseudoStylesOptions = {
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
 export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
-  const options: GetFocusSlottedPseudoStylesOptions = {
+  const { offset: outlineOffset, color: outlineColor }: GetFocusSlottedPseudoStylesOptions = {
     color: color.state.focus,
     offset: 2,
     ...opts,
   };
-
-  const { offset: outlineOffset, color: outlineColor } = options;
 
   return {
     '& a': {
@@ -200,12 +195,11 @@ export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?:
 });
 
 export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
-  const { errorColor } = getThemedColors(theme);
   return {
     required: {
       '&::after': {
         content: '" *"',
-        color: errorColor,
+        color: getThemedColors(theme).errorColor,
       },
     },
   };
