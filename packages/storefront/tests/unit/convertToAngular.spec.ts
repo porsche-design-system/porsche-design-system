@@ -85,22 +85,18 @@ describe('cleanClassAndSlotAttributes()', () => {
 });
 
 describe('convertToAngular()', () => {
-  it('should call all transform functions', () => {
-    const transformEvents = jest.spyOn(angularUtils, 'transformEvents');
-    const transformAttributesWithObjectValues = jest.spyOn(angularUtils, 'transformAttributesWithObjectValues');
-    const transformAttributesWithNotDigitValue = jest.spyOn(angularUtils, 'transformAttributesWithNotDigitValue');
-    const transformAttributesWithDigitValue = jest.spyOn(angularUtils, 'transformAttributesWithDigitValue');
-    const cleanBooleanValues = jest.spyOn(angularUtils, 'cleanBooleanValues');
-    const cleanClassAndSlotAttributes = jest.spyOn(angularUtils, 'cleanClassAndSlotAttributes');
-
+  it.each([
+    'transformEvents',
+    'transformAttributesWithObjectValues',
+    'transformAttributesWithNotDigitValue',
+    'transformAttributesWithDigitValue',
+    'cleanBooleanValues',
+    'cleanClassAndSlotAttributes',
+  ])('should call %s', (fn) => {
+    const spy = jest.spyOn(angularUtils, fn as any);
     convertToAngular(markup);
 
-    expect(transformEvents).toBeCalledTimes(1);
-    expect(transformAttributesWithObjectValues).toBeCalledTimes(1);
-    expect(transformAttributesWithNotDigitValue).toBeCalledTimes(1);
-    expect(transformAttributesWithDigitValue).toBeCalledTimes(1);
-    expect(cleanBooleanValues).toBeCalledTimes(1);
-    expect(cleanClassAndSlotAttributes).toBeCalledTimes(1);
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should convert markup to Angular syntax', () => {
