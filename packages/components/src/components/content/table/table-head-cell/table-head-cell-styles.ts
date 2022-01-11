@@ -50,7 +50,7 @@ export const getComponentCss = (): string => {
       border: 0,
     },
     icon: {
-      marginLeft: spacing['4'],
+      marginLeft: spacing[4],
       opacity: 0,
       transition: getTransition('opacity'),
       transform: 'rotate3d(0,0,1,0deg)',

@@ -15,9 +15,9 @@ export const getComponentCss = (): string => {
       display: addImportantToRule('block'),
     },
     caption: {
-      marginBottom: spacing['8'],
+      marginBottom: spacing[8],
       [mediaQuery('m')]: {
-        marginBottom: spacing['16'],
+        marginBottom: spacing[16],
       },
     },
     root: {
@@ -50,7 +50,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacing['32'],
+      paddingLeft: spacing[32],
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',

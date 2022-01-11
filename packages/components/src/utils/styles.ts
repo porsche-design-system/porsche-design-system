@@ -216,11 +216,11 @@ export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'m
   return {
     message: {
       display: 'flex',
-      marginTop: spacing['4'],
+      marginTop: spacing[4],
       color: stateColor,
       transition: getTransition('color'),
       '&__icon': {
-        marginRight: spacing['4'],
+        marginRight: spacing[4],
       },
     },
   };
