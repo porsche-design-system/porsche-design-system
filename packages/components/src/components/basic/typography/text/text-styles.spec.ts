@@ -1,8 +1,7 @@
 import { getComponentCss, getSlottedCss } from './text-styles';
-import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<TextSize>, TextWeight, TextAlign, TextColor, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['small', 'regular', 'left', 'default', false, 'light'],
     ['x-large', 'thin', 'right', 'brand', true, 'dark'],
     ['x-large', 'regular', 'center', 'brand', false, 'dark'],
