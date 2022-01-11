@@ -91,10 +91,11 @@ export default class Code extends Vue {
     }
   
   get sizeMarkup() {
-    return `<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
+    const size = this.size  === 'responsive' ? "{ base: 'small', l: 'medium' }": "${this.size}";
+    return `<p-accordion heading="Some Heading" tag="h3" size="${size}">
   ${this.content}
 </p-accordion>
-<p-accordion heading="Some Heading" tag="h3" ${this.size  === 'responsive' ? `size="{ base:'small', l:'medium' }"`: `size="${this.size}"`}>
+<p-accordion heading="Some Heading" tag="h3" ${size}>
   ${this.content}
 </p-accordion>`;
     }  
