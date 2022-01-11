@@ -98,10 +98,7 @@ export const getComponentCss = (
           }),
     },
     '@keyframes open': {
-      '0%': {
-        overflow: 'hidden',
-      },
-      '99%': {
+      '0%,99%': {
         overflow: 'hidden',
       },
       '100%': {
