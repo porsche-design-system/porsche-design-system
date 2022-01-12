@@ -180,25 +180,6 @@ describe('link-social', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order for tabindex -1', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link-social href="#" tabindex="-1">Some label</p-link-social>
-        <a href="#" id="after">after</a>
-      </div>
-    `
-    );
-
-    const link = await getHost();
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
-
-    await expectToSkipFocusOnComponent(page, link, before, after);
-  });
-
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initLinkSocial();

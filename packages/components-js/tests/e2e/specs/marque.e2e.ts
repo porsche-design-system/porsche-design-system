@@ -513,23 +513,6 @@ describe('marque', () => {
   });
 
   describe('focus state', () => {
-    it('should be removed from tab order for tabindex -1', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<div id="wrapper">
-  <a href="#" id="before">before</a>
-  <p-marque href="#" tabindex="-1">Some label</p-marque>
-  <a href="#" id="after">after</a>
-</div>`
-      );
-
-      const marque = await getHost();
-      const before = await selectNode(page, '#before');
-      const after = await selectNode(page, '#after');
-
-      await expectToSkipFocusOnComponent(page, marque, before, after);
-    });
-
     it('should show outline by keyboard navigation only for shadowed <a> when it is focused', async () => {
       await setContentWithLink();
 
