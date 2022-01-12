@@ -114,7 +114,7 @@
     }
 
     getAlgoliaIndexName(): string {
-      const baseHref = (document.querySelector('base') as HTMLBaseElement).getAttribute('href') as string;
+      const baseHref = document.querySelector('base')!.getAttribute('href')!;
       // on localhost baseHref is '/'
       return baseHref.length > 1 ? baseHref.slice(1, -1).replace('/', '_') : 'localhost';
     }
@@ -164,12 +164,8 @@
   .category {
     padding-bottom: $p-spacing-8;
   }
-</style>
 
-<style lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
-
-  .hits__item {
+  ::v-deep .hits__item {
     padding: $p-spacing-8 $p-spacing-32 $p-spacing-8;
   }
 </style>
