@@ -130,6 +130,8 @@ describe('transformStyleAttribute', () => {
 });
 
 describe('convertToReact()', () => {
+  afterEach(() => jest.clearAllMocks());
+
   let previousSpy: jest.SpyInstance;
   const transformFunctions = [
     'transformObjectValues',
@@ -155,7 +157,7 @@ describe('convertToReact()', () => {
 
     expect(spy).toBeCalledWith(expect.stringMatching(/p-some-tag|PSomeTag/));
     if (previousSpy) {
-      expect(previousSpy.mock.invocationCallOrder[1]).toBeLessThan(spy.mock.invocationCallOrder[0]);
+      expect(previousSpy.mock.invocationCallOrder[0]).toBeLessThan(spy.mock.invocationCallOrder[0]);
     }
   });
 
