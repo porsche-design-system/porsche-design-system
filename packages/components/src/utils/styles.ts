@@ -193,10 +193,16 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
         whiteSpace: 'normal',
       };
 
-export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({
+export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
-  width: isCheckboxOrRadio ? 'auto' : 'fit-content',
-  padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
+  width: 'fit-content',
+  padding: `0 0 ${pxToRemWithUnit(4)} 0`,
+});
+
+export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
+  ...getTextHiddenJssStyle(isHidden),
+  width: 'auto',
+  padding: `0 0 0 ${pxToRemWithUnit(8)}`,
 });
 
 export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
@@ -211,7 +217,17 @@ export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
   };
 };
 
-export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
+export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'required'> => {
+  const { errorColor } = getThemedColors(theme);
+  return {
+    required: {
+      userSelect: 'none',
+      color: errorColor,
+    },
+  };
+};
+
+export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
   const { stateColor } = getThemedFormStateColors(theme, state);
   return {
     message: {

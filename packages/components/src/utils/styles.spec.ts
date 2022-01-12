@@ -8,7 +8,7 @@ import {
   getFormTextHiddenJssStyle,
   getHoverStyles,
   getRequiredStyles,
-  getStateMessageStyles,
+  getFunctionalComponentStateMessageStyles,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
@@ -132,13 +132,13 @@ describe('getTextHiddenJssStyle()', () => {
 });
 
 describe('getFormTextHiddenJssStyle()', () => {
-  it.each<[boolean, boolean]>([
-    [true, true],
-    [true, false],
-    [false, true],
-    [false, false],
-  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden, isCheckboxOrRadio) => {
-    expect(getFormTextHiddenJssStyle(isHidden, isCheckboxOrRadio)).toMatchSnapshot();
+  it.each<[boolean]>([
+    [true],
+    [true],
+    [false],
+    [false],
+  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden) => {
+    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
   });
 });
 
@@ -157,6 +157,6 @@ describe('getStateMessageStyles()', () => {
     ['dark', 'success'],
     ['dark', 'error'],
   ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
-    expect(getStateMessageStyles(theme, state)).toMatchSnapshot();
+    expect(getFunctionalComponentStateMessageStyles(theme, state)).toMatchSnapshot();
   });
 });

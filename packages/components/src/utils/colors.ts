@@ -175,8 +175,8 @@ export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors 
 };
 
 type ThemedFormStateColors = {
-  stateColor: string;
-  stateHoverColor: string;
+  stateColor: string | undefined;
+  stateHoverColor: string | undefined;
 };
 
 const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
