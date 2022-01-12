@@ -13,6 +13,7 @@ const generateComponentMeta = (): void => {
 
   const types = [
     `export type ComponentMeta = {
+  delegatesFocus: boolean;
   isFocusable: boolean;
   isThemeable: boolean;
   requiredParent?: TagName;
@@ -27,6 +28,7 @@ const generateComponentMeta = (): void => {
   ].join('\n');
 
   type ComponentMeta = {
+    delegatesFocus: boolean;
     isFocusable: boolean;
     isThemeable: boolean;
     requiredParent?: TagName;
@@ -48,16 +50,20 @@ const generateComponentMeta = (): void => {
     return result;
   }, {} as { [key in TagName]: string });
 
+  const tagNamesWithDelegateFocus: TagName[] = TAG_NAMES.filter((tagName) =>
+    componentSourceCode[tagName].includes('delegatesFocus: true')
+  );
+
   // simple (mostly atomic) focusable components are identified here
   const atomicFocusableTagNames: TagName[] = TAG_NAMES.filter(
-    (tagName) =>
-      componentSourceCode[tagName].includes('delegatesFocus: true') || componentSourceCode[tagName].includes('<button')
+    (tagName) => tagNamesWithDelegateFocus || componentSourceCode[tagName].includes('<button')
   );
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
     // a component is focusable if it was identified as an atomic focusable before
     // or if it contains another atomic focusable prefixed component
+    const delegatesFocus = tagNamesWithDelegateFocus.includes(tagName);
     const isFocusable =
       atomicFocusableTagNames.includes(tagName) ||
       atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
@@ -99,6 +105,7 @@ const generateComponentMeta = (): void => {
     }
 
     result[tagName] = {
+      delegatesFocus,
       isFocusable,
       isThemeable,
       requiredParent,
