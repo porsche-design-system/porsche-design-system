@@ -1,5 +1,5 @@
 import { config } from '../storefront.config';
-import { StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
+import { AlgoliaRecord, StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -72,15 +72,6 @@ const generateIndex = (): StorefrontContent => {
   return storefrontContent;
 };
 
-type AlgoliaRecord = {
-  objectID: string;
-  name: string;
-  content: string;
-  category: string;
-  page: string;
-  tab?: string;
-  url: string;
-};
 const transformToAlgoliaRecords = (index: StorefrontContent): AlgoliaRecord[] => {
   let records: AlgoliaRecord[] = [];
   for (const category in index) {
@@ -127,7 +118,7 @@ const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = ['name', 'cat
  * 'category' gives nice overview over different categories together with distinct: 5 and hitsPerPage: 5
  * 'page' gives nice overview over different components but the hits for components are too big set distinct: true and
  *  hitsPerPage: 20 there
-  **/
+ **/
 const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(content)'];

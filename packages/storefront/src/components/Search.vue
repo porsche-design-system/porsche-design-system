@@ -1,6 +1,6 @@
 <template>
   <ais-instant-search :index-name="getAlgoliaIndexName()" :search-client="searchClient">
-    <ais-search-box   :class-names="{ 'ais-SearchBox': 'search' }">
+    <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
 
@@ -41,34 +41,7 @@
   import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY } from '@/../storefront.config';
   import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
   import { Prop } from 'vue-property-decorator';
-
-  type AlgoliaRecord = {
-    objectID: string;
-    name: string;
-    content: string;
-    category: string;
-    page: string;
-    tab?: string;
-    url: string;
-  };
-
-  type AlgoliaResult = {
-    category: string;
-    hits: AlgoliaRecord[];
-  };
-
-  type AlgoliaRequest = {
-    indexName: string;
-    params: AlgoliaRequestParams;
-  };
-
-  type AlgoliaRequestParams = {
-    facets: string[];
-    query: string;
-    tagFilters: string;
-    highlightPreTag?: string;
-    highlightPostTag?: string;
-  };
+  import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
 
   @Component({
     components: {
