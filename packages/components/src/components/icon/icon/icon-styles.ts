@@ -69,6 +69,9 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       color: getColor(color, theme),
       '& > svg': {
         fill: 'currentcolor',
+        '@media (forced-colors: active)': {
+          fill: 'canvastext',
+        },
       },
     },
   });
