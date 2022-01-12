@@ -24,11 +24,6 @@ export const getComponentCss = (
   return getCss({
     ':host': {
       display: 'block',
-      ...(!compact && {
-        '&(:first-of-type) $root': {
-          borderTop: border,
-        },
-      }),
     },
     '@global': {
       button: {
@@ -63,6 +58,9 @@ export const getComponentCss = (
       },
     },
     ...(!compact && {
+      ':host(:first-of-type) .root': {
+        borderTop: border,
+      },
       root: {
         borderBottom: border,
       },
