@@ -85,6 +85,8 @@ describe('cleanClassAndSlotAttributes()', () => {
 });
 
 describe('convertToAngular()', () => {
+  afterEach(() => jest.clearAllMocks());
+
   let previousSpy: jest.SpyInstance;
   const transformFunctions = [
     'transformEventsToAngularSyntax',
@@ -107,7 +109,7 @@ describe('convertToAngular()', () => {
 
     expect(spy).toBeCalledWith(expect.stringContaining('p-some-tag'));
     if (previousSpy) {
-      expect(previousSpy.mock.invocationCallOrder[1]).toBeLessThan(spy.mock.invocationCallOrder[0]);
+      expect(previousSpy.mock.invocationCallOrder[0]).toBeLessThan(spy.mock.invocationCallOrder[0]);
     }
   });
 
