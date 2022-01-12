@@ -5,18 +5,17 @@ import {
   getFocusStyles,
   getThemedColors,
   getTransition,
-  isDark,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
-import { color, font } from '@porsche-design-system/utilities';
+import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
   theme: Theme
 ): string => {
-  const { baseColor, brandColor, disabledColor, hoverColor, activeColor } = getThemedColors(theme);
+  const { baseColor, brandColor, disabledColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     ':host': {
@@ -52,12 +51,11 @@ export const getComponentCss = (
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
         textDecoration: 'none',
-        fontFamily: font.family,
-        fontWeight: font.weight.regular,
-        ...font.size.small,
+        ...defaultFontFamilyAndWeight,
+        ...fontSize.small,
         cursor: 'pointer',
         color: baseColor,
-        ...getFocusStyles({ color: isDark(theme) ? 'currentColor' : color.state.focus, offset: 1 }),
+        ...getFocusStyles({ color: focusColor, offset: 1 }),
         '&:hover': {
           color: hoverColor,
         },

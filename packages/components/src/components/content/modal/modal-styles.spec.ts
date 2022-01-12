@@ -2,14 +2,14 @@ import { getComponentCss, isFullscreenForXl } from './modal-styles';
 import type { BreakpointCustomizable } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[boolean, BreakpointCustomizable<boolean>]>([
+  it.each<Parameters<typeof getComponentCss>>([
     [false, false],
     [false, true],
     [true, false],
     [true, true],
     [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }],
-  ])('should return correct css for open: %s and fullscreen: %o', (open, fullscreen) => {
-    expect(getComponentCss(open, fullscreen)).toMatchSnapshot();
+  ])('should return correct css for open: %s and fullscreen: %o', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
 

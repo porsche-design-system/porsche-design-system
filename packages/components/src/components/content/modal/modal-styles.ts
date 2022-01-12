@@ -1,7 +1,6 @@
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
+import type { BreakpointCustomizable, GetStylesFunction, JssStyle, BreakpointKey } from '../../../utils';
 import {
   addImportantToEachRule,
-  BreakpointKey,
   BREAKPOINTS,
   buildResponsiveStyles,
   contentWrapperVars,
@@ -16,7 +15,6 @@ import { color } from '@porsche-design-system/utilities';
 import { MODAL_Z_INDEX } from '../../../constants';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
-
 const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
 
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
@@ -68,7 +66,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        transition: `opacity .2s ${transitionTimingFunction}, visibility 0s linear .2s`,
+        transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
         opacity: 0,
         visibility: 'hidden',
         ...(open && {

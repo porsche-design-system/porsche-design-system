@@ -1,10 +1,7 @@
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
-import { BreakpointCustomizable } from '../../../utils';
-import { FormState } from '../../../types';
-import { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState, boolean, TextFieldWrapperUnitPosition, boolean]>([
+  it.each<Parameters<typeof getComponentCss>>([
     [false, 'none', false, 'prefix', false],
     [false, 'none', true, 'prefix', false],
     [false, 'none', true, 'suffix', false],
@@ -32,8 +29,8 @@ describe('getComponentCss()', () => {
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', false, 'prefix', false],
   ])(
     'should return correct css for hideLabel: %o, state: %s, hasUnitOrCounter: %s, unitPosition: %s and isPassword: %s',
-    (hideLabel, state, hasUnitOrCounter, unitPosition, isPassword) => {
-      expect(getComponentCss(hideLabel, state, hasUnitOrCounter, unitPosition, isPassword)).toMatchSnapshot();
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
 });

@@ -13,7 +13,7 @@ import {
   Styles,
 } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
-import { color, font } from '@porsche-design-system/utilities';
+import { color, defaultFontFamilyAndWeight, fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { INPUT_HEIGHT } from '../../form-styles';
 
@@ -80,9 +80,8 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         boxSizing: 'border-box',
         border: 'none',
         opacity: 0,
-        fontFamily: font.family,
-        ...font.size.small,
-        fontWeight: font.weight.regular,
+        ...defaultFontFamilyAndWeight,
+        ...fontSize.small,
         textIndent: 0,
         cursor: disabled ? 'not-allowed' : 'text',
         color: baseColor,
@@ -153,8 +152,8 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         marginTop: pxToRemWithUnit(-1),
         color: baseColor,
         background: backgroundColor,
-        fontFamily: font.family,
-        ...font.size.small,
+        fontFamily,
+        ...fontSize.small,
         zIndex: 10,
         left: 0,
         right: 0,
@@ -239,7 +238,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       display: 'block',
       padding: `${pxToRemWithUnit(8)} ${pxToRemWithUnit(12)}`,
       marginTop: pxToRemWithUnit(8),
-      fontWeight: font.weight.bold,
+      fontWeight: fontWeight.bold,
       '&~$option': {
         paddingLeft: pxToRemWithUnit(24),
       },

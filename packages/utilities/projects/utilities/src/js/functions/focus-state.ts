@@ -1,4 +1,4 @@
-import { color as colors } from '../variables';
+import { color } from '../variables';
 
 type PseudoElement = '::before' | '::after';
 
@@ -9,7 +9,7 @@ type Options = {
 };
 
 const defaultOptions: Options = {
-  color: colors.state.focus,
+  color: color.state.focus,
   offset: '2px',
 };
 

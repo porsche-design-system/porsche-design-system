@@ -3,7 +3,7 @@ import { color } from '@porsche-design-system/utilities';
 import type { MarqueSize } from './marque-utils';
 import type { JssStyle } from '../../../utils';
 
-const baseSizes: { [key in MarqueSize]?: Pick<JssStyle, 'height' | 'width'> } = {
+const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
     width: 100,
     height: 60,
@@ -28,8 +28,12 @@ export const getComponentCss = (size: MarqueSize): string => {
       },
       picture: {
         display: 'block',
-        ...baseSizes.small,
-        ...(size !== 'responsive' ? baseSizes[size] : { [mediaQuery('l')]: baseSizes.medium }),
+        ...(size === 'responsive'
+          ? {
+              ...baseSizes.small,
+              [mediaQuery('l')]: baseSizes.medium,
+            }
+          : baseSizes[size]),
       },
       img: {
         display: 'block',
