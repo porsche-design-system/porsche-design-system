@@ -12,9 +12,9 @@ import {
   isDark,
   pxToRemWithUnit,
 } from '../../utils';
-import { color, font } from '@porsche-design-system/utilities';
-import { FormState, Theme } from '../../types';
-import { JssStyle } from 'jss';
+import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
+import type { FormState, Theme } from '../../types';
+import type { JssStyle } from '../../utils';
 
 export const INPUT_HEIGHT = 48;
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
@@ -32,7 +32,7 @@ export const getBaseChildStyles = (
   const hasVisibleState = isVisibleState(state);
 
   const { disabled } = color.state; // 🤷 no theming here
-// TODO: Add readonly color to utilities package
+  // TODO: Add readonly color to utilities package
   const readonly = '#ebebeb'; // 🤷
 
   return {
@@ -45,16 +45,15 @@ export const getBaseChildStyles = (
       margin: 0,
       outline: '1px solid transparent',
       outlineOffset: '2px',
-      appearance: 'none',
       WebkitAppearance: 'none', // iOS safari
+      appearance: 'none',
       boxSizing: 'border-box',
       border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
-      fontFamily: font.family,
-      fontWeight: font.weight.regular,
-      ...font.size.small,
+      ...defaultFontFamilyAndWeight,
+      ...fontSize.small,
       textIndent: 0,
       color: baseColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),

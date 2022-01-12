@@ -28,20 +28,12 @@ export class FieldsetWrapper {
   @Prop() public message?: string = '';
 
   public componentWillRender(): void {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.state,
-      this.required,
-      this.labelSize,
-      this.hasLabel,
-      this.hasMessage
-    );
+    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
   }
 
   public render(): JSX.Element {
     return (
-      <fieldset class="root" aria-describedby={this.hasMessage ? 'message' : null}>
+      <fieldset aria-describedby={this.hasMessage ? 'message' : null}>
         {this.hasLabel && <legend class={this.required && 'required'}>{this.label || <slot name="label" />}</legend>}
         <slot />
         {this.hasMessage && <StateMessage id="message" state={this.state} message={this.message} host={this.host} />}

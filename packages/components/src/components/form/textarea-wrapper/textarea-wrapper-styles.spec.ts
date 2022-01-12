@@ -1,9 +1,7 @@
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
-import { BreakpointCustomizable } from '../../../utils';
-import { FormState } from '../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState, boolean]>([
+  it.each<Parameters<typeof getComponentCss>>([
     [false, 'none', true],
     [false, 'none', false],
     [true, 'none', true],
@@ -17,8 +15,8 @@ describe('getComponentCss()', () => {
     [true, 'error', true],
     [true, 'error', false],
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true],
-  ])('should return correct css for hideLabel: %o, state: %s and %s', (hideLabel, state, hasCounter) => {
-    expect(getComponentCss(hideLabel, state, hasCounter)).toMatchSnapshot();
+  ])('should return correct css for hideLabel: %o, state: %s and %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
 

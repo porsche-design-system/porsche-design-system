@@ -6,11 +6,10 @@ import {
   getNotificationRootStyles,
   getSlottedCss,
 } from './inline-notification-styles';
-import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[InlineNotificationState, boolean, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['neutral', false, false, 'light'],
     ['warning', false, false, 'light'],
     ['success', false, false, 'light'],
@@ -25,12 +24,9 @@ describe('getComponentCss()', () => {
     ['neutral', true, false, 'dark'],
     ['neutral', false, true, 'dark'],
     ['neutral', true, true, 'dark'],
-  ])(
-    'should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s',
-    (state, hasAction, hasClose, theme) => {
-      expect(getComponentCss(state, hasAction, hasClose, theme)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
+  });
 });
 
 describe('getSlottedCss()', () => {
@@ -46,7 +42,7 @@ describe('getSlottedCss()', () => {
 });
 
 describe('getNotificationRootStyles()', () => {
-  it.each<[InlineNotificationState, Theme]>([
+  it.each<Parameters<typeof getNotificationRootStyles>>([
     ['neutral', 'light'],
     ['success', 'light'],
     ['error', 'light'],
@@ -55,8 +51,8 @@ describe('getNotificationRootStyles()', () => {
     ['success', 'dark'],
     ['error', 'dark'],
     ['warning', 'dark'],
-  ])('should return correct JssStyle for state: %s and theme: %s', (state, theme) => {
-    expect(getNotificationRootStyles(state, theme)).toMatchSnapshot();
+  ])('should return correct JssStyle for state: %s and theme: %s', (...args) => {
+    expect(getNotificationRootStyles(...args)).toMatchSnapshot();
   });
 });
 

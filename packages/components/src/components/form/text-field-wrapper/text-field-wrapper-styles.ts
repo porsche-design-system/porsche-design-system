@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -11,9 +10,10 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
-import { srOnly, color } from '@porsche-design-system/utilities';
+import { srOnly } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 
 export const getComponentCss = (
@@ -76,7 +76,7 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         transition: getTransition('color'),
-        ...getFocusStyles({ color: color.state.focus, offset: hasVisibleState ? -5 : -4 }),
+        ...getFocusStyles({ offset: hasVisibleState ? -5 : -4 }),
         '&:hover': {
           color: hoverColor,
         },

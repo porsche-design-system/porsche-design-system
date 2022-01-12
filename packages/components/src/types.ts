@@ -3,7 +3,7 @@ import type { IconName } from '@porsche-design-system/icons';
 import type { BreakpointCustomizable } from './utils';
 
 export type { TextSize } from './components/basic/typography/text/text-utils';
-export type { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
+export type { HeadlineVariant, VariantType } from './components/basic/typography/headline/headline-utils';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 

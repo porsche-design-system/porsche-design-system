@@ -1,6 +1,4 @@
-import type { BreakpointCustomizable, JssStyle } from '../../utils';
-import type { ChildSelector } from './form-styles';
-import type { FormState, Theme } from '../../types';
+import type { FormState } from '../../types';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from './form-styles';
 
 describe('isVisibleState()', () => {
@@ -15,7 +13,7 @@ describe('isVisibleState()', () => {
 });
 
 describe('getBaseChildStyles()', () => {
-  it.each<[ChildSelector, FormState, Theme, JssStyle]>([
+  it.each<Parameters<typeof getBaseChildStyles>>([
     ['input', 'none', 'light', undefined],
     ['input', 'success', 'light', undefined],
     ['input', 'error', 'light', undefined],
@@ -26,16 +24,13 @@ describe('getBaseChildStyles()', () => {
     ['textarea', 'success', 'dark', undefined],
     ['textarea', 'error', 'dark', undefined],
     ['textarea', 'error', 'dark', { bottom: 5 }],
-  ])(
-    'should return correct css for child: %s, state: %s, theme: %s and additionalDefaultJssStyle: %o',
-    (child, state, theme, additionalDefaultJssStyle) => {
-      expect(getBaseChildStyles(child, state, theme, additionalDefaultJssStyle)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for child: %s, state: %s, theme: %s and additionalDefaultJssStyle: %o', (...args) => {
+    expect(getBaseChildStyles(...args)).toMatchSnapshot();
+  });
 });
 
 describe('getLabelStyles()', () => {
-  it.each<[ChildSelector, BreakpointCustomizable<boolean>, FormState, Theme, string]>([
+  it.each<Parameters<typeof getLabelStyles>>([
     ['input', false, 'none', 'light', undefined],
     ['input', false, 'success', 'light', undefined],
     ['input', false, 'error', 'light', undefined],
@@ -51,8 +46,8 @@ describe('getLabelStyles()', () => {
     ['input', { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'error', 'dark', '$unit'],
   ])(
     'should return correct css for child: %s, hideLabel: %o, state: %s, theme: %s and additionalRefForInputHover: %s',
-    (child, hideLabel, state, theme, additionalRefForInputHover) => {
-      expect(getLabelStyles(child, hideLabel, state, theme, additionalRefForInputHover)).toMatchSnapshot();
+    (...args) => {
+      expect(getLabelStyles(...args)).toMatchSnapshot();
     }
   );
 });

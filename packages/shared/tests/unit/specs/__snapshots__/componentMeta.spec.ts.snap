@@ -33,7 +33,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-banner": Object {
     "hasSlottedCss": true,
@@ -114,7 +114,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-icon": Object {
     "hasSlottedCss": false,
@@ -275,7 +275,7 @@ Object {
     "hasSlottedCss": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-item": Object {
     "hasSlottedCss": false,
@@ -288,7 +288,7 @@ Object {
     "hasSlottedCss": true,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-field-wrapper": Object {
     "hasSlottedCss": true,

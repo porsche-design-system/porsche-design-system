@@ -7,7 +7,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../../utils';
-import { color, font, spacing } from '@porsche-design-system/utilities';
+import { color, fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -16,7 +16,7 @@ export const getComponentCss = (): string => {
       padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
       borderBottom: `1px solid ${color.neutralContrast.medium}`,
       verticalAlign: 'bottom',
-      fontWeight: font.weight.semibold,
+      fontWeight: fontWeight.semibold,
       whiteSpace: 'nowrap',
     }),
     '@global': {
@@ -27,9 +27,9 @@ export const getComponentCss = (): string => {
         boxSizing: 'border-box',
         appearance: 'none',
         border: 'none',
-        fontFamily: font.family,
-        ...font.size.small,
-        fontWeight: font.weight.semibold,
+        fontFamily,
+        fontWeight: fontWeight.semibold,
+        ...fontSize.small,
         color: color.default,
         textDecoration: 'none',
         textAlign: 'left',
@@ -50,7 +50,7 @@ export const getComponentCss = (): string => {
       border: 0,
     },
     icon: {
-      marginLeft: spacing['4'],
+      marginLeft: spacing[4],
       opacity: 0,
       transition: getTransition('opacity'),
       transform: 'rotate3d(0,0,1,0deg)',
