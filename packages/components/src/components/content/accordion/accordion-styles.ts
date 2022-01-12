@@ -34,7 +34,6 @@ export const getComponentCss = (
       button: {
         display: 'flex',
         justifyContent: 'space-between',
-        // padding: `${pxToRemWithUnit(compact ? 4 : 12)} 0`,
         margin: `${pxToRemWithUnit(4)} 0`,
         width: '100%',
         textDecoration: 'none',
