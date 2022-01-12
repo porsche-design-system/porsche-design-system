@@ -372,18 +372,15 @@ export const expectToSkipFocusOnComponent = async (
 ) => {
   await before.focus();
 
-  let componentFocusCalls = 0;
-  await addEventListener(component, 'focus', () => componentFocusCalls++);
-  let afterFocusCalls = 0;
-  await addEventListener(after, 'focus', () => afterFocusCalls++);
-
   await page.keyboard.press('Tab');
   await waitForEventSerialization(page);
-  expect(componentFocusCalls, 'componentFocusCalls after tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
 
+  expect(await getActiveElementId(page)).toBe('after');
+
+  await page.keyboard.down('Shift');
   await page.keyboard.press('Tab');
+  await page.keyboard.up('Shift');
   await waitForEventSerialization(page);
-  expect(componentFocusCalls, 'componentFocusCalls after second tab').toBe(0);
-  expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
+
+  expect(await getActiveElementId(page)).toBe('before');
 };
