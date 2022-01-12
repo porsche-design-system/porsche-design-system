@@ -17,11 +17,9 @@ describe('focus-behavior', () => {
     async (tagName) => {
       await setContentWithDesignSystem(
         page,
-        `
-        <a href="#" id="before">before</a>
-        <${tagName} tabindex="-1">Some label</${tagName}>
-        <a href="#" id="after">after</a>
-    `
+        `<a href="#" id="before">before</a>
+<${tagName} tabindex="-1">Some label</${tagName}>
+<a href="#" id="after">after</a>`
       );
 
       const host = await selectNode(page, `${tagName}`);
