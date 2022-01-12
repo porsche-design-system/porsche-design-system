@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Accessibility issue of `Icon` component in Windows High Contrast Mode in Chromium Browser
+
 ### [2.8.0-beta.3] - 2021-12-22
 
 #### Added
