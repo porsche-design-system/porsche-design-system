@@ -130,7 +130,8 @@ describe('transformStyleAttribute', () => {
 });
 
 describe('convertToReact()', () => {
-  it.each([
+  let previousSpy: jest.SpyInstance;
+  const transformFunctions = [
     'transformObjectValues',
     'transformStandardAttributes',
     'transformClassAttribute',
@@ -140,11 +141,22 @@ describe('convertToReact()', () => {
     'transformInputs',
     'transformToSelfClosingTags',
     'transformStyleAttribute',
-  ])('should call %s', (fn) => {
+  ];
+
+  it.each(transformFunctions)('should call %s()', (fn) => {
     const spy = jest.spyOn(reactUtils, fn as any);
+
+    const i = transformFunctions.indexOf(fn);
+    if (i) {
+      previousSpy = jest.spyOn(reactUtils, transformFunctions[i - 1] as any);
+    }
+
     convertToReact(markup);
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(expect.stringMatching(/p-some-tag|PSomeTag/));
+    if (previousSpy) {
+      expect(previousSpy.mock.invocationCallOrder[1]).toBeLessThan(spy.mock.invocationCallOrder[0]);
+    }
   });
 
   it('should convert markup to React syntax', () => {
