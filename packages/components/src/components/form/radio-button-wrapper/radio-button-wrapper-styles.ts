@@ -20,18 +20,18 @@ const theme: Theme = 'light';
 
 const getBackgroundImageStyles = (
   hasVisibleState: boolean,
-  color1: string,
-  color2: string
+  innerCircleColor: string,
+  outerCircleColor: string
 ): Styles<'backgroundImage'> => {
-  const { backgroundColor } = getThemedColors(theme);
-  const iconColor = backgroundColor.replace('#', '%23');
+  const maskColor = getThemedColors(theme).backgroundColor.replace('#', '%23');
 
   return {
     backgroundImage: `url(${
+      // SVG images act like a mask to smooth the circle radius
       hasVisibleState
-        ? `'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="${iconColor}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 21.273a7.273 7.273 0 1 0 0-14.546 7.273 7.273 0 0 0 0 14.546zM14 24C8.477 24 4 19.523 4 14S8.477 4 14 4s10 4.477 10 10-4.477 10-10 10z"/></g></svg>'`
-        : `'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="${iconColor}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/></g></svg>'`
-    }), radial-gradient(circle, ${color1} ${pxToRemWithUnit(9)}, ${color2} ${pxToRemWithUnit(9)})`,
+        ? `'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="${maskColor}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 21.273a7.273 7.273 0 1 0 0-14.546 7.273 7.273 0 0 0 0 14.546zM14 24C8.477 24 4 19.523 4 14S8.477 4 14 4s10 4.477 10 10-4.477 10-10 10z"/></g></svg>'`
+        : `'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="${maskColor}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/></g></svg>'`
+    }), radial-gradient(circle, ${innerCircleColor} ${pxToRemWithUnit(9)}, ${outerCircleColor} ${pxToRemWithUnit(9)})`,
   };
 };
 
@@ -74,12 +74,14 @@ export const getComponentCss = (
       '::slotted(input:checked)': addImportantToEachRule(
         getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateColor || contrastHighColor)
       ),
-      '::slotted(input:hover)': addImportantToEachRule(
-        getBackgroundImageStyles(hasVisibleState, stateColor || backgroundColor, stateHoverColor || baseColor)
-      ),
-      '::slotted(input:checked:hover)': addImportantToEachRule(
-        getBackgroundImageStyles(hasVisibleState, contrastHighColor, baseColor)
-      ),
+      '::slotted(input:not(:disabled):not(:checked):hover), .label:hover ~ ::slotted(input:not(:disabled):not(:checked))':
+        addImportantToEachRule(
+          getBackgroundImageStyles(hasVisibleState, backgroundColor, stateHoverColor || baseColor)
+        ),
+      '::slotted(input:not(:disabled):checked:hover), .label:hover ~ ::slotted(input:not(:disabled):checked)':
+        addImportantToEachRule(
+          getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateHoverColor || baseColor)
+        ),
       '::slotted(input:disabled)': addImportantToEachRule({
         cursor: 'not-allowed',
         ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),
