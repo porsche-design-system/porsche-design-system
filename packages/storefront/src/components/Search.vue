@@ -21,7 +21,7 @@
               <ul>
                 <li v-for="(hit, index) in item.hits" :key="index">
                   <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
-                    <router-link :to="hit.url"> {{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }} </router-link>
+                    <router-link :to="hit.url">{{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }}</router-link>
                   </p-link-pure>
                 </li>
               </ul>
