@@ -154,9 +154,11 @@ const updateAlgoliaIndex = (): void => {
   const index = generateIndex();
   const records = transformToAlgoliaRecords(index);
 
-  fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
-    encoding: 'utf-8',
-  });
+  // Uncomment this for easier debugging
+  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
+  //   encoding: 'utf-8',
+  // });
+
   uploadAndOverrideRecords(records);
 };
 
