@@ -3,13 +3,13 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getRequiredStyles,
   getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   isDark,
   mergeDeep,
   pxToRemWithUnit,
+  getFunctionalComponentRequiredStyles,
 } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
@@ -51,7 +51,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       color: baseColor, // for dark theme on .label__text
     },
     ...getLabelStyles('select', hideLabel, state, theme, '$icon'),
-    ...getRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     icon: {
       position: 'absolute',

@@ -3,11 +3,11 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getRequiredStyles,
   getFunctionalComponentStateMessageStyles,
   getThemedColors,
   mergeDeep,
   pxToRemWithUnit,
+  getFunctionalComponentRequiredStyles,
 } from '../../../utils';
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
@@ -42,7 +42,7 @@ export const getComponentCss = (
       } as Styles
     ),
     ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
-    ...getRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(hasCounter && {
       counter: {

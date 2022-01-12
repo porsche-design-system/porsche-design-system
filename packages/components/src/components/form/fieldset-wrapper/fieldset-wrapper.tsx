@@ -4,6 +4,7 @@ import { StateMessage } from '../../common/state-message';
 import type { FormState } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
+import { Required } from '../../common/required';
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -42,7 +43,12 @@ export class FieldsetWrapper {
   public render(): JSX.Element {
     return (
       <fieldset aria-describedby={this.hasMessage ? 'message' : null}>
-        {this.hasLabel && <legend class={this.required && 'required'}>{this.label || <slot name="label" />}</legend>}
+        {this.hasLabel && (
+          <legend>
+            {this.label || <slot name="label" />}
+            {this.required && <Required />}
+          </legend>
+        )}
         <slot />
         {this.hasMessage && <StateMessage id="message" state={this.state} message={this.message} host={this.host} />}
       </fieldset>
