@@ -664,6 +664,13 @@ jobs:
         with:
           name: storefront-build
           path: ./packages/storefront/dist
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:
