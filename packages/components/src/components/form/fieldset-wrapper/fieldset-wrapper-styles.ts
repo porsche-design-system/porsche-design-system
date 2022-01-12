@@ -1,9 +1,9 @@
 import {
   addImportantToRule,
   getCss,
-  getRequiredStyles,
   getFunctionalComponentStateMessageStyles,
   mergeDeep,
+  getFunctionalComponentRequiredStyles,
 } from '../../../utils';
 import { color, headline, spacing } from '@porsche-design-system/utilities';
 import type { FormState } from '../../../types';
@@ -22,21 +22,27 @@ export const getComponentCss = (
     ':host': {
       display: addImportantToRule('block'),
     },
-    '@global': hasLabel && {
+    '@global': {
       fieldset: {
         margin: 0,
         padding: 0,
         border: 'none',
       },
-      legend: {
-        margin: `0 0 ${spacing[16]}`,
-        padding: 0,
-        color: baseColor,
-        ...headline[labelSize === 'small' ? 5 : 4],
-      },
+      ...(hasLabel && {
+        legend: {
+          margin: `0 0 ${spacing[16]}`,
+          padding: 0,
+          color: baseColor,
+          ...headline[labelSize === 'small' ? 5 : 4],
+        },
+      }),
     },
-    ...(required && getRequiredStyles('light')),
+    ...(required && getFunctionalComponentRequiredStyles('light')),
     ...(hasMessage &&
-      mergeDeep(getFunctionalComponentStateMessageStyles('light', state), { message: { marginTop: spacing[16] } })),
+      mergeDeep(getFunctionalComponentStateMessageStyles('light', state), {
+        message: {
+          marginTop: spacing[16],
+        },
+      })),
   });
 };

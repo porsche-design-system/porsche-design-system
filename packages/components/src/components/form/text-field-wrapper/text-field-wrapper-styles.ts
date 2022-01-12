@@ -4,11 +4,11 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getRequiredStyles,
   getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
+  getFunctionalComponentRequiredStyles,
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
@@ -94,7 +94,7 @@ export const getComponentCss = (
       position: 'relative',
     },
     ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
-    ...getRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-only': {
       ...srOnly(),

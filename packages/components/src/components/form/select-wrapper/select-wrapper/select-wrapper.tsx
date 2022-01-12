@@ -18,6 +18,7 @@ import type { DropdownDirection } from './select-wrapper-utils';
 import { isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message';
+import { Required } from '../../../common/required';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -119,7 +120,7 @@ export class SelectWrapper {
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.select) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (

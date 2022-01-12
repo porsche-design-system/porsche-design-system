@@ -200,17 +200,6 @@ export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle 
   padding: `0 0 0 ${pxToRemWithUnit(8)}`,
 });
 
-export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
-  return {
-    required: {
-      '&::after': {
-        content: '" *"',
-        color: getThemedColors(theme).errorColor,
-      },
-    },
-  };
-};
-
 export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'required'> => {
   const { errorColor } = getThemedColors(theme);
   return {
@@ -221,18 +210,13 @@ export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'requ
   };
 };
 
-export const getFunctionalComponentStateMessageStyles = (
-  theme: Theme,
-  state: FormState,
-  additionalMessageJssStyle?: JssStyle
-): Styles<'message'> => {
+export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
   return {
     message: {
       display: 'flex',
       marginTop: spacing[4],
       color: getThemedFormStateColors(theme, state).stateColor,
       transition: getTransition('color'),
-      ...additionalMessageJssStyle,
       '&__icon': {
         marginRight: spacing[4],
       },

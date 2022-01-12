@@ -25,6 +25,7 @@ import {
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
+import { Required } from '../../common/required';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -142,7 +143,7 @@ export class TextFieldWrapper {
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (
