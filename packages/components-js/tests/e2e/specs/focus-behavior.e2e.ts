@@ -12,7 +12,7 @@ describe('focus-behavior', () => {
   });
   afterEach(async () => await page.close());
 
-  it.each<TagName>(TAG_NAMES.filter((tagName) => getComponentMeta(tagName).delegatesFocus))(
+  it.each<TagName>(TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isFocusable))(
     'should be removed from tab order for %s',
     async (tagName) => {
       await setContentWithDesignSystem(
