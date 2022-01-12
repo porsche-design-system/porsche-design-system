@@ -1,7 +1,7 @@
 import { camelCase } from 'change-case';
 
 export const transformEventsToAngularSyntax = (markup: string): string =>
-  markup.replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => ` (${$key})="${$value}"`);
+  markup.replace(/\son(.+?)="(.*?)"/g, ' ($1)="$2"');
 
 export const transformAttributesWithObjectValues = (markup: string): string =>
   markup.replace(/\s([a-z-]+)="{(.*?)}"/g, (m, $key, $value) => ` [${camelCase($key)}]="{${$value}}"`);
