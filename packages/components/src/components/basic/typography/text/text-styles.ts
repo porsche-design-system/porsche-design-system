@@ -12,7 +12,7 @@ import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../..
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
 
-const getSizeStyles = (size: TextSize): JssStyle => {
+const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {
     return { lineHeight: 'inherit', fontSize: 'inherit' };
   } else {

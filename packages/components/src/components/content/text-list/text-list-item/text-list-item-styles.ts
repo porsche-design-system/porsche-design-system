@@ -3,17 +3,15 @@ import { textSmall } from '@porsche-design-system/utilities';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 
-const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle => {
-  return isNestedList && listType === 'unordered'
-    ? {
-        '&:before': {
-          height: '1px',
-          width: pxToRemWithUnit(8),
-          top: 'calc(1.5em / 2)',
-        },
-      }
-    : {};
-};
+const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle =>
+  isNestedList &&
+  listType === 'unordered' && {
+    '&:before': {
+      height: '1px',
+      width: pxToRemWithUnit(8),
+      top: 'calc(1.5em / 2)',
+    },
+  };
 
 const getOrderedStyles: GetStylesFunction = (): JssStyle => ({
   paddingLeft: pxToRemWithUnit(40),
