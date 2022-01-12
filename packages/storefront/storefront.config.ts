@@ -1,5 +1,8 @@
 import { StorefrontConfig } from './src/models';
 
+export const ALGOLIA_APP_ID = '1NH68HJ92C';
+export const ALGOLIA_SEARCH_ONLY_KEY = '690605ee1f61d0e13c571484ecb74125';
+
 export const config: StorefrontConfig = {
   About: {
     Introduction: [

@@ -16,7 +16,7 @@
   import { Watch } from 'vue-property-decorator';
   import { config as STOREFRONT_CONFIG } from '@/../storefront.config';
   import Markdown from '@/components/Markdown.vue';
-  import { ComponentListImport } from '@/models';
+  import { StorefrontConfigPage } from '@/models';
   import { Component as ComponentType } from 'vue/types/options';
   import { capitalCase, paramCase } from 'change-case';
 
@@ -72,7 +72,7 @@
       return tab && capitalCase(tab);
     }
 
-    private get pages(): ComponentListImport {
+    private get pages(): StorefrontConfigPage {
       const page = STOREFRONT_CONFIG?.[this.category]?.[this.page];
 
       if (!page || Array.isArray(page)) {
