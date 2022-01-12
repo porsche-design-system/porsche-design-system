@@ -85,18 +85,30 @@ describe('cleanClassAndSlotAttributes()', () => {
 });
 
 describe('convertToAngular()', () => {
-  it.each([
+  let previousSpy: jest.SpyInstance;
+  const transformFunctions = [
     'transformEventsToAngularSyntax',
     'transformAttributesWithObjectValues',
     'transformAttributesWithNotDigitValue',
     'transformAttributesWithDigitValue',
     'cleanBooleanValues',
     'cleanClassAndSlotAttributes',
-  ])('should call %s', (fn) => {
+  ];
+
+  it.each(transformFunctions)('should call %s()', (fn) => {
     const spy = jest.spyOn(angularUtils, fn as any);
+
+    const i = transformFunctions.indexOf(fn);
+    if (i) {
+      previousSpy = jest.spyOn(angularUtils, transformFunctions[i - 1] as any);
+    }
+
     convertToAngular(markup);
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(expect.stringContaining('p-some-tag'));
+    if (previousSpy) {
+      expect(previousSpy.mock.invocationCallOrder[1]).toBeLessThan(spy.mock.invocationCallOrder[0]);
+    }
   });
 
   it('should convert markup to Angular syntax', () => {
