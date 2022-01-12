@@ -111,7 +111,7 @@
     "test:vrt:utilities": "yarn --cwd ./packages/utilities test:vrt",
     "test:smoke": "concurrently --kill-others-on-fail -n 'components-js' 'yarn test:smoke:components-js'",
     "test:smoke:components-js": "yarn --cwd ./packages/components-js test:smoke",
-    "update:algolia": "yarn --cwd ./packages/storefront update:algolia",
+    "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:email:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:meta-icons:node_modules && yarn clean:shared:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules",
     "clean:build": "yarn clean:assets:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:email:build && yarn clean:fonts:build && yarn clean:icons:build && yarn clean:marque:build && yarn clean:meta-icons:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:utilities:build",
