@@ -55,7 +55,7 @@ add_deployment_version() {
 
 update_algolia_index(){
   echo "task: [$(date)] \"update_algolia_index\" (${1})"
-  P_CURRENT_BRANCH=${1} yarn update:algolia
+  P_CURRENT_BRANCH=${1} yarn updateAlgolia
 }
 
 update_base_tag(){
@@ -122,18 +122,18 @@ if isCurrentBranchMasterBranch; then
   setup
   prepare_deployment "latest"
   add_deployment_version "latest"
-  update_algolia_index "latest"
   update_base_tag "latest"
   upload_s3 "latest"
+  update_algolia_index "latest"
   purge_cloudfront "latest"
   verify_deployment "latest"
 else
   setup
   prepare_deployment "${P_CURRENT_BRANCH}"
   add_deployment_version "${P_CURRENT_BRANCH}"
-  update_algolia_index "${P_CURRENT_BRANCH}"
   update_base_tag "${P_CURRENT_BRANCH}"
   upload_s3 "${P_CURRENT_BRANCH}"
+  update_algolia_index "${P_CURRENT_BRANCH}"
   purge_cloudfront "${P_CURRENT_BRANCH}"
   verify_deployment "${P_CURRENT_BRANCH}"
 fi
