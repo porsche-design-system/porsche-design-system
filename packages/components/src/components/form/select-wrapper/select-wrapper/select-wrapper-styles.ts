@@ -4,7 +4,7 @@ import {
   getBaseSlottedStyles,
   getCss,
   getRequiredStyles,
-  getStateMessageStyles,
+  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   isDark,
@@ -52,7 +52,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
     },
     ...getLabelStyles('select', hideLabel, state, theme, '$icon'),
     ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     icon: {
       position: 'absolute',
       bottom: pxToRemWithUnit(12),
