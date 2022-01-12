@@ -89,6 +89,7 @@ export const getComponentCss = (
       order: 1,
       display: 'inline-block',
       cursor: isDisabled ? 'default' : 'pointer',
+      outline: 'none',
       color: isDisabled ? disabledColor : baseColor,
       transition: getTransition('color'),
       ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
