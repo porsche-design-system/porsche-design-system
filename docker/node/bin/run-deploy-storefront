@@ -53,11 +53,6 @@ add_deployment_version() {
   echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
 }
 
-update_algolia_index(){
-  echo "task: [$(date)] \"update_algolia_index\" (${1})"
-  P_CURRENT_BRANCH=${1} yarn updateAlgolia
-}
-
 update_base_tag(){
   echo "task: [$(date)] \"update_base_tag\" (${1})"
   sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' ./packages/storefront/dist/index.html
@@ -66,6 +61,11 @@ update_base_tag(){
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${1})"
   aws s3 cp "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --recursive --only-show-errors
+}
+
+update_algolia_index(){
+  echo "task: [$(date)] \"update_algolia_index\" (${1})"
+  P_CURRENT_BRANCH=${1} yarn updateAlgolia
 }
 
 purge_cloudfront() {
