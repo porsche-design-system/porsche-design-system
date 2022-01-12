@@ -47,10 +47,5 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    mergeDeep(
-      buildSlottedStyles(host, getBaseSlottedStyles()),
-      buildSlottedStyles(host, { '& a': { textDecoration: 'none' } })
-    )
-  );
+  return getCss(buildSlottedStyles(host, mergeDeep(getBaseSlottedStyles(), { '& a': { textDecoration: 'none' } })));
 };
