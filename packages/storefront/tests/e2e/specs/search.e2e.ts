@@ -1,12 +1,28 @@
 import { Page } from 'puppeteer';
 import { getElementStyle, selectNode, waitForEventSerialization } from '@porsche-design-system/js/tests/e2e/helpers';
 import { baseURL } from '../helpers';
+import { ALGOLIA_APP_ID } from '../../../storefront.config';
+import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
 
 let page: Page;
 beforeEach(async () => {
   page = await browser.newPage();
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
   await page.evaluate(() => (window as any).componentsReady());
+
+  await page.setRequestInterception(true);
+  page.on('request', (request) => {
+    if (request.url().includes(ALGOLIA_APP_ID)) {
+      request.respond({
+        status: 200,
+        contentType: 'application/json; charset=UTF-8',
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: JSON.stringify(ALGOLIA_RESPONSE_MOCK),
+      });
+    } else {
+      request.continue();
+    }
+  });
 });
 afterEach(async () => await page.close());
 
