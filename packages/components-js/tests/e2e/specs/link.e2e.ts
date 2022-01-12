@@ -183,25 +183,6 @@ describe('link', () => {
     expect(await linkHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order for tabindex -1', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link href="#" tabindex="-1">Some label</p-link>
-        <a href="#" id="after">after</a>
-      </div>
-    `
-    );
-
-    const link = await getHost();
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
-
-    await expectToSkipFocusOnComponent(page, link, before, after);
-  });
-
   describe('slotted anchor', () => {
     it('should have the same width as host', async () => {
       await initLink({ useSlottedAnchor: true });
