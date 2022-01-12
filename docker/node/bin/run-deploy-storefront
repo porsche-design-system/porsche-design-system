@@ -55,7 +55,7 @@ add_deployment_version() {
 
 update_algolia_index(){
   echo "task: [$(date)] \"update_algolia_index\" (${1})"
-  ALGOLIA_INDEX_NAME=${1} yarn update:algolia
+  P_CURRENT_BRANCH=${1} yarn update:algolia
 }
 
 update_base_tag(){

@@ -15,6 +15,7 @@
   import Component, { mixins } from 'vue-class-component';
   import { connectSearchBox } from 'instantsearch.js/es/connectors';
 
+  // Ignore missing types
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import { createWidgetMixin } from 'vue-instantsearch';
@@ -53,6 +54,7 @@
         clearTimeout(this.timerId);
       }
       this.timerId = setTimeout(() => {
+        // Ignore missing types from instantsearch.js
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         this.state.refine(this.localQuery);
