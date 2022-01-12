@@ -26,12 +26,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('radio-button-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-radio-button-wrapper:not(:last-child) { margin-bottom: 1rem; }</style>`;
+      const head = `<style>p-radio-button-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }</style>`;
 
       const getElementsMarkup: GetMarkup = () => `
-        <p-radio-button-wrapper label="Some label">
+        <p-radio-button-wrapper label="When input gets hovered or focused">
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
+        <div class="force-label">
+          <p-radio-button-wrapper label="When label gets hovered or focused">
+            <input type="radio" name="some-name" />
+          </p-radio-button-wrapper>
+        </div>
         <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
@@ -63,10 +68,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover > p-radio-button-wrapper input[type="radio"]');
+      await forceHoverState(page, '.hover > .force-label > p-radio-button-wrapper >>> p-text');
       await forceHoverState(page, '.hover > p-radio-button-wrapper span a');
-      await forceFocusState(page, '.focus > p-radio-button-wrapper input[type="radio"]');
+      await forceFocusState(page, '.focus p-radio-button-wrapper input[type="radio"]');
       await forceFocusState(page, '.focus > p-radio-button-wrapper span a');
       await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper input[type="radio"]');
+      await forceFocusState(page, '.focus-hover > .force-label > p-radio-button-wrapper input[type="radio"]');
+      await forceHoverState(page, '.focus-hover > .force-label > p-radio-button-wrapper >>> p-text');
       await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper span a');
     })
   ).toBeFalsy();
