@@ -64,7 +64,7 @@ export const getComponentCss = (
         borderColor: stateColor || contrastHighColor,
         backgroundColor: stateColor || contrastHighColor,
       }),
-      '::slotted(input:hover)': addImportantToEachRule({
+      '::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled))': addImportantToEachRule({
         borderColor: stateHoverColor || baseColor,
       }),
       '::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled)': addImportantToEachRule({
