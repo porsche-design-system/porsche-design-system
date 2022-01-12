@@ -1,4 +1,10 @@
-import { addImportantToRule, getCss, getRequiredStyles, getStateMessageStyles, mergeDeep } from '../../../utils';
+import {
+  addImportantToRule,
+  getCss,
+  getRequiredStyles,
+  getFunctionalComponentStateMessageStyles,
+  mergeDeep,
+} from '../../../utils';
 import { color, headline, spacing } from '@porsche-design-system/utilities';
 import type { FormState } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
@@ -30,6 +36,7 @@ export const getComponentCss = (
       border: 'none',
     },
     ...(required && getRequiredStyles('light')),
-    ...(hasMessage && mergeDeep(getStateMessageStyles('light', state), { message: { marginTop: spacing[16] } })),
+    ...(hasMessage &&
+      mergeDeep(getFunctionalComponentStateMessageStyles('light', state), { message: { marginTop: spacing[16] } })),
   });
 };

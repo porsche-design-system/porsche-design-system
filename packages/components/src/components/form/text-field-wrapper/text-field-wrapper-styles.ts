@@ -6,7 +6,7 @@ import {
   getCss,
   getFocusStyles,
   getRequiredStyles,
-  getStateMessageStyles,
+  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -95,7 +95,7 @@ export const getComponentCss = (
     },
     ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
     ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-only': {
       ...srOnly(),
       padding: 0,

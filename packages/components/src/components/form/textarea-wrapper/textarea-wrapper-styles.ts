@@ -5,7 +5,7 @@ import {
   getBaseSlottedStyles,
   getCss,
   getRequiredStyles,
-  getStateMessageStyles,
+  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   mergeDeep,
   pxToRemWithUnit,
@@ -44,7 +44,7 @@ export const getComponentCss = (
     ),
     ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
     ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(hasCounter && {
       counter: {
         position: 'absolute',
