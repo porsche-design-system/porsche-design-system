@@ -23,17 +23,17 @@ export const getComponentCss = (
       display: addImportantToRule('block'),
     },
     '@global': hasLabel && {
+      fieldset: {
+        margin: 0,
+        padding: 0,
+        border: 'none',
+      },
       legend: {
         margin: `0 0 ${spacing[16]}`,
         padding: 0,
         color: baseColor,
         ...headline[labelSize === 'small' ? 5 : 4],
       },
-    },
-    root: {
-      margin: 0,
-      padding: 0,
-      border: 'none',
     },
     ...(required && getRequiredStyles('light')),
     ...(hasMessage &&

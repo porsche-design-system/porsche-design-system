@@ -221,7 +221,7 @@ export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'requ
   };
 };
 
-export const getStateMessageStyles = (
+export const getFunctionalComponentStateMessageStyles = (
   theme: Theme,
   state: FormState,
   additionalMessageJssStyle?: JssStyle
