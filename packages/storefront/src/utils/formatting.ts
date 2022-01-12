@@ -1,8 +1,8 @@
 import { paramCase } from 'change-case';
 import { Theme } from '@/models';
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
-export * from '@/utils/convertToAngular';
-export * from '@/utils/convertToReact';
+export * from './convertToAngular';
+export * from './convertToReact';
 
 export const cleanMarkup = (markup: string): string =>
   markup
