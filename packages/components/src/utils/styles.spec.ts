@@ -132,14 +132,12 @@ describe('getTextHiddenJssStyle()', () => {
 });
 
 describe('getFormTextHiddenJssStyle()', () => {
-  it.each<[boolean]>([
-    [true],
-    [true],
-    [false],
-    [false],
-  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden) => {
-    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
-  });
+  it.each<[boolean]>([[true], [true], [false], [false]])(
+    'should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o',
+    (isHidden) => {
+      expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getRequiredStyles()', () => {

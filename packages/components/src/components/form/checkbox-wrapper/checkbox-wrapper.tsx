@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  attachComponentCss,
   attachSlottedCss,
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
@@ -7,18 +8,17 @@ import {
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
-  mapBreakpointPropToClasses,
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { getSlottedCss } from './checkbox-wrapper-styles';
+import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message';
+import { Required } from '../../common/required';
 
 @Component({
   tag: 'p-checkbox-wrapper',
-  styleUrl: 'checkbox-wrapper.scss',
   shadow: true,
 })
 export class CheckboxWrapper {
@@ -48,6 +48,10 @@ export class CheckboxWrapper {
     this.observeAttributes(); // once initially
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -66,25 +70,15 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: this.input.disabled,
-      [`root--${this.state}`]: this.state !== 'none',
-    };
-    const rootTextClasses = {
-      ['root__text']: true,
-      ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <label class={rootClasses}>
+        <label>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.onLabelClick}>
+            <PrefixedTagNames.pText class="label" tag="span" color="inherit" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
             </PrefixedTagNames.pText>
           )}
           <slot />
@@ -98,7 +92,7 @@ export class CheckboxWrapper {
 
   private onLabelClick = (event: MouseEvent): void => {
     /**
-     * we only want to simulate the checkbox click by label click
+     * we only want to simulate the input click by label click
      * also we don't want to click to the input, if a link is clicked.
      */
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
