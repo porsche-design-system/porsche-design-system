@@ -1,12 +1,10 @@
 import {
   addEventListener,
   ClickableTests,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   hasFocus,
   initAddEventListener,
@@ -400,27 +398,6 @@ describe('button', () => {
   });
 
   describe('focus state', () => {
-    it('should be shown by keyboard navigation only', async () => {
-      await initButton();
-
-      const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
-
-      expect(await getOutlineStyle(button)).toBe(hidden);
-
-      await button.click();
-
-      expect(await getOutlineStyle(button)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(button)).toBe(visible);
-    });
-
     it('should keep focus if state switches to loading', async () => {
       await initButton();
 

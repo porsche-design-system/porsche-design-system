@@ -1,14 +1,12 @@
 import { ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   initConsoleObserver,
@@ -19,7 +17,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForComponentsReady,
-  waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
@@ -810,52 +807,6 @@ describe('tabs-bar', () => {
 
       await page.evaluate(() => console.error('test error'));
       expect(getConsoleErrorsAmount()).toBe(1);
-    });
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only with buttons', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
-
-      const [, secondButton] = await getAllButtons();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(secondButton)).toBe(hidden);
-
-      await secondButton.click();
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getOutlineStyle(secondButton)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(secondButton)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only with anchors', async () => {
-      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0, otherMarkup: clickHandlerScript });
-
-      const [, secondLink] = await getAllLinks();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(secondLink)).toBe(hidden);
-
-      await secondLink.click();
-      await waitForInheritedCSSTransition(page);
-
-      expect(await getOutlineStyle(secondLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(secondLink)).toBe(visible);
     });
   });
 
