@@ -124,16 +124,13 @@ describe('getBaseSlottedStyles()', () => {
 });
 
 describe('getTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %o', (isHidden) => {
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
     expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
   });
 });
 
 describe('getFormTextHiddenJssStyle()', () => {
-  it.each<[boolean]>([[true], [true], [false], [false]])(
-    'should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o',
-    (isHidden) => {
-      expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
-    }
-  );
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
+    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+  });
 });

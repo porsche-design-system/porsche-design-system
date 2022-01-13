@@ -280,7 +280,7 @@ Object {
 }
 `;
 
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false and isCheckboxOrRadio: %o 1`] = `
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
 Object {
   "clip": "auto",
   "clipPath": "none",
@@ -294,36 +294,7 @@ Object {
 }
 `;
 
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false and isCheckboxOrRadio: %o 2`] = `
-Object {
-  "clip": "auto",
-  "clipPath": "none",
-  "height": "auto",
-  "margin": 0,
-  "overflow": "visible",
-  "padding": "0 0 0.25rem 0",
-  "position": "static",
-  "whiteSpace": "normal",
-  "width": "fit-content",
-}
-`;
-
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true and isCheckboxOrRadio: %o 1`] = `
-Object {
-  "border": "0",
-  "clip": "rect(1px,1px,1px,1px)",
-  "clipPath": "inset(50%)",
-  "height": "1px",
-  "margin": "-1px",
-  "overflow": "hidden",
-  "padding": "0 0 0.25rem 0",
-  "position": "absolute",
-  "whiteSpace": "nowrap",
-  "width": "fit-content",
-}
-`;
-
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true and isCheckboxOrRadio: %o 2`] = `
+exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
 Object {
   "border": "0",
   "clip": "rect(1px,1px,1px,1px)",
