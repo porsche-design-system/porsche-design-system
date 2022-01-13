@@ -29,15 +29,7 @@ export class FieldsetWrapper {
   @Prop() public message?: string = '';
 
   public componentWillRender(): void {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.state,
-      this.required,
-      this.labelSize,
-      this.hasLabel,
-      this.hasMessage
-    );
+    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
   }
 
   public render(): JSX.Element {

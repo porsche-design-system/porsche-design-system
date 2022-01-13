@@ -201,11 +201,10 @@ export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle 
 });
 
 export const getFunctionalComponentRequiredStyles = (theme: Theme): Styles<'required'> => {
-  const { errorColor } = getThemedColors(theme);
   return {
     required: {
       userSelect: 'none',
-      color: errorColor,
+      color: getThemedColors(theme).errorColor,
     },
   };
 };
