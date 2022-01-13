@@ -44,10 +44,10 @@ describe('switch', () => {
   };
 
   const initSwitch = (opts?: InitOptions): Promise<void> => {
-    const { isDisabled = false, isTabbable = true, isLoading = false, otherMarkup = '' } = opts ?? {};
+    const { isDisabled = false, isLoading = false, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch tabbable="${isTabbable}" disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
+      `<p-switch disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
@@ -266,21 +266,6 @@ describe('switch', () => {
       await waitForStencilLifecycle(page);
 
       expect(await hasFocus(page, host), 'final focus style').toBe(true);
-    });
-
-    it('should be removed from tab order when tabbable is false', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<a href="#" id="before">before</a>
-<p-switch tabbable="false">Some label</p-switch>
-<a href="#" id="after">after</a>`
-      );
-
-      const host = await getHost();
-      const before = await selectNode(page, '#before');
-      const after = await selectNode(page, '#after');
-
-      await expectToSkipFocusOnComponent(page, host, before, after);
     });
   });
 
