@@ -14,8 +14,8 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
-import { Required } from '../../common/required';
+import { StateMessage } from '../../common/state-message/state-message';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-checkbox-wrapper',

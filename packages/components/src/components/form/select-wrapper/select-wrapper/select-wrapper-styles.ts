@@ -3,18 +3,18 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   isDark,
   mergeDeep,
   pxToRemWithUnit,
-  getFunctionalComponentRequiredStyles,
 } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color } from '@porsche-design-system/utilities';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../../styles/form-styles';
+import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 

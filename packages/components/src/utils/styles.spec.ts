@@ -7,13 +7,11 @@ import {
   getFocusStyles,
   getFormTextHiddenJssStyle,
   getHoverStyles,
-  getFunctionalComponentStateMessageStyles,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
   pxToRem,
   pxToRemWithUnit,
-  getFunctionalComponentRequiredStyles,
 } from './';
 import type { PropertiesHyphen } from 'csstype';
 import type { FormState, Theme } from '../types';
@@ -138,23 +136,4 @@ describe('getFormTextHiddenJssStyle()', () => {
       expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
     }
   );
-});
-
-describe('getFunctionalComponentRequiredStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct styles for theme: %s', (theme) => {
-    expect(getFunctionalComponentRequiredStyles(theme)).toMatchSnapshot();
-  });
-});
-
-describe('getFunctionalComponentStateMessageStyles()', () => {
-  it.each<[Theme, FormState]>([
-    ['light', 'none'],
-    ['light', 'success'],
-    ['light', 'error'],
-    ['dark', 'none'],
-    ['dark', 'success'],
-    ['dark', 'error'],
-  ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
-    expect(getFunctionalComponentStateMessageStyles(theme, state)).toMatchSnapshot();
-  });
 });
