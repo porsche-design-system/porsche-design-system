@@ -155,7 +155,7 @@ export const getLinkButtonStyles = (
   const isTertiary = variant === 'tertiary';
   const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
   const { disabledColor } = getThemedColors(theme);
-  const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255, 255, 255, 0.55)') : baseColor;
+  const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255,255,255,0.55)') : baseColor;
 
   return {
     ':host': {
@@ -179,8 +179,7 @@ export const getLinkButtonStyles = (
       border: '1px solid currentColor',
       backgroundColor: isTertiary ? 'transparent' : 'currentColor',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
-      transition:
-        getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
+      transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
         ...buildResponsiveStyles(hideLabel, getRootStyles),
         ...getFocusStyles(),
