@@ -1,13 +1,13 @@
-import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from './typo-styles';
+import { getEllipsisStyles, getSlottedTypoStyles } from './typo-styles';
 
-describe('getDefaultSlottedTypoStyles()', () => {
-  it('should return correct jss style', () => {
-    expect(getDefaultSlottedTypoStyles()).toMatchSnapshot();
+describe('getSlottedTypoStyles()', () => {
+  it('should return correct JssStyle', () => {
+    expect(getSlottedTypoStyles()).toMatchSnapshot();
   });
 });
 
-describe('getDefaultEllipsisStyles()', () => {
-  it('should return correct jss style', () => {
-    expect(getDefaultEllipsisStyles()).toMatchSnapshot();
+describe('getEllipsisStyles()', () => {
+  it('should return correct JssStyle', () => {
+    expect(getEllipsisStyles()).toMatchSnapshot();
   });
 });

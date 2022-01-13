@@ -10,7 +10,7 @@ import {
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
-import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
+import { getEllipsisStyles, getSlottedTypoStyles } from '../../../../styles/typo-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {
@@ -35,7 +35,7 @@ export const getComponentCss = (
     },
     '::slotted': {
       '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-        getDefaultSlottedTypoStyles()
+        getSlottedTypoStyles()
       ),
     },
     root: {
@@ -53,7 +53,7 @@ export const getComponentCss = (
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-      ...(ellipsis && getDefaultEllipsisStyles()),
+      ...(ellipsis && getEllipsisStyles()),
       ...buildResponsiveStyles(size, getSizeStyles),
     },
   });

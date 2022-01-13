@@ -10,7 +10,7 @@ import type { JssStyle } from '../../../../utils';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 // eslint-disable-next-line no-restricted-imports
 import { titleLarge, headline } from '@porsche-design-system/utilities';
-import { getDefaultEllipsisStyles, getDefaultSlottedTypoStyles } from '../../../../styles/typo-styles';
+import { getEllipsisStyles, getSlottedTypoStyles } from '../../../../styles/typo-styles';
 import { isVariantType } from './headline-utils';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
@@ -29,7 +29,7 @@ export const getComponentCss = (
       display: 'block',
     },
     '::slotted': {
-      '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getDefaultSlottedTypoStyles()),
+      '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypoStyles()),
     },
     root: {
       padding: 0,
@@ -42,7 +42,7 @@ export const getComponentCss = (
       hyphens: 'auto',
       whiteSpace: 'inherit',
       ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
-      ...(ellipsis && getDefaultEllipsisStyles()),
+      ...(ellipsis && getEllipsisStyles()),
     },
   });
 };
