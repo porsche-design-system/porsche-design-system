@@ -45,7 +45,7 @@ export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'ligh
   return {
     transition: getTransition('color'),
     '&:hover': {
-      color: (isDark(theme) ? color.darkTheme.state : color.state).hover,
+      color: (isDark(theme) ? color.darkTheme : color).state.hover,
     },
   };
 };
