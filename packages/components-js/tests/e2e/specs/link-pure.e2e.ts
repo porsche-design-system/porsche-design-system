@@ -11,7 +11,6 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
-  expectToSkipFocusOnComponent,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
