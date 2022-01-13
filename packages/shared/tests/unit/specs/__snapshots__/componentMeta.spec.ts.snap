@@ -64,7 +64,7 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"checkbox\\"",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-content-wrapper": Object {
     "hasSlottedCss": false,
@@ -190,7 +190,7 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"radio\\"",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-select-wrapper": Object {
     "hasSlottedCss": true,
