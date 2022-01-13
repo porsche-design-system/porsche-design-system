@@ -62,7 +62,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Remove from tab order
+## Remove Switch from tab order
 
 **NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
 
