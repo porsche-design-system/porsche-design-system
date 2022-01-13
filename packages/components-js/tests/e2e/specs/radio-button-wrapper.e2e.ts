@@ -21,10 +21,8 @@ describe('radio-button-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-radio-button-wrapper');
   const getInput = () => selectNode(page, 'p-radio-button-wrapper input');
-  const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .root__text');
+  const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .label');
   const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
-  const getLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
-  const getMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
   const getBackgroundStyle = (element: ElementHandle) => getElementStyle(element, 'background');
 
   type InitOptions = {
@@ -183,8 +181,8 @@ describe('radio-button-wrapper', () => {
 
       const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
       const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
-      const labelText1 = await selectNode(page, '#radio-1 >>> .root__text');
-      const labelText2 = await selectNode(page, '#radio-2 >>> .root__text');
+      const labelText1 = await selectNode(page, '#radio-1 >>> .label');
+      const labelText2 = await selectNode(page, '#radio-2 >>> .label');
       const initialStyleInput1 = await getBackgroundStyle(input1);
       const initialStyleInput2 = await getBackgroundStyle(input2);
 

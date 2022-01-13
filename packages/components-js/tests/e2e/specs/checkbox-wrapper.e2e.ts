@@ -21,10 +21,8 @@ describe('checkbox-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-checkbox-wrapper');
   const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-  const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .root__text');
+  const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .label');
   const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
-  const getLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
-  const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
   const setIndeterminate = async (element: ElementHandle, value: boolean) => {
     await setProperty(element, 'indeterminate', value);
