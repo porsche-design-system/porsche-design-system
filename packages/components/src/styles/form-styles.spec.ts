@@ -1,16 +1,4 @@
-import type { FormState } from '../types';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from './form-styles';
-
-describe('isVisibleState()', () => {
-  it.each<[FormState, boolean]>([
-    ['success', true],
-    ['error', true],
-    ['none', false],
-    [undefined, false],
-  ])('should for state: %s return %s', (state, result) => {
-    expect(isVisibleState(state)).toBe(result);
-  });
-});
+import { getBaseChildStyles, getLabelStyles } from './form-styles';
 
 describe('getBaseChildStyles()', () => {
   it.each<Parameters<typeof getBaseChildStyles>>([

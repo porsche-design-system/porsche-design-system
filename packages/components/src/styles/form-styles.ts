@@ -15,9 +15,9 @@ import {
 import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../types';
 import type { JssStyle } from '../utils';
+import { isVisibleFormState } from '../utils/form-state';
 
 export const INPUT_HEIGHT = 48;
-export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -29,7 +29,7 @@ export const getBaseChildStyles = (
 ): Styles => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
 
   const { disabled } = color.state; // 🤷 no theming here
   // TODO: Add readonly color to utilities package
@@ -94,7 +94,7 @@ export const getLabelStyles = (
   additionalRefForInputHover?: string
 ): Styles => {
   const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
 
   return {
     label: {

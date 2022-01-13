@@ -10,7 +10,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
-import { isVisibleState } from '../../../styles/form-styles';
+import { isVisibleFormState } from '../../../utils/form-state';
 import type { BreakpointCustomizable, Styles } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
@@ -41,7 +41,7 @@ export const getComponentCss = (
   isDisabled: boolean
 ): string => {
   const size = pxToRemWithUnit(28);
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
 

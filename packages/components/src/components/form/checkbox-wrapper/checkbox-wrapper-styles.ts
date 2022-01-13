@@ -10,7 +10,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
-import { isVisibleState } from '../../../styles/form-styles';
+import { isVisibleFormState } from '../../../utils/form-state';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
@@ -23,7 +23,7 @@ export const getComponentCss = (
 ): string => {
   const theme: Theme = 'light';
   const size = pxToRemWithUnit(24);
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
   const iconColor = backgroundColor.replace('#', '%23');
