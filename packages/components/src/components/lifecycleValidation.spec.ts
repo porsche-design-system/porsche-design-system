@@ -154,6 +154,10 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
     const parent = document.createElement('div');
     parent.append(component.host);
 
+    if (['p-checkbox-wrapper', 'p-radio-button-wrapper'].includes(tagName)) {
+      component['input'] = document.createElement('input');
+    }
+
     try {
       component.componentWillRender();
     } catch (e) {}
