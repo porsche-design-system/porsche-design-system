@@ -1,5 +1,4 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import type { TagName } from '@porsche-design-system/shared';
 import {
   expectToSkipFocusOnComponent,
   getActiveElementTagName,

@@ -1,7 +1,6 @@
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  expectToSkipFocusOnComponent,
   getActiveElementId,
   getLifecycleStatus,
   initAddEventListener,
