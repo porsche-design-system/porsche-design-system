@@ -3,7 +3,7 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColor,
+  getThemedTextColor,
   buildResponsiveStyles,
   paramCaseToCamelCase,
 } from '../../../../utils';
@@ -45,7 +45,7 @@ export const getComponentCss = (
       textAlign: align,
       fontFamily,
       fontWeight: fontWeight[weight],
-      color: getThemedColor(color, theme),
+      color: getThemedTextColor(color, theme),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',

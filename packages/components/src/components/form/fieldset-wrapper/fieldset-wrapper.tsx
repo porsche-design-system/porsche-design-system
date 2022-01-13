@@ -33,8 +33,10 @@ export class FieldsetWrapper {
   }
 
   public render(): JSX.Element {
+    const messageId = 'message';
+
     return (
-      <fieldset aria-describedby={this.hasMessage ? 'message' : null}>
+      <fieldset aria-describedby={this.hasMessage ? messageId : null}>
         {this.hasLabel && (
           <legend>
             {this.label || <slot name="label" />}
@@ -42,7 +44,7 @@ export class FieldsetWrapper {
           </legend>
         )}
         <slot />
-        {this.hasMessage && <StateMessage id="message" state={this.state} message={this.message} host={this.host} />}
+        {this.hasMessage && <StateMessage id={messageId} state={this.state} message={this.message} host={this.host} />}
       </fieldset>
     );
   }
