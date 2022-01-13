@@ -8,6 +8,12 @@ import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
+
 (window as any).componentsReady = componentsReady; // for vrt
 
 /**
