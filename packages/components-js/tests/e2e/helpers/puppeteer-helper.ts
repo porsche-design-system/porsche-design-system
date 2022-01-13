@@ -368,14 +368,12 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   await before.focus();
 
   await page.keyboard.press('Tab');
-  await waitForEventSerialization(page);
 
   expect(await getActiveElementId(page)).toBe('after');
 
   await page.keyboard.down('Shift');
   await page.keyboard.press('Tab');
   await page.keyboard.up('Shift');
-  await waitForEventSerialization(page);
 
   expect(await getActiveElementId(page)).toBe('before');
 };
