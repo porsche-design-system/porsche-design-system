@@ -141,7 +141,7 @@ export const getLinkButtonPureStyles = (
       textDecoration: 'none',
       textAlign: 'left',
       border: 'none',
-      backgroundColor: 'transparent',
+      background: 'transparent',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusStyles({ offset: 1, pseudo: '::before' })),
