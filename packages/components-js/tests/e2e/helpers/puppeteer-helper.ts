@@ -362,3 +362,17 @@ export const expectA11yToMatchSnapshot = async (
 
   message ? expect(snapshot, message).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
+
+export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
+  await before.focus();
+
+  await page.keyboard.press('Tab');
+
+  expect(await getActiveElementId(page)).toBe('after');
+
+  await page.keyboard.down('Shift');
+  await page.keyboard.press('Tab');
+  await page.keyboard.up('Shift');
+
+  expect(await getActiveElementId(page)).toBe('before');
+};

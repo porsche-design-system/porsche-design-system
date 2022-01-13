@@ -1,5 +1,5 @@
 import {
-  addImportantToRule,
+  addImportantToEachRule,
   buildResponsiveStyles,
   getCss,
   getTextHiddenJssStyle,
@@ -101,9 +101,10 @@ export const getComponentCss = (
   } = getColors(checked, isDisabledOrLoading, theme);
 
   return getCss({
-    ':host': {
-      display: addImportantToRule('flex'),
-    },
+    ':host': addImportantToEachRule({
+      display: 'flex',
+      outline: 0,
+    }),
     root: {
       display: 'flex',
       minWidth: 0, // prevents flex child to overflow max available parent size

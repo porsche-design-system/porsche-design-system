@@ -94,7 +94,7 @@ Providing visually differences if a button needs to be accentuated, e.g. in hier
 
 ---
 
-## Button with specific icon
+## Button Pure with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="configInline"></Playground>
@@ -132,7 +132,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 ---
 
-## Button with custom clickable/focusable area
+## Button Pure with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
@@ -149,9 +149,11 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Remove button from tab order
+## Remove Button Pure from tab order
 
-With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
+
+By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** from the tab order.
 
 <Playground :markup="taborder" :config="configInline"></Playground>
 
@@ -252,8 +254,9 @@ export default class Code extends Vue {
 >Some label</p-button-pure>`;
 
   taborder =
-`<p-button-pure tabbable="true">Some label</p-button-pure>
-<p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>`;
+`<p-button-pure>Some label</p-button-pure>
+<p-button-pure tabindex="-1" hide-label="true">Some label</p-button-pure>
+<p-button-pure>Some label</p-button-pure>`;
 
   get subline() {
     return `<p-button-pure size="${this.sublineSize}">

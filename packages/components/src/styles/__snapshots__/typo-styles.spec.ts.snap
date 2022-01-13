@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getDefaultEllipsisStyles() should return correct jss style 1`] = `
+exports[`getEllipsisStyles() should return correct JssStyle 1`] = `
 Object {
   "maxWidth": "100%",
   "overflow": "hidden",
@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`getDefaultSlottedTypoStyles() should return correct jss style 1`] = `
+exports[`getSlottedTypoStyles() should return correct JssStyle 1`] = `
 Object {
   "color": "inherit",
   "fontFamily": "inherit",
