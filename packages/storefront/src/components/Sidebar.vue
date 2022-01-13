@@ -1,23 +1,24 @@
 <template>
   <nav>
-    <p-accordion
-      v-for="(pages, category, index) in config"
-      :key="index"
-      :heading="category"
-      v-bind:open="accordion[category]"
-      v-on:accordionChange="toggleActive(category)"
-      compact="true"
-    >
-      <ul>
-        <li v-for="(tabs, page, index) in pages" :key="index">
-          <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
-            <p-link-pure class="link" icon="none" :href="href" :active="isActive" @click="navigate">{{
-              page
-            }}</p-link-pure>
-          </router-link>
-        </li>
-      </ul>
-    </p-accordion>
+    <Search :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
+    <template v-if="!this.hideNavigation">
+      <p-accordion
+        v-for="(pages, category, index) in config"
+        :key="index"
+        :heading="category"
+        v-bind:open="accordion[category]"
+        v-on:accordionChange="toggleActive(category)"
+        compact="true"
+      >
+        <ul>
+          <li v-for="(tabs, page, index) in pages" :key="index">
+            <p-link-pure class="link" icon="none" :active="isActive(category, page)">
+              <router-link :to="getRoute(category, page)">{{ page }}</router-link>
+            </p-link-pure>
+          </li>
+        </ul>
+      </p-accordion>
+    </template>
   </nav>
 </template>
 
@@ -26,15 +27,31 @@
   import Component from 'vue-class-component';
   import { Watch } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/models';
-  import { config as storefrontConfig } from '@/../storefront.config';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
+  import { config as storefrontConfig } from '@/../storefront.config';
 
-  @Component
+  import Search from '@/components/Search.vue';
+
+  @Component({
+    components: {
+      Search,
+    },
+  })
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public paramCase = paramCase;
     public accordion: { [id: string]: boolean } = {};
+    public hideNavigation = false;
+
+    public getRoute(category: string, page: string): string {
+      return `/${paramCase(category)}/${paramCase(page)}`;
+    }
+
+    public isActive(category: string, page: string): boolean {
+      const routeParams = this.$router.currentRoute.params;
+      return routeParams.category === paramCase(category) && routeParams.page === paramCase(page);
+    }
 
     private created(): void {
       Object.keys(this.config).map((category) => {
@@ -61,6 +78,10 @@
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
     }
 
+    shouldHideNavigation(hideNavigation: boolean): void {
+      this.hideNavigation = hideNavigation;
+    }
+
     private static category(route: Route): string {
       const { category } = route.params;
       return category ? capitalCase(category) : '';
@@ -77,6 +98,7 @@
   }
 
   .link {
+    width: 100%;
     margin: $p-spacing-4 0;
     display: inline-block;
     text-decoration: none;

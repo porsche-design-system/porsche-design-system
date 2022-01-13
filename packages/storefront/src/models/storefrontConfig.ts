@@ -1,13 +1,14 @@
 import { Component, EsModule } from 'vue/types/options';
 
-export type StorefrontConfig = {
-  [category: string]: {
-    [page: string]:
-      | {
-          [tab: string]: ComponentListImport;
-        }
-      | ComponentListImport;
-  };
+export type StorefrontConfigTabPage = { [tab: string]: StorefrontConfigPage };
+
+export type StorefrontConfigPages = {
+  [page: string]: StorefrontConfigTabPage | StorefrontConfigPage;
 };
 
-export type ComponentListImport = Array<() => Promise<EsModule<Component>>>;
+export type StorefrontConfig = {
+  [category: string]: StorefrontConfigPages;
+};
+
+export type StorefrontConfigPageImport = () => Promise<EsModule<Component>>;
+export type StorefrontConfigPage = Array<StorefrontConfigPageImport>;

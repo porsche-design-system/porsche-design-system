@@ -17,7 +17,7 @@ beforeEach(async () => {
 afterEach(async () => await browserPage.close());
 
 const isLinkActive = async (element: ElementHandle | null): Promise<boolean> =>
-  element ? ((await (await element.getProperty('active')).jsonValue()) as boolean) : false;
+  element ? (await getClassNames(element)).includes('router-link-active') : false;
 const getClassNames = async (element: ElementHandle | null): Promise<string> =>
   element ? ((await (await element.getProperty('className')).jsonValue()) as string) : '';
 const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
@@ -49,7 +49,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         );
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkElement] = await browserPage.$x(
-          `//div[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
+          `//div[@class='sidebar']/nav//p-link-pure//a[contains(., '${page}')][@href='${href}']`
         );
 
         await accordionButton.click();
