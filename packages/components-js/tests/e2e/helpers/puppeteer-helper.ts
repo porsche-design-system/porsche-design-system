@@ -3,7 +3,6 @@ import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { ComponentMeta, getComponentMeta } from '@porsche-design-system/shared';
 import * as beautify from 'js-beautify';
-import { waitForEventSerialization } from './events';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;
