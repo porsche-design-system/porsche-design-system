@@ -9,7 +9,8 @@ import {
 } from '../../../utils';
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../styles/form-styles';
+import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
+import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
@@ -19,7 +20,7 @@ export const getComponentCss = (
   hasCounter: boolean
 ): string => {
   const theme: Theme = 'light';
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
   const { contrastMediumColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(hasVisibleState ? 10 : 11);
 
