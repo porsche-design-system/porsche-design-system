@@ -298,9 +298,9 @@ export default class Code extends Vue {
 >Some label</p-link-pure>`;
 
   taborder =
-`<p-link-pure href="https://www.porsche.com" tabindex="0">Some label</p-link-pure>
+`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" tabindex="-1">Some label</p-link-pure>
-<p-link-pure href="https://www.porsche.com" tabindex="0">Some label</p-link-pure>`;
+<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
 
 
   get subline() {
