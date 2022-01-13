@@ -1,10 +1,8 @@
 import {
   addImportantToEachRule,
-  buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getFormCheckboxRadioHiddenJssStyle,
   getThemedColors,
   getThemedFormStateColors,
   getTransition,
@@ -15,6 +13,7 @@ import type { BreakpointCustomizable, Styles } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
 
 const theme: Theme = 'light';
 
@@ -50,65 +49,55 @@ export const getComponentCss = (
       display: 'block',
     },
     '@global': {
-      '::slotted(input)': addImportantToEachRule({
-        position: 'static',
-        width: size,
-        height: size,
-        flexShrink: 0,
-        display: 'block',
-        margin: pxToRemWithUnit(-2),
-        padding: 0,
-        appearance: 'none',
-        boxSizing: 'border-box',
-        backgroundSize: size,
-        backgroundPosition: 'center',
-        backgroundColor: 'transparent',
-        transition: getTransition('background-image'),
-        opacity: 1,
-        border: `2px solid ${backgroundColor}`,
-        borderRadius: '50%',
-        outline: 'none',
-        cursor: 'pointer',
-        ...getBackgroundImageStyles(hasVisibleState, backgroundColor, stateColor || contrastMediumColor),
-      }),
-      '::slotted(input:checked)': addImportantToEachRule(
-        getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateColor || contrastHighColor)
-      ),
-      '::slotted(input:not(:disabled):not(:checked):hover), .label:hover ~ ::slotted(input:not(:disabled):not(:checked))':
-        addImportantToEachRule(
-          getBackgroundImageStyles(hasVisibleState, backgroundColor, stateHoverColor || baseColor)
+      '::slotted': addImportantToEachRule({
+        '&(input)': {
+          position: 'static',
+          width: size,
+          height: size,
+          flexShrink: 0,
+          display: 'block',
+          margin: pxToRemWithUnit(-2),
+          padding: 0,
+          appearance: 'none',
+          boxSizing: 'border-box',
+          backgroundSize: size,
+          backgroundPosition: 'center',
+          backgroundColor: 'transparent',
+          transition: getTransition('background-image'),
+          opacity: 1,
+          border: `2px solid ${backgroundColor}`,
+          borderRadius: '50%',
+          outline: 'none',
+          cursor: 'pointer',
+          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, stateColor || contrastMediumColor),
+        },
+        '&(input:checked)': getBackgroundImageStyles(
+          hasVisibleState,
+          stateColor || contrastHighColor,
+          stateColor || contrastHighColor
         ),
-      '::slotted(input:not(:disabled):checked:hover), .label:hover ~ ::slotted(input:not(:disabled):checked)':
-        addImportantToEachRule(
-          getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateHoverColor || baseColor)
-        ),
-      '::slotted(input:disabled)': addImportantToEachRule({
-        cursor: 'not-allowed',
-        ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),
-      }),
-      '::slotted(input:checked:disabled)': addImportantToEachRule(
-        getBackgroundImageStyles(hasVisibleState, disabledColor, disabledColor)
-      ),
-      '::slotted(input:focus)': addImportantToEachRule({
-        boxShadow: `0 0 0 1px ${stateColor || contrastMediumColor}`,
-      }),
-      '::slotted(input:focus:not(:focus-visible))': addImportantToEachRule({
-        boxShadow: 'none',
+        '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
+          getBackgroundImageStyles(hasVisibleState, backgroundColor, stateHoverColor || baseColor),
+        '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
+          getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateHoverColor || baseColor),
+        '&(input:disabled)': {
+          cursor: 'not-allowed',
+          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),
+        },
+        '&(input:checked:disabled)': getBackgroundImageStyles(hasVisibleState, disabledColor, disabledColor),
+        '&(input:focus)': {
+          boxShadow: `0 0 0 1px ${stateColor || contrastMediumColor}`,
+        },
+        '&(input:focus:not(:focus-visible))': {
+          boxShadow: 'none',
+        },
       }),
       label: {
         position: 'relative',
         display: 'flex',
       },
     },
-    label: {
-      order: 1,
-      display: 'inline-block',
-      cursor: isDisabled ? 'default' : 'pointer',
-      outline: 'none',
-      color: isDisabled ? disabledColor : baseColor,
-      transition: getTransition('color'),
-      ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
-    },
+    label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
