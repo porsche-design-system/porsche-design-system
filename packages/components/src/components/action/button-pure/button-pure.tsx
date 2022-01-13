@@ -5,7 +5,6 @@ import {
   hasVisibleIcon,
   hasSlottedSubline,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
   transitionListener,
   attachComponentCss,
@@ -29,12 +28,14 @@ import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 @Component({
   tag: 'p-button-pure',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated since v2.8.0, use tabindex="-1" instead
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
@@ -105,7 +106,6 @@ export class ButtonPure {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,

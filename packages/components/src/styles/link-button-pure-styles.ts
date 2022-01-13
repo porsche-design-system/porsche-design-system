@@ -18,10 +18,7 @@ import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Them
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
-  ...addImportantToEachRule({
-    position: 'relative',
-    display: stretch ? 'block' : 'inline-block',
-  }),
+  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
@@ -127,7 +124,11 @@ export const getLinkButtonPureStyles = (
   const hasIcon = hasVisibleIcon(icon);
 
   return {
-    ':host': buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+    ':host': {
+      position: addImportantToRule('relative'),
+      outline: addImportantToRule(0),
+      ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+    },
     root: {
       display: 'flex',
       alignItems: 'flex-start',

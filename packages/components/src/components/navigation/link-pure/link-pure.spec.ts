@@ -1,9 +1,6 @@
 import { LinkPure } from './link-pure';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as linkValidationUtils from '../link-validation';
-import * as focusHandling from '../../../utils/focus-handling';
-
-jest.mock('../../../utils/focus-handling');
 
 describe('componentWillLoad()', () => {
   it('should call throwIfInvalidLinkUsage() ', () => {
@@ -15,17 +12,6 @@ describe('componentWillLoad()', () => {
     component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.host, component.href);
-  });
-
-  it('should call improveFocusHandlingForCustomElement() ', () => {
-    const focusHandlingSpy = jest.spyOn(focusHandling, 'improveFocusHandlingForCustomElement');
-
-    const component = new LinkPure();
-    component.host = document.createElement('p-link-pure');
-    component.href = '#';
-    component.componentWillLoad();
-
-    expect(focusHandlingSpy).toBeCalledWith(component.host);
   });
 });
 

@@ -8,8 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
+
 #### Changed
 - `:focus-visible` style matches outline color of `Button` while hovered
+
+#### Deprecated
+- The `tabbable` property of `Button`, `Button Pure` and `Switch` is deprecated and will be removed in `v3.0.0`. Please use `tabindex` instead.
+```diff
+-   <p-button tabbable="false">Some button</p-button>
++   <p-button tabindex="-1">Some button</p-button>
+```
 
 ### [2.8.0-beta.3] - 2021-12-22
 

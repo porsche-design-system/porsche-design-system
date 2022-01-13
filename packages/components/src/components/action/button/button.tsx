@@ -3,7 +3,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
   isDisabledOrLoading,
   parseAndGetAriaAttributes,
 } from '../../../utils';
@@ -21,12 +20,14 @@ import { getComponentCss } from './button-styles';
 
 @Component({
   tag: 'p-button',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Button {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated since v2.8.0, use tabindex="-1" instead
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
@@ -64,7 +65,6 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
