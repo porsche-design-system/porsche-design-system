@@ -169,7 +169,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
-"<label class=\\"root\\">
+"<label>
   <slot>
   </slot>
 </label>"
@@ -479,7 +479,7 @@ exports[`should have no basic DOM regression for p-popover 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
-"<label class=\\"root\\">
+"<label>
   <slot>
   </slot>
 </label>"
