@@ -17,8 +17,8 @@ import type { BreakpointCustomizable, FormState, Theme } from '../../../../types
 import type { DropdownDirection } from './select-wrapper-utils';
 import { isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
-import { StateMessage } from '../../../common/state-message';
-import { Required } from '../../../common/required';
+import { StateMessage } from '../../../common/state-message/state-message';
+import { Required } from '../../../common/required/required';
 
 @Component({
   tag: 'p-select-wrapper',

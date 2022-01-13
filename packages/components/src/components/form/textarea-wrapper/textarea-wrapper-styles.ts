@@ -3,15 +3,15 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   mergeDeep,
   pxToRemWithUnit,
-  getFunctionalComponentRequiredStyles,
 } from '../../../utils';
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../styles/form-styles';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

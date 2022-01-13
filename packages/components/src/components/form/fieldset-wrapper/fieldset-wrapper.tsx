@@ -1,10 +1,10 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { attachComponentCss, hasLabel, hasMessage } from '../../../utils';
-import { StateMessage } from '../../common/state-message';
 import type { FormState } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
-import { Required } from '../../common/required';
+import { StateMessage } from '../../common/state-message/state-message';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-fieldset-wrapper',

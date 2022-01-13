@@ -14,9 +14,9 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
 import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
-import { Required } from '../../common/required';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-textarea-wrapper',

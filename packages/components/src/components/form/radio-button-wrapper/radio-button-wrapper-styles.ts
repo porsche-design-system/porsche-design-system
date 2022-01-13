@@ -5,8 +5,6 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFormCheckboxRadioHiddenJssStyle,
-  getFunctionalComponentRequiredStyles,
-  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getThemedFormStateColors,
   getTransition,
@@ -15,6 +13,8 @@ import {
 import { isVisibleState } from '../../../styles/form-styles';
 import type { BreakpointCustomizable, Styles } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 const theme: Theme = 'light';
 

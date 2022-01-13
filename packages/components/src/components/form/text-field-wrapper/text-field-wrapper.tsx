@@ -15,7 +15,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addInputEventListener,
@@ -25,7 +25,7 @@ import {
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
-import { Required } from '../../common/required';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-text-field-wrapper',

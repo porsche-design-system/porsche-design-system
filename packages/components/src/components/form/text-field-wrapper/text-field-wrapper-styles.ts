@@ -4,17 +4,17 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getFunctionalComponentStateMessageStyles,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
-  getFunctionalComponentRequiredStyles,
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../styles/form-styles';
 import { srOnly } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
