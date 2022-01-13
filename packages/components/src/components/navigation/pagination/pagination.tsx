@@ -1,10 +1,5 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  isDark,
-  mapBreakpointPropToClasses,
-} from '../../../utils';
+import { getPrefixedTagNames, isDark, mapBreakpointPropToClasses } from '../../../utils';
 import {
   createPaginationModel,
   getCounterResetValue,
@@ -18,7 +13,7 @@ import { listenResize } from '../../../utils/window-resize-listener';
 @Component({
   tag: 'p-pagination',
   styleUrl: 'pagination.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Pagination {
   @Element() public host!: HTMLElement;
@@ -61,7 +56,6 @@ export class Pagination {
   private navigationElement: HTMLElement;
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
 
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender

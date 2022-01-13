@@ -21,6 +21,7 @@ const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   ...addImportantToEachRule({
     position: 'relative',
     display: stretch ? 'block' : 'inline-block',
+    outline: 0,
   }),
   ...(!stretch && { verticalAlign: 'top' }),
 });

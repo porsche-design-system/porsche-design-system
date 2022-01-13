@@ -1,7 +1,6 @@
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import { ButtonPure } from './button-pure';
 
-jest.mock('../../../utils/focus-handling');
 jest.mock('../../../utils/button-handling');
 
 describe('button-pure', () => {

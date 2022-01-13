@@ -1,4 +1,11 @@
-import { buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
+import {
+  addImportantToRule,
+  buildGlobalStyles,
+  buildHostStyles,
+  getCss,
+  getFocusStyles,
+  mediaQuery,
+} from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
 import { MarqueSize } from './marque-utils';
 
@@ -18,6 +25,7 @@ export const getComponentCss = (size: MarqueSize): string => {
     ...buildHostStyles({
       display: 'inline-flex',
       verticalAlign: 'top',
+      outline: addImportantToRule(0),
     }),
     ...buildGlobalStyles({
       a: {
