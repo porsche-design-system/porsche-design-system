@@ -207,7 +207,7 @@ export const getThemedFormStateColors = (theme: Theme, state: FormState): Themed
   return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
 };
 
-export const getThemedColor = (stateColor: TextColor, theme: ThemeExtendedElectricDark): string => {
+export const getThemedTextColor = (textColor: TextColor, theme: ThemeExtendedElectricDark): string => {
   const {
     baseColor,
     brandColor,
@@ -232,5 +232,5 @@ export const getThemedColor = (stateColor: TextColor, theme: ThemeExtendedElectr
     'notification-neutral': neutralColor,
     inherit: 'currentColor',
   };
-  return colorMap[stateColor];
+  return colorMap[textColor];
 };

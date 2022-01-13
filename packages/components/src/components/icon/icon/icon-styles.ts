@@ -1,5 +1,5 @@
-import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
-import { getCss, pxToRemWithUnit, getThemedColor } from '../../../utils';
+import type { TextColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
+import { getCss, pxToRemWithUnit, getThemedTextColor } from '../../../utils';
 
 const sizeMap: { [key in IconSize]: string } = {
   small: pxToRemWithUnit(24),
@@ -8,7 +8,7 @@ const sizeMap: { [key in IconSize]: string } = {
   inherit: 'inherit',
 };
 
-export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
+export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
   const dimension = sizeMap[size];
 
   return getCss({
@@ -24,9 +24,9 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      color: getThemedColor(color, theme),
+      color: getThemedTextColor(color, theme),
       '& > svg': {
-        fill: 'currentcolor',
+        fill: 'currentColor',
       },
     },
   });
