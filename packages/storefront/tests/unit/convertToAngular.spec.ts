@@ -9,15 +9,15 @@ import {
 } from '../../src/utils';
 import * as angularUtils from '../../src/utils/convertToAngular';
 
-const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
+const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`;
 
-describe('transformEvents()', () => {
+describe('transformEventsToAngularSyntax()', () => {
   it('should transform only events into angular syntax', () => {
     expect(transformEventsToAngularSyntax(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
@@ -28,7 +28,7 @@ describe('transformEvents()', () => {
 describe('transformAttributesWithObjectValues()', () => {
   it('should transform only attributes with object values into angular syntax', () => {
     expect(transformAttributesWithObjectValues(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
@@ -39,7 +39,7 @@ describe('transformAttributesWithObjectValues()', () => {
 describe('transformAttributesWithNotDigitValue()', () => {
   it('should transform only attributes without digit values', () => {
     expect(transformAttributesWithNotDigitValue(markup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
 </p-some-tag>`
@@ -50,7 +50,7 @@ describe('transformAttributesWithNotDigitValue()', () => {
 describe('transformAttributesWithDigitValue()', () => {
   it('should transform attributes with digit values', () => {
     expect(transformAttributesWithDigitValue(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" [digitAttribute]="6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" [digitAttribute]="6" [negativeDigitAttribute]="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
@@ -63,7 +63,7 @@ describe('cleanBooleanValues()', () => {
     const transformedMarkup = transformAttributesWithNotDigitValue(markup);
 
     expect(cleanBooleanValues(transformedMarkup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" name="1">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
 </p-some-tag>`
@@ -76,7 +76,7 @@ describe('cleanClassAndSlotAttributes()', () => {
     const transformedMarkup = transformAttributesWithNotDigitValue(markup);
 
     expect(cleanClassAndSlotAttributes(transformedMarkup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
@@ -115,7 +115,7 @@ describe('convertToAngular()', () => {
 
   it('should convert markup to Angular syntax', () => {
     expect(convertToAngular(markup)).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" [digitAttribute]="6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" [digitAttribute]="6" [negativeDigitAttribute]="-6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
