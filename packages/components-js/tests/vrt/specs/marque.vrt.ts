@@ -35,6 +35,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const getElementsMarkup: GetMarkup = () => `<p-marque href="https://www.porsche.com"></p-marque>`;
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
 
+      await forceFocusState(page, '.focus > p-marque'); // native outline should not be visible
       await forceFocusState(page, '.focus > p-marque >>> a');
       await forceFocusHoverState(page, '.focus-hover > p-marque >>> a');
     })

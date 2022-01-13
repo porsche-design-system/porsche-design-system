@@ -26,7 +26,6 @@ describe('link', () => {
   const getRoot = () => selectNode(page, 'p-link >>> .root');
   const getLink = () => selectNode(page, 'p-link >>> a');
   const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
-  const getSlottedLink = () => selectNode(page, 'p-link a');
 
   const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
     const { useSlottedAnchor = false } = opts ?? {};

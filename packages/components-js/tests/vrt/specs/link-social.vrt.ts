@@ -63,6 +63,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover > p-link-social >>> a');
       await forceHoverState(page, '.hover > p-link-social >>> span');
+      await forceFocusState(page, '.focus > p-link-social'); // native outline should not be visible
       await forceFocusState(page, '.focus > p-link-social >>> a');
       await forceFocusState(page, '.focus > p-link-social a');
       await forceFocusHoverState(page, '.focus-hover > p-link-social >>> a');

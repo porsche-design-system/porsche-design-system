@@ -2,7 +2,6 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
   transitionListener,
   hasVisibleIcon,
   hasSlottedSubline,
@@ -28,7 +27,7 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link-pure',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class LinkPure {
   @Element() public host!: HTMLElement;
@@ -84,7 +83,6 @@ export class LinkPure {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
-    improveFocusHandlingForCustomElement(this.host);
   }
 
   public componentWillRender(): void {
