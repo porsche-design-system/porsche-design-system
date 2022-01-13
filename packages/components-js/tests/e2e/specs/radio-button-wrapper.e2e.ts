@@ -1,14 +1,9 @@
 import {
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
-  getAttribute,
-  getBoxShadowStyle,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
-  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -275,62 +270,6 @@ describe('radio-button-wrapper', () => {
 
     expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
     expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
-      await initRadioButton();
-
-      const input = await getInput();
-      const visible = expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow', offset: '1px' });
-
-      expect(await getBoxShadowStyle(input), 'initial').toBe('none');
-
-      await input.click();
-
-      expect(await getBoxShadowStyle(input), 'after click').toBe('none');
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getBoxShadowStyle(input), 'after keyboard navigation').toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initRadioButton({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
-
-      const labelLink = await getLabelLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
   });
 
   describe('lifecycle', () => {
