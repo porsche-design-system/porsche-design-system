@@ -103,18 +103,8 @@ module.exports = {
         paths: [
           {
             name: '@porsche-design-system/utilities',
-            importNames: ['font'],
-            message: "Please import 'fontFamily', 'fontSize' and 'fontWeight' instead.",
-          },
-          {
-            name: '@porsche-design-system/utilities',
-            importNames: ['calculateLineHeight'],
-            message: "Please import 'calculateLineHeight' from local utils instead.",
-          },
-          {
-            name: '@porsche-design-system/utilities',
-            importNames: ['generateTypeScale'],
-            message: "Please import 'generateTypeScale' from local utils instead.",
+            importNames: ['headline', 'title', 'font', 'calculateLineHeight', 'generateTypeScale'],
+            message: 'Please use alternative imports since the one used is not performant.',
           },
         ],
       },
