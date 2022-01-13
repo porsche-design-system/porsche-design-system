@@ -14,7 +14,7 @@ import {
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color } from '@porsche-design-system/utilities';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../form-styles';
+import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../../styles/form-styles';
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 

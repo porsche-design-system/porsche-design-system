@@ -1,4 +1,4 @@
-import type { FormState } from '../../types';
+import type { FormState } from '../types';
 import { getBaseChildStyles, getLabelStyles, isVisibleState } from './form-styles';
 
 describe('isVisibleState()', () => {

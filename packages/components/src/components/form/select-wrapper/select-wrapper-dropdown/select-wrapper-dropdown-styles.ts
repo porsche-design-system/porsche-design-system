@@ -15,7 +15,7 @@ import {
 import type { FormState, Theme } from '../../../../types';
 import { color, defaultFontFamilyAndWeight, fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
-import { INPUT_HEIGHT } from '../../form-styles';
+import { INPUT_HEIGHT } from '../../../../styles/form-styles';
 
 const dropdownPositionVar = '--p-dropdown-position';
 

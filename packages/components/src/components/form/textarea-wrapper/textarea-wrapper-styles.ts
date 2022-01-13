@@ -11,7 +11,7 @@ import {
 } from '../../../utils';
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
+import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../styles/form-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
