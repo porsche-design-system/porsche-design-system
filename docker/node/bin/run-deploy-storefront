@@ -28,6 +28,16 @@ if [[ -z "$(ls -A ./packages/storefront/dist)" ]]; then
   exit 1
 fi
 
+if [[ -z "${ALGOLIA_APP_ID}" ]]; then
+  echo "Please provide the \$ALGOLIA_APP_ID environment variable."
+  exit 1
+fi
+
+if [[ -z "${ALGOLIA_API_KEY}" ]]; then
+  echo "Please provide the \$ALGOLIA_API_KEY environment variable."
+  exit 1
+fi
+
 setup() {
   echo "task: [$(date)] \"setup\""
   export AWS_DEFAULT_REGION=eu-central-1
@@ -51,6 +61,12 @@ update_base_tag(){
 upload_s3() {
   echo "task: [$(date)] \"upload_s3\" (${1})"
   aws s3 cp "./packages/storefront/dist/." "${BUCKET_URL}/${1}" --recursive --only-show-errors
+}
+
+update_algolia_index(){
+  echo "task: [$(date)] \"update_algolia_index\" (${1})"
+  result=$(P_CURRENT_BRANCH=${1} yarn updateAlgolia)
+  echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
 }
 
 purge_cloudfront() {
@@ -109,6 +125,7 @@ if isCurrentBranchMasterBranch; then
   add_deployment_version "latest"
   update_base_tag "latest"
   upload_s3 "latest"
+  update_algolia_index "latest"
   purge_cloudfront "latest"
   verify_deployment "latest"
 else
@@ -117,6 +134,7 @@ else
   add_deployment_version "${P_CURRENT_BRANCH}"
   update_base_tag "${P_CURRENT_BRANCH}"
   upload_s3 "${P_CURRENT_BRANCH}"
+  update_algolia_index "${P_CURRENT_BRANCH}"
   purge_cloudfront "${P_CURRENT_BRANCH}"
   verify_deployment "${P_CURRENT_BRANCH}"
 fi
