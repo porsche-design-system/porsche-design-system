@@ -12,7 +12,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
+import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../../styles/form-styles';
 import { srOnly } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 

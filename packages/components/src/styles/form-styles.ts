@@ -1,4 +1,4 @@
-import type { Styles } from '../../utils';
+import type { Styles } from '../utils';
 import {
   addImportantToRule,
   BreakpointCustomizable,
@@ -11,10 +11,10 @@ import {
   getTransition,
   isDark,
   pxToRemWithUnit,
-} from '../../utils';
+} from '../utils';
 import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
-import type { FormState, Theme } from '../../types';
-import type { JssStyle } from '../../utils';
+import type { FormState, Theme } from '../types';
+import type { JssStyle } from '../utils';
 
 export const INPUT_HEIGHT = 48;
 export const isVisibleState = (state: FormState): boolean => state === 'success' || state === 'error';

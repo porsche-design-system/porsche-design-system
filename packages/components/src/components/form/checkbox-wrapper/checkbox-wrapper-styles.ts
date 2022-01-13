@@ -12,7 +12,7 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
-import { isVisibleState } from '../form-styles';
+import { isVisibleState } from '../../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 
