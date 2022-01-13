@@ -63,7 +63,7 @@ export const getComponentCss = (
         backgroundSize: size,
         backgroundPosition: 'center',
         backgroundColor: 'transparent',
-        transition: ['background-color'].map(getTransition).join(','),
+        transition: getTransition('background-image'),
         opacity: 1,
         border: `2px solid ${backgroundColor}`,
         borderRadius: '50%',
