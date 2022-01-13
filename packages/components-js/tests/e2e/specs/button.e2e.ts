@@ -296,21 +296,6 @@ describe('button', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order when tabbable is false', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<a href="#" id="before">before</a>
-<p-button tabbable="false"">Some label</p-button>
-<a href="#" id="after">after</a>`
-    );
-
-    const button = await getHost();
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
-
-    await expectToSkipFocusOnComponent(page, button, before, after);
-  });
-
   it('should submit form via enter key when type is submit', async () => {
     await setContentWithDesignSystem(
       page,
