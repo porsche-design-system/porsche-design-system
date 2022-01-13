@@ -211,9 +211,9 @@ export const getLinkButtonStyles = (
       color: iconLabelColor,
       ...buildResponsiveStyles(hideLabel, getLabelStyles),
     },
-    ...(hasSlottedAnchor &&
-      addImportantToEachRule({
-        '::slotted(a)': {
+    ...(hasSlottedAnchor && {
+      '::slotted': addImportantToEachRule({
+        '&(a)': {
           display: 'block',
           textDecoration: 'none',
           color: 'inherit',
@@ -222,18 +222,19 @@ export const getLinkButtonStyles = (
           outlineOffset: '3px',
           ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
         },
-        '::slotted(a::-moz-focus-inner)': {
+        '&(a::-moz-focus-inner)': {
           border: 0,
         },
-        '::slotted(a:focus)': {
+        '&(a:focus)': {
           outlineColor: primaryColor,
         },
-        '::slotted(a:hover:focus)': {
+        '&(a:hover:focus)': {
           outlineColor: primaryColorHover,
         },
-        '::slotted(a:focus:not(:focus-visible))': {
+        '&(a:focus:not(:focus-visible))': {
           outlineColor: 'transparent',
         },
-      })),
+      }),
+    }),
   };
 };
