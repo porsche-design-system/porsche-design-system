@@ -12,7 +12,7 @@ import {
 } from '../../src/utils';
 import * as reactUtils from '../../src/utils/convertToReact';
 
-const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -21,7 +21,7 @@ const markup = `<p-some-tag some-attribute="some value" attribute="some value" c
 describe('transformObjectValues()', () => {
   it('should remove quotes and add double brackets to value, transform attribute to camelCase', () => {
     expect(transformObjectValues(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" anotherAttribute={{ bar: 'foo' }} onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" anotherAttribute={{ bar: 'foo' }} onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -33,7 +33,7 @@ describe('transformObjectValues()', () => {
 describe('transformStandardAttributes()', () => {
   it('should transform attributes to camelCase', () => {
     expect(transformStandardAttributes(markup)).toBe(
-      `<p-some-tag someAttribute="some value" attribute="some value" class="some-class" anotherAttribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digitAttribute="6" booleanAttribute="true">
+      `<p-some-tag someAttribute="some value" attribute="some value" class="some-class" anotherAttribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digitAttribute="6" negativeDigitAttribute="-6" booleanAttribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -45,7 +45,7 @@ describe('transformStandardAttributes()', () => {
 describe('transformClassAttribute()', () => {
   it('should transform class to className', () => {
     expect(transformClassAttribute(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" className="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+      `<p-some-tag some-attribute="some value" attribute="some value" className="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -57,7 +57,7 @@ describe('transformClassAttribute()', () => {
 describe('transformEventsToReactSyntax()', () => {
   it('should transform events to react event binding syntax', () => {
     expect(transformEventsToReactSyntax(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digit-attribute="6" boolean-attribute="true">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -69,7 +69,7 @@ describe('transformEventsToReactSyntax()', () => {
 describe('transformBooleanAndDigitValues()', () => {
   it('should remove quotes and add brackets to boolean and digit values', () => {
     expect(transformBooleanAndDigitValues(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute={6} boolean-attribute={true}>
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute={6} negative-digit-attribute={-6} boolean-attribute={true}>
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -81,7 +81,7 @@ describe('transformBooleanAndDigitValues()', () => {
 describe('transformCustomElementTagName()', () => {
   it('should transform tag-name to PascalCase', () => {
     expect(transformCustomElementTagName(markup)).toBe(
-      `<PSomeTag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+      `<PSomeTag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
@@ -93,7 +93,7 @@ describe('transformCustomElementTagName()', () => {
 describe('transformInputs()', () => {
   it('should add closing dash to input', () => {
     expect(transformInputs(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox" />
   <button type="button"></button>
@@ -105,7 +105,7 @@ describe('transformInputs()', () => {
 describe('transformToSelfClosingTags()', () => {
   it('should transform tags without children to self-closing', () => {
     expect(transformToSelfClosingTags(markup)).toBe(
-      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" boolean-attribute="true">
+      `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
   <button type="button" />
@@ -163,7 +163,7 @@ describe('convertToReact()', () => {
 
   it('should convert markup to React syntax', () => {
     expect(convertToReact(markup)).toBe(
-      `<PSomeTag someAttribute="some value" attribute="some value" className="some-class" anotherAttribute={{ bar: 'foo' }} onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digitAttribute={6} booleanAttribute={true}>
+      `<PSomeTag someAttribute="some value" attribute="some value" className="some-class" anotherAttribute={{ bar: 'foo' }} onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digitAttribute={6} negativeDigitAttribute={-6} booleanAttribute={true}>
   <span>Some text</span>
   <input type="checkbox" />
   <button type="button" />
