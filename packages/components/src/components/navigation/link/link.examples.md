@@ -107,9 +107,9 @@ export default class Code extends Vue {
 >Some label</p-link>`;
 
   taborder =
-`<p-link href="https://www.porsche.com" tabindex="0">Some label</p-link>
+`<p-link href="https://www.porsche.com">Some label</p-link>
 <p-link href="https://www.porsche.com" tabindex="-1">Some label</p-link>
-<p-link href="https://www.porsche.com" tabindex="0">Some label</p-link>`;
+<p-link href="https://www.porsche.com">Some label</p-link>`;
 }
 </script>
 

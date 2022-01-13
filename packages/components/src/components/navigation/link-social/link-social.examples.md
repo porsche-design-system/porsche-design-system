@@ -160,9 +160,9 @@ export default class Code extends Vue {
 >Facebook</p-link-social>`;
 
   taborder =
-`<p-link-social href="https://www.porsche.com" tabindex="0">Some label</p-link-social>
+`<p-link-social href="https://www.porsche.com">Some label</p-link-social>
 <p-link-social href="https://www.porsche.com" tabindex="-1">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com" tabindex="0">Some label</p-link-social>`;
+<p-link-social href="https://www.porsche.com">Some label</p-link-social>`;
 }
 </script>
 

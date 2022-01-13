@@ -56,9 +56,9 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Remove Button from tab order
 
-**NOTICE:** This property is deprecated since v2.8.0 and will be removed in v3.0.0. Please use the `tabindex` attribute (e.g. `tabindex="-1"`).
+**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
 
-With setting the `tabbable` property to `false` you can remove the **Button** from the tab order.
+By setting the `tabindex` attribute to `-1` you can remove the **Button** from the tab order.
 
 <Playground :markup="taborder" :config="config"></Playground>
 
@@ -119,9 +119,8 @@ export default class Code extends Vue {
 >Some label</p-button>`;
     
   taborder =
-`<p-button tabbable="true">Some label</p-button>
-<p-button tabbable="false" hide-label="true">Some label</p-button>
+`<p-button>Some label</p-button>
 <p-button tabindex="-1" hide-label="true">Some label</p-button>
-<p-button tabindex="0">Some label</p-button>`;
+<p-button>Some label</p-button>`;
 }
 </script>
