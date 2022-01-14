@@ -1,7 +1,6 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -91,6 +90,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
+        marginRight: pxToRemWithUnit(64),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
         [mediaQuery('m')]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
@@ -101,11 +101,16 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
       },
     }),
     close: {
-      margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
       padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(4)} solid ${color.background.default}`,
       backgroundColor: color.background.default,
-      position: addImportantToRule('absolute'),
+      position: 'absolute',
+      right: pxToRemWithUnit(24),
+      top: pxToRemWithUnit(24),
+      [mediaQuery('m')]: {
+        right: pxToRemWithUnit(40),
+        top: pxToRemWithUnit(40),
+      },
     },
   });
 };
