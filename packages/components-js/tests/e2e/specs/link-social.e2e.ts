@@ -38,7 +38,6 @@ describe('link-social', () => {
   const getHost = () => selectNode(page, 'p-link-social');
   const getLink = () => selectNode(page, 'p-link-social >>> a');
   const getIcon = () => selectNode(page, 'p-link-social >>> p-icon >>> svg');
-  const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(

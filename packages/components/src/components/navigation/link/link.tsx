@@ -1,10 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import {
-  attachComponentCss,
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  parseAndGetAriaAttributes,
-} from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
 import type {
   SelectedAriaAttributes,
   BreakpointCustomizable,
@@ -20,7 +15,7 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Link {
   @Element() public host!: HTMLElement;
@@ -57,7 +52,6 @@ export class Link {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
-    improveFocusHandlingForCustomElement(this.host);
   }
 
   public componentWillRender(): void {

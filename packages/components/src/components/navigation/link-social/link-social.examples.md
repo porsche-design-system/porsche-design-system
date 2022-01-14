@@ -43,6 +43,7 @@ To support custom anchor tags (e.g. framework specific routing) you can provide 
 ---
 
 ## Specific icon
+
 If another icon needs to be implemented, just replace the default icon with another pre-defined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="iconMarkup" :config="config"></Playground>
@@ -82,10 +83,20 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ---
 
-## Bind events to the Link
+## Bind events to the link
+
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
 
 <Playground :markup="events" :config="config"></Playground>
+
+---
+
+## Remove Link Social from tab order
+
+By setting the `tabindex` attribute to `-1` you can remove the **Link Social** from the tab order.
+
+<Playground :markup="taborder" :config="config"></Playground>
+
 
 <script lang="ts">
 import Vue from 'vue';
@@ -147,6 +158,11 @@ export default class Code extends Vue {
   target="_blank" 
   rel="nofollow noopener"
 >Facebook</p-link-social>`;
+
+  taborder =
+`<p-link-social href="https://www.porsche.com">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" tabindex="-1">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com">Some label</p-link-social>`;
 }
 </script>
 

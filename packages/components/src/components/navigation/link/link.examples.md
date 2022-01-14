@@ -58,6 +58,13 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 <Playground :markup="events" :config="config"></Playground>
 
+---
+
+## Remove Link from tab order
+By setting the `tabindex` attribute to `-1` you can remove the **Link** from the tab order. 
+
+<Playground :markup="taborder" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -98,6 +105,11 @@ export default class Code extends Vue {
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
 >Some label</p-link>`;
+
+  taborder =
+`<p-link href="https://www.porsche.com">Some label</p-link>
+<p-link href="https://www.porsche.com" tabindex="-1">Some label</p-link>
+<p-link href="https://www.porsche.com">Some label</p-link>`;
 }
 </script>
 
