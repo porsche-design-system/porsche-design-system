@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
 import { attachComponentCss, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
 import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
@@ -77,7 +77,6 @@ export class Modal {
   }
 
   public render(): JSX.Element {
-    const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
       ['root']: true,
       ...mapBreakpointPropToClasses('root-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
@@ -93,26 +92,24 @@ export class Modal {
           aria-label={this.heading}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
-          {hasHeader && (
+          {this.heading && (
             <header>
-              {this.heading && (
-                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                  {this.heading}
-                </PrefixedTagNames.pHeadline>
-              )}
-              {!this.disableCloseButton && (
-                <PrefixedTagNames.pButtonPure
-                  class="close"
-                  type="button"
-                  ref={(el) => (this.closeBtn = el)}
-                  hideLabel
-                  icon="close"
-                  onClick={this.closeModal}
-                >
-                  Close modal
-                </PrefixedTagNames.pButtonPure>
-              )}
+              <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                {this.heading}
+              </PrefixedTagNames.pHeadline>
             </header>
+          )}
+          {!this.disableCloseButton && (
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              type="button"
+              ref={(el) => (this.closeBtn = el)}
+              hideLabel
+              icon="close"
+              onClick={this.closeModal}
+            >
+              Close modal
+            </PrefixedTagNames.pButtonPure>
           )}
           <slot />
         </aside>
