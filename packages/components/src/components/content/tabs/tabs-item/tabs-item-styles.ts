@@ -7,9 +7,9 @@ export const getComponentCss = (): string => {
       '&([hidden])': {
         display: 'none',
       },
-      '&(:focus),&(:focus-visible)': {
-        outline: 'none',
-      },
+      // '&(:focus),&(:focus-visible)': {
+      //   outline: 'none',
+      // },
     },
   });
 };
