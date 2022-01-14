@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`getSlottedTypoStyles() should return correct JssStyle 1`] = `
+exports[`getSlottedTypographyStyles() should return correct JssStyle 1`] = `
 Object {
   "color": "inherit",
   "fontFamily": "inherit",

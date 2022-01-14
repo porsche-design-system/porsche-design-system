@@ -1,6 +1,6 @@
 import type { JssStyle } from '../utils';
 
-export const getSlottedTypoStyles = (): JssStyle => {
+export const getSlottedTypographyStyles = (): JssStyle => {
   return {
     margin: 'inherit',
     padding: 'inherit',
