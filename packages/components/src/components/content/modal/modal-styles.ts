@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle } from '../../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   buildGlobalStyles,
   buildHostStyles,
   buildResponsiveStyles,
@@ -102,6 +103,9 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
     close: {
       margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
       padding: pxToRemWithUnit(8),
+      border: `${pxToRemWithUnit(4)} solid ${color.background.default}`,
+      backgroundColor: color.background.default,
+      position: addImportantToRule('absolute'),
     },
   });
 };
