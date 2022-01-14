@@ -1,5 +1,5 @@
 import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
+import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark, TextColor } from '../types';
 import { isDark, isDarkElectric, isLightElectric } from './theme';
 
 type ColorDarkenTheme = {
@@ -101,11 +101,13 @@ type ThemedColors = {
   baseColor: string;
   brandColor: string;
   backgroundColor: string;
+  backgroundSurfaceColor: string;
   contrastLowColor: string;
   contrastMediumColor: string;
   contrastHighColor: string;
   hoverColor: string;
   activeColor: string;
+  focusColor: string;
   disabledColor: string;
   errorColor: string;
   errorSoftColor: string;
@@ -121,9 +123,9 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
   const {
     default: baseColor,
     brand: brandColor,
-    background: { default: backgroundColor },
+    background: { default: backgroundColor, surface: backgroundSurfaceColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
-    state: { hover: hoverColor, active: activeColor, disabled: disabledColor },
+    state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
       error: errorColor,
       errorSoft: errorSoftColor,
@@ -146,11 +148,13 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
     baseColor,
     brandColor,
     backgroundColor,
+    backgroundSurfaceColor,
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
     hoverColor,
     activeColor,
+    focusColor,
     disabledColor,
     errorColor,
     errorSoftColor,
@@ -175,8 +179,8 @@ export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors 
 };
 
 type ThemedFormStateColors = {
-  stateColor: string;
-  stateHoverColor: string;
+  stateColor: string | undefined;
+  stateHoverColor: string | undefined;
 };
 
 const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
@@ -201,4 +205,32 @@ const themedFormStateColorsDark: { [key in FormState]: ThemedFormStateColors } =
 
 export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
+};
+
+export const getThemedTextColor = (textColor: TextColor, theme: ThemeExtendedElectricDark): string => {
+  const {
+    baseColor,
+    brandColor,
+    contrastHighColor,
+    contrastMediumColor,
+    contrastLowColor,
+    successColor,
+    errorColor,
+    warningColor,
+    neutralColor,
+  } = getThemedColors(theme);
+
+  const colorMap: { [key in TextColor]: string } = {
+    brand: brandColor,
+    default: baseColor,
+    'neutral-contrast-high': contrastHighColor,
+    'neutral-contrast-medium': contrastMediumColor,
+    'neutral-contrast-low': contrastLowColor,
+    'notification-success': successColor,
+    'notification-warning': warningColor,
+    'notification-error': errorColor,
+    'notification-neutral': neutralColor,
+    inherit: 'currentColor',
+  };
+  return colorMap[textColor];
 };

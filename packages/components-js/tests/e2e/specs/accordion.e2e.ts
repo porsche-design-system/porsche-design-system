@@ -2,11 +2,9 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  expectedStyleOnFocus,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   hasFocus,
   initAddEventListener,
   selectNode,
@@ -233,27 +231,6 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   });
 
   describe('focus', () => {
-    it('should not have focus on click', async () => {
-      await initAccordion({ otherMarkup: clickHandlerScript });
-      const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'hover' });
-
-      expect(await getOutlineStyle(button), 'before click').toBe(hidden);
-
-      await button.click();
-      await waitForStencilLifecycle(page);
-
-      expect(await getOutlineStyle(button), 'after click').toBe(hidden);
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(button), 'after Tab').toBe(visible);
-    });
-
     it('should have focusable content when opened', async () => {
       await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
       const button = await getButton();

@@ -1,10 +1,8 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -183,50 +181,6 @@ describe('link-pure', () => {
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
-      await initLinkPure();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initLinkPure({ useSlottedAnchor: true });
-
-      const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
-    });
   });
 
   describe('lifecycle', () => {

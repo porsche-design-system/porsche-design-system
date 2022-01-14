@@ -14,8 +14,9 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
 import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -102,7 +103,7 @@ export class TextareaWrapper {
           {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.textarea) && <Required />}
             </PrefixedTagNames.pText>
           )}
           {hasDescription(this.host, this.description) && (

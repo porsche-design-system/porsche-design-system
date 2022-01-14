@@ -39,7 +39,7 @@ describe('PPagination', () => {
     await componentsReady();
 
     const debug = getByTestId('debug');
-    const [, btn2, btn3] = Array.from(getByTestId('host').shadowRoot.querySelectorAll('.goto'));
+    const [, btn2, btn3] = Array.from(getByTestId('host').shadowRoot.querySelectorAll('span')).slice(1, -1); // without prev and next;
 
     expect(debug.innerHTML).toBe('Current Page: 1; Event Counter: 0;');
 

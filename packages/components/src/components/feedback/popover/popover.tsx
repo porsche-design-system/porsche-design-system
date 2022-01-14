@@ -1,10 +1,9 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
 import { addDocumentEventListener, removeDocumentEventListener, updatePopoverStyles } from './popover-utils';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
-import { getComponentCss } from './popover-styles';
+import { getComponentCss, getSlottedCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { SelectedAriaAttributes } from '../../../types';
-import { getSlottedCss } from '../../basic/typography/text/text-styles';
 
 @Component({
   tag: 'p-popover',

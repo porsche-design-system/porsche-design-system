@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, mediaQuery } from '../src/js';
+import { font, fontWeight, FontWeight, mediaQuery } from '../src/js';
+import { pascalCase } from 'change-case';
 
 const buildTypography = (): void => {
   const { family, size, weight } = font;
@@ -73,18 +74,39 @@ const buildTypography = (): void => {
     xLarge: { ...baseText, ...font.size.xLarge },
   };
 
+  const flippedFontWeightMap = Object.entries(fontWeight)
+    .map(([key, value]) => [value, key])
+    .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+
+  const formatValues = (obj: object): string =>
+    JSON.stringify(obj, null, 2)
+      .replace(/("fontFamily": .*)/, 'fontFamily,') // use reference
+      .replace(/"fontWeight": (\d*)/, (match, group) => `fontWeight: fontWeight.${flippedFontWeightMap[group]}`) // use reference
+      .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
+      .replace(/"/g, "'"); // replace quotes
+
+  const objectToConst = (obj: object, constName: string): string =>
+    Object.entries(obj)
+      .map(([key, value]) => `export const ${constName + pascalCase(key)} = ${formatValues(value)};`)
+      .concat(
+        `export const ${constName} = {
+  ${Object.keys(obj)
+    .map((key) => `${key}: ${constName + pascalCase(key)}`)
+    .join(',\n  ')}
+};`
+      )
+      .join('\n\n');
+
+  const imports = "import { fontFamily, fontWeight } from '../variables';";
+  const titles = objectToConst(title, 'title');
+  const headlines = objectToConst(headline, 'headline');
+  const texts = objectToConst(text, 'text');
+
+  const content = ['/* Auto Generated File */', imports, titles, headlines, texts].join('\n\n');
+
   const file = path.normalize('./src/js/functions/typography.ts');
 
-  fs.writeFileSync(
-    file,
-    `/* Auto Generated File */
-
-export const title = ${JSON.stringify(title)};
-
-export const headline = ${JSON.stringify(headline)};
-
-export const text = ${JSON.stringify(text)};`
-  );
+  fs.writeFileSync(file, content);
 };
 
 buildTypography();
