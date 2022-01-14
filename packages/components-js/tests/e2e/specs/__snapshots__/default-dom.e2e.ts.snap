@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should have no basic DOM regression for p-accordion 1`] = `
-"<div class=\\"root root--size-small\\">
+"<div class=\\"root\\">
   <h2 class=\\"heading\\">
     <button id=\\"accordion-control\\" type=\\"button\\" aria-expanded=\\"false\\" aria-controls=\\"accordion-panel\\">
       <slot name=\\"heading\\">
@@ -101,7 +101,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     outline-color: transparent !important
   }
 </style>
-<button class=\\"root root--with-label\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -112,7 +112,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button-group 1`] = `
-"<div class=\\"root root--direction-column root--direction-row-xs\\" role=\\"group\\">
+"<div role=\\"group\\">
   <slot>
   </slot>
 </div>"
@@ -169,7 +169,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
-"<label class=\\"root\\">
+"<label>
   <slot>
   </slot>
 </label>"
@@ -182,10 +182,10 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 </div>"
 `;
 
-exports[`should have no basic DOM regression for p-divider 1`] = `"<hr class=\\"root root--orientation-horizontal\\">"`;
+exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
-"<fieldset class=\\"root\\">
+"<fieldset>
   <slot>
   </slot>
 </fieldset>"
@@ -212,7 +212,7 @@ exports[`should have no basic DOM regression for p-grid-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-headline 1`] = `
-"<h1 class=\\"root root--variant-headline-1\\">
+"<h1 class=\\"root\\">
   <slot>
   </slot>
 </h1>"
@@ -440,7 +440,7 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<aside class=\\"root root--fullscreen-off\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
+"<aside class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
   <header>
     <p-button-pure class=\\"close hydrated\\">
       Close modal</p-button-pure>
@@ -451,20 +451,20 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-pagination 1`] = `
-"<nav class=\\"root root--size-5 root--size-7-xs\\" role=\\"navigation\\" aria-label=\\"Pagination\\">
-  <ul class=\\"items\\">
-    <li class=\\"item\\">
-      <span class=\\"prev prev--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
+"<nav role=\\"navigation\\" aria-label=\\"Pagination\\">
+  <ul>
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Previous page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"goto goto--current\\" role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
+    <li>
+      <span role=\\"button\\" tabindex=\\"0\\" aria-label=\\"Page 1\\" aria-current=\\"page\\">
         1</span>
     </li>
-    <li class=\\"item\\">
-      <span class=\\"next next--disabled\\" role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
+    <li>
+      <span role=\\"button\\" aria-disabled=\\"true\\" aria-label=\\"Next page\\">
         <p-icon aria-hidden=\\"true\\" class=\\"hydrated\\">
         </p-icon>
       </span>
@@ -479,7 +479,7 @@ exports[`should have no basic DOM regression for p-popover 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
-"<label class=\\"root\\">
+"<label>
   <slot>
   </slot>
 </label>"
@@ -499,8 +499,8 @@ exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-spinner 1`] = `
-"<span class=\\"root root--size-small\\" role=\\"alert\\" aria-live=\\"assertive\\">
-  <span class=\\"sr-text\\">
+"<span class=\\"root\\" role=\\"alert\\" aria-live=\\"assertive\\">
+  <span class=\\"sr-only\\">
     &nbsp;</span>
   <svg viewBox=\\"-16 -16 32 32\\" width=\\"100%\\" height=\\"100%\\" focusable=\\"false\\" aria-hidden=\\"true\\">
     <circle r=\\"9\\">
@@ -609,36 +609,36 @@ exports[`should have no basic DOM regression for p-table-row 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs 1`] = `
-"<p-tabs-bar class=\\"tabs-bar hydrated\\">
+"<p-tabs-bar class=\\"root hydrated\\">
 </p-tabs-bar>
 <slot>
 </slot>"
 `;
 
 exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
-"<div class=\\"root root--size-small\\">
+"<div class=\\"root\\">
   <div class=\\"scroll-area\\" role=\\"tablist\\">
     <div class=\\"scroll-wrapper\\">
       <slot>
       </slot>
-      <span class=\\"status-bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
+      <span class=\\"bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
       </span>
-      <div class=\\"scroll-wrapper__trigger\\">
+      <div class=\\"trigger\\">
       </div>
-      <div class=\\"scroll-wrapper__trigger\\">
+      <div class=\\"trigger\\">
       </div>
     </div>
   </div>
   <div class=\\"action action--prev action--hidden\\">
-    <span class=\\"gradient gradient--prev\\">
+    <span class=\\"gradient\\">
     </span>
-    <p-button-pure aria-hidden=\\"true\\" hide-label=\\"true\\" class=\\"hydrated\\">
+    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
       prev</p-button-pure>
   </div>
   <div class=\\"action action--next action--hidden\\">
-    <span class=\\"gradient gradient--next\\">
+    <span class=\\"gradient\\">
     </span>
-    <p-button-pure aria-hidden=\\"true\\" hide-label=\\"true\\" class=\\"hydrated\\">
+    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
       next</p-button-pure>
   </div>
 </div>"
@@ -652,7 +652,7 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-text 1`] = `
-"<p class=\\"root root--size-small\\">
+"<p class=\\"root\\">
   <slot>
   </slot>
 </p>"

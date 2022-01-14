@@ -4,6 +4,8 @@ import * as globby from 'globby';
 import { camelCase, paramCase } from 'change-case';
 import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
+const glue = '\n\n';
+
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
@@ -25,7 +27,7 @@ const generateComponentMeta = (): void => {
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
-  ].join('\n');
+  ].join(glue);
 
   type ComponentMeta = {
     isDelegatingFocus: boolean;
@@ -46,7 +48,12 @@ const generateComponentMeta = (): void => {
 
   const componentSourceCode: { [key in TagName]: string } = componentFiles.reduce((result, filePath) => {
     const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
-    result[tagName] = fs.readFileSync(filePath, 'utf8');
+
+    // get rid of functional components like StateMessage
+    if (TAG_NAMES.includes(tagName)) {
+      result[tagName] = fs.readFileSync(filePath, 'utf8');
+    }
+
     return result;
   }, {} as { [key in TagName]: string });
 
@@ -125,20 +132,20 @@ const generateComponentMeta = (): void => {
     }
   }
 
+  // array of focusable tag names used in modal
   const focusableTagNames: TagNameCamelCase[] = Object.entries(meta)
     .filter(([_, value]) => value.isFocusable)
     .map(([key]) => camelCase(key) as TagNameCamelCase)
     .sort();
 
-  const functions = `export const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};
+  const functions = [
+    `export const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};`,
+    `export const getComponentMeta = (component: TagName): ComponentMeta => componentMeta[component];`,
+    `export const FOCUSABLE_TAG_NAMES_CAMEL_CASE: TagNameCamelCase[] = ${JSON.stringify(focusableTagNames)};`,
+    ,
+  ].join(glue);
 
-export const getComponentMeta = (component: TagName): ComponentMeta => {
-  return componentMeta[component];
-};
-
-export const FOCUSABLE_TAG_NAMES_CAMEL_CASE: TagNameCamelCase[] = ${JSON.stringify(focusableTagNames)};`;
-
-  const content = [imports, types, functions].join('\n\n');
+  const content = [imports, types, functions].join(glue);
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });

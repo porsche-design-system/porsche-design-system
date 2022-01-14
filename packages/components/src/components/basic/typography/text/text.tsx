@@ -2,19 +2,17 @@ import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
-  isDark,
-  mapBreakpointPropToClasses,
   getThemeDarkAttribute,
   transitionListener,
   attachSlottedCss,
+  attachComponentCss,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { isSizeInherit } from './text-utils';
-import { getSlottedCss } from './text-styles';
+import { getComponentCss, getSlottedCss } from './text-styles';
 
 @Component({
   tag: 'p-text',
-  styleUrl: 'text.scss',
   shadow: true,
 })
 export class Text {
@@ -48,6 +46,19 @@ export class Text {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      this.weight,
+      this.align,
+      this.color,
+      this.ellipsis,
+      this.theme,
+    );
+  }
+
   public componentDidLoad(): void {
     if (isSizeInherit(this.size)) {
       transitionListener(this.textTag, 'font-size', () => {
@@ -61,19 +72,9 @@ export class Text {
     const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
-    const rootClasses = {
-      ['root']: true,
-      [`root--weight-${this.weight}`]: this.weight !== 'regular',
-      [`root--align-${this.align}`]: this.align !== 'left',
-      [`root--color-${this.color}`]: this.color !== 'default',
-      ['root--ellipsis']: this.ellipsis,
-      ['root--theme-dark']: isDark(this.theme) && this.color !== 'inherit',
-      ...mapBreakpointPropToClasses('root--size', this.size),
-    };
-
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
-        <TagType class={rootClasses} ref={(el) => (this.textTag = el)}>
+        <TagType class="root" ref={(el) => (this.textTag = el)}>
           <slot />
         </TagType>
       </Host>

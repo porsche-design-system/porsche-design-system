@@ -1,10 +1,8 @@
 import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import type { FormState, Theme } from '../../../../types';
 import { getCss } from '../../../../utils';
 
 describe('getButtonStyles()', () => {
-  it.each<[boolean, FormState, Theme]>([
+  it.each<Parameters<typeof getButtonStyles>>([
     [true, 'none', 'light'],
     [false, 'none', 'dark'],
     [true, 'success', 'light'],
@@ -17,7 +15,7 @@ describe('getButtonStyles()', () => {
 });
 
 describe('getFilterStyles()', () => {
-  it.each<[boolean, boolean, FormState, Theme]>([
+  it.each<Parameters<typeof getFilterStyles>>([
     [true, false, 'none', 'light'],
     [false, false, 'none', 'dark'],
     [true, false, 'success', 'light'],
@@ -39,7 +37,7 @@ describe('getFilterStyles()', () => {
 });
 
 describe('getListStyles()', () => {
-  it.each<[DropdownDirectionInternal, boolean, Theme]>([
+  it.each<Parameters<typeof getListStyles>>([
     ['down', true, 'light'],
     ['down', false, 'light'],
     ['down', true, 'dark'],
@@ -54,7 +52,7 @@ describe('getListStyles()', () => {
 });
 
 describe('getComponentCss()', () => {
-  it.each<[DropdownDirectionInternal, boolean, boolean, FormState, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     ['down', true, false, 'none', false, 'light'],
     ['down', false, false, 'none', false, 'light'],
     ['down', true, false, 'none', true, 'light'],
@@ -73,8 +71,8 @@ describe('getComponentCss()', () => {
     ['up', false, true, 'none', true, 'light'],
   ])(
     'should return correct css for direction: %s, isOpen: %s, disabled: %s, state: %s, filter: %s and theme: %s',
-    (direction, isOpen, disabled, state, filter, theme) => {
-      expect(getComponentCss(direction, isOpen, disabled, state, filter, theme)).toMatchSnapshot();
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
 });

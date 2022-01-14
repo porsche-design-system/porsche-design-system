@@ -1,8 +1,6 @@
 import {
-  expectedStyleOnFocus,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -29,29 +27,6 @@ describe('text', () => {
   const getHost = () => selectNode(page, 'p-text');
   const getLink = () => selectNode(page, 'p-text a');
   const getParagraph = () => selectNode(page, 'p-text >>> p');
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initText();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link)).toBe(visible);
-    });
-  });
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {

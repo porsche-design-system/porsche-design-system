@@ -15,7 +15,7 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addInputEventListener,
@@ -25,6 +25,7 @@ import {
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -142,7 +143,7 @@ export class TextFieldWrapper {
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (

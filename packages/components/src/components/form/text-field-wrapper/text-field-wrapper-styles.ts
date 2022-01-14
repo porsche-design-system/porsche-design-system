@@ -1,22 +1,21 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
-  buildGlobalStyles,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getRequiredStyles,
-  getStateMessageStyles,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
-import { srOnly, color } from '@porsche-design-system/utilities';
+import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
+import { isVisibleFormState } from '../../../utils/form-state';
+import { srOnly } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -27,13 +26,13 @@ export const getComponentCss = (
 ): string => {
   const theme: Theme = 'light';
   const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles({
+    },
+    '@global': {
       ...addImportantToEachRule({
         ...getBaseChildStyles(
           'input',
@@ -78,7 +77,7 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         transition: getTransition('color'),
-        ...getFocusStyles({ color: color.state.focus, offset: hasVisibleState ? -5 : -4 }),
+        ...getFocusStyles({ offset: hasVisibleState ? -5 : -4 }),
         '&:hover': {
           color: hoverColor,
         },
@@ -90,14 +89,14 @@ export const getComponentCss = (
           cursor: 'not-allowed',
         },
       },
-    }),
+    },
     root: {
       display: 'block',
       position: 'relative',
     },
     ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
-    ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-only': {
       ...srOnly(),
       padding: 0,

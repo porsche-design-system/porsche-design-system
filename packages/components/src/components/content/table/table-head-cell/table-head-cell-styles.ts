@@ -1,7 +1,5 @@
 import {
   addImportantToEachRule,
-  buildGlobalStyles,
-  buildHostStyles,
   getCss,
   getFocusStyles,
   getHoverStyles,
@@ -9,21 +7,19 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from '../../../../utils';
-import { color, font, spacing } from '@porsche-design-system/utilities';
+import { color, fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'table-cell',
-        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-        borderBottom: `1px solid ${color.neutralContrast.medium}`,
-        verticalAlign: 'bottom',
-        fontWeight: font.weight.semibold,
-        whiteSpace: 'nowrap',
-      })
-    ),
-    ...buildGlobalStyles({
+    ':host': addImportantToEachRule({
+      display: 'table-cell',
+      padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+      borderBottom: `1px solid ${color.neutralContrast.medium}`,
+      verticalAlign: 'bottom',
+      fontWeight: fontWeight.semibold,
+      whiteSpace: 'nowrap',
+    }),
+    '@global': {
       button: {
         display: 'flex',
         alignItems: 'flex-end',
@@ -31,9 +27,9 @@ export const getComponentCss = (): string => {
         boxSizing: 'border-box',
         appearance: 'none',
         border: 'none',
-        fontFamily: font.family,
-        ...font.size.small,
-        fontWeight: font.weight.semibold,
+        fontFamily,
+        fontWeight: fontWeight.semibold,
+        ...fontSize.small,
         color: color.default,
         textDecoration: 'none',
         textAlign: 'left',
@@ -47,14 +43,14 @@ export const getComponentCss = (): string => {
           },
         },
       },
-    }),
+    },
     hidden: {
       ...getTextHiddenJssStyle(true),
       display: 'block',
       border: 0,
     },
     icon: {
-      marginLeft: spacing['4'],
+      marginLeft: spacing[4],
       opacity: 0,
       transition: getTransition('opacity'),
       transform: 'rotate3d(0,0,1,0deg)',

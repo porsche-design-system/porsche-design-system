@@ -46,6 +46,7 @@ exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 Object {
   "activeColor": "#ff0223",
   "backgroundColor": "#0e1418",
+  "backgroundSurfaceColor": "#262b2e",
   "baseColor": "#fff",
   "brandColor": "#d5001c",
   "contrastHighColor": "#e3e4e5",
@@ -54,6 +55,7 @@ Object {
   "disabledColor": "#7c7f81",
   "errorColor": "#fc1717",
   "errorSoftColor": "#fec5c5",
+  "focusColor": "currentColor",
   "hoverColor": "#ff0223",
   "neutralColor": "#2193ff",
   "neutralSoftColor": "#c7e4ff",
@@ -68,6 +70,7 @@ exports[`getThemedColors() should return correct colors for theme: dark-electric
 Object {
   "activeColor": "#00b0f4",
   "backgroundColor": "#0e1418",
+  "backgroundSurfaceColor": "#262b2e",
   "baseColor": "#fff",
   "brandColor": "#00b0f4",
   "contrastHighColor": "#e3e4e5",
@@ -76,6 +79,7 @@ Object {
   "disabledColor": "#7c7f81",
   "errorColor": "#fc1717",
   "errorSoftColor": "#fec5c5",
+  "focusColor": "currentColor",
   "hoverColor": "#00b0f4",
   "neutralColor": "#2193ff",
   "neutralSoftColor": "#c7e4ff",
@@ -90,6 +94,7 @@ exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 Object {
   "activeColor": "#d5001c",
   "backgroundColor": "#fff",
+  "backgroundSurfaceColor": "#f2f2f2",
   "baseColor": "#000",
   "brandColor": "#d5001c",
   "contrastHighColor": "#323639",
@@ -98,6 +103,7 @@ Object {
   "disabledColor": "#96989a",
   "errorColor": "#e00000",
   "errorSoftColor": "#fae6e6",
+  "focusColor": "currentColor",
   "hoverColor": "#d5001c",
   "neutralColor": "#0061bd",
   "neutralSoftColor": "#e5eff8",
@@ -112,6 +118,7 @@ exports[`getThemedColors() should return correct colors for theme: light-electri
 Object {
   "activeColor": "#00b0f4",
   "backgroundColor": "#fff",
+  "backgroundSurfaceColor": "#f2f2f2",
   "baseColor": "#000",
   "brandColor": "#00b0f4",
   "contrastHighColor": "#323639",
@@ -120,6 +127,7 @@ Object {
   "disabledColor": "#96989a",
   "errorColor": "#e00000",
   "errorSoftColor": "#fae6e6",
+  "focusColor": "currentColor",
   "hoverColor": "#00b0f4",
   "neutralColor": "#0061bd",
   "neutralSoftColor": "#e5eff8",

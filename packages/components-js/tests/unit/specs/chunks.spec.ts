@@ -265,6 +265,11 @@ describe('chunks', () => {
       expect(content).not.toContain('--p-override');
     });
 
+    it.each(chunkFileNames)('should not contain lowercase webkit jss property in %s', (chunkFileName) => {
+      const content = getChunkContent(chunkFileName);
+      expect((content.match(/webkit[A-Z][a-z]+/) || []).length).toBe(0);
+    });
+
     // TODO: enable this test once chunking is under control
     // it.each(chunkFileNames)('should not contain all TAG_NAMES in %s', (chunkFileName) => {
     //   const content = getChunkContent(chunkFileName);
