@@ -41,6 +41,7 @@ export const getComponentCss = (
           display: 'block',
           margin: 0,
           padding: 0,
+          WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'border-box',
           backgroundSize: size,
@@ -51,7 +52,7 @@ export const getComponentCss = (
           border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
           borderRadius: 0,
           outline: '1px solid transparent',
-          outlineOffset: 2,
+          outlineOffset: '2px',
           cursor: 'pointer',
         },
         '&(input:checked)': {
