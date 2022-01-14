@@ -8,7 +8,6 @@ export * from './children-observer';
 export * from './colors';
 export * from './device-detection';
 export * from './dom';
-export * from './focus-handling';
 export * from './tag-name';
 export * from './jss';
 export * from './line-height';

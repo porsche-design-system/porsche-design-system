@@ -1,5 +1,6 @@
 import {
   addImportantToEachRule,
+  addImportantToRule,
   BreakpointCustomizable,
   buildHostStyles,
   buildResponsiveStyles,
@@ -49,6 +50,7 @@ export const getComponentCss = (
           display: 'inline-flex',
           verticalAlign: 'top',
           cursor: 'pointer',
+          outline: addImportantToRule(0),
         }),
         root: {
           display: 'flex',

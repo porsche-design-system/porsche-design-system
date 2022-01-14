@@ -103,6 +103,7 @@ export const getComponentCss = (
   return getCss({
     ':host': addImportantToEachRule({
       display: 'flex',
+      outline: 0,
     }),
     root: {
       display: 'flex',

@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable, JssStyle, Styles } from '../../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   buildHostStyles,
   buildResponsiveStyles,
   getCss,
@@ -173,6 +174,7 @@ export const getComponentCss = (
           display: 'inline-flex',
           verticalAlign: 'top',
           cursor: 'pointer',
+          outline: addImportantToRule(0),
         }),
         root: {
           display: 'flex',
