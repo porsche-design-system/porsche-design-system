@@ -58,6 +58,7 @@ export const getComponentCss = (
           display: 'block',
           margin: pxToRemWithUnit(-2),
           padding: 0,
+          WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'border-box',
           backgroundSize: size,
