@@ -10,7 +10,7 @@ import type { JssStyle } from '../../../../utils';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 // eslint-disable-next-line no-restricted-imports
 import { titleLarge, headline } from '@porsche-design-system/utilities';
-import { getEllipsisStyles, getSlottedTypoStyles } from '../../../../styles/typo-styles';
+import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
@@ -29,7 +29,7 @@ export const getComponentCss = (
       display: 'block',
     },
     '::slotted': {
-      '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypoStyles()),
+      '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyStyles()),
     },
     root: {
       padding: 0,

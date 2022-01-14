@@ -10,7 +10,7 @@ import {
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
-import { getEllipsisStyles, getSlottedTypoStyles } from '../../../../styles/typo-styles';
+import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {
@@ -35,7 +35,7 @@ export const getComponentCss = (
     },
     '::slotted': {
       '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-        getSlottedTypoStyles()
+        getSlottedTypographyStyles()
       ),
     },
     root: {
