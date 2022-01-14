@@ -11,11 +11,6 @@ export type BreakpointValues<T> = {
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
 type BreakpointValue = string | number | boolean;
-type ClassSuffixes = [string, string];
-
-type JSXClasses = {
-  [className: string]: boolean;
-};
 
 export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
@@ -36,39 +31,4 @@ export const parseJSON = (
     // prop is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
     return prop;
   }
-};
-
-const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string =>
-  typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : `${value}`;
-
-const getBreakpointSuffix = (breakpoint: BreakpointKey): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
-
-const createJSXClass = (
-  classPrefix: string,
-  value: BreakpointValue,
-  breakpoint: BreakpointKey,
-  classSuffixes: ClassSuffixes
-): JSXClasses => {
-  if (value !== null && value !== undefined) {
-    const className = `${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`;
-    return { [className]: true };
-  }
-};
-
-export const mapBreakpointPropToClasses = (
-  classPrefix: string,
-  prop: BreakpointCustomizable<BreakpointValue>,
-  classSuffixes?: ClassSuffixes
-): JSXClasses => {
-  const parsedProp = parseJSON(prop);
-
-  return typeof parsedProp === 'object'
-    ? Object.entries(parsedProp).reduce(
-        (classes, [breakpoint, value]: [BreakpointKey, BreakpointValue]) => ({
-          ...classes,
-          ...createJSXClass(classPrefix, value, breakpoint, classSuffixes),
-        }),
-        {} as JSXClasses
-      )
-    : createJSXClass(classPrefix, parsedProp, 'base', classSuffixes);
 };
