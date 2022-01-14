@@ -92,26 +92,28 @@ export const getComponentCss = (
     },
     ...(!hasHref &&
       addImportantToEachRule({
-        '::slotted(a)': {
-          display: 'block',
-          textDecoration: 'none',
-          color: 'inherit',
-          lineHeight: 'inherit',
-          outline: 'transparent solid 1px',
-          outlineOffset: '3px',
-          ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
-        },
-        '::slotted(a::-moz-focus-inner)': {
-          border: 0,
-        },
-        '::slotted(a:focus)': {
-          outlineColor: baseColor,
-        },
-        '::slotted(a:hover:focus)': {
-          outlineColor: baseColorHover,
-        },
-        '::slotted(a:focus:not(:focus-visible))': {
-          outlineColor: 'transparent',
+        '::slotted': {
+          '&(a)': {
+            display: 'block',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent solid 1px',
+            outlineOffset: '3px',
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+          },
+          '&(a::-moz-focus-inner)': {
+            border: 0,
+          },
+          '&(a:focus)': {
+            outlineColor: baseColor,
+          },
+          '&(a:hover:focus)': {
+            outlineColor: baseColorHover,
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
         },
       })),
   });
