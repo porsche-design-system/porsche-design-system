@@ -93,7 +93,7 @@ import Component from 'vue-class-component';
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com">Tab ${name}</a>`;
-const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
+const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex="-1" role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
   
@@ -213,16 +213,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   }
   
   hiddenNodes = null;
-  onTabChange =  (e: CustomEvent) => {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
+  onTabChange = (e: CustomEvent) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 
   updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
-    // manipulate code only section only in order to not rerender component and loose animations
+    // manipulate code section only in order to not rerender component and loose animations
     const example = tabs.parentElement.parentElement;
     const demo = example.querySelector('.demo');
     const code = example.querySelector('code');
     const attrs = code.querySelectorAll('.token:first-child .attr-value');
+
     
     // manipulate activeTabIndex
     if (attrs.length) {
@@ -246,15 +247,51 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
           item.innerText = '';
         }
       }
-      
+
+      // change tabindex attribute in GUI
+      [9, 13, 17].forEach((index) => {
+        const tabindex = code.querySelectorAll(`.token:nth-child(${index}) .attr-value`)[1];
+        if ((index-9)/4 === newIndex) {
+          tabindex.innerText = '="0"';
+        } else {
+          tabindex.innerText = '="-1"';
+        }
+      });
+
+
       const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
       panels.forEach((panel, i) => {
         panel.setAttribute('hidden', '');
+        panel.tabIndex = -1;
         if (i === newIndex) {
           panel.removeAttribute('hidden');
+          panel.tabIndex = 0;
         }
       });
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import '~@porsche-design-system/utilities/scss';
+
+  ::v-deep div[role=tabpanel] {
+    outline: 1px solid transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    outline-offset: 1px;
+  }
+
+  ::v-deep .example--light div[role=tabpanel]:focus {  
+    outline-color: black;
+  }
+
+  ::v-deep .example--dark div[role=tabpanel]:focus {  
+    outline-color: white;
+  }
+
+  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {  
+    outline-color: transparent;
+  }
+</style>
