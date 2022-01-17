@@ -108,10 +108,7 @@ export const getComponentCss = (
     }),
     '@global': {
       header: {
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        ...(!disableCloseButton && { marginRight: pxToRemWithUnit(64) }),
+        ...(!disableCloseButton && { marginRight: pxToRemWithUnit(48) }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
         [mediaQuery('m')]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
