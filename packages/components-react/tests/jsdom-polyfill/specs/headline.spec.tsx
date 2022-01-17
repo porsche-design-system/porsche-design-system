@@ -5,11 +5,9 @@ const Sample = (): JSX.Element => {
   return <PHeadline data-testid="host">Some text</PHeadline>;
 };
 
-describe('PHeadline', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
 });

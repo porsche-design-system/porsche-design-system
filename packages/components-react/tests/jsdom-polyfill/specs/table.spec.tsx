@@ -27,17 +27,15 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PTable', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-    expect(getByTestId('head').shadowRoot).not.toBeNull();
-    expect(getByTestId('head-row').shadowRoot).not.toBeNull();
-    expect(getByTestId('head-cell').shadowRoot).not.toBeNull();
-    expect(getByTestId('body').shadowRoot).not.toBeNull();
-    expect(getByTestId('row').shadowRoot).not.toBeNull();
-    expect(getByTestId('cell').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
+  expect(getByTestId('head').shadowRoot).not.toBeNull();
+  expect(getByTestId('head-row').shadowRoot).not.toBeNull();
+  expect(getByTestId('head-cell').shadowRoot).not.toBeNull();
+  expect(getByTestId('body').shadowRoot).not.toBeNull();
+  expect(getByTestId('row').shadowRoot).not.toBeNull();
+  expect(getByTestId('cell').shadowRoot).not.toBeNull();
 });
