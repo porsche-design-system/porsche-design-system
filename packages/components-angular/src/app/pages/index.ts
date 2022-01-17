@@ -23,10 +23,10 @@ import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
 import { ModalFullscreenComponent } from './modal-fullscreen.component';
 import { ModalFullscreenBreakpointComponent } from './modal-fullscreen-breakpoint.component';
+import { ModalFullWidthSlotComponent } from './modal-full-width-slot.component';
 import { ModalNoHeadingComponent } from './modal-no-heading.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
-import { ModalFullWidthSlotComponent } from './modal-full-width-slot.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
@@ -77,10 +77,10 @@ export const pages = [
   ModalBasicComponent,
   ModalFullscreenComponent,
   ModalFullscreenBreakpointComponent,
+  ModalFullWidthSlotComponent,
   ModalNoHeadingComponent,
   ModalPrefixedComponent,
   ModalScrollableComponent,
-  ModalFullWidthSlotComponent,
   OverviewComponent,
   PaginationComponent,
   PopoverComponent,
@@ -131,10 +131,10 @@ export * from './marque.component';
 export * from './modal-basic.component';
 export * from './modal-fullscreen.component';
 export * from './modal-fullscreen-breakpoint.component';
+export * from './modal-full-width-slot.component';
 export * from './modal-no-heading.component';
 export * from './modal-prefixed.component';
 export * from './modal-scrollable.component';
-export * from './modal-full-width-slot.component';
 export * from './overview.component';
 export * from './pagination.component';
 export * from './popover.component';
