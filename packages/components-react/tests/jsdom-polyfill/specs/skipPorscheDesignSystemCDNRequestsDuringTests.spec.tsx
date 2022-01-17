@@ -35,5 +35,8 @@ it('should not fetch icon', async () => {
   render(<PIcon />);
   await componentsReady();
 
+  // let's wait a little for the promise exception
+  await new Promise((resolve) => setTimeout(resolve, 5));
+
   expect(spy).not.toHaveBeenCalled();
 });
