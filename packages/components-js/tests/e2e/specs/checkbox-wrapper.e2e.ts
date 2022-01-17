@@ -1,10 +1,8 @@
 import {
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementTagName,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -23,10 +21,8 @@ describe('checkbox-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-checkbox-wrapper');
   const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-  const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .root__text');
+  const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .label');
   const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
-  const getLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
-  const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
   const setIndeterminate = async (element: ElementHandle, value: boolean) => {
     await setProperty(element, 'indeterminate', value);
@@ -295,63 +291,6 @@ describe('checkbox-wrapper', () => {
 
       await setChecked(input, false);
       expect(await getBackgroundImage(input)).toContain(backgroundURL);
-    });
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and not on click for slotted <input>', async () => {
-      await initCheckbox();
-
-      const input = await getInput();
-      const hidden = expectedStyleOnFocus({ css: 'outline', color: 'transparent' });
-      const visible = expectedStyleOnFocus({ css: 'outline', color: 'neutral' });
-
-      expect(await getOutlineStyle(input)).toBe(hidden);
-
-      await input.click();
-
-      expect(await getOutlineStyle(input)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(input)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initCheckbox({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
-
-      const labelLink = await getLabelLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
     });
   });
 

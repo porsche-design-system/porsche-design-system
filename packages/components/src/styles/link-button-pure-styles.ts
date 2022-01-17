@@ -2,8 +2,8 @@ import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from
 import {
   addImportantToEachRule,
   addImportantToRule,
-  buildResponsiveHostStyles,
   buildResponsiveStyles,
+  generateTypeScale,
   getFocusStyles,
   getInset,
   getThemedColors,
@@ -13,16 +13,12 @@ import {
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../utils';
-import { font, FontSizeLineHeight, generateTypeScale, srOnly } from '@porsche-design-system/utilities';
+import { fontSize, FontSizeLineHeight, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
-  ...addImportantToEachRule({
-    position: 'relative',
-    display: stretch ? 'block' : 'inline-block',
-    outline: 0,
-  }),
+  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
@@ -31,33 +27,35 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     return {
       fontSize: 'inherit',
       lineHeight: 'inherit',
-      '& .icon': {
+      '& $icon': {
         width: '1.5em',
         height: '1.5em',
       },
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    const { fontSize, lineHeight } = font.size[paramCaseToCamelCase(textSize)];
+    const { fontSize: size, lineHeight } = fontSize[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
-      'x-small': font.size.xSmall,
-      small: font.size.small,
-      medium: font.size['20'],
-      large: font.size['30'],
-      'x-large': font.size.large,
+      'x-small': fontSize.xSmall,
+      small: fontSize.small,
+      medium: fontSize['20'],
+      large: fontSize['30'],
+      'x-large': fontSize.large,
     };
 
     return {
-      ...generateTypeScale(fontSize),
+      ...generateTypeScale(size),
       '& .icon': {
+        // TODO: should be referenced
         width: lineHeightWithUnit,
         height: lineHeightWithUnit,
       },
       '& ~ .subline': {
+        // TODO: should be referenced
         ...sublineSize[textSize],
         '&::before': {
-          fontSize,
+          fontSize: size,
           marginLeft: lineHeightWithUnit,
         },
       },
@@ -126,7 +124,10 @@ export const getLinkButtonPureStyles = (
   const hasIcon = hasVisibleIcon(icon);
 
   return {
-    ...buildResponsiveHostStyles(hasSubline ? false : stretch, getHostStyles),
+    ':host': {
+      ...addImportantToEachRule({ position: 'relative', outline: 0 }),
+      ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+    },
     root: {
       display: 'flex',
       alignItems: 'flex-start',
@@ -136,11 +137,11 @@ export const getLinkButtonPureStyles = (
       boxSizing: 'border-box',
       outline: 'transparent none',
       appearance: 'none',
-      border: 'none',
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       textDecoration: 'none',
       textAlign: 'left',
+      border: 'none',
       background: 'transparent',
-      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusStyles({ offset: 1, pseudo: '::before' })),

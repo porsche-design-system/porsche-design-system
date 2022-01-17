@@ -1,5 +1,11 @@
 import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
-import { getPrefixedTagNames, observeProperties, removeAttribute, setAttribute } from '../../../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  observeProperties,
+  removeAttribute,
+  setAttribute,
+} from '../../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
@@ -7,10 +13,10 @@ import type {
   TabWeight,
   TabSize,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
+import { getComponentCss } from './tabs-styles';
 
 @Component({
   tag: 'p-tabs',
-  styleUrl: 'tabs.scss',
   shadow: true,
 })
 export class Tabs {
@@ -45,6 +51,7 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
     this.initMutationObserver();
     this.observeProperties();
@@ -67,7 +74,7 @@ export class Tabs {
     return (
       <Host>
         <PrefixedTagNames.pTabsBar
-          class="tabs-bar"
+          class="root"
           size={this.size}
           weight={this.weight}
           theme={this.theme}

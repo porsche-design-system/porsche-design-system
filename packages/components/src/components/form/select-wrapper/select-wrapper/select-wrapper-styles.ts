@@ -1,12 +1,8 @@
 import {
   addImportantToEachRule,
-  buildGlobalStyles,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getRequiredStyles,
-  getStateMessageStyles,
   getThemedColors,
   getTransition,
   isDark,
@@ -16,37 +12,38 @@ import {
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
 import { color } from '@porsche-design-system/utilities';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../../form-styles';
+import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
+import { isVisibleFormState } from '../../../../utils/form-state';
+import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
   const { baseColor, backgroundColor } = getThemedColors(theme);
-  const defaultPadding = pxToRemWithUnit(isVisibleState(state) ? 10 : 11);
+  const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles(
-      addImportantToEachRule(
-        mergeDeep(
-          getBaseChildStyles('select', state, theme, {
-            position: 'static',
-            cursor: 'pointer',
-            padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
-            '&@-moz-document url-prefix()': {
-              // fix for 3px text-indention in FF
-              paddingLeft: pxToRemWithUnit(8),
-            },
-          }),
-          {
-            '::slotted(select:disabled)': {
-              background: isDarkTheme ? color.default : backgroundColor, // 🤷
-            },
-          }
-        )
+    },
+    '@global': addImportantToEachRule(
+      mergeDeep(
+        getBaseChildStyles('select', state, theme, {
+          position: 'static',
+          cursor: 'pointer',
+          padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
+          '&@-moz-document url-prefix()': {
+            // fix for 3px text-indention in FF
+            paddingLeft: pxToRemWithUnit(8),
+          },
+        }),
+        {
+          '::slotted(select:disabled)': {
+            background: isDarkTheme ? color.default : backgroundColor, // 🤷
+          },
+        }
       )
     ),
     root: {
@@ -55,8 +52,8 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
       color: baseColor, // for dark theme on .label__text
     },
     ...getLabelStyles('select', hideLabel, state, theme, '$icon'),
-    ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     icon: {
       position: 'absolute',
       bottom: pxToRemWithUnit(12),

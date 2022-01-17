@@ -1,16 +1,14 @@
-import { addImportantToEachRule, buildHostStyles, getCss, getTransition } from '../../../../utils';
+import { addImportantToEachRule, getCss, getTransition } from '../../../../utils';
 import { color } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
-  return getCss(
-    buildHostStyles(
-      addImportantToEachRule({
-        display: 'table-row',
-        transition: getTransition('background-color'),
-        '&(:hover)': {
-          backgroundColor: color.background.surface,
-        },
-      })
-    )
-  );
+  return getCss({
+    ':host': addImportantToEachRule({
+      display: 'table-row',
+      transition: getTransition('background-color'),
+      '&(:hover)': {
+        backgroundColor: color.background.surface,
+      },
+    }),
+  });
 };

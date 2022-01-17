@@ -9,6 +9,9 @@
  *
  */
 
+export type NumberOfPageLinks = 5 | 7;
+export type PageChangeEvent = { page: number; previousPage: number };
+
 export type PageItemType = 'PAGE';
 export type EllipsisItemType = 'ELLIPSIS';
 export type PreviousPageLinkItemType = 'PREVIOUS_PAGE_LINK';

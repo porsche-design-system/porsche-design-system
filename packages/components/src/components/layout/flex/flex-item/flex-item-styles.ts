@@ -1,11 +1,5 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import {
-  addImportantToEachRule,
-  buildHostStyles,
-  buildResponsiveHostStyles,
-  getCss,
-  mergeDeep,
-} from '../../../../utils';
+import { addImportantToEachRule, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import type {
   FlexItemAlignSelf,
   FlexItemAlignSelfType,
@@ -61,9 +55,11 @@ export const getComponentCss = (
   return getCss(
     addImportantToEachRule(
       mergeDeep(
-        buildHostStyles({
-          boxSizing: 'border-box',
-        }),
+        {
+          ':host': {
+            boxSizing: 'border-box',
+          },
+        },
         buildResponsiveHostStyles(width, getWidthStyles),
         buildResponsiveHostStyles(offset, getOffsetStyles),
         buildResponsiveHostStyles(alignSelf, getAlignSelfStyles),

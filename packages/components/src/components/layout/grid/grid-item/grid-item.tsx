@@ -21,15 +21,10 @@ export class GridItem {
   }
 
   public componentWillRender(): void {
-    // eslint-disable-next-line no-unused-expressions
-    this.host.parentElement &&
-      attachComponentCss(
-        this.host,
-        getComponentCss,
-        this.size,
-        this.offset,
-        (this.host.parentElement as HTMLPGridElement).gutter
-      );
+    const grid = this.host.parentElement as HTMLPGridElement;
+    if (grid) {
+      attachComponentCss(this.host, getComponentCss, this.size, this.offset, grid.gutter);
+    }
   }
 
   public render(): JSX.Element {

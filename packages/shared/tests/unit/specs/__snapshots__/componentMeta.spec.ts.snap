@@ -34,7 +34,7 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-banner": Object {
     "hasSlottedCss": true,
@@ -48,14 +48,14 @@ Object {
     "isDelegatingFocus": true,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-group": Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-button-pure": Object {
     "hasSlottedCss": false,
@@ -70,7 +70,7 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"checkbox\\"",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-content-wrapper": Object {
     "hasSlottedCss": false,
@@ -84,14 +84,14 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-fieldset-wrapper": Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": false,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-flex": Object {
     "hasSlottedCss": false,
@@ -128,7 +128,7 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-icon": Object {
     "hasSlottedCss": false,
@@ -199,7 +199,7 @@ Object {
     "isDelegatingFocus": true,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-popover": Object {
     "hasSlottedCss": true,
@@ -214,7 +214,7 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"radio\\"",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-select-wrapper": Object {
     "hasSlottedCss": true,
@@ -236,7 +236,7 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-switch": Object {
     "hasSlottedCss": false,
@@ -305,14 +305,14 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-bar": Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isFocusable": true,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-tabs-item": Object {
     "hasSlottedCss": false,
@@ -320,14 +320,14 @@ Object {
     "isFocusable": false,
     "isThemeable": false,
     "requiredParent": "p-tabs",
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text": Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-field-wrapper": Object {
     "hasSlottedCss": true,
@@ -342,7 +342,7 @@ Object {
     "isDelegatingFocus": false,
     "isFocusable": false,
     "isThemeable": true,
-    "styling": "scss",
+    "styling": "jss",
   },
   "p-text-list-item": Object {
     "hasSlottedCss": false,

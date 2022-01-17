@@ -1,8 +1,7 @@
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
-import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
-  it.each<[BreakpointCustomizable<boolean>, FormState, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     [false, 'none', 'light'],
     [false, 'success', 'light'],
     [false, 'error', 'light'],
@@ -16,8 +15,8 @@ describe('getComponentCss()', () => {
     [true, 'success', 'dark'],
     [true, 'error', 'dark'],
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', 'light'],
-  ])('should return correct css for hideLabel: %o, state: %s and theme: %s', (hideLabel, state, theme) => {
-    expect(getComponentCss(hideLabel, state, theme)).toMatchSnapshot();
+  ])('should return correct css for hideLabel: %o, state: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
 

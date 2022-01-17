@@ -13,6 +13,9 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
     ...opts,
   };
 
+  // get rid of spaces as we do during static VRTs
+  content = content.replace(/>(\s|\n|\r)*</g, '><');
+
   await page.setContent(
     `<!DOCTYPE html>
     <html>

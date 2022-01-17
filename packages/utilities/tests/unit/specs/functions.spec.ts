@@ -1,4 +1,5 @@
-import { mediaQuery, breakpoint } from '../../../projects/utilities/src/js';
+import { mediaQuery, breakpoint, text, title } from '../../../projects/utilities/src/js';
+import { headline } from '@porsche-design-system/utilities';
 
 describe('mediaQuery()', () => {
   it('should return media query when pre defined breakpoint as min parameter is passed', () => {
@@ -19,5 +20,19 @@ describe('mediaQuery()', () => {
   it('should return media query when custom number as min + max parameters are passed', () => {
     expect(mediaQuery(123, 987)).toEqual('@media (min-width: 123px) and (max-width: 987px)');
     expect(mediaQuery(33, 99)).toEqual('@media (min-width: 33px) and (max-width: 99px)');
+  });
+});
+
+describe('typography', () => {
+  it('should contain correct values for title', () => {
+    expect(title).toMatchSnapshot();
+  });
+
+  it('should contain correct values for headline', () => {
+    expect(headline).toMatchSnapshot();
+  });
+
+  it('should contain correct values for text', () => {
+    expect(text).toMatchSnapshot();
   });
 });
