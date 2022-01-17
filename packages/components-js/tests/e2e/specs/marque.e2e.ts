@@ -1,11 +1,9 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -508,29 +506,6 @@ describe('marque', () => {
 
       await page.evaluate(() => (document.querySelector('p-marque') as HTMLElement).blur());
       expect(await marqueHasFocus()).toBe(false);
-    });
-  });
-
-  describe('focus state', () => {
-    it('should show outline by keyboard navigation only for shadowed <a> when it is focused', async () => {
-      await setContentWithLink();
-
-      const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '0px' });
-      const visible = expectedStyleOnFocus({ color: 'default', offset: '0px' });
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await link.click();
-
-      expect(await getOutlineStyle(link)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(link)).toBe(visible);
     });
   });
 

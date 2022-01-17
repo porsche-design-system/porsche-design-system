@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { getPrefixedTagNames, isDark, isLightElectric, mapBreakpointPropToClasses } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
@@ -13,10 +13,10 @@ import {
   useMutationObserverFallback,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
+import { getComponentCss } from './accordion-styles';
 
 @Component({
   tag: 'p-accordion',
-  styleUrl: 'accordion.scss',
   shadow: true,
 })
 export class Accordion {
@@ -75,6 +75,10 @@ export class Accordion {
     }
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
+  }
+
   public componentDidRender(): void {
     if (useMutationObserverFallback) {
       this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
@@ -89,6 +93,7 @@ export class Accordion {
     }
   }
 
+  // called via util
   public setContentHeight = (): void => {
     if (this.content) {
       this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
@@ -100,20 +105,11 @@ export class Accordion {
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--theme-light-electric']: isLightElectric(this.theme),
-      ['root--open']: this.open,
-      ...(!this.compact && mapBreakpointPropToClasses('root--size', this.size)),
-      ['root--compact']: this.compact,
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
     return (
-      <div class={rootClasses}>
+      <div class="root">
         <Heading class="heading">
           <button
             id={buttonId}

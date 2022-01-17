@@ -1,11 +1,11 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, font, spacing, srOnly } from '@porsche-design-system/utilities';
+import { breakpoint, color, fontWeight, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { getThemedColors, getThemedFormStateColors, isDark } from '.';
-import type { FormState, Theme } from '../types';
+import { isDark } from '.';
+import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
-const transitionDuration = 'var(--p-transition-duration, .24s)';
+export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
 
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
@@ -41,16 +41,11 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverStyles = (opts?: GetHoverStylesOptions): JssStyle => {
-  const options: GetHoverStylesOptions = {
-    theme: 'light',
-    ...opts,
-  };
-
+export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
     '&:hover': {
-      color: isDark(options.theme) ? color.darkTheme.state.hover : color.state.hover,
+      color: (isDark(theme) ? color.darkTheme : color).state.hover,
     },
   };
 };
@@ -69,14 +64,16 @@ export const getInset = (value: 'auto' | number = 0): JssStyle => ({
 });
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
-  const options: GetFocusStylesOptions = {
+  const {
+    pseudo,
+    offset: outlineOffset,
+    color: outlineColor,
+  }: GetFocusStylesOptions = {
     color: color.state.focus,
     offset: 2,
     pseudo: undefined,
     ...opts,
   };
-
-  const { pseudo, offset: outlineOffset, color: outlineColor } = options;
 
   return pseudo
     ? {
@@ -122,13 +119,11 @@ export type GetFocusSlottedPseudoStylesOptions = {
  * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
  */
 export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
-  const options: GetFocusSlottedPseudoStylesOptions = {
+  const { offset: outlineOffset, color: outlineColor }: GetFocusSlottedPseudoStylesOptions = {
     color: color.state.focus,
     offset: 2,
     ...opts,
   };
-
-  const { offset: outlineOffset, color: outlineColor } = options;
 
   return {
     '& a': {
@@ -171,7 +166,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
       '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
-      fontWeight: font.weight.bold,
+      fontWeight: fontWeight.bold,
     },
     '& em, & i': {
       fontStyle: 'normal',
@@ -193,35 +188,14 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
         whiteSpace: 'normal',
       };
 
-export const getFormTextHiddenJssStyle = (isHidden: boolean, isCheckboxOrRadio?: boolean): JssStyle => ({
+export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
-  width: isCheckboxOrRadio ? 'auto' : 'fit-content',
-  padding: isCheckboxOrRadio ? `0 0 0 ${pxToRemWithUnit(8)}` : `0 0 ${pxToRemWithUnit(4)} 0`,
+  width: 'fit-content',
+  padding: `0 0 ${pxToRemWithUnit(4)} 0`,
 });
 
-export const getRequiredStyles = (theme: Theme): Styles<'required'> => {
-  const { errorColor } = getThemedColors(theme);
-  return {
-    required: {
-      '&::after': {
-        content: '" *"',
-        color: errorColor,
-      },
-    },
-  };
-};
-
-export const getStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
-  const { stateColor } = getThemedFormStateColors(theme, state);
-  return {
-    message: {
-      display: 'flex',
-      marginTop: spacing['4'],
-      color: stateColor,
-      transition: getTransition('color'),
-      '&__icon': {
-        marginRight: spacing['4'],
-      },
-    },
-  };
-};
+export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
+  ...getTextHiddenJssStyle(isHidden),
+  width: 'auto',
+  padding: `0 0 0 ${pxToRemWithUnit(8)}`,
+});

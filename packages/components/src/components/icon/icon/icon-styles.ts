@@ -1,63 +1,21 @@
-import type { TextColor as IconColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
-import { buildHostStyles, getCss, getThemedColors, pxToRemWithUnit } from '../../../utils';
+import type { TextColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
+import { getCss, pxToRemWithUnit, getThemedTextColor } from '../../../utils';
 
-const getColor = (color: IconColor, theme: ThemeExtendedElectricDark): string => {
-  const {
-    baseColor,
-    brandColor,
-    contrastHighColor,
-    contrastMediumColor,
-    contrastLowColor,
-    successColor,
-    errorColor,
-    warningColor,
-    neutralColor,
-  } = getThemedColors(theme);
-  switch (color) {
-    case 'brand':
-      return brandColor;
-    case 'neutral-contrast-high':
-      return contrastHighColor;
-    case 'neutral-contrast-medium':
-      return contrastMediumColor;
-    case 'neutral-contrast-low':
-      return contrastLowColor;
-    case 'notification-success':
-      return successColor;
-    case 'notification-warning':
-      return warningColor;
-    case 'notification-error':
-      return errorColor;
-    case 'notification-neutral':
-      return neutralColor;
-    case 'inherit':
-      return 'currentColor';
-    default:
-      return baseColor;
-  }
+const sizeMap: { [key in IconSize]: string } = {
+  small: pxToRemWithUnit(24),
+  medium: pxToRemWithUnit(36),
+  large: pxToRemWithUnit(48),
+  inherit: 'inherit',
 };
 
-const getSize = (size: IconSize): string => {
-  switch (size) {
-    case 'large':
-      return pxToRemWithUnit(48);
-    case 'medium':
-      return pxToRemWithUnit(36);
-    case 'inherit':
-      return 'inherit';
-    default:
-      return pxToRemWithUnit(24);
-  }
-};
-
-export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
-  const dimension = getSize(size);
+export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
+  const dimension = sizeMap[size];
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'inline-flex',
       verticalAlign: 'top',
-    }),
+    },
     root: {
       display: 'flex',
       flexShrink: 0,
@@ -66,13 +24,13 @@ export const getComponentCss = (color: IconColor, size: IconSize, theme: ThemeEx
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      color: getColor(color, theme),
+      color: getThemedTextColor(color, theme),
       '& > svg': {
-        fill: 'currentcolor',
+        fill: 'currentColor',
         // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706
         // further information: https://melanie-richards.com/blog/currentcolor-svg-hcm/
         '@media (forced-colors: active)': {
-          fill: 'canvastext',
+          fill: 'canvasText',
         },
       },
     },

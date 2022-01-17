@@ -1,9 +1,7 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -11,7 +9,6 @@ import {
   waitForStencilLifecycle,
   getElementInnerText,
   getElementStyle,
-  waitForEventSerialization,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -135,80 +132,6 @@ describe('textarea-wrapper', () => {
     await textarea.press('Backspace');
     await textarea.press('Backspace');
     expect(await getElementInnerText(counter)).toBe('0/160');
-  });
-
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
-      await initTextarea();
-
-      const textarea = await getTextarea();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '2px' });
-      const visible = expectedStyleOnFocus({ color: 'neutral', offset: '2px' });
-
-      expect(await getOutlineStyle(textarea)).toBe(hidden);
-
-      await textarea.click();
-
-      expect(await getOutlineStyle(textarea)).toBe(visible);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(textarea)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initTextarea({
-        useSlottedLabel: true,
-        useSlottedDescription: true,
-        useSlottedMessage: true,
-        state: 'error',
-      });
-
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
   });
 
   describe('hover state', () => {

@@ -1,7 +1,6 @@
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import {
   addImportantToEachRule,
-  buildHostStyles,
   buildResponsiveHostStyles,
   getCss,
   mergeDeep,
@@ -35,9 +34,11 @@ export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutt
   return getCss(
     addImportantToEachRule(
       mergeDeep(
-        buildHostStyles({
-          boxSizing: 'border-box',
-        }),
+        {
+          ':host': {
+            boxSizing: 'border-box',
+          },
+        },
         buildResponsiveHostStyles(size, getSizeStyles),
         buildResponsiveHostStyles(offset, getOffsetStyles),
         buildResponsiveHostStyles(gutter, getGutterStyles)

@@ -2,7 +2,7 @@ import type { AriaAttributes } from '../../../../types';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../../utils';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
-import { INPUT_HEIGHT } from '../../form-styles';
+import { INPUT_HEIGHT } from '../../../../styles/form-styles';
 
 const MAX_CHILDREN = 10;
 

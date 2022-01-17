@@ -11,8 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Accessibility issue of `Icon` component in Windows High Contrast Mode in Chromium Browser
 
+### [2.8.0-rc.0] - 2022-01-14
+
 #### Added
 - support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
+
+#### Changed
+- `:focus-visible` style matches outline color of `Button` while hovered
 
 #### Deprecated
 - The `tabbable` property of `Button`, `Button Pure` and `Switch` is deprecated and will be removed in `v3.0.0`. Please use `tabindex` instead.

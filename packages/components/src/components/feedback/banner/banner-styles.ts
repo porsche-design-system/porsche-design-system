@@ -1,7 +1,6 @@
 import {
   addImportantToRule,
   breakpoint,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -69,7 +68,7 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       // TODO: Why is nothing set as important here?
       [bannerPositionTopVar]: pxToRemWithUnit(56),
       [bannerPositionBottomVar]: pxToRemWithUnit(56),
@@ -86,14 +85,14 @@ export const getComponentCss = (): string => {
       [mediaQueryS]: {
         top: `var(${bannerPositionTopVar})`,
       },
-    }),
-    ':host(.hydrated)': {
-      [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-      [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
-    },
-    ':host(.banner--close)': {
-      [mediaQueryXxs]: getAnimationOut('mobileOut'),
-      [mediaQueryS]: getAnimationOut('desktopOut'),
+      '&(.hydrated)': {
+        [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
+        [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
+      },
+      '&(.banner--close)': {
+        [mediaQueryXxs]: getAnimationOut('mobileOut'),
+        [mediaQueryS]: getAnimationOut('desktopOut'),
+      },
     },
     root: getBoxShadow(),
     '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),

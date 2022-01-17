@@ -5,20 +5,20 @@ import {
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
-  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
   attachSlottedCss,
+  attachComponentCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { getSlottedCss } from './radio-button-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { getComponentCss, getSlottedCss } from './radio-button-wrapper-styles';
+import { StateMessage } from '../../common/state-message/state-message';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-radio-button-wrapper',
-  styleUrl: 'radio-button-wrapper.scss',
   shadow: true,
 })
 export class RadioButtonWrapper {
@@ -48,6 +48,10 @@ export class RadioButtonWrapper {
     this.observeAttributes(); // once initially
   }
 
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -66,25 +70,15 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: this.input.disabled,
-      [`root--${this.state}`]: this.state !== 'none',
-    };
-    const rootTextClasses = {
-      ['root__text']: true,
-      ...mapBreakpointPropToClasses('root__text-', this.hideLabel, ['hidden', 'visible']),
-    };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <label class={rootClasses}>
+        <label>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class={rootTextClasses} tag="span" color="inherit" onClick={this.onLabelClick}>
+            <PrefixedTagNames.pText class="label" tag="span" color="inherit" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
             </PrefixedTagNames.pText>
           )}
           <slot />

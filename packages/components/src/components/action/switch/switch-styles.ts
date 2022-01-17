@@ -57,11 +57,11 @@ const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): Jss
     left: {
       order: 0,
       paddingLeft: 0,
-      paddingRight: spacing['8'],
+      paddingRight: spacing[8],
     },
     right: {
       order: 1,
-      paddingLeft: spacing['8'],
+      paddingLeft: spacing[8],
       paddingRight: 0,
     },
   };

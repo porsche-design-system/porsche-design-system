@@ -1,4 +1,4 @@
-import { buildHostStyles, getCss } from '../../../../utils';
+import { getCss } from '../../../../utils';
 import {
   getCloseIconStyles,
   getNotificationContentStyles,
@@ -11,7 +11,7 @@ import { getBoxShadow } from '../../banner/banner-styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
-    ...buildHostStyles({ ...getNotificationRootStyles(state, theme), ...getBoxShadow() }),
+    ':host': { ...getNotificationRootStyles(state, theme), ...getBoxShadow() },
     icon: getNotificationIconStyles(state),
     content: getNotificationContentStyles(),
     close: getCloseIconStyles(),

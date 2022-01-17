@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for color 1`] = `
+Object {
+  "background": Object {
+    "default": "#fff",
+    "shading": "rgba(14, 20, 24, 0.9)",
+    "surface": "#f2f2f2",
+  },
+  "brand": "#d5001c",
+  "darkElectricTheme": Object {
+    "background": Object {
+      "default": "#0e1418",
+      "shading": "rgba(14, 20, 24, 0.9)",
+      "surface": "#262b2e",
+    },
+    "brand": "#00b0f4",
+    "default": "#fff",
+    "neutralContrast": Object {
+      "high": "#e3e4e5",
+      "low": "#4a4e51",
+      "medium": "#b0b1b2",
+    },
+    "notification": Object {
+      "error": "#fc1717",
+      "errorSoft": "#fec5c5",
+      "neutral": "#2193ff",
+      "neutralSoft": "#c7e4ff",
+      "success": "#01ba1d",
+      "successSoft": "#bfeec6",
+      "warning": "#ff9b00",
+      "warningSoft": "#ffe6bf",
+    },
+    "state": Object {
+      "active": "#00b0f4",
+      "disabled": "#7c7f81",
+      "focus": "currentColor",
+      "hover": "#00b0f4",
+    },
+  },
+  "darkTheme": Object {
+    "background": Object {
+      "default": "#0e1418",
+      "shading": "rgba(14, 20, 24, 0.9)",
+      "surface": "#262b2e",
+    },
+    "brand": "#d5001c",
+    "default": "#fff",
+    "neutralContrast": Object {
+      "high": "#e3e4e5",
+      "low": "#4a4e51",
+      "medium": "#b0b1b2",
+    },
+    "notification": Object {
+      "error": "#fc1717",
+      "errorSoft": "#fec5c5",
+      "neutral": "#2193ff",
+      "neutralSoft": "#c7e4ff",
+      "success": "#01ba1d",
+      "successSoft": "#bfeec6",
+      "warning": "#ff9b00",
+      "warningSoft": "#ffe6bf",
+    },
+    "state": Object {
+      "active": "#ff0223",
+      "disabled": "#7c7f81",
+      "focus": "currentColor",
+      "hover": "#ff0223",
+    },
+  },
+  "default": "#000",
+  "external": Object {
+    "facebook": "#1877f2",
+    "google": "#4285f4",
+    "instagram": "#e1306c",
+    "kakaotalk": "#fae300",
+    "linkedin": "#0077b5",
+    "naver": "#03cf5d",
+    "pinterest": "#e60023",
+    "reddit": "#ff4500",
+    "tiktok": "#fe2c55",
+    "twitter": "#1da1f2",
+    "wechat": "#1aad19",
+    "whatsapp": "#25d366",
+    "xing": "#006567",
+    "youtube": "#ff0000",
+  },
+  "lightElectricTheme": Object {
+    "background": Object {
+      "default": "#fff",
+      "shading": "rgba(14, 20, 24, 0.9)",
+      "surface": "#f2f2f2",
+    },
+    "brand": "#00b0f4",
+    "default": "#000",
+    "neutralContrast": Object {
+      "high": "#323639",
+      "low": "#e3e4e5",
+      "medium": "#626669",
+    },
+    "notification": Object {
+      "error": "#e00000",
+      "errorSoft": "#fae6e6",
+      "neutral": "#0061bd",
+      "neutralSoft": "#e5eff8",
+      "success": "#018a16",
+      "successSoft": "#e5f3e7",
+      "warning": "#ff9b00",
+      "warningSoft": "#fff5e5",
+    },
+    "state": Object {
+      "active": "#00b0f4",
+      "disabled": "#96989a",
+      "focus": "currentColor",
+      "hover": "#00b0f4",
+    },
+  },
+  "neutralContrast": Object {
+    "high": "#323639",
+    "low": "#e3e4e5",
+    "medium": "#626669",
+  },
+  "notification": Object {
+    "error": "#e00000",
+    "errorSoft": "#fae6e6",
+    "neutral": "#0061bd",
+    "neutralSoft": "#e5eff8",
+    "success": "#018a16",
+    "successSoft": "#e5f3e7",
+    "warning": "#ff9b00",
+    "warningSoft": "#fff5e5",
+  },
+  "state": Object {
+    "active": "#d5001c",
+    "disabled": "#96989a",
+    "focus": "currentColor",
+    "hover": "#d5001c",
+  },
+}
+`;
+
+exports[`should contain correct values for font 1`] = `
+Object {
+  "family": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "size": Object {
+    "12": Object {
+      "fontSize": "0.75rem",
+      "lineHeight": 1.6666666667,
+    },
+    "16": Object {
+      "fontSize": "1rem",
+      "lineHeight": 1.5,
+    },
+    "18": Object {
+      "fontSize": "1.125rem",
+      "lineHeight": 1.5555555556,
+    },
+    "20": Object {
+      "fontSize": "1.25rem",
+      "lineHeight": 1.4,
+    },
+    "22": Object {
+      "fontSize": "1.375rem",
+      "lineHeight": 1.4545454545,
+    },
+    "24": Object {
+      "fontSize": "1.5rem",
+      "lineHeight": 1.5,
+    },
+    "28": Object {
+      "fontSize": "1.75rem",
+      "lineHeight": 1.4285714286,
+    },
+    "30": Object {
+      "fontSize": "1.875rem",
+      "lineHeight": 1.3333333333,
+    },
+    "32": Object {
+      "fontSize": "2rem",
+      "lineHeight": 1.375,
+    },
+    "36": Object {
+      "fontSize": "2.25rem",
+      "lineHeight": 1.3333333333,
+    },
+    "42": Object {
+      "fontSize": "2.625rem",
+      "lineHeight": 1.2380952381,
+    },
+    "44": Object {
+      "fontSize": "2.75rem",
+      "lineHeight": 1.1818181818,
+    },
+    "48": Object {
+      "fontSize": "3rem",
+      "lineHeight": 1.25,
+    },
+    "52": Object {
+      "fontSize": "3.25rem",
+      "lineHeight": 1.2307692308,
+    },
+    "60": Object {
+      "fontSize": "3.75rem",
+      "lineHeight": 1.2,
+    },
+    "62": Object {
+      "fontSize": "3.875rem",
+      "lineHeight": 1.2258064516,
+    },
+    "72": Object {
+      "fontSize": "4.5rem",
+      "lineHeight": 1.2222222222,
+    },
+    "84": Object {
+      "fontSize": "5.25rem",
+      "lineHeight": 1.1904761905,
+    },
+    "large": Object {
+      "fontSize": "2.25rem",
+      "lineHeight": 1.3333333333,
+    },
+    "medium": Object {
+      "fontSize": "1.5rem",
+      "lineHeight": 1.5,
+    },
+    "small": Object {
+      "fontSize": "1rem",
+      "lineHeight": 1.5,
+    },
+    "xLarge": Object {
+      "fontSize": "3.25rem",
+      "lineHeight": 1.2307692308,
+    },
+    "xSmall": Object {
+      "fontSize": "0.75rem",
+      "lineHeight": 1.6666666667,
+    },
+  },
+  "weight": Object {
+    "bold": 700,
+    "regular": 400,
+    "semibold": 600,
+    "thin": 100,
+  },
+}
+`;
+
+exports[`should contain correct values for layout 1`] = `
+Object {
+  "large": "2rem",
+  "medium": "1rem",
+  "small": "0.5rem",
+  "xLarge": "3rem",
+  "xSmall": "0.25rem",
+  "xxLarge": "5rem",
+}
+`;
+
+exports[`should contain correct values for spacing 1`] = `
+Object {
+  "16": "1rem",
+  "24": "1.5rem",
+  "32": "2rem",
+  "4": "0.25rem",
+  "40": "2.5rem",
+  "48": "3rem",
+  "56": "3.5rem",
+  "64": "4rem",
+  "72": "4.5rem",
+  "8": "0.5rem",
+  "80": "5rem",
+}
+`;
