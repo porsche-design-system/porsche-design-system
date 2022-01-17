@@ -117,6 +117,24 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         },
       },
     },
+    '::slotted(div.stretch-to-full-modal-width)': {
+      margin: `0 ${pxToRemWithUnit(-32)} 0`,
+      [mediaQuery('m')]: {
+        margin: `0 ${pxToRemWithUnit(-40)} 0`,
+      },
+      [mediaQuery('xxl')]: {
+        margin: `0 ${pxToRemWithUnit(-64)} 0`,
+      },
+    },
+    '::slotted(div.stretch-to-full-modal-width:first-child)': {
+      marginTop: pxToRemWithUnit(-32),
+      [mediaQuery('m')]: {
+        marginTop: pxToRemWithUnit(-40),
+      },
+      [mediaQuery('xxl')]: {
+        marginTop: pxToRemWithUnit(-64),
+      },
+    },
     close: {
       padding: pxToRemWithUnit(6),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
