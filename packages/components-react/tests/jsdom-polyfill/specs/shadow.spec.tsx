@@ -7,60 +7,36 @@ import {
   PTextareaWrapper,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import { render, fireEvent, GetByRole, getByRole } from '@testing-library/react';
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import { render, fireEvent } from '@testing-library/react';
 
-const getHTMLElementsWithShadowRoot = (container: HTMLElement): HTMLElement[] => {
-  return Array.from(container.querySelectorAll<HTMLElement>('*')).filter((el) => !!el.shadowRoot);
-};
+describe('getByRoleShadowed()', () => {
+  it('should work for native button', async () => {
+    render(<button>Button</button>);
 
-const getByRoleShadow = (
-  role: string,
-  container = document.querySelector<HTMLElement>('body > div')
-): ReturnType<GetByRole<HTMLElement>> => {
-  console.log('getByRoleShadow', container.getRootNode().host?.tagName);
-  let resultElement: HTMLElement;
+    expect(getByRoleShadowed('button')).toBeInTheDocument();
+  });
 
-  try {
-    resultElement = getByRole(container, role);
-  } catch (e) {
-    const elements = getHTMLElementsWithShadowRoot(container);
-
-    for (const el of elements) {
-      resultElement = getByRoleShadow(role, el.shadowRoot as unknown as HTMLElement);
-
-      if (resultElement) {
-        break;
-      }
-    }
-  }
-
-  console.log(resultElement.innerHTML);
-
-  return resultElement;
-};
-
-describe('getByRoleShadow()', () => {
-  it('should work', async () => {
-    const { container, getByRole } = render(
-      <>
-        {/*<PButton>Button</PButton>*/}
-        <PTextFieldWrapper>
-          <input type="password" />
-        </PTextFieldWrapper>
-        {/*<PPopover>yo</PPopover>*/}
-      </>
-    );
-
+  it('should work for PButton', async () => {
+    render(<PButton>Button</PButton>);
     await componentsReady();
 
-    expect(getByRoleShadow('button')).toBeInTheDocument();
-    // expect(getByRole('button')).toBeInTheDocument();
+    expect(getByRoleShadowed('button')).toBeInTheDocument();
+  });
+
+  it('should work for nested PButton within PTextFieldWrapper', async () => {
+    const { container } = render(
+      <PTextFieldWrapper>
+        <input type="password" />
+      </PTextFieldWrapper>
+    );
+    await componentsReady();
+
+    expect(getByRoleShadowed('button')).toBeInTheDocument();
 
     const input = container.querySelector('input');
-
     expect(input.type).toBe('password');
-    fireEvent.click(getByRoleShadow('button'));
-
+    fireEvent.click(getByRoleShadowed('button'));
     expect(input.type).toBe('text');
   });
 });
