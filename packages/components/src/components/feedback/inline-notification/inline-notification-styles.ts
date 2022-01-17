@@ -1,6 +1,5 @@
 import {
   addImportantToEachRule,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -21,7 +20,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...buildHostStyles(addImportantToEachRule(getNotificationRootStyles(state, theme))),
+    ':host': addImportantToEachRule(getNotificationRootStyles(state, theme)),
     icon: getNotificationIconStyles(state),
     content: getNotificationContentStyles(),
     ...(hasAction && {

@@ -1,11 +1,9 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -305,78 +303,6 @@ describe('text-field-wrapper', () => {
   });
 
   describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
-      await initTextField();
-
-      const input = await getInput();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
-
-      expect(await getOutlineStyle(input)).toBe(hidden);
-
-      await input.click();
-
-      expect(await getOutlineStyle(input)).toBe(visible);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(input)).toBe(visible);
-    });
-
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initTextField({
-        useSlottedLabel: true,
-        useSlottedDescription: true,
-        useSlottedMessage: true,
-        state: 'error',
-      });
-
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
-    });
-
     it('should focus input when label text is clicked', async () => {
       await initTextField({ hasLabel: true });
       const label = await getLabel();

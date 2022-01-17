@@ -1,12 +1,10 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementIndex,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -142,28 +140,6 @@ describe('select-wrapper filter', () => {
       await waitForEventSerialization(page);
 
       expect(focusCalls).toBe(1);
-    });
-
-    it('should be shown by keyboard navigation and on click for shadow <input> filter', async () => {
-      await initSelect();
-
-      const filterInput = await getFilterInput();
-      const filterInputOverlay = await getFilterInputOverlay();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
-
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(hidden);
-
-      await filterInput.click();
-
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
     });
   });
 

@@ -11,7 +11,7 @@ export type TabGradientColorTheme = 'default' | 'surface';
 
 export type Direction = 'prev' | 'next';
 export const FOCUS_PADDING_WIDTH = 4;
-const ENABLE_TRANSITION_CLASS = 'status-bar--enable-transition';
+const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
   // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
@@ -30,39 +30,40 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
   return sanitizedIndex;
 };
 
-export const addEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.add(ENABLE_TRANSITION_CLASS);
+export const addEnableTransitionClass = (barElement: HTMLElement): void => {
+  barElement.classList.add(ENABLE_TRANSITION_CLASS);
 };
-export const removeEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.remove(ENABLE_TRANSITION_CLASS);
+
+export const removeEnableTransitionClass = (barElement: HTMLElement): void => {
+  barElement.classList.remove(ENABLE_TRANSITION_CLASS);
 };
 
 export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
-  const statusBarWidth = offsetWidth > 0 ? offsetWidth : 0;
-  const statusBarCenter = statusBarWidth / 2;
-  const statusBarPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
-  const xTranslation = statusBarPositionLeft + statusBarCenter;
+  const barWidth = offsetWidth > 0 ? offsetWidth : 0;
+  const barCenter = barWidth / 2;
+  const barPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
+  const xTranslation = barPositionLeft + barCenter;
   const xTranslate = pxToRemWithUnit(xTranslation || 0);
   return `transform: translate3d(${xTranslate},0,0); width: 0;`;
 };
 
 export const getTransformationToActive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
-  const statusBarWidth = pxToRemWithUnit(offsetWidth || 0);
-  const statusBarPositionLeft = pxToRemWithUnit(offsetLeft > 0 ? offsetLeft : 0);
-  return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
+  const barWidth = pxToRemWithUnit(offsetWidth || 0);
+  const barPositionLeft = pxToRemWithUnit(offsetLeft > 0 ? offsetLeft : 0);
+  return `transform: translate3d(${barPositionLeft},0,0); width: ${barWidth};`;
 };
 
 export const determineEnableTransitionClass = (
   activeTabIndex: number,
   prevActiveTabIndex: number,
-  statusBarElement: HTMLElement
+  barElement: HTMLElement
 ): void => {
   // initial active + inactive to active
   if (activeTabIndex !== undefined && prevActiveTabIndex === undefined) {
-    removeEnableTransitionClass(statusBarElement);
+    removeEnableTransitionClass(barElement);
   } else {
     // active to active
-    addEnableTransitionClass(statusBarElement);
+    addEnableTransitionClass(barElement);
   }
 };
 
@@ -126,7 +127,7 @@ export const getScrollPositionAfterPrevNextClick = (
   return scrollPosition;
 };
 
-export const getHasPTabsParent = (hostEl: HTMLElement): boolean => {
+export const hasPTabsParent = (hostEl: HTMLElement): boolean => {
   const { host } = hostEl.getRootNode() as ShadowRoot;
   const parentTagName = host && getTagName(host as HTMLElement);
   return parentTagName === getPrefixedTagNames(hostEl).pTabs;

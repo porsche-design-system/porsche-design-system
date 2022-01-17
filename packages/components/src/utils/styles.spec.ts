@@ -7,8 +7,6 @@ import {
   getFocusStyles,
   getFormTextHiddenJssStyle,
   getHoverStyles,
-  getRequiredStyles,
-  getStateMessageStyles,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
@@ -126,37 +124,13 @@ describe('getBaseSlottedStyles()', () => {
 });
 
 describe('getTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %o', (isHidden) => {
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
     expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
   });
 });
 
 describe('getFormTextHiddenJssStyle()', () => {
-  it.each<[boolean, boolean]>([
-    [true, true],
-    [true, false],
-    [false, true],
-    [false, false],
-  ])('should return correct JssStyle for isHidden: %o and isCheckboxOrRadio: %o', (isHidden, isCheckboxOrRadio) => {
-    expect(getFormTextHiddenJssStyle(isHidden, isCheckboxOrRadio)).toMatchSnapshot();
-  });
-});
-
-describe('getRequiredStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct styles for theme: %s', (theme) => {
-    expect(getRequiredStyles(theme)).toMatchSnapshot();
-  });
-});
-
-describe('getStateMessageStyles()', () => {
-  it.each<[Theme, FormState]>([
-    ['light', 'none'],
-    ['light', 'success'],
-    ['light', 'error'],
-    ['dark', 'none'],
-    ['dark', 'success'],
-    ['dark', 'error'],
-  ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
-    expect(getStateMessageStyles(theme, state)).toMatchSnapshot();
+  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
+    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
   });
 });

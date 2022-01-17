@@ -17,7 +17,8 @@ import type { BreakpointCustomizable, FormState, Theme } from '../../../../types
 import type { DropdownDirection } from './select-wrapper-utils';
 import { isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
-import { StateMessage } from '../../../common/state-message';
+import { StateMessage } from '../../../common/state-message/state-message';
+import { Required } from '../../../common/required/required';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -74,9 +75,11 @@ export class SelectWrapper {
     }
   }
 
-  public componentDidRender(): void {
+  public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
+  }
 
+  public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -117,7 +120,7 @@ export class SelectWrapper {
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.select) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (

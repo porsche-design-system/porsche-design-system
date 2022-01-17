@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFunctionalComponentRequiredStyles() should return correct styles for theme: dark 1`] = `
+Object {
+  "required": Object {
+    "color": "#fc1717",
+    "userSelect": "none",
+  },
+}
+`;
+
+exports[`getFunctionalComponentRequiredStyles() should return correct styles for theme: light 1`] = `
+Object {
+  "required": Object {
+    "color": "#e00000",
+    "userSelect": "none",
+  },
+}
+`;
