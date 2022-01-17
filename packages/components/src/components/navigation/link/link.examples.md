@@ -58,38 +58,45 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 <Playground :markup="events" :config="config"></Playground>
 
+---
+
+## Remove Link from tab order
+By setting the `tabindex` attribute to `-1` you can remove the **Link** from the tab order. 
+
+<Playground :markup="taborder" :config="config"></Playground>
+
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true, spacing: 'inline' };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true, spacing: 'inline' };
-    
-    buttons(value: string) {
-      const attr = value ? ` variant="${value}"` : '';
-      return `<p-link${attr} href="https://www.porsche.com">Some label</p-link>
+  buttons(value: string) {
+    const attr = value ? ` variant="${value}"` : '';
+    return `<p-link${attr} href="https://www.porsche.com">Some label</p-link>
 <p-link${attr} href="https://www.porsche.com" hide-label="true">Some label</p-link>`;
     }
 
-    responsive =
+  responsive =
 `<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }">Some label</p-link>
 <p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }">Some label</p-link>
 <p-link variant="tertiary" href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link>`;
 
-    accessibility = 
+  accessibility = 
 `<p-link href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;
 
-    routing =
+  routing =
 `<p-link>
   <a href="https://www.porsche.com">Some label</a>
 </p-link>`;
 
-    icon =
+  icon =
 `<p-link href="https://www.porsche.com" icon="phone">Some label</p-link>
 <p-link href="https://www.porsche.com" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
 
-    events =
+  events =
 `<p-link
   href="https://www.porsche.com"
   onclick="alert('click'); return false;"
@@ -98,7 +105,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
 >Some label</p-link>`;
-  }
+
+  taborder =
+`<p-link href="https://www.porsche.com">Some label</p-link>
+<p-link href="https://www.porsche.com" tabindex="-1">Some label</p-link>
+<p-link href="https://www.porsche.com">Some label</p-link>`;
+}
 </script>
 
 <style scoped lang="scss">

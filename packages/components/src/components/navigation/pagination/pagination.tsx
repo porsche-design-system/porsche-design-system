@@ -1,10 +1,5 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import {
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  isDark,
-  mapBreakpointPropToClasses,
-} from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import {
   createPaginationModel,
   getCounterResetValue,
@@ -12,13 +7,14 @@ import {
   getTotalPages,
   itemTypes,
 } from './pagination-utils';
-import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
+import type { NumberOfPageLinks, PageChangeEvent } from './pagination-utils';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import { listenResize } from '../../../utils/window-resize-listener';
+import { getComponentCss } from './pagination-styles';
 
 @Component({
   tag: 'p-pagination',
-  styleUrl: 'pagination.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Pagination {
   @Element() public host!: HTMLElement;
@@ -61,10 +57,13 @@ export class Pagination {
   private navigationElement: HTMLElement;
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
 
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
   }
 
   public disconnectedCallback(): void {
@@ -72,12 +71,6 @@ export class Pagination {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-      ...mapBreakpointPropToClasses('root--size', this.maxNumberOfPageLinks),
-    };
-
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
 
     const paginationModel = createPaginationModel({
@@ -89,13 +82,8 @@ export class Pagination {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav
-        class={rootClasses}
-        role="navigation"
-        aria-label={this.allyLabel}
-        ref={(el) => (this.navigationElement = el)}
-      >
-        <ul class="items">
+      <nav role="navigation" aria-label={this.allyLabel} ref={(el) => (this.navigationElement = el)}>
+        <ul>
           {paginationModel.map((pageModel) => {
             const { type, isActive, value } = pageModel;
             const spanProps = {
@@ -106,15 +94,9 @@ export class Pagination {
 
             switch (type) {
               case itemTypes.PREVIOUS_PAGE_LINK:
-                const paginationPrevClasses = {
-                  ['prev']: true,
-                  ['prev--disabled']: !isActive,
-                };
-
                 return (
-                  <li class="item">
+                  <li>
                     <span
-                      class={paginationPrevClasses}
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}
                       aria-disabled={!isActive ? 'true' : null}
@@ -126,27 +108,16 @@ export class Pagination {
                 );
 
               case itemTypes.ELLIPSIS:
-                const paginationEllipsisClasses = {
-                  ['goto']: true,
-                  ['goto--ellipsis']: true,
-                };
-
                 return (
-                  <li class="item">
-                    <span class={paginationEllipsisClasses} />
+                  <li>
+                    <span class="ellipsis" />
                   </li>
                 );
 
               case itemTypes.PAGE:
-                const paginationGoToClasses = {
-                  ['goto']: true,
-                  ['goto--current']: isActive,
-                };
-
                 return (
-                  <li class="item">
+                  <li>
                     <span
-                      class={paginationGoToClasses}
                       {...spanProps}
                       tabIndex={0}
                       aria-label={`${this.allyLabelPage} ${value}`}
@@ -158,15 +129,9 @@ export class Pagination {
                 );
 
               case itemTypes.NEXT_PAGE_LINK:
-                const paginationNextClasses = {
-                  ['next']: true,
-                  ['next--disabled']: !isActive,
-                };
-
                 return (
-                  <li class="item">
+                  <li>
                     <span
-                      class={paginationNextClasses}
                       {...spanProps}
                       tabIndex={isActive ? 0 : null}
                       aria-disabled={!isActive ? 'true' : null}

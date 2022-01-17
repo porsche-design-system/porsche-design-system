@@ -1,12 +1,9 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import {
+  attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
-  isDark,
   isDisabledOrLoading,
-  isLightElectric,
-  mapBreakpointPropToClasses,
   parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
@@ -19,16 +16,18 @@ import type {
 } from '../../../types';
 import type { ButtonAriaAttributes } from './button-utils';
 import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
+import { getComponentCss } from './button-styles';
 
 @Component({
   tag: 'p-button',
-  styleUrl: 'button.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Button {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated since v2.8.0, use tabindex="-1" instead
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
@@ -66,7 +65,6 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
@@ -74,26 +72,20 @@ export class Button {
     );
   }
 
-  public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ['root--loading']: this.loading,
-      [`root--${this.variant}`]: this.variant !== 'secondary',
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--theme-light-electric']: isLightElectric(this.theme),
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label']),
-    };
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
+  }
 
+  public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const iconProps = {
       class: 'icon',
       size: 'inherit',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <button
-        class={rootClasses}
+        class="root"
         type={this.type}
         disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}

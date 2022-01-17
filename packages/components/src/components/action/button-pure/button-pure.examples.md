@@ -94,7 +94,7 @@ Providing visually differences if a button needs to be accentuated, e.g. in hier
 
 ---
 
-## Button with specific icon
+## Button Pure with specific icon
 If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="configInline"></Playground>
@@ -120,7 +120,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="markupStretch" :config="configBlock">
+<Playground :markup="markupStretch" :config="config">
   <select v-model="stretch">
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
@@ -132,7 +132,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 ---
 
-## Button with custom clickable/focusable area
+## Button Pure with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
@@ -149,9 +149,11 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Remove button from tab order
+## Remove Button Pure from tab order
 
-With setting the `tabbable` property to `false` you can remove the button from the tab order. For technical restrictions it's currently not possible to set an individual `tabindex` attribute.
+**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
+
+By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** from the tab order.
 
 <Playground :markup="taborder" :config="configInline"></Playground>
 
@@ -173,22 +175,21 @@ The size of the *subline* changes according to the size of the *label*. We do no
 </Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    configBlock = { ...this.config, spacing: 'block' };
-    configInline = { ...this.config, spacing: 'inline' };
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-    size = 'medium';
-    sublineSize = 'small'; 
-    weight = 'thin';
-    alignLabel = 'left';
-    stretch = 'stretch="true" align-label="left"';
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+  configInline = { ...this.config, spacing: 'inline' };
 
-    withoutIcon =
+  size = 'medium';
+  sublineSize = 'small'; 
+  weight = 'thin';
+  alignLabel = 'left';
+  stretch = 'stretch="true" align-label="left"';
+
+  withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
 <p-button-pure icon="none" disabled="true">Some label</p-button-pure>
 <p-button-pure icon="none" size="small" weight="semibold">
@@ -196,55 +197,54 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <p slot="subline">Some Subline</p>
 </p-button-pure>`;
     
-    withLabel =
+  withLabel =
 `<p-button-pure>Some label</p-button-pure>
 <p-button-pure disabled="true">Some label</p-button-pure>
 <p-button-pure loading="true">Some label</p-button-pure>`;
 
-    withoutLabel =
+  withoutLabel =
 `<p-button-pure hide-label="true">Some label</p-button-pure>
 <p-button-pure hide-label="true" disabled="true">Some label</p-button-pure>
 <p-button-pure hide-label="true" loading="true">Some label</p-button-pure>`;
     
-    responsive =
+  responsive =
 `<p-button-pure hide-label="{ base: true, l: false }">Some label</p-button-pure>`;
 
-    get markupSize() {
-      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
-    }
+  get markupSize() {
+    const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
+  }
 
-    accessibility = 
+  accessibility = 
 `<p-button-pure aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button-pure>`;
     
-    markupResponsive = 
+  markupResponsive = 
 `<p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>`;
 
-    get markupWeight() {
-      return `<p-button-pure size="medium" weight="${this.weight}">Some label</p-button-pure>`;
-    }
+  get markupWeight() {
+    return `<p-button-pure size="medium" weight="${this.weight}">Some label</p-button-pure>`;
+  }
 
-    markupActive =
+  markupActive =
 `<p-button-pure active="true">Some label</p-link-pure>`;
 
-    icon =
+  icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
- 
 
-    get markupAlignment() {
-      return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
-    };
+  get markupAlignment() {
+    return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
+  };
 
-    get markupStretch() {
-      return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
-    };
+  get markupStretch() {
+    return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
+  };
 
-    clickableArea =
+  clickableArea =
 `<p-button-pure style="padding: 1rem;">Some label</p-button-pure>
 <p-button-pure hide-label="true" style="padding: 1rem;">Some label</p-button-pure>`;
 
-    events =
+  events =
 `<p-button-pure
   onclick="alert('click')"
   onfocus="console.log('focus')"
@@ -253,12 +253,13 @@ The size of the *subline* changes according to the size of the *label*. We do no
   onfocusout="console.log('focusout')"
 >Some label</p-button-pure>`;
 
-    taborder =
-`<p-button-pure tabbable="true">Some label</p-button-pure>
-<p-button-pure tabbable="false" hide-label="true">Some label</p-button-pure>`;
+  taborder =
+`<p-button-pure>Some label</p-button-pure>
+<p-button-pure tabindex="-1" hide-label="true">Some label</p-button-pure>
+<p-button-pure>Some label</p-button-pure>`;
 
-    get subline() {
-      return `<p-button-pure size="${this.sublineSize}">
+  get subline() {
+    return `<p-button-pure size="${this.sublineSize}">
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>
@@ -266,6 +267,6 @@ The size of the *subline* changes according to the size of the *label*. We do no
   Some label
   <p slot="subline">Some Subline</p>
 </p-button-pure>`;
-    }
   }
+}
 </script>

@@ -1,122 +1,59 @@
 import {
   addImportantToEachRule,
-  addImportantToRule,
-  buildGlobalStyles,
-  buildHostStyles,
-  buildResponsiveStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getFormTextHiddenJssStyle,
-  getRequiredStyles,
-  getStateMessageStyles,
   getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   isDark,
+  mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
-import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
+import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
-import { color, font } from '@porsche-design-system/utilities';
+import { color } from '@porsche-design-system/utilities';
+import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
+import { isVisibleFormState } from '../../../../utils/form-state';
+import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
 
-export const SELECT_HEIGHT = 48;
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
-
-const getBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 1px inset`;
-const getStateBoxShadow = (colorValue: string): string => `${colorValue} 0 0 0 2px inset`;
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isDark(theme);
-  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
-
-  const [boxShadow, boxShadowHover] = stateColor
-    ? [getStateBoxShadow(stateColor), getStateBoxShadow(stateHoverColor)]
-    : [getBoxShadow(contrastMediumColor), getBoxShadow(contrastHighColor)];
+  const { baseColor, backgroundColor } = getThemedColors(theme);
+  const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles(
-      addImportantToEachRule({
-        '::slotted(select)': {
+    },
+    '@global': addImportantToEachRule(
+      mergeDeep(
+        getBaseChildStyles('select', state, theme, {
           position: 'static',
-          display: 'block',
-          width: '100%',
-          height: pxToRemWithUnit(SELECT_HEIGHT),
-          padding: `${pxToRemWithUnit(12)} ${pxToRemWithUnit(48)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(12)}`,
+          cursor: 'pointer',
+          padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
           '&@-moz-document url-prefix()': {
             // fix for 3px text-indention in FF
             paddingLeft: pxToRemWithUnit(8),
           },
-          margin: 0,
-          outline: '1px solid transparent',
-          outlineOffset: '2px',
-          appearance: 'none',
-          WebkitAppearance: 'none', // iOS safari
-          boxSizing: 'border-box',
-          border: 'none',
-          borderRadius: 0, // for safari
-          background: backgroundColor,
-          boxShadow,
-          opacity: 1, // chrome applies 0.7 via :disabled
-          fontFamily: font.family,
-          fontWeight: font.weight.regular,
-          ...font.size.small,
-          color: 'inherit',
-          textIndent: 0,
-          cursor: 'pointer',
-          transition:
-            getTransition('box-shadow') + ',' + getTransition('background-color') + ',' + getTransition('color'),
-        },
-        '::slotted(select:hover:not(:disabled))': {
-          boxShadow: boxShadowHover,
-        },
-        '::slotted(select:focus)': {
-          outlineColor: stateColor || contrastMediumColor,
-        },
-        '::slotted(select:disabled)': {
-          cursor: 'not-allowed',
-          color: color.state.disabled, // 🤷
-          background: isDarkTheme ? color.default : backgroundColor, // 🤷
-          ...(state === 'none' && { boxShadow: `inset 0 0 0 1px ${disabledColor}` }),
-        },
-      })
+        }),
+        {
+          '::slotted(select:disabled)': {
+            background: isDarkTheme ? color.default : backgroundColor, // 🤷
+          },
+        }
+      )
     ),
     root: {
       display: 'block',
       position: 'relative',
-      color: baseColor,
-      '&--disabled': {
-        '& $icon, & .label__text': {
-          color: disabledColor,
-        },
-      },
+      color: baseColor, // for dark theme on .label__text
     },
-    label: {
-      '&__text': {
-        ...buildResponsiveStyles(hideLabel, (hide: boolean): JssStyle => getFormTextHiddenJssStyle(hide)),
-        display: 'block',
-        width: 'fit-content',
-        transition: getTransition('color'),
-        '&+&--description': {
-          marginTop: pxToRemWithUnit(-4),
-          paddingBottom: pxToRemWithUnit(8),
-        },
-        '&:hover': {
-          '&~::slotted(select:not(:disabled))': {
-            boxShadow: addImportantToRule(`inset 0 0 0 1px ${contrastHighColor}`),
-          },
-        },
-        '&--description': {
-          color: contrastMediumColor,
-        },
-      },
-    },
-    ...getRequiredStyles(theme),
-
+    ...getLabelStyles('select', hideLabel, state, theme, '$icon'),
+    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     icon: {
       position: 'absolute',
       bottom: pxToRemWithUnit(12),
@@ -129,8 +66,6 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         transform: 'rotate3d(0,0,1,180deg)',
       },
     },
-
-    ...getStateMessageStyles(theme, state),
   });
 };
 

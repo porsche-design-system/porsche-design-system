@@ -19,16 +19,16 @@ Nesting is also provided and follows the same nesting rules like native HTML lis
 <Playground :markup="list('ordered', 'alphabetically')" :config="config"></Playground>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    
-    list(listType?: string, orderType?: string) {
-      const attr = (listType ? ` list-type="${listType}"` : '') + (orderType ? ` order-type="${orderType}"` : '');
-      return `<p-text-list${attr}>
+  list(listType?: string, orderType?: string) {
+    const attr = (listType ? ` list-type="${listType}"` : '') + (orderType ? ` order-type="${orderType}"` : '');
+    return `<p-text-list${attr}>
   <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
   <p-text-list-item>The quick <a href="https://porsche.com">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
     <p-text-list${attr}>
@@ -44,6 +44,6 @@ Nesting is also provided and follows the same nesting rules like native HTML lis
   </p-text-list-item>
   <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
 </p-text-list>`;
-    }
   }
+}
 </script>

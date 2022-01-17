@@ -15,9 +15,17 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { setInputUnitStyles, throwIfUnitLengthExceeded } from './text-field-wrapper-utils';
+import {
+  addInputEventListener,
+  hasCounterAndIsTypeText,
+  hasUnitAndIsTypeNumber,
+  setCounterInnerHtml,
+  setInputStyles,
+  throwIfUnitLengthExceeded,
+} from './text-field-wrapper-utils';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -50,18 +58,34 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
-  private unitElement: HTMLElement;
+  private unitOrCounterElement: HTMLElement;
   private isPassword: boolean;
+  private hasCounter: boolean;
+  private hasUnit: boolean;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
-    this.setInput();
-    this.observeAttributes();
+    this.input = getHTMLElementAndThrowIfUndefined(
+      this.host,
+      ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
+        .map((type) => `input[type=${type}]`)
+        .join(',')
+    );
+    this.observeAttributes(); // once initially
     this.isPassword = this.input.type === 'password';
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.hasUnit = hasUnitAndIsTypeNumber(this.input, this.unit);
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasCounter) {
+      addInputEventListener(this.input, this.unitOrCounterElement, this.setInputStyles);
+      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
+    }
   }
 
   public componentWillRender(): void {
@@ -71,15 +95,15 @@ export class TextFieldWrapper {
       getComponentCss,
       this.hideLabel,
       this.state,
-      this.unit,
-      this.unitPosition,
+      this.hasUnit || this.hasCounter,
+      this.hasCounter ? 'suffix' : this.unitPosition,
       this.isPassword
     );
   }
 
   public componentDidRender(): void {
-    // needs to happen after render in order to have unitElement defined
-    setInputUnitStyles(this.input, this.unit, this.unitElement?.offsetWidth, this.unitPosition, this.state);
+    // needs to happen after render in order to have unitOrCounterElement defined
+    this.setInputStyles();
 
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -104,13 +128,11 @@ export class TextFieldWrapper {
       ['label--disabled']: disabled,
     };
 
-    const unitClasses = {
-      ['unit']: true,
-      ['unit--disabled']: disabled,
+    const labelProps = {
+      tag: 'span',
+      color: 'inherit',
+      onClick: this.onLabelClick,
     };
-
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.onLabelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -121,7 +143,7 @@ export class TextFieldWrapper {
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.input) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (
@@ -129,14 +151,12 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            {type === 'number' && this.unit && (
+            {(this.hasUnit || this.hasCounter) && (
               <PrefixedTagNames.pText
-                class={unitClasses}
-                tag="span"
-                color="inherit"
-                ref={(el) => (this.unitElement = el)}
+                class="unit"
+                {...labelProps}
+                ref={(el) => (this.unitOrCounterElement = el)}
                 aria-hidden="true"
-                onClick={this.onLabelClick}
               >
                 {this.unit}
               </PrefixedTagNames.pText>
@@ -173,14 +193,6 @@ export class TextFieldWrapper {
     );
   }
 
-  private setInput(): void {
-    const selector = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-      .map((type) => `input[type=${type}]`)
-      .join(',');
-
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
-  }
-
   private onLabelClick = (): void => {
     this.input.focus();
   };
@@ -202,5 +214,9 @@ export class TextFieldWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+  };
+
+  private setInputStyles = (): void => {
+    setInputStyles(this.input, this.unitOrCounterElement, this.hasCounter ? 'suffix' : this.unitPosition, this.state);
   };
 }

@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -13,7 +13,8 @@
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Melanie Kolar <melanie.kolar@udg.de>",
     "Bernd Hacker <bernd.hacker@mhp.com>",
-    "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>"
+    "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>",
+    "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
@@ -26,13 +27,13 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.7.0"
+    "@porsche-design-system/components-js": "2.8.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0 <18.0.0",
     "react-dom": ">=17.0.0 <18.0.0"
   },
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts"
+  "main": "public-api.js",
+  "module": "esm/public-api.js",
+  "types": "public-api.d.ts"
 }

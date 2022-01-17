@@ -24,7 +24,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const head = `
-        <style type="text/css">
+        <style>
           .playground { padding: 50px 0; }
           .playground p-banner { --p-banner-position-type: static; }
         </style>`;

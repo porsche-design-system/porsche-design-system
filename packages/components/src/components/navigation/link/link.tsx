@@ -1,10 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import {
-  attachComponentCss,
-  getPrefixedTagNames,
-  improveFocusHandlingForCustomElement,
-  parseAndGetAriaAttributes,
-} from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
 import type {
   SelectedAriaAttributes,
   BreakpointCustomizable,
@@ -16,10 +11,11 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
+import { throwIfInvalidLinkUsage } from '../link-validation';
 
 @Component({
   tag: 'p-link',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Link {
   @Element() public host!: HTMLElement;
@@ -54,12 +50,12 @@ export class Link {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttributes>;
 
-  public connectedCallback(): void {
-    improveFocusHandlingForCustomElement(this.host);
+  public componentWillLoad(): void {
+    throwIfInvalidLinkUsage(this.host, this.href);
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
   }
 
   public render(): JSX.Element {

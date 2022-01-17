@@ -1,7 +1,7 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent, patchAriaIntoSVG, IconAriaAttributes } from './icon-utils';
 import { attachComponentCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
-import type { Theme, IconName, TextColor, IconSize, SelectedAriaAttributes } from '../../../types';
+import type { IconName, TextColor, IconSize, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
 import { getComponentCss } from './icon-styles';
 
 @Component({
@@ -27,7 +27,7 @@ export class Icon {
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttributes>;

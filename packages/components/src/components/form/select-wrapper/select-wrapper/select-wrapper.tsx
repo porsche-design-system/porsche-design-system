@@ -17,7 +17,8 @@ import type { BreakpointCustomizable, FormState, Theme } from '../../../../types
 import type { DropdownDirection } from './select-wrapper-utils';
 import { isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
-import { StateMessage } from '../../../common/state-message';
+import { StateMessage } from '../../../common/state-message/state-message';
+import { Required } from '../../../common/required/required';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -59,23 +60,26 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
-    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
-    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
     attachSlottedCss(this.host, getSlottedCss);
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
-    this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+    this.observeAttributes(); // once initially
 
+    this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
     if (this.hasCustomDropdown) {
       setAttribute(this.select, 'tabindex', '-1');
       setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
-  public componentDidRender(): void {
+  public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
+  }
 
+  public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -93,9 +97,9 @@ export class SelectWrapper {
   public render(): JSX.Element {
     const { disabled } = this.select;
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: disabled,
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: disabled,
     };
 
     const labelProps = {
@@ -111,12 +115,12 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <div class={rootClasses}>
-          <label class="label">
+        <div class="root">
+          <label class={labelClasses}>
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.select) && <span class="required" />}
+                {isRequiredAndParentNotRequired(this.host, this.select) && <Required />}
               </PrefixedTagNames.pText>
             )}
             {hasDescription(this.host, this.description) && (
@@ -155,5 +159,9 @@ export class SelectWrapper {
         )}
       </Host>
     );
+  }
+
+  private observeAttributes(): void {
+    observeAttributes(this.select, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 }

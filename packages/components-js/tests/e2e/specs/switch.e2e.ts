@@ -2,6 +2,7 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  expectToSkipFocusOnComponent,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -43,10 +44,10 @@ describe('switch', () => {
   };
 
   const initSwitch = (opts?: InitOptions): Promise<void> => {
-    const { isDisabled = false, isTabbable = true, isLoading = false, otherMarkup = '' } = opts ?? {};
+    const { isDisabled = false, isLoading = false, otherMarkup = '' } = opts ?? {};
     return setContentWithDesignSystem(
       page,
-      `<p-switch tabbable="${isTabbable}" disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
+      `<p-switch disabled="${isDisabled}" loading="${isLoading}">Some Label</p-switch>${otherMarkup}`
     );
   };
 
@@ -265,38 +266,6 @@ describe('switch', () => {
       await waitForStencilLifecycle(page);
 
       expect(await hasFocus(page, host), 'final focus style').toBe(true);
-    });
-
-    it('should be removed from tab order for tabbable false', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<div id="wrapper">
-         <a href="#" id="before">before</a>
-         <p-switch tabbable="false">Some label</p-switch>
-         <a href="#" id="after">after</a>
-        </div>`
-      );
-
-      const host = await getHost();
-      const before = await selectNode(page, '#before');
-      const after = await selectNode(page, '#after');
-
-      await before.focus();
-
-      let hostFocusCalls = 0;
-      await addEventListener(host, 'focus', () => hostFocusCalls++);
-      let afterFocusCalls = 0;
-      await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-      await page.keyboard.press('Tab');
-      await waitForEventSerialization(page);
-      expect(hostFocusCalls, 'hostFocusCalls after second tab').toBe(0);
-      expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
     });
   });
 

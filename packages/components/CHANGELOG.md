@@ -8,6 +8,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.8.0] - 2022-01-17
+
+#### Fixed
+- Accessibility issue of `Icon` component in Windows High Contrast Mode in Chromium Browser
+
+### [2.8.0-rc.0] - 2022-01-14
+
+#### Added
+- support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
+
+#### Changed
+- `:focus-visible` style matches outline color of `Button` while hovered
+
+#### Deprecated
+- The `tabbable` property of `Button`, `Button Pure` and `Switch` is deprecated and will be removed in `v3.0.0`. Please use `tabindex` instead.
+```diff
+-   <p-button tabbable="false">Some button</p-button>
++   <p-button tabindex="-1">Some button</p-button>
+```
+
+### [2.8.0-beta.3] - 2021-12-22
+
+#### Added
+**Disclaimer:** The provided themes `light-electric` and `dark-electric` are just a proof of concept, it's **not** accessible regarding its color contrast and might even be removed in an upcoming major release again.
+- `light-electric` theme for `Switch`
+- `dark-electric` theme for `Button Pure` and `Link Pure`
+- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and `textarea`
+
+#### Changed
+- `:focus-visible` style matches outline color of `Switch` while hovered
+
+#### Fixed
+- Box model of `Button Pure`
+
+### [2.8.0-beta.2] - 2021-12-22
+
+#### Fixed
+- `Content Wrapper` regression for `!important` style
+
+#### Added
+- Usage validation for `Link`, `Link Pure` and `Link Social`
+
+### [2.8.0-beta.1] - 2021-12-16
+
+#### Fixed
+- `Select Wrapper` validation of select element
+
+### [2.8.0-beta.0] - 2021-12-15
+
+#### Changed
+- Angular: Increased peer dependency to `>=12.0.0 <14.0.0`
+
 ### [2.7.0] - 2021-12-14
 
 ### [2.7.0-rc.0] - 2021-12-14

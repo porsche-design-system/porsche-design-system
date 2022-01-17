@@ -1,12 +1,10 @@
 import {
   addEventListener,
   ClickableTests,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   hasFocus,
   initAddEventListener,
@@ -15,6 +13,7 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
+  expectToSkipFocusOnComponent,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -295,40 +294,6 @@ describe('button', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it('should be removed from tab order for tabbable false', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-button tabbable="false">Some label</p-button>
-        <a href="#" id="after">after</a>
-      </div>
-    `
-    );
-
-    const button = await getHost();
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
-
-    await before.focus();
-
-    let buttonFocusCalls = 0;
-    await addEventListener(button, 'focus', () => buttonFocusCalls++);
-    let afterFocusCalls = 0;
-    await addEventListener(after, 'focus', () => afterFocusCalls++);
-
-    await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
-    expect(buttonFocusCalls, 'buttonFocusCalls after tab').toBe(0);
-    expect(afterFocusCalls, 'afterFocusCalls after tab').toBe(1);
-
-    await page.keyboard.press('Tab');
-    await waitForEventSerialization(page);
-    expect(buttonFocusCalls, 'buttonFocusCalls after second tab').toBe(0);
-    expect(afterFocusCalls, 'afterFocusCalls after second tab').toBe(1);
-  });
-
   it('should submit form via enter key when type is submit', async () => {
     await setContentWithDesignSystem(
       page,
@@ -400,27 +365,6 @@ describe('button', () => {
   });
 
   describe('focus state', () => {
-    it('should be shown by keyboard navigation only', async () => {
-      await initButton();
-
-      const button = await getButton();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
-
-      expect(await getOutlineStyle(button)).toBe(hidden);
-
-      await button.click();
-
-      expect(await getOutlineStyle(button)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(button)).toBe(visible);
-    });
-
     it('should keep focus if state switches to loading', async () => {
       await initButton();
 

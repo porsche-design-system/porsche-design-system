@@ -73,12 +73,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric', 'dark-electric'] }),
         { injectIntoHead: head }
       );
 
       await forceHoverState(page, '.hover p-link-pure[href] >>> a');
       await forceHoverState(page, '.hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusState(page, '.focus p-link-pure'); // native outline should not be visible
       await forceFocusState(page, '.focus p-link-pure[href] >>> a');
       await forceFocusState(page, '.focus:not([href]) p-link-pure a');
       await forceFocusHoverState(page, '.focus-hover p-link-pure[href] >>> a');

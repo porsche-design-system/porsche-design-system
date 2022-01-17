@@ -1,7 +1,8 @@
 import type { AriaAttributes } from '../../../../types';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../../utils';
-import { OPTION_HEIGHT, SELECT_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import { INPUT_HEIGHT } from '../../../../styles/form-styles';
 
 const MAX_CHILDREN = 10;
 
@@ -73,7 +74,7 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { top } = host.getBoundingClientRect();
 
   const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
-  const spaceBottom = window.innerHeight - top - SELECT_HEIGHT;
+  const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 

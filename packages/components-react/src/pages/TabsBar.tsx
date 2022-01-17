@@ -1,9 +1,9 @@
 import { PTabsBar } from '@porsche-design-system/components-react';
 
 export const TabsBarPage = (): JSX.Element => {
-  const renderTabs = (amount: number) =>
+  const renderTabs = (amount: number): JSX.Element[] =>
     Array.from(Array(amount)).map((_, i) => (
-      <a key={i} href="#x">
+      <a key={i} href="#">
         Tab {i + 1}
       </a>
     ));

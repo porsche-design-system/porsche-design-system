@@ -1,16 +1,16 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
-  getOutlineStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
+  getElementInnerText,
+  getElementStyle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('textarea-wrapper', () => {
@@ -25,7 +25,8 @@ describe('textarea-wrapper', () => {
   const getHost = () => selectNode(page, 'p-textarea-wrapper');
   const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
   const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
-  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .root__text');
+  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
+  const getCounter = () => selectNode(page, 'p-textarea-wrapper >>> .counter');
   const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
@@ -36,6 +37,7 @@ describe('textarea-wrapper', () => {
     useSlottedMessage?: boolean;
     state?: FormState;
     hasLabel?: boolean;
+    maxLength?: number;
   };
 
   const initTextarea = (opts?: InitOptions): Promise<void> => {
@@ -45,26 +47,25 @@ describe('textarea-wrapper', () => {
       useSlottedMessage = false,
       state = 'none',
       hasLabel = false,
+      maxLength,
     } = opts ?? {};
 
-    const slottedLabel = useSlottedLabel
-      ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
+    const link = '<a href="#" onclick="return false;">link</a>';
+    const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
     const slottedDescription = useSlottedDescription
-      ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+      ? `<span slot="description">Description with a ${link}</span>`
       : '';
-    const slottedMessage = useSlottedMessage
-      ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
-      : '';
-    const label = hasLabel ? ' label="Some label"' : '';
+    const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
+
+    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"'].filter((x) => x).join(' ');
 
     return setContentWithDesignSystem(
       page,
       `
-        <p-textarea-wrapper state="${state}"${label}>
+        <p-textarea-wrapper ${attrs}>
           ${slottedLabel}
           ${slottedDescription}
-          <textarea></textarea>
+          <textarea${maxLength ? ` maxlength="${maxLength}"` : ''}></textarea>
           ${slottedMessage}
         </p-textarea-wrapper>`
     );
@@ -82,9 +83,9 @@ describe('textarea-wrapper', () => {
     expect(await getLabel()).toBeDefined();
   });
 
-  it('should focus textarea when label text is clicked', async () => {
+  it('should focus textarea when label is clicked', async () => {
     await initTextarea({ hasLabel: true });
-    const labelText = await getLabel();
+    const label = await getLabel();
     const textarea = await getTextarea();
 
     let textareaFocusSpyCalls = 0;
@@ -92,83 +93,88 @@ describe('textarea-wrapper', () => {
 
     expect(textareaFocusSpyCalls).toBe(0);
 
-    await labelText.click();
+    await label.click();
     await waitForStencilLifecycle(page);
 
     expect(textareaFocusSpyCalls).toBe(1);
   });
 
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
-      await initTextarea();
+  it('should focus textarea when counter text is clicked', async () => {
+    await initTextarea({ maxLength: 160 });
+    const counter = await getCounter();
+    const textarea = await getTextarea();
 
+    let textareaFocusSpyCalls = 0;
+    await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
+
+    expect(textareaFocusSpyCalls).toBe(0);
+
+    await counter.click();
+    await waitForStencilLifecycle(page);
+
+    expect(textareaFocusSpyCalls).toBe(1);
+  });
+
+  it('should display correct counter when typing', async () => {
+    await initTextarea({ maxLength: 160 });
+    const counter = await getCounter();
+    const textarea = await getTextarea();
+
+    expect(await getElementInnerText(counter)).toBe('0/160');
+    await textarea.type('h');
+    expect(await getElementInnerText(counter)).toBe('1/160');
+    await textarea.type('ello');
+    expect(await getElementInnerText(counter)).toBe('5/160');
+    await textarea.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('4/160');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('0/160');
+  });
+
+  describe('hover state', () => {
+    const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
+    const defaultColor = 'rgb(98, 102, 105)';
+    const hoverColor = 'rgb(0, 0, 0)';
+
+    it('should show hover state on input when label is hovered', async () => {
+      await initTextarea({ hasLabel: true });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const label = await getLabel();
       const textarea = await getTextarea();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '2px' });
-      const visible = expectedStyleOnFocus({ color: 'neutral', offset: '2px' });
 
-      expect(await getOutlineStyle(textarea)).toBe(hidden);
+      const initialStyle = await getBorderColor(textarea);
+      expect(initialStyle).toBe(defaultColor);
+      await textarea.hover();
+      const hoverStyle = await getBorderColor(textarea);
+      expect(hoverStyle).toBe(hoverColor);
 
-      await textarea.click();
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(textarea)).toBe(defaultColor);
 
-      expect(await getOutlineStyle(textarea)).toBe(visible);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(textarea)).toBe(visible);
+      await label.hover();
+      expect(await getBorderColor(textarea)).toBe(hoverColor);
     });
 
-    it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initTextarea({
-        useSlottedLabel: true,
-        useSlottedDescription: true,
-        useSlottedMessage: true,
-        state: 'error',
-      });
+    it('should show hover state on textarea when counter is hovered', async () => {
+      await initTextarea({ maxLength: 160 });
+      await page.mouse.move(0, 300); // avoid potential hover initially
+      const counter = await getCounter();
+      const textarea = await getTextarea();
 
-      const labelLink = await getLabelLink();
-      const descriptionLink = await getDescriptionLink();
-      const messageLink = await getMessageLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
-      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
+      const initialStyle = await getBorderColor(textarea);
+      expect(initialStyle).toBe(defaultColor);
+      await textarea.hover();
+      const hoverStyle = await getBorderColor(textarea);
+      expect(hoverStyle).toBe(hoverColor);
 
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+      await page.mouse.move(0, 300); // undo hover
+      expect(await getBorderColor(textarea)).toBe(defaultColor);
 
-      await labelLink.click();
-
-      expect(await getOutlineStyle(labelLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(labelLink)).toBe(visible);
-
-      await descriptionLink.click();
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-
-      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
-
-      await messageLink.click();
-
-      expect(await getOutlineStyle(messageLink)).toBe(hidden);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(messageLink)).toBe(visible);
+      await counter.hover();
+      expect(await getBorderColor(textarea)).toBe(hoverColor);
     });
   });
 

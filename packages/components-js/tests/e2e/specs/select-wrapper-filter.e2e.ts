@@ -1,12 +1,10 @@
 import {
   addEventListener,
-  expectedStyleOnFocus,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementIndex,
   getElementStyle,
   getLifecycleStatus,
-  getOutlineStyle,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -60,7 +58,6 @@ describe('select-wrapper filter', () => {
   const getSelectedIndex = async () => getProperty(await getSelect(), 'selectedIndex');
   const getSelectedOptionText = async () =>
     (await getSelect()).evaluate((el: HTMLSelectElement) => el.options[el.selectedIndex].textContent);
-  const getFilterOverlayBoxShadow = async () => getElementStyle(await getFilterInputOverlay(), 'boxShadow');
 
   const getAmountOfDropdownOptions = async () => (await getDropdownList()).evaluate((el) => el.childElementCount);
   const getAmountOfHiddenDropdownOptions = async () =>
@@ -128,30 +125,37 @@ describe('select-wrapper filter', () => {
     expect(dropdown).not.toBeNull();
   });
 
-  it('should focus filter when label text is clicked', async () => {
-    await initSelect();
+  describe('focus state', () => {
+    it('should focus filter when label text is clicked', async () => {
+      await initSelect();
 
-    const labelText = await getLabelText();
-    const filterInput = await getFilterInput();
-    let focusCalls = 0;
-    await addEventListener(filterInput, 'focus', () => focusCalls++);
+      const labelText = await getLabelText();
+      const filterInput = await getFilterInput();
+      let focusCalls = 0;
+      await addEventListener(filterInput, 'focus', () => focusCalls++);
 
-    expect(focusCalls).toBe(0);
+      expect(focusCalls).toBe(0);
 
-    await labelText.click();
-    await waitForEventSerialization(page);
+      await labelText.click();
+      await waitForEventSerialization(page);
 
-    expect(focusCalls).toBe(1);
+      expect(focusCalls).toBe(1);
+    });
   });
 
-  it('should change box-shadow color when filter input is hovered', async () => {
-    await initSelect();
+  describe('hover state', () => {
+    it('should change border-color when filter input is hovered', async () => {
+      await initSelect();
+      await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const filterInputOverlay = await getFilterInputOverlay();
-    const initialBoxShadow = await getElementStyle(filterInputOverlay, 'boxShadow');
-    await filterInputOverlay.hover();
+      const filterInputOverlay = await getFilterInputOverlay();
+      const initialStyle = await getElementStyle(filterInputOverlay, 'borderColor');
+      expect(initialStyle).toBe('rgb(98, 102, 105)');
 
-    expect(await getFilterOverlayBoxShadow()).not.toBe(initialBoxShadow);
+      await filterInputOverlay.hover();
+      const hoverColor = await getElementStyle(filterInputOverlay, 'borderColor');
+      expect(hoverColor).toBe('rgb(0, 0, 0)');
+    });
   });
 
   it('should make dropdown visible if filter input is clicked and hidden via outside click', async () => {
@@ -549,29 +553,29 @@ describe('select-wrapper filter', () => {
       expect(await getDropdownOpacity(), 'for opacity').toBe('0');
       expect(calls, 'for calls').toBe(1);
     });
-  });
 
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for shadow <input> filter', async () => {
-      await initSelect();
+    describe('when select is disabled', () => {
+      beforeEach(async () => {
+        await initSelect();
+        const select = await getSelect();
+        await setProperty(select, 'disabled', true);
+        await waitForStencilLifecycle(page);
+      });
 
-      const filterInput = await getFilterInput();
-      const filterInputOverlay = await getFilterInputOverlay();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'neutral' });
+      it('should have not-allowed cursor on overlay', async () => {
+        const filterInputOverlay = await getFilterInputOverlay();
+        expect(await getElementStyle(filterInputOverlay, 'cursor')).toBe('not-allowed');
+      });
 
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(hidden);
+      it('should not open dropdown via overlay click', async () => {
+        expect(await getDropdownOpacity()).toBe('0');
 
-      await filterInput.click();
+        const coords = await (await getFilterInputOverlay()).boundingBox();
+        await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+        await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
-
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
-      await page.keyboard.press('Tab');
-
-      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
+        expect(await getDropdownOpacity()).toBe('0');
+      });
     });
   });
 

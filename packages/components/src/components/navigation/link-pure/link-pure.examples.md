@@ -1,7 +1,7 @@
 # Link Pure
 
 The `p-link-pure` component is essential for performing changes in **page routes**.
-A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
+A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
 
@@ -28,7 +28,7 @@ Through the `aria` property you have the possibility to provide additional **ARI
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 * Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
-* If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
+* If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
 * In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
 ---
@@ -153,7 +153,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space.
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="stretchMarkup" :config="configBlock">
+<Playground :markup="stretchMarkup" :config="config">
   <select v-model="stretch">
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
@@ -165,7 +165,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 ---
 
-## Link with custom clickable/focusable area
+## Link Pure with custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
 Therefore a custom padding can be set on the host element.
@@ -179,6 +179,14 @@ Therefore a custom padding can be set on the host element.
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
 
 <Playground :markup="events" :config="config"></Playground>
+
+---
+
+## Remove Link Pure from tab order
+
+By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** from the tab order.
+
+<Playground :markup="taborder" :config="config"></Playground>
 
 ---
 
@@ -201,68 +209,67 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+  configInline = { ...this.config, spacing: 'inline' };
   
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
-    configBlock = { ...this.config, spacing: 'block' };
-    configInline = { ...this.config, spacing: 'inline' };
-    
-    size = 'medium';
-    sublineSize = 'small';
-    weight = 'thin';
-    alignLabel = 'left';
-    stretch = 'stretch="true" align-label="left"';
-    
-    withLabel =
+  size = 'medium';
+  sublineSize = 'small';
+  weight = 'thin';
+  alignLabel = 'left';
+  stretch = 'stretch="true" align-label="left"';
+  
+  withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    withoutLabel =
+  withoutLabel =
 `<p-link-pure href="https://www.porsche.com" hide-label="true">Some label</p-link-pure>`;
 
-    responsive =
+  responsive =
 `<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
 
-    accessibility = 
+  accessibility = 
 `<p-link-pure href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link-pure>`;
 
-    withoutIcon =
+  withoutIcon =
 `<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure icon="none" size="small" weight="semibold" href="https://www.porsche.com">
   Some label
   <p slot="subline">Some Subline</p>
 </p-link-pure>`;
 
-    get sizeMarkup() {
-      const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
-    }
+  get sizeMarkup() {
+    const style =this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+    return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
+  }
     
-    sizeResponsive =
+  sizeResponsive =
 `<p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
 
-    get weightMarkup() {
-      return `<p-link-pure href="https://www.porsche.com" size="medium" weight="${this.weight}">Some label</p-link-pure>`;
-    }
+  get weightMarkup() {
+    return `<p-link-pure href="https://www.porsche.com" size="medium" weight="${this.weight}">Some label</p-link-pure>`;
+  }
 
-    routing =
+  routing =
 `<p-link-pure>
   <a href="https://www.porsche.com">Some label</a>
 </p-link-pure>`;
 
-    activeHref =
+  activeHref =
 `<p-link-pure active="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    activeWithoutHref =
+  activeWithoutHref =
 `<p-link-pure active="true">Some label</p-link-pure>`;
 
-    icon =
+  icon =
 `<p-link-pure href="https://www.porsche.com" icon="phone">Some label</p-link-pure>
 <p-link-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
-    clickableArea =
+  clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure style="padding: 1rem;">
@@ -272,15 +279,15 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <a href="https://www.porsche.com">Some label</a>
 </p-link-pure>`;
 
-    get alignmentMarkup() {
-      return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
-    };
+  get alignmentMarkup() {
+    return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
+  };
 
-    get stretchMarkup() {
-      return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
-    };
+  get stretchMarkup() {
+    return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
+  };
 
-    events =
+  events =
 `<p-link-pure
   href="https://www.porsche.com"
   onclick="alert('click'); return false;"
@@ -290,8 +297,14 @@ The size of the *subline* changes according to the size of the *label*. We do no
   onfocusout="console.log('focusout')"
 >Some label</p-link-pure>`;
 
-    get subline() {
-      return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
+  taborder =
+`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+<p-link-pure href="https://www.porsche.com" tabindex="-1">Some label</p-link-pure>
+<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
+
+
+  get subline() {
+    return `<p-link-pure size="${this.sublineSize}" href="https://www.porsche.com">
   Some label
   <p slot="subline">Some Subline</p>
 </p-link-pure>
@@ -299,8 +312,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
   <a href="https://www.porsche.com" aria-describedby="subline">Some label</a>
   <p slot="subline" id="subline">Some Subline</p>
 </p-link-pure>`;
-    }
   }
+}
 </script>
 
 <style scoped lang="scss">

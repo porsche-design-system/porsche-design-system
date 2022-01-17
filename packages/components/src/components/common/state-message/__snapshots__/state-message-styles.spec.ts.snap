@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#fc1717",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": undefined,
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#01ba1d",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#e00000",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": undefined,
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
+Object {
+  "message": Object {
+    "&__icon": Object {
+      "marginRight": "0.25rem",
+    },
+    "color": "#018a16",
+    "display": "flex",
+    "marginTop": "0.25rem",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;

@@ -1,8 +1,9 @@
-import { buildGlobalStyles, buildHostStyles, getCss, getFocusStyles, mediaQuery } from '../../../utils';
+import { addImportantToRule, getCss, getFocusStyles, mediaQuery } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
-import { MarqueSize } from './marque-utils';
+import type { MarqueSize } from './marque-utils';
+import type { JssStyle } from '../../../utils';
 
-const baseSizes = {
+const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
     width: 100,
     height: 60,
@@ -15,11 +16,12 @@ const baseSizes = {
 
 export const getComponentCss = (size: MarqueSize): string => {
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'inline-flex',
       verticalAlign: 'top',
-    }),
-    ...buildGlobalStyles({
+      outline: addImportantToRule(0),
+    },
+    '@global': {
       a: {
         display: 'block',
         textDecoration: 'none',
@@ -27,14 +29,18 @@ export const getComponentCss = (size: MarqueSize): string => {
       },
       picture: {
         display: 'block',
-        ...baseSizes.small,
-        ...(size !== 'responsive' ? baseSizes[size] : { [mediaQuery('l')]: baseSizes.medium }),
+        ...(size === 'responsive'
+          ? {
+              ...baseSizes.small,
+              [mediaQuery('l')]: baseSizes.medium,
+            }
+          : baseSizes[size]),
       },
       img: {
         display: 'block',
         width: '100%',
         height: 'auto',
       },
-    }),
+    },
   });
 };

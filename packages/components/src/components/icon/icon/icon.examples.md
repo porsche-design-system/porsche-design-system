@@ -76,36 +76,36 @@ Icons can be lazy loaded, which means that they are being loaded (fetched) when 
 ---
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { capitalCase } from 'change-case';
-  import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-  
-  @Component
-  export default class Code extends Vue {
-    config = { themeable: true };
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { capitalCase } from 'change-case';
+import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
-    size = 'large';
-    color = 'brand';
-    
-    get name() {
-      return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
-    }
-    
-    get sizeMarkup() {
-      const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
-      return `<p-icon size="${this.size}" name="highway" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
-    }
-    
-    get colorMarkup() {
-      const style = this.color === 'inherit' ? ' style="color: deeppink"' : '';
-      return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
-    }
-    
-    custom =
+@Component
+export default class Code extends Vue {
+  config = { themeable: true };
+
+  size = 'large';
+  color = 'brand';
+  
+  get name() {
+    return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
+  }
+  
+  get sizeMarkup() {
+    const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
+    return `<p-icon size="${this.size}" name="highway" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
+  }
+  
+  get colorMarkup() {
+    const style = this.color === 'inherit' ? ' style="color: deeppink"' : '';
+    return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
+  }
+  
+  custom =
 `<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
 
-    lazy =
+  lazy =
 `<p-icon name="information" lazy="true" aria="{ 'aria-label': 'Information icon' }" />`;
-  }
+}
 </script>

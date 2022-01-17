@@ -59,14 +59,13 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 
 You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
-
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
-  
-  @Component
-  export default class Code extends Vue {
-    public metaTagsAndIconLinks: string = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
-  }
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
+
+@Component
+export default class Code extends Vue {
+  public metaTagsAndIconLinks: string = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
+}
 </script>

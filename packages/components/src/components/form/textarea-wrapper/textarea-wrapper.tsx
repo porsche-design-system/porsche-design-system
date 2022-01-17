@@ -5,20 +5,21 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  mapBreakpointPropToClasses,
   setAriaAttributes,
   observeAttributes,
   unobserveAttributes,
   isRequiredAndParentNotRequired,
   attachSlottedCss,
+  attachComponentCss,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
-import { getSlottedCss } from './textarea-wrapper-styles';
-import { StateMessage } from '../../common/state-message';
+import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
+import { StateMessage } from '../../common/state-message/state-message';
+import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
+import { Required } from '../../common/required/required';
 
 @Component({
   tag: 'p-textarea-wrapper',
-  styleUrl: 'textarea-wrapper.scss',
   shadow: true,
 })
 export class TextareaWrapper {
@@ -40,15 +41,29 @@ export class TextareaWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   private textarea: HTMLTextAreaElement;
+  private counterElement: HTMLSpanElement;
+  private hasCounter: boolean;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    this.observeAttributes();
+    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-    this.observeAttributes();
+    this.observeAttributes(); // once initially
+    this.hasCounter = hasCounter(this.textarea);
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasCounter) {
+      addInputEventListener(this.textarea, this.counterElement);
+      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
+    }
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.hasCounter);
   }
 
   public componentDidRender(): void {
@@ -69,31 +84,40 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled } = this.textarea;
-    const rootClasses = {
-      ['root']: true,
-      ['root--disabled']: disabled,
-      [`root--${this.state}`]: this.state !== 'none',
-      ...mapBreakpointPropToClasses('root-', this.hideLabel, ['hidden', 'visible']),
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: this.textarea.disabled,
     };
-    const textProps = { tag: 'span', color: 'inherit' };
-    const labelProps = { ...textProps, onClick: this.onLabelClick };
+
+    const labelProps = {
+      tag: 'span',
+      color: 'inherit',
+      onClick: this.onLabelClick,
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <label class={rootClasses}>
+        <label class={labelClasses}>
           {hasLabel(this.host, this.label) && (
-            <PrefixedTagNames.pText class="root__text" {...labelProps}>
+            <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.textarea) && <span class="required" />}
+              {isRequiredAndParentNotRequired(this.host, this.textarea) && <Required />}
             </PrefixedTagNames.pText>
           )}
           {hasDescription(this.host, this.description) && (
-            <PrefixedTagNames.pText class="root__text root__text--description" {...labelProps} size="x-small">
+            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
+          )}
+          {this.hasCounter && (
+            <PrefixedTagNames.pText
+              class="counter"
+              {...labelProps}
+              aria-hidden="true"
+              ref={(el) => (this.counterElement = el)}
+            />
           )}
           <slot />
         </label>

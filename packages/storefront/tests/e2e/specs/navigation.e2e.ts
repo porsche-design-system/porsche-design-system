@@ -4,16 +4,20 @@ import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
+import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers/puppeteer-helper';
 
 let browserPage: Page;
 // const logPages: string[] = [];
 // const logTabs: string[] = [];
 
-beforeEach(async () => (browserPage = await browser.newPage()));
+beforeEach(async () => {
+  browserPage = await browser.newPage();
+  initConsoleObserver(browserPage);
+});
 afterEach(async () => await browserPage.close());
 
 const isLinkActive = async (element: ElementHandle | null): Promise<boolean> =>
-  element ? ((await (await element.getProperty('active')).jsonValue()) as boolean) : false;
+  element ? (await getClassNames(element)).includes('router-link-active') : false;
 const getClassNames = async (element: ElementHandle | null): Promise<string> =>
   element ? ((await (await element.getProperty('className')).jsonValue()) as string) : '';
 const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
@@ -45,7 +49,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         );
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkElement] = await browserPage.$x(
-          `//div[@class='sidebar']/nav//p-link-pure[contains(., '${page}')][@href='${href}']`
+          `//div[@class='sidebar']/nav//p-link-pure//a[contains(., '${page}')][@href='${href}']`
         );
 
         await accordionButton.click();
@@ -58,6 +62,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         expect(await isLinkActive(linkElement), 'link should be active after click').toBe(true);
         expect(await getMainTitle(browserPage), 'should show correct main title for page view').toBe(page);
+        expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
         if (!Array.isArray(tabs)) {
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
@@ -86,6 +91,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             );
             expect(await getMainTitle(browserPage), 'should show correct main title for tab view').toBe(page);
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object]').toBe(false);
+            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tag ${tab}`).toBe(0);
 
             // logTabs.push(`${category} > ${page} > ${tab}`);
           }

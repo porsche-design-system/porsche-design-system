@@ -95,7 +95,7 @@ describe('observeResize()', () => {
       const node = document.createElement('div');
       // in order for JSDOM to trigger the ResizeObserver event correctly,
       // the readonly offsetHeight property needs to be manually overridden
-      Object.defineProperty(node, 'offsetHeight', { writable: true, configurable: true, value: 20 });
+      Object.defineProperty(node, 'offsetHeight', { value: 20 });
       document.body.appendChild(node);
       return node;
     };

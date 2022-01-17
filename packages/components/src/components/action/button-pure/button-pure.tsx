@@ -5,14 +5,10 @@ import {
   hasVisibleIcon,
   hasSlottedSubline,
   improveButtonHandlingForCustomElement,
-  improveFocusHandlingForCustomElement,
-  isDark,
   isDisabledOrLoading,
-  mapBreakpointPropToClasses,
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
-  isLightElectric,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -22,7 +18,7 @@ import type {
   LinkButtonPureIconName,
   TextSize,
   TextWeight,
-  ThemeExtendedElectric,
+  ThemeExtendedElectricDark,
 } from '../../../types';
 import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
@@ -32,13 +28,14 @@ import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 @Component({
   tag: 'p-button-pure',
-  styleUrl: 'button-pure.scss',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
 
-  /** To remove the element from tab order. */
+  /** To remove the element from tab order.
+   * @deprecated since v2.8.0, use tabindex="-1" instead
+   */
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
@@ -75,7 +72,7 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
@@ -92,12 +89,23 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, hasSlottedSubline(this.host) ? false : this.stretch);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.active,
+      this.isDisabledOrLoading,
+      this.stretch,
+      this.size,
+      this.hideLabel,
+      this.alignLabel,
+      hasSlottedSubline(this.host),
+      this.theme
+    );
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
@@ -117,21 +125,6 @@ export class ButtonPure {
     const hasIcon = hasVisibleIcon(this.icon);
     const hasSubline = hasSlottedSubline(this.host);
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--loading']: this.loading && hasIcon,
-      ['root--theme-dark']: isDark(this.theme),
-      ['root--theme-light-electric']: isLightElectric(this.theme),
-      ['root--active']: this.active,
-      ['root--with-icon']: hasIcon,
-      ...mapBreakpointPropToClasses('root--size', this.size),
-      ...(!hasSubline && {
-        ...mapBreakpointPropToClasses('root-', this.stretch, ['stretch-on', 'stretch-off']),
-        ...mapBreakpointPropToClasses('root--label-align', this.alignLabel),
-      }),
-      ...(hasIcon && mapBreakpointPropToClasses('root-', this.hideLabel, ['without-label', 'with-label'])),
-    };
-
     const iconProps = {
       class: 'icon',
       size: 'inherit',
@@ -144,7 +137,7 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          class={rootClasses}
+          class="root"
           type={this.type}
           disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}

@@ -31,9 +31,14 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-switch theme="${theme}" loading="true">Loading</p-switch>
         <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(
+        page,
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        { injectIntoHead: head }
+      );
 
       await forceHoverState(page, '.hover > p-switch >>> button');
+      await forceFocusState(page, '.focus > p-switch'); // native outline should not be visible
       await forceFocusState(page, '.focus > p-switch >>> button');
       await forceFocusHoverState(page, '.focus-hover > p-switch >>> button');
     })

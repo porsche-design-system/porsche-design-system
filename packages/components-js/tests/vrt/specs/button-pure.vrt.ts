@@ -60,11 +60,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(
         page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
+        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric', 'dark-electric'] }),
         { injectIntoHead: head }
       );
 
       await forceHoverState(page, '.hover p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-button-pure'); // native outline should not be visible
       await forceFocusState(page, '.focus p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-button-pure >>> button');
     })

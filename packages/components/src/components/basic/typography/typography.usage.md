@@ -306,23 +306,23 @@ impact on the origin character of the company typeface. This includes:
 </style>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { calculateLineHeight } from '@porsche-design-system/utilities';
-  
-  @Component
-  export default class PlaygroundTypography extends Vue {
-    public size: string = '16';
-    public typeScale(fontSize: string, comment: boolean = true): string {
-      const fittedLineHeightFactor = calculateLineHeight(fontSize);
-      const fittedLineHeightPx = Math.round(fontSize.slice(0, -2) * fittedLineHeightFactor);
-      const fontSizeRem = fontSize.slice(0, -2) / 16;
-      
-      if (comment) {
-        return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
-      }
-      
-      return "font-size: "+ fontSizeRem +"rem; line-height: "+ fittedLineHeightFactor +";";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { calculateLineHeight } from '@porsche-design-system/utilities';
+
+@Component
+export default class PlaygroundTypography extends Vue {
+  public size: string = '16';
+  public typeScale(fontSize: string, comment: boolean = true): string {
+    const fittedLineHeightFactor = calculateLineHeight(fontSize);
+    const fittedLineHeightPx = Math.round(fontSize.slice(0, -2) * fittedLineHeightFactor);
+    const fontSizeRem = fontSize.slice(0, -2) / 16;
+    
+    if (comment) {
+      return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
     }
+    
+    return "font-size: "+ fontSizeRem +"rem; line-height: "+ fittedLineHeightFactor +";";
   }
+}
 </script>
