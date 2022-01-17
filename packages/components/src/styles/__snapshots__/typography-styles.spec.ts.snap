@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getEllipsisStyles() should return correct JssStyle 1`] = `
+Object {
+  "maxWidth": "100%",
+  "overflow": "hidden",
+  "textOverflow": "ellipsis",
+  "whiteSpace": "nowrap",
+}
+`;
+
+exports[`getSlottedTypographyStyles() should return correct JssStyle 1`] = `
+Object {
+  "color": "inherit",
+  "fontFamily": "inherit",
+  "fontSize": "inherit",
+  "fontStyle": "normal",
+  "fontWeight": "inherit",
+  "hyphens": "inherit",
+  "lineHeight": "inherit",
+  "margin": "inherit",
+  "overflowWrap": "inherit",
+  "padding": "inherit",
+  "textAlign": "inherit",
+  "whiteSpace": "inherit",
+  "wordWrap": "inherit",
+}
+`;

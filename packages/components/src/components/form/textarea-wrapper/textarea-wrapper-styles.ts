@@ -1,20 +1,18 @@
 import {
   addImportantToEachRule,
-  BreakpointCustomizable,
-  buildGlobalStyles,
-  buildHostStyles,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getRequiredStyles,
-  getStateMessageStyles,
   getThemedColors,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
-import type { Styles } from '../../../utils';
+import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
-import { getBaseChildStyles, getLabelStyles, isVisibleState } from '../form-styles';
+import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
+import { isVisibleFormState } from '../../../utils/form-state';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -22,33 +20,31 @@ export const getComponentCss = (
   hasCounter: boolean
 ): string => {
   const theme: Theme = 'light';
-  const hasVisibleState = isVisibleState(state);
+  const hasVisibleState = isVisibleFormState(state);
   const { contrastMediumColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(hasVisibleState ? 10 : 11);
 
   return getCss({
-    ...buildHostStyles({
+    ':host': {
       display: 'block',
-    }),
-    ...buildGlobalStyles(
-      mergeDeep(
-        addImportantToEachRule(
-          getBaseChildStyles('textarea', state, theme, {
-            // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
-            padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
-            resize: 'vertical',
-          })
-        ),
-        {
-          '::slotted(textarea)': {
-            minHeight: pxToRemWithUnit(192), // min-height should be overridable
-          },
-        } as Styles
-      )
+    },
+    '@global': mergeDeep(
+      addImportantToEachRule(
+        getBaseChildStyles('textarea', state, theme, {
+          // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
+          padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
+          resize: 'vertical',
+        })
+      ),
+      {
+        '::slotted(textarea)': {
+          minHeight: pxToRemWithUnit(192), // min-height should be overridable
+        },
+      } as Styles
     ),
     ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
-    ...getRequiredStyles(theme),
-    ...getStateMessageStyles(theme, state),
+    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(hasCounter && {
       counter: {
         position: 'absolute',

@@ -1,8 +1,4 @@
 import { Config } from '@stencil/core';
-import { sass } from '@porsche-design-system/stencil-sass';
-import { postcss } from '@stencil/postcss';
-// @ts-ignore
-import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
@@ -64,12 +60,6 @@ export const config: Config = {
   ],
   bundles,
   enableCache: true,
-  plugins: [
-    sass(),
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-  ],
   rollupPlugins: {
     after: [
       replace({

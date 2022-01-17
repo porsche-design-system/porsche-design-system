@@ -55,7 +55,7 @@ export class Link {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
   }
 
   public render(): JSX.Element {

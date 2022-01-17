@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { attachComponentCss, getPrefixedTagNames, mapBreakpointPropToClasses } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
@@ -77,16 +77,12 @@ export class Modal {
   }
 
   public render(): JSX.Element {
-    const rootClasses = {
-      ['root']: true,
-      ...mapBreakpointPropToClasses('root-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
-    };
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
         <aside
-          class={rootClasses}
+          class="root"
           role="dialog"
           aria-modal="true"
           aria-label={this.heading}

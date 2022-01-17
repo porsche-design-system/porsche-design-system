@@ -1,9 +1,9 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { getComponentCss } from './tabs-item-styles';
 
 @Component({
   tag: 'p-tabs-item',
-  styleUrl: 'tabs-item.scss',
   shadow: true,
 })
 export class TabsItem {
@@ -14,6 +14,7 @@ export class TabsItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTabs');
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public render(): JSX.Element {

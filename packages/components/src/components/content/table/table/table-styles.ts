@@ -1,6 +1,5 @@
 import {
-  addImportantToEachRule,
-  buildHostStyles,
+  addImportantToRule,
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
@@ -8,19 +7,17 @@ import {
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../../utils';
-import { color, font, spacing } from '@porsche-design-system/utilities';
+import { color, defaultFontFamilyAndWeight, fontSize, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ...buildHostStyles(
-      addImportantToEachRule({
-        display: 'block',
-      })
-    ),
+    ':host': {
+      display: addImportantToRule('block'),
+    },
     caption: {
-      marginBottom: spacing['8'],
+      marginBottom: spacing[8],
       [mediaQuery('m')]: {
-        marginBottom: spacing['16'],
+        marginBottom: spacing[16],
       },
     },
     root: {
@@ -34,9 +31,8 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      fontFamily: font.family,
-      fontWeight: font.weight.regular,
-      ...font.size.small,
+      ...defaultFontFamilyAndWeight,
+      ...fontSize.small,
       textAlign: 'left',
       color: color.default,
       whiteSpace: 'nowrap',
@@ -54,7 +50,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacing['32'],
+      paddingLeft: spacing[32],
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',

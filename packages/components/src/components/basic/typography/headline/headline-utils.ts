@@ -11,7 +11,7 @@ export const HEADLINE_VARIANTS = [
   'headline-5',
 ] as const;
 
-type VariantType = typeof HEADLINE_VARIANTS[number];
+export type VariantType = typeof HEADLINE_VARIANTS[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 

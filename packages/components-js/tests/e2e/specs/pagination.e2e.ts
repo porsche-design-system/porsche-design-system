@@ -18,9 +18,9 @@ describe('pagination', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-pagination');
-  const getNextButton = () => selectNode(page, 'p-pagination >>> .next');
+  const getNextButton = () => selectNode(page, 'p-pagination >>> li:last-child span');
   const getNav = () => selectNode(page, 'p-pagination >>> nav');
-  const getPaginationItems = async () => (await getNav()).$$('.goto');
+  const getPaginationItems = async () => (await (await getNav()).$$('span')).slice(1, -1); // without prev and next
 
   const initPagination = (opts?: { activePage?: number }) => {
     const { activePage = 1 } = opts ?? {};
@@ -78,16 +78,12 @@ describe('pagination', () => {
       await initPagination({ activePage: 20 });
 
       const host = await getHost();
-      const nextButtonDisabled = await getNextButton();
-
-      await expectA11yToMatchSnapshot(page, nextButtonDisabled, { message: 'If disabled' });
+      await expectA11yToMatchSnapshot(page, await getNextButton(), { message: 'If disabled' });
 
       await setProperty(host, 'activePage', 15);
       await waitForStencilLifecycle(page);
 
-      const nextButtonEnabled = await getNextButton();
-
-      await expectA11yToMatchSnapshot(page, nextButtonEnabled, { message: 'If not disabled' });
+      await expectA11yToMatchSnapshot(page, await getNextButton(), { message: 'If not disabled' });
     });
 
     it('should have aria-current = page if selected', async () => {

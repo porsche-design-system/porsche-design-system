@@ -97,6 +97,18 @@ module.exports = {
     'id-match': 'error',
     'import/no-extraneous-dependencies': 'off',
     'import/order': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: '@porsche-design-system/utilities',
+            importNames: ['headline', 'title', 'font', 'calculateLineHeight', 'generateTypeScale'],
+            message: 'Please use alternative imports since the one used is not performant.',
+          },
+        ],
+      },
+    ],
     'linebreak-style': 'off',
     'max-classes-per-file': ['error', 1],
     'max-len': 'off',

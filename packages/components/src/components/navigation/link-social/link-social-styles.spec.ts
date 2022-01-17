@@ -1,9 +1,7 @@
-import { BreakpointCustomizable, Theme } from '../../../types';
 import { getComponentCss } from './link-social-styles';
-import { SocialIconName } from './link-social-utils';
 
 describe('getComponentCss()', () => {
-  it.each<[SocialIconName, BreakpointCustomizable<boolean>, boolean, Theme]>([
+  it.each<Parameters<typeof getComponentCss>>([
     [undefined, false, false, 'light'],
     [undefined, false, false, 'dark'],
     ['logo-facebook', false, false, 'light'],
@@ -36,10 +34,7 @@ describe('getComponentCss()', () => {
     ['logo-youtube', false, false, 'dark'],
     ['logo-youtube', { base: true, xs: false, s: true, m: false, l: true, xl: false }, false, 'light'],
     ['logo-youtube', false, true, 'light'],
-  ])(
-    'should return correct css for variant: %s, hideLabel: %s, hasHref: %s and theme: %s',
-    (variant, hideLabel, hasHref, theme) => {
-      expect(getComponentCss(variant, hideLabel, hasHref, theme)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct css for variant: %s, hideLabel: %s, hasHref: %s and theme: %s', (...args) => {
+    expect(getComponentCss(...args)).toMatchSnapshot();
+  });
 });
