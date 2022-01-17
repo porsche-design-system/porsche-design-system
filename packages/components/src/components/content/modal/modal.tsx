@@ -60,7 +60,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen);
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
   }
 
   public componentDidUpdate(): void {

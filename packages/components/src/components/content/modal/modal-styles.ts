@@ -53,7 +53,11 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizable<boolean>): string => {
+export const getComponentCss = (
+  open: boolean,
+  fullscreen: BreakpointCustomizable<boolean>,
+  disableCloseButton: boolean
+): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
   return getCss({
@@ -107,7 +111,7 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
-        marginRight: pxToRemWithUnit(64),
+        ...(!disableCloseButton && { marginRight: pxToRemWithUnit(64) }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
         [mediaQuery('m')]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
