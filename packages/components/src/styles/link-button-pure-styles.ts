@@ -125,8 +125,9 @@ export const getLinkButtonPureStyles = (
 
   return {
     ':host': {
-      ...addImportantToEachRule({ position: 'relative', outline: 0 }),
+      ...addImportantToEachRule({ outline: 0 }),
       ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+      position: 'relative',
     },
     root: {
       display: 'flex',
