@@ -1,3 +1,4 @@
+
 # Tabs Bar
 
 The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
@@ -281,6 +282,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     -webkit-appearance: none;
     appearance: none;
     outline-offset: 1px;
+    margin-top: p-px-to-rem(8px);
   }
 
   ::v-deep .example--light div[role=tabpanel]:focus {  
