@@ -118,8 +118,8 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
       },
     },
     close: {
-      padding: pxToRemWithUnit(8),
-      border: `${pxToRemWithUnit(4)} solid ${color.background.default}`,
+      padding: pxToRemWithUnit(6),
+      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
       backgroundColor: color.background.default,
       position: 'absolute',
       right: pxToRemWithUnit(24),
