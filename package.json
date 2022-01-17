@@ -12,7 +12,7 @@
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/dist/components-wrapper",
       "packages/components-react/projects/uxpin-wrapper",
-      "packages/utilities/projects/utilities",
+      "packages/utilities-deprecated/projects/utilities",
       "packages/shared/dist"
     ],
     "nohoist": [

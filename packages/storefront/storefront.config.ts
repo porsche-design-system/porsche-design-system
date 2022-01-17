@@ -64,7 +64,7 @@ export const config: StorefrontConfig = {
       ],
       Utilities: [
         // @ts-ignore
-        () => import('@/../../utilities/projects/utilities/CHANGELOG.md'),
+        () => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md'),
       ],
       Assets: [
         // @ts-ignore
