@@ -568,7 +568,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: utilities-full-build
-          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
+          path: ./packages/utilities-deprecated/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest
@@ -616,7 +616,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: utilities-vrt-regression
-          path: ./packages/utilities/tests/vrt/results
+          path: ./packages/utilities-deprecated/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
     needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities]
@@ -910,7 +910,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: utilities-full-build
-          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
+          path: ./packages/utilities-deprecated/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
@@ -918,7 +918,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/utilities/projects/utilities
+          args: packages/utilities-deprecated/projects/utilities
   release-sketch-libraries:
     name: 'Release Sketch Libraries'
     needs: [smoke-test, storefront-deployment]

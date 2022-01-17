@@ -1,4 +1,4 @@
-import { color, font, layout, spacing } from '../../../projects/utilities/src/js/variables';
+import { color, font, layout, spacing } from '../../../projects/utilities-deprecated/src/js/variables';
 
 it('should contain correct values for color', () => {
   expect(color).toMatchSnapshot();

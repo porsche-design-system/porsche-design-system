@@ -50,7 +50,7 @@ services:
       - components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
-      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
+      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
   change-volume-owner:
     image: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
     volumes:

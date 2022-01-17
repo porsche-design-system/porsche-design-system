@@ -8,7 +8,7 @@ if [[ -z "${1}" ]]; then
   exit 1
 fi
 
-pushd "packages/utilities/projects/utilities"
+pushd "packages/utilities-deprecated/projects/utilities"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd

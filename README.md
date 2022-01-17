@@ -300,7 +300,7 @@ When publishing a stable release then it's necessary an RC release is made immed
 1. Create a new branch e.g. **release/utilities-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section **[Unreleased]** (this file will also be used to show on Storefront)
 
-- `./packages/utilities/projects/utilities/CHANGELOG.md`
+- `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md`
 
 1. Run `./docker.sh run-prepare-release-utilities ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
@@ -313,7 +313,7 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 ### Communicate
 
-1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
+1. Write a Slack notification by coping last entry of `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
