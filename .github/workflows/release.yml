@@ -1,0 +1,420 @@
+on:
+  push:
+    branches:
+      - master
+      - v*
+name: 'Porsche Design System'
+env:
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
+jobs:
+  production-builds:
+    name: 'Production Builds'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --core-dependencies
+      - name: 'Build Components Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --components
+      - name: 'Build Components JS Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --components-js
+      - name: 'Build Components Angular Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --components-angular
+      - name: 'Build Components React Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --components-react
+      - name: 'Build Storefront Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build-prod
+          args: --storefront
+      - name: 'Store Assets Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Store Components JS Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Store Components Angular Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-angular-prod-build
+          path: ./packages/components-angular/dist/components-wrapper
+      - name: 'Store Components React Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/components-wrapper
+      - name: 'Store Components UXPin Source Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-uxpin-source
+          path: ./packages/components-react/projects/uxpin-wrapper # upload entire folder to have all generated files including uxpin.config.js
+      - name: 'Store Chunks Manifest Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
+      - name: 'Store Shared Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
+      - name: 'Store Storefront Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
+      - name: 'Store Utilities Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
+  storefront-deployment:
+    name: 'Storefront Deployment'
+    needs: [production-builds]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Deploy'
+        uses: ./.github/actions/docker-run
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          entrypoint: run-deploy-storefront
+  smoke-test:
+    name: 'Smoke Test'
+    needs: [production-builds]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Assets Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Restore Chunks Manifest Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
+      - name: 'Restore Shared Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
+      - name: 'Smoke Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-smoke
+          args: --components-js
+  release-components-uxpin:
+    name: 'Release Components UXPin'
+    needs: [smoke-test, storefront-deployment]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # important for uxpin since it uses the commit history
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Restore Components JS Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Restore Components UXPin Source Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-uxpin-source
+          path: ./packages/components-react/projects/uxpin-wrapper
+      - name: 'Publish UXPin Library'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
+          UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
+        with:
+          entrypoint: run-release-uxpin
+  release-components-js:
+    name: 'Release Components JS'
+    needs: [smoke-test, storefront-deployment, release-components-uxpin]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-js/dist/components-wrapper
+  release-components-angular:
+    name: 'Release Components Angular'
+    needs: [release-components-js]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-angular-prod-build
+          path: ./packages/components-angular/dist/components-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-angular/dist/components-wrapper
+  release-components-react:
+    name: 'Release Components React'
+    needs: [release-components-js]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/components-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-react/dist/components-wrapper
+  release-assets:
+    name: 'Release Assets'
+    needs: [smoke-test, storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/assets/dist
+  release-utilities:
+    name: 'Release Utilities'
+    needs: [smoke-test, storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Restore Utilities Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/utilities/projects/utilities
+  release-sketch-libraries:
+    name: 'Release Sketch Libraries'
+    needs: [smoke-test, storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Publish Sketch Library Basic'
+        uses: ./.github/actions/docker-run
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-sketch
+          args: sketch/basic
+      - name: 'Publish Sketch Library Web'
+        uses: ./.github/actions/docker-run
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-sketch
+          args: sketch/web
