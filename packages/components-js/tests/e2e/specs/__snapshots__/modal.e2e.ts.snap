@@ -16,31 +16,31 @@ Object {
           "name": "Some Heading",
           "role": "heading",
         },
+      ],
+      "name": "",
+      "role": "HeaderAsNonLandmark",
+    },
+    Object {
+      "children": Array [
         Object {
           "children": Array [
             Object {
               "children": Array [
                 Object {
-                  "children": Array [
-                    Object {
-                      "name": "Close modal",
-                      "role": "StaticText",
-                    },
-                  ],
-                  "name": "",
-                  "role": "generic",
+                  "name": "Close modal",
+                  "role": "StaticText",
                 },
               ],
-              "name": "Close modal",
-              "role": "button",
+              "name": "",
+              "role": "generic",
             },
           ],
-          "name": "",
-          "role": "generic",
+          "name": "Close modal",
+          "role": "button",
         },
       ],
       "name": "",
-      "role": "HeaderAsNonLandmark",
+      "role": "generic",
     },
     Object {
       "name": "Some Content",
