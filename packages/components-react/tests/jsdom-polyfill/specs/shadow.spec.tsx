@@ -7,7 +7,63 @@ import {
   PTextareaWrapper,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import { render, fireEvent, getByRole } from '@testing-library/react';
+import { render, fireEvent, GetByRole, getByRole } from '@testing-library/react';
+
+const getHTMLElementsWithShadowRoot = (container: HTMLElement): HTMLElement[] => {
+  return Array.from(container.querySelectorAll<HTMLElement>('*')).filter((el) => !!el.shadowRoot);
+};
+
+const getByRoleShadow = (
+  role: string,
+  container = document.querySelector<HTMLElement>('body > div')
+): ReturnType<GetByRole<HTMLElement>> => {
+  console.log('getByRoleShadow', container.getRootNode().host?.tagName);
+  let resultElement: HTMLElement;
+
+  try {
+    resultElement = getByRole(container, role);
+  } catch (e) {
+    const elements = getHTMLElementsWithShadowRoot(container);
+
+    for (const el of elements) {
+      resultElement = getByRoleShadow(role, el.shadowRoot as unknown as HTMLElement);
+
+      if (resultElement) {
+        break;
+      }
+    }
+  }
+
+  console.log(resultElement.innerHTML);
+
+  return resultElement;
+};
+
+describe('getByRoleShadow()', () => {
+  it('should work', async () => {
+    const { container, getByRole } = render(
+      <>
+        {/*<PButton>Button</PButton>*/}
+        <PTextFieldWrapper>
+          <input type="password" />
+        </PTextFieldWrapper>
+        {/*<PPopover>yo</PPopover>*/}
+      </>
+    );
+
+    await componentsReady();
+
+    expect(getByRoleShadow('button')).toBeInTheDocument();
+    // expect(getByRole('button')).toBeInTheDocument();
+
+    const input = container.querySelector('input');
+
+    expect(input.type).toBe('password');
+    fireEvent.click(getByRoleShadow('button'));
+
+    expect(input.type).toBe('text');
+  });
+});
 
 describe('getByRole()', () => {
   it('should be supported for most form wrappers', async () => {
