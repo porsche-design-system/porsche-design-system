@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- React: `getByRoleShadowed` utility which uses `getByRole` of `@testing-library/dom` internally to support Shadow DOM  
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses `@testing-library/dom` queries internally to support Shadow DOM  
 
 #### Fixed
 - React: `UnhandledPromiseRejectionWarning` when using `skipPorscheDesignSystemCDNRequestsDuringTests()`
