@@ -6,9 +6,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 import type { GetThemedMarkup } from '../helpers';
 import {
-  forceFocusHoverState,
   forceFocusState,
-  forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -17,7 +15,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tabs', '/#tabs')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('tabs-states', async () => {
@@ -52,9 +50,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
       );
 
-      await forceHoverState(page, '.hover > p-tabs p-tabs-item');
       await forceFocusState(page, '.focus > p-tabs p-tabs-item');
-      await forceFocusHoverState(page, '.focus-hover > p-tabs p-tabs-item');
     })
   ).toBeFalsy();
 });

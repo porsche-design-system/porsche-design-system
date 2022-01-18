@@ -1,12 +1,12 @@
-import { getCss } from '../../../../utils';
+import {addImportantToEachRule, getCss} from '../../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': {
+    ':host': addImportantToEachRule({
       display: 'block',
       '&([hidden])': {
         display: 'none',
       },
-    },
+    }),
   });
 };
