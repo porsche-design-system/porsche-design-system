@@ -203,16 +203,41 @@ const button = getByText('SomePorscheDesignSystemButton');
 Simulate.submit('button');
 ```
 
-### getByRole / getByRoleShadowed
+### Queries
 
 You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it uses default `roles`.  
 For example a `<button>` gets the role `button` without
-explicitly setting the attribute. To achieve this it uses
+explicitly setting the attribute. To achieve this it uses [aria-query](https://github.com/A11yance/aria-query) internally which replicates
 the [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree),
 see [documentation](https://testing-library.com/docs/guide-which-query/).
 
-Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for `getByRole`.  
-Simply import from `@porsche-design-system/components-react/testing`.
+Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for `getByRole`.
 
-We also provide test examples in
-our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
+```tsx
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+
+it('should work for PButton', async () => {
+  render(<PButton>Button</PButton>);
+  await componentsReady();
+
+  expect(getByRoleShadowed('button')).toBeInTheDocument();
+});
+```
+
+Other query selectors don't work if you are trying to select an element which is located inside of Shadow DOM.  
+As a solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
+
+```tsx
+import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
+
+it('should work for PAccordion', async () => {
+  render(<PAccordion heading="Headline">Content</PAccordion>);
+  await componentsReady();
+
+  const el = getByTextShadowed('Headline');
+  expect(el).toBeInTheDocument();
+  expect(el.tagName).toBe('BUTTON');
+});
+```
+
+We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
