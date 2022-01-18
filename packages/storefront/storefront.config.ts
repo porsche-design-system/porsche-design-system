@@ -585,10 +585,16 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/help/troubleshooting.md'),
     ],
-    'Browser Compatibility': [
-      // @ts-ignore
-      () => import('@/pages/basics/browser-compatibility.md'),
-    ],
+    'Browser Notifications': {
+      'Browser Compatibility': [
+        // @ts-ignore
+        () => import('@/pages/basics/browser-compatibility.md'),
+      ],
+      'Cookie Notification': [
+        // @ts-ignore
+        () => import('@/pages/basics/browser-compatibility.md'),
+      ],
+    },
   },
   Accessibility: {
     Introduction: [
