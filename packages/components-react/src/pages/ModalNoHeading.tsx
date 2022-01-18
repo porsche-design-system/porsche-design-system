@@ -16,7 +16,7 @@ export const ModalNoHeading = (): JSX.Element => {
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open>Some Content without a heading</PModal>
+        <PModal open>Some Content without a heading that will be covered by the close button</PModal>
       </div>
     </>
   );
