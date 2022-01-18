@@ -29,26 +29,38 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/start-coding/introduction.md'),
     ],
-    Angular: [
+    Angular: {
       // @ts-ignore
-      () => import('@/pages/start-coding/angular.md'),
-    ],
-    React: [
+      'Getting Started': [() => import('@/pages/start-coding/angular/getting-started.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/react.md'),
-    ],
-    'Vanilla Js': [
+      Advanced: [() => import('@/pages/start-coding/angular/advanced.md')],
+    },
+    React: {
       // @ts-ignore
-      () => import('@/pages/start-coding/vanilla-js.md'),
-    ],
-    'Next Js': [
+      'Getting Started': [() => import('@/pages/start-coding/react/getting-started.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/next-js.md'),
-    ],
-    Gatsby: [
+      Testing: [() => import('@/pages/start-coding/react/testing.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/gatsby.md'),
-    ],
+      Advanced: [() => import('@/pages/start-coding/react/advanced.md')],
+    },
+    'Vanilla Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/vanilla-js/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/start-coding/vanilla-js/advanced.md')],
+    },
+    'Next Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
+      // @ts-ignore
+      Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
+    },
+    Gatsby: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/gatsby/getting-started.md')],
+      // @ts-ignore
+      Testing: [() => import('@/pages/start-coding/gatsby/testing.md')],
+    },
   },
   News: {
     Changelog: {
