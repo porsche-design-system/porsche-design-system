@@ -1,7 +1,14 @@
 import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable } from '../../../types';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
+import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
+import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import type { ModalAriaAttributes } from './modal-utils';
+import {
+  getFirstAndLastElement,
+  getFocusableElements,
+  getScrollTopOnTouch,
+  MODAL_ARIA_ATTRIBUTES,
+  setScrollLock,
+} from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
 @Component({
@@ -26,12 +33,16 @@ export class Modal {
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
+  private ariaLabelAttribute: SelectedAriaAttributes<ModalAriaAttributes>;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -61,6 +72,8 @@ export class Modal {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
+    this.ariaLabelAttribute =
+      parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading;
   }
 
   public componentDidUpdate(): void {
@@ -85,7 +98,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          aria-label={this.heading}
+          aria-label={this.ariaLabelAttribute}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {this.heading && (
