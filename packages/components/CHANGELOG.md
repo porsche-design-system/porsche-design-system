@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added 
+- `Modal` aria property
+- `Modal` class for slotted elements to make content full-width
+
 #### Changed
 - `Button Pure` and `Link Pure` removed `position: relative` imposition
 
