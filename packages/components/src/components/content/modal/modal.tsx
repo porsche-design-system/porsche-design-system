@@ -8,6 +8,7 @@ import {
   getScrollTopOnTouch,
   MODAL_ARIA_ATTRIBUTES,
   setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
@@ -72,6 +73,7 @@ export class Modal {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
+    warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     this.ariaLabelAttribute =
       parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading;
   }
@@ -94,7 +96,7 @@ export class Modal {
 
     return (
       <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
-        <aside
+        <div
           class="root"
           role="dialog"
           aria-modal="true"
@@ -102,11 +104,11 @@ export class Modal {
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {this.heading && (
-            <header>
+            <div class="header">
               <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                 {this.heading}
               </PrefixedTagNames.pHeadline>
-            </header>
+            </div>
           )}
           {!this.disableCloseButton && (
             <PrefixedTagNames.pButtonPure
@@ -121,7 +123,7 @@ export class Modal {
             </PrefixedTagNames.pButtonPure>
           )}
           <slot />
-        </aside>
+        </div>
       </Host>
     );
   }
