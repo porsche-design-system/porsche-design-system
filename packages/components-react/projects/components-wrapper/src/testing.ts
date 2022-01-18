@@ -19,10 +19,7 @@ const shadowFactory =
       // rewire parameters
       options = idOrRole;
       idOrRole = container;
-      container =
-        typeof container.querySelector === 'function' && typeof container.querySelectorAll === 'function'
-          ? container
-          : document.body; // body as fallback
+      container = document.body; // body as fallback
     }
 
     try {
