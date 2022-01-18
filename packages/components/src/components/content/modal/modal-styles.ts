@@ -106,16 +106,14 @@ export const getComponentCss = (
         margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
-    '@global': {
-      header: {
-        ...(!disableCloseButton && { marginRight: pxToRemWithUnit(48) }),
-        padding: `0 0 ${pxToRemWithUnit(16)}`,
-        [mediaQuery('m')]: {
-          padding: `0 0 ${pxToRemWithUnit(24)}`,
-        },
-        [mediaQuery('xxl')]: {
-          padding: `0 0 ${pxToRemWithUnit(32)}`,
-        },
+    header: {
+      ...(!disableCloseButton && { marginRight: pxToRemWithUnit(48) }),
+      padding: `0 0 ${pxToRemWithUnit(16)}`,
+      [mediaQuery('m')]: {
+        padding: `0 0 ${pxToRemWithUnit(24)}`,
+      },
+      [mediaQuery('xxl')]: {
+        padding: `0 0 ${pxToRemWithUnit(32)}`,
       },
     },
     '::slotted(div.stretch-to-full-modal-width)': {
