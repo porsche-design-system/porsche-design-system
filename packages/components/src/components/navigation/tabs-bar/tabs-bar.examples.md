@@ -1,4 +1,3 @@
-
 # Tabs Bar
 
 The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
@@ -45,6 +44,8 @@ The `p-tabs-bar` component is detached from the content which belongs to the act
 
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
+
+You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly.
 
 <Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
 
