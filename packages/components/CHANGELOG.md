@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.0-beta.0] - 2022-01-18
+
 #### Added
 - React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses `@testing-library/dom` queries internally to support Shadow DOM  
 
