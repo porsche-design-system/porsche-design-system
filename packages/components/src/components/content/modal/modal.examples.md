@@ -60,6 +60,11 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 <Playground :markup="withoutCloseButton"></Playground>
 
+## Full Width Content
+
+It is possible to ...
+<Playground :markup="fullWidthContent"></Playground>
+
 ## Fullscreen
 
 The Modal supports a `fullscreen` property.
@@ -177,6 +182,12 @@ const ModalPage = (): JSX.Element => {
 `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
+</p-modal>`;
+
+  fullWidthContent =
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal open="false">
+  <div class="stretch-to-full-modal-width:first-child"><img src="../assets/porsche-992-carrera-s.jpg" alt="Porsche 992 Carrera S"/></div>
 </p-modal>`;
 
   fullscreen =
