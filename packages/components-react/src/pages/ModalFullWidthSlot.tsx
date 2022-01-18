@@ -23,7 +23,7 @@ export const ModalFullWidthSlot = (): JSX.Element => {
           <div className="stretch-to-full-modal-width">
             <div style={{ background: 'deeppink', width: '100%', height: 200 }}></div>
           </div>
-          Some Content below a full modal width slotted div
+          Some Content below a full width slotted div
         </PModal>
       </div>
     </>

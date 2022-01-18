@@ -20,7 +20,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         ><div class="stretch-to-full-modal-width">
           <div style="background: deeppink; width: 100%; height: 200px"></div>
         </div>
-        Some Content below a full modal width slotted div</p-modal
+        Some Content below a full width slotted div</p-modal
       >
     </div>
   `,
