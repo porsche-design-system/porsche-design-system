@@ -47,3 +47,5 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
 export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
   return [elements[0], elements[elements.length - 1]];
 };
+export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type ModalAriaAttributes = typeof MODAL_ARIA_ATTRIBUTES[number];
