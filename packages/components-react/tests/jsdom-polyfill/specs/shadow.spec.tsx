@@ -1,5 +1,6 @@
 import {
   componentsReady,
+  PAccordion,
   PButton,
   PCheckboxWrapper,
   PRadioButtonWrapper,
@@ -7,7 +8,11 @@ import {
   PTextareaWrapper,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import {
+  getByLabelTextShadowed,
+  getByRoleShadowed,
+  getByTextShadowed,
+} from '@porsche-design-system/components-react/testing';
 import { render, fireEvent } from '@testing-library/react';
 
 describe('getByRoleShadowed()', () => {
@@ -38,6 +43,53 @@ describe('getByRoleShadowed()', () => {
     expect(input.type).toBe('password');
     fireEvent.click(getByRoleShadowed('button'));
     expect(input.type).toBe('text');
+  });
+});
+
+describe('getByLabelTextShadowed()', () => {
+  it('should work for native input', async () => {
+    render(
+      <label>
+        Message
+        <input type="text" />
+      </label>
+    );
+
+    const el = getByLabelTextShadowed<HTMLInputElement>('Message');
+    expect(el).toBeInTheDocument();
+    expect(el.type).toBe('text');
+  });
+
+  it('should work for PTextFieldWrapper', async () => {
+    render(
+      <PTextFieldWrapper label="Message">
+        <input type="text" />
+      </PTextFieldWrapper>
+    );
+    await componentsReady();
+
+    const el = getByLabelTextShadowed<HTMLInputElement>('Message');
+    expect(el).toBeInTheDocument();
+    expect(el.type).toBe('text');
+  });
+});
+
+describe('getByTextShadowed()', () => {
+  it('should work for native h1', async () => {
+    render(<h1>Headline</h1>);
+
+    const el = getByTextShadowed('Headline');
+    expect(el).toBeInTheDocument();
+    expect(el.tagName).toBe('H1');
+  });
+
+  it('should work for PAccordion', async () => {
+    render(<PAccordion heading="Headline">Content</PAccordion>);
+    await componentsReady();
+
+    const el = getByTextShadowed('Headline');
+    expect(el).toBeInTheDocument();
+    expect(el.tagName).toBe('BUTTON');
   });
 });
 
