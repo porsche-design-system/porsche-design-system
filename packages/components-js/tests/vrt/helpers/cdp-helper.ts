@@ -12,7 +12,7 @@ const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
 const allThemes: ThemeExtendedElectricDark[] = ['light', 'dark', 'light-electric', 'dark-electric'];
-const allStates = ['hover', 'focus', 'focus-hover'];
+const allStates: string[] = ['hover', 'focus', 'focus-hover'];
 
 export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: ThemeExtendedElectricDark) => string;
@@ -28,11 +28,11 @@ export const getBodyMarkup = (getElements: GetMarkup) =>
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: ThemeExtendedElectricDark[] }
+  opts?: { themes?: ThemeExtendedElectricDark[]; states?: string[] }
 ): string => {
-  const { themes = ['light', 'dark'] } = opts ?? {};
+  const { themes = ['light', 'dark'], states = allStates } = opts ?? {};
 
-  return allStates
+  return states
     .map((state) =>
       allThemes
         .filter((theme) => themes.includes(theme))
