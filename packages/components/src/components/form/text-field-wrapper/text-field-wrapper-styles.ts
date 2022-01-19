@@ -4,7 +4,6 @@ import {
   getBaseSlottedStyles,
   getCss,
   getFocusStyles,
-  getThemedColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -16,6 +15,7 @@ import { srOnly } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

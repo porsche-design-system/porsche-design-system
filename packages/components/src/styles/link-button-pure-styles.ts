@@ -6,7 +6,6 @@ import {
   generateTypeScale,
   getFocusStyles,
   getInset,
-  getThemedColors,
   getTransition,
   hasVisibleIcon,
   mergeDeep,
@@ -16,6 +15,7 @@ import {
 import { fontSize, FontSizeLineHeight, srOnly } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
+import { getThemedColors } from './colors';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   display: addImportantToRule(stretch ? 'block' : 'inline-block'),

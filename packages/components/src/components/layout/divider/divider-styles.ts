@@ -1,6 +1,7 @@
-import { buildResponsiveStyles, getCss, getThemedColors } from '../../../utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
 import type { DividerColor, DividerOrientation } from './divider-utils';
 import type { Theme } from '../../../types';
+import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (color: DividerColor, orientation: DividerOrientation, theme: Theme): string => {
   const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);

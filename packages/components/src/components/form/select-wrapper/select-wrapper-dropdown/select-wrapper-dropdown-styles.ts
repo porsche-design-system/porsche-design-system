@@ -3,8 +3,6 @@ import {
   getCss,
   getInset,
   getTextHiddenJssStyle,
-  getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   isThemeDark,
   JssStyle,
@@ -16,6 +14,7 @@ import type { FormState, Theme } from '../../../../types';
 import { color, defaultFontFamilyAndWeight, fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';
+import { getThemedColors, getThemedFormStateColors } from '../../../../styles/colors';
 
 const dropdownPositionVar = '--p-dropdown-position';
 

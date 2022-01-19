@@ -1,12 +1,7 @@
-import {
-  addImportantToRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-} from '../../../../utils';
+import { addImportantToRule, buildSlottedStyles, getBaseSlottedStyles, getCss } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
+import { getThemedColors } from '../../../../styles/colors';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({

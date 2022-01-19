@@ -3,7 +3,6 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedTextColors,
   buildResponsiveStyles,
   paramCaseToCamelCase,
 } from '../../../../utils';
@@ -11,6 +10,7 @@ import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
+import { getThemedTextColors } from '../../../../styles/colors';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {

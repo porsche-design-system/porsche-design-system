@@ -3,7 +3,6 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColors,
   isThemeDark,
   isThemeElectricDark,
   pxToRemWithUnit,
@@ -12,6 +11,7 @@ import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import { JssStyle } from 'jss';
 import { srOnly } from '@porsche-design-system/utilities';
 import { ThemeExtendedElectricDark } from '../../../types';
+import { getThemedColors } from '../../../styles/colors';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);

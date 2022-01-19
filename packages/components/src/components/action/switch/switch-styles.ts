@@ -3,8 +3,6 @@ import {
   buildResponsiveStyles,
   getCss,
   getTextHiddenJssStyle,
-  getThemedColors,
-  getThemedColorsDarken,
   getTransition,
   isThemeElectricLight,
   mergeDeep,
@@ -13,6 +11,7 @@ import {
 import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { color, spacing } from '@porsche-design-system/utilities';
+import { getThemedColors, getThemedColorsDarken } from '../../../styles/colors';
 
 const getColors = (
   checked: boolean,

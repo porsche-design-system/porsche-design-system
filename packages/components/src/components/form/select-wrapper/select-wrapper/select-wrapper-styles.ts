@@ -3,7 +3,6 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColors,
   getTransition,
   isThemeDark,
   mergeDeep,
@@ -16,6 +15,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styl
 import { isVisibleFormState } from '../../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
+import { getThemedColors } from '../../../../styles/colors';
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 

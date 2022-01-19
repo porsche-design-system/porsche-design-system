@@ -3,8 +3,6 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -14,6 +12,7 @@ import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
+import { getThemedColors, getThemedFormStateColors } from '../../../styles/colors';
 
 const theme: Theme = 'light';
 

@@ -1,17 +1,11 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-  mergeDeep,
-} from '../../../../utils';
+import { addImportantToEachRule, buildSlottedStyles, getBaseSlottedStyles, getCss, mergeDeep } from '../../../../utils';
 import type { JssStyle } from '../../../../utils';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 // eslint-disable-next-line no-restricted-imports
 import { titleLarge, headline } from '@porsche-design-system/utilities';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
+import { getThemedColors } from '../../../../styles/colors';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
   return variant === 'large-title' ? titleLarge : headline[(variant as VariantType).slice(-1)];

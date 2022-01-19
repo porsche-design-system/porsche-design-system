@@ -6,14 +6,13 @@ import {
   getFocusStyles,
   getInset,
   GetStylesFunction,
-  getThemedColors,
-  getThemedColorsDarken,
   getTransition,
   isThemeDark,
   pxToRemWithUnit,
 } from '../utils';
 import { color } from '@porsche-design-system/utilities';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
+import { getThemedColors, getThemedColorsDarken } from './colors';
 
 const { darkTheme } = color;
 
