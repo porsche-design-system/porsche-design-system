@@ -15,10 +15,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - `Button Pure` and `Link Pure` removed `position: relative` imposition
 
+### [2.9.0-beta.0] - 2022-01-18
+
+#### Added
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses `@testing-library/dom` queries internally to support Shadow DOM  
+
+#### Fixed
+- React: `UnhandledPromiseRejectionWarning` when using `skipPorscheDesignSystemCDNRequestsDuringTests()`
+
+### [2.8.0] - 2022-01-17
+
+#### Fixed
+- Accessibility issue of `Icon` component in Windows High Contrast Mode in Chromium Browser
+
 ### [2.8.0-rc.0] - 2022-01-14
 
 #### Added
-- support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
+- Support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
 
 #### Changed
 - `:focus-visible` style matches outline color of `Button` while hovered
@@ -26,8 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 - The `tabbable` property of `Button`, `Button Pure` and `Switch` is deprecated and will be removed in `v3.0.0`. Please use `tabindex` instead.
 ```diff
--   <p-button tabbable="false">Some button</p-button>
-+   <p-button tabindex="-1">Some button</p-button>
+- <p-button tabbable="false">Some button</p-button>
++ <p-button tabindex="-1">Some button</p-button>
 ```
 
 ### [2.8.0-beta.3] - 2021-12-22

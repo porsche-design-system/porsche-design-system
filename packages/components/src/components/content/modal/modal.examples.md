@@ -187,7 +187,9 @@ const ModalPage = (): JSX.Element => {
   fullWidthContent =
 `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false">
-  <div class="stretch-to-full-modal-width:first-child"><img src="../assets/porsche-992-carrera-s.jpg" alt="Porsche 992 Carrera S"/></div>
+  <div class="stretch-to-full-modal-width">
+    <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
+  </div>
 </p-modal>`;
 
   fullscreen =
