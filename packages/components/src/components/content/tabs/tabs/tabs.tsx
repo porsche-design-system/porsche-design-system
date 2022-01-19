@@ -54,10 +54,7 @@ export class Tabs {
     this.defineTabsItemElements();
     this.initMutationObserver();
     this.observeProperties();
-  }
-
-  public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public componentDidLoad(): void {
