@@ -2,6 +2,7 @@ import { componentsReady, PSwitch } from '@porsche-design-system/components-reac
 import { render } from '@testing-library/react';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
 
 const Sample = (): JSX.Element => {
   const [checked, setChecked] = useState(false);
@@ -24,25 +25,22 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PSwitch', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
+});
 
-  it('should have working events', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have working events', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    const debug = getByTestId('debug');
-    // TODO: does this test makes sense if jsdom is not able to execute and delegate click on custom element to shadowed button?
-    const button = getByTestId('host').shadowRoot.querySelector('button');
+  const debug = getByTestId('debug');
+  const button = getByRoleShadowed('switch');
 
-    expect(debug.innerHTML).toBe('Checked: false; Event Counter: 0;');
+  expect(debug.innerHTML).toBe('Checked: false; Event Counter: 0;');
 
-    userEvent.click(button);
-    expect(debug.innerHTML).toBe('Checked: true; Event Counter: 1;');
-  });
+  userEvent.click(button);
+  expect(debug.innerHTML).toBe('Checked: true; Event Counter: 1;');
 });
