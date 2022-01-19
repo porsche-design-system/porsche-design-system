@@ -585,16 +585,10 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/help/troubleshooting.md'),
     ],
-    'Browser Notifications': {
-      'Browser Compatibility': [
-        // @ts-ignore
-        () => import('@/pages/basics/browser-compatibility.md'),
-      ],
-      'Cookie Notification': [
-        // @ts-ignore
-        () => import('@/pages/basics/browser-compatibility.md'),
-      ],
-    },
+    'Browser Compatibility': [
+      // @ts-ignore
+      () => import('@/pages/basics/browser-compatibility.md'),
+    ],
   },
   Accessibility: {
     Introduction: [
@@ -715,6 +709,16 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/partials/meta-tags-and-icon-links.md'),
     ],
+    Notifications: {
+      'Browser Notification': [
+        // @ts-ignore
+        () => import('@/pages/partials/browser-notification.md'),
+      ],
+      'Cookie Notification': [
+        // @ts-ignore
+        () => import('@/pages/partials/cookie-notification.md'),
+      ],
+    },
   },
   Performance: {
     Cdn: [
