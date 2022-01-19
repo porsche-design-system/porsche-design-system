@@ -1,0 +1,34 @@
+{
+  "name": "@porsche-design-system/utilities-v2",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "main": "dist/jss/public-api.js",
+  "module": "dist/jss/esm/public-api.js",
+  "types": "dist/jss/types/public-api.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean:build && yarn build:jss:typography && yarn build:jss:bundle",
+    "build:jss:typography": "ts-node 'scripts/buildTypography.ts'",
+    "build:jss:bundle": "rollup -c rollup.config.js",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/lib"
+  },
+  "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "jss": "^10.9.0",
+    "rollup": "^2.56.1",
+    "tslib": "^2.3.0",
+    "ts-node": "^10.3.0",
+    "typescript": "~4.4.3"
+  },
+  "dependencies": {
+    "csstype": "^3.0.9"
+  }
+}

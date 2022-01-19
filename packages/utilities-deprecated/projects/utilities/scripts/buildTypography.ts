@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, fontWeight, FontWeight, mediaQuery } from '../src/js';
+import { font, fontWeight, mediaQuery } from '../src/js';
 import { pascalCase } from 'change-case';
 
 const buildTypography = (): void => {
