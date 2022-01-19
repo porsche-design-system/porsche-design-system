@@ -231,11 +231,12 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     if (code.innerHTML.includes('Your content of Tab')) {
       const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
       panels.forEach((panel, i) => {
-        panel.setAttribute('hidden', '');
-        panel.setAttribute('tabindex', '-1');
         if (i === newIndex) {
           panel.removeAttribute('hidden');
           panel.setAttribute('tabindex', '0');
+        } else {
+          panel.setAttribute('hidden', '');
+          panel.setAttribute('tabindex', '-1');
         }
       });
     }
