@@ -11,7 +11,7 @@
   <p-text>Your content of Tab 2</p-text>
 </div>
 <div id="tab-panel-3" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-3">
-  <p-text>Your content of  Tab 3</p-text>
+  <p-text>Your content of Tab 3</p-text>
 </div>
 
 <script>
@@ -31,26 +31,29 @@
         panel.setAttribute('tabindex', '0');
       }
     });
-  }
+  };
 
-  tabsBars.forEach((tabsBar) => tabsBar.addEventListener('tabChange', (e) => {
-    onTabChange(e);
-    updateActiveTabIndex(e.target, e.detail.activeTabIndex);
-  }));
+  // remove array
+  tabsBars.forEach((tabsBar) =>
+    tabsBar.addEventListener('tabChange', (e) => {
+      onTabChange(e);
+      updateActiveTabIndex(e.target, e.detail.activeTabIndex);
+    })
+  );
 </script>
 
 <style>
-  div[role=tabpanel] {
+  div[role='tabpanel'] {
     outline: 1px solid transparent;
     outline-offset: 1px;
     margin-top: 8px;
   }
 
-  div[role=tabpanel]:focus {
+  div[role='tabpanel']:focus {
     outline-color: black;
   }
 
-  div[role=tabpanel]:focus:not(:focus-visible) {
+  div[role='tabpanel']:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 </style>
