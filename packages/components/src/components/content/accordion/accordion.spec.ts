@@ -21,7 +21,7 @@ describe('accordion', () => {
     });
   });
 
-  describe('connectedCallback()', () => {
+  describe('connectedCallback', () => {
     it('should not add resize event listener to window if ResizeObserver is available', () => {
       const component = new Accordion();
       const utilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
