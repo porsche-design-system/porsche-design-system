@@ -26,7 +26,7 @@ describe('select-wrapper-dropdown', () => {
     });
   });
 
-  describe('componentDidRender()', () => {
+  describe('componentDidRender', () => {
     it('should call handleScroll()', () => {
       const component = initComponent();
 
