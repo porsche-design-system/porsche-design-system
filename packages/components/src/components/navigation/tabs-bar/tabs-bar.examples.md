@@ -42,12 +42,12 @@ In order to get notified when the active tabs change, you need to register an ev
 
 The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
-To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
+To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`.
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
 You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly.
 
-<Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
+<Playground class="playground-tabs-bar" :frameworkMarkup="codeExample" :markup="accessibility" :config="config"></Playground>
 
 ---
 ## Active Tab
@@ -92,6 +92,7 @@ The background and gradient has to align to your chosen background.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com">Tab ${name}</a>`;
@@ -102,6 +103,8 @@ const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  codeExample = getTabsBarCodeSamples();
 
   frameworks = {
     'vanilla-js': `tabsBar.addEventListener('tabChange', (e) => {
@@ -183,10 +186,10 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     
   mounted(){
-    // initially update tabsBars with activeTabIndex attribute in playground
+    /* initially update tabsBars with activeTabIndex attribute in playground */
    this.updateAndRegister();
     
-    // theme switch needs to register event listeners again
+    /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
     themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
@@ -206,7 +209,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
     tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
 
-    //bind tabsBars with activeTabIndex set as attribute
+    /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
       this.onTabChange(e);
@@ -214,60 +217,26 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     }));
   }
   
-  hiddenNodes = null;
-  onTabChange = (e: CustomEvent) => {
-    e.target.activeTabIndex = e.detail.activeTabIndex;
+  onTabChange =  (e: CustomEvent) => {
+      e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 
   updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
-    // manipulate code section only in order to not rerender component and loose animations
+    /* manipulate code only section only in order to not rerender component and loose animations */
     const example = tabs.parentElement.parentElement;
     const demo = example.querySelector('.demo');
     const code = example.querySelector('code');
-    const attrs = code.querySelectorAll('.token:first-child .attr-value');
 
-    
-    // manipulate activeTabIndex
-    if (attrs.length) {
-      attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
-    }
-    
-    // manipulate hidden attribute in code of accessibility playground
+    /* manipulate hidden attribute in code of accessibility playground */
     if (code.innerHTML.includes('Your content of Tab')) {
-      if (!this.hiddenNodes) {
-        this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-      }
-
-      // hide/show and adjust offset of hidden attribute
-      for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
-        const item = this.hiddenNodes.snapshotItem(i);
-        item.style.marginLeft = '';
-        item.innerText = 'hidden';
-        
-        if (i === newIndex) {
-          item.style.marginLeft = '-9px';
-          item.innerText = '';
-        }
-      }
-
-      // change tabindex attribute in GUI
-      [9, 13, 17].forEach((index) => {
-        const tabindex = code.querySelectorAll(`.token:nth-child(${index}) .attr-value`)[1];
-        if ((index-9)/4 === newIndex) {
-          tabindex.innerText = '="0"';
-        } else {
-          tabindex.innerText = '="-1"';
-        }
-      });
-
-
+      
       const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
       panels.forEach((panel, i) => {
         panel.setAttribute('hidden', '');
-        panel.tabIndex = -1;
+        panel.setAttribute('tabindex', '-1');
         if (i === newIndex) {
           panel.removeAttribute('hidden');
-          panel.tabIndex = 0;
+          panel.setAttribute('tabindex', '0');
         }
       });
     }
@@ -280,21 +249,19 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   ::v-deep div[role=tabpanel] {
     outline: 1px solid transparent;
-    -webkit-appearance: none;
-    appearance: none;
     outline-offset: 1px;
     margin-top: p-px-to-rem(8px);
   }
 
-  ::v-deep .example--light div[role=tabpanel]:focus {  
+  ::v-deep .example--light div[role=tabpanel]:focus {
     outline-color: black;
   }
 
-  ::v-deep .example--dark div[role=tabpanel]:focus {  
+  ::v-deep .example--dark div[role=tabpanel]:focus {
     outline-color: white;
   }
 
-  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {  
+  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 </style>
