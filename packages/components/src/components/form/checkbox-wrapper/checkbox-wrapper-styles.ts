@@ -24,7 +24,7 @@ export const getComponentCss = (
   const size = pxToRemWithUnit(24);
   const hasVisibleState = isVisibleFormState(state);
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const iconColor = backgroundColor.replace('#', '%23');
 
   return getCss({
@@ -49,7 +49,7 @@ export const getComponentCss = (
           backgroundColor,
           transition: ['border-color', 'background-color'].map(getTransition).join(','),
           opacity: 1,
-          border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
+          border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
           borderRadius: 0,
           outline: '1px solid transparent',
           outlineOffset: '2px',
@@ -62,11 +62,11 @@ export const getComponentCss = (
           backgroundImage: `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="${iconColor}" d="M3 11h18v1H3z"/></svg>')`,
         },
         '&(input:checked), &(input:indeterminate)': {
-          borderColor: stateColor || contrastHighColor,
-          backgroundColor: stateColor || contrastHighColor,
+          borderColor: formStateColor || contrastHighColor,
+          backgroundColor: formStateColor || contrastHighColor,
         },
         '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
-          borderColor: stateHoverColor || baseColor,
+          borderColor: formStateHoverColor || baseColor,
         },
         '&(input:indeterminate:disabled), &(input:checked:disabled)': {
           backgroundColor: disabledColor,
@@ -76,7 +76,7 @@ export const getComponentCss = (
           cursor: 'not-allowed',
         },
         '&(input:focus)': {
-          outlineColor: stateColor || contrastMediumColor,
+          outlineColor: formStateColor || contrastMediumColor,
         },
         '&(input:focus:not(:focus-visible))': {
           outlineColor: 'transparent',

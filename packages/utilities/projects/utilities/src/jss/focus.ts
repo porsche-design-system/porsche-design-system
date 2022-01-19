@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 
-export type GetFocusStylesOptions = {
+type GetFocusStylesOptions = {
   color?: string;
   offset?: string;
 };

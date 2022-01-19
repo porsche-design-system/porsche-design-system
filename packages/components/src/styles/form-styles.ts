@@ -3,13 +3,12 @@ import {
   addImportantToRule,
   BreakpointCustomizable,
   buildResponsiveStyles,
-  colorDarken,
   getFormTextHiddenJssStyle,
   getInset,
   getThemedColors,
   getThemedFormStateColors,
   getTransition,
-  isDark,
+  isThemeDark,
   pxToRemWithUnit,
 } from '../utils';
 import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
@@ -28,7 +27,7 @@ export const getBaseChildStyles = (
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
   const { disabled } = color.state; // 🤷 no theming here
@@ -48,7 +47,7 @@ export const getBaseChildStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
+      border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
@@ -60,10 +59,10 @@ export const getBaseChildStyles = (
       ...additionalDefaultJssStyle,
     },
     [`::slotted(${child}:hover)`]: {
-      borderColor: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
+      borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
     },
     [`::slotted(${child}:focus)`]: {
-      outlineColor: stateColor || contrastMediumColor,
+      outlineColor: formStateColor || contrastMediumColor,
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
@@ -94,6 +93,7 @@ export const getLabelStyles = (
   additionalRefForInputHover?: string
 ): Styles => {
   const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
   return {
@@ -129,7 +129,7 @@ export const getLabelStyles = (
       '&:hover': {
         [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
         (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
-          borderColor: addImportantToRule(hasVisibleState ? colorDarken.notification[state] : baseColor),
+          borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
         },
       },
     },

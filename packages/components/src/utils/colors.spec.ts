@@ -1,9 +1,9 @@
-import { colorDarken, getThemedColors, getThemedColorsDarken, getThemedFormStateColors } from './colors';
+import { colorDarkenMap, getThemedColors, getThemedColorsDarken, getThemedFormStateColors } from './colors';
 import type { Theme, FormState, ThemeExtendedElectric, ThemeExtendedElectricDark } from '../types';
 
 describe('colorDarken', () => {
   it('should contain darker colors', () => {
-    expect(colorDarken).toMatchSnapshot();
+    expect(colorDarkenMap).toMatchSnapshot();
   });
 });
 

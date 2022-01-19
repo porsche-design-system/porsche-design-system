@@ -4,8 +4,8 @@ import {
   getBaseSlottedStyles,
   getCss,
   getThemedColors,
-  isDark,
-  isDarkElectric,
+  isThemeDark,
+  isThemeElectricDark,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
@@ -50,7 +50,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isDark(theme) || isDarkElectric(theme) ? baseColor : contrastHighColor,
+        stroke: isThemeDark(theme) || isThemeElectricDark(theme) ? baseColor : contrastHighColor,
         '&:first-child': {
           opacity: 0.4,
         },
