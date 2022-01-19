@@ -48,8 +48,9 @@ If the Modal's content does not fit into the current boundaries the content beco
 
 ## Without Heading
 
-Passing a `heading` to the modal is optional. 
-Add hint about adding content padding to fit close button
+Passing a `heading` to the modal is optional.
+Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.
+Make sure to add proper margin or padding to your content, so that the close button does not cover up your content.
 
 <Playground :markup="withoutHeading"></Playground>
 
@@ -63,8 +64,9 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Full Width Content
 
-It is possible to ...
-Add hint about not using a heading and setting aria property when using full width container
+It is possible to make containers stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
+Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.
+Make sure to omit the `heading` when using the `stretch-to-full-modal-width` class.
 
 <Playground :markup="fullWidthContent"></Playground>
 
@@ -177,7 +179,7 @@ const ModalPage = (): JSX.Element => {
 
   withoutHeading =
 `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false">
+<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
