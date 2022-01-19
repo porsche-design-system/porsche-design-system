@@ -1,8 +1,8 @@
 # Notification
 
-## Browser Notification
-
 <TableOfContents></TableOfContents>
+
+## Browser Notification
 
 ### Install
 
