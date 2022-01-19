@@ -1,8 +1,8 @@
 # Notification
 
-## Cookie Notification 
-
 <TableOfContents></TableOfContents>
+
+## Cookie Notification 
 
 ### Install
 
