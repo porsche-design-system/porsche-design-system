@@ -2,78 +2,6 @@
 
 <TableOfContents></TableOfContents>
 
-## Quick start
-
-To build your own application with the **React** components of Porsche Design System, follow these steps:
-
-- Follow the instructions at (Introduction)[/start-coding/introduction] to get the required npm package
-- Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
-  create a directory inside the current folder with the initial project structure called `my-app`
-- To add TypeScript to your **Create React App**, you have to install it:
-
-```shell script
-// install with yarn:
-yarn add typescript @types/node @types/react @types/react-dom @types/jest
-
-// install with npm:
-npm install typescript @types/node @types/react @types/react-dom @types/jest
-```
-
-- Install the Porsche Design System
-
-```shell script
-// install with yarn:
-yarn add @porsche-design-system/components-react
-
-// install with npm:
-npm install @porsche-design-system/components-react
-```
-
-You are ready to start building your own application.
-
-### Integration
-
-The following project is a standard React (Create React App) setup extended by the
-necessary `PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
-
-```tsx
-// index.tsx
-
-import ReactDOM from 'react-dom';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import './index.css';
-import { App } from './App';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <PorscheDesignSystemProvider>
-      <App />
-    </PorscheDesignSystemProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-```
-
-Change your App file to use at least one Porsche Design System component, for example:
-
-```tsx
-// App.tsx
-
-import { PHeadline } from '@porsche-design-system/components-react';
-
-export const App = (): JSX.Element => (
-  <div className="App">
-    <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
-  </div>
-);
-```
-
-Run `yarn start` or `npm start` and check if the components are displayed correctly.
-
-## When are Porsche Design System components initialized?
-
-See [componentsReady()](helpers/components-ready) for further information.
-
 ## Test the application
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
@@ -164,15 +92,15 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 });
 ```
 
-### Hints about PorscheDesignSystemProvider
+## Hints about PorscheDesignSystemProvider
 
 It might be rather redundant to wrap every single test with `PorscheDesignSystemProvider`.  
 Therefore, we offer the following advice.
 
-#### Custom helper
+### Custom helper
 
 To reduce repetitive code you can write a custom helper function that wraps a component in `PorscheDesignSystemProvider`
-and calls the `render` function of `react-testing-library`:
+and calls the `render` function of `@testing-library/react`:
 
 ```tsx
 // helper.tsx
@@ -185,7 +113,7 @@ export const renderWithProvider = (component: JSX.Element): RenderResult => {
 };
 ```
 
-#### Disabling the validation of PorscheDesignSystemProvider
+### Disabling the validation of PorscheDesignSystemProvider
 
 Alternatively we provide a utility function `skipCheckForPorscheDesignSystemProviderDuringTests()` that can be used
 within your tests.  
@@ -221,7 +149,7 @@ describe('SomeComponent', () => {
 });
 ```
 
-#### Disabling CDN requests from Porsche Design System and components
+### Disabling CDN requests from Porsche Design System and components
 
 We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests 
 when you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup.  
@@ -257,9 +185,11 @@ describe('SomeComponent', () => {
 });
 ```
 
-### Additional information when using react-testing-library
+## Additional information when using @testing-library/react
 
-If you try to submit a form via button click you will encounter issues with `react-testing-library` and `jsdom`. It is
+### Form Submission
+
+If you try to submit a form via button click you will encounter issues with `@testing-library/react` and `jsdom`. It is
 simply not provided (see [Github Issue 755](https://github.com/testing-library/react-testing-library/issues/755)
 and [Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
 
@@ -273,64 +203,41 @@ const button = getByText('SomePorscheDesignSystemButton');
 Simulate.submit('button');
 ```
 
-You are not able to use `getByRole` to query Porsche Design System components when using testing-library.
-Testing-library is taking default `roles` in consideration. For example a `<button>` gets the role `button` without
-explicitly setting the attribute. To achieve this it uses
+### Queries
+
+You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it uses default `roles`.  
+For example a `<button>` gets the role `button` without
+explicitly setting the attribute. To achieve this it uses [aria-query](https://github.com/A11yance/aria-query) internally which replicates
 the [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree),
 see [documentation](https://testing-library.com/docs/guide-which-query/).
 
-We also provide test examples in
-our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
-
-## Advanced usage
-
-### Prefixing
-
-In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
-a final application. This could cause conflicts due to the way how custom webcomponents are registered in the browser.
-During the bootstrap phase of the Porsche Design System, custom elements are defined. If a second application wants to
-register Porsche Design System again it will cause issues especially when different versions are used.
-
-A way of preventing those conflicts is by using a unique custom prefix for the components. Simply pass your desired
-prefix to the `prefix` property of `PorscheDesignSystemProvider`.
+Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for `getByRole`.
 
 ```tsx
-// index.tsx
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
 
-import ReactDOM from 'react-dom';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import { App } from './App';
+it('should work for PButton', async () => {
+  render(<PButton>Button</PButton>);
+  await componentsReady();
 
-ReactDOM.render(
-  <React.StrictMode>
-    <PorscheDesignSystemProvider prefix="sample-prefix">
-      <App />
-    </PorscheDesignSystemProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  expect(getByRoleShadowed('button')).toBeInTheDocument();
+});
 ```
 
-In the following example the `PHeadline` component will render as `<sample-prefix-p-headline>`.
+Other query selectors don't work if you are trying to select an element which is located inside of Shadow DOM.  
+As a solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
 
 ```tsx
-// App.tsx
+import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
-import { PHeadline } from '@porsche-design-system/components-react';
+it('should work for PAccordion', async () => {
+  render(<PAccordion heading="Headline">Content</PAccordion>);
+  await componentsReady();
 
-export const App = (): JSX.Element => (
-  <PHeadline>Some headline</PHeadline>
-)
+  const el = getByTextShadowed('Headline');
+  expect(el).toBeInTheDocument();
+  expect(el.tagName).toBe('BUTTON');
+});
 ```
 
-## Sample integration
-
-We provide a public Github repository with a basic sample project setup to show how it is managed in real code. You can
-find the repository of the React example project
-here: [Sample integration React](https://github.com/porscheui/sample-integration-react)
-
-### Get the project up and running
-
-- Clone the repository by executing  
-  `git clone https://github.com/porscheui/sample-integration-react.git`
-- Follow the installation guidelines in the README.md file
+We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).

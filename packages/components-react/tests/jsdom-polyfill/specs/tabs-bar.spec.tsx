@@ -28,32 +28,30 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PTabsBar', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
+});
 
-  it('should have working events', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have working events', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    const debug = getByTestId('debug');
-    const button1 = getByTestId('button1');
-    const button2 = getByTestId('button2');
-    const button3 = getByTestId('button3');
+  const debug = getByTestId('debug');
+  const button1 = getByTestId('button1');
+  const button2 = getByTestId('button2');
+  const button3 = getByTestId('button3');
 
-    expect(debug.innerHTML).toBe('Active Tab: 1; Event Counter: 0;');
+  expect(debug.innerHTML).toBe('Active Tab: 1; Event Counter: 0;');
 
-    userEvent.click(button2);
-    expect(debug.innerHTML).toBe('Active Tab: 2; Event Counter: 1;');
+  userEvent.click(button2);
+  expect(debug.innerHTML).toBe('Active Tab: 2; Event Counter: 1;');
 
-    userEvent.click(button3);
-    expect(debug.innerHTML).toBe('Active Tab: 3; Event Counter: 2;');
+  userEvent.click(button3);
+  expect(debug.innerHTML).toBe('Active Tab: 3; Event Counter: 2;');
 
-    userEvent.click(button1);
-    expect(debug.innerHTML).toBe('Active Tab: 1; Event Counter: 3;');
-  });
+  userEvent.click(button1);
+  expect(debug.innerHTML).toBe('Active Tab: 1; Event Counter: 3;');
 });

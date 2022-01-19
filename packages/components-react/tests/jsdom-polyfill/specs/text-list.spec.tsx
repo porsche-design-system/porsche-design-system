@@ -9,12 +9,10 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PTextList', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host-list').shadowRoot).not.toBeNull();
-    expect(getByTestId('host-list-item').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host-list').shadowRoot).not.toBeNull();
+  expect(getByTestId('host-list-item').shadowRoot).not.toBeNull();
 });
