@@ -1,8 +1,10 @@
-# Cookie Notification 
+# Notification
+
+## Cookie Notification 
 
 <TableOfContents></TableOfContents>
 
-## Install
+### Install
 
 The Cookie Notification partial is provided by the `@porsche-design-system/browser-notification`. 
 
@@ -17,7 +19,7 @@ npm install @porsche-design-system/browser-notification
 yarn add @porsche-design-system/browser-notification
 ```
 
-## Usage
+### Usage
 
 We provide an overlay variant which asks the visitor to activate his cookies.
 
@@ -28,7 +30,7 @@ Include the **Cookie Notification** into your project by importing and calling t
 | **enabled**                | ✗           |
 | **disabled**               | ✓           |
 
-### React / Vue JS
+#### React / Vue JS
 
 ```html
 <!DOCTYPE html>
@@ -46,7 +48,7 @@ Include the **Cookie Notification** into your project by importing and calling t
 </html>
 ```
 
-### Angular / Vanilla JS
+#### Angular / Vanilla JS
 
 ```
 // index.html
@@ -60,7 +62,7 @@ Include the **Cookie Notification** into your project by importing and calling t
 }
 ```
 
-## Translations
+### Translations
 
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
@@ -73,7 +75,7 @@ The **Browser Notification** is looking once as soon as the script initializes f
 
 If none of these languages can be found, it will fall back to `en`.
 
-## Troubleshooting
+### Troubleshooting
 
 There always might be a case where something goes wrong. Here are some possible answers:
 

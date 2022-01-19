@@ -1,8 +1,10 @@
-# Browser Notification
+# Notification
+
+## Browser Notification
 
 <TableOfContents></TableOfContents>
 
-## Install
+### Install
 
 The Browser Notification partials are provided in the `@porsche-design-system/browser-notification`. 
 
@@ -16,13 +18,13 @@ npm install @porsche-design-system/browser-notification
 yarn add @porsche-design-system/browser-notification
 ```
 
-## Usage
+### Usage
 
 We provide two notifications variants to show the user the corresponding information in regard to its used browser.
 
 Include the **Browser Notification** into your project by importing and calling the provided `includeBanner()` or `includeOverlay()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script). This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
 
-### Banner notification
+#### Banner notification
 
 The **Banner** variant is meant to inform the user if they access the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
 
@@ -34,7 +36,7 @@ Integration through `includeBanner()` partial.
 | **IE <= 11**                | ✓           |
 | **Microsoft Edge Chromium** | ✗           |
 
-### Overlay notification
+#### Overlay notification
 
 The **Overlay** variant is meant to inform the user when they access the application if their browser doesn't support **custom elements**
 or browser technologies like [**IntersectionObserver**](https://caniuse.com/?search=intersectionobserver) and [**MutationObserver**](https://caniuse.com/?search=mutationobserver) which are required to render the Porsche Design System components.
@@ -49,7 +51,7 @@ Integration through `includeOverlay()` partial.
 | **MutationObserver != true**                                                                    | ✓           |
 | **Custom elements && IntersectionObserver && MutationObserver**                                 | ✗           |
 
-### React / Vue JS
+#### React / Vue JS
 
 ```html
 <!DOCTYPE html>
@@ -68,7 +70,7 @@ Integration through `includeOverlay()` partial.
 </html>
 ```
 
-### Angular / Vanilla JS
+#### Angular / Vanilla JS
 
 ```
 // index.html
@@ -83,7 +85,7 @@ Integration through `includeOverlay()` partial.
 }
 ```
 
-## Translations
+### Translations
 
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
@@ -96,7 +98,7 @@ The **Browser Notification** is looking once as soon as the script initializes f
 
 If none of these languages can be found, it will fall back to `en`.
 
-## Troubleshooting
+### Troubleshooting
 
 There always might be a case where something goes wrong. Here are some possible answers:
 
