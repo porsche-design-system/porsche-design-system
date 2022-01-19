@@ -1,0 +1,56 @@
+<p-tabs-bar active-tab-index="0">
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
+  <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
+</p-tabs-bar>
+
+<div id="tab-panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-item-1">
+  <p-text>Your content of Tab 1</p-text>
+</div>
+<div id="tab-panel-2" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-2">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div id="tab-panel-3" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-3">
+  <p-text>Your content of  Tab 3</p-text>
+</div>
+
+<script>
+  const tabsBars = document.querySelectorAll('p-tabs-bar');
+
+  onTabChange = (e) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
+  };
+
+  updateActiveTabIndex = (tabs, newIndex = 0) => {
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+    panels.forEach((panel, i) => {
+      panel.setAttribute('hidden', '');
+      panel.setAttribute('tabindex', '-1');
+      if (i === newIndex) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('tabindex', '0');
+      }
+    });
+  }
+
+  tabsBars.forEach((tabsBar) => tabsBar.addEventListener('tabChange', (e) => {
+    onTabChange(e);
+    updateActiveTabIndex(e.target, e.detail.activeTabIndex);
+  }));
+</script>
+
+<style>
+  div[role=tabpanel] {
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    margin-top: 8px;
+  }
+
+  div[role=tabpanel]:focus {
+    outline-color: black;
+  }
+
+  div[role=tabpanel]:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+</style>
