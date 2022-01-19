@@ -23,24 +23,22 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PToast', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
+});
 
-  it('should have working useToastManager hook', async () => {
-    const { getByTestId, getByRole } = render(<Sample />);
-    await componentsReady();
+it('should have working useToastManager hook', async () => {
+  const { getByTestId, getByRole } = render(<Sample />);
+  await componentsReady();
 
-    const debug = getByTestId('debug');
-    expect(debug.innerHTML).toBe('Event Counter: 0;');
+  const debug = getByTestId('debug');
+  expect(debug.innerHTML).toBe('Event Counter: 0;');
 
-    const button = getByRole('button');
-    userEvent.click(button);
-    await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
-    await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull());
-  });
+  const button = getByRole('button');
+  userEvent.click(button);
+  await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
+  await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull());
 });
