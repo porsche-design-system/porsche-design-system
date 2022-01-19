@@ -39,10 +39,10 @@ export default {
     modify({
       // icon svgs
       find: /(const pdsFetch = \(input, init\) =>) (fetch\(input, init\);)/,
-      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
+      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? Promise.resolve({ ok:true, text: () => ''}) : ${$2}`,
     }),
     modify({
-      // marque
+      // marque assets
       find: /(const picture =)( (?:.|\s)*?;)/,
       replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),

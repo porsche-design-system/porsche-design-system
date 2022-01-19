@@ -5,11 +5,9 @@ const Sample = (): JSX.Element => {
   return <PMarque data-testid="host" />;
 };
 
-describe('PMarque', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
 });
