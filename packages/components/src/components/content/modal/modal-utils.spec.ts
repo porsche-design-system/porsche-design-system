@@ -1,4 +1,10 @@
-import { getFirstAndLastElement, getScrollTopOnTouch, getFocusableElements, setScrollLock } from './modal-utils';
+import {
+  getFirstAndLastElement,
+  getScrollTopOnTouch,
+  getFocusableElements,
+  setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
+} from './modal-utils';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
 import * as domUtils from '../../../utils/dom';
 
@@ -147,5 +153,22 @@ describe('getFirstAndLastElement()', () => {
     ],
   ])('should be called with %j and return %j', (initArray: any, resultArray) => {
     expect(getFirstAndLastElement(initArray)).toEqual(resultArray);
+  });
+});
+
+describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
+  beforeEach(() => {
+    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  });
+
+  it('should print warning when aria and heading props are undefined', () => {
+    const host = document.createElement('p-modal');
+
+    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
+    warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
+    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', undefined);
+    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
+    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
+    expect(console.warn).toBeCalledTimes(2);
   });
 });
