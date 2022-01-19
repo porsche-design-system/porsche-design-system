@@ -1,7 +1,4 @@
-import {
-  PTabsBar,
-  PText
-} from '@porsche-design-system/components-react';
+import { PTabsBar, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
@@ -14,9 +11,11 @@ export const TabsBarExamplePage = (): JSX.Element => {
   return (
     <>
       <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>
-        <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
-        <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
-        <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
+        {['One', 'Two', 'Three'].map((tabPanel, idx) => (
+          <button type="button" id={`tab-item-${idx + 1}`} aria-controls={`tab-panel-${idx + 1}`}>
+            Tab {tabPanel}
+          </button>
+        ))}
       </PTabsBar>
 
       <style>{`
@@ -32,15 +31,18 @@ export const TabsBarExamplePage = (): JSX.Element => {
           outline-color: transparent;
         }
       `}</style>
-      <div id="tab-panel-1" hidden={tabIndex === 0 ? false : true} tabIndex={tabIndex === 0 ? 0 : -1} role="tabpanel" aria-labelledby="tab-item-1">
-        <PText>Your content of Tab 1</PText>
-      </div>
-      <div id="tab-panel-2" hidden={tabIndex === 1 ? false : true} tabIndex={tabIndex === 1 ? 0 : -1} role="tabpanel" aria-labelledby="tab-item-2">
-        <PText>Your content of Tab 2</PText>
-      </div>
-      <div id="tab-panel-3" hidden={tabIndex === 2 ? false : true} tabIndex={tabIndex === 2 ? 0 : -1} role="tabpanel" aria-labelledby="tab-item-3">
-        <PText>Your content of Tab 3</PText>
-      </div>
+
+      {[0, 1, 2].map((idx) => (
+        <div
+          role="tabpanel"
+          id={`tab-panel-${idx + 1}`}
+          hidden={tabIndex !== idx}
+          tabIndex={tabIndex === idx ? 0 : -1}
+          aria-labelledby={`tab-item-${idx + 1}`}
+        >
+          <PText>Your content of Tab {idx + 1}</PText>
+        </div>
+      ))}
     </>
   );
 };

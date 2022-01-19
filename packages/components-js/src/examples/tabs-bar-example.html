@@ -15,8 +15,6 @@
 </div>
 
 <script>
-  const tabsBars = document.querySelectorAll('p-tabs-bar');
-
   onTabChange = (e) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   };
@@ -24,22 +22,21 @@
   updateActiveTabIndex = (tabs, newIndex = 0) => {
     const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
     panels.forEach((panel, i) => {
-      panel.setAttribute('hidden', '');
-      panel.setAttribute('tabindex', '-1');
       if (i === newIndex) {
         panel.removeAttribute('hidden');
         panel.setAttribute('tabindex', '0');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('tabindex', '-1');
       }
     });
   };
 
-  // remove array
-  tabsBars.forEach((tabsBar) =>
-    tabsBar.addEventListener('tabChange', (e) => {
-      onTabChange(e);
-      updateActiveTabIndex(e.target, e.detail.activeTabIndex);
-    })
-  );
+  const tabsBar = document.querySelector('p-tabs-bar');
+  tabsBar.addEventListener('tabChange', (e) => {
+    onTabChange(e);
+    updateActiveTabIndex(e.target, e.detail.activeTabIndex);
+  });
 </script>
 
 <style>
@@ -48,11 +45,9 @@
     outline-offset: 1px;
     margin-top: 8px;
   }
-
   div[role='tabpanel']:focus {
     outline-color: black;
   }
-
   div[role='tabpanel']:focus:not(:focus-visible) {
     outline-color: transparent;
   }
