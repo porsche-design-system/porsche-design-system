@@ -1,17 +1,17 @@
-import type { Theme, ThemeExtendedElectricDark } from '../types';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 
-export const isDark = (theme: ThemeExtendedElectricDark): boolean => {
+export const isThemeDark = (theme: Theme): boolean => {
   return theme === 'dark';
 };
 
-export const isLightElectric = (theme: ThemeExtendedElectricDark): boolean => {
+export const isThemeElectricLight = (theme: Theme): boolean => {
   return theme === 'light-electric';
 };
 
-export const isDarkElectric = (theme: ThemeExtendedElectricDark): boolean => {
+export const isThemeElectricDark = (theme: Theme): boolean => {
   return theme === 'dark-electric';
 };
 
 export const getThemeDarkAttribute = (theme: Theme): { theme: Extract<Theme, 'dark'> } | null => {
-  return isDark(theme) ? { theme: 'dark' } : null;
+  return isThemeDark(theme) ? { theme: 'dark' } : null;
 };

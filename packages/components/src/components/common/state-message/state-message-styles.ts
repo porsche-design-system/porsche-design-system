@@ -7,7 +7,7 @@ export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: Fo
     message: {
       display: 'flex',
       marginTop: spacing[4],
-      color: getThemedFormStateColors(theme, state).stateColor,
+      color: getThemedFormStateColors(theme, state).formStateColor,
       transition: getTransition('color'),
       '&__icon': {
         marginRight: spacing[4],

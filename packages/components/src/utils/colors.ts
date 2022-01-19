@@ -1,129 +1,42 @@
-import { color } from '@porsche-design-system/utilities';
-import type { FormState, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark, TextColor } from '../types';
-import { isDark, isDarkElectric, isLightElectric } from './theme';
+import type { Theme, ThemeDefault } from '@porsche-design-system/utilities-v2';
+import type { FormState, TextColor } from '../types';
+import { color } from '@porsche-design-system/utilities-v2';
 
-type ColorDarkenTheme = {
-  default: string;
-  neutralContrast: {
-    high: string;
-  };
-  notification: {
-    success: string;
-    error: string;
-  };
-  state: {
-    hover: string;
-  };
-};
+type ThemedColorsKey =
+  | 'baseColor'
+  | 'brandColor'
+  | 'backgroundColor'
+  | 'backgroundSurfaceColor'
+  | 'contrastLowColor'
+  | 'contrastMediumColor'
+  | 'contrastHighColor'
+  | 'hoverColor'
+  | 'activeColor'
+  | 'focusColor'
+  | 'disabledColor'
+  | 'errorColor'
+  | 'errorSoftColor'
+  | 'successColor'
+  | 'successSoftColor'
+  | 'warningColor'
+  | 'warningSoftColor'
+  | 'neutralColor'
+  | 'neutralSoftColor';
 
-const lightThemeDarken: ColorDarkenTheme = {
-  default: '#000',
-  neutralContrast: {
-    high: '#151718',
-  },
-  notification: {
-    success: '#014d0c',
-    error: '#a30000',
-  },
-  state: {
-    hover: '#980014',
-  },
-};
-
-const darkThemeDarken: ColorDarkenTheme = {
-  default: '#e0e0e0',
-  neutralContrast: {
-    high: '#c3c5c8',
-  },
-  notification: {
-    success: '#017d14',
-    error: '#d30303',
-  },
-  state: {
-    hover: '#c4001a',
-  },
-};
-
-const lightElectricThemeDarken: ColorDarkenTheme = {
-  ...lightThemeDarken,
-  state: {
-    hover: '#0084b7',
-  },
-};
-
-type ColorDarken = ColorDarkenTheme & {
-  darkTheme: ColorDarkenTheme;
-  lightElectricTheme: ColorDarkenTheme;
-};
-
-export const colorDarken: ColorDarken = {
-  ...lightThemeDarken,
-  darkTheme: darkThemeDarken,
-  lightElectricTheme: lightElectricThemeDarken,
-};
+type ThemedColors = { [key in ThemedColorsKey]: string };
 
 type ThemedColorsDarken = {
-  baseColorDarken: string;
-  contrastHighColorDarken: string;
-  successColorDarken: string;
-  errorColorDarken: string;
-  hoverColorDarken: string;
+  [K in keyof Pick<
+    ThemedColors,
+    'baseColor' | 'contrastHighColor' | 'successColor' | 'errorColor' | 'hoverColor'
+  > as `${K}Darken`]: string;
 };
 
-const getStaticThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
+const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
-    default: baseColorDarken,
-    neutralContrast: { high: contrastHighColorDarken },
-    state: { hover: hoverColorDarken },
-    notification: { error: errorColorDarken, success: successColorDarken },
-  } = isDark(theme) ? colorDarken.darkTheme : isLightElectric(theme) ? colorDarken.lightElectricTheme : colorDarken;
-
-  return {
-    baseColorDarken,
-    contrastHighColorDarken,
-    successColorDarken,
-    errorColorDarken,
-    hoverColorDarken,
-  };
-};
-
-const themedColorsDarken: { [key in ThemeExtendedElectric]: ThemedColorsDarken } = {
-  light: getStaticThemedColorsDarken('light'),
-  dark: getStaticThemedColorsDarken('dark'),
-  'light-electric': getStaticThemedColorsDarken('light-electric'),
-};
-
-export const getThemedColorsDarken = (theme: ThemeExtendedElectric): ThemedColorsDarken => {
-  return themedColorsDarken[theme];
-};
-
-type ThemedColors = {
-  baseColor: string;
-  brandColor: string;
-  backgroundColor: string;
-  backgroundSurfaceColor: string;
-  contrastLowColor: string;
-  contrastMediumColor: string;
-  contrastHighColor: string;
-  hoverColor: string;
-  activeColor: string;
-  focusColor: string;
-  disabledColor: string;
-  errorColor: string;
-  errorSoftColor: string;
-  successColor: string;
-  successSoftColor: string;
-  warningColor: string;
-  warningSoftColor: string;
-  neutralColor: string;
-  neutralSoftColor: string;
-};
-
-const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
-  const {
-    default: baseColor,
+    base: baseColor,
     brand: brandColor,
-    background: { default: backgroundColor, surface: backgroundSurfaceColor },
+    background: { base: backgroundColor, surface: backgroundSurfaceColor },
     neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
@@ -136,13 +49,7 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = isDark(theme)
-    ? color.darkTheme
-    : isLightElectric(theme)
-    ? color.lightElectricTheme
-    : isDarkElectric(theme)
-    ? color.darkElectricTheme
-    : color;
+  } = color[theme];
 
   return {
     baseColor,
@@ -167,47 +74,96 @@ const getStaticThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors =
   };
 };
 
-const themedColors: { [key in ThemeExtendedElectricDark]: ThemedColors } = {
+// color map is created once, which boosts performance instead of reinitializing it each time within function call
+const themedColorsMap: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
   'light-electric': getStaticThemedColors('light-electric'),
   'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
-export const getThemedColors = (theme: ThemeExtendedElectricDark): ThemedColors => {
-  return themedColors[theme];
+export const getThemedColors = (theme: Theme): ThemedColors => {
+  return themedColorsMap[theme];
+};
+
+const themeLightDarken: ThemedColorsDarken = {
+  baseColorDarken: '#000',
+  contrastHighColorDarken: '#151718',
+  successColorDarken: '#014d0c',
+  errorColorDarken: '#a30000',
+  hoverColorDarken: '#980014',
+};
+
+const themeDarkDarken: ThemedColorsDarken = {
+  baseColorDarken: '#e0e0e0',
+  contrastHighColorDarken: '#c3c5c8',
+  successColorDarken: '#017d14',
+  errorColorDarken: '#d30303',
+  hoverColorDarken: '#c4001a',
+};
+
+const themeLightElectricDarken: ThemedColorsDarken = {
+  ...themeLightDarken,
+  hoverColorDarken: '#0084b7',
+};
+
+const themeDarkElectricDarken: ThemedColorsDarken = {
+  ...themeDarkDarken,
+  hoverColorDarken: '#0084b7',
+};
+
+// color map is created once, which boosts performance instead of reinitializing it each time within function call
+const themedColorsDarkenMap: { [key in Theme]: ThemedColorsDarken } = {
+  light: themeLightDarken,
+  dark: themeDarkDarken,
+  'light-electric': themeLightElectricDarken,
+  'dark-electric': themeDarkElectricDarken,
+};
+
+export const getThemedColorsDarken = (theme: Theme): ThemedColorsDarken => {
+  return themedColorsDarkenMap[theme];
 };
 
 type ThemedFormStateColors = {
-  stateColor: string | undefined;
-  stateHoverColor: string | undefined;
+  formStateColor: string | undefined;
+  formStateHoverColor: string | undefined;
 };
 
-const getStaticThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
-  const isDarkTheme = isDark(theme);
-
+const getStaticThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
   return {
-    stateColor: (isDarkTheme ? color.darkTheme : color).notification[state],
-    stateHoverColor: (isDarkTheme ? colorDarken.darkTheme : colorDarken).notification[state],
+    formStateColor: getThemedColors(theme)[`${state}ColorDarken`],
+    formStateHoverColor: getThemedColorsDarken(theme)[`${state}ColorDarken`],
   };
 };
 
-const themedFormStateColorsLight: { [key in FormState]: ThemedFormStateColors } = {
+const themeLightFormState: { [key in FormState]: ThemedFormStateColors } = {
   success: getStaticThemedFormStateColors('light', 'success'),
   error: getStaticThemedFormStateColors('light', 'error'),
   none: getStaticThemedFormStateColors('light', 'none'),
 };
-const themedFormStateColorsDark: { [key in FormState]: ThemedFormStateColors } = {
+
+const themeDarkFormState: { [key in FormState]: ThemedFormStateColors } = {
   success: getStaticThemedFormStateColors('dark', 'success'),
   error: getStaticThemedFormStateColors('dark', 'error'),
   none: getStaticThemedFormStateColors('dark', 'none'),
 };
 
-export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
-  return isDark(theme) ? themedFormStateColorsDark[state] : themedFormStateColorsLight[state];
+// color map is created once, which boosts performance instead of reinitializing it each time within function call
+const themedFormStateColorsMap: {
+  [themeDefault in ThemeDefault]: {
+    [formState in FormState]: ThemedFormStateColors;
+  };
+} = {
+  light: themeLightFormState,
+  dark: themeDarkFormState,
 };
 
-export const getThemedTextColor = (textColor: TextColor, theme: ThemeExtendedElectricDark): string => {
+// TODO: Could also be part of getThemedColors()?
+export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
+  return themedFormStateColorsMap[theme][state];
+};
+
+export const getThemedTextColors = (theme: Theme, textColor: TextColor): string => {
   const {
     baseColor,
     brandColor,
@@ -220,6 +176,7 @@ export const getThemedTextColor = (textColor: TextColor, theme: ThemeExtendedEle
     neutralColor,
   } = getThemedColors(theme);
 
+  // TODO: shouldn't color map be extracted too? isn't it more like a text/icon style mapper and should live somewhere else?
   const colorMap: { [key in TextColor]: string } = {
     brand: brandColor,
     default: baseColor,

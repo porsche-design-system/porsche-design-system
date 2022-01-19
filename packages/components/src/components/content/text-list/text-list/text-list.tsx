@@ -5,7 +5,7 @@ import {
   getClosestHTMLElement,
   getPrefixedTagNames,
   getThemeDarkAttribute,
-  isDark,
+  isThemeDark,
   updateChildren,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
@@ -53,7 +53,7 @@ export class TextList {
 
     const rootClasses = {
       ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
+      ['root--theme-dark']: isThemeDark(this.theme),
     };
 
     return (

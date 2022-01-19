@@ -5,7 +5,7 @@ import {
   getCss,
   getThemedColors,
   getTransition,
-  isDark,
+  isThemeDark,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../../utils';
@@ -20,7 +20,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../../common/state-
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
 export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
-  const isDarkTheme = isDark(theme);
+  const isDarkTheme = isThemeDark(theme);
   const { baseColor, backgroundColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
 

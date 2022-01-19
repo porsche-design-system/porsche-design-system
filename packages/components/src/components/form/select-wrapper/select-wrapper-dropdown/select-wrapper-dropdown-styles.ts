@@ -6,7 +6,7 @@ import {
   getThemedColors,
   getThemedFormStateColors,
   getTransition,
-  isDark,
+  isThemeDark,
   JssStyle,
   mergeDeep,
   pxToRemWithUnit,
@@ -21,7 +21,7 @@ const dropdownPositionVar = '--p-dropdown-position';
 
 export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { contrastHighColor, contrastMediumColor } = getThemedColors(theme);
-  const { stateColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor } = getThemedFormStateColors(theme, state);
 
   return {
     '@global': {
@@ -32,17 +32,17 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         width: '100%',
         padding: 0,
         background: 'transparent',
-        border: `${stateColor ? 2 : 1}px solid currentColor`,
+        border: `${formStateColor ? 2 : 1}px solid currentColor`,
         outline: '1px solid transparent',
         outlineOffset: '2px',
         cursor: 'pointer',
         color: 'currentColor',
         transition: getTransition('color'),
         ...(isOpen && {
-          outlineColor: stateColor || contrastMediumColor,
+          outlineColor: formStateColor || contrastMediumColor,
         }),
         '&:focus': {
-          outlineColor: stateColor || contrastMediumColor,
+          outlineColor: formStateColor || contrastMediumColor,
         },
         '&:hover:not(:disabled) ~ ul': {
           borderColor: contrastHighColor,
@@ -57,7 +57,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
 
 export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const { stateColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor } = getThemedFormStateColors(theme, state);
 
   const placeHolderStyles: JssStyle = {
     opacity: 1,
@@ -92,7 +92,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         '&:focus': {
           opacity: disabled ? 0 : 1, // to display value while typing
           '&+span': {
-            outlineColor: stateColor || contrastMediumColor,
+            outlineColor: formStateColor || contrastMediumColor,
           },
         },
         '&:hover:not(:disabled) ~ ul': {
@@ -107,9 +107,9 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
           transition: getTransition('color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
-          border: `${stateColor ? 2 : 1}px solid currentColor`,
+          border: `${formStateColor ? 2 : 1}px solid currentColor`,
           ...(isOpen && {
-            outlineColor: stateColor || contrastMediumColor,
+            outlineColor: formStateColor || contrastMediumColor,
           }),
         },
       },
@@ -119,7 +119,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
 
 export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
-  const isDarkTheme = isDark(theme);
+  const isDarkTheme = isThemeDark(theme);
   const {
     baseColor,
     backgroundColor,
@@ -258,7 +258,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { baseColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
     ':host': {
@@ -269,10 +269,10 @@ export const getComponentCss = (
       paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
       left: 0,
       right: 0,
-      color: disabled ? disabledColor : stateColor || contrastMediumColor,
+      color: disabled ? disabledColor : formStateColor || contrastMediumColor,
       ...(!disabled && {
         '&(:hover)': {
-          color: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
+          color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
         },
       }),
     },

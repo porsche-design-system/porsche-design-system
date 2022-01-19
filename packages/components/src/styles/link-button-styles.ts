@@ -9,7 +9,7 @@ import {
   getThemedColors,
   getThemedColorsDarken,
   getTransition,
-  isDark,
+  isThemeDark,
   pxToRemWithUnit,
 } from '../utils';
 import { color } from '@porsche-design-system/utilities';
@@ -152,7 +152,7 @@ export const getLinkButtonStyles = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectric
 ): Styles => {
-  const isDarkTheme = isDark(theme);
+  const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
   const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
   const { disabledColor } = getThemedColors(theme);

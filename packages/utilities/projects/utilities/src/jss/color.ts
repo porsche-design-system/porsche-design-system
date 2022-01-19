@@ -1,5 +1,5 @@
 export type ThemeDefault = 'light' | 'dark';
-export type ThemeElectric = 'electric-light' | 'electric-dark';
+export type ThemeElectric = 'light-electric' | 'dark-electric';
 export type Theme = ThemeDefault | ThemeElectric;
 
 type ColorTheme = {
@@ -112,7 +112,7 @@ export const themeDark: ColorTheme = {
   },
 };
 
-export const themeElectricLight: ColorTheme = {
+export const themeLightElectric: ColorTheme = {
   ...themeLight,
   brand: '#00b0f4',
   state: {
@@ -122,7 +122,7 @@ export const themeElectricLight: ColorTheme = {
   },
 };
 
-export const themeElectricDark: ColorTheme = {
+export const themeDarkElectric: ColorTheme = {
   ...themeDark,
   brand: '#00b0f4',
   state: {
@@ -152,9 +152,7 @@ export const colorExternal: ColorExternal = {
 export const color = {
   light: themeLight,
   dark: themeDark,
-  electric: {
-    light: themeElectricLight,
-    dark: themeElectricDark,
-  },
+  'light-electric': themeLightElectric,
+  'dark-electric': themeDarkElectric,
   external: colorExternal,
 };

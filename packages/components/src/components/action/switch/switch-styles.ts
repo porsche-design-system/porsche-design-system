@@ -6,7 +6,7 @@ import {
   getThemedColors,
   getThemedColorsDarken,
   getTransition,
-  isLightElectric,
+  isThemeElectricLight,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -31,7 +31,7 @@ const getColors = (
   const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
     getThemedColors(theme);
   const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
-  const isLightElectricTheme = isLightElectric(theme);
+  const isLightElectricTheme = isThemeElectricLight(theme);
   const checkedColor = isLightElectricTheme ? brandColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
 

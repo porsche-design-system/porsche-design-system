@@ -7,7 +7,7 @@ import {
   getFocusStyles,
   getThemedColorsDarken,
   getTransition,
-  isDark,
+  isThemeDark,
   pxToRemWithUnit,
 } from '../../../utils';
 import { color } from '@porsche-design-system/utilities';
@@ -19,7 +19,7 @@ const getColors = (
   icon: SocialIconName,
   theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
-  const isDarkTheme = isDark(theme);
+  const isDarkTheme = isThemeDark(theme);
   const { darkTheme } = color;
   const { contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
   const externalBrandColor = color.external[icon?.split('-')[1]];

@@ -1,7 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import { breakpoint, color, fontWeight, srOnly } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
-import { isDark } from '.';
+import { isThemeDark } from '.';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 
@@ -45,7 +45,7 @@ export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'ligh
   return {
     transition: getTransition('color'),
     '&:hover': {
-      color: (isDark(theme) ? color.darkTheme : color).state.hover,
+      color: (isThemeDark(theme) ? color.darkTheme : color).state.hover,
     },
   };
 };
