@@ -6,19 +6,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "name": "Some Heading",
-              "role": "StaticText",
-            },
-          ],
-          "level": 1,
           "name": "Some Heading",
-          "role": "heading",
+          "role": "StaticText",
         },
       ],
-      "name": "",
-      "role": "HeaderAsNonLandmark",
+      "level": 1,
+      "name": "Some Heading",
+      "role": "heading",
     },
     Object {
       "children": Array [
