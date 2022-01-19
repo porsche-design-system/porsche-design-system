@@ -23,29 +23,7 @@ The following showcases the most common ways.
 
 **Note:** Make sure to preload only components chunks which are really needed initially!
 
-<PartialDocs name="getComponentChunkLinks" params="{ components: ['button', 'marque'] }" location="head"></PartialDocs>
-
-
-```html
-// index.html
-
-<head>
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ components: ['button', 'marque'] }) %>
-</head>
-
-<head>
-  // force using China CDN
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ cdn: 'cn' }) %>
-</head>
-
-<head>
-  // without link tags
-  // first element is core which needs to be loaded with crossorigin attribute
-  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ withoutTags: true, components: ['button'] })[0] %>" crossorigin>
-  // further elements are the ones passed into components array
-  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ withoutTags: true, components: ['button'] })[1] %>">
-</head>
-```
+<PartialDocs name="getComponentChunkLinks" :params="params" location="head"></PartialDocs>
 
 You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
@@ -56,6 +34,25 @@ import { COMPONENT_CHUNK_NAMES } from '../../../../components-js/projects/compon
 
 @Component
 export default class Code extends Vue {
-  public componentChunks: string = COMPONENT_CHUNK_NAMES.map(x => `'${x}'`).join(' | ');
+  public componentChunks = COMPONENT_CHUNK_NAMES.map(x => `'${x}'`).join(' | ');
+  public params = [
+    {
+      value: "{ components: ['button', 'marque'] }"
+    },
+    {
+      value: "{ cdn: 'cn' }",
+      comment: 'force using China CDN'
+    },
+    {
+      value: "{ withoutTags: true, components: ['button'] }",
+      comment: 'first element is core which needs to be loaded with crossorigin attribute',
+      usage: `<link rel="preload" href="<%= $$$PARTIAL$$$[0] %>" crossorigin>`
+    },
+    {
+      value: "{ withoutTags: true, components: ['button'] }",
+      comment: 'further elements are the ones passed into components array',
+      usage: `<link rel="preload" href="<%= $$$PARTIAL$$$[1] %>">`
+    }
+  ];
 }
 </script>

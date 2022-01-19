@@ -17,4 +17,29 @@ To achieve this bootstrapping **earlier** we provide a partial called `getLoader
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
 
-<PartialDocs name="getLoaderScript"></PartialDocs>
+<PartialDocs name="getLoaderScript" :params="params"></PartialDocs>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  public params = [
+    { 
+      value: ""
+    },
+    { 
+      value: "{ prefix: 'my-prefix' }",
+      comment: 'With custom prefix'
+    },
+    { 
+      value: "{ prefix: ['my-prefix', 'another-prefix'] }",
+      comment: 'With multiple custom prefixes'
+    },
+    {
+      value: "{ withoutTags: true }"
+    }
+  ];
+}
+</script>
