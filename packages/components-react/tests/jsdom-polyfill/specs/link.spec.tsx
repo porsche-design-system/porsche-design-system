@@ -9,11 +9,9 @@ const Sample = (): JSX.Element => {
   );
 };
 
-describe('PLink', () => {
-  it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-    await componentsReady();
+it('should have initialized shadow dom', async () => {
+  const { getByTestId } = render(<Sample />);
+  await componentsReady();
 
-    expect(getByTestId('host').shadowRoot).not.toBeNull();
-  });
+  expect(getByTestId('host').shadowRoot).not.toBeNull();
 });

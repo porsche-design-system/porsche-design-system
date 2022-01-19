@@ -53,4 +53,14 @@ export default [
     },
     plugins: [typescript(typescriptOpts)],
   },
+  {
+    input: `${BASE_DIR}/src/testing.ts`,
+    external: ['@testing-library/dom'],
+    output: {
+      dir: DIST_DIR,
+      format: 'cjs',
+      exports: 'named',
+    },
+    plugins: [typescript(typescriptOpts)],
+  },
 ];
