@@ -1,0 +1,5 @@
+# compiled output
+/dist
+
+# auto generated lib
+/src/jss/lib

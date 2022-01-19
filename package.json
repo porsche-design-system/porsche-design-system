@@ -13,6 +13,7 @@
       "packages/components-react/dist/components-wrapper",
       "packages/components-react/projects/uxpin-wrapper",
       "packages/utilities-deprecated/projects/utilities",
+      "packages/utilities/projects/utilities",
       "packages/shared/dist"
     ],
     "nohoist": [
