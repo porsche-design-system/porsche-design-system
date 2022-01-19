@@ -116,7 +116,7 @@ export const getComponentCss = (
         padding: `0 0 ${pxToRemWithUnit(32)}`,
       },
     },
-    '::slotted(div.stretch-to-full-modal-width)': {
+    '::slotted(div.stretch-to-full-modal-width)': addImportantToEachRule({
       margin: `0 ${pxToRemWithUnit(-32)} 0`,
       [mediaQuery('m')]: {
         margin: `0 ${pxToRemWithUnit(-40)} 0`,
@@ -124,8 +124,8 @@ export const getComponentCss = (
       [mediaQuery('xxl')]: {
         margin: `0 ${pxToRemWithUnit(-64)} 0`,
       },
-    },
-    '::slotted(div.stretch-to-full-modal-width:first-child)': {
+    }),
+    '::slotted(div.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
       marginTop: pxToRemWithUnit(-32),
       [mediaQuery('m')]: {
         marginTop: pxToRemWithUnit(-40),
@@ -133,7 +133,7 @@ export const getComponentCss = (
       [mediaQuery('xxl')]: {
         marginTop: pxToRemWithUnit(-64),
       },
-    },
+    }),
     close: {
       padding: pxToRemWithUnit(6),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,

@@ -49,6 +49,7 @@ If the Modal's content does not fit into the current boundaries the content beco
 ## Without Heading
 
 Passing a `heading` to the modal is optional. 
+Add hint about adding content padding to fit close button
 
 <Playground :markup="withoutHeading"></Playground>
 
