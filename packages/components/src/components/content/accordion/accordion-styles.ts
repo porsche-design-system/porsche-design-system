@@ -2,7 +2,6 @@ import {
   buildResponsiveStyles,
   getCss,
   getFocusStyles,
-  getThemedColors,
   getTransition,
   pxToRemWithUnit,
   transitionDuration,
@@ -11,6 +10,7 @@ import type { BreakpointCustomizable } from '../../../utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
 import { fontFamily, fontWeight, fontSize, spacing } from '@porsche-design-system/utilities';
+import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,

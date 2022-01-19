@@ -5,7 +5,6 @@ import {
   buildResponsiveStyles,
   getCss,
   getFocusStyles,
-  getThemedColorsDarken,
   getTransition,
   isThemeDark,
   pxToRemWithUnit,
@@ -14,6 +13,7 @@ import { color } from '@porsche-design-system/utilities';
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
+import { getThemedColorsDarken } from '../../../styles/colors';
 
 const getColors = (
   icon: SocialIconName,

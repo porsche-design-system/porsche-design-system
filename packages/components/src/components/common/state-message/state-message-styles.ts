@@ -1,6 +1,7 @@
 import { FormState, Theme } from '../../../types';
-import { getThemedFormStateColors, getTransition, Styles } from '../../../utils';
+import { getTransition, Styles } from '../../../utils';
 import { spacing } from '@porsche-design-system/utilities';
+import { getThemedFormStateColors } from '../../../styles/colors';
 
 export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
   return {

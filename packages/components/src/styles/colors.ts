@@ -176,7 +176,7 @@ export const getThemedTextColors = (theme: Theme, textColor: TextColor): string 
     neutralColor,
   } = getThemedColors(theme);
 
-  // TODO: shouldn't color map be extracted too? isn't it more like a text/icon style mapper and should live somewhere else?
+  // TODO: isn't it more like a text/icon style mapper and should live somewhere else?
   const colorMap: { [key in TextColor]: string } = {
     brand: brandColor,
     default: baseColor,

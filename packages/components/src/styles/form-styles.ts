@@ -5,8 +5,6 @@ import {
   buildResponsiveStyles,
   getFormTextHiddenJssStyle,
   getInset,
-  getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   isThemeDark,
   pxToRemWithUnit,
@@ -15,6 +13,7 @@ import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-sys
 import type { FormState, Theme } from '../types';
 import type { JssStyle } from '../utils';
 import { isVisibleFormState } from '../utils/form-state';
+import { getThemedColors, getThemedFormStateColors } from './colors';
 
 export const INPUT_HEIGHT = 48;
 

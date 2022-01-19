@@ -1,9 +1,10 @@
-import { addImportantToRule, getCss, mergeDeep, getThemedColors } from '../../../utils';
+import { addImportantToRule, getCss, mergeDeep } from '../../../utils';
 import { headline4, headline5, spacing } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabelSize, hasLabel: boolean): string => {
   const theme: Theme = 'light';

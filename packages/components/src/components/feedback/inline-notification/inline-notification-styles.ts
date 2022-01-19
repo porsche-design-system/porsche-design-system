@@ -3,13 +3,13 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColors,
   JssStyle,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
+import { getThemedColors } from '../../../styles/colors';
 
 const mediaQueryS = mediaQuery('s');
 

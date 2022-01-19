@@ -3,7 +3,6 @@ import {
   buildSlottedStyles,
   getBaseSlottedStyles,
   getCss,
-  getThemedColors,
   mergeDeep,
   pxToRemWithUnit,
 } from '../../../utils';
@@ -13,6 +12,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
