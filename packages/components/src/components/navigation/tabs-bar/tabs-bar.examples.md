@@ -229,7 +229,6 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
     /* manipulate hidden attribute in code of accessibility playground */
     if (code.innerHTML.includes('Your content of Tab')) {
-      
       const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
       panels.forEach((panel, i) => {
         panel.setAttribute('hidden', '');
