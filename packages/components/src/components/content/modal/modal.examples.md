@@ -63,6 +63,8 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 ## Full Width Content
 
 It is possible to ...
+Add hint about not using a heading and setting aria property when using full width container
+
 <Playground :markup="fullWidthContent"></Playground>
 
 ## Fullscreen
