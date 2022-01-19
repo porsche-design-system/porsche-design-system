@@ -298,6 +298,11 @@ export const routes: RouteType[] = [
     component: fromExamples.TableExampleAdvancedPage,
   },
   {
+    name: 'Tabs Bar Example',
+    path: '/tabs-bar-example',
+    component: fromExamples.TabsBarExamplePage,
+  },
+  {
     name: 'Toast Example',
     path: '/toast-example',
     component: fromExamples.ToastExamplePage,
