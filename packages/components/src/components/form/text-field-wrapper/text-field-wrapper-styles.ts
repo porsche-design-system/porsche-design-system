@@ -11,7 +11,7 @@ import type { BreakpointCustomizable } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
-import { srOnly } from '@porsche-design-system/utilities';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -98,7 +98,7 @@ export const getComponentCss = (
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-only': {
-      ...srOnly(),
+      ...getScreenReaderOnlyJssStyle(),
       padding: 0,
     },
     ...(hasUnitOrCounter && {

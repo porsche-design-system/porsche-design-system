@@ -1,9 +1,10 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, fontWeight, srOnly } from '@porsche-design-system/utilities';
+import { breakpoint, color, fontWeight } from '@porsche-design-system/utilities';
 import type { JssStyle, Styles } from '.';
 import { isThemeDark } from '.';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -176,7 +177,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
 
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
   isHidden
-    ? (srOnly() as JssStyle)
+    ? getScreenReaderOnlyJssStyle()
     : {
         position: 'static',
         width: 'auto',

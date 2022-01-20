@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import { JssStyle } from 'jss';
-import { srOnly } from '@porsche-design-system/utilities';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { ThemeExtendedElectricDark } from '../../../types';
 import { getThemedColors } from '../../../styles/colors';
 
@@ -41,7 +41,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
       boxSizing: 'border-box',
       strokeWidth: 1,
     },
-    'sr-only': srOnly(),
+    'sr-only': getScreenReaderOnlyJssStyle(),
     '@global': {
       svg: {
         display: 'block',
