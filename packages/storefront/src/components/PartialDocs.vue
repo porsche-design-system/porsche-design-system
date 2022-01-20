@@ -14,18 +14,27 @@
     comment?: string;
   };
 
+  type PartialPackageName = 'components' | 'browser-notification';
+
   @Component
   export default class PartialDocs extends Vue {
     @Prop({ default: '' }) public name!: string;
     @Prop({ default: [{ value: '' }] }) public params!: Param[];
     @Prop({ default: 'body' }) public location!: string;
-
+    @Prop({ default: 'components' }) public partialPackageName!: PartialPackageName;
     public get activeFramework(): Framework {
       return this.$store.getters.selectedFramework;
     }
 
     public get frameworkMarkup(): FrameworkMarkup {
-      const partialPackage = '@porsche-design-system/components-js/partials'.replace('js', this.activeFramework);
+      const isComponents = this.partialPackageName === 'components';
+      const packageName = isComponents ? `${this.partialPackageName}-js/partials'` : this.partialPackageName;
+
+      let partialPackage = `@porsche-design-system/${packageName}`;
+      if (isComponents) {
+        partialPackage = '@porsche-design-system/components-js/partials'.replace('js', this.activeFramework);
+      }
+
       const glue = '\n  ';
 
       const angularPartials = this.params
