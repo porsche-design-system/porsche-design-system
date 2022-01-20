@@ -123,18 +123,18 @@ const ModalPage = (): JSX.Element => {
   mounted() {
     this.registerEvents();
     
-    // workaround for iOS 13.x masking modal within example
+    /* workaround for iOS 13.x masking modal within example */
     document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
 
-    // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
-    // timeout is needed for component to render 
+    /* workaround for iOS 13.x not respecting flex-wrap: wrap; correctly */ 
+    /* timeout is needed for component to render */
     setTimeout(() => {
       document.getElementById('modal-scrollable').shadowRoot.querySelector('.root').style.alignSelf = 'start'
     }, 1000);
   }
 
   updated() {
-    // event handling is registered again on every update since markup is changing and references are lost
+    /* event handling is registered again on every update since markup is changing and references are lost */
     this.registerEvents();
   }
 
