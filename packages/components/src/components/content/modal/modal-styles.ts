@@ -122,28 +122,27 @@ export const getComponentCss = (
       },
     }),
     header: {
-      ...(!disableCloseButton && { marginRight: pxToRemWithUnit(48) }),
-      padding: `0 0 ${pxToRemWithUnit(16)}`,
+      ...(!disableCloseButton && {
+        marginRight: pxToRemWithUnit(32),
+      }),
+      paddingBottom: pxToRemWithUnit(16),
       [mediaQuery('m')]: {
-        padding: `0 0 ${pxToRemWithUnit(24)}`,
+        paddingBottom: pxToRemWithUnit(24),
       },
       [mediaQuery('xxl')]: {
-        padding: `0 0 ${pxToRemWithUnit(32)}`,
+        paddingBottom: pxToRemWithUnit(32),
+        ...(!disableCloseButton && { marginRight: 0 }),
       },
     },
     '::slotted(div.stretch-to-full-modal-width)': getSlottedFullWidthStyles(false),
     '::slotted(div.stretch-to-full-modal-width:first-child)': getSlottedFullWidthStyles(true),
     close: {
-      padding: pxToRemWithUnit(6),
+      padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
       backgroundColor: color.background.default,
       position: 'absolute',
-      right: pxToRemWithUnit(24),
-      top: pxToRemWithUnit(24),
-      [mediaQuery('m')]: {
-        right: pxToRemWithUnit(40),
-        top: pxToRemWithUnit(40),
-      },
+      top: pxToRemWithUnit(1),
+      right: pxToRemWithUnit(1),
     },
   });
 };
