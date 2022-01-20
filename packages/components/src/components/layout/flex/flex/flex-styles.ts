@@ -14,7 +14,7 @@ import type {
 } from './flex-utils';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
-import { addImportantToEachRule } from '../../../../styles/styles';
+import { addImportantToEachRule } from '../../../../styles/common';
 
 const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
   display: inline ? 'inline-flex' : 'flex',

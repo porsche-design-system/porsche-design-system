@@ -1,5 +1,5 @@
 import { getCss } from '../../../utils';
-import { addImportantToRule, getFocusStyles, mediaQuery } from '../../../styles/styles';
+import { addImportantToRule, getFocusStyles, mediaQuery } from '../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 import type { MarqueSize } from './marque-utils';
 import type { JssStyle } from '../../../utils';

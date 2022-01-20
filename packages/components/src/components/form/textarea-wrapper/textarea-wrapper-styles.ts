@@ -1,7 +1,7 @@
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../../styles/styles';
+import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../../styles/common';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';

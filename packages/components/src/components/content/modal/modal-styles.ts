@@ -6,7 +6,7 @@ import {
   getInset,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../styles/styles';
+} from '../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 import { MODAL_Z_INDEX } from '../../../constants';
 

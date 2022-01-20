@@ -9,7 +9,7 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from '../styles/styles';
+} from './common';
 import { fontSize } from '@porsche-design-system/utilities';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 import { getThemedColors } from './colors';

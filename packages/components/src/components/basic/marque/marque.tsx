@@ -3,7 +3,7 @@ import type { MarqueSize } from './marque-utils';
 import type { MarqueAriaAttributes } from './marque-utils';
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
 import { attachComponentCss, parseAndGetAriaAttributes } from '../../../utils';
-import { breakpoint } from '../../../styles/styles';
+import { breakpoint } from '../../../styles/common';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
 import { getComponentCss } from './marque-styles';
 import { MARQUE_ARIA_ATTRIBUTES } from './marque-utils';

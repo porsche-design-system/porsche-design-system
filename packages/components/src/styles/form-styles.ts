@@ -9,7 +9,7 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from '../styles/styles';
+} from './common';
 import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 import { isVisibleFormState } from '../utils/form-state';
 import { getThemedColors, getThemedFormStateColors } from './colors';

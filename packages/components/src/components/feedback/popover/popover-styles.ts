@@ -1,7 +1,7 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles/styles';
+import { addImportantToEachRule, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles/common';
 import { color, textSmall } from '@porsche-design-system/utilities';
 import { POPOVER_Z_INDEX } from '../../../constants';
 

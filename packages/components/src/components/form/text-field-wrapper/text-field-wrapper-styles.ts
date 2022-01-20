@@ -8,7 +8,7 @@ import {
   getFocusStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../styles/styles';
+} from '../../../styles/common';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';

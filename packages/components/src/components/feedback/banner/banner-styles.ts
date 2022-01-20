@@ -6,7 +6,7 @@ import {
   getBaseSlottedStyles,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../styles/styles';
+} from '../../../styles/common';
 import { BANNER_Z_INDEX } from '../../../constants';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
