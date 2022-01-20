@@ -160,7 +160,7 @@ const ModalPage = (): JSX.Element => {
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;}
   
@@ -174,7 +174,7 @@ const ModalPage = (): JSX.Element => {
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary">Close</p-button>
+    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;
 
@@ -208,7 +208,7 @@ const ModalPage = (): JSX.Element => {
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button type="button" variant="tertiary">Close</p-button>
+      <p-button type="button" variant="tertiary" icon="close">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;
