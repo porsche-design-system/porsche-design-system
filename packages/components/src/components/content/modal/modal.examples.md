@@ -34,7 +34,8 @@ Note that `.footer` is a custom CSS class in order to responsively style the but
 ### <A11yIcon></A11yIcon> Accessibility hints
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
 The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
-You can test it out by navigation this example with the keyboard only.
+You can test it out by navigation this example with the keyboard only.    
+To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a meaningful heading through **ARIA** with the `aria` property.  
 
 ### Framework Implementations
 
@@ -65,7 +66,7 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 ## Full Width Content
 
 It is possible to make containers stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
-Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.
+Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
 Make sure to omit the `heading` when using the `stretch-to-full-modal-width` class.
 
 <Playground :markup="fullWidthContent"></Playground>
@@ -191,10 +192,11 @@ const ModalPage = (): JSX.Element => {
 
   fullWidthContent =
 `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false">
+<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
   <div class="stretch-to-full-modal-width">
     <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
   </div>
+  <p-text>Some Content</p-text>
 </p-modal>`;
 
   fullscreen =
