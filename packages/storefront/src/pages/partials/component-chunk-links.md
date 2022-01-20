@@ -41,16 +41,6 @@ export default class Code extends Vue {
       value: "{ cdn: 'cn' }",
       comment: 'force using China CDN'
     },
-    {
-      value: "{ withoutTags: true, components: ['button'] }",
-      comment: 'first element is core which needs to be loaded with crossorigin attribute',
-      usage: `<link rel="preload" href="<%= $$$PARTIAL$$$[0] %>" crossorigin>`
-    },
-    {
-      value: "{ withoutTags: true, components: ['button'] }",
-      comment: 'further elements are the ones passed into components array',
-      usage: `<link rel="preload" href="<%= $$$PARTIAL$$$[1] %>">`
-    }
   ];
 }
 </script>

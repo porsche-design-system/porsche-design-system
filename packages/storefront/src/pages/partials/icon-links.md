@@ -40,9 +40,6 @@ export default class Code extends Vue {
       value: "{ icons: ['arrowHeadRight', 'plus'], cdn: 'cn' }",
       comment: 'force using China CDN',
     },
-    {
-      value: "{ withoutTags: true, icons: ['arrowHeadRight'] }",
-    }
   ];
 }
 </script>
