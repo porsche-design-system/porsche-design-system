@@ -681,6 +681,10 @@ export const config: StorefrontConfig = {
     },
   },
   Partials: {
+    Introduction: [
+      // @ts-ignore
+      () => import('@/pages/partials/introduction.md'),
+    ],
     'Loader Script': [
       // @ts-ignore
       () => import('@/pages/partials/loader-script.md'),
