@@ -5,7 +5,6 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestart": "yarn replace",
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 4200 -d ./dist/components-angular'",
     "build": "yarn build:wrappers && yarn build:meta",
@@ -16,9 +15,6 @@
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:e2e": "yarn build-app && PORT=4200 BROWSER=none jest --colors -c tests/e2e/config/jest.config.ts",
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && PORT=4200 BROWSER=none jest --colors -c tests/vrt/config/jest.config.ts",
-    "replace": "yarn replace:initialStyles && yarn replace:fontLatin",
-    "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && rm src/index.html && mv src/index.tmp.html src/index.html",
-    "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" src/index.html > src/index.tmp.html && rm src/index.html && mv src/index.tmp.html src/index.html",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
@@ -37,6 +33,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^13.0.0",
     "@angular-devkit/build-angular": "~13.0.4",
     "@angular/cli": "^13.0.4",
     "@angular/compiler-cli": "^13.0.3",
