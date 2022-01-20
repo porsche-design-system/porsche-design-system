@@ -7,6 +7,7 @@ import {
   getAttribute,
   getElementStyle,
   getLifecycleStatus,
+  getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -15,6 +16,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
+import type { SelectedAriaAttributes } from '@porsche-design-system/components/src/types';
+import type { ModalAriaAttributes } from '@porsche-design-system/components/src/components/content/modal/modal-utils';
 
 describe('modal', () => {
   let page: Page;
@@ -28,13 +31,18 @@ describe('modal', () => {
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> p-button-pure.close');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
-  const initBasicModal = (opts?: { isOpen?: boolean; content?: string }): Promise<void> => {
-    const { isOpen = true, content = 'Some Content' } = opts ?? {};
+  const initBasicModal = (opts?: {
+    isOpen?: boolean;
+    content?: string;
+    heading?: string;
+    aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+  }): Promise<void> => {
+    const { isOpen = true, content = 'Some Content', heading = 'Some Heading', aria } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
+      <p-modal heading="${heading}"${isOpen ? ' open' : ''}${aria ? ` aria="${aria}"` : ''}>
         ${content}
       </p-modal>`
     );
@@ -397,6 +405,35 @@ describe('modal', () => {
       const modal = await getModal();
 
       await expectA11yToMatchSnapshot(page, modal);
+    });
+
+    it.each<[string, SelectedAriaAttributes<ModalAriaAttributes>, string]>([
+      ['Some Heading', undefined, 'Some Heading'],
+      [undefined, "{'aria-label': 'Some Heading'}", 'Some Heading'],
+      ['Some Heading', "{'aria-label': 'Other Heading'}", 'Other Heading'],
+    ])('should with props heading: %s and aria: %s set aria-label: %s', async (heading, aria, expected) => {
+      await initBasicModal({ isOpen: false, heading, aria });
+      const modal = await getModal();
+
+      expect(await getProperty(modal, 'ariaLabel')).toBe(expected);
+    });
+
+    it('should overwrite aria-label when adding aria prop', async () => {
+      await initBasicModal({ isOpen: false });
+      const host = await getHost();
+      const modal = await getModal();
+      await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
+
+      expect(await getProperty(modal, 'ariaLabel')).toBe('Other Heading');
+    });
+
+    it('should overwrite aria-label with heading when setting aria prop to undefined', async () => {
+      await initBasicModal({ isOpen: false, heading: 'Some Heading', aria: "{'aria-label': 'Other Heading'}" });
+      const host = await getHost();
+      const modal = await getModal();
+      await setProperty(host, 'aria', undefined);
+
+      expect(await getProperty(modal, 'ariaLabel')).toBe('Some Heading');
     });
   });
 });
