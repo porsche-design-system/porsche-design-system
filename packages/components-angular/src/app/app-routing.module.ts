@@ -120,6 +120,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.ModalFullscreenBreakpointComponent,
   },
   {
+    name: 'Modal Full Width Slot',
+    path: 'modal-full-width-slot',
+    component: fromPages.ModalFullWidthSlotComponent,
+  },
+  {
     name: 'Modal No Heading',
     path: 'modal-no-heading',
     component: fromPages.ModalNoHeadingComponent,
@@ -133,11 +138,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Scrollable',
     path: 'modal-scrollable',
     component: fromPages.ModalScrollableComponent,
-  },
-  {
-    name: 'Modal Full Width Slot',
-    path: 'modal-full-width-slot',
-    component: fromPages.ModalFullWidthSlotComponent,
   },
   {
     name: 'Pagination',

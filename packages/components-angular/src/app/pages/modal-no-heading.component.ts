@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-modal-np-heading',
+  selector: 'page-modal-no-heading',
   styles: [
     `
       .playground {
