@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/components-angular",
             "index": "src/index.html",
@@ -25,7 +25,8 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["@porsche-design-system/shared/css/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "indexTransform": "./scripts/transformIndexHtml.ts"
           },
           "configurations": {
             "production": {
