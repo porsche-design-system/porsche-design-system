@@ -7,8 +7,6 @@ This can be optimized by fetching used chunks in parallel while the application 
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getComponentChunkLinks()` which needs to be injected into the `<head>` of your `index.html`.
 
-<TableOfContents></TableOfContents>
-
 ## Supported options
 - **components**: ({{this.componentChunks}})[] = []
 - **cdn:** 'auto' | 'cn' = 'auto'
@@ -16,7 +14,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 By default, our core is always preloaded when using this partial.
 
-### Examples
+## Examples
 
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
