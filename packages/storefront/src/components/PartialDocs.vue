@@ -25,6 +25,9 @@
     }
 
     public get frameworkMarkup(): FrameworkMarkup {
+      const partialPackage = '@porsche-design-system/components-js/partials'.replace('js', this.activeFramework);
+      const glue = '\n  ';
+
       const angularPartials = this.params
         .map(({ value, comment }, index) =>
           [
@@ -32,7 +35,7 @@
             (index !== 0 ? 'partialContent = ' : '') + `${this.name}(${value});`,
           ]
             .filter((x) => x)
-            .join('\n  ')
+            .join(glue)
         )
         .join('\n\n  ');
 
@@ -55,7 +58,7 @@
 
   <!-- ./scripts/transformIndexHtml.ts -->
   import type { TargetOptions } from '@angular-builders/custom-webpack';
-  import { ${this.name} } from '@porsche-design-system/components-angular/partials';
+  import { ${this.name} } from '${partialPackage}';
 
   export default (targetOptions: TargetOptions, indexHtml: string): string => {
     let partialContent = ${angularPartials}
@@ -63,19 +66,16 @@
     return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
   };`;
 
-      const partialImportPath = `require('@porsche-design-system/components-js/partials').${this.name}`.replace(
-        'js',
-        this.activeFramework
-      );
-      const partialImportPathJs = partialImportPath.replace('vanilla-js', 'js');
+      const partialRequirePath = `require('${partialPackage}').${this.name}`;
+      const partialRequirePathJs = partialRequirePath.replace('vanilla-js', 'js');
 
       const exampleReact =
         `<${this.location}>\n  ` +
         this.params
           .map(({ value, comment }) =>
-            [comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialImportPath}(${value}) %>`]
+            [comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialRequirePath}(${value}) %>`]
               .filter((x) => x)
-              .join('\n  ')
+              .join(glue)
           )
           .join('\n\n  ') +
         `\n</${this.location}>`;
@@ -83,15 +83,15 @@
       const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
       const jsPartials = this.params
         .map(({ value, comment }) => {
-          const partialCall = `${partialImportPathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
+          const partialCall = `${partialRequirePathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
           return [
             comment && `<!-- Alternative: ${comment} -->`,
             `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s@$regex@$partial@\\" index.html"`,
           ]
             .filter((x) => x)
-            .join('\n  ');
+            .join(glue);
         })
-        .join('\n  ');
+        .join(glue);
 
       const exampleJs = `<!-- index.html -->
   <${this.location}>
