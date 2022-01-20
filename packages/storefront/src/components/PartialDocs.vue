@@ -25,14 +25,6 @@
     }
 
     public get frameworkMarkup(): FrameworkMarkup {
-      const partialImportPath = `require('@porsche-design-system/components-js/partials').${this.name}`.replace(
-        'js',
-        this.activeFramework
-      );
-      const partialImportPathJs = partialImportPath.replace('vanilla-js', 'js').replace(/'/g, '\\"');
-      const paramsJs = this.params.map(({ value }) => value.replace(/'/g, '\\"'))[0];
-      const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
-
       const angularPartials = this.params
         .map(({ value, comment }, index) =>
           [
@@ -71,16 +63,35 @@
     return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
   };`;
 
+      const partialImportPath = `require('@porsche-design-system/components-js/partials').${this.name}`.replace(
+        'js',
+        this.activeFramework
+      );
+      const partialImportPathJs = partialImportPath.replace('vanilla-js', 'js');
+
       const exampleReact =
         `<${this.location}>\n  ` +
         this.params
-          .map(
-            { value, comment }[(comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialImportPath}(${value}) %>`)]
+          .map(({ value, comment }) =>
+            [comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialImportPath}(${value}) %>`]
               .filter((x) => x)
               .join('\n  ')
           )
           .join('\n\n  ') +
         `\n</${this.location}>`;
+
+      const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
+      const jsPartials = this.params
+        .map(({ value, comment }) => {
+          const partialCall = `${partialImportPathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
+          return [
+            comment && `<!-- Alternative: ${comment} -->`,
+            `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s@$regex@$partial@\\" index.html"`,
+          ]
+            .filter((x) => x)
+            .join('\n  ');
+        })
+        .join('\n  ');
 
       const exampleJs = `<!-- index.html -->
   <${this.location}>
@@ -91,7 +102,7 @@
   <!-- make sure to adjust the path to the index.html file -->
   "scripts": {
     "prestart": "yarn replace",
-    "replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialImportPathJs}(${paramsJs}))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s@$regex@$partial@\\" index.html"
+    ${jsPartials}
   }`;
 
       return {
